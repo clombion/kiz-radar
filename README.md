@@ -20,15 +20,16 @@ flying to from Bergen, and for exploring the scene's events and artists.
 
 | File | What | Updated by |
 |---|---|---|
-| `docs/data/kiz.sqlite` | Events, genres, features, line-ups, artist and country statistics, airports, a fares snapshot | `pipeline/build_site_db.py`, when the event source changes |
+| `source/*.sqlite` | The full kizomba-world export (with descriptions and images) | you, when you re-export |
+| `docs/data/kiz.sqlite` | What the page loads: events, genres, features, line-ups, artist and country statistics, airports, a fares snapshot | the **Rebuild site database** Action, on every push to `source/` |
 | `docs/data/fares.csv` | Fri→Mon return fares from BGO, one row per airport and weekend | the **Refresh fares** Action |
 | `docs/data/fare_jobs.csv` | When each airport and month was last searched | the same Action |
 
-The page loads `kiz.sqlite`, replaces its fares table with the latest `fares.csv`, and runs every query locally.
+The page never reads `source/`: it loads `kiz.sqlite`, replaces its fares table with the latest `fares.csv`, and runs every query locally.
 Table descriptions are in the `table_docs` table (see the SQL tab).
 
-Events come from [kizomba-world.com](https://kizomba-world.com/). The site keeps facts and links back to each event
-page; descriptions and images are not republished. Cities are geocoded with OpenStreetMap Nominatim
+Events come from [kizomba-world.com](https://kizomba-world.com/). The site shows facts and links back to each event
+page; the full export, descriptions and images included, is in `source/`. Cities are geocoded with OpenStreetMap Nominatim
 (`pipeline/geocode.csv`, cached). Fares are Google Flights prices fetched with [fli](https://github.com/punitarani/fli);
 they move, so check them before booking.
 
@@ -46,7 +47,10 @@ Google's rate limit. The most overdue airport-months go first:
 A month with an upcoming festival within 150 km of an airport is refreshed as tier 1. Change the tiers in
 `pipeline/airports.csv` and the intervals in `pipeline/fares.py`; `python3 pipeline/fares.py plan` shows the queue.
 
-## Rebuilding
+## Updating events
+
+Commit a new export to `source/` (the newest `.sqlite` there is used) and push: the **Rebuild site database**
+Action geocodes new cities, rebuilds `docs/data/kiz.sqlite` and commits it. To do the same locally:
 
 ```bash
 python3 pipeline/geocode.py source/<events>.sqlite          # only new cities are looked up
@@ -54,5 +58,3 @@ python3 pipeline/build_site_db.py source/<events>.sqlite
 python3 pipeline/fares.py refresh --budget 4                # needs uv; or set FLI_CMD=fli
 python3 -m http.server -d docs 8000                         # then open http://localhost:8000
 ```
-
-`source/` (the full kizomba-world database, with descriptions and images) is git-ignored.

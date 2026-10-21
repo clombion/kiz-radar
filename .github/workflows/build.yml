@@ -1,0 +1,41 @@
+name: Rebuild site database
+
+# When a new kizomba-world export (or the build code) is pushed, geocode any new cities and rebuild
+# docs/data/kiz.sqlite. The newest .sqlite file in source/ is used.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'source/**'
+      - 'pipeline/build_site_db.py'
+      - 'pipeline/countries.py'
+      - 'pipeline/airports.csv'
+      - 'pipeline/geocode.csv'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-commit
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pick the newest export
+        run: echo "SRC=$(ls -t source/*.sqlite | head -1)" >> "$GITHUB_ENV"
+      - name: Geocode new cities
+        run: python3 pipeline/geocode.py "$SRC"
+      - name: Build docs/data/kiz.sqlite
+        run: python3 pipeline/build_site_db.py "$SRC"
+      - name: Commit
+        run: |
+          git add docs/data/kiz.sqlite pipeline/geocode.csv
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git -c user.name="build-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -m "Rebuild site database from $(basename "$SRC")"
+          git pull --rebase --quiet && git push

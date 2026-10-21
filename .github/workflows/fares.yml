@@ -15,7 +15,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: fares
+  group: data-commit
   cancel-in-progress: false
 
 jobs:
