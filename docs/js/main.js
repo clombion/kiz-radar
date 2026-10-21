@@ -1,0 +1,54 @@
+// Router and page shell.
+import { load, meta } from './db.js';
+import { h, dayYear, ago } from './ui.js';
+import { finderView } from './finder.js';
+import { mapView } from './map.js';
+import { artistsView } from './artists.js';
+import { countriesView, sqlView } from './tables.js';
+
+const main = document.getElementById('main');
+const status = document.getElementById('status');
+let M, cleanup;
+
+const EXPLORE = [['map', 'Map'], ['artists', 'Artists'], ['countries', 'Countries'], ['sql', 'SQL']];
+
+function route() {
+  const [path, qs = ''] = (location.hash.slice(1) || 'finder').split('?');
+  const [view, ...sub] = path.split('/');
+  const name = view === 'artist' ? 'artists' : view;
+  if (cleanup) { cleanup(); cleanup = null; }
+  for (const a of document.querySelectorAll('[data-nav]')) {
+    const on = a.dataset.nav === (name === 'finder' ? 'finder' : 'explore');
+    a.classList.toggle('active', on);
+    on ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current');
+  }
+  const subnav = document.getElementById('subnav');
+  subnav.hidden = name === 'finder';
+  subnav.replaceChildren(...EXPLORE.map(([k, t]) => h('a', { href: '#' + k, class: k === name ? 'active' : '',
+    'aria-current': k === name ? 'page' : null }, t)));
+  const view_ = h('div', { class: 'view' });
+  main.replaceChildren(view_);
+  const home = M.home_airport;
+  if (name === 'map') cleanup = mapView(view_, sub, qs, { home });
+  else if (name === 'artists') artistsView(view_, sub, qs);
+  else if (name === 'countries') countriesView(view_, home);
+  else if (name === 'sql') sqlView(view_);
+  else finderView(view_, qs, { home });
+  const title = { map: 'Map', artists: 'Artists', countries: 'Countries', sql: 'SQL' }[name];
+  document.title = title ? `${title} · Kizomba Radar` : 'Kizomba Radar';
+}
+
+// #artist/12 is an alias for #artists/12
+window.addEventListener('hashchange', () => {
+  if (location.hash.startsWith('#artist/')) { history.replaceState(null, '', '#artists/' + location.hash.slice(8)); }
+  route(); window.scrollTo(0, 0);
+});
+
+load(s => { status.textContent = s; }).then(() => {
+  M = meta();
+  const fresh = document.getElementById('freshness');
+  fresh.textContent = `Events ${M.events_range.replace(' – ', ' to ')} from kizomba-world · fares from ${M.home_airport} · data built ${dayYear(M.built_at)}`;
+  status.remove();
+  if (location.hash.startsWith('#artist/')) history.replaceState(null, '', '#artists/' + location.hash.slice(8));
+  route();
+}).catch(e => { status.textContent = 'Could not load the data: ' + e.message; status.classList.add('error'); });

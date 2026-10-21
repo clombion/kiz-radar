@@ -1,0 +1,40 @@
+name: Refresh fares
+
+# Every 2 hours, search the few (airport, month) pairs that are most overdue (see pipeline/fares.py)
+# and commit the updated fares. A run stops early if Google rate-limits it; the next run carries on.
+on:
+  schedule:
+    - cron: '23 */2 * * *'
+  workflow_dispatch:
+    inputs:
+      budget:
+        description: Searches in this run
+        default: '8'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fares
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Install fli
+        run: uv tool install "git+https://github.com/punitarani/fli@881aee5ff4321e81ea2157cb44be94ce6a21dc1b"
+      - name: Search the most overdue routes
+        env:
+          FLI_CMD: fli
+        run: python3 pipeline/fares.py refresh --budget "${{ inputs.budget || '8' }}" --max-seconds 1200
+      - name: Commit new fares
+        run: |
+          git add docs/data/fares.csv docs/data/fare_jobs.csv
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git -c user.name="fares-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -m "Refresh fares ($(date -u +%Y-%m-%dT%H:%MZ))"
+          git pull --rebase --quiet && git push

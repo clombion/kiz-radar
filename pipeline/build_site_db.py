@@ -1,0 +1,184 @@
+"""Build docs/data/kiz.sqlite, the database the site loads, from the kizomba-world source DB.
+
+Keeps facts (titles, dates, places, genres, features, line-ups) and links back to kizomba-world;
+drops descriptions, images and extraction quotes. Adds places, airports, per-event and per-artist
+statistics, and a fares table filled from docs/data/fares.csv.
+
+    python3 pipeline/build_site_db.py source/kizomba_events_2026_2027.compact.sqlite
+"""
+import collections, csv, datetime as dt, math, os, sqlite3, sys
+sys.path.insert(0, os.path.dirname(__file__))
+from countries import codes, NAMES
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SRC = sys.argv[1]
+OUT = os.path.join(ROOT, 'docs', 'data', 'kiz.sqlite')
+HOME = 'BGO'
+POPULAR = 10            # bookings that make an artist "popular"
+MAX_AIRPORT_KM = 250
+KIZ = ('kizomba', 'urbankiz', 'semba', 'tarraxo', 'tarraxinha', 'douceur')
+BOOKED_ROLES = ('teacher', 'dj', 'performer')
+
+def km(a, b, c, d):
+    a, b, c, d = map(math.radians, (a, b, c, d))
+    return 6371 * 2 * math.asin(math.sqrt(math.sin((c - a) / 2) ** 2 + math.cos(a) * math.cos(c) * math.sin((d - b) / 2) ** 2))
+
+def weekend_friday(start):
+    """The Friday a Fri→Mon trip would leave on: the event's own Friday, or the next one for a Wed/Thu start."""
+    d = dt.date.fromisoformat(start[:10])
+    off = (4 - d.weekday()) % 7
+    return (d + dt.timedelta(days=off if off <= 3 else off - 7)).isoformat()
+
+if os.path.exists(OUT): os.remove(OUT)
+out = sqlite3.connect(OUT)
+out.execute(f"attach database 'file:{SRC}?mode=ro' as src")
+x = out.execute
+
+# --- copied tables, without descriptions, images or quotes -------------------------------------
+x("""create table events as select id, title, url, slug, start_date, end_date, timezone, all_day, featured,
+     cancelled, venue, city, country, website, published_at, modified_at from src.events""")
+for t in ('event_categories', 'event_tags', 'artists', 'artist_aliases', 'couple_members', 'event_artists',
+          'genre_definitions', 'feature_definitions', 'role_definitions', 'pipeline_steps'):
+    x(f"create table {t} as select * from src.{t}")
+x("create table event_genres as select event_id, genre, source, other_name, genre_as_written from src.event_genres")
+x("create table event_features as select event_id, feature, source from src.event_features")
+x("create table event_rooms as select event_id, party_rooms, class_rooms from src.event_rooms")
+x("create table event_room_list as select event_id, room_no, name_as_written, kind, genres from src.event_room_list")
+x("create table artist_mentions as select id, event_id, role, name_as_written, style, country from src.artist_mentions")
+
+# --- places and airports -------------------------------------------------------------------------
+geo = {(r['city'], r['country']): r for r in csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'geocode.csv'), encoding='utf-8'))}
+airports = list(csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'airports.csv'), encoding='utf-8')))
+x("create table airports (code text primary key, name text, country_code text, lat real, lon real, tier integer)")
+out.executemany("insert into airports values (?,?,?,?,?,?)",
+                [(a['code'], a['name'], a['country_code'], float(a['lat']), float(a['lon']), int(a['tier'])) for a in airports])
+for col in ('country_code text', 'lat real', 'lon real', 'airport text', 'airport_km real', 'weekend_friday text'):
+    x(f"alter table events add column {col}")
+for eid, city, country, start in x("select id, coalesce(city,''), coalesce(country,''), start_date from events").fetchall():
+    cc = (codes(country) or [None])[0]
+    g = geo.get((city, country)) or {}
+    lat, lon = (float(g['lat']), float(g['lon'])) if g.get('lat') else (None, None)
+    ap = dist = None
+    if lat is not None:
+        dist, ap = min((km(lat, lon, float(a['lat']), float(a['lon'])), a['code']) for a in airports)
+        if dist > MAX_AIRPORT_KM: ap = dist = None
+    x("update events set country_code=?, lat=?, lon=?, airport=?, airport_km=?, weekend_friday=? where id=?",
+      (cc, lat, lon, ap, round(dist) if dist is not None else None, weekend_friday(start), eid))
+x("create table countries (code text primary key, name text)")
+out.executemany("insert into countries values (?,?)", sorted(NAMES.items()))
+
+# --- fares: snapshot of docs/data/fares.csv (the site reloads the live file) ---------------------
+x("""create table fares (airport text, depart text, return text, price real, currency text, fetched_at text,
+     primary key (airport, depart, return))""")
+fares_csv = os.path.join(ROOT, 'docs', 'data', 'fares.csv')
+if os.path.exists(fares_csv):
+    out.executemany("insert or replace into fares values (?,?,?,?,?,?)",
+        [(r['airport'], r['depart'], r['return'], float(r['price']), r['currency'], r['fetched_at'])
+         for r in csv.DictReader(open(fares_csv, encoding='utf-8'))])
+x("""create view event_fares as
+     select e.id as event_id, e.airport, e.weekend_friday as depart, f.return, f.price, f.fetched_at,
+       (select min(price) from fares m where m.airport = e.airport
+          and substr(m.depart, 1, 7) = substr(e.weekend_friday, 1, 7)) as month_min
+     from events e left join fares f on f.airport = e.airport and f.depart = e.weekend_friday""")
+
+# --- artist statistics -----------------------------------------------------------------------------
+# Bookings count the artist directly and as a member of a booked couple (artist_events view).
+x("""create view artist_events as
+    select ea.artist_id, ea.event_id, ea.role, 'direct' as via, null as via_artist_id from event_artists ea
+    union all
+    select cm.member_id, ea.event_id, ea.role, 'member', ea.artist_id
+    from event_artists ea join couple_members cm on cm.couple_id = ea.artist_id""")
+roles_sql = ','.join(f"'{r}'" for r in BOOKED_ROLES)
+ev_cc = dict(x("select id, country_code from events"))
+bookings = collections.defaultdict(set)
+role_count = collections.defaultdict(collections.Counter)
+for a, e, role in x(f"select artist_id, event_id, role from artist_events where role in ({roles_sql})"):
+    if e not in bookings[a]: role_count[a][role] += 1
+    bookings[a].add(e)
+stated = collections.defaultdict(collections.Counter)
+for a, text in x("select artist_id, country from event_artists where country is not null and country != ''"):
+    for c in codes(text): stated[a][c] += 1
+
+x("create table artist_origin (artist_id integer, country_code text, mentions integer, primary key (artist_id, country_code))")
+out.executemany("insert into artist_origin values (?,?,?)", [(a, c, n) for a, cnt in stated.items() for c, n in cnt.items()])
+
+x("""create table artist_stats (artist_id integer primary key, bookings integer, teacher integer, dj integer,
+     performer integer, first_date text, last_date text, home_country text, home_basis text,
+     countries integer, abroad_bookings integer, popular integer)""")
+x("create table artist_countries (artist_id integer, country_code text, bookings integer, is_home integer, primary key (artist_id, country_code))")
+dates = dict(((r[0]), r[1]) for r in x("select id, start_date from events"))
+home_of = {}
+for a, evs in bookings.items():
+    where = collections.Counter(ev_cc[e] for e in evs if ev_cc[e])
+    booked_origins = [c for c, _ in stated[a].most_common() if where.get(c)]
+    if booked_origins:
+        home, basis = max(booked_origins, key=lambda c: where[c]), 'stated'
+    elif where:
+        home, basis = where.most_common(1)[0][0], 'most booked'
+    else:
+        home, basis = None, ''
+    home_of[a] = home
+    ds = sorted(dates[e] for e in evs)
+    abroad = sum(n for c, n in where.items() if c != home)
+    x("insert into artist_stats values (?,?,?,?,?,?,?,?,?,?,?,?)",
+      (a, len(evs), role_count[a]['teacher'], role_count[a]['dj'], role_count[a]['performer'], ds[0][:10], ds[-1][:10],
+       home, basis, len(where), abroad, int(len(evs) >= POPULAR)))
+    out.executemany("insert into artist_countries values (?,?,?,?)", [(a, c, n, int(c == home)) for c, n in where.items()])
+
+# --- event statistics ------------------------------------------------------------------------------
+genres = collections.defaultdict(set)
+for e, g in x("select event_id, genre from event_genres"): genres[e].add(g)
+feats = collections.defaultdict(set)
+for e, f in x("select event_id, feature from event_features"): feats[e].add(f)
+lineups = collections.defaultdict(set)
+for e, a in x("select event_id, artist_id from event_artists where role in ('teacher','dj')"): lineups[e].add(a)
+x("""create table event_stats (event_id integer primary key, lineup integer, popular_artists integer, imported integer,
+     kiz integer, kiz_only integer, taxi_dancers integer, all_in_one integer, genres text, features text)""")
+for e, cc in ev_cc.items():
+    g, f, l = genres[e], feats[e], lineups[e]
+    kiz = bool(g & set(KIZ))
+    x("insert into event_stats values (?,?,?,?,?,?,?,?,?,?)",
+      (e, len(l), sum(len(bookings[a]) >= POPULAR for a in l), sum(home_of.get(a) not in (None, cc) for a in l),
+       int(kiz), int(kiz and not g & {'salsa', 'bachata'}), int('taxi_dancers' in f), int('all_in_one' in f),
+       ','.join(sorted(g)), ','.join(sorted(f))))
+
+x("""create view country_stats as
+    select e.country_code, c.name, count(*) as events, sum(s.kiz_only) as kiz_only, sum(s.taxi_dancers) as taxi_dancers,
+      round(avg(s.lineup), 1) as avg_lineup, sum(s.popular_artists) as popular_bookings,
+      round(100.0 * sum(s.imported) / nullif(sum(s.lineup), 0)) as imported_pct,
+      (select airport from events e2 where e2.country_code = e.country_code and e2.airport is not null
+         group by airport order by count(*) desc limit 1) as main_airport
+    from events e join event_stats s on s.event_id = e.id left join countries c on c.code = e.country_code
+    where e.cancelled is not 1 group by e.country_code""")
+
+x("create table meta (key text primary key, value text)")
+out.executemany("insert into meta values (?,?)", [
+    ('home_airport', HOME), ('popular_threshold', str(POPULAR)), ('max_airport_km', str(MAX_AIRPORT_KM)),
+    ('built_at', dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')),
+    ('events_source', 'https://kizomba-world.com/'),
+    ('events_range', ' – '.join(x("select min(substr(start_date,1,10)), max(substr(start_date,1,10)) from events").fetchone())),
+])
+
+DOCS = {
+ 'events': 'One row per kizomba-world event: title, dates, venue and city, link (url). Added: country_code, lat/lon (OpenStreetMap geocode of the city), airport (nearest in airports, within max_airport_km), airport_km, weekend_friday (the Friday of a Fri→Mon trip to it).',
+ 'airports': 'Airports the fare sweep covers. tier sets how often fares refresh (1 = every few days); tier 0 is home, where no flight is needed.',
+ 'fares': f'Round-trip economy fares from {HOME}, one adult, Friday out and Monday back, from Google Flights via fli. Reloaded from data/fares.csv when the page opens.',
+ 'event_fares': 'Each event joined to the fare for its weekend (null when Google had no price), plus the cheapest fare that month to the same airport.',
+ 'artist_stats': f'Per artist: bookings (teacher, DJ or performer at distinct events, including as a member of a couple), home country (a stated country they are booked in, else where they are booked most), countries booked in, bookings abroad, popular = at least {POPULAR} bookings.',
+ 'artist_countries': 'Bookings per artist and country; is_home marks the home country in artist_stats.',
+ 'artist_origin': 'Countries stated next to an artist’s name in line-ups (flags or text), with how often.',
+ 'event_stats': 'Per event: line-up size (teachers and DJs), popular artists booked, imported artists (home country differs from the event’s), kizomba-family genres, kiz-only (no salsa or bachata), taxi dancers, all-in-one hotel.',
+ 'country_stats': 'Per country: events, kiz-only events, taxi dancers, average line-up, bookings of popular artists, share of imported artists, most common airport.',
+ 'countries': 'ISO 3166 codes and names.',
+ 'meta': 'Build settings and provenance.',
+}
+x("create table table_docs (name text primary key, description text)")
+out.executemany("insert or replace into table_docs values (?,?)", DOCS.items())
+for name, desc in x("select name, description from src.table_docs").fetchall():
+    if x("select 1 from sqlite_master where name=?", (name,)).fetchone() and name not in DOCS:
+        x("insert or ignore into table_docs values (?,?)", (name, desc))
+out.commit()
+x("detach database src")
+x("vacuum")
+out.close()
+print(OUT, os.path.getsize(OUT) // 1024, 'KB')
