@@ -49,17 +49,30 @@ export function mapView(root, sub, qs, { home }) {
   const legend = h('div', { class: 'legend' });
   const mapEl = h('div', { class: 'map', role: 'application', 'aria-label': 'Map of events by city' });
   const panel = h('aside', { class: 'panel', 'aria-live': 'polite' });
+  const fill = (...kids) => panel.replaceChildren(...kids.filter(k => k != null && k !== false));
   root.replaceChildren(h('section', { class: 'mapview' },
     h('div', { class: 'toolbar' }, search, whenSel, h('label', {}, kizBox, ' Kiz only'),
       h('label', {}, 'Colour: ', colorSel), legend),
     h('div', { class: 'split' }, mapEl, panel)));
 
   // ----- map -----
-  const map = L.map(mapEl, { zoomControl: true, attributionControl: true, worldCopyJump: true, minZoom: 2,
-    maxBounds: [[-70, -200], [85, 200]] });
+  // Panning and zooming out stop at the box around every event (all dates), plus a small margin.
+  const padded = L.latLngBounds(events.map(e => [e.lat, e.lon])).pad(0.05);
+  const dataBounds = L.latLngBounds(       // no further than the edges of the outline map
+    [Math.max(padded.getSouth(), -85), Math.max(padded.getWest(), -180)],
+    [Math.min(padded.getNorth(), 85), Math.min(padded.getEast(), 180)]);
+  const map = L.map(mapEl, { zoomControl: true, attributionControl: true, worldCopyJump: false,
+    maxBounds: dataBounds, maxBoundsViscosity: 1, inertia: false });
   map.attributionControl.setPrefix(false);
   map.attributionControl.addAttribution('Borders: Natural Earth · Places: © OpenStreetMap');
+  const lockZoom = () => {
+    map.setMinZoom(map.getBoundsZoom(dataBounds, true));     // the view always stays inside the box
+    if (map.getZoom() < map.getMinZoom()) map.setZoom(map.getMinZoom());
+    map.panInsideBounds(dataBounds, { animate: false });
+  };
   map.setView([50, 10], 4);
+  lockZoom();
+  map.on('resize', lockZoom);
   map.createPane('land').style.zIndex = 350;      // under the bubbles in the overlay pane (400)
   const land = L.layerGroup().addTo(map);
   const bubbles = L.layerGroup().addTo(map);
@@ -150,14 +163,14 @@ export function mapView(root, sub, qs, { home }) {
     if (state.event) {
       const back = h('button', { class: 'link', onclick: () => { state.event = null; history.replaceState(null, '', '#map' + query()); renderPanel(); } },
         '← ' + (state.city ? 'Back to ' + (byId.get(state.event)?.city || 'list') : 'Back'));
-      panel.replaceChildren(back, eventDetail(state.event, home));
+      fill(back, eventDetail(state.event, home));
       back.focus({ preventScroll: true });
       return;
     }
     if (state.city) {
       const c = cities.find(c => c.key === state.city);
       if (c) {
-        panel.replaceChildren(
+        fill(
           h('button', { class: 'link', onclick: () => { state.city = null; highlight(); renderPanel(); } }, '← All events in view'),
           h('h3', {}, flag(c.cc), ' ', c.city || countryName(c.cc)),
           h('p', { class: 'muted' }, `${c.n} event${c.n > 1 ? 's' : ''}`,
@@ -171,7 +184,7 @@ export function mapView(root, sub, qs, { home }) {
     const inView = cities.filter(c => b.contains([c.lat, c.lon])).flatMap(c => c.events)
       .sort((a, z) => a.start_date.localeCompare(z.start_date));
     const total = cities.reduce((s, c) => s + c.n, 0);
-    panel.replaceChildren(
+    fill(
       h('h3', {}, `${inView.length} event${inView.length === 1 ? '' : 's'} in view`),
       h('p', { class: 'muted small' }, inView.length < total ? `${total} match the filters · pan or zoom to change the list · click a city to narrow it` : 'Click a city to narrow the list'),
       inView.length ? h('ul', { class: 'rows' }, inView.slice(0, 200).map(row)) : h('p', {}, 'No events here with these filters.'),
@@ -199,7 +212,7 @@ export function mapView(root, sub, qs, { home }) {
     const e = byId.get(state.event);
     if (e) map.setView([e.lat, e.lon], Math.max(map.getZoom(), 5));
   }
-  setTimeout(() => map.invalidateSize(), 0);
+  setTimeout(() => { map.invalidateSize(); lockZoom(); }, 0);
   return () => map.remove();
 }
 
