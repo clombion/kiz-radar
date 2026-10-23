@@ -88,3 +88,7 @@ merge,p:nii@dance,p:nii@astrid+nii,NII,Nii,"rule confirmed by Cédric: solo reco
 merge,p:quinn@dance,p:quinn@david+quinn,Quinn,Quinn,"rule confirmed by Cédric: solo record is the same person as in the couple (same name, same stated country, no clash)"
 merge,p:rafael@dance,p:rafael@giovana+rafael,Rafael,Rafael,"rule confirmed by Cédric: solo record is the same person as in the couple (same name, same stated country, no clash)"
 separate,p:cedric@dance,p:cedric@cedric+christina,Cédric,Cédric,confirmed by Cédric: the Bergen Cédric (Christina & Cédric) is not the Belgian-circuit one
+merge,p:chamalo@chamalo+jalyssa,p:chamalo@chamalo+tzer,Chamalo,Chamalo,confirmed by Cédric: one person with two partners
+merge,p:curtis@clemence+curtis,p:curtis@curtis+gaya,CURTIS,Curtis,confirmed by Cédric: one person with two partners
+merge,p:axel@axel+nora,p:axel@axel+victoria,AXEL,Axel,confirmed by Cédric: one person with two partners
+separate,p:christina@cedric+christina,p:christina@christina+david,Christina,Christina,confirmed by Cédric: Christina of Christina & Cédric (Bergen) is not Christina of David & Christina (Lyon)
