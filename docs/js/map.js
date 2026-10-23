@@ -17,10 +17,6 @@ const COLOR_BY = {
     ['€150–250', c => c.minFare != null && c.minFare <= 250, '--mid'],
     ['over €250', c => c.minFare != null, '--bad'],
     ['not checked', () => true, '--none']] },
-  kiz: { label: 'Kizomba only or mixed', title: () => 'Festivals here', bands: [
-    ['all Kizomba-only', c => c.kizOnly === c.n, '--good'],
-    ['some', c => c.kizOnly > 0, '--mid'],
-    ['mixed styles', () => true, '--none']] },
   popular: { label: 'Well-known artists', title: () => 'Bookings of well-known artists', bands: [
     ['10 or more', c => c.popular >= 10, '--good'],
     ['1–9', c => c.popular > 0, '--mid'],
@@ -29,12 +25,12 @@ const COLOR_BY = {
 const WHEN = [['upcoming', 'Upcoming'], ['all', 'All dates'], ['past', 'Past']];
 
 // what the URL can say about the map
-const DEFAULTS = { when: 'upcoming', kiz: 0, color: 'fare', country: '' };
+const DEFAULTS = { when: 'upcoming', color: 'fare', country: '' };
 
 export function mapView(root, sub, qs, { signal }) {
   const events = withDetails(q('SELECT * FROM event_rows WHERE lat IS NOT NULL ORDER BY start_date'));
   const byId = new Map(events.map(e => [e.id, e]));
-  const url = readState(qs, DEFAULTS, { when: WHEN.map(([v]) => v), kiz: [0, 1], color: Object.keys(COLOR_BY),
+  const url = readState(qs, DEFAULTS, { when: WHEN.map(([v]) => v), color: Object.keys(COLOR_BY),
     country: ['', ...new Set(events.map(e => e.country_code))] });
   const state = { ...url, text: '', city: null, event: sub[0] === 'event' && byId.has(Number(sub[1])) ? Number(sub[1]) : null };
   const cityKey = e => `${e.city}|${e.country_code}`;
@@ -47,17 +43,15 @@ export function mapView(root, sub, qs, { signal }) {
   // ----- layout -----
   const search = h('input', { type: 'search', class: 'mini-search', placeholder: 'Search a festival or city', 'aria-label': 'Search festivals' });
   const whenSel = h('select', { class: 'mini', 'aria-label': 'When' }, WHEN.map(([v, t]) => h('option', { value: v, selected: state.when === v }, t)));
-  const kizBox = h('input', { type: 'checkbox', checked: !!state.kiz });
   const colorSel = h('select', { class: 'plain', 'aria-label': 'Colour the bubbles by' }, Object.entries(COLOR_BY)
     .map(([v, c]) => h('option', { value: v, selected: state.color === v }, c.label)));
   const filtersBtn = h('button', { type: 'button', class: 'more-btn', 'aria-expanded': 'false', 'aria-controls': 'map-filters' });
   const filters = h('div', { class: 'more-panel', id: 'map-filters', hidden: true },
-    h('label', { class: 'check' }, kizBox, ' Kizomba-only festivals'),
     h('label', { class: 'field' }, h('span', {}, 'Colour the bubbles by'), colorSel));
   filtersBtn.addEventListener('click', ev => { ev.stopPropagation(); filters.hidden = !filters.hidden; filtersBtn.setAttribute('aria-expanded', String(!filters.hidden)); });
   const closeFilters = ev => { if (!filters.hidden && !filters.contains(ev.target)) { filters.hidden = true; filtersBtn.setAttribute('aria-expanded', 'false'); } };
   document.addEventListener('click', closeFilters, { signal });
-  const paintFiltersBtn = () => { const n = state.kiz + (state.color !== DEFAULTS.color);
+  const paintFiltersBtn = () => { const n = +(state.color !== DEFAULTS.color);
     filtersBtn.textContent = `Filters${n ? ` (${n})` : ''} ▾`; };
 
   const mapEl = h('div', { class: 'map', role: 'application', 'aria-label': 'Map of festivals by city' });
@@ -88,12 +82,13 @@ export function mapView(root, sub, qs, { signal }) {
     [Math.max(padded.getSouth(), -85), Math.max(padded.getWest(), -180)],
     [Math.min(padded.getNorth(), 85), Math.min(padded.getEast(), 180)]);
   const map = L.map(mapEl, { zoomControl: false, attributionControl: true, worldCopyJump: false,
-    maxBounds: dataBounds, maxBoundsViscosity: 1, inertia: false });
+    maxBounds: dataBounds, maxBoundsViscosity: 1, inertia: false, zoomSnap: 0.25 });     // quarter steps fit the festivals tightly
   L.control.zoom({ position: 'topright' }).addTo(map);
   map.attributionControl.setPrefix(false);
   map.attributionControl.addAttribution('Borders: Natural Earth · Places: © OpenStreetMap');
+  // Zooming out stops once every festival fits on screen; panning stays within the box around them.
   const lockZoom = () => {
-    map.setMinZoom(map.getBoundsZoom(dataBounds, true));
+    map.setMinZoom(map.getBoundsZoom(dataBounds, false));
     if (map.getZoom() < map.getMinZoom()) map.setZoom(map.getMinZoom());
     map.panInsideBounds(dataBounds, { animate: false });
   };
@@ -115,7 +110,7 @@ export function mapView(root, sub, qs, { signal }) {
     const t = state.text.toLowerCase();
     return events.filter(e =>
       (state.when === 'all' || (state.when === 'upcoming') === !!e.upcoming) &&
-      (!state.kiz || e.kiz_only) && (!state.country || e.country_code === state.country) &&
+      (!state.country || e.country_code === state.country) &&
       (!t || e.title.toLowerCase().includes(t) || e.city.toLowerCase().includes(t)));
   }
 
@@ -127,7 +122,6 @@ export function mapView(root, sub, qs, { signal }) {
       groups.get(k).events.push(e);
     }
     cities = [...groups.values()].map(c => ({ ...c, n: c.events.length,
-      kizOnly: c.events.filter(e => e.kiz_only).length,
       popular: c.events.reduce((s, e) => s + e.popular_artists, 0),
       minFare: c.events.some(e => e.fare) ? Math.min(...c.events.filter(e => e.fare).map(e => e.fare.price)) : null }));
     bubbles.clearLayers(); markers = new Map();
@@ -146,7 +140,7 @@ export function mapView(root, sub, qs, { signal }) {
       h('span', { class: 'size' }, h('i', { class: 'ring' }), 'bigger = more festivals'));
     paintFiltersBtn();
     highlight();
-    if (fit && cities.length) map.fitBounds(L.latLngBounds(cities.map(c => [c.lat, c.lon])).pad(0.2), { maxZoom: 7 });
+    if (fit && cities.length) map.fitBounds(L.latLngBounds(cities.map(c => [c.lat, c.lon])), { padding: [24, 24], maxZoom: 7 });
     shown = PAGE; renderPanel();
   }
 
@@ -218,7 +212,6 @@ export function mapView(root, sub, qs, { signal }) {
   map.on('click', () => { if (state.city || state.event) { state.city = state.event = null; save(); highlight(); renderPanel(); } setSheet(false); });
   let ts; search.addEventListener('input', () => { clearTimeout(ts); ts = setTimeout(() => { state.text = search.value; redraw(); }, 150); });
   whenSel.addEventListener('change', () => { state.when = whenSel.value; save(); redraw(); });
-  kizBox.addEventListener('change', () => { state.kiz = kizBox.checked ? 1 : 0; save(); redraw(); });
   colorSel.addEventListener('change', () => { state.color = colorSel.value; save(); redraw(); });
   const esc = ev => {
     if (ev.key !== 'Escape' || !(state.event || state.city)) return;
@@ -228,7 +221,7 @@ export function mapView(root, sub, qs, { signal }) {
   document.addEventListener('keydown', esc, { signal });
 
   whenSel.value = state.when;
-  redraw({ fit: !!state.country });
+  redraw({ fit: !state.event });            // open on every festival shown, wherever it is
   if (state.event) {
     const e = byId.get(state.event);
     map.setView([e.lat, e.lon], Math.max(map.getZoom(), 5));
