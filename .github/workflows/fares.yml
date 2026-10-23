@@ -31,6 +31,8 @@ jobs:
         run: |
           git add docs/data/fares.csv pipeline/fare_jobs.csv
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
-          git -c user.name="fares-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
-            commit -m "Refresh fares ($(date -u +%Y-%m-%dT%H:%MZ))"
-          git pull --rebase --quiet && git push
+          git config user.name "fares-bot"   # the rebase below re-commits, so it needs the name as well
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Refresh fares ($(date -u +%Y-%m-%dT%H:%MZ))"
+          git pull --rebase --quiet
+          git push

@@ -35,6 +35,8 @@ jobs:
         run: |
           git add docs/data/kiz.sqlite docs/data/site.json pipeline/geocode.csv pipeline/artist_merge_suggestions.csv
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
-          git -c user.name="build-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
-            commit -m "Rebuild site database from $(basename "$SRC")"
-          git pull --rebase --quiet && git push
+          git config user.name "build-bot"   # the rebase below re-commits, so it needs the name as well
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Rebuild site database from $(basename "$SRC")"
+          git pull --rebase --quiet
+          git push
