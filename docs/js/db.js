@@ -1,5 +1,6 @@
 // Loads sql.js, the site database and the latest fares, and exposes small query helpers.
 const SQLJS = 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/';
+const DATA = new URL('../data/', import.meta.url);      // relative to this file, so pages in subfolders work too
 
 let db;
 
@@ -7,8 +8,8 @@ export async function load(onStatus) {
   onStatus('Loading database…');
   const [SQL, dbBuf, faresText] = await Promise.all([
     initSqlJs({ locateFile: f => SQLJS + f }),
-    fetch('data/kiz.sqlite').then(r => { if (!r.ok) throw new Error('data/kiz.sqlite: ' + r.status); return r.arrayBuffer(); }),
-    fetch('data/fares.csv', { cache: 'no-cache' }).then(r => r.ok ? r.text() : ''),
+    fetch(new URL('kiz.sqlite', DATA)).then(r => { if (!r.ok) throw new Error('data/kiz.sqlite: ' + r.status); return r.arrayBuffer(); }),
+    fetch(new URL('fares.csv', DATA), { cache: 'no-cache' }).then(r => r.ok ? r.text() : ''),
   ]);
   db = new SQL.Database(new Uint8Array(dbBuf));
   if (faresText) replaceFares(faresText);

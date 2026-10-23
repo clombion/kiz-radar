@@ -27,7 +27,7 @@ const titleKey = t => t.toLowerCase().normalize('NFKD').replace(/[^a-z\s]/g, ' '
 const STOP = new Set(['the', 'official', 'edition', 'event', 'festival', 'fest', 'congress', 'and', 'with', 'vol',
   'annual', 'anniversary', 'international', 'kizomba', 'urbankiz', 'urban', 'kiz', 'weekend']);
 
-function candidates(p, home) {
+export function candidates(p, home) {
   const from = today(), to = addDays(from, Math.round(p.months * 30.4));
   const base = q(`SELECT ${EVENT_COLS} FROM events e JOIN event_stats s ON s.event_id = e.id
     WHERE e.cancelled IS NOT 1 AND e.airport IS NOT NULL`);
@@ -49,7 +49,7 @@ function candidates(p, home) {
     .map(e => ({ ...e, fare: e.airport === home ? { price: 0, home: true } : fare[e.airport + e.depart] || null }));
 }
 
-function apply(rows, p) {
+export function apply(rows, p) {
   return rows.filter(e =>
     (e.fare ? e.fare.price <= p.maxFare : p.unknownFare) &&
     (!p.kizOnly || e.kiz_only) && (!p.taxi || e.taxi_dancers) &&
@@ -112,28 +112,7 @@ export function finderView(root, qs, { home }) {
     summary.replaceChildren(rows.length
       ? `${rows.length} festival${rows.length > 1 ? 's' : ''} match` + (priced.some(r => !r.fare.home) ? ` · cheapest flight ${euro(Math.min(...priced.filter(r => !r.fare.home).map(r => r.fare.price)))}` : '')
       : 'Nothing matches. Try a higher fare, a longer window, or untick “Kiz only”.');
-    list.replaceChildren(...rows.map(e => card(e)));
-  }
-
-  function card(e) {
-    const more = h('div', { class: 'more', hidden: true });
-    const toggle = h('button', { class: 'link', 'aria-expanded': 'false', onclick: () => {
-      const open = more.hidden;
-      if (open && !more.childElementCount) more.append(eventDetail(e.id, home, { compact: true }));
-      more.hidden = !open; toggle.setAttribute('aria-expanded', String(open));
-      toggle.textContent = open ? 'Hide details' : 'Line-up & details';
-    } }, 'Line-up & details');
-    return h('article', { class: 'card' + (e.projected ? ' projected' : '') },
-      h('div', { class: 'card-head' },
-        h('div', {},
-          h('p', { class: 'when' }, e.projected ? `Likely ${range(e.depart, addDays(e.depart, 2))}` : range(e.start_date, e.end_date)),
-          h('h3', {}, e.title),
-          h('p', { class: 'muted' }, where(e), ' · ', airportNote(e, home))),
-        fareBlock(e, home, e.depart)),
-      e.projected ? h('p', { class: 'note' }, `Projected from the ${range(e.start_date, e.end_date)} edition — next dates not listed yet.`) : null,
-      eventFacts(e),
-      h('div', { class: 'card-actions' }, toggle, h('a', { href: `#map/event/${e.id}` }, 'Show on map')),
-      more);
+    list.replaceChildren(...rows.map(e => festivalCard(e, home)));
   }
 
   form.addEventListener('change', () => sync(false));
@@ -143,4 +122,26 @@ export function finderView(root, qs, { home }) {
       h('p', { class: 'muted' }, `Return fares from ${home}, Friday out and Monday back, for each festival’s weekend.`)),
     form, summary, list));
   sync(false);
+}
+
+export function festivalCard(e, home, extra) {
+  const more = h('div', { class: 'more', hidden: true });
+  const toggle = h('button', { class: 'link', 'aria-expanded': 'false', onclick: () => {
+    const open = more.hidden;
+    if (open && !more.childElementCount) more.append(eventDetail(e.id, home, { compact: true }));
+    more.hidden = !open; toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? 'Hide details' : 'Line-up & details';
+  } }, 'Line-up & details');
+  return h('article', { class: 'card' + (e.projected ? ' projected' : '') },
+    h('div', { class: 'card-head' },
+      h('div', {},
+        h('p', { class: 'when' }, e.projected ? `Likely ${range(e.depart, addDays(e.depart, 2))}` : range(e.start_date, e.end_date)),
+        h('h3', {}, e.title),
+        h('p', { class: 'muted' }, where(e), ' · ', airportNote(e, home))),
+      fareBlock(e, home, e.depart)),
+    e.projected ? h('p', { class: 'note' }, `Projected from the ${range(e.start_date, e.end_date)} edition — next dates not listed yet.`) : null,
+    extra || null,
+    eventFacts(e),
+    h('div', { class: 'card-actions' }, toggle, h('a', { href: `#map/event/${e.id}` }, 'Show on map')),
+    more);
 }
