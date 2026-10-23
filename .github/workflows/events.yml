@@ -1,0 +1,42 @@
+name: Refresh events
+
+# Once a month, update the newest export in source/ from kizomba-world.com (see pipeline/scrape.py), commit it,
+# then start the Rebuild site database workflow, which a push made with the Actions token doesn't start by itself.
+on:
+  schedule:
+    - cron: '17 5 3 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: data-commit
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Pick the newest export
+        run: echo "SRC=$(ls -t source/*.sqlite | head -1)" >> "$GITHUB_ENV"
+      - name: Refresh the events
+        run: uv run -q pipeline/scrape.py "$SRC"
+      - name: Commit
+        id: commit
+        run: |
+          git add "$SRC"
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git -c user.name="events-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -m "Refresh events from kizomba-world ($(date -u +%Y-%m-%d))"
+          git pull --rebase --quiet && git push
+          echo "pushed=1" >> "$GITHUB_OUTPUT"
+      - name: Rebuild the site database
+        if: steps.commit.outputs.pushed
+        run: gh workflow run build.yml --ref main
+        env:
+          GH_TOKEN: ${{ github.token }}

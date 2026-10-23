@@ -106,12 +106,28 @@ fill in `decision`. Pushing the change rebuilds the site and refreshes the sugge
 
 ## Updating the events
 
-Commit a new export to `source/` and push. The **Rebuild site database** Action takes the newest `.sqlite` there,
-geocodes new cities, rebuilds the database and commits it. It also runs on any push to `pipeline/`.
+On the 3rd of each month, the **Refresh events** Action updates the newest export in `source/` from
+kizomba-world, using `pipeline/scrape.py`. The event list comes from the site's Events Calendar API. The event
+pages add what the API leaves out: the venue and city, the deal link, the organiser's links, the translations
+and whether the festival is cancelled. Pages are fetched only for new and changed festivals and for those still
+to come, a few seconds apart. Festivals the site no longer lists are removed. Once the export is committed, the
+Action starts **Rebuild site database**, which geocodes new cities, rebuilds the database and commits it. That
+workflow also runs on any push to `source/` or `pipeline/`.
+
+The site sits behind Cloudflare, which refuses ordinary scripts, so the scraper sends its requests the way
+Chrome does, through [curl_cffi](https://github.com/lexiforest/curl_cffi). If Cloudflare stops letting it
+through, the Action fails and the site keeps the last export.
+
+The refresh doesn't cover everything. Line-ups, highlights from descriptions, rooms and genres come from AI
+extraction steps that are not in this repository yet. A new festival therefore appears with its dates, place,
+site tags and flight, but without names. The `pending_extraction` table in the export lists every festival
+whose description is new or has changed since the extraction last ran.
 
 To do the same locally:
 
 ```bash
+uv run pipeline/scrape.py source/<events>.sqlite --dry-run   # what would change, without writing
+uv run pipeline/scrape.py source/<events>.sqlite
 python3 pipeline/geocode.py source/<events>.sqlite        # looks up new cities only
 python3 pipeline/build_site_db.py source/<events>.sqlite
 python3 pipeline/merge_suggestions.py source/<events>.sqlite
@@ -125,7 +141,7 @@ The **Tests** Action runs on every push. Locally:
 
 ```bash
 node --test tests/*.test.mjs      # the site's structure: unused code and styles, links, stored hints
-uvx pytest -q tests/              # the pipeline's text tidying
+uvx pytest -q tests/              # the pipeline: text tidying and reading kizomba-world's pages
 ```
 
 The site tests check what JavaScript and CSS cannot enforce themselves. Examples include an export nothing
