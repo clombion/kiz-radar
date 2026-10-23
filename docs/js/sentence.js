@@ -24,7 +24,9 @@ function note(cls, arrow, ...text) {
 // the dance in the sentence changes every few seconds; "a" gains its n before a vowel ("an Urban Kiz festival")
 const DANCES = ['Kizomba', 'Urban Kiz', 'Tarraxo'];
 const takesAn = word => /^[aeiou]/i.test(word);
+// in words, and in digits for screens where only the shorter form keeps the blank on the "festival in" line
 const WHEN = [[1, 'the next month'], [2, 'the next two months'], [3, 'the next three months'], [6, 'the next six months'], [12, 'the coming year']];
+const WHEN_DIGITS = { 2: 'the next 2 months', 3: 'the next 3 months', 6: 'the next 6 months' };
 // the sentence says it in words; the bar and the filtering use the numbers
 const PRICE = [[0, 'any price'], [250, 'a reasonable price'], [150, 'a cheap price']];
 const SHORT_LABEL = {
@@ -65,12 +67,20 @@ export function sentenceView(root, qs, { signal, data }) {
   const DEST_SHORT = [['', 'Anywhere'], ...countries.map(c => [c.code, `${flag(c.code)} ${c.name}`])];
   const sentenceBlanks = { months: blank('months', WHEN), country: blank('country', DEST), reach: blank('reach', PRICE) };
   const live = h('p', { class: 'live', 'aria-live': 'polite' });
+  const festivalIn = h('span', {}, ' festival in ');
+  // words where they fit after "festival in", digits where only they do (narrow phones); otherwise words
+  const fitMonths = () => {
+    const el = sentenceBlanks.months, sameLine = () => Math.abs(el.offsetTop - festivalIn.offsetTop) < el.offsetHeight / 2;
+    const label = digits => { for (const o of el.options) o.textContent = (digits && WHEN_DIGITS[o.value]) || WHEN.find(([v]) => String(v) === o.value)[1]; fit(el); };
+    label(false);
+    if (!sameLine()) { label(true); if (!sameLine()) label(false); }
+  };
   const dance = h('span', { class: 'dance' }, DANCES.map(d => h('span', {}, d)));
   const n = h('span', { class: 'article-n' }, 'n');
   const hero = h('header', { class: 'sentence-hero' },
     h('p', { class: 'sentence' }, 'I want to go to a',
       h('span', { 'aria-hidden': 'true' }, n, ' ', dance), h('span', { class: 'visually-hidden' }, ' Kizomba'),
-      h('br', { class: 'phone-break' }), ' festival in ',
+      h('br', { class: 'phone-break' }), festivalIn,
       sentenceBlanks.months, `, flying from ${home().city} to `,
       h('span', { class: 'anchor' }, sentenceBlanks.country, note('note-bottom', 'up', 'click', ' to change where')),
       ' for ', h('span', { class: 'nowrap' }, sentenceBlanks.reach, '.'), ruler),
@@ -130,6 +140,7 @@ export function sentenceView(root, qs, { signal, data }) {
   function render() {
     showInAddressBar(festivalsHref(changed(s, DEFAULTS)));
     for (const k of ['months', 'country', 'reach']) { sentenceBlanks[k].value = String(s[k]); barBlanks[k].value = String(s[k]); fit(sentenceBlanks[k]); }
+    fitMonths();
     panel.replaceChildren(...moreFields());
     const extra = ['taxi', 'allin', 'lineup', 'unchecked'].filter(k => s[k] !== DEFAULTS[k]).length + (s.likely ? 0 : 1);
     const hiddenOnPhone = +!!s.country;     // only counted where the destination lives in the panel
@@ -151,8 +162,10 @@ export function sentenceView(root, qs, { signal, data }) {
   render();
   data.then(() => { if (!signal.aborted) { all = festivals(); render(); } },
     e => { live.replaceChildren(h('span', { class: 'error' }, 'Could not load the festivals: ' + e.message)); });
-  requestAnimationFrame(() => Object.values(sentenceBlanks).forEach(fit));       // and again once the web font has loaded
-  document.fonts?.ready.then(() => Object.values(sentenceBlanks).forEach(fit));
+  const refit = () => { Object.values(sentenceBlanks).forEach(fit); fitMonths(); };
+  requestAnimationFrame(refit);                                   // and again once the web font has loaded
+  document.fonts?.ready.then(refit);
+  addEventListener('resize', fitMonths, { signal });
 }
 
 // Each dance shows for a few seconds, then cross-fades to the next while its slot eases to the new width, so the

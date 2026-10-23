@@ -9,9 +9,10 @@ export function withDetails(rows) {
   if (!heads) {
     heads = {}; styles = {};
     // the best-known teachers and DJs (couples count as one act)
+    // one row per person: someone listed as both teacher and DJ is still one name
     for (const r of q(`SELECT ea.event_id, a.id, a.display_name FROM event_artists ea JOIN artists a ON a.id = ea.artist_id
         JOIN artist_stats st ON st.artist_id = a.id WHERE ea.role IN ('teacher','dj') AND ea.as_couple IS NULL
-        ORDER BY ea.event_id, st.bookings DESC`)) (heads[r.event_id] ||= []).length < 3 && heads[r.event_id].push({ id: r.id, name: r.display_name });
+        GROUP BY ea.event_id, a.id ORDER BY ea.event_id, st.bookings DESC`)) (heads[r.event_id] ||= []).length < 3 && heads[r.event_id].push({ id: r.id, name: r.display_name });
     for (const r of q(`SELECT event_id, genre FROM event_genres WHERE source = 'description'`)) (styles[r.event_id] ||= new Set()).add(r.genre);
     fares = Object.fromEntries(q('SELECT airport || depart AS k, price FROM fares').map(f => [f.k, f.price]));
   }

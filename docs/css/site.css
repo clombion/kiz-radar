@@ -361,7 +361,9 @@ body:has(.pmap) .to-top { display: none; }
   .countries-page .seg button { padding: .32rem .6rem; font-size: .82rem; }
   .countries-page .seg { max-width: 100%; overflow-x: auto; }
 }
-.dance { display: inline-grid; justify-items: start; color: var(--accent); font-weight: 600; transition: width .45s ease; }
+/* the dance in the hand-drawn face the hints use, larger to match the sentence's weight */
+.dance { display: inline-grid; justify-items: start; color: var(--accent); font: 700 1.3em/1 "Caveat", cursive; letter-spacing: 0;
+  padding-right: .14em; transition: width .45s ease; }
 .article-n { display: inline-block; vertical-align: bottom; overflow: hidden; max-width: 0; opacity: 0; transition: max-width .45s ease, opacity .45s ease; }
 .article-n.on { max-width: .7em; opacity: 1; }
 .article-n.held { max-width: .7em; }
