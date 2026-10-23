@@ -316,7 +316,7 @@ body:has(.pmap) .to-top { display: none; }
   .wide { display: none; }
   .narrow { display: inline; }
   .core-fields { display: flex; }
-  .more-panel { right: 0; left: 0; margin: 0 16px; width: auto; max-height: 70vh; overflow-y: auto; }
+  .sticky-bar .more-panel { right: 0; left: 0; margin: 0 16px; width: auto; max-height: 70vh; overflow-y: auto; }
 }
 @media (hover: hover) and (pointer: fine) {
   .click { display: inline; }
@@ -377,3 +377,10 @@ body:has(.pmap) .to-top { display: none; }
 @media (max-width: 640px) {
   .phone-break { display: inline; }
 }
+/* on a phone, the Map and Artists filter panels span the whole filter row instead of hanging off the button */
+@media (max-width: 640px) {
+  .map-bar { position: relative; }
+  .filters-wrap { position: static; }
+  .filters-wrap .more-panel { left: 0; right: 0; width: auto; max-height: 70vh; overflow-y: auto; }
+}
+
