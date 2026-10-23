@@ -73,8 +73,6 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:manon@manon+rico,p:manon@manon+simba,Manon,Manon,0,0,FR GW,FR SN,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:maria@jesus+maria,p:maria@jose+maria,María,María,0,0,ES,ES,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:michel@dance,p:michel@aga+michel,Michel,Michel,1,0,FR,FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:mickaela@dance,p:mickaela@jahja+mickaela,Mickaela,Mickaela,3,0,SE,FR SE,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:mickaela@jahja+mickaela,p:mickaela@mamadou+mickaela,Mickaela,Mickaela,0,0,FR SE,SE,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:monica@blackchinese+monica,p:monica@jorge+monica,Monica,Mónica,0,0,ES FR,CZ ES,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:morgane@bastien+morgane,p:morgane@fred+morgane,Morgane,Morgane,0,0,FR,FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:natalia@alessio+natalia,p:natalia@andrea+natalia,Natalia,NATALIA,0,0,IT,IT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
