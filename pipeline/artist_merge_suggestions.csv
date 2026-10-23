@@ -151,7 +151,6 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,c:alejandro@alejandro+vanessa+vanessa@alejandro+vanessa,c:alberto@alberto+vanessa+vanessa@alberto+vanessa,Alejandro y Vanessa,Alberto & Vanessa,4,1,ES,~ES,same,0.81,0.91,couple with matching names
 ,c:davide@davide+noemi+noemi@davide+noemi,c:david@david+noemie+noemie@david+noemie,DAVIDE & NOEMI,DAVID & NOÉMIE,2,1,~IT,~FR,unclear,0.91,0.91,couple with matching names
 ,c:john@john+stefania+stefania@john+stefania,c:john@john+stefy+stefy@john+stefy,John & Stefania,John & Stefy,3,2,IT,~IT,same,0.81,0.91,couple with matching names
-,c:estefi@estefi+jp+jp@estefi+jp,c:jp@jp+stefy+stefy@jp+stefy,JP & Estefi,JP & STEFY,1,1,~ES,~ES,same,0.86,0.91,couple with matching names
 ,c:juninho@juninho+sara+sara@juninho+sara,c:juni@juni+sarah+sarah@juni+sarah,Juninho & Sara,Juni & Sarah,2,1,AO FR,~FR,same,0.81,0.91,couple with matching names
 ,c:luismi@luismi+marian+marian@luismi+marian,c:arantxa@arantxa+luismi+luismi@arantxa+luismi,Luismi y Marian,Luismi & Arantxa,3,1,ES,ES,same,0.81,0.91,couple with matching names
 ,c:nico@nico+sara+sara@nico+sara,c:nicola@nicola+sabrina+sabrina@nicola+sabrina,Nicola & Sara,Nicola & Sabrina,3,2,~IT,~IT,same,0.86,0.91,couple with matching names
@@ -173,7 +172,6 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,c:andrepisco+carolina@andrepisco+carolina,c:carolina@carolina+pisco+pisco@carolina+pisco,André Pisco & Carolina,PISCO & CAROLINA,1,1,~PT,~PT,same,0.81,0.86,couple with matching names
 ,p:cristinaolmos,p:cristina@cristina+manu,CRISTINA OLMOS,CRISTINA,1,0,ES,ES,same,0.76,0.86,one name is the first word(s) of the other
 ,c:daniela@daniela+franco+franco@daniela+franco,c:daniela@daniela+fernando+fernando@daniela+fernando,Franco & Daniela,Fernando & Daniela,3,2,~IT,~DE,unclear,0.86,0.86,couple with matching names
-,c:jp@jp+stephy+stephy@jp+stephy,c:jp@jp+stefy+stefy@jp+stefy,JP & Stephy,JP & STEFY,36,1,FR,~ES,unclear,0.86,0.86,couple with matching names
 ,c:luca@luca+marta+marta@luca+marta,c:luca@luca+marianna+marianna@luca+marianna,LUCA Y MARTA,Luca & Marianna,2,1,~IT,~IT,same,0.81,0.86,couple with matching names
 ,c:nicola@nicola+sabrina+sabrina@nicola+sabrina,c:nicholas@nicholas+sabrine+sabrine@nicholas+sabrine,Nicola & Sabrina,Sabrine et nicholas,2,1,~IT,~FR,unclear,0.86,0.86,couple with matching names
 ,c:stefania@stefania+umberto+umberto@stefania+umberto,c:stefy@stefy+umberto+umberto@stefy+umberto,Stefania & Umberto,Stefy & Umberto,1,1,~IT,~IT,same,0.81,0.86,couple with matching names
