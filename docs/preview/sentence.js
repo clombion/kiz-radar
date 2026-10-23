@@ -4,6 +4,7 @@ import { h, addDays, countryName, flag, today, euro } from '../js/ui.js';
 import { eventDetail } from '../js/event.js';
 import { festivals, place, styleLine, d, stateFromHash, writeHash } from './common.js';
 import { tidyTitle } from './titles.js';
+import { PIN, TRAITS } from './icons.js';
 
 const DEFAULTS = { style: 'kiz', months: 3, reach: 'any', country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0, sort: 'date' };
 const LOOSEST = { style: 'all', months: 12, reach: 'any', country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0 };
@@ -162,7 +163,6 @@ function dateBox(start, end, projected) {
   return h('div', { class: 'datebox' }, likely, h('span', { class: 'dd' }, start === end ? dd1 : `${dd1}–${dd2}`), h('span', { class: 'mm' }, mm1));
 }
 
-const PIN = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11A6.5 6.5 0 0 1 18.5 10c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>';
 
 // "✈ ~€492 from Bergen (+104 km)", the price links to Google Flights for that weekend
 function flight(e, home) {
@@ -199,7 +199,12 @@ function card(e, home, hint = false) {
   const withLine = links.length ? h('p', { class: 'with' }, 'With ',
     ...links.flatMap((l, i) => i ? [i === links.length - 1 && rest <= 0 ? ' and ' : ', ', l] : [l]),
     rest > 0 ? [' and ', toggleBtn('link more-names', `${rest} more`)] : null) : null;
-  const extras = [e.taxi_dancers && 'taxi dancers', e.all_in_one && 'all-in-one'].filter(Boolean);
+  // up to three features as icon + short word (icons alone are guesswork); the rest are in the details
+  const feats = new Set((e.features || '').split(','));
+  const traits = TRAITS.filter(([k]) => feats.has(k));
+  const traitRow = traits.length ? h('ul', { class: 'traits', 'aria-label': 'Highlights' },
+    traits.slice(0, 3).map(([, label, icon]) => { const li = h('li', {}, h('span', { class: 'ic' }), label); li.firstChild.innerHTML = icon; return li; }),
+    traits.length > 3 ? h('li', { class: 'more-traits' }, toggleBtn('link', `+${traits.length - 3}`)) : null) : null;
 
   const art = h('article', { class: 'calm-card' + (e.projected ? ' projected' : '') },
     h('div', { class: 'c-top' },
@@ -207,7 +212,8 @@ function card(e, home, hint = false) {
       h('div', { class: 'c-head' },
         h('p', { class: 'where' }, place(e)),
         h('h3', {}, toggleBtn('title-btn', title)))),
-    styleLine(e) || extras.length ? h('p', { class: 'styles' }, [styleLine(e), extras.join(', ')].filter(Boolean).join(' · ')) : null,
+    styleLine(e) ? h('p', { class: 'styles' }, styleLine(e)) : null,
+    traitRow,
     withLine,
     hint && withLine ? note('note-artist', 'up', 'click', ' a name to see where else they teach') : null,
     e.projected ? h('p', { class: 'with muted' }, 'This year’s dates aren’t out yet.') : null,
