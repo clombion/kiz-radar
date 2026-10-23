@@ -1,7 +1,7 @@
 // Countries: which scenes are worth a trip from home. One row per country: what's coming up, what the
 // flights to those festivals cost, and what the scene is like.
 import { q } from './db.js';
-import { h, flag, countryName, euro, home } from './ui.js';
+import { h, flag, countryName, euro, home, monthYear } from './ui.js';
 import { readState, changed } from './festivals.js';
 import { countriesHref, festivalsHref, mapHref, artistsHref, showInAddressBar } from './routes.js';
 
@@ -19,6 +19,8 @@ export function countriesView(root, qs) {
   const fares = Object.fromEntries(q(`SELECT e.country_code, e.airport_city, min(f.price) AS price FROM event_rows e
       JOIN fares f ON f.airport = e.airport AND f.depart = e.weekend_friday
       WHERE e.upcoming AND e.airport != ? GROUP BY e.country_code`, [home().code]).map(r => [r.country_code, r]));
+  // "coming up" runs from today to the last listed festival; most are only listed a few months ahead
+  const last = q('SELECT max(start_date) AS d FROM event_rows WHERE upcoming')[0].d;
   const rows = q(`SELECT cs.*, u.upcoming, u.reachable FROM country_stats cs
       LEFT JOIN (SELECT country_code, sum(upcoming) AS upcoming, sum(upcoming AND airport IS NOT NULL) AS reachable
         FROM event_rows GROUP BY country_code) u ON u.country_code = cs.country_code
@@ -45,7 +47,7 @@ export function countriesView(root, qs) {
       open: (a, b) => (b.imported_pct ?? -1) - (a.imported_pct ?? -1) || b.upcoming - a.upcoming,
     }[st.sort];
     const shown = rows.filter(r => st.all || r.upcoming).sort(by);
-    summary.textContent = `${shown.length} countries` + (st.all ? '' : ' with festivals coming up');
+    summary.textContent = `${shown.length} countries` + (st.all ? ' in the listings' : ` with festivals coming up, between now and ${monthYear(last)} (the last one listed)`);
     list.replaceChildren(...shown.map(row));
   }
   render();
