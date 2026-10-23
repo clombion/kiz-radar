@@ -67,7 +67,11 @@ to the kept artist, and old artist links redirect to it.
 either order, and candidates the source pipeline left open. Rows are ranked by `score`: name similarity, raised
 when both come from the same country and lowered when line-ups state different countries for them (`countries`
 column; French overseas territories count as France). `keep_countries` / `merge_countries` show what was used,
-with `~` when the country is only inferred from where they are booked, which never counts against a match. To decide one, copy its row into `artist_merges.csv`
+with `~` when the country is only inferred from where they are booked, which never counts against a match.
+The `calendar` column adds dates: `clash` (booked at overlapping events of four days or less in different
+cities, so different people; strong penalty), `shared circuit` (same city or organiser; small bonus),
+`same line-up` (both named in one line-up; shown for review, not scored, since festivals list artists per room)
+and `no clash`. `calendar_note` says which events. To decide one, copy its row into `artist_merges.csv`
 and fill in `decision`. Pushing the change rebuilds the site and refreshes the suggestions; locally run
 `python3 pipeline/merge_suggestions.py source/<events>.sqlite`.
 

@@ -7,12 +7,15 @@ Two sources:
 Each pair is scored by name similarity, raised when both artists come from the same country (stated in
 line-ups, else where they are booked most) and lowered when line-ups state different countries for them.
 A country inferred from bookings never lowers the score: touring artists are booked everywhere.
+The calendar adjusts it too: two artists booked at overlapping short events in different cities are different
+people; turning up in the same city or with the same organiser counts mildly for a match. Both being named in
+one line-up is noted but not scored (festivals list artists per room, so names repeat).
 Pairs already decided in pipeline/artist_merges.csv (merge or separate) are left out. To act on a
 suggestion, copy its row into artist_merges.csv with decision "merge" or "separate".
 
     python3 pipeline/merge_suggestions.py source/<events>.sqlite
 """
-import collections, csv, difflib, os, re, sqlite3, sys, unicodedata
+import collections, csv, datetime as dt, difflib, os, re, sqlite3, sys, unicodedata
 sys.path.insert(0, os.path.dirname(__file__))
 from countries import codes
 
@@ -21,8 +24,10 @@ SRC = sys.argv[1]
 OUT = os.path.join(ROOT, 'pipeline', 'artist_merge_suggestions.csv')
 MERGES = os.path.join(ROOT, 'pipeline', 'artist_merges.csv')
 FIELDS = ['decision', 'keep_key', 'merge_key', 'keep_name', 'merge_name', 'keep_bookings', 'merge_bookings',
-          'keep_countries', 'merge_countries', 'countries', 'similarity', 'score', 'reason']
-COUNTRY_BONUS, COUNTRY_PENALTY = 0.1, 0.25   # score = name similarity, adjusted by country of origin
+          'keep_countries', 'merge_countries', 'countries', 'calendar', 'calendar_note', 'similarity', 'score', 'reason']
+COUNTRY_BONUS, COUNTRY_PENALTY = 0.1, 0.25   # score = name similarity, adjusted by country of origin …
+CLASH_PENALTY, CIRCUIT_BONUS = 0.5, 0.05     # … and by the calendar (see calendar_signal)
+SHORT_EVENT_DAYS = 4                         # longer events (week-long all-in-ones) never count as a clash
 
 def norm(s):
     s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode().lower()
@@ -81,6 +86,41 @@ def main():
         if oa & ob: return 'same', COUNTRY_BONUS if not (ia and ib) else COUNTRY_BONUS / 2
         if not ia and not ib: return 'different', -COUNTRY_PENALTY
         return 'unclear', 0
+    # Calendar: every event an artist appears at (directly or through a couple), with dates, city and organisers.
+    ev = {}
+    for eid, start, end, city, country in c.execute('select id, start_date, end_date, city, country from events'):
+        a = dt.date.fromisoformat(start[:10]); b = dt.date.fromisoformat((end or start)[:10])
+        ev[eid] = (a, b, (b - a).days <= SHORT_EVENT_DAYS, (city or '').strip().lower(), f'{city}, {country}')
+    organisers = collections.defaultdict(set)
+    for eid, a in c.execute("select event_id, artist_id from event_artists where role = 'organiser'"): organisers[eid].add(a)
+    events_of = collections.defaultdict(set)              # any appearance, also through a couple
+    direct_roles = collections.defaultdict(set)           # (event, role) where the artist itself is named
+    for a, eid, role, via in c.execute('select artist_id, event_id, role, via from artist_events'):
+        if role == 'organiser': continue
+        events_of[a].add(eid)
+        if via == 'direct': direct_roles[a].add((eid, role))
+    def calendar_signal(a, b):
+        # Different people can't be in two places at once, and one act isn't booked twice in one line-up.
+        # Both named in one line-up proves nothing either way: big festivals list artists per room or section,
+        # so one act can appear twice ("ADELAIDE CARVALHO" and "ADELAIDE*" in one Porto line-up). It is shown
+        # for the reviewer but does not change the score. Only named in the same role counts, since one
+        # person listed as a DJ and again within a couple is the usual way the source splits a person in two.
+        ea, eb = events_of[a], events_of[b]
+        both = direct_roles[a] & direct_roles[b]
+        if both:
+            eid, role = min(both)
+            return 'same line-up', 0, f'both listed as {role} at the event of {ev[eid][0]} in {ev[eid][4]}'
+        for x in ea:
+            for y in eb:
+                (xa, xb, xs, xc, xn), (ya, yb, ys, yc, yn) = ev[x], ev[y]
+                if xs and ys and xa <= yb and ya <= xb and xc != yc:
+                    return 'clash', -CLASH_PENALTY, f'{xa}: booked in {xn} and in {yn}'
+        cities = {ev[e][3] for e in ea} & {ev[e][3] for e in eb}
+        orgs = set().union(*(organisers[e] for e in ea)) & set().union(*(organisers[e] for e in eb)) if ea and eb else set()
+        if cities or orgs:
+            where = sorted(c_ for c_ in cities if c_)[:3]
+            return 'shared circuit', CIRCUIT_BONUS, 'same city: ' + ', '.join(where) if where else 'same organiser'
+        return 'no clash', 0, ''
     fmt = lambda a: ('~' if origin(a)[1] and origin(a)[0] else '') + ' '.join(sorted(origin(a)[0]))
     rows = {}
 
@@ -91,10 +131,12 @@ def main():
         k = (keep, merge)
         if k in rows and rows[k]['similarity'] >= score: return
         signal, adj = country_signal(keep, merge)
+        cal, cadj, cnote = calendar_signal(keep, merge)
         rows[k] = dict(decision='', keep_key=art[keep][1], merge_key=art[merge][1], keep_name=art[keep][0],
                        merge_name=art[merge][0], keep_bookings=booked[keep], merge_bookings=booked[merge],
                        keep_countries=fmt(keep), merge_countries=fmt(merge), countries=signal,
-                       similarity=round(score, 2), score=round(score + adj, 2), reason=reason)
+                       calendar=cal, calendar_note=cnote, similarity=round(score, 2), score=round(score + adj + cadj, 2),
+                       reason=reason)
 
     # couples: both names match, in either order
     couples = [i for i, m in members.items() if len(m) == 2]
