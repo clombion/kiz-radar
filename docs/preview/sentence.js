@@ -22,10 +22,11 @@ try { seenHints = localStorage.getItem('kr-hints-seen') === '1'; } catch {}
 
 const STYLE = [['kiz', 'Kizomba & Urban Kiz'], ['all', 'any kizomba style']];
 const WHEN = [[1, 'the next month'], [2, 'the next two months'], [3, 'the next three months'], [6, 'the next six months'], [12, 'the coming year']];
-const REACH = [['any', 'anywhere'], [250, 'somewhere under €250 return'], [150, 'somewhere under €150 return']];
+// the sentence says it in words; the bar and the filtering use the numbers (Fri→Mon return from Bergen)
+const PRICE = [['any', 'any price'], [250, 'a reasonable price'], [150, 'a cheap price']];
 const SHORT_LABEL = { style: { kiz: 'Kiz & Urban Kiz', all: 'All styles' },
   months: { 1: '1 month', 2: '2 months', 3: '3 months', 6: '6 months', 12: '12 months' },
-  reach: { any: 'Anywhere', 250: 'Under €250', 150: 'Under €150' } };
+  reach: { any: 'Any price', 250: 'Under €250', 150: 'Under €150' } };
 
 function matches(all, s) {
   const end = addDays(today(), Math.round(s.months * 30.4));
@@ -54,14 +55,16 @@ export function sentenceView(root, qs, { home }) {
   // a native select is as wide as its longest option; size the sentence blanks to the chosen one instead
   const ruler = h('span', { class: 'ruler', 'aria-hidden': 'true' });
   const fit = el => { ruler.textContent = el.selectedOptions[0]?.textContent || ''; el.style.width = (ruler.getBoundingClientRect().width + 4) + 'px'; };
-  const sentenceBlanks = { style: blank('style', STYLE), months: blank('months', WHEN), reach: blank('reach', REACH) };
+  const DEST = [['', 'anywhere'], ...countries.map(c => [c, countryName(c)])];
+  const sentenceBlanks = { style: blank('style', STYLE), months: blank('months', WHEN), country: blank('country', DEST), reach: blank('reach', PRICE) };
   const live = h('p', { class: 'live', 'aria-live': 'polite' });
   const hero = h('header', { class: 'sentence-hero' },
     h('p', { class: 'kicker' }, 'Kizomba Radar'),
     h('p', { class: 'sentence' }, 'I’d like to dance ',
       h('span', { class: 'anchor' }, sentenceBlanks.style, note('note-top', 'down', 'click', ' to change the dance')),
       ' at a festival in ', sentenceBlanks.months, ', flying from Bergen to ',
-      h('span', { class: 'nowrap anchor' }, sentenceBlanks.reach, '.', note('note-bottom', 'up', '…or where you’d like to go')), ruler),
+      h('span', { class: 'anchor' }, sentenceBlanks.country, note('note-bottom', 'up', '…or where you’d like to go')),
+      ' for ', h('span', { class: 'nowrap' }, sentenceBlanks.reach, '.'), ruler),
     note('note-inline', 'up', 'click', ' the coloured words to change them'),
     live,
     h('p', { class: 'nevermind' }, h('button', { type: 'button', class: 'link', onclick: () => {
@@ -71,6 +74,7 @@ export function sentenceView(root, qs, { home }) {
   const barBlanks = {
     style: blank('style', Object.entries(SHORT_LABEL.style), 'mini'),
     months: blank('months', Object.entries(SHORT_LABEL.months), 'mini'),
+    country: blank('country', [['', 'Anywhere'], ...countries.map(c => [c, `${flag(c)} ${countryName(c)}`])], 'mini'),
     reach: blank('reach', Object.entries(SHORT_LABEL.reach), 'mini') };
   const barCount = h('span', { class: 'bar-count' });
   const summary = h('span', { class: 'bar-summary' });
@@ -81,8 +85,8 @@ export function sentenceView(root, qs, { home }) {
     h('div', { class: 'core-fields' },
       h('label', { class: 'field' }, h('span', {}, 'Style'), blank('style', Object.entries(SHORT_LABEL.style), 'plain')),
       h('label', { class: 'field' }, h('span', {}, 'When'), blank('months', Object.entries(SHORT_LABEL.months), 'plain')),
-      h('label', { class: 'field' }, h('span', {}, 'Flight'), blank('reach', Object.entries(SHORT_LABEL.reach), 'plain'))),
-    h('label', { class: 'field' }, h('span', {}, 'Country'), blank('country', [['', 'Anywhere'], ...countries.map(c => [c, `${flag(c)} ${countryName(c)}`])], 'plain')),
+      h('label', { class: 'field' }, h('span', {}, 'Destination'), blank('country', [['', 'Anywhere'], ...countries.map(c => [c, `${flag(c)} ${countryName(c)}`])], 'plain')),
+      h('label', { class: 'field' }, h('span', {}, 'Flight price'), blank('reach', Object.entries(SHORT_LABEL.reach), 'plain'))),
     h('label', { class: 'field' }, h('span', {}, 'Line-up'), blank('lineup', [[0, 'Any size'], [10, '10+ artists'], [20, '20+ artists']], 'plain')),
     h('label', { class: 'field' }, h('span', {}, 'Order'), blank('sort', [['date', 'Soonest first'], ['fare', 'Cheapest flight first']], 'plain')),
     h('div', { class: 'checks' }, check('taxi', 'Taxi dancers'), check('allin', 'All-in-one hotel'),
@@ -91,7 +95,7 @@ export function sentenceView(root, qs, { home }) {
   const panel = h('div', { class: 'more-panel', id: 'more-panel', hidden: true }, moreFields());
   moreBtn.addEventListener('click', () => { panel.hidden = !panel.hidden; moreBtn.setAttribute('aria-expanded', String(!panel.hidden)); });
   const bar = h('div', { class: 'sticky-bar', 'aria-label': 'Filters' },
-    h('div', { class: 'bar-inner' }, barBlanks.style, barBlanks.months, barBlanks.reach, summary, barCount, moreBtn), panel);
+    h('div', { class: 'bar-inner' }, barBlanks.style, barBlanks.months, barBlanks.country, barBlanks.reach, summary, barCount, moreBtn), panel);
   document.addEventListener('click', ev => { if (!panel.hidden && !bar.contains(ev.target)) { panel.hidden = true; moreBtn.setAttribute('aria-expanded', 'false'); } });
 
   const results = h('section', { class: 'sentence-results' });
@@ -111,16 +115,17 @@ export function sentenceView(root, qs, { home }) {
 
   function render() {
     writeHash(s, DEFAULTS);
-    for (const k of ['style', 'months', 'reach']) { sentenceBlanks[k].value = String(s[k]); barBlanks[k].value = String(s[k]); fit(sentenceBlanks[k]); }
-    summary.textContent = `${SHORT_LABEL.style[s.style]} · ${SHORT_LABEL.months[s.months]} · ${SHORT_LABEL.reach[s.reach]}`;
+    for (const k of ['style', 'months', 'country', 'reach']) { sentenceBlanks[k].value = String(s[k]); barBlanks[k].value = String(s[k]); fit(sentenceBlanks[k]); }
+    summary.textContent = [SHORT_LABEL.style[s.style], SHORT_LABEL.months[s.months], s.country ? countryName(s.country) : 'Anywhere', SHORT_LABEL.reach[s.reach]].join(' · ');
     panel.replaceChildren(...moreFields());
     const rows = matches(all, s);
-    const extra = ['country', 'taxi', 'allin', 'lineup', 'unchecked'].filter(k => s[k] !== DEFAULTS[k]).length + (s.likely ? 0 : 1);
+    const extra = ['taxi', 'allin', 'lineup', 'unchecked'].filter(k => s[k] !== DEFAULTS[k]).length + (s.likely ? 0 : 1);
     moreBtn.replaceChildren(h('span', { class: 'wide' }, 'More filters'), h('span', { class: 'narrow' }, 'Filters'), extra ? ` (${extra})` : '', ' ▾');
     live.replaceChildren(rows.length
-      ? h('span', {}, `${rows.length} festival${rows.length > 1 ? 's' : ''} like that. `,
+      ? h('span', {}, `${rows.length} festival${rows.length > 1 ? 's' : ''} like that`,
+          s.reach === 'any' ? '. ' : h('span', { class: 'price-note' }, ` (return flights under €${s.reach}, Friday to Monday). `),
           h('a', { href: '#', onclick: ev => { ev.preventDefault(); results.scrollIntoView({ behavior: 'smooth' }); } }, 'Show them ↓'))
-      : 'Nothing like that yet. Try a longer time or anywhere.');
+      : 'Nothing like that yet. Try a longer time, anywhere, or any price.');
     barCount.textContent = `${rows.length} festival${rows.length === 1 ? '' : 's'}`;
     results.replaceChildren(rows.length
       ? h('div', { class: 'calm-cards' }, rows.map(e => card(e, home)))
