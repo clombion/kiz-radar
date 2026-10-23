@@ -9,7 +9,7 @@ const ROLES = [['teacher', 'Teachers'], ['dj', 'DJs'], ['performer', 'Performers
 export const icon = svg => { const el = h('span', { class: 'ic' }); el.innerHTML = svg; return el; };
 export const traitItems = list => list.map(([, label, svg]) => h('li', {}, icon(svg), label));
 
-export function cardDetails(e, shownTraits, close) {
+export function cardDetails(e, shownTraits, close, { onMap = false } = {}) {
   const people = q(`SELECT a.id, a.display_name, ea.role, st.bookings, st.popular, st.home_country
     FROM event_artists ea JOIN artists a ON a.id = ea.artist_id LEFT JOIN artist_stats st ON st.artist_id = a.id
     WHERE ea.event_id = ? AND ea.as_couple IS NULL ORDER BY st.bookings DESC, a.display_name`, [e.id]);
@@ -33,7 +33,7 @@ export function cardDetails(e, shownTraits, close) {
       venue ? ['Venue: ', softenCaps(venue)] : null, venue && organisers.length ? ' · ' : null,
       organisers.length ? ['Organised by ', ...organisers.flatMap((p, i) => [i ? ', ' : '', person(p)])] : null) : null,
     h('div', { class: 'links' },
-      h('p', {}, h('a', { href: `#map/event/${e.id}` }, 'See it on the map'), ' · ',
+      h('p', {}, onMap ? null : [h('a', { href: `#map/event/${e.id}` }, 'See it on the map'), ' · '],
         h('a', { href: e.url, target: '_blank', rel: 'noopener' }, 'Kizomba-world ↗')),
       close));
 }

@@ -10,15 +10,15 @@ import { sentenceView } from './sentence.js';
 const VARIANT = new URLSearchParams(location.search).get('v') || 'sentence';
 for (const a of document.querySelectorAll('[data-v]')) a.classList.toggle('on', a.dataset.v === VARIANT);
 const LANDING = { sentence: sentenceView, guide: guideView, season: seasonView, deals: finderView, scene: sceneView }[VARIANT] || sentenceView;
-import { mapView } from '../js/map.js';
-import { artistsView } from '../js/artists.js';
+import { mapView } from './map.js';
+import { artistsView } from './artists.js';
 import { countriesView, sqlView } from '../js/tables.js';
 
 const main = document.getElementById('main');
 const status = document.getElementById('status');
 let M, cleanup;
 
-const EXPLORE = [['map', 'Map'], ['artists', 'Artists'], ['countries', 'Countries'], ['sql', 'SQL']];
+const EXPLORE = [['map', 'Map'], ['artists', 'Artists'], ['countries', 'Countries']];     // SQL lives in the footer
 
 function route() {
   if (!/^#?(finder|$)/.test(location.hash.slice(1) || 'finder')) { try { localStorage.setItem('kr-explore-seen', '1'); } catch {} }
@@ -40,7 +40,7 @@ function route() {
   main.replaceChildren(view_);
   const home = M.home_airport;
   if (name === 'map') cleanup = mapView(view_, sub, qs, { home });
-  else if (name === 'artists') artistsView(view_, sub, qs);
+  else if (name === 'artists') artistsView(view_, sub, qs, { home });
   else if (name === 'countries') countriesView(view_, home);
   else if (name === 'sql') sqlView(view_);
   else cleanup = LANDING(view_, qs, { home }) || null;

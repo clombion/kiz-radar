@@ -1,0 +1,92 @@
+/* Map, Artists and Countries in the preview's look */
+
+/* ---------- map ---------- */
+.pmap { display: flex; flex-direction: column; gap: .8rem; }
+.map-bar { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; }
+.mini-search { font: inherit; font-size: .9rem; flex: 1 1 16rem; max-width: 26rem; padding: .45rem .95rem; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text); }
+.mini-search:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.filters-wrap { position: relative; margin-left: auto; }
+.filters-wrap .more-panel { right: 0; top: calc(100% + .4rem); z-index: 1100; width: min(320px, calc(100vw - 32px)); }
+.map-split { display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 1rem; height: calc(100vh - 230px); min-height: 520px; }
+.pmap .map { height: 100%; border-radius: 14px; border: 1px solid var(--border); background: var(--sea); }
+.map-panel { display: flex; flex-direction: column; min-height: 0; }
+.sheet-handle { display: none; }
+.sheet-body { overflow-y: auto; min-height: 0; padding-right: .3rem; display: flex; flex-direction: column; gap: .8rem; }
+.panel-head h2 { margin: 0; font-size: 1.15rem; }
+.panel-head p { margin: .2rem 0 0; color: var(--muted); font-size: .88rem; }
+.panel-cards { display: flex; flex-direction: column; gap: .8rem; }
+.panel-cards .calm-card.open { grid-column: auto; }
+.back-link { all: unset; cursor: pointer; color: var(--accent); font-weight: 600; font-size: .9rem; }
+.back-link:hover { text-decoration: underline; }
+.back-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+.show-more { align-self: center; margin: .2rem 0 1rem; }
+.map-legend { background: color-mix(in srgb, var(--surface) 92%, transparent); border: 1px solid var(--border); border-radius: 10px;
+  padding: .5rem .7rem; font: .78rem/1.5 Inter, system-ui, sans-serif; color: var(--muted); display: flex; flex-direction: column; gap: .05rem; }
+.map-legend strong { color: var(--text); font-weight: 600; margin-bottom: .15rem; }
+.map-legend span { display: flex; align-items: center; gap: .4rem; }
+.map-legend i { width: .7rem; height: .7rem; border-radius: 50%; display: inline-block; }
+.map-legend i.ring { border: 1.5px solid var(--muted); width: .85rem; height: .85rem; }
+.map-legend .size { margin-top: .15rem; }
+.leaflet-container { font-family: Inter, system-ui, sans-serif; }
+.leaflet-bar a { color: var(--text); }
+
+@media (max-width: 760px) {
+  .map-bar .mini-search { flex: 1 1 0; min-width: 0; }
+  .map-split { display: block; height: auto; min-height: 0; }
+  .pmap .map { height: calc(100dvh - 205px); min-height: 360px; margin: 0 -16px; border-radius: 0; border-width: 1px 0; }
+  .map-legend { font-size: .72rem; padding: .35rem .55rem; }
+  /* the list as a sheet over the map: peeks, slides up */
+  .map-panel { position: fixed; left: 0; right: 0; bottom: 0; z-index: 1000; height: 82dvh; background: var(--bg);
+    border-radius: 18px 18px 0 0; box-shadow: 0 -8px 28px rgb(42 31 34 / .16); transform: translateY(calc(100% - 64px));
+    transition: transform .25s ease; }
+  .map-panel.up { transform: none; }
+  .sheet-handle { all: unset; display: flex; flex-direction: column; align-items: center; gap: .35rem; padding: .55rem 16px .7rem; cursor: pointer; }
+  .sheet-handle .grab { width: 40px; height: 4px; border-radius: 2px; background: var(--border); }
+  .sheet-title { font-weight: 600; font-size: .95rem; }
+  .sheet-body { padding: 0 16px 1.5rem; }
+  .map-panel .panel-head { display: none; }
+  .map-panel:not(.up) .sheet-body { visibility: hidden; }
+  .leaflet-bottom.leaflet-left { margin-bottom: 70px; }
+  .leaflet-bottom.leaflet-right { margin-bottom: 64px; }
+  body:has(.pmap) footer { padding-bottom: 80px; }
+}
+@media (max-width: 760px) {
+  .map-legend { flex-direction: row; flex-wrap: wrap; gap: .1rem .6rem; max-width: calc(100vw - 80px); }
+  .map-legend strong, .map-legend .size { display: none; }
+}
+
+/* ---------- artists ---------- */
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); padding: 2px; }
+.seg button { all: unset; cursor: pointer; padding: .32rem .85rem; border-radius: 999px; font-size: .88rem; color: var(--muted); }
+.seg button.on { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.seg button:focus-visible { outline: 2px solid var(--accent); }
+.list-summary { color: var(--muted); font-size: .88rem; margin: 1rem 0 .5rem; }
+.artist-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 0 1.5rem; }
+.artist-row { display: flex; flex-direction: column; gap: .1rem; padding: .7rem .2rem; border-bottom: 1px solid var(--border);
+  text-decoration: none; color: var(--text); }
+.artist-row:hover .name { color: var(--accent); }
+.artist-row .name { font-weight: 600; font-size: 1.02rem; }
+.artist-row .meta { font-size: .86rem; color: var(--muted); }
+.artist-row .next { font-size: .84rem; color: var(--accent); }
+.artists-page .show-more { display: block; margin: 1.2rem auto; }
+
+.artist-profile { max-width: 1120px; display: flex; flex-direction: column; gap: 1.8rem; padding-bottom: 2rem; }
+.profile-head h1 { margin: .6rem 0 .3rem; font-size: clamp(1.7rem, 4vw, 2.4rem); letter-spacing: -.02em; }
+.profile-head p { margin: .25rem 0; }
+.profile-head .lede { font-size: 1.08rem; }
+.artist-profile h2 { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 .8rem; }
+.artist-profile .bars { max-width: 640px; }
+.artist-profile .past summary { cursor: pointer; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 700; }
+.artist-profile .past ul { list-style: none; margin: .8rem 0 0; padding: 0; max-width: 760px; }
+.artist-profile .past li { padding: .45rem 0; border-bottom: 1px solid var(--border); font-size: .92rem; }
+.artist-profile .past .when { display: inline-block; min-width: 7.5rem; color: var(--muted); font-size: .85rem; }
+.artist-profile .past a { color: var(--text); text-decoration: none; font-weight: 500; }
+.artist-profile .past a:hover { color: var(--accent); text-decoration: underline; }
+.profile-notes { color: var(--muted); font-size: .82rem; }
+.profile-notes p { margin: .2rem 0; }
+@media (max-width: 640px) {
+  .artists-page .map-bar .mini-search { flex-basis: 100%; max-width: none; }
+  .artist-profile .past .when { display: block; min-width: 0; }
+}

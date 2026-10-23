@@ -37,7 +37,7 @@ export function tidyTitle(title) {
   s = s.replace(/(^|\s–\s)\s*(?:all[\s-]*in[\s-]*one|official(?: event)?)\s*(?=\s–\s|$)/gi, '$1');
   s = s.replace(/\b(?:official event|– official)\b/gi, ' ');
   s = s.replace(/\(\s*\)|\[\s*\]/g, ' ').replace(/\s+/g, ' ');
-  s = s.replace(/(?:\s*[–—-]\s*){2,}/g, ' – ').replace(/^[\s–—:,.\-]+|[\s–—:,.\-#]+$/g, '');
+  s = s.replace(/(?:\s*[–—-]\s*){2,}/g, ' – ').replace(/^[\s–—:,.\-\/]+|[\s–—:,.\-#\/]+$/g, '');
   s = s.replace(/\s+([.,!?])/g, '$1').replace(/\s+/g, ' ').trim();
   s = softenCaps(s);
   return s.length >= 3 ? s : title;

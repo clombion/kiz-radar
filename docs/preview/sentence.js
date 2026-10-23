@@ -1,11 +1,8 @@
 // Variant: a sentence with blanks as the landing, calm cards below, and a sticky bar with the same
 // choices (plus "More filters") once the sentence has scrolled away.
-import { h, addDays, countryName, flag, today, euro } from '../js/ui.js';
-import { festivals, place, styleLine, d, stateFromHash, writeHash } from './common.js';
-import { tidyTitle } from './titles.js';
-import { TRAITS } from './icons.js';
-import { cardDetails, traitItems } from './details.js';
-import { q } from '../js/db.js';
+import { h, addDays, countryName, flag, today } from '../js/ui.js';
+import { festivals, stateFromHash, writeHash } from './common.js';
+import { eventCard } from './eventcard.js';
 
 const DEFAULTS = { style: 'kiz', months: 3, reach: 'any', country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0, sort: 'date' };
 const LOOSEST = { style: 'all', months: 12, reach: 'any', country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0 };
@@ -139,7 +136,7 @@ export function sentenceView(root, qs, { home }) {
       : 'Nothing like that yet. Try a longer time, anywhere, or any price.');
     barCount.textContent = `${rows.length} festival${rows.length === 1 ? '' : 's'}`;
     results.replaceChildren(rows.length
-      ? h('div', { class: 'calm-cards' }, rows.map((e, i) => card(e, home, i === firstWithArtists(rows) && !artistSeen())))
+      ? h('div', { class: 'calm-cards' }, rows.map((e, i) => eventCard(e, home, { hint: i === firstWithArtists(rows) && !artistSeen() ? note('note-artist', 'up', 'click', ' a name to see where else they teach') : null })))
       : h('p', { class: 'empty' }, 'No festival fits all of that. ',
           h('button', { type: 'button', class: 'link', onclick: () => { Object.assign(s, LOOSEST); render(); } }, 'Show all events instead')));
   }
@@ -153,73 +150,3 @@ export function sentenceView(root, qs, { home }) {
 const firstWithArtists = rows => rows.findIndex(e => e.headliners.length);
 const artistSeen = () => { try { return localStorage.getItem('kr-artist-seen') === '1'; } catch { return false; } };
 
-// "23–25 Oct", or "30 Oct – 1 Nov" across a month end: the date is shown once, in the box
-const DM = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' });
-function dateBox(start, end, projected) {
-  const [a, b] = [d(start), d(end)];
-  const [dd1, mm1] = DM.format(a).split(' '), [dd2, mm2] = DM.format(b).split(' ');
-  const likely = projected ? h('span', { class: 'likely' }, 'likely') : null;
-  if (mm1 !== mm2) return h('div', { class: 'datebox cross' }, likely,
-    h('span', { class: 'dd' }, dd1, ' ', h('small', {}, mm1)), h('span', { class: 'dd' }, '– ', dd2, ' ', h('small', {}, mm2)));
-  return h('div', { class: 'datebox' }, likely, h('span', { class: 'dd' }, start === end ? dd1 : `${dd1}–${dd2}`), h('span', { class: 'mm' }, mm1));
-}
-
-
-// "✈ ~€492 to Brussels, then 104 km": a Fri→Mon return from Bergen to the nearest airport we price,
-// and how far the festival is from it. The price links to Google Flights for that weekend.
-let airportCity;
-const cityOf = code => (airportCity ||= Object.fromEntries(q('SELECT code, name FROM airports').map(a => [a.code, a.name.split(' ')[0]])))[code] || code;
-function flight(e, home) {
-  if (e.fare?.home) return h('p', { class: 'flight easy' }, 'In Bergen, no flight needed');
-  if (!e.fare) return h('p', { class: 'flight muted' }, '✈ flight not checked yet');
-  const url = `https://www.google.com/travel/flights?q=${encodeURIComponent(`Flights from ${home} to ${e.airport} on ${e.depart} through ${addDays(e.depart, 3)}`)}&curr=EUR`;
-  return h('p', { class: 'flight' + (e.fare.price <= 150 ? ' easy' : '') }, '✈ ',
-    h('a', { href: url, target: '_blank', rel: 'noopener', title: 'Friday to Monday return from Bergen; check it on Google Flights' }, '~' + euro(e.fare.price)),
-    ` to ${cityOf(e.airport)}`, e.airport_km > 30 ? `, then ${e.airport_km} km` : '');
-}
-
-function card(e, home, hint = false) {
-  const start = e.projected ? e.depart : e.start_date, end = e.projected ? addDays(e.depart, 2) : (e.end_date || e.start_date);
-  const title = tidyTitle(e.title);
-  const more = h('div', { class: 'calm-more', hidden: true });
-  const toggles = [];
-  const setOpen = open => {
-    if (open && !more.childElementCount) more.append(cardDetails(e, traits.slice(0, 3).map(([k]) => k), toggleBtn('link less', 'Less')));
-    more.hidden = !open; art.classList.toggle('open', open);
-    for (const t of toggles) t.setAttribute('aria-expanded', String(open));
-    label.textContent = open ? 'Less' : 'Line-up & details';
-  };
-  const toggleBtn = (cls, ...kids) => { const b = h('button', { type: 'button', class: cls, 'aria-expanded': 'false',
-    onclick: ev => { ev.stopPropagation(); setOpen(more.hidden); } }, ...kids); toggles.push(b); return b; };
-  const label = h('span', {}, 'Line-up & details');
-
-  const links = e.headliners.map(a => h('a', { href: `#artist/${a.id}`, class: 'artist',
-    onclick: () => { try { localStorage.setItem('kr-artist-seen', '1'); } catch {} } }, a.name));
-  const rest = (e.lineup || 0) - e.headliners.length;
-  const withLine = links.length ? h('p', { class: 'with' }, 'With ',
-    ...links.flatMap((l, i) => i ? [i === links.length - 1 && rest <= 0 ? ' and ' : ', ', l] : [l]),
-    rest > 0 ? [' and ', toggleBtn('link more-names', `${rest} more`)] : null) : null;
-  // up to three features as icon + short word (icons alone are guesswork); the rest are in the details
-  const feats = new Set((e.features || '').split(','));
-  const traits = TRAITS.filter(([k]) => feats.has(k));
-  const traitRow = traits.length ? h('ul', { class: 'traits', 'aria-label': 'Highlights' },
-    traitItems(traits.slice(0, 3)),
-    traits.length > 3 ? h('li', { class: 'more-traits' }, toggleBtn('link', `+${traits.length - 3}`)) : null) : null;
-
-  const art = h('article', { class: 'calm-card' + (e.projected ? ' projected' : '') },
-    h('div', { class: 'c-top' },
-      dateBox(start, end, e.projected),
-      h('div', { class: 'c-head' },
-        h('p', { class: 'where' }, place(e)),
-        h('h3', {}, toggleBtn('title-btn', title)))),
-    styleLine(e) ? h('p', { class: 'styles' }, styleLine(e)) : null,
-    traitRow,
-    withLine,
-    hint && withLine ? note('note-artist', 'up', 'click', ' a name to see where else they teach') : null,
-    e.projected ? h('p', { class: 'with muted' }, 'This year’s dates aren’t out yet.') : null,
-    h('div', { class: 'foot' }, flight(e, home), h('div', { class: 'actions' }, toggleBtn('link', label))),
-    more);
-  // the whole card opens the details, except where it already holds a link or a button
-  art.addEventListener('click', ev => { if (!ev.target.closest('a, button, select, input, label, .calm-more')) setOpen(more.hidden); });
-  return art;
-}
