@@ -383,10 +383,18 @@ body:has(.pmap) .to-top { display: none; }
   .filters-wrap { position: static; }
   .filters-wrap .more-panel { left: 0; right: 0; width: auto; max-height: 70vh; overflow-y: auto; }
 }
-/* opening a card: its new place and its neighbours' are animated by a view transition (eventcard.js) */
-::view-transition-group(*) { animation-duration: .32s; animation-timing-function: cubic-bezier(.2, .7, .2, 1); }
-/* no stretched snapshots: each card shows its new content from the top, uncropped by scaling, as its box moves and grows */
-::view-transition-old(*) { display: none; }
-::view-transition-group(card-opening) { z-index: 1; }
-::view-transition-new(*) { animation: none; width: 100%; height: 100%; object-fit: none; object-position: left top; }
+
+/* Opening and closing a card (eventcard.js). Durations and curves follow Material 3's motion tokens: opening uses
+   emphasized-decelerate over 350ms, since the card travels far and arrives; closing and the neighbours' moves use
+   the standard curve over 250ms, about 75% of the opening. */
+::view-transition-group(.card) { animation-duration: 250ms; animation-timing-function: cubic-bezier(.2, 0, 0, 1); }
+html[data-vt=open]::view-transition-group(.card) { animation-duration: 350ms; animation-timing-function: cubic-bezier(.05, .7, .1, 1); }
+::view-transition-group(card-toggled) { z-index: 1; }
+/* snapshots are shown at their own size, anchored top left and clipped by the moving box, so text never stretches */
+::view-transition-new(.card) { animation: none; mix-blend-mode: normal; width: 100%; height: 100%; object-fit: none; object-position: left top; }
+::view-transition-old(.card) { display: none; animation: none; mix-blend-mode: normal; width: 100%; height: 100%; object-fit: none; object-position: left top; }
+html[data-vt=close]::view-transition-old(card-toggled) { display: block; }
+html[data-vt=close]::view-transition-new(card-toggled) { display: none; }
+/* reduced motion: nothing moves; the page cross-fades quickly instead */
+html[data-vt=calm]::view-transition-old(root), html[data-vt=calm]::view-transition-new(root) { animation-duration: 150ms; }
 
