@@ -7,8 +7,8 @@ import { festivals, flightLine, place, styleLine, DAY, SHORT, d, stateFromHash, 
 const DEFAULTS = { style: 'kiz', months: 3, reach: 'any', country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0, sort: 'date' };
 const LOOSEST = { style: 'all', months: 12, reach: 'any', country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0 };
 
-const STYLE = [['kiz', 'Kizomba & Urban Kiz'], ['all', 'any kizomba style, mixed SBK too']];
-const WHEN = [[1, 'in the next month'], [2, 'in the next two months'], [3, 'in the next three months'], [6, 'in the next six months'], [12, 'in the coming year']];
+const STYLE = [['kiz', 'Kizomba & Urban Kiz'], ['all', 'any kizomba style']];
+const WHEN = [[1, 'the next month'], [2, 'the next two months'], [3, 'the next three months'], [6, 'the next six months'], [12, 'the coming year']];
 const REACH = [['any', 'anywhere'], [250, 'somewhere under €250 return'], [150, 'somewhere under €150 return']];
 const SHORT_LABEL = { style: { kiz: 'Kiz & Urban Kiz', all: 'All styles' },
   months: { 1: '1 month', 2: '2 months', 3: '3 months', 6: '6 months', 12: '12 months' },
@@ -40,13 +40,13 @@ export function sentenceView(root, qs, { home }) {
   };
   // a native select is as wide as its longest option; size the sentence blanks to the chosen one instead
   const ruler = h('span', { class: 'ruler', 'aria-hidden': 'true' });
-  const fit = el => { ruler.textContent = el.selectedOptions[0]?.textContent || ''; el.style.width = (ruler.getBoundingClientRect().width + 6) + 'px'; };
+  const fit = el => { ruler.textContent = el.selectedOptions[0]?.textContent || ''; el.style.width = (ruler.getBoundingClientRect().width + 4) + 'px'; };
   const sentenceBlanks = { style: blank('style', STYLE), months: blank('months', WHEN), reach: blank('reach', REACH) };
   const live = h('p', { class: 'live', 'aria-live': 'polite' });
   const hero = h('header', { class: 'sentence-hero' },
     h('p', { class: 'kicker' }, 'Kizomba Radar'),
-    h('p', { class: 'sentence' }, 'I’d like to dance ', sentenceBlanks.style, ' ', sentenceBlanks.months,
-      ' and fly from Bergen to ', h('span', { class: 'nowrap' }, sentenceBlanks.reach, '.'), ruler),
+    h('p', { class: 'sentence' }, 'I’d like to dance ', sentenceBlanks.style, ' at a festival in ', sentenceBlanks.months,
+      ', flying from Bergen to ', h('span', { class: 'nowrap' }, sentenceBlanks.reach, '.'), ruler),
     live,
     h('p', { class: 'nevermind' }, h('button', { type: 'button', class: 'link', onclick: () => {
       Object.assign(s, LOOSEST); render(); results.scrollIntoView({ behavior: 'smooth' }); } }, 'Never mind, show me all events')));
