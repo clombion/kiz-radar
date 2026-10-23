@@ -109,8 +109,9 @@ fill in `decision`. Pushing the change rebuilds the site and refreshes the sugge
 On the 3rd of each month, the **Refresh events** Action updates the newest export in `source/` from
 kizomba-world, using `pipeline/scrape.py`. The event list comes from the site's Events Calendar API. The event
 pages add what the API leaves out: the venue and city, the deal link, the organiser's links, the translations
-and whether the festival is cancelled. Pages are fetched only for new festivals and for those changed since the
-last run, a few seconds apart, so a typical run takes about a minute. Festivals the site no longer lists are removed. Once the export is committed, the
+and whether the festival is cancelled. Pages are fetched for new and changed festivals and for every festival still
+to come, since a deal link can change without the festival's modified date, and a cancellation might too. They
+are fetched a few seconds apart, so a run takes about a quarter of an hour. Festivals the site no longer lists are removed. Once the export is committed, the
 Action starts **Rebuild site database**, which geocodes new cities, rebuilds the database and commits it. That
 workflow also runs on any push to `source/` or `pipeline/`.
 

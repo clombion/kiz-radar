@@ -9,8 +9,8 @@
 
 The event list comes from the site's Events Calendar API. Each event page adds what the API leaves out: venue,
 address, city, country, the deal link, the organiser's links, the translations and whether it is cancelled.
-Pages are fetched only for new events and for those whose modified date has changed: any edit on the site,
-cancelling included, changes it. Events the site no longer lists are deleted with everything that refers
+Pages are fetched for new and changed events and for every event still to come: a deal link can change
+without changing the event's modified date, and a cancellation might too. Events the site no longer lists are deleted with everything that refers
 to them. New festivals get their poster; their line-up and features wait for the extraction steps, and the
 events whose description is new or changed since then are listed in pending_extraction.
 
@@ -78,7 +78,7 @@ def run(src, dry_run):
     added, changed, cancelled, posters = [], [], [], 0
     for e in events:
         old = known.get(e['id'])
-        due = old is None or old['modified_at'] != e['modified_at']
+        due = old is None or old['modified_at'] != e['modified_at'] or (e['end_date'] or e['start_date'])[:10] >= today
         row = {k: v for k, v in e.items() if k not in ('categories', 'tags')}
         if due:
             fields = page_fields(get(e['url']).text)
@@ -137,7 +137,7 @@ def run(src, dry_run):
         inputs = ?, outputs = 'tables events, event_categories, event_tags, event_links, event_images, pending_extraction; event_genres and event_features (source site_tag)',
         details = ? where step = '1_scrape'""",
         (dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
-         f'{SITE}/wp-json/tribe/events/v1/events from {FIRST_DAY}; each new or changed event page', json.dumps(details)))
+         f'{SITE}/wp-json/tribe/events/v1/events from {FIRST_DAY}; each new, changed or upcoming event page', json.dumps(details)))
     db.commit()
     print(details)
 
