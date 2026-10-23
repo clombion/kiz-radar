@@ -48,6 +48,26 @@ Google's rate limit. The most overdue airport-months go first:
 A month with an upcoming festival within 150 km of an airport is refreshed as tier 1. Change the tiers in
 `pipeline/airports.csv` and the intervals in `pipeline/fares.py`; `python3 pipeline/fares.py plan` shows the queue.
 
+## Duplicate artists
+
+The source sometimes splits one act into several records: spelling variants ("Jojo & Jenni" / "Jojo & Jenny"),
+name order ("Lukasz & Karolina" / "Karolina & Łukasz"), or one person per partner (five "JP" records).
+`pipeline/artist_merges.csv` fixes that at build time:
+
+| Column | |
+|---|---|
+| `decision` | `merge` folds `merge_key` into `keep_key`; `separate` records that two artists are different people |
+| `keep_key`, `merge_key` | the source's `match_key` values (stable across exports) |
+| `keep_name`, `merge_name`, `note` | for people reading the file; not used by the build |
+
+Merging two couples also merges their members, pairing them by closest name. Bookings, aliases and line-ups move
+to the kept artist, and old artist links redirect to it.
+
+`pipeline/artist_merge_suggestions.csv` lists likely duplicates still undecided: couples whose names match in
+either order, and candidates the source pipeline left open. To decide one, copy its row into `artist_merges.csv`
+and fill in `decision`. Pushing the change rebuilds the site and refreshes the suggestions; locally run
+`python3 pipeline/merge_suggestions.py source/<events>.sqlite`.
+
 ## Updating events
 
 Commit a new export to `source/` (the newest `.sqlite` there is used) and push: the **Rebuild site database**

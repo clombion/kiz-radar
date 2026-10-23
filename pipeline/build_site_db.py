@@ -6,7 +6,7 @@ statistics, and a fares table filled from docs/data/fares.csv.
 
     python3 pipeline/build_site_db.py source/kizomba_events_2026_2027.compact.sqlite
 """
-import collections, csv, datetime as dt, math, os, sqlite3, sys
+import collections, csv, datetime as dt, difflib, math, os, re, sqlite3, sys, unicodedata
 sys.path.insert(0, os.path.dirname(__file__))
 from countries import codes, NAMES
 
@@ -45,6 +45,60 @@ x("create table event_features as select event_id, feature, source from src.even
 x("create table event_rooms as select event_id, party_rooms, class_rooms from src.event_rooms")
 x("create table event_room_list as select event_id, room_no, name_as_written, kind, genres from src.event_room_list")
 x("create table artist_mentions as select id, event_id, role, name_as_written, style, country from src.artist_mentions")
+
+# --- manual artist merges (pipeline/artist_merges.csv) --------------------------------------------
+# Each "merge" row folds merge_key's artist into keep_key's. Merging two couples also merges their
+# members pairwise, by closest name. Old ids stay reachable through artist_redirects.
+def norm_name(s):
+    s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode().lower()
+    return re.sub(r'^(dj|mc|mr|dr|doctor)\s+', '', re.sub(r'[^a-z0-9 ]', '', s)).strip()
+
+key_id = dict(x("select match_key, artist_id from src.artist_keys"))
+key_id.update(dict(x("select match_key, id from artists")))
+parent = {}
+def root(a):
+    while parent.get(a, a) != a: a = parent[a]
+    return a
+def join(keep, merge):
+    keep, merge = root(keep), root(merge)
+    if keep != merge: parent[merge] = keep
+merge_rows = [r for r in csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'artist_merges.csv'), encoding='utf-8'))
+              if r['decision'].strip().lower() == 'merge']
+members_of = collections.defaultdict(list)
+for cid, mid, name in x("select cm.couple_id, cm.member_id, a.display_name from couple_members cm join artists a on a.id = cm.member_id"):
+    members_of[cid].append((mid, norm_name(name)))
+for r in merge_rows:
+    keep, merge = key_id.get(r['keep_key']), key_id.get(r['merge_key'])
+    if not keep or not merge:
+        print(f"artist_merges.csv: unknown key in {r['keep_name']} / {r['merge_name']}; skipped", file=sys.stderr); continue
+    join(keep, merge)
+    km_, mm = members_of.get(keep, []), members_of.get(merge, [])
+    if len(km_) == len(mm) == 2:
+        sim = lambda a, b: difflib.SequenceMatcher(None, a, b).ratio()
+        straight = sim(km_[0][1], mm[0][1]) + sim(km_[1][1], mm[1][1])
+        crossed = sim(km_[0][1], mm[1][1]) + sim(km_[1][1], mm[0][1])
+        pairs = zip(km_, mm) if straight >= crossed else zip(km_, reversed(mm))
+        for (k_id, _), (m_id, _) in pairs: join(k_id, m_id)
+redirects = [(a, root(a)) for a in list(parent) if root(a) != a]
+x("create table artist_redirects (old_id integer primary key, new_id integer)")
+out.executemany("insert into artist_redirects values (?,?)", redirects)
+for old, new in redirects:
+    x("update event_artists set artist_id = ? where artist_id = ?", (new, old))
+    x("update couple_members set couple_id = ? where couple_id = ?", (new, old))
+    x("update couple_members set member_id = ? where member_id = ?", (new, old))
+    for alias, n in x("select alias, mentions from artist_aliases where artist_id = ?", (old,)).fetchall():
+        if not x("update artist_aliases set mentions = mentions + ? where artist_id = ? and alias = ?", (n, new, alias)).rowcount:
+            x("insert into artist_aliases values (?,?,?)", (new, alias, n))
+    x("delete from artist_aliases where artist_id = ?", (old,))
+    (old_name,) = x("select display_name from artists where id = ?", (old,)).fetchone()
+    x("""insert into artist_aliases select ?, ?, 0
+         where not exists (select 1 from artist_aliases where artist_id = ? and alias = ?)""", (new, old_name, new, old_name))
+    x("delete from artists where id = ?", (old,))
+# a merge can leave the same artist twice in one line-up or couple
+x("""delete from event_artists where mention_id not in (
+       select min(mention_id) from event_artists group by event_id, artist_id, role)""")
+x("delete from couple_members where rowid not in (select min(rowid) from couple_members group by couple_id, member_id)")
+print(f'{len(merge_rows)} merge rows, {len(redirects)} artists folded into others')
 
 # --- places and airports -------------------------------------------------------------------------
 geo = {(r['city'], r['country']): r for r in csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'geocode.csv'), encoding='utf-8'))}
@@ -178,6 +232,7 @@ DOCS = {
  'event_fares': 'Each event joined to the fare for its weekend (null when Google had no price), plus the cheapest fare that month to the same airport.',
  'artist_stats': f'Per artist with bookings of their own: bookings (teacher, DJ or performer at distinct events; a couple’s bookings count for the couple, not its members), home country (a stated country they are booked in, else where they are booked most), countries booked in, bookings abroad, popular = at least {POPULAR} bookings, couple_bookings = further events where they appear only as part of a couple. People booked only as part of a couple have no row.',
  'event_artists': 'Each artist named in a line-up, resolved to an artist, with role, style and stated country. as_couple is set when a member is listed in the same role as their couple at the same event: that row repeats the couple’s booking and is left out of line-ups and statistics.',
+ 'artist_redirects': 'Artists merged into another by pipeline/artist_merges.csv: old_id now reads as new_id.',
  'artist_events': 'Every appearance of an artist: direct (their own booking) or member (via a booked couple, via_artist_id).',
  'artist_countries': 'Bookings per artist and country; is_home marks the home country in artist_stats.',
  'artist_origin': 'Countries stated next to an artist’s name in line-ups (flags or text), with how often.',

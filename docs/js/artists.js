@@ -43,6 +43,8 @@ export function artistCard(a, { onOpen } = {}) {
 }
 
 export function artistDetail(id) {
+  const moved = one('SELECT new_id FROM artist_redirects WHERE old_id = ?', [id]);   // merged into another artist
+  if (moved) id = moved.new_id;
   const a = one(`SELECT st.*, a.display_name, a.kind FROM artist_stats st JOIN artists a ON a.id = st.artist_id WHERE a.id = ?`, [id])
     || one(`SELECT a.id AS artist_id, a.display_name, a.kind, 0 AS bookings FROM artists a WHERE a.id = ?`, [id]);
   if (!a) return h('p', {}, 'Artist not found.');

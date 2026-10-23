@@ -1,0 +1,332 @@
+decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,similarity,reason
+,p:agnes@dance,p:agnes@agnes+fajul,Agnes,AGNES,5,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:aleksandra@dance,p:aleksandra@aleksandra+claudio,ALEKSANDRA,Aleksandra,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:amina@dance,p:amina@amina+ledoukingsman,Amina,Amina,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:amina@dance,p:amina@amina+mamadou,Amina,Amina,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:amelie@dance,p:amelie@amelie+king,Amélie,Amélie,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:andrea@andrea+luis,p:andrea@andrea+pablo,Andrea,Andrea,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:andrea@andrea+natalia,p:andrea@andrea+silvia,ANDREA,Andrea,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:angelica@alessio+angelica,p:angelica@angelica+paolo,Angelica,Angelica,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:anika@dance,p:anika@anika+michael,ANIKA,ANIKA,2,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:axel@axel+nora,p:axel@axel+victoria,AXEL,Axel,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:celine@dance,p:celine@celine+josue,CELINE,Céline,4,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:chamalo@chamalo+jalyssa,p:chamalo@chamalo+tzer,Chamalo,Chamalo,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:chris@chris+clara,p:chris@chris+eva,Chris,Chris,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:christina@cedric+christina,p:christina@christina+david,Christina,Christina,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:clemence@clemence+curtis,p:clemence@clemence+erwan,CLÉMENCE,Clémence,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:cristina@dance,p:cristina@cristina+johnny,Cristina,CRISTINA,2,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:curtis@clemence+curtis,p:curtis@curtis+gaya,CURTIS,Curtis,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:curtis@clemence+curtis,p:curtis@curtis+kelly,CURTIS,Curtis,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:curtis@curtis+gaya,p:curtis@curtis+kelly,Curtis,Curtis,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:cedric@dance,p:cedric@cedric+christina,Cédric,Cédric,3,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:damir@dance,p:damir@damir+laura,DAMIR,DAMIR,4,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:dani@dani+kizzg,p:dani@dani+ziggy,Dani,Dani,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:daniel@daniel+desiree,p:daniel@daniel+irati,Daniel,Daniel,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:david@crisandra+david,p:david@daria+david,David,David,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:david@david+laura,p:davide@cilene+davide,Davide,DAVIDE,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:dex@dex+lau,p:dex@dex+law,Dex,Dex,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:didier@didier+manon,p:didier@didier+vanessa,Didier,Didier,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:dimitri@aude+dimitri,p:dimitri@dimitri+laure,Dimitri,Dimitri,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:dimitris@christina+dimitris,p:dimitris@dimitris+yolena,Dimitris,Dimitris,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:alex@dj,p:alex@alex+ornella,DJ Alex,Alex,4,1,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:eden@dj,p:eden@eden+ioury,DJ EDEN,Eden,4,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:fabrizio@dj,p:fabrizio@fabrizio+giulia,Dj Fabrizio,Fabrizio,2,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:fernando@dj,p:fernando@fernando+michela,DJ Fernando,Fernando,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:prince@dj,p:prince@prince+vicky,Dj PRINCE,Prince,3,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:elena@elena+rodri,p:elena@elena+sergio,Elena,Elena,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:elina@crownperk+elina,p:elina@daniel+elina,ELINA,Elina,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:elina@crownperk+elina,p:elina@elina+ferris,ELINA,Elina,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:elina@daniel+elina,p:elina@elina+ferris,Elina,Elina,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:elo@adil+elo,p:elo@elo+mike,Elo,ELO,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:eva@dance,p:eva@chris+eva,Eva,Eva,2,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:eva@chris+eva,p:eva@eva+murmel,Eva,Eva,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:eva@dance,p:eva@eva+murmel,Eva,Eva,2,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:fernando@dance,p:fernando@carolina+fernando,Fernando,Fernando,2,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:fernando@fernando+micaela,p:fernando@fernando+michela,Fernando,Fernando,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:fred@chiara+fred,p:fred@fred+morgane,Fred,Fred-Nelson,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:gaby@dance,p:gaby@dwe+gaby,Gaby,Gaby,3,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:gazl@gazl+isabelle,p:gazl@gazl+katariina,Gazl,Gazl,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:giorgia@giorgia+kinkela,p:giorgia@giorgia+kinkizomba,Giorgia,Giorgia,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:ines@dance,p:ines@ines+pedro,INÈS,Inês,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:jasmine@dance,p:jasmine@jasmine+stevesteven,JASMINE,JASMINE,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:johann@estelle+johann,p:johann@johann+laeticia,Johann,Johann,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:jorge@angela+jorge,p:jorge@jorge+monica,Jorge,Jorge,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:jose@anja+jose,p:jose@coralie+jose,JOSE,José,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:karen@camille+karen,p:karen@karen+luis,Karen,Karen,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:katalin@dance,p:katalin@azmael+katalin,KATALIN,Katalin,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:katalin@azmael+katalin,p:katalin@katalin+mathias,Katalin,Katalin,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:katalin@dance,p:katalin@katalin+mathias,KATALIN,Katalin,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:kiki@dance,p:kiki@fuego+kiki,Kiki,Kiki,5,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:kiki@dance,p:kiki@heneco+kiki,Kiki,KIKI,5,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:kiki@fuego+kiki,p:kiki@heneco+kiki,Kiki,KIKI,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:kiki@fuego+kiki,p:kiki@kiki+selim,Kiki,Kiki,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:kiki@heneco+kiki,p:kiki@kiki+selim,KIKI,Kiki,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:klaudia@jailson+klaudia,p:klaudia@klaudia+mateusz,Klaudia,Klaudia,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:laura@damir+laura,p:laura@laura+mou,LAURA,Laura,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:lavinia@dance,p:lavinia@armand+lavinia,LAVINIA,Lavinia,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:lena@dance,p:lena@elvis+lena,Lena,Lena,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:linda@dance,p:linda@jacopo+linda,Linda,Linda,2,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:lolahontas@enah+lolahontas,p:lolahontas@lolahontas+simon,LOLAHONTAS,LOLAHONTAS,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:lucie@cecilien+lucie,p:lucie@johan+lucie,Lucie,Lucie,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:lucie@cecilien+lucie,p:lucie@lucie+titony,Lucie,LUCIE,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:lucie@johan+lucie,p:lucie@lucie+titony,Lucie,LUCIE,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:lucy@axel+lucy,p:lucy@lucy+nicocandela,Lucy,Lucy,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:ludo@constance+ludo,p:ludo@ludo+noemie,Ludo,Ludo,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:luis@andrea+luis,p:luis@karen+luis,Luis,Luis,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:luismi@angeles+luismi,p:luismi@arantxa+luismi,Luismi,Luismi,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:luismi@angeles+luismi,p:luismi@luismi+marian,Luismi,Luismi,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:luismi@arantxa+luismi,p:luismi@luismi+marian,Luismi,Luismi,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:mamadou@dance,p:mamadou@amina+mamadou,Mamadou,Mamadou,2,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:manon@manon+rico,p:manon@manon+simba,Manon,Manon,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:manu@dance,p:manu@manu+olivia,Manu,MANU,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:maria@jesus+maria,p:maria@jose+maria,María,María,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:michel@dance,p:michel@aga+michel,Michel,Michel,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:mickaela@dance,p:mickaela@jahja+mickaela,Mickaela,Mickaela,3,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:mickaela@dance,p:mickaela@mamadou+mickaela,Mickaela,Mickaela,3,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:mickaela@jahja+mickaela,p:mickaela@mamadou+mickaela,Mickaela,Mickaela,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:monica@blackchinese+monica,p:monica@jorge+monica,Monica,Mónica,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:monica@dance,p:monica@jorelle+monica,Monica,Monica,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:moorea@dance,p:moorea@ironmams+moorea,Moorea,Moorea,6,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:morgane@bastien+morgane,p:morgane@fred+morgane,Morgane,Morgane,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:natalia@alessio+natalia,p:natalia@andrea+natalia,Natalia,NATALIA,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:nicole@dance,p:nicole@nicole+wookie,NICOLE,Nicole,3,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:nii@dance,p:nii@astrid+nii,NII,Nii,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:nuno@catia+nuno,p:nuno@nagyla+nuno,NUNO,Nuno,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:nuno@catia+nuno,p:nuno@nuno+sarai,NUNO,NUNO,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:nuno@nagyla+nuno,p:nuno@nuno+sarai,Nuno,NUNO,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:paulo@lenna+paulo,p:paulo@mafalda+paulo,PAULO,PAULO,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:pedro@ana+pedro,p:pedro@ines+pedro,Pedro,Pedro,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:quinn@dance,p:quinn@david+quinn,Quinn,Quinn,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:rafael@dance,p:rafael@giovana+rafael,Rafael,Rafael,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:rita@dance,p:rita@eddy+rita,RITA,Rita,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:said@oksana+said,p:said@dance,Said,Said,7,6,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:sandra@esteban+sandra,p:sandra@sandra+selim,Sandra,SANDRA,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:sara@fanio+sara,p:sara@juninho+sara,Sara,Sara,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:sara@fanio+sara,p:sara@renato+sara,Sara,SARA,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:sara@juninho+sara,p:sara@sara+valr,Sara,Sarah,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:sara@sara+stef,p:sarah@py+sarah,Sarah,SARAH,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:sara@sara+stef,p:sara@sara+valr,Sarah,Sarah,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:selim@dance,p:selim@anastasia+selim,Selim,Selim,4,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:selim@anastasia+selim,p:selim@kiki+selim,Selim,Sélim,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:selim@dance,p:selim@kiki+selim,Selim,Sélim,4,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:silvia@andrea+silvia,p:silvia@andreas+silvia,Silvia,Silvia,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:sonia@richard+sonia,p:sonia@sonia+stef,Sonia,Sonia,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:susan@dance,p:susan@susan+tomasdansar,Susan,Susan,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:sonia@martina+sonia,p:sonia@sonia+stef,Sónia,Sonia,0,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:tiia@dance,p:tiia@jennina+tiia,Tiia,Tiia,1,0,1.0,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,c:andrea@andrea+silvia+silvia@andrea+silvia,c:andreas@andreas+silvia+silvia@andreas+silvia,Andrea & Silvia,Andreas & Silvia,4,1,0.96,couple with matching names
+,p:donaldwilson,p:donaldwillson,Donald Wilson,Donald Willson,2,1,0.96,similar spelling
+,p:panaghiotis@katia+panaghiotis,p:panagiotis@christina+panagiotis,Panaghiotis,Panagiotis,0,0,0.95,similar spelling
+,p:benjamin@benjamin+stephanie,p:benjamine@benjamine+stephanie,BENJAMIN,BENJAMINE,0,0,0.94,"same partner, one name shortens the other"
+,c:kevin@kevin+sara+sara@kevin+sara,c:kevin@kevin+sarah+sarah@kevin+sarah,Sara & Kevin,Sarah & Kevin,1,1,0.94,couple with matching names
+,c:fernando@fernando+michela+michela@fernando+michela,c:fernando@fernando+micaela+micaela@fernando+micaela,Fernando & Michela,Fernando & Micaela,6,1,0.93,couple with matching names
+,p:stefmat,p:stefmatt,Stef Mat,Stef Matt,1,1,0.93,similar spelling
+,p:alyssa@alyssa+sacha,p:jalyssa@chamalo+jalyssa,Alyssa,Jalyssa,0,0,0.92,similar spelling
+,p:andrea@andrea+silvia,p:andreas@andreas+silvia,Andrea,Andreas,0,0,0.92,"same partner, one name shortens the other"
+,p:manuel@benedicte+manuel,p:emanuel@emanuel+teresa,MANUEL,Emanuel,1,0,0.92,similar spelling
+,p:morgan@fred+morgan,p:morgane@fred+morgane,Morgan,Morgane,0,0,0.92,"same partner, one name shortens the other"
+,p:sandrag,p:sandra@esteban+sandra,SANDRA G,Sandra,1,0,0.92,one name is the first word(s) of the other
+,p:sandrag,p:sandra@sandra+selim,SANDRA G,SANDRA,1,0,0.92,one name is the first word(s) of the other
+,c:alain@alain+katerina+katerina@alain+katerina,c:alain@alain+katherine+katherine@alain+katherine,ALAIN & KATERINA,Alain and Katherine,2,1,0.91,couple with matching names
+,c:davide@davide+noemi+noemi@davide+noemi,c:david@david+noemie+noemie@david+noemie,DAVIDE & NOEMI,DAVID & NOÉMIE,2,1,0.91,couple with matching names
+,p:willyg,p:willy@lauriane+willy,DJ WILLY G,Willy,9,0,0.91,one name is the first word(s) of the other
+,p:marta@dance,p:marta@azael+marta,Marta,Marta,1,0,0.91,similar spelling
+,p:maria@jesus+maria,p:marian@luismi+marian,María,Marian,0,0,0.91,similar spelling
+,p:maria@jose+maria,p:marian@luismi+marian,María,Marian,0,0,0.91,similar spelling
+,c:andrea@andrea+katia+katia@andrea+katia,c:andrea@andrea+katja+katja@andrea+katja,Andrea & Katia,Andrea & Katja,1,1,0.9,couple with matching names
+,c:aleksy@aleksy+dasha+dasha@aleksy+dasha,c:alks@alks+dasha+dasha@aleksy+dasha,DASHA & ALEKSY,ALKS & DASHA,1,1,0.9,couple with matching names
+,c:elhadj+jenna@elhadj+jenna,c:elhadj+jenny@elhadj+jenny,Elhadj & Jenna,Elhadj & Jenny,15,1,0.9,couple with matching names
+,c:enah@enah+lolahontas+lolahontas@enah+lolahontas,c:enah@enah+lolahontas+pocahontas@enah+pocahontas,ENAH & LOLAHONTAS,Enah & Pocahontas,3,3,0.9,couple with matching names
+,c:lanna@lanna+paulo+paulo@lanna+paulo,c:lenna@lenna+paulo+paulo@lenna+paulo,PAULO & LANNA,PAULO & LENNA,1,1,0.9,couple with matching names
+,c:sarita@sarita+seb+seb@sarita+seb,c:sara@sara+seb+seb@sara+seb,Seb & Sarita,Seb & Sara,2,1,0.9,couple with matching names
+,p:sara@kevin+sara,p:sarah@kevin+sarah,Sara,Sarah,0,0,0.89,"same partner, one name shortens the other"
+,p:latinmaster,p:latinpromaster,Dj Latin Master,DJ Latin Pro Master,1,1,0.88,similar spelling
+,c:enah@enah+lolahontas+lolahontas@enah+lolahontas,c:enah@enah+lolahontas+pocahontas,ENAH & LOLAHONTAS,ENAH LEBON & POCA HONTAS,3,1,0.88,couple with matching names
+,c:arianna@arianna+fabio+fabio@arianna+fabio,c:fabio@fabio+marina+marina@fabio+marina,Fabio & Arianna,Fabio & Marina,2,1,0.88,couple with matching names
+,c:jules@jules+yuna+yuna@jules+yuna,c:jules@jules+juna+juna@jules+juna,Jules & Yuna,Jules & Juna,12,1,0.88,couple with matching names
+,c:alex@alex+maylie+maylie@alex+maylie,c:alex@alex+amarylis+amarylis@alex+amarylis,Alex & Maylie,Amarylis & Alex,3,1,0.86,couple with matching names
+,c:daniel@daniel+elina+elina@daniel+elina,c:daniel@daniel+uliana+uliana@dance,Daniel & Elina,Uliana & Daniel,9,1,0.86,couple with matching names
+,c:daniela@daniela+franco+franco@daniela+franco,c:daniela@daniela+fernando+fernando@daniela+fernando,Franco & Daniela,Fernando & Daniela,3,2,0.86,couple with matching names
+,c:estefi@estefi+jp+jp@estefi+jp,c:jp@jp+stefy+stefy@jp+stefy,JP & Estefi,JP & STEFY,1,1,0.86,couple with matching names
+,c:jahia@jahia+marco+marco@jahia+marco,c:janina@janina+marco+marco@dj,Marco & Jahia,Marco & Janina,2,1,0.86,couple with matching names
+,c:maria@maria+vincenzo+vincenzo@maria+vincenzo,c:ilaria@ilaria+vincenzo+vincenzo@ilaria+vincenzo,Maria & Vincenzo,Vincenzo & Ilaria,3,1,0.86,couple with matching names
+,c:nicola@nicola+sabrina+sabrina@nicola+sabrina,c:nicholas@nicholas+sabrine+sabrine@nicholas+sabrine,Nicola & Sabrina,Sabrine et nicholas,2,1,0.86,couple with matching names
+,c:nico@nico+sara+sara@nico+sara,c:nicola@nicola+sabrina+sabrina@nicola+sabrina,Nicola & Sara,Nicola & Sabrina,3,2,0.86,couple with matching names
+,c:jahja+jeisy@jahja+jeisy,c:jahja@jahja+jessy+jessy@jahja+jessy,Jah J’a & Jeisy,Jahja & Jessy,5,1,0.85,couple with matching names
+,c:caarl@caarl+pati+pati@caarl+pati,c:carlo@carlo+pati+pati@carlo+pati,Caarl & Patii,Carlo & Pati,5,2,0.84,couple with matching names
+,c:carlo@carlo+pati+pati@carlo+pati,c:mrcaarl+patii@mrcaarl+patii,Carlo & Pati,Mr. Caarl & Patii,2,1,0.84,couple with matching names
+,c:daniel@daniel+miki+miki@daniel+miki,c:daniela@daniela+maik+maik@daniela+maik,Daniel & Miki,Maik & Daniela,1,1,0.84,couple with matching names
+,c:daniel@daniel+miky+miky@daniel+miky,c:daniela@daniela+maik+maik@daniela+maik,DANIEL & MIKY,Maik & Daniela,1,1,0.84,couple with matching names
+,c:alex@alex+liliana+liliana@alex+liliana,c:alex@alex+lilla+lilla@alex+lilla,Alex & Liliana,Alex & Lilla,1,1,0.83,couple with matching names
+,c:alex@alex+saori+saori@alex+saori,c:alex@alex+sofi+sofi@alex+sofi,Alex & Saori,Alex & Sofi,1,1,0.83,couple with matching names
+,c:andrea@andrea+katia+katia@andrea+katia,c:andreas@andreas+karina+karina@andreas+karina,Andrea & Katia,Andreas & Karina,1,1,0.83,couple with matching names
+,c:andrea@andrea+silvia+silvia@andrea+silvia,c:andrea@andrea+giulia+giulia@andrea+giulia,Andrea & Silvia,Andrea y Giulia,4,1,0.83,couple with matching names
+,c:alisiya@alisiya+anthony+anthony@alisiya+anthony,c:anthony@anthony+dalia+dalia@anthony+dalia,Anthony & Alisiya,Anthony & Dalia,1,1,0.83,couple with matching names
+,c:alessandra@alessandra+carlo+carlo@alessandra+carlo,c:carlos@carlos+sandra+sandra@carlos+sandra,Carlo & Alessandra,Carlos & Sandra,3,1,0.83,couple with matching names
+,c:chris@chris+clara+clara@chris+clara,c:chris@chris+larissa+larissa@chris+larissa,Chris & Clara,Chris & Larissa,1,1,0.83,couple with matching names
+,c:christina@christina+david+david@christina+david,c:crisandra@crisandra+david+david@crisandra+david,David & Christina,David & Crisandra,2,1,0.83,couple with matching names
+,c:dex@dex+law+law@dex+law,c:dex@dex+lau+lau@dex+lau,Dex & Law,Dex & Lau,4,2,0.83,couple with matching names
+,c:aude@aude+dimitri+dimitri@aude+dimitri,c:dimitri@dimitri+laure+laure@dimitri+laure,Dimitri & Aude,Dimitri & Laure,1,1,0.83,couple with matching names
+,c:esteban@esteban+sandra+sandra@esteban+sandra,c:sandra@sandra+stephane+stephane@sandra+stephane,Esteban & Sandra,Stephane & Sandra,9,1,0.83,couple with matching names
+,c:aimee@aimee+heneco+heneco@aimee+heneco,c:heneco@heneco+mame+mame@heneco+mame,HENECO & AIMÉE,Heneco & Mame,1,1,0.83,couple with matching names
+,c:jesus@jesus+maribel+maribel@jesus+maribel,c:jesus@jesus+maria+maria@jesus+maria,Jesús & Maribel,Jesús & María,2,1,0.83,couple with matching names
+,p:jorgeaz,p:jorge@jorge+rocio,JORGE AZ,JORGE,1,0,0.83,one name is the first word(s) of the other
+,c:jorge@jorge+monica+monica@jorge+monica,c:jorelle@jorelle+monica+monica@jorelle+monica,Jorge y Mónica,Jorelle & Monica,2,1,0.83,couple with matching names
+,c:juan@juan+sara+sara@juan+sara,c:juan@juan+marta+marta@juan+marta,Juan y Sara,JUAN & MARTA,2,1,0.83,couple with matching names
+,c:marco@marco+sara+sara@marco+sara,c:marco@marco+maria+maria@marco+maria,Marco & Sara,MARCO Y MARIA,3,1,0.83,couple with matching names
+,c:marco@marco+maria+maria@marco+maria,c:marco@marco+mary+mary@marco+mary,MARCO Y MARIA,Mary y Marco,1,1,0.83,couple with matching names
+,c:celia@celia+mauro+mauro@celia+mauro,c:mauro@mauro+melissa+melissa@mauro+melissa,Mauro & Celia,Mauro & Melissa,3,2,0.83,couple with matching names
+,c:mayra@mayra+michael+michael@mayra+michael,c:mayra@mayra+micka+micka@mayra+micka,Michael y Mayra,Micka & Mayra,1,1,0.83,couple with matching names
+,c:aleksandra@aleksandra+miguel+miguel@aleksandra+miguel,c:aleksandra@aleksandra+murmel+murmel@aleksandra+murmel,Miguel & Aleksandra,Murmel & Aleksandra,2,1,0.83,couple with matching names
+,c:andrea@andrea+natalia+natalia@andrea+natalia,c:andrea@andrea+katia+katia@andrea+katia,NATALIA & ANDREA,Andrea & Katia,3,1,0.83,couple with matching names
+,c:ana@ana+stephane+stephane@ana+stephane,c:sandra@sandra+stephane+stephane@sandra+stephane,Stephane & Ana,Stephane & Sandra,6,1,0.83,couple with matching names
+,c:silvia@silvia+tony+tony@silvia+tony,c:sylwia@sylwia+tony+tony@sylwia+tony,Tony & Silvia,Tony & Sylwia,1,1,0.83,couple with matching names
+,c:otho@otho+umeko+umeko@otho+umeko,c:otho@otho+yuko+yuko@otho+yuko,Umeko & Otho,Otho & Yuko,1,1,0.83,couple with matching names
+,c:jessica@jessica+willy+willy@jessica+willy,c:jessy@jessy+willy+willy@jessica+willy,Willy & Jessica,Willy & Jessy,1,1,0.83,couple with matching names
+,c:akram@akram+sara+sara@akram+sara,c:aram@aram+lara+lara@aram+lara,Akram & Sara,Aram & Lara,11,1,0.82,couple with matching names
+,c:juan@juan+sara+sara@juan+sara,c:juni@juni+sarah+sarah@juni+sarah,Juan y Sara,Juni & Sarah,2,1,0.82,couple with matching names
+,c:anita@anita+marco+marco@anita+marco,c:janina@janina+marco+marco@dj,Marcos & Anita,Marco & Janina,4,1,0.82,couple with matching names
+,c:alejandro@alejandro+vanessa+vanessa@alejandro+vanessa,c:alberto@alberto+vanessa+vanessa@alberto+vanessa,Alejandro y Vanessa,Alberto & Vanessa,4,1,0.81,couple with matching names
+,c:andrepisco+carolina@andrepisco+carolina,c:carolina@carolina+pisco+pisco@carolina+pisco,André Pisco & Carolina,PISCO & CAROLINA,1,1,0.81,couple with matching names
+,c:ironmams+moorea@ironmams+moorea,c:mams@mams+moorea+moorea@mams+moorea,Iron Mams & Moorea,MAMS&MOOREA,6,2,0.81,couple with matching names
+,c:john@john+stefania+stefania@john+stefania,c:john@john+stefy+stefy@john+stefy,John & Stefania,John & Stefy,3,2,0.81,couple with matching names
+,c:juninho@juninho+sara+sara@juninho+sara,c:juni@juni+sarah+sarah@juni+sarah,Juninho & Sara,Juni & Sarah,2,1,0.81,couple with matching names
+,c:karen@karen+kevin+kevin@karen+kevin,c:kevin@kevin+khatelyn+khatelyn@kevin+khatelyn,Kevin&Karen,Kevin & Khatelyn,1,1,0.81,couple with matching names
+,c:luca@luca+marianna+marianna@luca+marianna,c:luca@luca+renna+renna@luca+renna,Luca & Marianna,Luca & Renna,1,1,0.81,couple with matching names
+,c:luca@luca+marta+marta@luca+marta,c:luca@luca+marianna+marianna@luca+marianna,LUCA Y MARTA,Luca & Marianna,2,1,0.81,couple with matching names
+,c:luismi@luismi+marian+marian@luismi+marian,c:arantxa@arantxa+luismi+luismi@arantxa+luismi,Luismi y Marian,Luismi & Arantxa,3,1,0.81,couple with matching names
+,c:marc@marc+marilyn+marilyn@marc+marilyn,c:marco@marco+mary+mary@marco+mary,Marc & Marilyn,Mary y Marco,2,1,0.81,couple with matching names
+,c:eleanna@eleanna+marco+marco@eleanna+marco,c:janina@janina+marco+marco@dj,Marco & Eleanna,Marco & Janina,1,1,0.81,couple with matching names
+,c:francois@francois+maria+maria@francois+maria,c:francois@francois+patricia+patricia@francois+patricia,Maria & François,François & Patricia,1,1,0.81,couple with matching names
+,c:miguel@miguel+monica+monica@miguel+monica,c:michele@michele+monica+monica@michele+monica,MIGUEL & MONICA,Michele & Monica,3,1,0.81,couple with matching names
+,c:noemi@noemi+rodri+rodri@noemi+rodri,c:noemi@noemi+sartoris+sartoris@noemi+sartoris,NOEMI Y RODRI,SARTORIS Y NOEMI,1,1,0.81,couple with matching names
+,c:katina@katina+sergio+sergio@katina+sergio,c:natalia@natalia+sergio+sergio@natalia+sergio,SERGIO & KATINA,Sergio & Natalia,1,1,0.81,couple with matching names
+,c:stefania@stefania+umberto+umberto@stefania+umberto,c:stefy@stefy+umberto+umberto@stefy+umberto,Stefania & Umberto,Stefy & Umberto,1,1,0.81,couple with matching names
+,c:andrea@andrea+silvia+silvia@andrea+silvia,c:andy@andy+silvia+silvia@andy+silvia,Andrea & Silvia,ANDY & SILVIA,4,1,0.8,couple with matching names
+,c:andrepisco+carolina@andrepisco+carolina,c:carolina@carolina+francesco+francesco@carolina+francesco,André Pisco & Carolina,Francesco and Carolina,1,1,0.8,couple with matching names
+,c:daniel@daniel+miki+miki@daniel+miki,c:daniel@daniel+monika+monika@daniel+monika,Daniel & Miki,Daniel & Monika,1,1,0.8,couple with matching names
+,c:daniel@daniel+miky+miky@daniel+miky,c:daniel@daniel+monika+monika@daniel+monika,DANIEL & MIKY,Daniel & Monika,1,1,0.8,couple with matching names
+,c:daria@daria+david+david@daria+david,c:david@david+lidia+lidia@david+lidia,David & Daria,DAVID & LIDIA,1,1,0.8,couple with matching names
+,c:elhadj+jenny@elhadj+jenny,c:elhadj@elhadj+jenah+jenah@elhadj+jenah,Elhadj & Jenny,Elhadj & Jenah,1,1,0.8,couple with matching names
+,c:fabrizio@fabrizio+gina+gina@fabrizio+gina,c:fabrizio@fabrizio+giulia+giulia@fabrizio+giulia,Fabrizio & Gina,Fabrizio & Giulia,1,1,0.8,couple with matching names
+,c:jilly@jilly+john+john@jilly+john,c:john@john+kelly+kelly@john+kelly,Jilly & John,John & Kelly,1,1,0.8,couple with matching names
+,c:elena@elena+luca+luca@elena+luca,c:luca@luca+renna+renna@luca+renna,LUCA & ELENA,Luca & Renna,6,1,0.8,couple with matching names
+,c:luca@luca+marta+marta@luca+marta,c:ambra@ambra+luca+luca@ambra+luca,LUCA Y MARTA,Luca & Ambra,2,1,0.8,couple with matching names
+,c:luis@luis+sara+sara@luis+sara,c:andrea@andrea+luis+luis@andrea+luis,LUIS Y SARA,Luis & Andrea,4,1,0.8,couple with matching names
+,c:alessandra@alessandra+marc+marc@alessandra+marc,c:alessandra@alessandra+marzio+marzio@alessandra+marzio,Marc & Alessandra,Marzio & Alessandra,2,1,0.8,couple with matching names
+,c:jahia@jahia+marco+marco@jahia+marco,c:marco@marco+maria+maria@marco+maria,Marco & Jahia,MARCO Y MARIA,2,1,0.8,couple with matching names
+,c:marco@marco+sara+sara@marco+sara,c:dario@dario+sara+sara@dario+sara,Marco & Sara,Dario & Sara,3,1,0.8,couple with matching names
+,c:carla@carla+mario+mario@carla+mario,c:carla@carla+mihai+mihai@carla+mihai,MARIO & CARLA,Mihai & Carla,2,2,0.8,couple with matching names
+,c:laura@laura+micka+micka@laura+micka,c:mayra@mayra+micka+micka@mayra+micka,Micka & Laura,Micka & Mayra,2,1,0.8,couple with matching names
+,c:nacho@nacho+silvia+silvia@nacho+silvia,c:marco@marco+silvia+silvia@marco+silvia,NACHO Y SILVIA,Marco & Silvia,2,1,0.8,couple with matching names
+,c:oscaramore+silvia@oscaramore+silvia,c:salvatore@salvatore+silvia+silvia@salvatore+silvia,OSCAR AMORE & SILVIA,Salvatore y Silvia,1,1,0.8,couple with matching names
+,c:luchi@luchi+pablo+pablo@luchi+pablo,c:luisa@luisa+pablo+pablo@luisa+pablo,PABLO & LUCHI,Pablo & Luisa,1,1,0.8,couple with matching names
+,c:sandra@sandra+selim+selim@sandra+selim,c:nana@nana+selim+selim@nana+selim,SELIM & SANDRA,Selim & Nana,2,1,0.8,couple with matching names
+,c:elisa@elisa+stefano+stefano@elisa+stefano,c:elena@elena+stefano+stefano@elena+stefano,Stefano & Elisa,Stefano & Elena,3,2,0.8,couple with matching names
+,p:danifernadez,g:dlbeats,Dj Dani Fernandes,D&L Beats,13,11,0.79,one name is the first word(s) of the other
+,c:anna@anna+marten+marten@anna+marten,c:jana@jana+martin+martin@jana+martin,Mårten & Anna,Martin & Jana,1,1,0.79,couple with matching names
+,c:andrea@andrea+silvia+silvia@andrea+silvia,c:ilias@ilias+sandra+sandra@ilias+sandra,Andrea & Silvia,Ilias & Sandra,4,1,0.78,couple with matching names
+,p:claudio@dance,p:claudiodolk,Claudio,Cláudio Dolk,2,2,0.78,one name is the first word(s) of the other
+,c:marchito@marchito+silvietta+silvietta@marchito+silvietta,c:marco@marco+silvia+silvia@marco+silvia,Marchito & Silvietta,Marco & Silvia,1,1,0.78,couple with matching names
+,c:marco@marco+sonia+sonia@marco+sonia,c:mario@mario+nia+nia@mario+nia,Marco & Sonia,Mario y Nia,1,1,0.78,couple with matching names
+,c:christine@christine+stef+stef@christine+stef,c:cristina@cristina+stefano+stefano@cristina+stefano,Stef & Christine,Stefano & Cristina,1,1,0.78,couple with matching names
+,p:cristinaolmos,p:cristina@cristina+manu,CRISTINA OLMOS,CRISTINA,1,0,0.76,one name is the first word(s) of the other
+,c:jagja+jeisy@jagja+jeisy,c:jahja@jahja+jessy+jessy@jahja+jessy,JAG J’A & JEISY,Jahja & Jessy,1,1,0.76,couple with matching names
+,c:elena@elena+rodri+rodri@elena+rodri,c:lea@lea+rodrigue+rodrigue@lea+rodrigue,Rodri & Elena,Rodrigue & Léa,4,3,0.76,couple with matching names
+,c:andreas@andreas+silvia+silvia@andreas+silvia,c:ilias@ilias+sandra+sandra@ilias+sandra,Andreas & Silvia,Ilias & Sandra,1,1,0.75,couple with matching names
+,p:arnauddjbn,p:arnaud@arnaud+roya,Arnaud DJBN,Arnaud,5,0,0.75,one name is the first word(s) of the other
+,c:francesca@francesca+luca+luca@francesca+luca,c:francis@francis+lucy+lucy@francis+lucy,Luca & Francesca,Francis & Lucy,10,3,0.75,couple with matching names
+,c:francesca@francesca+luca+luca@francesca+luca,c:francis@francis+luna+luna@francis+luna,Luca & Francesca,Luna & Francis,10,1,0.75,couple with matching names
+,p:alessandrasillano,p:alessandra@alessandra+marc,Alessandra Sillano,Alessandra,1,0,0.74,one name is the first word(s) of the other
+,p:charles@dance,p:charlessemba,Charles,Charles Semba,1,1,0.74,one name is the first word(s) of the other
+,p:claudiamoise,p:claudia@claudia+oscar,Claudia Moise,Claudia,2,0,0.74,one name is the first word(s) of the other
+,p:claudiaspano,p:claudia@claudia+oscar,Claudia Spano,Claudia,1,0,0.74,one name is the first word(s) of the other
+,p:daniela@dance,p:danielahorta,Daniela,Daniela Horta,2,2,0.74,one name is the first word(s) of the other
+,p:danielaelena,p:daniela@allan+daniela,Daniela Elena,Daniela,1,0,0.74,one name is the first word(s) of the other
+,c:anita@anita+marco+marco@anita+marco,c:mario@mario+nia+nia@mario+nia,Marcos & Anita,Mario y Nia,4,1,0.74,couple with matching names
+,c:lena@lena+maria+maria@lena+maria,c:marwan@marwan+rena+rena@marwan+rena,Maria & Lena,Marwan & Rena,1,1,0.74,couple with matching names
+,c:jana@jana+martin+martin@jana+martin,c:juan@juan+marta+marta@juan+marta,Martin & Jana,JUAN & MARTA,1,1,0.74,couple with matching names
+,c:marty@marty+paolo+paolo@marty+paolo,c:margot@margot+pao+pao@margot+pao,Paolo y Marty,Pao & Margot,2,1,0.74,couple with matching names
+,p:cristina@dance,p:cristinacricri,Cristina,Cristina Cri Cri,2,1,0.73,one name is the first word(s) of the other
+,p:cristinacricri,p:cristina@cristina+johnny,Cristina Cri Cri,CRISTINA,1,0,0.73,one name is the first word(s) of the other
+,c:franck@franck+sandra+sandra@franck+sandra,c:frans@frans+sarah+sarah@frans+sarah,Franck & Sandra,Frans & Sarah,2,1,0.73,couple with matching names
+,p:giuseppeandrea,p:giuseppe@giuseppe+klaudyna,Giuseppe Andrea,GIUSEPPE,7,0,0.73,one name is the first word(s) of the other
+,p:isabellecrepin,p:isabel@felicien+isabel,ISABELLE CREPIN.,ISABELLE,1,0,0.73,one name is the first word(s) of the other
+,p:isabellecrepin,p:isabelle@gazl+isabelle,ISABELLE CREPIN.,Isabelle,1,0,0.73,one name is the first word(s) of the other
+,p:pascal@dj,p:pascalgomis,DJ PASCAL,Pascal Gomis,2,1,0.71,one name is the first word(s) of the other
+,p:kevin@dance,p:kevinsato,Kevin,Kevin Sato,5,1,0.71,one name is the first word(s) of the other
+,p:paolo@angelica+paolo,p:paolocruz,Paolo,Paolo Cruz,0,0,0.71,one name is the first word(s) of the other
+,p:carolinaazevedo,p:carolina@carolina+fernando,CAROLINA AZEVEDO,Carolina,1,0,0.7,one name is the first word(s) of the other
+,p:lisarose,g:dlbeats,DJ Lisa Rose,D&L Beats,13,11,0.7,one name is the first word(s) of the other
+,p:adelaide@dance,p:adelaidecarvalho,ADELAIDE,ADELAIDE CARVALHO,1,1,0.67,one name is the first word(s) of the other
+,p:andreamurgia,p:andrea@andrea+natalia,ANDREA MURGIA,ANDREA,1,0,0.67,one name is the first word(s) of the other
+,p:andreamurgia,p:andrea@andrea+silvia,ANDREA MURGIA,Andrea,1,0,0.67,one name is the first word(s) of the other
+,p:celine@dance,p:celinesemkiz,CELINE,Celine Semkiz,4,1,0.67,one name is the first word(s) of the other
+,p:celinesemkiz,p:celine@celine+josue,Celine Semkiz,Céline,1,0,0.67,one name is the first word(s) of the other
+,p:davidcohen,p:david@david+quinn,David Cohen,David,1,0,0.67,one name is the first word(s) of the other
+,p:davidruach,p:david@david+quinn,David Ruach,David,2,0,0.67,one name is the first word(s) of the other
+,p:fabrizio@dj,p:fabriziokizpower,Dj Fabrizio,Fabrizio Kizpower,2,1,0.67,one name is the first word(s) of the other
+,p:fabriziokizpower,p:fabrizio@fabrizio+giulia,Fabrizio Kizpower,Fabrizio,1,0,0.67,one name is the first word(s) of the other
+,p:fernando@dance,p:fernandomonteiro,Fernando,Fernando Monteiro,2,1,0.67,one name is the first word(s) of the other
+,p:fernandomonteiro,p:fernando@carolina+fernando,Fernando Monteiro,Fernando,1,0,0.67,one name is the first word(s) of the other
+,p:ioannajoowaa,p:ioanna@chrysoula+ioanna,Ioanna Joowaa,Ioanna,1,0,0.67,one name is the first word(s) of the other
+,p:martenangner,p:marten@anna+marten,MÅRTEN ANGNER,Mårten,2,0,0.67,one name is the first word(s) of the other
+,p:oscaramore,p:oscar@claudia+oscar,Oscar Amore,Oscar,1,0,0.67,one name is the first word(s) of the other
+,p:roniesaleh,p:ronie@frida+ronie,Ronie Saleh,Ronie,8,0,0.67,one name is the first word(s) of the other
+,p:sensei@dance,p:senseiuchiwa,Sensei,Senseï Uchiwa,6,2,0.67,one name is the first word(s) of the other
+,p:stef@sara+stef,p:stef@sonia+stef,Stef,Stef KiZz,0,0,0.67,one name is the first word(s) of the other
+,p:fabriziochiarenza,p:fabrizio@dj,Fabrizio Chiarenza,Dj Fabrizio,8,2,0.64,one name is the first word(s) of the other
+,p:fabriziochiarenza,p:fabrizio@fabrizio+giulia,Fabrizio Chiarenza,Fabrizio,8,0,0.64,one name is the first word(s) of the other
+,p:ricardoferreira,p:ricardo@alcpaula+ricardo,RICARDO FERREIRA,RICARDO,4,0,0.64,one name is the first word(s) of the other
+,p:johan@johan+lucie,p:johann@estelle+johann,Johan,Johann,4,0,0.63,one name is the first word(s) of the other
+,p:johan@johan+lucie,p:johann@johann+laeticia,Johan,Johann,4,0,0.63,one name is the first word(s) of the other
+,p:miguel@miguel+monica,p:miguelbrandao,MIGUEL,Miguel Brandao,0,0,0.63,one name is the first word(s) of the other
+,p:paolopetrax,p:paolo@angelica+paolo,Paolo Petrax,Paolo,1,0,0.62,one name is the first word(s) of the other
+,p:arun@dance,p:arunpauer,ARUN,Arun Pauer,1,1,0.61,one name is the first word(s) of the other
+,p:floriansensacion,p:florian@audrey+florian,DJ Florian Sensacion,Florian,2,0,0.61,one name is the first word(s) of the other
+,p:mikeevens,p:mike@elo+mike,Mike Evens,MIKE,1,0,0.61,one name is the first word(s) of the other
+,p:nunosilva,p:nuno@catia+nuno,Nuno Silva,NUNO,1,0,0.61,one name is the first word(s) of the other
+,p:nunosilva,p:nuno@nagyla+nuno,Nuno Silva,Nuno,1,0,0.61,one name is the first word(s) of the other
+,p:nunosilva,p:nuno@nuno+sarai,Nuno Silva,NUNO,1,0,0.61,one name is the first word(s) of the other
+,p:ritaszabo,p:rita@dance,RITA SZABO,RITA,2,1,0.61,one name is the first word(s) of the other
+,p:ritaszabo,p:rita@eddy+rita,RITA SZABO,Rita,2,0,0.61,one name is the first word(s) of the other
+,p:saralecis,p:sara@sara+vilmar,Sara Lecis,Sara,1,0,0.61,one name is the first word(s) of the other
+,p:johnnyagostino,p:johnny@cristina+johnny,Johnny Agostino,JOHNNY,1,0,0.6,one name is the first word(s) of the other
+,p:fridaellinor,p:frida@frida+ronie,Frida Ellinor,Frida,1,0,0.59,one name is the first word(s) of the other
+,p:sarainavalon,p:sarai@nuno+sarai,Sarai Navalon,SARAI,1,0,0.59,one name is the first word(s) of the other
+,p:raultorres,p:raul@daniela+raul,DJ Raul Torres,Raul,1,0,0.57,one name is the first word(s) of the other
+,p:radumanole,p:radu@judit+radu,Radu Manole,Radu,2,0,0.57,one name is the first word(s) of the other
+,p:sanigroove,p:sani@dance,Sani Groove,SANI,4,1,0.57,one name is the first word(s) of the other
+,p:adeldasalsa,p:adel@adel+hanna,Adel Dasalsa,Adel,1,0,0.53,one name is the first word(s) of the other
+,p:chriswillshire,p:chris@chris+yasmin,Chris Willshire,Chris,1,0,0.53,one name is the first word(s) of the other
+,p:inesmiranda,p:ines@dance,Inês Miranda,INÈS,9,1,0.53,one name is the first word(s) of the other
+,p:inesmiranda,p:ines@ines+pedro,Inês Miranda,Inês,9,0,0.53,one name is the first word(s) of the other
+,p:jojo@jenny+jojo,p:jojokizomba,Jojo,Jojo Kizomba,1,1,0.53,one name is the first word(s) of the other
+,p:lindaguiteriez,p:linda@linda+rossi,Linda Guiteriez,Linda,1,0,0.53,one name is the first word(s) of the other
+,p:marcopalladino,p:marco@ivana+marco,Marco Palladino,Marco,1,0,0.53,one name is the first word(s) of the other
+,p:sara@dance,p:saramartins,Sara,Sara Martins,2,1,0.53,one name is the first word(s) of the other
+,p:saracorpino,p:sara@sara+vilmar,Sara Corpino,Sara,1,0,0.53,one name is the first word(s) of the other
+,p:vickydelmastro,p:vicky@prince+vicky,Vicky del Mastro,Vicky,1,0,0.53,one name is the first word(s) of the other
+,p:manuel@laura+manuel,p:manueladosesantos,Manuel,Manuela Dose Santos,0,0,0.52,"same partner, one name shortens the other"
+,p:alex@alex+ornella,p:alexgrafiada,Alex,Alex Grafiada,1,1,0.5,one name is the first word(s) of the other
+,p:alex@dj,p:alexgrafiada,DJ Alex,Alex Grafiada,4,1,0.5,one name is the first word(s) of the other
+,p:karl@dance,p:karlconklass,Karl Bekene,Karl Conklass,14,1,0.5,one name is the first word(s) of the other
+,p:manu@dance,p:manukizmamie,Manu,Manu Kizmamie,1,0,0.5,one name is the first word(s) of the other
+,p:manu@manu+olivia,p:manukizmamie,MANU,Manu Kizmamie,0,0,0.5,one name is the first word(s) of the other
+,p:linda@dance,p:lindaghiggisemba,Linda,LINDA GHIGGI SEMBA,2,1,0.48,one name is the first word(s) of the other
+,p:lindaghiggisemba,p:linda@jacopo+linda,LINDA GHIGGI SEMBA,Linda,1,0,0.48,one name is the first word(s) of the other
+,p:matt@dj,p:mattdecarmona,Dj Matt,DJ Matt de Carmona,6,1,0.47,one name is the first word(s) of the other
+,p:isabellemichalonakacolibri,p:isabel@felicien+isabel,Isabelle Michalon Aka Colibri,ISABELLE,1,0,0.47,one name is the first word(s) of the other
+,p:isabellemichalonakacolibri,p:isabelle@gazl+isabelle,Isabelle Michalon Aka Colibri,Isabelle,1,0,0.47,one name is the first word(s) of the other
+,p:mikegenevieve,p:mike@elo+mike,Mike Genevieve,MIKE,1,0,0.47,one name is the first word(s) of the other
+,p:nunopesqueira,p:nuno@catia+nuno,Nuno Pesqueira,NUNO,1,0,0.47,one name is the first word(s) of the other
+,p:nunopesqueira,p:nuno@nagyla+nuno,Nuno Pesqueira,Nuno,1,0,0.47,one name is the first word(s) of the other
+,p:nunopesqueira,p:nuno@nuno+sarai,Nuno Pesqueira,NUNO,1,0,0.47,one name is the first word(s) of the other
+,p:sani@dance,p:sanipragkizer,SANI,SANI PRAGKIZER,1,1,0.47,one name is the first word(s) of the other
+,p:saraiacobacci,p:sara@sara+vilmar,SARA IACOBACCI,Sara,4,0,0.47,one name is the first word(s) of the other
+,p:anasaavedra,p:ana@ana+ben,ANA SAAVEDRA,Ana,1,0,0.43,one name is the first word(s) of the other
+,p:anasaavedra,p:ana@ana+guilherme,ANA SAAVEDRA,ANA,1,0,0.43,one name is the first word(s) of the other
+,p:anasaavedra,p:ana@ana+pedro,ANA SAAVEDRA,Ana,1,0,0.43,one name is the first word(s) of the other
+,p:said@dance,p:saidmrbattlekiz,Said,Said Mr Battle Kiz,6,1,0.42,one name is the first word(s) of the other
+,p:said@oksana+said,p:saidmrbattlekiz,Said,Said Mr Battle Kiz,7,1,0.42,one name is the first word(s) of the other
+,p:ben@dj,p:bentheentertainer,DJ Ben,Ben TheEntertainer,3,1,0.3,one name is the first word(s) of the other
