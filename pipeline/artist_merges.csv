@@ -92,3 +92,6 @@ merge,p:chamalo@chamalo+jalyssa,p:chamalo@chamalo+tzer,Chamalo,Chamalo,confirmed
 merge,p:curtis@clemence+curtis,p:curtis@curtis+gaya,CURTIS,Curtis,confirmed by Cédric: one person with two partners
 merge,p:axel@axel+nora,p:axel@axel+victoria,AXEL,Axel,confirmed by Cédric: one person with two partners
 separate,p:christina@cedric+christina,p:christina@christina+david,Christina,Christina,confirmed by Cédric: Christina of Christina & Cédric (Bergen) is not Christina of David & Christina (Lyon)
+merge,p:curtis@clemence+curtis,p:curtis@curtis+kelly,CURTIS,Curtis,"confirmed by Cédric: one Curtis, with Clémence, Gaya and Kelly"
+merge,c:dex@dex+law+law@dex+law,c:dex@dex+lau+lau@dex+lau,Dex & Law,Dex & Lau,confirmed by Cédric: Lau is Law
+merge,p:dimitri@aude+dimitri,p:dimitri@dimitri+laure,Dimitri,Dimitri,"confirmed by Cédric: one Dimitri, with Aude and with Laure"
