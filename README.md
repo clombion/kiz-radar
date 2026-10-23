@@ -64,7 +64,10 @@ Merging two couples also merges their members, pairing them by closest name. Boo
 to the kept artist, and old artist links redirect to it.
 
 `pipeline/artist_merge_suggestions.csv` lists likely duplicates still undecided: couples whose names match in
-either order, and candidates the source pipeline left open. To decide one, copy its row into `artist_merges.csv`
+either order, and candidates the source pipeline left open. Rows are ranked by `score`: name similarity, raised
+when both come from the same country and lowered when line-ups state different countries for them (`countries`
+column; French overseas territories count as France). `keep_countries` / `merge_countries` show what was used,
+with `~` when the country is only inferred from where they are booked, which never counts against a match. To decide one, copy its row into `artist_merges.csv`
 and fill in `decision`. Pushing the change rebuilds the site and refreshes the suggestions; locally run
 `python3 pipeline/merge_suggestions.py source/<events>.sqlite`.
 
