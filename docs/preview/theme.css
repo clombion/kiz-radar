@@ -240,3 +240,15 @@ a.artist:hover, a.artist:focus-visible { color: var(--accent); border-bottom-sty
 .calm-card .traits li { display: inline-flex; align-items: center; gap: .3rem; }
 .calm-card .traits .ic { display: inline-flex; color: var(--accent); }
 .calm-card .traits .link { font-size: inherit; padding: 0; }
+
+/* three kinds of link on a card, each always looks the same:
+   people (dashed, text colour) · opens more of this card (plum, no underline) · goes somewhere else (plum, underlined) */
+.calm-card a, .calm-card button.link { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.calm-card a.artist, .calm-card .lineup a { color: var(--text); text-decoration: none; border-bottom: 1.5px dashed color-mix(in srgb, var(--accent) 55%, transparent); }
+.calm-card a.artist:hover, .calm-card .lineup a:hover { color: var(--accent); border-bottom: 1.5px solid var(--accent); }
+.calm-card button.link { text-decoration: none; font-weight: 600; font-size: inherit; }
+.calm-card button.link:hover { text-decoration: underline; }
+.calm-card .flight a { font-weight: 700; }
+.calm-card .flight.easy a { color: var(--good); }
+.calm-card .actions button.link::after { content: ' ▾'; font-size: .8em; }
+.calm-card.open .actions button.link::after { content: ' ▴'; }

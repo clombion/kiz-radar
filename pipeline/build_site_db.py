@@ -9,6 +9,7 @@ statistics, and a fares table filled from docs/data/fares.csv.
 import collections, csv, datetime as dt, difflib, math, os, re, sqlite3, sys, unicodedata
 sys.path.insert(0, os.path.dirname(__file__))
 from countries import codes, NAMES
+from names import tidy_name
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = sys.argv[1]
@@ -99,6 +100,11 @@ x("""delete from event_artists where mention_id not in (
        select min(mention_id) from event_artists group by event_id, artist_id, role)""")
 x("delete from couple_members where rowid not in (select min(rowid) from couple_members group by couple_id, member_id)")
 print(f'{len(merge_rows)} merge rows, {len(redirects)} artists folded into others')
+
+# one casing for names across the site: "AMI & JULIEN" → "Ami & Julien", "Dj Chico" → "DJ Chico"
+renamed = [(new, i) for i, n in x("select id, display_name from artists").fetchall() if (new := tidy_name(n)) != n]
+out.executemany("update artists set display_name = ? where id = ?", renamed)
+print(f'{len(renamed)} artist names recased')
 
 # --- places and airports -------------------------------------------------------------------------
 geo = {(r['city'], r['country']): r for r in csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'geocode.csv'), encoding='utf-8'))}
