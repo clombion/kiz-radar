@@ -1,4 +1,4 @@
-# Kizomba Radar
+# Kiz Radar
 
 A static site (GitHub Pages, [sql.js](https://sql.js.org/)) for finding the next Kizomba / Urban Kiz festival worth
 flying to from Bergen, and for exploring the scene's events and artists.

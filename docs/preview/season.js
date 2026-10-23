@@ -11,7 +11,7 @@ export function seasonView(root, qs, { home }) {
   const body = h('div', { class: 'season' });
   root.replaceChildren(h('section', { class: 'ed' },
     h('header', { class: 'ed-hero' },
-      h('p', { class: 'kicker' }, 'Kizomba Radar · from Bergen'),
+      h('p', { class: 'kicker' }, 'Kiz Radar · from Bergen'),
       h('h1', {}, 'Plan your dance season'),
       h('p', { class: 'lede' }, 'Every weekend with a Kizomba or Urban Kiz festival in the months ahead. Pick the weekends you’re free and see where you could be dancing.')),
     filters, body, footerLinks()));

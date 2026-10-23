@@ -1,8 +1,9 @@
 // Variant: a sentence with blanks as the landing, calm cards below, and a sticky bar with the same
 // choices (plus "More filters") once the sentence has scrolled away.
-import { h, range, addDays, countryName, flag, today } from '../js/ui.js';
+import { h, addDays, countryName, flag, today, euro } from '../js/ui.js';
 import { eventDetail } from '../js/event.js';
-import { withArtists, festivals, flightLine, place, styleLine, DAY, SHORT, d, stateFromHash, writeHash } from './common.js';
+import { festivals, place, styleLine, d, stateFromHash, writeHash } from './common.js';
+import { tidyTitle } from './titles.js';
 
 const DEFAULTS = { style: 'kiz', months: 3, reach: 'any', country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0, sort: 'date' };
 const LOOSEST = { style: 'all', months: 12, reach: 'any', country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0 };
@@ -59,7 +60,7 @@ export function sentenceView(root, qs, { home }) {
   const sentenceBlanks = { style: blank('style', STYLE), months: blank('months', WHEN), country: blank('country', DEST), reach: blank('reach', PRICE) };
   const live = h('p', { class: 'live', 'aria-live': 'polite' });
   const hero = h('header', { class: 'sentence-hero' },
-    h('p', { class: 'kicker' }, 'Kizomba Radar'),
+    h('p', { class: 'kicker' }, 'Kiz Radar'),
     h('p', { class: 'sentence' }, 'I’d like to dance ',
       h('span', { class: 'anchor' }, sentenceBlanks.style, note('note-top', 'down', 'click', ' to change the dance')),
       ' at a festival in ', sentenceBlanks.months, ', flying from Bergen to ',
@@ -77,16 +78,13 @@ export function sentenceView(root, qs, { home }) {
     country: blank('country', [['', 'Anywhere'], ...countries.map(c => [c, `${flag(c)} ${countryName(c)}`])], 'mini'),
     reach: blank('reach', Object.entries(SHORT_LABEL.reach), 'mini') };
   const barCount = h('span', { class: 'bar-count' });
-  const summary = h('span', { class: 'bar-summary' });
   const moreBtn = h('button', { type: 'button', class: 'more-btn', 'aria-expanded': 'false', 'aria-controls': 'more-panel' }, 'More filters ▾');
   const check = (key, label) => { const c = h('input', { type: 'checkbox' }); c.checked = !!s[key];
     c.addEventListener('change', () => { s[key] = c.checked ? 1 : 0; render(); }); return h('label', { class: 'check' }, c, ' ', label); };
   const moreFields = () => [
     h('div', { class: 'core-fields' },
       h('label', { class: 'field' }, h('span', {}, 'Style'), blank('style', Object.entries(SHORT_LABEL.style), 'plain')),
-      h('label', { class: 'field' }, h('span', {}, 'When'), blank('months', Object.entries(SHORT_LABEL.months), 'plain')),
-      h('label', { class: 'field' }, h('span', {}, 'Destination'), blank('country', [['', 'Anywhere'], ...countries.map(c => [c, `${flag(c)} ${countryName(c)}`])], 'plain')),
-      h('label', { class: 'field' }, h('span', {}, 'Flight price'), blank('reach', Object.entries(SHORT_LABEL.reach), 'plain'))),
+      h('label', { class: 'field' }, h('span', {}, 'Destination'), blank('country', [['', 'Anywhere'], ...countries.map(c => [c, `${flag(c)} ${countryName(c)}`])], 'plain'))),
     h('label', { class: 'field' }, h('span', {}, 'Line-up'), blank('lineup', [[0, 'Any size'], [10, '10+ artists'], [20, '20+ artists']], 'plain')),
     h('label', { class: 'field' }, h('span', {}, 'Order'), blank('sort', [['date', 'Soonest first'], ['fare', 'Cheapest flight first']], 'plain')),
     h('div', { class: 'checks' }, check('taxi', 'Taxi dancers'), check('allin', 'All-in-one hotel'),
@@ -95,7 +93,8 @@ export function sentenceView(root, qs, { home }) {
   const panel = h('div', { class: 'more-panel', id: 'more-panel', hidden: true }, moreFields());
   moreBtn.addEventListener('click', () => { panel.hidden = !panel.hidden; moreBtn.setAttribute('aria-expanded', String(!panel.hidden)); });
   const bar = h('div', { class: 'sticky-bar', 'aria-label': 'Filters' },
-    h('div', { class: 'bar-inner' }, barBlanks.style, barBlanks.months, barBlanks.country, barBlanks.reach, summary, barCount, moreBtn), panel);
+    h('div', { class: 'bar-inner' }, h('span', { class: 'wide-only' }, barBlanks.style), barBlanks.months,
+      h('span', { class: 'wide-only' }, barBlanks.country), barBlanks.reach, barCount, moreBtn), panel);
   document.addEventListener('click', ev => { if (!panel.hidden && !bar.contains(ev.target)) { panel.hidden = true; moreBtn.setAttribute('aria-expanded', 'false'); } });
 
   const results = h('section', { class: 'sentence-results' });
@@ -125,11 +124,12 @@ export function sentenceView(root, qs, { home }) {
   function render() {
     writeHash(s, DEFAULTS);
     for (const k of ['style', 'months', 'country', 'reach']) { sentenceBlanks[k].value = String(s[k]); barBlanks[k].value = String(s[k]); fit(sentenceBlanks[k]); }
-    summary.textContent = [SHORT_LABEL.style[s.style], SHORT_LABEL.months[s.months], s.country ? countryName(s.country) : 'Anywhere', SHORT_LABEL.reach[s.reach]].join(' · ');
     panel.replaceChildren(...moreFields());
     const rows = matches(all, s);
     const extra = ['taxi', 'allin', 'lineup', 'unchecked'].filter(k => s[k] !== DEFAULTS[k]).length + (s.likely ? 0 : 1);
-    moreBtn.replaceChildren(h('span', { class: 'wide' }, 'More filters'), h('span', { class: 'narrow' }, 'Filters'), extra ? ` (${extra})` : '', ' ▾');
+    const hiddenOnPhone = (s.style !== DEFAULTS.style) + !!s.country;     // only counted where those two live in the panel
+    moreBtn.replaceChildren(h('span', { class: 'wide' }, 'More filters'), h('span', { class: 'narrow' }, 'Filters', extra + hiddenOnPhone ? ` (${extra + hiddenOnPhone})` : ''),
+      h('span', { class: 'wide' }, extra ? ` (${extra})` : ''), ' ▾');
     live.replaceChildren(rows.length
       ? h('span', {}, `${rows.length} festival${rows.length > 1 ? 's' : ''} like that`,
           s.reach === 'any' ? '. ' : h('span', { class: 'price-note' }, ` (return flights under €${s.reach}, Friday to Monday). `),
@@ -151,26 +151,69 @@ export function sentenceView(root, qs, { home }) {
 const firstWithArtists = rows => rows.findIndex(e => e.headliners.length);
 const artistSeen = () => { try { return localStorage.getItem('kr-artist-seen') === '1'; } catch { return false; } };
 
+// "23–25 Oct", or "30 Oct – 1 Nov" across a month end: the date is shown once, in the box
+const DM = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' });
+function dateBox(start, end, projected) {
+  const [a, b] = [d(start), d(end)];
+  const [dd1, mm1] = DM.format(a).split(' '), [dd2, mm2] = DM.format(b).split(' ');
+  const likely = projected ? h('span', { class: 'likely' }, 'likely') : null;
+  if (mm1 !== mm2) return h('div', { class: 'datebox cross' }, likely,
+    h('span', { class: 'dd' }, dd1, ' ', h('small', {}, mm1)), h('span', { class: 'dd' }, '– ', dd2, ' ', h('small', {}, mm2)));
+  return h('div', { class: 'datebox' }, likely, h('span', { class: 'dd' }, start === end ? dd1 : `${dd1}–${dd2}`), h('span', { class: 'mm' }, mm1));
+}
+
+const PIN = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11A6.5 6.5 0 0 1 18.5 10c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>';
+
+// "✈ ~€492 from Bergen (+104 km)", the price links to Google Flights for that weekend
+function flight(e, home) {
+  if (e.fare?.home) return h('p', { class: 'flight easy' }, 'In Bergen, no flight needed');
+  if (!e.fare) return h('p', { class: 'flight muted' }, '✈ flight not checked yet');
+  const url = `https://www.google.com/travel/flights?q=${encodeURIComponent(`Flights from ${home} to ${e.airport} on ${e.depart} through ${addDays(e.depart, 3)}`)}&curr=EUR`;
+  return h('p', { class: 'flight' + (e.fare.price <= 150 ? ' easy' : '') }, '✈ ',
+    h('a', { href: url, target: '_blank', rel: 'noopener', title: 'Friday to Monday return; check on Google Flights' }, '~' + euro(e.fare.price)),
+    ' from Bergen', e.airport_km > 30 ? h('span', { class: 'muted' }, ` (+${e.airport_km} km)`) : '');
+}
+
 function card(e, home, hint = false) {
   const start = e.projected ? e.depart : e.start_date, end = e.projected ? addDays(e.depart, 2) : (e.end_date || e.start_date);
+  const title = tidyTitle(e.title);
   const more = h('div', { class: 'calm-more', hidden: true });
-  const toggle = h('button', { class: 'link', 'aria-expanded': 'false', onclick: () => {
-    const open = more.hidden;
-    if (open && !more.childElementCount) more.append(eventDetail(e.id, home, { compact: true }));
-    more.hidden = !open; toggle.setAttribute('aria-expanded', String(open)); toggle.textContent = open ? 'Less' : 'Line-up & details';
-    toggle.closest('.calm-card').classList.toggle('open', open);
-  } }, 'Line-up & details');
+  const toggles = [];
+  const setOpen = open => {
+    if (open && !more.childElementCount) more.append(
+      title !== e.title ? h('p', { class: 'muted small listed' }, 'Listed as “', e.title, '”') : '',
+      eventDetail(e.id, home, { compact: true }));
+    more.hidden = !open; art.classList.toggle('open', open);
+    for (const t of toggles) t.setAttribute('aria-expanded', String(open));
+    label.textContent = open ? 'Less' : 'Line-up & details';
+  };
+  const toggleBtn = (cls, ...kids) => { const b = h('button', { type: 'button', class: cls, 'aria-expanded': 'false',
+    onclick: ev => { ev.stopPropagation(); setOpen(more.hidden); } }, ...kids); toggles.push(b); return b; };
+  const label = h('span', {}, 'Line-up & details');
+  const pin = h('a', { href: `#map/event/${e.id}`, class: 'pin', title: 'Show on the map', 'aria-label': 'Show on the map' });
+  pin.innerHTML = PIN;
+
+  const links = e.headliners.map(a => h('a', { href: `#artist/${a.id}`, class: 'artist',
+    onclick: () => { try { localStorage.setItem('kr-artist-seen', '1'); } catch {} } }, a.name));
+  const rest = (e.lineup || 0) - e.headliners.length;
+  const withLine = links.length ? h('p', { class: 'with' }, 'With ',
+    ...links.flatMap((l, i) => i ? [i === links.length - 1 && rest <= 0 ? ' and ' : ', ', l] : [l]),
+    rest > 0 ? [' and ', toggleBtn('link more-names', `${rest} more`)] : null) : null;
   const extras = [e.taxi_dancers && 'taxi dancers', e.all_in_one && 'all-in-one'].filter(Boolean);
-  return h('article', { class: 'calm-card' + (e.projected ? ' projected' : '') },
+
+  const art = h('article', { class: 'calm-card' + (e.projected ? ' projected' : '') },
     h('div', { class: 'c-top' },
-      h('div', { class: 'datebox', 'aria-hidden': 'true' }, h('span', { class: 'dd' }, DAY.format(d(start))), h('span', { class: 'mm' }, SHORT.format(d(start)).split(' ')[1])),
-      h('div', {}, h('p', { class: 'where' }, place(e)), h('p', { class: 'when' }, e.projected ? `likely ${range(start, end)}` : range(start, end)))),
-    h('h3', {}, e.title),
+      dateBox(start, end, e.projected),
+      h('div', { class: 'c-head' },
+        h('p', { class: 'where' }, place(e)),
+        h('h3', {}, toggleBtn('title-btn', title)))),
     styleLine(e) || extras.length ? h('p', { class: 'styles' }, [styleLine(e), extras.join(', ')].filter(Boolean).join(' · ')) : null,
-    e.headliners.length ? withArtists(e) : null,
-    hint ? note('note-artist', 'up', 'click', ' a name to see where else they teach') : null,
+    withLine,
+    hint && withLine ? note('note-artist', 'up', 'click', ' a name to see where else they teach') : null,
     e.projected ? h('p', { class: 'with muted' }, 'This year’s dates aren’t out yet.') : null,
-    h('div', { class: 'foot' }, flightLine(e, home)),
-    h('div', { class: 'actions' }, toggle, h('a', { href: `#map/event/${e.id}` }, 'Map')),
+    h('div', { class: 'foot' }, flight(e, home), h('div', { class: 'actions' }, toggleBtn('link', label), pin)),
     more);
+  // the whole card opens the details, except where it already holds a link or a button
+  art.addEventListener('click', ev => { if (!ev.target.closest('a, button, select, input, label, .calm-more')) setOpen(more.hidden); });
+  return art;
 }

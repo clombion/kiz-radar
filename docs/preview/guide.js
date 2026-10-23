@@ -13,7 +13,7 @@ export function guideView(root, qs, { home }) {
   const body = h('div');
   root.replaceChildren(h('section', { class: 'ed guide' },
     h('header', { class: 'ed-hero' },
-      h('p', { class: 'kicker' }, 'Kizomba Radar · from Bergen'),
+      h('p', { class: 'kicker' }, 'Kiz Radar · from Bergen'),
       h('h1', {}, 'Where to dance next'),
       h('p', { class: 'lede' }, 'Kizomba and Urban Kiz festivals across Europe, month by month: who’s teaching, what the vibe is, and roughly what the trip from Bergen costs.')),
     filters, body, footerLinks()));

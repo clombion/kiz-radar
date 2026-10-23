@@ -35,7 +35,7 @@ function route() {
   else if (name === 'sql') sqlView(view_);
   else finderView(view_, qs, { home });
   const title = { map: 'Map', artists: 'Artists', countries: 'Countries', sql: 'SQL' }[name];
-  document.title = title ? `${title} · Kizomba Radar` : 'Kizomba Radar';
+  document.title = title ? `${title} · Kiz Radar` : 'Kiz Radar';
 }
 
 // #artist/12 is an alias for #artists/12
