@@ -391,8 +391,9 @@ body:has(.pmap) .to-top { display: none; }
 html[data-vt=open]::view-transition-group(.card) { animation-duration: 350ms; animation-timing-function: cubic-bezier(.05, .7, .1, 1); }
 ::view-transition-group(card-toggled) { z-index: 1; }
 /* snapshots are shown at their own size, anchored top left and clipped by the moving box, so text never stretches */
-::view-transition-new(.card) { animation: none; mix-blend-mode: normal; width: 100%; height: 100%; object-fit: none; object-position: left top; }
-::view-transition-old(.card) { display: none; animation: none; mix-blend-mode: normal; width: 100%; height: 100%; object-fit: none; object-position: left top; }
+::view-transition-new(.card) { animation: none; mix-blend-mode: normal; width: 100%; height: 100%; object-fit: none; object-position: left top; overflow: clip; }
+::view-transition-old(.card) { display: none; animation: none; mix-blend-mode: normal; width: 100%; height: 100%; object-fit: none; object-position: left top; overflow: clip; }
+::view-transition-image-pair(.card) { overflow: clip; border-radius: 14px; }
 html[data-vt=close]::view-transition-old(card-toggled) { display: block; }
 html[data-vt=close]::view-transition-new(card-toggled) { display: none; }
 /* reduced motion: nothing moves; the page cross-fades quickly instead */
