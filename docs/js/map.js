@@ -234,9 +234,23 @@ export function mapView(root, sub, qs, { signal }) {
 async function drawWorld(layer) {
   if (!worldGeo) {
     const topo = await fetch(WORLD).then(r => r.json());
-    worldGeo = topojson.feature(topo, topo.objects.countries);
+    const world = topojson.feature(topo, topo.objects.countries);
+    world.features = world.features.filter(f => f.properties.name !== 'Antarctica').map(unwrap);
+    worldGeo = world;
   }
   layer.clearLayers();
   L.geoJSON(worldGeo, { pane: 'land', interactive: false, style: { color: css('--map-border'), weight: 0.7, fillColor: css('--land'), fillOpacity: 1 } })
     .addTo(layer);
 }
+
+// The outline data jumps a ring from +180° to -180° where a country crosses the antimeridian (Russia, Fiji), which
+// a flat map draws as a stripe across the world. Keeping each ring's longitudes continuous draws it in one piece.
+function unwrap(feature) {
+  const ring = r => { let shift = 0; return r.map(([lon, lat], i) => {
+    if (i) { const prev = r[i - 1][0]; if (lon - prev > 180) shift -= 360; else if (prev - lon > 180) shift += 360; }
+    return [lon + shift, lat]; }); };
+  const g = feature.geometry;
+  const coordinates = g.type === 'Polygon' ? g.coordinates.map(ring) : g.coordinates.map(p => p.map(ring));
+  return { ...feature, geometry: { ...g, coordinates } };
+}
+
