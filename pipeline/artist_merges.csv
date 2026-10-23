@@ -68,3 +68,23 @@ merge,p:sara@fanio+sara,p:sara@juninho+sara,Sara,Sara,"rule confirmed by Cédric
 merge,p:selim@dance,p:selim@anastasia+selim,Selim,Selim,"rule confirmed by Cédric: same name, same stated country, same city, no date clash"
 merge,p:susan@dance,p:susan@susan+tomasdansar,Susan,Susan,"rule confirmed by Cédric: same name, same stated country, same city, no date clash"
 merge,p:tiia@dance,p:tiia@jennina+tiia,Tiia,Tiia,"rule confirmed by Cédric: same name, same stated country, same city, no date clash"
+merge,c:jahja+jeisy@jahja+jeisy,c:jahja@jahja+jessy+jessy@jahja+jessy,Jah J’a & Jeisy,Jahja & Jessy,confirmed by Cédric: Jessy is Jeisy
+merge,p:agnes@dance,p:agnes@agnes+fajul,Agnes,AGNES,confirmed by Cédric: solo record is the same person as in the couple
+merge,p:aleksandra@dance,p:aleksandra@aleksandra+claudio,ALEKSANDRA,Aleksandra,confirmed by Cédric: solo record is the same person as in the couple
+merge,p:anika@dance,p:anika@anika+michael,ANIKA,ANIKA,confirmed by Cédric: solo record is the same person as in the couple
+merge,p:amelie@dance,p:amelie@amelie+king,Amélie,Amélie,"rule confirmed by Cédric: solo record is the same person as in the couple (same name, same stated country, no clash)"
+merge,p:celine@dance,p:celine@celine+josue,CELINE,Céline,"rule confirmed by Cédric: solo record is the same person as in the couple (same name, same stated country, no clash)"
+merge,p:damir@dance,p:damir@damir+laura,DAMIR,DAMIR,"rule confirmed by Cédric: solo record is the same person as in the couple (same name, same stated country, no clash)"
+merge,p:eva@dance,p:eva@chris+eva,Eva,Eva,"rule confirmed by Cédric: solo record is the same person as in the couple (same name, same stated country, no clash)"
+merge,p:eva@dance,p:eva@eva+murmel,Eva,Eva,"rule confirmed by Cédric: solo record is the same person as in the couple (same name, same stated country, no clash)"
+merge,p:fernando@dance,p:fernando@carolina+fernando,Fernando,Fernando,"rule confirmed by Cédric: solo record is the same person as in the couple (same name, same stated country, no clash)"
+merge,p:ines@dance,p:ines@ines+pedro,INÈS,Inês,"rule confirmed by Cédric: solo record is the same person as in the couple (same name, same stated country, no clash)"
+merge,p:lavinia@dance,p:lavinia@armand+lavinia,LAVINIA,Lavinia,"rule confirmed by Cédric: solo record is the same person as in the couple (same name, same stated country, no clash)"
+merge,p:lena@dance,p:lena@elvis+lena,Lena,Lena,"rule confirmed by Cédric: solo record is the same person as in the couple (same name, same stated country, no clash)"
+merge,p:linda@dance,p:linda@jacopo+linda,Linda,Linda,"rule confirmed by Cédric: solo record is the same person as in the couple (same name, same stated country, no clash)"
+merge,p:michel@dance,p:michel@aga+michel,Michel,Michel,"rule confirmed by Cédric: solo record is the same person as in the couple (same name, same stated country, no clash)"
+merge,p:nicole@dance,p:nicole@nicole+wookie,NICOLE,Nicole,"rule confirmed by Cédric: solo record is the same person as in the couple (same name, same stated country, no clash)"
+merge,p:nii@dance,p:nii@astrid+nii,NII,Nii,"rule confirmed by Cédric: solo record is the same person as in the couple (same name, same stated country, no clash)"
+merge,p:quinn@dance,p:quinn@david+quinn,Quinn,Quinn,"rule confirmed by Cédric: solo record is the same person as in the couple (same name, same stated country, no clash)"
+merge,p:rafael@dance,p:rafael@giovana+rafael,Rafael,Rafael,"rule confirmed by Cédric: solo record is the same person as in the couple (same name, same stated country, no clash)"
+separate,p:cedric@dance,p:cedric@cedric+christina,Cédric,Cédric,confirmed by Cédric: the Bergen Cédric (Christina & Cédric) is not the Belgian-circuit one

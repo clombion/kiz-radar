@@ -1,23 +1,16 @@
 decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,keep_countries,merge_countries,countries,calendar,calendar_note,similarity,score,reason
 ,p:david@david+laura,p:davide@cilene+davide,Davide,DAVIDE,0,0,IT,AO CV IT,same,shared circuit,same city: milano,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:luismi@arantxa+luismi,p:luismi@luismi+marian,Luismi,Luismi,0,0,ES,ES,same,shared circuit,same city: liège,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:agnes@dance,p:agnes@agnes+fajul,Agnes,AGNES,5,0,SE,DE SE,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:aleksandra@dance,p:aleksandra@aleksandra+claudio,ALEKSANDRA,Aleksandra,1,0,PL,IT PL,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:amelie@dance,p:amelie@amelie+king,Amélie,Amélie,1,0,IT,IT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:andrea@andrea+luis,p:andrea@andrea+pablo,Andrea,Andrea,0,0,ES,ES,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:andrea@andrea+natalia,p:andrea@andrea+silvia,ANDREA,Andrea,0,0,IT,IT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:angelica@alessio+angelica,p:angelica@angelica+paolo,Angelica,Angelica,0,0,IT,IT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:anika@dance,p:anika@anika+michael,ANIKA,ANIKA,2,0,AT SK,AT NL SK SR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:axel@axel+nora,p:axel@axel+victoria,AXEL,Axel,0,0,DE EE,EE,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:celine@dance,p:celine@celine+josue,CELINE,Céline,4,0,BE FR IT,CH FR MQ,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:chamalo@chamalo+jalyssa,p:chamalo@chamalo+tzer,Chamalo,Chamalo,0,0,FR NL,CM NL SE,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:christina@cedric+christina,p:christina@christina+david,Christina,Christina,0,0,FR NO,FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:clemence@clemence+curtis,p:clemence@clemence+erwan,CLÉMENCE,Clémence,0,0,FR,FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:curtis@clemence+curtis,p:curtis@curtis+gaya,CURTIS,Curtis,1,0,FR,FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:curtis@clemence+curtis,p:curtis@curtis+kelly,CURTIS,Curtis,1,0,FR,FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:curtis@curtis+gaya,p:curtis@curtis+kelly,Curtis,Curtis,0,0,FR,FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:cedric@dance,p:cedric@cedric+christina,Cédric,Cédric,3,0,FR,FR NO,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:damir@dance,p:damir@damir+laura,DAMIR,DAMIR,4,0,FR,FR KZ NL,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:dani@dani+kizzg,p:dani@dani+ziggy,Dani,Dani,0,0,BG,BG,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:daniel@daniel+desiree,p:daniel@daniel+irati,Daniel,Daniel,0,0,ES,ES,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:david@crisandra+david,p:david@daria+david,David,David,0,0,CA HT,CA,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
@@ -33,12 +26,7 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:elina@crownperk+elina,p:elina@elina+ferris,ELINA,Elina,0,0,CZ DE,CZ DE,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:elina@daniel+elina,p:elina@elina+ferris,Elina,Elina,0,0,CZ DE,CZ DE,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:elo@adil+elo,p:elo@elo+mike,Elo,ELO,0,0,FR,FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:eva@dance,p:eva@chris+eva,Eva,Eva,2,0,DE,DE,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:eva@chris+eva,p:eva@eva+murmel,Eva,Eva,0,0,DE,DE,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:eva@dance,p:eva@eva+murmel,Eva,Eva,2,0,DE,DE,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:fernando@dance,p:fernando@carolina+fernando,Fernando,Fernando,2,0,PT,AR PT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:fernando@fernando+micaela,p:fernando@fernando+michela,Fernando,Fernando,0,0,IT,AO IT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:ines@dance,p:ines@ines+pedro,INÈS,Inês,1,0,PT,PT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:jorge@angela+jorge,p:jorge@jorge+monica,Jorge,Jorge,0,0,ES,CZ ES,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:jose@anja+jose,p:jose@coralie+jose,JOSE,José,0,0,CH,CH,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:katalin@dance,p:katalin@azmael+katalin,KATALIN,Katalin,1,0,AT,AT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
@@ -49,9 +37,6 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:kiki@heneco+kiki,p:kiki@kiki+selim,KIKI,Kiki,0,0,DE FR,DE FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:klaudia@jailson+klaudia,p:klaudia@klaudia+mateusz,Klaudia,Klaudia,0,0,BR PL,PL,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:laura@damir+laura,p:laura@laura+mou,LAURA,Laura,0,0,FR KZ NL,AU FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:lavinia@dance,p:lavinia@armand+lavinia,LAVINIA,Lavinia,1,0,RO,RO,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:lena@dance,p:lena@elvis+lena,Lena,Lena,1,0,CA,CA,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:linda@dance,p:linda@jacopo+linda,Linda,Linda,2,0,IT,IT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:lolahontas@enah+lolahontas,p:lolahontas@lolahontas+simon,LOLAHONTAS,LOLAHONTAS,0,0,ES FR,ES IT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:lucie@cecilien+lucie,p:lucie@johan+lucie,Lucie,Lucie,0,0,FR,FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:lucie@johan+lucie,p:lucie@lucie+titony,Lucie,LUCIE,0,0,FR,FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
@@ -61,16 +46,11 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:luismi@angeles+luismi,p:luismi@arantxa+luismi,Luismi,Luismi,0,0,ES,ES,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:manon@manon+rico,p:manon@manon+simba,Manon,Manon,0,0,FR GW,FR SN,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:maria@jesus+maria,p:maria@jose+maria,María,María,0,0,ES,ES,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:michel@dance,p:michel@aga+michel,Michel,Michel,1,0,FR,FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:monica@blackchinese+monica,p:monica@jorge+monica,Monica,Mónica,0,0,ES FR,CZ ES,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:morgane@bastien+morgane,p:morgane@fred+morgane,Morgane,Morgane,0,0,FR,FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:natalia@alessio+natalia,p:natalia@andrea+natalia,Natalia,NATALIA,0,0,IT,IT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:nicole@dance,p:nicole@nicole+wookie,NICOLE,Nicole,3,0,BG,BG HU,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:nii@dance,p:nii@astrid+nii,NII,Nii,1,0,GH,GH NO,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:paulo@lenna+paulo,p:paulo@mafalda+paulo,PAULO,PAULO,0,0,PT,PT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:pedro@ana+pedro,p:pedro@ines+pedro,Pedro,Pedro,0,0,CH PT,PT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:quinn@dance,p:quinn@david+quinn,Quinn,Quinn,1,0,TH,TH ZA,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:rafael@dance,p:rafael@giovana+rafael,Rafael,Rafael,1,0,BR,BR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:sara@fanio+sara,p:sara@renato+sara,Sara,SARA,0,0,AO PT,PT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:sara@sara+stef,p:sarah@py+sarah,Sarah,SARAH,0,0,FR,FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:selim@anastasia+selim,p:selim@kiki+selim,Selim,Sélim,0,0,FR UA,DE FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
@@ -138,7 +118,6 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,c:luca@luca+marta+marta@luca+marta,c:luca@luca+marianna+marianna@luca+marianna,LUCA Y MARTA,Luca & Marianna,2,1,~IT,~IT,same,same line-up,"both listed as teacher at the event of 2026-03-13 in Castelfidardo, Italy",0.81,0.86,couple with matching names
 ,c:nicola@nicola+sabrina+sabrina@nicola+sabrina,c:nicholas@nicholas+sabrine+sabrine@nicholas+sabrine,Nicola & Sabrina,Sabrine et nicholas,2,1,~IT,~FR,unclear,no clash,,0.86,0.86,couple with matching names
 ,c:stefania@stefania+umberto+umberto@stefania+umberto,c:stefy@stefy+umberto+umberto@stefy+umberto,Stefania & Umberto,Stefy & Umberto,1,1,~IT,~IT,same,no clash,,0.81,0.86,couple with matching names
-,c:jahja+jeisy@jahja+jeisy,c:jahja@jahja+jessy+jessy@jahja+jessy,Jah J’a & Jeisy,Jahja & Jessy,5,1,CH,~FR,unclear,no clash,,0.85,0.85,couple with matching names
 ,c:luca@luca+marta+marta@luca+marta,c:ambra@ambra+luca+luca@ambra+luca,LUCA Y MARTA,Luca & Ambra,2,1,~IT,~IT,same,no clash,,0.8,0.85,couple with matching names
 ,c:laura@laura+micka+micka@laura+micka,c:mayra@mayra+micka+micka@mayra+micka,Micka & Laura,Micka & Mayra,2,1,~FR,~FR,same,no clash,,0.8,0.85,couple with matching names
 ,c:nacho@nacho+silvia+silvia@nacho+silvia,c:marco@marco+silvia+silvia@marco+silvia,NACHO Y SILVIA,Marco & Silvia,2,1,~IT,~IT,same,no clash,,0.8,0.85,couple with matching names
@@ -177,7 +156,6 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:ioannajoowaa,p:ioanna@chrysoula+ioanna,Ioanna Joowaa,Ioanna,1,0,GR,GB GR,same,shared circuit,same city: thessaloniki,0.67,0.82,one name is the first word(s) of the other
 ,c:juan@juan+sara+sara@juan+sara,c:juni@juni+sarah+sarah@juni+sarah,Juan y Sara,Juni & Sarah,2,1,ES,~FR,unclear,no clash,,0.82,0.82,couple with matching names
 ,p:pascal@dj,p:pascalgomis,DJ PASCAL,Pascal Gomis,2,1,FR,FR SN,same,no clash,,0.71,0.81,one name is the first word(s) of the other
-,c:jagja+jeisy@jagja+jeisy,c:jahja@jahja+jessy+jessy@jahja+jessy,JAG J’A & JEISY,Jahja & Jessy,1,1,~FR,~FR,same,no clash,,0.76,0.81,couple with matching names
 ,p:kevin@dance,p:kevinsato,Kevin,Kevin Sato,5,1,GW PH,PH,same,no clash,,0.71,0.81,one name is the first word(s) of the other
 ,c:karen@karen+kevin+kevin@karen+kevin,c:kevin@kevin+khatelyn+khatelyn@kevin+khatelyn,Kevin&Karen,Kevin & Khatelyn,1,1,~BE,~NL,unclear,no clash,,0.81,0.81,couple with matching names
 ,c:luca@luca+marianna+marianna@luca+marianna,c:luca@luca+renna+renna@luca+renna,Luca & Marianna,Luca & Renna,1,1,~IT,~CH,unclear,no clash,,0.81,0.81,couple with matching names
