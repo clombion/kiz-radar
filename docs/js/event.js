@@ -65,5 +65,5 @@ export function eventDetail(id, home, { onArtist, compact } = {}) {
     people.length === 0 ? h('p', { class: 'muted small' }, 'No line-up announced in the listing.') : null,
     h('p', { class: 'links' },
       h('a', { href: e.url, target: '_blank', rel: 'noopener' }, 'Event page on kizomba-world ↗'),
-      ' · ', h('a', { href: `#map/event/${e.id}` }, 'Show on map')));
+      compact ? [' · ', h('a', { href: `#map/event/${e.id}` }, 'See it on the map, with what’s nearby')] : null));
 }

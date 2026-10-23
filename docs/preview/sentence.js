@@ -4,7 +4,7 @@ import { h, addDays, countryName, flag, today, euro } from '../js/ui.js';
 import { eventDetail } from '../js/event.js';
 import { festivals, place, styleLine, d, stateFromHash, writeHash } from './common.js';
 import { tidyTitle } from './titles.js';
-import { PIN, TRAITS } from './icons.js';
+import { TRAITS } from './icons.js';
 
 const DEFAULTS = { style: 'kiz', months: 3, reach: 'any', country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0, sort: 'date' };
 const LOOSEST = { style: 'all', months: 12, reach: 'any', country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0 };
@@ -174,6 +174,8 @@ function flight(e, home) {
     ' from Bergen', e.airport_km > 30 ? h('span', { class: 'muted' }, ` (+${e.airport_km} km)`) : '');
 }
 
+const icon = svg => { const el = h('span', { class: 'ic' }); el.innerHTML = svg; return el; };
+
 function card(e, home, hint = false) {
   const start = e.projected ? e.depart : e.start_date, end = e.projected ? addDays(e.depart, 2) : (e.end_date || e.start_date);
   const title = tidyTitle(e.title);
@@ -190,8 +192,6 @@ function card(e, home, hint = false) {
   const toggleBtn = (cls, ...kids) => { const b = h('button', { type: 'button', class: cls, 'aria-expanded': 'false',
     onclick: ev => { ev.stopPropagation(); setOpen(more.hidden); } }, ...kids); toggles.push(b); return b; };
   const label = h('span', {}, 'Line-up & details');
-  const pin = h('a', { href: `#map/event/${e.id}`, class: 'pin', title: 'Show on the map', 'aria-label': 'Show on the map' });
-  pin.innerHTML = PIN;
 
   const links = e.headliners.map(a => h('a', { href: `#artist/${a.id}`, class: 'artist',
     onclick: () => { try { localStorage.setItem('kr-artist-seen', '1'); } catch {} } }, a.name));
@@ -203,7 +203,7 @@ function card(e, home, hint = false) {
   const feats = new Set((e.features || '').split(','));
   const traits = TRAITS.filter(([k]) => feats.has(k));
   const traitRow = traits.length ? h('ul', { class: 'traits', 'aria-label': 'Highlights' },
-    traits.slice(0, 3).map(([, label, icon]) => { const li = h('li', {}, h('span', { class: 'ic' }), label); li.firstChild.innerHTML = icon; return li; }),
+    traits.slice(0, 3).map(([, label, svg]) => h('li', {}, icon(svg), label)),
     traits.length > 3 ? h('li', { class: 'more-traits' }, toggleBtn('link', `+${traits.length - 3}`)) : null) : null;
 
   const art = h('article', { class: 'calm-card' + (e.projected ? ' projected' : '') },
@@ -217,7 +217,7 @@ function card(e, home, hint = false) {
     withLine,
     hint && withLine ? note('note-artist', 'up', 'click', ' a name to see where else they teach') : null,
     e.projected ? h('p', { class: 'with muted' }, 'This year’s dates aren’t out yet.') : null,
-    h('div', { class: 'foot' }, flight(e, home), h('div', { class: 'actions' }, toggleBtn('link', label), pin)),
+    h('div', { class: 'foot' }, flight(e, home), h('div', { class: 'actions' }, toggleBtn('link', label))),
     more);
   // the whole card opens the details, except where it already holds a link or a button
   art.addEventListener('click', ev => { if (!ev.target.closest('a, button, select, input, label, .calm-more')) setOpen(more.hidden); });

@@ -156,9 +156,6 @@ select.mini:focus-visible, select.plain:focus-visible { outline: 2px solid var(-
 .calm-card .flight { margin: 0; font-size: .9rem; }
 .calm-card .flight a { font-weight: 700; }
 .calm-card .flight.easy a { color: var(--good); }
-.pin { display: inline-flex; color: var(--muted); padding: .1rem; border-radius: 6px; }
-.pin:hover { color: var(--accent); background: var(--accent-soft); }
-.pin svg { fill: none; stroke: currentColor; stroke-width: 1.8; }
 .listed { margin: 0 0 .6rem; font-style: italic; }
 .calm-card .datebox { padding: .3rem .55rem .25rem; }
 .calm-card .where { margin: 0 0 .15rem; font-size: .85rem; color: var(--muted); }
@@ -243,4 +240,3 @@ a.artist:hover, a.artist:focus-visible { color: var(--accent); border-bottom-sty
 .calm-card .traits li { display: inline-flex; align-items: center; gap: .3rem; }
 .calm-card .traits .ic { display: inline-flex; color: var(--accent); }
 .calm-card .traits .link { font-size: inherit; padding: 0; }
-.pin svg { width: 18px; height: 18px; stroke-width: 1.8; }
