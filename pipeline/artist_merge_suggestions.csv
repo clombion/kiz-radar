@@ -52,6 +52,8 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:ines@dance,p:ines@ines+pedro,INÈS,Inês,1,0,PT,PT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:jorge@angela+jorge,p:jorge@jorge+monica,Jorge,Jorge,0,0,ES,CZ ES,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:jose@anja+jose,p:jose@coralie+jose,JOSE,José,0,0,CH,CH,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:katalin@dance,p:katalin@azmael+katalin,KATALIN,Katalin,1,0,AT,AT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:katalin@azmael+katalin,p:katalin@katalin+mathias,Katalin,Katalin,0,0,AT,AT HU,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:kiki@dance,p:kiki@fuego+kiki,Kiki,Kiki,5,0,DE,DE FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:kiki@fuego+kiki,p:kiki@heneco+kiki,Kiki,KIKI,0,0,DE FR,DE FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:kiki@fuego+kiki,p:kiki@kiki+selim,Kiki,Kiki,0,0,DE FR,DE FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
