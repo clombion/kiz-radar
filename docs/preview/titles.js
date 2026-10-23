@@ -15,14 +15,15 @@ const VOWELS = /[aeiouyàâäéèêëîïôöûüáíóúãõ]/giu;
 
 // Soften shouting capitals word by word. Short words without two vowels (DJ, SBK, MKC, ILKSF, KIZZ) look like
 // acronyms or stylised names, so they stay as written.
-function soften(text) {
+export function softenCaps(text) {
   let first = true;
   return text.replace(/[\p{L}][\p{L}'’]*/gu, w => {
     const isFirst = first; first = false;
     const caps = w === w.toUpperCase() && w !== w.toLowerCase();
-    if (!caps || KEEP_UPPER.has(w) || (w.match(VOWELS) || []).length < 2) return w;
+    if (!caps || KEEP_UPPER.has(w)) return w;
     const lower = w.toLowerCase();
     if (!isFirst && SMALL.has(lower)) return lower;
+    if ((w.match(VOWELS) || []).length < 2) return w;
     return lower[0].toUpperCase() + lower.slice(1);
   });
 }
@@ -38,6 +39,6 @@ export function tidyTitle(title) {
   s = s.replace(/\(\s*\)|\[\s*\]/g, ' ').replace(/\s+/g, ' ');
   s = s.replace(/(?:\s*[–—-]\s*){2,}/g, ' – ').replace(/^[\s–—:,.\-]+|[\s–—:,.\-#]+$/g, '');
   s = s.replace(/\s+([.,!?])/g, '$1').replace(/\s+/g, ' ').trim();
-  s = soften(s);
+  s = softenCaps(s);
   return s.length >= 3 ? s : title;
 }

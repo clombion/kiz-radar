@@ -1,10 +1,11 @@
 // Variant: a sentence with blanks as the landing, calm cards below, and a sticky bar with the same
 // choices (plus "More filters") once the sentence has scrolled away.
 import { h, addDays, countryName, flag, today, euro } from '../js/ui.js';
-import { eventDetail } from '../js/event.js';
 import { festivals, place, styleLine, d, stateFromHash, writeHash } from './common.js';
 import { tidyTitle } from './titles.js';
 import { TRAITS } from './icons.js';
+import { cardDetails, traitItems } from './details.js';
+import { q } from '../js/db.js';
 
 const DEFAULTS = { style: 'kiz', months: 3, reach: 'any', country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0, sort: 'date' };
 const LOOSEST = { style: 'all', months: 12, reach: 'any', country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0 };
@@ -164,17 +165,18 @@ function dateBox(start, end, projected) {
 }
 
 
-// "✈ ~€492 from Bergen (+104 km)", the price links to Google Flights for that weekend
+// "✈ ~€492 to Brussels, then 104 km": a Fri→Mon return from Bergen to the nearest airport we price,
+// and how far the festival is from it. The price links to Google Flights for that weekend.
+let airportCity;
+const cityOf = code => (airportCity ||= Object.fromEntries(q('SELECT code, name FROM airports').map(a => [a.code, a.name.split(' ')[0]])))[code] || code;
 function flight(e, home) {
   if (e.fare?.home) return h('p', { class: 'flight easy' }, 'In Bergen, no flight needed');
   if (!e.fare) return h('p', { class: 'flight muted' }, '✈ flight not checked yet');
   const url = `https://www.google.com/travel/flights?q=${encodeURIComponent(`Flights from ${home} to ${e.airport} on ${e.depart} through ${addDays(e.depart, 3)}`)}&curr=EUR`;
   return h('p', { class: 'flight' + (e.fare.price <= 150 ? ' easy' : '') }, '✈ ',
-    h('a', { href: url, target: '_blank', rel: 'noopener', title: 'Friday to Monday return; check on Google Flights' }, '~' + euro(e.fare.price)),
-    ' from Bergen', e.airport_km > 30 ? h('span', { class: 'muted' }, ` (+${e.airport_km} km)`) : '');
+    h('a', { href: url, target: '_blank', rel: 'noopener', title: 'Friday to Monday return from Bergen; check it on Google Flights' }, '~' + euro(e.fare.price)),
+    ` to ${cityOf(e.airport)}`, e.airport_km > 30 ? `, then ${e.airport_km} km` : '');
 }
-
-const icon = svg => { const el = h('span', { class: 'ic' }); el.innerHTML = svg; return el; };
 
 function card(e, home, hint = false) {
   const start = e.projected ? e.depart : e.start_date, end = e.projected ? addDays(e.depart, 2) : (e.end_date || e.start_date);
@@ -182,9 +184,7 @@ function card(e, home, hint = false) {
   const more = h('div', { class: 'calm-more', hidden: true });
   const toggles = [];
   const setOpen = open => {
-    if (open && !more.childElementCount) more.append(
-      title !== e.title ? h('p', { class: 'muted small listed' }, 'Listed as “', e.title, '”') : '',
-      eventDetail(e.id, home, { compact: true }));
+    if (open && !more.childElementCount) more.append(cardDetails(e, traits.slice(0, 3).map(([k]) => k), toggleBtn('link less', 'Less')));
     more.hidden = !open; art.classList.toggle('open', open);
     for (const t of toggles) t.setAttribute('aria-expanded', String(open));
     label.textContent = open ? 'Less' : 'Line-up & details';
@@ -203,7 +203,7 @@ function card(e, home, hint = false) {
   const feats = new Set((e.features || '').split(','));
   const traits = TRAITS.filter(([k]) => feats.has(k));
   const traitRow = traits.length ? h('ul', { class: 'traits', 'aria-label': 'Highlights' },
-    traits.slice(0, 3).map(([, label, svg]) => h('li', {}, icon(svg), label)),
+    traitItems(traits.slice(0, 3)),
     traits.length > 3 ? h('li', { class: 'more-traits' }, toggleBtn('link', `+${traits.length - 3}`)) : null) : null;
 
   const art = h('article', { class: 'calm-card' + (e.projected ? ' projected' : '') },

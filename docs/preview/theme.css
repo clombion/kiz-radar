@@ -252,3 +252,20 @@ a.artist:hover, a.artist:focus-visible { color: var(--accent); border-bottom-sty
 .calm-card .flight.easy a { color: var(--good); }
 .calm-card .actions button.link::after { content: ' ▾'; font-size: .8em; }
 .calm-card.open .actions button.link::after { content: ' ▴'; }
+
+/* an opened card: line-up, the other highlights, then the practical bits */
+.card-details { display: flex; flex-direction: column; gap: 1rem; padding-top: .9rem; margin-top: .3rem; border-top: 1px solid var(--border); font-size: .92rem; }
+.card-details h4 { margin: 0 0 .4rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.card-details h4 .n { margin-left: .4rem; font-weight: 500; }
+.card-details .roster ul { list-style: none; margin: 0; padding: 0; columns: 2 14rem; column-gap: 1.5rem; }
+.card-details .roster li { break-inside: avoid; padding: .15rem 0; }
+.card-details .bk { color: var(--muted); font-size: .82rem; }
+.card-details .traits { margin: 0; }
+.card-details .practical { margin: 0; color: var(--muted); font-size: .85rem; }
+.card-details .links { margin: 0; font-size: .88rem; }
+.calm-card.open .foot .actions { border-top: 0; }
+/* once open, the full line-up replaces the teaser, and "Less" moves to the bottom */
+.calm-card.open > .with, .calm-card.open > .note-artist, .calm-card.open .foot .actions { display: none; }
+.card-details .links { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.card-details .links p { margin: 0; }
+.calm-card .less::after { content: ' ▴'; font-size: .8em; }
