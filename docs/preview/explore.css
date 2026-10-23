@@ -90,3 +90,37 @@
   .artists-page .map-bar .mini-search { flex-basis: 100%; max-width: none; }
   .artist-profile .past .when { display: block; min-width: 0; }
 }
+
+/* ---------- countries ---------- */
+.page-intro h1 { margin: .4rem 0 .4rem; font-size: clamp(1.6rem, 4vw, 2.2rem); letter-spacing: -.02em; }
+.page-intro p { margin: 0 0 1.2rem; color: var(--muted); max-width: 44rem; }
+.countries-page .map-bar { gap: .8rem 1.2rem; }
+.countries-page .check { font-size: .9rem; color: var(--muted); }
+.country-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 1rem; }
+.country-row { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: .45rem; }
+.country-row p { margin: 0; }
+.c-name { display: flex; gap: .8rem; align-items: center; }
+.big-flag { font-size: 2rem; line-height: 1; }
+.c-name h2 { margin: 0; font-size: 1.15rem; }
+.c-count { font-size: .9rem; }
+.country-row .flight { font-size: .92rem; }
+.country-row .flight.easy strong { color: var(--good); }
+.c-facts { font-size: .86rem; color: var(--muted); }
+.c-links { font-size: .88rem; border-top: 1px solid var(--border); padding-top: .55rem; margin-top: auto !important; }
+.c-links a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+
+/* ---------- footer ---------- */
+.site-footer { display: grid; grid-template-columns: 1.3fr repeat(3, 1fr); gap: 1.5rem 2.5rem; padding: 2rem 16px 2.5rem; margin-top: 2rem;
+  max-width: 1400px; border-top: 1px solid var(--border); font-size: .88rem; color: var(--muted); }
+.site-footer p { margin: 0 0 .5rem; }
+.site-footer h2 { font-size: .74rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text); margin: 0 0 .6rem; }
+.f-brand { font-weight: 700; color: var(--text); font-size: 1rem; }
+.f-col { display: flex; flex-direction: column; align-items: flex-start; }
+.f-col > a { color: var(--muted); text-decoration: none; padding: .15rem 0; }
+.f-col > a:hover { color: var(--accent); text-decoration: underline; }
+.site-footer p a { color: var(--accent); }
+@media (max-width: 900px) { .site-footer { grid-template-columns: 1fr 1fr; } .f-about { grid-column: 1 / -1; } }
+@media (max-width: 520px) { .site-footer { grid-template-columns: 1fr 1fr; } .f-data { grid-column: 1 / -1; order: 3; } .f-col:last-child { order: 2; } }
+@media (max-width: 520px) { .countries-page .seg button { padding: .32rem .6rem; font-size: .82rem; } }
+.seg button { white-space: nowrap; }
+@media (max-width: 520px) { .countries-page .seg { max-width: 100%; overflow-x: auto; } }

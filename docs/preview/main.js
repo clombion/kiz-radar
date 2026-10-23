@@ -12,7 +12,8 @@ for (const a of document.querySelectorAll('[data-v]')) a.classList.toggle('on', 
 const LANDING = { sentence: sentenceView, guide: guideView, season: seasonView, deals: finderView, scene: sceneView }[VARIANT] || sentenceView;
 import { mapView } from './map.js';
 import { artistsView } from './artists.js';
-import { countriesView, sqlView } from '../js/tables.js';
+import { sqlView } from '../js/tables.js';
+import { countriesView } from './countries.js';
 
 const main = document.getElementById('main');
 const status = document.getElementById('status');
@@ -41,7 +42,7 @@ function route() {
   const home = M.home_airport;
   if (name === 'map') cleanup = mapView(view_, sub, qs, { home });
   else if (name === 'artists') artistsView(view_, sub, qs, { home });
-  else if (name === 'countries') countriesView(view_, home);
+  else if (name === 'countries') countriesView(view_, qs, { home });
   else if (name === 'sql') sqlView(view_);
   else cleanup = LANDING(view_, qs, { home }) || null;
   const title = { map: 'Map', artists: 'Artists', countries: 'Countries', sql: 'SQL' }[name];  // preview
@@ -57,7 +58,8 @@ window.addEventListener('hashchange', () => {
 load(s => { status.textContent = s; }).then(() => {
   M = meta();
   const fresh = document.getElementById('freshness');
-  fresh.textContent = `Events ${M.events_range.replace(' – ', ' to ')} from kizomba-world · fares from ${M.home_airport} · data built ${dayYear(M.built_at)}`;
+  const [from, to] = M.events_range.split(' – ').map(d => new Date(d + 'T12:00').toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }));
+  fresh.textContent = `It covers ${from} to ${to} and was last updated on ${dayYear(M.built_at)}.`;
   status.remove();
   if (location.hash.startsWith('#artist/')) history.replaceState(null, '', '#artists/' + location.hash.slice(8));
   route();

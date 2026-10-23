@@ -36,10 +36,24 @@
 </header>
 <nav id="subnav" class="subnav" aria-label="Explore" hidden></nav>
 <main id="main"><p id="status" class="status">Loading…</p></main>
-<footer>
-  <p id="freshness" class="muted small"></p>
-  <p class="muted small">Event facts link back to <a href="https://kizomba-world.com/">kizomba-world.com</a>, where the listings come from. Fares are Google Flights prices fetched with <a href="https://github.com/punitarani/fli">fli</a> and may have changed; check before booking. <a href="https://github.com/clombion/kizomba-radar">Source</a></p>
-  <p class="muted small">For the curious: <a href="#sql">query the data with SQL</a>.</p>
+<footer class="site-footer">
+  <div class="f-about">
+    <p class="f-brand">Kiz Radar</p>
+    <p>Kizomba and Urban Kiz festivals across Europe and beyond, with what the flight from Bergen costs.</p>
+  </div>
+  <nav class="f-col" aria-label="Explore">
+    <h2>Explore</h2>
+    <a href="#finder">Festivals</a><a href="#map">Map</a><a href="#artists">Artists</a><a href="#countries">Countries</a>
+  </nav>
+  <div class="f-col f-data">
+    <h2>Where the data comes from</h2>
+    <p>Festival listings from <a href="https://kizomba-world.com/">kizomba-world.com</a>. <span id="freshness"></span></p>
+    <p>Flight prices are Friday-to-Monday returns from Bergen found on Google Flights with <a href="https://github.com/punitarani/fli">fli</a>, rechecked every few hours. They change often, so check before booking.</p>
+  </div>
+  <div class="f-col">
+    <h2>For the curious</h2>
+    <a href="#sql">Query the data with SQL</a><a href="https://github.com/clombion/kizomba-radar">Source code on GitHub</a>
+  </div>
 </footer>
 </body>
 </html>
