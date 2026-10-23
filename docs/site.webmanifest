@@ -1,0 +1,14 @@
+{
+  "name": "Kiz Radar",
+  "short_name": "Kiz Radar",
+  "description": "Kizomba, Urban Kiz and Tarraxo festivals worth flying to from Bergen.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f6efe4",
+  "theme_color": "#7a2850",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

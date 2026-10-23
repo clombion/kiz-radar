@@ -27,6 +27,10 @@ Beyond the festival list, the site has three ways to explore:
 
 The footer links to an SQL page for querying the whole database.
 
+A shared link shows a preview card, `docs/share-card.png`, and the site has icons for browser tabs, bookmarks
+and phone home screens. The card is drawn from `design/share-card.html` and the icon from `docs/icon.svg`; after
+changing either, `NODE_PATH="$(npm root -g)" node design/render.cjs` redraws the PNGs (it needs Playwright).
+
 ## Where the data comes from
 
 The festivals come from a kizomba-world export committed to `source/`. A build turns it into the database the

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;650&family=Caveat:wght@700&display=block">
+<style>
+  html, body { margin: 0; }
+  body { width: 1200px; height: 630px; background: #f6efe4; color: #2a1f22; font-family: Inter, sans-serif;
+         position: relative; overflow: hidden; }
+  .rings { position: absolute; right: -170px; top: 50%; transform: translateY(-50%); width: 760px; height: 760px; }
+  .brand { position: absolute; left: 88px; top: 72px; display: flex; align-items: center; gap: 16px;
+           font-size: 34px; font-weight: 650; letter-spacing: -.015em; }
+  .brand img { width: 52px; height: 52px; }
+  h1 { position: absolute; left: 88px; top: 200px; width: 760px; margin: 0; font-size: 70px; line-height: 1.12;
+       font-weight: 500; letter-spacing: -.025em; }
+  .dance { font: 700 1.32em/1 Caveat, cursive; color: #7a2850; letter-spacing: 0; }
+  p { position: absolute; left: 88px; top: 430px; width: 640px; margin: 0; font-size: 32px; line-height: 1.35; color: #6d5f55; }
+  p b { color: #2a1f22; font-weight: 500; }
+</style>
+</head>
+<body>
+<svg class="rings" viewBox="0 0 760 760" aria-hidden="true">
+  <g fill="none" stroke="#7a2850">
+    <circle cx="380" cy="380" r="370" opacity=".07" stroke-width="2"/>
+    <circle cx="380" cy="380" r="280" opacity=".10" stroke-width="2"/>
+    <circle cx="380" cy="380" r="190" opacity=".14" stroke-width="2"/>
+    <circle cx="380" cy="380" r="100" opacity=".18" stroke-width="2"/>
+  </g>
+  <path d="M380 380 L380 10 A370 370 0 0 1 700 195 Z" fill="#7a2850" opacity=".06"/>
+  <g fill="#7a2850">
+    <circle cx="380" cy="380" r="9"/>
+    <circle cx="560" cy="150" r="13" opacity=".85"/>
+    <circle cx="250" cy="200" r="9" opacity=".5"/>
+    <circle cx="610" cy="470" r="10" opacity=".6"/>
+  </g>
+</svg>
+<div class="brand"><img src="../docs/icon.svg" alt="">Kiz Radar</div>
+<h1>I want to go to a <span class="dance">Kizomba</span> festival…</h1>
+<p><b>Kizomba, Urban Kiz &amp; Tarraxo festivals</b> worth flying to from Bergen</p>
+</body>
+</html>
