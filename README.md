@@ -32,9 +32,14 @@ The footer links to an SQL page for querying the whole database.
 The festivals come from a kizomba-world export committed to `source/`. A build turns it into the database the
 site loads; the site never reads `source/` itself.
 
+Kizomba-world publishes its listings under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). The
+festival data in this repository adapts them, so it is shared under the same licence: the export in `source/`,
+the database and summary in `docs/data/`, and the artist merge files in `pipeline/`. Each festival card links to
+its page on kizomba-world. The fares are our own searches.
+
 | File | What it holds | Updated by |
 |---|---|---|
-| `source/*.sqlite` | The full kizomba-world export, with descriptions and images | you, when you re-export |
+| `source/*.sqlite` | The full kizomba-world export, with descriptions and images | the **Refresh events** Action, monthly |
 | `docs/data/kiz.sqlite` | What the site queries: events, line-ups, artists, statistics, airports, a fares snapshot | the **Rebuild site database** Action |
 | `docs/data/site.json` | What the page shows before the database loads: home airport, destinations, dates covered | the same build |
 | `docs/data/fares.csv` | Friday-to-Monday return fares, one row per airport and weekend | the **Refresh fares** Action |

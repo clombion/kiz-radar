@@ -246,6 +246,7 @@ out.executemany("insert into meta values (?,?)", [
     ('home_airport', HOME), ('popular_threshold', str(POPULAR)), ('max_airport_km', str(MAX_AIRPORT_KM)),
     ('built_at', dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')),
     ('events_source', 'https://kizomba-world.com/'),
+    ('events_licence', 'CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/: the festival data is kizomba-world.com’s, adapted here and shared under the same licence'),
     ('events_range', ' – '.join(x("select min(start_date), max(start_date) from events").fetchone())),
 ])
 
