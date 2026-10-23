@@ -63,7 +63,7 @@ function row(r) {
     line ? h('p', { class: 'c-fact', title: r.imported_pct != null ? `${r.imported_pct}% of teacher and DJ bookings go to artists from other countries` : null }, line) : null,
     r.taxi_dancers ? h('p', { class: 'c-fact' }, `${r.taxi_dancers} of its ${r.events} listed festivals with taxi dancers`) : null,
     h('p', { class: 'c-links' },
-      r.upcoming ? [h('a', { href: festivalsHref({ country: r.country_code, months: 12, style: 'all' }) }, 'Festivals'), ' · '] : null,
+      r.upcoming ? [h('a', { href: festivalsHref({ country: r.country_code, months: 12 }) }, 'Festivals'), ' · '] : null,
       h('a', { href: mapHref({ country: r.country_code, when: r.upcoming ? 'upcoming' : 'all' }) }, 'Map'), ' · ',
       h('a', { href: artistsHref({ country: r.country_code }) }, 'Artists')));
 }

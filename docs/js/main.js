@@ -65,4 +65,4 @@ loadSite().then(() => {
   document.getElementById('freshness').textContent = `It covers ${monthYear(from)} to ${monthYear(to)} and was last updated on ${dayYear(built_at)}.`;
   for (const el of document.querySelectorAll('[data-home-city]')) el.textContent = home().city;
   route();
-}).catch(e => failed(main, e));
+}, e => failed(main, e));          // only a failed load is reported as one; errors in a view surface as errors

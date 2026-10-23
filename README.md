@@ -3,8 +3,8 @@
 A static site (GitHub Pages, [sql.js](https://sql.js.org/)) for finding the next Kizomba / Urban Kiz festival worth
 flying to from Bergen, and for exploring the scene's events and artists.
 
-- **Festivals** — the landing page is a sentence with blanks ("I'd like to dance … in the next three months, flying
-  from Bergen to … for a cheap price"). Below it are festival cards. A sticky bar keeps the time and price choices in
+- **Festivals** — the landing page is a sentence with blanks ("I want to go to a Kizomba festival in the next
+  three months, flying from Bergen to … for a cheap price"; the dance named rotates between Kizomba, Urban Kiz and Tarraxo). Below it are festival cards. A sticky bar keeps the time and price choices in
   view and puts the rest under Filters. Likely next editions of festivals whose new dates aren't listed yet are
   included. The choices live in the URL, so a view can be bookmarked or shared.
   A card shows the date, place, a tidied title, styles, up to three highlights and a few names. It also shows the
