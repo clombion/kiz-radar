@@ -195,3 +195,11 @@ select.mini { font-size: .88rem; border-radius: 999px; padding: .3rem .7rem; bac
   .sentence-hero .kicker { margin-bottom: 1.2rem; }
   .sentence-hero .live { margin-top: 1rem; }
 }
+
+/* hint under the "Map & artists" tab */
+.tabs a[data-nav="explore"] { position: relative; }
+.note-tab { top: calc(100% + .15rem); right: 35%; flex-direction: row; align-items: flex-start; font-size: 1rem; }
+.note-tab .hand { order: 1; transform: translateY(1.35rem) rotate(-2deg); }
+.note-tab .arrow { order: 2; transform: scaleX(-1); }
+.note-tab.away { opacity: 0; }
+.tabs a[data-nav="explore"].active .note-tab { display: none; }

@@ -21,6 +21,7 @@ let M, cleanup;
 const EXPLORE = [['map', 'Map'], ['artists', 'Artists'], ['countries', 'Countries'], ['sql', 'SQL']];
 
 function route() {
+  if (!/^#?(finder|$)/.test(location.hash.slice(1) || 'finder')) { try { localStorage.setItem('kr-explore-seen', '1'); } catch {} }
   const [path, qs = ''] = (location.hash.slice(1) || 'finder').split('?');
   const [view, ...sub] = path.split('/');
   const name = view === 'artist' ? 'artists' : view;

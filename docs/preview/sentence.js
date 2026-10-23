@@ -110,7 +110,16 @@ export function sentenceView(root, qs, { home }) {
   const header = document.querySelector('header.top');
   const place_ = () => { if (header) bar.style.top = header.getBoundingClientRect().height + 'px'; };
   place_(); addEventListener('resize', place_);
-  const io = new IntersectionObserver(([en]) => bar.classList.toggle('shown', !en.isIntersecting), { rootMargin: '-60px 0px 0px 0px' });
+  // a hint under the "Map & artists" tab, until someone has been there
+  let exploreSeen = false;
+  try { exploreSeen = localStorage.getItem('kr-explore-seen') === '1'; } catch {}
+  const tab = document.querySelector('a[data-nav="explore"]');
+  const tabNote = tab && !exploreSeen ? note('note-tab', 'up', 'psst… the map & artists are over here') : null;
+  if (tabNote) tab.append(tabNote);
+  const io = new IntersectionObserver(([en]) => {
+    bar.classList.toggle('shown', !en.isIntersecting);
+    tabNote?.classList.toggle('away', !en.isIntersecting);          // don't float over the cards
+  }, { rootMargin: '-60px 0px 0px 0px' });
   io.observe(hero);
 
   function render() {
@@ -135,7 +144,7 @@ export function sentenceView(root, qs, { home }) {
   render();
   requestAnimationFrame(() => Object.values(sentenceBlanks).forEach(fit));       // after the serif font has loaded
   document.fonts?.ready.then(() => Object.values(sentenceBlanks).forEach(fit));
-  return () => { io.disconnect(); removeEventListener('resize', place_); };
+  return () => { io.disconnect(); removeEventListener('resize', place_); tabNote?.remove(); };
 }
 
 function card(e, home) {
