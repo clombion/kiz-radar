@@ -60,12 +60,13 @@ export function finderView(root, qs, { home }) {
   const nCountries = one('SELECT count(DISTINCT country_code) AS n FROM events').n;
 
   const hero = h('header', { class: 'hero' },
-    h('h1', {}, 'Kizomba festivals you can fly to from Bergen'),
-    h('p', { class: 'lede' }, 'Every card shows the return flight for that festival’s weekend (Friday out, Monday back). Set a budget to see what’s within reach.'),
+    h('div', { class: 'intro' },
+      h('h1', {}, 'Kizomba festivals you can fly to from Bergen'),
+      h('p', { class: 'lede' }, 'Every card shows the return flight for that festival’s weekend (Friday out, Monday back). Set a budget to see what’s within reach.')),
     h('ul', { class: 'stats' },
       h('li', {}, h('strong', {}, six.length), ' festivals in the next 6 months'),
-      h('li', {}, h('strong', {}, under), ' with flights under €250'),
-      cheapest != null ? h('li', {}, 'cheapest flight ', h('strong', {}, euro(cheapest))) : null),
+      h('li', {}, h('strong', {}, under), ' with return flights under €250'),
+      cheapest != null ? h('li', {}, h('strong', {}, euro(cheapest)), ' cheapest return flight') : null),
     h('p', { class: 'also muted small' }, 'Also: ', h('a', { href: '#map' }, 'every festival on a map'), ' · ',
       h('a', { href: '#artists' }, 'who teaches where'), ' · ', h('a', { href: '#countries' }, 'which scenes book foreign artists')));
 
@@ -103,13 +104,15 @@ export function finderView(root, qs, { home }) {
   const FIRST = 6;        // keep "more options" and the explore cards within reach
   const relax = h('section', { class: 'relax' });
   const teasers = h('section', { class: 'teasers' },
-    h('h2', {}, 'Explore the scene'),
+    h('h2', {}, 'Map & artists'),
     h('div', { class: 'teaser-grid' },
       teaser('#map', '🗺️', 'Map', `All ${nEvents} festivals on a map, coloured by flight price. Tap a city to see its festivals.`),
       teaser('#artists', '💃', 'Artists', `${nArtists.toLocaleString('en')} teachers and DJs: how often they’re booked, and where they travel.`),
       teaser('#countries', '🌍', 'Countries', `${nCountries} countries compared: festivals, line-ups, imported artists, cheapest airport.`)));
 
-  root.replaceChildren(h('section', { class: 'finder2' }, hero, controls, head, chips, list, showAll, relax, teasers));
+  root.replaceChildren(h('section', { class: 'finder2' }, hero,
+    h('div', { class: 'layout' }, h('aside', { class: 'side' }, controls),
+      h('div', { class: 'results' }, head, chips, list, showAll, relax)), teasers));
   showAll.addEventListener('click', () => { expanded = true; sync(); });
 
   function sync() {

@@ -205,7 +205,6 @@ export function mapView(root, sub, qs, { home }) {
       history.replaceState(null, '', '#map' + query()); highlight(); renderPanel();
     }
   });
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { if (mapEl.isConnected) { drawWorld(land); redraw(); } });
 
   redraw({ fit: !!state.country });
   if (state.event) {
