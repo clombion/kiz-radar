@@ -114,7 +114,7 @@ export function sentenceView(root, qs, { home }) {
   let exploreSeen = false;
   try { exploreSeen = localStorage.getItem('kr-explore-seen') === '1'; } catch {}
   const tab = document.querySelector('a[data-nav="explore"]');
-  const tabNote = tab && !exploreSeen ? note('note-tab', 'up', 'psst… the map & artists are over here') : null;
+  const tabNote = tab && !exploreSeen ? note('note-tab', 'up', 'psst… more here') : null;
   if (tabNote) tab.append(tabNote);
   const io = new IntersectionObserver(([en]) => {
     bar.classList.toggle('shown', !en.isIntersecting);

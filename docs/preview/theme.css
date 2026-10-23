@@ -176,8 +176,8 @@ select.mini { font-size: .88rem; border-radius: 999px; padding: .3rem .7rem; bac
   font-family: "Caveat", "Comic Sans MS", cursive; font-weight: 600; font-size: 1.05rem; line-height: 1; letter-spacing: 0;
   color: color-mix(in srgb, var(--accent) 45%, var(--muted)); opacity: .85; transition: opacity .4s; }
 .note .arrow svg { display: block; width: 34px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.note-top { bottom: calc(100% - .15em); left: 55%; }
-.note-top .hand { transform: translateY(-.55em) rotate(-3deg); order: 2; }
+.note-top { bottom: calc(100% - .3em); left: 50%; align-items: flex-start; }
+.note-top .hand { transform: translate(-.15rem, -.2rem) rotate(-3deg); order: 2; }
 .note-top .arrow { order: 1; }
 .note-bottom { top: calc(100% + .1em); left: 35%; align-items: flex-start; }
 .note-bottom .hand { transform: translateY(.9em) rotate(2deg); }
@@ -198,8 +198,8 @@ select.mini { font-size: .88rem; border-radius: 999px; padding: .3rem .7rem; bac
 
 /* hint under the "Map & artists" tab */
 .tabs a[data-nav="explore"] { position: relative; }
-.note-tab { top: calc(100% + .15rem); right: 35%; flex-direction: row; align-items: flex-start; font-size: 1rem; }
-.note-tab .hand { order: 1; transform: translateY(1.35rem) rotate(-2deg); }
+.note-tab { top: calc(100% + .15rem); right: 30%; flex-direction: row; align-items: flex-start; font-size: 1rem; }
+.note-tab .hand { order: 1; transform: translate(.2rem, 1.2rem) rotate(-2deg); }
 .note-tab .arrow { order: 2; transform: scaleX(-1); }
 .note-tab.away { opacity: 0; }
 .tabs a[data-nav="explore"].active .note-tab { display: none; }
