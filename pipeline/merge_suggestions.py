@@ -58,6 +58,10 @@ def main():
     for cid, mid in c.execute('select couple_id, member_id from couple_members'):
         members[cid].append(norm(art[mid][0]))
     done, group = decided()
+    # The built site DB knows every merge, including members merged along with their couples.
+    site = os.path.join(ROOT, 'docs', 'data', 'kiz.sqlite')
+    moved = dict(sqlite3.connect(f'file:{site}?mode=ro', uri=True).execute('select old_id, new_id from artist_redirects')) \
+        if os.path.exists(site) else {}
 
     # Country of origin: what line-ups state next to the name (flags or text); members without one take their
     # couple's; failing that, the country where the artist is booked most. Marked '~' when only inferred.
@@ -126,7 +130,7 @@ def main():
 
     def add(a, b, score, reason):
         ka, kb = art[a][1], art[b][1]
-        if a == b or frozenset((ka, kb)) in done or group(ka) == group(kb): return
+        if a == b or frozenset((ka, kb)) in done or group(ka) == group(kb) or moved.get(a, a) == moved.get(b, b): return
         keep, merge = sorted((a, b), key=lambda i: (-booked[i], i))   # keep the more booked one
         k = (keep, merge)
         if k in rows and rows[k]['similarity'] >= score: return

@@ -1,17 +1,6 @@
 decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,keep_countries,merge_countries,countries,calendar,calendar_note,similarity,score,reason
-,p:amina@dance,p:amina@amina+ledoukingsman,Amina,Amina,1,0,SE,FR SE,same,shared circuit,same city: stockholm,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:amina@dance,p:amina@amina+mamadou,Amina,Amina,1,0,SE,SE,same,shared circuit,same city: stockholm,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:chris@chris+clara,p:chris@chris+eva,Chris,Chris,0,0,DE,DE,same,shared circuit,same city: stuttgart,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:david@david+laura,p:davide@cilene+davide,Davide,DAVIDE,0,0,IT,AO CV IT,same,shared circuit,same city: milano,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:didier@didier+manon,p:didier@didier+vanessa,Didier,Didier,0,0,GP,GP,same,shared circuit,same city: pointe-à-pitre,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:gazl@gazl+isabelle,p:gazl@gazl+katariina,Gazl,Gazl,0,0,FR,FR,same,shared circuit,same city: stockholm,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:giorgia@giorgia+kinkela,p:giorgia@giorgia+kinkizomba,Giorgia,Giorgia,0,0,AO,AO IT,same,shared circuit,same city: bielefeld,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:jasmine@dance,p:jasmine@jasmine+stevesteven,JASMINE,JASMINE,1,0,DE,DE FR,same,shared circuit,same city: prague,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:johann@estelle+johann,p:johann@johann+laeticia,Johann,Johann,0,0,FR,FR,same,shared circuit,same city: pointe-à-pitre,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:katalin@dance,p:katalin@katalin+mathias,KATALIN,Katalin,1,0,AT,AT HU,same,shared circuit,same city: vienna,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:luismi@arantxa+luismi,p:luismi@luismi+marian,Luismi,Luismi,0,0,ES,ES,same,shared circuit,same city: liège,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:mamadou@dance,p:mamadou@amina+mamadou,Mamadou,Mamadou,2,0,SE,SE,same,shared circuit,same city: stockholm,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:mickaela@dance,p:mickaela@mamadou+mickaela,Mickaela,Mickaela,3,0,SE,SE,same,shared circuit,same city: stockholm,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:monica@dance,p:monica@jorelle+monica,Monica,Monica,1,0,CA,CA,same,shared circuit,same city: victoria,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:moorea@dance,p:moorea@ironmams+moorea,Moorea,Moorea,6,0,FR GF,CH FR GF SN,same,shared circuit,same city: lyon,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:nuno@catia+nuno,p:nuno@nagyla+nuno,NUNO,Nuno,0,0,ES PT,PT,same,shared circuit,same city: barcelona,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
@@ -63,8 +52,6 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:ines@dance,p:ines@ines+pedro,INÈS,Inês,1,0,PT,PT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:jorge@angela+jorge,p:jorge@jorge+monica,Jorge,Jorge,0,0,ES,CZ ES,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:jose@anja+jose,p:jose@coralie+jose,JOSE,José,0,0,CH,CH,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:katalin@dance,p:katalin@azmael+katalin,KATALIN,Katalin,1,0,AT,AT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:katalin@azmael+katalin,p:katalin@katalin+mathias,Katalin,Katalin,0,0,AT,AT HU,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:kiki@dance,p:kiki@fuego+kiki,Kiki,Kiki,5,0,DE,DE FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:kiki@fuego+kiki,p:kiki@heneco+kiki,Kiki,KIKI,0,0,DE FR,DE FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:kiki@fuego+kiki,p:kiki@kiki+selim,Kiki,Kiki,0,0,DE FR,DE FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
@@ -124,7 +111,6 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,c:jules@jules+yuna+yuna@jules+yuna,c:jules@jules+juna+juna@jules+juna,Jules & Yuna,Jules & Juna,12,1,CM FR,~FR,same,no clash,,0.88,0.97,couple with matching names
 ,c:maria@maria+vincenzo+vincenzo@maria+vincenzo,c:ilaria@ilaria+vincenzo+vincenzo@ilaria+vincenzo,Maria & Vincenzo,Vincenzo & Ilaria,3,1,GR IT,~IT,same,no clash,,0.86,0.96,couple with matching names
 ,c:andrea@andrea+katia+katia@andrea+katia,c:andrea@andrea+katja+katja@andrea+katja,Andrea & Katia,Andrea & Katja,1,1,~IT,~IT,same,same line-up,"both listed as teacher at the event of 2026-03-13 in Castelfidardo, Italy",0.9,0.95,couple with matching names
-,p:benjamin@benjamin+stephanie,p:benjamine@benjamine+stephanie,BENJAMIN,BENJAMINE,0,0,,FR,unknown,no clash,,0.94,0.94,"same partner, one name shortens the other"
 ,p:sara@kevin+sara,p:sarah@kevin+sarah,Sara,Sarah,0,0,,GB,unknown,shared circuit,same city: manchester,0.89,0.94,"same partner, one name shortens the other"
 ,c:andrea@andrea+silvia+silvia@andrea+silvia,c:andrea@andrea+giulia+giulia@andrea+giulia,Andrea & Silvia,Andrea y Giulia,4,1,IT,~IT,same,same line-up,"both listed as teacher at the event of 2026-10-15 in Pesaro, Italy",0.83,0.93,couple with matching names
 ,c:chris@chris+clara+clara@chris+clara,c:chris@chris+larissa+larissa@chris+larissa,Chris & Clara,Chris & Larissa,1,1,DE,~DE,same,no clash,,0.83,0.93,couple with matching names
