@@ -1,7 +1,7 @@
 // Variant: festival guide. Festivals grouped by month as magazine-style entries; the flight is a quiet line.
 import { h, range, addDays } from '../js/ui.js';
 import { eventDetail } from '../js/event.js';
-import { festivals, filtersBar, visible, flightLine, place, byMonth, footerLinks, styleLine, MONTHS, DAY, SHORT, d,
+import { withArtists, festivals, filtersBar, visible, flightLine, place, byMonth, footerLinks, styleLine, MONTHS, DAY, SHORT, d,
          stateFromHash, writeHash } from './common.js';
 
 const DEFAULTS = { months: 4, style: 'kiz', reach: 'any' };
@@ -49,7 +49,7 @@ function entry(e, home) {
       h('p', { class: 'where' }, place(e), ' · ', e.projected ? `likely ${range(start, end)}` : range(start, end)),
       h('h3', {}, e.title),
       styleLine(e) ? h('p', { class: 'styles' }, styleLine(e), extras.length ? ' — ' + extras.join(', ') : '') : extras.length ? h('p', { class: 'styles' }, extras.join(', ')) : null,
-      e.headliners.length ? h('p', { class: 'with' }, 'With ', e.headliners.join(', '), e.lineup > e.headliners.length ? ' and more' : '') : null,
+      e.headliners.length ? withArtists(e) : null,
       e.projected ? h('p', { class: 'with muted' }, 'Last year’s edition was this weekend; this year’s dates aren’t listed yet.') : null,
       h('div', { class: 'entry-foot' }, flightLine(e, home), toggle, h('a', { href: `#map/event/${e.id}`, class: 'small' }, 'On the map')),
       more));

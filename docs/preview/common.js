@@ -13,14 +13,24 @@ export function festivals(home) {
   const rows = candidates({ months: 12, projected: true }, home);
   // the best-known names on each line-up (couples count as one act)
   const heads = {};
-  for (const r of q(`SELECT ea.event_id, a.display_name, st.bookings FROM event_artists ea JOIN artists a ON a.id = ea.artist_id
+  for (const r of q(`SELECT ea.event_id, a.id, a.display_name, st.bookings FROM event_artists ea JOIN artists a ON a.id = ea.artist_id
       JOIN artist_stats st ON st.artist_id = a.id WHERE ea.role IN ('teacher','dj') AND ea.as_couple IS NULL
       ORDER BY ea.event_id, st.bookings DESC`)) {
-    (heads[r.event_id] ||= []).length < 3 && heads[r.event_id].push(r.display_name);
+    (heads[r.event_id] ||= []).length < 3 && heads[r.event_id].push({ id: r.id, name: r.display_name, popular: r.bookings >= 10 });
   }
   const styles = {};
   for (const r of q(`SELECT event_id, genre FROM event_genres WHERE source = 'description'`)) (styles[r.event_id] ||= new Set()).add(r.genre);
   return rows.map(e => ({ ...e, headliners: heads[e.id] || [], styles: styles[e.id] || new Set() }));
+}
+
+// "With A, B and C": the best-known names as links to their artist pages
+export const names = e => e.headliners.map(a => a.name);
+export function withArtists(e, { more = true } = {}) {
+  const links = e.headliners.map(a => h('a', { href: `#artist/${a.id}`, class: 'artist',
+    onclick: () => { try { localStorage.setItem('kr-artist-seen', '1'); } catch {} } }, a.name));
+  const rest = (e.lineup || 0) - e.headliners.length;
+  return h('p', { class: 'with' }, 'With ', ...links.flatMap((l, i) => i ? [i === links.length - 1 && !(more && rest > 0) ? ' and ' : ', ', l] : [l]),
+    more && rest > 0 ? h('span', { class: 'muted' }, ` and ${rest} more`) : null);
 }
 
 const STYLE_NAMES = { kizomba: 'Kizomba', urbankiz: 'Urban Kiz', semba: 'Semba', tarraxo: 'Tarraxo', tarraxinha: 'Tarraxinha',

@@ -1,6 +1,6 @@
 // Variant: season planner. The coming months as a calendar of weekends, each festival on one line.
 import { h } from '../js/ui.js';
-import { festivals, filtersBar, visible, flightLine, place, footerLinks, MONTHS, SHORT, WEEKDAY, d, stateFromHash, writeHash } from './common.js';
+import { names, festivals, filtersBar, visible, flightLine, place, footerLinks, MONTHS, SHORT, WEEKDAY, d, stateFromHash, writeHash } from './common.js';
 
 const DEFAULTS = { months: 6, style: 'kiz', reach: 'any' };
 
@@ -38,7 +38,7 @@ export function seasonView(root, qs, { home }) {
           h('ul', { class: 'fests' }, evs.map(e => h('li', {},
             h('a', { href: `#map/event/${e.id}`, class: 'name' }, e.title),
             h('span', { class: 'meta' }, place(e), e.projected ? ' · likely, dates not out yet' : '',
-              e.taxi_dancers ? ' · taxi dancers' : '', e.headliners[0] ? ` · with ${e.headliners.slice(0, 2).join(', ')}` : ''),
+              e.taxi_dancers ? ' · taxi dancers' : '', e.headliners[0] ? ` · with ${names(e).slice(0, 2).join(', ')}` : ''),
             flightLine(e, home))))))))));
   }
   render();

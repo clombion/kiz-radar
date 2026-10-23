@@ -203,3 +203,11 @@ select.mini { font-size: .88rem; border-radius: 999px; padding: .3rem .7rem; bac
 .note-tab .arrow { order: 2; transform: scaleX(-1); }
 .note-tab.away { opacity: 0; }
 .tabs a[data-nav="explore"].active .note-tab { display: none; }
+
+/* artist names on cards: same dashed underline as the sentence blanks = "tap me" */
+a.artist { color: var(--text); text-decoration: none; border-bottom: 1.5px dashed color-mix(in srgb, var(--accent) 55%, transparent); }
+a.artist:hover, a.artist:focus-visible { color: var(--accent); border-bottom-style: solid; border-bottom-color: var(--accent); }
+.note-artist { position: static; display: flex; margin: -.1rem 0 .1rem .4rem; font-size: 1rem; align-items: flex-start; }
+.note-artist .arrow svg { width: 28px; height: 24px; }
+.note-artist .hand { padding-top: .5rem; transform: rotate(-1.5deg); }
+@media (max-width: 640px) { .note-artist { display: flex; } }

@@ -2,7 +2,7 @@
 // choices (plus "More filters") once the sentence has scrolled away.
 import { h, range, addDays, countryName, flag, today } from '../js/ui.js';
 import { eventDetail } from '../js/event.js';
-import { festivals, flightLine, place, styleLine, DAY, SHORT, d, stateFromHash, writeHash } from './common.js';
+import { withArtists, festivals, flightLine, place, styleLine, DAY, SHORT, d, stateFromHash, writeHash } from './common.js';
 
 const DEFAULTS = { style: 'kiz', months: 3, reach: 'any', country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0, sort: 'date' };
 const LOOSEST = { style: 'all', months: 12, reach: 'any', country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0 };
@@ -137,7 +137,7 @@ export function sentenceView(root, qs, { home }) {
       : 'Nothing like that yet. Try a longer time, anywhere, or any price.');
     barCount.textContent = `${rows.length} festival${rows.length === 1 ? '' : 's'}`;
     results.replaceChildren(rows.length
-      ? h('div', { class: 'calm-cards' }, rows.map(e => card(e, home)))
+      ? h('div', { class: 'calm-cards' }, rows.map((e, i) => card(e, home, i === firstWithArtists(rows) && !artistSeen())))
       : h('p', { class: 'empty' }, 'No festival fits all of that. ',
           h('button', { type: 'button', class: 'link', onclick: () => { Object.assign(s, LOOSEST); render(); } }, 'Show all events instead')));
   }
@@ -147,7 +147,11 @@ export function sentenceView(root, qs, { home }) {
   return () => { io.disconnect(); removeEventListener('resize', place_); tabNote?.remove(); };
 }
 
-function card(e, home) {
+// the hint about artist names goes on the first card that has any, until someone has opened an artist
+const firstWithArtists = rows => rows.findIndex(e => e.headliners.length);
+const artistSeen = () => { try { return localStorage.getItem('kr-artist-seen') === '1'; } catch { return false; } };
+
+function card(e, home, hint = false) {
   const start = e.projected ? e.depart : e.start_date, end = e.projected ? addDays(e.depart, 2) : (e.end_date || e.start_date);
   const more = h('div', { class: 'calm-more', hidden: true });
   const toggle = h('button', { class: 'link', 'aria-expanded': 'false', onclick: () => {
@@ -163,7 +167,8 @@ function card(e, home) {
       h('div', {}, h('p', { class: 'where' }, place(e)), h('p', { class: 'when' }, e.projected ? `likely ${range(start, end)}` : range(start, end)))),
     h('h3', {}, e.title),
     styleLine(e) || extras.length ? h('p', { class: 'styles' }, [styleLine(e), extras.join(', ')].filter(Boolean).join(' · ')) : null,
-    e.headliners.length ? h('p', { class: 'with' }, 'With ', e.headliners.join(', ')) : null,
+    e.headliners.length ? withArtists(e) : null,
+    hint ? note('note-artist', 'up', 'click', ' a name to see where else they teach') : null,
     e.projected ? h('p', { class: 'with muted' }, 'This year’s dates aren’t out yet.') : null,
     h('div', { class: 'foot' }, flightLine(e, home)),
     h('div', { class: 'actions' }, toggle, h('a', { href: `#map/event/${e.id}` }, 'Map')),
