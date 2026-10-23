@@ -75,3 +75,7 @@ test('only hints.js touches localStorage', () => {
 test('the home city comes from the data, not the code', () => {
   assert.deepEqual(Object.entries(js).filter(([, s]) => /Bergen|'BGO'/.test(s)).map(([f]) => f), []);
 });
+
+test('dates and flight links are formatted in ui.js', () => {
+  assert.deepEqual(Object.entries(js).filter(([f, s]) => f !== 'ui.js' && /Intl\.DateTimeFormat|toLocaleDateString|google\.com\/travel/.test(s)).map(([f]) => f), []);
+});
