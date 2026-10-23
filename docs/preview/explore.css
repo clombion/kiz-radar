@@ -99,13 +99,8 @@
 .country-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 1rem; }
 .country-row { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: .45rem; }
 .country-row p { margin: 0; }
-.c-name { display: flex; gap: .8rem; align-items: center; }
-.big-flag { font-size: 2rem; line-height: 1; }
-.c-name h2 { margin: 0; font-size: 1.15rem; }
-.c-count { font-size: .9rem; }
 .country-row .flight { font-size: .92rem; }
 .country-row .flight.easy strong { color: var(--good); }
-.c-facts { font-size: .86rem; color: var(--muted); }
 .c-links { font-size: .88rem; border-top: 1px solid var(--border); padding-top: .55rem; margin-top: auto !important; }
 .c-links a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
 
@@ -124,3 +119,21 @@
 @media (max-width: 520px) { .countries-page .seg button { padding: .32rem .6rem; font-size: .82rem; } }
 .seg button { white-space: nowrap; }
 @media (max-width: 520px) { .countries-page .seg { max-width: 100%; overflow-x: auto; } }
+
+/* country cards, take two: name and the count on one line, then one fact per line */
+.country-row { gap: .35rem; }
+.country-row .c-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: .3rem; }
+.country-row h2 { margin: 0; font-size: 1.15rem; display: flex; align-items: center; gap: .5rem; }
+.c-flag { font-size: 1.5rem; line-height: 1; }
+.c-num { text-align: right; line-height: 1.1; flex: none; }
+.c-num strong { display: block; font-size: 1.5rem; }
+.c-num span { font-size: .72rem; color: var(--muted); }
+.c-fact { font-size: .88rem; color: var(--muted); }
+.sort-label { font-size: .88rem; color: var(--muted); }
+.countries-page .map-bar .check { flex-basis: 100%; }
+/* back to top, once a long list has scrolled away */
+.to-top { position: fixed; right: 16px; bottom: 16px; z-index: 950; border: 1px solid var(--border); background: var(--surface);
+  color: var(--accent); font: 600 .88rem Inter, system-ui, sans-serif; padding: .55rem .9rem; border-radius: 999px;
+  box-shadow: 0 6px 18px rgb(42 31 34 / .14); cursor: pointer; opacity: 0; transform: translateY(8px); pointer-events: none; transition: opacity .2s, transform .2s; }
+.to-top.shown { opacity: 1; transform: none; pointer-events: auto; }
+body:has(.pmap) .to-top { display: none; }

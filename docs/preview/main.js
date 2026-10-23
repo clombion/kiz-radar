@@ -55,6 +55,11 @@ window.addEventListener('hashchange', () => {
   route(); window.scrollTo(0, 0);
 });
 
+// "Back to top" once you're two screens down a long list
+const toTop = h('button', { type: 'button', class: 'to-top', onclick: () => window.scrollTo({ top: 0, behavior: 'smooth' }) }, '↑ Back to top');
+document.body.append(toTop);
+addEventListener('scroll', () => toTop.classList.toggle('shown', scrollY > 2 * innerHeight), { passive: true });
+
 load(s => { status.textContent = s; }).then(() => {
   M = meta();
   const fresh = document.getElementById('freshness');

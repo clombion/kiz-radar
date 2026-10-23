@@ -4,7 +4,8 @@ import { q } from '../js/db.js';
 import { h, flag, countryName, euro, today } from '../js/ui.js';
 import { cityOf } from './eventcard.js';
 
-const SORTS = [['upcoming', 'Most festivals'], ['fare', 'Cheapest flights'], ['open', 'Most international']];
+// sorted by: festivals coming up, the cheapest flight, the share of visiting artists
+const SORTS = [['upcoming', 'Festivals coming up'], ['fare', 'Flight price'], ['open', 'Visiting artists']];
 
 // share of teacher and DJ bookings that go to artists from elsewhere, in words
 const scene = pct => pct == null ? null : pct >= 50 ? 'Mostly visiting artists' : pct >= 25 ? 'Local and visiting artists' : 'Mostly local artists';
@@ -30,7 +31,7 @@ export function countriesView(root, qs, { home }) {
   root.replaceChildren(h('section', { class: 'countries-page' },
     h('header', { class: 'page-intro' }, h('h1', {}, 'Where the scenes are'),
       h('p', {}, 'Every country with festivals in the listings: how many are coming up, what flying there from Bergen costs, and whether the line-ups are mostly local or international.')),
-    h('div', { class: 'map-bar' }, seg, h('label', { class: 'check' }, allBox, ' Include countries with nothing coming up')),
+    h('div', { class: 'map-bar' }, h('span', { class: 'sort-label' }, 'Sort by'), seg, h('label', { class: 'check' }, allBox, ' Include countries with nothing coming up')),
     summary, list));
 
   function render() {
@@ -53,20 +54,18 @@ export function countriesView(root, qs, { home }) {
 }
 
 function row(r) {
-  const facts = [scene(r.imported_pct) && h('span', { title: `${r.imported_pct}% of teacher and DJ bookings go to artists from other countries` }, scene(r.imported_pct)),
-    r.avg_lineup >= 1 && `about ${Math.round(r.avg_lineup)} artists per festival`,
-    r.taxi_dancers && `${r.taxi_dancers} with taxi dancers`].filter(Boolean);
+  const line = [scene(r.imported_pct), r.avg_lineup >= 1 && `about ${Math.round(r.avg_lineup)} per festival`].filter(Boolean).join(', ');
   return h('li', { class: 'country-row' },
-    h('div', { class: 'c-name' }, h('span', { class: 'big-flag', 'aria-hidden': 'true' }, flag(r.country_code)),
-      h('div', {}, h('h2', {}, r.name),
-        h('p', { class: 'c-count' }, r.upcoming ? `${r.upcoming} festival${r.upcoming === 1 ? '' : 's'} coming up` : 'Nothing coming up',
-          h('span', { class: 'muted' }, ` · ${r.events} in the listings`)))),
+    h('div', { class: 'c-head' },
+      h('h2', {}, h('span', { class: 'c-flag', 'aria-hidden': 'true' }, flag(r.country_code)), r.name),
+      h('p', { class: 'c-num' }, h('strong', {}, r.upcoming), h('span', {}, r.upcoming === 1 ? 'festival coming up' : 'festivals coming up'))),
     h('p', { class: 'flight' + (r.fare && r.fare.price <= 150 ? ' easy' : '') }, r.fare
       ? ['✈ from ', h('strong', {}, '~' + euro(r.fare.price)), ` to ${cityOf(r.fare.airport)}`]
       : h('span', { class: 'muted' }, '✈ no flight prices yet')),
-    facts.length ? h('p', { class: 'c-facts' }, facts.flatMap((f, i) => [i ? ' · ' : '', f])) : null,
+    line ? h('p', { class: 'c-fact', title: r.imported_pct != null ? `${r.imported_pct}% of teacher and DJ bookings go to artists from other countries` : null }, line) : null,
+    r.taxi_dancers ? h('p', { class: 'c-fact' }, `${r.taxi_dancers} festival${r.taxi_dancers === 1 ? '' : 's'} with taxi dancers`) : null,
     h('p', { class: 'c-links' },
       r.upcoming ? [h('a', { href: `#finder?country=${r.country_code}&months=12&style=all` }, 'Festivals'), ' · '] : null,
-      h('a', { href: `#map?country=${r.country_code}&when=${r.upcoming ? 'upcoming' : 'all'}` }, 'On the map'), ' · ',
+      h('a', { href: `#map?country=${r.country_code}&when=${r.upcoming ? 'upcoming' : 'all'}` }, 'Map'), ' · ',
       h('a', { href: `#artists?country=${r.country_code}` }, 'Artists')));
 }
