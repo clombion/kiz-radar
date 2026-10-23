@@ -7,6 +7,19 @@ import { festivals, flightLine, place, styleLine, DAY, SHORT, d, stateFromHash, 
 const DEFAULTS = { style: 'kiz', months: 3, reach: 'any', country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0, sort: 'date' };
 const LOOSEST = { style: 'all', months: 12, reach: 'any', country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0 };
 
+// Hand-drawn hints next to the blanks. Static SVG, so building it from a string is safe.
+const ARROWS = {
+  down: '<svg viewBox="0 0 64 52" width="54" height="44"><path d="M58 9 C40 5 20 14 13 41"/><path d="M13 41 L6 31 M13 41 L22 35"/></svg>',
+  up: '<svg viewBox="0 0 64 52" width="54" height="44"><path d="M56 44 C36 45 18 34 13 9"/><path d="M13 9 L6 19 M13 9 L21 16"/></svg>',
+};
+function note(cls, arrow, ...text) {
+  const art = h('span', { class: 'arrow' }); art.innerHTML = ARROWS[arrow];
+  const words = h('span', { class: 'hand' }, ...text.map(t => t === 'click' ? [h('span', { class: 'click' }, 'click'), h('span', { class: 'tap' }, 'tap')] : t));
+  return h('span', { class: 'note ' + cls, 'aria-hidden': 'true' }, ...(arrow === 'down' ? [words, art] : [art, words]));
+}
+let seenHints = false;
+try { seenHints = localStorage.getItem('kr-hints-seen') === '1'; } catch {}
+
 const STYLE = [['kiz', 'Kizomba & Urban Kiz'], ['all', 'any kizomba style']];
 const WHEN = [[1, 'the next month'], [2, 'the next two months'], [3, 'the next three months'], [6, 'the next six months'], [12, 'the coming year']];
 const REACH = [['any', 'anywhere'], [250, 'somewhere under €250 return'], [150, 'somewhere under €150 return']];
@@ -35,7 +48,7 @@ export function sentenceView(root, qs, { home }) {
   const blank = (key, opts, cls = 'blank') => {
     const el = h('select', { class: cls, 'aria-label': key }, opts.map(([v, t]) => h('option', { value: v }, t)));
     el.value = String(s[key]);
-    el.addEventListener('change', () => { s[key] = /^\d+$/.test(el.value) ? Number(el.value) : el.value; render(); });
+    el.addEventListener('change', () => { s[key] = /^\d+$/.test(el.value) ? Number(el.value) : el.value; hideHints(); render(); });
     return el;
   };
   // a native select is as wide as its longest option; size the sentence blanks to the chosen one instead
@@ -45,8 +58,11 @@ export function sentenceView(root, qs, { home }) {
   const live = h('p', { class: 'live', 'aria-live': 'polite' });
   const hero = h('header', { class: 'sentence-hero' },
     h('p', { class: 'kicker' }, 'Kizomba Radar'),
-    h('p', { class: 'sentence' }, 'I’d like to dance ', sentenceBlanks.style, ' at a festival in ', sentenceBlanks.months,
-      ', flying from Bergen to ', h('span', { class: 'nowrap' }, sentenceBlanks.reach, '.'), ruler),
+    h('p', { class: 'sentence' }, 'I’d like to dance ',
+      h('span', { class: 'anchor' }, sentenceBlanks.style, note('note-top', 'down', 'click', ' to change the dance')),
+      ' at a festival in ', sentenceBlanks.months, ', flying from Bergen to ',
+      h('span', { class: 'nowrap anchor' }, sentenceBlanks.reach, '.', note('note-bottom', 'up', '…or where you’d like to go')), ruler),
+    note('note-inline', 'up', 'click', ' the coloured words to change the dance, dates or destination'),
     live,
     h('p', { class: 'nevermind' }, h('button', { type: 'button', class: 'link', onclick: () => {
       Object.assign(s, LOOSEST); render(); results.scrollIntoView({ behavior: 'smooth' }); } }, 'Never mind, show me all events')));
@@ -79,6 +95,12 @@ export function sentenceView(root, qs, { home }) {
   document.addEventListener('click', ev => { if (!panel.hidden && !bar.contains(ev.target)) { panel.hidden = true; moreBtn.setAttribute('aria-expanded', 'false'); } });
 
   const results = h('section', { class: 'sentence-results' });
+  // once someone has changed a blank they've got it: fade the hints, and don't show them again
+  function hideHints() {
+    hero.classList.add('hints-done');
+    try { localStorage.setItem('kr-hints-seen', '1'); } catch {}
+  }
+  if (seenHints) hero.classList.add('hints-done');
   root.replaceChildren(h('div', { class: 'sentence-page' }, hero, bar, results));
   // sit flush under the site header, whatever its height on this screen
   const header = document.querySelector('header.top');
