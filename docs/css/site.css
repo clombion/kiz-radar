@@ -335,8 +335,11 @@ body:has(.pmap) .to-top { display: none; }
   .map-panel { position: fixed; left: 0; right: 0; bottom: 0; z-index: 1000; height: 82dvh; background: var(--bg); border-radius: 18px 18px 0 0; box-shadow: 0 -8px 28px rgb(42 31 34 / .16); transform: translateY(calc(100% - 64px)); transition: transform .25s ease; }
   .map-panel.up { transform: none; }
   .sheet-handle { all: unset; display: flex; flex-direction: column; align-items: center; gap: .35rem; padding: .55rem 16px .7rem; cursor: pointer; }
-  .sheet-handle .grab { width: 40px; height: 4px; border-radius: 2px; background: var(--border); }
+  .sheet-handle .chevron svg { display: block; fill: none; stroke: var(--muted); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s ease; }
+  .map-panel.up .chevron svg { transform: scaleY(-1); }
+  .sheet-row { display: flex; align-items: center; gap: .7rem; }
   .sheet-title { font-weight: 600; font-size: .95rem; }
+  .sheet-action { font-size: .82rem; font-weight: 600; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: .15rem .65rem; }
   .sheet-body { padding: 0 16px 1.5rem; }
   .map-panel .panel-head { display: none; }
   .map-panel:not(.up) .sheet-body { visibility: hidden; }

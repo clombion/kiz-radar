@@ -61,7 +61,12 @@ export function mapView(root, sub, qs, { signal }) {
     filtersBtn.textContent = `Filters${n ? ` (${n})` : ''} ▾`; };
 
   const mapEl = h('div', { class: 'map', role: 'application', 'aria-label': 'Map of festivals by city' });
-  const handle = h('button', { type: 'button', class: 'sheet-handle', 'aria-expanded': 'false' }, h('span', { class: 'grab', 'aria-hidden': 'true' }), h('span', { class: 'sheet-title' }));
+  // a wide chevron that points the way the sheet will move, and a word saying what a tap does
+  const chevron = h('span', { class: 'chevron', 'aria-hidden': 'true' });
+  chevron.innerHTML = '<svg viewBox="0 0 48 12" width="48" height="12"><path d="M3 10 L24 3 L45 10"/></svg>';
+  const action = h('span', { class: 'sheet-action' }, 'Open');
+  const handle = h('button', { type: 'button', class: 'sheet-handle', 'aria-expanded': 'false' }, chevron,
+    h('span', { class: 'sheet-row' }, h('span', { class: 'sheet-title' }), action));
   const body = h('div', { class: 'sheet-body', 'aria-live': 'polite' });
   const panel = h('aside', { class: 'map-panel' }, handle, body);
   root.replaceChildren(h('section', { class: 'pmap' },
@@ -69,7 +74,7 @@ export function mapView(root, sub, qs, { signal }) {
     h('div', { class: 'map-split' }, mapEl, panel)));
 
   // the sheet on phones: peeks with its title, slides up for the list
-  const setSheet = up => { panel.classList.toggle('up', up); handle.setAttribute('aria-expanded', String(up)); };
+  const setSheet = up => { panel.classList.toggle('up', up); handle.setAttribute('aria-expanded', String(up)); action.textContent = up ? 'Close' : 'Open'; };
   handle.addEventListener('click', () => setSheet(!panel.classList.contains('up')));
   let y0 = null;
   handle.addEventListener('touchstart', ev => { y0 = ev.touches[0].clientY; }, { passive: true });
