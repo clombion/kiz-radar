@@ -173,20 +173,20 @@ select.mini { font-size: .88rem; border-radius: 999px; padding: .3rem .7rem; bac
 /* hand-drawn hints by the blanks */
 .anchor { position: relative; display: inline-block; }
 .note { position: absolute; display: flex; align-items: flex-end; gap: .1rem; pointer-events: none; white-space: nowrap;
-  font-family: "Caveat", "Comic Sans MS", cursive; font-weight: 600; font-size: 1.45rem; line-height: 1; letter-spacing: 0;
-  color: color-mix(in srgb, var(--accent) 70%, var(--muted)); transition: opacity .4s; }
-.note .arrow svg { display: block; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  font-family: "Caveat", "Comic Sans MS", cursive; font-weight: 600; font-size: 1.05rem; line-height: 1; letter-spacing: 0;
+  color: color-mix(in srgb, var(--accent) 45%, var(--muted)); opacity: .85; transition: opacity .4s; }
+.note .arrow svg { display: block; width: 34px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .note-top { bottom: calc(100% - .15em); left: 55%; }
 .note-top .hand { transform: translateY(-.55em) rotate(-3deg); order: 2; }
 .note-top .arrow { order: 1; }
 .note-bottom { top: calc(100% + .1em); left: 35%; align-items: flex-start; }
 .note-bottom .hand { transform: translateY(.9em) rotate(2deg); }
-.note-inline { position: static; display: none; margin: .4rem 0 0 .2rem; font-size: 1.3rem; white-space: normal; align-items: flex-start; }
-.note-inline .hand { padding-top: .9rem; transform: rotate(-1.5deg); }
+.note-inline { position: static; display: none; margin: .3rem 0 0 .2rem; font-size: 1.05rem; white-space: normal; align-items: flex-start; }
+.note-inline .hand { padding-top: .6rem; transform: rotate(-1.5deg); }
 .click { display: none; } .tap { display: inline; }
 @media (hover: hover) and (pointer: fine) { .click { display: inline; } .tap { display: none; } }
-.sentence-hero .kicker { margin-bottom: 2.6rem; }
-.sentence-hero .live { margin-top: 2.8rem; }
+.sentence-hero .kicker { margin-bottom: 2rem; }
+.sentence-hero .live { margin-top: 2.2rem; }
 .hints-done .note { opacity: 0; }
 .hints-done .note-inline { display: none !important; }
 @media (max-width: 640px) {
