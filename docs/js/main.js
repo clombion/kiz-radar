@@ -1,18 +1,21 @@
 // Router and page shell.
 import { load, meta } from './db.js';
-import { h, dayYear, ago } from './ui.js';
-import { finderView } from './finder.js';
+import { h, dayYear } from './ui.js';
+import { sentenceView } from './sentence.js';
 import { mapView } from './map.js';
 import { artistsView } from './artists.js';
-import { countriesView, sqlView } from './tables.js';
+import { sqlView } from './tables.js';
+import { countriesView } from './countries.js';
 
 const main = document.getElementById('main');
 const status = document.getElementById('status');
 let M, cleanup;
 
-const EXPLORE = [['map', 'Map'], ['artists', 'Artists'], ['countries', 'Countries'], ['sql', 'SQL']];
+const EXPLORE = [['map', 'Map'], ['artists', 'Artists'], ['countries', 'Countries']];     // SQL lives in the footer
 
 function route() {
+  if (!/^#?(finder|$)/.test(location.hash.slice(1) || 'finder')) { try { localStorage.setItem('kr-explore-seen', '1'); } catch {} }
+  if (/^#artists?\//.test(location.hash)) { try { localStorage.setItem('kr-artist-seen', '1'); } catch {} }
   const [path, qs = ''] = (location.hash.slice(1) || 'finder').split('?');
   const [view, ...sub] = path.split('/');
   const name = view === 'artist' ? 'artists' : view;
@@ -30,10 +33,10 @@ function route() {
   main.replaceChildren(view_);
   const home = M.home_airport;
   if (name === 'map') cleanup = mapView(view_, sub, qs, { home });
-  else if (name === 'artists') artistsView(view_, sub, qs);
-  else if (name === 'countries') countriesView(view_, home);
+  else if (name === 'artists') artistsView(view_, sub, qs, { home });
+  else if (name === 'countries') countriesView(view_, qs, { home });
   else if (name === 'sql') sqlView(view_);
-  else finderView(view_, qs, { home });
+  else cleanup = sentenceView(view_, qs, { home }) || null;
   const title = { map: 'Map', artists: 'Artists', countries: 'Countries', sql: 'SQL' }[name];
   document.title = title ? `${title} · Kiz Radar` : 'Kiz Radar';
 }
@@ -44,10 +47,16 @@ window.addEventListener('hashchange', () => {
   route(); window.scrollTo(0, 0);
 });
 
+// "Back to top" once you're two screens down a long list
+const toTop = h('button', { type: 'button', class: 'to-top', onclick: () => window.scrollTo({ top: 0, behavior: 'smooth' }) }, '↑ Back to top');
+document.body.append(toTop);
+addEventListener('scroll', () => toTop.classList.toggle('shown', scrollY > 2 * innerHeight), { passive: true });
+
 load(s => { status.textContent = s; }).then(() => {
   M = meta();
   const fresh = document.getElementById('freshness');
-  fresh.textContent = `Events ${M.events_range.replace(' – ', ' to ')} from kizomba-world · fares from ${M.home_airport} · data built ${dayYear(M.built_at)}`;
+  const [from, to] = M.events_range.split(' – ').map(d => new Date(d + 'T12:00').toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }));
+  fresh.textContent = `It covers ${from} to ${to} and was last updated on ${dayYear(M.built_at)}.`;
   status.remove();
   if (location.hash.startsWith('#artist/')) history.replaceState(null, '', '#artists/' + location.hash.slice(8));
   route();

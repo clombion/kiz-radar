@@ -17,11 +17,7 @@ button { background: var(--accent); }
 .card, .panel, .controls, .table-wrap, .schema, .teaser { box-shadow: none; }
 .chip.kiz { color: var(--accent); }
 
-.variant-bar { display: flex; flex-wrap: wrap; gap: .3rem .9rem; align-items: center; justify-content: center; padding: .45rem 16px;
   background: var(--text); color: #f6efe4; font-size: .85rem; }
-.variant-bar a { color: #f6efe4; opacity: .7; text-decoration: none; }
-.variant-bar a.on { opacity: 1; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
-.variant-bar .label { opacity: .6; }
 
 /* shared editorial pieces */
 .ed { max-width: 1120px; margin: 0 auto; }
@@ -269,3 +265,6 @@ a.artist:hover, a.artist:focus-visible { color: var(--accent); border-bottom-sty
 .card-details .links { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
 .card-details .links p { margin: 0; }
 .calm-card .less::after { content: ' ▴'; font-size: .8em; }
+
+.check { display: flex; align-items: center; gap: .4rem; font-size: .95rem; padding: .15rem 0; }
+.empty { padding: 1rem 0; color: var(--muted); }

@@ -1,7 +1,7 @@
 // Countries: which scenes are worth a trip from Bergen. One row per country: what's coming up, what the
 // flights to those festivals cost, and what the scene is like.
-import { q } from '../js/db.js';
-import { h, flag, countryName, euro, today } from '../js/ui.js';
+import { q } from './db.js';
+import { h, flag, countryName, euro, today } from './ui.js';
 import { cityOf } from './eventcard.js';
 
 // sorted by: festivals coming up, the cheapest flight, the share of visiting artists

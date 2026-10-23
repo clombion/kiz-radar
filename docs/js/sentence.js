@@ -1,7 +1,7 @@
 // Variant: a sentence with blanks as the landing, calm cards below, and a sticky bar with the same
 // choices (plus "More filters") once the sentence has scrolled away.
-import { h, addDays, countryName, flag, today } from '../js/ui.js';
-import { festivals, stateFromHash, writeHash } from './common.js';
+import { h, addDays, countryName, flag, today } from './ui.js';
+import { festivals, stateFromHash, writeHash } from './festivals.js';
 import { eventCard } from './eventcard.js';
 
 const DEFAULTS = { style: 'kiz', months: 3, reach: 'any', country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0, sort: 'date' };

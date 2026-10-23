@@ -1,46 +1,6 @@
-// Explore → Countries (sortable statistics) and Explore → SQL (free queries against the database).
+// The SQL page: free queries against the database, run in the browser.
 import { q, exec } from './db.js';
-import { h, flag, countryName, euro, today, addDays } from './ui.js';
-
-export function countriesView(root, home) {
-  const from = today(), to = addDays(from, 183);
-  // median Fri→Mon fare per airport over the next 6 months
-  const median = Object.fromEntries(q(`SELECT airport, group_concat(price) AS ps FROM fares WHERE depart BETWEEN ? AND ? GROUP BY airport`, [from, to])
-    .map(r => { const v = r.ps.split(',').map(Number).sort((a, b) => a - b); return [r.airport, { med: v[Math.floor(v.length / 2)], lo: v[0] }]; }));
-  // each country's cheapest airport among those serving its festivals
-  const served = {};
-  for (const r of q('SELECT DISTINCT country_code, airport FROM events WHERE airport IS NOT NULL AND country_code IS NOT NULL'))
-    (served[r.country_code] ||= []).push(r.airport);
-  const best = cc => (served[cc] || []).filter(a => median[a]).sort((a, b) => median[a].med - median[b].med)[0] || null;
-  const rows = q(`SELECT cs.*, (SELECT count(*) FROM events e WHERE e.country_code = cs.country_code AND e.weekend_friday >= ? AND e.cancelled IS NOT 1) AS upcoming
-    FROM country_stats cs WHERE cs.country_code IS NOT NULL`, [from])
-    .map(r => { const a = best(r.country_code);
-      return { ...r, name: countryName(r.country_code), airport: a, fare: a ? median[a].med : null, low: a ? median[a].lo : null }; });
-  const cols = [
-    ['name', 'Country', r => [flag(r.country_code), ' ', h('a', { href: `#map?country=${r.country_code}&when=all` }, r.name)]],
-    ['events', 'Events'], ['upcoming', 'Upcoming'], ['kiz_only', 'Kiz-only'], ['taxi_dancers', 'Taxi dancers'],
-    ['avg_lineup', 'Avg line-up'], ['popular_bookings', 'Popular-artist bookings'], ['imported_pct', 'Imported artists', r => r.imported_pct == null ? '—' : r.imported_pct + '%'],
-    ['airport', 'Cheapest airport', r => r.airport || '—'], ['fare', 'Median fare (6 mo)', r => euro(r.fare)], ['low', 'Lowest', r => euro(r.low)],
-  ];
-  let sortKey = 'events', dir = -1;
-  const tbody = h('tbody');
-  const heads = cols.map(([k, label]) => h('th', { scope: 'col' },
-    h('button', { class: 'sort', onclick: () => { dir = sortKey === k ? -dir : (k === 'name' || k === 'fare' || k === 'low' ? 1 : -1); sortKey = k; paint(); } }, label)));
-  function paint() {
-    rows.sort((a, b) => {
-      const x = a[sortKey], y = b[sortKey];
-      if (x == null) return 1; if (y == null) return -1;
-      return (typeof x === 'string' ? x.localeCompare(y) : x - y) * dir;
-    });
-    heads.forEach((th, i) => th.setAttribute('aria-sort', cols[i][0] === sortKey ? (dir > 0 ? 'ascending' : 'descending') : 'none'));
-    tbody.replaceChildren(...rows.map(r => h('tr', {}, cols.map(([k, , f], i) => h(i ? 'td' : 'th', i ? { class: typeof r[k] === 'number' || ['fare', 'low', 'imported_pct'].includes(k) ? 'num' : '' } : { scope: 'row' }, f ? f(r) : (r[k] ?? '—'))))));
-  }
-  root.replaceChildren(h('section', { class: 'countries' },
-    h('h2', {}, 'Countries'),
-    h('p', { class: 'muted' }, `Imported artists: share of teacher and DJ bookings going to artists whose home country is elsewhere — a rough sign of how open a scene is to outsiders. Fares: Fri→Mon returns from ${home} over the next 6 months, to the cheapest airport serving the country’s festivals.`),
-    h('div', { class: 'table-wrap' }, h('table', {}, h('thead', {}, h('tr', {}, heads)), tbody))));
-  paint();
-}
+import { h } from './ui.js';
 
 const EXAMPLES = [
   ['Most booked artists in Poland', `SELECT a.display_name, ac.bookings, st.home_country, st.bookings AS total

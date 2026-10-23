@@ -1,8 +1,8 @@
 // The festival card used across the site: date, place, tidy title, styles, highlights, a few names and the
 // flight, opening in place to the full line-up and practical details.
-import { q } from '../js/db.js';
-import { h, addDays, euro, today } from '../js/ui.js';
-import { place, styleLine, d } from './common.js';
+import { q } from './db.js';
+import { h, addDays, euro, today } from './ui.js';
+import { place, styleLine, d } from './festivals.js';
 import { tidyTitle } from './titles.js';
 import { TRAITS } from './icons.js';
 import { cardDetails, traitItems } from './details.js';

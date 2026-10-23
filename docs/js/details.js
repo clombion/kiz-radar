@@ -1,7 +1,7 @@
 // What an opened card adds, most useful first: who's teaching and playing, what else the weekend has,
 // then the practical bits (venue, organisers) that matter once you've decided to go.
-import { q } from '../js/db.js';
-import { h, flag, countryName } from '../js/ui.js';
+import { q } from './db.js';
+import { h, flag, countryName } from './ui.js';
 import { TRAITS, MORE_TRAITS } from './icons.js';
 import { softenCaps } from './titles.js';
 

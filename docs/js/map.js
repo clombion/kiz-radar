@@ -1,27 +1,30 @@
-// Explore → Map: one bubble per city (size = events, colour = chosen metric) beside a list of what is in view.
+// Map: one bubble per city (size = festivals, colour = flight price) and the festivals in view as cards.
+// On a phone the list is a sheet over the map that peeks at the bottom and slides up.
 import { q } from './db.js';
-import { h, range, where, eventFacts, euro, today, countryName, flag, EVENT_COLS } from './ui.js';
-import { eventDetail } from './event.js';
+import { h, euro, today, countryName, flag, EVENT_COLS } from './ui.js';
+import { eventCard, enrich } from './eventcard.js';
 
 const WORLD = 'https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json';
 let worldGeo;            // cached across visits to the tab
 const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+const PAGE = 40;
 
 const COLOR_BY = {
-  fare: { label: 'Cheapest fare', bands: [
-    ['≤ €150', c => c.minFare != null && c.minFare <= 150, '--good'],
+  fare: { label: 'Flight price', title: 'Cheapest flight from Bergen', bands: [
+    ['under €150', c => c.minFare != null && c.minFare <= 150, '--good'],
     ['€150–250', c => c.minFare != null && c.minFare <= 250, '--mid'],
-    ['> €250', c => c.minFare != null, '--bad'],
-    ['No fare', () => true, '--none']] },
-  kiz: { label: 'Kiz-only share', bands: [
-    ['All kiz-only', c => c.kizOnly === c.n, '--good'],
-    ['Some', c => c.kizOnly > 0, '--mid'],
-    ['None', () => true, '--none']] },
-  popular: { label: 'Popular artists booked', bands: [
-    ['10+', c => c.popular >= 10, '--good'],
+    ['over €250', c => c.minFare != null, '--bad'],
+    ['not checked', () => true, '--none']] },
+  kiz: { label: 'Kizomba only or mixed', title: 'Festivals here', bands: [
+    ['all Kizomba-only', c => c.kizOnly === c.n, '--good'],
+    ['some', c => c.kizOnly > 0, '--mid'],
+    ['mixed styles', () => true, '--none']] },
+  popular: { label: 'Well-known artists', title: 'Bookings of well-known artists', bands: [
+    ['10 or more', c => c.popular >= 10, '--good'],
     ['1–9', c => c.popular > 0, '--mid'],
-    ['None', () => true, '--none']] },
+    ['none', () => true, '--none']] },
 };
+const WHEN = [['upcoming', 'Upcoming'], ['all', 'All dates'], ['past', 'Past']];
 
 export function mapView(root, sub, qs, { home }) {
   const params = new URLSearchParams(qs);
@@ -29,10 +32,10 @@ export function mapView(root, sub, qs, { home }) {
     colorBy: params.get('color') || 'fare', country: params.get('country') || '', city: null, event: null };
   if (sub && sub[0] === 'event') state.event = Number(sub[1]);
 
-  const events = q(`SELECT ${EVENT_COLS}, CASE WHEN e.airport = ? THEN 0 ELSE f.price END AS fare FROM events e JOIN event_stats s ON s.event_id = e.id
-    LEFT JOIN fares f ON f.airport = e.airport AND f.depart = e.weekend_friday WHERE e.lat IS NOT NULL
-    ORDER BY e.start_date`, [home]);
+  const events = enrich(q(`SELECT ${EVENT_COLS} FROM events e JOIN event_stats s ON s.event_id = e.id
+    WHERE e.lat IS NOT NULL ORDER BY e.start_date`), home).map(e => ({ ...e, price: e.fare ? e.fare.price : null }));
   const byId = new Map(events.map(e => [e.id, e]));
+  const cityKey = e => `${e.city}|${e.country_code}`;
   if (state.event && byId.has(state.event)) {
     const e = byId.get(state.event);
     state.city = cityKey(e);
@@ -40,45 +43,67 @@ export function mapView(root, sub, qs, { home }) {
   }
 
   // ----- layout -----
-  const search = h('input', { type: 'search', placeholder: 'Search title or city', 'aria-label': 'Search events' });
-  const whenSel = h('select', { 'aria-label': 'Time' }, [['upcoming', 'Upcoming'], ['all', 'All dates'], ['past', 'Past']]
-    .map(([v, t]) => h('option', { value: v, selected: state.when === v }, t)));
+  const search = h('input', { type: 'search', class: 'mini-search', placeholder: 'Search a festival or city', 'aria-label': 'Search festivals' });
+  const whenSel = h('select', { class: 'mini', 'aria-label': 'When' }, WHEN.map(([v, t]) => h('option', { value: v, selected: state.when === v }, t)));
   const kizBox = h('input', { type: 'checkbox', checked: state.kizOnly });
-  const colorSel = h('select', { 'aria-label': 'Colour bubbles by' }, Object.entries(COLOR_BY)
+  const colorSel = h('select', { class: 'plain', 'aria-label': 'Colour the bubbles by' }, Object.entries(COLOR_BY)
     .map(([v, c]) => h('option', { value: v, selected: state.colorBy === v }, c.label)));
-  const legend = h('div', { class: 'legend' });
-  const mapEl = h('div', { class: 'map', role: 'application', 'aria-label': 'Map of events by city' });
-  const panel = h('aside', { class: 'panel', 'aria-live': 'polite' });
-  const fill = (...kids) => panel.replaceChildren(...kids.filter(k => k != null && k !== false));
-  root.replaceChildren(h('section', { class: 'mapview' },
-    h('div', { class: 'toolbar' }, search, whenSel, h('label', {}, kizBox, ' Kiz only'),
-      h('label', {}, 'Colour: ', colorSel), legend),
-    h('div', { class: 'split' }, mapEl, panel)));
+  const filtersBtn = h('button', { type: 'button', class: 'more-btn', 'aria-expanded': 'false', 'aria-controls': 'map-filters' });
+  const filters = h('div', { class: 'more-panel', id: 'map-filters', hidden: true },
+    h('label', { class: 'check' }, kizBox, ' Kizomba-only festivals'),
+    h('label', { class: 'field' }, h('span', {}, 'Colour the bubbles by'), colorSel));
+  filtersBtn.addEventListener('click', ev => { ev.stopPropagation(); filters.hidden = !filters.hidden; filtersBtn.setAttribute('aria-expanded', String(!filters.hidden)); });
+  const closeFilters = ev => { if (!filters.hidden && !filters.contains(ev.target)) { filters.hidden = true; filtersBtn.setAttribute('aria-expanded', 'false'); } };
+  document.addEventListener('click', closeFilters);
+  const paintFiltersBtn = () => { const n = (state.kizOnly ? 1 : 0) + (state.colorBy !== 'fare' ? 1 : 0);
+    filtersBtn.textContent = `Filters${n ? ` (${n})` : ''} ▾`; };
+
+  const mapEl = h('div', { class: 'map', role: 'application', 'aria-label': 'Map of festivals by city' });
+  const handle = h('button', { type: 'button', class: 'sheet-handle', 'aria-expanded': 'false' }, h('span', { class: 'grab', 'aria-hidden': 'true' }), h('span', { class: 'sheet-title' }));
+  const body = h('div', { class: 'sheet-body', 'aria-live': 'polite' });
+  const panel = h('aside', { class: 'map-panel' }, handle, body);
+  root.replaceChildren(h('section', { class: 'pmap' },
+    h('div', { class: 'map-bar' }, search, whenSel, h('div', { class: 'filters-wrap' }, filtersBtn, filters)),
+    h('div', { class: 'map-split' }, mapEl, panel)));
+
+  // the sheet on phones: peeks with its title, slides up for the list
+  const setSheet = up => { panel.classList.toggle('up', up); handle.setAttribute('aria-expanded', String(up)); };
+  handle.addEventListener('click', () => setSheet(!panel.classList.contains('up')));
+  let y0 = null;
+  handle.addEventListener('touchstart', ev => { y0 = ev.touches[0].clientY; }, { passive: true });
+  handle.addEventListener('touchend', ev => { if (y0 == null) return; const dy = ev.changedTouches[0].clientY - y0; y0 = null;
+    if (Math.abs(dy) > 30) { ev.preventDefault(); setSheet(dy < 0); } });
 
   // ----- map -----
   // Panning and zooming out stop at the box around every event (all dates), plus a small margin.
   const padded = L.latLngBounds(events.map(e => [e.lat, e.lon])).pad(0.05);
-  const dataBounds = L.latLngBounds(       // no further than the edges of the outline map
+  const dataBounds = L.latLngBounds(
     [Math.max(padded.getSouth(), -85), Math.max(padded.getWest(), -180)],
     [Math.min(padded.getNorth(), 85), Math.min(padded.getEast(), 180)]);
-  const map = L.map(mapEl, { zoomControl: true, attributionControl: true, worldCopyJump: false,
+  const map = L.map(mapEl, { zoomControl: false, attributionControl: true, worldCopyJump: false,
     maxBounds: dataBounds, maxBoundsViscosity: 1, inertia: false });
+  L.control.zoom({ position: 'topright' }).addTo(map);
   map.attributionControl.setPrefix(false);
   map.attributionControl.addAttribution('Borders: Natural Earth · Places: © OpenStreetMap');
   const lockZoom = () => {
-    map.setMinZoom(map.getBoundsZoom(dataBounds, true));     // the view always stays inside the box
+    map.setMinZoom(map.getBoundsZoom(dataBounds, true));
     if (map.getZoom() < map.getMinZoom()) map.setZoom(map.getMinZoom());
     map.panInsideBounds(dataBounds, { animate: false });
   };
   map.setView([50, 10], 4);
   lockZoom();
   map.on('resize', lockZoom);
-  map.createPane('land').style.zIndex = 350;      // under the bubbles in the overlay pane (400)
+  map.createPane('land').style.zIndex = 350;
   const land = L.layerGroup().addTo(map);
   const bubbles = L.layerGroup().addTo(map);
   drawWorld(land);
+  // the legend sits on the map, where the colours are
+  const legendEl = h('div', { class: 'map-legend' });
+  const Legend = L.Control.extend({ onAdd: () => legendEl });
+  new Legend({ position: 'bottomleft' }).addTo(map);
+  L.DomEvent.disableClickPropagation(legendEl);
 
-  let cities = [], markers = new Map();
+  let cities = [], markers = new Map(), shown = PAGE;
   function visible() {
     const t = state.text.toLowerCase(), now = today();
     return events.filter(e =>
@@ -86,7 +111,6 @@ export function mapView(root, sub, qs, { home }) {
       (!state.kizOnly || e.kiz_only) && (!state.country || e.country_code === state.country) &&
       (!t || e.title.toLowerCase().includes(t) || (e.city || '').toLowerCase().includes(t)));
   }
-  function cityKey(e) { return `${e.city}|${e.country_code}`; }
 
   function redraw({ fit } = {}) {
     const groups = new Map();
@@ -98,23 +122,25 @@ export function mapView(root, sub, qs, { home }) {
     cities = [...groups.values()].map(c => ({ ...c, n: c.events.length,
       kizOnly: c.events.filter(e => e.kiz_only).length,
       popular: c.events.reduce((s, e) => s + (e.popular_artists || 0), 0),
-      minFare: c.events.some(e => e.fare != null) ? Math.min(...c.events.filter(e => e.fare != null).map(e => e.fare)) : null }));
+      minFare: c.events.some(e => e.price != null) ? Math.min(...c.events.filter(e => e.price != null).map(e => e.price)) : null }));
     bubbles.clearLayers(); markers = new Map();
-    const scheme = COLOR_BY[state.colorBy];
-    // big cities first so small bubbles stay clickable on top
-    for (const c of cities.sort((a, b) => b.n - a.n)) {
+    const scheme = COLOR_BY[state.colorBy] || COLOR_BY.fare;
+    for (const c of cities.sort((a, b) => b.n - a.n)) {       // big cities first so small bubbles stay clickable
       const band = scheme.bands.find(b => b[1](c));
       const m = L.circleMarker([c.lat, c.lon], { radius: 4 + 3.2 * Math.sqrt(c.n), weight: 1.5,
         color: css('--bubble-stroke'), fillColor: css(band[2]), fillOpacity: 0.85, bubblingMouseEvents: false })
-        .bindTooltip(`${c.city || countryName(c.cc)} · ${c.n} event${c.n > 1 ? 's' : ''}` +
-          (c.minFare != null ? ` · from ${euro(c.minFare)}` : ''), { direction: 'top', offset: [0, -6] })
+        .bindTooltip(`${c.city || countryName(c.cc)} · ${c.n} festival${c.n > 1 ? 's' : ''}` +
+          (c.minFare ? ` · flights from ${euro(c.minFare)}` : ''), { direction: 'top', offset: [0, -6] })
         .on('click', () => selectCity(c.key));
       m.addTo(bubbles); markers.set(c.key, m);
     }
-    legend.replaceChildren(...scheme.bands.map(b => h('span', {}, h('i', { style: `background:${css(b[2])}` }), b[0])));
+    legendEl.replaceChildren(h('strong', {}, scheme.title),
+      ...scheme.bands.map(b => h('span', {}, h('i', { style: `background:${css(b[2])}` }), b[0])),
+      h('span', { class: 'size' }, h('i', { class: 'ring' }), 'bigger = more festivals'));
+    paintFiltersBtn();
     highlight();
     if (fit && cities.length) map.fitBounds(L.latLngBounds(cities.map(c => [c.lat, c.lon])).pad(0.2), { maxZoom: 7 });
-    renderPanel();
+    shown = PAGE; renderPanel();
   }
 
   function highlight(hoverKey) {
@@ -124,20 +150,9 @@ export function mapView(root, sub, qs, { home }) {
       if (on) m.bringToFront();
     }
   }
-
+  const save = () => history.replaceState(null, '', (state.event ? `#map/event/${state.event}` : '#map') + query());
   function selectCity(key) {
-    state.city = key; state.event = null;
-    history.replaceState(null, '', '#map' + query());
-    highlight(); renderPanel();
-  }
-  function openEvent(id) {
-    const e = byId.get(id); if (!e) return;
-    state.event = id; state.city = cityKey(e);
-    history.replaceState(null, '', `#map/event/${id}` + query());
-    const m = markers.get(state.city);
-    if (m && !map.getBounds().contains(m.getLatLng())) map.panTo(m.getLatLng());
-    highlight(); renderPanel();
-    panel.scrollTop = 0;
+    state.city = key; state.event = null; save(); highlight(); renderPanel(); setSheet(true);
   }
   function query() {
     const p = new URLSearchParams();
@@ -147,35 +162,42 @@ export function mapView(root, sub, qs, { home }) {
     if (state.country) p.set('country', state.country);
     const s = p.toString(); return s ? '?' + s : '';
   }
+  const back = (text, fn) => h('button', { type: 'button', class: 'back-link', onclick: fn }, '← ', text);
+  const count = n => `${n} festival${n === 1 ? '' : 's'}`;
 
-  function row(e) {
-    const b = h('button', { class: 'row', onclick: () => openEvent(e.id),
-      onmouseenter: () => highlight(cityKey(e)), onmouseleave: () => highlight(),
-      onfocus: () => highlight(cityKey(e)), onblur: () => highlight() },
-      h('span', { class: 'when' }, range(e.start_date, e.end_date)),
-      h('strong', {}, e.title),
-      h('span', { class: 'muted' }, where(e), e.fare != null ? ` · ${euro(e.fare)}` : ''),
-      eventFacts(e));
-    return h('li', {}, b);
+  function cards(list) {
+    const wrap = h('div', { class: 'panel-cards' }, list.slice(0, shown).map(e => {
+      const c = eventCard(e, home, { onMap: true });
+      c.addEventListener('mouseenter', () => highlight(cityKey(e)));
+      c.addEventListener('mouseleave', () => highlight());
+      return c;
+    }));
+    if (list.length > shown) wrap.append(h('button', { type: 'button', class: 'more-btn show-more', onclick: () => { shown += PAGE; renderPanel(); } },
+      `Show ${Math.min(PAGE, list.length - shown)} more`));
+    return wrap;
   }
 
   function renderPanel() {
-    if (state.event) {
-      const back = h('button', { class: 'link', onclick: () => { state.event = null; history.replaceState(null, '', '#map' + query()); renderPanel(); } },
-        '← ' + (state.city ? 'Back to ' + (byId.get(state.event)?.city || 'list') : 'Back'));
-      fill(back, eventDetail(state.event, home));
-      back.focus({ preventScroll: true });
+    const title = handle.querySelector('.sheet-title');
+    if (state.event && byId.has(state.event)) {
+      const e = byId.get(state.event);
+      title.textContent = `${e.city || countryName(e.country_code)}`;
+      body.replaceChildren(
+        (cities.find(c => c.key === state.city)?.n || 1) > 1
+          ? back(`${count(cities.find(c => c.key === state.city).n)} in ${e.city || 'this city'}`, () => { state.event = null; save(); renderPanel(); })
+          : back('All festivals in view', () => { state.event = state.city = null; save(); highlight(); renderPanel(); }),
+        eventCard(e, home, { open: true, onMap: true }));
       return;
     }
     if (state.city) {
       const c = cities.find(c => c.key === state.city);
       if (c) {
-        fill(
-          h('button', { class: 'link', onclick: () => { state.city = null; highlight(); renderPanel(); } }, '← All events in view'),
-          h('h3', {}, flag(c.cc), ' ', c.city || countryName(c.cc)),
-          h('p', { class: 'muted' }, `${c.n} event${c.n > 1 ? 's' : ''}`,
-            c.minFare != null ? ` · fares from ${euro(c.minFare)}` : '', c.popular ? ` · ${c.popular} popular-artist bookings` : ''),
-          h('ul', { class: 'rows' }, c.events.map(row)));
+        title.textContent = `${flag(c.cc)} ${c.city || countryName(c.cc)} · ${count(c.n)}`;
+        body.replaceChildren(
+          back('All festivals in view', () => { state.city = null; save(); highlight(); renderPanel(); }),
+          h('header', { class: 'panel-head' }, h('h2', {}, flag(c.cc), ' ', c.city || countryName(c.cc)),
+            h('p', {}, count(c.n), c.minFare ? ` · flights from ${euro(c.minFare)}` : '')),
+          cards(c.events));
         return;
       }
       state.city = null;
@@ -184,35 +206,36 @@ export function mapView(root, sub, qs, { home }) {
     const inView = cities.filter(c => b.contains([c.lat, c.lon])).flatMap(c => c.events)
       .sort((a, z) => a.start_date.localeCompare(z.start_date));
     const total = cities.reduce((s, c) => s + c.n, 0);
-    fill(
-      h('h3', {}, `${inView.length} event${inView.length === 1 ? '' : 's'} in view`),
-      h('p', { class: 'muted small' }, inView.length < total ? `${total} match the filters · pan or zoom to change the list · click a city to narrow it` : 'Click a city to narrow the list'),
-      inView.length ? h('ul', { class: 'rows' }, inView.slice(0, 200).map(row)) : h('p', {}, 'No events here with these filters.'),
-      inView.length > 200 ? h('p', { class: 'muted small' }, 'Showing the first 200 — zoom in to see the rest.') : null);
+    title.textContent = `${count(inView.length)} on the map`;
+    body.replaceChildren(
+      h('header', { class: 'panel-head' }, h('h2', {}, `${count(inView.length)} on the map`),
+        h('p', {}, inView.length < total ? 'Move the map to change the list, or pick a city.' : 'Pick a city to see only its festivals.')),
+      inView.length ? cards(inView) : h('p', { class: 'muted' }, 'No festivals here with these filters.'));
   }
 
   let t;
-  map.on('moveend', () => { clearTimeout(t); t = setTimeout(() => { if (!state.city && !state.event) renderPanel(); }, 120); });
-  map.on('click', () => { if (state.city || state.event) { state.city = state.event = null; history.replaceState(null, '', '#map' + query()); highlight(); renderPanel(); } });
-  search.addEventListener('input', () => { state.text = search.value; redraw(); });
-  whenSel.addEventListener('change', () => { state.when = whenSel.value; history.replaceState(null, '', '#map' + query()); redraw(); });
-  kizBox.addEventListener('change', () => { state.kizOnly = kizBox.checked; history.replaceState(null, '', '#map' + query()); redraw(); });
-  colorSel.addEventListener('change', () => { state.colorBy = colorSel.value; history.replaceState(null, '', '#map' + query()); redraw(); });
-  document.addEventListener('keydown', function esc(ev) {
-    if (!root.isConnected || !mapEl.isConnected) return document.removeEventListener('keydown', esc);
-    if (ev.key === 'Escape' && (state.event || state.city)) {
-      if (state.event) state.event = null; else state.city = null;
-      history.replaceState(null, '', '#map' + query()); highlight(); renderPanel();
-    }
-  });
+  map.on('moveend', () => { clearTimeout(t); t = setTimeout(() => { if (!state.city && !state.event) { shown = PAGE; renderPanel(); } }, 120); });
+  map.on('click', () => { if (state.city || state.event) { state.city = state.event = null; save(); highlight(); renderPanel(); } setSheet(false); });
+  let ts; search.addEventListener('input', () => { clearTimeout(ts); ts = setTimeout(() => { state.text = search.value; redraw(); }, 150); });
+  whenSel.addEventListener('change', () => { state.when = whenSel.value; save(); redraw(); });
+  kizBox.addEventListener('change', () => { state.kizOnly = kizBox.checked; save(); redraw(); });
+  colorSel.addEventListener('change', () => { state.colorBy = colorSel.value; save(); redraw(); });
+  const esc = ev => {
+    if (ev.key !== 'Escape' || !(state.event || state.city)) return;
+    if (state.event) state.event = null; else state.city = null;
+    save(); highlight(); renderPanel();
+  };
+  document.addEventListener('keydown', esc);
 
+  whenSel.value = state.when;
   redraw({ fit: !!state.country });
-  if (state.event) {
+  if (state.event && byId.has(state.event)) {
     const e = byId.get(state.event);
-    if (e) map.setView([e.lat, e.lon], Math.max(map.getZoom(), 5));
+    map.setView([e.lat, e.lon], Math.max(map.getZoom(), 5));
+    setSheet(true);
   }
   setTimeout(() => { map.invalidateSize(); lockZoom(); }, 0);
-  return () => map.remove();
+  return () => { map.remove(); document.removeEventListener('click', closeFilters); document.removeEventListener('keydown', esc); };
 }
 
 async function drawWorld(layer) {

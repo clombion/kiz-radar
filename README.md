@@ -3,19 +3,26 @@
 A static site (GitHub Pages, [sql.js](https://sql.js.org/)) for finding the next Kizomba / Urban Kiz festival worth
 flying to from Bergen, and for exploring the scene's events and artists.
 
-- **Next festival** — upcoming festivals whose Friday→Monday return fare fits your criteria (default: within 6 months,
-  ≤ €150, kiz-only), including likely next editions of festivals whose new dates are not listed yet.
-  The criteria live in the URL, so a filtered view can be bookmarked or shared.
-- **Explore**
-  - **Map** — one bubble per city (size = events, colour = cheapest fare, kiz-only share or popular artists). The list
-    beside it follows the map: pan or zoom to change it, click a city to narrow it, click an event for its card.
-    Every event has its own link (`#map/event/<id>`).
-  - **Artists** — cards with bookings, roles, home country, countries they are booked in abroad; a page per artist
-    with bookings by country and every event. A couple's bookings count for the couple; its members get a card only
-    for their solo bookings (e.g. one of them DJing where the couple teaches), and their page links to the couple.
-  - **Countries** — events, kiz-only events, taxi dancers, line-up size, popular-artist bookings, share of imported
-    artists, and the median fare to the cheapest airport serving the country.
-  - **SQL** — query the whole database in the browser.
+- **Festivals** — the landing page is a sentence with blanks ("I'd like to dance … in the next three months, flying
+  from Bergen to … for a cheap price"). Below it are festival cards. A sticky bar keeps the time and price choices in
+  view and puts the rest under Filters. Likely next editions of festivals whose new dates aren't listed yet are
+  included. The choices live in the URL, so a view can be bookmarked or shared.
+  A card shows the date, place, a tidied title, styles, up to three highlights and a few names. It also shows the
+  Friday→Monday return from Bergen and where it lands. It opens in place to the full line-up, the other
+  highlights, the venue and organisers.
+- **Map & artists**
+  - **Map** — one bubble per city (size = festivals, colour = cheapest flight; the legend is on the map). The list
+    beside it follows the map: move it to change the list, or pick a city. On a phone the list is a sheet that peeks over the map.
+    Every festival has its own link (`#map/event/<id>`).
+  - **Artists** — a list with home country, role, number of festivals and the next one. A page per artist leads with
+    their upcoming festivals, then where they're booked, with past festivals folded. A couple's bookings count for
+    the couple; its members' pages only list their solo bookings and link to the couple.
+  - **Countries** — per country: festivals coming up, the cheapest flight to them, and whether line-ups are mostly
+    local or visiting artists.
+- **SQL** (linked from the footer) — query the whole database in the browser.
+
+Artist names are recased at build time (`pipeline/names.py`). Festival titles are tidied for cards in the browser
+(`docs/js/titles.js`), and the original title stays on kizomba-world.
 
 ## Data
 
