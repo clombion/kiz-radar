@@ -3,7 +3,7 @@ keeping already-known places in pipeline/geocode.csv so reruns only ask for new 
 import csv, json, os, sqlite3, sys, time, urllib.parse, urllib.request
 SRC = sys.argv[1]
 CACHE = os.path.join(os.path.dirname(__file__), 'geocode.csv')
-UA = 'kizomba-radar/0.1 (https://github.com/clombion/kizomba-radar)'
+UA = 'kiz-radar/0.1 (https://github.com/clombion/kiz-radar)'
 known = {}
 if os.path.exists(CACHE):
     for r in csv.DictReader(open(CACHE, encoding='utf-8')): known[(r['city'], r['country'])] = r
