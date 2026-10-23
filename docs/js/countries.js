@@ -47,7 +47,7 @@ export function countriesView(root, qs) {
       open: (a, b) => (b.imported_pct ?? -1) - (a.imported_pct ?? -1) || b.upcoming - a.upcoming,
     }[st.sort];
     const shown = rows.filter(r => st.all || r.upcoming).sort(by);
-    summary.textContent = `${shown.length} countries` + (st.all ? ' in the listings' : ` with festivals coming up, between now and ${monthYear(last)} (the last one listed)`);
+    summary.textContent = `${shown.length} countries` + (st.all ? ' in the listings' : ` with festivals until ${monthYear(last)}`);
     list.replaceChildren(...shown.map(row));
   }
   render();
