@@ -122,10 +122,10 @@ select.mini:focus-visible, select.plain:focus-visible { outline: 2px solid var(-
 .more-panel .field span { font-weight: 600; color: var(--muted); }
 .more-panel .checks { display: flex; flex-direction: column; gap: .35rem; }
 .sentence-results { padding: 1.6rem 0 3rem; scroll-margin-top: 120px; }
-.festival-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 1.25rem; align-items: start; }
+.festival-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 1.25rem; align-items: start; container-type: inline-size; }
 .festival-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem 1.3rem 1rem; display: flex; flex-direction: column; gap: .45rem; cursor: pointer; transition: border-color .15s, box-shadow .15s; }
 .festival-card:hover { border-color: color-mix(in srgb, var(--accent) 35%, var(--border)); box-shadow: 0 4px 16px rgb(42 31 34 / .06); }
-.festival-card.open { cursor: auto; grid-column: 1 / -1; }
+.festival-card.open { cursor: auto; }
 .festival-card.projected { border-style: dashed; }
 .festival-card .c-top { display: flex; gap: .9rem; align-items: flex-start; margin-bottom: .15rem; }
 .festival-card .c-head { min-width: 0; }
@@ -220,7 +220,6 @@ a.artist:hover, a.artist:focus-visible { color: var(--accent); border-bottom-sty
 .panel-head h2 { margin: 0; font-size: 1.15rem; }
 .panel-head p { margin: .2rem 0 0; color: var(--muted); font-size: .88rem; }
 .panel-cards { display: flex; flex-direction: column; gap: .8rem; }
-.panel-cards .festival-card.open { grid-column: auto; }
 .back-link { all: unset; cursor: pointer; color: var(--accent); font-weight: 600; font-size: .9rem; }
 .back-link:hover { text-decoration: underline; }
 .back-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
@@ -398,4 +397,8 @@ html[data-vt=close]::view-transition-old(card-toggled) { display: block; }
 html[data-vt=close]::view-transition-new(card-toggled) { display: none; }
 /* reduced motion: nothing moves; the page cross-fades quickly instead */
 html[data-vt=calm]::view-transition-old(root), html[data-vt=calm]::view-transition-new(root) { animation-duration: 150ms; }
+/* an opened card takes two columns where the list has at least two (two 320px columns and the gap), never more */
+@container (min-width: 660px) {
+  .festival-card.open { grid-column: span 2; }
+}
 
