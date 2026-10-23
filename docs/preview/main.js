@@ -5,10 +5,11 @@ import { finderView } from './finder.js';
 import { guideView } from './guide.js';
 import { seasonView } from './season.js';
 import { sceneView } from './scene.js';
+import { sentenceView } from './sentence.js';
 
-const VARIANT = new URLSearchParams(location.search).get('v') || 'guide';
+const VARIANT = new URLSearchParams(location.search).get('v') || 'sentence';
 for (const a of document.querySelectorAll('[data-v]')) a.classList.toggle('on', a.dataset.v === VARIANT);
-const LANDING = { guide: guideView, season: seasonView, deals: finderView, scene: sceneView }[VARIANT] || guideView;
+const LANDING = { sentence: sentenceView, guide: guideView, season: seasonView, deals: finderView, scene: sceneView }[VARIANT] || sentenceView;
 import { mapView } from '../js/map.js';
 import { artistsView } from '../js/artists.js';
 import { countriesView, sqlView } from '../js/tables.js';
