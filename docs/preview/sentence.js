@@ -65,7 +65,7 @@ export function sentenceView(root, qs, { home }) {
       ' at a festival in ', sentenceBlanks.months, ', flying from Bergen to ',
       h('span', { class: 'anchor' }, sentenceBlanks.country, note('note-bottom', 'up', '…or where you’d like to go')),
       ' for ', h('span', { class: 'nowrap' }, sentenceBlanks.reach, '.'), ruler),
-    note('note-inline', 'up', 'click', ' the coloured words to change them'),
+    note('note-inline', 'up', 'click', ' to change'),
     live,
     h('p', { class: 'nevermind' }, h('button', { type: 'button', class: 'link', onclick: () => {
       Object.assign(s, LOOSEST); render(); results.scrollIntoView({ behavior: 'smooth' }); } }, 'Never mind, show me all events')));
