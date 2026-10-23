@@ -31,6 +31,7 @@ dates, years and shouting capitals (`events.title`; `listed_title` is as listed)
 |---|---|---|
 | `source/*.sqlite` | The full kizomba-world export (with descriptions and images) | you, when you re-export |
 | `docs/data/kiz.sqlite` | What the page loads: events, genres, features, line-ups, artist and country statistics, airports, a fares snapshot | the **Rebuild site database** Action, on every push to `source/` or `pipeline/` |
+| `docs/data/site.json` | What the page shows before the database loads: home airport, destinations, dates covered | the same build |
 | `docs/data/fares.csv` | Fri→Mon return fares from home, one row per airport and weekend | the **Refresh fares** Action |
 | `pipeline/fare_jobs.csv` | When each airport and month was last searched | the same Action |
 

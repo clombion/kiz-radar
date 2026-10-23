@@ -1,5 +1,5 @@
 // DOM and formatting helpers shared by the views. All text goes through textContent.
-import { q } from './db.js';
+import { q, site } from './db.js';
 
 export function h(tag, attrs = {}, ...kids) {
   const el = document.createElement(tag);
@@ -37,8 +37,7 @@ export const monthYear = iso => MY.format(asDay(iso));            // October 202
 export const euro = n => n == null ? '—' : '€' + Math.round(n);
 
 // Flights leave from the home airport (the tier-0 airport in pipeline/airports.csv).
-let homeAirport;
-export const home = () => homeAirport ||= q(`SELECT a.code, a.city FROM airports a JOIN meta m ON m.key = 'home_airport' AND m.value = a.code`)[0];
+export const home = () => site().home;
 
 export function flightsUrl(airport, depart, ret) {
   const qs = `Flights from ${home().code} to ${airport} on ${depart} through ${ret}`;

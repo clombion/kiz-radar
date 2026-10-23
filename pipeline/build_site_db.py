@@ -6,7 +6,7 @@ statistics, and a fares table filled from docs/data/fares.csv.
 
     python3 pipeline/build_site_db.py source/kizomba_events_2026_2027.compact.sqlite
 """
-import collections, csv, datetime as dt, difflib, math, os, re, sqlite3, sys, unicodedata
+import collections, csv, datetime as dt, difflib, json, math, os, re, sqlite3, sys, unicodedata
 sys.path.insert(0, os.path.dirname(__file__))
 from countries import codes, NAMES
 from text import tidy_name, tidy_title, soften_caps
@@ -266,6 +266,18 @@ DOCS = {
  'countries': 'ISO 3166 codes and names.',
  'meta': 'Build settings and provenance.',
 }
+# What the page shows before the database has loaded: the home airport and the destinations for the sentence.
+home_city = x("select city from airports where code = ?", (HOME,)).fetchone()[0]
+site = {
+    'home': {'code': HOME, 'city': home_city},
+    'destinations': sorted(({'code': c, 'name': n} for c, n in x("""select distinct e.country_code, c.name from events e
+        join countries c on c.code = e.country_code where e.cancelled = 0""")),
+        key=lambda d: unicodedata.normalize('NFKD', d['name']).encode('ascii', 'ignore').lower()),
+    'events_range': list(x("select min(start_date), max(start_date) from events").fetchone()),
+    'built_at': dict(x("select key, value from meta"))['built_at'],
+}
+json.dump(site, open(os.path.join(ROOT, 'docs', 'data', 'site.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+
 x("create table table_docs (name text primary key, description text)")
 out.executemany("insert or replace into table_docs values (?,?)", DOCS.items())
 for name, desc in x("select name, description from src.table_docs").fetchall():

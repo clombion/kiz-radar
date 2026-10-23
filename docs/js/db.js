@@ -1,11 +1,19 @@
-// Loads sql.js, the site database and the latest fares, and exposes small query helpers.
+// Loads the site summary (small, so the page can show itself straight away), then sql.js, the database and the
+// latest fares, and exposes small query helpers.
 const SQLJS = 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/';
 const DATA = new URL('../data/', import.meta.url);
 
-let db;
+let db, summary;
 
-export async function load(onStatus) {
-  onStatus('Loading database…');
+// site.json, written by the same build as kiz.sqlite: home airport, destinations, dates covered, build time
+export async function loadSite() {
+  const r = await fetch(new URL('site.json', DATA));
+  if (!r.ok) throw new Error('data/site.json: ' + r.status);
+  summary = await r.json();
+}
+export const site = () => summary;
+
+export async function load() {
   const [SQL, dbBuf, faresText] = await Promise.all([
     initSqlJs({ locateFile: f => SQLJS + f }),
     fetch(new URL('kiz.sqlite', DATA)).then(r => { if (!r.ok) throw new Error('data/kiz.sqlite: ' + r.status); return r.arrayBuffer(); }),
@@ -46,7 +54,3 @@ export function q(sql, params = []) {
 export const one = (sql, params) => q(sql, params)[0];
 
 export function exec(sql) { return db.exec(sql); }
-
-export function meta() {
-  return Object.fromEntries(q('SELECT key, value FROM meta').map(r => [r.key, r.value]));
-}

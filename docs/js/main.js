@@ -1,6 +1,7 @@
-// Router and page shell. Each view gets an AbortSignal that fires when you leave it: listeners it adds to
-// document or window pass it, so nothing outlives the view.
-import { load, meta } from './db.js';
+// Router and page shell. The shell and the Festivals sentence show as soon as site.json is in; the database
+// loads alongside, and views that query it wait for it. Each view gets an AbortSignal that fires when you leave
+// it: listeners it adds to document or window pass it, so nothing outlives the view.
+import { load, loadSite, site } from './db.js';
 import { h, dayYear, monthYear, home } from './ui.js';
 import { sentenceView } from './sentence.js';
 import { mapView } from './map.js';
@@ -11,16 +12,18 @@ import { exploreHint, artistHint } from './hints.js';
 import { EXPLORE } from './routes.js';
 
 const main = document.getElementById('main');
-const status = document.getElementById('status');
+const data = load();          // starts now, alongside site.json
 let leave;
 
+// waitsForData: the view queries the database as it builds, so it shows once the database is in
 const VIEWS = {
   finder: { title: null, nav: 'finder', show: (root, sub, qs, opts) => sentenceView(root, qs, opts) },
-  map: { title: 'Map', nav: 'explore', show: mapView },
-  artists: { title: 'Artists', nav: 'explore', show: artistsView },
-  countries: { title: 'Countries', nav: 'explore', show: (root, sub, qs) => countriesView(root, qs) },
-  sql: { title: 'SQL', nav: null, show: root => sqlView(root) },
+  map: { title: 'Map', nav: 'explore', waitsForData: true, show: mapView },
+  artists: { title: 'Artists', nav: 'explore', waitsForData: true, show: artistsView },
+  countries: { title: 'Countries', nav: 'explore', waitsForData: true, show: (root, sub, qs) => countriesView(root, qs) },
+  sql: { title: 'SQL', nav: null, waitsForData: true, show: root => sqlView(root) },
 };
+const failed = (root, e) => root.replaceChildren(h('p', { class: 'status error' }, 'Could not load the data: ' + e.message));
 
 function route() {
   const [path, qs = ''] = (location.hash.slice(1) || 'finder').split('?');
@@ -41,7 +44,12 @@ function route() {
     'aria-current': k === name ? 'page' : null }, t)));
   const root = h('div', { class: 'view' });
   main.replaceChildren(root);
-  view.show(root, sub, qs, { signal: leave.signal });
+  const { signal } = leave;
+  if (!view.waitsForData) view.show(root, sub, qs, { signal, data });
+  else {
+    root.append(h('p', { class: 'status' }, 'Loading the festival database…'));
+    data.then(() => { if (!signal.aborted) { root.replaceChildren(); view.show(root, sub, qs, { signal }); } }, e => failed(root, e));
+  }
   document.title = view.title ? `${view.title} · Kiz Radar` : 'Kiz Radar';
 }
 
@@ -52,11 +60,9 @@ const toTop = h('button', { type: 'button', class: 'to-top', onclick: () => wind
 document.body.append(toTop);
 addEventListener('scroll', () => toTop.classList.toggle('shown', scrollY > 2 * innerHeight), { passive: true });
 
-load(s => { status.textContent = s; }).then(() => {
-  const M = meta();
-  const [from, to] = M.events_range.split(' – ');
-  document.getElementById('freshness').textContent = `It covers ${monthYear(from)} to ${monthYear(to)} and was last updated on ${dayYear(M.built_at)}.`;
+loadSite().then(() => {
+  const { events_range: [from, to], built_at } = site();
+  document.getElementById('freshness').textContent = `It covers ${monthYear(from)} to ${monthYear(to)} and was last updated on ${dayYear(built_at)}.`;
   for (const el of document.querySelectorAll('[data-home-city]')) el.textContent = home().city;
-  status.remove();
   route();
-}).catch(e => { status.textContent = 'Could not load the data: ' + e.message; status.classList.add('error'); });
+}).catch(e => failed(main, e));

@@ -27,13 +27,13 @@ jobs:
         run: echo "SRC=$(ls -t source/*.sqlite | head -1)" >> "$GITHUB_ENV"
       - name: Geocode new cities
         run: python3 pipeline/geocode.py "$SRC"
-      - name: Build docs/data/kiz.sqlite
+      - name: Build docs/data/kiz.sqlite and site.json
         run: python3 pipeline/build_site_db.py "$SRC"
       - name: Refresh merge suggestions
         run: python3 pipeline/merge_suggestions.py "$SRC"
       - name: Commit
         run: |
-          git add docs/data/kiz.sqlite pipeline/geocode.csv pipeline/artist_merge_suggestions.csv
+          git add docs/data/kiz.sqlite docs/data/site.json pipeline/geocode.csv pipeline/artist_merge_suggestions.csv
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git -c user.name="build-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
             commit -m "Rebuild site database from $(basename "$SRC")"

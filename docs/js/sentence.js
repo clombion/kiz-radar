@@ -1,6 +1,7 @@
 // The Festivals page: a sentence with blanks, festival cards below, and a sticky bar with the same choices
 // (plus "More filters") once the sentence has scrolled away.
-import { h, addDays, countryName, flag, today, home } from './ui.js';
+import { h, addDays, flag, today, home } from './ui.js';
+import { site } from './db.js';
 import { festivals, readState, changed } from './festivals.js';
 import { eventCard } from './eventcard.js';
 import { blanksHint, exploreHint, artistHint } from './hints.js';
@@ -43,11 +44,11 @@ function matches(all, s) {
       : (a, b) => a.depart.localeCompare(b.depart));
 }
 
-export function sentenceView(root, qs, { signal }) {
-  const all = festivals();
-  const countries = [...new Set(all.map(e => e.country_code))].filter(Boolean).sort((a, b) => countryName(a).localeCompare(countryName(b)));
+export function sentenceView(root, qs, { signal, data }) {
+  let all = null;                  // the festivals, once the database is in
+  const countries = site().destinations;
   const s = readState(qs, DEFAULTS, { style: STYLE.map(([v]) => v), months: WHEN.map(([v]) => v), reach: PRICE.map(([v]) => v),
-    country: ['', ...countries], lineup: LINEUP.map(([v]) => v), sort: ORDER.map(([v]) => v),
+    country: ['', ...countries.map(c => c.code)], lineup: LINEUP.map(([v]) => v), sort: ORDER.map(([v]) => v),
     taxi: FLAGS, allin: FLAGS, likely: FLAGS, unchecked: FLAGS });
 
   const blank = (key, opts, cls = 'blank') => {
@@ -59,7 +60,8 @@ export function sentenceView(root, qs, { signal }) {
   // a native select is as wide as its longest option; size the sentence blanks to the chosen one instead
   const ruler = h('span', { class: 'ruler', 'aria-hidden': 'true' });
   const fit = el => { ruler.textContent = el.selectedOptions[0]?.textContent || ''; el.style.width = (ruler.getBoundingClientRect().width + 4) + 'px'; };
-  const DEST = [['', 'anywhere'], ...countries.map(c => [c, countryName(c)])];
+  const DEST = [['', 'anywhere'], ...countries.map(c => [c.code, c.name])];
+  const DEST_SHORT = [['', 'Anywhere'], ...countries.map(c => [c.code, `${flag(c.code)} ${c.name}`])];
   const sentenceBlanks = { style: blank('style', STYLE), months: blank('months', WHEN), country: blank('country', DEST), reach: blank('reach', PRICE) };
   const live = h('p', { class: 'live', 'aria-live': 'polite' });
   const hero = h('header', { class: 'sentence-hero' },
@@ -78,7 +80,7 @@ export function sentenceView(root, qs, { signal }) {
   const barBlanks = {
     style: blank('style', Object.entries(SHORT_LABEL.style), 'mini'),
     months: blank('months', Object.entries(SHORT_LABEL.months), 'mini'),
-    country: blank('country', [['', 'Anywhere'], ...countries.map(c => [c, `${flag(c)} ${countryName(c)}`])], 'mini'),
+    country: blank('country', DEST_SHORT, 'mini'),
     reach: blank('reach', Object.entries(SHORT_LABEL.reach), 'mini') };
   const barCount = h('span', { class: 'bar-count' });
   const moreBtn = h('button', { type: 'button', class: 'more-btn', 'aria-expanded': 'false', 'aria-controls': 'more-panel' }, 'More filters ▾');
@@ -87,7 +89,7 @@ export function sentenceView(root, qs, { signal }) {
   const moreFields = () => [
     h('div', { class: 'core-fields' },
       h('label', { class: 'field' }, h('span', {}, 'Style'), blank('style', Object.entries(SHORT_LABEL.style), 'plain')),
-      h('label', { class: 'field' }, h('span', {}, 'Destination'), blank('country', [['', 'Anywhere'], ...countries.map(c => [c, `${flag(c)} ${countryName(c)}`])], 'plain'))),
+      h('label', { class: 'field' }, h('span', {}, 'Destination'), blank('country', DEST_SHORT, 'plain'))),
     h('label', { class: 'field' }, h('span', {}, 'Line-up'), blank('lineup', LINEUP, 'plain')),
     h('label', { class: 'field' }, h('span', {}, 'Order'), blank('sort', ORDER, 'plain')),
     h('div', { class: 'checks' }, check('taxi', 'Taxi dancers'), check('allin', 'All-in-one hotel'),
@@ -127,11 +129,12 @@ export function sentenceView(root, qs, { signal }) {
     showInAddressBar(festivalsHref(changed(s, DEFAULTS)));
     for (const k of ['style', 'months', 'country', 'reach']) { sentenceBlanks[k].value = String(s[k]); barBlanks[k].value = String(s[k]); fit(sentenceBlanks[k]); }
     panel.replaceChildren(...moreFields());
-    const rows = matches(all, s);
     const extra = ['taxi', 'allin', 'lineup', 'unchecked'].filter(k => s[k] !== DEFAULTS[k]).length + (s.likely ? 0 : 1);
     const hiddenOnPhone = (s.style !== DEFAULTS.style) + !!s.country;     // only counted where those two live in the panel
     moreBtn.replaceChildren(h('span', { class: 'wide' }, 'More filters'), h('span', { class: 'narrow' }, 'Filters', extra + hiddenOnPhone ? ` (${extra + hiddenOnPhone})` : ''),
       h('span', { class: 'wide' }, extra ? ` (${extra})` : ''), ' ▾');
+    if (!all) { live.textContent = 'Looking for festivals like that…'; barCount.textContent = ''; return; }
+    const rows = matches(all, s);
     live.replaceChildren(rows.length
       ? h('span', {}, `${rows.length} festival${rows.length > 1 ? 's' : ''} like that`,
           !s.reach ? '. ' : h('span', { class: 'price-note' }, ` (return flights under €${s.reach}, Friday to Monday). `),
@@ -144,6 +147,8 @@ export function sentenceView(root, qs, { signal }) {
           h('button', { type: 'button', class: 'link', onclick: () => { Object.assign(s, LOOSEST); render(); } }, 'Show all events instead')));
   }
   render();
+  data.then(() => { if (!signal.aborted) { all = festivals(); render(); } },
+    e => { live.replaceChildren(h('span', { class: 'error' }, 'Could not load the festivals: ' + e.message)); });
   requestAnimationFrame(() => Object.values(sentenceBlanks).forEach(fit));       // and again once the web font has loaded
   document.fonts?.ready.then(() => Object.values(sentenceBlanks).forEach(fit));
 }

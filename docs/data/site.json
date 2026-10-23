@@ -1,0 +1,249 @@
+{
+ "home": {
+  "code": "BGO",
+  "city": "Bergen"
+ },
+ "destinations": [
+  {
+   "code": "AL",
+   "name": "Albania"
+  },
+  {
+   "code": "AO",
+   "name": "Angola"
+  },
+  {
+   "code": "AU",
+   "name": "Australia"
+  },
+  {
+   "code": "AT",
+   "name": "Austria"
+  },
+  {
+   "code": "BE",
+   "name": "Belgium"
+  },
+  {
+   "code": "BG",
+   "name": "Bulgaria"
+  },
+  {
+   "code": "CA",
+   "name": "Canada"
+  },
+  {
+   "code": "CV",
+   "name": "Cape Verde"
+  },
+  {
+   "code": "HR",
+   "name": "Croatia"
+  },
+  {
+   "code": "CZ",
+   "name": "Czechia"
+  },
+  {
+   "code": "DK",
+   "name": "Denmark"
+  },
+  {
+   "code": "EG",
+   "name": "Egypt"
+  },
+  {
+   "code": "EE",
+   "name": "Estonia"
+  },
+  {
+   "code": "FI",
+   "name": "Finland"
+  },
+  {
+   "code": "FR",
+   "name": "France"
+  },
+  {
+   "code": "DE",
+   "name": "Germany"
+  },
+  {
+   "code": "GR",
+   "name": "Greece"
+  },
+  {
+   "code": "GP",
+   "name": "Guadeloupe"
+  },
+  {
+   "code": "HU",
+   "name": "Hungary"
+  },
+  {
+   "code": "IS",
+   "name": "Iceland"
+  },
+  {
+   "code": "IN",
+   "name": "India"
+  },
+  {
+   "code": "ID",
+   "name": "Indonesia"
+  },
+  {
+   "code": "IE",
+   "name": "Ireland"
+  },
+  {
+   "code": "IT",
+   "name": "Italy"
+  },
+  {
+   "code": "JM",
+   "name": "Jamaica"
+  },
+  {
+   "code": "JP",
+   "name": "Japan"
+  },
+  {
+   "code": "KZ",
+   "name": "Kazakhstan"
+  },
+  {
+   "code": "LV",
+   "name": "Latvia"
+  },
+  {
+   "code": "LT",
+   "name": "Lithuania"
+  },
+  {
+   "code": "LU",
+   "name": "Luxembourg"
+  },
+  {
+   "code": "MQ",
+   "name": "Martinique"
+  },
+  {
+   "code": "MX",
+   "name": "Mexico"
+  },
+  {
+   "code": "MN",
+   "name": "Mongolia"
+  },
+  {
+   "code": "MA",
+   "name": "Morocco"
+  },
+  {
+   "code": "NL",
+   "name": "Netherlands"
+  },
+  {
+   "code": "NC",
+   "name": "New Caledonia"
+  },
+  {
+   "code": "NZ",
+   "name": "New Zealand"
+  },
+  {
+   "code": "NO",
+   "name": "Norway"
+  },
+  {
+   "code": "PH",
+   "name": "Philippines"
+  },
+  {
+   "code": "PL",
+   "name": "Poland"
+  },
+  {
+   "code": "PT",
+   "name": "Portugal"
+  },
+  {
+   "code": "RE",
+   "name": "Réunion"
+  },
+  {
+   "code": "RO",
+   "name": "Romania"
+  },
+  {
+   "code": "MF",
+   "name": "Saint Martin"
+  },
+  {
+   "code": "SN",
+   "name": "Senegal"
+  },
+  {
+   "code": "RS",
+   "name": "Serbia"
+  },
+  {
+   "code": "SK",
+   "name": "Slovakia"
+  },
+  {
+   "code": "SI",
+   "name": "Slovenia"
+  },
+  {
+   "code": "KR",
+   "name": "South Korea"
+  },
+  {
+   "code": "ES",
+   "name": "Spain"
+  },
+  {
+   "code": "SE",
+   "name": "Sweden"
+  },
+  {
+   "code": "CH",
+   "name": "Switzerland"
+  },
+  {
+   "code": "TH",
+   "name": "Thailand"
+  },
+  {
+   "code": "TR",
+   "name": "Türkiye"
+  },
+  {
+   "code": "UA",
+   "name": "Ukraine"
+  },
+  {
+   "code": "AE",
+   "name": "United Arab Emirates"
+  },
+  {
+   "code": "GB",
+   "name": "United Kingdom"
+  },
+  {
+   "code": "US",
+   "name": "United States"
+  },
+  {
+   "code": "VN",
+   "name": "Vietnam"
+  }
+ ],
+ "events_range": [
+  "2026-01-02",
+  "2027-09-03"
+ ],
+ "built_at": "2026-10-23T13:07:30Z"
+}
