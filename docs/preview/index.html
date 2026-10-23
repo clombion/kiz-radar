@@ -10,17 +10,25 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="stylesheet" href="../css/app.css">
 <link rel="stylesheet" href="preview.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap">
+<link rel="stylesheet" href="theme.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
 <script type="module" src="main.js"></script>
 </head>
 <body>
-<div class="preview-banner">Preview of the new landing page · <a href="../">compare with the current site</a></div>
+<nav class="variant-bar" aria-label="Design variants"><span class="label">Preview directions:</span>
+  <a href="?v=guide#finder" data-v="guide">Festival guide</a>
+  <a href="?v=season#finder" data-v="season">Season planner</a>
+  <a href="?v=scene#finder" data-v="scene">Scene map</a>
+  <a href="?v=deals#finder" data-v="deals">Flight-first</a>
+  <a href="../">Current site</a></nav>
 <header class="top">
   <a class="brand" href="#finder">Kizomba Radar</a>
   <nav class="tabs" aria-label="Main">
-    <a href="#finder" data-nav="finder">Find a trip</a>
+    <a href="#finder" data-nav="finder">Festivals</a>
     <a href="#map" data-nav="explore">Map &amp; artists</a>
   </nav>
 </header>

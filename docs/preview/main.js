@@ -2,6 +2,13 @@
 import { load, meta } from '../js/db.js';
 import { h, dayYear, ago } from '../js/ui.js';
 import { finderView } from './finder.js';
+import { guideView } from './guide.js';
+import { seasonView } from './season.js';
+import { sceneView } from './scene.js';
+
+const VARIANT = new URLSearchParams(location.search).get('v') || 'guide';
+for (const a of document.querySelectorAll('[data-v]')) a.classList.toggle('on', a.dataset.v === VARIANT);
+const LANDING = { guide: guideView, season: seasonView, deals: finderView, scene: sceneView }[VARIANT] || guideView;
 import { mapView } from '../js/map.js';
 import { artistsView } from '../js/artists.js';
 import { countriesView, sqlView } from '../js/tables.js';
@@ -33,7 +40,7 @@ function route() {
   else if (name === 'artists') artistsView(view_, sub, qs);
   else if (name === 'countries') countriesView(view_, home);
   else if (name === 'sql') sqlView(view_);
-  else finderView(view_, qs, { home });
+  else cleanup = LANDING(view_, qs, { home }) || null;
   const title = { map: 'Map', artists: 'Artists', countries: 'Countries', sql: 'SQL' }[name];  // preview
   document.title = title ? `${title} · Kizomba Radar` : 'Kizomba Radar';
 }
