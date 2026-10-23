@@ -1,14 +1,20 @@
 // Renders docs/share-card.png from share-card.html, with the cities of the festivals coming up taken from the site
-// database, and the PNG icons from docs/icon.svg:
+// database, and the icons from docs/mark.svg: the favicon docs/icon.svg (the mark, in light colours on dark tabs)
+// and the PNGs.
 //   NODE_PATH="$(npm root -g)" node design/render.cjs      (needs Playwright with Chromium, and python3)
 const { chromium } = require('playwright');
 const { execFileSync } = require('child_process');
+const fs = require('fs');
 const path = require('path');
 const here = __dirname, docs = path.join(here, '..', 'docs');
 const places = execFileSync('python3', ['-c', `import sqlite3, json, sys
 db = sqlite3.connect(sys.argv[1])
 print(json.dumps(db.execute('''select round(avg(lat), 3), round(avg(lon), 3), count(*) from event_rows
   where upcoming and lat is not null group by city, country_code''').fetchall()))`, path.join(docs, 'data', 'kiz.sqlite')]).toString();
+
+const mark = fs.readFileSync(path.join(docs, 'mark.svg'), 'utf8');
+fs.writeFileSync(path.join(docs, 'icon.svg'), mark.replace('</style>',
+  '@media (prefers-color-scheme:dark){.a{fill:#fffbf5;stroke:#fffbf5}.b{fill:#f6a9c6;stroke:#f6a9c6}}</style>'));
 
 (async () => {
   const browser = await chromium.launch();
@@ -23,7 +29,7 @@ print(json.dumps(db.execute('''select round(avg(lat), 3), round(avg(lon), 3), co
     await page.setViewportSize({ width: size, height: size });
     const pad = padded ? Math.round(size * 0.1) : 0;
     await page.setContent(`<body style="margin:0;background:${padded ? '#f6efe4' : 'transparent'}">
-      <img src="file://${path.join(docs, 'icon.svg')}" style="display:block;width:${size - 2 * pad}px;margin:${pad}px"></body>`);
+      <img src="file://${path.join(docs, 'mark.svg')}" style="display:block;width:${size - 2 * pad}px;margin:${pad}px"></body>`);
     await page.waitForFunction(() => document.images[0].complete);
     await page.screenshot({ path: path.join(docs, file), omitBackground: !padded });
   }

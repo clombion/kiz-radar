@@ -72,7 +72,7 @@ body { margin: 0; color: var(--text); font: 15px/1.5 system-ui, -apple-system, "
 h1 { line-height: 1.25; margin: 0 0 .4em; font-family: var(--font); font-weight: 650; letter-spacing: -.015em; }
 h2 { line-height: 1.25; margin: 0 0 .4em; font-size: 1.4rem; font-family: var(--font); font-weight: 650; letter-spacing: -.015em; }
 h3 { line-height: 1.25; margin: 0 0 .4em; font-size: 1.05rem; font-family: var(--font); font-weight: 650; letter-spacing: -.015em; }
-.brand { color: var(--text); text-decoration: none; font-family: var(--font); font-weight: 650; letter-spacing: -.015em; }
+.brand { display: inline-flex; align-items: center; gap: .45em; color: var(--text); text-decoration: none; font-family: var(--font); font-weight: 650; letter-spacing: -.015em; }
 h4 { line-height: 1.25; margin: 0 0 .4em; font-size: .9rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-top: 1em; font-family: inherit; }
 .top { display: flex; align-items: center; gap: 1.5rem; padding: .8rem 16px; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; background: var(--bg); border-bottom-color: var(--border); }
 .tabs a.active, .subnav a.active { font-weight: 600; background: var(--accent-soft); color: var(--accent); }

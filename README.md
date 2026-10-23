@@ -29,8 +29,8 @@ The footer links to an SQL page for querying the whole database.
 
 A shared link shows a preview card, `docs/share-card.png`, and the site has icons for browser tabs, bookmarks
 and phone home screens. The card is drawn from `design/share-card.html`, with a map of the festivals coming up taken from the
-site database, and the icon from `docs/icon.svg`. The icon shows two dancers in an embrace, their bodies closing
-into a radar ring, and it switches colours on dark browser tabs. To redraw the PNGs after changing either, or to
+site database, and the icons from `docs/mark.svg`. The mark shows two dancers in an embrace, their bodies closing
+into a radar ring, and the favicon made from it switches colours on dark browser tabs. To redraw the PNGs after changing either, or to
 bring the card's map up to date, run `NODE_PATH="$(npm root -g)" node design/render.cjs` (it needs Playwright).
 
 ## Where the data comes from

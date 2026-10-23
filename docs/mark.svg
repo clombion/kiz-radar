@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<!-- Kiz Radar: two dancers in an embrace, their bodies closing into a radar ring with a sweep inside.
+     design/render.cjs makes docs/icon.svg, the favicon, from it: the same mark with light colours on dark tabs -->
+<style>.a{fill:#7a2850;stroke:#7a2850}.b{fill:#c75a86;stroke:#c75a86}</style>
+<path class="a" d="M26.56 56.28 A21 21 0 0 1 26.56 15.72" stroke-width="6.5" stroke-linecap="round" style="fill:none"/>
+<path class="b" d="M37.44 15.72 A21 21 0 0 1 37.44 56.28" stroke-width="6.5" stroke-linecap="round" style="fill:none"/>
+<path class="b" d="M32 36 L32 19 A17 17 0 0 1 46.7 27.5 Z" opacity=".3" style="stroke:none"/>
+<circle class="a" cx="32" cy="36" r="3.4" style="stroke:none"/>
+<circle class="a" cx="27" cy="7.5" r="5.4" style="stroke:none"/>
+<circle class="b" cx="37" cy="7.5" r="5.4" style="stroke:none"/>
+</svg>
