@@ -38,7 +38,7 @@ export function eventDetail(id, home, { onArtist, compact } = {}) {
   const rooms = one('SELECT party_rooms, class_rooms FROM event_rooms WHERE event_id = ?', [id]);
   const people = q(`SELECT a.id, a.display_name, a.kind, ea.role, st.bookings, st.popular, st.home_country
     FROM event_artists ea JOIN artists a ON a.id = ea.artist_id LEFT JOIN artist_stats st ON st.artist_id = a.id
-    WHERE ea.event_id = ? ORDER BY st.bookings DESC, a.display_name`, [id]);
+    WHERE ea.event_id = ? AND ea.as_couple IS NULL ORDER BY st.bookings DESC, a.display_name`, [id]);
   const byRole = {};
   for (const p of people) (byRole[p.role] ||= []).push(p);
 

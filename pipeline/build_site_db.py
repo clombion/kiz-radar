@@ -82,9 +82,18 @@ x("""create view event_fares as
      from events e left join fares f on f.airport = e.airport and f.depart = e.weekend_friday""")
 
 # --- artist statistics -----------------------------------------------------------------------------
-# Bookings count the artist directly and as a member of a booked couple (artist_events view).
+# A couple's booking counts for the couple, not for each member: a member's own bookings are their solo
+# work. A member listed in the same role as their couple at the same event repeats the couple's booking,
+# so it is marked (as_couple) and left out of line-ups and statistics; a different role (the couple
+# teaches, one of them DJs) is a solo booking.
+x("alter table event_artists add column as_couple integer")
+x("""update event_artists set as_couple = (
+       select c.artist_id from event_artists c join couple_members cm on cm.couple_id = c.artist_id
+       where c.event_id = event_artists.event_id and c.role = event_artists.role
+         and cm.member_id = event_artists.artist_id limit 1)""")
 x("""create view artist_events as
     select ea.artist_id, ea.event_id, ea.role, 'direct' as via, null as via_artist_id from event_artists ea
+    where ea.as_couple is null
     union all
     select cm.member_id, ea.event_id, ea.role, 'member', ea.artist_id
     from event_artists ea join couple_members cm on cm.couple_id = ea.artist_id""")
@@ -92,9 +101,12 @@ roles_sql = ','.join(f"'{r}'" for r in BOOKED_ROLES)
 ev_cc = dict(x("select id, country_code from events"))
 bookings = collections.defaultdict(set)
 role_count = collections.defaultdict(collections.Counter)
-for a, e, role in x(f"select artist_id, event_id, role from artist_events where role in ({roles_sql})"):
+for a, e, role in x(f"select artist_id, event_id, role from event_artists where as_couple is null and role in ({roles_sql})"):
     if e not in bookings[a]: role_count[a][role] += 1
     bookings[a].add(e)
+couple_bookings = collections.defaultdict(set)     # member -> events booked as part of a couple
+for m, e in x(f"select artist_id, event_id from artist_events where via = 'member' and role in ({roles_sql})"):
+    couple_bookings[m].add(e)
 stated = collections.defaultdict(collections.Counter)
 for a, text in x("select artist_id, country from event_artists where country is not null and country != ''"):
     for c in codes(text): stated[a][c] += 1
@@ -104,7 +116,7 @@ out.executemany("insert into artist_origin values (?,?,?)", [(a, c, n) for a, cn
 
 x("""create table artist_stats (artist_id integer primary key, bookings integer, teacher integer, dj integer,
      performer integer, first_date text, last_date text, home_country text, home_basis text,
-     countries integer, abroad_bookings integer, popular integer)""")
+     countries integer, abroad_bookings integer, popular integer, couple_bookings integer)""")
 x("create table artist_countries (artist_id integer, country_code text, bookings integer, is_home integer, primary key (artist_id, country_code))")
 dates = dict(((r[0]), r[1]) for r in x("select id, start_date from events"))
 home_of = {}
@@ -120,9 +132,9 @@ for a, evs in bookings.items():
     home_of[a] = home
     ds = sorted(dates[e] for e in evs)
     abroad = sum(n for c, n in where.items() if c != home)
-    x("insert into artist_stats values (?,?,?,?,?,?,?,?,?,?,?,?)",
+    x("insert into artist_stats values (?,?,?,?,?,?,?,?,?,?,?,?,?)",
       (a, len(evs), role_count[a]['teacher'], role_count[a]['dj'], role_count[a]['performer'], ds[0][:10], ds[-1][:10],
-       home, basis, len(where), abroad, int(len(evs) >= POPULAR)))
+       home, basis, len(where), abroad, int(len(evs) >= POPULAR), len(couple_bookings[a] - evs)))
     out.executemany("insert into artist_countries values (?,?,?,?)", [(a, c, n, int(c == home)) for c, n in where.items()])
 
 # --- event statistics ------------------------------------------------------------------------------
@@ -131,7 +143,7 @@ for e, g in x("select event_id, genre from event_genres"): genres[e].add(g)
 feats = collections.defaultdict(set)
 for e, f in x("select event_id, feature from event_features"): feats[e].add(f)
 lineups = collections.defaultdict(set)
-for e, a in x("select event_id, artist_id from event_artists where role in ('teacher','dj')"): lineups[e].add(a)
+for e, a in x("select event_id, artist_id from event_artists where role in ('teacher','dj') and as_couple is null"): lineups[e].add(a)
 x("""create table event_stats (event_id integer primary key, lineup integer, popular_artists integer, imported integer,
      kiz integer, kiz_only integer, taxi_dancers integer, all_in_one integer, genres text, features text)""")
 for e, cc in ev_cc.items():
@@ -164,7 +176,9 @@ DOCS = {
  'airports': 'Airports the fare sweep covers. tier sets how often fares refresh (1 = every few days); tier 0 is home, where no flight is needed.',
  'fares': f'Round-trip economy fares from {HOME}, one adult, Friday out and Monday back, from Google Flights via fli. Reloaded from data/fares.csv when the page opens.',
  'event_fares': 'Each event joined to the fare for its weekend (null when Google had no price), plus the cheapest fare that month to the same airport.',
- 'artist_stats': f'Per artist: bookings (teacher, DJ or performer at distinct events, including as a member of a couple), home country (a stated country they are booked in, else where they are booked most), countries booked in, bookings abroad, popular = at least {POPULAR} bookings.',
+ 'artist_stats': f'Per artist with bookings of their own: bookings (teacher, DJ or performer at distinct events; a couple’s bookings count for the couple, not its members), home country (a stated country they are booked in, else where they are booked most), countries booked in, bookings abroad, popular = at least {POPULAR} bookings, couple_bookings = further events where they appear only as part of a couple. People booked only as part of a couple have no row.',
+ 'event_artists': 'Each artist named in a line-up, resolved to an artist, with role, style and stated country. as_couple is set when a member is listed in the same role as their couple at the same event: that row repeats the couple’s booking and is left out of line-ups and statistics.',
+ 'artist_events': 'Every appearance of an artist: direct (their own booking) or member (via a booked couple, via_artist_id).',
  'artist_countries': 'Bookings per artist and country; is_home marks the home country in artist_stats.',
  'artist_origin': 'Countries stated next to an artist’s name in line-ups (flags or text), with how often.',
  'event_stats': 'Per event: line-up size (teachers and DJs), popular artists booked, imported artists (home country differs from the event’s), kizomba-family genres, kiz-only (no salsa or bachata), taxi dancers, all-in-one hotel.',

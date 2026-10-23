@@ -11,7 +11,8 @@ flying to from Bergen, and for exploring the scene's events and artists.
     beside it follows the map: pan or zoom to change it, click a city to narrow it, click an event for its card.
     Every event has its own link (`#map/event/<id>`).
   - **Artists** — cards with bookings, roles, home country, countries they are booked in abroad; a page per artist
-    with bookings by country and every event.
+    with bookings by country and every event. A couple's bookings count for the couple; its members get a card only
+    for their solo bookings (e.g. one of them DJing where the couple teaches), and their page links to the couple.
   - **Countries** — events, kiz-only events, taxi dancers, line-up size, popular-artist bookings, share of imported
     artists, and the median fare to the cheapest airport serving the country.
   - **SQL** — query the whole database in the browser.
