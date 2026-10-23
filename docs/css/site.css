@@ -162,7 +162,7 @@ select.mini:focus-visible, select.plain:focus-visible { outline: 2px solid var(-
 .note-inline .hand { padding-top: .6rem; transform: rotate(-1.5deg); }
 .click { display: none; }
 .tap { display: inline; }
-.sentence-hero .live { font-size: 1.1rem; margin: 1.6rem 0 .4rem; color: var(--muted); margin-top: 2.2rem; }
+.sentence-hero .live { font-size: 1.1rem; margin: 3.2rem 0 .4rem; color: var(--muted); }
 .hints-done .note { opacity: 0; }
 .hints-done .note-inline { display: none !important; }
 .tabs a[data-nav="explore"] { position: relative; }
