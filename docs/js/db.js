@@ -1,6 +1,6 @@
 // Loads sql.js, the site database and the latest fares, and exposes small query helpers.
 const SQLJS = 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/';
-const DATA = new URL('../data/', import.meta.url);      // relative to this file, so pages in subfolders work too
+const DATA = new URL('../data/', import.meta.url);
 
 let db;
 
@@ -22,7 +22,7 @@ function replaceFares(text) {
   const head = lines.shift().split(',');
   const idx = name => head.indexOf(name);
   const cols = ['airport', 'depart', 'return', 'price', 'currency', 'fetched_at'].map(idx);
-  if (cols.some(i => i < 0)) return;
+  if (cols.some(i => i < 0)) throw new Error('data/fares.csv: unexpected columns ' + head.join(','));
   db.run('BEGIN');
   db.run('DELETE FROM fares');
   const st = db.prepare('INSERT OR REPLACE INTO fares VALUES (?,?,?,?,?,?)');

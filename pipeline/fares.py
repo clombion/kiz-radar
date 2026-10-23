@@ -1,7 +1,7 @@
 """Fare store and refresh scheduler.
 
 docs/data/fares.csv      one row per (airport, Friday out, Monday back): price in EUR and when it was fetched
-docs/data/fare_jobs.csv  one row per (airport, month): when it was last searched and how it went
+pipeline/fare_jobs.csv   one row per (airport, month): when it was last searched and how it went
 
 Each run searches only the most overdue (airport, month) pairs, so a frequent schedule spreads the load
 and stays under Google's rate limit. How often a pair is due depends on the airport's tier, on how far
@@ -12,12 +12,13 @@ ahead the month is, and on whether a festival near that airport falls in it:
     python3 pipeline/fares.py import <dir-of-fli-json>  # load results of an earlier sweep
 """
 import argparse, csv, datetime as dt, glob, json, os, shlex, sqlite3, subprocess, sys, time
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from airports import AIRPORTS, HOME
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, 'docs', 'data')
-FARES, JOBS = os.path.join(DATA, 'fares.csv'), os.path.join(DATA, 'fare_jobs.csv')
-HOME = 'BGO'
-FLI_SHA = '881aee5ff4321e81ea2157cb44be94ce6a21dc1b'   # punitarani/fli main, 2026-09-20 (same pin as travel-flight-check)
+FARES, JOBS = os.path.join(DATA, 'fares.csv'), os.path.join(ROOT, 'pipeline', 'fare_jobs.csv')
+FLI_SHA = '881aee5ff4321e81ea2157cb44be94ce6a21dc1b'   # punitarani/fli, the only place the version is pinned
 FLI = os.environ.get('FLI_CMD', f'uvx -q --from git+https://github.com/punitarani/fli@{FLI_SHA} fli')
 HORIZON_MONTHS = 11      # Google sells about 11 months ahead
 NEAR_MONTHS = 3          # months counted as "near"
@@ -41,7 +42,7 @@ def write(path, fields, rows, key):
         w = csv.DictWriter(f, fieldnames=fields, lineterminator='\n'); w.writeheader(); w.writerows(rows)
 
 def airports():
-    return {r['code']: r for r in csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'airports.csv'), encoding='utf-8'))}
+    return {r['code']: r for r in AIRPORTS}
 
 def months(today):
     y, m = today.year, today.month

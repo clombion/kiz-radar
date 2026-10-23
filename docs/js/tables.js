@@ -7,10 +7,10 @@ const EXAMPLES = [
 FROM artist_countries ac JOIN artists a ON a.id = ac.artist_id JOIN artist_stats st ON st.artist_id = a.id
 WHERE ac.country_code = 'PL' ORDER BY ac.bookings DESC LIMIT 25;`],
   ['Cheapest festival weekends', `SELECT e.title, e.city, e.weekend_friday, f.price
-FROM events e JOIN fares f ON f.airport = e.airport AND f.depart = e.weekend_friday
-WHERE e.weekend_friday >= date('now') ORDER BY f.price LIMIT 25;`],
-  ['Festivals with taxi dancers', `SELECT e.title, e.city, e.country_code, e.start_date
-FROM events e JOIN event_stats s ON s.event_id = e.id WHERE s.taxi_dancers = 1 ORDER BY e.start_date;`],
+FROM event_rows e JOIN fares f ON f.airport = e.airport AND f.depart = e.weekend_friday
+WHERE e.upcoming ORDER BY f.price LIMIT 25;`],
+  ['Festivals with taxi dancers', `SELECT title, city, country_code, start_date
+FROM event_rows WHERE upcoming AND taxi_dancers = 1 ORDER BY start_date;`],
   ['Artists booked in most countries', `SELECT a.display_name, st.countries, st.bookings, st.home_country
 FROM artist_stats st JOIN artists a ON a.id = st.artist_id ORDER BY st.countries DESC, st.bookings DESC LIMIT 25;`],
   ['Fares per airport (next 3 months)', `SELECT airport, count(*) AS weekends, min(price) AS cheapest, round(avg(price)) AS average

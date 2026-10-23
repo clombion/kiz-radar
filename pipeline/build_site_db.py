@@ -9,12 +9,12 @@ statistics, and a fares table filled from docs/data/fares.csv.
 import collections, csv, datetime as dt, difflib, math, os, re, sqlite3, sys, unicodedata
 sys.path.insert(0, os.path.dirname(__file__))
 from countries import codes, NAMES
-from names import tidy_name
+from text import tidy_name, tidy_title, soften_caps
+from airports import AIRPORTS, HOME
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = sys.argv[1]
 OUT = os.path.join(ROOT, 'docs', 'data', 'kiz.sqlite')
-HOME = 'BGO'
 POPULAR = 10            # bookings that make an artist "popular"
 MAX_AIRPORT_KM = 250
 KIZ = ('kizomba', 'urbankiz', 'semba', 'tarraxo', 'tarraxinha', 'douceur')
@@ -26,7 +26,7 @@ def km(a, b, c, d):
 
 def weekend_friday(start):
     """The Friday a Fri→Mon trip would leave on: the event's own Friday, or the next one for a Wed/Thu start."""
-    d = dt.date.fromisoformat(start[:10])
+    d = dt.date.fromisoformat(start)
     off = (4 - d.weekday()) % 7
     return (d + dt.timedelta(days=off if off <= 3 else off - 7)).isoformat()
 
@@ -36,8 +36,18 @@ out.execute(f"attach database 'file:{SRC}?mode=ro' as src")
 x = out.execute
 
 # --- copied tables, without descriptions, images or quotes -------------------------------------
-x("""create table events as select id, title, url, slug, start_date, end_date, timezone, all_day, featured,
-     cancelled, venue, city, country, website, published_at, modified_at from src.events""")
+# Dates are days (the site plans weekends, not hours); title is tidied for display, listed_title is as listed.
+DAY_CHECK = "check (length({0}) = 10 and date({0}) = {0})"
+x(f"""create table events (id integer primary key, title text not null, listed_title text not null, url text not null,
+     slug text, start_date text not null {DAY_CHECK.format('start_date')}, end_date text not null {DAY_CHECK.format('end_date')},
+     timezone text, all_day integer, featured integer, cancelled integer not null check (cancelled in (0, 1)), venue text, city text not null, country text,
+     website text, published_at text, modified_at text, check (end_date >= start_date))""")
+out.executemany("insert into events values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", [
+    (i, tidy_title(t), t, url, slug, start[:10], end[:10], tz, all_day, feat, int(canc or 0),
+     soften_caps(venue) if venue else venue, city, country, web, pub, mod)
+    for i, t, url, slug, start, end, tz, all_day, feat, canc, venue, city, country, web, pub, mod in x(
+        """select id, title, url, slug, start_date, end_date, timezone, all_day, featured, cancelled, venue, city, country,
+           website, published_at, modified_at from src.events""")])
 for t in ('event_categories', 'event_tags', 'artists', 'artist_aliases', 'couple_members', 'event_artists',
           'genre_definitions', 'feature_definitions', 'role_definitions', 'pipeline_steps'):
     x(f"create table {t} as select * from src.{t}")
@@ -108,13 +118,13 @@ print(f'{len(renamed)} artist names recased')
 
 # --- places and airports -------------------------------------------------------------------------
 geo = {(r['city'], r['country']): r for r in csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'geocode.csv'), encoding='utf-8'))}
-airports = list(csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'airports.csv'), encoding='utf-8')))
-x("create table airports (code text primary key, name text, country_code text, lat real, lon real, tier integer)")
-out.executemany("insert into airports values (?,?,?,?,?,?)",
-                [(a['code'], a['name'], a['country_code'], float(a['lat']), float(a['lon']), int(a['tier'])) for a in airports])
+airports = AIRPORTS
+x("create table airports (code text primary key, name text not null, city text not null, country_code text, lat real, lon real, tier integer)")
+out.executemany("insert into airports values (?,?,?,?,?,?,?)",
+                [(a['code'], a['name'], a['city'], a['country_code'], float(a['lat']), float(a['lon']), int(a['tier'])) for a in airports])
 for col in ('country_code text', 'lat real', 'lon real', 'airport text', 'airport_km real', 'weekend_friday text'):
     x(f"alter table events add column {col}")
-for eid, city, country, start in x("select id, coalesce(city,''), coalesce(country,''), start_date from events").fetchall():
+for eid, city, country, start in x("select id, city, coalesce(country,''), start_date from events").fetchall():
     cc = (codes(country) or [None])[0]
     g = geo.get((city, country)) or {}
     lat, lon = (float(g['lat']), float(g['lon'])) if g.get('lat') else (None, None)
@@ -193,7 +203,7 @@ for a, evs in bookings.items():
     ds = sorted(dates[e] for e in evs)
     abroad = sum(n for c, n in where.items() if c != home)
     x("insert into artist_stats values (?,?,?,?,?,?,?,?,?,?,?,?,?)",
-      (a, len(evs), role_count[a]['teacher'], role_count[a]['dj'], role_count[a]['performer'], ds[0][:10], ds[-1][:10],
+      (a, len(evs), role_count[a]['teacher'], role_count[a]['dj'], role_count[a]['performer'], ds[0], ds[-1],
        home, basis, len(where), abroad, int(len(evs) >= POPULAR), len(couple_bookings[a] - evs)))
     out.executemany("insert into artist_countries values (?,?,?,?)", [(a, c, n, int(c == home)) for c, n in where.items()])
 
@@ -221,19 +231,27 @@ x("""create view country_stats as
       (select airport from events e2 where e2.country_code = e.country_code and e2.airport is not null
          group by airport order by count(*) desc limit 1) as main_airport
     from events e join event_stats s on s.event_id = e.id left join countries c on c.code = e.country_code
-    where e.cancelled is not 1 group by e.country_code""")
+    where e.cancelled = 0 group by e.country_code""")
+
+# What the site reads for festivals: each event with its statistics, and whether it is still to come (evaluated
+# when queried, so "upcoming" means the same thing on every page).
+x("""create view event_rows as
+    select e.id, e.title, e.url, e.start_date, e.end_date, e.city, e.country_code, e.lat, e.lon, e.airport, e.airport_km,
+      a.city as airport_city, e.weekend_friday, e.cancelled, e.venue, s.lineup, s.popular_artists, s.kiz_only,
+      s.taxi_dancers, s.all_in_one, s.features, e.end_date >= date('now') and e.cancelled = 0 as upcoming
+    from events e join event_stats s on s.event_id = e.id left join airports a on a.code = e.airport""")
 
 x("create table meta (key text primary key, value text)")
 out.executemany("insert into meta values (?,?)", [
     ('home_airport', HOME), ('popular_threshold', str(POPULAR)), ('max_airport_km', str(MAX_AIRPORT_KM)),
     ('built_at', dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')),
     ('events_source', 'https://kizomba-world.com/'),
-    ('events_range', ' – '.join(x("select min(substr(start_date,1,10)), max(substr(start_date,1,10)) from events").fetchone())),
+    ('events_range', ' – '.join(x("select min(start_date), max(start_date) from events").fetchone())),
 ])
 
 DOCS = {
- 'events': 'One row per kizomba-world event: title, dates, venue and city, link (url). Added: country_code, lat/lon (OpenStreetMap geocode of the city), airport (nearest in airports, within max_airport_km), airport_km, weekend_friday (the Friday of a Fri→Mon trip to it).',
- 'airports': 'Airports the fare sweep covers. tier sets how often fares refresh (1 = every few days); tier 0 is home, where no flight is needed.',
+ 'events': 'One row per kizomba-world event: title (tidied: dates, years and shouting capitals removed; listed_title is as listed), dates (days), venue and city, link (url). Added: country_code, lat/lon (OpenStreetMap geocode of the city), airport (nearest in airports, within max_airport_km), airport_km, weekend_friday (the Friday of a Fri→Mon trip to it).',
+ 'airports': 'Airports the fare sweep covers, with the city they serve. tier sets how often fares refresh (1 = every few days); tier 0 is home, where no flight is needed.',
  'fares': f'Round-trip economy fares from {HOME}, one adult, Friday out and Monday back, from Google Flights via fli. Reloaded from data/fares.csv when the page opens.',
  'event_fares': 'Each event joined to the fare for its weekend (null when Google had no price), plus the cheapest fare that month to the same airport.',
  'artist_stats': f'Per artist with bookings of their own: bookings (teacher, DJ or performer at distinct events; a couple’s bookings count for the couple, not its members), home country (a stated country they are booked in, else where they are booked most), countries booked in, bookings abroad, popular = at least {POPULAR} bookings, couple_bookings = further events where they appear only as part of a couple. People booked only as part of a couple have no row.',
@@ -243,6 +261,7 @@ DOCS = {
  'artist_countries': 'Bookings per artist and country; is_home marks the home country in artist_stats.',
  'artist_origin': 'Countries stated next to an artist’s name in line-ups (flags or text), with how often.',
  'event_stats': 'Per event: line-up size (teachers and DJs), popular artists booked, imported artists (home country differs from the event’s), kizomba-family genres, kiz-only (no salsa or bachata), taxi dancers, all-in-one hotel.',
+ 'event_rows': 'What the site reads: each event with its event_stats, and upcoming (not over yet and not cancelled, as of the moment of the query).',
  'country_stats': 'Per country: events, kiz-only events, taxi dancers, average line-up, bookings of popular artists, share of imported artists, most common airport.',
  'countries': 'ISO 3166 codes and names.',
  'meta': 'Build settings and provenance.',

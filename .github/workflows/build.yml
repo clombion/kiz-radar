@@ -1,18 +1,13 @@
 name: Rebuild site database
 
-# When a new kizomba-world export, the merge list or the build code is pushed, geocode any new cities,
+# When a new kizomba-world export or anything in pipeline/ is pushed, geocode any new cities,
 # rebuild docs/data/kiz.sqlite and refresh the merge suggestions. The newest .sqlite file in source/ is used.
 on:
   push:
     branches: [main]
-    paths:
+    paths:              # bot commits made with the Actions token don't trigger workflows, so this can't loop
       - 'source/**'
-      - 'pipeline/build_site_db.py'
-      - 'pipeline/countries.py'
-      - 'pipeline/airports.csv'
-      - 'pipeline/geocode.csv'
-      - 'pipeline/artist_merges.csv'
-      - 'pipeline/merge_suggestions.py'
+      - 'pipeline/**'
   workflow_dispatch:
 
 permissions:

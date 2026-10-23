@@ -58,10 +58,10 @@ def main():
     for cid, mid in c.execute('select couple_id, member_id from couple_members'):
         members[cid].append(norm(art[mid][0]))
     done, group = decided()
-    # The built site DB knows every merge, including members merged along with their couples.
-    site = os.path.join(ROOT, 'docs', 'data', 'kiz.sqlite')
-    moved = dict(sqlite3.connect(f'file:{site}?mode=ro', uri=True).execute('select old_id, new_id from artist_redirects')) \
-        if os.path.exists(site) else {}
+    # The built site DB (run build_site_db.py first) knows every merge, including members merged along with their
+    # couples, and has the events as days.
+    site = sqlite3.connect(f"file:{os.path.join(ROOT, 'docs', 'data', 'kiz.sqlite')}?mode=ro", uri=True)
+    moved = dict(site.execute('select old_id, new_id from artist_redirects'))
 
     # Country of origin: what line-ups state next to the name (flags or text); members without one take their
     # couple's; failing that, the country where the artist is booked most. Marked '~' when only inferred.
@@ -92,9 +92,9 @@ def main():
         return 'unclear', 0
     # Calendar: every event an artist appears at (directly or through a couple), with dates, city and organisers.
     ev = {}
-    for eid, start, end, city, country in c.execute('select id, start_date, end_date, city, country from events'):
-        a = dt.date.fromisoformat(start[:10]); b = dt.date.fromisoformat((end or start)[:10])
-        ev[eid] = (a, b, (b - a).days <= SHORT_EVENT_DAYS, (city or '').strip().lower(), f'{city}, {country}')
+    for eid, start, end, city, country in site.execute('select id, start_date, end_date, city, country from events'):
+        a, b = dt.date.fromisoformat(start), dt.date.fromisoformat(end)
+        ev[eid] = (a, b, (b - a).days <= SHORT_EVENT_DAYS, city.strip().lower(), f'{city}, {country}')
     organisers = collections.defaultdict(set)
     for eid, a in c.execute("select event_id, artist_id from event_artists where role = 'organiser'"): organisers[eid].add(a)
     events_of = collections.defaultdict(set)              # any appearance, also through a couple

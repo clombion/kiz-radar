@@ -3,10 +3,10 @@
 import { q } from './db.js';
 import { h, flag, countryName } from './ui.js';
 import { TRAITS, MORE_TRAITS } from './icons.js';
-import { softenCaps } from './titles.js';
+import { artistHref, eventOnMapHref } from './routes.js';
 
 const ROLES = [['teacher', 'Teachers'], ['dj', 'DJs'], ['performer', 'Performers'], ['mc', 'MCs']];
-export const icon = svg => { const el = h('span', { class: 'ic' }); el.innerHTML = svg; return el; };
+const icon = svg => { const el = h('span', { class: 'ic' }); el.innerHTML = svg; return el; };
 export const traitItems = list => list.map(([, label, svg]) => h('li', {}, icon(svg), label));
 
 export function cardDetails(e, shownTraits, close, { onMap = false } = {}) {
@@ -15,11 +15,10 @@ export function cardDetails(e, shownTraits, close, { onMap = false } = {}) {
     WHERE ea.event_id = ? AND ea.as_couple IS NULL ORDER BY st.bookings DESC, a.display_name`, [e.id]);
   const byRole = {};
   for (const p of people) (byRole[p.role] ||= []).push(p);
-  const feats = new Set((e.features || '').split(','));
-  const rest = [...TRAITS, ...MORE_TRAITS].filter(([k]) => feats.has(k) && !shownTraits.includes(k));
+  const rest = [...TRAITS, ...MORE_TRAITS].filter(([k]) => e.features.has(k) && !shownTraits.includes(k));
   const venue = e.venue;
   const organisers = byRole.organiser || [];
-  const person = p => h('a', { href: `#artist/${p.id}`, class: 'artist' }, p.display_name);
+  const person = p => h('a', { href: artistHref(p.id), class: 'artist' }, p.display_name);
 
   return h('div', { class: 'card-details' },
     ROLES.filter(([r]) => byRole[r]).map(([r, label]) => h('section', { class: 'roster' },
@@ -30,10 +29,10 @@ export function cardDetails(e, shownTraits, close, { onMap = false } = {}) {
     people.length ? null : h('p', { class: 'muted' }, 'No line-up announced yet.'),
     rest.length ? h('ul', { class: 'traits' }, traitItems(rest)) : null,
     venue || organisers.length ? h('p', { class: 'practical' },
-      venue ? ['Venue: ', softenCaps(venue)] : null, venue && organisers.length ? ' · ' : null,
+      venue ? ['Venue: ', venue] : null, venue && organisers.length ? ' · ' : null,
       organisers.length ? ['Organised by ', ...organisers.flatMap((p, i) => [i ? ', ' : '', person(p)])] : null) : null,
     h('div', { class: 'links' },
-      h('p', {}, onMap ? null : [h('a', { href: `#map/event/${e.id}` }, 'See it on the map'), ' · '],
+      h('p', {}, onMap ? null : [h('a', { href: eventOnMapHref(e.id) }, 'See it on the map'), ' · '],
         h('a', { href: e.url, target: '_blank', rel: 'noopener' }, 'Kizomba-world ↗')),
       close));
 }

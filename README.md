@@ -21,19 +21,21 @@ flying to from Bergen, and for exploring the scene's events and artists.
     local or visiting artists.
 - **SQL** (linked from the footer) — query the whole database in the browser.
 
-Artist names are recased at build time (`pipeline/names.py`). Festival titles are tidied for cards in the browser
-(`docs/js/titles.js`), and the original title stays on kizomba-world.
+Text is tidied when the database is built (`pipeline/text.py`): artist names get one casing, festival titles lose
+dates, years and shouting capitals (`events.title`; `listed_title` is as listed), and venues are recased.
+"Upcoming" means one thing everywhere: the `event_rows` view decides it when queried.
 
 ## Data
 
 | File | What | Updated by |
 |---|---|---|
 | `source/*.sqlite` | The full kizomba-world export (with descriptions and images) | you, when you re-export |
-| `docs/data/kiz.sqlite` | What the page loads: events, genres, features, line-ups, artist and country statistics, airports, a fares snapshot | the **Rebuild site database** Action, on every push to `source/` |
-| `docs/data/fares.csv` | Fri→Mon return fares from BGO, one row per airport and weekend | the **Refresh fares** Action |
-| `docs/data/fare_jobs.csv` | When each airport and month was last searched | the same Action |
+| `docs/data/kiz.sqlite` | What the page loads: events, genres, features, line-ups, artist and country statistics, airports, a fares snapshot | the **Rebuild site database** Action, on every push to `source/` or `pipeline/` |
+| `docs/data/fares.csv` | Fri→Mon return fares from home, one row per airport and weekend | the **Refresh fares** Action |
+| `pipeline/fare_jobs.csv` | When each airport and month was last searched | the same Action |
 
-The page never reads `source/`: it loads `kiz.sqlite`, replaces its fares table with the latest `fares.csv`, and runs every query locally.
+Home (Bergen) is the one tier-0 airport in `pipeline/airports.csv`; the pipeline and the page both take it from
+there. The page never reads `source/`: it loads `kiz.sqlite`, replaces its fares table with the latest `fares.csv`, and runs every query locally.
 Table descriptions are in the `table_docs` table (see the SQL tab).
 
 Events come from [kizomba-world.com](https://kizomba-world.com/). The site shows facts and links back to each event
@@ -68,7 +70,7 @@ name order ("Lukasz & Karolina" / "Karolina & Łukasz"), or one person per partn
 | `keep_name`, `merge_name`, `note` | for people reading the file; not used by the build |
 
 Merging two couples also merges their members, pairing them by closest name. Bookings, aliases and line-ups move
-to the kept artist, and old artist links redirect to it.
+to the kept artist; `artist_redirects` records which old ids went where.
 
 `pipeline/artist_merge_suggestions.csv` lists likely duplicates still undecided: couples whose names match in
 either order, and candidates the source pipeline left open. Rows are ranked by `score`: name similarity, raised
@@ -80,7 +82,7 @@ cities, so different people; strong penalty), `shared circuit` (same city or org
 `same line-up` (both named in one line-up; shown for review, not scored, since festivals list artists per room)
 and `no clash`. `calendar_note` says which events. To decide one, copy its row into `artist_merges.csv`
 and fill in `decision`. Pushing the change rebuilds the site and refreshes the suggestions; locally run
-`python3 pipeline/merge_suggestions.py source/<events>.sqlite`.
+`python3 pipeline/merge_suggestions.py source/<events>.sqlite` after `build_site_db.py`, whose output it reads.
 
 ## Updating events
 
@@ -93,3 +95,16 @@ python3 pipeline/build_site_db.py source/<events>.sqlite
 python3 pipeline/fares.py refresh --budget 4                # needs uv; or set FLI_CMD=fli
 python3 -m http.server -d docs 8000                         # then open http://localhost:8000
 ```
+
+## Tests
+
+The **Tests** Action runs on every push:
+
+```bash
+node --test tests/*.test.mjs      # site checks: unused exports and CSS, one rule per selector, links via routes.js, …
+uvx pytest -q tests/              # pipeline: text tidying
+```
+
+The database build enforces its own invariants (dates are days, required fields are set, `cancelled` is 0 or 1), so
+a source export that breaks them fails the build instead of reaching the site.
+
