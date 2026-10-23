@@ -31,6 +31,22 @@ function flight(e) {
     ` to ${e.airport_city}`, e.airport_km > 30 ? `, then ${e.airport_km} km` : '');
 }
 
+// Opening a card changes the layout (on wide screens it takes the whole row). The browser's view transitions
+// animate that: the card grows into place and its neighbours glide to theirs. Only the cards on screen take part,
+// and without view transitions, or with reduced motion, the change is instant.
+let named = 0;
+function smoothly(card, change) {
+  if (!document.startViewTransition || matchMedia('(prefers-reduced-motion: reduce)').matches) return change();
+  const onScreen = [...(card.parentElement?.children || [card])].filter(c => { const r = c.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; });
+  for (const c of onScreen) c.style.viewTransitionName = c === card ? 'card-opening' : `card-${++named}`;   // the one opening draws on top
+  const t = document.startViewTransition(() => {
+    change();
+    const r = card.getBoundingClientRect();
+    if (r.top < 0 || r.top > innerHeight - 80) card.scrollIntoView({ block: 'nearest' });       // keep the card in view
+  });
+  t.finished.finally(() => { for (const c of onScreen) c.style.viewTransitionName = ''; });
+}
+
 export function eventCard(e, { hint = null, open = false, onMap = false } = {}) {
   const start = e.projected ? e.depart : e.start_date, end = e.projected ? addDays(e.depart, 2) : e.end_date;
   const more = h('div', { class: 'festival-more', hidden: true });
@@ -42,7 +58,7 @@ export function eventCard(e, { hint = null, open = false, onMap = false } = {}) 
     label.textContent = open ? 'Less' : 'Line-up & details';
   };
   const toggleBtn = (cls, ...kids) => { const b = h('button', { type: 'button', class: cls, 'aria-expanded': 'false',
-    onclick: ev => { ev.stopPropagation(); setOpen(more.hidden); } }, ...kids); toggles.push(b); return b; };
+    onclick: ev => { ev.stopPropagation(); smoothly(art, () => setOpen(more.hidden)); } }, ...kids); toggles.push(b); return b; };
   const label = h('span', {}, 'Line-up & details');
 
   const links = e.headliners.map(a => h('a', { href: artistHref(a.id), class: 'artist', onclick: artistHint.mark }, a.name));
@@ -70,7 +86,7 @@ export function eventCard(e, { hint = null, open = false, onMap = false } = {}) 
     h('div', { class: 'foot' }, flight(e), h('div', { class: 'actions' }, toggleBtn('link', label))),
     more);
   // the whole card opens the details, except where it already holds a link or a button
-  art.addEventListener('click', ev => { if (!ev.target.closest('a, button, select, input, label, .festival-more')) setOpen(more.hidden); });
+  art.addEventListener('click', ev => { if (!ev.target.closest('a, button, select, input, label, .festival-more')) smoothly(art, () => setOpen(more.hidden)); });
   if (open) setOpen(true);
   return art;
 }
