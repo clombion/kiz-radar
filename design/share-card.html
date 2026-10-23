@@ -1,41 +1,44 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;650&family=Caveat:wght@700&display=block">
-<style>
-  html, body { margin: 0; }
-  body { width: 1200px; height: 630px; background: #f6efe4; color: #2a1f22; font-family: Inter, sans-serif;
-         position: relative; overflow: hidden; }
-  .rings { position: absolute; right: -170px; top: 50%; transform: translateY(-50%); width: 760px; height: 760px; }
-  .brand { position: absolute; left: 88px; top: 72px; display: flex; align-items: center; gap: 16px;
-           font-size: 34px; font-weight: 650; letter-spacing: -.015em; }
-  .brand img { width: 52px; height: 52px; }
-  h1 { position: absolute; left: 88px; top: 200px; width: 760px; margin: 0; font-size: 70px; line-height: 1.12;
-       font-weight: 500; letter-spacing: -.025em; }
-  .dance { font: 700 1.32em/1 Caveat, cursive; color: #7a2850; letter-spacing: 0; }
-  p { position: absolute; left: 88px; top: 430px; width: 640px; margin: 0; font-size: 32px; line-height: 1.35; color: #6d5f55; }
-  p b { color: #2a1f22; font-weight: 500; }
-</style>
-</head>
-<body>
-<svg class="rings" viewBox="0 0 760 760" aria-hidden="true">
-  <g fill="none" stroke="#7a2850">
-    <circle cx="380" cy="380" r="370" opacity=".07" stroke-width="2"/>
-    <circle cx="380" cy="380" r="280" opacity=".10" stroke-width="2"/>
-    <circle cx="380" cy="380" r="190" opacity=".14" stroke-width="2"/>
-    <circle cx="380" cy="380" r="100" opacity=".18" stroke-width="2"/>
-  </g>
-  <path d="M380 380 L380 10 A370 370 0 0 1 700 195 Z" fill="#7a2850" opacity=".06"/>
-  <g fill="#7a2850">
-    <circle cx="380" cy="380" r="9"/>
-    <circle cx="560" cy="150" r="13" opacity=".85"/>
-    <circle cx="250" cy="200" r="9" opacity=".5"/>
-    <circle cx="610" cy="470" r="10" opacity=".6"/>
-  </g>
-</svg>
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;650&family=Caveat:wght@700&display=block">
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<style>html,body{margin:0}body{width:1200px;height:630px;position:relative;overflow:hidden;font-family:Inter,sans-serif;background:#e9e4da;color:#2a1f22}
+.dance{font:700 1.32em/1 Caveat,cursive;letter-spacing:0;color:#7a2850}
+svg{position:absolute;inset:0}
+.panel{position:absolute;left:0;top:0;bottom:0;width:680px;background:linear-gradient(90deg,#f6efe4 80%,#f6efe400)}
+.brand{position:absolute;left:80px;top:70px;display:flex;align-items:center;gap:16px;font-size:34px;font-weight:650;letter-spacing:-.015em}
+.brand img{width:52px;height:52px}
+h1{position:absolute;left:80px;top:188px;width:520px;margin:0;font-size:60px;line-height:1.12;font-weight:500;letter-spacing:-.025em}
+.sub{position:absolute;left:80px;top:404px;width:470px;margin:0;font-size:27px;line-height:1.35;color:#6d5f55}
+</style></head><body>
+<svg viewBox="0 0 1200 630" id="m"></svg>
+<div class="panel"></div>
 <div class="brand"><img src="../docs/icon.svg" alt="">Kiz Radar</div>
 <h1>I want to go to a <span class="dance">Kizomba</span> festival…</h1>
-<p><b>Kizomba, Urban Kiz &amp; Tarraxo festivals</b> worth flying to from Bergen</p>
-</body>
-</html>
+<p class="sub">Pick a festival that fits your budget: every one coming up, with the flight price from Bergen</p>
+<script>
+const PLACES = window.PLACES;      // [lat, lon, festivals] per city, set by design/render.cjs
+// Mercator, fitted so Europe sits right of the text
+const lon0 = -47, lon1 = 35, lat1 = 63.2, W = 1200;
+const Y = la => Math.log(Math.tan(Math.PI / 4 + la * Math.PI / 360));
+const k = W / ((lon1 - lon0) * Math.PI / 180);
+const px = (lo, la) => [(lo - lon0) * Math.PI / 180 * k, (Y(lat1) - Y(la)) * k];
+const svg = document.getElementById('m'), NS = 'http://www.w3.org/2000/svg';
+const el = (t, a) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); svg.append(e); return e; };
+window.ready = fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json').then(r => r.json()).then(topo => {
+  const land = topojson.feature(topo, topo.objects.countries);
+  let d = '';
+  for (const f of land.features) {
+    const polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
+    for (const poly of polys) for (const ring of poly) {
+      if (ring.every(([lo]) => lo < lon0 - 20 || lo > lon1 + 40)) continue;
+      d += 'M' + ring.map(([lo, la]) => px(lo, la).map(v => v.toFixed(1)).join(',')).join('L') + 'Z';
+    }
+  }
+  el('path', { d, fill: '#fdf9f2', stroke: '#d5c7b2', 'stroke-width': 1 });
+  const [bx, by] = px(5.22, 60.29);
+  for (const [la, lo, n] of PLACES) { const [x, y] = px(lo, la); el('line', { x1: bx, y1: by, x2: x, y2: y, stroke: '#7a2850', 'stroke-opacity': .07, 'stroke-width': 1 }); }
+  for (const [la, lo, n] of [...PLACES].sort((a, b) => b[2] - a[2])) { const [x, y] = px(lo, la);
+    el('circle', { cx: x, cy: y, r: Math.min(4 + 2.6 * n, 18), fill: '#7a2850', 'fill-opacity': .6, stroke: '#fffbf5', 'stroke-width': 1.5 }); }
+  el('circle', { cx: bx, cy: by, r: 8, fill: '#2a1f22', stroke: '#fffbf5', 'stroke-width': 3 });
+  const t = el('text', { x: bx + 14, y: by - 10, 'font-size': 22, 'font-weight': 600, fill: '#2a1f22' }); t.textContent = 'Bergen';
+});
+</script></body></html>

@@ -1,14 +1,21 @@
-// Renders docs/share-card.png from share-card.html, and the PNG icons from docs/icon.svg:
-//   NODE_PATH="$(npm root -g)" node design/render.cjs      (needs Playwright with Chromium)
+// Renders docs/share-card.png from share-card.html, with the cities of the festivals coming up taken from the site
+// database, and the PNG icons from docs/icon.svg:
+//   NODE_PATH="$(npm root -g)" node design/render.cjs      (needs Playwright with Chromium, and python3)
 const { chromium } = require('playwright');
+const { execFileSync } = require('child_process');
 const path = require('path');
 const here = __dirname, docs = path.join(here, '..', 'docs');
+const places = execFileSync('python3', ['-c', `import sqlite3, json, sys
+db = sqlite3.connect(sys.argv[1])
+print(json.dumps(db.execute('''select round(avg(lat), 3), round(avg(lon), 3), count(*) from event_rows
+  where upcoming and lat is not null group by city, country_code''').fetchall()))`, path.join(docs, 'data', 'kiz.sqlite')]).toString();
 
 (async () => {
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1200, height: 630 } });
+  await page.addInitScript(`window.PLACES = ${places}`);
   await page.goto('file://' + path.join(here, 'share-card.html'));
-  await page.evaluate(() => document.fonts.ready);
+  await page.evaluate(() => Promise.all([document.fonts.ready, window.ready]));
   await page.screenshot({ path: path.join(docs, 'share-card.png') });
 
   // the icon on its own, and on the page colour where a platform wants a square without transparency
