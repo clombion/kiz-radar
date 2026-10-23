@@ -126,5 +126,6 @@ uvx pytest -q tests/              # the pipeline's text tidying
 The site tests check what JavaScript and CSS cannot enforce themselves. Examples include an export nothing
 imports, a CSS rule overridden by a second one for the same selector, and a link written outside `routes.js`.
 
-The database enforces its own rules. Dates are days, required fields are set, and `cancelled` is 0 or 1. As a
-result, an export that breaks them fails the build instead of reaching the site.
+The database enforces its own rules. Dates are days, required fields are set, and `cancelled` is 1, 0 or
+empty. Empty means not known: the source flags it only for events still listed as upcoming, so most past
+festivals have none. As a result, an export that breaks these rules fails the build instead of reaching the site.

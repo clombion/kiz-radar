@@ -32,7 +32,7 @@ const STOP = new Set(['the', 'official', 'edition', 'event', 'festival', 'fest',
 
 export function festivals() {
   const from = today(), to = addDays(from, 365);
-  const all = q('SELECT * FROM event_rows WHERE cancelled = 0');
+  const all = q('SELECT * FROM event_rows WHERE cancelled IS NOT 1');
   const upcoming = all.filter(e => e.upcoming);
   const listed = upcoming.map(e => ({ key: titleKey(e.title), city: e.city, f: e.weekend_friday }));
   const rows = upcoming.map(e => ({ ...e, projected: false }));

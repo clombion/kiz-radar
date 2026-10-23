@@ -40,10 +40,10 @@ x = out.execute
 DAY_CHECK = "check (length({0}) = 10 and date({0}) = {0})"
 x(f"""create table events (id integer primary key, title text not null, listed_title text not null, url text not null,
      slug text, start_date text not null {DAY_CHECK.format('start_date')}, end_date text not null {DAY_CHECK.format('end_date')},
-     timezone text, all_day integer, featured integer, cancelled integer not null check (cancelled in (0, 1)), venue text, city text not null, country text,
+     timezone text, all_day integer, featured integer, cancelled integer check (cancelled in (0, 1)), venue text, city text not null, country text,
      website text, published_at text, modified_at text, check (end_date >= start_date))""")
 out.executemany("insert into events values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", [
-    (i, tidy_title(t), t, url, slug, start[:10], end[:10], tz, all_day, feat, int(canc or 0),
+    (i, tidy_title(t), t, url, slug, start[:10], end[:10], tz, all_day, feat, canc,
      soften_caps(venue) if venue else venue, city, country, web, pub, mod)
     for i, t, url, slug, start, end, tz, all_day, feat, canc, venue, city, country, web, pub, mod in x(
         """select id, title, url, slug, start_date, end_date, timezone, all_day, featured, cancelled, venue, city, country,
@@ -231,14 +231,14 @@ x("""create view country_stats as
       (select airport from events e2 where e2.country_code = e.country_code and e2.airport is not null
          group by airport order by count(*) desc limit 1) as main_airport
     from events e join event_stats s on s.event_id = e.id left join countries c on c.code = e.country_code
-    where e.cancelled = 0 group by e.country_code""")
+    where e.cancelled is not 1 group by e.country_code""")
 
 # What the site reads for festivals: each event with its statistics, and whether it is still to come (evaluated
 # when queried, so "upcoming" means the same thing on every page).
 x("""create view event_rows as
     select e.id, e.title, e.url, e.start_date, e.end_date, e.city, e.country_code, e.lat, e.lon, e.airport, e.airport_km,
       a.city as airport_city, e.weekend_friday, e.cancelled, e.venue, s.lineup, s.popular_artists, s.kiz_only,
-      s.taxi_dancers, s.all_in_one, s.features, e.end_date >= date('now') and e.cancelled = 0 as upcoming
+      s.taxi_dancers, s.all_in_one, s.features, e.end_date >= date('now') and e.cancelled is not 1 as upcoming
     from events e join event_stats s on s.event_id = e.id left join airports a on a.code = e.airport""")
 
 x("create table meta (key text primary key, value text)")
@@ -250,7 +250,7 @@ out.executemany("insert into meta values (?,?)", [
 ])
 
 DOCS = {
- 'events': 'One row per kizomba-world event: title (tidied: dates, years and shouting capitals removed; listed_title is as listed), dates (days), venue and city, link (url). Added: country_code, lat/lon (OpenStreetMap geocode of the city), airport (nearest in airports, within max_airport_km), airport_km, weekend_friday (the Friday of a Fri→Mon trip to it).',
+ 'events': 'One row per kizomba-world event: title (tidied: dates, years and shouting capitals removed; listed_title is as listed), dates (days), venue and city, link (url), cancelled (1 or 0; null when not known, since the source flags it only for events still listed as upcoming). Added: country_code, lat/lon (OpenStreetMap geocode of the city), airport (nearest in airports, within max_airport_km), airport_km, weekend_friday (the Friday of a Fri→Mon trip to it).',
  'airports': 'Airports the fare sweep covers, with the city they serve. tier sets how often fares refresh (1 = every few days); tier 0 is home, where no flight is needed.',
  'fares': f'Round-trip economy fares from {HOME}, one adult, Friday out and Monday back, from Google Flights via fli. Reloaded from data/fares.csv when the page opens.',
  'event_fares': 'Each event joined to the fare for its weekend (null when Google had no price), plus the cheapest fare that month to the same airport.',
@@ -271,7 +271,7 @@ home_city = x("select city from airports where code = ?", (HOME,)).fetchone()[0]
 site = {
     'home': {'code': HOME, 'city': home_city},
     'destinations': sorted(({'code': c, 'name': n} for c, n in x("""select distinct e.country_code, c.name from events e
-        join countries c on c.code = e.country_code where e.cancelled = 0""")),
+        join countries c on c.code = e.country_code where e.cancelled is not 1""")),
         key=lambda d: unicodedata.normalize('NFKD', d['name']).encode('ascii', 'ignore').lower()),
     'events_range': list(x("select min(start_date), max(start_date) from events").fetchone()),
     'built_at': dict(x("select key, value from meta"))['built_at'],
