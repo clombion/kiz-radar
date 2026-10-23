@@ -8,8 +8,8 @@ import { blanksHint, exploreHint, artistHint } from './hints.js';
 import { festivalsHref, showInAddressBar } from './routes.js';
 
 // reach is the most a Fri→Mon return may cost; 0 is any price
-const DEFAULTS = { kiz: 0, months: 3, reach: 0, country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0, sort: 'date' };
-const LOOSEST = { kiz: 0, months: 12, reach: 0, country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0 };
+const DEFAULTS = { months: 3, reach: 150, country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0, sort: 'date' };
+const LOOSEST = { months: 12, reach: 0, country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0 };
 
 // Hand-drawn hints next to the blanks. Static SVG, so building it from a string is safe.
 const ARROWS = {
@@ -21,8 +21,9 @@ function note(cls, arrow, ...text) {
   return h('span', { class: 'note ' + cls, 'aria-hidden': 'true' }, art, words);
 }
 
-// the dance in the sentence changes every few seconds; the article goes with it ("an Urban Kiz festival")
-const DANCES = ['a Kizomba', 'an Urban Kiz', 'a Tarraxo'];
+// the dance in the sentence changes every few seconds; "a" gains its n before a vowel ("an Urban Kiz festival")
+const DANCES = ['Kizomba', 'Urban Kiz', 'Tarraxo'];
+const takesAn = word => /^[aeiou]/i.test(word);
 const WHEN = [[1, 'the next month'], [2, 'the next two months'], [3, 'the next three months'], [6, 'the next six months'], [12, 'the coming year']];
 // the sentence says it in words; the bar and the filtering use the numbers
 const PRICE = [[0, 'any price'], [250, 'a reasonable price'], [150, 'a cheap price']];
@@ -35,7 +36,7 @@ const ORDER = [['date', 'Soonest first'], ['fare', 'Cheapest flight first']];
 
 function matches(all, s) {
   const end = addDays(today(), Math.round(s.months * 30.4));
-  return all.filter(e => e.depart <= end && (s.likely || !e.projected) && (!s.kiz || e.kiz_only) &&
+  return all.filter(e => e.depart <= end && (s.likely || !e.projected) &&
       (!s.reach || (e.fare ? e.fare.price <= s.reach : s.unchecked)) &&
       (!s.country || e.country_code === s.country) && (!s.taxi || e.taxi_dancers) && (!s.allin || e.all_in_one) &&
       e.lineup >= s.lineup)
@@ -47,7 +48,7 @@ function matches(all, s) {
 export function sentenceView(root, qs, { signal, data }) {
   let all = null;                  // the festivals, once the database is in
   const countries = site().destinations;
-  const s = readState(qs, DEFAULTS, { kiz: FLAGS, months: WHEN.map(([v]) => v), reach: PRICE.map(([v]) => v),
+  const s = readState(qs, DEFAULTS, { months: WHEN.map(([v]) => v), reach: PRICE.map(([v]) => v),
     country: ['', ...countries.map(c => c.code)], lineup: LINEUP.map(([v]) => v), sort: ORDER.map(([v]) => v),
     taxi: FLAGS, allin: FLAGS, likely: FLAGS, unchecked: FLAGS });
 
@@ -64,13 +65,12 @@ export function sentenceView(root, qs, { signal, data }) {
   const DEST_SHORT = [['', 'Anywhere'], ...countries.map(c => [c.code, `${flag(c.code)} ${c.name}`])];
   const sentenceBlanks = { months: blank('months', WHEN), country: blank('country', DEST), reach: blank('reach', PRICE) };
   const live = h('p', { class: 'live', 'aria-live': 'polite' });
-  const dance = h('span', { class: 'dance', 'aria-hidden': 'true' }, DANCES.map(d => h('span', {}, d)));
+  const dance = h('span', { class: 'dance' }, DANCES.map(d => h('span', {}, d)));
+  const n = h('span', { class: 'article-n' }, 'n');
   const hero = h('header', { class: 'sentence-hero' },
-    h('p', { class: 'kicker' }, 'Kiz Radar'),
-    h('p', { class: 'sentence' }, 'I want to go to ',
-      // every dance stacked in one place, so the sentence keeps the width of the longest and never shifts
-      dance,
-      h('span', { class: 'visually-hidden' }, 'a Kizomba'), ' festival in ',
+    h('p', { class: 'sentence' }, 'I want to go to a',
+      h('span', { 'aria-hidden': 'true' }, n, ' ', dance), h('span', { class: 'visually-hidden' }, ' Kizomba'),
+      h('br', { class: 'phone-break' }), ' festival in ',
       sentenceBlanks.months, `, flying from ${home().city} to `,
       h('span', { class: 'anchor' }, sentenceBlanks.country, note('note-bottom', 'up', 'click', ' to change where')),
       ' for ', h('span', { class: 'nowrap' }, sentenceBlanks.reach, '.'), ruler),
@@ -93,7 +93,7 @@ export function sentenceView(root, qs, { signal, data }) {
       h('label', { class: 'field' }, h('span', {}, 'Destination'), blank('country', DEST_SHORT, 'plain'))),
     h('label', { class: 'field' }, h('span', {}, 'Line-up'), blank('lineup', LINEUP, 'plain')),
     h('label', { class: 'field' }, h('span', {}, 'Order'), blank('sort', ORDER, 'plain')),
-    h('div', { class: 'checks' }, check('kiz', 'Kizomba only (no salsa or bachata)'), check('taxi', 'Taxi dancers'), check('allin', 'All-in-one hotel'),
+    h('div', { class: 'checks' }, check('taxi', 'Taxi dancers'), check('allin', 'All-in-one hotel'),
       check('likely', 'Include likely next editions'), check('unchecked', 'Include festivals whose flight isn’t checked yet')),
   ];
   const panel = h('div', { class: 'more-panel', id: 'more-panel', hidden: true }, moreFields());
@@ -111,7 +111,7 @@ export function sentenceView(root, qs, { signal, data }) {
   }
   if (blanksHint.seen()) hero.classList.add('hints-done');
   root.replaceChildren(h('div', { class: 'sentence-page' }, hero, bar, results));
-  rotate(dance, signal);
+  rotate(dance, n, signal);
   // sit flush under the site header, whatever its height on this screen
   const header = document.querySelector('header.top');
   const place_ = () => { if (header) bar.style.top = header.getBoundingClientRect().height + 'px'; };
@@ -131,7 +131,7 @@ export function sentenceView(root, qs, { signal, data }) {
     showInAddressBar(festivalsHref(changed(s, DEFAULTS)));
     for (const k of ['months', 'country', 'reach']) { sentenceBlanks[k].value = String(s[k]); barBlanks[k].value = String(s[k]); fit(sentenceBlanks[k]); }
     panel.replaceChildren(...moreFields());
-    const extra = ['kiz', 'taxi', 'allin', 'lineup', 'unchecked'].filter(k => s[k] !== DEFAULTS[k]).length + (s.likely ? 0 : 1);
+    const extra = ['taxi', 'allin', 'lineup', 'unchecked'].filter(k => s[k] !== DEFAULTS[k]).length + (s.likely ? 0 : 1);
     const hiddenOnPhone = +!!s.country;     // only counted where the destination lives in the panel
     moreBtn.replaceChildren(h('span', { class: 'wide' }, 'More filters'), h('span', { class: 'narrow' }, 'Filters', extra + hiddenOnPhone ? ` (${extra + hiddenOnPhone})` : ''),
       h('span', { class: 'wide' }, extra ? ` (${extra})` : ''), ' ▾');
@@ -155,24 +155,31 @@ export function sentenceView(root, qs, { signal, data }) {
   document.fonts?.ready.then(() => Object.values(sentenceBlanks).forEach(fit));
 }
 
-// Each dance shows for a few seconds, then cross-fades to the next while its slot eases to the new width. Where
-// that would re-wrap the sentence (it depends on the screen width), the slot keeps the width of the longest dance.
-// With reduced motion the first one stays.
+// Each dance shows for a few seconds, then cross-fades to the next while its slot eases to the new width, so the
+// words after it slide along; the n of "an" fades in and out the same way. On a phone the dance ends its line.
+// Should a dance's width still change the line breaks at some screen width, the slot keeps the widest width there.
+// With reduced motion the first dance stays.
 const SHOWN_MS = 3000;
-function rotate(el, signal) {
+function rotate(el, n, signal) {
   const words = [...el.children], sentence = el.closest('.sentence');
   let i = 0, eases = false;
   const width = k => (eases ? words[k].scrollWidth : Math.max(...words.map(w => w.scrollWidth))) + 'px';
-  const show = () => { words.forEach((w, k) => w.classList.toggle('on', k === i)); el.style.width = width(i); };
+  const show = () => {
+    words.forEach((w, k) => w.classList.toggle('on', k === i));
+    n.classList.toggle('on', takesAn(words[i].textContent));
+    n.classList.toggle('held', !eases);                         // keeps its space and only fades, like the dance
+    el.style.width = width(i);
+  };
   const lines = () => [...sentence.querySelectorAll('select')].map(s => s.offsetTop).join();
   function measure() {                                          // would any dance's own width change the line breaks?
-    el.style.transition = 'none';
-    const seen = new Set(words.map(w => { el.style.width = w.scrollWidth + 'px'; return lines(); }));
+    el.style.transition = n.style.transition = 'none';
+    const seen = new Set(words.map(w => {
+      el.style.width = w.scrollWidth + 'px'; n.classList.remove('held'); n.classList.toggle('on', takesAn(w.textContent)); return lines(); }));
     eases = seen.size === 1;
-    el.style.width = width(i); el.offsetWidth; el.style.transition = '';
+    show(); el.offsetWidth; el.style.transition = n.style.transition = '';
   }
-  measure(); show();
-  document.fonts?.ready.then(() => { measure(); show(); });     // widths change once the web font is in
+  measure();
+  document.fonts?.ready.then(measure);                          // widths change once the web font is in
   addEventListener('resize', measure, { signal });
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const timer = setInterval(() => { i = (i + 1) % words.length; show(); }, SHOWN_MS);
