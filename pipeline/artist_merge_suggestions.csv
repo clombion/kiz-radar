@@ -44,16 +44,11 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:sara@sara+stef,p:sarah@py+sarah,Sarah,SARAH,0,0,FR,FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:selim@anastasia+selim,p:selim@kiki+selim,Selim,Sélim,0,0,FR UA,DE FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:selim@dance,p:selim@kiki+selim,Selim,Sélim,4,0,FR,DE FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:silvia@andrea+silvia,p:silvia@andreas+silvia,Silvia,Silvia,0,0,IT,IT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:sonia@richard+sonia,p:sonia@sonia+stef,Sonia,Sonia,0,0,FR IT,DE FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,c:kevin@kevin+sara+sara@kevin+sara,c:kevin@kevin+sarah+sarah@kevin+sarah,Sara & Kevin,Sarah & Kevin,1,1,~GB,GB,same,shared circuit,same city: manchester,0.94,1.09,couple with matching names
-,c:andrea@andrea+silvia+silvia@andrea+silvia,c:andreas@andreas+silvia+silvia@andreas+silvia,Andrea & Silvia,Andreas & Silvia,4,1,IT,IT,same,no clash,,0.96,1.06,couple with matching names
 ,p:maria@jesus+maria,p:marian@luismi+marian,María,Marian,0,0,ES,ES,same,shared circuit,same city: liège,0.91,1.06,similar spelling
-,c:aleksy@aleksy+dasha+dasha@aleksy+dasha,c:alks@alks+dasha+dasha@aleksy+dasha,DASHA & ALEKSY,ALKS & DASHA,1,1,UA,UA,same,shared circuit,same city: rennes,0.9,1.05,couple with matching names
 ,p:panaghiotis@katia+panaghiotis,p:panagiotis@christina+panagiotis,Panaghiotis,Panagiotis,0,0,GR,GR,same,no clash,,0.95,1.05,similar spelling
 ,c:fernando@fernando+michela+michela@fernando+michela,c:fernando@fernando+micaela+micaela@fernando+micaela,Fernando & Michela,Fernando & Micaela,6,1,AO IT,IT,same,no clash,,0.93,1.03,couple with matching names
 ,p:alyssa@alyssa+sacha,p:jalyssa@chamalo+jalyssa,Alyssa,Jalyssa,0,0,FR,FR NL,same,no clash,,0.92,1.02,similar spelling
-,p:andrea@andrea+silvia,p:andreas@andreas+silvia,Andrea,Andreas,0,0,IT,IT,same,no clash,,0.92,1.02,"same partner, one name shortens the other"
 ,p:manuel@benedicte+manuel,p:emanuel@emanuel+teresa,MANUEL,Emanuel,1,0,PT,AO PT,same,no clash,,0.92,1.02,similar spelling
 ,p:sandrag,p:sandra@esteban+sandra,SANDRA G,Sandra,1,0,ES,ES,same,no clash,,0.92,1.02,one name is the first word(s) of the other
 ,p:sandrag,p:sandra@sandra+selim,SANDRA G,SANDRA,1,0,ES,ES TR,same,no clash,,0.92,1.02,one name is the first word(s) of the other
@@ -61,15 +56,9 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:donaldwilson,p:donaldwillson,Donald Wilson,Donald Willson,2,1,~DE,~DE,same,no clash,,0.96,1.01,similar spelling
 ,p:marta@dance,p:marta@azael+marta,Marta,Marta,1,0,PL,MX PL,same,no clash,,0.91,1.01,similar spelling
 ,p:maria@jose+maria,p:marian@luismi+marian,María,Marian,0,0,ES,ES,same,no clash,,0.91,1.01,similar spelling
-,c:elhadj+jenna@elhadj+jenna,c:elhadj+jenny@elhadj+jenny,Elhadj & Jenna,Elhadj & Jenny,15,1,CI FR GP,FR,same,no clash,,0.9,1.0,couple with matching names
-,c:enah@enah+lolahontas+lolahontas@enah+lolahontas,c:enah@enah+lolahontas+pocahontas@enah+pocahontas,ENAH & LOLAHONTAS,Enah & Pocahontas,3,3,ES FR,FR,same,no clash,,0.9,1.0,couple with matching names
-,c:enah@enah+lolahontas+lolahontas@enah+lolahontas,c:enah@enah+lolahontas+pocahontas,ENAH & LOLAHONTAS,ENAH LEBON & POCA HONTAS,3,1,ES FR,~RE,same,no clash,,0.88,0.98,couple with matching names
 ,p:jorgeaz,p:jorge@jorge+rocio,JORGE AZ,JORGE,1,0,ES PT,ES PT,same,shared circuit,same city: vigo,0.83,0.98,one name is the first word(s) of the other
 ,p:stefmat,p:stefmatt,Stef Mat,Stef Matt,1,1,~IT,~IT,same,no clash,,0.93,0.98,similar spelling
-,c:jules@jules+yuna+yuna@jules+yuna,c:jules@jules+juna+juna@jules+juna,Jules & Yuna,Jules & Juna,12,1,CM FR,~FR,same,no clash,,0.88,0.97,couple with matching names
 ,c:maria@maria+vincenzo+vincenzo@maria+vincenzo,c:ilaria@ilaria+vincenzo+vincenzo@ilaria+vincenzo,Maria & Vincenzo,Vincenzo & Ilaria,3,1,GR IT,~IT,same,no clash,,0.86,0.96,couple with matching names
-,c:andrea@andrea+katia+katia@andrea+katia,c:andrea@andrea+katja+katja@andrea+katja,Andrea & Katia,Andrea & Katja,1,1,~IT,~IT,same,same line-up,"both listed as teacher at the event of 2026-03-13 in Castelfidardo, Italy",0.9,0.95,couple with matching names
-,p:sara@kevin+sara,p:sarah@kevin+sarah,Sara,Sarah,0,0,,GB,unknown,shared circuit,same city: manchester,0.89,0.94,"same partner, one name shortens the other"
 ,c:andrea@andrea+silvia+silvia@andrea+silvia,c:andrea@andrea+giulia+giulia@andrea+giulia,Andrea & Silvia,Andrea y Giulia,4,1,IT,~IT,same,same line-up,"both listed as teacher at the event of 2026-10-15 in Pesaro, Italy",0.83,0.93,couple with matching names
 ,c:chris@chris+clara+clara@chris+clara,c:chris@chris+larissa+larissa@chris+larissa,Chris & Clara,Chris & Larissa,1,1,DE,~DE,same,no clash,,0.83,0.93,couple with matching names
 ,c:aude@aude+dimitri+dimitri@aude+dimitri,c:dimitri@dimitri+laure+laure@dimitri+laure,Dimitri & Aude,Dimitri & Laure,1,1,FR,FR,same,no clash,,0.83,0.93,couple with matching names
@@ -86,7 +75,6 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,c:nico@nico+sara+sara@nico+sara,c:nicola@nicola+sabrina+sabrina@nicola+sabrina,Nicola & Sara,Nicola & Sabrina,3,2,~IT,~IT,same,no clash,,0.86,0.91,couple with matching names
 ,c:andrea@andrea+silvia+silvia@andrea+silvia,c:andy@andy+silvia+silvia@andy+silvia,Andrea & Silvia,ANDY & SILVIA,4,1,IT,~IT,same,no clash,,0.8,0.9,couple with matching names
 ,p:arnauddjbn,p:arnaud@arnaud+roya,Arnaud DJBN,Arnaud,5,0,FR,DE FR,same,shared circuit,same city: stuttgart,0.75,0.9,one name is the first word(s) of the other
-,c:elhadj+jenny@elhadj+jenny,c:elhadj@elhadj+jenah+jenah@elhadj+jenah,Elhadj & Jenny,Elhadj & Jenah,1,1,FR,~FR,same,no clash,,0.8,0.9,couple with matching names
 ,c:fabrizio@fabrizio+gina+gina@fabrizio+gina,c:fabrizio@fabrizio+giulia+giulia@fabrizio+giulia,Fabrizio & Gina,Fabrizio & Giulia,1,1,~IT,IT,same,no clash,,0.8,0.9,couple with matching names
 ,c:francesca@francesca+luca+luca@francesca+luca,c:francis@francis+lucy+lucy@francis+lucy,Luca & Francesca,Francis & Lucy,10,3,IT,IT SN,same,shared circuit,same city: roma,0.75,0.9,couple with matching names
 ,c:alessandra@alessandra+marc+marc@alessandra+marc,c:alessandra@alessandra+marzio+marzio@alessandra+marzio,Marc & Alessandra,Marzio & Alessandra,2,1,AO IT,~IT,same,no clash,,0.8,0.9,couple with matching names
