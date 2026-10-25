@@ -410,9 +410,10 @@ html[data-vt=calm]::view-transition-old(root), html[data-vt=calm]::view-transiti
 .search-btn { margin-left: auto; display: inline-flex; align-items: center; gap: .45rem; border: 1px solid var(--border); background: var(--surface); color: var(--muted); font: 500 .92rem var(--font); padding: .4rem .55rem .4rem .7rem; border-radius: 999px; cursor: pointer; }
 .search-btn:hover { color: var(--accent); border-color: var(--accent); }
 .search-btn kbd { font: 600 .75rem var(--font); border: 1px solid var(--border); border-radius: 5px; padding: 0 .35rem; color: var(--muted); }
-dialog.search { width: min(640px, 100% - 32px); max-width: none; max-height: min(78vh, 720px); margin: 9vh auto auto; padding: 0; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); color: var(--text); box-shadow: 0 24px 60px rgb(42 31 34 / .25); overflow: hidden; }
-dialog.search[open] { display: flex; flex-direction: column; }
-dialog.search::backdrop { background: rgb(42 31 34 / .35); backdrop-filter: blur(2px); }
+dialog.search { width: min(640px, 100% - 32px); max-width: none; max-height: min(78vh, 720px); margin: 9vh auto auto; padding: 0; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); color: var(--text); box-shadow: 0 24px 60px rgb(42 31 34 / .25); overflow: hidden; opacity: var(--fade, 0); translate: var(--from, 0 14px); scale: .985; transition: opacity .2s ease, translate .3s cubic-bezier(.2, 0, 0, 1), scale .3s cubic-bezier(.2, 0, 0, 1), overlay .3s allow-discrete, display .3s allow-discrete; }
+dialog.search[open] { display: flex; flex-direction: column; opacity: 1; translate: 0 0; scale: 1; }
+dialog.search::backdrop { background: rgb(42 31 34 / .35); backdrop-filter: blur(2px); opacity: 0; transition: opacity .3s ease, overlay .3s allow-discrete, display .3s allow-discrete; }
+dialog.search[open]::backdrop { opacity: 1; }
 html:has(dialog.search[open]) { overflow: hidden; }
 .search-top { display: flex; align-items: center; gap: .6rem; padding: .7rem .9rem; border-bottom: 1px solid var(--border); }
 .search-glass { color: var(--muted); display: flex; }
@@ -499,9 +500,10 @@ html:has(dialog.search[open]) { overflow: hidden; }
 }
 
 /* the quick view of who's going: over the page on a computer, a sheet from the bottom on a phone */
-dialog.peek { width: min(480px, 100% - 32px); max-width: none; max-height: min(80vh, 640px); margin: 12vh auto auto; padding: 0; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); color: var(--text); box-shadow: 0 24px 60px rgb(42 31 34 / .25); overflow: hidden; }
-dialog.peek[open] { display: flex; flex-direction: column; }
-dialog.peek::backdrop { background: rgb(42 31 34 / .35); }
+dialog.peek { width: min(480px, 100% - 32px); max-width: none; max-height: min(80vh, 640px); margin: 12vh auto auto; padding: 0; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); color: var(--text); box-shadow: 0 24px 60px rgb(42 31 34 / .25); overflow: hidden; opacity: var(--fade, 0); translate: var(--from, 0 14px); scale: .985; transition: opacity .2s ease, translate .3s cubic-bezier(.2, 0, 0, 1), scale .3s cubic-bezier(.2, 0, 0, 1), overlay .3s allow-discrete, display .3s allow-discrete; }
+dialog.peek[open] { display: flex; flex-direction: column; opacity: 1; translate: 0 0; scale: 1; }
+dialog.peek::backdrop { background: rgb(42 31 34 / .35); opacity: 0; transition: opacity .3s ease, overlay .3s allow-discrete, display .3s allow-discrete; }
+dialog.peek[open]::backdrop { opacity: 1; }
 html:has(dialog.peek[open]) { overflow: hidden; }
 .peek-head { display: flex; align-items: center; gap: .8rem; padding: 1rem 1rem .8rem 1.2rem; border-bottom: 1px solid var(--border); }
 .peek-head h2 { margin: 0; font-size: 1.2rem; }
@@ -521,7 +523,19 @@ html:has(dialog.peek[open]) { overflow: hidden; }
 .peek-foot a { font-weight: 600; }
 .peek-foot:empty { display: none; }
 @media (max-width: 640px) {
-  dialog.peek { width: 100%; max-height: 85vh; margin: auto 0 0; border-radius: 18px 18px 0 0; border-width: 1px 0 0; }
+  dialog.peek { width: 100%; max-height: 85vh; margin: auto 0 0; border-radius: 18px 18px 0 0; border-width: 1px 0 0; --from: 0 100%; --fade: 1; scale: 1; }      /* a sheet: slides up from the bottom, solid */
   .peek-plans li { grid-template-columns: 1fr auto; }
   .peek-plans .when { grid-column: 1 / -1; margin-bottom: -.4rem; }
+}
+
+
+/* Opening and closing the search and the quick view: a fade and a short rise (from --from and --fade: the phone's
+   sheet slides up from the bottom, solid), the page behind dimming in. @starting-style is where they start from when opened; display
+   and overlay last until the end of the close, so it plays too, in browsers that can (others just close). */
+@starting-style {
+  dialog.search[open], dialog.peek[open] { opacity: var(--fade, 0); translate: var(--from, 0 14px); scale: .985; }
+  dialog.search[open]::backdrop, dialog.peek[open]::backdrop { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  dialog.search, dialog.peek { transition: opacity .15s ease, overlay .15s allow-discrete, display .15s allow-discrete; }
 }
