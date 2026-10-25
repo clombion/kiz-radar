@@ -1,7 +1,8 @@
 // Map: one bubble per city (size = festivals, colour = flight price) and the festivals in view as cards.
 // On a phone the list is a sheet over the map that peeks at the bottom and slides up.
 import { q } from './db.js';
-import { h, euro, flag, home } from './ui.js';
+import { h, flag, home } from './ui.js';
+import { money, convert, step, currency } from './money.js';
 import { eventCard } from './eventcard.js';
 import { withDetails, readState, changed } from './festivals.js';
 import { mapHref, eventOnMapHref, cityOnMapHref, showInAddressBar } from './routes.js';
@@ -13,9 +14,9 @@ const PAGE = 40;
 
 const COLOR_BY = {
   fare: { label: 'Flight price', title: () => `Cheapest flight from ${home().city}`, bands: [
-    ['under €150', c => c.minFare != null && c.minFare <= 150, '--good'],
-    ['€150–250', c => c.minFare != null && c.minFare <= 250, '--mid'],
-    ['over €250', c => c.minFare != null, '--bad'],
+    [`under ${money(step('cheap'), currency)}`, c => c.minFare != null && convert(c.minFare) <= step('cheap'), '--good'],
+    [`${money(step('cheap'), currency)}–${money(step('fair'), currency)}`, c => c.minFare != null && convert(c.minFare) <= step('fair'), '--mid'],
+    [`over ${money(step('fair'), currency)}`, c => c.minFare != null, '--bad'],
     ['not checked', () => true, '--none']] },
   popular: { label: 'Well-known artists', title: () => 'Bookings of well-known artists', bands: [
     ['10 or more', c => c.popular >= 10, '--good'],
@@ -137,7 +138,7 @@ export function mapView(root, sub, qs, { signal }) {
       const m = L.circleMarker([c.lat, c.lon], { radius: 4 + 3.2 * Math.sqrt(c.n), weight: 1.5,
         color: css('--bubble-stroke'), fillColor: css(band[2]), fillOpacity: 0.85, bubblingMouseEvents: false })
         .bindTooltip(`${c.city} · ${c.n} festival${c.n > 1 ? 's' : ''}` +
-          (c.minFare ? ` · flights from ${euro(c.minFare)}` : ''), { direction: 'top', offset: [0, -6] })
+          (c.minFare ? ` · flights from ${money(c.minFare)}` : ''), { direction: 'top', offset: [0, -6] })
         .on('click', () => selectCity(c.key));
       m.addTo(bubbles); markers.set(c.key, m);
     }
@@ -199,7 +200,7 @@ export function mapView(root, sub, qs, { signal }) {
         body.replaceChildren(
           back('All festivals in view', () => { state.city = null; save(); highlight(); renderPanel(); }),
           h('header', { class: 'panel-head' }, h('h2', {}, flag(c.cc), ' ', c.city),
-            h('p', {}, count(c.n), c.minFare ? ` · flights from ${euro(c.minFare)}` : '')),
+            h('p', {}, count(c.n), c.minFare ? ` · flights from ${money(c.minFare)}` : '')),
           cards(c.events));
         return;
       }

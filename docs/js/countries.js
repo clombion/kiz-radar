@@ -1,7 +1,8 @@
 // Countries: which scenes are worth a trip from home. One row per country: what's coming up, what the
 // flights to those festivals cost, and what the scene is like.
 import { q } from './db.js';
-import { h, flag, countryName, euro, home, monthYear } from './ui.js';
+import { h, flag, countryName, home, monthYear } from './ui.js';
+import { money, convert, step } from './money.js';
 import { readState, changed } from './festivals.js';
 import { countriesHref, festivalsHref, mapHref, artistsHref, showInAddressBar } from './routes.js';
 
@@ -59,8 +60,8 @@ function row(r) {
     h('div', { class: 'c-head' },
       h('h2', {}, h('span', { class: 'c-flag', 'aria-hidden': 'true' }, flag(r.country_code)), r.name),
       h('p', { class: 'c-num' }, h('strong', {}, r.upcoming), h('span', {}, r.upcoming === 1 ? 'festival coming up' : 'festivals coming up'))),
-    h('p', { class: 'flight' + (r.fare && r.fare.price <= 150 ? ' easy' : '') }, r.fare
-      ? ['✈ from ', h('strong', {}, '~' + euro(r.fare.price)), ` to ${r.fare.airport_city}`]
+    h('p', { class: 'flight' + (r.fare && convert(r.fare.price) <= step('cheap') ? ' easy' : '') }, r.fare
+      ? ['✈ from ', h('strong', {}, money(r.fare.price, 'EUR', { approx: true })), ` to ${r.fare.airport_city}`]
       : h('span', { class: 'muted' }, r.upcoming && !r.reachable ? `✈ too far from ${home().city} for our flight prices` : '✈ no flight prices yet')),
     line ? h('p', { class: 'c-fact', title: r.imported_pct != null ? `${r.imported_pct}% of teacher and DJ bookings go to artists from other countries` : null }, line) : null,
     r.taxi_dancers ? h('p', { class: 'c-fact' }, `${r.taxi_dancers} of its ${r.events} listed festivals with taxi dancers`) : null,

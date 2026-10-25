@@ -1,6 +1,8 @@
 // The festival card used across the site: date, place, title, styles, highlights, a few names and the flight,
 // opening in place to the full line-up and practical details. Rows come from festivals.js (withDetails).
-import { h, addDays, euro, today, flightsUrl, home, dayMonth } from './ui.js';
+import { h, addDays, today, flightsUrl, home, dayMonth } from './ui.js';
+import { money, convert, step } from './money.js';
+import { passLine } from './passes.js';
 import { place, styleLine } from './festivals.js';
 import { TRAITS } from './icons.js';
 import { cardDetails, traitItems } from './details.js';
@@ -17,7 +19,7 @@ function dateBox(start, end) {
   return h('div', { class: 'datebox' }, h('span', { class: 'dd' }, start === end ? dd1 : `${dd1}–${dd2}`), h('span', { class: 'mm' }, mm1 + yr));
 }
 
-// "✈ ~€492 to Brussels, then 104 km": a Fri→Mon return from home to the nearest airport with prices, and how far
+// "✈ ~5 150 kr to Brussels, then 104 km": a Fri→Mon return from home to the nearest airport with prices, and how far
 // the festival is from it. The price links to Google Flights for that weekend.
 function flight(e) {
   if (e.cancelled) return h('p', { class: 'flight muted' }, 'This festival was cancelled.');
@@ -25,9 +27,9 @@ function flight(e) {
   if (!e.airport) return h('p', { class: 'flight muted' }, `✈ too far from ${home().city} for our flight prices`);
   if (e.fare?.home) return h('p', { class: 'flight easy' }, `In ${home().city}, no flight needed`);
   if (!e.fare) return h('p', { class: 'flight muted' }, '✈ flight not checked yet');
-  return h('p', { class: 'flight' + (e.fare.price <= 150 ? ' easy' : '') }, '✈ ',
+  return h('p', { class: 'flight' + (convert(e.fare.price) <= step('cheap') ? ' easy' : '') }, '✈ ',
     h('a', { href: flightsUrl(e.airport, e.depart, addDays(e.depart, 3)), target: '_blank', rel: 'noopener',
-      title: `Friday to Monday return from ${home().city}; check it on Google Flights` }, '~' + euro(e.fare.price)),
+      title: `Friday to Monday return from ${home().city}; check it on Google Flights` }, money(e.fare.price, 'EUR', { approx: true })),
     ` to ${e.airport_city}`, e.airport_km > 30 ? `, then ${e.airport_km} km` : '');
 }
 
@@ -80,9 +82,9 @@ export function eventCard(e, { hint = null, open = false, onMap = false } = {}) 
     traitItems(traits.slice(0, 3)),
     traits.length > 3 ? h('li', { class: 'more-traits' }, toggleBtn('link', `+${traits.length - 3}`)) : null) : null;
 
-  // The card opens from its title, and from its foot below the line (the flight and "Line-up & details"); the rest of
+  // The card opens from its title, and from its foot below the line (the pass price, the flight and "Line-up & details"); the rest of
   // it holds names and links that do their own thing.
-  const foot = h('div', { class: 'foot' }, flight(e), h('div', { class: 'actions' }, toggleBtn('link', label)));
+  const foot = h('div', { class: 'foot' }, passLine(e), flight(e), h('div', { class: 'actions' }, toggleBtn('link', label)));
   foot.addEventListener('click', ev => { if (!ev.target.closest('a, button')) toggle(); });
   const art = h('article', { class: 'festival-card' },
     h('div', { class: 'c-top' },

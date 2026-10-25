@@ -1,5 +1,6 @@
 // DOM and formatting helpers shared by the views. All text goes through textContent.
 import { q, site } from './db.js';
+import { currency } from './money.js';
 
 export function h(tag, attrs = {}, ...kids) {
   const el = document.createElement(tag);
@@ -38,8 +39,6 @@ export function dayRange(start, end) {                            // "6–9 Nov"
   return start === end ? `${d1} ${m1}` : m1 === m2 ? `${d1}–${d2} ${m1}` : `${d1} ${m1} – ${d2} ${m2}`;
 }
 
-export const euro = n => n == null ? '—' : '€' + Math.round(n);
-
 // the animated mark, while something loads (index.html holds the same, for before the scripts run)
 export const loading = (text = '') => h('p', { class: 'status loading', role: 'status' },
   h('img', { src: 'loading.svg', alt: '', width: 56, height: 56 }), h('span', {}, text || h('span', { class: 'visually-hidden' }, 'Loading')));
@@ -49,7 +48,7 @@ export const home = () => site().home;
 
 export function flightsUrl(airport, depart, ret) {
   const qs = `Flights from ${home().code} to ${airport} on ${depart} through ${ret}`;
-  return `https://www.google.com/travel/flights?q=${encodeURIComponent(qs)}&curr=EUR`;
+  return `https://www.google.com/travel/flights?q=${encodeURIComponent(qs)}&curr=${currency}`;
 }
 
 export function addDays(iso, n) {

@@ -57,6 +57,8 @@ its page on kizomba-world. The fares are our own searches.
 | `docs/data/site.json` | What the page shows before the database loads: home airport, destinations, dates covered | the same build |
 | `docs/data/fares.csv` | Friday-to-Monday return fares, one row per airport and weekend | the **Refresh fares** Action |
 | `pipeline/fare_jobs.csv` | When each airport and month was last searched | the same Action |
+| `pipeline/extract/answers/` | Claude's answers for line-ups, highlights, rooms, genres and pass prices | the **Refresh events** Action |
+| `pipeline/rates.csv` | The European Central Bank's exchange rates, per euro | the **Rebuild site database** Action |
 
 The build also tidies the text. Artist names get one casing ("AMI & JULIEN" becomes "Ami & Julien"). Festival
 titles lose dates, years and shouting capitals; `events.listed_title` keeps them as listed. Venues are recased.
@@ -66,6 +68,10 @@ On the flight side, prices come from Google Flights through [fli](https://github
 often, so check them before booking. Home is the one tier-0 airport in `pipeline/airports.csv`; the pipeline and
 the site both read it from there. Cities are geocoded with OpenStreetMap Nominatim, and the results are cached in
 `pipeline/geocode.csv`.
+
+Prices show in kroner, or in euros or dollars (`?cur=eur`, `?cur=usd`, switched in the footer); amounts in
+other currencies are converted with `pipeline/rates.csv` and marked "~". A festival card shows the per-person full
+pass at today's price tier and the next rise; the opened card lists every pass and tier (`docs/js/passes.js`).
 
 For the SQL page, every table is described in the `table_docs` table. The `event_rows` view is the one to start
 from: it joins each event to its statistics and says whether it is still to come.
@@ -176,10 +182,22 @@ The site sits behind Cloudflare, which refuses ordinary scripts, so the scraper 
 Chrome does, through [curl_cffi](https://github.com/lexiforest/curl_cffi). If Cloudflare stops letting it
 through, the Action fails and the site keeps the last export.
 
-The refresh doesn't cover everything. Line-ups, highlights from descriptions, rooms and genres come from AI
-extraction steps that are not in this repository yet. A new festival therefore appears with its dates, place,
-site tags and flight, but without names. The `pending_extraction` table in the export lists every festival
-whose description is new or has changed since the extraction last ran.
+Line-ups, highlights from descriptions, rooms, genres and pass prices are read from each description by Claude
+(claude-haiku-5-5). After the scrape, the same Action runs `pipeline/extract/ask.py`: festivals in the export's
+`pending_extraction` table (new, or with a changed description) and festivals a pass has no answer for are asked
+about, one festival and one pass at a time, with that pass's prompt (`pipeline/extract/prompts/`) and its schema as
+the required answer format. A checker then confirms that the answer has the right shape, and that every name,
+quote and price appears in the description. A failing answer goes back to Claude once, with the checker's
+lines. A second failure leaves the festival pending, to try again next month. The answers are saved in
+`pipeline/extract/answers/` and committed; `answers/log.csv` says who answered each file and when. The first
+extraction's answers, from Claude Code subagents, are kept there too; rebuilding from them reproduces the
+export's tables exactly.
+
+`load_extract.py` then loads every festival's newest answer into the export, and `resolve_artists.py` groups the
+names into artists. Artist ids never change: `artist_ids` remembers every id given, a new artist gets the next
+unused one, and a link to an artist that was merged opens the one it was merged into. Pairs of names that might
+be one artist go to `pipeline/artist_merge_suggestions.csv` for review; nothing is merged without a decision. The
+key is the repository secret `ANTHROPIC_API_KEY`; each run prints the tokens it used and their cost.
 
 To do the same locally:
 
@@ -187,6 +205,11 @@ To do the same locally:
 uv run pipeline/scrape.py source/<events>.sqlite --dry-run   # what would change, without writing
 uv run pipeline/scrape.py source/<events>.sqlite
 python3 pipeline/geocode.py source/<events>.sqlite        # looks up new cities only
+uv run pipeline/extract/ask.py source/<events>.sqlite --dry-run   # which festivals need asking
+uv run pipeline/extract/ask.py source/<events>.sqlite            # needs ANTHROPIC_API_KEY
+python3 -I pipeline/extract/load_extract.py source/<events>.sqlite
+uv run pipeline/extract/resolve_artists.py source/<events>.sqlite
+python3 pipeline/rates.py                                 # exchange rates for the site's prices
 python3 pipeline/build_site_db.py source/<events>.sqlite
 python3 pipeline/merge_suggestions.py source/<events>.sqlite
 python3 pipeline/fares.py refresh --budget 4              # needs uv

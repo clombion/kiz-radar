@@ -5,6 +5,7 @@ import { h, flag, countryName } from './ui.js';
 import { TRAITS, MORE_TRAITS } from './icons.js';
 import { artistHref, eventOnMapHref } from './routes.js';
 import { whoIsGoing } from './plans.js';
+import { passList } from './passes.js';
 
 const ROLES = [['teacher', 'Teachers'], ['dj', 'DJs'], ['performer', 'Performers'], ['mc', 'MCs']];
 const icon = svg => { const el = h('span', { class: 'ic' }); el.innerHTML = svg; return el; };
@@ -35,6 +36,7 @@ export function cardDetails(e, shownTraits, close, { onMap = false } = {}) {
         p.bookings > 1 ? h('span', { class: 'bk' }, ` · ${p.bookings} festivals`) : null))))),
     people.length ? null : h('p', { class: 'muted' }, 'No line-up announced yet.'),
     rest.length ? h('ul', { class: 'traits' }, traitItems(rest)) : null,
+    passList(e),
     venue || organisers.length ? h('p', { class: 'practical' },
       venue ? ['Venue: ', venue] : null, venue && organisers.length ? ' · ' : null,
       organisers.length ? ['Organised by ', ...organisers.flatMap((p, i) => [i ? ', ' : '', person(p)])] : null) : null,

@@ -241,6 +241,14 @@ for r in csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'promo_codes.csv'), 
     if not x("select 1 from events where id = ?", (e,)).fetchone(): sys.exit(f"promo_codes.csv: no event {e} ({r['event']})")
     x("insert into event_promos values (?,?,?)", (e, r['code'].strip(), r['offer'].strip() or None))
     feats[e].add('promo_code')
+# pass prices, from the source's prices pass (without the quotes), and the rates the site converts them with
+x("create table event_passes as select event_id, pass_no, kind, label, group_size, days, includes_hotel from src.event_passes")
+x("""create table pass_tiers as select event_id, pass_no, tier_no, amount, currency, alt_amount, alt_currency, valid_from,
+     valid_until, quantity, door, sold_out, current from src.pass_tiers""")
+x("create table event_price_notes as select * from src.event_price_notes")
+x("create table rates (currency text primary key, per_eur real not null, date text not null)")
+out.executemany("insert into rates values (?,?,?)", [(r['currency'], float(r['per_eur']), r['date'])
+    for r in csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'rates.csv'), encoding='utf-8'))])
 lineups = collections.defaultdict(set)
 for e, a in x("select event_id, artist_id from event_artists where role in ('teacher','dj') and as_couple is null"): lineups[e].add(a)
 x("""create table event_stats (event_id integer primary key, lineup integer, popular_artists integer, imported integer,
@@ -319,6 +327,10 @@ DOCS = {
  'artist_countries': 'Bookings per artist and country; is_home marks the known home country in artist_stats.',
  'artist_origin': 'Countries stated next to an artist’s name in line-ups (flags or text), with how often.',
  'event_stats': 'Per event: line-up size (teachers and DJs), popular artists booked, imported artists (home country differs from the event’s), kizomba-family genres, kiz-only (no salsa or bachata), taxi dancers, all-in-one hotel.',
+ 'event_passes': 'The passes a festival sells (full, party, day, workshop, package, other): people per price, days, hotel included.',
+ 'pass_tiers': 'Each pass’s prices tier by tier: amount and currency, the days the tier applies, tickets at that price, door price, sold out.',
+ 'event_price_notes': 'Price rules a festival states that the tiers can’t hold, as written.',
+ 'rates': 'Exchange rates the site converts prices with: units of each currency per euro (European Central Bank, pipeline/rates.csv).',
  'event_promos': 'Promo codes for a festival, from pipeline/promo_codes.csv (ours, not kizomba-world’s): the code, and what it gives when known.',
  'people': 'People who share their festival plans (pipeline/people.csv, ours): featured ones are named on festival cards, the others counted.',
  'person_artists': 'The artist records a person is, so their bookings and their plans meet.',
