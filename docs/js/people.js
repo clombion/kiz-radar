@@ -1,7 +1,7 @@
 // Who's going where: the festivals people said they're going to, by date, and each person's plans page with a link
 // to share it.
 import { q } from './db.js';
-import { h, flag, dayMonth } from './ui.js';
+import { h, flag, dayRange } from './ui.js';
 import { withDetails } from './festivals.js';
 import { eventCard } from './eventcard.js';
 import { person, goersOf, goersInline } from './plans.js';
@@ -34,10 +34,7 @@ function everyone(root) {
   const events = q(`SELECT e.* FROM event_rows e WHERE e.upcoming AND e.id IN (SELECT event_id FROM plans) ORDER BY e.start_date`);
   const people = q(`SELECT pe.key, pe.name, sum(e.upcoming) AS n FROM people pe JOIN plans p ON p.person_id = pe.id
     JOIN event_rows e ON e.id = p.event_id GROUP BY pe.id ORDER BY pe.featured DESC, pe.name`);
-  const when = e => {                          // "6–9 Nov", or "26 Nov – 1 Dec" across a month end
-    const [d1, m1] = dayMonth(e.start_date).split(' '), [d2, m2] = dayMonth(e.end_date).split(' ');
-    return e.start_date === e.end_date ? `${d1} ${m1}` : m1 === m2 ? `${d1}–${d2} ${m1}` : `${d1} ${m1} – ${d2} ${m2}`;
-  };
+  const when = e => dayRange(e.start_date, e.end_date);
   root.replaceChildren(h('article', { class: 'artist-profile people' },
     h('header', { class: 'profile-head' }, h('h1', {}, 'Who’s going where'),
       h('p', { class: 'lede' }, 'The festivals people said they’re going to.')),

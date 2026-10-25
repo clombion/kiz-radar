@@ -131,8 +131,9 @@ People can say which festivals they're going to. For now the plans are entered b
   Featured people are named on festival cards; the others are counted.
 - `pipeline/plans.csv`: one row per person and festival, with `status` `going` for now.
 
-A festival card then says, for example, "Cédric & Christina are going · 3 more people too", and opening it lists
-who's going. Partners who both go are named as their couple. Someone in the festival's line-up, alone or in a
+A festival card then says, for example, "Cédric & Christina are going · 3 more people too". Tapping a name opens a
+quick view over the page with where they're going and a link to their page; "3 more people" lists everyone going.
+A card opens from its title and from its foot (the flight and "Line-up & details"), not from the rest of it. Partners who both go are named as their couple. Someone in the festival's line-up, alone or in a
 couple, shows as teaching (or playing) rather than going. Each person has a plans page with a Share button, and
 an artist's page lists the festivals they're going to without teaching there. The People page, under Map & artists,
 lists every festival someone is going to, soonest first. On the Festivals page, a line under the count says when

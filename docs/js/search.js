@@ -9,6 +9,7 @@ import { festivals, STYLE_NAMES, WITH, hasWith } from './festivals.js';
 import { TRAITS, MORE_TRAITS } from './icons.js';
 import { festivalsHref, eventOnMapHref, cityOnMapHref, artistHref, artistsHref, mapHref, personHref } from './routes.js';
 import { person } from './plans.js';
+import { modal } from './modal.js';
 
 const SHOWN = 5;                      // results per group until "Show all"
 const GROUPS = [['person', 'People'], ['festival', 'Festivals'], ['artist', 'Artists'], ['place', 'Places'], ['tag', 'Dances & highlights']];
@@ -107,7 +108,7 @@ function nearest(items, query) {
 }
 
 export function initSearch(trigger, data) {
-  let items = null, query = '', expanded = new Set(), active = -1, pushed = false, withPast = false;
+  let items = null, query = '', expanded = new Set(), active = -1, withPast = false;
   const input = h('input', { type: 'text', class: 'search-input', role: 'combobox', 'aria-expanded': 'true', 'aria-controls': 'search-list',
     'aria-autocomplete': 'list', placeholder: 'Festivals, artists, places, styles…', autocomplete: 'off', spellcheck: 'false', enterkeyhint: 'go' });
   const list = h('div', { class: 'search-list', id: 'search-list', role: 'listbox', 'aria-label': 'Results' });
@@ -119,7 +120,7 @@ export function initSearch(trigger, data) {
   const includePast = () => { pastBox.checked = withPast = true; render(); input.focus(); };
   const dlg = h('dialog', { class: 'search', 'aria-label': 'Search' }, h('div', { class: 'search-top' }, glass, input, cancel),
     h('label', { class: 'search-past' }, pastBox, ' Include past festivals'), status, list);
-  document.body.append(dlg);
+  const { open: show, shut, go } = modal(dlg);
 
   const options = () => [...list.querySelectorAll('[role=option]')];
   function highlight(i) {                // -1 for none; past either end it wraps
@@ -131,15 +132,6 @@ export function initSearch(trigger, data) {
     opts[active].scrollIntoView({ block: 'nearest' });
   }
 
-  // The dialog has a history entry of its own, so the phone's back button closes it instead of leaving the page.
-  // Closing it any other way removes that entry; a result is opened once it is gone.
-  function shut() {
-    if (dlg.open) dlg.close();
-    if (!pushed) return Promise.resolve();
-    pushed = false;
-    return new Promise(done => { addEventListener('popstate', done, { once: true }); history.back(); });
-  }
-  const go = href => shut().then(() => { location.hash = href; });
   function pick(it) {
     if (it.kind === 'festival') {
       if (it.e.lat == null) { window.open(it.e.url, '_blank', 'noopener'); shut(); return; }   // nowhere on the map
@@ -251,15 +243,9 @@ export function initSearch(trigger, data) {
   });
   // Escape clears the text first, then closes
   dlg.addEventListener('cancel', ev => { if (input.value) { ev.preventDefault(); input.value = query = ''; render(); } });
-  dlg.addEventListener('click', ev => { if (ev.target === dlg) shut(); });                // a click on the backdrop
-  dlg.addEventListener('close', () => { shut(); trigger.focus(); });                       // Escape, or any of the above
-  addEventListener('popstate', () => { if (dlg.open) { pushed = false; dlg.close(); } });  // the back button
 
   function open() {
-    if (dlg.open) return;
-    dlg.showModal();
-    history.pushState({ search: true }, '');
-    pushed = true;
+    if (!show(trigger)) return;
     input.select();                       // the last query stays, ready to refine or type over
     render();
     if (!items) data.then(() => { items = buildIndex(); if (dlg.open) render(); });

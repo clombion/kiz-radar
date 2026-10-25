@@ -33,6 +33,10 @@ const asDay = iso => new Date(iso.slice(0, 10) + 'T12:00');      // dates are da
 export const dayMonth = iso => DM.format(asDay(iso));             // 23 Oct
 export const dayYear = iso => DY.format(asDay(iso));              // 23 Oct 2026
 export const monthYear = iso => MY.format(asDay(iso));            // October 2026
+export function dayRange(start, end) {                            // "6–9 Nov", or "26 Nov – 1 Dec" across a month end
+  const [d1, m1] = dayMonth(start).split(' '), [d2, m2] = dayMonth(end).split(' ');
+  return start === end ? `${d1} ${m1}` : m1 === m2 ? `${d1}–${d2} ${m1}` : `${d1} ${m1} – ${d2} ${m2}`;
+}
 
 export const euro = n => n == null ? '—' : '€' + Math.round(n);
 

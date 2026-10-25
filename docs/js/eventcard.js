@@ -80,6 +80,10 @@ export function eventCard(e, { hint = null, open = false, onMap = false } = {}) 
     traitItems(traits.slice(0, 3)),
     traits.length > 3 ? h('li', { class: 'more-traits' }, toggleBtn('link', `+${traits.length - 3}`)) : null) : null;
 
+  // The card opens from its title, and from its foot below the line (the flight and "Line-up & details"); the rest of
+  // it holds names and links that do their own thing.
+  const foot = h('div', { class: 'foot' }, flight(e), h('div', { class: 'actions' }, toggleBtn('link', label)));
+  foot.addEventListener('click', ev => { if (!ev.target.closest('a, button')) toggle(); });
   const art = h('article', { class: 'festival-card' },
     h('div', { class: 'c-top' },
       dateBox(e.start_date, e.end_date),
@@ -90,13 +94,9 @@ export function eventCard(e, { hint = null, open = false, onMap = false } = {}) 
     traitRow,
     withLine,
     withLine ? hint : null,
-    // "Cédric & Christina are going": opens the card at the list of who's going
-    goingLine(e, ev => { ev.stopPropagation(); if (more.hidden) toggle();
-      setTimeout(() => art.querySelector('.who')?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 400); }),
-    h('div', { class: 'foot' }, flight(e), h('div', { class: 'actions' }, toggleBtn('link', label))),
+    goingLine(e),
+    foot,
     more);
-  // the whole card opens the details, except where it already holds a link or a button
-  art.addEventListener('click', ev => { if (!ev.target.closest('a, button, select, input, label, .festival-more')) toggle(); });
   if (open) setOpen(true);
   return art;
 }
