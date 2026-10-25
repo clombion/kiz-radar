@@ -57,9 +57,12 @@ export const STYLE_NAMES = { kizomba: 'Kizomba', urbankiz: 'Urban Kiz', semba: '
   douceur: 'Douceur', kompa: 'Kompa', zouk: 'Zouk', bachata: 'Bachata', salsa: 'Salsa', afro: 'Afro' };
 export const styleLine = e => [...e.styles].map(s => STYLE_NAMES[s]).filter(Boolean).slice(0, 4).join(' · ');
 
-// What "with" in the Festivals URL can name: a style or a highlight, by key. Taxi dancers and the all-in-one hotel
-// have checkboxes of their own, so they aren't here.
-export const WITH = new Map([...Object.entries(STYLE_NAMES), ...[...TRAITS, ...MORE_TRAITS].filter(([k]) => k !== 'taxi_dancers')]);
+// What "with" in the Festivals URL can name: a dance or a highlight, by key. Kizomba is on nearly every festival here,
+// so it narrows nothing; taxi dancers and the all-in-one hotel have checkboxes of their own.
+export const WITH = new Map([...Object.entries(STYLE_NAMES).filter(([k]) => k !== 'kizomba'),
+  ...[...TRAITS, ...MORE_TRAITS].filter(([k]) => k !== 'taxi_dancers')]);
+// how a with filter reads: "Also with Salsa" for a dance (the festivals are Kizomba ones anyway), "With Pool party"
+export const withPhrase = key => [key in STYLE_NAMES ? 'Also with ' : 'With ', WITH.get(key)];
 export const hasWith = (e, key) => e.styles.has(key) || e.features.has(key);
 
 export const place = e => [flag(e.country_code), ' ', e.city];

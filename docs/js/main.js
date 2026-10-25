@@ -24,7 +24,7 @@ const VIEWS = {
   artists: { title: 'Artists', nav: 'explore', waitsForData: true, show: artistsView },
   countries: { title: 'Countries', nav: 'explore', waitsForData: true, show: (root, sub, qs) => countriesView(root, qs) },
   sql: { title: 'SQL', nav: null, waitsForData: true, show: root => sqlView(root) },
-  people: { title: 'Plans', nav: null, waitsForData: true, show: (root, sub) => personView(root, sub) },
+  people: { title: 'People', nav: 'explore', waitsForData: true, show: (root, sub) => personView(root, sub) },
 };
 const failed = (root, e) => root.replaceChildren(h('p', { class: 'status error' }, 'Could not load the data: ' + e.message));
 

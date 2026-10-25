@@ -27,7 +27,8 @@ Beyond the festival list, the site has three ways to explore:
 
 A search in the header (also `/` or Ctrl/⌘+K) finds festivals, artists, cities, countries, styles and highlights
 as you type, grouped by kind. It looks at festivals still to come unless "Include past festivals" is ticked. A festival opens on the map and an artist on their page; a city opens on the map.
-A country, a style or a highlight narrows the festival list and keeps its time and price; when those then hide
+A country, a dance or a highlight narrows the festival list and keeps its time and price (a dance reads "Also with
+Salsa": every festival here is a Kizomba one, so Kizomba isn't a choice); when those then hide
 everything, the list offers to widen them.
 
 The footer links to an SQL page for querying the whole database.
@@ -134,7 +135,10 @@ People can say which festivals they're going to. For now the plans are entered b
 A festival card then says, for example, "Cédric & Christina are going · 3 more people too", and opening it lists
 who's going. Partners who both go are named as their couple. Someone in the festival's line-up, alone or in a
 couple, shows as teaching (or playing) rather than going. Each person has a plans page with a Share button, and
-an artist's page lists the festivals they're going to without teaching there. The build stops if a person, an
+an artist's page lists the festivals they're going to without teaching there. The People page, under Map & artists,
+lists every festival someone is going to, soonest first. On the Festivals page, a line under the count says when
+featured people go to some of the festivals listed ("Cédric & Christina are going to 3 of these"), and "Show only
+those" keeps just those; the same filter is a checkbox under Filters. The search finds people by name. The build stops if a person, an
 artist key or a festival is unknown.
 
 Plans are public for now: anyone can see them, so add people only with their agreement. Private sharing, friends

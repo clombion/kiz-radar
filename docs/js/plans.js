@@ -20,6 +20,17 @@ function load() {
 
 export const goersOf = eventId => { load(); return byEvent[eventId] || []; };
 
+// the featured people going to any of these festivals: "Cédric & Christina" and to how many; null when none is
+export function friendsIn(rows) {
+  const at = rows.filter(e => e.goers.some(g => g.featured));
+  if (!at.length) return null;
+  const people = [...new Map(at.flatMap(e => e.goers.filter(g => g.featured)).map(g => [g.person_id, g])).values()];
+  return { n: at.length, many: people.length > 1, faces: faces(people), names: h('b', {}, and(named(people).map(g => g.name))) };
+}
+// who's going to one festival, inline: each person or couple linked, with what they're doing there
+export const goersInline = goers => and(named(goers).map(g => { const d = doing(g.people);
+  return h('span', { class: 'goer' }, h('a', { href: g.href, class: 'artist' }, g.name), ' ', h('span', { class: 'plan-tag' + (d === 'going' ? '' : ' booked') }, d)); }));
+
 // goers as the names to show: a couple when both partners go, otherwise each person
 function named(goers) {
   load();
@@ -57,13 +68,15 @@ export function whoIsGoing(e) {
       return h('li', {}, faces(g.people), h('a', { href: g.href, class: 'artist' }, g.name), ' ', h('span', { class: 'plan-tag' + (d === 'going' ? '' : ' booked') }, d)); })));
 }
 
-// A person, and the artist records they are, directly or as half of a couple.
+// A person, and the artist records they are, directly or as half of a couple: those with bookings of their own,
+// since a partner's record alone only repeats the couple's.
 export function person(key) {
   const p = one('SELECT * FROM people WHERE key = ?', [key]);
   if (!p) return null;
-  return { ...p, artists: q(`SELECT a.id, a.display_name FROM person_artists pa JOIN artists a ON a.id = pa.artist_id WHERE pa.person_id = ?
-    UNION SELECT a.id, a.display_name FROM person_artists pa JOIN couple_members cm ON cm.member_id = pa.artist_id
-      JOIN artists a ON a.id = cm.couple_id WHERE pa.person_id = ?`, [p.id, p.id]) };
+  return { ...p, artists: q(`SELECT a.id, a.display_name FROM artists a JOIN artist_stats st ON st.artist_id = a.id WHERE a.id IN (
+      SELECT artist_id FROM person_artists WHERE person_id = ?
+      UNION SELECT cm.couple_id FROM person_artists pa JOIN couple_members cm ON cm.member_id = pa.artist_id WHERE pa.person_id = ?)
+    ORDER BY st.bookings DESC`, [p.id, p.id]) };
 }
 // The festivals still to come that some of these people said they're going to, where they aren't in the line-up.
 export const alsoGoingTo = personIds => personIds.length ? q(`SELECT DISTINCT event_id FROM plan_rows JOIN event_rows e ON e.id = event_id

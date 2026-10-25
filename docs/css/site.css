@@ -170,7 +170,7 @@ select.mini:focus-visible, select.plain:focus-visible { outline: 2px solid var(-
 .note-inline .hand { padding-top: .6rem; transform: rotate(-1.5deg); }
 .click { display: none; }
 .tap { display: inline; }
-.sentence-hero .live { font-size: 1.1rem; margin: 3.2rem 0 .4rem; color: var(--muted); min-height: 3em; }      /* two lines, so the count arriving never moves the sentence */
+.sentence-hero .live { font-size: 1.1rem; margin: 3.2rem 0 .4rem; color: var(--muted); min-height: 4.6em; }      /* three lines (the count, and who's going), so they never move the sentence when they arrive */
 .hints-done .note { opacity: 0; }
 .hints-done .note-inline { display: none !important; }
 .tabs a[data-nav="explore"] { position: relative; }
@@ -332,7 +332,7 @@ body:has(.pmap) .to-top { display: none; }
 @media (max-width: 640px) {
   .note-bottom { display: none; }
   .note-inline { display: flex; }
-  .sentence-hero .live { margin-top: 1rem; }
+  .sentence-hero .live { margin-top: 1rem; min-height: 6.4em; }      /* on a phone each of the two lines can take two */
   .note-artist { display: flex; }
 }
 @media (max-width: 760px) {
@@ -482,3 +482,13 @@ html:has(dialog.search[open]) { overflow: hidden; }
 .who li { display: flex; align-items: center; gap: .45rem; }
 .plan-tag { font-size: .72rem; font-weight: 600; border-radius: 999px; padding: .05rem .5rem; background: color-mix(in srgb, var(--good) 14%, var(--surface)); color: var(--good); }
 .plan-tag.booked { background: var(--accent-soft); color: var(--accent); }
+.sentence-hero .live .friends { display: flex; align-items: center; gap: .5rem; margin-top: .45rem; }
+.sentence-hero .live .friends b { color: var(--text); font-weight: 600; }
+.with-tag .tag { display: inline-flex; align-items: center; gap: .35rem; margin-right: .9rem; }
+.more-panel .with-tag { margin: 0 0 .8rem; flex-wrap: wrap; }
+.plan-list { list-style: none; padding: 0; margin: 1rem 0 2rem; }
+.plan-list li { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: .15rem 1rem; padding: .7rem 0; border-bottom: 1px solid var(--border); }
+.plan-list .when { font-weight: 650; color: var(--accent); grid-row: span 2; }
+.plan-list .what a { font-weight: 600; }
+.plan-list .goer { white-space: nowrap; }
+@media (max-width: 640px) { .plan-list li { grid-template-columns: 1fr; } .plan-list .when { grid-row: auto; } }

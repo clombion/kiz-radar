@@ -10,8 +10,9 @@ export const cityOnMapHref = (city, cc, params) => hash(`map/city/${cc}/${encode
 export const artistsHref = params => hash('artists', params);
 export const artistHref = id => hash(`artists/${id}`);
 export const personHref = key => hash(`people/${key}`);
+const peopleHref = () => hash('people');
 export const countriesHref = params => hash('countries', params);
-export const EXPLORE = [['map', 'Map', mapHref()], ['artists', 'Artists', artistsHref()], ['countries', 'Countries', countriesHref()]];
+export const EXPLORE = [['map', 'Map', mapHref()], ['artists', 'Artists', artistsHref()], ['countries', 'Countries', countriesHref()], ['people', 'People', peopleHref()]];
 
 // Show a view's state in the address bar without adding a history entry.
 export const showInAddressBar = href => history.replaceState(null, '', href);

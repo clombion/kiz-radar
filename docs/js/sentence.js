@@ -2,14 +2,16 @@
 // (plus "More filters") once the sentence has scrolled away.
 import { h, addDays, flag, today, home, loading } from './ui.js';
 import { site } from './db.js';
-import { festivals, readState, changed, WITH, hasWith } from './festivals.js';
+import { festivals, readState, changed, WITH, hasWith, withPhrase } from './festivals.js';
+import { friendsIn } from './plans.js';
 import { eventCard } from './eventcard.js';
 import { blanksHint, exploreHint, artistHint } from './hints.js';
 import { festivalsHref, showInAddressBar } from './routes.js';
 
-// reach is the most a Fri→Mon return may cost; 0 is any price. with is a style or highlight picked in the search.
-const DEFAULTS = { months: 6, reach: 150, country: '', with: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0, sort: 'date' };
-const LOOSEST = { months: 12, reach: 0, country: '', with: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0 };
+// reach is the most a Fri→Mon return may cost; 0 is any price. with is a dance or highlight picked in the search;
+// friends keeps the festivals that featured people said they're going to.
+const DEFAULTS = { months: 6, reach: 150, country: '', with: '', friends: 0, taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0, sort: 'date' };
+const LOOSEST = { months: 12, reach: 0, country: '', with: '', friends: 0, taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0 };
 
 // Hand-drawn hints next to the blanks. Static SVG, so building it from a string is safe.
 const ARROWS = {
@@ -40,7 +42,7 @@ function matches(all, s) {
   const end = addDays(today(), Math.round(s.months * 30.4));
   return all.filter(e => e.depart <= end && (s.likely || !e.projected) &&
       (!s.reach || (e.fare ? e.fare.price <= s.reach : s.unchecked)) &&
-      (!s.country || e.country_code === s.country) && (!s.with || hasWith(e, s.with)) &&
+      (!s.country || e.country_code === s.country) && (!s.with || hasWith(e, s.with)) && (!s.friends || e.goers.some(g => g.featured)) &&
       (!s.taxi || e.taxi_dancers) && (!s.allin || e.all_in_one) &&
       e.lineup >= s.lineup)
     .sort(s.sort === 'fare'
@@ -52,7 +54,7 @@ export function sentenceView(root, qs, { signal, data }) {
   let all = null;                  // the festivals, once the database is in
   const countries = site().destinations;
   const s = readState(qs, DEFAULTS, { months: WHEN.map(([v]) => v), reach: PRICE.map(([v]) => v),
-    country: ['', ...countries.map(c => c.code)], with: ['', ...WITH.keys()], lineup: LINEUP.map(([v]) => v), sort: ORDER.map(([v]) => v),
+    country: ['', ...countries.map(c => c.code)], with: ['', ...WITH.keys()], friends: FLAGS, lineup: LINEUP.map(([v]) => v), sort: ORDER.map(([v]) => v),
     taxi: FLAGS, allin: FLAGS, likely: FLAGS, unchecked: FLAGS });
 
   const blank = (key, opts, cls = 'blank') => {
@@ -69,6 +71,11 @@ export function sentenceView(root, qs, { signal, data }) {
   const sentenceBlanks = { months: blank('months', WHEN), country: blank('country', DEST), reach: blank('reach', PRICE) };
   const live = h('p', { class: 'live', 'aria-live': 'polite' });
   const withTag = h('p', { class: 'with-tag' });
+  // the choices that only show as tags, under the sentence and in the Filters panel alike
+  const tag = ([lead, what], remove) => h('span', { class: 'tag' }, lead, h('strong', {}, what), ' ',
+    h('button', { type: 'button', class: 'remove', 'aria-label': `Remove “${what}”`, onclick: ev => { ev.stopPropagation(); remove(); render(); } }, '×'));
+  const tags = () => [s.with ? tag(withPhrase(s.with), () => { s.with = ''; }) : null,
+    s.friends ? tag(['With ', 'friends going'], () => { s.friends = 0; }) : null].filter(Boolean);
   const festivalIn = h('span', {}, ' festival in ');
   // words where they fit after "festival in", digits where only they do (narrow phones); otherwise words
   const fitMonths = () => {
@@ -109,11 +116,12 @@ export function sentenceView(root, qs, { signal, data }) {
   const check = (key, label) => { const c = h('input', { type: 'checkbox' }); c.checked = !!s[key];
     c.addEventListener('change', () => { s[key] = c.checked ? 1 : 0; render(); }); return h('label', { class: 'check' }, c, ' ', label); };
   const moreFields = () => [
+    tags().length ? h('div', { class: 'with-tag' }, tags()) : null,
     h('div', { class: 'core-fields' },
       h('label', { class: 'field' }, h('span', {}, 'Destination'), blank('country', DEST_SHORT, 'plain'))),
     h('label', { class: 'field' }, h('span', {}, 'Line-up'), blank('lineup', LINEUP, 'plain')),
     h('label', { class: 'field' }, h('span', {}, 'Order'), blank('sort', ORDER, 'plain')),
-    h('div', { class: 'checks' }, check('taxi', 'Taxi dancers'), check('allin', 'All-in-one hotel'),
+    h('div', { class: 'checks' }, check('friends', 'Only festivals friends go to'), check('taxi', 'Taxi dancers'), check('allin', 'All-in-one hotel'),
       check('likely', 'Include likely next editions'), check('unchecked', 'Include festivals whose flight isn’t checked yet')),
   ];
   const panel = h('div', { class: 'more-panel', id: 'more-panel', hidden: true }, moreFields());
@@ -147,18 +155,28 @@ export function sentenceView(root, qs, { signal, data }) {
   io.observe(hero);
   signal.addEventListener('abort', () => { io.disconnect(); tabNote?.remove(); });
 
+  // "Cédric & Christina are going to 3 of these. Show only those", when featured people go to some of them
+  function friendsLine(rows) {
+    const f = !s.friends && friendsIn(rows);
+    if (!f) return null;
+    const all_ = f.n === rows.length;
+    return h('span', { class: 'friends' }, f.faces, h('span', {}, f.names, ` ${f.many ? 'are' : 'is'} going to `,
+      all_ ? (rows.length === 1 ? 'this one' : 'all of these') : f.n === 1 ? 'one of these' : `${f.n} of these`, '. ',
+      all_ ? null : h('button', { type: 'button', class: 'link', onclick: () => { s.friends = 1; render(); } }, 'Show only those')));
+  }
+
   function render() {
     showInAddressBar(festivalsHref(changed(s, DEFAULTS)));
     for (const k of ['months', 'country', 'reach']) { sentenceBlanks[k].value = String(s[k]); barBlanks[k].value = String(s[k]); fit(sentenceBlanks[k]); }
     layout();
     panel.replaceChildren(...moreFields());
-    const extra = ['taxi', 'allin', 'lineup', 'unchecked'].filter(k => s[k] !== DEFAULTS[k]).length + (s.likely ? 0 : 1);
+    const extra = ['with', 'friends', 'taxi', 'allin', 'lineup', 'unchecked'].filter(k => s[k] !== DEFAULTS[k]).length + (s.likely ? 0 : 1);
     const hiddenOnPhone = +!!s.country;     // only counted where the destination lives in the panel
     moreBtn.replaceChildren(h('span', { class: 'wide' }, 'More filters'), h('span', { class: 'narrow' }, 'Filters', extra + hiddenOnPhone ? ` (${extra + hiddenOnPhone})` : ''),
       h('span', { class: 'wide' }, extra ? ` (${extra})` : ''), ' ▾');
-    withTag.hidden = !s.with;
-    withTag.replaceChildren(...s.with ? ['With ', h('strong', {}, WITH.get(s.with)), ' ',
-      h('button', { type: 'button', class: 'remove', 'aria-label': `Remove “${WITH.get(s.with)}”`, onclick: () => { s.with = ''; render(); } }, '×')] : []);
+    const shown = tags();
+    withTag.hidden = !shown.length;
+    withTag.replaceChildren(...shown);
     if (!all) { live.textContent = 'Looking for festivals like that…'; barCount.textContent = ''; results.replaceChildren(loading()); return; }
     const rows = matches(all, s);
     // when the time and price hide everything, offer to widen just those, keeping the place and the rest
@@ -168,7 +186,8 @@ export function sentenceView(root, qs, { signal, data }) {
     live.replaceChildren(rows.length
       ? h('span', {}, `${rows.length} festival${rows.length > 1 ? 's' : ''} like that`,
           !s.reach ? '. ' : h('span', { class: 'price-note' }, ` (return flights under €${s.reach}, Friday to Monday). `),
-          h('a', { href: '#', onclick: ev => { ev.preventDefault(); results.scrollIntoView({ behavior: 'smooth' }); } }, 'Show them ↓'))
+          h('a', { href: '#', onclick: ev => { ev.preventDefault(); results.scrollIntoView({ behavior: 'smooth' }); } }, 'Show them ↓'),
+          friendsLine(rows))
       : widened ? h('span', {}, 'None in that time or for that price. ', widen())
       : 'Nothing like that yet. Try a longer time, anywhere, or any price.');
     barCount.textContent = `${rows.length} festival${rows.length === 1 ? '' : 's'}`;
