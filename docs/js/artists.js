@@ -130,7 +130,8 @@ function artistPage(root, id) {
     h('a', { href: artistsHref(), class: 'back-link' }, '← All artists'),
     h('header', { class: 'profile-head' },
       h('h1', {}, a.display_name),
-      h('p', { class: 'lede' }, a.bookings ? [roleLabel(a), a.home_country ? [' from ', flag(a.home_country), ' ', countryName(a.home_country)] : null,
+      h('p', { class: 'lede' }, a.bookings ? [roleLabel(a), a.home_country ? [' from ', flag(a.home_country), ' ', countryName(a.home_country)]
+          : a.booked_most_in ? [', booked mostly in ', countryName(a.booked_most_in)] : null,
         ' · ', festivals(a.bookings), a.abroad_bookings ? `, ${a.abroad_bookings} abroad` : ''] : 'Only booked as part of a couple'),
       members.length ? h('p', {}, 'Partners: ', list(members, m => person(m, m.bookings ? h('span', { class: 'muted' }, ` (${festivals(m.bookings)} on their own)`) : null))) : null,
       couples.length ? h('p', {}, a.kind === 'couple' ? 'Also part of ' : 'Also books as ', list(couples, c => person(c, h('span', { class: 'muted' }, ` (${festivals(c.bookings || 0)})`)))) : null),
@@ -150,5 +151,6 @@ function artistPage(root, id) {
           roles[e.id] && roles[e.id] !== 'teacher' ? ` · ${roles[e.id].replace(/,/g, ', ')}` : ''))))) : null,
     h('div', { class: 'profile-notes' },
       aliases.length ? h('p', {}, 'Also written as ', aliases.join(' · ')) : null,
-      a.home_country ? h('p', {}, { given: 'Home country added by hand.', stated: 'Home country as stated in line-ups.' }[a.home_basis] || 'Home country guessed from where they’re booked most.') : null)));
+      h('p', {}, a.home_country ? { given: 'Home country added by hand.', stated: 'Home country as stated in line-ups.' }[a.home_basis]
+        : 'No line-up says where they’re from.'))));
 }

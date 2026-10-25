@@ -117,10 +117,11 @@ fill in `decision`. Pushing the change rebuilds the site and refreshes the sugge
 
 ## Artists' home countries
 
-An artist's home country is the country stated next to their name in line-ups, when one is. Otherwise it is a
-guess: the country they are booked in most. `pipeline/artist_countries.csv` overrides both with what is known from
-elsewhere. Each row gives the source's `match_key` (as in `artist_merges.csv`), the country code, and a name and
-note for people reading the file. The artist's page says which of the three a country comes from.
+The site shows where an artist is from only when it is known: given in `pipeline/artist_countries.csv`, or
+stated next to their name in a line-up. Each row of that file gives the source's `match_key` (as in
+`artist_merges.csv`), the country code, and a name and note for people reading the file. Where nothing is known,
+the artist's page says where they are booked most instead, without a flag; the statistics on imported artists use
+that country too.
 
 ## Updating the events
 

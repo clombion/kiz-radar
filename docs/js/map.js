@@ -239,8 +239,10 @@ export function mapView(root, sub, qs, { signal }) {
     map.setView([inCity[0].lat, inCity[0].lon], Math.max(map.getZoom(), 6));
     setSheet(true);
   }
-  setTimeout(() => { map.invalidateSize(); lockZoom(); }, 0);
-  signal.addEventListener('abort', () => map.remove());
+  const settle = setTimeout(() => { map.invalidateSize(); lockZoom(); }, 0);
+  // On leaving, the map stops listening at once and is removed once a zoom animation, which Leaflet can't cancel
+  // (it ends 250 ms after it starts), has finished with it.
+  signal.addEventListener('abort', () => { clearTimeout(settle); clearTimeout(t); clearTimeout(ts); map.off(); setTimeout(() => map.remove(), 300); });
 }
 
 async function drawWorld(layer) {

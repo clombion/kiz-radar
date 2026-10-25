@@ -185,8 +185,9 @@ x("create table artist_origin (artist_id integer, country_code text, mentions in
 out.executemany("insert into artist_origin values (?,?,?)", [(a, c, n) for a, cnt in stated.items() for c, n in cnt.items()])
 
 x("""create table artist_stats (artist_id integer primary key, bookings integer, teacher integer, dj integer,
-     performer integer, first_date text, last_date text, home_country text, home_basis text,
-     countries integer, abroad_bookings integer, popular integer, couple_bookings integer)""")
+     performer integer, first_date text, last_date text, home_country text, home_basis text check (home_basis in ('given', 'stated')),
+     booked_most_in text, countries integer, abroad_bookings integer, popular integer, couple_bookings integer,
+     check ((home_country is null) = (home_basis is null)))""")
 x("create table artist_countries (artist_id integer, country_code text, bookings integer, is_home integer, primary key (artist_id, country_code))")
 dates = dict(((r[0]), r[1]) for r in x("select id, start_date from events"))
 # home countries known from outside the line-ups (pipeline/artist_countries.csv), by the source's match_key
@@ -195,24 +196,22 @@ for r in csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'artist_countries.cs
     if r['match_key'] not in key_id: sys.exit(f"artist_countries.csv: unknown match_key {r['match_key']} ({r['name']})")
     if not x("select 1 from countries where code = ?", (r['country'],)).fetchone(): sys.exit(f"artist_countries.csv: unknown country {r['country']} ({r['name']})")
     given[root(key_id[r['match_key']])] = r['country']
+# A home country is known when it is given in that file or stated in a line-up they are booked in. Where it isn't,
+# the country they are booked in most stands in for it in the statistics (imported artists, bookings abroad), and
+# is kept apart as booked_most_in, so the site never shows a guess as where someone is from.
 home_of = {}
 for a, evs in bookings.items():
     where = collections.Counter(ev_cc[e] for e in evs if ev_cc[e])
     booked_origins = [c for c, _ in stated[a].most_common() if where.get(c)]
-    if a in given:
-        home, basis = given[a], 'given'
-    elif booked_origins:
-        home, basis = max(booked_origins, key=lambda c: where[c]), 'stated'
-    elif where:
-        home, basis = where.most_common(1)[0][0], 'most booked'
-    else:
-        home, basis = None, ''
-    home_of[a] = home
+    home, basis = ((given[a], 'given') if a in given
+                   else (max(booked_origins, key=lambda c: where[c]), 'stated') if booked_origins else (None, None))
+    most = where.most_common(1)[0][0] if where else None
+    home_of[a] = home or most
     ds = sorted(dates[e] for e in evs)
-    abroad = sum(n for c, n in where.items() if c != home)
-    x("insert into artist_stats values (?,?,?,?,?,?,?,?,?,?,?,?,?)",
+    abroad = sum(n for c, n in where.items() if c != home_of[a])
+    x("insert into artist_stats values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
       (a, len(evs), role_count[a]['teacher'], role_count[a]['dj'], role_count[a]['performer'], ds[0], ds[-1],
-       home, basis, len(where), abroad, int(len(evs) >= POPULAR), len(couple_bookings[a] - evs)))
+       home, basis, most, len(where), abroad, int(len(evs) >= POPULAR), len(couple_bookings[a] - evs)))
     out.executemany("insert into artist_countries values (?,?,?,?)", [(a, c, n, int(c == home)) for c, n in where.items()])
 
 # --- event statistics ------------------------------------------------------------------------------
@@ -263,11 +262,11 @@ DOCS = {
  'airports': 'Airports the fare sweep covers, with the city they serve. tier sets how often fares refresh (1 = every few days); tier 0 is home, where no flight is needed.',
  'fares': f'Round-trip economy fares from {HOME}, one adult, Friday out and Monday back, from Google Flights via fli. Reloaded from data/fares.csv when the page opens.',
  'event_fares': 'Each event joined to the fare for its weekend (null when Google had no price), plus the cheapest fare that month to the same airport.',
- 'artist_stats': f'Per artist with bookings of their own: bookings (teacher, DJ or performer at distinct events; a couple’s bookings count for the couple, not its members), home country (from pipeline/artist_countries.csv where it is known from elsewhere, else a stated country they are booked in, else where they are booked most; home_basis says which: given, stated or most booked), countries booked in, bookings abroad, popular = at least {POPULAR} bookings, couple_bookings = further events where they appear only as part of a couple. People booked only as part of a couple have no row.',
+ 'artist_stats': f'Per artist with bookings of their own: bookings (teacher, DJ or performer at distinct events; a couple’s bookings count for the couple, not its members), home_country when it is known (home_basis: given in pipeline/artist_countries.csv, or stated next to their name in a line-up they are booked in; null otherwise), booked_most_in (the country with most of their bookings), countries booked in, bookings abroad (outside the home country, or outside booked_most_in when that is unknown), popular = at least {POPULAR} bookings, couple_bookings = further events where they appear only as part of a couple. People booked only as part of a couple have no row.',
  'event_artists': 'Each artist named in a line-up, resolved to an artist, with role, style and stated country. as_couple is set when a member is listed in the same role as their couple at the same event: that row repeats the couple’s booking and is left out of line-ups and statistics.',
  'artist_redirects': 'Artists merged into another by pipeline/artist_merges.csv: old_id now reads as new_id.',
  'artist_events': 'Every appearance of an artist: direct (their own booking) or member (via a booked couple, via_artist_id).',
- 'artist_countries': 'Bookings per artist and country; is_home marks the home country in artist_stats.',
+ 'artist_countries': 'Bookings per artist and country; is_home marks the known home country in artist_stats.',
  'artist_origin': 'Countries stated next to an artist’s name in line-ups (flags or text), with how often.',
  'event_stats': 'Per event: line-up size (teachers and DJs), popular artists booked, imported artists (home country differs from the event’s), kizomba-family genres, kiz-only (no salsa or bachata), taxi dancers, all-in-one hotel.',
  'event_rows': 'What the site reads: each event with its event_stats, and upcoming (not over yet and not cancelled, as of the moment of the query).',
