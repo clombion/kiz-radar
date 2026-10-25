@@ -2,14 +2,14 @@
 // (plus "More filters") once the sentence has scrolled away.
 import { h, addDays, flag, today, home } from './ui.js';
 import { site } from './db.js';
-import { festivals, readState, changed } from './festivals.js';
+import { festivals, readState, changed, WITH, hasWith } from './festivals.js';
 import { eventCard } from './eventcard.js';
 import { blanksHint, exploreHint, artistHint } from './hints.js';
 import { festivalsHref, showInAddressBar } from './routes.js';
 
-// reach is the most a Fri→Mon return may cost; 0 is any price
-const DEFAULTS = { months: 6, reach: 150, country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0, sort: 'date' };
-const LOOSEST = { months: 12, reach: 0, country: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0 };
+// reach is the most a Fri→Mon return may cost; 0 is any price. with is a style or highlight picked in the search.
+const DEFAULTS = { months: 6, reach: 150, country: '', with: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0, sort: 'date' };
+const LOOSEST = { months: 12, reach: 0, country: '', with: '', taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0 };
 
 // Hand-drawn hints next to the blanks. Static SVG, so building it from a string is safe.
 const ARROWS = {
@@ -40,7 +40,8 @@ function matches(all, s) {
   const end = addDays(today(), Math.round(s.months * 30.4));
   return all.filter(e => e.depart <= end && (s.likely || !e.projected) &&
       (!s.reach || (e.fare ? e.fare.price <= s.reach : s.unchecked)) &&
-      (!s.country || e.country_code === s.country) && (!s.taxi || e.taxi_dancers) && (!s.allin || e.all_in_one) &&
+      (!s.country || e.country_code === s.country) && (!s.with || hasWith(e, s.with)) &&
+      (!s.taxi || e.taxi_dancers) && (!s.allin || e.all_in_one) &&
       e.lineup >= s.lineup)
     .sort(s.sort === 'fare'
       ? (a, b) => (a.fare?.price ?? 1e9) - (b.fare?.price ?? 1e9) || a.depart.localeCompare(b.depart)
@@ -51,7 +52,7 @@ export function sentenceView(root, qs, { signal, data }) {
   let all = null;                  // the festivals, once the database is in
   const countries = site().destinations;
   const s = readState(qs, DEFAULTS, { months: WHEN.map(([v]) => v), reach: PRICE.map(([v]) => v),
-    country: ['', ...countries.map(c => c.code)], lineup: LINEUP.map(([v]) => v), sort: ORDER.map(([v]) => v),
+    country: ['', ...countries.map(c => c.code)], with: ['', ...WITH.keys()], lineup: LINEUP.map(([v]) => v), sort: ORDER.map(([v]) => v),
     taxi: FLAGS, allin: FLAGS, likely: FLAGS, unchecked: FLAGS });
 
   const blank = (key, opts, cls = 'blank') => {
@@ -67,6 +68,7 @@ export function sentenceView(root, qs, { signal, data }) {
   const DEST_SHORT = [['', 'Anywhere'], ...countries.map(c => [c.code, `${flag(c.code)} ${c.name}`])];
   const sentenceBlanks = { months: blank('months', WHEN), country: blank('country', DEST), reach: blank('reach', PRICE) };
   const live = h('p', { class: 'live', 'aria-live': 'polite' });
+  const withTag = h('p', { class: 'with-tag' });
   const festivalIn = h('span', {}, ' festival in ');
   // words where they fit after "festival in", digits where only they do (narrow phones); otherwise words
   const fitMonths = () => {
@@ -91,6 +93,7 @@ export function sentenceView(root, qs, { signal, data }) {
       sentenceBlanks.months, `, flying from ${home().city} to `,
       h('span', { class: 'anchor' }, sentenceBlanks.country, whereNote),
       ' for ', h('span', { class: 'nowrap' }, sentenceBlanks.reach, '.'), ruler),
+    withTag,
     note('note-inline', 'up', 'click', ' to change'),
     live,
     h('p', { class: 'nevermind' }, h('button', { type: 'button', class: 'link', onclick: () => {
@@ -153,16 +156,25 @@ export function sentenceView(root, qs, { signal, data }) {
     const hiddenOnPhone = +!!s.country;     // only counted where the destination lives in the panel
     moreBtn.replaceChildren(h('span', { class: 'wide' }, 'More filters'), h('span', { class: 'narrow' }, 'Filters', extra + hiddenOnPhone ? ` (${extra + hiddenOnPhone})` : ''),
       h('span', { class: 'wide' }, extra ? ` (${extra})` : ''), ' ▾');
+    withTag.hidden = !s.with;
+    withTag.replaceChildren(...s.with ? ['With ', h('strong', {}, WITH.get(s.with)), ' ',
+      h('button', { type: 'button', class: 'remove', 'aria-label': `Remove “${WITH.get(s.with)}”`, onclick: () => { s.with = ''; render(); } }, '×')] : []);
     if (!all) { live.textContent = 'Looking for festivals like that…'; barCount.textContent = ''; return; }
     const rows = matches(all, s);
+    // when the time and price hide everything, offer to widen just those, keeping the place and the rest
+    const widened = rows.length || (s.months === 12 && !s.reach) ? 0 : matches(all, { ...s, months: 12, reach: 0 }).length;
+    const widen = () => h('button', { type: 'button', class: 'link', onclick: () => { Object.assign(s, { months: 12, reach: 0 }); render(); } },
+      `Show the ${widened} in the coming year, at any price`);
     live.replaceChildren(rows.length
       ? h('span', {}, `${rows.length} festival${rows.length > 1 ? 's' : ''} like that`,
           !s.reach ? '. ' : h('span', { class: 'price-note' }, ` (return flights under €${s.reach}, Friday to Monday). `),
           h('a', { href: '#', onclick: ev => { ev.preventDefault(); results.scrollIntoView({ behavior: 'smooth' }); } }, 'Show them ↓'))
+      : widened ? h('span', {}, 'None in that time or for that price. ', widen())
       : 'Nothing like that yet. Try a longer time, anywhere, or any price.');
     barCount.textContent = `${rows.length} festival${rows.length === 1 ? '' : 's'}`;
     results.replaceChildren(rows.length
       ? h('div', { class: 'festival-cards' }, rows.map((e, i) => eventCard(e, { hint: i === firstWithArtists(rows) && !artistHint.seen() ? note('note-artist', 'up', 'click', ' a name to see where else they teach') : null })))
+      : widened ? h('p', { class: 'empty' }, 'No festival fits that time and price. ', widen())
       : h('p', { class: 'empty' }, 'No festival fits all of that. ',
           h('button', { type: 'button', class: 'link', onclick: () => { Object.assign(s, LOOSEST); render(); } }, 'Show all events instead')));
   }

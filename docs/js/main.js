@@ -10,6 +10,7 @@ import { sqlView } from './tables.js';
 import { countriesView } from './countries.js';
 import { exploreHint, artistHint } from './hints.js';
 import { EXPLORE } from './routes.js';
+import { initSearch } from './search.js';
 
 const main = document.getElementById('main');
 const data = load();          // starts now, alongside site.json
@@ -64,5 +65,6 @@ loadSite().then(() => {
   const { events_range: [from, to], built_at } = site();
   document.getElementById('freshness').textContent = `It covers ${monthYear(from)} to ${monthYear(to)} and was last updated on ${dayYear(built_at)}.`;
   for (const el of document.querySelectorAll('[data-home-city]')) el.textContent = home().city;
+  initSearch(document.getElementById('search-btn'), data);
   route();
 }, e => failed(main, e));          // only a failed load is reported as one; errors in a view surface as errors

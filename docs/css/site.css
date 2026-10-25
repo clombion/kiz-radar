@@ -405,3 +405,46 @@ html[data-vt=calm]::view-transition-old(root), html[data-vt=calm]::view-transiti
   .festival-card.open { grid-column: span 2; }
 }
 
+
+/* search: a button in the header, and a dialog with the results in groups */
+.search-btn { margin-left: auto; display: inline-flex; align-items: center; gap: .45rem; border: 1px solid var(--border); background: var(--surface); color: var(--muted); font: 500 .92rem var(--font); padding: .4rem .55rem .4rem .7rem; border-radius: 999px; cursor: pointer; }
+.search-btn:hover { color: var(--accent); border-color: var(--accent); }
+.search-btn kbd { font: 600 .75rem var(--font); border: 1px solid var(--border); border-radius: 5px; padding: 0 .35rem; color: var(--muted); }
+dialog.search { width: min(640px, 100% - 32px); max-width: none; max-height: min(78vh, 720px); margin: 9vh auto auto; padding: 0; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); color: var(--text); box-shadow: 0 24px 60px rgb(42 31 34 / .25); overflow: hidden; }
+dialog.search[open] { display: flex; flex-direction: column; }
+dialog.search::backdrop { background: rgb(42 31 34 / .35); backdrop-filter: blur(2px); }
+html:has(dialog.search[open]) { overflow: hidden; }
+.search-top { display: flex; align-items: center; gap: .6rem; padding: .7rem .9rem; border-bottom: 1px solid var(--border); }
+.search-glass { color: var(--muted); display: flex; }
+.search-input { flex: 1; min-width: 0; border: 0; background: none; font: 500 1.1rem var(--font); padding: .35rem 0; outline: none; }
+.search-cancel { border: 0; background: none; color: var(--accent); font: 600 .92rem var(--font); cursor: pointer; padding: .3rem .2rem; }
+.search-list { overflow-y: auto; padding: .3rem .5rem .8rem; overscroll-behavior: contain; }
+.search-note { color: var(--muted); font-size: .92rem; margin: .7rem .5rem .2rem; }
+.search-group-title { font: 600 .78rem var(--font); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: .9rem .5rem .3rem; }
+.search-row { display: flex; align-items: center; gap: .75rem; padding: .5rem .5rem; border-radius: 10px; cursor: pointer; }
+.search-row[aria-selected="true"] { background: var(--accent-soft); }
+.search-row .what { display: flex; flex-direction: column; min-width: 0; }
+.search-row .name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.search-row .sub { color: var(--muted); font-size: .85rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.search-row mark { background: none; color: var(--accent); font-weight: 700; }
+.search-row.past .name { color: var(--muted); }
+.search-row .lead { flex: none; width: 2.6rem; height: 2.6rem; border-radius: 10px; display: grid; place-items: center; background: var(--surface-2); color: var(--accent); font-weight: 650; }
+.search-row .lead.date { font-size: .74rem; line-height: 1.1; text-align: center; padding: 0 .2rem; }
+.search-row .lead.mono { border-radius: 50%; font-size: 1.05rem; }
+.search-row .lead.flag { font-size: 1.35rem; background: none; }
+.search-row .lead svg { width: 20px; height: 20px; }
+.search-more .what { color: var(--accent); font-weight: 600; padding-left: 3.35rem; }
+.search-none { padding: .8rem .6rem; }
+.search-none p { margin: .4rem 0; }
+.with-tag { margin: .9rem 0 0; font-size: 1.05rem; color: var(--muted); display: flex; align-items: center; gap: .35rem; }
+.with-tag[hidden] { display: none; }
+.sentence-hero:not(.hints-done) .with-tag { margin-top: 2.6rem; }      /* below the "click to change where" hint */
+.with-tag strong { color: var(--accent); }
+.with-tag .remove { border: 1px solid var(--border); background: var(--surface); color: var(--muted); border-radius: 50%; width: 1.6rem; height: 1.6rem; cursor: pointer; font-size: 1rem; line-height: 1; display: grid; place-items: center; padding: 0; }
+.with-tag .remove:hover { color: var(--accent); border-color: var(--accent); }
+@media (max-width: 640px) {
+  .search-btn { padding: .45rem; }
+  .search-btn .search-word, .search-btn kbd { display: none; }
+  dialog.search { width: 100%; height: 100%; max-height: none; margin: 0; border: 0; border-radius: 0; }
+}
+@media (hover: none) { .search-btn kbd { display: none; } }

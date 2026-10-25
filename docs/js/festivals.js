@@ -2,6 +2,7 @@
 // views share.
 import { q } from './db.js';
 import { today, addDays, flag, home } from './ui.js';
+import { TRAITS, MORE_TRAITS } from './icons.js';
 
 // Each row with the fare for its weekend, the best-known names on its line-up and its styles.
 let heads, styles, fares;
@@ -47,9 +48,14 @@ export function festivals() {
   return withDetails(rows);
 }
 
-const STYLE_NAMES = { kizomba: 'Kizomba', urbankiz: 'Urban Kiz', semba: 'Semba', tarraxo: 'Tarraxo', tarraxinha: 'Tarraxinha',
+export const STYLE_NAMES = { kizomba: 'Kizomba', urbankiz: 'Urban Kiz', semba: 'Semba', tarraxo: 'Tarraxo', tarraxinha: 'Tarraxinha',
   douceur: 'Douceur', kompa: 'Kompa', zouk: 'Zouk', bachata: 'Bachata', salsa: 'Salsa', afro: 'Afro' };
 export const styleLine = e => [...e.styles].map(s => STYLE_NAMES[s]).filter(Boolean).slice(0, 4).join(' · ');
+
+// What "with" in the Festivals URL can name: a style or a highlight, by key. Taxi dancers and the all-in-one hotel
+// have checkboxes of their own, so they aren't here.
+export const WITH = new Map([...Object.entries(STYLE_NAMES), ...[...TRAITS, ...MORE_TRAITS].filter(([k]) => k !== 'taxi_dancers')]);
+export const hasWith = (e, key) => e.styles.has(key) || e.features.has(key);
 
 export const place = e => [flag(e.country_code), ' ', e.city];
 

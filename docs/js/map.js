@@ -4,7 +4,7 @@ import { q } from './db.js';
 import { h, euro, flag, home } from './ui.js';
 import { eventCard } from './eventcard.js';
 import { withDetails, readState, changed } from './festivals.js';
-import { mapHref, eventOnMapHref, showInAddressBar } from './routes.js';
+import { mapHref, eventOnMapHref, cityOnMapHref, showInAddressBar } from './routes.js';
 
 const WORLD = 'https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json';
 let worldGeo;            // cached across visits to the tab
@@ -38,6 +38,12 @@ export function mapView(root, sub, qs, { signal }) {
     const e = byId.get(state.event);
     state.city = cityKey(e);
     if (state.when === 'upcoming' && !e.upcoming) state.when = 'all';
+  }
+  // map/city/<country>/<city>: that city picked, with its past festivals too when none is coming up
+  const inCity = sub[0] === 'city' ? events.filter(e => e.country_code === sub[1] && e.city === decodeURIComponent(sub[2] || '')) : [];
+  if (inCity.length) {
+    state.city = cityKey(inCity[0]);
+    if (state.when === 'upcoming' && !inCity.some(e => e.upcoming)) state.when = 'all';
   }
 
   // ----- layout -----
@@ -151,7 +157,10 @@ export function mapView(root, sub, qs, { signal }) {
       if (on) m.bringToFront();
     }
   }
-  const save = () => showInAddressBar(state.event ? eventOnMapHref(state.event, changed(pick(state), DEFAULTS)) : mapHref(changed(pick(state), DEFAULTS)));
+  const save = () => {
+    const params = changed(pick(state), DEFAULTS), c = !state.event && state.city && cities.find(c => c.key === state.city);
+    showInAddressBar(state.event ? eventOnMapHref(state.event, params) : c ? cityOnMapHref(c.city, c.cc, params) : mapHref(params));
+  };
   const pick = st => Object.fromEntries(Object.keys(DEFAULTS).map(k => [k, st[k]]));
   function selectCity(key) {
     state.city = key; state.event = null; save(); highlight(); renderPanel(); setSheet(true);
@@ -221,10 +230,13 @@ export function mapView(root, sub, qs, { signal }) {
   document.addEventListener('keydown', esc, { signal });
 
   whenSel.value = state.when;
-  redraw({ fit: !state.event });            // open on every festival shown, wherever it is
+  redraw({ fit: !state.event && !inCity.length });            // open on every festival shown, wherever it is
   if (state.event) {
     const e = byId.get(state.event);
     map.setView([e.lat, e.lon], Math.max(map.getZoom(), 5));
+    setSheet(true);
+  } else if (inCity.length) {
+    map.setView([inCity[0].lat, inCity[0].lon], Math.max(map.getZoom(), 6));
     setSheet(true);
   }
   setTimeout(() => { map.invalidateSize(); lockZoom(); }, 0);

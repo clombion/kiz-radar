@@ -25,6 +25,11 @@ Beyond the festival list, the site has three ways to explore:
 - **Artists:** where each teacher and DJ is booked, leading with their upcoming festivals.
 - **Countries:** each scene's festivals coming up, the cheapest flight there, and how international its line-ups are.
 
+A search in the header (also `/` or Ctrl/⌘+K) finds festivals, artists, cities, countries, styles and highlights
+as you type, grouped by kind. A festival opens on the map and an artist on their page; a city opens on the map.
+A country, a style or a highlight narrows the festival list and keeps its time and price; when those then hide
+everything, the list offers to widen them.
+
 The footer links to an SQL page for querying the whole database.
 
 A shared link shows a preview card, `docs/share-card.png`, and the site has icons for browser tabs, bookmarks
