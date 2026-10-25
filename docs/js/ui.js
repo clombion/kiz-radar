@@ -36,6 +36,10 @@ export const monthYear = iso => MY.format(asDay(iso));            // October 202
 
 export const euro = n => n == null ? '—' : '€' + Math.round(n);
 
+// the animated mark, while something loads (index.html holds the same, for before the scripts run)
+export const loading = (text = '') => h('p', { class: 'status loading', role: 'status' },
+  h('img', { src: 'loading.svg', alt: '', width: 56, height: 56 }), h('span', {}, text || h('span', { class: 'visually-hidden' }, 'Loading')));
+
 // Flights leave from the home airport (the tier-0 airport in pipeline/airports.csv).
 export const home = () => site().home;
 

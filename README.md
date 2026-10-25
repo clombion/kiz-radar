@@ -36,7 +36,9 @@ A shared link shows a preview card, `docs/share-card.png`, and the site has icon
 and phone home screens. The card is drawn from `design/share-card.html`, with a map of the festivals coming up taken from the
 site database, and the icons from `docs/mark.svg`. The mark shows two dancers in an embrace, their bodies closing
 into a radar ring, and the favicon made from it switches colours on dark browser tabs. To redraw the PNGs after changing either, or to
-bring the card's map up to date, run `NODE_PATH="$(npm root -g)" node design/render.cjs` (it needs Playwright).
+bring the card's map up to date, run `NODE_PATH="$(npm root -g)" node design/render.cjs` (it needs Playwright). It also
+makes `docs/loading.svg`, the animated mark shown while the page loads. The fonts, Inter and Caveat, are served
+from `docs/fonts` under the SIL Open Font License (see `docs/fonts/LICENSE.md`), so they arrive with the page.
 
 ## Where the data comes from
 

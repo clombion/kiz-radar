@@ -1,6 +1,6 @@
 // The Festivals page: a sentence with blanks, festival cards below, and a sticky bar with the same choices
 // (plus "More filters") once the sentence has scrolled away.
-import { h, addDays, flag, today, home } from './ui.js';
+import { h, addDays, flag, today, home, loading } from './ui.js';
 import { site } from './db.js';
 import { festivals, readState, changed, WITH, hasWith } from './festivals.js';
 import { eventCard } from './eventcard.js';
@@ -86,7 +86,7 @@ export function sentenceView(root, qs, { signal, data }) {
   const layout = () => { fitMonths(); placeNote(); };
   const dance = h('span', { class: 'dance' }, DANCES.map(d => h('span', {}, d)));
   const n = h('span', { class: 'article-n' }, 'n');
-  const hero = h('header', { class: 'sentence-hero' },
+  const hero = h('header', { class: 'sentence-hero arriving' },
     h('p', { class: 'sentence' }, 'I want to go to a',
       h('span', { 'aria-hidden': 'true' }, n, ' ', dance), h('span', { class: 'visually-hidden' }, ' Kizomba'),
       h('br', { class: 'phone-break' }), festivalIn,
@@ -159,7 +159,7 @@ export function sentenceView(root, qs, { signal, data }) {
     withTag.hidden = !s.with;
     withTag.replaceChildren(...s.with ? ['With ', h('strong', {}, WITH.get(s.with)), ' ',
       h('button', { type: 'button', class: 'remove', 'aria-label': `Remove “${WITH.get(s.with)}”`, onclick: () => { s.with = ''; render(); } }, '×')] : []);
-    if (!all) { live.textContent = 'Looking for festivals like that…'; barCount.textContent = ''; return; }
+    if (!all) { live.textContent = 'Looking for festivals like that…'; barCount.textContent = ''; results.replaceChildren(loading()); return; }
     const rows = matches(all, s);
     // when the time and price hide everything, offer to widen just those, keeping the place and the rest
     const widened = rows.length || (s.months === 12 && !s.reach) ? 0 : matches(all, { ...s, months: 12, reach: 0 }).length;
@@ -183,7 +183,10 @@ export function sentenceView(root, qs, { signal, data }) {
     e => { live.replaceChildren(h('span', { class: 'error' }, 'Could not load the festivals: ' + e.message)); });
   const refit = () => { Object.values(sentenceBlanks).forEach(fit); layout(); };
   requestAnimationFrame(refit);                                   // and again once the web font has loaded
-  document.fonts?.ready.then(refit);
+  // The sentence fades in once its fonts are in (or after a second at most), so it is laid out once, in its own
+  // fonts, instead of jumping when they swap in.
+  Promise.race([document.fonts.ready, new Promise(done => setTimeout(done, 1000))])
+    .then(() => { if (signal.aborted) return; refit(); requestAnimationFrame(() => hero.classList.remove('arriving')); });
   addEventListener('resize', layout, { signal });
 }
 

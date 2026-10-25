@@ -2,7 +2,7 @@
 // loads alongside, and views that query it wait for it. Each view gets an AbortSignal that fires when you leave
 // it: listeners it adds to document or window pass it, so nothing outlives the view.
 import { load, loadSite, site } from './db.js';
-import { h, dayYear, monthYear, home } from './ui.js';
+import { h, dayYear, monthYear, home, loading } from './ui.js';
 import { sentenceView } from './sentence.js';
 import { mapView } from './map.js';
 import { artistsView } from './artists.js';
@@ -48,7 +48,7 @@ function route() {
   const { signal } = leave;
   if (!view.waitsForData) view.show(root, sub, qs, { signal, data });
   else {
-    root.append(h('p', { class: 'status' }, 'Loading the festival database…'));
+    root.append(loading('Loading the festival database…'));
     data.then(() => { if (!signal.aborted) { root.replaceChildren(); view.show(root, sub, qs, { signal }); } }, e => failed(root, e));
   }
   document.title = view.title ? `${view.title} · Kiz Radar` : 'Kiz Radar';

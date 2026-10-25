@@ -1,6 +1,6 @@
 // Renders docs/share-card.png from share-card.html, with the cities of the festivals coming up taken from the site
-// database, and the icons from docs/mark.svg: the favicon docs/icon.svg (the mark, in light colours on dark tabs)
-// and the PNGs.
+// database, and the icons from docs/mark.svg: the favicon docs/icon.svg (the mark, in light colours on dark tabs),
+// the animated docs/loading.svg, and the PNGs.
 //   NODE_PATH="$(npm root -g)" node design/render.cjs      (needs Playwright with Chromium, and python3)
 const { chromium } = require('playwright');
 const { execFileSync } = require('child_process');
@@ -15,6 +15,13 @@ print(json.dumps(db.execute('''select round(avg(lat), 3), round(avg(lon), 3), co
 const mark = fs.readFileSync(path.join(docs, 'mark.svg'), 'utf8');
 fs.writeFileSync(path.join(docs, 'icon.svg'), mark.replace('</style>',
   '@media (prefers-color-scheme:dark){.a{fill:#fffbf5;stroke:#fffbf5}.b{fill:#f6a9c6;stroke:#f6a9c6}}</style>'));
+// the loading mark: the sweep turns round the ring while the two dancers lean in and out
+fs.writeFileSync(path.join(docs, 'loading.svg'), mark.replace('</style>', `
+.sweep{transform-origin:32px 36px;animation:sweep 1.6s linear infinite}
+.lead,.follow{animation:lean 1.6s ease-in-out infinite}.follow{--d:-1px}.lead{--d:1px}
+@keyframes sweep{to{transform:rotate(360deg)}}
+@keyframes lean{50%{transform:translateX(var(--d))}}
+@media (prefers-reduced-motion:reduce){.sweep,.lead,.follow{animation:none}}</style>`));
 
 (async () => {
   const browser = await chromium.launch();
