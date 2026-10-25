@@ -105,11 +105,19 @@ for old, new in redirects:
     x("""insert into artist_aliases select ?, ?, 0
          where not exists (select 1 from artist_aliases where artist_id = ? and alias = ?)""", (new, old_name, new, old_name))
     x("delete from artists where id = ?", (old,))
-# a merge can leave the same artist twice in one line-up or couple
+# A name listed alone can stand for different people across festivals ("Christina"). Each row of
+# pipeline/artist_bookings.csv moves one festival's booking from the record it was filed under to the person it is.
+moves = list(csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'artist_bookings.csv'), encoding='utf-8')))
+for r in moves:
+    frm, to = key_id.get(r['from_key']), key_id.get(r['to_key'])
+    if not frm or not to: sys.exit(f"artist_bookings.csv: unknown key in {r['from_name']} → {r['to_name']}")
+    if not x("update event_artists set artist_id = ? where event_id = ? and artist_id = ?", (root(to), int(r['event_id']), root(frm))).rowcount:
+        sys.exit(f"artist_bookings.csv: {r['from_name']} is not booked at {r['event']}")
+# a merge or a moved booking can leave the same artist twice in one line-up or couple
 x("""delete from event_artists where mention_id not in (
        select min(mention_id) from event_artists group by event_id, artist_id, role)""")
 x("delete from couple_members where rowid not in (select min(rowid) from couple_members group by couple_id, member_id)")
-print(f'{len(merge_rows)} merge rows, {len(redirects)} artists folded into others')
+print(f'{len(merge_rows)} merge rows, {len(redirects)} artists folded into others, {len(moves)} bookings moved')
 
 # one casing for names across the site: "AMI & JULIEN" → "Ami & Julien", "Dj Chico" → "DJ Chico"
 renamed = [(new, i) for i, n in x("select id, display_name from artists").fetchall() if (new := tidy_name(n)) != n]

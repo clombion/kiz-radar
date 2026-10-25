@@ -115,6 +115,11 @@ The `calendar` column checks dates:
 `calendar_note` names the events behind each verdict. To decide a pair, copy its row into `artist_merges.csv` and
 fill in `decision`. Pushing the change rebuilds the site and refreshes the suggestions.
 
+A name listed on its own can stand for different people at different festivals: every solo "Christina" lands in
+one record. `pipeline/artist_bookings.csv` moves one festival's booking to the person it belongs to. Each row
+gives the `event_id`, the `from_key` it was filed under, the `to_key` of the person (both `match_key` values), and
+names and a note for people reading the file. The build stops if a key is unknown or the booking isn't there.
+
 ## Artists' home countries
 
 The site shows where an artist is from only when it is known: given in `pipeline/artist_countries.csv`, or
