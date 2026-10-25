@@ -1,7 +1,7 @@
 // The festivals the site works with, in the shape every card expects, and the small helpers the festival
 // views share.
 import { q } from './db.js';
-import { today, addDays, flag, home } from './ui.js';
+import { flag, home } from './ui.js';
 import { TRAITS, MORE_TRAITS } from './icons.js';
 import { goersOf } from './plans.js';
 
@@ -20,38 +20,14 @@ export function withDetails(rows) {
     promos = Object.fromEntries(q('SELECT event_id, code, offer FROM event_promos').map(p => [p.event_id, p]));
   }
   return rows.map(e => {
-    const depart = e.depart || e.weekend_friday, price = fares[e.airport + depart];
-    // a code is for one edition, so a likely next edition doesn't inherit it
-    const promo = e.projected ? null : promos[e.id] || null, features = new Set(e.features.split(','));
-    if (!promo) features.delete('promo_code');
-    return { ...e, depart, features, promo, goers: e.projected ? [] : goersOf(e.id), headliners: heads[e.id] || [], styles: styles[e.id] || new Set(),
+    const depart = e.weekend_friday, price = fares[e.airport + depart];
+    return { ...e, depart, features: new Set(e.features.split(',')), promo: promos[e.id] || null, goers: goersOf(e.id), headliners: heads[e.id] || [], styles: styles[e.id] || new Set(),
       fare: e.airport === home().code ? { price: 0, home: true } : price != null ? { price } : null };
   });
 }
 
-// Everything still to come, plus likely next editions: a festival whose last edition has passed suggests next
-// year's on the same weekend, unless that is already listed.
-const titleKey = t => t.toLowerCase().normalize('NFKD').replace(/[^a-z\s]/g, ' ')
-  .split(/\s+/).filter(w => w.length > 2 && !STOP.has(w)).slice(0, 3).join(' ');
-const STOP = new Set(['the', 'official', 'edition', 'event', 'festival', 'fest', 'congress', 'and', 'with', 'vol',
-  'annual', 'anniversary', 'international', 'kizomba', 'urbankiz', 'urban', 'kiz', 'weekend']);
-
-export function festivals() {
-  const from = today(), to = addDays(from, 365);
-  const all = q('SELECT * FROM event_rows WHERE cancelled IS NOT 1');
-  const upcoming = all.filter(e => e.upcoming);
-  const listed = upcoming.map(e => ({ key: titleKey(e.title), city: e.city, f: e.weekend_friday }));
-  const rows = upcoming.map(e => ({ ...e, projected: false }));
-  for (const e of all) {
-    if (e.upcoming) continue;
-    const depart = addDays(e.weekend_friday, 364);       // same weekday a year on
-    if (depart < from || depart > to) continue;
-    const k = titleKey(e.title);
-    const dup = listed.some(l => l.city === e.city && (l.key === k || Math.abs(new Date(l.f) - new Date(depart)) < 864e5 * 10 && l.key.split(' ')[0] === k.split(' ')[0]));
-    if (!dup) rows.push({ ...e, depart, projected: true });
-  }
-  return withDetails(rows);
-}
+// Everything still to come.
+export const festivals = () => withDetails(q('SELECT * FROM event_rows WHERE upcoming'));
 
 export const STYLE_NAMES = { kizomba: 'Kizomba', urbankiz: 'Urban Kiz', semba: 'Semba', tarraxo: 'Tarraxo', tarraxinha: 'Tarraxinha',
   douceur: 'Douceur', kompa: 'Kompa', zouk: 'Zouk', bachata: 'Bachata', salsa: 'Salsa', afro: 'Afro' };

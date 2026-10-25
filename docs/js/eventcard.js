@@ -9,20 +9,19 @@ import { artistHref } from './routes.js';
 import { goingLine } from './plans.js';
 
 // "23–25 Oct", or "30 Oct – 1 Nov" across a month end: the date is shown once, in the box
-function dateBox(start, end, projected) {
+function dateBox(start, end) {
   const [dd1, mm1] = dayMonth(start).split(' '), [dd2, mm2] = dayMonth(end).split(' ');
-  const likely = projected ? h('span', { class: 'likely' }, 'likely') : null;
   const yr = end.slice(0, 4) !== today().slice(0, 4) ? ' ' + end.slice(0, 4) : '';     // "Jan 2027"
-  if (mm1 !== mm2) return h('div', { class: 'datebox cross' }, likely,
+  if (mm1 !== mm2) return h('div', { class: 'datebox cross' },
     h('span', { class: 'dd' }, dd1, ' ', h('small', {}, mm1)), h('span', { class: 'dd' }, '– ', dd2, ' ', h('small', {}, mm2 + yr)));
-  return h('div', { class: 'datebox' }, likely, h('span', { class: 'dd' }, start === end ? dd1 : `${dd1}–${dd2}`), h('span', { class: 'mm' }, mm1 + yr));
+  return h('div', { class: 'datebox' }, h('span', { class: 'dd' }, start === end ? dd1 : `${dd1}–${dd2}`), h('span', { class: 'mm' }, mm1 + yr));
 }
 
 // "✈ ~€492 to Brussels, then 104 km": a Fri→Mon return from home to the nearest airport with prices, and how far
 // the festival is from it. The price links to Google Flights for that weekend.
 function flight(e) {
   if (e.cancelled) return h('p', { class: 'flight muted' }, 'This festival was cancelled.');
-  if (!e.projected && !e.upcoming) return h('p', { class: 'flight muted' }, 'This festival has taken place.');
+  if (!e.upcoming) return h('p', { class: 'flight muted' }, 'This festival has taken place.');
   if (!e.airport) return h('p', { class: 'flight muted' }, `✈ too far from ${home().city} for our flight prices`);
   if (e.fare?.home) return h('p', { class: 'flight easy' }, `In ${home().city}, no flight needed`);
   if (!e.fare) return h('p', { class: 'flight muted' }, '✈ flight not checked yet');
@@ -57,7 +56,6 @@ function smoothly(card, change, opening) {
 }
 
 export function eventCard(e, { hint = null, open = false, onMap = false } = {}) {
-  const start = e.projected ? e.depart : e.start_date, end = e.projected ? addDays(e.depart, 2) : e.end_date;
   const more = h('div', { class: 'festival-more', hidden: true });
   const toggles = [];
   const setOpen = open => {
@@ -82,9 +80,9 @@ export function eventCard(e, { hint = null, open = false, onMap = false } = {}) 
     traitItems(traits.slice(0, 3)),
     traits.length > 3 ? h('li', { class: 'more-traits' }, toggleBtn('link', `+${traits.length - 3}`)) : null) : null;
 
-  const art = h('article', { class: 'festival-card' + (e.projected ? ' projected' : '') },
+  const art = h('article', { class: 'festival-card' },
     h('div', { class: 'c-top' },
-      dateBox(start, end, e.projected),
+      dateBox(e.start_date, e.end_date),
       h('div', { class: 'c-head' },
         h('p', { class: 'where' }, place(e)),
         h('h3', {}, toggleBtn('title-btn', e.title)))),
@@ -95,7 +93,6 @@ export function eventCard(e, { hint = null, open = false, onMap = false } = {}) 
     // "Cédric & Christina are going": opens the card at the list of who's going
     goingLine(e, ev => { ev.stopPropagation(); if (more.hidden) toggle();
       setTimeout(() => art.querySelector('.who')?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 400); }),
-    e.projected ? h('p', { class: 'with muted' }, 'This year’s dates aren’t out yet.') : null,
     h('div', { class: 'foot' }, flight(e), h('div', { class: 'actions' }, toggleBtn('link', label))),
     more);
   // the whole card opens the details, except where it already holds a link or a button

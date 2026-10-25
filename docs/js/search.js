@@ -34,7 +34,7 @@ function finderParams() {
 }
 
 function buildIndex() {
-  const pool = festivals();             // what the festival list can show: upcoming and likely next editions
+  const pool = festivals();             // what the festival list can show: everything still to come
   const items = [];
   const add = (kind, name, extra, more) => items.push({ kind, name, words: words([name, ...extra].join(' ')), nameWords: words(name), ...more });
 

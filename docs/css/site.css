@@ -23,7 +23,6 @@ main { padding: 16px; max-width: 1400px; margin: 0 auto; min-height: 100svh; }  
 footer { padding: 1rem 16px 2rem; max-width: 1400px; margin: 0 auto; border-top: 1px solid var(--border); }
 .status { padding: 3rem 0; text-align: center; color: var(--muted); }
 .cards { display: flex; flex-direction: column; gap: .75rem; }
-.card.projected { border-style: dashed; }
 .card h3 { margin: .1em 0; overflow-wrap: anywhere; }
 .when { font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .03em; color: var(--accent); }
 .more { margin-top: .75rem; border-top: 1px solid var(--border); padding-top: .75rem; }
@@ -96,7 +95,6 @@ button { font: inherit; color: var(--accent-ink); border: 0; border-radius: 8px;
 .flight a { color: var(--muted); }
 .entries { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 480px), 1fr)); gap: 0 2.5rem; }
 .entry { display: grid; grid-template-columns: 3.6rem minmax(0, 1fr); gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid var(--border); }
-.entry.projected .datebox { border-style: dashed; }
 .datebox { border: 1px solid var(--text); border-radius: 6px; text-align: center; padding: .35rem 0 .3rem; align-self: start; background: var(--surface); }
 .datebox .dd { display: block; font-family: var(--font); font-size: 1.55rem; line-height: 1; font-weight: 600; }
 .datebox .mm { display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
@@ -112,7 +110,7 @@ button { font: inherit; color: var(--accent-ink); border: 0; border-radius: 8px;
 select.blank { font: inherit; letter-spacing: inherit; color: var(--accent); background: transparent; border: 0; border-bottom: 2px dashed var(--accent); border-radius: 0; padding: 0 .1em; cursor: pointer; appearance: none; -webkit-appearance: none; max-width: 100%; }
 select.blank:hover, select.blank:focus-visible { background: var(--accent-soft); outline: none; border-bottom-style: solid; }
 .sentence-hero .live a { font-weight: 600; }
-.nevermind { margin: 0; }
+.nevermind { margin: .9rem 0 0; }
 .nevermind .link { color: var(--muted); font-size: .95rem; }
 .sticky-bar { position: sticky; top: 58px; z-index: 900; margin: 0 -16px; padding: 0 16px; background: var(--bg); border-bottom: 1px solid var(--border); opacity: 0; pointer-events: none; transform: translateY(-8px); transition: opacity .15s, transform .15s; }
 .sticky-bar.shown { opacity: 1; pointer-events: auto; transform: none; }
@@ -132,12 +130,9 @@ select.mini:focus-visible, select.plain:focus-visible { outline: 2px solid var(-
 .festival-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem 1.3rem 1rem; display: flex; flex-direction: column; gap: .45rem; cursor: pointer; transition: border-color .15s, box-shadow .15s; }
 .festival-card:hover { border-color: color-mix(in srgb, var(--accent) 35%, var(--border)); box-shadow: 0 4px 16px rgb(42 31 34 / .06); }
 .festival-card.open { cursor: auto; }
-.festival-card.projected { border-style: dashed; }
 .festival-card .c-top { display: flex; gap: .9rem; align-items: flex-start; margin-bottom: .15rem; }
 .festival-card .c-head { min-width: 0; }
 .festival-card .datebox .dd { font-size: 1.15rem; white-space: nowrap; }
-.festival-card .datebox .likely { display: block; font-size: .62rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: .1rem; }
-.festival-card.projected .datebox { border-style: dashed; }
 .title-btn { all: unset; cursor: pointer; font: inherit; color: inherit; }
 .title-btn:hover { color: var(--accent); }
 .title-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
@@ -316,7 +311,7 @@ body:has(.pmap) .to-top { display: none; }
   .sentence { font-size: 1.5rem; }
   .sticky-bar { top: 54px; }
   .bar-count { display: none; }
-  .sentence-hero { padding: 1rem 0 2rem; min-height: 62vh; }
+  .sentence-hero { padding: 1rem 0 1rem; min-height: 48vh; }
   .wide-only { display: none; }
   select.mini { font-size: .85rem; min-width: 0; padding-left: .8rem; padding-right: 1.9rem; background-position: right .7rem center; }
   .bar-inner { overflow-x: auto; flex-wrap: nowrap; overflow: visible; }
@@ -482,7 +477,7 @@ html:has(dialog.search[open]) { overflow: hidden; }
 .who li { display: flex; align-items: center; gap: .45rem; }
 .plan-tag { font-size: .72rem; font-weight: 600; border-radius: 999px; padding: .05rem .5rem; background: color-mix(in srgb, var(--good) 14%, var(--surface)); color: var(--good); }
 .plan-tag.booked { background: var(--accent-soft); color: var(--accent); }
-.sentence-hero .live .friends { display: flex; align-items: center; gap: .5rem; margin-top: .45rem; }
+.sentence-hero .live .friends { display: flex; align-items: center; gap: .5rem; margin-top: .8rem; }
 .sentence-hero .live .friends b { color: var(--text); font-weight: 600; }
 .with-tag .tag { display: inline-flex; align-items: center; gap: .35rem; margin-right: .9rem; }
 .more-panel .with-tag { margin: 0 0 .8rem; flex-wrap: wrap; }
@@ -492,3 +487,9 @@ html:has(dialog.search[open]) { overflow: hidden; }
 .plan-list .what a { font-weight: 600; }
 .plan-list .goer { white-space: nowrap; }
 @media (max-width: 640px) { .plan-list li { grid-template-columns: 1fr; } .plan-list .when { grid-row: auto; } }
+@media (max-width: 640px) {
+  /* a phone shows one card at a time: give its parts room, and the cards more space between them */
+  .festival-card { gap: .7rem; padding: 1.2rem 1.15rem 1rem; }
+  .festival-card .note-artist { margin: -.25rem 0 0 .4rem; }
+  .sentence-results { padding-top: .6rem; }
+}

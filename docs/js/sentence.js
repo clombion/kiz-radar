@@ -10,8 +10,8 @@ import { festivalsHref, showInAddressBar } from './routes.js';
 
 // reach is the most a Fri→Mon return may cost; 0 is any price. with is a dance or highlight picked in the search;
 // friends keeps the festivals that featured people said they're going to.
-const DEFAULTS = { months: 6, reach: 150, country: '', with: '', friends: 0, taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0, sort: 'date' };
-const LOOSEST = { months: 12, reach: 0, country: '', with: '', friends: 0, taxi: 0, allin: 0, lineup: 0, likely: 1, unchecked: 0 };
+const DEFAULTS = { months: 6, reach: 150, country: '', with: '', friends: 0, taxi: 0, allin: 0, lineup: 0, unchecked: 0, sort: 'date' };
+const LOOSEST = { months: 12, reach: 0, country: '', with: '', friends: 0, taxi: 0, allin: 0, lineup: 0, unchecked: 0 };
 
 // Hand-drawn hints next to the blanks. Static SVG, so building it from a string is safe.
 const ARROWS = {
@@ -40,7 +40,7 @@ const ORDER = [['date', 'Soonest first'], ['fare', 'Cheapest flight first']];
 
 function matches(all, s) {
   const end = addDays(today(), Math.round(s.months * 30.4));
-  return all.filter(e => e.depart <= end && (s.likely || !e.projected) &&
+  return all.filter(e => e.depart <= end &&
       (!s.reach || (e.fare ? e.fare.price <= s.reach : s.unchecked)) &&
       (!s.country || e.country_code === s.country) && (!s.with || hasWith(e, s.with)) && (!s.friends || e.goers.some(g => g.featured)) &&
       (!s.taxi || e.taxi_dancers) && (!s.allin || e.all_in_one) &&
@@ -55,7 +55,7 @@ export function sentenceView(root, qs, { signal, data }) {
   const countries = site().destinations;
   const s = readState(qs, DEFAULTS, { months: WHEN.map(([v]) => v), reach: PRICE.map(([v]) => v),
     country: ['', ...countries.map(c => c.code)], with: ['', ...WITH.keys()], friends: FLAGS, lineup: LINEUP.map(([v]) => v), sort: ORDER.map(([v]) => v),
-    taxi: FLAGS, allin: FLAGS, likely: FLAGS, unchecked: FLAGS });
+    taxi: FLAGS, allin: FLAGS, unchecked: FLAGS });
 
   const blank = (key, opts, cls = 'blank') => {
     const el = h('select', { class: cls, 'aria-label': key }, opts.map(([v, t]) => h('option', { value: v }, t)));
@@ -122,7 +122,7 @@ export function sentenceView(root, qs, { signal, data }) {
     h('label', { class: 'field' }, h('span', {}, 'Line-up'), blank('lineup', LINEUP, 'plain')),
     h('label', { class: 'field' }, h('span', {}, 'Order'), blank('sort', ORDER, 'plain')),
     h('div', { class: 'checks' }, check('friends', 'Only festivals friends go to'), check('taxi', 'Taxi dancers'), check('allin', 'All-in-one hotel'),
-      check('likely', 'Include likely next editions'), check('unchecked', 'Include festivals whose flight isn’t checked yet')),
+      check('unchecked', 'Include festivals whose flight isn’t checked yet')),
   ];
   const panel = h('div', { class: 'more-panel', id: 'more-panel', hidden: true }, moreFields());
   moreBtn.addEventListener('click', () => { panel.hidden = !panel.hidden; moreBtn.setAttribute('aria-expanded', String(!panel.hidden)); });
@@ -170,7 +170,7 @@ export function sentenceView(root, qs, { signal, data }) {
     for (const k of ['months', 'country', 'reach']) { sentenceBlanks[k].value = String(s[k]); barBlanks[k].value = String(s[k]); fit(sentenceBlanks[k]); }
     layout();
     panel.replaceChildren(...moreFields());
-    const extra = ['with', 'friends', 'taxi', 'allin', 'lineup', 'unchecked'].filter(k => s[k] !== DEFAULTS[k]).length + (s.likely ? 0 : 1);
+    const extra = ['with', 'friends', 'taxi', 'allin', 'lineup', 'unchecked'].filter(k => s[k] !== DEFAULTS[k]).length;
     const hiddenOnPhone = +!!s.country;     // only counted where the destination lives in the panel
     moreBtn.replaceChildren(h('span', { class: 'wide' }, 'More filters'), h('span', { class: 'narrow' }, 'Filters', extra + hiddenOnPhone ? ` (${extra + hiddenOnPhone})` : ''),
       h('span', { class: 'wide' }, extra ? ` (${extra})` : ''), ' ▾');

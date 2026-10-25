@@ -40,7 +40,7 @@ function everyone(root) {
   };
   root.replaceChildren(h('article', { class: 'artist-profile people' },
     h('header', { class: 'profile-head' }, h('h1', {}, 'Who’s going where'),
-      h('p', { class: 'lede' }, 'The festivals people said they’re going to, soonest first.')),
+      h('p', { class: 'lede' }, 'The festivals people said they’re going to.')),
     events.length ? h('ul', { class: 'plan-list' }, events.map(e => h('li', {},
       h('span', { class: 'when' }, when(e)),
       h('span', { class: 'what' }, h('a', { href: eventOnMapHref(e.id) }, e.title), h('span', { class: 'muted' }, ' · ', flag(e.country_code), ' ', e.city)),

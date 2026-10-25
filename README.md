@@ -11,8 +11,7 @@ The landing page is a sentence you complete: "I want to go to a Kizomba festival
 flying from Bergen to anywhere for a cheap price." Each underlined part is a choice. Below the sentence, the
 matching festivals appear as cards. Once the sentence scrolls away, a sticky bar keeps the time and price
 choices in view, with the rest under Filters. The choices live in the URL, so a view can be bookmarked or
-shared. Festivals whose next dates aren't listed yet appear as likely next editions, on the same weekend as
-last year.
+shared.
 
 A card shows what matters before you decide: the dates, the city, the styles, up to three highlights such as
 taxi dancers or a hotel in the pass, a few names from the line-up, and the flight. The flight line reads like
