@@ -8,6 +8,10 @@ on:
   schedule:
     - cron: '17 5 3 * *'
   workflow_dispatch:
+    inputs:
+      limit:
+        description: Ask Claude about at most this many festivals (empty for all that need it)
+        required: false
 
 permissions:
   contents: write
@@ -31,9 +35,10 @@ jobs:
       - name: Ask Claude about new and changed festivals
         id: ask
         continue-on-error: true
-        run: uv run -q pipeline/extract/ask.py "$SRC"
+        run: uv run -q pipeline/extract/ask.py "$SRC" ${LIMIT:+--limit "$LIMIT"}
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          LIMIT: ${{ inputs.limit }}
       - name: Load the answers and resolve the artists
         run: |
           python3 -I pipeline/extract/load_extract.py "$SRC"
