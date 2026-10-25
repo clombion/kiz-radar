@@ -227,6 +227,13 @@ genres = collections.defaultdict(set)
 for e, g in x("select event_id, genre from event_genres"): genres[e].add(g)
 feats = collections.defaultdict(set)
 for e, f in x("select event_id, feature from event_features"): feats[e].add(f)
+# promo codes: ours, not the source's (pipeline/promo_codes.csv); a festival with one has the promo_code highlight
+x("create table event_promos (event_id integer primary key references events(id), code text not null check (code != ''), offer text)")
+for r in csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'promo_codes.csv'), encoding='utf-8')):
+    e = int(r['event_id'])
+    if not x("select 1 from events where id = ?", (e,)).fetchone(): sys.exit(f"promo_codes.csv: no event {e} ({r['event']})")
+    x("insert into event_promos values (?,?,?)", (e, r['code'].strip(), r['offer'].strip() or None))
+    feats[e].add('promo_code')
 lineups = collections.defaultdict(set)
 for e, a in x("select event_id, artist_id from event_artists where role in ('teacher','dj') and as_couple is null"): lineups[e].add(a)
 x("""create table event_stats (event_id integer primary key, lineup integer, popular_artists integer, imported integer,
@@ -277,6 +284,7 @@ DOCS = {
  'artist_countries': 'Bookings per artist and country; is_home marks the known home country in artist_stats.',
  'artist_origin': 'Countries stated next to an artist’s name in line-ups (flags or text), with how often.',
  'event_stats': 'Per event: line-up size (teachers and DJs), popular artists booked, imported artists (home country differs from the event’s), kizomba-family genres, kiz-only (no salsa or bachata), taxi dancers, all-in-one hotel.',
+ 'event_promos': 'Promo codes for a festival, from pipeline/promo_codes.csv (ours, not kizomba-world’s): the code, and what it gives when known.',
  'event_rows': 'What the site reads: each event with its event_stats, and upcoming (not over yet and not cancelled, as of the moment of the query).',
  'country_stats': 'Per country: events, kiz-only events, taxi dancers, average line-up, bookings of popular artists, share of imported artists, most common airport.',
  'countries': 'ISO 3166 codes and names.',

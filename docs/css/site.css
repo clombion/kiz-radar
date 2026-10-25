@@ -463,3 +463,9 @@ html:has(dialog.search[open]) { overflow: hidden; }
 .sentence-hero > :nth-child(n+2) { transition-delay: .12s; }
 .sentence-hero.arriving > * { visibility: hidden; opacity: 0; transform: translateY(8px); }
 @media (prefers-reduced-motion: reduce) { .sentence-hero > * { transition: none; } }
+
+/* a promo code in an opened card, and the past-festivals box in the search */
+.card-details .promo { display: flex; align-items: center; flex-wrap: wrap; gap: .4rem; margin: 0 0 .9rem; padding: .55rem .75rem; border-radius: 10px; background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.card-details .promo code { font: 700 .95rem ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .04em; color: var(--text); background: var(--surface); border: 1px dashed var(--accent); border-radius: 6px; padding: .1rem .45rem; }
+.card-details .promo .copy { margin-left: auto; }
+.search-past { display: flex; align-items: center; gap: .45rem; padding: .45rem 1rem; border-bottom: 1px solid var(--border); color: var(--muted); font-size: .88rem; cursor: pointer; }

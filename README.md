@@ -26,7 +26,7 @@ Beyond the festival list, the site has three ways to explore:
 - **Countries:** each scene's festivals coming up, the cheapest flight there, and how international its line-ups are.
 
 A search in the header (also `/` or Ctrl/⌘+K) finds festivals, artists, cities, countries, styles and highlights
-as you type, grouped by kind. A festival opens on the map and an artist on their page; a city opens on the map.
+as you type, grouped by kind. It looks at festivals still to come unless "Include past festivals" is ticked. A festival opens on the map and an artist on their page; a city opens on the map.
 A country, a style or a highlight narrows the festival list and keeps its time and price; when those then hide
 everything, the list offers to widen them.
 
@@ -121,6 +121,15 @@ A name listed on its own can stand for different people at different festivals: 
 one record. `pipeline/artist_bookings.csv` moves one festival's booking to the person it belongs to. Each row
 gives the `event_id`, the `from_key` it was filed under, the `to_key` of the person (both `match_key` values), and
 names and a note for people reading the file. The build stops if a key is unknown or the booking isn't there.
+
+## Promo codes
+
+Promo codes are ours, not kizomba-world's: `pipeline/promo_codes.csv` gives one per festival edition. Each row
+has the `event_id` (the number in the festival's kizomba-world API record; the SQL page shows it as
+`event_rows.id`), the `code`, an optional `offer` such as "10% off", and the festival's name and a note for people
+reading the file. A festival with a code gets the "Promo code" highlight, its opened card shows the code with a
+Copy button, and searching the code finds the festival. A code belongs to one edition, so next year's needs a row
+of its own. The build stops if an `event_id` isn't in the data.
 
 ## Artists' home countries
 

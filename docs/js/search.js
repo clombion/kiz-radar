@@ -12,7 +12,7 @@ import { festivalsHref, eventOnMapHref, cityOnMapHref, artistHref, artistsHref, 
 const SHOWN = 5;                      // results per group until "Show all"
 const GROUPS = [['festival', 'Festivals'], ['artist', 'Artists'], ['place', 'Places'], ['tag', 'Styles & highlights']];
 // before anything is typed: what can be searched, as things to tap
-const SUGGEST = { styles: ['salsa', 'zouk', 'bachata', 'kompa'], highlights: ['taxi', 'pool_party', 'allin'], countries: 4 };
+const SUGGEST = { styles: ['salsa', 'zouk', 'bachata', 'kompa'], highlights: ['promo_code', 'taxi', 'pool_party', 'allin'], countries: 4 };
 
 // "Łódź" and "lodz" match, and so do "Rencontres" and "rencontrés"
 const fold = s => s.normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase()
@@ -40,8 +40,8 @@ function buildIndex() {
   // festivals, coming ones first and soonest first, then past ones, latest first
   const now = today();
   for (const e of q(`SELECT r.id, r.title, x.listed_title, r.venue, r.city, r.country_code, r.start_date, r.end_date, r.upcoming,
-      r.cancelled, r.lat, x.url FROM event_rows r JOIN events x ON x.id = r.id`))
-    add('festival', e.title, [e.listed_title, e.venue || '', e.city], { e,
+      r.cancelled, r.lat, x.url, p.code FROM event_rows r JOIN events x ON x.id = r.id LEFT JOIN event_promos p ON p.event_id = r.id`))
+    add('festival', e.title, [e.listed_title, e.venue || '', e.city, e.code || ''], { e, past: !e.upcoming,
       rank: e.upcoming ? 2e9 - Date.parse(e.start_date) / 864e5 : Date.parse(e.start_date) / 864e5 });
 
   const aliases = {};
@@ -52,14 +52,14 @@ function buildIndex() {
 
   const inCountry = {};
   for (const e of pool) inCountry[e.country_code] = (inCountry[e.country_code] || 0) + 1;
-  for (const c of site().destinations) add('place', c.name, [c.code], { country: c, n: inCountry[c.code] || 0, rank: 1e6 + (inCountry[c.code] || 0) });
+  for (const c of site().destinations) add('place', c.name, [c.code], { country: c, n: inCountry[c.code] || 0, past: !inCountry[c.code], rank: 1e6 + (inCountry[c.code] || 0) });
   const cities = new Map();
   for (const e of q('SELECT city, country_code, upcoming FROM event_rows WHERE lat IS NOT NULL AND city != \'\'')) {
     const k = e.city + '|' + e.country_code;
     if (!cities.has(k)) cities.set(k, { city: e.city, cc: e.country_code, upcoming: 0, all: 0 });
     const c = cities.get(k); c.all++; c.upcoming += e.upcoming;
   }
-  for (const c of cities.values()) add('place', c.city, [], { city: c, rank: c.upcoming * 100 + c.all });
+  for (const c of cities.values()) add('place', c.city, [], { city: c, past: !c.upcoming, rank: c.upcoming * 100 + c.all });
 
   // styles and highlights narrow the festival list; taxi dancers and the all-in-one hotel use its own checkboxes
   const icons = Object.fromEntries([...TRAITS, ...MORE_TRAITS].map(([k, , svg]) => [k, svg]));
@@ -97,14 +97,18 @@ function nearest(items, query) {
 }
 
 export function initSearch(trigger, data) {
-  let items = null, query = '', expanded = new Set(), active = -1, pushed = false;
+  let items = null, query = '', expanded = new Set(), active = -1, pushed = false, withPast = false;
   const input = h('input', { type: 'text', class: 'search-input', role: 'combobox', 'aria-expanded': 'true', 'aria-controls': 'search-list',
     'aria-autocomplete': 'list', placeholder: 'Festivals, artists, places, styles…', autocomplete: 'off', spellcheck: 'false', enterkeyhint: 'go' });
   const list = h('div', { class: 'search-list', id: 'search-list', role: 'listbox', 'aria-label': 'Results' });
   const status = h('p', { class: 'visually-hidden', 'aria-live': 'polite' });
   const glass = h('span', { class: 'search-glass', 'aria-hidden': 'true' }); glass.innerHTML = trigger.querySelector('svg').outerHTML;
   const cancel = h('button', { type: 'button', class: 'search-cancel', onclick: () => shut() }, 'Cancel');
-  const dlg = h('dialog', { class: 'search', 'aria-label': 'Search' }, h('div', { class: 'search-top' }, glass, input, cancel), status, list);
+  // past festivals, and places with nothing coming up, only when asked for: what people share is what's ahead
+  const pastBox = h('input', { type: 'checkbox', onchange: () => { withPast = pastBox.checked; expanded = new Set(); render(); } });
+  const includePast = () => { pastBox.checked = withPast = true; render(); input.focus(); };
+  const dlg = h('dialog', { class: 'search', 'aria-label': 'Search' }, h('div', { class: 'search-top' }, glass, input, cancel),
+    h('label', { class: 'search-past' }, pastBox, ' Include past festivals'), status, list);
   document.body.append(dlg);
 
   const options = () => [...list.querySelectorAll('[role=option]')];
@@ -197,11 +201,20 @@ export function initSearch(trigger, data) {
       status.textContent = '';
       return highlight(-1);
     }
-    const found = items.map(it => ({ it, s: score(it, tokens, folded) })).filter(r => r.s)
+    const matched = items.map(it => ({ it, s: score(it, tokens, folded) })).filter(r => r.s)
       .sort((a, b) => b.s - a.s || b.it.rank - a.it.rank).map(r => r.it);
+    const found = matched.filter(it => withPast || !it.past);
+    const hiddenPast = withPast ? 0 : matched.filter(it => it.past && it.kind === 'festival').length;
+    const pastNote = hiddenPast ? h('p', { class: 'search-note' }, `${plural(hiddenPast, 'past festival')} ${hiddenPast === 1 ? 'matches' : 'match'} too. `,
+      h('button', { type: 'button', class: 'link', onclick: includePast }, 'Include past festivals')) : null;
     const groups = GROUPS.map(([kind, title]) => [kind, title, found.filter(it => it.kind === kind)]).filter(([, , f]) => f.length);
+    if (!groups.length && hiddenPast) {
+      list.replaceChildren(h('div', { class: 'search-none' }, h('p', {}, 'No festival coming up matches “', query.trim(), '”.'), pastNote));
+      status.textContent = 'No upcoming results';
+      return highlight(-1);
+    }
     if (!groups.length) {
-      const near = nearest(items, folded);
+      const near = nearest(items.filter(it => withPast || !it.past), folded);
       list.replaceChildren(h('div', { class: 'search-none' },
         h('p', {}, 'Nothing matches “', query.trim(), '”.'),
         near ? h('p', {}, 'Did you mean ', h('button', { type: 'button', class: 'link', onclick: () => { input.value = query = near.name; render(); input.focus(); } }, near.name), '?') : null,
@@ -210,7 +223,7 @@ export function initSearch(trigger, data) {
       status.textContent = 'No results';
       return highlight(-1);
     }
-    list.replaceChildren(...groups.map(([kind, title, f]) => group(kind, title, f, tokens)));
+    list.replaceChildren(...groups.map(([kind, title, f]) => group(kind, title, f, tokens)), ...pastNote ? [pastNote] : []);
     status.textContent = plural(found.length, 'result');
     highlight(0);                         // Enter opens the best match
   }

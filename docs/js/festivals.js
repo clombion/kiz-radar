@@ -5,7 +5,7 @@ import { today, addDays, flag, home } from './ui.js';
 import { TRAITS, MORE_TRAITS } from './icons.js';
 
 // Each row with the fare for its weekend, the best-known names on its line-up and its styles.
-let heads, styles, fares;
+let heads, styles, fares, promos;
 export function withDetails(rows) {
   if (!heads) {
     heads = {}; styles = {};
@@ -16,10 +16,14 @@ export function withDetails(rows) {
         GROUP BY ea.event_id, a.id ORDER BY ea.event_id, st.bookings DESC`)) (heads[r.event_id] ||= []).length < 3 && heads[r.event_id].push({ id: r.id, name: r.display_name });
     for (const r of q(`SELECT event_id, genre FROM event_genres WHERE source = 'description'`)) (styles[r.event_id] ||= new Set()).add(r.genre);
     fares = Object.fromEntries(q('SELECT airport || depart AS k, price FROM fares').map(f => [f.k, f.price]));
+    promos = Object.fromEntries(q('SELECT event_id, code, offer FROM event_promos').map(p => [p.event_id, p]));
   }
   return rows.map(e => {
     const depart = e.depart || e.weekend_friday, price = fares[e.airport + depart];
-    return { ...e, depart, features: new Set(e.features.split(',')), headliners: heads[e.id] || [], styles: styles[e.id] || new Set(),
+    // a code is for one edition, so a likely next edition doesn't inherit it
+    const promo = e.projected ? null : promos[e.id] || null, features = new Set(e.features.split(','));
+    if (!promo) features.delete('promo_code');
+    return { ...e, depart, features, promo, headliners: heads[e.id] || [], styles: styles[e.id] || new Set(),
       fare: e.airport === home().code ? { price: 0, home: true } : price != null ? { price } : null };
   });
 }

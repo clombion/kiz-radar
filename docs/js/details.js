@@ -20,7 +20,12 @@ export function cardDetails(e, shownTraits, close, { onMap = false } = {}) {
   const organisers = byRole.organiser || [];
   const person = p => h('a', { href: artistHref(p.id), class: 'artist' }, p.display_name);
 
+  // the code first: it's ours to give, and it's what someone opening the card for it wants
+  const copy = h('button', { type: 'button', class: 'link copy', onclick: () => navigator.clipboard?.writeText(e.promo.code)
+    .then(() => { copy.textContent = 'Copied'; setTimeout(() => { copy.textContent = 'Copy'; }, 2000); }) }, 'Copy');
   return h('div', { class: 'card-details' },
+    e.promo ? h('p', { class: 'promo' }, icon(TRAITS.find(([k]) => k === 'promo_code')[2]), 'Promo code ', h('code', {}, e.promo.code),
+      e.promo.offer ? ` · ${e.promo.offer}` : null, ' ', copy) : null,
     ROLES.filter(([r]) => byRole[r]).map(([r, label]) => h('section', { class: 'roster' },
       h('h4', {}, label, h('span', { class: 'n' }, byRole[r].length)),
       h('ul', {}, byRole[r].map(p => h('li', {}, person(p),
