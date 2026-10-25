@@ -6,6 +6,7 @@ import { TRAITS } from './icons.js';
 import { cardDetails, traitItems } from './details.js';
 import { artistHint } from './hints.js';
 import { artistHref } from './routes.js';
+import { goingLine } from './plans.js';
 
 // "23–25 Oct", or "30 Oct – 1 Nov" across a month end: the date is shown once, in the box
 function dateBox(start, end, projected) {
@@ -91,6 +92,9 @@ export function eventCard(e, { hint = null, open = false, onMap = false } = {}) 
     traitRow,
     withLine,
     withLine ? hint : null,
+    // "Cédric & Christina are going": opens the card at the list of who's going
+    goingLine(e, ev => { ev.stopPropagation(); if (more.hidden) toggle();
+      setTimeout(() => art.querySelector('.who')?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 400); }),
     e.projected ? h('p', { class: 'with muted' }, 'This year’s dates aren’t out yet.') : null,
     h('div', { class: 'foot' }, flight(e), h('div', { class: 'actions' }, toggleBtn('link', label))),
     more);

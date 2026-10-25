@@ -4,7 +4,8 @@ import { q, one } from './db.js';
 import { h, flag, countryName, dayMonth, dayYear } from './ui.js';
 import { eventCard } from './eventcard.js';
 import { withDetails, readState, changed } from './festivals.js';
-import { artistsHref, artistHref, eventOnMapHref, showInAddressBar } from './routes.js';
+import { artistsHref, artistHref, eventOnMapHref, personHref, showInAddressBar } from './routes.js';
+import { peopleOf, alsoGoingTo } from './plans.js';
 
 const PAGE = 60;
 const festivals = n => `${n} festival${n === 1 ? '' : 's'}`;
@@ -123,6 +124,9 @@ function artistPage(root, id) {
   const aliases = q('SELECT alias FROM artist_aliases WHERE artist_id = ? ORDER BY mentions DESC LIMIT 6', [id]).map(r => r.alias)
     .filter(x => x.toLowerCase() !== a.display_name.toLowerCase());
   const max = Math.max(1, ...cs.map(c => c.bookings));
+  // the festivals they said they're going to without teaching there
+  const people = peopleOf(id), goingIds = alsoGoingTo(people.map(p => p.id));
+  const going = goingIds.length ? withDetails(q(`SELECT * FROM event_rows WHERE id IN (${goingIds.map(() => '?').join(',')}) ORDER BY start_date`, goingIds)) : [];
   const person = (p, extra) => [h('a', { href: artistHref(p.id), class: 'artist' }, p.display_name), extra];
   const list = (xs, f) => xs.flatMap((x, i) => [i ? (i === xs.length - 1 ? ' and ' : ', ') : '', ...f(x)]);
 
@@ -138,6 +142,9 @@ function artistPage(root, id) {
     h('section', {}, h('h2', {}, upcoming.length ? `Coming up (${upcoming.length})` : 'Coming up'),
       upcoming.length ? h('div', { class: 'festival-cards' }, upcoming.map(e => eventCard(e)))
         : h('p', { class: 'muted' }, 'No upcoming festivals listed yet.')),
+    going.length ? h('section', {}, h('h2', {}, `Also going to (${going.length})`),
+      h('p', { class: 'muted' }, 'Where ', list(people, p => [h('a', { href: personHref(p.key) }, p.name)]), ' said they’re going, besides where they teach.'),
+      h('div', { class: 'festival-cards' }, going.map(e => eventCard(e)))) : null,
     cs.length ? h('section', {}, h('h2', {}, couples.length && a.kind !== 'couple' ? 'Where they’re booked on their own' : 'Where they’re booked'),
       h('ul', { class: 'bars' }, cs.map(c => h('li', {},
         h('span', { class: 'label' }, flag(c.country_code), ' ', countryName(c.country_code), c.is_home ? h('small', { class: 'muted' }, ' home') : null),

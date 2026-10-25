@@ -30,8 +30,10 @@ def weekend_friday(start):
     off = (4 - d.weekday()) % 7
     return (d + dt.timedelta(days=off if off <= 3 else off - 7)).isoformat()
 
-if os.path.exists(OUT): os.remove(OUT)
-out = sqlite3.connect(OUT)
+# built beside the published file and swapped in at the end, so a build that stops halfway leaves the site as it was
+BUILDING = OUT + '.building'
+if os.path.exists(BUILDING): os.remove(BUILDING)
+out = sqlite3.connect(BUILDING)
 out.execute(f"attach database 'file:{SRC}?mode=ro' as src")
 x = out.execute
 
@@ -263,6 +265,34 @@ x("""create view event_rows as
       s.taxi_dancers, s.all_in_one, s.features, e.end_date >= date('now') and e.cancelled is not 1 as upcoming
     from events e join event_stats s on s.event_id = e.id left join airports a on a.code = e.airport""")
 
+# --- who's going (pipeline/people.csv, pipeline/plans.csv) ------------------------------------------
+# People are ours, not the source's: a name, the artist records they are (if any), and whether the site names them
+# on festival cards (featured) or only counts them. A plan says a person is going to a festival; booked_as says when
+# they are in its line-up too, as themselves or in a couple, so the site can say "teaching" instead.
+x("""create table people (id integer primary key, key text not null unique, name text not null,
+     featured integer not null check (featured in (0, 1)))""")
+x("create table person_artists (person_id integer not null references people(id), artist_id integer not null references artists(id), primary key (person_id, artist_id))")
+x("""create table plans (person_id integer not null references people(id), event_id integer not null references events(id),
+     status text not null check (status in ('going')), primary key (person_id, event_id))""")
+person_id = {}
+for i, r in enumerate(csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'people.csv'), encoding='utf-8')), 1):
+    person_id[r['key']] = i
+    x("insert into people values (?,?,?,?)", (i, r['key'], r['name'], int(r['featured'])))
+    for k in filter(None, r['artist_keys'].split(';')):
+        if k not in key_id: sys.exit(f"people.csv: unknown artist key {k} ({r['name']})")
+        x("insert into person_artists values (?,?)", (i, root(key_id[k])))
+for r in csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'plans.csv'), encoding='utf-8')):
+    if r['person'] not in person_id: sys.exit(f"plans.csv: no person {r['person']} in people.csv")
+    if not x("select 1 from events where id = ?", (int(r['event_id']),)).fetchone(): sys.exit(f"plans.csv: no event {r['event_id']} ({r['event']})")
+    x("insert into plans values (?,?,?)", (person_id[r['person']], int(r['event_id']), r['status']))
+x("""create view plan_rows as
+    select p.person_id, pe.key, pe.name, pe.featured, p.event_id, p.status,
+      (select ea.role from person_artists pa join event_artists ea on ea.event_id = p.event_id and ea.as_couple is null
+         and (ea.artist_id = pa.artist_id or ea.artist_id in (select couple_id from couple_members where member_id = pa.artist_id))
+       where pa.person_id = p.person_id and ea.role in ('teacher', 'dj', 'performer', 'mc')
+       order by ea.role = 'teacher' desc limit 1) as booked_as
+    from plans p join people pe on pe.id = p.person_id""")
+
 x("create table meta (key text primary key, value text)")
 out.executemany("insert into meta values (?,?)", [
     ('home_airport', HOME), ('popular_threshold', str(POPULAR)), ('max_airport_km', str(MAX_AIRPORT_KM)),
@@ -285,6 +315,10 @@ DOCS = {
  'artist_origin': 'Countries stated next to an artist’s name in line-ups (flags or text), with how often.',
  'event_stats': 'Per event: line-up size (teachers and DJs), popular artists booked, imported artists (home country differs from the event’s), kizomba-family genres, kiz-only (no salsa or bachata), taxi dancers, all-in-one hotel.',
  'event_promos': 'Promo codes for a festival, from pipeline/promo_codes.csv (ours, not kizomba-world’s): the code, and what it gives when known.',
+ 'people': 'People who share their festival plans (pipeline/people.csv, ours): featured ones are named on festival cards, the others counted.',
+ 'person_artists': 'The artist records a person is, so their bookings and their plans meet.',
+ 'plans': 'Who said they are going to which festival (pipeline/plans.csv).',
+ 'plan_rows': 'Each plan with the person, and booked_as: their role when they are in that festival’s line-up, alone or in a couple.',
  'event_rows': 'What the site reads: each event with its event_stats, and upcoming (not over yet and not cancelled, as of the moment of the query).',
  'country_stats': 'Per country: events, kiz-only events, taxi dancers, average line-up, bookings of popular artists, share of imported artists, most common airport.',
  'countries': 'ISO 3166 codes and names.',
@@ -300,7 +334,6 @@ site = {
     'events_range': list(x("select min(start_date), max(start_date) from events").fetchone()),
     'built_at': dict(x("select key, value from meta"))['built_at'],
 }
-json.dump(site, open(os.path.join(ROOT, 'docs', 'data', 'site.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
 x("create table table_docs (name text primary key, description text)")
 out.executemany("insert or replace into table_docs values (?,?)", DOCS.items())
@@ -311,4 +344,6 @@ out.commit()
 x("detach database src")
 x("vacuum")
 out.close()
+os.replace(BUILDING, OUT)
+json.dump(site, open(os.path.join(ROOT, 'docs', 'data', 'site.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 print(OUT, os.path.getsize(OUT) // 1024, 'KB')

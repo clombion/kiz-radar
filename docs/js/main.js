@@ -8,6 +8,7 @@ import { mapView } from './map.js';
 import { artistsView } from './artists.js';
 import { sqlView } from './tables.js';
 import { countriesView } from './countries.js';
+import { personView } from './people.js';
 import { exploreHint, artistHint } from './hints.js';
 import { EXPLORE } from './routes.js';
 import { initSearch } from './search.js';
@@ -23,6 +24,7 @@ const VIEWS = {
   artists: { title: 'Artists', nav: 'explore', waitsForData: true, show: artistsView },
   countries: { title: 'Countries', nav: 'explore', waitsForData: true, show: (root, sub, qs) => countriesView(root, qs) },
   sql: { title: 'SQL', nav: null, waitsForData: true, show: root => sqlView(root) },
+  people: { title: 'Plans', nav: null, waitsForData: true, show: (root, sub) => personView(root, sub) },
 };
 const failed = (root, e) => root.replaceChildren(h('p', { class: 'status error' }, 'Could not load the data: ' + e.message));
 

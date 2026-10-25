@@ -3,6 +3,7 @@
 import { q } from './db.js';
 import { today, addDays, flag, home } from './ui.js';
 import { TRAITS, MORE_TRAITS } from './icons.js';
+import { goersOf } from './plans.js';
 
 // Each row with the fare for its weekend, the best-known names on its line-up and its styles.
 let heads, styles, fares, promos;
@@ -23,7 +24,7 @@ export function withDetails(rows) {
     // a code is for one edition, so a likely next edition doesn't inherit it
     const promo = e.projected ? null : promos[e.id] || null, features = new Set(e.features.split(','));
     if (!promo) features.delete('promo_code');
-    return { ...e, depart, features, promo, headliners: heads[e.id] || [], styles: styles[e.id] || new Set(),
+    return { ...e, depart, features, promo, goers: e.projected ? [] : goersOf(e.id), headliners: heads[e.id] || [], styles: styles[e.id] || new Set(),
       fare: e.airport === home().code ? { price: 0, home: true } : price != null ? { price } : null };
   });
 }

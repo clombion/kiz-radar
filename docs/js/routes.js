@@ -9,6 +9,7 @@ export const eventOnMapHref = (id, params) => hash(`map/event/${id}`, params);
 export const cityOnMapHref = (city, cc, params) => hash(`map/city/${cc}/${encodeURIComponent(city)}`, params);
 export const artistsHref = params => hash('artists', params);
 export const artistHref = id => hash(`artists/${id}`);
+export const personHref = key => hash(`people/${key}`);
 export const countriesHref = params => hash('countries', params);
 export const EXPLORE = [['map', 'Map', mapHref()], ['artists', 'Artists', artistsHref()], ['countries', 'Countries', countriesHref()]];
 

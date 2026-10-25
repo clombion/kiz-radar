@@ -122,6 +122,24 @@ one record. `pipeline/artist_bookings.csv` moves one festival's booking to the p
 gives the `event_id`, the `from_key` it was filed under, the `to_key` of the person (both `match_key` values), and
 names and a note for people reading the file. The build stops if a key is unknown or the booking isn't there.
 
+## Who's going
+
+People can say which festivals they're going to. For now the plans are entered by hand in two files:
+
+- `pipeline/people.csv`: one row per person, with a short `key` (used in their page's address, `#people/<key>`),
+  their `name`, the `artist_keys` they are in the line-ups (`match_key` values, separated by `;`), and `featured`.
+  Featured people are named on festival cards; the others are counted.
+- `pipeline/plans.csv`: one row per person and festival, with `status` `going` for now.
+
+A festival card then says, for example, "Cédric & Christina are going · 3 more people too", and opening it lists
+who's going. Partners who both go are named as their couple. Someone in the festival's line-up, alone or in a
+couple, shows as teaching (or playing) rather than going. Each person has a plans page with a Share button, and
+an artist's page lists the festivals they're going to without teaching there. The build stops if a person, an
+artist key or a festival is unknown.
+
+Plans are public for now: anyone can see them, so add people only with their agreement. Private sharing, friends
+and "I'm going" buttons need accounts and a server, which the site doesn't have yet.
+
 ## Promo codes
 
 Promo codes are ours, not kizomba-world's: `pipeline/promo_codes.csv` has one row per festival edition, so one

@@ -4,6 +4,7 @@ import { q } from './db.js';
 import { h, flag, countryName } from './ui.js';
 import { TRAITS, MORE_TRAITS } from './icons.js';
 import { artistHref, eventOnMapHref } from './routes.js';
+import { whoIsGoing } from './plans.js';
 
 const ROLES = [['teacher', 'Teachers'], ['dj', 'DJs'], ['performer', 'Performers'], ['mc', 'MCs']];
 const icon = svg => { const el = h('span', { class: 'ic' }); el.innerHTML = svg; return el; };
@@ -26,6 +27,7 @@ export function cardDetails(e, shownTraits, close, { onMap = false } = {}) {
   return h('div', { class: 'card-details' },
     e.promo ? h('p', { class: 'promo' }, icon(TRAITS.find(([k]) => k === 'promo_code')[2]), 'Promo code ', h('code', {}, e.promo.code),
       e.promo.offer ? ` · ${e.promo.offer}` : null, ' ', copy) : null,
+    whoIsGoing(e),
     ROLES.filter(([r]) => byRole[r]).map(([r, label]) => h('section', { class: 'roster' },
       h('h4', {}, label, h('span', { class: 'n' }, byRole[r].length)),
       h('ul', {}, byRole[r].map(p => h('li', {}, person(p),
