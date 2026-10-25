@@ -17,6 +17,7 @@ from resolve_artists import stable_ids
     ('🇳🇴 Norway – 5 900 NOK', 5900),
     ('$8.50 EVENTBRITE PROCESSING FEE', 8.5),
     ('Breakfast €9,50', 9.5),
+    ('Until March 31 155€ (310BGN)', 155),          # a date's day next to the amount
 ])
 def test_amount_found_in_quote(quote, amount):
     assert amount in prices.numbers_in(quote)

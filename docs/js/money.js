@@ -32,7 +32,7 @@ export function money(amount, from = 'EUR', { approx = false } = {}) {
   const n = convert(amount, from);
   if (n == null) return written(amount, from);
   if (from === currency) return (approx ? '~' : '') + written(n, currency);
-  return '~' + written(currency === 'NOK' ? Math.round(n / 10) * 10 : n, currency);
+  return '~' + written(currency === 'NOK' ? Math.round(n / 10) * 10 : Math.round(n), currency);
 }
 // as money(), with the amount as written in its own currency in the tooltip when it was converted
 export const moneyEl = (amount, from = 'EUR') => from === currency || convert(amount, from) == null

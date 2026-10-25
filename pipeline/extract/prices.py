@@ -11,8 +11,9 @@ NUMBER = re.compile(r'\d+(?:[ .,’\']\d{3})*(?:[.,]\d{1,2})?|\d+')
 
 
 def numbers_in(text: str) -> set[float]:
-    """Every amount the text could mean: '1.800' is 1800 (a thousands separator) and also 1.8."""
-    out = set()
+    """Every amount the text could mean: '1.800' is 1800 (a thousands separator) and also 1.8, and 'March 31 155€'
+    holds 31, 155 and 31155."""
+    out = {float(n) for n in re.findall(r'\d+', text)}
     for m in NUMBER.finditer(text):
         s = m.group(0)
         out.add(float(re.sub(r'\D', '', s)))                       # all separators are thousands
