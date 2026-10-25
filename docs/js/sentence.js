@@ -75,6 +75,13 @@ export function sentenceView(root, qs, { signal, data }) {
     label(false);
     if (!sameLine()) { label(true); if (!sameLine()) label(false); }
   };
+  // the hint under "anywhere" hangs to the right of it, or to the left where the menu ends near the edge
+  const whereNote = note('note-bottom', 'up', 'click', ' to change where');
+  const placeNote = () => {
+    whereNote.classList.remove('flip');
+    if (whereNote.getBoundingClientRect().right > hero.getBoundingClientRect().right) whereNote.classList.add('flip');
+  };
+  const layout = () => { fitMonths(); placeNote(); };
   const dance = h('span', { class: 'dance' }, DANCES.map(d => h('span', {}, d)));
   const n = h('span', { class: 'article-n' }, 'n');
   const hero = h('header', { class: 'sentence-hero' },
@@ -82,7 +89,7 @@ export function sentenceView(root, qs, { signal, data }) {
       h('span', { 'aria-hidden': 'true' }, n, ' ', dance), h('span', { class: 'visually-hidden' }, ' Kizomba'),
       h('br', { class: 'phone-break' }), festivalIn,
       sentenceBlanks.months, `, flying from ${home().city} to `,
-      h('span', { class: 'anchor' }, sentenceBlanks.country, note('note-bottom', 'up', 'click', ' to change where')),
+      h('span', { class: 'anchor' }, sentenceBlanks.country, whereNote),
       ' for ', h('span', { class: 'nowrap' }, sentenceBlanks.reach, '.'), ruler),
     note('note-inline', 'up', 'click', ' to change'),
     live,
@@ -140,7 +147,7 @@ export function sentenceView(root, qs, { signal, data }) {
   function render() {
     showInAddressBar(festivalsHref(changed(s, DEFAULTS)));
     for (const k of ['months', 'country', 'reach']) { sentenceBlanks[k].value = String(s[k]); barBlanks[k].value = String(s[k]); fit(sentenceBlanks[k]); }
-    fitMonths();
+    layout();
     panel.replaceChildren(...moreFields());
     const extra = ['taxi', 'allin', 'lineup', 'unchecked'].filter(k => s[k] !== DEFAULTS[k]).length + (s.likely ? 0 : 1);
     const hiddenOnPhone = +!!s.country;     // only counted where the destination lives in the panel
@@ -162,10 +169,10 @@ export function sentenceView(root, qs, { signal, data }) {
   render();
   data.then(() => { if (!signal.aborted) { all = festivals(); render(); } },
     e => { live.replaceChildren(h('span', { class: 'error' }, 'Could not load the festivals: ' + e.message)); });
-  const refit = () => { Object.values(sentenceBlanks).forEach(fit); fitMonths(); };
+  const refit = () => { Object.values(sentenceBlanks).forEach(fit); layout(); };
   requestAnimationFrame(refit);                                   // and again once the web font has loaded
   document.fonts?.ready.then(refit);
-  addEventListener('resize', fitMonths, { signal });
+  addEventListener('resize', layout, { signal });
 }
 
 // Each dance shows for a few seconds, then cross-fades to the next while its slot eases to the new width, so the

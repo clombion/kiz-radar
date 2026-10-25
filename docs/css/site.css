@@ -35,6 +35,7 @@ footer { padding: 1rem 16px 2rem; max-width: 1400px; margin: 0 auto; border-top:
 .travel .fare { text-align: left; max-width: none; }
 .toolbar { display: flex; flex-wrap: wrap; gap: .5rem .9rem; align-items: center; margin-bottom: .75rem; }
 .toolbar input[type=search] { flex: 1 1 200px; }
+.toolbar select { max-width: 100%; }
 .legend { display: flex; flex-wrap: wrap; gap: .3rem .8rem; font-size: .8rem; color: var(--muted); }
 .legend i { display: inline-block; width: .8em; height: .8em; border-radius: 50%; margin-right: .3em; vertical-align: -1px; }
 .split { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 1rem; height: calc(100vh - 210px); min-height: 480px; }
@@ -148,7 +149,7 @@ select.mini:focus-visible, select.plain:focus-visible { outline: 2px solid var(-
 .festival-card .actions { display: flex; justify-content: space-between; align-items: center; font-size: .88rem; border-top: 1px solid var(--border); padding-top: .5rem; margin-top: .6rem; }
 .festival-more { margin-top: .6rem; }
 .sentence .nowrap { white-space: nowrap; }
-.ruler { position: absolute; visibility: hidden; white-space: nowrap; font: inherit; color: var(--accent); padding: 0 .1em; }
+.ruler { position: absolute; left: 0; top: 0; visibility: hidden; white-space: nowrap; font: inherit; color: var(--accent); padding: 0 .1em; }
 .sentence { font-family: var(--font); font-size: clamp(1.55rem, 4vw, 2.6rem); line-height: 1.45; margin: 0; font-weight: 500; letter-spacing: -.02em; position: relative; }
 .narrow { display: none; }
 .more-btn { margin-left: auto; background: transparent; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: .3rem .85rem; font-size: .88rem; font-weight: 600; white-space: nowrap; }
@@ -158,6 +159,8 @@ select.mini:focus-visible, select.plain:focus-visible { outline: 2px solid var(-
 .note .arrow svg { display: block; width: 34px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .note-bottom { top: calc(100% + .1em); left: 35%; align-items: flex-start; }
 .note-bottom .hand { transform: translateY(.9em) rotate(2deg); }
+.note-bottom.flip { left: auto; right: 35%; flex-direction: row-reverse; }
+.note-bottom.flip .arrow { transform: scaleX(-1); }
 .note-inline { position: static; display: none; margin: .3rem 0 0 .2rem; font-size: 1.05rem; white-space: normal; align-items: flex-start; }
 .note-inline .hand { padding-top: .6rem; transform: rotate(-1.5deg); }
 .click { display: none; }
@@ -294,7 +297,7 @@ body:has(.pmap) .to-top { display: none; }
   .split { grid-template-columns: 1fr; height: auto; }
   .map { height: 52vh; }
   .panel { max-height: none; }
-  .sqlview { grid-template-columns: 1fr; }
+  .sqlview { grid-template-columns: minmax(0, 1fr); }
   .fare { text-align: left; }
   .lineup ul { columns: 1; }
   .bars li { grid-template-columns: 8rem 1fr 2rem; }
