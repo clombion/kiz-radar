@@ -150,5 +150,5 @@ function artistPage(root, id) {
           roles[e.id] && roles[e.id] !== 'teacher' ? ` · ${roles[e.id].replace(/,/g, ', ')}` : ''))))) : null,
     h('div', { class: 'profile-notes' },
       aliases.length ? h('p', {}, 'Also written as ', aliases.join(' · ')) : null,
-      a.home_country ? h('p', {}, a.home_basis === 'stated' ? 'Home country as stated in line-ups.' : 'Home country guessed from where they’re booked most.') : null)));
+      a.home_country ? h('p', {}, { given: 'Home country added by hand.', stated: 'Home country as stated in line-ups.' }[a.home_basis] || 'Home country guessed from where they’re booked most.') : null)));
 }

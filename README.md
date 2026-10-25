@@ -115,6 +115,13 @@ The `calendar` column checks dates:
 `calendar_note` names the events behind each verdict. To decide a pair, copy its row into `artist_merges.csv` and
 fill in `decision`. Pushing the change rebuilds the site and refreshes the suggestions.
 
+## Artists' home countries
+
+An artist's home country is the country stated next to their name in line-ups, when one is. Otherwise it is a
+guess: the country they are booked in most. `pipeline/artist_countries.csv` overrides both with what is known from
+elsewhere. Each row gives the source's `match_key` (as in `artist_merges.csv`), the country code, and a name and
+note for people reading the file. The artist's page says which of the three a country comes from.
+
 ## Updating the events
 
 On the 3rd of each month, the **Refresh events** Action updates the newest export in `source/` from

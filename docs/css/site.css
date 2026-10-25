@@ -219,7 +219,7 @@ a.artist:hover, a.artist:focus-visible { color: var(--accent); border-bottom-sty
 .pmap .map { height: 100%; border-radius: 14px; border: 1px solid var(--border); background: var(--sea); }
 .map-panel { display: flex; flex-direction: column; min-height: 0; }
 .sheet-handle { display: none; }
-.sheet-body { overflow-y: auto; min-height: 0; padding-right: .3rem; display: flex; flex-direction: column; gap: .8rem; }
+.sheet-body { overflow-y: auto; overscroll-behavior: contain; min-height: 0; padding-right: .3rem; display: flex; flex-direction: column; gap: .8rem; }
 .panel-head h2 { margin: 0; font-size: 1.15rem; }
 .panel-head p { margin: .2rem 0 0; color: var(--muted); font-size: .88rem; }
 .panel-cards { display: flex; flex-direction: column; gap: .8rem; }
@@ -336,6 +336,7 @@ body:has(.pmap) .to-top { display: none; }
   .pmap .map { height: calc(100dvh - 205px); min-height: 360px; margin: 0 -16px; border-radius: 0; border-width: 1px 0; }
   .map-panel { position: fixed; left: 0; right: 0; bottom: 0; z-index: 1000; height: 82dvh; background: var(--bg); border-radius: 18px 18px 0 0; box-shadow: 0 -8px 28px rgb(42 31 34 / .16); transform: translateY(calc(100% - 64px)); transition: transform .25s ease; }
   .map-panel.up { transform: none; }
+  html:has(.map-panel.up) { overflow: hidden; }          /* a swipe in the open sheet never moves the page or the map behind it */
   .sheet-handle { all: unset; display: flex; flex-direction: column; align-items: center; gap: .35rem; padding: .55rem 16px .7rem; cursor: pointer; }
   .sheet-handle .chevron svg { display: block; fill: none; stroke: var(--muted); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s ease; }
   .map-panel.up .chevron svg { transform: scaleY(-1); }
