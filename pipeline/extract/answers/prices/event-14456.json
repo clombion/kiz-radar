@@ -1,0 +1,112 @@
+{
+ "batch": "event-14456",
+ "prompt_version": "prices-v1",
+ "events": [
+  {
+   "event_id": 14456,
+   "notes": "The couple full pass price rises month by month from June to December, and only couple tickets are available.",
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "PRICE EVOLUTION FOR COUPLE FULL PASS",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 160,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "06-01",
+       "until": "06-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "160€ June"
+      },
+      {
+       "amount": 170,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "07-01",
+       "until": "07-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "170€ July"
+      },
+      {
+       "amount": 180,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "08-01",
+       "until": "08-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "180€ August"
+      },
+      {
+       "amount": 190,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "09-01",
+       "until": "09-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "190€ September"
+      },
+      {
+       "amount": 210,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "10-01",
+       "until": "10-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "210€ October"
+      },
+      {
+       "amount": 230,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "11-01",
+       "until": "11-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "230€ November"
+      },
+      {
+       "amount": 250,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "12-01",
+       "until": "12-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "250€ December"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
