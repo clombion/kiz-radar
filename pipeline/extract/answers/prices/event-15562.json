@@ -1,0 +1,15 @@
+{
+ "batch": "event-15562",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15562,
+   "passes": [],
+   "rule_quotes": [
+    "Prices increase on the 1st of each month.",
+    "Couple pass (man/woman) -20€",
+    "Duo pass (2 men) -20€"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+{
+ "batch": "event-15702",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15702,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 190,
+       "currency": "CAD",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-01-01",
+       "until": "2026-02-28",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🐓 Tier 3 Passes | $190 | Jan 1 – Feb 28, 2026"
+      },
+      {
+       "amount": 200,
+       "currency": "CAD",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-03-01",
+       "until": "2026-04-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🍗 Tier 4 Passes | $200 | Mar 1 – Apr 30, 2026"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

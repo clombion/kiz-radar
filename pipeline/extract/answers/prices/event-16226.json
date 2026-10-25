@@ -1,0 +1,58 @@
+{
+ "batch": "event-16226",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16226,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 800,
+       "currency": "SEK",
+       "alt_amount": 80,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Full pass (WS + 2 parties) – 800 SEK (80EUR)"
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 500,
+       "currency": "SEK",
+       "alt_amount": 50,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Party full pass – 500 SEK (50 EUR)"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "We only have 15 followers full pass!"
+   ]
+  }
+ ]
+}

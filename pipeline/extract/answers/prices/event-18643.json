@@ -1,0 +1,13 @@
+{
+ "batch": "event-18643",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18643,
+   "passes": [],
+   "rule_quotes": [
+    "Passes will cost more at the door."
+   ]
+  }
+ ]
+}

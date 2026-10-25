@@ -1,0 +1,13 @@
+{
+ "batch": "event-14682",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 14682,
+   "passes": [],
+   "rule_quotes": [
+    "Prices go up every 1st day of the month!"
+   ]
+  }
+ ]
+}

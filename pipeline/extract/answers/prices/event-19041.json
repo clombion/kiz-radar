@@ -1,0 +1,139 @@
+{
+ "batch": "event-19041",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 19041,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "🎟️FULL PASS | MAGIC WINTER 2026 🎟",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 60,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "10-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€60 (UNTIL OCTOBER 31)"
+      },
+      {
+       "amount": 70,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "01-15",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€70 (UNTIL JANUARY 15)"
+      },
+      {
+       "amount": 80,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "02-15",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€80 (UNTIL FEBRUARY 15)"
+      },
+      {
+       "amount": 90,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "FULL PASS: €90"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "PALMERA PLAYA PRE-PARTY",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 10,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€10"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "SATURDAY SOCIAL – HOTEL ATTICA21",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 25,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€25"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "SUNDAY SOCIAL – HOTEL ATTICA21",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 15,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€15"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

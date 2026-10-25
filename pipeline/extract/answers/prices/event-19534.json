@@ -1,0 +1,49 @@
+{
+ "batch": "event-19534",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 19534,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": "THE TRIP INCLUDES",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 1550,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": true,
+       "quote": "CURRENT PRICE: €1,550"
+      },
+      {
+       "amount": 1650,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Next price tier: €1,650."
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Prices increase in tiers based on availability."
+   ]
+  }
+ ]
+}

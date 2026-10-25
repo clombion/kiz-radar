@@ -1,0 +1,13 @@
+{
+ "batch": "event-16283",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16283,
+   "passes": [],
+   "rule_quotes": [
+    "The rest of the expenses and prices will depend on the number of attendants, and will be paid at the end of the trip."
+   ]
+  }
+ ]
+}

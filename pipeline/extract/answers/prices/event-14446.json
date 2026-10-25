@@ -1,0 +1,47 @@
+{
+ "batch": "event-14446",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 14446,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 60,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 20,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "★ EARLY BIRD £60 1st 20 peoples | SOLD OUT"
+      },
+      {
+       "amount": 65,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "★ EARLY BIRD £65"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

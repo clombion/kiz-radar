@@ -1,0 +1,58 @@
+{
+ "batch": "event-15066",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15066,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 300,
+       "currency": "PLN",
+       "alt_amount": 70,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Full Pass Follower starts with 300 pln (70 eur)"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 580,
+       "currency": "PLN",
+       "alt_amount": 137,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Couple Pass starts with 580 pln (137 eur)"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Prices will increase (1st day of every month and 15th day of every month) so do not wait and buy it now!"
+   ]
+  }
+ ]
+}

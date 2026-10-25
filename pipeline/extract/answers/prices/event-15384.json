@@ -1,0 +1,108 @@
+{
+ "batch": "event-15384",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15384,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 69,
+       "currency": "EUR",
+       "alt_amount": 350,
+       "alt_currency": "RON",
+       "from": null,
+       "until": "01-15",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Single full pass-69 Euro/ 350 lei"
+      },
+      {
+       "amount": 75,
+       "currency": "EUR",
+       "alt_amount": 380,
+       "alt_currency": "RON",
+       "from": "01-16",
+       "until": "03-01",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Single full pass-75 Euro/ 380 lei"
+      },
+      {
+       "amount": 80,
+       "currency": "EUR",
+       "alt_amount": 410,
+       "alt_currency": "RON",
+       "from": "03-01",
+       "until": "03-12",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Single full pass-80 Euro/ 410 lei"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 125,
+       "currency": "EUR",
+       "alt_amount": 635,
+       "alt_currency": "RON",
+       "from": null,
+       "until": "01-15",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Couple full pass – 125 Euro/ 635 lei"
+      },
+      {
+       "amount": 135,
+       "currency": "EUR",
+       "alt_amount": 685,
+       "alt_currency": "RON",
+       "from": "01-16",
+       "until": "03-01",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Couple full pass – 135 Euro/ 685 lei"
+      },
+      {
+       "amount": 145,
+       "currency": "EUR",
+       "alt_amount": 740,
+       "alt_currency": "RON",
+       "from": "03-01",
+       "until": "03-12",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Couple full pass – 145 Euro/ 740 lei"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

@@ -1,0 +1,460 @@
+{
+ "batch": "event-17965",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 17965,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": "🍽️ GALA DINNER + PARTY PACKAGE",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 90,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🐦 EARLY BIRD: €90"
+      },
+      {
+       "amount": 105,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️ REGULAR: €105"
+      },
+      {
+       "amount": 120,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔥 LAST MINUTE: €120"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "💃 PARTY-ONLY ENTRY",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 30,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🐦 EARLY BIRD: €30"
+      },
+      {
+       "amount": 35,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️ REGULAR: €35"
+      },
+      {
+       "amount": 40,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔥 LAST MINUTE / AT THE DOOR: €40"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 25,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️ Workshop + Social: €25"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 12,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️ Social only: €12"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 35,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️ Workshop + Social: €35"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 15,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️ Social only: €15"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "👑 ROYAL VIP FULL PASS 👑",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 149,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "💎 EARLY BIRD: €149"
+      },
+      {
+       "amount": 169,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "💎 REGULAR: €169"
+      },
+      {
+       "amount": 189,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "💎 LAST MINUTE: €189"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "🥂 ROYAL SILVER PACK",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 105,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🐦 €115 → €105 (-€10)"
+      },
+      {
+       "amount": 119,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️ €130 → €119 (-€11)"
+      },
+      {
+       "amount": 130,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔥 €145 → €130 (-€15)"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": "💃 PARTY SILVER PACK",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 38,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🐦 €42 → €38 (-€4)"
+      },
+      {
+       "amount": 42,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️ €47 → €42 (-€5)"
+      },
+      {
+       "amount": 46,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔥 €52 → €46 (-€6)"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "🥇 ROYAL GOLD PACK",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 112,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🐦 €125 → €112 (-€13)"
+      },
+      {
+       "amount": 126,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️ €140 → €126 (-€14)"
+      },
+      {
+       "amount": 139,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔥 €155 → €139 (-€16)"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": "🔥 GOLD PARTY PACK",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 40,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🐦 €45 → €40 (-€5)"
+      },
+      {
+       "amount": 44,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️ €50 → €44 (-€6)"
+      },
+      {
+       "amount": 48,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔥 €55 → €48 (-€7)"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": "💎 SBK WEEKEND PACK",
+     "group_size": 1,
+     "days": 2,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 49,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️ PACK: €49"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "📅 Booking deadline: Dec 25, 2026"
+   ]
+  }
+ ]
+}

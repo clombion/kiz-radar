@@ -1,0 +1,300 @@
+{
+ "batch": "event-18977",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18977,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "▪️FULL PASS",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 150,
+       "currency": "EUR",
+       "alt_amount": 57000,
+       "alt_currency": "HUF",
+       "from": null,
+       "until": "09-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€150 / 57.000 Ft until 30 September"
+      },
+      {
+       "amount": 160,
+       "currency": "EUR",
+       "alt_amount": 61000,
+       "alt_currency": "HUF",
+       "from": null,
+       "until": "11-05",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€160 / 61.000 Ft until 5 November"
+      },
+      {
+       "amount": 170,
+       "currency": "EUR",
+       "alt_amount": 65000,
+       "alt_currency": "HUF",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "€170 / 65.000 Ft at the door"
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "label_quote": "▪️SOCIAL PARTY PASS",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 115,
+       "currency": "EUR",
+       "alt_amount": 44000,
+       "alt_currency": "HUF",
+       "from": null,
+       "until": "09-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€115 / 44.000 Ft until 30 September"
+      },
+      {
+       "amount": 120,
+       "currency": "EUR",
+       "alt_amount": 46000,
+       "alt_currency": "HUF",
+       "from": null,
+       "until": "11-05",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€120 / 46.000 Ft until 5 November"
+      },
+      {
+       "amount": 125,
+       "currency": "EUR",
+       "alt_amount": 48000,
+       "alt_currency": "HUF",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "€125 / 48.000 Ft at the door"
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "label_quote": "▪️PARTY PASS",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 85,
+       "currency": "EUR",
+       "alt_amount": 33000,
+       "alt_currency": "HUF",
+       "from": null,
+       "until": "09-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€85 / 33.000 Ft until 30 September"
+      },
+      {
+       "amount": 90,
+       "currency": "EUR",
+       "alt_amount": 35000,
+       "alt_currency": "HUF",
+       "from": null,
+       "until": "11-05",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€90 / 35.000 Ft until 5 November"
+      },
+      {
+       "amount": 95,
+       "currency": "EUR",
+       "alt_amount": 37000,
+       "alt_currency": "HUF",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "€95 / 37.000 Ft at the door"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "FRIDAY",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 50,
+       "currency": "EUR",
+       "alt_amount": 20000,
+       "alt_currency": "HUF",
+       "from": null,
+       "until": "09-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€50 / 20.000 Ft until 30 September"
+      },
+      {
+       "amount": 55,
+       "currency": "EUR",
+       "alt_amount": 22000,
+       "alt_currency": "HUF",
+       "from": null,
+       "until": "11-05",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€55 / 22.000 Ft until 5 November"
+      },
+      {
+       "amount": 60,
+       "currency": "EUR",
+       "alt_amount": 24000,
+       "alt_currency": "HUF",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "€60 / 24.000 Ft at the door"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "SATURDAY",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 55,
+       "currency": "EUR",
+       "alt_amount": 22000,
+       "alt_currency": "HUF",
+       "from": null,
+       "until": "09-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€55 / 22.000 Ft until 30 September"
+      },
+      {
+       "amount": 60,
+       "currency": "EUR",
+       "alt_amount": 24000,
+       "alt_currency": "HUF",
+       "from": null,
+       "until": "11-05",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€60 / 24.000 Ft until 5 November"
+      },
+      {
+       "amount": 65,
+       "currency": "EUR",
+       "alt_amount": 26000,
+       "alt_currency": "HUF",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "€65 / 26.000 Ft at the door"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "SUNDAY",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 50,
+       "currency": "EUR",
+       "alt_amount": 20000,
+       "alt_currency": "HUF",
+       "from": null,
+       "until": "09-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€50 / 20.000 Ft until 30 September"
+      },
+      {
+       "amount": 55,
+       "currency": "EUR",
+       "alt_amount": 22000,
+       "alt_currency": "HUF",
+       "from": null,
+       "until": "11-05",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€55 / 22.000 Ft until 5 November"
+      },
+      {
+       "amount": 60,
+       "currency": "EUR",
+       "alt_amount": 24000,
+       "alt_currency": "HUF",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "€60 / 24.000 Ft at the door"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

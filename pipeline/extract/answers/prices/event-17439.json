@@ -1,0 +1,108 @@
+{
+ "batch": "event-17439",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 17439,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 65,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "01-09",
+       "quantity": 15,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️FULL PASS: 65€!!"
+      },
+      {
+       "amount": 80,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "01-10",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️FULL PASS: 80€"
+      },
+      {
+       "amount": 90,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": true,
+       "quote": "🎟️FULL PASS: 90€"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 120,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "01-09",
+       "quantity": 15,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️COUPLE PASS M/F: 120€!!"
+      },
+      {
+       "amount": 150,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "01-10",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️COUPLE PASS M/F: 150€"
+      },
+      {
+       "amount": 170,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": true,
+       "quote": "🎟️COUPLE PASS M/F: 170€"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

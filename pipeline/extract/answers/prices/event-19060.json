@@ -1,0 +1,186 @@
+{
+ "batch": "event-19060",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 19060,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "Bachata Full Pass",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 100,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "Blind Pass – 100€ (sold out)"
+      },
+      {
+       "amount": 110,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "Black Friday Pass – 110€ (sold out)"
+      },
+      {
+       "amount": 130,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "05-01",
+       "quantity": 50,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Early Bird Pass – 130€ (50 or till May 1st)"
+      },
+      {
+       "amount": 160,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "08-15",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Summer Bird Pass – 160€ (till Aug 15th)"
+      },
+      {
+       "amount": 170,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "10-01",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Fall Bird Pass – 170€ (Till October 1st)"
+      },
+      {
+       "amount": 180,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Full Pass – 180€ (Till Festival)"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "Kizomba Full Pass",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 100,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "Blind Pass – 100€ (Sold out)"
+      },
+      {
+       "amount": 110,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "Black Friday Pass – 110€ (sold out)"
+      },
+      {
+       "amount": 130,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "05-01",
+       "quantity": 50,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Early Bird Pass – 130€ (50 or till May 1st)"
+      },
+      {
+       "amount": 145,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "08-15",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Summer Bird Pass – 145€ (till Aug 15th)"
+      },
+      {
+       "amount": 150,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "10-01",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Fall Bird Pass 150€ (Till October 1st)"
+      },
+      {
+       "amount": 160,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Full Pass – 160€ (Till Festival)"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

@@ -1,0 +1,86 @@
+{
+ "batch": "event-16379",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16379,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "✳️BOOKING YOUR PASS✳️",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 90,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-02-14",
+       "quantity": 50,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔴First 50 full passes for ONLY £90 until 14th February 2026 OR when the first 50 are sold out🔥"
+      },
+      {
+       "amount": 110,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-05-01",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔴£110 until 1st May 2026"
+      },
+      {
+       "amount": 120,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-06-01",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔴£120 until 1st June 2026"
+      },
+      {
+       "amount": 130,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-07-01",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔴£130 until 1st July 2026"
+      },
+      {
+       "amount": 140,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔴£140 on the door (subject to availability)"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

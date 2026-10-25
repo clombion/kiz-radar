@@ -1,0 +1,36 @@
+{
+ "batch": "event-19465",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 19465,
+   "passes": [
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 10,
+       "currency": "USD",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "💸 US$10 at the door — completely FREE for VLX participants!"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "completely FREE for VLX participants!"
+   ]
+  }
+ ]
+}

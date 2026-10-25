@@ -1,0 +1,152 @@
+{
+ "batch": "event-16620",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16620,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 230,
+       "currency": "NZD",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-02-25",
+       "quantity": 20,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "FULL PASS – Single(Includes all parties & workshops – Excludes Masterclasses) $230.00"
+      },
+      {
+       "amount": 295,
+       "currency": "NZD",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "07-01",
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "FULL PASS – Single (Includes all parties & workshops – Excludes Masterclasses) $295.00"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 450,
+       "currency": "NZD",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-02-25",
+       "quantity": 20,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "FULL PASS – Couple (Exclusive to a Lead & Follow) $450.00"
+      },
+      {
+       "amount": 560,
+       "currency": "NZD",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "07-01",
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "FULL PASS – Couple (Exclusive to a Lead & Follow) $560"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 320,
+       "currency": "NZD",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-02-25",
+       "quantity": 20,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "MASTER PASS (Includes all parties, workshops & Masterclasses) $320"
+      },
+      {
+       "amount": 400,
+       "currency": "NZD",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "07-01",
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "MASTER PASS (Includes all parties, workshops & Masterclasses) $400"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": null,
+     "group_size": 2,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 620,
+       "currency": "NZD",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-02-25",
+       "quantity": 20,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "MASTER PASS – Couple (Exclusive to a Lead & Follow) $620"
+      },
+      {
+       "amount": 780,
+       "currency": "NZD",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "07-01",
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "MASTER PASS – Couple (Exclusive to a Lead & Follow) $780"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

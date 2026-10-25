@@ -1,0 +1,62 @@
+{
+ "batch": "event-16364",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16364,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "FULL PASS PRICES (ONLY 150 FULL PASSES AVAILABLE)",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 59,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 50,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "50 FULL PASSES €59"
+      },
+      {
+       "amount": 69,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 50,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "50 FULL PASSES €69"
+      },
+      {
+       "amount": 79,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 50,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "50 FULL PASSES €79"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "The first 50 FULL PASSES are available at the special price of €59!!!!"
+   ]
+  }
+ ]
+}

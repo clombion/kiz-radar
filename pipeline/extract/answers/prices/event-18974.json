@@ -1,0 +1,56 @@
+{
+ "batch": "event-18974",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18974,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 1050,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "✨ **1 WEEK – 1,050 €**"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 2000,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "✨ **2 WEEKS – 2,000 €**"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

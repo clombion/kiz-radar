@@ -1,0 +1,196 @@
+{
+ "batch": "event-19033",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 19033,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "Full Pass",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 1500,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "1500 nok"
+      },
+      {
+       "amount": 1400,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "08-01",
+       "until": "09-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🌖 1400 nok – fr 01.Ago-30.Sep"
+      },
+      {
+       "amount": 1500,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "10-01",
+       "until": "11-20",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🌕 1500 nok – fr 01.Oct-20.Nov"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "Couple Full Pass (lead+follow)",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 2400,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "06-01",
+       "until": "09-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🌘 2400 nok – fr 01.jun-30.Sep"
+      },
+      {
+       "amount": 2800,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "10-01",
+       "until": "11-20",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🌖 2800 nok – fr 01.Oct-20.Nov"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": "Full Pass if you come from abroad *",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 1100,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "06-01",
+       "until": "09-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🌘 1100 nok – fr 01.Jun-30.Sep"
+      },
+      {
+       "amount": 1400,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "10-01",
+       "until": "11-20",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🌖 1400 nok – fr 01.Oct-20.Nov"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "20.Nov Friday PARTY",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 220,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "220 kr at the door (with or without workshop)"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "21.Nov Saturday PARTY",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 260,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "260 kr at the door (with or without workshop)"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "22.Nov Sunday SOCIAL",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 120,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "120 kr at the door"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

@@ -1,0 +1,62 @@
+{
+ "batch": "event-16069",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16069,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "🎟️ TICKETS ON SALE",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 50,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 10,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "⚡ EARLY BIRD: €50 (first 10 tickets only)"
+      },
+      {
+       "amount": 65,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔥 Online price (sliding scale): €65"
+      },
+      {
+       "amount": 140,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "🚪 Price at the door: €140"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "The longer you wait, the more you pay 🚨‼️"
+   ]
+  }
+ ]
+}

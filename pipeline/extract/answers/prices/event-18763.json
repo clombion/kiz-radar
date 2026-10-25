@@ -1,0 +1,144 @@
+{
+ "batch": "event-18763",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18763,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "FESTIVAL FULL PASS",
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 134,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€134"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "FESTIVAL FULL PASS",
+     "group_size": 2,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 194,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€194"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": "MASTER TRAINING",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 250,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€250"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": "MASTER TRAINING",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 450,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€450"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": "FULL EXPERIENCE",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 360,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€360"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": "FULL EXPERIENCE",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 515,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€515"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

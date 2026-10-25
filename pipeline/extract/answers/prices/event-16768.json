@@ -1,0 +1,80 @@
+{
+ "batch": "event-16768",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16768,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": "FULLPASS",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 1390,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "✪ FULLPASS : hotel accomodation + airport pick-up/drop-off + excursions & transportation + festival pass & préparties/surprises : 1390€"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "EXCURSIONS (from 26Oct to 30Oct )",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 525,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "10-26",
+       "until": "10-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "✪ EXCURSIONS (from 26Oct to 30Oct ) : includes excursions and transportation : 525€"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "Dance Pass",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 92.99,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "10-31",
+       "until": "11-02",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "From 31 oct to 02 November : 92,99€"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "NB: includes all except flight ticket, food and hotel tax (~2€/night)"
+   ]
+  }
+ ]
+}

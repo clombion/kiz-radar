@@ -1,0 +1,82 @@
+{
+ "batch": "event-18222",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18222,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 110,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "👉🏼𝗦𝗜𝗡𝗚𝗟𝗘 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 𝟭𝟭𝟬€ 👈🏼"
+      },
+      {
+       "amount": 115,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "08-10",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "10 Agosto 115€"
+      },
+      {
+       "amount": 120,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "09-10",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "10 Settembre 120€"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 200,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "👉🏼𝗖𝗢𝗨𝗣𝗟𝗘 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 𝟮𝟬𝟬€ 👈🏼"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

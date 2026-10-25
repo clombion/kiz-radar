@@ -1,0 +1,69 @@
+{
+ "batch": "event-15442",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15442,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 100,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 30,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "30 Full Passes for Couples (One Man + One Woman) at €100"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 65,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 30,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "30 Full Passes for Women (Followers) at €65"
+      },
+      {
+       "amount": 65,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 30,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "30 Full Passes for Men (Leaders) at €65"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

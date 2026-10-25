@@ -1,0 +1,58 @@
+{
+ "batch": "event-15858",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15858,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 79,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "01-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "👉 Full Pass: 79€"
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 49,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "01-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "👉 Party Pass: 49€"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Prices increase every month — don’t wait to secure your pass!"
+   ]
+  }
+ ]
+}

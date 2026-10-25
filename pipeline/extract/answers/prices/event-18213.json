@@ -1,0 +1,38 @@
+{
+ "batch": "event-18213",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18213,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 10,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 1300,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "★ 𝐓𝐫𝐢𝐩 𝐂𝐨𝐬𝐭: €𝟏,𝟑𝟎𝟎"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "€𝟑𝟎𝟎 – 𝐃𝐞𝐚𝐝𝐥𝐢𝐧𝐞: 𝐍𝐨𝐯𝐞𝐦𝐛𝐞𝐫 𝟑𝟎, 𝟐𝟎𝟐𝟓",
+    "€𝟓𝟎𝟎 – 𝐃𝐞𝐚𝐝𝐥𝐢𝐧𝐞: 𝐀𝐩𝐫𝐢𝐥 𝟐𝟖, 𝟐𝟎𝟐𝟔",
+    "€𝟓𝟎𝟎 – 𝐃𝐞𝐚𝐝𝐥𝐢𝐧𝐞: 𝐒𝐞𝐩𝐭𝐞𝐦𝐛𝐞𝐫 𝟏𝟖, 𝟐𝟎𝟐𝟔 (Due on arrival in Angola – in Cash)"
+   ]
+  }
+ ]
+}

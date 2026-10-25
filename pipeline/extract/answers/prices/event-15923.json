@@ -1,0 +1,69 @@
+{
+ "batch": "event-15923",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15923,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "Full Pass: classes and events.",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 700,
+       "currency": "PLN",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "06-19",
+       "until": "06-30",
+       "quantity": 20,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Up to 20 couples, PLN 700 per couple"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "Full Pass: classes and events.",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 350,
+       "currency": "PLN",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "06-19",
+       "until": "06-30",
+       "quantity": 10,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Up to 10 followers, PLN 350"
+      },
+      {
+       "amount": 350,
+       "currency": "PLN",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "06-19",
+       "until": "06-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Leader, PLN 350 (unlimited number)"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

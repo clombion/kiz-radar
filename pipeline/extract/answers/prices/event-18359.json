@@ -1,0 +1,152 @@
+{
+ "batch": "event-18359",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18359,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 65,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "– FULL PASS 𝑆𝑜𝑙𝑜 ………….. 65€ ✅"
+      },
+      {
+       "amount": 60,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "– FULL PASS 𝑆𝑜𝑙𝑜 ………….. 60€ ❌"
+      },
+      {
+       "amount": 55,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "– FULL PASS 𝑆𝑜𝑙𝑜 ………….. 55€ ❌"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 120,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "– FULL PASS 𝐷𝑢𝑜 𝑚𝑖𝑥𝑡𝑒 ….120€ ✅"
+      },
+      {
+       "amount": 110,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "– FULL PASS 𝐷𝑢𝑜 𝑚𝑖𝑥𝑡𝑒 ….110€ ❌"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 110,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "– FULL PASS 𝐷𝑢𝑜 𝑚𝑒𝑛….110€ ✅"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 50,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 10,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "– 10 EARLY BIRD 𝐿𝑒𝑎𝑑𝑒𝑟 … 50€ ❌"
+      },
+      {
+       "amount": 50,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 10,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "– 10 EARLY BIRD 𝐹𝑜𝑙𝑙𝑜𝑤 …. 50€ ❌"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

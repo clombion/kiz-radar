@@ -1,0 +1,56 @@
+{
+ "batch": "event-17489",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 17489,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "Full Pass (workshops, social dance & party)",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 65,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "– Solo: €65 (advance sale)"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "Full Pass (workshops, social dance & party)",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 110,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "– Couple: €110 (advance sale)"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

@@ -1,0 +1,56 @@
+{
+ "batch": "event-14451",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 14451,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 90,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Full Pass Price for the month of July ▶️ €90"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": "The ▪️VIP Pass▪️",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 110,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Full Pass Price for the month of July ▶️ €110"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

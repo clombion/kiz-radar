@@ -1,0 +1,17 @@
+{
+ "batch": "event-18716",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18716,
+   "passes": [],
+   "rule_quotes": [
+    "PHASE 1 PRICE TILL – 12 JUL. 2026",
+    "PHASE 2 PRICE TILL – 13 SEPT. 2026",
+    "DOOR PRICE FROM – MORE COMING SOON",
+    "Passes will cost more at the door",
+    "Name change fee € 12,50 excl. costs"
+   ]
+  }
+ ]
+}

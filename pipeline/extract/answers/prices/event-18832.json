@@ -1,0 +1,114 @@
+{
+ "batch": "event-18832",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18832,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "FULL PASS Pricing:",
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 290,
+       "currency": "PLN",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "290 PLN/person – sold out"
+      },
+      {
+       "amount": 320,
+       "currency": "PLN",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 10,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "320 PLN/person (10 couples) – sold out"
+      },
+      {
+       "amount": 350,
+       "currency": "PLN",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "09-01",
+       "until": "11-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "350 PLN/person – September/October/November"
+      },
+      {
+       "amount": 380,
+       "currency": "PLN",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "12-01",
+       "until": "01-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "380 PLN/person – December/January"
+      },
+      {
+       "amount": 410,
+       "currency": "PLN",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "02-01",
+       "until": "02-28",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "410 PLN/person – February"
+      },
+      {
+       "amount": 430,
+       "currency": "PLN",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "03-01",
+       "until": "03-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "430 PLN/person – March"
+      },
+      {
+       "amount": 450,
+       "currency": "PLN",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "450 PLN/person – at the door"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Don’t wait until the line-up is revealed and prices go up."
+   ]
+  }
+ ]
+}

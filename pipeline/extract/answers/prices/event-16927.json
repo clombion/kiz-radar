@@ -1,0 +1,34 @@
+{
+ "batch": "event-16927",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16927,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 3000,
+       "currency": "THB",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎫 Early Bird 3,000 THB only‼️"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

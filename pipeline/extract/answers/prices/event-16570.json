@@ -1,0 +1,172 @@
+{
+ "batch": "event-16570",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16570,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 179,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 20,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "⭕ Accommodation + Welcome Drink + Full Pass = €179"
+      },
+      {
+       "amount": 189,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 30,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "⭕ ⭕ Accommodation + Welcome Drink + Full Pass = €189"
+      },
+      {
+       "amount": 199,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 40,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "⭕ ⭕ ⭕ Accommodation + Welcome Drink + Full Pass = €199"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 80,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "⭐⭐ Full Pass (Access (All classes + Friday and Saturday evenings) = €80"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 60,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "⭐⭐ Full Saturday Pass (Access to all Saturday classes + evening) = €60"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 2,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 25,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "⭕ ⭕ ⭕ ⭕ Evening Pass (Friday + Saturday) = €25"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 15,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "⭕ ⭕ ⭕ ⭕ Friday Evening = €15"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 15,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "⭕ ⭕ ⭕ ⭕ Saturday Evening = €15"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Option to book a studio for one person for an additional €90"
+   ]
+  }
+ ]
+}

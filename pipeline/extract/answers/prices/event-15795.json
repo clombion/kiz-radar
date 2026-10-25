@@ -1,0 +1,190 @@
+{
+ "batch": "event-15795",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15795,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 100,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️Fullpass: 100€"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 50,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🛥️Boat Party: 50€"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "🟦 PACKAGES (Full pass+hotel+boat party) 🟦",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 630,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "2 people: 315€ per person (630€ total)"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "🟦 PACKAGES (Full pass+hotel+boat party) 🟦",
+     "group_size": 4,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 1096,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "4 people: 274€ per person (1096€ total)"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "🟦 PACKAGES (Full pass+hotel+boat party) 🟦",
+     "group_size": 6,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 1524,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "6 people: 254€ per person (1524€ total)"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "🟦 PACKAGES (Full pass+hotel+boat party) 🟦",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 770,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "2 people: 385€ per person (770€ total)"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "🟦 PACKAGES (Full pass+hotel+boat party) 🟦",
+     "group_size": 4,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 1392,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "4 people: 348€ per person (1392€ total)"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "🟦 PACKAGES (Full pass+hotel+boat party) 🟦",
+     "group_size": 6,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 1932,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "6 people: 322€ per person (1932€ total)"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Price increases every 3 months"
+   ]
+  }
+ ]
+}

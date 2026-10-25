@@ -1,0 +1,123 @@
+{
+ "batch": "event-16643",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16643,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "🕺🏾💃Single pass",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 800,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2025-12-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Super early bird until 31.12.25: 800 NOK"
+      },
+      {
+       "amount": 900,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-01-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Early bird until 31.01.26: 900 NOK"
+      },
+      {
+       "amount": 1200,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-04-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Late bird until 30.04.26: 1200 NOK"
+      },
+      {
+       "amount": 1600,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-06-06",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Dead bird until 06.06.26: 1600 NOK"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "👫Couples pass",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 1700,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-01-01",
+       "until": "2026-01-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Early bird from 01.01-31.01.26: 1700 NOK"
+      },
+      {
+       "amount": 2200,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-02-01",
+       "until": "2026-04-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Late bird from 01.02-30.04.26: 2200 NOK"
+      },
+      {
+       "amount": 2900,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-06-06",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Dead bird until 06.06.26: 2900 NOK"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "There is no discount on early bird tickets."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,104 @@
+{
+ "batch": "event-17105",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 17105,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "🎟 Full Pass",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 69,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 10,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔥 Early Bird – 69€ (10 Tickets)"
+      },
+      {
+       "amount": 89,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 20,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "✨ Regular – 89€ (20 Tickets)"
+      },
+      {
+       "amount": 99,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 10,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "⚡ Late – 99€ (10 Tickets)"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "🎉 Party Tickets",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 10,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Freitag – 10€"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "🎉 Party Tickets",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 15,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Samstag Prime Night – 15€"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+{
+ "batch": "event-18327",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18327,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 1399,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "💰 1399€ (vol + hébergement + full pass inclus)"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

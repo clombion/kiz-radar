@@ -1,0 +1,84 @@
+{
+ "batch": "event-15557",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15557,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 950,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "💥 Leader – 950kr– SOLD OUT"
+      },
+      {
+       "amount": 1200,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "💥 Leader – 1200kr– AVAILABLE"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 1800,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "💥 Couple Pass – 1800kr— SOLD OUT"
+      },
+      {
+       "amount": 2400,
+       "currency": "NOK",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "💥 Couple Pass – 2400kr— AVAILABLE"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Grab yours before prices go up!"
+   ]
+  }
+ ]
+}

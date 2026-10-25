@@ -1,0 +1,102 @@
+{
+ "batch": "event-16543",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16543,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 2,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 70,
+       "currency": "EUR",
+       "alt_amount": 350,
+       "alt_currency": "RON",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎫 FULL PASS (Fri & Sat: Workshops + Parties) — 70 € / 350 RON"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 60,
+       "currency": "EUR",
+       "alt_amount": 300,
+       "alt_currency": "RON",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎫 SATURDAY DAY PASS (Workshops + Party) — 60 € / 300 RON"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 16,
+       "currency": "EUR",
+       "alt_amount": 80,
+       "alt_currency": "RON",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎫 SATURDAY PARTY PASS (Party Only) — 16 € / 80 RON"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 12,
+       "currency": "EUR",
+       "alt_amount": 60,
+       "alt_currency": "RON",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎫 FRIDAY PARTY PASS (Party and workshop offered) — 12 € / 60 RON"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Pass transfers involve a fee of 10 €"
+   ]
+  }
+ ]
+}

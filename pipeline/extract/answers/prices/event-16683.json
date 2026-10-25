@@ -1,0 +1,36 @@
+{
+ "batch": "event-16683",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16683,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 4,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 295,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️ Full Pass – from €295 / person*"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Prices increase over time"
+   ]
+  }
+ ]
+}

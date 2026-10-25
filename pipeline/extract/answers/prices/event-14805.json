@@ -1,0 +1,141 @@
+{
+ "batch": "event-14805",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 14805,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "*Ticket Pricing:*",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 70.0,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "03-01",
+       "until": "03-31",
+       "quantity": 50,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "⏱️ March: €70.00"
+      },
+      {
+       "amount": 80.0,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "04-01",
+       "until": "04-30",
+       "quantity": 50,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "✅ April: €80.00"
+      },
+      {
+       "amount": 90.0,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "05-01",
+       "until": "05-31",
+       "quantity": 50,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "✅ May: €90.00"
+      },
+      {
+       "amount": 100.0,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "06-01",
+       "until": "09-30",
+       "quantity": 50,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "✅ June – September**: €100.00"
+      },
+      {
+       "amount": 110.0,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "10-01",
+       "until": "10-31",
+       "quantity": 50,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "✅ October: €110.00"
+      },
+      {
+       "amount": 120.0,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "11-01",
+       "until": "11-30",
+       "quantity": 50,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "✅ November: €120.00"
+      },
+      {
+       "amount": 130.0,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "12-01",
+       "until": "12-31",
+       "quantity": 50,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "✅ December: €130.00"
+      },
+      {
+       "amount": 140.0,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "01-01",
+       "until": "01-31",
+       "quantity": 50,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "✅ January: €140.00"
+      },
+      {
+       "amount": 150.0,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "02-01",
+       "until": "02-28",
+       "quantity": 50,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "✅ February: €150.00"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Ticket prices will increase as we approach the event, so make sure to grab yours early!",
+    "Only 50 tickets available each month, so act fast!"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,173 @@
+{
+ "batch": "event-14947",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 14947,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "FULL PASS",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 70,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔘 €70 // EARLY BIRDS"
+      },
+      {
+       "amount": 80,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "10-01",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔘 €80 // until Oct 1st"
+      },
+      {
+       "amount": 90,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "10-01",
+       "until": "11-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔘 €90 // Oct 1st to Nov 30th"
+      },
+      {
+       "amount": 100,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "12-01",
+       "until": "01-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔘 €100 // Dec 1st to Jan 31st"
+      },
+      {
+       "amount": 110,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "02-01",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔘 €110 // Feb 1st > until sold out"
+      },
+      {
+       "amount": 120,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔘 €120 // ON SITE"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "FULL PASS COUPLES",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 110,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "10-01",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔘 €110 // until Oct 1st"
+      },
+      {
+       "amount": 130,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "10-01",
+       "until": "11-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔘 €130 // Oct 1st to Nov 30th"
+      },
+      {
+       "amount": 150,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "12-01",
+       "until": "01-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔘 €150 // Dec 1st to Jan 31st"
+      },
+      {
+       "amount": 170,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "02-01",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "🔘 €170 // Feb 1st > sold out"
+      },
+      {
+       "amount": 180,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔘 €180 // ON SITE"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

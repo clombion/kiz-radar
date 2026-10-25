@@ -1,0 +1,224 @@
+{
+ "batch": "event-15784",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15784,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 470,
+       "currency": "DKK",
+       "alt_amount": 62,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": 10,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "🐣Early bird leader/follower: 470dkk/62€"
+      },
+      {
+       "amount": 570,
+       "currency": "DKK",
+       "alt_amount": 76,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Leader/follower: 570dkk/76€"
+      },
+      {
+       "amount": 670,
+       "currency": "DKK",
+       "alt_amount": 89,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Leader/follower: 670dkk/89€"
+      },
+      {
+       "amount": 770,
+       "currency": "DKK",
+       "alt_amount": 103,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Leader/follower: 770dkk/103€"
+      },
+      {
+       "amount": 970,
+       "currency": "DKK",
+       "alt_amount": 130,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Leader/follower: 970dkk/130€"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 440,
+       "currency": "DKK",
+       "alt_amount": 59,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": 10,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "🐣Early bird omni: 440dkk/59€"
+      },
+      {
+       "amount": 540,
+       "currency": "DKK",
+       "alt_amount": 72,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "Omni: 540dkk/72€"
+      },
+      {
+       "amount": 640,
+       "currency": "DKK",
+       "alt_amount": 85,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Omni: 640dkk/85€"
+      },
+      {
+       "amount": 740,
+       "currency": "DKK",
+       "alt_amount": 99,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Omni: 740dkk/99€"
+      },
+      {
+       "amount": 940,
+       "currency": "DKK",
+       "alt_amount": 126,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Omni: 940dkk/126€"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 1060,
+       "currency": "DKK",
+       "alt_amount": 142,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Couples: 1060dkk/142€"
+      },
+      {
+       "amount": 1240,
+       "currency": "DKK",
+       "alt_amount": 166,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Couples: 1240dkk/166€"
+      },
+      {
+       "amount": 1440,
+       "currency": "DKK",
+       "alt_amount": 192,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Couples: 1440dkk/192€"
+      },
+      {
+       "amount": 1840,
+       "currency": "DKK",
+       "alt_amount": 246,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Couples: 1840dkk/246€"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "( For each batch sold out – prices increase for next batch )",
+    "There will be between 10-25 passes of a certain price of each kind in each batch."
+   ]
+  }
+ ]
+}

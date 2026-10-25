@@ -1,0 +1,102 @@
+{
+ "batch": "event-15379",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15379,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 60,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-01-12",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "– 60e Full Pass"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 20,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-01-12",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "– 20e Friday pre-party class + party"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 50,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-01-12",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "– 50e Saturday Pass"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 25,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-01-12",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "– 25e Saturday pre-party class + party"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "𝟑𝟓% 𝐝𝐢𝐬𝐜𝐨𝐮𝐧𝐭 𝐟𝐨𝐫 𝐮𝐧𝐞𝐦𝐩𝐥𝐨𝐲𝐞𝐝 / 𝐬𝐭𝐮𝐝𝐞𝐧𝐭𝐬 / 𝐞𝐭𝐜 / people from abroad"
+   ]
+  }
+ ]
+}

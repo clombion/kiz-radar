@@ -1,0 +1,99 @@
+{
+ "batch": "event-15622",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15622,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "FULL PASS:",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 65,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 50,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "💸Early bird tickets: Full Pass: €65 (for the first 50) available"
+      },
+      {
+       "amount": 80,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "12-01",
+       "until": "12-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "December: €80"
+      },
+      {
+       "amount": 90,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "01-01",
+       "until": "01-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "January: €90"
+      },
+      {
+       "amount": 100,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "02-01",
+       "until": "02-28",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "February: €100"
+      },
+      {
+       "amount": 105,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "03-01",
+       "until": "03-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "March: €105"
+      },
+      {
+       "amount": 115,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "04-01",
+       "until": "04-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "April: €115"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

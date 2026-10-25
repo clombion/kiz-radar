@@ -1,0 +1,173 @@
+{
+ "batch": "event-15577",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15577,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 60,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 10,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Full Pass – 60€ (Only 10 – 5 Leaders/5 Followers)"
+      },
+      {
+       "amount": 70,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "12-01",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Full Pass – 70€"
+      },
+      {
+       "amount": 80,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "01-01",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Full Pass – 80€"
+      },
+      {
+       "amount": 90,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "02-01",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Full Pass – 90€"
+      },
+      {
+       "amount": 100,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "03-01",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Full Pass – 100€"
+      },
+      {
+       "amount": 110,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "04-01",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Full Pass – 110€"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 130,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "12-01",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Couple Pass – 130€"
+      },
+      {
+       "amount": 150,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "01-01",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Couple Pass – 150€"
+      },
+      {
+       "amount": 170,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "02-01",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Couple Pass – 170€"
+      },
+      {
+       "amount": 190,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "03-01",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Couple Pass – 190€"
+      },
+      {
+       "amount": 200,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "04-01",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Couple Pass – 200€"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

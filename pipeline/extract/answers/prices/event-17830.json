@@ -1,0 +1,34 @@
+{
+ "batch": "event-17830",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 17830,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 1800,
+       "currency": "EUR",
+       "alt_amount": 45000,
+       "alt_currency": "CZK",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "PRICE 💶 1800E or 45 000CZK"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

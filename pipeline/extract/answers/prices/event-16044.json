@@ -1,0 +1,62 @@
+{
+ "batch": "event-16044",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16044,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": "🎟️ Prices, depending on your status:",
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 99,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-06-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€99/€119/€130"
+      },
+      {
+       "amount": 119,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-06-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€99/€119/€130"
+      },
+      {
+       "amount": 130,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-06-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€99/€119/€130"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "(€130 for non-BDC members ^^)"
+   ]
+  }
+ ]
+}

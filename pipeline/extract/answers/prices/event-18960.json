@@ -1,0 +1,347 @@
+{
+ "batch": "event-18960",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18960,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "-PACK A (3-Day Full Pass)",
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 75,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "08-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Until August 30: €75"
+      },
+      {
+       "amount": 80,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "09-01",
+       "until": "09-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "September: €80"
+      },
+      {
+       "amount": 85,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "10-01",
+       "until": "10-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "October: €85"
+      },
+      {
+       "amount": 90,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "11-01",
+       "until": "11-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "November: €90"
+      },
+      {
+       "amount": 95,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "12-01",
+       "until": "12-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "December: €95"
+      },
+      {
+       "amount": 110,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "01-01",
+       "until": "01-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "January: €110"
+      },
+      {
+       "amount": 120,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "At the door: €120"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "-PACK B (Day Pass)",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 50,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "08-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Until August 30: €50"
+      },
+      {
+       "amount": 55,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "09-01",
+       "until": "09-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "September: €55"
+      },
+      {
+       "amount": 60,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "10-01",
+       "until": "10-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "October: €60"
+      },
+      {
+       "amount": 65,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "11-01",
+       "until": "11-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "November: €65"
+      },
+      {
+       "amount": 70,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "12-01",
+       "until": "12-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "December: €70"
+      },
+      {
+       "amount": 75,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "01-01",
+       "until": "01-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "January: €75"
+      },
+      {
+       "amount": 80,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "At the door: €80"
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "label_quote": "-PACK C (Social & Party Pass)",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 45,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "08-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Until August 30: €45"
+      },
+      {
+       "amount": 50,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "09-01",
+       "until": "09-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "September: €50"
+      },
+      {
+       "amount": 55,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "10-01",
+       "until": "10-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "October: €55"
+      },
+      {
+       "amount": 60,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "11-01",
+       "until": "11-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "November: €60"
+      },
+      {
+       "amount": 65,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "12-01",
+       "until": "12-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "December: €65"
+      },
+      {
+       "amount": 70,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "01-01",
+       "until": "01-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "January: €70"
+      },
+      {
+       "amount": 80,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "At the door: €80"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "ADMISSION TO DANCE PARTIES",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 20,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€20 including pre-party workshop (no drink included)"
+      },
+      {
+       "amount": 15,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€15 after 10:30 PM (no drink included)"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

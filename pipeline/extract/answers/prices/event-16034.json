@@ -1,0 +1,103 @@
+{
+ "batch": "event-16034",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16034,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 90,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2025-11-14",
+       "until": "2026-01-14",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️FULL PASS 90€"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 160,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2025-11-14",
+       "until": "2026-01-14",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️FULL PASS COUPLEPASS 160€"
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 80,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2025-11-14",
+       "until": "2026-01-14",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️ DANCE PASS 80€"
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 145,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2025-11-14",
+       "until": "2026-01-14",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️ DANCE PASS COUPLEPASS 145€"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "EARLY BIRD OFFER till 13.11.",
+    "NAME CHANGE FEE – 15E"
+   ]
+  }
+ ]
+}

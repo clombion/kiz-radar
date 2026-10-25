@@ -1,0 +1,36 @@
+{
+ "batch": "event-15567",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15567,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 130,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "02-28",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️ UNMISSABLE OFFER: FULL PASS FOR ONLY €130!"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Available only until 🔜 FEBRUARY 28! Hurry, the price is expected to rise!"
+   ]
+  }
+ ]
+}

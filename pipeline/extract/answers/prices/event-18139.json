@@ -1,0 +1,13 @@
+{
+ "batch": "event-18139",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18139,
+   "passes": [],
+   "rule_quotes": [
+    "Don’t wait, price increase every first of the month!!!!!"
+   ]
+  }
+ ]
+}

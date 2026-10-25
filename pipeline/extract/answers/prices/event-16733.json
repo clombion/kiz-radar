@@ -1,0 +1,47 @@
+{
+ "batch": "event-16733",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16733,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 30,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "From €30 for the FULL PASS"
+      },
+      {
+       "amount": 89,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "▪️€89: FULL PASS – available for purchase on-site"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

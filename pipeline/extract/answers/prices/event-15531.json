@@ -1,0 +1,94 @@
+{
+ "batch": "event-15531",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15531,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "FULLPASS (Workshops + Party + Social)",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 87,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "FULLPASS (Workshops + Party + Social): Now only €87.00!"
+      },
+      {
+       "amount": 149,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "(Regular price will be €149.00 – save up to €62!)"
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "label_quote": "FUN-PASS (Party + Social only)",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 59,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "FUN-PASS (Party + Social only): €59.00"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "EARLY BIRD HOTEL PACKAGE",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 149,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 20,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "💰 Price: Only €149.00 / person!"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "prices valid only until limited capacity sells out!",
+    "After this date, there is a fee of 10 EUR (administrative charge)."
+   ]
+  }
+ ]
+}

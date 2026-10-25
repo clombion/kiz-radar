@@ -1,0 +1,34 @@
+{
+ "batch": "event-15800",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15800,
+   "passes": [
+    {
+     "kind": "other",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 130,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "130€ – Combo Pass – Alma & Alegria"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

@@ -1,0 +1,106 @@
+{
+ "batch": "event-17906",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 17906,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "🎟️ Full Pass Prices",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 93,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🟠 Early Bird: £93"
+      },
+      {
+       "amount": 103,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🟠 Advanced: £103"
+      },
+      {
+       "amount": 113,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🟠 Final Release: £113"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 165,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "💃🏽🕺🏾Couples Full Pass: £165"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 165,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🕺🏾🕺🏾2 Leaders Full Pass: £165"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "⚠️ Once a ticket release sells out, it’s gone! Buy early to secure the best price."
+   ]
+  }
+ ]
+}

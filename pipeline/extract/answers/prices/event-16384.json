@@ -1,0 +1,75 @@
+{
+ "batch": "event-16384",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16384,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 30,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 30,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "⚠️⚠️⚠️PROMO €30 for the first 30 Full Passes⚠️⚠️⚠️"
+      },
+      {
+       "amount": 40,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "03-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€40 for full passes until March 31st"
+      },
+      {
+       "amount": 50,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "05-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€50 for full passes until May 31st"
+      },
+      {
+       "amount": 60,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "06-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€60 for full passes until June 30th"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Discount for Salsapills Members & Partners (contact the association for the ⚠️ promo code for the €50 and €60 full passes)"
+   ]
+  }
+ ]
+}

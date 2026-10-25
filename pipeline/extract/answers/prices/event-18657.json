@@ -1,0 +1,205 @@
+{
+ "batch": "event-18657",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18657,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "PRICE SCHEDULE – Suave Dance Festival Paris 2027:",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 65,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-01-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "January 2026 (early bird): 65 € ✅"
+      },
+      {
+       "amount": 80,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-02-01",
+       "until": "02-28",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "February: 80 €"
+      },
+      {
+       "amount": 85,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "03-01",
+       "until": "03-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "March: 85 €"
+      },
+      {
+       "amount": 90,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "04-01",
+       "until": "04-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "April: 90 €"
+      },
+      {
+       "amount": 95,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "05-01",
+       "until": "05-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "May: 95 €"
+      },
+      {
+       "amount": 100,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "06-01",
+       "until": "06-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "June: 100 €"
+      },
+      {
+       "amount": 105,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "07-01",
+       "until": "07-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "July: 105 €"
+      },
+      {
+       "amount": 110,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "08-01",
+       "until": "08-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "August: 110 €"
+      },
+      {
+       "amount": 115,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "09-01",
+       "until": "09-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "September: 115 €"
+      },
+      {
+       "amount": 120,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "10-01",
+       "until": "10-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "October: 120 €"
+      },
+      {
+       "amount": 125,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "11-01",
+       "until": "11-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "November: 125 €"
+      },
+      {
+       "amount": 130,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "12-01",
+       "until": "12-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "December: 130 €"
+      },
+      {
+       "amount": 135,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2027-01-01",
+       "until": "2027-01-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "January 2027: 135 €"
+      },
+      {
+       "amount": 140,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "🚪Price at the door: 140 €"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "the full pass price starts at 80 EUR on February 1st, 2026, and increases by 5 € each month until January 2027."
+   ]
+  }
+ ]
+}

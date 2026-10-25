@@ -1,0 +1,56 @@
+{
+ "batch": "event-16678",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16678,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 8,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 579,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "✔️ STAY PACKAGE from €579"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 220,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "✔️ EXTERNAL PACKAGE – from €220"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

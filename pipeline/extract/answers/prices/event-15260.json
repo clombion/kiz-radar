@@ -1,0 +1,210 @@
+{
+ "batch": "event-15260",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15260,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "FULL FESTIVAL PASS",
+     "group_size": 1,
+     "days": 4,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 2000,
+       "currency": "SEK",
+       "alt_amount": 190,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "2000 SEK (190€)"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": "FRIDAY+SATURDAY PASS",
+     "group_size": 1,
+     "days": 2,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 1500,
+       "currency": "SEK",
+       "alt_amount": 140,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "1500 SEK (140€)"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": "PARTIES FRIDAY & SATURDAY ONLY",
+     "group_size": 1,
+     "days": 2,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 950,
+       "currency": "SEK",
+       "alt_amount": 90,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "950 SEK (90€)"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "FRIDAY PARTIES ONLY",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 500,
+       "currency": "SEK",
+       "alt_amount": 45,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "500 SEK (45€)"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "SATURDAY PARTIES ONLY",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 500,
+       "currency": "SEK",
+       "alt_amount": 45,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "500 SEK (45€)"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "THURSDAY PASS",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 500,
+       "currency": "SEK",
+       "alt_amount": 45,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "500 SEK (45€)"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "SUNDAY PASS",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 500,
+       "currency": "SEK",
+       "alt_amount": 45,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "500 SEK (45€)"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "PARTY THURSDAY ONLY",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 300,
+       "currency": "SEK",
+       "alt_amount": 30,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "300 SEK (30€)"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "SOCIAL SUNDAY ONLY",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 200,
+       "currency": "SEK",
+       "alt_amount": 20,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "200 SEK (20€)"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

@@ -1,0 +1,78 @@
+{
+ "batch": "event-16565",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16565,
+   "passes": [
+    {
+     "kind": "other",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 75,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🌻 Peace Pass (Friday / Saturday / Sunday): €75"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 4,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 85,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🌻 Love Pass (Thursday / Friday / Saturday / Sunday): €85"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": "✨ Stage option in addition to the pass",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 25,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🌸 in addition to the Peace Pass or the Love Pass: €25 (limited availability)"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

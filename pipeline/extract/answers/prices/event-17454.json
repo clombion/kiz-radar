@@ -1,0 +1,11 @@
+{
+ "batch": "event-17454",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 17454,
+   "passes": [],
+   "rule_quotes": []
+  }
+ ]
+}

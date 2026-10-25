@@ -1,0 +1,36 @@
+{
+ "batch": "event-14624",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 14624,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 350,
+       "currency": "RON",
+       "alt_amount": 70,
+       "alt_currency": "EUR",
+       "from": null,
+       "until": null,
+       "quantity": 30,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "𝐅𝐔𝐋𝐋 𝐏𝐀𝐒𝐒: 𝟯𝟱𝟬 𝗥𝗢𝗡 / 𝟳𝟬 𝗘𝗨𝗥𝗢"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "First price drop for the first 𝟑𝟎 𝐏𝐄𝐑𝐒𝐎𝐍𝐒"
+   ]
+  }
+ ]
+}

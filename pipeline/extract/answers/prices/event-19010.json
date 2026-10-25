@@ -1,0 +1,49 @@
+{
+ "batch": "event-19010",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 19010,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "FULL PASSES",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 85,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-06-21",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "▪️ SUPER EARLY BIRDS TILL – 21 JUNE. 2026 – €85 EXCL."
+      },
+      {
+       "amount": 90,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-07-12",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "▪️ SUPER EARLY BIRDS TILL – 12 JULY. 2026 – €90 EXCL."
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Passes will cost more at the door"
+   ]
+  }
+ ]
+}

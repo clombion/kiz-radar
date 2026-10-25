@@ -1,0 +1,51 @@
+{
+ "batch": "event-16648",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16648,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": "—————-💲Price ————–",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 155,
+       "currency": "EUR",
+       "alt_amount": 310,
+       "alt_currency": "BGN",
+       "from": null,
+       "until": "03-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "155€ (310BGN)"
+      },
+      {
+       "amount": 170,
+       "currency": "EUR",
+       "alt_amount": 340,
+       "alt_currency": "BGN",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "After that 170€ (340BGN)"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "+ 1 night, breakfast and dinner + 60€ (120 BGN)",
+    "+ 1 buffet lunch + 17€ ( 34 BGN)",
+    "+ for single occupancy + 20€ ( 40 BGN)"
+   ]
+  }
+ ]
+}

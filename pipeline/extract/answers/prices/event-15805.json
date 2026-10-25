@@ -1,0 +1,173 @@
+{
+ "batch": "event-15805",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15805,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "Full Pass / Couple Pass",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 75,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "Early Birds 75€ (SOLD OUT)"
+      },
+      {
+       "amount": 85,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "06-01",
+       "until": "07-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "Jun. – Jul. | Giu. – Lug. €85 (SOLD OUT)"
+      },
+      {
+       "amount": 95,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "08-01",
+       "until": "09-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "Ago. – Sett. €95 (SOLD OUT)"
+      },
+      {
+       "amount": 100,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "10-01",
+       "until": "11-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "Out. – Nov. | Ott. – Nov. €100 / Couple €180 (SOLD OUT)"
+      },
+      {
+       "amount": 105,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "12-01",
+       "until": "02-28",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Dic. – Feb. €105 / Couple €190"
+      },
+      {
+       "amount": 110,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "03-01",
+       "until": "05-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Mar. – May. | Mar. – Mag. €110 / Couple €200"
+      },
+      {
+       "amount": 115,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "At the door | Alla Porta – €115 / Couple €210"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "Full Pass / Couple Pass",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 180,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "10-01",
+       "until": "11-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "Out. – Nov. | Ott. – Nov. €100 / Couple €180 (SOLD OUT)"
+      },
+      {
+       "amount": 190,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "12-01",
+       "until": "02-28",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Dic. – Feb. €105 / Couple €190"
+      },
+      {
+       "amount": 200,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "03-01",
+       "until": "05-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Mar. – May. | Mar. – Mag. €110 / Couple €200"
+      },
+      {
+       "amount": 210,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "At the door | Alla Porta – €115 / Couple €210"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

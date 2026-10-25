@@ -1,0 +1,351 @@
+{
+ "batch": "event-15873",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15873,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": "Triple or Apartment room (per person):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 180,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-05-10",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "2 nights – 180€"
+      },
+      {
+       "amount": 240,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-05-10",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "3 nights – 240€"
+      },
+      {
+       "amount": 300,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-05-10",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "4 nights – 300€"
+      },
+      {
+       "amount": 360,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-05-10",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "5 nights – 360€"
+      },
+      {
+       "amount": 200,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-05-11",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "2 nights – 200€"
+      },
+      {
+       "amount": 260,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-05-11",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "3 nights – 260€"
+      },
+      {
+       "amount": 320,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-05-11",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "4 nights – 320€"
+      },
+      {
+       "amount": 380,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-05-11",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "5 nights – 380€"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "Double room (per person):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 190,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-05-10",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "2 nights – 190€"
+      },
+      {
+       "amount": 255,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-05-10",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "3 nights – 255€"
+      },
+      {
+       "amount": 320,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-05-10",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "4 nights – 320€"
+      },
+      {
+       "amount": 385,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-05-10",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "5 nights – 385€"
+      },
+      {
+       "amount": 210,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-05-11",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "2 nights – 210€"
+      },
+      {
+       "amount": 275,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-05-11",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "3 nights – 275€"
+      },
+      {
+       "amount": 340,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-05-11",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "4 nights – 340€"
+      },
+      {
+       "amount": 405,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-05-11",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "5 nights – 405€"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "Single room:",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 280,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-05-10",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "2 nights – 280€"
+      },
+      {
+       "amount": 390,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-05-10",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "3 nights – 390€"
+      },
+      {
+       "amount": 500,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-05-10",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "4 nights – 500€"
+      },
+      {
+       "amount": 610,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-05-10",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "5 nights – 610€"
+      },
+      {
+       "amount": 300,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-05-11",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "2 nights – 300€"
+      },
+      {
+       "amount": 410,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-05-11",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "3 nights – 410€"
+      },
+      {
+       "amount": 520,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-05-11",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "4 nights – 520€"
+      },
+      {
+       "amount": 630,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-05-11",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "5 nights – 630€"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

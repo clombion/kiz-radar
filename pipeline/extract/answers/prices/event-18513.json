@@ -1,0 +1,13 @@
+{
+ "batch": "event-18513",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18513,
+   "passes": [],
+   "rule_quotes": [
+    "Tickets purchased directly on-site will cost CHF 5.– more than the online price."
+   ]
+  }
+ ]
+}

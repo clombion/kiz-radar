@@ -1,0 +1,80 @@
+{
+ "batch": "event-14705",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 14705,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 979,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Inside cabin (double): €979"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 1259,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Outside cabin (double): €1259"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 1460,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Balcony cabin (double): €1460"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Reserve your spot for just €100 until February 20, 2025, and pay the balance in installments with no extra fees!"
+   ]
+  }
+ ]
+}

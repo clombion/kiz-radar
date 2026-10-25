@@ -1,0 +1,147 @@
+{
+ "batch": "event-14891",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 14891,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "6 days Full pass",
+     "group_size": 1,
+     "days": 6,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 59,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Apr €59"
+      },
+      {
+       "amount": 69,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "July €69"
+      },
+      {
+       "amount": 79,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Oct €79"
+      },
+      {
+       "amount": 89,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Dec €89"
+      },
+      {
+       "amount": 99,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Feb €99"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "Couple pass",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 119,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Jul €119"
+      },
+      {
+       "amount": 139,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Oct €139"
+      },
+      {
+       "amount": 155,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Dec €155"
+      },
+      {
+       "amount": 169,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Feb €169"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

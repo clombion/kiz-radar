@@ -1,0 +1,100 @@
+{
+ "batch": "event-14732",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 14732,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "🕺 FULLPASS MAN",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 95,
+       "currency": "EUR",
+       "alt_amount": 2375,
+       "alt_currency": "CZK",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🕺 FULLPASS MAN 95€ OR 2375CZK"
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "label_quote": "🕺 DANCEPASS MAN",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 85,
+       "currency": "EUR",
+       "alt_amount": 2125,
+       "alt_currency": "CZK",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🕺 DANCEPASS MAN 85€ OR 2125CZK"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "💃🕺FULLPASS COUPLEPASS",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 170,
+       "currency": "EUR",
+       "alt_amount": 4250,
+       "alt_currency": "CZK",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "💃🕺FULLPASS COUPLEPASS 170€ or 4250CZK"
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "label_quote": "💃🕺DANCEPASS COUPLEPASS",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 150,
+       "currency": "EUR",
+       "alt_amount": 3750,
+       "alt_currency": "CZK",
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "💃🕺DANCEPASS COUPLEPASS 150€ OR 3750CZK"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

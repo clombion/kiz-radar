@@ -1,0 +1,34 @@
+{
+ "batch": "event-18238",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18238,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 48,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🟠 Full Pass Early Bird €48"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

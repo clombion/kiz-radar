@@ -1,0 +1,49 @@
+{
+ "batch": "event-19026",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 19026,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 65,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 50,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔥 FULLPASS EARLY BIRD — €65"
+      },
+      {
+       "amount": 79,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 100,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "✨ NEXT PRICE: FULLPASS EXPERIENCE — €79"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Once sold out, the next pricing phase will automatically apply."
+   ]
+  }
+ ]
+}

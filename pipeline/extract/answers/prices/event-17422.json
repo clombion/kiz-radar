@@ -1,0 +1,143 @@
+{
+ "batch": "event-17422",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 17422,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "✨ FULL PASS ✨",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 55,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "04-17",
+       "until": "05-16",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "☛ €55 from April 17 to May 16"
+      },
+      {
+       "amount": 60,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "05-17",
+       "until": "06-16",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "☛ €60 from May 17 to June 16"
+      },
+      {
+       "amount": 70,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "06-17",
+       "until": "07-16",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "☛ €70 from June 17 to July 16"
+      },
+      {
+       "amount": 75,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "☛ €75 at the door"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "Social or party (Friday, Saturday, Sunday – classes or Jack & Jill included)",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 15,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "☛ €15 presale / €20 at the door"
+      },
+      {
+       "amount": 20,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "☛ €15 presale / €20 at the door"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "Saturday Day Pass (social + party + 3 classes)",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 25,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "☛ €25 presale / €40 at the door"
+      },
+      {
+       "amount": 40,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "☛ €25 presale / €40 at the door"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

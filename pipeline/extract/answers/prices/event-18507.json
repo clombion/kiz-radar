@@ -1,0 +1,13 @@
+{
+ "batch": "event-18507",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18507,
+   "passes": [],
+   "rule_quotes": [
+    "Tickts prices increase at the end of every Month, be quick !"
+   ]
+  }
+ ]
+}

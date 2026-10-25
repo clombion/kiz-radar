@@ -1,0 +1,120 @@
+{
+ "batch": "event-18686",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18686,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 5,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 520,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 50,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "Inside double cabin: €520 sold out !"
+      },
+      {
+       "amount": 555,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Inside double cabin: €555* (per person)*"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 5,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 590,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 50,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "Outside double cabin: €590 sold out !"
+      },
+      {
+       "amount": 625,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Outside double cabin: €625* (per person)*"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 5,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 685,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 50,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "Balcony double cabin: €685 sold out !"
+      },
+      {
+       "amount": 715,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Balcony double cabin: €715* (per person)*"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Children under 18 stay FREE if sharing a cabin with 2 adults.",
+    "Boat tax and stay: EUR 150 per child"
+   ]
+  }
+ ]
+}

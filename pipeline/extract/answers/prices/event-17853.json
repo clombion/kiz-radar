@@ -1,0 +1,56 @@
+{
+ "batch": "event-17853",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 17853,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 190,
+       "currency": "USD",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "✨FullPass $190"
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 160,
+       "currency": "USD",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "✨PartyPass $160✨"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

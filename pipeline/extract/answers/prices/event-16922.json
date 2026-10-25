@@ -1,0 +1,364 @@
+{
+ "batch": "event-16922",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16922,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "EARLY BIRD:",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 75,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-01-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "-LEADER OR FOLLOWER: €75 TILL 31.01.2026"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "EARLY BIRD:",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 140,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-01-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "-COUPLE: €140 TILL 31.01.2026"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "FULL PASS (1st Wave)",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 85,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-04-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "-LEADER OR FOLLOWER: €85 TILL 30.04.2026"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "FULL PASS (1st Wave)",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 160,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-04-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "-COUPLE: €160 TILL 30.04.2026"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "FULL PASS (2nd Wave):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 95,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-07-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "-LEADER OR FORLLOWER: €95 TILL 31.07.2026"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "FULL PASS (2nd Wave):",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 180,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-07-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "-COUPLE: €180 TILL 31.07.2026"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "FULL PASS(3rd Wave)",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 105,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-10-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "-LEADER OR FOLLOWER: €105 TILL 31.10.2026"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "FULL PASS(3rd Wave)",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 200,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-10-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "-COUPLE: €200 TILL 31.10.2026"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "LAST MINUTE FULL PASS",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 115,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-11-14",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "-LEADER OR FOLLOWER: €115 TILL14.11.2026"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "LAST MINUTE FULL PASS",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 220,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-11-14",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "-COUPLE: €220 TILL14.11.2026"
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "label_quote": "DANCE PASS(SOCIALS AND PARTY)",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 90,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-11-14",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "-LEADER OR FOLLOWER: €90 TILL 14.11.2026"
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "label_quote": "DANCE PASS(SOCIALS AND PARTY)",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 170,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-11-14",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "-COUPLE: €170 TILL 14.11.2026"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "PARTY PASS FRIDAY or SUNDAY",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 45,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-11-14",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "-LEADER OR FOLLOWER: €45 TILL 14.11.2026"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "PARTY PASS FRIDAY or SUNDAY",
+     "group_size": 2,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 80,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-11-14",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "-COUPLE: €80 TILL 14.11.2026"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "PARTY PASS SATURDAY",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 55,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-11-14",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "-LEADER OR FOLLOWER: €55 TILL 14.11.2026"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "PARTY PASS SATURDAY",
+     "group_size": 2,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 100,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-11-14",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "-COUPLE: €100 TILL 14.11.2026"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

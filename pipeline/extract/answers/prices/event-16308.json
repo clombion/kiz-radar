@@ -1,0 +1,81 @@
+{
+ "batch": "event-16308",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16308,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 80,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "EARLY BIRD FULL PASS £80 ON SALE NOW"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 95,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "FIRST RELEASE FULL PASS £95"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 175,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "FIRST RELEASE COUPLE PASS £ 175"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "PRICE INCREASE EVERY 2 MONTHS UNTIL DAY OF THE EVENT",
+    "FINAL PRICE WILL REACH £150 \\ £285"
+   ]
+  }
+ ]
+}

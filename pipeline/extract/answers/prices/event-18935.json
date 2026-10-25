@@ -1,0 +1,34 @@
+{
+ "batch": "event-18935",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18935,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": "“LAND ONLY” OPTION",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 1290,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "“LAND ONLY” OPTION: Want to handle your own flights or coming from elsewhere? Enjoy the full package (5-star All-Inclusive hotel + dance + parties) for just €1,290."
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

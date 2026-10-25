@@ -1,0 +1,47 @@
+{
+ "batch": "event-18266",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18266,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "🎫 Full Festival Pass (3 days)",
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 75,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "08-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "💰 Until August: 75€"
+      },
+      {
+       "amount": 100,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "09-01",
+       "until": "11-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "💰 From September to November: 100€"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

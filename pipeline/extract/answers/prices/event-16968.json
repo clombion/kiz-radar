@@ -1,0 +1,56 @@
+{
+ "batch": "event-16968",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16968,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 135,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€135 → Accommodation in a 5-person bungalow + Full Pass"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 175,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€175 → Accommodation in a 5-person bungalow + Full Pass + all meals"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

@@ -1,0 +1,390 @@
+{
+ "batch": "event-15908",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15908,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": "Registration Fee HOTEL + FULL PASS (per person):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 269,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "QUADRUPLE ROOM: 2 Nights €269"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "Registration Fee HOTEL + FULL PASS (per person):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 349,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "QUADRUPLE ROOM: 2 Nights €269 | 3 Nights €349"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "Registration Fee HOTEL + FULL PASS (per person):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 279,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "TRIPLE ROOM: 2 Nights €279"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "Registration Fee HOTEL + FULL PASS (per person):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 359,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "TRIPLE ROOM: 2 Nights €279 | 3 Nights €359"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "Registration Fee HOTEL + FULL PASS (per person):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 299,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "DOUBLE ROOM: 2 Nights €299"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "Registration Fee HOTEL + FULL PASS (per person):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 379,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "DOUBLE ROOM: 2 Nights €299 | 3 Nights €379"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "Registration Fee HOTEL + FULL PASS (per person):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 359,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "SINGLE ROOM: 2 Nights €359"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "Registration Fee HOTEL + FULL PASS (per person):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 469,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "SINGLE ROOM: 2 Nights €359 | 3 Nights €469"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "Registration Fee HOTEL + FULL PASS (per person):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 289,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "SEA-VIEW QUADRUPLE ROOM: 2 Nights €289"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "Registration Fee HOTEL + FULL PASS (per person):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 369,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "SEA-VIEW QUADRUPLE ROOM: 2 Nights €289 | 3 Nights €369"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "Registration Fee HOTEL + FULL PASS (per person):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 299,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "SEA-VIEW TRIPLE ROOM: 2 Nights €299"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "Registration Fee HOTEL + FULL PASS (per person):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 379,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "SEA-VIEW TRIPLE ROOM: 2 Nights €299 | 3 Nights €379"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "Registration Fee HOTEL + FULL PASS (per person):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 319,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "SEA-VIEW DOUBLE ROOM: 2 Nights €319"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "Registration Fee HOTEL + FULL PASS (per person):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 399,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "SEA-VIEW DOUBLE ROOM: 2 Nights €319 | 3 Nights €399"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "Registration Fee HOTEL + FULL PASS (per person):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 379,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "SEA-VIEW SINGLE ROOM: 2 Nights €379"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "Registration Fee HOTEL + FULL PASS (per person):",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 489,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "SEA-VIEW SINGLE ROOM: 2 Nights €379 | 3 Nights €489"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 40,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "MASTERPASS: €40"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "PRICES WILL RISE ON FEBRUARY 16TH",
+    "Extra charge of €30 per night",
+    "€5 Administration and Registration Fee"
+   ]
+  }
+ ]
+}

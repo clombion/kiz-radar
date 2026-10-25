@@ -1,0 +1,160 @@
+{
+ "batch": "event-16216",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 16216,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "5 days Full pass",
+     "group_size": 1,
+     "days": 5,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 59,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Early birds – €59"
+      },
+      {
+       "amount": 69,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Nov – €69"
+      },
+      {
+       "amount": 79,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "May – €79"
+      },
+      {
+       "amount": 89,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "July – €89"
+      },
+      {
+       "amount": 99,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Aug – €99"
+      },
+      {
+       "amount": 120,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "Door – €120"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": "5 days Couple pass",
+     "group_size": 2,
+     "days": 5,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 119,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Nov – €119"
+      },
+      {
+       "amount": 129,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "May – €129"
+      },
+      {
+       "amount": 149,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "July – €149"
+      },
+      {
+       "amount": 169,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Aug – €169"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

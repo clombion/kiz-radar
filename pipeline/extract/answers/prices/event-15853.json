@@ -1,0 +1,217 @@
+{
+ "batch": "event-15853",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15853,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 4,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 65,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "01-01",
+       "until": "02-28",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "£65 4 DAYS FULL PASS"
+      },
+      {
+       "amount": 75,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "03-01",
+       "until": "05-10",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "£75 FULL PASS including all classes and social parties for the 4 days."
+      },
+      {
+       "amount": 80,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "05-11",
+       "until": "05-20",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "£80 FULL PASS including all classes and social parties for the 4 days."
+      },
+      {
+       "amount": 90,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "05-21",
+       "until": "05-24",
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "£90 FULL PASS online or at the door"
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 4,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 25,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "01-01",
+       "until": "02-28",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "£25 for SOCIAL PARTIES only (4 days)."
+      },
+      {
+       "amount": 30,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "03-01",
+       "until": "05-10",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "£30 for SOCIAL PARTIES only (4 days)."
+      },
+      {
+       "amount": 35,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "05-11",
+       "until": "05-20",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "£35 for SOCIAL PARTIES only (4 days)."
+      },
+      {
+       "amount": 40,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "05-21",
+       "until": "05-24",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "£40 for SOCIAL PARTIES only (4 days)"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 10,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "01-01",
+       "until": "02-28",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "£10 for one day SOCIAL ONLY."
+      },
+      {
+       "amount": 12,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "03-01",
+       "until": "05-10",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "£12 for ONE DAY SOCIAL PARTY only. Not including Thursday"
+      },
+      {
+       "amount": 14,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "05-11",
+       "until": "05-20",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "£14 ONE DAY SOCIAL PARTY only. Not including Thursday."
+      },
+      {
+       "amount": 15,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "05-21",
+       "until": "05-24",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "£15 for ONE DAY SOCIAL PARTY only. Not including Thursday"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 20,
+       "currency": "GBP",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "01-01",
+       "until": "02-28",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "£20 ONE DAY full pass available for Friday, Saturday or Sunday only."
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

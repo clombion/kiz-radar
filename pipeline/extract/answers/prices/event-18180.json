@@ -1,0 +1,73 @@
+{
+ "batch": "event-18180",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18180,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "FULL PASS (Access to all workshops, Shows and parties",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 65,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "09-10",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€65 introductory price – until September 10th inclusive."
+      },
+      {
+       "amount": 75,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "09-11",
+       "until": "10-15",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€75 from September 11th to October 15th inclusive."
+      },
+      {
+       "amount": 85,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "10-16",
+       "until": "11-05",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€85 from October 16th to November 5th inclusive."
+      },
+      {
+       "amount": 90,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€90 from the start of the event."
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

@@ -1,0 +1,36 @@
+{
+ "batch": "event-17067",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 17067,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 75,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎫 Full Pass (Early Bird Price) = 75€"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "⛔NO PRE-PARTY OR PARTY PASSES! NO SALES ON DOOR⛔"
+   ]
+  }
+ ]
+}

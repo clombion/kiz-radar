@@ -1,0 +1,13 @@
+{
+ "batch": "event-18864",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18864,
+   "passes": [],
+   "rule_quotes": [
+    "Tickts prices increase gradually , be quick !"
+   ]
+  }
+ ]
+}

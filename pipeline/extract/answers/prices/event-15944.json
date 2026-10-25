@@ -1,0 +1,36 @@
+{
+ "batch": "event-15944",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15944,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 10,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 2000,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "💶 Total Price: 2000 €"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "All payments are non-refundable."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,36 @@
+{
+ "batch": "event-18263",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 18263,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 10,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 1200,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Price: 1200€ per participant (deposit 100€, balance on arrival; single room on request)"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Price goes up in 09- 03 2026"
+   ]
+  }
+ ]
+}

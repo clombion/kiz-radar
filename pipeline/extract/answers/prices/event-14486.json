@@ -1,0 +1,34 @@
+{
+ "batch": "event-14486",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 14486,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "♦️ 𝐏𝐚𝐬𝐬",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 60,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "𝐴 𝑝𝑎𝑟𝑡𝑖𝑟 𝑑𝑒 60€ 𝑝𝑎𝑟 𝑝𝑒𝑟𝑠𝑜𝑛𝑛𝑒 …"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

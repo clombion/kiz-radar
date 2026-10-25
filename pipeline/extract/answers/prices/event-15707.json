@@ -1,0 +1,78 @@
+{
+ "batch": "event-15707",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15707,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 6,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 1510,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "– €1510 per person in Balcony Cabin 1 – double occupancy"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 6,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 1380,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "– €1380 per person in Outside Cabin 1 – double occupancy"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 6,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 1300,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "– €1300 per person in Inside Cabin 2 – double occupancy"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": []
+  }
+ ]
+}

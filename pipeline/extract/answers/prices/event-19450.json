@@ -1,0 +1,13 @@
+{
+ "batch": "event-19450",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 19450,
+   "passes": [],
+   "rule_quotes": [
+    "Pass transfer: 20€ (same gender only)"
+   ]
+  }
+ ]
+}

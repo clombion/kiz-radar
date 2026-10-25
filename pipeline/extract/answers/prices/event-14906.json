@@ -1,0 +1,17 @@
+{
+ "batch": "event-14906",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 14906,
+   "passes": [],
+   "rule_quotes": [
+    "PHASE 1 – 23/03/25 – 22/06/25",
+    "PHASE 2 – 23/06/25 – 21/09/25",
+    "PHASE 3 – 22/09/25 – 21/12/25",
+    "FINAL PHASE – 22/12/25 – 19/03/26",
+    "Passes will cost more at the door"
+   ]
+  }
+ ]
+}

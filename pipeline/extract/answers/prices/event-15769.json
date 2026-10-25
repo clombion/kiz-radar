@@ -1,0 +1,36 @@
+{
+ "batch": "event-15769",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15769,
+   "passes": [
+    {
+     "kind": "day",
+     "label_quote": "23:00 – 04:00 Pre Party",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 10,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Price 10€ (Not included FP)"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "PRICES INCREASE"
+   ]
+  }
+ ]
+}

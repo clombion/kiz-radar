@@ -1,0 +1,80 @@
+{
+ "batch": "event-15712",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15712,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 5,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 689,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Inside double cabin €689/person."
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 5,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 789,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Inside double cabin with porthole and sea view €789/person."
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 5,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 914,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Outside double cabin with balcony and sea view €914/person."
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "The mandatory onboard service fee of €11/person/night (€44 total), payable on the boat."
+   ]
+  }
+ ]
+}

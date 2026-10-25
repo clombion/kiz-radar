@@ -1,0 +1,75 @@
+{
+ "batch": "event-15903",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15903,
+   "passes": [
+    {
+     "kind": "package",
+     "label_quote": "SUPER PROMO – EARLY BOOKING DISCOUNTS",
+     "group_size": 1,
+     "days": 5,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 680,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2025-11-20",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Until Nov 20, 2025 → €680"
+      },
+      {
+       "amount": 730,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2025-12-10",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Until Dec 10, 2025 → €730"
+      },
+      {
+       "amount": 780,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-02-05",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Until feb 5, 2026 → €780"
+      },
+      {
+       "amount": 830,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "2026-02-05",
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "From feb 5, 2026 → €830"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Single room supplement: €165"
+   ]
+  }
+ ]
+}

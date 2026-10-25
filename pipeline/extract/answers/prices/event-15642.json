@@ -1,0 +1,80 @@
+{
+ "batch": "event-15642",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15642,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 99,
+       "currency": "USD",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "$99 Full Pass – Follows"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 165,
+       "currency": "USD",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "$165 Full Pass – Couples (2 Leads)"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 180,
+       "currency": "USD",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "$180 Full Pass – Couples (Lead/Follow)"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "NOTE: ALL PASSES HAVE AN $8.50 EVENTBRITE PROCESSING FEE."
+   ]
+  }
+ ]
+}

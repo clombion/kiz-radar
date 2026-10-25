@@ -1,0 +1,388 @@
+{
+ "batch": "event-15893",
+ "prompt_version": "prices-v2",
+ "events": [
+  {
+   "event_id": 15893,
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": "🎟️ 𝗜𝗟𝗞𝗦𝗙 𝗣𝗔𝗦𝗦𝗘𝗦 🎟️",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 90,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "01-01",
+       "until": "01-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "January: 90€"
+      },
+      {
+       "amount": 100,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "02-01",
+       "until": "02-28",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "February: 100€"
+      },
+      {
+       "amount": 110,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "03-01",
+       "until": "03-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "March: 110€"
+      },
+      {
+       "amount": 120,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "04-01",
+       "until": "04-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "April: 120€"
+      },
+      {
+       "amount": 130,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "05-01",
+       "until": "05-31",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "May: 130€"
+      },
+      {
+       "amount": 140,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "06-01",
+       "until": "06-30",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "June: 140€"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 247.5,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "2 Full Passes + 2 nights double room + Full board: 𝟮𝟰𝟳,𝟱€/𝗽𝗲𝗿𝘀𝗼𝗻"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 325,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "2 Full Passes + 3 nights double room + Full board: 𝟯𝟮𝟱€/𝗽𝗲𝗿𝘀𝗼𝗻"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 400,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "2 Full Passes + 4 nights double room + Full board: 𝟰𝟬𝟬€/𝗽𝗲𝗿𝘀𝗼𝗻"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 360,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "1 Full Pass + 2 nights room + Full board: 𝟯𝟲𝟬€"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 485,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "1 Full Pass + 3 nights room + Full board: 𝟰𝟴𝟱€"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 510,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "1 Full Pass + 4 nights room + Full board: 𝟱𝟭𝟬€"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "💶 𝗣𝗔𝗥𝗧𝗬 𝗣𝗥𝗜𝗖𝗘𝗦 💶",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 15,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "04.06 Thursday: €15 (ILKSF SPAIN Kick-off)"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "💶 𝗣𝗔𝗥𝗧𝗬 𝗣𝗥𝗜𝗖𝗘𝗦 💶",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 25,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "05.06 Friday: €25"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "💶 𝗣𝗔𝗥𝗧𝗬 𝗣𝗥𝗜𝗖𝗘𝗦 💶",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 30,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "06.06 Saturday: €30"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "💶 𝗣𝗔𝗥𝗧𝗬 𝗣𝗥𝗜𝗖𝗘𝗦 💶",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 20,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "07.06 Sunday: €20"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "🎫 𝗜𝗟𝗞𝗦𝗙 𝗗𝗔𝗬 𝗣𝗔𝗦𝗦 🎫",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 60,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "05.06 Friday: €60"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "🎫 𝗜𝗟𝗞𝗦𝗙 𝗗𝗔𝗬 𝗣𝗔𝗦𝗦 🎫",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 80,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "06.06 Saturday: €80"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": "🎫 𝗜𝗟𝗞𝗦𝗙 𝗗𝗔𝗬 𝗣𝗔𝗦𝗦 🎫",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 50,
+       "currency": "EUR",
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "07.07 Sunday: €50"
+      }
+     ]
+    }
+   ],
+   "rule_quotes": [
+    "Prices are current and will increase every month.",
+    "Accommodation is only available with Full Board."
+   ]
+  }
+ ]
+}
