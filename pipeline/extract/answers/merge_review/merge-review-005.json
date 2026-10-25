@@ -1,0 +1,356 @@
+{
+ "batch": "merge-review-005",
+ "prompt_version": "merge-review-v1",
+ "decisions": [
+  {
+   "pair_id": 201,
+   "key_a": "p:enah@enah+lolahontas",
+   "key_b": "p:enahlebon",
+   "decision": "unsure",
+   "rationale": "Enah is the same stage name, but the partner is Lolahontas on side A and Poca Hontas on side B, and no side shows both names together."
+  },
+  {
+   "pair_id": 202,
+   "key_a": "p:enah@enah+pocahontas",
+   "key_b": "p:enahlebon",
+   "decision": "merge",
+   "rationale": "Enah and Pocahontas (France) on side A match Enah Lebon and Poca Hontas on side B, with the same first name, partner and stated country."
+  },
+  {
+   "pair_id": 203,
+   "key_a": "p:enora@enora+pdjay",
+   "key_b": "p:enora@enora+pidjay",
+   "decision": "merge",
+   "rationale": "Pdjay/Pidjay and Enora are the same couple in every mention, differing only in spelling of the partner name, with France stated on both sides."
+  },
+  {
+   "pair_id": 204,
+   "key_a": "p:estefaniolima",
+   "key_b": "p:stefaniolima",
+   "decision": "merge",
+   "rationale": "Estefanio and Stefanio Lima are the same distinctive DJ name in a one-letter spelling variant, both listed as DJ on overlapping festival lines."
+  },
+  {
+   "pair_id": 205,
+   "key_a": "p:eva@chris+eva",
+   "key_b": "p:eva@dance",
+   "decision": "unsure",
+   "rationale": "Eva is a common first name; side A is Eva in a couple with Chris and side B is a solo Eva, with Germany the only shared evidence."
+  },
+  {
+   "pair_id": 206,
+   "key_a": "p:eva@chris+eva",
+   "key_b": "p:eva@eva+murmel",
+   "decision": "unsure",
+   "rationale": "Eva appears in Germany on both sides but with different partners (Chris and Murmel), and a common first name alone does not settle it."
+  },
+  {
+   "pair_id": 207,
+   "key_a": "p:eva@dance",
+   "key_b": "p:eva@eva+murmel",
+   "decision": "unsure",
+   "rationale": "A solo Eva on side A and Murmel and Eva on side B share only the first name and Germany, which is weak evidence for a common name."
+  },
+  {
+   "pair_id": 208,
+   "key_a": "p:fabricio@dance",
+   "key_b": "p:fabriciodozangado",
+   "decision": "merge",
+   "rationale": "Fabricio on side A and Fabricio Do Zangado on side B share the first name, the Portugal stated country, the Warsaw listings and the teacher role."
+  },
+  {
+   "pair_id": 209,
+   "key_a": "p:fabricio@fabricio+mame",
+   "key_b": "p:fabriciodozangado",
+   "decision": "merge",
+   "rationale": "Fabricio y Mame on side A and Fabricio Do Zangado on side B share the partner Mame, and side B lists the couple with that partner in several events."
+  },
+  {
+   "pair_id": 210,
+   "key_a": "p:fabriciodozangado",
+   "key_b": "p:fabriziodozangado",
+   "decision": "merge",
+   "rationale": "Fabricio Do Zangado and Fabrizio dozangado differ only in a one-letter spelling variant of a distinctive surname, both teachers with Kizomba style."
+  },
+  {
+   "pair_id": 211,
+   "key_a": "p:fabrizio@dj",
+   "key_b": "p:fabrizio@fabrizio+giulia",
+   "decision": "unsure",
+   "rationale": "Dj Fabrizio and Fabrizio & Giulia share the first name and Italy, but one is a DJ and the other a dancer in a couple, which does not settle identity."
+  },
+  {
+   "pair_id": 212,
+   "key_a": "p:fabrizio@dj",
+   "key_b": "p:fabriziochiarenza",
+   "decision": "unsure",
+   "rationale": "Dj Fabrizio (Italy) and Fabrizio Chiarenza (Italy) share a common first name and country, with a DJ on one side and a teacher on the other."
+  },
+  {
+   "pair_id": 213,
+   "key_a": "p:fabrizio@dj",
+   "key_b": "p:fabriziokizpower",
+   "decision": "unsure",
+   "rationale": "Dj Fabrizio (Italy) and Fabrizio Kizpower (Italy) share only a common first name and country, with no style or partner evidence."
+  },
+  {
+   "pair_id": 214,
+   "key_a": "p:fabrizio@dj",
+   "key_b": "p:fabriziozoro",
+   "decision": "merge",
+   "rationale": "DJ Fabrizio and DJ Fabrizio Zoro are both DJs with Italy stated on both sides, the same pattern as a DJ prefix plus a fuller stage name."
+  },
+  {
+   "pair_id": 215,
+   "key_a": "p:fabrizio@fabrizio+giulia",
+   "key_b": "p:fabriziochiarenza",
+   "decision": "unsure",
+   "rationale": "Fabrizio & Giulia on side A and Fabrizio Chiarenza on side B share Italy and a common first name, but side B shows no partner and no shared event."
+  },
+  {
+   "pair_id": 216,
+   "key_a": "p:fabrizio@fabrizio+giulia",
+   "key_b": "p:fabriziokizpower",
+   "decision": "unsure",
+   "rationale": "Fabrizio & Giulia (Italy) and Fabrizio Kizpower (Italy) share a common first name and country, but the partner and the name differ."
+  },
+  {
+   "pair_id": 217,
+   "key_a": "p:fabrizio@fabrizio+giulia",
+   "key_b": "p:fabriziozoro",
+   "decision": "unsure",
+   "rationale": "Fabrizio & Giulia (teacher, Italy) and DJ Fabrizio Zoro (Belgium event, Italy stated) differ in role, with only a common first name and country in common."
+  },
+  {
+   "pair_id": 218,
+   "key_a": "p:fabrizio@fabrizio+nicoletta",
+   "key_b": "p:fabriziocampanella",
+   "decision": "merge",
+   "rationale": "Fabrizio & Nicoletta on side A and Fabrizio Campanella & Nicoletta on side B are the same couple, with Nicoletta as the shared partner in Italy."
+  },
+  {
+   "pair_id": 219,
+   "key_a": "p:fajul@fajul+tabea",
+   "key_b": "p:fajulkizztalk",
+   "decision": "merge",
+   "rationale": "Fajul & Tabea and Fajul KizzTalk share the distinctive name Fajul, and side B lists Fajul Kizztalk & Tabea with the same partner."
+  },
+  {
+   "pair_id": 220,
+   "key_a": "p:fanio@fanio+sara",
+   "key_b": "p:fanioaraujo",
+   "decision": "merge",
+   "rationale": "Fanio & Sara on side A and Fanio Araujo on side B share the distinctive name Fanio, the Araujo surname and the Angola stated country."
+  },
+  {
+   "pair_id": 221,
+   "key_a": "p:fanio@fanio+sara",
+   "key_b": "p:faniodearaujo",
+   "decision": "merge",
+   "rationale": "Fanio & Sara on side A and Fanio de Araujo on side B share the distinctive name Fanio and the Angola stated country, with the same surname in a spelling variant."
+  },
+  {
+   "pair_id": 222,
+   "key_a": "p:fanioaraujo",
+   "key_b": "p:faniodearaujo",
+   "decision": "merge",
+   "rationale": "Fanio Araujo and Fanio de Araujo are the same distinctive name with a spelling variant of the surname, both teaching in Europe with Angola stated."
+  },
+  {
+   "pair_id": 223,
+   "key_a": "p:fede@fede+lorenz",
+   "key_b": "p:fedekiz",
+   "decision": "merge",
+   "rationale": "Lorenz & Fede on side A and Lorenz & Fede Kiz on side B are the same couple at Italian festivals, with a suffix difference in the stage name."
+  },
+  {
+   "pair_id": 224,
+   "key_a": "p:felicien@felicien+isabel",
+   "key_b": "p:felicien@felicien+isabelle",
+   "decision": "merge",
+   "rationale": "Felicien & Isabel and Felicien & Isabelle are the same couple in a spelling variant of the partner name, with France stated on both sides."
+  },
+  {
+   "pair_id": 225,
+   "key_a": "p:felicien@felicien+isabel",
+   "key_b": "p:felicienrossa",
+   "decision": "merge",
+   "rationale": "Felicien & Isabel couple (France stated) on side A and Felicien Rossa (France stated, Kizomba) on side B share the first name and country, with the same couple seen elsewhere in the set."
+  },
+  {
+   "pair_id": 226,
+   "key_a": "p:felicien@felicien+isabelle",
+   "key_b": "p:felicienrossa",
+   "decision": "merge",
+   "rationale": "Felicien & Isabelle couple (France stated, Kizomba) on side A and Felicien Rossa (France stated, Kizomba) on side B share the first name, country and style."
+  },
+  {
+   "pair_id": 227,
+   "key_a": "p:fernando@carolina+fernando",
+   "key_b": "p:fernando@dance",
+   "decision": "unsure",
+   "rationale": "Fernando is a very common first name, and the only other shared evidence is a Portugal stated country on one Augsburg listing."
+  },
+  {
+   "pair_id": 228,
+   "key_a": "p:fernando@carolina+fernando",
+   "key_b": "p:fernandomonteiro",
+   "decision": "unsure",
+   "rationale": "Fernando & Carolina and Fernando Monteiro share only the first name and a Portugal stated country, which is weak for a common name."
+  },
+  {
+   "pair_id": 229,
+   "key_a": "p:fernando@dance",
+   "key_b": "p:fernandomonteiro",
+   "decision": "unsure",
+   "rationale": "Fernando on side A and Fernando Monteiro on side B share the first name and Portugal stated, but the events differ and the name is common."
+  },
+  {
+   "pair_id": 230,
+   "key_a": "p:fernando@dj",
+   "key_b": "p:fernando@fernando+michela",
+   "decision": "unsure",
+   "rationale": "DJ Fernando (Manchester, UK and Angola stated) and Fernando & Michela (Italy) differ in role and listed country, so the evidence does not settle it."
+  },
+  {
+   "pair_id": 231,
+   "key_a": "p:fernando@dj",
+   "key_b": "p:fernandobumbum",
+   "decision": "unsure",
+   "rationale": "DJ Fernando and Fernando Bumbum & Michela share the first name and Angola stated, but one is a DJ and the other a couple, with a common name."
+  },
+  {
+   "pair_id": 232,
+   "key_a": "p:fernando@fernando+micaela",
+   "key_b": "p:fernando@fernando+michela",
+   "decision": "unsure",
+   "rationale": "Fernando & Micaela and Fernando & Michela share the partner name in a one-letter variant, which could be a typo or two different partners."
+  },
+  {
+   "pair_id": 233,
+   "key_a": "p:fernando@fernando+micaela",
+   "key_b": "p:fernandobumbum",
+   "decision": "unsure",
+   "rationale": "Fernando & Micaela and Fernando Bumbum & Michela differ in partner spelling (Micaela and Michela), a near-miss that the evidence does not settle."
+  },
+  {
+   "pair_id": 234,
+   "key_a": "p:fernando@fernando+michela",
+   "key_b": "p:fernandobumbum",
+   "decision": "merge",
+   "rationale": "Fernando & Michela on side A and Fernando Bumbum & Michela on side B share the partner Michela, the first name and the Italy and Angola stated country."
+  },
+  {
+   "pair_id": 235,
+   "key_a": "p:florian@audrey+florian",
+   "key_b": "p:floriansensacion",
+   "decision": "unsure",
+   "rationale": "Florian and Audrey on side A and DJ Florian Sensacion on side B share the first name and France, but the role and the style differ."
+  },
+  {
+   "pair_id": 236,
+   "key_a": "p:franck@dj",
+   "key_b": "p:franckm",
+   "decision": "merge",
+   "rationale": "DJ Franck and DJ Franck M are both DJs with Germany stated on both sides, and the initial is the only difference in the name."
+  },
+  {
+   "pair_id": 237,
+   "key_a": "p:franck@franck+laure",
+   "key_b": "p:francksalsahora",
+   "decision": "merge",
+   "rationale": "Franck & Laure on side A and Franck Salsahora & Laure on side B are the same couple in France, with Laure as the shared partner."
+  },
+  {
+   "pair_id": 238,
+   "key_a": "p:franet@dance",
+   "key_b": "p:franet@franet+jade",
+   "decision": "merge",
+   "rationale": "Franet is the exact same name on both sides, with Angola stated on each, and side B adds a partner (Jade) to the same name."
+  },
+  {
+   "pair_id": 239,
+   "key_a": "p:franky@franky+kerstin",
+   "key_b": "p:frankykizzfly",
+   "decision": "merge",
+   "rationale": "Franky & Kerstin and FrankyKizzFly & Kerstin are the same couple, with the stage name written with and without a spelling variant."
+  },
+  {
+   "pair_id": 240,
+   "key_a": "p:fred@chiara+fred",
+   "key_b": "p:fred@fred+morgane",
+   "decision": "unsure",
+   "rationale": "Fred & Chiara and Fred & Morgane are different couples in France, and a common first name with different partners does not settle identity."
+  },
+  {
+   "pair_id": 241,
+   "key_a": "p:fred@chiara+fred",
+   "key_b": "p:fredag",
+   "decision": "merge",
+   "rationale": "Fred & Chiara on side A and Fred Ag & Chiara on side B share the same partner Chiara and France, with a small variant in the first name."
+  },
+  {
+   "pair_id": 242,
+   "key_a": "p:fred@fred+morgane",
+   "key_b": "p:frednelson",
+   "decision": "merge",
+   "rationale": "Fred & Morgane on side A and Fred-Nelson & Morgane on side B share the same partner Morgane and the same France-based festival circuit."
+  },
+  {
+   "pair_id": 243,
+   "key_a": "p:frida@frida+ronie",
+   "key_b": "p:fridaellinor",
+   "decision": "unsure",
+   "rationale": "Frida is a single first name shared with side A's Frida in a couple with Ronie, and Sweden stated on both, which is weak for a common name."
+  },
+  {
+   "pair_id": 244,
+   "key_a": "p:fuego@fuego+kiki",
+   "key_b": "p:fuegorebirth",
+   "decision": "merge",
+   "rationale": "Fuego & Kiki on side A and Fuego Rebirth & Kiki on side B are the same couple, with the stage name extended by one word and the same partner."
+  },
+  {
+   "pair_id": 245,
+   "key_a": "p:gabrielbravoriviera",
+   "key_b": "p:grabrielbravoriviera",
+   "decision": "merge",
+   "rationale": "Gabriel Bravo Riviera and Grabriel Bravo Riviera are the same distinctive name at the same event on the same day, differing by one letter."
+  },
+  {
+   "pair_id": 246,
+   "key_a": "p:gaby@dance",
+   "key_b": "p:gaby@dwe+gaby",
+   "decision": "unsure",
+   "rationale": "Gaby as a solo teacher on side A and Dwe & Gaby on side B share a common first name, with Netherlands stated only on one side."
+  },
+  {
+   "pair_id": 247,
+   "key_a": "p:gaz@dance",
+   "key_b": "p:gaz@dj",
+   "decision": "merge",
+   "rationale": "Gaz (Canada) on side A and DJ Gaz (Canada) on side B share the distinctive stage name and country, with the DJ prefix on one side only."
+  },
+  {
+   "pair_id": 248,
+   "key_a": "p:gazl@gazl+isabelle",
+   "key_b": "p:gazl@gazl+katariina",
+   "decision": "unsure",
+   "rationale": "Gazl & Isabelle and Gazl & Katariina appear at the same event on the same date with different partners, so the evidence does not settle it."
+  },
+  {
+   "pair_id": 249,
+   "key_a": "p:geerobeats",
+   "key_b": "p:geerobeatz",
+   "decision": "merge",
+   "rationale": "DJ Geero Beats and DJ Geero Beatz are the same DJ in Geneva, differing only in a one-letter spelling variant."
+  },
+  {
+   "pair_id": 250,
+   "key_a": "p:george@evgenia+george",
+   "key_b": "p:georgeplom",
+   "decision": "merge",
+   "rationale": "George & Evgenia and George Plom are both listed as bachata teachers at the same Thessaloniki event on the same date with Greece stated."
+  }
+ ]
+}

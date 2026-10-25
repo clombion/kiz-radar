@@ -1,0 +1,342 @@
+{
+ "batch": "merge-review-012",
+ "prompt_version": "merge-review-v1",
+ "decisions": [
+  {
+   "pair_id": 551,
+   "key_a": "p:stefano@elisa+stefano",
+   "key_b": "p:stefano@maura+stefano",
+   "decision": "separate",
+   "rationale": "Stefano is listed with Elisa and with Maura at the same events on the same dates (Milan 2026-03-20, Massa 2026-06-05), so they are different couples."
+  },
+  {
+   "pair_id": 552,
+   "key_a": "p:stefmat",
+   "key_b": "p:stefmatt",
+   "decision": "unsure",
+   "rationale": "Stef Mat (performer, Pisa) and Stef Matt (teacher, Milan) differ by one letter with no shared event, partner or stated country."
+  },
+  {
+   "pair_id": 553,
+   "key_a": "p:stephane@ana+stephane",
+   "key_b": "p:stephanelyke",
+   "decision": "merge",
+   "rationale": "Stephane is always paired with Ana, and the Brussels entry Stephane Lyke & Ana Maria Stoica matches the Romanian and Belgian flags shown in the Cluj and Berlin entries."
+  },
+  {
+   "pair_id": 554,
+   "key_a": "p:stephanie@benjamine+stephanie",
+   "key_b": "p:stephanie@greg+stephanie",
+   "decision": "separate",
+   "rationale": "Only the first name Stephanie is shared; the partners (Benjamine versus Greg) and styles (Urban Kiz versus Bachata) differ."
+  },
+  {
+   "pair_id": 555,
+   "key_a": "p:steve@bianca+steve",
+   "key_b": "p:stevesteven",
+   "decision": "separate",
+   "rationale": "Steve is paired with Bianca on side A and with Jasmine on side B, and the names are not the same."
+  },
+  {
+   "pair_id": 556,
+   "key_a": "p:steven@audrey+steven",
+   "key_b": "p:stevens@audrey+stevens",
+   "decision": "merge",
+   "rationale": "Steven or Stevens is paired with Audrey in every entry, the surname differs only by spelling, and the entries are in France."
+  },
+  {
+   "pair_id": 557,
+   "key_a": "p:styleofmusc",
+   "key_b": "p:styleofmusic",
+   "decision": "merge",
+   "rationale": "DJ STYLE OF MUSC is a typo of the distinctive DJ name Style of Music, and both sides are DJs in Switzerland (Geneva and Constance)."
+  },
+  {
+   "pair_id": 558,
+   "key_a": "p:susan@dance",
+   "key_b": "p:susan@susan+tomasdansar",
+   "decision": "unsure",
+   "rationale": "Side A is a solo Susan in Stockholm and side B is Tomas Dansar & Susan in Stockholm; the same first name and country are weak evidence alone."
+  },
+  {
+   "pair_id": 559,
+   "key_a": "p:tecas@dj",
+   "key_b": "p:tecas@tasha+tecas",
+   "decision": "merge",
+   "rationale": "DJ Tecas and Tecas & Tasha teach or play at the same Amsterdam event on the same date, with the same stated country (France), which fits one person in two roles."
+  },
+  {
+   "pair_id": 560,
+   "key_a": "p:telma@adilson+telma",
+   "key_b": "p:telma@adilsonmaiza+telma",
+   "decision": "merge",
+   "rationale": "Telma is always paired with Adilson, the Warsaw entry names him Adilson Maíza, and the Angola flag matches the other entries."
+  },
+  {
+   "pair_id": 561,
+   "key_a": "p:telma@adilson+telma",
+   "key_b": "p:telma@maiza+telma",
+   "decision": "merge",
+   "rationale": "Telma's partner is Adilson on side A and Maiza on side B; the Warsaw entry Adilson Maíza & Telma links Maiza to Adilson, and both sides carry the Angola flag."
+  },
+  {
+   "pair_id": 562,
+   "key_a": "p:telma@adilsonmaiza+telma",
+   "key_b": "p:telma@maiza+telma",
+   "decision": "merge",
+   "rationale": "The Warsaw entry Adilson Maíza & Telma links the surname Maiza to Telma's partner on the other side, and both carry the Angola flag."
+  },
+  {
+   "pair_id": 563,
+   "key_a": "p:teresa@emanuel+teresa",
+   "key_b": "p:teresafreitas",
+   "decision": "merge",
+   "rationale": "Teresa with Emanuel appears on both sides, the B entry names Teresa Freitas & Emanuel, and both sides carry the Angola flag."
+  },
+  {
+   "pair_id": 564,
+   "key_a": "p:theo@dance",
+   "key_b": "p:theoawadzi",
+   "decision": "merge",
+   "rationale": "The teacher Theo and DJ Theo Awadzi are listed in Stockholm on the same date (2026-01-08) with the same stated countries."
+  },
+  {
+   "pair_id": 565,
+   "key_a": "p:tiia@dance",
+   "key_b": "p:tiia@jennina+tiia",
+   "decision": "unsure",
+   "rationale": "Tiia alone in Tampere and Jennina & Tiia in Tampere share a first name and country, but no partner or style links the entries."
+  },
+  {
+   "pair_id": 566,
+   "key_a": "p:tiwosh",
+   "key_b": "p:tiwosh@dance",
+   "decision": "merge",
+   "rationale": "Ti Wosh (DJ entries) and Tiwosh (teacher, Ljubljana) are one name in different spellings and roles, with the France flag on the DJ side."
+  },
+  {
+   "pair_id": 567,
+   "key_a": "p:tiwosh",
+   "key_b": "p:tiwosh@dj",
+   "decision": "merge",
+   "rationale": "All entries are DJ Ti Wosh or spelling variants (TI-WOSH, TIWOSH, Ti-Wosh, Dj Tiwosh), with the same stated France flag."
+  },
+  {
+   "pair_id": 568,
+   "key_a": "p:tiwosh@dance",
+   "key_b": "p:tiwosh@dj",
+   "decision": "merge",
+   "rationale": "Tiwosh the teacher and Dj Tiwosh the DJ are both in Ljubljana on 2027-02-11 and 2027-02-12, with the same name and France flag."
+  },
+  {
+   "pair_id": 569,
+   "key_a": "p:tomasia@alvaro+tomasia",
+   "key_b": "p:tomasina@alvaro+tomasina",
+   "decision": "separate",
+   "rationale": "The partners Tomásia and Tomasina are different names, and Alvaro is the only shared element."
+  },
+  {
+   "pair_id": 570,
+   "key_a": "p:tony@carla+tony",
+   "key_b": "p:tonypirata",
+   "decision": "separate",
+   "rationale": "Tony & Carla and Tony Pirata both teach Kizomba at Faro on 2026-05-20, and Tony Pirata's partner differs (Melody or none)."
+  },
+  {
+   "pair_id": 571,
+   "key_a": "p:tony@carla+tony",
+   "key_b": "p:tonyviser",
+   "decision": "merge",
+   "rationale": "Carla is the partner in both, the entries name Tony & Carla and Tony Viser & Carla Andrade, and the Angola and Cape Verde flags match."
+  },
+  {
+   "pair_id": 572,
+   "key_a": "p:tpeak",
+   "key_b": "p:tpeak@dance",
+   "decision": "merge",
+   "rationale": "T'Peak appears as teacher in Gothenburg on 2026-01-22 and 2027-01-14 with the same entries as the T'Peak & Djé pair, and the Lyon entries match."
+  },
+  {
+   "pair_id": 573,
+   "key_a": "p:tpeak",
+   "key_b": "p:tpeak@dj",
+   "decision": "merge",
+   "rationale": "DJ T'Peak and T'Peak & Djé share the Gothenburg 2027-01-14 and Copenhagen 2026-05-15 events with the same France flag."
+  },
+  {
+   "pair_id": 574,
+   "key_a": "p:tpeak@dance",
+   "key_b": "p:tpeak@dj",
+   "decision": "merge",
+   "rationale": "The teacher T'Peak and the DJ T'Peak are in Gothenburg on 2026-01-22 and Lyon on 2026-04-09, the same event and date for both roles."
+  },
+  {
+   "pair_id": 575,
+   "key_a": "p:tpeak@dance",
+   "key_b": "p:tpeak@dje+tpeak",
+   "decision": "merge",
+   "rationale": "T'Peak as teacher in Gothenburg on 2026-01-22 and 2027-01-14 matches the T'Peak & Djé entries in the same city on the same date."
+  },
+  {
+   "pair_id": 576,
+   "key_a": "p:tpeak@dj",
+   "key_b": "p:tpeak@dje+tpeak",
+   "decision": "merge",
+   "rationale": "DJ T'Peak and the T'Peak & Djé teacher pair are in Gothenburg on 2027-01-14 and Copenhagen on 2026-05-15 with the same France flag."
+  },
+  {
+   "pair_id": 577,
+   "key_a": "p:tzer@chamalo+tzer",
+   "key_b": "p:tzer@dance",
+   "decision": "merge",
+   "rationale": "T-zer is a distinctive name, the Chamalo & T-zer entry carries the Sweden flag, and the Kingston T-ZER entry also carries Sweden."
+  },
+  {
+   "pair_id": 578,
+   "key_a": "p:uliana@dance",
+   "key_b": "p:uliana@daniel+uliana",
+   "decision": "merge",
+   "rationale": "Uliana is a distinctive first name, and both entries carry the Ukraine and Norway flags, with a Norway event on each side."
+  },
+  {
+   "pair_id": 579,
+   "key_a": "p:val@jossy+val",
+   "key_b": "p:valdanza",
+   "decision": "merge",
+   "rationale": "Val & Jossy and Val Danza & Jossy share the partner Jossy and the Tallinn location."
+  },
+  {
+   "pair_id": 580,
+   "key_a": "p:valentina@jhaime+valentina",
+   "key_b": "p:valentinadiaz",
+   "decision": "merge",
+   "rationale": "Jhaime & Valentina and Valentina Diaz both teach in Quebec on 2026-03-06 with the same country, which fits one person in a couple and in a solo workshop."
+  },
+  {
+   "pair_id": 581,
+   "key_a": "p:valr@sara+valr",
+   "key_b": "p:valr@sarah+valr",
+   "decision": "merge",
+   "rationale": "Val'R is a distinctive stage name, the partner names are Sara and Sarah (a spelling variant), and both sides carry the France flag."
+  },
+  {
+   "pair_id": 582,
+   "key_a": "p:vanildo@dance",
+   "key_b": "p:vanildo@mara+vanildo",
+   "decision": "merge",
+   "rationale": "Vanildo is a distinctive name with the Netherlands flag on both sides, and both sides teach Urban Kiz."
+  },
+  {
+   "pair_id": 583,
+   "key_a": "p:vasco@dance",
+   "key_b": "p:vasco@dj",
+   "decision": "merge",
+   "rationale": "Vasco the teacher and DJ Vasco are both in Lyon on 2026-04-02 and Barcelona on 2026-04-17, with the same France flag."
+  },
+  {
+   "pair_id": 584,
+   "key_a": "p:vicky@prince+vicky",
+   "key_b": "p:vickydelmastro",
+   "decision": "unsure",
+   "rationale": "Prince & Vicky and Vicky del Mastro share the first name Vicky and an Italy flag, but no partner, event or date links them."
+  },
+  {
+   "pair_id": 585,
+   "key_a": "p:viola@balito+viola",
+   "key_b": "p:violapalmai",
+   "decision": "merge",
+   "rationale": "Viola is in Budapest on 2026-11-05 on both sides with the same UK flag, which fits a couple entry and a solo entry for one person."
+  },
+  {
+   "pair_id": 586,
+   "key_a": "p:virgil@juneline+virgil",
+   "key_b": "p:virgile@juneline+virgile",
+   "decision": "merge",
+   "rationale": "Virgil and Virgile are spelling variants with the same partner Juneline, the same city Amsterdam and the Netherlands flag."
+  },
+  {
+   "pair_id": 587,
+   "key_a": "p:walter@dj",
+   "key_b": "p:waltercorreia",
+   "decision": "merge",
+   "rationale": "DJ Walter and DJ Walter Correia are both DJs with the same Netherlands (Holland) flag, the full name extending the same stage name."
+  },
+  {
+   "pair_id": 588,
+   "key_a": "p:willy@jessica+willy",
+   "key_b": "p:willy@jessy+willy",
+   "decision": "merge",
+   "rationale": "Willy & Jessica and Willy & Jessy are a spelling variant of the partner name with the same partner Willy, the Salsa style and the Italy flag."
+  },
+  {
+   "pair_id": 589,
+   "key_a": "p:willy@lauriane+willy",
+   "key_b": "p:willyg",
+   "decision": "unsure",
+   "rationale": "Willy & Lauriane (teachers) and DJ Willy G share only the first name Willy, with no common event, date or country."
+  },
+  {
+   "pair_id": 590,
+   "key_a": "p:wookie@dance",
+   "key_b": "p:wookie@nicole+wookie",
+   "decision": "merge",
+   "rationale": "Wookie is a distinctive name, and both sides carry the Hungary flag for the Vienna solo entry and the Budapest and Warsaw entries."
+  },
+  {
+   "pair_id": 591,
+   "key_a": "p:yace@camille+yace",
+   "key_b": "p:yacegalanta",
+   "decision": "merge",
+   "rationale": "Yace Galanta & Camille and Yace & Camille share the partner Camille and the distinctive name Yace Galanta."
+  },
+  {
+   "pair_id": 592,
+   "key_a": "p:yami@kali+yami",
+   "key_b": "p:yamiso",
+   "decision": "merge",
+   "rationale": "Yami & Kali and DJ Yami SO are in Albena on 2026-07-02 with the same France flag, which fits one person as teacher and DJ."
+  },
+  {
+   "pair_id": 593,
+   "key_a": "p:yesisica@andres+yesisica",
+   "key_b": "p:yessica@andres+yessica",
+   "decision": "merge",
+   "rationale": "Andres with Yesisica and Andrés with Yessica share the partner, the Bachata style and Spain, with a spelling variant of the partner name."
+  },
+  {
+   "pair_id": 594,
+   "key_a": "p:york@dj",
+   "key_b": "p:york@lisa+york",
+   "decision": "merge",
+   "rationale": "DJ York and York & Lisa appear at the same city on the same dates across the whole batch, which fits one person as DJ and teacher."
+  },
+  {
+   "pair_id": 595,
+   "key_a": "p:yuna@jules+yuna",
+   "key_b": "p:yunatarraxopop",
+   "decision": "merge",
+   "rationale": "Jules & Yuna TarraxoPop is the same couple as Yuna & Jules TarraxoPop, with the same partners, style and Tarraxo Pop name."
+  },
+  {
+   "pair_id": 596,
+   "key_a": "p:yves@dance",
+   "key_b": "p:yvesraymond",
+   "decision": "merge",
+   "rationale": "Yves and Yves Raymond teach in Stockholm with the same Kizomba style and Sweden flag."
+  },
+  {
+   "pair_id": 597,
+   "key_a": "p:ze@dance",
+   "key_b": "p:ze@dj",
+   "decision": "merge",
+   "rationale": "Zé the teacher and DJ Zé are both in Bangkok on 2026-10-30 with the same Australia flag."
+  },
+  {
+   "pair_id": 598,
+   "key_a": "p:ziggy@dani+ziggy",
+   "key_b": "p:ziggy@dj",
+   "decision": "merge",
+   "rationale": "Ziggy & Dani and DJ Ziggy are both in Nenagh on 2026-05-29 with the same Bulgaria flag."
+  }
+ ]
+}

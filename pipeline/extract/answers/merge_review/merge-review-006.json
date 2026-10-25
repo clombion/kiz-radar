@@ -1,0 +1,356 @@
+{
+ "batch": "merge-review-006",
+ "prompt_version": "merge-review-v1",
+ "decisions": [
+  {
+   "pair_id": 251,
+   "key_a": "p:giorgia@giorgia+kinkela",
+   "key_b": "p:giorgia@giorgia+kinkizomba",
+   "decision": "unsure",
+   "rationale": "Same Giorgia and Angola flag, both Bielefeld, but the partner is written Kinkela on one side and Kinkizomba on the other, which does not settle it."
+  },
+  {
+   "pair_id": 252,
+   "key_a": "p:giuseppe@giuseppe+klaudyna",
+   "key_b": "p:giuseppe@giuseppe+vincenza",
+   "decision": "separate",
+   "rationale": "Two couples with different partner names (Klaudyna and Vincenza) that share only the common first name Giuseppe."
+  },
+  {
+   "pair_id": 253,
+   "key_a": "p:giuseppe@giuseppe+klaudyna",
+   "key_b": "p:giuseppeandrea",
+   "decision": "unsure",
+   "rationale": "Giuseppe & Klaudyna and Giuseppe Andrea are both listed at the same Milano event on the same date with the same style, so one person or two cannot be settled."
+  },
+  {
+   "pair_id": 254,
+   "key_a": "p:giuseppe@giuseppe+vincenza",
+   "key_b": "p:giuseppeandrea",
+   "decision": "separate",
+   "rationale": "A couple with Vincenza and the solo name Giuseppe Andrea share only the common first name and have no shared event, date or city."
+  },
+  {
+   "pair_id": 255,
+   "key_a": "p:guilherme@dance",
+   "key_b": "p:guillherme@dance",
+   "decision": "merge",
+   "rationale": "Guilhermé and Guillhermé are a one-letter spelling variant in the same city (Bern), with the same Angola and Swiss flags."
+  },
+  {
+   "pair_id": 256,
+   "key_a": "p:guiu@dance",
+   "key_b": "p:guiuvilanova",
+   "decision": "merge",
+   "rationale": "Guiu is the first name of Guiu Vilanova, both stated as Spain, and the surname is the only addition."
+  },
+  {
+   "pair_id": 257,
+   "key_a": "p:heneco@dance",
+   "key_b": "p:heneco@heneco+kiki",
+   "decision": "merge",
+   "rationale": "The distinctive stage name Heneco appears in both records with the same stated France flag and the same Vienna venue."
+  },
+  {
+   "pair_id": 258,
+   "key_a": "p:heneco@dance",
+   "key_b": "p:heneco@heneco+marta",
+   "decision": "merge",
+   "rationale": "The distinctive stage name Heneco appears solo and with Marta, with the same stated France flag and a matching Constance/Konstanz venue."
+  },
+  {
+   "pair_id": 259,
+   "key_a": "p:heneco@heneco+kiki",
+   "key_b": "p:heneco@heneco+marta",
+   "decision": "merge",
+   "rationale": "The distinctive stage name Heneco is the common element of two couples, both stated France, and the partner change alone does not separate them."
+  },
+  {
+   "pair_id": 260,
+   "key_a": "p:hicham@dance",
+   "key_b": "p:hichamelloco",
+   "decision": "merge",
+   "rationale": "DJ Hicham El Loco and the teacher Hicham are at the same Nantes event on the same date, and the Saint-Nazaire event matches on date and Salsa/Bachata style."
+  },
+  {
+   "pair_id": 261,
+   "key_a": "p:hugosmile",
+   "key_b": "p:hugosmile@dj",
+   "decision": "merge",
+   "rationale": "The distinctive stage name Hugo Smile appears as DJ on both sides, with a #HugoSmile variant and the same France flag."
+  },
+  {
+   "pair_id": 262,
+   "key_a": "p:ichigo@dance",
+   "key_b": "p:ichigo@dj",
+   "decision": "merge",
+   "rationale": "DJ Ichigo and the teacher Ichigo are at the same Stockholm event on the same date with the same France flag, and the distinctive name matches."
+  },
+  {
+   "pair_id": 263,
+   "key_a": "p:ichigo@dance",
+   "key_b": "p:ichigo@ichigo+kristel",
+   "decision": "merge",
+   "rationale": "The distinctive stage name Ichigo appears as a solo teacher and in a couple with Kristel, both with France flags in Paris."
+  },
+  {
+   "pair_id": 264,
+   "key_a": "p:ichigo@dance",
+   "key_b": "p:ichigo@ichigo+kristelju",
+   "decision": "merge",
+   "rationale": "The distinctive stage name Ichigo appears solo and in a couple with Kristel Ju, with the same Paris venue and France flag."
+  },
+  {
+   "pair_id": 265,
+   "key_a": "p:ichigo@dj",
+   "key_b": "p:ichigo@ichigo+kristel",
+   "decision": "merge",
+   "rationale": "DJ Ichigo and the couple Ichigo & Kristel share the distinctive name and the France flag, and the partner appears in both."
+  },
+  {
+   "pair_id": 266,
+   "key_a": "p:ichigo@dj",
+   "key_b": "p:ichigo@ichigo+kristelju",
+   "decision": "merge",
+   "rationale": "DJ Ichigo and the couple Ichigo & Kristel Ju share the distinctive name and the France flag, with the same Paris venue."
+  },
+  {
+   "pair_id": 267,
+   "key_a": "p:ichigo@ichigo+kristel",
+   "key_b": "p:ichigo@ichigo+kristelju",
+   "decision": "merge",
+   "rationale": "Both couples are Ichigo with the partner Kristel (Kristel Ju), with a Paris venue and France flag on both sides."
+  },
+  {
+   "pair_id": 268,
+   "key_a": "p:ilias@adina+ilias",
+   "key_b": "p:ilias@ilias+sandra",
+   "decision": "separate",
+   "rationale": "Ilias & Adina and Ilias & Sandra have different partners and no shared event or date, so only the first name is shared."
+  },
+  {
+   "pair_id": 269,
+   "key_a": "p:ines@dance",
+   "key_b": "p:ines@ines+pedro",
+   "decision": "unsure",
+   "rationale": "Inès solo and Pedro & Inês share the first name and the Portugal flag, but the couple's partner is Pedro and neither side settles the identity."
+  },
+  {
+   "pair_id": 270,
+   "key_a": "p:ines@dance",
+   "key_b": "p:inesmiranda",
+   "decision": "unsure",
+   "rationale": "INÈS and Inês Miranda share the first name and the Portugal flag, but the surname is missing on one side and the first name is common."
+  },
+  {
+   "pair_id": 271,
+   "key_a": "p:ines@ines+pedro",
+   "key_b": "p:inesmiranda",
+   "decision": "unsure",
+   "rationale": "Pedro & Inês and Inês Miranda share the first name and the Portugal flag, but the couple partner and the common first name leave it open."
+  },
+  {
+   "pair_id": 272,
+   "key_a": "p:ioanna@chrysoula+ioanna",
+   "key_b": "p:ioannajoowaa",
+   "decision": "unsure",
+   "rationale": "Ioanna & Chrysoula and Ioanna Joowaa are listed at the same Thessaloniki event on the same date, which points both ways."
+  },
+  {
+   "pair_id": 273,
+   "key_a": "p:isabelle@felicien+isabelle",
+   "key_b": "p:isabelle@gazl+isabelle",
+   "decision": "separate",
+   "rationale": "Isabelle & Felicien and Gazl & Isabelle are couples with different partners that share only the common first name Isabelle."
+  },
+  {
+   "pair_id": 274,
+   "key_a": "p:isabelle@felicien+isabelle",
+   "key_b": "p:isabellecrepin",
+   "decision": "unsure",
+   "rationale": "Isabelle Crepin and Isabelle & Felicien share only the first name and a France flag, which does not settle whether they are one person."
+  },
+  {
+   "pair_id": 275,
+   "key_a": "p:isabelle@felicien+isabelle",
+   "key_b": "p:isabellemichalonakacolibri",
+   "decision": "unsure",
+   "rationale": "Isabelle Michalon Aka Colibri and Isabelle & Felicien share only the first name and a France flag, which does not settle the identity."
+  },
+  {
+   "pair_id": 276,
+   "key_a": "p:isabelle@gazl+isabelle",
+   "key_b": "p:isabellecrepin",
+   "decision": "unsure",
+   "rationale": "Isabelle Crepin and Gazl & Isabelle share only the common first name and a France flag, which does not settle the identity."
+  },
+  {
+   "pair_id": 277,
+   "key_a": "p:isabelle@gazl+isabelle",
+   "key_b": "p:isabellemichalonakacolibri",
+   "decision": "unsure",
+   "rationale": "Isabelle Michalon Aka Colibri and Gazl & Isabelle share only the common first name and a France flag, which does not settle the identity."
+  },
+  {
+   "pair_id": 278,
+   "key_a": "p:jack@dj",
+   "key_b": "p:jack@jack+sara",
+   "decision": "merge",
+   "rationale": "DJ Jack and Jack & Sara appear at the same Madrid, Lyon, Vienna, Barcelona and Sevilla events on the same dates with the same Spain flag."
+  },
+  {
+   "pair_id": 279,
+   "key_a": "p:jahja",
+   "key_b": "p:jahja@dance",
+   "decision": "merge",
+   "rationale": "The distinctive name Jah J'a appears on both sides with a spelling variant (Jah'ja) and the same teacher role."
+  },
+  {
+   "pair_id": 280,
+   "key_a": "p:jasmine@dance",
+   "key_b": "p:jasmine@jasmine+stevesteven",
+   "decision": "unsure",
+   "rationale": "Jasmine solo and Jasmine (GER) & Steve Steven share the identical name and the GER flag in Prague, but the name is common and the partner differs."
+  },
+  {
+   "pair_id": 281,
+   "key_a": "p:jefe@diana+jefe",
+   "key_b": "p:jefe@dj",
+   "decision": "merge",
+   "rationale": "DJ Jefe and the couple Jefe & Diana are at the same Philipsburg event on the same date with the same stated country."
+  },
+  {
+   "pair_id": 282,
+   "key_a": "p:jeff@dj",
+   "key_b": "p:jeff@jeff+manon",
+   "decision": "merge",
+   "rationale": "DJ Jeff and Jeff & Manon are at the same Philipsburg event on the same date with the same stated Guadeloupe country."
+  },
+  {
+   "pair_id": 283,
+   "key_a": "p:jenny@elhadj+jenny",
+   "key_b": "p:jenny@jenny+jojo",
+   "decision": "separate",
+   "rationale": "Elhadj & Jenny and Jojo & Jenny are couples with different partners and no shared event or date, so only the first name Jenny is shared."
+  },
+  {
+   "pair_id": 284,
+   "key_a": "p:jesus@anni+jesus",
+   "key_b": "p:jesus@jesus+lucy",
+   "decision": "separate",
+   "rationale": "Jesus & Anni and Lucy & Jesus are couples with different partners and no shared event, so only the common first name Jesus is shared."
+  },
+  {
+   "pair_id": 285,
+   "key_a": "p:jesus@anni+jesus",
+   "key_b": "p:jesus@jesus+maria",
+   "decision": "separate",
+   "rationale": "Jesus & Anni and Jesus & María are couples with different partners and no shared event, so only the common first name Jesus is shared."
+  },
+  {
+   "pair_id": 286,
+   "key_a": "p:jesus@jesus+lucy",
+   "key_b": "p:jesus@jesus+maria",
+   "decision": "separate",
+   "rationale": "Lucy & Jesus and Jesus & María are couples with different partners and no shared event, so only the common first name Jesus is shared."
+  },
+  {
+   "pair_id": 287,
+   "key_a": "p:jeydicksonlima",
+   "key_b": "p:jeydiksonlima",
+   "decision": "merge",
+   "rationale": "Jeydickson Lima and Jeydikson Lima are a one-letter spelling variant of a distinctive name, both teachers in the UK with Kizomba style."
+  },
+  {
+   "pair_id": 288,
+   "key_a": "p:jkee@dadou+jkee",
+   "key_b": "p:jkee@dj",
+   "decision": "merge",
+   "rationale": "DJ J-Kee and the couple J-Kee & Dadou are at the same Lyon event on the same date with the same France flag."
+  },
+  {
+   "pair_id": 289,
+   "key_a": "p:joana@chryssoula+joana",
+   "key_b": "p:joanna@christina+joanna",
+   "decision": "separate",
+   "rationale": "Joana & Chryssoula and Joanna & Christina have different partner names in different countries and events, with only similar first names."
+  },
+  {
+   "pair_id": 290,
+   "key_a": "p:joey@dj",
+   "key_b": "p:joeyc",
+   "decision": "merge",
+   "rationale": "DJ Joey and DJ Joey C are the same DJ name with a suffix, in Stockholm with the same Sweden flag."
+  },
+  {
+   "pair_id": 291,
+   "key_a": "p:johan@johan+lucie",
+   "key_b": "p:johann@johann+lucie",
+   "decision": "merge",
+   "rationale": "Johan & Lucie and Johann & Lucie share the same partner Lucie in France, with a one-letter spelling variant of the first name."
+  },
+  {
+   "pair_id": 292,
+   "key_a": "p:johann@estelle+johann",
+   "key_b": "p:johann@johann+laeticia",
+   "decision": "unsure",
+   "rationale": "Johann & Estelle and Johann & Laeticia are listed as two couples at the same Pointe-à-Pitre event on the same date, which points both ways."
+  },
+  {
+   "pair_id": 293,
+   "key_a": "p:johann@estelle+johann",
+   "key_b": "p:johann@johann+lucie",
+   "decision": "separate",
+   "rationale": "Johann & Estelle and Johann & Lucie are couples with different partners at different events, so only the common first name Johann is shared."
+  },
+  {
+   "pair_id": 294,
+   "key_a": "p:johann@estelle+johann",
+   "key_b": "p:johannorsinet",
+   "decision": "unsure",
+   "rationale": "Johann & Estelle and DJ Johann Orsinet share the first name and France, but no event or partner links them."
+  },
+  {
+   "pair_id": 295,
+   "key_a": "p:johann@johann+laeticia",
+   "key_b": "p:johann@johann+lucie",
+   "decision": "separate",
+   "rationale": "Johann & Laeticia and Johann & Lucie are couples with different partners at different events, so only the common first name Johann is shared."
+  },
+  {
+   "pair_id": 296,
+   "key_a": "p:johann@johann+laeticia",
+   "key_b": "p:johannorsinet",
+   "decision": "unsure",
+   "rationale": "Johann & Laeticia and DJ Johann Orsinet share the first name and France, but no event or partner links them."
+  },
+  {
+   "pair_id": 297,
+   "key_a": "p:johann@johann+lucie",
+   "key_b": "p:johannorsinet",
+   "decision": "merge",
+   "rationale": "Johann & Lucie and DJ Johann Orsinet are listed at the same Mulhouse event on the same date with the same France flag."
+  },
+  {
+   "pair_id": 298,
+   "key_a": "p:johannorsinet",
+   "key_b": "p:johanorsinet",
+   "decision": "merge",
+   "rationale": "DJ Johann Orsinet and the teacher Johan Orsinet are at the same La Plagne event on the same date with the same Kizomba style."
+  },
+  {
+   "pair_id": 299,
+   "key_a": "p:johannorsinet",
+   "key_b": "p:johanorsinnet",
+   "decision": "merge",
+   "rationale": "The distinctive surname Orsinet appears on both sides with spelling variants (Orsinnet) and the same first name Johann/Johan."
+  },
+  {
+   "pair_id": 300,
+   "key_a": "p:johanorsinet",
+   "key_b": "p:johanorsinnet",
+   "decision": "merge",
+   "rationale": "The distinctive surname Orsinet appears on both sides as a teacher with spelling variants (Orsinnet), with the same first name Johan."
+  }
+ ]
+}

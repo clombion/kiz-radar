@@ -1,0 +1,2072 @@
+{
+  "batch": "rooms-genres-005",
+  "prompt_version": "rooms-genres-v1",
+  "events": [
+    {
+      "event_id": 16134,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Kizomba (all styles) Festival"
+        }
+      ]
+    },
+    {
+      "event_id": 16140,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": []
+    },
+    {
+      "event_id": 16145,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "bachata",
+          "genre_as_written": "Bachata Sensual",
+          "quote": "Bachata Sensual"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Kizomba & Urban Kiz"
+        },
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "Urban Kiz",
+          "quote": "Kizomba & Urban Kiz"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "Semba",
+          "quote": "DJs Semba"
+        }
+      ]
+    },
+    {
+      "event_id": 16150,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Kizomba and UrbanKiz"
+        },
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "UrbanKiz",
+          "quote": "Kizomba and UrbanKiz"
+        }
+      ]
+    },
+    {
+      "event_id": 16155,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "Urban Kiz",
+          "quote": "Urban Kiz Weekender"
+        }
+      ]
+    },
+    {
+      "event_id": 16160,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Kizomba, Semba, Kuduro"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "Semba",
+          "quote": "Kizomba, Semba, Kuduro"
+        },
+        {
+          "genre": "kuduro",
+          "genre_as_written": "Kuduro",
+          "quote": "Kizomba, Semba, Kuduro"
+        }
+      ]
+    },
+    {
+      "event_id": 16167,
+      "party_rooms": {
+        "count": 2,
+        "quote": "2 Social rooms at the Academy"
+      },
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "kizomba",
+          "quote": "kizomba, urban kiz, and tarraxo"
+        },
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "urban kiz",
+          "quote": "kizomba, urban kiz, and tarraxo"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "tarraxo",
+          "quote": "kizomba, urban kiz, and tarraxo"
+        }
+      ]
+    },
+    {
+      "event_id": 16173,
+      "party_rooms": {
+        "count": 5,
+        "quote": "5 Different Dancing rooms at Night"
+      },
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "KIZOMBA",
+          "quote": "I LOVE KIZOMBA SENSUAL FESTIVAL"
+        },
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "Urbankiz",
+          "quote": "Urbankiz"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "Semba",
+          "quote": "Semba"
+        }
+      ]
+    },
+    {
+      "event_id": 16178,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "KIZOMBA",
+          "quote": "KIZOMBA"
+        },
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "URBAN KIZ",
+          "quote": "URBAN KIZ"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "TARRAXO",
+          "quote": "TARRAXO"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "SEMBA",
+          "quote": "SEMBA"
+        },
+        {
+          "genre": "kompa",
+          "genre_as_written": "KONPA",
+          "quote": "KONPA"
+        }
+      ]
+    },
+    {
+      "event_id": 16186,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": []
+    },
+    {
+      "event_id": 16191,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "salsa",
+          "genre_as_written": "Cuban Salsa",
+          "quote": "Cuban Salsa/Rueda de Casino"
+        },
+        {
+          "genre": "bachata",
+          "genre_as_written": "Bachata",
+          "quote": "Bachata (all styles)"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Kizomba/Semba"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "Semba",
+          "quote": "Kizomba/Semba"
+        },
+        {
+          "genre": "zouk",
+          "genre_as_written": "Brazilian Zouk",
+          "quote": "Brazilian Zouk"
+        },
+        {
+          "genre": "reggaeton",
+          "genre_as_written": "Reggaeton",
+          "quote": "Reggaeton"
+        }
+      ]
+    },
+    {
+      "event_id": 16196,
+      "party_rooms": {
+        "count": 4,
+        "quote": "4 ROOMS"
+      },
+      "class_rooms": null,
+      "rooms": [
+        {
+          "name_as_written": "100% GHETTOZOUK/TARRAXA",
+          "kind": "party",
+          "genres": [
+            "zouk",
+            "tarraxo"
+          ],
+          "quote": "100% GHETTOZOUK/TARRAXA"
+        },
+        {
+          "name_as_written": "100% BACHATA",
+          "kind": "party",
+          "genres": [
+            "bachata"
+          ],
+          "quote": "100% BACHATA"
+        },
+        {
+          "name_as_written": "100% SEMBA",
+          "kind": "party",
+          "genres": [
+            "semba"
+          ],
+          "quote": "100% SEMBA"
+        },
+        {
+          "name_as_written": "100% SALSA",
+          "kind": "party",
+          "genres": [
+            "salsa"
+          ],
+          "quote": "100% SALSA"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "zouk",
+          "genre_as_written": "GHETTOZOUK",
+          "quote": "GHETTOZOUK/TARRAXA"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "TARRAXA",
+          "quote": "GHETTOZOUK/TARRAXA"
+        },
+        {
+          "genre": "bachata",
+          "genre_as_written": "BACHATA",
+          "quote": "100% BACHATA"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "SEMBA",
+          "quote": "100% SEMBA"
+        },
+        {
+          "genre": "salsa",
+          "genre_as_written": "SALSA",
+          "quote": "100% SALSA"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "KIZOMBA",
+          "quote": "KIZOMBA & BACHATA"
+        }
+      ]
+    },
+    {
+      "event_id": 16201,
+      "party_rooms": {
+        "count": 7,
+        "quote": "7+ Ballrooms of Dancing Nightly"
+      },
+      "class_rooms": null,
+      "rooms": [
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "salsa"
+          ],
+          "quote": "Salsa"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "bachata"
+          ],
+          "quote": "2 Bachata Rooms"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "bachata"
+          ],
+          "quote": "2 Bachata Rooms"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "zouk"
+          ],
+          "quote": "Zouk"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "kizomba"
+          ],
+          "quote": "Kizomba"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "salsa"
+          ],
+          "quote": "Cuban Salsa/Rueda"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "bachata",
+          "genre_as_written": "BACHATA",
+          "quote": "DCBX is BACHATA"
+        },
+        {
+          "genre": "salsa",
+          "genre_as_written": "SALSA",
+          "quote": "DCBX is SALSA"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "KIZOMBA",
+          "quote": "DCBX is KIZOMBA & URBAN KIZ"
+        },
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "URBAN KIZ",
+          "quote": "DCBX is KIZOMBA & URBAN KIZ"
+        },
+        {
+          "genre": "zouk",
+          "genre_as_written": "ZOUK",
+          "quote": "DCBX is ZOUK"
+        }
+      ]
+    },
+    {
+      "event_id": 16206,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "UrbanKiz",
+          "quote": "capital of UrbanKiz"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "Tarraxo",
+          "quote": "Tarraxo Champions"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "#Kizomba"
+        }
+      ]
+    },
+    {
+      "event_id": 16211,
+      "party_rooms": {
+        "count": 2,
+        "quote": "Party Rooms"
+      },
+      "class_rooms": null,
+      "rooms": [
+        {
+          "name_as_written": "Room 1",
+          "kind": "party",
+          "genres": [
+            "urbankiz",
+            "kizomba",
+            "tarraxo",
+            "kompa"
+          ],
+          "quote": "Room 1"
+        },
+        {
+          "name_as_written": "Room 2",
+          "kind": "party",
+          "genres": [
+            "kizomba",
+            "semba",
+            "douceur",
+            "kompa"
+          ],
+          "quote": "Room 2"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "UrbanKiz",
+          "quote": "UrbanKiz Wave Festival"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Kizomba Bootcamp"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "Tarraxo",
+          "quote": "Tarraxo Bootcamp"
+        },
+        {
+          "genre": "kompa",
+          "genre_as_written": "Kompa",
+          "quote": "Kompa"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "Semba",
+          "quote": "Semba"
+        },
+        {
+          "genre": "douceur",
+          "genre_as_written": "Douceur",
+          "quote": "Douceur"
+        }
+      ]
+    },
+    {
+      "event_id": 16216,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Kizomba all styles weekend"
+        }
+      ]
+    },
+    {
+      "event_id": 16221,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "bachata",
+          "genre_as_written": "Bachata",
+          "quote": "BACHATA LINEUP"
+        },
+        {
+          "genre": "salsa",
+          "genre_as_written": "Salsa",
+          "quote": "SALSA LINEUP"
+        },
+        {
+          "genre": "zouk",
+          "genre_as_written": "Brazilian Zouk",
+          "quote": "BRAZILIAN ZOUK LINEUP"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "KIZOMBA LINEUP"
+        }
+      ]
+    },
+    {
+      "event_id": 16226,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "Urbankiz",
+          "quote": "URBANKIZ WEEKEND"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Urbankiz, Kizomba, Tarraxo and Konpa"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "Tarraxo",
+          "quote": "Urbankiz, Kizomba, Tarraxo and Konpa"
+        },
+        {
+          "genre": "kompa",
+          "genre_as_written": "Konpa",
+          "quote": "Urbankiz, Kizomba, Tarraxo and Konpa"
+        }
+      ]
+    },
+    {
+      "event_id": 16231,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "Urbankiz",
+          "quote": "Urbankiz Weekender"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Urbankiz, Kizomba, Ghetto Zouk, Afro, Tarraxo, Konpa, Douceur"
+        },
+        {
+          "genre": "zouk",
+          "genre_as_written": "Ghetto Zouk",
+          "quote": "Urbankiz, Kizomba, Ghetto Zouk, Afro, Tarraxo, Konpa, Douceur"
+        },
+        {
+          "genre": "afro",
+          "genre_as_written": "Afro",
+          "quote": "Urbankiz, Kizomba, Ghetto Zouk, Afro, Tarraxo, Konpa, Douceur"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "Tarraxo",
+          "quote": "Urbankiz, Kizomba, Ghetto Zouk, Afro, Tarraxo, Konpa, Douceur"
+        },
+        {
+          "genre": "kompa",
+          "genre_as_written": "Konpa",
+          "quote": "Urbankiz, Kizomba, Ghetto Zouk, Afro, Tarraxo, Konpa, Douceur"
+        },
+        {
+          "genre": "douceur",
+          "genre_as_written": "Douceur",
+          "quote": "Urbankiz, Kizomba, Ghetto Zouk, Afro, Tarraxo, Konpa, Douceur"
+        }
+      ]
+    },
+    {
+      "event_id": 16236,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": []
+    },
+    {
+      "event_id": 16241,
+      "party_rooms": {
+        "count": 5,
+        "quote": "5 dance floors"
+      },
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "celebrating Kizomba, Semba, Urban Kiz, Tarraxo, Kompa"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "Semba",
+          "quote": "celebrating Kizomba, Semba, Urban Kiz, Tarraxo, Kompa"
+        },
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "Urban Kiz",
+          "quote": "celebrating Kizomba, Semba, Urban Kiz, Tarraxo, Kompa"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "Tarraxo",
+          "quote": "celebrating Kizomba, Semba, Urban Kiz, Tarraxo, Kompa"
+        },
+        {
+          "genre": "kompa",
+          "genre_as_written": "Kompa",
+          "quote": "celebrating Kizomba, Semba, Urban Kiz, Tarraxo, Kompa"
+        }
+      ]
+    },
+    {
+      "event_id": 16246,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": []
+    },
+    {
+      "event_id": 16251,
+      "party_rooms": null,
+      "class_rooms": {
+        "count": 2,
+        "quote": "Two dedicated workshop rooms"
+      },
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "Urban Kiz",
+          "quote": "Urban Kiz"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Kizomba & Semba"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "Semba",
+          "quote": "Kizomba & Semba"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "Tarraxo",
+          "quote": "Tarraxo"
+        },
+        {
+          "genre": "douceur",
+          "genre_as_written": "Douceur",
+          "quote": "Douceur"
+        },
+        {
+          "genre": "afro",
+          "genre_as_written": "Afro",
+          "quote": "Afro"
+        },
+        {
+          "genre": "kompa",
+          "genre_as_written": "Konpa",
+          "quote": "Konpa"
+        }
+      ]
+    },
+    {
+      "event_id": 16256,
+      "party_rooms": {
+        "count": 2,
+        "quote": "2 DEDICATED ROOMS"
+      },
+      "class_rooms": null,
+      "rooms": [
+        {
+          "name_as_written": null,
+          "kind": "unspecified",
+          "genres": [
+            "kizomba",
+            "urbankiz",
+            "tarraxo"
+          ],
+          "quote": "KIZOMBA – URBAN – TARRAXA"
+        },
+        {
+          "name_as_written": null,
+          "kind": "unspecified",
+          "genres": [
+            "salsa",
+            "bachata"
+          ],
+          "quote": "SALSA and BACHATA"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "KIZOMBA",
+          "quote": "KIZOMBA – URBAN – TARRAXA"
+        },
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "URBAN",
+          "quote": "KIZOMBA – URBAN – TARRAXA"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "TARRAXA",
+          "quote": "KIZOMBA – URBAN – TARRAXA"
+        },
+        {
+          "genre": "salsa",
+          "genre_as_written": "SALSA",
+          "quote": "SALSA and BACHATA"
+        },
+        {
+          "genre": "bachata",
+          "genre_as_written": "BACHATA",
+          "quote": "SALSA and BACHATA"
+        }
+      ]
+    },
+    {
+      "event_id": 16261,
+      "party_rooms": {
+        "count": 2,
+        "quote": "PARTIES IN 2 ROOMS"
+      },
+      "class_rooms": null,
+      "rooms": [
+        {
+          "name_as_written": "ROOM 1",
+          "kind": "party",
+          "genres": [],
+          "quote": "ROOM 1"
+        },
+        {
+          "name_as_written": "ROOM 2",
+          "kind": "party",
+          "genres": [],
+          "quote": "ROOM 2"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "URBANKIZ",
+          "quote": "URBANKIZ"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "TARRAXO",
+          "quote": "TARRAXO"
+        },
+        {
+          "genre": "tarraxinha",
+          "genre_as_written": "TARRAXINHA",
+          "quote": "TARRAXINHA"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "KIZOMBA",
+          "quote": "KIZOMBA"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "SEMBA",
+          "quote": "SEMBA"
+        },
+        {
+          "genre": "kompa",
+          "genre_as_written": "KONPA",
+          "quote": "KONPA"
+        },
+        {
+          "genre": "zouk",
+          "genre_as_written": "GHETTO ZOUK",
+          "quote": "GHETTO ZOUK"
+        },
+        {
+          "genre": "douceur",
+          "genre_as_written": "DOUCEUR",
+          "quote": "DOUCEUR"
+        }
+      ]
+    },
+    {
+      "event_id": 16266,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": []
+    },
+    {
+      "event_id": 16271,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "bachata",
+          "genre_as_written": "Sensual Bachata",
+          "quote": "Sensual Bachata"
+        },
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "Urban Kiz",
+          "quote": "Urban Kiz & Kizomba"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Urban Kiz & Kizomba"
+        },
+        {
+          "genre": "zouk",
+          "genre_as_written": "Brazilian Zouk",
+          "quote": "Brazilian Zouk"
+        }
+      ]
+    },
+    {
+      "event_id": 16276,
+      "party_rooms": {
+        "count": 2,
+        "quote": "2 free dance floors"
+      },
+      "class_rooms": null,
+      "rooms": [
+        {
+          "name_as_written": null,
+          "kind": "unspecified",
+          "genres": [
+            "urbankiz"
+          ],
+          "quote": "Urbankiz + Kizomba/Semba Room"
+        },
+        {
+          "name_as_written": null,
+          "kind": "unspecified",
+          "genres": [
+            "kizomba",
+            "semba"
+          ],
+          "quote": "Urbankiz + Kizomba/Semba Room"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "UrbanKiz",
+          "quote": "UrbanKiz, Kizomba, Konpa, Tarracho and Afro"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "UrbanKiz, Kizomba, Konpa, Tarracho and Afro"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "Semba",
+          "quote": "Kizomba/Semba"
+        },
+        {
+          "genre": "kompa",
+          "genre_as_written": "Konpa",
+          "quote": "UrbanKiz, Kizomba, Konpa, Tarracho and Afro"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "Tarracho",
+          "quote": "UrbanKiz, Kizomba, Konpa, Tarracho and Afro"
+        },
+        {
+          "genre": "afro",
+          "genre_as_written": "Afro",
+          "quote": "UrbanKiz, Kizomba, Konpa, Tarracho and Afro"
+        }
+      ]
+    },
+    {
+      "event_id": 16283,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "salsa",
+          "genre_as_written": "SALSA",
+          "quote": "SALSA, BACHATA & KIZOMBA"
+        },
+        {
+          "genre": "bachata",
+          "genre_as_written": "BACHATA",
+          "quote": "SALSA, BACHATA & KIZOMBA"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "KIZOMBA",
+          "quote": "SALSA, BACHATA & KIZOMBA"
+        }
+      ]
+    },
+    {
+      "event_id": 16288,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": []
+    },
+    {
+      "event_id": 16293,
+      "party_rooms": {
+        "count": 3,
+        "quote": "GARDEN PARTY 🟡 AFRO ROOM 🟣 MAIN ROOM"
+      },
+      "class_rooms": null,
+      "rooms": [
+        {
+          "name_as_written": "AFRO ROOM",
+          "kind": "party",
+          "genres": [
+            "afro"
+          ],
+          "quote": "AFRO ROOM"
+        },
+        {
+          "name_as_written": "MAIN ROOM",
+          "kind": "party",
+          "genres": [],
+          "quote": "MAIN ROOM"
+        },
+        {
+          "name_as_written": "GARDEN PARTY",
+          "kind": "party",
+          "genres": [],
+          "quote": "GARDEN PARTY"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "KIZOMBA",
+          "quote": "KIZOMBA, SEMBA, TARRAXO, AFRO HOUSE"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "SEMBA",
+          "quote": "KIZOMBA, SEMBA, TARRAXO, AFRO HOUSE"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "TARRAXO",
+          "quote": "KIZOMBA, SEMBA, TARRAXO, AFRO HOUSE"
+        },
+        {
+          "genre": "afro",
+          "genre_as_written": "AFRO HOUSE",
+          "quote": "KIZOMBA, SEMBA, TARRAXO, AFRO HOUSE"
+        }
+      ]
+    },
+    {
+      "event_id": 16298,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "KIZOMBA",
+          "quote": "KIZOMBA ALL STYLES"
+        }
+      ]
+    },
+    {
+      "event_id": 16303,
+      "party_rooms": {
+        "count": 2,
+        "quote": "2 dance floors"
+      },
+      "class_rooms": null,
+      "rooms": [
+        {
+          "name_as_written": "ROOM 1",
+          "kind": "party",
+          "genres": [
+            "kizomba",
+            "semba",
+            "afro"
+          ],
+          "quote": "ROOM 1 : Kizomba • Semba • Afro"
+        },
+        {
+          "name_as_written": "ROOM 2",
+          "kind": "party",
+          "genres": [
+            "zouk",
+            "tarraxinha",
+            "kompa"
+          ],
+          "quote": "ROOM 2 : Ghettozouk • Tarraxinha • Konpa"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "ROOM 1 : Kizomba • Semba • Afro"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "Semba",
+          "quote": "ROOM 1 : Kizomba • Semba • Afro"
+        },
+        {
+          "genre": "afro",
+          "genre_as_written": "Afro",
+          "quote": "ROOM 1 : Kizomba • Semba • Afro"
+        },
+        {
+          "genre": "zouk",
+          "genre_as_written": "Ghettozouk",
+          "quote": "ROOM 2 : Ghettozouk • Tarraxinha • Konpa"
+        },
+        {
+          "genre": "tarraxinha",
+          "genre_as_written": "Tarraxinha",
+          "quote": "ROOM 2 : Ghettozouk • Tarraxinha • Konpa"
+        },
+        {
+          "genre": "kompa",
+          "genre_as_written": "Konpa",
+          "quote": "ROOM 2 : Ghettozouk • Tarraxinha • Konpa"
+        }
+      ]
+    },
+    {
+      "event_id": 16308,
+      "party_rooms": {
+        "count": 5,
+        "quote": "5 PARTY ROOMS"
+      },
+      "class_rooms": null,
+      "rooms": [
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "salsa"
+          ],
+          "quote": "SALSA"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "bachata"
+          ],
+          "quote": "BACHATA"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "urbankiz"
+          ],
+          "quote": "URBANKIZ"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "kizomba"
+          ],
+          "quote": "KIZOMBA"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "zouk"
+          ],
+          "quote": "BRAZILIAN ZOUK"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "salsa",
+          "genre_as_written": "SALSA",
+          "quote": "SALSA | BACHATA | URBANKIZ | KIZOMBA | BRAZILIAN ZOUK"
+        },
+        {
+          "genre": "bachata",
+          "genre_as_written": "BACHATA",
+          "quote": "SALSA | BACHATA | URBANKIZ | KIZOMBA | BRAZILIAN ZOUK"
+        },
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "URBANKIZ",
+          "quote": "SALSA | BACHATA | URBANKIZ | KIZOMBA | BRAZILIAN ZOUK"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "KIZOMBA",
+          "quote": "SALSA | BACHATA | URBANKIZ | KIZOMBA | BRAZILIAN ZOUK"
+        },
+        {
+          "genre": "zouk",
+          "genre_as_written": "BRAZILIAN ZOUK",
+          "quote": "SALSA | BACHATA | URBANKIZ | KIZOMBA | BRAZILIAN ZOUK"
+        }
+      ]
+    },
+    {
+      "event_id": 16314,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "UrbanKiz",
+          "quote": "Malick & Carla UrbanKiz"
+        }
+      ]
+    },
+    {
+      "event_id": 16319,
+      "party_rooms": {
+        "count": 2,
+        "quote": "1 Room: Salsa & Bachata\n1 Room: Kizomba, Semba & Konpa"
+      },
+      "class_rooms": null,
+      "rooms": [
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "salsa",
+            "bachata"
+          ],
+          "quote": "1 Room: Salsa & Bachata"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "kizomba",
+            "semba",
+            "kompa"
+          ],
+          "quote": "1 Room: Kizomba, Semba & Konpa"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "bachata",
+          "genre_as_written": "BACHATA",
+          "quote": "BACHATA"
+        },
+        {
+          "genre": "salsa",
+          "genre_as_written": "SALSA",
+          "quote": "SALSA"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "KIZOMBA",
+          "quote": "KIZOMBA"
+        },
+        {
+          "genre": "kompa",
+          "genre_as_written": "KONPA",
+          "quote": "KONPA"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "Semba",
+          "quote": "1 Room: Kizomba, Semba & Konpa"
+        }
+      ]
+    },
+    {
+      "event_id": 16324,
+      "party_rooms": {
+        "count": 2,
+        "quote": "2 ROOMS for 2 VIBES"
+      },
+      "class_rooms": {
+        "count": 4,
+        "quote": "2 to 4 ROOMS"
+      },
+      "rooms": [
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "salsa"
+          ],
+          "quote": "1 room dedicated entirely to Salsa"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "bachata",
+            "kizomba",
+            "urbankiz"
+          ],
+          "quote": "1 room: Bachata, Kizomba, Urbankiz"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "salsa",
+          "genre_as_written": "Cuban Salsa",
+          "quote": "Cuban Salsa, Timba, Rueda de Casino, Cuban Son"
+        },
+        {
+          "genre": "bachata",
+          "genre_as_written": "Dominican Bachata",
+          "quote": "Dominican Bachata, Sensual Bachata, Modern Bachata"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Kizomba, Semba, Urbankiz, Tarraxa"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "Semba",
+          "quote": "Kizomba, Semba, Urbankiz, Tarraxa"
+        },
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "Urbankiz",
+          "quote": "Kizomba, Semba, Urbankiz, Tarraxa"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "Tarraxa",
+          "quote": "Kizomba, Semba, Urbankiz, Tarraxa"
+        },
+        {
+          "genre": "reggaeton",
+          "genre_as_written": "Reggaeton",
+          "quote": "Afro-Cuban, Cuban Rumba, Reggaeton"
+        },
+        {
+          "genre": "kompa",
+          "genre_as_written": "Kompa",
+          "quote": "DJs Salsa, Bachata, Kizomba, Urbankiz, Kompa"
+        },
+        {
+          "genre": "other",
+          "genre_as_written": "Lindy Hop",
+          "quote": "Rock, Lindy Hop"
+        }
+      ]
+    },
+    {
+      "event_id": 16329,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": []
+    },
+    {
+      "event_id": 16338,
+      "party_rooms": {
+        "count": 3,
+        "quote": "3 rooms / 3 vibes"
+      },
+      "class_rooms": null,
+      "rooms": [
+        {
+          "name_as_written": "SALSA Room",
+          "kind": "party",
+          "genres": [
+            "salsa"
+          ],
+          "quote": "SALSA Room"
+        },
+        {
+          "name_as_written": "BACHATA Room",
+          "kind": "party",
+          "genres": [
+            "bachata"
+          ],
+          "quote": "BACHATA Room"
+        },
+        {
+          "name_as_written": "KIZOMBA Room",
+          "kind": "party",
+          "genres": [
+            "kizomba"
+          ],
+          "quote": "KIZOMBA Room"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "salsa",
+          "genre_as_written": "Cuban and Puerto Rican Salsa",
+          "quote": "Cuban and Puerto Rican Salsa"
+        },
+        {
+          "genre": "bachata",
+          "genre_as_written": "Bachata fusion and Dominican style",
+          "quote": "Bachata fusion and Dominican style"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Kizomba (traditional & urban)"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "Semba",
+          "quote": "Kizomba (traditional & urban)"
+        },
+        {
+          "genre": "reggaeton",
+          "genre_as_written": "Reggaeton",
+          "quote": "Reggaeton"
+        },
+        {
+          "genre": "afro",
+          "genre_as_written": "Afrohouse",
+          "quote": "Afrohouse Workshop"
+        },
+        {
+          "genre": "other",
+          "genre_as_written": "Son Cubano",
+          "quote": "Son Cubano"
+        }
+      ]
+    },
+    {
+      "event_id": 16343,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Kizomba"
+        },
+        {
+          "genre": "kompa",
+          "genre_as_written": "Konpa",
+          "quote": "Konpa"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "Semba",
+          "quote": "Semba"
+        },
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "Urban Kiz",
+          "quote": "Urban Kiz"
+        },
+        {
+          "genre": "tarraxinha",
+          "genre_as_written": "Tarraxhina",
+          "quote": "Tarraxhina"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "Tarraxo",
+          "quote": "Tarraxo"
+        },
+        {
+          "genre": "afro",
+          "genre_as_written": "Afro",
+          "quote": "Afro"
+        }
+      ]
+    },
+    {
+      "event_id": 16348,
+      "party_rooms": {
+        "count": 3,
+        "quote": "Three rooms to dance"
+      },
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "bachata",
+          "genre_as_written": "bachata",
+          "quote": "bachata, salsa, and kizomba"
+        },
+        {
+          "genre": "salsa",
+          "genre_as_written": "salsa",
+          "quote": "bachata, salsa, and kizomba"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "KIZOMBA",
+          "quote": "KIZOMBA"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "TARRAXO",
+          "quote": "TARRAXO"
+        },
+        {
+          "genre": "kompa",
+          "genre_as_written": "KOMPA",
+          "quote": "KOMPA"
+        }
+      ]
+    },
+    {
+      "event_id": 16353,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "kizomba",
+          "quote": "kizomba on the sand"
+        }
+      ]
+    },
+    {
+      "event_id": 16358,
+      "party_rooms": {
+        "count": 6,
+        "quote": "6 ROOMS / 6 VIBES"
+      },
+      "class_rooms": null,
+      "rooms": [
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "urbankiz",
+            "zouk",
+            "kizomba"
+          ],
+          "quote": "UrbanKiz – GhettoZouk – Kizomba Fusion"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "kizomba",
+            "semba"
+          ],
+          "quote": "Kizomba – Semba – Coladeira – Kazukuta"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "kizomba"
+          ],
+          "quote": "KCMA (Kizomba Classics"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "zouk",
+            "kompa"
+          ],
+          "quote": "Sweet ZoukLove – Konpa – Gouyad"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "tarraxo",
+            "tarraxinha"
+          ],
+          "quote": "Tarraxo – Tarraxinha – Urban Tarrax"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "afro",
+            "other"
+          ],
+          "quote": "Caribbean – Afrobeat – Coupé Décalé – All Styles"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "UrbanKiz",
+          "quote": "UrbanKiz – GhettoZouk – Kizomba Fusion"
+        },
+        {
+          "genre": "zouk",
+          "genre_as_written": "GhettoZouk",
+          "quote": "UrbanKiz – GhettoZouk – Kizomba Fusion"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Kizomba – Semba – Coladeira – Kazukuta"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "Semba",
+          "quote": "Kizomba – Semba – Coladeira – Kazukuta"
+        },
+        {
+          "genre": "kompa",
+          "genre_as_written": "Konpa",
+          "quote": "Sweet ZoukLove – Konpa – Gouyad"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "Tarraxo",
+          "quote": "Tarraxo – Tarraxinha – Urban Tarrax"
+        },
+        {
+          "genre": "tarraxinha",
+          "genre_as_written": "Tarraxinha",
+          "quote": "Tarraxo – Tarraxinha – Urban Tarrax"
+        },
+        {
+          "genre": "afro",
+          "genre_as_written": "Afrobeat",
+          "quote": "Caribbean – Afrobeat – Coupé Décalé – All Styles"
+        },
+        {
+          "genre": "other",
+          "genre_as_written": "Coupé Décalé",
+          "quote": "Caribbean – Afrobeat – Coupé Décalé – All Styles"
+        }
+      ]
+    },
+    {
+      "event_id": 16364,
+      "party_rooms": {
+        "count": 3,
+        "quote": "3 parties until dawn in 3 different rooms"
+      },
+      "class_rooms": {
+        "count": 3,
+        "quote": "Workshops (3 Rooms)"
+      },
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "bachata",
+          "genre_as_written": "BACHATA",
+          "quote": "16 DOMINICAN / MODERN / SENSUAL / FUSION BACHATA ARTISTS"
+        },
+        {
+          "genre": "salsa",
+          "genre_as_written": "SALSA",
+          "quote": "14 CUBAN / PUERTO SALSA ARTISTS"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "KIZOMBA",
+          "quote": "12 KIZOMBA / SEMBA ARTISTS"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "SEMBA",
+          "quote": "12 KIZOMBA / SEMBA ARTISTS"
+        }
+      ]
+    },
+    {
+      "event_id": 16369,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "bachata",
+          "genre_as_written": "Bachata",
+          "quote": "Bachata & Kizomba"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Bachata & Kizomba"
+        }
+      ]
+    },
+    {
+      "event_id": 16374,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Kizomba • Salsa • Semba • Bachata • Ghetto Zouk • Afrohouse"
+        },
+        {
+          "genre": "salsa",
+          "genre_as_written": "Salsa",
+          "quote": "Kizomba • Salsa • Semba • Bachata • Ghetto Zouk • Afrohouse"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "Semba",
+          "quote": "Kizomba • Salsa • Semba • Bachata • Ghetto Zouk • Afrohouse"
+        },
+        {
+          "genre": "bachata",
+          "genre_as_written": "Bachata",
+          "quote": "Kizomba • Salsa • Semba • Bachata • Ghetto Zouk • Afrohouse"
+        },
+        {
+          "genre": "zouk",
+          "genre_as_written": "Ghetto Zouk",
+          "quote": "Kizomba • Salsa • Semba • Bachata • Ghetto Zouk • Afrohouse"
+        },
+        {
+          "genre": "afro",
+          "genre_as_written": "Afrohouse",
+          "quote": "Kizomba • Salsa • Semba • Bachata • Ghetto Zouk • Afrohouse"
+        }
+      ]
+    },
+    {
+      "event_id": 16379,
+      "party_rooms": {
+        "count": 2,
+        "quote": "The 2 party rooms at the moment"
+      },
+      "class_rooms": null,
+      "rooms": [
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "bachata",
+            "salsa"
+          ],
+          "quote": "BACHATA with Salsa"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "kizomba",
+            "urbankiz",
+            "kompa"
+          ],
+          "quote": "KIZOMBA/URBAN KIZ/KOMPA"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "bachata",
+          "genre_as_written": "BACHATA",
+          "quote": "BACHATA with Salsa"
+        },
+        {
+          "genre": "salsa",
+          "genre_as_written": "Salsa",
+          "quote": "BACHATA with Salsa"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "KIZOMBA",
+          "quote": "KIZOMBA/URBAN KIZ/KOMPA"
+        },
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "URBAN KIZ",
+          "quote": "KIZOMBA/URBAN KIZ/KOMPA"
+        },
+        {
+          "genre": "kompa",
+          "genre_as_written": "KOMPA",
+          "quote": "KIZOMBA/URBAN KIZ/KOMPA"
+        },
+        {
+          "genre": "afro",
+          "genre_as_written": "AFRO",
+          "quote": "KIZOMBA/URBAN KIZ/AFRO"
+        },
+        {
+          "genre": "zouk",
+          "genre_as_written": "Zouk",
+          "quote": "Zouk"
+        }
+      ]
+    },
+    {
+      "event_id": 16384,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": []
+    },
+    {
+      "event_id": 16390,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "international Kizomba legends"
+        }
+      ]
+    },
+    {
+      "event_id": 16395,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": []
+    },
+    {
+      "event_id": 16401,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "salsa",
+          "genre_as_written": "Salsa",
+          "quote": "Salsa, Bachata, Cuban, Kizomba"
+        },
+        {
+          "genre": "bachata",
+          "genre_as_written": "Bachata",
+          "quote": "Salsa, Bachata, Cuban, Kizomba"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Salsa, Bachata, Cuban, Kizomba"
+        },
+        {
+          "genre": "other",
+          "genre_as_written": "Cuban",
+          "quote": "Salsa, Bachata, Cuban, Kizomba"
+        }
+      ]
+    },
+    {
+      "event_id": 16406,
+      "party_rooms": {
+        "count": 2,
+        "quote": "2 rooms* Semba + Urban"
+      },
+      "class_rooms": null,
+      "rooms": [
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "semba"
+          ],
+          "quote": "2 rooms* Semba + Urban"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "urbankiz"
+          ],
+          "quote": "2 rooms* Semba + Urban"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "semba",
+          "genre_as_written": "Semba",
+          "quote": "KIZOMBA + SEMBA DJs"
+        },
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "Urban Kiz",
+          "quote": "URBAN KIZ DJs"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "KIZOMBA",
+          "quote": "KIZOMBA + SEMBA DJs"
+        }
+      ]
+    },
+    {
+      "event_id": 16411,
+      "party_rooms": {
+        "count": 5,
+        "quote": "5 Rooms, 5 Atmospheres"
+      },
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "salsa",
+          "genre_as_written": "Salsa",
+          "quote": "Salsa, Bachata, and Kizomba"
+        },
+        {
+          "genre": "bachata",
+          "genre_as_written": "Bachata",
+          "quote": "Salsa, Bachata, and Kizomba"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Salsa, Bachata, and Kizomba"
+        }
+      ]
+    },
+    {
+      "event_id": 16416,
+      "party_rooms": {
+        "count": 2,
+        "quote": "2 Rᴏᴏᴍs"
+      },
+      "class_rooms": null,
+      "rooms": [
+        {
+          "name_as_written": null,
+          "kind": "unspecified",
+          "genres": [
+            "kizomba",
+            "tarraxinha",
+            "urbankiz",
+            "tarraxo",
+            "douceur"
+          ],
+          "quote": "Kɪᴢᴏᴍʙᴀ"
+        },
+        {
+          "name_as_written": null,
+          "kind": "unspecified",
+          "genres": [
+            "kizomba",
+            "semba",
+            "zouk",
+            "kompa"
+          ],
+          "quote": "Kɪᴢᴏᴍʙᴀ Tʀᴀᴅɪᴛɪᴏɴᴀʟ"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kɪᴢᴏᴍʙᴀ",
+          "quote": "Kɪᴢᴏᴍʙᴀ"
+        },
+        {
+          "genre": "tarraxinha",
+          "genre_as_written": "Tᴀʀʀᴀxɪɴʜᴀ",
+          "quote": "Tᴀʀʀᴀxɪɴʜᴀ"
+        },
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "Uʀʙᴀɴ ᴋɪᴢ",
+          "quote": "Uʀʙᴀɴ ᴋɪᴢ"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "Tᴀʀʀᴀxᴏ",
+          "quote": "Tᴀʀʀᴀxᴏ"
+        },
+        {
+          "genre": "douceur",
+          "genre_as_written": "Dᴏᴜᴄᴇᴜʀ",
+          "quote": "Dᴏᴜᴄᴇᴜʀ"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "Sᴇᴍʙᴀ",
+          "quote": "Sᴇᴍʙᴀ"
+        },
+        {
+          "genre": "zouk",
+          "genre_as_written": "Zᴏᴜᴋ",
+          "quote": "Zᴏᴜᴋ"
+        },
+        {
+          "genre": "kompa",
+          "genre_as_written": "Kᴏᴍᴘᴀ",
+          "quote": "Kᴏᴍᴘᴀ"
+        }
+      ]
+    },
+    {
+      "event_id": 16441,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Kizomba • Semba • Konpa • Urban Kiz • Tarraxo • Ghetto Zouk • Afro"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "Semba",
+          "quote": "Kizomba • Semba • Konpa • Urban Kiz • Tarraxo • Ghetto Zouk • Afro"
+        },
+        {
+          "genre": "kompa",
+          "genre_as_written": "Konpa",
+          "quote": "Kizomba • Semba • Konpa • Urban Kiz • Tarraxo • Ghetto Zouk • Afro"
+        },
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "Urban Kiz",
+          "quote": "Kizomba • Semba • Konpa • Urban Kiz • Tarraxo • Ghetto Zouk • Afro"
+        },
+        {
+          "genre": "tarraxo",
+          "genre_as_written": "Tarraxo",
+          "quote": "Kizomba • Semba • Konpa • Urban Kiz • Tarraxo • Ghetto Zouk • Afro"
+        },
+        {
+          "genre": "zouk",
+          "genre_as_written": "Ghetto Zouk",
+          "quote": "Kizomba • Semba • Konpa • Urban Kiz • Tarraxo • Ghetto Zouk • Afro"
+        },
+        {
+          "genre": "afro",
+          "genre_as_written": "Afro",
+          "quote": "Kizomba • Semba • Konpa • Urban Kiz • Tarraxo • Ghetto Zouk • Afro"
+        }
+      ]
+    },
+    {
+      "event_id": 16446,
+      "party_rooms": {
+        "count": 2,
+        "quote": "Exclusive Kizomba Room Exclusive Bachata and Salsa Room"
+      },
+      "class_rooms": null,
+      "rooms": [
+        {
+          "name_as_written": "Exclusive Kizomba Room",
+          "kind": "party",
+          "genres": [
+            "kizomba"
+          ],
+          "quote": "Exclusive Kizomba Room"
+        },
+        {
+          "name_as_written": "Exclusive Bachata and Salsa Room",
+          "kind": "party",
+          "genres": [
+            "bachata",
+            "salsa"
+          ],
+          "quote": "Exclusive Bachata and Salsa Room"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Exclusive Kizomba Room"
+        },
+        {
+          "genre": "bachata",
+          "genre_as_written": "Bachata",
+          "quote": "Exclusive Bachata and Salsa Room"
+        },
+        {
+          "genre": "salsa",
+          "genre_as_written": "Salsa",
+          "quote": "Exclusive Bachata and Salsa Room"
+        }
+      ]
+    },
+    {
+      "event_id": 16451,
+      "party_rooms": null,
+      "class_rooms": null,
+      "rooms": [],
+      "genres": []
+    },
+    {
+      "event_id": 16456,
+      "party_rooms": {
+        "count": 2,
+        "quote": "2 Music Rooms: Salsa/Bachata & Kizomba"
+      },
+      "class_rooms": null,
+      "rooms": [
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "salsa",
+            "bachata"
+          ],
+          "quote": "Salsa/Bachata"
+        },
+        {
+          "name_as_written": null,
+          "kind": "party",
+          "genres": [
+            "kizomba"
+          ],
+          "quote": "Kizomba"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "salsa",
+          "genre_as_written": "Salsa",
+          "quote": "Salsa/Bachata"
+        },
+        {
+          "genre": "bachata",
+          "genre_as_written": "Bachata",
+          "quote": "Salsa/Bachata"
+        },
+        {
+          "genre": "kizomba",
+          "genre_as_written": "Kizomba",
+          "quote": "Kizomba and Urbankiz"
+        },
+        {
+          "genre": "urbankiz",
+          "genre_as_written": "Urbankiz",
+          "quote": "Kizomba and Urbankiz"
+        },
+        {
+          "genre": "semba",
+          "genre_as_written": "semba",
+          "quote": "kizomba/semba"
+        }
+      ]
+    }
+  ]
+}

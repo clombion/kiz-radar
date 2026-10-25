@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Merge review: is each candidate pair the same artist?",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "batch",
+    "prompt_version",
+    "decisions"
+  ],
+  "properties": {
+    "batch": {
+      "type": "string"
+    },
+    "prompt_version": {
+      "enum": [
+        "merge-review-v1",
+        "merge-review-v2"
+      ]
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "pair_id",
+          "key_a",
+          "key_b",
+          "decision",
+          "rationale"
+        ],
+        "properties": {
+          "pair_id": {
+            "type": "integer"
+          },
+          "key_a": {
+            "type": "string"
+          },
+          "key_b": {
+            "type": "string"
+          },
+          "decision": {
+            "enum": [
+              "merge",
+              "separate",
+              "unsure"
+            ]
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 10
+          }
+        }
+      }
+    }
+  }
+}

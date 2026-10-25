@@ -199,7 +199,8 @@ The **Tests** Action runs on every push. Locally:
 
 ```bash
 node --test tests/*.test.mjs      # the site's structure: unused code and styles, links, stored hints
-uvx pytest -q tests/              # the pipeline: text tidying and reading kizomba-world's pages
+uvx --with anthropic==2.3.0 --with jsonschema==4.26.0 --with pycountry==26.2.16 pytest -q tests/
+                                  # the pipeline: text tidying, reading kizomba-world's pages, the extraction step
 ```
 
 The site tests check what JavaScript and CSS cannot enforce themselves. Examples include an export nothing

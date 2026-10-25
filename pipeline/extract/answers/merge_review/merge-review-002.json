@@ -1,0 +1,356 @@
+{
+ "batch": "merge-review-002",
+ "prompt_version": "merge-review-v1",
+ "decisions": [
+  {
+   "pair_id": 51,
+   "key_a": "p:andrea@andrea+luis",
+   "key_b": "p:andrea@andrea+pablo",
+   "decision": "unsure",
+   "rationale": "Same first name Andrea and same stated country (Spain), but the partners differ (Luis vs Pablo), so the evidence does not settle it."
+  },
+  {
+   "pair_id": 52,
+   "key_a": "p:andrea@andrea+natalia",
+   "key_b": "p:andrea@andrea+silvia",
+   "decision": "unsure",
+   "rationale": "Common first name Andrea with different partners (Natalia vs Silvia); the shared Italy presence is weak evidence and does not settle it."
+  },
+  {
+   "pair_id": 53,
+   "key_a": "p:andrea@andrea+natalia",
+   "key_b": "p:andreamurgia",
+   "decision": "unsure",
+   "rationale": "Couple Natalia & Andrea (Italy) against solo Andrea Murgia (Italy stated): same first name and country but no shared partner, event or distinctive name."
+  },
+  {
+   "pair_id": 54,
+   "key_a": "p:andrea@andrea+natalia",
+   "key_b": "p:andreas@andreas+silvia",
+   "decision": "separate",
+   "rationale": "Andrea & Natalia and Andreas & Silvia differ in partner and in the first name (Andrea vs Andreas, one letter apart), so they are different artists."
+  },
+  {
+   "pair_id": 55,
+   "key_a": "p:andrea@andrea+silvia",
+   "key_b": "p:andreamurgia",
+   "decision": "unsure",
+   "rationale": "Andrea & Silvia against solo Andrea Murgia: a common first name and a shared country only, with no distinctive link."
+  },
+  {
+   "pair_id": 56,
+   "key_a": "p:andrea@andrea+silvia",
+   "key_b": "p:andreas@andreas+silvia",
+   "decision": "unsure",
+   "rationale": "Same partner Silvia and a shared stated country, but Andrea and Andreas differ by a letter, so the evidence conflicts."
+  },
+  {
+   "pair_id": 57,
+   "key_a": "p:angelgirao",
+   "key_b": "p:angelguirao",
+   "decision": "merge",
+   "rationale": "Angel Girao and Angel Guirao are at the same Malaga festival with the same first name; the surname differs by one letter, a spelling variant of a distinctive name."
+  },
+  {
+   "pair_id": 58,
+   "key_a": "p:angelica@alessio+angelica",
+   "key_b": "p:angelica@angelica+paolo",
+   "decision": "unsure",
+   "rationale": "Angelica is the only shared name, with different partners (Alessio vs Paolo) and no distinctive stage name, so the evidence does not settle it."
+  },
+  {
+   "pair_id": 59,
+   "key_a": "p:angelozacaria",
+   "key_b": "p:angelozacarias",
+   "decision": "merge",
+   "rationale": "Angelo Zacaria and Angelo Zacarias are a one-letter spelling variant of a distinctive surname, both teachers in Italy."
+  },
+  {
+   "pair_id": 60,
+   "key_a": "p:anika@anika+michael",
+   "key_b": "p:anika@anika+michaeldiamon",
+   "decision": "merge",
+   "rationale": "Michael Diamon & Anika is the full form of Michael & Anika, with the same partner Anika and the same stated country (Netherlands)."
+  },
+  {
+   "pair_id": 61,
+   "key_a": "p:anika@anika+michael",
+   "key_b": "p:anika@dance",
+   "decision": "unsure",
+   "rationale": "Solo Anika and Michael & Anika share only a common first name and the Austria/Slovakia flags, with no shared partner or event."
+  },
+  {
+   "pair_id": 62,
+   "key_a": "p:anika@anika+michael",
+   "key_b": "p:anikaelena",
+   "decision": "unsure",
+   "rationale": "Anika Elena and Michael & Anika share the first name and Austria/Slovakia flags, but the couple's partner is absent from the solo record, so it is not settled."
+  },
+  {
+   "pair_id": 63,
+   "key_a": "p:anika@dance",
+   "key_b": "p:anikaelena",
+   "decision": "merge",
+   "rationale": "Solo Anika (Vienna) and Anika Elena (Krakow) have the same stated countries (Austria, Slovakia) and no conflicting evidence, though the first name is common."
+  },
+  {
+   "pair_id": 64,
+   "key_a": "p:anita@anita+marco",
+   "key_b": "p:anita@anita+marcos",
+   "decision": "merge",
+   "rationale": "Marco and Marcos are the same name in Spanish/Portuguese form, with the same partner Anita and Portugal as the stated country."
+  },
+  {
+   "pair_id": 65,
+   "key_a": "p:ankit@dance",
+   "key_b": "p:ankit@dj",
+   "decision": "merge",
+   "rationale": "DJ Ankit and Ankit share the same name and stated country (Germany), with a DJ prefix on one side."
+  },
+  {
+   "pair_id": 66,
+   "key_a": "p:anna@anna+carlos",
+   "key_b": "p:anna@anna+carloscamba",
+   "decision": "merge",
+   "rationale": "Carlos & Anna and Carlos Camba & Anna share the same partner Anna and the same stated countries (Angola/Finland)."
+  },
+  {
+   "pair_id": 67,
+   "key_a": "p:anonytarraxa",
+   "key_b": "p:antonytarraxa",
+   "decision": "merge",
+   "rationale": "DJ Anony Tarraxa and DJ Antony Tarraxa differ by one missing letter in a distinctive stage name (typo), and both are DJs stated as Spanish."
+  },
+  {
+   "pair_id": 68,
+   "key_a": "p:anso@dance",
+   "key_b": "p:ansocubango",
+   "decision": "merge",
+   "rationale": "An'So and An'So Cubango share the stage name and the same stated country (France), with the surname as the fuller form."
+  },
+  {
+   "pair_id": 69,
+   "key_a": "p:arnaud@arnaud+roya",
+   "key_b": "p:arnauddjbn",
+   "decision": "unsure",
+   "rationale": "Arnaud & Roya and Arnaud DJBN share a common first name and the France/Germany countries, but no partner or distinctive name links them."
+  },
+  {
+   "pair_id": 70,
+   "key_a": "p:arthur@dj",
+   "key_b": "p:arthursantos",
+   "decision": "merge",
+   "rationale": "DJ Arthur and Arthur Santos played the same event on the same day with the same country (Brazil) and Zouk style, a DJ prefix on one side."
+  },
+  {
+   "pair_id": 71,
+   "key_a": "p:arun@dance",
+   "key_b": "p:arunpauer",
+   "decision": "unsure",
+   "rationale": "Arun and Arun Pauer share the first name and Austria as stated country, but the styles differ and the surname appears on one side only."
+  },
+  {
+   "pair_id": 72,
+   "key_a": "p:asia@dance",
+   "key_b": "p:asiavoronova",
+   "decision": "merge",
+   "rationale": "Asia and Asia Voronova share the name, the Ukraine stated country and the same festival series (Alegria Bordeaux), with the surname as the fuller form."
+  },
+  {
+   "pair_id": 73,
+   "key_a": "p:assyl@assyl+zhibek",
+   "key_b": "p:assyl@dj",
+   "decision": "merge",
+   "rationale": "Assyl & Zhibek and DJ Assyl played the same event on the same date with the same name and country (Kazakhstan), a DJ prefix on one side."
+  },
+  {
+   "pair_id": 74,
+   "key_a": "p:atou@dance",
+   "key_b": "p:atoubaakaa2man",
+   "decision": "merge",
+   "rationale": "Atou and Atou Ba aka A2Man share a distinctive first name and the Senegal stated country on one event each."
+  },
+  {
+   "pair_id": 75,
+   "key_a": "p:aurea@aurea+tresor",
+   "key_b": "p:aurea@aurea+trezor",
+   "decision": "merge",
+   "rationale": "Tresor & Aurea and Trezor & Aurea are a spelling variant of the same name with the same partner Aurea and a Netherlands stated country."
+  },
+  {
+   "pair_id": 76,
+   "key_a": "p:axel@axel+nora",
+   "key_b": "p:axel@axel+victoria",
+   "decision": "unsure",
+   "rationale": "Axel & Nora and Axel & Victoria share the first name and Estonia as stated country, but the partners differ, so the evidence does not settle it."
+  },
+  {
+   "pair_id": 77,
+   "key_a": "p:azmael@azmael+katalin",
+   "key_b": "p:azmael@dj",
+   "decision": "merge",
+   "rationale": "Azmael & Katalin and DJ Azmael share the name (diacritic variant), the Austria stated country, and the same event on the same date."
+  },
+  {
+   "pair_id": 78,
+   "key_a": "p:balito@balito+viola",
+   "key_b": "p:balito@dj",
+   "decision": "merge",
+   "rationale": "Balito & Viola and DJ Balito share the stage name, Hungary as stated country, the same event and date, and the same Bachata style."
+  },
+  {
+   "pair_id": 79,
+   "key_a": "p:ben@dj",
+   "key_b": "p:bentheentertainer",
+   "decision": "unsure",
+   "rationale": "DJ Ben and Ben TheEntertainer share a common first name and a Kizomba/Urban style, but the events differ and no distinctive name links them."
+  },
+  {
+   "pair_id": 80,
+   "key_a": "p:benite@benite+railey",
+   "key_b": "p:beniteb@beniteb+railey",
+   "decision": "merge",
+   "rationale": "Railey & Benite and Railey & BeniteB share the partner Railey, the Netherlands stated country, the same event and style; the trailing letter is a spelling artefact."
+  },
+  {
+   "pair_id": 81,
+   "key_a": "p:benjamin@benjamin+stephanie",
+   "key_b": "p:benjamine@benjamine+stephanie",
+   "decision": "unsure",
+   "rationale": "Benjamin and Benjamine differ by a gendered letter (the Daniel/Daniela pattern), while the shared partner Stephanie points the other way, so it is not settled."
+  },
+  {
+   "pair_id": 82,
+   "key_a": "p:beppe@beppe+sabina",
+   "key_b": "p:beppecandela",
+   "decision": "merge",
+   "rationale": "Beppe & Sabina and Beppe Candela & Sabina share the same partner, the same first name and the same event on the same date (KARMA International Festival)."
+  },
+  {
+   "pair_id": 83,
+   "key_a": "p:blackchinese",
+   "key_b": "p:blackchinese@dance",
+   "decision": "merge",
+   "rationale": "Black Chinese & Monica and BLACKCHINESE share the distinctive stage name and the France stated country."
+  },
+  {
+   "pair_id": 84,
+   "key_a": "p:bonifacio@bonifacio+jessica",
+   "key_b": "p:bonifacioaurio",
+   "decision": "merge",
+   "rationale": "Bonifacio & Jessica and Bonifacio Aurio share the distinctive first name Bonifacio and Portugal as stated country."
+  },
+  {
+   "pair_id": 85,
+   "key_a": "p:bourgeois@bourgeois+maria",
+   "key_b": "p:bourgeois@dance",
+   "decision": "merge",
+   "rationale": "Bourgeois & Maria and solo Bourgeois played the same event on the same date with the same style (Bachata) and the same stated country (Cameroon)."
+  },
+  {
+   "pair_id": 86,
+   "key_a": "p:carla@carla+tony",
+   "key_b": "p:carla@carla+tonyviser",
+   "decision": "merge",
+   "rationale": "Tony & Carla and Tony Viser & Carla share the partner Carla, the first name Tony and the Angola/Cape Verde stated countries."
+  },
+  {
+   "pair_id": 87,
+   "key_a": "p:carla@carla+tony",
+   "key_b": "p:carlaandrade",
+   "decision": "merge",
+   "rationale": "Tony & Carla and Tony Viser & Carla Andrade share the first name Tony, the partner Carla and the Angola/Cape Verde stated countries."
+  },
+  {
+   "pair_id": 88,
+   "key_a": "p:carla@carla+tonyviser",
+   "key_b": "p:carlaandrade",
+   "decision": "merge",
+   "rationale": "Tony Viser & Carla and Tony Viser & Carla Andrade share the full name Tony Viser and the partner Carla, with the surname added on one side."
+  },
+  {
+   "pair_id": 89,
+   "key_a": "p:carlos@anna+carlos",
+   "key_b": "p:carloscamba",
+   "decision": "merge",
+   "rationale": "Carlos & Anna and Carlos Camba share the same partner Anna and the Angola/Finland stated countries."
+  },
+  {
+   "pair_id": 90,
+   "key_a": "p:carol@dance",
+   "key_b": "p:carolxavier",
+   "decision": "merge",
+   "rationale": "Carol and Carol Xavier share the stated country (Brazil) and the same festival, Freedom Romantic Festival, in consecutive editions."
+  },
+  {
+   "pair_id": 91,
+   "key_a": "p:carolina@carolina+fernando",
+   "key_b": "p:carolinaazevedo",
+   "decision": "unsure",
+   "rationale": "Fernando & Carolina and solo Carolina Azevedo share only the first name Carolina and a partial Portugal link, so the evidence does not settle it."
+  },
+  {
+   "pair_id": 92,
+   "key_a": "p:catharine@catharine+kornel",
+   "key_b": "p:catherine@catherine+kornel",
+   "decision": "merge",
+   "rationale": "Kornel & Catharine and Kornel & Catherine share the partner Kornel and the same name in a spelling variant."
+  },
+  {
+   "pair_id": 93,
+   "key_a": "p:cazuza@dance",
+   "key_b": "p:cazuzakinvula",
+   "decision": "merge",
+   "rationale": "Cazuza and Cazuza Kinvula share the distinctive Angolan first name and the Angola stated country."
+  },
+  {
+   "pair_id": 94,
+   "key_a": "p:cazuza@dance",
+   "key_b": "p:cazuzaquinvula",
+   "decision": "merge",
+   "rationale": "Cazuza (Malaga) and Cazuza Quinvula (Bern) share the Angola stated country and a one-letter variant of the distinctive surname."
+  },
+  {
+   "pair_id": 95,
+   "key_a": "p:cazuzakinvula",
+   "key_b": "p:cazuzaquinvula",
+   "decision": "merge",
+   "rationale": "Cazuza Kinvula and Cazuza Quinvula share the first name and a one-letter surname variant, and the Angola/Switzerland stated countries."
+  },
+  {
+   "pair_id": 96,
+   "key_a": "p:cedric@cedric+christina",
+   "key_b": "p:cedric@dance",
+   "decision": "unsure",
+   "rationale": "Cedric & Christina and solo Cedric share only the first name and the France stated country, with no partner or event in common."
+  },
+  {
+   "pair_id": 97,
+   "key_a": "p:celia@celia+mauro",
+   "key_b": "p:celia@celia+maurodone",
+   "decision": "merge",
+   "rationale": "Mauro & Celia and Mauro D-One & Celia share the partner Celia, the name Mauro, the same stated countries (Angola, Portugal, Switzerland) and the city of Bern."
+  },
+  {
+   "pair_id": 98,
+   "key_a": "p:celine@celine+josue",
+   "key_b": "p:celine@dance",
+   "decision": "unsure",
+   "rationale": "Josue & Celine and solo Celine share only the common first name and France stated country, with no shared event or partner."
+  },
+  {
+   "pair_id": 99,
+   "key_a": "p:celine@celine+josue",
+   "key_b": "p:celinesemkiz",
+   "decision": "unsure",
+   "rationale": "Josue & Celine and Celine Semkiz share only the first name and France stated country, with no shared event or partner."
+  },
+  {
+   "pair_id": 100,
+   "key_a": "p:celine@dance",
+   "key_b": "p:celinesemkiz",
+   "decision": "unsure",
+   "rationale": "Solo Celine and Celine Semkiz share only the first name and France stated country, a common name with no shared event."
+  }
+ ]
+}

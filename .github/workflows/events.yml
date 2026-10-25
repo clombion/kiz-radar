@@ -1,7 +1,9 @@
 name: Refresh events
 
-# Once a month, update the newest export in source/ from kizomba-world.com (see pipeline/scrape.py), commit it,
-# then start the Rebuild site database workflow, which a push made with the Actions token doesn't start by itself.
+# Once a month, update the newest export in source/ from kizomba-world.com (see pipeline/scrape.py), ask Claude
+# the extraction passes for new and changed festivals (pipeline/extract/ask.py), reload what the answers say,
+# commit it all, then start the Rebuild site database workflow, which a push made with the Actions token doesn't
+# start by itself. A failed ask still commits the refresh, then marks the run failed.
 on:
   schedule:
     - cron: '17 5 3 * *'
@@ -18,7 +20,7 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
@@ -26,14 +28,25 @@ jobs:
         run: echo "SRC=$(ls -t source/*.sqlite | head -1)" >> "$GITHUB_ENV"
       - name: Refresh the events
         run: uv run -q pipeline/scrape.py "$SRC"
+      - name: Ask Claude about new and changed festivals
+        id: ask
+        continue-on-error: true
+        run: uv run -q pipeline/extract/ask.py "$SRC"
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - name: Load the answers and resolve the artists
+        run: |
+          python3 -I pipeline/extract/load_extract.py "$SRC"
+          uv run -q pipeline/extract/resolve_artists.py "$SRC"
+          python3 pipeline/merge_suggestions.py "$SRC"
       - name: Commit
         id: commit
         run: |
-          git add "$SRC"
+          git add "$SRC" pipeline/extract/answers pipeline/artist_merge_suggestions.csv
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git config user.name "events-bot"   # the rebase below re-commits, so it needs the name as well
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Refresh events from kizomba-world ($(date -u +%Y-%m-%d))"
+          git commit -m "Refresh events from kizomba-world and their extractions ($(date -u +%Y-%m-%d))"
           git pull --rebase --quiet
           git push
           echo "pushed=1" >> "$GITHUB_OUTPUT"
@@ -42,3 +55,6 @@ jobs:
         run: gh workflow run build.yml --ref main
         env:
           GH_TOKEN: ${{ github.token }}
+      - name: Fail if asking Claude failed
+        if: steps.ask.outcome == 'failure'
+        run: exit 1

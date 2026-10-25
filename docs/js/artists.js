@@ -106,6 +106,8 @@ function row(a, nx) {
 }
 
 function artistPage(root, id) {
+  const moved = one('SELECT new_id FROM artist_redirects WHERE old_id = ?', [id]);
+  if (moved) { location.replace(artistHref(moved.new_id)); return; }
   const a = one(`SELECT st.*, a.display_name, a.kind FROM artist_stats st JOIN artists a ON a.id = st.artist_id WHERE a.id = ?`, [id])
     || one(`SELECT a.id AS artist_id, a.display_name, a.kind, 0 AS bookings FROM artists a WHERE a.id = ?`, [id]);
   if (!a) { root.replaceChildren(h('p', {}, 'Artist not found.')); return; }

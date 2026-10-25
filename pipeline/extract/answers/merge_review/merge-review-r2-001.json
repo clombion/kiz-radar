@@ -1,0 +1,32 @@
+{
+  "batch": "merge-review-r2-001",
+  "prompt_version": "merge-review-v2",
+  "decisions": [
+    {"pair_id": 599, "key_a": "p:ange@ange+flo", "key_b": "p:angel@angel+flo", "decision": "merge", "rationale": "Same partner Flo, Ange and Angel are short and long forms, both salsa teachers in France."},
+    {"pair_id": 600, "key_a": "p:dan@anais+dan", "key_b": "p:dane@anais+dane", "decision": "merge", "rationale": "Same partner Anais/Anaïs in both sides and Dan/Dane is a short and long form, both teachers in France."},
+    {"pair_id": 601, "key_a": "p:dje@dje+tpeak", "key_b": "p:djelika@djelika+tpeak", "decision": "merge", "rationale": "Same T'Peak couple on every mention; Djé is a short form of Djelika and the stage styles and France country line up."},
+    {"pair_id": 602, "key_a": "p:dlbeats", "key_b": "p:lbeats", "decision": "unsure", "rationale": "Side A is the D&L Beats duo, while side B lists Lisa Rose and Dani Fernandes individually as 'D & L Beats' at one event; it is unclear whether these are the duo's members or a separate act."},
+    {"pair_id": 603, "key_a": "p:donperry", "key_b": "p:donperryafrostyle", "decision": "merge", "rationale": "Same partner Nike and the same name Don Perry, with the Afrostyle suffix added on side B as a stage-name extension."},
+    {"pair_id": 604, "key_a": "p:fola@fola+jaqui", "key_b": "p:folan@folan+jaqui", "decision": "merge", "rationale": "Same partner Jaqui; Fola and Folan are close name forms, and both sides list urban/kizomba teaching in Germany-linked events."},
+    {"pair_id": 605, "key_a": "p:isa@isa+madykeita", "key_b": "p:isabelle@isabelle+madykeita", "decision": "merge", "rationale": "Same partner Mady Keita; ISA and Isabelle are a short and long form of one name."},
+    {"pair_id": 606, "key_a": "p:isabel@felicien+isabel", "key_b": "p:isabelle@felicien+isabelle", "decision": "merge", "rationale": "Same partner Felicien in every mention, Isabel and Isabelle are short and long forms, and France is stated on both sides."},
+    {"pair_id": 607, "key_a": "p:june@june+virgile", "key_b": "p:juneline@juneline+virgile", "decision": "merge", "rationale": "Same partner Virgile in every mention, June and Juneline are short and long forms, and both sides teach in the Netherlands/Amsterdam circuit."},
+    {"pair_id": 608, "key_a": "p:laura@laura+romeo", "key_b": "p:lauralise@lauralise+romeo", "decision": "merge", "rationale": "Same partner Romeo, Laura and Laura-Lise share the first name, and both sides are bachata teachers."},
+    {"pair_id": 609, "key_a": "p:manuel@laura+manuel", "key_b": "p:manueladosesantos", "decision": "unsure", "rationale": "Manuel and Manuela Dose Santos differ by gender form, and the only shared link is the common first name Laura, with both listed in Italy; no evidence settles whether they are one person."},
+    {"pair_id": 610, "key_a": "p:marga@marga+nando", "key_b": "p:margarita@margarita+nando", "decision": "merge", "rationale": "Same partner Nando; Marga is a short form of Margarita, both salsa teachers."},
+    {"pair_id": 611, "key_a": "p:marian@luismi+marian", "key_b": "p:mariangela@luismi+mariangela", "decision": "merge", "rationale": "Same partner Luismi, Marian and Mariangela are short and long forms, and both sides list Spain as the stated country and bachata style."},
+    {"pair_id": 612, "key_a": "p:mel@hicham+mel", "key_b": "p:mell@hicham+mell", "decision": "merge", "rationale": "Same partner Hicham and Mel/Mell is a spelling variant of one name, both listed as teachers."},
+    {"pair_id": 613, "key_a": "p:moni@keco+moni", "key_b": "p:monica@keco+monica", "decision": "merge", "rationale": "Same partner Keco in every mention, Moni and Monica are short and long forms, and both sides are Spain-based teachers."},
+    {"pair_id": 614, "key_a": "p:nico@fabriziocampanella+nico", "key_b": "p:nicoletta@fabriziocampanella+nicoletta", "decision": "merge", "rationale": "Same partner Fabrizio Campanella in every mention, Nico and Nicoletta are short and long forms, and both are Italian kizomba teaching events."},
+    {"pair_id": 615, "key_a": "p:nico@nico+sara", "key_b": "p:nicola@nicola+sara", "decision": "merge", "rationale": "Same partner Sara in every mention, Nico and Nicola are a short and long form, and both sides are Italian kizomba teachers."},
+    {"pair_id": 616, "key_a": "p:nien@endos+nien", "key_b": "p:nienke@endos+nienke", "decision": "merge", "rationale": "Same partner Endos, Nien and Nienke are short and long forms, and both sides teach in the Netherlands/France circuit."},
+    {"pair_id": 617, "key_a": "p:pati@caarl+pati", "key_b": "p:patii@caarl+patii", "decision": "merge", "rationale": "Same partner Caarl in every mention, and Pati and Patii are a spelling variant of one name."},
+    {"pair_id": 618, "key_a": "p:sara@akram+sara", "key_b": "p:sarah@akram+sarah", "decision": "merge", "rationale": "Same partner Akram in every mention, Sara and Sarah are a spelling variant, and no event lists both spellings as separate couples."},
+    {"pair_id": 619, "key_a": "p:sara@jack+sara", "key_b": "p:sarah@jack+sarah", "decision": "merge", "rationale": "Same partner Jack in every mention, Sara and Sarah are a spelling variant, and no event lists both couples."},
+    {"pair_id": 620, "key_a": "p:sara@kevin+sara", "key_b": "p:sarah@kevin+sarah", "decision": "unsure", "rationale": "Both Sara & Kevin and Sarah & Kevin are listed at the same Manchester event on the same date, the pattern the rule treats as two couples; the roles also differ (performer vs teacher)."},
+    {"pair_id": 621, "key_a": "p:sara@sara+stef", "key_b": "p:sarah@sarah+stef", "decision": "merge", "rationale": "Same partner Stef in every mention, Sara and Sarah are a spelling variant, and no shared event lists both couples."},
+    {"pair_id": 622, "key_a": "p:sara@sara+valr", "key_b": "p:sarah@sarah+valr", "decision": "merge", "rationale": "Same partner Val'R in every mention, Sara and Sarah are a spelling variant, and no shared event lists both couples."},
+    {"pair_id": 623, "key_a": "p:stef@sonia+stef", "key_b": "p:steff@sonia+steff", "decision": "merge", "rationale": "Same partner Sonia in every mention, and Stef and Steff are a spelling variant of one name in kizomba teaching events."},
+    {"pair_id": 624, "key_a": "p:theo@julien+theo", "key_b": "p:theodora@julien+theodora", "decision": "merge", "rationale": "Same partner Julien in both sides, Theo and Théodora are short and long forms, and both are Belgian events."}
+  ]
+}

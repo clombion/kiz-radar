@@ -107,6 +107,11 @@ for old, new in redirects:
     x("""insert into artist_aliases select ?, ?, 0
          where not exists (select 1 from artist_aliases where artist_id = ? and alias = ?)""", (new, old_name, new, old_name))
     x("delete from artists where id = ?", (old,))
+# ids the source pipeline retired when it merged artists (src.artist_ids keeps every id it gave) read as the artist
+# their key belongs to now, so a shared link to one still opens
+retired = x("""select i.artist_id, k.artist_id from src.artist_ids i join src.artist_keys k on k.match_key = i.match_key
+               where i.artist_id not in (select id from src.artists)""").fetchall()
+out.executemany("insert or ignore into artist_redirects values (?,?)", [(old, root(new)) for old, new in retired])
 # A name listed alone can stand for different people across festivals ("Christina"). Each row of
 # pipeline/artist_bookings.csv moves one festival's booking from the record it was filed under to the person it is.
 moves = list(csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'artist_bookings.csv'), encoding='utf-8')))
@@ -309,7 +314,7 @@ DOCS = {
  'event_fares': 'Each event joined to the fare for its weekend (null when Google had no price), plus the cheapest fare that month to the same airport.',
  'artist_stats': f'Per artist with bookings of their own: bookings (teacher, DJ or performer at distinct events; a couple’s bookings count for the couple, not its members), home_country when it is known (home_basis: given in pipeline/artist_countries.csv, or stated next to their name in a line-up they are booked in; null otherwise), booked_most_in (the country with most of their bookings), countries booked in, bookings abroad (outside the home country, or outside booked_most_in when that is unknown), popular = at least {POPULAR} bookings, couple_bookings = further events where they appear only as part of a couple. People booked only as part of a couple have no row.',
  'event_artists': 'Each artist named in a line-up, resolved to an artist, with role, style and stated country. as_couple is set when a member is listed in the same role as their couple at the same event: that row repeats the couple’s booking and is left out of line-ups and statistics.',
- 'artist_redirects': 'Artists merged into another by pipeline/artist_merges.csv: old_id now reads as new_id.',
+ 'artist_redirects': 'Artists merged into another, by pipeline/artist_merges.csv or by the source pipeline: old_id now reads as new_id.',
  'artist_events': 'Every appearance of an artist: direct (their own booking) or member (via a booked couple, via_artist_id).',
  'artist_countries': 'Bookings per artist and country; is_home marks the known home country in artist_stats.',
  'artist_origin': 'Countries stated next to an artist’s name in line-ups (flags or text), with how often.',

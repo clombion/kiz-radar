@@ -1,0 +1,356 @@
+{
+ "batch": "merge-review-009",
+ "prompt_version": "merge-review-v1",
+ "decisions": [
+  {
+   "pair_id": 401,
+   "key_a": "p:mario@dj",
+   "key_b": "p:marion@gordon+marion",
+   "decision": "separate",
+   "rationale": "DJ Mario and the teacher Marion in the Gordon and Marion couple have different names and roles, and the only link is a similar spelling."
+  },
+  {
+   "pair_id": 402,
+   "key_a": "p:marisa@jorge+marisa",
+   "key_b": "p:marisapita",
+   "decision": "merge",
+   "rationale": "Marisa and Jorge in Madrid share the partner Jorge, the same city and country, and Marisa Pita is the full form of the first-name entry."
+  },
+  {
+   "pair_id": 403,
+   "key_a": "p:marta@azael+marta",
+   "key_b": "p:martha@azael+martha",
+   "decision": "merge",
+   "rationale": "Azael's partner name matches exactly on both sides and Marta and Martha are a spelling variant in the same bachata teaching couple."
+  },
+  {
+   "pair_id": 404,
+   "key_a": "p:marta@dance",
+   "key_b": "p:martha@azael+martha",
+   "decision": "unsure",
+   "rationale": "Solo Marta with a Poland flag shares a common first name and a one-letter variant with Martha, but no partner or other distinctive detail links her to the couple."
+  },
+  {
+   "pair_id": 405,
+   "key_a": "p:marten@anna+marten",
+   "key_b": "p:martenangner",
+   "decision": "unsure",
+   "rationale": "Mårten shares the country Sweden and the diacritic spelling, but the Anna partner is absent from the Angner entries and the first name is common."
+  },
+  {
+   "pair_id": 406,
+   "key_a": "p:martin@esra+martin",
+   "key_b": "p:martina@martina+sonia",
+   "decision": "separate",
+   "rationale": "Martin and Esra and Martina and Sónia have different first names and different partners, with no shared distinctive element."
+  },
+  {
+   "pair_id": 407,
+   "key_a": "p:marvinramos",
+   "key_b": "p:marvinramosacosta",
+   "decision": "merge",
+   "rationale": "Marvin Ramos is the same salsa teacher with the same Colombia country, and Marvin Ramos Acosta is the full form of that name."
+  },
+  {
+   "pair_id": 408,
+   "key_a": "p:marzha@marzha+ulan",
+   "key_b": "p:marzhan@marzhan+ulan",
+   "decision": "merge",
+   "rationale": "Ulan is the shared partner in both couples, Marzha and Marzhan are a near-identical spelling of one Kazakh name, and both sides use Urban Kiz."
+  },
+  {
+   "pair_id": 409,
+   "key_a": "p:mathias@katalin+mathias",
+   "key_b": "p:matthias@katalin+matthias",
+   "decision": "merge",
+   "rationale": "Katalin is the shared partner, Mathias and Matthias are a spelling variant, and both entries are Austrian."
+  },
+  {
+   "pair_id": 410,
+   "key_a": "p:matt@dj",
+   "key_b": "p:mattdecarmona",
+   "decision": "unsure",
+   "rationale": "DJ Matt matches DJ Matt de Carmona in role and France, but Matt is a common name and the bare entry appears across many countries with no distinctive detail."
+  },
+  {
+   "pair_id": 411,
+   "key_a": "p:matteo@diana+matteo",
+   "key_b": "p:matteofrati",
+   "decision": "merge",
+   "rationale": "Matteo and Diana are the same couple with Diana as partner in Italy, and Matteo Frati is the full form of the first name."
+  },
+  {
+   "pair_id": 412,
+   "key_a": "p:mauro@celia+mauro",
+   "key_b": "p:maurodone",
+   "decision": "merge",
+   "rationale": "Celia is the shared partner, the Mauro entries share Bern and the same Angola/Portugal/Switzerland country set, and D-One is an extension of the name."
+  },
+  {
+   "pair_id": 413,
+   "key_a": "p:max@max+silvia",
+   "key_b": "p:maxdousey",
+   "decision": "merge",
+   "rationale": "Silvia is the shared partner in the same couple, and Max Dousey is the full form of the Max entry in the same Italian scene."
+  },
+  {
+   "pair_id": 414,
+   "key_a": "p:methodz@julia+methodz",
+   "key_b": "p:methodz@juliaa+methodz",
+   "decision": "merge",
+   "rationale": "Methodz is a distinctive stage name shared by the same couple with Julia and Juliaa as a spelling variant, and both sides use France."
+  },
+  {
+   "pair_id": 415,
+   "key_a": "p:michael@anika+michael",
+   "key_b": "p:michaeldaimon",
+   "decision": "unsure",
+   "rationale": "Michael and Michael Daimon share the Netherlands and Suriname flags, but the Anika partner does not appear on the Daimon side and Michael is a common name."
+  },
+  {
+   "pair_id": 416,
+   "key_a": "p:michael@anika+michael",
+   "key_b": "p:michaeldiamon",
+   "decision": "merge",
+   "rationale": "Anika is the shared partner, Michael Diamon and Michael Daimon are a near-identical surname spelling, and both sides are Dutch."
+  },
+  {
+   "pair_id": 417,
+   "key_a": "p:michael@anika+michael",
+   "key_b": "p:michaeldiamond",
+   "decision": "unsure",
+   "rationale": "Michael Diamond is solo in Gothenburg with a Netherlands flag, but the Michael and Anika side shows no matching partner and Michael is a common name."
+  },
+  {
+   "pair_id": 418,
+   "key_a": "p:michael@federica+michael",
+   "key_b": "p:michel@federica+michel",
+   "decision": "merge",
+   "rationale": "Federica is the shared partner in the same Italian couple, and Michael and Michel are a one-letter variant of the same first name."
+  },
+  {
+   "pair_id": 419,
+   "key_a": "p:michaeldaimon",
+   "key_b": "p:michaeldiamon",
+   "decision": "merge",
+   "rationale": "Michael Daimon and Michael Diamon share the Netherlands flag and a near-identical surname, and the Diamon side is paired with Anika."
+  },
+  {
+   "pair_id": 420,
+   "key_a": "p:michaeldaimon",
+   "key_b": "p:michaeldiamond",
+   "decision": "unsure",
+   "rationale": "Michael Daimon in Kraków and Michael Diamond in Gothenburg share a first name, a near-identical surname and the Netherlands, but the cities differ and the surname is common in English."
+  },
+  {
+   "pair_id": 421,
+   "key_a": "p:michaeldiamon",
+   "key_b": "p:michaeldiamond",
+   "decision": "merge",
+   "rationale": "Michael Diamon and Michael Diamond are near-identical surnames in the same city, Gothenburg, with the same Netherlands country."
+  },
+  {
+   "pair_id": 422,
+   "key_a": "p:michel@aga+michel",
+   "key_b": "p:michel@dance",
+   "decision": "unsure",
+   "rationale": "Michel is a common name matching the France flag on the Michel and Aga couple, but the solo entry has no partner, surname or style to link it."
+  },
+  {
+   "pair_id": 423,
+   "key_a": "p:michela@fernando+michela",
+   "key_b": "p:michela@fernandobumbum+michela",
+   "decision": "merge",
+   "rationale": "Michela is the shared partner, Fernando Bumbum is the full form of Fernando, and the Angola and Italy country set matches."
+  },
+  {
+   "pair_id": 424,
+   "key_a": "p:michela@fernando+michela",
+   "key_b": "p:michelavissani",
+   "decision": "separate",
+   "rationale": "Michela Vissani has a different surname and no partner in common with Fernando and Michela, and the only shared element is the common first name and Italy."
+  },
+  {
+   "pair_id": 425,
+   "key_a": "p:michela@fernandobumbum+michela",
+   "key_b": "p:michelavissani",
+   "decision": "separate",
+   "rationale": "Michela Vissani has a different surname and no partner in common with Fernando Bumbum and Michela, and the only shared element is the common first name and Italy."
+  },
+  {
+   "pair_id": 426,
+   "key_a": "p:mickaela@dance",
+   "key_b": "p:mickaela@jahja+mickaela",
+   "decision": "unsure",
+   "rationale": "Mickaela is a shared distinctive spelling and Sweden matches, but the solo Stockholm entry and the Jah J'a couple in Gothenburg have different partners."
+  },
+  {
+   "pair_id": 427,
+   "key_a": "p:mickaela@dance",
+   "key_b": "p:mickaela@mamadou+mickaela",
+   "decision": "unsure",
+   "rationale": "Mickaela in Stockholm matches the city and country of the Mamadou and Mickaela couple, but the partner differs from the solo entry, which has no partner."
+  },
+  {
+   "pair_id": 428,
+   "key_a": "p:mickaela@jahja+mickaela",
+   "key_b": "p:mickaela@mamadou+mickaela",
+   "decision": "unsure",
+   "rationale": "Mickaela is the shared name in two Swedish couples with different partners, Jah J'a and Mamadou, and nothing else links them."
+  },
+  {
+   "pair_id": 429,
+   "key_a": "p:miguel@miguel+monica",
+   "key_b": "p:miguelbrandao",
+   "decision": "unsure",
+   "rationale": "Miguel and Portugal match, but Miguel is a common name and the partner differs, Monica in one and Maria in the other."
+  },
+  {
+   "pair_id": 430,
+   "key_a": "p:mike@elo+mike",
+   "key_b": "p:mikeevens",
+   "decision": "unsure",
+   "rationale": "Mike Evens shares the first name Mike and France with Mike and Elo, but the Mike and Elo couple has no partner or style match with the Evens entry."
+  },
+  {
+   "pair_id": 431,
+   "key_a": "p:mike@elo+mike",
+   "key_b": "p:mikegenevieve",
+   "decision": "unsure",
+   "rationale": "Mike Genevieve shares the first name Mike and France with Mike and Elo, but the surnames and partners do not match and Mike is a common name."
+  },
+  {
+   "pair_id": 432,
+   "key_a": "p:mikiz@dance",
+   "key_b": "p:mikiz@mikiz+pao",
+   "decision": "merge",
+   "rationale": "Mik'iz is a distinctive stage name shared by the solo and the couple entries, with France on both sides, and the couple adds Pao."
+  },
+  {
+   "pair_id": 433,
+   "key_a": "p:mikiz@dance",
+   "key_b": "p:mikiz@mikiz+paolou",
+   "decision": "merge",
+   "rationale": "Mik'iz is a distinctive stage name shared by the solo entry and the couple with Pao Lou, both sides are in France."
+  },
+  {
+   "pair_id": 434,
+   "key_a": "p:mikiz@mikiz+pao",
+   "key_b": "p:mikiz@mikiz+paolou",
+   "decision": "merge",
+   "rationale": "The partner is Pao or Pao Lou, the stage name Mik'iz is distinctive, and both sides are in France."
+  },
+  {
+   "pair_id": 435,
+   "key_a": "p:mirokikola",
+   "key_b": "p:mironikola",
+   "decision": "merge",
+   "rationale": "Miro Kikola is a distinctive DJ name with the same DJ role, and Miro Nikola differs by one letter and is most likely a typo of it."
+  },
+  {
+   "pair_id": 436,
+   "key_a": "p:momolatino",
+   "key_b": "p:momolatino@dj",
+   "decision": "merge",
+   "rationale": "DJ Momo Latino and Dj Momolatino are the same distinctive DJ name in the same role, with a spacing variant and a Czech link."
+  },
+  {
+   "pair_id": 437,
+   "key_a": "p:monica@blackchinese+monica",
+   "key_b": "p:monica@jorge+monica",
+   "decision": "unsure",
+   "rationale": "Monica appears in couples with two different partners, Black Chinese and Jorge, and Monica is a common name, with Spain as the only shared country."
+  },
+  {
+   "pair_id": 438,
+   "key_a": "p:monica@dance",
+   "key_b": "p:monica@jorelle+monica",
+   "decision": "unsure",
+   "rationale": "Monica in Victoria Canada matches the city, country and Bachata style of the Jorelle and Monica couple, but the partner is different and Monica is common."
+  },
+  {
+   "pair_id": 439,
+   "key_a": "p:moorea@dance",
+   "key_b": "p:moorea@ironmams+moorea",
+   "decision": "unsure",
+   "rationale": "Moorea is a fairly distinctive first name with France on both sides, but the Iron Mams couple is absent from the solo entries."
+  },
+  {
+   "pair_id": 440,
+   "key_a": "p:morgan@fred+morgan",
+   "key_b": "p:morgane@fred+morgane",
+   "decision": "unsure",
+   "rationale": "Fred is the shared partner, but Morgan and Morgane differ by one letter and the Bari and Toulon entries do not show the same couple's details."
+  },
+  {
+   "pair_id": 441,
+   "key_a": "p:morgane@bastien+morgane",
+   "key_b": "p:morgane@fred+morgane",
+   "decision": "unsure",
+   "rationale": "Morgane is in two different couples, Bastien and Fred, with France on both, and nothing settles whether it is the same person."
+  },
+  {
+   "pair_id": 442,
+   "key_a": "p:morgane@bastien+morgane",
+   "key_b": "p:morgane@frednelson+morgane",
+   "decision": "unsure",
+   "rationale": "Morgane appears with the partners Bastien and Fred-Nelson, with France on both sides, and the partner names differ."
+  },
+  {
+   "pair_id": 443,
+   "key_a": "p:morgane@fred+morgane",
+   "key_b": "p:morgane@frednelson+morgane",
+   "decision": "merge",
+   "rationale": "Fred is the shared partner in the same Morgane couple, Fred-Nelson is the full form of the first name, and both sides are France."
+  },
+  {
+   "pair_id": 444,
+   "key_a": "p:moussadiop",
+   "key_b": "p:moustadiop",
+   "decision": "merge",
+   "rationale": "Moussa Diop and Mousta Diop share the same distinctive surname, the same city Malaga and a one-letter variant of the first name."
+  },
+  {
+   "pair_id": 445,
+   "key_a": "p:mxtrela@dance",
+   "key_b": "p:mxtreladiogo",
+   "decision": "merge",
+   "rationale": "M-Xtrela is a distinctive stage name shared by the same Angolan teacher, and M-Xtrela Diogo is the full form of it."
+  },
+  {
+   "pair_id": 446,
+   "key_a": "p:nam@bingo+nam",
+   "key_b": "p:nam@dj",
+   "decision": "merge",
+   "rationale": "Nam is the same stage name with a DJ prefix on one side, and both entries are Vietnamese at the same event on the same date."
+  },
+  {
+   "pair_id": 447,
+   "key_a": "p:natalia@alessio+natalia",
+   "key_b": "p:natalia@andrea+natalia",
+   "decision": "unsure",
+   "rationale": "Natalia is in couples with two different partners, Alessio and Andrea, and both entries are in Italy, but nothing else links them."
+  },
+  {
+   "pair_id": 448,
+   "key_a": "p:navi@dj",
+   "key_b": "p:navi@natalie+navi",
+   "decision": "merge",
+   "rationale": "DJ Navi and Navi&Natalie are the same stage name at the same event on the same date, with India on both sides."
+  },
+  {
+   "pair_id": 449,
+   "key_a": "p:neko@dj",
+   "key_b": "p:nekodj",
+   "decision": "merge",
+   "rationale": "DJ Neko and Neko DJ are the same distinctive stage name in the same DJ role, with Italy on both sides."
+  },
+  {
+   "pair_id": 450,
+   "key_a": "p:nicelife",
+   "key_b": "p:nicelife@dj",
+   "decision": "merge",
+   "rationale": "Nice Life and DJ Nicelife are the same distinctive stage name in the same DJ role, with a spacing variant and Netherlands on one side."
+  }
+ ]
+}

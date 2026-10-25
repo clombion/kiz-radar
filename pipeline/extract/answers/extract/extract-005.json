@@ -1,0 +1,4164 @@
+{
+  "batch": "extract-005",
+  "prompt_version": "extract-v1",
+  "events": [
+    {
+      "event_id": 15531,
+      "artists": [
+        {
+          "name_as_written": "Rico Suave & Manon",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
+        },
+        {
+          "name_as_written": "Carlos Camba & Anna",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
+        },
+        {
+          "name_as_written": "Tony Viser & Carla",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
+        },
+        {
+          "name_as_written": "Mara & Andy",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
+        },
+        {
+          "name_as_written": "Boris & Xenia",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
+        },
+        {
+          "name_as_written": "DJ HUGO BOSS",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "DJ HUGO BOSS DJ Carlos KinG"
+        },
+        {
+          "name_as_written": "DJ Carlos KinG",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "DJ HUGO BOSS DJ Carlos KinG"
+        },
+        {
+          "name_as_written": "Kizomba Academy",
+          "role": "organiser",
+          "style": null,
+          "country": null,
+          "source_line": "Your Kizomba Academy Team ❤️"
+        }
+      ],
+      "features": [
+        {
+          "feature": "all_in_one",
+          "quote": "Stay right in the center of the action in the beautiful setting of Hotel Pod Lipou Resort.",
+          "rationale": "Dancers are invited to stay in the resort hotel where the weekend takes place."
+        },
+        {
+          "feature": "accommodation_included",
+          "quote": "Accommodation for 2 nights in a luxury room + Breakfast + Unlimited Wellness",
+          "rationale": "The early-bird hotel package bundles two nights of accommodation with breakfast and wellness."
+        },
+        {
+          "feature": "workshops",
+          "quote": "minimum of 18+ hours of workshops",
+          "rationale": "At least 18 hours of workshops are promised."
+        },
+        {
+          "feature": "full_pass",
+          "quote": "FULLPASS (Workshops + Party + Social)",
+          "rationale": "A full pass covering workshops, party and social is sold."
+        },
+        {
+          "feature": "party_pass",
+          "quote": "FUN-PASS (Party + Social only)",
+          "rationale": "A party-only pass is sold."
+        },
+        {
+          "feature": "early_bird_tiers",
+          "quote": "Regular price will be €149.00",
+          "rationale": "The early-bird price sits below a regular price that applies later."
+        },
+        {
+          "feature": "limited_or_sold_out",
+          "quote": "prices valid only until limited capacity sells out!",
+          "rationale": "Early-bird prices end when capacity sells out."
+        },
+        {
+          "feature": "non_refundable",
+          "quote": "all purchased tickets and packages are NON-REFUNDABLE",
+          "rationale": "The text states that tickets are non-refundable."
+        },
+        {
+          "feature": "name_change",
+          "quote": "Name change: Anytime and FREE (if you find a replacement).",
+          "rationale": "Tickets can be transferred to another person by name change."
+        }
+      ]
+    },
+    {
+      "event_id": 15536,
+      "artists": [],
+      "features": [
+        {
+          "feature": "all_in_one",
+          "quote": "Eastern Grand Palace Hotel",
+          "rationale": "The festival venue is a hotel where attendees book rooms, and the event is billed as all-in-one."
+        },
+        {
+          "feature": "workshops",
+          "quote": "3 Workshop Rooms",
+          "rationale": "Three workshop rooms run during the festival."
+        },
+        {
+          "feature": "masterclass",
+          "quote": "Masterclasses & Intensive Bootcamps",
+          "rationale": "Masterclasses are on the programme."
+        },
+        {
+          "feature": "bootcamp_intensive",
+          "quote": "Masterclasses & Intensive Bootcamps",
+          "rationale": "Intensive bootcamps are on the programme."
+        },
+        {
+          "feature": "shows",
+          "quote": "Shows & Animations",
+          "rationale": "Shows are on the programme."
+        },
+        {
+          "feature": "pool_party",
+          "quote": "Pool Party & Boat Party",
+          "rationale": "A pool party is on the programme."
+        },
+        {
+          "feature": "boat_party",
+          "quote": "Sunset Boat Party – 16 April",
+          "rationale": "A boat party is on the programme."
+        },
+        {
+          "feature": "competition",
+          "quote": "Bachata Battle",
+          "rationale": "Battle competitions are on the programme."
+        },
+        {
+          "feature": "multiple_rooms",
+          "quote": "2 Dance Party Rooms",
+          "rationale": "Two dance party rooms are offered."
+        },
+        {
+          "feature": "pre_party",
+          "quote": "Night Pre-Party – 16 April",
+          "rationale": "A pre-party is on the programme."
+        }
+      ]
+    },
+    {
+      "event_id": 15541,
+      "artists": [],
+      "features": [
+        {
+          "feature": "workshops",
+          "quote": "250+ Workshops in multiple dance styles and levels",
+          "rationale": "The festival runs more than 250 workshops."
+        },
+        {
+          "feature": "live_music",
+          "quote": "Salsa-Bachata-Kizomba Live Concerts",
+          "rationale": "Live concerts are part of the programme."
+        },
+        {
+          "feature": "shows",
+          "quote": "Live Concerts, Shows, Competitions and Day & Night Parties",
+          "rationale": "Shows are part of the programme."
+        },
+        {
+          "feature": "competition",
+          "quote": "Live Concerts, Shows, Competitions and Day & Night Parties",
+          "rationale": "Competitions are part of the programme."
+        },
+        {
+          "feature": "multiple_rooms",
+          "quote": "on 7 different Dance Floors",
+          "rationale": "Seven dance floors run at the festival."
+        },
+        {
+          "feature": "day_socials",
+          "quote": "Day & Night Parties",
+          "rationale": "Daytime parties are part of the programme."
+        },
+        {
+          "feature": "cruise",
+          "quote": "Bosphorus Welcome Dance Cruise",
+          "rationale": "A dance cruise on the Bosphorus is part of the programme."
+        },
+        {
+          "feature": "beach_party",
+          "quote": "Island Beach Parties & Workshops",
+          "rationale": "Beach parties are held on the islands."
+        }
+      ]
+    },
+    {
+      "event_id": 15557,
+      "artists": [
+        {
+          "name_as_written": "Ary and Maura",
+          "role": "teacher",
+          "style": "Kizomba/Semba",
+          "country": null,
+          "source_line": "Ary and Maura – Angola"
+        },
+        {
+          "name_as_written": "M-Xtrela",
+          "role": "teacher",
+          "style": "Kizomba/Semba",
+          "country": null,
+          "source_line": "M-Xtrela – Angola"
+        },
+        {
+          "name_as_written": "Vamula",
+          "role": "teacher",
+          "style": "Kizomba/Semba",
+          "country": null,
+          "source_line": "Vamula – Poland"
+        },
+        {
+          "name_as_written": "Theo",
+          "role": "teacher",
+          "style": "Kizomba/Semba",
+          "country": null,
+          "source_line": "Theo – Gh/UK"
+        },
+        {
+          "name_as_written": "Nii and Astrid",
+          "role": "teacher",
+          "style": "Kizomba/Semba",
+          "country": null,
+          "source_line": "Nii and Astrid – Gh/No"
+        },
+        {
+          "name_as_written": "Lionel",
+          "role": "teacher",
+          "style": "Kizomba/Semba",
+          "country": null,
+          "source_line": "Lionel – France"
+        },
+        {
+          "name_as_written": "Sacko Dadie",
+          "role": "teacher",
+          "style": "UrbanKiz",
+          "country": null,
+          "source_line": "Sacko Dadie- France"
+        },
+        {
+          "name_as_written": "Yaya",
+          "role": "teacher",
+          "style": "UrbanKiz",
+          "country": null,
+          "source_line": "Yaya – Holland"
+        },
+        {
+          "name_as_written": "Sensei",
+          "role": "teacher",
+          "style": "UrbanKiz",
+          "country": null,
+          "source_line": "Sensei – France"
+        },
+        {
+          "name_as_written": "Romeo Steph",
+          "role": "teacher",
+          "style": "UrbanKiz",
+          "country": null,
+          "source_line": "Romeo Steph – France"
+        },
+        {
+          "name_as_written": "Jakob",
+          "role": "teacher",
+          "style": "UrbanKiz",
+          "country": null,
+          "source_line": "Jakob – Sweden"
+        },
+        {
+          "name_as_written": "Dee Cee Beatz",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "Dee Cee Beatz – Fr/No"
+        },
+        {
+          "name_as_written": "Lee Ø Rosse",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "Lee Ø Rosse – Fr/No"
+        },
+        {
+          "name_as_written": "Poema Beatz",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "Poema Beatz – Sweden"
+        },
+        {
+          "name_as_written": "Dj Shiro",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "Dj Shiro – Sweden"
+        },
+        {
+          "name_as_written": "Qas",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "Qas – UK"
+        },
+        {
+          "name_as_written": "Maie",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "Maie – Norway"
+        },
+        {
+          "name_as_written": "Steve Morraine",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "Steve Morraine – Norway"
+        }
+      ],
+      "features": [
+        {
+          "feature": "workshops",
+          "quote": "Workshops for all levels & styles",
+          "rationale": "Workshops are offered."
+        },
+        {
+          "feature": "all_levels_beginners",
+          "quote": "Workshops for all levels & styles",
+          "rationale": "Workshops are open to all levels."
+        },
+        {
+          "feature": "multiple_rooms",
+          "quote": "TWO rooms: Kizomba/Semba + UrbanKiz",
+          "rationale": "Two dance rooms run at once."
+        },
+        {
+          "feature": "after_party",
+          "quote": "Afterparty from 2AM: Dancecity",
+          "rationale": "An afterparty is scheduled."
+        },
+        {
+          "feature": "pre_party",
+          "quote": "Pre-Party: Thursday @ Café Sør",
+          "rationale": "A pre-party is scheduled."
+        },
+        {
+          "feature": "dress_code",
+          "quote": "Friday – White – Celebration of culture",
+          "rationale": "Each day has a stated dress code."
+        },
+        {
+          "feature": "themed_parties",
+          "quote": "Friday – White – Celebration of culture",
+          "rationale": "Each night's party has a dress theme."
+        },
+        {
+          "feature": "full_pass",
+          "quote": "Full Pass: Parties + socials + workshops",
+          "rationale": "A full pass is sold."
+        },
+        {
+          "feature": "party_pass",
+          "quote": "Full Party Pass: All socials + night parties (no classes)",
+          "rationale": "A party-only pass is sold."
+        },
+        {
+          "feature": "early_bird_tiers",
+          "quote": "Grab yours before prices go up!",
+          "rationale": "Ticket prices rise in tiers."
+        },
+        {
+          "feature": "limited_or_sold_out",
+          "quote": "Leader – 950kr",
+          "rationale": "The early-bird tier is marked sold out."
+        },
+        {
+          "feature": "couple_pass",
+          "quote": "Couple Pass – 2400kr",
+          "rationale": "A couple pass is sold."
+        },
+        {
+          "feature": "non_refundable",
+          "quote": "Tickets are non-refundable",
+          "rationale": "Tickets are non-refundable."
+        }
+      ]
+    },
+    {
+      "event_id": 15562,
+      "artists": [
+        {
+          "name_as_written": "Hugo Smile & Evren",
+          "role": "organiser",
+          "style": null,
+          "country": null,
+          "source_line": "Hugo Smile & Evren present INSIDE FESTIVAL, All in One at the Le M & Spa Bordeaux Aéroport by Hôtels & Préférence !"
+        },
+        {
+          "name_as_written": "Fred-Nelson & Morgane",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✨Fred-Nelson & Morgane"
+        },
+        {
+          "name_as_written": "Jesùs & Anni",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✨Jesùs & Anni"
+        },
+        {
+          "name_as_written": "Val’R & Sarah",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✨Val’R & Sarah"
+        },
+        {
+          "name_as_written": "Jonathan Kani",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✨Jonathan Kani"
+        },
+        {
+          "name_as_written": "Jah J’a & Jeisy",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✨Jah J’a & Jeisy"
+        },
+        {
+          "name_as_written": "Justinho",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✨Justinho"
+        },
+        {
+          "name_as_written": "Kamil & Amandine",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✨Kamil & Amandine"
+        },
+        {
+          "name_as_written": "Lilian & Ivana",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✨Lilian & Ivana"
+        },
+        {
+          "name_as_written": "Malick & Carla",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✨Malick & Carla"
+        },
+        {
+          "name_as_written": "Volkan & Xenia",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✨Volkan & Xenia"
+        },
+        {
+          "name_as_written": "Miléna",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✨Miléna"
+        },
+        {
+          "name_as_written": "DJ Baillie",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "✨DJ Baillie"
+        },
+        {
+          "name_as_written": "DJ Snakes",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "✨DJ Snakes"
+        },
+        {
+          "name_as_written": "DJ Valet",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "✨ DJ Valet"
+        },
+        {
+          "name_as_written": "DJ David Ruela",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "✨DJ David Ruela"
+        },
+        {
+          "name_as_written": "DJ Ichigo",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "✨DJ Ichigo"
+        },
+        {
+          "name_as_written": "DJ LENHY",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "✨DJ LENHY"
+        },
+        {
+          "name_as_written": "DJ Man",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "✨DJ Man"
+        },
+        {
+          "name_as_written": "DJ Hugo Smile",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "✨DJ Hugo Smile"
+        },
+        {
+          "name_as_written": "Benkos",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "✨Benkos"
+        },
+        {
+          "name_as_written": "Alain Ronteix",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "✨Alain Ronteix"
+        },
+        {
+          "name_as_written": "Julien Boudet",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "✨Julien Boudet"
+        },
+        {
+          "name_as_written": "Ana Legacy Media",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "✨Ana Legacy Media"
+        }
+      ],
+      "features": [
+        {
+          "feature": "all_in_one",
+          "quote": "Everything happens at the Pullman hotel in Bordeaux.",
+          "rationale": "Workshops and parties take place in the hotel where dancers stay."
+        },
+        {
+          "feature": "full_pass",
+          "quote": "The unique weekend pass includes:",
+          "rationale": "A weekend pass covering evenings, socials and workshops is sold."
+        },
+        {
+          "feature": "workshops",
+          "quote": "20 hours of workshop: kizomba, semba, urban kiz, fusion, tarraxo, afrohouse, body control.",
+          "rationale": "Twenty hours of workshops are included in the pass."
+        },
+        {
+          "feature": "masterclass",
+          "quote": "Master classes are not included in the pass.",
+          "rationale": "Masterclasses are offered outside the pass."
+        },
+        {
+          "feature": "pre_party",
+          "quote": "Preparty isn’t included in the pass",
+          "rationale": "A pre-party is offered separately."
+        },
+        {
+          "feature": "couple_pass",
+          "quote": "Couple pass (man/woman) -20€",
+          "rationale": "A discounted couple pass is sold."
+        },
+        {
+          "feature": "early_bird_tiers",
+          "quote": "Prices increase on the 1st of each month.",
+          "rationale": "Prices rise monthly."
+        },
+        {
+          "feature": "themed_parties",
+          "quote": "FAIRY WORLD EDITION",
+          "rationale": "The party has a theme."
+        }
+      ]
+    },
+    {
+      "event_id": 15567,
+      "artists": [
+        {
+          "name_as_written": "Eliza Sala",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🔸Eliza Sala"
+        },
+        {
+          "name_as_written": "Tony Viser & Carla",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🔸Tony Viser & Carla"
+        },
+        {
+          "name_as_written": "Fenomenos do Semba",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🔸Fenomenos do Semba"
+        },
+        {
+          "name_as_written": "Jadilson",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🔸Jadilson"
+        },
+        {
+          "name_as_written": "Maiza & Telma",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🔸Maiza & Telma"
+        },
+        {
+          "name_as_written": "Manuel & Laura",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🔸Manuel & Laura"
+        },
+        {
+          "name_as_written": "Yanis",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🔸Yanis"
+        },
+        {
+          "name_as_written": "David Pacavira & Celine",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🔸David Pacavira & Celine"
+        },
+        {
+          "name_as_written": "Mr Tecas & Tasha",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🔸Mr Tecas & Tasha"
+        },
+        {
+          "name_as_written": "Fernando & Michela",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🔸Fernando & Michela"
+        },
+        {
+          "name_as_written": "Geppo Dj",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🔸Geppo Dj"
+        }
+      ],
+      "features": [
+        {
+          "feature": "workshops",
+          "quote": "3 days of workshops",
+          "rationale": "Three days of workshops are part of the pass."
+        },
+        {
+          "feature": "full_pass",
+          "quote": "FULL PASS FOR ONLY €130!",
+          "rationale": "A full pass is sold."
+        },
+        {
+          "feature": "early_bird_tiers",
+          "quote": "Hurry, the price is expected to rise!",
+          "rationale": "The pass price is set to rise."
+        },
+        {
+          "feature": "partner_hotel",
+          "quote": "Where to Stay – Recommended Options",
+          "rationale": "Recommended hotels with negotiated prices are listed."
+        },
+        {
+          "feature": "transfers_shuttle",
+          "quote": "Scheduled shuttle service from the main event location",
+          "rationale": "A shuttle runs from the main event location."
+        }
+      ]
+    },
+    {
+      "event_id": 15572,
+      "artists": [
+        {
+          "name_as_written": "DJ MIRO KIKOLA",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🟡 DJ MIRO KIKOLA"
+        },
+        {
+          "name_as_written": "DJ VASCO",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🟡 DJ VASCO"
+        },
+        {
+          "name_as_written": "TERESA FT",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🟡 TERESA FT"
+        },
+        {
+          "name_as_written": "ELHADJ & JENNA",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🟡 ELHADJ & JENNA"
+        },
+        {
+          "name_as_written": "CLAUDIO & VANESSA",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🟡 CLAUDIO & VANESSA"
+        },
+        {
+          "name_as_written": "AURELIE AÏDAM",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🟡 AURELIE AÏDAM"
+        },
+        {
+          "name_as_written": "PEDRO SP",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🟡 PEDRO SP"
+        }
+      ],
+      "features": [
+        {
+          "feature": "workshops",
+          "quote": "Workshops",
+          "rationale": "Workshops are part of the event."
+        },
+        {
+          "feature": "partner_hotel",
+          "quote": "Partner Hotel",
+          "rationale": "A partner hotel is recommended, with negotiated rates."
+        },
+        {
+          "feature": "transfers_shuttle",
+          "quote": "Shuttles will only depart from this hotel.",
+          "rationale": "A shuttle runs from the partner hotel."
+        }
+      ]
+    },
+    {
+      "event_id": 15577,
+      "artists": [
+        {
+          "name_as_written": "Miranna & Mauricio",
+          "role": "teacher",
+          "style": null,
+          "country": "Finland 🇫🇮/ Colombia 🇨🇴",
+          "source_line": "Miranna & Mauricio (Finland 🇫🇮/ Colombia 🇨🇴)"
+        },
+        {
+          "name_as_written": "Mirka & Pekka",
+          "role": "teacher",
+          "style": null,
+          "country": "Finland 🇫🇮",
+          "source_line": "Mirka & Pekka – Virgula (Finland 🇫🇮)"
+        },
+        {
+          "name_as_written": "Satu & Roynet",
+          "role": "teacher",
+          "style": null,
+          "country": "Finland 🇫🇮/ Cuba 🇨🇺",
+          "source_line": "Satu & Roynet (Finland 🇫🇮/ Cuba 🇨🇺)"
+        },
+        {
+          "name_as_written": "Fábio",
+          "role": "teacher",
+          "style": null,
+          "country": "Portugal 🇵🇹",
+          "source_line": "Fábio (Portugal 🇵🇹)"
+        },
+        {
+          "name_as_written": "Mira",
+          "role": "teacher",
+          "style": null,
+          "country": "Finland 🇫🇮",
+          "source_line": "Mira (Finland 🇫🇮)"
+        },
+        {
+          "name_as_written": "Taija",
+          "role": "teacher",
+          "style": null,
+          "country": "Finland 🇫🇮",
+          "source_line": "Taija (Finland 🇫🇮)"
+        },
+        {
+          "name_as_written": "Tiia",
+          "role": "teacher",
+          "style": null,
+          "country": "Finland 🇫🇮",
+          "source_line": "Tiia (Finland 🇫🇮)"
+        },
+        {
+          "name_as_written": "Roberto La Rosa",
+          "role": "teacher",
+          "style": null,
+          "country": "Cuba 🇨🇺",
+          "source_line": "Roberto La Rosa (Cuba 🇨🇺)"
+        },
+        {
+          "name_as_written": "DJ Pies Locos",
+          "role": "dj",
+          "style": null,
+          "country": "Finland 🇫🇮",
+          "source_line": "DJ Pies Locos (Finland 🇫🇮)"
+        },
+        {
+          "name_as_written": "DJ Puxa²",
+          "role": "dj",
+          "style": null,
+          "country": "Portugal 🇵🇹",
+          "source_line": "DJ Puxa² (Portugal 🇵🇹)"
+        },
+        {
+          "name_as_written": "DJ Stani",
+          "role": "dj",
+          "style": null,
+          "country": "Bulgaria 🇧🇬",
+          "source_line": "DJ Stani (Bulgaria 🇧🇬)"
+        }
+      ],
+      "features": [
+        {
+          "feature": "workshops",
+          "quote": "11h of Workshops",
+          "rationale": "Eleven hours of workshops are scheduled."
+        },
+        {
+          "feature": "day_socials",
+          "quote": "2 Parties & 1 Matinée",
+          "rationale": "An afternoon matinée is scheduled alongside two parties."
+        },
+        {
+          "feature": "themed_parties",
+          "quote": "Grand Party: Elegant Night",
+          "rationale": "One party has a dress theme."
+        },
+        {
+          "feature": "couple_pass",
+          "quote": "Couple Pass – 130€",
+          "rationale": "A couple pass is sold."
+        },
+        {
+          "feature": "early_bird_tiers",
+          "quote": "Couple Pass – 150€",
+          "rationale": "Pass prices rise monthly."
+        },
+        {
+          "feature": "full_pass",
+          "quote": "Full Pass – 60€ (Only 10 – 5 Leaders/5 Followers)",
+          "rationale": "A full pass is sold."
+        },
+        {
+          "feature": "limited_or_sold_out",
+          "quote": "Only 10 – 5 Leaders/5 Followers",
+          "rationale": "Early-bird places are limited."
+        }
+      ]
+    },
+    {
+      "event_id": 15582,
+      "artists": [
+        {
+          "name_as_written": "Ronie Saleh",
+          "role": "teacher",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇸🇪",
+          "source_line": "🇸🇪 Ronie Saleh — Sweden"
+        },
+        {
+          "name_as_written": "Jack & Sara",
+          "role": "teacher",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇪🇸",
+          "source_line": "🇪🇸 Jack & Sara — Spain"
+        },
+        {
+          "name_as_written": "Chris Py & Laly",
+          "role": "teacher",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 Chris Py & Laly — France"
+        },
+        {
+          "name_as_written": "Daniel & Elina",
+          "role": "teacher",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇩🇪🇨🇿",
+          "source_line": "🇩🇪🇨🇿 Daniel & Elina — Germany / Czech Republic"
+        },
+        {
+          "name_as_written": "Black Chinese & Monica",
+          "role": "teacher",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇫🇷🇪🇸",
+          "source_line": "🇫🇷🇪🇸 Black Chinese & Monica — France / Spain"
+        },
+        {
+          "name_as_written": "Fanio & Sara",
+          "role": "teacher",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇦🇴🇵🇹",
+          "source_line": "🇦🇴🇵🇹 Fanio & Sara — Angola / Portugal"
+        },
+        {
+          "name_as_written": "Ludo LSKIZ",
+          "role": "teacher",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 Ludo LSKIZ — France"
+        },
+        {
+          "name_as_written": "Kal",
+          "role": "teacher",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 Kal — France"
+        },
+        {
+          "name_as_written": "Edu Dias",
+          "role": "teacher",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 Edu Dias — France"
+        },
+        {
+          "name_as_written": "David Yaye",
+          "role": "teacher",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": null,
+          "source_line": "🌍 David Yaye — Wakanda"
+        },
+        {
+          "name_as_written": "Jeremy & Justine",
+          "role": "teacher",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 Jeremy & Justine — France"
+        },
+        {
+          "name_as_written": "Alex & Maylie",
+          "role": "teacher",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 Alex & Maylie — France"
+        },
+        {
+          "name_as_written": "Alejandro y Vanessa",
+          "role": "teacher",
+          "style": "Bachata",
+          "country": "🇪🇸",
+          "source_line": "🇪🇸 Alejandro y Vanessa — Bachata (Spain)"
+        },
+        {
+          "name_as_written": "Anita y Varea",
+          "role": "teacher",
+          "style": "Bachata",
+          "country": "🇪🇸",
+          "source_line": "🇪🇸 Anita y Varea — Bachata (Spain)"
+        },
+        {
+          "name_as_written": "Lolo Waki",
+          "role": "teacher",
+          "style": "Salsa",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 Lolo Waki — Salsa (Bordeaux)"
+        },
+        {
+          "name_as_written": "Ludivine",
+          "role": "teacher",
+          "style": "Elgo Dance",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 Ludivine (Ludidanse) — Elgo Dance (Paris)"
+        },
+        {
+          "name_as_written": "Hicham",
+          "role": "teacher",
+          "style": "Salsa",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 Hicham — Salsa (Nantes)"
+        },
+        {
+          "name_as_written": "Mo",
+          "role": "teacher",
+          "style": "Salsa",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 Mo — Salsa (Nantes)"
+        },
+        {
+          "name_as_written": "Nico Candela & Lucy",
+          "role": "teacher",
+          "style": "Salsa",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 Nico Candela & Lucy — Salsa (Saint-Nazaire)"
+        },
+        {
+          "name_as_written": "Chris Salsa",
+          "role": "teacher",
+          "style": "Salsa/Bachata",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 Chris Salsa — Salsa/Bachata (Saint-Brieuc)"
+        },
+        {
+          "name_as_written": "Ibra Chavez",
+          "role": "teacher",
+          "style": "Salsa",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 Ibra Chavez — Salsa (Saint-Brévin)"
+        },
+        {
+          "name_as_written": "Yannick El Mambo",
+          "role": "teacher",
+          "style": "Salsa/Bachata",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 Yannick El Mambo — Salsa/Bachata (Pornichet)"
+        },
+        {
+          "name_as_written": "Alejandro y Océane",
+          "role": "teacher",
+          "style": "Bachata",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 Alejandro y Océane — Bachata (Saint-Nazaire)"
+        },
+        {
+          "name_as_written": "Hélène Denigot",
+          "role": "teacher",
+          "style": "Hip Hop",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 Hélène Denigot — Hip Hop (Saint-Nazaire)"
+        },
+        {
+          "name_as_written": "DJ Shark",
+          "role": "dj",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇪🇸",
+          "source_line": "🇪🇸 DJ Shark — Spain"
+        },
+        {
+          "name_as_written": "DJ Puto X",
+          "role": "dj",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 DJ Puto X — France"
+        },
+        {
+          "name_as_written": "DJ Remcy",
+          "role": "dj",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇩🇪",
+          "source_line": "🇩🇪 DJ Remcy — Germany"
+        },
+        {
+          "name_as_written": "DJ Lehny",
+          "role": "dj",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 DJ Lehny — France"
+        },
+        {
+          "name_as_written": "DJ Nuo",
+          "role": "dj",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇺🇦",
+          "source_line": "🇺🇦 DJ Nuo — Ukraine"
+        },
+        {
+          "name_as_written": "DJ Lowelo",
+          "role": "dj",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 DJ Lowelo — France"
+        },
+        {
+          "name_as_written": "DJ Antony Tarraxa",
+          "role": "dj",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇪🇸",
+          "source_line": "🇪🇸 DJ Antony Tarraxa — Spain"
+        },
+        {
+          "name_as_written": "DJ Angelo",
+          "role": "dj",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 DJ Angelo — France"
+        },
+        {
+          "name_as_written": "DJ Tati",
+          "role": "dj",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇷🇺",
+          "source_line": "🇷🇺 DJ Tati – Russia"
+        },
+        {
+          "name_as_written": "DJ Corazón Coração",
+          "role": "dj",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 DJ Corazón Coração — Saint-Nazaire (France)"
+        },
+        {
+          "name_as_written": "DJ Hicham El Loco",
+          "role": "dj",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙎𝙖𝙡𝙨𝙖 / 𝘽𝙖𝙘𝙝𝙖𝙩𝙖",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 DJ Hicham El Loco — Nantes"
+        },
+        {
+          "name_as_written": "DJ Nico Candela",
+          "role": "dj",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙎𝙖𝙡𝙨𝙖 / 𝘽𝙖𝙘𝙝𝙖𝙩𝙖",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 DJ Nico Candela — Saint-Nazaire"
+        },
+        {
+          "name_as_written": "DJ Moh",
+          "role": "dj",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙎𝙖𝙡𝙨𝙖 / 𝘽𝙖𝙘𝙝𝙖𝙩𝙖",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 DJ Moh — Nantes"
+        },
+        {
+          "name_as_written": "DJ Sam Mas",
+          "role": "dj",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙎𝙖𝙡𝙨𝙖 / 𝘽𝙖𝙘𝙝𝙖𝙩𝙖",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 DJ Sam Mas — Saint-Brieuc"
+        },
+        {
+          "name_as_written": "DJ Florian Sensacion",
+          "role": "dj",
+          "style": "𝘼𝙩𝙤𝙡𝙡 𝙎𝙖𝙡𝙨𝙖 / 𝘽𝙖𝙘𝙝𝙖𝙩𝙖",
+          "country": "🇫🇷",
+          "source_line": "🇫🇷 DJ Florian Sensacion — Nantes"
+        },
+        {
+          "name_as_written": "Ronie Saleh",
+          "role": "performer",
+          "style": null,
+          "country": null,
+          "source_line": "⭐ Ronie Saleh"
+        },
+        {
+          "name_as_written": "Puto X",
+          "role": "performer",
+          "style": null,
+          "country": null,
+          "source_line": "⭐ Puto X"
+        },
+        {
+          "name_as_written": "Andredson Keys",
+          "role": "performer",
+          "style": null,
+          "country": "Angola",
+          "source_line": "⭐ Andredson Keys (Angola)"
+        },
+        {
+          "name_as_written": "Mula Junior",
+          "role": "performer",
+          "style": null,
+          "country": "Mozambique",
+          "source_line": "⭐ Mula Junior (Mozambique)"
+        },
+        {
+          "name_as_written": "Alejandro y Vanessa",
+          "role": "performer",
+          "style": null,
+          "country": null,
+          "source_line": "⭐ Alejandro y Vanessa"
+        },
+        {
+          "name_as_written": "Anita & Varea",
+          "role": "performer",
+          "style": null,
+          "country": null,
+          "source_line": "⭐ Anita & Varea"
+        },
+        {
+          "name_as_written": "Chris Py & Laly",
+          "role": "performer",
+          "style": null,
+          "country": null,
+          "source_line": "⭐ Chris Py & Laly"
+        },
+        {
+          "name_as_written": "LN Dance Fusion Crew",
+          "role": "performer",
+          "style": null,
+          "country": null,
+          "source_line": "⭐ LN Dance Fusion Crew (LNDF)"
+        },
+        {
+          "name_as_written": "Project By Design",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "🎥 Project By Design (Videographer)"
+        },
+        {
+          "name_as_written": "Wilson Ebot Photography",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "📸 Wilson Ebot Photography"
+        },
+        {
+          "name_as_written": "Saïd SBH",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "📸 Saïd SBH"
+        },
+        {
+          "name_as_written": "NantesCapture 44",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "📸 NantesCapture 44"
+        },
+        {
+          "name_as_written": "Coralie Moreau",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "📸 Coralie Moreau"
+        },
+        {
+          "name_as_written": "La Case Corazon",
+          "role": "organiser",
+          "style": null,
+          "country": null,
+          "source_line": "Call on behalf of La Case Corazon 😉"
+        }
+      ],
+      "features": [
+        {
+          "feature": "partner_hotel",
+          "quote": "Partnership with nearby hotels for every budget!",
+          "rationale": "Partner hotels offer negotiated rates for festival guests."
+        },
+        {
+          "feature": "transfers_shuttle",
+          "quote": "Shuttles from Nantes Airport to the event (10 €/trip – booking required)",
+          "rationale": "Paid shuttles run from Nantes airport to the event."
+        },
+        {
+          "feature": "workshops",
+          "quote": "Over 40 hours of workshops",
+          "rationale": "Over 40 hours of workshops are on the programme."
+        },
+        {
+          "feature": "pre_party",
+          "quote": "Magical Pre-Party on Thursday (not included in the full pass)",
+          "rationale": "A pre-party is offered separately from the pass."
+        },
+        {
+          "feature": "multiple_rooms",
+          "quote": "1 Room 50% Salsa – 50% Bachata",
+          "rationale": "The venue has several dance rooms."
+        },
+        {
+          "feature": "beach_party",
+          "quote": "Beach Party on the famous Place du Commando",
+          "rationale": "A beach party is on the programme."
+        },
+        {
+          "feature": "shows",
+          "quote": "Shows, animations, professional photographers & videographers",
+          "rationale": "Shows are on the programme."
+        },
+        {
+          "feature": "full_pass",
+          "quote": "Full Pass = 4 dance nights + 5 socials + 40h of workshops",
+          "rationale": "A full pass is sold."
+        },
+        {
+          "feature": "limited_or_sold_out",
+          "quote": "Limited number of passes – book yours now!",
+          "rationale": "The number of passes is limited."
+        },
+        {
+          "feature": "dress_code",
+          "quote": "Thursday: Bring the Color",
+          "rationale": "Each day has a stated dress code."
+        },
+        {
+          "feature": "themed_parties",
+          "quote": "Thursday: Bring the Color",
+          "rationale": "Each night's party has a dress theme."
+        }
+      ]
+    },
+    {
+      "event_id": 15587,
+      "artists": [
+        {
+          "name_as_written": "JOJO (Congolese 🇨🇬) & JENNY",
+          "role": "teacher",
+          "style": "URBANKIZ",
+          "country": "🇨🇬",
+          "source_line": "🌍. JOJO (Congolese 🇨🇬) & JENNY (Haitian 🇭🇹)"
+        },
+        {
+          "name_as_written": "JESUS & ANNI",
+          "role": "teacher",
+          "style": "URBANKIZ",
+          "country": "🇪🇸",
+          "source_line": "🌍. JESUS & ANNI (Spanish 🇪🇸)"
+        },
+        {
+          "name_as_written": "DWE (Curaçao 🇨🇼) & GABY (Ecuador 🇪🇨)",
+          "role": "teacher",
+          "style": "URBANKIZ",
+          "country": "🇨🇼 / 🇪🇨",
+          "source_line": "🌍. DWE (Curaçao 🇨🇼) & GABY (Ecuador 🇪🇨)"
+        },
+        {
+          "name_as_written": "REZA & AVINASH",
+          "role": "teacher",
+          "style": "URBANKIZ",
+          "country": "🇸🇷",
+          "source_line": "🌍. REZA & AVINASH (Surinamese 🇸🇷)"
+        },
+        {
+          "name_as_written": "IRON MAM’S (Senegalese 🇸🇳) & MOOREA (French Guiana 🇬🇫)",
+          "role": "teacher",
+          "style": "URBANKIZ",
+          "country": "🇸🇳 / 🇬🇫",
+          "source_line": "🌍. IRON MAM’S (Senegalese 🇸🇳) & MOOREA (French Guiana 🇬🇫)"
+        },
+        {
+          "name_as_written": "JUSTINHNO",
+          "role": "teacher",
+          "style": "URBANKIZ",
+          "country": "🇸🇳",
+          "source_line": "🌍. JUSTINHNO (Senegalese 🇸🇳)"
+        },
+        {
+          "name_as_written": "SELIM (Turkish 🇹🇷) & SANDRA (Spanish 🇪🇸)",
+          "role": "teacher",
+          "style": "URBANKIZ",
+          "country": "🇹🇷 / 🇪🇸",
+          "source_line": "🌍. SELIM (Turkish 🇹🇷) & SANDRA (Spanish 🇪🇸)"
+        },
+        {
+          "name_as_written": "FABRICIO DO ZANGADO",
+          "role": "teacher",
+          "style": "KIZOMBA & SEMBA",
+          "country": "🇦🇴",
+          "source_line": "🌍. FABRICIO DO ZANGADO (Angolan 🇦🇴)"
+        },
+        {
+          "name_as_written": "TONY VISER (Angolan 🇦🇴) & CARLA ANDRADE (Capeverdean 🇨🇻)",
+          "role": "teacher",
+          "style": "KIZOMBA & SEMBA",
+          "country": "🇦🇴 / 🇨🇻",
+          "source_line": "🌍. TONY VISER (Angolan 🇦🇴) & CARLA ANDRADE (Capeverdean 🇨🇻)"
+        },
+        {
+          "name_as_written": "ADILSON & TELMA",
+          "role": "teacher",
+          "style": "KIZOMBA & SEMBA",
+          "country": "🇦🇴",
+          "source_line": "🌍. ADILSON & TELMA (Angolans 🇦🇴)"
+        },
+        {
+          "name_as_written": "ELHADJ (Ivory cost 🇨🇮) & JENNA (Guadeloupe 🇬🇵)",
+          "role": "teacher",
+          "style": "KIZOMBA & SEMBA",
+          "country": "🇨🇮 / 🇬🇵",
+          "source_line": "🌍. ELHADJ (Ivory cost 🇨🇮) & JENNA (Guadeloupe 🇬🇵)"
+        },
+        {
+          "name_as_written": "TRECY (Portugal 🇵🇹) & JULIO (Angolan 🇦🇴)",
+          "role": "teacher",
+          "style": "KIZOMBA & SEMBA",
+          "country": "🇵🇹 / 🇦🇴",
+          "source_line": "🌍. TRECY (Portugal 🇵🇹) & JULIO (Angolan 🇦🇴)"
+        },
+        {
+          "name_as_written": "STEFANIO LIMA",
+          "role": "dj",
+          "style": null,
+          "country": "🇨🇻",
+          "source_line": "🌎. STEFANIO LIMA (Capverdean 🇨🇻)"
+        },
+        {
+          "name_as_written": "DJ PARAÏSO",
+          "role": "dj",
+          "style": null,
+          "country": "🇸🇳",
+          "source_line": "🌍. DJ PARAÏSO (Senegalese 🇸🇳)"
+        },
+        {
+          "name_as_written": "DJ PINGUSSO",
+          "role": "dj",
+          "style": null,
+          "country": "🇦🇴 🇨🇻",
+          "source_line": "🌍. DJ PINGUSSO (Angolan and Capverdean 🇦🇴 🇨🇻)"
+        },
+        {
+          "name_as_written": "DJ NICE LIFE",
+          "role": "dj",
+          "style": null,
+          "country": "🇧🇯",
+          "source_line": "🌍. DJ NICE LIFE (Benine 🇧🇯)"
+        },
+        {
+          "name_as_written": "DJ NAO",
+          "role": "dj",
+          "style": null,
+          "country": "🇸🇳",
+          "source_line": "🌍. DJ NAO (Senegalese 🇸🇳)"
+        },
+        {
+          "name_as_written": "DJ SNAKES",
+          "role": "dj",
+          "style": null,
+          "country": "🇹🇬",
+          "source_line": "🌍. DJ SNAKES (Togolese 🇹🇬)"
+        },
+        {
+          "name_as_written": "DJ LUCAS",
+          "role": "dj",
+          "style": null,
+          "country": "🇵🇹",
+          "source_line": "🌍. DJ LUCAS (Portuguese 🇵🇹)"
+        },
+        {
+          "name_as_written": "DJ NEIKEN",
+          "role": "dj",
+          "style": null,
+          "country": "🇮🇹",
+          "source_line": "🌍. DJ NEIKEN (Italy 🇮🇹)"
+        },
+        {
+          "name_as_written": "DJ VALET",
+          "role": "dj",
+          "style": null,
+          "country": "🇨🇲",
+          "source_line": "🌍. DJ VALET (Cameroun 🇨🇲)"
+        },
+        {
+          "name_as_written": "DJ SABURA",
+          "role": "dj",
+          "style": "KIZOMBA/SEMBA",
+          "country": "🇵🇹",
+          "source_line": "🌍. DJ SABURA (Portugal 🇵🇹)"
+        },
+        {
+          "name_as_written": "DJ DOS ANJOS",
+          "role": "dj",
+          "style": "KIZOMBA/SEMBA",
+          "country": "🇨🇻",
+          "source_line": "🌍. DJ DOS ANJOS (Capverdean 🇨🇻)"
+        },
+        {
+          "name_as_written": "DJ BAKONGO",
+          "role": "dj",
+          "style": "KIZOMBA/SEMBA",
+          "country": "🇦🇴",
+          "source_line": "🌍. DJ BAKONGO (Angolan 🇦🇴)"
+        },
+        {
+          "name_as_written": "Kizomba Luxembourg",
+          "role": "organiser",
+          "style": null,
+          "country": null,
+          "source_line": "🌍✈️ Kizomba Luxembourg presents: KZL 12 — Around the World Edition! 🌎💃🏽"
+        }
+      ],
+      "features": [
+        {
+          "feature": "workshops",
+          "quote": "Workshops / KZL Championship",
+          "rationale": "Workshops are part of the daytime programme."
+        },
+        {
+          "feature": "competition",
+          "quote": "KZL Championship",
+          "rationale": "A championship competition is part of the programme."
+        },
+        {
+          "feature": "day_socials",
+          "quote": "Urbankiz social / Kizomba & Semba/Douceur& Tarraxhina/ Zouk social",
+          "rationale": "Daytime socials run during the festival."
+        },
+        {
+          "feature": "multiple_rooms",
+          "quote": "Multiple rooms, multiple vibes",
+          "rationale": "Several dance rooms run at once."
+        },
+        {
+          "feature": "partner_hotel",
+          "quote": "INSIDE BY MELIÁ",
+          "rationale": "Hotels are listed as recommended accommodation."
+        }
+      ]
+    },
+    {
+      "event_id": 15592,
+      "artists": [
+        {
+          "name_as_written": "Fred & Chiara",
+          "role": "teacher",
+          "style": "Urbankiz & Fusion",
+          "country": "🇫🇷🇮🇹",
+          "source_line": "✅⚜️ Fred & Chiara 🇫🇷🇮🇹 Urbankiz & Fusion"
+        },
+        {
+          "name_as_written": "Cindy & Patrick",
+          "role": "teacher",
+          "style": "Urbankiz",
+          "country": "🇫🇷🇵🇹",
+          "source_line": "✅⚜️ Cindy & Patrick 🇫🇷🇵🇹 Urbankiz"
+        },
+        {
+          "name_as_written": "Jo & Mila",
+          "role": "teacher",
+          "style": "Kizomba Semba",
+          "country": "🇫🇷",
+          "source_line": "✅⚜️ Jo & Mila 🇫🇷 Kizomba Semba"
+        },
+        {
+          "name_as_written": "Richard & Sonia",
+          "role": "teacher",
+          "style": "Salsa",
+          "country": "🇮🇹🇫🇷",
+          "source_line": "✅⚜️ Richard & Sonia 🇮🇹🇫🇷 Salsa"
+        },
+        {
+          "name_as_written": "Stephanie & Greg",
+          "role": "teacher",
+          "style": "Bachata",
+          "country": "🇫🇷",
+          "source_line": "✅⚜️ Stephanie & Greg 🇫🇷 Bachata"
+        },
+        {
+          "name_as_written": "DJ MH Marseille",
+          "role": "dj",
+          "style": null,
+          "country": "🇫🇷",
+          "source_line": "✅⚜️ DJ MH Marseille 🇫🇷"
+        },
+        {
+          "name_as_written": "DJ Kaz Paris",
+          "role": "dj",
+          "style": null,
+          "country": "🇫🇷",
+          "source_line": "✅⚜️ DJ Kaz Paris – Marseille 🇫🇷"
+        },
+        {
+          "name_as_written": "DJ Tina",
+          "role": "dj",
+          "style": null,
+          "country": "🇫🇷",
+          "source_line": "✅⚜️ DJ Tina 🇫🇷"
+        }
+      ],
+      "features": [
+        {
+          "feature": "all_in_one",
+          "quote": "A crazy weekend (all in one) KBS",
+          "rationale": "The weekend is billed as all-in-one at the hotel where it takes place."
+        },
+        {
+          "feature": "workshops",
+          "quote": "Workshops",
+          "rationale": "Workshops are part of the weekend."
+        },
+        {
+          "feature": "shows",
+          "quote": "Shows & Entertainment",
+          "rationale": "Shows are part of the weekend."
+        },
+        {
+          "feature": "taxi_dancers",
+          "quote": "Dancing taxis from Paris, Toulon, Marseille",
+          "rationale": "Dancing taxis travel from several cities."
+        },
+        {
+          "feature": "multiple_rooms",
+          "quote": "2 ROOMS",
+          "rationale": "Two dance rooms run at the event."
+        },
+        {
+          "feature": "meals_included",
+          "quote": "All-inclusive packages with meal and Full Pass",
+          "rationale": "Meals are included in a package."
+        },
+        {
+          "feature": "full_pass",
+          "quote": "All-inclusive packages with meal and Full Pass",
+          "rationale": "A full pass is sold within packages."
+        },
+        {
+          "feature": "early_bird_tiers",
+          "quote": "Price increase alert",
+          "rationale": "Prices rise over time."
+        },
+        {
+          "feature": "limited_or_sold_out",
+          "quote": "Places are limited",
+          "rationale": "Places are limited."
+        }
+      ]
+    },
+    {
+      "event_id": 15597,
+      "artists": [
+        {
+          "name_as_written": "Bonga Kwenda",
+          "role": "performer",
+          "style": null,
+          "country": null,
+          "source_line": "• Bonga Kwenda (with live band)"
+        },
+        {
+          "name_as_written": "Mr. Tecas",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "Mr. Tecas"
+        },
+        {
+          "name_as_written": "Pires & Silvia Bento",
+          "role": "teacher",
+          "style": "Kizomba",
+          "country": null,
+          "source_line": "• Pires & Silvia Bento – Kizomba"
+        },
+        {
+          "name_as_written": "M’Xtrela",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "• M’Xtrela"
+        },
+        {
+          "name_as_written": "Alberto Celmo",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "• Alberto Celmo"
+        },
+        {
+          "name_as_written": "Paulo Selele",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "• Paulo Selele"
+        },
+        {
+          "name_as_written": "Emmanuel",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "• Emmanuel"
+        },
+        {
+          "name_as_written": "Tabanca",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "• Tabanca"
+        },
+        {
+          "name_as_written": "Jamaica Negro",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "• Jamaica Negro"
+        },
+        {
+          "name_as_written": "Zaca Straga",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "• Zaca Straga"
+        },
+        {
+          "name_as_written": "Esteban & Sandra",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "• Esteban & Sandra"
+        },
+        {
+          "name_as_written": "Njinga Gomes & Francisco",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "• Njinga Gomes & Francisco"
+        },
+        {
+          "name_as_written": "Dj Matt",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "Dj Matt"
+        },
+        {
+          "name_as_written": "DJ Elao Gama",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "• DJ Elao Gama"
+        },
+        {
+          "name_as_written": "DJ Adelino",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "• DJ Adelino"
+        },
+        {
+          "name_as_written": "DJ Aurel Zola",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "• DJ Aurel Zola"
+        },
+        {
+          "name_as_written": "DJ Karmen",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "• DJ Karmen"
+        },
+        {
+          "name_as_written": "DJ Bigu",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "• DJ Bigu"
+        },
+        {
+          "name_as_written": "DJ Vadinho",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "• DJ Vadinho"
+        }
+      ],
+      "features": [
+        {
+          "feature": "workshops",
+          "quote": "Dance Workshops",
+          "rationale": "Dance workshops run on each festival day."
+        },
+        {
+          "feature": "bootcamp_intensive",
+          "quote": "A Full Immersive Dance & Culture Experience – 6 hours per day",
+          "rationale": "Three days of six-hour immersive workshops are offered."
+        },
+        {
+          "feature": "shows",
+          "quote": "Muzongue (Social ) with live show 45 minutes Showcase",
+          "rationale": "Showcases are part of the afternoon social."
+        },
+        {
+          "feature": "live_music",
+          "quote": "Bonga Kwenda (with live band)",
+          "rationale": "A live band performs."
+        },
+        {
+          "feature": "day_socials",
+          "quote": "Muzongue (Social ) with live show 45 minutes Showcase (afternoon)",
+          "rationale": "An afternoon social is scheduled."
+        },
+        {
+          "feature": "partner_hotel",
+          "quote": "Convenient Accommodation Nearby",
+          "rationale": "Recommended accommodation near the venue is listed."
+        },
+        {
+          "feature": "full_pass",
+          "quote": "FULL EXPERIENCE PACKAGE",
+          "rationale": "A full experience package is sold."
+        }
+      ]
+    },
+    {
+      "event_id": 15602,
+      "artists": [],
+      "features": [
+        {
+          "feature": "workshops",
+          "quote": "Workshops & Bootcamps",
+          "rationale": "Workshops and bootcamps are part of the event."
+        },
+        {
+          "feature": "bootcamp_intensive",
+          "quote": "Workshops & Bootcamps",
+          "rationale": "Bootcamps are part of the event."
+        },
+        {
+          "feature": "multiple_rooms",
+          "quote": "2 Dancefloors",
+          "rationale": "Two dance floors run at the event."
+        },
+        {
+          "feature": "day_socials",
+          "quote": "14:00 – 20:00 Social",
+          "rationale": "A daytime social is scheduled."
+        },
+        {
+          "feature": "masterclass",
+          "quote": "16:00 – 17:30 Masterclass (separat buchbar)",
+          "rationale": "A masterclass is offered as a separate booking."
+        },
+        {
+          "feature": "partner_hotel",
+          "quote": "Main Hotel",
+          "rationale": "A main hotel is recommended for accommodation."
+        }
+      ]
+    },
+    {
+      "event_id": 15607,
+      "artists": [
+        {
+          "name_as_written": "DJ Ichigo",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "✅DJ Ichigo"
+        },
+        {
+          "name_as_written": "DJ Sorin",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "✅ DJ Sorin"
+        },
+        {
+          "name_as_written": "DJ Hero",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "✅ DJ Hero"
+        },
+        {
+          "name_as_written": "DJ Willy G",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "✅ DJ Willy G"
+        },
+        {
+          "name_as_written": "DJ Beck",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "✅ DJ Beck"
+        },
+        {
+          "name_as_written": "Fajul Kizztalk & Tabea",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✅ Fajul Kizztalk & Tabea"
+        },
+        {
+          "name_as_written": "Dadié Sacko",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✅ Dadié Sacko"
+        },
+        {
+          "name_as_written": "Asia Voronova",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✅ Asia Voronova"
+        },
+        {
+          "name_as_written": "Hassou",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✅ Hassou"
+        },
+        {
+          "name_as_written": "Donald Willson",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✅ Donald Willson"
+        },
+        {
+          "name_as_written": "Agnes",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✅ Agnes"
+        },
+        {
+          "name_as_written": "Hassu",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✅ Hassu"
+        },
+        {
+          "name_as_written": "Kali",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "✅ Kali"
+        },
+        {
+          "name_as_written": "Hassu",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "📸 Photographer Hassu"
+        }
+      ],
+      "features": [
+        {
+          "feature": "all_in_one",
+          "quote": "in our All in one Hotel Meersburg",
+          "rationale": "The event is held in the hotel where guests stay."
+        },
+        {
+          "feature": "workshops",
+          "quote": "Workshops & Bootcamps",
+          "rationale": "Workshops and bootcamps are part of the event."
+        },
+        {
+          "feature": "bootcamp_intensive",
+          "quote": "Workshops & Bootcamps",
+          "rationale": "Bootcamps are part of the event."
+        },
+        {
+          "feature": "masterclass",
+          "quote": "16:00 – 17:30 Masterclass (separat buchbar)",
+          "rationale": "A masterclass is offered as a separate booking."
+        },
+        {
+          "feature": "day_socials",
+          "quote": "16:00 -20:00Social",
+          "rationale": "A daytime social is scheduled."
+        }
+      ]
+    },
+    {
+      "event_id": 15612,
+      "artists": [],
+      "features": [
+        {
+          "feature": "all_in_one",
+          "quote": "An exceptional setting: Hôtel Chéribourg",
+          "rationale": "The event takes place in the hotel."
+        },
+        {
+          "feature": "workshops",
+          "quote": "3 intensive days of classes + 2 days of specialized workshops",
+          "rationale": "Classes and specialised workshops are part of the programme."
+        },
+        {
+          "feature": "bootcamp_intensive",
+          "quote": "3 intensive days of classes",
+          "rationale": "Intensive classes are part of the programme."
+        },
+        {
+          "feature": "multiple_rooms",
+          "quote": "3 dance rooms: Salsa • Bachata • Kizomba",
+          "rationale": "Three dance rooms run at once."
+        },
+        {
+          "feature": "shows",
+          "quote": "Over 120 shows to inspire you",
+          "rationale": "Over 120 shows are on the programme."
+        },
+        {
+          "feature": "all_levels_beginners",
+          "quote": "Open to all levels: beginners to advanced",
+          "rationale": "The event is open to beginners."
+        }
+      ]
+    },
+    {
+      "event_id": 15617,
+      "artists": [
+        {
+          "name_as_written": "Albir Rojas",
+          "role": "teacher",
+          "style": null,
+          "country": "Spain",
+          "source_line": "Albir Rojas (Spain)"
+        },
+        {
+          "name_as_written": "Jojo Kizomba",
+          "role": "teacher",
+          "style": null,
+          "country": "France",
+          "source_line": "Jojo Kizomba (France)"
+        },
+        {
+          "name_as_written": "Fred-Nelson & Morgane",
+          "role": "teacher",
+          "style": null,
+          "country": "France",
+          "source_line": "Fred-Nelson & Morgane (France)"
+        },
+        {
+          "name_as_written": "Enah & Pocahontas",
+          "role": "teacher",
+          "style": null,
+          "country": "France",
+          "source_line": "Enah & Pocahontas (France)"
+        },
+        {
+          "name_as_written": "Val’R & Sarah",
+          "role": "teacher",
+          "style": null,
+          "country": "France",
+          "source_line": "Val’R & Sarah (France)"
+        },
+        {
+          "name_as_written": "Azzedine",
+          "role": "teacher",
+          "style": null,
+          "country": "France",
+          "source_line": "Azzedine (France)"
+        },
+        {
+          "name_as_written": "Ronie & Frida",
+          "role": "teacher",
+          "style": null,
+          "country": "Sweden",
+          "source_line": "Ronie & Frida (Sweden)"
+        },
+        {
+          "name_as_written": "JP & Stephy",
+          "role": "teacher",
+          "style": null,
+          "country": "France",
+          "source_line": "JP & Stephy (France)"
+        },
+        {
+          "name_as_written": "Jack & Sara",
+          "role": "teacher",
+          "style": null,
+          "country": "Spain",
+          "source_line": "Jack & Sara (Spain)"
+        },
+        {
+          "name_as_written": "Jesús & Anni",
+          "role": "teacher",
+          "style": null,
+          "country": "Spain",
+          "source_line": "Jesús & Anni (Spain)"
+        },
+        {
+          "name_as_written": "Dwe & Gaby",
+          "role": "teacher",
+          "style": null,
+          "country": "Netherlands",
+          "source_line": "Dwe & Gaby (Netherlands)"
+        },
+        {
+          "name_as_written": "Nuno & Sarai",
+          "role": "teacher",
+          "style": null,
+          "country": "Spain",
+          "source_line": "Nuno & Sarai (Spain)"
+        },
+        {
+          "name_as_written": "Guiu",
+          "role": "teacher",
+          "style": null,
+          "country": "Spain",
+          "source_line": "Guiu (Spain)"
+        },
+        {
+          "name_as_written": "Luis & Karen",
+          "role": "teacher",
+          "style": null,
+          "country": "Spain",
+          "source_line": "Luis & Karen (Spain)"
+        },
+        {
+          "name_as_written": "Oscar & Claudia",
+          "role": "teacher",
+          "style": null,
+          "country": "Italy",
+          "source_line": "Oscar & Claudia (Italy)"
+        },
+        {
+          "name_as_written": "Kevin",
+          "role": "teacher",
+          "style": null,
+          "country": "Guinea Bissau",
+          "source_line": "Kevin (Guinea Bissau)"
+        },
+        {
+          "name_as_written": "Keco & Moni",
+          "role": "teacher",
+          "style": null,
+          "country": "Spain",
+          "source_line": "Keco & Moni (Spain)"
+        },
+        {
+          "name_as_written": "Elsa & Sergi",
+          "role": "teacher",
+          "style": null,
+          "country": "Spain",
+          "source_line": "Elsa & Sergi (Spain)"
+        },
+        {
+          "name_as_written": "Rodri & Elena",
+          "role": "teacher",
+          "style": null,
+          "country": "Spain",
+          "source_line": "Rodri & Elena (Spain)"
+        },
+        {
+          "name_as_written": "Dj Dani Fernandes",
+          "role": "dj",
+          "style": null,
+          "country": "Netherlands",
+          "source_line": "Dj Dani Fernandes (Netherlands)"
+        },
+        {
+          "name_as_written": "Dj Sai Sai",
+          "role": "dj",
+          "style": null,
+          "country": "France",
+          "source_line": "Dj Sai Sai (France)"
+        },
+        {
+          "name_as_written": "Dj Lisa Rose",
+          "role": "dj",
+          "style": null,
+          "country": "Netherlands",
+          "source_line": "Dj Lisa Rose (Netherlands)"
+        },
+        {
+          "name_as_written": "Dj Hegza",
+          "role": "dj",
+          "style": null,
+          "country": "Portugal",
+          "source_line": "Dj Hegza (Portugal)"
+        },
+        {
+          "name_as_written": "Dj Neo",
+          "role": "dj",
+          "style": null,
+          "country": "Spain",
+          "source_line": "Dj Neo (Spain)"
+        },
+        {
+          "name_as_written": "Dj Jack",
+          "role": "dj",
+          "style": null,
+          "country": "Spain",
+          "source_line": "Dj Jack (Spain)"
+        },
+        {
+          "name_as_written": "Dj Antony Tarraxa",
+          "role": "dj",
+          "style": null,
+          "country": "Italia",
+          "source_line": "Dj Antony Tarraxa (Italia)"
+        },
+        {
+          "name_as_written": "Dj Kevin",
+          "role": "dj",
+          "style": null,
+          "country": "Guinea-Bissau",
+          "source_line": "Dj Kevin (Guinea-Bissau)"
+        },
+        {
+          "name_as_written": "Dj Kot",
+          "role": "dj",
+          "style": null,
+          "country": "Spain",
+          "source_line": "Dj Kot (Spain)"
+        },
+        {
+          "name_as_written": "Dj W",
+          "role": "dj",
+          "style": null,
+          "country": "Spain",
+          "source_line": "Dj W (Spain)"
+        },
+        {
+          "name_as_written": "Dj Ted",
+          "role": "dj",
+          "style": null,
+          "country": "Italy",
+          "source_line": "Dj Ted (Italy)"
+        }
+      ],
+      "features": [
+        {
+          "feature": "all_in_one",
+          "quote": "All in One Hotel",
+          "rationale": "The event is held in one hotel where guests stay."
+        },
+        {
+          "feature": "masterclass",
+          "quote": "4-5 Master Classes (only with VIP PASS)",
+          "rationale": "Masterclasses are sold with the VIP pass."
+        },
+        {
+          "feature": "workshops",
+          "quote": "2 exclusive rooms for workshops.",
+          "rationale": "Workshops run in two dedicated rooms."
+        },
+        {
+          "feature": "multiple_rooms",
+          "quote": "2 rooms for the parties during the night.",
+          "rationale": "Two party rooms run at night."
+        },
+        {
+          "feature": "day_socials",
+          "quote": "A social room dance during the evening, from 12h to 20h.",
+          "rationale": "A daytime social dance room runs."
+        },
+        {
+          "feature": "pool_party",
+          "quote": "15h-20h Pool Party",
+          "rationale": "Pool parties are on the programme."
+        },
+        {
+          "feature": "pre_party",
+          "quote": "TUESDAY (Pre-Party)",
+          "rationale": "A pre-party is on the programme."
+        },
+        {
+          "feature": "full_pass",
+          "quote": "85€ (100 Full Pass)",
+          "rationale": "A full pass is sold."
+        },
+        {
+          "feature": "early_bird_tiers",
+          "quote": "95€ (till August, 31th)",
+          "rationale": "Full pass prices rise over time."
+        },
+        {
+          "feature": "limited_or_sold_out",
+          "quote": "105€ (30 Vip Pass)",
+          "rationale": "VIP passes are limited to 30."
+        },
+        {
+          "feature": "party_pass",
+          "quote": "PRICES PER NIGHT:",
+          "rationale": "Party nights are sold individually."
+        },
+        {
+          "feature": "transfers_shuttle",
+          "quote": "INFORMATION ABOUT SHUTTLE FROM BARCELONA AIRPORT OR GIRONA AIRPORT",
+          "rationale": "Shuttles run from the airports."
+        }
+      ]
+    },
+    {
+      "event_id": 15622,
+      "artists": [
+        {
+          "name_as_written": "LILIAN & IVANA",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🟠 🟠 🟠 🟠 🟠 🟠 🟠LILIAN & IVANA (Marseille)"
+        },
+        {
+          "name_as_written": "PAO LOU & MARGAUX",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🟠 🟠 🟠 🟠 🟠 🟠PAO LOU & MARGAUX (Lyon)"
+        },
+        {
+          "name_as_written": "MAME DIATA",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🟠 🟠 🟠 🟠 MAME DIATA (Paris)"
+        },
+        {
+          "name_as_written": "ARMANDO",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🟠 🟠 🟠 🟠ARMANDO (Toulon)"
+        },
+        {
+          "name_as_written": "NICKI KIZZ",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🟠 🟠 🟠NICKI KIZZ (Paris)"
+        },
+        {
+          "name_as_written": "BLACKCHINESE",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🟠 🟠BLACKCHINESE (Nice)"
+        },
+        {
+          "name_as_written": "FAZER ACONTECER",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🟠FAZER ACONTECER (Geneva)"
+        },
+        {
+          "name_as_written": "DJ PARAISO",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🎧🎧🎧🎧🎧🎧 🎧 DJ PARAISO (Paris)"
+        },
+        {
+          "name_as_written": "DJ PUTO",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🎧🎧🎧🎧🎧🎧 DJ PUTO"
+        },
+        {
+          "name_as_written": "DJ MKY",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🎧🎧🎧🎧🎧 DJ MKY (Geneva)"
+        },
+        {
+          "name_as_written": "DJ GALANTA",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🎧🎧🎧🎧 DJ GALANTA (Geneva)"
+        },
+        {
+          "name_as_written": "DJ CLARITA",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🎧🎧🎧 DJ CLARITA (Geneva)"
+        },
+        {
+          "name_as_written": "DJ DRIM",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🎧🎧 DJ DRIM (Geneva)"
+        },
+        {
+          "name_as_written": "DJ THY",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🎧 DJ THY (Toulon)"
+        },
+        {
+          "name_as_written": "KITOKO DANCE",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "KITOKO DANCE – The Best"
+        }
+      ],
+      "features": [
+        {
+          "feature": "workshops",
+          "quote": "Workshops",
+          "rationale": "Workshops are part of the event."
+        },
+        {
+          "feature": "masterclass",
+          "quote": "Master Classes",
+          "rationale": "Masterclasses are part of the event."
+        },
+        {
+          "feature": "early_bird_tiers",
+          "quote": "Early bird tickets: Full Pass: €65 (for the first 50) available",
+          "rationale": "Full pass prices rise monthly after early bird."
+        },
+        {
+          "feature": "limited_or_sold_out",
+          "quote": "for the first 50",
+          "rationale": "Early-bird places are limited to the first 50."
+        },
+        {
+          "feature": "full_pass",
+          "quote": "FULL PASS:",
+          "rationale": "A full pass is sold."
+        },
+        {
+          "feature": "taxi_dancers",
+          "quote": "DANCER TAXIS",
+          "rationale": "Dancer taxis serve the event."
+        },
+        {
+          "feature": "transfers_shuttle",
+          "quote": "Shuttle €5 all weekend.",
+          "rationale": "A shuttle runs all weekend."
+        },
+        {
+          "feature": "all_levels_beginners",
+          "quote": "Beginner – Standing – Progressive",
+          "rationale": "Courses are offered for beginners."
+        }
+      ]
+    },
+    {
+      "event_id": 15627,
+      "artists": [
+        {
+          "name_as_written": "André Pisco & Carolina",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "André Pisco & Carolina | Anna & Guga | Capela & Sônia |"
+        },
+        {
+          "name_as_written": "Anna & Guga",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "André Pisco & Carolina | Anna & Guga | Capela & Sônia |"
+        },
+        {
+          "name_as_written": "Capela & Sônia",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "André Pisco & Carolina | Anna & Guga | Capela & Sônia |"
+        },
+        {
+          "name_as_written": "Humberto & Juliana",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "Humberto & Juliana | Sara & Bruno | Cátia Almeida"
+        },
+        {
+          "name_as_written": "Sara & Bruno",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "Humberto & Juliana | Sara & Bruno | Cátia Almeida"
+        },
+        {
+          "name_as_written": "Cátia Almeida",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "Humberto & Juliana | Sara & Bruno | Cátia Almeida"
+        },
+        {
+          "name_as_written": "DJ Márcio Kazakuta",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "DJ Márcio Kazakuta"
+        }
+      ],
+      "features": [
+        {
+          "feature": "workshops",
+          "quote": "Workshops | Teachers",
+          "rationale": "Workshops taught by teachers are part of the trip."
+        },
+        {
+          "feature": "shows",
+          "quote": "Parties | Shows | Dinners | Tours | Gatherings",
+          "rationale": "Shows are part of the programme."
+        }
+      ]
+    },
+    {
+      "event_id": 15632,
+      "artists": [
+        {
+          "name_as_written": "LE GRAND TI WOSH",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🔸 LE GRAND TI WOSH"
+        },
+        {
+          "name_as_written": "POEMA BEATZ",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🔸 POEMA BEATZ"
+        },
+        {
+          "name_as_written": "DJ KEMENA",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🔸 DJ KEMENA"
+        },
+        {
+          "name_as_written": "DJ BIJU",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🔸 DJ BIJU"
+        },
+        {
+          "name_as_written": "DJ EST’",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🔸 DJ EST’"
+        },
+        {
+          "name_as_written": "JESSIE SANTOS",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🔸 JESSIE SANTOS"
+        },
+        {
+          "name_as_written": "DJ ECLIPSE",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🔸 DJ ECLIPSE"
+        },
+        {
+          "name_as_written": "JP & RAMONA",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🔸 JP & RAMONA"
+        },
+        {
+          "name_as_written": "NICK & ALEX",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🔸 NICK & ALEX"
+        },
+        {
+          "name_as_written": "ENDOS & NIENKE",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🔸 ENDOS & NIENKE"
+        },
+        {
+          "name_as_written": "ANTHO & BÉNÉ",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🔸 ANTHO & BÉNÉ"
+        },
+        {
+          "name_as_written": "NAISSA",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🔸 NAISSA"
+        },
+        {
+          "name_as_written": "THERRY",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "🔸 THERRY"
+        },
+        {
+          "name_as_written": "KIZOTECA",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "🔸 KIZOTECA (social media manager)"
+        },
+        {
+          "name_as_written": "INSEN",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "🔸 INSEN (photographer)"
+        },
+        {
+          "name_as_written": "SAGA.PROD",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "🔸 SAGA.PROD (videographer)"
+        }
+      ],
+      "features": [
+        {
+          "feature": "all_in_one",
+          "quote": "MAIN HOTEL • ALL IN ONE",
+          "rationale": "The festival is held in the main hotel where guests stay."
+        },
+        {
+          "feature": "accommodation_included",
+          "quote": "Package: 2 full passes + double room",
+          "rationale": "The package bundles a double room with two passes."
+        },
+        {
+          "feature": "full_pass",
+          "quote": "Package: 2 full passes + double room",
+          "rationale": "Full passes are sold, including in a package."
+        }
+      ]
+    },
+    {
+      "event_id": 15637,
+      "artists": [
+        {
+          "name_as_written": "Falco & Leti",
+          "role": "teacher",
+          "style": null,
+          "country": "Spain",
+          "source_line": "💢Falco & Leti (Spain)"
+        },
+        {
+          "name_as_written": "Nuno Pesqueira",
+          "role": "teacher",
+          "style": null,
+          "country": "Portugal",
+          "source_line": "💢Nuno Pesqueira (Portugal)"
+        },
+        {
+          "name_as_written": "Nagyla Galvao",
+          "role": "teacher",
+          "style": null,
+          "country": "Brazil",
+          "source_line": "💢Nagyla Galvao (Brazil)"
+        },
+        {
+          "name_as_written": "Andreas & Silvia",
+          "role": "teacher",
+          "style": null,
+          "country": "Italy",
+          "source_line": "💢Andreas & Silvia (Italy)"
+        },
+        {
+          "name_as_written": "Maria & Vincenzo",
+          "role": "teacher",
+          "style": null,
+          "country": "Greece/Italy",
+          "source_line": "💢Maria & Vincenzo (Greece/Italy)"
+        },
+        {
+          "name_as_written": "Pablo & Luisa",
+          "role": "teacher",
+          "style": null,
+          "country": "Ecuador7Germany",
+          "source_line": "💢Pablo & Luisa (Ecuador7Germany)"
+        },
+        {
+          "name_as_written": "Matte & Vero",
+          "role": "teacher",
+          "style": null,
+          "country": "Italy",
+          "source_line": "💢Matte & Vero (Italy)"
+        },
+        {
+          "name_as_written": "Nuno Silva",
+          "role": "teacher",
+          "style": null,
+          "country": "Portugal",
+          "source_line": "💢Nuno Silva (Portugal)"
+        },
+        {
+          "name_as_written": "Sarai Navalon",
+          "role": "teacher",
+          "style": null,
+          "country": "Spain",
+          "source_line": "💢Sarai Navalon (Spain)"
+        },
+        {
+          "name_as_written": "Jorge & Monica",
+          "role": "teacher",
+          "style": null,
+          "country": "Czech Rep.",
+          "source_line": "💢Jorge & Monica (Czech Rep.)"
+        },
+        {
+          "name_as_written": "Alessio & Natalia",
+          "role": "teacher",
+          "style": null,
+          "country": "Italy",
+          "source_line": "💢Alessio & Natalia (Italy)"
+        },
+        {
+          "name_as_written": "Fajul Kizztalk",
+          "role": "teacher",
+          "style": null,
+          "country": "Gambia",
+          "source_line": "💢Fajul Kizztalk (Gambia)"
+        },
+        {
+          "name_as_written": "Gianni & Yulia",
+          "role": "teacher",
+          "style": null,
+          "country": "Germany",
+          "source_line": "💢Gianni & Yulia (Germany)"
+        },
+        {
+          "name_as_written": "Jeanine & Jairo Bravo",
+          "role": "teacher",
+          "style": null,
+          "country": "Mexico",
+          "source_line": "💢Jeanine & Jairo Bravo (Mexico)"
+        },
+        {
+          "name_as_written": "Tomi & Caro",
+          "role": "teacher",
+          "style": null,
+          "country": "Germany",
+          "source_line": "💢Tomi & Caro (Germany)"
+        },
+        {
+          "name_as_written": "Erland Weber",
+          "role": "teacher",
+          "style": null,
+          "country": "Germany",
+          "source_line": "💢Erland Weber (Germany)"
+        },
+        {
+          "name_as_written": "Anastasia",
+          "role": "teacher",
+          "style": null,
+          "country": "Germany",
+          "source_line": "💢Anastasia (Germany)"
+        },
+        {
+          "name_as_written": "Emu & Sabi",
+          "role": "teacher",
+          "style": null,
+          "country": "Germany",
+          "source_line": "💢Emu & Sabi (Germany)"
+        },
+        {
+          "name_as_written": "Marcello & Isabelle",
+          "role": "teacher",
+          "style": null,
+          "country": "Italy/Germany",
+          "source_line": "💢Marcello & Isabelle (Italy/Germany))"
+        },
+        {
+          "name_as_written": "Reem",
+          "role": "teacher",
+          "style": null,
+          "country": "Germany",
+          "source_line": "💢Reem (Germany)"
+        },
+        {
+          "name_as_written": "Fernando",
+          "role": "teacher",
+          "style": null,
+          "country": "Portugal",
+          "source_line": "💢Fernando (Portugal)"
+        },
+        {
+          "name_as_written": "Emerson & Louisa",
+          "role": "teacher",
+          "style": null,
+          "country": "Brazil/Germany",
+          "source_line": "💢Emerson & Louisa (Brazil/Germany)"
+        },
+        {
+          "name_as_written": "Mike Dance",
+          "role": "teacher",
+          "style": null,
+          "country": "Togo",
+          "source_line": "💢Mike Dance (Togo)"
+        },
+        {
+          "name_as_written": "DJ El Timba",
+          "role": "dj",
+          "style": null,
+          "country": "Italy",
+          "source_line": "💢DJ El Timba (Italy)"
+        },
+        {
+          "name_as_written": "DJ Saber",
+          "role": "dj",
+          "style": null,
+          "country": "Tunisia",
+          "source_line": "💢DJ Saber (Tunisia)"
+        },
+        {
+          "name_as_written": "DJ Raul Torres",
+          "role": "dj",
+          "style": null,
+          "country": "Colombia",
+          "source_line": "💢DJ Raul Torres (Colombia)"
+        },
+        {
+          "name_as_written": "DJ Bostjan",
+          "role": "dj",
+          "style": null,
+          "country": "Slovenia",
+          "source_line": "💢DJ Bostjan (Slovenia)"
+        },
+        {
+          "name_as_written": "DJ Bradley",
+          "role": "dj",
+          "style": null,
+          "country": "Serbia",
+          "source_line": "💢DJ Bradley (Serbia)"
+        },
+        {
+          "name_as_written": "DJ Tomquez",
+          "role": "dj",
+          "style": null,
+          "country": "Germany",
+          "source_line": "💢DJ Tomquez (Germany"
+        },
+        {
+          "name_as_written": "DJ David Munoz",
+          "role": "dj",
+          "style": null,
+          "country": "Mexico",
+          "source_line": "💢DJ David Munoz (Mexico)"
+        },
+        {
+          "name_as_written": "DJ Carlos Cigarro",
+          "role": "dj",
+          "style": null,
+          "country": "Austria",
+          "source_line": "💢DJ Carlos Cigarro (Austria)"
+        },
+        {
+          "name_as_written": "DJ Mixmillion",
+          "role": "dj",
+          "style": null,
+          "country": "Germany",
+          "source_line": "💢DJ Mixmillion (Germany)"
+        },
+        {
+          "name_as_written": "DJ Rob",
+          "role": "dj",
+          "style": null,
+          "country": "Germany",
+          "source_line": "💢DJ Rob (Germany)"
+        }
+      ],
+      "features": [
+        {
+          "feature": "workshops",
+          "quote": "Join our workshops and parties",
+          "rationale": "Workshops are part of the festival."
+        }
+      ]
+    },
+    {
+      "event_id": 15642,
+      "artists": [
+        {
+          "name_as_written": "Teresa Freitas",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "⭐ Teresa Freitas | Alberto Celmo | M Xtrela | Gabriel Cabinda"
+        },
+        {
+          "name_as_written": "Alberto Celmo",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "⭐ Teresa Freitas | Alberto Celmo | M Xtrela | Gabriel Cabinda"
+        },
+        {
+          "name_as_written": "M Xtrela",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "⭐ Teresa Freitas | Alberto Celmo | M Xtrela | Gabriel Cabinda"
+        },
+        {
+          "name_as_written": "Gabriel Cabinda",
+          "role": "teacher",
+          "style": null,
+          "country": null,
+          "source_line": "⭐ Teresa Freitas | Alberto Celmo | M Xtrela | Gabriel Cabinda"
+        },
+        {
+          "name_as_written": "Puto Português",
+          "role": "performer",
+          "style": null,
+          "country": null,
+          "source_line": "🎤 Puto Português"
+        },
+        {
+          "name_as_written": "Kapitula",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🎧 DJ: Kapitula"
+        },
+        {
+          "name_as_written": "DJ Afrodeziak",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "🎧 DJ Afrodeziak"
+        },
+        {
+          "name_as_written": "Kimalee’s Kandandu",
+          "role": "organiser",
+          "style": null,
+          "country": null,
+          "source_line": "Organized by: Kimalee’s Kandandu | Lápis Event | Stay Fit Team, LLC"
+        },
+        {
+          "name_as_written": "Lápis Event",
+          "role": "organiser",
+          "style": null,
+          "country": null,
+          "source_line": "Organized by: Kimalee’s Kandandu | Lápis Event | Stay Fit Team, LLC"
+        },
+        {
+          "name_as_written": "Stay Fit Team, LLC",
+          "role": "organiser",
+          "style": null,
+          "country": null,
+          "source_line": "Organized by: Kimalee’s Kandandu | Lápis Event | Stay Fit Team, LLC"
+        }
+      ],
+      "features": [
+        {
+          "feature": "workshops",
+          "quote": "8 hours of intense workshops!",
+          "rationale": "Eight hours of intense workshops are offered."
+        },
+        {
+          "feature": "live_music",
+          "quote": "LIVE SHOW (SATURDAY NIGHT)",
+          "rationale": "A live show is on the programme."
+        },
+        {
+          "feature": "shows",
+          "quote": "LIVE SHOW (SATURDAY NIGHT)",
+          "rationale": "A live show is on the programme."
+        },
+        {
+          "feature": "full_pass",
+          "quote": "$99 Full Pass – Follows",
+          "rationale": "A full pass is sold."
+        },
+        {
+          "feature": "couple_pass",
+          "quote": "$165 Full Pass – Couples (2 Leads)",
+          "rationale": "A couple full pass is sold."
+        },
+        {
+          "feature": "partner_hotel",
+          "quote": "Accommodation Suggestions:",
+          "rationale": "Hotels are suggested for accommodation."
+        }
+      ]
+    },
+    {
+      "event_id": 15647,
+      "artists": [],
+      "features": []
+    },
+    {
+      "event_id": 15657,
+      "artists": [
+        {
+          "name_as_written": "SEBASTIAN & GABI",
+          "role": "teacher",
+          "style": null,
+          "country": "USA",
+          "source_line": "★ SEBASTIAN & GABI (Dallas & NY – USA)"
+        },
+        {
+          "name_as_written": "IAGO & VANESSA",
+          "role": "teacher",
+          "style": null,
+          "country": "USA",
+          "source_line": "★ IAGO & VANESSA (Washington – USA)"
+        },
+        {
+          "name_as_written": "ROBINSON & LARISSA",
+          "role": "teacher",
+          "style": null,
+          "country": "USA",
+          "source_line": "★ ROBINSON & LARISSA (Orlando & Miami – USA)"
+        },
+        {
+          "name_as_written": "SHAWN & ESTHER",
+          "role": "teacher",
+          "style": null,
+          "country": "USA",
+          "source_line": "★ SHAWN & ESTHER (Vancouver & Calgary – USA) CAN)"
+        },
+        {
+          "name_as_written": "CHERRYLE SHYNE",
+          "role": "teacher",
+          "style": null,
+          "country": "CAN",
+          "source_line": "★ CHERRYLE SHYNE (Montreal – CAN)"
+        },
+        {
+          "name_as_written": "JHAIME & VALENTINA",
+          "role": "teacher",
+          "style": null,
+          "country": "CAN",
+          "source_line": "★ JHAIME & VALENTINA (Montreal/Quebec – CAN)"
+        },
+        {
+          "name_as_written": "JORDAN & DENISE",
+          "role": "teacher",
+          "style": null,
+          "country": "CAN",
+          "source_line": "★ JORDAN & DENISE (Montreal – CAN)"
+        },
+        {
+          "name_as_written": "MAUDE CHENIER",
+          "role": "teacher",
+          "style": null,
+          "country": "CAN",
+          "source_line": "★ MAUDE CHENIER (Montreal – CAN)"
+        },
+        {
+          "name_as_written": "MEGAN LAPOINTE",
+          "role": "teacher",
+          "style": null,
+          "country": "CAN",
+          "source_line": "★ MEGAN LAPOINTE (Quebec – CAN)"
+        },
+        {
+          "name_as_written": "VALENTINA DIAZ",
+          "role": "teacher",
+          "style": null,
+          "country": "CAN",
+          "source_line": "★ VALENTINA DIAZ (Quebec – CAN)"
+        },
+        {
+          "name_as_written": "LAURIE MORIN",
+          "role": "teacher",
+          "style": null,
+          "country": "CAN",
+          "source_line": "★ LAURIE MORIN (Quebec – CAN)"
+        },
+        {
+          "name_as_written": "DJ CHUPITO RD",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "★ DJ CHUPITO RD – Quebec City"
+        },
+        {
+          "name_as_written": "DJ ESTEFANO",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "★ DJ ESTEFANO – Trois-Rivières"
+        },
+        {
+          "name_as_written": "DJ CHANO",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "★ DJ CHANO – Montreal"
+        },
+        {
+          "name_as_written": "DJ LOV3",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "★ DJ LOV3 – Quebec City"
+        },
+        {
+          "name_as_written": "DJ BRIISE",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "★ DJ BRIISE – Quebec City"
+        },
+        {
+          "name_as_written": "DJ JC STRIPES",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "★ DJ JC STRIPES – Montreal"
+        },
+        {
+          "name_as_written": "DJ CAÏPI",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "★ DJ CAÏPI – Quebec City"
+        },
+        {
+          "name_as_written": "Cédric & Sabrina",
+          "role": "performer",
+          "style": null,
+          "country": "CAN",
+          "source_line": "★ Cédric & Sabrina (Quebec – CAN)"
+        },
+        {
+          "name_as_written": "Las Muñecas",
+          "role": "performer",
+          "style": null,
+          "country": "CAN",
+          "source_line": "★ Las Muñecas (Quebec – CAN)"
+        },
+        {
+          "name_as_written": "Estefano Photo",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "⭐️ Estefano Photo"
+        }
+      ],
+      "features": [
+        {
+          "feature": "workshops",
+          "quote": "15 to 20 hours of workshops",
+          "rationale": "Fifteen to twenty hours of workshops are offered."
+        },
+        {
+          "feature": "multiple_rooms",
+          "quote": "Party with 3 Rooms",
+          "rationale": "Parties run with three rooms."
+        },
+        {
+          "feature": "day_socials",
+          "quote": "Zouk Day Social",
+          "rationale": "A daytime social is scheduled."
+        },
+        {
+          "feature": "pre_party",
+          "quote": "THURSDAY, March 5 | PRE-PARTY",
+          "rationale": "A pre-party is on the programme."
+        },
+        {
+          "feature": "shows",
+          "quote": "Cédric & Sabrina (Quebec – CAN)",
+          "rationale": "Shows are on the programme."
+        },
+        {
+          "feature": "limited_or_sold_out",
+          "quote": "PRE-SALE PASS SOLD OUT",
+          "rationale": "The pre-sale pass is sold out."
+        },
+        {
+          "feature": "couple_pass",
+          "quote": "$365/Two People",
+          "rationale": "A two-person pass is sold."
+        }
+      ]
+    },
+    {
+      "event_id": 15662,
+      "artists": [
+        {
+          "name_as_written": "Auréa & Trésor",
+          "role": "teacher",
+          "style": "UrbanKiz – Kizomba – Tarraxo",
+          "country": null,
+          "source_line": "Auréa & Trésor"
+        },
+        {
+          "name_as_written": "Dr Papelini",
+          "role": "teacher",
+          "style": "UrbanKiz – Kizomba – Tarraxo",
+          "country": null,
+          "source_line": "Dr Papelini"
+        },
+        {
+          "name_as_written": "Karen & Luis",
+          "role": "teacher",
+          "style": "UrbanKiz – Kizomba – Tarraxo",
+          "country": null,
+          "source_line": "Karen & Luis"
+        },
+        {
+          "name_as_written": "Jo Seize",
+          "role": "teacher",
+          "style": "UrbanKiz – Kizomba – Tarraxo",
+          "country": null,
+          "source_line": "Jo Seize"
+        },
+        {
+          "name_as_written": "Noémie & Ludo",
+          "role": "teacher",
+          "style": "UrbanKiz – Kizomba – Tarraxo",
+          "country": null,
+          "source_line": "Noémie & Ludo"
+        },
+        {
+          "name_as_written": "Ami & Julien",
+          "role": "teacher",
+          "style": "UrbanKiz – Kizomba – Tarraxo",
+          "country": null,
+          "source_line": "Ami & Julien"
+        },
+        {
+          "name_as_written": "Yuna & Jules",
+          "role": "teacher",
+          "style": "TarraxoPop",
+          "country": null,
+          "source_line": "Yuna & Jules (TarraxoPop)"
+        },
+        {
+          "name_as_written": "Adeline",
+          "role": "teacher",
+          "style": "Self-improvement",
+          "country": null,
+          "source_line": "Adeline"
+        },
+        {
+          "name_as_written": "Noémie",
+          "role": "teacher",
+          "style": "Self-improvement",
+          "country": null,
+          "source_line": "Noémie"
+        },
+        {
+          "name_as_written": "Nelly M",
+          "role": "teacher",
+          "style": "Self-improvement",
+          "country": null,
+          "source_line": "Nelly M"
+        },
+        {
+          "name_as_written": "Ludo",
+          "role": "teacher",
+          "style": "Self-improvement",
+          "country": null,
+          "source_line": "Ludo"
+        },
+        {
+          "name_as_written": "Dédé Douceur",
+          "role": "teacher",
+          "style": "Dom. Bachata",
+          "country": null,
+          "source_line": "Dédé Douceur"
+        },
+        {
+          "name_as_written": "Nelly M & Dimitri",
+          "role": "teacher",
+          "style": "Dom. Bachata",
+          "country": null,
+          "source_line": "Nelly M & Dimitri"
+        },
+        {
+          "name_as_written": "Marlone",
+          "role": "teacher",
+          "style": "Dom. Bachata",
+          "country": null,
+          "source_line": "Marlone"
+        },
+        {
+          "name_as_written": "Coyo & Krystobal",
+          "role": "teacher",
+          "style": "Dom. Bachata",
+          "country": null,
+          "source_line": "Coyo & Krystobal"
+        },
+        {
+          "name_as_written": "Dj Ichigo",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "Dj Ichigo"
+        },
+        {
+          "name_as_written": "Dee Cee Beats",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "Dee Cee Beats"
+        },
+        {
+          "name_as_written": "Dj Lau",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "Dj Lau"
+        },
+        {
+          "name_as_written": "Dj Joyce",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "Dj Joyce"
+        },
+        {
+          "name_as_written": "Dj Krystobal",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "Dj Krystobal"
+        },
+        {
+          "name_as_written": "Dj Fluffman",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "Dj Fluffman"
+        },
+        {
+          "name_as_written": "Dj Arno",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "Dj Arno"
+        },
+        {
+          "name_as_written": "Dj Helow",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "Dj Helow"
+        },
+        {
+          "name_as_written": "Dj Elson",
+          "role": "dj",
+          "style": null,
+          "country": null,
+          "source_line": "Dj Elson"
+        },
+        {
+          "name_as_written": "Kday & La Tempête",
+          "role": "mc",
+          "style": null,
+          "country": null,
+          "source_line": "MCs : Kday & La Tempête"
+        }
+      ],
+      "features": []
+    },
+    {
+      "event_id": 15667,
+      "artists": [],
+      "features": [
+        {
+          "feature": "workshops",
+          "quote": "Over 40 workshops across 4 areas",
+          "rationale": "Over 40 workshops run across four areas."
+        },
+        {
+          "feature": "shows",
+          "quote": "Spectacular shows from top dancers",
+          "rationale": "Shows by top dancers are on the programme."
+        },
+        {
+          "feature": "live_music",
+          "quote": "A unique Salsa Bigband concert with",
+          "rationale": "A salsa big band concert is on the programme."
+        },
+        {
+          "feature": "multiple_rooms",
+          "quote": "3 Dancefloors with Salsa, Bachata & Kizomba",
+          "rationale": "Three dance floors run at once."
+        },
+        {
+          "feature": "all_levels_beginners",
+          "quote": "whether you’re a beginner or an experienced dancer",
+          "rationale": "The workshops suit beginners."
+        },
+        {
+          "feature": "early_bird_tiers",
+          "quote": "All early bird prices increase every month!",
+          "rationale": "Early-bird prices rise monthly."
+        },
+        {
+          "feature": "full_pass",
+          "quote": "Fullpass: €160,-",
+          "rationale": "A full pass is sold."
+        },
+        {
+          "feature": "party_pass",
+          "quote": "Party Pass: €60,-",
+          "rationale": "A party-only pass is sold."
+        }
+      ]
+    },
+    {
+      "event_id": 15672,
+      "artists": [],
+      "features": [
+        {
+          "feature": "workshops",
+          "quote": "Amazing dance workshops",
+          "rationale": "Dance workshops are part of the event."
+        },
+        {
+          "feature": "competition",
+          "quote": "Rising Star Competition",
+          "rationale": "A rising star competition is part of the event."
+        },
+        {
+          "feature": "dress_code",
+          "quote": "Cool, Sexy & Crazy Dresscodes",
+          "rationale": "Dress codes are stated for the nights."
+        },
+        {
+          "feature": "themed_parties",
+          "quote": "Cool, Sexy & Crazy Dresscodes",
+          "rationale": "The nights have dress themes."
+        },
+        {
+          "feature": "early_bird_tiers",
+          "quote": "Every month the price will increase by $20",
+          "rationale": "Ticket prices rise monthly."
+        },
+        {
+          "feature": "name_change",
+          "quote": "The name change closes on 08.03.2026",
+          "rationale": "Tickets can be transferred by name change until a date."
+        }
+      ]
+    },
+    {
+      "event_id": 15677,
+      "artists": [],
+      "features": []
+    },
+    {
+      "event_id": 15682,
+      "artists": [],
+      "features": [
+        {
+          "feature": "cruise",
+          "quote": "aboard the Costa Fascinosa",
+          "rationale": "The festival takes place aboard a cruise ship."
+        },
+        {
+          "feature": "full_pass",
+          "quote": "Cruise package with FULL PASS FESTIVAL",
+          "rationale": "A full pass is sold within the cruise package."
+        },
+        {
+          "feature": "accommodation_included",
+          "quote": "accommodation on the exceptional Costa Cruiser ship",
+          "rationale": "Cabin accommodation is included in the package."
+        },
+        {
+          "feature": "shows",
+          "quote": "During the day, enjoy shows, themed parties, and workshops",
+          "rationale": "Shows are part of the programme."
+        },
+        {
+          "feature": "themed_parties",
+          "quote": "During the day, enjoy shows, themed parties, and workshops",
+          "rationale": "Themed parties are part of the programme."
+        },
+        {
+          "feature": "workshops",
+          "quote": "During the day, enjoy shows, themed parties, and workshops",
+          "rationale": "Workshops are part of the programme."
+        },
+        {
+          "feature": "transfers_shuttle",
+          "quote": "Transfer and flight to and from the ship",
+          "rationale": "Transfers to and from the ship are offered as an optional extra."
+        },
+        {
+          "feature": "limited_or_sold_out",
+          "quote": "Spaces are limited and sell out quickly every year.",
+          "rationale": "Spaces are limited."
+        }
+      ]
+    },
+    {
+      "event_id": 15687,
+      "artists": [
+        {
+          "name_as_written": "Carlos & Paz",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": null,
+          "source_line": "Carlos & Paz"
+        },
+        {
+          "name_as_written": "Kornel & Catharine",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": null,
+          "source_line": "Kornel & Catharine"
+        },
+        {
+          "name_as_written": "Chico & Lisa",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": null,
+          "source_line": "Chico & Lisa"
+        },
+        {
+          "name_as_written": "Juanma & Tania",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": null,
+          "source_line": "Juanma & Tania"
+        },
+        {
+          "name_as_written": "Owen & Eva",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": null,
+          "source_line": "Owen & Eva"
+        },
+        {
+          "name_as_written": "Dennis & Elena",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": null,
+          "source_line": "Dennis & Elena"
+        },
+        {
+          "name_as_written": "Arthur",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": null,
+          "source_line": "Arthur"
+        },
+        {
+          "name_as_written": "Zoran & Andjela",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": null,
+          "source_line": "Zoran & Andjela"
+        },
+        {
+          "name_as_written": "Karl & Nima",
+          "role": "teacher",
+          "style": "KIZZ",
+          "country": null,
+          "source_line": "Karl & Nima"
+        },
+        {
+          "name_as_written": "Gwany & Liliana",
+          "role": "teacher",
+          "style": "KIZZ",
+          "country": null,
+          "source_line": "Gwany & Liliana"
+        },
+        {
+          "name_as_written": "Stephane & Sandra",
+          "role": "teacher",
+          "style": "KIZZ",
+          "country": null,
+          "source_line": "Stephane & Sandra"
+        },
+        {
+          "name_as_written": "Radu & Judit",
+          "role": "teacher",
+          "style": "KIZZ",
+          "country": null,
+          "source_line": "Radu & Judit"
+        },
+        {
+          "name_as_written": "Nick & Alex",
+          "role": "teacher",
+          "style": "KIZZ",
+          "country": null,
+          "source_line": "Nick & Alex"
+        },
+        {
+          "name_as_written": "John & Lea",
+          "role": "teacher",
+          "style": "KIZZ",
+          "country": null,
+          "source_line": "John & Lea"
+        },
+        {
+          "name_as_written": "Eddy & Rita",
+          "role": "teacher",
+          "style": "KIZZ",
+          "country": null,
+          "source_line": "Eddy & Rita"
+        },
+        {
+          "name_as_written": "HeartBeatKizz Team",
+          "role": "teacher",
+          "style": "KIZZ",
+          "country": null,
+          "source_line": "HeartBeatKizz Team"
+        },
+        {
+          "name_as_written": "DJ Clau",
+          "role": "dj",
+          "style": "Bachata",
+          "country": null,
+          "source_line": "DJ Clau · DJ Dennis · DJ Kima · DJ Edinjo"
+        },
+        {
+          "name_as_written": "DJ Dennis",
+          "role": "dj",
+          "style": "Bachata",
+          "country": null,
+          "source_line": "DJ Clau · DJ Dennis · DJ Kima · DJ Edinjo"
+        },
+        {
+          "name_as_written": "DJ Kima",
+          "role": "dj",
+          "style": "Bachata",
+          "country": null,
+          "source_line": "DJ Clau · DJ Dennis · DJ Kima · DJ Edinjo"
+        },
+        {
+          "name_as_written": "DJ Edinjo",
+          "role": "dj",
+          "style": "Bachata",
+          "country": null,
+          "source_line": "DJ Clau · DJ Dennis · DJ Kima · DJ Edinjo"
+        },
+        {
+          "name_as_written": "DJ Nao",
+          "role": "dj",
+          "style": "Kizomba",
+          "country": null,
+          "source_line": "DJ Nao · DJ PZL · DJ Eddy · DJ Moon"
+        },
+        {
+          "name_as_written": "DJ PZL",
+          "role": "dj",
+          "style": "Kizomba",
+          "country": null,
+          "source_line": "DJ Nao · DJ PZL · DJ Eddy · DJ Moon"
+        },
+        {
+          "name_as_written": "DJ Eddy",
+          "role": "dj",
+          "style": "Kizomba",
+          "country": null,
+          "source_line": "DJ Nao · DJ PZL · DJ Eddy · DJ Moon"
+        },
+        {
+          "name_as_written": "DJ Moon",
+          "role": "dj",
+          "style": "Kizomba",
+          "country": null,
+          "source_line": "DJ Nao · DJ PZL · DJ Eddy · DJ Moon"
+        },
+        {
+          "name_as_written": "Modex Cinema",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "Modex Cinema"
+        },
+        {
+          "name_as_written": "ClickShot",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "ClickShot"
+        },
+        {
+          "name_as_written": "Boris",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "Boris"
+        },
+        {
+          "name_as_written": "Patricia",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "Patricia"
+        },
+        {
+          "name_as_written": "Petar",
+          "role": "media",
+          "style": null,
+          "country": null,
+          "source_line": "Petar"
+        }
+      ],
+      "features": [
+        {
+          "feature": "workshops",
+          "quote": "11:10 – 14:30 · Workshops",
+          "rationale": "Workshops run each festival day."
+        },
+        {
+          "feature": "day_socials",
+          "quote": "14:45 – 17:45 · Daily Social",
+          "rationale": "A daily social runs each afternoon."
+        },
+        {
+          "feature": "pre_party",
+          "quote": "Pre-party: April 16 (separately charged)",
+          "rationale": "A pre-party is charged separately."
+        },
+        {
+          "feature": "competition",
+          "quote": "KIZZ COMPETITION",
+          "rationale": "Dance competitions are on the programme."
+        },
+        {
+          "feature": "full_pass",
+          "quote": "FULL PASS",
+          "rationale": "A full pass is sold."
+        },
+        {
+          "feature": "party_pass",
+          "quote": "PARTY PASS (Friday · Saturday · Sunday)",
+          "rationale": "A party-only pass is sold."
+        },
+        {
+          "feature": "couple_pass",
+          "quote": "COUPLE PASS (Leader + Follower)",
+          "rationale": "A couple pass is sold."
+        },
+        {
+          "feature": "early_bird_tiers",
+          "quote": "Prices change at the beginning of each month",
+          "rationale": "Prices rise monthly."
+        },
+        {
+          "feature": "limited_or_sold_out",
+          "quote": "Certain pass types may be limited or restricted",
+          "rationale": "Some pass types are limited."
+        },
+        {
+          "feature": "transfers_shuttle",
+          "quote": "AIRPORT TRANSFERS (TO & FROM NOVI SAD)",
+          "rationale": "Airport transfers are offered."
+        },
+        {
+          "feature": "name_change",
+          "quote": "Name change fee: €10",
+          "rationale": "Tickets can be transferred to another person for a fee."
+        }
+      ]
+    },
+    {
+      "event_id": 15692,
+      "artists": [
+        {
+          "name_as_written": "Demetrio & Danila",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": "ITALY",
+          "source_line": "Demetrio & Danila (ITALY)"
+        },
+        {
+          "name_as_written": "Daniel & Bri",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": "ISRAEL/US",
+          "source_line": "Daniel & Bri (ISRAEL/US)"
+        },
+        {
+          "name_as_written": "Or & Reute",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": "ISRAEL",
+          "source_line": "Or & Reute (ISRAEL)"
+        },
+        {
+          "name_as_written": "Ioanna & Chrysoula",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": "SCOTLAND/GREECE",
+          "source_line": "Ioanna & Chrysoula (SCOTLAND/GREECE)"
+        },
+        {
+          "name_as_written": "Angel Vizcarra & Koharik",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": "MEXICO/GREECE",
+          "source_line": "Angel Vizcarra & Koharik (MEXICO/GREECE)"
+        },
+        {
+          "name_as_written": "Stavros & Kathrine",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": "GREECE",
+          "source_line": "Stavros & Kathrine (GREECE)"
+        },
+        {
+          "name_as_written": "Konstantinos & Katerina",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": "GREECE",
+          "source_line": "Konstantinos & Katerina (GREECE)"
+        },
+        {
+          "name_as_written": "George & Evgenia",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": "GREECE",
+          "source_line": "George & Evgenia (GREECE)"
+        },
+        {
+          "name_as_written": "Panagiotis & Christina",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": "GREECE",
+          "source_line": "Panagiotis & Christina (GREECE)"
+        },
+        {
+          "name_as_written": "George Plom",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": "GREECE",
+          "source_line": "George Plom (GREECE)"
+        },
+        {
+          "name_as_written": "Rafael Morel",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": "DOMINICAN REPUBLIC",
+          "source_line": "Rafael Morel (DOMINICAN REPUBLIC)"
+        },
+        {
+          "name_as_written": "Iliana Theodoridou",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": "GREECE",
+          "source_line": "Iliana Theodoridou (GREECE)"
+        },
+        {
+          "name_as_written": "Konstantinos & Zoe",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": "GREECE",
+          "source_line": "Konstantinos & Zoe (GREECE)"
+        },
+        {
+          "name_as_written": "Joanna & Christina",
+          "role": "teacher",
+          "style": "BACHATA",
+          "country": "GREECE",
+          "source_line": "Joanna & Christina (GREECE)"
+        },
+        {
+          "name_as_written": "Edwin Rivera",
+          "role": "teacher",
+          "style": "SALSA",
+          "country": "USA",
+          "source_line": "Edwin Rivera (USA)"
+        },
+        {
+          "name_as_written": "Radu Manole",
+          "role": "teacher",
+          "style": "SALSA",
+          "country": "ROMANIA",
+          "source_line": "Radu Manole (ROMANIA)"
+        },
+        {
+          "name_as_written": "Marvin Ramos Acosta",
+          "role": "teacher",
+          "style": "SALSA",
+          "country": "COLOMBIA",
+          "source_line": "Marvin Ramos Acosta (COLOMBIA)"
+        },
+        {
+          "name_as_written": "Maria & Vincenzo",
+          "role": "teacher",
+          "style": "SALSA",
+          "country": "GREECE/ITALY",
+          "source_line": "Maria & Vincenzo (GREECE/ITALY)"
+        },
+        {
+          "name_as_written": "Antonis & Hara",
+          "role": "teacher",
+          "style": "SALSA",
+          "country": "GREECE",
+          "source_line": "Antonis & Hara (GREECE)"
+        },
+        {
+          "name_as_written": "Kiki Kakoullis",
+          "role": "teacher",
+          "style": "SALSA",
+          "country": "GREECE",
+          "source_line": "Kiki Kakoullis (GREECE)"
+        },
+        {
+          "name_as_written": "Stathis Bogdanos",
+          "role": "teacher",
+          "style": "SALSA",
+          "country": "GREECE",
+          "source_line": "Stathis Bogdanos (GREECE)"
+        },
+        {
+          "name_as_written": "Dimitris & Christina",
+          "role": "teacher",
+          "style": "SALSA",
+          "country": "GREECE/LUXEMBOURG",
+          "source_line": "Dimitris & Christina (GREECE/LUXEMBOURG)"
+        },
+        {
+          "name_as_written": "Alisa Antonova",
+          "role": "teacher",
+          "style": "SALSA",
+          "country": "CYPRUS",
+          "source_line": "Alisa Antonova (CYPRUS)"
+        },
+        {
+          "name_as_written": "Jana K. Cerna",
+          "role": "teacher",
+          "style": "SALSA",
+          "country": "CYPRUS",
+          "source_line": "Jana K. Cerna – Movimiento DS (CYPRUS)"
+        },
+        {
+          "name_as_written": "Vasilis Gkouletsas & Alexandra",
+          "role": "teacher",
+          "style": "SALSA",
+          "country": "GREECE",
+          "source_line": "Vasilis Gkouletsas & Alexandra (GREECE)"
+        },
+        {
+          "name_as_written": "Maria Bebi",
+          "role": "teacher",
+          "style": "SALSA",
+          "country": "GREECE",
+          "source_line": "Maria Bebi (GREECE)"
+        },
+        {
+          "name_as_written": "Marco & Eleanna",
+          "role": "teacher",
+          "style": "SALSA",
+          "country": "GREECE",
+          "source_line": "Marco & Eleanna (GREECE)"
+        },
+        {
+          "name_as_written": "Ntinos & Chrysa",
+          "role": "teacher",
+          "style": "SALSA",
+          "country": "GREECE",
+          "source_line": "Ntinos & Chrysa (GREECE)"
+        },
+        {
+          "name_as_written": "Thanasis Sakkas",
+          "role": "teacher",
+          "style": "SALSA",
+          "country": "GREECE",
+          "source_line": "Thanasis Sakkas (GREECE)"
+        },
+        {
+          "name_as_written": "Konstantinos & Anna",
+          "role": "teacher",
+          "style": "SALSA",
+          "country": "GREECE",
+          "source_line": "Konstantinos & Anna (GREECE)"
+        },
+        {
+          "name_as_written": "Alicia",
+          "role": "teacher",
+          "style": "SALSA",
+          "country": "LUXEMBOURG",
+          "source_line": "Alicia (LUXEMBOURG)"
+        },
+        {
+          "name_as_written": "Marcio Junqueira",
+          "role": "teacher",
+          "style": "KIZOMBA",
+          "country": "ANGOLA",
+          "source_line": "Marcio Junqueira (ANGOLA)"
+        },
+        {
+          "name_as_written": "Stella Anastasaki",
+          "role": "teacher",
+          "style": "KIZOMBA",
+          "country": "GREECE",
+          "source_line": "Stella Anastasaki (GREECE)"
+        },
+        {
+          "name_as_written": "Vasilis & Marina",
+          "role": "teacher",
+          "style": "KIZOMBA",
+          "country": "CYPRUS",
+          "source_line": "Vasilis & Marina – DanceislandCY (CYPRUS)"
+        },
+        {
+          "name_as_written": "Ioanna Joowaa",
+          "role": "teacher",
+          "style": "KIZOMBA",
+          "country": "GREECE",
+          "source_line": "Ioanna Joowaa (GREECE)"
+        },
+        {
+          "name_as_written": "Christina Chrysanthou",
+          "role": "teacher",
+          "style": "KIZOMBA",
+          "country": "GREECE",
+          "source_line": "Christina Chrysanthou (GREECE)"
+        },
+        {
+          "name_as_written": "Dj Estelio",
+          "role": "dj",
+          "style": null,
+          "country": "GREECE",
+          "source_line": "Dj Estelio “El Social” (GREECE)"
+        },
+        {
+          "name_as_written": "Dj AnasTAZZio",
+          "role": "dj",
+          "style": null,
+          "country": "GREECE",
+          "source_line": "Dj AnasTAZZio (GREECE)"
+        },
+        {
+          "name_as_written": "Dj Nicos K.",
+          "role": "dj",
+          "style": null,
+          "country": "GREECE",
+          "source_line": "Dj Nicos K. (GREECE)"
+        },
+        {
+          "name_as_written": "Dj Salvador",
+          "role": "dj",
+          "style": null,
+          "country": "GREECE",
+          "source_line": "Dj Salvador “El Pecador” (GREECE)"
+        },
+        {
+          "name_as_written": "Dj Mas",
+          "role": "dj",
+          "style": null,
+          "country": "GREECE",
+          "source_line": "Dj Mas (GREECE)"
+        },
+        {
+          "name_as_written": "Dj Val",
+          "role": "dj",
+          "style": null,
+          "country": "GREECE",
+          "source_line": "Dj Val (GREECE)"
+        },
+        {
+          "name_as_written": "Dj Giota Nezi",
+          "role": "dj",
+          "style": null,
+          "country": "GREECE",
+          "source_line": "Dj Giota Nezi (GREECE)"
+        },
+        {
+          "name_as_written": "Dj Zander",
+          "role": "dj",
+          "style": null,
+          "country": "GREECE",
+          "source_line": "Dj Zander (GREECE)"
+        },
+        {
+          "name_as_written": "Dj D",
+          "role": "dj",
+          "style": null,
+          "country": "CYPRUS",
+          "source_line": "Dj D (CYPRUS)"
+        },
+        {
+          "name_as_written": "Salsa Y SueñO Dance Prod.",
+          "role": "organiser",
+          "style": null,
+          "country": null,
+          "source_line": "For the 6th time, the Salsa Y SueñO Dance Prod. team is organizing the electrifying Sensualonica Dance Festival in Thessaloniki, Greece, from 𝗔𝗣𝗥𝗜𝗟 17-19, 2026."
+        }
+      ],
+      "features": [
+        {
+          "feature": "multiple_rooms",
+          "quote": "Separate party rooms for",
+          "rationale": "Separate party rooms run for each dance style."
+        },
+        {
+          "feature": "competition",
+          "quote": "Competition on Thursday",
+          "rationale": "A pre-party Jack & Jill competition runs on Thursday."
+        },
+        {
+          "feature": "pre_party",
+          "quote": "Competition on Thursday",
+          "rationale": "A pre-party with a competition runs on Thursday."
+        },
+        {
+          "feature": "workshops",
+          "quote": "𝐖𝐨𝐫𝐤𝐬𝐡𝐨𝐩𝐬 𝐟𝐨𝐫 𝐚𝐥𝐥 𝐥𝐞𝐯𝐞𝐥𝐬 𝐚𝐧𝐝 𝐬𝐭𝐲𝐥𝐞𝐬!",
+          "rationale": "Workshops are part of the festival."
+        },
+        {
+          "feature": "all_levels_beginners",
+          "quote": "𝐖𝐨𝐫𝐤𝐬𝐡𝐨𝐩𝐬 𝐟𝐨𝐫 𝐚𝐥𝐥 𝐥𝐞𝐯𝐞𝐥𝐬 𝐚𝐧𝐝 𝐬𝐭𝐲𝐥𝐞𝐬!",
+          "rationale": "Workshops are offered for all levels."
+        },
+        {
+          "feature": "early_bird_tiers",
+          "quote": "Till October 31st",
+          "rationale": "Ticket prices rise monthly."
+        }
+      ]
+    }
+  ]
+}

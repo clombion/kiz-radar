@@ -1,0 +1,356 @@
+{
+ "batch": "merge-review-004",
+ "prompt_version": "merge-review-v1",
+ "decisions": [
+  {
+   "pair_id": 151,
+   "key_a": "p:david@christina+david",
+   "key_b": "p:daviddasilva",
+   "decision": "merge",
+   "rationale": "Same first name, same partner Christina, same city (Lyon) and both listed as teachers; the full name only adds the surname Da Silva."
+  },
+  {
+   "pair_id": 152,
+   "key_a": "p:david@crisandra+david",
+   "key_b": "p:david@daria+david",
+   "decision": "unsure",
+   "rationale": "Common first name David with different partners (Crisandra vs Daria), different event countries and an overlapping Canada flag; nothing distinctive links them."
+  },
+  {
+   "pair_id": 153,
+   "key_a": "p:david@david+laura",
+   "key_b": "p:davide@davide+laura",
+   "decision": "separate",
+   "rationale": "David and Davide are different forms of the first name (one letter apart) and the UK event against Italian events gives no shared distinctive evidence."
+  },
+  {
+   "pair_id": 154,
+   "key_a": "p:david@david+quinn",
+   "key_b": "p:davidcohen",
+   "decision": "unsure",
+   "rationale": "Only the common first name David links a partnership with no surname to David Cohen; the South Africa stated country overlaps, so the evidence does not settle it."
+  },
+  {
+   "pair_id": 155,
+   "key_a": "p:david@david+quinn",
+   "key_b": "p:davidruach",
+   "decision": "unsure",
+   "rationale": "Only the common first name David links the partnership to David Ruach; the South Africa stated country overlaps, so the evidence does not settle it."
+  },
+  {
+   "pair_id": 156,
+   "key_a": "p:davide@cilene+davide",
+   "key_b": "p:davide@davide+laura",
+   "decision": "unsure",
+   "rationale": "Davide is a common name with different partners (Cilene vs Laura), though all these events are in Italy; the evidence does not settle whether one person changed partner."
+  },
+  {
+   "pair_id": 157,
+   "key_a": "p:davide@cilene+davide",
+   "key_b": "p:davidenola",
+   "decision": "merge",
+   "rationale": "Same partner Cilene, Italian stated country and Davide with the surname Nola added in one mention; the first name and partner match."
+  },
+  {
+   "pair_id": 158,
+   "key_a": "p:davide@davide+laura",
+   "key_b": "p:davidenola",
+   "decision": "unsure",
+   "rationale": "Davide with different partners (Laura vs Cilene) in Italy; the Davide Nola surname appears only on one side, so the evidence does not settle it."
+  },
+  {
+   "pair_id": 159,
+   "key_a": "p:davidyaye",
+   "key_b": "p:daviyaye",
+   "decision": "merge",
+   "rationale": "Distinctive surname Yaye with a spelling variant of the first name (Davi/David) and the same French stated country."
+  },
+  {
+   "pair_id": 160,
+   "key_a": "p:deecbeats",
+   "key_b": "p:deecbeatz",
+   "decision": "merge",
+   "rationale": "Distinctive stage name Dee C Beats/Beatz differs by one spelling of Beats, both DJs in Gothenburg."
+  },
+  {
+   "pair_id": 161,
+   "key_a": "p:deecbeatz",
+   "key_b": "p:deeceebeatz",
+   "decision": "merge",
+   "rationale": "Stage name Dee C Beatz and Dee Cee Beatz are the same DJ name written in two spellings, both DJs in Gothenburg and Oslo."
+  },
+  {
+   "pair_id": 162,
+   "key_a": "p:dex@dex+lau",
+   "key_b": "p:dex@dex+law",
+   "decision": "unsure",
+   "rationale": "Dex is shared and the partner names differ by one letter (Lau vs Law) with an overlapping France stated country, but the partner spelling alone does not settle it."
+  },
+  {
+   "pair_id": 163,
+   "key_a": "p:didier@didier+manon",
+   "key_b": "p:didier@didier+vanessa",
+   "decision": "unsure",
+   "rationale": "Same Didier at the same event on the same day with different partners (Manon vs Vanessa); the event may list one teacher twice or two different Didiers."
+  },
+  {
+   "pair_id": 164,
+   "key_a": "p:dim@dim+ophelie",
+   "key_b": "p:dimdim",
+   "decision": "merge",
+   "rationale": "Dim/DimDim with the same partner Ophelie/Ophelie (accent only) and the same distinctive name across many shared kizomba events."
+  },
+  {
+   "pair_id": 165,
+   "key_a": "p:dimitri@aude+dimitri",
+   "key_b": "p:dimitri@dimitri+laure",
+   "decision": "unsure",
+   "rationale": "Common name Dimitri with different partners (Aude vs Laure) and a shared France stated country; the evidence does not settle it."
+  },
+  {
+   "pair_id": 166,
+   "key_a": "p:dimitris@christina+dimitris",
+   "key_b": "p:dimitris@dimitris+yolena",
+   "decision": "unsure",
+   "rationale": "Common name Dimitris with different partners (Christina vs Yolena) and an overlapping Greece stated country; the evidence does not settle it."
+  },
+  {
+   "pair_id": 167,
+   "key_a": "p:domenico@alessandra+domenico",
+   "key_b": "p:domenicocubao",
+   "decision": "merge",
+   "rationale": "Same distinctive surname Cubao, same partner Alessandra and same Italian stated country and style across both sides."
+  },
+  {
+   "pair_id": 168,
+   "key_a": "p:donaldwillson",
+   "key_b": "p:donaldwilson",
+   "decision": "unsure",
+   "rationale": "Donald Willson and Donald Wilson differ only in a spelling of a common surname, with no shared partner or stated country; the evidence does not settle it."
+  },
+  {
+   "pair_id": 169,
+   "key_a": "p:dosanjos",
+   "key_b": "p:dosanos",
+   "decision": "merge",
+   "rationale": "DJ Dos Anjos and DJ Dos Anos differ by a typo of a distinctive stage name, with Poland appearing on both sides."
+  },
+  {
+   "pair_id": 170,
+   "key_a": "p:dotizinha@dj",
+   "key_b": "p:dotizinhavamula",
+   "decision": "merge",
+   "rationale": "DJ Dotizinha is the same stage name with the surname Vamula added, both DJs with Poland stated."
+  },
+  {
+   "pair_id": 171,
+   "key_a": "p:ducu@dj",
+   "key_b": "p:ducu@ducu+jojo",
+   "decision": "merge",
+   "rationale": "DJ Ducu and Ducu & Jojo share the same events and dates (Cluj 2026-01-30, Budapest 2026-11-05), so the DJ and the dancer are one person."
+  },
+  {
+   "pair_id": 172,
+   "key_a": "p:dwe@dance",
+   "key_b": "p:dwe@dj",
+   "decision": "merge",
+   "rationale": "Distinctive stage name Dwe (with a Unicode-styled spelling) appears as teacher and as DJ Dwe, both with the Netherlands stated country."
+  },
+  {
+   "pair_id": 173,
+   "key_a": "p:dwe@dance",
+   "key_b": "p:dwe@dwe+gaby",
+   "decision": "merge",
+   "rationale": "Distinctive stage name Dwe appears on both sides and the Dwe & Gaby couples share the Netherlands stated country and the same events."
+  },
+  {
+   "pair_id": 174,
+   "key_a": "p:dwe@dance",
+   "key_b": "p:dwetyson",
+   "decision": "merge",
+   "rationale": "Stage name Dwe is the first word of DJ Dwe Tyson, with the Netherlands stated country and the same London event on 2026-06-19."
+  },
+  {
+   "pair_id": 175,
+   "key_a": "p:dwe@dj",
+   "key_b": "p:dwe@dwe+gaby",
+   "decision": "merge",
+   "rationale": "DJ Dwe and Dwe & Gaby appear at the same Lyon event on 2026-04-02 with the same Netherlands stated country."
+  },
+  {
+   "pair_id": 176,
+   "key_a": "p:dwe@dj",
+   "key_b": "p:dwetyson",
+   "decision": "merge",
+   "rationale": "DJ Dwe is the first word of DJ Dwe Tyson, both DJs with the Netherlands stated country."
+  },
+  {
+   "pair_id": 177,
+   "key_a": "p:dwe@dwe+gaby",
+   "key_b": "p:dwetyson",
+   "decision": "merge",
+   "rationale": "Dwe & Gaby and DJ Dwe Tyson appear at the same London event on 2026-06-19 with the same Netherlands stated country."
+  },
+  {
+   "pair_id": 178,
+   "key_a": "p:eddy@dance",
+   "key_b": "p:eddy@dj",
+   "decision": "merge",
+   "rationale": "EDDY (teacher) and DJ EDDY (DJ) appear at the same Vienna event on the same date, so one person holds both roles."
+  },
+  {
+   "pair_id": 179,
+   "key_a": "p:eddy@dance",
+   "key_b": "p:eddy@eddy+rita",
+   "decision": "merge",
+   "rationale": "Solo EDDY teaching at the Vienna event of 2026-03-20 is the same name as DJ EDDY there, and the Eddy & Rita couples share events with that DJ."
+  },
+  {
+   "pair_id": 180,
+   "key_a": "p:eddy@dj",
+   "key_b": "p:eddy@eddy+rita",
+   "decision": "merge",
+   "rationale": "DJ Eddy and Eddy & Rita appear at the same Budapest and Novi Sad events on the same dates, so the DJ and the couple are one person."
+  },
+  {
+   "pair_id": 181,
+   "key_a": "p:eden@dj",
+   "key_b": "p:eden@eden+ioury",
+   "decision": "unsure",
+   "rationale": "Common first name Eden with a DJ role on one side and a couple with Ioury on the other; only the shared France stated country links them."
+  },
+  {
+   "pair_id": 182,
+   "key_a": "p:edwinrodrigues",
+   "key_b": "p:edwinrodriguez",
+   "decision": "merge",
+   "rationale": "Full name Edwin Rodrigues and Edwin Rodriguez differ by one surname spelling, both teachers in the UK teaching salsa."
+  },
+  {
+   "pair_id": 183,
+   "key_a": "p:elena@elena+rodri",
+   "key_b": "p:elena@elena+sergio",
+   "decision": "unsure",
+   "rationale": "Shared first name Elena and a shared Spain country, but the partners Rodri and Sergio are different names with no other link."
+  },
+  {
+   "pair_id": 184,
+   "key_a": "p:elena@elena+sergio",
+   "key_b": "p:selena@selena+sergio",
+   "decision": "separate",
+   "rationale": "Partner Sergio is shared, but Elena and Selena are different names one letter apart, and the events are in different countries."
+  },
+  {
+   "pair_id": 185,
+   "key_a": "p:elena@elena+valter",
+   "key_b": "p:elenaarcangeli",
+   "decision": "merge",
+   "rationale": "Elena Arcangeli is the full name of Elena with partner Valter, both in Italy, and both appear at the same Milan event on 2026-09-04."
+  },
+  {
+   "pair_id": 186,
+   "key_a": "p:elhadj",
+   "key_b": "p:elhadj@elhadj+jenny",
+   "decision": "merge",
+   "rationale": "Distinctive first name Elhadj with the same partner name spelled Jenna/Jenny, both with the France stated country."
+  },
+  {
+   "pair_id": 187,
+   "key_a": "p:elhadj@elhadj+jenna",
+   "key_b": "p:elhadj@elhadj+jenny",
+   "decision": "merge",
+   "rationale": "Same Elhadj with the partner name spelled Jenna/Jenny, both sides with the France stated country."
+  },
+  {
+   "pair_id": 188,
+   "key_a": "p:elina@crownperk+elina",
+   "key_b": "p:elina@daniel+elina",
+   "decision": "unsure",
+   "rationale": "Elina is the common shared name with different partners (Crown Perk vs Daniel), and the Germany and Czech stated countries overlap."
+  },
+  {
+   "pair_id": 189,
+   "key_a": "p:elina@crownperk+elina",
+   "key_b": "p:elina@danielschauenburg+elina",
+   "decision": "unsure",
+   "rationale": "Elina is the common shared name with different partners (Crown Perk vs Daniel Schauenburg), and the Germany and Czech stated countries overlap."
+  },
+  {
+   "pair_id": 190,
+   "key_a": "p:elina@crownperk+elina",
+   "key_b": "p:elina@elina+ferris",
+   "decision": "unsure",
+   "rationale": "Elina is the common shared name with different partners (Crown Perk vs Ferris), and the Germany and Czech stated countries overlap."
+  },
+  {
+   "pair_id": 191,
+   "key_a": "p:elina@daniel+elina",
+   "key_b": "p:elina@danielschauenburg+elina",
+   "decision": "merge",
+   "rationale": "Daniel & Elina is the same couple as Daniel Schauenburg & Elina, with the same partner, and both list the Germany and Czech stated countries."
+  },
+  {
+   "pair_id": 192,
+   "key_a": "p:elina@daniel+elina",
+   "key_b": "p:elina@elina+ferris",
+   "decision": "unsure",
+   "rationale": "Elina is the common shared name with different partners (Daniel vs Ferris), and the Germany stated country overlaps."
+  },
+  {
+   "pair_id": 193,
+   "key_a": "p:elina@danielschauenburg+elina",
+   "key_b": "p:elina@elina+ferris",
+   "decision": "unsure",
+   "rationale": "Elina is the common shared name with different partners (Daniel Schauenburg vs Ferris), and the Germany stated country overlaps."
+  },
+  {
+   "pair_id": 194,
+   "key_a": "p:elo@adil+elo",
+   "key_b": "p:elo@elo+mike",
+   "decision": "unsure",
+   "rationale": "Shared first name Elo with different partners (Adil vs Mike) and a shared France stated country; the evidence does not settle it."
+  },
+  {
+   "pair_id": 195,
+   "key_a": "p:elodie@elodie+fransoa",
+   "key_b": "p:elodiecatena",
+   "decision": "merge",
+   "rationale": "Same partner Fransoa, same first name Elodie with the surname Catena in one side, and both are French teachers in Toulon."
+  },
+  {
+   "pair_id": 196,
+   "key_a": "p:emanuel@emanuel+teresa",
+   "key_b": "p:emanuel@emanuel+teresafreitas",
+   "decision": "merge",
+   "rationale": "Teresa & Emanuel and Teresa Freitas & Emanuel are the same couple with the same partner names and the Angola stated country."
+  },
+  {
+   "pair_id": 197,
+   "key_a": "p:emanuel@emanuel+teresa",
+   "key_b": "p:emanuelnpedro",
+   "decision": "merge",
+   "rationale": "Teresa & Emanuel shares partner Teresa, with the full name Emanuel N. Pedro on the other side, and Angola stated on both."
+  },
+  {
+   "pair_id": 198,
+   "key_a": "p:emanuel@emanuel+teresa",
+   "key_b": "p:manuel@benedicte+manuel",
+   "decision": "unsure",
+   "rationale": "Emanuel and Manuel are close, but the partners Teresa and Benedicte are different names and the stated countries only partly overlap."
+  },
+  {
+   "pair_id": 199,
+   "key_a": "p:emanuel@emanuel+teresafreitas",
+   "key_b": "p:emanuelnpedro",
+   "decision": "merge",
+   "rationale": "Teresa Freitas & Emanuel and Teresa Freitas & Emanuel N. Pedro share the full partner name and the Angola stated country."
+  },
+  {
+   "pair_id": 200,
+   "key_a": "p:enah@enah+lolahontas",
+   "key_b": "p:enah@enah+pocahontas",
+   "decision": "merge",
+   "rationale": "Enah is distinctive and the partner Lolahontas is a spelling variant of Pocahontas, with France and Spain stated on both sides."
+  }
+ ]
+}

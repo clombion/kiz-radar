@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rooms and genres per event (genre enum must match config/vocab.json)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "batch",
+    "prompt_version",
+    "events"
+  ],
+  "properties": {
+    "batch": {
+      "type": "string"
+    },
+    "prompt_version": {
+      "const": "rooms-genres-v1"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "event_id",
+          "party_rooms",
+          "class_rooms",
+          "rooms",
+          "genres"
+        ],
+        "properties": {
+          "event_id": {
+            "type": "integer"
+          },
+          "party_rooms": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "count",
+                  "quote"
+                ],
+                "properties": {
+                  "count": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 30
+                  },
+                  "quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 300
+                  }
+                }
+              }
+            ]
+          },
+          "class_rooms": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "count",
+                  "quote"
+                ],
+                "properties": {
+                  "count": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 30
+                  },
+                  "quote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 300
+                  }
+                }
+              }
+            ]
+          },
+          "rooms": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "name_as_written",
+                "kind",
+                "genres",
+                "quote"
+              ],
+              "properties": {
+                "name_as_written": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "kind": {
+                  "enum": [
+                    "party",
+                    "class",
+                    "unspecified"
+                  ]
+                },
+                "genres": {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      "afro",
+                      "bachata",
+                      "douceur",
+                      "kizomba",
+                      "kompa",
+                      "kuduro",
+                      "other",
+                      "reggaeton",
+                      "salsa",
+                      "semba",
+                      "tarraxinha",
+                      "tarraxo",
+                      "urbankiz",
+                      "zouk"
+                    ]
+                  }
+                },
+                "quote": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 300
+                }
+              }
+            }
+          },
+          "genres": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "genre",
+                "genre_as_written",
+                "quote"
+              ],
+              "properties": {
+                "genre": {
+                  "enum": [
+                    "afro",
+                    "bachata",
+                    "douceur",
+                    "kizomba",
+                    "kompa",
+                    "kuduro",
+                    "other",
+                    "reggaeton",
+                    "salsa",
+                    "semba",
+                    "tarraxinha",
+                    "tarraxo",
+                    "urbankiz",
+                    "zouk"
+                  ]
+                },
+                "genre_as_written": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quote": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 300
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

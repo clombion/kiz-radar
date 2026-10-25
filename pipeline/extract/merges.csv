@@ -1,0 +1,375 @@
+key_a,key_b,decision,source,note
+p:abigail@dance,p:abigail@dj,merge,merge-review-v1,"DJ Abigail and Abigail share the same country (UK) and appear at the same event on the same date, with a DJ prefix on one side."
+p:adilson@adilson+telma,p:adilsonmaiza,merge,merge-review-v1,"Adilson Maíza & Telma shares the partner Telma and the Angolan country with Adilson & Telma, and the Adilson Maíza name is spelled the same on the solo entries."
+p:adrian@adrian+marina,p:adrian@adrian+ruxi,separate,merge-review-v1,Adrian & Marina and Adrian & Ruxi are two couples with different partners; the only shared evidence is the common first name Adrian and Romania.
+p:agnes@agnes+fajul,p:agnes@agnes+vassil,separate,merge-review-v1,Fajul & Agnes and Vassil & Agnes are different couples with different partners; the only shared evidence is the common first name Agnes and Germany.
+p:akram@akram+sara,p:akram@akram+sarah,merge,merge-review-v1,"Akram & Sara and Akram & Sarah are the same couple with a one-letter spelling variant of the partner name, and both list Switzerland."
+p:akram@akram+sara,p:akrambouchiba,merge,merge-review-v1,"Akram Bouchiba & Sara Paxolieta shares the partner Sara and Swiss country with Akram & Sara, and the Akram name is distinctive."
+p:akram@akram+sarah,p:akrambouchiba,merge,merge-review-v1,"Akram & Sarah (Netherlands-Switzerland) matches Akram Bouchiba (Netherlands-Switzerland) with partner Sara Paxolieta, the same couple with a spelling variant of the partner name."
+p:alba@alba+ronald,p:alba@alba+victor,separate,merge-review-v1,Ronald & Alba and Victor & Alba are two couples with different partners; the only shared evidence is the common first name Alba and Spain.
+p:alben@alben+dobi,p:alben@dj,merge,merge-review-v1,"DJ Al”ben and Alben share the same name (with a stray quote mark), the same country (Bulgaria) and the same event on the same date."
+p:albir@dance,p:albirrojas,merge,merge-review-v1,"ALBIR (teacher, Spain) and Albir Rojas (teacher, Spain) share the distinctive first name and country, and the full name extends the same stage name."
+p:ale@aldo+ale,p:alechen,merge,merge-review-v1,"Aldo & Ale Chen extends the couple Aldo & Ale, sharing partner Aldo and the Netherlands country."
+p:aleksandra@aleksandra+claudio,p:alessandra@alessandra+marc,separate,merge-review-v1,"Aleksandra and Alessandra have different spellings, different partners and different stated countries (Poland vs Italy)."
+p:alessio@alessio+angelica,p:alessio@alessio+natalia,separate,merge-review-v1,Alessio & Angelica and Alessio & Natalia are different couples with different partners; only the common first name Alessio and Italy match.
+p:alex@alex+delphine,p:alex@alex+maylie,separate,merge-review-v1,Alex & Delphine and Alex & Maylie are different couples with different partners; only the common first name Alex and France match.
+p:alex@alex+maylie,p:alexmalembe,merge,merge-review-v1,Alex Malembe & Maylie shares the partner Maylie and the French country with Alex & Maylie.
+p:alex@alex+ornella,p:alexalberola,merge,merge-review-v1,"Alex Alberola (Spain, Bachata) matches the Spanish, Bachata-styled teacher Alex in Alex & Ornella, sharing country and style with a distinctive surname."
+p:alex@alex+tiphaine,p:alexsalserito,merge,merge-review-v1,"Alex Salserito & Tiphaine shares the partner Tiphaine and the French country with Alex & Tiphaine, and a DJ Alex Salserito is listed at the same Center Parcs event."
+p:amina@amina+ledoukingsman,p:amina@amina+mamadou,separate,merge-review-v1,Ledou Kingsman & Amina and Mamadou & Amina are different couples with different partners; only the common first name Amina and Sweden match.
+p:amine@dance,p:amine@dj,merge,merge-review-v1,"DJ Amine and Amine are both UK-flagged and appear at the same event on the same date, with a DJ prefix on one side."
+p:ana@ana+ben,p:ana@ana+guilherme,separate,merge-review-v1,Ben & Ana and Ana & Guilherme are different couples with different partners; only the common first name Ana and Portugal match.
+p:ana@ana+ben,p:ana@ana+guizamora,separate,merge-review-v1,Ben & Ana and Ana & Gui Zamora are different couples with different partners; only the common first name Ana match.
+p:ana@ana+ben,p:ana@ana+pedro,separate,merge-review-v1,Ben & Ana and Pedro & Ana are different couples with different partners; only the common first name Ana match.
+p:ana@ana+guilherme,p:ana@ana+guizamora,merge,merge-review-v1,"Ana & Guilherme (Cuba/Portugal) and Ana & Gui Zamora (Cuba/Portugal) are the same couple at consecutive editions of one festival, with Gui as a short form of Guilherme."
+p:ana@ana+guilherme,p:ana@ana+pedro,separate,merge-review-v1,Ana & Guilherme and Pedro & Ana are different couples with different partners; only the common first name Ana match.
+p:ana@ana+guizamora,p:ana@ana+pedro,separate,merge-review-v1,Ana & Gui Zamora and Pedro & Ana are different couples with different partners; only the common first name Ana match.
+p:ana@ana+stephane,p:anamaria,merge,merge-review-v1,Ana Maria & Stéphane shares the partner Stephane (accent variant) and Romania with Stephane & Ana; the accent-only difference is a spelling variant.
+p:ana@ana+stephane,p:anamariastoica,merge,merge-review-v1,"Stephane Lyke & Ana Maria Stoica shares the partner Stephane and Romania with Stephane & Ana, and the Ana Maria name matches."
+p:anastasia@anastasia+flowly,p:anastasiia@anastasiia+flowly,merge,merge-review-v1,Flowly & Anastasia and Flowly & Anastasiia share the partner Flowly and the Ukrainian spelling variant of the name.
+p:anastasia@anastasia+richard,p:anastasia@anastasia+selim,separate,merge-review-v1,Richard & Anastasia and Selim & Anastasia are different couples with different partners; only the common name Anastasia match.
+p:anastasia@anastasia+richard,p:anastasiia@anastasiia+flowly,separate,merge-review-v1,Richard & Anastasia and Flowly & Anastasiia are different couples with different partners; the spelling variant does not overcome the partner mismatch.
+p:anastasia@anastasia+selim,p:anastasiia@anastasiia+flowly,separate,merge-review-v1,Selim & Anastasia and Flowly & Anastasiia are different couples with different partners; the spelling variant does not overcome the partner mismatch.
+p:andrea@alfredo+andrea,p:andrea@andrea+luis,separate,merge-review-v1,Alfredo & Andrea and Luis & Andrea are different couples with different partners; only the common first name Andrea and Spain match.
+p:andrea@alfredo+andrea,p:andrea@andrea+pablo,separate,merge-review-v1,"Alfredo & Andrea and Pablo & Andrea appear at the same Quijano event on the same date with different partners, so they are two different couples."
+p:andrea@andrea+natalia,p:andreas@andreas+silvia,separate,merge-review-v1,"Andrea & Natalia and Andreas & Silvia differ in partner and in the first name (Andrea vs Andreas, one letter apart), so they are different artists."
+p:ange@ange+flo,p:angel@angel+flo,merge,merge-review-v2,"Same partner Flo, Ange and Angel are short and long forms, both salsa teachers in France."
+p:angelgirao,p:angelguirao,merge,merge-review-v1,"Angel Girao and Angel Guirao are at the same Malaga festival with the same first name; the surname differs by one letter, a spelling variant of a distinctive name."
+p:angelozacaria,p:angelozacarias,merge,merge-review-v1,"Angelo Zacaria and Angelo Zacarias are a one-letter spelling variant of a distinctive surname, both teachers in Italy."
+p:anika@anika+michael,p:anika@anika+michaeldiamon,merge,merge-review-v1,"Michael Diamon & Anika is the full form of Michael & Anika, with the same partner Anika and the same stated country (Netherlands)."
+p:anika@dance,p:anikaelena,merge,merge-review-v1,"Solo Anika (Vienna) and Anika Elena (Krakow) have the same stated countries (Austria, Slovakia) and no conflicting evidence, though the first name is common."
+p:anita@anita+marco,p:anita@anita+marcos,merge,merge-review-v1,"Marco and Marcos are the same name in Spanish/Portuguese form, with the same partner Anita and Portugal as the stated country."
+p:ankit@dance,p:ankit@dj,merge,merge-review-v1,"DJ Ankit and Ankit share the same name and stated country (Germany), with a DJ prefix on one side."
+p:anna@anna+carlos,p:anna@anna+carloscamba,merge,merge-review-v1,Carlos & Anna and Carlos Camba & Anna share the same partner Anna and the same stated countries (Angola/Finland).
+p:anonytarraxa,p:antonytarraxa,merge,merge-review-v1,"DJ Anony Tarraxa and DJ Antony Tarraxa differ by one missing letter in a distinctive stage name (typo), and both are DJs stated as Spanish."
+p:anso@dance,p:ansocubango,merge,merge-review-v1,"An'So and An'So Cubango share the stage name and the same stated country (France), with the surname as the fuller form."
+p:arthur@dj,p:arthursantos,merge,merge-review-v1,"DJ Arthur and Arthur Santos played the same event on the same day with the same country (Brazil) and Zouk style, a DJ prefix on one side."
+p:asia@dance,p:asiavoronova,merge,merge-review-v1,"Asia and Asia Voronova share the name, the Ukraine stated country and the same festival series (Alegria Bordeaux), with the surname as the fuller form."
+p:assyl@assyl+zhibek,p:assyl@dj,merge,merge-review-v1,"Assyl & Zhibek and DJ Assyl played the same event on the same date with the same name and country (Kazakhstan), a DJ prefix on one side."
+p:atou@dance,p:atoubaakaa2man,merge,merge-review-v1,Atou and Atou Ba aka A2Man share a distinctive first name and the Senegal stated country on one event each.
+p:aurea@aurea+tresor,p:aurea@aurea+trezor,merge,merge-review-v1,Tresor & Aurea and Trezor & Aurea are a spelling variant of the same name with the same partner Aurea and a Netherlands stated country.
+p:azmael@azmael+katalin,p:azmael@dj,merge,merge-review-v1,"Azmael & Katalin and DJ Azmael share the name (diacritic variant), the Austria stated country, and the same event on the same date."
+p:balito@balito+viola,p:balito@dj,merge,merge-review-v1,"Balito & Viola and DJ Balito share the stage name, Hungary as stated country, the same event and date, and the same Bachata style."
+p:benite@benite+railey,p:beniteb@beniteb+railey,merge,merge-review-v1,"Railey & Benite and Railey & BeniteB share the partner Railey, the Netherlands stated country, the same event and style; the trailing letter is a spelling artefact."
+p:beppe@beppe+sabina,p:beppecandela,merge,merge-review-v1,"Beppe & Sabina and Beppe Candela & Sabina share the same partner, the same first name and the same event on the same date (KARMA International Festival)."
+p:blackchinese,p:blackchinese@dance,merge,merge-review-v1,Black Chinese & Monica and BLACKCHINESE share the distinctive stage name and the France stated country.
+p:bonifacio@bonifacio+jessica,p:bonifacioaurio,merge,merge-review-v1,Bonifacio & Jessica and Bonifacio Aurio share the distinctive first name Bonifacio and Portugal as stated country.
+p:bourgeois@bourgeois+maria,p:bourgeois@dance,merge,merge-review-v1,Bourgeois & Maria and solo Bourgeois played the same event on the same date with the same style (Bachata) and the same stated country (Cameroon).
+p:carla@carla+tony,p:carla@carla+tonyviser,merge,merge-review-v1,"Tony & Carla and Tony Viser & Carla share the partner Carla, the first name Tony and the Angola/Cape Verde stated countries."
+p:carla@carla+tony,p:carlaandrade,merge,merge-review-v1,"Tony & Carla and Tony Viser & Carla Andrade share the first name Tony, the partner Carla and the Angola/Cape Verde stated countries."
+p:carla@carla+tonyviser,p:carlaandrade,merge,merge-review-v1,"Tony Viser & Carla and Tony Viser & Carla Andrade share the full name Tony Viser and the partner Carla, with the surname added on one side."
+p:carlos@anna+carlos,p:carloscamba,merge,merge-review-v1,Carlos & Anna and Carlos Camba share the same partner Anna and the Angola/Finland stated countries.
+p:carol@dance,p:carolxavier,merge,merge-review-v1,"Carol and Carol Xavier share the stated country (Brazil) and the same festival, Freedom Romantic Festival, in consecutive editions."
+p:catharine@catharine+kornel,p:catherine@catherine+kornel,merge,merge-review-v1,Kornel & Catharine and Kornel & Catherine share the partner Kornel and the same name in a spelling variant.
+p:cazuza@dance,p:cazuzakinvula,merge,merge-review-v1,Cazuza and Cazuza Kinvula share the distinctive Angolan first name and the Angola stated country.
+p:cazuza@dance,p:cazuzaquinvula,merge,merge-review-v1,Cazuza (Malaga) and Cazuza Quinvula (Bern) share the Angola stated country and a one-letter variant of the distinctive surname.
+p:cazuzakinvula,p:cazuzaquinvula,merge,merge-review-v1,"Cazuza Kinvula and Cazuza Quinvula share the first name and a one-letter surname variant, and the Angola/Switzerland stated countries."
+p:celia@celia+mauro,p:celia@celia+maurodone,merge,merge-review-v1,"Mauro & Celia and Mauro D-One & Celia share the partner Celia, the name Mauro, the same stated countries (Angola, Portugal, Switzerland) and the city of Bern."
+p:charlieelponceno,p:charliponceno,merge,merge-review-v1,"Same DJ role, same city (Malaga) and same distinctive surname Ponceno with a one-letter spelling variant (Charlie El / Charli)."
+p:chicho@chicho+lisa,p:chico@chico+lisa,merge,merge-review-v1,Chicho/Chico is a one-letter spelling variant with the same partner Lisa and the same Bachata style.
+p:christian@christian+tina,p:christine@christine+stef,separate,merge-review-v1,"Christian and Christine are distinct names one letter apart, and both are listed as separate teachers at the same Massa event on the same date."
+p:christina@christina+dimitris,p:christina@christina+joanna,separate,merge-review-v1,"Both Christinas are listed at the same Thessaloniki event on the same date with different partners, so they are two separate teaching entries."
+p:christina@christina+dimitris,p:christina@christina+panagiotis,separate,merge-review-v1,"Both Christinas are listed at the same Thessaloniki event on the same date with different partners, so they are two separate teaching entries."
+p:christina@christina+dimitris,p:christinachrysanthou,separate,merge-review-v1,Dimitris and Christina and the solo Christina Chrysanthou are listed separately at the same Thessaloniki event on the same date.
+p:christina@christina+joanna,p:christina@christina+panagiotis,separate,merge-review-v1,Joanna and Christina and Panagiotis and Christina are two couples listed at the same Thessaloniki event on the same date.
+p:christina@christina+joanna,p:christinachrysanthou,separate,merge-review-v1,Joanna and Christina and the solo Christina Chrysanthou are listed separately at the same Thessaloniki event on the same date.
+p:christina@christina+panagiotis,p:christinachrysanthou,separate,merge-review-v1,Panagiotis and Christina and the solo Christina Chrysanthou are listed separately at the same Thessaloniki event on the same date.
+p:chrysoula@chrysoula+ioanna,p:chryssoula@chryssoula+joana,merge,merge-review-v1,Ioanna/Joana and Chrysoula/Chryssoula are spelling variants of the same names with the same Bachata style and the same Greece country.
+p:cilene@cilene+davide,p:cilene@cilene+davidenola,merge,merge-review-v1,"Davide and Cilene appear together with the same partner, the same Italy and Cape Verde countries; the Davide Nola entry adds only a surname."
+p:clarita@abdoulaye+clarita,p:clarita@dj,merge,merge-review-v1,"The DJ Clarita entry in Lyon on the same date as the Abdoulaye and Clarita couple, with the same stated Switzerland country, matches a DJ-prefix stage name."
+p:cristina@cristina+fadik,p:cristinavarga,merge,merge-review-v1,"Fadi K and Cristina appear with the same partner and the same Salsa style, with the second entry adding the surname Varga."
+p:cristina@cristina+johnny,p:cristinazebri,merge,merge-review-v1,Johnny and Cristina share the same partner and the same Switzerland country; the Bern entry adds only the surname Zebri.
+p:curtis@clemence+curtis,p:curtis@dance,merge,merge-review-v1,The solo performer Curtis is listed at the same Vienna event on the same date with the same stated France country as the Curtis and Clemence couple.
+p:curtis@curtis+kelly,p:curtislpk,merge,merge-review-v1,Curtis and Kelly appear with the same partner Kelly in France; the Lpk entries add only a surname token to Curtis.
+p:dadie@dance,p:dadiesacko,merge,merge-review-v1,Dadie and Dadie Sacko are the same distinctive name with the same France country and the surname added on the second side.
+p:dan@anais+dan,p:dane@anais+dane,merge,merge-review-v2,"Same partner Anais/Anaïs in both sides and Dan/Dane is a short and long form, both teachers in France."
+p:danceproject,p:danceprojet,merge,merge-review-v1,DANCE PROJECT and Dance projet are a spelling variant of the same distinctive name with the same Malaga city and Salsa style.
+p:daniel@daniel+elina,p:daniela@daniela+maik,separate,merge-review-v1,"Daniel and Daniela are distinct names one letter apart, and the partners Elina and Maik differ."
+p:daniel@daniel+elina,p:danielschauenburg,merge,merge-review-v1,Daniel Schauenburg and Elina appear as a couple with the same partner Elina and the same Germany and Czech Republic countries as Daniel and Elina.
+p:danifernadez,p:danifernandes,merge,merge-review-v1,"DJ Dani Fernandes and DJ Dani Fernadez share the DJ role and the same first and stage name, with the Fernadez spelling as a typo."
+p:danifernandes,p:danifernandesd,merge,merge-review-v1,The D&L Beats DJ Dani Fernandes entries on both sides share the same label tag and the same Holland stated country.
+p:danifernandes,p:danifernandez,merge,merge-review-v1,"Dani Fernandes and Dani FERNANDEZ are both DJs with the same stated Netherlands country, differing only by a one-letter spelling variant."
+p:danifernandesd,p:danifernandez,merge,merge-review-v1,D&L Beats Dani Fernandes and Dani FERNANDEZ share the DJ role and the stated Netherlands/Holland country.
+p:dasha@aleksy+dasha,p:dasha@alks+dasha,merge,merge-review-v1,Dasha appears with the same partner in the same Rennes city and Ukraine country; Aleksy and Alks are the same partner under a spelling variant.
+p:dasmara@dance,p:dasmaradossanto,merge,merge-review-v1,Dasmara is a distinctive first name with the same Kizomba style and overlapping Angola and Portugal stated countries; the second entry adds the surname Dos Santos.
+p:david@christina+david,p:daviddasilva,merge,merge-review-v1,"Same first name, same partner Christina, same city (Lyon) and both listed as teachers; the full name only adds the surname Da Silva."
+p:david@david+laura,p:davide@davide+laura,merge,manual,Same partner Laura; David / Davide is the same name in English and Italian spelling
+p:davide@cilene+davide,p:davidenola,merge,merge-review-v1,"Same partner Cilene, Italian stated country and Davide with the surname Nola added in one mention; the first name and partner match."
+p:davidyaye,p:daviyaye,merge,merge-review-v1,Distinctive surname Yaye with a spelling variant of the first name (Davi/David) and the same French stated country.
+p:deecbeats,p:deecbeatz,merge,merge-review-v1,"Distinctive stage name Dee C Beats/Beatz differs by one spelling of Beats, both DJs in Gothenburg."
+p:deecbeatz,p:deeceebeatz,merge,merge-review-v1,"Stage name Dee C Beatz and Dee Cee Beatz are the same DJ name written in two spellings, both DJs in Gothenburg and Oslo."
+p:dim@dim+ophelie,p:dimdim,merge,merge-review-v1,Dim/DimDim with the same partner Ophelie/Ophelie (accent only) and the same distinctive name across many shared kizomba events.
+p:dje@dje+tpeak,p:djelika@djelika+tpeak,merge,merge-review-v2,Same T'Peak couple on every mention; Djé is a short form of Djelika and the stage styles and France country line up.
+p:domenico@alessandra+domenico,p:domenicocubao,merge,merge-review-v1,"Same distinctive surname Cubao, same partner Alessandra and same Italian stated country and style across both sides."
+p:donperry,p:donperryafrostyle,merge,merge-review-v2,"Same partner Nike and the same name Don Perry, with the Afrostyle suffix added on side B as a stage-name extension."
+p:dosanjos,p:dosanos,merge,merge-review-v1,"DJ Dos Anjos and DJ Dos Anos differ by a typo of a distinctive stage name, with Poland appearing on both sides."
+p:dotizinha@dj,p:dotizinhavamula,merge,merge-review-v1,"DJ Dotizinha is the same stage name with the surname Vamula added, both DJs with Poland stated."
+p:ducu@dj,p:ducu@ducu+jojo,merge,merge-review-v1,"DJ Ducu and Ducu & Jojo share the same events and dates (Cluj 2026-01-30, Budapest 2026-11-05), so the DJ and the dancer are one person."
+p:dwe@dance,p:dwe@dj,merge,merge-review-v1,"Distinctive stage name Dwe (with a Unicode-styled spelling) appears as teacher and as DJ Dwe, both with the Netherlands stated country."
+p:dwe@dance,p:dwe@dwe+gaby,merge,merge-review-v1,Distinctive stage name Dwe appears on both sides and the Dwe & Gaby couples share the Netherlands stated country and the same events.
+p:dwe@dance,p:dwetyson,merge,merge-review-v1,"Stage name Dwe is the first word of DJ Dwe Tyson, with the Netherlands stated country and the same London event on 2026-06-19."
+p:dwe@dj,p:dwe@dwe+gaby,merge,merge-review-v1,DJ Dwe and Dwe & Gaby appear at the same Lyon event on 2026-04-02 with the same Netherlands stated country.
+p:dwe@dj,p:dwetyson,merge,merge-review-v1,"DJ Dwe is the first word of DJ Dwe Tyson, both DJs with the Netherlands stated country."
+p:dwe@dwe+gaby,p:dwetyson,merge,merge-review-v1,Dwe & Gaby and DJ Dwe Tyson appear at the same London event on 2026-06-19 with the same Netherlands stated country.
+p:eddy@dance,p:eddy@dj,merge,merge-review-v1,"EDDY (teacher) and DJ EDDY (DJ) appear at the same Vienna event on the same date, so one person holds both roles."
+p:eddy@dance,p:eddy@eddy+rita,merge,merge-review-v1,"Solo EDDY teaching at the Vienna event of 2026-03-20 is the same name as DJ EDDY there, and the Eddy & Rita couples share events with that DJ."
+p:eddy@dj,p:eddy@eddy+rita,merge,merge-review-v1,"DJ Eddy and Eddy & Rita appear at the same Budapest and Novi Sad events on the same dates, so the DJ and the couple are one person."
+p:edwinrodrigues,p:edwinrodriguez,merge,merge-review-v1,"Full name Edwin Rodrigues and Edwin Rodriguez differ by one surname spelling, both teachers in the UK teaching salsa."
+p:elena@elena+sergio,p:selena@selena+sergio,merge,manual,Same partner Sergio; Elena / Selena is a spelling variant of the same partner
+p:elena@elena+valter,p:elenaarcangeli,merge,merge-review-v1,"Elena Arcangeli is the full name of Elena with partner Valter, both in Italy, and both appear at the same Milan event on 2026-09-04."
+p:elhadj,p:elhadj@elhadj+jenny,merge,merge-review-v1,"Distinctive first name Elhadj with the same partner name spelled Jenna/Jenny, both with the France stated country."
+p:elhadj@elhadj+jenna,p:elhadj@elhadj+jenny,merge,merge-review-v1,"Same Elhadj with the partner name spelled Jenna/Jenny, both sides with the France stated country."
+p:elina@daniel+elina,p:elina@danielschauenburg+elina,merge,merge-review-v1,"Daniel & Elina is the same couple as Daniel Schauenburg & Elina, with the same partner, and both list the Germany and Czech stated countries."
+p:elodie@elodie+fransoa,p:elodiecatena,merge,merge-review-v1,"Same partner Fransoa, same first name Elodie with the surname Catena in one side, and both are French teachers in Toulon."
+p:emanuel@emanuel+teresa,p:emanuel@emanuel+teresafreitas,merge,merge-review-v1,Teresa & Emanuel and Teresa Freitas & Emanuel are the same couple with the same partner names and the Angola stated country.
+p:emanuel@emanuel+teresa,p:emanuelnpedro,merge,merge-review-v1,"Teresa & Emanuel shares partner Teresa, with the full name Emanuel N. Pedro on the other side, and Angola stated on both."
+p:emanuel@emanuel+teresafreitas,p:emanuelnpedro,merge,merge-review-v1,Teresa Freitas & Emanuel and Teresa Freitas & Emanuel N. Pedro share the full partner name and the Angola stated country.
+p:enah@enah+lolahontas,p:enah@enah+pocahontas,merge,merge-review-v1,"Enah is distinctive and the partner Lolahontas is a spelling variant of Pocahontas, with France and Spain stated on both sides."
+p:enah@enah+pocahontas,p:enahlebon,merge,merge-review-v1,"Enah and Pocahontas (France) on side A match Enah Lebon and Poca Hontas on side B, with the same first name, partner and stated country."
+p:enora@enora+pdjay,p:enora@enora+pidjay,merge,merge-review-v1,"Pdjay/Pidjay and Enora are the same couple in every mention, differing only in spelling of the partner name, with France stated on both sides."
+p:estefaniolima,p:stefaniolima,merge,merge-review-v1,"Estefanio and Stefanio Lima are the same distinctive DJ name in a one-letter spelling variant, both listed as DJ on overlapping festival lines."
+p:fabricio@dance,p:fabriciodozangado,merge,merge-review-v1,"Fabricio on side A and Fabricio Do Zangado on side B share the first name, the Portugal stated country, the Warsaw listings and the teacher role."
+p:fabricio@fabricio+mame,p:fabriciodozangado,merge,merge-review-v1,"Fabricio y Mame on side A and Fabricio Do Zangado on side B share the partner Mame, and side B lists the couple with that partner in several events."
+p:fabriciodozangado,p:fabriziodozangado,merge,merge-review-v1,"Fabricio Do Zangado and Fabrizio dozangado differ only in a one-letter spelling variant of a distinctive surname, both teachers with Kizomba style."
+p:fabrizio@dj,p:fabriziozoro,merge,merge-review-v1,"DJ Fabrizio and DJ Fabrizio Zoro are both DJs with Italy stated on both sides, the same pattern as a DJ prefix plus a fuller stage name."
+p:fabrizio@fabrizio+nicoletta,p:fabriziocampanella,merge,merge-review-v1,"Fabrizio & Nicoletta on side A and Fabrizio Campanella & Nicoletta on side B are the same couple, with Nicoletta as the shared partner in Italy."
+p:fajul@fajul+tabea,p:fajulkizztalk,merge,merge-review-v1,"Fajul & Tabea and Fajul KizzTalk share the distinctive name Fajul, and side B lists Fajul Kizztalk & Tabea with the same partner."
+p:fanio@fanio+sara,p:fanioaraujo,merge,merge-review-v1,"Fanio & Sara on side A and Fanio Araujo on side B share the distinctive name Fanio, the Araujo surname and the Angola stated country."
+p:fanio@fanio+sara,p:faniodearaujo,merge,merge-review-v1,"Fanio & Sara on side A and Fanio de Araujo on side B share the distinctive name Fanio and the Angola stated country, with the same surname in a spelling variant."
+p:fanioaraujo,p:faniodearaujo,merge,merge-review-v1,"Fanio Araujo and Fanio de Araujo are the same distinctive name with a spelling variant of the surname, both teaching in Europe with Angola stated."
+p:fede@fede+lorenz,p:fedekiz,merge,merge-review-v1,"Lorenz & Fede on side A and Lorenz & Fede Kiz on side B are the same couple at Italian festivals, with a suffix difference in the stage name."
+p:felicien@felicien+isabel,p:felicien@felicien+isabelle,merge,merge-review-v1,"Felicien & Isabel and Felicien & Isabelle are the same couple in a spelling variant of the partner name, with France stated on both sides."
+p:felicien@felicien+isabel,p:felicienrossa,merge,merge-review-v1,"Felicien & Isabel couple (France stated) on side A and Felicien Rossa (France stated, Kizomba) on side B share the first name and country, with the same couple seen elsewhere in the set."
+p:felicien@felicien+isabelle,p:felicienrossa,merge,merge-review-v1,"Felicien & Isabelle couple (France stated, Kizomba) on side A and Felicien Rossa (France stated, Kizomba) on side B share the first name, country and style."
+p:fernando@fernando+michela,p:fernandobumbum,merge,merge-review-v1,"Fernando & Michela on side A and Fernando Bumbum & Michela on side B share the partner Michela, the first name and the Italy and Angola stated country."
+p:fola@fola+jaqui,p:folan@folan+jaqui,merge,merge-review-v2,"Same partner Jaqui; Fola and Folan are close name forms, and both sides list urban/kizomba teaching in Germany-linked events."
+p:franck@dj,p:franckm,merge,merge-review-v1,"DJ Franck and DJ Franck M are both DJs with Germany stated on both sides, and the initial is the only difference in the name."
+p:franck@franck+laure,p:francksalsahora,merge,merge-review-v1,"Franck & Laure on side A and Franck Salsahora & Laure on side B are the same couple in France, with Laure as the shared partner."
+p:franet@dance,p:franet@franet+jade,merge,merge-review-v1,"Franet is the exact same name on both sides, with Angola stated on each, and side B adds a partner (Jade) to the same name."
+p:franky@franky+kerstin,p:frankykizzfly,merge,merge-review-v1,"Franky & Kerstin and FrankyKizzFly & Kerstin are the same couple, with the stage name written with and without a spelling variant."
+p:fred@chiara+fred,p:fredag,merge,merge-review-v1,"Fred & Chiara on side A and Fred Ag & Chiara on side B share the same partner Chiara and France, with a small variant in the first name."
+p:fred@fred+morgane,p:frednelson,merge,merge-review-v1,Fred & Morgane on side A and Fred-Nelson & Morgane on side B share the same partner Morgane and the same France-based festival circuit.
+p:fuego@fuego+kiki,p:fuegorebirth,merge,merge-review-v1,"Fuego & Kiki on side A and Fuego Rebirth & Kiki on side B are the same couple, with the stage name extended by one word and the same partner."
+p:gabrielbravoriviera,p:grabrielbravoriviera,merge,merge-review-v1,"Gabriel Bravo Riviera and Grabriel Bravo Riviera are the same distinctive name at the same event on the same day, differing by one letter."
+p:gaz@dance,p:gaz@dj,merge,merge-review-v1,"Gaz (Canada) on side A and DJ Gaz (Canada) on side B share the distinctive stage name and country, with the DJ prefix on one side only."
+p:geerobeats,p:geerobeatz,merge,merge-review-v1,"DJ Geero Beats and DJ Geero Beatz are the same DJ in Geneva, differing only in a one-letter spelling variant."
+p:george@evgenia+george,p:georgeplom,merge,merge-review-v1,George & Evgenia and George Plom are both listed as bachata teachers at the same Thessaloniki event on the same date with Greece stated.
+p:giuseppe@giuseppe+klaudyna,p:giuseppe@giuseppe+vincenza,separate,merge-review-v1,Two couples with different partner names (Klaudyna and Vincenza) that share only the common first name Giuseppe.
+p:giuseppe@giuseppe+vincenza,p:giuseppeandrea,separate,merge-review-v1,"A couple with Vincenza and the solo name Giuseppe Andrea share only the common first name and have no shared event, date or city."
+p:guilherme@dance,p:guillherme@dance,merge,merge-review-v1,"Guilhermé and Guillhermé are a one-letter spelling variant in the same city (Bern), with the same Angola and Swiss flags."
+p:guiu@dance,p:guiuvilanova,merge,merge-review-v1,"Guiu is the first name of Guiu Vilanova, both stated as Spain, and the surname is the only addition."
+p:heneco@dance,p:heneco@heneco+kiki,merge,merge-review-v1,The distinctive stage name Heneco appears in both records with the same stated France flag and the same Vienna venue.
+p:heneco@dance,p:heneco@heneco+marta,merge,merge-review-v1,"The distinctive stage name Heneco appears solo and with Marta, with the same stated France flag and a matching Constance/Konstanz venue."
+p:heneco@heneco+kiki,p:heneco@heneco+marta,merge,merge-review-v1,"The distinctive stage name Heneco is the common element of two couples, both stated France, and the partner change alone does not separate them."
+p:hicham@dance,p:hichamelloco,merge,merge-review-v1,"DJ Hicham El Loco and the teacher Hicham are at the same Nantes event on the same date, and the Saint-Nazaire event matches on date and Salsa/Bachata style."
+p:hugosmile,p:hugosmile@dj,merge,merge-review-v1,"The distinctive stage name Hugo Smile appears as DJ on both sides, with a #HugoSmile variant and the same France flag."
+p:ichigo@dance,p:ichigo@dj,merge,merge-review-v1,"DJ Ichigo and the teacher Ichigo are at the same Stockholm event on the same date with the same France flag, and the distinctive name matches."
+p:ichigo@dance,p:ichigo@ichigo+kristel,merge,merge-review-v1,"The distinctive stage name Ichigo appears as a solo teacher and in a couple with Kristel, both with France flags in Paris."
+p:ichigo@dance,p:ichigo@ichigo+kristelju,merge,merge-review-v1,"The distinctive stage name Ichigo appears solo and in a couple with Kristel Ju, with the same Paris venue and France flag."
+p:ichigo@dj,p:ichigo@ichigo+kristel,merge,merge-review-v1,"DJ Ichigo and the couple Ichigo & Kristel share the distinctive name and the France flag, and the partner appears in both."
+p:ichigo@dj,p:ichigo@ichigo+kristelju,merge,merge-review-v1,"DJ Ichigo and the couple Ichigo & Kristel Ju share the distinctive name and the France flag, with the same Paris venue."
+p:ichigo@ichigo+kristel,p:ichigo@ichigo+kristelju,merge,merge-review-v1,"Both couples are Ichigo with the partner Kristel (Kristel Ju), with a Paris venue and France flag on both sides."
+p:ilias@adina+ilias,p:ilias@ilias+sandra,separate,merge-review-v1,"Ilias & Adina and Ilias & Sandra have different partners and no shared event or date, so only the first name is shared."
+p:isa@isa+madykeita,p:isabelle@isabelle+madykeita,merge,merge-review-v2,Same partner Mady Keita; ISA and Isabelle are a short and long form of one name.
+p:isabel@felicien+isabel,p:isabelle@felicien+isabelle,merge,merge-review-v2,"Same partner Felicien in every mention, Isabel and Isabelle are short and long forms, and France is stated on both sides."
+p:isabelle@felicien+isabelle,p:isabelle@gazl+isabelle,separate,merge-review-v1,Isabelle & Felicien and Gazl & Isabelle are couples with different partners that share only the common first name Isabelle.
+p:jack@dj,p:jack@jack+sara,merge,merge-review-v1,"DJ Jack and Jack & Sara appear at the same Madrid, Lyon, Vienna, Barcelona and Sevilla events on the same dates with the same Spain flag."
+p:jahja,p:jahja@dance,merge,merge-review-v1,The distinctive name Jah J'a appears on both sides with a spelling variant (Jah'ja) and the same teacher role.
+p:jefe@diana+jefe,p:jefe@dj,merge,merge-review-v1,DJ Jefe and the couple Jefe & Diana are at the same Philipsburg event on the same date with the same stated country.
+p:jeff@dj,p:jeff@jeff+manon,merge,merge-review-v1,DJ Jeff and Jeff & Manon are at the same Philipsburg event on the same date with the same stated Guadeloupe country.
+p:jenny@elhadj+jenny,p:jenny@jenny+jojo,separate,merge-review-v1,"Elhadj & Jenny and Jojo & Jenny are couples with different partners and no shared event or date, so only the first name Jenny is shared."
+p:jesus@anni+jesus,p:jesus@jesus+lucy,separate,merge-review-v1,"Jesus & Anni and Lucy & Jesus are couples with different partners and no shared event, so only the common first name Jesus is shared."
+p:jesus@anni+jesus,p:jesus@jesus+maria,separate,merge-review-v1,"Jesus & Anni and Jesus & María are couples with different partners and no shared event, so only the common first name Jesus is shared."
+p:jesus@jesus+lucy,p:jesus@jesus+maria,separate,merge-review-v1,"Lucy & Jesus and Jesus & María are couples with different partners and no shared event, so only the common first name Jesus is shared."
+p:jeydicksonlima,p:jeydiksonlima,merge,merge-review-v1,"Jeydickson Lima and Jeydikson Lima are a one-letter spelling variant of a distinctive name, both teachers in the UK with Kizomba style."
+p:jkee@dadou+jkee,p:jkee@dj,merge,merge-review-v1,DJ J-Kee and the couple J-Kee & Dadou are at the same Lyon event on the same date with the same France flag.
+p:joana@chryssoula+joana,p:joanna@christina+joanna,separate,merge-review-v1,"Joana & Chryssoula and Joanna & Christina have different partner names in different countries and events, with only similar first names."
+p:joey@dj,p:joeyc,merge,merge-review-v1,"DJ Joey and DJ Joey C are the same DJ name with a suffix, in Stockholm with the same Sweden flag."
+p:johan@johan+lucie,p:johann@johann+lucie,merge,merge-review-v1,"Johan & Lucie and Johann & Lucie share the same partner Lucie in France, with a one-letter spelling variant of the first name."
+p:johann@estelle+johann,p:johann@johann+lucie,separate,merge-review-v1,"Johann & Estelle and Johann & Lucie are couples with different partners at different events, so only the common first name Johann is shared."
+p:johann@johann+laeticia,p:johann@johann+lucie,separate,merge-review-v1,"Johann & Laeticia and Johann & Lucie are couples with different partners at different events, so only the common first name Johann is shared."
+p:johann@johann+lucie,p:johannorsinet,merge,merge-review-v1,Johann & Lucie and DJ Johann Orsinet are listed at the same Mulhouse event on the same date with the same France flag.
+p:johannorsinet,p:johanorsinet,merge,merge-review-v1,DJ Johann Orsinet and the teacher Johan Orsinet are at the same La Plagne event on the same date with the same Kizomba style.
+p:johannorsinet,p:johanorsinnet,merge,merge-review-v1,The distinctive surname Orsinet appears on both sides with spelling variants (Orsinnet) and the same first name Johann/Johan.
+p:johanorsinet,p:johanorsinnet,merge,merge-review-v1,"The distinctive surname Orsinet appears on both sides as a teacher with spelling variants (Orsinnet), with the same first name Johan."
+p:johnny@cristina+johnny,p:johnny@cristinazebri+johnny,merge,merge-review-v1,"Johnny with partner Cristina appears in both pairs, the 2027 entry adds the Zebri surname as the full form of the same couple, and both are Swiss-stated."
+p:jojo@jenny+jojo,p:jojolpk,merge,merge-review-v1,"The jojolpk key's own Madrid 2026 entry is JOJO LPK & JENNY, so the partner Jenny and the first name Jojo match the Jojo & Jenny couple."
+p:jossy@jossy+val,p:jossy@jossy+valdanza,merge,merge-review-v1,"Val & Jossy appears at the Tallinn festival in 2026 and 2027, and the 2027 entry adds Danza to Val's name as the same couple."
+p:jovany@celine+jovany,p:jovanykizatours,merge,merge-review-v1,"Jovany with partner Celine appears in both pairs, and the b-side name adds the Kizatours brand that the 2027 Tours Kizatours event carries."
+p:judit@judit+radu,p:judith@judith+radu,merge,merge-review-v1,"Radu & Judit and Radu & Judith share the partner Radu and Romania, and Judit and Judith are spelling variants of one name."
+p:jules@jules+yuna,p:jules@jules+yunatarraxopop,merge,merge-review-v1,"Jules & Yuna (Martinique, France) and Jules & Yuna TarraxoPop share the same two full names and the same partner, differing only in a style tag."
+p:julia@julia+methodz,p:juliaa@juliaa+methodz,merge,merge-review-v1,"Methodz & Julia and Methodz & Juliaa share the distinctive partner name Methodz and the same stated country, and Julia/Juliaa is a spelling variant."
+p:june@june+virgile,p:juneline@juneline+virgile,merge,merge-review-v2,"Same partner Virgile in every mention, June and Juneline are short and long forms, and both sides teach in the Netherlands/Amsterdam circuit."
+p:justin@dance,p:justine@jeremy+justine,separate,merge-review-v1,"Justin (solo) and Justine (in Jeremy & Justine) are names one letter apart, and the couple's partner Jeremy appears in none of the Justin entries."
+p:justin@dance,p:justinwelcome,merge,merge-review-v1,"Justin and Justin Welcome share the first name, the stated country France, and the urban style (Paris URBANKIZ, Brussels Urban), with Welcome as the full form."
+p:justinhno@dance,p:justinho@dance,merge,merge-review-v1,"JUSTINHNO and Justinho share a near-identical spelling, Senegal as stated country, and the URBANKIZ and Kizomba styles at matching France and Luxembourg events."
+p:justinho@a2man+justinho,p:justinho@dance,merge,merge-review-v1,"Justinho & A2Man and the solo Justinho share the exact stage name, France as stated country, and URBANKIZ and Kizomba styles across matching events."
+p:kal@dance,p:kal@kal+ludolskiz,merge,merge-review-v1,"Kal appears at the Atlantik Corazon Festival in Nantes 2026, and Ludo LSKiz & Kal appears at the same festival series in Saint-Nazaire 2027, both in France."
+p:karl@dance,p:karlbekene,merge,merge-review-v1,"Karl and Karl Bekene share the first name, France as stated country on most entries, and Kizomba styles, with Bekene as the full form."
+p:katalin@katalin+mathias,p:katalin@katalin+matthias,merge,merge-review-v1,"Mathias & Katalin and Matthias & Katalin are the same couple under a spelling variant of the partner name, with Katalin and Austria in both."
+p:klaudiohosai,p:kludiohoshai,merge,merge-review-v1,"Klaudio Hosai and Kludio Hoshai are spelling variants of one distinctive surname, and both entries state Angola."
+p:konstantinos@anna+konstantinos,p:konstantinos@katerina+konstantinos,separate,merge-review-v1,"Konstantinos & Anna (Salsa) and Konstantinos & Katerina (Bachata) appear at the same Sensualonica session on the same day with different partners, which points to two couples."
+p:konstantinos@anna+konstantinos,p:konstantinos@konstantinos+zoe,separate,merge-review-v1,Konstantinos & Anna (Salsa) and Konstantinos & Zoe (Bachata) appear at the same Sensualonica session on the same day with different partners.
+p:konstantinos@katerina+konstantinos,p:konstantinos@konstantinos+zoe,separate,merge-review-v1,Konstantinos & Katerina and Konstantinos & Zoe are both Bachata at the same Sensualonica session on the same day with different partners.
+p:kristel@ichigo+kristel,p:kristelju,merge,merge-review-v1,"Ichigo & Kristel and Kristel Ju share the partner Ichigo, and the b-side entries pair Kristel Ju with Ichigo, so Ju is the surname form."
+p:lamin@dj,p:laminlami,merge,merge-review-v1,"DJ Lamin and DJ Lamin Lami both play the Crystal Kizomba Congress in Vienna with the Czech Republic stated, and Lami is a suffix on one stage name."
+p:laura@davide+laura,p:laura@doctorkizomba+laura,separate,merge-review-v1,"Davide & Laura and Dr Kizomba & Laura both appear at KIZMI Milano on 2026-12-17 (batch pair 346), so they are two different Laura couples with different partners."
+p:laura@davide+laura,p:laurabuffone,separate,merge-review-v1,"Laura Buffone is paired with Dr Kizomba in Florence, and Dr Kizomba & Laura teach at KIZMI Milano on the same day as Davide & Laura, so Davide's Laura is not the Laura Buffone entry."
+p:laura@doctorkizomba+laura,p:laurabuffone,merge,merge-review-v1,"Doctor Kizomba & Laura (Bern 2027) and Dr Kizomba & Laura Buffone (Florence 2027) share the same partner name, with Laura Buffone as the full form."
+p:laura@drkizomba+laura,p:laurabuffone,merge,merge-review-v1,"DR. KIZOMBA & LAURA shares the partner name Dr Kizomba with Dr Kizomba & Laura Buffone (Florence 2027), a spelling-variant match on the same couple."
+p:laura@laura+romeo,p:lauralise@lauralise+romeo,merge,merge-review-v2,"Same partner Romeo, Laura and Laura-Lise share the first name, and both sides are bachata teachers."
+p:laure@dimitri+laure,p:laurie@laurie+thierry,separate,merge-review-v1,"Laure and Laurie are names one letter apart, and their partners Dimitri and Thierry are different."
+p:laure@franck+laure,p:laurederouen,merge,merge-review-v1,"Franck & Laure and Franck & Laure de Rouen share the partner Franck and the first name Laure, with Rouen as the full form, and both use the SBK event brand."
+p:ledoukingsman,p:ledouxkingsman,merge,merge-review-v1,"Ledou Kingsman & Amina and Ledoux Kingsman share the distinctive surname Kingsman with a spelling variant of the first name, and France is stated on both sides."
+p:lessly@dance,p:lessly@lessly+naomi,merge,merge-review-v1,"Distinctive stage name Lessly on both sides, same Gothenburg events and Sweden stated, with the couple Lessly & Naomi."
+p:lilian@ivana+lilian,p:liliana@gwany+liliana,separate,merge-review-v1,"Lilian and Liliana differ by one letter, the partners are Ivana and Gwany, and both couples appear at LKW Lyon on 2026-07-02."
+p:lisarose,p:lisarosed,merge,merge-review-v1,"Stage name DJ Lisa Rose appears on both sides, side B adds a crew tag D&L Beats, and both sides list Rotterdam events."
+p:luca@elena+luca,p:lucaarrigoni,merge,merge-review-v1,"Luca Arrigoni on side B and Luca & Elena on side A share the partner Elena and Italy, and KIZMI events appear on both sides."
+p:lucas@dj,p:lucasexclusive,merge,merge-review-v1,"DJ Lucas on side A and DJ Lucas Exclusive on side B share the stage name, and both sides list Portugal as stated country."
+p:ludivine@dance,p:ludivineludidanse,merge,merge-review-v1,"Ludivine on the ATLANTIK CORAZON 2026 listing matches Ludivine Ludidanse on the ATLANTIK CORAZON 2027 listing, both with France stated."
+p:ludmila@ivan+ludmila,p:lyudmila@ivan+lyudmila,merge,merge-review-v1,"Same partner Ivan and the same Malaga Dance Congress on both sides, with Ludmila and Lyudmila a transliteration variant."
+p:luismi@luismi+marian,p:luismi@luismi+mariangela,merge,merge-review-v1,"Marian is the short form of Mariangela, so the partner is the same, the name Luismi is the same, and both sides list Spain."
+p:mady@isa+mady,p:madykeita,merge,merge-review-v1,"Mady Keita on side B and MADY & ISA on side A share the partner Isa, and both sides list Germany."
+p:mamadou@dance,p:mamadou@mamadou+mickaela,merge,merge-review-v1,"Solo Mamadou on side A and Mamadou & Mickaela on side B share Stockholm, Sweden stated, and an Urban Kiz style overlap."
+p:manon@didier+manon,p:manon@dj,merge,merge-review-v1,DJ Manon on side B and Didier & Manon on side A share the stage name and the stated country Guadeloupe.
+p:manon@dj,p:manon@jeff+manon,merge,merge-review-v1,DJ Manon and Jeff & Manon both appear at the same SXM Experience festival on the same date with Guadeloupe stated on both.
+p:manu@manu+olivia,p:manusaudade,merge,merge-review-v1,"Manu with partner Olivia appears on both sides, with the full name Manu Saudade and France events on each side."
+p:manuel@benedicte+manuel,p:manuelmartins,merge,merge-review-v1,Manuel Martins on side B and Manuel & Benedicte on side A appear at the same Freedom Romantic Rennes festival series with Portugal stated.
+p:manuela@dady+manuela,p:manuella@dady+manuella,merge,merge-review-v1,"Same partner Dady on both sides, and Manuela vs Manuella is a spelling variant of the same name."
+p:marc@alessandra+marc,p:marc@dj,merge,merge-review-v1,"Marc & Alessandra and DJ Marc appear at the same Calas Weekend festival on the same date, so Marc is one artist as dancer and DJ."
+p:marc@alessandra+marc,p:marcfranettdejesus,merge,merge-review-v1,Marc & Alessandra and Alessandra & Marc Franett De Jesus are the same couple at the same Calas Weekend on the same date.
+p:marciokazakuta,p:marciokazukuta,merge,merge-review-v1,"DJ Marcio Kazakuta and DJ Marcio Kazukuta are a spelling variant of a distinctive stage name, with Portugal in common."
+p:marco@anita+marco,p:marcos@anita+marcos,merge,merge-review-v1,"Marco & Anita and Marcos & Anita share the same partner Anita, Marco and Marcos are the same name in two languages, and both sides list Portugal."
+p:marco@dj,p:marco@janina+marco,merge,merge-review-v1,"DJ Marco and Marco & Janina appear at the same Black & White congress in Wels on the same date, so the DJ and dancer are one artist."
+p:marga@marga+nando,p:margarita@margarita+nando,merge,merge-review-v2,"Same partner Nando; Marga is a short form of Margarita, both salsa teachers."
+p:maria@dance,p:marina@adrian+marina,separate,merge-review-v1,Maria and Marina differ by one letter and the listed partners and events are different.
+p:maria@maria+vincenzo,p:mariabebi,merge,merge-review-v1,Maria Bebi (solo) and Maria & Vincenzo appear at the same Sensualonica festival on the same date with Greece stated on both.
+p:marian@luismi+marian,p:mariangela@luismi+mariangela,merge,merge-review-v2,"Same partner Luismi, Marian and Mariangela are short and long forms, and both sides list Spain as the stated country and bachata style."
+p:mario@dj,p:marion@gordon+marion,separate,merge-review-v1,"DJ Mario and the teacher Marion in the Gordon and Marion couple have different names and roles, and the only link is a similar spelling."
+p:marisa@jorge+marisa,p:marisapita,merge,merge-review-v1,"Marisa and Jorge in Madrid share the partner Jorge, the same city and country, and Marisa Pita is the full form of the first-name entry."
+p:marta@azael+marta,p:martha@azael+martha,merge,merge-review-v1,Azael's partner name matches exactly on both sides and Marta and Martha are a spelling variant in the same bachata teaching couple.
+p:martin@esra+martin,p:martina@martina+sonia,separate,merge-review-v1,"Martin and Esra and Martina and Sónia have different first names and different partners, with no shared distinctive element."
+p:marvinramos,p:marvinramosacosta,merge,merge-review-v1,"Marvin Ramos is the same salsa teacher with the same Colombia country, and Marvin Ramos Acosta is the full form of that name."
+p:marzha@marzha+ulan,p:marzhan@marzhan+ulan,merge,merge-review-v1,"Ulan is the shared partner in both couples, Marzha and Marzhan are a near-identical spelling of one Kazakh name, and both sides use Urban Kiz."
+p:mathias@katalin+mathias,p:matthias@katalin+matthias,merge,merge-review-v1,"Katalin is the shared partner, Mathias and Matthias are a spelling variant, and both entries are Austrian."
+p:matteo@diana+matteo,p:matteofrati,merge,merge-review-v1,"Matteo and Diana are the same couple with Diana as partner in Italy, and Matteo Frati is the full form of the first name."
+p:mauro@celia+mauro,p:maurodone,merge,merge-review-v1,"Celia is the shared partner, the Mauro entries share Bern and the same Angola/Portugal/Switzerland country set, and D-One is an extension of the name."
+p:max@max+silvia,p:maxdousey,merge,merge-review-v1,"Silvia is the shared partner in the same couple, and Max Dousey is the full form of the Max entry in the same Italian scene."
+p:mel@hicham+mel,p:mell@hicham+mell,merge,merge-review-v2,"Same partner Hicham and Mel/Mell is a spelling variant of one name, both listed as teachers."
+p:methodz@julia+methodz,p:methodz@juliaa+methodz,merge,merge-review-v1,"Methodz is a distinctive stage name shared by the same couple with Julia and Juliaa as a spelling variant, and both sides use France."
+p:michael@anika+michael,p:michaeldiamon,merge,merge-review-v1,"Anika is the shared partner, Michael Diamon and Michael Daimon are a near-identical surname spelling, and both sides are Dutch."
+p:michael@federica+michael,p:michel@federica+michel,merge,merge-review-v1,"Federica is the shared partner in the same Italian couple, and Michael and Michel are a one-letter variant of the same first name."
+p:michaeldaimon,p:michaeldiamon,merge,merge-review-v1,"Michael Daimon and Michael Diamon share the Netherlands flag and a near-identical surname, and the Diamon side is paired with Anika."
+p:michaeldiamon,p:michaeldiamond,merge,merge-review-v1,"Michael Diamon and Michael Diamond are near-identical surnames in the same city, Gothenburg, with the same Netherlands country."
+p:michela@fernando+michela,p:michela@fernandobumbum+michela,merge,merge-review-v1,"Michela is the shared partner, Fernando Bumbum is the full form of Fernando, and the Angola and Italy country set matches."
+p:michela@fernando+michela,p:michelavissani,separate,merge-review-v1,"Michela Vissani has a different surname and no partner in common with Fernando and Michela, and the only shared element is the common first name and Italy."
+p:michela@fernandobumbum+michela,p:michelavissani,separate,merge-review-v1,"Michela Vissani has a different surname and no partner in common with Fernando Bumbum and Michela, and the only shared element is the common first name and Italy."
+p:mikiz@dance,p:mikiz@mikiz+pao,merge,merge-review-v1,"Mik'iz is a distinctive stage name shared by the solo and the couple entries, with France on both sides, and the couple adds Pao."
+p:mikiz@dance,p:mikiz@mikiz+paolou,merge,merge-review-v1,"Mik'iz is a distinctive stage name shared by the solo entry and the couple with Pao Lou, both sides are in France."
+p:mikiz@mikiz+pao,p:mikiz@mikiz+paolou,merge,merge-review-v1,"The partner is Pao or Pao Lou, the stage name Mik'iz is distinctive, and both sides are in France."
+p:mirokikola,p:mironikola,merge,merge-review-v1,"Miro Kikola is a distinctive DJ name with the same DJ role, and Miro Nikola differs by one letter and is most likely a typo of it."
+p:momolatino,p:momolatino@dj,merge,merge-review-v1,"DJ Momo Latino and Dj Momolatino are the same distinctive DJ name in the same role, with a spacing variant and a Czech link."
+p:moni@keco+moni,p:monica@keco+monica,merge,merge-review-v2,"Same partner Keco in every mention, Moni and Monica are short and long forms, and both sides are Spain-based teachers."
+p:morgane@fred+morgane,p:morgane@frednelson+morgane,merge,merge-review-v1,"Fred is the shared partner in the same Morgane couple, Fred-Nelson is the full form of the first name, and both sides are France."
+p:moussadiop,p:moustadiop,merge,merge-review-v1,"Moussa Diop and Mousta Diop share the same distinctive surname, the same city Malaga and a one-letter variant of the first name."
+p:mxtrela@dance,p:mxtreladiogo,merge,merge-review-v1,"M-Xtrela is a distinctive stage name shared by the same Angolan teacher, and M-Xtrela Diogo is the full form of it."
+p:nam@bingo+nam,p:nam@dj,merge,merge-review-v1,"Nam is the same stage name with a DJ prefix on one side, and both entries are Vietnamese at the same event on the same date."
+p:navi@dj,p:navi@natalie+navi,merge,merge-review-v1,"DJ Navi and Navi&Natalie are the same stage name at the same event on the same date, with India on both sides."
+p:neko@dj,p:nekodj,merge,merge-review-v1,"DJ Neko and Neko DJ are the same distinctive stage name in the same DJ role, with Italy on both sides."
+p:nicelife,p:nicelife@dj,merge,merge-review-v1,"Nice Life and DJ Nicelife are the same distinctive stage name in the same DJ role, with a spacing variant and Netherlands on one side."
+p:nico@fabriziocampanella+nico,p:nicoletta@fabriziocampanella+nicoletta,merge,merge-review-v2,"Same partner Fabrizio Campanella in every mention, Nico and Nicoletta are short and long forms, and both are Italian kizomba teaching events."
+p:nico@nico+sara,p:nicola@nicola+sara,merge,merge-review-v2,"Same partner Sara in every mention, Nico and Nicola are a short and long form, and both sides are Italian kizomba teachers."
+p:nicoberrettoni,p:nicolaberrettoni,merge,merge-review-v1,"Nico is the Italian diminutive of Nicola, both sides carry the same surname Berrettoni, and both are listed in Italy."
+p:nien@endos+nien,p:nienke@endos+nienke,merge,merge-review-v2,"Same partner Endos, Nien and Nienke are short and long forms, and both sides teach in the Netherlands/France circuit."
+p:nolimit,p:nolimits,merge,merge-review-v1,"DJ No Limit and DJ No Limits are the same stage name differing only by a trailing s, both DJs, both in Geneva or nearby Montpellier."
+p:oksana@dance,p:oksana@oksana+said,merge,merge-review-v1,"The solo Oksana and the Said and Oksana couple share the first name, Ukraine as the stated country, and an overlapping Urban Kiz style."
+p:onclekani,p:unclekani,merge,merge-review-v1,"Oncle and Uncle are the French and English forms of the same name Kani, and both sides are listed as France-based teachers."
+p:pao@mikiz+pao,p:paolou,merge,merge-review-v1,"Pao appears with the same partner Mik'iz in France on both sides and Pao Lou is the same name written in full, so the same couple member is listed under both keys."
+p:paolomei,p:paolomeli,separate,merge-review-v1,"The surnames Mei and Meli differ by one letter, the partners differ (Kiaraibica and Lucia Tramonte), and the events are different."
+p:paolou,p:paoulou,merge,merge-review-v1,"Paou Lou is a spelling variant of Pao Lou, and the same Mik'iz partner appears in the same French festival listings on both sides."
+p:pati@caarl+pati,p:patii@caarl+patii,merge,merge-review-v2,"Same partner Caarl in every mention, and Pati and Patii are a spelling variant of one name."
+p:pdjay@enora+pdjay,p:pidjay@enora+pidjay,merge,merge-review-v1,Pdjay and Pidjay are a spelling variant of the same name with the same partner Enora and France as the stated country.
+p:pierre@dance,p:pierre@pierre+ulyana,merge,merge-review-v1,"The solo Pierre and the Pierre and Ulyana couple share the first name, Sweden as the stated country, Gothenburg and Stockholm events, and an overlapping Urban Kiz style."
+p:poema@dj,p:poemabeat,merge,merge-review-v1,"DJ Poema and Dj Poema beat are the same stage name with a DJ prefix, both listed with Sweden as the stated country."
+p:poema@dj,p:poemabeats,merge,merge-review-v1,"DJ Poema and DJ Poema Beats are the same stage name with a DJ prefix and a trailing word, both DJs with Sweden as the stated country."
+p:poema@dj,p:poemabeatz,merge,merge-review-v1,"DJ Poema and DJ Poema Beatz are the same stage name with a DJ prefix and a spelling variant of the suffix, both DJs with Sweden as the stated country."
+p:poemabeat,p:poemabeats,merge,merge-review-v1,"Poema beat and Poema Beats are the same DJ name differing only by a trailing s, both DJs with the same Swedish-linked events."
+p:poemabeat,p:poemabeatz,merge,merge-review-v1,"Poema beat and Poema Beatz are the same DJ name differing only in the spelling of the suffix, both DJs with Sweden as the stated country."
+p:poemabeats,p:poemabeatz,merge,merge-review-v1,"Poema Beats and Poema Beatz are the same DJ name differing only in the spelling of the suffix, both DJs with Sweden as the stated country."
+p:portu@dj,p:portu@mada+portu,merge,merge-review-v1,"DJ Portu and Portu and Mada are listed at the same Constance festival on the same date, the DJ-and-dancer case, with Spain as the stated country on both sides."
+p:putox,p:putox@dj,merge,merge-review-v1,"DJ Puto X on side A and DJ PUTO-X on side B are the same name with a DJ prefix and a hyphen variant, both listed with France as the stated country."
+p:radu@judit+radu,p:radu@judith+radu,merge,merge-review-v1,"The partner is Radu in both couples and Judit against Judith is a spelling variant of the same partner name, with Romania as the stated country on both sides."
+p:railey@benite+railey,p:railey@beniteb+railey,merge,merge-review-v1,"The couple Railey and Benite appears at the same Vienna Crystal Kizomba Congress in both years, and BENITEb is a stray-letter typo of Benite with the Netherlands as the stated country."
+p:ralpbb,p:ralphbb,merge,merge-review-v1,"DJ Ralp BB and DJ Ralph BB are a spelling variant of the same DJ name, both France-based with no conflicting evidence."
+p:relampago@dance,p:relampago@dj,merge,merge-review-v1,"Relampago the teacher and DJ Relampago are listed at the same Geneva festival on the same date, the DJ-and-dancer case, with Switzerland and Angola as the stated countries."
+p:richardvooght,p:richardvoogt,merge,merge-review-v1,"Vooght and Voogt are a spelling variant of the same surname, with the same first name and both teachers listed at London events."
+p:rico@manon+rico,p:ricosuave,merge,merge-review-v1,"Rico & Manon and Rico Suave & Manon share the same partner Manon and the same first name Rico, and both appear at the same London festival series."
+p:ricornelas,p:rornelas,merge,merge-review-v1,"Ric. Ornelas and R. Ornelas share the distinctive surname and an initial, and both teach at the Iceland Social Dance in Reykjavik."
+p:riikka@dance,p:riikkamaria,merge,merge-review-v1,"Riikka and Riikka Maria share the first name, both are teachers with Finland as the stated country, and the full form only adds a second given name."
+p:romeo@laura+romeo,p:romeobachata,merge,merge-review-v1,"Both records are Romeo with partner Laura (Romeo & Laura; Roméo Bachata and Laura), the same first name and partner across two France events."
+p:ronaldo@dj,p:ronaldo@ronaldo+sarah,merge,merge-review-v1,"DJ Ronaldo and Ronaldo & Sarah appear at the same festival on the same date with the same style (ZOUK) and stated country, matching the DJ-prefix pattern."
+p:safirbeats,p:safirsbeats,merge,merge-review-v1,All records are DJs in France under one stage name (Safir Beats / Safir's Beats) in spelling and punctuation variants only.
+p:said@oksana+said,p:saiddstreet,merge,merge-review-v1,"Said & Oksana and Saïd Dstreet & Oksana share the first name and the partner Oksana, and both carry a France flag."
+p:samat@dance,p:samat@kate+samat,merge,merge-review-v1,"SAMAT and SAMAT & KATE are the same distinctive name with the same Kazakhstan flag, differing only by a partner."
+p:sara@akram+sara,p:sarah@akram+sarah,merge,merge-review-v2,"Same partner Akram in every mention, Sara and Sarah are a spelling variant, and no event lists both spellings as separate couples."
+p:sara@akram+sara,p:sarapaxolieta,merge,merge-review-v1,"Akram & Sara and Sara Paxolieta share the partner Akram in the SUNKIZ listing (Akram Bouchiba & Sara Paxolieta), with the same first name and a Switzerland country hint."
+p:sara@jack+sara,p:sara@marco+sara,separate,merge-review-v1,"Jack & Sara and Marco & Sara are both listed at Bachaturo Festival 2026 on the same date with different partners, so they are two different dancers named Sara."
+p:sara@jack+sara,p:sarah@jack+sarah,merge,merge-review-v2,"Same partner Jack in every mention, Sara and Sarah are a spelling variant, and no event lists both couples."
+p:sara@sara+stef,p:sarah@sarah+stef,merge,merge-review-v2,"Same partner Stef in every mention, Sara and Sarah are a spelling variant, and no shared event lists both couples."
+p:sara@sara+valr,p:sarah@sarah+valr,merge,merge-review-v2,"Same partner Val'R in every mention, Sara and Sarah are a spelling variant, and no shared event lists both couples."
+p:sarah@py+sarah,p:sarah@sarah+valr,separate,merge-review-v1,"Py & Sarah and Val'R & Sarah are both listed at Tamasha Summer Kizomba Carnaval on the same date with different partners, so they are different dancers."
+p:sergi@elsa+sergi,p:sergio@elena+sergio,separate,merge-review-v1,"Elsa & Sergi and Sergio & Elena have different partners (Elsa vs Elena) and different spellings of the first name, in different cities, so they are two couples."
+p:simicala@dj,p:simicalacunha,merge,merge-review-v1,Simicala (DJ) and Simicala Cunha & Katy are at the same festival on the same date with the same stated countries and the same stage name.
+p:simkiz,p:simkizz,merge,merge-review-v1,"Sim Kiz and Sim Kizz are one stage name in a spelling variant, both teachers in Germany."
+p:simon@lolahontas+simon,p:simone@jennifer+simone,separate,merge-review-v1,Simon & Lolahontas and Simone & Jennifer have different partners and genuinely different names one letter apart.
+p:sinah@patrick+sinah,p:sinahfrenchkizz,merge,merge-review-v1,"Sinah & Patrick and Patrick & Sinah Frenchkizz share the partner Patrick and the first name Sinah, both in Germany."
+p:sink@dance,p:sink@dj,merge,merge-review-v1,Sink and DJ Sink are at the same festival on the same date with the same stated country and the same stage name.
+p:sol@dance,p:solhissirou,merge,merge-review-v1,"Sol and Sol Hissirou share a first name, the Bachata style and overlapping stated countries (France, UK)."
+p:sonia@sonia+steff,p:sonia@sonia+stefkizz,merge,merge-review-v1,Steff & Sonia and Stef Kizz & Sonia share Sonia as partner and the same partner name in a spelling variant (Steff / Stef Kizz).
+p:steevebakoula,p:stevebakoula,merge,merge-review-v1,"Steeve Bakoula and Steve Bakoula are a spelling variant of one distinctive full name, both teachers in France."
+p:stef@sonia+stef,p:steff@sonia+steff,merge,merge-review-v2,"Same partner Sonia in every mention, and Stef and Steff are a spelling variant of one name in kizomba teaching events."
+p:stef@sonia+stef,p:stefkizz,merge,merge-review-v1,"Sonia & Stef and Stef Kizz & Sonia share the partner Sonia and the first name Stef, with the Kizz suffix as the only difference."
+p:stefano@elisa+stefano,p:stefano@maura+stefano,separate,merge-review-v1,"Stefano is listed with Elisa and with Maura at the same events on the same dates (Milan 2026-03-20, Massa 2026-06-05), so they are different couples."
+p:stephane@ana+stephane,p:stephanelyke,merge,merge-review-v1,"Stephane is always paired with Ana, and the Brussels entry Stephane Lyke & Ana Maria Stoica matches the Romanian and Belgian flags shown in the Cluj and Berlin entries."
+p:stephanie@benjamine+stephanie,p:stephanie@greg+stephanie,separate,merge-review-v1,Only the first name Stephanie is shared; the partners (Benjamine versus Greg) and styles (Urban Kiz versus Bachata) differ.
+p:steve@bianca+steve,p:stevesteven,separate,merge-review-v1,"Steve is paired with Bianca on side A and with Jasmine on side B, and the names are not the same."
+p:steven@audrey+steven,p:stevens@audrey+stevens,merge,merge-review-v1,"Steven or Stevens is paired with Audrey in every entry, the surname differs only by spelling, and the entries are in France."
+p:styleofmusc,p:styleofmusic,merge,merge-review-v1,"DJ STYLE OF MUSC is a typo of the distinctive DJ name Style of Music, and both sides are DJs in Switzerland (Geneva and Constance)."
+p:tecas@dj,p:tecas@tasha+tecas,merge,merge-review-v1,"DJ Tecas and Tecas & Tasha teach or play at the same Amsterdam event on the same date, with the same stated country (France), which fits one person in two roles."
+p:telma@adilson+telma,p:telma@adilsonmaiza+telma,merge,merge-review-v1,"Telma is always paired with Adilson, the Warsaw entry names him Adilson Maíza, and the Angola flag matches the other entries."
+p:telma@adilson+telma,p:telma@maiza+telma,merge,merge-review-v1,"Telma's partner is Adilson on side A and Maiza on side B; the Warsaw entry Adilson Maíza & Telma links Maiza to Adilson, and both sides carry the Angola flag."
+p:telma@adilsonmaiza+telma,p:telma@maiza+telma,merge,merge-review-v1,"The Warsaw entry Adilson Maíza & Telma links the surname Maiza to Telma's partner on the other side, and both carry the Angola flag."
+p:teresa@emanuel+teresa,p:teresafreitas,merge,merge-review-v1,"Teresa with Emanuel appears on both sides, the B entry names Teresa Freitas & Emanuel, and both sides carry the Angola flag."
+p:theo@dance,p:theoawadzi,merge,merge-review-v1,The teacher Theo and DJ Theo Awadzi are listed in Stockholm on the same date (2026-01-08) with the same stated countries.
+p:theo@julien+theo,p:theodora@julien+theodora,merge,merge-review-v2,"Same partner Julien in both sides, Theo and Théodora are short and long forms, and both are Belgian events."
+p:tiwosh,p:tiwosh@dance,merge,merge-review-v1,"Ti Wosh (DJ entries) and Tiwosh (teacher, Ljubljana) are one name in different spellings and roles, with the France flag on the DJ side."
+p:tiwosh,p:tiwosh@dj,merge,merge-review-v1,"All entries are DJ Ti Wosh or spelling variants (TI-WOSH, TIWOSH, Ti-Wosh, Dj Tiwosh), with the same stated France flag."
+p:tiwosh@dance,p:tiwosh@dj,merge,merge-review-v1,"Tiwosh the teacher and Dj Tiwosh the DJ are both in Ljubljana on 2027-02-11 and 2027-02-12, with the same name and France flag."
+p:tomasia@alvaro+tomasia,p:tomasina@alvaro+tomasina,merge,manual,Same partner Alvaro; Tomásia / Tomasina is a spelling variant of the same partner (same rule as David / Davide)
+p:tony@carla+tony,p:tonypirata,separate,merge-review-v1,"Tony & Carla and Tony Pirata both teach Kizomba at Faro on 2026-05-20, and Tony Pirata's partner differs (Melody or none)."
+p:tony@carla+tony,p:tonyviser,merge,merge-review-v1,"Carla is the partner in both, the entries name Tony & Carla and Tony Viser & Carla Andrade, and the Angola and Cape Verde flags match."
+p:tpeak,p:tpeak@dance,merge,merge-review-v1,"T'Peak appears as teacher in Gothenburg on 2026-01-22 and 2027-01-14 with the same entries as the T'Peak & Djé pair, and the Lyon entries match."
+p:tpeak,p:tpeak@dj,merge,merge-review-v1,DJ T'Peak and T'Peak & Djé share the Gothenburg 2027-01-14 and Copenhagen 2026-05-15 events with the same France flag.
+p:tpeak@dance,p:tpeak@dj,merge,merge-review-v1,"The teacher T'Peak and the DJ T'Peak are in Gothenburg on 2026-01-22 and Lyon on 2026-04-09, the same event and date for both roles."
+p:tpeak@dance,p:tpeak@dje+tpeak,merge,merge-review-v1,T'Peak as teacher in Gothenburg on 2026-01-22 and 2027-01-14 matches the T'Peak & Djé entries in the same city on the same date.
+p:tpeak@dj,p:tpeak@dje+tpeak,merge,merge-review-v1,DJ T'Peak and the T'Peak & Djé teacher pair are in Gothenburg on 2027-01-14 and Copenhagen on 2026-05-15 with the same France flag.
+p:tzer@chamalo+tzer,p:tzer@dance,merge,merge-review-v1,"T-zer is a distinctive name, the Chamalo & T-zer entry carries the Sweden flag, and the Kingston T-ZER entry also carries Sweden."
+p:uliana@dance,p:uliana@daniel+uliana,merge,merge-review-v1,"Uliana is a distinctive first name, and both entries carry the Ukraine and Norway flags, with a Norway event on each side."
+p:val@jossy+val,p:valdanza,merge,merge-review-v1,Val & Jossy and Val Danza & Jossy share the partner Jossy and the Tallinn location.
+p:valentina@jhaime+valentina,p:valentinadiaz,merge,merge-review-v1,"Jhaime & Valentina and Valentina Diaz both teach in Quebec on 2026-03-06 with the same country, which fits one person in a couple and in a solo workshop."
+p:valr@sara+valr,p:valr@sarah+valr,merge,merge-review-v1,"Val'R is a distinctive stage name, the partner names are Sara and Sarah (a spelling variant), and both sides carry the France flag."
+p:vanildo@dance,p:vanildo@mara+vanildo,merge,merge-review-v1,"Vanildo is a distinctive name with the Netherlands flag on both sides, and both sides teach Urban Kiz."
+p:vasco@dance,p:vasco@dj,merge,merge-review-v1,"Vasco the teacher and DJ Vasco are both in Lyon on 2026-04-02 and Barcelona on 2026-04-17, with the same France flag."
+p:viola@balito+viola,p:violapalmai,merge,merge-review-v1,"Viola is in Budapest on 2026-11-05 on both sides with the same UK flag, which fits a couple entry and a solo entry for one person."
+p:virgil@juneline+virgil,p:virgile@juneline+virgile,merge,merge-review-v1,"Virgil and Virgile are spelling variants with the same partner Juneline, the same city Amsterdam and the Netherlands flag."
+p:walter@dj,p:waltercorreia,merge,merge-review-v1,"DJ Walter and DJ Walter Correia are both DJs with the same Netherlands (Holland) flag, the full name extending the same stage name."
+p:willy@jessica+willy,p:willy@jessy+willy,merge,merge-review-v1,"Willy & Jessica and Willy & Jessy are a spelling variant of the partner name with the same partner Willy, the Salsa style and the Italy flag."
+p:wookie@dance,p:wookie@nicole+wookie,merge,merge-review-v1,"Wookie is a distinctive name, and both sides carry the Hungary flag for the Vienna solo entry and the Budapest and Warsaw entries."
+p:yace@camille+yace,p:yacegalanta,merge,merge-review-v1,Yace Galanta & Camille and Yace & Camille share the partner Camille and the distinctive name Yace Galanta.
+p:yami@kali+yami,p:yamiso,merge,merge-review-v1,"Yami & Kali and DJ Yami SO are in Albena on 2026-07-02 with the same France flag, which fits one person as teacher and DJ."
+p:yesisica@andres+yesisica,p:yessica@andres+yessica,merge,merge-review-v1,"Andres with Yesisica and Andrés with Yessica share the partner, the Bachata style and Spain, with a spelling variant of the partner name."
+p:york@dj,p:york@lisa+york,merge,merge-review-v1,"DJ York and York & Lisa appear at the same city on the same dates across the whole batch, which fits one person as DJ and teacher."
+p:yuna@jules+yuna,p:yunatarraxopop,merge,merge-review-v1,"Jules & Yuna TarraxoPop is the same couple as Yuna & Jules TarraxoPop, with the same partners, style and Tarraxo Pop name."
+p:yves@dance,p:yvesraymond,merge,merge-review-v1,Yves and Yves Raymond teach in Stockholm with the same Kizomba style and Sweden flag.
+p:ze@dance,p:ze@dj,merge,merge-review-v1,Zé the teacher and DJ Zé are both in Bangkok on 2026-10-30 with the same Australia flag.
+p:ziggy@dani+ziggy,p:ziggy@dj,merge,merge-review-v1,Ziggy & Dani and DJ Ziggy are both in Nenagh on 2026-05-29 with the same Bulgaria flag.

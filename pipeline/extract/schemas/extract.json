@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Extraction output: artists and features per event (generated from config/vocab.json by hand-run snippet; enums must match vocab.json)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "batch",
+    "prompt_version",
+    "events"
+  ],
+  "properties": {
+    "batch": {
+      "type": "string"
+    },
+    "prompt_version": {
+      "const": "extract-v1"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "event_id",
+          "artists",
+          "features"
+        ],
+        "properties": {
+          "event_id": {
+            "type": "integer"
+          },
+          "artists": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "name_as_written",
+                "role",
+                "style",
+                "country",
+                "source_line"
+              ],
+              "properties": {
+                "name_as_written": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "role": {
+                  "enum": [
+                    "crew",
+                    "dj",
+                    "mc",
+                    "media",
+                    "organiser",
+                    "performer",
+                    "teacher"
+                  ]
+                },
+                "style": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "country": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "source_line": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "features": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "quote",
+                "rationale"
+              ],
+              "properties": {
+                "feature": {
+                  "enum": [
+                    "accommodation_included",
+                    "adults_only",
+                    "after_party",
+                    "all_in_one",
+                    "all_levels_beginners",
+                    "beach_party",
+                    "boat_party",
+                    "bootcamp_intensive",
+                    "camping",
+                    "competition",
+                    "couple_pass",
+                    "cruise",
+                    "day_socials",
+                    "dress_code",
+                    "early_bird_tiers",
+                    "full_pass",
+                    "limited_or_sold_out",
+                    "live_music",
+                    "masterclass",
+                    "meals_included",
+                    "multiple_rooms",
+                    "name_change",
+                    "non_refundable",
+                    "partner_hotel",
+                    "party_pass",
+                    "pool_party",
+                    "pre_party",
+                    "private_classes",
+                    "shows",
+                    "taxi_dancers",
+                    "themed_parties",
+                    "transfers_shuttle",
+                    "workshops"
+                  ]
+                },
+                "quote": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 300
+                },
+                "rationale": {
+                  "type": "string",
+                  "minLength": 5
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
