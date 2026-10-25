@@ -46,10 +46,10 @@ function tierNow(pass, e) {
   return { tier, from: now.filter(t => t.lo == null && t.hi == null).length > 1, starts: !now.length, next };
 }
 
-// The pass a card prices: the per-person full pass (the longest, when sold in several lengths), else the cheapest
+// The pass a card prices (a full pass that doesn't say for how many is for one): the per-person full pass (the longest, when sold in several lengths), else the cheapest
 // per-person package with a hotel; with its price today.
 function priceNow(e) {
-  const ps = passesOf(e.id).filter(p => p.group_size === 1);
+  const ps = passesOf(e.id).filter(p => p.group_size === 1 || (p.group_size == null && p.kind === 'full'));
   const full = ps.filter(p => p.kind === 'full' && !p.includes_hotel).sort((a, b) => (b.days ?? 99) - (a.days ?? 99));
   const pass = full[0] || ps.filter(p => p.kind === 'package').sort((a, b) => cheapest(a.tiers).amount - cheapest(b.tiers).amount)[0];
   const now = pass && tierNow(pass, e);

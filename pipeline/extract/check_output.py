@@ -26,7 +26,7 @@ def norm(s: str) -> str:
     return " ".join(s.split()).casefold()
 
 
-VERBATIM_KEYS = {"quote", "label_quote", "source_line", "name_as_written", "names"}
+VERBATIM_KEYS = {"quote", "label_quote", "rule_quotes", "source_line", "name_as_written", "names"}
 
 
 def verbatim_fields(node: object, path: str = "") -> list[tuple[str, str]]:

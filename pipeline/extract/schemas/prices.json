@@ -3,55 +3,167 @@
   "title": "Pass prices per event",
   "type": "object",
   "additionalProperties": false,
-  "required": ["batch", "prompt_version", "events"],
+  "required": [
+    "batch",
+    "prompt_version",
+    "events"
+  ],
   "properties": {
-    "batch": {"type": "string"},
-    "prompt_version": {"const": "prices-v1"},
+    "batch": {
+      "type": "string"
+    },
+    "prompt_version": {
+      "const": "prices-v2"
+    },
     "events": {
       "type": "array",
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["event_id", "passes", "notes"],
+        "required": [
+          "event_id",
+          "passes",
+          "rule_quotes"
+        ],
         "properties": {
-          "event_id": {"type": "integer"},
-          "notes": {"type": ["string", "null"]},
+          "event_id": {
+            "type": "integer"
+          },
           "passes": {
             "type": "array",
             "items": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["kind", "label_quote", "group_size", "days", "includes_hotel", "tiers"],
+              "required": [
+                "kind",
+                "label_quote",
+                "group_size",
+                "days",
+                "includes_hotel",
+                "tiers"
+              ],
               "properties": {
-                "kind": {"enum": ["full", "party", "day", "workshop", "package", "other"]},
-                "label_quote": {"type": ["string", "null"]},
-                "group_size": {"type": ["integer", "null"], "minimum": 1},
-                "days": {"type": ["integer", "null"], "minimum": 1},
-                "includes_hotel": {"type": "boolean"},
+                "kind": {
+                  "enum": [
+                    "full",
+                    "party",
+                    "day",
+                    "workshop",
+                    "package",
+                    "other"
+                  ]
+                },
+                "label_quote": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "group_size": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 1
+                },
+                "days": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 1
+                },
+                "includes_hotel": {
+                  "type": "boolean"
+                },
                 "tiers": {
                   "type": "array",
                   "minItems": 1,
                   "items": {
                     "type": "object",
                     "additionalProperties": false,
-                    "required": ["amount", "currency", "alt_amount", "alt_currency", "from", "until", "quantity",
-                                 "door", "sold_out", "current", "quote"],
+                    "required": [
+                      "amount",
+                      "currency",
+                      "alt_amount",
+                      "alt_currency",
+                      "from",
+                      "until",
+                      "quantity",
+                      "door",
+                      "sold_out",
+                      "current",
+                      "quote"
+                    ],
                     "properties": {
-                      "amount": {"type": "number", "exclusiveMinimum": 0},
-                      "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
-                      "alt_amount": {"type": ["number", "null"]},
-                      "alt_currency": {"type": ["string", "null"], "pattern": "^[A-Z]{3}$"},
-                      "from": {"type": ["string", "null"], "pattern": "^(\\d{4}-)?\\d{2}-\\d{2}$"},
-                      "until": {"type": ["string", "null"], "pattern": "^(\\d{4}-)?\\d{2}-\\d{2}$"},
-                      "quantity": {"type": ["integer", "null"], "minimum": 1},
-                      "door": {"type": "boolean"},
-                      "sold_out": {"type": "boolean"},
-                      "current": {"type": "boolean"},
-                      "quote": {"type": "string", "minLength": 1, "maxLength": 300}
+                      "amount": {
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      },
+                      "currency": {
+                        "type": "string",
+                        "pattern": "^[A-Z]{3}$"
+                      },
+                      "alt_amount": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "alt_currency": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "pattern": "^[A-Z]{3}$"
+                      },
+                      "from": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "pattern": "^(\\d{4}-)?\\d{2}-\\d{2}$"
+                      },
+                      "until": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "pattern": "^(\\d{4}-)?\\d{2}-\\d{2}$"
+                      },
+                      "quantity": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "minimum": 1
+                      },
+                      "door": {
+                        "type": "boolean"
+                      },
+                      "sold_out": {
+                        "type": "boolean"
+                      },
+                      "current": {
+                        "type": "boolean"
+                      },
+                      "quote": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 300
+                      }
                     }
                   }
                 }
               }
+            }
+          },
+          "rule_quotes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300
             }
           }
         }

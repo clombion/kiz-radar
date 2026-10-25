@@ -98,7 +98,7 @@ CREATE TABLE pass_tiers (
 );
 CREATE TABLE event_price_notes (
     event_id INTEGER PRIMARY KEY REFERENCES events(id),
-    notes TEXT NOT NULL
+    notes TEXT NOT NULL           -- the description's words, one rule per line
 );
 CREATE TABLE role_definitions (
     role TEXT PRIMARY KEY,
@@ -205,8 +205,8 @@ def load_prices(con: sqlite3.Connection, answers: dict) -> None:
     for a in answers.values():
         ev = a.entry
         start, edited = dates[ev["event_id"]]
-        if ev["notes"]:
-            con.execute("INSERT INTO event_price_notes VALUES (?, ?)", (ev["event_id"], ev["notes"]))
+        if ev["rule_quotes"]:
+            con.execute("INSERT INTO event_price_notes VALUES (?, ?)", (ev["event_id"], "\n".join(ev["rule_quotes"])))
         for p, ps in enumerate(ev["passes"], 1):
             con.execute("INSERT INTO event_passes VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                         (ev["event_id"], p, ps["kind"], ps["label_quote"], ps["group_size"], ps["days"],

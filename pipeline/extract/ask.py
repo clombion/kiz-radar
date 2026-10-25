@@ -32,7 +32,7 @@ BY = 'pipeline/extract/ask.py (Messages API), one festival'
 
 # pass -> prompt version, and whether its prompt was written for an agent reading files (so this run hands it
 # the files' contents instead) or for this script
-PASSES = {'extract': ('extract-v1', True), 'rooms_genres': ('rooms-genres-v1', True), 'prices': ('prices-v1', False)}
+PASSES = {'extract': ('extract-v1', True), 'rooms_genres': ('rooms-genres-v1', True), 'prices': ('prices-v2', False)}
 FILES_NOTE = """## This run
 
 There are no files and no tools in this run. The batch input, the schema and the vocabulary are in the
