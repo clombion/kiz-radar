@@ -311,7 +311,7 @@ body:has(.pmap) .to-top { display: none; }
   .sentence { font-size: 1.5rem; }
   .sticky-bar { top: 54px; }
   .bar-count { display: none; }
-  .sentence-hero { padding: 1rem 0 1rem; min-height: 48vh; }
+  .sentence-hero { padding: 1rem 0 2.5rem; min-height: 62vh; }
   .wide-only { display: none; }
   select.mini { font-size: .85rem; min-width: 0; padding-left: .8rem; padding-right: 1.9rem; background-position: right .7rem center; }
   .bar-inner { overflow-x: auto; flex-wrap: nowrap; overflow: visible; }
@@ -327,7 +327,7 @@ body:has(.pmap) .to-top { display: none; }
 @media (max-width: 640px) {
   .note-bottom { display: none; }
   .note-inline { display: flex; }
-  .sentence-hero .live { margin-top: 1rem; min-height: 6.4em; }      /* on a phone each of the two lines can take two */
+  .sentence-hero .live { margin-top: 2rem; min-height: 7.4em; line-height: 1.55; }      /* on a phone each of the two lines can take two */
   .note-artist { display: flex; }
 }
 @media (max-width: 760px) {
@@ -489,7 +489,10 @@ html:has(dialog.search[open]) { overflow: hidden; }
 @media (max-width: 640px) { .plan-list li { grid-template-columns: 1fr; } .plan-list .when { grid-row: auto; } }
 @media (max-width: 640px) {
   /* a phone shows one card at a time: give its parts room, and the cards more space between them */
-  .festival-card { gap: .7rem; padding: 1.2rem 1.15rem 1rem; }
+  .festival-card { gap: .7rem; }
   .festival-card .note-artist { margin: -.25rem 0 0 .4rem; }
-  .sentence-results { padding-top: .6rem; }
+  .sentence-results { padding-top: 2.4rem; }
+  /* more air between the sentence's parts: the hint, the count, who's going, and "Never mind" */
+  .sentence-hero .live .friends { margin-top: 1.2rem; }
+  .nevermind { margin-top: 1.6rem; }
 }
