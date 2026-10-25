@@ -124,8 +124,8 @@ names and a note for people reading the file. The build stops if a key is unknow
 
 ## Promo codes
 
-Promo codes are ours, not kizomba-world's: `pipeline/promo_codes.csv` gives one per festival edition. Each row
-has the `event_id` (the number in the festival's kizomba-world API record; the SQL page shows it as
+Promo codes are ours, not kizomba-world's: `pipeline/promo_codes.csv` has one row per festival edition, so one
+code can appear on several rows, each with what it gives at that festival. Each row has the `event_id` (the number in the festival's kizomba-world API record; the SQL page shows it as
 `event_rows.id`), the `code`, an optional `offer` such as "10% off", and the festival's name and a note for people
 reading the file. A festival with a code gets the "Promo code" highlight, its opened card shows the code with a
 Copy button, and searching the code finds the festival. A code belongs to one edition, so next year's needs a row
