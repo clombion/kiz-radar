@@ -1,0 +1,48 @@
+{
+ "event_id": 18295,
+ "title": "WOW4 – World Of Women Kizomba Weekender 2026",
+ "page": "https://my.weezevent.com/world-of-women-4",
+ "read_on": "2026-10-26",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt_version": "first-read-v1",
+ "rows_at": "2026-10-26T18:14:08+00:00",
+ "description": "World of Women Weekender- A Unique Experience 💞\n“An event for women, by women – with the goal of community building”\n📅4th-6th December 2026\n📍In Lyon, France for the first time\n🎟Tickets available right now!\n—\n👑What is WOW?\n🌟 WOW is a women-only weekend event designed to empower and develop female dance skills\n🌟 Offers tailor-made workshops to develop all aspects of your dance\n🌟 A safe and powerful space for women to connect and exchange with new friends\n🌟A movement in support of female artists in the kizomba scene\n—\n🌟 LINE UP\nTEACHERS\nLiliana De Lima\nRokhaya\nAnni\nJuneline\nYousra\nStre\nMaria & Lena\nPidjay & Enora\nDJS\nDJ Neiken\nDJ Romi\nDJ Loka\nVENDORS\nTBA\n—\n🌟PROGRAM\n💡 WORKSHOP TOPICS:\n– Following & Leading techniques\n– Body control\n– Solo expression\n– Self development coaching\n– Different dance styles\n– Teacher & DJ formations\n– Community building\n– Marketing & branding\n💃🏾PRACTICE TIME\n– Socials\n– Parties\n—\n🌟 VENUE\nLyon, FRANCE\nShine Academie\n10 rue D’arsonval, 69680 Chassieu\n—\n🌟 HOTEL RECOMMENDATIONS:\n👉Main Hotel\nHotel Gatsby by Happyculture\n36 Rue des Frères Lumière, 69680 Chassieu\nhttps://www.hotel-gatsby.com/fr/\n👉Other closest option\nB&B HOTEL Lyon Eurexpo Chassieu\n4 Rue Augustin Fresnel, 69680 Chassieu\nJoin the WOW Community to find your roomies :\nhttps://www.facebook.com/groups/464144905928843/\n—\n🌟 TICKETS and PRICES\n🎟 PRICE : 110€\nBuy your ticket as soon as possible, before tickets run out ⬇️\nhttps://my.weezevent.com/world-of-women-4\n—\n🌟 CONTACTS\nfb: WOW Kizomba\nig: @wow.kizomba\n📩: wow.kizomba@gmail.com",
+ "passes": [
+  {
+   "kind": "full",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5425406"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "current": false,
+     "date_quote": null
+    },
+    {
+     "keys": [
+      "5425409"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "current": false,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [
+  "5425422",
+  "5425543"
+ ],
+ "rule_quotes": []
+}

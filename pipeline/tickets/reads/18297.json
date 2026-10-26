@@ -1,0 +1,119 @@
+{
+ "event_id": 18297,
+ "title": "Kizomba Rainbow Festival Nancy 2026",
+ "page": "https://my.weezevent.com/rainbow-festival-nancy-2026",
+ "read_on": "2026-10-26",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt_version": "first-read-v1",
+ "rows_at": "2026-10-26T18:15:05+00:00",
+ "description": "Welcome to the Rainbow Festival Nancy 2026 – 9th Edition 🌈\nThis event is dedicated to KIZOMBA INFORMATION ❤️💛💚💙\nhttps://my.weezevent.com/rainbow-festival-nancy-2026\n✅ Amazing Venue with 4 different rooms\n✅ 4 parties + 3 pre-parties – 3 after-parties until 7:00 am, all in the Same Location\n✅ Best DJs & International Artists\n✅ More than 50 workshops\n✅ New Shows\n✅ Lots of Fun 🙂 🙂 🙂\nTICKETING : https://my.weezevent.com/rainbow-festival-nancy-2026\n❤️💛💙Kizomba DJs & Artists ❤️💛💙\n✅JP & Stephy\n✅Mam’s & Moorea\n✅Prince Bachir & Frida\n✅Sensei & Emma\n✅Jurcic\n✅Anderson\n✅Moo’y\n✅ Dj Paraïso\n✅ Dj Shark\n✅ Dj Snakes\n✅ Dj NiceLife\n✅ Dj Dj Stefanio Lima\n✅ Dj Valet\n✅ Dj Iron Mams\n✅ Dj JC Stripes\n✅ Dj Chorron",
+ "passes": [
+  {
+   "kind": "party",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5779560"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "current": false,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5307122"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "current": false,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5307167"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "current": false,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5307124"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "current": false,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5307168"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "current": false,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [
+  "5783697",
+  "5783654",
+  "5783600",
+  "5783581"
+ ],
+ "rule_quotes": []
+}

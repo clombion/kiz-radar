@@ -1,0 +1,55 @@
+{
+ "event_id": 18981,
+ "title": "DONAUKIZZ KIZOMBA FESTIVAL 2027",
+ "page": "https://my.weezevent.com/donaukizz",
+ "read_on": "2026-10-26",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt_version": "first-read-v1",
+ "rows_at": "2026-10-26T18:17:56+00:00",
+ "description": "DONAUKIZZ KIZOMBA FESTIVAL 2027 – 5TH EDITION – WHERE PASSION MEETS PERFECTION\nGet ready for the most anticipated Kizomba festival of the year! The DonauKizz Festival returns for its fifth spectacular edition, promising an unforgettable weekend of dance, passion, and pure joy in a family-friendly atmosphere.\n✨ WHEN & WHERE\nFebruary 26 – February 28, 2027\nBallhaus Ulm – Wooden dance floors & beautiful ambiance\nJust 4km from the picturesque Ulm city center.\nWHY YOU CAN’T MISS THIS:\n• 40 HOURS of pure dance magic:\n• 14 hours of workshops with international artists\n• 8 hours of social dancing\n• 18 hours of electrifying parties\n• Premium wooden dance floor for the perfect flow\nWORLD-CLASS LINEUP\nLearn from the masters themselves! Featuring international sensations:\nDJ LINEUP\n#########\nDJ Charley Raymdtc\nDJ Poema Beatz\nDJ Timeline\nDJ Remcy\nDJ Sorin\nDJ El Momo\nDJ Dino\nBringing you the finest selection of Urban Kiz, Tarraxo, traditional Kizomba, Afro & Kompa!\nTEACHERS LINE UP\n#########\nGeorge & Iva\nRadu & Judit\nDaniel & Elina\nSelim & Nana\nLio & Helen\nMurmel & Clara\nFajul\nHassou\nMaja\nEva\nMore information will come soon\nTHEMED NIGHTS\n• Friday: RED OF PASSION – Paint the town red!\n• Saturday: DRESS TO IMPRESS – Show off your best\n• Sunday: HYGGE VIBES – Comfort meets style\nEXPERIENCE THE COMPLETE PACKAGE\n• International community\n• Premium venue\n• Coffee and cocktail specialties\n• Unforgettable memories\nEASY ACCESS\n• Convenient location near Memmingen & Stuttgart airports\n• Free parking at the venue\n• Accommodation options available nearby\nBOOK NOW HERE\nhttps://my.weezevent.com/donaukizz\nSpecial prices for early birds available!\nSTAY CONNECTED\nEVENT: https://fb.me/e/9uJYmjFsk\nInstagram: @donaukizzofficial\nEmail: info@donaukizz.de\nI will be there profile\nhttps://www.twibbonize.com/donaukizz",
+ "passes": [
+  {
+   "kind": "full",
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5423183"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "current": false,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5423182",
+      "5423181"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "current": false,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [],
+ "rule_quotes": []
+}
