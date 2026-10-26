@@ -204,6 +204,7 @@ A festival in `ticket_pages.csv` takes its passes from its page in place of its 
 uv run --group tickets -m pipeline.tickets todo               # what needs doing
 uv run --group tickets -m pipeline.tickets read ID [--url U]  # read the page by its site's recipe and log the rows
 uv run --group tickets -m pipeline.tickets draft ID           # a first read to fill, from the latest rows
+uv run --group tickets -m pipeline.tickets check ID           # what record would find wrong, writing nothing
 uv run --group tickets -m pipeline.tickets record ID          # check the draft or first read, write the prices
 uv run --group tickets -m pipeline.tickets retry ID           # read with a visible browser, then record
 uv run --group tickets -m pipeline.tickets changes [ID]       # what changed between consecutive reads

@@ -3,6 +3,7 @@
     uv run --group tickets -m pipeline.tickets todo           # what needs doing
     uv run --group tickets -m pipeline.tickets read ID [--url U]  # read the page by its recipe, log the rows
     uv run --group tickets -m pipeline.tickets draft ID       # a first read to fill (tickets/drafts/ID.json)
+    uv run --group tickets -m pipeline.tickets check ID       # what record would find wrong, writing nothing
     uv run --group tickets -m pipeline.tickets record ID      # check the draft or first read, write ID's prices
     uv run --group tickets -m pipeline.tickets retry ID       # read with a visible browser, then record
     uv run --group tickets -m pipeline.tickets changes [ID]   # what changed between consecutive reads
@@ -564,6 +565,17 @@ def cmd_draft(event_id):
           f'and pipeline/tickets/prompts/{PROMPT}.md, from the tickets of the read at {entry["at"]} and the description; '
           f'then run: uv run --group tickets -m pipeline.tickets record {event_id}')
 
+def cmd_check(event_id):
+    """The problems record would find in the festival's draft (or first read), without writing anything."""
+    fr = first_read(event_id, draft=True) or first_read(event_id)
+    if fr is None:
+        sys.exit(f'{event_id}: no draft or first read')
+    match written(event_id, fr, log(event_id)):
+        case (tiers, _, unread):
+            print(f'{event_id}: passes; {len(tiers)} prices' + (f', {len(unread)} tickets not read' if unread else ''))
+        case found:
+            sys.exit('\n'.join(found))
+
 def cmd_record(event_id):
     if found := record(event_id):
         sys.exit('\n'.join(found))
@@ -666,6 +678,7 @@ def main():
     r.add_argument('id', type=int)
     r.add_argument('--url', help='the ticket page, when the festival has no full link to it')
     for name, text in (('draft', 'a first read to fill, from the latest rows'), ('record', 'check and write the prices'),
+                       ('check', 'what record would find wrong, writing nothing'),
                        ('retry', 'read with a visible browser, then record')):
         sub.add_parser(name, help=text).add_argument('id', type=int)
     sub.add_parser('changes', help='what changed between reads').add_argument('id', type=int, nargs='?')
@@ -685,6 +698,7 @@ def main():
         case 'read': cmd_read(a.id, a.url)
         case 'draft': cmd_draft(a.id)
         case 'record': cmd_record(a.id)
+        case 'check': cmd_check(a.id)
         case 'retry': cmd_retry(a.id)
         case 'changes': cmd_changes(a.id)
         case 'page': cmd_page(a.id, a.url, a.none, a.note, a.by)
