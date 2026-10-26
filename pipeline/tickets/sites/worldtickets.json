@@ -1,0 +1,21 @@
+{
+  "site": "worldtickets",
+  "hosts": ["worldtickets.es", "www.worldtickets.es"],
+  "widget": {"pattern": "https://worldtickets\\.es/[a-z]{2}/events/[a-z0-9-]+/articles", "suffix": ""},
+  "visible": false,
+  "wait": 10,
+  "open": null,
+  "symbols": {"€": "EUR", "£": "GBP"},
+  "row": "[data-articles-panel='tickets'] div.p-6:has([data-ticket])",
+  "fields": {
+    "key": {"css": "[data-ticket]", "attr": "data-ticket", "match": null},
+    "name": {"css": "div.text-lg.font-bold", "attr": null, "match": null},
+    "price": {"css": "div.font-medium.mt-2", "attr": null, "match": null},
+    "amount": {"css": "div.font-medium.mt-2", "attr": null, "match": "([\\d.,]+)"},
+    "currency": {"css": "div.font-medium.mt-2", "attr": null, "match": "([€£$]|[A-Z]{3})"},
+    "alt_price": null,
+    "alt_amount": null,
+    "alt_currency": null,
+    "sold_out": {"css": null, "attr": null, "match": "(?:[Aa]gotad[oa]s?|AGOTAD[OA]S?|[Ss]old [Oo]ut|SOLD OUT)"}
+  }
+}

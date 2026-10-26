@@ -1,0 +1,21 @@
+{
+  "site": "dizizid",
+  "hosts": ["www.dizizid.com", "dizizid.com"],
+  "widget": null,
+  "visible": false,
+  "wait": 12,
+  "open": null,
+  "symbols": {"€": "EUR", "£": "GBP", "Kč": "CZK"},
+  "row": "tr[ng-repeat^='offer in']:has(button[id^='add-to-cart-'])",
+  "fields": {
+    "key": {"css": "button[id^='add-to-cart-']", "attr": "id", "match": "^add-to-cart-(\\d+)$"},
+    "name": {"css": "td:first-child", "attr": null, "match": null},
+    "price": {"css": "td:nth-child(3)", "attr": null, "match": null},
+    "amount": {"css": "td:nth-child(3)", "attr": null, "match": "([\\d][\\d.,]*)"},
+    "currency": {"css": "td:nth-child(3)", "attr": null, "match": "([€£$]|Kč|[A-Z]{3})"},
+    "alt_price": null,
+    "alt_amount": null,
+    "alt_currency": null,
+    "sold_out": null
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "site": "billetweb",
+  "hosts": [
+    "www.billetweb.fr",
+    "billetweb.fr"
+  ],
+  "widget": {
+    "pattern": "https://www\\.billetweb\\.fr/shop\\.php\\?event=[A-Za-z0-9_-]+",
+    "suffix": "&page=1"
+  },
+  "visible": false,
+  "wait": 8,
+  "open": null,
+  "symbols": {
+    "€": "EUR",
+    "£": "GBP",
+    "$": "USD",
+    "CHF": "CHF"
+  },
+  "row": "tr.shop_step1_ticket[ticket]",
+  "fields": {
+    "key": {
+      "css": null,
+      "attr": "ticket",
+      "match": null
+    },
+    "name": {
+      "css": ".shop_step1_name_text",
+      "attr": null,
+      "match": null
+    },
+    "price": {
+      "css": "td.shop_step1_price",
+      "attr": null,
+      "match": null
+    },
+    "amount": {
+      "css": ".shop_step1_price_value",
+      "attr": null,
+      "match": null
+    },
+    "currency": {
+      "css": ".shop_step1_currency",
+      "attr": null,
+      "match": null
+    },
+    "alt_price": null,
+    "alt_amount": null,
+    "alt_currency": null,
+    "sold_out": {
+      "css": "td.shop_step1_quantity_unavail",
+      "attr": null,
+      "match": "[Ss]old out"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "site": "lasalsadelbaile",
+  "hosts": [
+    "lasalsadelbaile.com",
+    "www.lasalsadelbaile.com"
+  ],
+  "widget": null,
+  "visible": false,
+  "wait": 8,
+  "open": null,
+  "symbols": {
+    "€": "EUR"
+  },
+  "row": "div.oferta:has(span[id^=\"precioFinal\"])",
+  "fields": {
+    "key": {
+      "css": "span[id^=\"precioFinal\"]",
+      "attr": "id",
+      "match": "^precioFinal(\\d+)$"
+    },
+    "name": {
+      "css": ".detalles_oferta b",
+      "attr": null,
+      "match": null
+    },
+    "price": {
+      "css": "span[id^=\"precioFinal\"]",
+      "attr": null,
+      "match": null
+    },
+    "amount": {
+      "css": "span[id^=\"precioFinal\"]",
+      "attr": null,
+      "match": "([\\d.,]+)"
+    },
+    "currency": {
+      "css": "span[id^=\"precio-\"]",
+      "attr": null,
+      "match": "([€£$]|[A-Z]{3})"
+    },
+    "alt_price": null,
+    "alt_amount": null,
+    "alt_currency": null,
+    "sold_out": {
+      "css": ".agotado",
+      "attr": null,
+      "match": null
+    }
+  }
+}
