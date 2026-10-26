@@ -10,7 +10,8 @@ prompt. Each question is one festival and one pass, with the pass's prompt and i
 the required answer format. check_output.problems() (and prices.problems() for prices) checks the answer; on a
 failure Claude gets the checker's lines and answers once more, and a second failure leaves the festival
 pending. A checked answer is saved as answers/<pass>/event-<id>.json. A festival leaves pending_extraction once
-every pass has a checked answer from this run. Needs ANTHROPIC_API_KEY.
+every pass has a checked answer from this run. Requests stop once the month's budget for Claude is spent
+(pipeline/spend.py), and the run then fails. Needs ANTHROPIC_API_KEY.
 """
 import argparse, json, sqlite3, sys, threading
 from concurrent.futures import ThreadPoolExecutor
@@ -18,12 +19,11 @@ from pathlib import Path
 
 import anthropic
 
-from pipeline import db as sqlite_db
+from pipeline import db as sqlite_db, spend
 from pipeline.extract import answers, check_output, prices
 
 HERE = Path(__file__).parent
 MODEL = 'claude-haiku-5-5'
-PRICE_PER_MTOK = {'input': 0.10, 'output': 0.50}     # claude-haiku-5-5, USD
 WORKERS = 8
 BY = 'pipeline/extract/ask.py (Messages API), one festival'
 
@@ -67,11 +67,13 @@ def question(pass_name, row):
     return system, '\n\n'.join(parts), schema, batch
 
 
-def structured(client, model, system, content, schema, check, label, usage=None, lock=None):
+def structured(client, model, system, content, schema, check, label, step):
     """Claude's answer in the schema's shape once check() finds no problems in it, or None after two tries: on a
-    failure Claude gets the checker's lines and answers once more. usage, when given, adds up the tokens."""
+    failure Claude gets the checker's lines and answers once more. Each request is checked against the month's budget
+    first (spend.BudgetSpent once it is spent) and goes in the ledger under step."""
     messages = [{'role': 'user', 'content': content}]
     for attempt in (1, 2):
+        spend.check()
         try:
             with client.messages.stream(model=model, max_tokens=64000, system=system, messages=messages,
                                         output_config={'format': {'type': 'json_schema',
@@ -83,10 +85,7 @@ def structured(client, model, system, content, schema, check, label, usage=None,
         except anthropic.APIConnectionError as e:
             print(f"{label}: connection failed ({e}); left pending", file=sys.stderr)
             return None
-        if usage is not None:
-            with lock:
-                usage['input'] += reply.usage.input_tokens
-                usage['output'] += reply.usage.output_tokens
+        spend.record(step, model, reply.usage.input_tokens, reply.usage.output_tokens)
         if reply.stop_reason != 'end_turn':
             print(f"{label}: stopped on {reply.stop_reason} (request {reply._request_id}); left pending", file=sys.stderr)
             return None
@@ -105,11 +104,11 @@ def structured(client, model, system, content, schema, check, label, usage=None,
     return None
 
 
-def ask(client, pass_name, row, usage, lock):
+def ask(client, pass_name, row):
     """A checked answer for one festival and pass, or None after two failed tries."""
     system, content, schema, batch = question(pass_name, row)
     check = lambda out: check_output.problems(schema, batch, out) or (prices.problems(out) if pass_name == 'prices' else [])
-    return structured(client, MODEL, system, content, schema, check, f"{row['id']} {pass_name}", usage, lock)
+    return structured(client, MODEL, system, content, schema, check, f"{row['id']} {pass_name}", pass_name)
 
 
 def due(db, only):
@@ -146,11 +145,15 @@ def main():
         return
 
     client = anthropic.Anthropic()
-    usage, lock, failed = {'input': 0, 'output': 0}, threading.Lock(), set()
+    lock, failed, before, stopped = threading.Lock(), set(), spend.month_usd(), []
 
     def one(job):
         row, pass_name = job
-        output = ask(client, pass_name, row, usage, lock)
+        try:
+            output = ask(client, pass_name, row)
+        except spend.BudgetSpent as e:
+            output = None
+            stopped[:1] = [str(e)]
         with lock:
             if output is None:
                 failed.add(row['id'])
@@ -163,10 +166,10 @@ def main():
     done = {r['id'] for r, _ in todo} - failed
     db.executemany('delete from pending_extraction where event_id = ?', [(i,) for i in sorted(done & pending)])
     db.commit()
-    cost = sum(usage[k] * PRICE_PER_MTOK[k] for k in usage) / 1e6
     print(f'{len(done)} festivals answered, {len(failed)} failed {sorted(failed)}; '
-          f'{usage["input"]} input and {usage["output"]} output tokens, about ${cost:.2f}')
-
+          f'${spend.month_usd() - before:.2f} this run, €{spend.eur(spend.month_usd()):.2f} of €{spend.BUDGET_EUR} this month')
+    if stopped:
+        sys.exit(f'{stopped[0]}: the rest waits for next month')
 
 if __name__ == '__main__':
     main()

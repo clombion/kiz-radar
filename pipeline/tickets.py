@@ -51,7 +51,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 ROOT = Path(__file__).parent.parent
-from pipeline import db as sqlite_db
+from pipeline import db as sqlite_db, spend
 from pipeline.extract import check_output, prices
 
 HERE = ROOT / 'pipeline' / 'tickets'
@@ -594,7 +594,7 @@ def ask_read(client, model, f, entry, entries):
     from pipeline.extract import ask
     system, content = question(f, entry)
     out = ask.structured(client, model, system, content, model_schema(),
-                         lambda out: read_problems(draft_of(f, entry, model) | out, entries), f"{f['id']} {model}")
+                         lambda out: read_problems(draft_of(f, entry, model) | out, entries), f"{f['id']} {model}", 'first-read')
     return out and draft_of(f, entry, model) | out
 
 def meaning(fr):
@@ -742,7 +742,7 @@ def cmd_run():
     1 naming each festival whose page broke its recipe, reached REFUSALS failures, or no longer fits its first read."""
     import anthropic
     today, db = dt.date.today().isoformat(), src_db()
-    client, alarms = None, []
+    client, alarms, budget = None, [], None
     for f in festivals(db, today):
         i, fr = f['id'], f['first_read']
         if fr and f['site'] and (recheck(f['tiers'], f['start_date'], today)[1] or failures(f['log'])):
@@ -759,11 +759,15 @@ def cmd_run():
             entry = latest_read(f['log'])
             if entry is None or entry['at'][:10] != today:
                 append(i, entry := attempt(f['page'], *f['site']))
-            if entry['status'] == Status.READ:
+            if entry['status'] == Status.READ and not budget:
                 client = client or anthropic.Anthropic()
-                if new := two_model_read(client, f, entry, log(i)):
-                    save_read(new)
-                print(f'{i}: first read ' + (f"by {new['read_by']}" if new else f'disputed: tickets/disputed/{i}.json'))
+                try:
+                    if new := two_model_read(client, f, entry, log(i)):
+                        save_read(new)
+                    print(f'{i}: first read ' + (f"by {new['read_by']}" if new else f'disputed: tickets/disputed/{i}.json'))
+                except spend.BudgetSpent as e:
+                    budget = f'{e}: the other first reads wait for next month'
+                    alarms.append(budget)
             else:
                 print(f"{i}: {entry['status']}: {entry['why']}")
                 if entry['status'] == Status.LAYOUT_BROKEN:

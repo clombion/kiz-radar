@@ -1,5 +1,5 @@
 """The extraction step: price checks and dates, stable artist ids, and asking Claude with one retry."""
-import json, sqlite3, threading
+import json, sqlite3
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -97,7 +97,7 @@ ROW = {'id': 5, 'title': 'Test Fest', 'description_text': 'Full pass 80€ until
 def prices_answer(quote):
     tier = {'amount': 80, 'currency': 'EUR', 'fee': None, 'alt_amount': None, 'alt_currency': None, 'from': None, 'until': '01-31',
             'quantity': None, 'door': False, 'sold_out': False, 'current': False, 'quote': quote}
-    return json.dumps({'batch': 'event-5', 'prompt_version': 'prices-v3', 'events': [
+    return json.dumps({'batch': 'event-5', 'prompt_version': prices.PROMPT, 'events': [
         {'event_id': 5, 'rule_quotes': [], 'passes': [{'kind': 'full', 'label_quote': None, 'group_size': 1, 'days': None,
                                                      'includes_hotel': False, 'tiers': [tier]}]}]})
 
@@ -122,7 +122,7 @@ def fake(*texts):
 
 def test_answer_retried_once_with_the_checkers_lines():
     client = fake(prices_answer('Full pass 90€'), prices_answer('Full pass 80€ until 31.01'))
-    out = ask.ask(client, 'prices', ROW, {'input': 0, 'output': 0}, threading.Lock())
+    out = ask.ask(client, 'prices', ROW)
     assert out['events'][0]['passes'][0]['tiers'][0]['amount'] == 80
     retry = client.calls[1]['messages'][-1]['content']
     assert 'verbatim' in retry and 'Full pass 90€' in retry
@@ -130,7 +130,7 @@ def test_answer_retried_once_with_the_checkers_lines():
 
 def test_two_failures_leave_the_festival_unanswered():
     client = fake(prices_answer('Full pass 90€'), prices_answer('Full pass 85€'))
-    assert ask.ask(client, 'prices', ROW, {'input': 0, 'output': 0}, threading.Lock()) is None
+    assert ask.ask(client, 'prices', ROW) is None
 
 
 def test_schema_sent_without_constraints_structured_outputs_reject():
@@ -139,3 +139,28 @@ def test_schema_sent_without_constraints_structured_outputs_reject():
     for word in ('minLength', 'maxLength', 'minimum', 'oneOf', 'pattern', '$schema'):
         assert word not in text
 
+
+
+def test_the_prices_prompt_its_schema_and_its_file_name_one_version():
+    schema = json.loads((Path(ask.HERE) / 'schemas' / 'prices.json').read_text())
+    assert schema['properties']['prompt_version']['const'] == prices.PROMPT
+    assert (Path(ask.HERE) / 'prompts' / f'{prices.PROMPT}.md').read_text().startswith(f'# {prices.PROMPT}:')
+
+
+
+def test_requests_stop_once_the_months_budget_is_spent(tmp_path):
+    from pipeline import spend
+    spend.record('prices', 'claude-opus-5-5', 1_000_000, 5_000_000)          # $104, about €93
+    client = fake(prices_answer('Full pass 80€ until 31.01'))
+    assert ask.ask(client, 'prices', ROW) is not None
+    spend.record('prices', 'claude-opus-5-5', 0, 1_000_000)                  # $20 more: over €100
+    with pytest.raises(spend.BudgetSpent):
+        ask.ask(client, 'prices', ROW)
+    assert len(client.calls) == 1
+
+
+def test_a_request_costs_its_models_prices():
+    from pipeline import spend
+    assert spend.usd('claude-haiku-5-5', 100_000, 100_000) == 0.06
+    assert spend.usd('claude-haiku-5-5', 200_000, 0) == 0.10           # a long prompt costs Haiku more
+    assert spend.usd('claude-sonnet-5-5', 1_000, 1_000) == 0.012

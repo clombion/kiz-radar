@@ -17,3 +17,10 @@ def repository_untouched():
     before = data_status()
     yield
     assert data_status() == before, 'a test in this module wrote into the repository'
+
+
+@pytest.fixture(autouse=True)
+def spend_ledger(tmp_path, monkeypatch):
+    """Requests a test makes to a fake Claude go in a ledger of its own."""
+    from pipeline import spend
+    monkeypatch.setattr(spend, 'LEDGER', tmp_path / 'spend.csv')

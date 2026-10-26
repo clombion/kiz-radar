@@ -304,7 +304,8 @@ def client(*replies):
         def __enter__(self):
             text = json.dumps(replies.pop(0))
             return SimpleNamespace(get_final_message=lambda: SimpleNamespace(
-                stop_reason='end_turn', content=[SimpleNamespace(type='text', text=text)]))
+                stop_reason='end_turn', content=[SimpleNamespace(type='text', text=text)],
+                usage=SimpleNamespace(input_tokens=6000, output_tokens=2000)))
         def __exit__(self, *a): return False
     return SimpleNamespace(messages=SimpleNamespace(stream=lambda **kw: Ctx()))
 
@@ -510,3 +511,10 @@ def test_a_free_ticket_costs_0(price, amount):
     got = tickets.parsed(RAW | {'price': price, 'amount': None}, {'€': 'EUR'})
     assert got['amount'] == amount
     assert (tickets.problems(tickets.LOG_SCHEMA['$defs']['row'], got) == []) == (amount is not None)
+
+
+
+def test_first_reads_count_against_the_budget(files):
+    from pipeline import spend
+    tickets.two_model_read(client(ANSWER, ANSWER), FEST, entry(ROWS), [entry(ROWS)])
+    assert round(spend.month_usd(), 3) == round(spend.usd('claude-opus-5-5', 6000, 2000) + spend.usd('claude-sonnet-5-5', 6000, 2000), 3)

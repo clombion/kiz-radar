@@ -82,7 +82,7 @@ other currencies are converted with `pipeline/rates.csv` and marked "~". A festi
 without accommodation (the per-person full pass at today's price, plus the flight) and when the pass price next goes
 up; tapping the pass opens every pass at today's price and its next change (`docs/js/passes.js`). A price is what a
 buyer pays, booking fee included; the passes view says which fee it includes when the description or the ticket
-page states one (prompt `prices-v3`; answers from older prompts carry no fee and are asked again while the festival
+page states one (since prompt `prices-v3`; answers from older prompts are asked again while the festival
 is to come).
 
 For the SQL page, every table is described in the `table_docs` table. The `event_rows` view is the one to start
@@ -194,7 +194,7 @@ judgment about a page is made once, by an agent or two models, and checked; ever
   (`.gitattributes`), so a session and the monthly run never conflict.
 - **A first read per festival** (`pipeline/tickets/reads/<event_id>.json`, schema `read.json`) says, from one logged
   read and the festival's description, which pass each ticket is, in the prices pass's terms (prompt
-  `pipeline/tickets/prompts/first-read-v2.md` on top of `prices-v3`): every ticket is in a tier, by its key, or
+  `pipeline/tickets/prompts/first-read-v2.md` on top of `prices-v4`): every ticket is in a tier, by its key, or
   skipped; dates, ticket limits and price notes are quoted from the description or the ticket's name. Only checked
   first reads are kept there: an agent fills a draft (`pipeline/tickets/drafts/`, not committed), which `record`
   moves there once it passes.
@@ -298,7 +298,10 @@ export's tables exactly.
 names into artists. Artist ids never change: `artist_ids` remembers every id given, a new artist gets the next
 unused one, and a link to an artist that was merged opens the one it was merged into. Pairs of names that might
 be one artist go to `pipeline/artist_merge_suggestions.csv` for review; nothing is merged without a decision. The
-key is the repository secret `ANTHROPIC_API_KEY`; each run prints the tokens it used and their cost.
+key is the repository secret `ANTHROPIC_API_KEY`. Asking Claude has a budget of €100 a month (`pipeline/spend.py`):
+every request, from the extraction passes and from the ticket pages' first reads, goes in `pipeline/spend.csv` with
+its model, tokens and cost, and once the month's spending reaches the budget the steps stop asking, leave the rest
+for next month, and the run fails so the stop is seen. Each run prints what it spent and the month's total.
 
 To do the same locally:
 

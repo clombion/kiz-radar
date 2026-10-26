@@ -1,1 +1,2 @@
 pipeline/tickets/log/*.jsonl merge=union
+pipeline/spend.csv merge=union

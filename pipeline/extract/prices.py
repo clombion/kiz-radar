@@ -7,7 +7,7 @@ before the festival they are for.
 """
 import datetime as dt, re
 
-PROMPT = 'prices-v3'      # the prompt the prices pass and ticket-page first reads answer with
+PROMPT = 'prices-v4'      # the prompt the prices pass and ticket-page first reads answer with
 
 NUMBER = re.compile(r'\d+(?:[ .,’\']\d{3})*(?:[.,]\d{1,2})?|\d+')
 
