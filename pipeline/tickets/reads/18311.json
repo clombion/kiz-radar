@@ -1,0 +1,32 @@
+{
+ "event_id": 18311,
+ "title": "Neverending Kizomba Festival Barcelona 2026 – 8th Edition",
+ "start_date": "2026-11-12",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt_version": "first-read-v2",
+ "rows_at": "2026-10-26T21:49:26+00:00",
+ "description": "********** 8TH EDITION ************\nNEVERENDING KIZOMBA FESTIVAL\n*********** BARCELONA ************\n12 ✔ 13 ✔ 14 ✔ 15 ✔ 16 NOVEMBER 26\nFIRST FESTIVAL IN THE WORLD WITH\nREAL +80H NON-STOP DANCING\n+24H OF WORKSHOPS\nTHE BATTLE KIZZ (SPAIN FINAL)\n***ALL IN ONE***\nHOTEL NAUTIC PARK**** – PLATJA DE ARO\n8TH ANNIVERSARY ESSÊNCIA SATORI EDITION\n🔴 DEEJAYS :\n🎧 DJ PUTO-X – 🇫🇷\n🎧 DJ SNAKES – 🇫🇷\n🎧 DJ POEMA BEATZ – 🇸🇪\n🎧 DJ HUGO SMILE – 🇫🇷\n🎧 DJ ANTONY TARRAXA – 🇪🇸\n🎧 DJ FOFO JAH – 🇫🇷\n🎧 DJ BAD – 🇫🇷\n🎧 DJ KRANES – 🇵🇱\n🎧 DJ IKA – 🇫🇷\n🎧 DJ SAUDADE – 🇫🇷\nand more to be announced…\n🔴 TEACHERS:\n✔ JOJO & JENNY – 🇫🇷 (Urban Kiz)\n✔ AUDI & LAURA – 🇪🇸 (Urban Kiz / Tarraxo)\n✔ SAID – 🇫🇷 (Urban Kiz / Tarraxo)\n✔ LEDOUX KINGSMAN – 🇫🇷 (Urban Kiz / Kizomba Fusion)\n✔ JONATHAN KANI – 🇫🇷 (Afro / Kizomba Fusion)\n✔ BENJAMINE & STEPHANIE – 🇫🇷 (Urban Kiz)\n✔ MANU & OLIVIA – 🇫🇷 (Kizomba/Semba)\n✔ NAS – 🇫🇷 (Kizomba Fusion)\n✔ JULIE JULY – 🇫🇷 (Kizomba Fusion)\n✔ NUNO & SARAI – 🇪🇸 (Kizomba Fusion)\n✔ ANDREA MURGIA – 🇮🇹 (Urban Kiz)\n✔ TITONY & LUCIE (2025 BATTLE KIZZ WINNERS) – 🇫🇷 (Urban Kiz)\n✔ ELSA & SERGI – 🇪🇸 (Kizomba Fusion)\n✔ ELIAS & VICKY – 🇪🇸 (Kizomba Fusion)\nand more to be announced…\nQUALIFICATIONS FOR THE BATTLE KIZZ FINAL 2027\nTHE WINNER WILL BE BOOKED ALSO IN NEVERENDING 2027\n🎟️ FULL PASS – HOTEL BOOKINGS – INFO:\nhttps://www.kizzbee.com/product/neverending-kizomba-festival-barcelona-2026/\ninfo/whatsapp +34 605547456",
+ "passes": [
+  {
+   "kind": "full",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "9050",
+      "9049"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [],
+ "rule_quotes": []
+}

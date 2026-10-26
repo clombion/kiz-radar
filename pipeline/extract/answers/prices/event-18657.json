@@ -1,6 +1,6 @@
 {
  "batch": "event-18657",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 18657,
@@ -15,23 +15,25 @@
       {
        "amount": 65,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": "2026-01-31",
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "January 2026 (early bird): 65 € ✅"
+       "quote": "January 2026 (early bird): 65 €"
       },
       {
        "amount": 80,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-02-01",
-       "until": "02-28",
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -41,10 +43,11 @@
       {
        "amount": 85,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "03-01",
-       "until": "03-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -54,10 +57,11 @@
       {
        "amount": 90,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "04-01",
-       "until": "04-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -67,10 +71,11 @@
       {
        "amount": 95,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "05-01",
-       "until": "05-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -80,10 +85,11 @@
       {
        "amount": 100,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "06-01",
-       "until": "06-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -93,10 +99,11 @@
       {
        "amount": 105,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "07-01",
-       "until": "07-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -106,10 +113,11 @@
       {
        "amount": 110,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "08-01",
-       "until": "08-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -119,10 +127,11 @@
       {
        "amount": 115,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "09-01",
-       "until": "09-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -132,10 +141,11 @@
       {
        "amount": 120,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "10-01",
-       "until": "10-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -145,10 +155,11 @@
       {
        "amount": 125,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "11-01",
-       "until": "11-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -158,10 +169,11 @@
       {
        "amount": 130,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "12-01",
-       "until": "12-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -171,10 +183,11 @@
       {
        "amount": 135,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "2027-01-01",
-       "until": "2027-01-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -184,6 +197,7 @@
       {
        "amount": 140,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -198,7 +212,7 @@
     }
    ],
    "rule_quotes": [
-    "the full pass price starts at 80 EUR on February 1st, 2026, and increases by 5 € each month until January 2027."
+    "After the end of the early bird sales at 65 EUR, the full pass price starts at 80 EUR on February 1st, 2026, and increases by 5 € each month until January 2027."
    ]
   }
  ]

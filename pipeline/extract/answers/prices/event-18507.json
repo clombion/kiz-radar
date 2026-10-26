@@ -1,6 +1,6 @@
 {
  "batch": "event-18507",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 18507,

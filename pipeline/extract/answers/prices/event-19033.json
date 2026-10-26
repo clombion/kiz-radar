@@ -1,6 +1,6 @@
 {
  "batch": "event-19033",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 19033,
@@ -15,6 +15,7 @@
       {
        "amount": 1500,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +29,7 @@
       {
        "amount": 1400,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "08-01",
@@ -36,11 +38,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🌖 1400 nok – fr 01.Ago-30.Sep"
+       "quote": "1400 nok – fr 01.Ago-30.Sep"
       },
       {
        "amount": 1500,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "10-01",
@@ -49,7 +52,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🌕 1500 nok – fr 01.Oct-20.Nov"
+       "quote": "1500 nok – fr 01.Oct-20.Nov"
       }
      ]
     },
@@ -63,6 +66,7 @@
       {
        "amount": 2400,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "06-01",
@@ -71,11 +75,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🌘 2400 nok – fr 01.jun-30.Sep"
+       "quote": "2400 nok – fr 01.jun-30.Sep"
       },
       {
        "amount": 2800,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "10-01",
@@ -84,7 +89,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🌖 2800 nok – fr 01.Oct-20.Nov"
+       "quote": "2800 nok – fr 01.Oct-20.Nov"
       }
      ]
     },
@@ -98,6 +103,7 @@
       {
        "amount": 1100,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "06-01",
@@ -106,11 +112,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🌘 1100 nok – fr 01.Jun-30.Sep"
+       "quote": "1100 nok – fr 01.Jun-30.Sep"
       },
       {
        "amount": 1400,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "10-01",
@@ -119,7 +126,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🌖 1400 nok – fr 01.Oct-20.Nov"
+       "quote": "1400 nok – fr 01.Oct-20.Nov"
       }
      ]
     },
@@ -133,6 +140,7 @@
       {
        "amount": 220,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -155,6 +163,7 @@
       {
        "amount": 260,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -177,6 +186,7 @@
       {
        "amount": 120,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

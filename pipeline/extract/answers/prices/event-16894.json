@@ -1,13 +1,13 @@
 {
  "batch": "event-16894",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 16894,
    "passes": [
     {
      "kind": "full",
-     "label_quote": "early birds Full pass",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -15,6 +15,7 @@
       {
        "amount": 390,
        "currency": "PLN",
+       "fee": null,
        "alt_amount": 90,
        "alt_currency": "EUR",
        "from": null,
@@ -23,13 +24,13 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "🔴 early birds Full pass -390pln/90euro SOLD OUT"
+       "quote": "early birds Full pass -390pln/90euro SOLD OUT"
       }
      ]
     },
     {
      "kind": "party",
-     "label_quote": "early birds Party pass",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -37,6 +38,7 @@
       {
        "amount": 270,
        "currency": "PLN",
+       "fee": null,
        "alt_amount": 65,
        "alt_currency": "EUR",
        "from": null,
@@ -45,13 +47,13 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "🔴early birds Party pass-270pln/65e SOLD OUT"
+       "quote": "early birds Party pass-270pln/65e SOLD OUT"
       }
      ]
     },
     {
      "kind": "full",
-     "label_quote": "couple FULL PASS",
+     "label_quote": null,
      "group_size": 2,
      "days": null,
      "includes_hotel": false,
@@ -59,6 +61,7 @@
       {
        "amount": 820,
        "currency": "PLN",
+       "fee": null,
        "alt_amount": 190,
        "alt_currency": "EUR",
        "from": null,
@@ -67,13 +70,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🟢🕺🏻💃🏻couple FULL PASS – 410 pln / 95 euro per person (820pln / 190 euro couple)"
+       "quote": "couple FULL PASS – 410 pln / 95 euro per person (820pln / 190 euro couple)"
       }
      ]
     },
     {
      "kind": "party",
-     "label_quote": "couple PARTY PASS",
+     "label_quote": null,
      "group_size": 2,
      "days": null,
      "includes_hotel": false,
@@ -81,6 +84,7 @@
       {
        "amount": 580,
        "currency": "PLN",
+       "fee": null,
        "alt_amount": 130,
        "alt_currency": "EUR",
        "from": null,
@@ -89,13 +93,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🟢🕺🏻💃🏻couple PARTY PASS-290 pln / 70 euro per person (580pln/130 euro couple)"
+       "quote": "couple PARTY PASS-290 pln / 70 euro per person (580pln/130 euro couple)"
       }
      ]
     },
     {
      "kind": "full",
-     "label_quote": "leader FULL PASS",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -103,6 +107,7 @@
       {
        "amount": 410,
        "currency": "PLN",
+       "fee": null,
        "alt_amount": 95,
        "alt_currency": "EUR",
        "from": null,
@@ -111,13 +116,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🟢🕺🏻leader FULL PASS – 410pln / 95 euro"
+       "quote": "leader FULL PASS – 410pln / 95 euro"
       }
      ]
     },
     {
      "kind": "party",
-     "label_quote": "leader PARTY PASS",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -125,6 +130,7 @@
       {
        "amount": 290,
        "currency": "PLN",
+       "fee": null,
        "alt_amount": 70,
        "alt_currency": "EUR",
        "from": null,
@@ -133,7 +139,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🟢🕺🏻leader PARTY PASS – 290pln/70 euro"
+       "quote": "leader PARTY PASS – 290pln/70 euro"
       }
      ]
     }

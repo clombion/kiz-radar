@@ -1,6 +1,6 @@
 {
  "batch": "event-17965",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 17965,
@@ -15,6 +15,7 @@
       {
        "amount": 90,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +29,7 @@
       {
        "amount": 105,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -41,6 +43,7 @@
       {
        "amount": 120,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -63,6 +66,7 @@
       {
        "amount": 30,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -76,6 +80,7 @@
       {
        "amount": 35,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -89,6 +94,7 @@
       {
        "amount": 40,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -111,6 +117,7 @@
       {
        "amount": 25,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -133,6 +140,7 @@
       {
        "amount": 12,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -155,6 +163,7 @@
       {
        "amount": 35,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -177,6 +186,7 @@
       {
        "amount": 15,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -199,6 +209,7 @@
       {
        "amount": 149,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -212,6 +223,7 @@
       {
        "amount": 169,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -225,6 +237,7 @@
       {
        "amount": 189,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -238,7 +251,7 @@
      ]
     },
     {
-     "kind": "package",
+     "kind": "other",
      "label_quote": "🥂 ROYAL SILVER PACK",
      "group_size": 1,
      "days": null,
@@ -247,6 +260,7 @@
       {
        "amount": 105,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -260,6 +274,7 @@
       {
        "amount": 119,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -273,6 +288,7 @@
       {
        "amount": 130,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -295,6 +311,7 @@
       {
        "amount": 38,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -308,6 +325,7 @@
       {
        "amount": 42,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -321,6 +339,7 @@
       {
        "amount": 46,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -334,7 +353,7 @@
      ]
     },
     {
-     "kind": "package",
+     "kind": "other",
      "label_quote": "🥇 ROYAL GOLD PACK",
      "group_size": 1,
      "days": null,
@@ -343,6 +362,7 @@
       {
        "amount": 112,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -356,6 +376,7 @@
       {
        "amount": 126,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -369,6 +390,7 @@
       {
        "amount": 139,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -391,6 +413,7 @@
       {
        "amount": 40,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -404,6 +427,7 @@
       {
        "amount": 44,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -417,6 +441,7 @@
       {
        "amount": 48,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -433,12 +458,13 @@
      "kind": "other",
      "label_quote": "💎 SBK WEEKEND PACK",
      "group_size": 1,
-     "days": 2,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 49,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

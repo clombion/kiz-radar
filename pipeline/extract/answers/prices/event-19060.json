@@ -1,6 +1,6 @@
 {
  "batch": "event-19060",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 19060,
@@ -15,6 +15,7 @@
       {
        "amount": 100,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,11 +24,12 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "Blind Pass – 100€ (sold out)"
+       "quote": "⭐ Blind Pass – 100€ (sold out)"
       },
       {
        "amount": 110,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -36,11 +38,12 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "Black Friday Pass – 110€ (sold out)"
+       "quote": "⭐ Black Friday Pass – 110€ (sold out)"
       },
       {
        "amount": 130,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -49,11 +52,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Early Bird Pass – 130€ (50 or till May 1st)"
+       "quote": "⭐ Early Bird Pass – 130€ (50 or till May 1st)"
       },
       {
        "amount": 160,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -62,11 +66,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Summer Bird Pass – 160€ (till Aug 15th)"
+       "quote": "⭐ Summer Bird Pass – 160€ (till Aug 15th)"
       },
       {
        "amount": 170,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -75,11 +80,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Fall Bird Pass – 170€ (Till October 1st)"
+       "quote": "⭐ Fall Bird Pass – 170€ (Till October 1st)"
       },
       {
        "amount": 180,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -88,7 +94,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Full Pass – 180€ (Till Festival)"
+       "quote": "⭐ Full Pass – 180€ (Till Festival)"
       }
      ]
     },
@@ -102,6 +108,7 @@
       {
        "amount": 100,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -110,11 +117,12 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "Blind Pass – 100€ (Sold out)"
+       "quote": "⭐ Blind Pass – 100€ (Sold out)"
       },
       {
        "amount": 110,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -123,11 +131,12 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "Black Friday Pass – 110€ (sold out)"
+       "quote": "⭐ Black Friday Pass – 110€ (sold out)"
       },
       {
        "amount": 130,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -136,11 +145,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Early Bird Pass – 130€ (50 or till May 1st)"
+       "quote": "⭐ Early Bird Pass – 130€ (50 or till May 1st)"
       },
       {
        "amount": 145,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -149,11 +159,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Summer Bird Pass – 145€ (till Aug 15th)"
+       "quote": "⭐ Summer Bird Pass – 145€ (till Aug 15th)"
       },
       {
        "amount": 150,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -162,11 +173,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Fall Bird Pass 150€ (Till October 1st)"
+       "quote": "⭐ Fall Bird Pass 150€ (Till October 1st)"
       },
       {
        "amount": 160,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -175,7 +187,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Full Pass – 160€ (Till Festival)"
+       "quote": "⭐ Full Pass – 160€ (Till Festival)"
       }
      ]
     }

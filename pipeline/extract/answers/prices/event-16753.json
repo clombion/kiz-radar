@@ -1,6 +1,6 @@
 {
  "batch": "event-16753",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 16753,
@@ -9,12 +9,13 @@
      "kind": "package",
      "label_quote": "📌 A): PACKAGES WITH FLIGHTS FROM LISBON or PORTO",
      "group_size": 1,
-     "days": null,
+     "days": 7,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 1755,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,11 +24,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "SINGLE room (De-luxe Bungalow): 1.755€"
+       "quote": "• SINGLE room (De-luxe Bungalow): 1.755€"
       },
       {
        "amount": 1440,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -36,11 +38,21 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Per person on sharing TWIN (De-luxe Bungalow): 1.440€"
-      },
+       "quote": "• Per person on sharing TWIN (De-luxe Bungalow): 1.440€"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "📌 A): PACKAGES WITH FLIGHTS FROM LISBON or PORTO",
+     "group_size": 1,
+     "days": 7,
+     "includes_hotel": true,
+     "tiers": [
       {
        "amount": 1965,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -49,11 +61,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "SINGLE room (Quarto Standard): 1.965€"
+       "quote": "• SINGLE room (Quarto Standard): 1.965€"
       },
       {
        "amount": 1570,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -62,7 +75,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Per person on sharing TWIN (Quarto Standard): 1.570€"
+       "quote": "• Per person on sharing TWIN (Quarto Standard): 1.570€"
       }
      ]
     },
@@ -70,12 +83,13 @@
      "kind": "package",
      "label_quote": "📌 B): PACKAGES WITHOUT FLIGHTS – Book your own flights…!",
      "group_size": 1,
-     "days": null,
+     "days": 4,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 735,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -84,11 +98,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "SINGLE room (De-luxe Bungalow): 735€"
+       "quote": "• SINGLE room (De-luxe Bungalow): 735€"
       },
       {
        "amount": 525,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -97,11 +112,21 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Per person on sharing TWIN (De-luxe Bungalow): 525€"
-      },
+       "quote": "• Per person on sharing TWIN (De-luxe Bungalow): 525€"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "label_quote": "📌 B): PACKAGES WITHOUT FLIGHTS – Book your own flights…!",
+     "group_size": 1,
+     "days": 4,
+     "includes_hotel": true,
+     "tiers": [
       {
        "amount": 855,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -110,11 +135,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "SINGLE room (Standard room): 855€"
+       "quote": "• SINGLE room (Standard room): 855€"
       },
       {
        "amount": 615,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -123,13 +149,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Per person on sharing TWIN (Standard room): 615€"
+       "quote": "• Per person on sharing TWIN (Standard room): 615€"
       }
      ]
     }
    ],
    "rule_quotes": [
-    "EARLY BIRD: €30 discount per person for reservations until 30th March!",
     "City Tax: 2,50 € / person / day, that should be paid directly to the hotel."
    ]
   }

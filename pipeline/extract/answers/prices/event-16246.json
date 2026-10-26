@@ -1,6 +1,6 @@
 {
  "batch": "event-16246",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 16246,
@@ -15,6 +15,7 @@
       {
        "amount": 89,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -24,19 +25,11 @@
        "sold_out": false,
        "current": true,
        "quote": "FULLPASS – 89 EARLY BIRD"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
+      },
       {
        "amount": 140,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -59,6 +52,7 @@
       {
        "amount": 120,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -75,12 +69,13 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 20,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -97,12 +92,13 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 35,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -119,12 +115,13 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 40,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -141,12 +138,13 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 35,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -163,12 +161,13 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 20,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -185,12 +184,13 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 25,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -207,12 +207,13 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 25,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -235,6 +236,7 @@
       {
        "amount": 80,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -257,6 +259,7 @@
       {
        "amount": 110,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -279,6 +282,7 @@
       {
        "amount": 95,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -292,9 +296,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "*preparty is not included in full and party pass"
-   ]
+   "rule_quotes": []
   }
  ]
 }

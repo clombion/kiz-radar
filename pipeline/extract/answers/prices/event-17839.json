@@ -1,6 +1,6 @@
 {
  "batch": "event-17839",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 17839,
@@ -15,6 +15,7 @@
       {
        "amount": 125,
        "currency": "USD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -37,6 +38,7 @@
       {
        "amount": 140,
        "currency": "USD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -50,6 +52,7 @@
       {
        "amount": 160,
        "currency": "USD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -63,6 +66,7 @@
       {
        "amount": 180,
        "currency": "USD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -85,6 +89,7 @@
       {
        "amount": 75,
        "currency": "USD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

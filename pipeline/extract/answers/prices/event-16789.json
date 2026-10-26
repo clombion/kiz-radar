@@ -1,6 +1,6 @@
 {
  "batch": "event-16789",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 16789,
@@ -9,12 +9,13 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 12,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

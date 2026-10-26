@@ -1,6 +1,6 @@
 {
  "batch": "event-19064",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 19064,
@@ -15,6 +15,7 @@
       {
        "amount": 999,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +29,7 @@
       {
        "amount": 1200,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -50,6 +52,7 @@
       {
        "amount": 1850,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -63,6 +66,7 @@
       {
        "amount": 2300,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -76,9 +80,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "Grab yours before prices go up!"
-   ]
+   "rule_quotes": []
   }
  ]
 }

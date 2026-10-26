@@ -1,6 +1,6 @@
 {
  "batch": "event-19041",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 19041,
@@ -15,6 +15,7 @@
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +29,7 @@
       {
        "amount": 70,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -41,6 +43,7 @@
       {
        "amount": 80,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -54,6 +57,7 @@
       {
        "amount": 90,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -76,12 +80,13 @@
       {
        "amount": 10,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
        "until": null,
        "quantity": null,
-       "door": false,
+       "door": true,
        "sold_out": false,
        "current": false,
        "quote": "€10"
@@ -98,12 +103,13 @@
       {
        "amount": 25,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
        "until": null,
        "quantity": null,
-       "door": false,
+       "door": true,
        "sold_out": false,
        "current": false,
        "quote": "€25"
@@ -120,12 +126,13 @@
       {
        "amount": 15,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
        "until": null,
        "quantity": null,
-       "door": false,
+       "door": true,
        "sold_out": false,
        "current": false,
        "quote": "€15"

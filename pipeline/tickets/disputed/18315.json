@@ -1,0 +1,341 @@
+{
+ "rows_at": "2026-10-26T21:48:23+00:00",
+ "reads": {
+  "claude-opus-5-5": {
+   "event_id": 18315,
+   "title": "M.A.D Kizomba FLOW – Raizes AfroVibes 2026",
+   "start_date": "2026-11-07",
+   "read_by": "claude-opus-5-5",
+   "prompt_version": "first-read-v2",
+   "rows_at": "2026-10-26T21:48:23+00:00",
+   "description": "🎉 M.A.D Kizomba FLOW – Raízes • Afro Vibes 🎉\n🇫🇷 A weekend full of vibes, connection, and energy 🇫🇷\n📅 Saturday, November 7 – Monday, November 9, 2026\n📍 Tiny Dance – Genas\n25 rue André Citroën, 69740 GENAS\n⸻\n🔥 Get ready for a unique experience…\nBlending Kizomba, Afro Konpa, connection, and pure energy, immerse yourself in a world where dance becomes emotion.\n⸻\n💃 PROGRAM\n✨ Lady Styling & Konpa\n🌀 Tarraxo\n🌊 Sensual Kizomba & Slow Motion\n🌍 Urban Kizomba\n🔥 Afro vibes & much more…\n👉 Classes designed to elevate you, help you progress, and let you feel every movement.\n⸻\n❄️✨ INSTRUCTOR LINE-UP\n🔥 Curtis Seldon – Urban Kizomba\n🔥 Auguste Gouriou – Kizomba Slow Motion\n🔥 Séverine – Kompa\n🔥 Erwan & Clémence – Urban Kizomba\n🔥 Sanka N’Gage – Afro House\n⸻\n🎧 INTERNATIONAL DJs\n🔥 DJ Lenhy Bushido\n🔥 DJ Geero Beatz\n🔥 Deejay Elson\n🔥 DJ Naty\n🔥 DJ Lys\n👉 One mission: to keep the energy high all night long 🔥\nGUESTS:\n✨ TEACHER / AFRI : Semba Konpa\n✨ TEACHER / Gloire : Kizomba\n✨ DEEJAY / DJ LCSLOW\n✨ …\n⸻\n🎟️ RESERVATIONS\nhttps://my.weezevent.com/mad-kizomba-flow-r-a-i-z-e-s-a-f…\n💶 Presale tickets available now\n⚠️ Limited spots (classes + parties)\n❌💳 Credit/debit cards not accepted on-site.\n💰 Cash payment only. ⸻\n👜 PRACTICAL INFO\nCoat check: €2 (cash)\n🚗 Private parking\n🚌 Carpooling available\n✈️ 15 mins from Lyon Airport\n⸻\n🏨 PARTNER ACCOMMODATION\n✨ Hotel Parkest (4⭐) – less than 3 minutes away\n💶 ~€74 to €90\n⸻\n🔐 OTHER NEARBY OPTIONS\n✨ Kyriad Lyon Est – Genas Eurexpo (~€43–€49)\n✨ Appart Hôtel Coraline (~€70–€80)\n✨ Mercure Lyon Genas Eurexpo (~€72–€92)\n✨ Le Loft de Genas (~€105–€114)\n⸻\n📲 INFO & CONTACT\n📞 06 77 36 04 66\n📧 night.one.l.pro@gmail.com\n📸 Instagram: @mad_nightonelove\n⸻\n🔥 So… who’s coming?\nCome feel the vibe, learn, connect, and have a blast with us.\n⚡ M.A.D Kizomba FLOW – more than just an event… an experience.",
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5845654",
+        "5845660"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5541988",
+        "5594706"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5845273",
+        "5845310"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5469050",
+        "5594704"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5845293",
+        "5845312"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5468772",
+        "5845352"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 2,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5594705",
+        "5468366"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5845379",
+        "5845232",
+        "5845231"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    }
+   ],
+   "skipped": [
+    "5645401"
+   ],
+   "rule_quotes": []
+  },
+  "claude-sonnet-5-5": {
+   "event_id": 18315,
+   "title": "M.A.D Kizomba FLOW – Raizes AfroVibes 2026",
+   "start_date": "2026-11-07",
+   "read_by": "claude-sonnet-5-5",
+   "prompt_version": "first-read-v2",
+   "rows_at": "2026-10-26T21:48:23+00:00",
+   "description": "🎉 M.A.D Kizomba FLOW – Raízes • Afro Vibes 🎉\n🇫🇷 A weekend full of vibes, connection, and energy 🇫🇷\n📅 Saturday, November 7 – Monday, November 9, 2026\n📍 Tiny Dance – Genas\n25 rue André Citroën, 69740 GENAS\n⸻\n🔥 Get ready for a unique experience…\nBlending Kizomba, Afro Konpa, connection, and pure energy, immerse yourself in a world where dance becomes emotion.\n⸻\n💃 PROGRAM\n✨ Lady Styling & Konpa\n🌀 Tarraxo\n🌊 Sensual Kizomba & Slow Motion\n🌍 Urban Kizomba\n🔥 Afro vibes & much more…\n👉 Classes designed to elevate you, help you progress, and let you feel every movement.\n⸻\n❄️✨ INSTRUCTOR LINE-UP\n🔥 Curtis Seldon – Urban Kizomba\n🔥 Auguste Gouriou – Kizomba Slow Motion\n🔥 Séverine – Kompa\n🔥 Erwan & Clémence – Urban Kizomba\n🔥 Sanka N’Gage – Afro House\n⸻\n🎧 INTERNATIONAL DJs\n🔥 DJ Lenhy Bushido\n🔥 DJ Geero Beatz\n🔥 Deejay Elson\n🔥 DJ Naty\n🔥 DJ Lys\n👉 One mission: to keep the energy high all night long 🔥\nGUESTS:\n✨ TEACHER / AFRI : Semba Konpa\n✨ TEACHER / Gloire : Kizomba\n✨ DEEJAY / DJ LCSLOW\n✨ …\n⸻\n🎟️ RESERVATIONS\nhttps://my.weezevent.com/mad-kizomba-flow-r-a-i-z-e-s-a-f…\n💶 Presale tickets available now\n⚠️ Limited spots (classes + parties)\n❌💳 Credit/debit cards not accepted on-site.\n💰 Cash payment only. ⸻\n👜 PRACTICAL INFO\nCoat check: €2 (cash)\n🚗 Private parking\n🚌 Carpooling available\n✈️ 15 mins from Lyon Airport\n⸻\n🏨 PARTNER ACCOMMODATION\n✨ Hotel Parkest (4⭐) – less than 3 minutes away\n💶 ~€74 to €90\n⸻\n🔐 OTHER NEARBY OPTIONS\n✨ Kyriad Lyon Est – Genas Eurexpo (~€43–€49)\n✨ Appart Hôtel Coraline (~€70–€80)\n✨ Mercure Lyon Genas Eurexpo (~€72–€92)\n✨ Le Loft de Genas (~€105–€114)\n⸻\n📲 INFO & CONTACT\n📞 06 77 36 04 66\n📧 night.one.l.pro@gmail.com\n📸 Instagram: @mad_nightonelove\n⸻\n🔥 So… who’s coming?\nCome feel the vibe, learn, connect, and have a blast with us.\n⚡ M.A.D Kizomba FLOW – more than just an event… an experience.",
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5845654",
+        "5845660"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5541988",
+        "5594706"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5845273",
+        "5845310"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5469050",
+        "5594704"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5845293",
+        "5845312"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5468772",
+        "5845352"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5468366",
+        "5594705"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5845379",
+        "5845232",
+        "5845231"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    }
+   ],
+   "skipped": [
+    "5645401"
+   ],
+   "rule_quotes": []
+  }
+ }
+}

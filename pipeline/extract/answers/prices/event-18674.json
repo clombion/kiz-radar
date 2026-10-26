@@ -1,13 +1,13 @@
 {
  "batch": "event-18674",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 18674,
    "passes": [
     {
      "kind": "full",
-     "label_quote": "> Full Pass: starting at €130",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -15,6 +15,7 @@
       {
        "amount": 130,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

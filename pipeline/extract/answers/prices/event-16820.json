@@ -1,20 +1,21 @@
 {
  "batch": "event-16820",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 16820,
    "passes": [
     {
      "kind": "full",
-     "label_quote": "🔻PASS/TICKET PRICES :🔻",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 85,
+       "amount": 88,
        "currency": "GBP",
+       "fee": 3,
        "alt_amount": null,
        "alt_currency": null,
        "from": "12-05",
@@ -23,11 +24,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸Early Bird: £85 + £3 admin fee"
+       "quote": "Early Bird: £85 + £3 admin fee"
       },
       {
-       "amount": 95,
+       "amount": 98,
        "currency": "GBP",
+       "fee": 3,
        "alt_amount": null,
        "alt_currency": null,
        "from": "12-05",
@@ -36,11 +38,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸 £95 + £3 admin fee"
+       "quote": "£95 + £3 admin fee"
       },
       {
-       "amount": 105,
+       "amount": 108,
        "currency": "GBP",
+       "fee": 3,
        "alt_amount": null,
        "alt_currency": null,
        "from": "02-01",
@@ -49,11 +52,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£105 + £3 admin fee (SINGLE)"
+       "quote": "£105 + £3 admin fee"
       },
       {
-       "amount": 115,
+       "amount": 118,
        "currency": "GBP",
+       "fee": 3,
        "alt_amount": null,
        "alt_currency": null,
        "from": "05-01",
@@ -62,11 +66,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£115 + £3 admin fee (SINGLE)"
+       "quote": "£115 + £3 admin fee"
       },
       {
-       "amount": 125,
+       "amount": 128,
        "currency": "GBP",
+       "fee": 3,
        "alt_amount": null,
        "alt_currency": null,
        "from": "07-01",
@@ -75,11 +80,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£125 + £3 admin fee (SINGLE)"
+       "quote": "£125 + £3 admin fee"
       },
       {
-       "amount": 135,
+       "amount": 138,
        "currency": "GBP",
+       "fee": 3,
        "alt_amount": null,
        "alt_currency": null,
        "from": "09-01",
@@ -88,11 +94,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£135 + £3 admin fee (SINGLE)"
+       "quote": "£135 + £3 admin fee"
       },
       {
-       "amount": 145,
+       "amount": 148,
        "currency": "GBP",
+       "fee": 3,
        "alt_amount": null,
        "alt_currency": null,
        "from": "11-01",
@@ -101,7 +108,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£145 + £3 admin fee (SINGLE)"
+       "quote": "£145 + £3 admin fee"
       }
      ]
     },
@@ -113,8 +120,9 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 180,
+       "amount": 183,
        "currency": "GBP",
+       "fee": 3,
        "alt_amount": null,
        "alt_currency": null,
        "from": "12-05",
@@ -123,11 +131,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£180 + £3 admin fee (COUPLE PASS)"
+       "quote": "£180 + £3 admin fee (COUPLE PASS)"
       },
       {
-       "amount": 200,
+       "amount": 203,
        "currency": "GBP",
+       "fee": 3,
        "alt_amount": null,
        "alt_currency": null,
        "from": "02-01",
@@ -136,11 +145,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£200 + £3 admin fee (COUPLE PASS)"
+       "quote": "£200 + £3 admin fee (COUPLE PASS)"
       },
       {
-       "amount": 220,
+       "amount": 223,
        "currency": "GBP",
+       "fee": 3,
        "alt_amount": null,
        "alt_currency": null,
        "from": "05-01",
@@ -149,11 +159,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£220 + £3 admin fee (COUPLE PASS)"
+       "quote": "£220 + £3 admin fee (COUPLE PASS)"
       },
       {
-       "amount": 240,
+       "amount": 243,
        "currency": "GBP",
+       "fee": 3,
        "alt_amount": null,
        "alt_currency": null,
        "from": "07-01",
@@ -162,11 +173,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£240 + £3 admin fee (COUPLE PASS)"
+       "quote": "£240 + £3 admin fee (COUPLE PASS)"
       },
       {
-       "amount": 260,
+       "amount": 263,
        "currency": "GBP",
+       "fee": 3,
        "alt_amount": null,
        "alt_currency": null,
        "from": "09-01",
@@ -175,11 +187,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£260 + £3 admin fee (COUPLE PASS)"
+       "quote": "£260 + £3 admin fee (COUPLE PASS)"
       },
       {
-       "amount": 280,
+       "amount": 283,
        "currency": "GBP",
+       "fee": 3,
        "alt_amount": null,
        "alt_currency": null,
        "from": "11-01",
@@ -188,13 +201,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£280 + £3 admin fee (COUPLE PASS)"
+       "quote": "£280 + £3 admin fee (COUPLE PASS)"
       }
      ]
     }
    ],
    "rule_quotes": [
-    "+ £3 admin fee",
     "Tickets will be more expensive at the door."
    ]
   }

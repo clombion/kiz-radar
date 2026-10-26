@@ -1,6 +1,6 @@
 {
  "batch": "event-19018",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 19018,
@@ -9,12 +9,13 @@
      "kind": "full",
      "label_quote": null,
      "group_size": 1,
-     "days": 3,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 90,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +29,7 @@
       {
        "amount": 100,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -41,6 +43,7 @@
       {
        "amount": 110,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -54,9 +57,10 @@
       {
        "amount": 120,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": null,
+       "from": "10-30",
        "until": null,
        "quantity": null,
        "door": false,
@@ -70,12 +74,13 @@
      "kind": "full",
      "label_quote": null,
      "group_size": 2,
-     "days": 3,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 170,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -89,6 +94,7 @@
       {
        "amount": 190,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -102,6 +108,7 @@
       {
        "amount": 210,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -115,9 +122,10 @@
       {
        "amount": 230,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": null,
+       "from": "10-30",
        "until": null,
        "quantity": null,
        "door": false,
@@ -137,6 +145,7 @@
       {
        "amount": 50,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -150,6 +159,7 @@
       {
        "amount": 55,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -163,6 +173,7 @@
       {
        "amount": 55,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -176,9 +187,10 @@
       {
        "amount": 60,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": null,
+       "from": "10-30",
        "until": null,
        "quantity": null,
        "door": false,
@@ -198,6 +210,7 @@
       {
        "amount": 60,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -211,6 +224,7 @@
       {
        "amount": 70,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -224,6 +238,7 @@
       {
        "amount": 75,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -237,9 +252,10 @@
       {
        "amount": 80,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": null,
+       "from": "10-30",
        "until": null,
        "quantity": null,
        "door": false,
@@ -259,6 +275,7 @@
       {
        "amount": 50,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -272,6 +289,7 @@
       {
        "amount": 55,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -285,6 +303,7 @@
       {
        "amount": 55,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -298,9 +317,10 @@
       {
        "amount": 60,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": null,
+       "from": "10-30",
        "until": null,
        "quantity": null,
        "door": false,
@@ -320,6 +340,7 @@
       {
        "amount": 40,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -333,6 +354,7 @@
       {
        "amount": 45,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -346,6 +368,7 @@
       {
        "amount": 45,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -359,9 +382,10 @@
       {
        "amount": 50,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": null,
+       "from": "10-30",
        "until": null,
        "quantity": null,
        "door": false,
@@ -381,6 +405,7 @@
       {
        "amount": 20,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -403,6 +428,7 @@
       {
        "amount": 25,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -425,6 +451,7 @@
       {
        "amount": 15,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -447,6 +474,7 @@
       {
        "amount": 15,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -460,9 +488,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "▂▂▂AT CHECKOUT OCT 30 At 5:00 PM ▂▂▂"
-   ]
+   "rule_quotes": []
   }
  ]
 }

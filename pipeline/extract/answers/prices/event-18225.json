@@ -1,6 +1,6 @@
 {
  "batch": "event-18225",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 18225,
@@ -15,6 +15,7 @@
       {
        "amount": 80,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +29,7 @@
       {
        "amount": 100,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -41,6 +43,7 @@
       {
        "amount": 120,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -63,6 +66,7 @@
       {
        "amount": 150,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -76,6 +80,7 @@
       {
        "amount": 190,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -89,6 +94,7 @@
       {
        "amount": 230,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -111,6 +117,7 @@
       {
        "amount": 10,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 40,
        "alt_currency": "PLN",
        "from": null,
@@ -119,7 +126,7 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "23:00-03:00 ( €10 at the door / PLN 40 )"
+       "quote": "€10 at the door / PLN 40"
       }
      ]
     },
@@ -133,6 +140,7 @@
       {
        "amount": 45,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -155,6 +163,7 @@
       {
        "amount": 55,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -177,6 +186,7 @@
       {
        "amount": 55,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

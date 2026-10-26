@@ -1,6 +1,6 @@
 {
  "batch": "event-19756",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 19756,
@@ -15,6 +15,7 @@
       {
        "amount": 150,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +29,7 @@
       {
        "amount": 155,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -41,6 +43,7 @@
       {
        "amount": 160,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -54,6 +57,7 @@
       {
        "amount": 165,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -67,6 +71,7 @@
       {
        "amount": 170,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -80,6 +85,7 @@
       {
        "amount": 175,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -93,6 +99,7 @@
       {
        "amount": 180,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -115,6 +122,7 @@
       {
        "amount": 125,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -128,6 +136,7 @@
       {
        "amount": 130,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -141,6 +150,7 @@
       {
        "amount": 135,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -154,6 +164,7 @@
       {
        "amount": 140,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -167,6 +178,7 @@
       {
        "amount": 145,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -180,6 +192,7 @@
       {
        "amount": 150,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -193,6 +206,7 @@
       {
        "amount": 155,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -206,9 +220,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "you may unlock preferred prices with minimum 10 € discount for Full Passes and 5 € discount for Party Passes."
-   ]
+   "rule_quotes": []
   }
  ]
 }

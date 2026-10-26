@@ -1,11 +1,13 @@
 {
  "batch": "event-18741",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 18741,
    "passes": [],
-   "rule_quotes": []
+   "rule_quotes": [
+    "ALL SALES ARE FINAL"
+   ]
   }
  ]
 }

@@ -1,13 +1,13 @@
 {
  "batch": "event-16768",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 16768,
    "passes": [
     {
      "kind": "package",
-     "label_quote": "FULLPASS",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": true,
@@ -15,6 +15,7 @@
       {
        "amount": 1390,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -29,7 +30,7 @@
     },
     {
      "kind": "package",
-     "label_quote": "EXCURSIONS (from 26Oct to 30Oct )",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -37,6 +38,7 @@
       {
        "amount": 525,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "10-26",
@@ -51,7 +53,7 @@
     },
     {
      "kind": "full",
-     "label_quote": "Dance Pass",
+     "label_quote": "✪ Dance Pass : including parties, socials, workshops & conference.",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -59,6 +61,7 @@
       {
        "amount": 92.99,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "10-31",
@@ -72,9 +75,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "NB: includes all except flight ticket, food and hotel tax (~2€/night)"
-   ]
+   "rule_quotes": []
   }
  ]
 }

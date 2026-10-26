@@ -1,6 +1,6 @@
 {
  "batch": "event-18744",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 18744,
@@ -15,6 +15,7 @@
       {
        "amount": 480,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,7 +24,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔷 Package: 2 full passes + double room → 480€"
+       "quote": "Package: 2 full passes + double room → 480€"
       }
      ]
     }

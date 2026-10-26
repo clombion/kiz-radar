@@ -1,13 +1,13 @@
 {
  "batch": "event-18686",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 18686,
    "passes": [
     {
      "kind": "package",
-     "label_quote": null,
+     "label_quote": "PRICES including the festival",
      "group_size": 1,
      "days": 5,
      "includes_hotel": true,
@@ -15,6 +15,7 @@
       {
        "amount": 520,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +29,7 @@
       {
        "amount": 555,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -42,7 +44,7 @@
     },
     {
      "kind": "package",
-     "label_quote": null,
+     "label_quote": "PRICES including the festival",
      "group_size": 1,
      "days": 5,
      "includes_hotel": true,
@@ -50,6 +52,7 @@
       {
        "amount": 590,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -63,6 +66,7 @@
       {
        "amount": 625,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -77,7 +81,7 @@
     },
     {
      "kind": "package",
-     "label_quote": null,
+     "label_quote": "PRICES including the festival",
      "group_size": 1,
      "days": 5,
      "includes_hotel": true,
@@ -85,6 +89,7 @@
       {
        "amount": 685,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -98,6 +103,7 @@
       {
        "amount": 715,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -113,7 +119,7 @@
    ],
    "rule_quotes": [
     "Children under 18 stay FREE if sharing a cabin with 2 adults.",
-    "Boat tax and stay: EUR 150 per child"
+    "*Single/triple/quadruple cabins available upon request and subject to availability."
    ]
   }
  ]

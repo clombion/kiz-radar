@@ -1,0 +1,310 @@
+{
+ "rows_at": "2026-10-26T21:48:54+00:00",
+ "reads": {
+  "claude-opus-5-5": {
+   "event_id": 16845,
+   "title": "FLAVOURKIZZ KIZOMBA FESTIVAL 2026",
+   "start_date": "2026-11-12",
+   "read_by": "claude-opus-5-5",
+   "prompt_version": "first-read-v2",
+   "rows_at": "2026-10-26T21:48:54+00:00",
+   "description": "💥 Last year was absolutely amazing__full of love, music, and unforgettable vibes!\nIt was pure magic… and this year, we’re doing it all over again__together! 💃🏽🕺🏽\n❤️‍🔥 FlavourKizz Kizomba Festival 2026 ❤️‍🔥\nLet’s go and taste the FLAVOUR… 🍭🍭\nBecause once you feel it__you’ll never forget it!\nIt’s more than just a dance__ it’s a whole vibe.\n📍 November 12–15, 2026 | Event Center Fokker, Hoofddorp (NL)\n⸻\n✨ What to Expect\n✅ 1 Epic Pre-Party (Included in Full Pass)\n✅ 4 Days of Workshops\n✅ 3 Days of Social Dancing\n✅ 4 Unforgettable Party Nights\n✅ 2 Beautiful Dance Rooms ❤️‍🔥\n✅ Fully Airconditioned Venue & FREE Parking 🅿️\n✅ FREE Hotel Shuttle Bus (4-min ride) 🚌\n⸻\n💃🏽 2 Floors – 2 Vibes 🕺🏽\nRoom 1 (Ground Floor): URBANKIZ\nTarraxinha | Ghetto Zouk | Douceur\nRoom 2 (First Floor): SEMBA\nKizomba | Coladera | Konpa\n⸻\n🔥 International Line-Up 🔥\n🎓 Teachers\n🇫🇷 Enah Lebon\n🇫🇷 Ioury & Eden\n🇫🇷 JP & Stephy\n🇫🇷 Methodz & Julia\n🇳🇱 Virgile & Juneline\n🇳🇱 Spencer\n🇵🇹 Tabanka\n🇫🇷 Tecas & Tasha\n🇳🇱 Val ColaSemba & Rokhaya\n🎧 DJs\nDJ Shark 🇪🇸\nDJ Stefanio Lima 🇳🇱\nDJ Lenhy 🇫🇷\nDJ Ichigo 🇫🇷\nDJ NiceLife 🇳🇱\nDJ Valet 🇫🇷\nDJ Traybeatz 🇳🇱\nDJ Jessie Santos 🇳🇱\nDJ Tony Samson 🇳🇱\nDJ On Fire 🇳🇱\nDJ Tje 🇳🇱\nDJ Ellen 🇳🇱\nDJ Dos Anjos 🇳🇱\nDJ Tecas 🇫🇷\n📸 Official Photographer: Victor Reinier\n⸻\n📅 Full Program\nTHURSDAY (Nov 12)\n🔸 Pre-Party Workshop (21:00–22:00)\n🔸 Party (22:00–03:00)\nFRIDAY (Nov 13)\n🔸 Social (16:00–20:00)\n🔸 Workshops (22:00–23:00)\n🔸 Parties in Both Rooms (23:00–04:00)\nSATURDAY (Nov 14)\n🔸 Workshops (11:00–18:00 & 22:00–23:00)\n🔸 Social (14:00–20:00)\n🔸 Parties in Both Rooms (23:00–05:00)\nSUNDAY (Nov 15)\n🔸 Workshops (11:00–18:00)\n🔸 Non-Stop Social (13:00–00:00)\n⸻\n🏨 Partner Hotels\nBastion Hotel (🚶‍♂️15 min / 🚘 4 min from venue)\nFree shuttle bus to and from the venue.\n🔗 🔗 Book now\nhttps://www.bastionhotels.com/…/hotel-schiphol-hoofddorp\nCourtyard Amsterdam Airport (Marriott)\n(🚶‍♂️17 min / 🚘 5 min from venue)\nFree shuttle bus to and from the venue.\n🔗 🔗 Book now\nhttps://www.marriott.com/…/amscy-courtyard…/overview/\n✈️ Nearest Airport: Amsterdam Schiphol – just 14 minutes away,\nwith a free shuttle bus directly to both partner hotels! 🚌✨\n⸻\n📸 Stay Connected\n📍 Facebook: FlavourKizz\nhttps://www.facebook.com/FlavourKizz/\n📍 Instagram: @flavourkizz_events\nhttps://instagram.com/Flavourkizz_events\n⸻\n⚠️ House Rules\n🚫 No coats, big bags, drinks, or powders inside.\n💼 Small handbags only.\n💶 Wardrobe: €2 per item.\n🍹 Bar & Catering available onsite.\n⸻\n💃🏽🕺🏽 Let’s live, dance, and celebrate life together at FlavourKizz Kizomba Festival 2026!\n🫶🏽 Mi casa es tu casa – see you on the dance floor!",
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "06a31897-1cf6-40dd-bfa7-8a0e5d7bf510",
+        "1537797e-b854-4243-983f-139dac86b992"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "abe45515-16e3-4b62-bb1f-0f048a2a31c4",
+        "cf5712fe-b6cf-4bde-a9f6-ee5d96db2765"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "904d06b5-2c54-44bf-8052-ebd38f1f721f",
+        "96227473-d3fb-4efb-a9c9-094cc913eaee"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "c5a54d7c-435a-4a1d-a38a-b4b2d92b323d",
+        "b0c3c587-3355-4702-a097-595d0a6f299c"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "49641efb-6214-436e-864c-9692dc0edb6c",
+        "8a8a67a0-d4e2-466b-8f0f-771d9c921351"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "7b449d6b-475e-418b-876d-aa773d7789df",
+        "2f76dc47-7222-4dfa-950c-c45d7e423d87"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5204a615-99c7-4df0-9995-a04f89680408",
+        "7c8526a9-aa61-4fbc-a78e-d50c235ae404"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "25c634dd-8082-47cc-9997-8a5db07677f1",
+        "178632ed-9d88-419f-8568-e4995fb9841b"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "89425c6e-cc28-4674-88dc-f004f4192e2a",
+        "196a9745-a5a3-4c51-ad21-6ee80b154543"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "594c91b1-5e6a-46ff-b412-c9678b4856de",
+        "31784a15-4445-466e-84ed-9663878fef34"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    }
+   ],
+   "skipped": [],
+   "rule_quotes": []
+  },
+  "claude-sonnet-5-5": {
+   "event_id": 16845,
+   "title": "FLAVOURKIZZ KIZOMBA FESTIVAL 2026",
+   "start_date": "2026-11-12",
+   "read_by": "claude-sonnet-5-5",
+   "prompt_version": "first-read-v2",
+   "rows_at": "2026-10-26T21:48:54+00:00",
+   "description": "💥 Last year was absolutely amazing__full of love, music, and unforgettable vibes!\nIt was pure magic… and this year, we’re doing it all over again__together! 💃🏽🕺🏽\n❤️‍🔥 FlavourKizz Kizomba Festival 2026 ❤️‍🔥\nLet’s go and taste the FLAVOUR… 🍭🍭\nBecause once you feel it__you’ll never forget it!\nIt’s more than just a dance__ it’s a whole vibe.\n📍 November 12–15, 2026 | Event Center Fokker, Hoofddorp (NL)\n⸻\n✨ What to Expect\n✅ 1 Epic Pre-Party (Included in Full Pass)\n✅ 4 Days of Workshops\n✅ 3 Days of Social Dancing\n✅ 4 Unforgettable Party Nights\n✅ 2 Beautiful Dance Rooms ❤️‍🔥\n✅ Fully Airconditioned Venue & FREE Parking 🅿️\n✅ FREE Hotel Shuttle Bus (4-min ride) 🚌\n⸻\n💃🏽 2 Floors – 2 Vibes 🕺🏽\nRoom 1 (Ground Floor): URBANKIZ\nTarraxinha | Ghetto Zouk | Douceur\nRoom 2 (First Floor): SEMBA\nKizomba | Coladera | Konpa\n⸻\n🔥 International Line-Up 🔥\n🎓 Teachers\n🇫🇷 Enah Lebon\n🇫🇷 Ioury & Eden\n🇫🇷 JP & Stephy\n🇫🇷 Methodz & Julia\n🇳🇱 Virgile & Juneline\n🇳🇱 Spencer\n🇵🇹 Tabanka\n🇫🇷 Tecas & Tasha\n🇳🇱 Val ColaSemba & Rokhaya\n🎧 DJs\nDJ Shark 🇪🇸\nDJ Stefanio Lima 🇳🇱\nDJ Lenhy 🇫🇷\nDJ Ichigo 🇫🇷\nDJ NiceLife 🇳🇱\nDJ Valet 🇫🇷\nDJ Traybeatz 🇳🇱\nDJ Jessie Santos 🇳🇱\nDJ Tony Samson 🇳🇱\nDJ On Fire 🇳🇱\nDJ Tje 🇳🇱\nDJ Ellen 🇳🇱\nDJ Dos Anjos 🇳🇱\nDJ Tecas 🇫🇷\n📸 Official Photographer: Victor Reinier\n⸻\n📅 Full Program\nTHURSDAY (Nov 12)\n🔸 Pre-Party Workshop (21:00–22:00)\n🔸 Party (22:00–03:00)\nFRIDAY (Nov 13)\n🔸 Social (16:00–20:00)\n🔸 Workshops (22:00–23:00)\n🔸 Parties in Both Rooms (23:00–04:00)\nSATURDAY (Nov 14)\n🔸 Workshops (11:00–18:00 & 22:00–23:00)\n🔸 Social (14:00–20:00)\n🔸 Parties in Both Rooms (23:00–05:00)\nSUNDAY (Nov 15)\n🔸 Workshops (11:00–18:00)\n🔸 Non-Stop Social (13:00–00:00)\n⸻\n🏨 Partner Hotels\nBastion Hotel (🚶‍♂️15 min / 🚘 4 min from venue)\nFree shuttle bus to and from the venue.\n🔗 🔗 Book now\nhttps://www.bastionhotels.com/…/hotel-schiphol-hoofddorp\nCourtyard Amsterdam Airport (Marriott)\n(🚶‍♂️17 min / 🚘 5 min from venue)\nFree shuttle bus to and from the venue.\n🔗 🔗 Book now\nhttps://www.marriott.com/…/amscy-courtyard…/overview/\n✈️ Nearest Airport: Amsterdam Schiphol – just 14 minutes away,\nwith a free shuttle bus directly to both partner hotels! 🚌✨\n⸻\n📸 Stay Connected\n📍 Facebook: FlavourKizz\nhttps://www.facebook.com/FlavourKizz/\n📍 Instagram: @flavourkizz_events\nhttps://instagram.com/Flavourkizz_events\n⸻\n⚠️ House Rules\n🚫 No coats, big bags, drinks, or powders inside.\n💼 Small handbags only.\n💶 Wardrobe: €2 per item.\n🍹 Bar & Catering available onsite.\n⸻\n💃🏽🕺🏽 Let’s live, dance, and celebrate life together at FlavourKizz Kizomba Festival 2026!\n🫶🏽 Mi casa es tu casa – see you on the dance floor!",
+   "passes": [
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "06a31897-1cf6-40dd-bfa7-8a0e5d7bf510",
+        "1537797e-b854-4243-983f-139dac86b992"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "abe45515-16e3-4b62-bb1f-0f048a2a31c4",
+        "cf5712fe-b6cf-4bde-a9f6-ee5d96db2765"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "904d06b5-2c54-44bf-8052-ebd38f1f721f",
+        "96227473-d3fb-4efb-a9c9-094cc913eaee"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "c5a54d7c-435a-4a1d-a38a-b4b2d92b323d",
+        "b0c3c587-3355-4702-a097-595d0a6f299c"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    }
+   ],
+   "skipped": [
+    "49641efb-6214-436e-864c-9692dc0edb6c",
+    "8a8a67a0-d4e2-466b-8f0f-771d9c921351",
+    "7b449d6b-475e-418b-876d-aa773d7789df",
+    "2f76dc47-7222-4dfa-950c-c45d7e423d87",
+    "5204a615-99c7-4df0-9995-a04f89680408",
+    "7c8526a9-aa61-4fbc-a78e-d50c235ae404",
+    "25c634dd-8082-47cc-9997-8a5db07677f1",
+    "178632ed-9d88-419f-8568-e4995fb9841b",
+    "89425c6e-cc28-4674-88dc-f004f4192e2a",
+    "196a9745-a5a3-4c51-ad21-6ee80b154543",
+    "594c91b1-5e6a-46ff-b412-c9678b4856de",
+    "31784a15-4445-466e-84ed-9663878fef34"
+   ],
+   "rule_quotes": []
+  }
+ }
+}

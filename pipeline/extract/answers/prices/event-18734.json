@@ -1,13 +1,11 @@
 {
  "batch": "event-18734",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 18734,
    "passes": [],
-   "rule_quotes": [
-    "Name changes can be completed directly through Go&Dance and cost €15."
-   ]
+   "rule_quotes": []
   }
  ]
 }

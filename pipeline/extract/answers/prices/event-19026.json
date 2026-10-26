@@ -1,13 +1,13 @@
 {
  "batch": "event-19026",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 19026,
    "passes": [
     {
      "kind": "full",
-     "label_quote": null,
+     "label_quote": "🎟️ FULLPASS PRICING",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -15,6 +15,7 @@
       {
        "amount": 65,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +29,7 @@
       {
        "amount": 79,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

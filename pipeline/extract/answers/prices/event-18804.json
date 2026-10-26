@@ -1,6 +1,6 @@
 {
  "batch": "event-18804",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 18804,
@@ -15,6 +15,7 @@
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -24,6 +25,20 @@
        "sold_out": false,
        "current": false,
        "quote": "🔹25 EARLY BIRD WOMAN —> 60 euros"
+      },
+      {
+       "amount": 60,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 25,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔹25 EARLY BIRD MAN —> 60 euros"
       }
      ]
     },
@@ -37,6 +52,7 @@
       {
        "amount": 100,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -59,6 +75,7 @@
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -70,8 +87,32 @@
        "quote": "UNIQUE PASS MAN – 60 EUROS"
       },
       {
+       "amount": 60,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "UNIQUE PASS WOMAN – 60 EUROS"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
        "amount": 70,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -83,8 +124,32 @@
        "quote": "UNIQUE PASS MAN – 70 EUROS"
       },
       {
+       "amount": 70,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "UNIQUE PASS WOMAN – 70 EUROS"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
        "amount": 80,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -96,8 +161,32 @@
        "quote": "UNIQUE PASS MAN – 80 EUROS"
       },
       {
+       "amount": 80,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "UNIQUE PASS WOMAN – 80 EUROS"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
        "amount": 90,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -109,8 +198,32 @@
        "quote": "UNIQUE PASS MAN – 90 EUROS"
       },
       {
+       "amount": 90,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "UNIQUE PASS WOMAN – 90 EUROS"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
        "amount": 100,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -122,8 +235,32 @@
        "quote": "UNIQUE PASS MAN – 100 EUROS"
       },
       {
+       "amount": 100,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "UNIQUE PASS WOMAN – 100 EUROS"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
        "amount": 110,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -135,8 +272,32 @@
        "quote": "UNIQUE PASS MAN – 110 EUROS"
       },
       {
+       "amount": 110,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "UNIQUE PASS WOMAN – 110 EUROS"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
        "amount": 120,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -146,10 +307,20 @@
        "sold_out": false,
        "current": false,
        "quote": "UNIQUE PASS MAN – 120 EUROS"
-      },
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
       {
        "amount": 1200,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -159,10 +330,20 @@
        "sold_out": false,
        "current": false,
        "quote": "UNIQUE PASS WOMAN – 1200 EUROS"
-      },
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
       {
        "amount": 130,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -174,8 +355,32 @@
        "quote": "UNIQUE PASS MAN – 130 EUROS"
       },
       {
+       "amount": 130,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "UNIQUE PASS WOMAN – 130 EUROS"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
        "amount": 140,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -185,6 +390,20 @@
        "sold_out": false,
        "current": false,
        "quote": "UNIQUE PASS MAN – 140 EUROS"
+      },
+      {
+       "amount": 140,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "UNIQUE PASS WOMAN – 140 EUROS"
       }
      ]
     }

@@ -1,6 +1,6 @@
 {
  "batch": "event-18832",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 18832,
@@ -15,6 +15,7 @@
       {
        "amount": 290,
        "currency": "PLN",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +29,7 @@
       {
        "amount": 320,
        "currency": "PLN",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -41,6 +43,7 @@
       {
        "amount": 350,
        "currency": "PLN",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "09-01",
@@ -54,6 +57,7 @@
       {
        "amount": 380,
        "currency": "PLN",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "12-01",
@@ -67,6 +71,7 @@
       {
        "amount": 410,
        "currency": "PLN",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "02-01",
@@ -80,6 +85,7 @@
       {
        "amount": 430,
        "currency": "PLN",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "03-01",
@@ -93,6 +99,7 @@
       {
        "amount": 450,
        "currency": "PLN",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -106,9 +113,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "Don’t wait until the line-up is revealed and prices go up."
-   ]
+   "rule_quotes": []
   }
  ]
 }

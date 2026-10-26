@@ -1,6 +1,6 @@
 {
  "batch": "event-16738",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 16738,
@@ -15,6 +15,7 @@
       {
        "amount": 85,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +29,7 @@
       {
        "amount": 95,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "02-05",
@@ -41,6 +43,7 @@
       {
        "amount": 100,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "04-05",
@@ -54,6 +57,7 @@
       {
        "amount": 105,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "06-05",
@@ -67,6 +71,7 @@
       {
        "amount": 110,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "08-05",
@@ -80,6 +85,7 @@
       {
        "amount": 115,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "09-05",
@@ -93,6 +99,7 @@
       {
        "amount": 120,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "10-05",
@@ -106,6 +113,7 @@
       {
        "amount": 130,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -128,10 +136,11 @@
       {
        "amount": 230,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": null,
+       "until": "2026-02-05",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -150,10 +159,11 @@
       {
        "amount": 340,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": null,
+       "until": "2026-02-05",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -172,6 +182,7 @@
       {
        "amount": 75,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -180,11 +191,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Party-pass: 75 eur until the event"
+       "quote": "Party-pass: 75 eur until the event ( 85 eur at the door)"
       },
       {
        "amount": 85,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -193,7 +205,7 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "85 eur at the door"
+       "quote": "Party-pass: 75 eur until the event ( 85 eur at the door)"
       }
      ]
     },
@@ -207,6 +219,7 @@
       {
        "amount": 220,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -229,6 +242,7 @@
       {
        "amount": 330,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

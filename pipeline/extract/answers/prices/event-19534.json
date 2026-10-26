@@ -1,6 +1,6 @@
 {
  "batch": "event-19534",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 19534,
@@ -15,6 +15,7 @@
       {
        "amount": 1550,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +29,7 @@
       {
        "amount": 1650,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -36,7 +38,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Next price tier: €1,650."
+       "quote": "Next price tier: €1,650"
       }
      ]
     }

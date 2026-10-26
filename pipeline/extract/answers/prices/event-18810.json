@@ -1,14 +1,12 @@
 {
  "batch": "event-18810",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 18810,
    "passes": [],
    "rule_quotes": [
-    "Prices increase on the 1st of every month",
-    "Entry payment: $200 (or pay in full)",
-    "Payment plans available (admin fee applies)"
+    "Prices increase on the 1st of every month"
    ]
   }
  ]

@@ -1,6 +1,6 @@
 {
  "batch": "event-16927",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 16927,
@@ -15,6 +15,7 @@
       {
        "amount": 3000,
        "currency": "THB",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

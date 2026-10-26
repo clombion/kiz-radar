@@ -1,6 +1,6 @@
 {
  "batch": "event-18884",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 18884,
@@ -15,6 +15,7 @@
       {
        "amount": 80,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": 80,
        "alt_currency": "EUR",
        "from": null,

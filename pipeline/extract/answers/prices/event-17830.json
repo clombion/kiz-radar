@@ -1,6 +1,6 @@
 {
  "batch": "event-17830",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 17830,
@@ -9,12 +9,13 @@
      "kind": "package",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 14,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 1800,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 45000,
        "alt_currency": "CZK",
        "from": null,

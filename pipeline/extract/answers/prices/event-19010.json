@@ -1,6 +1,6 @@
 {
  "batch": "event-19010",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 19010,
@@ -15,6 +15,7 @@
       {
        "amount": 85,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +29,7 @@
       {
        "amount": 90,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -41,9 +43,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "Passes will cost more at the door"
-   ]
+   "rule_quotes": []
   }
  ]
 }

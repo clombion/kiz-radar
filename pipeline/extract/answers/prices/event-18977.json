@@ -1,6 +1,6 @@
 {
  "batch": "event-18977",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 18977,
@@ -15,6 +15,7 @@
       {
        "amount": 150,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 57000,
        "alt_currency": "HUF",
        "from": null,
@@ -28,6 +29,7 @@
       {
        "amount": 160,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 61000,
        "alt_currency": "HUF",
        "from": null,
@@ -41,6 +43,7 @@
       {
        "amount": 170,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 65000,
        "alt_currency": "HUF",
        "from": null,
@@ -63,6 +66,7 @@
       {
        "amount": 115,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 44000,
        "alt_currency": "HUF",
        "from": null,
@@ -76,6 +80,7 @@
       {
        "amount": 120,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 46000,
        "alt_currency": "HUF",
        "from": null,
@@ -89,6 +94,7 @@
       {
        "amount": 125,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 48000,
        "alt_currency": "HUF",
        "from": null,
@@ -111,6 +117,7 @@
       {
        "amount": 85,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 33000,
        "alt_currency": "HUF",
        "from": null,
@@ -124,6 +131,7 @@
       {
        "amount": 90,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 35000,
        "alt_currency": "HUF",
        "from": null,
@@ -137,6 +145,7 @@
       {
        "amount": 95,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 37000,
        "alt_currency": "HUF",
        "from": null,
@@ -159,6 +168,7 @@
       {
        "amount": 50,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 20000,
        "alt_currency": "HUF",
        "from": null,
@@ -172,6 +182,7 @@
       {
        "amount": 55,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 22000,
        "alt_currency": "HUF",
        "from": null,
@@ -185,6 +196,7 @@
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 24000,
        "alt_currency": "HUF",
        "from": null,
@@ -207,6 +219,7 @@
       {
        "amount": 55,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 22000,
        "alt_currency": "HUF",
        "from": null,
@@ -220,6 +233,7 @@
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 24000,
        "alt_currency": "HUF",
        "from": null,
@@ -233,6 +247,7 @@
       {
        "amount": 65,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 26000,
        "alt_currency": "HUF",
        "from": null,
@@ -255,6 +270,7 @@
       {
        "amount": 50,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 20000,
        "alt_currency": "HUF",
        "from": null,
@@ -268,6 +284,7 @@
       {
        "amount": 55,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 22000,
        "alt_currency": "HUF",
        "from": null,
@@ -281,6 +298,7 @@
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 24000,
        "alt_currency": "HUF",
        "from": null,

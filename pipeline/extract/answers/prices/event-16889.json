@@ -1,6 +1,6 @@
 {
  "batch": "event-16889",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 16889,
@@ -15,6 +15,7 @@
       {
        "amount": 80,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,11 +24,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "– FULL PASS 1st Price = €80 (Until April 1st)"
+       "quote": "FULL PASS 1st Price = €80 (Until April 1st)"
       },
       {
        "amount": 90,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -36,11 +38,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "– FULL PASS 2nd Price = €90 (Until September 15th)"
+       "quote": "FULL PASS 2nd Price = €90 (Until September 15th)"
       },
       {
        "amount": 100,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -49,7 +52,7 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "– FULL PASS 3rd Price = €100 (Until the date of the event and at the door)"
+       "quote": "FULL PASS 3rd Price = €100 (Until the date of the event and at the door)"
       }
      ]
     },
@@ -63,6 +66,7 @@
       {
        "amount": 150,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -71,11 +75,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "– FULL PASS COUPLE 1st Price = €150 (Until April 1st)"
+       "quote": "FULL PASS COUPLE 1st Price = €150 (Until April 1st)"
       },
       {
        "amount": 165,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -84,11 +89,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "– FULL PASS COUPLE 2nd Price = €165 (Until September 15th)"
+       "quote": "FULL PASS COUPLE 2nd Price = €165 (Until September 15th)"
       },
       {
        "amount": 185,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -97,7 +103,7 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "– FULL PASS COUPLE 3rd Price = €185 (Until the date of the event and at the door)"
+       "quote": "FULL PASS COUPLE 3rd Price = €185 (Until the date of the event and at the door)"
       }
      ]
     }

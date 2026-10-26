@@ -1,6 +1,6 @@
 {
  "batch": "event-18757",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 18757,
@@ -9,12 +9,13 @@
      "kind": "full",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 69,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -31,12 +32,13 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": 1,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 35,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -53,12 +55,13 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": 1,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -75,12 +78,13 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": 1,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 35,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -97,12 +101,13 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": 1,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 35,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -119,12 +124,13 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": 1,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -141,12 +147,13 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": 1,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 35,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -163,12 +170,13 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": 1,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 35,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

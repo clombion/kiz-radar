@@ -1,6 +1,6 @@
 {
  "batch": "event-17853",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 17853,
@@ -15,6 +15,7 @@
       {
        "amount": 190,
        "currency": "USD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -37,6 +38,7 @@
       {
        "amount": 160,
        "currency": "USD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

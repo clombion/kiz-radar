@@ -1,6 +1,6 @@
 {
  "batch": "event-18371",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 18371,
@@ -9,12 +9,13 @@
      "kind": "package",
      "label_quote": "Triple or Apartment room (per person):",
      "group_size": 1,
-     "days": null,
+     "days": 2,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 170,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +29,7 @@
       {
        "amount": 180,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -41,6 +43,7 @@
       {
        "amount": 190,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-11-07",
@@ -57,12 +60,13 @@
      "kind": "package",
      "label_quote": "Triple or Apartment room (per person):",
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 220,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -76,6 +80,7 @@
       {
        "amount": 230,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -89,6 +94,7 @@
       {
        "amount": 240,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-11-07",
@@ -105,12 +111,13 @@
      "kind": "package",
      "label_quote": "Triple or Apartment room (per person):",
      "group_size": 1,
-     "days": null,
+     "days": 4,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 270,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -124,6 +131,7 @@
       {
        "amount": 280,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -137,6 +145,7 @@
       {
        "amount": 290,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-11-07",
@@ -153,12 +162,13 @@
      "kind": "package",
      "label_quote": "Double room (per person):",
      "group_size": 1,
-     "days": null,
+     "days": 2,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 180,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -172,6 +182,7 @@
       {
        "amount": 190,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -185,6 +196,7 @@
       {
        "amount": 200,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-11-07",
@@ -201,12 +213,13 @@
      "kind": "package",
      "label_quote": "Double room (per person):",
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 230,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -220,6 +233,7 @@
       {
        "amount": 240,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -233,6 +247,7 @@
       {
        "amount": 250,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-11-07",
@@ -249,12 +264,13 @@
      "kind": "package",
      "label_quote": "Double room (per person):",
      "group_size": 1,
-     "days": null,
+     "days": 4,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 280,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -268,6 +284,7 @@
       {
        "amount": 290,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -281,6 +298,7 @@
       {
        "amount": 300,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-11-07",
@@ -297,12 +315,13 @@
      "kind": "package",
      "label_quote": "Single room:",
      "group_size": 1,
-     "days": null,
+     "days": 2,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 240,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -316,6 +335,7 @@
       {
        "amount": 250,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -329,6 +349,7 @@
       {
        "amount": 260,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-11-07",
@@ -345,12 +366,13 @@
      "kind": "package",
      "label_quote": "Single room:",
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 330,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -364,6 +386,7 @@
       {
        "amount": 340,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -377,6 +400,7 @@
       {
        "amount": 350,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-11-07",
@@ -393,12 +417,13 @@
      "kind": "package",
      "label_quote": "Single room:",
      "group_size": 1,
-     "days": null,
+     "days": 4,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 420,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -412,6 +437,7 @@
       {
        "amount": 430,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -425,6 +451,7 @@
       {
        "amount": 440,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-11-07",

@@ -1,6 +1,6 @@
 {
  "batch": "event-17515",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 17515,
@@ -9,12 +9,13 @@
      "kind": "full",
      "label_quote": "🔸▪️🔸▪️🔸Full Pass🔸▪️🔸▪️🔸",
      "group_size": 1,
-     "days": null,
+     "days": 4,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

@@ -1,6 +1,6 @@
 {
  "batch": "event-17493",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v3",
  "events": [
   {
    "event_id": 17493,
@@ -15,6 +15,7 @@
       {
        "amount": 120,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,11 +24,12 @@
        "door": false,
        "sold_out": false,
        "current": true,
-       "quote": "Current price – 120eur"
+       "quote": "Current price – 120eur."
       },
       {
        "amount": 125,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "06-01",
@@ -41,6 +43,167 @@
      ]
     },
     {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 30,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "Thursday preparty – 30eur"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 35,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "Friday party – 35eur"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 40,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "Saturday party – 40eur"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 35,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "Sunday party – 35eur"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 20,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "Friday social – 20eur"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 25,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "Saturday social – 25eur"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 25,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "Sunday social – 25eur"
+      }
+     ]
+    },
+    {
      "kind": "party",
      "label_quote": null,
      "group_size": 1,
@@ -50,6 +213,7 @@
       {
        "amount": 130,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -72,6 +236,7 @@
       {
        "amount": 150,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -83,163 +248,11 @@
        "quote": "Full pass at the door 150 eur"
       }
      ]
-    },
-    {
-     "kind": "day",
-     "label_quote": "All prices AT THE DOOR:",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 30,
-       "currency": "EUR",
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "Thursday preparty – 30eur"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "label_quote": "All prices AT THE DOOR:",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 35,
-       "currency": "EUR",
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "Friday party – 35eur"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "label_quote": "All prices AT THE DOOR:",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 40,
-       "currency": "EUR",
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "Saturday party – 40eur"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "label_quote": "All prices AT THE DOOR:",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 35,
-       "currency": "EUR",
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "Sunday party – 35eur"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "label_quote": "All prices AT THE DOOR:",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 20,
-       "currency": "EUR",
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "Friday social – 20eur"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "label_quote": "All prices AT THE DOOR:",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 25,
-       "currency": "EUR",
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "Saturday social – 25eur"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "label_quote": "All prices AT THE DOOR:",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 25,
-       "currency": "EUR",
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "Sunday social – 25eur"
-      }
-     ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "*𝐩𝐫𝐞𝐩𝐚𝐫𝐭𝐲 𝐚𝐧𝐝 𝐚𝐟𝐭𝐞𝐫-𝐩𝐚𝐫𝐭𝐲 𝐚𝐫𝐞 𝐧𝐨𝐭 𝐢𝐧𝐜𝐥𝐮𝐝𝐞𝐝 𝐢𝐧 any pass ‼"
+   ]
   }
  ]
 }
