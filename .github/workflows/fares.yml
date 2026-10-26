@@ -9,7 +9,7 @@ on:
     inputs:
       budget:
         description: Searches in this run
-        default: '30'
+        default: '20'
 
 permissions:
   contents: write
@@ -28,7 +28,7 @@ jobs:
       - name: Search the festival weekends due today
         id: search
         continue-on-error: true
-        run: python3 pipeline/fares.py refresh --budget "${{ inputs.budget || '30' }}" --max-seconds 1200
+        run: python3 pipeline/fares.py refresh --budget "${{ inputs.budget || '20' }}" --max-seconds 1200
       - name: Commit new fares
         run: |
           git add docs/data/fares.csv pipeline/fare_jobs.csv

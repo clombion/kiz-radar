@@ -14,7 +14,7 @@ for is recorded as such and tried again at its next interval. Google sometimes r
 a refused search is tried once more after a minute; refused again, it stops the run, which then exits with an error
 after saving what it found.
 
-    python3 pipeline/fares.py refresh --budget 30      # what the GitHub Action runs
+    python3 pipeline/fares.py refresh --budget 20      # what the GitHub Action runs
     python3 pipeline/fares.py plan                     # show what is due, without searching
 """
 import argparse, csv, datetime as dt, json, os, shlex, sqlite3, subprocess, sys, time, zlib
@@ -29,7 +29,7 @@ FLI = os.environ.get('FLI_CMD', f'uvx -q --from git+https://github.com/punitaran
 SELLS_DAYS = 330          # Google sells about 11 months ahead
 # (days until the Friday, days between searches): weekly when it is close, every six weeks when it is far
 WEEKS_APART = [(35, 7), (91, 14), (182, 28), (SELLS_DAYS, 42)]
-PAUSE = 5                 # seconds between searches
+PAUSE = 10                # seconds between searches; Google refuses after about 20 searches 5 seconds apart
 RETRY_AFTER = 60          # seconds to wait before trying a refused search once more
 
 FARE_FIELDS = ['airport', 'depart', 'return', 'price', 'currency', 'fetched_at']
@@ -137,7 +137,7 @@ if __name__ == '__main__':
     ap = argparse.ArgumentParser(description='Search Friday-to-Monday fares for festival weekends that are due.')
     sub = ap.add_subparsers(dest='cmd', required=True)
     r = sub.add_parser('refresh', help='search the weekends due today and save the fares')
-    r.add_argument('--budget', type=int, default=30, help='most searches in this run')
+    r.add_argument('--budget', type=int, default=20, help='most searches in this run')
     r.add_argument('--max-seconds', type=int, default=1200, help='stop starting searches after this long')
     sub.add_parser('plan', help='list the weekends due today, without searching')
     a = ap.parse_args()
