@@ -1,6 +1,6 @@
 {
  "batch": "event-17853",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 17853,
@@ -23,7 +23,7 @@
        "quantity": null,
        "door": false,
        "sold_out": false,
-       "current": false,
+       "current": true,
        "quote": "✨FullPass $190"
       }
      ]
@@ -46,7 +46,7 @@
        "quantity": null,
        "door": false,
        "sold_out": false,
-       "current": false,
+       "current": true,
        "quote": "✨PartyPass $160✨"
       }
      ]

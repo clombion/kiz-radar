@@ -1,13 +1,13 @@
 {
  "batch": "event-16768",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 16768,
    "passes": [
     {
      "kind": "package",
-     "label_quote": null,
+     "label_quote": "FULLPASS",
      "group_size": 1,
      "days": null,
      "includes_hotel": true,
@@ -30,7 +30,7 @@
     },
     {
      "kind": "package",
-     "label_quote": null,
+     "label_quote": "✪ EXCURSIONS (from 26Oct to 30Oct )",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -41,8 +41,8 @@
        "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "10-26",
-       "until": "10-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,

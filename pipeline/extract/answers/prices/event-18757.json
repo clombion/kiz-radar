@@ -1,6 +1,6 @@
 {
  "batch": "event-18757",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 18757,
@@ -32,7 +32,7 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
@@ -55,7 +55,7 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
@@ -78,7 +78,7 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
@@ -101,7 +101,7 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
@@ -124,7 +124,7 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
@@ -147,7 +147,7 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
@@ -170,7 +170,7 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {

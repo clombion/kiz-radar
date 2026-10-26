@@ -1,13 +1,13 @@
 {
  "batch": "event-19048",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 19048,
    "passes": [
     {
      "kind": "full",
-     "label_quote": null,
+     "label_quote": "We will have 3 price tiers",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -24,7 +24,7 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "Blind pass – 690 dkk (29th May-12th June)"
+       "quote": "❌Blind pass – 690 dkk (29th May-12th June) ❌"
       },
       {
        "amount": 850,

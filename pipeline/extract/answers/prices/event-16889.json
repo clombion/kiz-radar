@@ -1,6 +1,6 @@
 {
  "batch": "event-16889",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 16889,
@@ -9,7 +9,7 @@
      "kind": "full",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
@@ -24,7 +24,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "FULL PASS 1st Price = €80 (Until April 1st)"
+       "quote": "– FULL PASS 1st Price = €80 (Until April 1st)"
       },
       {
        "amount": 90,
@@ -38,7 +38,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "FULL PASS 2nd Price = €90 (Until September 15th)"
+       "quote": "– FULL PASS 2nd Price = €90 (Until September 15th)"
       },
       {
        "amount": 100,
@@ -52,7 +52,7 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "FULL PASS 3rd Price = €100 (Until the date of the event and at the door)"
+       "quote": "– FULL PASS 3rd Price = €100 (Until the date of the event and at the door)"
       }
      ]
     },
@@ -60,7 +60,7 @@
      "kind": "full",
      "label_quote": null,
      "group_size": 2,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
@@ -75,7 +75,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "FULL PASS COUPLE 1st Price = €150 (Until April 1st)"
+       "quote": "– FULL PASS COUPLE 1st Price = €150 (Until April 1st)"
       },
       {
        "amount": 165,
@@ -89,7 +89,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "FULL PASS COUPLE 2nd Price = €165 (Until September 15th)"
+       "quote": "– FULL PASS COUPLE 2nd Price = €165 (Until September 15th)"
       },
       {
        "amount": 185,
@@ -103,7 +103,7 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "FULL PASS COUPLE 3rd Price = €185 (Until the date of the event and at the door)"
+       "quote": "– FULL PASS COUPLE 3rd Price = €185 (Until the date of the event and at the door)"
       }
      ]
     }

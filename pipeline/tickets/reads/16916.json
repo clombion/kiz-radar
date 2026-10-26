@@ -1,0 +1,77 @@
+{
+ "event_id": 16916,
+ "title": "Malga Temptation Festival 2026 (Secret Oasis édition)",
+ "start_date": "2026-11-25",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt_version": "first-read-v2",
+ "rows_at": "2026-10-26T21:39:27+00:00",
+ "description": "Málaga Temptation 2026 (The Secret Oasis)\nMelvin & Gatica\nRonald & Alba\nKike & Nahir\nAlfredo & Andrea\nSergio & Elena\nCarlos & Paz\nMiguel & Sunsire\nCarlos & Fernanda\nÉmilien & Tehina\nJorge & Azahara\nJavi & Fuensi\nDj Khalid\nDj Manuel Citro\nDj Pecino\nDj One Bachata\nDj Killo\nDj Macky\nKizomba\nJojo & Jenni\nJesús & Anni\nDwe & Gabi\nJP & Estefi\nJack & Sara\nAdilson & Telma\nLuis & Karen\nJamaica\nCosta\nMiguel\nNelson Areceli\nJustinho\nAtou\nMassemba\nDj Paraíso\nDj Pingusso\nDj Stefanio\nDj Nice Life\nDj Shark\nDj Dani\nDj Lisa\nDj Nao\nDj Loka\nDj Carlos King\nDj Santos",
+ "passes": [
+  {
+   "kind": "full",
+   "label_quote": null,
+   "group_size": 1,
+   "days": 3,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "38d15c15-3841-4812-8eed-4c487f9a3a0c",
+      "17dc728a-346b-430d-a0ad-c887e6b0c330"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "label_quote": null,
+   "group_size": 1,
+   "days": 4,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "186d9aef-813e-4a80-8ace-c791110ac168",
+      "dc3cda6b-a06a-4253-85b7-63ed48a716bb"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "label_quote": null,
+   "group_size": 1,
+   "days": 5,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "bb9b1281-c4cb-4205-a143-b9835f219d3f",
+      "d55e31a6-2cb1-43be-a863-9b2437c8a55a"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [
+  "e2b41381-1c0e-4065-a363-b152c40777ce",
+  "5348184e-38f6-49d0-828e-1006ac6693c6",
+  "2f2439f0-6cba-451d-8f83-1a0e28c71b07",
+  "1707aed4-bbd1-4a48-b148-112558bb6d9b",
+  "a18b3403-b4e7-4856-b8e2-fc14644a11bc",
+  "142dc17e-c343-4048-aed8-b6fb2434991c"
+ ],
+ "rule_quotes": []
+}

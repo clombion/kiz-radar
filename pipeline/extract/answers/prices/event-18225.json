@@ -1,6 +1,6 @@
 {
  "batch": "event-18225",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 18225,
@@ -126,7 +126,7 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "€10 at the door / PLN 40"
+       "quote": "23:00-03:00 ( €10 at the door / PLN 40 )"
       }
      ]
     },
@@ -155,7 +155,7 @@
     },
     {
      "kind": "day",
-     "label_quote": "SATURDAY Day Pass (workshops +social+party)",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -200,11 +200,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "First phase – 30% of the capacity",
-    "Second phase – 40% of the capacity",
-    "Third phase – last 30% of the capacity"
-   ]
+   "rule_quotes": []
   }
  ]
 }

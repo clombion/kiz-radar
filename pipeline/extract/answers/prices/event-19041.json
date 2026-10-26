@@ -1,6 +1,6 @@
 {
  "batch": "event-19041",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 19041,
@@ -74,7 +74,7 @@
      "kind": "day",
      "label_quote": "PALMERA PLAYA PRE-PARTY",
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
@@ -97,7 +97,7 @@
      "kind": "day",
      "label_quote": "SATURDAY SOCIAL – HOTEL ATTICA21",
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
@@ -120,7 +120,7 @@
      "kind": "day",
      "label_quote": "SUNDAY SOCIAL – HOTEL ATTICA21",
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {

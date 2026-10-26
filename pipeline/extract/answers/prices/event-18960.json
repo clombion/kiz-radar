@@ -1,6 +1,6 @@
 {
  "batch": "event-18960",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 18960,
@@ -89,7 +89,7 @@
        "alt_amount": null,
        "alt_currency": null,
        "from": "01-01",
-       "until": null,
+       "until": "01-31",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -196,7 +196,7 @@
        "alt_amount": null,
        "alt_currency": null,
        "from": "01-01",
-       "until": null,
+       "until": "01-31",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -303,7 +303,7 @@
        "alt_amount": null,
        "alt_currency": null,
        "from": "01-01",
-       "until": null,
+       "until": "01-31",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -327,7 +327,7 @@
      ]
     },
     {
-     "kind": "party",
+     "kind": "other",
      "label_quote": "ADMISSION TO DANCE PARTIES",
      "group_size": 1,
      "days": null,

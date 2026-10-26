@@ -1,6 +1,6 @@
 {
  "batch": "event-18829",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 18829,
@@ -202,7 +202,7 @@
     }
    ],
    "rule_quotes": [
-    "Prices exclude ticketing fees"
+    "*Prices exclude ticketing fees"
    ]
   }
  ]

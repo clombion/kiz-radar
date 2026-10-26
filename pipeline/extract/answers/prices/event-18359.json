@@ -1,6 +1,6 @@
 {
  "batch": "event-18359",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 18359,
@@ -24,7 +24,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "FULL PASS 𝑆𝑜𝑙𝑜 ………….. 65€ ✅"
+       "quote": "– FULL PASS 𝑆𝑜𝑙𝑜 ………….. 65€ ✅"
       },
       {
        "amount": 60,
@@ -38,7 +38,7 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "FULL PASS 𝑆𝑜𝑙𝑜 ………….. 60€ ❌"
+       "quote": "– FULL PASS 𝑆𝑜𝑙𝑜 ………….. 60€ ❌"
       },
       {
        "amount": 55,
@@ -52,7 +52,7 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "FULL PASS 𝑆𝑜𝑙𝑜 ………….. 55€ ❌"
+       "quote": "– FULL PASS 𝑆𝑜𝑙𝑜 ………….. 55€ ❌"
       }
      ]
     },
@@ -75,7 +75,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "FULL PASS 𝐷𝑢𝑜 𝑚𝑖𝑥𝑡𝑒 ….120€ ✅"
+       "quote": "– FULL PASS 𝐷𝑢𝑜 𝑚𝑖𝑥𝑡𝑒 ….120€ ✅"
       },
       {
        "amount": 110,
@@ -89,7 +89,7 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "FULL PASS 𝐷𝑢𝑜 𝑚𝑖𝑥𝑡𝑒 ….110€ ❌"
+       "quote": "– FULL PASS 𝐷𝑢𝑜 𝑚𝑖𝑥𝑡𝑒 ….110€ ❌"
       }
      ]
     },
@@ -112,7 +112,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "FULL PASS 𝐷𝑢𝑜 𝑚𝑒𝑛….110€ ✅"
+       "quote": "– FULL PASS 𝐷𝑢𝑜 𝑚𝑒𝑛….110€ ✅"
       }
      ]
     },
@@ -135,7 +135,7 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "10 EARLY BIRD 𝐿𝑒𝑎𝑑𝑒𝑟 … 50€ ❌"
+       "quote": "– 10 EARLY BIRD 𝐿𝑒𝑎𝑑𝑒𝑟 … 50€ ❌"
       }
      ]
     }

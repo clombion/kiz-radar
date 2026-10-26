@@ -1,6 +1,6 @@
 {
  "batch": "event-19018",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 19018,
@@ -9,7 +9,7 @@
      "kind": "full",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
@@ -24,7 +24,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 FULL PASS SOLO: 90 CHF"
+       "quote": "FULL PASS SOLO: 90 CHF"
       },
       {
        "amount": 100,
@@ -38,7 +38,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 FULL PASS SOLO: 100 CHF"
+       "quote": "FULL PASS SOLO: 100 CHF"
       },
       {
        "amount": 110,
@@ -52,7 +52,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 FULL PASS SOLO: 110 CHF"
+       "quote": "FULL PASS SOLO: 110 CHF"
       },
       {
        "amount": 120,
@@ -66,7 +66,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 FULL PASS SOLO: 120 CHF"
+       "quote": "FULL PASS SOLO: 120 CHF"
       }
      ]
     },
@@ -74,7 +74,7 @@
      "kind": "full",
      "label_quote": null,
      "group_size": 2,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
@@ -89,7 +89,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 FULL PASS COUPLE (FOR 1 MAN & 1 WOMAN): 170 CHF"
+       "quote": "FULL PASS COUPLE (FOR 1 MAN & 1 WOMAN): 170 CHF"
       },
       {
        "amount": 190,
@@ -103,7 +103,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 FULL PASS COUPLE (FOR 1 MAN & 1 WOMAN): 190 CHF"
+       "quote": "FULL PASS COUPLE (FOR 1 MAN & 1 WOMAN): 190 CHF"
       },
       {
        "amount": 210,
@@ -117,7 +117,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 FULL COUPLE PASS (FOR 1 MAN & 1 WOMAN): 210 CHF"
+       "quote": "FULL COUPLE PASS (FOR 1 MAN & 1 WOMAN): 210 CHF"
       },
       {
        "amount": 230,
@@ -131,7 +131,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 FULL PASS COUPLE (FOR 1 MAN & 1 WOMAN): 230 CHF"
+       "quote": "FULL PASS COUPLE (FOR 1 MAN & 1 WOMAN): 230 CHF"
       }
      ]
     },
@@ -154,7 +154,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 DAY PASS (FRIDAY) – WORKSHOPS + PARTY: 50 CHF"
+       "quote": "DAY PASS (FRIDAY) – WORKSHOPS + PARTY: 50 CHF"
       },
       {
        "amount": 55,
@@ -168,7 +168,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 DAY PASS (FRIDAY) – WORKSHOPS + PARTY: 55 CHF"
+       "quote": "DAY PASS (FRIDAY) – WORKSHOPS + PARTY: 55 CHF"
       },
       {
        "amount": 55,
@@ -182,7 +182,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 DAY PASS (FRIDAY) – COURSES + PARTY: 55 CHF"
+       "quote": "DAY PASS (FRIDAY) – COURSES + PARTY: 55 CHF"
       },
       {
        "amount": 60,
@@ -196,7 +196,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 DAY PASS (FRIDAY) – WORKSHOPS + PARTY: 60 CHF"
+       "quote": "DAY PASS (FRIDAY) – WORKSHOPS + PARTY: 60 CHF"
       }
      ]
     },
@@ -219,7 +219,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 DAY PASS (SATURDAY) – (WORKSHOPS + SOCIAL + PARTY + AFTER-PARTY): 60 CHF"
+       "quote": "DAY PASS (SATURDAY) – (WORKSHOPS + SOCIAL + PARTY + AFTER-PARTY): 60 CHF"
       },
       {
        "amount": 70,
@@ -233,7 +233,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 DAY PASS (SATURDAY) – (COURSES + SOCIAL + PARTY + AFTER PARTY): 70 CHF"
+       "quote": "DAY PASS (SATURDAY) – (COURSES + SOCIAL + PARTY + AFTER PARTY): 70 CHF"
       },
       {
        "amount": 75,
@@ -247,7 +247,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 DAY PASS (SATURDAY) – (COURSES + SOCIAL + PARTY + AFTER PARTY): 75 CHF"
+       "quote": "DAY PASS (SATURDAY) – (COURSES + SOCIAL + PARTY + AFTER PARTY): 75 CHF"
       },
       {
        "amount": 80,
@@ -261,7 +261,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 DAY PASS (SATURDAY) – (WORKSHOPS + SOCIAL + PARTY + AFTER-PARTY): 80 CHF"
+       "quote": "DAY PASS (SATURDAY) – (WORKSHOPS + SOCIAL + PARTY + AFTER-PARTY): 80 CHF"
       }
      ]
     },
@@ -284,7 +284,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 DAY PASS (SUNDAY) – WORKSHOPS + SOCIAL: 50 CHF"
+       "quote": "DAY PASS (SUNDAY) – WORKSHOPS + SOCIAL: 50 CHF"
       },
       {
        "amount": 55,
@@ -298,7 +298,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 DAY PASS (SUNDAY) – COURSES + SOCIAL: 55 CHF"
+       "quote": "DAY PASS (SUNDAY) – COURSES + SOCIAL: 55 CHF"
       },
       {
        "amount": 55,
@@ -312,7 +312,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 DAY PASS (SUNDAY) – COURSES + SOCIAL: 55 CHF"
+       "quote": "DAY PASS (SUNDAY) – COURSES + SOCIAL: 55 CHF"
       },
       {
        "amount": 60,
@@ -326,7 +326,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 DAY PASS (SUNDAY) – WORKSHOPS + SOCIAL: 60 CHF"
+       "quote": "DAY PASS (SUNDAY) – WORKSHOPS + SOCIAL: 60 CHF"
       }
      ]
     },
@@ -349,7 +349,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 PARTY PASS (PARTY + SOCIAL + AFTER-PARTY): 40 CHF"
+       "quote": "PARTY PASS (PARTY + SOCIAL + AFTER-PARTY): 40 CHF"
       },
       {
        "amount": 45,
@@ -363,7 +363,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 PARTY PASS (PARTY + SOCIAL + AFTER PARTY): 45 CHF"
+       "quote": "PARTY PASS (PARTY + SOCIAL + AFTER PARTY): 45 CHF"
       },
       {
        "amount": 45,
@@ -377,7 +377,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 PARTY PASS (PARTY + SOCIAL + AFTER PARTY): 45 CHF"
+       "quote": "PARTY PASS (PARTY + SOCIAL + AFTER PARTY): 45 CHF"
       },
       {
        "amount": 50,
@@ -391,7 +391,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔺 PARTY PASS (PARTY + SOCIAL + AFTER-PARTY): 50 CHF"
+       "quote": "PARTY PASS (PARTY + SOCIAL + AFTER-PARTY): 50 CHF"
       }
      ]
     },
@@ -414,7 +414,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔘 FRIDAY PARTY: 20 CHF"
+       "quote": "FRIDAY PARTY: 20 CHF"
       }
      ]
     },
@@ -437,7 +437,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔘 SATURDAY PARTY: 25 CHF"
+       "quote": "SATURDAY PARTY: 25 CHF"
       }
      ]
     },
@@ -460,7 +460,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔘 SATURDAY SOCIAL: 15 CHF"
+       "quote": "SATURDAY SOCIAL: 15 CHF"
       }
      ]
     },
@@ -483,7 +483,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔘 SUNDAY SOCIAL: 15 CHF"
+       "quote": "SUNDAY SOCIAL: 15 CHF"
       }
      ]
     }

@@ -1,6 +1,6 @@
 {
  "batch": "event-16815",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 16815,
@@ -24,7 +24,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🎯 Full Pass and full board stay, in a triple/quadruple room: 225€"
+       "quote": "Full Pass and full board stay, in a triple/quadruple room: 225€"
       }
      ]
     },
@@ -47,7 +47,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🎯 Full Pass and full board stay, in a double room: 240€"
+       "quote": "Full Pass and full board stay, in a double room: 240€"
       }
      ]
     },
@@ -70,7 +70,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🎯 Full Pass and full board stay, in a double room for single use: 300€"
+       "quote": "Full Pass and full board stay, in a double room for single use: 300€"
       }
      ]
     },
@@ -93,13 +93,15 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🎯 Single Full Pass: 60€"
+       "quote": "Single Full Pass: 60€"
       }
      ]
     }
    ],
    "rule_quotes": [
-    "ℹ️😮 The price of the Packages will have the following increases:\n– increase in May 2026 ➡️ +10€\n– increase in September 2026 ➡️ +10€\n– increase in November 2026 ➡️ +10€"
+    "increase in May 2026 ➡️ +10€",
+    "increase in September 2026 ➡️ +10€",
+    "increase in November 2026 ➡️ +10€"
    ]
   }
  ]

@@ -1,0 +1,88 @@
+{
+ "event_id": 18285,
+ "title": "La Luna Festival – Kizz District 2026",
+ "start_date": "2026-11-06",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt_version": "first-read-v2",
+ "rows_at": "2026-10-26T22:53:34+00:00",
+ "description": "LA LUNA FESTIVAL KIZZ DISTRICT 2026 (ALL IN ONE)\n⬜️◼️⬜️🟪⬜️◼️⬜️🟪⬜️◼️⬜️\nLa Luna Festival Kizz District is here.\nFirst edition, Gothenburg, 6–9 November 2026.\nA full weekend built around what we love. connection, music, and dancing.\nTwo floors, two energies: UrbanKiz and Kizomba, side by side.\nNo overcomplication, just a solid event with good people and good music.\n—\nTEACHERS LINE UP\n▫️Nii & Angie\n▫️Theo\n▫️Mamadou\n▫️Lessly & Naomi\n▫️William & Jeanette\n—\nDJ LINE UP\n▫️DJ Lee Ross\n▫️DJ Adnan\n▫️DJ Da Mata\n▫️DJ Joey C\n▫️DJ Lawa\n▫️DJ Nessu\n▫️DJ Maie\n—\nPHOTOGRAPHER\n▫️ACBFOTO\n—\nTICKETS & HOTEL\nhttps://www.goandance.com/es/evento/8997/la-luna-festival\n—\nEVENT POLICY\nGood vibes only",
+ "passes": [
+  {
+   "kind": "full",
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "9e1b18c9-3cff-4299-ba9d-ff5a67d38c7f"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "8b14d2da-ff15-48fc-8a5b-cb30d5fc4dff",
+      "2a7b4ef0-d264-46cc-bcba-1f70f199ef64",
+      "2bcdf958-b7a0-43db-9951-5a51037e67b2"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "9b5eeddf-4c9b-4dbc-ba56-e4df14629751",
+      "f361b7b7-f458-4c48-943b-7d63fdeb92d9"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "6827c961-6904-41bc-a8a2-4a67813b8c1a"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [],
+ "rule_quotes": []
+}

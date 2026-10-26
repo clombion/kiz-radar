@@ -1,6 +1,6 @@
 {
  "batch": "event-18964",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 18964,
@@ -61,7 +61,7 @@
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": "10-30",
+       "until": "10-31",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -86,7 +86,7 @@
     },
     {
      "kind": "full",
-     "label_quote": "FIRST 10 FULL COUPLE PASSES",
+     "label_quote": "★FIRST 10 FULL COUPLE PASSES",
      "group_size": 2,
      "days": null,
      "includes_hotel": false,
@@ -140,7 +140,7 @@
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": "10-30",
+       "until": "10-31",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -165,7 +165,7 @@
     },
     {
      "kind": "full",
-     "label_quote": "Early Birds Group deals",
+     "label_quote": null,
      "group_size": 5,
      "days": null,
      "includes_hotel": false,
@@ -188,7 +188,7 @@
     },
     {
      "kind": "full",
-     "label_quote": "Early Birds Group deals",
+     "label_quote": null,
      "group_size": 10,
      "days": null,
      "includes_hotel": false,
@@ -211,7 +211,7 @@
     },
     {
      "kind": "package",
-     "label_quote": "FULL BOARD 🍔🛏️🕺Group deals",
+     "label_quote": "💫FULL BOARD 🍔🛏️🕺Group deals",
      "group_size": 4,
      "days": null,
      "includes_hotel": true,
@@ -223,7 +223,7 @@
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": null,
+       "until": "09-30",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -234,7 +234,7 @@
     },
     {
      "kind": "package",
-     "label_quote": "FULL BOARD 🍔🛏️🕺Group deals",
+     "label_quote": "💫FULL BOARD 🍔🛏️🕺Group deals",
      "group_size": 6,
      "days": null,
      "includes_hotel": true,
@@ -246,7 +246,7 @@
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": null,
+       "until": "09-30",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -257,7 +257,7 @@
     },
     {
      "kind": "package",
-     "label_quote": "FULL BOARD 🍔🛏️🕺Group deals",
+     "label_quote": "💫FULL BOARD 🍔🛏️🕺Group deals",
      "group_size": 8,
      "days": null,
      "includes_hotel": true,
@@ -269,7 +269,7 @@
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": null,
+       "until": "09-30",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -279,9 +279,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "all full board deals are ONLY available until the end of September"
-   ]
+   "rule_quotes": []
   }
  ]
 }

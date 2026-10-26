@@ -1,6 +1,6 @@
 {
  "batch": "event-17965",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 17965,
@@ -9,7 +9,7 @@
      "kind": "package",
      "label_quote": "🍽️ GALA DINNER + PARTY PACKAGE",
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
@@ -60,7 +60,7 @@
      "kind": "day",
      "label_quote": "💃 PARTY-ONLY ENTRY",
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
@@ -111,7 +111,7 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
@@ -134,7 +134,7 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
@@ -157,7 +157,7 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
@@ -180,7 +180,7 @@
      "kind": "day",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
@@ -201,60 +201,9 @@
     },
     {
      "kind": "package",
-     "label_quote": "👑 ROYAL VIP FULL PASS 👑",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 149,
-       "currency": "EUR",
-       "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "💎 EARLY BIRD: €149"
-      },
-      {
-       "amount": 169,
-       "currency": "EUR",
-       "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "💎 REGULAR: €169"
-      },
-      {
-       "amount": 189,
-       "currency": "EUR",
-       "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "💎 LAST MINUTE: €189"
-      }
-     ]
-    },
-    {
-     "kind": "other",
      "label_quote": "🥂 ROYAL SILVER PACK",
      "group_size": 1,
-     "days": null,
+     "days": 2,
      "includes_hotel": false,
      "tiers": [
       {
@@ -305,7 +254,7 @@
      "kind": "other",
      "label_quote": "💃 PARTY SILVER PACK",
      "group_size": 1,
-     "days": null,
+     "days": 2,
      "includes_hotel": false,
      "tiers": [
       {
@@ -353,10 +302,10 @@
      ]
     },
     {
-     "kind": "other",
+     "kind": "package",
      "label_quote": "🥇 ROYAL GOLD PACK",
      "group_size": 1,
-     "days": null,
+     "days": 2,
      "includes_hotel": false,
      "tiers": [
       {
@@ -407,7 +356,7 @@
      "kind": "other",
      "label_quote": "🔥 GOLD PARTY PACK",
      "group_size": 1,
-     "days": null,
+     "days": 2,
      "includes_hotel": false,
      "tiers": [
       {
@@ -458,7 +407,7 @@
      "kind": "other",
      "label_quote": "💎 SBK WEEKEND PACK",
      "group_size": 1,
-     "days": null,
+     "days": 2,
      "includes_hotel": false,
      "tiers": [
       {
@@ -474,6 +423,57 @@
        "sold_out": false,
        "current": false,
        "quote": "🎟️ PACK: €49"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "label_quote": "👑 ROYAL VIP FULL PASS 👑",
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 149,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "💎 EARLY BIRD: €149"
+      },
+      {
+       "amount": 169,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "💎 REGULAR: €169"
+      },
+      {
+       "amount": 189,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "💎 LAST MINUTE: €189"
       }
      ]
     }

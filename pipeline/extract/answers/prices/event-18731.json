@@ -1,15 +1,15 @@
 {
  "batch": "event-18731",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 18731,
    "passes": [
     {
      "kind": "full",
-     "label_quote": "Couple Full Pass (One Man + One Woman)",
+     "label_quote": null,
      "group_size": 2,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
@@ -24,15 +24,15 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔶Couple Full Pass (One Man + One Woman): €110"
+       "quote": "Couple Full Pass (One Man + One Woman): €110"
       }
      ]
     },
     {
      "kind": "full",
-     "label_quote": "Women’s Full Pass (Follows)",
+     "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
@@ -47,7 +47,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔶Women’s Full Pass (Follows): €75"
+       "quote": "Women’s Full Pass (Follows): €75"
       }
      ]
     }

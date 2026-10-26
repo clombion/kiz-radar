@@ -1,13 +1,13 @@
 {
  "batch": "event-16922",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 16922,
    "passes": [
     {
      "kind": "full",
-     "label_quote": null,
+     "label_quote": "EARLY BIRD:",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -24,7 +24,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "-LEADER OR FOLLOWER: €75 TILL 31.01.2026"
+       "quote": "LEADER OR FOLLOWER: €75 TILL 31.01.2026"
       },
       {
        "amount": 85,
@@ -38,7 +38,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "-LEADER OR FOLLOWER: €85 TILL 30.04.2026"
+       "quote": "LEADER OR FOLLOWER: €85 TILL 30.04.2026"
       },
       {
        "amount": 95,
@@ -52,7 +52,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "-LEADER OR FORLLOWER: €95 TILL 31.07.2026"
+       "quote": "LEADER OR FORLLOWER: €95 TILL 31.07.2026"
       },
       {
        "amount": 105,
@@ -66,7 +66,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "-LEADER OR FOLLOWER: €105 TILL 31.10.2026"
+       "quote": "LEADER OR FOLLOWER: €105 TILL 31.10.2026"
       },
       {
        "amount": 115,
@@ -80,13 +80,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "-LEADER OR FOLLOWER: €115 TILL14.11.2026"
+       "quote": "LEADER OR FOLLOWER: €115 TILL14.11.2026"
       }
      ]
     },
     {
      "kind": "full",
-     "label_quote": null,
+     "label_quote": "EARLY BIRD:",
      "group_size": 2,
      "days": null,
      "includes_hotel": false,
@@ -103,7 +103,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "-COUPLE: €140 TILL 31.01.2026"
+       "quote": "COUPLE: €140 TILL 31.01.2026"
       },
       {
        "amount": 160,
@@ -117,7 +117,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "-COUPLE: €160 TILL 30.04.2026"
+       "quote": "COUPLE: €160 TILL 30.04.2026"
       },
       {
        "amount": 180,
@@ -131,7 +131,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "-COUPLE: €180 TILL 31.07.2026"
+       "quote": "COUPLE: €180 TILL 31.07.2026"
       },
       {
        "amount": 200,
@@ -145,7 +145,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "-COUPLE: €200 TILL 31.10.2026"
+       "quote": "COUPLE: €200 TILL 31.10.2026"
       },
       {
        "amount": 220,
@@ -159,7 +159,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "-COUPLE: €220 TILL14.11.2026"
+       "quote": "COUPLE: €220 TILL14.11.2026"
       }
      ]
     },
@@ -182,7 +182,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "-LEADER OR FOLLOWER: €90 TILL 14.11.2026"
+       "quote": "LEADER OR FOLLOWER: €90 TILL 14.11.2026"
       }
      ]
     },
@@ -205,7 +205,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "-COUPLE: €170 TILL 14.11.2026"
+       "quote": "COUPLE: €170 TILL 14.11.2026"
       }
      ]
     },
@@ -228,7 +228,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "-LEADER OR FOLLOWER: €45 TILL 14.11.2026"
+       "quote": "LEADER OR FOLLOWER: €45 TILL 14.11.2026"
       }
      ]
     },
@@ -251,7 +251,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "-COUPLE: €80 TILL 14.11.2026"
+       "quote": "COUPLE: €80 TILL 14.11.2026"
       }
      ]
     },
@@ -274,7 +274,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "-LEADER OR FOLLOWER: €55 TILL 14.11.2026"
+       "quote": "LEADER OR FOLLOWER: €55 TILL 14.11.2026"
       }
      ]
     },
@@ -297,7 +297,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "-COUPLE: €100 TILL 14.11.2026"
+       "quote": "COUPLE: €100 TILL 14.11.2026"
       }
      ]
     }

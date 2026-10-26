@@ -1,13 +1,13 @@
 {
  "batch": "event-18861",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 18861,
    "passes": [
     {
      "kind": "full",
-     "label_quote": "TARIFS:",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,

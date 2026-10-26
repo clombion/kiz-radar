@@ -1,11 +1,12 @@
 {
  "batch": "event-16830",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 16830,
    "passes": [],
    "rule_quotes": [
+    "Online prices are not valid at the door",
     "Passes will cost more at the door"
    ]
   }

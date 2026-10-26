@@ -1,13 +1,13 @@
 {
  "batch": "event-18686",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 18686,
    "passes": [
     {
      "kind": "package",
-     "label_quote": "PRICES including the festival",
+     "label_quote": "Inside double cabin",
      "group_size": 1,
      "days": 5,
      "includes_hotel": true,
@@ -44,7 +44,7 @@
     },
     {
      "kind": "package",
-     "label_quote": "PRICES including the festival",
+     "label_quote": "Outside double cabin",
      "group_size": 1,
      "days": 5,
      "includes_hotel": true,
@@ -81,7 +81,7 @@
     },
     {
      "kind": "package",
-     "label_quote": "PRICES including the festival",
+     "label_quote": "Balcony double cabin",
      "group_size": 1,
      "days": 5,
      "includes_hotel": true,
@@ -118,8 +118,7 @@
     }
    ],
    "rule_quotes": [
-    "Children under 18 stay FREE if sharing a cabin with 2 adults.",
-    "*Single/triple/quadruple cabins available upon request and subject to availability."
+    "Children under 18 stay FREE if sharing a cabin with 2 adults."
    ]
   }
  ]

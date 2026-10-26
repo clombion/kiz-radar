@@ -1,6 +1,6 @@
 {
  "batch": "event-19079",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 19079,
@@ -32,7 +32,7 @@
      "kind": "package",
      "label_quote": "FULL PASS + HOTEL+ BREAKFAST+2 NIGHT IN TRIPLE ROOM!",
      "group_size": 1,
-     "days": null,
+     "days": 2,
      "includes_hotel": true,
      "tiers": [
       {
@@ -131,7 +131,7 @@
      ]
     },
     {
-     "kind": "other",
+     "kind": "full",
      "label_quote": "INDIVIDUAL FULL PASS ( 1 PERSON)!",
      "group_size": 1,
      "days": 2,
@@ -284,7 +284,7 @@
      ]
     },
     {
-     "kind": "other",
+     "kind": "full",
      "label_quote": "COUPLES FULL PASS !( 2 PERSON /MAN+WOMAN)!",
      "group_size": 2,
      "days": 2,
@@ -460,7 +460,7 @@
      ]
     },
     {
-     "kind": "other",
+     "kind": "party",
      "label_quote": "FULL PASS- ONLY( SOCIAL- SBK /SHOWS/ LIVE MUSIC/PARTIES/ ( 1 PERSON)",
      "group_size": 1,
      "days": 2,

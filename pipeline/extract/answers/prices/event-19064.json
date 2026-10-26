@@ -1,6 +1,6 @@
 {
  "batch": "event-19064",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 19064,
@@ -9,7 +9,7 @@
      "kind": "full",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 4,
      "includes_hotel": false,
      "tiers": [
       {
@@ -24,7 +24,7 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "Leader – 999kr– SOLD OUT"
+       "quote": "💥 Leader – 999kr– SOLD OUT"
       },
       {
        "amount": 1200,
@@ -38,7 +38,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Leader – 1200kr– On sale"
+       "quote": "💥 Leader – 1200kr– On sale"
       }
      ]
     },
@@ -46,7 +46,7 @@
      "kind": "full",
      "label_quote": null,
      "group_size": 2,
-     "days": null,
+     "days": 4,
      "includes_hotel": false,
      "tiers": [
       {
@@ -61,7 +61,7 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "Couple Pass – 1850kr— SOLD OUT"
+       "quote": "💥 Couple Pass – 1850kr— SOLD OUT"
       },
       {
        "amount": 2300,
@@ -75,7 +75,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Couple Pass – 2300kr— On sale"
+       "quote": "💥 Couple Pass – 2300kr— On sale"
       }
      ]
     }

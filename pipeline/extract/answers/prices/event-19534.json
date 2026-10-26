@@ -1,6 +1,6 @@
 {
  "batch": "event-19534",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 19534,
@@ -38,7 +38,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Next price tier: €1,650"
+       "quote": "Next price tier: €1,650."
       }
      ]
     }

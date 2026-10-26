@@ -1,6 +1,6 @@
 {
  "batch": "event-19033",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 19033,
@@ -38,7 +38,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "1400 nok – fr 01.Ago-30.Sep"
+       "quote": "🌖 1400 nok – fr 01.Ago-30.Sep"
       },
       {
        "amount": 1500,
@@ -52,7 +52,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "1500 nok – fr 01.Oct-20.Nov"
+       "quote": "🌕 1500 nok – fr 01.Oct-20.Nov"
       }
      ]
     },
@@ -75,7 +75,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "2400 nok – fr 01.jun-30.Sep"
+       "quote": "🌘 2400 nok – fr 01.jun-30.Sep"
       },
       {
        "amount": 2800,
@@ -89,7 +89,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "2800 nok – fr 01.Oct-20.Nov"
+       "quote": "🌖 2800 nok – fr 01.Oct-20.Nov"
       }
      ]
     },
@@ -112,7 +112,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "1100 nok – fr 01.Jun-30.Sep"
+       "quote": "🌘 1100 nok – fr 01.Jun-30.Sep"
       },
       {
        "amount": 1400,
@@ -126,7 +126,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "1400 nok – fr 01.Oct-20.Nov"
+       "quote": "🌖 1400 nok – fr 01.Oct-20.Nov"
       }
      ]
     },

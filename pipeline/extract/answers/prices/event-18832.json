@@ -1,6 +1,6 @@
 {
  "batch": "event-18832",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 18832,
@@ -34,7 +34,7 @@
        "alt_currency": null,
        "from": null,
        "until": null,
-       "quantity": 10,
+       "quantity": null,
        "door": false,
        "sold_out": true,
        "current": false,

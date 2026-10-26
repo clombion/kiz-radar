@@ -1,6 +1,6 @@
 {
  "batch": "event-17500",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 17500,
@@ -9,7 +9,7 @@
      "kind": "full",
      "label_quote": null,
      "group_size": 2,
-     "days": null,
+     "days": 2,
      "includes_hotel": false,
      "tiers": [
       {
@@ -60,7 +60,7 @@
      "kind": "full",
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 2,
      "includes_hotel": false,
      "tiers": [
       {

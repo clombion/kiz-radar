@@ -1,13 +1,11 @@
 {
  "batch": "event-18716",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 18716,
    "passes": [],
    "rule_quotes": [
-    "PHASE 1 PRICE TILL – 12 JUL. 2026",
-    "PHASE 2 PRICE TILL – 13 SEPT. 2026",
     "Passes will cost more at the door"
    ]
   }

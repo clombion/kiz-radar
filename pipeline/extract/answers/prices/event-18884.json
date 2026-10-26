@@ -1,6 +1,6 @@
 {
  "batch": "event-18884",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 18884,
@@ -9,7 +9,7 @@
      "kind": "full",
      "label_quote": "FULL PASS early bird offer | single person",
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {

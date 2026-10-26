@@ -1,6 +1,6 @@
 {
  "batch": "event-18674",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 18674,
@@ -24,7 +24,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "> Full Pass: starting at €130"
+       "quote": "Full Pass: starting at €130"
       }
      ]
     }

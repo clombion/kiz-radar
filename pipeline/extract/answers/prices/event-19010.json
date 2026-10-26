@@ -1,6 +1,6 @@
 {
  "batch": "event-19010",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 19010,
@@ -24,7 +24,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "▪️ SUPER EARLY BIRDS TILL – 21 JUNE. 2026 – €85 EXCL."
+       "quote": "SUPER EARLY BIRDS TILL – 21 JUNE. 2026 – €85 EXCL."
       },
       {
        "amount": 90,
@@ -38,12 +38,14 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "▪️ SUPER EARLY BIRDS TILL – 12 JULY. 2026 – €90 EXCL."
+       "quote": "SUPER EARLY BIRDS TILL – 12 JULY. 2026 – €90 EXCL."
       }
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "Passes will cost more at the door"
+   ]
   }
  ]
 }

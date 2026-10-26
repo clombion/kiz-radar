@@ -1,6 +1,6 @@
 {
  "batch": "event-16713",
- "prompt_version": "prices-v3",
+ "prompt_version": "prices-v4",
  "events": [
   {
    "event_id": 16713,
@@ -19,12 +19,12 @@
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": "04-07",
+       "until": "04-06",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🌟 FULL PASS €60 🌟"
+       "quote": "FULL PASS €60"
       }
      ]
     }

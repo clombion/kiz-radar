@@ -1,0 +1,296 @@
+{
+ "event_id": 18890,
+ "title": "ALMA BACHATA, KIZOMBA & BRAZILIAN ZOUK FESTIVAL",
+ "start_date": "2027-05-20",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt_version": "first-read-v2",
+ "rows_at": "2026-10-26T23:05:00+00:00",
+ "description": "💎 ALMA BACHATA & KIZOMBA FESTIVAL 💎\n🗓 May 20–24, 2027\n⛵ Boat Party: 20 May 2027\n✨ All-in-One Hotel at the Beach\n🇪🇸 Hotel Don Angel, Santa Susanna, Barcelona\n🏆 Competition with Full Pass prizes to win!",
+ "passes": [
+  {
+   "kind": "full",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "4b70baee-6d88-4bf5-94f9-56a0523cd105"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    },
+    {
+     "keys": [
+      "89bcd7e2-61c8-4b5e-8142-e568540f16ee"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    },
+    {
+     "keys": [
+      "172b1980-1831-448d-bf05-591b041f8559"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "package",
+   "label_quote": null,
+   "group_size": 1,
+   "days": 2,
+   "includes_hotel": true,
+   "tiers": [
+    {
+     "keys": [
+      "9387a129-2db4-432b-82eb-96c421c95dba"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "package",
+   "label_quote": null,
+   "group_size": 1,
+   "days": 3,
+   "includes_hotel": true,
+   "tiers": [
+    {
+     "keys": [
+      "7da49d10-2412-4866-8767-8cbd81e4864e"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "package",
+   "label_quote": null,
+   "group_size": 1,
+   "days": 4,
+   "includes_hotel": true,
+   "tiers": [
+    {
+     "keys": [
+      "c870bf4b-3440-43e3-a7c3-9083f0491c37"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "package",
+   "label_quote": null,
+   "group_size": 1,
+   "days": 2,
+   "includes_hotel": true,
+   "tiers": [
+    {
+     "keys": [
+      "5e1c6208-0120-482c-a3fd-38c335157269"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "package",
+   "label_quote": null,
+   "group_size": 1,
+   "days": 3,
+   "includes_hotel": true,
+   "tiers": [
+    {
+     "keys": [
+      "816faa65-c3ce-491a-a2de-2f0328d86986"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "package",
+   "label_quote": null,
+   "group_size": 1,
+   "days": 4,
+   "includes_hotel": true,
+   "tiers": [
+    {
+     "keys": [
+      "f27dd3c9-74f9-4b05-8739-4abd37999759"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "package",
+   "label_quote": null,
+   "group_size": 1,
+   "days": 2,
+   "includes_hotel": true,
+   "tiers": [
+    {
+     "keys": [
+      "b4d3451c-065e-4778-b0ae-34e27196457a"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "package",
+   "label_quote": null,
+   "group_size": 1,
+   "days": 3,
+   "includes_hotel": true,
+   "tiers": [
+    {
+     "keys": [
+      "7a0f72c8-d996-47cb-9da3-3e3a5aa9db0a"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "package",
+   "label_quote": null,
+   "group_size": 1,
+   "days": 4,
+   "includes_hotel": true,
+   "tiers": [
+    {
+     "keys": [
+      "928726cd-f767-4bf4-b5fc-a6fba4c0436b"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "label_quote": null,
+   "group_size": 1,
+   "days": 1,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5d01ecb2-0fe7-4575-b3c0-1fcb94a1c765"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "label_quote": null,
+   "group_size": 1,
+   "days": 1,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "1cd15e74-dba4-4cb9-b1d2-38749eb02e7e"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "label_quote": null,
+   "group_size": 1,
+   "days": 1,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "aeb6c02c-15fc-423b-ade3-7eec82fabf77"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "7830ea99-5f45-45f1-8e12-1d28ce43aefa"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [
+  "3eed65e1-2516-4d5d-ab7c-537415c48ce5",
+  "c587e275-8f16-435b-82ea-862e016dd817",
+  "393eaceb-eab4-4765-850a-a13a871086cd",
+  "5c2311ed-e5b4-4596-8915-e959b0f6c04b",
+  "7c972736-f525-43be-9f77-d884d1d45d39",
+  "8f0169a7-bd6b-4fd8-8353-e65e8caeab37",
+  "3e882dc3-f122-43bb-9312-1d1739263864",
+  "1697a5e4-15ab-415a-8a67-539ed4f7c4c2",
+  "629e1b56-622a-42cc-b90d-eaa1c0a410a3",
+  "8bb68940-aad6-4949-8926-46ef078514d8",
+  "ea76a00c-be07-4822-91f1-4abb3e29f203",
+  "534be8ad-1cda-47c3-98f4-3a42331e1cda"
+ ],
+ "rule_quotes": []
+}
