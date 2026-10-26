@@ -1,0 +1,56 @@
+{
+ "event_id": 18690,
+ "title": "WISHES – Rotterdam International Dance Festival",
+ "read_by": "agent",
+ "prompt_version": "first-read-v1",
+ "rows_at": "2026-10-26T20:17:23+00:00",
+ "description": "💥 THE BIGGEST SALSA*BACHATA*KIZOMBA FESTIVAL IN NL\n💥 INTERNATIONAL AND LOCAL ARTISTS & DEEJAYS\n💥 WORKSHOPS / SHOWS / PARTYS / SOCIALS\n💥 IN THE HEART OF ROTTERDAM CITY CENTER\n💥 3 EXCLUSIVE LOCATIONS FOR PARTYS AND SOCIALS\n💥 6 HOTELS NEARBY (STARTING AT € 75,- PER ROOM)\n💥 5 MINUTES WALK FROM ROTTERDAM CENTRAL STATION\n💥 25 MINUTES FROM ROTTERDAM AND AMSTERDAM AIRPORT\n•••••••• CONFIRMED ARTISTS (MORE TO COME) ••••••••\nSALSA:\n∙ Frankie Martinez (US)\n∙ Konstantin & Arcadia (SWE)\n∙ Alicia Velasco (ES)\n∙ Sasha Philips (UK)\n∙ Alessio & Angelica (IT)\n∙ Linda & Rossi (DE/BE)\n∙ Poetic Motion DC\n∙ Quincy & Zunaira\n∙ Vivendi DC\n∙ Aldo & Ale\n∙ Hedi Aranyos\n∙ Adana Arojan\n∙ Dj Willy 🎧\n∙ Dj Cycy (FR) 🎧\n∙ Dj Latin Master 🎧\n∙ DJ Michelle (DE) 🎧\n∙ DJ Ryad 🎧\n∙ DJ Betho Rodriguez 🎧\n∙ DJ Miss Maya (DE) 🎧\nKIZOMBA:\n∙ JP & Stephy (FR)\n∙ Dwe & Gaby\n∙ Stef & Sarah (FR)\n∙ Trezor & Aurea (NL/ES)\n∙ Teresa Jimenez\n∙ John & Lea\n∙ Endos & Dorian\n∙ Joey & Sha\n∙ Dj Pingusso (LUX) 🎧\n∙ Dj Paraïso (FR) 🎧\n∙ Dj Dani Fernandes 🎧\n∙ DJ Lisa Rose 🎧\n∙ DJ Stefanio Lima 🎧\n∙ DJ David Ruela 🎧\nDOMINICAN BACHATA:\n∙ Junior & Carolina (SWE)\n∙ Crisian & Katerina (ES/RU)\n∙ Alberto Vasquez (IT)\n∙ Sabiha Bastide (FR)\n∙ Los 3 Golpes (BE)\n∙ Linda Guiteriez (DE)\n∙ Francisco & Xiomara\n∙ Randor & Samantha\n∙ Bachata Passion\n∙ Dj Prachi (DE) 🎧\n∙ Dj Jarzino 🎧\n∙ Dj Bripa 🎧\n∙ DJ El Pequeno Loco 🎧\n∙ DJ Larby 🎧\n∙ DJ Mo 🎧\n•••••••• MEDIA TEAM ••••••••\n∙ Mojo prod 🎥\n∙ Film by Lova 🎥\n∙ Visualeyez 📸\n✅ Tickets: https://weeztix.shop/kjqb444x\n** ALL full passes give access to the entire festival. Tickets are sold per style in order to keep a healthy balance between leaders and followers **\n✅ Travel:\n∙ Main venue is 5 minutes walking distance from Rotterdam Central Station.\n∙ Direct trains from Amsterdam Schiphol airport to Rotterdam Central Station ( 25 minutes)\n∙ Rotterdam Central Station is 20 minutes by bus or Metro from Rotterdam The Hague airport.\n∙ Direct trains to Rotterdam Central Station from Paris, London, Brussels, Antwerp and Germany (from € 70,- round trip\n∙ Payed parking in the city center near the venue starts ar 17,50 per day. Check our website for options for free parking (near P+R connections by Metro, tram or train)\n✅ Hotels (from € 75,- per room per night):\n⚜️ HOTEL MARRIOTT (1 minute from the Main Venue)\n⚜️ HOTEL THE JAMES (7 minutes from the Main Venue)\n⚜️ HOTEL NH ATLANTA ( 7 minutes from the Main Venue)\n⚜️ EASYHOTEL ROTTERDAM ( 10 minutes from the Main Venue)\n⚜️ POSTILLION HOTEL (10 minutes from the Main Venue)\n—————————————————————\n✅ website: https://www.wishesdancefestival.com\n✅ contact: info@wishesdancefestival.com",
+ "passes": [
+  {
+   "kind": "full",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "fdb0afb2-9372-487c-8e78-68daad28f372",
+      "22e668fe-2f32-478e-a884-8c5e33709027",
+      "d72af5a7-ff03-4a9f-ac64-e86183a38188",
+      "8355ea16-eebc-43f5-b835-60c40f9d4fd5",
+      "0437c3d9-8438-4b10-8e71-73bf3ddcf4ed",
+      "ce1e6eaf-e3d5-4046-86b0-5ca578d5a525",
+      "cda8f04a-642b-47b2-a7ae-2342dcd99c5a"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "344ca470-a0fb-4c08-9d01-4fb74bd09ff1"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [],
+ "rule_quotes": []
+}

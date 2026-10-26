@@ -1,4 +1,12 @@
 event_id,kind,label,group_size,days,includes_hotel,amount,currency,alt_amount,alt_currency,from,until,quantity,door,sold_out,quote
+16884,full,,1,3,0,119,EUR,,,,,,0,0,FULL-PASS MALE 3 Days €119.00 + €1.00 fee.
+16884,full,,2,3,0,215,EUR,,,,,,0,0,COUPLE PASS 3 DAYS €215.00 + €1.00 fee.
+16884,day,,1,1,0,50,EUR,,,,,,0,0,"FRIDAY DAY PASS ""MALE"" €50.00 + €1.00 fee."
+16884,day,,1,1,0,60,EUR,,,,,,0,0,"SATURDAY DAY PASS ""MALE"" €60.00 + €1.00 fee."
+16884,day,,1,1,0,60,EUR,,,,,,0,0,"SUNDAY DAY PASS ""MALE"" €60.00 + €1.00 fee."
+16884,day,,1,1,0,30,EUR,,,,,,0,0,"FRIDAY NIGHT PASS ""MALE"" €30.00 + €1.00 fee."
+16884,day,,1,1,0,35,EUR,,,,,,0,0,"SATURDAY NIGHT PASS ""MALE"" €35.00 + €1.00 fee."
+16884,day,,1,1,0,30,EUR,,,,,,0,0,"SUNDAY NIGHT PASS ""MALE"" €30.00 + €1.00 fee."
 16889,party,,2,,0,123.08,EUR,,,,,,0,0,PARTY PASS COUPLE/PAREJA €123.08
 16889,party,,1,,0,61.54,EUR,,,,,,0,0,PARTY PASS LIDER/CHICO/GARÇON €61.54
 16889,day,,1,1,0,51.28,EUR,,,,,,0,0,DAY PASS SUNDAY LIDER €51.28
@@ -63,6 +71,10 @@ event_id,kind,label,group_size,days,includes_hotel,amount,currency,alt_amount,al
 18666,full,,2,,0,6000,CZK,240,EUR,,,,0,0,"4th Wave PGKT Festival | FULLPASS COUPLE CZK 6,000.00 · The ticket price is 240 €."
 18666,party,DANCEPASS,1,,0,2750,CZK,110,EUR,,,,0,0,"4th Wave PGKT Festival | DANCEPASS WOMAN CZK 2,750.00 · The ticket price is 110 €."
 18666,party,DANCEPASS,2,,0,5250,CZK,210,EUR,,,,0,0,"4th Wave PGKT Festival | DANCEPASS COUPLE CZK 5,250.00 · The ticket price is 210 €."
+18690,full,,1,,0,150,EUR,,,,,,0,0,Full pass ( Fase 8 ) - Kizomba leader €150.00 + €1.00 fee.
+18690,full,,2,,0,290,EUR,,,,,,0,0,Couple ticket ( Fase 8 ) - All styles €290.00 + €1.00 fee.
+18757,full,,1,3,0,89,EUR,,,,,,0,0,"Male Passes 3 Days ""Limited"" €89.00 + €1.00 fee."
+18757,full,,2,3,0,159,EUR,,,,,,0,0,"COUPLE PASS 3 DAYS ""Limited"" €159.00 + €1.00 fee."
 18816,full,,2,,0,150,EUR,,,,,,0,0,FULLPASS DUO €150.00
 18816,full,,2,,0,120,EUR,,,,,,0,0,FULLPASS DUO €120.00
 18816,full,,2,,0,100,EUR,,,,,,0,0,FULLPASS DUO €100.00
