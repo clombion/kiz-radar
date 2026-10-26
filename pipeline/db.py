@@ -17,5 +17,13 @@ def existing(text):
     return Path(text)
 
 
+def festival_ids(text):
+    """Festival ids written "16909,18806", as a set."""
+    try:
+        return {int(i) for i in text.split(',') if i.strip()}
+    except ValueError:
+        raise argparse.ArgumentTypeError(f'{text}: festival ids, separated by commas')
+
+
 def source_arg(ap):
     ap.add_argument('src', type=existing, help='the kizomba-world export (source/<events>.sqlite)')

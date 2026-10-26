@@ -291,7 +291,10 @@ Line-ups, highlights from descriptions, rooms, genres and pass prices are read f
 about, one festival and one pass at a time, with that pass's prompt (`pipeline/extract/prompts/`) and its schema as
 the required answer format. A checker then confirms that the answer has the right shape, and that every name,
 quote and price appears in the description. A failing answer goes back to Claude once, with the checker's
-lines. A second failure leaves the festival pending, to try again next month. The answers are saved in
+lines. A second failure leaves the festival pending, to try again next month. A new prompt version is asked again of every
+festival still to come on the next monthly run; when it changes the answers of a few festivals only, start
+**Refresh events** by hand with their ids in `festivals` ("16909,18806"): it skips the scrape, and asks and reads
+those festivals only (`ask.py --only`, `tickets.py run --only`). The answers are saved in
 `pipeline/extract/answers/` and committed; `answers/log.csv` says who answered each file and when. The first
 extraction's answers, from Claude Code subagents, are kept there too; rebuilding from them reproduces the
 export's tables exactly.

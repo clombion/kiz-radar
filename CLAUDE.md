@@ -26,6 +26,8 @@
   5. `python3 -m pipeline.extract.load_extract`, `uv run --group artists -m pipeline.extract.resolve_artists` and
      `python3 -m pipeline.build_site_db` on the newest `source/*.sqlite`, then commit `pipeline/tickets/`,
      `pipeline/pass_prices.csv` and `pipeline/ticket_pages.csv` with them.
+- After a prompt change that touches a few festivals, start the **Refresh events** Action with their ids in its
+  `festivals` input instead of a full run (README, "Line-ups, highlights…").
 - To read any other web page a plain request can't, for a one-off check:
   `uv run --group browser -m pipeline.read_page URL [--visible] [--screenshot page.png]`. One page per question;
   never in a scheduled job or a loop.

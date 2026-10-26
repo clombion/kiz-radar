@@ -1,5 +1,5 @@
 """Ticket-page prices: rows to passes by key, the first read's checks, recording, changes, re-reads and agreement."""
-import copy, json
+import collections, copy, json
 
 import pytest
 
@@ -549,3 +549,19 @@ def test_a_first_read_made_for_an_older_prompt_is_made_again(files):
     assert tickets.why_first_read(f, '2026-11-01')[0] == 'the first read follows first-read-v2, not first-read-v3'
     f['first_read'] = read()
     assert tickets.why_first_read(f, '2026-11-01')[0] is None
+
+
+def test_a_run_for_named_festivals_reads_only_them(files, monkeypatch):
+    fest = lambda i: {'id': i, 'first_read': None, 'why': 'no price in the description', 'site': ('recipe',),
+                      'page': f'https://shop.example/{i}', 'disputed': False, 'log': [], 'tiers': [], 'start_date': '2027-02-05'}
+    monkeypatch.setattr(tickets, 'src_db', lambda: None)
+    monkeypatch.setattr(tickets, 'festivals', lambda db, today: [fest(7), fest(8)])
+    monkeypatch.setattr(tickets, 'write_waiting', lambda fs: collections.Counter())
+    read = []
+    monkeypatch.setattr(tickets, 'attempt', lambda page, *site: read.append(page) or
+                        {'at': AT, 'status': tickets.Status.REFUSED, 'why': 'HTTP 403', 'page': page})
+    monkeypatch.setattr(tickets, 'append', lambda i, e: None)
+    tickets.cmd_run({8})
+    assert read == ['https://shop.example/8']
+    with pytest.raises(SystemExit, match=r'\[9\]'):
+        tickets.cmd_run({9})

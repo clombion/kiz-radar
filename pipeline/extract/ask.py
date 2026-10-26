@@ -3,6 +3,7 @@
     uv run --group ask -m pipeline.extract.ask source/<events>.sqlite             # what the monthly Action runs
     uv run --group ask -m pipeline.extract.ask source/<events>.sqlite --dry-run   # list what would be asked
     uv run --group ask -m pipeline.extract.ask source/<events>.sqlite --limit 3   # ask about three festivals only
+    uv run --group ask -m pipeline.extract.ask source/<events>.sqlite --only 16909,18806   # these festivals only
 
 A festival needs a pass when it is in pending_extraction (its description is new or changed), when the pass
 has no answer for it yet, or, while it is still to come, when its answer came from an older version of the pass's
@@ -111,10 +112,15 @@ def ask(client, pass_name, row):
     return structured(client, MODEL, system, content, schema, check, f"{row['id']} {pass_name}", pass_name)
 
 
-def due(db, only):
+def due(db, only, ids=None):
     """(event row, pass) pairs to ask: every pass of a pending festival, passes a festival has no answer for, and
-    passes whose answer came from an older prompt while the festival is still to come."""
+    passes whose answer came from an older prompt while the festival is still to come; of the festivals ids names,
+    when it names some."""
     rows = {r['id']: r for r in db.execute('select * from events where description_text is not null order by id')}
+    if ids:
+        if missing := ids - set(rows):
+            sys.exit(f'no festival with a description: {sorted(missing)}')
+        rows = {i: r for i, r in rows.items() if i in ids}
     pending = {i for i, in db.execute('select event_id from pending_extraction')}
     to_come = {i for i, in db.execute("select id from events where end_date >= date('now')")}
     out = []
@@ -131,11 +137,12 @@ def main():
     ap.add_argument('--dry-run', action='store_true', help='list what would be asked, without asking')
     ap.add_argument('--limit', type=int, help='ask about at most this many festivals')
     ap.add_argument('--pass', dest='passes', action='append', choices=PASSES, help='only this pass (repeatable)')
+    ap.add_argument('--only', type=sqlite_db.festival_ids, help='only these festivals, by id: "16909,18806"')
     a = ap.parse_args()
 
     db = sqlite_db.connect(a.src, 'rw')
     db.row_factory = sqlite3.Row
-    todo, pending = due(db, a.passes)
+    todo, pending = due(db, a.passes, a.only)
     if a.limit:
         keep = sorted({r['id'] for r, _ in todo})[:a.limit]
         todo = [(r, p) for r, p in todo if r['id'] in keep]

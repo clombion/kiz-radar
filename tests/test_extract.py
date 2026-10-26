@@ -164,3 +164,27 @@ def test_a_request_costs_its_models_prices():
     assert spend.usd('claude-haiku-5-5', 100_000, 100_000) == 0.06
     assert spend.usd('claude-haiku-5-5', 200_000, 0) == 0.10           # a long prompt costs Haiku more
     assert spend.usd('claude-sonnet-5-5', 1_000, 1_000) == 0.012
+
+
+def test_only_the_named_festivals_are_asked(monkeypatch):
+    db = sqlite3.connect(':memory:')
+    db.row_factory = sqlite3.Row
+    db.executescript("create table events (id integer, description_text text, end_date text);"
+                     "insert into events values (1, 'a', '2099-01-01'), (2, 'b', '2099-01-01'), (3, null, '2099-01-01');"
+                     "create table pending_extraction (event_id integer);")
+    monkeypatch.setattr(ask.answers, 'latest', lambda pass_name, ids: {})
+    assert {r['id'] for r, _ in ask.due(db, ['prices'])[0]} == {1, 2}
+    assert {r['id'] for r, _ in ask.due(db, ['prices'], {2})[0]} == {2}
+    with pytest.raises(SystemExit, match=r'\[3\]'):
+        ask.due(db, ['prices'], {2, 3})        # no description: nothing to ask it
+
+
+@pytest.mark.parametrize('text, ids', [('16909,18806', {16909, 18806}), ('16909, 18806,', {16909, 18806}), ('x', None)])
+def test_festival_ids_are_read_from_commas(text, ids):
+    import argparse
+    from pipeline import db
+    if ids is None:
+        with pytest.raises(argparse.ArgumentTypeError):
+            db.festival_ids(text)
+    else:
+        assert db.festival_ids(text) == ids

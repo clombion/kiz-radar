@@ -742,13 +742,16 @@ def cmd_retry(event_id):
     cmd_read(event_id, visible=True)
     cmd_record(event_id)
 
-def cmd_run():
-    """Re-read what is due and retry failures, first-read with two models what needs it, then write both files. Exits
-    1 naming each festival whose page broke its recipe, reached REFUSALS failures, or no longer fits its first read."""
+def cmd_run(ids=None):
+    """Re-read what is due and retry failures, first-read with two models what needs it (of the festivals ids names,
+    when it names some), then write both files. Exits 1 naming each festival whose page broke its recipe, reached REFUSALS failures, or no longer fits its first read."""
     import anthropic
     today, db = dt.date.today().isoformat(), src_db()
     client, alarms, budget = None, [], None
-    for f in festivals(db, today):
+    fs = festivals(db, today)
+    if ids and (missing := ids - {f['id'] for f in fs}):
+        sys.exit(f'no festival to come: {sorted(missing)}')
+    for f in (f for f in fs if not ids or f['id'] in ids):
         i, fr = f['id'], f['first_read']
         if fr and f['site'] and (recheck(f['tiers'], f['start_date'], today)[1] or failures(f['log'])):
             entry = attempt(f['page'], *f['site'])
@@ -804,7 +807,8 @@ def main():
                     help='shop (the default, with its page), not_yet, offline or closed')
     pg.add_argument('--note', required=True, help='how it was found, or why there is none')
     pg.add_argument('--by', default='agent', help='who found it')
-    sub.add_parser('run', help='the monthly Action')
+    sub.add_parser('run', help='the monthly Action').add_argument(
+        '--only', type=sqlite_db.festival_ids, help='only these festivals, by id: "16909,18806"')
     a = ap.parse_args()
     if a.cmd in ('read', 'retry', 'run'):       # a recipe may need a visible browser
         from pipeline import read_page
@@ -818,7 +822,7 @@ def main():
         case 'retry': cmd_retry(a.id)
         case 'changes': cmd_changes(a.id)
         case 'page': cmd_page(a.id, a.url, a.state, a.note, a.by)
-        case 'run': cmd_run()
+        case 'run': cmd_run(a.only)
 
 if __name__ == '__main__':
     main()

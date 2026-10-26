@@ -5,7 +5,8 @@ name: Refresh events
 # (pipeline/tickets.py run: re-reads that are due, retries, first reads by two models), reload what the answers say,
 # commit it all, then start the Rebuild site database workflow, which a push made with the Actions token doesn't
 # start by itself. A failed ask, or a ticket page that broke its recipe or failed three times in a row, still
-# commits the refresh, then marks the run failed.
+# commits the refresh, then marks the run failed. Started by hand with festival ids, it skips the refresh and asks
+# and reads those festivals only: after a prompt change that touches a few of them.
 on:
   schedule:
     - cron: '17 5 3 * *'
@@ -13,6 +14,9 @@ on:
     inputs:
       limit:
         description: Ask Claude about at most this many festivals (empty for all that need it)
+        required: false
+      festivals:
+        description: Only these festivals, by id ("16909,18806"), without refreshing the events (empty for all)
         required: false
 
 permissions:
@@ -33,22 +37,25 @@ jobs:
       - name: Pick the newest export
         run: echo "SRC=$(ls -t source/*.sqlite | head -1)" >> "$GITHUB_ENV"
       - name: Refresh the events
+        if: ${{ !inputs.festivals }}
         run: uv run -q --group scrape -m pipeline.scrape "$SRC"
       - name: Ask Claude about new and changed festivals
         id: ask
         continue-on-error: true
-        run: uv run -q --group ask -m pipeline.extract.ask "$SRC" ${LIMIT:+--limit "$LIMIT"}
+        run: uv run -q --group ask -m pipeline.extract.ask "$SRC" ${LIMIT:+--limit "$LIMIT"} ${ONLY:+--only "$ONLY"}
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           LIMIT: ${{ inputs.limit }}
+          ONLY: ${{ inputs.festivals }}
       - name: Install a browser for ticket pages (the runner has a virtual display, xvfb)
         run: uv run -q --group browser patchright install --with-deps chromium
       - name: Read ticket pages
         id: tickets
         continue-on-error: true
-        run: xvfb-run -a uv run -q --group tickets -m pipeline.tickets run
+        run: xvfb-run -a uv run -q --group tickets -m pipeline.tickets run ${ONLY:+--only "$ONLY"}
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ONLY: ${{ inputs.festivals }}
       - name: Load the answers and resolve the artists
         run: |
           python3 -m pipeline.extract.load_extract "$SRC"
