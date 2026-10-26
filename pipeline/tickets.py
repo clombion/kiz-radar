@@ -57,7 +57,7 @@ from pipeline.extract import check_output, prices
 HERE = ROOT / 'pipeline' / 'tickets'
 SITES, READS, DRAFTS, LOG, DISPUTED = (HERE / d for d in ('sites', 'reads', 'drafts', 'log', 'disputed'))
 PRICES_CSV, PAGES_CSV = ROOT / 'pipeline' / 'pass_prices.csv', ROOT / 'pipeline' / 'ticket_pages.csv'
-PRICE_FIELDS = ['event_id', 'kind', 'label', 'group_size', 'days', 'includes_hotel', 'amount', 'currency', 'fee',
+PRICE_FIELDS = ['event_id', 'kind', 'style', 'label', 'group_size', 'days', 'includes_hotel', 'amount', 'currency', 'fee',
                 'alt_amount', 'alt_currency', 'from', 'until', 'quantity', 'sold_out', 'quote']
 PAGE_FIELDS = ['event_id', 'event', 'page', 'reseller', 'read_on', 'read_by', 'prompt_version', 'recipe', 'unread', 'notes']
 FOUND_CSV, WAITING_CSV = HERE / 'pages.csv', HERE / 'waiting.csv'
@@ -67,7 +67,7 @@ SITE_SCHEMA = json.loads((HERE / 'schemas' / 'site.json').read_text())
 READ_SCHEMA = json.loads((HERE / 'schemas' / 'read.json').read_text())
 LOG_SCHEMA = json.loads((HERE / 'schemas' / 'log.json').read_text())
 PRICES_SCHEMA = json.loads((ROOT / 'pipeline' / 'extract' / 'schemas' / 'prices.json').read_text())
-PROMPT = 'first-read-v2'      # on top of the prices prompt, prices.PROMPT
+PROMPT = 'first-read-v3'      # on top of the prices prompt, prices.PROMPT
 MODELS = ('claude-opus-5-5', 'claude-sonnet-5-5')    # the first one's read is kept when both agree
 REFUSALS = 3
 FREE = re.compile(r'(?i)\s*(free|gratuit|gratis|gratuito|kostenlos)\s*')
@@ -372,7 +372,9 @@ def build(fr, entry):
                           'until': tier['until'], 'quantity': tier['quantity'], 'door': False,
                           'sold_out': all(r['sold_out'] for r in here), 'current': False, 'quote': line(lead)})
         if tiers:
-            passes.append({k: ps[k] for k in ('kind', 'label_quote', 'group_size', 'days', 'includes_hotel')} | {'tiers': tiers})
+            # a read made before first-read-v3 names no style
+            passes.append({k: ps[k] for k in ('kind', 'label_quote', 'group_size', 'days', 'includes_hotel')}
+                          | {'style': ps.get('style'), 'tiers': tiers})
     mapped = {k for ps in fr['passes'] for t in ps['tiers'] for k in t['keys']} | set(fr['skipped'])
     unread = [k for k in rows if k not in mapped]
     answer = {'batch': f"page-{fr['event_id']}", 'prompt_version': prices.PROMPT,
@@ -400,7 +402,7 @@ def written(event_id, fr, entries, known):
         return [f'{event_id}: {p}' for p in found]
     flag = lambda v: '1' if v else '0'
     num = lambda v: '' if v is None else f'{v:g}'
-    tiers = [{'event_id': event_id, 'kind': p['kind'], 'label': p['label_quote'] or '', 'group_size': p['group_size'] or '',
+    tiers = [{'event_id': event_id, 'kind': p['kind'], 'style': p['style'] or '', 'label': p['label_quote'] or '', 'group_size': p['group_size'] or '',
               'days': p['days'] or '', 'includes_hotel': flag(p['includes_hotel']), 'amount': num(t['amount']),
               'currency': t['currency'], 'fee': num(t['fee']), 'alt_amount': num(t['alt_amount']),
               'alt_currency': t['alt_currency'] or '', 'from': t['from'] or '', 'until': t['until'] or '',
@@ -516,6 +518,7 @@ def why_first_read(f, today):
     if fr:
         unread = build(fr, entry)[1]
         return ('the description changed' if fr['description'] != desc else
+                f"the first read follows {fr['prompt_version']}, not {PROMPT}" if fr['prompt_version'] != PROMPT else
                 'the ticket page changed' if entry['page'] != read_at(fr, f['log'])['page'] else
                 f'{len(unread)} tickets not read yet' if unread else None), unread
     if f['described'] and dated_in_description(f['described'].entry, f['start_date'], today):
@@ -578,8 +581,10 @@ def write_waiting(fs):
 
 def model_schema():
     keep = ('passes', 'skipped', 'rule_quotes')
-    return {'type': 'object', 'additionalProperties': False, 'required': list(keep),
-            'properties': {k: READ_SCHEMA['properties'][k] for k in keep}}
+    props = {k: READ_SCHEMA['properties'][k] for k in keep}
+    items = props['passes']['items']
+    props['passes'] = props['passes'] | {'items': items | {'required': items['required'] + ['style']}}
+    return {'type': 'object', 'additionalProperties': False, 'required': list(keep), 'properties': props}
 
 def question(f, entry):
     system = ((ROOT / 'pipeline' / 'extract' / 'prompts' / f'{prices.PROMPT}.md').read_text() + '\n\n'
@@ -599,9 +604,9 @@ def ask_read(client, model, f, entry, entries):
 
 def meaning(fr):
     """What two first reads must agree on: which tickets are skipped, which share a pass and a tier, each pass's
-    kind, people, days (a day pass is one day, whether its days say 1 or nothing) and hotel, and each tier's dates and
-    quantity. Labels and quotes may differ."""
-    return frozenset((ps['kind'], ps['group_size'], 1 if ps['kind'] == 'day' else ps['days'], ps['includes_hotel'],
+    kind, style, people, days (a day pass is one day, whether its days say 1 or nothing) and hotel, and each tier's dates
+    and quantity. Labels and quotes may differ."""
+    return frozenset((ps['kind'], ps.get('style'), ps['group_size'], 1 if ps['kind'] == 'day' else ps['days'], ps['includes_hotel'],
                       frozenset((frozenset(t['keys']), t['from'], t['until'], t['quantity'])
                                 for t in ps['tiers'])) for ps in fr['passes']), frozenset(fr['skipped'])
 

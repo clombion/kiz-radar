@@ -46,14 +46,15 @@ function tierNow(pass, e) {
   return { tier, from: now.filter(t => t.lo == null && t.hi == null).length > 1, next };
 }
 
-// The pass a card prices (a full pass that doesn't say for how many is for one): the per-person full pass (the longest
-// when sold in several lengths, the Kizomba one when a festival sells one per dance), else the cheapest per-person
-// package with a hotel; with its price today. Null when the festival gives no price or it is over.
+// The pass a card prices (a full pass that doesn't say for how many is for one): the per-person full pass (the Kizomba
+// one when a festival of several styles sells one, then the longest when sold in several lengths; another style's
+// only when there is no other), else the cheapest per-person package with a hotel; with its price today. Null when
+// the festival gives no price or it is over.
 export function priceNow(e) {
   if (!e.upcoming) return null;
   const ps = passesOf(e.id).filter(p => p.group_size === 1 || (p.group_size == null && p.kind === 'full'));
-  const kiz = p => /kiz|semba|tarraxo/i.test(p.label || '');     // "Kizomba Full Pass" over "Bachata Full Pass"
-  const full = ps.filter(p => p.kind === 'full' && !p.includes_hotel).sort((a, b) => (b.days ?? 99) - (a.days ?? 99) || kiz(b) - kiz(a));
+  const rank = p => p.style === 'kizomba' ? 0 : p.style == null ? 1 : 2;
+  const full = ps.filter(p => p.kind === 'full' && !p.includes_hotel).sort((a, b) => rank(a) - rank(b) || (b.days ?? 99) - (a.days ?? 99));
   const pass = full[0] || ps.filter(p => p.kind === 'package').sort((a, b) => cheapest(a.tiers).amount - cheapest(b.tiers).amount)[0];
   const now = pass && tierNow(pass, e);
   return now && { pass, hotel: pass.kind === 'package' || !!pass.includes_hotel, ...now };
@@ -66,11 +67,12 @@ export const riseNote = t => t.door ? 'price is higher at the door' : t.lo ? `pr
 
 // ----- the quick view: each pass at today's price and its next change -----
 const KIND = { full: 'Full pass', party: 'Party pass', day: 'Day pass', workshop: 'Workshop pass', package: 'Package', other: 'Pass' };
+const STYLE = { kizomba: 'Kizomba', zouk: 'Zouk', bachata: 'Bachata', salsa: 'Salsa', other: 'one style' };
 const forWhom = p => p.group_size == null || p.group_size === 1 ? null : p.group_size === 2 ? 'for a couple' : `for ${p.group_size}`;
-// a day or other pass by its own name ("20.Nov Friday PARTY"); the others by kind, length and for whom, or by their own
-// name when that alone would read the same as another pass's ("Single KIZOMBA Fullpass", "Bachata Fullpass")
+// a day or other pass by its own name ("20.Nov Friday PARTY"); the others by kind, style, length and for whom, or by
+// their own name when that alone would read the same as another pass's
 const passName = (p, own = false) => [own || ['day', 'other'].includes(p.kind) ? p.label || KIND[p.kind] : KIND[p.kind],
-  p.days > 1 ? `${p.days} days` : null, forWhom(p),
+  p.style && !(own || ['day', 'other'].includes(p.kind)) ? STYLE[p.style] : null, p.days > 1 ? `${p.days} days` : null, forWhom(p),
   p.includes_hotel && p.kind !== 'package' ? 'with hotel' : null].filter(Boolean).join(' · ');
 
 let view;

@@ -79,7 +79,8 @@ the site both read it from there. Cities are geocoded with OpenStreetMap Nominat
 
 Prices show in kroner, or in euros or dollars (`?cur=eur`, `?cur=usd`, switched in the footer); amounts in
 other currencies are converted with `pipeline/rates.csv` and marked "~". A festival card shows what the weekend costs
-without accommodation (the per-person full pass at today's price, plus the flight) and when the pass price next goes
+without accommodation (the per-person full pass at today's price, plus the flight; at a festival of several
+dance styles, its Kizomba full pass when it sells one, from prompt `prices-v5` on, which names each pass's style) and when the pass price next goes
 up; tapping the pass opens every pass at today's price and its next change (`docs/js/passes.js`). A price is what a
 buyer pays, booking fee included; the passes view says which fee it includes when the description or the ticket
 page states one (since prompt `prices-v3`; answers from older prompts are asked again while the festival
@@ -194,7 +195,7 @@ judgment about a page is made once, by an agent or two models, and checked; ever
   (`.gitattributes`), so a session and the monthly run never conflict.
 - **A first read per festival** (`pipeline/tickets/reads/<event_id>.json`, schema `read.json`) says, from one logged
   read and the festival's description, which pass each ticket is, in the prices pass's terms (prompt
-  `pipeline/tickets/prompts/first-read-v2.md` on top of `prices-v4`): every ticket is in a tier, by its key, or
+  `pipeline/tickets/prompts/first-read-v3.md` on top of `prices-v5`): every ticket is in a tier, by its key, or
   skipped; dates, ticket limits and price notes are quoted from the description or the ticket's name. Only checked
   first reads are kept there: an agent fills a draft (`pipeline/tickets/drafts/`, not committed), which `record`
   moves there once it passes.
@@ -230,8 +231,9 @@ doesn't know. It is read
 again on the monthly run, unless it is *dated* (every tier on sale has an end date and none is limited to a number
 of tickets), when it is read again once its last date has passed. The monthly **Refresh events** Action runs
 `tickets.py run`: the re-reads that are due, a retry of every festival whose latest read failed, and a first read
-by Opus and Sonnet for each festival that needs one on a site with a recipe. The two read independently, and the
-first read is kept only when they agree on every ticket's pass, tier, skip and dates; when they don't, both are kept
+by Opus and Sonnet for each festival that needs one on a site with a recipe (no first read yet, or one made with a
+changed description, for another page, or for an older first-read prompt). The two read independently, and the
+first read is kept only when they agree on every ticket's pass, style, tier, skip and dates; when they don't, both are kept
 in `pipeline/tickets/disputed/<event_id>.json` for an agent and the festival waits. The run fails, after
 committing, when a page broke its recipe, a festival's read failed three times in a row, or a festival no longer
 fits its first read; `todo` then marks it for

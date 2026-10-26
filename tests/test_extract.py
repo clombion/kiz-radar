@@ -98,7 +98,7 @@ def prices_answer(quote):
     tier = {'amount': 80, 'currency': 'EUR', 'fee': None, 'alt_amount': None, 'alt_currency': None, 'from': None, 'until': '01-31',
             'quantity': None, 'door': False, 'sold_out': False, 'current': False, 'quote': quote}
     return json.dumps({'batch': 'event-5', 'prompt_version': prices.PROMPT, 'events': [
-        {'event_id': 5, 'rule_quotes': [], 'passes': [{'kind': 'full', 'label_quote': None, 'group_size': 1, 'days': None,
+        {'event_id': 5, 'rule_quotes': [], 'passes': [{'kind': 'full', 'style': None, 'label_quote': None, 'group_size': 1, 'days': None,
                                                      'includes_hotel': False, 'tiers': [tier]}]}]})
 
 

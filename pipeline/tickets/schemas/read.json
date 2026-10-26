@@ -36,7 +36,8 @@
     "prompt_version": {
       "enum": [
         "first-read-v1",
-        "first-read-v2"
+        "first-read-v2",
+        "first-read-v3"
       ]
     },
     "rows_at": {
@@ -71,6 +72,23 @@
               "package",
               "other"
             ]
+          },
+          "style": {
+            "anyOf": [
+              {
+                "enum": [
+                  "kizomba",
+                  "zouk",
+                  "bachata",
+                  "salsa",
+                  "other"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The one dance style the pass is limited to, at a festival of several; null when it covers all of them."
           },
           "label_quote": {
             "type": [
@@ -199,6 +217,41 @@
         "type": "string",
         "minLength": 1,
         "maxLength": 300
+      }
+    }
+  },
+  "if": {
+    "properties": {
+      "prompt_version": {
+        "enum": [
+          "first-read-v1",
+          "first-read-v2"
+        ]
+      }
+    }
+  },
+  "then": {
+    "properties": {
+      "passes": {
+        "items": {
+          "not": {
+            "required": [
+              "style"
+            ]
+          }
+        }
+      }
+    },
+    "description": "Reads before first-read-v3 have no style."
+  },
+  "else": {
+    "properties": {
+      "passes": {
+        "items": {
+          "required": [
+            "style"
+          ]
+        }
       }
     }
   }

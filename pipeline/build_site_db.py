@@ -244,7 +244,7 @@ for r in csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'promo_codes.csv'), 
     x("insert into event_promos values (?,?,?)", (e, r['code'].strip(), r['offer'].strip() or None))
     feats[e].add('promo_code')
 # pass prices, from the source's prices pass (without the quotes or price notes), and the rates the site converts them with
-x("""create table event_passes as select event_id, pass_no, kind, label, group_size, days, includes_hotel, source
+x("""create table event_passes as select event_id, pass_no, kind, style, label, group_size, days, includes_hotel, source
      from src.event_passes""")
 # festivals whose prices are read on their ticket page: the page, when it was read, tickets on it not read yet
 x("create table ticket_pages as select event_id, page, reseller, read_on, unread from src.ticket_pages")

@@ -35,10 +35,10 @@ def tier(*keys, until=None, quantity=None, quote=None):
 
 
 def read(passes=None, skipped=('5',), description='Prices rise on 1 December.', rule_quotes=()):
-    return {'event_id': 7, 'title': 'Fest', 'start_date': '2027-02-05', 'read_by': 'agent', 'prompt_version': 'first-read-v2',
+    return {'event_id': 7, 'title': 'Fest', 'start_date': '2027-02-05', 'read_by': 'agent', 'prompt_version': 'first-read-v3',
             'rows_at': AT,
             'description': description,
-            'passes': passes or [{'kind': 'full', 'label_quote': 'Fullpass', 'group_size': 1, 'days': None,
+            'passes': passes or [{'kind': 'full', 'style': None, 'label_quote': 'Fullpass', 'group_size': 1, 'days': None,
                                   'includes_hotel': False, 'tiers': [tier('1', '2'), tier('3', '4')]}],
             'skipped': list(skipped), 'rule_quotes': list(rule_quotes)}
 
@@ -193,8 +193,9 @@ def test_two_reads_agree_on_meaning_not_on_wording():
     lambda r: r['passes'][0].update(kind='party'),
     lambda r: r.update(skipped=[]) or r['passes'][0]['tiers'].append(tier('5')),
     lambda r: r['passes'][0]['tiers'][1].update(until='11-30'),
+    lambda r: r['passes'][0].update(style='kizomba'),
 ])
-def test_two_reads_disagree_on_a_pass_a_skip_or_a_date(change):
+def test_two_reads_disagree_on_a_pass_a_skip_a_date_or_a_style(change):
     b = read()
     change(b)
     assert tickets.meaning(read()) != tickets.meaning(b)
@@ -407,7 +408,7 @@ def test_a_fee_the_site_adds_is_in_the_amount(monkeypatch):
 
 def test_a_tier_keeps_its_fee_and_its_quote_shows_it():
     rows = [row('1', 'Fullpass', 120.0) | {'price': '€119.00 + €1.00 fee.', 'fee': 1.0}]
-    fr = read(passes=[{'kind': 'full', 'label_quote': None, 'group_size': 1, 'days': None, 'includes_hotel': False,
+    fr = read(passes=[{'kind': 'full', 'style': None, 'label_quote': None, 'group_size': 1, 'days': None, 'includes_hotel': False,
                        'tiers': [tier('1')]}], skipped=())
     answer, _, found = tickets.build(fr, entry(rows))
     assert found == [] and answer['events'][0]['passes'][0]['tiers'][0]['fee'] == 1.0
@@ -518,3 +519,33 @@ def test_first_reads_count_against_the_budget(files):
     from pipeline import spend
     tickets.two_model_read(client(ANSWER, ANSWER), FEST, entry(ROWS), [entry(ROWS)])
     assert round(spend.month_usd(), 3) == round(spend.usd('claude-opus-5-5', 6000, 2000) + spend.usd('claude-sonnet-5-5', 6000, 2000), 3)
+
+
+@pytest.mark.parametrize('version, style, ok', [
+    ('first-read-v3', 'kizomba', True), ('first-read-v3', None, True), ('first-read-v3', ..., False),
+    ('first-read-v2', ..., True), ('first-read-v2', None, False),
+])
+def test_a_style_is_named_from_first_read_v3_on_and_only_then(version, style, ok):
+    fr = read() | {'prompt_version': version}
+    if style is ...:
+        del fr['passes'][0]['style']
+    else:
+        fr['passes'][0]['style'] = style
+    assert (tickets.read_problems(fr, [entry(ROWS)]) == []) == ok
+
+
+def test_a_pass_keeps_its_style_in_pass_prices_csv(files):
+    fr = read()
+    fr['passes'][0]['style'] = 'kizomba'
+    tickets.save_read(fr)
+    assert tickets.record(7, quiet=True) == []
+    assert {r['style'] for r in tickets.csv_rows(files / 'pass_prices.csv')} == {'kizomba'}
+
+
+def test_a_first_read_made_for_an_older_prompt_is_made_again(files):
+    old = read() | {'prompt_version': 'first-read-v2'}
+    del old['passes'][0]['style']
+    f = {'first_read': old, 'log': tickets.log(7), 'description_text': old['description']}
+    assert tickets.why_first_read(f, '2026-11-01')[0] == 'the first read follows first-read-v2, not first-read-v3'
+    f['first_read'] = read()
+    assert tickets.why_first_read(f, '2026-11-01')[0] is None

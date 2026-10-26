@@ -46,6 +46,8 @@ VOCAB = run_log.HERE / "vocab.json"
 PAGE_PRICES = run_log.HERE.parent / "pass_prices.csv"
 # prices prompts from before tiers carried a fee: their amounts are the price as stated, with no fee
 NO_FEE = {"prices-v1", "prices-v2"}
+# prices prompts and first reads from before passes carried a style: their passes' style is unknown
+NO_STYLE = {"prices-v1", "prices-v2", "prices-v3", "prices-v4", "first-read-v1", "first-read-v2"}
 TICKET_PAGES = run_log.HERE.parent / "ticket_pages.csv"
 SALES = run_log.HERE.parent / "tickets" / "pages.csv"     # how festivals with no full link sell, found by an agent
 
@@ -82,6 +84,8 @@ CREATE TABLE event_passes (
     event_id INTEGER NOT NULL REFERENCES events(id),
     pass_no INTEGER NOT NULL,
     kind TEXT NOT NULL CHECK (kind IN ('full', 'party', 'day', 'workshop', 'package', 'other')),
+    style TEXT CHECK (style IN ('kizomba', 'zouk', 'bachata', 'salsa', 'other')),  -- the one dance style the pass is
+                                  -- limited to; NULL = all the festival's styles, or unknown (see NO_STYLE)
     label TEXT,                   -- the pass's name or heading as written, when its price lines don't name it
     group_size INTEGER,           -- people one price is for; NULL = not stated (a package per room)
     days INTEGER,                 -- NULL = not stated
@@ -211,8 +215,8 @@ TABLE_DOCS = {
     "genre_definitions": "What each genre in event_genres and event_room_list means.",
     "event_rooms": "Per event, the stated number of party rooms and of class rooms (NULL = not stated), with quotes.",
     "event_room_list": "Rooms a description lists one by one, with their kind (party / class) and genres (JSON array).",
-    "event_passes": "The passes each festival sells (full, party, day, workshop, package, other), with how many people "
-                    "one price is for, its days and whether it includes a hotel. pass_tiers holds the prices. source "
+    "event_passes": "The passes each festival sells (full, party, day, workshop, package, other), the one dance style "
+                    "a pass is limited to at a festival of several, how many people one price is for, its days and whether it includes a hotel. pass_tiers holds the prices. source "
                     "is 'description', or 'ticket_page' when its prices were read on its ticket page (see "
                     "ticket_pages), which replaces what its description gives.",
     "pass_tiers": "Each pass's prices tier by tier: what a buyer pays, fee included (fee: the booking fee it "
@@ -240,7 +244,7 @@ def performed_by(answers: dict) -> str:
 def page_prices(event_ids: set[int]) -> dict[int, tuple[dict, dict]]:
     """Prices read from festivals' ticket pages, written by pipeline/tickets.py: {event_id: (entry shaped like a prices
     answer, the festival's ticket_pages.csv row)}. In pass_prices.csv (one row per tier) a pass is the run of rows with
-    the same kind, label and people; the price notes are ticket_pages.csv's, one per line."""
+    the same kind, style, label and people; the price notes are ticket_pages.csv's, one per line."""
     with TICKET_PAGES.open(encoding="utf-8") as f:
         out = {int(r["event_id"]): ({"event_id": int(r["event_id"]), "passes": [],
                                      "rule_quotes": r["notes"].splitlines()}, r) for r in csv.DictReader(f)}
@@ -250,9 +254,10 @@ def page_prices(event_ids: set[int]) -> dict[int, tuple[dict, dict]]:
     with PAGE_PRICES.open(encoding="utf-8") as f:
         for r in csv.DictReader(f):
             entry, _ = out[int(r["event_id"])]
-            key = (r["kind"], r["label"], r["group_size"], r["days"], r["includes_hotel"])
+            key = (r["kind"], r["style"], r["label"], r["group_size"], r["days"], r["includes_hotel"])
             if not entry["passes"] or entry["passes"][-1]["key"] != key:
-                entry["passes"].append({"key": key, "kind": r["kind"], "label_quote": r["label"] or None,
+                entry["passes"].append({"key": key, "kind": r["kind"], "style": r["style"] or None,
+                                        "label_quote": r["label"] or None,
                                         "group_size": int(r["group_size"]) if r["group_size"] else None,
                                         "days": int(r["days"]) if r["days"] else None,
                                         "includes_hotel": r["includes_hotel"] == "1", "tiers": []})
@@ -279,8 +284,8 @@ def load_prices(con: sqlite3.Connection, answers: dict, pages: dict) -> None:
         if ev["rule_quotes"]:
             con.execute("INSERT INTO event_price_notes VALUES (?, ?)", (ev["event_id"], "\n".join(ev["rule_quotes"])))
         for p, ps in enumerate(ev["passes"], 1):
-            con.execute("INSERT INTO event_passes VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                        (ev["event_id"], p, ps["kind"], ps["label_quote"], ps["group_size"], ps["days"],
+            con.execute("INSERT INTO event_passes VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                        (ev["event_id"], p, ps["kind"], None if prompt_version in NO_STYLE else ps["style"], ps["label_quote"], ps["group_size"], ps["days"],
                          int(ps["includes_hotel"]), source, prompt_version, model))
             for t, tier in enumerate(ps["tiers"], 1):
                 frm, until = on_date(tier["from"], start), on_date(tier["until"], start)

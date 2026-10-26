@@ -13,7 +13,7 @@
       "type": "string"
     },
     "prompt_version": {
-      "const": "prices-v4"
+      "const": "prices-v5"
     },
     "events": {
       "type": "array",
@@ -36,6 +36,7 @@
               "additionalProperties": false,
               "required": [
                 "kind",
+                "style",
                 "label_quote",
                 "group_size",
                 "days",
@@ -52,6 +53,23 @@
                     "package",
                     "other"
                   ]
+                },
+                "style": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "kizomba",
+                        "zouk",
+                        "bachata",
+                        "salsa",
+                        "other"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "The one dance style the pass is limited to, at a festival of several; null when it covers all of them."
                 },
                 "label_quote": {
                   "type": [
