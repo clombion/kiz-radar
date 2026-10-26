@@ -1,17 +1,19 @@
 // Prices in the visitor's currency: kroner, or euros or dollars when the address says ?cur=eur or ?cur=usd (the
-// footer switches it). Amounts in another currency are converted with the rates table and marked "~". The price
-// steps of the festival filter and the map are round numbers in each currency.
+// footer switches it). Amounts in another currency are converted with the rates table and marked "~". Price steps
+// are round numbers in each currency: for a return flight (the map, a cheap flight in green) and for a trip, the full
+// pass and the flight together (the festival filter).
 import { q } from './db.js';
 import { h } from './ui.js';
 
 const CURRENCIES = {
-  NOK: { label: 'kr', steps: { cheap: 1500, fair: 2500 } },
-  EUR: { label: '€', steps: { cheap: 150, fair: 250 } },
-  USD: { label: '$', steps: { cheap: 175, fair: 275 } },
+  NOK: { label: 'kr', flight: { cheap: 1500, fair: 2500 }, trip: { cheap: 3500, fair: 5000 } },
+  EUR: { label: '€', flight: { cheap: 150, fair: 250 }, trip: { cheap: 350, fair: 500 } },
+  USD: { label: '$', flight: { cheap: 175, fair: 275 }, trip: { cheap: 400, fair: 550 } },
 };
 const asked = new URLSearchParams(location.search).get('cur')?.toUpperCase();
 export const currency = asked in CURRENCIES ? asked : 'NOK';
-export const step = name => CURRENCIES[currency].steps[name];
+// step('flight', 'cheap'), step('trip', 'fair'): in the visitor's currency
+export const step = (what, name) => CURRENCIES[currency][what][name];
 
 let rates;
 const rate = c => (rates ||= Object.fromEntries(q('SELECT currency, per_eur FROM rates').map(r => [r.currency, r.per_eur])))[c];

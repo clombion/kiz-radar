@@ -76,12 +76,12 @@ let view;
 function passesDialog() {
   if (view) return view;
   const title = h('h2', { id: 'passes-title' }), sub = h('p', { class: 'sub' }), body = h('div', { class: 'peek-body' });
-  const link = h('a', { target: '_blank', rel: 'noopener' }, 'The festival on kizomba-world ↗');
+  const note = h('p', { class: 'muted small' }), link = h('a', { target: '_blank', rel: 'noopener' });
   const close = h('button', { type: 'button', class: 'peek-close', 'aria-label': 'Close', onclick: () => view.m.shut() }, '×');
   const dlg = h('dialog', { class: 'peek', 'aria-labelledby': 'passes-title' },
     h('div', { class: 'peek-head' }, h('div', {}, title, sub), close), body,
-    h('div', { class: 'peek-foot' }, h('p', { class: 'muted small' }, 'Prices as the festival lists them; check before buying.'), link));
-  view = { m: modal(dlg), title, sub, body, link };
+    h('div', { class: 'peek-foot' }, note, link));
+  view = { m: modal(dlg), title, sub, body, note, link };
   return view;
 }
 
@@ -90,7 +90,12 @@ export function openPasses(e, from) {
   const v = passesDialog();
   v.title.textContent = `Passes for ${e.title}`;
   v.sub.textContent = dayRange(e.start_date, e.end_date);
-  v.link.href = e.url;
+  // prices read from the ticket page (pipeline/pass_prices.csv) say when, since the page may have moved on since
+  const page = passesOf(e.id).find(p => p.source !== 'description');
+  v.note.textContent = page ? `Prices from the festival’s ticket page, as of ${dayMonth(page.checked_on)}; check before buying.`
+    : 'Prices as the festival lists them; check before buying.';
+  v.link.href = page ? page.source : e.url;
+  v.link.textContent = page ? 'The ticket page ↗' : 'The festival on kizomba-world ↗';
   const rows = passesOf(e.id).map(p => [p, tierNow(p, e)]).filter(([, now]) => now);
   v.body.replaceChildren(rows.length ? h('ul', { class: 'pass-rows' }, rows.map(([p, now]) => h('li', {},
     h('span', { class: 'pass-name' }, passName(p)),

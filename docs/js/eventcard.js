@@ -2,7 +2,7 @@
 // opening in place to the full line-up and practical details. Rows come from festivals.js (withDetails).
 import { h, addDays, today, flightsUrl, home, dayMonth } from './ui.js';
 import { money, convert, step, total } from './money.js';
-import { priceNow, riseNote, openPasses } from './passes.js';
+import { riseNote, openPasses } from './passes.js';
 import { place, styleLine } from './festivals.js';
 import { TRAITS } from './icons.js';
 import { cardDetails, traitItems } from './details.js';
@@ -24,7 +24,7 @@ function dateBox(start, end) {
 const flightLink = (e, text) => h('a', { href: flightsUrl(e.airport, e.depart, addDays(e.depart, 3)), target: '_blank', rel: 'noopener',
   title: `Friday to Monday return from ${home().city}; check it on Google Flights` }, text);
 const after = e => [` to ${e.airport_city}`, e.airport_km > 30 ? `, then ${e.airport_km} km` : ''];
-const cheap = e => convert(e.fare.price) <= step('cheap');
+const cheap = e => convert(e.fare.price) <= step('flight', 'cheap');
 function flight(e) {
   if (e.cancelled) return h('p', { class: 'flight muted' }, 'This festival was cancelled.');
   if (!e.upcoming) return h('p', { class: 'flight muted' }, 'This festival has taken place.');
@@ -39,7 +39,7 @@ function flight(e) {
 //   1 670 kr full pass + ~2 460 kr flight to Stockholm, then 37 km
 // The pass opens the passes quick view; the flight opens Google Flights. With only one of the two, that one alone.
 function prices(e) {
-  const p = priceNow(e);
+  const p = e.price;
   if (!p) return flight(e);
   const passBtn = text => h('button', { type: 'button', class: 'link pass-btn',
     onclick: ev => { ev.stopPropagation(); openPasses(e, ev.currentTarget); } }, text);

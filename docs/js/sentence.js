@@ -3,13 +3,13 @@
 import { h, addDays, flag, today, home, loading } from './ui.js';
 import { site } from './db.js';
 import { festivals, readState, changed, WITH, hasWith, withPhrase } from './festivals.js';
-import { money, convert, step, currency } from './money.js';
+import { money, step, currency } from './money.js';
 import { friendsIn } from './plans.js';
 import { eventCard } from './eventcard.js';
 import { blanksHint, exploreHint, artistHint } from './hints.js';
 import { festivalsHref, showInAddressBar } from './routes.js';
 
-// reach is the most a Fri→Mon return may cost; 0 is any price. with is a dance or highlight picked in the search;
+// reach is the most the trip may cost (the full pass and a Fri→Mon return flight); 0 is any price. with is a dance or highlight picked in the search;
 // friends keeps the festivals that featured people said they're going to.
 const DEFAULTS = { months: 6, reach: 150, country: '', with: '', friends: 0, taxi: 0, allin: 0, lineup: 0, unchecked: 0, sort: 'date' };
 const LOOSEST = { months: 12, reach: 0, country: '', with: '', friends: 0, taxi: 0, allin: 0, lineup: 0, unchecked: 0 };
@@ -31,26 +31,27 @@ const takesAn = word => /^[aeiou]/i.test(word);
 const WHEN = [[1, 'the next month'], [2, 'the next two months'], [3, 'the next three months'], [6, 'the next six months'], [12, 'the coming year']];
 const WHEN_DIGITS = { 2: 'the next 2 months', 3: 'the next 3 months', 6: 'the next 6 months' };
 // the sentence says it in words; the bar and the filtering use the numbers
-// reach 150 and 250 name the cheap and fair steps, round numbers in the visitor's currency (money.js)
+// reach 150 and 250 name the cheap and fair trip steps, round numbers in the visitor's currency (money.js)
 const PRICE = [[0, 'any price'], [250, 'a reasonable price'], [150, 'a cheap price']];
 const STEP = { 150: 'cheap', 250: 'fair' };
-const under = reach => money(step(STEP[reach]), currency);
+const under = reach => money(step('trip', STEP[reach]), currency);
 const SHORT_LABEL = {
   months: { 1: '1 month', 2: '2 months', 3: '3 months', 6: '6 months', 12: '12 months' },
   reach: { 0: 'Any price', 250: `Under ${under(250)}`, 150: `Under ${under(150)}` } };
 const FLAGS = [0, 1];
 const LINEUP = [[0, 'Any size'], [10, '10+ artists'], [20, '20+ artists']];
-const ORDER = [['date', 'Soonest first'], ['fare', 'Cheapest flight first']];
+const ORDER = [['date', 'Soonest first'], ['fare', 'Cheapest first']];
 
 function matches(all, s) {
   const end = addDays(today(), Math.round(s.months * 30.4));
   return all.filter(e => e.depart <= end &&
-      (!s.reach || (e.fare ? convert(e.fare.price) <= step(STEP[s.reach]) : s.unchecked)) &&
+      // with a price limit: the trip within it; sold out never; an unknown trip only when asked for
+      (!s.reach || (e.price?.soldOut ? false : e.trip != null ? e.trip <= step('trip', STEP[s.reach]) : s.unchecked)) &&
       (!s.country || e.country_code === s.country) && (!s.with || hasWith(e, s.with)) && (!s.friends || e.goers.some(g => g.featured)) &&
       (!s.taxi || e.taxi_dancers) && (!s.allin || e.all_in_one) &&
       e.lineup >= s.lineup)
     .sort(s.sort === 'fare'
-      ? (a, b) => (a.fare?.price ?? 1e9) - (b.fare?.price ?? 1e9) || a.depart.localeCompare(b.depart)
+      ? (a, b) => (a.trip ?? 1e9) - (b.trip ?? 1e9) || (a.fare?.price ?? 1e9) - (b.fare?.price ?? 1e9) || a.depart.localeCompare(b.depart)
       : (a, b) => a.depart.localeCompare(b.depart));
 }
 
@@ -126,7 +127,7 @@ export function sentenceView(root, qs, { signal, data }) {
     h('label', { class: 'field' }, h('span', {}, 'Line-up'), blank('lineup', LINEUP, 'plain')),
     h('label', { class: 'field' }, h('span', {}, 'Order'), blank('sort', ORDER, 'plain')),
     h('div', { class: 'checks' }, check('friends', 'Only festivals friends go to'), check('taxi', 'Taxi dancers'), check('allin', 'All-in-one hotel'),
-      check('unchecked', 'Include festivals whose flight isn’t checked yet')),
+      check('unchecked', 'Include festivals with unknown prices')),
   ];
   const panel = h('div', { class: 'more-panel', id: 'more-panel', hidden: true }, moreFields());
   moreBtn.addEventListener('click', () => { panel.hidden = !panel.hidden; moreBtn.setAttribute('aria-expanded', String(!panel.hidden)); });
@@ -189,7 +190,7 @@ export function sentenceView(root, qs, { signal, data }) {
       `Show the ${widened} in the coming year, at any price`);
     live.replaceChildren(rows.length
       ? h('span', {}, `${rows.length} festival${rows.length > 1 ? 's' : ''} like that`,
-          !s.reach ? '. ' : h('span', { class: 'price-note' }, ` (return flights under ${under(s.reach)}, Friday to Monday). `),
+          !s.reach ? '. ' : h('span', { class: 'price-note' }, ` (full pass and Friday-to-Monday return flight under ${under(s.reach)}). `),
           h('a', { href: '#', onclick: ev => { ev.preventDefault(); results.scrollIntoView({ behavior: 'smooth' }); } }, 'Show them ↓'),
           friendsLine(rows))
       : widened ? h('span', {}, 'None in that time or for that price. ', widen())

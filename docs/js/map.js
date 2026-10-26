@@ -14,9 +14,9 @@ const PAGE = 40;
 
 const COLOR_BY = {
   fare: { label: 'Flight price', title: () => `Cheapest flight from ${home().city}`, bands: [
-    [`under ${money(step('cheap'), currency)}`, c => c.minFare != null && convert(c.minFare) <= step('cheap'), '--good'],
-    [`${money(step('cheap'), currency)}–${money(step('fair'), currency)}`, c => c.minFare != null && convert(c.minFare) <= step('fair'), '--mid'],
-    [`over ${money(step('fair'), currency)}`, c => c.minFare != null, '--bad'],
+    [`under ${money(step('flight', 'cheap'), currency)}`, c => c.minFare != null && convert(c.minFare) <= step('flight', 'cheap'), '--good'],
+    [`${money(step('flight', 'cheap'), currency)}–${money(step('flight', 'fair'), currency)}`, c => c.minFare != null && convert(c.minFare) <= step('flight', 'fair'), '--mid'],
+    [`over ${money(step('flight', 'fair'), currency)}`, c => c.minFare != null, '--bad'],
     ['not checked', () => true, '--none']] },
   popular: { label: 'Well-known artists', title: () => 'Bookings of well-known artists', bands: [
     ['10 or more', c => c.popular >= 10, '--good'],

@@ -4,8 +4,12 @@ import { q } from './db.js';
 import { flag, home } from './ui.js';
 import { TRAITS, MORE_TRAITS } from './icons.js';
 import { goersOf } from './plans.js';
+import { priceNow } from './passes.js';
+import { convert } from './money.js';
 
-// Each row with the fare for its weekend, the best-known names on its line-up and its styles.
+// Each row with the fare for its weekend, the best-known names on its line-up, its styles, the pass price today
+// (passes.js) and the trip: that pass plus the flight in the visitor's currency, null when either is unknown or the
+// passes are sold out.
 let heads, styles, fares, promos;
 export function withDetails(rows) {
   if (!heads) {
@@ -21,8 +25,10 @@ export function withDetails(rows) {
   }
   return rows.map(e => {
     const depart = e.weekend_friday, price = fares[e.airport + depart];
+    const fare = e.airport === home().code ? { price: 0, home: true } : price != null ? { price } : null;
+    const pass = priceNow(e), cost = pass && !pass.soldOut && fare ? [convert(pass.tier.amount, pass.tier.currency), convert(fare.price)] : null;
     return { ...e, depart, features: new Set(e.features.split(',')), promo: promos[e.id] || null, goers: goersOf(e.id), headliners: heads[e.id] || [], styles: styles[e.id] || new Set(),
-      fare: e.airport === home().code ? { price: 0, home: true } : price != null ? { price } : null };
+      fare, price: pass, trip: cost && !cost.includes(null) ? cost[0] + cost[1] : null };
   });
 }
 

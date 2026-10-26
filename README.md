@@ -13,9 +13,16 @@ matching festivals appear as cards. Once the sentence scrolls away, a sticky bar
 choices in view, with the rest under Filters. The choices live in the URL, so a view can be bookmarked or
 shared.
 
+The price is the trip's: the full pass at today's price plus the Friday-to-Monday return flight. "A cheap price" is
+under 3 500 kr (€350, $400) and "a reasonable price" under 5 000 kr (€500, $550). With a price chosen, festivals
+whose passes are sold out are left out, and so are festivals whose pass or flight price isn't known, unless
+"Include festivals with unknown prices" is ticked under Filters. At "any price", everything shows, sold-out passes
+marked as such. "Cheapest first" orders by the trip, then the flight.
+
 A card shows what matters before you decide: the dates, the city, the styles, up to three highlights such as
-taxi dancers or a hotel in the pass, a few names from the line-up, and the flight. The flight line reads like
-"~€492 to Brussels, then 104 km", the airport we price and the distance to the festival. Opening a card shows the
+taxi dancers or a hotel in the pass, a few names from the line-up, and the cost. With both prices known it reads
+"Cost ~2 810 kr, without accommodation", then "1 500 kr full pass + ~1 310 kr flight to Oslo, then 37 km": the
+airport we price and the distance to the festival. Opening a card shows the
 full line-up first, then the other highlights, then the venue and organisers.
 
 Beyond the festival list, the site has three ways to explore:

@@ -60,7 +60,7 @@ function row(r) {
     h('div', { class: 'c-head' },
       h('h2', {}, h('span', { class: 'c-flag', 'aria-hidden': 'true' }, flag(r.country_code)), r.name),
       h('p', { class: 'c-num' }, h('strong', {}, r.upcoming), h('span', {}, r.upcoming === 1 ? 'festival coming up' : 'festivals coming up'))),
-    h('p', { class: 'flight' + (r.fare && convert(r.fare.price) <= step('cheap') ? ' easy' : '') }, r.fare
+    h('p', { class: 'flight' + (r.fare && convert(r.fare.price) <= step('flight', 'cheap') ? ' easy' : '') }, r.fare
       ? ['✈ from ', h('strong', {}, money(r.fare.price, 'EUR', { approx: true })), ` to ${r.fare.airport_city}`]
       : h('span', { class: 'muted' }, r.upcoming && !r.reachable ? `✈ too far from ${home().city} for our flight prices` : '✈ no flight prices yet')),
     line ? h('p', { class: 'c-fact', title: r.imported_pct != null ? `${r.imported_pct}% of teacher and DJ bookings go to artists from other countries` : null }, line) : null,

@@ -77,6 +77,7 @@ CREATE TABLE event_passes (
     days INTEGER,                 -- NULL = not stated
     includes_hotel INTEGER NOT NULL,
     source TEXT NOT NULL,         -- 'description', or the ticket page the prices were read from (pipeline/pass_prices.csv)
+    checked_on TEXT,              -- for a ticket page: the day it was read
     prompt_version TEXT,          -- for 'description': the prices prompt and the model that answered it
     model TEXT,
     PRIMARY KEY (event_id, pass_no)
@@ -206,16 +207,17 @@ def performed_by(answers: dict) -> str:
     return "; ".join(f"{len(fs)} answer files by {who}" for who, fs in sorted(by.items()))
 
 
-def page_prices(event_ids: set[int]) -> dict[int, tuple[dict, str]]:
+def page_prices(event_ids: set[int]) -> dict[int, tuple[dict, str, str]]:
     """Prices read from festivals' ticket pages (pipeline/pass_prices.csv, one row per tier), shaped like a prices
-    answer: {event_id: (entry, the page)}. A pass is the run of rows with the same kind, label and people."""
+    answer: {event_id: (entry, the page, the day it was read)}. A pass is the run of rows with the same kind, label
+    and people."""
     out = {}
     with PAGE_PRICES.open(encoding="utf-8") as f:
         for r in csv.DictReader(f):
             e = int(r["event_id"])
             if e not in event_ids:
                 sys.exit(f"pass_prices.csv: no festival {e} ({r['event']})")
-            entry, _ = out.setdefault(e, ({"event_id": e, "passes": [], "rule_quotes": []}, r["source_url"]))
+            entry, _, _ = out.setdefault(e, ({"event_id": e, "passes": [], "rule_quotes": []}, r["source_url"], r["checked_on"]))
             key = (r["kind"], r["label"], r["group_size"], r["days"], r["includes_hotel"])
             if not entry["passes"] or entry["passes"][-1]["key"] != key:
                 entry["passes"].append({"key": key, "kind": r["kind"], "label_quote": r["label"] or None,
@@ -233,16 +235,16 @@ def page_prices(event_ids: set[int]) -> dict[int, tuple[dict, str]]:
 def load_prices(con: sqlite3.Connection, answers: dict, pages: dict) -> None:
     """Each festival's passes: from its ticket page when pass_prices.csv has it, else from its description."""
     dates = {i: (start, edited) for i, start, edited in con.execute("SELECT id, start_date, modified_at FROM events")}
-    rows = [(a.entry, "description", a.prompt_version, a.model) for e, a in answers.items() if e not in pages]
-    rows += [(entry, page, None, None) for entry, page in pages.values()]
-    for ev, source, prompt_version, model in rows:
+    rows = [(a.entry, "description", None, a.prompt_version, a.model) for e, a in answers.items() if e not in pages]
+    rows += [(entry, page, checked_on, None, None) for entry, page, checked_on in pages.values()]
+    for ev, source, checked_on, prompt_version, model in rows:
         start, edited = dates[ev["event_id"]]
         if ev["rule_quotes"]:
             con.execute("INSERT INTO event_price_notes VALUES (?, ?)", (ev["event_id"], "\n".join(ev["rule_quotes"])))
         for p, ps in enumerate(ev["passes"], 1):
-            con.execute("INSERT INTO event_passes VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            con.execute("INSERT INTO event_passes VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                         (ev["event_id"], p, ps["kind"], ps["label_quote"], ps["group_size"], ps["days"],
-                         int(ps["includes_hotel"]), source, prompt_version, model))
+                         int(ps["includes_hotel"]), source, checked_on, prompt_version, model))
             for t, tier in enumerate(ps["tiers"], 1):
                 frm, until = on_date(tier["from"], start), on_date(tier["until"], start)
                 if tier["current"] and frm is None:
