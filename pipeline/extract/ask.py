@@ -1,12 +1,8 @@
-# /// script
-# requires-python = ">=3.11"
-# dependencies = ["anthropic==2.3.0", "jsonschema==4.26.0"]
-# ///
 """Ask Claude the extraction passes for the festivals that need them, and save each answer.
 
-    uv run pipeline/extract/ask.py source/<events>.sqlite             # what the monthly Action runs
-    uv run pipeline/extract/ask.py source/<events>.sqlite --dry-run   # list what would be asked
-    uv run pipeline/extract/ask.py source/<events>.sqlite --limit 3   # ask about three festivals only
+    uv run --group ask -m pipeline.extract.ask source/<events>.sqlite             # what the monthly Action runs
+    uv run --group ask -m pipeline.extract.ask source/<events>.sqlite --dry-run   # list what would be asked
+    uv run --group ask -m pipeline.extract.ask source/<events>.sqlite --limit 3   # ask about three festivals only
 
 A festival needs a pass when it is in pending_extraction (its description is new or changed) or when the pass
 has no answer for it yet. Each question is one festival and one pass, with the pass's prompt and its schema as
@@ -21,8 +17,8 @@ from pathlib import Path
 
 import anthropic
 
-sys.path.insert(0, str(Path(__file__).parent))
-import answers, check_output, prices
+from pipeline import db as sqlite_db
+from pipeline.extract import answers, check_output, prices
 
 HERE = Path(__file__).parent
 MODEL = 'claude-haiku-5-5'
@@ -128,13 +124,13 @@ def due(db, only):
 
 def main():
     ap = argparse.ArgumentParser(description='Ask Claude the extraction passes for the festivals that need them.')
-    ap.add_argument('src', help='the source DB; festivals leave its pending_extraction once answered')
+    ap.add_argument('src', type=sqlite_db.existing, help='the source DB; festivals leave its pending_extraction once answered')
     ap.add_argument('--dry-run', action='store_true', help='list what would be asked, without asking')
     ap.add_argument('--limit', type=int, help='ask about at most this many festivals')
     ap.add_argument('--pass', dest='passes', action='append', choices=PASSES, help='only this pass (repeatable)')
     a = ap.parse_args()
 
-    db = sqlite3.connect(a.src)
+    db = sqlite_db.connect(a.src, 'rw')
     db.row_factory = sqlite3.Row
     todo, pending = due(db, a.passes)
     if a.limit:

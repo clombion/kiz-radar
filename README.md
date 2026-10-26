@@ -104,7 +104,7 @@ overdue by twice its interval, doesn't wait for its day. Past weekends and weeke
 `docs/data/fares.csv` and `pipeline/fare_jobs.csv`. A weekend with no price on Google is noted and tried again at
 its next interval. If Google refuses a search, the run keeps what it found and is marked failed. A festival's
 airport is the nearest one in `pipeline/airports.csv` within 250 km. To see what is due today, run
-`python3 pipeline/fares.py plan`.
+`python3 -m pipeline.fares plan`.
 
 ## Duplicate artists
 
@@ -201,12 +201,12 @@ A festival in `ticket_pages.csv` takes its passes from its page in place of its 
 (`event_passes.source` is `ticket_page`), and the quick view says when the page was read.
 
 ```bash
-uv run pipeline/tickets.py todo               # what needs doing: first reads, unread tickets, failed reads
-uv run pipeline/tickets.py read ID [--url U]  # read the page by its site's recipe and log the rows
-uv run pipeline/tickets.py draft ID           # a first read to fill, from the latest rows
-uv run pipeline/tickets.py record ID          # check the draft or first read, then write the festival's prices
-uv run pipeline/tickets.py retry ID           # read with a visible browser, then record
-uv run pipeline/tickets.py changes [ID]       # what changed between consecutive reads
+uv run --group tickets -m pipeline.tickets todo               # what needs doing
+uv run --group tickets -m pipeline.tickets read ID [--url U]  # read the page by its site's recipe and log the rows
+uv run --group tickets -m pipeline.tickets draft ID           # a first read to fill, from the latest rows
+uv run --group tickets -m pipeline.tickets record ID          # check the draft or first read, write the prices
+uv run --group tickets -m pipeline.tickets retry ID           # read with a visible browser, then record
+uv run --group tickets -m pipeline.tickets changes [ID]       # what changed between consecutive reads
 ```
 
 A festival needs a first read when it is still to come and its description gives no dated full pass or package
@@ -227,8 +227,8 @@ short, are for an agent.
 scheduled reader that uses it:
 
 ```bash
-uv run pipeline/read_page.py URL --screenshot page.png   # the page's text, and a screenshot
-uv run pipeline/read_page.py URL --visible               # a visible browser on a virtual display (xvfb-run)
+uv run --group browser -m pipeline.read_page URL --screenshot page.png   # the page's text, and a screenshot
+uv run --group browser -m pipeline.read_page URL --visible               # a visible browser on a virtual display (xvfb-run)
 ```
 
 ## Promo codes
@@ -283,19 +283,27 @@ key is the repository secret `ANTHROPIC_API_KEY`; each run prints the tokens it 
 To do the same locally:
 
 ```bash
-uv run pipeline/scrape.py source/<events>.sqlite --dry-run   # what would change, without writing
-uv run pipeline/scrape.py source/<events>.sqlite
-python3 pipeline/geocode.py source/<events>.sqlite        # looks up new cities only
-uv run pipeline/extract/ask.py source/<events>.sqlite --dry-run   # which festivals need asking
-uv run pipeline/extract/ask.py source/<events>.sqlite            # needs ANTHROPIC_API_KEY
-python3 -I pipeline/extract/load_extract.py source/<events>.sqlite
-uv run pipeline/extract/resolve_artists.py source/<events>.sqlite
-python3 pipeline/rates.py                                 # exchange rates for the site's prices
-python3 pipeline/build_site_db.py source/<events>.sqlite
-python3 pipeline/merge_suggestions.py source/<events>.sqlite
-python3 pipeline/fares.py refresh --budget 4              # needs uv; searches festival weekends due today
-python3 -m http.server -d docs 8000                       # then open http://localhost:8000
+uv run --group scrape -m pipeline.scrape source/<events>.sqlite --dry-run    # what would change, without writing
+uv run --group scrape -m pipeline.scrape source/<events>.sqlite
+python3 -m pipeline.geocode source/<events>.sqlite                           # looks up new cities only
+uv run --group ask -m pipeline.extract.ask source/<events>.sqlite --dry-run  # which festivals need asking
+uv run --group ask -m pipeline.extract.ask source/<events>.sqlite            # needs ANTHROPIC_API_KEY
+python3 -m pipeline.extract.load_extract source/<events>.sqlite
+uv run --group artists -m pipeline.extract.resolve_artists source/<events>.sqlite
+python3 -m pipeline.rates                                                    # exchange rates for the site's prices
+python3 -m pipeline.build_site_db source/<events>.sqlite
+python3 -m pipeline.merge_suggestions source/<events>.sqlite
+python3 -m pipeline.fares refresh --budget 4                                 # needs uv; searches festival weekends due today
+python3 -m http.server -d docs 8000                                          # then open http://localhost:8000
 ```
+
+## Running the steps
+
+The pipeline is one Python package, `pipeline`, run as modules from the repository's root. `pyproject.toml` pins
+every package once, in dependency groups, and each step installs only its group: `uv run --group tickets -m
+pipeline.tickets …` gets the browser, Claude's client and the checker; the steps that need Python alone (the loads,
+the build, the fares) run as `python3 -m pipeline.<step>`. `uv.lock` fixes the versions. A step opens its databases
+through `pipeline/db.py`, saying whether it reads, writes or creates each one, so a wrong path is an error.
 
 ## Tests
 
@@ -303,8 +311,8 @@ The **Tests** Action runs on every push. Locally:
 
 ```bash
 node --test tests/*.test.mjs      # the site's structure: unused code and styles, links, stored hints
-uvx --with-requirements pipeline/tickets.py --with-requirements pipeline/extract/resolve_artists.py pytest -q tests/
-                                  # the pipeline: text tidying, reading kizomba-world's pages, the extraction step
+uv run --group dev pytest -q      # the pipeline: text, kizomba-world's pages, extraction, ticket pages, commands
+uv run --group dev pyflakes pipeline tests   # unused and undefined names
 ```
 
 The site tests check what JavaScript and CSS cannot enforce themselves. Examples include an export nothing

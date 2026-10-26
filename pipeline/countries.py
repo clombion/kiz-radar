@@ -1,6 +1,6 @@
 """Country normalisation: ISO 3166 alpha-2 codes for the free-text and flag-emoji
 countries found in event and artist data."""
-import re, unicodedata
+import re
 
 NAMES = {
  'AD':'Andorra','AE':'United Arab Emirates','AL':'Albania','AM':'Armenia','AO':'Angola','AR':'Argentina','AT':'Austria',

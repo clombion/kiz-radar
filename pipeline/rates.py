@@ -1,9 +1,9 @@
 """Refresh pipeline/rates.csv, the exchange rates the site converts prices with: the European Central Bank's daily
 reference rates, as units of each currency per euro. When the bank can't be reached the file stays as it was.
 
-    python3 pipeline/rates.py
+    python3 -m pipeline.rates
 """
-import csv, os, re, sys, urllib.request
+import argparse, csv, os, re, sys, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'pipeline', 'rates.csv')
@@ -11,6 +11,7 @@ ECB = 'https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml'
 # Bulgaria joined the euro on 1 Jan 2026 at a fixed rate, so the bank no longer quotes the lev
 FIXED = {'EUR': 1.0, 'BGN': 1.95583}
 
+argparse.ArgumentParser(description="Refresh pipeline/rates.csv from the European Central Bank's reference rates.").parse_args()
 try:
     xml = urllib.request.urlopen(ECB, timeout=30).read().decode()
 except OSError as e:

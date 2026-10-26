@@ -26,13 +26,13 @@ jobs:
       - name: Pick the newest export
         run: echo "SRC=$(ls -t source/*.sqlite | head -1)" >> "$GITHUB_ENV"
       - name: Geocode new cities
-        run: python3 pipeline/geocode.py "$SRC"
+        run: python3 -m pipeline.geocode "$SRC"
       - name: Refresh the exchange rates
-        run: python3 pipeline/rates.py || true   # when the bank can't be reached, the last rates stay
+        run: python3 -m pipeline.rates || true   # when the bank can't be reached, the last rates stay
       - name: Build docs/data/kiz.sqlite and site.json
-        run: python3 pipeline/build_site_db.py "$SRC"
+        run: python3 -m pipeline.build_site_db "$SRC"
       - name: Refresh merge suggestions
-        run: python3 pipeline/merge_suggestions.py "$SRC"
+        run: python3 -m pipeline.merge_suggestions "$SRC"
       - name: Commit
         run: |
           git add docs/data/kiz.sqlite docs/data/site.json pipeline/geocode.csv pipeline/artist_merge_suggestions.csv pipeline/rates.csv

@@ -1,7 +1,3 @@
-# /// script
-# requires-python = ">=3.11"
-# dependencies = ["pycountry==26.2.16"]
-# ///
 """Resolve artist mentions into artists, couples and groups, and link them to events.
 
 Reads artist_mentions (from load_extract.py) and pipeline/extract/merges.csv; writes:
@@ -39,9 +35,10 @@ keeps the id of its own key, else the lowest earlier id among the keys it absorb
 next id never used. An id whose artist was merged into another reads, through its key in artist_keys, as
 the artist that absorbed it.
 
-Usage: uv run pipeline/extract/resolve_artists.py source/<events>.sqlite
+Usage: uv run --group artists -m pipeline.extract.resolve_artists source/<events>.sqlite
 """
 
+import argparse
 import csv
 import itertools
 import json
@@ -51,11 +48,10 @@ import sys
 import unicodedata
 from collections import defaultdict
 from difflib import SequenceMatcher
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent))
-import run_log
-from answers import log
+from pipeline import db as sqlite_db
+from pipeline.extract import run_log
+from pipeline.extract.answers import log
 
 import pycountry
 
@@ -367,7 +363,9 @@ def stable_ids(con: sqlite3.Connection, final_key: dict[str, str]) -> dict[str, 
 
 
 def main() -> None:
-    con = sqlite3.connect(sys.argv[1])
+    ap = argparse.ArgumentParser(description='Resolve artist mentions into artists, with stable ids.')
+    sqlite_db.source_arg(ap)
+    con = sqlite_db.connect(ap.parse_args().src, 'rw')
     mentions = con.execute(
         "SELECT m.id, m.event_id, m.role, m.name_as_written, m.style, m.country, e.country"
         " FROM artist_mentions m JOIN events e ON e.id = m.event_id"

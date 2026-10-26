@@ -1,9 +1,7 @@
 """When a festival weekend's fare is searched again."""
-import datetime as dt, sys
-from pathlib import Path
+import datetime as dt
 
-sys.path.insert(0, str(Path(__file__).parent.parent / 'pipeline'))
-import fares
+from pipeline import fares
 
 
 def test_closer_weekends_are_searched_more_often():

@@ -1,16 +1,12 @@
-# /// script
-# requires-python = ">=3.11"
-# dependencies = ["anthropic==2.3.0", "jsonschema==4.26.0", "patchright==1.55.2", "curl_cffi==0.13.0"]
-# ///
 """Prices from festivals' ticket pages: judgment once, then code.
 
-    uv run pipeline/tickets.py todo               # what needs doing: first reads, unread tickets, failed reads
-    uv run pipeline/tickets.py read ID [--url U]  # read the page by its site's recipe and log the rows
-    uv run pipeline/tickets.py draft ID           # a first read to fill (tickets/drafts/ID.json), from the latest rows
-    uv run pipeline/tickets.py record ID          # check the draft or first read, then write ID's prices
-    uv run pipeline/tickets.py retry ID           # read with a visible browser, then record
-    uv run pipeline/tickets.py changes [ID]       # what changed between consecutive reads
-    uv run pipeline/tickets.py run                # the monthly Action: re-reads, retries, two-model first reads, record
+    uv run --group tickets -m pipeline.tickets todo           # what needs doing
+    uv run --group tickets -m pipeline.tickets read ID [--url U]  # read the page by its recipe, log the rows
+    uv run --group tickets -m pipeline.tickets draft ID       # a first read to fill (tickets/drafts/ID.json)
+    uv run --group tickets -m pipeline.tickets record ID      # check the draft or first read, write ID's prices
+    uv run --group tickets -m pipeline.tickets retry ID       # read with a visible browser, then record
+    uv run --group tickets -m pipeline.tickets changes [ID]   # what changed between consecutive reads
+    uv run --group tickets -m pipeline.tickets run            # the monthly Action
 
 A site recipe (tickets/sites/<site>.json, schema tickets/schemas/site.json) says where a site's ticket rows are; an
 agent writes one per site. read applies it in a browser (read_page.rows) and appends one entry per attempt to
@@ -46,9 +42,8 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 ROOT = Path(__file__).parent.parent
-sys.path.insert(0, str(ROOT / 'pipeline' / 'extract'))
-sys.path.insert(0, str(ROOT / 'pipeline'))
-import check_output, prices
+from pipeline import db as sqlite_db
+from pipeline.extract import check_output, prices
 
 HERE = ROOT / 'pipeline' / 'tickets'
 SITES, READS, DRAFTS, LOG, DISPUTED = (HERE / d for d in ('sites', 'reads', 'drafts', 'log', 'disputed'))
@@ -136,7 +131,7 @@ def attempt(page, recipe, version, visible=None):
     """One read of a ticket page, as its log entry."""
     from curl_cffi.requests.exceptions import RequestException
     from patchright.sync_api import Error
-    from read_page import RecipeError, rows
+    from pipeline.read_page import RecipeError, rows
     entry = {'at': dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds'), 'page': page, 'recipe': version}
     try:
         url = widget(page, recipe)
@@ -333,7 +328,7 @@ def record(event_id, quiet=False):
     draft, entries = first_read(event_id, draft=True), log(event_id)
     fr = draft or first_read(event_id)
     if fr is None:
-        return [f'{event_id}: no first read (tickets/reads/{event_id}.json); run: uv run pipeline/tickets.py draft {event_id}']
+        return [f'{event_id}: no first read (tickets/reads/{event_id}.json); run: uv run --group tickets -m pipeline.tickets draft {event_id}']
     match written(event_id, fr, entries):
         case (tiers, page, unread):
             pass
@@ -388,7 +383,7 @@ def recheck(tiers, start, today):
 # ---- festivals
 
 def src_db():
-    db = sqlite3.connect(sorted((ROOT / 'source').glob('*.sqlite'), key=os.path.getmtime)[-1])
+    db = sqlite_db.connect(sorted((ROOT / 'source').glob('*.sqlite'), key=os.path.getmtime)[-1], 'ro')
     db.row_factory = sqlite3.Row
     return db
 
@@ -422,7 +417,7 @@ def festivals(db, today, only=None):
     """Every festival still to come (or the one asked for) with what tickets.py knows of it: its first read, log and
     recorded tiers, its description's prices answer, the ticket page and recipe it is read with, and why it needs a
     first read."""
-    import answers
+    from pipeline.extract import answers
     query = 'select id, title, start_date, end_date, country, description_text from events where cancelled is not 1 and '
     events = [dict(r) for r in (db.execute(query + 'id = ?', (only,)) if only else
                                 db.execute(query + 'end_date >= ? order by start_date', (today,)))]
@@ -459,7 +454,7 @@ def question(f, entry):
 
 def ask_read(client, model, f, entry, entries):
     """One model's first read, checked, with one retry on the checker's lines; None when it fails twice."""
-    import ask
+    from pipeline.extract import ask
     system, content = question(f, entry)
     out = ask.structured(client, model, system, content, model_schema(),
                          lambda out: read_problems(draft_of(f, entry, model) | out, entries), f"{f['id']} {model}")
@@ -508,7 +503,7 @@ def cmd_read(event_id, url=None, visible=None):
     append(event_id, entry)
     if entry['status'] != Status.READ:
         sys.exit(f"{event_id}: {entry['status']}: {entry['why']}"
-                 + (f'; try: uv run pipeline/tickets.py retry {event_id}' if entry['status'] == Status.REFUSED else ''))
+                 + (f'; try: uv run --group tickets -m pipeline.tickets retry {event_id}' if entry['status'] == Status.REFUSED else ''))
     print(f"{event_id}: {len(entry['rows'])} tickets read at {entry['at']} from {entry['url']}")
     for r in entry['rows']:
         print(f"  {r['key']:>12}  {line(r)}{'  (sold out)' if r['sold_out'] else ''}")
@@ -518,17 +513,17 @@ def cmd_draft(event_id):
     if path.exists():
         sys.exit(f'{shown(path)} exists; delete it to start the draft again')
     if not (entry := latest_read(f['log'])):
-        sys.exit(f'{event_id}: no read rows yet; run: uv run pipeline/tickets.py read {event_id}')
+        sys.exit(f'{event_id}: no read rows yet; run: uv run --group tickets -m pipeline.tickets read {event_id}')
     save_read(draft_of(f, entry, 'agent'), draft=True)
     print(f'Fill passes, skipped and rule_quotes in {shown(path)} following pipeline/extract/prompts/prices-v2.md '
           f'and pipeline/tickets/prompts/{PROMPT}.md, from the tickets of the read at {entry["at"]} and the description; '
-          f'then run: uv run pipeline/tickets.py record {event_id}')
+          f'then run: uv run --group tickets -m pipeline.tickets record {event_id}')
 
 def cmd_record(event_id):
     if found := record(event_id):
         sys.exit('\n'.join(found))
-    print('Then: python3 -I pipeline/extract/load_extract.py, uv run pipeline/extract/resolve_artists.py and '
-          'python3 pipeline/build_site_db.py on the newest source/*.sqlite')
+    print('Then: python3 -m pipeline.extract.load_extract, uv run --group artists -m pipeline.extract.resolve_artists and '
+          'python3 -m pipeline.build_site_db on the newest source/*.sqlite')
 
 def cmd_todo():
     today = dt.date.today().isoformat()
@@ -539,7 +534,7 @@ def cmd_todo():
             notes.append(f"{kind}: {'due' if due else 'not due'}, {why}")
             if n := failures(f['log']):
                 notes.append(f"{n} failed reads in a row ({f['log'][-1]['status']}: {f['log'][-1]['why']})"
-                             + (f"; read it in a session: uv run pipeline/tickets.py retry {f['id']}" if n >= REFUSALS else ''))
+                             + (f"; read it in a session: uv run --group tickets -m pipeline.tickets retry {f['id']}" if n >= REFUSALS else ''))
         elif not f['why']:
             continue
         if f['why']:
@@ -577,7 +572,7 @@ def cmd_run():
             if entry['status'] == Status.LAYOUT_BROKEN:
                 alarms.append(f"{i}: layout broken ({entry['why']}); the recipe {entry['recipe']} needs an agent")
             elif failures(log(i)) == REFUSALS:
-                alarms.append(f'{i}: {REFUSALS} failed reads in a row; read it in a session: uv run pipeline/tickets.py retry {i}')
+                alarms.append(f'{i}: {REFUSALS} failed reads in a row; read it in a session: uv run --group tickets -m pipeline.tickets retry {i}')
             f['log'] = log(i)
             f['why'], f['unread'] = why_first_read(f, today)
         if f['why'] and f['site'] and not f['disputed']:
@@ -611,7 +606,7 @@ def main():
     sub.add_parser('run', help='the monthly Action')
     a = ap.parse_args()
     if a.cmd in ('read', 'retry', 'run'):       # a recipe may need a visible browser
-        import read_page
+        from pipeline import read_page
         read_page.on_display()
     match a.cmd:
         case 'todo': cmd_todo()

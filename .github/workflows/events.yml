@@ -33,27 +33,27 @@ jobs:
       - name: Pick the newest export
         run: echo "SRC=$(ls -t source/*.sqlite | head -1)" >> "$GITHUB_ENV"
       - name: Refresh the events
-        run: uv run -q pipeline/scrape.py "$SRC"
+        run: uv run -q --group scrape -m pipeline.scrape "$SRC"
       - name: Ask Claude about new and changed festivals
         id: ask
         continue-on-error: true
-        run: uv run -q pipeline/extract/ask.py "$SRC" ${LIMIT:+--limit "$LIMIT"}
+        run: uv run -q --group ask -m pipeline.extract.ask "$SRC" ${LIMIT:+--limit "$LIMIT"}
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           LIMIT: ${{ inputs.limit }}
       - name: Install a browser for ticket pages (the runner has a virtual display, xvfb)
-        run: uvx -q --from patchright==1.55.2 patchright install --with-deps chromium
+        run: uv run -q --group browser patchright install --with-deps chromium
       - name: Read ticket pages
         id: tickets
         continue-on-error: true
-        run: xvfb-run -a uv run -q pipeline/tickets.py run
+        run: xvfb-run -a uv run -q --group tickets -m pipeline.tickets run
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       - name: Load the answers and resolve the artists
         run: |
-          python3 -I pipeline/extract/load_extract.py "$SRC"
-          uv run -q pipeline/extract/resolve_artists.py "$SRC"
-          python3 pipeline/merge_suggestions.py "$SRC"
+          python3 -m pipeline.extract.load_extract "$SRC"
+          uv run -q --group artists -m pipeline.extract.resolve_artists "$SRC"
+          python3 -m pipeline.merge_suggestions "$SRC"
       - name: Commit
         id: commit
         run: |

@@ -14,12 +14,12 @@ for is recorded as such and tried again at its next interval. Google sometimes r
 a refused search is tried once more after a minute; refused again, it stops the run, which then exits with an error
 after saving what it found.
 
-    python3 pipeline/fares.py refresh --budget 20      # what the GitHub Action runs
-    python3 pipeline/fares.py plan                     # show what is due, without searching
+    python3 -m pipeline.fares refresh --budget 20      # what the GitHub Action runs
+    python3 -m pipeline.fares plan                     # show what is due, without searching
 """
-import argparse, csv, datetime as dt, json, os, shlex, sqlite3, subprocess, sys, time, zlib
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from airports import HOME
+import argparse, csv, datetime as dt, json, os, shlex, subprocess, sys, time, zlib
+from pipeline import db as sqlite_db
+from pipeline.airports import HOME
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, 'docs', 'data')
@@ -48,7 +48,7 @@ def write(path, fields, rows, key):
 
 def weekends(today):
     """(airport, Friday) of every upcoming, not cancelled festival with an airport other than home, from the site DB."""
-    c = sqlite3.connect(f"file:{os.path.join(DATA, 'kiz.sqlite')}?mode=ro", uri=True)
+    c = sqlite_db.connect(os.path.join(DATA, 'kiz.sqlite'), 'ro')
     return set(c.execute("""select airport, weekend_friday from events where airport is not null and airport != ?
         and cancelled is not 1 and weekend_friday > ?""", (HOME, today.isoformat())).fetchall())
 

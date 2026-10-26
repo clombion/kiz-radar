@@ -4,16 +4,18 @@ Keeps facts (titles, dates, places, genres, features, line-ups) and links back t
 drops descriptions, images and extraction quotes. Adds places, airports, per-event and per-artist
 statistics, and a fares table filled from docs/data/fares.csv.
 
-    python3 pipeline/build_site_db.py source/kizomba_events_2026_2027.compact.sqlite
+    python3 -m pipeline.build_site_db source/kizomba_events_2026_2027.compact.sqlite
 """
-import collections, csv, datetime as dt, difflib, json, math, os, re, sqlite3, sys, unicodedata
-sys.path.insert(0, os.path.dirname(__file__))
-from countries import codes, NAMES
-from text import tidy_name, tidy_title, soften_caps
-from airports import AIRPORTS, HOME
+import argparse, collections, csv, datetime as dt, difflib, json, math, os, re, sys, unicodedata
+from pipeline import db as sqlite_db
+from pipeline.countries import codes, NAMES
+from pipeline.text import tidy_name, tidy_title, soften_caps
+from pipeline.airports import AIRPORTS, HOME
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = sys.argv[1]
+ap = argparse.ArgumentParser(description='Build docs/data/kiz.sqlite, the database the site loads.')
+sqlite_db.source_arg(ap)
+SRC = ap.parse_args().src.resolve()
 OUT = os.path.join(ROOT, 'docs', 'data', 'kiz.sqlite')
 POPULAR = 10            # bookings that make an artist "popular"
 MAX_AIRPORT_KM = 250
@@ -33,7 +35,7 @@ def weekend_friday(start):
 # built beside the published file and swapped in at the end, so a build that stops halfway leaves the site as it was
 BUILDING = OUT + '.building'
 if os.path.exists(BUILDING): os.remove(BUILDING)
-out = sqlite3.connect(BUILDING)
+out = sqlite_db.connect(BUILDING, 'rwc')
 out.execute(f"attach database 'file:{SRC}?mode=ro' as src")
 x = out.execute
 

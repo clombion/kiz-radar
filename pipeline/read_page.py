@@ -1,7 +1,3 @@
-# /// script
-# requires-python = ">=3.11"
-# dependencies = ["patchright==1.55.2"]
-# ///
 """Read one web page the way a person's browser shows it, for a one-off check: its text on stdout, and a screenshot
 if asked. For pages a plain request can't read: pages built by JavaScript (a ticket widget), and pages behind a
 browser check such as Vercel's Security Checkpoint that a person can open in any browser.
@@ -10,14 +6,14 @@ It opens Chromium through Patchright, a Playwright build that doesn't announce a
 JavaScript pages; --visible opens it on a virtual display instead, since browser checks refuse headless browsers.
 On Linux without a display, --visible restarts itself under xvfb-run.
 
-    uv run pipeline/read_page.py URL                         # the page's text
-    uv run pipeline/read_page.py URL --visible               # for a page behind a browser check
-    uv run pipeline/read_page.py URL --screenshot page.png   # and a full-page screenshot
+    uv run --group browser -m pipeline.read_page URL                         # the page's text
+    uv run --group browser -m pipeline.read_page URL --visible               # for a page behind a browser check
+    uv run --group browser -m pipeline.read_page URL --screenshot page.png   # and a full-page screenshot
 
 One page per run, for a person's one-off question; never in a scheduled job or a loop of one's own. The one
 scheduled reader is pipeline/tickets.py, which reads ticket pages through rows() below, by a site recipe.
 Finding the Chromium: --browser, else the Playwright browsers in /opt/pw-browsers, else Patchright's own
-(`uvx patchright install chromium`).
+(`uv run --group browser patchright install chromium`).
 """
 import argparse, contextlib, glob, os, shutil, sys
 
@@ -93,7 +89,7 @@ def on_display():
         return
     if not shutil.which('xvfb-run'):
         sys.exit('no display and no xvfb-run: install xvfb, or run where a display is available')
-    os.execvp('xvfb-run', ['xvfb-run', '-a', sys.executable, *sys.argv])
+    os.execvp('xvfb-run', ['xvfb-run', '-a', *sys.orig_argv])      # the same interpreter, flags and -m module
 
 def main():
     ap = argparse.ArgumentParser(description='Read one web page as a browser shows it: text on stdout.')

@@ -1,0 +1,24 @@
+[project]
+name = "kiz-radar"
+version = "0"
+requires-python = ">=3.12"
+dependencies = []                     # the build, the loads and the fares need Python alone
+
+# Each job installs only its group: uv run --group <group> -m pipeline.<module>. A group that needs another's
+# packages includes that group, so every version is written once.
+[dependency-groups]
+scrape = ["curl_cffi==0.13.0"]
+check = ["jsonschema==4.26.0"]
+ask = ["anthropic==2.3.0", {include-group = "check"}]
+artists = ["pycountry==26.2.16"]
+browser = ["patchright==1.55.2"]
+tickets = [{include-group = "ask"}, {include-group = "scrape"}, {include-group = "browser"}]
+dev = ["pytest==8.4.2", "pyflakes==3.4.0", {include-group = "tickets"}, {include-group = "artists"}]
+
+[tool.uv]
+package = false
+default-groups = []
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

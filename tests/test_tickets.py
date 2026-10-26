@@ -1,12 +1,10 @@
 """Ticket-page prices: rows to passes by key, the first read's checks, recording, changes, re-reads and agreement."""
-import copy, json, sys
-from pathlib import Path
+import copy, json
 
 import pytest
 
-sys.path.insert(0, str(Path(__file__).parent.parent / 'pipeline'))
-import tickets
-from tickets import Recheck, Status
+from pipeline import tickets
+from pipeline.tickets import Recheck, Status
 
 AT = '2026-10-01T05:00:00+00:00'
 
@@ -212,7 +210,7 @@ RECIPE = {'widget': None, 'symbols': {'€': 'EUR'}}
 
 def attempt_with(monkeypatch, raw=None, error=None):
     """attempt() on a page whose recipe finds these rows, or fails with this error."""
-    import read_page
+    from pipeline import read_page
     def rows(url, recipe, visible):
         if error:
             raise error
@@ -237,7 +235,7 @@ def test_two_rows_with_one_key_break_the_layout(monkeypatch):
 
 
 def test_a_recipe_failing_on_the_page_breaks_the_layout_and_a_page_that_wont_load_is_refused(monkeypatch):
-    import read_page
+    from pipeline import read_page
     from patchright.sync_api import Error
     assert attempt_with(monkeypatch, error=read_page.RecipeError('bad selector'))['status'] == Status.LAYOUT_BROKEN
     assert attempt_with(monkeypatch, error=Error('net::ERR_CONNECTION_RESET'))['status'] == Status.REFUSED
@@ -289,8 +287,7 @@ def test_recipes_are_checked_against_their_schema(tmp_path, monkeypatch):
 
 
 def test_model_schema_is_accepted_by_structured_outputs():
-    sys.path.insert(0, str(Path(__file__).parent.parent / 'pipeline' / 'extract'))
-    import ask
+    from pipeline.extract import ask
     text = json.dumps(ask.api_schema(tickets.model_schema()))
     for word in ('minLength', 'maxLength', 'minimum', 'oneOf', 'pattern', '$schema'):
         assert word not in text

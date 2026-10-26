@@ -1,6 +1,4 @@
-import sys, pathlib
-sys.path.insert(0, str(pathlib.Path(__file__).parent.parent / 'pipeline'))
-from kizomba_world import text, emoji_text, page_fields
+from pipeline.kizomba_world import text, emoji_text, page_fields
 
 # event page markup as kizomba-world serves it, cut down to the parts the scraper reads
 PAGE = '''<link rel="alternate" hreflang="fr" href="https://kizomba-world.com/fr/evenement/x/">

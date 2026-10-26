@@ -23,23 +23,22 @@ Creates (replacing any previous load):
 
 Each festival's newest answer is loaded (see answers.py); answers for festivals no longer in the DB are left out.
 
-Usage: python3 pipeline/extract/load_extract.py source/<events>.sqlite
+Usage: python3 -m pipeline.extract.load_extract source/<events>.sqlite
 """
 
+import argparse
 import csv
 import json
 import re
 import sqlite3
 import sys
 import unicodedata
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent))
-import run_log
-from answers import latest
-from prices import on_date
-sys.path.insert(0, str(Path(__file__).parent.parent))
-from kizomba_world import TAG_FEATURES, TAG_GENRES
+from pipeline import db as sqlite_db
+from pipeline.extract import run_log
+from pipeline.extract.answers import latest
+from pipeline.extract.prices import on_date
+from pipeline.kizomba_world import TAG_FEATURES, TAG_GENRES
 
 VOCAB = run_log.HERE / "vocab.json"
 PAGE_PRICES = run_log.HERE.parent / "pass_prices.csv"
@@ -336,9 +335,11 @@ def record_steps(con: sqlite3.Connection, extract: dict, rooms_genres: dict, pri
 
 
 def main() -> None:
-    db_path = Path(sys.argv[1])
+    ap = argparse.ArgumentParser(description='Load the saved answers of the extraction passes into the source DB.')
+    sqlite_db.source_arg(ap)
+    db_path = ap.parse_args().src
     vocab = json.loads(VOCAB.read_text())
-    con = sqlite3.connect(db_path)
+    con = sqlite_db.connect(db_path, 'rw')
     event_ids = {i for i, in con.execute("SELECT id FROM events")}
     extract, rooms_genres = latest("extract", event_ids), latest("rooms_genres", event_ids)
     prices, pages = latest("prices", event_ids), page_prices(event_ids)

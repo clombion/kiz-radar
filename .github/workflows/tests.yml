@@ -17,4 +17,6 @@ jobs:
       - name: Site checks
         run: node --test tests/*.test.mjs
       - name: Pipeline tests
-        run: uvx --with-requirements pipeline/tickets.py --with-requirements pipeline/extract/resolve_artists.py pytest -q tests/
+        run: uv run --group dev pytest -q
+      - name: Unused and undefined names
+        run: uv run --group dev pyflakes pipeline tests

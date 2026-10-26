@@ -1,11 +1,7 @@
-# /// script
-# requires-python = ">=3.11"
-# dependencies = ["curl_cffi==0.13.0"]
-# ///
 """Refresh the events in the source DB from kizomba-world.com, in place.
 
-    uv run pipeline/scrape.py source/<events>.sqlite             # what the monthly Action runs
-    uv run pipeline/scrape.py source/<events>.sqlite --dry-run   # report the changes without writing
+    uv run --group scrape -m pipeline.scrape source/<events>.sqlite             # what the monthly Action runs
+    uv run --group scrape -m pipeline.scrape source/<events>.sqlite --dry-run   # report the changes without writing
 
 The event list comes from the site's Events Calendar API. Each event page adds what the API leaves out: venue,
 address, city, country, the deal link, the organiser's links, the translations and whether it is cancelled.
@@ -16,10 +12,10 @@ events whose description is new or changed since then are listed in pending_extr
 
 kizomba-world publishes its listings under CC BY-SA 4.0. Requests are spaced a few seconds apart.
 """
-import argparse, datetime as dt, json, os, sqlite3, sys, time
+import argparse, datetime as dt, json, sqlite3, sys, time
 from curl_cffi import requests
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from kizomba_world import LANGS, TAG_GENRES, TAG_FEATURES, api_fields, page_fields
+from pipeline import db as sqlite_db
+from pipeline.kizomba_world import LANGS, TAG_GENRES, TAG_FEATURES, api_fields, page_fields
 
 SITE = 'https://kizomba-world.com'
 FIRST_DAY = '2026-01-01'           # the export covers events from here to the end of next year
@@ -63,7 +59,7 @@ def event_tables(db):
             if t != 'events' and any(c[1] == 'event_id' for c in db.execute(f'pragma table_info({t})'))]
 
 def run(src, dry_run):
-    db = sqlite3.connect(f'file:{src}?mode=ro' if dry_run else src, uri=True)
+    db = sqlite_db.connect(src, 'ro' if dry_run else 'rw')
     db.row_factory = sqlite3.Row
     if not dry_run: prepare(db)
     known = {r['id']: dict(r) for r in db.execute('select * from events')}
@@ -143,7 +139,7 @@ def run(src, dry_run):
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser(description='Refresh the events in the source DB from kizomba-world.com.')
-    ap.add_argument('src', help='the source DB, updated in place')
+    ap.add_argument('src', type=sqlite_db.existing, help='the source DB, updated in place')
     ap.add_argument('--dry-run', action='store_true', help='fetch and report the changes without writing')
     a = ap.parse_args()
     run(a.src, a.dry_run)

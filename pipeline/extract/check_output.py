@@ -1,7 +1,3 @@
-# /// script
-# requires-python = ">=3.11"
-# dependencies = ["jsonschema==4.26.0"]
-# ///
 """Validate an agent's output file against its schema and its batch input.
 
 Checks, in order:
@@ -12,9 +8,10 @@ Checks, in order:
 
 Exits 1 with one actionable line per problem when any check fails.
 
-Usage: uv run pipeline/extract/check_output.py SCHEMA BATCH_INPUT OUTPUT
+Usage: uv run --group check -m pipeline.extract.check_output SCHEMA BATCH_INPUT OUTPUT
 """
 
+import argparse
 import json
 import sys
 from pathlib import Path
@@ -75,7 +72,11 @@ def problems(schema: dict, batch: dict, output: dict) -> list[str]:
 
 
 def main() -> None:
-    schema_path, batch_path, out_path = map(Path, sys.argv[1:4])
+    ap = argparse.ArgumentParser(description="Validate an agent's output file against its schema and its batch input.")
+    for name, text in (("schema", "the pass's JSON schema"), ("batch", "the batch input file"), ("output", "the output file")):
+        ap.add_argument(name, type=Path, help=text)
+    a = ap.parse_args()
+    schema_path, batch_path, out_path = a.schema, a.batch, a.output
     schema = json.loads(schema_path.read_text())
     batch = json.loads(batch_path.read_text())
     try:

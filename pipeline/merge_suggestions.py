@@ -13,14 +13,13 @@ one line-up is noted but not scored (festivals list artists per room, so names r
 Pairs already decided in pipeline/artist_merges.csv (merge or separate) are left out. To act on a
 suggestion, copy its row into artist_merges.csv with decision "merge" or "separate".
 
-    python3 pipeline/merge_suggestions.py source/<events>.sqlite
+    python3 -m pipeline.merge_suggestions source/<events>.sqlite
 """
-import collections, csv, datetime as dt, difflib, os, re, sqlite3, sys, unicodedata
-sys.path.insert(0, os.path.dirname(__file__))
-from countries import codes
+import argparse, collections, csv, datetime as dt, difflib, os, re, unicodedata
+from pipeline import db as sqlite_db
+from pipeline.countries import codes
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = sys.argv[1]
 OUT = os.path.join(ROOT, 'pipeline', 'artist_merge_suggestions.csv')
 MERGES = os.path.join(ROOT, 'pipeline', 'artist_merges.csv')
 FIELDS = ['decision', 'keep_key', 'merge_key', 'keep_name', 'merge_name', 'keep_bookings', 'merge_bookings',
@@ -50,7 +49,9 @@ def decided():
     return {frozenset((r['keep_key'], r['merge_key'])) for r in rows}, group
 
 def main():
-    c = sqlite3.connect(f'file:{SRC}?mode=ro', uri=True)
+    ap = argparse.ArgumentParser(description='List likely duplicate artists for review.')
+    sqlite_db.source_arg(ap)
+    c = sqlite_db.connect(ap.parse_args().src, 'ro')
     art = {i: (n, k, kind) for i, n, k, kind in c.execute('select id, display_name, match_key, kind from artists')}
     key_id = dict(c.execute('select match_key, artist_id from artist_keys'))
     booked = collections.Counter(a for (a,) in c.execute('select artist_id from event_artists'))
@@ -60,7 +61,7 @@ def main():
     done, group = decided()
     # The built site DB (run build_site_db.py first) knows every merge, including members merged along with their
     # couples, and has the events as days.
-    site = sqlite3.connect(f"file:{os.path.join(ROOT, 'docs', 'data', 'kiz.sqlite')}?mode=ro", uri=True)
+    site = sqlite_db.connect(os.path.join(ROOT, 'docs', 'data', 'kiz.sqlite'), 'ro')
     moved = dict(site.execute('select old_id, new_id from artist_redirects'))
 
     # Country of origin: what line-ups state next to the name (flags or text); members without one take their

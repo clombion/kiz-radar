@@ -1,13 +1,16 @@
 """Geocode every (city, country) in the source DB with OpenStreetMap Nominatim, 1 request/s,
 keeping already-known places in pipeline/geocode.csv so reruns only ask for new cities."""
-import csv, json, os, sqlite3, sys, time, urllib.parse, urllib.request
-SRC = sys.argv[1]
+import argparse, csv, json, os, sys, time, urllib.parse, urllib.request
+from pipeline import db as sqlite_db
+ap = argparse.ArgumentParser(description='Geocode the source DB\'s cities with OpenStreetMap Nominatim.')
+sqlite_db.source_arg(ap)
+SRC = ap.parse_args().src
 CACHE = os.path.join(os.path.dirname(__file__), 'geocode.csv')
 UA = 'kiz-radar/0.1 (https://github.com/clombion/kiz-radar)'
 known = {}
 if os.path.exists(CACHE):
     for r in csv.DictReader(open(CACHE, encoding='utf-8')): known[(r['city'], r['country'])] = r
-db = sqlite3.connect(f'file:{SRC}?mode=ro', uri=True)
+db = sqlite_db.connect(SRC, 'ro')
 places = db.execute("select distinct coalesce(city,''), coalesce(country,'') from events").fetchall()
 for city, country in places:
     if (city, country) in known or not (city or country): continue

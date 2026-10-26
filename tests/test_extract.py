@@ -1,13 +1,12 @@
 """The extraction step: price checks and dates, stable artist ids, and asking Claude with one retry."""
-import json, sqlite3, sys, threading
+import json, sqlite3, threading
 from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
 
-sys.path.insert(0, str(Path(__file__).parent.parent / 'pipeline' / 'extract'))
-import ask, prices
-from resolve_artists import stable_ids
+from pipeline.extract import ask, prices
+from pipeline.extract.resolve_artists import stable_ids
 
 
 @pytest.mark.parametrize('quote, amount', [
