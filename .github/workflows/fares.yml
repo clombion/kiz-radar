@@ -1,15 +1,15 @@
 name: Refresh fares
 
-# Every 2 hours, search the few (airport, month) pairs that are most overdue (see pipeline/fares.py)
-# and commit the updated fares. A run stops early if Google rate-limits it; the next run carries on.
+# Once a day, search the festival weekends due today (see pipeline/fares.py) and commit the updated fares. If Google
+# refuses a search, the run saves what it found, then is marked failed; the next run carries on.
 on:
   schedule:
-    - cron: '23 */2 * * *'
+    - cron: '41 5 * * *'
   workflow_dispatch:
     inputs:
       budget:
         description: Searches in this run
-        default: '8'
+        default: '30'
 
 permissions:
   contents: write
@@ -25,8 +25,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
-      - name: Search the most overdue routes
-        run: python3 pipeline/fares.py refresh --budget "${{ inputs.budget || '8' }}" --max-seconds 1200
+      - name: Search the festival weekends due today
+        id: search
+        continue-on-error: true
+        run: python3 pipeline/fares.py refresh --budget "${{ inputs.budget || '30' }}" --max-seconds 1200
       - name: Commit new fares
         run: |
           git add docs/data/fares.csv pipeline/fare_jobs.csv
@@ -36,3 +38,6 @@ jobs:
           git commit -m "Refresh fares ($(date -u +%Y-%m-%dT%H:%MZ))"
           git pull --rebase --quiet
           git push
+      - name: Fail if Google refused a search
+        if: steps.search.outcome == 'failure'
+        run: exit 1

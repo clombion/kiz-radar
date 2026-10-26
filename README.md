@@ -56,7 +56,7 @@ its page on kizomba-world. The fares are our own searches.
 | `docs/data/kiz.sqlite` | What the site queries: events, line-ups, artists, statistics, airports, a fares snapshot | the **Rebuild site database** Action |
 | `docs/data/site.json` | What the page shows before the database loads: home airport, destinations, dates covered | the same build |
 | `docs/data/fares.csv` | Friday-to-Monday return fares, one row per airport and weekend | the **Refresh fares** Action |
-| `pipeline/fare_jobs.csv` | When each airport and month was last searched | the same Action |
+| `pipeline/fare_jobs.csv` | When each festival weekend was last searched, and how it went | the same Action |
 | `pipeline/extract/answers/` | Claude's answers for line-ups, highlights, rooms, genres and pass prices | the **Refresh events** Action |
 | `pipeline/rates.csv` | The European Central Bank's exchange rates, per euro | the **Rebuild site database** Action |
 
@@ -65,7 +65,7 @@ titles lose dates, years and shouting capitals; `events.listed_title` keeps them
 The rules live in `pipeline/text.py`.
 
 On the flight side, prices come from Google Flights through [fli](https://github.com/punitarani/fli). They change
-often, so check them before booking. Home is the one tier-0 airport in `pipeline/airports.csv`; the pipeline and
+often, so check them before booking. Home is the airport marked `home` in `pipeline/airports.csv`; the pipeline and
 the site both read it from there. Cities are geocoded with OpenStreetMap Nominatim, and the results are cached in
 `pipeline/geocode.csv`.
 
@@ -79,18 +79,23 @@ from: it joins each event to its statistics and says whether it is still to come
 
 ### How fares stay fresh
 
-Google limits how often it can be searched, so the **Refresh fares** Action does a little at a time. It runs every
-two hours and searches at most eight airport-months, most overdue first. How often an airport-month falls due
-depends on the airport's tier and on how far ahead the month is:
+Only festival weekends are searched: the Friday-to-Monday return from home to each upcoming festival's airport, one
+search per airport and weekend. Once a day the **Refresh fares** Action searches the weekends that are due. How often
+a weekend falls due depends on how far away it is:
 
-| Airport tier | Next 3 months | Later months |
-|---|---|---|
-| 1 — Oslo, Stockholm, Gothenburg, Copenhagen, Prague, Budapest, Poland, the Baltics | every 3 days | weekly |
-| 2 — large scenes and hubs | weekly | every 3 weeks |
-| 3 — other festival airports | every 2 weeks | monthly |
+| Festival weekend | Searched every |
+|---|---|
+| within 5 weeks | week |
+| 5 weeks to 3 months | 2 weeks |
+| 3 to 6 months | 4 weeks |
+| 6 to 11 months | 6 weeks |
+| further ahead | not yet: Google doesn't sell that far ahead |
 
-A month with an upcoming festival within 150 km of an airport is refreshed as tier 1. The tiers are set in
-`pipeline/airports.csv`, the intervals in `pipeline/fares.py`. To see the queue, run
+Each weekend has its own weekday, so each day's run checks about a seventh of them; a weekend never searched, or
+overdue by twice its interval, doesn't wait for its day. Past weekends and weekends no festival uses any more leave
+`docs/data/fares.csv` and `pipeline/fare_jobs.csv`. A weekend with no price on Google is noted and tried again at
+its next interval. If Google refuses a search, the run keeps what it found and is marked failed. A festival's
+airport is the nearest one in `pipeline/airports.csv` within 250 km. To see what is due today, run
 `python3 pipeline/fares.py plan`.
 
 ## Duplicate artists
@@ -213,7 +218,7 @@ uv run pipeline/extract/resolve_artists.py source/<events>.sqlite
 python3 pipeline/rates.py                                 # exchange rates for the site's prices
 python3 pipeline/build_site_db.py source/<events>.sqlite
 python3 pipeline/merge_suggestions.py source/<events>.sqlite
-python3 pipeline/fares.py refresh --budget 4              # needs uv
+python3 pipeline/fares.py refresh --budget 4              # needs uv; searches festival weekends due today
 python3 -m http.server -d docs 8000                       # then open http://localhost:8000
 ```
 

@@ -134,9 +134,9 @@ print(f'{len(renamed)} artist names recased')
 # --- places and airports -------------------------------------------------------------------------
 geo = {(r['city'], r['country']): r for r in csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'geocode.csv'), encoding='utf-8'))}
 airports = AIRPORTS
-x("create table airports (code text primary key, name text not null, city text not null, country_code text, lat real, lon real, tier integer)")
+x("create table airports (code text primary key, name text not null, city text not null, country_code text, lat real, lon real, home integer)")
 out.executemany("insert into airports values (?,?,?,?,?,?,?)",
-                [(a['code'], a['name'], a['city'], a['country_code'], float(a['lat']), float(a['lon']), int(a['tier'])) for a in airports])
+                [(a['code'], a['name'], a['city'], a['country_code'], float(a['lat']), float(a['lon']), int(a['home'] == '1')) for a in airports])
 for col in ('country_code text', 'lat real', 'lon real', 'airport text', 'airport_km real', 'weekend_friday text'):
     x(f"alter table events add column {col}")
 for eid, city, country, start in x("select id, city, coalesce(country,''), start_date from events").fetchall():
@@ -316,7 +316,7 @@ out.executemany("insert into meta values (?,?)", [
 
 DOCS = {
  'events': 'One row per kizomba-world event: title (tidied: dates, years and shouting capitals removed; listed_title is as listed), dates (days), venue and city, link (url), cancelled (1 or 0; null when not known, since the source flags it only for events still listed as upcoming). Added: country_code, lat/lon (OpenStreetMap geocode of the city), airport (nearest in airports, within max_airport_km), airport_km, weekend_friday (the Friday of a Fri→Mon trip to it).',
- 'airports': 'Airports the fare sweep covers, with the city they serve. tier sets how often fares refresh (1 = every few days); tier 0 is home, where no flight is needed.',
+ 'airports': 'Airports a festival can fly to, with the city they serve; a festival flies to the nearest within max_airport_km. home = 1 is where flights leave from.',
  'fares': f'Round-trip economy fares from {HOME}, one adult, Friday out and Monday back, from Google Flights via fli. Reloaded from data/fares.csv when the page opens.',
  'event_fares': 'Each event joined to the fare for its weekend (null when Google had no price), plus the cheapest fare that month to the same airport.',
  'artist_stats': f'Per artist with bookings of their own: bookings (teacher, DJ or performer at distinct events; a couple’s bookings count for the couple, not its members), home_country when it is known (home_basis: given in pipeline/artist_countries.csv, or stated next to their name in a line-up they are booked in; null otherwise), booked_most_in (the country with most of their bookings), countries booked in, bookings abroad (outside the home country, or outside booked_most_in when that is unknown), popular = at least {POPULAR} bookings, couple_bookings = further events where they appear only as part of a couple. People booked only as part of a couple have no row.',
