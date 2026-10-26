@@ -227,6 +227,9 @@ def page_prices(event_ids: set[int]) -> dict[int, tuple[dict, dict]]:
     with TICKET_PAGES.open(encoding="utf-8") as f:
         out = {int(r["event_id"]): ({"event_id": int(r["event_id"]), "passes": [],
                                      "rule_quotes": r["notes"].splitlines()}, r) for r in csv.DictReader(f)}
+    for e, (_, r) in out.items():
+        if e not in event_ids:
+            sys.exit(f"ticket_pages.csv: no festival {e} ({r['event']})")
     with PAGE_PRICES.open(encoding="utf-8") as f:
         for r in csv.DictReader(f):
             entry, _ = out[int(r["event_id"])]
@@ -241,9 +244,7 @@ def page_prices(event_ids: set[int]) -> dict[int, tuple[dict, dict]]:
                 "alt_amount": float(r["alt_amount"]) if r["alt_amount"] else None, "alt_currency": r["alt_currency"] or None,
                 "from": r["from"] or None, "until": r["until"] or None,
                 "quantity": int(r["quantity"]) if r["quantity"] else None, "door": r["door"] == "1",
-                "sold_out": r["sold_out"] == "1", "current": r["current"] == "1", "quote": r["quote"]})
-    if missing := sorted(set(out) - event_ids):
-        sys.exit(f"ticket_pages.csv: no festival {missing}")
+                "sold_out": r["sold_out"] == "1", "current": False, "quote": r["quote"]})   # a page shows what is on sale
     return out
 
 

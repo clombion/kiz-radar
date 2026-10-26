@@ -1,8 +1,6 @@
 {
  "event_id": 19441,
  "title": "BERN IS KIZOMBA WEEKEND 2027",
- "page": "https://my.weezevent.com/bern-is-kizomba-weekend-5th-edition",
- "read_on": "2026-10-26",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
  "prompt_version": "first-read-v1",
  "rows_at": "2026-10-26T18:17:34+00:00",
@@ -24,7 +22,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]

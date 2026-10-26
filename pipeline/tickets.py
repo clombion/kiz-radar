@@ -6,37 +6,41 @@
 
     uv run pipeline/tickets.py todo               # what needs doing: first reads, unread tickets, failed reads
     uv run pipeline/tickets.py read ID [--url U]  # read the page by its site's recipe and log the rows
-    uv run pipeline/tickets.py draft ID           # a first read to fill (tickets/reads/ID.json), from the latest rows
-    uv run pipeline/tickets.py record ID          # check the first read, then write ID's prices from the latest rows
+    uv run pipeline/tickets.py draft ID           # a first read to fill (tickets/drafts/ID.json), from the latest rows
+    uv run pipeline/tickets.py record ID          # check the draft or first read, then write ID's prices
     uv run pipeline/tickets.py retry ID           # read with a visible browser, then record
     uv run pipeline/tickets.py changes [ID]       # what changed between consecutive reads
     uv run pipeline/tickets.py run                # the monthly Action: re-reads, retries, two-model first reads, record
 
 A site recipe (tickets/sites/<site>.json, schema tickets/schemas/site.json) says where a site's ticket rows are; an
 agent writes one per site. read applies it in a browser (read_page.rows) and appends one entry per attempt to
-tickets/log/<event_id>.jsonl: read (with every row: key, name, price as shown, amount, currency, a second price when
-the site shows one, sold out), refused (no rows and an HTTP error, or the page would not load), or layout_broken (no
-rows, or a row without its key, name, price, amount or currency: the recipe needs an agent).
+tickets/log/<event_id>.jsonl (schema tickets/schemas/log.json): read (with every row: key, name, price as shown,
+amount, currency, a second price when the site shows one, sold out), refused (no rows and an HTTP error, or the page
+would not load), or layout_broken (the recipe's selectors fail, no rows, two rows with one key, or a row without its
+key, name, price, amount or currency: the recipe needs an agent).
 
 A first read (tickets/reads/<event_id>.json, schema tickets/schemas/read.json) says which pass each ticket is, by its
 key, from the rows of one logged read (rows_at) and the festival's description: every ticket is in a tier or
-skipped, and dates and price notes are quoted from the description or the tickets. In a session an agent writes it;
-in the Action, Opus and Sonnet each write one, kept only when they agree (else tickets/disputed/<event_id>.json holds
-both for an agent). A festival needs one when it is still to come and its description gives no dated full pass or
-package price, or again when its description changes or its page shows tickets the first read doesn't know.
+skipped, and dates and price notes are quoted from the description or the tickets; its page is that read's. Only
+checked first reads are saved there: an agent fills a draft (tickets/drafts/, not committed) that record moves there
+once it passes, and in the Action Opus and Sonnet each write one, kept only when they agree (else
+tickets/disputed/<event_id>.json holds both for an agent). A festival needs one when it is still to come and its
+description gives no dated full pass or package price, or again when its description or its ticket page changes, or
+its page shows tickets the first read doesn't know.
 
-record builds the passes from the first read and the latest read rows: amount, currency, sold out and quote from the
-rows, the rest from the first read. A ticket the first read doesn't know is counted as unread; a tier whose tickets
-are all gone is left out. It runs the prices pass's checks on what it writes, then replaces the festival's rows in
-pipeline/pass_prices.csv (one per tier) and pipeline/ticket_pages.csv (one per festival: page, read date, who made
-the first read and with which prompt, recipe version, unread tickets, price notes). It is the only writer of both,
-and recording twice writes the same files.
+record builds the passes from the first read and the latest read rows of the same page: amount, currency, sold out
+and quote from the rows, the rest from the first read. A ticket the first read doesn't know is counted as unread; a
+tier whose tickets are all gone is left out. It runs the prices pass's checks on what it writes, then replaces the
+festival's rows in pipeline/pass_prices.csv (one per tier) and pipeline/ticket_pages.csv (one per festival: page,
+read date, who made the first read and with which prompt, recipe version, unread tickets, price notes). It writes
+both from every first read and its log, so they hold what the reads and logs say and nothing else: a festival whose
+first read no longer fits its page is left out until it is read again, and recording twice writes the same files.
 
 Re-reads: a dated festival (every tier on sale has an end date and none is limited to a number of tickets) once its
 last date has passed; every other festival on every monthly run. A festival whose latest read failed is retried on
 every run; after REFUSALS failures in a row, todo marks it for a session, where retry reads it with a visible browser.
 """
-import argparse, csv, datetime as dt, hashlib, json, os, re, shutil, sqlite3, sys
+import argparse, csv, datetime as dt, hashlib, json, os, re, sqlite3, sys
 from enum import StrEnum
 from pathlib import Path
 from urllib.parse import urlparse
@@ -47,18 +51,18 @@ sys.path.insert(0, str(ROOT / 'pipeline'))
 import check_output, prices
 
 HERE = ROOT / 'pipeline' / 'tickets'
-SITES, READS, LOG, DISPUTED = HERE / 'sites', HERE / 'reads', HERE / 'log', HERE / 'disputed'
+SITES, READS, DRAFTS, LOG, DISPUTED = (HERE / d for d in ('sites', 'reads', 'drafts', 'log', 'disputed'))
 PRICES_CSV, PAGES_CSV = ROOT / 'pipeline' / 'pass_prices.csv', ROOT / 'pipeline' / 'ticket_pages.csv'
-PRICE_FIELDS = ['event_id', 'event', 'kind', 'label', 'group_size', 'days', 'includes_hotel', 'keys', 'amount', 'currency',
-                'alt_amount', 'alt_currency', 'from', 'until', 'quantity', 'door', 'sold_out', 'current', 'quote']
+PRICE_FIELDS = ['event_id', 'kind', 'label', 'group_size', 'days', 'includes_hotel', 'amount', 'currency', 'alt_amount',
+                'alt_currency', 'from', 'until', 'quantity', 'door', 'sold_out', 'quote']
 PAGE_FIELDS = ['event_id', 'event', 'page', 'read_on', 'read_by', 'prompt_version', 'recipe', 'unread', 'notes']
 SITE_SCHEMA = json.loads((HERE / 'schemas' / 'site.json').read_text())
 READ_SCHEMA = json.loads((HERE / 'schemas' / 'read.json').read_text())
+LOG_SCHEMA = json.loads((HERE / 'schemas' / 'log.json').read_text())
 PRICES_SCHEMA = json.loads((ROOT / 'pipeline' / 'extract' / 'schemas' / 'prices.json').read_text())
 PROMPT = 'first-read-v1'
 MODELS = ('claude-opus-5-5', 'claude-sonnet-5-5')    # the first one's read is kept when both agree
 REFUSALS = 3
-CURRENCIES = {'€': 'EUR', '£': 'GBP', 'Kč': 'CZK', 'zł': 'PLN'}
 # hosts that are never where tickets are sold: social networks, maps, hotels, kizomba-world itself
 NOT_TICKETS = ('facebook', 'instagram', 'youtube', 'kizomba-world', 'google', 'wa.me', 'whatsapp', 'tiktok', 'spotify',
                'booking.com', 'maps', 'linktr', 'accor', 'marriott', 'hotel', 'nh-hotels', 'barcelo', 'bastion',
@@ -73,20 +77,25 @@ class Status(StrEnum):
 
 class Recheck(StrEnum):
     DATED = 'dated'      # read again once its last date has passed
-    TIERS = 'tiers'      # read again on every monthly run
-    SINGLE = 'single'    # likewise, with one price on sale
+    MONTHLY = 'monthly'  # read again on every monthly run
 
 
 # ---- sites and reading
 
+def shown(path):
+    return path.relative_to(ROOT) if path.is_relative_to(ROOT) else path
+
+def problems(schema, value):
+    from jsonschema import Draft202012Validator
+    return [f"{'/'.join(map(str, e.path)) or '(root)'}: {e.message}" for e in Draft202012Validator(schema).iter_errors(value)]
+
 def sites():
     """{site: (recipe, version)}, each recipe checked against its schema; the version changes with the file."""
-    from jsonschema import Draft202012Validator
     out = {}
     for path in sorted(SITES.glob('*.json')):
         recipe = json.loads(path.read_text())
-        if errs := [e.message for e in Draft202012Validator(SITE_SCHEMA).iter_errors(recipe)]:
-            sys.exit(f'{path.relative_to(ROOT)}: ' + '; '.join(errs))
+        if errs := problems(SITE_SCHEMA, recipe):
+            sys.exit(f'{shown(path)}: ' + '; '.join(errs))
         out[recipe['site']] = recipe, f"{recipe['site']}@{hashlib.sha256(path.read_bytes()).hexdigest()[:8]}"
     return out
 
@@ -104,51 +113,54 @@ def number(text):
     whole, dec = (m[1], m[2]) if (m := re.fullmatch(r'(.*)[.,](\d{1,2})', s)) else (s, '')
     return float(re.sub(r'\D', '', whole) + ('.' + dec if dec else ''))
 
-def currency(text):
-    t = (text or '').strip()
-    return CURRENCIES.get(t) or (t if re.fullmatch(r'[A-Z]{3}', t) else None)
-
-def parsed(raw):
-    """A row as logged, from read_page.rows()'s strings; or a problem when the recipe found too little."""
+def parsed(raw, symbols):
+    """A row as logged, from read_page.rows()'s strings: whitespace collapsed, numbers read, symbols as currency codes."""
     text = {k: ' '.join(v.split()) if isinstance(v, str) else v for k, v in raw.items()}
-    row = {'key': text['key'], 'name': text['name'], 'price': text['price'], 'amount': number(text['amount']),
-           'currency': currency(text['currency']), 'alt_amount': number(text['alt_amount']),
-           'alt_currency': currency(text['alt_currency']), 'alt_price': text['alt_price'], 'sold_out': bool(text['sold_out'])}
-    missing = [k for k in ('key', 'name', 'price', 'amount', 'currency') if not row[k]]
-    if len({row[k] is None for k in ('alt_amount', 'alt_currency', 'alt_price')}) > 1:
-        missing.append('alt_price, alt_amount and alt_currency together')
-    return row if not missing else f"row {text.get('name') or text.get('key')!r}: no {', '.join(missing)}"
+    code = lambda t: t and symbols.get(t, t)
+    return {'key': text['key'], 'name': text['name'], 'price': text['price'], 'amount': number(text['amount']),
+            'currency': code(text['currency']), 'alt_price': text['alt_price'], 'alt_amount': number(text['alt_amount']),
+            'alt_currency': code(text['alt_currency']), 'sold_out': bool(text['sold_out'])}
 
 def widget(url, recipe):
     """The address that shows the tickets: the page's own, or the widget its HTML points to."""
     if not recipe['widget'] or re.match(recipe['widget']['pattern'], url):
         return url
     from curl_cffi import requests
-    if m := re.search(recipe['widget']['pattern'], requests.get(url, impersonate='chrome', timeout=60).text):
+    response = requests.get(url, impersonate='chrome', timeout=60)
+    response.raise_for_status()
+    if m := re.search(recipe['widget']['pattern'], response.text):
         return m.group(0) + recipe['widget']['suffix']
     raise LookupError(f'no ticket widget on {url}')
 
 def attempt(page, recipe, version, visible=None):
     """One read of a ticket page, as its log entry."""
+    from curl_cffi.requests.exceptions import RequestException
+    from patchright.sync_api import Error
+    from read_page import RecipeError, rows
     entry = {'at': dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds'), 'page': page, 'recipe': version}
     try:
         url = widget(page, recipe)
     except LookupError as e:
         return entry | {'status': Status.LAYOUT_BROKEN, 'why': str(e)}
-    except Exception as e:                  # curl_cffi's connection and HTTP errors
+    except RequestException as e:
         return entry | {'status': Status.REFUSED, 'why': f'{type(e).__name__}: {e}'[:300]}
-    from read_page import rows
+    entry['url'] = url
     try:
         status, title, raw = rows(url, recipe, visible)
-    except Exception as e:                  # Patchright's timeouts and navigation errors
-        return entry | {'url': url, 'status': Status.REFUSED, 'why': f'{type(e).__name__}: {e}'[:300]}
-    entry |= {'url': url, 'http': status}
+    except RecipeError as e:
+        return entry | {'status': Status.LAYOUT_BROKEN, 'why': f'the recipe fails on the page: {e}'[:300]}
+    except Error as e:                      # the page would not load
+        return entry | {'status': Status.REFUSED, 'why': f'{type(e).__name__}: {e}'[:300]}
+    entry['http'] = status
     # a browser check answers 4xx, then shows the page once it has passed, so the status alone decides nothing
     if not raw and status and status >= 400:
         return entry | {'status': Status.REFUSED, 'why': f'HTTP {status} ({title})'}
-    got = [parsed(r) for r in raw]
-    if bad := [g for g in got if isinstance(g, str)] or (not got and ['no ticket rows']):
-        return entry | {'status': Status.LAYOUT_BROKEN, 'why': '; '.join(bad)[:300]}
+    got = [parsed(r, recipe['symbols']) for r in raw]
+    keys = [r['key'] for r in got]
+    bad = [f"row {i} ({r['name'] or r['key']}): {p}" for i, r in enumerate(got) for p in problems(LOG_SCHEMA['$defs']['row'], r)]
+    bad += [f'two rows with key {k}' for k in sorted({k for k in keys if keys.count(k) > 1})]
+    if bad or not got:
+        return entry | {'status': Status.LAYOUT_BROKEN, 'why': '; '.join(bad or ['no ticket rows'])[:300]}
     return entry | {'status': Status.READ, 'rows': got}
 
 
@@ -158,9 +170,18 @@ def log(event_id):
     path = LOG / f'{event_id}.jsonl'
     if not path.exists():
         return []
-    return sorted((json.loads(s) for s in path.read_text(encoding='utf-8').splitlines() if s.strip()), key=lambda e: e['at'])
+    entries = [json.loads(s) for s in path.read_text(encoding='utf-8').splitlines() if s.strip()]
+    for n, e in enumerate(entries, 1):
+        if errs := problems(LOG_SCHEMA, e):
+            sys.exit(f'{shown(path)} line {n}: ' + '; '.join(errs))
+    # git merges the log line by line (.gitattributes), so a line edited in place comes back twice
+    if twice := sorted({e['at'] for e in entries if [d['at'] for d in entries].count(e['at']) > 1}):
+        sys.exit(f'{shown(path)}: two entries at {", ".join(twice)}; the log is only ever appended to')
+    return sorted(entries, key=lambda e: e['at'])
 
 def append(event_id, entry):
+    if errs := problems(LOG_SCHEMA, json.loads(json.dumps(entry))):
+        raise ValueError(f'{event_id}: a log entry outside tickets/schemas/log.json: ' + '; '.join(errs))
     LOG.mkdir(exist_ok=True)
     with (LOG / f'{event_id}.jsonl').open('a', encoding='utf-8') as f:
         f.write(json.dumps(entry, ensure_ascii=False, sort_keys=True) + '\n')
@@ -177,29 +198,36 @@ def failures(entries):
         n += 1
     return n
 
-def first_read(event_id):
-    path = READS / f'{event_id}.json'
+def first_read(event_id, draft=False):
+    path = (DRAFTS if draft else READS) / f'{event_id}.json'
     return json.loads(path.read_text(encoding='utf-8')) if path.exists() else None
 
-def save_read(fr):
-    READS.mkdir(exist_ok=True)
-    (READS / f"{fr['event_id']}.json").write_text(json.dumps(fr, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+def save_read(fr, draft=False):
+    folder = DRAFTS if draft else READS
+    folder.mkdir(exist_ok=True)
+    (folder / f"{fr['event_id']}.json").write_text(json.dumps(fr, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+
+def read_at(fr, entries):
+    """The logged read a first read was made from, or None."""
+    return next((e for e in entries if e['at'] == fr['rows_at'] and e['status'] == Status.READ), None)
 
 def line(row):
     """The ticket as the page shows it: its name and price, and its second price when it has one."""
-    return f"{row['name']} {row['price']}" + (f" · {row['alt_price']}" if row.get('alt_price') else '')
+    return f"{row['name']} {row['price']}" + (f" · {row['alt_price']}" if row['alt_price'] else '')
 
 def in_text(quote, text):
     return check_output.norm(quote) in check_output.norm(text)
 
+def split_price(here):
+    """A problem when the tickets of one tier are not all at one price, else None."""
+    if len({(r['amount'], r['currency']) for r in here}) > 1:
+        return f"tickets {', '.join(r['key'] for r in here)} differ in price ({'; '.join(map(line, here))}); one tier each"
+
 def read_problems(fr, entries):
     """What is wrong with a first read, against the rows it was made from and its description; empty when sound."""
-    from jsonschema import Draft202012Validator
-    if found := [f"schema: {'/'.join(map(str, e.path)) or '(root)'}: {e.message}"
-                 for e in Draft202012Validator(READ_SCHEMA).iter_errors(fr)]:
+    if found := [f'schema: {p}' for p in problems(READ_SCHEMA, fr)]:
         return found
-    at = next((e for e in entries if e['at'] == fr['rows_at'] and e['status'] == Status.READ), None)
-    if at is None:
+    if (at := read_at(fr, entries)) is None:
         return [f"rows_at {fr['rows_at']!r} is no read in tickets/log/{fr['event_id']}.jsonl"]
     rows = {r['key']: r for r in at['rows']}
     keys = [k for ps in fr['passes'] for t in ps['tiers'] for k in t['keys']] + fr['skipped']
@@ -212,16 +240,12 @@ def read_problems(fr, entries):
         if ps['label_quote'] and not in_text(ps['label_quote'], names + '\n' + desc):
             found.append(f"passes[{p}].label_quote {ps['label_quote']!r} is neither in its tickets nor in the description")
         for t, tier in enumerate(ps['tiers']):
-            where, dated = f'passes[{p}].tiers[{t}]', any(tier[k] for k in ('from', 'until', 'quantity'))
-            if dated != bool(tier['date_quote']):
-                found.append(f'{where}: a date_quote goes with from, until or quantity, and only with them')
-            here = [rows[k] for k in tier['keys'] if k in rows]
+            where, here = f'passes[{p}].tiers[{t}]', [rows[k] for k in tier['keys'] if k in rows]
             if tier['date_quote'] and not in_text(tier['date_quote'], '\n'.join(map(line, here)) + '\n' + desc):
                 found.append(f"{where}.date_quote {tier['date_quote']!r} is neither in its tickets nor in the description")
             found += [f'{where}.{k} {tier[k]!r} is not a real day' for k in ('from', 'until')
                       if tier[k] and prices.day(tier[k]) is None]
-            if len({(r['amount'], r['currency']) for r in here}) > 1:
-                found.append(f"{where}: its tickets have different prices ({'; '.join(map(line, here))}); one tier each")
+            found += [f'{where}: {d}' for d in [split_price(here)] if d]
     found += [f'rule_quotes {q!r} is not in the description' for q in fr['rule_quotes'] if not in_text(q, desc)]
     return found
 
@@ -229,24 +253,22 @@ def read_problems(fr, entries):
 # ---- recording
 
 def build(fr, entry):
-    """(prices answer, each written tier's keys, unread keys, problems) from a first read and read rows."""
+    """(prices answer, unread keys, problems) from a first read and read rows of the same page."""
     rows = {r['key']: r for r in entry['rows']}
-    passes, keys, found = [], [], []
+    passes, found = [], []
     for ps in fr['passes']:
         tiers = []
         for tier in ps['tiers']:
             here = [rows[k] for k in tier['keys'] if k in rows]
             if not here:
                 continue                    # its tickets are no longer on the page
+            if d := split_price(here):
+                found.append(f'{d}: the first read needs doing again')
             lead = here[0]
-            if len({(r['amount'], r['currency']) for r in here}) > 1:
-                found.append(f"tickets {', '.join(r['key'] for r in here)} now differ in price "
-                             f"({'; '.join(map(line, here))}); the first read needs doing again")
             tiers.append({'amount': lead['amount'], 'currency': lead['currency'], 'alt_amount': lead['alt_amount'],
                           'alt_currency': lead['alt_currency'], 'from': tier['from'], 'until': tier['until'],
                           'quantity': tier['quantity'], 'door': tier['door'], 'sold_out': all(r['sold_out'] for r in here),
-                          'current': tier['current'], 'quote': line(lead)})
-            keys.append(' '.join(r['key'] for r in here))
+                          'current': False, 'quote': line(lead)})
         if tiers:
             passes.append({k: ps[k] for k in ('kind', 'label_quote', 'group_size', 'days', 'includes_hotel')} | {'tiers': tiers})
     mapped = {k for ps in fr['passes'] for t in ps['tiers'] for k in t['keys']} | set(fr['skipped'])
@@ -255,7 +277,7 @@ def build(fr, entry):
               'events': [{'event_id': fr['event_id'], 'passes': passes, 'rule_quotes': fr['rule_quotes']}]}
     text = '\n'.join(map(line, entry['rows'])) + '\n' + fr['description']
     batch = {'events': [{'event_id': fr['event_id'], 'title': fr['title'], 'description': text}]}
-    return answer, keys, unread, found + check_output.problems(PRICES_SCHEMA, batch, answer) + prices.problems(answer)
+    return answer, unread, found + check_output.problems(PRICES_SCHEMA, batch, answer) + prices.problems(answer)
 
 def csv_rows(path):
     if not path.exists():
@@ -263,44 +285,72 @@ def csv_rows(path):
     with path.open(encoding='utf-8') as f:
         return list(csv.DictReader(f))
 
-def write_csv(path, fields, rows):
-    with path.open('w', encoding='utf-8', newline='') as f:
-        w = csv.DictWriter(f, fields, lineterminator='\n')
-        w.writeheader()
-        w.writerows(sorted(rows, key=lambda r: int(r['event_id'])))
-
-def record(event_id, quiet=False):
-    """Write the festival's prices from its first read and latest read rows; the problems, empty when written."""
-    fr, entries = first_read(event_id), log(event_id)
-    if fr is None:
-        return [f'{event_id}: no first read (tickets/reads/{event_id}.json); run: uv run pipeline/tickets.py draft {event_id}']
+def written(event_id, fr, entries):
+    """(pass_prices.csv rows, ticket_pages.csv row, unread keys) for a festival, or the problems that stop it."""
     if found := read_problems(fr, entries):
         return [f'{event_id}: {p}' for p in found]
-    entry = latest_read(entries)
-    answer, keys, unread, found = build(fr, entry)
+    at, entry = read_at(fr, entries), latest_read(entries)
+    if entry['page'] != at['page']:
+        return [f"{event_id}: the ticket page changed from {at['page']} to {entry['page']}; make a new first read"]
+    answer, unread, found = build(fr, entry)
     if found:
         return [f'{event_id}: {p}' for p in found]
     flag = lambda v: '1' if v else '0'
     num = lambda v: '' if v is None else f'{v:g}'
-    tiers = iter(keys)
-    new = [{'event_id': event_id, 'event': fr['title'], 'kind': p['kind'], 'label': p['label_quote'] or '',
-            'group_size': p['group_size'] or '', 'days': p['days'] or '', 'includes_hotel': flag(p['includes_hotel']),
-            'keys': next(tiers), 'amount': num(t['amount']), 'currency': t['currency'], 'alt_amount': num(t['alt_amount']),
-            'alt_currency': t['alt_currency'] or '', 'from': t['from'] or '', 'until': t['until'] or '',
-            'quantity': t['quantity'] or '', 'door': flag(t['door']), 'sold_out': flag(t['sold_out']),
-            'current': flag(t['current']), 'quote': t['quote']}
-           for p in answer['events'][0]['passes'] for t in p['tiers']]
-    page = {'event_id': event_id, 'event': fr['title'], 'page': fr['page'], 'read_on': entry['at'][:10],
+    tiers = [{'event_id': event_id, 'kind': p['kind'], 'label': p['label_quote'] or '', 'group_size': p['group_size'] or '',
+              'days': p['days'] or '', 'includes_hotel': flag(p['includes_hotel']), 'amount': num(t['amount']),
+              'currency': t['currency'], 'alt_amount': num(t['alt_amount']), 'alt_currency': t['alt_currency'] or '',
+              'from': t['from'] or '', 'until': t['until'] or '', 'quantity': t['quantity'] or '',
+              'door': flag(t['door']), 'sold_out': flag(t['sold_out']), 'quote': t['quote']}
+             for p in answer['events'][0]['passes'] for t in p['tiers']]
+    page = {'event_id': event_id, 'event': fr['title'], 'page': entry['page'], 'read_on': entry['at'][:10],
             'read_by': fr['read_by'], 'prompt_version': fr['prompt_version'], 'recipe': entry['recipe'],
             'unread': len(unread), 'notes': '\n'.join(fr['rule_quotes'])}
-    write_csv(PRICES_CSV, PRICE_FIELDS, [r for r in csv_rows(PRICES_CSV) if int(r['event_id']) != event_id] + new)
-    write_csv(PAGES_CSV, PAGE_FIELDS, [r for r in csv_rows(PAGES_CSV) if int(r['event_id']) != event_id] + [page])
+    return tiers, page, unread
+
+def write_all():
+    """Write pass_prices.csv and ticket_pages.csv from every first read and its log, so both are what the reads and
+    logs say and nothing else; the problems of the festivals left out."""
+    prices_rows, pages, found = [], [], []
+    for path in sorted(READS.glob('*.json'), key=lambda p: int(p.stem)):
+        i = int(path.stem)
+        match written(i, first_read(i), log(i)):
+            case (tiers, page, _):
+                prices_rows += tiers
+                pages.append(page)
+            case problems_:
+                found += problems_
+    for path, fields, rows in ((PRICES_CSV, PRICE_FIELDS, prices_rows), (PAGES_CSV, PAGE_FIELDS, pages)):
+        with path.open('w', encoding='utf-8', newline='') as f:
+            w = csv.DictWriter(f, fields, lineterminator='\n')
+            w.writeheader()
+            w.writerows(rows)
+    return found
+
+def record(event_id, quiet=False):
+    """Check the festival's draft (moved to tickets/reads/ once it passes) or its first read against its latest read
+    rows, then write both files; the festival's problems, empty when it is written."""
+    draft, entries = first_read(event_id, draft=True), log(event_id)
+    fr = draft or first_read(event_id)
+    if fr is None:
+        return [f'{event_id}: no first read (tickets/reads/{event_id}.json); run: uv run pipeline/tickets.py draft {event_id}']
+    match written(event_id, fr, entries):
+        case (tiers, page, unread):
+            pass
+        case found:
+            return found
+    if draft:
+        save_read(draft)
+        (DRAFTS / f'{event_id}.json').unlink()
+    others = write_all()
     disputed = DISPUTED / f'{event_id}.json'
     if disputed.exists() and json.loads(disputed.read_text())['rows_at'] <= fr['rows_at']:
         disputed.unlink()                   # settled by this first read
     if not quiet:
-        print(f'{event_id}: {len(new)} prices recorded, read {page["read_on"]}'
+        print(f'{event_id}: {len(tiers)} prices recorded, read {page["read_on"]}'
               + (f'; {len(unread)} tickets not read yet ({", ".join(unread)})' if unread else ''))
+        for p in others:
+            print(f'left out: {p}', file=sys.stderr)
     return []
 
 
@@ -332,7 +382,7 @@ def recheck(tiers, start, today):
     if on_sale and all(t['until'] and not t['quantity'] for t in on_sale):
         last = max(prices.on_date(t['until'], start) for t in on_sale)
         return Recheck.DATED, last < today, f'last price date {last}'
-    return (Recheck.SINGLE if len(on_sale) == 1 else Recheck.TIERS), True, 'read on every monthly run'
+    return Recheck.MONTHLY, True, 'read on every monthly run'
 
 
 # ---- festivals
@@ -355,21 +405,23 @@ def dated_in_description(entry, start, today):
     return any(t[k] and prices.on_date(t[k], start) >= today
                for ps in entry['passes'] if ps['kind'] in ('full', 'package') for t in ps['tiers'] for k in ('from', 'until'))
 
-def why_first_read(f, described, today):
+def why_first_read(f, today):
     """Why the festival needs a (new) first read, or None; and the latest rows' unread keys."""
     fr, entry, desc = f['first_read'], latest_read(f['log']), f['description_text'] or ''
-    unread = build(fr, entry)[2] if fr and entry else []
     if fr:
+        unread = build(fr, entry)[1]
         return ('the description changed' if fr['description'] != desc else
+                'the ticket page changed' if entry['page'] != read_at(fr, f['log'])['page'] else
                 f'{len(unread)} tickets not read yet' if unread else None), unread
-    if described and dated_in_description(described.entry, f['start_date'], today):
-        return None, unread
-    return ('the description has no dated full pass price' if described and described.entry['passes']
-            else 'no price in the description'), unread
+    if f['described'] and dated_in_description(f['described'].entry, f['start_date'], today):
+        return None, []
+    return ('the description has no dated full pass price' if f['described'] and f['described'].entry['passes']
+            else 'no price in the description'), []
 
 def festivals(db, today, only=None):
     """Every festival still to come (or the one asked for) with what tickets.py knows of it: its first read, log and
-    recorded tiers, the ticket page and recipe it is read with, and why it needs a first read."""
+    recorded tiers, its description's prices answer, the ticket page and recipe it is read with, and why it needs a
+    first read."""
     import answers
     query = 'select id, title, start_date, end_date, country, description_text from events where cancelled is not 1 and '
     events = [dict(r) for r in (db.execute(query + 'id = ?', (only,)) if only else
@@ -380,12 +432,12 @@ def festivals(db, today, only=None):
         tiers.setdefault(int(r['event_id']), []).append(r)
     out = []
     for f in events:
-        i, fr = f['id'], first_read(f['id'])
-        full = [u for u in links(db, i) if '…' not in u]
-        page = fr['page'] if fr else next((u for u in full if site_for(u, known)), full[0] if full else None)
-        f |= {'first_read': fr, 'log': log(i), 'tiers': tiers.get(i, []), 'page': page, 'links': links(db, i),
-              'site': site_for(page, known) if page else None, 'disputed': (DISPUTED / f'{i}.json').exists()}
-        f['why'], f['unread'] = why_first_read(f, described.get(i), today)
+        i, fr, entries, urls = f['id'], first_read(f['id']), log(f['id']), links(db, f['id'])
+        full = [u for u in urls if '…' not in u]
+        page = read_at(fr, entries)['page'] if fr else next((u for u in full if site_for(u, known)), full[0] if full else None)
+        f |= {'first_read': fr, 'log': entries, 'tiers': tiers.get(i, []), 'described': described.get(i), 'page': page,
+              'links': urls, 'site': site_for(page, known) if page else None, 'disputed': (DISPUTED / f'{i}.json').exists()}
+        f['why'], f['unread'] = why_first_read(f, today)
         out.append(f)
     return out
 
@@ -407,41 +459,17 @@ def question(f, entry):
 
 def ask_read(client, model, f, entry, entries):
     """One model's first read, checked, with one retry on the checker's lines; None when it fails twice."""
-    import anthropic, ask
+    import ask
     system, content = question(f, entry)
-    messages = [{'role': 'user', 'content': content}]
-    for _ in (1, 2):
-        try:
-            with client.messages.stream(model=model, max_tokens=32000, system=system, messages=messages,
-                                        output_config={'format': {'type': 'json_schema',
-                                                                  'schema': ask.api_schema(model_schema())}}) as stream:
-                reply = stream.get_final_message()
-        except (anthropic.APIStatusError, anthropic.APIConnectionError) as e:
-            print(f"{f['id']} {model}: {e}", file=sys.stderr)
-            return None
-        if reply.stop_reason != 'end_turn':
-            print(f"{f['id']} {model}: stopped on {reply.stop_reason}", file=sys.stderr)
-            return None
-        text = next(b.text for b in reply.content if b.type == 'text')
-        try:
-            fr = draft_of(f, entry, model) | json.loads(text)
-        except json.JSONDecodeError as e:
-            found = [f'not valid JSON ({e})']
-        else:
-            if not (found := read_problems(fr, entries)):
-                return fr
-        print(f"{f['id']} {model}: " + ' | '.join(found), file=sys.stderr)
-        messages += [{'role': 'assistant', 'content': reply.content},
-                     {'role': 'user', 'content': 'The checker found these problems:\n' + '\n'.join(found)
-                      + '\n\nAnswer again with the whole corrected object.'}]
-    return None
+    out = ask.structured(client, model, system, content, model_schema(),
+                         lambda out: read_problems(draft_of(f, entry, model) | out, entries), f"{f['id']} {model}")
+    return out and draft_of(f, entry, model) | out
 
 def meaning(fr):
     """What two first reads must agree on: which tickets are skipped, which share a pass and a tier, each pass's
-    kind, people, days and hotel, and each tier's dates, quantity, door and current flags. Labels and quotes may
-    differ."""
+    kind, people, days and hotel, and each tier's dates, quantity and door flag. Labels and quotes may differ."""
     return frozenset((ps['kind'], ps['group_size'], ps['days'], ps['includes_hotel'],
-                      frozenset((frozenset(t['keys']), t['from'], t['until'], t['quantity'], t['door'], t['current'])
+                      frozenset((frozenset(t['keys']), t['from'], t['until'], t['quantity'], t['door'])
                                 for t in ps['tiers'])) for ps in fr['passes']), frozenset(fr['skipped'])
 
 def two_model_read(client, f, entry, entries):
@@ -458,9 +486,8 @@ def two_model_read(client, f, entry, entries):
 # ---- commands
 
 def draft_of(f, entry, by):
-    return {'event_id': f['id'], 'title': f['title'], 'page': f['page'], 'read_on': entry['at'][:10], 'read_by': by,
-            'prompt_version': PROMPT, 'rows_at': entry['at'], 'description': f['description_text'] or '',
-            'passes': [], 'skipped': [], 'rule_quotes': []}
+    return {'event_id': f['id'], 'title': f['title'], 'read_by': by, 'prompt_version': PROMPT, 'rows_at': entry['at'],
+            'description': f['description_text'] or '', 'passes': [], 'skipped': [], 'rule_quotes': []}
 
 def one(event_id, page=None):
     f = next(iter(festivals(src_db(), dt.date.today().isoformat(), event_id)), None)
@@ -487,13 +514,13 @@ def cmd_read(event_id, url=None, visible=None):
         print(f"  {r['key']:>12}  {line(r)}{'  (sold out)' if r['sold_out'] else ''}")
 
 def cmd_draft(event_id):
-    f, path = one(event_id), READS / f'{event_id}.json'
+    f, path = one(event_id), DRAFTS / f'{event_id}.json'
     if path.exists():
-        sys.exit(f'{path.relative_to(ROOT)} exists; delete it to start the first read again')
+        sys.exit(f'{shown(path)} exists; delete it to start the draft again')
     if not (entry := latest_read(f['log'])):
         sys.exit(f'{event_id}: no read rows yet; run: uv run pipeline/tickets.py read {event_id}')
-    save_read(draft_of(f | {'page': entry['page']}, entry, 'agent'))
-    print(f'Fill passes, skipped and rule_quotes in {path.relative_to(ROOT)} following pipeline/extract/prompts/prices-v2.md '
+    save_read(draft_of(f, entry, 'agent'), draft=True)
+    print(f'Fill passes, skipped and rule_quotes in {shown(path)} following pipeline/extract/prompts/prices-v2.md '
           f'and pipeline/tickets/prompts/{PROMPT}.md, from the tickets of the read at {entry["at"]} and the description; '
           f'then run: uv run pipeline/tickets.py record {event_id}')
 
@@ -536,9 +563,9 @@ def cmd_retry(event_id):
     cmd_record(event_id)
 
 def cmd_run():
-    """Re-read what is due and retry failures, first-read with two models what needs it, then record every festival
-    with a first read. Exits 1 naming each festival whose page broke its recipe or reached REFUSALS failures."""
-    import anthropic, answers
+    """Re-read what is due and retry failures, first-read with two models what needs it, then write both files. Exits
+    1 naming each festival whose page broke its recipe, reached REFUSALS failures, or no longer fits its first read."""
+    import anthropic
     today, db = dt.date.today().isoformat(), src_db()
     client, alarms = None, []
     for f in festivals(db, today):
@@ -552,7 +579,7 @@ def cmd_run():
             elif failures(log(i)) == REFUSALS:
                 alarms.append(f'{i}: {REFUSALS} failed reads in a row; read it in a session: uv run pipeline/tickets.py retry {i}')
             f['log'] = log(i)
-            f['why'], f['unread'] = why_first_read(f, answers.latest('prices', {i}).get(i), today)
+            f['why'], f['unread'] = why_first_read(f, today)
         if f['why'] and f['site'] and not f['disputed']:
             entry = latest_read(f['log'])
             if entry is None or entry['at'][:10] != today:
@@ -564,8 +591,9 @@ def cmd_run():
                 print(f'{i}: first read ' + (f"by {new['read_by']}" if new else f'disputed: tickets/disputed/{i}.json'))
             else:
                 print(f"{i}: {entry['status']}: {entry['why']}")
-        if first_read(i):
-            alarms += record(i, quiet=True)
+        if (DISPUTED / f'{i}.json').exists() and first_read(i):
+            record(i, quiet=True)           # a new first read settles an older dispute
+    alarms += write_all()
     if alarms:
         sys.exit('\n'.join(alarms))
 
@@ -582,9 +610,9 @@ def main():
     sub.add_parser('changes', help='what changed between reads').add_argument('id', type=int, nargs='?')
     sub.add_parser('run', help='the monthly Action')
     a = ap.parse_args()
-    # a recipe may need a visible browser; without a display, run under a virtual one
-    if a.cmd in ('read', 'retry', 'run') and not os.environ.get('DISPLAY') and shutil.which('xvfb-run'):
-        os.execvp('xvfb-run', ['xvfb-run', '-a', sys.executable, *sys.argv])
+    if a.cmd in ('read', 'retry', 'run'):       # a recipe may need a visible browser
+        import read_page
+        read_page.on_display()
     match a.cmd:
         case 'todo': cmd_todo()
         case 'read': cmd_read(a.id, a.url)

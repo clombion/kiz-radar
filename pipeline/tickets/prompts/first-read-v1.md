@@ -13,7 +13,8 @@ Answer with one object: `{"passes": [...], "skipped": [...], "rule_quotes": [...
 - `passes`: as above, except each tier names its tickets instead of giving a price:
   - `keys`: the keys of the tickets sold at this price for this pass: leader and follower (or man and woman)
     tickets at one price are one tier with both keys. Put first the ticket whose name says the most.
-  - `from`, `until`, `quantity`, `door`, `current`: as above, read from the ticket's name or from the description.
+  - `from`, `until`, `quantity`, `door`: as above, read from the ticket's name or from the description. A page
+    shows what is on sale, so there is no `current`.
   - `date_quote`: when `from`, `until` or `quantity` is set, the words that say so, copied exactly from the
     description or from the ticket's name; else null.
   - The tiers of a pass are in the order the page lists them.

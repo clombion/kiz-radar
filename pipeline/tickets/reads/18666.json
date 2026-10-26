@@ -1,8 +1,6 @@
 {
  "event_id": 18666,
  "title": "Prague GOLD KIZ TARRAXO FESTIVAL",
- "page": "https://www.fairplay.events/en/prague-gold-kiz-tarraxo-festival-2027-2027-f903/order/tickets",
- "read_on": "2026-10-26",
  "read_by": "agent",
  "prompt_version": "first-read-v1",
  "rows_at": "2026-10-26T17:30:43+00:00",
@@ -24,7 +22,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]
@@ -44,7 +41,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]
@@ -65,7 +61,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]
@@ -85,7 +80,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]

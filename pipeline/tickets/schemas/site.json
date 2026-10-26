@@ -10,6 +10,7 @@
     "visible",
     "wait",
     "open",
+    "symbols",
     "row",
     "fields"
   ],
@@ -104,6 +105,14 @@
       ],
       "minLength": 1
     },
+    "symbols": {
+      "description": "What the site's currency symbols stand for, as ISO 4217 codes ({\"€\": \"EUR\"}); a currency field that finds a code needs none.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[A-Z]{3}$"
+      }
+    },
     "row": {
       "description": "A CSS selector matching each ticket on the page.",
       "type": "string",
@@ -141,7 +150,7 @@
         },
         "currency": {
           "$ref": "#/$defs/field",
-          "description": "A currency code or symbol (€, £, $)."
+          "description": "A currency code, or a symbol listed in symbols."
         },
         "alt_price": {
           "oneOf": [

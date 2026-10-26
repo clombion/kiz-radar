@@ -4,8 +4,6 @@
   "claude-opus-5-5": {
    "event_id": 18835,
    "title": "CRYSTAL KIZOMBA CONGRESS",
-   "page": "https://my.weezevent.com/ckc-crystal-kizomba-congress",
-   "read_on": "2026-10-26",
    "read_by": "claude-opus-5-5",
    "prompt_version": "first-read-v1",
    "rows_at": "2026-10-26T18:18:50+00:00",
@@ -26,7 +24,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -47,7 +44,6 @@
        "until": "09-30",
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": "💎 September: 105 €"
       }
      ]
@@ -61,8 +57,6 @@
   "claude-sonnet-5-5": {
    "event_id": 18835,
    "title": "CRYSTAL KIZOMBA CONGRESS",
-   "page": "https://my.weezevent.com/ckc-crystal-kizomba-congress",
-   "read_on": "2026-10-26",
    "read_by": "claude-sonnet-5-5",
    "prompt_version": "first-read-v1",
    "rows_at": "2026-10-26T18:18:50+00:00",
@@ -83,7 +77,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -104,7 +97,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]

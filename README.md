@@ -171,23 +171,29 @@ judgment about a page is made once, by an agent or two models, and checked; ever
 
 - **A recipe per ticket site** (`pipeline/tickets/sites/<site>.json`, schema `pipeline/tickets/schemas/site.json`)
   says where the site's ticket rows are: each ticket's id on the site (its key), name, price as shown, amount,
-  currency, a second price when the site shows one, and its sold-out mark; whether the tickets sit in a widget,
-  which sections to click open, and whether the site needs a visible browser. There are recipes for Weezevent
-  (prices include its booking fee) and FairPlay (behind a browser check). An agent writes one per new site.
-- **A log per festival** (`pipeline/tickets/log/<event_id>.jsonl`) gets one entry per read: `read` with every row,
-  `refused` (no rows and an HTTP error, or the page would not load), or `layout_broken` (no rows, or a row missing
-  its key, name, price, amount or currency: the recipe needs an agent). Git merges these files line by line
+  currency, a second price when the site shows one, and its sold-out mark; what its currency symbols stand for;
+  whether the tickets sit in a widget, which sections to click open, and whether the site needs a visible browser.
+  There are recipes for Weezevent (prices include its booking fee) and FairPlay (behind a browser check). An agent
+  writes one per new site.
+- **A log per festival** (`pipeline/tickets/log/<event_id>.jsonl`, schema `log.json`, checked on every write and
+  read) gets one entry per read: `read` with every row, `refused` (no rows and an HTTP error, or the page would not
+  load), or `layout_broken` (the recipe's selectors fail, no rows, two rows with one key, or a row missing its key,
+  name, price, amount or currency: the recipe needs an agent). Git merges these files line by line
   (`.gitattributes`), so a session and the monthly run never conflict.
 - **A first read per festival** (`pipeline/tickets/reads/<event_id>.json`, schema `read.json`) says, from one logged
   read and the festival's description, which pass each ticket is, in the prices pass's terms (prompt
   `pipeline/tickets/prompts/first-read-v1.md` on top of `prices-v2`): every ticket is in a tier, by its key, or
-  skipped; dates, ticket limits and price notes are quoted from the description or the ticket's name.
+  skipped; dates, ticket limits and price notes are quoted from the description or the ticket's name. Only checked
+  first reads are kept there: an agent fills a draft (`pipeline/tickets/drafts/`, not committed), which `record`
+  moves there once it passes.
 - **`record`** writes the prices: amount, currency, sold out and the quote (the ticket's name and price) from the
-  latest read rows, the rest from the first read. It checks the first read against the rows it was made from and
-  the prices against their quotes, then replaces the festival's rows in `pipeline/pass_prices.csv` (one per tier,
-  with its keys) and `pipeline/ticket_pages.csv` (one per festival: page, read date, who made the first read and
-  with which prompt, recipe version, unread tickets, price notes). It is the only writer of both, recording twice
-  writes the same files, and a read that changed nothing on the page changes only the read date. A ticket the first
+  latest read rows of the same page, the rest from the first read. It checks the first read against the rows it was
+  made from and the prices against their quotes, then writes `pipeline/pass_prices.csv` (one row per tier) and
+  `pipeline/ticket_pages.csv` (one per festival: page, read date, who made the first read and with which prompt,
+  recipe version, unread tickets, price notes). It is the only writer of both and writes them from every first read
+  and its log, so they hold what the reads and logs say and nothing else: a festival whose first read no longer fits
+  its page is left out (and the monthly run fails naming it) until it is read again. Recording twice writes the same
+  files, and a read that changed nothing on the page changes only the read date. A ticket the first
   read doesn't know is counted as unread, and the passes quick view says the page has new tickets not read yet; a
   tier whose tickets are all gone from the page is left out.
 
@@ -198,20 +204,22 @@ A festival in `ticket_pages.csv` takes its passes from its page in place of its 
 uv run pipeline/tickets.py todo               # what needs doing: first reads, unread tickets, failed reads
 uv run pipeline/tickets.py read ID [--url U]  # read the page by its site's recipe and log the rows
 uv run pipeline/tickets.py draft ID           # a first read to fill, from the latest rows
-uv run pipeline/tickets.py record ID          # check the first read, then write the festival's prices
+uv run pipeline/tickets.py record ID          # check the draft or first read, then write the festival's prices
 uv run pipeline/tickets.py retry ID           # read with a visible browser, then record
 uv run pipeline/tickets.py changes [ID]       # what changed between consecutive reads
 ```
 
 A festival needs a first read when it is still to come and its description gives no dated full pass or package
-price, and again when its description changes or its page shows tickets the first read doesn't know. It is read
+price, and again when its description or its ticket page changes, or its page shows tickets the first read
+doesn't know. It is read
 again on the monthly run, unless it is *dated* (every tier on sale has an end date and none is limited to a number
 of tickets), when it is read again once its last date has passed. The monthly **Refresh events** Action runs
 `tickets.py run`: the re-reads that are due, a retry of every festival whose latest read failed, and a first read
 by Opus and Sonnet for each festival that needs one on a site with a recipe. The two read independently, and the
 first read is kept only when they agree on every ticket's pass, tier, skip and dates; when they don't, both are kept
 in `pipeline/tickets/disputed/<event_id>.json` for an agent and the festival waits. The run fails, after
-committing, when a page broke its recipe or a festival's read failed three times in a row; `todo` then marks it for
+committing, when a page broke its recipe, a festival's read failed three times in a row, or a festival no longer
+fits its first read; `todo` then marks it for
 a session, where `retry` reads it with a visible browser. Sites without a recipe, and links kizomba-world cut
 short, are for an agent.
 
@@ -295,7 +303,7 @@ The **Tests** Action runs on every push. Locally:
 
 ```bash
 node --test tests/*.test.mjs      # the site's structure: unused code and styles, links, stored hints
-uvx --with anthropic==2.3.0 --with jsonschema==4.26.0 --with pycountry==26.2.16 pytest -q tests/
+uvx --with-requirements pipeline/tickets.py --with-requirements pipeline/extract/resolve_artists.py pytest -q tests/
                                   # the pipeline: text tidying, reading kizomba-world's pages, the extraction step
 ```
 

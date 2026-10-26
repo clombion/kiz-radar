@@ -41,10 +41,8 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           LIMIT: ${{ inputs.limit }}
-      - name: Install a browser and a virtual display for ticket pages
-        run: |
-          uvx -q --from patchright==1.55.2 patchright install --with-deps chromium
-          sudo apt-get install -y -q xvfb
+      - name: Install a browser for ticket pages (the runner has a virtual display, xvfb)
+        run: uvx -q --from patchright==1.55.2 patchright install --with-deps chromium
       - name: Read ticket pages
         id: tickets
         continue-on-error: true

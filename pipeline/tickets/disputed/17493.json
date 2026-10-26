@@ -4,8 +4,6 @@
   "claude-opus-5-5": {
    "event_id": 17493,
    "title": "HOT ICE KIZ Festival 2026 11th edition",
-   "page": "https://my.weezevent.com/hot-ice-kiz-festival-2026",
-   "read_on": "2026-10-26",
    "read_by": "claude-opus-5-5",
    "prompt_version": "first-read-v1",
    "rows_at": "2026-10-26T18:13:07+00:00",
@@ -27,7 +25,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": true,
        "date_quote": null
       }
      ]
@@ -48,7 +45,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -69,7 +65,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -90,7 +85,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -110,7 +104,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -130,8 +123,6 @@
   "claude-sonnet-5-5": {
    "event_id": 17493,
    "title": "HOT ICE KIZ Festival 2026 11th edition",
-   "page": "https://my.weezevent.com/hot-ice-kiz-festival-2026",
-   "read_on": "2026-10-26",
    "read_by": "claude-sonnet-5-5",
    "prompt_version": "first-read-v1",
    "rows_at": "2026-10-26T18:13:07+00:00",
@@ -153,7 +144,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": true,
        "date_quote": null
       }
      ]
@@ -174,7 +164,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -195,7 +184,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -216,7 +204,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -236,7 +223,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -256,7 +242,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -276,7 +261,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -296,7 +280,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -316,7 +299,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]

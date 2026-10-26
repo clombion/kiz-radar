@@ -1,8 +1,6 @@
 {
  "event_id": 18295,
  "title": "WOW4 – World Of Women Kizomba Weekender 2026",
- "page": "https://my.weezevent.com/world-of-women-4",
- "read_on": "2026-10-26",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
  "prompt_version": "first-read-v1",
  "rows_at": "2026-10-26T18:14:08+00:00",
@@ -23,7 +21,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     },
     {
@@ -34,7 +31,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]

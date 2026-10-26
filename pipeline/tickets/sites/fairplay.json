@@ -8,6 +8,9 @@
   "visible": true,
   "wait": 12,
   "open": null,
+  "symbols": {
+    "€": "EUR"
+  },
   "row": "div:has(> h4.mantine-Title-root):has(label[for^='ticketTypes.'])",
   "fields": {
     "key": {

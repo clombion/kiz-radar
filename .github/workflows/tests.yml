@@ -17,4 +17,4 @@ jobs:
       - name: Site checks
         run: node --test tests/*.test.mjs
       - name: Pipeline tests
-        run: uvx --with anthropic==2.3.0 --with jsonschema==4.26.0 --with pycountry==26.2.16 pytest -q tests/
+        run: uvx --with-requirements pipeline/tickets.py --with-requirements pipeline/extract/resolve_artists.py pytest -q tests/

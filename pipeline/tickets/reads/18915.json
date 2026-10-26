@@ -1,8 +1,6 @@
 {
  "event_id": 18915,
  "title": "ALOHA SWEET KIZOMBA WEEKENDER Akwaba edition",
- "page": "https://my.weezevent.com/weekender-aloha-sweet-kizomba",
- "read_on": "2026-10-26",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
  "prompt_version": "first-read-v1",
  "rows_at": "2026-10-26T18:19:14+00:00",
@@ -23,7 +21,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]

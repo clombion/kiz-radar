@@ -4,8 +4,6 @@
   "claude-opus-5-5": {
    "event_id": 16889,
    "title": "AURA KIZOMBA FESTIVAL III",
-   "page": "https://my.weezevent.com/aurakizombafestivaliii",
-   "read_on": "2026-10-26",
    "read_by": "claude-opus-5-5",
    "prompt_version": "first-read-v1",
    "rows_at": "2026-10-26T18:12:31+00:00",
@@ -26,7 +24,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -46,7 +43,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -66,7 +62,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -86,7 +81,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -106,7 +100,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -126,7 +119,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -146,7 +138,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -166,7 +157,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -186,7 +176,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -206,7 +195,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -218,8 +206,6 @@
   "claude-sonnet-5-5": {
    "event_id": 16889,
    "title": "AURA KIZOMBA FESTIVAL III",
-   "page": "https://my.weezevent.com/aurakizombafestivaliii",
-   "read_on": "2026-10-26",
    "read_by": "claude-sonnet-5-5",
    "prompt_version": "first-read-v1",
    "rows_at": "2026-10-26T18:12:31+00:00",
@@ -240,7 +226,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -260,7 +245,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -280,7 +264,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -300,7 +283,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -320,7 +302,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -340,7 +321,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -360,7 +340,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -380,7 +359,6 @@
        "until": null,
        "quantity": null,
        "door": false,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -400,7 +378,6 @@
        "until": null,
        "quantity": null,
        "door": true,
-       "current": false,
        "date_quote": null
       }
      ]
@@ -420,7 +397,6 @@
        "until": null,
        "quantity": null,
        "door": true,
-       "current": false,
        "date_quote": null
       }
      ]

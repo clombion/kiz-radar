@@ -41,14 +41,14 @@ you get its lines and answer again with the whole corrected object."""
 
 
 def api_schema(node):
-    """The schema as structured outputs accept it: no length, range or pattern constraints (the checker keeps
-    them), anyOf for oneOf, and no annotations."""
+    """The schema as structured outputs accept it: no length, range, pattern or if/then constraints (the checker
+    keeps them), anyOf for oneOf, and no annotations."""
     if isinstance(node, list):
         return [api_schema(v) for v in node]
     if not isinstance(node, dict):
         return node
     drop = {'$schema', 'title', 'minLength', 'maxLength', 'minimum', 'maximum', 'exclusiveMinimum', 'minItems',
-            'pattern'}
+            'pattern', 'if', 'then', 'else'}
     return {('anyOf' if k == 'oneOf' else k): api_schema(v) for k, v in node.items() if k not in drop}
 
 
@@ -70,28 +70,28 @@ def question(pass_name, row):
     return system, '\n\n'.join(parts), schema, batch
 
 
-def ask(client, pass_name, row, usage, lock):
-    """A checked answer for one festival and pass, or None after two failed tries."""
-    system, content, schema, batch = question(pass_name, row)
+def structured(client, model, system, content, schema, check, label, usage=None, lock=None):
+    """Claude's answer in the schema's shape once check() finds no problems in it, or None after two tries: on a
+    failure Claude gets the checker's lines and answers once more. usage, when given, adds up the tokens."""
     messages = [{'role': 'user', 'content': content}]
     for attempt in (1, 2):
         try:
-            with client.messages.stream(model=MODEL, max_tokens=64000, system=system, messages=messages,
+            with client.messages.stream(model=model, max_tokens=64000, system=system, messages=messages,
                                         output_config={'format': {'type': 'json_schema',
                                                                   'schema': api_schema(schema)}}) as stream:
                 reply = stream.get_final_message()
         except anthropic.APIStatusError as e:
-            print(f"{row['id']} {pass_name}: API error {e.status_code} ({e.message}); left pending", file=sys.stderr)
+            print(f"{label}: API error {e.status_code} ({e.message}); left pending", file=sys.stderr)
             return None
         except anthropic.APIConnectionError as e:
-            print(f"{row['id']} {pass_name}: connection failed ({e}); left pending", file=sys.stderr)
+            print(f"{label}: connection failed ({e}); left pending", file=sys.stderr)
             return None
-        with lock:
-            usage['input'] += reply.usage.input_tokens
-            usage['output'] += reply.usage.output_tokens
+        if usage is not None:
+            with lock:
+                usage['input'] += reply.usage.input_tokens
+                usage['output'] += reply.usage.output_tokens
         if reply.stop_reason != 'end_turn':
-            print(f"{row['id']} {pass_name}: stopped on {reply.stop_reason} (request {reply._request_id}); left pending",
-                  file=sys.stderr)
+            print(f"{label}: stopped on {reply.stop_reason} (request {reply._request_id}); left pending", file=sys.stderr)
             return None
         text = next(b.text for b in reply.content if b.type == 'text')
         try:
@@ -99,16 +99,20 @@ def ask(client, pass_name, row, usage, lock):
         except json.JSONDecodeError as e:
             found = [f'not valid JSON ({e})']
         else:
-            found = check_output.problems(schema, batch, output)
-            if not found and pass_name == 'prices':
-                found = prices.problems(output)
-            if not found:
+            if not (found := check(output)):
                 return output
-        print(f"{row['id']} {pass_name}: try {attempt} failed the checker: " + ' | '.join(found), file=sys.stderr)
+        print(f"{label}: try {attempt} failed the checker: " + ' | '.join(found), file=sys.stderr)
         messages += [{'role': 'assistant', 'content': reply.content},
                      {'role': 'user', 'content': 'The checker found these problems:\n' + '\n'.join(found) +
                       '\n\nAnswer again with the whole corrected object.'}]
     return None
+
+
+def ask(client, pass_name, row, usage, lock):
+    """A checked answer for one festival and pass, or None after two failed tries."""
+    system, content, schema, batch = question(pass_name, row)
+    check = lambda out: check_output.problems(schema, batch, out) or (prices.problems(out) if pass_name == 'prices' else [])
+    return structured(client, MODEL, system, content, schema, check, f"{row['id']} {pass_name}", usage, lock)
 
 
 def due(db, only):

@@ -1,8 +1,6 @@
 {
  "event_id": 17476,
  "title": "Dance Affinity Festival Freiburg",
- "page": "https://my.weezevent.com/dance-affinity-2026",
- "read_on": "2026-10-26",
  "read_by": "agent",
  "prompt_version": "first-read-v1",
  "rows_at": "2026-10-26T17:28:53+00:00",
@@ -24,7 +22,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     },
     {
@@ -36,7 +33,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     },
     {
@@ -48,7 +44,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     },
     {
@@ -60,7 +55,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]
@@ -80,7 +74,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     },
     {
@@ -91,7 +84,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]
@@ -112,7 +104,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]
@@ -133,7 +124,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]
@@ -154,7 +144,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]
@@ -174,7 +163,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]
@@ -194,7 +182,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]

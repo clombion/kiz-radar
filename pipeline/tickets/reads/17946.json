@@ -1,8 +1,6 @@
 {
  "event_id": 17946,
  "title": "PARIS KIZZ EXPERIENCE (Official Event)",
- "page": "https://my.weezevent.com/paris-kizz-experience-festival",
- "read_on": "2026-10-26",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
  "prompt_version": "first-read-v1",
  "rows_at": "2026-10-26T18:14:28+00:00",
@@ -23,7 +21,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     },
     {
@@ -34,7 +31,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]
@@ -55,7 +51,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     },
     {
@@ -67,7 +62,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]
@@ -87,7 +81,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]
@@ -107,7 +100,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]
@@ -127,7 +119,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]
@@ -147,7 +138,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]
@@ -167,7 +157,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]
@@ -187,7 +176,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]
@@ -207,7 +195,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]
@@ -227,7 +214,6 @@
      "until": null,
      "quantity": null,
      "door": false,
-     "current": false,
      "date_quote": null
     }
    ]

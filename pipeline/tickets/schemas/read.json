@@ -6,8 +6,6 @@
   "required": [
     "event_id",
     "title",
-    "page",
-    "read_on",
     "read_by",
     "prompt_version",
     "rows_at",
@@ -23,15 +21,6 @@
     "title": {
       "type": "string",
       "minLength": 1
-    },
-    "page": {
-      "description": "The ticket page the festival links to.",
-      "type": "string",
-      "pattern": "^https?://"
-    },
-    "read_on": {
-      "type": "string",
-      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
     },
     "read_by": {
       "description": "agent, or the two models that agreed.",
@@ -111,7 +100,6 @@
                 "until",
                 "quantity",
                 "door",
-                "current",
                 "date_quote"
               ],
               "properties": {
@@ -148,17 +136,41 @@
                 "door": {
                   "type": "boolean"
                 },
-                "current": {
-                  "type": "boolean"
-                },
                 "date_quote": {
-                  "description": "Where from, until or quantity are written: copied from the description or from one of the tier's tickets; null when all three are null.",
+                  "description": "The words that say from, until or quantity, copied from the description or from one of the tier's tickets.",
                   "type": [
                     "string",
                     "null"
                   ],
                   "minLength": 1,
                   "maxLength": 300
+                }
+              },
+              "if": {
+                "properties": {
+                  "from": {
+                    "type": "null"
+                  },
+                  "until": {
+                    "type": "null"
+                  },
+                  "quantity": {
+                    "type": "null"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "date_quote": {
+                    "type": "null"
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "date_quote": {
+                    "type": "string"
+                  }
                 }
               }
             }
