@@ -156,6 +156,25 @@ artist key or a festival is unknown.
 Plans are public for now: anyone can see them, so add people only with their agreement. Private sharing, friends
 and "I'm going" buttons need accounts and a server, which the site doesn't have yet.
 
+## Prices from ticket pages
+
+Some festivals keep their prices off their description, on a ticket page. `pipeline/pass_prices.csv` holds prices
+read from such a page, one row per price tier, in the same terms as the prices pass (`kind`, `group_size`, `days`,
+`includes_hotel`, `amount` and `currency`, an optional second currency, `from`/`until` dates, `sold_out`), with the
+line it was read from (`quote`), the page (`source_url`) and the day it was checked (`checked_on`). Consecutive rows
+with the same kind, label and people form one pass. A festival in this file takes all its passes from it, in place of
+what its description gives; `event_passes.source` says which. Check the page again when the festival announces a new
+price wave.
+
+To read such a page once, when a plain request is turned away by a browser check but the page opens in any browser:
+
+```bash
+uv run pipeline/read_page.py URL --screenshot page.png   # the page's text, and a screenshot
+```
+
+It opens a real Chromium on a virtual display (`xvfb-run`). It is for one-off checks of one page, not for the
+monthly jobs.
+
 ## Promo codes
 
 Promo codes are ours, not kizomba-world's: `pipeline/promo_codes.csv` has one row per festival edition, so one
