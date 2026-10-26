@@ -70,8 +70,9 @@ the site both read it from there. Cities are geocoded with OpenStreetMap Nominat
 `pipeline/geocode.csv`.
 
 Prices show in kroner, or in euros or dollars (`?cur=eur`, `?cur=usd`, switched in the footer); amounts in
-other currencies are converted with `pipeline/rates.csv` and marked "~". A festival card shows the per-person full
-pass at today's price tier and the next rise; the opened card lists every pass and tier (`docs/js/passes.js`).
+other currencies are converted with `pipeline/rates.csv` and marked "~". A festival card shows what the weekend costs
+without accommodation (the per-person full pass at today's price, plus the flight) and when the pass price next goes
+up; tapping the pass opens every pass at today's price and its next change (`docs/js/passes.js`).
 
 For the SQL page, every table is described in the `table_docs` table. The `event_rows` view is the one to start
 from: it joins each event to its statistics and says whether it is still to come.

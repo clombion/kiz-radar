@@ -34,9 +34,13 @@ export function money(amount, from = 'EUR', { approx = false } = {}) {
   if (from === currency) return (approx ? '~' : '') + written(n, currency);
   return '~' + written(currency === 'NOK' ? Math.round(n / 10) * 10 : Math.round(n), currency);
 }
-// as money(), with the amount as written in its own currency in the tooltip when it was converted
-export const moneyEl = (amount, from = 'EUR') => from === currency || convert(amount, from) == null
-  ? h('span', {}, money(amount, from)) : h('span', { title: written(amount, from) }, money(amount, from));
+// the sum of [amount, currency] pairs in the visitor's currency, "~4 130 kr"; null when one has no rate
+export function total(parts) {
+  const ns = parts.map(([a, c]) => convert(a, c));
+  if (ns.some(n => n == null)) return null;
+  const n = ns.reduce((a, b) => a + b, 0);
+  return '~' + written(currency === 'NOK' ? Math.round(n / 10) * 10 : Math.round(n), currency);
+}
 
 // "Prices in: kr · € · $": each reloads this page, at the same place, in that currency
 export function currencySwitch() {

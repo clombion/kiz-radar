@@ -545,15 +545,15 @@ html:has(dialog.peek[open]) { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   dialog.search, dialog.peek { transition: opacity .15s ease, overlay .15s allow-discrete, display .15s allow-discrete; }
 }
-/* pass prices: a line in the card's foot, and each pass's tiers in an opened card */
-.festival-card .pass-price { margin: 0; font-size: .9rem; color: var(--muted); }
-.festival-card .pass-price strong { color: var(--text); }
-.card-details .passes .pass { margin: 0 0 .7rem; }
-.card-details .passes .pass-name { margin: 0 0 .2rem; font-weight: 600; }
-.card-details .passes .tiers { list-style: none; margin: 0; padding: 0; max-width: 26rem; }
-.card-details .passes .tiers li { display: flex; justify-content: space-between; gap: 1rem; padding: .12rem 0; border-bottom: 1px dotted var(--border); font-size: .9rem; }
-.card-details .passes .tiers .tier-dates { color: var(--muted); text-align: right; }
-.card-details .passes .tiers .now .amt { font-weight: 700; color: var(--accent); }
-.card-details .passes .tiers .gone { color: var(--muted); }
-.card-details .passes .tiers .gone .amt { text-decoration: line-through; }
+/* prices in a card's foot: the total and its parts, or the pass alone; the quick view of every pass */
+.festival-card .cost { margin: 0; font-size: .92rem; color: var(--muted); }
+.festival-card .cost strong { color: var(--text); font-size: 1rem; }
+.festival-card .cost-parts, .festival-card .pass-price { margin: 0; font-size: .88rem; color: var(--muted); }
+.festival-card .cost-parts a { color: var(--muted); font-weight: 600; }
+.festival-card .cost-parts .easy a { color: var(--good); }
+.pass-btn { font-weight: 600; }
+.pass-rows { list-style: none; margin: 0; padding: 0; }
+.pass-rows li { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .2rem 1rem; padding: .6rem 0; border-bottom: 1px solid var(--border); }
+.pass-rows .pass-name { font-weight: 600; }
+.pass-rows .pass-now strong { color: var(--accent); }
 .currency-switch b { color: var(--text); }

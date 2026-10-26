@@ -1,8 +1,8 @@
 // The festival card used across the site: date, place, title, styles, highlights, a few names and the flight,
 // opening in place to the full line-up and practical details. Rows come from festivals.js (withDetails).
 import { h, addDays, today, flightsUrl, home, dayMonth } from './ui.js';
-import { money, convert, step } from './money.js';
-import { passLine } from './passes.js';
+import { money, convert, step, total } from './money.js';
+import { priceNow, riseNote, openPasses } from './passes.js';
 import { place, styleLine } from './festivals.js';
 import { TRAITS } from './icons.js';
 import { cardDetails, traitItems } from './details.js';
@@ -21,16 +21,36 @@ function dateBox(start, end) {
 
 // "✈ ~5 150 kr to Brussels, then 104 km": a Fri→Mon return from home to the nearest airport with prices, and how far
 // the festival is from it. The price links to Google Flights for that weekend.
+const flightLink = (e, text) => h('a', { href: flightsUrl(e.airport, e.depart, addDays(e.depart, 3)), target: '_blank', rel: 'noopener',
+  title: `Friday to Monday return from ${home().city}; check it on Google Flights` }, text);
+const after = e => [` to ${e.airport_city}`, e.airport_km > 30 ? `, then ${e.airport_km} km` : ''];
+const cheap = e => convert(e.fare.price) <= step('cheap');
 function flight(e) {
   if (e.cancelled) return h('p', { class: 'flight muted' }, 'This festival was cancelled.');
   if (!e.upcoming) return h('p', { class: 'flight muted' }, 'This festival has taken place.');
   if (!e.airport) return h('p', { class: 'flight muted' }, `✈ too far from ${home().city} for our flight prices`);
   if (e.fare?.home) return h('p', { class: 'flight easy' }, `In ${home().city}, no flight needed`);
   if (!e.fare) return h('p', { class: 'flight muted' }, '✈ flight not checked yet');
-  return h('p', { class: 'flight' + (convert(e.fare.price) <= step('cheap') ? ' easy' : '') }, '✈ ',
-    h('a', { href: flightsUrl(e.airport, e.depart, addDays(e.depart, 3)), target: '_blank', rel: 'noopener',
-      title: `Friday to Monday return from ${home().city}; check it on Google Flights` }, money(e.fare.price, 'EUR', { approx: true })),
-    ` to ${e.airport_city}`, e.airport_km > 30 ? `, then ${e.airport_km} km` : '');
+  return h('p', { class: 'flight' + (cheap(e) ? ' easy' : '') }, '✈ ', flightLink(e, money(e.fare.price, 'EUR', { approx: true })), ...after(e));
+}
+
+// The foot's prices. With a pass price and a flight, the total first:
+//   Cost ~4 130 kr, without accommodation · price goes up 15 Dec
+//   1 670 kr full pass + ~2 460 kr flight to Stockholm, then 37 km
+// The pass opens the passes quick view; the flight opens Google Flights. With only one of the two, that one alone.
+function prices(e) {
+  const p = priceNow(e);
+  if (!p) return flight(e);
+  const passBtn = text => h('button', { type: 'button', class: 'link pass-btn',
+    onclick: ev => { ev.stopPropagation(); openPasses(e, ev.currentTarget); } }, text);
+  if (p.soldOut) return [h('p', { class: 'pass-price muted' }, '🎟 ', passBtn(`${p.hotel ? 'Packages' : 'Full passes'} sold out`)), flight(e)];
+  const pass = passBtn(`${p.from ? 'from ' : ''}${money(p.tier.amount, p.tier.currency)} ${p.hotel ? 'package with hotel' : 'full pass'}`);
+  const rise = p.next ? ` · ${riseNote(p.next)}` : '';
+  const sum = e.fare && total([[p.tier.amount, p.tier.currency], [e.fare.home ? 0 : e.fare.price, 'EUR']]);
+  if (!sum) return [h('p', { class: 'pass-price' }, '🎟 ', pass, rise), flight(e)];
+  return [h('p', { class: 'cost' }, 'Cost ', h('strong', {}, p.from ? 'from ' : '', sum), p.hotel ? ', hotel included' : ', without accommodation', rise),
+    h('p', { class: 'cost-parts' }, pass, ' + ', e.fare.home ? `no flight, in ${home().city}`
+      : [h('span', { class: cheap(e) ? 'easy' : null }, flightLink(e, `${money(e.fare.price, 'EUR', { approx: true })} flight`)), ...after(e)])];
 }
 
 // Opening a card changes the layout (on wide screens it takes the whole row). A view transition animates that: the
@@ -82,9 +102,9 @@ export function eventCard(e, { hint = null, open = false, onMap = false } = {}) 
     traitItems(traits.slice(0, 3)),
     traits.length > 3 ? h('li', { class: 'more-traits' }, toggleBtn('link', `+${traits.length - 3}`)) : null) : null;
 
-  // The card opens from its title, and from its foot below the line (the pass price, the flight and "Line-up & details"); the rest of
+  // The card opens from its title, and from its foot below the line (the prices and "Line-up & details"); the rest of
   // it holds names and links that do their own thing.
-  const foot = h('div', { class: 'foot' }, passLine(e), flight(e), h('div', { class: 'actions' }, toggleBtn('link', label)));
+  const foot = h('div', { class: 'foot' }, prices(e), h('div', { class: 'actions' }, toggleBtn('link', label)));
   foot.addEventListener('click', ev => { if (!ev.target.closest('a, button')) toggle(); });
   const art = h('article', { class: 'festival-card' },
     h('div', { class: 'c-top' },
