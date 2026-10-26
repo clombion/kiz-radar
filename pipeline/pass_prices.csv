@@ -244,6 +244,12 @@ event_id,kind,label,group_size,days,includes_hotel,amount,currency,fee,alt_amoun
 18804,full,,2,,0,102.56,EUR,,,,,,30,1,"EARLY BIRDS DUO PASS MAN/WOMAN (Access to parties, socials and workshops. Pre-party is not included / Accès aux soirées, sociales et workshops. La pré-party n'est pas incluse) €102.56"
 18804,full,,2,,0,112.82,EUR,,,,,,,0,"DUO PASS MAN/MAN (Access to parties, socials and workshops. Pre-party is not included / Accès aux soirées, sociales et workshops. La pré-party n'est pas incluse) €112.82"
 18804,full,,2,,0,123.08,EUR,,,,,,,0,"DUO PASS MAN/WOMAN (Access to parties, socials and workshops. Pre-party is not included / Accès aux soirées, sociales et workshops. La pré-party n'est pas incluse) €123.08"
+18806,full,,1,,0,164.8,EUR,5.8,,,,,,0,Full Pass 159.0 + 5.8 fee
+18806,party,,1,,0,102.6,EUR,3.6,,,,,,0,Party Pass 99.0 + 3.6 fee
+18806,full,,2,,0,160.65,EUR,5.65,,,,,,0,Full Pass Couple 155.0 + 5.65 fee
+18806,other,,1,,0,124.4,EUR,4.4,,,,,,0,Kizomba Switch Full Pass 120.0 + 4.4 fee
+18806,other,,2,,0,119.2,EUR,4.2,,,,,,0,Kizomba Couple FULL PASS 115.0 + 4.2 fee
+18806,other,,1,,0,133.7,EUR,4.7,,,,,,0,Brazilian Zouk Full Pass 129.0 + 4.7 fee
 18816,full,,2,,0,150,EUR,,,,,,,0,FULLPASS DUO €150.00
 18816,full,,2,,0,120,EUR,,,,,,,0,FULLPASS DUO €120.00
 18816,full,,2,,0,100,EUR,,,,,,,0,FULLPASS DUO €100.00
