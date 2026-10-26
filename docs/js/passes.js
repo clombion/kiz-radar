@@ -67,8 +67,9 @@ export const riseNote = t => t.door ? 'price is higher at the door' : t.lo ? `pr
 // ----- the quick view: each pass at today's price and its next change -----
 const KIND = { full: 'Full pass', party: 'Party pass', day: 'Day pass', workshop: 'Workshop pass', package: 'Package', other: 'Pass' };
 const forWhom = p => p.group_size == null || p.group_size === 1 ? null : p.group_size === 2 ? 'for a couple' : `for ${p.group_size}`;
-// a day or other pass by its own name ("20.Nov Friday PARTY"); the others by kind, length and for whom
-const passName = p => [['day', 'other'].includes(p.kind) && p.label ? p.label : KIND[p.kind],
+// a day or other pass by its own name ("20.Nov Friday PARTY"); the others by kind, length and for whom, or by their own
+// name when that alone would read the same as another pass's ("Single KIZOMBA Fullpass", "Bachata Fullpass")
+const passName = (p, own = false) => [own || ['day', 'other'].includes(p.kind) ? p.label || KIND[p.kind] : KIND[p.kind],
   p.days > 1 ? `${p.days} days` : null, forWhom(p),
   p.includes_hotel && p.kind !== 'package' ? 'with hotel' : null].filter(Boolean).join(' · ');
 
@@ -98,7 +99,7 @@ export function openPasses(e, from) {
   v.link.textContent = page ? 'The ticket page ↗' : 'The festival on kizomba-world ↗';
   const rows = passesOf(e.id).map(p => [p, tierNow(p, e)]).filter(([, now]) => now);
   v.body.replaceChildren(rows.length ? h('ul', { class: 'pass-rows' }, rows.map(([p, now]) => h('li', {},
-    h('span', { class: 'pass-name' }, passName(p)),
+    h('span', { class: 'pass-name' }, passName(p, rows.filter(([q]) => passName(q) === passName(p)).length > 1)),
     now.soldOut ? h('span', { class: 'muted' }, 'sold out')
       : h('span', { class: 'pass-now' }, now.from ? 'from ' : null, h('strong', {}, money(now.tier.amount, now.tier.currency)),
         now.next ? h('span', { class: 'muted' }, ` · then ${money(now.next.amount, now.next.currency)} ${changeWhen(now.next)}`) : null))))

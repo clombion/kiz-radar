@@ -99,7 +99,7 @@ export function eventCard(e, { hint = null, open = false, onMap = false } = {}) 
   // up to three features as icon + short word (icons alone are guesswork); the rest are in the details
   const traits = TRAITS.filter(([k]) => e.features.has(k));
   const traitRow = traits.length ? h('ul', { class: 'traits', 'aria-label': 'Highlights' },
-    traitItems(traits.slice(0, 3)),
+    traitItems(traits.slice(0, 3), e),
     traits.length > 3 ? h('li', { class: 'more-traits' }, toggleBtn('link', `+${traits.length - 3}`)) : null) : null;
 
   // The card opens from its title, and from its foot below the line (the prices and "Line-up & details"); the rest of

@@ -128,3 +128,10 @@ def test_schema_sent_without_constraints_structured_outputs_reject():
     text = json.dumps(schema)
     for word in ('minLength', 'maxLength', 'minimum', 'oneOf', 'pattern', '$schema'):
         assert word not in text
+
+
+def test_ticket_page_text_loses_quantity_pickers():
+    sys.path.insert(0, str(Path(__file__).parent.parent / 'pipeline'))
+    import tickets
+    page = 'FULLPASS \t€105.00\t\n0\n1\n2\n3\n4\n5\nPARTYPASS €40.00\nStep\n1\nCart'
+    assert tickets.clean(page) == 'FULLPASS \t€105.00\t\nPARTYPASS €40.00\nStep\n1\nCart'

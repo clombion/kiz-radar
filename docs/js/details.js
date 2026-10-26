@@ -5,10 +5,14 @@ import { h, flag, countryName } from './ui.js';
 import { TRAITS, MORE_TRAITS } from './icons.js';
 import { artistHref, eventOnMapHref } from './routes.js';
 import { whoIsGoing } from './plans.js';
+import { openPasses } from './passes.js';
 
 const ROLES = [['teacher', 'Teachers'], ['dj', 'DJs'], ['performer', 'Performers'], ['mc', 'MCs']];
 const icon = svg => { const el = h('span', { class: 'ic' }); el.innerHTML = svg; return el; };
-export const traitItems = list => list.map(([, label, svg]) => h('li', {}, icon(svg), label));
+// a highlight with prices behind it (couple & group deals) opens the passes over the page
+export const traitItems = (list, e) => list.map(([key, label, svg]) => h('li', {}, icon(svg), key === 'group_deals' && e
+  ? h('button', { type: 'button', class: 'link trait-link', onclick: ev => { ev.stopPropagation(); openPasses(e, ev.currentTarget); } }, label)
+  : label));
 
 export function cardDetails(e, shownTraits, close, { onMap = false } = {}) {
   const people = q(`SELECT a.id, a.display_name, ea.role, st.bookings, st.popular, st.home_country
@@ -34,7 +38,7 @@ export function cardDetails(e, shownTraits, close, { onMap = false } = {}) {
         p.home_country ? h('span', { class: 'flag', title: countryName(p.home_country) }, ' ', flag(p.home_country)) : null,
         p.bookings > 1 ? h('span', { class: 'bk' }, ` · ${p.bookings} festivals`) : null))))),
     people.length ? null : h('p', { class: 'muted' }, 'No line-up announced yet.'),
-    rest.length ? h('ul', { class: 'traits' }, traitItems(rest)) : null,
+    rest.length ? h('ul', { class: 'traits' }, traitItems(rest, e)) : null,
     venue || organisers.length ? h('p', { class: 'practical' },
       venue ? ['Venue: ', venue] : null, venue && organisers.length ? ' · ' : null,
       organisers.length ? ['Organised by ', ...organisers.flatMap((p, i) => [i ? ', ' : '', person(p)])] : null) : null,

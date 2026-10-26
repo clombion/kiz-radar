@@ -244,6 +244,9 @@ for r in csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'promo_codes.csv'), 
 # pass prices, from the source's prices pass (without the quotes or price notes), and the rates the site converts them with
 x("""create table event_passes as select event_id, pass_no, kind, label, group_size, days, includes_hotel, source, checked_on
      from src.event_passes""")
+# a festival selling full, party or package passes for two or more people has the group_deals highlight
+for (e,) in x("select distinct event_id from event_passes where group_size >= 2 and kind in ('full', 'party', 'package')"):
+    feats[e].add('group_deals')
 x("""create table pass_tiers as select event_id, pass_no, tier_no, amount, currency, alt_amount, alt_currency, valid_from,
      valid_until, quantity, door, sold_out, current from src.pass_tiers""")
 x("create table rates (currency text primary key, per_eur real not null, date text not null)")

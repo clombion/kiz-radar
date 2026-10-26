@@ -167,20 +167,36 @@ and "I'm going" buttons need accounts and a server, which the site doesn't have 
 
 Some festivals keep their prices off their description, on a ticket page. `pipeline/pass_prices.csv` holds prices
 read from such a page, one row per price tier, in the same terms as the prices pass (`kind`, `group_size`, `days`,
-`includes_hotel`, `amount` and `currency`, an optional second currency, `from`/`until` dates, `sold_out`), with the
-line it was read from (`quote`), the page (`source_url`) and the day it was checked (`checked_on`). Consecutive rows
-with the same kind, label and people form one pass. A festival in this file takes all its passes from it, in place of
-what its description gives; `event_passes.source` says which. Check the page again when the festival announces a new
-price wave.
+`includes_hotel`, `amount` and `currency`, an optional second currency, `from`/`until`, `quantity`, `door`,
+`sold_out`, `current`), with the line it was read from (`quote`), the page (`source_url`), the day it was read
+(`checked_on`) and who read it (`read_by`). Consecutive rows with the same kind, label and people form one pass. A
+festival in this file takes all its passes from it, in place of what its description gives; `event_passes.source`
+says which, and the passes quick view says when the page was read.
 
-To read such a page once, when a plain request is turned away by a browser check but the page opens in any browser:
+`pipeline/tickets.py` is the only thing that writes the file, one festival at a time:
+
+```bash
+uv run pipeline/tickets.py todo                  # festivals to check, with their ticket links
+uv run pipeline/tickets.py read ID [--url URL]   # save the page's text; --visible for a page behind a browser check
+uv run pipeline/tickets.py scaffold ID           # an empty answer, for an agent to fill (prompt prices-v2)
+uv run pipeline/tickets.py ask ID                # or Claude fills it (needs ANTHROPIC_API_KEY)
+uv run pipeline/tickets.py record ID             # check the answer, then replace the festival's rows
+```
+
+A festival needs a check when it is still to come and its description gives no full pass or package price, or when
+its page prices were read more than four weeks ago or all their dates have passed. The answer is read the way a
+description is, with the prices prompt, and `record` applies the same checks: the schema, every quote word for word
+on the page, every amount in its quote. Weezevent is the one ticket site many festivals use; its pages show their
+tickets in a widget, which `read` opens, and the monthly **Refresh events** Action runs `tickets.py auto` to read,
+ask and record every Weezevent festival that needs it. Other sites, and links kizomba-world cut short, are for an
+agent or a person to do one at a time.
+
+`pipeline/read_page.py` reads any one page as a browser shows it, for one-off checks:
 
 ```bash
 uv run pipeline/read_page.py URL --screenshot page.png   # the page's text, and a screenshot
+uv run pipeline/read_page.py URL --visible               # a visible browser on a virtual display (xvfb-run)
 ```
-
-It opens a real Chromium on a virtual display (`xvfb-run`). It is for one-off checks of one page, not for the
-monthly jobs.
 
 ## Promo codes
 

@@ -557,3 +557,4 @@ html:has(dialog.peek[open]) { overflow: hidden; }
 .pass-rows .pass-name { font-weight: 600; }
 .pass-rows .pass-now strong { color: var(--accent); }
 .currency-switch b { color: var(--text); }
+.trait-link { color: inherit; text-decoration: underline dotted; text-underline-offset: .2em; }
