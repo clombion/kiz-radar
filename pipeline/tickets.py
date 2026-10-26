@@ -586,8 +586,9 @@ def ask_read(client, model, f, entry, entries):
 
 def meaning(fr):
     """What two first reads must agree on: which tickets are skipped, which share a pass and a tier, each pass's
-    kind, people, days and hotel, and each tier's dates and quantity. Labels and quotes may differ."""
-    return frozenset((ps['kind'], ps['group_size'], ps['days'], ps['includes_hotel'],
+    kind, people, days (a day pass is one day, whether its days say 1 or nothing) and hotel, and each tier's dates and
+    quantity. Labels and quotes may differ."""
+    return frozenset((ps['kind'], ps['group_size'], 1 if ps['kind'] == 'day' else ps['days'], ps['includes_hotel'],
                       frozenset((frozenset(t['keys']), t['from'], t['until'], t['quantity'])
                                 for t in ps['tiers'])) for ps in fr['passes']), frozenset(fr['skipped'])
 

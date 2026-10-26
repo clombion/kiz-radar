@@ -1,0 +1,115 @@
+{
+ "event_id": 18350,
+ "title": "UrbanKiz Geneva 2026",
+ "start_date": "2026-12-04",
+ "read_by": "agent",
+ "prompt_version": "first-read-v2",
+ "rows_at": "2026-10-26T21:51:51+00:00",
+ "description": "After the incredible success of UKG 2025, we’re thrilled to announce the next edition: URBANKIZ GENEVA — December 4–7, 2026.\nSomething even bigger is coming… 😳…💜Stay tuned, save the dates, and get ready 💜✨🔥💜🌌💜⭐️💜\n🏨 Partner Hotel Mercure Geneva Airport\n🚌FREE SHUTTLE 🚌\n🚌 Shuttle -> Hôtel to Venue 💃 (4min)\n🚌 Shuttle -> 💃 Venue to Hôtel (4min)\n💜💜💜URBANKIZ GENEVA 2026💜💜💜\n🟣Tickets🟣\nurlr.me/ZwSVRT\n🟣🟣🟣CONFIRMED ARTISTS 🟣🟣🟣\n🟣🟣🟣DJ’S 🟣🟣🟣\n💜 DJ NAO\n💜 DJ ICHIGO\n💜 DJ NICE LIFE\n💜 DJ NO LIMIT\n💜 DJ MKY\n💜 DJ GEERO BEATS\n💜 DJ STYLE OF MUSC\n💜 DJ DEDINHO\n🟪TEACHERS & CO 🟪\n💜 INÈS MIRANDA\n💜 ASIA VORONOVA\n💜 JOHN & LÉA\n💜 DADIE\n💜 CAARL & PATI\n💜 MOUSSA\n💜 YACE GALANTA\n💜 YANNIS GLT\n💜 BAIDY\n💜 LEA\n🟣Tickets🟣\nurlr.me/ZwSVRT\n🕺💜TAXIS DANCERS💜 💃\nComing soon\n🟪 PHOTOGRAPHE/VIDÉASTE\n💜 BENKOS 💜",
+ "passes": [
+  {
+   "kind": "full",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5418527"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "label_quote": "FULL PASS WOMEN",
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5860403"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    },
+    {
+     "keys": [
+      "5765769"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "label_quote": "FULL PASS MEN",
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5765771"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5860404"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "party",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5765773",
+      "5765774"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [
+  "5799988"
+ ],
+ "rule_quotes": []
+}

@@ -476,3 +476,10 @@ def test_a_page_that_broke_its_recipe_waits_for_a_fix_with_or_without_a_first_re
     broken = {'at': 'b', 'page': 'x', 'recipe': 'r', 'status': Status.LAYOUT_BROKEN, 'why': 'no ticket rows'}
     assert tickets.waiting(festival(page='https://my.weezevent.com/x', site=('r', 'v'), log=[broken])) == tickets.Waiting.RECIPE_FIX
     assert tickets.waiting(festival(why=None, first_read=read(), log=[entry(ROWS), broken])) == tickets.Waiting.RECIPE_FIX
+
+
+def test_a_day_pass_is_one_day_whether_its_days_say_1_or_nothing():
+    a, b = read(), read()
+    for fr, days in ((a, None), (b, 1)):
+        fr['passes'][0] |= {'kind': 'day', 'days': days}
+    assert tickets.meaning(a) == tickets.meaning(b)

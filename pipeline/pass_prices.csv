@@ -26,6 +26,16 @@ event_id,kind,label,group_size,days,includes_hotel,amount,currency,fee,alt_amoun
 16840,day,,1,,0,70,EUR,,,,,,,0,DAY Pass Saturday - Follower €70.00
 16840,day,,1,,0,70,EUR,,,,,,,0,DAY Pass Sunday - Follower €70.00
 16840,day,,1,,0,60,EUR,,,,,,,0,DAY Pass FRIDAY - Leader €60.00
+16845,full,,1,,0,126,EUR,1,,,,,,0,Kizomba Full Pass ( All acces incl. Pre party ) men €125.00 + €1.00 fee.
+16845,party,,1,,0,86,EUR,1,,,,,,0,Party Pass ( All Socials & Parties ) men €85.00 + €1.00 fee.
+16845,day,,1,,0,71,EUR,1,,,,,,0,Saturday Day Pass men €70.00 + €1.00 fee.
+16845,day,,1,,0,51,EUR,1,,,,,,0,Sunday Day Pass men €50.00 + €1.00 fee.
+16845,day,,1,,0,26,EUR,1,,,,,,0,Non stop Sunday Social men €25.00 + €1.00 fee.
+16845,day,,1,,0,21,EUR,1,,,,,,0,Saturday Social men €20.00 + €1.00 fee.
+16845,day,,1,,0,31,EUR,1,,,,,,0,Saturday Party men €30.00 + €1.00 fee.
+16845,day,,1,,0,16,EUR,1,,,,,,0,Friday Social men €15.00 + €1.00 fee.
+16845,day,,1,,0,26,EUR,1,,,,,,0,Friday Party men €25.00 + €1.00 fee.
+16845,day,,1,,0,16,EUR,1,,,,,,0,Thursday Pre Party men €15.00 + €1.00 fee.
 16884,full,,1,3,0,120,EUR,1,,,,,,0,FULL-PASS MALE 3 Days €119.00 + €1.00 fee.
 16884,full,,2,3,0,216,EUR,1,,,,,,0,COUPLE PASS 3 DAYS €215.00 + €1.00 fee.
 16884,day,,1,1,0,51,EUR,1,,,,,,0,"FRIDAY DAY PASS ""MALE"" €50.00 + €1.00 fee."
@@ -130,6 +140,20 @@ event_id,kind,label,group_size,days,includes_hotel,amount,currency,fee,alt_amoun
 18297,other,,1,,0,49,EUR,,,,,,,0,BOOTCAMP YOYO FLOW (From Timba to New Style) + Julio Molina €49.00
 18297,other,,1,,0,49,EUR,,,,,,,0,BOOTCAMP JORGE & INDIRA (SALSA PARTNERWORK) €49.00
 18311,full,,1,,0,100,EUR,,,,,,,0,Full Pass Men 100
+18315,full,,1,,0,79,EUR,,,,,,,0,FULL PASS M.A.D — HOMME . €79.00
+18315,other,,1,,0,95,EUR,,,,,,,0,FULL PASS VIP — HOMME — MASSAGE INCLUS €95.00
+18315,day,,1,1,0,55,EUR,,,,,,,0,PASS SAMEDI COMPLET €55.00
+18315,day,,1,1,0,18,EUR,,,,,,,0,SOIRÉE DU SAMEDI — HOMME €18.00
+18315,day,,1,1,0,51,EUR,,,,,,,0,PASS DIMANCHE COMPLET €51.00
+18315,day,,1,1,0,22,EUR,,,,,,,0,SOCIAL NON-STOP DU DIMANCHE €22.00
+18315,party,,1,2,0,35,EUR,,,,,,,0,PARTY PASS — FEMME — SAMEDI & DIMANCHE €35.00
+18315,full,,2,,0,115,EUR,,,,,,,0,Full pass Duo Femme + Homme €115.00
+18350,full,,1,,0,70,CHF,,,,,,,1,EARLY BIRD CHF 70.00
+18350,full,FULL PASS WOMEN,1,,0,130,CHF,,,,,,,0,FULL PASS WOMEN CHF 130.00
+18350,full,FULL PASS WOMEN,1,,0,110,CHF,,,,,,,1,FULL PASS WOMEN CHF 110.00
+18350,full,FULL PASS MEN,1,,0,110,CHF,,,,,,,0,FULL PASS MEN CHF 110.00
+18350,full,,2,,0,200,CHF,,,,,,,0,COUPLE FULL PASS CHF 200.00
+18350,party,,1,,0,90,CHF,,,,,,,0,PARTY PASS WOMEN CHF 90.00
 18359,full,,2,,0,140,EUR,,,,,,,0,FULLPASS DUO HOMMES 70 €140.00
 18359,full,,2,,0,150,EUR,,,,,,,0,FULLPASS COUPLE MIXTE 75 €150.00
 18359,full,,2,,0,160,EUR,,,,,,,0,FULLPASS COUPLE MIXTE 80 €160.00
