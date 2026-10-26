@@ -6,6 +6,8 @@
     uv run --group tickets -m pipeline.tickets record ID      # check the draft or first read, write ID's prices
     uv run --group tickets -m pipeline.tickets retry ID       # read with a visible browser, then record
     uv run --group tickets -m pipeline.tickets changes [ID]   # what changed between consecutive reads
+    uv run --group tickets -m pipeline.tickets page ID URL --note N  # where a festival with no full link sells
+    uv run --group tickets -m pipeline.tickets page ID --none --note N  # or that it sells no tickets online
     uv run --group tickets -m pipeline.tickets run            # the monthly Action
 
 A site recipe (tickets/sites/<site>.json, schema tickets/schemas/site.json) says where a site's ticket rows are; an
@@ -32,11 +34,17 @@ read date, who made the first read and with which prompt, recipe version, unread
 both from every first read and its log, so they hold what the reads and logs say and nothing else: a festival whose
 first read no longer fits its page is left out until it is read again, and recording twice writes the same files.
 
+A festival without a first read waits for something (Waiting): its ticket page found (its links are cut short or
+none sells tickets; tickets/pages.csv, written by page, records the page an agent found, or that there is none
+online), a recipe for its site, or an agent when the two models disagreed; one whose reads keep failing waits for a
+session. The monthly run writes them all to tickets/waiting.csv and prints the counts; waiting is backlog, not a
+failure.
+
 Re-reads: a dated festival (every tier on sale has an end date and none is limited to a number of tickets) once its
 last date has passed; every other festival on every monthly run. A festival whose latest read failed is retried on
 every run; after REFUSALS failures in a row, todo marks it for a session, where retry reads it with a visible browser.
 """
-import argparse, csv, datetime as dt, hashlib, json, os, re, sqlite3, sys
+import argparse, collections, csv, datetime as dt, hashlib, json, os, re, sqlite3, sys
 from enum import StrEnum
 from pathlib import Path
 from urllib.parse import urlparse
@@ -51,6 +59,9 @@ PRICES_CSV, PAGES_CSV = ROOT / 'pipeline' / 'pass_prices.csv', ROOT / 'pipeline'
 PRICE_FIELDS = ['event_id', 'kind', 'label', 'group_size', 'days', 'includes_hotel', 'amount', 'currency', 'alt_amount',
                 'alt_currency', 'from', 'until', 'quantity', 'door', 'sold_out', 'quote']
 PAGE_FIELDS = ['event_id', 'event', 'page', 'read_on', 'read_by', 'prompt_version', 'recipe', 'unread', 'notes']
+FOUND_CSV, WAITING_CSV = HERE / 'pages.csv', HERE / 'waiting.csv'
+FOUND_FIELDS = ['event_id', 'event', 'page', 'found_by', 'note']          # page empty: the festival sells none online
+WAITING_FIELDS = ['event_id', 'event', 'start', 'waits_for', 'page', 'note']
 SITE_SCHEMA = json.loads((HERE / 'schemas' / 'site.json').read_text())
 READ_SCHEMA = json.loads((HERE / 'schemas' / 'read.json').read_text())
 LOG_SCHEMA = json.loads((HERE / 'schemas' / 'log.json').read_text())
@@ -68,6 +79,15 @@ class Status(StrEnum):
     READ = 'read'
     REFUSED = 'refused'
     LAYOUT_BROKEN = 'layout_broken'
+
+
+class Waiting(StrEnum):
+    """What a festival with no prices from its ticket page waits for."""
+    PAGE = 'its ticket page found'          # no full link to it: kizomba-world cut it short, or gave none
+    RECIPE = 'a recipe for its site'
+    AGENT = 'an agent: the two models disagreed'
+    SESSION = 'a session: its reads keep failing'
+    NONE_ONLINE = 'nothing: it sells no tickets online'
 
 
 class Recheck(StrEnum):
@@ -422,19 +442,44 @@ def festivals(db, today, only=None):
     events = [dict(r) for r in (db.execute(query + 'id = ?', (only,)) if only else
                                 db.execute(query + 'end_date >= ? order by start_date', (today,)))]
     described = answers.latest('prices', {e['id'] for e in events})
-    known, tiers = sites(), {}
+    known, tiers, found = sites(), {}, {int(r['event_id']): r for r in csv_rows(FOUND_CSV)}
     for r in csv_rows(PRICES_CSV):
         tiers.setdefault(int(r['event_id']), []).append(r)
     out = []
     for f in events:
         i, fr, entries, urls = f['id'], first_read(f['id']), log(f['id']), links(db, f['id'])
         full = [u for u in urls if '…' not in u]
-        page = read_at(fr, entries)['page'] if fr else next((u for u in full if site_for(u, known)), full[0] if full else None)
-        f |= {'first_read': fr, 'log': entries, 'tiers': tiers.get(i, []), 'described': described.get(i), 'page': page,
+        page = (read_at(fr, entries)['page'] if fr else found[i]['page'] or None if i in found else
+                next((u for u in full if site_for(u, known)), full[0] if full else None))
+        f |= {'found': found.get(i), 'first_read': fr, 'log': entries, 'tiers': tiers.get(i, []), 'described': described.get(i), 'page': page,
               'links': urls, 'site': site_for(page, known) if page else None, 'disputed': (DISPUTED / f'{i}.json').exists()}
         f['why'], f['unread'] = why_first_read(f, today)
         out.append(f)
     return out
+
+
+def waiting(f):
+    """What the festival waits for before its prices can come from its ticket page, or None."""
+    if f['first_read'] and failures(f['log']) >= REFUSALS:
+        return Waiting.SESSION
+    if not f['why']:
+        return None
+    if f['disputed']:
+        return Waiting.AGENT
+    if f['found'] and not f['found']['page']:
+        return Waiting.NONE_ONLINE
+    return Waiting.PAGE if not f['page'] else Waiting.RECIPE if not f['site'] else None
+
+def write_waiting(fs):
+    """tickets/waiting.csv: every festival still to come that waits for something, and what; the counts."""
+    rows = [{'event_id': f['id'], 'event': f['title'], 'start': f['start_date'][:10], 'waits_for': w,
+             'page': f['page'] or '', 'note': f['found']['note'] if f['found'] else f['why'] or ''}
+            for f in fs if (w := waiting(f))]
+    with WAITING_CSV.open('w', encoding='utf-8', newline='') as out:
+        w = csv.DictWriter(out, WAITING_FIELDS, lineterminator='\n')
+        w.writeheader()
+        w.writerows(rows)
+    return collections.Counter(r['waits_for'] for r in rows)
 
 
 # ---- two-model first reads
@@ -527,7 +572,7 @@ def cmd_record(event_id):
 
 def cmd_todo():
     today = dt.date.today().isoformat()
-    for f in festivals(src_db(), today):
+    for f in (fs := festivals(src_db(), today)):
         notes = []
         if f['first_read']:
             kind, due, why = recheck(f['tiers'], f['start_date'], today)
@@ -538,8 +583,7 @@ def cmd_todo():
         elif not f['why']:
             continue
         if f['why']:
-            notes.append(f"first read needed: {f['why']}"
-                         + ('' if f['site'] else '; no recipe for its site' if f['page'] else '; no full ticket link'))
+            notes.append(f"first read needed: {f['why']}" + (f'; waits for {w}' if (w := waiting(f)) else ''))
         if f['disputed']:
             notes.append(f"the two models disagreed: tickets/disputed/{f['id']}.json")
         print(f"{f['id']}  {f['start_date'][:10]}  {f['title'][:50]}")
@@ -547,6 +591,26 @@ def cmd_todo():
             print(f'      {n}')
         for u in ([f['page']] if f['page'] else f['links'])[:3]:
             print(f'      {u}')
+    counts = collections.Counter(w for f in fs if (w := waiting(f)))
+    print('\nwaiting: ' + '; '.join(f'{n} for {w}' for w, n in counts.most_common()))
+
+def cmd_page(event_id, url, none, note, by):
+    """Record where a festival sells its tickets (or that it sells none online), for one with no full link to it."""
+    f = one(event_id)
+    if f['first_read']:
+        sys.exit(f"{event_id}: it has a first read of {f['page']}; read a new page with: read {event_id} --url URL")
+    if bool(url) == none:
+        sys.exit('give the page, or --none when the festival sells no tickets online')
+    if url and not re.match(r'https?://[^\s…]+$', url):
+        sys.exit(f'{url}: not a full address')
+    rows = [r for r in csv_rows(FOUND_CSV) if int(r['event_id']) != event_id]
+    rows.append({'event_id': event_id, 'event': f['title'], 'page': url or '', 'found_by': by, 'note': note})
+    with FOUND_CSV.open('w', encoding='utf-8', newline='') as out:
+        w = csv.DictWriter(out, FOUND_FIELDS, lineterminator='\n')
+        w.writeheader()
+        w.writerows(sorted(rows, key=lambda r: int(r['event_id'])))
+    print(f"{event_id}: {url or 'no tickets online'}"
+          + ('' if not url or site_for(url, sites()) else f'; no recipe for {urlparse(url).netloc} yet'))
 
 def cmd_changes(event_id=None):
     for i in [event_id] if event_id else sorted(int(p.stem) for p in LOG.glob('*.jsonl')):
@@ -589,6 +653,8 @@ def cmd_run():
         if (DISPUTED / f'{i}.json').exists() and first_read(i):
             record(i, quiet=True)           # a new first read settles an older dispute
     alarms += write_all()
+    counts = write_waiting(festivals(db, today))
+    print('waiting: ' + '; '.join(f'{n} for {w}' for w, n in counts.most_common()))
     if alarms:
         sys.exit('\n'.join(alarms))
 
@@ -603,6 +669,12 @@ def main():
                        ('retry', 'read with a visible browser, then record')):
         sub.add_parser(name, help=text).add_argument('id', type=int)
     sub.add_parser('changes', help='what changed between reads').add_argument('id', type=int, nargs='?')
+    pg = sub.add_parser('page', help='record where a festival with no full link sells its tickets')
+    pg.add_argument('id', type=int)
+    pg.add_argument('url', nargs='?', help='the ticket page')
+    pg.add_argument('--none', action='store_true', help='the festival sells no tickets online')
+    pg.add_argument('--note', required=True, help='how it was found, or why there is none')
+    pg.add_argument('--by', default='agent', help='who found it')
     sub.add_parser('run', help='the monthly Action')
     a = ap.parse_args()
     if a.cmd in ('read', 'retry', 'run'):       # a recipe may need a visible browser
@@ -615,6 +687,7 @@ def main():
         case 'record': cmd_record(a.id)
         case 'retry': cmd_retry(a.id)
         case 'changes': cmd_changes(a.id)
+        case 'page': cmd_page(a.id, a.url, a.none, a.note, a.by)
         case 'run': cmd_run()
 
 if __name__ == '__main__':

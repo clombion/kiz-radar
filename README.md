@@ -207,6 +207,8 @@ uv run --group tickets -m pipeline.tickets draft ID           # a first read to 
 uv run --group tickets -m pipeline.tickets record ID          # check the draft or first read, write the prices
 uv run --group tickets -m pipeline.tickets retry ID           # read with a visible browser, then record
 uv run --group tickets -m pipeline.tickets changes [ID]       # what changed between consecutive reads
+uv run --group tickets -m pipeline.tickets page ID URL --note N        # where a festival with no full link sells
+uv run --group tickets -m pipeline.tickets page ID --none --note N     # or that it sells no tickets online
 ```
 
 A festival needs a first read when it is still to come and its description gives no dated full pass or package
@@ -220,8 +222,11 @@ first read is kept only when they agree on every ticket's pass, tier, skip and d
 in `pipeline/tickets/disputed/<event_id>.json` for an agent and the festival waits. The run fails, after
 committing, when a page broke its recipe, a festival's read failed three times in a row, or a festival no longer
 fits its first read; `todo` then marks it for
-a session, where `retry` reads it with a visible browser. Sites without a recipe, and links kizomba-world cut
-short, are for an agent.
+a session, where `retry` reads it with a visible browser. A festival that can't be read yet waits for
+something, and the run writes each one to `pipeline/tickets/waiting.csv` with what it waits for: its ticket page
+found (kizomba-world cut the link short, or gave none; an agent records the page it finds, or that the festival
+sells no tickets online, in `pipeline/tickets/pages.csv` through `tickets.py page`), a recipe for its site, an agent
+to settle a dispute, or a session for a page that keeps refusing. That is backlog, so it never fails the run.
 
 `pipeline/read_page.py` reads any one page as a browser shows it, for one-off checks; `tickets.py` is the one
 scheduled reader that uses it:

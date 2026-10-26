@@ -2,10 +2,13 @@
 
 - The README explains the data flow, the Actions and the files; read it before changing the pipeline. Steps run
   as modules from the repository's root, each with its dependency group (README, "Running the steps").
-- Prices from a festival's ticket page: never edit `pipeline/pass_prices.csv`, `pipeline/ticket_pages.csv` or
-  `pipeline/tickets/log/` by hand. Go through `pipeline/tickets.py`, one festival at a time:
-  1. `uv run --group tickets -m pipeline.tickets todo` lists what needs doing. A link ending in `…` was cut short by
-     kizomba-world; find the real ticket page (the festival's site, a search), or skip the festival.
+- Prices from a festival's ticket page: never edit `pipeline/pass_prices.csv`, `pipeline/ticket_pages.csv`,
+  `pipeline/tickets/pages.csv` or `pipeline/tickets/log/` by hand. Go through `pipeline/tickets.py`, one festival at a time:
+  1. `uv run --group tickets -m pipeline.tickets todo` lists what needs doing, and what each festival waits for
+     (`pipeline/tickets/waiting.csv` holds the monthly run's list). A link ending in `…` was cut short by
+     kizomba-world: find the real ticket page (the festival's site, a search) and record it with
+     `uv run --group tickets -m pipeline.tickets page ID URL --note "how"`, or `page ID --none --note "why"` when the
+     festival sells no tickets online.
   2. `uv run --group tickets -m pipeline.tickets read ID [--url URL]` reads the page by its site's recipe and prints
      its tickets. When it says there is no recipe for the site, write `pipeline/tickets/sites/<site>.json` following
      `pipeline/tickets/schemas/site.json` (look at the page with `uv run --group browser -m pipeline.read_page URL`,

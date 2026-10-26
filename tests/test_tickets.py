@@ -119,6 +119,8 @@ def files(tmp_path, monkeypatch):
         monkeypatch.setattr(tickets, name, tmp_path / name.lower())
     monkeypatch.setattr(tickets, 'PRICES_CSV', tmp_path / 'pass_prices.csv')
     monkeypatch.setattr(tickets, 'PAGES_CSV', tmp_path / 'ticket_pages.csv')
+    monkeypatch.setattr(tickets, 'FOUND_CSV', tmp_path / 'pages.csv')
+    monkeypatch.setattr(tickets, 'WAITING_CSV', tmp_path / 'waiting.csv')
     tickets.save_read(read())
     tickets.append(7, entry(ROWS))
     return tmp_path
@@ -340,3 +342,38 @@ def test_a_festival_that_no_longer_fits_its_first_read_is_left_out(files):
     tickets.append(7, entry(rows, at='2026-11-03T05:00:00+00:00'))
     assert 'the first read needs doing again' in tickets.write_all()[0]
     assert tickets.csv_rows(files / 'ticket_pages.csv') == []
+
+
+
+def festival(**k):
+    """A festival as festivals() gives it, with no first read and no ticket page."""
+    return {'id': 7, 'title': 'Fest', 'start_date': '2027-02-05', 'first_read': None, 'log': [], 'why': 'no price in the description',
+            'disputed': False, 'found': None, 'page': None, 'site': None} | k
+
+
+@pytest.mark.parametrize('f, expected', [
+    (festival(), tickets.Waiting.PAGE),
+    (festival(page='https://example.org/tickets'), tickets.Waiting.RECIPE),
+    (festival(page='https://my.weezevent.com/x', site=('r', 'v')), None),
+    (festival(found={'page': '', 'note': 'by message only'}), tickets.Waiting.NONE_ONLINE),
+    (festival(page='https://my.weezevent.com/x', site=('r', 'v'), disputed=True), tickets.Waiting.AGENT),
+    (festival(why=None, first_read=read(), log=[refused('a'), refused('b'), refused('c')]), tickets.Waiting.SESSION),
+    (festival(why=None, first_read=read(), log=[entry(ROWS)]), None),
+])
+def test_what_a_festival_waits_for(f, expected):
+    assert tickets.waiting(f) == expected
+
+
+def test_the_waiting_report_lists_every_waiting_festival(files):
+    counts = tickets.write_waiting([festival(), festival(id=8, page='https://example.org/t'), festival(id=9, why=None)])
+    assert [r['event_id'] for r in tickets.csv_rows(files / 'waiting.csv')] == ['7', '8']
+    assert counts == {tickets.Waiting.PAGE: 1, tickets.Waiting.RECIPE: 1}
+
+
+def test_a_found_page_is_recorded_once_and_a_cut_link_refused(files, monkeypatch):
+    monkeypatch.setattr(tickets, 'one', lambda i: festival(id=i))
+    tickets.cmd_page(7, 'https://example.org/t', False, 'its site', 'agent')
+    tickets.cmd_page(7, None, True, 'by message only', 'agent')
+    assert [(r['page'], r['note']) for r in tickets.csv_rows(files / 'pages.csv')] == [('', 'by message only')]
+    with pytest.raises(SystemExit):
+        tickets.cmd_page(7, 'https://example.org/t…', False, 'cut', 'agent')
