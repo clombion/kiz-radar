@@ -127,6 +127,7 @@
         "price",
         "amount",
         "currency",
+        "fee",
         "alt_price",
         "alt_amount",
         "alt_currency",
@@ -151,6 +152,17 @@
         "currency": {
           "$ref": "#/$defs/field",
           "description": "A currency code, or a symbol listed in symbols."
+        },
+        "fee": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/field"
+            }
+          ],
+          "description": "A booking fee the site adds to the price (\"+ €1.00 fee\"), when it shows one apart; the amount logged is the price plus this fee. Null when the price shown is what a buyer pays."
         },
         "alt_price": {
           "oneOf": [

@@ -11,7 +11,7 @@ AT = '2026-10-01T05:00:00+00:00'
 
 def row(key, name, amount, sold_out=False, alt=None):
     price = f'€{amount:.2f}'
-    return {'key': key, 'name': name, 'price': price, 'amount': amount, 'currency': 'EUR', 'sold_out': sold_out,
+    return {'key': key, 'name': name, 'price': price, 'amount': amount, 'currency': 'EUR', 'fee': None, 'sold_out': sold_out,
             'alt_amount': alt, 'alt_currency': 'CZK' if alt else None, 'alt_price': f'{alt} CZK' if alt else None}
 
 
@@ -31,11 +31,12 @@ ROWS = [row('1', 'Fullpass Male 100€', 102.56, sold_out=True), row('2', 'Fullp
 
 
 def tier(*keys, until=None, quantity=None, quote=None):
-    return {'keys': list(keys), 'from': None, 'until': until, 'quantity': quantity, 'door': False, 'date_quote': quote}
+    return {'keys': list(keys), 'from': None, 'until': until, 'quantity': quantity, 'date_quote': quote}
 
 
 def read(passes=None, skipped=('5',), description='Prices rise on 1 December.', rule_quotes=()):
-    return {'event_id': 7, 'title': 'Fest', 'read_by': 'agent', 'prompt_version': 'first-read-v1', 'rows_at': AT,
+    return {'event_id': 7, 'title': 'Fest', 'start_date': '2027-02-05', 'read_by': 'agent', 'prompt_version': 'first-read-v2',
+            'rows_at': AT,
             'description': description,
             'passes': passes or [{'kind': 'full', 'label_quote': 'Fullpass', 'group_size': 1, 'days': None,
                                   'includes_hotel': False, 'tiers': [tier('1', '2'), tier('3', '4')]}],
@@ -205,7 +206,7 @@ def test_numbers_as_sites_write_them(text, number):
     assert tickets.number(text) == number
 
 
-RAW = {'key': '1', 'name': 'Fullpass', 'price': '€81.03', 'amount': '81.03', 'currency': '€', 'alt_price': None,
+RAW = {'key': '1', 'name': 'Fullpass', 'price': '€81.03', 'amount': '81.03', 'currency': '€', 'fee': None, 'alt_price': None,
        'alt_amount': None, 'alt_currency': None, 'sold_out': None}
 RECIPE = {'widget': None, 'symbols': {'€': 'EUR'}}
 
@@ -377,3 +378,26 @@ def test_a_found_page_is_recorded_once_and_a_cut_link_refused(files, monkeypatch
     assert [(r['page'], r['note']) for r in tickets.csv_rows(files / 'pages.csv')] == [('', 'by message only')]
     with pytest.raises(SystemExit):
         tickets.cmd_page(7, 'https://example.org/t…', False, 'cut', 'agent')
+
+
+
+def test_a_fee_the_site_adds_is_in_the_amount(monkeypatch):
+    got = attempt_with(monkeypatch, [RAW | {'price': '€119.00 + €1.00 fee.', 'amount': '119.00', 'fee': '1.00'}])
+    assert (got['rows'][0]['amount'], got['rows'][0]['fee']) == (120, 1)
+
+
+def test_a_tier_keeps_its_fee_and_its_quote_shows_it():
+    rows = [row('1', 'Fullpass', 120.0) | {'price': '€119.00 + €1.00 fee.', 'fee': 1.0}]
+    fr = read(passes=[{'kind': 'full', 'label_quote': None, 'group_size': 1, 'days': None, 'includes_hotel': False,
+                       'tiers': [tier('1')]}], skipped=())
+    answer, _, found = tickets.build(fr, entry(rows))
+    assert found == [] and answer['events'][0]['passes'][0]['tiers'][0]['fee'] == 1.0
+
+
+@pytest.mark.parametrize('until, sold_out, ok', [('09-30', False, False), ('09-30', True, True), ('11-30', False, True)])
+def test_a_ticket_on_sale_cant_have_a_price_that_ended(until, sold_out, ok):
+    rows = copy.deepcopy(ROWS)
+    rows[2]['sold_out'] = rows[3]['sold_out'] = sold_out
+    fr = read(description='Until 30 September or 30 November.')
+    fr['passes'][0]['tiers'][1] = tier('3', '4', until=until, quote='Until 30 September or 30 November')
+    assert (tickets.read_problems(fr, [entry(rows)]) == []) == ok

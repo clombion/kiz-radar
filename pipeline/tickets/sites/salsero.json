@@ -1,21 +1,52 @@
 {
   "site": "salsero",
-  "hosts": ["salsero.es", "www.salsero.es"],
+  "hosts": [
+    "salsero.es",
+    "www.salsero.es"
+  ],
   "widget": null,
   "visible": false,
   "wait": 8,
   "open": null,
-  "symbols": {"€": "EUR", "£": "GBP"},
+  "symbols": {
+    "€": "EUR",
+    "£": "GBP"
+  },
   "row": ".sui-shop-item:has(input[name^='product_id'])",
   "fields": {
-    "key": {"css": "input[name^='product_id']", "attr": "value", "match": null},
-    "name": {"css": "input[id^='product_name_']", "attr": "value", "match": null},
-    "price": {"css": "strong:has(span[id^='cost'])", "attr": null, "match": null},
-    "amount": {"css": "span[id^='cost']", "attr": null, "match": "([\\d.,]+)"},
-    "currency": {"css": "strong:has(span[id^='cost'])", "attr": null, "match": "([€£$]|[A-Z]{3})"},
+    "key": {
+      "css": "input[name^='product_id']",
+      "attr": "value",
+      "match": null
+    },
+    "name": {
+      "css": "input[id^='product_name_']",
+      "attr": "value",
+      "match": null
+    },
+    "price": {
+      "css": "strong:has(span[id^='cost'])",
+      "attr": null,
+      "match": null
+    },
+    "amount": {
+      "css": "span[id^='cost']",
+      "attr": null,
+      "match": "([\\d.,]+)"
+    },
+    "currency": {
+      "css": "strong:has(span[id^='cost'])",
+      "attr": null,
+      "match": "([€£$]|[A-Z]{3})"
+    },
+    "fee": null,
     "alt_price": null,
     "alt_amount": null,
     "alt_currency": null,
-    "sold_out": {"css": null, "attr": null, "match": "(?:[Aa]gotad[oa]s?|AGOTAD[OA]S?|[Ss]old [Oo]ut|SOLD OUT)"}
+    "sold_out": {
+      "css": null,
+      "attr": null,
+      "match": "(?:[Aa]gotad[oa]s?|AGOTAD[OA]S?|[Ss]old [Oo]ut|SOLD OUT)"
+    }
   }
 }

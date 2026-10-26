@@ -13,7 +13,7 @@
       "type": "string"
     },
     "prompt_version": {
-      "const": "prices-v2"
+      "const": "prices-v3"
     },
     "events": {
       "type": "array",
@@ -85,6 +85,7 @@
                     "required": [
                       "amount",
                       "currency",
+                      "fee",
                       "alt_amount",
                       "alt_currency",
                       "from",
@@ -103,6 +104,13 @@
                       "currency": {
                         "type": "string",
                         "pattern": "^[A-Z]{3}$"
+                      },
+                      "fee": {
+                        "type": [
+                          "number",
+                          "null"
+                        ],
+                        "exclusiveMinimum": 0
                       },
                       "alt_amount": {
                         "type": [

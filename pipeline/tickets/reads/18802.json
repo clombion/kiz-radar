@@ -1,6 +1,7 @@
 {
  "event_id": 18802,
  "title": "🎉☀️ OPEN SUMMER FESTIVAL 2027 ☀️🎉BEACH EDITION 🏖️",
+ "start_date": "2027-05-19",
  "read_by": "agent",
  "prompt_version": "first-read-v1",
  "rows_at": "2026-10-26T20:30:31+00:00",
@@ -20,7 +21,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -39,7 +39,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]

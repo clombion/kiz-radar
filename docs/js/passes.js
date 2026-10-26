@@ -105,6 +105,7 @@ export function openPasses(e, from) {
     h('span', { class: 'pass-name' }, passName(p, rows.filter(([q]) => passName(q) === passName(p)).length > 1)),
     now.soldOut ? h('span', { class: 'muted' }, 'sold out')
       : h('span', { class: 'pass-now' }, now.from ? 'from ' : null, h('strong', {}, money(now.tier.amount, now.tier.currency)),
+        now.tier.fee ? h('span', { class: 'muted' }, ` incl. ${money(now.tier.fee, now.tier.currency)} fee`) : null,
         now.next ? h('span', { class: 'muted' }, ` · then ${money(now.next.amount, now.next.currency)} ${changeWhen(now.next)}`) : null))))
     : h('p', { class: 'muted' }, 'No passes on sale any more.'));
   v.body.scrollTop = 0;

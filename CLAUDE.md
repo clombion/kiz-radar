@@ -16,8 +16,8 @@
      recipe. When it says `refused`, `uv run --group tickets -m pipeline.tickets retry ID` reads it with a visible
      browser.
   3. `uv run --group tickets -m pipeline.tickets draft ID`, then fill `passes`, `skipped` and `rule_quotes` in
-     `pipeline/tickets/drafts/ID.json` following `pipeline/extract/prompts/prices-v2.md` and
-     `pipeline/tickets/prompts/first-read-v1.md`, from the printed tickets and the draft's description. Every ticket
+     `pipeline/tickets/drafts/ID.json` following `pipeline/extract/prompts/prices-v3.md` and
+     `pipeline/tickets/prompts/first-read-v2.md`, from the printed tickets and the draft's description. Every ticket
      goes in a tier, by its key, or in `skipped`. The same goes for a first read to do again (the description or the
      page changed, new tickets, or `pipeline/tickets/disputed/ID.json` holds two models' disagreeing reads).
   4. `uv run --group tickets -m pipeline.tickets record ID` checks the draft and, once it passes, makes it the first

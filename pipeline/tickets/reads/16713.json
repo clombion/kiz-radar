@@ -1,6 +1,7 @@
 {
  "event_id": 16713,
  "title": "Makutano SBK Festival “2nd edition”",
+ "start_date": "2026-12-18",
  "read_by": "agent",
  "prompt_version": "first-read-v1",
  "rows_at": "2026-10-26T20:45:47+00:00",
@@ -20,7 +21,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -39,7 +39,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -58,7 +57,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -77,7 +75,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -96,7 +93,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -115,7 +111,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -134,7 +129,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -153,7 +147,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]

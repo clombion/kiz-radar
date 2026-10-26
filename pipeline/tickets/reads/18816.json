@@ -1,6 +1,7 @@
 {
  "event_id": 18816,
  "title": "Global Tarraxo JUST Dance",
+ "start_date": "2027-01-28",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
  "prompt_version": "first-read-v1",
  "rows_at": "2026-10-26T18:16:56+00:00",
@@ -20,7 +21,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     },
     {
@@ -30,7 +30,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     },
     {
@@ -40,7 +39,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     },
     {
@@ -50,7 +48,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -70,7 +67,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     },
     {
@@ -82,7 +78,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     },
     {
@@ -94,7 +89,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     },
     {
@@ -106,7 +100,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     },
     {
@@ -118,7 +111,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     },
     {
@@ -130,7 +122,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]

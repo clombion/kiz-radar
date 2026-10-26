@@ -1,21 +1,64 @@
 {
   "site": "iwencik",
-  "hosts": ["iwencik.pl", "www.iwencik.pl"],
+  "hosts": [
+    "iwencik.pl",
+    "www.iwencik.pl"
+  ],
   "widget": null,
   "visible": false,
   "wait": 10,
   "open": "mat-select[formcontrolname='selectedTicketId']",
-  "symbols": {"zł": "PLN", "€": "EUR"},
+  "symbols": {
+    "zł": "PLN",
+    "€": "EUR"
+  },
   "row": "mat-option[data-testid^='registration-ticket-option-']",
   "fields": {
-    "key": {"css": null, "attr": "data-testid", "match": "^registration-ticket-option-([0-9a-f-]+)$"},
-    "name": {"css": ".ticket-name", "attr": null, "match": null},
-    "price": {"css": ".ticket-prices", "attr": null, "match": "-\\s*(.+)"},
-    "amount": {"css": ".ticket-prices", "attr": null, "match": "([\\d.,]+)\\s*(?:[A-Z]{3}|zł|€)"},
-    "currency": {"css": ".ticket-prices", "attr": null, "match": "[\\d.,]+\\s*([A-Z]{3}|zł|€)"},
-    "alt_price": {"css": ".ticket-prices", "attr": null, "match": "\\\\\\s*([\\d.,]+\\s*(?:[A-Z]{3}|zł|€))"},
-    "alt_amount": {"css": ".ticket-prices", "attr": null, "match": "\\\\\\s*([\\d.,]+)"},
-    "alt_currency": {"css": ".ticket-prices", "attr": null, "match": "\\\\\\s*[\\d.,]+\\s*([A-Z]{3}|zł|€)"},
-    "sold_out": {"css": null, "attr": "aria-disabled", "match": "^true$"}
+    "key": {
+      "css": null,
+      "attr": "data-testid",
+      "match": "^registration-ticket-option-([0-9a-f-]+)$"
+    },
+    "name": {
+      "css": ".ticket-name",
+      "attr": null,
+      "match": null
+    },
+    "price": {
+      "css": ".ticket-prices",
+      "attr": null,
+      "match": "-\\s*(.+)"
+    },
+    "amount": {
+      "css": ".ticket-prices",
+      "attr": null,
+      "match": "([\\d.,]+)\\s*(?:[A-Z]{3}|zł|€)"
+    },
+    "currency": {
+      "css": ".ticket-prices",
+      "attr": null,
+      "match": "[\\d.,]+\\s*([A-Z]{3}|zł|€)"
+    },
+    "fee": null,
+    "alt_price": {
+      "css": ".ticket-prices",
+      "attr": null,
+      "match": "\\\\\\s*([\\d.,]+\\s*(?:[A-Z]{3}|zł|€))"
+    },
+    "alt_amount": {
+      "css": ".ticket-prices",
+      "attr": null,
+      "match": "\\\\\\s*([\\d.,]+)"
+    },
+    "alt_currency": {
+      "css": ".ticket-prices",
+      "attr": null,
+      "match": "\\\\\\s*[\\d.,]+\\s*([A-Z]{3}|zł|€)"
+    },
+    "sold_out": {
+      "css": null,
+      "attr": "aria-disabled",
+      "match": "^true$"
+    }
   }
 }

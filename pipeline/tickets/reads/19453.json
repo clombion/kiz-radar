@@ -1,6 +1,7 @@
 {
  "event_id": 19453,
  "title": "TCHILAR KZOMBA FESTIVAL 7",
+ "start_date": "2027-03-05",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
  "prompt_version": "first-read-v1",
  "rows_at": "2026-10-26T18:18:13+00:00",
@@ -20,7 +21,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -40,7 +40,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -59,7 +58,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -78,7 +76,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -97,7 +94,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]

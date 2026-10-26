@@ -1,6 +1,7 @@
 {
  "event_id": 19026,
  "title": "KIZATOURS EXPERIENCE FESTIVAL 2027  | 10 YEARS ANNIVERSARY",
+ "start_date": "2027-03-12",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
  "prompt_version": "first-read-v1",
  "rows_at": "2026-10-26T18:18:35+00:00",
@@ -20,7 +21,6 @@
      "from": null,
      "until": null,
      "quantity": 50,
-     "door": false,
      "date_quote": "Limited to the first 50 passes only"
     }
    ]

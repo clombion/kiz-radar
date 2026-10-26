@@ -1,6 +1,7 @@
 {
  "event_id": 18725,
  "title": "BELGIUM “KIZZ ME BACHAMORE” FESTIVAL 2027",
+ "start_date": "2027-06-17",
  "read_by": "agent",
  "prompt_version": "first-read-v1",
  "rows_at": "2026-10-26T20:36:37+00:00",
@@ -20,7 +21,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]

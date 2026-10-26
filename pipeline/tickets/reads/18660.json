@@ -1,6 +1,7 @@
 {
  "event_id": 18660,
  "title": "PRAGUE KWANZA FESTIVAL 2027 – Official 9.edition",
+ "start_date": "2027-02-11",
  "read_by": "agent",
  "prompt_version": "first-read-v1",
  "rows_at": "2026-10-26T20:32:58+00:00",
@@ -20,7 +21,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -39,7 +39,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -58,7 +57,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -77,7 +75,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]

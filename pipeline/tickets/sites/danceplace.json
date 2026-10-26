@@ -1,21 +1,57 @@
 {
   "site": "danceplace",
-  "hosts": ["www.danceplace.com", "danceplace.com"],
+  "hosts": [
+    "www.danceplace.com",
+    "danceplace.com"
+  ],
   "widget": null,
   "visible": false,
   "wait": 12,
   "open": null,
-  "symbols": {"$": "USD", "€": "EUR", "£": "GBP"},
+  "symbols": {
+    "$": "USD",
+    "€": "EUR",
+    "£": "GBP"
+  },
   "row": "div.ticketContainerClass[id^='ticketContainer_']",
   "fields": {
-    "key": {"css": null, "attr": "id", "match": "^ticketContainer_(\\d+)$"},
-    "name": {"css": "h2", "attr": null, "match": null},
-    "price": {"css": "div.d-flex.align-items-center.flex-wrap", "attr": null, "match": null},
-    "amount": {"css": "span[id^='priceLabel_']", "attr": null, "match": "([\\d.,]+)"},
-    "currency": {"css": "span[id^='priceLabel_']", "attr": null, "match": "([€£$]|[A-Z]{3})"},
+    "key": {
+      "css": null,
+      "attr": "id",
+      "match": "^ticketContainer_(\\d+)$"
+    },
+    "name": {
+      "css": "h2",
+      "attr": null,
+      "match": null
+    },
+    "price": {
+      "css": "div.d-flex.align-items-center.flex-wrap",
+      "attr": null,
+      "match": null
+    },
+    "amount": {
+      "css": "span[id^='priceLabel_']",
+      "attr": null,
+      "match": "([\\d.,]+)"
+    },
+    "currency": {
+      "css": "span[id^='priceLabel_']",
+      "attr": null,
+      "match": "([€£$]|[A-Z]{3})"
+    },
+    "fee": {
+      "css": "div.d-flex.align-items-center.flex-wrap",
+      "attr": null,
+      "match": "\\+\\s*[€£$]?\\s*([\\d.,]+)\\s*[Ff]ee"
+    },
     "alt_price": null,
     "alt_amount": null,
     "alt_currency": null,
-    "sold_out": {"css": "[id^='limitNote_']", "attr": null, "match": "[Ss]old [Oo]ut"}
+    "sold_out": {
+      "css": "[id^='limitNote_']",
+      "attr": null,
+      "match": "[Ss]old [Oo]ut"
+    }
   }
 }

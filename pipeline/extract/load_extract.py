@@ -42,6 +42,8 @@ from pipeline.kizomba_world import TAG_FEATURES, TAG_GENRES
 
 VOCAB = run_log.HERE / "vocab.json"
 PAGE_PRICES = run_log.HERE.parent / "pass_prices.csv"
+# prices prompts from before tiers carried a fee: their amounts are the price as stated, with no fee
+NO_FEE = {"prices-v1", "prices-v2"}
 TICKET_PAGES = run_log.HERE.parent / "ticket_pages.csv"
 
 # Whole-word genre names recognised in event titles (brand spellings like "AfroKiz" or "Kizz" do not match)
@@ -89,15 +91,16 @@ CREATE TABLE pass_tiers (
     event_id INTEGER NOT NULL,
     pass_no INTEGER NOT NULL,
     tier_no INTEGER NOT NULL,     -- in the order the description lists them
-    amount REAL NOT NULL,
+    amount REAL NOT NULL,         -- what a buyer pays, fee included
     currency TEXT NOT NULL,       -- ISO 4217
+    fee REAL,                     -- the booking fee amount includes, when the source states one
     alt_amount REAL,              -- the same price in a second currency, when the line gives one
     alt_currency TEXT,
     valid_from TEXT,              -- YYYY-MM-DD; NULL = not stated
     valid_until TEXT,
     dates_as_answered TEXT,       -- from/until as answered, when a date had no year (MM-DD) and got one here
     quantity INTEGER,             -- tickets at this price, when limited
-    door INTEGER NOT NULL,
+    door INTEGER NOT NULL,        -- the price at the door; never from a ticket page, which sells online
     sold_out INTEGER NOT NULL,
     current INTEGER NOT NULL,     -- called the current price; valid_from is then when the description was edited
     quote TEXT NOT NULL,
@@ -201,7 +204,8 @@ TABLE_DOCS = {
                     "one price is for, its days and whether it includes a hotel. pass_tiers holds the prices. source "
                     "is 'description', or 'ticket_page' when its prices were read on its ticket page (see "
                     "ticket_pages), which replaces what its description gives.",
-    "pass_tiers": "Each pass's prices tier by tier, with currency, the dates each tier applies (a date written without a "
+    "pass_tiers": "Each pass's prices tier by tier: what a buyer pays, fee included (fee: the booking fee it "
+                  "includes, when stated), with currency, the dates each tier applies (a date written without a "
                   "year gets the latest year not after the festival's start), tickets at that price, door price, sold "
                   "out, and the quote it came from.",
     "ticket_pages": "Festivals whose prices are read on their ticket page (pipeline/tickets.py): the page, the day it "
@@ -239,11 +243,12 @@ def page_prices(event_ids: set[int]) -> dict[int, tuple[dict, dict]]:
                                         "days": int(r["days"]) if r["days"] else None,
                                         "includes_hotel": r["includes_hotel"] == "1", "tiers": []})
             entry["passes"][-1]["tiers"].append({
-                "amount": float(r["amount"]), "currency": r["currency"],
+                "amount": float(r["amount"]), "currency": r["currency"], "fee": float(r["fee"]) if r["fee"] else None,
                 "alt_amount": float(r["alt_amount"]) if r["alt_amount"] else None, "alt_currency": r["alt_currency"] or None,
                 "from": r["from"] or None, "until": r["until"] or None,
-                "quantity": int(r["quantity"]) if r["quantity"] else None, "door": r["door"] == "1",
-                "sold_out": r["sold_out"] == "1", "current": False, "quote": r["quote"]})   # a page shows what is on sale
+                "quantity": int(r["quantity"]) if r["quantity"] else None,
+                "door": False, "sold_out": r["sold_out"] == "1", "current": False,   # a page sells online, what is on sale
+                "quote": r["quote"]})
     return out
 
 
@@ -268,8 +273,9 @@ def load_prices(con: sqlite3.Connection, answers: dict, pages: dict) -> None:
                     frm = edited[:10]
                 yearless = any(v and len(v) == 5 for v in (tier["from"], tier["until"]))
                 con.execute(
-                    "INSERT INTO pass_tiers VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                    (ev["event_id"], p, t, tier["amount"], tier["currency"], tier["alt_amount"], tier["alt_currency"],
+                    "INSERT INTO pass_tiers VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    (ev["event_id"], p, t, tier["amount"], tier["currency"], None if prompt_version in NO_FEE else tier["fee"],
+                     tier["alt_amount"], tier["alt_currency"],
                      frm, until, json.dumps({"from": tier["from"], "until": tier["until"]}) if yearless else None,
                      tier["quantity"], int(tier["door"]), int(tier["sold_out"]), int(tier["current"]), tier["quote"]))
 

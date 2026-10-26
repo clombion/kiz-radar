@@ -251,7 +251,7 @@ x("create table ticket_pages as select event_id, page, read_on, unread from src.
 # a festival selling full, party or package passes for two or more people has the group_deals highlight
 for (e,) in x("select distinct event_id from event_passes where group_size >= 2 and kind in ('full', 'party', 'package')"):
     feats[e].add('group_deals')
-x("""create table pass_tiers as select event_id, pass_no, tier_no, amount, currency, alt_amount, alt_currency, valid_from,
+x("""create table pass_tiers as select event_id, pass_no, tier_no, amount, currency, fee, alt_amount, alt_currency, valid_from,
      valid_until, quantity, door, sold_out, current from src.pass_tiers""")
 x("create table rates (currency text primary key, per_eur real not null, date text not null)")
 out.executemany("insert into rates values (?,?,?)", [(r['currency'], float(r['per_eur']), r['date'])
@@ -336,7 +336,7 @@ DOCS = {
  'event_stats': 'Per event: line-up size (teachers and DJs), popular artists booked, imported artists (home country differs from the event’s), kizomba-family genres, kiz-only (no salsa or bachata), taxi dancers, all-in-one hotel.',
  'event_passes': 'The passes a festival sells (full, party, day, workshop, package, other): people per price, days, hotel included; source is description, or ticket_page (see ticket_pages).',
  'ticket_pages': 'Festivals whose prices are read on their ticket page: the page, the day it was last read, and how many tickets on it are not read yet.',
- 'pass_tiers': 'Each pass’s prices tier by tier: amount and currency, the days the tier applies, tickets at that price, door price, sold out.',
+ 'pass_tiers': 'Each pass’s prices tier by tier: what a buyer pays and its currency, the booking fee that includes when stated, the days the tier applies, tickets at that price, door price, sold out.',
  'rates': 'Exchange rates the site converts prices with: units of each currency per euro (European Central Bank, pipeline/rates.csv).',
  'event_promos': 'Promo codes for a festival, from pipeline/promo_codes.csv (ours, not kizomba-world’s): the code, and what it gives when known.',
  'people': 'People who share their festival plans (pipeline/people.csv, ours): featured ones are named on festival cards, the others counted.',

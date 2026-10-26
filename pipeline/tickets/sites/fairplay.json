@@ -38,6 +38,7 @@
       "attr": null,
       "match": "Price: ([A-Z]{3})"
     },
+    "fee": null,
     "alt_price": {
       "css": "p[data-size='sm']",
       "attr": null,

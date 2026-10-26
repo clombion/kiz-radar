@@ -1,11 +1,13 @@
 """Checks and dates for the prices pass, on top of check_output.problems().
 
 Each tier's quote must contain its amount (and its second amount), written in any of the usual ways: 1800,
-1.800, 1,800, 1 800, 8.50 or 8,50. Dates come back as YYYY-MM-DD, or MM-DD when the description gives no year;
+1.800, 1,800, 1 800, 8.50 or 8,50; a tier whose amount adds a fee must quote the fee and the price before it. Dates come back as YYYY-MM-DD, or MM-DD when the description gives no year;
 on_date() gives an MM-DD the year that puts it on or before the festival's first day, since prices are dated
 before the festival they are for.
 """
 import datetime as dt, re
+
+PROMPT = 'prices-v3'      # the prompt the prices pass and ticket-page first reads answer with
 
 NUMBER = re.compile(r'\d+(?:[ .,’\']\d{3})*(?:[.,]\d{1,2})?|\d+')
 
@@ -52,6 +54,8 @@ def problems(output: dict) -> list[str]:
             for t, tier in enumerate(ps.get('tiers', [])):
                 where = f"event {ev['event_id']}: passes[{p}].tiers[{t}]"
                 have = numbers_in(tier['quote'])
+                if tier['fee'] is not None:
+                    have |= {round(float(tier['fee']) + n, 2) for n in have} if float(tier['fee']) in have else set()
                 for key in ('amount', 'alt_amount'):
                     if tier.get(key) is not None and float(tier[key]) not in have:
                         found.append(f'amounts: {where}.{key} {tier[key]} is not in its quote {tier["quote"]!r}; '

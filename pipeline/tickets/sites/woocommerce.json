@@ -42,6 +42,7 @@
       "attr": null,
       "match": null
     },
+    "fee": null,
     "alt_price": null,
     "alt_amount": null,
     "alt_currency": null,

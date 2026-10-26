@@ -1,6 +1,7 @@
 {
  "event_id": 18820,
  "title": "𝗧𝗔́ 𝗕𝗢𝗠 African Rhythms",
+ "start_date": "2027-01-29",
  "read_by": "agent",
  "prompt_version": "first-read-v1",
  "rows_at": "2026-10-26T20:34:37+00:00",
@@ -21,7 +22,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -40,7 +40,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -59,7 +58,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]

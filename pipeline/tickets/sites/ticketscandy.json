@@ -1,21 +1,53 @@
 {
   "site": "ticketscandy",
-  "hosts": ["ticketscandy.com", "www.ticketscandy.com"],
+  "hosts": [
+    "ticketscandy.com",
+    "www.ticketscandy.com"
+  ],
   "widget": null,
   "visible": false,
   "wait": 10,
   "open": null,
-  "symbols": {"$": "USD", "€": "EUR", "£": "GBP"},
+  "symbols": {
+    "$": "USD",
+    "€": "EUR",
+    "£": "GBP"
+  },
   "row": ".tc-card-list__item:has(input[name='tickets[]'])",
   "fields": {
-    "key": {"css": "input[name='tickets[]']", "attr": "value", "match": null},
-    "name": {"css": ".ticket-title", "attr": null, "match": null},
-    "price": {"css": "span[id^='price-display-']", "attr": null, "match": null},
-    "amount": {"css": "meta[property='price']", "attr": "content", "match": null},
-    "currency": {"css": "meta[property='priceCurrency']", "attr": "content", "match": null},
+    "key": {
+      "css": "input[name='tickets[]']",
+      "attr": "value",
+      "match": null
+    },
+    "name": {
+      "css": ".ticket-title",
+      "attr": null,
+      "match": null
+    },
+    "price": {
+      "css": "span[id^='price-display-']",
+      "attr": null,
+      "match": null
+    },
+    "amount": {
+      "css": "meta[property='price']",
+      "attr": "content",
+      "match": null
+    },
+    "currency": {
+      "css": "meta[property='priceCurrency']",
+      "attr": "content",
+      "match": null
+    },
+    "fee": null,
     "alt_price": null,
     "alt_amount": null,
     "alt_currency": null,
-    "sold_out": {"css": ".ticket-pricing", "attr": null, "match": "[Ss]old [Oo]ut|SOLD OUT"}
+    "sold_out": {
+      "css": ".ticket-pricing",
+      "attr": null,
+      "match": "[Ss]old [Oo]ut|SOLD OUT"
+    }
   }
 }

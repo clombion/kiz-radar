@@ -1,22 +1,72 @@
 {
   "site": "eventbrite",
-  "hosts": ["www.eventbrite.com", "www.eventbrite.pt", "www.eventbrite.ca", "www.eventbrite.co.uk", "www.eventbrite.ie",
-            "www.eventbrite.fr", "www.eventbrite.es", "www.eventbrite.de", "www.eventbrite.it", "www.eventbrite.nl",
-            "www.eventbrite.be", "www.eventbrite.ch", "www.eventbrite.at", "www.eventbrite.se", "www.eventbrite.dk",
-            "www.eventbrite.fi", "www.eventbrite.com.au", "www.eventbrite.co.nz", "www.eventbrite.com.br",
-            "www.eventbrite.com.mx", "www.eventbrite.com.ar", "www.eventbrite.sg", "www.eventbrite.hk"],
+  "hosts": [
+    "www.eventbrite.com",
+    "www.eventbrite.pt",
+    "www.eventbrite.ca",
+    "www.eventbrite.co.uk",
+    "www.eventbrite.ie",
+    "www.eventbrite.fr",
+    "www.eventbrite.es",
+    "www.eventbrite.de",
+    "www.eventbrite.it",
+    "www.eventbrite.nl",
+    "www.eventbrite.be",
+    "www.eventbrite.ch",
+    "www.eventbrite.at",
+    "www.eventbrite.se",
+    "www.eventbrite.dk",
+    "www.eventbrite.fi",
+    "www.eventbrite.com.au",
+    "www.eventbrite.co.nz",
+    "www.eventbrite.com.br",
+    "www.eventbrite.com.mx",
+    "www.eventbrite.com.ar",
+    "www.eventbrite.sg",
+    "www.eventbrite.hk"
+  ],
   "widget": null,
   "visible": false,
   "wait": 12,
   "open": null,
-  "symbols": {"€": "EUR", "£": "GBP", "CA$": "CAD", "US$": "USD", "A$": "AUD", "NZ$": "NZD", "R$": "BRL", "CHF": "CHF"},
+  "symbols": {
+    "€": "EUR",
+    "£": "GBP",
+    "CA$": "CAD",
+    "US$": "USD",
+    "A$": "AUD",
+    "NZ$": "NZD",
+    "R$": "BRL",
+    "CHF": "CHF"
+  },
   "row": "[data-testid='ticket-display-card-content-full-size']:has(select[id^='ticket-quantity-selector-']), [data-testid='multiple-ticket-variants-card']:has(select[id^='ticket-quantity-selector-'])",
   "fields": {
-    "key": {"css": "select[id^='ticket-quantity-selector-']", "attr": "id", "match": "^ticket-quantity-selector-(\\w+)$"},
-    "name": {"css": "h3", "attr": null, "match": null},
-    "price": {"css": "[data-testid='price-information'], [data-spec='single-tier-price']", "attr": null, "match": null},
-    "amount": {"css": ".ticket-price, [data-spec='single-tier-price']", "attr": null, "match": "([\\d.,]+)"},
-    "currency": {"css": ".ticket-price, [data-spec='single-tier-price']", "attr": null, "match": "([A-Z]{0,2}\\$|[€£]|[A-Z]{3})"},
+    "key": {
+      "css": "select[id^='ticket-quantity-selector-']",
+      "attr": "id",
+      "match": "^ticket-quantity-selector-(\\w+)$"
+    },
+    "name": {
+      "css": "h3",
+      "attr": null,
+      "match": null
+    },
+    "price": {
+      "css": "[data-testid='price-information'], [data-spec='single-tier-price']",
+      "attr": null,
+      "match": null
+    },
+    "amount": {
+      "css": ".ticket-price, [data-spec='single-tier-price']",
+      "attr": null,
+      "match": "([\\d.,]+)"
+    },
+    "currency": {
+      "css": ".ticket-price, [data-spec='single-tier-price']",
+      "attr": null,
+      "match": "([A-Z]{0,2}\\$|[€£]|[A-Z]{3})"
+    },
+    "fee": null,
     "alt_price": null,
     "alt_amount": null,
     "alt_currency": null,

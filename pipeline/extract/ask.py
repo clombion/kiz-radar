@@ -4,8 +4,9 @@
     uv run --group ask -m pipeline.extract.ask source/<events>.sqlite --dry-run   # list what would be asked
     uv run --group ask -m pipeline.extract.ask source/<events>.sqlite --limit 3   # ask about three festivals only
 
-A festival needs a pass when it is in pending_extraction (its description is new or changed) or when the pass
-has no answer for it yet. Each question is one festival and one pass, with the pass's prompt and its schema as
+A festival needs a pass when it is in pending_extraction (its description is new or changed), when the pass
+has no answer for it yet, or, while it is still to come, when its answer came from an older version of the pass's
+prompt. Each question is one festival and one pass, with the pass's prompt and its schema as
 the required answer format. check_output.problems() (and prices.problems() for prices) checks the answer; on a
 failure Claude gets the checker's lines and answers once more, and a second failure leaves the festival
 pending. A checked answer is saved as answers/<pass>/event-<id>.json. A festival leaves pending_extraction once
@@ -28,7 +29,7 @@ BY = 'pipeline/extract/ask.py (Messages API), one festival'
 
 # pass -> prompt version, and whether its prompt was written for an agent reading files (so this run hands it
 # the files' contents instead) or for this script
-PASSES = {'extract': ('extract-v1', True), 'rooms_genres': ('rooms-genres-v1', True), 'prices': ('prices-v2', False)}
+PASSES = {'extract': ('extract-v1', True), 'rooms_genres': ('rooms-genres-v1', True), 'prices': (prices.PROMPT, False)}
 FILES_NOTE = """## This run
 
 There are no files and no tools in this run. The batch input, the schema and the vocabulary are in the
@@ -112,13 +113,16 @@ def ask(client, pass_name, row, usage, lock):
 
 
 def due(db, only):
-    """(event row, pass) pairs to ask: every pass of a pending festival, and passes a festival has no answer for."""
+    """(event row, pass) pairs to ask: every pass of a pending festival, passes a festival has no answer for, and
+    passes whose answer came from an older prompt while the festival is still to come."""
     rows = {r['id']: r for r in db.execute('select * from events where description_text is not null order by id')}
     pending = {i for i, in db.execute('select event_id from pending_extraction')}
+    to_come = {i for i, in db.execute("select id from events where end_date >= date('now')")}
     out = []
     for pass_name in only or PASSES:
         have = answers.latest(pass_name, set(rows))
-        out += [(rows[i], pass_name) for i in rows if i in pending or i not in have]
+        out += [(rows[i], pass_name) for i in rows if i in pending or i not in have
+                or (i in to_come and have[i].prompt_version != PASSES[pass_name][0])]
     return out, pending
 
 

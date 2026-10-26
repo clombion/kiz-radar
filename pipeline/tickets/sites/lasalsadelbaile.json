@@ -38,6 +38,7 @@
       "attr": null,
       "match": "([€£$]|[A-Z]{3})"
     },
+    "fee": null,
     "alt_price": null,
     "alt_amount": null,
     "alt_currency": null,

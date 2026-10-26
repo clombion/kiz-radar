@@ -80,7 +80,10 @@ the site both read it from there. Cities are geocoded with OpenStreetMap Nominat
 Prices show in kroner, or in euros or dollars (`?cur=eur`, `?cur=usd`, switched in the footer); amounts in
 other currencies are converted with `pipeline/rates.csv` and marked "~". A festival card shows what the weekend costs
 without accommodation (the per-person full pass at today's price, plus the flight) and when the pass price next goes
-up; tapping the pass opens every pass at today's price and its next change (`docs/js/passes.js`).
+up; tapping the pass opens every pass at today's price and its next change (`docs/js/passes.js`). A price is what a
+buyer pays, booking fee included; the passes view says which fee it includes when the description or the ticket
+page states one (prompt `prices-v3`; answers from older prompts carry no fee and are asked again while the festival
+is to come).
 
 For the SQL page, every table is described in the `table_docs` table. The `event_rows` view is the one to start
 from: it joins each event to its statistics and says whether it is still to come.
@@ -171,10 +174,10 @@ judgment about a page is made once, by an agent or two models, and checked; ever
 
 - **A recipe per ticket site** (`pipeline/tickets/sites/<site>.json`, schema `pipeline/tickets/schemas/site.json`)
   says where the site's ticket rows are: each ticket's id on the site (its key), name, price as shown, amount,
-  currency, a second price when the site shows one, and its sold-out mark; what its currency symbols stand for;
+  currency, a booking fee when the site shows it apart from the price (Weeztix's "+ €1.00 fee", added to the
+  amount), a second price when the site shows one, and its sold-out mark; what its currency symbols stand for;
   whether the tickets sit in a widget, which sections to click open, and whether the site needs a visible browser.
-  There are recipes for Weezevent (prices include its booking fee) and FairPlay (behind a browser check). An agent
-  writes one per new site.
+  An agent writes one per site; FairPlay's needs a visible browser (it is behind a browser check).
 - **A log per festival** (`pipeline/tickets/log/<event_id>.jsonl`, schema `log.json`, checked on every write and
   read) gets one entry per read: `read` with every row, `refused` (no rows and an HTTP error, or the page would not
   load), or `layout_broken` (the recipe's selectors fail, no rows, two rows with one key, or a row missing its key,
@@ -182,7 +185,7 @@ judgment about a page is made once, by an agent or two models, and checked; ever
   (`.gitattributes`), so a session and the monthly run never conflict.
 - **A first read per festival** (`pipeline/tickets/reads/<event_id>.json`, schema `read.json`) says, from one logged
   read and the festival's description, which pass each ticket is, in the prices pass's terms (prompt
-  `pipeline/tickets/prompts/first-read-v1.md` on top of `prices-v2`): every ticket is in a tier, by its key, or
+  `pipeline/tickets/prompts/first-read-v2.md` on top of `prices-v3`): every ticket is in a tier, by its key, or
   skipped; dates, ticket limits and price notes are quoted from the description or the ticket's name. Only checked
   first reads are kept there: an agent fills a draft (`pipeline/tickets/drafts/`, not committed), which `record`
   moves there once it passes.

@@ -1,6 +1,7 @@
 {
  "event_id": 17515,
  "title": "NANTES KIZOMBA FESTIVAL 2026",
+ "start_date": "2026-12-04",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
  "prompt_version": "first-read-v1",
  "rows_at": "2026-10-26T18:13:45+00:00",
@@ -21,7 +22,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]
@@ -41,7 +41,6 @@
      "from": null,
      "until": null,
      "quantity": null,
-     "door": false,
      "date_quote": null
     }
    ]

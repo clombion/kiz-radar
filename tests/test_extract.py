@@ -22,8 +22,19 @@ def test_amount_found_in_quote(quote, amount):
     assert amount in prices.numbers_in(quote)
 
 
+@pytest.mark.parametrize('quote, amount, fee, ok', [
+    ('🔸Early Bird: £85 + £3 admin fee', 88, 3, True),        # what a buyer pays: the price and its fee
+    ('🔸Early Bird: £85 + £3 admin fee', 88, None, False),     # a total needs its fee
+    ('🔸Early Bird: £85 + £3 admin fee', 85, None, True),
+    ('🔸Early Bird: £85', 88, 3, False),                       # a fee the quote doesn't give
+])
+def test_a_total_quotes_its_price_and_its_fee(quote, amount, fee, ok):
+    tier = dict(amount=amount, currency='GBP', fee=fee, alt_amount=None, alt_currency=None, quote=quote)
+    assert (prices.problems({'events': [{'event_id': 1, 'passes': [{'tiers': [tier]}]}]}) == []) == ok
+
+
 def test_amount_missing_from_quote_is_a_problem():
-    tier = dict(amount=150, currency='EUR', alt_amount=None, alt_currency=None, quote='Full Pass – 180€ (Till Festival)')
+    tier = dict(amount=150, currency='EUR', fee=None, alt_amount=None, alt_currency=None, quote='Full Pass – 180€ (Till Festival)')
     out = {'events': [{'event_id': 1, 'passes': [{'tiers': [tier]}]}]}
     assert prices.problems(out)[0].startswith('amounts: event 1: passes[0].tiers[0].amount 150')
 
@@ -41,7 +52,7 @@ def test_dates_without_a_year_fall_before_the_festival(answer, start, expected):
 
 
 def test_impossible_date_is_a_problem():
-    tier = dict(amount=1, currency='EUR', alt_amount=None, alt_currency=None, quote='1€', **{'from': '02-30', 'until': None})
+    tier = dict(amount=1, currency='EUR', fee=None, alt_amount=None, alt_currency=None, quote='1€', **{'from': '02-30', 'until': None})
     assert any(p.startswith('dates:') for p in prices.problems({'events': [{'event_id': 1, 'passes': [{'tiers': [tier]}]}]}))
 
 
@@ -84,9 +95,9 @@ ROW = {'id': 5, 'title': 'Test Fest', 'description_text': 'Full pass 80€ until
 
 
 def prices_answer(quote):
-    tier = {'amount': 80, 'currency': 'EUR', 'alt_amount': None, 'alt_currency': None, 'from': None, 'until': '01-31',
+    tier = {'amount': 80, 'currency': 'EUR', 'fee': None, 'alt_amount': None, 'alt_currency': None, 'from': None, 'until': '01-31',
             'quantity': None, 'door': False, 'sold_out': False, 'current': False, 'quote': quote}
-    return json.dumps({'batch': 'event-5', 'prompt_version': 'prices-v2', 'events': [
+    return json.dumps({'batch': 'event-5', 'prompt_version': 'prices-v3', 'events': [
         {'event_id': 5, 'rule_quotes': [], 'passes': [{'kind': 'full', 'label_quote': None, 'group_size': 1, 'days': None,
                                                      'includes_hotel': False, 'tiers': [tier]}]}]})
 

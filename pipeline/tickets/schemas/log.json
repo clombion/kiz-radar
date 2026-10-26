@@ -11,6 +11,7 @@
         "price",
         "amount",
         "currency",
+        "fee",
         "alt_price",
         "alt_amount",
         "alt_currency",
@@ -31,11 +32,19 @@
         },
         "amount": {
           "type": "number",
-          "exclusiveMinimum": 0
+          "exclusiveMinimum": 0,
+          "description": "What a buyer pays: the price shown, plus the site's fee when it shows one apart."
         },
         "currency": {
           "type": "string",
           "pattern": "^[A-Z]{3}$"
+        },
+        "fee": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
         },
         "alt_price": {
           "type": [

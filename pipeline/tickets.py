@@ -57,8 +57,8 @@ from pipeline.extract import check_output, prices
 HERE = ROOT / 'pipeline' / 'tickets'
 SITES, READS, DRAFTS, LOG, DISPUTED = (HERE / d for d in ('sites', 'reads', 'drafts', 'log', 'disputed'))
 PRICES_CSV, PAGES_CSV = ROOT / 'pipeline' / 'pass_prices.csv', ROOT / 'pipeline' / 'ticket_pages.csv'
-PRICE_FIELDS = ['event_id', 'kind', 'label', 'group_size', 'days', 'includes_hotel', 'amount', 'currency', 'alt_amount',
-                'alt_currency', 'from', 'until', 'quantity', 'door', 'sold_out', 'quote']
+PRICE_FIELDS = ['event_id', 'kind', 'label', 'group_size', 'days', 'includes_hotel', 'amount', 'currency', 'fee',
+                'alt_amount', 'alt_currency', 'from', 'until', 'quantity', 'sold_out', 'quote']
 PAGE_FIELDS = ['event_id', 'event', 'page', 'read_on', 'read_by', 'prompt_version', 'recipe', 'unread', 'notes']
 FOUND_CSV, WAITING_CSV = HERE / 'pages.csv', HERE / 'waiting.csv'
 FOUND_FIELDS = ['event_id', 'event', 'page', 'found_by', 'note']          # page empty: the festival sells none online
@@ -67,7 +67,7 @@ SITE_SCHEMA = json.loads((HERE / 'schemas' / 'site.json').read_text())
 READ_SCHEMA = json.loads((HERE / 'schemas' / 'read.json').read_text())
 LOG_SCHEMA = json.loads((HERE / 'schemas' / 'log.json').read_text())
 PRICES_SCHEMA = json.loads((ROOT / 'pipeline' / 'extract' / 'schemas' / 'prices.json').read_text())
-PROMPT = 'first-read-v1'
+PROMPT = 'first-read-v2'      # on top of the prices prompt, prices.PROMPT
 MODELS = ('claude-opus-5-5', 'claude-sonnet-5-5')    # the first one's read is kept when both agree
 REFUSALS = 3
 # hosts that are never where tickets are sold: social networks, maps, hotels, kizomba-world itself
@@ -130,10 +130,13 @@ def number(text):
     return float(re.sub(r'\D', '', whole) + ('.' + dec if dec else ''))
 
 def parsed(raw, symbols):
-    """A row as logged, from read_page.rows()'s strings: whitespace collapsed, numbers read, symbols as currency codes."""
+    """A row as logged, from read_page.rows()'s strings: whitespace collapsed, numbers read, symbols as currency codes,
+    and the amount what a buyer pays: the price plus the fee the site adds to it, when it shows one."""
     text = {k: ' '.join(v.split()) if isinstance(v, str) else v for k, v in raw.items()}
     code = lambda t: t and symbols.get(t, t)
-    return {'key': text['key'], 'name': text['name'], 'price': text['price'], 'amount': number(text['amount']),
+    amount, fee = number(text['amount']), number(text['fee'])
+    return {'key': text['key'], 'name': text['name'], 'price': text['price'],
+            'amount': round(amount + fee, 2) if amount is not None and fee is not None else amount, 'fee': fee,
             'currency': code(text['currency']), 'alt_price': text['alt_price'], 'alt_amount': number(text['alt_amount']),
             'alt_currency': code(text['alt_currency']), 'sold_out': bool(text['sold_out'])}
 
@@ -231,6 +234,9 @@ def line(row):
     """The ticket as the page shows it: its name and price, and its second price when it has one."""
     return f"{row['name']} {row['price']}" + (f" · {row['alt_price']}" if row['alt_price'] else '')
 
+def day_ok(value):
+    return prices.day(value) is not None
+
 def in_text(quote, text):
     return check_output.norm(quote) in check_output.norm(text)
 
@@ -262,6 +268,11 @@ def read_problems(fr, entries):
             found += [f'{where}.{k} {tier[k]!r} is not a real day' for k in ('from', 'until')
                       if tier[k] and prices.day(tier[k]) is None]
             found += [f'{where}: {d}' for d in [split_price(here)] if d]
+            # the page sold these tickets when it was read, so their price can't have ended before that day
+            if tier['until'] and day_ok(tier['until']) and any(not r['sold_out'] for r in here) \
+                    and prices.on_date(tier['until'], fr['start_date']) < fr['rows_at'][:10]:
+                found.append(f"{where}.until {tier['until']}: the page sold these tickets on {fr['rows_at'][:10]}; a date "
+                             'that has passed is not theirs')
     found += [f'rule_quotes {q!r} is not in the description' for q in fr['rule_quotes'] if not in_text(q, desc)]
     return found
 
@@ -281,15 +292,16 @@ def build(fr, entry):
             if d := split_price(here):
                 found.append(f'{d}: the first read needs doing again')
             lead = here[0]
-            tiers.append({'amount': lead['amount'], 'currency': lead['currency'], 'alt_amount': lead['alt_amount'],
-                          'alt_currency': lead['alt_currency'], 'from': tier['from'], 'until': tier['until'],
-                          'quantity': tier['quantity'], 'door': tier['door'], 'sold_out': all(r['sold_out'] for r in here),
-                          'current': False, 'quote': line(lead)})
+            # a ticket page sells online what is on sale: no door price, no 'current' price
+            tiers.append({'amount': lead['amount'], 'currency': lead['currency'], 'fee': lead['fee'],
+                          'alt_amount': lead['alt_amount'], 'alt_currency': lead['alt_currency'], 'from': tier['from'],
+                          'until': tier['until'], 'quantity': tier['quantity'], 'door': False,
+                          'sold_out': all(r['sold_out'] for r in here), 'current': False, 'quote': line(lead)})
         if tiers:
             passes.append({k: ps[k] for k in ('kind', 'label_quote', 'group_size', 'days', 'includes_hotel')} | {'tiers': tiers})
     mapped = {k for ps in fr['passes'] for t in ps['tiers'] for k in t['keys']} | set(fr['skipped'])
     unread = [k for k in rows if k not in mapped]
-    answer = {'batch': f"page-{fr['event_id']}", 'prompt_version': 'prices-v2',
+    answer = {'batch': f"page-{fr['event_id']}", 'prompt_version': prices.PROMPT,
               'events': [{'event_id': fr['event_id'], 'passes': passes, 'rule_quotes': fr['rule_quotes']}]}
     text = '\n'.join(map(line, entry['rows'])) + '\n' + fr['description']
     batch = {'events': [{'event_id': fr['event_id'], 'title': fr['title'], 'description': text}]}
@@ -315,9 +327,9 @@ def written(event_id, fr, entries):
     num = lambda v: '' if v is None else f'{v:g}'
     tiers = [{'event_id': event_id, 'kind': p['kind'], 'label': p['label_quote'] or '', 'group_size': p['group_size'] or '',
               'days': p['days'] or '', 'includes_hotel': flag(p['includes_hotel']), 'amount': num(t['amount']),
-              'currency': t['currency'], 'alt_amount': num(t['alt_amount']), 'alt_currency': t['alt_currency'] or '',
-              'from': t['from'] or '', 'until': t['until'] or '', 'quantity': t['quantity'] or '',
-              'door': flag(t['door']), 'sold_out': flag(t['sold_out']), 'quote': t['quote']}
+              'currency': t['currency'], 'fee': num(t['fee']), 'alt_amount': num(t['alt_amount']),
+              'alt_currency': t['alt_currency'] or '', 'from': t['from'] or '', 'until': t['until'] or '',
+              'quantity': t['quantity'] or '', 'sold_out': flag(t['sold_out']), 'quote': t['quote']}
              for p in answer['events'][0]['passes'] for t in p['tiers']]
     page = {'event_id': event_id, 'event': fr['title'], 'page': entry['page'], 'read_on': entry['at'][:10],
             'read_by': fr['read_by'], 'prompt_version': fr['prompt_version'], 'recipe': entry['recipe'],
@@ -491,7 +503,7 @@ def model_schema():
             'properties': {k: READ_SCHEMA['properties'][k] for k in keep}}
 
 def question(f, entry):
-    system = ((ROOT / 'pipeline' / 'extract' / 'prompts' / 'prices-v2.md').read_text() + '\n\n'
+    system = ((ROOT / 'pipeline' / 'extract' / 'prompts' / f'{prices.PROMPT}.md').read_text() + '\n\n'
               + (HERE / 'prompts' / f'{PROMPT}.md').read_text())
     tickets = [{'key': r['key'], 'name': r['name'], 'price': r['price'], 'sold_out': r['sold_out']} for r in entry['rows']]
     return system, json.dumps({'event_id': f['id'], 'title': f['title'], 'start_date': f['start_date'][:10],
@@ -508,9 +520,9 @@ def ask_read(client, model, f, entry, entries):
 
 def meaning(fr):
     """What two first reads must agree on: which tickets are skipped, which share a pass and a tier, each pass's
-    kind, people, days and hotel, and each tier's dates, quantity and door flag. Labels and quotes may differ."""
+    kind, people, days and hotel, and each tier's dates and quantity. Labels and quotes may differ."""
     return frozenset((ps['kind'], ps['group_size'], ps['days'], ps['includes_hotel'],
-                      frozenset((frozenset(t['keys']), t['from'], t['until'], t['quantity'], t['door'])
+                      frozenset((frozenset(t['keys']), t['from'], t['until'], t['quantity'])
                                 for t in ps['tiers'])) for ps in fr['passes']), frozenset(fr['skipped'])
 
 def two_model_read(client, f, entry, entries):
@@ -527,7 +539,8 @@ def two_model_read(client, f, entry, entries):
 # ---- commands
 
 def draft_of(f, entry, by):
-    return {'event_id': f['id'], 'title': f['title'], 'read_by': by, 'prompt_version': PROMPT, 'rows_at': entry['at'],
+    return {'event_id': f['id'], 'title': f['title'], 'start_date': f['start_date'][:10], 'read_by': by,
+            'prompt_version': PROMPT, 'rows_at': entry['at'],
             'description': f['description_text'] or '', 'passes': [], 'skipped': [], 'rule_quotes': []}
 
 def one(event_id, page=None):
@@ -561,7 +574,7 @@ def cmd_draft(event_id):
     if not (entry := latest_read(f['log'])):
         sys.exit(f'{event_id}: no read rows yet; run: uv run --group tickets -m pipeline.tickets read {event_id}')
     save_read(draft_of(f, entry, 'agent'), draft=True)
-    print(f'Fill passes, skipped and rule_quotes in {shown(path)} following pipeline/extract/prompts/prices-v2.md '
+    print(f'Fill passes, skipped and rule_quotes in {shown(path)} following pipeline/extract/prompts/{prices.PROMPT}.md '
           f'and pipeline/tickets/prompts/{PROMPT}.md, from the tickets of the read at {entry["at"]} and the description; '
           f'then run: uv run --group tickets -m pipeline.tickets record {event_id}')
 
