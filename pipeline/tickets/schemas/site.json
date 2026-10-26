@@ -120,7 +120,7 @@
       "minLength": 1
     },
     "widget": {
-      "description": "When the linked page shows its tickets in a widget from another address: the pattern of that address in the page's HTML, and what to add to it. Else null.",
+      "description": "When the tickets show on another address than the festival's link: in, where the pattern is looked for (the link's address, or its page's HTML); pattern; and address, the address to read, built from the match ({0}, its groups {1}…, the page's {host}). Else null.",
       "oneOf": [
         {
           "type": "null"
@@ -129,16 +129,24 @@
           "type": "object",
           "additionalProperties": false,
           "required": [
+            "in",
             "pattern",
-            "suffix"
+            "address"
           ],
           "properties": {
+            "in": {
+              "enum": [
+                "address",
+                "html"
+              ]
+            },
             "pattern": {
               "type": "string",
               "minLength": 1
             },
-            "suffix": {
-              "type": "string"
+            "address": {
+              "type": "string",
+              "pattern": "^(https://|\\{)"
             }
           }
         }

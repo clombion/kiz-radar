@@ -26,7 +26,11 @@
     "www.eventbrite.hk"
   ],
   "reseller": null,
-  "widget": null,
+  "widget": {
+    "in": "address",
+    "pattern": "/e/[^?#]*?-?(\\d{10,})(?:[?#]|$)",
+    "address": "https://{host}/checkout-external?eid={1}"
+  },
   "visible": false,
   "wait": 12,
   "open": null,
@@ -68,7 +72,11 @@
       "attr": null,
       "match": "([A-Z]{0,2}\\$|[€£]|[A-Z]{3})"
     },
-    "fee": null,
+    "fee": {
+      "css": "[data-testid='price-information'], [data-spec='single-tier-price']",
+      "attr": null,
+      "match": "\\+\\s*(?:[A-Z]{0,2}\\$|[€£]|[A-Z]{3})?\\s*([\\d.,]+)\\s*(?:[A-Z]{0,2}\\$|[€£]|[A-Z]{3})?\\s*(?:[Ff]ees?|FEES?|Gebühr|[Tt]axas?|[Ff]rais|[Tt]arifa|[Cc]argos?)"
+    },
     "alt_price": null,
     "alt_amount": null,
     "alt_currency": null,

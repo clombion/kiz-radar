@@ -37,14 +37,15 @@
       "match": "([\\d.,]+)"
     },
     "currency": {
-      "css": ".group-item__info .ot-text-tiny",
+      "css": ".group-item--ticket .group-item__info .ot-text-tiny",
       "attr": null,
-      "match": "([€£$]|[A-Z]{3})"
+      "match": "([€£$]|[A-Z]{3})(?=\\s*\\d)",
+      "page": true
     },
     "fee": {
       "css": ".group-item__info .ot-text-tiny",
       "attr": null,
-      "match": "\\+\\s*[€£$]?\\s*([\\d.,]+)\\s*[Ff]ee"
+      "match": "\\+\\s*(?:[€£$]|[A-Z]{3})?\\s*([\\d.,]+)\\s*[Ff]ee"
     },
     "alt_price": null,
     "alt_amount": null,

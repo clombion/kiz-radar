@@ -70,6 +70,7 @@ PRICES_SCHEMA = json.loads((ROOT / 'pipeline' / 'extract' / 'schemas' / 'prices.
 PROMPT = 'first-read-v2'      # on top of the prices prompt, prices.PROMPT
 MODELS = ('claude-opus-5-5', 'claude-sonnet-5-5')    # the first one's read is kept when both agree
 REFUSALS = 3
+FREE = re.compile(r'(?i)\s*(free|gratuit|gratis|gratuito|kostenlos)\s*')
 # hosts that are never where tickets are sold: social networks, maps, hotels, kizomba-world itself
 NOT_TICKETS = ('facebook', 'instagram', 'youtube', 'kizomba-world', 'google', 'wa.me', 'whatsapp', 'tiktok', 'spotify',
                'booking.com', 'maps', 'linktr', 'accor', 'marriott', 'hotel', 'nh-hotels', 'barcelo', 'bastion',
@@ -146,21 +147,33 @@ def parsed(raw, symbols):
     text = {k: ' '.join(v.split()) if isinstance(v, str) else v for k, v in raw.items()}
     code = lambda t: t and symbols.get(t, t)
     amount, fee = number(text['amount']), number(text['fee']) or None      # a fee of 0 is none
+    if amount is None and text['price'] and FREE.fullmatch(text['price']):
+        amount = 0.0                        # a free ticket shows a word, not a number
     return {'key': text['key'], 'name': text['name'], 'price': text['price'],
             'amount': round(amount + fee, 2) if amount is not None and fee is not None else amount, 'fee': fee,
             'currency': code(text['currency']), 'alt_price': text['alt_price'], 'alt_amount': number(text['alt_amount']),
             'alt_currency': code(text['alt_currency']), 'sold_out': bool(text['sold_out'])}
 
 def widget(url, recipe):
-    """The address that shows the tickets: the page's own, or the widget its HTML points to."""
-    if not recipe['widget'] or re.match(recipe['widget']['pattern'], url):
+    """The address that shows the tickets: the page's own, or the one its recipe's widget builds from a pattern found
+    in the page's address or in its HTML ({0} the match, {1}… its groups, {host} the page's host)."""
+    w = recipe['widget']
+    if not w:
+        return url
+    if w['in'] == 'address':
+        m = re.search(w['pattern'], url)
+        return fill(w['address'], m, url) if m else url
+    if re.match(w['pattern'], url):                 # already the address the widget points to
         return url
     from curl_cffi import requests
     response = requests.get(url, impersonate='chrome', timeout=60)
     response.raise_for_status()
-    if m := re.search(recipe['widget']['pattern'], response.text):
-        return m.group(0) + recipe['widget']['suffix']
+    if m := re.search(w['pattern'], response.text):
+        return fill(w['address'], m, url)
     raise LookupError(f'no ticket widget on {url}')
+
+def fill(template, match, url):
+    return re.sub(r'\{(\w+)\}', lambda t: urlparse(url).netloc if t[1] == 'host' else match.group(int(t[1])), template)
 
 def dotted(value, path):
     for part in path.split('.'):

@@ -6,8 +6,9 @@
   ],
   "reseller": null,
   "widget": {
+    "in": "html",
     "pattern": "https://worldtickets\\.es/[a-z]{2}/events/[a-z0-9-]+/articles",
-    "suffix": ""
+    "address": "{0}"
   },
   "visible": false,
   "wait": 10,

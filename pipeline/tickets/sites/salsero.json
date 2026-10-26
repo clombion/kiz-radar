@@ -5,7 +5,11 @@
     "www.salsero.es"
   ],
   "reseller": null,
-  "widget": null,
+  "widget": {
+    "in": "html",
+    "pattern": "https://(?:www\\.)?salsero\\.es/eventshop/\\d+",
+    "address": "{0}"
+  },
   "visible": false,
   "wait": 8,
   "open": null,

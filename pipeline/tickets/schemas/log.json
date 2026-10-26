@@ -32,8 +32,8 @@
         },
         "amount": {
           "type": "number",
-          "exclusiveMinimum": 0,
-          "description": "What a buyer pays: the price shown, plus the site's fee when it shows one apart."
+          "description": "What a buyer pays: the price shown, plus the site's fee when it shows one apart. 0 for a free ticket.",
+          "minimum": 0
         },
         "currency": {
           "type": "string",

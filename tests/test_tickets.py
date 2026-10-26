@@ -483,3 +483,30 @@ def test_a_day_pass_is_one_day_whether_its_days_say_1_or_nothing():
     for fr, days in ((a, None), (b, 1)):
         fr['passes'][0] |= {'kind': 'day', 'days': days}
     assert tickets.meaning(a) == tickets.meaning(b)
+
+
+@pytest.mark.parametrize('url, address', [
+    ('https://www.eventbrite.pt/e/tukina-lisboa-tickets-1977918538593', 'https://www.eventbrite.pt/checkout-external?eid=1977918538593'),
+    ('https://www.eventbrite.ca/e/1986387397177?aff=oddtdtcreator', 'https://www.eventbrite.ca/checkout-external?eid=1986387397177'),
+    ('https://www.eventbrite.pt/checkout-external?eid=1986728317880', 'https://www.eventbrite.pt/checkout-external?eid=1986728317880'),
+])
+def test_a_widget_builds_the_address_from_the_link(url, address, monkeypatch):
+    from curl_cffi import requests
+    monkeypatch.setattr(requests, 'get', lambda *a, **k: pytest.fail('an address pattern needs no request'))
+    recipe = {'widget': {'in': 'address', 'pattern': '/e/[^?#]*?-?(\\d{10,})(?:[?#]|$)',
+                         'address': 'https://{host}/checkout-external?eid={1}'}}
+    assert tickets.widget(url, recipe) == address
+
+
+def test_a_widget_found_in_the_page_keeps_an_address_that_is_already_its_own(monkeypatch):
+    from curl_cffi import requests
+    monkeypatch.setattr(requests, 'get', lambda *a, **k: pytest.fail('the address is already the widget'))
+    recipe = {'widget': {'in': 'html', 'pattern': 'https://widget\\.weezevent\\.com/ticket/[A-Z0-9-]+/', 'address': '{0}?locale=en-GB'}}
+    assert tickets.widget('https://widget.weezevent.com/ticket/E1/', recipe) == 'https://widget.weezevent.com/ticket/E1/'
+
+
+@pytest.mark.parametrize('price, amount', [('Free', 0.0), ('Gratuit', 0.0), ('€81.03', None)])
+def test_a_free_ticket_costs_0(price, amount):
+    got = tickets.parsed(RAW | {'price': price, 'amount': None}, {'€': 'EUR'})
+    assert got['amount'] == amount
+    assert (tickets.problems(tickets.LOG_SCHEMA['$defs']['row'], got) == []) == (amount is not None)

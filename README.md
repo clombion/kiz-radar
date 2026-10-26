@@ -176,7 +176,9 @@ judgment about a page is made once, by an agent or two models, and checked; ever
   says where the site's ticket rows are: each ticket's id on the site (its key), name, price as shown, amount,
   currency, a booking fee when the site shows it apart from the price (Weeztix's "+ €1.00 fee", added to the
   amount), a second price when the site shows one, and its sold-out mark; what its currency symbols stand for;
-  whether the tickets sit in a widget, which sections to click open, and whether the site needs a visible browser.
+  whether the tickets sit on another address (a widget: built from a pattern found in the link or in its page, as
+  Eventbrite's event page leads to its checkout and Weezevent's mini-site to its widget), which sections to click
+  open, and whether the site needs a visible browser. A free ticket, shown as a word ("Free", "Gratuit"), costs 0.
   A field may read the whole page instead of its row, and name the row's other fields as `{field}` and its
   attributes as `{@attr}`: Tikoria's ticket ids sit in its script data next to each ticket's name, and Kizzbee's
   prices in a JSON attribute keyed by each option's value. A recipe names the reseller when the site sells other

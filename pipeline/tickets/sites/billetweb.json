@@ -6,8 +6,9 @@
   ],
   "reseller": null,
   "widget": {
+    "in": "html",
     "pattern": "https://www\\.billetweb\\.fr/shop\\.php\\?event=[A-Za-z0-9_-]+",
-    "suffix": "&page=1"
+    "address": "{0}&page=1"
   },
   "visible": false,
   "wait": 8,

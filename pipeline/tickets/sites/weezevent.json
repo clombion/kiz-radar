@@ -6,8 +6,9 @@
   ],
   "reseller": null,
   "widget": {
+    "in": "html",
     "pattern": "https://widget\\.weezevent\\.com/ticket/[A-Z0-9-]+/",
-    "suffix": "?locale=en-GB"
+    "address": "{0}?locale=en-GB"
   },
   "visible": false,
   "wait": 8,
@@ -40,9 +41,10 @@
       "match": null
     },
     "currency": {
-      "css": "td.billetterie_tb_prix",
+      "css": "td.billetterie_tb_prix [data-value]",
       "attr": null,
-      "match": "([€£$]|[A-Z]{3})"
+      "match": "([€£$]|[A-Z]{3})",
+      "page": true
     },
     "fee": null,
     "alt_price": null,
