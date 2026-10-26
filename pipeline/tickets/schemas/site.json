@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "How to read the ticket rows of one ticket site",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "site",
+    "hosts",
+    "widget",
+    "visible",
+    "wait",
+    "open",
+    "row",
+    "fields"
+  ],
+  "$defs": {
+    "field": {
+      "description": "Where a row's value is: the first element matching css inside the row (the row itself when css is null), its attribute attr (its text when attr is null), and in that the first group of match (all of it when match is null).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "css",
+        "attr",
+        "match"
+      ],
+      "properties": {
+        "css": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "attr": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "match": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    }
+  },
+  "properties": {
+    "site": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "hosts": {
+      "description": "Hosts of the pages festivals link to that this recipe reads.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "widget": {
+      "description": "When the linked page shows its tickets in a widget from another address: the pattern of that address in the page's HTML, and what to add to it. Else null.",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "pattern",
+            "suffix"
+          ],
+          "properties": {
+            "pattern": {
+              "type": "string",
+              "minLength": 1
+            },
+            "suffix": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "visible": {
+      "description": "true when the site refuses headless browsers.",
+      "type": "boolean"
+    },
+    "wait": {
+      "description": "Seconds to let the page settle after loading.",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 60
+    },
+    "open": {
+      "description": "A CSS selector whose every match is clicked before reading, to open sections shown collapsed; else null.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "row": {
+      "description": "A CSS selector matching each ticket on the page.",
+      "type": "string",
+      "minLength": 1
+    },
+    "fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "name",
+        "price",
+        "amount",
+        "currency",
+        "alt_price",
+        "alt_amount",
+        "alt_currency",
+        "sold_out"
+      ],
+      "properties": {
+        "key": {
+          "$ref": "#/$defs/field",
+          "description": "The ticket's id on the site, the same on every read."
+        },
+        "name": {
+          "$ref": "#/$defs/field"
+        },
+        "price": {
+          "$ref": "#/$defs/field",
+          "description": "The price as the page shows it."
+        },
+        "amount": {
+          "$ref": "#/$defs/field",
+          "description": "The price as a number (1,800.00, 1.800,00 and 1800 all read as 1800)."
+        },
+        "currency": {
+          "$ref": "#/$defs/field",
+          "description": "A currency code or symbol (€, £, $)."
+        },
+        "alt_price": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/field"
+            }
+          ],
+          "description": "The words that give the second price, as the page shows them; with alt_amount and alt_currency, or null with them."
+        },
+        "alt_amount": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/field"
+            }
+          ],
+          "description": "The same price in a second currency, when the site shows one."
+        },
+        "alt_currency": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/field"
+            }
+          ]
+        },
+        "sold_out": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/field"
+            }
+          ],
+          "description": "Sold out when this field finds anything; null for a site that hides sold-out tickets."
+        }
+      }
+    }
+  }
+}

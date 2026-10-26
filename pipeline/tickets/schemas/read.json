@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "A festival's first read of its ticket page: which pass each ticket is",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id",
+    "title",
+    "page",
+    "read_on",
+    "read_by",
+    "prompt_version",
+    "rows_at",
+    "description",
+    "passes",
+    "skipped",
+    "rule_quotes"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "integer"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "page": {
+      "description": "The ticket page the festival links to.",
+      "type": "string",
+      "pattern": "^https?://"
+    },
+    "read_on": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "read_by": {
+      "description": "agent, or the two models that agreed.",
+      "type": "string",
+      "minLength": 1
+    },
+    "prompt_version": {
+      "const": "first-read-v1"
+    },
+    "rows_at": {
+      "description": "The 'at' of the logged read (tickets/log/<event_id>.jsonl) whose tickets this read maps; every one of them is in a tier or skipped.",
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "description": "The festival's description this read was made with.",
+      "type": "string"
+    },
+    "passes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "label_quote",
+          "group_size",
+          "days",
+          "includes_hotel",
+          "tiers"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "full",
+              "party",
+              "day",
+              "workshop",
+              "package",
+              "other"
+            ]
+          },
+          "label_quote": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "group_size": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "days": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "includes_hotel": {
+            "type": "boolean"
+          },
+          "tiers": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "keys",
+                "from",
+                "until",
+                "quantity",
+                "door",
+                "current",
+                "date_quote"
+              ],
+              "properties": {
+                "keys": {
+                  "description": "The page's tickets at this price, the one whose line is quoted first.",
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "from": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^(\\d{4}-)?\\d{2}-\\d{2}$"
+                },
+                "until": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^(\\d{4}-)?\\d{2}-\\d{2}$"
+                },
+                "quantity": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 1
+                },
+                "door": {
+                  "type": "boolean"
+                },
+                "current": {
+                  "type": "boolean"
+                },
+                "date_quote": {
+                  "description": "Where from, until or quantity are written: copied from the description or from one of the tier's tickets; null when all three are null.",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "maxLength": 300
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "skipped": {
+      "description": "Tickets on the page that are no pass (bootcamps, single workshops, shuttles).",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "rule_quotes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 300
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "site": "weezevent",
+  "hosts": [
+    "my.weezevent.com",
+    "widget.weezevent.com"
+  ],
+  "widget": {
+    "pattern": "https://widget\\.weezevent\\.com/ticket/[A-Z0-9-]+/",
+    "suffix": "?locale=en-GB"
+  },
+  "visible": false,
+  "wait": 8,
+  "open": ".billetterie_tb_titre_categorie.wid-close",
+  "row": "tr[data-id]",
+  "fields": {
+    "key": {
+      "css": null,
+      "attr": "data-id",
+      "match": null
+    },
+    "name": {
+      "css": "td.billetterie_tb_nom",
+      "attr": null,
+      "match": null
+    },
+    "price": {
+      "css": "td.billetterie_tb_prix",
+      "attr": null,
+      "match": null
+    },
+    "amount": {
+      "css": "td.billetterie_tb_prix [data-value]",
+      "attr": "data-value",
+      "match": null
+    },
+    "currency": {
+      "css": "td.billetterie_tb_prix",
+      "attr": null,
+      "match": "([€£$]|[A-Z]{3})"
+    },
+    "alt_price": null,
+    "alt_amount": null,
+    "alt_currency": null,
+    "sold_out": {
+      "css": null,
+      "attr": "class",
+      "match": "\\bsoldOut\\b"
+    }
+  }
+}

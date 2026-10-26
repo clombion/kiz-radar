@@ -91,11 +91,14 @@ export function openPasses(e, from) {
   const v = passesDialog();
   v.title.textContent = `Passes for ${e.title}`;
   v.sub.textContent = dayRange(e.start_date, e.end_date);
-  // prices read from the ticket page (pipeline/pass_prices.csv) say when, since the page may have moved on since
-  const page = passesOf(e.id).find(p => p.source !== 'description');
-  v.note.textContent = page ? `Prices from the festival’s ticket page, as of ${dayMonth(page.checked_on)}; check before buying.`
+  // prices read from the ticket page say when, since the page may have moved on since, and whether it shows
+  // tickets not read yet
+  const page = q('SELECT page, read_on, unread FROM ticket_pages WHERE event_id = ?', [e.id])[0];
+  v.note.textContent = page ? `Prices from the festival’s ticket page, as of ${dayMonth(page.read_on)}`
+      + (page.unread ? `; the page has ${page.unread === 1 ? 'a new ticket' : 'new tickets'}, not read yet` : '')
+      + '; check before buying.'
     : 'Prices as the festival lists them; check before buying.';
-  v.link.href = page ? page.source : e.url;
+  v.link.href = page ? page.page : e.url;
   v.link.textContent = page ? 'The ticket page ↗' : 'The festival on kizomba-world ↗';
   const rows = passesOf(e.id).map(p => [p, tierNow(p, e)]).filter(([, now]) => now);
   v.body.replaceChildren(rows.length ? h('ul', { class: 'pass-rows' }, rows.map(([p, now]) => h('li', {},

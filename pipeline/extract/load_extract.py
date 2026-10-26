@@ -16,7 +16,10 @@ Creates (replacing any previous load):
   event_room_list       rooms the description describes one by one, with their genres
   event_passes          the passes a festival sells, from the prices pass, and pass_tiers their prices tier
                         by tier; event_price_notes the price rules the tiers can't hold. A festival in
-                        pipeline/pass_prices.csv (prices read from its ticket page) takes its passes from there.
+                        pipeline/ticket_pages.csv takes its passes from its ticket page instead
+                        (pipeline/pass_prices.csv, written by pipeline/tickets.py)
+  ticket_pages          per festival read on its ticket page: the page, the day it was last read, how many of its
+                        tickets are not read yet
 
 Each festival's newest answer is loaded (see answers.py); answers for festivals no longer in the DB are left out.
 
@@ -40,6 +43,7 @@ from kizomba_world import TAG_FEATURES, TAG_GENRES
 
 VOCAB = run_log.HERE / "vocab.json"
 PAGE_PRICES = run_log.HERE.parent / "pass_prices.csv"
+TICKET_PAGES = run_log.HERE.parent / "ticket_pages.csv"
 
 # Whole-word genre names recognised in event titles (brand spellings like "AfroKiz" or "Kizz" do not match)
 TITLE_GENRES = {
@@ -68,6 +72,7 @@ DROP TABLE IF EXISTS event_room_list;
 DROP TABLE IF EXISTS event_passes;
 DROP TABLE IF EXISTS pass_tiers;
 DROP TABLE IF EXISTS event_price_notes;
+DROP TABLE IF EXISTS ticket_pages;
 CREATE TABLE event_passes (
     event_id INTEGER NOT NULL REFERENCES events(id),
     pass_no INTEGER NOT NULL,
@@ -76,10 +81,9 @@ CREATE TABLE event_passes (
     group_size INTEGER,           -- people one price is for; NULL = not stated (a package per room)
     days INTEGER,                 -- NULL = not stated
     includes_hotel INTEGER NOT NULL,
-    source TEXT NOT NULL,         -- 'description', or the ticket page the prices were read from (pipeline/pass_prices.csv)
-    checked_on TEXT,              -- for a ticket page: the day it was read
-    prompt_version TEXT,          -- for 'description': the prices prompt
-    model TEXT,                   -- the model that answered; for a ticket page, who read it (pass_prices.csv read_by)
+    source TEXT NOT NULL CHECK (source IN ('description', 'ticket_page')),   -- ticket_page: see ticket_pages
+    prompt_version TEXT NOT NULL, -- the prices prompt, or for a ticket page the first read's
+    model TEXT,                   -- the model that answered; for a ticket page, who made its first read
     PRIMARY KEY (event_id, pass_no)
 );
 CREATE TABLE pass_tiers (
@@ -104,6 +108,13 @@ CREATE TABLE pass_tiers (
 CREATE TABLE event_price_notes (
     event_id INTEGER PRIMARY KEY REFERENCES events(id),
     notes TEXT NOT NULL           -- the description's words, one rule per line
+);
+CREATE TABLE ticket_pages (
+    event_id INTEGER PRIMARY KEY REFERENCES events(id),
+    page TEXT NOT NULL,           -- the ticket page the festival links to
+    read_on TEXT NOT NULL,        -- the day its prices were last read there
+    recipe TEXT NOT NULL,         -- the site recipe that read it (pipeline/tickets/sites), with its version
+    unread INTEGER NOT NULL       -- tickets on the page its first read doesn't know yet
 );
 CREATE TABLE role_definitions (
     role TEXT PRIMARY KEY,
@@ -189,11 +200,13 @@ TABLE_DOCS = {
     "event_room_list": "Rooms a description lists one by one, with their kind (party / class) and genres (JSON array).",
     "event_passes": "The passes each festival sells (full, party, day, workshop, package, other), with how many people "
                     "one price is for, its days and whether it includes a hotel. pass_tiers holds the prices. source "
-                    "is 'description', or the festival's ticket page when its prices were read there "
-                    "(pipeline/pass_prices.csv), which replaces what its description gives.",
+                    "is 'description', or 'ticket_page' when its prices were read on its ticket page (see "
+                    "ticket_pages), which replaces what its description gives.",
     "pass_tiers": "Each pass's prices tier by tier, with currency, the dates each tier applies (a date written without a "
                   "year gets the latest year not after the festival's start), tickets at that price, door price, sold "
                   "out, and the quote it came from.",
+    "ticket_pages": "Festivals whose prices are read on their ticket page (pipeline/tickets.py): the page, the day it "
+                    "was last read, the site recipe that read it, and how many of its tickets are not read yet.",
     "event_price_notes": "Price rules a festival states that the tiers can't hold (\"+ £3 admin fee\", \"the price rises "
                          "€10 every month\").",
 }
@@ -207,18 +220,16 @@ def performed_by(answers: dict) -> str:
     return "; ".join(f"{len(fs)} answer files by {who}" for who, fs in sorted(by.items()))
 
 
-def page_prices(event_ids: set[int]) -> dict[int, tuple[dict, str, str, str]]:
-    """Prices read from festivals' ticket pages (pipeline/pass_prices.csv, one row per tier, written by
-    pipeline/tickets.py), shaped like a prices answer: {event_id: (entry, the page, the day it was read, who read it)}.
-    A pass is the run of rows with the same kind, label and people."""
-    out = {}
+def page_prices(event_ids: set[int]) -> dict[int, tuple[dict, dict]]:
+    """Prices read from festivals' ticket pages, written by pipeline/tickets.py: {event_id: (entry shaped like a prices
+    answer, the festival's ticket_pages.csv row)}. In pass_prices.csv (one row per tier) a pass is the run of rows with
+    the same kind, label and people; the price notes are ticket_pages.csv's, one per line."""
+    with TICKET_PAGES.open(encoding="utf-8") as f:
+        out = {int(r["event_id"]): ({"event_id": int(r["event_id"]), "passes": [],
+                                     "rule_quotes": r["notes"].splitlines()}, r) for r in csv.DictReader(f)}
     with PAGE_PRICES.open(encoding="utf-8") as f:
         for r in csv.DictReader(f):
-            e = int(r["event_id"])
-            if e not in event_ids:
-                sys.exit(f"pass_prices.csv: no festival {e} ({r['event']})")
-            entry, *_ = out.setdefault(e, ({"event_id": e, "passes": [], "rule_quotes": []}, r["source_url"], r["checked_on"],
-                                           r["read_by"]))
+            entry, _ = out[int(r["event_id"])]
             key = (r["kind"], r["label"], r["group_size"], r["days"], r["includes_hotel"])
             if not entry["passes"] or entry["passes"][-1]["key"] != key:
                 entry["passes"].append({"key": key, "kind": r["kind"], "label_quote": r["label"] or None,
@@ -231,22 +242,26 @@ def page_prices(event_ids: set[int]) -> dict[int, tuple[dict, str, str, str]]:
                 "from": r["from"] or None, "until": r["until"] or None,
                 "quantity": int(r["quantity"]) if r["quantity"] else None, "door": r["door"] == "1",
                 "sold_out": r["sold_out"] == "1", "current": r["current"] == "1", "quote": r["quote"]})
+    if missing := sorted(set(out) - event_ids):
+        sys.exit(f"ticket_pages.csv: no festival {missing}")
     return out
 
 
 def load_prices(con: sqlite3.Connection, answers: dict, pages: dict) -> None:
-    """Each festival's passes: from its ticket page when pass_prices.csv has it, else from its description."""
+    """Each festival's passes: from its ticket page when ticket_pages.csv has it, else from its description."""
     dates = {i: (start, edited) for i, start, edited in con.execute("SELECT id, start_date, modified_at FROM events")}
-    rows = [(a.entry, "description", None, a.prompt_version, a.model) for e, a in answers.items() if e not in pages]
-    rows += [(entry, page, checked_on, None, read_by) for entry, page, checked_on, read_by in pages.values()]
-    for ev, source, checked_on, prompt_version, model in rows:
+    rows = [(a.entry, "description", a.prompt_version, a.model) for e, a in answers.items() if e not in pages]
+    rows += [(entry, "ticket_page", page["prompt_version"], page["read_by"]) for entry, page in pages.values()]
+    con.executemany("INSERT INTO ticket_pages VALUES (?, ?, ?, ?, ?)",
+                    [(e, p["page"], p["read_on"], p["recipe"], int(p["unread"])) for e, (_, p) in pages.items()])
+    for ev, source, prompt_version, model in rows:
         start, edited = dates[ev["event_id"]]
         if ev["rule_quotes"]:
             con.execute("INSERT INTO event_price_notes VALUES (?, ?)", (ev["event_id"], "\n".join(ev["rule_quotes"])))
         for p, ps in enumerate(ev["passes"], 1):
-            con.execute("INSERT INTO event_passes VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            con.execute("INSERT INTO event_passes VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                         (ev["event_id"], p, ps["kind"], ps["label_quote"], ps["group_size"], ps["days"],
-                         int(ps["includes_hotel"]), source, checked_on, prompt_version, model))
+                         int(ps["includes_hotel"]), source, prompt_version, model))
             for t, tier in enumerate(ps["tiers"], 1):
                 frm, until = on_date(tier["from"], start), on_date(tier["until"], start)
                 if tier["current"] and frm is None:
@@ -284,9 +299,11 @@ def record_steps(con: sqlite3.Connection, extract: dict, rooms_genres: dict, pri
         passes.append(
             ("4b_prices", prices,
              "Extract, from each event description, the passes it sells and their prices tier by tier, each price "
-             "checked against its quote; dates without a year get the latest year not after the festival's start.",
-             "tables event_passes, pass_tiers, event_price_notes",
+             "checked against its quote; dates without a year get the latest year not after the festival's start. "
+             "Festivals read on their ticket page (pipeline/tickets.py) take their passes from there.",
+             "tables event_passes, pass_tiers, event_price_notes, ticket_pages",
              {"festivals_with_prices": q("SELECT count(DISTINCT event_id) FROM event_passes"),
+              "festivals_from_ticket_pages": q("SELECT count(*) FROM ticket_pages"),
               "passes": q("SELECT count(*) FROM event_passes"), "tiers": q("SELECT count(*) FROM pass_tiers")}))
     for step, answers, what, outputs, numbers in passes:
         versions = sorted({a.prompt_version for a in answers.values()})
@@ -412,7 +429,7 @@ def main() -> None:
     con.commit()
     record_steps(con, extract, rooms_genres, prices)
     for table in ("event_features", "artist_mentions", "event_genres", "event_rooms", "event_room_list", "event_passes",
-                  "pass_tiers"):
+                  "pass_tiers", "ticket_pages"):
         print(table, con.execute(f"SELECT count(*) FROM {table}").fetchone()[0])
 
 

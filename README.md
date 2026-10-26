@@ -66,6 +66,7 @@ its page on kizomba-world. The fares are our own searches.
 | `pipeline/fare_jobs.csv` | When each festival weekend was last searched, and how it went | the same Action |
 | `pipeline/extract/answers/` | Claude's answers for line-ups, highlights, rooms, genres and pass prices | the **Refresh events** Action |
 | `pipeline/rates.csv` | The European Central Bank's exchange rates, per euro | the **Rebuild site database** Action |
+| `pipeline/tickets/`, `pipeline/pass_prices.csv`, `pipeline/ticket_pages.csv` | Ticket-page recipes, read logs, first reads, and the prices read there | `pipeline/tickets.py`: the **Refresh events** Action, or an agent |
 
 The build also tidies the text. Artist names get one casing ("AMI & JULIEN" becomes "Ami & Julien"). Festival
 titles lose dates, years and shouting capitals; `events.listed_title` keeps them as listed. Venues are recased.
@@ -165,33 +166,57 @@ and "I'm going" buttons need accounts and a server, which the site doesn't have 
 
 ## Prices from ticket pages
 
-Some festivals keep their prices off their description, on a ticket page. `pipeline/pass_prices.csv` holds prices
-read from such a page, one row per price tier, in the same terms as the prices pass (`kind`, `group_size`, `days`,
-`includes_hotel`, `amount` and `currency`, an optional second currency, `from`/`until`, `quantity`, `door`,
-`sold_out`, `current`), with the line it was read from (`quote`), the page (`source_url`), the day it was read
-(`checked_on`) and who read it (`read_by`). Consecutive rows with the same kind, label and people form one pass. A
-festival in this file takes all its passes from it, in place of what its description gives; `event_passes.source`
-says which, and the passes quick view says when the page was read.
+Some festivals keep their prices off their description, on a ticket page. `pipeline/tickets.py` reads them there:
+judgment about a page is made once, by an agent or two models, and checked; every later read is code.
 
-`pipeline/tickets.py` is the only thing that writes the file, one festival at a time:
+- **A recipe per ticket site** (`pipeline/tickets/sites/<site>.json`, schema `pipeline/tickets/schemas/site.json`)
+  says where the site's ticket rows are: each ticket's id on the site (its key), name, price as shown, amount,
+  currency, a second price when the site shows one, and its sold-out mark; whether the tickets sit in a widget,
+  which sections to click open, and whether the site needs a visible browser. There are recipes for Weezevent
+  (prices include its booking fee) and FairPlay (behind a browser check). An agent writes one per new site.
+- **A log per festival** (`pipeline/tickets/log/<event_id>.jsonl`) gets one entry per read: `read` with every row,
+  `refused` (no rows and an HTTP error, or the page would not load), or `layout_broken` (no rows, or a row missing
+  its key, name, price, amount or currency: the recipe needs an agent). Git merges these files line by line
+  (`.gitattributes`), so a session and the monthly run never conflict.
+- **A first read per festival** (`pipeline/tickets/reads/<event_id>.json`, schema `read.json`) says, from one logged
+  read and the festival's description, which pass each ticket is, in the prices pass's terms (prompt
+  `pipeline/tickets/prompts/first-read-v1.md` on top of `prices-v2`): every ticket is in a tier, by its key, or
+  skipped; dates, ticket limits and price notes are quoted from the description or the ticket's name.
+- **`record`** writes the prices: amount, currency, sold out and the quote (the ticket's name and price) from the
+  latest read rows, the rest from the first read. It checks the first read against the rows it was made from and
+  the prices against their quotes, then replaces the festival's rows in `pipeline/pass_prices.csv` (one per tier,
+  with its keys) and `pipeline/ticket_pages.csv` (one per festival: page, read date, who made the first read and
+  with which prompt, recipe version, unread tickets, price notes). It is the only writer of both, recording twice
+  writes the same files, and a read that changed nothing on the page changes only the read date. A ticket the first
+  read doesn't know is counted as unread, and the passes quick view says the page has new tickets not read yet; a
+  tier whose tickets are all gone from the page is left out.
+
+A festival in `ticket_pages.csv` takes its passes from its page in place of its description
+(`event_passes.source` is `ticket_page`), and the quick view says when the page was read.
 
 ```bash
-uv run pipeline/tickets.py todo                  # festivals to check, with their ticket links
-uv run pipeline/tickets.py read ID [--url URL]   # save the page's text; --visible for a page behind a browser check
-uv run pipeline/tickets.py scaffold ID           # an empty answer, for an agent to fill (prompt prices-v2)
-uv run pipeline/tickets.py ask ID                # or Claude fills it (needs ANTHROPIC_API_KEY)
-uv run pipeline/tickets.py record ID             # check the answer, then replace the festival's rows
+uv run pipeline/tickets.py todo               # what needs doing: first reads, unread tickets, failed reads
+uv run pipeline/tickets.py read ID [--url U]  # read the page by its site's recipe and log the rows
+uv run pipeline/tickets.py draft ID           # a first read to fill, from the latest rows
+uv run pipeline/tickets.py record ID          # check the first read, then write the festival's prices
+uv run pipeline/tickets.py retry ID           # read with a visible browser, then record
+uv run pipeline/tickets.py changes [ID]       # what changed between consecutive reads
 ```
 
-A festival needs a check when it is still to come and its description gives no full pass or package price, or when
-its page prices were read more than four weeks ago or all their dates have passed. The answer is read the way a
-description is, with the prices prompt, and `record` applies the same checks: the schema, every quote word for word
-on the page, every amount in its quote. Weezevent is the one ticket site many festivals use; its pages show their
-tickets in a widget, which `read` opens, and the monthly **Refresh events** Action runs `tickets.py auto` to read,
-ask and record every Weezevent festival that needs it. Other sites, and links kizomba-world cut short, are for an
-agent or a person to do one at a time.
+A festival needs a first read when it is still to come and its description gives no dated full pass or package
+price, and again when its description changes or its page shows tickets the first read doesn't know. It is read
+again on the monthly run, unless it is *dated* (every tier on sale has an end date and none is limited to a number
+of tickets), when it is read again once its last date has passed. The monthly **Refresh events** Action runs
+`tickets.py run`: the re-reads that are due, a retry of every festival whose latest read failed, and a first read
+by Opus and Sonnet for each festival that needs one on a site with a recipe. The two read independently, and the
+first read is kept only when they agree on every ticket's pass, tier, skip and dates; when they don't, both are kept
+in `pipeline/tickets/disputed/<event_id>.json` for an agent and the festival waits. The run fails, after
+committing, when a page broke its recipe or a festival's read failed three times in a row; `todo` then marks it for
+a session, where `retry` reads it with a visible browser. Sites without a recipe, and links kizomba-world cut
+short, are for an agent.
 
-`pipeline/read_page.py` reads any one page as a browser shows it, for one-off checks:
+`pipeline/read_page.py` reads any one page as a browser shows it, for one-off checks; `tickets.py` is the one
+scheduled reader that uses it:
 
 ```bash
 uv run pipeline/read_page.py URL --screenshot page.png   # the page's text, and a screenshot

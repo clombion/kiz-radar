@@ -1,0 +1,1 @@
+pipeline/tickets/log/*.jsonl merge=union

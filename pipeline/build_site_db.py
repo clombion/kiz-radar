@@ -242,8 +242,10 @@ for r in csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'promo_codes.csv'), 
     x("insert into event_promos values (?,?,?)", (e, r['code'].strip(), r['offer'].strip() or None))
     feats[e].add('promo_code')
 # pass prices, from the source's prices pass (without the quotes or price notes), and the rates the site converts them with
-x("""create table event_passes as select event_id, pass_no, kind, label, group_size, days, includes_hotel, source, checked_on
+x("""create table event_passes as select event_id, pass_no, kind, label, group_size, days, includes_hotel, source
      from src.event_passes""")
+# festivals whose prices are read on their ticket page: the page, when it was read, tickets on it not read yet
+x("create table ticket_pages as select event_id, page, read_on, unread from src.ticket_pages")
 # a festival selling full, party or package passes for two or more people has the group_deals highlight
 for (e,) in x("select distinct event_id from event_passes where group_size >= 2 and kind in ('full', 'party', 'package')"):
     feats[e].add('group_deals')
@@ -330,7 +332,8 @@ DOCS = {
  'artist_countries': 'Bookings per artist and country; is_home marks the known home country in artist_stats.',
  'artist_origin': 'Countries stated next to an artist’s name in line-ups (flags or text), with how often.',
  'event_stats': 'Per event: line-up size (teachers and DJs), popular artists booked, imported artists (home country differs from the event’s), kizomba-family genres, kiz-only (no salsa or bachata), taxi dancers, all-in-one hotel.',
- 'event_passes': 'The passes a festival sells (full, party, day, workshop, package, other): people per price, days, hotel included; source is description, or the ticket page read on checked_on.',
+ 'event_passes': 'The passes a festival sells (full, party, day, workshop, package, other): people per price, days, hotel included; source is description, or ticket_page (see ticket_pages).',
+ 'ticket_pages': 'Festivals whose prices are read on their ticket page: the page, the day it was last read, and how many tickets on it are not read yet.',
  'pass_tiers': 'Each pass’s prices tier by tier: amount and currency, the days the tier applies, tickets at that price, door price, sold out.',
  'rates': 'Exchange rates the site converts prices with: units of each currency per euro (European Central Bank, pipeline/rates.csv).',
  'event_promos': 'Promo codes for a festival, from pipeline/promo_codes.csv (ours, not kizomba-world’s): the code, and what it gives when known.',

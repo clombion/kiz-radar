@@ -1,10 +1,11 @@
 name: Refresh events
 
 # Once a month, update the newest export in source/ from kizomba-world.com (see pipeline/scrape.py), ask Claude
-# the extraction passes for new and changed festivals (pipeline/extract/ask.py), read the prices on the Weezevent
-# ticket pages of festivals whose description gives none (pipeline/tickets.py), reload what the answers say,
+# the extraction passes for new and changed festivals (pipeline/extract/ask.py), read ticket pages
+# (pipeline/tickets.py run: re-reads that are due, retries, first reads by two models), reload what the answers say,
 # commit it all, then start the Rebuild site database workflow, which a push made with the Actions token doesn't
-# start by itself. A failed ask still commits the refresh, then marks the run failed.
+# start by itself. A failed ask, or a ticket page that broke its recipe or failed three times in a row, still
+# commits the refresh, then marks the run failed.
 on:
   schedule:
     - cron: '17 5 3 * *'
@@ -40,12 +41,14 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           LIMIT: ${{ inputs.limit }}
-      - name: Install a browser for ticket pages
-        run: uvx -q --from patchright==1.55.2 patchright install --with-deps chromium
-      - name: Read the prices on Weezevent ticket pages
+      - name: Install a browser and a virtual display for ticket pages
+        run: |
+          uvx -q --from patchright==1.55.2 patchright install --with-deps chromium
+          sudo apt-get install -y -q xvfb
+      - name: Read ticket pages
         id: tickets
         continue-on-error: true
-        run: uv run -q pipeline/tickets.py auto
+        run: xvfb-run -a uv run -q pipeline/tickets.py run
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       - name: Load the answers and resolve the artists
@@ -56,7 +59,8 @@ jobs:
       - name: Commit
         id: commit
         run: |
-          git add "$SRC" pipeline/extract/answers pipeline/artist_merge_suggestions.csv pipeline/pass_prices.csv
+          git add "$SRC" pipeline/extract/answers pipeline/artist_merge_suggestions.csv pipeline/pass_prices.csv \
+            pipeline/ticket_pages.csv pipeline/tickets
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git config user.name "events-bot"   # the rebase below re-commits, so it needs the name as well
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -69,6 +73,6 @@ jobs:
         run: gh workflow run build.yml --ref main
         env:
           GH_TOKEN: ${{ github.token }}
-      - name: Fail if asking Claude or reading ticket pages failed
+      - name: Fail if asking Claude or a ticket page failed
         if: steps.ask.outcome == 'failure' || steps.tickets.outcome == 'failure'
         run: exit 1

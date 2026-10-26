@@ -1,0 +1,55 @@
+{
+  "site": "fairplay",
+  "hosts": [
+    "www.fairplay.events",
+    "fairplay.events"
+  ],
+  "widget": null,
+  "visible": true,
+  "wait": 12,
+  "open": null,
+  "row": "div:has(> h4.mantine-Title-root):has(label[for^='ticketTypes.'])",
+  "fields": {
+    "key": {
+      "css": "label[for^='ticketTypes.']",
+      "attr": "for",
+      "match": "^ticketTypes\\.\\d+\\.(\\d+)$"
+    },
+    "name": {
+      "css": "h4",
+      "attr": null,
+      "match": null
+    },
+    "price": {
+      "css": "p[data-size='lg']",
+      "attr": null,
+      "match": "Price: (.+)"
+    },
+    "amount": {
+      "css": "p[data-size='lg']",
+      "attr": null,
+      "match": "([\\d.,]+)"
+    },
+    "currency": {
+      "css": "p[data-size='lg']",
+      "attr": null,
+      "match": "Price: ([A-Z]{3})"
+    },
+    "alt_price": {
+      "css": "p[data-size='sm']",
+      "attr": null,
+      "match": "The ticket price is [\\d.,]+ €\\.?"
+    },
+    "alt_amount": {
+      "css": "p[data-size='sm']",
+      "attr": null,
+      "match": "The ticket price is ([\\d.,]+) €"
+    },
+    "alt_currency": {
+      "css": "p[data-size='sm']",
+      "attr": null,
+      "match": "The ticket price is [\\d.,]+ (€)"
+    },
+    "sold_out": null
+  }
+}
