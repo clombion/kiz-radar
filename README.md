@@ -83,8 +83,8 @@ without accommodation (the per-person full pass at today's price, plus the fligh
 dance styles, its Kizomba full pass when it sells one, from prompt `prices-v5` on, which names each pass's style) and when the pass price next goes
 up; tapping the pass opens every pass at today's price and its next change (`docs/js/passes.js`). A price is what a
 buyer pays, booking fee included; the passes view says which fee it includes when the description or the ticket
-page states one (since prompt `prices-v3`; answers from older prompts are asked again while the festival
-is to come).
+page states one (an answer to an older prompt, which may lack the fee or the style, is asked again, past
+festival or not, and stays out of the database until then).
 
 For the SQL page, every table is described in the `table_docs` table. The `event_rows` view is the one to start
 from: it joins each event to its statistics and says whether it is still to come.
@@ -226,8 +226,9 @@ uv run --group tickets -m pipeline.tickets page ID --state S --note N  # or not_
 ```
 
 A festival needs a first read when it is still to come and its description gives no dated full pass or package
-price, and again when its description or its ticket page changes, or its page shows tickets the first read
-doesn't know. It is read
+price, and again when its description or its ticket page changes, its page shows tickets the first read
+doesn't know, or the first read follows an older prompt; a festival now past then gets it from its latest logged
+rows, without its page. It is read
 again on the monthly run, unless it is *dated* (every tier on sale has an end date and none is limited to a number
 of tickets), when it is read again once its last date has passed. The monthly **Refresh events** Action runs
 `tickets.py run`: the re-reads that are due, a retry of every festival whose latest read failed, and a first read
@@ -292,7 +293,7 @@ about, one festival and one pass at a time, with that pass's prompt (`pipeline/e
 the required answer format. A checker then confirms that the answer has the right shape, and that every name,
 quote and price appears in the description. A failing answer goes back to Claude once, with the checker's
 lines. A second failure leaves the festival pending, to try again next month. A new prompt version is asked again of every
-festival still to come on the next monthly run; when it changes the answers of a few festivals only, start
+festival on the next monthly run; when it changes the answers of a few festivals only, start
 **Refresh events** by hand with their ids in `festivals` ("16909,18806"): it skips the scrape, and asks and reads
 those festivals only (`ask.py --only`, `tickets.py run --only`). The answers are saved in
 `pipeline/extract/answers/` and committed; `answers/log.csv` says who answered each file and when. The first

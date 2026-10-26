@@ -67,7 +67,7 @@ export const riseNote = t => t.door ? 'price is higher at the door' : t.lo ? `pr
 
 // ----- the quick view: each pass at today's price and its next change -----
 const KIND = { full: 'Full pass', party: 'Party pass', day: 'Day pass', workshop: 'Workshop pass', package: 'Package', other: 'Pass' };
-const STYLE = { kizomba: 'Kizomba', zouk: 'Zouk', bachata: 'Bachata', salsa: 'Salsa', other: 'one style' };
+const STYLE = { kizomba: 'Kizomba', zouk: 'Zouk', bachata: 'Bachata', salsa: 'Salsa', other: 'Other style' };
 const forWhom = p => p.group_size == null || p.group_size === 1 ? null : p.group_size === 2 ? 'for a couple' : `for ${p.group_size}`;
 // a day or other pass by its own name ("20.Nov Friday PARTY"); the others by kind, style, length and for whom, or by
 // their own name when that alone would read the same as another pass's

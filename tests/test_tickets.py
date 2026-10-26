@@ -552,16 +552,68 @@ def test_a_first_read_made_for_an_older_prompt_is_made_again(files):
 
 
 def test_a_run_for_named_festivals_reads_only_them(files, monkeypatch):
+    import sqlite3
     fest = lambda i: {'id': i, 'first_read': None, 'why': 'no price in the description', 'site': ('recipe',),
                       'page': f'https://shop.example/{i}', 'disputed': False, 'log': [], 'tiers': [], 'start_date': '2027-02-05'}
-    monkeypatch.setattr(tickets, 'src_db', lambda: None)
-    monkeypatch.setattr(tickets, 'festivals', lambda db, today: [fest(7), fest(8)])
+    db = sqlite3.connect(':memory:')
+    db.executescript('create table events (id integer); insert into events values (6), (7), (8);')
+    monkeypatch.setattr(tickets, 'src_db', lambda: db)
+    monkeypatch.setattr(tickets, 'festivals', lambda db, today, only=None: [] if only else [fest(7), fest(8)])
     monkeypatch.setattr(tickets, 'write_waiting', lambda fs: collections.Counter())
     read = []
     monkeypatch.setattr(tickets, 'attempt', lambda page, *site: read.append(page) or
                         {'at': AT, 'status': tickets.Status.REFUSED, 'why': 'HTTP 403', 'page': page})
     monkeypatch.setattr(tickets, 'append', lambda i, e: None)
-    tickets.cmd_run({8})
+    tickets.cmd_run({8, 6})                 # 6 is past: nothing to read there
     assert read == ['https://shop.example/8']
     with pytest.raises(SystemExit, match=r'\[9\]'):
         tickets.cmd_run({9})
+
+
+def test_a_past_festivals_first_read_for_an_older_prompt_is_made_again_from_its_logged_rows(files, monkeypatch):
+    import sqlite3
+    old = read() | {'prompt_version': 'first-read-v2'}
+    del old['passes'][0]['style']
+    tickets.save_read(old)
+    db = sqlite3.connect(':memory:')
+    db.executescript('create table events (id integer); insert into events values (7);')
+    past = FEST | {'first_read': old, 'log': tickets.log(7), 'disputed': False}
+    monkeypatch.setattr(tickets, 'src_db', lambda: db)
+    monkeypatch.setattr(tickets, 'festivals', lambda db, today, only=None: [past] if only == 7 else [])
+    monkeypatch.setattr(tickets, 'write_waiting', lambda fs: collections.Counter())
+    monkeypatch.setattr(tickets, 'attempt', lambda *a: pytest.fail('a past festival is not read again'))
+    import anthropic
+    monkeypatch.setattr(anthropic, 'Anthropic', lambda: client(ANSWER, ANSWER))
+    tickets.cmd_run()
+    assert tickets.first_read(7)['prompt_version'] == tickets.PROMPT
+
+
+def test_passes_alike_in_every_field_load_back_as_the_passes_they_are(files, monkeypatch):
+    from pipeline.extract import load_extract
+    fr = read()
+    one = fr['passes'][0]
+    fr['passes'] = [one | {'tiers': [one['tiers'][0]]}, one | {'tiers': [one['tiers'][1]]}]
+    tickets.save_read(fr)
+    assert tickets.record(7, quiet=True) == []
+    monkeypatch.setattr(load_extract, 'PAGE_PRICES', files / 'pass_prices.csv')
+    monkeypatch.setattr(load_extract, 'TICKET_PAGES', files / 'ticket_pages.csv')
+    entry_, _ = load_extract.page_prices({7})[7]
+    assert [len(p['tiers']) for p in entry_['passes']] == [1, 1]
+
+
+def test_kinds_styles_and_sales_states_are_stated_alike_everywhere():
+    import re
+    from pathlib import Path
+    from pipeline.extract import load_extract
+    docs = Path(tickets.ROOT) / 'docs' / 'js'
+    passes = tickets.PRICES_SCHEMA['properties']['events']['items']['properties']['passes']['items']['properties']
+    kinds, styles = passes['kind']['enum'], passes['style']['anyOf'][0]['enum']
+    read = tickets.READ_SCHEMA['properties']['passes']['items']['properties']
+    js = lambda file, name: re.findall(r"(\w+):", re.search(rf'const {name} = \{{([^}}]*)\}}', (docs / file).read_text())[1])
+    check = lambda column, table: re.findall(r"'(\w+)'", re.search(rf'CREATE TABLE {table} \((?:[^;]*?)\n    {column} TEXT[^\n]*?CHECK \({column} IN \(([^)]*)\)\)',
+                                                                   load_extract.SCHEMA)[1])
+    assert read['kind']['enum'] == kinds and read['style']['anyOf'][0]['enum'] == styles
+    assert js('passes.js', 'KIND') == kinds and js('passes.js', 'STYLE') == styles
+    assert check('kind', 'event_passes') == kinds and check('style', 'event_passes') == styles
+    assert check('state', 'ticket_sales') == list(tickets.Sales)
+    assert sorted(js('eventcard.js', 'NO_PRICE')) == sorted(set(tickets.Sales) - {tickets.Sales.SHOP})

@@ -24,8 +24,9 @@ skipped, and dates and price notes are quoted from the description or the ticket
 checked first reads are saved there: an agent fills a draft (tickets/drafts/, not committed) that record moves there
 once it passes, and in the Action Opus and Sonnet each write one, kept only when they agree (else
 tickets/disputed/<event_id>.json holds both for an agent). A festival needs one when it is still to come and its
-description gives no dated full pass or package price, or again when its description or its ticket page changes, or
-its page shows tickets the first read doesn't know.
+description gives no dated full pass or package price, or again when its description or its ticket page changes,
+its page shows tickets the first read doesn't know, or the first read follows an older prompt (for a festival now
+past, made again from its latest logged rows).
 
 record builds the passes from the first read and the latest read rows of the same page: amount, currency, sold out
 and quote from the rows, the rest from the first read. A ticket the first read doesn't know is counted as unread; a
@@ -57,7 +58,7 @@ from pipeline.extract import check_output, prices
 HERE = ROOT / 'pipeline' / 'tickets'
 SITES, READS, DRAFTS, LOG, DISPUTED = (HERE / d for d in ('sites', 'reads', 'drafts', 'log', 'disputed'))
 PRICES_CSV, PAGES_CSV = ROOT / 'pipeline' / 'pass_prices.csv', ROOT / 'pipeline' / 'ticket_pages.csv'
-PRICE_FIELDS = ['event_id', 'kind', 'style', 'label', 'group_size', 'days', 'includes_hotel', 'amount', 'currency', 'fee',
+PRICE_FIELDS = ['event_id', 'pass_no', 'kind', 'style', 'label', 'group_size', 'days', 'includes_hotel', 'amount', 'currency', 'fee',
                 'alt_amount', 'alt_currency', 'from', 'until', 'quantity', 'sold_out', 'quote']
 PAGE_FIELDS = ['event_id', 'event', 'page', 'reseller', 'read_on', 'read_by', 'prompt_version', 'recipe', 'unread', 'notes']
 FOUND_CSV, WAITING_CSV = HERE / 'pages.csv', HERE / 'waiting.csv'
@@ -402,12 +403,12 @@ def written(event_id, fr, entries, known):
         return [f'{event_id}: {p}' for p in found]
     flag = lambda v: '1' if v else '0'
     num = lambda v: '' if v is None else f'{v:g}'
-    tiers = [{'event_id': event_id, 'kind': p['kind'], 'style': p['style'] or '', 'label': p['label_quote'] or '', 'group_size': p['group_size'] or '',
+    tiers = [{'event_id': event_id, 'pass_no': n, 'kind': p['kind'], 'style': p['style'] or '', 'label': p['label_quote'] or '', 'group_size': p['group_size'] or '',
               'days': p['days'] or '', 'includes_hotel': flag(p['includes_hotel']), 'amount': num(t['amount']),
               'currency': t['currency'], 'fee': num(t['fee']), 'alt_amount': num(t['alt_amount']),
               'alt_currency': t['alt_currency'] or '', 'from': t['from'] or '', 'until': t['until'] or '',
               'quantity': t['quantity'] or '', 'sold_out': flag(t['sold_out']), 'quote': t['quote']}
-             for p in answer['events'][0]['passes'] for t in p['tiers']]
+             for n, p in enumerate(answer['events'][0]['passes'], 1) for t in p['tiers']]
     site = known.get(entry['recipe'].split('@')[0])
     page = {'event_id': event_id, 'event': fr['title'], 'page': entry['page'],
             'reseller': site[0]['reseller'] or '' if site else '', 'read_on': entry['at'][:10],
@@ -743,14 +744,29 @@ def cmd_retry(event_id):
     cmd_record(event_id)
 
 def cmd_run(ids=None):
-    """Re-read what is due and retry failures, first-read with two models what needs it (of the festivals ids names,
-    when it names some), then write both files. Exits 1 naming each festival whose page broke its recipe, reached REFUSALS failures, or no longer fits its first read."""
+    """Re-read what is due and retry failures, first-read with two models what needs it, and make again, from their
+    latest logged rows, the first reads of festivals now past that follow an older prompt (of the festivals ids
+    names, when it names some); then write both files. Exits 1 naming each festival whose page broke its recipe,
+    reached REFUSALS failures, or no longer fits its first read."""
     import anthropic
     today, db = dt.date.today().isoformat(), src_db()
     client, alarms, budget = None, [], None
+    if ids and (missing := ids - {i for i, in db.execute('select id from events')}):
+        sys.exit(f'no such festival: {sorted(missing)}')
+
+    def make(f, entry):
+        nonlocal client, budget
+        client = client or anthropic.Anthropic()
+        try:
+            new = two_model_read(client, f, entry, log(f['id']))
+            if new:
+                save_read(new)
+            print(f"{f['id']}: first read " + (f"by {new['read_by']}" if new else f"disputed: tickets/disputed/{f['id']}.json"))
+        except spend.BudgetSpent as e:
+            budget = f'{e}: the other first reads wait for next month'
+            alarms.append(budget)
+
     fs = festivals(db, today)
-    if ids and (missing := ids - {f['id'] for f in fs}):
-        sys.exit(f'no festival to come: {sorted(missing)}')
     for f in (f for f in fs if not ids or f['id'] in ids):
         i, fr = f['id'], f['first_read']
         if fr and f['site'] and (recheck(f['tiers'], f['start_date'], today)[1] or failures(f['log'])):
@@ -768,20 +784,19 @@ def cmd_run(ids=None):
             if entry is None or entry['at'][:10] != today:
                 append(i, entry := attempt(f['page'], *f['site']))
             if entry['status'] == Status.READ and not budget:
-                client = client or anthropic.Anthropic()
-                try:
-                    if new := two_model_read(client, f, entry, log(i)):
-                        save_read(new)
-                    print(f'{i}: first read ' + (f"by {new['read_by']}" if new else f'disputed: tickets/disputed/{i}.json'))
-                except spend.BudgetSpent as e:
-                    budget = f'{e}: the other first reads wait for next month'
-                    alarms.append(budget)
+                make(f, entry)
             else:
                 print(f"{i}: {entry['status']}: {entry['why']}")
                 if entry['status'] == Status.LAYOUT_BROKEN:
                     alarms.append(f"{i}: layout broken ({entry['why']}); the recipe {entry['recipe']} needs an agent")
         if (DISPUTED / f'{i}.json').exists() and first_read(i):
             record(i, quiet=True)           # a new first read settles an older dispute
+    to_come = {f['id'] for f in fs}
+    for path in sorted(READS.glob('*.json')):
+        i = int(path.stem)
+        if i not in to_come and (not ids or i in ids) and first_read(i)['prompt_version'] != PROMPT and not budget:
+            if (f := next(iter(festivals(db, today, i)), None)) and not f['disputed']:
+                make(f, latest_read(f['log']))    # its page sells nothing any more; its logged rows still say what it sold
     alarms += write_all()
     counts = write_waiting(festivals(db, today))
     print('waiting: ' + '; '.join(f'{n} for {w}' for w, n in counts.most_common()))

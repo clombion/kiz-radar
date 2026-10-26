@@ -44,7 +44,11 @@ def eur(dollars):
         return dollars / next(float(r['per_eur']) for r in csv.DictReader(f) if r['currency'] == 'USD')
 
 
-def check():
+def check(model):
+    """Before a request to model: KeyError when PRICES can't cost it (it could not be recorded), BudgetSpent once the
+    month's budget is spent."""
+    if model not in PRICES:
+        raise KeyError(f'{model}: no price in spend.PRICES')
     if (spent := eur(month_usd())) >= BUDGET_EUR:
         raise BudgetSpent(f'this month has spent €{spent:.2f} of its €{BUDGET_EUR} budget for Claude')
 

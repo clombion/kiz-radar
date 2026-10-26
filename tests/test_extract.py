@@ -159,6 +159,14 @@ def test_requests_stop_once_the_months_budget_is_spent(tmp_path):
     assert len(client.calls) == 1
 
 
+def test_a_model_with_no_price_is_never_asked(monkeypatch):
+    client = fake(prices_answer('Full pass 80€ until 31.01'))
+    monkeypatch.setattr(ask, 'MODEL', 'claude-unpriced')
+    with pytest.raises(KeyError, match='claude-unpriced'):
+        ask.ask(client, 'prices', ROW)
+    assert client.calls == []
+
+
 def test_a_request_costs_its_models_prices():
     from pipeline import spend
     assert spend.usd('claude-haiku-5-5', 100_000, 100_000) == 0.06
@@ -177,6 +185,19 @@ def test_only_the_named_festivals_are_asked(monkeypatch):
     assert {r['id'] for r, _ in ask.due(db, ['prices'], {2})[0]} == {2}
     with pytest.raises(SystemExit, match=r'\[3\]'):
         ask.due(db, ['prices'], {2, 3})        # no description: nothing to ask it
+
+
+def test_an_answer_to_an_older_prompt_is_asked_again_and_left_out_until_then(monkeypatch):
+    from pipeline.extract import load_extract
+    db = sqlite3.connect(':memory:')
+    db.row_factory = sqlite3.Row
+    db.executescript("create table events (id integer, description_text text, end_date text);"
+                     "insert into events values (1, 'a', '2020-01-01'), (2, 'b', '2099-01-01');"
+                     "create table pending_extraction (event_id integer);")
+    have = {1: SimpleNamespace(prompt_version='prices-v2'), 2: SimpleNamespace(prompt_version=prices.PROMPT)}
+    monkeypatch.setattr(ask.answers, 'latest', lambda pass_name, ids: have)
+    assert [r['id'] for r, _ in ask.due(db, ['prices'])[0]] == [1]     # past or not
+    assert list(load_extract.current(have)) == [2]
 
 
 @pytest.mark.parametrize('text, ids', [('16909,18806', {16909, 18806}), ('16909, 18806,', {16909, 18806}), ('x', None)])
