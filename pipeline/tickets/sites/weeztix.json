@@ -4,6 +4,7 @@
     "weeztix.shop",
     "shop.weeztix.com"
   ],
+  "reseller": null,
   "widget": null,
   "visible": false,
   "wait": 10,

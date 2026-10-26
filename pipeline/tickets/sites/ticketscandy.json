@@ -4,6 +4,7 @@
     "ticketscandy.com",
     "www.ticketscandy.com"
   ],
+  "reseller": null,
   "widget": null,
   "visible": false,
   "wait": 10,

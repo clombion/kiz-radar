@@ -1,0 +1,51 @@
+{
+ "event_id": 19764,
+ "title": "SalsaKizzes & Zouk Festival in Freiburg",
+ "start_date": "2026-11-13",
+ "read_by": "agent",
+ "prompt_version": "first-read-v2",
+ "rows_at": "2026-10-26T21:15:22+00:00",
+ "description": "✨✨✨SalsaKizzes & Zouk Festival in Freiburg✨✨✨\n+++Location+++\nTanzHalle Freiburg\nMarkgrafenstraße 38\n79115 Freiburg\nKizomba DJ:\n– Selekta Mao (Nancy)\n– DJ Safir’s Beats (France)\n– DJ ZEN (Paris)\n– DJ Kinane (Paris)\n– DJ Harryz Kizz (Stuttgart)\n– DJ BEN (Toulouse)\n– LE KRYPTONIEN (France)\n– DJ NODA (Mulhouse)\n– DJ Papito (Switzerland)\n– DJ Sunky (Paris)\n– Dj Patrick Saint vil (Strasbourg)\nKizomba Teachers:\n– Dim Dim & Ophelie (Nancy/Strasbourg)\n– Stef KiZz & Sonia (FR/DE)\n– Senseï (Marseille)\n– Arnaud DJBN (Paris)\n– JN D BI (France)\n– Lio & Helen (Frankfurt)\n– Franky Kizzfly & Kerstin (Frankfurt)\n– Murmel & Eva (Germany)\n– Daisy & Manu Kizmamie (France)\n– Nam De Poy & Maria (Karlsruhe)\n– Edmond KizMe (Stuttgart)\n– Yassir (Paris)\n– Mory & Irina (Frankfurt)\n– Steve & Bianca (Germany)\n– Ibi Coulby (München)\n– NATA (Stuttgart)\n– David DT (Mannheim)\nBrazilian Zouk DJs:\n– DJ Fiddich (Leipzig)\n– DJ Denis (Bremen)\n– DJ Ricardinho (Freiburg)\nBrazilian Zouk Teachers:\n– ANIA & KASSIO (Hamburg)\n– Rogerio & Julinha (Switzerland/Germany)\n– Mayara & Denis (Bremen)\n– MANON (Paris)\n– Rebas Karim (Hannover)\n– Alexej & Florence (Freiburg)\n– Teresa & Ricardo (Freiburg)\n– Anna (Köln)\nBachata Teachers:\n– Martin & Florence (Offenburg/Freiburg)\n– Fernandes & Sine (Stuttgart)\n– Vero & Luis (Freiburg)\n– Mady Keita & ISA (Köln)\n– Armand (Basel)\nBachata DJs:\n– DJ Lobo (Heidelberg)\n– DJ Roberto (Freiburg)\n– DJ ASRABEATS (Konstanz)\nSalsa Teachers:\n– Anichi Perez & Anna (Freiburg)\n– Chris & Larissa (Offenburg)\n– El Astico & Lea (France)\n– Boris Rodriguez (Freiburg)\n– Michl & Nina (Konstanz)\n– Armand (Basel)\nSalsa DJs:\n– DJ Prachi (Karlsruhe)\n– DJ EL ASTICO\n– DJ Lobo (Heidelberg)\n+++Freitag / Friday+++\n17:45 Check-in(pick-up your pass)\n18:00-22:00 Workshops\n22:00-04:00 Friday Night Party\n+++Samstag / Saturday+++\n11:45 Check-in\n12:00 – 18:00 Workshops\n16:00 – 20:30 Social Dance\n22:00 – 06:00 Saturday Night Party\n+++Sonntag / Sunday+++\n11:45 Check-in\n12:00 – 18:00 Workshops\n14:00 – 23:00 Social Dance Non Stop",
+ "passes": [
+  {
+   "kind": "full",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "9129",
+      "9128"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "9131",
+      "9130"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [],
+ "rule_quotes": []
+}

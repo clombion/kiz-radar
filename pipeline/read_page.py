@@ -53,19 +53,33 @@ def page_text(url, wait=10, visible=False, browser=None, screenshot=None):
             page.screenshot(path=screenshot, full_page=True)
     return out
 
-# every element matching the row selector that holds no other match, as {field: string or null}
+# every element matching the row selector that holds no other match, as {field: string or null}. A field reads the
+# first match of its css inside the row (the row itself when css is null), or with page set every match on the page,
+# joined by line; css and match may name the row's other fields as {field} and the row element's attributes as
+# {@attr} (a name starting with a letter, so {3} stays a regex count), filled in, escaped, once those are read.
 ROWS_JS = """([row, fields]) => {
   const all = [...document.querySelectorAll(row)];
-  const get = (el, f) => {
+  const escRe = s => s.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&');
+  const fill = (t, el, vals, re) => t.replace(/\\{(@?)([A-Za-z_][\\w-]*)\\}/g, (_, at, k) => {
+    const v = at ? el.getAttribute(k) : vals[k];
+    return v == null ? '\\u0000' : (re ? escRe(v) : CSS.escape(v));
+  });
+  const templated = f => f && /\\{@?[A-Za-z_][\\w-]*\\}/.test((f.css || '') + (f.match || ''));
+  const get = (el, f, vals) => {
     if (!f) return null;
-    const t = f.css ? el.querySelector(f.css) : el;
-    const v = t && (f.attr ? t.getAttribute(f.attr) : t.innerText);
-    if (v == null) return null;
-    const m = f.match ? v.match(new RegExp(f.match)) : [v];
+    const css = f.css && fill(f.css, el, vals, false);
+    const targets = f.page ? [...document.querySelectorAll(css)] : [css ? el.querySelector(css) : el];
+    const vs = targets.filter(Boolean).map(t => f.attr ? t.getAttribute(f.attr) : t.innerText).filter(v => v != null);
+    if (!vs.length) return null;
+    const m = f.match ? vs.join('\\n').match(new RegExp(fill(f.match, el, vals, true))) : [vs.join('\\n')];
     return m ? (m[1] ?? m[0]) : null;
   };
-  return all.filter(el => !all.some(o => o !== el && el.contains(o)))
-    .map(el => Object.fromEntries(Object.entries(fields).map(([k, f]) => [k, get(el, f)])));
+  return all.filter(el => !all.some(o => o !== el && el.contains(o))).map(el => {
+    const vals = {};
+    for (const [k, f] of Object.entries(fields)) if (!templated(f)) vals[k] = get(el, f, vals);
+    for (const [k, f] of Object.entries(fields)) if (templated(f)) vals[k] = get(el, f, vals);
+    return Object.fromEntries(Object.keys(fields).map(k => [k, vals[k] ?? null]));
+  });
 }"""
 
 def rows(url, recipe, visible=None, browser=None):

@@ -4,6 +4,7 @@
     "my.weezevent.com",
     "widget.weezevent.com"
   ],
+  "reseller": null,
   "widget": {
     "pattern": "https://widget\\.weezevent\\.com/ticket/[A-Z0-9-]+/",
     "suffix": "?locale=en-GB"

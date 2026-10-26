@@ -401,3 +401,20 @@ def test_a_ticket_on_sale_cant_have_a_price_that_ended(until, sold_out, ok):
     fr = read(description='Until 30 September or 30 November.')
     fr['passes'][0]['tiers'][1] = tier('3', '4', until=until, quote='Until 30 September or 30 November')
     assert (tickets.read_problems(fr, [entry(rows)]) == []) == ok
+
+
+
+def test_recipe_placeholders_name_fields_or_attributes():
+    """The row reader fills {field} and {@attr} in css and match (its own pattern, taken from its script); any other
+    name would leave the field empty on every page, and {3} must stay a regex count."""
+    import re
+    from pipeline.read_page import ROWS_JS
+    pattern = re.search(r"t\.replace\(/(.+?)/g", ROWS_JS)[1].replace('\\\\', '\\')
+    wrong = []
+    for site, (recipe, _) in tickets.sites().items():
+        for name, f in recipe['fields'].items():
+            for text in (f or {}).get('css') or '', (f or {}).get('match') or '':
+                wrong += [f'{site}.{name}: {{{at}{k}}}' for at, k in re.findall(pattern, text)
+                          if not at and k not in recipe['fields']]
+    assert wrong == []
+    assert re.findall(pattern, '[A-Z]{3}') == [] and re.findall(pattern, '"{@value}" {name}') == [('@', 'value'), ('', 'name')]

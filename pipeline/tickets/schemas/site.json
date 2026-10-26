@@ -6,6 +6,7 @@
   "required": [
     "site",
     "hosts",
+    "reseller",
     "widget",
     "visible",
     "wait",
@@ -16,7 +17,7 @@
   ],
   "$defs": {
     "field": {
-      "description": "Where a row's value is: the first element matching css inside the row (the row itself when css is null), its attribute attr (its text when attr is null), and in that the first group of match (all of it when match is null).",
+      "description": "Where a row's value is: the first element matching css inside the row (the row itself when css is null), its attribute attr (its text when attr is null), and in that the first group of match (all of it when match is null). css and match may name the row's other fields as {field} and the row element's attributes as {@attr}.",
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -45,6 +46,10 @@
             "null"
           ],
           "minLength": 1
+        },
+        "page": {
+          "type": "boolean",
+          "description": "Read every match on the page (joined by line) instead of the first inside the row; for values a page keeps apart from its rows, such as its script data."
         }
       }
     }
@@ -61,6 +66,14 @@
       "items": {
         "type": "string"
       }
+    },
+    "reseller": {
+      "description": "The reseller's name when the site sells other organisers' festivals at its own prices (Kizzbee), shown with the prices; null when it sells for the organiser.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
     },
     "widget": {
       "description": "When the linked page shows its tickets in a widget from another address: the pattern of that address in the page's HTML, and what to add to it. Else null.",

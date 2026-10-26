@@ -59,7 +59,7 @@ SITES, READS, DRAFTS, LOG, DISPUTED = (HERE / d for d in ('sites', 'reads', 'dra
 PRICES_CSV, PAGES_CSV = ROOT / 'pipeline' / 'pass_prices.csv', ROOT / 'pipeline' / 'ticket_pages.csv'
 PRICE_FIELDS = ['event_id', 'kind', 'label', 'group_size', 'days', 'includes_hotel', 'amount', 'currency', 'fee',
                 'alt_amount', 'alt_currency', 'from', 'until', 'quantity', 'sold_out', 'quote']
-PAGE_FIELDS = ['event_id', 'event', 'page', 'read_on', 'read_by', 'prompt_version', 'recipe', 'unread', 'notes']
+PAGE_FIELDS = ['event_id', 'event', 'page', 'reseller', 'read_on', 'read_by', 'prompt_version', 'recipe', 'unread', 'notes']
 FOUND_CSV, WAITING_CSV = HERE / 'pages.csv', HERE / 'waiting.csv'
 FOUND_FIELDS = ['event_id', 'event', 'page', 'found_by', 'note']          # page empty: the festival sells none online
 WAITING_FIELDS = ['event_id', 'event', 'start', 'waits_for', 'page', 'note']
@@ -313,8 +313,9 @@ def csv_rows(path):
     with path.open(encoding='utf-8') as f:
         return list(csv.DictReader(f))
 
-def written(event_id, fr, entries):
-    """(pass_prices.csv rows, ticket_pages.csv row, unread keys) for a festival, or the problems that stop it."""
+def written(event_id, fr, entries, known):
+    """(pass_prices.csv rows, ticket_pages.csv row, unread keys) for a festival, or the problems that stop it; known is
+    sites(), for the reseller its page is on."""
     if found := read_problems(fr, entries):
         return [f'{event_id}: {p}' for p in found]
     at, entry = read_at(fr, entries), latest_read(entries)
@@ -331,7 +332,9 @@ def written(event_id, fr, entries):
               'alt_currency': t['alt_currency'] or '', 'from': t['from'] or '', 'until': t['until'] or '',
               'quantity': t['quantity'] or '', 'sold_out': flag(t['sold_out']), 'quote': t['quote']}
              for p in answer['events'][0]['passes'] for t in p['tiers']]
-    page = {'event_id': event_id, 'event': fr['title'], 'page': entry['page'], 'read_on': entry['at'][:10],
+    site = known.get(entry['recipe'].split('@')[0])
+    page = {'event_id': event_id, 'event': fr['title'], 'page': entry['page'],
+            'reseller': site[0]['reseller'] or '' if site else '', 'read_on': entry['at'][:10],
             'read_by': fr['read_by'], 'prompt_version': fr['prompt_version'], 'recipe': entry['recipe'],
             'unread': len(unread), 'notes': '\n'.join(fr['rule_quotes'])}
     return tiers, page, unread
@@ -339,10 +342,10 @@ def written(event_id, fr, entries):
 def write_all():
     """Write pass_prices.csv and ticket_pages.csv from every first read and its log, so both are what the reads and
     logs say and nothing else; the problems of the festivals left out."""
-    prices_rows, pages, found = [], [], []
+    prices_rows, pages, found, known = [], [], [], sites()
     for path in sorted(READS.glob('*.json'), key=lambda p: int(p.stem)):
         i = int(path.stem)
-        match written(i, first_read(i), log(i)):
+        match written(i, first_read(i), log(i), known):
             case (tiers, page, _):
                 prices_rows += tiers
                 pages.append(page)
@@ -362,7 +365,7 @@ def record(event_id, quiet=False):
     fr = draft or first_read(event_id)
     if fr is None:
         return [f'{event_id}: no first read (tickets/reads/{event_id}.json); run: uv run --group tickets -m pipeline.tickets draft {event_id}']
-    match written(event_id, fr, entries):
+    match written(event_id, fr, entries, sites()):
         case (tiers, page, unread):
             pass
         case found:
@@ -583,7 +586,7 @@ def cmd_check(event_id):
     fr = first_read(event_id, draft=True) or first_read(event_id)
     if fr is None:
         sys.exit(f'{event_id}: no draft or first read')
-    match written(event_id, fr, log(event_id)):
+    match written(event_id, fr, log(event_id), sites()):
         case (tiers, _, unread):
             print(f'{event_id}: passes; {len(tiers)} prices' + (f', {len(unread)} tickets not read' if unread else ''))
         case found:

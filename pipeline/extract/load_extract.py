@@ -114,6 +114,7 @@ CREATE TABLE event_price_notes (
 CREATE TABLE ticket_pages (
     event_id INTEGER PRIMARY KEY REFERENCES events(id),
     page TEXT NOT NULL,           -- the ticket page the festival links to
+    reseller TEXT,                -- the reseller selling there at its own prices (Kizzbee), when it isn't the organiser
     read_on TEXT NOT NULL,        -- the day its prices were last read there
     recipe TEXT NOT NULL,         -- the site recipe that read it (pipeline/tickets/sites), with its version
     unread INTEGER NOT NULL       -- tickets on the page its first read doesn't know yet
@@ -208,10 +209,10 @@ TABLE_DOCS = {
                   "includes, when stated), with currency, the dates each tier applies (a date written without a "
                   "year gets the latest year not after the festival's start), tickets at that price, door price, sold "
                   "out, and the quote it came from.",
-    "ticket_pages": "Festivals whose prices are read on their ticket page (pipeline/tickets.py): the page, the day it "
-                    "was last read, the site recipe that read it, and how many of its tickets are not read yet.",
-    "event_price_notes": "Price rules a festival states that the tiers can't hold (\"+ £3 admin fee\", \"the price rises "
-                         "€10 every month\").",
+    "ticket_pages": "Festivals whose prices are read on their ticket page (pipeline/tickets.py): the page, the "
+                    "reseller selling there at its own prices when it isn't the organiser, the day it was last read, the site recipe that read it, and how many of its tickets are not read yet.",
+    "event_price_notes": "Price rules a festival states that the tiers can't hold (\"Prices exclude ticketing fees\", "
+                         "\"the price rises €10 every month\").",
 }
 
 
@@ -257,8 +258,9 @@ def load_prices(con: sqlite3.Connection, answers: dict, pages: dict) -> None:
     dates = {i: (start, edited) for i, start, edited in con.execute("SELECT id, start_date, modified_at FROM events")}
     rows = [(a.entry, "description", a.prompt_version, a.model) for e, a in answers.items() if e not in pages]
     rows += [(entry, "ticket_page", page["prompt_version"], page["read_by"]) for entry, page in pages.values()]
-    con.executemany("INSERT INTO ticket_pages VALUES (?, ?, ?, ?, ?)",
-                    [(e, p["page"], p["read_on"], p["recipe"], int(p["unread"])) for e, (_, p) in pages.items()])
+    con.executemany("INSERT INTO ticket_pages VALUES (?, ?, ?, ?, ?, ?)",
+                    [(e, p["page"], p["reseller"] or None, p["read_on"], p["recipe"], int(p["unread"]))
+                     for e, (_, p) in pages.items()])
     for ev, source, prompt_version, model in rows:
         start, edited = dates[ev["event_id"]]
         if ev["rule_quotes"]:

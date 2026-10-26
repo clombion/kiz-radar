@@ -25,6 +25,7 @@
     "www.eventbrite.sg",
     "www.eventbrite.hk"
   ],
+  "reseller": null,
   "widget": null,
   "visible": false,
   "wait": 12,

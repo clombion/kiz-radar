@@ -177,7 +177,12 @@ judgment about a page is made once, by an agent or two models, and checked; ever
   currency, a booking fee when the site shows it apart from the price (Weeztix's "+ €1.00 fee", added to the
   amount), a second price when the site shows one, and its sold-out mark; what its currency symbols stand for;
   whether the tickets sit in a widget, which sections to click open, and whether the site needs a visible browser.
-  An agent writes one per site; FairPlay's needs a visible browser (it is behind a browser check).
+  A field may read the whole page instead of its row, and name the row's other fields as `{field}` and its
+  attributes as `{@attr}`: Tikoria's ticket ids sit in its script data next to each ticket's name, and Kizzbee's
+  prices in a JSON attribute keyed by each option's value. A recipe names the reseller when the site sells other
+  organisers' festivals at its own prices (Kizzbee); it is used only when the festival sells nowhere else, and the
+  passes view says so. An agent writes one per site; FairPlay's needs a visible browser (it is behind a browser
+  check).
 - **A log per festival** (`pipeline/tickets/log/<event_id>.jsonl`, schema `log.json`, checked on every write and
   read) gets one entry per read: `read` with every row, `refused` (no rows and an HTTP error, or the page would not
   load), or `layout_broken` (the recipe's selectors fail, no rows, two rows with one key, or a row missing its key,
