@@ -248,6 +248,8 @@ x("""create table event_passes as select event_id, pass_no, kind, label, group_s
      from src.event_passes""")
 # festivals whose prices are read on their ticket page: the page, when it was read, tickets on it not read yet
 x("create table ticket_pages as select event_id, page, reseller, read_on, unread from src.ticket_pages")
+# how a festival with no full ticket link sells, for the card of one without a price
+x("create table ticket_sales as select event_id, state, page from src.ticket_sales")
 # a festival selling full, party or package passes for two or more people has the group_deals highlight
 for (e,) in x("select distinct event_id from event_passes where group_size >= 2 and kind in ('full', 'party', 'package')"):
     feats[e].add('group_deals')
@@ -335,6 +337,7 @@ DOCS = {
  'artist_origin': 'Countries stated next to an artist’s name in line-ups (flags or text), with how often.',
  'event_stats': 'Per event: line-up size (teachers and DJs), popular artists booked, imported artists (home country differs from the event’s), kizomba-family genres, kiz-only (no salsa or bachata), taxi dancers, all-in-one hotel.',
  'event_passes': 'The passes a festival sells (full, party, day, workshop, package, other): people per price, days, hotel included; source is description, or ticket_page (see ticket_pages).',
+ 'ticket_sales': 'How a festival with no full ticket link sells: shop (with its page), not_yet, offline (by message or form) or closed.',
  'ticket_pages': 'Festivals whose prices are read on their ticket page: the page, the reseller selling there when it is not the organiser, the day it was last read, and how many tickets on it are not read yet.',
  'pass_tiers': 'Each pass’s prices tier by tier: what a buyer pays and its currency, the booking fee that includes when stated, the days the tier applies, tickets at that price, door price, sold out.',
  'rates': 'Exchange rates the site converts prices with: units of each currency per euro (European Central Bank, pipeline/rates.csv).',

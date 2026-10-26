@@ -7,8 +7,9 @@
   1. `uv run --group tickets -m pipeline.tickets todo` lists what needs doing, and what each festival waits for
      (`pipeline/tickets/waiting.csv` holds the monthly run's list). A link ending in `…` was cut short by
      kizomba-world: find the real ticket page (the festival's site, a search) and record it with
-     `uv run --group tickets -m pipeline.tickets page ID URL --note "how"`, or `page ID --none --note "why"` when the
-     festival sells no tickets online.
+     `uv run --group tickets -m pipeline.tickets page ID URL --note "how"`; when it sells none online, record why with
+     `page ID --state not_yet|offline|closed --note "the words that say so"` (sales not open yet; by message, e-mail,
+     form or bank transfer; closed or suspended).
   2. `uv run --group tickets -m pipeline.tickets read ID [--url URL]` reads the page by its site's recipe and prints
      its tickets. When it says there is no recipe for the site, write `pipeline/tickets/sites/<site>.json` following
      `pipeline/tickets/schemas/site.json` (look at the page with `uv run --group browser -m pipeline.read_page URL`,

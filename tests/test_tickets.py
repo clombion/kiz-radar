@@ -356,7 +356,9 @@ def festival(**k):
     (festival(), tickets.Waiting.PAGE),
     (festival(page='https://example.org/tickets'), tickets.Waiting.RECIPE),
     (festival(page='https://my.weezevent.com/x', site=('r', 'v')), None),
-    (festival(found={'page': '', 'note': 'by message only'}), tickets.Waiting.NONE_ONLINE),
+    (festival(found={'state': 'offline', 'page': '', 'note': 'by message only'}), tickets.Waiting.OFFLINE),
+    (festival(found={'state': 'not_yet', 'page': '', 'note': 'TBA'}), tickets.Waiting.NOT_YET),
+    (festival(found={'state': 'closed', 'page': '', 'note': 'registrations closed'}), tickets.Waiting.CLOSED),
     (festival(page='https://my.weezevent.com/x', site=('r', 'v'), disputed=True), tickets.Waiting.AGENT),
     (festival(why=None, first_read=read(), log=[refused('a'), refused('b'), refused('c')]), tickets.Waiting.SESSION),
     (festival(why=None, first_read=read(), log=[entry(ROWS)]), None),
@@ -373,11 +375,27 @@ def test_the_waiting_report_lists_every_waiting_festival(files):
 
 def test_a_found_page_is_recorded_once_and_a_cut_link_refused(files, monkeypatch):
     monkeypatch.setattr(tickets, 'one', lambda i: festival(id=i))
-    tickets.cmd_page(7, 'https://example.org/t', False, 'its site', 'agent')
-    tickets.cmd_page(7, None, True, 'by message only', 'agent')
-    assert [(r['page'], r['note']) for r in tickets.csv_rows(files / 'pages.csv')] == [('', 'by message only')]
+    tickets.cmd_page(7, 'https://example.org/t', tickets.Sales.SHOP, 'its site', 'agent')
+    tickets.cmd_page(7, None, tickets.Sales.OFFLINE, 'by message only', 'agent')
+    assert [(r['state'], r['page'], r['note']) for r in tickets.csv_rows(files / 'pages.csv')] == [('offline', '', 'by message only')]
     with pytest.raises(SystemExit):
-        tickets.cmd_page(7, 'https://example.org/t…', False, 'cut', 'agent')
+        tickets.cmd_page(7, 'https://example.org/t…', tickets.Sales.SHOP, 'cut', 'agent')
+
+
+@pytest.mark.parametrize('url, state', [(None, 'shop'), ('https://example.org/t', 'offline'), ('https://example.org/t', 'closed')])
+def test_only_a_shop_has_a_page(files, monkeypatch, url, state):
+    monkeypatch.setattr(tickets, 'one', lambda i: festival(id=i))
+    with pytest.raises(SystemExit):
+        tickets.cmd_page(7, url, tickets.Sales(state), 'n', 'agent')
+
+
+def test_sales_states_are_checked_when_read(files):
+    (files / 'pages.csv').write_text('event_id,event,state,page,found_by,note\n7,Fest,offline,https://x.org,agent,n\n')
+    with pytest.raises(SystemExit):
+        tickets.found_pages()
+    (files / 'pages.csv').write_text('event_id,event,state,page,found_by,note\n7,Fest,soon,,agent,n\n')
+    with pytest.raises(SystemExit):
+        tickets.found_pages()
 
 
 

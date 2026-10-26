@@ -18,6 +18,8 @@ Creates (replacing any previous load):
                         by tier; event_price_notes the price rules the tiers can't hold. A festival in
                         pipeline/ticket_pages.csv takes its passes from its ticket page instead
                         (pipeline/pass_prices.csv, written by pipeline/tickets.py)
+  ticket_sales          how a festival with no full ticket link sells, as an agent found it
+                        (pipeline/tickets/pages.csv): in a shop, not yet, offline (by message or form) or closed
   ticket_pages          per festival read on its ticket page: the page, the day it was last read, how many of its
                         tickets are not read yet
 
@@ -45,6 +47,7 @@ PAGE_PRICES = run_log.HERE.parent / "pass_prices.csv"
 # prices prompts from before tiers carried a fee: their amounts are the price as stated, with no fee
 NO_FEE = {"prices-v1", "prices-v2"}
 TICKET_PAGES = run_log.HERE.parent / "ticket_pages.csv"
+SALES = run_log.HERE.parent / "tickets" / "pages.csv"     # how festivals with no full link sell, found by an agent
 
 # Whole-word genre names recognised in event titles (brand spellings like "AfroKiz" or "Kizz" do not match)
 TITLE_GENRES = {
@@ -74,6 +77,7 @@ DROP TABLE IF EXISTS event_passes;
 DROP TABLE IF EXISTS pass_tiers;
 DROP TABLE IF EXISTS event_price_notes;
 DROP TABLE IF EXISTS ticket_pages;
+DROP TABLE IF EXISTS ticket_sales;
 CREATE TABLE event_passes (
     event_id INTEGER NOT NULL REFERENCES events(id),
     pass_no INTEGER NOT NULL,
@@ -110,6 +114,12 @@ CREATE TABLE pass_tiers (
 CREATE TABLE event_price_notes (
     event_id INTEGER PRIMARY KEY REFERENCES events(id),
     notes TEXT NOT NULL           -- the description's words, one rule per line
+);
+CREATE TABLE ticket_sales (
+    event_id INTEGER PRIMARY KEY REFERENCES events(id),
+    state TEXT NOT NULL CHECK (state IN ('shop', 'not_yet', 'offline', 'closed')),
+    page TEXT,                    -- the shop's page; for sales not open yet, the page they will open on, when known
+    note TEXT NOT NULL            -- how it was found, or the words that say so
 );
 CREATE TABLE ticket_pages (
     event_id INTEGER PRIMARY KEY REFERENCES events(id),
@@ -209,6 +219,9 @@ TABLE_DOCS = {
                   "includes, when stated), with currency, the dates each tier applies (a date written without a "
                   "year gets the latest year not after the festival's start), tickets at that price, door price, sold "
                   "out, and the quote it came from.",
+    "ticket_sales": "How festivals with no full ticket link sell, as an agent found it (pipeline/tickets/pages.csv): "
+                    "state 'shop' with its page, 'not_yet' (sales announced, not open), 'offline' (by message, e-mail, "
+                    "form or bank transfer) or 'closed'.",
     "ticket_pages": "Festivals whose prices are read on their ticket page (pipeline/tickets.py): the page, the "
                     "reseller selling there at its own prices when it isn't the organiser, the day it was last read, the site recipe that read it, and how many of its tickets are not read yet.",
     "event_price_notes": "Price rules a festival states that the tiers can't hold (\"Prices exclude ticketing fees\", "
@@ -436,10 +449,14 @@ def main() -> None:
         ],
     )
     load_prices(con, prices, pages)
+    with SALES.open(encoding="utf-8") as f:
+        con.executemany("INSERT INTO ticket_sales VALUES (?, ?, ?, ?)",
+                        [(int(r["event_id"]), r["state"], r["page"] or None, r["note"])
+                         for r in csv.DictReader(f) if int(r["event_id"]) in event_ids])
     con.commit()
     record_steps(con, extract, rooms_genres, prices)
     for table in ("event_features", "artist_mentions", "event_genres", "event_rooms", "event_room_list", "event_passes",
-                  "pass_tiers", "ticket_pages"):
+                  "pass_tiers", "ticket_pages", "ticket_sales"):
         print(table, con.execute(f"SELECT count(*) FROM {table}").fetchone()[0])
 
 

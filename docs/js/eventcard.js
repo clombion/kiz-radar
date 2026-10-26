@@ -1,5 +1,6 @@
 // The festival card used across the site: date, place, title, styles, highlights, a few names and the flight,
 // opening in place to the full line-up and practical details. Rows come from festivals.js (withDetails).
+import { q } from './db.js';
 import { h, addDays, today, flightsUrl, home, dayMonth } from './ui.js';
 import { money, convert, step, total } from './money.js';
 import { riseNote, openPasses } from './passes.js';
@@ -38,9 +39,22 @@ function flight(e) {
 //   Cost ~4 130 kr, without accommodation · price goes up 15 Dec
 //   1 670 kr full pass + ~2 460 kr flight to Stockholm, then 37 km
 // The pass opens the passes quick view; the flight opens Google Flights. With only one of the two, that one alone.
+// Without a price, why: the ticket page has one we haven't read, sales haven't opened, sell by message or form, or
+// are closed; else no price is listed anywhere we know.
+const NO_PRICE = { not_yet: 'Tickets not on sale yet', offline: 'Tickets by message or form, no price online',
+  closed: 'Ticket sales closed' };
+let sales;
+function noPrice(e) {
+  sales ||= new Map(q('SELECT event_id, state, page FROM ticket_sales').map(r => [r.event_id, r]));
+  const s = sales.get(e.id);
+  const text = s?.state === 'shop' ? h('a', { href: s.page, target: '_blank', rel: 'noopener', onclick: ev => ev.stopPropagation() },
+    'Prices on the ticket page ↗') : NO_PRICE[s?.state] || 'No price listed';
+  return h('p', { class: 'pass-price muted' }, '🎟 ', text);
+}
+
 function prices(e) {
   const p = e.price;
-  if (!p) return flight(e);
+  if (!p) return [noPrice(e), flight(e)];
   const passBtn = text => h('button', { type: 'button', class: 'link pass-btn',
     onclick: ev => { ev.stopPropagation(); openPasses(e, ev.currentTarget); } }, text);
   if (p.soldOut) return [h('p', { class: 'pass-price muted' }, '🎟 ', passBtn(`${p.hotel ? 'Packages' : 'Full passes'} sold out`)), flight(e)];

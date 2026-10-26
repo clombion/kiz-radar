@@ -8,7 +8,7 @@
     uv run --group tickets -m pipeline.tickets retry ID       # read with a visible browser, then record
     uv run --group tickets -m pipeline.tickets changes [ID]   # what changed between consecutive reads
     uv run --group tickets -m pipeline.tickets page ID URL --note N  # where a festival with no full link sells
-    uv run --group tickets -m pipeline.tickets page ID --none --note N  # or that it sells no tickets online
+    uv run --group tickets -m pipeline.tickets page ID --state S --note N  # or not_yet, offline or closed
     uv run --group tickets -m pipeline.tickets run            # the monthly Action
 
 A site recipe (tickets/sites/<site>.json, schema tickets/schemas/site.json) says where a site's ticket rows are; an
@@ -36,8 +36,8 @@ both from every first read and its log, so they hold what the reads and logs say
 first read no longer fits its page is left out until it is read again, and recording twice writes the same files.
 
 A festival without a first read waits for something (Waiting): its ticket page found (its links are cut short or
-none sells tickets; tickets/pages.csv, written by page, records the page an agent found, or that there is none
-online), a recipe for its site, or an agent when the two models disagreed; one whose reads keep failing waits for a
+none sells tickets; tickets/pages.csv, written by page, records how an agent found it sells them: its shop's page,
+or that its sales haven't opened, happen offline or are closed), a recipe for its site, or an agent when the two models disagreed; one whose reads keep failing waits for a
 session. The monthly run writes them all to tickets/waiting.csv and prints the counts; waiting is backlog, not a
 failure.
 
@@ -61,7 +61,7 @@ PRICE_FIELDS = ['event_id', 'kind', 'label', 'group_size', 'days', 'includes_hot
                 'alt_amount', 'alt_currency', 'from', 'until', 'quantity', 'sold_out', 'quote']
 PAGE_FIELDS = ['event_id', 'event', 'page', 'reseller', 'read_on', 'read_by', 'prompt_version', 'recipe', 'unread', 'notes']
 FOUND_CSV, WAITING_CSV = HERE / 'pages.csv', HERE / 'waiting.csv'
-FOUND_FIELDS = ['event_id', 'event', 'page', 'found_by', 'note']          # page empty: the festival sells none online
+FOUND_FIELDS = ['event_id', 'event', 'state', 'page', 'found_by', 'note']
 WAITING_FIELDS = ['event_id', 'event', 'start', 'waits_for', 'page', 'note']
 SITE_SCHEMA = json.loads((HERE / 'schemas' / 'site.json').read_text())
 READ_SCHEMA = json.loads((HERE / 'schemas' / 'read.json').read_text())
@@ -82,13 +82,23 @@ class Status(StrEnum):
     LAYOUT_BROKEN = 'layout_broken'
 
 
+class Sales(StrEnum):
+    """How a festival with no full link sells its tickets, as an agent found it (tickets/pages.csv)."""
+    SHOP = 'shop'              # a page sells them online: page is that page
+    NOT_YET = 'not_yet'        # sales are announced but not open ("coming soon", "TBA")
+    OFFLINE = 'offline'        # by message, e-mail, a form then payment, a bank transfer or an agency
+    CLOSED = 'closed'          # its sales or registrations are closed
+
+
 class Waiting(StrEnum):
     """What a festival with no prices from its ticket page waits for."""
     PAGE = 'its ticket page found'          # no full link to it: kizomba-world cut it short, or gave none
     RECIPE = 'a recipe for its site'
     AGENT = 'an agent: the two models disagreed'
     SESSION = 'a session: its reads keep failing'
-    NONE_ONLINE = 'nothing: it sells no tickets online'
+    NOT_YET = 'its sales to open'
+    OFFLINE = 'nothing: it sells its tickets by message or form'
+    CLOSED = 'nothing: its sales are closed'
 
 
 class Recheck(StrEnum):
@@ -458,14 +468,14 @@ def festivals(db, today, only=None):
     events = [dict(r) for r in (db.execute(query + 'id = ?', (only,)) if only else
                                 db.execute(query + 'end_date >= ? order by start_date', (today,)))]
     described = answers.latest('prices', {e['id'] for e in events})
-    known, tiers, found = sites(), {}, {int(r['event_id']): r for r in csv_rows(FOUND_CSV)}
+    known, tiers, found = sites(), {}, found_pages()
     for r in csv_rows(PRICES_CSV):
         tiers.setdefault(int(r['event_id']), []).append(r)
     out = []
     for f in events:
         i, fr, entries, urls = f['id'], first_read(f['id']), log(f['id']), links(db, f['id'])
         full = [u for u in urls if '…' not in u]
-        page = (read_at(fr, entries)['page'] if fr else found[i]['page'] or None if i in found else
+        page = (read_at(fr, entries)['page'] if fr else (found[i]['page'] if found[i]['state'] == Sales.SHOP else None) if i in found else
                 next((u for u in full if site_for(u, known)), full[0] if full else None))
         f |= {'found': found.get(i), 'first_read': fr, 'log': entries, 'tiers': tiers.get(i, []), 'described': described.get(i), 'page': page,
               'links': urls, 'site': site_for(page, known) if page else None, 'disputed': (DISPUTED / f'{i}.json').exists()}
@@ -482,8 +492,8 @@ def waiting(f):
         return None
     if f['disputed']:
         return Waiting.AGENT
-    if f['found'] and not f['found']['page']:
-        return Waiting.NONE_ONLINE
+    if f['found'] and f['found']['state'] != Sales.SHOP:
+        return {Sales.NOT_YET: Waiting.NOT_YET, Sales.OFFLINE: Waiting.OFFLINE, Sales.CLOSED: Waiting.CLOSED}[f['found']['state']]
     return Waiting.PAGE if not f['page'] else Waiting.RECIPE if not f['site'] else None
 
 def write_waiting(fs):
@@ -622,23 +632,34 @@ def cmd_todo():
     counts = collections.Counter(w for f in fs if (w := waiting(f)))
     print('\nwaiting: ' + '; '.join(f'{n} for {w}' for w, n in counts.most_common()))
 
-def cmd_page(event_id, url, none, note, by):
-    """Record where a festival sells its tickets (or that it sells none online), for one with no full link to it."""
+def found_pages():
+    """{event_id: tickets/pages.csv row}, each checked: a known state, and a page exactly when it sells in a shop (a
+    festival whose sales haven't opened may name its coming page)."""
+    out = {}
+    for r in csv_rows(FOUND_CSV):
+        if r['state'] not in set(Sales) or ((r['state'] == Sales.SHOP) != bool(r['page']) and r['state'] != Sales.NOT_YET):
+            sys.exit(f"{shown(FOUND_CSV)}: festival {r['event_id']}: state {r['state']!r} with page {r['page']!r}")
+        out[int(r['event_id'])] = r
+    return out
+
+def cmd_page(event_id, url, state, note, by):
+    """Record how a festival with no full link sells its tickets: its shop's page, or that its sales haven't opened,
+    happen offline, or are closed."""
     f = one(event_id)
     if f['first_read']:
         sys.exit(f"{event_id}: it has a first read of {f['page']}; read a new page with: read {event_id} --url URL")
-    if bool(url) == none:
-        sys.exit('give the page, or --none when the festival sells no tickets online')
+    if (state == Sales.SHOP) != bool(url) and state != Sales.NOT_YET:
+        sys.exit('a shop needs its page, and only a shop (or sales not open yet) has one')
     if url and not re.match(r'https?://[^\s…]+$', url):
         sys.exit(f'{url}: not a full address')
     rows = [r for r in csv_rows(FOUND_CSV) if int(r['event_id']) != event_id]
-    rows.append({'event_id': event_id, 'event': f['title'], 'page': url or '', 'found_by': by, 'note': note})
+    rows.append({'event_id': event_id, 'event': f['title'], 'state': state, 'page': url or '', 'found_by': by, 'note': note})
     with FOUND_CSV.open('w', encoding='utf-8', newline='') as out:
         w = csv.DictWriter(out, FOUND_FIELDS, lineterminator='\n')
         w.writeheader()
         w.writerows(sorted(rows, key=lambda r: int(r['event_id'])))
-    print(f"{event_id}: {url or 'no tickets online'}"
-          + ('' if not url or site_for(url, sites()) else f'; no recipe for {urlparse(url).netloc} yet'))
+    print(f"{event_id}: {state}" + (f' {url}' if url else '')
+          + ('' if state != Sales.SHOP or site_for(url, sites()) else f'; no recipe for {urlparse(url).netloc} yet'))
 
 def cmd_changes(event_id=None):
     for i in [event_id] if event_id else sorted(int(p.stem) for p in LOG.glob('*.jsonl')):
@@ -701,7 +722,8 @@ def main():
     pg = sub.add_parser('page', help='record where a festival with no full link sells its tickets')
     pg.add_argument('id', type=int)
     pg.add_argument('url', nargs='?', help='the ticket page')
-    pg.add_argument('--none', action='store_true', help='the festival sells no tickets online')
+    pg.add_argument('--state', type=Sales, choices=list(Sales), default=Sales.SHOP,
+                    help='shop (the default, with its page), not_yet, offline or closed')
     pg.add_argument('--note', required=True, help='how it was found, or why there is none')
     pg.add_argument('--by', default='agent', help='who found it')
     sub.add_parser('run', help='the monthly Action')
@@ -717,7 +739,7 @@ def main():
         case 'check': cmd_check(a.id)
         case 'retry': cmd_retry(a.id)
         case 'changes': cmd_changes(a.id)
-        case 'page': cmd_page(a.id, a.url, a.none, a.note, a.by)
+        case 'page': cmd_page(a.id, a.url, a.state, a.note, a.by)
         case 'run': cmd_run()
 
 if __name__ == '__main__':
