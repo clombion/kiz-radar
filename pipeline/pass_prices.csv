@@ -1,4 +1,28 @@
 event_id,kind,label,group_size,days,includes_hotel,amount,currency,alt_amount,alt_currency,from,until,quantity,door,sold_out,quote
+16713,full,,1,,0,90,EUR,,,,,,0,0,"Full Pass Solo € 90,00"
+16713,full,,2,,0,170,EUR,,,,,,0,0,"Full Pass Couple € 170,00"
+16713,party,,1,,0,33,EUR,,,,,,0,0,"Party Pass € 33,00"
+16713,day,,1,,0,27,EUR,,,,,,0,0,"Friday Pass (Workshops + Party) € 27,00"
+16713,day,,1,,0,80,EUR,,,,,,0,0,"Saturday Full Pass (Workshops + Party) € 80,00"
+16713,day,,1,,0,50,EUR,,,,,,0,0,"Saturday Party + 4 Workshops € 50,00"
+16713,day,,1,,0,45,EUR,,,,,,0,0,"Saturday Party + 3 Workshops € 45,00"
+16713,day,,1,,0,30,EUR,,,,,,0,0,"Saturday Party + 2 Workshops € 30,00"
+16794,other,,1,,0,280,USD,,,,,,0,0,VIP PASS - TIER 8 $280.00
+16794,full,,1,,0,250,USD,,,,,,0,0,FULL PASS - TIER 8 $250.00
+16794,party,,1,,0,200,USD,,,,,,0,0,PARTY PASS $200.00
+16794,day,,1,,0,40,USD,,,,,,0,0,Thursday Night Pass (Pre-Party) $40.00
+16794,day,,1,,0,120,USD,,,,,,0,0,FRIDAY ALL DAY (ACCESS TO ALL 5 ROOMS) $120.00
+16794,day,,1,,0,70,USD,,,,,,0,0,FRIDAY NIGHT ONLY $70.00
+16794,day,,1,,0,150,USD,,,,,,0,0,SATURDAY ALL DAY (ACCESS TO ALL 5 ROOMS) $150.00
+16794,day,,1,,0,80,USD,,,,,,0,0,SATURDAY NIGHT ONLY $80.00
+16794,day,,1,,0,130,USD,,,,,,0,0,SUNDAY ALL DAY (ACCESS TO ALL 5 ROOMS) $130.00
+16794,day,,1,,0,70,USD,,,,,,0,0,SUNDAY NIGHT ONLY $70.00
+16840,full,,1,,0,110,EUR,,,,,,0,0,"Full Pass - Leader ""October"" €110.00"
+16840,full,,2,,0,200,EUR,,,,,,0,0,"Full Pass - Couple Pass ""October"" €200.00"
+16840,party,,1,,0,80,EUR,,,,,,0,0,"Party Pass - Follower ""October"" €80.00"
+16840,day,,1,,0,70,EUR,,,,,,0,0,DAY Pass Saturday - Follower €70.00
+16840,day,,1,,0,70,EUR,,,,,,0,0,DAY Pass Sunday - Follower €70.00
+16840,day,,1,,0,60,EUR,,,,,,0,0,DAY Pass FRIDAY - Leader €60.00
 16884,full,,1,3,0,119,EUR,,,,,,0,0,FULL-PASS MALE 3 Days €119.00 + €1.00 fee.
 16884,full,,2,3,0,215,EUR,,,,,,0,0,COUPLE PASS 3 DAYS €215.00 + €1.00 fee.
 16884,day,,1,1,0,50,EUR,,,,,,0,0,"FRIDAY DAY PASS ""MALE"" €50.00 + €1.00 fee."
@@ -35,6 +59,12 @@ event_id,kind,label,group_size,days,includes_hotel,amount,currency,alt_amount,al
 17493,day,,1,1,0,25.99,EUR,,,,,,0,0,THURSDAY WORKSHOP & PREPARTY 26/11/2026 (MALE) €25.99
 17493,party,,1,,0,117.95,EUR,,,,,,0,0,PARTY PASS (MALE) €117.95
 17493,full,,2,,0,246.15,EUR,,,,,,0,0,COUPLE PASS €246.15
+17500,full,Couple Pass,2,,0,580,PLN,135,EUR,,,,0,1,Early Birds 1st 580 PLN \ 135 EUR · 135 EUR
+17500,full,Couple Pass,2,,0,630,PLN,147,EUR,,,,0,1,Early Bird 2nd 630 PLN \ 147 EUR · 147 EUR
+17500,full,Couple Pass,2,,0,780,PLN,181,EUR,,,,0,1,Couple Pass 3rd 780 PLN \ 181 EUR · 181 EUR
+17500,full,Man Solo 3rd,1,,0,410,PLN,95,EUR,,,,0,0,Man Solo 3rd 410 PLN \ 95 EUR · 95 EUR
+17500,other,Dance Pass Couple,2,,0,700,PLN,162,EUR,,,,0,0,Dance Pass Couple 700 PLN \ 162 EUR · 162 EUR
+17500,other,Dance Pass Man,1,,0,360,PLN,83,EUR,,,,0,0,Dance Pass Man 360 PLN \ 83 EUR · 83 EUR
 17515,full,,1,,0,102.56,EUR,,,,,,0,0,FULLPASS FEMME/ WOMEN €102.56
 17515,full,,2,,0,164.1,EUR,,,,,,0,0,FULLPASS DUO Leader and Leader (MAN ONLY) €164.10
 17946,full,UNIQUE PASS - COUPLE,2,3,0,225.64,EUR,,,,,,0,0,UNIQUE PASS - COUPLE €225.64
@@ -51,6 +81,14 @@ event_id,kind,label,group_size,days,includes_hotel,amount,currency,alt_amount,al
 17946,day,SOIREE DIMANCHE ( Sunday party ),1,1,0,15.99,EUR,,,,,,0,0,SOIREE DIMANCHE ( Sunday party ) €15.99
 17974,full,,1,,0,105,EUR,,,,,,0,0,FULL PASS MAN / FULL PASS HOMME SEPT €105.00
 17974,full,,2,,0,200,EUR,,,,,,0,0,FULL PASS DUO MAN & WOMAN SEPT €200.00
+18266,full,Dipanda Full Pass,1,3,0,100,EUR,,,09-01,11-30,,0,0,Dipanda Full Pass €100.00
+18266,party,Dipanda Party Pass,1,,0,35,EUR,,,,,,0,0,Dipanda Party Pass €35.00
+18266,day,Dipanda Friday Night Pass,1,,0,16,EUR,,,,,,0,0,Dipanda Friday Night Pass €16.00
+18266,day,Dipanda Saturday Night Pass,1,,0,16,EUR,,,,,,0,0,Dipanda Saturday Night Pass €16.00
+18266,day,Dipanda Sunday Night Pass,1,,0,10,EUR,,,,,,0,0,Dipanda Sunday Night Pass €10.00
+18266,day,Dipanda Friday Day Pass,1,,0,40,EUR,,,,,,0,0,Dipanda Friday Day Pass €40.00
+18266,day,Dipanda Saturday Day Pass,1,,0,40,EUR,,,,,,0,0,Dipanda Saturday Day Pass €40.00
+18266,day,Dipanda Sunday Day Pass,1,,0,40,EUR,,,,,,0,0,Dipanda Sunday Day Pass €40.00
 18282,full,,1,,0,87.18,EUR,,,,,,0,0,"PASS UOMO - Workshop, social, party, brindisi,tombola, giochi €87.18"
 18282,full,,2,,0,164.1,EUR,,,,,,0,0,"PASS COPPIA U/D - Workshop, social, party, brindisi,tombola, giochi €164.10"
 18282,full,,2,,0,153.85,EUR,,,,,,0,0,"PASS COPPIA 2 UOMINI - Workshop, social, party, brindisi,tombola, giochi €153.85"
@@ -67,14 +105,56 @@ event_id,kind,label,group_size,days,includes_hotel,amount,currency,alt_amount,al
 18359,full,,2,,0,150,EUR,,,,,,0,0,FULLPASS COUPLE MIXTE 75 €150.00
 18359,full,,2,,0,160,EUR,,,,,,0,0,FULLPASS COUPLE MIXTE 80 €160.00
 18359,full,,1,,0,80,EUR,,,,,,0,0,FULLPASS SOLO Femme 80 €80.00
+18479,full,,1,,0,125,EUR,,,,,,0,0,"FULL PASS WOMAN 2026 125,00€"
+18479,full,,3,,0,210,EUR,,,,,,0,0,"TRIPLE FULL PASS MAN 210,00€"
+18479,full,,2,,0,230,EUR,,,,,,0,0,"FULL COUPLE PASS (Male+Female) 230,00€"
+18479,party,,1,,0,90,EUR,,,,,,0,0,"SOCIAL PASS WOMAN 90,00€"
+18479,day,,2,,0,50,EUR,,,,,,0,0,"FRIDAY NIGHT COUPLE PASS ( 1 MAN + 1 WOMAN) 50,00€"
+18479,day,,2,,0,50,EUR,,,,,,0,0,"SATURDAY NIGHT COUPLE PASS ( 1 MAN + 1 WOMAN) 50,00€"
+18479,day,,1,,0,30,EUR,,,,,,0,0,"FRIDAY NIGHT PASS WOMAN 30,00€"
+18479,day,,1,,0,30,EUR,,,,,,0,0,"SATURDAY NIGHT PASS WOMAN 30,00€"
+18660,full,PKF27 - FULLPASS MAN - FEBRUARY,1,,0,113.99,EUR,,,,,,0,0,PKF27 - FULLPASS MAN - FEBRUARY €113.99
+18660,full,PKF27 - FULLPASS COUPLEPASS - FEBRUARY,2,,0,212.44,EUR,,,,,,0,0,PKF27 - FULLPASS COUPLEPASS - FEBRUARY €212.44
+18660,party,PKF27 - DANCEPASS MAN - FEBRUARY,1,,0,93.27,EUR,,,,,,0,0,PKF27 - DANCEPASS MAN - FEBRUARY €93.27
+18660,party,PKF27 - DANCEPASS COUPLEPASS - FEBRUARY,2,,0,176.17,EUR,,,,,,0,0,PKF27 - DANCEPASS COUPLEPASS - FEBRUARY €176.17
 18666,full,,1,,0,3125,CZK,125,EUR,,,,0,0,"4th Wave PGKT Festival | FULLPASS MAN CZK 3,125.00 · The ticket price is 125 €."
 18666,full,,2,,0,6000,CZK,240,EUR,,,,0,0,"4th Wave PGKT Festival | FULLPASS COUPLE CZK 6,000.00 · The ticket price is 240 €."
 18666,party,DANCEPASS,1,,0,2750,CZK,110,EUR,,,,0,0,"4th Wave PGKT Festival | DANCEPASS WOMAN CZK 2,750.00 · The ticket price is 110 €."
 18666,party,DANCEPASS,2,,0,5250,CZK,210,EUR,,,,0,0,"4th Wave PGKT Festival | DANCEPASS COUPLE CZK 5,250.00 · The ticket price is 210 €."
 18690,full,,1,,0,150,EUR,,,,,,0,0,Full pass ( Fase 8 ) - Kizomba leader €150.00 + €1.00 fee.
 18690,full,,2,,0,290,EUR,,,,,,0,0,Couple ticket ( Fase 8 ) - All styles €290.00 + €1.00 fee.
+18706,party,PARTYPASS,1,,0,69,EUR,,,,,,0,1,EARLY PARTYPASS 69.00
+18706,party,PARTYPASS,1,,0,89,EUR,,,,,,0,1,PARTYPASS 89.00
+18706,party,PARTYPASS,1,,0,99,EUR,,,,,,0,0,PARTYPASS 99.00
+18706,party,PARTYPASS,1,,0,109,EUR,,,,,,0,0,PARTYPASS 109.00
+18706,party,PARTYPASS,1,,0,119,EUR,,,,,,0,0,PARTYPASS 119.00
+18706,party,PARTYPASS,1,,0,129,EUR,,,,,,0,0,PARTYPASS 129.00
+18706,party,PARTYPASS,1,,0,139,EUR,,,,,,0,0,PARTYPASS 139.00
+18706,party,PARTYPASS,1,,0,150,EUR,,,,,,0,1,PARTYPASS 150.00
+18706,full,FULLPASS,1,,0,89,EUR,,,,,,0,1,EARLY FULLPASS 89.00
+18706,full,FULLPASS,1,,0,109,EUR,,,,,,0,1,FULLPASS 109.00
+18706,full,FULLPASS,1,,0,119,EUR,,,,,,0,0,FULLPASS 119.00
+18706,full,FULLPASS,1,,0,129,EUR,,,,,,0,0,FULLPASS 129.00
+18706,full,FULLPASS,1,,0,139,EUR,,,,,,0,0,FULLPASS 139.00
+18706,full,FULLPASS,1,,0,149,EUR,,,,,,0,0,FULLPASS 149.00
+18706,full,FULLPASS,1,,0,159,EUR,,,,,,0,0,FULLPASS 159.00
+18706,full,FULLPASS,1,,0,170,EUR,,,,,,0,0,FULLPASS 170.00
+18725,full,,1,,0,61,EUR,,,,,,0,0,EARLY BIRD FULL PASS ALL ACCES 61.00€
+18744,full,Man full pass,1,,0,66.59,EUR,,,,,,0,1,Man full pass 66.59€
+18744,full,Man full pass,1,,0,81.89,EUR,,,,,,0,0,Man full pass 81.89€
+18744,full,Man full pass,1,,0,97.19,EUR,,,,,,0,0,Man full pass 97.19€
+18744,full,Man full pass,1,,0,112.49,EUR,,,,,,0,0,Man full pass 112.49€
+18744,full,Couple pass 1 man & 1 woman,2,,0,133.18,EUR,,,,,,0,1,Couple pass 1 man & 1 woman 133.18€
+18744,full,Couple pass 1 man & 1 woman,2,,0,163.78,EUR,,,,,,0,0,Couple pass 1 man & 1 woman 163.78€
+18744,full,Couple pass 1 man & 1 woman,2,,0,194.38,EUR,,,,,,0,0,Couple pass 1 man & 1 woman 194.38€
+18744,full,Couple pass 1 man & 1 woman,2,,0,224.98,EUR,,,,,,0,0,Couple pass 1 man & 1 woman 224.98€
+18744,package,PACKAGE: 2 full passes + Duo room,2,,1,480,EUR,,,,,,0,0,PACKAGE: 2 full passes + Duo room 480.00€
+18744,package,PACKAGE: 2 full passes + Duo room,2,,1,500,EUR,,,,,,0,0,PACKAGE: 2 full passes + Duo room 500.00€
+18744,package,PACKAGE: 2 full passes + Twin room,2,,1,480,EUR,,,,,,0,1,PACKAGE: 2 full passes + Twin room 480.00€
 18757,full,,1,3,0,89,EUR,,,,,,0,0,"Male Passes 3 Days ""Limited"" €89.00 + €1.00 fee."
 18757,full,,2,3,0,159,EUR,,,,,,0,0,"COUPLE PASS 3 DAYS ""Limited"" €159.00 + €1.00 fee."
+18802,full,FULL PASS,1,,0,80,EUR,,,,,,0,0,"FULL PASS 80,00 € /ud"
+18802,full,FULL PASS VIP,1,,0,160,EUR,,,,,,0,0,"FULL PASS VIP 160,00 € /ud"
 18816,full,,2,,0,150,EUR,,,,,,0,0,FULLPASS DUO €150.00
 18816,full,,2,,0,120,EUR,,,,,,0,0,FULLPASS DUO €120.00
 18816,full,,2,,0,100,EUR,,,,,,0,0,FULLPASS DUO €100.00
@@ -85,15 +165,41 @@ event_id,kind,label,group_size,days,includes_hotel,amount,currency,alt_amount,al
 18816,full,,1,,0,70,EUR,,,,,,0,0,FULL PASS OMNI (switch) €70.00
 18816,full,,1,,0,50,EUR,,,,,,0,0,FULL PASS OMNI (switch) €50.00
 18816,full,,1,,0,40,EUR,,,,,,0,1,Early bird Omni €40.00
+18820,full,Full Pass LEADER,1,,0,85,EUR,,,,,,0,0,Full Pass LEADER 85.00
+18820,full,Full Pass COUPLE - PAREJA,2,,0,160,EUR,,,,,,0,0,Full Pass COUPLE - PAREJA 160.00
+18820,other,COMBO FULL PASS - TÁ BOM & MWANGOLÉ BELGIUM,1,,0,150,EUR,,,,,,0,0,COMBO FULL PASS - TÁ BOM & MWANGOLÉ BELGIUM 150.00
+18826,full,Full Pass,1,,0,95,EUR,,,,,,0,0,"Full Pass 95,00 €"
+18826,full,"Incluye VIP Pass con prioridad para sentarse en las primeras filas durante los shows, una camiseta oficial del Málaga Dance Congress y beneficios adic",1,,0,115,EUR,,,,,,0,0,"Incluye VIP Pass con prioridad para sentarse en las primeras filas durante los shows, una camiseta oficial del Málaga Dance Congress y beneficios adic 115,00 €"
+18826,party,"Party Pass – Solo Sociales y Fiestas ¡Disfruta de todas las fiestas y eventos sociales! , Talleres no incluidos",1,,0,89,EUR,,,,,,0,0,"Party Pass – Solo Sociales y Fiestas ¡Disfruta de todas las fiestas y eventos sociales! , Talleres no incluidos 89,00 €"
+18826,package,"Full Pass + habitación individual + 2 noches + pensión completa + bebidas ilimitadas (vino, cerveza, refrescos y agua) en el principal hotel estival T",1,,1,362,EUR,,,,,,0,0,"Full Pass + habitación individual + 2 noches + pensión completa + bebidas ilimitadas (vino, cerveza, refrescos y agua) en el principal hotel estival T 362,00 €"
+18826,package,"Full Pass con alojamiento.habitación doble para 2 personas durante 2 noches, pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) e",2,,1,530,EUR,,,,,,0,0,"Full Pass con alojamiento.habitación doble para 2 personas durante 2 noches, pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) e 530,00 €"
+18826,package,"Full Pass con alojamiento en habitación triple para 3 personas durante 2 noches, con pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y",3,,1,780,EUR,,,,,,0,0,"Full Pass con alojamiento en habitación triple para 3 personas durante 2 noches, con pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y 780,00 €"
+18826,package,"Full Pass con alojamiento en habitación individual durante 3 noches, con pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) en el",1,,1,473,EUR,,,,,,0,0,"Full Pass con alojamiento en habitación individual durante 3 noches, con pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) en el 473,00 €"
+18826,package,"Full Pass que incluye alojamiento en habitación doble durante 3 noches, pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) en el",2,,1,738,EUR,,,,,,0,0,"Full Pass que incluye alojamiento en habitación doble durante 3 noches, pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) en el 738,00 €"
+18826,package,"Full Pass con alojamiento en habitación triple durante 3 noches, con pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) en el hot",3,,1,1090,EUR,,,,,,0,0,"Full Pass con alojamiento en habitación triple durante 3 noches, con pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) en el hot 1.090,00 €"
+18826,package,"Full Pass con alojamiento en habitación individual durante 4 noches, pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) en el hot",1,,1,567,EUR,,,,,,0,0,"Full Pass con alojamiento en habitación individual durante 4 noches, pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) en el hot 567,00 €"
+18826,package,"Full Pass con alojamiento en habitación doble durante 4 noches, pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) en el hotel Es",2,,1,914,EUR,,,,,,0,0,"Full Pass con alojamiento en habitación doble durante 4 noches, pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) en el hotel Es 914,00 €"
+18826,package,"Full Pass con alojamiento en habitación triple durante 4 noches, pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) en el hotel E",3,,1,1356,EUR,,,,,,0,0,"Full Pass con alojamiento en habitación triple durante 4 noches, pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) en el hotel E 1.356,00 €"
 18835,full,,2,3,0,200,EUR,,,,,,0,0,"COUPLE FULLPASS (Friday - Sunday) € 195,-- (+ 5,-- fee) €200.00"
 18835,full,,1,3,0,110,EUR,,,,,,0,0,"MEN FULLPASS (Friday - Sunday) € 105,-- (+ fee € 5,--) €110.00"
 18915,full,,1,,0,69.99,EUR,,,,,,0,0,EARLY BIRD OFFER 2 €69.99
+18971,full,LEAD FULL PASS,1,,0,130,CAD,,,,,,0,0,LEAD FULL PASS CA$130.00
+18971,full,COUPLE FULL PASS (LEADS & FOLLOW),2,,0,230,CAD,,,,,,0,0,COUPLE FULL PASS (LEADS & FOLLOW) CA$230.00
 18981,full,,2,,0,150,EUR,,,,,,0,0,Couple Full Pass €150.00
 18981,full,,1,,0,85,EUR,,,,,,0,0,Man Full Pass €85.00
 19026,full,,1,,0,65,EUR,,,,,50,0,0,FULLPASS EARLY BIRD €65.00
+19439,day,,1,,0,25,USD,,,,,,0,0,"NYSBKZ Salsa Pre-Party at KTown | Thurs, Jan 28th - Early Bird $25.00 +$1.60 Fee"
+19439,full,,1,,0,240,USD,,,,,,0,0,Full Pass 2027 - October Price $240.00 +$12.68 Fee
+19439,party,,1,3,0,180,USD,,,,,,0,0,3-Night Party Pass 2027 - October Price $180.00 +$9.59 Fee
+19439,day,,1,,0,75,USD,,,,,,0,0,Friday Night Pass 2027 $75.00 +$4.18 Fee
+19439,day,,1,,0,80,USD,,,,,,0,0,Saturday Night Pass 2027 $80.00 +$4.44 Fee
+19439,day,,1,,0,75,USD,,,,,,0,0,Sunday Night Pass 2027 $75.00 +$4.18 Fee
 19441,full,,1,,0,89.47,CHF,,,,,,0,0,FULL PASS - LEADER CHF 89.47
 19453,full,,2,,0,210,EUR,,,,,,0,0,Couple Pass €210.00
 19453,full,,1,,0,115,EUR,,,,,,0,0,Fullpass Woman €115.00
 19453,day,,1,1,0,87,EUR,,,,,,0,0,Saturday pass €87.00
 19453,day,,1,1,0,60,EUR,,,,,,0,0,Sunday Pass €60.00
 19453,day,,1,1,0,60,EUR,,,,,,0,0,Friday Pass €60.00
+19552,full,,1,,0,90,EUR,,,,,,0,0,Full Pass Femme 90.00€
+19552,full,,1,,0,60,EUR,,,,,,0,1,Early bird 60.00€
+19552,full,,1,,0,70,EUR,,,,,,0,1,Early bird 70 euros 70.00€

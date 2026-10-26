@@ -1,0 +1,73 @@
+{
+ "event_id": 18820,
+ "title": "𝗧𝗔́ 𝗕𝗢𝗠 African Rhythms",
+ "read_by": "agent",
+ "prompt_version": "first-read-v1",
+ "rows_at": "2026-10-26T20:34:37+00:00",
+ "description": "𝗧𝗔́ 𝗕𝗢𝗠 𝘼𝙛𝙧𝙞𝙘𝙖𝙣 𝙍𝙝𝙮𝙩𝙝𝙢𝙨\n📆 𝗝𝗮𝗻𝘂𝗮𝗿𝘆 𝟮𝟵, 𝟯𝟬, 𝗮𝗻𝗱 𝟯𝟭, 𝟮𝟬𝟮𝟳\n📍 𝗟𝗲𝗼́𝗻 (𝗦𝗽𝗮𝗶𝗻)\n🏨 𝗛𝗼𝘁𝗲𝗹 𝗭𝗲𝗻𝘁𝗿𝗮𝗹 𝗟𝗲𝗼́𝗻\n-𝑨𝒍𝒍 𝒊𝒏 𝒐𝒏𝒆-\n𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 & 𝗥𝗢𝗢𝗠 𝗕𝗢𝗢𝗞𝗜𝗡𝗚:\nhttps://lasalsadelbaile.com/tabom\n𝗔𝗥𝗧𝗜𝗦𝗧𝗔𝗦\n𝘛𝘖𝘕𝘠 𝘝𝘐𝘚𝘌𝘙 & 𝘊𝘈𝘙𝘓𝘈\n𝘈𝘙𝘠 & 𝘔𝘈𝘜𝘙𝘈\n𝘌𝘓𝘏𝘈𝘋𝘑 & 𝘑𝘌𝘕𝘕𝘈\n𝘉𝘖𝘕𝘐𝘍𝘈𝘊𝘐𝘖 𝘈𝘜𝘙𝘐𝘖\n𝘕-𝘗𝘠 𝘋𝘈 𝘉𝘈𝘐𝘓𝘈\n𝗗𝗘𝗘𝗝𝗔𝗬𝗦\n𝘔𝘐𝘙𝘖 𝘒𝘐𝘒𝘖𝘓𝘈\n𝘉𝘈𝘒𝘖𝘕𝘎𝘖\n𝘓𝘐𝘕𝘋𝘜𝘒𝘈\n𝘚𝘊𝘈𝘕\n𝘔𝘈𝘜𝘙𝘐𝘕𝘖\n𝗣𝗥𝗜𝗖𝗘𝗦:\n•€79 Full pass\n•€148 Full pass couple\n•€79 Double room/day\n📩 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡:\n𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽:\nhttps://chat.whatsapp.com/HDtBswUTgt46BSu1pgoYPv?mode=gi_t\n𝗙𝗮𝗰𝗲𝗯𝗼𝗼𝗸 𝗘𝘃𝗲𝗻𝘁:\n𝗪𝗲𝗯:\nhttps://kizombakatxupa.com/mis_congresos/ta-bom/\n𝗜𝗻𝘀𝘁𝗮𝗴𝗿𝗮𝗺:\nhttps://www.instagram.com/ta_bom_african_rhythms/\n.\n.\n#tabomafricanrhythms #kizomba #kizombakatxupa #tabomleon #kizombaenleon",
+ "passes": [
+  {
+   "kind": "full",
+   "label_quote": "Full Pass LEADER",
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "19608",
+      "19610"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "label_quote": "Full Pass COUPLE - PAREJA",
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "19609"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "label_quote": "COMBO FULL PASS - TÁ BOM & MWANGOLÉ BELGIUM",
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "21613"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [
+  "19612",
+  "19611"
+ ],
+ "rule_quotes": []
+}

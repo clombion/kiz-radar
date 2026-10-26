@@ -1,0 +1,51 @@
+{
+ "event_id": 18971,
+ "title": "SKS Sempre Kizomba Semba – 2ᵉ édition!",
+ "read_by": "agent",
+ "prompt_version": "first-read-v1",
+ "rows_at": "2026-10-26T20:25:48+00:00",
+ "description": "🎉🔥 SKS Sempre Kizomba Semba – 2ᵉ édition ! 🔥🎉\n📅 Dates : 12 au 14 mars 2027\n📍 Lieu : Montréal\n💃 Artistes : 🎤 À venir\n🎧 DJ : 🎵 À venir\n📍 Lieu exact : 📌 À venir\n💃🕺 Préparez-vous pour une semaine de danse, de vibes incroyables et de rencontres inoubliables !\n🎟 EARLY BIRD PASS : 100 $ seulement !\n⚡ Quantité limitée – ne ratez pas votre chance !\n👉 Achetez vos tickets ici\nhttps://www.eventbrite.ca/e/1986387397177?aff=oddtdtcreator\n✨ Même vibe, encore mieux !\n🤩 Great event, great people, great dance, great ambiance… YOU KNOW 😎\n💥 Vibrez avec nous et faites partie de cette expérience unique ! 💥\n#Kizomba #Semba #MontrealDance #SKSSempreKizomba #DanseAfro #VibesInoubliables #EvenementMontreal #DanseMontreal #PassEarlyBird #Danseurs #MusiqueAfro #WeekendDanse #PartyTime #GoodVibesOnly #ExperienceUnique—————————————————————\n🎉🔥 SKS Sempre Kizomba Semba – 2nd Edition! 🔥🎉\n📅 Dates: March 12–14, 2027\n📍 Location: Montreal\n💃 Artists: 🎤 To be announced\n🎧 DJ: 🎵 To be announced\n📍 Exact Venue: 📌 To be announced\n💃🕺 Get ready for a week of amazing dance, incredible vibes, and unforgettable connections!\n🎟 EARLY BIRD PASS: Only $100!\n⚡ Limited quantity – don’t miss your chance!\n👉 Get your tickets here\nhttps://www.eventbrite.ca/e/1986387397177?aff=oddtdtcreator\n✨ Same vibe, even better!\n🤩 Great event, great people, great dance, great ambiance… YOU KNOW 😎\n💥 Feel the energy, join the party, and be part of this unique experience! 💥",
+ "passes": [
+  {
+   "kind": "full",
+   "label_quote": "LEAD FULL PASS",
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "3450616764",
+      "3450616745"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "label_quote": "COUPLE FULL PASS (LEADS & FOLLOW)",
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "3450616792"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [],
+ "rule_quotes": []
+}

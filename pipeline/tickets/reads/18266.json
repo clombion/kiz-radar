@@ -1,0 +1,164 @@
+{
+ "event_id": 18266,
+ "title": "Dipanda Festival 2026",
+ "read_by": "agent",
+ "prompt_version": "first-read-v1",
+ "rows_at": "2026-10-26T20:25:31+00:00",
+ "description": "🌍 From Angola to the world 🌍\n🇦🇴 Dipanda Festival is an international cultural event created to celebrate, share and elevate Angolan culture through dance, music, gastronomy, traditions and identity.\n✨ More than just a festival, Dipanda is a unique experience where you truly feel the essence, the groove and the vibrant energy of Angola.\n🌎 For three days, Lisbon becomes a meeting point for cultures from around the world, bringing together people through connection, movement and authentic expression.\n📅 Program:\n💃 Daily workshops of Angolan dance, music and gastronomy\n🤝 Social dancing and cultural dynamics inspired by everyday Angolan life\n🎧 Night parties every day with DJs and invited artists\n🎶 Opening show with live music\n🍽️🎨 A full cultural experience with food, traditional decoration and artisan exhibition\n🌟 Artists:\nBernardeth e Dilson, YANIS Scruock, Npy da Baila, Alberto Celmo, Mister Cheyeee, Vanessa Ginga Pura, DJ Kazukuta, Josy Feijó, Domingas Morais, DJ Indelével, Dasmara Dossantos, Dr Kizomba, Paulo Selele, Suzy Nzambi, Cazuza Kinvula, Teresa e Emanuel, Paxola da Bengala, Alexandra de Brito, Anusha e CR7 do Semba.\n🎟️ Tickets:\n🎫 Full Festival Pass (3 days)\n💰 Until August: 75€\n💰 From September to November: 100€\n✅ Includes access to all festival days, workshops, cultural activities and night parties.\n🔗 Get your Full Festival Pass here:\nhttps://www.eventbrite.pt/…/dipanda-festival-2026-what…\n📩 Contact:\n📱 Instagram: Dipanda Festival\n📧 Email: dipandafestival@gmail.com\n🇦🇴 Dipanda Festival 🇦🇴\n❤️ 🖤💛What can’t be explained, must be lived ❤️🖤💛",
+ "passes": [
+  {
+   "kind": "full",
+   "label_quote": "Dipanda Full Pass",
+   "group_size": 1,
+   "days": 3,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "R9136751"
+     ],
+     "from": "09-01",
+     "until": "11-30",
+     "quantity": null,
+     "door": false,
+     "date_quote": "From September to November: 100€"
+    }
+   ]
+  },
+  {
+   "kind": "party",
+   "label_quote": "Dipanda Party Pass",
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "R9136753"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "label_quote": "Dipanda Friday Night Pass",
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "R9136755"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "label_quote": "Dipanda Saturday Night Pass",
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "R9136756"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "label_quote": "Dipanda Sunday Night Pass",
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "R9136760"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "label_quote": "Dipanda Friday Day Pass",
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "R9136757"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "label_quote": "Dipanda Saturday Day Pass",
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "R9136759"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "label_quote": "Dipanda Sunday Day Pass",
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "R9136758"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "door": false,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [],
+ "rule_quotes": []
+}

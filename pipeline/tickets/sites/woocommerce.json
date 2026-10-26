@@ -1,0 +1,54 @@
+{
+  "site": "woocommerce",
+  "hosts": [
+    "makutanosbkfestival.com",
+    "www.makutanosbkfestival.com",
+    "www.kizmi.it",
+    "kizmi.it"
+  ],
+  "widget": null,
+  "visible": false,
+  "wait": 8,
+  "open": null,
+  "symbols": {
+    "€": "EUR",
+    "£": "GBP",
+    "$": "USD"
+  },
+  "row": "li.product.type-product",
+  "fields": {
+    "key": {
+      "css": null,
+      "attr": "class",
+      "match": "\\bpost-(\\d+)\\b"
+    },
+    "name": {
+      "css": ".woocommerce-loop-product__title, li.title",
+      "attr": null,
+      "match": null
+    },
+    "price": {
+      "css": ".price ins, .price > .woocommerce-Price-amount",
+      "attr": null,
+      "match": null
+    },
+    "amount": {
+      "css": ".price ins .woocommerce-Price-amount, .price > .woocommerce-Price-amount",
+      "attr": null,
+      "match": "([\\d.,]+)"
+    },
+    "currency": {
+      "css": ".price ins .woocommerce-Price-currencySymbol, .price > .woocommerce-Price-amount .woocommerce-Price-currencySymbol",
+      "attr": null,
+      "match": null
+    },
+    "alt_price": null,
+    "alt_amount": null,
+    "alt_currency": null,
+    "sold_out": {
+      "css": null,
+      "attr": "class",
+      "match": "\\boutofstock\\b"
+    }
+  }
+}

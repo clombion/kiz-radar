@@ -1,6 +1,6 @@
 {
   "site": "weeztix",
-  "hosts": ["weeztix.shop"],
+  "hosts": ["weeztix.shop", "shop.weeztix.com"],
   "widget": null,
   "visible": false,
   "wait": 10,
