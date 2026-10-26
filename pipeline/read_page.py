@@ -40,8 +40,15 @@ def opened(url, wait=10, visible=False, browser=None):
             b.close()
 
 def click_all(page, selector):
-    """Click every match of a CSS selector, to open sections a page shows collapsed."""
+    """Click every match of a CSS selector that can be clicked when its turn comes, to open sections a page shows
+    collapsed: a page may keep hidden copies of a button for other screen sizes, and a dialog the first click opens
+    covers the others. What stays shut leaves its rows unread, which a recipe's read reports."""
+    from patchright.sync_api import TimeoutError
     for el in page.query_selector_all(selector):
+        try:
+            el.click(trial=True, timeout=2000)
+        except TimeoutError:
+            continue
         el.click()
     page.wait_for_timeout(1500)
 
