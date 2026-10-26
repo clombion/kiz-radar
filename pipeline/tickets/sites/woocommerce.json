@@ -17,6 +17,7 @@
     "$": "USD"
   },
   "row": "li.product.type-product",
+  "api": null,
   "fields": {
     "key": {
       "css": null,

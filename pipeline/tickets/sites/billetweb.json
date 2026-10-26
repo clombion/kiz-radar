@@ -19,6 +19,7 @@
     "CHF": "CHF"
   },
   "row": "tr.shop_step1_ticket[ticket]",
+  "api": null,
   "fields": {
     "key": {
       "css": null,

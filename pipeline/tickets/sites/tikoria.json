@@ -1,23 +1,54 @@
 {
   "site": "tikoria",
-  "hosts": ["www.tikoria.com", "tikoria.com"],
+  "hosts": [
+    "www.tikoria.com",
+    "tikoria.com"
+  ],
   "reseller": null,
   "widget": null,
   "visible": false,
   "wait": 10,
   "open": null,
-  "symbols": {"€": "EUR"},
+  "symbols": {
+    "€": "EUR"
+  },
   "row": "div[role='button']:has(> div > div > p.font-semibold)",
+  "api": null,
   "fields": {
-    "key": {"css": "script", "attr": null, "page": true, "match": "\\\\\"id\\\\\":(\\d+),\\\\\"eventId\\\\\":\\d+,\\\\\"name\\\\\":\\\\\"{name}\\\\\""},
-    "name": {"css": "p.font-semibold", "attr": null, "match": null},
-    "price": {"css": "div.items-end > p", "attr": null, "match": null},
-    "amount": {"css": "div.items-end > p", "attr": null, "match": "([\\d.,]+)"},
-    "currency": {"css": "div.items-end > p", "attr": null, "match": "([A-Z]{3}|€)"},
+    "key": {
+      "css": "script",
+      "attr": null,
+      "page": true,
+      "match": "\\\\\"id\\\\\":(\\d+),\\\\\"eventId\\\\\":\\d+,\\\\\"name\\\\\":\\\\\"{name}\\\\\""
+    },
+    "name": {
+      "css": "p.font-semibold",
+      "attr": null,
+      "match": null
+    },
+    "price": {
+      "css": "div.items-end > p",
+      "attr": null,
+      "match": null
+    },
+    "amount": {
+      "css": "div.items-end > p",
+      "attr": null,
+      "match": "([\\d.,]+)"
+    },
+    "currency": {
+      "css": "div.items-end > p",
+      "attr": null,
+      "match": "([A-Z]{3}|€)"
+    },
     "fee": null,
     "alt_price": null,
     "alt_amount": null,
     "alt_currency": null,
-    "sold_out": {"css": null, "attr": "aria-disabled", "match": "^true$"}
+    "sold_out": {
+      "css": null,
+      "attr": "aria-disabled",
+      "match": "^true$"
+    }
   }
 }

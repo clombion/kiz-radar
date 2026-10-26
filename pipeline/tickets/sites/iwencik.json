@@ -14,6 +14,7 @@
     "€": "EUR"
   },
   "row": "mat-option[data-testid^='registration-ticket-option-']",
+  "api": null,
   "fields": {
     "key": {
       "css": null,

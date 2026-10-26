@@ -1,0 +1,24 @@
+{
+  "site": "goandance",
+  "hosts": ["www.goandance.com", "goandance.com"],
+  "reseller": null,
+  "widget": null,
+  "visible": false,
+  "wait": 1,
+  "open": null,
+  "symbols": {"€": "EUR", "£": "GBP"},
+  "row": null,
+  "api": {"id": "data-event-uuid=\"([0-9a-f-]{36})\"", "url": "https://www.goandance.com/api/event/{id}/tickets", "items": "allTickets"},
+  "fields": {
+    "key": {"json": "uuid"},
+    "name": {"json": "name.text"},
+    "price": {"text": "{price.price} + {distributionFee} fee"},
+    "amount": {"json": "price.price"},
+    "currency": {"page": "\"priceCurrency\":\"([A-Z]{3})\""},
+    "fee": {"json": "distributionFee"},
+    "alt_price": null,
+    "alt_amount": null,
+    "alt_currency": null,
+    "sold_out": {"json": "stockLeft", "match": "^0$"}
+  }
+}

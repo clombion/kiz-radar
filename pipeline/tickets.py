@@ -144,7 +144,7 @@ def parsed(raw, symbols):
     and the amount what a buyer pays: the price plus the fee the site adds to it, when it shows one."""
     text = {k: ' '.join(v.split()) if isinstance(v, str) else v for k, v in raw.items()}
     code = lambda t: t and symbols.get(t, t)
-    amount, fee = number(text['amount']), number(text['fee'])
+    amount, fee = number(text['amount']), number(text['fee']) or None      # a fee of 0 is none
     return {'key': text['key'], 'name': text['name'], 'price': text['price'],
             'amount': round(amount + fee, 2) if amount is not None and fee is not None else amount, 'fee': fee,
             'currency': code(text['currency']), 'alt_price': text['alt_price'], 'alt_amount': number(text['alt_amount']),
@@ -161,12 +161,59 @@ def widget(url, recipe):
         return m.group(0) + recipe['widget']['suffix']
     raise LookupError(f'no ticket widget on {url}')
 
+def dotted(value, path):
+    for part in path.split('.'):
+        value = value.get(part) if isinstance(value, dict) else None
+    return value
+
+def as_text(value):
+    return None if value is None else str(value).lower() if isinstance(value, bool) else str(value)
+
+def api_value(f, item, html):
+    """A ticket's value by an api field of its recipe (schemas/site.json), as read_page.rows() gives values: a string or None."""
+    if f is None:
+        return None
+    if 'json' in f:
+        v = as_text(dotted(item, f['json']))
+    elif 'page' in f:
+        v = (m[1] if m.groups() else m[0]) if (m := re.search(f['page'], html)) else None
+    else:
+        v = re.sub(r'\{([\w.]+)\}', lambda m: as_text(dotted(item, m[1])) or '', f['text'])
+    if v is not None and f.get('match'):
+        v = (m[1] if m.groups() else m[0]) if (m := re.search(f['match'], v)) else None
+    return v
+
+def api_rows(page, recipe):
+    """(HTTP status, the API's address, the tickets as read_page.rows() gives rows) for a site whose page carries no
+    ticket ids but whose API does: the event's id from the page, then each ticket of the API's list."""
+    from curl_cffi import requests
+    html = requests.get(page, impersonate='chrome', timeout=60)
+    html.raise_for_status()
+    if not (m := re.search(recipe['api']['id'], html.text)):
+        raise LookupError(f'no event id on {page}')
+    url = recipe['api']['url'].replace('{id}', m[1])
+    response = requests.get(url, impersonate='chrome', timeout=60)
+    if response.status_code >= 400:
+        return response.status_code, url, []
+    items = dotted(response.json(), recipe['api']['items'])
+    if not isinstance(items, list):
+        raise LookupError(f"{url}: no list at {recipe['api']['items']}")
+    return response.status_code, url, [{k: api_value(f, item, html.text) for k, f in recipe['fields'].items()} for item in items]
+
 def attempt(page, recipe, version, visible=None):
     """One read of a ticket page, as its log entry."""
     from curl_cffi.requests.exceptions import RequestException
     from patchright.sync_api import Error
     from pipeline.read_page import RecipeError, rows
     entry = {'at': dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds'), 'page': page, 'recipe': version}
+    if recipe['api']:
+        try:
+            status, url, raw = api_rows(page, recipe)
+        except (LookupError, ValueError) as e:      # no event id, no ticket list, or no JSON
+            return entry | {'status': Status.LAYOUT_BROKEN, 'why': f'{type(e).__name__}: {e}'[:300]}
+        except RequestException as e:
+            return entry | {'status': Status.REFUSED, 'why': f'{type(e).__name__}: {e}'[:300]}
+        return judged(entry | {'url': url, 'http': status}, status, url, raw, recipe)
     try:
         url = widget(page, recipe)
     except LookupError as e:
@@ -180,7 +227,10 @@ def attempt(page, recipe, version, visible=None):
         return entry | {'status': Status.LAYOUT_BROKEN, 'why': f'the recipe fails on the page: {e}'[:300]}
     except Error as e:                      # the page would not load
         return entry | {'status': Status.REFUSED, 'why': f'{type(e).__name__}: {e}'[:300]}
-    entry['http'] = status
+    return judged(entry | {'http': status}, status, title, raw, recipe)
+
+def judged(entry, status, title, raw, recipe):
+    """The log entry for a read that got this far: refused, layout_broken, or read with its rows."""
     # a browser check answers 4xx, then shows the page once it has passed, so the status alone decides nothing
     if not raw and status and status >= 400:
         return entry | {'status': Status.REFUSED, 'why': f'HTTP {status} ({title})'}

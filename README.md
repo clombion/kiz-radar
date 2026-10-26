@@ -181,7 +181,9 @@ judgment about a page is made once, by an agent or two models, and checked; ever
   attributes as `{@attr}`: Tikoria's ticket ids sit in its script data next to each ticket's name, and Kizzbee's
   prices in a JSON attribute keyed by each option's value. A recipe names the reseller when the site sells other
   organisers' festivals at its own prices (Kizzbee); it is used only when the festival sells nowhere else, and the
-  passes view says so. An agent writes one per site; FairPlay's needs a visible browser (it is behind a browser
+  passes view says so. A site whose page carries no ticket ids but whose API does (go&dance) gets an API recipe:
+  the event's id found on its page, the API's address, and each field a path into a ticket's JSON, a pattern on the
+  page, or a text built from JSON values; it reads with plain requests, no browser. An agent writes one per site; FairPlay's needs a visible browser (it is behind a browser
   check).
 - **A log per festival** (`pipeline/tickets/log/<event_id>.jsonl`, schema `log.json`, checked on every write and
   read) gets one entry per read: `read` with every row, `refused` (no rows and an HTTP error, or the page would not

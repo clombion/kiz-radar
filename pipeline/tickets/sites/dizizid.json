@@ -15,6 +15,7 @@
     "Kč": "CZK"
   },
   "row": "tr[ng-repeat^='offer in']:has(button[id^='add-to-cart-'])",
+  "api": null,
   "fields": {
     "key": {
       "css": "button[id^='add-to-cart-']",

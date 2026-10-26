@@ -15,6 +15,7 @@
     "£": "GBP"
   },
   "row": ".tc-card-list__item:has(input[name='tickets[]'])",
+  "api": null,
   "fields": {
     "key": {
       "css": "input[name='tickets[]']",

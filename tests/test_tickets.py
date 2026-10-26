@@ -208,7 +208,7 @@ def test_numbers_as_sites_write_them(text, number):
 
 RAW = {'key': '1', 'name': 'Fullpass', 'price': '€81.03', 'amount': '81.03', 'currency': '€', 'fee': None, 'alt_price': None,
        'alt_amount': None, 'alt_currency': None, 'sold_out': None}
-RECIPE = {'widget': None, 'symbols': {'€': 'EUR'}}
+RECIPE = {'widget': None, 'api': None, 'symbols': {'€': 'EUR'}}
 
 
 def attempt_with(monkeypatch, raw=None, error=None):
@@ -436,3 +436,31 @@ def test_recipe_placeholders_name_fields_or_attributes():
                           if not at and k not in recipe['fields']]
     assert wrong == []
     assert re.findall(pattern, '[A-Z]{3}') == [] and re.findall(pattern, '"{@value}" {name}') == [('@', 'value'), ('', 'name')]
+
+
+TICKET = {'uuid': 'b4cb', 'name': {'text': 'Couples Party Pass'}, 'price': {'price': 185.0}, 'distributionFee': 6.75,
+          'stockLeft': 0, 'available': False}
+
+
+@pytest.mark.parametrize('field, value', [
+    ({'json': 'name.text'}, 'Couples Party Pass'),
+    ({'json': 'available'}, 'false'),
+    ({'json': 'missing.path'}, None),
+    ({'page': '"priceCurrency":"([A-Z]{3})"'}, 'EUR'),
+    ({'text': '{price.price} + {distributionFee} fee'}, '185.0 + 6.75 fee'),
+    ({'json': 'stockLeft', 'match': '^0$'}, '0'),
+    (None, None),
+])
+def test_api_fields_read_a_ticket_and_its_page(field, value):
+    assert tickets.api_value(field, TICKET, '<script>{"priceCurrency":"EUR"}</script>') == value
+
+
+def test_a_recipe_reads_the_page_or_the_api_never_a_mix():
+    from jsonschema import Draft202012Validator
+    api = json.loads((tickets.SITES / 'goandance.json').read_text())
+    page = json.loads((tickets.SITES / 'weeztix.json').read_text())
+    valid = lambda r: not list(Draft202012Validator(tickets.SITE_SCHEMA).iter_errors(r))
+    assert valid(api) and valid(page)
+    assert not valid(api | {'row': '.ticket'})                        # an API recipe with page rows
+    assert not valid(page | {'api': api['api']})                      # page rows and an API
+    assert not valid(page | {'fields': api['fields'], 'row': page['row']})   # page rows read by api fields

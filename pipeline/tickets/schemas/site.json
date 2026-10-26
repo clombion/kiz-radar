@@ -13,6 +13,7 @@
     "open",
     "symbols",
     "row",
+    "api",
     "fields"
   ],
   "$defs": {
@@ -52,6 +53,49 @@
           "description": "Read every match on the page (joined by line) instead of the first inside the row; for values a page keeps apart from its rows, such as its script data."
         }
       }
+    },
+    "api_field": {
+      "description": "Where a ticket's value is when the site's API gives the tickets: json, a dotted path into the ticket; page, a pattern on the festival's page (its first group); or text, a template naming dotted paths in braces (\"{price.price} € + {distributionFee} € fee\"); with match, the first group of a pattern on that value.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "json": {
+          "type": "string",
+          "minLength": 1
+        },
+        "page": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "match": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "json"
+          ]
+        },
+        {
+          "required": [
+            "page"
+          ]
+        },
+        {
+          "required": [
+            "text"
+          ]
+        }
+      ]
     }
   },
   "properties": {
@@ -127,9 +171,43 @@
       }
     },
     "row": {
-      "description": "A CSS selector matching each ticket on the page.",
-      "type": "string",
+      "description": "A CSS selector matching each ticket on the page; null when the tickets come from the site's API.",
+      "type": [
+        "string",
+        "null"
+      ],
       "minLength": 1
+    },
+    "api": {
+      "description": "When the site's page carries no ticket ids but its API does: id, a pattern finding the event's id in the festival's page; url, the API address with {id}; items, the dotted path to the list of tickets in its JSON. row is then null and the fields are api fields. Else null.",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "url",
+            "items"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "url": {
+              "type": "string",
+              "pattern": "^https://.*\\{id\\}"
+            },
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
     },
     "fields": {
       "type": "object",
@@ -148,79 +226,194 @@
       ],
       "properties": {
         "key": {
-          "$ref": "#/$defs/field",
           "description": "The ticket's id on the site, the same on every read."
         },
-        "name": {
-          "$ref": "#/$defs/field"
-        },
+        "name": {},
         "price": {
-          "$ref": "#/$defs/field",
           "description": "The price as the page shows it."
         },
         "amount": {
-          "$ref": "#/$defs/field",
           "description": "The price as a number (1,800.00, 1.800,00 and 1800 all read as 1800)."
         },
         "currency": {
-          "$ref": "#/$defs/field",
           "description": "A currency code, or a symbol listed in symbols."
         },
         "fee": {
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "$ref": "#/$defs/field"
-            }
-          ],
           "description": "A booking fee the site adds to the price (\"+ €1.00 fee\"), when it shows one apart; the amount logged is the price plus this fee. Null when the price shown is what a buyer pays."
         },
         "alt_price": {
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "$ref": "#/$defs/field"
-            }
-          ],
           "description": "The words that give the second price, as the page shows them; with alt_amount and alt_currency, or null with them."
         },
         "alt_amount": {
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "$ref": "#/$defs/field"
-            }
-          ],
           "description": "The same price in a second currency, when the site shows one."
         },
-        "alt_currency": {
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "$ref": "#/$defs/field"
-            }
-          ]
-        },
+        "alt_currency": {},
         "sold_out": {
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "$ref": "#/$defs/field"
-            }
-          ],
           "description": "Sold out when this field finds anything; null for a site that hides sold-out tickets."
         }
       }
     }
-  }
+  },
+  "oneOf": [
+    {
+      "description": "the page's rows",
+      "properties": {
+        "row": {
+          "type": "string"
+        },
+        "api": {
+          "type": "null"
+        },
+        "fields": {
+          "properties": {
+            "key": {
+              "$ref": "#/$defs/field"
+            },
+            "name": {
+              "$ref": "#/$defs/field"
+            },
+            "price": {
+              "$ref": "#/$defs/field"
+            },
+            "amount": {
+              "$ref": "#/$defs/field"
+            },
+            "currency": {
+              "$ref": "#/$defs/field"
+            },
+            "fee": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/field"
+                }
+              ]
+            },
+            "alt_price": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/field"
+                }
+              ]
+            },
+            "alt_amount": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/field"
+                }
+              ]
+            },
+            "alt_currency": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/field"
+                }
+              ]
+            },
+            "sold_out": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/field"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "description": "the site's API",
+      "properties": {
+        "row": {
+          "type": "null"
+        },
+        "api": {
+          "type": "object"
+        },
+        "fields": {
+          "properties": {
+            "key": {
+              "$ref": "#/$defs/api_field"
+            },
+            "name": {
+              "$ref": "#/$defs/api_field"
+            },
+            "price": {
+              "$ref": "#/$defs/api_field"
+            },
+            "amount": {
+              "$ref": "#/$defs/api_field"
+            },
+            "currency": {
+              "$ref": "#/$defs/api_field"
+            },
+            "fee": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/api_field"
+                }
+              ]
+            },
+            "alt_price": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/api_field"
+                }
+              ]
+            },
+            "alt_amount": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/api_field"
+                }
+              ]
+            },
+            "alt_currency": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/api_field"
+                }
+              ]
+            },
+            "sold_out": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/api_field"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
 }

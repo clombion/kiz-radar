@@ -17,6 +17,7 @@
     "£": "GBP"
   },
   "row": "tr[data-id]",
+  "api": null,
   "fields": {
     "key": {
       "css": null,

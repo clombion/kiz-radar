@@ -15,6 +15,7 @@
     "£": "GBP"
   },
   "row": "div.ticketContainerClass[id^='ticketContainer_']",
+  "api": null,
   "fields": {
     "key": {
       "css": null,

@@ -13,6 +13,7 @@
     "€": "EUR"
   },
   "row": "div:has(> h4.mantine-Title-root):has(label[for^='ticketTypes.'])",
+  "api": null,
   "fields": {
     "key": {
       "css": "label[for^='ticketTypes.']",

@@ -1,23 +1,59 @@
 {
   "site": "kizzbee",
-  "hosts": ["www.kizzbee.com", "kizzbee.com"],
+  "hosts": [
+    "www.kizzbee.com",
+    "kizzbee.com"
+  ],
   "reseller": "Kizzbee",
   "widget": null,
   "visible": false,
   "wait": 8,
   "open": null,
-  "symbols": {"€": "EUR", "£": "GBP"},
+  "symbols": {
+    "€": "EUR",
+    "£": "GBP"
+  },
   "row": "form.variations_form select option[value]:not([value=''])",
+  "api": null,
   "fields": {
-    "key": {"css": "form.variations_form", "attr": "data-product_variations", "page": true, "match": "\"attribute_pa_[\\w-]+\":\"{@value}\"\\}.*?\"variation_id\":(\\d+)"},
-    "name": {"css": null, "attr": null, "match": null},
-    "price": {"css": "form.variations_form", "attr": "data-product_variations", "page": true, "match": "\"attribute_pa_[\\w-]+\":\"{@value}\"\\}.*?\"display_price\":([\\d.]+)"},
-    "amount": {"css": "form.variations_form", "attr": "data-product_variations", "page": true, "match": "\"attribute_pa_[\\w-]+\":\"{@value}\"\\}.*?\"display_price\":([\\d.]+)"},
-    "currency": {"css": ".summary .woocommerce-Price-currencySymbol", "attr": null, "page": true, "match": "^([€£$])"},
+    "key": {
+      "css": "form.variations_form",
+      "attr": "data-product_variations",
+      "page": true,
+      "match": "\"attribute_pa_[\\w-]+\":\"{@value}\"\\}.*?\"variation_id\":(\\d+)"
+    },
+    "name": {
+      "css": null,
+      "attr": null,
+      "match": null
+    },
+    "price": {
+      "css": "form.variations_form",
+      "attr": "data-product_variations",
+      "page": true,
+      "match": "\"attribute_pa_[\\w-]+\":\"{@value}\"\\}.*?\"display_price\":([\\d.]+)"
+    },
+    "amount": {
+      "css": "form.variations_form",
+      "attr": "data-product_variations",
+      "page": true,
+      "match": "\"attribute_pa_[\\w-]+\":\"{@value}\"\\}.*?\"display_price\":([\\d.]+)"
+    },
+    "currency": {
+      "css": ".summary .woocommerce-Price-currencySymbol",
+      "attr": null,
+      "page": true,
+      "match": "^([€£$])"
+    },
     "fee": null,
     "alt_price": null,
     "alt_amount": null,
     "alt_currency": null,
-    "sold_out": {"css": "form.variations_form", "attr": "data-product_variations", "page": true, "match": "\"attribute_pa_[\\w-]+\":\"{@value}\"\\}.*?\"is_in_stock\":(false)"}
+    "sold_out": {
+      "css": "form.variations_form",
+      "attr": "data-product_variations",
+      "page": true,
+      "match": "\"attribute_pa_[\\w-]+\":\"{@value}\"\\}.*?\"is_in_stock\":(false)"
+    }
   }
 }

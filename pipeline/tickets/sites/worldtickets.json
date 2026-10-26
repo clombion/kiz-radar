@@ -17,6 +17,7 @@
     "£": "GBP"
   },
   "row": "[data-articles-panel='tickets'] div.p-6:has([data-ticket])",
+  "api": null,
   "fields": {
     "key": {
       "css": "[data-ticket]",
