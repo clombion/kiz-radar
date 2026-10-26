@@ -464,3 +464,15 @@ def test_a_recipe_reads_the_page_or_the_api_never_a_mix():
     assert not valid(api | {'row': '.ticket'})                        # an API recipe with page rows
     assert not valid(page | {'api': api['api']})                      # page rows and an API
     assert not valid(page | {'fields': api['fields'], 'row': page['row']})   # page rows read by api fields
+
+
+def test_a_first_read_with_no_pass_is_refused():
+    fr = read(passes=[], skipped=('1', '2', '3', '4', '5'))
+    fr['passes'] = []
+    assert any('passes' in p for p in tickets.read_problems(fr, [entry(ROWS)]))
+
+
+def test_a_page_that_broke_its_recipe_waits_for_a_fix_with_or_without_a_first_read():
+    broken = {'at': 'b', 'page': 'x', 'recipe': 'r', 'status': Status.LAYOUT_BROKEN, 'why': 'no ticket rows'}
+    assert tickets.waiting(festival(page='https://my.weezevent.com/x', site=('r', 'v'), log=[broken])) == tickets.Waiting.RECIPE_FIX
+    assert tickets.waiting(festival(why=None, first_read=read(), log=[entry(ROWS), broken])) == tickets.Waiting.RECIPE_FIX

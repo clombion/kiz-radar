@@ -96,6 +96,7 @@ class Waiting(StrEnum):
     RECIPE = 'a recipe for its site'
     AGENT = 'an agent: the two models disagreed'
     SESSION = 'a session: its reads keep failing'
+    RECIPE_FIX = 'its recipe fixed: the page no longer fits it'
     NOT_YET = 'its sales to open'
     OFFLINE = 'nothing: it sells its tickets by message or form'
     CLOSED = 'nothing: its sales are closed'
@@ -536,8 +537,10 @@ def festivals(db, today, only=None):
 
 def waiting(f):
     """What the festival waits for before its prices can come from its ticket page, or None."""
-    if f['first_read'] and failures(f['log']) >= REFUSALS:
+    if failures(f['log']) >= REFUSALS:
         return Waiting.SESSION
+    if f['log'] and f['log'][-1]['status'] == Status.LAYOUT_BROKEN:
+        return Waiting.RECIPE_FIX
     if not f['why']:
         return None
     if f['disputed']:
@@ -749,6 +752,8 @@ def cmd_run():
                 print(f'{i}: first read ' + (f"by {new['read_by']}" if new else f'disputed: tickets/disputed/{i}.json'))
             else:
                 print(f"{i}: {entry['status']}: {entry['why']}")
+                if entry['status'] == Status.LAYOUT_BROKEN:
+                    alarms.append(f"{i}: layout broken ({entry['why']}); the recipe {entry['recipe']} needs an agent")
         if (DISPUTED / f'{i}.json').exists() and first_read(i):
             record(i, quiet=True)           # a new first read settles an older dispute
     alarms += write_all()

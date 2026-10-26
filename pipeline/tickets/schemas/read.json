@@ -181,7 +181,9 @@
             }
           }
         }
-      }
+      },
+      "minItems": 1,
+      "description": "At least one: a page that sells none of the festival's passes (only hotel rooms, say) is not its ticket page."
     },
     "skipped": {
       "description": "Tickets on the page that are no pass (bootcamps, single workshops, shuttles).",
