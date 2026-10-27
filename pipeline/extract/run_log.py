@@ -127,6 +127,6 @@ def document(con: sqlite3.Connection, docs: dict[str, str], written_by: str) -> 
         con.execute('INSERT OR REPLACE INTO table_docs VALUES (?, ?, ?, ?)', (name, kinds[name], description, by))
     # a table the script no longer creates leaves with its description
     con.execute(
-        f'DELETE FROM table_docs WHERE written_by = ? AND name NOT IN ({", ".join("?" * len(docs))})',
-        (written_by, *docs),
+        'DELETE FROM table_docs WHERE written_by = ? AND name NOT IN (SELECT value FROM json_each(?))',
+        (written_by, json.dumps(list(docs))),
     )

@@ -38,6 +38,7 @@ from pipeline.records import (
     Skip,
     StatusRow,
     Widget,
+    real_day,
 )
 from tests import jsons
 from tests.fakes import Client
@@ -103,7 +104,9 @@ def changed(rows: Sequence[Row], i: int, **change: object) -> tuple[Row, ...]:
 
 
 def tier(*keys: str, until: str | None = None, quantity: int | None = None, quote: str | None = None) -> ReadTier:
-    return ReadTier(keys=keys, from_=None, until=until, quantity=quantity, date_quote=quote)
+    return ReadTier(
+        keys=keys, from_=None, until=None if until is None else real_day(until), quantity=quantity, date_quote=quote
+    )
 
 
 def pass_(
@@ -974,7 +977,7 @@ def card(kind: PassKind = PassKind.FULL, until: str | None = '2027-01-31') -> Pr
         fee=None,
         alt=None,
         from_=None,
-        until=until,
+        until=None if until is None else real_day(until),
         quantity=None,
         door=False,
         sold_out=False,

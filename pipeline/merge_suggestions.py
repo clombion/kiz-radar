@@ -30,7 +30,7 @@ from pathlib import Path
 from pipeline import db as sqlite_db
 from pipeline.countries import codes
 from pipeline.extract.prices import COUPLE
-from pipeline.records import ArtistMergeRow, CsvRow
+from pipeline.records import ArtistMergeRow, Suggestion
 
 ROOT = Path(__file__).parent.parent
 OUT = ROOT / 'pipeline' / 'artist_merge_suggestions.csv'
@@ -41,26 +41,6 @@ SHORT_EVENT_DAYS = 4  # longer events (week-long all-in-ones) never count as a c
 SIMILAR, SIMILAR_IF_ONE_SAME = 0.72, 0.6  # how alike both of two couples' names must be, or one when the other is
 # French overseas territories count as France: artists list either.
 FR_TERRITORIES = {'RE', 'GP', 'MQ', 'GF', 'YT', 'MF', 'BL', 'NC', 'PF', 'PM', 'WF'}
-
-
-class Suggestion(CsvRow):
-    """A pair of artists that may be one (pipeline/artist_merge_suggestions.csv), for a reviewer to decide."""
-
-    decision: str  # empty: the reviewer copies the row into artist_merges.csv with merge or separate
-    keep_key: str
-    merge_key: str
-    keep_name: str
-    merge_name: str
-    keep_bookings: int
-    merge_bookings: int
-    keep_countries: str
-    merge_countries: str
-    countries: str
-    calendar: str
-    calendar_note: str
-    similarity: float
-    score: float
-    reason: str
 
 
 def norm(s: str) -> str:

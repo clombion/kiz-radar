@@ -111,7 +111,8 @@ class Paged(Record):
     url_fr: str | None
     url_es: str | None
     url_pt: str | None
-    cancelled: int | None  # 1 when the site stamps it cancelled; None for an event whose page was read before this
+    cancelled: int | None  # 1 when its page stamps it cancelled; None when not known (a past festival's page read
+    # before the scrape looked for the stamp, and not read since)
 
 
 def text(fragment: str) -> str:

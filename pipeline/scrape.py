@@ -104,7 +104,7 @@ def write_event(db: sqlite3.Connection, row: EventRow, categories: list[str], ta
     """The event's row, its categories and tags, and the genres and features its tags name."""
     values: dict[str, object] = row.model_dump()
     _ = db.execute(
-        f'insert or replace into events ({", ".join(values)}) values ({", ".join("?" * len(values))})',
+        f'insert or replace into events ({", ".join(values)}) values ({", ".join("?" * len(values))})',  # noqa: S608 (table and column names of ours)
         list(values.values()),
     )
     i = row.id
@@ -217,7 +217,7 @@ def write(db: sqlite3.Connection, fetch: Fetcher, r: Refreshed, today: str) -> b
 def finish(db: sqlite3.Connection, report: Report, events: int, gone: list[int], posters: int) -> None:
     """Delete the events the site no longer lists, with everything that refers to them, and log the step."""
     for t in event_tables(db):
-        _ = db.executemany(f'delete from {t} where event_id = ?', [(i,) for i in gone])
+        _ = db.executemany(f'delete from {t} where event_id = ?', [(i,) for i in gone])  # noqa: S608 (table and column names of ours)
     _ = db.executemany('delete from events where id = ?', [(i,) for i in gone])
     pending: list[tuple[int]] = db.execute('select count(*) from pending_extraction').fetchall()
     details = {
@@ -247,7 +247,7 @@ def run(src: Path, *, dry_run: bool) -> None:
     db = sqlite_db.connect(src, 'ro' if dry_run else 'rw')
     if not dry_run:
         prepare(db)
-    known = {r.id: r for r in sqlite_db.records(db, EventRow, f'select {", ".join(COLUMNS)} from events')}
+    known = {r.id: r for r in sqlite_db.records(db, EventRow, f'select {", ".join(COLUMNS)} from events')}  # noqa: S608 (table and column names of ours)
     today = dt.datetime.now(dt.UTC).date().isoformat()
     fetch = Fetcher()
     events = [api_fields(e) for e in listed(fetch)]

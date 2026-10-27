@@ -1,80 +1,80 @@
 code,name,city,country_code,lat,lon,home
 BGO,Bergen Flesland,Bergen,NO,60.294,5.218,1
-OSL,Oslo Gardermoen,Oslo,NO,60.197,11.100,
-GDN,Gdańsk,Gdańsk,PL,54.378,18.466,
-KRK,Kraków,Kraków,PL,50.078,19.785,
-WAW,Warsaw Chopin,Warsaw,PL,52.166,20.967,
-ARN,Stockholm Arlanda,Stockholm,SE,59.652,17.919,
-GOT,Gothenburg Landvetter,Gothenburg,SE,57.663,12.280,
-CPH,Copenhagen,Copenhagen,DK,55.618,12.656,
-PRG,Prague,Prague,CZ,50.101,14.260,
-BUD,Budapest,Budapest,HU,47.437,19.256,
-VNO,Vilnius,Vilnius,LT,54.634,25.286,
-RIG,Riga,Riga,LV,56.924,23.971,
-TLL,Tallinn,Tallinn,EE,59.413,24.833,
-HEL,Helsinki,Helsinki,FI,60.317,24.963,
-AMS,Amsterdam Schiphol,Amsterdam,NL,52.310,4.768,
-BRU,Brussels,Brussels,BE,50.901,4.484,
-CDG,Paris Charles de Gaulle,Paris,FR,49.010,2.548,
-LHR,London Heathrow,London,GB,51.470,-0.454,
-BER,Berlin Brandenburg,Berlin,DE,52.366,13.503,
-HAM,Hamburg,Hamburg,DE,53.630,9.988,
-FRA,Frankfurt,Frankfurt,DE,50.033,8.570,
-MUC,Munich,Munich,DE,48.354,11.786,
-DUS,Düsseldorf,Düsseldorf,DE,51.289,6.767,
-STR,Stuttgart,Stuttgart,DE,48.690,9.222,
-ZRH,Zürich,Zürich,CH,47.458,8.548,
-GVA,Geneva,Geneva,CH,46.238,6.109,
-VIE,Vienna,Vienna,AT,48.110,16.570,
-OTP,Bucharest Otopeni,Bucharest,RO,44.571,26.085,
-LIS,Lisbon,Lisbon,PT,38.774,-9.134,
-OPO,Porto,Porto,PT,41.248,-8.681,
-BCN,Barcelona,Barcelona,ES,41.297,2.078,
-MAD,Madrid,Madrid,ES,40.494,-3.567,
-AGP,Málaga,Málaga,ES,36.675,-4.499,
-MXP,Milan Malpensa,Milan,IT,45.630,8.723,
-FCO,Rome Fiumicino,Rome,IT,41.800,12.239,
-LYS,Lyon,Lyon,FR,45.726,5.091,
-BOD,Bordeaux,Bordeaux,FR,44.828,-0.716,
-MRS,Marseille,Marseille,FR,43.439,5.221,
-NCE,Nice,Nice,FR,43.658,7.216,
-TLS,Toulouse,Toulouse,FR,43.629,1.364,
-NTE,Nantes,Nantes,FR,47.153,-1.611,
-MAN,Manchester,Manchester,GB,53.354,-2.275,
-SVQ,Seville,Seville,ES,37.418,-5.893,
-ALC,Alicante,Alicante,ES,38.282,-0.558,
-CLJ,Cluj-Napoca,Cluj-Napoca,RO,46.785,23.686,
-SOF,Sofia,Sofia,BG,42.697,23.411,
-ZAG,Zagreb,Zagreb,HR,45.743,16.069,
-SPU,Split,Split,HR,43.539,16.298,
-LJU,Ljubljana,Ljubljana,SI,46.224,14.458,
-BEG,Belgrade,Belgrade,RS,44.818,20.309,
-ATH,Athens,Athens,GR,37.936,23.947,
-IST,Istanbul,Istanbul,TR,41.262,28.742,
-GLA,Glasgow,Glasgow,GB,55.872,-4.433,
-KEF,Keflavík,Reykjavík,IS,63.985,-22.605,
-OVD,Asturias,Oviedo,ES,43.563,-6.035,
-LPA,Gran Canaria,Gran Canaria,ES,27.932,-15.387,
-BLQ,Bologna,Bologna,IT,44.535,11.289,
-TIA,Tirana,Tirana,AL,41.415,19.721,
-SID,Sal,Sal,CV,16.741,-22.949,
-RAI,Praia,Praia,CV,14.924,-23.494,
-DSS,Dakar Blaise Diagne,Dakar,SN,14.670,-17.073,
-LAD,Luanda,Luanda,AO,-8.858,13.231,
-DXB,Dubai,Dubai,AE,25.253,55.364,
-ALA,Almaty,Almaty,KZ,43.352,77.040,
-BKK,Bangkok Suvarnabhumi,Bangkok,TH,13.690,100.750,
-CNX,Chiang Mai,Chiang Mai,TH,18.767,98.963,
-SGN,Ho Chi Minh City,Ho Chi Minh City,VN,10.819,106.652,
-DLI,Da Lat Lien Khuong,Da Lat,VN,11.750,108.367,
-DPS,Bali Denpasar,Bali,ID,-8.748,115.167,
-MBJ,Montego Bay,Montego Bay,JM,18.504,-77.913,
-YUL,Montréal,Montréal,CA,45.470,-73.741,
-YYJ,Victoria,Victoria,CA,48.647,-123.426,
-SEA,Seattle,Seattle,US,47.450,-122.309,
-JFK,New York JFK,New York,US,40.641,-73.778,
-IAD,Washington Dulles,Washington,US,38.953,-77.456,
-ATL,Atlanta,Atlanta,US,33.640,-84.427,
-CLT,Charlotte,Charlotte,US,35.214,-80.943,
-CMH,Columbus,Columbus,US,39.998,-82.892,
-OKC,Oklahoma City,Oklahoma City,US,35.393,-97.601,
+OSL,Oslo Gardermoen,Oslo,NO,60.197,11.1,0
+GDN,Gdańsk,Gdańsk,PL,54.378,18.466,0
+KRK,Kraków,Kraków,PL,50.078,19.785,0
+WAW,Warsaw Chopin,Warsaw,PL,52.166,20.967,0
+ARN,Stockholm Arlanda,Stockholm,SE,59.652,17.919,0
+GOT,Gothenburg Landvetter,Gothenburg,SE,57.663,12.28,0
+CPH,Copenhagen,Copenhagen,DK,55.618,12.656,0
+PRG,Prague,Prague,CZ,50.101,14.26,0
+BUD,Budapest,Budapest,HU,47.437,19.256,0
+VNO,Vilnius,Vilnius,LT,54.634,25.286,0
+RIG,Riga,Riga,LV,56.924,23.971,0
+TLL,Tallinn,Tallinn,EE,59.413,24.833,0
+HEL,Helsinki,Helsinki,FI,60.317,24.963,0
+AMS,Amsterdam Schiphol,Amsterdam,NL,52.31,4.768,0
+BRU,Brussels,Brussels,BE,50.901,4.484,0
+CDG,Paris Charles de Gaulle,Paris,FR,49.01,2.548,0
+LHR,London Heathrow,London,GB,51.47,-0.454,0
+BER,Berlin Brandenburg,Berlin,DE,52.366,13.503,0
+HAM,Hamburg,Hamburg,DE,53.63,9.988,0
+FRA,Frankfurt,Frankfurt,DE,50.033,8.57,0
+MUC,Munich,Munich,DE,48.354,11.786,0
+DUS,Düsseldorf,Düsseldorf,DE,51.289,6.767,0
+STR,Stuttgart,Stuttgart,DE,48.69,9.222,0
+ZRH,Zürich,Zürich,CH,47.458,8.548,0
+GVA,Geneva,Geneva,CH,46.238,6.109,0
+VIE,Vienna,Vienna,AT,48.11,16.57,0
+OTP,Bucharest Otopeni,Bucharest,RO,44.571,26.085,0
+LIS,Lisbon,Lisbon,PT,38.774,-9.134,0
+OPO,Porto,Porto,PT,41.248,-8.681,0
+BCN,Barcelona,Barcelona,ES,41.297,2.078,0
+MAD,Madrid,Madrid,ES,40.494,-3.567,0
+AGP,Málaga,Málaga,ES,36.675,-4.499,0
+MXP,Milan Malpensa,Milan,IT,45.63,8.723,0
+FCO,Rome Fiumicino,Rome,IT,41.8,12.239,0
+LYS,Lyon,Lyon,FR,45.726,5.091,0
+BOD,Bordeaux,Bordeaux,FR,44.828,-0.716,0
+MRS,Marseille,Marseille,FR,43.439,5.221,0
+NCE,Nice,Nice,FR,43.658,7.216,0
+TLS,Toulouse,Toulouse,FR,43.629,1.364,0
+NTE,Nantes,Nantes,FR,47.153,-1.611,0
+MAN,Manchester,Manchester,GB,53.354,-2.275,0
+SVQ,Seville,Seville,ES,37.418,-5.893,0
+ALC,Alicante,Alicante,ES,38.282,-0.558,0
+CLJ,Cluj-Napoca,Cluj-Napoca,RO,46.785,23.686,0
+SOF,Sofia,Sofia,BG,42.697,23.411,0
+ZAG,Zagreb,Zagreb,HR,45.743,16.069,0
+SPU,Split,Split,HR,43.539,16.298,0
+LJU,Ljubljana,Ljubljana,SI,46.224,14.458,0
+BEG,Belgrade,Belgrade,RS,44.818,20.309,0
+ATH,Athens,Athens,GR,37.936,23.947,0
+IST,Istanbul,Istanbul,TR,41.262,28.742,0
+GLA,Glasgow,Glasgow,GB,55.872,-4.433,0
+KEF,Keflavík,Reykjavík,IS,63.985,-22.605,0
+OVD,Asturias,Oviedo,ES,43.563,-6.035,0
+LPA,Gran Canaria,Gran Canaria,ES,27.932,-15.387,0
+BLQ,Bologna,Bologna,IT,44.535,11.289,0
+TIA,Tirana,Tirana,AL,41.415,19.721,0
+SID,Sal,Sal,CV,16.741,-22.949,0
+RAI,Praia,Praia,CV,14.924,-23.494,0
+DSS,Dakar Blaise Diagne,Dakar,SN,14.67,-17.073,0
+LAD,Luanda,Luanda,AO,-8.858,13.231,0
+DXB,Dubai,Dubai,AE,25.253,55.364,0
+ALA,Almaty,Almaty,KZ,43.352,77.04,0
+BKK,Bangkok Suvarnabhumi,Bangkok,TH,13.69,100.75,0
+CNX,Chiang Mai,Chiang Mai,TH,18.767,98.963,0
+SGN,Ho Chi Minh City,Ho Chi Minh City,VN,10.819,106.652,0
+DLI,Da Lat Lien Khuong,Da Lat,VN,11.75,108.367,0
+DPS,Bali Denpasar,Bali,ID,-8.748,115.167,0
+MBJ,Montego Bay,Montego Bay,JM,18.504,-77.913,0
+YUL,Montréal,Montréal,CA,45.47,-73.741,0
+YYJ,Victoria,Victoria,CA,48.647,-123.426,0
+SEA,Seattle,Seattle,US,47.45,-122.309,0
+JFK,New York JFK,New York,US,40.641,-73.778,0
+IAD,Washington Dulles,Washington,US,38.953,-77.456,0
+ATL,Atlanta,Atlanta,US,33.64,-84.427,0
+CLT,Charlotte,Charlotte,US,35.214,-80.943,0
+CMH,Columbus,Columbus,US,39.998,-82.892,0
+OKC,Oklahoma City,Oklahoma City,US,35.393,-97.601,0

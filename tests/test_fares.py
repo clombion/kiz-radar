@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 
 from pipeline import fares
+from pipeline.enums import FareSearch
 
 
 def test_closer_weekends_are_searched_more_often() -> None:
@@ -50,7 +51,7 @@ def test_due_again_on_its_own_weekday_only(tmp_path: Path, monkeypatch: pytest.M
     # GLA on 6 Nov is weekly; searched a week before its weekday in the week of 26 Oct
     its_day = dt.date(2026, 10, 26) + dt.timedelta(days=fares.weekday_of('GLA', '2026-11-06'))
     last = (its_day - dt.timedelta(days=7)).isoformat() + 'T06:00:00+00:00'
-    job = fares.Job(airport='GLA', depart='2026-11-06', last_run=last, status='priced', note='')
+    job = fares.Job(airport='GLA', depart='2026-11-06', last_run=last, status=FareSearch.PRICED, note='')
 
     def due(day: dt.date) -> bool:
         return run_queue(tmp_path, monkeypatch, [job], day).due

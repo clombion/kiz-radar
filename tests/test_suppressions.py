@@ -1,6 +1,6 @@
-"""Every suppressed check is listed here: a noqa or pyright ignore names its rules (and a noqa its reason, in
-parentheses), and adding, moving or dropping one changes this list. Rules ignored for a whole file are in
-pyproject.toml, each with its reason."""
+"""Every suppressed check is listed here, by module and rules: a noqa or pyright ignore names its rules (and a noqa its
+reason, in parentheses), and adding one, dropping one or moving one to another module changes this list. Rules
+ignored for a whole file are in pyproject.toml, each with its reason."""
 
 import io
 import re
@@ -14,11 +14,17 @@ PYRIGHT = re.compile(r'# pyright: ignore\[(?P<rules>\w+(?:, \w+)*)\]$')
 SUPPRESSION = re.compile(r'# (?:noqa|pyright: ?ignore|type: ?ignore)[^#]*')
 ALLOWED = Counter(
     {
+        ('pipeline/build_site_db.py', 'S608'): 5,
+        ('pipeline/extract/check_output.py', 'S105'): 1,
+        ('pipeline/extract/load_extract.py', 'S608'): 2,
         ('pipeline/fares.py', 'S603'): 1,
         ('pipeline/read_page.py', 'S606, S607'): 1,
+        ('pipeline/scrape.py', 'S608'): 3,
         ('pipeline/web.py', 'S310'): 2,
         ('tests/conftest.py', 'S607'): 1,
+        ('tests/test_audit.py', 'S105'): 1,
         ('tests/test_commands.py', 'S603'): 1,
+        ('tests/test_records.py', 'S607'): 1,
         ('tests/test_states.py', 'reportArgumentType'): 4,
         ('tests/test_states.py', 'reportCallIssue'): 1,
         ('tests/test_states.py', 'reportIndexIssue'): 1,

@@ -665,7 +665,8 @@ def main() -> None:
     _ = con.executescript(SCHEMA)
     for point in ('feature', 'genre', 'role'):
         _ = con.executemany(
-            f'INSERT INTO {point}_definitions VALUES (?, ?)', [(s.key, s.criterion) for s in states.of(point)]
+            f'INSERT INTO {point}_definitions VALUES (?, ?)',  # noqa: S608 (a table name of ours)
+            [(s.key, s.criterion) for s in states.of(point)],
         )
     load_rooms_genres(con, rooms_genres)
     load_genre_rules(con)
@@ -689,7 +690,7 @@ def main() -> None:
         'ticket_pages',
         'price_status',
     ):
-        print(table, count(con, f'SELECT count(*) FROM {table}'))
+        print(table, count(con, f'SELECT count(*) FROM {table}'))  # noqa: S608 (a table name of ours)
 
 
 if __name__ == '__main__':

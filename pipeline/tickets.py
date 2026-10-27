@@ -555,20 +555,10 @@ def tier_problems(fr: FirstRead, where: str, tier: ReadTier, here: Sequence[Row]
     found: list[str] = []
     if tier.date_quote and not in_text(tier.date_quote, '\n'.join(map(line, here)) + '\n' + fr.description):
         found.append(f'{where}.date_quote {tier.date_quote!r} is neither in its tickets nor in the description')
-    found += [
-        f'{where}.{k} {v!r} is not a real day'
-        for k, v in (('from', tier.from_), ('until', tier.until))
-        if v and prices.day(v) is None
-    ]
     found += [f'{where}: {d}' for d in [split_price(here)] if d]
     # the page sold these tickets when it was read, so their price can't have ended before that day
     until = tier.until
-    if (
-        until
-        and prices.day(until) is not None
-        and any(not r.sold_out for r in here)
-        and (prices.on_date(until, fr.start_date) or '') < fr.rows_at[:10]
-    ):
+    if until and any(not r.sold_out for r in here) and (prices.on_date(until, fr.start_date) or '') < fr.rows_at[:10]:
         found.append(
             f'{where}.until {until}: the page sold these tickets on {fr.rows_at[:10]}; a date that has passed is not '
             'theirs'

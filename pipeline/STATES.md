@@ -25,28 +25,40 @@ forms`. The states are
 what the code and the records **can** emit (their enums, their return sites, their sentinels), one per thing a
 consumer must treat differently.
 
+<!-- generated from pipeline/states.py (states.points_table): mise run generate -->
 | Data point | States | Produced by |
 |---|---|---|
-| **page_read**, each logged attempt | `read`, `refused`, `layout_broken` | `tickets.attempt` |
-| **sales**, a festival with no readable link | `shop`, `not_yet`, `offline`, `closed`, `none_found` | `tickets.py page --state` |
-| **ticket**, each row of a read page | `in_tier`, `skipped`, `unread` | the first read; `tickets.unread_keys` |
-| **skip_reason**, each skipped ticket | `room` (also camping), `class`, `competition`, `merchandise`, `food_drink`, `excursion` (also shuttles), `fee` (a name change, a surcharge), `deposit` (also instalments), `discount`, `donation`, `not_public` (guest, staff, helper), `no_amount` | the first read |
-| **pass_kind** | `full`, `party`, `day`, `workshop`, `package`, `other` | the prices pass; the first read |
-| **style**, a festival's (by its genres) or the one a pass is limited to | `kizomba`, `zouk`, `bachata`, `salsa`, `other`; a pass's null is all the festival's styles | `prices.styles`; the prices pass; the first read |
-| **people**, a pass by how many one price is for | `one`, `couple`, `group`, `per_room` | `prices.people`, from `group_size` and the kind |
-| **fee**, a price tier | `none`, `included` | the tier's `fee` |
-| **hotel**, a pass by whether its price includes a hotel | `included`, `none` | the prices pass; the first read |
-| **re_read**, a festival with a first read | `dated`, `monthly` | `tickets.recheck` |
-| **first_read**, a festival | `not_needed`, `none`, `awaits_answer`, `current`, `redo_prompt`, `redo_description`, `redo_page`, `redo_unread`, `disputed` | `tickets.why_first_read` |
-| **answer**, a festival's answer of one extraction pass | `none`, `current`, `stale` | `ask.answer_state` |
-| **waits_for**, each festival | `page`, `recipe`, `recipe_fix`, `session`, `agent`, `sales_open`, `nothing` | `tickets.waiting`, in `tickets/status.csv` |
-| **price**, each festival | `priced`, `other_passes_only`, `page_unread`, `not_yet`, `offline`, `closed`, `none_found`, `not_looked` | `prices.price_state`, in `price_status` |
-| **tier_today**, a pass viewed on a day | `now`, `from`, `next`, `sold_out`, `ended` | `pricing.js tierNow` |
-| **next_change**, a pass's next price viewed on a day | `door`, `dated`, `later` | `pricing.js nextChange` |
-| **card_price**, a `priced` festival viewed on a day | `full_pass`, `package`, `sold_out`, `ended` | `pricing.js priceNow` |
-| **genre**, **feature**, **role** | 14 genres, 28 features (two of them, `promo_code` and `group_deals`, made by the build), 7 roles | the extraction passes |
-| **genre_rule**, **source**, **pass_source**, **room_kind** | `sbk`, `title`; `description`, `site_tag`; `description`, `ticket_page`; `party`, `class`, `unspecified` | `load_extract`; the rooms-genres pass |
-| **artist_kind**, **home_basis**, **merge_decision**, **pending**, **plan** | `person`, `couple`, `group`, `organisation`; `given`, `stated`; `merge`, `separate`, `unsure`; `new`, `description changed`; `going` | `resolve_artists`; the build; the merge review; the scrape; `plans.csv` |
+| **page_read**, each logged attempt to read a ticket page | `read`, `refused`, `layout_broken` | tickets.attempt |
+| **sales**, a festival with no full link to its ticket page, as an agent found it (tickets/pages.csv) | `shop`, `not_yet`, `offline`, `closed`, `none_found` | tickets.py page --state |
+| **ticket**, each ticket of a read ticket page | `in_tier`, `skipped`, `unread` | the first read; tickets.unread_keys |
+| **skip_reason**, each ticket a first read skips | `room`, `class`, `competition`, `merchandise`, `food_drink`, `excursion`, `fee`, `deposit`, `discount`, `donation`, `not_public`, `no_amount` | the first read |
+| **pass_kind**, each pass a festival sells | `full`, `party`, `day`, `workshop`, `package`, `other` | the prices pass; the first read |
+| **style**, a dance style: of a festival, by its genres, or the one a pass is limited to (null: all the festival's styles) | `kizomba`, `zouk`, `bachata`, `salsa`, `other` | prices.styles; the prices pass; the first read |
+| **people**, each pass, by how many people one price is for | `one`, `couple`, `group`, `per_room` | prices.people, from group_size and kind |
+| **fee**, each price tier, by its booking fee | `none`, `included` | the prices pass; the first read |
+| **re_read**, a festival with a first read, by when its page is read again | `dated`, `monthly` | tickets.recheck |
+| **first_read**, a festival, by whether it needs a (new) first read | `not_needed`, `none`, `awaits_answer`, `current`, `redo_prompt`, `redo_description`, `redo_page`, `redo_unread`, `disputed` | tickets.why_first_read |
+| **answer**, a festival's answer of one extraction pass | `none`, `current`, `stale` | ask.answer_state |
+| **waits_for**, each festival, by what its prices from its ticket page wait for | `page`, `recipe`, `recipe_fix`, `session`, `agent`, `sales_open`, `nothing` | tickets.waiting, in tickets/status.csv |
+| **price**, each festival, by what its card can say of its price | `priced`, `other_passes_only`, `page_unread`, `not_yet`, `offline`, `closed`, `none_found`, `not_looked` | prices.price_state, in price_status |
+| **tier_today**, a pass's price on the day it is viewed | `now`, `from`, `next`, `sold_out`, `ended` | pricing.js tierNow |
+| **card_price**, a priced festival, by what its card says on the day it is viewed | `full_pass`, `package`, `sold_out`, `ended` | pricing.js priceNow |
+| **genre**, each dance genre a festival covers | `kizomba`, `semba`, `urbankiz`, `tarraxo`, `tarraxinha`, `douceur`, `kompa`, `zouk`, `bachata`, `salsa`, `afro`, `reggaeton`, `kuduro`, `other` | the rooms-genres pass; the genre rules; the site tags |
+| **genre_rule**, a genre the rules add | `sbk`, `title` | load_extract |
+| **source**, where a genre or feature row comes from | `description`, `site_tag` | load_extract |
+| **pass_source**, where a festival's passes come from | `description`, `ticket_page` | load_extract |
+| **room_kind**, each room a description lists | `party`, `class`, `unspecified` | the rooms-genres pass |
+| **feature**, each feature of a festival | `promo_code`, `all_levels_beginners`, `taxi_dancers`, `accommodation_included`, `group_deals`, `meals_included`, `transfers_shuttle`, `pool_party`, `beach_party`, `boat_party`, `cruise`, `live_music`, `bootcamp_intensive`, `competition`, `camping`, `masterclass`, `private_classes`, `shows`, `themed_parties`, `pre_party`, `after_party`, `day_socials`, `partner_hotel`, `multiple_rooms`, `adults_only`, `all_in_one`, `workshops`, `dress_code` | the extract pass |
+| **role**, each artist named in a description | `teacher`, `dj`, `performer`, `mc`, `organiser`, `media`, `crew` | the extract pass |
+| **artist_kind**, each artist | `person`, `couple`, `group`, `organisation` | resolve_artists |
+| **home_basis**, an artist's home country, by how it is known | `given`, `stated` | build_site_db |
+| **merge_decision**, each artist merge reviewed | `merge`, `separate`, `unsure` | the merge review; pipeline/artist_merges.csv |
+| **pending**, a festival waiting for its extraction passes | `new`, `description changed` | scrape |
+| **plan**, each plan someone shares (pipeline/plans.csv) | `going` | pipeline/plans.csv |
+| **fare_search**, a festival weekend's latest flight search (pipeline/fare_jobs.csv) | `priced`, `no price`, `refused` | fares.search |
+| **next_change**, a pass's next price change on the day it is viewed | `door`, `dated`, `later` | pricing.js nextChange |
+| **hotel**, each pass, by whether its price includes a hotel | `included`, `none` | the prices pass; the first read |
+<!-- points:end -->
 
 **Who decides.**
 - **The pipeline** decides every data point except three. `price` is total over the festivals: one with passes is

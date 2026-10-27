@@ -10,12 +10,14 @@ amount and currency, a recipe reads rows from the page or from the site's API.
 """
 
 import csv
+import datetime as dt
 import re
 from collections.abc import Iterable
 from pathlib import Path
-from typing import Annotated, ClassVar, Literal, Self
+from typing import Annotated, Literal, NewType, Self
 
 from pydantic import (
+    AfterValidator,
     BaseModel,
     BeforeValidator,
     ConfigDict,
@@ -33,6 +35,7 @@ from pydantic import (
 from pipeline import tables
 from pipeline.enums import (
     ExtractedFeature,
+    FareSearch,
     Genre,
     MergeDecision,
     PassKind,
@@ -55,8 +58,19 @@ DIGITS = 16  # a prompt's hash is the first DIGITS hex digits of its text's SHA-
 Text = Annotated[str, Field(min_length=1)]
 Quote = Annotated[str, Field(min_length=1, max_length=300)]
 Currency = Annotated[str, Field(pattern=r'^[A-Z]{3}$')]  # an ISO 4217 code
-Day = Annotated[str, Field(pattern=r'^(\d{4}-)?\d{2}-\d{2}$')]  # YYYY-MM-DD, or MM-DD when no year is given
-Date = Annotated[str, Field(pattern=r'^\d{4}-\d{2}-\d{2}$')]
+RealDay = NewType('RealDay', str)  # a day of the calendar, YYYY-MM-DD or MM-DD; only real_day makes one
+
+
+def real_day(value: str) -> RealDay:
+    """A YYYY-MM-DD or MM-DD that names a day of the calendar (an MM-DD some year has, 02-29 among them)."""
+    *year, month, day = map(int, value.split('-'))
+    _ = dt.date(year[0] if year else 2024, month, day)  # a leap year has every MM-DD; ValueError when no year does
+    return RealDay(value)
+
+
+# YYYY-MM-DD, or MM-DD when no year is given
+Day = Annotated[RealDay, Field(pattern=r'^(\d{4}-)?\d{2}-\d{2}$'), AfterValidator(real_day)]
+Date = Annotated[str, Field(pattern=r'^\d{4}-\d{2}-\d{2}$'), AfterValidator(real_day)]
 Stamp = Annotated[str, Field(pattern=r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\+00:00$')]  # a UTC time to the second
 Url = Annotated[str, Field(pattern=r'^https?://')]
 Hash = Annotated[str, Field(pattern=rf'^[0-9a-f]{{{DIGITS}}}$')]
@@ -555,7 +569,8 @@ def unblank(value: object, handler: SerializerFunctionWrapHandler) -> object:
 
 
 def number_text(value: float) -> str:
-    return f'{value:g}'
+    """A number as the shortest text that reads back as it: 80, 80.5, 12999.99."""
+    return str(int(value)) if value.is_integer() else repr(value)
 
 
 def flag_text(value: object) -> str:
@@ -567,13 +582,23 @@ type Number = Annotated[float, PlainSerializer(number_text, return_type=str)]  #
 type Flag = Annotated[bool, PlainSerializer(flag_text, return_type=str)]  # 1 or 0
 
 
+def split_keys(value: object) -> object:
+    return tuple(k for k in value.split(';') if k) if isinstance(value, str) else value
+
+
+def keys_text(value: tuple[str, ...]) -> str:
+    return ';'.join(value)
+
+
+type Keys = Annotated[tuple[str, ...], BeforeValidator(split_keys), PlainSerializer(keys_text, return_type=str)]  # a;b
+
+
 class CsvRow(BaseModel):
     """A row of a CSV file, its columns the record's fields. A row is text, so its values are read from their text
     (lax: '3' is an int, '1' a true flag) and written back as text; an empty column of a field that may be none is
     None."""
 
     model_config = ConfigDict(extra='forbid', frozen=True, validate_by_name=True, serialize_by_alias=True)
-    line_end: ClassVar[str] = '\n'
 
     @classmethod
     def columns(cls) -> list[str]:
@@ -581,7 +606,12 @@ class CsvRow(BaseModel):
 
     @classmethod
     def read(cls, path: Path) -> list[Self]:
-        return [cls.model_validate(row) for row in tables.rows(path)]
+        return [cls.model_validate(cls.cells(row)) for row in tables.rows(path)]
+
+    @classmethod
+    def cells(cls, row: dict[str, str]) -> dict[str, object]:
+        """A row's values by field; a record whose fields are not its columns says how they map."""
+        return dict(row)
 
     def text(self) -> dict[str, object]:
         out: dict[str, object] = self.model_dump(mode='json')
@@ -590,9 +620,18 @@ class CsvRow(BaseModel):
     @classmethod
     def write(cls, path: Path, rows: Iterable[Self]) -> None:
         with path.open('w', encoding='utf-8', newline='') as f:
-            w = csv.DictWriter(f, cls.columns(), lineterminator=cls.line_end)
+            w = csv.DictWriter(f, cls.columns(), lineterminator='\n')
             w.writeheader()
             w.writerows(r.text() for r in rows)
+
+    def append(self, path: Path) -> None:
+        """Add the row at the end of the file, which gets its header when it is new."""
+        new = not path.exists()
+        with path.open('a', encoding='utf-8', newline='') as f:
+            w = csv.DictWriter(f, self.columns(), lineterminator='\n')
+            if new:
+                w.writeheader()
+            w.writerow(self.text())
 
 
 class PriceRow(CsvRow):
@@ -611,8 +650,8 @@ class PriceRow(CsvRow):
     fee: Blank[Number]
     alt_amount: Blank[Number]
     alt_currency: Blank[str]
-    from_: Blank[str] = Field(validation_alias='from', serialization_alias='from')
-    until: Blank[str]
+    from_: Blank[Day] = Field(validation_alias='from', serialization_alias='from')
+    until: Blank[Day]
     quantity: Blank[int]
     sold_out: Flag
     quote: str
@@ -625,7 +664,7 @@ class PageRow(CsvRow):
     event: str
     page: str
     reseller: Blank[str]
-    read_on: str
+    read_on: Date
     read_by: str
     prompt: str
     recipe: str
@@ -650,7 +689,7 @@ class StatusRow(CsvRow):
 
     event_id: int
     event: str
-    start: str
+    start: Date
     waits_for: Waiting
     first_read: FirstReadState
     sales: Blank[Sales]
@@ -696,48 +735,81 @@ class Airport(CsvRow):
     country_code: str
     lat: float
     lon: float
-    home: Blank[int]
+    home: Flag
+
+
+class Spot(BaseModel):
+    """Where Nominatim puts a place, and its name for it."""
+
+    model_config = ConfigDict(frozen=True)
+
+    lat: float
+    lon: float
+    name: str
 
 
 class Place(CsvRow):
-    """A place the source DB names, and where it is, '' when Nominatim found none (pipeline/geocode.csv)."""
+    """A place the source DB names, and where it is when Nominatim found it (pipeline/geocode.csv, its columns lat,
+    lon and osm_name, all empty when it found none)."""
 
-    line_end: ClassVar[str] = '\r\n'
     city: str
     country: str
-    lat: str
-    lon: str
-    osm_name: str
+    found: Spot | None
+
+    @classmethod
+    def columns(cls) -> list[str]:
+        return ['city', 'country', 'lat', 'lon', 'osm_name']
+
+    @classmethod
+    def cells(cls, row: dict[str, str]) -> dict[str, object]:
+        spot = None if row['lat'] == '' else {'lat': row['lat'], 'lon': row['lon'], 'name': row['osm_name']}
+        return {'city': row['city'], 'country': row['country'], 'found': spot}
+
+    def text(self) -> dict[str, object]:
+        spot = self.found
+        coords = ('', '', '') if spot is None else (number_text(spot.lat), number_text(spot.lon), spot.name)
+        out: dict[str, object] = {'city': self.city, 'country': self.country}
+        return out | dict(zip(('lat', 'lon', 'osm_name'), coords, strict=True))
 
 
 class Fare(CsvRow):
     """A Friday-to-Monday return's price (docs/data/fares.csv)."""
 
     airport: str
-    depart: str
-    return_: str = Field(validation_alias='return', serialization_alias='return')
-    price: str  # in whole euros
+    depart: Date
+    return_: Date = Field(validation_alias='return', serialization_alias='return')
+    price: int  # in whole euros
     currency: str
-    fetched_at: str
+    fetched_at: Stamp
 
 
 class Job(CsvRow):
     """When a festival weekend was last searched, and how it went (pipeline/fare_jobs.csv)."""
 
     airport: str
-    depart: str
-    last_run: str
-    status: Literal['priced', 'no price', 'refused']
+    depart: Date
+    last_run: Stamp
+    status: FareSearch
     note: str
+
+
+class Spent(CsvRow):
+    """A request to Claude and what it cost (pipeline/spend.csv); thinking counts as output."""
+
+    at: Stamp
+    step: str
+    model: str
+    input_tokens: int
+    output_tokens: int
+    usd: Number
 
 
 class Rate(CsvRow):
     """Units of a currency per euro, on a day (pipeline/rates.csv)."""
 
-    line_end: ClassVar[str] = '\r\n'
     currency: str
     per_eur: float
-    date: str
+    date: Date
 
 
 class Booking(CsvRow):
@@ -778,6 +850,37 @@ class Person(CsvRow):
 
     key: str
     name: str
-    artist_keys: str
-    featured: int
+    artist_keys: Keys
+    featured: Flag
     note: str
+
+
+class Group(CsvRow):
+    """A named group (pipeline/extract/groups.csv): an act several people perform as, its members and the spellings
+    that mean it, each a match_key."""
+
+    group_key: str
+    display_name: str
+    members: Keys
+    aliases: Keys
+    note: str
+
+
+class Suggestion(CsvRow):
+    """A pair of artists that may be one (pipeline/artist_merge_suggestions.csv), for a reviewer to decide."""
+
+    decision: str  # empty: the reviewer copies the row into artist_merges.csv with merge or separate
+    keep_key: str
+    merge_key: str
+    keep_name: str
+    merge_name: str
+    keep_bookings: int
+    merge_bookings: int
+    keep_countries: str
+    merge_countries: str
+    countries: str
+    calendar: str
+    calendar_note: str
+    similarity: float
+    score: float
+    reason: str

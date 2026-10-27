@@ -10,14 +10,14 @@ from pathlib import Path
 from typing import Annotated
 
 import pytest
-from pydantic import Field
+from pydantic import Field, ValidationError
 
 from pipeline import db, enums, prompt, spend, states, tickets
 from pipeline.enums import AnswerState, PassKind, Style
 from pipeline.extract import answers, ask, load_extract, prices, run_log
 from pipeline.extract.resolve_artists import stable_ids
 from pipeline.prompt import Prompt, api_schema
-from pipeline.records import JSON, Batch, Priced, PricedPass, PricedTier, Record, Stamped
+from pipeline.records import JSON, Batch, Priced, PricedPass, PricedTier, Record, Stamped, real_day
 from tests import jsons
 from tests.fakes import Client
 
@@ -52,8 +52,8 @@ def tier(
         currency=currency,
         fee=fee,
         alt=None,
-        from_=from_,
-        until=until,
+        from_=None if from_ is None else real_day(from_),
+        until=None if until is None else real_day(until),
         quantity=None,
         door=False,
         sold_out=False,
@@ -100,12 +100,19 @@ def test_amount_missing_from_quote_is_a_problem() -> None:
     ],
 )
 def test_dates_without_a_year_fall_before_the_festival(answer: str | None, start: str, expected: str | None) -> None:
-    assert prices.on_date(answer, start) == expected
+    assert prices.on_date(None if answer is None else real_day(answer), start) == expected
 
 
-def test_impossible_date_is_a_problem() -> None:
-    ev = priced(tier('1€', 1, from_='02-30', until=None))
-    assert any(p.startswith('dates:') for p in prices.problems(ev, []))
+@pytest.mark.parametrize('value', ['02-30', '2027-13-01', '2026-02-29'])
+def test_an_answer_with_no_real_day_is_refused(value: str) -> None:
+    text = priced(tier('1€', 1)).model_dump_json(by_alias=True)
+    assert text.count('"from":null') == 1
+    with pytest.raises(ValidationError, match='from'):
+        _ = Priced.parse(text.replace('"from":null', f'"from":"{value}"'))
+
+
+def test_any_year_s_day_is_a_real_day() -> None:
+    assert real_day('02-29') == '02-29'
 
 
 def db_with(artists: dict[str, int], keys: dict[str, int], issued: dict[str, int] | None = None) -> sqlite3.Connection:

@@ -1,6 +1,7 @@
 """The closed world of states (pipeline/STATES.md): the table checks itself, everything built from it holds exactly
 its states, and each function that chooses between states reaches every one of them."""
 
+import ast
 import dataclasses
 import json
 import re
@@ -221,3 +222,28 @@ def test_the_log_says_each_page_read_state() -> None:
         assert LOG_ENTRY.validate_json(json.dumps(base | said)).status == key
     with pytest.raises(ValidationError):
         _ = LOG_ENTRY.validate_json(json.dumps(base | {'status': 'soon', 'why': 'w'}))
+
+
+# the string Literals the code may have: vocabularies that are no data point's states (pipeline/states.py holds those)
+LITERALS = {
+    frozenset({'merge-review-v1', 'merge-review-v2'}),  # the merge review prompts' files, records.MergeReview
+    frozenset({'address', 'html'}),  # where a recipe's widget finds its event id, records.Widget
+    frozenset({'fr', 'es', 'pt'}),  # kizomba-world's translations
+    frozenset({'extract', 'rooms_genres', 'prices'}),  # the extraction passes, prompt.PassName
+    frozenset({'first_read'}),  # the prompt that is no pass, prompt.Name
+    frozenset({'ro', 'rw', 'rwc'}),  # SQLite's open modes, db.connect
+}
+
+
+def literal_words(node: ast.AST) -> frozenset[str]:
+    """The strings of a Literal[...] subscript; none for any other node."""
+    if not (isinstance(node, ast.Subscript) and isinstance(node.value, ast.Name) and node.value.id == 'Literal'):
+        return frozenset()
+    items = node.slice.elts if isinstance(node.slice, ast.Tuple) else [node.slice]
+    return frozenset(e.value for e in items if isinstance(e, ast.Constant) and isinstance(e.value, str))
+
+
+def test_a_string_literal_is_no_set_of_states() -> None:
+    modules = (ROOT / 'pipeline').rglob('*.py')
+    found = {w for path in modules for node in ast.walk(ast.parse(path.read_text())) if (w := literal_words(node))}
+    assert found == LITERALS

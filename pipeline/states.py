@@ -53,6 +53,7 @@ ROW = ConfigDict(strict=True, extra='forbid')  # a field of another type, or one
 @dataclass(frozen=True, config=ROW)
 class Point:
     name: str
+    enum: str  # its states' enum in pipeline/enums.py
     of: str  # what one instance is
     produced_by: str
     under: str | None = None  # the point its states fall under
@@ -81,53 +82,68 @@ CARD, VIEW, NOTE, FILTER, KEPT, WAITS = Disposition
 PAGE, PASSES = Link
 
 POINTS = (
-    P('page_read', 'each logged attempt to read a ticket page', 'tickets.attempt'),
+    P('page_read', 'Status', 'each logged attempt to read a ticket page', 'tickets.attempt'),
     P(
         'sales',
+        'Sales',
         'a festival with no full link to its ticket page, as an agent found it (tickets/pages.csv)',
         'tickets.py page --state',
     ),
-    P('ticket', 'each ticket of a read ticket page', 'the first read; tickets.unread_keys'),
-    P('skip_reason', 'each ticket a first read skips', 'the first read'),
-    P('pass_kind', 'each pass a festival sells', 'the prices pass; the first read'),
+    P('ticket', 'Ticket', 'each ticket of a read ticket page', 'the first read; tickets.unread_keys'),
+    P('skip_reason', 'SkipReason', 'each ticket a first read skips', 'the first read'),
+    P('pass_kind', 'PassKind', 'each pass a festival sells', 'the prices pass; the first read'),
     P(
         'style',
+        'Style',
         'a dance style: of a festival, by its genres, or the one a pass is limited to (null: all the '
         "festival's styles)",
         'prices.styles; the prices pass; the first read',
     ),
-    P('people', 'each pass, by how many people one price is for', 'prices.people, from group_size and kind'),
-    P('fee', 'each price tier, by its booking fee', 'the prices pass; the first read'),
-    P('re_read', 'a festival with a first read, by when its page is read again', 'tickets.recheck'),
-    P('first_read', 'a festival, by whether it needs a (new) first read', 'tickets.why_first_read'),
-    P('answer', "a festival's answer of one extraction pass", 'ask.answer_state'),
+    P('people', 'People', 'each pass, by how many people one price is for', 'prices.people, from group_size and kind'),
+    P('fee', 'Fee', 'each price tier, by its booking fee', 'the prices pass; the first read'),
+    P('re_read', 'Recheck', 'a festival with a first read, by when its page is read again', 'tickets.recheck'),
+    P('first_read', 'FirstRead', 'a festival, by whether it needs a (new) first read', 'tickets.why_first_read'),
+    P('answer', 'AnswerState', "a festival's answer of one extraction pass", 'ask.answer_state'),
     P(
         'waits_for',
+        'Waiting',
         'each festival, by what its prices from its ticket page wait for',
         'tickets.waiting, in tickets/status.csv',
     ),
-    P('price', 'each festival, by what its card can say of its price', 'prices.price_state, in price_status'),
-    P('tier_today', "a pass's price on the day it is viewed", 'pricing.js tierNow'),
-    P('card_price', 'a priced festival, by what its card says on the day it is viewed', 'pricing.js priceNow'),
+    P('price', 'Price', 'each festival, by what its card can say of its price', 'prices.price_state, in price_status'),
+    P('tier_today', 'TierToday', "a pass's price on the day it is viewed", 'pricing.js tierNow'),
+    P(
+        'card_price',
+        'CardPrice',
+        'a priced festival, by what its card says on the day it is viewed',
+        'pricing.js priceNow',
+    ),
     P(
         'genre',
+        'Genre',
         'each dance genre a festival covers',
         'the rooms-genres pass; the genre rules; the site tags',
         under='style',
     ),
-    P('genre_rule', 'a genre the rules add', 'load_extract'),
-    P('source', 'where a genre or feature row comes from', 'load_extract'),
-    P('pass_source', "where a festival's passes come from", 'load_extract'),
-    P('room_kind', 'each room a description lists', 'the rooms-genres pass'),
-    P('feature', 'each feature of a festival', 'the extract pass'),
-    P('role', 'each artist named in a description', 'the extract pass'),
-    P('artist_kind', 'each artist', 'resolve_artists'),
-    P('home_basis', "an artist's home country, by how it is known", 'build_site_db'),
-    P('merge_decision', 'each artist merge reviewed', 'the merge review; pipeline/artist_merges.csv'),
-    P('pending', 'a festival waiting for its extraction passes', 'scrape'),
-    P('plan', 'each plan someone shares (pipeline/plans.csv)', 'pipeline/plans.csv'),
-    P('next_change', "a pass's next price change on the day it is viewed", 'pricing.js nextChange'),
-    P('hotel', 'each pass, by whether its price includes a hotel', 'the prices pass; the first read'),
+    P('genre_rule', 'GenreRule', 'a genre the rules add', 'load_extract'),
+    P('source', 'Source', 'where a genre or feature row comes from', 'load_extract'),
+    P('pass_source', 'PassSource', "where a festival's passes come from", 'load_extract'),
+    P('room_kind', 'RoomKind', 'each room a description lists', 'the rooms-genres pass'),
+    P('feature', 'Feature', 'each feature of a festival', 'the extract pass'),
+    P('role', 'Role', 'each artist named in a description', 'the extract pass'),
+    P('artist_kind', 'ArtistKind', 'each artist', 'resolve_artists'),
+    P('home_basis', 'HomeBasis', "an artist's home country, by how it is known", 'build_site_db'),
+    P('merge_decision', 'MergeDecision', 'each artist merge reviewed', 'the merge review; pipeline/artist_merges.csv'),
+    P('pending', 'Pending', 'a festival waiting for its extraction passes', 'scrape'),
+    P('plan', 'Plan', 'each plan someone shares (pipeline/plans.csv)', 'pipeline/plans.csv'),
+    P(
+        'fare_search',
+        'FareSearch',
+        "a festival weekend's latest flight search (pipeline/fare_jobs.csv)",
+        'fares.search',
+    ),
+    P('next_change', 'NextChange', "a pass's next price change on the day it is viewed", 'pricing.js nextChange'),
+    P('hotel', 'Hotel', 'each pass, by whether its price includes a hotel', 'the prices pass; the first read'),
 )
 
 ROWS = (
@@ -621,6 +637,9 @@ ROWS = (
     S('pending', 'new', 'the festival is new', WAITS, owner='the next run'),
     S('pending', 'description changed', 'its description changed', WAITS, owner='the next run'),
     S('plan', 'going', 'they said they are going', VIEW),
+    S('fare_search', 'priced', 'Google gave a return for the weekend; its price is in docs/data/fares.csv', KEPT),
+    S('fare_search', 'no price', 'Google gave no return, or fli failed or timed out; note says which', KEPT),
+    S('fare_search', 'refused', 'Google refused the search twice (HTTP 429); the run stops there', KEPT),
     S(
         'next_change',
         'door',
@@ -805,39 +824,14 @@ def js_module() -> str:
 
 
 # the code's enums (pipeline/enums.py): each enum's point, and whether it holds only the states the point's own
-# producer makes (a schema's enum) rather than all of them
-ENUMS = {
-    'Status': ('page_read', False),
-    'Sales': ('sales', False),
-    'Ticket': ('ticket', False),
-    'SkipReason': ('skip_reason', False),
-    'PassKind': ('pass_kind', False),
-    'Style': ('style', False),
-    'People': ('people', False),
-    'Fee': ('fee', False),
-    'Hotel': ('hotel', False),
-    'Recheck': ('re_read', False),
-    'FirstRead': ('first_read', False),
-    'AnswerState': ('answer', False),
-    'Waiting': ('waits_for', False),
-    'Price': ('price', False),
-    'TierToday': ('tier_today', False),
-    'CardPrice': ('card_price', False),
-    'NextChange': ('next_change', False),
-    'Genre': ('genre', False),
-    'GenreRule': ('genre_rule', False),
-    'Source': ('source', False),
-    'PassSource': ('pass_source', False),
-    'RoomKind': ('room_kind', False),
-    'Feature': ('feature', False),
-    'ExtractedFeature': ('feature', True),
-    'Role': ('role', False),
-    'ArtistKind': ('artist_kind', False),
-    'HomeBasis': ('home_basis', False),
-    'MergeDecision': ('merge_decision', False),
-    'Pending': ('pending', False),
-    'Plan': ('plan', False),
-}
+# producer makes (a schema's enum) rather than all of them; every point has one (Point.enum)
+ENUMS = {p.enum: (p.name, False) for p in POINTS} | {'ExtractedFeature': ('feature', True)}
+
+
+def points_table() -> str:
+    """The data points as a Markdown table, for pipeline/STATES.md: what one instance is, its states, its producer."""
+    rows = [f'| **{p.name}**, {p.of} | {", ".join(f"`{k}`" for k in keys(p.name))} | {p.produced_by} |' for p in POINTS]
+    return '\n'.join(['| Data point | States | Produced by |', '|---|---|---|', *rows])
 
 
 def enum_keys(name: str) -> list[str]:

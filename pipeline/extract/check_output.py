@@ -82,7 +82,7 @@ def checked[E: Entry](record: type[Batch[E]], text: str, texts: Mapping[int, str
 
 
 class Args(argparse.Namespace):
-    pass_name: prompts.PassName = 'extract'
+    pass_name: prompts.PassName = 'extract'  # noqa: S105 (a pass is an extraction pass, no password)
     question: Path = Path()
     answer: Path = Path()
 

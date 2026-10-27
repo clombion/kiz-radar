@@ -50,7 +50,7 @@ from collections import defaultdict
 from collections.abc import Iterable, Mapping
 from dataclasses import dataclass, field
 from difflib import SequenceMatcher
-from typing import ClassVar, NamedTuple
+from typing import NamedTuple
 
 import pycountry
 
@@ -61,7 +61,7 @@ from pipeline.enums import ArtistKind, MergeDecision, Role
 from pipeline.extract import run_log
 from pipeline.extract.answers import log, logged
 from pipeline.extract.prices import COUPLE
-from pipeline.records import CsvRow, MergeReview, MergeRow, Record
+from pipeline.records import Group, MergeReview, MergeRow, Record
 
 MERGES = run_log.HERE / 'merges.csv'
 GROUPS = run_log.HERE / 'groups.csv'
@@ -316,31 +316,8 @@ def person_key(name: str, role: Role, couple_scope: str | None) -> str:
     return f'p:{k}@{couple_scope}' if couple_scope else f'p:{k}@{role_family(role)}'
 
 
-class Group(CsvRow):
-    """A named group (pipeline/extract/groups.csv): an act several people perform as, its members and the spellings
-    that mean it, each a match_key, ';'-separated."""
-
-    group_key: str
-    display_name: str
-    members: str
-    aliases: str
-    note: str
-
-    @property
-    def member_keys(self) -> list[str]:
-        return [k for k in self.members.split(';') if k]
-
-    @property
-    def alias_keys(self) -> list[str]:
-        return [k for k in self.aliases.split(';') if k]
-
-
-class MergeFile(MergeRow):
-    line_end: ClassVar[str] = '\r\n'
-
-
 def load_merges() -> dict[frozenset[str], MergeDecision]:
-    return {frozenset((r.key_a, r.key_b)): r.decision for r in MergeFile.read(MERGES)}
+    return {frozenset((r.key_a, r.key_b)): r.decision for r in MergeRow.read(MERGES)}
 
 
 class UnionFind:
@@ -436,7 +413,7 @@ def record_steps(con: sqlite3.Connection, resolved: Resolved) -> None:
                 details={'decisions_by_prompt': {k: dict(v) for k, v in counts.items()}, 'batches': len(reviews)},
             ),
         )
-    rows = MergeFile.read(MERGES)
+    rows = MergeRow.read(MERGES)
     run_log.record(
         con,
         run_log.Step(
@@ -725,8 +702,8 @@ def final_keys(keys: Keys, uf: UnionFind, groups: Iterable[Group]) -> dict[str, 
         gk = g.group_key
         group_keys.add(gk)
         keys.kinds[gk] = ArtistKind.GROUP
-        keys.members[gk] = [m for m in g.member_keys if m in keys.kinds]
-        for alias in g.alias_keys:
+        keys.members[gk] = [m for m in g.members if m in keys.kinds]
+        for alias in g.aliases:
             if alias in keys.kinds:
                 uf.union(gk, alias)
         if uf.find(gk) != gk:
@@ -800,14 +777,14 @@ def main() -> None:
     _ = con.executemany('INSERT OR REPLACE INTO artist_merge_candidates VALUES (?, ?, ?, ?, ?, ?, ?, ?)', found)
     _ = con.executemany(
         'INSERT OR REPLACE INTO artist_merge_decisions VALUES (?, ?, ?, ?, ?)',
-        [(r.key_a, r.key_b, r.decision, r.source or 'manual', r.note) for r in MergeFile.read(MERGES)],
+        [(r.key_a, r.key_b, r.decision, r.source or 'manual', r.note) for r in MergeRow.read(MERGES)],
     )
     for g in groups:
         _ = con.execute(
             'INSERT INTO artist_group_definitions VALUES (?, ?, ?, ?)',
             (g.group_key, ids[g.group_key], g.display_name, g.note),
         )
-        _ = con.executemany('INSERT INTO artist_group_aliases VALUES (?, ?)', [(g.group_key, a) for a in g.alias_keys])
+        _ = con.executemany('INSERT INTO artist_group_aliases VALUES (?, ?)', [(g.group_key, a) for a in g.aliases])
     counted: list[tuple[str, int]] = con.execute('SELECT kind, count(*) FROM artists GROUP BY kind').fetchall()
     kinds_count = dict(counted)
     record_steps(con, Resolved(len(mentions), kinds_count, len(found), unsupported_same_name, len(groups)))

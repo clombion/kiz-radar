@@ -98,7 +98,7 @@ def test_an_answer_to_the_current_prompt_holds_only_states_its_pass_makes(
         _ = (folder / f'event-{i}.json').write_text(json.dumps({'batch': 'b', 'events': events}))
 
     def answered(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, answers.Logged]]:
-        if pass_name != 'extract':
+        if pass_name != 'extract':  # noqa: S105 (a pass is an extraction pass, no password)
             return {}
         return {
             i: (

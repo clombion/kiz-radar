@@ -53,9 +53,7 @@ ignore = [
     "COM812",   # conflicts with the formatter
     "T201",     # the steps are command-line programs: what they print is their output
     "EM101", "EM102", "TRY003",  # an exception's message is written where it is raised
-    "PLC0415",  # imports inside functions keep each step to its own dependency group (pyproject.toml)
     "RUF001", "RUF002", "RUF003",  # typographic quotes and dashes are the site's words
-    "S105", "S106", "S107",  # a pass is a festival's ticket here: the names that hold the word are no passwords
 ]
 
 [tool.ruff.lint.per-file-ignores]
@@ -67,12 +65,12 @@ ignore = [
     "FBT001",   # a parametrized test takes its cases' flags as arguments
     "PLR0913",  # a test's factory takes each field a case may vary
 ]
-# their SQL embeds table names and the state table's keys (states.sql_in), never a value from outside
-"pipeline/build_site_db.py" = ["S608"]
-"pipeline/extract/load_extract.py" = ["S608"]
-"pipeline/extract/resolve_artists.py" = ["S608"]
-"pipeline/extract/run_log.py" = ["S608"]
-"pipeline/scrape.py" = ["S608"]
+# their imports inside functions keep each step to its own dependency group (pyproject.toml)
+"pipeline/read_page.py" = ["PLC0415"]
+"pipeline/tickets.py" = ["PLC0415"]
+"tests/test_tickets.py" = ["PLC0415"]
+# written from pipeline/states.py: FULL_PASS is a ticket, no password
+"pipeline/enums.py" = ["S105"]
 
 [tool.ruff.lint.mccabe]
 max-complexity = 10

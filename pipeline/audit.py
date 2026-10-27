@@ -26,16 +26,28 @@ from pipeline import prompt as prompts
 from pipeline.exceptions import Override
 from pipeline.extract import answers
 from pipeline.records import (
+    Airport,
     ArtistMergeRow,
+    Booking,
     CsvRow,
+    Fare,
     FirstRead,
     FoundRow,
+    Group,
+    HomeCountry,
+    Job,
     MergeRow,
     PageRow,
+    Person,
+    Place,
     PlanRow,
     PriceRow,
+    Promo,
+    Rate,
+    Spent,
     Stamped,
     StatusRow,
+    Suggestion,
     errors,
 )
 
@@ -43,14 +55,26 @@ ROOT = tickets.ROOT
 
 # each CSV file the steps share, by the record of its rows
 FILES: dict[str, type[CsvRow]] = {
+    'docs/data/fares.csv': Fare,
+    'pipeline/airports.csv': Airport,
+    'pipeline/artist_bookings.csv': Booking,
+    'pipeline/artist_countries.csv': HomeCountry,
+    'pipeline/artist_merge_suggestions.csv': Suggestion,
+    'pipeline/artist_merges.csv': ArtistMergeRow,
+    'pipeline/extract/answers/log.csv': answers.Logged,
+    'pipeline/extract/groups.csv': Group,
+    'pipeline/extract/merges.csv': MergeRow,
+    'pipeline/fare_jobs.csv': Job,
+    'pipeline/geocode.csv': Place,
+    'pipeline/pass_prices.csv': PriceRow,
+    'pipeline/people.csv': Person,
+    'pipeline/plans.csv': PlanRow,
+    'pipeline/promo_codes.csv': Promo,
+    'pipeline/rates.csv': Rate,
+    'pipeline/spend.csv': Spent,
+    'pipeline/ticket_pages.csv': PageRow,
     'pipeline/tickets/pages.csv': FoundRow,
     'pipeline/tickets/status.csv': StatusRow,
-    'pipeline/pass_prices.csv': PriceRow,
-    'pipeline/ticket_pages.csv': PageRow,
-    'pipeline/extract/answers/log.csv': answers.Logged,
-    'pipeline/extract/merges.csv': MergeRow,
-    'pipeline/artist_merges.csv': ArtistMergeRow,
-    'pipeline/plans.csv': PlanRow,
 }
 
 
@@ -65,7 +89,7 @@ def refused(event_ids: set[int]) -> list[str]:
     for file, record in FILES.items():
         for n, row in enumerate(tables.rows(ROOT / file), 2):
             try:
-                _ = record.model_validate(row)
+                _ = record.model_validate(record.cells(row))
             except ValidationError as e:
                 out += errors(e, f'{file} line {n}')
     for pass_ in prompts.PASSES:

@@ -93,14 +93,6 @@ class Fee(StrEnum):
 
 
 @unique
-class Hotel(StrEnum):
-    """the hotel states"""
-
-    INCLUDED = 'included'
-    NONE = 'none'
-
-
-@unique
 class Recheck(StrEnum):
     """the re_read states"""
 
@@ -178,15 +170,6 @@ class CardPrice(StrEnum):
     PACKAGE = 'package'
     SOLD_OUT = 'sold_out'
     ENDED = 'ended'
-
-
-@unique
-class NextChange(StrEnum):
-    """the next_change states"""
-
-    DOOR = 'door'
-    DATED = 'dated'
-    LATER = 'later'
 
 
 @unique
@@ -277,38 +260,6 @@ class Feature(StrEnum):
 
 
 @unique
-class ExtractedFeature(StrEnum):
-    """the feature states its producer makes"""
-
-    ALL_LEVELS_BEGINNERS = 'all_levels_beginners'
-    TAXI_DANCERS = 'taxi_dancers'
-    ACCOMMODATION_INCLUDED = 'accommodation_included'
-    MEALS_INCLUDED = 'meals_included'
-    TRANSFERS_SHUTTLE = 'transfers_shuttle'
-    POOL_PARTY = 'pool_party'
-    BEACH_PARTY = 'beach_party'
-    BOAT_PARTY = 'boat_party'
-    CRUISE = 'cruise'
-    LIVE_MUSIC = 'live_music'
-    BOOTCAMP_INTENSIVE = 'bootcamp_intensive'
-    COMPETITION = 'competition'
-    CAMPING = 'camping'
-    MASTERCLASS = 'masterclass'
-    PRIVATE_CLASSES = 'private_classes'
-    SHOWS = 'shows'
-    THEMED_PARTIES = 'themed_parties'
-    PRE_PARTY = 'pre_party'
-    AFTER_PARTY = 'after_party'
-    DAY_SOCIALS = 'day_socials'
-    PARTNER_HOTEL = 'partner_hotel'
-    MULTIPLE_ROOMS = 'multiple_rooms'
-    ADULTS_ONLY = 'adults_only'
-    ALL_IN_ONE = 'all_in_one'
-    WORKSHOPS = 'workshops'
-    DRESS_CODE = 'dress_code'
-
-
-@unique
 class Role(StrEnum):
     """the role states"""
 
@@ -361,3 +312,61 @@ class Plan(StrEnum):
     """the plan states"""
 
     GOING = 'going'
+
+
+@unique
+class FareSearch(StrEnum):
+    """the fare_search states"""
+
+    PRICED = 'priced'
+    NO_PRICE = 'no price'
+    REFUSED = 'refused'
+
+
+@unique
+class NextChange(StrEnum):
+    """the next_change states"""
+
+    DOOR = 'door'
+    DATED = 'dated'
+    LATER = 'later'
+
+
+@unique
+class Hotel(StrEnum):
+    """the hotel states"""
+
+    INCLUDED = 'included'
+    NONE = 'none'
+
+
+@unique
+class ExtractedFeature(StrEnum):
+    """the feature states its producer makes"""
+
+    ALL_LEVELS_BEGINNERS = 'all_levels_beginners'
+    TAXI_DANCERS = 'taxi_dancers'
+    ACCOMMODATION_INCLUDED = 'accommodation_included'
+    MEALS_INCLUDED = 'meals_included'
+    TRANSFERS_SHUTTLE = 'transfers_shuttle'
+    POOL_PARTY = 'pool_party'
+    BEACH_PARTY = 'beach_party'
+    BOAT_PARTY = 'boat_party'
+    CRUISE = 'cruise'
+    LIVE_MUSIC = 'live_music'
+    BOOTCAMP_INTENSIVE = 'bootcamp_intensive'
+    COMPETITION = 'competition'
+    CAMPING = 'camping'
+    MASTERCLASS = 'masterclass'
+    PRIVATE_CLASSES = 'private_classes'
+    SHOWS = 'shows'
+    THEMED_PARTIES = 'themed_parties'
+    PRE_PARTY = 'pre_party'
+    AFTER_PARTY = 'after_party'
+    DAY_SOCIALS = 'day_socials'
+    PARTNER_HOTEL = 'partner_hotel'
+    MULTIPLE_ROOMS = 'multiple_rooms'
+    ADULTS_ONLY = 'adults_only'
+    ALL_IN_ONE = 'all_in_one'
+    WORKSHOPS = 'workshops'
+    DRESS_CODE = 'dress_code'

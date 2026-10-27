@@ -12,12 +12,14 @@ import argparse
 import collections
 import datetime as dt
 import difflib
+import itertools
 import json
 import math
 import re
 import sqlite3
 import sys
 import unicodedata
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -115,21 +117,44 @@ def copy_tables(x: sqlite3.Connection) -> None:
         ],
     )
     for t in COPIED:
-        _ = x.execute(f'create table {t} as select * from src.{t}')
-    _ = x.execute(
-        'create table event_genres as select event_id, genre, source, other_name, genre_as_written from '
-        'src.event_genres'
-    )
-    _ = x.execute('create table event_features as select event_id, feature, source from src.event_features')
-    _ = x.execute('create table event_rooms as select event_id, party_rooms, class_rooms from src.event_rooms')
-    _ = x.execute(
-        'create table event_room_list as select event_id, room_no, name_as_written, kind, genres from '
-        'src.event_room_list'
-    )
-    _ = x.execute(
-        'create table artist_mentions as select id, event_id, role, name_as_written, style, country from '
-        'src.artist_mentions'
-    )
+        copy(x, t)
+    copy(x, 'event_genres', ('event_id', 'genre', 'source', 'other_name', 'genre_as_written'))
+    copy(x, 'event_features', ('event_id', 'feature', 'source'))
+    copy(x, 'event_rooms', ('event_id', 'party_rooms', 'class_rooms'))
+    copy(x, 'event_room_list', ('event_id', 'room_no', 'name_as_written', 'kind', 'genres'))
+    copy(x, 'artist_mentions', ('id', 'event_id', 'role', 'name_as_written', 'style', 'country'))
+
+
+def copy(x: sqlite3.Connection, table: str, columns: Sequence[str] | None = None) -> None:
+    """A table of the source with all its rows: as it is declared there, or with only these of its columns, each with
+    its declared type, key and reference (a check over the columns left out goes with them)."""
+    if columns is None:
+        found: list[tuple[str]] = x.execute(
+            "select sql from src.sqlite_master where type = 'table' and name = ?", (table,)
+        ).fetchall()
+        _ = x.execute(found[0][0])
+        _ = x.execute(f'insert into {table} select * from src.{table}')  # noqa: S608 (a table of the source's)
+        return
+    declared: list[tuple[str, str, int, int]] = x.execute(
+        'select name, type, "notnull", pk from pragma_table_info(?, \'src\')', (table,)
+    ).fetchall()
+    refs: list[tuple[int, str, str, str]] = x.execute(
+        'select id, "from", "table", "to" from pragma_foreign_key_list(?, \'src\') order by id, seq', (table,)
+    ).fetchall()
+    kept = [d for d in declared if d[0] in columns]
+    if missing := set(columns) - {d[0] for d in kept}:
+        sys.exit(f'{table}: the source has no column {", ".join(sorted(missing))}')
+    key = [name for name, _, _, pk in sorted(kept, key=lambda d: d[3]) if pk]
+    lines = [f'{name} {kind}' + (' not null' if notnull else '') for name, kind, notnull, _ in kept]
+    lines += [f'primary key ({", ".join(key)})'] if key else []
+    for _, group in itertools.groupby(refs, key=lambda r: r[0]):
+        ref = list(group)
+        if all(c in columns for _, c, _, _ in ref):
+            ends = ', '.join(c for _, c, _, _ in ref), ', '.join(to for _, _, _, to in ref)
+            lines.append(f'foreign key ({ends[0]}) references {ref[0][2]}({ends[1]})')
+    names = ', '.join(columns)
+    _ = x.execute(f'create table {table} ({", ".join(lines)})')
+    _ = x.execute(f'insert into {table} ({names}) select {names} from src.{table}')  # noqa: S608 (a table of the source's and its columns)
 
 
 def norm_name(s: str) -> str:
@@ -192,8 +217,9 @@ def merged(x: sqlite3.Connection) -> tuple[Artists, int]:
 def fold(x: sqlite3.Connection, old: int, new: int) -> None:
     """An artist folded into another: its bookings, members, spellings and name become the other's."""
     _ = x.execute('update event_artists set artist_id = ? where artist_id = ?', (new, old))
-    _ = x.execute('update couple_members set couple_id = ? where couple_id = ?', (new, old))
-    _ = x.execute('update couple_members set member_id = ? where member_id = ?', (new, old))
+    for side in ('couple_id', 'member_id'):  # a pair the other already has is left to the delete
+        _ = x.execute(f'update or ignore couple_members set {side} = ? where {side} = ?', (new, old))  # noqa: S608 (a column of ours)
+        _ = x.execute(f'delete from couple_members where {side} = ?', (old,))  # noqa: S608 (a column of ours)
     aliases: list[tuple[str, int]] = x.execute(
         'select alias, mentions from artist_aliases where artist_id = ?', (old,)
     ).fetchall()
@@ -240,13 +266,9 @@ def merge_artists(x: sqlite3.Connection) -> Artists:
             (root(to), r.event_id, root(frm)),
         ).rowcount:
             sys.exit(f'artist_bookings.csv: {r.from_name} is not booked at {r.event}')
-    # a merge or a moved booking can leave the same artist twice in one line-up or couple
+    # a merge or a moved booking can name the same artist twice in one line-up: the first mention stays
     _ = x.execute("""delete from event_artists where mention_id not in (
        select min(mention_id) from event_artists group by event_id, artist_id, role)""")
-    _ = x.execute(
-        'delete from couple_members where rowid not in (select min(rowid) from couple_members group by couple_id, '
-        'member_id)'
-    )
     print(f'{n_merges} merge rows, {len(redirects)} artists folded into others, {len(moves)} bookings moved')
 
     # one casing for names across the site: "AMI & JULIEN" → "Ami & Julien", "Dj Chico" → "DJ Chico"
@@ -276,7 +298,7 @@ def places(x: sqlite3.Connection) -> None:
     for eid, city, country, start in events:
         cc = (codes(country) or [None])[0]
         g = geo.get((city, country))
-        lat, lon = (float(g.lat), float(g.lon)) if g and g.lat else (None, None)
+        lat, lon = (g.found.lat, g.found.lon) if g and g.found else (None, None)
         ap = dist = None
         if lat is not None and lon is not None:
             dist, ap = min((km(lat, lon, a.lat, a.lon), a.code) for a in AIRPORTS)
@@ -359,13 +381,15 @@ def artist_stats(x: sqlite3.Connection, artists: Artists) -> Booked:
     union all
     select cm.member_id, ea.event_id, ea.role, 'member', ea.artist_id
     from event_artists ea join couple_members cm on cm.couple_id = ea.artist_id""")
-    roles_sql = states.sql_in('role', BOOKED_ROLES)
+    roles = (json.dumps(BOOKED_ROLES),)
     countries: list[tuple[int, str | None]] = x.execute('select id, country_code from events').fetchall()
     ev_cc = dict(countries)
     bookings: collections.defaultdict[int, set[int]] = collections.defaultdict(set)
     role_count: collections.defaultdict[int, collections.Counter[str]] = collections.defaultdict(collections.Counter)
     booked: list[tuple[int, int, str]] = x.execute(
-        f'select artist_id, event_id, role from event_artists where as_couple is null and role in ({roles_sql})'
+        'select artist_id, event_id, role from event_artists where as_couple is null and role in '
+        '(select value from json_each(?))',
+        roles,
     ).fetchall()
     for a, e, role in booked:
         if e not in bookings[a]:
@@ -373,7 +397,9 @@ def artist_stats(x: sqlite3.Connection, artists: Artists) -> Booked:
         bookings[a].add(e)
     couple_bookings: collections.defaultdict[int, set[int]] = collections.defaultdict(set)  # events booked in a couple
     as_member: list[tuple[int, int]] = x.execute(
-        f"select artist_id, event_id from artist_events where via = 'member' and role in ({roles_sql})"
+        "select artist_id, event_id from artist_events where via = 'member' and role in "
+        '(select value from json_each(?))',
+        roles,
     ).fetchall()
     for m, e in as_member:
         couple_bookings[m].add(e)
@@ -456,27 +482,46 @@ def features(x: sqlite3.Connection) -> collections.defaultdict[int, set[str]]:
         _ = x.execute('insert into event_promos values (?,?,?)', (r.event_id, r.code.strip(), r.offer.strip() or None))
         feats[r.event_id].add(Feature.PROMO_CODE)
     # pass prices, from the source's prices pass (without the quotes or price notes)
-    _ = x.execute("""create table event_passes as select event_id, pass_no, kind, style, label, group_size, people,
-         days, includes_hotel,
-     source from src.event_passes""")
+    copy(
+        x,
+        'event_passes',
+        ('event_id', 'pass_no', 'kind', 'style', 'label', 'group_size', 'people', 'days', 'includes_hotel', 'source'),
+    )
     # festivals whose prices are read on their ticket page: the page, when it was read, tickets on it not read yet
-    _ = x.execute('create table ticket_pages as select event_id, page, reseller, read_on, unread from src.ticket_pages')
+    copy(x, 'ticket_pages', ('event_id', 'page', 'reseller', 'read_on', 'unread'))
     # what a card can say of each festival's price, the ticket page it links to, and the pass it prices
     _ = x.execute(f"""create table price_status (event_id integer primary key references events(id),
      price text not null check (price in ({states.sql_in('price')})), page text, card_pass integer,
      check ((price = '{enums.Price.PRICED}') = (card_pass is not null)))""")
     _ = x.execute('insert into price_status select event_id, price, page, card_pass from src.price_status')
     # a festival selling full, party or package passes for two or more people has the group_deals highlight
-    deals: list[tuple[int]] = x.execute(f"""select distinct event_id from event_passes
-                  where people in ({states.sql_in('people', (People.COUPLE, People.GROUP))})
-                  and kind in ({
-        states.sql_in('pass_kind', (PassKind.FULL, PassKind.PARTY, PassKind.PACKAGE))
-    })""").fetchall()
+    deals: list[tuple[int]] = x.execute(
+        'select distinct event_id from event_passes where people in (select value from json_each(?)) '
+        'and kind in (select value from json_each(?))',
+        (json.dumps((People.COUPLE, People.GROUP)), json.dumps((PassKind.FULL, PassKind.PARTY, PassKind.PACKAGE))),
+    ).fetchall()
     for (e,) in deals:
         feats[e].add(Feature.GROUP_DEALS)
-    _ = x.execute("""create table pass_tiers as select event_id, pass_no, tier_no, amount, currency, fee, alt_amount,
-         alt_currency, valid_from,
-     valid_until, quantity, door, sold_out, current from src.pass_tiers""")
+    copy(
+        x,
+        'pass_tiers',
+        (
+            'event_id',
+            'pass_no',
+            'tier_no',
+            'amount',
+            'currency',
+            'fee',
+            'alt_amount',
+            'alt_currency',
+            'valid_from',
+            'valid_until',
+            'quantity',
+            'door',
+            'sold_out',
+            'current',
+        ),
+    )
     # the rates the site converts prices with
     _ = x.execute('create table rates (currency text primary key, per_eur real not null, date text not null)')
     rates = Rate.read(ROOT / 'pipeline' / 'rates.csv')
@@ -492,8 +537,9 @@ def event_stats(x: sqlite3.Connection, booked: Booked) -> None:
     feats = features(x)
     lineups: collections.defaultdict[int, set[int]] = collections.defaultdict(set)
     named: list[tuple[int, int]] = x.execute(
-        f'select event_id, artist_id from event_artists where role in ({states.sql_in("role", LINEUP_ROLES)}) and '
-        'as_couple is null'
+        'select event_id, artist_id from event_artists where role in (select value from json_each(?)) and '
+        'as_couple is null',
+        (json.dumps(LINEUP_ROLES),),
     ).fetchall()
     for e, a in named:
         lineups[e].add(a)
@@ -557,7 +603,7 @@ def plans(x: sqlite3.Connection, artists: Artists) -> None:
     for i, r in enumerate(Person.read(ROOT / 'pipeline' / 'people.csv'), 1):
         person_id[r.key] = i
         _ = x.execute('insert into people values (?,?,?,?)', (i, r.key, r.name, r.featured))
-        for k in filter(None, r.artist_keys.split(';')):
+        for k in r.artist_keys:
             if k not in artists.key_id:
                 sys.exit(f'people.csv: unknown artist key {k} ({r.name})')
             _ = x.execute('insert into person_artists values (?,?)', (i, artists.root(artists.key_id[k])))
@@ -574,7 +620,7 @@ def plans(x: sqlite3.Connection, artists: Artists) -> None:
               or ea.artist_id in (select couple_id from couple_members where member_id = pa.artist_id))
        where pa.person_id = p.person_id and ea.role in ({states.sql_in('role', (*BOOKED_ROLES, Role.MC))})
        order by ea.role = '{Role.TEACHER}' desc limit 1) as booked_as
-    from plans p join people pe on pe.id = p.person_id""")
+    from plans p join people pe on pe.id = p.person_id""")  # noqa: S608 (a view: the state table's keys, no parameters)
 
 
 def events_range(x: sqlite3.Connection) -> tuple[str, str]:
@@ -719,6 +765,9 @@ def main() -> None:
     meta(x, built_at)
     site = site_json(x, built_at)
     table_docs(x)
+    broken: list[tuple[object, ...]] = x.execute('pragma foreign_key_check').fetchall()
+    if broken:
+        sys.exit(f'{len(broken)} rows refer to rows the site database has not, first: {broken[0]}')
     x.commit()
     _ = x.execute('detach database src')
     _ = x.execute('vacuum')

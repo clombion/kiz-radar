@@ -398,6 +398,8 @@ The Python code is held to every ruff rule but the few `pyproject.toml` ignores,
 basedpyright's strict mode with `Any` an error: what comes from outside (an answer, a page, a CSV) is parsed into a
 record of `pipeline/records.py` where it enters. A check is suppressed only on its line, naming its rule and why, and
 `tests/test_suppressions.py` lists each suppression, so a new one is a change to that list.
+Every CSV file has its row record in `pipeline/audit.py` (`FILES`), and `tests/test_records.py` holds each file to
+the text its record writes, so a file and the code that writes it can't drift apart.
 
 The site tests check the site's structure: unused code and styles, links, stored hints and the price states. The
 pipeline tests cover the states, text, kizomba-world's pages, extraction, ticket pages and the commands. The audit

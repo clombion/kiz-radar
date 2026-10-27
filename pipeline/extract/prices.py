@@ -16,7 +16,7 @@ from collections.abc import Sequence
 
 from pipeline import states
 from pipeline.enums import PassKind, People, Price, Sales, Style
-from pipeline.records import PassTerms, Priced, PricedPass
+from pipeline.records import PassTerms, Priced, PricedPass, RealDay
 
 SEVERAL = 2  # dance styles that make a festival of several
 COUPLE = 2  # people in a couple; more are a group
@@ -35,28 +35,17 @@ def numbers_in(text: str) -> set[float]:
     return out
 
 
-def day(value: str) -> tuple[int | None, int, int] | None:
-    """(year or None, month, day) of a YYYY-MM-DD or MM-DD answer; None when it is no real day."""
-    *y, m, d = map(int, value.split('-'))
-    try:
-        dt.date(y[0] if y else 2024, m, d)  # a leap year accepts 02-29
-    except ValueError:
-        return None
-    return (y[0] if y else None), m, d
-
-
-def on_date(value: str | None, start_date: str) -> str | None:
+def on_date(value: RealDay | None, start_date: str) -> str | None:
     """An answer's date as YYYY-MM-DD; a date without a year gets the latest year that is not after start_date."""
     if value is None:
         return None
-    if (parts := day(value)) is None:
-        raise ValueError(f'{value!r} is no real day')
-    y, m, d = parts
-    if y is None:
-        start = dt.date.fromisoformat(start_date[:10])
-        y = start.year if (m, d) <= (start.month, start.day) else start.year - 1
-        if (m, d) == (2, 29) and y % 4:
-            d = 28
+    *year, m, d = map(int, value.split('-'))
+    if year:
+        return value
+    start = dt.date.fromisoformat(start_date[:10])
+    y = start.year if (m, d) <= (start.month, start.day) else start.year - 1
+    if (m, d) == (2, 29) and y % 4:
+        d = 28
     return f'{y:04d}-{m:02d}-{d:02d}'
 
 
@@ -94,9 +83,6 @@ def problems(ev: Priced, styles: Sequence[Style]) -> list[str]:
                         f'amounts: {where}.{key} {amount:g} is not in its quote {tier.quote!r}; '
                         f'quote the line that gives this price'
                     )
-            for key, value in (('from', tier.from_), ('until', tier.until)):
-                if value and day(value) is None:
-                    found.append(f'dates: {where}.{key} {value!r} is not a real day')
     return found + style_problems(ev.passes, styles)
 
 

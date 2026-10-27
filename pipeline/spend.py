@@ -7,16 +7,14 @@ BudgetSpentError; the step stops asking, leaves the rest for next month, and its
 already under way can take the month a little over.
 """
 
-import csv
 import datetime as dt
 import threading
 from pathlib import Path
 
-from pipeline import tables
+from pipeline.records import Rate, Spent
 
 HERE = Path(__file__).parent
 LEDGER, RATES = HERE / 'spend.csv', HERE / 'rates.csv'
-FIELDS = ['at', 'step', 'model', 'input_tokens', 'output_tokens', 'usd']
 BUDGET_EUR = 100
 # dollars per million tokens, in and out, by model; Haiku's long prompts (over 100K tokens) cost more
 PRICES = {
@@ -43,17 +41,16 @@ def usd(model: str, input_tokens: int, output_tokens: int) -> float:
 def month_usd(month: str | None = None) -> float:
     """Dollars spent in a calendar month (YYYY-MM, this one by default)."""
     month = month or dt.datetime.now(dt.UTC).strftime('%Y-%m')
-    return sum(float(r['usd']) for r in tables.rows(LEDGER) if r['at'].startswith(month))
+    return sum(r.usd for r in Spent.read(LEDGER) if r.at.startswith(month))
 
 
 def eur(dollars: float) -> float:
-    return dollars / next(float(r['per_eur']) for r in tables.rows(RATES) if r['currency'] == 'USD')
+    return dollars / next(r.per_eur for r in Rate.read(RATES) if r.currency == 'USD')
 
 
 def check(model: str) -> None:
-    """Before a request to model: KeyError when PRICES can't cost it (it could not be recorded),
-         BudgetSpentError once the
-    month's budget is spent."""
+    """Before a request to model: KeyError when PRICES can't cost it (it could not be recorded), BudgetSpentError once
+    the month's budget is spent."""
     if model not in PRICES:
         raise KeyError(f'{model}: no price in spend.PRICES')
     if (spent := eur(month_usd())) >= BUDGET_EUR:
@@ -63,20 +60,14 @@ def check(model: str) -> None:
 def record(step: str, model: str, input_tokens: int, output_tokens: int) -> float:
     """Add one request to the ledger; its cost in dollars."""
     cost = usd(model, input_tokens, output_tokens)
+    row = Spent(
+        at=dt.datetime.now(dt.UTC).isoformat(timespec='seconds'),
+        step=step,
+        model=model,
+        input_tokens=input_tokens,
+        output_tokens=output_tokens,
+        usd=round(cost, 6),
+    )
     with _lock:
-        new = not LEDGER.exists()
-        with LEDGER.open('a', encoding='utf-8', newline='') as f:
-            w = csv.DictWriter(f, FIELDS, lineterminator='\n')
-            if new:
-                w.writeheader()
-            w.writerow(
-                {
-                    'at': dt.datetime.now(dt.UTC).isoformat(timespec='seconds'),
-                    'step': step,
-                    'model': model,
-                    'input_tokens': input_tokens,
-                    'output_tokens': output_tokens,
-                    'usd': f'{cost:.6f}',
-                }
-            )
+        row.append(LEDGER)
     return cost

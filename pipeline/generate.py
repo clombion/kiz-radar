@@ -3,8 +3,9 @@
     uv run -m pipeline.generate          # write them
     uv run -m pipeline.generate --check  # exit 1 naming each one that differs
 
-pipeline/enums.py holds the code's enums of the states, docs/js/states.js the site's words for them; each is
-written here and nowhere else, so a new state is one row of pipeline/states.py and then this command.
+pipeline/enums.py holds the code's enums of the states, docs/js/states.js the site's words for them and
+pipeline/STATES.md's table the data points; each is written here and nowhere else, so a new state is one row of
+pipeline/states.py and then this command.
 """
 
 import argparse
@@ -15,9 +16,23 @@ from pathlib import Path
 from pipeline import states
 
 ROOT = Path(__file__).parent.parent
+STATES_MD = ROOT / 'pipeline' / 'STATES.md'
+BEGIN = '<!-- generated from pipeline/states.py (states.points_table): mise run generate -->'
+END = '<!-- points:end -->'
+
+
+def states_md() -> str:
+    """pipeline/STATES.md with its table of the data points written between its markers; the rest is prose."""
+    text = STATES_MD.read_text(encoding='utf-8')
+    head, rest = text.split(BEGIN + '\n', 1)
+    _, tail = rest.split(END, 1)
+    return f'{head}{BEGIN}\n{states.points_table()}\n{END}{tail}'
+
+
 FILES: dict[Path, Callable[[], str]] = {
     ROOT / 'pipeline' / 'enums.py': states.enums_module,
     ROOT / 'docs' / 'js' / 'states.js': states.js_module,
+    STATES_MD: states_md,
 }
 
 

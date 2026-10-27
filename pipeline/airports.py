@@ -5,4 +5,4 @@ from pathlib import Path
 from pipeline.records import Airport
 
 AIRPORTS = Airport.read(Path(__file__).parent / 'airports.csv')
-(HOME,) = [a.code for a in AIRPORTS if a.home == 1]
+(HOME,) = [a.code for a in AIRPORTS if a.home]

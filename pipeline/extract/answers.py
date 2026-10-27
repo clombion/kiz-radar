@@ -12,7 +12,6 @@ only which festivals they answer (answered).
 import datetime as dt
 from dataclasses import dataclass
 from pathlib import Path
-from typing import ClassVar
 
 from pydantic import BaseModel, ConfigDict
 
@@ -27,8 +26,6 @@ LOG = ANSWERS / 'log.csv'
 
 class Logged(CsvRow):
     """A row of answers/log.csv: who answered a file (relative to answers/), when, with which model and prompt."""
-
-    line_end: ClassVar[str] = '\r\n'
 
     file: str
     answered_at: str

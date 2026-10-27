@@ -28,12 +28,13 @@ import time
 import zlib
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Literal
+from typing import NamedTuple
 
 from pydantic import BaseModel, ConfigDict, ValidationError
 
 from pipeline import db as sqlite_db
 from pipeline.airports import HOME
+from pipeline.enums import FareSearch
 from pipeline.records import Fare, Job
 
 ROOT = Path(__file__).parent.parent
@@ -51,7 +52,12 @@ NOTE_LENGTH = 200  # a search's note is cut to this many characters
 DAY = 86400  # seconds
 NEVER = 99  # how overdue a weekend never searched counts as, in intervals
 
-type Status = Literal['priced', 'no price', 'refused']  # a search's, as Job.status
+
+class Missed(NamedTuple):
+    """A search that found no fare: why (FareSearch.NO_PRICE or REFUSED), and fli's words."""
+
+    status: FareSearch
+    note: str
 
 
 class Fli(BaseModel):
@@ -141,32 +147,31 @@ def queue(t: dt.datetime | None = None) -> list[Weekend]:
     return sorted(q, key=lambda w: (not w.due, -w.overdue, w.friday))
 
 
-def search(airport: str, friday: str) -> tuple[Status, Fare | None, str]:
-    """One Friday-to-Monday return; (status, fare row or None, note)."""
+def search(airport: str, friday: str) -> Fare | Missed:
+    """One Friday-to-Monday return: its fare, or why there is none."""
     args = ['dates', HOME, airport, '--from', friday, '--to', friday, '-d', '3', '--round', '--friday']
     cmd = [*shlex.split(FLI), *args, '--currency', 'EUR', '--format', 'json']
     try:
         p = subprocess.run(cmd, capture_output=True, text=True, timeout=TIMEOUT, check=False)  # noqa: S603 (fli, pinned in FLI, with arguments of ours)
     except subprocess.TimeoutExpired:
-        return 'no price', None, 'timeout'
+        return Missed(FareSearch.NO_PRICE, 'timeout')
     if 'HTTP 429' in p.stderr or '"http_status": 429' in p.stdout:
-        return 'refused', None, 'HTTP 429'
+        return Missed(FareSearch.REFUSED, 'HTTP 429')
     try:
         d = FliAnswer.model_validate_json(p.stdout[p.stdout.index('{') :])
     except (ValueError, ValidationError):
-        return 'no price', None, (p.stderr.strip().splitlines() or ['no output'])[-1][:NOTE_LENGTH]
+        return Missed(FareSearch.NO_PRICE, (p.stderr.strip().splitlines() or ['no output'])[-1][:NOTE_LENGTH])
     x = next((x for x in d.dates if x.price and x.departure_date == friday), None)
     if not d.success or not x or x.price is None:
-        return 'no price', None, (d.error.message if d.error else '')[:NOTE_LENGTH]
-    fare = Fare(
+        return Missed(FareSearch.NO_PRICE, (d.error.message if d.error else '')[:NOTE_LENGTH])
+    return Fare(
         airport=airport,
         depart=friday,
         return_=x.return_date,
-        price=f'{x.price:.0f}',
+        price=round(x.price),
         currency=x.currency,
         fetched_at=now().isoformat(),
     )
-    return 'priced', fare, ''
 
 
 def refresh(budget: int, max_seconds: int) -> None:
@@ -177,17 +182,22 @@ def refresh(budget: int, max_seconds: int) -> None:
     for item in queue():
         if not item.due or done >= budget or time.time() - start > max_seconds:
             break
-        status, row, note = search(item.airport, item.friday)
-        if status == 'refused':
+        found = search(item.airport, item.friday)
+        if isinstance(found, Missed) and found.status is FareSearch.REFUSED:
             time.sleep(RETRY_AFTER)
-            status, row, note = search(item.airport, item.friday)
-        price = row.price + ' EUR' if row else ''
-        print(f'{item.airport} {item.friday} ({item.days_away} days away): {status} {price} {note}', flush=True)
-        if status == 'refused':
-            refused = True
-            break
-        if row:
-            fares[(row.airport, row.depart, row.return_)] = row
+            found = search(item.airport, item.friday)
+        match found:
+            case Fare():
+                fares[(found.airport, found.depart, found.return_)] = found
+                status, said = FareSearch.PRICED, f'{found.price} EUR'
+                note = ''
+            case Missed(FareSearch.REFUSED):
+                print(f'{item.airport} {item.friday} ({item.days_away} days away): refused {found.note}', flush=True)
+                refused = True
+                break
+            case Missed(status, note):
+                said = note
+        print(f'{item.airport} {item.friday} ({item.days_away} days away): {status} {said}', flush=True)
         jobs[(item.airport, item.friday)] = Job(
             airport=item.airport, depart=item.friday, last_run=now().isoformat(), status=status, note=note
         )
