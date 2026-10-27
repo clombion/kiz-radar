@@ -1,0 +1,16 @@
+{
+ "batch": "event-16029",
+ "events": [
+  {
+   "event_id": 16029,
+   "artists": [],
+   "features": [
+    {
+     "feature": "taxi_dancers",
+     "quote": "taxi dancers",
+     "rationale": "The description announces taxi dancers as part of the event line-up."
+    }
+   ]
+  }
+ ]
+}

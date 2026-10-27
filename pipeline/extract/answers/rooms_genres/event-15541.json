@@ -1,0 +1,101 @@
+{
+ "batch": "event-15541",
+ "events": [
+  {
+   "event_id": 15541,
+   "party_rooms": {
+    "count": 7,
+    "quote": "7 different Dance Floors (Salsa LA/NY, Salsa Cuban, Bachata, Kizomba, Zouk, Tango, Urban/Afro)"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa-Bachata-Kizomba Live Concerts"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Salsa-Bachata-Kizomba Live Concerts"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Salsa-Bachata-Kizomba Live Concerts"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Zouk",
+     "quote": "Kizomba, Zouk, Tango, Urban/Afro"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "Urban/Afro"
+    },
+    {
+     "genre": "reggaeton",
+     "genre_as_written": "Reggaeton",
+     "quote": "Afro, Reggaeton, Hip Hop"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Tango",
+     "quote": "Kizomba, Zouk, Tango, Urban/Afro"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Swing-Lindy Hop",
+     "quote": "Swing-Lindy Hop"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Hip Hop",
+     "quote": "Hip Hop, High Heels"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "High Heels",
+     "quote": "Hip Hop, High Heels"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Dancehall",
+     "quote": "Afro-Dancehall"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Zumba",
+     "quote": "Dancehall, Zumba"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Samba",
+     "quote": "Samba, Flamenco"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Flamenco",
+     "quote": "Samba, Flamenco"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Belly Dance",
+     "quote": "Belly Dance, Bollywood, Syrtaki"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Bollywood",
+     "quote": "Belly Dance, Bollywood, Syrtaki"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Syrtaki",
+     "quote": "Belly Dance, Bollywood, Syrtaki"
+    }
+   ]
+  }
+ ]
+}

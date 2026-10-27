@@ -1,0 +1,98 @@
+{
+ "batch": "event-16894",
+ "events": [
+  {
+   "event_id": 16894,
+   "artists": [
+    {
+     "name_as_written": "Vamula",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Due to the occasion of the Indenpendence Day of Poland 🇵🇱 and Angola 🇦🇴, which takes place the same day, November 11, Vamula is organazing a kizomba and semba festival – the great occasion to celebrate together 🥳🥳🥳"
+    },
+    {
+     "name_as_written": "N-Py Da Baila",
+     "role": "teacher",
+     "style": null,
+     "country": "Angola",
+     "source_line": "❇️ N-Py Da Baila (Angola)"
+    },
+    {
+     "name_as_written": "M-Xtrela",
+     "role": "teacher",
+     "style": null,
+     "country": "Angola",
+     "source_line": "❇️ M-Xtrela (Angola)"
+    },
+    {
+     "name_as_written": "Karolina Vamula",
+     "role": "teacher",
+     "style": null,
+     "country": "Poland",
+     "source_line": "❇️ Karolina Vamula (Poland)"
+    },
+    {
+     "name_as_written": "Klaudia & Jailson",
+     "role": "teacher",
+     "style": null,
+     "country": "Poland/Brazil",
+     "source_line": "❇️ Klaudia & Jailson (Poland/Brazil) (Samba+carnaval animations)"
+    },
+    {
+     "name_as_written": "DJ Ecozinho",
+     "role": "dj",
+     "style": null,
+     "country": "Angola",
+     "source_line": "❇️ DJ Ecozinho (Angola)"
+    },
+    {
+     "name_as_written": "DJ Dotizinha Vamula",
+     "role": "dj",
+     "style": null,
+     "country": "Poland",
+     "source_line": "❇️ DJ Dotizinha Vamula (Poland)"
+    },
+    {
+     "name_as_written": "DJ Manito",
+     "role": "dj",
+     "style": null,
+     "country": "Guadelupe/France",
+     "source_line": "❇️ DJ Manito (Guadelupe/France)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "competition",
+     "quote": "Polish Kizomba & Semba contest",
+     "rationale": "A kizomba and semba contest is part of the event programme."
+    },
+    {
+     "feature": "workshops",
+     "quote": "workshops 12:00-17:00",
+     "rationale": "Saturday workshops are scheduled as part of the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "social 14.00-18.00",
+     "rationale": "An afternoon social is scheduled on Saturday."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "(2 rooms)",
+     "rationale": "The Saturday party is held in two rooms."
+    },
+    {
+     "feature": "after_party",
+     "quote": "Afterparty 17.00-24:30",
+     "rationale": "An afterparty is scheduled on Sunday."
+    },
+    {
+     "feature": "live_music",
+     "quote": "live concert",
+     "rationale": "A live concert is part of the programme and included in the pass."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,65 @@
+{
+ "event_id": 17948,
+ "title": "Zurich Kiz Connexion Christmas Edition",
+ "start_date": "2026-12-18",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "cb864655c7075f56",
+ "rows_at": "2026-10-27T02:22:46+00:00",
+ "styles": [
+  "kizomba"
+ ],
+ "description": "Zürich Kiz Connecxion is thrilled to have the support and collaboration of talented teachers and DJs who have enthusiastically joined our project.\nWith their expertise and passion for Kizomba, they bring a unique and dynamic energy to our community.\nTogether, we aim to create a vibrant and inclusive environment where dancers can connect, learn, and grow.\nOur dedicated team of teachers and DJs are committed to providing exceptional experiences, helping individuals enhance their Kizomba skills, and fostering a sense of unity within the dance community.\nJoin us on this exciting journey as we explore the beauty and joy of Kizomba together.",
+ "passes": [
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5316848"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5316827",
+      "5316826"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    },
+    {
+     "keys": [
+      "5316825",
+      "5316824"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [],
+ "rule_quotes": []
+}

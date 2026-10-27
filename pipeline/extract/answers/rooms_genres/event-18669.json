@@ -1,0 +1,18 @@
+{
+ "batch": "event-18669",
+ "events": [
+  {
+   "event_id": 18669,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "an unforgettable weekend filled with Kizomba, music, dance"
+    }
+   ]
+  }
+ ]
+}

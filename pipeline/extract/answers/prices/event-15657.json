@@ -1,12 +1,11 @@
 {
  "batch": "event-15657",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15657,
    "passes": [
     {
-     "kind": "other",
+     "kind": "full",
      "style": null,
      "label_quote": "🎀 PRE-SALE PASS SOLD OUT",
      "group_size": 1,
@@ -17,10 +16,9 @@
        "amount": 195,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
-       "until": "2026-02-28",
+       "until": "2026-02-27",
        "quantity": null,
        "door": false,
        "sold_out": true,
@@ -30,7 +28,7 @@
      ]
     },
     {
-     "kind": "other",
+     "kind": "full",
      "style": null,
      "label_quote": "🎀 PRE-SALE PASS SOLD OUT",
      "group_size": 2,
@@ -41,10 +39,9 @@
        "amount": 365,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
-       "until": "2026-02-28",
+       "until": "2026-02-27",
        "quantity": null,
        "door": false,
        "sold_out": true,
@@ -54,9 +51,9 @@
      ]
     },
     {
-     "kind": "other",
+     "kind": "workshop",
      "style": null,
-     "label_quote": "🎀 COMBOS",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -65,8 +62,7 @@
        "amount": 80,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -78,9 +74,9 @@
      ]
     },
     {
-     "kind": "other",
+     "kind": "workshop",
      "style": null,
-     "label_quote": "🎀 COMBOS",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -89,8 +85,7 @@
        "amount": 105,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -102,9 +97,9 @@
      ]
     },
     {
-     "kind": "other",
+     "kind": "workshop",
      "style": null,
-     "label_quote": "🎀 COMBOS",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -113,8 +108,7 @@
        "amount": 125,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -128,7 +122,7 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": "🎀 COMBOS",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -137,8 +131,7 @@
        "amount": 40,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -150,19 +143,18 @@
      ]
     },
     {
-     "kind": "other",
+     "kind": "day",
      "style": null,
-     "label_quote": "🎀 COMBOS",
+     "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 70,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -176,7 +168,7 @@
     {
      "kind": "day",
      "style": "zouk",
-     "label_quote": "🎀 COMBOS",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -185,8 +177,7 @@
        "amount": 40,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -200,7 +191,7 @@
     {
      "kind": "day",
      "style": "zouk",
-     "label_quote": "🎀 COMBOS",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -209,8 +200,7 @@
        "amount": 70,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -223,8 +213,31 @@
     },
     {
      "kind": "day",
+     "style": "zouk",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 20,
+       "currency": "CAD",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Zouk Day Social Sunday = $20"
+      }
+     ]
+    },
+    {
+     "kind": "day",
      "style": null,
-     "label_quote": "💰 À LA CARTE RATES",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -233,8 +246,7 @@
        "amount": 15,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -248,7 +260,7 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": "💰 À LA CARTE RATES",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -257,8 +269,7 @@
        "amount": 20,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -272,7 +283,7 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": "💰 À LA CARTE RATES",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -281,8 +292,7 @@
        "amount": 20,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -290,30 +300,6 @@
        "sold_out": false,
        "current": false,
        "quote": "Saturday Night = $20"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": "zouk",
-     "label_quote": "💰 À LA CARTE RATES",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 20,
-       "currency": "CAD",
-       "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Zouk Day Social Sunday = $20"
       }
      ]
     }

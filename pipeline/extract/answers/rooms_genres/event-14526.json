@@ -1,0 +1,38 @@
+{
+ "batch": "event-14526",
+ "events": [
+  {
+   "event_id": 14526,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "the chaloupé of Kizomba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "SEMBA",
+     "quote": "KIZOMBA/SEMBA"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kizomba",
+     "quote": "the pulse of Urban Kizomba"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "the magnetic waves of Tarraxo"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "afrobeats",
+     "quote": "a gentle touch of afrobeats"
+    }
+   ]
+  }
+ ]
+}

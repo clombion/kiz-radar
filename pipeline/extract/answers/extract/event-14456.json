@@ -1,0 +1,139 @@
+{
+ "batch": "event-14456",
+ "events": [
+  {
+   "event_id": 14456,
+   "artists": [
+    {
+     "name_as_written": "Ramona & JP",
+     "role": "teacher",
+     "style": "Urban Kiz",
+     "country": null,
+     "source_line": "Ramona & JP (Urban Kiz)"
+    },
+    {
+     "name_as_written": "Giorgia & Kinkela",
+     "role": "teacher",
+     "style": "Kizomba & Semba",
+     "country": null,
+     "source_line": "Giorgia & Kinkela (Kizomba & Semba)"
+    },
+    {
+     "name_as_written": "Juli & Felix",
+     "role": "teacher",
+     "style": "Tarraxo",
+     "country": null,
+     "source_line": "Juli & Felix (Tarraxo)"
+    },
+    {
+     "name_as_written": "Lea & John",
+     "role": "teacher",
+     "style": "Urban Kiz",
+     "country": null,
+     "source_line": "Lea & John (Urban Kiz)"
+    },
+    {
+     "name_as_written": "Ramona & Jakub",
+     "role": "teacher",
+     "style": "Kizomba & Semba",
+     "country": null,
+     "source_line": "Ramona & Jakub (Kizomba & Semba)"
+    },
+    {
+     "name_as_written": "Lea & Benny",
+     "role": "teacher",
+     "style": "Douceur",
+     "country": null,
+     "source_line": "Lea & Benny (Douceur)"
+    },
+    {
+     "name_as_written": "Nora",
+     "role": "teacher",
+     "style": "Urban Kiz",
+     "country": null,
+     "source_line": "Nora (Urban Kiz)"
+    },
+    {
+     "name_as_written": "Maxwell",
+     "role": "teacher",
+     "style": "Urban Kiz",
+     "country": null,
+     "source_line": "Maxwell (Urban Kiz)"
+    },
+    {
+     "name_as_written": "Nicelife",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Nicelife"
+    },
+    {
+     "name_as_written": "NoStep",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "NoStep"
+    },
+    {
+     "name_as_written": "K-Bral",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "K-Bral"
+    },
+    {
+     "name_as_written": "Aaron",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Aaron"
+    },
+    {
+     "name_as_written": "Omega",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Omega"
+    },
+    {
+     "name_as_written": "Morelasoul",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Morelasoul"
+    },
+    {
+     "name_as_written": "Rene Amplo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Rene Amplo"
+    },
+    {
+     "name_as_written": "Malandro",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Malandro"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "More than 20 hours of workshops",
+     "rationale": "The description states that more than 20 hours of workshops are part of the event."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "MAIN HOTEL – Landhaus Danielshof",
+     "rationale": "The event location is the Landhaus Danielshof, which is also the main hotel where rooms are offered, so the parties and accommodation share one venue."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Hotel Gut Hohenholz",
+     "rationale": "A recommended other hotel is named for dancers, without accommodation being part of the pass."
+    }
+   ]
+  }
+ ]
+}

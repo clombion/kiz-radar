@@ -1,0 +1,33 @@
+{
+ "batch": "event-18519",
+ "events": [
+  {
+   "event_id": 18519,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "💃 Salsa"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "🕺💃 Bachata"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "🔥 Kizomba"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "🇭🇹 Konpa"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,142 @@
+{
+ "batch": "event-14705",
+ "events": [
+  {
+   "event_id": 14705,
+   "artists": [
+    {
+     "name_as_written": "Dimitri & Karine",
+     "role": "teacher",
+     "style": "Kizomba Fusion",
+     "country": null,
+     "source_line": "• Dimitri & Karine – Kizomba Fusion"
+    },
+    {
+     "name_as_written": "Jules & Yuna",
+     "role": "teacher",
+     "style": "Tarraxo Pop",
+     "country": null,
+     "source_line": "• Jules & Yuna – Tarraxo Pop"
+    },
+    {
+     "name_as_written": "Jo Seize",
+     "role": "teacher",
+     "style": "Urban Kiz",
+     "country": null,
+     "source_line": "• Jo Seize – Urban Kiz"
+    },
+    {
+     "name_as_written": "Guy Tawa",
+     "role": "teacher",
+     "style": "Urban Kiz, Semba",
+     "country": null,
+     "source_line": "• Guy Tawa – Urban Kiz, Semba"
+    },
+    {
+     "name_as_written": "Ludo & Noémie",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "• Ludo & Noémie – Kizomba"
+    },
+    {
+     "name_as_written": "Pika & Ornella",
+     "role": "teacher",
+     "style": "Bachata Dynamic",
+     "country": null,
+     "source_line": "• Pika & Ornella – Bachata Dynamic"
+    },
+    {
+     "name_as_written": "Dédé Douceur",
+     "role": "teacher",
+     "style": "Bachata Dominicaine",
+     "country": null,
+     "source_line": "• Dédé Douceur – Bachata Dominicaine"
+    },
+    {
+     "name_as_written": "Ahmedy & Caro",
+     "role": "teacher",
+     "style": "Bachata Sensual",
+     "country": null,
+     "source_line": "• Ahmedy & Caro – Bachata Sensual"
+    },
+    {
+     "name_as_written": "Paloma & Germain",
+     "role": "teacher",
+     "style": "Bachata Moderna",
+     "country": null,
+     "source_line": "• Paloma & Germain – Bachata Moderna"
+    },
+    {
+     "name_as_written": "DJ JDN",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "• DJ JDN"
+    },
+    {
+     "name_as_written": "DJ Lau",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "• DJ Lau"
+    },
+    {
+     "name_as_written": "DJ Scio",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "• DJ Scio"
+    },
+    {
+     "name_as_written": "DJ Shiniz",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "• DJ Shiniz"
+    },
+    {
+     "name_as_written": "DJ Lovelace",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "• DJ Lovelace"
+    },
+    {
+     "name_as_written": "Allan de Carter",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "• Allan de Carter"
+    }
+   ],
+   "features": [
+    {
+     "feature": "cruise",
+     "quote": "Get ready for a unique festival aboard a cruise ship in the Caribbean!",
+     "rationale": "The quote states the event takes place aboard a cruise ship."
+    },
+    {
+     "feature": "workshops",
+     "quote": "to improve your Bachata and Kizomba skills",
+     "rationale": "The description advertises over 22 hours of workshops to improve dance skills."
+    },
+    {
+     "feature": "shows",
+     "quote": "spectacular shows",
+     "rationale": "The description promises spectacular shows as part of the week."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Full board with:",
+     "rationale": "The all-inclusive package includes full board meals."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Inside cabin (double): €979",
+     "rationale": "Prices are per person for cabins on the cruise, so the cabin accommodation is part of the package."
+    }
+   ]
+  }
+ ]
+}

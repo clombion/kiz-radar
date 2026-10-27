@@ -1,0 +1,31 @@
+{
+ "batch": "event-15667",
+ "events": [
+  {
+   "event_id": 15667,
+   "party_rooms": {
+    "count": 3,
+    "quote": "On three different dancefloors"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "international artists from the Salsa, Bachata, and Kizomba scene"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "from Salsa to Bachata to Kizomba"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "3 Dancefloors with Salsa, Bachata & Kizomba"
+    }
+   ]
+  }
+ ]
+}

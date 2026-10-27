@@ -1,0 +1,455 @@
+{
+ "batch": "event-15028",
+ "events": [
+  {
+   "event_id": 15028,
+   "artists": [
+    {
+     "name_as_written": "Havana D’Primera",
+     "role": "performer",
+     "style": "SALSA",
+     "country": "Cuba",
+     "source_line": "💥 Havana D’Primera (Cuba) Live Concert"
+    },
+    {
+     "name_as_written": "Alberto Valdes & Andria Panagi",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Cuba",
+     "source_line": "🔴 Alberto Valdes & Andria Panagi (Cuba)"
+    },
+    {
+     "name_as_written": "Maykel Fonts",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Cuba",
+     "source_line": "🔴 Maykel Fonts (Cuba)"
+    },
+    {
+     "name_as_written": "Karen & Ricardo",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Chile",
+     "source_line": "🔴 Karen & Ricardo (Chile)"
+    },
+    {
+     "name_as_written": "Pablito y Su Mezcla Latina",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Italy",
+     "source_line": "🔴 Pablito y Su Mezcla Latina (Italy)"
+    },
+    {
+     "name_as_written": "Wilmer & Maria",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Cuba",
+     "source_line": "🔴 Wilmer & Maria (Cuba)"
+    },
+    {
+     "name_as_written": "Adrian & Anita",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Uruguay/Brazil",
+     "source_line": "🔴 Adrian & Anita (Uruguay/Brazil)"
+    },
+    {
+     "name_as_written": "Dejon & Clo",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "USA",
+     "source_line": "🔴 Dejon & Clo (USA)"
+    },
+    {
+     "name_as_written": "Terry & Cecile",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "France",
+     "source_line": "🔴 Terry & Cecile (France)"
+    },
+    {
+     "name_as_written": "Bersy Cortez",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Venezuela",
+     "source_line": "🔴 Bersy Cortez (Venezuela)"
+    },
+    {
+     "name_as_written": "Yoyo Flow",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Cuba",
+     "source_line": "🔴 Yoyo Flow (Cuba)"
+    },
+    {
+     "name_as_written": "Angelo J Rito",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Italy",
+     "source_line": "🔴 Angelo J Rito (Italy)"
+    },
+    {
+     "name_as_written": "Falco & Leti",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Ecuador/Spain",
+     "source_line": "🔴 Falco & Leti (Ecuador/Spain)"
+    },
+    {
+     "name_as_written": "Dimitris & Yolena",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Greece",
+     "source_line": "🔴 Dimitris & Yolena (Greece)"
+    },
+    {
+     "name_as_written": "John & Kelly",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Greece",
+     "source_line": "🔴 John & Kelly (Greece)"
+    },
+    {
+     "name_as_written": "Fadi Fusion",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Luxembourg",
+     "source_line": "🔴 Fadi Fusion (Luxembourg)"
+    },
+    {
+     "name_as_written": "Nerea Perez",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Netherland",
+     "source_line": "🔴 Nerea Perez (Netherland)"
+    },
+    {
+     "name_as_written": "Lieb J Salsagroove",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Italy",
+     "source_line": "🔴 Lieb J Salsagroove (Italy)"
+    },
+    {
+     "name_as_written": "Damian Cejas",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Netherland",
+     "source_line": "🔴 Damian Cejas (Netherland)"
+    },
+    {
+     "name_as_written": "Dj Fabrizio",
+     "role": "dj",
+     "style": "SALSA",
+     "country": "Italy",
+     "source_line": "🔴 Dj Fabrizio (Italy)"
+    },
+    {
+     "name_as_written": "Dj Alexio",
+     "role": "dj",
+     "style": "SALSA",
+     "country": "Italy",
+     "source_line": "🔴 Dj Alexio (Italy)"
+    },
+    {
+     "name_as_written": "Dj Rumbero",
+     "role": "dj",
+     "style": "SALSA",
+     "country": "Peru",
+     "source_line": "🔴 Dj Rumbero (Peru)"
+    },
+    {
+     "name_as_written": "Dj Duke",
+     "role": "dj",
+     "style": "SALSA",
+     "country": "England",
+     "source_line": "🔴 Dj Duke (England)"
+    },
+    {
+     "name_as_written": "Dj Mauri",
+     "role": "dj",
+     "style": "SALSA",
+     "country": "Greece",
+     "source_line": "🔴 Dj Mauri (Greece)"
+    },
+    {
+     "name_as_written": "Pinto Picasso",
+     "role": "performer",
+     "style": "BACHATA",
+     "country": "Spain",
+     "source_line": "💥 Pinto Picasso (Spain) Live Concert"
+    },
+    {
+     "name_as_written": "Daniel & Desiree",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Spain",
+     "source_line": "🔵 Daniel & Desiree (Spain)"
+    },
+    {
+     "name_as_written": "Marco & Sara",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Peru/Spain",
+     "source_line": "🔵 Marco & Sara (Peru/Spain)"
+    },
+    {
+     "name_as_written": "Cornel & Rithika",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "India",
+     "source_line": "🔵 Cornel & Rithika (India)"
+    },
+    {
+     "name_as_written": "Luis & Andrea",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Spain",
+     "source_line": "🔵 Luis & Andrea (Spain)"
+    },
+    {
+     "name_as_written": "Melvin & Gatica",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "France/Norway",
+     "source_line": "🔵 Melvin & Gatica (France/Norway)"
+    },
+    {
+     "name_as_written": "Abdel & Lety",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Cuba/Spain",
+     "source_line": "🔵 Abdel & Lety (Cuba/Spain)"
+    },
+    {
+     "name_as_written": "Sergio & Elena",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Spain",
+     "source_line": "🔵 Sergio & Elena (Spain)"
+    },
+    {
+     "name_as_written": "Gero & Migle",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Spain/Lithuania",
+     "source_line": "🔵 Gero & Migle (Spain/Lithuania)"
+    },
+    {
+     "name_as_written": "Burak & Estefania",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Turkiye/Spain",
+     "source_line": "🔵 Burak & Estefania (Turkiye/Spain)"
+    },
+    {
+     "name_as_written": "Antoni & Belen",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Colombia/Argentina",
+     "source_line": "🔵 Antoni & Belen (Colombia/Argentina)"
+    },
+    {
+     "name_as_written": "York & Lisa",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Venezuela/Germany",
+     "source_line": "🔵 York & Lisa (Venezuela/Germany)"
+    },
+    {
+     "name_as_written": "Carlos Espinosa",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Mexico",
+     "source_line": "🔵 Carlos Espinosa (Mexico)"
+    },
+    {
+     "name_as_written": "Azael & Martha",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Mexico/Poland",
+     "source_line": "🔵 Azael & Martha (Mexico/Poland)"
+    },
+    {
+     "name_as_written": "Dj Khalid",
+     "role": "dj",
+     "style": "BACHATA",
+     "country": "Sweden",
+     "source_line": "🔵 Dj Khalid (Sweden)"
+    },
+    {
+     "name_as_written": "Dj York",
+     "role": "dj",
+     "style": "BACHATA",
+     "country": "Venezuela",
+     "source_line": "🔵 Dj York (Venezuela)"
+    },
+    {
+     "name_as_written": "Albir Rojas",
+     "role": "teacher",
+     "style": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE",
+     "country": "Spain",
+     "source_line": "🟣 Albir Rojas (Spain)"
+    },
+    {
+     "name_as_written": "Said DStreet",
+     "role": "teacher",
+     "style": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE",
+     "country": "France",
+     "source_line": "🟣 Said DStreet (France)"
+    },
+    {
+     "name_as_written": "Dwe & Gaby",
+     "role": "teacher",
+     "style": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE",
+     "country": "Netherland",
+     "source_line": "🟣 Dwe & Gaby (Netherland)"
+    },
+    {
+     "name_as_written": "Kingsman Ledoux",
+     "role": "teacher",
+     "style": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE",
+     "country": "France",
+     "source_line": "🟣 Kingsman Ledoux (France)"
+    },
+    {
+     "name_as_written": "Tresor & Aurea",
+     "role": "teacher",
+     "style": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE",
+     "country": "Netherland/Brazil",
+     "source_line": "🟣 Tresor & Aurea (Netherland/Brazil)"
+    },
+    {
+     "name_as_written": "Akram & Sara",
+     "role": "teacher",
+     "style": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE",
+     "country": "Switzerland",
+     "source_line": "🟣 Akram & Sara (Switzerland)"
+    },
+    {
+     "name_as_written": "Jah J’a",
+     "role": "teacher",
+     "style": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE",
+     "country": "France",
+     "source_line": "🟣 Jah J’a (France)"
+    },
+    {
+     "name_as_written": "Rafael",
+     "role": "teacher",
+     "style": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE",
+     "country": "Brazil",
+     "source_line": "🟣 Rafael (Brazil)"
+    },
+    {
+     "name_as_written": "Yamiso",
+     "role": "teacher",
+     "style": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE",
+     "country": "Bulgaria",
+     "source_line": "🟣 Yamiso (Bulgaria)"
+    },
+    {
+     "name_as_written": "Asia",
+     "role": "teacher",
+     "style": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE",
+     "country": "Ukraine",
+     "source_line": "🟣 Asia (Ukraine)"
+    },
+    {
+     "name_as_written": "Omer Kılıcgil",
+     "role": "teacher",
+     "style": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE",
+     "country": "Turkiye",
+     "source_line": "🟣 Omer Kılıcgil (Turkiye)"
+    },
+    {
+     "name_as_written": "Dj David Ruela",
+     "role": "dj",
+     "style": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE",
+     "country": "Netherland",
+     "source_line": "🟣 Dj David Ruela (Netherland)"
+    },
+    {
+     "name_as_written": "Dj Lenhy",
+     "role": "dj",
+     "style": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE",
+     "country": "France",
+     "source_line": "🟣 Dj Lenhy (France)"
+    },
+    {
+     "name_as_written": "Dj Shark",
+     "role": "dj",
+     "style": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE",
+     "country": "France",
+     "source_line": "🟣 Dj Shark (France)"
+    },
+    {
+     "name_as_written": "Dj Pingusso",
+     "role": "dj",
+     "style": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE",
+     "country": "France",
+     "source_line": "🟣 Dj Pingusso (France)"
+    },
+    {
+     "name_as_written": "Dj Hugo Smile",
+     "role": "dj",
+     "style": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE",
+     "country": "France",
+     "source_line": "🟣 Dj Hugo Smile (France)"
+    },
+    {
+     "name_as_written": "Social Dance Tv",
+     "role": "media",
+     "style": null,
+     "country": "Russia",
+     "source_line": "⚫️ Social Dance Tv (Russia)"
+    },
+    {
+     "name_as_written": "Phothomas",
+     "role": "media",
+     "style": null,
+     "country": "Italy",
+     "source_line": "⚫️ Phothomas (Italy)"
+    },
+    {
+     "name_as_written": "Star Mambo Video",
+     "role": "media",
+     "style": null,
+     "country": "France",
+     "source_line": "⚫️ Star Mambo Video (France)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Amazing Shows and Workshops",
+     "rationale": "The highlights list promises workshops as part of the event."
+    },
+    {
+     "feature": "shows",
+     "quote": "Amazing Shows and Workshops",
+     "rationale": "The highlights list promises amazing shows during the event."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Havana D’Primera (Cuba) Live Concert",
+     "rationale": "A live concert by a band is listed among the artists."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Salsa/Bachata/Kizomba Master Classes",
+     "rationale": "Master classes in the three styles are advertised as highlights."
+    },
+    {
+     "feature": "competition",
+     "quote": "Dance Competitions",
+     "rationale": "Dance competitions are listed as a highlight."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Choreo Bootcamps",
+     "rationale": "Choreography bootcamps are listed as a highlight."
+    }
+   ]
+  }
+ ]
+}

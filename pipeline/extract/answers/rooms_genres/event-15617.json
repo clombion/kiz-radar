@@ -1,0 +1,31 @@
+{
+ "batch": "event-15617",
+ "events": [
+  {
+   "event_id": 15617,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 rooms for the parties during the night."
+   },
+   "class_rooms": {
+    "count": 2,
+    "quote": "2 exclusive rooms for workshops."
+   },
+   "rooms": [
+    {
+     "name_as_written": "Social Dance Room",
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "A social room dance during the evening, from 12h to 20h."
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "Annual 13th FEELING KIZOMBA Festival"
+    }
+   ]
+  }
+ ]
+}

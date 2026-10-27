@@ -1,0 +1,135 @@
+{
+ "batch": "event-16840",
+ "events": [
+  {
+   "event_id": 16840,
+   "artists": [
+    {
+     "name_as_written": "Balumuka",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Balumuka is Back!"
+    },
+    {
+     "name_as_written": "Vanessa Paris",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Vanessa Paris"
+    },
+    {
+     "name_as_written": "Claudio Dolk",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Claudio Dolk"
+    },
+    {
+     "name_as_written": "Nelinha Ngonga",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Nelinha Ngonga"
+    },
+    {
+     "name_as_written": "Jone Valentino",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Jone Valentino"
+    },
+    {
+     "name_as_written": "Maura Bento",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Maura Bento"
+    },
+    {
+     "name_as_written": "Aristoteles Ary",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Aristoteles Ary"
+    },
+    {
+     "name_as_written": "Mikaela Gyals Unity",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Mikaela Gyals Unity"
+    },
+    {
+     "name_as_written": "Jamba Jamba",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Jamba Jamba"
+    },
+    {
+     "name_as_written": "Nzo Pablo",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Nzo Pablo"
+    },
+    {
+     "name_as_written": "Dj Russelius",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Russelius"
+    },
+    {
+     "name_as_written": "Dj Hugo Boss",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Hugo Boss"
+    },
+    {
+     "name_as_written": "Dj MiroKikola",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj MiroKikola"
+    },
+    {
+     "name_as_written": "Dj Yah",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Yah."
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Dance Workshops",
+     "rationale": "The Full Pass explicitly includes Dance Workshops as part of the event."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Thursday pre-party",
+     "rationale": "The pass description lists a Thursday pre-party among the night parties."
+    },
+    {
+     "feature": "after_party",
+     "quote": "1 after-party",
+     "rationale": "The Full Pass includes one after-party."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Enjoy special festival rates",
+     "rationale": "A negotiated festival rate at the Ibis Old Town hotel is offered, without accommodation being part of the pass."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "Everything under one roof",
+     "rationale": "The hotel hosts the workshops, socials and after-party so dance and stay are in the same venue."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+{
+ "batch": "event-18960",
+ "events": [
+  {
+   "event_id": 18960,
+   "party_rooms": {
+    "count": 4,
+    "quote": "2 parties across 4 rooms"
+   },
+   "class_rooms": {
+    "count": 5,
+    "quote": "5 workshop rooms"
+   },
+   "rooms": [
+    {
+     "name_as_written": "Kizomba Social Room",
+     "kind": "unspecified",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "2:00 PM – 8:00 PM: Kizomba Social Room"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "workshops in Kizomba, Semba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba, Semba, Urban Kiz"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Semba, Urban Kiz, Tarraxo"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Urban Kiz, Tarraxo, Douceur"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "Tarraxo, Douceur, Kizomba Fusion"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Cuban Salsa",
+     "quote": "Kizomba Fusion, Cuban Salsa, Puerto Rican Salsa"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Puerto Rican Salsa, Bachata, and Latin Hustle"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Latin Hustle",
+     "quote": "Bachata, and Latin Hustle"
+    }
+   ]
+  }
+ ]
+}

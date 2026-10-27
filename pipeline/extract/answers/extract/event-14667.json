@@ -1,0 +1,195 @@
+{
+ "batch": "event-14667",
+ "events": [
+  {
+   "event_id": 14667,
+   "artists": [
+    {
+     "name_as_written": "EMILIEN & TEHINA",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "EMILIEN & TEHINA"
+    },
+    {
+     "name_as_written": "LEO & KAISA",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "LEO & KAISA"
+    },
+    {
+     "name_as_written": "FRANCESCO & NARCISA",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "FRANCESCO & NARCISA"
+    },
+    {
+     "name_as_written": "CYRIL & MAEVA",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "CYRIL & MAEVA"
+    },
+    {
+     "name_as_written": "MILO MADA",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "MILO MADA"
+    },
+    {
+     "name_as_written": "WILLY & LAURIANE",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "WILLY & LAURIANE"
+    },
+    {
+     "name_as_written": "PERE & MANUE",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "PERE & MANUE"
+    },
+    {
+     "name_as_written": "JLO & SAMANTHA",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "JLO & SAMANTHA"
+    },
+    {
+     "name_as_written": "KAL & AURORE",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "KAL & AURORE"
+    },
+    {
+     "name_as_written": "ANTHONY & JULIETTE",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "ANTHONY & JULIETTE"
+    },
+    {
+     "name_as_written": "DAMIAN & CAMILA",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "DAMIAN & CAMILA"
+    },
+    {
+     "name_as_written": "DJ O’BII",
+     "role": "dj",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "DJ O’BII"
+    },
+    {
+     "name_as_written": "DJ ONE",
+     "role": "dj",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "DJ ONE"
+    },
+    {
+     "name_as_written": "AZZEDINE",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "AZZEDINE"
+    },
+    {
+     "name_as_written": "PIDJAY",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "PIDJAY"
+    },
+    {
+     "name_as_written": "BLACKCHINESE",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "BLACKCHINESE"
+    },
+    {
+     "name_as_written": "DINARA",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "DINARA"
+    },
+    {
+     "name_as_written": "HICHAM & MEL",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "HICHAM & MEL"
+    },
+    {
+     "name_as_written": "DJ PANKADAS",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "DJ PANKADAS"
+    },
+    {
+     "name_as_written": "DJ SAM GOLD",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "DJ SAM GOLD"
+    },
+    {
+     "name_as_written": "DJ TED",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "DJ TED"
+    },
+    {
+     "name_as_written": "NAIMA",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "NAIMA"
+    },
+    {
+     "name_as_written": "ANNA & DANILO",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "ANNA & DANILO"
+    },
+    {
+     "name_as_written": "DJ JEREMIE",
+     "role": "dj",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "DJ JEREMIE"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE",
+     "rationale": "The event is advertised as all in one, indicating the parties take place in the same hotel where dancers stay."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 DANCEFLOORS ( BACHATA – KIZOMBA – SALSA)",
+     "rationale": "Three dancefloors are announced, so there is more than one dance room."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Official Hotel: Grand Hotel des Anglais",
+     "rationale": "A official hotel is named for the event, which is a recommended hotel rather than accommodation included in the pass."
+    }
+   ]
+  }
+ ]
+}

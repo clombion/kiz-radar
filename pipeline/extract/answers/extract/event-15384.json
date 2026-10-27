@@ -1,0 +1,43 @@
+{
+ "batch": "event-15384",
+ "events": [
+  {
+   "event_id": 15384,
+   "artists": [
+    {
+     "name_as_written": "Angolan Dances",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Angolan Dances will be back in Bucharest for a 2nd edition of our Romanian Weekend."
+    },
+    {
+     "name_as_written": "Lapis Event",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "The event is brought to you by Lapis Event, the organizer of Angolan Dances Festival, partnered up with the local Romanian team from LINC"
+    },
+    {
+     "name_as_written": "LINC",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "The event is brought to you by Lapis Event, the organizer of Angolan Dances Festival, partnered up with the local Romanian team from LINC"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "4 hours of learning & sharing about Angolan dances",
+     "rationale": "The event includes several hours of dance learning, which is a dance class or workshop component."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "1 Special Sunday (day party)",
+     "rationale": "A daytime party on Sunday is listed as part of the programme."
+    }
+   ]
+  }
+ ]
+}

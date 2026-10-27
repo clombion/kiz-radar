@@ -1,0 +1,88 @@
+{
+ "batch": "event-14868",
+ "events": [
+  {
+   "event_id": 14868,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "ROOM 1",
+     "kind": "unspecified",
+     "genres": [
+      "urbankiz",
+      "tarraxo",
+      "tarraxinha",
+      "douceur",
+      "zouk",
+      "afro"
+     ],
+     "quote": "ROOM 1 : Urban kiz, Tarraxo, Tarraxinha, Douceur, GhettoZouk, Afrobeat"
+    },
+    {
+     "name_as_written": "ROOM 2",
+     "kind": "unspecified",
+     "genres": [
+      "kizomba",
+      "semba",
+      "other",
+      "kompa"
+     ],
+     "quote": "ROOM 2 : KIZOMBA KCMA, Semba, Cabo love, and Kompa"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "paradise of Kizomba, Semba, Urban kiz, Tarraxo, Cabo love and Douceur"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "paradise of Kizomba, Semba, Urban kiz, Tarraxo, Cabo love and Douceur"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban kiz",
+     "quote": "paradise of Kizomba, Semba, Urban kiz, Tarraxo, Cabo love and Douceur"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "paradise of Kizomba, Semba, Urban kiz, Tarraxo, Cabo love and Douceur"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "paradise of Kizomba, Semba, Urban kiz, Tarraxo, Cabo love and Douceur"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Cabo love",
+     "quote": "paradise of Kizomba, Semba, Urban kiz, Tarraxo, Cabo love and Douceur"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro House",
+     "quote": "Douceur et Afro House"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "ROOM 1 : Urban kiz, Tarraxo, Tarraxinha, Douceur, GhettoZouk, Afrobeat"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "GhettoZouk",
+     "quote": "ROOM 1 : Urban kiz, Tarraxo, Tarraxinha, Douceur, GhettoZouk, Afrobeat"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Kompa",
+     "quote": "ROOM 2 : KIZOMBA KCMA, Semba, Cabo love, and Kompa"
+    }
+   ]
+  }
+ ]
+}

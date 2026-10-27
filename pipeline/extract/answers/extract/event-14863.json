@@ -1,0 +1,150 @@
+{
+ "batch": "event-14863",
+ "events": [
+  {
+   "event_id": 14863,
+   "artists": [
+    {
+     "name_as_written": "DJ ASH",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ ASH"
+    },
+    {
+     "name_as_written": "DJ BAD",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ BAD"
+    },
+    {
+     "name_as_written": "DJ ICHIGO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ ICHIGO"
+    },
+    {
+     "name_as_written": "DJETTE KISS",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJETTE KISS"
+    },
+    {
+     "name_as_written": "DJ KO WEST",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ KO WEST"
+    },
+    {
+     "name_as_written": "DJ MASTA",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ MASTA"
+    },
+    {
+     "name_as_written": "DJ NAO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ NAO"
+    },
+    {
+     "name_as_written": "Alban Audevard",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Alban Audevard"
+    },
+    {
+     "name_as_written": "Lucchy Paz Tgqd",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Lucchy Paz Tgqd"
+    },
+    {
+     "name_as_written": "Karl Madina",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Karl Madina"
+    },
+    {
+     "name_as_written": "Mamady Mady",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Mamady Mady"
+    },
+    {
+     "name_as_written": "Cornel Kiz’n Smile",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Cornel Kiz’n Smile"
+    },
+    {
+     "name_as_written": "Anthony Meric",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Anthony Meric"
+    },
+    {
+     "name_as_written": "Maeva Daury",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Maeva Daury"
+    },
+    {
+     "name_as_written": "Julio Mykeyange",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Julio Mykeyange"
+    },
+    {
+     "name_as_written": "Will Wgt",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Will Wgt"
+    },
+    {
+     "name_as_written": "Distefano Edouard",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Distefano Edouard"
+    },
+    {
+     "name_as_written": "S-LINE",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "S-LINE"
+    },
+    {
+     "name_as_written": "Kitumba Events",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Kitumba Events presents the 4th edition of Dancing Weekend."
+    }
+   ],
+   "features": [
+    {
+     "feature": "day_socials",
+     "quote": "Sunday: 2:00 PM – 8:00 PM",
+     "rationale": "The schedule lists afternoon daytime sessions on Sunday, which fits daytime socials."
+    }
+   ]
+  }
+ ]
+}

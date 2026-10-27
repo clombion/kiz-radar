@@ -1,0 +1,38 @@
+{
+ "batch": "event-14700",
+ "events": [
+  {
+   "event_id": 14700,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "PURA PASIÓN ~ Salsa"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "ALFONSO & MONICA ~ Bachata"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "(Kizomba)"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "(Kizomba/Semba)"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urbankiz",
+     "quote": "(Urbankiz)"
+    }
+   ]
+  }
+ ]
+}

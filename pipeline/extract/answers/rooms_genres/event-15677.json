@@ -1,0 +1,23 @@
+{
+ "batch": "event-15677",
+ "events": [
+  {
+   "event_id": 15677,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "our love for Kizomba, Semba, and true Angolan culture"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba, Semba, and true Angolan culture"
+    }
+   ]
+  }
+ ]
+}

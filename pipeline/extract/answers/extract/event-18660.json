@@ -1,0 +1,163 @@
+{
+ "batch": "event-18660",
+ "events": [
+  {
+   "event_id": 18660,
+   "artists": [
+    {
+     "name_as_written": "JOJO & JENNY",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "JOJO & JENNY"
+    },
+    {
+     "name_as_written": "TONY & CARLA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "TONY & CARLA"
+    },
+    {
+     "name_as_written": "STEPHANE & TERESA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "STEPHANE & TERESA"
+    },
+    {
+     "name_as_written": "ALBIR & NATALIA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "ALBIR & NATALIA"
+    },
+    {
+     "name_as_written": "EMANUEL & TERESA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "EMANUEL & TERESA"
+    },
+    {
+     "name_as_written": "JACK & SARA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "JACK & SARA"
+    },
+    {
+     "name_as_written": "MAÍZA & TELMA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "MAÍZA & TELMA"
+    },
+    {
+     "name_as_written": "TECA & LUCY",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "TECA & LUCY"
+    },
+    {
+     "name_as_written": "DJ NICE LIFE",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ NICE LIFE"
+    },
+    {
+     "name_as_written": "DJ PARAISO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ PARAISO"
+    },
+    {
+     "name_as_written": "DJ CHAD",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ CHAD"
+    },
+    {
+     "name_as_written": "DJ NEIKEN",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ NEIKEN"
+    },
+    {
+     "name_as_written": "DJ 5STAR KID",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ 5STAR KID"
+    },
+    {
+     "name_as_written": "DJ DANY",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ DANY"
+    },
+    {
+     "name_as_written": "DJ LAMIN",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ LAMIN"
+    },
+    {
+     "name_as_written": "DJ RM KETA",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ RM KETA"
+    },
+    {
+     "name_as_written": "DJ MIRO KIKOLA",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ MIRO KIKOLA"
+    },
+    {
+     "name_as_written": "DJ BARTEF",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ BARTEF"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE LOCATION",
+     "rationale": "The event states all activities happen in one location, the connected hotel complex where dancers are invited to stay."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 PARTY ROOMS",
+     "rationale": "Two party rooms are advertised, meaning more than one dance floor."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "1 PRE-PARTY IN SAME LOCATION",
+     "rationale": "A pre-party held before the main festival is explicitly listed."
+    },
+    {
+     "feature": "workshops",
+     "quote": "25H WORKSHOPS",
+     "rationale": "25 hours of workshops are listed as part of the festival."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Accommodation is separately, with the advantage of a discount, which we arranged for you.",
+     "rationale": "A negotiated hotel discount is arranged, but accommodation is not part of the pass."
+    }
+   ]
+  }
+ ]
+}

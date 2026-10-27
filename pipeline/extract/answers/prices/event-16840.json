@@ -1,6 +1,5 @@
 {
  "batch": "event-16840",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16840,
@@ -17,8 +16,7 @@
        "amount": 85,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "2025-12-23",
        "quantity": null,
@@ -41,8 +39,7 @@
        "amount": 80,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "2025-12-23",
        "quantity": null,

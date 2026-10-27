@@ -1,0 +1,69 @@
+{
+ "batch": "event-17095",
+ "events": [
+  {
+   "event_id": 17095,
+   "party_rooms": {
+    "count": 4,
+    "quote": "At 4 unique Outdoor stages:"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Ralitsa Aquaclub",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "Kizomba – in Ralitsa Aquaclub"
+    },
+    {
+     "name_as_written": "Maritim Hotel Paradise Blue",
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "Salsa – at the pool of Maritim Hotel Paradise Blue"
+    },
+    {
+     "name_as_written": "Ganvie Beach Club",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "Bachata – On the Beach"
+    },
+    {
+     "name_as_written": "Aquapark",
+     "kind": "party",
+     "genres": [
+      "zouk"
+     ],
+     "quote": "Zouk – it the Aquapark"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "** Kizomba Lineup **"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Zouk",
+     "quote": "** Zouk Lineup **"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "** Bachata Lineup **"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "** Salsa Lineup **"
+    }
+   ]
+  }
+ ]
+}

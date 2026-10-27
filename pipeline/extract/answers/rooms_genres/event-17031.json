@@ -1,0 +1,28 @@
+{
+ "batch": "event-17031",
+ "events": [
+  {
+   "event_id": 17031,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "(Bachata/Salsa/Kizomba)"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "(Bachata/Salsa/Kizomba)"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "(Bachata/Salsa/Kizomba)"
+    }
+   ]
+  }
+ ]
+}

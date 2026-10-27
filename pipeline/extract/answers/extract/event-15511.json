@@ -1,0 +1,95 @@
+{
+ "batch": "event-15511",
+ "events": [
+  {
+   "event_id": 15511,
+   "artists": [
+    {
+     "name_as_written": "Zürich Kiz Connecxion",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Zürich Kiz Connecxion is thrilled to have the support and collaboration of talented teachers and DJs who have enthusiastically joined our project."
+    },
+    {
+     "name_as_written": "Donald & Barbara",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Donald & Barbara"
+    },
+    {
+     "name_as_written": "Ybra & Gina",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Ybra & Gina"
+    },
+    {
+     "name_as_written": "Luca & Renna",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Luca & Renna"
+    },
+    {
+     "name_as_written": "Iron Mams",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Iron Mams"
+    },
+    {
+     "name_as_written": "Melania",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Melania"
+    },
+    {
+     "name_as_written": "Laurine",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Laurine"
+    },
+    {
+     "name_as_written": "Stefanio Lima",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Stefanio Lima"
+    },
+    {
+     "name_as_written": "Iron Mams",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Iron Mams"
+    },
+    {
+     "name_as_written": "Fayola",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Fayola"
+    },
+    {
+     "name_as_written": "Mous",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Mous"
+    },
+    {
+     "name_as_written": "Xavix",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Xavix"
+    }
+   ],
+   "features": []
+  }
+ ]
+}

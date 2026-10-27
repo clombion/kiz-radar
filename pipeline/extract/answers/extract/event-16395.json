@@ -1,0 +1,111 @@
+{
+ "batch": "event-16395",
+ "events": [
+  {
+   "event_id": 16395,
+   "artists": [
+    {
+     "name_as_written": "Saïd & Oksana",
+     "role": "teacher",
+     "style": null,
+     "country": "FR / UA",
+     "source_line": "👊🏽Saïd & Oksana (FR / UA)"
+    },
+    {
+     "name_as_written": "Sélim & Kiki",
+     "role": "teacher",
+     "style": null,
+     "country": "FR / D",
+     "source_line": "👊🏽Sélim & Kiki (FR / D)"
+    },
+    {
+     "name_as_written": "Chris MSKL",
+     "role": "teacher",
+     "style": null,
+     "country": "FR",
+     "source_line": "👊🏽Chris MSKL (FR)"
+    },
+    {
+     "name_as_written": "José & Coralie",
+     "role": "teacher",
+     "style": null,
+     "country": "CH",
+     "source_line": "👊🏽José & Coralie (CH)"
+    },
+    {
+     "name_as_written": "JP & Ramona",
+     "role": "teacher",
+     "style": null,
+     "country": "CH",
+     "source_line": "👊🏽JP & Ramona (CH)"
+    },
+    {
+     "name_as_written": "Kalypso & Adé",
+     "role": "teacher",
+     "style": null,
+     "country": "CH",
+     "source_line": "👊🏽Kalypso & Adé (CH)"
+    },
+    {
+     "name_as_written": "Chris & Ruth",
+     "role": "teacher",
+     "style": null,
+     "country": "CH",
+     "source_line": "👊🏽Chris & Ruth (CH)"
+    },
+    {
+     "name_as_written": "DJ Levi’s",
+     "role": "dj",
+     "style": null,
+     "country": "FR",
+     "source_line": "👊🏽DJ Levi’s (FR)"
+    },
+    {
+     "name_as_written": "DJ Nam’s",
+     "role": "dj",
+     "style": null,
+     "country": "FR",
+     "source_line": "👊🏽DJ Nam’s (FR)"
+    },
+    {
+     "name_as_written": "DJ AlexDre",
+     "role": "dj",
+     "style": null,
+     "country": "CH",
+     "source_line": "👊🏽DJ AlexDre (CH)"
+    },
+    {
+     "name_as_written": "DJ Klima",
+     "role": "dj",
+     "style": null,
+     "country": "CH",
+     "source_line": "👊🏽DJ Klima (CH)"
+    },
+    {
+     "name_as_written": "DJ Jahnaï",
+     "role": "dj",
+     "style": null,
+     "country": "CH",
+     "source_line": "👊🏽DJ Jahnaï (CH)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "competition",
+     "quote": "The Battle Kizz Official Swiss Qualification 2026",
+     "rationale": "The event is a official qualification battle, which is a competition."
+    },
+    {
+     "feature": "workshops",
+     "quote": "thanks to workshops given by national",
+     "rationale": "The description says workshops are given by national and international instructors."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "has rooms available at a special rate",
+     "rationale": "A nearby hotel offers festival participants a negotiated rate, and the accommodation is not part of the pass."
+    }
+   ]
+  }
+ ]
+}

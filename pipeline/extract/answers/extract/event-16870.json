@@ -1,0 +1,177 @@
+{
+ "batch": "event-16870",
+ "events": [
+  {
+   "event_id": 16870,
+   "artists": [
+    {
+     "name_as_written": "Jojo & Jenny",
+     "role": "teacher",
+     "style": "Artists line up",
+     "country": null,
+     "source_line": "✨️Jojo & Jenny"
+    },
+    {
+     "name_as_written": "Akram & Sara",
+     "role": "teacher",
+     "style": "Artists line up",
+     "country": null,
+     "source_line": "✨️Akram & Sara"
+    },
+    {
+     "name_as_written": "Py & Sarah",
+     "role": "teacher",
+     "style": "Artists line up",
+     "country": null,
+     "source_line": "✨️Py & Sarah"
+    },
+    {
+     "name_as_written": "Jah I have",
+     "role": "teacher",
+     "style": "Artists line up",
+     "country": null,
+     "source_line": "✨️Jah I have"
+    },
+    {
+     "name_as_written": "Friend & Julien",
+     "role": "teacher",
+     "style": "Artists line up",
+     "country": null,
+     "source_line": "✨️ Friend & Julien"
+    },
+    {
+     "name_as_written": "Moorea",
+     "role": "teacher",
+     "style": "Artists line up",
+     "country": null,
+     "source_line": "✨️Moorea"
+    },
+    {
+     "name_as_written": "Janna",
+     "role": "teacher",
+     "style": "Artists line up",
+     "country": null,
+     "source_line": "✨️Janna"
+    },
+    {
+     "name_as_written": "T Peak & Dielika",
+     "role": "teacher",
+     "style": "Artists line up",
+     "country": null,
+     "source_line": "✨️T Peak & Dielika"
+    },
+    {
+     "name_as_written": "Kristel Ju",
+     "role": "teacher",
+     "style": "Artists line up",
+     "country": null,
+     "source_line": "✨️Kristel Ju"
+    },
+    {
+     "name_as_written": "Seb & Sarita",
+     "role": "teacher",
+     "style": "Artists line up",
+     "country": null,
+     "source_line": "✨️ Seb & Sarita"
+    },
+    {
+     "name_as_written": "FX",
+     "role": "teacher",
+     "style": "Artists line up",
+     "country": null,
+     "source_line": "✨️FX"
+    },
+    {
+     "name_as_written": "DJ Madis",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✨️ DJ Madis"
+    },
+    {
+     "name_as_written": "Dj Nice Life",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✨️ Dj Nice Life"
+    },
+    {
+     "name_as_written": "Dj Shark",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✨️Dj Shark"
+    },
+    {
+     "name_as_written": "Dj Ralph BB",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✨️Dj Ralph BB"
+    },
+    {
+     "name_as_written": "Dj Blvck Skyle",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✨️Dj Blvck Skyle"
+    },
+    {
+     "name_as_written": "Dj Willy G",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✨️Dj Willy G"
+    },
+    {
+     "name_as_written": "Dj Lova",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✨️Dj Lova"
+    },
+    {
+     "name_as_written": "Dj Achil",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✨️ Dj Achil"
+    },
+    {
+     "name_as_written": "Dj Bon Bagay",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✨️Dj Bon Bagay"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Workshops",
+     "rationale": "The program lists Workshops as part of the event."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Masterclasses",
+     "rationale": "The program lists Masterclasses as part of the event."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 rooms, 2 atmospheres in the evening:",
+     "rationale": "The description states the event has two dance rooms with different atmospheres."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Partner hotels",
+     "rationale": "A section lists partner hotels with booking links, without the accommodation being part of the pass."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Airport shuttle",
+     "rationale": "The Novotel listing mentions an airport shuttle."
+    }
+   ]
+  }
+ ]
+}

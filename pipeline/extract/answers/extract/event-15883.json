@@ -1,0 +1,87 @@
+{
+ "batch": "event-15883",
+ "events": [
+  {
+   "event_id": 15883,
+   "artists": [
+    {
+     "name_as_written": "𝐌𝐔𝐊𝐔𝐀",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "For the first time, 𝐌𝐔𝐊𝐔𝐀 joins forces with 𝐖𝐚𝐯𝐞𝐡𝐮𝐛 𝐊𝐢𝐳𝐨𝐦𝐛𝐚 𝐁𝐮𝐜𝐡𝐚𝐫𝐞𝐬𝐭 to bring the MUKUA experience to Eastern Europe, right here, in Bucharest. 🇷🇴"
+    },
+    {
+     "name_as_written": "𝐖𝐚𝐯𝐞𝐡𝐮𝐛 𝐊𝐢𝐳𝐨𝐦𝐛𝐚 𝐁𝐮𝐜𝐡𝐚𝐫𝐞𝐬𝐭",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "For the first time, 𝐌𝐔𝐊𝐔𝐀 joins forces with 𝐖𝐚𝐯𝐞𝐡𝐮𝐛 𝐊𝐢𝐳𝐨𝐦𝐛𝐚 𝐁𝐮𝐜𝐡𝐚𝐫𝐞𝐬𝐭 to bring the MUKUA experience to Eastern Europe, right here, in Bucharest. 🇷🇴"
+    },
+    {
+     "name_as_written": "Dj Vasco",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔵 Dj Vasco"
+    },
+    {
+     "name_as_written": "Dj Neiken",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔵 Dj Neiken"
+    },
+    {
+     "name_as_written": "Dj Mous",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔵 Dj Mous"
+    },
+    {
+     "name_as_written": "Dj Kinuk",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔵 Dj Kinuk"
+    },
+    {
+     "name_as_written": "M-Xtrela",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔵 M-Xtrela"
+    },
+    {
+     "name_as_written": "Ana-Maria",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔵 Ana-Maria"
+    },
+    {
+     "name_as_written": "Vasco",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔵 Vasco"
+    },
+    {
+     "name_as_written": "Inês Miranda",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔵 Inês Miranda"
+    }
+   ],
+   "features": [
+    {
+     "feature": "partner_hotel",
+     "quote": "The main venue and the recommended hotel are just steps apart",
+     "rationale": "The description names a recommended hotel located near the main venue, without saying accommodation is part of the pass."
+    }
+   ]
+  }
+ ]
+}

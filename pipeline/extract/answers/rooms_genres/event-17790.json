@@ -1,0 +1,48 @@
+{
+ "batch": "event-17790",
+ "events": [
+  {
+   "event_id": 17790,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Semba"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "Tarraxinha"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Guetho Zouk",
+     "quote": "Guetho Zouk"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Afro Zouk",
+     "quote": "Afro Zouk"
+    },
+    {
+     "genre": "kuduro",
+     "genre_as_written": "Kuduro",
+     "quote": "Kuduro"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afrohouse",
+     "quote": "Afrohouse"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,31 @@
+{
+ "batch": "event-16758",
+ "events": [
+  {
+   "event_id": 16758,
+   "artists": [],
+   "features": [
+    {
+     "feature": "all_levels_beginners",
+     "quote": "Whether you’re a beginner or an experienced dancer",
+     "rationale": "The description explicitly welcomes beginners alongside experienced dancers."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Inspiring workshops",
+     "rationale": "The event is described as including workshops."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "4:00 PM – 8:00 PM: Social",
+     "rationale": "The schedule lists an afternoon social session."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "T.A.X.I ⚡ D.A.N.S.E.U.R.S.",
+     "rationale": "The announced taxi-dancer (T.A.X.I. D.A.N.S.E.U.R.S.) line shows taxi dancers will be present."
+    }
+   ]
+  }
+ ]
+}

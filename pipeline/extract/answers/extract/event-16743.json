@@ -1,0 +1,24 @@
+{
+ "batch": "event-16743",
+ "events": [
+  {
+   "event_id": 16743,
+   "artists": [
+    {
+     "name_as_written": "Team Kiz Et Vie",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Team Kiz Et Vie presents its new event."
+    }
+   ],
+   "features": [
+    {
+     "feature": "themed_parties",
+     "quote": "Heart’n Kiz Halloween Edition",
+     "rationale": "The event is branded as a Halloween edition, which points to a themed Halloween night."
+    }
+   ]
+  }
+ ]
+}

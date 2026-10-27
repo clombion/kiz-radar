@@ -1,0 +1,18 @@
+{
+ "batch": "event-16688",
+ "events": [
+  {
+   "event_id": 16688,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba meets the magic of Marrakech"
+    }
+   ]
+  }
+ ]
+}

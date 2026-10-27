@@ -1,0 +1,31 @@
+{
+ "batch": "event-19102",
+ "events": [
+  {
+   "event_id": 19102,
+   "artists": [],
+   "features": [
+    {
+     "feature": "all_levels_beginners",
+     "quote": "Beginners welcome",
+     "rationale": "The description explicitly welcomes beginners."
+    },
+    {
+     "feature": "workshops",
+     "quote": "5 Hours of Workshops",
+     "rationale": "Five hours of workshops are listed as part of the event."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Pre Party Thurs",
+     "rationale": "A pre-party is offered on Thursday before the weekend's main socials."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "1 Day Social on Sunday",
+     "rationale": "A daytime social is scheduled for Sunday."
+    }
+   ]
+  }
+ ]
+}

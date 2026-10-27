@@ -1,0 +1,131 @@
+{
+ "batch": "event-15769",
+ "events": [
+  {
+   "event_id": 15769,
+   "artists": [
+    {
+     "name_as_written": "Aura & Ary",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨Aura & Ary Champions 2018"
+    },
+    {
+     "name_as_written": "Karolina & Łukasz",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨Karolina & Łukasz / Vamula"
+    },
+    {
+     "name_as_written": "Lionel",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨Lionel"
+    },
+    {
+     "name_as_written": "Andeloy",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨Andeloy"
+    },
+    {
+     "name_as_written": "Issa",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨Issa"
+    },
+    {
+     "name_as_written": "Dj Nao",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✨Dj Nao"
+    },
+    {
+     "name_as_written": "Dj Miro Kikola",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✨Dj Miro Kikola"
+    },
+    {
+     "name_as_written": "Dj Jarod",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✨Dj Jarod"
+    },
+    {
+     "name_as_written": "Dj Vasco",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✨Dj Vasco"
+    },
+    {
+     "name_as_written": "Dj Cayolla",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✨Dj Cayolla"
+    },
+    {
+     "name_as_written": "Dj Djairo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✨Dj Djairo"
+    },
+    {
+     "name_as_written": "benkos",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "✨By benkos"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE RESORT 4",
+     "rationale": "The event is held in an all-in-one resort where the hotels are the venue for the stay and parties."
+    },
+    {
+     "feature": "workshops",
+     "quote": "WORKSHOPS",
+     "rationale": "The line-up lists workshops as part of the festival programme."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "15:00 – 18:00 Beach•Pool Social",
+     "rationale": "Daytime beach and pool socials are listed in the programme."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Pre Party",
+     "rationale": "A pre party is scheduled on Thursday before the main event."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 ROOMS / 2 ENERGIES",
+     "rationale": "The event advertises two dance rooms."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "To book with our discounts",
+     "rationale": "Discounted hotel booking within the resort is offered through the event's hotels, separate from the pass."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "ALL INCLUSIVE",
+     "rationale": "The all-inclusive hotel package includes breakfast, lunch, dinner, snacks and drinks."
+    }
+   ]
+  }
+ ]
+}

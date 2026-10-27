@@ -1,6 +1,5 @@
 {
  "batch": "event-17122",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17122,
@@ -8,7 +7,7 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": null,
+     "label_quote": "Tier 2 Full Pass",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -17,8 +16,7 @@
        "amount": 149,
        "currency": "USD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -31,8 +29,7 @@
        "amount": 199,
        "currency": "USD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -44,9 +41,9 @@
      ]
     },
     {
-     "kind": "other",
+     "kind": "full",
      "style": null,
-     "label_quote": null,
+     "label_quote": "Bundle 2 guests",
      "group_size": 2,
      "days": null,
      "includes_hotel": false,
@@ -55,8 +52,7 @@
        "amount": 279,
        "currency": "USD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,

@@ -1,0 +1,28 @@
+{
+ "batch": "event-16206",
+ "events": [
+  {
+   "event_id": 16206,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "UrbanKiz",
+     "quote": "Welcome to Paris — the capital of UrbanKiz"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Tarraxo Champions"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "#Kizomba"
+    }
+   ]
+  }
+ ]
+}

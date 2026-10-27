@@ -1,10 +1,33 @@
 {
  "batch": "event-16099",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16099,
-   "passes": [],
+   "passes": [
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "White & Blue Secret Vineyard Party",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 120,
+       "currency": "AUD",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "ONLY $120 (INCLUDES TRANSPORTATION, FOOD, SOFT DRINKS & WINE PLUS LOTS OF FUN)"
+      }
+     ]
+    }
+   ],
    "rule_quotes": []
   }
  ]

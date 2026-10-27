@@ -1,0 +1,158 @@
+{
+ "batch": "event-15018",
+ "events": [
+  {
+   "event_id": 15018,
+   "artists": [
+    {
+     "name_as_written": "Michelle Morales",
+     "role": "teacher",
+     "style": "𝐒𝐀𝐋𝐒𝐀",
+     "country": "USA",
+     "source_line": "• Michelle Morales (USA)"
+    },
+    {
+     "name_as_written": "Brandon Ayala",
+     "role": "teacher",
+     "style": "𝐒𝐀𝐋𝐒𝐀",
+     "country": "USA",
+     "source_line": "• Brandon Ayala (USA)"
+    },
+    {
+     "name_as_written": "Nervif & Mireia",
+     "role": "teacher",
+     "style": "𝐒𝐀𝐋𝐒𝐀",
+     "country": "Spain",
+     "source_line": "• Nervif & Mireia (Spain)"
+    },
+    {
+     "name_as_written": "Marvin Ramos",
+     "role": "teacher",
+     "style": "𝐒𝐀𝐋𝐒𝐀",
+     "country": "Colombia",
+     "source_line": "• Marvin Ramos (Colombia)"
+    },
+    {
+     "name_as_written": "Nicolo De Angelis",
+     "role": "teacher",
+     "style": "𝐒𝐀𝐋𝐒𝐀",
+     "country": "Italy",
+     "source_line": "• Nicolo De Angelis (Italy)"
+    },
+    {
+     "name_as_written": "Camille & Karen",
+     "role": "teacher",
+     "style": "𝐒𝐀𝐋𝐒𝐀",
+     "country": "Spain",
+     "source_line": "• Camille & Karen (Spain)"
+    },
+    {
+     "name_as_written": "Panaghiotis & Katia",
+     "role": "teacher",
+     "style": "𝐒𝐀𝐋𝐒𝐀",
+     "country": "Greece",
+     "source_line": "• Panaghiotis & Katia (Greece)"
+    },
+    {
+     "name_as_written": "Ilias & Sandra",
+     "role": "teacher",
+     "style": "𝐒𝐀𝐋𝐒𝐀",
+     "country": "Romania",
+     "source_line": "• Ilias & Sandra (Romania)"
+    },
+    {
+     "name_as_written": "Adrian & Marina",
+     "role": "teacher",
+     "style": "𝐒𝐀𝐋𝐒𝐀",
+     "country": "Romania",
+     "source_line": "• Adrian & Marina (Romania)"
+    },
+    {
+     "name_as_written": "Adrian & Andreea",
+     "role": "teacher",
+     "style": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀",
+     "country": "Mexic",
+     "source_line": "Adrian & Andreea (Mexic)"
+    },
+    {
+     "name_as_written": "Leo lorenzo",
+     "role": "teacher",
+     "style": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀",
+     "country": "USA",
+     "source_line": "Leo lorenzo (USA)"
+    },
+    {
+     "name_as_written": "Alin & Alexandra",
+     "role": "teacher",
+     "style": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀",
+     "country": "Romania",
+     "source_line": "Alin & Alexandra (Romania)"
+    },
+    {
+     "name_as_written": "Marius Coman",
+     "role": "teacher",
+     "style": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀",
+     "country": "Romania",
+     "source_line": "Marius Coman (Romania)"
+    },
+    {
+     "name_as_written": "Mihai & Carla",
+     "role": "teacher",
+     "style": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀",
+     "country": "Romania",
+     "source_line": "Mihai & Carla (Romania)"
+    },
+    {
+     "name_as_written": "Sorin & Sabrina",
+     "role": "teacher",
+     "style": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀",
+     "country": "Romania",
+     "source_line": "Sorin & Sabrina ( Romania)"
+    },
+    {
+     "name_as_written": "Enah & Lolahontas",
+     "role": "teacher",
+     "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀",
+     "country": "France & Spain",
+     "source_line": "Enah & Lolahontas ( France & Spain)"
+    },
+    {
+     "name_as_written": "Jojo & Jenny",
+     "role": "teacher",
+     "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀",
+     "country": "France",
+     "source_line": "Jojo & Jenny (France)"
+    },
+    {
+     "name_as_written": "Carpathian Latino Fest",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "0040756948291- Carpathian Latino Fest"
+    }
+   ],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "𝟑 𝐩𝐚𝐫𝐭𝐲 𝐫𝐨𝐨𝐦𝐬",
+     "rationale": "The text states that there will be 3 party rooms at this edition, so more than one dance room is present."
+    },
+    {
+     "feature": "workshops",
+     "quote": "𝐖𝐨𝐫𝐤𝐬𝐡𝐨𝐩𝐬, 𝐩𝐚𝐫𝐭𝐢𝐞𝐬 𝐚𝐧𝐝 𝐚𝐜𝐜𝐨𝐦𝐦𝐨𝐝𝐚𝐭𝐢𝐨𝐧 𝐰𝐢𝐥𝐥 𝐚𝐥𝐥 𝐛𝐞 𝐚𝐭 𝐑𝐚𝐦𝐚𝐝𝐚 𝐇𝐨𝐭𝐞𝐥.",
+     "rationale": "The text says workshops are part of the event held at the hotel."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "𝐖𝐨𝐫𝐤𝐬𝐡𝐨𝐩𝐬, 𝐩𝐚𝐫𝐭𝐢𝐞𝐬 𝐚𝐧𝐝 𝐚𝐜𝐜𝐨𝐦𝐦𝐨𝐝𝐚𝐭𝐢𝐨𝐧 𝐰𝐢𝐥𝐥 𝐚𝐥𝐥 𝐛𝐞 𝐚𝐭 𝐑𝐚𝐦𝐚𝐝𝐚 𝐇𝐨𝐭𝐞𝐥.",
+     "rationale": "Workshops, parties and accommodation are all at Ramada Hotel, so the event and accommodation share the same venue."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "𝐓𝐡𝐞 𝐚𝐜𝐜𝐨𝐦𝐦𝐨𝐝𝐚𝐭𝐢𝐨𝐧 𝐚𝐭 𝐑𝐀𝐌𝐀𝐃𝐀 𝐇𝐎𝐓𝐄𝐋 𝐢𝐬 𝐜𝐨𝐧𝐝𝐢𝐭𝐢𝐨𝐧𝐞𝐝 𝐛𝐲:",
+     "rationale": "A recommended hotel is named for accommodation, which is sold separately and conditioned on purchases rather than included in the pass."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "batch": "event-15908",
+ "events": [
+  {
+   "event_id": 15908,
+   "party_rooms": null,
+   "class_rooms": {
+    "count": 3,
+    "quote": "Rooms for Workshops"
+   },
+   "rooms": [
+    {
+     "name_as_written": "A 600sqm Theatre, the Heart of the Festival",
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "A 600sqm Theatre, the Heart of the Festival"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "SUMMER KIZOMBA HOLIDAY BY THE SEA IN ITALY"
+    },
+    {
+     "genre": "kuduro",
+     "genre_as_written": "Kuduro",
+     "quote": "Kuduro – Afro House Animation"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro House",
+     "quote": "Kuduro – Afro House Animation"
+    }
+   ]
+  }
+ ]
+}

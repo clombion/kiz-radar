@@ -1,0 +1,34 @@
+{
+ "batch": "event-16231",
+ "events": [
+  {
+   "event_id": 16231,
+   "artists": [
+    {
+     "name_as_written": "8times2gether",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Write us a direct message in German, English, or French on Instagram: @8times2gether.event"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "We continue to offer high-quality workshops",
+     "rationale": "The description states that high-quality workshops are part of the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "11:00 – 20:00 – Workshops & Social",
+     "rationale": "A daytime schedule slot on Saturday lists a social alongside workshops from 11:00 to 20:00."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Both hotels are just a 10-minute walk to the event location!",
+     "rationale": "The event recommends two named hotels close to the venue, without the accommodation being part of the pass."
+    }
+   ]
+  }
+ ]
+}

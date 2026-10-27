@@ -1,0 +1,41 @@
+{
+ "batch": "event-15810",
+ "events": [
+  {
+   "event_id": 15810,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Over 25 Master Dance Workshops",
+     "rationale": "The description advertises more than twenty-five dance workshops across the weekend."
+    },
+    {
+     "feature": "competition",
+     "quote": "Kids Dance Competitions",
+     "rationale": "Dance competitions for kids are listed as part of the event."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Pool Party 2:00pm",
+     "rationale": "A pool party is scheduled on Saturday at 2:00pm."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "PRE PARTY @ 9:00 PM",
+     "rationale": "A pre-party is scheduled on Thursday evening before the main event."
+    },
+    {
+     "feature": "shows",
+     "quote": "Dance Showcases 8:00pm",
+     "rationale": "Dance showcases with performances are scheduled each evening."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "$149.00 HOTEL ROOMS DISCOUNT LINK BELOW",
+     "rationale": "A discounted hotel room rate is offered through a link, without the accommodation being part of the pass."
+    }
+   ]
+  }
+ ]
+}

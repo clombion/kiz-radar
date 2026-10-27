@@ -1,0 +1,133 @@
+{
+ "batch": "event-16794",
+ "events": [
+  {
+   "event_id": 16794,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Salsa Room",
+     "kind": "unspecified",
+     "genres": [
+      "salsa",
+      "other",
+      "other",
+      "other"
+     ],
+     "quote": "Salsa Room (Salsa, ChaChaCha, Timba, Mambo)"
+    },
+    {
+     "name_as_written": "Bachata Room",
+     "kind": "unspecified",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "Bachata Room (Sensual & Dominican Bachata)"
+    },
+    {
+     "name_as_written": "Kizomba/Konpa Room",
+     "kind": "unspecified",
+     "genres": [
+      "kizomba",
+      "kompa",
+      "semba",
+      "afro"
+     ],
+     "quote": "Kizomba/Konpa Room (Kizomba, Konpa, Semba, Afrohouse)"
+    },
+    {
+     "name_as_written": "Urbankiz/BZouk Room",
+     "kind": "unspecified",
+     "genres": [
+      "urbankiz",
+      "zouk",
+      "tarraxinha"
+     ],
+     "quote": "Urbankiz/BZouk Room (Ghetto-Zouk, Brazilian Zouk, Tarraxinha, and remixes with R&B)"
+    },
+    {
+     "name_as_written": "Chicago Stepping/Detroit Ballroom",
+     "kind": "unspecified",
+     "genres": [
+      "other",
+      "other"
+     ],
+     "quote": "Chicago Stepping/Detroit Ballroom (R&B, Soul, Jazz-funk, and Neo-soul)"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa Room (Salsa, ChaChaCha, Timba, Mambo)"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata Room (Sensual & Dominican Bachata)"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba/Konpa Room (Kizomba, Konpa, Semba, Afrohouse)"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Kizomba/Konpa Room (Kizomba, Konpa, Semba, Afrohouse)"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba, Konpa, Semba, Afrohouse)"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afrohouse",
+     "quote": "Kizomba, Konpa, Semba, Afrohouse)"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Ghetto-Zouk",
+     "quote": "Ghetto-Zouk, Brazilian Zouk, Tarraxinha, and remixes with R&B"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urbankiz",
+     "quote": "Urbankiz/BZouk Room"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "Brazilian Zouk, Tarraxinha, and remixes"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "ChaChaCha",
+     "quote": "Salsa, ChaChaCha, Timba, Mambo"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Timba",
+     "quote": "Salsa, ChaChaCha, Timba, Mambo"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Mambo",
+     "quote": "Salsa, ChaChaCha, Timba, Mambo"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Chicago Stepping",
+     "quote": "Chicago Stepping/Detroit Ballroom (R&B, Soul, Jazz-funk, and Neo-soul)"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Detroit Ballroom",
+     "quote": "Chicago Stepping/Detroit Ballroom (R&B, Soul, Jazz-funk, and Neo-soul)"
+    }
+   ]
+  }
+ ]
+}

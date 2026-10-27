@@ -1,6 +1,5 @@
 {
  "batch": "event-15784",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15784,
@@ -17,13 +16,15 @@
        "amount": 470,
        "currency": "DKK",
        "fee": null,
-       "alt_amount": 62,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 62,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": 10,
        "door": false,
-       "sold_out": true,
+       "sold_out": false,
        "current": false,
        "quote": "Early bird leader/follower: 470dkk/62€"
       },
@@ -31,8 +32,10 @@
        "amount": 570,
        "currency": "DKK",
        "fee": null,
-       "alt_amount": 76,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 76,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -45,8 +48,10 @@
        "amount": 670,
        "currency": "DKK",
        "fee": null,
-       "alt_amount": 89,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 89,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -59,8 +64,10 @@
        "amount": 770,
        "currency": "DKK",
        "fee": null,
-       "alt_amount": 103,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 103,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -73,8 +80,10 @@
        "amount": 970,
        "currency": "DKK",
        "fee": null,
-       "alt_amount": 130,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 130,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -97,8 +106,10 @@
        "amount": 440,
        "currency": "DKK",
        "fee": null,
-       "alt_amount": 59,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 59,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": 10,
@@ -111,22 +122,26 @@
        "amount": 540,
        "currency": "DKK",
        "fee": null,
-       "alt_amount": 72,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 72,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "Omni: 540dkk/72€"
+       "quote": "Omni: 540dkk/72€ ❌ SOLD OUT"
       },
       {
        "amount": 640,
        "currency": "DKK",
        "fee": null,
-       "alt_amount": 85,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 85,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -139,8 +154,10 @@
        "amount": 740,
        "currency": "DKK",
        "fee": null,
-       "alt_amount": 99,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 99,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -153,8 +170,10 @@
        "amount": 940,
        "currency": "DKK",
        "fee": null,
-       "alt_amount": 126,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 126,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -177,50 +196,58 @@
        "amount": 1060,
        "currency": "DKK",
        "fee": null,
-       "alt_amount": 142,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 142,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Couples: 1060dkk/142€"
+       "quote": "Couples: 1060dkk/142€ ⚠️ FEW LEFT"
       },
       {
        "amount": 1240,
        "currency": "DKK",
        "fee": null,
-       "alt_amount": 166,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 166,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Couples: 1240dkk/166€"
+       "quote": "Couples: 1240dkk/166€ ✅ AVAILABLE"
       },
       {
        "amount": 1440,
        "currency": "DKK",
        "fee": null,
-       "alt_amount": 192,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 192,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Couples: 1440dkk/192€"
+       "quote": "Couples: 1440dkk/192€ ✅ AVAILABILE"
       },
       {
        "amount": 1840,
        "currency": "DKK",
        "fee": null,
-       "alt_amount": 246,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 246,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -233,8 +260,8 @@
     }
    ],
    "rule_quotes": [
-    "( For each batch sold out – prices increase for next batch )",
-    "There will be between 10-25 passes of a certain price of each kind in each batch."
+    "For each batch sold out – prices increase for next batch",
+    "EARLY BIRD: first 10 passes of each kind will be EARLY BIRD price!"
    ]
   }
  ]

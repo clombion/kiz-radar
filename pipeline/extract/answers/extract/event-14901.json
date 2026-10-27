@@ -1,0 +1,353 @@
+{
+ "batch": "event-14901",
+ "events": [
+  {
+   "event_id": 14901,
+   "artists": [
+    {
+     "name_as_written": "Py & Sarah",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "Py & Sarah 🇫🇷"
+    },
+    {
+     "name_as_written": "Jesus & Anni",
+     "role": "teacher",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "Jesus & Anni 🇪🇸"
+    },
+    {
+     "name_as_written": "Lilian & Ivana",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "Lilian & Ivana 🇫🇷"
+    },
+    {
+     "name_as_written": "Tata Daalas",
+     "role": "teacher",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "Tata Daalas 🇪🇸"
+    },
+    {
+     "name_as_written": "Edo & Giuly",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "Edo & Giuly 🇮🇹"
+    },
+    {
+     "name_as_written": "Oscar & Claudia",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "Oscar & Claudia 🇮🇹"
+    },
+    {
+     "name_as_written": "Davide & Laura",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "Davide & Laura 🇮🇹"
+    },
+    {
+     "name_as_written": "Jennifer & Simone",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "Jennifer & Simone 🇮🇹"
+    },
+    {
+     "name_as_written": "Natalia & Andrea",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "Natalia & Andrea 🇮🇹"
+    },
+    {
+     "name_as_written": "Giada Ligas",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "Giada Ligas 🇮🇹"
+    },
+    {
+     "name_as_written": "Alessandra Sillano",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "Alessandra Sillano 🇮🇹"
+    },
+    {
+     "name_as_written": "Valter & Elena",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "Valter & Elena 🇮🇹"
+    },
+    {
+     "name_as_written": "Francesca & Luca",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "Francesca & Luca 🇮🇹"
+    },
+    {
+     "name_as_written": "Mary Valencia",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "Mary Valencia 🇮🇹"
+    },
+    {
+     "name_as_written": "Stefano & Maura",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "Stefano & Maura 🇮🇹"
+    },
+    {
+     "name_as_written": "Paolo & Angelica",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "Paolo & Angelica 🇮🇹"
+    },
+    {
+     "name_as_written": "Fabrizio Chiarenza",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "Fabrizio Chiarenza 🇮🇹"
+    },
+    {
+     "name_as_written": "Henry & Silway",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "Henry & Silway 🇮🇹"
+    },
+    {
+     "name_as_written": "Stefano & Elisa",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "Stefano & Elisa 🇮🇹"
+    },
+    {
+     "name_as_written": "DJ Ichigo",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "DJ Ichigo 🇫🇷"
+    },
+    {
+     "name_as_written": "DJ Nice Life",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "DJ Nice Life 🇫🇷"
+    },
+    {
+     "name_as_written": "DJ F.A.Z.E",
+     "role": "dj",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "DJ F.A.Z.E 🇪🇸"
+    },
+    {
+     "name_as_written": "Dee C Beats",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "Dee C Beats 🇫🇷"
+    },
+    {
+     "name_as_written": "DJ Neiken",
+     "role": "dj",
+     "style": null,
+     "country": "🇵🇹",
+     "source_line": "DJ Neiken 🇵🇹"
+    },
+    {
+     "name_as_written": "DJ Lucas Exclusive",
+     "role": "dj",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "DJ Lucas Exclusive 🇪🇸"
+    },
+    {
+     "name_as_written": "DJ Ghost Face",
+     "role": "dj",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "DJ Ghost Face 🇮🇹"
+    },
+    {
+     "name_as_written": "DJ Rax",
+     "role": "dj",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "DJ Rax 🇮🇹"
+    },
+    {
+     "name_as_written": "DJ Drew",
+     "role": "dj",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "DJ Drew 🇮🇹"
+    },
+    {
+     "name_as_written": "DJ Master Beat",
+     "role": "dj",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "DJ Master Beat 🇮🇹"
+    },
+    {
+     "name_as_written": "Neko DJ",
+     "role": "dj",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "Neko DJ 🇮🇹"
+    },
+    {
+     "name_as_written": "DJ Glight",
+     "role": "dj",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "DJ Glight 🇮🇹"
+    },
+    {
+     "name_as_written": "Luigi Meandro",
+     "role": "crew",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "🕺🏻Luigi Meandro 🇮🇹"
+    },
+    {
+     "name_as_written": "José Capitani",
+     "role": "crew",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "🕺🏻José Capitani 🇮🇹"
+    },
+    {
+     "name_as_written": "Zack",
+     "role": "crew",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "🕺🏻Zack 🇮🇹"
+    },
+    {
+     "name_as_written": "Damiano",
+     "role": "crew",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "🕺🏻Damiano 🇮🇹"
+    },
+    {
+     "name_as_written": "Mario",
+     "role": "crew",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "🕺🏻Mario 🇮🇹"
+    },
+    {
+     "name_as_written": "Dodo",
+     "role": "crew",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "🕺🏻Dodo 🇮🇹"
+    },
+    {
+     "name_as_written": "Maurizio",
+     "role": "crew",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "🕺🏻Maurizio 🇮🇹"
+    },
+    {
+     "name_as_written": "Angelo",
+     "role": "crew",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "🕺🏻Angelo 🇮🇹"
+    },
+    {
+     "name_as_written": "Matteo Rizzo",
+     "role": "crew",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "🕺🏻Matteo Rizzo 🇮🇹"
+    },
+    {
+     "name_as_written": "Jahia",
+     "role": "performer",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "🕺🏻Jahia 🇫🇷"
+    },
+    {
+     "name_as_written": "Ghost Factory Production",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "📸Ghost Factory Production"
+    },
+    {
+     "name_as_written": "Ivana Mangullo",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "🎨Ivana Mangullo"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "All-In-One",
+     "rationale": "The bullet describes the event as All-In-One, matching the title, and the parties and workshops take place in the hotel venue."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 exclusive rooms for workshops.",
+     "rationale": "The event offers two exclusive rooms for workshops, meaning more than one dance room."
+    },
+    {
+     "feature": "workshops",
+     "quote": "2 exclusive rooms for workshops.",
+     "rationale": "Workshops are explicitly part of the event programme."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Master Classes (only with MASTERPASS)",
+     "rationale": "Master classes are listed as part of the event, restricted to a pass holder."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "LINE UP TAXI DANCER",
+     "rationale": "A taxi dancer line-up is listed, so taxi dancers are present."
+    },
+    {
+     "feature": "shows",
+     "quote": "All the event (workshops, parties, shows), will be in:",
+     "rationale": "The description states that shows by artists take place at the event."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Books here: https://www.baronedisassj.com/",
+     "rationale": "Guests are directed to book the hotel with a negotiated per-night rate and promo code."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "PRICE (per night with breakfast)",
+     "rationale": "The per-night price includes breakfast."
+    }
+   ]
+  }
+ ]
+}

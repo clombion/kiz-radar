@@ -1,6 +1,5 @@
 {
  "batch": "event-14451",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 14451,
@@ -8,7 +7,7 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": "🌀 FULL PASS 🌀",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -17,10 +16,9 @@
        "amount": 90,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": "07-01",
-       "until": "07-31",
+       "alt": null,
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -32,7 +30,7 @@
     {
      "kind": "other",
      "style": null,
-     "label_quote": "The ▪️VIP Pass▪️ includes the Jesus y Anni Masterclass on Saturday, January 3rd at 11:00 a.m., in addition to everything included in the Full Pass.",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -41,10 +39,9 @@
        "amount": 110,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": "07-01",
-       "until": "07-31",
+       "alt": null,
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -54,7 +51,9 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "Rooms do not include the €4 per person daily tourist tax."
+   ]
   }
  ]
 }

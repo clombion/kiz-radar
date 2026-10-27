@@ -1,0 +1,31 @@
+{
+ "batch": "event-15047",
+ "events": [
+  {
+   "event_id": 15047,
+   "artists": [],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "hotels across the street (ALL IN ONE)",
+     "rationale": "The description labels the event ALL IN ONE and says hotels are across the street from the venue."
+    },
+    {
+     "feature": "workshops",
+     "quote": "10 hours of workshops.",
+     "rationale": "The event includes ten hours of workshops."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "1 100,000% Kizomba room / 1 Salsa Bachata Fun room",
+     "rationale": "The event has two dance rooms, one for Kizomba and one for Salsa Bachata Fun."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Official Hotel on site:",
+     "rationale": "A named official hotel is recommended, and a festival offer rate is negotiated, but accommodation is not part of the pass."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,79 @@
+{
+ "batch": "event-16605",
+ "events": [
+  {
+   "event_id": 16605,
+   "party_rooms": {
+    "count": 2,
+    "quote": "4 EVENINGS, 2 rooms, 2 atmospheres, 1 single location"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Room 1",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "semba",
+      "urbankiz",
+      "tarraxo",
+      "tarraxinha",
+      "afro"
+     ],
+     "quote": "Room 1: KIZOMBA, SEMBA, URBANKIZ, TARRAXA, TARRAXO, TARRAXHINA, AFRO"
+    },
+    {
+     "name_as_written": "Room 2",
+     "kind": "party",
+     "genres": [
+      "salsa",
+      "bachata"
+     ],
+     "quote": "Room 2: FULL SALSA AND BACHATA"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "KIZOMBA, SALSA, and BACHATA"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "KIZOMBA, SALSA, and BACHATA"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "KIZOMBA, SALSA, and BACHATA"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "SEMBA",
+     "quote": "Room 1: KIZOMBA, SEMBA, URBANKIZ, TARRAXA, TARRAXO, TARRAXHINA, AFRO"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBANKIZ",
+     "quote": "Room 1: KIZOMBA, SEMBA, URBANKIZ, TARRAXA, TARRAXO, TARRAXHINA, AFRO"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "TARRAXO",
+     "quote": "Room 1: KIZOMBA, SEMBA, URBANKIZ, TARRAXA, TARRAXO, TARRAXHINA, AFRO"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "TARRAXHINA",
+     "quote": "Room 1: KIZOMBA, SEMBA, URBANKIZ, TARRAXA, TARRAXO, TARRAXHINA, AFRO"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "AFRO",
+     "quote": "Room 1: KIZOMBA, SEMBA, URBANKIZ, TARRAXA, TARRAXO, TARRAXHINA, AFRO"
+    }
+   ]
+  }
+ ]
+}

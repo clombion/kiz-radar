@@ -1,0 +1,18 @@
+{
+ "batch": "event-16089",
+ "events": [
+  {
+   "event_id": 16089,
+   "artists": [
+    {
+     "name_as_written": "Charles Ogar",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "— Charles Ogar, “Mr. Neokiz”"
+    }
+   ],
+   "features": []
+  }
+ ]
+}

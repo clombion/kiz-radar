@@ -1,0 +1,18 @@
+{
+ "batch": "event-16830",
+ "events": [
+  {
+   "event_id": 16830,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "The Future of Urban Kiz Starts Now!"
+    }
+   ]
+  }
+ ]
+}

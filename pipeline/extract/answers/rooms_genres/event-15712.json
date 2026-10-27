@@ -1,0 +1,33 @@
+{
+ "batch": "event-15712",
+ "events": [
+  {
+   "event_id": 15712,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "salsa",
+     "quote": "Classes for all levels: salsa, bachata, kizomba, Urban Kizomba"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "bachata",
+     "quote": "Classes for all levels: salsa, bachata, kizomba, Urban Kizomba"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "Classes for all levels: salsa, bachata, kizomba, Urban Kizomba"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kizomba",
+     "quote": "Classes for all levels: salsa, bachata, kizomba, Urban Kizomba"
+    }
+   ]
+  }
+ ]
+}

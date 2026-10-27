@@ -1,0 +1,66 @@
+{
+ "batch": "event-14911",
+ "events": [
+  {
+   "event_id": 14911,
+   "party_rooms": {
+    "count": 3,
+    "quote": "3 party Room : Salsa, Bachata and Kizomba"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "3 party Room : Salsa, Bachata and Kizomba"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "3 party Room : Salsa, Bachata and Kizomba"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "3 party Room : Salsa, Bachata and Kizomba"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "PARIS AFRO LATIN CONGRESS"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "BACHATA"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "KIZOMBA"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "SALSA"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "ZOUK BRESILEN",
+     "quote": "ZOUK BRESILEN"
+    }
+   ]
+  }
+ ]
+}

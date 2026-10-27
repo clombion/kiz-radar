@@ -1,0 +1,18 @@
+{
+ "batch": "event-17927",
+ "events": [
+  {
+   "event_id": 17927,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "other",
+     "genre_as_written": "passadas",
+     "quote": "A weekend of passadas"
+    }
+   ]
+  }
+ ]
+}

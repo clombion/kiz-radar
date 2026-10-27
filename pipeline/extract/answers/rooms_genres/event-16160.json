@@ -1,0 +1,28 @@
+{
+ "batch": "event-16160",
+ "events": [
+  {
+   "event_id": 16160,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Dance workshops (Kizomba, Semba, Kuduro & traditional dances)"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Dance workshops (Kizomba, Semba, Kuduro & traditional dances)"
+    },
+    {
+     "genre": "kuduro",
+     "genre_as_written": "Kuduro",
+     "quote": "Dance workshops (Kizomba, Semba, Kuduro & traditional dances)"
+    }
+   ]
+  }
+ ]
+}

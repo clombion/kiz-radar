@@ -1,0 +1,18 @@
+{
+ "batch": "event-14742",
+ "events": [
+  {
+   "event_id": 14742,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "KIZOMBA TOURIST TRIP 2026"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,55 @@
+{
+ "batch": "event-14858",
+ "events": [
+  {
+   "event_id": 14858,
+   "party_rooms": {
+    "count": 2,
+    "quote": "The festival offers two atmospheres, two worlds to dance the night away!"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Room 1",
+     "kind": "party",
+     "genres": [
+      "urbankiz",
+      "tarraxo"
+     ],
+     "quote": "Room 1: Urban Kiz Tarraxo"
+    },
+    {
+     "name_as_written": "Room 2",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "semba"
+     ],
+     "quote": "Room 2: Kizomba & Semba"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Room 1: Urban Kiz Tarraxo"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Room 1: Urban Kiz Tarraxo"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Room 2: Kizomba & Semba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Room 2: Kizomba & Semba"
+    }
+   ]
+  }
+ ]
+}

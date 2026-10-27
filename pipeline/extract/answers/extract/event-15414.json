@@ -1,0 +1,245 @@
+{
+ "batch": "event-15414",
+ "events": [
+  {
+   "event_id": 15414,
+   "artists": [
+    {
+     "name_as_written": "Samuel Funflow",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "🇪🇸",
+     "source_line": "Samuel Funflow 🇪🇸"
+    },
+    {
+     "name_as_written": "Raymund Gerard",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "🇦🇺",
+     "source_line": "Raymund Gerard 🇦🇺"
+    },
+    {
+     "name_as_written": "Jilly & John",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "🇵🇭🇺🇸",
+     "source_line": "Jilly & John 🇵🇭🇺🇸"
+    },
+    {
+     "name_as_written": "Alyx Ty",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "🇳🇿",
+     "source_line": "Alyx Ty 🇳🇿"
+    },
+    {
+     "name_as_written": "Alex Alberola",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": "🇪🇸",
+     "source_line": "Alex Alberola 🇪🇸"
+    },
+    {
+     "name_as_written": "Monika & Victor",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": "🇯🇵🇺🇸🇷🇺",
+     "source_line": "Monika & Victor 🇯🇵🇺🇸🇷🇺"
+    },
+    {
+     "name_as_written": "Noble Lee",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": "🇰🇷",
+     "source_line": "Noble Lee 🇰🇷"
+    },
+    {
+     "name_as_written": "Shasha Lim",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": "🇸🇬",
+     "source_line": "Shasha Lim 🇸🇬"
+    },
+    {
+     "name_as_written": "Paris Wong",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": "🇭🇰",
+     "source_line": "Paris Wong 🇭🇰"
+    },
+    {
+     "name_as_written": "Chris Willshire",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": "🇦🇺",
+     "source_line": "Chris Willshire 🇦🇺"
+    },
+    {
+     "name_as_written": "Kevin Sato",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": "🇵🇭",
+     "source_line": "Kevin Sato 🇵🇭"
+    },
+    {
+     "name_as_written": "Chester Sol",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": "🇮🇹",
+     "source_line": "Chester Sol 🇮🇹"
+    },
+    {
+     "name_as_written": "Felicien Rossa",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": "🇫🇷",
+     "source_line": "Felicien Rossa 🇫🇷"
+    },
+    {
+     "name_as_written": "Savina",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": "🇦🇺",
+     "source_line": "Savina 🇦🇺"
+    },
+    {
+     "name_as_written": "Barbie Alonzo",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": "🇵🇭",
+     "source_line": "Barbie Alonzo 🇵🇭"
+    },
+    {
+     "name_as_written": "Florence Tan",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": "🇲🇾",
+     "source_line": "Florence Tan 🇲🇾"
+    },
+    {
+     "name_as_written": "Terence & Ezy",
+     "role": "teacher",
+     "style": "Brazilian Zouk",
+     "country": "🇰🇷",
+     "source_line": "Terence & Ezy 🇰🇷"
+    },
+    {
+     "name_as_written": "Aileen & Bruce",
+     "role": "teacher",
+     "style": "Brazilian Zouk",
+     "country": "🇵🇭",
+     "source_line": "Aileen & Bruce 🇵🇭"
+    },
+    {
+     "name_as_written": "Janina Bailarina",
+     "role": "teacher",
+     "style": "Reggaeton",
+     "country": "🇳🇿",
+     "source_line": "Janina Bailarina 🇳🇿 (Reggaeton)"
+    },
+    {
+     "name_as_written": "Janice Maglasang",
+     "role": "teacher",
+     "style": "Femme",
+     "country": "🇵🇭",
+     "source_line": "Janice Maglasang 🇵🇭 (Femme)"
+    },
+    {
+     "name_as_written": "DJ Alejandro",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇷",
+     "source_line": "DJ Alejandro 🇦🇷"
+    },
+    {
+     "name_as_written": "Superlatin DJ Ricky",
+     "role": "dj",
+     "style": null,
+     "country": "🇰🇷",
+     "source_line": "Superlatin DJ Ricky 🇰🇷"
+    },
+    {
+     "name_as_written": "DJ Mosti",
+     "role": "dj",
+     "style": null,
+     "country": "🇩🇪",
+     "source_line": "DJ Mosti 🇩🇪"
+    },
+    {
+     "name_as_written": "DJ Rajbi",
+     "role": "dj",
+     "style": null,
+     "country": "🇮🇳",
+     "source_line": "DJ Rajbi 🇮🇳"
+    },
+    {
+     "name_as_written": "DJ el Camino y Los Timbaleros",
+     "role": "dj",
+     "style": null,
+     "country": "🇵🇭",
+     "source_line": "DJ el Camino y Los Timbaleros 🇵🇭"
+    },
+    {
+     "name_as_written": "DJ Taka",
+     "role": "dj",
+     "style": null,
+     "country": "🇯🇵",
+     "source_line": "DJ Taka 🇯🇵"
+    },
+    {
+     "name_as_written": "DJ Lijla",
+     "role": "dj",
+     "style": null,
+     "country": "🇵🇭",
+     "source_line": "DJ Lijla 🇵🇭"
+    },
+    {
+     "name_as_written": "DJ Bella V",
+     "role": "dj",
+     "style": null,
+     "country": "🇵🇭",
+     "source_line": "DJ Bella V 🇵🇭"
+    },
+    {
+     "name_as_written": "Mr Energy Na Casa",
+     "role": "mc",
+     "style": null,
+     "country": "🇨🇻🇵🇹",
+     "source_line": "🎤 MC & Party Master: Mr Energy Na Casa 🇨🇻🇵🇹"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Workshops • Bootcamps",
+     "rationale": "The description lists workshops as part of the festival."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Bootcamps",
+     "rationale": "The description lists bootcamps as part of the festival."
+    },
+    {
+     "feature": "shows",
+     "quote": "1 Night of Shows",
+     "rationale": "A night of shows is listed as a feature of the event."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "All-Day Pool Party Socials",
+     "rationale": "The event includes pool party socials."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "All-Day Pool Party Socials",
+     "rationale": "Pool party socials running all day are daytime socials."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 Rooms",
+     "rationale": "Two rooms indicates more than one dance room or floor."
+    }
+   ]
+  }
+ ]
+}

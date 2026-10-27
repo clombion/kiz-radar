@@ -1,0 +1,33 @@
+{
+ "batch": "event-18513",
+ "events": [
+  {
+   "event_id": 18513,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "From Kizomba to Urban Kiz"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "From Kizomba to Urban Kiz"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "from Semba to Afro vibes"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro vibes",
+     "quote": "from Semba to Afro vibes"
+    }
+   ]
+  }
+ ]
+}

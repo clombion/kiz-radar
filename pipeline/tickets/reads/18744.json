@@ -2,9 +2,14 @@
  "event_id": 18744,
  "title": "Fresh Kiz Festival – 4th Edition",
  "start_date": "2027-04-30",
- "read_by": "agent",
- "prompt": "2be784db5d9944e6",
- "rows_at": "2026-10-27T00:05:11+00:00",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "cb864655c7075f56",
+ "rows_at": "2026-10-27T12:08:31+00:00",
+ "styles": [
+  "kizomba",
+  "other",
+  "zouk"
+ ],
  "description": "🌊 The Fresh Kiz Festival is back for a fourth edition! 🌊\nOur goal is to promote artists who have recently emerged on the scene (the “new generation” as we like to call them), those who have developed an innovative style or concept, and those who have had little exposure at festivals (but who are just as deserving), by offering them visibility and a space to share their art.\nFresh Kiz is also innovative in the form of the event itself, as well as in its interaction with the public, both before and during the event.\nWe aim to create a friendly, safe and trustworthy atmosphere, where everybody feels safe and at home🩵\n🎶 VIBE 🎶\n🔹 URBAN KIZ\n🔹 GHETTO ZOUK\n🔹 TARRAXO\n🔹 AFRO BEAT\n🔹 DOUCEUR\n🎧 DJs 🎧\n🔸 LE GRAND TI WOSH\n🔸 POEMA BEATZ\n🔸 DJ Dwe Dyson\n🔸 DJ Kenny Asher\n🔸 DJ Valkyrie\n🔸 DJ Dva\n🔸 Neko DJ\n💃 TEACHERS 🕺\n🔸 Portu & Mada\n🔸 Pao Lou & Margaux\n🔸 Vanildo & Mara\n🔸 Wookie & Nicole\n🔸 Gaby (Solo Styling)\n🔸 Yaya (Afro)\n📱 MEDIA 📷\n🔸 KITOKO DANCE (social media manager)\n🔸 INSEN (photographer)\n🔸 LÉA (communication manager)\n🏨 MAIN HOTEL • ALL IN ONE 🏨\nNovotel Paris Nord Expo Aulnay,\n65 Rue Michel Ange 93600 Aulnay-sous-Bois\n🔷 15 min from Paris CDG airport\n🔷 Double room: for 2 persons for 3 nights with breakfast → 340€\n🔷 Package: 2 full passes + double room → 480€\n🔷 Free parking\nOfficial event: https://www.facebook.com/events/2048462712692494\nOnline ticketing: https://www.billetweb.fr/fresh-kiz-festival-4th-edition\nFind a roommate, resell your pass, carpooling:\nhttps://www.facebook.com/groups/959985102510386/?ref=share\nGet ready for the upcoming wave of freshness 🌊\n#freshkiz #urbankizfestival\n———-\n🇫🇷🇫🇷🇫🇷\n🌊 Le Fresh Kiz Festival revient pour une quatrième edition ! 🌊\nNotre objectif est de promouvoir les artistes ayant récemment émergé sur la scène (la “nouvelle génération” comme on aime les appeler), ceux ayant développé un style ou un concept innovant ainsi que les artistes peu exposés en festival (mais tout aussi méritant) en leur offrant une visibilité et un espace pour partager leur art.\nFresh Kiz se veut également innovant dans la forme même de l’événement et de son interaction avec le public, que ce soit avant ou pendant le festival.\nNous créerons une atmosphère conviviale, sécurisée et de confiance, où chacun se sentira en sécurité et chez soi 🩵\n🎶 AMBIANCE 🎶\n🔹 URBAN KIZ\n🔹 GHETTO ZOUK\n🔹 TARRAXO\n🔹 AFRO BEAT\n🔹 DOUCEUR\n🎧 DJs 🎧\n🔸 LE GRAND TI WOSH\n🔸 POEMA BEATZ\n🔸 DJ Dwe Dyson\n🔸 DJ Kenny Asher\n🔸 DJ Valkyrie\n🔸 DJ Dva\n🔸 Neko DJ\n💃 PROFESSEURS🕺\n🔸 Portu & Mada\n🔸 Pao Lou & Margaux\n🔸 Vanildo & Mara\n🔸 Wookie & Nicole\n🔸 Gaby (Solo Styling)\n🔸 Yaya (Afro)\n📱 MEDIA 📷\n🔸 KITOKO DANCE (social media manager)\n🔸 INSEN (photographe)\n🔸 LÉA (communication manager)\n🏨 HOTEL PRINCIPAL • ALL IN ONE 🏨\nNovotel Paris Nord Expo Aulnay,\n65 Rue Michel Ange, 93600 Aulnay-sous-Bois\n🔷 À 15 min de l’aéroport Paris CDG\n🔷 Chambre double : pour 2 personnes, 3 nuits avec petit-déjeuner → 340 €\n🔷 Package : 2 full passes + chambre double → 480 €\n🔷 Parking gratuit\nÉvénement officiel : https://www.facebook.com/events/2048462712692494\nBilletterie en ligne : https://www.billetweb.fr/fresh-kiz-festival-4th-edition\nPartager une chambre, revendre votre pass ou organiser un covoiturage :\nhttps://www.facebook.com/groups/959985102510386/?ref=share\nGet ready for the upcoming wave of freshness 🌊\n#freshkiz #urbankizfestival",
  "passes": [
   {
@@ -149,8 +154,14 @@
   }
  ],
  "skipped": [
-  "7080539",
-  "7080543"
+  {
+   "key": "7080539",
+   "reason": "room"
+  },
+  {
+   "key": "7080543",
+   "reason": "room"
+  }
  ],
  "rule_quotes": []
 }

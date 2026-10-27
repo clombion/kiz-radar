@@ -1,0 +1,41 @@
+{
+ "batch": "event-16308",
+ "events": [
+  {
+   "event_id": 16308,
+   "artists": [],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "5 PARTY ROOMS:",
+     "rationale": "The description states there are five party rooms, so more than one dance room is offered."
+    },
+    {
+     "feature": "workshops",
+     "quote": "OVER 50 WORKSHOPS",
+     "rationale": "Over 50 workshops are listed as part of the congress."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "ALL UNDER 1 ROOF",
+     "rationale": "Stating everything is under one roof, together with the main hotel venue, means the parties and hotel rooms are in the same place."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "THEMED PARTY Night",
+     "rationale": "A themed party night is explicitly listed."
+    },
+    {
+     "feature": "shows",
+     "quote": "SHOWS & ANIMATIONS",
+     "rationale": "Shows and animations are listed as part of the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "2 Afternoon Socials",
+     "rationale": "Two afternoon socials are listed, which are daytime social sessions."
+    }
+   ]
+  }
+ ]
+}

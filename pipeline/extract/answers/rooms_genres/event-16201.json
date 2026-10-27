@@ -1,0 +1,82 @@
+{
+ "batch": "event-16201",
+ "events": [
+  {
+   "event_id": 16201,
+   "party_rooms": {
+    "count": 7,
+    "quote": "7+ Ballrooms of Dancing Nightly"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "(Salsa,"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "2 Bachata Rooms"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "zouk"
+     ],
+     "quote": "Zouk,"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "Kizomba,"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "Cuban Salsa/Rueda"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "DCBX is BACHATA"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "DCBX is SALSA"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "DCBX is KIZOMBA & URBAN KIZ"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBAN KIZ",
+     "quote": "DCBX is KIZOMBA & URBAN KIZ"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "ZOUK",
+     "quote": "DCBX is ZOUK"
+    }
+   ]
+  }
+ ]
+}

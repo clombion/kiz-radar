@@ -1,0 +1,31 @@
+{
+ "batch": "event-19439",
+ "events": [
+  {
+   "event_id": 19439,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "full weekend of daily workshops",
+     "rationale": "The description says the weekend includes daily workshops, so dance classes are part of the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "afternoon socials",
+     "rationale": "Afternoon socials are explicitly listed as part of the weekend, which are daytime social events."
+    },
+    {
+     "feature": "shows",
+     "quote": "nightly performances",
+     "rationale": "Nightly performances are listed as part of the event, indicating shows by artists."
+    },
+    {
+     "feature": "competition",
+     "quote": "Brazilian Zouk Dance Council Jack & Jill Competition",
+     "rationale": "A Jack & Jill competition is explicitly stated to be hosted at the event."
+    }
+   ]
+  }
+ ]
+}

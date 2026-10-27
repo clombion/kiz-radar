@@ -1,0 +1,33 @@
+{
+ "batch": "event-18806",
+ "events": [
+  {
+   "event_id": 18806,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata:"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa:"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba:"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Brazilian Zouk",
+     "quote": "Brazilian Zouk"
+    }
+   ]
+  }
+ ]
+}

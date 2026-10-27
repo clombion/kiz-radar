@@ -1,0 +1,87 @@
+{
+ "batch": "event-18513",
+ "events": [
+  {
+   "event_id": 18513,
+   "artists": [
+    {
+     "name_as_written": "DJ Sam Gold",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Sam Gold"
+    },
+    {
+     "name_as_written": "DJ Stompy",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Stompy (#KizEnSoitAinsi)"
+    },
+    {
+     "name_as_written": "DJ Miky Mike",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Miky Mike"
+    },
+    {
+     "name_as_written": "DJ Lo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Lo"
+    },
+    {
+     "name_as_written": "JP & Ramona",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "JP & Ramona"
+    },
+    {
+     "name_as_written": "Stompy",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Stompy"
+    },
+    {
+     "name_as_written": "Marlene",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Marlene"
+    },
+    {
+     "name_as_written": "Guilhermé",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Guilhermé"
+    },
+    {
+     "name_as_written": "Mya & Gonzalo",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Mya & Gonzalo"
+    },
+    {
+     "name_as_written": "S. Tavares Silva",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "S. Tavares Silva"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "workshops, socials, party vibes",
+     "rationale": "The description states that the anniversary is celebrated with workshops, which are dance classes."
+    }
+   ]
+  }
+ ]
+}

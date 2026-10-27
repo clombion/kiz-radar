@@ -1,0 +1,56 @@
+{
+ "batch": "event-17122",
+ "events": [
+  {
+   "event_id": 17122,
+   "party_rooms": {
+    "count": 2,
+    "quote": "Theme Dance Socials featuring 2 separate ROOMS of entertainment"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba | Urbankiz | Konpa Gouyad | Zouk | Afrobeat | Douceur | Tarraxo | Tarraxinha"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urbankiz",
+     "quote": "Kizomba | Urbankiz | Konpa Gouyad | Zouk | Afrobeat | Douceur | Tarraxo | Tarraxinha"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa Gouyad",
+     "quote": "Kizomba | Urbankiz | Konpa Gouyad | Zouk | Afrobeat | Douceur | Tarraxo | Tarraxinha"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Zouk",
+     "quote": "Kizomba | Urbankiz | Konpa Gouyad | Zouk | Afrobeat | Douceur | Tarraxo | Tarraxinha"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afrobeat",
+     "quote": "Kizomba | Urbankiz | Konpa Gouyad | Zouk | Afrobeat | Douceur | Tarraxo | Tarraxinha"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "Kizomba | Urbankiz | Konpa Gouyad | Zouk | Afrobeat | Douceur | Tarraxo | Tarraxinha"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Kizomba | Urbankiz | Konpa Gouyad | Zouk | Afrobeat | Douceur | Tarraxo | Tarraxinha"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "Kizomba | Urbankiz | Konpa Gouyad | Zouk | Afrobeat | Douceur | Tarraxo | Tarraxinha"
+    }
+   ]
+  }
+ ]
+}

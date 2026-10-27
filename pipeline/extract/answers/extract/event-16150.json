@@ -1,0 +1,107 @@
+{
+ "batch": "event-16150",
+ "events": [
+  {
+   "event_id": 16150,
+   "artists": [
+    {
+     "name_as_written": "Saber & Majdouline",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🧪 Saber & Majdouline"
+    },
+    {
+     "name_as_written": "Radu & Judit",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🧪 Radu & Judit"
+    },
+    {
+     "name_as_written": "Ledoux Kingsman & Sonia",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🧪 Ledoux Kingsman & Sonia"
+    },
+    {
+     "name_as_written": "Said & Oksana",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🧪 Said & Oksana"
+    },
+    {
+     "name_as_written": "JP & Stephy",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🧪 JP & Stephy"
+    },
+    {
+     "name_as_written": "DJ PARAÏSO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🧪 DJ PARAÏSO"
+    },
+    {
+     "name_as_written": "DJ NAO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🧪 DJ NAO"
+    },
+    {
+     "name_as_written": "DJ B!JU",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🧪 DJ B!JU"
+    },
+    {
+     "name_as_written": "DJ SAABER",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🧪 DJ SAABER"
+    },
+    {
+     "name_as_written": "DJ JOZSI",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🧪 DJ JOZSI"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Alchemical Workshops",
+     "rationale": "The event lists Alchemical Workshops among its offerings, so dance classes are part of the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "3 Daytime Socials",
+     "rationale": "The event lists three daytime socials."
+    },
+    {
+     "feature": "competition",
+     "quote": "THE BATTLE KIZZ Qualifications",
+     "rationale": "The BATTLE KIZZ Qualifications are a competition held during the festival."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "A beautiful 4-star hotel by the lake with:",
+     "rationale": "A specific hotel is offered alongside the festival with accommodation booking, which indicates a partner hotel."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Breakfast included to fuel your days",
+     "rationale": "Breakfast is stated as included with the hotel stay offered through the festival."
+    }
+   ]
+  }
+ ]
+}

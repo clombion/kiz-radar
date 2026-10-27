@@ -1,14 +1,10 @@
 {
  "batch": "event-18643",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18643,
    "passes": [],
-   "rule_quotes": [
-    "Door-sale passes, when available, may differ in price from online passes.",
-    "Passes will cost more at the door."
-   ]
+   "rule_quotes": []
   }
  ]
 }

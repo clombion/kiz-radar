@@ -1,0 +1,345 @@
+{
+ "batch": "event-16145",
+ "events": [
+  {
+   "event_id": 16145,
+   "artists": [
+    {
+     "name_as_written": "Antoni & Belen",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Antoni & Belen"
+    },
+    {
+     "name_as_written": "York & Lisa",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "York & Lisa"
+    },
+    {
+     "name_as_written": "Sakis & Mia",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Sakis & Mia"
+    },
+    {
+     "name_as_written": "Geno & Steffie",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Geno & Steffie"
+    },
+    {
+     "name_as_written": "Tedy & Chun",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Tedy & Chun"
+    },
+    {
+     "name_as_written": "Oscar & Raquel",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Oscar & Raquel"
+    },
+    {
+     "name_as_written": "Anass & Louise",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Anass & Louise"
+    },
+    {
+     "name_as_written": "Flowly & Anastasia",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Flowly & Anastasia"
+    },
+    {
+     "name_as_written": "Joris & Laura",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Joris & Laura"
+    },
+    {
+     "name_as_written": "Walid & Bella",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Walid & Bella"
+    },
+    {
+     "name_as_written": "Aram & Lara",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Aram & Lara"
+    },
+    {
+     "name_as_written": "Jaden & Laura",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Jaden & Laura"
+    },
+    {
+     "name_as_written": "Julia & Partner",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Julia & Partner"
+    },
+    {
+     "name_as_written": "Ly & Partner",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Ly & Partner"
+    },
+    {
+     "name_as_written": "DJ York",
+     "role": "dj",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "DJ York"
+    },
+    {
+     "name_as_written": "DJ Suman",
+     "role": "dj",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "DJ Suman"
+    },
+    {
+     "name_as_written": "DJ Mak",
+     "role": "dj",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "DJ Mak"
+    },
+    {
+     "name_as_written": "DJ Sergio",
+     "role": "dj",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "DJ Sergio"
+    },
+    {
+     "name_as_written": "DJ Robsession",
+     "role": "dj",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "DJ Robsession"
+    },
+    {
+     "name_as_written": "DJ Sami",
+     "role": "dj",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "DJ Sami"
+    },
+    {
+     "name_as_written": "Jonathan Mahoto & Jenny",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "Jonathan Mahoto & Jenny"
+    },
+    {
+     "name_as_written": "Enah Lebon",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "Enah Lebon"
+    },
+    {
+     "name_as_written": "Curtis Seldon",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "Curtis Seldon"
+    },
+    {
+     "name_as_written": "Methodz & Julia",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "Methodz & Julia"
+    },
+    {
+     "name_as_written": "Ami & Julian",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "Ami & Julian"
+    },
+    {
+     "name_as_written": "Virgile & Juneline",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "Virgile & Juneline"
+    },
+    {
+     "name_as_written": "Mode Zero",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "Mode Zero"
+    },
+    {
+     "name_as_written": "DJ Snakes",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ Snakes"
+    },
+    {
+     "name_as_written": "DJ Nice Life",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ Nice Life"
+    },
+    {
+     "name_as_written": "DJ Morelasoul",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ Morelasoul"
+    },
+    {
+     "name_as_written": "DJ Levi’s",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ Levi’s"
+    },
+    {
+     "name_as_written": "DJ Poema Beatz",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ Poema Beatz"
+    },
+    {
+     "name_as_written": "DJ Tony Samson",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ Tony Samson"
+    },
+    {
+     "name_as_written": "DJ Jessie",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ Jessie"
+    },
+    {
+     "name_as_written": "DJ Narc6",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ Narc6"
+    },
+    {
+     "name_as_written": "DJ Kapitula",
+     "role": "dj",
+     "style": "Semba",
+     "country": null,
+     "source_line": "DJ Kapitula"
+    },
+    {
+     "name_as_written": "DJ Ellen",
+     "role": "dj",
+     "style": "Semba",
+     "country": null,
+     "source_line": "DJ Ellen"
+    },
+    {
+     "name_as_written": "DJ Dos Anjos",
+     "role": "dj",
+     "style": "Semba",
+     "country": null,
+     "source_line": "DJ Dos Anjos"
+    },
+    {
+     "name_as_written": "DJ Matt",
+     "role": "dj",
+     "style": "Semba",
+     "country": null,
+     "source_line": "DJ Matt"
+    },
+    {
+     "name_as_written": "DJ Makarof",
+     "role": "dj",
+     "style": "Semba",
+     "country": null,
+     "source_line": "DJ Makarof"
+    },
+    {
+     "name_as_written": "Farantini",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Farantini"
+    },
+    {
+     "name_as_written": "TV Socialdance",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "TV Socialdance"
+    },
+    {
+     "name_as_written": "Silvia",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Silvia"
+    },
+    {
+     "name_as_written": "Lucy Housar",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Lucy Housar"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "All-in-one hotel experience",
+     "rationale": "The event states it is an all-in-one hotel experience where everything happens in one place."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Workshops with top international artists",
+     "rationale": "The description lists workshops with international artists as part of the event."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Pre-party (Thursday) is NOT included in any Full Pass",
+     "rationale": "A Thursday pre-party is mentioned as part of the event schedule."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "HOTEL – PARK PLAZA AMSTERDAM AIRPORT",
+     "rationale": "The event promotes a specific hotel with room rates, sold separately from the pass."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "ROOM + BREAKFAST + DINNER",
+     "rationale": "The hotel room package explicitly includes dinner along with breakfast."
+    }
+   ]
+  }
+ ]
+}

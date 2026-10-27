@@ -1,0 +1,28 @@
+{
+ "batch": "event-17961",
+ "events": [
+  {
+   "event_id": 17961,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "All Salsa & Kizomba styles"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "All Salsa & Kizomba styles"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urbankiz",
+     "quote": "Kizomba & Urbankiz Artists & Deejay’s"
+    }
+   ]
+  }
+ ]
+}

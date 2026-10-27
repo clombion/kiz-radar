@@ -1,6 +1,5 @@
 {
  "batch": "event-16678",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16678,
@@ -17,15 +16,14 @@
        "amount": 579,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "✔️ STAY PACKAGE from €579"
+       "quote": "STAY PACKAGE from €579"
       }
      ]
     },
@@ -41,15 +39,14 @@
        "amount": 220,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "✔️ EXTERNAL PACKAGE – from €220"
+       "quote": "EXTERNAL PACKAGE – from €220"
       }
      ]
     }

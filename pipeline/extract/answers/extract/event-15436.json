@@ -1,0 +1,97 @@
+{
+ "batch": "event-15436",
+ "events": [
+  {
+   "event_id": 15436,
+   "artists": [
+    {
+     "name_as_written": "ANDRIUS 🇱🇹& DOTI",
+     "role": "teacher",
+     "style": null,
+     "country": "🇱🇹 🇵🇱",
+     "source_line": "👣 ANDRIUS 🇱🇹& DOTI 🇵🇱"
+    },
+    {
+     "name_as_written": "ZÉ RUI 🇵🇹& ELENA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇵🇹 🇺🇦",
+     "source_line": "👣 ZÉ RUI 🇵🇹& ELENA 🇺🇦"
+    },
+    {
+     "name_as_written": "CAPITAO 🇵🇹& PRIS",
+     "role": "teacher",
+     "style": null,
+     "country": "🇵🇹 🇵🇹",
+     "source_line": "👣 CAPITAO 🇵🇹& PRIS 🇵🇹"
+    },
+    {
+     "name_as_written": "DJ SUPAMAN",
+     "role": "dj",
+     "style": null,
+     "country": "🇵🇹",
+     "source_line": "🎧 DJ SUPAMAN 🇵🇹"
+    },
+    {
+     "name_as_written": "DJ M. KAZUKUTA",
+     "role": "dj",
+     "style": null,
+     "country": "🇵🇹",
+     "source_line": "🎧 DJ M. KAZUKUTA 🇵🇹"
+    },
+    {
+     "name_as_written": "DJ DOTIZINHA",
+     "role": "dj",
+     "style": null,
+     "country": "🇵🇱",
+     "source_line": "🎧 DJ DOTIZINHA 🇵🇱"
+    },
+    {
+     "name_as_written": "DJ CALMA",
+     "role": "dj",
+     "style": null,
+     "country": "🇱🇹",
+     "source_line": "🎧 DJ CALMA 🇱🇹"
+    },
+    {
+     "name_as_written": "Rasa Seliukaitė",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Rasa Seliukaitė: +37060303875 ( Lt / Eng )"
+    },
+    {
+     "name_as_written": "Nijole Nija",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Nijole Nija: +37061658278 ( Lt / Rus / Eng )"
+    },
+    {
+     "name_as_written": "Vasco Dias",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Vasco Dias: +351963948319 ( Pt / Esp / Fr / Eng )"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "different high-level workshops",
+     "rationale": "The organisers say the festival brings different high-level workshops to participants."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Day time socials",
+     "rationale": "The description lists daytime socials as part of the event."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Calvary Hotel Vilnius offers an exclusive promo code LKF for our event guests",
+     "rationale": "A negotiated hotel promo for participants is offered without accommodation being part of the pass."
+    }
+   ]
+  }
+ ]
+}

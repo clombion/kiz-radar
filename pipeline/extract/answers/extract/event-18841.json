@@ -1,0 +1,38 @@
+{
+ "batch": "event-18841",
+ "events": [
+  {
+   "event_id": 18841,
+   "artists": [
+    {
+     "name_as_written": "AGEN.KIZOMBA.COM",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "AGEN.KIZOMBA.COM, CUBANGO CONNEXION TLSE & DJ AKYM have the pleasure and honor to announce the 4th edition of 𝙍𝙄𝙄𝙄𝙎𝘾𝘼 𝙁𝙀𝙎𝙏𝙄𝙑𝘼𝙇!"
+    },
+    {
+     "name_as_written": "CUBANGO CONNEXION TLSE",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "AGEN.KIZOMBA.COM, CUBANGO CONNEXION TLSE & DJ AKYM have the pleasure and honor to announce the 4th edition of 𝙍𝙄𝙄𝙄𝙎𝘾𝘼 𝙁𝙀𝙎𝙏𝙄𝙑𝘼𝙇!"
+    },
+    {
+     "name_as_written": "DJ AKYM",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "AGEN.KIZOMBA.COM, CUBANGO CONNEXION TLSE & DJ AKYM have the pleasure and honor to announce the 4th edition of 𝙍𝙄𝙄𝙄𝙎𝘾𝘼 𝙁𝙀𝙎𝙏𝙄𝙑𝘼𝙇!"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "3 Days of internships/socials",
+     "rationale": "The line says the festival has internships (dance classes) across three days, so workshops are part of the event."
+    }
+   ]
+  }
+ ]
+}

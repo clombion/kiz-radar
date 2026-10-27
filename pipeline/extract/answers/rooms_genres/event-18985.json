@@ -1,0 +1,115 @@
+{
+ "batch": "event-18985",
+ "events": [
+  {
+   "event_id": 18985,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "BACHATA ROOM",
+     "kind": "unspecified",
+     "genres": [
+      "bachata",
+      "salsa"
+     ],
+     "quote": "BACHATA ROOM (Bachata Sensual, Bachata Dominican, Bachazouk, Salsa)"
+    },
+    {
+     "name_as_written": "KIZOMBA",
+     "kind": "unspecified",
+     "genres": [
+      "kizomba",
+      "semba",
+      "kompa"
+     ],
+     "quote": "KIZOMBA (Kizomba, Semba, Konpa)"
+    },
+    {
+     "name_as_written": "URBAN KIZ",
+     "kind": "unspecified",
+     "genres": [
+      "urbankiz",
+      "tarraxo",
+      "zouk"
+     ],
+     "quote": "URBAN KIZ (Urban, Tarraxho, Ghetto Zouk)"
+    },
+    {
+     "name_as_written": "VIBE ROOM",
+     "kind": "unspecified",
+     "genres": [
+      "kompa",
+      "salsa",
+      "afro",
+      "reggaeton",
+      "other"
+     ],
+     "quote": "VIBE ROOM (Konpa, Salsa, Afro Beats, Reggaeton, Hip Hop and More"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "teaching: Kizomba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Semba, Konpa"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Urban Kiz"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Salsa, Tarraxo"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "Douceur, Afro Beat"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Urban Kiz, Konpa"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Ghetto Zouk",
+     "quote": "Ghetto Zouk"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata, Salsa"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Bachata, Salsa"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro Beat",
+     "quote": "Douceur, Afro Beat"
+    },
+    {
+     "genre": "reggaeton",
+     "genre_as_written": "Reggaeton",
+     "quote": "Reggaeton, Hip Hop"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Hip Hop",
+     "quote": "Hip Hop and More"
+    }
+   ]
+  }
+ ]
+}

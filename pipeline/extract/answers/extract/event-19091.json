@@ -1,0 +1,88 @@
+{
+ "batch": "event-19091",
+ "events": [
+  {
+   "event_id": 19091,
+   "artists": [
+    {
+     "name_as_written": "DJ Barata",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Barata"
+    },
+    {
+     "name_as_written": "DJ Ichigo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Ichigo"
+    },
+    {
+     "name_as_written": "DJ Kikola",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Kikola"
+    },
+    {
+     "name_as_written": "DJ Loka",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Loka"
+    },
+    {
+     "name_as_written": "DJ Nicelife",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Nicelife"
+    },
+    {
+     "name_as_written": "DJ Neo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Neo"
+    },
+    {
+     "name_as_written": "DJ Sabura",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Sabura"
+    },
+    {
+     "name_as_written": "Ary & Maura",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Ary & Maura"
+    },
+    {
+     "name_as_written": "Portu y Mada",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Portu y Mada"
+    },
+    {
+     "name_as_written": "Carola Tauler",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Carola Tauler"
+    },
+    {
+     "name_as_written": "Marcio Junqueira",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Marcio Junqueira"
+    }
+   ],
+   "features": []
+  }
+ ]
+}

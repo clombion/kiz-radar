@@ -1,0 +1,23 @@
+{
+ "batch": "event-16979",
+ "events": [
+  {
+   "event_id": 16979,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "A pure Kizomba and Semba Festival open to EVERYONE!"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Official Kizomba and Semba Night Parties"
+    }
+   ]
+  }
+ ]
+}

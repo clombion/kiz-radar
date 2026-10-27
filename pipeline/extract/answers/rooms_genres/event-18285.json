@@ -1,0 +1,26 @@
+{
+ "batch": "event-18285",
+ "events": [
+  {
+   "event_id": 18285,
+   "party_rooms": {
+    "count": 2,
+    "quote": "Two floors, two energies: UrbanKiz and Kizomba, side by side."
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "UrbanKiz",
+     "quote": "Two floors, two energies: UrbanKiz and Kizomba, side by side."
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Two floors, two energies: UrbanKiz and Kizomba, side by side."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "batch": "event-16789",
+ "events": [
+  {
+   "event_id": 16789,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "KIZOMBA QUEEN FESTIVAL :PARADISE EDITION"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "Afro vibes, aperitifs & celebrations"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,114 @@
+{
+ "batch": "event-15521",
+ "events": [
+  {
+   "event_id": 15521,
+   "party_rooms": {
+    "count": 5,
+    "quote": "across 5 dance rooms"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Cuban Room",
+     "kind": "unspecified",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "Cuban Room"
+    },
+    {
+     "name_as_written": "Dominican Room",
+     "kind": "unspecified",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "Dominican Room"
+    },
+    {
+     "name_as_written": "Bachata Room 1 (Madrid)",
+     "kind": "unspecified",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "Bachata Room 1 (Madrid)"
+    },
+    {
+     "name_as_written": "Bachata Room 2 (Lisbon)",
+     "kind": "class",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "Bachata Room 2 (Lisbon)"
+    },
+    {
+     "name_as_written": "Bachata Influence Room (Paris)",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "Bachata Influence Room (Paris)"
+    },
+    {
+     "name_as_written": "Salsa Room (New York)",
+     "kind": "unspecified",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "Salsa Room (New York)"
+    },
+    {
+     "name_as_written": "Brazilian Zouk (Lisbon)",
+     "kind": "unspecified",
+     "genres": [
+      "zouk"
+     ],
+     "quote": "Brazilian Zouk (Lisbon)"
+    },
+    {
+     "name_as_written": "Kizomba Room (Rio)",
+     "kind": "unspecified",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "Kizomba Room (Rio)"
+    },
+    {
+     "name_as_written": "Bachata Room (New York)",
+     "kind": "unspecified",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "Bachata Room (New York)"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata Room 1 (Madrid)"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa Room (New York)"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba Room (Rio)"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Brazilian Zouk",
+     "quote": "Brazilian Zouk (Lisbon)"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "BachaTango",
+     "quote": "BachaTango Sensual"
+    }
+   ]
+  }
+ ]
+}

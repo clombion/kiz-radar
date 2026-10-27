@@ -1,0 +1,18 @@
+{
+ "batch": "event-17105",
+ "events": [
+  {
+   "event_id": 17105,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Your Kizomba Weekender in Hannover"
+    }
+   ]
+  }
+ ]
+}

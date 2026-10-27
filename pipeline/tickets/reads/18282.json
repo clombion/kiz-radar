@@ -3,8 +3,11 @@
  "title": "NEW YEAR 2027 – CRAZY KIZ",
  "start_date": "2026-12-31",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "2be784db5d9944e6",
- "rows_at": "2026-10-26T23:53:19+00:00",
+ "prompt": "cb864655c7075f56",
+ "rows_at": "2026-10-27T11:55:59+00:00",
+ "styles": [
+  "kizomba"
+ ],
  "description": "🎉🎊 NEW YEAR 2027 – CRAZY KIZ 🎊🎉\n🎄4 DAYS OF KIZOMBA🌲ELEGANT PARTY🌲NEW YEAR’S EVE DINNER🎄WORKSHOPS WITH INTERNATIONAL ARTISTS🌲SOCIAL ROOM🌲TAXI DANCERS🌲GUESTS🌲DJs🌲\n🔸 From Thursday, January 31, 2026, to Sunday, January 3, 2027\n🔹 Location: Hotel Verri, Via Beata Vergine, 4, 24040 Misano di Gera d’Adda (BG)\nEvent Link ⤵️\nhttps://www.facebook.com/events/857298793951881\n♻️ PASS & ROOM PRICES\nFirst 30 passes at €45; price increases by €5 each month thereafter.\nRooms\nSingle – Sold Out\nDouble, Triple, or Quadruple: €55 per person/day (includes breakfast and city tax).\nBreakfast on January 1st is served late, from 10:00 AM to 12:00 PM.\nMinimum 2-night booking. Online Tickets ⤵️\nhttps://my.weezevent.com/new-year-2027-crazy-kiz\n🌟🌲 ⭐ PROGRAM ⭐🌲🌟\n⚜️ THURSDAY, DECEMBER 31 ⚜️\n🔸 15:00: Hotel Check-in\n🔹️ 17:00 – 19:00: Social Kiz\n🔸 20:00: Gala Dinner (Served)\n🔹️ 23:00: Gala Party – Dress Code: GOLD\n🔸 00:00: Midnight Toast, Pandoro, Cotechino & Lentils\n⚜️ FRIDAY, JANUARY 1 ⚜️\n🔸 10:00 – 12:00: Late Breakfast\n🔹️ 11:00 – 13:00: Social Kiz\n🔸 13:00 – 15:00: Workshops\n🔹️ 15:00 – 19:30: Social Kiz\n🔸 19:30 – 21:00: Dinner Break\n🔹️ 22:30: Friday Party – Dress Code: RED\n⚜️ SATURDAY, JANUARY 2 ⚜️\n🔸 08:00 – 10:30: Breakfast\n🔹️ 11:00 – 13:00: Workshops\n🔸 13:00 – 14:30: Lunch Break\n🔹️ 14:30 – 19:30: Social Kiz\n🔸 19:30 – 21:00: Dinner Break\n🔹️ 22:30: Saturday Party – Dress Code: WHITE\n⚜️ SUNDAY, JANUARY 3 ⚜️\n🔸 08:00 – 10:30: Breakfast\n🔹️ 11:00: Room Check-out\n🔸 11:00 – 13:00: Workshops\n🔹️ 13:00 – 13:30: Family Pizza Lunch\n🔸 13:30 – 18:30: Social Kiz\n🔹️ 16:00: Nutella Party\n🌟🌲 ⭐ ARTISTS & GUESTS ⭐🌲🌟\n🔸 Enah Lebon\n🔹️ Methodz\n🔸 Jenny\n🔹️ Ti Wosh\n🔸️ Sanjay MJ\n🔹️ Daniel Schauenburg\n🔸️ Benoit & Sneja\n🔹️ Lucas\n🔸️ Onça\n🔹️ Luca Arrigoni\n🔸️ Luca & Francesca\n🔹️ Stef Matt\n🔸️ Lali\n🔹️ Valentina Conci\n🔸️ Stefano Montanari\n& more…\n🌟🌲⭐ DJs ⭐🌲🌟\n🎧 DJ Le Grand Ti Wosh\n🎧 DJ High Energy\n🎧 DJ Rax\n🎧 DJ Bikini\n& more…\nFor info and collaborations 📞 📲\n🇫🇷🇮🇹 +39 347 7797807\n🇬🇧🇮🇹 +39 340 968 8958\n📧 info@crazykizevents.com",
  "passes": [
   {
@@ -104,11 +107,20 @@
   }
  ],
  "skipped": [
-  "5346350",
-  "5346361",
-  "5369198"
+  {
+   "key": "5346350",
+   "reason": "room"
+  },
+  {
+   "key": "5346361",
+   "reason": "room"
+  },
+  {
+   "key": "5369198",
+   "reason": "room"
+  }
  ],
  "rule_quotes": [
-  "price increases by €5 each month thereafter"
+  "price increases by €5 each month thereafter."
  ]
 }

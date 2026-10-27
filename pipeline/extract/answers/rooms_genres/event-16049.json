@@ -1,0 +1,25 @@
+{
+ "batch": "event-16049",
+ "events": [
+  {
+   "event_id": 16049,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "a social dance area"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "to celebrate Kizomba and summer"
+    }
+   ]
+  }
+ ]
+}

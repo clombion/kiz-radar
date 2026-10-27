@@ -1,0 +1,28 @@
+{
+ "batch": "event-18971",
+ "events": [
+  {
+   "event_id": 18971,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "SKS Sempre Kizomba Semba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "SKS Sempre Kizomba Semba"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "DanseAfro",
+     "quote": "#DanseAfro"
+    }
+   ]
+  }
+ ]
+}

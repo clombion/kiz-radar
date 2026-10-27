@@ -1,0 +1,165 @@
+{
+ "batch": "event-19010",
+ "events": [
+  {
+   "event_id": 19010,
+   "artists": [
+    {
+     "name_as_written": "TRAYBEATZ",
+     "role": "dj",
+     "style": null,
+     "country": "🇨🇼",
+     "source_line": "◾️ TRAYBEATZ 🇨🇼"
+    },
+    {
+     "name_as_written": "DJ BARTEF",
+     "role": "dj",
+     "style": null,
+     "country": "🇵🇱",
+     "source_line": "◾️ DJ BARTEF 🇵🇱"
+    },
+    {
+     "name_as_written": "DJ NURLIVING",
+     "role": "dj",
+     "style": null,
+     "country": "🇰🇬",
+     "source_line": "◾️ DJ NURLIVING 🇰🇬"
+    },
+    {
+     "name_as_written": "DJ DINERO",
+     "role": "dj",
+     "style": null,
+     "country": "🇰🇿",
+     "source_line": "◾️ DJ DINERO 🇰🇿"
+    },
+    {
+     "name_as_written": "DJ ZHUSHOK",
+     "role": "dj",
+     "style": null,
+     "country": "🇰🇿",
+     "source_line": "◾️ DJ ZHUSHOK 🇰🇿"
+    },
+    {
+     "name_as_written": "DJ ASSYL",
+     "role": "dj",
+     "style": null,
+     "country": "🇰🇿",
+     "source_line": "◾️ DJ ASSYL 🇰🇿"
+    },
+    {
+     "name_as_written": "ALBIR",
+     "role": "teacher",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "◾️ ALBIR 🇪🇸"
+    },
+    {
+     "name_as_written": "IÑES MIRANDA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇵🇹",
+     "source_line": "◾️ IÑES MIRANDA 🇵🇹"
+    },
+    {
+     "name_as_written": "SELIM & ANASTASIA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷 🇺🇦",
+     "source_line": "◾️ SELIM & ANASTASIA 🇫🇷 🇺🇦"
+    },
+    {
+     "name_as_written": "MICHAEL & ANIKA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇳🇱 🇦🇹🇸🇰",
+     "source_line": "◾️ MICHAEL & ANIKA 🇳🇱 🇦🇹🇸🇰"
+    },
+    {
+     "name_as_written": "KIKI",
+     "role": "teacher",
+     "style": null,
+     "country": "🇩🇪",
+     "source_line": "◾️ KIKI 🇩🇪"
+    },
+    {
+     "name_as_written": "VERONIKA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇰🇿",
+     "source_line": "◾️ VERONIKA 🇰🇿"
+    },
+    {
+     "name_as_written": "ULAN & MARZHAN",
+     "role": "teacher",
+     "style": null,
+     "country": "🇰🇿",
+     "source_line": "◾️ ULAN & MARZHAN 🇰🇿"
+    },
+    {
+     "name_as_written": "KHOSO & ALYONA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇰🇿",
+     "source_line": "◾️ KHOSO & ALYONA 🇰🇿"
+    },
+    {
+     "name_as_written": "ZHANIK & ELENA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇰🇿",
+     "source_line": "◾️ ZHANIK & ELENA 🇰🇿"
+    },
+    {
+     "name_as_written": "ISLAM & SALTA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇰🇿",
+     "source_line": "◾️ ISLAM & SALTA 🇰🇿"
+    },
+    {
+     "name_as_written": "SAMAT & KATE",
+     "role": "teacher",
+     "style": null,
+     "country": "🇰🇿",
+     "source_line": "◾️ SAMAT & KATE 🇰🇿"
+    },
+    {
+     "name_as_written": "ASSYL & ZHIBEK",
+     "role": "teacher",
+     "style": null,
+     "country": "🇰🇿",
+     "source_line": "◾️ ASSYL & ZHIBEK 🇰🇿"
+    },
+    {
+     "name_as_written": "Kizz Ryders",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "◾️ Only event passes directly bought at Kizz Ryders ticketlink are valid:"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "A true all-in-one festival experience under one roof",
+     "rationale": "The event describes itself as all-in-one, held under one roof in the hotel where dancers stay."
+    },
+    {
+     "feature": "workshops",
+     "quote": "18+ hrs of workshops",
+     "rationale": "The description states that 18+ hours of workshops are part of the event."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Thursday “Vibrant” Pre-Party",
+     "rationale": "A Thursday pre-party is listed before the main congress days."
+    },
+    {
+     "feature": "after_party",
+     "quote": "Monday “Exhale” After-Party",
+     "rationale": "A Monday after-party is listed in the schedule highlights."
+    }
+   ]
+  }
+ ]
+}

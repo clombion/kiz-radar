@@ -1,34 +1,9 @@
 {
  "batch": "event-15275",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15275,
    "passes": [
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "* Evenings;",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 15,
-       "currency": "EUR",
-       "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Friday evening: 2 rooms, 3 atmospheres with 1 class; €15"
-      }
-     ]
-    },
     {
      "kind": "package",
      "style": null,
@@ -41,8 +16,7 @@
        "amount": 219,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "10-15",
        "quantity": null,
@@ -55,8 +29,7 @@
        "amount": 230,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "10-16",
        "until": "10-30",
        "quantity": null,
@@ -69,8 +42,7 @@
        "amount": 240,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "11-01",
        "until": "11-15",
        "quantity": null,
@@ -78,6 +50,29 @@
        "sold_out": false,
        "current": false,
        "quote": "Full pass €240 (November 1st to 15th)"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 15,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Friday evening: 2 rooms, 3 atmospheres with 1 class; €15"
       }
      ]
     }

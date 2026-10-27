@@ -1,0 +1,22 @@
+{
+ "batch": "event-15607",
+ "events": [
+  {
+   "event_id": 15607,
+   "party_rooms": {
+    "count": 1,
+    "quote": "Big Luxury Dancefloor"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Big Luxury Dancefloor",
+     "kind": "party",
+     "genres": [],
+     "quote": "Big Luxury Dancefloor"
+    }
+   ],
+   "genres": []
+  }
+ ]
+}

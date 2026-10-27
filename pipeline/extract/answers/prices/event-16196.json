@@ -1,6 +1,5 @@
 {
  "batch": "event-16196",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16196,
@@ -17,15 +16,14 @@
        "amount": 415,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "𝟱 𝗡𝗶𝗴𝗵𝘁𝘀 𝗠𝗔𝗜𝗡 𝗛𝗢𝗧𝗘𝗟 + 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 – 415€"
+       "quote": "– 𝟱 𝗡𝗶𝗴𝗵𝘁𝘀 𝗠𝗔𝗜𝗡 𝗛𝗢𝗧𝗘𝗟 + 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 – 415€"
       }
      ]
     },
@@ -41,15 +39,14 @@
        "amount": 360,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "𝟰 𝗡𝗶𝗴𝗵𝘁𝘀 𝗠𝗔𝗜𝗡 𝗛𝗢𝗧𝗘𝗟 + 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 – 360€"
+       "quote": "– 𝟰 𝗡𝗶𝗴𝗵𝘁𝘀 𝗠𝗔𝗜𝗡 𝗛𝗢𝗧𝗘𝗟 + 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 – 360€"
       }
      ]
     },
@@ -65,15 +62,14 @@
        "amount": 295,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "𝟯 𝗡𝗶𝗴𝗵𝘁𝘀 𝗠𝗔𝗜𝗡 𝗛𝗢𝗧𝗘𝗟 + 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 – 295€"
+       "quote": "– 𝟯 𝗡𝗶𝗴𝗵𝘁𝘀 𝗠𝗔𝗜𝗡 𝗛𝗢𝗧𝗘𝗟 + 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 – 295€"
       }
      ]
     },
@@ -89,15 +85,14 @@
        "amount": 245,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "𝟮 𝗡𝗶𝗴𝗵𝘁𝘀 𝗠𝗔𝗜𝗡 𝗛𝗢𝗧𝗘𝗟 + 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 – 245€"
+       "quote": "– 𝟮 𝗡𝗶𝗴𝗵𝘁𝘀 𝗠𝗔𝗜𝗡 𝗛𝗢𝗧𝗘𝗟 + 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 – 245€"
       }
      ]
     },
@@ -113,15 +108,14 @@
        "amount": 125,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "𝐅𝐔𝐋𝐋 𝐏𝐀𝐒𝐒 – 125€"
+       "quote": "— 𝐅𝐔𝐋𝐋 𝐏𝐀𝐒𝐒 – 125€ —"
       }
      ]
     }

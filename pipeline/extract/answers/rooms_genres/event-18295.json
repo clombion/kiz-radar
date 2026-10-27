@@ -1,0 +1,18 @@
+{
+ "batch": "event-18295",
+ "events": [
+  {
+   "event_id": 18295,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "A movement in support of female artists in the kizomba scene"
+    }
+   ]
+  }
+ ]
+}

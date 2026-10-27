@@ -1,0 +1,56 @@
+{
+ "batch": "event-18647",
+ "events": [
+  {
+   "event_id": 18647,
+   "party_rooms": {
+    "count": 6,
+    "quote": "An ALL-IN-ONE experience featuring 6 official rooms"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "UrbanKiz",
+     "quote": "UrbanKiz"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba, Semba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Semba"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Ghetto Zouk",
+     "quote": "Ghetto Zouk"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "Tarraxinha"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Tarraxo"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Sweet",
+     "quote": "Sweet and Afro Caribbean"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro Caribbean",
+     "quote": "Sweet and Afro Caribbean"
+    }
+   ]
+  }
+ ]
+}

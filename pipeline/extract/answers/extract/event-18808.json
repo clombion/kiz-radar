@@ -1,0 +1,405 @@
+{
+ "batch": "event-18808",
+ "events": [
+  {
+   "event_id": 18808,
+   "artists": [
+    {
+     "name_as_written": "Kristofer Mencak",
+     "role": "teacher",
+     "style": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚 / 𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳 / 𝐒𝐞𝐦𝐛𝐚 / 𝐓𝐚𝐫𝐫𝐚𝐱𝐨",
+     "country": null,
+     "source_line": "Kristofer Mencak – Sweden"
+    },
+    {
+     "name_as_written": "Fred-Nelson & Morgane",
+     "role": "teacher",
+     "style": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚 / 𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳 / 𝐒𝐞𝐦𝐛𝐚 / 𝐓𝐚𝐫𝐫𝐚𝐱𝐨",
+     "country": null,
+     "source_line": "Fred-Nelson & Morgane – France"
+    },
+    {
+     "name_as_written": "Chris Py & Laly",
+     "role": "teacher",
+     "style": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚 / 𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳 / 𝐒𝐞𝐦𝐛𝐚 / 𝐓𝐚𝐫𝐫𝐚𝐱𝐨",
+     "country": null,
+     "source_line": "Chris Py & Laly – France"
+    },
+    {
+     "name_as_written": "Carlos Camba & Anna",
+     "role": "teacher",
+     "style": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚 / 𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳 / 𝐒𝐞𝐦𝐛𝐚 / 𝐓𝐚𝐫𝐫𝐚𝐱𝐨",
+     "country": null,
+     "source_line": "Carlos Camba & Anna – Angola / Finland"
+    },
+    {
+     "name_as_written": "Daniel & Elina",
+     "role": "teacher",
+     "style": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚 / 𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳 / 𝐒𝐞𝐦𝐛𝐚 / 𝐓𝐚𝐫𝐫𝐚𝐱𝐨",
+     "country": null,
+     "source_line": "Daniel & Elina – Germany / Czech Republic"
+    },
+    {
+     "name_as_written": "Black Chinese",
+     "role": "teacher",
+     "style": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚 / 𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳 / 𝐒𝐞𝐦𝐛𝐚 / 𝐓𝐚𝐫𝐫𝐚𝐱𝐨",
+     "country": null,
+     "source_line": "Black Chinese – France"
+    },
+    {
+     "name_as_written": "Ludo LSKiz & Kal",
+     "role": "teacher",
+     "style": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚 / 𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳 / 𝐒𝐞𝐦𝐛𝐚 / 𝐓𝐚𝐫𝐫𝐚𝐱𝐨",
+     "country": null,
+     "source_line": "Ludo LSKiz & Kal – France"
+    },
+    {
+     "name_as_written": "Mervil",
+     "role": "teacher",
+     "style": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚 / 𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳 / 𝐒𝐞𝐦𝐛𝐚 / 𝐓𝐚𝐫𝐫𝐚𝐱𝐨",
+     "country": null,
+     "source_line": "Mervil – France"
+    },
+    {
+     "name_as_written": "Edu Dias",
+     "role": "teacher",
+     "style": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚 / 𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳 / 𝐒𝐞𝐦𝐛𝐚 / 𝐓𝐚𝐫𝐫𝐚𝐱𝐨",
+     "country": null,
+     "source_line": "Edu Dias – France"
+    },
+    {
+     "name_as_written": "David Yaye",
+     "role": "teacher",
+     "style": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚 / 𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳 / 𝐒𝐞𝐦𝐛𝐚 / 𝐓𝐚𝐫𝐫𝐚𝐱𝐨",
+     "country": null,
+     "source_line": "David Yaye – Wakanda"
+    },
+    {
+     "name_as_written": "Alex & Maylie",
+     "role": "teacher",
+     "style": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚 / 𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳 / 𝐒𝐞𝐦𝐛𝐚 / 𝐓𝐚𝐫𝐫𝐚𝐱𝐨",
+     "country": null,
+     "source_line": "Alex & Maylie – France"
+    },
+    {
+     "name_as_written": "Elwin y Gaby",
+     "role": "teacher",
+     "style": "𝗦𝗮𝗹𝘀𝗮 / 𝗕𝗮𝗰𝗵𝗮𝘁𝗮 / 𝗢𝘁𝗵𝗲𝗿 𝗱𝗮𝗻𝗰𝗲𝘀",
+     "country": null,
+     "source_line": "Elwin y Gaby – Spain"
+    },
+    {
+     "name_as_written": "Helena Cortes y Ruben",
+     "role": "teacher",
+     "style": "𝗦𝗮𝗹𝘀𝗮 / 𝗕𝗮𝗰𝗵𝗮𝘁𝗮 / 𝗢𝘁𝗵𝗲𝗿 𝗱𝗮𝗻𝗰𝗲𝘀",
+     "country": null,
+     "source_line": "Helena Cortes y Ruben – Spain"
+    },
+    {
+     "name_as_written": "Alejandro y Vanessa",
+     "role": "teacher",
+     "style": "𝗦𝗮𝗹𝘀𝗮 / 𝗕𝗮𝗰𝗵𝗮𝘁𝗮 / 𝗢𝘁𝗵𝗲𝗿 𝗱𝗮𝗻𝗰𝗲𝘀",
+     "country": null,
+     "source_line": "Alejandro y Vanessa – Spain"
+    },
+    {
+     "name_as_written": "Anita y Varea",
+     "role": "teacher",
+     "style": "𝗦𝗮𝗹𝘀𝗮 / 𝗕𝗮𝗰𝗵𝗮𝘁𝗮 / 𝗢𝘁𝗵𝗲𝗿 𝗱𝗮𝗻𝗰𝗲𝘀",
+     "country": null,
+     "source_line": "Anita y Varea – Spain"
+    },
+    {
+     "name_as_written": "Lolo Waki",
+     "role": "teacher",
+     "style": "𝗦𝗮𝗹𝘀𝗮 / 𝗕𝗮𝗰𝗵𝗮𝘁𝗮 / 𝗢𝘁𝗵𝗲𝗿 𝗱𝗮𝗻𝗰𝗲𝘀",
+     "country": null,
+     "source_line": "Lolo Waki – Bordeaux"
+    },
+    {
+     "name_as_written": "Ludivine Ludidanse",
+     "role": "teacher",
+     "style": "𝗦𝗮𝗹𝘀𝗮 / 𝗕𝗮𝗰𝗵𝗮𝘁𝗮 / 𝗢𝘁𝗵𝗲𝗿 𝗱𝗮𝗻𝗰𝗲𝘀",
+     "country": null,
+     "source_line": "Ludivine Ludidanse – Paris"
+    },
+    {
+     "name_as_written": "Hicham",
+     "role": "teacher",
+     "style": "𝗦𝗮𝗹𝘀𝗮 / 𝗕𝗮𝗰𝗵𝗮𝘁𝗮 / 𝗢𝘁𝗵𝗲𝗿 𝗱𝗮𝗻𝗰𝗲𝘀",
+     "country": null,
+     "source_line": "Hicham – Nantes"
+    },
+    {
+     "name_as_written": "Ibra Chavez",
+     "role": "teacher",
+     "style": "𝗦𝗮𝗹𝘀𝗮 / 𝗕𝗮𝗰𝗵𝗮𝘁𝗮 / 𝗢𝘁𝗵𝗲𝗿 𝗱𝗮𝗻𝗰𝗲𝘀",
+     "country": null,
+     "source_line": "Ibra Chavez – Saint-Brévin"
+    },
+    {
+     "name_as_written": "Yannick El Mambo",
+     "role": "teacher",
+     "style": "𝗦𝗮𝗹𝘀𝗮 / 𝗕𝗮𝗰𝗵𝗮𝘁𝗮 / 𝗢𝘁𝗵𝗲𝗿 𝗱𝗮𝗻𝗰𝗲𝘀",
+     "country": null,
+     "source_line": "Yannick El Mambo – Pornichet"
+    },
+    {
+     "name_as_written": "Alejandro y Océane",
+     "role": "teacher",
+     "style": "𝗦𝗮𝗹𝘀𝗮 / 𝗕𝗮𝗰𝗵𝗮𝘁𝗮 / 𝗢𝘁𝗵𝗲𝗿 𝗱𝗮𝗻𝗰𝗲𝘀",
+     "country": null,
+     "source_line": "Alejandro y Océane – Saint-Nazaire"
+    },
+    {
+     "name_as_written": "Hélène Denigot",
+     "role": "teacher",
+     "style": "𝗦𝗮𝗹𝘀𝗮 / 𝗕𝗮𝗰𝗵𝗮𝘁𝗮 / 𝗢𝘁𝗵𝗲𝗿 𝗱𝗮𝗻𝗰𝗲𝘀",
+     "country": null,
+     "source_line": "Hélène Denigot – Saint-Nazaire"
+    },
+    {
+     "name_as_written": "DJ Lenhy",
+     "role": "dj",
+     "style": "𝗞𝗶𝘇𝗼𝗺𝗯𝗮 / 𝗨𝗿𝗯𝗮𝗻 𝗞𝗶𝘇",
+     "country": null,
+     "source_line": "DJ Lenhy – France"
+    },
+    {
+     "name_as_written": "DJ Shark",
+     "role": "dj",
+     "style": "𝗞𝗶𝘇𝗼𝗺𝗯𝗮 / 𝗨𝗿𝗯𝗮𝗻 𝗞𝗶𝘇",
+     "country": null,
+     "source_line": "DJ Shark – Spain"
+    },
+    {
+     "name_as_written": "DJ Puto X",
+     "role": "dj",
+     "style": "𝗞𝗶𝘇𝗼𝗺𝗯𝗮 / 𝗨𝗿𝗯𝗮𝗻 𝗞𝗶𝘇",
+     "country": null,
+     "source_line": "DJ Puto X – France"
+    },
+    {
+     "name_as_written": "DJ Remcy",
+     "role": "dj",
+     "style": "𝗞𝗶𝘇𝗼𝗺𝗯𝗮 / 𝗨𝗿𝗯𝗮𝗻 𝗞𝗶𝘇",
+     "country": null,
+     "source_line": "DJ Remcy – Germany"
+    },
+    {
+     "name_as_written": "DJ Nuo",
+     "role": "dj",
+     "style": "𝗞𝗶𝘇𝗼𝗺𝗯𝗮 / 𝗨𝗿𝗯𝗮𝗻 𝗞𝗶𝘇",
+     "country": null,
+     "source_line": "DJ Nuo – Ukraine"
+    },
+    {
+     "name_as_written": "DJ Lowelo",
+     "role": "dj",
+     "style": "𝗞𝗶𝘇𝗼𝗺𝗯𝗮 / 𝗨𝗿𝗯𝗮𝗻 𝗞𝗶𝘇",
+     "country": null,
+     "source_line": "DJ Lowelo – France"
+    },
+    {
+     "name_as_written": "DJ Antony Tarraxa",
+     "role": "dj",
+     "style": "𝗞𝗶𝘇𝗼𝗺𝗯𝗮 / 𝗨𝗿𝗯𝗮𝗻 𝗞𝗶𝘇",
+     "country": null,
+     "source_line": "DJ Antony Tarraxa – Spain"
+    },
+    {
+     "name_as_written": "DJ Corazón Coração",
+     "role": "dj",
+     "style": "𝗞𝗶𝘇𝗼𝗺𝗯𝗮 / 𝗨𝗿𝗯𝗮𝗻 𝗞𝗶𝘇",
+     "country": null,
+     "source_line": "DJ Corazón Coração – France"
+    },
+    {
+     "name_as_written": "DJ Husky",
+     "role": "dj",
+     "style": "𝗦𝗮𝗹𝘀𝗮 / 𝗕𝗮𝗰𝗵𝗮𝘁𝗮",
+     "country": null,
+     "source_line": "DJ Husky – Spain"
+    },
+    {
+     "name_as_written": "DJ Hicham El Loco",
+     "role": "dj",
+     "style": "𝗦𝗮𝗹𝘀𝗮 / 𝗕𝗮𝗰𝗵𝗮𝘁𝗮",
+     "country": null,
+     "source_line": "DJ Hicham El Loco – Nantes"
+    },
+    {
+     "name_as_written": "DJ Sam Mas",
+     "role": "dj",
+     "style": "𝗦𝗮𝗹𝘀𝗮 / 𝗕𝗮𝗰𝗵𝗮𝘁𝗮",
+     "country": null,
+     "source_line": "DJ Sam Mas – Saint-Brieuc"
+    },
+    {
+     "name_as_written": "DJ Florian Sensacion",
+     "role": "dj",
+     "style": "𝗦𝗮𝗹𝘀𝗮 / 𝗕𝗮𝗰𝗵𝗮𝘁𝗮",
+     "country": null,
+     "source_line": "DJ Florian Sensacion – Nantes"
+    },
+    {
+     "name_as_written": "Puto X",
+     "role": "performer",
+     "style": null,
+     "country": "Angola/France",
+     "source_line": "Puto X (Angola/France)"
+    },
+    {
+     "name_as_written": "Chris Py & Laly",
+     "role": "performer",
+     "style": null,
+     "country": "France",
+     "source_line": "Chris Py & Laly (France)"
+    },
+    {
+     "name_as_written": "Fred-Nelson & Morgane",
+     "role": "performer",
+     "style": null,
+     "country": "France",
+     "source_line": "Fred-Nelson & Morgane (France)"
+    },
+    {
+     "name_as_written": "David Yayé",
+     "role": "performer",
+     "style": null,
+     "country": "France",
+     "source_line": "David Yayé (France)"
+    },
+    {
+     "name_as_written": "Andredson Keys",
+     "role": "performer",
+     "style": null,
+     "country": "Angola",
+     "source_line": "Andredson Keys (Angola)"
+    },
+    {
+     "name_as_written": "Alejandro y Vanessa",
+     "role": "performer",
+     "style": null,
+     "country": "Spain",
+     "source_line": "Alejandro y Vanessa (Spain)"
+    },
+    {
+     "name_as_written": "Anita & Varea",
+     "role": "performer",
+     "style": null,
+     "country": "Spain",
+     "source_line": "Anita & Varea (Spain)"
+    },
+    {
+     "name_as_written": "LN Dance Fusion",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "LN Dance Fusion – Crew LNDF"
+    },
+    {
+     "name_as_written": "Moove Prod",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Moove Prod"
+    },
+    {
+     "name_as_written": "Project by Design",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Project by Design"
+    },
+    {
+     "name_as_written": "Iris Creative Média",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Iris Creative Média"
+    },
+    {
+     "name_as_written": "Saïd SBH",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Saïd SBH"
+    },
+    {
+     "name_as_written": "NantesCapture 44",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "NantesCapture 44"
+    },
+    {
+     "name_as_written": "Coralie Moreau",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Coralie Moreau"
+    },
+    {
+     "name_as_written": "La Case Corazon",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "La Case Corazon promotes the artistic and human values of Afro-Latin dances and music."
+    }
+   ],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "one Kizomba room and one Salsa / Bachata room",
+     "rationale": "The description states there are separate Kizomba and Salsa / Bachata dance rooms."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "A pre-party in a magical venue (not included in the full pass)",
+     "rationale": "The description lists a pre-party held before the main parties."
+    },
+    {
+     "feature": "beach_party",
+     "quote": "A beach party at the famous Place du Commando",
+     "rationale": "The description explicitly lists a beach party."
+    },
+    {
+     "feature": "shows",
+     "quote": "Shows and showcases without disrupting the dancing",
+     "rationale": "Shows and showcases by artists are listed as part of the event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "More than 43 hours of classes with teachers from all over Europe",
+     "rationale": "The event offers dance classes taught by teachers."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "Dance taxi teams",
+     "rationale": "Dance taxi teams are listed as present at the event."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Airport-to-festival shuttles",
+     "rationale": "Shuttles from the airport to the festival are offered."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Hotels 2 minutes’ walk from the venue",
+     "rationale": "Hotels are listed as nearby, without accommodation being part of the pass."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Thursday: EXPLOSIVE COLORS",
+     "rationale": "A daily dress code is stated for each night of the event."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "Friday: PINK & OCEAN BLUE",
+     "rationale": "Each party night has a dress theme such as pink and ocean blue."
+    }
+   ]
+  }
+ ]
+}

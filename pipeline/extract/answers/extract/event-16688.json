@@ -1,0 +1,77 @@
+{
+ "batch": "event-16688",
+ "events": [
+  {
+   "event_id": 16688,
+   "artists": [
+    {
+     "name_as_written": "DJ PUTO X",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• DJ PUTO X 🇫🇷"
+    },
+    {
+     "name_as_written": "DJ NAO",
+     "role": "dj",
+     "style": null,
+     "country": "🇧🇪",
+     "source_line": "• DJ NAO 🇧🇪"
+    },
+    {
+     "name_as_written": "DJ ANONY TARRAXA",
+     "role": "dj",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "• DJ ANONY TARRAXA 🇪🇸"
+    },
+    {
+     "name_as_written": "DJ BAD",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• DJ BAD 🇫🇷"
+    },
+    {
+     "name_as_written": "DJ YOUSS",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• DJ YOUSS 🇫🇷"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE concept:",
+     "rationale": "The description presents an ALL IN ONE concept combining the hotel stay with the event, so the event and accommodation share one venue."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Accommodation",
+     "rationale": "Accommodation is listed as part of the ALL IN ONE concept, so it is included in the package."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Meals",
+     "rationale": "Meals are listed as part of the ALL IN ONE concept, so they are included."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Workshops",
+     "rationale": "Workshops are listed as part of the ALL IN ONE concept, so dance classes are part of the event."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "TAXI DANCERS",
+     "rationale": "A section announces a team of 50+ taxi dancers at the event."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "support beginners",
+     "rationale": "The taxi dancers are selected to support beginners, showing the event welcomes beginners."
+    }
+   ]
+  }
+ ]
+}

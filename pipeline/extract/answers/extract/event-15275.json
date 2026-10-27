@@ -1,0 +1,39 @@
+{
+ "batch": "event-15275",
+ "events": [
+  {
+   "event_id": 15275,
+   "artists": [
+    {
+     "name_as_written": "Steve Bakoula",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Registration & information: [Steve Bakoula 0616588178]"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Latin dance workshops",
+     "rationale": "The description states that Latin dance workshops are part of the event."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "all levels welcome",
+     "rationale": "The workshops are explicitly open to all levels."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Full board",
+     "rationale": "Full board is listed as part of the full pass package."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Includes 3 days, 2 nights",
+     "rationale": "The full pass includes two nights, which means accommodation is part of the package."
+    }
+   ]
+  }
+ ]
+}

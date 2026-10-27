@@ -1,0 +1,28 @@
+{
+ "batch": "event-15707",
+ "events": [
+  {
+   "event_id": 15707,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "salsa",
+     "quote": "Dance to the rhythms of salsa, bachata, and kizomba"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "bachata",
+     "quote": "rhythms of salsa, bachata, and kizomba"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "salsa, bachata, and kizomba"
+    }
+   ]
+  }
+ ]
+}

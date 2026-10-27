@@ -1,0 +1,18 @@
+{
+ "batch": "event-15944",
+ "events": [
+  {
+   "event_id": 15944,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "KIZOMBA RETREAT ANGOLA 2026"
+    }
+   ]
+  }
+ ]
+}

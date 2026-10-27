@@ -1,0 +1,60 @@
+{
+ "batch": "event-16804",
+ "events": [
+  {
+   "event_id": 16804,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 ROOMS. 2 ATMOSPHERES."
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Room 1",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "Room 1: KIZOMBA – gentleness, connection, sensuality"
+    },
+    {
+     "name_as_written": "Room 2",
+     "kind": "party",
+     "genres": [
+      "zouk",
+      "kompa",
+      "afro"
+     ],
+     "quote": "Room 2: ZOUKOMPA / AFRO VIBES – energy, warmth, madness"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "Room 1: KIZOMBA – gentleness, connection, sensuality"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Zoukompa",
+     "quote": "Kizomba • Zoukompa • Gouyad • Afro Vibes"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "ZOUKOMPA",
+     "quote": "Room 2: ZOUKOMPA / AFRO VIBES – energy, warmth, madness"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "AFRO VIBES",
+     "quote": "Room 2: ZOUKOMPA / AFRO VIBES – energy, warmth, madness"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Gouyad",
+     "quote": "Kizomba • Zoukompa • Gouyad • Afro Vibes"
+    }
+   ]
+  }
+ ]
+}

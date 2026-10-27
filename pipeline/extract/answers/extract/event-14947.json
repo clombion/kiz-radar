@@ -1,0 +1,127 @@
+{
+ "batch": "event-14947",
+ "events": [
+  {
+   "event_id": 14947,
+   "artists": [
+    {
+     "name_as_written": "JP & STEPHY",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔘 JP & STEPHY"
+    },
+    {
+     "name_as_written": "KINGSMAN LEDOUX",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔘 KINGSMAN LEDOUX"
+    },
+    {
+     "name_as_written": "JAH J’A & JEISY",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔘 JAH J’A & JEISY"
+    },
+    {
+     "name_as_written": "JUSTINHO",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔘 JUSTINHO"
+    },
+    {
+     "name_as_written": "BENJAMIN & STÉPHANIE",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔘 BENJAMIN & STÉPHANIE"
+    },
+    {
+     "name_as_written": "GIBSON & AMÉLIA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔘 GIBSON & AMÉLIA"
+    },
+    {
+     "name_as_written": "VINCENT & CECILIA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔘 VINCENT & CECILIA"
+    },
+    {
+     "name_as_written": "DJ PARAISO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔘 🎧 DJ PARAISO"
+    },
+    {
+     "name_as_written": "DJ NICE LIFE",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔘 🎧 DJ NICE LIFE"
+    },
+    {
+     "name_as_written": "DJ LENHY",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔘 🎧 DJ LENHY"
+    },
+    {
+     "name_as_written": "DJ NAO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔘 🎧 DJ NAO"
+    },
+    {
+     "name_as_written": "DJ NO LIMITS",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔘 🎧 DJ NO LIMITS"
+    },
+    {
+     "name_as_written": "DJ FOFO JAH",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔘 🎧 DJ FOFO JAH"
+    },
+    {
+     "name_as_written": "DJ MG",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔘 🎧 DJ MG"
+    },
+    {
+     "name_as_written": "DJ DREEKS",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔘 🎧 DJ DREEKS"
+    }
+   ],
+   "features": [
+    {
+     "feature": "partner_hotel",
+     "quote": "HÔTEL PARTNER",
+     "rationale": "A partner hotel is named with a 15% booking discount, without being part of the pass."
+    },
+    {
+     "feature": "camping",
+     "quote": "Hotels, campsites, and Airbnbs available near the new venue",
+     "rationale": "Campsite accommodation is listed as available near the venue."
+    }
+   ]
+  }
+ ]
+}

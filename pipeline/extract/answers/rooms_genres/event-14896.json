@@ -1,0 +1,18 @@
+{
+ "batch": "event-14896",
+ "events": [
+  {
+   "event_id": 14896,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "share the essence of Kizomba and the cultural aspects"
+    }
+   ]
+  }
+ ]
+}

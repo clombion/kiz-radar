@@ -1,0 +1,40 @@
+{
+ "batch": "event-17497",
+ "events": [
+  {
+   "event_id": 17497,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "a dedicated social space"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Bringing together exceptional artists in Urban Kiz, Kizomba, Konpa, and Afro"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Bringing together exceptional artists in Urban Kiz, Kizomba, Konpa, and Afro"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Bringing together exceptional artists in Urban Kiz, Kizomba, Konpa, and Afro"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "Bringing together exceptional artists in Urban Kiz, Kizomba, Konpa, and Afro"
+    }
+   ]
+  }
+ ]
+}

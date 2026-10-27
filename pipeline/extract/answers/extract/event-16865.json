@@ -1,0 +1,193 @@
+{
+ "batch": "event-16865",
+ "events": [
+  {
+   "event_id": 16865,
+   "artists": [
+    {
+     "name_as_written": "Yanis Scruock",
+     "role": "teacher",
+     "style": "World Champions of Kizomba and Semba",
+     "country": "🇦🇴",
+     "source_line": "1. Yanis Scruock — World Champions of Kizomba and Semba 🇦🇴"
+    },
+    {
+     "name_as_written": "Valentino & Nelinha",
+     "role": "teacher",
+     "style": "World Champions of Kizomba and Semba",
+     "country": "🇦🇴",
+     "source_line": "2. Valentino & Nelinha — World Champions of Kizomba and Semba 🇦🇴"
+    },
+    {
+     "name_as_written": "Ary & Maura",
+     "role": "teacher",
+     "style": "World Champions of Kizomba and Semba",
+     "country": "🇦🇴",
+     "source_line": "3. Ary & Maura — World Champions of Kizomba and Semba 🇦🇴"
+    },
+    {
+     "name_as_written": "Davide Nola & Cilene",
+     "role": "teacher",
+     "style": "World Champions of Kizomba and Semba",
+     "country": "🇨🇻🇦🇴🇮🇹",
+     "source_line": "4. Davide Nola & Cilene — World Champions of Kizomba and Semba 🇨🇻🇦🇴🇮🇹"
+    },
+    {
+     "name_as_written": "Fernando Bumbum & Michela",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴🇮🇹",
+     "source_line": "5. Fernando Bumbum & Michela 🇦🇴🇮🇹"
+    },
+    {
+     "name_as_written": "Simicala Cunha & Katy",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴🇮🇹",
+     "source_line": "6. Simicala Cunha & Katy 🇦🇴🇮🇹"
+    },
+    {
+     "name_as_written": "Angela Jauregui",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇺",
+     "source_line": "7. Angela Jauregui 🇨🇺"
+    },
+    {
+     "name_as_written": "Alessandra & Marc Franett De Jesus",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "8. Alessandra & Marc Franett De Jesus 🇦🇴"
+    },
+    {
+     "name_as_written": "Celine Semkiz",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "9. Celine Semkiz 🇫🇷"
+    },
+    {
+     "name_as_written": "Sara Lecis",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "10. Sara Lecis 🇮🇹"
+    },
+    {
+     "name_as_written": "Yoel Herrera",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇺",
+     "source_line": "11. Yoel Herrera 🇨🇺"
+    },
+    {
+     "name_as_written": "Alex Castor",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇺",
+     "source_line": "12. Alex Castor 🇨🇺"
+    },
+    {
+     "name_as_written": "Gil Afroman",
+     "role": "teacher",
+     "style": null,
+     "country": "🇲🇿",
+     "source_line": "13. Gil Afroman 🇲🇿"
+    },
+    {
+     "name_as_written": "Alex Vunda & Mary Jay",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴🇦🇴",
+     "source_line": "14. Alex Vunda & Mary Jay 🇦🇴🇦🇴"
+    },
+    {
+     "name_as_written": "Valentim & Kriseide",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴🇮🇹",
+     "source_line": "15. Valentim & Kriseide 🇦🇴🇮🇹"
+    },
+    {
+     "name_as_written": "Marc & Alessandra",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "16. Marc & Alessandra 🇮🇹"
+    },
+    {
+     "name_as_written": "Cristina Cri Cri",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹🇨🇭",
+     "source_line": "17. Cristina Cri Cri 🇮🇹🇨🇭"
+    },
+    {
+     "name_as_written": "VexBeat",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴🇵🇾",
+     "source_line": "DJs: VexBeat 🇦🇴🇵🇾, Marc, Emess 🇦🇴🇨🇭, Mauro Erba 🇮🇹, Simicala 🇦🇴🇮🇹"
+    },
+    {
+     "name_as_written": "Marc",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJs: VexBeat 🇦🇴🇵🇾, Marc, Emess 🇦🇴🇨🇭, Mauro Erba 🇮🇹, Simicala 🇦🇴🇮🇹"
+    },
+    {
+     "name_as_written": "Emess",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴🇨🇭",
+     "source_line": "DJs: VexBeat 🇦🇴🇵🇾, Marc, Emess 🇦🇴🇨🇭, Mauro Erba 🇮🇹, Simicala 🇦🇴🇮🇹"
+    },
+    {
+     "name_as_written": "Mauro Erba",
+     "role": "dj",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "DJs: VexBeat 🇦🇴🇵🇾, Marc, Emess 🇦🇴🇨🇭, Mauro Erba 🇮🇹, Simicala 🇦🇴🇮🇹"
+    },
+    {
+     "name_as_written": "Simicala",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴🇮🇹",
+     "source_line": "DJs: VexBeat 🇦🇴🇵🇾, Marc, Emess 🇦🇴🇨🇭, Mauro Erba 🇮🇹, Simicala 🇦🇴🇮🇹"
+    },
+    {
+     "name_as_written": "Team Bantù",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Powered by Team Bantù"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "with workshops, shows, socials",
+     "rationale": "The description states that the three days include workshops."
+    },
+    {
+     "feature": "shows",
+     "quote": "workshops, shows, socials",
+     "rationale": "The description lists shows as part of the event program."
+    },
+    {
+     "feature": "beach_party",
+     "quote": "Beach Party on 26 July",
+     "rationale": "A beach party is explicitly scheduled for 26 July."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Main Hotel: https://sardegnahotelcagliari.it/camere-suite/",
+     "rationale": "The event names a main hotel link, which is a recommended hotel rather than an included accommodation."
+    }
+   ]
+  }
+ ]
+}

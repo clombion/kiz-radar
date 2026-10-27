@@ -1,6 +1,5 @@
 {
  "batch": "event-18213",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18213,
@@ -8,7 +7,7 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "💰 𝐏𝐫𝐢𝐜𝐢𝐧𝐠 & 𝐏𝐚𝐲𝐦𝐞𝐧𝐭 𝐏𝐥𝐚𝐧",
+     "label_quote": null,
      "group_size": 1,
      "days": 10,
      "includes_hotel": true,
@@ -17,15 +16,14 @@
        "amount": 1300,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "𝐓𝐫𝐢𝐩 𝐂𝐨𝐬𝐭: €𝟏,𝟑𝟎𝟎"
+       "quote": "★ 𝐓𝐫𝐢𝐩 𝐂𝐨𝐬𝐭: €𝟏,𝟑𝟎𝟎"
       }
      ]
     }

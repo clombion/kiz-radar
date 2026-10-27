@@ -1,0 +1,95 @@
+{
+ "batch": "event-18716",
+ "events": [
+  {
+   "event_id": 18716,
+   "artists": [
+    {
+     "name_as_written": "DJ REMCY",
+     "role": "dj",
+     "style": null,
+     "country": "🇭🇺 🇩🇪",
+     "source_line": "▪️ DJ REMCY 🇭🇺 🇩🇪"
+    },
+    {
+     "name_as_written": "DJ NUO",
+     "role": "dj",
+     "style": null,
+     "country": "🇺🇦",
+     "source_line": "◾️ DJ NUO 🇺🇦"
+    },
+    {
+     "name_as_written": "DJ LOKA",
+     "role": "dj",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "◾️ DJ LOKA 🇪🇸"
+    },
+    {
+     "name_as_written": "DJ VALKYRIE",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "◾️ DJ VALKYRIE"
+    },
+    {
+     "name_as_written": "HENECO & KIKI",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷 🇩🇪",
+     "source_line": "◾️ HENECO & KIKI 🇫🇷 🇩🇪"
+    },
+    {
+     "name_as_written": "DAMIR & LAURA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇰🇿🇫🇷 🇳🇱",
+     "source_line": "◾️ DAMIR & LAURA 🇰🇿🇫🇷 🇳🇱"
+    },
+    {
+     "name_as_written": "KIZZ RYDERS",
+     "role": "crew",
+     "style": null,
+     "country": "🇪🇺 🌏",
+     "source_line": "◾️ KIZZ RYDERS 🇪🇺 🌏"
+    },
+    {
+     "name_as_written": "MARTIN PHOTOGRAPHY",
+     "role": "media",
+     "style": null,
+     "country": "🇧🇬",
+     "source_line": "◾️ MARTIN PHOTOGRAPHY 🇧🇬"
+    },
+    {
+     "name_as_written": "OLGA BY THE WAY",
+     "role": "media",
+     "style": null,
+     "country": "🇵🇱",
+     "source_line": "◾️ OLGA BY THE WAY 🇵🇱"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "13:00 – 14:00 – WORKSHOP",
+     "rationale": "The program lists several timed WORKSHOP slots, so dance classes are part of the event."
+    },
+    {
+     "feature": "after_party",
+     "quote": "04:00 – 05:00 – APRÈS – KIZ",
+     "rationale": "The program includes an APRÈS – KIZ slot after the night party, which is an after-party."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "16:00 – 20:00 – SOCIAL",
+     "rationale": "The afternoon-to-evening SOCIAL slot is a daytime social."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Wardrobe is mandatory",
+     "rationale": "The house rules state that wardrobe is mandatory, which is a stated clothing requirement."
+    }
+   ]
+  }
+ ]
+}

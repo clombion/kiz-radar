@@ -1,0 +1,21 @@
+{
+ "batch": "event-17436",
+ "events": [
+  {
+   "event_id": 17436,
+   "artists": [],
+   "features": [
+    {
+     "feature": "camping",
+     "quote": "tent-only camping experience",
+     "rationale": "The description states the experience is tent-only camping, which is camping accommodation."
+    },
+    {
+     "feature": "competition",
+     "quote": "friendly competitions",
+     "rationale": "The program lists friendly competitions among its activities."
+    }
+   ]
+  }
+ ]
+}

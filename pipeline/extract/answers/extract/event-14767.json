@@ -1,0 +1,31 @@
+{
+ "batch": "event-14767",
+ "events": [
+  {
+   "event_id": 14767,
+   "artists": [],
+   "features": [
+    {
+     "feature": "cruise",
+     "quote": "Come aboard the MSC Virtuosa, this magnificent cruise ship",
+     "rationale": "The event takes place on a cruise ship, the MSC Virtuosa."
+    },
+    {
+     "feature": "live_music",
+     "quote": "quality concerts with well-known artists from the Caribbean and beyond",
+     "rationale": "The description promises concerts by artists, which is live music."
+    },
+    {
+     "feature": "shows",
+     "quote": "varied entertainment, shows, pools and jacuzzis",
+     "rationale": "Shows are listed as part of the on-board entertainment."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "all-inclusive (unlimited drinks and food)",
+     "rationale": "The package is stated to be all-inclusive with unlimited food and drinks."
+    }
+   ]
+  }
+ ]
+}

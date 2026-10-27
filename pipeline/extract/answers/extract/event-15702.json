@@ -1,0 +1,41 @@
+{
+ "batch": "event-15702",
+ "events": [
+  {
+   "event_id": 15702,
+   "artists": [],
+   "features": [
+    {
+     "feature": "masterclass",
+     "quote": "with a masterclass and pre-party in the days before",
+     "rationale": "The description states that a masterclass is held in the days before the event."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "with a masterclass and pre-party in the days before",
+     "rationale": "A pre-party is explicitly mentioned as taking place before the main event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "8+ hours of workshops",
+     "rationale": "The event lists more than eight hours of dance workshops among what to expect."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "close to 20 hours of day and evening socials",
+     "rationale": "The event offers daytime and evening socials, nearly 20 hours in total."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "memorable party themes",
+     "rationale": "The description promises party themes, which indicates themed parties."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "airport shuttle service and carpools",
+     "rationale": "An airport shuttle service is offered to attendees."
+    }
+   ]
+  }
+ ]
+}

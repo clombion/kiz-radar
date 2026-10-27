@@ -1,0 +1,53 @@
+{
+ "batch": "event-16559",
+ "events": [
+  {
+   "event_id": 16559,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 rooms – 2 vibes"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Bachata Room",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "Bachata Room: DJ Loonay • DJ Taga’da"
+    },
+    {
+     "name_as_written": "Kizomba Room",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "Kizomba Room: DJ Leericks (Resident) • DJ El Chapo"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Adriano & Lory (Bachata)"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Marcelin & Sandy (Kizomba)"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "All (Urban Kiz)"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Madou & Céline (Semba)"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "batch": "event-16308",
+ "events": [
+  {
+   "event_id": 16308,
+   "party_rooms": {
+    "count": 5,
+    "quote": "5 PARTY ROOMS"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "SALSA"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "BACHATA"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBANKIZ",
+     "quote": "URBANKIZ"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "KIZOMBA"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "BRAZILIAN ZOUK",
+     "quote": "BRAZILIAN ZOUK"
+    }
+   ]
+  }
+ ]
+}

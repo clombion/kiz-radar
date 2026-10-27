@@ -1,0 +1,16 @@
+{
+ "batch": "event-15744",
+ "events": [
+  {
+   "event_id": 15744,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Several progressive classes will help you advance throughout the weekend",
+     "rationale": "The description states that several progressive classes are part of the weekend, which means dance classes are part of the event."
+    }
+   ]
+  }
+ ]
+}

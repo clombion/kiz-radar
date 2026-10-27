@@ -1,6 +1,5 @@
 {
  "batch": "event-18365",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18365,
@@ -17,32 +16,7 @@
        "amount": 179.99,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "$179.99 → $169.99 with code AFROKIZZ"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "✅ Follow Single Pass",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 179.99,
-       "currency": "CAD",
-       "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -65,8 +39,7 @@
        "amount": 299.99,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -89,8 +62,7 @@
        "amount": 319.99,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -113,8 +85,7 @@
        "amount": 129.99,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,

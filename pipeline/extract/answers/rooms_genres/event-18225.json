@@ -1,0 +1,72 @@
+{
+ "batch": "event-18225",
+ "events": [
+  {
+   "event_id": 18225,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 Rooms (The vibe room) & (Urbankiz/kizomba room)"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "The vibe room",
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "The vibe room"
+    },
+    {
+     "name_as_written": "Urbankiz/kizomba room",
+     "kind": "unspecified",
+     "genres": [
+      "urbankiz",
+      "kizomba"
+     ],
+     "quote": "Urbankiz/kizomba room"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urbankiz",
+     "quote": "Urbankiz/Tarraxo/Kizomba/Semba/douceur/konpa/ghetto zouk/afro beats"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Urbankiz/Tarraxo/Kizomba/Semba/douceur/konpa/ghetto zouk/afro beats"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Urbankiz/Tarraxo/Kizomba/Semba/douceur/konpa/ghetto zouk/afro beats"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Urbankiz/Tarraxo/Kizomba/Semba/douceur/konpa/ghetto zouk/afro beats"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "douceur",
+     "quote": "Urbankiz/Tarraxo/Kizomba/Semba/douceur/konpa/ghetto zouk/afro beats"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "konpa",
+     "quote": "Urbankiz/Tarraxo/Kizomba/Semba/douceur/konpa/ghetto zouk/afro beats"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "ghetto zouk",
+     "quote": "Urbankiz/Tarraxo/Kizomba/Semba/douceur/konpa/ghetto zouk/afro beats"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "afro beats",
+     "quote": "Urbankiz/Tarraxo/Kizomba/Semba/douceur/konpa/ghetto zouk/afro beats"
+    }
+   ]
+  }
+ ]
+}

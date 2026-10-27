@@ -1,0 +1,18 @@
+{
+ "batch": "event-16738",
+ "events": [
+  {
+   "event_id": 16738,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Five years celebrating the magic of Kizomba together."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,78 @@
+{
+ "batch": "event-16718",
+ "events": [
+  {
+   "event_id": 16718,
+   "artists": [
+    {
+     "name_as_written": "Nicolò de Angelis",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Nicolò de Angelis (Salsa)"
+    },
+    {
+     "name_as_written": "Charlie & Scarlett",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Charlie & Scarlett (Salsa)"
+    },
+    {
+     "name_as_written": "Juan y Sara",
+     "role": "teacher",
+     "style": "Sensual Bachata",
+     "country": null,
+     "source_line": "Juan y Sara (Sensual Bachata)"
+    },
+    {
+     "name_as_written": "Carlos y Susan",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Carlos y Susan (Bachata)"
+    },
+    {
+     "name_as_written": "JP & Stephy",
+     "role": "teacher",
+     "style": "Urban Kiz",
+     "country": null,
+     "source_line": "JP & Stephy (Urban Kiz)"
+    },
+    {
+     "name_as_written": "Ulan & Marzhan",
+     "role": "teacher",
+     "style": "Urban Kiz",
+     "country": null,
+     "source_line": "Ulan & Marzhan (Urban Kiz)"
+    },
+    {
+     "name_as_written": "Alex de Carvalho",
+     "role": "teacher",
+     "style": "B. Zouk",
+     "country": null,
+     "source_line": "Alex de Carvalho (B. Zouk)"
+    },
+    {
+     "name_as_written": "DJ Sink",
+     "role": "dj",
+     "style": "Urban Kiz",
+     "country": null,
+     "source_line": "DJ Sink (Urban Kiz)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "The weekend will offer workshops",
+     "rationale": "The description states that the weekend will offer workshops."
+    },
+    {
+     "feature": "shows",
+     "quote": "performances & more",
+     "rationale": "The description promises performances as part of the weekend program."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,49 @@
+{
+ "batch": "event-16904",
+ "events": [
+  {
+   "event_id": 16904,
+   "artists": [
+    {
+     "name_as_written": "Jazzy Cubango and Fred Maestro",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Jazzy Cubango and Fred Maestro are proud to announce the 14TH PARIS KIZOMBA CONGRESS. ★★★ THE BIGGEST KIZOMBA"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "More than 40 hours of WORKSHOPS",
+     "rationale": "The description states that more than 40 hours of workshops are part of the congress."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "1 PRE-PARTY + 3 PARTY",
+     "rationale": "A pre-party is explicitly listed alongside the main parties."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "3 THEMED PARTIES DURING THE WEEKEND",
+     "rationale": "The weekend includes three parties with a theme."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "SOCIAL ROOM",
+     "rationale": "A separate social room is listed in addition to the main dancefloor, so there is more than one dance room."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Hotels near the festival from November 19 to 23, 2026:",
+     "rationale": "A list of hotels recommended near the festival is given, and accommodation is not described as part of the pass."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "HOTEL HILTON – 8 rue de Rome 93290 Tremblay en France",
+     "rationale": "The Friday-to-Monday parties take place at the Hilton, which is also named as the main hotel for the festival."
+    }
+   ]
+  }
+ ]
+}

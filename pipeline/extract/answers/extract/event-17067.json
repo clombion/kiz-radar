@@ -1,0 +1,31 @@
+{
+ "batch": "event-17067",
+ "events": [
+  {
+   "event_id": 17067,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "A bit of workshops!",
+     "rationale": "The highlights state that dance workshops are part of the festival."
+    },
+    {
+     "feature": "beach_party",
+     "quote": "Beach & Boat parties on the magical Red Sea",
+     "rationale": "The Hurghada program lists beach parties as part of the event."
+    },
+    {
+     "feature": "boat_party",
+     "quote": "Beach & Boat parties on the magical Red Sea",
+     "rationale": "The Hurghada program lists boat parties as part of the event."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Beach, Pool, Boat, Foam, Garden & more!",
+     "rationale": "The list of parties explicitly includes a pool party."
+    }
+   ]
+  }
+ ]
+}

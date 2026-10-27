@@ -1,0 +1,18 @@
+{
+ "batch": "event-14835",
+ "events": [
+  {
+   "event_id": 14835,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "Djumbai Afro Festival"
+    }
+   ]
+  }
+ ]
+}

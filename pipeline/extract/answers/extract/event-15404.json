@@ -1,0 +1,520 @@
+{
+ "batch": "event-15404",
+ "events": [
+  {
+   "event_id": 15404,
+   "artists": [
+    {
+     "name_as_written": "Wilmer & Maria",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Wilmer & Maria"
+    },
+    {
+     "name_as_written": "Jose Carlos Leguen",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Jose Carlos Leguen"
+    },
+    {
+     "name_as_written": "Denise Denaro",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Denise Denaro"
+    },
+    {
+     "name_as_written": "Graziano & Laura",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Graziano & Laura"
+    },
+    {
+     "name_as_written": "Luis Camino",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Luis Camino"
+    },
+    {
+     "name_as_written": "Omara Lapera",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Omara Lapera"
+    },
+    {
+     "name_as_written": "Nicolò & Elena",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Nicolò & Elena"
+    },
+    {
+     "name_as_written": "Smoll",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Smoll"
+    },
+    {
+     "name_as_written": "Michele & Stefania Cuba Mia",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Michele & Stefania Cuba Mia"
+    },
+    {
+     "name_as_written": "Maddalena Bianco",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Maddalena Bianco"
+    },
+    {
+     "name_as_written": "Leisnier Garcia",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Leisnier Garcia"
+    },
+    {
+     "name_as_written": "Marco & Sonia",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Marco & Sonia"
+    },
+    {
+     "name_as_written": "Fabio Salsavor",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Fabio Salsavor"
+    },
+    {
+     "name_as_written": "Gruppo Salsacache",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Gruppo Salsacache"
+    },
+    {
+     "name_as_written": "Alex & Liliana",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Alex & Liliana"
+    },
+    {
+     "name_as_written": "Sebastien & Rachele",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Sebastien & Rachele"
+    },
+    {
+     "name_as_written": "Compania Comboricua",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Compania Comboricua"
+    },
+    {
+     "name_as_written": "Cristina Siligato",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Cristina Siligato"
+    },
+    {
+     "name_as_written": "Sandra Bailatinos",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Sandra Bailatinos"
+    },
+    {
+     "name_as_written": "Silvia Cerusico",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "🪘Silvia Cerusico"
+    },
+    {
+     "name_as_written": "Riccardo & Silvia",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "🪘Riccardo & Silvia"
+    },
+    {
+     "name_as_written": "Angela Mariano",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "🪘Angela Mariano"
+    },
+    {
+     "name_as_written": "Oscar Niño",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "🪘Oscar Niño"
+    },
+    {
+     "name_as_written": "Elena Khamsi",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "🪘Elena Khamsi"
+    },
+    {
+     "name_as_written": "Christina & Rebeca",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "🪘Christina & Rebeca"
+    },
+    {
+     "name_as_written": "Nicole Battisttuta",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "🪘Nicole Battisttuta"
+    },
+    {
+     "name_as_written": "Toni",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "🪘Toni"
+    },
+    {
+     "name_as_written": "Maria & Victor",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "🪘Maria & Victor"
+    },
+    {
+     "name_as_written": "Alex Melia",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "🪘Alex Melia"
+    },
+    {
+     "name_as_written": "Larry & Martina",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "🪘Larry & Martina"
+    },
+    {
+     "name_as_written": "Dario & Roberta",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "🪘Dario & Roberta"
+    },
+    {
+     "name_as_written": "Filippo & Aleksandra",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "🪘Filippo & Aleksandra"
+    },
+    {
+     "name_as_written": "Stefania Zanandrea",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "🪘Stefania Zanandrea"
+    },
+    {
+     "name_as_written": "Ippolito Giacobbe",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "🪘Ippolito Giacobbe"
+    },
+    {
+     "name_as_written": "Lorenzo & Roberta",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "🪘Lorenzo & Roberta"
+    },
+    {
+     "name_as_written": "Dinara",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🪘Dinara"
+    },
+    {
+     "name_as_written": "JD Deceus",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🪘JD Deceus"
+    },
+    {
+     "name_as_written": "Val & Jossy",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🪘Val & Jossy"
+    },
+    {
+     "name_as_written": "Giada Ligas",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🪘Giada Ligas"
+    },
+    {
+     "name_as_written": "Fabrizio Campanella",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🪘Fabrizio Campanella"
+    },
+    {
+     "name_as_written": "Flavio Coletta",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🪘Flavio Coletta"
+    },
+    {
+     "name_as_written": "Paolo Meli & Lucia Tramonte",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🪘Paolo Meli & Lucia Tramonte"
+    },
+    {
+     "name_as_written": "Sandro Santos",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🪘Sandro Santos"
+    },
+    {
+     "name_as_written": "Stefania & Umberto",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🪘Stefania & Umberto"
+    },
+    {
+     "name_as_written": "Fabio & Arianna",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🪘Fabio & Arianna"
+    },
+    {
+     "name_as_written": "Daniela Messina",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🪘Daniela Messina"
+    },
+    {
+     "name_as_written": "Adam Molle",
+     "role": "crew",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🪘Adam Molle – Taxi Dancer"
+    },
+    {
+     "name_as_written": "Oti Kanjo",
+     "role": "crew",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🪘Oti Kanjo – Taxi Dancer"
+    },
+    {
+     "name_as_written": "Vincenzo Manganelli",
+     "role": "crew",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🪘Vincenzo Manganelli – Taxi Dancer"
+    },
+    {
+     "name_as_written": "Marco Maselli",
+     "role": "crew",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🪘Marco Maselli – Taxi Dancer"
+    },
+    {
+     "name_as_written": "Miguel Valentin",
+     "role": "teacher",
+     "style": "Zumba",
+     "country": null,
+     "source_line": "🪘Miguel Valentin"
+    },
+    {
+     "name_as_written": "Lisa Viola",
+     "role": "teacher",
+     "style": "Zumba",
+     "country": null,
+     "source_line": "🪘Lisa Viola"
+    },
+    {
+     "name_as_written": "Mattia Diamantini",
+     "role": "teacher",
+     "style": "Zumba",
+     "country": null,
+     "source_line": "🪘Mattia Diamantini"
+    },
+    {
+     "name_as_written": "DJ Pepito",
+     "role": "dj",
+     "style": "SALSA & BACHATA",
+     "country": null,
+     "source_line": "🎧 DJ Pepito"
+    },
+    {
+     "name_as_written": "DJ Marco Salamone",
+     "role": "dj",
+     "style": "SALSA & BACHATA",
+     "country": null,
+     "source_line": "🎧 DJ Marco Salamone"
+    },
+    {
+     "name_as_written": "DJ Chocolate",
+     "role": "dj",
+     "style": "SALSA & BACHATA",
+     "country": null,
+     "source_line": "🎧 DJ Chocolate"
+    },
+    {
+     "name_as_written": "DJ Turro",
+     "role": "dj",
+     "style": "SALSA & BACHATA",
+     "country": null,
+     "source_line": "🎧 DJ Turro"
+    },
+    {
+     "name_as_written": "DJ Rax",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🎧 DJ Rax"
+    },
+    {
+     "name_as_written": "DJ Glight",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🎧 DJ Glight"
+    },
+    {
+     "name_as_written": "DJ Ted",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🎧 DJ Ted"
+    },
+    {
+     "name_as_written": "DJ Salvyne",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🎧 DJ Salvyne"
+    },
+    {
+     "name_as_written": "Fabio Cafarella La Voz",
+     "role": "mc",
+     "style": null,
+     "country": null,
+     "source_line": "🪘Fabio Cafarella La Voz"
+    },
+    {
+     "name_as_written": "Ivana Mangullo",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "🪘Ivana Mangullo"
+    },
+    {
+     "name_as_written": "Ilaria Bigi",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "🪘Ilaria Bigi"
+    },
+    {
+     "name_as_written": "Massimo Ceccolini",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "🪘Massimo Ceccolini"
+    },
+    {
+     "name_as_written": "Photogold",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "🪘Photogold"
+    },
+    {
+     "name_as_written": "Kimberley",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "🪘Kimberley"
+    },
+    {
+     "name_as_written": "La Jefa",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "🪘La Jefa"
+    },
+    {
+     "name_as_written": "FRESKITO APS",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Event organized by: FRESKITO APS"
+    }
+   ],
+   "features": [
+    {
+     "feature": "taxi_dancers",
+     "quote": "Adam Molle – Taxi Dancer",
+     "rationale": "Named individuals are listed as taxi dancers in the Kizomba line-up."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "3 NIGHTS/4 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+     "rationale": "The package bundles hotel nights with the full pass."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "FULL BOARD FOR EVERYONE",
+     "rationale": "Full board means meals are included in the package."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "ROOM 💯% SALSA",
+     "rationale": "The description lists separate dance rooms for Salsa, Bachata and Kizomba."
+    },
+    {
+     "feature": "workshops",
+     "quote": "4 DAYS OF WORKSHOPS",
+     "rationale": "The event explicitly offers multiple days of workshops."
+    }
+   ]
+  }
+ ]
+}

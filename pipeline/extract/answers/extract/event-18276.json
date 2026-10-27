@@ -1,0 +1,102 @@
+{
+ "batch": "event-18276",
+ "events": [
+  {
+   "event_id": 18276,
+   "artists": [
+    {
+     "name_as_written": "DJ WILLY G",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️ DJ WILLY G"
+    },
+    {
+     "name_as_written": "DJ KISS",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️ DJ KISS"
+    },
+    {
+     "name_as_written": "DJ SOL’IN",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️ DJ SOL’IN"
+    },
+    {
+     "name_as_written": "KELLY & CURTIS",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️ KELLY & CURTIS"
+    },
+    {
+     "name_as_written": "ARMAND & AÏDAH",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️ ARMAND & AÏDAH"
+    },
+    {
+     "name_as_written": "BG",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️ BG"
+    },
+    {
+     "name_as_written": "ROXANE & CORENTIN",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️ ROXANE & CORENTIN"
+    },
+    {
+     "name_as_written": "MEL ZAMB",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️ MEL ZAMB"
+    },
+    {
+     "name_as_written": "KCS TAXI TEAM",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️ KCS TAXI TEAM"
+    },
+    {
+     "name_as_written": "KIZ FOR LIFE TEAM",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "& the KIZ FOR LIFE TEAM 🔥"
+    }
+   ],
+   "features": [
+    {
+     "feature": "meals_included",
+     "quote": "ALL-INCLUSIVE venue",
+     "rationale": "An all-inclusive venue implies that meals are included in the event package."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "A high-energy team of taxi dancers will be there all weekend long",
+     "rationale": "The text states that a team of taxi dancers will be present all weekend."
+    },
+    {
+     "feature": "workshops",
+     "quote": "7:30 PM – 9:30 PM | WORKSHOPS",
+     "rationale": "The program lists workshop sessions on Friday, Saturday and Sunday."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "4:00 PM – 8:00 PM | SOCIAL",
+     "rationale": "The Saturday program includes an afternoon social from 4 PM to 8 PM."
+    }
+   ]
+  }
+ ]
+}

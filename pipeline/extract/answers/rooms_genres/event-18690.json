@@ -1,0 +1,31 @@
+{
+ "batch": "event-18690",
+ "events": [
+  {
+   "event_id": 18690,
+   "party_rooms": {
+    "count": 3,
+    "quote": "3 EXCLUSIVE LOCATIONS FOR PARTYS AND SOCIALS"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "SALSA:"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "DOMINICAN BACHATA",
+     "quote": "DOMINICAN BACHATA:"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "KIZOMBA:"
+    }
+   ]
+  }
+ ]
+}

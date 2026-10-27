@@ -1,0 +1,41 @@
+{
+ "batch": "event-16348",
+ "events": [
+  {
+   "event_id": 16348,
+   "party_rooms": {
+    "count": 3,
+    "quote": "Three rooms to dance, learn, and fully enjoy yourself, whatever your level."
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "bachata",
+     "quote": "dedicated to bachata, salsa, and kizomba"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "salsa",
+     "quote": "dedicated to bachata, salsa, and kizomba"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "dedicated to bachata, salsa, and kizomba"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "TARRAXO",
+     "quote": "KIZOMBA – TARRAXO – KOMPA"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "KOMPA",
+     "quote": "KIZOMBA – TARRAXO – KOMPA"
+    }
+   ]
+  }
+ ]
+}

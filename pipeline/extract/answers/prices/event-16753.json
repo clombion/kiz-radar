@@ -1,6 +1,5 @@
 {
  "batch": "event-16753",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16753,
@@ -17,15 +16,14 @@
        "amount": 1755,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "• SINGLE room (De-luxe Bungalow): 1.755€"
+       "quote": "SINGLE room (De-luxe Bungalow): 1.755€"
       }
      ]
     },
@@ -41,15 +39,14 @@
        "amount": 1440,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "• Per person on sharing TWIN (De-luxe Bungalow): 1.440€"
+       "quote": "Per person on sharing TWIN (De-luxe Bungalow): 1.440€"
       }
      ]
     },
@@ -65,15 +62,14 @@
        "amount": 1965,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "• SINGLE room (Quarto Standard): 1.965€"
+       "quote": "SINGLE room (Quarto Standard): 1.965€"
       }
      ]
     },
@@ -89,15 +85,14 @@
        "amount": 1570,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "• Per person on sharing TWIN (Quarto Standard): 1.570€"
+       "quote": "Per person on sharing TWIN (Quarto Standard): 1.570€"
       }
      ]
     },
@@ -113,15 +108,14 @@
        "amount": 735,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "• SINGLE room (De-luxe Bungalow): 735€"
+       "quote": "SINGLE room (De-luxe Bungalow): 735€"
       }
      ]
     },
@@ -137,15 +131,14 @@
        "amount": 525,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "• Per person on sharing TWIN (De-luxe Bungalow): 525€"
+       "quote": "Per person on sharing TWIN (De-luxe Bungalow): 525€"
       }
      ]
     },
@@ -161,15 +154,14 @@
        "amount": 855,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "• SINGLE room (Standard room): 855€"
+       "quote": "SINGLE room (Standard room): 855€"
       }
      ]
     },
@@ -185,22 +177,19 @@
        "amount": 615,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "• Per person on sharing TWIN (Standard room): 615€"
+       "quote": "Per person on sharing TWIN (Standard room): 615€"
       }
      ]
     }
    ],
-   "rule_quotes": [
-    "EARLY BIRD: €30 discount per person for reservations until 30th March!"
-   ]
+   "rule_quotes": []
   }
  ]
 }

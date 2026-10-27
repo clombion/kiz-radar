@@ -1,0 +1,41 @@
+{
+ "batch": "event-18222",
+ "events": [
+  {
+   "event_id": 18222,
+   "artists": [],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "𝗔𝗹𝗹 𝗶𝗻 𝗢𝗻𝗲",
+     "rationale": "The heading 'All in One' together with the hotel section and the 4 days and 4 nights party event suggests the parties take place in the hotel where dancers stay."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Exclusive workshops with international teachers",
+     "rationale": "The description explicitly advertises workshops with international teachers as part of the event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "+30 workshops",
+     "rationale": "The pass list states there are more than thirty workshops included."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "4 social parties",
+     "rationale": "The event offers four social parties, which are daytime socials distinct from the night parties."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "4 social room",
+     "rationale": "The pass includes access to four social rooms, meaning more than one dance room."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "Whether you’re an experienced dancer or just starting out",
+     "rationale": "The text explicitly welcomes beginners as well as experienced dancers."
+    }
+   ]
+  }
+ ]
+}

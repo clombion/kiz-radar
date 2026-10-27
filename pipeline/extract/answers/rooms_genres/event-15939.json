@@ -1,0 +1,80 @@
+{
+ "batch": "event-15939",
+ "events": [
+  {
+   "event_id": 15939,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "URBAN",
+     "kind": "unspecified",
+     "genres": [
+      "urbankiz"
+     ],
+     "quote": "URBAN"
+    },
+    {
+     "name_as_written": "SEMBA",
+     "kind": "unspecified",
+     "genres": [
+      "semba"
+     ],
+     "quote": "SEMBA"
+    },
+    {
+     "name_as_written": "BACHATA/SALSA",
+     "kind": "unspecified",
+     "genres": [
+      "bachata",
+      "salsa"
+     ],
+     "quote": "BACHATA/SALSA"
+    },
+    {
+     "name_as_written": "GENERAL",
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "GENERAL"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "4 days of dance learning: KIZOMBA, URBANKIZ, TARRAXO, SEMBA, AFRO DANCE"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBANKIZ",
+     "quote": "4 days of dance learning: KIZOMBA, URBANKIZ, TARRAXO, SEMBA, AFRO DANCE"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "TARRAXO",
+     "quote": "4 days of dance learning: KIZOMBA, URBANKIZ, TARRAXO, SEMBA, AFRO DANCE"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "SEMBA",
+     "quote": "4 days of dance learning: KIZOMBA, URBANKIZ, TARRAXO, SEMBA, AFRO DANCE"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "AFRO DANCE",
+     "quote": "4 days of dance learning: KIZOMBA, URBANKIZ, TARRAXO, SEMBA, AFRO DANCE"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "bachata",
+     "quote": "2 bachata nights with a salsa touch"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "salsa",
+     "quote": "2 bachata nights with a salsa touch"
+    }
+   ]
+  }
+ ]
+}

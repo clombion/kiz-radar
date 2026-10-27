@@ -1,0 +1,66 @@
+{
+ "batch": "event-18516",
+ "events": [
+  {
+   "event_id": 18516,
+   "party_rooms": {
+    "count": 3,
+    "quote": "3 rooms"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Salsa room",
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "Salsa room"
+    },
+    {
+     "name_as_written": "Bachata room",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "Bachata room"
+    },
+    {
+     "name_as_written": "Kizomba room",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "Kizomba room"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Cuban Salsa",
+     "quote": "Cuban Salsa"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata room"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba room"
+    },
+    {
+     "genre": "reggaeton",
+     "genre_as_written": "Reggaeton",
+     "quote": "Reggaeton"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Merengue",
+     "quote": "Merengue"
+    }
+   ]
+  }
+ ]
+}

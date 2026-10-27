@@ -1,6 +1,5 @@
 {
  "batch": "event-16246",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16246,
@@ -17,8 +16,7 @@
        "amount": 89,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -26,20 +24,6 @@
        "sold_out": false,
        "current": true,
        "quote": "FULLPASS – 89 EARLY BIRD"
-      },
-      {
-       "amount": 140,
-       "currency": "EUR",
-       "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "Full pass at the door 140 eur"
       }
      ]
     },
@@ -55,8 +39,7 @@
        "amount": 120,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -64,6 +47,29 @@
        "sold_out": false,
        "current": false,
        "quote": "Party pass at the door 120 eur"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 140,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "Full pass at the door 140 eur"
       }
      ]
     },
@@ -79,8 +85,7 @@
        "amount": 20,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -103,8 +108,7 @@
        "amount": 35,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -127,8 +131,7 @@
        "amount": 40,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -151,8 +154,7 @@
        "amount": 35,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -175,8 +177,7 @@
        "amount": 20,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -199,8 +200,7 @@
        "amount": 25,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -223,8 +223,7 @@
        "amount": 25,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -247,8 +246,7 @@
        "amount": 80,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -271,8 +269,7 @@
        "amount": 110,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -295,8 +292,7 @@
        "amount": 95,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -308,7 +304,9 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "preparty is not included in full and party pass"
+   ]
   }
  ]
 }

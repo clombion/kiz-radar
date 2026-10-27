@@ -1,0 +1,73 @@
+{
+ "batch": "event-18470",
+ "events": [
+  {
+   "event_id": 18470,
+   "artists": [
+    {
+     "name_as_written": "Phil & Dani",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔸Phil & Dani🔸"
+    },
+    {
+     "name_as_written": "Elhadj & Jenna",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔸Elhadj & Jenna🔸"
+    },
+    {
+     "name_as_written": "Teresa & Emanuel",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔸Teresa & Emanuel🔸"
+    },
+    {
+     "name_as_written": "O KLAN",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔸O KLAN (Selele – Celmo – Joelson)🔸"
+    },
+    {
+     "name_as_written": "Miro Kikola",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸Miro Kikola🔸"
+    },
+    {
+     "name_as_written": "Bakongo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸Bakongo🔸"
+    },
+    {
+     "name_as_written": "Guelas",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸Guelas🔸"
+    },
+    {
+     "name_as_written": "Mimo Silva",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸Mimo Silva🔸"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Technical & cultural workshops",
+     "rationale": "The description lists technical and cultural workshops as part of the festival programme."
+    }
+   ]
+  }
+ ]
+}

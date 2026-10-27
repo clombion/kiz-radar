@@ -1,0 +1,58 @@
+{
+ "batch": "event-19465",
+ "events": [
+  {
+   "event_id": 19465,
+   "artists": [
+    {
+     "name_as_written": "DJ Lucern",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 Beats by: DJ Lucern, DJ BLD & DJ Zé"
+    },
+    {
+     "name_as_written": "DJ BLD",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 Beats by: DJ Lucern, DJ BLD & DJ Zé"
+    },
+    {
+     "name_as_written": "DJ Zé",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 Beats by: DJ Lucern, DJ BLD & DJ Zé"
+    }
+   ],
+   "features": [
+    {
+     "feature": "pool_party",
+     "quote": "POOL PARTIES",
+     "rationale": "The event lists pool parties among its offerings."
+    },
+    {
+     "feature": "beach_party",
+     "quote": "BEACH PARTY",
+     "rationale": "The event lists a beach party among its offerings."
+    },
+    {
+     "feature": "workshops",
+     "quote": "WORKSHOPS & MASTERCLASSES",
+     "rationale": "Dance workshops are listed as part of the event."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "MASTERCLASSES",
+     "rationale": "Masterclasses are listed as part of the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "(4 PM – 8 PM)",
+     "rationale": "The pool party is held in the afternoon and early evening, a daytime social."
+    }
+   ]
+  }
+ ]
+}

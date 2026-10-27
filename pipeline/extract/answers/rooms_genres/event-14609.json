@@ -1,0 +1,45 @@
+{
+ "batch": "event-14609",
+ "events": [
+  {
+   "event_id": 14609,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [],
+     "quote": "Romantic parties with our DJS at hotel roof top."
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "SABOR A CABO VERDE KIZOMBA FESTIVAL IN LISBON"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba, Semba, Tarraxinha, Cape Verdean Traditional Dances, Bachata!"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "Kizomba, Semba, Tarraxinha, Cape Verdean Traditional Dances, Bachata!"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Cape Verdean Traditional Dances",
+     "quote": "Kizomba, Semba, Tarraxinha, Cape Verdean Traditional Dances, Bachata!"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Kizomba, Semba, Tarraxinha, Cape Verdean Traditional Dances, Bachata!"
+    }
+   ]
+  }
+ ]
+}

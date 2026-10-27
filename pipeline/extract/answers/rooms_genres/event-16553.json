@@ -1,0 +1,28 @@
+{
+ "batch": "event-16553",
+ "events": [
+  {
+   "event_id": 16553,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Dance Workshops SBKW (Salsa, Bachata, Kizomba West Coast)"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Dance Workshops SBKW (Salsa, Bachata, Kizomba West Coast)"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba West Coast",
+     "quote": "Salsa/Bachata & Kizomba West Coast themed dance parties"
+    }
+   ]
+  }
+ ]
+}

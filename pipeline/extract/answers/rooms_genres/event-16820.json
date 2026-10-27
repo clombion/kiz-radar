@@ -1,0 +1,56 @@
+{
+ "batch": "event-16820",
+ "events": [
+  {
+   "event_id": 16820,
+   "party_rooms": {
+    "count": 4,
+    "quote": "We will have 4 dance floors available"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "SALSA, BACHATA, KIZOMBA"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "SALSA, BACHATA"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "SALSA, BACHATA, KIZOMBA"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBANKIZ",
+     "quote": "URBANKIZ & AFRO-HOUSE"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "AFRO-HOUSE",
+     "quote": "URBANKIZ & AFRO-HOUSE"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "BRAZILIAN ZOUK",
+     "quote": "BRAZILIAN ZOUK"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Kompa",
+     "quote": "Sergent O (Kompa)"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Mister Nino (Kizomba & Semba)"
+    }
+   ]
+  }
+ ]
+}

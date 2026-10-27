@@ -1,0 +1,23 @@
+{
+ "batch": "event-16633",
+ "events": [
+  {
+   "event_id": 16633,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Unique Kizomba Experience"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro Kiz",
+     "quote": "Sydney Afro Kiz Festival – Edition 2026"
+    }
+   ]
+  }
+ ]
+}

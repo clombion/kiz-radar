@@ -1,6 +1,5 @@
 {
  "batch": "event-17011",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17011,
@@ -8,7 +7,7 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": "GOLD FULL PASS",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -17,8 +16,7 @@
        "amount": 89,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -32,7 +30,7 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": "SILVER PASS",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -41,8 +39,7 @@
        "amount": 79,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -56,7 +53,7 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": "BOAT CRUISE",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -65,8 +62,7 @@
        "amount": 59,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -78,9 +74,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "👉 Book now and secure your spot before prices rise."
-   ]
+   "rule_quotes": []
   }
  ]
 }

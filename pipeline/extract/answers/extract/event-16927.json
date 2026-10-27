@@ -1,0 +1,44 @@
+{
+ "batch": "event-16927",
+ "events": [
+  {
+   "event_id": 16927,
+   "artists": [
+    {
+     "name_as_written": "Jaoying",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Or Contact Jaoying"
+    }
+   ],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 Epic Party Rooms every night",
+     "rationale": "The description states there are two party rooms every night, meaning more than one dance room."
+    },
+    {
+     "feature": "workshops",
+     "quote": "30+ Workshops with International Artists",
+     "rationale": "The event lists more than thirty workshops as part of the programme."
+    },
+    {
+     "feature": "shows",
+     "quote": "Energetic shows and fun animations",
+     "rationale": "The event promises energetic shows as part of its programme."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Pool Party to wrap it all up in style",
+     "rationale": "A pool party is explicitly listed as part of the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Outdoor SBK Day Social",
+     "rationale": "A daytime social event is listed in the programme."
+    }
+   ]
+  }
+ ]
+}

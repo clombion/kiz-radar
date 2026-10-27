@@ -1,0 +1,64 @@
+{
+ "batch": "event-18808",
+ "events": [
+  {
+   "event_id": 18808,
+   "party_rooms": {
+    "count": 2,
+    "quote": "one Kizomba room and one Salsa / Bachata room"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "one Kizomba room"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "salsa",
+      "bachata"
+     ],
+     "quote": "one Salsa / Bachata room"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "one Kizomba room"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚 / 𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳 / 𝐒𝐞𝐦𝐛𝐚 / 𝐓𝐚𝐫𝐫𝐚𝐱𝐨"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚 / 𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳 / 𝐒𝐞𝐦𝐛𝐚 / 𝐓𝐚𝐫𝐫𝐚𝐱𝐨"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚 / 𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳 / 𝐒𝐞𝐦𝐛𝐚 / 𝐓𝐚𝐫𝐫𝐚𝐱𝐨"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "one Salsa / Bachata room"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "one Salsa / Bachata room"
+    }
+   ]
+  }
+ ]
+}

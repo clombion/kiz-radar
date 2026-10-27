@@ -1,0 +1,44 @@
+{
+ "batch": "event-15918",
+ "events": [
+  {
+   "event_id": 15918,
+   "artists": [
+    {
+     "name_as_written": "Marseille Danse Academy",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "💃🕺 The Marseille Danse Academy team invites you to join us for 4 days of pure fun. 😘"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "10 hours of dance classes for all levels",
+     "rationale": "The program lists 10 hours of dance classes, so dance classes are part of the event."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "10 hours of dance classes for all levels",
+     "rationale": "The classes are explicitly stated to be for all levels."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "3 vibrant themed evenings",
+     "rationale": "The event includes three themed evenings."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "pool parties",
+     "rationale": "The program advertises pool parties."
+    },
+    {
+     "feature": "camping",
+     "quote": "Camping Les Cigales 4****",
+     "rationale": "The venue is a campsite with bungalow accommodation."
+    }
+   ]
+  }
+ ]
+}

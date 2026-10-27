@@ -1,0 +1,25 @@
+{
+ "batch": "event-17474",
+ "events": [
+  {
+   "event_id": 17474,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Authentic",
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "2 dance rooms (Authentic & Fusion)"
+    },
+    {
+     "name_as_written": "Fusion",
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "2 dance rooms (Authentic & Fusion)"
+    }
+   ],
+   "genres": []
+  }
+ ]
+}

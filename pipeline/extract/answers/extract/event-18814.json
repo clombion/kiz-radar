@@ -1,0 +1,68 @@
+{
+ "batch": "event-18814",
+ "events": [
+  {
+   "event_id": 18814,
+   "artists": [
+    {
+     "name_as_written": "Elo & Adil",
+     "role": "teacher",
+     "style": "SALSA/BACHATA",
+     "country": null,
+     "source_line": "✪ Elo & Adil (2026 World Champions – Bachata)"
+    },
+    {
+     "name_as_written": "DJ ASH",
+     "role": "dj",
+     "style": "Kiz/Semba",
+     "country": null,
+     "source_line": "🎧 DJ ASH (Kiz/Semba)"
+    },
+    {
+     "name_as_written": "DJ MANGO",
+     "role": "dj",
+     "style": "Salsa/Bachata",
+     "country": null,
+     "source_line": "🎧 DJ MANGO (Salsa/Bachata)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "taxi_dancers",
+     "quote": "Guest Team/Taxi Dancers (for workshops)",
+     "rationale": "The line states that taxi dancers are present for the workshops."
+    },
+    {
+     "feature": "workshops",
+     "quote": "30 hours of workshops (Kizomba/Semba & Salsa/Bachata)",
+     "rationale": "The event offers 30 hours of dance workshops."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "3 simple dress codes > 2027: PINK theme",
+     "rationale": "The description explicitly announces dress codes for the event."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "FRIDAY – SMART PINK",
+     "rationale": "The parties have dress themes such as Smart Pink, Africana and Elegant for each night."
+    },
+    {
+     "feature": "shows",
+     "quote": "1 Instructor show/demo",
+     "rationale": "An instructor show or demonstration is part of the programme."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 rooms/2 vibes",
+     "rationale": "The parties run in two separate rooms with different music."
+    },
+    {
+     "feature": "adults_only",
+     "quote": "Our events are not suitable for minors.",
+     "rationale": "The organisers state that the events are not for minors, which restricts attendance to adults."
+    }
+   ]
+  }
+ ]
+}

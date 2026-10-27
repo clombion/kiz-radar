@@ -1,0 +1,104 @@
+{
+ "batch": "event-18460",
+ "events": [
+  {
+   "event_id": 18460,
+   "artists": [
+    {
+     "name_as_written": "Marcio Junqueira",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "– Marcio Junqueira 🇦🇴"
+    },
+    {
+     "name_as_written": "Vanessa Paris",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇻",
+     "source_line": "– Vanessa Paris 🇨🇻"
+    },
+    {
+     "name_as_written": "Claudio",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "– Claudio 🇦🇴"
+    },
+    {
+     "name_as_written": "Ilias & Adina",
+     "role": "teacher",
+     "style": null,
+     "country": "🇹🇷🇷🇴",
+     "source_line": "– Ilias & Adina 🇹🇷🇷🇴"
+    },
+    {
+     "name_as_written": "Bilson & Asle",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "– Bilson & Asle 🇦🇴"
+    },
+    {
+     "name_as_written": "Rabbil & Allana",
+     "role": "teacher",
+     "style": null,
+     "country": "🇧🇮🇲🇩",
+     "source_line": "-Rabbil & Allana🇧🇮🇲🇩"
+    },
+    {
+     "name_as_written": "Dj Black Genuino",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "– Dj Black Genuino 🇦🇴"
+    },
+    {
+     "name_as_written": "Dj RM Keta",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "– Dj RM Keta 🇦🇴"
+    },
+    {
+     "name_as_written": "Dj Yuri G",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "– Dj Yuri G 🇦🇴"
+    },
+    {
+     "name_as_written": "Dj Ra",
+     "role": "dj",
+     "style": null,
+     "country": "🇧🇮",
+     "source_line": "– Dj Ra🇧🇮"
+    },
+    {
+     "name_as_written": "Kizomba Treat",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Presented by Kizomba Treat : Umoja Dance Festival, a family gathering, a celebration of togetherness through the universal language of dance! Rooted in the spirit of “Umoja,” meaning unity in Swahili, this festival is a proper blend of African and Worldwide cultures, creating a space where traditions, stories and experiences come alive.❤️"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "all workshops & socials",
+     "rationale": "The pass explicitly includes all workshops, so dance classes are part of the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Social from 15:00 – 19:00",
+     "rationale": "The schedule lists daytime socials from 15:00 to 19:00 on Saturday and Sunday."
+    },
+    {
+     "feature": "after_party",
+     "quote": "After Party from 23:00 – 04:00",
+     "rationale": "The Sunday schedule lists an after party."
+    }
+   ]
+  }
+ ]
+}

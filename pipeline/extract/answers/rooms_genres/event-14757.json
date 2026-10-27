@@ -1,0 +1,15 @@
+{
+ "batch": "event-14757",
+ "events": [
+  {
+   "event_id": 14757,
+   "party_rooms": {
+    "count": 2,
+    "quote": "SOCIAL WITH 2 ROOMS"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": []
+  }
+ ]
+}

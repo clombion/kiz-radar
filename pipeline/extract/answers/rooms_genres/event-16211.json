@@ -1,0 +1,69 @@
+{
+ "batch": "event-16211",
+ "events": [
+  {
+   "event_id": 16211,
+   "party_rooms": {
+    "count": 2,
+    "quote": "🎶 Party Rooms\n🔥 Room 1"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Room 1",
+     "kind": "party",
+     "genres": [
+      "urbankiz",
+      "kizomba",
+      "tarraxo",
+      "kompa"
+     ],
+     "quote": "🔥 Room 1\n• Urban Kiz\n• Kizomba\n• Tarraxo\n• Urban Tarraxo\n• Kompa"
+    },
+    {
+     "name_as_written": "Room 2",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "semba",
+      "douceur",
+      "kompa"
+     ],
+     "quote": "🔥 Room 2\n• Kizomba\n• Semba\n• Douceur\n• Kompa\n• All Styles"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Urban Kiz experience"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "🌀 Tarraxo Bootcamp"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "💥 Kizomba Bootcamp"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "• Semba"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "• Douceur"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Kompa",
+     "quote": "• Kompa"
+    }
+   ]
+  }
+ ]
+}

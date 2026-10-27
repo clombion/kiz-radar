@@ -1,0 +1,49 @@
+{
+ "batch": "event-16713",
+ "events": [
+  {
+   "event_id": 16713,
+   "artists": [
+    {
+     "name_as_written": "Dj Jérémie",
+     "role": "dj",
+     "style": null,
+     "country": "Fr",
+     "source_line": "🎧Dj Jérémie (Fr)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_levels_beginners",
+     "quote": "FREE OPEN LEVEL WORKSHOPS",
+     "rationale": "Open-level workshops are explicitly offered free to all levels, which welcomes beginners."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "SPECIAL FESTIVAL WITH 5 AREAS",
+     "rationale": "The festival has five separate dance areas, so more than one dance floor is present."
+    },
+    {
+     "feature": "workshops",
+     "quote": "WORKSHOPS/ATELIERS SCHEDULE",
+     "rationale": "A workshop schedule is published, showing dance classes are part of the event."
+    },
+    {
+     "feature": "shows",
+     "quote": "23:00 SHOWTIME",
+     "rationale": "A showtime is scheduled in the evening programme, indicating performances."
+    },
+    {
+     "feature": "after_party",
+     "quote": "AFTER PARTY",
+     "rationale": "An after party is listed in the Saturday evening programme."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "HOTELS :",
+     "rationale": "The description lists hotel links under a hotels heading, giving recommended hotels without including accommodation in the pass."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,171 @@
+{
+ "batch": "event-18342",
+ "events": [
+  {
+   "event_id": 18342,
+   "artists": [
+    {
+     "name_as_written": "FRED-NELSON & MORGANE",
+     "role": "teacher",
+     "style": null,
+     "country": "France",
+     "source_line": "FRED-NELSON & MORGANE (France))"
+    },
+    {
+     "name_as_written": "NUNO & SARAI",
+     "role": "teacher",
+     "style": null,
+     "country": "Portugal / España",
+     "source_line": "NUNO & SARAI (Portugal / España)"
+    },
+    {
+     "name_as_written": "TOMAS REI DE KIZOMBA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "TOMAS REI DE KIZOMBA (Barcelona)"
+    },
+    {
+     "name_as_written": "ELSA & SERGI",
+     "role": "teacher",
+     "style": null,
+     "country": "Portugal/España",
+     "source_line": "ELSA & SERGI (Portugal/España)"
+    },
+    {
+     "name_as_written": "RITA & JAVI",
+     "role": "teacher",
+     "style": null,
+     "country": "Ucrania / Colombia",
+     "source_line": "RITA & JAVI (Ucrania / Colombia)"
+    },
+    {
+     "name_as_written": "NUNO & CATIA",
+     "role": "teacher",
+     "style": null,
+     "country": "Portugal",
+     "source_line": "NUNO & CATIA (Portugal)"
+    },
+    {
+     "name_as_written": "MIRA GAVILOVA",
+     "role": "teacher",
+     "style": null,
+     "country": "Bulgaria",
+     "source_line": "MIRA GAVILOVA (Bulgaria)"
+    },
+    {
+     "name_as_written": "MIGUEL & MÓNICA",
+     "role": "teacher",
+     "style": null,
+     "country": "Portugal",
+     "source_line": "MIGUEL & MÓNICA (Portugal)"
+    },
+    {
+     "name_as_written": "CRISTINA OLMOS",
+     "role": "teacher",
+     "style": null,
+     "country": "España",
+     "source_line": "CRISTINA OLMOS (España)"
+    },
+    {
+     "name_as_written": "CARLOS & OLGA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "CARLOS & OLGA (Tarragona)"
+    },
+    {
+     "name_as_written": "KEVIN DJASSY",
+     "role": "teacher",
+     "style": null,
+     "country": "Guinea Bissau",
+     "source_line": "KEVIN DJASSY (Guinea Bissau)"
+    },
+    {
+     "name_as_written": "J&J SABOR A KIZOMBA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "J&J SABOR A KIZOMBA (Zaragoza)"
+    },
+    {
+     "name_as_written": "DJ LUCAS",
+     "role": "dj",
+     "style": null,
+     "country": "Portugal",
+     "source_line": "DJ LUCAS (Portugal)"
+    },
+    {
+     "name_as_written": "DJ MOYAZ",
+     "role": "dj",
+     "style": null,
+     "country": "France",
+     "source_line": "DJ MOYAZ (France)"
+    },
+    {
+     "name_as_written": "DJ ANTONY TARRAXA",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ ANTONY TARRAXA (Barcelona)"
+    },
+    {
+     "name_as_written": "DJ NEO",
+     "role": "dj",
+     "style": null,
+     "country": "España",
+     "source_line": "DJ NEO (España)"
+    },
+    {
+     "name_as_written": "DJ TRIPODE",
+     "role": "dj",
+     "style": null,
+     "country": "España",
+     "source_line": "DJ TRIPODE (España)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "17-20: Workshops",
+     "rationale": "The program lists workshop sessions during the day on Friday, Saturday and Sunday."
+    },
+    {
+     "feature": "shows",
+     "quote": "parties and shows",
+     "rationale": "The description states that shows by artists take place at the event."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 exclusive rooms for workshops",
+     "rationale": "Two separate rooms are used for workshops, and two social rooms are used at night."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "will be in the same hotel",
+     "rationale": "Workshops, parties and shows all take place in the hotel where dancers are invited to stay."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "17-20h: Pool Party",
+     "rationale": "A pool party is listed in the Sunday program."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "BOOK YOUR ROOM IN THE MAIN HOTEL KARGA KIZOMBA FESTIVAL 2026!",
+     "rationale": "A main recommended hotel is offered with a negotiated room rate that is not part of the pass."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "with full board + water",
+     "rationale": "The hotel room price package includes full board meals."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "SHUTTLE FORM THE AIRPORTS",
+     "rationale": "Shuttle transfers from Barcelona and Girona airports to Lloret de Mar are provided through a company."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,39 @@
+{
+ "batch": "event-17092",
+ "events": [
+  {
+   "event_id": 17092,
+   "artists": [
+    {
+     "name_as_written": "Melvin & Gatica",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Melvin & Gatica"
+    }
+   ],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "4 DANCEFLOORS WITH 4 DIFFERENT TYPES OF MUSIC",
+     "rationale": "Four dance floors are advertised, which means more than one dance room."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "4 STARS OFFICIAL HOTEL",
+     "rationale": "An official hotel is named with a booking link, but the description does not say accommodation is part of the pass."
+    },
+    {
+     "feature": "shows",
+     "quote": "NEW SHOWS",
+     "rationale": "The event advertises new shows."
+    },
+    {
+     "feature": "competition",
+     "quote": "BACHATA JACK & JILL COMPETITION",
+     "rationale": "A Bachata Jack & Jill competition is listed as part of the festival."
+    }
+   ]
+  }
+ ]
+}

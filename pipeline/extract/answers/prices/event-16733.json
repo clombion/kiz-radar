@@ -1,6 +1,5 @@
 {
  "batch": "event-16733",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16733,
@@ -17,8 +16,7 @@
        "amount": 30,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -31,15 +29,14 @@
        "amount": 89,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "€89: FULL PASS – available for purchase on-site"
+       "quote": "▪️€89: FULL PASS – available for purchase on-site"
       }
      ]
     }

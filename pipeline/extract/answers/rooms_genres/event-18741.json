@@ -1,0 +1,38 @@
+{
+ "batch": "event-18741",
+ "events": [
+  {
+   "event_id": 18741,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Konpa meets Kizomba"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Konpa • Kizomba • Semba Bootcamps"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Konpa • Kizomba • Semba Bootcamps"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afrobeats",
+     "quote": "Workshops: Konpa, Kizomba, Semba, Afrobeats, Gouyad & more"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Gouyad",
+     "quote": "Workshops: Konpa, Kizomba, Semba, Afrobeats, Gouyad & more"
+    }
+   ]
+  }
+ ]
+}

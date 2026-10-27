@@ -1,0 +1,78 @@
+{
+ "batch": "event-15784",
+ "events": [
+  {
+   "event_id": 15784,
+   "artists": [
+    {
+     "name_as_written": "T’Peak and Djé",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "🖤 T’Peak and Djé 🇫🇷"
+    },
+    {
+     "name_as_written": "Liliana de Lima",
+     "role": "teacher",
+     "style": null,
+     "country": "🇩🇰🇧🇷",
+     "source_line": "🖤 Liliana de Lima 🇩🇰🇧🇷"
+    },
+    {
+     "name_as_written": "Catherine and Nora",
+     "role": "teacher",
+     "style": null,
+     "country": "🇩🇰🇸🇪",
+     "source_line": "🖤 Catherine and Nora 🇩🇰🇸🇪"
+    },
+    {
+     "name_as_written": "Leslie Ando",
+     "role": "teacher",
+     "style": null,
+     "country": "🇩🇪",
+     "source_line": "🖤 Leslie Ando 🇩🇪"
+    },
+    {
+     "name_as_written": "Mariana Inmarcesible",
+     "role": "teacher",
+     "style": null,
+     "country": "🇸🇪🇨🇱",
+     "source_line": "🖤 Mariana Inmarcesible 🇸🇪🇨🇱"
+    },
+    {
+     "name_as_written": "DJ Neiken",
+     "role": "dj",
+     "style": null,
+     "country": "🇮🇹🇵🇹",
+     "source_line": "🖤 DJ Neiken 🇮🇹🇵🇹"
+    },
+    {
+     "name_as_written": "DJ Ando",
+     "role": "dj",
+     "style": null,
+     "country": "🇩🇪",
+     "source_line": "🖤 DJ Ando 🇩🇪"
+    },
+    {
+     "name_as_written": "DJ T’Peak",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷🇬🇵",
+     "source_line": "🖤 DJ T’Peak 🇫🇷🇬🇵"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "we expect you to lead in all workshops",
+     "rationale": "The passes are tied to roles in the workshops, which shows that dance classes are part of the event."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Sunday: støberiet",
+     "rationale": "Rooms are listed per day, with værkstedet and støberiet named as separate dance rooms."
+    }
+   ]
+  }
+ ]
+}

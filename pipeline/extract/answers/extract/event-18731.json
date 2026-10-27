@@ -1,0 +1,142 @@
+{
+ "batch": "event-18731",
+ "events": [
+  {
+   "event_id": 18731,
+   "artists": [
+    {
+     "name_as_written": "ALC team",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "The ALC team is delighted to present the second edition of the “Orléans Kizomba Festival.”"
+    },
+    {
+     "name_as_written": "Luis & Karen",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✳️Luis & Karen"
+    },
+    {
+     "name_as_written": "Steven’s Mkz’Fa & Audrey Csty Mkz’Fa",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✳️Steven’s Mkz’Fa & Audrey Csty Mkz’Fa"
+    },
+    {
+     "name_as_written": "Dex & Law",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✳️ Dex & Law"
+    },
+    {
+     "name_as_written": "Curtis Lpk & Kelly",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✳️Curtis Lpk & Kelly"
+    },
+    {
+     "name_as_written": "Chico & Njie",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✳️Chico & Njie"
+    },
+    {
+     "name_as_written": "DJ Colts",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✴️DJ Colts"
+    },
+    {
+     "name_as_written": "Dj Diablo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✴️Dj Diablo"
+    },
+    {
+     "name_as_written": "Dj Angelo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✴️Dj Angelo"
+    },
+    {
+     "name_as_written": "Dj Chico",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✴️Dj Chico"
+    },
+    {
+     "name_as_written": "O-ney Team",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "🔸 O-ney Team"
+    },
+    {
+     "name_as_written": "KCS",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "🔸KCS"
+    },
+    {
+     "name_as_written": "Babou One Shot",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "🔸Babou One Shot"
+    },
+    {
+     "name_as_written": "So",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "🔸So"
+    },
+    {
+     "name_as_written": "Kitoko",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "🔸Kitoko"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "featuring classes in Kizomba, Semba, Urbankiz, and Tarraxo",
+     "rationale": "The event offers dance classes in several styles."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Approx. 12 hours of workshops over the weekend",
+     "rationale": "Workshops are explicitly part of the weekend programme."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "2 Socials",
+     "rationale": "Two daytime socials are scheduled on Saturday and Sunday afternoons."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "TAXI DANCERS",
+     "rationale": "A taxi dancer section with named teams is listed."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Event partner hotels",
+     "rationale": "The event lists partner hotels, with a discount for participants at one of them."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "batch": "event-16216",
+ "events": [
+  {
+   "event_id": 16216,
+   "artists": [],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "All in 1 VENUE: airhotel",
+     "rationale": "The description says everything takes place at the airhotel, which is also where dancers are invited to stay."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "STAY: Air hotel, Warsaw airport",
+     "rationale": "The STAY line names a recommended hotel for attendees, though accommodation is not stated as part of the pass."
+    }
+   ]
+  }
+ ]
+}

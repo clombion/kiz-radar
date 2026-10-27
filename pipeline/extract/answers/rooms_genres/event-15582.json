@@ -1,0 +1,72 @@
+{
+ "batch": "event-15582",
+ "events": [
+  {
+   "event_id": 15582,
+   "party_rooms": {
+    "count": 3,
+    "quote": "𝟯 𝗗𝗔𝗡𝗖𝗘 𝗪𝗢𝗥𝗟𝗗𝗦"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "urbankiz",
+      "tarraxo",
+      "semba"
+     ],
+     "quote": "1 Room 100% Kizomba / Urban Kiz / Tarraxo / Semba"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "salsa",
+      "bachata"
+     ],
+     "quote": "1 Room 50% Salsa – 50% Bachata"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "1 Room 100% Kizomba / Urban Kiz / Tarraxo / Semba"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "1 Room 100% Kizomba / Urban Kiz / Tarraxo / Semba"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "1 Room 100% Kizomba / Urban Kiz / Tarraxo / Semba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "1 Room 100% Kizomba / Urban Kiz / Tarraxo / Semba"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "1 Room 50% Salsa – 50% Bachata"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "1 Room 50% Salsa – 50% Bachata"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Hip Hop",
+     "quote": "Hélène Denigot — Hip Hop (Saint-Nazaire)"
+    }
+   ]
+  }
+ ]
+}

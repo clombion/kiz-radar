@@ -1,0 +1,29 @@
+{
+ "batch": "event-15923",
+ "events": [
+  {
+   "event_id": 15923,
+   "artists": [
+    {
+     "name_as_written": "Tempo Dance Studio",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Note: When making a transfer, please send confirmation of your transfer to Tempo Dance Studio via WhatsApp, to (48) 576 248 919, or by regular message."
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Three days of classes.",
+     "rationale": "The description states that the event includes three days of classes, which are dance classes."
+    },
+    {
+     "feature": "competition",
+     "quote": "2nd Urban and Tarraxo Championship.",
+     "rationale": "The event includes a Urban and Tarraxo Championship, which is a competition."
+    }
+   ]
+  }
+ ]
+}

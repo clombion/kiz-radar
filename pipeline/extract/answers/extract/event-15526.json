@@ -1,0 +1,116 @@
+{
+ "batch": "event-15526",
+ "events": [
+  {
+   "event_id": 15526,
+   "artists": [
+    {
+     "name_as_written": "DJ Remcy",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Remcy"
+    },
+    {
+     "name_as_written": "DJ Longchamp",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Longchamp from Munich"
+    },
+    {
+     "name_as_written": "DJ Gwada",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Gwada"
+    },
+    {
+     "name_as_written": "DJ Hero",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Hero"
+    },
+    {
+     "name_as_written": "Stef Kizz & Sonia",
+     "role": "teacher",
+     "style": "Kizomba/ Urban Kiz, Konpa, Semba, Douceur",
+     "country": null,
+     "source_line": "Stef Kizz & Sonia /"
+    },
+    {
+     "name_as_written": "Franky Kizzfly & Kerstin",
+     "role": "teacher",
+     "style": "Kizomba/ Urban Kiz, Konpa, Semba, Douceur",
+     "country": null,
+     "source_line": "Franky Kizzfly & Kerstin /"
+    },
+    {
+     "name_as_written": "Simone Senghaas",
+     "role": "teacher",
+     "style": "Kizomba/ Urban Kiz, Konpa, Semba, Douceur",
+     "country": null,
+     "source_line": "Simone Senghaas"
+    },
+    {
+     "name_as_written": "Mady Keita & Isabelle",
+     "role": "teacher",
+     "style": "Kizomba/ Urban Kiz, Konpa, Semba, Douceur",
+     "country": null,
+     "source_line": "Mady Keita & Isabelle /-"
+    },
+    {
+     "name_as_written": "Fajul & Tabea",
+     "role": "teacher",
+     "style": "Kizomba/ Urban Kiz, Konpa, Semba, Douceur",
+     "country": null,
+     "source_line": "Fajul & Tabea /-"
+    },
+    {
+     "name_as_written": "Simone « Kizombatouch » & Andrea",
+     "role": "teacher",
+     "style": "Kizomba/ Urban Kiz, Konpa, Semba, Douceur",
+     "country": null,
+     "source_line": "Simone « Kizombatouch » & Andrea /"
+    },
+    {
+     "name_as_written": "TEAM KIZINVASION FAMILY",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "TEAM KIZINVASION FAMILY"
+    },
+    {
+     "name_as_written": "C & E Events GmbH",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "C & E Events GmbH /Pivot Lerchentalstr 19 9016 St Gallen Switzerland"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "19:00 pm – 21:00 pm : Workshops",
+     "rationale": "The programme lists workshops on Friday evening."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "11:30 am – 19:30 Pm : Workshops und Social",
+     "rationale": "A daytime social dance is scheduled on Saturday."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Party with 2 Floor",
+     "rationale": "The party takes place over two dance floors."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Main Hotel: B&B HOTEL St Gallen",
+     "rationale": "A recommended main hotel is named, with bookings made directly at the hotel and not included in the pass."
+    }
+   ]
+  }
+ ]
+}

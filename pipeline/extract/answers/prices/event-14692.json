@@ -1,6 +1,5 @@
 {
  "batch": "event-14692",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 14692,
@@ -10,15 +9,14 @@
      "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": 3,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 65,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": 15,
@@ -31,8 +29,7 @@
        "amount": 85,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -48,15 +45,14 @@
      "style": null,
      "label_quote": null,
      "group_size": 2,
-     "days": 3,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 120,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": 15,
@@ -69,8 +65,7 @@
        "amount": 160,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,

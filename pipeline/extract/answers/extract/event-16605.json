@@ -1,0 +1,193 @@
+{
+ "batch": "event-16605",
+ "events": [
+  {
+   "event_id": 16605,
+   "artists": [
+    {
+     "name_as_written": "TONY PIRATA & MELODIE",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️TONY PIRATA & MELODIE"
+    },
+    {
+     "name_as_written": "ENAH LEBON & POCA HONTAS",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️ENAH LEBON & POCA HONTAS"
+    },
+    {
+     "name_as_written": "CURTIS & KELLY",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️CURTIS & KELLY"
+    },
+    {
+     "name_as_written": "JP & STEPHY",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️JP & STEPHY"
+    },
+    {
+     "name_as_written": "JULIEN & AMI",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️JULIEN & AMI"
+    },
+    {
+     "name_as_written": "ICHIGO & KRISTEL JU",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️ICHIGO & KRISTEL JU"
+    },
+    {
+     "name_as_written": "PUTO X",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️PUTO X"
+    },
+    {
+     "name_as_written": "DJ DIABLO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️DJ DIABLO"
+    },
+    {
+     "name_as_written": "DEE C BEATS",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️DEE C BEATS"
+    },
+    {
+     "name_as_written": "AMBROISE",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️AMBROISE"
+    },
+    {
+     "name_as_written": "EL PROFÉ",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️EL PROFÉ"
+    },
+    {
+     "name_as_written": "KAF & KAFRINE",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️KAF & KAFRINE"
+    },
+    {
+     "name_as_written": "RODOLPHE & LOANA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️RODOLPHE & LOANA"
+    },
+    {
+     "name_as_written": "DRICK & LAURENCE",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️DRICK & LAURENCE"
+    },
+    {
+     "name_as_written": "JIM & ALEXANDRA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️JIM & ALEXANDRA"
+    },
+    {
+     "name_as_written": "DENIS & LUDI",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️DENIS & LUDI"
+    },
+    {
+     "name_as_written": "ALIDA KIZ",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️ALIDA KIZ"
+    },
+    {
+     "name_as_written": "LISA BACHATERA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️LISA BACHATERA"
+    },
+    {
+     "name_as_written": "FLORA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️FLORA"
+    },
+    {
+     "name_as_written": "DJ EL DIABLO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️DJ EL DIABLO"
+    },
+    {
+     "name_as_written": "DJ FRED",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️DJ FRED"
+    },
+    {
+     "name_as_written": "DJ NONO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️DJ NONO"
+    },
+    {
+     "name_as_written": "MC DUC",
+     "role": "mc",
+     "style": null,
+     "country": null,
+     "source_line": "⚓️MC DUC"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "dance workshops covering all 3 disciplines",
+     "rationale": "The program lists dance workshops covering the three disciplines."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "classes accessible to all levels",
+     "rationale": "The workshops are described as accessible to all levels."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 rooms, 2 atmospheres, 1 single location",
+     "rationale": "The event has two dance rooms with different atmospheres."
+    },
+    {
+     "feature": "shows",
+     "quote": "ELJI BEATZKILLA SHOWCASE",
+     "rationale": "A showcase is announced as part of the event program."
+    }
+   ]
+  }
+ ]
+}

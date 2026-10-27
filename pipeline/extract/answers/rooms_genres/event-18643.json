@@ -1,0 +1,18 @@
+{
+ "batch": "event-18643",
+ "events": [
+  {
+   "event_id": 18643,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "a sophisticated Urban Kiz experience"
+    }
+   ]
+  }
+ ]
+}

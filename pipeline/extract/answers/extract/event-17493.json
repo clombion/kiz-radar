@@ -1,0 +1,203 @@
+{
+ "batch": "event-17493",
+ "events": [
+  {
+   "event_id": 17493,
+   "artists": [
+    {
+     "name_as_written": "𝐃𝐣 𝐋𝐄𝐍𝐇𝐘",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "▫🎶𝐃𝐣 𝐋𝐄𝐍𝐇𝐘​ 𝐭𝐡𝐞 𝐆𝐎𝐃𝐅𝐀𝐓𝐇𝐄𝐑 🅵🆁💥"
+    },
+    {
+     "name_as_written": "𝐃𝐣 𝐇𝐔𝐆𝐎 𝐒𝐌𝐈𝐋𝐄",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "▫🎵𝐃𝐣 𝐇𝐔𝐆𝐎 𝐒𝐌𝐈𝐋𝐄 🅵🆁"
+    },
+    {
+     "name_as_written": "𝐃𝐣 𝐒𝐍𝐀𝐊𝐄𝐒",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "▫🎵𝐃𝐣 𝐒𝐍𝐀𝐊𝐄𝐒 🅵🆁"
+    },
+    {
+     "name_as_written": "𝐃𝐣 𝐕𝐀𝐒𝐂𝐎",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "▫🎵 𝐃𝐣 𝐕𝐀𝐒𝐂𝐎 🅵🆁"
+    },
+    {
+     "name_as_written": "𝐃𝐣 𝐁𝐀𝐑𝐓𝐄𝐅",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "▫🎵 𝐃𝐣 𝐁𝐀𝐑𝐓𝐄𝐅 🅿🅻"
+    },
+    {
+     "name_as_written": "𝐃𝐉 𝐌𝐀𝐑𝐂𝐎",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "▫🎵 𝐃𝐉 𝐌𝐀𝐑𝐂𝐎 🅽🅻"
+    },
+    {
+     "name_as_written": "𝐃𝐣 𝐅𝐑𝐀𝐍𝐊",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "▫🎵 𝐃𝐣 𝐅𝐑𝐀𝐍𝐊 🅶🅴"
+    },
+    {
+     "name_as_written": "𝐃𝐣 𝐅𝐎𝐅𝐈𝐍𝐇𝐎",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "▫🎵 𝐃𝐣 𝐅𝐎𝐅𝐈𝐍𝐇𝐎 🅵🆁"
+    },
+    {
+     "name_as_written": "𝐃𝐣 𝐗",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "▫🎵 𝐃𝐣 𝐗 🅻🆅"
+    },
+    {
+     "name_as_written": "𝐃𝐣 𝐑𝐗",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "▫🎵 𝐃𝐣 𝐑𝐗 🅻🆅"
+    },
+    {
+     "name_as_written": "𝐀𝐋𝐁𝐈𝐑 & 𝐍𝐀𝐓𝐀𝐋𝐈𝐀",
+     "role": "teacher",
+     "style": "𝐔𝐫𝐛𝐚𝐧𝐊𝐢𝐳",
+     "country": null,
+     "source_line": "𝐀𝐋𝐁𝐈𝐑 & 𝐍𝐀𝐓𝐀𝐋𝐈𝐀 🅴🆂"
+    },
+    {
+     "name_as_written": "𝐒𝐓𝐄𝐕𝐄𝐍’𝐒 & 𝐀𝐔𝐃𝐑𝐄𝐘",
+     "role": "teacher",
+     "style": "𝐔𝐫𝐛𝐚𝐧𝐊𝐢𝐳",
+     "country": null,
+     "source_line": "𝐒𝐓𝐄𝐕𝐄𝐍’𝐒 & 𝐀𝐔𝐃𝐑𝐄𝐘 🅵🆁"
+    },
+    {
+     "name_as_written": "𝐕𝐀𝐍𝐈𝐋𝐃𝐎",
+     "role": "teacher",
+     "style": "𝐔𝐫𝐛𝐚𝐧𝐊𝐢𝐳",
+     "country": null,
+     "source_line": "𝐕𝐀𝐍𝐈𝐋𝐃𝐎 🅽🅻"
+    },
+    {
+     "name_as_written": "𝐋𝐎𝐋𝐎 𝐖𝐀𝐊𝐈",
+     "role": "teacher",
+     "style": "𝐔𝐫𝐛𝐚𝐧𝐊𝐢𝐳",
+     "country": null,
+     "source_line": "𝐋𝐎𝐋𝐎 𝐖𝐀𝐊𝐈 🅵🆁"
+    },
+    {
+     "name_as_written": "𝐓𝐀𝐑𝐘𝐍 & 𝐒𝐄𝐑𝐆𝐄𝐈",
+     "role": "teacher",
+     "style": "𝐔𝐫𝐛𝐚𝐧𝐊𝐢𝐳",
+     "country": null,
+     "source_line": "𝐓𝐀𝐑𝐘𝐍 & 𝐒𝐄𝐑𝐆𝐄𝐈 🅿🆃/ 🅴🆂"
+    },
+    {
+     "name_as_written": "𝐍𝐀𝐍𝐄 & 𝐑𝐎𝐍𝐍𝐘",
+     "role": "teacher",
+     "style": "𝐔𝐫𝐛𝐚𝐧𝐊𝐢𝐳",
+     "country": null,
+     "source_line": "𝐍𝐀𝐍𝐄 & 𝐑𝐎𝐍𝐍𝐘 🅴🆂"
+    },
+    {
+     "name_as_written": "𝐄𝐌𝐑𝐀𝐇 & 𝐒𝐀𝐂𝐇𝐈",
+     "role": "teacher",
+     "style": "𝐔𝐫𝐛𝐚𝐧𝐊𝐢𝐳",
+     "country": null,
+     "source_line": "𝐄𝐌𝐑𝐀𝐇 & 𝐒𝐀𝐂𝐇𝐈 🅽🅻"
+    },
+    {
+     "name_as_written": "𝐕𝐀𝐒𝐂𝐎",
+     "role": "teacher",
+     "style": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚",
+     "country": null,
+     "source_line": "𝐕𝐀𝐒𝐂𝐎 🅵🆁"
+    },
+    {
+     "name_as_written": "𝐒𝐕𝐄𝐍 & 𝐙𝐀𝐍𝐄",
+     "role": "teacher",
+     "style": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚",
+     "country": null,
+     "source_line": "𝐒𝐕𝐄𝐍 & 𝐙𝐀𝐍𝐄 🅵🅸/🅻🆅"
+    },
+    {
+     "name_as_written": "𝐈𝐑𝐁𝐄",
+     "role": "teacher",
+     "style": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚",
+     "country": null,
+     "source_line": "𝐈𝐑𝐁𝐄 🅻🆅"
+    },
+    {
+     "name_as_written": "Project by design",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Project by design"
+    },
+    {
+     "name_as_written": "𝘑𝘦𝘭𝘦𝘯𝘢 𝘗𝘳𝘦𝘬𝘳𝘢𝘴𝘯𝘢𝘺𝘢",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "▫𝘑𝘦𝘭𝘦𝘯𝘢 𝘗𝘳𝘦𝘬𝘳𝘢𝘴𝘯𝘢𝘺𝘢"
+    },
+    {
+     "name_as_written": "𝘠𝘢𝘯𝘢 𝘕𝘺𝘢𝘪",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "▫𝘠𝘢𝘯𝘢 𝘕𝘺𝘢𝘪"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "1 workshop – 20 eur",
+     "rationale": "A price is listed for a single workshop, showing dance workshops are part of the event."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "𝐓𝐀𝐗𝐈 𝐃𝐀𝐍𝐂𝐄𝐑𝐒 (𝐌𝐄𝐍 𝐀𝐍𝐃 𝐖𝐎𝐌𝐄𝐍)",
+     "rationale": "The guarantees list names taxi dancers, men and women."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Thursday preparty – 30eur",
+     "rationale": "A priced Thursday preparty is offered before the main party days."
+    },
+    {
+     "feature": "after_party",
+     "quote": "𝐏𝐑𝐄- 𝐚𝐧𝐝 𝐀𝐅𝐓𝐄𝐑-𝐏𝐀𝐑𝐓𝐘",
+     "rationale": "The guarantees list an after-party alongside the pre-party."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "𝐓𝐖𝐎 𝐑𝐎𝐎𝐌𝐒/ 𝐓𝐖𝐎 𝐃𝐈𝐅𝐅𝐄𝐑𝐄𝐍𝐓 𝐀𝐌𝐁𝐈𝐄𝐍𝐂𝐄𝐒",
+     "rationale": "The guarantees promise two rooms with two different ambiences."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "𝐁𝐄𝐋𝐋𝐄𝐕𝐔𝐄 𝐏𝐀𝐑𝐊 𝐇𝐎𝐓𝐄𝐋****",
+     "rationale": "The main venue is named as a hotel, indicating the event is held at a partner hotel."
+    }
+   ]
+  }
+ ]
+}

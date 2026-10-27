@@ -1,0 +1,165 @@
+{
+ "batch": "event-15893",
+ "events": [
+  {
+   "event_id": 15893,
+   "artists": [
+    {
+     "name_as_written": "Elhadj & Jenna",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "•⁠ ⁠Elhadj & Jenna"
+    },
+    {
+     "name_as_written": "Ary & Maura",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "•⁠ ⁠Ary & Maura"
+    },
+    {
+     "name_as_written": "Pedro SP & Naomie",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "•⁠ ⁠Pedro SP & Naomie"
+    },
+    {
+     "name_as_written": "Tony Viser & Carla",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "•⁠ ⁠Tony Viser & Carla"
+    },
+    {
+     "name_as_written": "Fabricio Do Zangado",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "•⁠ ⁠Fabricio Do Zangado"
+    },
+    {
+     "name_as_written": "Hector & Paula",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "•⁠ ⁠Hector & Paula"
+    },
+    {
+     "name_as_written": "Evaldo & Daniela",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "•⁠ ⁠Evaldo & Daniela"
+    },
+    {
+     "name_as_written": "Esteban & Sandra",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "•⁠ ⁠Esteban & Sandra"
+    },
+    {
+     "name_as_written": "Fanio",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "•⁠ ⁠Fanio"
+    },
+    {
+     "name_as_written": "Jadilson",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "•⁠ ⁠Jadilson"
+    },
+    {
+     "name_as_written": "Miro Nikola",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "•⁠ ⁠Miro Nikola"
+    },
+    {
+     "name_as_written": "Linduka",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "•⁠ ⁠Linduka"
+    },
+    {
+     "name_as_written": "Bakongo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "•⁠ ⁠Bakongo"
+    },
+    {
+     "name_as_written": "Marlas",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "•⁠ ⁠Marlas"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "All in one hotel",
+     "rationale": "The bullet states the event is an all-in-one hotel, meaning the parties happen in the hotel where dancers stay."
+    },
+    {
+     "feature": "beach_party",
+     "quote": "Beach party",
+     "rationale": "The event list names a beach party."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Pool party",
+     "rationale": "The event list names a pool party."
+    },
+    {
+     "feature": "workshops",
+     "quote": "3 days of workshops",
+     "rationale": "Dance workshops are listed as part of the event."
+    },
+    {
+     "feature": "competition",
+     "quote": "Dance competition",
+     "rationale": "A dance competition is listed among the event features."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Masterclasses",
+     "rationale": "Masterclasses are listed as part of the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "3 days of socials",
+     "rationale": "Socials are listed as part of the event, which are daytime socials per the schedule of days."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Crazy, sexy, and cool dress codes",
+     "rationale": "The event explicitly states dress codes."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "2 nights double room + Full board",
+     "rationale": "The package bundles a hotel room with the pass price."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Full board",
+     "rationale": "Full board meals are included in the accommodation packages."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "VS Versus Gandía Palace Hotel",
+     "rationale": "The event names a specific hotel for the accommodation."
+    }
+   ]
+  }
+ ]
+}

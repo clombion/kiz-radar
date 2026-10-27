@@ -1,6 +1,5 @@
 {
  "batch": "event-17853",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17853,
@@ -17,14 +16,13 @@
        "amount": 190,
        "currency": "USD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
-       "current": false,
+       "current": true,
        "quote": "✨FullPass $190"
       }
      ]
@@ -41,14 +39,13 @@
        "amount": 160,
        "currency": "USD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
-       "current": false,
+       "current": true,
        "quote": "✨PartyPass $160✨"
       }
      ]

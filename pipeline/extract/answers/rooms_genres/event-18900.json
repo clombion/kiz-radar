@@ -1,0 +1,28 @@
+{
+ "batch": "event-18900",
+ "events": [
+  {
+   "event_id": 18900,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Semba | Mário & Carla"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba | Jó & Sara"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Ginga",
+     "quote": "Ginga | Eliza Sala"
+    }
+   ]
+  }
+ ]
+}

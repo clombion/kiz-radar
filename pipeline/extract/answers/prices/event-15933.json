@@ -1,12 +1,11 @@
 {
  "batch": "event-15933",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15933,
    "passes": [
     {
-     "kind": "other",
+     "kind": "full",
      "style": null,
      "label_quote": null,
      "group_size": 1,
@@ -17,8 +16,7 @@
        "amount": 75,
        "currency": "USD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "2025-07-31",
        "quantity": null,
@@ -26,23 +24,12 @@
        "sold_out": false,
        "current": false,
        "quote": "$75 Believer Passes Available through July 31, 2025!"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
+      },
       {
        "amount": 100,
        "currency": "USD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "2026-03-31",
        "quantity": null,

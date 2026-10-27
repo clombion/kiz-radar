@@ -1,0 +1,53 @@
+{
+ "batch": "event-15888",
+ "events": [
+  {
+   "event_id": 15888,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "LINE UP KIZOMBA URBAN KIZ SEMBA TARRAXO"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBAN KIZ",
+     "quote": "LINE UP KIZOMBA URBAN KIZ SEMBA TARRAXO"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "SEMBA",
+     "quote": "LINE UP KIZOMBA URBAN KIZ SEMBA TARRAXO"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "TARRAXO",
+     "quote": "LINE UP KIZOMBA URBAN KIZ SEMBA TARRAXO"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "ZOUK",
+     "quote": "LINE UP ZOUK/KONPA/AMBIANCE"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "KONPA",
+     "quote": "ZOUK/KONPA/AMBIANCE"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "LINE UP SALSA/BACHATA"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "SALSA/BACHATA"
+    }
+   ]
+  }
+ ]
+}

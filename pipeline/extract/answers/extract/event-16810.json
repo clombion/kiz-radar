@@ -1,0 +1,122 @@
+{
+ "batch": "event-16810",
+ "events": [
+  {
+   "event_id": 16810,
+   "artists": [
+    {
+     "name_as_written": "Puto Catete",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "⭐ Puto Catete 🇦🇴"
+    },
+    {
+     "name_as_written": "Paula & Serena",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "⭐ Paula & Serena 🇦🇴"
+    },
+    {
+     "name_as_written": "Álvaro & Tomásia",
+     "role": "teacher",
+     "style": null,
+     "country": "🇵🇹",
+     "source_line": "⭐ Álvaro & Tomásia 🇵🇹"
+    },
+    {
+     "name_as_written": "Jone & Nelinha",
+     "role": "teacher",
+     "style": null,
+     "country": "🇵🇹",
+     "source_line": "⭐ Jone & Nelinha 🇵🇹"
+    },
+    {
+     "name_as_written": "Marcos & Anita",
+     "role": "teacher",
+     "style": null,
+     "country": "🇵🇹",
+     "source_line": "⭐ Marcos & Anita 🇵🇹"
+    },
+    {
+     "name_as_written": "Fernando & Micaela",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹",
+     "source_line": "⭐ Fernando & Micaela 🇮🇹"
+    },
+    {
+     "name_as_written": "Esteban & Sandra",
+     "role": "teacher",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "⭐ Esteban & Sandra 🇪🇸"
+    },
+    {
+     "name_as_written": "DJ Bakongo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔊 DJ Bakongo"
+    },
+    {
+     "name_as_written": "DJ Formiga",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔊 DJ Formiga"
+    },
+    {
+     "name_as_written": "Jone Valentino & Nelinha Gonga",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "By: Jone Valentino & Nelinha Gonga"
+    }
+   ],
+   "features": [
+    {
+     "feature": "competition",
+     "quote": "WORLD KIZOMBA & SEMBA COMPETITION",
+     "rationale": "The event is a world dance competition, as named in the programme heading."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Workshops with international artists",
+     "rationale": "The premium programme lists workshops taught by international artists."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "3 daytime socials",
+     "rationale": "The programme includes three daytime socials."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Dinner included",
+     "rationale": "The premium programme states that dinner is included."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Live music show",
+     "rationale": "A live music show is part of the programme."
+    },
+    {
+     "feature": "shows",
+     "quote": "Special performances",
+     "rationale": "The programme lists special performances by artists."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "IBIS HOTEL SINTRA. Booking your accommodations",
+     "rationale": "An official hotel is recommended for booking, separate from the pass."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Shuttle service available every 30 minutes",
+     "rationale": "An official shuttle runs between the hotel and the venue throughout the event."
+    }
+   ]
+  }
+ ]
+}

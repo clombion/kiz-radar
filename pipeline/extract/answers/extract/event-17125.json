@@ -1,0 +1,16 @@
+{
+ "batch": "event-17125",
+ "events": [
+  {
+   "event_id": 17125,
+   "artists": [],
+   "features": [
+    {
+     "feature": "all_levels_beginners",
+     "quote": "Whether you’re a seasoned kizomba dancer or just starting out",
+     "rationale": "The description explicitly says the event suits beginners as well as experienced dancers."
+    }
+   ]
+  }
+ ]
+}

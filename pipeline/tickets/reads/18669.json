@@ -1,0 +1,73 @@
+{
+ "event_id": 18669,
+ "title": "HAKUNA MATATA FESTIVAL – Sunshine Edition",
+ "start_date": "2027-01-29",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "cb864655c7075f56",
+ "rows_at": "2026-10-27T02:24:01+00:00",
+ "styles": [
+  "kizomba"
+ ],
+ "description": "🌞 HAKUNA MATATA – SUNSHINE EDITION 🌞\nGet ready for an unforgettable weekend filled with Kizomba, music, dance, sunshine and good vibes! ☀️🔥\n📅 29 January – 1 February 2027\n📍 Studio G – 38400 Saint-Martin-d’Hères, France\nHakuna Matata – Sunshine Edition brings together an amazing line-up of DJs, artists and dancers for a weekend dedicated to sharing, connection and the love of dance.\n🎧 DJs\nDJ Diablo • DJ Miky Mike • DJ Dedinho • DJ Chad • DJ Jkee • DJ Stompy • DJ Lass\n💃 Artists & Dancers\nPao Lou & Margaux • Pidjay & Enora • Heneco & Mame • Lna Carla\nExpect great music, incredible dancing, beautiful energy and unforgettable moments all weekend long. 🌴✨\nWhether you’re coming to learn, dance, meet new people or simply enjoy the atmosphere, Hakuna Matata – Sunshine Edition is the place to be!\n☀️ Dance. Music. Sunshine. Good vibes.\nHakuna Matata! 🌺",
+ "passes": [
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "7113425"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "party",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "7264245"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "7281385"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [],
+ "rule_quotes": []
+}

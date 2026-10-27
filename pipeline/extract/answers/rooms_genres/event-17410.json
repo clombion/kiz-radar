@@ -1,0 +1,28 @@
+{
+ "batch": "event-17410",
+ "events": [
+  {
+   "event_id": 17410,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "celebrating the artists and enthusiasts of Kizomba, Semba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba, Semba, and global dance traditions"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "global dance traditions",
+     "quote": "Semba, and global dance traditions"
+    }
+   ]
+  }
+ ]
+}

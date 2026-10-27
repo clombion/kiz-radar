@@ -1,6 +1,5 @@
 {
  "batch": "event-14921",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 14921,
@@ -17,15 +16,14 @@
        "amount": 49,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Full Pass (individual): €49"
+       "quote": "🔸 Full Pass (individual): €49"
       }
      ]
     },
@@ -41,15 +39,14 @@
        "amount": 79,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Couple Pass (man + woman): €79"
+       "quote": "🔸 Couple Pass (man + woman): €79"
       }
      ]
     }

@@ -1,0 +1,25 @@
+{
+ "batch": "event-18896",
+ "events": [
+  {
+   "event_id": 18896,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Sala Gabos",
+     "kind": "party",
+     "genres": [],
+     "quote": "Sala Gabos"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba na rua"
+    }
+   ]
+  }
+ ]
+}

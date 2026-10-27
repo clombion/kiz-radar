@@ -1,0 +1,230 @@
+{
+ "batch": "event-16338",
+ "events": [
+  {
+   "event_id": 16338,
+   "artists": [
+    {
+     "name_as_written": "Aix Riviera agency",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "The Aix Riviera agency, organizer of the festival, invites you to the 7th edition of Aix Riviera Latina, from Wednesday, April 29th to Saturday, May 2nd, 2025."
+    },
+    {
+     "name_as_written": "Aix Riviera Tourist Office",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Organized by: Aix Riviera Tourist Office, Musica Cubana Association, and Nicolas El Buceador"
+    },
+    {
+     "name_as_written": "Musica Cubana Association",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Organized by: Aix Riviera Tourist Office, Musica Cubana Association, and Nicolas El Buceador"
+    },
+    {
+     "name_as_written": "Nicolas El Buceador",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Organized by: Aix Riviera Tourist Office, Musica Cubana Association, and Nicolas El Buceador"
+    },
+    {
+     "name_as_written": "Yanet Ochun Chango",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "☀️ Yanet Ochun Chango (Santiago de Cuba, Marseille)"
+    },
+    {
+     "name_as_written": "Roméo Bachata and Laura",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "☀️ Roméo Bachata and Laura (Marseille)"
+    },
+    {
+     "name_as_written": "Juan Pablo Paredes",
+     "role": "teacher",
+     "style": null,
+     "country": "Dominican Republic",
+     "source_line": "☀️ Juan Pablo Paredes (Dominican Republic) and Laetitia (Chambéry)"
+    },
+    {
+     "name_as_written": "Laetitia",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "☀️ Juan Pablo Paredes (Dominican Republic) and Laetitia (Chambéry)"
+    },
+    {
+     "name_as_written": "Mundy and Laurie",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "☀️ Mundy and Laurie (Chambéry)"
+    },
+    {
+     "name_as_written": "Cyrille Ramos and Gihenn",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "☀️ Cyrille Ramos and Gihenn (Chambéry/Annecy)"
+    },
+    {
+     "name_as_written": "Sergio and Virginie",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "☀️ Sergio and Virginie (Annecy)"
+    },
+    {
+     "name_as_written": "Hélène and Anar",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "☀️ Hélène and Anar (Annecy)"
+    },
+    {
+     "name_as_written": "John & Sandra",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "☀️ John & Sandra (Aix-les-Bains)"
+    },
+    {
+     "name_as_written": "Julio & Sandra",
+     "role": "teacher",
+     "style": null,
+     "country": "Germany",
+     "source_line": "☀️ Julio & Sandra (Germany)"
+    },
+    {
+     "name_as_written": "Roberto Romero",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "☀️ Roberto Romero (Chambéry)"
+    },
+    {
+     "name_as_written": "Clément and Marianne",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "☀️ Clément and Marianne from MC Dance (Villeurbanne)"
+    },
+    {
+     "name_as_written": "DJ Tom Nka",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Tom Nka (Paris)"
+    },
+    {
+     "name_as_written": "DJ Chechyto",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Chechyto (Annecy)"
+    },
+    {
+     "name_as_written": "DJ Oscar D Lyon",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Oscar D Lyon (Lyon)"
+    },
+    {
+     "name_as_written": "DJ Tovo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Tovo (Lyon)"
+    },
+    {
+     "name_as_written": "DJ Will",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Will (Annecy)"
+    },
+    {
+     "name_as_written": "DJ Saad",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Saad (Lyon)"
+    },
+    {
+     "name_as_written": "DJ Boubou",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Boubou (Saint-Étienne)"
+    },
+    {
+     "name_as_written": "DJ Elson",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Elson (Lyon)"
+    },
+    {
+     "name_as_written": "DJ St3f",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ St3f (Grenoble)"
+    },
+    {
+     "name_as_written": "DJ Dy’Mun",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Dy’Mun (Chambéry)"
+    },
+    {
+     "name_as_written": "DJ Guille Blanco",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Guille Blanco (Annecy)"
+    },
+    {
+     "name_as_written": "DJ Mario",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Mario (Aix-les-Bains)"
+    },
+    {
+     "name_as_written": "DJ El Buceador",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ El Buceador (Aix-les-Bains)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "54 hours of workshops (+9 hours)",
+     "rationale": "The description states that workshops are part of the festival, with a stated number of hours."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 rooms / 3 vibes",
+     "rationale": "Each evening has three separate rooms, showing more than one dance floor."
+    },
+    {
+     "feature": "shows",
+     "quote": "Local and international artists, 19 instructors, and 13 DJs will be performing",
+     "rationale": "The text says the artists will perform at the festival."
+    }
+   ]
+  }
+ ]
+}

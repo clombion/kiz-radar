@@ -1,0 +1,23 @@
+{
+ "batch": "event-15722",
+ "events": [
+  {
+   "event_id": 15722,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "promoting kizomba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "semba",
+     "quote": "kizomba/semba lovers"
+    }
+   ]
+  }
+ ]
+}

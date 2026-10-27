@@ -1,0 +1,38 @@
+{
+ "batch": "event-17067",
+ "events": [
+  {
+   "event_id": 17067,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa, Bachata, Kizomba/UrbanKiz & Zouk!"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Salsa, Bachata, Kizomba/UrbanKiz & Zouk!"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba/UrbanKiz"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "UrbanKiz",
+     "quote": "Kizomba/UrbanKiz"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Zouk",
+     "quote": "Salsa, Bachata, Kizomba/UrbanKiz & Zouk!"
+    }
+   ]
+  }
+ ]
+}

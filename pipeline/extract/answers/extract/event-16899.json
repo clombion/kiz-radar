@@ -1,0 +1,21 @@
+{
+ "batch": "event-16899",
+ "events": [
+  {
+   "event_id": 16899,
+   "artists": [],
+   "features": [
+    {
+     "feature": "shows",
+     "quote": "Live dance performances & stage shows",
+     "rationale": "The description lists live dance performances and stage shows as part of the festival."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "elegant attire required",
+     "rationale": "The Grand Gala states that elegant attire is required, which is a stated dress code."
+    }
+   ]
+  }
+ ]
+}

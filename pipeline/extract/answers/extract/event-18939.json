@@ -1,0 +1,21 @@
+{
+ "batch": "event-18939",
+ "events": [
+  {
+   "event_id": 18939,
+   "artists": [],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "two dedicated dance rooms",
+     "rationale": "The description states the weekend has two dedicated dance rooms, which means more than one dance floor."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "a beginner",
+     "rationale": "The text says the weekend is for passionate dancers and for beginners, so it explicitly welcomes beginners."
+    }
+   ]
+  }
+ ]
+}

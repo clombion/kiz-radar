@@ -1,0 +1,49 @@
+{
+ "batch": "event-18213",
+ "events": [
+  {
+   "event_id": 18213,
+   "artists": [
+    {
+     "name_as_written": "Nairobi Kizomba Sensação",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "📩 Express your interest by contacting the organizer, Nairobi Kizomba Sensação represented by Allan Tai through WhatsApp (+254705090729) or email (info@kizombasensacao.com)."
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Daily workshops, school visits & practice sessions.",
+     "rationale": "The text states that daily workshops are part of the trip."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Socials, live music & authentic nightlife.",
+     "rationale": "The text explicitly promises live music at the event."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "10 Nights Accommodation (Per Person Sharing)",
+     "rationale": "Accommodation is listed under What's Included, so it is part of the package."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Half Board – 2 meals/day (drinks not included)",
+     "rationale": "Meals are listed as included in the package."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Airport Transfers – Pickup & drop-off (+/- 1 day)",
+     "rationale": "Airport pickup and drop-off transfers are included."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "Socials & Themed Parties",
+     "rationale": "The package includes themed parties."
+    }
+   ]
+  }
+ ]
+}

@@ -1,6 +1,5 @@
 {
  "batch": "event-19048",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 19048,
@@ -17,8 +16,7 @@
        "amount": 690,
        "currency": "DKK",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "05-29",
        "until": "06-12",
        "quantity": null,
@@ -31,8 +29,7 @@
        "amount": 850,
        "currency": "DKK",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "06-13",
        "until": "08-31",
        "quantity": null,
@@ -45,8 +42,7 @@
        "amount": 990,
        "currency": "DKK",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "09-01",
        "until": null,
        "quantity": null,

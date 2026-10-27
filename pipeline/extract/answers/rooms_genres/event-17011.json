@@ -1,0 +1,48 @@
+{
+ "batch": "event-17011",
+ "events": [
+  {
+   "event_id": 17011,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Cuban & LA Salsa"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata Fusion & Sensual"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba / UrbanKiz"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "UrbanKiz",
+     "quote": "Kizomba / UrbanKiz"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Flamenco",
+     "quote": "Flamenco Lady Style"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Zumba",
+     "quote": "Zumba"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Forró",
+     "quote": "Forró"
+    }
+   ]
+  }
+ ]
+}

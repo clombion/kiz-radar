@@ -1,6 +1,5 @@
 {
  "batch": "event-18832",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18832,
@@ -10,15 +9,14 @@
      "style": null,
      "label_quote": "FULL PASS Pricing:",
      "group_size": 1,
-     "days": 3,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 290,
        "currency": "PLN",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -31,8 +29,7 @@
        "amount": 320,
        "currency": "PLN",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": 10,
@@ -45,8 +42,7 @@
        "amount": 350,
        "currency": "PLN",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "09-01",
        "until": "11-30",
        "quantity": null,
@@ -59,8 +55,7 @@
        "amount": 380,
        "currency": "PLN",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "12-01",
        "until": "01-31",
        "quantity": null,
@@ -73,8 +68,7 @@
        "amount": 410,
        "currency": "PLN",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "02-01",
        "until": "02-28",
        "quantity": null,
@@ -87,8 +81,7 @@
        "amount": 430,
        "currency": "PLN",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "03-01",
        "until": "03-31",
        "quantity": null,
@@ -101,8 +94,7 @@
        "amount": 450,
        "currency": "PLN",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -115,7 +107,7 @@
     }
    ],
    "rule_quotes": [
-    "multiply the amount by 2"
+    "Registration for couples only."
    ]
   }
  ]

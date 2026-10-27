@@ -1,0 +1,36 @@
+{
+ "batch": "event-16600",
+ "events": [
+  {
+   "event_id": 16600,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Daytime cultural workshops led by our Cultural Ambassadors",
+     "rationale": "The schedule lists daytime cultural workshops led by Cultural Ambassadors."
+    },
+    {
+     "feature": "competition",
+     "quote": "a prestigious cultural pageant open to individuals of Angolan descent",
+     "rationale": "The Mr. & Miss Angola Canada Competition is a pageant with contestants and winners, so it counts as a competition."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Live Angolan music & DJ sets",
+     "rationale": "The opening night schedule includes live Angolan music."
+    },
+    {
+     "feature": "shows",
+     "quote": "Live performances from Angolan",
+     "rationale": "The Day 2 schedule lists live performances by Angolan-Canadian artists."
+    },
+    {
+     "feature": "after_party",
+     "quote": "concert and after‑party",
+     "rationale": "The Day 3 finale ends with a concert and an after-party."
+    }
+   ]
+  }
+ ]
+}

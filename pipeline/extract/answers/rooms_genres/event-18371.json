@@ -1,0 +1,39 @@
+{
+ "batch": "event-18371",
+ "events": [
+  {
+   "event_id": 18371,
+   "party_rooms": {
+    "count": 5,
+    "quote": "Amazing parties until sunrise in 5 halls"
+   },
+   "class_rooms": {
+    "count": 8,
+    "quote": "Excellent workshops in 8 halls"
+   },
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "BALKAN SALSA-BACHATA-KIZOMBA CONGRESS"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Great music: Cuban, LA, NY, Cha-cha, Bachata, Kizomba, Traditional dances etc."
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Great music: Cuban, LA, NY, Cha-cha, Bachata, Kizomba, Traditional dances etc."
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Cha-cha",
+     "quote": "Great music: Cuban, LA, NY, Cha-cha, Bachata, Kizomba, Traditional dances etc."
+    }
+   ]
+  }
+ ]
+}

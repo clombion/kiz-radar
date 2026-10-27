@@ -1,0 +1,26 @@
+{
+ "batch": "event-17064",
+ "events": [
+  {
+   "event_id": 17064,
+   "artists": [],
+   "features": [
+    {
+     "feature": "day_socials",
+     "quote": "SOCIAL DANCING BY DAY",
+     "rationale": "Daytime social dancing is advertised as part of the programme."
+    },
+    {
+     "feature": "workshops",
+     "quote": "OVER 15 HOURS OF WORKSHOP",
+     "rationale": "The description promises over 15 hours of workshops."
+    },
+    {
+     "feature": "competition",
+     "quote": "JACK&JILL",
+     "rationale": "Jack & Jill is a competition format named in the event listing."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,147 @@
+{
+ "event_id": 19444,
+ "title": "Exodus Kizomba Congress – V Edition",
+ "start_date": "2027-02-03",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "cb864655c7075f56",
+ "rows_at": "2026-10-27T02:24:12+00:00",
+ "styles": [
+  "kizomba"
+ ],
+ "description": "👑 WARSAW EXODUS KIZOMBA CONGRESS V – KINGS & QUEENS EDITION 👑\n✨ 3–9 FEBRUARY 2027 | WARSAW, POLAND ✨\nGet ready for an unforgettable week at Warsaw Exodus Kizomba Congress V – Kings & Queens Edition! 🔥\nA full week dedicated to Kizomba, Urban Kiz, Semba and Tarraxo, bringing together dancers, teachers, artists and DJs from around the world for an incredible international dance experience.\n👑 KINGS & QUEENS EDITION\nA prestigious line-up of international teachers and artists, including:\n⭐ Albír & Natalia\n⭐ Audi & Laura\n⭐ Said & Oksana\n⭐ Tresor & Aurea\n⭐ Luis & Karen\n⭐ DWé & Gaby\n⭐ Tony Viser & Carla\n⭐ Fabricio do Zangado\n⭐ Kama & Pawel\n🎧 DEEJAYS\nDani Fernandes • Lisa Rose • Lucas • Shark • Ichigo • Snakes • Bartef • Hugo Smile • David Ruela • Madej • Do Zangado\n🏨 ALL IN ONE HOTEL\nEverything in one place — dance, parties, workshops and unforgettable moments throughout the congress.\n💃🕺 7 DAYS • INTERNATIONAL ARTISTS • WORKSHOPS • SOCIALS • PARTIES\nWhether you’re a passionate dancer, a festival addict or simply looking for your next unforgettable dance experience, Warsaw Exodus Kizomba Congress V is waiting for you.\n👑 KINGS & QUEENS — ARE YOU READY TO RULE THE DANCE FLOOR?\n📅 3–9 February 2027\n📍 Warsaw, Poland\n#WarsawExodus #ExodusKizombaCongress #Kizomba #UrbanKiz #Tarraxo #Semba #KizombaFestival #Warsaw #KizombaCongress #KingsAndQueens",
+ "passes": [
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "6807997"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "6807983"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "6848757",
+      "6848758"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [
+  {
+   "key": "6808025",
+   "reason": "room"
+  },
+  {
+   "key": "6808028",
+   "reason": "room"
+  },
+  {
+   "key": "6808031",
+   "reason": "room"
+  },
+  {
+   "key": "6808035",
+   "reason": "room"
+  },
+  {
+   "key": "6808038",
+   "reason": "room"
+  },
+  {
+   "key": "6808041",
+   "reason": "room"
+  },
+  {
+   "key": "6808051",
+   "reason": "merchandise"
+  },
+  {
+   "key": "6808055",
+   "reason": "merchandise"
+  },
+  {
+   "key": "6808058",
+   "reason": "fee"
+  },
+  {
+   "key": "6808060",
+   "reason": "competition"
+  },
+  {
+   "key": "6808089",
+   "reason": "merchandise"
+  },
+  {
+   "key": "6808090",
+   "reason": "merchandise"
+  },
+  {
+   "key": "6808091",
+   "reason": "merchandise"
+  },
+  {
+   "key": "6808092",
+   "reason": "merchandise"
+  },
+  {
+   "key": "6808094",
+   "reason": "merchandise"
+  },
+  {
+   "key": "6808095",
+   "reason": "merchandise"
+  },
+  {
+   "key": "6808096",
+   "reason": "merchandise"
+  },
+  {
+   "key": "6808097",
+   "reason": "merchandise"
+  }
+ ],
+ "rule_quotes": []
+}

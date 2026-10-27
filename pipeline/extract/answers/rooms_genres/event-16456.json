@@ -1,0 +1,41 @@
+{
+ "batch": "event-16456",
+ "events": [
+  {
+   "event_id": 16456,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 Music Rooms: Salsa/Bachata & Kizomba"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa Artists"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata Artists"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba and Urbankiz"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urbankiz",
+     "quote": "Harvey Reddington – Urbankiz"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "semba",
+     "quote": "Sal K – kizomba/semba"
+    }
+   ]
+  }
+ ]
+}

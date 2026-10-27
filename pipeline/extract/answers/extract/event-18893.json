@@ -1,0 +1,25 @@
+{
+ "batch": "event-18893",
+ "events": [
+  {
+   "event_id": 18893,
+   "artists": [
+    {
+     "name_as_written": "Klaudio Hoshai",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Klaudio Hoshai is coming to Bielefeld! 🤫😍"
+    },
+    {
+     "name_as_written": "SAMSTAG DA MUXIMA",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "🌍🔥 HAPPY 5th BIRTHDAY SAMSTAG DA MUXIMA ❗️"
+    }
+   ],
+   "features": []
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "batch": "event-16089",
+ "events": [
+  {
+   "event_id": 16089,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "9th Annual Neo Kizomba Festival 2026"
+    }
+   ]
+  }
+ ]
+}

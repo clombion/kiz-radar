@@ -1,0 +1,28 @@
+{
+ "batch": "event-15828",
+ "events": [
+  {
+   "event_id": 15828,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "exclusive Kizomba, Semba, Konpa"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "exclusive Kizomba, Semba, Konpa"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Kizomba, Semba, Konpa"
+    }
+   ]
+  }
+ ]
+}

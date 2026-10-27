@@ -1,0 +1,33 @@
+{
+ "batch": "event-16401",
+ "events": [
+  {
+   "event_id": 16401,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "5 days of workshops & open-air socials (Salsa, Bachata, Cuban, Kizomba)"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "5 days of workshops & open-air socials (Salsa, Bachata, Cuban, Kizomba)"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Cuban",
+     "quote": "5 days of workshops & open-air socials (Salsa, Bachata, Cuban, Kizomba)"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "5 days of workshops & open-air socials (Salsa, Bachata, Cuban, Kizomba)"
+    }
+   ]
+  }
+ ]
+}

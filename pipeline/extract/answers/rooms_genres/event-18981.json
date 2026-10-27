@@ -1,0 +1,38 @@
+{
+ "batch": "event-18981",
+ "events": [
+  {
+   "event_id": 18981,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "most anticipated Kizomba festival of the year"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Urban Kiz, Tarraxo"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Urban Kiz, Tarraxo"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "Afro & Kompa"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Kompa",
+     "quote": "Afro & Kompa"
+    }
+   ]
+  }
+ ]
+}

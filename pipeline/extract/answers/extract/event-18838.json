@@ -1,0 +1,368 @@
+{
+ "batch": "event-18838",
+ "events": [
+  {
+   "event_id": 18838,
+   "artists": [
+    {
+     "name_as_written": "Melvin & Gatica",
+     "role": "teacher",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️Melvin & Gatica"
+    },
+    {
+     "name_as_written": "Kike & Nahir",
+     "role": "teacher",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️Kike & Nahir"
+    },
+    {
+     "name_as_written": "Alfredo & Andrea",
+     "role": "teacher",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️Alfredo & Andrea"
+    },
+    {
+     "name_as_written": "Miguel & Sunsire",
+     "role": "teacher",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️Miguel & Sunsire"
+    },
+    {
+     "name_as_written": "Nacho & Silvia",
+     "role": "teacher",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️Nacho & Silvia"
+    },
+    {
+     "name_as_written": "David & Inés",
+     "role": "teacher",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️David & Inés"
+    },
+    {
+     "name_as_written": "Andrés & Yessica",
+     "role": "teacher",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️Andrés & Yessica"
+    },
+    {
+     "name_as_written": "Eduard & María",
+     "role": "teacher",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️Eduard & María"
+    },
+    {
+     "name_as_written": "Sergio & Elena",
+     "role": "teacher",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️Sergio & Elena"
+    },
+    {
+     "name_as_written": "Emilien & Tehina",
+     "role": "teacher",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️Emilien & Tehina"
+    },
+    {
+     "name_as_written": "Jorge & Azahara",
+     "role": "teacher",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️Jorge & Azahara"
+    },
+    {
+     "name_as_written": "Jesús & Maribel",
+     "role": "teacher",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️Jesús & Maribel"
+    },
+    {
+     "name_as_written": "Daimy & Valeria",
+     "role": "teacher",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️Daimy & Valeria"
+    },
+    {
+     "name_as_written": "Javi & Fuensi",
+     "role": "teacher",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️Javi & Fuensi"
+    },
+    {
+     "name_as_written": "Francesco & Debora",
+     "role": "teacher",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️Francesco & Debora"
+    },
+    {
+     "name_as_written": "DJ Khalid",
+     "role": "dj",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️DJ Khalid"
+    },
+    {
+     "name_as_written": "DJ Pecino",
+     "role": "dj",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️DJ Pecino"
+    },
+    {
+     "name_as_written": "DJ Dimen5ions",
+     "role": "dj",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️DJ Dimen5ions"
+    },
+    {
+     "name_as_written": "DJ Killo",
+     "role": "dj",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️DJ Killo"
+    },
+    {
+     "name_as_written": "DJ One",
+     "role": "dj",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️DJ One"
+    },
+    {
+     "name_as_written": "DJ Maky",
+     "role": "dj",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️DJ Maky"
+    },
+    {
+     "name_as_written": "DJ Kevin RG",
+     "role": "dj",
+     "style": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+     "country": null,
+     "source_line": "✅️DJ Kevin RG"
+    },
+    {
+     "name_as_written": "Jorge & Indira",
+     "role": "teacher",
+     "style": "𝙎𝘼𝙇𝙎𝘼",
+     "country": null,
+     "source_line": "✅️Jorge & Indira"
+    },
+    {
+     "name_as_written": "Jose & María",
+     "role": "teacher",
+     "style": "𝙎𝘼𝙇𝙎𝘼",
+     "country": null,
+     "source_line": "✅️Jose & María"
+    },
+    {
+     "name_as_written": "Charlie & Vero",
+     "role": "teacher",
+     "style": "𝙎𝘼𝙇𝙎𝘼",
+     "country": null,
+     "source_line": "✅️Charlie & Vero"
+    },
+    {
+     "name_as_written": "Irene & Noelia",
+     "role": "teacher",
+     "style": "𝙎𝘼𝙇𝙎𝘼",
+     "country": null,
+     "source_line": "✅️Irene & Noelia"
+    },
+    {
+     "name_as_written": "Jesús & Anni",
+     "role": "teacher",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️Jesús & Anni"
+    },
+    {
+     "name_as_written": "Dwe & Gaby",
+     "role": "teacher",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️Dwe & Gaby"
+    },
+    {
+     "name_as_written": "Fabrizio dozangado",
+     "role": "teacher",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️Fabrizio dozangado"
+    },
+    {
+     "name_as_written": "Marcio",
+     "role": "teacher",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️Marcio"
+    },
+    {
+     "name_as_written": "Melania",
+     "role": "teacher",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️Melania"
+    },
+    {
+     "name_as_written": "Said Dstreet",
+     "role": "teacher",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️Said Dstreet"
+    },
+    {
+     "name_as_written": "Malick & Carla",
+     "role": "teacher",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️Malick & Carla"
+    },
+    {
+     "name_as_written": "Endos & Dorian",
+     "role": "teacher",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️Endos & Dorian"
+    },
+    {
+     "name_as_written": "Radu & Judit",
+     "role": "teacher",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️Radu & Judit"
+    },
+    {
+     "name_as_written": "Trésor & Aurea",
+     "role": "teacher",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️Trésor & Aurea"
+    },
+    {
+     "name_as_written": "Dadié",
+     "role": "teacher",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️Dadié"
+    },
+    {
+     "name_as_written": "Justinho",
+     "role": "teacher",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️Justinho"
+    },
+    {
+     "name_as_written": "Massemba",
+     "role": "teacher",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️Massemba"
+    },
+    {
+     "name_as_written": "Nelson & Araceli",
+     "role": "teacher",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️Nelson & Araceli"
+    },
+    {
+     "name_as_written": "DJ Dani",
+     "role": "dj",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️DJ Dani"
+    },
+    {
+     "name_as_written": "DJ Lisa",
+     "role": "dj",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️DJ Lisa"
+    },
+    {
+     "name_as_written": "DJ Paraïso",
+     "role": "dj",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️DJ Paraïso"
+    },
+    {
+     "name_as_written": "DJ Shark",
+     "role": "dj",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️DJ Shark"
+    },
+    {
+     "name_as_written": "DJ Lucas",
+     "role": "dj",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️DJ Lucas"
+    },
+    {
+     "name_as_written": "DJ Poema",
+     "role": "dj",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️DJ Poema"
+    },
+    {
+     "name_as_written": "DJ Marto",
+     "role": "dj",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️DJ Marto"
+    },
+    {
+     "name_as_written": "DJ Rido",
+     "role": "dj",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️DJ Rido"
+    },
+    {
+     "name_as_written": "DJ Loka",
+     "role": "dj",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️DJ Loka"
+    },
+    {
+     "name_as_written": "DJ Tegs",
+     "role": "dj",
+     "style": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+     "country": null,
+     "source_line": "✅️DJ Tegs"
+    },
+    {
+     "name_as_written": "𝑻𝒆𝒎𝒑𝒕𝒂𝒕𝒊𝒐𝒏 𝑭𝒆𝒔𝒕𝒊𝒗𝒂𝒍",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "𝑩𝒚 𝑻𝒆𝒎𝒑𝒕𝒂𝒕𝒊𝒐𝒏 𝑭𝒆𝒔𝒕𝒊𝒗𝒂𝒍."
+    }
+   ],
+   "features": []
+  }
+ ]
+}

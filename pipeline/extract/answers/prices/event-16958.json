@@ -1,6 +1,5 @@
 {
  "batch": "event-16958",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16958,
@@ -17,8 +16,7 @@
        "amount": 80,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -41,8 +39,7 @@
        "amount": 50,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -50,6 +47,29 @@
        "sold_out": false,
        "current": false,
        "quote": "Full journée 50€ sur place"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 5,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "17h – 21h social Kiz Semba Kompa Zouk 5€"
       }
      ]
     }

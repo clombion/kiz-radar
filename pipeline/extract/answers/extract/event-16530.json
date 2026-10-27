@@ -1,0 +1,91 @@
+{
+ "batch": "event-16530",
+ "events": [
+  {
+   "event_id": 16530,
+   "artists": [
+    {
+     "name_as_written": "Klaudio Hosai",
+     "role": "performer",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "✨ Special Guest: Klaudio Hosai 🇦🇴"
+    },
+    {
+     "name_as_written": "Esteban & Sandra",
+     "role": "teacher",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "➡️ Esteban & Sandra 🇪🇸"
+    },
+    {
+     "name_as_written": "Carlos & Anna",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴🇫🇮",
+     "source_line": "➡️ Carlos & Anna 🇦🇴🇫🇮"
+    },
+    {
+     "name_as_written": "Emanuel & Teresa",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "➡️ Emanuel & Teresa 🇦🇴"
+    },
+    {
+     "name_as_written": "Tony & Carla",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴🇨🇻",
+     "source_line": "➡️ Tony & Carla 🇦🇴🇨🇻"
+    },
+    {
+     "name_as_written": "Fanio Araújo",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "➡️ Fanio Araújo 🇦🇴"
+    },
+    {
+     "name_as_written": "Luis Fernandes",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇻",
+     "source_line": "➡️ Luis Fernandes 🇨🇻"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_levels_beginners",
+     "quote": "Intensive open-level workshops",
+     "rationale": "The open-level wording indicates the workshops suit all levels."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "MORABEZA KIZOMBA BOOTCAMP – EDITION II",
+     "rationale": "The event is titled as a bootcamp, and the workshops are described as intensive."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Intensive open-level workshops",
+     "rationale": "The description lists intensive workshops as part of the event."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Live Music",
+     "rationale": "Live music is listed among the event's offerings."
+    },
+    {
+     "feature": "shows",
+     "quote": "Exclusive showcase & live performance",
+     "rationale": "The event includes a showcase and live performance by the guest artist."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Recommended Hotel",
+     "rationale": "A recommended hotel is named, without accommodation being part of the pass."
+    }
+   ]
+  }
+ ]
+}

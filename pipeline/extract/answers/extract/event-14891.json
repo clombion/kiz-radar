@@ -1,0 +1,16 @@
+{
+ "batch": "event-14891",
+ "events": [
+  {
+   "event_id": 14891,
+   "artists": [],
+   "features": [
+    {
+     "feature": "shows",
+     "quote": "Performing",
+     "rationale": "The lineup has a 'Performing' section, which indicates performances by artists, though no performers are named."
+    }
+   ]
+  }
+ ]
+}

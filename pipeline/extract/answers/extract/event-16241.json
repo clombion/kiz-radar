@@ -1,0 +1,44 @@
+{
+ "batch": "event-16241",
+ "events": [
+  {
+   "event_id": 16241,
+   "artists": [
+    {
+     "name_as_written": "PASSION KIZOMBA PARIS CONGRESS Team",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "— PASSION KIZOMBA PARIS CONGRESS Team"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "The H4 Hotel Wyndham Paris Pleyel Resort offers a unique all-in-one experience:",
+     "rationale": "The event is described as an all-in-one experience held in the hotel venue itself."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "Workshops for all levels, from beginners to advanced dancers",
+     "rationale": "The description explicitly says the workshops suit all levels, including beginners."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Workshops for all levels, from beginners to advanced dancers",
+     "rationale": "Dance workshops are listed as part of what to expect at the congress."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "Themed parties & nights until morning",
+     "rationale": "The event lists themed parties and nights as part of the programme."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2-floor congress center with 5 dance floors",
+     "rationale": "The venue is stated to have five dance floors, which means more than one dance room."
+    }
+   ]
+  }
+ ]
+}

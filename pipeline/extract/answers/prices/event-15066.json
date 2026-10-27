@@ -1,6 +1,5 @@
 {
  "batch": "event-15066",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15066,
@@ -17,8 +16,10 @@
        "amount": 300,
        "currency": "PLN",
        "fee": null,
-       "alt_amount": 70,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 70,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -26,6 +27,32 @@
        "sold_out": false,
        "current": false,
        "quote": "Full Pass Follower starts with 300 pln (70 eur)"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 300,
+       "currency": "PLN",
+       "fee": null,
+       "alt": {
+        "amount": 70,
+        "currency": "EUR"
+       },
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Full Pass Leader starts with 300 pln (70 eur)"
       }
      ]
     },
@@ -41,8 +68,10 @@
        "amount": 580,
        "currency": "PLN",
        "fee": null,
-       "alt_amount": 137,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 137,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -50,6 +79,29 @@
        "sold_out": false,
        "current": false,
        "quote": "Couple Pass starts with 580 pln (137 eur)"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 10,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "THURSDAY – Pre-Party (Sabrosa Dance School) 10 eur (not included in pass; paid in cash or online)"
       }
      ]
     }

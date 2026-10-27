@@ -1,0 +1,104 @@
+{
+ "batch": "event-16019",
+ "events": [
+  {
+   "event_id": 16019,
+   "artists": [
+    {
+     "name_as_written": "Marta Pastucha & Benoit Preira",
+     "role": "teacher",
+     "style": "Douceur Tarraxo",
+     "country": null,
+     "source_line": "Marta Pastucha & Benoit Preira (BeePee) – Douceur Tarraxo 🔥🔥🔥"
+    },
+    {
+     "name_as_written": "Nuno & Sarai",
+     "role": "teacher",
+     "style": "Kizomba Fusion",
+     "country": null,
+     "source_line": "Nuno & Sarai – Kizomba Fusion"
+    },
+    {
+     "name_as_written": "Catherine Vidthiya Veeriah",
+     "role": "teacher",
+     "style": "Kizomba Fusion",
+     "country": null,
+     "source_line": "Catherine Vidthiya Veeriah –Kizomba Fusion"
+    },
+    {
+     "name_as_written": "Adam Dobrzański & Aga Zalewska",
+     "role": "teacher",
+     "style": "Kizomba Fusion",
+     "country": null,
+     "source_line": "Adam Dobrzański & Aga Zalewska – Kizomba Fusion"
+    },
+    {
+     "name_as_written": "Jakub & Agnieszka Sajko",
+     "role": "teacher",
+     "style": "Tarraxo",
+     "country": null,
+     "source_line": "Jakub & Agnieszka Sajko –Tarraxo"
+    },
+    {
+     "name_as_written": "DJ Ironman",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Ironman"
+    },
+    {
+     "name_as_written": "DJ Kris",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Kris"
+    },
+    {
+     "name_as_written": "DJ LibErty",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ LibErty"
+    },
+    {
+     "name_as_written": "DJ Slimax",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Slimax"
+    },
+    {
+     "name_as_written": "DJ Kranes",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Kranes !!!"
+    },
+    {
+     "name_as_written": "Fundacja Benefit / La Playa Gdańsk",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Fundacja Benefit / La Playa Gdańsk"
+    }
+   ],
+   "features": [
+    {
+     "feature": "pre_party",
+     "quote": "starting already on Thursday evening with a pre-party",
+     "rationale": "The text announces a pre-party on Thursday evening before the main festival."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Intensive dance workshops in kizomba fusion, urban kiz, and tarraxo",
+     "rationale": "The event offers dance workshops in several styles as part of the programme."
+    },
+    {
+     "feature": "beach_party",
+     "quote": "Open-air beach parties under the stars",
+     "rationale": "The text lists open-air beach parties as part of the event."
+    }
+   ]
+  }
+ ]
+}

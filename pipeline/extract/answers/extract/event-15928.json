@@ -1,0 +1,125 @@
+{
+ "batch": "event-15928",
+ "events": [
+  {
+   "event_id": 15928,
+   "artists": [
+    {
+     "name_as_written": "Mouv’toi",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "For the seventh year, Mouv’toi offers you the opportunity to prepare for the big summer festivals with a program including Salsa Porto, Cuban Salsa, Bachata, Kizomba, Semba, and Fitness! And maybe a few other surprises 😉"
+    },
+    {
+     "name_as_written": "Ramarck DC",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "• Ramarck DC (Paris)"
+    },
+    {
+     "name_as_written": "Agnetha & Dariel",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "• Agnetha & Dariel (Bordeaux/Cuba)"
+    },
+    {
+     "name_as_written": "Nelly Nobre",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "• Nelly Nobre (Paris)"
+    },
+    {
+     "name_as_written": "Karim",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "• Karim (Paris)"
+    },
+    {
+     "name_as_written": "Reda & Madison",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "• Reda & Madison (Paris)"
+    },
+    {
+     "name_as_written": "Camille & Hugo",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "• Camille & Hugo (Poitiers)"
+    },
+    {
+     "name_as_written": "Juninho & Sara",
+     "role": "teacher",
+     "style": "Kizomba/Semba/Afrohouse",
+     "country": null,
+     "source_line": "• Juninho & Sara (Tours)"
+    },
+    {
+     "name_as_written": "Benoît & Marta",
+     "role": "teacher",
+     "style": "Kizomba/Semba/Afrohouse",
+     "country": null,
+     "source_line": "• Benoît & Marta (Poitiers/Poland)"
+    },
+    {
+     "name_as_written": "Irina",
+     "role": "teacher",
+     "style": "Sports Dance",
+     "country": null,
+     "source_line": "• Irina (Poitiers)"
+    },
+    {
+     "name_as_written": "Camille",
+     "role": "teacher",
+     "style": "Fitness",
+     "country": null,
+     "source_line": "• Camille (Poitiers)"
+    },
+    {
+     "name_as_written": "DJ Karim",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "• DJ Karim"
+    },
+    {
+     "name_as_written": "Justin Lee",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "• Justin Lee (video)"
+    },
+    {
+     "name_as_written": "Virginie Julienne",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "• Virginie Julienne (photo)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Workshops in Salsa Porto/Cuban, Bachata, Kizomba, Semba, and Reggaeton",
+     "rationale": "The description lists dance workshops in several styles as part of the festival program."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "all levels: beginner, intermediate, advanced",
+     "rationale": "The workshops are explicitly open to beginners as well as intermediate and advanced dancers."
+    },
+    {
+     "feature": "shows",
+     "quote": "Shows",
+     "rationale": "The bullet list explicitly includes shows as part of the festival."
+    }
+   ]
+  }
+ ]
+}

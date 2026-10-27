@@ -1,0 +1,71 @@
+{
+ "batch": "event-15985",
+ "events": [
+  {
+   "event_id": 15985,
+   "artists": [
+    {
+     "name_as_written": "LNA Carla",
+     "role": "media",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "📷 LNA Carla 🇫🇷"
+    },
+    {
+     "name_as_written": "Tarehi Prodarts",
+     "role": "media",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "📷 Tarehi Prodarts 🇫🇷"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE, Paris",
+     "rationale": "The event is described as all in one, and the venue is the hotel where the parties and socials take place."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Van Der Walk Hotel Paris CDG airport",
+     "rationale": "The hotel is named as the event venue under a room reservation heading, which points dancers to a recommended hotel."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 rooms, 2 different vibes",
+     "rationale": "The event has two separate dance rooms with different music styles."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Live concerts with full band",
+     "rationale": "The description promises live concerts performed by a full band."
+    },
+    {
+     "feature": "shows",
+     "quote": "Gala Dinner with Live music & Shows",
+     "rationale": "The gala dinner includes shows and a showcase by artists."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "High-quality masterclasses",
+     "rationale": "The event lists masterclasses as part of its programme."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "16:00 – 20:00 Social Dance",
+     "rationale": "A daytime social dance is scheduled on Friday afternoon."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "𝗣𝗥𝗘 𝗣𝗔𝗥𝗧𝗬",
+     "rationale": "A pre-party heading appears in the programme before the main event."
+    },
+    {
+     "feature": "after_party",
+     "quote": "𝗔𝗙𝗧𝗘𝗥 𝗣𝗔𝗥𝗧𝗬",
+     "rationale": "An after-party section is listed in the programme."
+    }
+   ]
+  }
+ ]
+}

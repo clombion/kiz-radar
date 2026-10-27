@@ -1,0 +1,18 @@
+{
+ "batch": "event-17006",
+ "events": [
+  {
+   "event_id": 17006,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "The best DJs on the Kizomba scene"
+    }
+   ]
+  }
+ ]
+}

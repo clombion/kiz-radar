@@ -1,0 +1,48 @@
+{
+ "batch": "event-16648",
+ "events": [
+  {
+   "event_id": 16648,
+   "artists": [
+    {
+     "name_as_written": "Dani Boeva",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Dani Boeva, Sofia: 📞+359 878 451 544"
+    },
+    {
+     "name_as_written": "Daniela Pancheva",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Daniela Pancheva, Plovdiv: 📞+359 885 006 636"
+    },
+    {
+     "name_as_written": "Joro",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Joro, Vratsa: 📞 +359 878 226 432"
+    }
+   ],
+   "features": [
+    {
+     "feature": "accommodation_included",
+     "quote": "2 nights + pool, SPA and relaxation",
+     "rationale": "The full pass lists two nights of accommodation as included."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "2 buffet breakfasts",
+     "rationale": "The full pass includes buffet breakfasts."
+    },
+    {
+     "feature": "workshops",
+     "quote": "+ lessons, games and adventures.",
+     "rationale": "Lessons are listed as part of the full pass, so dance classes are part of the event."
+    }
+   ]
+  }
+ ]
+}

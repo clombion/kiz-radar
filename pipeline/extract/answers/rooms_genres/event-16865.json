@@ -1,0 +1,43 @@
+{
+ "batch": "event-16865",
+ "events": [
+  {
+   "event_id": 16865,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba with its smooth connection"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Semba with its playful energy"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa with its urban brilliance"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata with its sensuality"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Kompa",
+     "quote": "Kompa with its elegant flow"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afrobeat",
+     "quote": "Afrobeat with its explosive creativity"
+    }
+   ]
+  }
+ ]
+}

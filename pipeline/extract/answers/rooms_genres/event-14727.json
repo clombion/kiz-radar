@@ -1,0 +1,23 @@
+{
+ "batch": "event-14727",
+ "events": [
+  {
+   "event_id": 14727,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Kizomba Fusion",
+     "quote": "Welcome to the 6th edition of Dubai Kizomba Fusion"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "one of the biggest kizomba brands in the world"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,100 @@
+{
+ "batch": "event-16338",
+ "events": [
+  {
+   "event_id": 16338,
+   "party_rooms": {
+    "count": 3,
+    "quote": "3 rooms / 3 vibes"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "SALSA Room",
+     "kind": "party",
+     "genres": [
+      "salsa",
+      "other"
+     ],
+     "quote": "SALSA Room"
+    },
+    {
+     "name_as_written": "BACHATA Room",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "BACHATA Room"
+    },
+    {
+     "name_as_written": "KIZOMBA Room",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "urbankiz",
+      "afro",
+      "semba"
+     ],
+     "quote": "KIZOMBA Room"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Cuban and Puerto Rican Salsa"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Son Cubano",
+     "quote": "Son Cubano"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Rumba",
+     "quote": "Rumba"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Yoruba (Afro-Cuban)",
+     "quote": "Yoruba (Afro-Cuban)"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Rueda de Casino",
+     "quote": "Rueda de Casino"
+    },
+    {
+     "genre": "reggaeton",
+     "genre_as_written": "Reggaeton",
+     "quote": "Reggaeton"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata styling for men & women"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba (traditional & urban)"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "urban",
+     "quote": "Kizomba (traditional & urban)"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "and Semba"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afrohouse",
+     "quote": "Afrohouse Workshop with Mundy"
+    }
+   ]
+  }
+ ]
+}

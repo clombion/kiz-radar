@@ -1,0 +1,37 @@
+{
+ "event_id": 18867,
+ "title": "DANCE AND JOY Festival – Edition Bal Masqué",
+ "start_date": "2027-05-21",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "cb864655c7075f56",
+ "rows_at": "2026-10-27T02:26:11+00:00",
+ "styles": [
+  "bachata",
+  "kizomba",
+  "salsa"
+ ],
+ "description": "The Passion Kizomba Nantes team is pleased to invite you to the Dance and Joy Festival – Masquerade Party Edition. From May 21 to 24, 2027. In a spacious and comfortable hotel. All in one venue\n✨✨Bachata, Kizomba & Salsa✨✨\n⚡️Over 30 hours of workshops\n⚡️The master classes\n⚡️Bachata battle\n⚡️Shows\n⚡️A pre-party\n⚡️3 socials and 3 parties\n⚡️A Crazy atmosphere\n⚡️ Three rooms, Three atmospheres\n⚡️Teams of taxi dancers\n⚡️Catering on site\n⚡️A special negotiated rate for your stay in a 4-star hotel 🤩\n💫💫Festival Venue and Accommodation💫💫\nSure Hôtel by Best Western Nantes Beaujoire : 27 rue du chemin rouge\n44300 Nantes\n▪️▪️▪️Bachata Teachers ▪️▪️▪️\nMalwi & Juanes – Barcelone\nAnthony & Alisiya – Nice/ Zurich\nAnne – Nantes\nMiguel & Aleksandra – Nantes\nJustin & Meghane – Nantes\nGwen & Carolina – Brest\nBourgeois & Maria – Nantes\n▪️▪️▪️Kizomba Teachers ▪️▪️▪️\nPao & Margot – Lyon\nFred & Chiara – Paris\nJonathan Kani – Le Mans/ Nantes\nMik’iz – Lyon\nBeepee & Marta – poiriers\nDamyss & Clarita – Nantes / Paris\nDane & Anaïs – Tours\n▪️▪️▪️Salsa Teachers ▪️▪️▪️\nChahera – Toulouse\nRodrigue – Paris\nHicham – Nantes\nIbra Chavez – Nantes\nGulnara – Lyon\n🟰🟰🟰🟰🟰🟰🟰🟰🟰🟰🟰🟰🟰🟰\n▪️▪️▪️Bachata Deejays ▪️▪️▪️\nDj Karim – Paris\nDj Snatch – Tours\nDj Saly – bachata – Nantes\nDj Dhoirif – bachata – Rennes\nDj Gregax – Paris / La Roche sur yon\n▪️▪️▪️kizomba Deejays ▪️▪️▪️\nDj Charley Raymdtc – Munich\nDj Hugo smile – Bordeaux\nDj T-Wosh – Paris\nDj Kin – Nantes\nDj Man – Nantes\nDj Mowjah – Caen\nDj Lova – Bordeaux\nDj EFZO – Nantes\nDj L-Gi – Nantes\n▪️▪️▪️Salsa Deejays ▪️▪️▪️\nDj jak – Paris\nDj Hicham – Nantes\nDj Ibra Chavez – Nantes\nDj Gregax – Paris / La Roche sur yon\nDj Dhoirif – bachata – Rennes\n🔹Organizer :\nPassion kizomba Nantes\n🔸 contact :\nMail: passionkizombanantes@gmail.com",
+ "passes": [
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": "EARLYBIRD",
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5639240"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [],
+ "rule_quotes": []
+}

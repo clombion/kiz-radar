@@ -1,0 +1,162 @@
+{
+ "batch": "event-14757",
+ "events": [
+  {
+   "event_id": 14757,
+   "artists": [
+    {
+     "name_as_written": "ALC PAULA & RICARDO",
+     "role": "teacher",
+     "style": null,
+     "country": "🇵🇹",
+     "source_line": "ALC PAULA & RICARDO (Porto) 🇵🇹"
+    },
+    {
+     "name_as_written": "DAVID & LIDIA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇪🇦",
+     "source_line": "DAVID & LIDIA (Redondela) 🇪🇦"
+    },
+    {
+     "name_as_written": "EDGAR RODRIGUEZ",
+     "role": "teacher",
+     "style": null,
+     "country": "🇪🇦",
+     "source_line": "EDGAR RODRIGUEZ (La Coruña) 🇪🇦"
+    },
+    {
+     "name_as_written": "ELIAS & VICKY",
+     "role": "teacher",
+     "style": null,
+     "country": "🇪🇦",
+     "source_line": "ELIAS & VICKY (Barcelona) 🇪🇦"
+    },
+    {
+     "name_as_written": "ESTEBAN & SANDRA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "ESTEBAN & SANDRA (Valencia)🇪🇸"
+    },
+    {
+     "name_as_written": "INMA & NURIA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "INMA & NURIA (Valladolid)🇪🇸"
+    },
+    {
+     "name_as_written": "JORGE & ROCIO",
+     "role": "teacher",
+     "style": null,
+     "country": "🇵🇹🇪🇦",
+     "source_line": "JORGE & ROCIO (Vigo) 🇵🇹🇪🇦"
+    },
+    {
+     "name_as_written": "AITOR RODRIGUEZ",
+     "role": "teacher",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "AITOR RODRIGUEZ (Vigo) 🇪🇸"
+    },
+    {
+     "name_as_written": "CARLOS GALEGO",
+     "role": "teacher",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "CARLOS GALEGO (Vigo) 🇪🇸"
+    },
+    {
+     "name_as_written": "AITOR GUEZ",
+     "role": "dj",
+     "style": null,
+     "country": "🇪🇦",
+     "source_line": "AITOR GUEZ (Vigo)🇪🇦"
+    },
+    {
+     "name_as_written": "JORGE AZ",
+     "role": "dj",
+     "style": null,
+     "country": "🇵🇹🇪🇦",
+     "source_line": "JORGE AZ (Braga / Vigo)🇵🇹🇪🇦"
+    },
+    {
+     "name_as_written": "AZERO DANCE TEAM",
+     "role": "performer",
+     "style": null,
+     "country": "🇪🇦",
+     "source_line": "AZERO DANCE TEAM (Vigo)🇪🇦"
+    },
+    {
+     "name_as_written": "MAGIC LADIES",
+     "role": "performer",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "MAGIC LADIES (Vigo) 🇪🇸"
+    },
+    {
+     "name_as_written": "MAGIC HEELS",
+     "role": "performer",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "MAGIC HEELS (Vigo) 🇪🇸"
+    },
+    {
+     "name_as_written": "ÓSCAR DEL MORAL",
+     "role": "media",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "#PHOTOGRAPHY & VIDEO:"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "All workshops on Friday, Saturday, and Sunday",
+     "rationale": "The full pass description states that workshops take place on all three days."
+    },
+    {
+     "feature": "shows",
+     "quote": "SHOWS | 11:00 PM",
+     "rationale": "The Saturday schedule lists a shows slot performed by the artists."
+    },
+    {
+     "feature": "live_music",
+     "quote": "a concert",
+     "rationale": "The party pass includes a concert."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "PRE-PARTY @ PALMERA PLAYA",
+     "rationale": "A Friday pre-party is listed before the main social events."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "SOCIAL | 12:30 PM to 1:30 PM",
+     "rationale": "The Sunday schedule includes a daytime social in the early afternoon."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "SOCIAL WITH 2 ROOMS",
+     "rationale": "The Saturday social is advertised with two dance rooms."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "DRESS CODE:",
+     "rationale": "Dress codes are stated for the Friday, Saturday and Sunday programme."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Discount Code:",
+     "rationale": "Hotel Attica21 rooms are offered at a negotiated rate with a discount code, separate from the pass."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "*** SOCIAL NIGHT @ HOTEL ATTICA 21 ***",
+     "rationale": "The Saturday social night takes place in the hotel where the room rentals are offered."
+    }
+   ]
+  }
+ ]
+}

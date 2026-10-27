@@ -1,0 +1,98 @@
+{
+ "batch": "event-16723",
+ "events": [
+  {
+   "event_id": 16723,
+   "party_rooms": {
+    "count": 4,
+    "quote": "Lose yourself across our 4 distinct party rooms"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Room 1",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "semba"
+     ],
+     "quote": "→ Room 1: Kizomba and Semba"
+    },
+    {
+     "name_as_written": "Room 2",
+     "kind": "party",
+     "genres": [
+      "urbankiz",
+      "tarraxo"
+     ],
+     "quote": "→ Room 2: UrbanKiz and Tarraxo"
+    },
+    {
+     "name_as_written": "Room 3",
+     "kind": "party",
+     "genres": [
+      "kompa",
+      "other",
+      "douceur",
+      "zouk",
+      "tarraxinha"
+     ],
+     "quote": "→ Room 3: Konpa, Gouyad, Douceur, ZoukLove, Tarraxinha"
+    },
+    {
+     "name_as_written": "Room 4",
+     "kind": "party",
+     "genres": [],
+     "quote": "→ Room 4: Remixes ..DJ’s CHOICE"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "→ Room 1: Kizomba and Semba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "→ Room 1: Kizomba and Semba"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "UrbanKiz",
+     "quote": "→ Room 2: UrbanKiz and Tarraxo"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "→ Room 2: UrbanKiz and Tarraxo"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "→ Room 3: Konpa, Gouyad, Douceur, ZoukLove, Tarraxinha"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Gouyad",
+     "quote": "→ Room 3: Konpa, Gouyad, Douceur, ZoukLove, Tarraxinha"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "→ Room 3: Konpa, Gouyad, Douceur, ZoukLove, Tarraxinha"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "ZoukLove",
+     "quote": "→ Room 3: Konpa, Gouyad, Douceur, ZoukLove, Tarraxinha"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "→ Room 3: Konpa, Gouyad, Douceur, ZoukLove, Tarraxinha"
+    }
+   ]
+  }
+ ]
+}

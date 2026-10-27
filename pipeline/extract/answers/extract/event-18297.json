@@ -1,0 +1,149 @@
+{
+ "batch": "event-18297",
+ "events": [
+  {
+   "event_id": 18297,
+   "artists": [
+    {
+     "name_as_written": "JP & Stephy",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "✅JP & Stephy"
+    },
+    {
+     "name_as_written": "Mam’s & Moorea",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "✅Mam’s & Moorea"
+    },
+    {
+     "name_as_written": "Prince Bachir & Frida",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "✅Prince Bachir & Frida"
+    },
+    {
+     "name_as_written": "Sensei & Emma",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "✅Sensei & Emma"
+    },
+    {
+     "name_as_written": "Jurcic",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "✅Jurcic"
+    },
+    {
+     "name_as_written": "Anderson",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "✅Anderson"
+    },
+    {
+     "name_as_written": "Moo’y",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "✅Moo’y"
+    },
+    {
+     "name_as_written": "Dj Paraïso",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "✅ Dj Paraïso"
+    },
+    {
+     "name_as_written": "Dj Shark",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "✅ Dj Shark"
+    },
+    {
+     "name_as_written": "Dj Snakes",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "✅ Dj Snakes"
+    },
+    {
+     "name_as_written": "Dj NiceLife",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "✅ Dj NiceLife"
+    },
+    {
+     "name_as_written": "Dj Dj Stefanio Lima",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "✅ Dj Dj Stefanio Lima"
+    },
+    {
+     "name_as_written": "Dj Valet",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "✅ Dj Valet"
+    },
+    {
+     "name_as_written": "Dj Iron Mams",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "✅ Dj Iron Mams"
+    },
+    {
+     "name_as_written": "Dj JC Stripes",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "✅ Dj JC Stripes"
+    },
+    {
+     "name_as_written": "Dj Chorron",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "✅ Dj Chorron"
+    }
+   ],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "Amazing Venue with 4 different rooms",
+     "rationale": "The event states it has four different rooms, so more than one dance room is present."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "3 pre-parties",
+     "rationale": "The description lists three pre-parties before the main parties."
+    },
+    {
+     "feature": "after_party",
+     "quote": "3 after-parties until 7:00 am",
+     "rationale": "The description lists three after-parties running until 7:00 am."
+    },
+    {
+     "feature": "workshops",
+     "quote": "More than 50 workshops",
+     "rationale": "The event offers more than 50 workshops as part of the programme."
+    },
+    {
+     "feature": "shows",
+     "quote": "New Shows",
+     "rationale": "The description announces new shows as part of the event."
+    }
+   ]
+  }
+ ]
+}

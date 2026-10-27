@@ -1,0 +1,18 @@
+{
+ "batch": "event-16753",
+ "events": [
+  {
+   "event_id": 16753,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "to the rhythm of Kizomba."
+    }
+   ]
+  }
+ ]
+}

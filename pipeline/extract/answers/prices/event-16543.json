@@ -1,6 +1,5 @@
 {
  "batch": "event-16543",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16543,
@@ -8,7 +7,7 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": null,
+     "label_quote": "FULL PASS (Fri & Sat: Workshops + Parties)",
      "group_size": 1,
      "days": 2,
      "includes_hotel": false,
@@ -17,8 +16,10 @@
        "amount": 70,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 350,
-       "alt_currency": "RON",
+       "alt": {
+        "amount": 350,
+        "currency": "RON"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -32,7 +33,7 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": null,
+     "label_quote": "SATURDAY DAY PASS (Workshops + Party)",
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -41,8 +42,10 @@
        "amount": 60,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 300,
-       "alt_currency": "RON",
+       "alt": {
+        "amount": 300,
+        "currency": "RON"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -56,7 +59,7 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": null,
+     "label_quote": "SATURDAY PARTY PASS (Party Only)",
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -65,8 +68,10 @@
        "amount": 16,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 80,
-       "alt_currency": "RON",
+       "alt": {
+        "amount": 80,
+        "currency": "RON"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -80,7 +85,7 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": null,
+     "label_quote": "FRIDAY PARTY PASS (Party and workshop offered)",
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -89,8 +94,10 @@
        "amount": 12,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 60,
-       "alt_currency": "RON",
+       "alt": {
+        "amount": 60,
+        "currency": "RON"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -102,7 +109,9 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "Pass transfers involve a fee of 10 €"
+   ]
   }
  ]
 }

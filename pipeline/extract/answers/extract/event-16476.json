@@ -1,0 +1,54 @@
+{
+ "batch": "event-16476",
+ "events": [
+  {
+   "event_id": 16476,
+   "artists": [
+    {
+     "name_as_written": "Kizz-N Organisation",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Kizz-N Organisation has the right to update the Festival."
+    }
+   ],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 BIG ROOMS",
+     "rationale": "The venue listing states there are three big rooms, so more than one dance floor."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Social from 16:00 – 20:00",
+     "rationale": "The Saturday and Sunday programme lists daytime socials from 16:00."
+    },
+    {
+     "feature": "workshops",
+     "quote": "35 HOURS WORKSHOPS",
+     "rationale": "The festival advertises 35 hours of workshops as part of the event."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "MASTERCLASSES",
+     "rationale": "Masterclasses are listed as a bookable ticket option."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "TAXI TEAMS",
+     "rationale": "The venue section lists taxi teams, meaning taxi dancers are present."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "MAIN HOTEL FOR BOOKING:",
+     "rationale": "A main booking hotel with a discount code is recommended, while accommodation is not part of the pass."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Airport Nürnberg – 20 minutes from Location",
+     "rationale": "A transfer section gives airport and station transport information relative to the venue, but no shuttle service is explicitly stated."
+    }
+   ]
+  }
+ ]
+}

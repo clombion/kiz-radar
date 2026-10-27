@@ -1,0 +1,48 @@
+{
+ "batch": "event-16927",
+ "events": [
+  {
+   "event_id": 16927,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 Epic Party Rooms every night"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Kizomba Room",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "Kizomba Room"
+    },
+    {
+     "name_as_written": "Bachata Room",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "Bachata Room"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba Room"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata Room"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro-Latin",
+     "quote": "feel the Afro-Latin heat"
+    }
+   ]
+  }
+ ]
+}

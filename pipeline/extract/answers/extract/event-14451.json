@@ -1,0 +1,261 @@
+{
+ "batch": "event-14451",
+ "events": [
+  {
+   "event_id": 14451,
+   "artists": [
+    {
+     "name_as_written": "JESUS & ANNI",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 JESUS & ANNI 💃🏻"
+    },
+    {
+     "name_as_written": "DWE & GABY",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 DWE & GABY 💃🏻"
+    },
+    {
+     "name_as_written": "DR. KIZOMBA & LAURA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 DR. KIZOMBA & LAURA 💃🏻"
+    },
+    {
+     "name_as_written": "EDO & GIULY",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 EDO & GIULY 💃🏻"
+    },
+    {
+     "name_as_written": "LUCA & ELENA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 LUCA & ELENA 💃🏻"
+    },
+    {
+     "name_as_written": "SIMONE & JENNIFER",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 SIMONE & JENNIFER 💃🏻"
+    },
+    {
+     "name_as_written": "GIUSEPPE ANDREA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 GIUSEPPE ANDREA"
+    },
+    {
+     "name_as_written": "RAUL HERNANDEZ",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 RAUL HERNANDEZ"
+    },
+    {
+     "name_as_written": "CHRISTIAN & TINA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 CHRISTIAN & TINA 💃🏻"
+    },
+    {
+     "name_as_written": "GABRIELE & SILVIA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 GABRIELE & SILVIA 💃🏻"
+    },
+    {
+     "name_as_written": "DANIEL & MIKY",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 DANIEL & MIKY 💃🏻"
+    },
+    {
+     "name_as_written": "GIANFRANCO & CHANTAL",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 GIANFRANCO & CHANTAL 💃🏻"
+    },
+    {
+     "name_as_written": "STEFANO & ELISA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 STEFANO & ELISA 💃🏻"
+    },
+    {
+     "name_as_written": "LUCIA CASTAGNINI",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💃🏻 LUCIA CASTAGNINI"
+    },
+    {
+     "name_as_written": "VALENTINA CANGEMI",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💃🏻 VALENTINA CANGEMI"
+    },
+    {
+     "name_as_written": "DR. JEKYLL & ROSY",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 DR. JEKYLL & ROSY 💃🏻"
+    },
+    {
+     "name_as_written": "LINDA GHIGGI",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💃🏻 LINDA GHIGGI"
+    },
+    {
+     "name_as_written": "CLAUDIO & LUCIA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 CLAUDIO & LUCIA 💃🏻"
+    },
+    {
+     "name_as_written": "FABRIZIO CHIARENZA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 FABRIZIO CHIARENZA"
+    },
+    {
+     "name_as_written": "GIORGIO & MAURA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 GIORGIO & MAURA 💃🏻"
+    },
+    {
+     "name_as_written": "ENZO & MICKY",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 ENZO & MICKY 💃🏻"
+    },
+    {
+     "name_as_written": "GIACOMO & GLORIA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏻 GIACOMO & GLORIA 💃🏻"
+    },
+    {
+     "name_as_written": "BIANCA IULIA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💃🏻 BIANCA IULIA"
+    },
+    {
+     "name_as_written": "DJ GHOST FACE",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ GHOST FACE"
+    },
+    {
+     "name_as_written": "DJ ANILSON",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ ANILSON"
+    },
+    {
+     "name_as_written": "DJ R.A.H.T.",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ R.A.H.T."
+    },
+    {
+     "name_as_written": "DJ DANIEL",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ DANIEL"
+    },
+    {
+     "name_as_written": "DJ DR. JEKYLL",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ DR. JEKYLL"
+    },
+    {
+     "name_as_written": "DJ GIO’",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ GIO’"
+    },
+    {
+     "name_as_written": "ROCCO MARIANI",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "▶️ ROCCO MARIANI https://www.facebook.com/rocco.mariani"
+    },
+    {
+     "name_as_written": "SILVIA CICONTE",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "▶️ SILVIA CICONTE https://www.facebook.com/silvia.ciconte"
+    },
+    {
+     "name_as_written": "LUCA ARRIGONI",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "▶️ LUCA ARRIGONI https://www.facebook.com/LucaKiz1985"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "includes the opportunity to participate in all the lessons",
+     "rationale": "The Full Pass includes participation in all the lessons, which are dance classes."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "includes only the Jesus y Anni Masterclass",
+     "rationale": "A separate Masterclass is offered and sold as its own pass."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "the afternoon social",
+     "rationale": "The Full Pass includes an afternoon social, which is a daytime social."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "All in One Location",
+     "rationale": "The hotel section states that the event and the rooms are in one location, so the parties are in the hotel where dancers stay."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Hotel room reservations can be made by calling your contact person in the Line Up",
+     "rationale": "The event negotiates hotel room rates that are bookable through the organisers, while rooms are not part of the pass."
+    }
+   ]
+  }
+ ]
+}

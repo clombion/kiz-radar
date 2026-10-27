@@ -1,6 +1,5 @@
 {
  "batch": "event-16653",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16653,
@@ -10,15 +9,14 @@
      "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": 3,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 119,
        "currency": "CHF",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,

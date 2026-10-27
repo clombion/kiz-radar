@@ -1,0 +1,28 @@
+{
+ "batch": "event-18654",
+ "events": [
+  {
+   "event_id": 18654,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba , Semba & Ghetto Zouk music"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba , Semba & Ghetto Zouk music"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Ghetto Zouk",
+     "quote": "Kizomba , Semba & Ghetto Zouk music"
+    }
+   ]
+  }
+ ]
+}

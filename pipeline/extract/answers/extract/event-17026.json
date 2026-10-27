@@ -1,0 +1,98 @@
+{
+ "batch": "event-17026",
+ "events": [
+  {
+   "event_id": 17026,
+   "artists": [
+    {
+     "name_as_written": "Teresa & Emanuel",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "❤️ Teresa & Emanuel"
+    },
+    {
+     "name_as_written": "Ana Maria & Stephane",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "❤️ Ana Maria & Stephane"
+    },
+    {
+     "name_as_written": "Inês Miranda",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "❤️ Inês Miranda"
+    },
+    {
+     "name_as_written": "Álvaro Gustavo",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "❤️ Álvaro Gustavo"
+    },
+    {
+     "name_as_written": "Daniela Horta",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "❤️ Daniela Horta"
+    },
+    {
+     "name_as_written": "DJ Supaman",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "❤️ DJ Supaman"
+    },
+    {
+     "name_as_written": "DJ Swari",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "❤️ DJ Swari"
+    },
+    {
+     "name_as_written": "Daniela, Lisbeth",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Daniela, Lisbeth & our beautiful team ❤️"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_levels_beginners",
+     "quote": "Whether you’re a beginner or a seasoned dancer",
+     "rationale": "The description explicitly says the event welcomes beginners as well as seasoned dancers."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Inspiring workshops with talented teachers",
+     "rationale": "Workshops with teachers are listed as part of what awaits attendees."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "A cozy Sunday social to close the weekend",
+     "rationale": "A daytime Sunday social is advertised as part of the event."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Special hotel deals for our participants",
+     "rationale": "Negotiated hotel deals are offered to participants without the accommodation being part of a pass."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Dress Code",
+     "rationale": "The description has a Dress Code section stating outfits for each day."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "Friday: Red and/or white",
+     "rationale": "The parties have a dress theme, with a colour theme for Friday and an outfit theme for Saturday."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "batch": "event-15918",
+ "events": [
+  {
+   "event_id": 15918,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Puerto Rican Salsa",
+     "quote": "Puerto Rican Salsa"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Lady Styling",
+     "quote": "Lady Styling"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Rock",
+     "quote": "Rock"
+    }
+   ]
+  }
+ ]
+}

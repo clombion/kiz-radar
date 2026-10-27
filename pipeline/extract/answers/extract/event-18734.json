@@ -1,0 +1,370 @@
+{
+ "batch": "event-18734",
+ "events": [
+  {
+   "event_id": 18734,
+   "artists": [
+    {
+     "name_as_written": "Cornel & Rithika",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🌅 Cornel & Rithika"
+    },
+    {
+     "name_as_written": "Melvin & Gatica",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🌅 Melvin & Gatica"
+    },
+    {
+     "name_as_written": "Abdel & Lety",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🌅 Abdel & Lety"
+    },
+    {
+     "name_as_written": "Willy & Lauriane",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🌅 Willy & Lauriane"
+    },
+    {
+     "name_as_written": "Sakis & Mia",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🌅 Sakis & Mia"
+    },
+    {
+     "name_as_written": "York & Lisa",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🌅 York & Lisa"
+    },
+    {
+     "name_as_written": "Cavalier El Craco",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🌅 Cavalier El Craco"
+    },
+    {
+     "name_as_written": "Joan & Franceska",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🌅 Joan & Franceska"
+    },
+    {
+     "name_as_written": "Samantha",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🌅 Samantha"
+    },
+    {
+     "name_as_written": "DJ York",
+     "role": "dj",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🌅 DJ York"
+    },
+    {
+     "name_as_written": "DJ Khalid",
+     "role": "dj",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🌅 DJ Khalid"
+    },
+    {
+     "name_as_written": "DJ David Pedron",
+     "role": "dj",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🌅 DJ David Pedron"
+    },
+    {
+     "name_as_written": "DJ Trevor",
+     "role": "dj",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🌅 DJ Trevor"
+    },
+    {
+     "name_as_written": "DJ Lupo",
+     "role": "dj",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🌅 DJ Lupo"
+    },
+    {
+     "name_as_written": "DJ Ramiro Zapata",
+     "role": "dj",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🌅 DJ Ramiro Zapata"
+    },
+    {
+     "name_as_written": "Jojo & Jenny",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 Jojo & Jenny"
+    },
+    {
+     "name_as_written": "Dwe & Gaby",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 Dwe & Gaby"
+    },
+    {
+     "name_as_written": "Chamalo & Jalyssa",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 Chamalo & Jalyssa"
+    },
+    {
+     "name_as_written": "Jesus & Anni",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 Jesus & Anni"
+    },
+    {
+     "name_as_written": "Tony & Carla",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 Tony & Carla"
+    },
+    {
+     "name_as_written": "Justinho",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 Justinho"
+    },
+    {
+     "name_as_written": "Lucas & Desiree",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 Lucas & Desiree"
+    },
+    {
+     "name_as_written": "DJ Stefanio Lima",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 DJ Stefanio Lima"
+    },
+    {
+     "name_as_written": "DJ Pingusso",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 DJ Pingusso"
+    },
+    {
+     "name_as_written": "DJ Snakes",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 DJ Snakes"
+    },
+    {
+     "name_as_written": "DJ Lenhy",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 DJ Lenhy"
+    },
+    {
+     "name_as_written": "DJ Shark",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 DJ Shark"
+    },
+    {
+     "name_as_written": "DJ Delahoy",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 DJ Delahoy"
+    },
+    {
+     "name_as_written": "DJ Bartef",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 DJ Bartef"
+    },
+    {
+     "name_as_written": "DJ No Step",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 DJ No Step"
+    },
+    {
+     "name_as_written": "DJ Lucas",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 DJ Lucas"
+    },
+    {
+     "name_as_written": "DJ Miro Kikola",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 DJ Miro Kikola"
+    },
+    {
+     "name_as_written": "DJ Bakongo",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 DJ Bakongo"
+    },
+    {
+     "name_as_written": "DJ Marianna",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 DJ Marianna"
+    },
+    {
+     "name_as_written": "DJ Xtra",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🌊 DJ Xtra"
+    },
+    {
+     "name_as_written": "Panagiotis & Myrto",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🍹 Panagiotis & Myrto"
+    },
+    {
+     "name_as_written": "Adrian & Anita",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🍹 Adrian & Anita"
+    },
+    {
+     "name_as_written": "Yoyo Flow",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🍹 Yoyo Flow"
+    },
+    {
+     "name_as_written": "DJ Patrick El Classico",
+     "role": "dj",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🍹 DJ Patrick El Classico"
+    },
+    {
+     "name_as_written": "DJ Dmitri",
+     "role": "dj",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🍹 DJ Dmitri"
+    },
+    {
+     "name_as_written": "DJ The Chemist",
+     "role": "dj",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🍹 DJ The Chemist"
+    },
+    {
+     "name_as_written": "DJ Combinación Perfecta",
+     "role": "dj",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🍹 DJ Combinación Perfecta"
+    },
+    {
+     "name_as_written": "DJ Oni Ndreko",
+     "role": "dj",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🍹 DJ Oni Ndreko"
+    },
+    {
+     "name_as_written": "ALFIL",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "⛱️ ALFIL – PHOTOGRAPHER"
+    },
+    {
+     "name_as_written": "FARANTINI",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "⛱️ FARANTINI – PHOTOGRAPHER"
+    },
+    {
+     "name_as_written": "CHERYSTYL",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "⛱️ CHERYSTYL – VIDEOGRAPHER"
+    },
+    {
+     "name_as_written": "BENKOS",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "⛱️ BENKOS – VIDEOGRAPHER"
+    },
+    {
+     "name_as_written": "32 BEATS PRODUCTION",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "⛱️ 32 BEATS PRODUCTION – VIDEOGRAPHER"
+    },
+    {
+     "name_as_written": "LEGACY MEDIA",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "⛱️ LEGACY MEDIA – SOCIAL MEDIA EXPERTS"
+    }
+   ],
+   "features": [
+    {
+     "feature": "partner_hotel",
+     "quote": "🏨 FAFA :",
+     "rationale": "A hotel named FAFA is listed under the hotel booking section, which points to a recommended hotel for the event."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "DRESS CODES",
+     "rationale": "The description has a dedicated dress codes section listing a dress code for each day."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "🌺 THURSDAY: 🐆 Animal Print",
+     "rationale": "Each day has a dress theme such as Animal Print, which describes themed nights."
+    }
+   ]
+  }
+ ]
+}

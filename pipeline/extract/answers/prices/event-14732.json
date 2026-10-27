@@ -1,6 +1,5 @@
 {
  "batch": "event-14732",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 14732,
@@ -10,15 +9,17 @@
      "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": 3,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 95,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 2375,
-       "alt_currency": "CZK",
+       "alt": {
+        "amount": 2375,
+        "currency": "CZK"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -34,15 +35,17 @@
      "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": 3,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 85,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 2125,
-       "alt_currency": "CZK",
+       "alt": {
+        "amount": 2125,
+        "currency": "CZK"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -58,15 +61,17 @@
      "style": null,
      "label_quote": null,
      "group_size": 2,
-     "days": 3,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 170,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 4250,
-       "alt_currency": "CZK",
+       "alt": {
+        "amount": 4250,
+        "currency": "CZK"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -82,15 +87,17 @@
      "style": null,
      "label_quote": null,
      "group_size": 2,
-     "days": 3,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 150,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 3750,
-       "alt_currency": "CZK",
+       "alt": {
+        "amount": 3750,
+        "currency": "CZK"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -98,6 +105,32 @@
        "sold_out": false,
        "current": false,
        "quote": "💃🕺DANCEPASS COUPLEPASS 150€ OR 3750CZK"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": "PRE-PARTY from 21:00 – 04:00",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 400,
+       "currency": "CZK",
+       "fee": null,
+       "alt": {
+        "amount": 15,
+        "currency": "EUR"
+       },
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Entrance fee 400CZK / 15E"
       }
      ]
     }

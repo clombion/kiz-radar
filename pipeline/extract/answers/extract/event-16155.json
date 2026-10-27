@@ -1,0 +1,74 @@
+{
+ "batch": "event-16155",
+ "events": [
+  {
+   "event_id": 16155,
+   "artists": [
+    {
+     "name_as_written": "Asia",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Asia"
+    },
+    {
+     "name_as_written": "Pidjay & Enora",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Pidjay & Enora"
+    },
+    {
+     "name_as_written": "Damyss",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Damyss"
+    },
+    {
+     "name_as_written": "Damir",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Damir"
+    },
+    {
+     "name_as_written": "Justinho",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Justinho"
+    },
+    {
+     "name_as_written": "Ichigo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Ichigo"
+    },
+    {
+     "name_as_written": "Iron Mams",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Iron Mams"
+    },
+    {
+     "name_as_written": "Fayola",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Fayola"
+    },
+    {
+     "name_as_written": "Mous",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Mous"
+    }
+   ],
+   "features": []
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "batch": "event-15321",
+ "events": [
+  {
+   "event_id": 15321,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "BACHATA & SALSA ARTISTS"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "BACHATA & SALSA ARTISTS"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "KIZOMBA, URBAN KIZ & TARRAXA"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBAN KIZ",
+     "quote": "KIZOMBA, URBAN KIZ & TARRAXA"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "TARRAXA",
+     "quote": "KIZOMBA, URBAN KIZ & TARRAXA"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "ZOUK B",
+     "quote": "ZOUK B ARTISTS"
+    }
+   ]
+  }
+ ]
+}

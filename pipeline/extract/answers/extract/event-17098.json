@@ -1,0 +1,41 @@
+{
+ "batch": "event-17098",
+ "events": [
+  {
+   "event_id": 17098,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "signature Dance Workshops",
+     "rationale": "The description lists Dance Workshops as a core part of the festival."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Specialty Bootcamp",
+     "rationale": "A Specialty Bootcamp is named as part of the festival programme."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Specialty Bootcamps./Masterclass",
+     "rationale": "Masterclasses are offered as an optional extra alongside the bootcamps."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Day Social",
+     "rationale": "A Day Social is listed among the festival's features."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "ALL Sawa Sawa Kizomba Festival activities will take place at the host Hotel, Hyatt Regency Bethesda.",
+     "rationale": "Festival activities, including the parties, take place in the hotel where dancers are invited to stay."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Steeply discounted Sawa Sawa sleeping rooms are currently available on sale.",
+     "rationale": "Discounted sleeping rooms at the host hotel are offered without being part of the pass."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,86 @@
+{
+ "batch": "event-18854",
+ "events": [
+  {
+   "event_id": 18854,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Room 1",
+     "kind": "unspecified",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "Room 1 : 100% Salsa Cubano"
+    },
+    {
+     "name_as_written": "Room 2",
+     "kind": "unspecified",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "Room 2 : 100% Salsa Romantica"
+    },
+    {
+     "name_as_written": "Room 3",
+     "kind": "unspecified",
+     "genres": [
+      "kizomba",
+      "kompa",
+      "semba",
+      "afro"
+     ],
+     "quote": "Room 3 : 100% Kizomba / Konpa /Semba / Afro-House"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa Cubano",
+     "quote": "Room 1 : 100% Salsa Cubano"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa Romantica",
+     "quote": "Room 2 : 100% Salsa Romantica"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Room 3 : 100% Kizomba / Konpa /Semba / Afro-House"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urbankiz",
+     "quote": "Urbankiz"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Konpa"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarracho",
+     "quote": "Tarracho"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "Tarracho and Afro"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro-House",
+     "quote": "Afro-House"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Semba"
+    }
+   ]
+  }
+ ]
+}

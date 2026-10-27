@@ -1,0 +1,173 @@
+{
+ "batch": "event-15980",
+ "events": [
+  {
+   "event_id": 15980,
+   "artists": [
+    {
+     "name_as_written": "FUEGO & DORIAN",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ FUEGO & DORIAN ✨"
+    },
+    {
+     "name_as_written": "HENECO & AIMÉE",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ HENECO & AIMÉE ✨"
+    },
+    {
+     "name_as_written": "JULES & YUNA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ JULES & YUNA ✨"
+    },
+    {
+     "name_as_written": "LILIAN & IVANA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ LILIAN & IVANA ✨"
+    },
+    {
+     "name_as_written": "AVINASH & EMMA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ AVINASH & EMMA✨"
+    },
+    {
+     "name_as_written": "HARVEY",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ HARVEY ✨"
+    },
+    {
+     "name_as_written": "ANDERSON",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ ANDERSON✨"
+    },
+    {
+     "name_as_written": "JUSTIN",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ JUSTIN✨"
+    },
+    {
+     "name_as_written": "DJ NICE LIFE",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ NICE LIFE 🎧"
+    },
+    {
+     "name_as_written": "DJ SNAKES",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ SNAKES 🎧"
+    },
+    {
+     "name_as_written": "DJ LEVI’S",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ LEVI’S 🎧"
+    },
+    {
+     "name_as_written": "DJ LONGCHAMP",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ LONGCHAMP 🎧"
+    },
+    {
+     "name_as_written": "DJ DJEEMIX",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ DJEEMIX 🎧"
+    },
+    {
+     "name_as_written": "DJ TJE’",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ TJE’ 🎧"
+    },
+    {
+     "name_as_written": "DJ VAXX",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ VAXX🎧"
+    },
+    {
+     "name_as_written": "DJ SAVVY",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ SAVVY🎧"
+    },
+    {
+     "name_as_written": "MISTER ZOOM",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "📸 MISTER ZOOM"
+    },
+    {
+     "name_as_written": "NDAMOSÉ",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "🎥 NDAMOSÉ"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "NEW LOCATION ALL IN ONE",
+     "rationale": "The event is announced as all in one at a new location, indicating the parties and the stay take place in the same venue."
+    },
+    {
+     "feature": "camping",
+     "quote": "Camping De Schatberg",
+     "rationale": "The venue is a campsite, and the chalet and bungalow accommodation is part of the same location."
+    },
+    {
+     "feature": "workshops",
+     "quote": "3 DAYS OF WORKSHOPS",
+     "rationale": "The description lists workshop days as part of the event program."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "3 DAYS OF SOCIALS",
+     "rationale": "The description lists daytime social days, and the schedule includes FRIDAY SOCIAL and SATURDAY SOCIAL sessions."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "TRAINSTATION VENLO | Netherlands",
+     "rationale": "A travel section lists airport and train station pick-up points for transfers to the event."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "THURSDAY PRE PARTY",
+     "rationale": "The schedule explicitly lists a Thursday pre party before the main event."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 AREAS TO PARTY",
+     "rationale": "The description states there are three areas to party, meaning more than one dance floor."
+    }
+   ]
+  }
+ ]
+}

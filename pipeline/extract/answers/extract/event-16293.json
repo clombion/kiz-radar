@@ -1,0 +1,39 @@
+{
+ "batch": "event-16293",
+ "events": [
+  {
+   "event_id": 16293,
+   "artists": [
+    {
+     "name_as_written": "HUGO SMILE & EVREN KABACIOGLU",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "HUGO SMILE & EVREN KABACIOGLU are proud to announce the 10TH CONTRATEMPO."
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "More than 22 hours of WORKSHOPS",
+     "rationale": "The description states that more than 22 hours of workshops are part of the event."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "4 THEMED PARTIES DURING THE WEEKEND",
+     "rationale": "The event runs four themed parties during the weekend."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "MAIN ROOM",
+     "rationale": "The event lists several dance rooms, including the Afro room, the main room and the garden party area."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Free shuttle between the hotels and the venue of the event",
+     "rationale": "A free shuttle runs between the hotels and the event venue."
+    }
+   ]
+  }
+ ]
+}

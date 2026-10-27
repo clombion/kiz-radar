@@ -1,0 +1,77 @@
+{
+ "batch": "event-16513",
+ "events": [
+  {
+   "event_id": 16513,
+   "party_rooms": {
+    "count": 5,
+    "quote": "5 rooms, 5 atmospheres"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "800m² 100% bachata room"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "2 100% kizomba rooms"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "100% salsa porto room"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "100% Cuban salsa room"
+    },
+    {
+     "name_as_written": null,
+     "kind": "unspecified",
+     "genres": [
+      "tarraxo"
+     ],
+     "quote": "one urban tarraxo room"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "🟣 BACHATA"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "🔵 SALSA"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "🟢 KIZOMBA"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "tarraxo",
+     "quote": "one urban tarraxo room"
+    }
+   ]
+  }
+ ]
+}

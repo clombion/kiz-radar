@@ -1,0 +1,18 @@
+{
+ "batch": "event-18495",
+ "events": [
+  {
+   "event_id": 18495,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "a 4-day Kizomba immersion designed as a true winter cocoon"
+    }
+   ]
+  }
+ ]
+}

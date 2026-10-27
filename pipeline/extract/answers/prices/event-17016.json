@@ -1,6 +1,5 @@
 {
  "batch": "event-17016",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17016,
@@ -17,22 +16,20 @@
        "amount": 65,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "FULLPASS AVAILABLE (65€)"
+       "quote": "👉 FULLPASS AVAILABLE (65€) –"
       },
       {
        "amount": 75,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -45,15 +42,14 @@
        "amount": 115,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": 70,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "70 Fullpass available (115€)"
+       "quote": "👉 70 Fullpass available (115€)"
       }
      ]
     },
@@ -69,8 +65,7 @@
        "amount": 110,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -93,22 +88,19 @@
        "amount": 95,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "COUPLE FULLPASS (95€)"
+       "quote": "👉 COUPLE FULLPASS (95€)"
       }
      ]
     }
    ],
-   "rule_quotes": [
-    "To get a 10 euro discount, use the code on your purchase."
-   ]
+   "rule_quotes": []
   }
  ]
 }

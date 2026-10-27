@@ -1,0 +1,29 @@
+{
+ "batch": "event-14747",
+ "events": [
+  {
+   "event_id": 14747,
+   "artists": [
+    {
+     "name_as_written": "Kizatours",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "We are pleased to present our first festival: the Kizatours Dances Festival All in One."
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Approximately 20 hours of workshops over the weekend",
+     "rationale": "The description states that about 20 hours of workshops take place over the weekend."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Saturday Afternoon",
+     "rationale": "Afternoon social events are listed for Saturday and Sunday."
+    }
+   ]
+  }
+ ]
+}

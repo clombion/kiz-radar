@@ -1,0 +1,38 @@
+{
+ "batch": "event-14767",
+ "events": [
+  {
+   "event_id": 14767,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "dancing (Salsa, Bachata, Kizomba, Zouk, Konpa)"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "dancing (Salsa, Bachata, Kizomba, Zouk, Konpa)"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "dancing (Salsa, Bachata, Kizomba, Zouk, Konpa)"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Zouk",
+     "quote": "dancing (Salsa, Bachata, Kizomba, Zouk, Konpa)"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "dancing (Salsa, Bachata, Kizomba, Zouk, Konpa)"
+    }
+   ]
+  }
+ ]
+}

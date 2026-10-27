@@ -1,0 +1,161 @@
+{
+ "batch": "event-16064",
+ "events": [
+  {
+   "event_id": 16064,
+   "artists": [
+    {
+     "name_as_written": "Gwany & Liliana",
+     "role": "teacher",
+     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
+     "country": null,
+     "source_line": "🔸️Gwany & Liliana"
+    },
+    {
+     "name_as_written": "Jack & Sara",
+     "role": "teacher",
+     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
+     "country": null,
+     "source_line": "🔸️Jack & Sara"
+    },
+    {
+     "name_as_written": "Axel & Lucy",
+     "role": "teacher",
+     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
+     "country": null,
+     "source_line": "🔸️Axel & Lucy"
+    },
+    {
+     "name_as_written": "T-peak & Djé",
+     "role": "teacher",
+     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
+     "country": null,
+     "source_line": "🔸️T-peak & Djé"
+    },
+    {
+     "name_as_written": "Antho & Bene",
+     "role": "teacher",
+     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
+     "country": null,
+     "source_line": "🔸️Antho & Bene"
+    },
+    {
+     "name_as_written": "Josué & Céline",
+     "role": "teacher",
+     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
+     "country": null,
+     "source_line": "🔸️Josué & Céline"
+    },
+    {
+     "name_as_written": "Yoan",
+     "role": "teacher",
+     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
+     "country": null,
+     "source_line": "🔸️Yoan"
+    },
+    {
+     "name_as_written": "𝘿𝙅 Paraiso",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️𝘿𝙅 Paraiso"
+    },
+    {
+     "name_as_written": "𝘿𝙅 Shark",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️𝘿𝙅 Shark"
+    },
+    {
+     "name_as_written": "𝘿𝙅 Valet",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️𝘿𝙅 Valet"
+    },
+    {
+     "name_as_written": "𝘿𝙅 Blvck Skyle",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️𝘿𝙅 Blvck Skyle"
+    },
+    {
+     "name_as_written": "𝘿𝙅 Nice Life",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️𝘿𝙅 Nice Life"
+    },
+    {
+     "name_as_written": "𝘿𝙅 Ichigo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️𝘿𝙅 Ichigo"
+    },
+    {
+     "name_as_written": "𝘿𝙅 T’peak",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️𝘿𝙅 T’peak"
+    },
+    {
+     "name_as_written": "𝘿𝙅 Poema Beatz",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️𝘿𝙅 Poema Beatz"
+    },
+    {
+     "name_as_written": "мαятιη ι’м уσυя мє∂ια",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "📽 мαятιη ι’м уσυя мє∂ια"
+    },
+    {
+     "name_as_written": "ιηѕєηѕαтιση",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "📸 ιηѕєηѕαтιση"
+    }
+   ],
+   "features": [
+    {
+     "feature": "boat_party",
+     "quote": "BOAT PARTY",
+     "rationale": "The event lists a boat party among its highlights."
+    },
+    {
+     "feature": "competition",
+     "quote": "TARRAXO BATTLE COMPETITION",
+     "rationale": "A battle competition is listed as part of the event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "4 DAYS OF WORKSHOPS",
+     "rationale": "Workshops over four days are part of the event."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Room 1 – 𝗧𝗮𝗿𝗿𝗮𝘅𝗼 | 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇",
+     "rationale": "The description lists several rooms, including Room 1 and Room 2, as dance spaces."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Altafulla Mar Hotel",
+     "rationale": "The event names a venue hotel that dancers can book, which is not stated to be part of the pass."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "Book your 𝐀𝐥𝐥-𝐢𝐧-𝟏 !",
+     "rationale": "The venue is the hotel and dancers are invited to book the all-in-one hotel package there."
+    }
+   ]
+  }
+ ]
+}

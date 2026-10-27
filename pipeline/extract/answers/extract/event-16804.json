@@ -1,0 +1,99 @@
+{
+ "batch": "event-16804",
+ "events": [
+  {
+   "event_id": 16804,
+   "artists": [
+    {
+     "name_as_written": "DJ Paraiso",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Paraiso, DJ Kin, DJ Dany, DJ Max, DJ Lova, DJ MKY, DJ Lcslow"
+    },
+    {
+     "name_as_written": "DJ Kin",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Paraiso, DJ Kin, DJ Dany, DJ Max, DJ Lova, DJ MKY, DJ Lcslow"
+    },
+    {
+     "name_as_written": "DJ Dany",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Paraiso, DJ Kin, DJ Dany, DJ Max, DJ Lova, DJ MKY, DJ Lcslow"
+    },
+    {
+     "name_as_written": "DJ Max",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Paraiso, DJ Kin, DJ Dany, DJ Max, DJ Lova, DJ MKY, DJ Lcslow"
+    },
+    {
+     "name_as_written": "DJ Lova",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Paraiso, DJ Kin, DJ Dany, DJ Max, DJ Lova, DJ MKY, DJ Lcslow"
+    },
+    {
+     "name_as_written": "DJ MKY",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Paraiso, DJ Kin, DJ Dany, DJ Max, DJ Lova, DJ MKY, DJ Lcslow"
+    },
+    {
+     "name_as_written": "DJ Lcslow",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Paraiso, DJ Kin, DJ Dany, DJ Max, DJ Lova, DJ MKY, DJ Lcslow"
+    },
+    {
+     "name_as_written": "Josué & Céline",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ Josué & Céline, Mervil, Roxane & Corentin, Chacha"
+    },
+    {
+     "name_as_written": "Mervil",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ Josué & Céline, Mervil, Roxane & Corentin, Chacha"
+    },
+    {
+     "name_as_written": "Roxane & Corentin",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ Josué & Céline, Mervil, Roxane & Corentin, Chacha"
+    },
+    {
+     "name_as_written": "Chacha",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ Josué & Céline, Mervil, Roxane & Corentin, Chacha"
+    }
+   ],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 ROOMS. 2 ATMOSPHERES. 1 SINGLE ENERGY.",
+     "rationale": "The event states it has two rooms, each with its own atmosphere."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "CONEXAO HALLOWEEN 2",
+     "rationale": "The event is a Halloween-themed party, which is a themed night."
+    }
+   ]
+  }
+ ]
+}

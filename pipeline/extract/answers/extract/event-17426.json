@@ -1,0 +1,113 @@
+{
+ "batch": "event-17426",
+ "events": [
+  {
+   "event_id": 17426,
+   "artists": [
+    {
+     "name_as_written": "Fajul",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "– Fajul"
+    },
+    {
+     "name_as_written": "Inna",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "– Inna"
+    },
+    {
+     "name_as_written": "Sinah&Patrick",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "– Sinah&Patrick"
+    },
+    {
+     "name_as_written": "Claudia",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "– Claudia"
+    },
+    {
+     "name_as_written": "Gloire",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "– Gloire"
+    },
+    {
+     "name_as_written": "Kali_Artist",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "– Kali_Artist"
+    },
+    {
+     "name_as_written": "DJ Morela Soul",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Morela Soul"
+    },
+    {
+     "name_as_written": "DJ Sorin",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Sorin"
+    },
+    {
+     "name_as_written": "DJ Dino",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Dino"
+    },
+    {
+     "name_as_written": "DJ Remcy",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Remcy"
+    },
+    {
+     "name_as_written": "DJ Frank",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Frank"
+    },
+    {
+     "name_as_written": "DJ Paps King",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Paps King"
+    },
+    {
+     "name_as_written": "Kizztalk Dance Academy",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "📍 Kizztalk Dance Academy"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Confirmed Workshops by:",
+     "rationale": "The description lists confirmed workshop teachers, so dance workshops are part of the event."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 Party Rooms:",
+     "rationale": "The event has two separate party rooms, meaning more than one dance floor."
+    }
+   ]
+  }
+ ]
+}

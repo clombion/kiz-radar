@@ -1,0 +1,184 @@
+{
+ "batch": "event-17961",
+ "events": [
+  {
+   "event_id": 17961,
+   "artists": [
+    {
+     "name_as_written": "Julio Rojas",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "Venezuela",
+     "source_line": "★ Julio Rojas (Venezuela) – confirmed"
+    },
+    {
+     "name_as_written": "Saoco Dance Company",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "Italy",
+     "source_line": "★ Saoco Dance Company (Italy) – confirmed"
+    },
+    {
+     "name_as_written": "Estaban",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "France",
+     "source_line": "★ Estaban (France) – confirmed"
+    },
+    {
+     "name_as_written": "Brian Libier",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "Netherlands",
+     "source_line": "★ Brian Libier (Netherlands) – confirmed"
+    },
+    {
+     "name_as_written": "Salsaddiction",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "Netherlands",
+     "source_line": "★Salsaddiction (Netherlands) – confirmed"
+    },
+    {
+     "name_as_written": "Quijano Brothers",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "Mexico",
+     "source_line": "★ Quijano Brothers (Mexico) – confiermed"
+    },
+    {
+     "name_as_written": "Jean Paul & Giovana",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "Germany – Italy",
+     "source_line": "★ Jean Paul & Giovana (Germany – Italy) – confiermed"
+    },
+    {
+     "name_as_written": "Leon Rose",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "France",
+     "source_line": "★ Leon Rose (France)"
+    },
+    {
+     "name_as_written": "Anna Villa",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "France",
+     "source_line": "★ Anna Villa (France)"
+    },
+    {
+     "name_as_written": "Lady Alex",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "Germany",
+     "source_line": "★ Lady Alex (Germany)"
+    },
+    {
+     "name_as_written": "Natalie & Serhii",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "Ukraine",
+     "source_line": "★ Natalie & Serhii (Ukraine)"
+    },
+    {
+     "name_as_written": "Pasqualino",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "Germany",
+     "source_line": "★ Pasqualino (Germany)"
+    },
+    {
+     "name_as_written": "Melanie",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "Germany",
+     "source_line": "★ Melanie (Germany)"
+    },
+    {
+     "name_as_written": "Nené & Sandy",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "Marocco",
+     "source_line": "★ Nené & Sandy (Marocco)"
+    },
+    {
+     "name_as_written": "Bersy Project A’dam",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": "Netherlands",
+     "source_line": "★ Bersy Project A’dam (Netherlands)"
+    },
+    {
+     "name_as_written": "Fabio & Marina",
+     "role": "teacher",
+     "style": "Kizomba & Urbankiz",
+     "country": null,
+     "source_line": "★ Fabio & Marina"
+    },
+    {
+     "name_as_written": "Folan & Jaqui",
+     "role": "teacher",
+     "style": "Kizomba & Urbankiz",
+     "country": null,
+     "source_line": "★ Folan & Jaqui"
+    },
+    {
+     "name_as_written": "Frank & Roja",
+     "role": "teacher",
+     "style": "Kizomba & Urbankiz",
+     "country": null,
+     "source_line": "★ Frank & Roja"
+    },
+    {
+     "name_as_written": "DJ Walter Correia",
+     "role": "dj",
+     "style": "Kizomba & Urbankiz",
+     "country": "Netherlands",
+     "source_line": "★ DJ Walter Correia (Netherlands) – confirmed"
+    },
+    {
+     "name_as_written": "DJ Corner",
+     "role": "dj",
+     "style": "Kizomba & Urbankiz",
+     "country": "Germany",
+     "source_line": "★ DJ Corner (Germany)"
+    },
+    {
+     "name_as_written": "Latin TV 4ever",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "▶ Videograf: Latin TV 4ever"
+    }
+   ],
+   "features": [
+    {
+     "feature": "shows",
+     "quote": "Fantastic shows",
+     "rationale": "The description advertises fantastic shows as part of the event."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Show & live act",
+     "rationale": "A live act is listed as part of the programme, indicating live performance."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Workshops, master classes and bootcamps",
+     "rationale": "The event explicitly offers workshops, masterclasses and bootcamps."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "master classes",
+     "rationale": "Master classes are named as part of the programme."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "bootcamps",
+     "rationale": "Bootcamps are named as part of the programme."
+    }
+   ]
+  }
+ ]
+}

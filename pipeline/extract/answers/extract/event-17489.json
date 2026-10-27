@@ -1,0 +1,87 @@
+{
+ "batch": "event-17489",
+ "events": [
+  {
+   "event_id": 17489,
+   "artists": [
+    {
+     "name_as_written": "Francis & Sabine",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "– Francis & Sabine (Orléans)"
+    },
+    {
+     "name_as_written": "Alex & Karine",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "– Alex & Karine (Amiens)"
+    },
+    {
+     "name_as_written": "Yace Galanta",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "– Yace Galanta (Geneva)"
+    },
+    {
+     "name_as_written": "Blackchinese",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "– Blackchinese (Nice)"
+    },
+    {
+     "name_as_written": "Emy Ly",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "– Emy Ly (Béziers)"
+    },
+    {
+     "name_as_written": "DJ MKY",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ MKY (Geneva) – Godfather"
+    },
+    {
+     "name_as_written": "DJ DRIM",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ DRIM (Geneva)"
+    },
+    {
+     "name_as_written": "DJ Galanta",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ Galanta (Geneva)"
+    },
+    {
+     "name_as_written": "DJ MARKIZ",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ MARKIZ (Perpignan)"
+    },
+    {
+     "name_as_written": "DJ Ralph BB",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ Ralph BB (Toulouse)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Full Pass (workshops, social dance & party)",
+     "rationale": "The pass explicitly includes workshops, so dance classes are part of the event."
+    }
+   ]
+  }
+ ]
+}

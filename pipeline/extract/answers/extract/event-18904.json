@@ -1,0 +1,62 @@
+{
+ "batch": "event-18904",
+ "events": [
+  {
+   "event_id": 18904,
+   "artists": [
+    {
+     "name_as_written": "Fajul",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Fajul – KIZZTALK"
+    },
+    {
+     "name_as_written": "DJ Sorin",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Sorin"
+    },
+    {
+     "name_as_written": "DJ Mixmillion",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Mixmillion"
+    },
+    {
+     "name_as_written": "DJ Frank",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Frank"
+    },
+    {
+     "name_as_written": "KIZZTALK Dance Academy",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "KIZZTALK Dance Academy"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Workshops & bootcamps",
+     "rationale": "The event lists workshops as part of what to expect."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Workshops & bootcamps",
+     "rationale": "The event lists bootcamps as part of the program."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Day socials",
+     "rationale": "The event lists day socials in its program."
+    }
+   ]
+  }
+ ]
+}

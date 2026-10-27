@@ -1,0 +1,139 @@
+{
+ "batch": "event-16968",
+ "events": [
+  {
+   "event_id": 16968,
+   "artists": [
+    {
+     "name_as_written": "Nas",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Nas"
+    },
+    {
+     "name_as_written": "Adée",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Adée"
+    },
+    {
+     "name_as_written": "Cecilien & Lucie",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Cecilien & Lucie"
+    },
+    {
+     "name_as_written": "Nuno Karga",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Nuno Karga"
+    },
+    {
+     "name_as_written": "Emilie",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Emilie"
+    },
+    {
+     "name_as_written": "Julie July",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Julie July"
+    },
+    {
+     "name_as_written": "D’Lys",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "D’Lys"
+    },
+    {
+     "name_as_written": "Elsa & Sergi",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Elsa & Sergi"
+    },
+    {
+     "name_as_written": "Elias & Vicky",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Elias & Vicky"
+    },
+    {
+     "name_as_written": "Lorenzo & Cristina",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Lorenzo & Cristina"
+    },
+    {
+     "name_as_written": "DJ Antony Tarraxa",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Antony Tarraxa"
+    },
+    {
+     "name_as_written": "DJ Valet",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Valet"
+    },
+    {
+     "name_as_written": "DJ Bad",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Bad"
+    },
+    {
+     "name_as_written": "DJ Moyaz",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Moyaz"
+    },
+    {
+     "name_as_written": "DJ Diamond",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Diamond"
+    },
+    {
+     "name_as_written": "DJ Mad’X",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Mad’X"
+    }
+   ],
+   "features": [
+    {
+     "feature": "camping",
+     "quote": "Camping Bon Repos",
+     "rationale": "The event is held at a campsite, named as Camping Bon Repos."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Accommodation in a 5-person bungalow + Full Pass",
+     "rationale": "The full pass is sold together with bungalow accommodation."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Accommodation in a 5-person bungalow + Full Pass + all meals",
+     "rationale": "The higher-priced package explicitly includes all meals."
+    }
+   ]
+  }
+ ]
+}

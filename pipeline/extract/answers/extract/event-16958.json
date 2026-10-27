@@ -1,0 +1,81 @@
+{
+ "batch": "event-16958",
+ "events": [
+  {
+   "event_id": 16958,
+   "artists": [
+    {
+     "name_as_written": "Ben & Ana",
+     "role": "teacher",
+     "style": null,
+     "country": "Portugal",
+     "source_line": "– Ben & Ana (Portugal)"
+    },
+    {
+     "name_as_written": "Yace galanta & Camille",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "– Yace galanta & Camille (Genève)"
+    },
+    {
+     "name_as_written": "King & Amélie",
+     "role": "teacher",
+     "style": null,
+     "country": "Italie",
+     "source_line": "– King & Amélie (Italie)"
+    },
+    {
+     "name_as_written": "Dj MKY",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– Dj MKY (Genève)"
+    },
+    {
+     "name_as_written": "Dj DRIM",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– Dj DRIM (Genève)"
+    },
+    {
+     "name_as_written": "Dj MARKIZ",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– Dj MARKIZ (Perpignan)"
+    },
+    {
+     "name_as_written": "École Viens Danser",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "École Viens Danser"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "15h – 17h whorshop urban kiz Yace galanta & Camille",
+     "rationale": "A workshop with Yace galanta & Camille is scheduled on Saturday afternoon."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "soirée SBK 3 salles 3 ambiances",
+     "rationale": "The party takes place in three rooms with different atmospheres."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "17h – 21h social Kiz Semba Kompa Zouk 5€",
+     "rationale": "A daytime social runs on Sunday afternoon."
+    },
+    {
+     "feature": "camping",
+     "quote": "En partenariat avec le camping sainte veziane sur Bessan.",
+     "rationale": "Accommodation is offered at a partner campsite."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,124 @@
+{
+ "batch": "event-18365",
+ "events": [
+  {
+   "event_id": 18365,
+   "artists": [
+    {
+     "name_as_written": "Dwe",
+     "role": "teacher",
+     "style": null,
+     "country": "🇳🇱",
+     "source_line": "✔️ Dwe 🇳🇱"
+    },
+    {
+     "name_as_written": "Gaby",
+     "role": "teacher",
+     "style": null,
+     "country": "🇳🇱",
+     "source_line": "✔️ Gaby 🇳🇱"
+    },
+    {
+     "name_as_written": "Emily Tarraxo",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "✔️ Emily Tarraxo 🇨🇦"
+    },
+    {
+     "name_as_written": "Nikit",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "✔️ Nikit 🇨🇦"
+    },
+    {
+     "name_as_written": "Lena",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "✔️ Lena 🇨🇦"
+    },
+    {
+     "name_as_written": "Kenny",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "✔️ Kenny 🇨🇦"
+    },
+    {
+     "name_as_written": "Gaz",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "✔️ Gaz 🇨🇦"
+    },
+    {
+     "name_as_written": "Sinker DjSink",
+     "role": "dj",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "🎧 Sinker DjSink 🇨🇦"
+    },
+    {
+     "name_as_written": "James Blvq",
+     "role": "dj",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "🎧 James Blvq 🇨🇦"
+    },
+    {
+     "name_as_written": "DjYawo FTM",
+     "role": "dj",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "🎧 DjYawo FTM 🇨🇦"
+    },
+    {
+     "name_as_written": "DjYawo Nano",
+     "role": "dj",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "🎧 DjYawo Nano 🇨🇦"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL-IN-ONE Festival Venue & Hotel",
+     "rationale": "The description calls the event an all-in-one venue and hotel, so the parties take place in the hotel where dancers are invited to stay."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "DISCOUNTED HOTEL LINK BELOW ONLY $139.99 per night",
+     "rationale": "A negotiated discounted hotel rate is offered, but it is not part of the festival pass."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Breakfast included.",
+     "rationale": "The hotel room package explicitly includes breakfast."
+    },
+    {
+     "feature": "competition",
+     "quote": "Jack & Jill Competition is BACK!",
+     "rationale": "A Jack & Jill competition is part of the event."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Masterclasses",
+     "rationale": "The event lists masterclasses under What to Expect."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Thursday Pre-Party",
+     "rationale": "A pre-party is listed on Thursday before the main event."
+    },
+    {
+     "feature": "after_party",
+     "quote": "Nightly Socials & After-Parties",
+     "rationale": "After-parties are listed as part of the nightly program."
+    }
+   ]
+  }
+ ]
+}

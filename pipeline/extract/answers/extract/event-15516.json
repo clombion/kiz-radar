@@ -1,0 +1,52 @@
+{
+ "batch": "event-15516",
+ "events": [
+  {
+   "event_id": 15516,
+   "artists": [
+    {
+     "name_as_written": "Damir & Laura",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Damir & Laura"
+    },
+    {
+     "name_as_written": "Don Perry & Nike",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Don Perry & Nike"
+    },
+    {
+     "name_as_written": "Sandra Gutiérrez",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Sandra Gutiérrez"
+    },
+    {
+     "name_as_written": "Stefan & Chloé",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Stefan & Chloé"
+    },
+    {
+     "name_as_written": "Virgile & June",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Virgile & June"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Saturday: 4 Workshops + Social + Party",
+     "rationale": "The program lists several workshops on each day of the weekend, so dance classes are part of the event."
+    }
+   ]
+  }
+ ]
+}

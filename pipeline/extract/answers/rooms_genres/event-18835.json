@@ -1,0 +1,80 @@
+{
+ "batch": "event-18835",
+ "events": [
+  {
+   "event_id": 18835,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 rooms – 2 atmospheres"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Room I",
+     "kind": "party",
+     "genres": [
+      "urbankiz",
+      "tarraxo",
+      "zouk",
+      "afro",
+      "douceur"
+     ],
+     "quote": "Room I : Urbankiz – Tarraxo- Ghettozouk – Afrobeat – Douceur"
+    },
+    {
+     "name_as_written": "Room II",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "semba",
+      "afro",
+      "kompa"
+     ],
+     "quote": "Room II : Authentic Kizomba – Semba – Afrozouk – Kompa"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Authentic Kizomba"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "UrbanKiz",
+     "quote": "UrbanKiz, Kizomba, Semba, Tarraxo and Ghetto Zouk"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Authentic Kizomba – Semba"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Urbankiz – Tarraxo- Ghettozouk"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Ghetto Zouk",
+     "quote": "Tarraxo and Ghetto Zouk"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afrobeat",
+     "quote": "Afrobeat"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "Afrobeat – Douceur"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Kompa",
+     "quote": "Semba – Afrozouk – Kompa"
+    }
+   ]
+  }
+ ]
+}

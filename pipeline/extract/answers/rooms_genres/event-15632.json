@@ -1,0 +1,33 @@
+{
+ "batch": "event-15632",
+ "events": [
+  {
+   "event_id": 15632,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBAN KIZ",
+     "quote": "URBAN KIZ"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "TARRAXO",
+     "quote": "TARRAXO"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "AFRO BEAT",
+     "quote": "AFRO BEAT"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "DOUCEUR",
+     "quote": "DOUCEUR"
+    }
+   ]
+  }
+ ]
+}

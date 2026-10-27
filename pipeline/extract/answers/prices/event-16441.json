@@ -1,12 +1,10 @@
 {
  "batch": "event-16441",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16441,
    "passes": [],
    "rule_quotes": [
-    "Secure your spot before May 31st",
     "Next price increase: June 1st"
    ]
   }

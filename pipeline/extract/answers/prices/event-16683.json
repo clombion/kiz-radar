@@ -1,6 +1,5 @@
 {
  "batch": "event-16683",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16683,
@@ -10,15 +9,14 @@
      "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": 4,
+     "days": null,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 295,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,

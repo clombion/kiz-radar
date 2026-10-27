@@ -1,0 +1,263 @@
+{
+ "batch": "event-14501",
+ "events": [
+  {
+   "event_id": 14501,
+   "artists": [
+    {
+     "name_as_written": "Fofo Jah",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Fofo Jah 🇫🇷"
+    },
+    {
+     "name_as_written": "Poema Beatz",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Poema Beatz 🇸🇪"
+    },
+    {
+     "name_as_written": "Ti Wosh",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Ti Wosh 🇫🇷"
+    },
+    {
+     "name_as_written": "Bangs",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Bangs 🇫🇷"
+    },
+    {
+     "name_as_written": "Dee C Beatz",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Dee C Beatz 🇫🇷"
+    },
+    {
+     "name_as_written": "T’Peak",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• T’Peak 🇫🇷"
+    },
+    {
+     "name_as_written": "Bartef",
+     "role": "dj",
+     "style": null,
+     "country": "🇵🇱",
+     "source_line": "• Bartef 🇵🇱"
+    },
+    {
+     "name_as_written": "Lee Ross",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Lee Ross 🇫🇷"
+    },
+    {
+     "name_as_written": "Eden",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Eden 🇫🇷"
+    },
+    {
+     "name_as_written": "Soulbeat",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Soulbeat 🇸🇪"
+    },
+    {
+     "name_as_written": "Shiro",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Shiro 🇸🇪"
+    },
+    {
+     "name_as_written": "Style of Music",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Style of Music 🇫🇷"
+    },
+    {
+     "name_as_written": "Karl",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Karl 🇫🇷"
+    },
+    {
+     "name_as_written": "Jah J’a & Mickaela",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷🇸🇪",
+     "source_line": "• Jah J’a & Mickaela 🇫🇷🇸🇪"
+    },
+    {
+     "name_as_written": "Skate",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Skate 🇫🇷"
+    },
+    {
+     "name_as_written": "Michael Diamond",
+     "role": "teacher",
+     "style": null,
+     "country": "🇳🇱",
+     "source_line": "• Michael Diamond 🇳🇱"
+    },
+    {
+     "name_as_written": "Elli",
+     "role": "teacher",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Elli 🇸🇪"
+    },
+    {
+     "name_as_written": "Kiki",
+     "role": "teacher",
+     "style": null,
+     "country": "🇩🇪",
+     "source_line": "• Kiki 🇩🇪"
+    },
+    {
+     "name_as_written": "Agnes",
+     "role": "teacher",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Agnes 🇸🇪"
+    },
+    {
+     "name_as_written": "T’Peak",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• T’Peak 🇫🇷"
+    },
+    {
+     "name_as_written": "Selim",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Selim 🇫🇷"
+    },
+    {
+     "name_as_written": "Ellen",
+     "role": "teacher",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Ellen 🇸🇪"
+    },
+    {
+     "name_as_written": "Lessly",
+     "role": "teacher",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Lessly 🇸🇪"
+    },
+    {
+     "name_as_written": "Pierre & Ulyana",
+     "role": "teacher",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Pierre & Ulyana 🇸🇪"
+    },
+    {
+     "name_as_written": "Andreas & Karina",
+     "role": "teacher",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Andreas & Karina 🇸🇪"
+    },
+    {
+     "name_as_written": "Ankit",
+     "role": "teacher",
+     "style": null,
+     "country": "🇩🇪",
+     "source_line": "• Ankit 🇩🇪"
+    },
+    {
+     "name_as_written": "Jean Michel",
+     "role": "teacher",
+     "style": null,
+     "country": "🇺🇸",
+     "source_line": "• Jean Michel 🇺🇸"
+    },
+    {
+     "name_as_written": "Rebirth",
+     "role": "performer",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Rebirth 🇫🇷"
+    },
+    {
+     "name_as_written": "Funomen",
+     "role": "performer",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Funomen 🇫🇷"
+    },
+    {
+     "name_as_written": "Bratez Kizz",
+     "role": "performer",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Bratez Kizz 🇸🇪"
+    },
+    {
+     "name_as_written": "FusionKizz Aarhus",
+     "role": "performer",
+     "style": null,
+     "country": "🇩🇰",
+     "source_line": "• FusionKizz Aarhus 🇩🇰"
+    },
+    {
+     "name_as_written": "Scandinavian Agency & Dance Vida",
+     "role": "media",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Scandinavian Agency & Dance Vida 🇸🇪"
+    },
+    {
+     "name_as_written": "Benkos",
+     "role": "media",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Benkos 🇫🇷"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "15:00 – 16:00 Workshop",
+     "rationale": "The program lists dance workshop slots on Friday, Saturday and Sunday."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "18:00 – 20:00 Pre-party Workshop",
+     "rationale": "A pre-party is scheduled on Thursday before the main event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "16:00 – 20:00 Social",
+     "rationale": "Daytime and afternoon social sessions are part of the program."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Main Hotel – Kviberg Park Hotel",
+     "rationale": "A main recommended hotel with a negotiated room rate is listed, separate from the pass."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,179 @@
+{
+ "batch": "event-14906",
+ "events": [
+  {
+   "event_id": 14906,
+   "artists": [
+    {
+     "name_as_written": "STEFANIO LIMA",
+     "role": "dj",
+     "style": null,
+     "country": "🇳🇱 🇨🇻",
+     "source_line": "▪️ STEFANIO LIMA 🇳🇱 🇨🇻"
+    },
+    {
+     "name_as_written": "DJ REMCY",
+     "role": "dj",
+     "style": null,
+     "country": "🇩🇪",
+     "source_line": "▪️ DJ REMCY 🇩🇪"
+    },
+    {
+     "name_as_written": "DJ BARTEF",
+     "role": "dj",
+     "style": null,
+     "country": "🇵🇱",
+     "source_line": "▪️ DJ BARTEF 🇵🇱"
+    },
+    {
+     "name_as_written": "DJ RENE AMPLO",
+     "role": "dj",
+     "style": null,
+     "country": "🇳🇱",
+     "source_line": "▪️ DJ RENE AMPLO 🇳🇱"
+    },
+    {
+     "name_as_written": "DJ TI WOSH",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "▪️ DJ TI WOSH 🇫🇷"
+    },
+    {
+     "name_as_written": "DJ EDDY",
+     "role": "dj",
+     "style": null,
+     "country": "🇭🇺",
+     "source_line": "▪️ DJ EDDY 🇭🇺"
+    },
+    {
+     "name_as_written": "HENECO",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "▪️ HENECO 🇫🇷"
+    },
+    {
+     "name_as_written": "KIKI",
+     "role": "teacher",
+     "style": null,
+     "country": "🇩🇪",
+     "source_line": "▪️ KIKI 🇩🇪"
+    },
+    {
+     "name_as_written": "SELIM",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "▪️ SELIM 🇫🇷"
+    },
+    {
+     "name_as_written": "SHANNON",
+     "role": "teacher",
+     "style": null,
+     "country": "🇺🇸 🇫🇷",
+     "source_line": "▪️ SHANNON 🇺🇸 🇫🇷"
+    },
+    {
+     "name_as_written": "WOOKIE",
+     "role": "teacher",
+     "style": null,
+     "country": "🇭🇺",
+     "source_line": "▪️ WOOKIE 🇭🇺"
+    },
+    {
+     "name_as_written": "NICOLE",
+     "role": "teacher",
+     "style": null,
+     "country": "🇧🇬",
+     "source_line": "▪️ NICOLE 🇧🇬"
+    },
+    {
+     "name_as_written": "MARKUS",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇹",
+     "source_line": "▪️ MARKUS 🇦🇹"
+    },
+    {
+     "name_as_written": "ANIKA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇹 🇸🇰",
+     "source_line": "▪️ ANIKA 🇦🇹 🇸🇰"
+    },
+    {
+     "name_as_written": "LUCIO",
+     "role": "teacher",
+     "style": null,
+     "country": "🇧🇷",
+     "source_line": "▪️ LUCIO 🇧🇷"
+    },
+    {
+     "name_as_written": "VANESSA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇹 🇵🇱",
+     "source_line": "▪️ VANESSA 🇦🇹 🇵🇱"
+    },
+    {
+     "name_as_written": "EDDY",
+     "role": "teacher",
+     "style": null,
+     "country": "🇭🇺",
+     "source_line": "▪️ EDDY 🇭🇺"
+    },
+    {
+     "name_as_written": "RITA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇭🇺",
+     "source_line": "▪️ RITA 🇭🇺"
+    },
+    {
+     "name_as_written": "KIZZ RYDERS",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "▪️ KIZZ RYDERS"
+    },
+    {
+     "name_as_written": "FILM.BY.LOVA",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "▪️ FILM.BY.LOVA"
+    },
+    {
+     "name_as_written": "Kizz Ryders",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "◾️ Only event passes directly bought at Kizz Ryders ticketlink are valid:"
+    }
+   ],
+   "features": [
+    {
+     "feature": "taxi_dancers",
+     "quote": "TAXI DANCERS TEAM",
+     "rationale": "A taxi dancers team is listed in the line-up, so taxi dancers are present."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Wardrobe is mandatory",
+     "rationale": "A mandatory wardrobe rule is stated in the house rules, which sets a dress requirement."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "▪️VIENNA, AUSTRIA, HOTEL BEST WESTERN VÖSENDORF",
+     "rationale": "The description gives a hotel under its HOTEL heading as the event's recommended hotel, separate from any pass."
+    },
+    {
+     "feature": "workshops",
+     "quote": "TEACHERS 💃🕺🏻 LINE UP",
+     "rationale": "A teachers line-up implies dance classes are part of the event."
+    }
+   ]
+  }
+ ]
+}

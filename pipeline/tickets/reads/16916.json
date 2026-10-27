@@ -3,8 +3,12 @@
  "title": "Malga Temptation Festival 2026 (Secret Oasis édition)",
  "start_date": "2026-11-25",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "2be784db5d9944e6",
- "rows_at": "2026-10-26T23:45:27+00:00",
+ "prompt": "cb864655c7075f56",
+ "rows_at": "2026-10-27T11:45:50+00:00",
+ "styles": [
+  "bachata",
+  "kizomba"
+ ],
  "description": "Málaga Temptation 2026 (The Secret Oasis)\nMelvin & Gatica\nRonald & Alba\nKike & Nahir\nAlfredo & Andrea\nSergio & Elena\nCarlos & Paz\nMiguel & Sunsire\nCarlos & Fernanda\nÉmilien & Tehina\nJorge & Azahara\nJavi & Fuensi\nDj Khalid\nDj Manuel Citro\nDj Pecino\nDj One Bachata\nDj Killo\nDj Macky\nKizomba\nJojo & Jenni\nJesús & Anni\nDwe & Gabi\nJP & Estefi\nJack & Sara\nAdilson & Telma\nLuis & Karen\nJamaica\nCosta\nMiguel\nNelson Areceli\nJustinho\nAtou\nMassemba\nDj Paraíso\nDj Pingusso\nDj Stefanio\nDj Nice Life\nDj Shark\nDj Dani\nDj Lisa\nDj Nao\nDj Loka\nDj Carlos King\nDj Santos",
  "passes": [
   {
@@ -69,12 +73,30 @@
   }
  ],
  "skipped": [
-  "e2b41381-1c0e-4065-a363-b152c40777ce",
-  "5348184e-38f6-49d0-828e-1006ac6693c6",
-  "2f2439f0-6cba-451d-8f83-1a0e28c71b07",
-  "1707aed4-bbd1-4a48-b148-112558bb6d9b",
-  "a18b3403-b4e7-4856-b8e2-fc14644a11bc",
-  "142dc17e-c343-4048-aed8-b6fb2434991c"
+  {
+   "key": "e2b41381-1c0e-4065-a363-b152c40777ce",
+   "reason": "class"
+  },
+  {
+   "key": "5348184e-38f6-49d0-828e-1006ac6693c6",
+   "reason": "class"
+  },
+  {
+   "key": "2f2439f0-6cba-451d-8f83-1a0e28c71b07",
+   "reason": "class"
+  },
+  {
+   "key": "1707aed4-bbd1-4a48-b148-112558bb6d9b",
+   "reason": "class"
+  },
+  {
+   "key": "a18b3403-b4e7-4856-b8e2-fc14644a11bc",
+   "reason": "class"
+  },
+  {
+   "key": "142dc17e-c343-4048-aed8-b6fb2434991c",
+   "reason": "class"
+  }
  ],
  "rule_quotes": []
 }

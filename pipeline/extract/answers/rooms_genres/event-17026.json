@@ -1,0 +1,23 @@
+{
+ "batch": "event-17026",
+ "events": [
+  {
+   "event_id": 17026,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "playing the best of Kizomba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba, Semba & all subgenres"
+    }
+   ]
+  }
+ ]
+}

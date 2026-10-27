@@ -1,0 +1,18 @@
+{
+ "batch": "event-15893",
+ "events": [
+  {
+   "event_id": 15893,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "quote": "🌟𝗞𝗜𝗭𝗢𝗠𝗕𝗔 𝗟𝗜𝗡𝗘-𝗨𝗣 🌟"
+    }
+   ]
+  }
+ ]
+}

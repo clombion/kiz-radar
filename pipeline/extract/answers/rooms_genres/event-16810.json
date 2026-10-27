@@ -1,0 +1,23 @@
+{
+ "batch": "event-16810",
+ "events": [
+  {
+   "event_id": 16810,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "WORLD KIZOMBA & SEMBA COMPETITION"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba and Semba are more than dance"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,315 @@
+{
+ "batch": "event-15838",
+ "events": [
+  {
+   "event_id": 15838,
+   "artists": [
+    {
+     "name_as_written": "METHODZ & JULIAA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ METHODZ & JULIAA (Paris)"
+    },
+    {
+     "name_as_written": "Dadié Sacko",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Dadié Sacko (Paris)"
+    },
+    {
+     "name_as_written": "Dim Dim & Ophelie",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Dim Dim & Ophelie (Nancy/Strasbourg)"
+    },
+    {
+     "name_as_written": "Stef KiZz & Sonia",
+     "role": "teacher",
+     "style": null,
+     "country": "FR/DE",
+     "source_line": "✔ Stef KiZz & Sonia (FR/DE)"
+    },
+    {
+     "name_as_written": "Tchint & Janina",
+     "role": "teacher",
+     "style": null,
+     "country": "Luxemburg",
+     "source_line": "✔ Tchint & Janina (Luxemburg)"
+    },
+    {
+     "name_as_written": "Fuego Rebirth & Kiki",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Fuego Rebirth & Kiki (Paris / Munich)"
+    },
+    {
+     "name_as_written": "Zeke Rebirth & Maria",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Zeke Rebirth & Maria (Paris)"
+    },
+    {
+     "name_as_written": "Carmelo",
+     "role": "teacher",
+     "style": null,
+     "country": "Luxemburg",
+     "source_line": "✔ Carmelo (Luxemburg)"
+    },
+    {
+     "name_as_written": "JN D BI",
+     "role": "teacher",
+     "style": null,
+     "country": "France",
+     "source_line": "✔ JN D BI (France)"
+    },
+    {
+     "name_as_written": "Arnaud DJBN",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Arnaud DJBN (Paris)"
+    },
+    {
+     "name_as_written": "Tony Gomes & Dona eM",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Tony Gomes & Dona eM (Afromoves)"
+    },
+    {
+     "name_as_written": "Helen WL",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Helen WL (Frankfurt)"
+    },
+    {
+     "name_as_written": "Franky Kizzfly & Kerstin",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Franky Kizzfly & Kerstin (Frankfurt)"
+    },
+    {
+     "name_as_written": "Murmel & Aleksandra",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Murmel & Aleksandra (Stuttgart)"
+    },
+    {
+     "name_as_written": "Sim Kizz",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Sim Kizz (Stuttgart)"
+    },
+    {
+     "name_as_written": "Patrick & Sinah Frenchkizz",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Patrick & Sinah Frenchkizz (Stuttgart)"
+    },
+    {
+     "name_as_written": "Steve Stevoot",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Steve Stevoot (Mannheim)"
+    },
+    {
+     "name_as_written": "Mory & Irina",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Mory & Irina (Frankfurt)"
+    },
+    {
+     "name_as_written": "Marina",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Marina (Stuttgart)"
+    },
+    {
+     "name_as_written": "Nam De Poy & Maria",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Nam De Poy & Maria (Karlsruhe)"
+    },
+    {
+     "name_as_written": "Edmond KizMe",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Edmond KizMe (Stuttgart)"
+    },
+    {
+     "name_as_written": "Gilles Yopa",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Gilles Yopa (Stuttgart)"
+    },
+    {
+     "name_as_written": "Gloire Musenga",
+     "role": "teacher",
+     "style": null,
+     "country": "France",
+     "source_line": "✔ Gloire Musenga (France)"
+    },
+    {
+     "name_as_written": "Damso Leblack",
+     "role": "teacher",
+     "style": null,
+     "country": "France",
+     "source_line": "✔ Damso Leblack (France)"
+    },
+    {
+     "name_as_written": "Rainier Funomen",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Rainier Funomen (Paris)"
+    },
+    {
+     "name_as_written": "DJ Valet",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✔ DJ Valet (Paris)"
+    },
+    {
+     "name_as_written": "DJ Remcy",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✔ DJ Remcy (Munich)"
+    },
+    {
+     "name_as_written": "Dj Narc6",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Dj Narc6 (Nancy)"
+    },
+    {
+     "name_as_written": "Dj Charley Rey",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✔ Dj Charley Rey (Munich)"
+    },
+    {
+     "name_as_written": "DJ Longchamp",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✔ DJ Longchamp (Munich)"
+    },
+    {
+     "name_as_written": "DJ Kinane",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✔ DJ Kinane (Paris)"
+    },
+    {
+     "name_as_written": "DJ Tony",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✔ DJ Tony (Stuttgart)"
+    },
+    {
+     "name_as_written": "DJ Ben",
+     "role": "dj",
+     "style": null,
+     "country": "France",
+     "source_line": "✔ DJ Ben (France)"
+    },
+    {
+     "name_as_written": "Dj Patrick Saint vil",
+     "role": "dj",
+     "style": null,
+     "country": "France",
+     "source_line": "✔ Dj Patrick Saint vil (France)"
+    },
+    {
+     "name_as_written": "DJ El Momo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✔ DJ El Momo (Munich)"
+    },
+    {
+     "name_as_written": "DJ Bos",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✔ DJ Bos (Stuttgart)"
+    },
+    {
+     "name_as_written": "TEAM UNIT’KIZ",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "✔ TEAM UNIT’KIZ (PARIS)"
+    },
+    {
+     "name_as_written": "TEAM FUNOMEN",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "✔ TEAM FUNOMEN (PARIS)"
+    },
+    {
+     "name_as_written": "TEAM KIZMANIE",
+     "role": "crew",
+     "style": null,
+     "country": "FRANCE/SWITZERLAND",
+     "source_line": "✔ TEAM KIZMANIE (FRANCE/SWITZERLAND)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "More than 25h workshops",
+     "rationale": "The description states that more than 25 hours of workshops are offered in several dance styles."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 free dance floors",
+     "rationale": "Three dance floors are offered, so there is more than one dance room."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Social Dance from 12 p.m. to 5 p.m",
+     "rationale": "A daytime social dance on Monday from noon to 5 p.m. is listed in the program."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "𝐓𝐀𝐗𝐈𝐒 𝐃𝐀𝐍𝐂𝐄𝐑𝐒",
+     "rationale": "A section heading announces taxi dancers, and teams of taxi dancers are listed under it."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Hotel recommendations",
+     "rationale": "The description gives a list of recommended hotels with a note that they are a hotel recommendation."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "DRESSCODE :",
+     "rationale": "A dress code heading is stated, although its details are not yet given."
+    }
+   ]
+  }
+ ]
+}

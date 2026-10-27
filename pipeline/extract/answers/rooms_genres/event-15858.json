@@ -1,0 +1,46 @@
+{
+ "batch": "event-15858",
+ "events": [
+  {
+   "event_id": 15858,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Salsa & Bachata Room",
+     "kind": "unspecified",
+     "genres": [
+      "salsa",
+      "bachata"
+     ],
+     "quote": "Salsa & Bachata Room"
+    },
+    {
+     "name_as_written": "Kizomba Room",
+     "kind": "unspecified",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "Kizomba Room"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa, Bachata & Kizomba Festival"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Salsa & Bachata Room"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba Room"
+    }
+   ]
+  }
+ ]
+}

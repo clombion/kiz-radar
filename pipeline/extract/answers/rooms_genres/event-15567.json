@@ -1,0 +1,28 @@
+{
+ "batch": "event-15567",
+ "events": [
+  {
+   "event_id": 15567,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "intense weekend of kizomba, semba, and Afro-house"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "semba",
+     "quote": "kizomba, semba, and Afro-house"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro-house",
+     "quote": "Afro-house"
+    }
+   ]
+  }
+ ]
+}

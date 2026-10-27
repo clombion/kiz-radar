@@ -1,6 +1,5 @@
 {
  "batch": "event-17031",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17031,
@@ -10,15 +9,14 @@
      "style": null,
      "label_quote": "Price:",
      "group_size": 1,
-     "days": 12,
+     "days": null,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 1700,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -30,7 +28,10 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "400 Euro discount for Fire Dance subscriptors",
+    "200 Euro discount for Fire Dance community members"
+   ]
   }
  ]
 }

@@ -1,0 +1,105 @@
+{
+ "event_id": 18362,
+ "title": "Pure Kizzz Festival 2026",
+ "start_date": "2026-12-04",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "cb864655c7075f56",
+ "rows_at": "2026-10-27T01:56:53+00:00",
+ "styles": [
+  "kizomba"
+ ],
+ "description": "Pure Kizzz Festival 2026 returns to Dortmund for another edition of pure kizomba passion. Set in the welcoming space of Tanzschule Suhrmann, this festival brings together kizomba and urban kiz enthusiasts for an immersive long weekend of workshops, socials, and unforgettable night parties. With a carefully curated lineup of international artists and DJs, Pure Kizzz is known for its intimate, high-energy atmosphere. Whether you come to learn, dance, or simply enjoy the music and community, this festival delivers an authentic kizomba experience in the heart of Germany.",
+ "passes": [
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "Couple - Full Pass"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "Leader - Full Pass",
+      "Follower - Full Pass",
+      "Switch - Full Pass"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "party",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "Couple - Social & Party Pass"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "party",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "Switch - Social & Party Pass",
+      "Leader - Social & Party Pass",
+      "Follower - Social & Party Pass"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [
+  {
+   "key": "Guest Dancer",
+   "reason": "not_public"
+  },
+  {
+   "key": "Business Pass",
+   "reason": "not_public"
+  }
+ ],
+ "rule_quotes": []
+}

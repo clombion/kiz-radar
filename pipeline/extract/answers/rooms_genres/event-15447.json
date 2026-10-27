@@ -1,0 +1,48 @@
+{
+ "batch": "event-15447",
+ "events": [
+  {
+   "event_id": 15447,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Room 2",
+     "kind": "class",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "Kizomba Workshop (Room 2)"
+    },
+    {
+     "name_as_written": "Room 3",
+     "kind": "party",
+     "genres": [],
+     "quote": "Dance Social (Room 3)"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Do you enjoy authentic Kizomba, Semba, and Bavarian dances?"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Do you enjoy authentic Kizomba, Semba, and Bavarian dances?"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro dance",
+     "quote": "Afro dance instructors"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Bavarian dance",
+     "quote": "Bavarian Dance Workshops"
+    }
+   ]
+  }
+ ]
+}

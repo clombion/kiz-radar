@@ -1,0 +1,39 @@
+{
+ "batch": "event-14727",
+ "events": [
+  {
+   "event_id": 14727,
+   "artists": [
+    {
+     "name_as_written": "Team DKF & ILKSF",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Team DKF & ILKSF"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "All In ONE Hotel",
+     "rationale": "The description lists an 'All In ONE Hotel' expectation, indicating the parties take place in the hotel where dancers stay."
+    },
+    {
+     "feature": "workshops",
+     "quote": "High Quality Workshops",
+     "rationale": "The description lists high quality workshops as part of the event."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Pool Parties",
+     "rationale": "The expectations list includes Pool Parties."
+    },
+    {
+     "feature": "competition",
+     "quote": "The Rising Star Competition",
+     "rationale": "The event includes a named competition."
+    }
+   ]
+  }
+ ]
+}

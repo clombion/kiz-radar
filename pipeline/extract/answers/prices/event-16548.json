@@ -1,6 +1,5 @@
 {
  "batch": "event-16548",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16548,
@@ -17,8 +16,7 @@
        "amount": 100,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,

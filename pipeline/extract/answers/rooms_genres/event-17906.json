@@ -1,0 +1,18 @@
+{
+ "batch": "event-17906",
+ "events": [
+  {
+   "event_id": 17906,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Whether you’re new to Kizomba or an experienced dancer"
+    }
+   ]
+  }
+ ]
+}

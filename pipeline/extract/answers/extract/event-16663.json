@@ -1,0 +1,459 @@
+{
+ "batch": "event-16663",
+ "events": [
+  {
+   "event_id": 16663,
+   "artists": [
+    {
+     "name_as_written": "ATACA & ALEMANA",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "USA",
+     "source_line": "ATACA & ALEMANA – USA"
+    },
+    {
+     "name_as_written": "MARCO & SARA",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Spain",
+     "source_line": "MARCO & SARA – Spain"
+    },
+    {
+     "name_as_written": "DANIEL SANCHEZ",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Spain",
+     "source_line": "DANIEL SANCHEZ – Spain"
+    },
+    {
+     "name_as_written": "RONALD & ALBA",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Spain",
+     "source_line": "RONALD & ALBA – Spain"
+    },
+    {
+     "name_as_written": "CORNEL & RITHIKA",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "India",
+     "source_line": "CORNEL & RITHIKA – India"
+    },
+    {
+     "name_as_written": "PABLO & RAQUEL",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Spain",
+     "source_line": "PABLO & RAQUEL – Spain"
+    },
+    {
+     "name_as_written": "GERO & MIGLE",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Spain / Lithuania",
+     "source_line": "GERO & MIGLE – Spain / Lithuania"
+    },
+    {
+     "name_as_written": "ANTONI & BELEN",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Venezuela / Argentina",
+     "source_line": "ANTONI & BELEN – Venezuela / Argentina"
+    },
+    {
+     "name_as_written": "ALEX & DESIREE",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Dominican Rep / USA",
+     "source_line": "ALEX & DESIREE – Dominican Rep / USA"
+    },
+    {
+     "name_as_written": "CAROLINA ROSA",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Spain",
+     "source_line": "CAROLINA ROSA – Spain"
+    },
+    {
+     "name_as_written": "SAMY EL MAGICO",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "France",
+     "source_line": "SAMY EL MAGICO – France"
+    },
+    {
+     "name_as_written": "SERGIO & ELENA",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Spain",
+     "source_line": "SERGIO & ELENA – Spain"
+    },
+    {
+     "name_as_written": "YORK & LISA",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Venezuela / Germany",
+     "source_line": "YORK & LISA – Venezuela / Germany"
+    },
+    {
+     "name_as_written": "DAVID & INES",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Spain",
+     "source_line": "DAVID & INES – Spain"
+    },
+    {
+     "name_as_written": "MATHIAS & EUGE",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Spain",
+     "source_line": "MATHIAS & EUGE – Spain"
+    },
+    {
+     "name_as_written": "JOJO & JENNY",
+     "role": "teacher",
+     "style": "URBANKIZ",
+     "country": "France",
+     "source_line": "JOJO & JENNY – France"
+    },
+    {
+     "name_as_written": "JESUS & ANNI",
+     "role": "teacher",
+     "style": "URBANKIZ",
+     "country": "Spain",
+     "source_line": "JESUS & ANNI – Spain"
+    },
+    {
+     "name_as_written": "ALBIR & NATALIA",
+     "role": "teacher",
+     "style": "URBANKIZ",
+     "country": "Spain / Panama / Romania",
+     "source_line": "ALBIR & NATALIA – Spain / Panama / Romania"
+    },
+    {
+     "name_as_written": "DWE & GABY",
+     "role": "teacher",
+     "style": "URBANKIZ",
+     "country": "Netherlands",
+     "source_line": "DWE & GABY – Netherlands"
+    },
+    {
+     "name_as_written": "SAID & OKSANA",
+     "role": "teacher",
+     "style": "URBANKIZ",
+     "country": "France / Ukraine",
+     "source_line": "SAID & OKSANA – France / Ukraine"
+    },
+    {
+     "name_as_written": "JACK & SARA",
+     "role": "teacher",
+     "style": "URBANKIZ",
+     "country": "Spain",
+     "source_line": "JACK & SARA – Spain"
+    },
+    {
+     "name_as_written": "LILIAN & IVANA",
+     "role": "teacher",
+     "style": "URBANKIZ",
+     "country": "France",
+     "source_line": "LILIAN & IVANA – France"
+    },
+    {
+     "name_as_written": "CARLOS CAMBA & ANNA",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": "Angola / Finland",
+     "source_line": "CARLOS CAMBA & ANNA – Angola / Finland"
+    },
+    {
+     "name_as_written": "TONY VISER & CARLA",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": "Angola / Cabo Verde",
+     "source_line": "TONY VISER & CARLA – Angola / Cabo Verde"
+    },
+    {
+     "name_as_written": "ARY & MAURA",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": "Angola",
+     "source_line": "ARY & MAURA – Angola"
+    },
+    {
+     "name_as_written": "JOAO & GIEDRE",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": "Portugal / Lithuania",
+     "source_line": "JOAO & GIEDRE – Portugal / Lithuania"
+    },
+    {
+     "name_as_written": "MARIO & CARLA",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": "Angola / France",
+     "source_line": "MARIO & CARLA – Angola / France"
+    },
+    {
+     "name_as_written": "RICARDO & KAREN",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Chile / Argentina",
+     "source_line": "RICARDO & KAREN – Chile / Argentina"
+    },
+    {
+     "name_as_written": "DIAGO & JHOANA",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Colombia / Peru",
+     "source_line": "DIAGO & JHOANA – Colombia / Peru"
+    },
+    {
+     "name_as_written": "FRANKIE MARTINEZ",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "USA",
+     "source_line": "FRANKIE MARTINEZ – USA"
+    },
+    {
+     "name_as_written": "BRANDON & MICHELLE",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "USA",
+     "source_line": "BRANDON & MICHELLE – USA"
+    },
+    {
+     "name_as_written": "RAFAEL & CARINE",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Brazil",
+     "source_line": "RAFAEL & CARINE – Brazil"
+    },
+    {
+     "name_as_written": "DIEGO & YARITZA",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "USA",
+     "source_line": "DIEGO & YARITZA – USA"
+    },
+    {
+     "name_as_written": "LUIS & MAGDA",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Mexico / Poland",
+     "source_line": "LUIS & MAGDA – Mexico / Poland"
+    },
+    {
+     "name_as_written": "ELIAN GOMEZ & ASHLEY RIVERA",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "Mexico / USA",
+     "source_line": "ELIAN GOMEZ & ASHLEY RIVERA – Mexico / USA"
+    },
+    {
+     "name_as_written": "JORGE & INDIRA",
+     "role": "teacher",
+     "style": "CUBANA",
+     "country": "Cuba / USA",
+     "source_line": "JORGE & INDIRA – Cuba / USA"
+    },
+    {
+     "name_as_written": "YOYO FLOW",
+     "role": "teacher",
+     "style": "CUBANA",
+     "country": "Cuba",
+     "source_line": "YOYO FLOW – Cuba"
+    },
+    {
+     "name_as_written": "OSMANI SEGURA",
+     "role": "teacher",
+     "style": "CUBANA",
+     "country": "Cuba",
+     "source_line": "OSMANI SEGURA – Cuba"
+    },
+    {
+     "name_as_written": "LAURA DEL VECCHIO",
+     "role": "teacher",
+     "style": "CUBANA",
+     "country": "Italy",
+     "source_line": "LAURA DEL VECCHIO – Italy"
+    },
+    {
+     "name_as_written": "KEVIN & GEYSA",
+     "role": "teacher",
+     "style": "CUBANA",
+     "country": "Spain / Cuba",
+     "source_line": "KEVIN & GEYSA – Spain / Cuba"
+    },
+    {
+     "name_as_written": "CHARLIE & VERO",
+     "role": "teacher",
+     "style": "CUBANA",
+     "country": "Spain",
+     "source_line": "CHARLIE & VERO – Spain"
+    },
+    {
+     "name_as_written": "ANDY & JULIET",
+     "role": "teacher",
+     "style": "CUBANA",
+     "country": "Cuba / Norway",
+     "source_line": "ANDY & JULIET – Cuba / Norway"
+    },
+    {
+     "name_as_written": "JULIO NAPOLES",
+     "role": "teacher",
+     "style": "CUBANA",
+     "country": "Cuba",
+     "source_line": "JULIO NAPOLES – Cuba"
+    },
+    {
+     "name_as_written": "DJ TRONKY",
+     "role": "dj",
+     "style": "BACHATA DJs",
+     "country": "Italy",
+     "source_line": "DJ TRONKY – Italy"
+    },
+    {
+     "name_as_written": "DJ KHALID",
+     "role": "dj",
+     "style": "BACHATA DJs",
+     "country": "Sweden",
+     "source_line": "DJ KHALID – Sweden"
+    },
+    {
+     "name_as_written": "DJ YORK",
+     "role": "dj",
+     "style": "BACHATA DJs",
+     "country": "Venezuela",
+     "source_line": "DJ YORK – Venezuela"
+    },
+    {
+     "name_as_written": "DJ HUSKY",
+     "role": "dj",
+     "style": "BACHATA DJs",
+     "country": "Spain",
+     "source_line": "DJ HUSKY – Spain"
+    },
+    {
+     "name_as_written": "DJ JULIAN THE DUKE",
+     "role": "dj",
+     "style": "SALSA DJs",
+     "country": "UK",
+     "source_line": "DJ JULIAN THE DUKE – UK"
+    },
+    {
+     "name_as_written": "DJ RUMBERO",
+     "role": "dj",
+     "style": "SALSA DJs",
+     "country": "Peru",
+     "source_line": "DJ RUMBERO – Peru"
+    },
+    {
+     "name_as_written": "DJ SERGIO",
+     "role": "dj",
+     "style": "SALSA DJs",
+     "country": "France",
+     "source_line": "DJ SERGIO – France"
+    },
+    {
+     "name_as_written": "DJ VOLCAN",
+     "role": "dj",
+     "style": "SALSA DJs",
+     "country": "Venezuela",
+     "source_line": "DJ VOLCAN – Venezuela"
+    },
+    {
+     "name_as_written": "DJ ZAYX",
+     "role": "dj",
+     "style": "URBANKIZ DJs",
+     "country": "France",
+     "source_line": "DJ ZAYX – France"
+    },
+    {
+     "name_as_written": "DJ SHARK",
+     "role": "dj",
+     "style": "URBANKIZ DJs",
+     "country": "Spain",
+     "source_line": "DJ SHARK – Spain"
+    },
+    {
+     "name_as_written": "DJ SNAKES",
+     "role": "dj",
+     "style": "URBANKIZ DJs",
+     "country": "France",
+     "source_line": "DJ SNAKES – France"
+    },
+    {
+     "name_as_written": "DJ STEFANIO LIMA",
+     "role": "dj",
+     "style": "URBANKIZ DJs",
+     "country": "Netherlands",
+     "source_line": "DJ STEFANIO LIMA – Netherlands"
+    },
+    {
+     "name_as_written": "DJ PARAISO",
+     "role": "dj",
+     "style": "URBANKIZ DJs",
+     "country": "France",
+     "source_line": "DJ PARAISO – France"
+    },
+    {
+     "name_as_written": "DJ MIRO KIKOLA",
+     "role": "dj",
+     "style": "KIZOMBA DJs",
+     "country": "Angola",
+     "source_line": "DJ MIRO KIKOLA – Angola"
+    },
+    {
+     "name_as_written": "DJ BAKONGO",
+     "role": "dj",
+     "style": "KIZOMBA DJs",
+     "country": "Angola",
+     "source_line": "DJ BAKONGO – Angola"
+    },
+    {
+     "name_as_written": "DJ DOS ANOS",
+     "role": "dj",
+     "style": "KIZOMBA DJs",
+     "country": "Cabo Verde/ Netherlands",
+     "source_line": "DJ DOS ANOS – Cabo Verde/ Netherlands"
+    },
+    {
+     "name_as_written": "DJ LEO",
+     "role": "dj",
+     "style": "CUBANA DJs",
+     "country": "Cuba",
+     "source_line": "DJ LEO – Cuba"
+    },
+    {
+     "name_as_written": "DJ JAVIER DE LA ROSA",
+     "role": "dj",
+     "style": "CUBANA DJs",
+     "country": "UK",
+     "source_line": "DJ JAVIER DE LA ROSA – UK"
+    }
+   ],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "5 dance floors for evening parties",
+     "rationale": "Five dance floors are offered, which means more than one dance room."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Minimum 120 hours of inspiring workshops",
+     "rationale": "The event offers a minimum of 120 hours of dance workshops."
+    },
+    {
+     "feature": "shows",
+     "quote": "Spectacular dance performances",
+     "rationale": "The description promises dance performances, which are shows by artists."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Pre-party: August 13th",
+     "rationale": "A pre-party is scheduled on August 13th before the main event."
+    }
+   ]
+  }
+ ]
+}

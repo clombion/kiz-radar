@@ -1,13 +1,12 @@
 {
  "batch": "event-16875",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16875,
    "passes": [
     {
      "kind": "other",
-     "style": null,
+     "style": "kizomba",
      "label_quote": "Prices:",
      "group_size": 1,
      "days": null,
@@ -17,43 +16,89 @@
        "amount": 105,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "24h sale – 105 €, when you register with in the first 24h"
+       "quote": "🩷 24h sale – 105 €, when you register with in the first 24h"
       },
       {
        "amount": 126,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "06-21",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Early Bird until 21.6. – 126€"
+       "quote": "🩵 Early Bird until 21.6. – 126€"
       },
       {
        "amount": 140,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Normal Bird – 140€"
+       "quote": "💜 Normal Bird – 140€"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "style": "other",
+     "label_quote": "Prices:",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 105,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🩷 24h sale – 105 €, when you register with in the first 24h"
+      },
+      {
+       "amount": 126,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": "06-21",
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🩵 Early Bird until 21.6. – 126€"
+      },
+      {
+       "amount": 140,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "💜 Normal Bird – 140€"
       }
      ]
     }

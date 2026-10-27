@@ -1,0 +1,18 @@
+{
+ "batch": "event-18915",
+ "events": [
+  {
+   "event_id": 18915,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "The Aloha Sweet Kizomba Weekender – Akwaba Edition is all about coming together"
+    }
+   ]
+  }
+ ]
+}

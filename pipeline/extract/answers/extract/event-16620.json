@@ -1,0 +1,88 @@
+{
+ "batch": "event-16620",
+ "events": [
+  {
+   "event_id": 16620,
+   "artists": [
+    {
+     "name_as_written": "Jesus & Anni",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⭐️ Jesus & Anni – Spain ⭐️"
+    },
+    {
+     "name_as_written": "Amarylis & Alex",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⭐️ Amarylis & Alex – Melbourne & Wellington ⭐️"
+    },
+    {
+     "name_as_written": "Anette & Alex",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⭐️ Anette & Alex – Auckland & Wellington ⭐️"
+    },
+    {
+     "name_as_written": "Aubrey & Ella",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⭐️ Aubrey & Ella – Auckland ⭐️"
+    },
+    {
+     "name_as_written": "Becky & Aom",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⭐️ Becky & Aom – Tauranga ⭐️"
+    },
+    {
+     "name_as_written": "DJ Ama",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "⭐️ DJ Ama – Melbourne ⭐️"
+    },
+    {
+     "name_as_written": "DJ DJ SCrubs",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "⭐️ DJ DJ SCrubs – Tauranga ⭐️"
+    },
+    {
+     "name_as_written": "DJ Switch",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "⭐️ DJ Switch – Wellington ⭐️"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "11hrs Workshops (Kizomba, Semba, Kizomba Fusion, Urbankiz, Tarraxo)",
+     "rationale": "The event lists eleven hours of dance workshops across several styles."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Master Classes!!",
+     "rationale": "The description advertises masterclasses as part of the event."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "8:30pm-12am Pre Party",
+     "rationale": "A Thursday pre party is scheduled before the main event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "3-6pm Day Social",
+     "rationale": "A daytime social is listed in the Sunday programme."
+    }
+   ]
+  }
+ ]
+}

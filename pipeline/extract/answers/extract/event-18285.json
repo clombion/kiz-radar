@@ -1,0 +1,118 @@
+{
+ "batch": "event-18285",
+ "events": [
+  {
+   "event_id": 18285,
+   "artists": [
+    {
+     "name_as_written": "Nii & Angie",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "▫️Nii & Angie"
+    },
+    {
+     "name_as_written": "Theo",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "▫️Theo"
+    },
+    {
+     "name_as_written": "Mamadou",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "▫️Mamadou"
+    },
+    {
+     "name_as_written": "Lessly & Naomi",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "▫️Lessly & Naomi"
+    },
+    {
+     "name_as_written": "William & Jeanette",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "▫️William & Jeanette"
+    },
+    {
+     "name_as_written": "DJ Lee Ross",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "▫️DJ Lee Ross"
+    },
+    {
+     "name_as_written": "DJ Adnan",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "▫️DJ Adnan"
+    },
+    {
+     "name_as_written": "DJ Da Mata",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "▫️DJ Da Mata"
+    },
+    {
+     "name_as_written": "DJ Joey C",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "▫️DJ Joey C"
+    },
+    {
+     "name_as_written": "DJ Lawa",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "▫️DJ Lawa"
+    },
+    {
+     "name_as_written": "DJ Nessu",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "▫️DJ Nessu"
+    },
+    {
+     "name_as_written": "DJ Maie",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "▫️DJ Maie"
+    },
+    {
+     "name_as_written": "ACBFOTO",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "▫️ACBFOTO"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "(ALL IN ONE)",
+     "rationale": "The event title is labelled as all in one, which in this scene means the parties take place in the hotel where dancers stay."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Two floors, two energies",
+     "rationale": "Two floors are described, each hosting a different dance style, so there is more than one dance floor."
+    },
+    {
+     "feature": "workshops",
+     "quote": "TEACHERS LINE UP",
+     "rationale": "A teacher line-up indicates that dance classes are part of the event."
+    }
+   ]
+  }
+ ]
+}

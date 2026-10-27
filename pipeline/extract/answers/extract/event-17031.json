@@ -1,0 +1,36 @@
+{
+ "batch": "event-17031",
+ "events": [
+  {
+   "event_id": 17031,
+   "artists": [],
+   "features": [
+    {
+     "feature": "all_levels_beginners",
+     "quote": "For beginners and experienced level",
+     "rationale": "The description explicitly says the lessons suit beginners as well as experienced dancers."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "12 nights hotel + breakfast",
+     "rationale": "The inclusions list states that the package covers 12 nights of hotel accommodation."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "hotel + breakfast",
+     "rationale": "The inclusions list states that breakfast is part of the package."
+    },
+    {
+     "feature": "workshops",
+     "quote": "24 hour Latin dance lessons",
+     "rationale": "The inclusions list includes dance lessons in Bachata, Salsa and Kizomba as part of the trip."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Transport to social parties",
+     "rationale": "The inclusions list says transport to the social parties is included."
+    }
+   ]
+  }
+ ]
+}

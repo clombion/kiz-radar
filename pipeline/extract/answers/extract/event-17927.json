@@ -1,0 +1,24 @@
+{
+ "batch": "event-17927",
+ "events": [
+  {
+   "event_id": 17927,
+   "artists": [
+    {
+     "name_as_written": "La Kizomba Project",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Organised by La Kizomba Project, this festival aims to polish technique and style from Angolan professionals already well-known in the European and worldwide dance community."
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "7 hours of workshops per day",
+     "rationale": "The line states that the event includes seven hours of workshops per day, so dance classes are part of the event."
+    }
+   ]
+  }
+ ]
+}

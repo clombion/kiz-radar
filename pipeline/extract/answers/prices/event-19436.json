@@ -1,11 +1,12 @@
 {
  "batch": "event-19436",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 19436,
    "passes": [],
-   "rule_quotes": []
+   "rule_quotes": [
+    "Day & Party passes will be released 3/4 weeks before the event date."
+   ]
   }
  ]
 }

@@ -1,0 +1,43 @@
+{
+ "batch": "event-19552",
+ "events": [
+  {
+   "event_id": 19552,
+   "artists": [
+    {
+     "name_as_written": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔 𝗧𝗘𝗔𝗠",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🌟 𝗕𝗔𝗖𝗛𝗔𝗧𝗔 𝗧𝗘𝗔𝗠 🌟"
+    },
+    {
+     "name_as_written": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔 𝗧𝗘𝗔𝗠",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "💛 𝗞𝗜𝗭𝗢𝗠𝗕𝗔 𝗧𝗘𝗔𝗠 💛"
+    },
+    {
+     "name_as_written": "𝗔𝗟𝗟-𝗧𝗢𝗚𝗘𝗧𝗛𝗘𝗥 𝗧𝗘𝗔𝗠",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 𝗔𝗟𝗟-𝗧𝗢𝗚𝗘𝗧𝗛𝗘𝗥 𝗧𝗘𝗔𝗠 🔥"
+    }
+   ],
+   "features": [
+    {
+     "feature": "camping",
+     "quote": "Camping — Emplacement tentes",
+     "rationale": "The accommodation list offers camping pitches for tents."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Salle 100% BACHATA",
+     "rationale": "The event has separate halls, one 100% bachata and one 100% kizomba."
+    }
+   ]
+  }
+ ]
+}

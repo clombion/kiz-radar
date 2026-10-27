@@ -1,0 +1,57 @@
+{
+ "batch": "event-16293",
+ "events": [
+  {
+   "event_id": 16293,
+   "party_rooms": {
+    "count": 3,
+    "quote": "🟢 GARDEN PARTY\n🟡 AFRO ROOM\n🟣 MAIN ROOM"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "GARDEN PARTY",
+     "kind": "party",
+     "genres": [],
+     "quote": "🟢 GARDEN PARTY"
+    },
+    {
+     "name_as_written": "AFRO ROOM",
+     "kind": "party",
+     "genres": [
+      "afro"
+     ],
+     "quote": "🟡 AFRO ROOM"
+    },
+    {
+     "name_as_written": "MAIN ROOM",
+     "kind": "party",
+     "genres": [],
+     "quote": "🟣 MAIN ROOM"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "4 SPECIALS DAYS FULL OF Kizomba, Semba, Tarraxo, Afro house, African Danse"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "4 SPECIALS DAYS FULL OF Kizomba, Semba, Tarraxo, Afro house, African Danse"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "4 SPECIALS DAYS FULL OF Kizomba, Semba, Tarraxo, Afro house, African Danse"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro house",
+     "quote": "4 SPECIALS DAYS FULL OF Kizomba, Semba, Tarraxo, Afro house, African Danse"
+    }
+   ]
+  }
+ ]
+}

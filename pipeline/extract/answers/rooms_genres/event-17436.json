@@ -1,0 +1,23 @@
+{
+ "batch": "event-17436",
+ "events": [
+  {
+   "event_id": 17436,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba/Kompa dancing"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Kompa",
+     "quote": "Kizomba/Kompa dancing"
+    }
+   ]
+  }
+ ]
+}

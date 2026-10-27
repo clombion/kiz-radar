@@ -1,0 +1,18 @@
+{
+ "batch": "event-16916",
+ "events": [
+  {
+   "event_id": 16916,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,31 @@
+{
+ "batch": "event-16728",
+ "events": [
+  {
+   "event_id": 16728,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Through workshops",
+     "rationale": "The synopsis says the event runs through workshops, and the program lists workshop sessions on Friday and Saturday."
+    },
+    {
+     "feature": "competition",
+     "quote": "an international dance competition",
+     "rationale": "The synopsis names an international dance competition, and the program has a Street Dance Competition Final and an RSK competition."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Social with Live Band",
+     "rationale": "The Sunday program lists a social with a live band, which is live music."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Social + Street Dance Competition Final",
+     "rationale": "This daytime program slot on Saturday, from 15:30 to 21:00, is a daytime social."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,124 @@
+{
+ "batch": "event-15463",
+ "events": [
+  {
+   "event_id": 15463,
+   "artists": [
+    {
+     "name_as_written": "Arnaud DJBN",
+     "role": "teacher",
+     "style": "Kizomba, Urban, Softness, Tarraxo",
+     "country": null,
+     "source_line": "• Classes with Arnaud DJBN, Ichigo, Manu & Olivia (Kizomba, Urban, Softness, Tarraxo)"
+    },
+    {
+     "name_as_written": "Ichigo",
+     "role": "teacher",
+     "style": "Kizomba, Urban, Softness, Tarraxo",
+     "country": null,
+     "source_line": "• Classes with Arnaud DJBN, Ichigo, Manu & Olivia (Kizomba, Urban, Softness, Tarraxo)"
+    },
+    {
+     "name_as_written": "Manu & Olivia",
+     "role": "teacher",
+     "style": "Kizomba, Urban, Softness, Tarraxo",
+     "country": null,
+     "source_line": "• Classes with Arnaud DJBN, Ichigo, Manu & Olivia (Kizomba, Urban, Softness, Tarraxo)"
+    },
+    {
+     "name_as_written": "Nice Life",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "• On the decks: Nice Life, Ichigo, Poema Beatz, DJ Saudade, DJ MH, DJ MIKY-MIKE, IZI et Leston to light up the dancefloor all weekend long 🎶"
+    },
+    {
+     "name_as_written": "Ichigo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "• On the decks: Nice Life, Ichigo, Poema Beatz, DJ Saudade, DJ MH, DJ MIKY-MIKE, IZI et Leston to light up the dancefloor all weekend long 🎶"
+    },
+    {
+     "name_as_written": "Poema Beatz",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "• On the decks: Nice Life, Ichigo, Poema Beatz, DJ Saudade, DJ MH, DJ MIKY-MIKE, IZI et Leston to light up the dancefloor all weekend long 🎶"
+    },
+    {
+     "name_as_written": "DJ Saudade",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "• On the decks: Nice Life, Ichigo, Poema Beatz, DJ Saudade, DJ MH, DJ MIKY-MIKE, IZI et Leston to light up the dancefloor all weekend long 🎶"
+    },
+    {
+     "name_as_written": "DJ MH",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "• On the decks: Nice Life, Ichigo, Poema Beatz, DJ Saudade, DJ MH, DJ MIKY-MIKE, IZI et Leston to light up the dancefloor all weekend long 🎶"
+    },
+    {
+     "name_as_written": "DJ MIKY-MIKE",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "• On the decks: Nice Life, Ichigo, Poema Beatz, DJ Saudade, DJ MH, DJ MIKY-MIKE, IZI et Leston to light up the dancefloor all weekend long 🎶"
+    },
+    {
+     "name_as_written": "IZI et Leston",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "• On the decks: Nice Life, Ichigo, Poema Beatz, DJ Saudade, DJ MH, DJ MIKY-MIKE, IZI et Leston to light up the dancefloor all weekend long 🎶"
+    },
+    {
+     "name_as_written": "KizZua",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 KizZua: your 💯 Kizomba experience in the South!"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Classes with Arnaud DJBN, Ichigo, Manu & Olivia",
+     "rationale": "The description lists dance classes with named teachers as part of the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Socials from 3PM to 7PM (9PM on sunday)",
+     "rationale": "Daytime socials are scheduled in the afternoon."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 ROOMS. 3 EXPERIENCES.",
+     "rationale": "The event has three separate dance rooms."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "** DRESSCODES ** Back to school",
+     "rationale": "A dress code is explicitly stated for the event."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "FULLPASS : 150 to 190€ with accommodation *",
+     "rationale": "The full pass price is given with accommodation included."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "with breakfasts included in rooms for 2 or 10 people",
+     "rationale": "Breakfasts are included in the accommodation that comes with the pass."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Shuttles will be provided for festival-goers arriving by train or plane on Friday and Sunday.",
+     "rationale": "Shuttle transfers from train or plane are offered to attendees."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,80 @@
+{
+ "batch": "event-16059",
+ "events": [
+  {
+   "event_id": 16059,
+   "party_rooms": {
+    "count": 2,
+    "quote": "𝐑𝐎𝐎𝐌 𝟏"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "𝐑𝐎𝐎𝐌 𝟏",
+     "kind": "party",
+     "genres": [
+      "urbankiz",
+      "tarraxo",
+      "douceur",
+      "zouk"
+     ],
+     "quote": "Urban kiz"
+    },
+    {
+     "name_as_written": "𝐑𝐎𝐎𝐌 𝟐 (200m2)",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "semba",
+      "zouk",
+      "kompa",
+      "tarraxinha"
+     ],
+     "quote": "Tarraxinha"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban kiz",
+     "quote": "The Legendary Urban Kiz"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Urban Kiz, Tarraxo & Kizomba"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Tarraxo & Kizomba Celebration"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "Douceur"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Ghetto zouk",
+     "quote": "Ghetto zouk"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Semba"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Kompa",
+     "quote": "Kompa"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "Tarraxinha"
+    }
+   ]
+  }
+ ]
+}

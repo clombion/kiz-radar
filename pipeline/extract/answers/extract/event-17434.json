@@ -1,0 +1,16 @@
+{
+ "batch": "event-17434",
+ "events": [
+  {
+   "event_id": 17434,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "allows entry to all workshops, parties, social (Friday – Saturday – Sunday)",
+     "rationale": "The full ticket grants entry to all workshops, so dance classes are part of the event."
+    }
+   ]
+  }
+ ]
+}

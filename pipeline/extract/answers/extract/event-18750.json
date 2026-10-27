@@ -1,0 +1,51 @@
+{
+ "batch": "event-18750",
+ "events": [
+  {
+   "event_id": 18750,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "4 days of workshops, parties, accommodation and meals",
+     "rationale": "The event explicitly offers workshops as part of its four days."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "in an ALL IN ONE format",
+     "rationale": "The description states the event is run in an ALL IN ONE format, with accommodation and parties in the same place."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "4 days of workshops, parties, accommodation and meals",
+     "rationale": "Accommodation is listed among the things included in the event."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Meals available on the premises",
+     "rationale": "Meals are listed under 'What's included?'."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "Themed night parties with national and international DJs",
+     "rationale": "The event includes themed night parties, such as FLOWER POWER and SEVILLA Y OLÉ."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Dress code: flowers, colours, hippie chic",
+     "rationale": "A dress code is explicitly stated for the Friday party."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Afternoon Social | Pool Room",
+     "rationale": "The programme includes afternoon socials on both Friday and Saturday."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Workshops | Main Hall",
+     "rationale": "The programme uses more than one room, including the Main Hall and the Pool Room."
+    }
+   ]
+  }
+ ]
+}

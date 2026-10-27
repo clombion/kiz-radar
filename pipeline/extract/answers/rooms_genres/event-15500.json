@@ -1,0 +1,18 @@
+{
+ "batch": "event-15500",
+ "events": [
+  {
+   "event_id": 15500,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Levante Kizomba Experience Festival"
+    }
+   ]
+  }
+ ]
+}

@@ -2,9 +2,15 @@
  "event_id": 19439,
  "title": "New York SBKZ Congress",
  "start_date": "2027-01-29",
- "read_by": "agent",
- "prompt": "2be784db5d9944e6",
- "rows_at": "2026-10-26T23:56:43+00:00",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "cb864655c7075f56",
+ "rows_at": "2026-10-27T12:00:36+00:00",
+ "styles": [
+  "bachata",
+  "kizomba",
+  "salsa",
+  "zouk"
+ ],
  "description": "🪩🪩🪩 OFFICIAL EVENT PAGE 🪩🪩🪩\n🗽 New York SBKZ Congress\n🔥 Salsa • Bachata • Kizomba • Zouk\n🗓 January 29 – February 1, 2027\n📍 New York Hilton Midtown\n🎟 Passes & Performer Registration:\n🔗 NYSBKZCongress.com\n🏨 HOTEL INFO 🏨\n🔗 https://nysbkzcongress.com/about/hotel/\n………………………………………………….\n🗽 New York SBKZ Congress is the first of it’s kind in New York to feature Salsa, Bachata, Kizomba & Zouk at one event!\nJoin us for a full weekend of daily workshops, afternoon socials, nightly performances and social dancing until 6AM with internationally renowned dancers, instructors, DJ’s & media!\n🏆 Brazilian Zouk Dance Council Jack & Jill Competition for Novice, Intermediate & Advanced divisions will be hosted in collaboration with Danceplace\n………………………………………………….\n🪩🪩🪩 2027 HEADLINERS 🪩🪩🪩\nCheck our website for a full list of artists, DJs and more info!\n🔗 NYSBKZCongress.com\n………………………………………………….\n❤️ Follow us on Facebook & Instagram",
  "passes": [
   {
@@ -37,6 +43,25 @@
     {
      "keys": [
       "26256"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "style": "salsa",
+   "label_quote": null,
+   "group_size": 1,
+   "days": 1,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "26241"
      ],
      "from": null,
      "until": null,
@@ -101,29 +126,13 @@
      "date_quote": null
     }
    ]
-  },
-  {
-   "kind": "day",
-   "style": "salsa",
-   "label_quote": null,
-   "group_size": 1,
-   "days": 1,
-   "includes_hotel": false,
-   "tiers": [
-    {
-     "keys": [
-      "26241"
-     ],
-     "from": null,
-     "until": null,
-     "quantity": null,
-     "date_quote": null
-    }
-   ]
   }
  ],
  "skipped": [
-  "26221"
+  {
+   "key": "26221",
+   "reason": "competition"
+  }
  ],
  "rule_quotes": []
 }

@@ -1,0 +1,18 @@
+{
+ "batch": "event-17125",
+ "events": [
+  {
+   "event_id": 17125,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "Welcome to Jamais DoDo EPISODE 3: Revenge of the Kiz! Get ready to immerse yourself in a weekend full of non-stop kizomba music and dancing."
+    }
+   ]
+  }
+ ]
+}

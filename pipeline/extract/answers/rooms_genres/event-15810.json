@@ -1,0 +1,38 @@
+{
+ "batch": "event-15810",
+ "events": [
+  {
+   "event_id": 15810,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Workshops on Salsa, Bachata, Kizomba, Cha-Cha-Cha & Mambo"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Workshops on Salsa, Bachata, Kizomba, Cha-Cha-Cha & Mambo"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Workshops on Salsa, Bachata, Kizomba, Cha-Cha-Cha & Mambo"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Cha-Cha-Cha",
+     "quote": "Workshops on Salsa, Bachata, Kizomba, Cha-Cha-Cha & Mambo"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Mambo",
+     "quote": "Workshops on Salsa, Bachata, Kizomba, Cha-Cha-Cha & Mambo"
+    }
+   ]
+  }
+ ]
+}

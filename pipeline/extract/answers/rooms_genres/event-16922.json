@@ -1,0 +1,18 @@
+{
+ "batch": "event-16922",
+ "events": [
+  {
+   "event_id": 16922,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "afro",
+     "genre_as_written": "AFRO GROOVE",
+     "quote": "AFRO GROOVE KIZ FESTIVAL-PRAGUE 2026"
+    }
+   ]
+  }
+ ]
+}

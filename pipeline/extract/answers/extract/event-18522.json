@@ -1,0 +1,95 @@
+{
+ "batch": "event-18522",
+ "events": [
+  {
+   "event_id": 18522,
+   "artists": [
+    {
+     "name_as_written": "KIFF DANCE",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 KIFF DANCE x LE PARK STUDIO PRESENT 🔥"
+    },
+    {
+     "name_as_written": "Zouzout & Synthia",
+     "role": "teacher",
+     "style": "Konpa",
+     "country": null,
+     "source_line": "💥 Zouzout & Synthia – Konpa"
+    },
+    {
+     "name_as_written": "Kristel & Ichigo",
+     "role": "teacher",
+     "style": "Tarra Show",
+     "country": null,
+     "source_line": "💥 Kristel & Ichigo – Tarra Show"
+    },
+    {
+     "name_as_written": "DJ Ichigo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Ichigo"
+    },
+    {
+     "name_as_written": "DJ Diablo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Diablo"
+    },
+    {
+     "name_as_written": "DJ Fofo Jah",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Fofo Jah"
+    },
+    {
+     "name_as_written": "DJ Thales",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Thales"
+    },
+    {
+     "name_as_written": "DJ Loy J",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Loy J"
+    },
+    {
+     "name_as_written": "DJ JDN",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ JDN"
+    }
+   ],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "Enjoy multiple dance areas",
+     "rationale": "The description says there are multiple dance areas, and the schedule lists parties with 2 and 3 rooms."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Konpa workshop with Zouzout & Synthia",
+     "rationale": "A Konpa workshop with Zouzout & Synthia is scheduled on Saturday."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Tarra Show Masterclass with Kristel & Ichigo",
+     "rationale": "A Tarra Show Masterclass with Kristel & Ichigo is listed on Sunday."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "3:00 PM – 8:00 PM: Social",
+     "rationale": "A daytime social runs from 3:00 PM to 8:00 PM on Saturday."
+    }
+   ]
+  }
+ ]
+}

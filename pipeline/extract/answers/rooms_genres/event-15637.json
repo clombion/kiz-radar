@@ -1,0 +1,28 @@
+{
+ "batch": "event-15637",
+ "events": [
+  {
+   "event_id": 15637,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "15TH ANNIVERSARY SALSA FESTIVAL AUGSBURG 2026"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "SALSA-BACHATA-KIZOMBA Festival 2026"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "SALSA-BACHATA-KIZOMBA Festival 2026"
+    }
+   ]
+  }
+ ]
+}

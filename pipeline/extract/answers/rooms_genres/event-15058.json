@@ -1,0 +1,61 @@
+{
+ "batch": "event-15058",
+ "events": [
+  {
+   "event_id": 15058,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 PARTY ROOMS/2 VIBES"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "ROOM 1",
+     "kind": "party",
+     "genres": [
+      "tarraxo",
+      "urbankiz"
+     ],
+     "quote": "ROOM 1 : Tarraxo 70 % / Urban Kiz 30 %"
+    },
+    {
+     "name_as_written": "ROOM 2",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "zouk",
+      "douceur"
+     ],
+     "quote": "ROOM 2 : Kizomba – Ghetto Zouk – Douceur"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "ROOM 1 : Tarraxo 70 % / Urban Kiz 30 %"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "ROOM 1 : Tarraxo 70 % / Urban Kiz 30 %"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "ROOM 2 : Kizomba – Ghetto Zouk – Douceur"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Ghetto Zouk",
+     "quote": "ROOM 2 : Kizomba – Ghetto Zouk – Douceur"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "ROOM 2 : Kizomba – Ghetto Zouk – Douceur"
+    }
+   ]
+  }
+ ]
+}

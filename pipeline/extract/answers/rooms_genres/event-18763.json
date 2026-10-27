@@ -1,0 +1,38 @@
+{
+ "batch": "event-18763",
+ "events": [
+  {
+   "event_id": 18763,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba, Semba, Kuduro, Afro House and traditional Angolan dances"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba, Semba, Kuduro, Afro House and traditional Angolan dances"
+    },
+    {
+     "genre": "kuduro",
+     "genre_as_written": "Kuduro",
+     "quote": "Kizomba, Semba, Kuduro, Afro House and traditional Angolan dances"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro House",
+     "quote": "Kizomba, Semba, Kuduro, Afro House and traditional Angolan dances"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "traditional Angolan dances",
+     "quote": "Kizomba, Semba, Kuduro, Afro House and traditional Angolan dances"
+    }
+   ]
+  }
+ ]
+}

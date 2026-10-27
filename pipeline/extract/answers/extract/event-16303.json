@@ -1,0 +1,100 @@
+{
+ "batch": "event-16303",
+ "events": [
+  {
+   "event_id": 16303,
+   "artists": [
+    {
+     "name_as_written": "DJ MIRO KIKOLA",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🟢 DJ MIRO KIKOLA"
+    },
+    {
+     "name_as_written": "DJ BAKONGO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🟢 DJ BAKONGO"
+    },
+    {
+     "name_as_written": "DJ BELEZA",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🟢 DJ BELEZA"
+    },
+    {
+     "name_as_written": "DJ VASCO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🟢 DJ VASCO"
+    },
+    {
+     "name_as_written": "DJ JAROD",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🟢 DJ JAROD"
+    },
+    {
+     "name_as_written": "DJ NICE LIFE",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🟢 DJ NICE LIFE"
+    },
+    {
+     "name_as_written": "DJ NEIKEN",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🟢 DJ NEIKEN"
+    },
+    {
+     "name_as_written": "Ary & Maura",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🟢 Ary & Maura"
+    },
+    {
+     "name_as_written": "Lukasz & Karolina",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🟢 Lukasz & Karolina (Vamula)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "𝐀𝐋𝐋 𝐈𝐍 𝐎𝐍𝐄 𝐕𝐄𝐍𝐔𝐄",
+     "rationale": "The section titled all in one venue gives the hotel as the venue for the event, so the parties take place where dancers stay."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 dance floors (air‑conditioned)",
+     "rationale": "Two dance floors are stated, which means more than one dance room."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "16:00–20:00 Social",
+     "rationale": "Afternoon social sessions are listed in the schedule."
+    },
+    {
+     "feature": "workshops",
+     "quote": "13:00–16:00 Workshops",
+     "rationale": "Daytime workshop sessions are part of the programme."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "𝐓𝐄𝐀𝐂𝐇𝐄𝐑𝐒 – 𝐌𝐀𝐒𝐓𝐄𝐑𝐂𝐋𝐀𝐒𝐒𝐄𝐒",
+     "rationale": "A masterclass teacher section heading shows masterclasses are part of the event."
+    }
+   ]
+  }
+ ]
+}

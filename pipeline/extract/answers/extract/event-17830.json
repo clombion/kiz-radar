@@ -1,0 +1,44 @@
+{
+ "batch": "event-17830",
+ "events": [
+  {
+   "event_id": 17830,
+   "artists": [
+    {
+     "name_as_written": "Jacinto Teca Events",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "A unique trip to beautiful Angola with accommodation and half board provided, organized by Jacinto Teca Events."
+    }
+   ],
+   "features": [
+    {
+     "feature": "accommodation_included",
+     "quote": "with accommodation and half board provided",
+     "rationale": "The trip description states that accommodation is provided as part of the package."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "half board (breakfast, one warm food -lunch or dinner plus non alcoholic drinks during meals)",
+     "rationale": "The package includes half board meals, with breakfast and a warm meal."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "airport pick-up",
+     "rationale": "The package includes airport pick-up and drop-off transfers."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Dance workshops , night parties",
+     "rationale": "Dance workshops are listed as part of the trip program."
+    },
+    {
+     "feature": "live_music",
+     "quote": "local parties & concerts",
+     "rationale": "Local concerts are listed among the trip's experiences."
+    }
+   ]
+  }
+ ]
+}

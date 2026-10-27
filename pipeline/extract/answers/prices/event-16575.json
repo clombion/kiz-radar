@@ -1,6 +1,5 @@
 {
  "batch": "event-16575",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16575,
@@ -17,43 +16,40 @@
        "amount": 80,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "01-31",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Early birds Full Pass €80 till end of January"
+       "quote": "🔸️Early birds Full Pass €80 till end of January"
       },
       {
        "amount": 100,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Late birds Full Pass € 100"
+       "quote": "🔸️Late birds Full Pass € 100"
       },
       {
        "amount": 120,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "Lazy birds Full Pas at the Door €120"
+       "quote": "🔸️ Lazy birds Full Pas at the Door €120"
       }
      ]
     },
@@ -69,15 +65,14 @@
        "amount": 20,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Friday Night Party €20"
+       "quote": "🔹️Friday Night Party €20"
       }
      ]
     },
@@ -93,15 +88,14 @@
        "amount": 20,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Saturday Night Party €20"
+       "quote": "🔹️Saturday Night Party €20"
       }
      ]
     }

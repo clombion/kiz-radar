@@ -1,0 +1,56 @@
+{
+ "batch": "event-18747",
+ "events": [
+  {
+   "event_id": 18747,
+   "party_rooms": {
+    "count": 3,
+    "quote": "3 rooms/3 vibes (SBK)"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro-Latin",
+     "quote": "learn or hone your Afro-Latin dance skills"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa: Son / Timba / Rueda / Rumba / ChaChaCha / Casino / Estillo / Mambo"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata: Moderna / Sensual / Dominicana / Fusion / Bachata Zouk"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Bachata Zouk",
+     "quote": "Bachata Zouk"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba: Urban / Traditional / Semba / Ginga / Tarraxa"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban",
+     "quote": "Kizomba: Urban"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Traditional / Semba / Ginga / Tarraxa"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxa",
+     "quote": "Semba / Ginga / Tarraxa"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "batch": "event-17839",
+ "events": [
+  {
+   "event_id": 17839,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "13 hours of workshops with top-notch instructors",
+     "rationale": "The description states that the event includes 13 hours of dance workshops taught by instructors."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Day Social (TBD)",
+     "rationale": "A daytime Sunday social from 5pm to 9pm is listed in the programme."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,91 @@
+{
+ "batch": "event-16054",
+ "events": [
+  {
+   "event_id": 16054,
+   "artists": [
+    {
+     "name_as_written": "COMÈS",
+     "role": "teacher",
+     "style": "KIZOMBA / URBAN KIZ / SEMBA",
+     "country": null,
+     "source_line": "COMÈS"
+    },
+    {
+     "name_as_written": "HERMINIO & CAROLE",
+     "role": "teacher",
+     "style": "CUBAN / PORTO SALSA",
+     "country": null,
+     "source_line": "HERMINIO & CAROLE"
+    },
+    {
+     "name_as_written": "MINOU & ERICKA",
+     "role": "teacher",
+     "style": "CUBAN / PORTO SALSA",
+     "country": null,
+     "source_line": "MINOU & ERICKA"
+    },
+    {
+     "name_as_written": "SING & MYLÈNE",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "SING & MYLÈNE"
+    },
+    {
+     "name_as_written": "LUIS & LAETITIA",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "LUIS & LAETITIA"
+    },
+    {
+     "name_as_written": "SHADOX & SABY",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "SHADOX & SABY"
+    },
+    {
+     "name_as_written": "ASS SMOOTH DANCES",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Make the cheque payable to ASS SMOOTH DANCES and send it to:"
+    }
+   ],
+   "features": [
+    {
+     "feature": "accommodation_included",
+     "quote": "Full Pass + Full-board Accommodation",
+     "rationale": "The price line states that the full pass includes full-board accommodation."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Full board applies to all prices offered.",
+     "rationale": "The booking section says full board applies to all prices, so meals are part of the packages."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "will take place from Monday, July 6th to Sunday, July 12th, 2026 at the Alhambra Hotel",
+     "rationale": "The event takes place at the same hotel where the accommodation is booked."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "POOL PARTY starting at 4:30 pm",
+     "rationale": "The program lists a pool party starting at 4:30 pm."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Classes will be held every day from 11:30 am to 12:30 pm and from 2:30 pm to 5:30 pm.",
+     "rationale": "Daily dance classes are part of the event program."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Take a shuttle via http://www.shuttledirect.com and follow the instructions",
+     "rationale": "The description gives shuttle options from the airport to the hotel."
+    }
+   ]
+  }
+ ]
+}

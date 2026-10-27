@@ -1,0 +1,23 @@
+{
+ "batch": "event-14619",
+ "events": [
+  {
+   "event_id": 14619,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "[BACHATA]"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "[KIZOMBA]"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,31 @@
+{
+ "batch": "event-18818",
+ "events": [
+  {
+   "event_id": 18818,
+   "artists": [],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 free dance floors",
+     "rationale": "The description lists three dance floors, and the program names Room 1, Room 2 and Room 3."
+    },
+    {
+     "feature": "workshops",
+     "quote": "More than 25h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)",
+     "rationale": "The event explicitly offers more than 25 hours of dance workshops across several styles."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Social Dance from 12 p.m. to 5 p.m",
+     "rationale": "A daytime social dance running from noon to 5 p.m. is part of the Monday program."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Hotelempfehlung (Hotel recommendations)",
+     "rationale": "The description recommends several hotels for dancers, and no accommodation is stated as part of a pass."
+    }
+   ]
+  }
+ ]
+}

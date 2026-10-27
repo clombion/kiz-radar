@@ -1,0 +1,41 @@
+{
+ "batch": "event-15408",
+ "events": [
+  {
+   "event_id": 15408,
+   "artists": [],
+   "features": [
+    {
+     "feature": "pool_party",
+     "quote": "Crazy Pool Parties",
+     "rationale": "The description advertises pool parties as part of the event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Daily Workshops",
+     "rationale": "Daily workshops are listed as part of the programme."
+    },
+    {
+     "feature": "shows",
+     "quote": "International Shows",
+     "rationale": "International shows are advertised as part of the event."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "4 Dance Floors",
+     "rationale": "Four dance floors means more than one dance room."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Not just accommodation, food, and drinks – but all the extras included in the price!",
+     "rationale": "The all-inclusive concept states that accommodation is included in the price."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Not just accommodation, food, and drinks",
+     "rationale": "The all-inclusive concept states that food is included in the price."
+    }
+   ]
+  }
+ ]
+}

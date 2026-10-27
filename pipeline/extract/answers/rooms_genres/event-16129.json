@@ -1,0 +1,43 @@
+{
+ "batch": "event-16129",
+ "events": [
+  {
+   "event_id": 16129,
+   "party_rooms": {
+    "count": 2,
+    "quote": "ROOM URBANKIZ\n🇫🇷 Dj Snakes,\n🇸🇪🇨🇩Poema Beatz\n🇫🇷 Dj Lenhy,\n🇫🇷 Dj Hugo Smile\nROOM KIZOMBA"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "ROOM URBANKIZ",
+     "kind": "party",
+     "genres": [
+      "urbankiz"
+     ],
+     "quote": "ROOM URBANKIZ"
+    },
+    {
+     "name_as_written": "ROOM KIZOMBA",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "ROOM KIZOMBA"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "PARIS KIZOMBA SUMMER 9e Ed. Official"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBANKIZ",
+     "quote": "ROOM URBANKIZ"
+    }
+   ]
+  }
+ ]
+}

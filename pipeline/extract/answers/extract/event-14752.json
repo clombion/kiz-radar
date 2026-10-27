@@ -1,0 +1,26 @@
+{
+ "batch": "event-14752",
+ "events": [
+  {
+   "event_id": 14752,
+   "artists": [],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "Rooms, 4 unique atmospheres",
+     "rationale": "The text says there are 4 rooms, each with its own atmosphere, which means more than one dance room."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Soft & catering INCLUDED",
+     "rationale": "The listed soft drinks and catering are marked as included, so meals are part of the pass."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Preparty on thursday the 12th",
+     "rationale": "A preparty is announced for the evening before the main event dates."
+    }
+   ]
+  }
+ ]
+}

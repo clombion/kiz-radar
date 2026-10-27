@@ -1,0 +1,31 @@
+{
+ "batch": "event-17853",
+ "events": [
+  {
+   "event_id": 17853,
+   "party_rooms": {
+    "count": 3,
+    "quote": "3 rooms of social dancing until 4AM"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "salsa",
+     "quote": "LIVE salsa concert"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "The Battle Bachata"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "endless Kizomba vibes"
+    }
+   ]
+  }
+ ]
+}

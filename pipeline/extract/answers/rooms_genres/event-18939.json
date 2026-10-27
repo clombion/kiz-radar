@@ -1,0 +1,41 @@
+{
+ "batch": "event-18939",
+ "events": [
+  {
+   "event_id": 18939,
+   "party_rooms": {
+    "count": 2,
+    "quote": "with two dedicated dance rooms"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba • Afro • Semba"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "Kizomba • Afro • Semba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba • Afro • Semba"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa • Bachata"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Salsa • Bachata"
+    }
+   ]
+  }
+ ]
+}

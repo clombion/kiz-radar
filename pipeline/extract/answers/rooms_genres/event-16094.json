@@ -1,0 +1,67 @@
+{
+ "batch": "event-16094",
+ "events": [
+  {
+   "event_id": 16094,
+   "party_rooms": {
+    "count": 4,
+    "quote": "Party SBK (4 rooms = salsa, bachata, kizomba, and mix)"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "salsa",
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "4 rooms = salsa, bachata, kizomba, and mix"
+    },
+    {
+     "name_as_written": "bachata",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "4 rooms = salsa, bachata, kizomba, and mix"
+    },
+    {
+     "name_as_written": "kizomba",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "4 rooms = salsa, bachata, kizomba, and mix"
+    },
+    {
+     "name_as_written": "mix",
+     "kind": "party",
+     "genres": [],
+     "quote": "4 rooms = salsa, bachata, kizomba, and mix"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "SALSA BACHATA KIZOMBA & CO"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata with Cornel and Rithika"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba with Chamalo and Jalyssa featuring Fred-Nelson and Morgane"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Brazilian Zouk",
+     "quote": "Brazilian Zouk with Alex De Carvalho and Laure Lalanne"
+    }
+   ]
+  }
+ ]
+}

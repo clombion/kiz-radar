@@ -1,0 +1,56 @@
+{
+ "batch": "event-17853",
+ "events": [
+  {
+   "event_id": 17853,
+   "artists": [
+    {
+     "name_as_written": "Moe Flex",
+     "role": "mc",
+     "style": null,
+     "country": null,
+     "source_line": "🎙 Hosted by Moe Flex"
+    },
+    {
+     "name_as_written": "DJ Jungwoo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Get ready for unforgettable nights, beautiful music, and endless Kizomba vibes with DJ Jungwoo at SGLF26 🌴✨"
+    }
+   ],
+   "features": [
+    {
+     "feature": "live_music",
+     "quote": "LIVE salsa concert",
+     "rationale": "The listed highlights include a live salsa concert, which is live music."
+    },
+    {
+     "feature": "shows",
+     "quote": "45+ shows, workshops & masterclasses",
+     "rationale": "The highlights promise 45+ shows as part of the programme."
+    },
+    {
+     "feature": "workshops",
+     "quote": "45+ shows, workshops & masterclasses",
+     "rationale": "The highlights state that workshops are part of the event."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "45+ shows, workshops & masterclasses",
+     "rationale": "The highlights explicitly list masterclasses as part of the event."
+    },
+    {
+     "feature": "competition",
+     "quote": "Jack & Jill & The Battle Bachata",
+     "rationale": "A Jack & Jill and a battle are listed, which are competitions."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 rooms of social dancing until 4AM",
+     "rationale": "The event has three rooms for social dancing, so more than one dance floor."
+    }
+   ]
+  }
+ ]
+}

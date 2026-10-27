@@ -1,0 +1,88 @@
+{
+ "batch": "event-16524",
+ "events": [
+  {
+   "event_id": 16524,
+   "artists": [
+    {
+     "name_as_written": "Harold Kinanga",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "2 workshops with Harold Kinanga – Rueda Champion"
+    },
+    {
+     "name_as_written": "Adil and Elo",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "2 workshops with Adil and Elo"
+    },
+    {
+     "name_as_written": "Malick and Carla",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "2 workshops with the rising stars Malick and Carla from Bordeaux 🥈🥉"
+    },
+    {
+     "name_as_written": "Daddy & Manuela",
+     "role": "teacher",
+     "style": "KONPA",
+     "country": null,
+     "source_line": "Daddy & Manuela"
+    },
+    {
+     "name_as_written": "DJ Dada",
+     "role": "dj",
+     "style": "Salsa/Bachata",
+     "country": null,
+     "source_line": "DJ Dada: Salsa/Bachata Room"
+    },
+    {
+     "name_as_written": "DJ Mister D",
+     "role": "dj",
+     "style": "Kizomba/Urban/Semba",
+     "country": null,
+     "source_line": "DJ Mister D: Kizomba/Urban/Semba Room"
+    },
+    {
+     "name_as_written": "LSF",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Our friends LSF and SACALA invite you to a dance weekend in an exceptional location with exceptional artists!"
+    },
+    {
+     "name_as_written": "SACALA",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Our friends LSF and SACALA invite you to a dance weekend in an exceptional location with exceptional artists!"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "2 workshops with Harold Kinanga",
+     "rationale": "The description lists workshops taught by Harold Kinanga, so dance classes are part of the event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Saturday: Workshops + Party",
+     "rationale": "The schedule states that Saturday includes workshops."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Saturday: White and Gold",
+     "rationale": "A dress code is stated for Saturday."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "DJ Dada: Salsa/Bachata Room",
+     "rationale": "The event has separate named dance rooms, one for Salsa/Bachata and one for Kizomba/Urban/Semba."
+    }
+   ]
+  }
+ ]
+}

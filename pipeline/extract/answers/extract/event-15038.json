@@ -1,0 +1,213 @@
+{
+ "batch": "event-15038",
+ "events": [
+  {
+   "event_id": 15038,
+   "artists": [
+    {
+     "name_as_written": "Victoria International Kizomba Festival",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Victoria International Kizomba Festival 7th Edition"
+    },
+    {
+     "name_as_written": "JP & Stephy",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": "France",
+     "source_line": "✅ JP & Stephy (Paris – France 🇫🇷)"
+    },
+    {
+     "name_as_written": "Adilson & Telma",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": "Angola",
+     "source_line": "✅ Adilson & Telma (Luanda – Angola)"
+    },
+    {
+     "name_as_written": "Nick & Alex",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": "Netherlands & Canada",
+     "source_line": "✅ Nick & Alex (Amsterdam- Netherlands 🇳🇱 & Canada 🇨🇦)"
+    },
+    {
+     "name_as_written": "Said Mr Battle Kiz",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": "France",
+     "source_line": "✅ Said Mr Battle Kiz (Paris – France 🇫🇷)"
+    },
+    {
+     "name_as_written": "Justinho & A2Man",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": "France",
+     "source_line": "✅ Justinho & A2Man (Paris – France 🇫🇷)"
+    },
+    {
+     "name_as_written": "Elvis & Lena",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": "Canada",
+     "source_line": "✅ Elvis & Lena (Ottawa & Vancouver- Canada 🇨🇦)"
+    },
+    {
+     "name_as_written": "Emily Tarraxo",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": "Canada",
+     "source_line": "✅ Emily Tarraxo (Vancouver Island & Montreal – Canada 🇨🇦)"
+    },
+    {
+     "name_as_written": "Catherine",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": "USA",
+     "source_line": "✅ Catherine (Seattle – USA 🇺🇸)"
+    },
+    {
+     "name_as_written": "DJ Sabura",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": "Portugal",
+     "source_line": "✅ DJ Sabura (Lisbon – Portugal)"
+    },
+    {
+     "name_as_written": "DJ Stefanio Lima",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": "Netherlands",
+     "source_line": "✅ DJ Stefanio Lima (Rotterdam – Netherlands 🇳🇱)"
+    },
+    {
+     "name_as_written": "DJ Sink",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": "Canada",
+     "source_line": "✅ DJ Sink (Montreal – Canada 🇨🇦)"
+    },
+    {
+     "name_as_written": "DJ Guelas",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": "USA",
+     "source_line": "✅ DJ Guelas (Miami – USA 🇺🇸)"
+    },
+    {
+     "name_as_written": "DJ Yawo",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": "USA",
+     "source_line": "✅ DJ Yawo (Seattle – USA 🇺🇸)"
+    },
+    {
+     "name_as_written": "DJ Gaz",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": "Canada",
+     "source_line": "✅ DJ Gaz (Vancouver – Canada 🇨🇦)"
+    },
+    {
+     "name_as_written": "DJ Shams",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": "USA",
+     "source_line": "✅ DJ Shams (Washington DC – USA 🇺🇸)"
+    },
+    {
+     "name_as_written": "Alonso & Noelia",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Spain",
+     "source_line": "✅ Alonso & Noelia (Barcelona- Spain🇪🇸)"
+    },
+    {
+     "name_as_written": "Jorelle & Monica",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Canada",
+     "source_line": "✅ Jorelle & Monica (Vancouver – Canada 🇨🇦)"
+    },
+    {
+     "name_as_written": "Dakhota Romero",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "USA",
+     "source_line": "✅ Dakhota Romero (Los Angeles – USA 🇺🇸)"
+    },
+    {
+     "name_as_written": "Sebastian & Hannah",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Canada",
+     "source_line": "✅ Sebastian & Hannah (Victoria – Canada 🇨🇦)"
+    },
+    {
+     "name_as_written": "Javi & Carla",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "Canada",
+     "source_line": "✅ Javi & Carla (Vancouver – Canada 🇨🇦)"
+    },
+    {
+     "name_as_written": "DJ Suave-T",
+     "role": "dj",
+     "style": "BACHATA",
+     "country": "Canada",
+     "source_line": "✅ DJ Suave-T (Vancouver – Canada 🇨🇦)"
+    },
+    {
+     "name_as_written": "DJ JB",
+     "role": "dj",
+     "style": "BACHATA",
+     "country": "USA",
+     "source_line": "✅ DJ JB (Seattle – USA 🇺🇸)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "4 ROOMS: BACHATA – KIZOMBA – URBAN KIZ – KONPA, SALSA, AFRO BEATS and REGGAETON",
+     "rationale": "Listing four rooms shows more than one dance room or dance floor."
+    },
+    {
+     "feature": "workshops",
+     "quote": "*4 days of workshops",
+     "rationale": "The festival offers four days of dance workshops."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "*3 day-time socials",
+     "rationale": "Daytime socials are offered as part of the festival."
+    },
+    {
+     "feature": "after_party",
+     "quote": "*3 afterparties until 6-7am",
+     "rationale": "The festival includes afterparties running until the early morning."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "*3 afterparties until 6-7am",
+     "rationale": "Afterparties are listed; this quote does not show a pre-party, so this entry is not supported."
+    },
+    {
+     "feature": "shows",
+     "quote": "including performances and fashion shows by African Designers",
+     "rationale": "The gala night includes performances and fashion shows."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "HOTEL DEALS: WE HAVE 3 PREMIUMS HOTELS TO HOST YOU.",
+     "rationale": "The organisers negotiate hotel deals with premium hotels for guests."
+    },
+    {
+     "feature": "adults_only",
+     "quote": "– Must be 18+ to attend this event",
+     "rationale": "Attendance is restricted to people aged 18 and over."
+    }
+   ]
+  }
+ ]
+}

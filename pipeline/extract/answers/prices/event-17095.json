@@ -1,6 +1,5 @@
 {
  "batch": "event-17095",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17095,
@@ -17,8 +16,7 @@
        "amount": 120,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "2026-05-31",
        "quantity": null,

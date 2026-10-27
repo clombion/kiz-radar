@@ -1,0 +1,41 @@
+{
+ "batch": "event-14916",
+ "events": [
+  {
+   "event_id": 14916,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "engaging workshops",
+     "rationale": "The description says the festival offers engaging workshops, so dance classes are part of the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "lively afternoon parties",
+     "rationale": "Afternoon parties are advertised as part of the festival, which matches daytime socials."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "All-in-one 4-star hotel conveniently located near London Heathrow Airport",
+     "rationale": "The event is held at a hotel described as all-in-one, so the parties take place where dancers are invited to stay."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Lose yourself across our 5 distinct party rooms",
+     "rationale": "The text describes five separate dance rooms, which is more than one dance room."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Book your hotel room on link below for at special discounted festival rates",
+     "rationale": "A discounted festival hotel rate is negotiated, and the hotel is booked separately from the festival pass."
+    },
+    {
+     "feature": "shows",
+     "quote": "groundbreaking performance by our renowned authentic international artists",
+     "rationale": "The artist line-up is described as giving performances, which counts as shows by artists."
+    }
+   ]
+  }
+ ]
+}

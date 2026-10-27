@@ -1,0 +1,38 @@
+{
+ "batch": "event-14705",
+ "events": [
+  {
+   "event_id": 14705,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Are you passionate about Bachata and Kizomba?"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Are you passionate about Bachata and Kizomba?"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo Pop",
+     "quote": "Tarraxo Pop"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Urban Kiz"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Urban Kiz, Semba"
+    }
+   ]
+  }
+ ]
+}

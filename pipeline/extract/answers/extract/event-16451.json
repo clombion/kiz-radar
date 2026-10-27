@@ -1,0 +1,97 @@
+{
+ "batch": "event-16451",
+ "events": [
+  {
+   "event_id": 16451,
+   "artists": [
+    {
+     "name_as_written": "Jesus & Anni",
+     "role": "teacher",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "💥 Jesus & Anni 🇪🇸"
+    },
+    {
+     "name_as_written": "Stef & Sarah",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "💥 Stef & Sarah 🇫🇷"
+    },
+    {
+     "name_as_written": "Mickaela",
+     "role": "teacher",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "💥 Mickaela 🇸🇪"
+    },
+    {
+     "name_as_written": "Nick & Alex",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "💥 Nick & Alex 🇨🇦"
+    },
+    {
+     "name_as_written": "DJ Shark",
+     "role": "dj",
+     "style": null,
+     "country": "🇪🇸 🇨🇺",
+     "source_line": "🎧 DJ Shark 🇪🇸 🇨🇺"
+    },
+    {
+     "name_as_written": "DJ Pingusso",
+     "role": "dj",
+     "style": null,
+     "country": "🇱🇺",
+     "source_line": "🎧 DJ Pingusso 🇱🇺"
+    },
+    {
+     "name_as_written": "DJ Nao",
+     "role": "dj",
+     "style": null,
+     "country": "🇧🇪 🇸🇳",
+     "source_line": "🎧 DJ Nao 🇧🇪 🇸🇳"
+    },
+    {
+     "name_as_written": "DJ Traxx",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "🎧 DJ Traxx 🇸🇪"
+    },
+    {
+     "name_as_written": "DJ Poema Beatz",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "🎧 DJ Poema Beatz 🇸🇪"
+    },
+    {
+     "name_as_written": "DJ Joey C",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "🎧 DJ Joey C 🇸🇪"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Workshops with world-class instructors",
+     "rationale": "The event lists workshops with instructors as part of its program."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "vibrant day socials",
+     "rationale": "The description explicitly mentions day socials as part of the event."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "RECOMMENDED HOTEL",
+     "rationale": "A recommended hotel (Quality Hotel Globe) is named for attendees, without accommodation being part of the pass."
+    }
+   ]
+  }
+ ]
+}

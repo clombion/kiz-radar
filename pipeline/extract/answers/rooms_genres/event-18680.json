@@ -1,0 +1,100 @@
+{
+ "batch": "event-18680",
+ "events": [
+  {
+   "event_id": 18680,
+   "party_rooms": {
+    "count": 3,
+    "quote": "4 magical Valentine’s Parties (Thu–Sun) / 3 Rooms"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "𝐑𝐎𝐎𝐌 𝟏",
+     "kind": "party",
+     "genres": [
+      "urbankiz",
+      "tarraxo",
+      "zouk",
+      "afro",
+      "douceur"
+     ],
+     "quote": "𝐑𝐎𝐎𝐌 𝟏 : Urbankiz – Tarraxo- Ghettozouk – Afrobeat – Douceur"
+    },
+    {
+     "name_as_written": "𝐑𝐎𝐎𝐌 𝟐",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "semba",
+      "other",
+      "kompa"
+     ],
+     "quote": "𝐑𝐎𝐎𝐌 𝟐 : Kizomba – Semba – Afrozouk – Konpa"
+    },
+    {
+     "name_as_written": "𝐑𝐎𝐎𝐌 𝟑",
+     "kind": "party",
+     "genres": [
+      "zouk",
+      "tarraxinha",
+      "tarraxo"
+     ],
+     "quote": "𝐑𝐎𝐎𝐌 𝟑 : Ghettozouk soft – Tarraxinha – Tarraxo Softness"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urbankiz",
+     "quote": "Urbankiz – Tarraxo- Ghettozouk – Afrobeat – Douceur"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba – Semba – Afrozouk – Konpa"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba – Semba – Afrozouk – Konpa"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Ghettozouk",
+     "quote": "Ghettozouk – Afrobeat – Douceur"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Tarraxo- Ghettozouk"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afrobeat",
+     "quote": "Ghettozouk – Afrobeat – Douceur"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "Afrobeat – Douceur"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Afrozouk – Konpa"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Afrozouk",
+     "quote": "Kizomba – Semba – Afrozouk – Konpa"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "Ghettozouk soft – Tarraxinha – Tarraxo Softness"
+    }
+   ]
+  }
+ ]
+}

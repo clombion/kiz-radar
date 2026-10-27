@@ -1,0 +1,199 @@
+{
+ "batch": "event-16643",
+ "events": [
+  {
+   "event_id": 16643,
+   "artists": [
+    {
+     "name_as_written": "Nora & Catherine",
+     "role": "teacher",
+     "style": null,
+     "country": "🇸🇪 🇩🇰",
+     "source_line": "Nora & Catherine 🇸🇪 🇩🇰"
+    },
+    {
+     "name_as_written": "Mårten & Anna",
+     "role": "teacher",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "Mårten & Anna 🇸🇪"
+    },
+    {
+     "name_as_written": "Daniela",
+     "role": "teacher",
+     "style": null,
+     "country": "🇩🇰",
+     "source_line": "Daniela 🇩🇰"
+    },
+    {
+     "name_as_written": "Thomas Trew",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "Thomas Trew 🇫🇷"
+    },
+    {
+     "name_as_written": "Kiyoshi & Maiken",
+     "role": "teacher",
+     "style": null,
+     "country": "🇳🇴",
+     "source_line": "Kiyoshi & Maiken 🇳🇴"
+    },
+    {
+     "name_as_written": "Cédric & Christina",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷 🇳🇴",
+     "source_line": "Cédric & Christina 🇫🇷 🇳🇴"
+    },
+    {
+     "name_as_written": "Zack Kizz",
+     "role": "teacher",
+     "style": null,
+     "country": "🇩🇰",
+     "source_line": "Zack Kizz 🇩🇰"
+    },
+    {
+     "name_as_written": "Siân Kristin Phillips",
+     "role": "teacher",
+     "style": null,
+     "country": "🇳🇴",
+     "source_line": "Siân Kristin Phillips 🇳🇴"
+    },
+    {
+     "name_as_written": "DJ Joey C",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "DJ Joey C 🇸🇪"
+    },
+    {
+     "name_as_written": "DJ Jois",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "DJ Jois 🇸🇪"
+    },
+    {
+     "name_as_written": "DJ Trew",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "DJ Trew 🇫🇷"
+    },
+    {
+     "name_as_written": "DJ Relux",
+     "role": "dj",
+     "style": null,
+     "country": "🇳🇴",
+     "source_line": "DJ Relux 🇳🇴"
+    },
+    {
+     "name_as_written": "Daniel",
+     "role": "teacher",
+     "style": null,
+     "country": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+     "source_line": "Daniel 🏴󠁧󠁢󠁳󠁣󠁴󠁿"
+    },
+    {
+     "name_as_written": "Varun",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇳🇳🇴",
+     "source_line": "Varun🇮🇳🇳🇴"
+    },
+    {
+     "name_as_written": "Laura",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇮",
+     "source_line": "Laura🇫🇮"
+    },
+    {
+     "name_as_written": "Tuomas",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇮",
+     "source_line": "Tuomas 🇫🇮"
+    },
+    {
+     "name_as_written": "Manuel",
+     "role": "teacher",
+     "style": null,
+     "country": "🇳🇴",
+     "source_line": "Manuel 🇳🇴"
+    },
+    {
+     "name_as_written": "Mo",
+     "role": "teacher",
+     "style": null,
+     "country": "🇩🇰",
+     "source_line": "Mo🇩🇰"
+    },
+    {
+     "name_as_written": "Daniel",
+     "role": "teacher",
+     "style": null,
+     "country": "🇳🇴",
+     "source_line": "Daniel🇳🇴"
+    },
+    {
+     "name_as_written": "Uliana",
+     "role": "teacher",
+     "style": null,
+     "country": "🇺🇦🇳🇴",
+     "source_line": "Uliana🇺🇦🇳🇴"
+    },
+    {
+     "name_as_written": "Cem",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Cem"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "workshops for all styles represented",
+     "rationale": "The event explicitly offers workshops covering all styles."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "workshop beginner friendly",
+     "rationale": "Several workshops are explicitly labelled beginner friendly."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "DRESSCODES",
+     "rationale": "A section titled DRESSCODES lists a dress code for each day."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "Friday: Summer Bouquet",
+     "rationale": "Each day has a dress theme for its party, such as Summer Bouquet or Black & Gold Elegance."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "17:45-19:45: Social",
+     "rationale": "Daytime and afternoon social sessions are on the schedule."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "20:00-22:00 Pre-party workshops",
+     "rationale": "A pre-party workshop session runs before the Friday party."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Room 2:",
+     "rationale": "The event uses more than one dance room, Room 1 and Room 2."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "cheap recommendations",
+     "rationale": "The section lists recommended hotels, which are not part of the pass."
+    }
+   ]
+  }
+ ]
+}

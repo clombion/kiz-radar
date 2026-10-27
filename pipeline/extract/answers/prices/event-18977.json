@@ -1,6 +1,5 @@
 {
  "batch": "event-18977",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18977,
@@ -10,15 +9,17 @@
      "style": null,
      "label_quote": "▪️FULL PASS",
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 150,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 57000,
-       "alt_currency": "HUF",
+       "alt": {
+        "amount": 57000,
+        "currency": "HUF"
+       },
        "from": null,
        "until": "09-30",
        "quantity": null,
@@ -31,8 +32,10 @@
        "amount": 160,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 61000,
-       "alt_currency": "HUF",
+       "alt": {
+        "amount": 61000,
+        "currency": "HUF"
+       },
        "from": null,
        "until": "11-05",
        "quantity": null,
@@ -45,8 +48,10 @@
        "amount": 170,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 65000,
-       "alt_currency": "HUF",
+       "alt": {
+        "amount": 65000,
+        "currency": "HUF"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -62,15 +67,17 @@
      "style": null,
      "label_quote": "▪️SOCIAL PARTY PASS",
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 115,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 44000,
-       "alt_currency": "HUF",
+       "alt": {
+        "amount": 44000,
+        "currency": "HUF"
+       },
        "from": null,
        "until": "09-30",
        "quantity": null,
@@ -83,8 +90,10 @@
        "amount": 120,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 46000,
-       "alt_currency": "HUF",
+       "alt": {
+        "amount": 46000,
+        "currency": "HUF"
+       },
        "from": null,
        "until": "11-05",
        "quantity": null,
@@ -97,8 +106,10 @@
        "amount": 125,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 48000,
-       "alt_currency": "HUF",
+       "alt": {
+        "amount": 48000,
+        "currency": "HUF"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -114,15 +125,17 @@
      "style": null,
      "label_quote": "▪️PARTY PASS",
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 85,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 33000,
-       "alt_currency": "HUF",
+       "alt": {
+        "amount": 33000,
+        "currency": "HUF"
+       },
        "from": null,
        "until": "09-30",
        "quantity": null,
@@ -135,8 +148,10 @@
        "amount": 90,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 35000,
-       "alt_currency": "HUF",
+       "alt": {
+        "amount": 35000,
+        "currency": "HUF"
+       },
        "from": null,
        "until": "11-05",
        "quantity": null,
@@ -149,8 +164,10 @@
        "amount": 95,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 37000,
-       "alt_currency": "HUF",
+       "alt": {
+        "amount": 37000,
+        "currency": "HUF"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -173,8 +190,10 @@
        "amount": 50,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 20000,
-       "alt_currency": "HUF",
+       "alt": {
+        "amount": 20000,
+        "currency": "HUF"
+       },
        "from": null,
        "until": "09-30",
        "quantity": null,
@@ -187,8 +206,10 @@
        "amount": 55,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 22000,
-       "alt_currency": "HUF",
+       "alt": {
+        "amount": 22000,
+        "currency": "HUF"
+       },
        "from": null,
        "until": "11-05",
        "quantity": null,
@@ -201,8 +222,10 @@
        "amount": 60,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 24000,
-       "alt_currency": "HUF",
+       "alt": {
+        "amount": 24000,
+        "currency": "HUF"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -225,8 +248,10 @@
        "amount": 55,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 22000,
-       "alt_currency": "HUF",
+       "alt": {
+        "amount": 22000,
+        "currency": "HUF"
+       },
        "from": null,
        "until": "09-30",
        "quantity": null,
@@ -239,8 +264,10 @@
        "amount": 60,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 24000,
-       "alt_currency": "HUF",
+       "alt": {
+        "amount": 24000,
+        "currency": "HUF"
+       },
        "from": null,
        "until": "11-05",
        "quantity": null,
@@ -253,8 +280,10 @@
        "amount": 65,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 26000,
-       "alt_currency": "HUF",
+       "alt": {
+        "amount": 26000,
+        "currency": "HUF"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -277,8 +306,10 @@
        "amount": 50,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 20000,
-       "alt_currency": "HUF",
+       "alt": {
+        "amount": 20000,
+        "currency": "HUF"
+       },
        "from": null,
        "until": "09-30",
        "quantity": null,
@@ -291,8 +322,10 @@
        "amount": 55,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 22000,
-       "alt_currency": "HUF",
+       "alt": {
+        "amount": 22000,
+        "currency": "HUF"
+       },
        "from": null,
        "until": "11-05",
        "quantity": null,
@@ -305,8 +338,10 @@
        "amount": 60,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 24000,
-       "alt_currency": "HUF",
+       "alt": {
+        "amount": 24000,
+        "currency": "HUF"
+       },
        "from": null,
        "until": null,
        "quantity": null,

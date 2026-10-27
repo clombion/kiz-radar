@@ -1,0 +1,34 @@
+{
+ "batch": "event-18766",
+ "events": [
+  {
+   "event_id": 18766,
+   "artists": [
+    {
+     "name_as_written": "KIZZ ESSENCE",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Welcome to the KIZZ ESSENCE ALL IN ONE BEDBURG 2027!🎉"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "MAIN HOTEL – Landhaus Danielshof",
+     "rationale": "The event is titled All-in-One and the main hotel where dancers are invited to stay is the same Landhaus Danielshof venue."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "OTHER HOTEL RECOMMENDATION",
+     "rationale": "A recommended alternative hotel, Hotel Gut Hohenholz, is listed for attendees."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "DRESSCODE",
+     "rationale": "A dress code section is included with a dress code heading and day entries."
+    }
+   ]
+  }
+ ]
+}

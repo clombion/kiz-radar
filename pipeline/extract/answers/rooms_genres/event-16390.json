@@ -1,0 +1,18 @@
+{
+ "batch": "event-16390",
+ "events": [
+  {
+   "event_id": 16390,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "international Kizomba legends"
+    }
+   ]
+  }
+ ]
+}

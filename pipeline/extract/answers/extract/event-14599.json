@@ -1,0 +1,31 @@
+{
+ "batch": "event-14599",
+ "events": [
+  {
+   "event_id": 14599,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "full weekend of daily workshops",
+     "rationale": "The description says the weekend includes daily workshops."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "afternoon socials",
+     "rationale": "The description lists afternoon socials as part of the event."
+    },
+    {
+     "feature": "shows",
+     "quote": "nightly performances",
+     "rationale": "The description mentions nightly performances, which are shows by artists."
+    },
+    {
+     "feature": "competition",
+     "quote": "Jack & Jill Competition",
+     "rationale": "The event hosts a Jack & Jill competition for several divisions."
+    }
+   ]
+  }
+ ]
+}

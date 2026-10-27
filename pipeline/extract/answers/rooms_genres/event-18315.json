@@ -1,0 +1,43 @@
+{
+ "batch": "event-18315",
+ "events": [
+  {
+   "event_id": 18315,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Blending Kizomba, Afro Konpa"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Afro Konpa"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Tarraxo"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kizomba",
+     "quote": "Urban Kizomba"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro vibes",
+     "quote": "Afro vibes"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "TEACHER / AFRI : Semba Konpa"
+    }
+   ]
+  }
+ ]
+}
