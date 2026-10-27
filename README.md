@@ -425,8 +425,10 @@ site database builds alike twice, and loading the answers or resolving the artis
 fetch from outside (the rates, the geocoder, the scrape, the fares, Claude) are tested against fakes of what they fetch.
 pytest runs strict (an unknown option or marker, a repeated case id or a warning fails), on every core, in a new order
 each run, with no network socket and a time limit per test; `mise run test:py` also fails below the branch coverage
-`pyproject.toml` sets. A database connection is opened only by `pipeline/db.py`, closed when its block ends. The audit
-checks that every state in the data is one of `pipeline/states.py`.
+`pyproject.toml` sets. A database connection is opened only by `pipeline/db.py`, closed when its block ends, the tests'
+too. A day is a date and a time a UTC datetime, read from one clock (`records.now()`, `today()`; ruff bans the others).
+`tests/test_structure.py` fails on a function written twice and on the repository's folder found anywhere but
+`pipeline.ROOT`. The audit checks that every state in the data is one of `pipeline/states.py`.
 
 The database enforces its own rules. Dates are days, required fields are set, and `cancelled` is 1, 0 or empty. Empty
 means not known: the source flags it only for events still listed as upcoming, so most past festivals have none. As a
