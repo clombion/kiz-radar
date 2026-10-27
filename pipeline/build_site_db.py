@@ -85,7 +85,8 @@ def copy_tables(x: sqlite3.Connection) -> None:
          url text not null,
      slug text, start_date text not null {DAY_CHECK.format('start_date')},
      end_date text not null {DAY_CHECK.format('end_date')},
-     timezone text, all_day integer, featured integer, cancelled integer check (cancelled in (0, 1)), venue text,
+     timezone text, all_day integer, featured integer, cancelled integer check (cancelled in (0, 1)),
+     venue text check (venue != ''),
      city text not null, country text,
      website text, published_at text, modified_at text, check (end_date >= start_date))""")
     events: list[
@@ -110,7 +111,7 @@ def copy_tables(x: sqlite3.Connection) -> None:
                 all_day,
                 feat,
                 canc,
-                soften_caps(venue) if venue else venue,
+                soften_caps(venue) if venue else None,
                 *rest,
             )
             for i, t, url, slug, start, end, tz, all_day, feat, canc, venue, *rest in events
@@ -490,7 +491,7 @@ def features(x: sqlite3.Connection) -> collections.defaultdict[int, set[str]]:
         feats[e].add(f)
     _ = x.execute(
         'create table event_promos (event_id integer primary key references events(id), code text not null check (code '
-        "!= ''), offer text)"
+        "!= ''), offer text check (offer != ''))"
     )
     for r in Promo.read(ROOT / 'pipeline' / 'promo_codes.csv'):
         if not exists(x, 'select 1 from events where id = ?', (r.event_id,)):
@@ -539,7 +540,9 @@ def features(x: sqlite3.Connection) -> collections.defaultdict[int, set[str]]:
         ),
     )
     # the rates the site converts prices with
-    _ = x.execute('create table rates (currency text primary key, per_eur real not null, date text not null)')
+    _ = x.execute(
+        'create table rates (currency text primary key, per_eur real not null check (per_eur > 0), date text not null)'
+    )
     rates = Rate.read(ROOT / 'pipeline' / 'rates.csv')
     _ = x.executemany('insert into rates values (?,?,?)', [(r.currency, r.per_eur, r.date) for r in rates])
     return feats
@@ -712,8 +715,10 @@ DOCS = {
     'link to the ticket page or the passes).',
     'ticket_pages': 'Festivals whose prices are read on their ticket page: the page, the reseller selling there when '
     'it is not the organiser, the day it was last read, and how many tickets on it are not read yet.',
-    'pass_tiers': 'Each pass’s prices tier by tier: what a buyer pays and its currency, the booking fee that includes '
-    'when stated, the days the tier applies, tickets at that price, door price, sold out.',
+    'pass_tiers': 'Each pass’s prices tier by tier: what a buyer pays and its currency (and the same price in a second '
+    'currency when the page shows one: alt_amount, alt_currency), the booking fee that includes when stated, the days '
+    'the tier applies, tickets at that price (quantity), door price, sold out, and current (the description calls it '
+    'the current price, without dates).',
     'rates': 'Exchange rates the site converts prices with: units of each currency per euro (European Central Bank, '
     'pipeline/rates.csv).',
     'event_promos': 'Promo codes for a festival, from pipeline/promo_codes.csv (ours, not kizomba-world’s): the code, '
