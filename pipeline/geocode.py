@@ -38,16 +38,13 @@ def search(query: dict[str, str]) -> list[Found]:
     return FOUND.validate_json(web.get(SEARCH, query, HEADERS))
 
 
-def located(city: str, country: str) -> Place:
-    """The place as Nominatim finds it: by city and country, or by country alone, and else as free text (a district's
-    name, say)."""
-    found = search(
-        {'format': 'json', 'limit': '1', 'accept-language': 'en'}
-        | ({'city': city, 'country': country} if city else {'country': country})
-    )
-    if not found and city:
+def located(city: str, country: str | None) -> Place:
+    """The city as Nominatim finds it: by city and country, and else as free text (a district's name, say)."""
+    named = {'city': city} | ({} if country is None else {'country': country})
+    found = search({'format': 'json', 'limit': '1', 'accept-language': 'en'} | named)
+    if not found:
         time.sleep(PAUSE)
-        found = search({'format': 'json', 'limit': '1', 'q': f'{city}, {country}'})
+        found = search({'format': 'json', 'limit': '1', 'q': ', '.join(named.values())})
     spot = Spot(lat=found[0].lat, lon=found[0].lon, name=found[0].display_name) if found else None
     return Place(city=city, country=country, found=spot)
 
@@ -57,11 +54,12 @@ def main() -> None:
     sqlite_db.source_arg(ap)
     with sqlite_db.opened(ap.parse_args(namespace=sqlite_db.Source()).src, 'ro') as db:
         known = {(p.city, p.country): p for p in Place.read(CACHE)}
-        places: list[tuple[str, str]] = db.execute(
-            "select distinct coalesce(city, ''), coalesce(country, '') from events"
+        # a country alone is no place on the map; one the export leaves empty is none
+        places: list[tuple[str, str | None]] = db.execute(
+            "select distinct city, nullif(country, '') from events where city != ''"
         ).fetchall()
         for city, country in places:
-            if (city, country) in known or not (city or country):
+            if (city, country) in known:
                 continue
             try:
                 known[(city, country)] = located(city, country)
@@ -70,7 +68,7 @@ def main() -> None:
                 time.sleep(BACKOFF)
                 continue
             time.sleep(PAUSE)
-        Place.write(CACHE, sorted(known.values(), key=lambda p: (p.country, p.city)))
+        Place.write(CACHE, sorted(known.values(), key=lambda p: (p.country or '', p.city)))
         print(len(known), 'places;', sum(1 for p in known.values() if p.found is None), 'not found')
 
 

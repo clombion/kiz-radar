@@ -88,14 +88,13 @@ def copy_tables(x: sqlite3.Connection) -> None:
      end_date text not null {DAY_CHECK.format('end_date')},
      timezone text, all_day integer, featured integer, cancelled integer check (cancelled in (0, 1)),
      venue text check (venue != ''),
-     city text not null, country text,
+     city text check (city != ''), country text check (country != ''),
      website text, published_at text, modified_at text, check (end_date >= start_date))""")
     events: list[
         tuple[int, str, str, str, str, str, str, int, int, int | None, str | None, *tuple[str | None, ...]]
     ] = x.execute(
-        """select id, title, url, slug, start_date, end_date, timezone, all_day, featured, cancelled, venue, city,
-             country,
-           website, published_at, modified_at from src.events"""
+        """select id, title, url, slug, start_date, end_date, timezone, all_day, featured, cancelled, venue,
+             nullif(city, ''), nullif(country, ''), website, published_at, modified_at from src.events"""
     ).fetchall()
     _ = x.executemany(
         'insert into events values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
@@ -308,14 +307,22 @@ def places(x: sqlite3.Connection) -> None:
         'insert into airports values (?,?,?,?,?,?,?)',
         [(a.code, a.name, a.city, a.country_code, a.lat, a.lon, int(a.home == 1)) for a in AIRPORTS],
     )
-    for col in ('country_code text', 'lat real', 'lon real', 'airport text', 'airport_km real', 'weekend_friday text'):
+    # a place on the map is a city's
+    for col in (
+        'country_code text',
+        'lat real check (lat is null or city is not null)',
+        'lon real',
+        'airport text',
+        'airport_km real',
+        'weekend_friday text',
+    ):
         _ = x.execute(f'alter table events add column {col}')
-    events: list[tuple[int, str, str, str]] = x.execute(
-        "select id, city, coalesce(country,''), start_date from events"
+    events: list[tuple[int, str | None, str | None, str]] = x.execute(
+        'select id, city, country, start_date from events'
     ).fetchall()
     for eid, city, country, start in events:
         cc = (codes(country) or [None])[0]
-        g = geo.get((city, country))
+        g = None if city is None else geo.get((city, country))
         lat, lon = (g.found.lat, g.found.lon) if g and g.found else (None, None)
         ap = dist = None
         if lat is not None and lon is not None:

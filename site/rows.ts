@@ -55,7 +55,7 @@ export const EVENT = {
   url: str,
   start_date: str,
   end_date: str,
-  city: str,
+  city: opt(str),
   country_code: opt(str),
   lat: opt(num),
   lon: opt(num),

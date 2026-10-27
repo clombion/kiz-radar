@@ -18,7 +18,7 @@ const css = (name: string) => getComputedStyle(document.documentElement).getProp
 const PAGE = 40;
 
 // a festival with a place on the map, and a city's bubble
-type Placed = Festival & { lat: number; lon: number };
+type Placed = Festival & { city: string; lat: number; lon: number };
 interface City {
   key: string;
   city: string;
@@ -102,7 +102,7 @@ const WHEN: readonly (readonly [string, string])[] = [
 
 // what the URL can say about the map
 const DEFAULTS: { when: string; color: string; country: string } = { when: 'upcoming', color: 'fare', country: '' };
-const placed = (e: Festival): e is Placed => e.lat !== null && e.lon !== null;
+const placed = (e: Festival): e is Placed => e.city !== null && e.lat !== null && e.lon !== null;
 
 export function mapView(
   root: HTMLElement,

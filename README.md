@@ -88,7 +88,7 @@ in `pipeline/text.py`.
 On the flight side, prices come from Google Flights through [fli](https://github.com/punitarani/fli). They change often,
 so check them before booking. Home is the airport marked `home` in `pipeline/airports.csv`; the pipeline and the site
 both read it from there. Cities are geocoded with OpenStreetMap Nominatim, and the results are cached in
-`pipeline/geocode.csv`.
+`pipeline/geocode.csv`. A festival whose listing names no city is not on the map (a country alone is no place on it).
 
 Prices show in kroner, or in euros or dollars (`?cur=eur`, `?cur=usd`, switched in the footer); amounts in other
 currencies are converted with `pipeline/rates.csv` and marked "~". A festival card shows what the weekend costs without

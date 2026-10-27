@@ -8,7 +8,7 @@ import { alsoGoingTo, peopleOf } from './plans.ts';
 import { artistHref, artistsHref, eventOnMapHref, personHref, showInAddressBar } from './routes.ts';
 import { ARTIST_STATS, EVENT, flag as flagCol, num, opt, type RowOf, state, str } from './rows.ts';
 import { KEY } from './states.ts';
-import { countryName, dayMonth, dayYear, flag } from './ui.ts';
+import { countryName, dayMonth, dayYear, flag, place } from './ui.ts';
 import { hasForm, text, type WithForm, where } from './wording.ts';
 
 const PAGE = 60;
@@ -89,7 +89,7 @@ export function artistsView(
   // each artist's next festival of their own (not only as part of a couple)
   const next = new Map(
     q(
-      { artist_id: num, city: str, country_code: opt(str), start_date: str },
+      { artist_id: num, city: opt(str), country_code: opt(str), start_date: str },
       `SELECT ae.artist_id, e.city, e.country_code, min(e.start_date) AS start_date
       FROM artist_events ae JOIN event_rows e ON e.id = ae.event_id
       WHERE ae.via = 'direct' AND e.upcoming GROUP BY ae.artist_id`,
@@ -259,7 +259,7 @@ export function artistsView(
 
 function row(
   a: Artist,
-  nx: { city: string; country_code: string | null; start_date: string } | undefined,
+  nx: { city: string | null; country_code: string | null; start_date: string } | undefined,
 ): HTMLElement {
   return h(
     'li',
@@ -276,11 +276,7 @@ function row(
         ' · ',
         festivals(a.bookings),
       ),
-      h(
-        'span',
-        { class: 'next' },
-        nx ? ['Next: ', flag(nx.country_code), ' ', nx.city, ', ', dayMonth(nx.start_date)] : 'Nothing coming up yet',
-      ),
+      h('span', { class: 'next' }, nx ? ['Next: ', place(nx), ', ', dayMonth(nx.start_date)] : 'Nothing coming up yet'),
     ),
   );
 }
@@ -453,7 +449,7 @@ function pastList(id: number, past: readonly Festival[]): HTMLElement | null {
           {},
           h('span', { class: 'when' }, dayYear(e.start_date)),
           h('a', { href: eventOnMapHref(e.id) }, e.title),
-          h('span', { class: 'muted' }, ' · ', flag(e.country_code), ' ', e.city, role(roles.get(e.id))),
+          h('span', { class: 'muted' }, ' · ', place(e), role(roles.get(e.id))),
         ),
       ),
     ),

@@ -25,7 +25,7 @@ import {
 } from './routes.ts';
 import { flag as flagCol, num, opt, type RowOf, state, str } from './rows.ts';
 import { KEY } from './states.ts';
-import { away, dayMonth, flag } from './ui.ts';
+import { away, dayMonth, flag, place } from './ui.ts';
 import { text } from './wording.ts';
 
 const SHOWN = 5; // results per group until "Show all"
@@ -48,7 +48,7 @@ const FOUND_EVENT = {
   title: str,
   listed_title: str,
   venue: opt(str),
-  city: str,
+  city: opt(str),
   country_code: opt(str),
   start_date: str,
   end_date: str,
@@ -150,7 +150,7 @@ const festivalEntries = (): Indexed[] =>
       past: !e.upcoming,
       rank: e.upcoming ? 2e9 - Date.parse(e.start_date) / 864e5 : Date.parse(e.start_date) / 864e5,
     },
-    [e.listed_title, e.venue ?? '', e.city, e.code ?? ''],
+    [e.listed_title, e.venue ?? '', e.city ?? '', e.code ?? ''],
   ]);
 
 // people who share their plans, by name and by the artists they are
@@ -205,7 +205,7 @@ function placeEntries(pool: readonly Festival[]): Indexed[] {
   const cities = new Map<string, City>();
   for (const e of q(
     { city: str, country_code: opt(str), upcoming: flagCol },
-    "SELECT city, country_code, upcoming FROM event_rows WHERE lat IS NOT NULL AND city != ''",
+    'SELECT city, country_code, upcoming FROM event_rows WHERE lat IS NOT NULL',
   )) {
     const k = `${e.city}|${e.country_code}`;
     const c = cities.get(k) ?? { city: e.city, cc: e.country_code, upcoming: 0, all: 0 };
@@ -326,9 +326,7 @@ function festivalParts(e: FoundEvent): Parts {
   return [
     h('span', { class: 'lead date' }, dayMonth(e.start_date).replace(' ', '\u00a0')),
     [
-      flag(e.country_code),
-      ' ',
-      e.city || 'Place not given',
+      place(e),
       yr,
       e.cancelled === true ? ' · cancelled' : e.upcoming ? '' : ' · has taken place',
       e.lat === null ? [' · on kizomba-world', away()] : '',

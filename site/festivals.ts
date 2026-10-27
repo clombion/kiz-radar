@@ -9,7 +9,7 @@ import { type Goer, goersOf } from './plans.ts';
 import type { PriceLine } from './pricing.ts';
 import { EVENT, type EventRow, num, opt, str } from './rows.ts';
 import { KEY } from './states.ts';
-import { flag, home } from './ui.ts';
+import { home } from './ui.ts';
 import { type Key, text, where } from './wording.ts';
 
 // Each row with the fare for its weekend, the best-known names on its line-up, its genres (event_stats: its
@@ -123,8 +123,6 @@ export const isWith = (k: string): k is With => WITH_KEYS.has(k);
 export const withPhrase = (key: With): Kid[] => [isDance(key) ? 'Also with ' : 'With ', WITH.get(key)];
 export const hasWith = (e: Pick<Festival, 'styles' | 'features'>, key: With): boolean =>
   isDance(key) ? e.styles.has(key) : e.features.has(key);
-
-export const place = (e: { country_code: string | null; city: string }): Kid[] => [flag(e.country_code), ' ', e.city];
 
 // A view's state in the URL. Each key keeps the type of its default; a value not in `allowed` keeps the default.
 type Defaults = Readonly<Record<string, string | number>>;

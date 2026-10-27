@@ -7,7 +7,7 @@ import { withDetails } from './festivals.ts';
 import { goersInline, goersOf, person } from './plans.ts';
 import { artistHref, eventOnMapHref, personHref } from './routes.ts';
 import { EVENT, num, str } from './rows.ts';
-import { dayRange, flag } from './ui.ts';
+import { dayRange, place } from './ui.ts';
 
 const list = (xs: readonly Kid[]): Kid[] => xs.flatMap((x, i) => [i ? (i === xs.length - 1 ? ' and ' : ', ') : '', x]);
 
@@ -122,7 +122,7 @@ function everyone(root: HTMLElement): void {
                   'span',
                   { class: 'what' },
                   h('a', { href: eventOnMapHref(e.id) }, e.title),
-                  h('span', { class: 'muted' }, ' · ', flag(e.country_code), ' ', e.city),
+                  h('span', { class: 'muted' }, ' · ', place(e)),
                 ),
                 h('span', { class: 'who' }, goersInline(goersOf(e.id))),
               ),

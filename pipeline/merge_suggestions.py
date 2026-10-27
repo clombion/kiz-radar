@@ -80,7 +80,7 @@ class Event:
     start: dt.date
     end: dt.date
     short: bool
-    city: str  # lower case, to compare
+    city: str | None  # lower case, to compare; None when the event names none
     place: str  # as shown: city, country
 
 
@@ -145,13 +145,14 @@ class Evidence:
         for x in ea:
             for y in eb:
                 ex, ey = self.ev[x], self.ev[y]
-                if ex.short and ey.short and ex.start <= ey.end and ey.start <= ex.end and ex.city != ey.city:
+                apart = ex.city is not None and ey.city is not None and ex.city != ey.city
+                if ex.short and ey.short and ex.start <= ey.end and ey.start <= ex.end and apart:
                     return 'clash', -CLASH_PENALTY, f'{ex.start}: booked in {ex.place} and in {ey.place}'
-        cities = {self.ev[e].city for e in ea} & {self.ev[e].city for e in eb}
+        cities = ({self.ev[e].city for e in ea} & {self.ev[e].city for e in eb}) - {None}
         orgs_a = set[int]().union(*(self.organisers[e] for e in ea))
         orgs = orgs_a & set[int]().union(*(self.organisers[e] for e in eb)) if ea and eb else set[int]()
         if cities or orgs:
-            where = sorted(c_ for c_ in cities if c_)[:3]
+            where = sorted(c_ for c_ in cities if c_ is not None)[:3]
             return 'shared circuit', CIRCUIT_BONUS, 'same city: ' + ', '.join(where) if where else 'same organiser'
         return 'no clash', 0, ''
 
@@ -175,12 +176,14 @@ def origins(c: sqlite3.Connection) -> collections.defaultdict[int, collections.C
 
 def calendar(found: Evidence, c: sqlite3.Connection, site: sqlite3.Connection) -> None:
     """Every event an artist appears at (directly or through a couple), with dates, city and organisers."""
-    events: list[tuple[int, str, str, str, str]] = site.execute(
+    events: list[tuple[int, str, str, str | None, str | None]] = site.execute(
         'select id, start_date, end_date, city, country from events'
     ).fetchall()
     for eid, start, end, city, country in events:
         a, b = dt.date.fromisoformat(start), dt.date.fromisoformat(end)
-        found.ev[eid] = Event(a, b, (b - a).days <= SHORT_EVENT_DAYS, city.strip().lower(), f'{city}, {country}')
+        place = ', '.join(p for p in (city, country) if p is not None) or 'a place not given'
+        short = (b - a).days <= SHORT_EVENT_DAYS
+        found.ev[eid] = Event(a, b, short, None if city is None else city.strip().lower(), place)
     organised: list[tuple[int, int]] = c.execute(
         "select event_id, artist_id from event_artists where role = 'organiser'"
     ).fetchall()

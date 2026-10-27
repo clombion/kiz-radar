@@ -8,7 +8,7 @@ import { type Modal, modal } from './modal.ts';
 import { artistHref, eventOnMapHref, personHref } from './routes.ts';
 import { flag as flagCol, num, opt, type RowOf, state, str } from './rows.ts';
 import { KEY } from './states.ts';
-import { countryName, dayRange, flag } from './ui.ts';
+import { countryName, dayRange, flag, place } from './ui.ts';
 import { type Key, text } from './wording.ts';
 
 // someone who said they're going to a festival, and what they're booked there as, if they are
@@ -70,7 +70,7 @@ interface Going {
   start_date: string;
   end_date: string;
   country_code: string | null;
-  city: string;
+  city: string | null;
 }
 
 // the featured people going to any of these festivals: "Cédric & Christina" and to how many; null when none is
@@ -272,7 +272,7 @@ const PLAN = {
   booked_as: opt(state('role')),
   id: num,
   title: str,
-  city: str,
+  city: opt(str),
   country_code: opt(str),
   start_date: str,
   end_date: str,
@@ -328,9 +328,7 @@ const planItem = (g: Named, e: Plan, people: readonly Plan[]) =>
         'span',
         { class: 'muted' },
         ' · ',
-        flag(e.country_code),
-        ' ',
-        e.city,
+        place(e),
         people.length < g.people.length ? ` · ${people.map((p) => p.name).join(', ')}` : '',
       ),
     ),
@@ -371,7 +369,7 @@ function peekEvent(e: Going, from?: EventTarget | null) {
     );
   show(from ?? null, {
     title: `Who’s going to ${e.title}`,
-    sub: [dayRange(e.start_date, e.end_date), ' · ', flag(e.country_code), ' ', e.city],
+    sub: [dayRange(e.start_date, e.end_date), ' · ', place(e)],
     body: [
       h(
         'ul',

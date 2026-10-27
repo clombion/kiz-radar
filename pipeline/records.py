@@ -749,10 +749,10 @@ class Spot(BaseModel):
 
 class Place(CsvRow):
     """A place the source DB names, and where it is when Nominatim found it (pipeline/geocode.csv, its columns lat,
-    lon and osm_name, all empty when it found none)."""
+    lon and osm_name, all empty when it found none). A place is a city, in a country when the source DB names one."""
 
-    city: str
-    country: str
+    city: Text
+    country: Blank[str]
     found: Spot | None
 
     @classmethod
@@ -767,7 +767,7 @@ class Place(CsvRow):
     def text(self) -> dict[str, object]:
         spot = self.found
         coords = ('', '', '') if spot is None else (number_text(spot.lat), number_text(spot.lon), spot.name)
-        out: dict[str, object] = {'city': self.city, 'country': self.country}
+        out: dict[str, object] = {'city': self.city, 'country': self.country or ''}
         return out | dict(zip(('lat', 'lon', 'osm_name'), coords, strict=True))
 
 

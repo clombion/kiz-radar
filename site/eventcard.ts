@@ -5,7 +5,7 @@ import { addDays, today } from './days.ts';
 import { cardDetails, traitItems } from './details.ts';
 import type { Kid } from './dom.ts';
 import { h } from './dom.ts';
-import { type Festival, place, styleLine } from './festivals.ts';
+import { type Festival, styleLine } from './festivals.ts';
 import { artistHint } from './hints.ts';
 import { TRAITS } from './icons.ts';
 import { convert, money, step, total } from './money.ts';
@@ -13,7 +13,7 @@ import { openPasses, riseNote } from './passes.ts';
 import { goingLine } from './plans.ts';
 import { artistHref } from './routes.ts';
 import { KEY, LINK } from './states.ts';
-import { away, dayMonth, flightsUrl, home } from './ui.ts';
+import { away, dayMonth, flightsUrl, home, place } from './ui.ts';
 import { type Key, linkOf, type Point, say, text } from './wording.ts';
 
 // "23–25 Oct", or "30 Oct – 1 Nov" across a month end: the date is shown once, in the box

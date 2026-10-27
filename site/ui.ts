@@ -1,6 +1,6 @@
 // Formatting helpers shared by the views: dates, countries, flight links, the home city.
 import { q, site } from './db.ts';
-import { h } from './dom.ts';
+import { h, type Kid } from './dom.ts';
 import { currency } from './money.ts';
 import { str } from './rows.ts';
 
@@ -9,6 +9,13 @@ export const away = () => h('span', { 'aria-hidden': 'true' }, ' ↗');
 
 export const flag = (cc: string | null | undefined): string =>
   cc?.length === 2 ? String.fromCodePoint(...[...cc.toUpperCase()].map((c) => 0x1_f1_e6 + c.charCodeAt(0) - 65)) : '';
+
+// where a festival is: its country's flag and its city
+export const place = (e: { country_code: string | null; city: string | null }): Kid[] => [
+  flag(e.country_code),
+  ' ',
+  e.city ?? 'Place not given',
+];
 
 let names: Map<string, string> | undefined;
 export function countryName(cc: string | null | undefined): string {
