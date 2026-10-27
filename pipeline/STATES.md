@@ -33,8 +33,8 @@ consumer must treat differently.
 | **prices answer** | `none`, `current`, `stale`, `failed` | `ask.due`, `ask.main` |
 | **waits for**, each festival to come | `page`, `recipe`, `recipe_fix`, `session`, `agent`, `sales_open`, `nothing` | `tickets.waiting`, in `tickets/status.csv` |
 | **price**, each festival to come | `priced`, `other_passes_only`, `page_unread`, `not_yet`, `offline`, `closed`, `none_found`, `not_looked` | `tickets.price_state`, in `tickets/status.csv` |
-| **tier today**, viewed on a day | `now`, `from`, `next`, `sold_out`, `ended` | `passes.js tierNow` |
-| **card price**, a `priced` festival viewed on a day | `full_pass`, `package`, `sold_out`, `ended` | `passes.js priceNow` |
+| **tier today**, viewed on a day | `now`, `from`, `next`, `sold_out`, `ended` | `pricing.js tierNow` |
+| **card price**, a `priced` festival viewed on a day | `full_pass`, `package`, `sold_out`, `ended` | `pricing.js priceNow` |
 | **genre**, **feature**, **role** | the 14 genres, 26 features and 7 roles that were `vocab.json` | the extraction passes |
 
 **Who decides.**
