@@ -2,13 +2,16 @@
 fails."""
 
 import shutil
+import sqlite3
 import subprocess
 from collections.abc import Iterator
+from contextlib import ExitStack, closing
 from pathlib import Path
 
 import pytest
 
 from pipeline import prompt, spend
+from tests.fakes import Memory
 
 ROOT = Path(__file__).parent.parent
 
@@ -44,3 +47,10 @@ def prompts_asked(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     if prompt.ASKED.exists():
         _ = shutil.copytree(prompt.ASKED, asked, dirs_exist_ok=True)
     monkeypatch.setattr(prompt, 'ASKED', asked)
+
+
+@pytest.fixture
+def memory() -> Iterator[Memory]:
+    """In-memory databases for a test, each closed when it ends."""
+    with ExitStack() as opened:
+        yield lambda: opened.enter_context(closing(sqlite3.connect(':memory:')))

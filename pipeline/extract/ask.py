@@ -253,51 +253,54 @@ def main() -> None:
     _ = ap.add_argument('--only', type=sqlite_db.festival_ids, help='only these festivals, by id: "16909,18806"')
     a = ap.parse_args(namespace=Args())
 
-    db = sqlite_db.connect(a.src, 'rw')
-    todo, pending = due(db, a.passes, a.only)
-    if a.limit:
-        keep = sorted({f.id for f, _ in todo})[: a.limit]
-        todo = [(f, p) for f, p in todo if f.id in keep]
-    counts = {p.name: sum(1 for _, q in todo if q is p) for p in prompts.PASSES}
-    print(f'{len({f.id for f, _ in todo})} festivals to ask about: {counts}; {len(pending)} pending')
-    if a.dry_run or not todo:
-        return
+    with sqlite_db.opened(a.src, 'rw') as db:
+        todo, pending = due(db, a.passes, a.only)
+        if a.limit:
+            keep = sorted({f.id for f, _ in todo})[: a.limit]
+            todo = [(f, p) for f, p in todo if f.id in keep]
+        counts = {p.name: sum(1 for _, q in todo if q is p) for p in prompts.PASSES}
+        print(f'{len({f.id for f, _ in todo})} festivals to ask about: {counts}; {len(pending)} pending')
+        if a.dry_run or not todo:
+            return
 
-    # read here, since the workers don't share the connection; genres a new festival's answers add load after this run
-    styles = {f.id: prices.styles(db, f.id) for f, p in todo if p is prompts.PRICES}
-    client: Client = anthropic.Anthropic()
-    lock, before = threading.Lock(), spend.month_usd()
-    failed: set[int] = set()
-    answered: collections.defaultdict[int, set[prompts.PassName]] = collections.defaultdict(set)
-    stopped: list[str] = []
+        # read here, since the workers don't share the connection; genres a new festival's answers add load after this
+        # run
+        styles = {f.id: prices.styles(db, f.id) for f, p in todo if p is prompts.PRICES}
+        client: Client = anthropic.Anthropic()
+        lock, before = threading.Lock(), spend.month_usd()
+        failed: set[int] = set()
+        answered: collections.defaultdict[int, set[prompts.PassName]] = collections.defaultdict(set)
+        stopped: list[str] = []
 
-    def one(job: Job) -> None:
-        f, pass_ = job
-        try:
-            output = ask(client, pass_, f, styles.get(f.id, ()))
-        except spend.BudgetSpentError as e:
-            output = None
-            stopped[:1] = [str(e)]
-        with lock:
-            if output is None:
-                failed.add(f.id)
-            else:
-                _ = answers.save(pass_.name, output, MODEL, prompts.current(pass_.name), BY)
-                answered[f.id].add(pass_.name)
+        def one(job: Job) -> None:
+            f, pass_ = job
+            try:
+                output = ask(client, pass_, f, styles.get(f.id, ()))
+            except spend.BudgetSpentError as e:
+                output = None
+                stopped[:1] = [str(e)]
+            with lock:
+                if output is None:
+                    failed.add(f.id)
+                else:
+                    _ = answers.save(pass_.name, output, MODEL, prompts.current(pass_.name), BY)
+                    answered[f.id].add(pass_.name)
 
-    with ThreadPoolExecutor(WORKERS) as pool:
-        _ = list(pool.map(one, todo))
+        with ThreadPoolExecutor(WORKERS) as pool:
+            _ = list(pool.map(one, todo))
 
-    done = {f.id for f, _ in todo} - failed
-    _ = db.executemany('delete from pending_extraction where event_id = ?', [(i,) for i in settled(answered, pending)])
-    db.commit()
-    print(
-        f'{len(done)} festivals answered, {len(failed)} failed {sorted(failed)}; '
-        f'${spend.month_usd() - before:.2f} this run, €{spend.eur(spend.month_usd()):.2f} of €{spend.BUDGET_EUR} this '
-        'month'
-    )
-    if stopped:
-        sys.exit(f'{stopped[0]}: the rest waits for next month')
+        done = {f.id for f, _ in todo} - failed
+        _ = db.executemany(
+            'delete from pending_extraction where event_id = ?', [(i,) for i in settled(answered, pending)]
+        )
+        db.commit()
+        print(
+            f'{len(done)} festivals answered, {len(failed)} failed {sorted(failed)}; '
+            f'${spend.month_usd() - before:.2f} this run, '
+            f'€{spend.eur(spend.month_usd()):.2f} of €{spend.BUDGET_EUR} this month'
+        )
+        if stopped:
+            sys.exit(f'{stopped[0]}: the rest waits for next month')
 
 
 if __name__ == '__main__':

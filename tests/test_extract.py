@@ -19,7 +19,7 @@ from pipeline.extract.resolve_artists import stable_ids
 from pipeline.prompt import Prompt, api_schema
 from pipeline.records import JSON, Batch, Priced, PricedPass, PricedTier, Record, Stamped, real_day
 from tests import jsons
-from tests.fakes import Client
+from tests.fakes import Client, Memory
 
 
 @pytest.mark.parametrize(
@@ -115,8 +115,9 @@ def test_any_year_s_day_is_a_real_day() -> None:
     assert real_day('02-29') == '02-29'
 
 
-def db_with(artists: dict[str, int], keys: dict[str, int], issued: dict[str, int] | None = None) -> sqlite3.Connection:
-    con = sqlite3.connect(':memory:')
+def db_with(
+    con: sqlite3.Connection, artists: dict[str, int], keys: dict[str, int], issued: dict[str, int] | None = None
+) -> sqlite3.Connection:
     _ = con.execute('create table artists (id integer primary key, display_name, kind, match_key)')
     _ = con.executemany('insert into artists values (?, ?, ?, ?)', [(i, k, 'person', k) for k, i in artists.items()])
     _ = con.execute('create table artist_keys (match_key primary key, artist_id)')
@@ -127,25 +128,25 @@ def db_with(artists: dict[str, int], keys: dict[str, int], issued: dict[str, int
     return con
 
 
-def test_unchanged_artists_keep_their_ids() -> None:
-    con = db_with({'p:a': 7, 'p:b': 3}, {'p:a': 7, 'p:b': 3})
+def test_unchanged_artists_keep_their_ids(memory: Memory) -> None:
+    con = db_with(memory(), {'p:a': 7, 'p:b': 3}, {'p:a': 7, 'p:b': 3})
     assert stable_ids(con, {'p:a': 'p:a', 'p:b': 'p:b'}) == {'p:a': 7, 'p:b': 3}
 
 
-def test_new_artist_gets_an_id_never_used() -> None:
+def test_new_artist_gets_an_id_never_used(memory: Memory) -> None:
     # id 9 belonged to an artist whose festival was deleted; it is not given again
-    con = db_with({'p:a': 7}, {'p:a': 7}, issued={'p:a': 7, 'p:gone': 9})
+    con = db_with(memory(), {'p:a': 7}, {'p:a': 7}, issued={'p:a': 7, 'p:gone': 9})
     assert stable_ids(con, {'p:a': 'p:a', 'p:new': 'p:new'}) == {'p:a': 7, 'p:new': 10}
 
 
-def test_merged_artist_keeps_the_lowest_free_id() -> None:
+def test_merged_artist_keeps_the_lowest_free_id(memory: Memory) -> None:
     # two spellings merge into a couple key no artist had; the lower of their ids carries on
-    con = db_with({'c:x': 12, 'c:y': 5}, {'c:x': 12, 'c:y': 5})
+    con = db_with(memory(), {'c:x': 12, 'c:y': 5}, {'c:x': 12, 'c:y': 5})
     assert stable_ids(con, {'c:x': 'c:z', 'c:y': 'c:z'}) == {'c:z': 5}
 
 
-def test_returning_artist_gets_its_old_id_back() -> None:
-    con = db_with({}, {}, issued={'p:a': 4})
+def test_returning_artist_gets_its_old_id_back(memory: Memory) -> None:
+    con = db_with(memory(), {}, {}, issued={'p:a': 4})
     assert stable_ids(con, {'p:a': 'p:a'}) == {'p:a': 4}
 
 
@@ -332,8 +333,7 @@ def test_a_request_costs_its_models_prices() -> None:
     assert spend.usd('claude-sonnet-5-5', 1_000, 1_000) == 0.012
 
 
-def source(*events: tuple[int, str | None]) -> sqlite3.Connection:
-    con = sqlite3.connect(':memory:')
+def source(con: sqlite3.Connection, *events: tuple[int, str | None]) -> sqlite3.Connection:
     _ = con.executescript(
         'create table events (id integer, title text, description_text text, start_date text, end_date text, '
         'country text); create table pending_extraction (event_id integer);'
@@ -348,8 +348,8 @@ def no_answers(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, answers.L
     return {}
 
 
-def test_only_the_named_festivals_are_asked(monkeypatch: pytest.MonkeyPatch) -> None:
-    con = source((1, 'a'), (2, 'b'), (3, None))
+def test_only_the_named_festivals_are_asked(memory: Memory, monkeypatch: pytest.MonkeyPatch) -> None:
+    con = source(memory(), (1, 'a'), (2, 'b'), (3, None))
     monkeypatch.setattr(ask.answers, 'answered', no_answers)
     assert {f.id for f, _ in ask.due(con, ['prices'])[0]} == {1, 2}
     assert {f.id for f, _ in ask.due(con, ['prices'], {2})[0]} == {2}
@@ -364,8 +364,8 @@ def logged(prompt_: str) -> answers.Logged:
 NOW = logged(prompt.current('prices').hash)
 
 
-def test_an_answer_to_an_older_prompt_is_asked_again(monkeypatch: pytest.MonkeyPatch) -> None:
-    con = source((1, 'a'), (2, 'b'))
+def test_an_answer_to_an_older_prompt_is_asked_again(memory: Memory, monkeypatch: pytest.MonkeyPatch) -> None:
+    con = source(memory(), (1, 'a'), (2, 'b'))
     have = {1: (Path('a'), logged('0' * 16)), 2: (Path('b'), NOW)}
 
     def answered(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, answers.Logged]]:
@@ -431,8 +431,8 @@ def test_the_question_asked_is_the_festival_as_its_pass_asks() -> None:
     assert 'styles' not in extract
 
 
-def test_the_run_log_writes_inside_the_callers_transaction() -> None:
-    con = sqlite3.connect(':memory:')
+def test_the_run_log_writes_inside_the_callers_transaction(memory: Memory) -> None:
+    con = memory()
     _ = con.execute('BEGIN')
     run_log.record(con, run_log.Step('step', 'what', 'test', details={'n': 1}))
     assert con.in_transaction
@@ -442,8 +442,8 @@ def test_the_run_log_writes_inside_the_callers_transaction() -> None:
     assert load_extract.count(con, 'SELECT count(*) FROM sqlite_master') == 0
 
 
-def test_a_load_a_check_refuses_leaves_the_database_as_it_was() -> None:
-    con = sqlite3.connect(':memory:')
+def test_a_load_a_check_refuses_leaves_the_database_as_it_was(memory: Memory) -> None:
+    con = memory()
     _ = con.execute('CREATE TABLE event_passes (kept INTEGER)')
     con.commit()
     _ = con.executescript(load_extract.SCHEMA)
@@ -454,9 +454,8 @@ def test_a_load_a_check_refuses_leaves_the_database_as_it_was() -> None:
     assert [c[1] for c in columns] == ['kept']
 
 
-def loaded() -> sqlite3.Connection:
+def loaded(con: sqlite3.Connection) -> sqlite3.Connection:
     """An empty source database with load_extract's tables, inside the load's transaction."""
-    con = sqlite3.connect(':memory:')
     _ = con.executescript(
         'CREATE TABLE events (id INTEGER PRIMARY KEY, start_date TEXT, modified_at TEXT);'
         "INSERT INTO events VALUES (5, '2026-03-20 18:00:00', '2026-01-01 10:00:00'), (6, '2026-04-01', '2026-01-01');"
@@ -481,13 +480,13 @@ def loaded() -> sqlite3.Connection:
         "INSERT INTO event_genres (event_id, genre, source, rule) VALUES (5, 'zouk', 'site_tag', 'title')",
     ],
 )
-def test_a_row_outside_the_table_or_its_rules_is_refused_when_written(sql: str) -> None:
+def test_a_row_outside_the_table_or_its_rules_is_refused_when_written(memory: Memory, sql: str) -> None:
     with pytest.raises(sqlite3.IntegrityError):
-        _ = loaded().execute(sql)
+        _ = loaded(memory()).execute(sql)
 
 
-def test_a_festival_is_priced_exactly_when_it_has_the_pass_a_card_prices() -> None:
-    con = loaded()
+def test_a_festival_is_priced_exactly_when_it_has_the_pass_a_card_prices(memory: Memory) -> None:
+    con = loaded(memory())
     full = priced(tier('Full pass 80€ until 31.01'))
     party = priced(tier('Full pass 80€ until 31.01'), kind=PassKind.PARTY, event_id=6)
     described = {e.event_id: answers.Answer(e, 'b', logged('h')) for e in (full, party)}

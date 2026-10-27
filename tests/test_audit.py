@@ -13,6 +13,7 @@ from pipeline import audit, exceptions, prompt, tickets
 from pipeline.enums import FirstRead
 from pipeline.extract import answers
 from pipeline.records import PageRecipe
+from tests.fakes import Memory
 
 
 def copied(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
@@ -127,9 +128,9 @@ def test_an_empty_value_is_allowed_only_where_its_column_allows_it(
 
 
 def test_the_audit_exits_1_naming_what_it_found_on_stderr(
-    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+    memory: Memory, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
-    db = sqlite3.connect(':memory:')
+    db = memory()
     _ = db.execute('create table events (id integer)')
 
     def festivals(

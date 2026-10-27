@@ -16,7 +16,6 @@ import argparse
 import sys
 from collections import defaultdict
 from collections.abc import Sequence
-from contextlib import closing
 from pathlib import Path
 
 from pydantic import ValidationError
@@ -132,7 +131,7 @@ def main() -> None:
         description='Name each value in the data its record refuses (a value that is no state of '
         'pipeline/states.py, say), and each override of pipeline/exceptions.py that departs from nothing any more.'
     ).parse_args()
-    with closing(tickets.src_db()) as db:
+    with tickets.src_db() as db:
         ids: list[tuple[int]] = db.execute('SELECT id FROM events').fetchall()
         bad = refused({i for (i,) in ids})
         old = stale(tickets.festivals(db, tickets.utc_today(), every=True), tickets.sites())

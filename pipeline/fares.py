@@ -107,13 +107,13 @@ def now() -> dt.datetime:
 
 def weekends(today: dt.date) -> set[tuple[str, str]]:
     """(airport, Friday) of every upcoming, not cancelled festival with an airport other than home, from the site DB."""
-    c = sqlite_db.connect(DATA / 'kiz.sqlite', 'ro')
-    found: list[tuple[str, str]] = c.execute(
-        """select airport, weekend_friday from events where airport is not null and airport != ?
-        and cancelled is not 1 and weekend_friday > ?""",
-        (HOME, today.isoformat()),
-    ).fetchall()
-    return set(found)
+    with sqlite_db.opened(DATA / 'kiz.sqlite', 'ro') as c:
+        found: list[tuple[str, str]] = c.execute(
+            """select airport, weekend_friday from events where airport is not null and airport != ?
+            and cancelled is not 1 and weekend_friday > ?""",
+            (HOME, today.isoformat()),
+        ).fetchall()
+        return set(found)
 
 
 def interval(days_away: int) -> int | None:

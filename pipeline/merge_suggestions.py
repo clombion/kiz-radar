@@ -234,13 +234,9 @@ def couple_pairs(members: dict[int, list[str]]) -> list[tuple[int, int, float]]:
     return out
 
 
-def main() -> None:
-    ap = argparse.ArgumentParser(description='List likely duplicate artists for review.')
-    sqlite_db.source_arg(ap)
-    c = sqlite_db.connect(ap.parse_args(namespace=sqlite_db.Source()).src, 'ro')
-    # The built site DB (run build_site_db.py first) knows every merge, including members merged along with their
-    # couples, and has the events as days.
-    site = sqlite_db.connect(ROOT / 'docs' / 'data' / 'kiz.sqlite', 'ro')
+def suggestions(c: sqlite3.Connection, site: sqlite3.Connection) -> list[Suggestion]:
+    """Likely duplicates, the likeliest first, from the source DB and the built site DB, which knows every merge,
+    including members merged along with their couples, and has the events as days."""
     known = evidence(c, site)
     art, booked = known.art, known.booked
     keys: list[tuple[str, int]] = c.execute('select match_key, artist_id from artist_keys').fetchall()
@@ -256,7 +252,8 @@ def main() -> None:
 
     def add(a: int, b: int, score: float, reason: str) -> None:
         ka, kb = art[a][1], art[b][1]
-        if a == b or frozenset((ka, kb)) in done or group(ka) == group(kb) or moved.get(a, a) == moved.get(b, b):
+        same = a == b or moved.get(a, a) == moved.get(b, b)
+        if same or frozenset((ka, kb)) in done or group(ka) == group(kb):
             return
         keep, merge = sorted((a, b), key=lambda i: (-booked[i], i))  # keep the more booked one
         k = (keep, merge)
@@ -293,7 +290,17 @@ def main() -> None:
         if a and b:
             add(a, b, s, reason)
 
-    Suggestion.write(OUT, sorted(rows.values(), key=lambda r: (-r.score, r.keep_name.lower())))
+    return sorted(rows.values(), key=lambda r: (-r.score, r.keep_name.lower()))
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description='List likely duplicate artists for review.')
+    sqlite_db.source_arg(ap)
+    src = ap.parse_args(namespace=sqlite_db.Source()).src
+    # run build_site_db.py first
+    with sqlite_db.opened(src, 'ro') as c, sqlite_db.opened(ROOT / 'docs' / 'data' / 'kiz.sqlite', 'ro') as site:
+        rows = suggestions(c, site)
+    Suggestion.write(OUT, rows)
     print(f'{len(rows)} suggestions in {OUT.relative_to(ROOT)}')
 
 

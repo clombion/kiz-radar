@@ -646,51 +646,56 @@ def load_extracted(con: sqlite3.Connection, got: Mapping[int, Answer[Extracted]]
 def main() -> None:
     ap = argparse.ArgumentParser(description='Load the saved answers of the extraction passes into the source DB.')
     sqlite_db.source_arg(ap)
-    con = sqlite_db.connect(ap.parse_args(namespace=sqlite_db.Source()).src, 'rw')
-    ids: list[tuple[int]] = con.execute('SELECT id FROM events').fetchall()
-    event_ids = {i for (i,) in ids}
-    extract, stale_extract = current(prompts.EXTRACT, event_ids)
-    rooms_genres, stale_rooms = current(prompts.ROOMS_GENRES, event_ids)
-    prices, stale_prices = current(prompts.PRICES, event_ids)
-    for pass_, stale in (
-        (prompts.EXTRACT, stale_extract),
-        (prompts.ROOMS_GENRES, stale_rooms),
-        (prompts.PRICES, stale_prices),
-    ):
+    with sqlite_db.opened(ap.parse_args(namespace=sqlite_db.Source()).src, 'rw') as con:
+        ids: list[tuple[int]] = con.execute('SELECT id FROM events').fetchall()
+        event_ids = {i for (i,) in ids}
+        extract, stale_extract = current(prompts.EXTRACT, event_ids)
+        rooms_genres, stale_rooms = current(prompts.ROOMS_GENRES, event_ids)
+        prices, stale_prices = current(prompts.PRICES, event_ids)
+        for pass_, stale in (
+            (prompts.EXTRACT, stale_extract),
+            (prompts.ROOMS_GENRES, stale_rooms),
+            (prompts.PRICES, stale_prices),
+        ):
+            if stale:
+                print(
+                    f"{stale} festivals' {pass_.name} answers were asked with another prompt; "
+                    'left out until asked again'
+                )
+        pages, stale = page_prices(event_ids)
         if stale:
-            print(f"{stale} festivals' {pass_.name} answers were asked with another prompt; left out until asked again")
-    pages, stale = page_prices(event_ids)
-    if stale:
-        print(f"{stale} festivals' ticket pages were read with another first-read prompt; left out until read again")
-    _ = con.executescript(SCHEMA)
-    for point in ('feature', 'genre', 'role'):
+            print(
+                f"{stale} festivals' ticket pages were read with another first-read prompt; left out until read again"
+            )
+        _ = con.executescript(SCHEMA)
+        for point in ('feature', 'genre', 'role'):
+            _ = con.executemany(
+                f'INSERT INTO {point}_definitions VALUES (?, ?)',  # noqa: S608 (a table name of ours)
+                [(s.key, s.criterion) for s in states.of(point)],
+            )
+        load_rooms_genres(con, rooms_genres)
+        load_genre_rules(con)
+        load_extracted(con, extract)
+        tags: list[tuple[int, str]] = con.execute('SELECT event_id, tag FROM event_tags').fetchall()
         _ = con.executemany(
-            f'INSERT INTO {point}_definitions VALUES (?, ?)',  # noqa: S608 (a table name of ours)
-            [(s.key, s.criterion) for s in states.of(point)],
+            "INSERT INTO event_features (event_id, feature, source) VALUES (?, ?, 'site_tag') ON CONFLICT DO NOTHING",
+            [(eid, TAG_FEATURES[tag]) for eid, tag in tags if tag in TAG_FEATURES],
         )
-    load_rooms_genres(con, rooms_genres)
-    load_genre_rules(con)
-    load_extracted(con, extract)
-    tags: list[tuple[int, str]] = con.execute('SELECT event_id, tag FROM event_tags').fetchall()
-    _ = con.executemany(
-        "INSERT INTO event_features (event_id, feature, source) VALUES (?, ?, 'site_tag') ON CONFLICT DO NOTHING",
-        [(eid, TAG_FEATURES[tag]) for eid, tag in tags if tag in TAG_FEATURES],
-    )
-    load_prices(con, prices, pages, status())
-    record_steps(con, extract, rooms_genres, prices, pages)
-    con.commit()
-    for table in (
-        'event_features',
-        'artist_mentions',
-        'event_genres',
-        'event_rooms',
-        'event_room_list',
-        'event_passes',
-        'pass_tiers',
-        'ticket_pages',
-        'price_status',
-    ):
-        print(table, count(con, f'SELECT count(*) FROM {table}'))  # noqa: S608 (a table name of ours)
+        load_prices(con, prices, pages, status())
+        record_steps(con, extract, rooms_genres, prices, pages)
+        con.commit()
+        for table in (
+            'event_features',
+            'artist_mentions',
+            'event_genres',
+            'event_rooms',
+            'event_room_list',
+            'event_passes',
+            'pass_tiers',
+            'ticket_pages',
+            'price_status',
+        ):
+            print(table, count(con, f'SELECT count(*) FROM {table}'))  # noqa: S608 (a table name of ours)
 
 
 if __name__ == '__main__':

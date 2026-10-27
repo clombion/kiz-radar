@@ -1,13 +1,18 @@
-"""A fake of Claude's Messages API for the tests: a client (ask.Client) answering each request with the next of its
-replies, as a real message of the SDK, and keeping what it was asked."""
+"""What the tests stand in for: Claude's Messages API, as a client (ask.Client) answering each request with the next of
+its replies, as a real message of the SDK, and keeping what it was asked; and a database, as the type of the memory
+fixture (conftest.py)."""
 
-from collections.abc import Sequence
+import sqlite3
+from collections.abc import Callable, Sequence
 from types import TracebackType
 from typing import Self
 
 from anthropic.types import Message, MessageParam, StopReason, TextBlock, Usage
 
 INPUT_TOKENS, OUTPUT_TOKENS = 6000, 2000  # what each request costs
+
+# what the memory fixture gives: an in-memory database, closed when the test ends (conftest.py)
+type Memory = Callable[[], sqlite3.Connection]
 
 
 def message(text: str, stop_reason: StopReason = 'end_turn') -> Message:

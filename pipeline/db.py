@@ -1,20 +1,28 @@
 """Opening the pipeline's SQLite databases. Every connection names what it may do with the file: read it (ro), write
 it (rw), or create it (rwc); only a step that builds a database may create one, so a wrong path is an error, never a
-new empty database. source_arg() is the command-line argument for the kizomba-world export a step works on."""
+new empty database, and a connection is closed with its block. source_arg() is the command-line argument for the
+kizomba-world export a step works on."""
 
 import argparse
 import sqlite3
-from collections.abc import Sequence
+from collections.abc import Generator, Sequence
+from contextlib import contextmanager
 from pathlib import Path
 from typing import Literal
 
 from pydantic import BaseModel
 
 
-def connect(path: Path | str, mode: Literal['ro', 'rw', 'rwc']) -> sqlite3.Connection:
+@contextmanager
+def opened(path: Path | str, mode: Literal['ro', 'rw', 'rwc']) -> Generator[sqlite3.Connection]:
+    """The database, closed when the block ends; what the block wrote and didn't commit is lost with it."""
     if mode not in ('ro', 'rw', 'rwc'):
         raise ValueError(f'mode {mode!r}: ro, rw or rwc')
-    return sqlite3.connect(f'file:{Path(path).resolve()}?mode={mode}', uri=True)
+    con = sqlite3.connect(f'file:{Path(path).resolve()}?mode={mode}', uri=True)
+    try:
+        yield con
+    finally:
+        con.close()
 
 
 def records[R: BaseModel](db: sqlite3.Connection, record: type[R], sql: str, params: Sequence[object] = ()) -> list[R]:

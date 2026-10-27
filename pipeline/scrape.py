@@ -244,26 +244,26 @@ def finish(db: sqlite3.Connection, report: Report, events: int, gone: list[int],
 
 
 def run(src: Path, *, dry_run: bool) -> None:
-    db = sqlite_db.connect(src, 'ro' if dry_run else 'rw')
-    if not dry_run:
-        prepare(db)
-    known = {r.id: r for r in sqlite_db.records(db, EventRow, f'select {", ".join(COLUMNS)} from events')}  # noqa: S608 (table and column names of ours)
-    today = dt.datetime.now(dt.UTC).date().isoformat()
-    fetch = Fetcher()
-    events = [api_fields(e) for e in listed(fetch)]
-    print(f'{len(events)} events listed; {len(known)} in the source DB')
-    if len(events) < LISTED_SHARE * sum(1 for e in known.values() if e.start_date[:10] >= FIRST_DAY):
-        sys.exit('the site lists far fewer events than before; stopping instead of deleting them')
-    report, posters = Report(), 0
-    for listing in events:
-        r = refreshed(fetch, listing, known.get(listing[0].id), today)
-        report.note(r)
+    with sqlite_db.opened(src, 'ro' if dry_run else 'rw') as db:
         if not dry_run:
-            posters += write(db, fetch, r, today)
-    gone = sorted(set(known) - {e.id for e, _, _ in events})
-    report.show([known[i].title for i in gone])
-    if not dry_run:
-        finish(db, report, len(events), gone, posters)
+            prepare(db)
+        known = {r.id: r for r in sqlite_db.records(db, EventRow, f'select {", ".join(COLUMNS)} from events')}  # noqa: S608 (table and column names of ours)
+        today = dt.datetime.now(dt.UTC).date().isoformat()
+        fetch = Fetcher()
+        events = [api_fields(e) for e in listed(fetch)]
+        print(f'{len(events)} events listed; {len(known)} in the source DB')
+        if len(events) < LISTED_SHARE * sum(1 for e in known.values() if e.start_date[:10] >= FIRST_DAY):
+            sys.exit('the site lists far fewer events than before; stopping instead of deleting them')
+        report, posters = Report(), 0
+        for listing in events:
+            r = refreshed(fetch, listing, known.get(listing[0].id), today)
+            report.note(r)
+            if not dry_run:
+                posters += write(db, fetch, r, today)
+        gone = sorted(set(known) - {e.id for e, _, _ in events})
+        report.show([known[i].title for i in gone])
+        if not dry_run:
+            finish(db, report, len(events), gone, posters)
 
 
 class Args(argparse.Namespace):

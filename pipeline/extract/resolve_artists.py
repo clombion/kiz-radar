@@ -749,51 +749,51 @@ def write_artists(
 def main() -> None:
     ap = argparse.ArgumentParser(description='Resolve artist mentions into artists, with stable ids.')
     sqlite_db.source_arg(ap)
-    con = sqlite_db.connect(ap.parse_args(namespace=sqlite_db.Source()).src, 'rw')
-    mentions = sqlite_db.records(
-        con,
-        Mention,
-        'SELECT m.id, m.event_id, m.role, m.name_as_written, m.style, m.country, e.country AS event_country'
-        ' FROM artist_mentions m JOIN events e ON e.id = m.event_id',
-    )
-    keys = keyed(mentions)
-    merges = load_merges()
-    found, unsupported_same_name = candidates(keys, merges)
-    groups = Group.read(GROUPS)
-    final_key = final_keys(keys, merged(keys, merges), groups)
-
-    # keeping the ids artists had
-    ids = stable_ids(con, final_key)
-    _ = con.executescript(SCHEMA)
-    _ = con.executemany(
-        'INSERT INTO artist_ids VALUES (?, ?) ON CONFLICT DO NOTHING', [(i, fk) for fk, i in ids.items()]
-    )
-    write_artists(con, keys, final_key, groups, ids)
-    found = [c for c in found if c.key_a == c.key_b or final_key[c.key_a] != final_key[c.key_b]]
-    _ = con.executemany(
-        'INSERT INTO event_artists VALUES (?, ?, ?, ?, ?, ?)',
-        [(m.id, m.event_id, ids[final_key[keys.mention_key[m.id]]], m.role, m.style, m.country) for m in mentions],
-    )
-    _ = con.executemany('INSERT OR REPLACE INTO artist_merge_candidates VALUES (?, ?, ?, ?, ?, ?, ?, ?)', found)
-    _ = con.executemany(
-        'INSERT OR REPLACE INTO artist_merge_decisions VALUES (?, ?, ?, ?, ?)',
-        [(r.key_a, r.key_b, r.decision, r.prompt, r.note) for r in MergeRow.read(MERGES)],
-    )
-    for g in groups:
-        _ = con.execute(
-            'INSERT INTO artist_group_definitions VALUES (?, ?, ?, ?)',
-            (g.group_key, ids[g.group_key], g.display_name, g.note),
+    with sqlite_db.opened(ap.parse_args(namespace=sqlite_db.Source()).src, 'rw') as con:
+        mentions = sqlite_db.records(
+            con,
+            Mention,
+            'SELECT m.id, m.event_id, m.role, m.name_as_written, m.style, m.country, e.country AS event_country'
+            ' FROM artist_mentions m JOIN events e ON e.id = m.event_id',
         )
-        _ = con.executemany('INSERT INTO artist_group_aliases VALUES (?, ?)', [(g.group_key, a) for a in g.aliases])
-    counted: list[tuple[str, int]] = con.execute('SELECT kind, count(*) FROM artists GROUP BY kind').fetchall()
-    kinds_count = dict(counted)
-    record_steps(con, Resolved(len(mentions), kinds_count, len(found), unsupported_same_name, len(groups)))
-    con.commit()
-    print(
-        f'mentions {len(mentions)} -> artists {sum(kinds_count.values())} {kinds_count};'
-        f' candidates {len(found)} ({sum(1 for c in found if c.decision)} reviewed);'
-        f' same-name pairs kept apart for lack of evidence: {unsupported_same_name}'
-    )
+        keys = keyed(mentions)
+        merges = load_merges()
+        found, unsupported_same_name = candidates(keys, merges)
+        groups = Group.read(GROUPS)
+        final_key = final_keys(keys, merged(keys, merges), groups)
+
+        # keeping the ids artists had
+        ids = stable_ids(con, final_key)
+        _ = con.executescript(SCHEMA)
+        _ = con.executemany(
+            'INSERT INTO artist_ids VALUES (?, ?) ON CONFLICT DO NOTHING', [(i, fk) for fk, i in ids.items()]
+        )
+        write_artists(con, keys, final_key, groups, ids)
+        found = [c for c in found if c.key_a == c.key_b or final_key[c.key_a] != final_key[c.key_b]]
+        _ = con.executemany(
+            'INSERT INTO event_artists VALUES (?, ?, ?, ?, ?, ?)',
+            [(m.id, m.event_id, ids[final_key[keys.mention_key[m.id]]], m.role, m.style, m.country) for m in mentions],
+        )
+        _ = con.executemany('INSERT OR REPLACE INTO artist_merge_candidates VALUES (?, ?, ?, ?, ?, ?, ?, ?)', found)
+        _ = con.executemany(
+            'INSERT OR REPLACE INTO artist_merge_decisions VALUES (?, ?, ?, ?, ?)',
+            [(r.key_a, r.key_b, r.decision, r.prompt, r.note) for r in MergeRow.read(MERGES)],
+        )
+        for g in groups:
+            _ = con.execute(
+                'INSERT INTO artist_group_definitions VALUES (?, ?, ?, ?)',
+                (g.group_key, ids[g.group_key], g.display_name, g.note),
+            )
+            _ = con.executemany('INSERT INTO artist_group_aliases VALUES (?, ?)', [(g.group_key, a) for a in g.aliases])
+        counted: list[tuple[str, int]] = con.execute('SELECT kind, count(*) FROM artists GROUP BY kind').fetchall()
+        kinds_count = dict(counted)
+        record_steps(con, Resolved(len(mentions), kinds_count, len(found), unsupported_same_name, len(groups)))
+        con.commit()
+        print(
+            f'mentions {len(mentions)} -> artists {sum(kinds_count.values())} {kinds_count};'
+            f' candidates {len(found)} ({sum(1 for c in found if c.decision)} reviewed);'
+            f' same-name pairs kept apart for lack of evidence: {unsupported_same_name}'
+        )
 
 
 if __name__ == '__main__':

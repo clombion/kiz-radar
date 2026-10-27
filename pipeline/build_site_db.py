@@ -35,6 +35,7 @@ from pipeline.text import soften_caps, tidy_name, tidy_title
 ROOT = Path(__file__).parent.parent
 DATA = ROOT / 'docs' / 'data'
 OUT = DATA / 'kiz.sqlite'
+SITE_JSON = DATA / 'site.json'  # what the page shows before the database loads
 POPULAR = 10  # bookings that make an artist "popular"
 MAX_AIRPORT_KM = 250
 EARTH_KM = 6371  # the Earth's radius
@@ -774,28 +775,27 @@ def main() -> None:
     # was
     building = OUT.with_name(OUT.name + '.building')
     building.unlink(missing_ok=True)
-    x = sqlite_db.connect(building, 'rwc')
-    _ = x.execute(f"attach database 'file:{src}?mode=ro' as src")
-    copy_tables(x)
-    artists = merge_artists(x)
-    places(x)
-    fares(x)
-    event_stats(x, artist_stats(x, artists))
-    plans(x, artists)
-    built_at = dt.datetime.now(dt.UTC).strftime('%Y-%m-%dT%H:%M:%SZ')
-    meta(x, built_at)
-    site = site_json(x, built_at)
-    table_docs(x)
-    stored_by_key(x)
-    broken: list[tuple[object, ...]] = x.execute('pragma foreign_key_check').fetchall()
-    if broken:
-        sys.exit(f'{len(broken)} rows refer to rows the site database has not, first: {broken[0]}')
-    x.commit()
-    _ = x.execute('detach database src')
-    _ = x.execute('vacuum')
-    x.close()
+    with sqlite_db.opened(building, 'rwc') as x:
+        _ = x.execute(f"attach database 'file:{src}?mode=ro' as src")
+        copy_tables(x)
+        artists = merge_artists(x)
+        places(x)
+        fares(x)
+        event_stats(x, artist_stats(x, artists))
+        plans(x, artists)
+        built_at = dt.datetime.now(dt.UTC).strftime('%Y-%m-%dT%H:%M:%SZ')
+        meta(x, built_at)
+        site = site_json(x, built_at)
+        table_docs(x)
+        stored_by_key(x)
+        broken: list[tuple[object, ...]] = x.execute('pragma foreign_key_check').fetchall()
+        if broken:
+            sys.exit(f'{len(broken)} rows refer to rows the site database has not, first: {broken[0]}')
+        x.commit()
+        _ = x.execute('detach database src')
+        _ = x.execute('vacuum')
     _ = building.replace(OUT)
-    _ = (DATA / 'site.json').write_text(json.dumps(site, ensure_ascii=False, indent=1), encoding='utf-8')
+    _ = SITE_JSON.write_text(json.dumps(site, ensure_ascii=False, indent=1), encoding='utf-8')
     print(OUT, OUT.stat().st_size // 1024, 'KB')
 
 

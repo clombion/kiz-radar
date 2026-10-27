@@ -41,7 +41,7 @@ from pipeline.records import (
     real_day,
 )
 from tests import jsons
-from tests.fakes import Client
+from tests.fakes import Client, Memory
 
 AT = '2026-10-01T05:00:00+00:00'
 LATER = '2026-11-03T05:00:00+00:00'
@@ -672,9 +672,6 @@ def test_the_status_lists_every_festival_past_ones_too(files: Path) -> None:
     assert (files / 'status.csv').read_text().splitlines()[0] == ','.join(StatusRow.columns())
 
 
-DB = sqlite3.connect(':memory:')  # what the commands are given; the fakes below answer for it
-
-
 @pytest.fixture
 def paging(files: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     def one(db: sqlite3.Connection, i: int, page: str | None = None) -> tickets.Festival:
@@ -690,19 +687,19 @@ def paging(files: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     return files
 
 
-def test_a_found_page_is_recorded_once_and_a_cut_link_refused(paging: Path) -> None:
-    tickets.cmd_page(DB, 7, tickets.Sold('https://example.org/t', Sales.SHOP, 'its site', 'agent'))
-    tickets.cmd_page(DB, 7, tickets.Sold(None, Sales.OFFLINE, 'by message only', 'agent'))
+def test_a_found_page_is_recorded_once_and_a_cut_link_refused(memory: Memory, paging: Path) -> None:
+    tickets.cmd_page(memory(), 7, tickets.Sold('https://example.org/t', Sales.SHOP, 'its site', 'agent'))
+    tickets.cmd_page(memory(), 7, tickets.Sold(None, Sales.OFFLINE, 'by message only', 'agent'))
     assert [(r.state, r.page, r.note) for r in FoundRow.read(paging / 'pages.csv')] == [
         (Sales.OFFLINE, None, 'by message only')
     ]
     assert StatusRow.read(paging / 'status.csv')[0].waits_for == Waiting.PAGE
     with pytest.raises(SystemExit):
-        tickets.cmd_page(DB, 7, tickets.Sold('https://example.org/t…', Sales.SHOP, 'cut', 'agent'))
+        tickets.cmd_page(memory(), 7, tickets.Sold('https://example.org/t…', Sales.SHOP, 'cut', 'agent'))
 
 
-def test_a_search_that_found_nothing_holds_until_the_links_change(paging: Path) -> None:
-    tickets.cmd_page(DB, 7, tickets.Sold(None, Sales.NONE_FOUND, 'a search found no ticket page', 'agent'))
+def test_a_search_that_found_nothing_holds_until_the_links_change(memory: Memory, paging: Path) -> None:
+    tickets.cmd_page(memory(), 7, tickets.Sold(None, Sales.NONE_FOUND, 'a search found no ticket page', 'agent'))
     found = tickets.found_pages()[7]
     assert found.links == tickets.links_hash(['https://example.org/a'])
     assert found.links != tickets.links_hash(['https://example.org/a', 'https://example.org/b'])
@@ -712,9 +709,9 @@ def test_a_search_that_found_nothing_holds_until_the_links_change(paging: Path) 
     ('url', 'state'),
     [(None, Sales.SHOP), ('https://example.org/t', Sales.OFFLINE), ('https://example.org/t', Sales.CLOSED)],
 )
-def test_only_a_shop_has_a_page(paging: Path, url: str | None, state: Sales) -> None:
+def test_only_a_shop_has_a_page(memory: Memory, paging: Path, url: str | None, state: Sales) -> None:
     with pytest.raises(SystemExit):
-        tickets.cmd_page(DB, 7, tickets.Sold(url, state, 'n', 'agent'))
+        tickets.cmd_page(memory(), 7, tickets.Sold(url, state, 'n', 'agent'))
 
 
 @pytest.mark.parametrize(
@@ -1027,8 +1024,7 @@ def test_the_first_read_states_tested_are_all_of_them() -> None:
     assert {s for _, s in FIRST_READ_CASES} == set(FirstReadState)
 
 
-def events(*ids: int) -> sqlite3.Connection:
-    db = sqlite3.connect(':memory:')
+def events(db: sqlite3.Connection, *ids: int) -> sqlite3.Connection:
     _ = db.executescript('create table events (id integer);')
     _ = db.executemany('insert into events values (?)', [(i,) for i in ids])
     return db
@@ -1038,7 +1034,9 @@ def no_status(db: sqlite3.Connection) -> collections.Counter[Waiting]:
     return collections.Counter()
 
 
-def test_a_run_for_named_festivals_reads_only_them(files: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+def test_a_run_for_named_festivals_reads_only_them(
+    memory: Memory, files: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     def festivals(
         db: sqlite3.Connection, today: str, only: int | None = None, *, every: bool = False
     ) -> list[tickets.Festival]:
@@ -1058,14 +1056,14 @@ def test_a_run_for_named_festivals_reads_only_them(files: Path, monkeypatch: pyt
         return None
 
     monkeypatch.setattr(tickets, 'append', append)
-    tickets.cmd_run(events(6, 7, 8), {8, 6})  # 6 is past: nothing to read there
+    tickets.cmd_run(events(memory(), 6, 7, 8), {8, 6})  # 6 is past: nothing to read there
     assert asked == ['https://shop.example/8']
     with pytest.raises(SystemExit, match=r'\[9\]'):
-        tickets.cmd_run(events(6, 7, 8), {9})
+        tickets.cmd_run(events(memory(), 6, 7, 8), {9})
 
 
 def test_a_past_festivals_first_read_for_an_older_prompt_is_made_again_from_its_logged_rows(
-    files: Path, monkeypatch: pytest.MonkeyPatch
+    memory: Memory, files: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     import anthropic
 
@@ -1083,7 +1081,7 @@ def test_a_past_festivals_first_read_for_an_older_prompt_is_made_again_from_its_
     monkeypatch.setattr(tickets, 'status', no_status)
     monkeypatch.setattr(tickets, 'attempt', no_request)
     monkeypatch.setattr(anthropic, 'Anthropic', lambda: Client(ANSWER.model_dump_json(), ANSWER.model_dump_json()))
-    tickets.cmd_run(events(7))
+    tickets.cmd_run(events(memory(), 7))
     made = tickets.first_read(7)
     assert isinstance(made, FirstRead)
     assert made.prompt == prompt.current('first_read').hash
@@ -1146,8 +1144,8 @@ def test_two_reads_agree_whatever_reason_a_kept_skip_has() -> None:
     assert tickets.meaning(read()) == tickets.meaning(read(skipped=(('5', SkipReason.FOOD_DRINK),)))
 
 
-def test_a_festivals_styles_are_its_genres_styles() -> None:
-    db = sqlite3.connect(':memory:')
+def test_a_festivals_styles_are_its_genres_styles(memory: Memory) -> None:
+    db = memory()
     _ = db.executescript(
         'create table event_genres (event_id integer, genre text);'
         "insert into event_genres values (1, 'urbankiz'), (1, 'semba'), (2, 'kizomba'), (2, 'zouk'), (2, 'kompa');"
@@ -1238,9 +1236,9 @@ def test_a_recorded_draft_archives_its_prompt_and_leaves_no_prompt_file(files: P
     assert not (files / 'drafts' / '7.prompt.md').exists()
 
 
-def test_a_url_given_to_read_is_a_full_address() -> None:
+def test_a_url_given_to_read_is_a_full_address(memory: Memory) -> None:
     with pytest.raises(SystemExit, match='not a full address'):
-        tickets.cmd_read(DB, 7, 'https://my.weezevent.com/x…')
+        tickets.cmd_read(memory(), 7, 'https://my.weezevent.com/x…')
 
 
 def test_a_second_price_is_one_value_in_the_answer_and_two_columns_in_the_file(files: Path) -> None:

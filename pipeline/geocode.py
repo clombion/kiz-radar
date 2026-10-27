@@ -55,23 +55,23 @@ def located(city: str, country: str) -> Place:
 def main() -> None:
     ap = argparse.ArgumentParser(description="Geocode the source DB's cities with OpenStreetMap Nominatim.")
     sqlite_db.source_arg(ap)
-    db = sqlite_db.connect(ap.parse_args(namespace=sqlite_db.Source()).src, 'ro')
-    known = {(p.city, p.country): p for p in Place.read(CACHE)}
-    places: list[tuple[str, str]] = db.execute(
-        "select distinct coalesce(city, ''), coalesce(country, '') from events"
-    ).fetchall()
-    for city, country in places:
-        if (city, country) in known or not (city or country):
-            continue
-        try:
-            known[(city, country)] = located(city, country)
-        except (OSError, ValidationError) as e:
-            print('failed', city, country, e, file=sys.stderr)
-            time.sleep(BACKOFF)
-            continue
-        time.sleep(PAUSE)
-    Place.write(CACHE, sorted(known.values(), key=lambda p: (p.country, p.city)))
-    print(len(known), 'places;', sum(1 for p in known.values() if p.found is None), 'not found')
+    with sqlite_db.opened(ap.parse_args(namespace=sqlite_db.Source()).src, 'ro') as db:
+        known = {(p.city, p.country): p for p in Place.read(CACHE)}
+        places: list[tuple[str, str]] = db.execute(
+            "select distinct coalesce(city, ''), coalesce(country, '') from events"
+        ).fetchall()
+        for city, country in places:
+            if (city, country) in known or not (city or country):
+                continue
+            try:
+                known[(city, country)] = located(city, country)
+            except (OSError, ValidationError) as e:
+                print('failed', city, country, e, file=sys.stderr)
+                time.sleep(BACKOFF)
+                continue
+            time.sleep(PAUSE)
+        Place.write(CACHE, sorted(known.values(), key=lambda p: (p.country, p.city)))
+        print(len(known), 'places;', sum(1 for p in known.values() if p.found is None), 'not found')
 
 
 if __name__ == '__main__':

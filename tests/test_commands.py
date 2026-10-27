@@ -144,8 +144,8 @@ def test_databases_are_opened_with_a_mode() -> None:
 
 
 def test_a_wrong_path_is_an_error_not_a_new_database(tmp_path: Path) -> None:
-    with pytest.raises(sqlite3.OperationalError):
-        _ = db.connect(tmp_path / 'missing.sqlite', 'rw')
+    with pytest.raises(sqlite3.OperationalError), db.opened(tmp_path / 'missing.sqlite', 'rw'):
+        pass
     assert not (tmp_path / 'missing.sqlite').exists()
 
 

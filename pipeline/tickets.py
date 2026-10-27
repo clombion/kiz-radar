@@ -65,7 +65,7 @@ import re
 import sqlite3
 import sys
 from collections.abc import Iterable, Mapping, Sequence
-from contextlib import closing
+from contextlib import AbstractContextManager
 from dataclasses import dataclass, replace
 from pathlib import Path
 from typing import NamedTuple
@@ -846,8 +846,9 @@ def recheck(tiers: Sequence[PriceRow], start: str, today: str) -> tuple[Recheck,
 # ---- festivals
 
 
-def src_db() -> sqlite3.Connection:
-    return sqlite_db.connect(max((ROOT / 'source').glob('*.sqlite'), key=lambda p: p.stat().st_mtime), 'ro')
+def src_db() -> AbstractContextManager[sqlite3.Connection]:
+    """The newest kizomba-world export, to read, closed with its block."""
+    return sqlite_db.opened(max((ROOT / 'source').glob('*.sqlite'), key=lambda p: p.stat().st_mtime), 'ro')
 
 
 def utc_today() -> str:
@@ -1579,7 +1580,7 @@ def main() -> None:
             return cmd_changes(a.id)
         case _:
             pass
-    with closing(src_db()) as db:
+    with src_db() as db:
         match a.cmd:
             case 'todo':
                 cmd_todo(db)
