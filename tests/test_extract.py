@@ -12,9 +12,9 @@ from typing import Annotated
 import pytest
 from pydantic import Field, ValidationError
 
-from pipeline import db, enums, prompt, spend, states, tickets
+from pipeline import db, enums, generate, prompt, spend, states, tickets
 from pipeline.enums import AnswerState, PassKind, Style
-from pipeline.extract import answers, ask, load_extract, prices, run_log
+from pipeline.extract import answers, ask, check_output, load_extract, prices, run_log
 from pipeline.extract.resolve_artists import stable_ids
 from pipeline.prompt import Prompt, api_schema
 from pipeline.records import JSON, Batch, Priced, PricedPass, PricedTier, Record, Stamped, real_day
@@ -563,3 +563,44 @@ def test_a_festival_is_asked_its_passes_and_leaves_pending_once_all_are_answered
     run_ask(monkeypatch, client, src, '--pass', 'prices')
     assert 'festivals to ask about: ' in capsys.readouterr().out
     assert len(client.messages.asked) == 1  # answered to the current prompt: not asked again
+
+
+def run_check(monkeypatch: pytest.MonkeyPatch, tmp_path: Path, question: str, answer: str) -> None:
+    _ = (tmp_path / 'question.json').write_text(question)
+    _ = (tmp_path / 'answer.json').write_text(answer)
+    monkeypatch.setattr('sys.argv', ['check', 'prices', str(tmp_path / 'question.json'), str(tmp_path / 'answer.json')])
+    check_output.main()
+
+
+QUESTION = Batch[ask.Asked](batch='event-5', events=(ask.asked(prompt.PRICES, FEST),)).model_dump_json(
+    serialize_as_any=True  # the prices pass's question, with its own fields
+)
+
+
+def test_an_answer_file_is_checked_against_the_festivals_it_was_asked_about(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    run_check(monkeypatch, tmp_path, QUESTION, prices_answer('Full pass 80€ until 31.01'))
+    assert capsys.readouterr().out == 'answer.json: OK (1 events, 0 problems)\n'
+    with pytest.raises(SystemExit, match=r'answer.json: FAIL \(1 problems\)'):
+        run_check(monkeypatch, tmp_path, QUESTION, prices_answer('Full pass 90€'))
+    assert 'verbatim' in capsys.readouterr().out
+    with pytest.raises(SystemExit, match='not a question of the prices pass'):
+        run_check(monkeypatch, tmp_path, '{"batch": "x"}', prices_answer('Full pass 80€ until 31.01'))
+
+
+def test_generate_writes_what_differs_and_check_names_it(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    built = tmp_path / 'built.md'
+    monkeypatch.setattr(generate, 'ROOT', tmp_path)
+    monkeypatch.setattr(generate, 'FILES', {built: lambda: 'from the table\n'})
+    monkeypatch.setattr('sys.argv', ['generate', '--check'])
+    with pytest.raises(SystemExit, match=r'built\.md differs from pipeline/states\.py'):
+        generate.main()
+    monkeypatch.setattr('sys.argv', ['generate'])
+    generate.main()
+    assert built.read_text() == 'from the table\n'
+    assert capsys.readouterr().out == 'wrote built.md\n'
+    monkeypatch.setattr('sys.argv', ['generate', '--check'])
+    generate.main()  # nothing differs

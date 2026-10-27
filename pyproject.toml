@@ -13,7 +13,12 @@ artists = ["pycountry==26.2.16"]
 browser = ["patchright==1.55.2"]
 tickets = [{include-group = "ask"}, {include-group = "scrape"}, {include-group = "browser"}]
 dev = [
-    "pytest==8.4.2",
+    "pytest==9.2.0",
+    "pytest-randomly==5.0.0",   # each run in a new order, so no test leans on another having run
+    "pytest-xdist==3.8.0",      # across every core
+    "pytest-timeout==2.4.0",
+    "pytest-socket==0.8.1",     # no test reaches the network
+    "pytest-cov==7.1.0",
     "ruff==0.17.3",
     "basedpyright==1.40.2",
     "mdformat==1.0.0",
@@ -27,8 +32,26 @@ package = false
 default-groups = []
 
 [tool.pytest.ini_options]
+minversion = "9.2"
 pythonpath = ["."]
 testpaths = ["tests"]
+# strict: an unknown option or marker is an error, parametrize ids are unique, and an xfail that passes fails
+strict = true
+# a warning is an error, so a deprecation or a resource left open is fixed where it appears
+filterwarnings = ["error"]
+# every core, in a new order each run (pytest-randomly prints the seed to repeat one), and no socket but a Unix one
+addopts = ["-n", "auto", "-ra", "--disable-socket", "--allow-unix-socket"]
+timeout = 30  # s; the slowest test, a command's own run, takes about 10
+
+[tool.coverage.run]
+branch = true
+source = ["pipeline"]
+
+[tool.coverage.report]
+# the branches the tests reach, measured at 91.5% (read_page's browser and the ticket commands' network the least)
+fail_under = 91
+show_missing = true
+skip_covered = true
 
 [tool.basedpyright]
 typeCheckingMode = "strict"

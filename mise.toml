@@ -8,8 +8,8 @@ pnpm = "10.30.0"
 uv = "0.11.32"
 
 [tasks."test:py"]
-description = "The pipeline's tests"
-run = "uv run --group dev pytest -q"
+description = "The pipeline's tests, on every core in a new order, and the branches they reach (pyproject.toml)"
+run = "uv run --group dev pytest -q --cov"
 
 [tasks."install:site"]
 description = "The site's tools, as pnpm-lock.yaml pins them"

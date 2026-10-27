@@ -1,6 +1,7 @@
 """Ticket-page prices: rows to passes by key, the first read's checks, recording, changes, re-reads and agreement."""
 
 import collections
+import contextlib
 import dataclasses
 import json
 import re
@@ -351,7 +352,7 @@ DISAGREE: list[Callable[[FirstRead], FirstRead]] = [
 ]
 
 
-@pytest.mark.parametrize('change', DISAGREE)
+@pytest.mark.parametrize('change', DISAGREE, ids=['another pass', 'a skip become a tier', 'a date', 'a style'])
 def test_two_reads_disagree_on_a_pass_a_skip_a_date_or_a_style(change: Callable[[FirstRead], FirstRead]) -> None:
     assert tickets.meaning(read()) != tickets.meaning(change(read()))
 
@@ -1312,3 +1313,59 @@ def test_a_first_read_follows_what_its_tickets_names_say(
 def test_a_first_read_that_follows_its_tickets_names_passes(names: list[str], kind: PassKind, days: int | None) -> None:
     fr, rows = one_pass(*names, kind=kind, days=days)
     assert tickets.rules_problems(fr, {r.key: r for r in rows}) == []
+
+
+type Command = Callable[..., str]
+
+
+@pytest.fixture
+def command(
+    files: Path, memory: Memory, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> Command:
+    """A ticket command as its command line runs it, on a festival with one read logged; what it prints."""
+    fest = festival(page=PAGE, log=(entry(ROWS),))
+
+    def festivals(
+        db: sqlite3.Connection, today: str, only: int | None = None, *, every: bool = False
+    ) -> list[tickets.Festival]:
+        return [fest]
+
+    monkeypatch.setattr(tickets, 'festivals', festivals)
+    monkeypatch.setattr(tickets, 'src_db', lambda: contextlib.nullcontext(memory()))
+
+    def run(*args: object) -> str:
+        monkeypatch.setattr('sys.argv', ['tickets', *map(str, args)])
+        _ = capsys.readouterr()
+        tickets.main()
+        return capsys.readouterr().out
+
+    return run
+
+
+def test_a_first_read_is_drafted_checked_and_recorded_by_its_commands(files: Path, command: Command) -> None:
+    assert command('check', 7).startswith('7: passes; ')  # the first read recorded before
+    assert 'Fill passes, skipped and rule_quotes' in command('draft', 7)
+    assert (files / 'drafts' / '7.prompt.md').read_text().startswith(prompt.current('first_read').text)
+    with pytest.raises(SystemExit, match='exists; delete it'):
+        _ = command('draft', 7)
+    with pytest.raises(SystemExit, match='passes'):
+        _ = command('check', 7)  # the draft as made has no pass yet
+    draft_file(files, read())
+    assert command('check', 7).startswith('7: passes; ')
+    assert command('record', 7).startswith('7: 2 prices recorded, read 2026-10-01\nThen: uv run -m pipeline.extract')
+    assert not (files / 'drafts' / '7.json').exists()
+
+
+def test_todo_lists_what_a_festival_needs_and_what_all_wait_for(command: Command) -> None:
+    out = command('todo')
+    assert out.startswith('7  2027-02-05  Fest\n')
+    assert 'first read needed, none: ' in out
+    assert f'      {PAGE}\n' in out
+    assert '\nwaits for: 1 ' in out
+
+
+def test_changes_name_what_a_read_found_new_or_different(command: Command) -> None:
+    assert command('changes', 7) == ''  # one read: nothing to compare yet
+    tickets.append(7, entry(changed(ROWS, 2, amount=130.0, price='€130.00'), at=stamp(2)))
+    assert command('changes', 7) == command('changes')
+    assert '7  2026-10-02  ' in command('changes', 7)

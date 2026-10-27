@@ -6,3 +6,5 @@ pipeline/tickets/drafts/
 node_modules/
 docs/js/
 .vitest/
+.coverage
+.coverage.*

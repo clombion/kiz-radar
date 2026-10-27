@@ -29,6 +29,13 @@ ROOT = Path(__file__).parent.parent
         lambda: State('price', 'priced', 'x', Disposition.CARD, link='page'),  # a link that is no Link  # pyright: ignore[reportArgumentType]
         lambda: State('price', 'priced', 'x', Disposition.CARD, forms=3),  # forms that are no mapping  # pyright: ignore[reportArgumentType]
     ],
+    ids=[
+        'a field missing',
+        'a disposition that is a string',
+        'wording no string',
+        'a link no Link',
+        'forms no mapping',
+    ],
 )
 def test_a_row_with_a_missing_or_wrong_typed_field_fails(make: Callable[[], State]) -> None:
     with pytest.raises(ValidationError):
