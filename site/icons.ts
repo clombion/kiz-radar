@@ -1,6 +1,6 @@
 // Line icons from Lucide (lucide.dev, ISC licence), inlined so the page needs no icon font, by their Lucide names.
 // Which feature shows which, and in what words, is pipeline/states.py's.
-import { iconOf, type Key, text, where } from './wording.ts';
+import { iconOf, type Key, type KeysWhere, text, where } from './wording.ts';
 
 const svg = (inner: string): string =>
   `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inner}</svg>`;
@@ -79,8 +79,9 @@ export function icon(feature: Key<'feature'>): string {
 
 // Features that tell festivals apart as [key, words, icon], in the order they matter to someone deciding whether to
 // go: those a card shows, and the rest, shown once a card is open.
-// a feature as [key, words, icon]
-export type Trait = readonly [Key<'feature'>, string, string];
-const trait = (key: Key<'feature'>): Trait => [key, text('feature', key) ?? key, icon(key)];
+// the features a page shows
+type Shown = KeysWhere<'feature', 'card' | 'view'>;
+export type Trait = readonly [Shown, string, string];
+const trait = (key: Shown): Trait => [key, text('feature', key), icon(key)];
 export const TRAITS = where('feature', 'card').map(trait);
 export const MORE_TRAITS = where('feature', 'view').map(trait);

@@ -242,14 +242,14 @@ function tagEntries(pool: readonly Festival[]): Indexed[] {
     })),
     {
       key: 'taxi',
-      name: text('feature', KEY.feature.TAXI_DANCERS) ?? '',
+      name: text('feature', KEY.feature.TAXI_DANCERS),
       params: { taxi: 1 },
       test: (e) => e.taxi_dancers === true,
       icon: icon(KEY.feature.TAXI_DANCERS),
     },
     {
       key: 'allin',
-      name: text('feature', KEY.feature.ALL_IN_ONE) ?? '',
+      name: text('feature', KEY.feature.ALL_IN_ONE),
       params: { allin: 1 },
       test: (e) => e.all_in_one === true,
       icon: icon(KEY.feature.ALL_IN_ONE),

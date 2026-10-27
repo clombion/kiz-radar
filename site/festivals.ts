@@ -112,7 +112,7 @@ export const styleLine = (e: Pick<Festival, 'styles'>): string =>
 // so it narrows nothing; taxi dancers and the all-in-one hotel have checkboxes of their own.
 type With = Key<'genre'> | Key<'feature'>;
 export const WITH = new Map<With, string>([
-  ...DANCES.filter((k) => k !== KEY.genre.KIZOMBA).map((k): [With, string] => [k, text('genre', k) ?? k]),
+  ...DANCES.filter((k) => k !== KEY.genre.KIZOMBA).map((k): [With, string] => [k, text('genre', k)]),
   ...[...TRAITS, ...MORE_TRAITS]
     .filter(([k]) => k !== KEY.feature.TAXI_DANCERS)
     .map(([k, words]): [With, string] => [k, words]),

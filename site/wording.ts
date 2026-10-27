@@ -36,10 +36,16 @@ export const iconOf = <P extends Point>(point: P, key: Key<P>): string => {
 // what a state's words link to (LINK.PAGE, LINK.PASSES), or null
 export const linkOf = <P extends Point>(point: P, key: Key<P>): string | null => row(point, key).link;
 // in table order, the states of a point with one of these dispositions
-export const where = <P extends Point>(point: P, ...dispositions: Disposition[]): Key<P>[] =>
-  Object.keys(TABLE[point]).filter(
-    (k): k is Key<P> => isKey(point, k) && dispositions.includes(row(point, k).disposition),
+// the states of a point with one of these dispositions, by type as the generated table has them
+export type KeysWhere<P extends Point, D extends Disposition> = {
+  [K in Key<P>]: Table[P][K] extends { disposition: D } ? K : never;
+}[Key<P>];
+export const where = <P extends Point, D extends Disposition>(point: P, ...dispositions: D[]): KeysWhere<P, D>[] => {
+  const shown: readonly Disposition[] = dispositions;
+  return Object.keys(TABLE[point]).filter(
+    (k): k is KeysWhere<P, D> => isKey(point, k) && shown.includes(row(point, k).disposition),
   );
+};
 
 // a value's place in words, {name}: the words split around them, and one's name
 const VALUES = /(?<value>\{\w+\})/u;
@@ -69,9 +75,22 @@ export function say<P extends Point, K extends Key<P>>(
       return values[name] ?? null;
     });
 }
-export const text = <P extends Point, K extends Key<P>>(
+// what text gives: a form's words, or the state's own words, a string when the table has them for every state key
+// may be, else possibly null
+type Said<P extends Point, K extends Key<P>, F> =
+  | (undefined extends F
+      ? K extends Key<P>
+        ? Table[P][K] extends { wording: string }
+          ? string
+          : null
+        : never
+      : never)
+  | ([Exclude<F, undefined>] extends [never] ? never : string);
+export const text = <P extends Point, K extends Key<P>, F extends Form<P, K> | undefined = undefined>(
   point: P,
   key: K,
   values?: Readonly<Record<string, Kid>>,
-  form?: Form<P, K>,
-): string | null => say(point, key, values, form)?.join('') ?? null;
+  form?: F,
+): Said<P, K, F> =>
+  // biome-ignore lint/nursery/noUnsafeTypeAssertion: say gives the words exactly when the generated table has them, which Said reads
+  (say(point, key, values, form)?.join('') ?? null) as Said<P, K, F>;

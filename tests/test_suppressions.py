@@ -44,6 +44,7 @@ SITE_ALLOWED = Counter(
         ('docs/css/site.css', 'lint/complexity/noImportantStyles'): 1,
         ('site/festivals.ts', 'lint/nursery/noUnsafeTypeAssertion'): 1,
         ('site/rows.ts', 'lint/nursery/noUnsafeTypeAssertion'): 1,
+        ('site/wording.ts', 'lint/nursery/noUnsafeTypeAssertion'): 1,
         ('tests/site/states.test.ts', '@ts-expect-error'): 2,
     }
 )

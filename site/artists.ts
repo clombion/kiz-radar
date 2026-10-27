@@ -40,11 +40,11 @@ const roleWords = (roles: string) =>
 
 const ROLES: [string, string][] = [
   ['', 'Everyone'],
-  ...[KEY.role.TEACHER, KEY.role.DJ].map((r): [string, string] => [r, text('role', r) ?? r]),
+  ...[KEY.role.TEACHER, KEY.role.DJ].map((r): [string, string] => [r, text('role', r)]),
 ];
 const KINDS: [string, string][] = [
   ['', 'People and couples'],
-  ...where('artist_kind', 'view').map((k): [string, string] => [k, text('artist_kind', k) ?? k]),
+  ...where('artist_kind', 'view').map((k): [string, string] => [k, text('artist_kind', k)]),
 ];
 // each order's words and its SQL
 const ORDERS: Readonly<Record<string, readonly [string, string]>> = {

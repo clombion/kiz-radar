@@ -117,9 +117,7 @@ export function openPasses(e: { id: number; title: string; url: string } & Price
     .join(' ');
   v.link.href = page ? page.page : e.url;
   v.link.replaceChildren(
-    page?.reseller ??
-      text('pass_source', page ? KEY.pass_source.TICKET_PAGE : KEY.pass_source.DESCRIPTION, {}, 'link') ??
-      '',
+    page?.reseller ?? text('pass_source', page ? KEY.pass_source.TICKET_PAGE : KEY.pass_source.DESCRIPTION, {}, 'link'),
     away(),
   );
   const day = today();
