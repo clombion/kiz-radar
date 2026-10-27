@@ -42,7 +42,8 @@
     "A$": "AUD",
     "NZ$": "NZD",
     "R$": "BRL",
-    "CHF": "CHF"
+    "CHF": "CHF",
+    "$": "USD"
   },
   "row": "[data-testid='ticket-display-card-content-full-size']:has(select[id^='ticket-quantity-selector-']), [data-testid='multiple-ticket-variants-card']:has(select[id^='ticket-quantity-selector-'])",
   "api": null,
