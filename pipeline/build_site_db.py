@@ -11,24 +11,22 @@ pipeline/states.py).
 import argparse
 import collections
 import datetime as dt
-import difflib
 import itertools
 import json
 import math
-import re
 import sqlite3
 import sys
 import unicodedata
 from collections.abc import Sequence
 from dataclasses import dataclass, field
-from pathlib import Path
 
+from pipeline import ROOT, enums, states
 from pipeline import db as sqlite_db
-from pipeline import enums, states
 from pipeline.airports import AIRPORTS, HOME
 from pipeline.countries import NAMES, codes
 from pipeline.enums import Feature, Genre, HomeBasis, PassKind, People, Role, Style
 from pipeline.extract.prices import COUPLE
+from pipeline.names import norm, sim
 from pipeline.records import (
     ArtistMergeRow,
     Booking,
@@ -44,7 +42,6 @@ from pipeline.records import (
 )
 from pipeline.text import soften_caps, tidy_name, tidy_title
 
-ROOT = Path(__file__).parent.parent
 DATA = ROOT / 'docs' / 'data'
 OUT = DATA / 'kiz.sqlite'
 SITE_JSON = DATA / 'site.json'  # what the page shows before the database loads
@@ -186,15 +183,6 @@ def stored_by_key(x: sqlite3.Connection) -> None:
     _ = x.execute('pragma legacy_alter_table = off')
 
 
-def norm_name(s: str) -> str:
-    s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode().lower()
-    return re.sub(r'^(dj|mc|mr|dr|doctor)\s+', '', re.sub(r'[^a-z0-9 ]', '', s)).strip()
-
-
-def sim(a: str, b: str) -> float:
-    return difflib.SequenceMatcher(None, a, b).ratio()
-
-
 @dataclass
 class Artists:
     """The artists as the site has them: each source key's artist, and the artists folded into others."""
@@ -226,7 +214,7 @@ def merged(x: sqlite3.Connection) -> tuple[Artists, int]:
         'select cm.couple_id, cm.member_id, a.display_name from couple_members cm join artists a on a.id = cm.member_id'
     ).fetchall()
     for cid, mid, name in names:
-        members_of[cid].append((mid, norm_name(name)))
+        members_of[cid].append((mid, norm(name)))
     for r in merge_rows:
         keep, merge = found.key_id.get(r.keep_key), found.key_id.get(r.merge_key)
         if not keep or not merge:

@@ -9,7 +9,8 @@ import tokenize
 from collections import Counter
 from pathlib import Path
 
-ROOT = Path(__file__).parent.parent
+from pipeline import ROOT
+
 NOQA = re.compile(r'# noqa: (?P<rules>[A-Z]+\d+(?:, [A-Z]+\d+)*) \((?P<reason>[^)]+)\)$')
 PYRIGHT = re.compile(r'# pyright: ignore\[(?P<rules>\w+(?:, \w+)*)\]$')
 SUPPRESSION = re.compile(r'# (?:noqa|pyright: ?ignore|type: ?ignore)[^#]*')

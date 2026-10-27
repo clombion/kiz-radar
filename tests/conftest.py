@@ -10,10 +10,8 @@ from pathlib import Path
 
 import pytest
 
-from pipeline import prompt, spend
+from pipeline import ROOT, prompt, spend
 from tests.fakes import Memory
-
-ROOT = Path(__file__).parent.parent
 
 
 def data_status() -> str:

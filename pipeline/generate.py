@@ -13,9 +13,8 @@ import sys
 from collections.abc import Callable
 from pathlib import Path
 
-from pipeline import states
+from pipeline import ROOT, states
 
-ROOT = Path(__file__).parent.parent
 STATES_MD = ROOT / 'pipeline' / 'STATES.md'
 BEGIN = '<!-- generated from pipeline/states.py (states.points_table): mise run generate -->'
 END = '<!-- points:end -->'

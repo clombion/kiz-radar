@@ -6,18 +6,15 @@ import dataclasses
 import json
 import re
 from collections.abc import Callable, Sequence
-from pathlib import Path
 
 import pytest
 from pydantic import ValidationError
 
-from pipeline import enums, exceptions, generate, prompt, states
+from pipeline import ROOT, enums, exceptions, generate, prompt, states
 from pipeline.enums import PassKind, People, Price, Sales, Style, Waiting
 from pipeline.extract import prices
 from pipeline.records import LOG_ENTRY, PricedPass, PricedTier
 from pipeline.states import Disposition, Link, State
-
-ROOT = Path(__file__).parent.parent
 
 
 @pytest.mark.parametrize(

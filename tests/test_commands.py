@@ -16,9 +16,8 @@ from pathlib import Path
 import pytest
 from pydantic import BaseModel, ConfigDict, Field
 
-from pipeline import db
+from pipeline import ROOT, db
 
-ROOT = Path(__file__).parent.parent
 SOURCES = [
     *sorted((ROOT / '.github' / 'workflows').glob('*.yml')),
     ROOT / 'README.md',

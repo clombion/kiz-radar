@@ -6,10 +6,8 @@ from pathlib import Path
 
 import pytest
 
-from pipeline import audit
+from pipeline import ROOT, audit
 from pipeline.records import CsvRow, number_text
-
-ROOT = Path(__file__).parent.parent
 
 
 @pytest.mark.parametrize('value', [80.0, 80.5, 8.25, 12999.99, 129999.5, 1234567.0, 0.1 + 0.2])

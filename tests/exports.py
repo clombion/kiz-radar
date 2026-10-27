@@ -9,9 +9,9 @@ from pathlib import Path
 
 import pytest
 
+from pipeline import ROOT
 from pipeline import db as sqlite_db
 
-ROOT = Path(__file__).parent.parent
 EXPORT = max((ROOT / 'source').glob('*.sqlite'), key=lambda p: p.stat().st_mtime)
 # the tables that hold when a step ran, which a second run changes and nothing else should, read without it
 WITHOUT_WHEN = {

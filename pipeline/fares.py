@@ -27,17 +27,16 @@ import sys
 import time
 import zlib
 from dataclasses import dataclass
-from pathlib import Path
 from typing import NamedTuple
 
 from pydantic import BaseModel, ConfigDict, ValidationError
 
+from pipeline import ROOT
 from pipeline import db as sqlite_db
 from pipeline.airports import HOME
 from pipeline.enums import FareSearch
 from pipeline.records import Date, Fare, Job, Record, now
 
-ROOT = Path(__file__).parent.parent
 DATA = ROOT / 'docs' / 'data'
 FARES, JOBS = DATA / 'fares.csv', ROOT / 'pipeline' / 'fare_jobs.csv'
 FLI_SHA = '881aee5ff4321e81ea2157cb44be94ce6a21dc1b'  # punitarani/fli, the only place the version is pinned

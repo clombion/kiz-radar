@@ -10,6 +10,7 @@ import pytest
 from pipeline import fares
 from pipeline.enums import FareSearch
 from pipeline.records import today
+from tests.fakes import no_wait
 
 FRIDAY = dt.date(2026, 11, 6)  # a festival weekend's
 
@@ -125,10 +126,6 @@ def weekends(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
 
 def two_weekends(_: dt.date) -> set[tuple[str, dt.date]]:
     return {('GLA', SOON), ('LIS', SOON)}
-
-
-def no_wait(_: float) -> None:
-    """time.sleep, without the wait."""
 
 
 def searched(found: dict[str, fares.Fare | fares.Missed]) -> Callable[[str, dt.date], fares.Fare | fares.Missed]:

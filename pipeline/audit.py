@@ -20,7 +20,7 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
-from pipeline import exceptions, tables, tickets
+from pipeline import ROOT, exceptions, tables, tickets
 from pipeline import prompt as prompts
 from pipeline.exceptions import Override
 from pipeline.extract import answers
@@ -50,8 +50,6 @@ from pipeline.records import (
     errors,
     today,
 )
-
-ROOT = tickets.ROOT
 
 # each CSV file the steps share, by the record of its rows
 FILES: dict[str, type[CsvRow]] = {

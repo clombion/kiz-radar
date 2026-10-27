@@ -74,8 +74,8 @@ from urllib.parse import urlparse
 import anthropic
 from pydantic import TypeAdapter, ValidationError
 
+from pipeline import ROOT, exceptions, spend, states
 from pipeline import db as sqlite_db
-from pipeline import exceptions, spend, states
 from pipeline import prompt as prompts
 from pipeline.enums import FirstRead as FirstReadState
 from pipeline.enums import PassKind, Recheck, Sales, SkipReason, Status, Style, Waiting
@@ -116,7 +116,6 @@ from pipeline.records import (
     today,
 )
 
-ROOT = Path(__file__).parent.parent
 HERE = ROOT / 'pipeline' / 'tickets'
 SITES, READS, DRAFTS, LOG, DISPUTED = (HERE / d for d in ('sites', 'reads', 'drafts', 'log', 'disputed'))
 PRICES_CSV, PAGES_CSV = ROOT / 'pipeline' / 'pass_prices.csv', ROOT / 'pipeline' / 'ticket_pages.csv'

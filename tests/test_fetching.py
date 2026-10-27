@@ -14,6 +14,7 @@ from pipeline import geocode, rates, scrape, web
 from pipeline.records import JSON, Place, Rate, Spot, today
 from tests import jsons
 from tests.exports import column, content, run, trimmed
+from tests.fakes import no_wait
 from tests.samples import API, PAGE
 
 ECB_DAY = dt.date(2026, 10, 27)
@@ -60,10 +61,6 @@ def test_the_rates_stay_as_they_were_when_the_bank_gives_none(
     with pytest.raises(SystemExit, match='left as it was'):
         run(rates.main, monkeypatch)
     assert out.read_text() == 'currency,per_eur,date\nNOK,11,2026-10-01\n'
-
-
-def no_wait(_: float) -> None:
-    """time.sleep, without the wait."""
 
 
 @dataclass

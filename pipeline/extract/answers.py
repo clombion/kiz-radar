@@ -14,6 +14,7 @@ from pathlib import Path
 
 from pydantic import BaseModel, ConfigDict
 
+from pipeline import ROOT
 from pipeline import prompt as prompts
 from pipeline.prompt import Pass, Prompt
 from pipeline.records import Asked, Batch, CsvRow, Entry, Stamp, now
@@ -63,7 +64,7 @@ def log() -> dict[str, Logged]:
 def logged(known: dict[str, Logged], rel: str) -> Logged:
     """The log's row for an answer file (rel, relative to answers/), which every answer file has."""
     if rel not in known:
-        raise SystemExit(f'{rel} is not in {LOG.relative_to(HERE.parent.parent)}')
+        raise SystemExit(f'{rel} is not in {LOG.relative_to(ROOT)}')
     return known[rel]
 
 

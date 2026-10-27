@@ -1,7 +1,6 @@
-import pathlib
-
 import pytest
 
+from pipeline import ROOT
 from pipeline.text import soften_caps, tidy_name, tidy_title
 
 
@@ -54,5 +53,5 @@ def test_venue() -> None:
 
 
 def test_home_airport_is_only_named_in_airports_csv() -> None:
-    pipeline = pathlib.Path(__file__).parent.parent / 'pipeline'
+    pipeline = ROOT / 'pipeline'
     assert [p.name for p in pipeline.glob('*.py') if "'BGO'" in p.read_text() or '"BGO"' in p.read_text()] == []

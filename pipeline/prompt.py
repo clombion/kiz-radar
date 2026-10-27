@@ -22,14 +22,13 @@ from functools import cache, cached_property
 from pathlib import Path
 from typing import Literal
 
-from pipeline import records, states
+from pipeline import ROOT, records, states
 from pipeline.records import Asked, AskedPrices, Batch, Entry, Extracted, Json, Priced, Record, RoomsGenres
 
 type Schema = dict[str, Json]
 type PassName = Literal['extract', 'rooms_genres', 'prices']
 type Name = PassName | Literal['first_read']
 
-ROOT = Path(__file__).parent.parent
 ASKED = ROOT / 'pipeline' / 'prompts' / 'asked'
 CHECKED, SENT = '\n\n======== schema as checked ========\n\n', '\n\n======== schema as sent ========\n\n'
 EXTRACT_DIR, TICKETS_DIR = ROOT / 'pipeline' / 'extract', ROOT / 'pipeline' / 'tickets'

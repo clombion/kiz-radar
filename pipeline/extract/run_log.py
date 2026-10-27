@@ -17,7 +17,6 @@ from pipeline import prompt as prompts
 from pipeline.records import now
 
 HERE = Path(__file__).parent
-ROOT = HERE.parent.parent
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS prompts (

@@ -19,20 +19,17 @@ suggestion, copy its row into artist_merges.csv with decision "merge" or "separa
 import argparse
 import collections
 import datetime as dt
-import difflib
-import re
 import sqlite3
-import unicodedata
 from collections.abc import Callable
 from dataclasses import dataclass, field
-from pathlib import Path
 
+from pipeline import ROOT
 from pipeline import db as sqlite_db
 from pipeline.countries import codes
 from pipeline.extract.prices import COUPLE
+from pipeline.names import norm, sim
 from pipeline.records import ArtistMergeRow, Suggestion
 
-ROOT = Path(__file__).parent.parent
 OUT = ROOT / 'pipeline' / 'artist_merge_suggestions.csv'
 MERGES = ROOT / 'pipeline' / 'artist_merges.csv'
 COUNTRY_BONUS, COUNTRY_PENALTY = 0.1, 0.25  # score = name similarity, adjusted by country of origin …
@@ -41,16 +38,6 @@ SHORT_EVENT_DAYS = 4  # longer events (week-long all-in-ones) never count as a c
 SIMILAR, SIMILAR_IF_ONE_SAME = 0.72, 0.6  # how alike both of two couples' names must be, or one when the other is
 # French overseas territories count as France: artists list either.
 FR_TERRITORIES = {'RE', 'GP', 'MQ', 'GF', 'YT', 'MF', 'BL', 'NC', 'PF', 'PM', 'WF'}
-
-
-def norm(s: str) -> str:
-    s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode().lower()
-    s = re.sub(r'[^a-z0-9 ]', '', s)
-    return re.sub(r'^(dj|mc|mr|dr|doctor)\s+', '', s).strip()
-
-
-def sim(a: str, b: str) -> float:
-    return difflib.SequenceMatcher(None, a, b).ratio()
 
 
 def decided() -> tuple[set[frozenset[str]], Callable[[str], str]]:
