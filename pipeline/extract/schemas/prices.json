@@ -13,7 +13,7 @@
       "type": "string"
     },
     "prompt_version": {
-      "const": "prices-v5"
+      "const": "prices-v6"
     },
     "events": {
       "type": "array",

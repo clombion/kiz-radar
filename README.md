@@ -195,7 +195,7 @@ judgment about a page is made once, by an agent or two models, and checked; ever
   (`.gitattributes`), so a session and the monthly run never conflict.
 - **A first read per festival** (`pipeline/tickets/reads/<event_id>.json`, schema `read.json`) says, from one logged
   read and the festival's description, which pass each ticket is, in the prices pass's terms (prompt
-  `pipeline/tickets/prompts/first-read-v3.md` on top of `prices-v5`): every ticket is in a tier, by its key, or
+  `pipeline/tickets/prompts/first-read-v4.md` on top of `prices-v6`): every ticket is in a tier, by its key, or
   skipped; dates, ticket limits and price notes are quoted from the description or the ticket's name. Only checked
   first reads are kept there: an agent fills a draft (`pipeline/tickets/drafts/`, not committed), which `record`
   moves there once it passes.
@@ -292,10 +292,11 @@ Line-ups, highlights from descriptions, rooms, genres and pass prices are read f
 about, one festival and one pass at a time, with that pass's prompt (`pipeline/extract/prompts/`) and its schema as
 the required answer format. A checker then confirms that the answer has the right shape, and that every name,
 quote and price appears in the description. A failing answer goes back to Claude once, with the checker's
-lines. A second failure leaves the festival pending, to try again next month. A new prompt version is asked again of every
-festival on the next monthly run; when it changes the answers of a few festivals only, start
-**Refresh events** by hand with their ids in `festivals` ("16909,18806"): it skips the scrape, and asks and reads
-those festivals only (`ask.py --only`, `tickets.py run --only`). The answers are saved in
+lines. A second failure leaves the festival pending, to try again next month. A new prompt version makes every answer to the older one, and
+every first read when the first-read prompt changes, wait to be asked again, out of the database until then; so
+start **Refresh events** by hand once it is pushed, before anything reloads the database. Started with festival ids
+in `festivals` ("16909,18806"), it skips the scrape, and asks and reads those festivals only (`ask.py --only`,
+`tickets.py run --only`): after a fixed recipe, say, or to try a prompt on a few festivals first. The answers are saved in
 `pipeline/extract/answers/` and committed; `answers/log.csv` says who answered each file and when. The first
 extraction's answers, from Claude Code subagents, are kept there too; rebuilding from them reproduces the
 export's tables exactly.

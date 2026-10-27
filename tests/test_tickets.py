@@ -35,7 +35,7 @@ def tier(*keys, until=None, quantity=None, quote=None):
 
 
 def read(passes=None, skipped=('5',), description='Prices rise on 1 December.', rule_quotes=()):
-    return {'event_id': 7, 'title': 'Fest', 'start_date': '2027-02-05', 'read_by': 'agent', 'prompt_version': 'first-read-v3',
+    return {'event_id': 7, 'title': 'Fest', 'start_date': '2027-02-05', 'read_by': 'agent', 'prompt_version': tickets.PROMPT,
             'rows_at': AT,
             'description': description,
             'passes': passes or [{'kind': 'full', 'style': None, 'label_quote': 'Fullpass', 'group_size': 1, 'days': None,
@@ -522,7 +522,7 @@ def test_first_reads_count_against_the_budget(files):
 
 
 @pytest.mark.parametrize('version, style, ok', [
-    ('first-read-v3', 'kizomba', True), ('first-read-v3', None, True), ('first-read-v3', ..., False),
+    (tickets.PROMPT, 'kizomba', True), (tickets.PROMPT, None, True), (tickets.PROMPT, ..., False),
     ('first-read-v2', ..., False),          # an older read: made again, never loaded
 ])
 def test_a_first_read_names_each_pass_style_and_follows_the_current_prompt(version, style, ok):
@@ -546,7 +546,7 @@ def test_a_first_read_made_for_an_older_prompt_is_made_again(files):
     old = read() | {'prompt_version': 'first-read-v2'}
     del old['passes'][0]['style']
     f = {'first_read': old, 'log': tickets.log(7), 'description_text': old['description']}
-    assert tickets.why_first_read(f, '2026-11-01')[0] == 'the first read follows first-read-v2, not first-read-v3'
+    assert tickets.why_first_read(f, '2026-11-01')[0] == f'the first read follows first-read-v2, not {tickets.PROMPT}'
     f['first_read'] = read()
     assert tickets.why_first_read(f, '2026-11-01')[0] is None
 

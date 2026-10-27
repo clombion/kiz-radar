@@ -34,7 +34,7 @@
       "minLength": 1
     },
     "prompt_version": {
-      "const": "first-read-v3",
+      "const": "first-read-v4",
       "description": "A read for an older prompt means something else: it is made again (tickets.py run)."
     },
     "rows_at": {
