@@ -102,6 +102,7 @@ export function sentenceView(root, qs, { signal, data }) {
   const dance = h('span', { class: 'dance' }, DANCES.map(d => h('span', {}, d)));
   const n = h('span', { class: 'article-n' }, 'n');
   const hero = h('header', { class: 'sentence-hero arriving' },
+    h('p', { class: 'kicker', 'aria-hidden': 'true' }, 'Kiz Radar'),      // a phone's header shows only the logo
     h('p', { class: 'sentence' }, 'I want to go to a',
       h('span', { 'aria-hidden': 'true' }, n, ' ', dance), h('span', { class: 'visually-hidden' }, ' ', text('genre', KEY.genre.KIZOMBA)),
       h('br', { class: 'phone-break' }), festivalIn,

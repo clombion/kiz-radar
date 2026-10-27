@@ -14,7 +14,11 @@ under Filters. The choices live in the URL, so a view can be bookmarked or share
 
 The header's tabs are Festivals, Friends and Explore, whose second row holds the Map, Artists and Countries. On a touch
 screen, a swipe left or right goes to the next or previous of those five, in that order (`SECTIONS` in
-`docs/js/routes.js`); a swipe on the map moves the map, and one on the header still changes section.
+`docs/js/routes.js`); on the map, a swipe counts from near the screen's sides, and one from the very edge is left to the
+phone's back gesture. Going to another section, by a swipe or a tab, the page slides in from that side, and the oval
+behind the current tab reaches a thin arm out to the next one and gathers itself around it, the way a slime takes in
+what it touches (`docs/js/tabs.js`); with reduced motion, both change at once. On a phone the header shows only the
+logo, so the site's name stands above the sentence.
 
 The price is the trip's: the full pass at today's price plus the Friday-to-Monday return flight. "A cheap price" is
 under 3 000 kr (€300, $350) and "a reasonable price" under 5 000 kr (€500, $550). With a price chosen, festivals whose
