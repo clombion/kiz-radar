@@ -1,12 +1,13 @@
 {
  "batch": "event-18359",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18359,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -58,6 +59,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": null,
@@ -95,6 +97,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": null,
@@ -118,6 +121,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -136,6 +140,20 @@
        "sold_out": true,
        "current": false,
        "quote": "– 10 EARLY BIRD 𝐿𝑒𝑎𝑑𝑒𝑟 … 50€ ❌"
+      },
+      {
+       "amount": 50,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": 10,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "– 10 EARLY BIRD 𝐹𝑜𝑙𝑙𝑜𝑤 …. 50€ ❌"
       }
      ]
     }

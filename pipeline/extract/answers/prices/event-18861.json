@@ -1,12 +1,13 @@
 {
  "batch": "event-18861",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18861,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -72,6 +73,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "HEBERGEMENT:",
      "group_size": 2,
      "days": null,

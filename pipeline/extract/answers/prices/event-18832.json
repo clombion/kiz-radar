@@ -1,12 +1,13 @@
 {
  "batch": "event-18832",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18832,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "FULL PASS Pricing:",
      "group_size": 1,
      "days": 3,
@@ -24,7 +25,7 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "290 PLN/person – sold out"
+       "quote": "1. 290 PLN/person – sold out"
       },
       {
        "amount": 320,
@@ -34,11 +35,11 @@
        "alt_currency": null,
        "from": null,
        "until": null,
-       "quantity": null,
+       "quantity": 10,
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "320 PLN/person (10 couples) – sold out"
+       "quote": "2. 320 PLN/person (10 couples) – sold out"
       },
       {
        "amount": 350,
@@ -52,7 +53,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "350 PLN/person – September/October/November"
+       "quote": "3. 350 PLN/person – September/October/November"
       },
       {
        "amount": 380,
@@ -66,7 +67,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "380 PLN/person – December/January"
+       "quote": "4. 380 PLN/person – December/January"
       },
       {
        "amount": 410,
@@ -80,7 +81,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "410 PLN/person – February"
+       "quote": "5. 410 PLN/person – February"
       },
       {
        "amount": 430,
@@ -94,7 +95,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "430 PLN/person – March"
+       "quote": "6. 430 PLN/person – March"
       },
       {
        "amount": 450,
@@ -108,12 +109,14 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "450 PLN/person – at the door"
+       "quote": "7. 450 PLN/person – at the door"
       }
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "multiply the amount by 2"
+   ]
   }
  ]
 }

@@ -1,12 +1,13 @@
 {
  "batch": "event-18180",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18180,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "FULL PASS (Access to all workshops, Shows and parties",
      "group_size": 1,
      "days": null,

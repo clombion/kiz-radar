@@ -1,12 +1,13 @@
 {
  "batch": "event-17853",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17853,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -23,13 +24,14 @@
        "quantity": null,
        "door": false,
        "sold_out": false,
-       "current": true,
+       "current": false,
        "quote": "✨FullPass $190"
       }
      ]
     },
     {
      "kind": "party",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -46,7 +48,7 @@
        "quantity": null,
        "door": false,
        "sold_out": false,
-       "current": true,
+       "current": false,
        "quote": "✨PartyPass $160✨"
       }
      ]

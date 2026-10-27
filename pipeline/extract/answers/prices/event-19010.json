@@ -1,15 +1,16 @@
 {
  "batch": "event-19010",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 19010,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "FULL PASSES",
      "group_size": 1,
-     "days": null,
+     "days": 5,
      "includes_hotel": false,
      "tiers": [
       {
@@ -43,9 +44,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "Passes will cost more at the door"
-   ]
+   "rule_quotes": []
   }
  ]
 }

@@ -1,13 +1,14 @@
 {
  "batch": "event-16768",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16768,
    "passes": [
     {
      "kind": "package",
-     "label_quote": "FULLPASS",
+     "style": null,
+     "label_quote": "✪ FULLPASS",
      "group_size": 1,
      "days": null,
      "includes_hotel": true,
@@ -30,6 +31,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "✪ EXCURSIONS (from 26Oct to 30Oct )",
      "group_size": 1,
      "days": null,
@@ -53,7 +55,8 @@
     },
     {
      "kind": "full",
-     "label_quote": "✪ Dance Pass : including parties, socials, workshops & conference.",
+     "style": null,
+     "label_quote": "Dance Pass",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,

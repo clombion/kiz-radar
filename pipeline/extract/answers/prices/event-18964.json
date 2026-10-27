@@ -1,12 +1,13 @@
 {
  "batch": "event-18964",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18964,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -61,7 +62,7 @@
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": "10-31",
+       "until": "10-30",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -86,7 +87,8 @@
     },
     {
      "kind": "full",
-     "label_quote": "★FIRST 10 FULL COUPLE PASSES",
+     "style": null,
+     "label_quote": null,
      "group_size": 2,
      "days": null,
      "includes_hotel": false,
@@ -140,7 +142,7 @@
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": "10-31",
+       "until": "10-30",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -165,6 +167,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 5,
      "days": null,
@@ -188,6 +191,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 10,
      "days": null,
@@ -211,6 +215,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "💫FULL BOARD 🍔🛏️🕺Group deals",
      "group_size": 4,
      "days": null,
@@ -234,6 +239,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "💫FULL BOARD 🍔🛏️🕺Group deals",
      "group_size": 6,
      "days": null,
@@ -257,6 +263,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "💫FULL BOARD 🍔🛏️🕺Group deals",
      "group_size": 8,
      "days": null,
@@ -279,7 +286,9 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "all full board deals are ONLY available until the end of September"
+   ]
   }
  ]
 }

@@ -1,12 +1,13 @@
 {
  "batch": "event-18371",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18371,
    "passes": [
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Triple or Apartment room (per person):",
      "group_size": 1,
      "days": 2,
@@ -58,6 +59,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Triple or Apartment room (per person):",
      "group_size": 1,
      "days": 3,
@@ -109,6 +111,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Triple or Apartment room (per person):",
      "group_size": 1,
      "days": 4,
@@ -160,6 +163,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Double room (per person):",
      "group_size": 1,
      "days": 2,
@@ -211,6 +215,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Double room (per person):",
      "group_size": 1,
      "days": 3,
@@ -262,6 +267,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Double room (per person):",
      "group_size": 1,
      "days": 4,
@@ -313,6 +319,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Single room:",
      "group_size": 1,
      "days": 2,
@@ -364,6 +371,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Single room:",
      "group_size": 1,
      "days": 3,
@@ -415,6 +423,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Single room:",
      "group_size": 1,
      "days": 4,

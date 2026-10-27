@@ -1,12 +1,13 @@
 {
  "batch": "event-16753",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16753,
    "passes": [
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 7,
@@ -24,12 +25,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "SINGLE room (De-luxe Bungalow): 1.755€"
+       "quote": "• SINGLE room (De-luxe Bungalow): 1.755€"
       }
      ]
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 7,
@@ -47,12 +49,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Per person on sharing TWIN (De-luxe Bungalow): 1.440€"
+       "quote": "• Per person on sharing TWIN (De-luxe Bungalow): 1.440€"
       }
      ]
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 7,
@@ -70,12 +73,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "SINGLE room (Quarto Standard): 1.965€"
+       "quote": "• SINGLE room (Quarto Standard): 1.965€"
       }
      ]
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 7,
@@ -93,12 +97,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Per person on sharing TWIN (Quarto Standard): 1.570€"
+       "quote": "• Per person on sharing TWIN (Quarto Standard): 1.570€"
       }
      ]
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 4,
@@ -116,12 +121,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "SINGLE room (De-luxe Bungalow): 735€"
+       "quote": "• SINGLE room (De-luxe Bungalow): 735€"
       }
      ]
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 4,
@@ -139,12 +145,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Per person on sharing TWIN (De-luxe Bungalow): 525€"
+       "quote": "• Per person on sharing TWIN (De-luxe Bungalow): 525€"
       }
      ]
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 4,
@@ -162,12 +169,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "SINGLE room (Standard room): 855€"
+       "quote": "• SINGLE room (Standard room): 855€"
       }
      ]
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 4,
@@ -185,12 +193,14 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Per person on sharing TWIN (Standard room): 615€"
+       "quote": "• Per person on sharing TWIN (Standard room): 615€"
       }
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "EARLY BIRD: €30 discount per person for reservations until 30th March!"
+   ]
   }
  ]
 }

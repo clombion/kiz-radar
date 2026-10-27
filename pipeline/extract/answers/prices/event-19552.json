@@ -1,12 +1,13 @@
 {
  "batch": "event-19552",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 19552,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "🎟️ 𝗕𝗜𝗟𝗟𝗘𝗧𝗧𝗘𝗥𝗜𝗘 🎟️",
      "group_size": 1,
      "days": null,

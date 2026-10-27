@@ -1,12 +1,13 @@
 {
  "batch": "event-18489",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18489,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -30,7 +31,7 @@
     }
    ],
    "rule_quotes": [
-    "Full passes will increase by €5 each month"
+    "Full passes will increase by €5 each month."
    ]
   }
  ]

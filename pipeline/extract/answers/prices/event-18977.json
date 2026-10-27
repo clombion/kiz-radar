@@ -1,12 +1,13 @@
 {
  "batch": "event-18977",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18977,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "▪️FULL PASS",
      "group_size": 1,
      "days": null,
@@ -58,6 +59,7 @@
     },
     {
      "kind": "party",
+     "style": null,
      "label_quote": "▪️SOCIAL PARTY PASS",
      "group_size": 1,
      "days": null,
@@ -109,6 +111,7 @@
     },
     {
      "kind": "party",
+     "style": null,
      "label_quote": "▪️PARTY PASS",
      "group_size": 1,
      "days": null,
@@ -160,6 +163,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "FRIDAY",
      "group_size": 1,
      "days": 1,
@@ -211,6 +215,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "SATURDAY",
      "group_size": 1,
      "days": 1,
@@ -262,6 +267,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "SUNDAY",
      "group_size": 1,
      "days": 1,

@@ -1,13 +1,14 @@
 {
  "batch": "event-16922",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16922,
    "passes": [
     {
      "kind": "full",
-     "label_quote": "EARLY BIRD:",
+     "style": null,
+     "label_quote": "FULL PASS (1st Wave)",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -86,7 +87,8 @@
     },
     {
      "kind": "full",
-     "label_quote": "EARLY BIRD:",
+     "style": null,
+     "label_quote": "FULL PASS (1st Wave)",
      "group_size": 2,
      "days": null,
      "includes_hotel": false,
@@ -165,6 +167,7 @@
     },
     {
      "kind": "party",
+     "style": null,
      "label_quote": "DANCE PASS(SOCIALS AND PARTY)",
      "group_size": 1,
      "days": null,
@@ -188,6 +191,7 @@
     },
     {
      "kind": "party",
+     "style": null,
      "label_quote": "DANCE PASS(SOCIALS AND PARTY)",
      "group_size": 2,
      "days": null,
@@ -211,6 +215,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "PARTY PASS FRIDAY or SUNDAY",
      "group_size": 1,
      "days": 1,
@@ -234,6 +239,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "PARTY PASS FRIDAY or SUNDAY",
      "group_size": 2,
      "days": 1,
@@ -257,6 +263,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "PARTY PASS SATURDAY",
      "group_size": 1,
      "days": 1,
@@ -280,6 +287,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "PARTY PASS SATURDAY",
      "group_size": 2,
      "days": 1,

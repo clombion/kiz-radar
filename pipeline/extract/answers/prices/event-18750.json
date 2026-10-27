@@ -1,13 +1,11 @@
 {
  "batch": "event-18750",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18750,
    "passes": [],
-   "rule_quotes": [
-    "Limited spots. Once they’re gone, the price goes up."
-   ]
+   "rule_quotes": []
   }
  ]
 }

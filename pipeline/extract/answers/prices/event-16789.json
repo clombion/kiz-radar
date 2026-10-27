@@ -1,12 +1,13 @@
 {
  "batch": "event-16789",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16789,
    "passes": [
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,

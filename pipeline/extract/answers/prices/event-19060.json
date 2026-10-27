@@ -1,12 +1,13 @@
 {
  "batch": "event-19060",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 19060,
    "passes": [
     {
      "kind": "full",
+     "style": "bachata",
      "label_quote": "Bachata Full Pass",
      "group_size": 1,
      "days": null,
@@ -100,6 +101,7 @@
     },
     {
      "kind": "full",
+     "style": "kizomba",
      "label_quote": "Kizomba Full Pass",
      "group_size": 1,
      "days": null,

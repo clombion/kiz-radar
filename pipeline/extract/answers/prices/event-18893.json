@@ -1,13 +1,14 @@
 {
  "batch": "event-18893",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18893,
    "passes": [
     {
      "kind": "full",
-     "label_quote": "🎟️ SAMSTAG DA MUXIMA EARLY BIRD FULL PASS",
+     "style": null,
+     "label_quote": "SAMSTAG DA MUXIMA EARLY BIRD FULL PASS",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,

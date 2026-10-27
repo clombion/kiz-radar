@@ -1,12 +1,13 @@
 {
  "batch": "event-16820",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16820,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "🔻PASS/TICKET PRICES :🔻",
      "group_size": 1,
      "days": null,
@@ -24,7 +25,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸Early Bird: £85 + £3 admin fee"
+       "quote": "Early Bird: £85 + £3 admin fee"
       },
       {
        "amount": 98,
@@ -38,7 +39,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸 £95 + £3 admin fee"
+       "quote": "£95 + £3 admin fee"
       },
       {
        "amount": 108,
@@ -52,7 +53,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£105 + £3 admin fee (SINGLE)"
+       "quote": "£105 + £3 admin fee (SINGLE)"
       },
       {
        "amount": 118,
@@ -66,7 +67,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£115 + £3 admin fee (SINGLE)"
+       "quote": "£115 + £3 admin fee (SINGLE)"
       },
       {
        "amount": 128,
@@ -80,7 +81,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£125 + £3 admin fee (SINGLE)"
+       "quote": "£125 + £3 admin fee (SINGLE)"
       },
       {
        "amount": 138,
@@ -94,7 +95,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£135 + £3 admin fee (SINGLE)"
+       "quote": "£135 + £3 admin fee (SINGLE)"
       },
       {
        "amount": 148,
@@ -108,12 +109,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£145 + £3 admin fee (SINGLE)"
+       "quote": "£145 + £3 admin fee (SINGLE)"
       }
      ]
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": null,
@@ -131,7 +133,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£180 + £3 admin fee (COUPLE PASS)"
+       "quote": "£180 + £3 admin fee (COUPLE PASS)"
       },
       {
        "amount": 203,
@@ -145,7 +147,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£200 + £3 admin fee (COUPLE PASS)"
+       "quote": "£200 + £3 admin fee (COUPLE PASS)"
       },
       {
        "amount": 223,
@@ -159,7 +161,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£220 + £3 admin fee (COUPLE PASS)"
+       "quote": "£220 + £3 admin fee (COUPLE PASS)"
       },
       {
        "amount": 243,
@@ -173,7 +175,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£240 + £3 admin fee (COUPLE PASS)"
+       "quote": "£240 + £3 admin fee (COUPLE PASS)"
       },
       {
        "amount": 263,
@@ -187,7 +189,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£260 + £3 admin fee (COUPLE PASS)"
+       "quote": "£260 + £3 admin fee (COUPLE PASS)"
       },
       {
        "amount": 283,
@@ -201,7 +203,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔸£280 + £3 admin fee (COUPLE PASS)"
+       "quote": "£280 + £3 admin fee (COUPLE PASS)"
       }
      ]
     }
