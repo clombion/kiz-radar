@@ -196,7 +196,9 @@ judgment about a page is made once, by an agent or two models, and checked; ever
 - **A first read per festival** (`pipeline/tickets/reads/<event_id>.json`, schema `read.json`) says, from one logged
   read and the festival's description, which pass each ticket is, in the prices pass's terms (prompt
   `pipeline/tickets/prompts/first-read-v4.md` on top of `prices-v6`): every ticket is in a tier, by its key, or
-  skipped; dates, ticket limits and price notes are quoted from the description or the ticket's name. Only checked
+  skipped (a bootcamp only when the ticket is a deposit on one); dates, ticket limits and price notes are quoted
+  from the description or the ticket's name; a pass has a style only at a festival whose genres name two dance
+  styles or more, and it is one of them. Only checked
   first reads are kept there: an agent fills a draft (`pipeline/tickets/drafts/`, not committed), which `record`
   moves there once it passes.
 - **`record`** writes the prices: amount, currency, sold out and the quote (the ticket's name and price) from the
@@ -291,7 +293,8 @@ Line-ups, highlights from descriptions, rooms, genres and pass prices are read f
 `pending_extraction` table (new, or with a changed description) and festivals a pass has no answer for are asked
 about, one festival and one pass at a time, with that pass's prompt (`pipeline/extract/prompts/`) and its schema as
 the required answer format. A checker then confirms that the answer has the right shape, and that every name,
-quote and price appears in the description. A failing answer goes back to Claude once, with the checker's
+quote and price appears in the description, and that a pass has a style only at a festival whose genres name two
+dance styles or more (`prices.styles`). A failing answer goes back to Claude once, with the checker's
 lines. A second failure leaves the festival pending, to try again next month. A new prompt version makes every answer to the older one, and
 every first read when the first-read prompt changes, wait to be asked again, out of the database until then; so
 start **Refresh events** by hand once it is pushed, before anything reloads the database. Started with festival ids

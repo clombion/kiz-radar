@@ -9,6 +9,10 @@ import datetime as dt, re
 
 PROMPT = 'prices-v6'      # the prompt the prices pass and ticket-page first reads answer with
 
+# the dance style each genre (extract/vocab.json) falls under; any other genre is the style 'other'
+STYLE_OF = {g: 'kizomba' for g in ('kizomba', 'urbankiz', 'semba', 'tarraxo', 'tarraxinha', 'douceur')} | {
+    g: g for g in ('zouk', 'bachata', 'salsa')}
+
 NUMBER = re.compile(r'\d+(?:[ .,’\']\d{3})*(?:[.,]\d{1,2})?|\d+')
 
 
@@ -45,6 +49,20 @@ def on_date(value: str | None, start_date: str) -> str | None:
         if (m, d) == (2, 29) and y % 4:
             d = 28
     return f'{y:04d}-{m:02d}-{d:02d}'
+
+
+def styles(db, event_id) -> list[str]:
+    """The dance styles a festival's genres (event_genres: its description's and its kizomba-world tags) name."""
+    return sorted({STYLE_OF.get(g, 'other') for g, in db.execute('SELECT genre FROM event_genres WHERE event_id = ?',
+                                                                (event_id,))})
+
+
+def style_problems(passes: list, styles: list, where: str = '') -> list[str]:
+    """A pass has a style only at a festival of two styles or more, and it is one of them."""
+    return [f"styles: {where}passes[{p}].style {ps['style']!r}: the festival's genres name "
+            + (f"the styles {styles}" if len(styles) > 1 else f"one style only ({styles})" if styles else 'no style')
+            + '; a pass has a style only at a festival of several, and it is one of them'
+            for p, ps in enumerate(passes) if ps['style'] and (len(styles) < 2 or ps['style'] not in styles)]
 
 
 def problems(output: dict) -> list[str]:

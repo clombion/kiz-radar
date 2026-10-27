@@ -11,6 +11,7 @@ from pipeline import db as sqlite_db
 from pipeline.countries import codes, NAMES
 from pipeline.text import tidy_name, tidy_title, soften_caps
 from pipeline.airports import AIRPORTS, HOME
+from pipeline.extract.prices import STYLE_OF
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ap = argparse.ArgumentParser(description='Build docs/data/kiz.sqlite, the database the site loads.')
@@ -19,7 +20,7 @@ SRC = ap.parse_args().src.resolve()
 OUT = os.path.join(ROOT, 'docs', 'data', 'kiz.sqlite')
 POPULAR = 10            # bookings that make an artist "popular"
 MAX_AIRPORT_KM = 250
-KIZ = ('kizomba', 'urbankiz', 'semba', 'tarraxo', 'tarraxinha', 'douceur')
+KIZ = tuple(g for g, s in STYLE_OF.items() if s == 'kizomba')
 BOOKED_ROLES = ('teacher', 'dj', 'performer')
 
 def km(a, b, c, d):

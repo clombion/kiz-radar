@@ -49,13 +49,14 @@ def api_schema(node):
     return {('anyOf' if k == 'oneOf' else k): api_schema(v) for k, v in node.items() if k not in drop}
 
 
-def question(pass_name, row):
+def question(pass_name, row, styles=()):
     version, for_files = PASSES[pass_name]
     schema = json.loads((HERE / 'schemas' / f'{pass_name}.json').read_text())
     event = {'event_id': row['id'], 'title': row['title'], 'description': row['description_text']}
     if pass_name == 'prices':
         event = {'event_id': row['id'], 'title': row['title'], 'start_date': row['start_date'][:10],
-                 'end_date': row['end_date'][:10], 'country': row['country'], 'description': row['description_text']}
+                 'end_date': row['end_date'][:10], 'country': row['country'], 'styles': list(styles),
+                 'description': row['description_text']}
     batch = {'batch': f"event-{row['id']}", 'events': [event]}
     system = (HERE / 'prompts' / f'{version}.md').read_text()
     parts = []
@@ -104,10 +105,13 @@ def structured(client, model, system, content, schema, check, label, step):
     return None
 
 
-def ask(client, pass_name, row):
-    """A checked answer for one festival and pass, or None after two failed tries."""
-    system, content, schema, batch = question(pass_name, row)
-    check = lambda out: check_output.problems(schema, batch, out) or (prices.problems(out) if pass_name == 'prices' else [])
+def ask(client, pass_name, row, styles=()):
+    """A checked answer for one festival and pass, or None after two failed tries; styles are the festival's
+    (prices.styles), for the prices pass."""
+    system, content, schema, batch = question(pass_name, row, styles)
+    check = lambda out: check_output.problems(schema, batch, out) or (
+        prices.problems(out) + [p for ev in out['events'] for p in prices.style_problems(ev['passes'], list(styles))]
+        if pass_name == 'prices' else [])
     return structured(client, MODEL, system, content, schema, check, f"{row['id']} {pass_name}", pass_name)
 
 
@@ -149,13 +153,15 @@ def main():
     if a.dry_run or not todo:
         return
 
+    # read here, since the workers don't share the connection; genres a new festival's answers add load after this run
+    styles = {r['id']: prices.styles(db, r['id']) for r, p in todo if p == 'prices'}
     client = anthropic.Anthropic()
     lock, failed, before, stopped = threading.Lock(), set(), spend.month_usd(), []
 
     def one(job):
         row, pass_name = job
         try:
-            output = ask(client, pass_name, row)
+            output = ask(client, pass_name, row, styles.get(row['id'], ()))
         except spend.BudgetSpent as e:
             output = None
             stopped[:1] = [str(e)]

@@ -27,7 +27,7 @@ def refused(at):
 
 ROWS = [row('1', 'Fullpass Male 100€', 102.56, sold_out=True), row('2', 'Fullpass Female 100€', 102.56, sold_out=True),
         row('3', 'Fullpass Male 120€', 123.08), row('4', 'Fullpass Female 120€', 123.08),
-        row('5', 'Bootcamp FOUNDATION', 56.41)]
+        row('5', 'Shuttle from the airport', 56.41)]
 
 
 def tier(*keys, until=None, quantity=None, quote=None):
@@ -35,7 +35,7 @@ def tier(*keys, until=None, quantity=None, quote=None):
 
 
 def read(passes=None, skipped=('5',), description='Prices rise on 1 December.', rule_quotes=()):
-    return {'event_id': 7, 'title': 'Fest', 'start_date': '2027-02-05', 'read_by': 'agent', 'prompt_version': tickets.PROMPT,
+    return {'event_id': 7, 'title': 'Fest', 'start_date': '2027-02-05', 'read_by': 'agent', 'prompt_version': tickets.PROMPT, 'styles': ['bachata', 'kizomba'],
             'rows_at': AT,
             'description': description,
             'passes': passes or [{'kind': 'full', 'style': None, 'label_quote': 'Fullpass', 'group_size': 1, 'days': None,
@@ -83,7 +83,7 @@ def test_amounts_are_checked_against_their_quotes():
 
 def test_first_read_maps_every_ticket_once():
     fr = read(skipped=())
-    assert tickets.read_problems(fr, [entry(ROWS)]) == ['key 5 (Bootcamp FOUNDATION €56.41): neither in a tier nor skipped']
+    assert tickets.read_problems(fr, [entry(ROWS)]) == ['key 5 (Shuttle from the airport €56.41): neither in a tier nor skipped']
     fr = read(skipped=('5', '3'))
     assert 'key 3: in the read twice' in tickets.read_problems(fr, [entry(ROWS)])
     fr = read(skipped=('5', '9'))
@@ -157,7 +157,7 @@ def test_changes_between_reads():
     later[3] |= {'amount': 60.0, 'price': '€60.00'}
     got = [text for _, text in tickets.changes([entry(ROWS), entry(later, at='2026-11-03T00:00:00+00:00')])]
     assert got == ['new: Fullpass Male 140€ €143.59', 'gone: Fullpass Male 100€ €102.56',
-                   'sold out: Fullpass Female 120€ €123.08', 'price: Bootcamp FOUNDATION €56.41 → €60.00']
+                   'sold out: Fullpass Female 120€ €123.08', 'price: Shuttle from the airport €56.41 → €60.00']
     assert tickets.changes([entry(ROWS), entry(ROWS, at='2026-11-03T00:00:00+00:00')]) == []
 
 
@@ -312,7 +312,7 @@ def client(*replies):
 
 
 FEST = {'id': 7, 'title': 'Fest', 'start_date': '2027-02-05', 'end_date': '2027-02-07', 'country': 'Germany',
-        'description_text': 'Prices rise on 1 December.', 'page': 'https://my.weezevent.com/x'}
+        'description_text': 'Prices rise on 1 December.', 'page': 'https://my.weezevent.com/x', 'styles': ['bachata', 'kizomba']}
 ANSWER = {k: read()[k] for k in ('passes', 'skipped', 'rule_quotes')}
 
 
@@ -617,3 +617,33 @@ def test_kinds_styles_and_sales_states_are_stated_alike_everywhere():
     assert check('kind', 'event_passes') == kinds and check('style', 'event_passes') == styles
     assert check('state', 'ticket_sales') == list(tickets.Sales)
     assert sorted(js('eventcard.js', 'NO_PRICE')) == sorted(set(tickets.Sales) - {tickets.Sales.SHOP})
+
+
+@pytest.mark.parametrize('styles, style, ok', [
+    (['bachata', 'kizomba'], 'kizomba', True), (['bachata', 'kizomba'], None, True),
+    (['kizomba'], 'kizomba', False),            # a kizomba-only festival: its passes have no style
+    (['bachata', 'kizomba'], 'zouk', False),    # not one of the festival's
+    ([], 'kizomba', False),
+])
+def test_a_pass_has_a_style_only_at_a_festival_of_several_and_one_of_them(styles, style, ok):
+    fr = read() | {'styles': styles}
+    fr['passes'][0]['style'] = style
+    assert (tickets.read_problems(fr, [entry(ROWS)]) == []) == ok
+
+
+@pytest.mark.parametrize('name, ok', [('Shuttle from the airport', True), ('Bootcamp GENKIZ - Female', False),
+                                      ('BOOTCAMP Kizomba musicality advanced payment', True), ('Boot-camp acompte', True)])
+def test_a_bootcamp_is_never_skipped_unless_it_is_a_deposit(name, ok):
+    rows = copy.deepcopy(ROWS)
+    rows[4] |= {'name': name}
+    assert (tickets.read_problems(read(), [entry(rows)]) == []) == ok
+
+
+def test_a_festivals_styles_are_its_genres_styles():
+    import sqlite3
+    from pipeline.extract import prices
+    db = sqlite3.connect(':memory:')
+    db.executescript("create table event_genres (event_id integer, genre text);"
+                     "insert into event_genres values (1, 'urbankiz'), (1, 'semba'), (2, 'kizomba'), (2, 'zouk'), (2, 'kompa');")
+    assert prices.styles(db, 1) == ['kizomba']
+    assert prices.styles(db, 2) == ['kizomba', 'other', 'zouk']

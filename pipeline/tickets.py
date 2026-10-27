@@ -71,6 +71,8 @@ PRICES_SCHEMA = json.loads((ROOT / 'pipeline' / 'extract' / 'schemas' / 'prices.
 PROMPT = 'first-read-v4'      # on top of the prices prompt, prices.PROMPT
 MODELS = ('claude-opus-5-5', 'claude-sonnet-5-5')    # the first one's read is kept when both agree
 REFUSALS = 3
+BOOTCAMP = re.compile(r'(?i)boot\s*-?camp')
+DEPOSIT = re.compile(r'(?i)deposit|advance|acompte|arrhes|anzahlung|caparra|anticipo|zaliczka')
 FREE = re.compile(r'(?i)\s*(free|gratuit|gratis|gratuito|kostenlos)\s*')
 # hosts that are never where tickets are sold: social networks, maps, hotels, kizomba-world itself
 NOT_TICKETS = ('facebook', 'instagram', 'youtube', 'kizomba-world', 'google', 'wa.me', 'whatsapp', 'tiktok', 'spotify',
@@ -349,6 +351,9 @@ def read_problems(fr, entries):
                 found.append(f"{where}.until {tier['until']}: the page sold these tickets on {fr['rows_at'][:10]}; a date "
                              'that has passed is not theirs')
     found += [f'rule_quotes {q!r} is not in the description' for q in fr['rule_quotes'] if not in_text(q, desc)]
+    found += prices.style_problems(fr['passes'], fr['styles'])
+    found += [f"key {k} ({line(rows[k])}): a bootcamp is a pass, never skipped, unless it is a deposit on one"
+              for k in fr['skipped'] if k in rows and BOOTCAMP.search(rows[k]['name']) and not DEPOSIT.search(rows[k]['name'])]
     return found
 
 
@@ -549,7 +554,8 @@ def festivals(db, today, only=None):
         page = (read_at(fr, entries)['page'] if fr else (found[i]['page'] if found[i]['state'] == Sales.SHOP else None) if i in found else
                 next((u for u in full if site_for(u, known)), full[0] if full else None))
         f |= {'found': found.get(i), 'first_read': fr, 'log': entries, 'tiers': tiers.get(i, []), 'described': described.get(i), 'page': page,
-              'links': urls, 'site': site_for(page, known) if page else None, 'disputed': (DISPUTED / f'{i}.json').exists()}
+              'links': urls, 'site': site_for(page, known) if page else None, 'disputed': (DISPUTED / f'{i}.json').exists(),
+              'styles': prices.styles(db, i)}
         f['why'], f['unread'] = why_first_read(f, today)
         out.append(f)
     return out
@@ -593,7 +599,7 @@ def question(f, entry):
               + (HERE / 'prompts' / f'{PROMPT}.md').read_text())
     tickets = [{'key': r['key'], 'name': r['name'], 'price': r['price'], 'sold_out': r['sold_out']} for r in entry['rows']]
     return system, json.dumps({'event_id': f['id'], 'title': f['title'], 'start_date': f['start_date'][:10],
-                               'end_date': f['end_date'][:10], 'country': f['country'],
+                               'end_date': f['end_date'][:10], 'country': f['country'], 'styles': f['styles'],
                                'description': f['description_text'] or '', 'tickets': tickets}, ensure_ascii=False, indent=1)
 
 def ask_read(client, model, f, entry, entries):
@@ -627,7 +633,7 @@ def two_model_read(client, f, entry, entries):
 
 def draft_of(f, entry, by):
     return {'event_id': f['id'], 'title': f['title'], 'start_date': f['start_date'][:10], 'read_by': by,
-            'prompt_version': PROMPT, 'rows_at': entry['at'],
+            'prompt_version': PROMPT, 'rows_at': entry['at'], 'styles': f['styles'],
             'description': f['description_text'] or '', 'passes': [], 'skipped': [], 'rule_quotes': []}
 
 def one(event_id, page=None):

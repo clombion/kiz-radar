@@ -10,6 +10,7 @@
     "read_by",
     "prompt_version",
     "rows_at",
+    "styles",
     "description",
     "passes",
     "skipped",
@@ -41,6 +42,19 @@
       "description": "The 'at' of the logged read (tickets/log/<event_id>.jsonl) whose tickets this read maps; every one of them is in a tier or skipped.",
       "type": "string",
       "minLength": 1
+    },
+    "styles": {
+      "description": "The festival's dance styles when the read was made (prices.styles), which a pass's style is one of.",
+      "type": "array",
+      "items": {
+        "enum": [
+          "kizomba",
+          "zouk",
+          "bachata",
+          "salsa",
+          "other"
+        ]
+      }
     },
     "description": {
       "description": "The festival's description this read was made with.",

@@ -209,3 +209,12 @@ def test_festival_ids_are_read_from_commas(text, ids):
             db.festival_ids(text)
     else:
         assert db.festival_ids(text) == ids
+
+
+def test_a_description_answer_gives_a_style_only_at_a_festival_of_several():
+    answer = json.loads(prices_answer('Full pass 80€ until 31.01'))
+    answer['events'][0]['passes'][0]['style'] = 'kizomba'
+    client = fake(json.dumps(answer), json.dumps(answer))
+    assert ask.ask(client, 'prices', ROW, ['kizomba']) is None
+    assert 'one style only' in str(client.calls[1]['messages'])
+    assert ask.ask(fake(json.dumps(answer)), 'prices', ROW, ['bachata', 'kizomba']) is not None

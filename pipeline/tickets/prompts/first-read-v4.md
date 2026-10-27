@@ -3,7 +3,7 @@
 This replaces the input and answer formats above; the rules for passes, kinds, people, dates and what to leave
 out stay as written there.
 
-The input is one festival: `{"event_id", "title", "start_date", "end_date", "country", "description", "tickets":
+The input is one festival: `{"event_id", "title", "start_date", "end_date", "country", "styles", "description", "tickets":
 [{"key", "name", "price", "sold_out"}]}`, where `tickets` are the rows of its ticket page, each with the site's own
 `key`. The page's prices are what a buyer pays, so the amounts come from the tickets, never from the description;
 the description adds what the tickets don't say, such as the dates a price applies.

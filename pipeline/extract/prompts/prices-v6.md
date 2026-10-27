@@ -4,7 +4,8 @@ You read a dance-festival event description (kizomba / semba / urbankiz scene; a
 emoji) and record the passes it sells and their prices, tier by tier. Work literally: copy quotes exactly,
 never invent a price, a date or a pass. When the description gives no prices, answer with no passes.
 
-The input is `{"batch", "events": [{"event_id", "title", "start_date", "end_date", "country", "description"}]}`.
+The input is `{"batch", "events": [{"event_id", "title", "start_date", "end_date", "country", "styles",
+"description"}]}`, where `styles` are the dance styles the festival's genres name (see `style` below).
 Answer with one object: `{"batch": "<batch>", "prompt_version": "prices-v6", "events": [...]}`, one entry
 per input event: `{"event_id", "passes": [...], "rule_quotes": [...]}`.
 
@@ -28,7 +29,8 @@ One entry per pass the festival sells, with its price tiers:
 
   A price that is the festival's only pass ("EARLY BIRD £65", "Tickets: 80€"), with nothing saying it is for the
   parties only or for one day, is `full`.
-- `style`: at a festival of several dance styles, the one style a pass is limited to: `kizomba` (kizomba, semba,
+- `style`: at a festival of several dance styles (two or more in `styles`), the one style a pass is limited to, one
+  of `styles`: `kizomba` (kizomba, semba,
   urbankiz, tarraxinha, tarraxo, or a mix of them), `zouk` (Brazilian zouk), `bachata`, `salsa`, or `other`. Null
   when the pass covers all the festival's styles, or the festival has one style only (a "Kizomba Full Pass" at a
   kizomba festival is null). Tickets for different styles are different passes, even at one price. At a
