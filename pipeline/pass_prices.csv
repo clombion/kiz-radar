@@ -66,6 +66,12 @@ event_id,pass_no,kind,style,label,group_size,days,includes_hotel,amount,currency
 16927,5,full,,,2,,0,7636,THB,36,,,,,,0,"BRO Full Pass ( Male & Male ) THB 7,600.00 + THB 36.00 fee."
 17125,1,full,,,1,,0,129.88,USD,,,,,,,0,Tier 1 - Republic (Jedi) $129.88 incl. $9.89 Fee
 17125,2,other,,,1,,0,108.54,USD,,,,,,,0,Performance Pass $108.54 incl. $8.55 Fee
+17497,1,full,,,1,,0,92.25,EUR,2.25,,,,,,0,"Fullpass · Full Pass – Follower 90,00 € + 2.25 fee"
+17497,2,day,,,1,1,0,56.38,EUR,1.38,,,,,,0,"Friday Pass · Friday Pass – Follower 55,00 € + 1.38 fee"
+17497,3,day,,,1,1,0,66.63,EUR,1.63,,,,,,0,"Saturday Pass · Saturday Pass – Follower 65,00 € + 1.63 fee"
+17497,4,day,,,1,1,0,46.13,EUR,1.13,,,,,,0,"Sunday Pass · Sunday Social – Follower 45,00 € + 1.13 fee"
+17497,5,day,,,1,1,0,20.5,EUR,0.5,,,,,,0,"Party Tickets · Friday Party – Follower 20,00 € + 0.5 fee"
+17497,6,day,,,1,1,0,25.63,EUR,0.63,,,,,,0,"Party Tickets · Saturday Party – Follower 25,00 € + 0.63 fee"
 17500,1,full,,,2,,0,580,PLN,,135,EUR,,,,1,Early Birds 1st 580 PLN \ 135 EUR · 135 EUR
 17500,1,full,,,2,,0,630,PLN,,147,EUR,,,,1,Early Bird 2nd 630 PLN \ 147 EUR · 147 EUR
 17500,1,full,,,2,,0,780,PLN,,181,EUR,,,,1,Couple Pass 3rd 780 PLN \ 181 EUR · 181 EUR
@@ -311,6 +317,9 @@ event_id,pass_no,kind,style,label,group_size,days,includes_hotel,amount,currency
 18896,1,full,,,1,,0,110,EUR,,,,,,,0,FOLLOWER FULL PASS 110.00€
 18896,1,full,,,1,,0,115,EUR,,,,,,,0,FOLLOWER FULL PASS 115.00€
 18896,2,full,,,2,,0,209,EUR,,,,,,,0,COUPLE FULL PASS (Leader & Follower) 209.00€
+18904,1,full,,,1,,0,97.38,EUR,2.38,,,,,,0,"Fullpass · Hybrid (Leader&Follower) 95,00 € + 2.38 fee"
+18904,2,full,,,2,,0,184.5,EUR,4.5,,,,,,0,"Fullpass · Couple Pass 180,00 € + 4.5 fee"
+18904,3,package,,,1,,0,133.25,EUR,3.25,,,,,,0,"Fullpass & Silvesterdinner · Hybrid (Leader&Follower) 130,00 € + 3.25 fee"
 18915,1,full,,,1,,0,69.99,EUR,,,,,,,0,EARLY BIRD OFFER 2 €69.99
 18919,1,full,,,1,,0,85,EUR,,,,,,,0,FULLPASS 85.0 + 0.0 fee
 18971,1,full,,,1,,0,130,CAD,,,,,,,0,FOLLOW FULL PASS CA$130.00
