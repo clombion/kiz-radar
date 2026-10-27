@@ -7,6 +7,7 @@ event_id,event,start,waits_for,page,note
 18954,Amsterdam KizzArena Weekender 2026,2026-10-30,its ticket page found,,no price in the description
 16773,Morabeza Kizomba Festival 2026 – Cape Verde,2026-10-30,nothing: its sales are closed,,its page says registrations are closed (the festival starts 30 Oct)
 17474,AfroKiz Bangkok Edition 4,2026-10-30,nothing: its sales are closed,,"its shop shows only a membership on sale, no passes"
+17476,Dance Affinity Festival Freiburg,2026-10-30,an agent: the two models disagreed,https://my.weezevent.com/dance-affinity-2026,"the first read follows first-read-v3, not first-read-v4"
 17480,KasselKiz – Urban Kizomba Weekender In Kassel,2026-10-30,its ticket page found,,no price in the description
 16815,Le Marathon d’Elité 6th Edition & Tarraxami,2026-11-06,nothing: it sells its tickets by message or form,,description: Hotel and Pass available by contacting your teacher or by whatsapp message to Laura Maino; deposit 100€
 16825,SKR kiz relax Celebraçao 3 weekender,2026-11-06,its ticket page found,,no price in the description
@@ -19,6 +20,7 @@ event_id,event,start,waits_for,page,note
 16894,Kizomba & Semba Champions Festival 2026,2026-11-13,nothing: it sells its tickets by message or form,,"description: registration by Google form (forms.gle/6SxDQAVDG6zisvKf6), payment per instructions sent by e-mail after registration"
 17489,Love To Dance 2 weekender,2026-11-20,its ticket page found,,the description has no dated full pass price
 17491,Vilnius Kizomba Reunion 2026,2026-11-20,a recipe for its site,https://kizomba.lt/,no price in the description
+17493,HOT ICE KIZ Festival 2026 11th edition,2026-11-26,an agent: the two models disagreed,https://my.weezevent.com/hot-ice-kiz-festival-2026,"the first read follows first-read-v3, not first-read-v4"
 16810,BANGOLOGIA WORLD COMPETITION FESTIVAL,2026-11-27,nothing: its sales are closed,,its Weezevent page says bookings are suspended
 17497,"HER FREQUENCY – URBANKIZ, KIZOMBA, KONPA, AFRO WEEKENDER",2026-11-27,a recipe for its site,https://www.kizztalk.de/event-details/her-frequency-weekender,"organiser Kizztalk's own site (kizztalk.de) event page sells passes, 27-29 Nov 2026"
 18308,SAWILI Kizomba Weekender 2026 #SKW,2026-11-27,a recipe for its site,https://www.helloasso.com/associations/association-sawili-events/evenements/billeterie,kizomba-world website field; HelloAsso ticketing for ELIXIR at Manoir du Prince (search snippet; page blocks bots)

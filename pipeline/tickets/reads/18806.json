@@ -3,10 +3,35 @@
  "title": "BIG3 Festival",
  "start_date": "2027-02-18",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt_version": "first-read-v3",
- "rows_at": "2026-10-26T23:58:33+00:00",
+ "prompt_version": "first-read-v4",
+ "rows_at": "2026-10-27T01:41:37+00:00",
+ "styles": [
+  "bachata",
+  "kizomba",
+  "salsa",
+  "zouk"
+ ],
  "description": "Oui. Sur le visuel, la liste est très longue. Pour une description d’événement, je te conseille de mettre les artistes principaux, puis les DJs séparément.\n🌟 BIG3 FESTIVAL 2027 – HAMBURG 🌟\nGet ready for 3 unforgettable days of dance, music and connection at BIG3 Festival 2027! 🔥\n📅 19–21 February 2027\n📍 Congress Center Hamburg, Germany\nBIG3 brings together the international Bachata, Salsa, Kizomba and Brazilian Zouk communities under one roof, with workshops, shows, social dancing, parties and an incredible international line-up. (Where to dance Salsa)\n💃 INTERNATIONAL ARTISTS\nBachata:\nAgustín & Alba • Aitor & Angelica • Alonso & Noelia • Carlos & Paz • Melonito • Kornel & Catherine • Issam & Charlott • Xi & Alina • Otko & Vika • Talal & Edyta • William & Irene • Chicho & Lisa • Alicia Velasco • Alexistyle Ruiz • Chloe Loh • Samuel Funflow & Irene Silvia • Virgile & Juneline\nSalsa:\nVictor Ortega • Panagiotis & Myrto • Victor & Alba • Victor & Monika\nKizomba:\nAlbir Rojas • Women’s League\n🎧 DJs:\nDJ Dmitri • DJ Rumbero • DJ Michelle • DJ Yasser • DJ Miguel • DJ Miss Maya • DJ Pablo G • DJ Fran • DJ Traybeatz • DJ Shark • DJ Morelasoul • DJ Wicca Mix • DJ Firenz\nThe festival features multiple dance floors, international workshops, social dancing, shows and competitions throughout the weekend. (FindBachata)\n🔥 BACHATA • SALSA • KIZOMBA • BRAZILIAN ZOUK\n📍 Congress Center Hamburg – Germany\n📅 19th–21st February 2027\nOne festival. Four dance styles. One incredible community. ❤️‍🔥",
  "passes": [
+  {
+   "kind": "other",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "da14db16-e7b0-4807-99cb-86de59702d28"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
   {
    "kind": "full",
    "style": null,
@@ -114,25 +139,6 @@
     {
      "keys": [
       "0b6a40cf-208c-403b-beff-69d9e48c516b"
-     ],
-     "from": null,
-     "until": null,
-     "quantity": null,
-     "date_quote": null
-    }
-   ]
-  },
-  {
-   "kind": "other",
-   "style": null,
-   "label_quote": null,
-   "group_size": 1,
-   "days": null,
-   "includes_hotel": false,
-   "tiers": [
-    {
-     "keys": [
-      "da14db16-e7b0-4807-99cb-86de59702d28"
      ],
      "from": null,
      "until": null,

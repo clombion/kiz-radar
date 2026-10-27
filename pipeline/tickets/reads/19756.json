@@ -2,9 +2,14 @@
  "event_id": 19756,
  "title": "14th Transilvania Salsa Fest, 2026 Cluj-Napoca",
  "start_date": "2026-11-19",
- "read_by": "agent",
- "prompt_version": "first-read-v3",
- "rows_at": "2026-10-26T23:43:55+00:00",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt_version": "first-read-v4",
+ "rows_at": "2026-10-27T01:39:09+00:00",
+ "styles": [
+  "bachata",
+  "kizomba",
+  "salsa"
+ ],
  "description": "15 years later… and Dracula still dances. 🩸\nWelcome back to the dark side of dance.\nWelcome back to Transilvania Salsa Fest.\nFrom 19–23 November 2026, the heart of Cluj-Napoca will beat once again in salsa, bachata & kizomba rhythms, while vampires, dancers and night creatures from all over the world gather under one roof for 5 unforgettable days.\n🩸 4 nights of parties\n🩸 1 Monday After Party – NEW\n🩸 3 days of workshops\n🩸 International artists & DJs\n🩸 Social by day\n🩸 Shows, energy, connection and bloody memories\n📍 Grand Hotel Napoca – Cluj-Napoca, Romania\n━━━━━━━━━━━━━━\n🔥 CONFIRMED ARTISTS\nSALSA\nTerry & Cecile\nPanagiotis & Myrto\nSuper Mario & Kristina\nEloy Rojas\nAlexis Ruiz & Iselin\nJose Diaz & Nerea\nSamuel Funflow & Sasha\nNando & Margarita\nGrupo Alafia\nPaul & Ioana\nTzoompy & Luky\nRadu Manole\nCatalincho & Andreea\nBACHATA\nMiguel & Sunsire\nSakis & Mia\nFarid Ferchach\nAdy & Allișor\nMarius Turcu\nKIZOMBA\nJack & Sara\nRadu & Judit\nKarl Bekene\nSifu & Adelina\nSifu & Alice\n🎤 MC: Farid Ferchach\n━━━━━━━━━━━━━━\n🎧 DJs\nSALSA\nDJ Willy\nDJ Dmitri\nDJ Asmadi\nDJ Sergio\nDJ Tuli\nDJ Morandi\nBACHATA\nDJ David Pedron\nDJ Clau\nDJ Marc\nDJ Baloo\nDJ Andu\nKIZOMBA\nDJ Shark\nDJ David Ruela\nDJ Jack\nDJ Jozsi\nDJ B!JU\n━━━━━━━━━━━━━━\n🎟️ BLOODY FULL PASS\nMay — 150 €\nJune — 155 €\nJuly — 160 €\nAugust — 165 €\nSeptember — 170 €\nOctober — 175 €\nNovember — 180 €\n🌙 DARKSIDE PARTY PASS\nMay — 125 €\nJune — 130 €\nJuly — 135 €\nAugust — 140 €\nSeptember — 145 €\nOctober — 150 €\nNovember — 155 €\n━━━━━━━━━━━━━━\n🩸 Through our ambassadors and partner dance schools, you may unlock preferred prices with minimum 10 € discount for Full Passes and 5 € discount for Party Passes.\nAsk your dance school… before the night consumes the prices completely.\n🎟️ Tickets via Go&Dance:\nhttps://www.goandance.com/…/transilvania-salsa-fest…\nAnd trust me carefully, my dear mortals…\nThis is only the beginning.\n🩸 MORE TO COME.\n#TSF2026 #TransilvaniaSalsaFest #ItWillBeBloodyGreat\n📞 Info & Support:\n+40 747 171 850 – Cotiso\n+40 752 608 043 – Andrada",
  "passes": [
   {
@@ -63,10 +68,28 @@
      "date_quote": null
     }
    ]
+  },
+  {
+   "kind": "other",
+   "style": "salsa",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "20c51d55-94ef-45db-92ad-f74c99fa49be"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
   }
  ],
  "skipped": [
-  "20c51d55-94ef-45db-92ad-f74c99fa49be",
   "976bfa5c-a5e9-4252-b713-b5eb3646be31"
  ],
  "rule_quotes": []

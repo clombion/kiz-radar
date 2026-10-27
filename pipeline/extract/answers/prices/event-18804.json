@@ -1,6 +1,6 @@
 {
  "batch": "event-18804",
- "prompt_version": "prices-v5",
+ "prompt_version": "prices-v6",
  "events": [
   {
    "event_id": 18804,
@@ -21,26 +21,46 @@
        "alt_currency": null,
        "from": null,
        "until": null,
-       "quantity": 25,
+       "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔹25 EARLY BIRD WOMAN —> 60 euros"
-      },
+       "quote": "25 EARLY BIRD WOMAN —> 60 euros"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
       {
-       "amount": 60,
+       "amount": 100,
        "currency": "EUR",
        "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
        "until": null,
-       "quantity": 25,
+       "quantity": 30,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔹25 EARLY BIRD MAN —> 60 euros"
-      },
+       "quote": "30 EARLY BIRD DUO PASS —> 100 euros"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
       {
        "amount": 60,
        "currency": "EUR",
@@ -180,30 +200,6 @@
        "sold_out": false,
        "current": false,
        "quote": "UNIQUE PASS MAN – 140 EUROS"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 100,
-       "currency": "EUR",
-       "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": 30,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🔹30 EARLY BIRD DUO PASS —> 100 euros"
       }
      ]
     }

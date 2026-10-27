@@ -1,6 +1,6 @@
 {
  "batch": "event-17493",
- "prompt_version": "prices-v5",
+ "prompt_version": "prices-v6",
  "events": [
   {
    "event_id": 17493,
@@ -250,7 +250,9 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "*𝐩𝐫𝐞𝐩𝐚𝐫𝐭𝐲 𝐚𝐧𝐝 𝐚𝐟𝐭𝐞𝐫-𝐩𝐚𝐫𝐭𝐲 𝐚𝐫𝐞 𝐧𝐨𝐭 𝐢𝐧𝐜𝐥𝐮𝐝𝐞𝐝 𝐢𝐧 any pass ‼"
+   ]
   }
  ]
 }
