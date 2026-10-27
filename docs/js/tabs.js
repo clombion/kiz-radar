@@ -1,67 +1,83 @@
-// Moving between tabs. The oval behind the current tab is one element per row of tabs. Going to another tab, it
-// moves like a slime: it reaches out a thin arm to the new tab, a blob gathers at the arm's tip and swells around
-// the tab, a little too big for a moment, while the old oval drains into the arm and the arm is drawn in. The page
-// itself slides like a phone's: the next section comes in from the side the swipe or the tab is on. With reduced
-// motion, the oval moves at once and the page only changes.
+// Moving between tabs. The oval behind the current tab lives in a layer of its own per row of tabs, drawn through the
+// gooey filter of index.html: shapes in it are blurred and their edges sharpened again, so two that come close flow
+// into one with a soft neck between them, like liquid. Going to another tab, the oval moves like a slime: it bulges
+// toward the new tab and pushes out an arm with a drop at its tip; where the drop lands, the new oval swells and
+// wobbles to rest (a damped spring), while the old one drains into the arm and the arm is drawn in after it. The
+// page itself slides like a phone's: the next section comes in from the side the swipe or the tab is on. With
+// reduced motion, the oval moves at once and the page only changes.
 import { h } from './ui.js';
 
 const calm = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 const last = new WeakMap();       // a row of tabs → where its oval is
 const box = a => ({ left: a.offsetLeft, top: a.offsetTop, width: a.offsetWidth, height: a.offsetHeight });
 const px = b => Object.fromEntries(Object.entries(b).map(([k, v]) => [k, `${v}px`]));
-const SLIME = { ms: 640, arm: 0.32, easing: 'cubic-bezier(.4, 0, .2, 1)' };      // ms; the arm's share of a tab's height
+const PAD = 12;      // px: the goo layer reaches this far past its row (site.css .goo), so the blur isn't cut
+const SLIME = { ms: 760, arm: 0.36, drop: 0.62 };      // ms; the arm's and the drop's share of a tab's height
+// a damped spring: past the mark, back, and still (samples of 1 - e^(-ζωt)(cos ω_d t + ζ/√(1-ζ²) sin ω_d t))
+const SPRING = 'linear(0, 0.077, 0.262, 0.496, 0.729, 0.927, 1.074, 1.164, 1.202, 1.199, 1.169, 1.123, 1.074, 1.03, 0.995, 0.972, 0.96, 0.958, 0.962, 0.971, 0.981, 0.99, 0.998, 1.004, 1.007, 1.009, 1.008, 1.007, 1.005, 1.003, 1)';
+const SOFT = 'cubic-bezier(.45, 0, .2, 1)';
 
 // Put the row's oval behind its current tab: moving there, unless still (on a resize) or there was none
 export function pill(nav, { still = false } = {}) {
   const tab = nav.querySelector('a.active');
-  const oval = nav.querySelector(':scope > .pill') || nav.insertBefore(h('span', { class: 'pill', 'aria-hidden': 'true' }), nav.firstChild);
+  const goo = nav.querySelector(':scope > .goo') || nav.insertBefore(h('span', { class: 'goo', 'aria-hidden': 'true' }), nav.firstChild);
+  const oval = goo.querySelector('.pill') || goo.appendChild(h('span', { class: 'pill' }));
   if (!tab || nav.hidden) { oval.hidden = true; last.delete(nav); return; }
   const was = last.get(nav), to = box(tab);
   last.set(nav, to);
   oval.hidden = false;
-  Object.assign(oval.style, px(to));
+  Object.assign(oval.style, px(inGoo(to)));
   if (still || !was || calm() || (was.left === to.left && was.top === to.top)) return;
-  absorb(nav, oval, was, to);
+  absorb(goo, oval, inGoo(was), inGoo(to));
 }
 
-// The slime's move from one tab's box to another's (see above)
-function absorb(nav, oval, was, to) {
-  const timing = { duration: SLIME.ms, easing: SLIME.easing };
-  const rightward = to.left > was.left;
-  const from = was.left + was.width / 2, at = to.left + to.width / 2;      // the two tabs' middles
-  const thick = Math.round(to.height * SLIME.arm);
-  const span = (a, b) => ({ left: `${Math.min(a, b)}px`, width: `${Math.abs(b - a)}px` });
-  // the old oval, left behind: it holds on, then drains toward the arm
-  const old = h('span', { class: 'pill', 'aria-hidden': 'true' });
-  Object.assign(old.style, px(was), { transformOrigin: rightward ? 'right center' : 'left center' });
-  // the arm: a thin band, centred on the row, from the old tab's middle to the new one's
-  const arm = h('span', { class: 'pill', 'aria-hidden': 'true' });
-  Object.assign(arm.style, { top: `${to.top + (to.height - thick) / 2}px`, height: `${thick}px`, ...span(from, from) });
-  nav.insertBefore(old, oval);
-  nav.insertBefore(arm, oval);
+const inGoo = b => ({ ...b, left: b.left + PAD, top: b.top + PAD });
+
+// The slime's move from one tab's box to another's, in the goo layer's coordinates (see above)
+function absorb(goo, oval, was, to) {
+  const time = (easing = SOFT) => ({ duration: SLIME.ms, easing });
+  const dir = to.left > was.left ? 1 : -1;
+  const from = was.left + was.width / 2, at = to.left + to.width / 2, mid = to.top + to.height / 2;
+  const blob = (size, x) => ({ left: `${x - size / 2}px`, top: `${mid - size / 2}px`, width: `${size}px`, height: `${size}px` });
+  const span = (a, b, thick) => ({ left: `${Math.min(a, b)}px`, width: `${Math.abs(b - a)}px`, top: `${mid - thick / 2}px`, height: `${thick}px` });
+  const arm = to.height * SLIME.arm, drop = to.height * SLIME.drop;
+  const part = style => { const e = h('span', { class: 'pill' }); Object.assign(e.style, style); return goo.insertBefore(e, oval); };
+  // the old oval: it leans toward the new tab, then drains away into the arm
+  const old = part({ ...px(was), transformOrigin: dir > 0 ? 'right center' : 'left center' });
   old.animate([
-    { transform: 'scale(1, 1)', opacity: 1 },
-    { transform: 'scale(1, .9)', opacity: 1, offset: 0.35 },
-    { transform: 'scale(.12, .36)', opacity: 1, offset: 0.58 },
-    { transform: 'scale(0, .32)', opacity: 0, offset: 0.62 },
-    { transform: 'scale(0, .32)', opacity: 0 },
-  ], timing);
-  arm.animate([
-    span(from, from),
-    { ...span(from, at), offset: 0.4 },
-    { ...span(from, at), offset: 0.6 },
-    { ...span(from + (at - from) * 0.85, at), offset: 0.85 },
-    span(at, at),
-  ], timing);
-  oval.style.transformOrigin = rightward ? 'left center' : 'right center';
-  oval.animate([
-    { transform: 'scale(0, .3)', opacity: 0 },
-    { transform: 'scale(0, .3)', opacity: 0, offset: 0.38 },      // nothing until the arm gets there
-    { transform: 'scale(.12, .32)', opacity: 1, offset: 0.4 },
-    { transform: 'scale(.55, .7)', offset: 0.6 },
-    { transform: 'scale(1.06, 1.12)', offset: 0.82 },
     { transform: 'scale(1, 1)' },
-  ], timing).finished.finally(() => { old.remove(); arm.remove(); oval.style.transformOrigin = ''; });
+    { transform: 'scale(1.06, .94)', offset: 0.22 },
+    { transform: 'scale(.7, .8)', offset: 0.42 },
+    { transform: 'scale(.15, .45)', offset: 0.6 },
+    { transform: 'scale(0, .3)', offset: 0.66 },
+    { transform: 'scale(0, .3)' },
+  ], time());
+  // the arm: thick where it leaves, thinner as it stretches, drawn in after the old oval is gone
+  const reach = part(span(from, from, arm));
+  reach.animate([
+    span(from, from, arm),
+    { ...span(from, at, arm * 0.7), offset: 0.4 },
+    { ...span(from + dir * was.width * 0.25, at, arm * 0.65), offset: 0.6 },
+    { ...span(at - dir * to.width * 0.1, at, arm * 0.8), offset: 0.82 },
+    span(at, at, arm),
+  ], time());
+  // the drop at the arm's tip, travelling to the new tab
+  const tip = part(blob(drop * 0.7, from));
+  tip.animate([
+    blob(drop * 0.7, from),
+    { ...blob(drop, at - dir * to.width * 0.15), offset: 0.4 },
+    { ...blob(drop * 0.9, at), offset: 0.55 },
+    blob(0, at),
+  ], time());
+  // the new oval: nothing until the drop lands, then it swells past its size and wobbles to rest
+  oval.style.transformOrigin = 'center';
+  const grow = oval.animate([
+    { transform: 'scale(0, 0)', opacity: 0, easing: 'linear' },
+    { transform: 'scale(0, 0)', opacity: 0, offset: 0.36, easing: 'linear' },
+    { transform: 'scale(.3, .55)', opacity: 1, offset: 0.4, easing: SPRING },
+    { transform: 'scale(1, 1)' },
+  ], { duration: SLIME.ms, easing: 'linear' });
+  grow.finished.finally(() => { old.remove(); reach.remove(); tip.remove(); oval.style.transformOrigin = ''; });
 }
 
 // Change the page as a slide to the next (1) or previous (-1) section, or at once
