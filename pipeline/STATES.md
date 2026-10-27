@@ -6,43 +6,59 @@ total mapping from that type, owned in one place, and an unmapped state is a bui
 The test: *if the pipeline starts emitting a new state tomorrow, the build fails naming the state, its data point and
 its producer, and the words go in one new row of `pipeline/states.py`.*
 
-There is no type checker in this repository, so a failure *by construction* means one at import, or in Tests:
-- when `states.py` is imported, a row with a missing or wrong-typed field, or two states with one key, fails;
+There is no type checker in this repository, so a failure *by construction* means one at import, when a value is
+written, or in Tests:
+- when `states.py` is imported, a row with a missing or wrong-typed field, a state of no point, two states with one
+  key, a note or a filter without words, a waiting state without an owner, or an `under` naming no state fails;
 - every enum the code uses is built from the rows;
-- Tests scan the Python and the site's code for a state name the table doesn't have;
-- every function that chooses between states has a test per state.
+- schemas and SQL checks are built from the rows, so a value outside them is refused when it is written;
+- Tests scan the Python for an enum member, and the site's code for state words or browser-made keys, the table
+  doesn't have;
+- every function that chooses between states has a test reaching each of them.
 
 ## 1. State table: the census
 
-`pipeline/states.py` holds one typed row per state: `point, key, criterion, disposition, wording, owner`. The states
-are what the code and the schemas **can** emit (their enums, their return sites, their sentinels), one per thing a
+`pipeline/states.py` holds one typed `Point` per data point (what one instance is, and what produces its states) and
+one typed `State` row per state: `point, key, criterion, disposition, wording, owner, made_by, icon, link, under,
+forms`. The states are
+what the code and the schemas **can** emit (their enums, their return sites, their sentinels), one per thing a
 consumer must treat differently.
 
 | Data point | States | Produced by |
 |---|---|---|
-| **page read**, each logged attempt | `read`, `refused`, `layout_broken` | `tickets.attempt` |
+| **page_read**, each logged attempt | `read`, `refused`, `layout_broken` | `tickets.attempt` |
 | **sales**, a festival with no readable link | `shop`, `not_yet`, `offline`, `closed`, `none_found` | `tickets.py page --state` |
-| **ticket**, each row of a read page | `in_tier`, `skipped`, `unread` | the first read; `unread_keys` |
-| **skip reason**, each skipped ticket | `room` (also camping), `class`, `competition`, `merchandise`, `food_drink`, `excursion` (also shuttles), `fee` (a name change, a surcharge), `deposit` (also instalments), `discount`, `donation`, `not_public` (guest, staff, helper), `no_amount` | the first read |
-| **pass kind** | `full`, `party`, `day`, `workshop`, `package`, `other` | the first read; the prices answer |
-| **pass style** | `none` (null in the schemas), `kizomba`, `zouk`, `bachata`, `salsa`, `other` | the same, checked against the festival's genres |
-| **people** | `one`, `couple`, `group`, `per_room` | `group_size` 1, 2, 3 or more, null |
-| **fee** | `none`, `included` | a tier's `fee` |
-| **re-read**, a festival with a first read | `dated`, `monthly` | `tickets.recheck` |
-| **first read** | `not_needed`, `none`, `current`, `redo_description`, `redo_prompt`, `redo_page`, `redo_unread`, `disputed` | `why_first_read`, `two_model_read` |
-| **prices answer** | `none`, `current`, `stale`, `failed` | `ask.due`, `ask.main` |
-| **waits for**, each festival to come | `page`, `recipe`, `recipe_fix`, `session`, `agent`, `sales_open`, `nothing` | `tickets.waiting`, in `tickets/status.csv` |
-| **price**, each festival to come | `priced`, `other_passes_only`, `page_unread`, `not_yet`, `offline`, `closed`, `none_found`, `not_looked` | `tickets.price_state`, in `tickets/status.csv` |
-| **tier today**, viewed on a day | `now`, `from`, `next`, `sold_out`, `ended` | `pricing.js tierNow` |
-| **card price**, a `priced` festival viewed on a day | `full_pass`, `package`, `sold_out`, `ended` | `pricing.js priceNow` |
-| **genre**, **feature**, **role** | the 14 genres, 26 features and 7 roles that were `vocab.json` | the extraction passes |
+| **ticket**, each row of a read page | `in_tier`, `skipped`, `unread` | the first read; `tickets.unread_keys` |
+| **skip_reason**, each skipped ticket | `room` (also camping), `class`, `competition`, `merchandise`, `food_drink`, `excursion` (also shuttles), `fee` (a name change, a surcharge), `deposit` (also instalments), `discount`, `donation`, `not_public` (guest, staff, helper), `no_amount` | the first read |
+| **pass_kind** | `full`, `party`, `day`, `workshop`, `package`, `other` | the prices pass; the first read |
+| **style**, a festival's (by its genres) or the one a pass is limited to | `kizomba`, `zouk`, `bachata`, `salsa`, `other`; a pass's null is all the festival's styles | `prices.styles`; the prices pass; the first read |
+| **people**, a pass by how many one price is for | `one`, `couple`, `group`, `per_room` | `prices.people`, from `group_size` and the kind |
+| **fee**, a price tier | `none`, `included` | the tier's `fee` |
+| **hotel**, a pass by whether its price includes a hotel | `included`, `none` | the prices pass; the first read |
+| **re_read**, a festival with a first read | `dated`, `monthly` | `tickets.recheck` |
+| **first_read**, a festival | `not_needed`, `none`, `awaits_answer`, `current`, `redo_prompt`, `redo_description`, `redo_page`, `redo_unread`, `disputed` | `tickets.why_first_read` |
+| **answer**, a festival's answer of one extraction pass | `none`, `current`, `stale` | `ask.answer_state` |
+| **waits_for**, each festival | `page`, `recipe`, `recipe_fix`, `session`, `agent`, `sales_open`, `nothing` | `tickets.waiting`, in `tickets/status.csv` |
+| **price**, each festival | `priced`, `other_passes_only`, `page_unread`, `not_yet`, `offline`, `closed`, `none_found`, `not_looked` | `prices.price_state`, in `price_status` |
+| **tier_today**, a pass viewed on a day | `now`, `from`, `next`, `sold_out`, `ended` | `pricing.js tierNow` |
+| **next_change**, a pass's next price viewed on a day | `door`, `dated`, `later` | `pricing.js nextChange` |
+| **card_price**, a `priced` festival viewed on a day | `full_pass`, `package`, `sold_out`, `ended` | `pricing.js priceNow` |
+| **genre**, **feature**, **role** | 14 genres, 28 features (two of them, `promo_code` and `group_deals`, made by the build), 7 roles | the extraction passes |
+| **genre_rule**, **source**, **pass_source**, **room_kind** | `sbk`, `title`; `description`, `site_tag`; `description`, `ticket_page`; `party`, `class`, `unspecified` | `load_extract`; the rooms-genres pass |
+| **artist_kind**, **home_basis**, **merge_decision**, **pending**, **plan** | `person`, `couple`, `group`, `organisation`; `given`, `stated`; `merge`, `separate`, `unsure`; `new`, `description changed`; `going` | `resolve_artists`; the build; the merge review; the scrape; `plans.csv` |
 
 **Who decides.**
-- **The pipeline** decides every data point except two, and `price` is total over the festivals to come: a festival
-  with prices is `priced`, and one whose passes include none the card prices is `other_passes_only`.
-- **The browser** decides `tier today` and `card price`, because they depend on today's date.
+- **The pipeline** decides every data point except three. `price` is total over the festivals: one with passes is
+  `priced` when they include the pass a card prices (`prices.card_pass`, stored beside it as `price_status.card_pass`,
+  and a check holds a festival priced exactly when it has one), else `other_passes_only`; one without is said by how
+  it sells and whether its ticket page is known. A ticket page is known when it is a first read's, the shop an agent
+  recorded, or a festival's first full link to a ticket shop (a site a recipe reads, or one the register names); a
+  link to anything else is no ticket page, and the festival waits for its `page`.
+- **The browser** decides `tier_today`, `next_change` and `card_price`, because they depend on today's date.
+  `pricing.js` takes the day as an argument and touches nothing on the page, so a test reaches each of their states,
+  and `priceLine` gives the state whose words a card shows.
 
-**Skip reasons.** They are the prompts' list of what to leave out, made explicit. There is no catch-all: a ticket that
+**Skip reasons.** They are the prompts' list of what is no pass, made explicit. There is no catch-all: a ticket that
 no reason fits can't be skipped, so its read fails the checker and the festival waits for an agent, who adds a reason
 or decides.
 
@@ -50,56 +66,73 @@ or decides.
 
 The same rows carry the mapping:
 - **criterion:** what makes an instance this state, in the producers' words.
-- **disposition:** one of **card**, **view**, **note**, **kept** and **waits**.
+- **disposition:** one of **card**, **view**, **note**, **filter**, **kept** and **waits**.
   - **card:** the card shows it.
-  - **view:** the passes view shows it.
+  - **view:** an opened card or the passes view shows it.
   - **note:** the card says why it shows no price.
+  - **filter:** the site filters festivals by it, and shows it nowhere else.
   - **kept:** stored, not shown.
   - **waits:** pending, and its owner acts.
-- **wording:** what a reader sees.
+- **wording:** what a reader sees; `{name}` marks a value the site fills in.
 - **owner:** who acts.
+- **made_by:** the producer of a state that is not its point's (the build's two features).
+- **icon**, **link:** how the site renders it: its icon, or a link to the ticket page or the passes view.
+- **under:** the state of its point's `under` point it falls under (a genre's style).
+- **forms:** the words other surfaces show for it, by name: a role's singular, the card's cost line, a next change
+  in the passes view. A form the table doesn't have fails where it is asked for.
 
 **Surfaces.** Every surface reads the rows and restates none:
-- **The schemas** name each enum as `$ref: "#/$defs/<point>"`. `states.schema()` fills in the `$defs`, so the files
-  stay valid JSON Schema, and an unfilled reference fails validation.
-- **The prompts' definitions** are filled in from the criteria.
-- **The SQL checks** are built from the table.
-- **The site** reads its wording, and each state's render hint (a link to the ticket page, say), from the state table
-  of its database. It holds no wording of its own:
-  - a pipeline state renders generically from its row;
-  - only the keys the browser itself produces (`tier today`, `card price`) are in a generated `docs/js/states.js`;
-  - its `total(point, map)` throws when the module loads if a map misses a state.
+- **The schemas** name each enum as `$ref: "#/$defs/<point>"`. `states.schema()` fills in the `$defs` with the
+  states the point's own producer makes, so the files stay valid JSON Schema, and a reference to no point fails.
+- **The prompts** are templates: a line `{{states:<point>}}` becomes each state's key and criterion, and a marker
+  left over fails.
+- **The SQL checks** are built from the table, in the source database, where every coded column has one; the
+  site's database copies those rows and checks the columns of its own tables (`price_status`, `plans`,
+  `artist_stats.home_basis`). They are enforced on insert, which skips only a duplicate row (`ON CONFLICT DO
+  NOTHING`), never a value outside the table, and a load runs in one transaction, so a refused value leaves the
+  database as it was.
+- **The site** reads its words, forms, icons and links from `docs/js/states.js`, which the build writes from the
+  table next to the database, with every state's key by name (`KEY.price.PRICED`) and the links' (`LINK.PAGE`).
+  `docs/js/wording.js` says them; a state, a form or a point the table doesn't have fails where it is asked for, and
+  so does an icon `icons.js` doesn't draw. Tests scan the site's code for a state's words, a fragment of them between
+  `{names}`, or a key written in quotes. The site's database has the same rows as its `states` table, for whoever
+  reads the data.
 
 **Wording** is at the data's precision: it explains the state, never the pipeline's mechanism. States a reader
 needn't tell apart share their wording, but keep their own key and owner. Some rows:
 
 | Point · state | Disposition | Wording | Owner |
 |---|---|---|---|
-| price · `none_found`, `not_looked` | note | No price published | agent: after its links change · agent: find the page |
-| price · `other_passes_only` | note | No full pass price ↗ (opens the passes) | — |
-| price · `page_unread` | note | Prices on the ticket page ↗ | agent: write the recipe |
+| price · `none_found`, `not_looked` | note | No price published | agent: once its links change · agent: find the page |
+| price · `other_passes_only` | note | No full pass price (a button to the passes) | — |
+| price · `page_unread` | note | Prices on the ticket page ↗ (a link to it) | — (waits_for says who acts) |
 | price · `not_yet` | note | Tickets not on sale yet | organiser |
-| price · `offline` | note | Tickets by message or form, no price online | nobody |
-| price · `closed` | note | Ticket sales closed | nobody |
-| card price · `ended` | note | Prices no longer listed | organiser |
+| price · `offline` | note | Tickets by message or form, no price online | — |
+| price · `closed` | note | Ticket sales closed | — |
+| card_price · `ended` | note | Prices no longer listed | organiser |
+| card_price · `sold_out` | card | Full pass sold out · Package sold out | — |
+| card_price · `full_pass` (form cost) | card | Cost {sum}, without accommodation | — |
+| next_change · `dated` (form then) | card | price goes up {day} (then {price} from {day}) | — |
+| tier_today · `ended` (form all) | view | No passes on sale any more. | — |
 | ticket · `unread` | waits | The ticket page has more tickets than shown here | the next run's first read |
-| waits for · `agent`, `recipe_fix`, `session` | waits | (the last prices stay) | agent |
-| skip reason · each | kept | — | the first read |
-| pass kind · each | view | Full pass · Party pass · Day pass · Workshop pass · Package · *the pass's own name* | — |
-| pass style · each but `none` | view | Kizomba · Zouk · Bachata · Salsa · Other style | — |
+| waits_for · `agent`, `recipe_fix`, `session` | waits | (the last prices stay) | agent |
+| skip_reason · each | kept | — | the first read |
+| pass_kind · each | view | Full pass · Party pass · Day pass · Workshop pass · Package · *the pass's own name* | — |
+| style · each | view | Kizomba · Zouk · Bachata · Salsa · Other style | — |
+| feature · `all_in_one` | filter | All-in-one hotel | — |
 
 **Prompt identity.** A prompt the pipeline sends to a model is identified by the hash of everything fixed in its
-request:
-- the system text;
-- each fixed part of the message;
-- the schema as sent, as `json.dumps(api_schema(schema), sort_keys=True)`.
+request: its text sets down the system text, the schema the checker holds the answer to, and the schema as sent,
+each dumped with sorted keys (`pipeline/prompt.py`). A prompt lists its states' definitions in key order, so
+reordering the table asks nothing again. Each answer (`answers/log.csv`) and first read records that hash, and one
+is stale when its hash differs from the current one (`prompt.is_current`). So editing a template, a criterion, a
+schema enum or a constraint only the checker enforces re-asks exactly what it reaches. Whatever saves an answer or a
+first read saves the prompt's text under its hash in `pipeline/prompts/asked/` first, so every hash a file names has
+its text. An agent making a first read follows the same text (`tickets.py draft` writes it beside the draft), so its
+read carries the same hash.
 
-Each answer and first read records that hash, and an answer is stale when its hash differs from the current one. So
-adding a state to the table re-asks exactly what the state reaches. Each request text is saved under its hash in
-`pipeline/prompts/asked/` the first time it's used.
-
-The extraction answers made by Claude Code subagents, which followed the prompt files and were never sent through
-`ask.structured`, carry the hash of the file they followed; the archive says so.
+The answers and reads made before prompts were known by their hash carry the hash of the files they followed, at
+the commit they were made at; `pipeline/prompts/asked/README.md` lists them.
 
 **Agreement.** Two models' reads agree on what each consumer treats differently, which the table decides:
 - the same passes, tiers and skipped tickets;
@@ -107,20 +140,24 @@ The extraction answers made by Claude Code subagents, which followed the prompt 
 
 ## 3. Exception register: dispositions as data, keyed by identity
 
-`pipeline/exceptions.py` holds one typed row per instance that departs from its state's default: `point, identity,
-override, rationale, decided_by, decided_on, fingerprint`. The register is separate from the mapping: a row overrides
-one instance, never a state.
+`pipeline/exceptions.py` holds one typed `Override` per site whose festivals depart from what they would wait for by
+default: `host, instead_of, then, why, decided_by, decided_on`, the two states of `waits_for`. The register is
+separate from the mapping: a row overrides the instances on one site, never a state. Its sites are ticket shops, so
+a festival's link to one is a known ticket page. `tickets.waiting` gives what a festival waits for by its own data
+(`waits_by_default`), and an override for its page's site replaces that state when it is the one the row names.
 
-| Identity | Override | Rationale | Fingerprint (stale when it no longer holds) |
-|---|---|---|---|
-| host `www.helloasso.com` | waits for `nothing` instead of `recipe` | a bot check, not bypassed (user, 26 Oct) | no recipe for the host, and a festival to come uses it |
-| host `www.tickettailor.com`, host `buytickets.at` | the same | the same | the same |
-| host `www.tikello.com` | the same | prices are shown in the visitor's currency, changing between loads | the same |
-| host `kizomba.lt` | the same | no ticket ids on the page | the same |
-| host `www.sarajevosalsa.com` | the same | prices are images | the same |
+| Identity | Override | Why |
+|---|---|---|
+| host `www.helloasso.com`, `www.tickettailor.com`, `buytickets.at` | waits for `nothing` instead of `recipe` | a check that a visitor is human, not to be bypassed (user, 26 Oct) |
+| host `www.tikello.com` | the same | prices are shown in the visitor's currency, changing between loads |
+| host `kizomba.lt` | the same | no ticket ids on the page |
+| host `www.sarajevosalsa.com` | the same | prices are images |
 
-A `none_found` search records a hash of the festival's links in `pages.csv`. When the links change, the festival waits
-for a `page` again.
+A row is stale once it departs from nothing: a recipe reads its site now, or no festival the source database lists
+has its known ticket page there. Both change only with a commit (a recipe, the export), never with the date.
+
+A `none_found` search records a hash of the festival's links in `pages.csv`. When the links change, the search no
+longer holds, and the festival waits for a `page` again.
 
 ## 4. Audit rule: what fails the build
 
@@ -129,13 +166,14 @@ A new or unmapped state fails at the first of these that meets it:
    a value outside the table is refused.
 2. **In Tests:** the scans find a state name in the code that the table doesn't have, and the per-state tests of each
    choosing function fail.
-3. **The audit:** `python3 -m pipeline.audit` runs in **Tests** and first in **Rebuild site database**. It catches what
-   bypasses the first two, such as a hand edit of `pages.csv`, `status.csv` or the register. It reports *"0 unmapped,
-   0 stale"*, and otherwise exits 1, naming each instance:
-   - **Unmapped:** a value that is no state of its data point, named as *data point, value, file: add a row to
+3. **The audit:** `uv run --group tickets -m pipeline.audit` runs in **Tests** and first in **Rebuild site
+   database**. It catches what bypasses the first two, such as a hand edit of `pages.csv`, `status.csv`, `pass_prices.csv`, the
+   decisions and plans, or the register. It reads the shared CSVs, and the first reads and answers to their current
+   prompts (one to another prompt waits to be asked again, and is not loaded), an answer's values checked against the
+   states its pass makes. It reports *"0 unmapped, 0 stale"*, and otherwise exits 1, naming each instance on stderr:
+   - **Unmapped:** a value that is no state of its point, named as *point, value, file: add a row to
      pipeline/states.py*.
-   - **Stale:** a register row whose identity is gone, whose fingerprint no longer holds, or whose instance now has its
-     state's default anyway.
+   - **Stale:** a register row for a site a recipe now reads, or one no festival has its known ticket page on.
 
 **Waits** states don't fail it. They have an owner, `status.csv` lists them, and the site words them, so a dispute,
 a broken recipe or a ticket no reason fits never stops the site from updating.

@@ -66,7 +66,9 @@ its page on kizomba-world. The fares are our own searches.
 | `pipeline/fare_jobs.csv` | When each festival weekend was last searched, and how it went | the same Action |
 | `pipeline/extract/answers/` | Claude's answers for line-ups, highlights, rooms, genres and pass prices | the **Refresh events** Action |
 | `pipeline/rates.csv` | The European Central Bank's exchange rates, per euro | the **Rebuild site database** Action |
-| `pipeline/tickets/`, `pipeline/pass_prices.csv`, `pipeline/ticket_pages.csv` | Ticket-page recipes, read logs, first reads, and the prices read there | `pipeline/tickets.py`: the **Refresh events** Action, or an agent |
+| `pipeline/tickets/`, `pipeline/pass_prices.csv`, `pipeline/ticket_pages.csv` | Ticket-page recipes, read logs, first reads, the prices read there, and what each festival waits for (`tickets/status.csv`) | `pipeline/tickets.py`: the **Refresh events** Action, or an agent |
+| `pipeline/states.py`, `pipeline/exceptions.py` | Every state a data point can be in, what it means and the site's words for it; the instances that depart from their state's default | by hand (see "States") |
+| `pipeline/prompts/asked/` | Every prompt asked, by its hash | whatever saves an answer or a first read, before it names the hash |
 
 The build also tidies the text. Artist names get one casing ("AMI & JULIEN" becomes "Ami & Julien"). Festival
 titles lose dates, years and shouting capitals; `events.listed_title` keeps them as listed. Venues are recased.
@@ -80,11 +82,14 @@ the site both read it from there. Cities are geocoded with OpenStreetMap Nominat
 Prices show in kroner, or in euros or dollars (`?cur=eur`, `?cur=usd`, switched in the footer); amounts in
 other currencies are converted with `pipeline/rates.csv` and marked "~". A festival card shows what the weekend costs
 without accommodation (the per-person full pass at today's price, plus the flight; at a festival of several
-dance styles, its Kizomba full pass when it sells one, from prompt `prices-v5` on, which names each pass's style) and when the pass price next goes
-up; tapping the pass opens every pass at today's price and its next change (`docs/js/passes.js`). A price is what a
-buyer pays, booking fee included; the passes view says which fee it includes when the description or the ticket
-page states one (an answer to an older prompt, which may lack the fee or the style, is asked again, past
-festival or not, and stays out of the database until then).
+dance styles, its Kizomba full pass when it sells one; else a package with a hotel for one) and when the pass price
+next goes up; tapping the pass opens every pass at today's price and its next change (`docs/js/passes.js`). Which
+pass a card prices is the pipeline's choice (`prices.card_pass`, `price_status.card_pass`); its price on the day is the
+browser's (`docs/js/pricing.js`). A card without a price says why (`price_status`): the festival sells no pass the
+card prices, its prices are on a ticket page not read yet, its sales haven't opened, it sells by message or form,
+its sales are closed, or no price is published. A price is what a buyer pays, booking fee included; the passes view
+says which fee it includes when the description or the ticket page states one (an answer to another prompt is asked
+again, past festival or not, and stays out of the database until then).
 
 For the SQL page, every table is described in the `table_docs` table. The `event_rows` view is the one to start
 from: it joins each event to its statistics and says whether it is still to come.
@@ -194,13 +199,16 @@ judgment about a page is made once, by an agent or two models, and checked; ever
   name, price, amount or currency: the recipe needs an agent). Git merges these files line by line
   (`.gitattributes`), so a session and the monthly run never conflict.
 - **A first read per festival** (`pipeline/tickets/reads/<event_id>.json`, schema `read.json`) says, from one logged
-  read and the festival's description, which pass each ticket is, in the prices pass's terms (prompt
-  `pipeline/tickets/prompts/first-read-v4.md` on top of `prices-v6`): every ticket is in a tier, by its key, or
-  skipped (a bootcamp only when the ticket is a deposit on one); dates, ticket limits and price notes are quoted
+  read and the festival's description, which pass each ticket is, in the prices pass's terms (the template
+  `pipeline/tickets/prompts/first-read.md` on top of the prices pass's `prices.md`): every ticket is in a tier, by
+  its key, or skipped with its reason, one of the skip reasons of `pipeline/states.py` (a ticket no reason fits
+  can't be skipped, so its read fails and the festival waits for an agent; a bootcamp is skipped only as a
+  deposit); dates, ticket limits and price notes are quoted
   from the description or the ticket's name; a pass has a style only at a festival whose genres name two dance
   styles or more, and it is one of them. Only checked
-  first reads are kept there: an agent fills a draft (`pipeline/tickets/drafts/`, not committed), which `record`
-  moves there once it passes.
+  first reads are kept there: an agent fills a draft (`pipeline/tickets/drafts/`, not committed), following the
+  prompt the models answer (`drafts/<event_id>.prompt.md`, written with the draft), which `record` moves there once
+  it passes.
 - **`record`** writes the prices: amount, currency, sold out and the quote (the ticket's name and price) from the
   latest read rows of the same page, the rest from the first read. It checks the first read against the rows it was
   made from and the prices against their quotes, then writes `pipeline/pass_prices.csv` (one row per tier) and
@@ -224,29 +232,36 @@ uv run --group tickets -m pipeline.tickets record ID          # check the draft 
 uv run --group tickets -m pipeline.tickets retry ID           # read with a visible browser, then record
 uv run --group tickets -m pipeline.tickets changes [ID]       # what changed between consecutive reads
 uv run --group tickets -m pipeline.tickets page ID URL --note N        # where a festival with no full link sells
-uv run --group tickets -m pipeline.tickets page ID --state S --note N  # or not_yet, offline, closed
+uv run --group tickets -m pipeline.tickets page ID --state S --note N  # or not_yet, offline, closed, none_found
 ```
 
-A festival needs a first read when it is still to come and its description gives no dated full pass or package
-price, and again when its description or its ticket page changes, its page shows tickets the first read
-doesn't know, or the first read follows an older prompt; a festival now past then gets it from its latest logged
+A festival needs a first read when it is still to come and its description's prices answer gives the pass a card
+prices no dated price (until that answer is asked with the current prompt, it waits for it), and again when its description or its ticket page changes, its page shows tickets the first read
+doesn't know, or the first read follows another prompt; a festival now past then gets it from its latest logged
 rows, without its page. It is read
 again on the monthly run, unless it is *dated* (every tier on sale has an end date and none is limited to a number
 of tickets), when it is read again once its last date has passed. The monthly **Refresh events** Action runs
 `tickets.py run`: the re-reads that are due, a retry of every festival whose latest read failed, and a first read
 by Opus and Sonnet for each festival that needs one on a site with a recipe (no first read yet, or one made with a
-changed description, for another page, or for an older first-read prompt). The two read independently, and the
-first read is kept only when they agree on every ticket's pass, style, tier, skip and dates; when they don't, both are kept
+changed description, for another page, or to another prompt). The two read independently, and the
+first read is kept only when they agree on every ticket's pass, style, tier, skip and dates (and on why a ticket is
+skipped, for a skip reason the site tells apart); when they don't, both are kept
 in `pipeline/tickets/disputed/<event_id>.json` for an agent and the festival waits. The run fails, after
 committing, when a page broke its recipe, a festival's read failed three times in a row, or a festival no longer
 fits its first read; `todo` then marks it for
-a session, where `retry` reads it with a visible browser. A festival that can't be read yet waits for
-something, and the run writes each one to `pipeline/tickets/waiting.csv` with what it waits for: its ticket page
-found (kizomba-world cut the link short, or gave none; an agent records in `pipeline/tickets/pages.csv`, through
-`tickets.py page`, how the festival sells: in a shop, with its page; not yet, when sales are announced but not
-open; offline, by message, e-mail, form or bank transfer; or closed), a recipe for its site, an agent to settle a
-dispute, or a session for a page that keeps refusing. A festival's card without a price says which: prices on the
-ticket page, tickets not on sale yet, by message or form, sales closed, or no price listed. That is backlog, so it never fails the run.
+a session, where `retry` reads it with a visible browser. A festival's ticket page is known when it is its first
+read's, the shop an agent recorded, or its first full link to a ticket shop (a site a recipe reads, or one
+`pipeline/exceptions.py` names); a link to anything else, the festival's own site say, is no ticket page. Every
+festival to come waits for something or for nothing, and `pipeline/tickets/status.csv` (written by `page`, `read`,
+`retry`, `record` and `run`, for every festival the export lists, a past one waiting for nothing) says which, with its
+first-read state, how it sells and its known page: its ticket page found (kizomba-world cut the link short, gave
+none, or gave no link to a ticket shop; an agent records in
+`pipeline/tickets/pages.csv`, through `tickets.py page`, how the festival sells: in a shop, with its page; not yet,
+when sales are announced but not open; offline, by message, e-mail, form or bank transfer; closed; or none found,
+when a search of its links and the web found no ticket page, which holds until its links change), a recipe for its
+site, its recipe fixed, its sales to open, an agent to settle a dispute, or a session for a page that keeps refusing.
+A site a recipe can't read (behind a check that a visitor is human, say) has a row in `pipeline/exceptions.py`, and
+its festivals wait for nothing. That is backlog, so it never fails the run.
 
 `pipeline/read_page.py` reads any one page as a browser shows it, for one-off checks; `tickets.py` is the one
 scheduled reader that uses it:
@@ -254,6 +269,24 @@ scheduled reader that uses it:
 ```bash
 uv run --group browser -m pipeline.read_page URL --screenshot page.png   # the page's text, and a screenshot
 uv run --group browser -m pipeline.read_page URL --visible               # a visible browser on a virtual display (xvfb-run)
+```
+
+## States
+
+Every coded value is one of the states of its data point, and `pipeline/states.py` holds each one as a typed row:
+what makes a value that state, what the site does with it (shows it on the card or in a view, says it as the card's
+reason for having no price, filters by it, keeps it, or waits for someone), its words on the site, and who acts on
+it (`pipeline/STATES.md`). Everything else is built from those rows: the code's enums, the schemas' enums (each
+schema names one as `"$ref": "#/$defs/<point>"`), the definitions in the prompts, the SQL checks, and
+`docs/js/states.js`, which the build writes for the site. So a new state is one new row, words included, and a
+value that is no state fails: when it is written (a schema, a check), in the tests (a name in the code the table
+doesn't have), or in `pipeline/audit.py`, which runs first in **Rebuild site database** and in **Tests** and names
+each value that is no state in the shared files and in the answers and first reads the load takes (those to the
+current prompt), and each row of `pipeline/exceptions.py` that departs from nothing any more: a recipe reads its
+site now, or no festival has its known ticket page there.
+
+```bash
+uv run --group tickets -m pipeline.audit       # "0 unmapped, 0 stale", or what to add or remove
 ```
 
 ## Promo codes
@@ -281,8 +314,9 @@ pages add what the API leaves out: the venue and city, the deal link, the organi
 and whether the festival is cancelled. Pages are fetched for new and changed festivals and for every festival still
 to come, since a deal link can change without the festival's modified date, and a cancellation might too. They
 are fetched a few seconds apart, so a run takes about a quarter of an hour. Festivals the site no longer lists are removed. Once the export is committed, the
-Action starts **Rebuild site database**, which geocodes new cities, rebuilds the database and commits it. That
-workflow also runs on any push to `source/` or `pipeline/`.
+Action starts **Rebuild site database** on the same branch, which checks every state in the data
+(`pipeline/audit.py`), geocodes new cities, rebuilds the database and `docs/js/states.js`, and commits them. That
+workflow also runs on any push to `source/` or `pipeline/` on `main`.
 
 The site sits behind Cloudflare, which refuses ordinary scripts, so the scraper sends its requests the way
 Chrome does, through [curl_cffi](https://github.com/lexiforest/curl_cffi). If Cloudflare stops letting it
@@ -291,21 +325,27 @@ through, the Action fails and the site keeps the last export.
 Line-ups, highlights from descriptions, rooms, genres and pass prices are read from each description by Claude
 (claude-haiku-5-5). After the scrape, the same Action runs `pipeline/extract/ask.py`: festivals in the export's
 `pending_extraction` table (new, or with a changed description) and festivals a pass has no answer for are asked
-about, one festival and one pass at a time, with that pass's prompt (`pipeline/extract/prompts/`) and its schema as
-the required answer format. A checker then confirms that the answer has the right shape, and that every name,
+about, one festival and one pass at a time, with that pass's prompt (its template in `pipeline/extract/prompts/`,
+the definitions of its states filled in from `pipeline/states.py`) and its schema as the required answer format. A checker then confirms that the answer has the right shape, and that every name,
 quote and price appears in the description, and that a pass has a style only at a festival whose genres name two
 dance styles or more (`prices.styles`). A failing answer goes back to Claude once, with the checker's
-lines. A second failure leaves the festival pending, to try again next month. A new prompt version makes every answer to the older one, and
-every first read when the first-read prompt changes, wait to be asked again, out of the database until then; so
-start **Refresh events** by hand once it is pushed, before anything reloads the database. Started with festival ids
+lines. A second failure leaves the festival pending, to try again next month; a festival leaves pending once every
+pass has answered it. A prompt is known by the hash of everything fixed in its request: its text, its schema as the
+checker holds the answer to it, and its schema as sent (`pipeline/prompt.py`); each answer and first read records the
+hash it answered, and saving one first saves the text in `pipeline/prompts/asked/<hash>.md`.
+Editing a template, a state's criterion or a schema changes the hash of every prompt it is in, which makes every
+answer to that prompt, and every first read when it is the first read's, wait to be asked again, out of the database
+until then; so start **Refresh events** by hand once it is pushed, before anything reloads the database. Started with festival ids
 in `festivals` ("16909,18806"), it skips the scrape, and asks and reads those festivals only (`ask.py --only`,
 `tickets.py run --only`): after a fixed recipe, say, or to try a prompt on a few festivals first. The answers are saved in
-`pipeline/extract/answers/` and committed; `answers/log.csv` says who answered each file and when. The first
+`pipeline/extract/answers/` and committed; `answers/log.csv` says who answered each file, with which model and
+prompt, and when. The first
 extraction's answers, from Claude Code subagents, are kept there too; rebuilding from them reproduces the
 export's tables exactly.
 
-`load_extract.py` then loads every festival's newest answer into the export, and `resolve_artists.py` groups the
-names into artists. Artist ids never change: `artist_ids` remembers every id given, a new artist gets the next
+`load_extract.py` then loads every festival's newest answer to each pass's current prompt, and the prices read on
+ticket pages to the current first-read prompt, into the export, in one transaction: a value a check refuses leaves the
+export as it was. `resolve_artists.py` groups the names into artists, in one transaction too. Artist ids never change: `artist_ids` remembers every id given, a new artist gets the next
 unused one, and a link to an artist that was merged opens the one it was merged into. Pairs of names that might
 be one artist go to `pipeline/artist_merge_suggestions.csv` for review; nothing is merged without a decision. The
 key is the repository secret `ANTHROPIC_API_KEY`. Asking Claude has a budget of €100 a month (`pipeline/spend.py`):
@@ -343,9 +383,10 @@ through `pipeline/db.py`, saying whether it reads, writes or creates each one, s
 The **Tests** Action runs on every push. Locally:
 
 ```bash
-node --test tests/*.test.mjs      # the site's structure: unused code and styles, links, stored hints
-uv run --group dev pytest -q      # the pipeline: text, kizomba-world's pages, extraction, ticket pages, commands
+node --test tests/*.test.mjs      # the site's structure: unused code and styles, links, stored hints, the price states
+uv run --group dev pytest -q      # the pipeline: the states, text, kizomba-world's pages, extraction, ticket pages, commands
 uv run --group dev pyflakes pipeline tests   # unused and undefined names
+uv run --group tickets -m pipeline.audit        # every state in the data is one of pipeline/states.py
 ```
 
 The site tests check what JavaScript and CSS cannot enforce themselves. Examples include an export nothing
