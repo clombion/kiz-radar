@@ -6,9 +6,9 @@ import { q } from './db.js';
 import { h } from './ui.js';
 
 const CURRENCIES = {
-  NOK: { label: 'kr', flight: { cheap: 1500, fair: 2500 }, trip: { cheap: 3500, fair: 5000 } },
-  EUR: { label: '€', flight: { cheap: 150, fair: 250 }, trip: { cheap: 350, fair: 500 } },
-  USD: { label: '$', flight: { cheap: 175, fair: 275 }, trip: { cheap: 400, fair: 550 } },
+  NOK: { label: 'kr', flight: { cheap: 1500, fair: 2500 }, trip: { cheap: 3000, fair: 5000 } },
+  EUR: { label: '€', flight: { cheap: 150, fair: 250 }, trip: { cheap: 300, fair: 500 } },
+  USD: { label: '$', flight: { cheap: 175, fair: 275 }, trip: { cheap: 350, fair: 550 } },
 };
 const asked = new URLSearchParams(location.search).get('cur')?.toUpperCase();
 export const currency = asked in CURRENCIES ? asked : 'NOK';

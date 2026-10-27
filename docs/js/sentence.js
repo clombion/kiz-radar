@@ -152,7 +152,7 @@ export function sentenceView(root, qs, { signal, data }) {
   const header = document.querySelector('header.top');
   const place_ = () => { if (header) bar.style.top = header.getBoundingClientRect().height + 'px'; };
   place_(); addEventListener('resize', place_, { signal });
-  // a hint under the "Map & artists" tab, until someone has been there
+  // a hint under the Explore tab, until someone has been there
   const tab = document.querySelector('a[data-nav="explore"]');
   const tabNote = !exploreHint.seen() ? note('note-tab', 'up', 'psst… more here') : null;
   if (tabNote) tab.append(tabNote);

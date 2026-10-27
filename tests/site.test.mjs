@@ -64,7 +64,7 @@ test('each design token is defined once per theme', () => {
 });
 
 test('links are built by routes.js', () => {
-  const literal = /['"`]#(?:finder|map|artists?|countries|sql)\b/;
+  const literal = /['"`]#(?:finder|map|artists?|countries|friends|people|sql)\b/;
   assert.deepEqual(Object.entries(js).filter(([f, s]) => f !== 'routes.js' && literal.test(s)).map(([f]) => f), []);
 });
 
@@ -89,7 +89,6 @@ const code = Object.fromEntries(Object.entries(js).filter(([f]) => f !== 'states
   .map(([f, src]) => [f, src.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:'"`\\])\/\/.*$/gm, '$1')]));
 // words and keys that mean something else where they are written; each must still be found, so none outlives its use
 const HOMONYMS = new Set([
-  'main.js: People', 'routes.js: People', 'search.js: People',            // the people who share plans
   "artists.js: 'next'", "artists.js: 'group'", "countries.js: 'group'",   // an order; ARIA's role="group"
   "search.js: 'group'", "search.js: 'person'", "plans.js: 'person'",      // a search group, a result kind, a word
   "main.js: 'page'", "map.js: 'none'", "sentence.js: 'none'",            // aria-current="page"; no filter, no transition

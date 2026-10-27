@@ -558,3 +558,10 @@ html:has(dialog.peek[open]) { overflow: hidden; }
 .pass-rows .pass-now strong { color: var(--accent); }
 .currency-switch b { color: var(--text); }
 .trait-link { color: inherit; text-decoration: underline dotted; text-underline-offset: .2em; }
+/* a phone: the logo alone names the site, so the three tabs share one row */
+@media (max-width: 480px) {
+  .brand-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .top { gap: .5rem; }
+  .tabs { gap: .1rem; flex-wrap: nowrap; }
+  .tabs a { padding: .35em .6em; }
+}

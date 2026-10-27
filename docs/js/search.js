@@ -16,7 +16,7 @@ import { roleLabel } from './artists.js';
 import { modal } from './modal.js';
 
 const SHOWN = 5;                      // results per group until "Show all"
-const GROUPS = [['person', 'People'], ['festival', 'Festivals'], ['artist', 'Artists'], ['place', 'Places'], ['tag', 'Dances & highlights']];
+const GROUPS = [['person', 'Friends'], ['festival', 'Festivals'], ['artist', 'Artists'], ['place', 'Places'], ['tag', 'Dances & highlights']];
 // before anything is typed: what can be searched, as things to tap
 const SUGGEST = { styles: [KEY.genre.SALSA, KEY.genre.ZOUK, KEY.genre.BACHATA, KEY.genre.KOMPA],
   highlights: [KEY.feature.PROMO_CODE, 'taxi', KEY.feature.POOL_PARTY, 'allin'], countries: 4 };

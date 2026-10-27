@@ -12,8 +12,12 @@ Bergen to anywhere for a cheap price." Each underlined part is a choice. Below t
 appear as cards. Once the sentence scrolls away, a sticky bar keeps the time and price choices in view, with the rest
 under Filters. The choices live in the URL, so a view can be bookmarked or shared.
 
+The header's tabs are Festivals, Friends and Explore, whose second row holds the Map, Artists and Countries. On a touch
+screen, a swipe left or right goes to the next or previous of those five, in that order (`SECTIONS` in
+`docs/js/routes.js`); a swipe on the map moves the map, and one on the header still changes section.
+
 The price is the trip's: the full pass at today's price plus the Friday-to-Monday return flight. "A cheap price" is
-under 3 500 kr (€350, $400) and "a reasonable price" under 5 000 kr (€500, $550). With a price chosen, festivals whose
+under 3 000 kr (€300, $350) and "a reasonable price" under 5 000 kr (€500, $550). With a price chosen, festivals whose
 passes are sold out are left out, and so are festivals whose pass or flight price isn't known, unless "Include festivals
 with unknown prices" is ticked under Filters. At "any price", everything shows, sold-out passes marked as such.
 "Cheapest first" orders by the trip, then the flight.
@@ -153,9 +157,10 @@ note for people reading the file. The build stops if a key is unknown or the boo
 
 People can say which festivals they're going to. For now the plans are entered by hand in two files:
 
-- `pipeline/people.csv`: one row per person, with a short `key` (used in their page's address, `#people/<key>`), their
-  `name`, the `artist_keys` they are in the line-ups (`match_key` values, separated by `;`), and `featured`. Featured
-  people are named on festival cards; the others are counted.
+- `pipeline/people.csv`: one row per person, with a short `key` (used in their page's address, `#friends/<key>`; an
+  address from before, `#people/<key>`, still opens it), their `name`, the `artist_keys` they are in the line-ups
+  (`match_key` values, separated by `;`), and `featured`. Featured people are named on festival cards; the others are
+  counted.
 - `pipeline/plans.csv`: one row per person and festival, with `status` `going` for now.
 
 A festival card then says, for example, "Cédric & Christina are going · 3 more people too". Tapping a name opens a quick
@@ -163,8 +168,8 @@ view over the page with where they're going and a link to their page; "3 more pe
 from its title and from its foot (the flight and "Line-up & details"), not from the rest of it. Partners who both go are
 named as their couple. Someone in the festival's line-up, alone or in a couple, shows as teaching (or playing) rather
 than going. Each person has a plans page with a Share button, and an artist's page lists the festivals they're going to
-without teaching there. The People page, under Map & artists, lists every festival someone is going to, soonest first.
-On the Festivals page, a line under the count says when featured people go to some of the festivals listed ("Cédric &
+without teaching there. The Friends page, a tab of its own, lists every festival someone is going to, soonest first. On
+the Festivals page, a line under the count says when featured people go to some of the festivals listed ("Cédric &
 Christina are going to 3 of these"), and "Show only those" keeps just those; the same filter is a checkbox under
 Filters. The search finds people by name. The build stops if a person, an artist key or a festival is unknown.
 

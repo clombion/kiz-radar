@@ -37,12 +37,12 @@ function everyone(root) {
   const when = e => dayRange(e.start_date, e.end_date);
   root.replaceChildren(h('article', { class: 'artist-profile people' },
     h('header', { class: 'profile-head' }, h('h1', {}, 'Who’s going where'),
-      h('p', { class: 'lede' }, 'The festivals people said they’re going to.')),
+      h('p', { class: 'lede' }, 'The festivals friends said they’re going to.')),
     events.length ? h('ul', { class: 'plan-list' }, events.map(e => h('li', {},
       h('span', { class: 'when' }, when(e)),
       h('span', { class: 'what' }, h('a', { href: eventOnMapHref(e.id) }, e.title), h('span', { class: 'muted' }, ' · ', flag(e.country_code), ' ', e.city)),
       h('span', { class: 'who' }, goersInline(goersOf(e.id))))))
       : h('p', { class: 'muted' }, 'Nobody has shared plans yet.'),
-    people.length ? h('section', {}, h('h2', {}, 'People sharing their plans'),
+    people.length ? h('section', {}, h('h2', {}, 'Friends sharing their plans'),
       h('p', {}, list(people.map(p => [h('a', { href: personHref(p.key), class: 'artist' }, p.name), h('span', { class: 'muted' }, ` (${p.n})`)])))) : null));
 }

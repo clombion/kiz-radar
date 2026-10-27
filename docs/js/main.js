@@ -10,7 +10,7 @@ import { sqlView } from './tables.js';
 import { countriesView } from './countries.js';
 import { personView } from './people.js';
 import { exploreHint, artistHint } from './hints.js';
-import { EXPLORE } from './routes.js';
+import { EXPLORE, TABS, SECTIONS, renamed } from './routes.js';
 import { initSearch } from './search.js';
 import { currencySwitch } from './money.js';
 
@@ -25,12 +25,18 @@ const VIEWS = {
   artists: { title: 'Artists', nav: 'explore', waitsForData: true, show: artistsView },
   countries: { title: 'Countries', nav: 'explore', waitsForData: true, show: (root, sub, qs) => countriesView(root, qs) },
   sql: { title: 'SQL', nav: null, waitsForData: true, show: root => sqlView(root) },
-  people: { title: 'People', nav: 'explore', waitsForData: true, show: (root, sub) => personView(root, sub) },
+  friends: { title: 'Friends', nav: 'friends', waitsForData: true, show: (root, sub) => personView(root, sub) },
 };
 const failed = (root, e) => root.replaceChildren(h('p', { class: 'status error' }, 'Could not load the data: ' + e.message));
 
+// the header's tabs and the footer's links, from routes.js
+document.querySelector('nav.tabs').append(...TABS.map(([nav, label, href]) => h('a', { href, 'data-nav': nav }, label)));
+document.getElementById('footer-nav').append(...[...TABS.slice(0, -1), ...EXPLORE].map(([, label, href]) => h('a', { href }, label)));
+
 function route() {
   const [path, qs = ''] = (location.hash.slice(1) || 'finder').split('?');
+  const moved = renamed(path);
+  if (moved) { location.replace(moved + (qs ? '?' + qs : '')); return; }
   const [name, ...sub] = path.split('/');
   const view = VIEWS[name] || VIEWS.finder;
   if (view.nav === 'explore') exploreHint.mark();
@@ -58,6 +64,29 @@ function route() {
 }
 
 window.addEventListener('hashchange', () => { route(); window.scrollTo(0, 0); });
+
+// On a touch screen, a swipe left or right goes to the next or the previous section (routes.js SECTIONS). Not from
+// a map, a field, anything that scrolls sideways or a screen's edge (the browser's own back gesture), nor in a dialog.
+const SWIPE = { distance: 60, steepest: 0.5, ms: 600, edge: 24 };   // px; |dy|/|dx|; the longest a swipe takes; px
+const keepsSwipe = el => el.closest('input, textarea, select, dialog, .leaflet-container') ||
+  [...ancestors(el)].some(n => n.scrollWidth > n.clientWidth && /auto|scroll/.test(getComputedStyle(n).overflowX));
+function* ancestors(el) { for (let n = el; n && n !== document.body; n = n.parentElement) yield n; }
+let touch = null;
+addEventListener('touchstart', e => {
+  const t = e.touches[0];
+  touch = e.touches.length === 1 && t.clientX > SWIPE.edge && t.clientX < innerWidth - SWIPE.edge && !keepsSwipe(e.target)
+    ? { x: t.clientX, y: t.clientY, at: e.timeStamp } : null;
+}, { passive: true });
+addEventListener('touchend', e => {
+  if (!touch) return;
+  const t = e.changedTouches[0], dx = t.clientX - touch.x, dy = t.clientY - touch.y, quick = e.timeStamp - touch.at < SWIPE.ms;
+  touch = null;
+  if (!quick || Math.abs(dx) < SWIPE.distance || Math.abs(dy) > SWIPE.steepest * Math.abs(dx)) return;
+  const name = (location.hash.slice(1) || 'finder').split(/[/?]/)[0];
+  const at = SECTIONS.findIndex(([k]) => k === name);
+  const next = at < 0 ? null : SECTIONS[at + (dx < 0 ? 1 : -1)];
+  if (next) location.hash = next[1];
+}, { passive: true });
 
 // "Back to top" once you're two screens down a long list
 const toTop = h('button', { type: 'button', class: 'to-top', onclick: () => window.scrollTo({ top: 0, behavior: 'smooth' }) }, '↑ Back to top');
