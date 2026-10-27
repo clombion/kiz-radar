@@ -1,9 +1,8 @@
 """The airports in pipeline/airports.csv. Home is the one marked home: flights go from there."""
 
-import csv
-import os
+from pathlib import Path
 
-AIRPORTS = list(
-    csv.DictReader(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'airports.csv'), encoding='utf-8'))
-)
-(HOME,) = [a['code'] for a in AIRPORTS if a['home'] == '1']
+from pipeline.records import Airport
+
+AIRPORTS = Airport.read(Path(__file__).parent / 'airports.csv')
+(HOME,) = [a.code for a in AIRPORTS if a.home == 1]

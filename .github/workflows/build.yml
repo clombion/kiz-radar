@@ -2,7 +2,7 @@ name: Rebuild site database
 
 # When a new kizomba-world export or anything in pipeline/ is pushed, check every state in the data is one of
 # pipeline/states.py (pipeline/audit.py), geocode any new cities, refresh the exchange rates, rebuild
-# docs/data/kiz.sqlite and docs/js/states.js, and refresh the merge suggestions. The newest .sqlite file in source/ is
+# docs/data/kiz.sqlite, and refresh the merge suggestions. The newest .sqlite file in source/ is
 # used.
 on:
   push:
@@ -31,16 +31,16 @@ jobs:
       - name: Every state in the data is in pipeline/states.py
         run: uv run -q --group tickets -m pipeline.audit
       - name: Geocode new cities
-        run: python3 -m pipeline.geocode "$SRC"
+        run: uv run -m pipeline.geocode "$SRC"
       - name: Refresh the exchange rates
-        run: python3 -m pipeline.rates || true   # when the bank can't be reached, the last rates stay
+        run: uv run -m pipeline.rates || true   # when the bank can't be reached, the last rates stay
       - name: Build docs/data/kiz.sqlite and site.json
-        run: python3 -m pipeline.build_site_db "$SRC"
+        run: uv run -m pipeline.build_site_db "$SRC"
       - name: Refresh merge suggestions
-        run: python3 -m pipeline.merge_suggestions "$SRC"
+        run: uv run -m pipeline.merge_suggestions "$SRC"
       - name: Commit
         run: |
-          git add docs/data/kiz.sqlite docs/data/site.json docs/js/states.js pipeline/geocode.csv pipeline/artist_merge_suggestions.csv pipeline/rates.csv
+          git add docs/data/kiz.sqlite docs/data/site.json pipeline/geocode.csv pipeline/artist_merge_suggestions.csv pipeline/rates.csv
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git config user.name "build-bot"   # the rebase below re-commits, so it needs the name as well
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

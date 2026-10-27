@@ -14,27 +14,31 @@ for is recorded as such and tried again at its next interval. Google sometimes r
 a refused search is tried once more after a minute; refused again, it stops the run, which then exits with an error
 after saving what it found.
 
-    python3 -m pipeline.fares refresh --budget 20      # what the GitHub Action runs
-    python3 -m pipeline.fares plan                     # show what is due, without searching
+    uv run -m pipeline.fares refresh --budget 20      # what the GitHub Action runs
+    uv run -m pipeline.fares plan                     # show what is due, without searching
 """
 
 import argparse
-import csv
 import datetime as dt
-import json
 import os
 import shlex
 import subprocess
 import sys
 import time
 import zlib
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Literal
+
+from pydantic import BaseModel, ConfigDict, ValidationError
 
 from pipeline import db as sqlite_db
 from pipeline.airports import HOME
+from pipeline.records import Fare, Job
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA = os.path.join(ROOT, 'docs', 'data')
-FARES, JOBS = os.path.join(DATA, 'fares.csv'), os.path.join(ROOT, 'pipeline', 'fare_jobs.csv')
+ROOT = Path(__file__).parent.parent
+DATA = ROOT / 'docs' / 'data'
+FARES, JOBS = DATA / 'fares.csv', ROOT / 'pipeline' / 'fare_jobs.csv'
 FLI_SHA = '881aee5ff4321e81ea2157cb44be94ce6a21dc1b'  # punitarani/fli, the only place the version is pinned
 FLI = os.environ.get('FLI_CMD', f'uvx -q --from git+https://github.com/punitarani/fli@{FLI_SHA} fli')
 SELLS_DAYS = 330  # Google sells about 11 months ahead
@@ -42,177 +46,193 @@ SELLS_DAYS = 330  # Google sells about 11 months ahead
 WEEKS_APART = [(35, 7), (91, 14), (182, 28), (SELLS_DAYS, 42)]
 PAUSE = 10  # seconds between searches; Google refuses after about 20 searches 5 seconds apart
 RETRY_AFTER = 60  # seconds to wait before trying a refused search once more
+TIMEOUT = 300  # seconds a search may take
+NOTE_LENGTH = 200  # a search's note is cut to this many characters
+DAY = 86400  # seconds
+NEVER = 99  # how overdue a weekend never searched counts as, in intervals
 
-FARE_FIELDS = ['airport', 'depart', 'return', 'price', 'currency', 'fetched_at']
-JOB_FIELDS = ['airport', 'depart', 'last_run', 'status', 'note']
+type Status = Literal['priced', 'no price', 'refused']  # a search's, as Job.status
 
 
-def now():
+class Fli(BaseModel):
+    """fli's answer, as far as it is read."""
+
+    model_config = ConfigDict(extra='ignore', frozen=True)
+
+
+class FliDate(Fli):
+    price: float | None = None
+    departure_date: str | None = None
+    return_date: str = ''
+    currency: str = 'EUR'
+
+
+class FliError(Fli):
+    message: str = ''
+
+
+class FliAnswer(Fli):
+    success: bool = False
+    dates: tuple[FliDate, ...] = ()
+    error: FliError | None = None
+
+
+@dataclass(frozen=True)
+class Weekend:
+    """A festival weekend in the queue: when it is, how often it is searched, how long since it was, and whether it
+    is due today."""
+
+    airport: str
+    friday: str
+    days_away: int
+    every: int | None  # None: further ahead than Google sells
+    age: float | None  # in days; None when it was never searched
+    due: bool
+
+    @property
+    def overdue(self) -> float:
+        """How many intervals since it was searched."""
+        return self.age / self.every if self.age is not None and self.every else NEVER
+
+
+def now() -> dt.datetime:
     return dt.datetime.now(dt.UTC).replace(microsecond=0)
 
 
-def read(path):
-    if not os.path.exists(path):
-        return []
-    return list(csv.DictReader(open(path, encoding='utf-8')))
-
-
-def write(path, fields, rows, key):
-    with open(path, 'w', newline='', encoding='utf-8') as f:
-        w = csv.DictWriter(f, fieldnames=fields, lineterminator='\n')
-        w.writeheader()
-        w.writerows(sorted(rows, key=key))
-
-
-def weekends(today):
+def weekends(today: dt.date) -> set[tuple[str, str]]:
     """(airport, Friday) of every upcoming, not cancelled festival with an airport other than home, from the site DB."""
-    c = sqlite_db.connect(os.path.join(DATA, 'kiz.sqlite'), 'ro')
-    return set(
-        c.execute(
-            """select airport, weekend_friday from events where airport is not null and airport != ?
+    c = sqlite_db.connect(DATA / 'kiz.sqlite', 'ro')
+    found: list[tuple[str, str]] = c.execute(
+        """select airport, weekend_friday from events where airport is not null and airport != ?
         and cancelled is not 1 and weekend_friday > ?""",
-            (HOME, today.isoformat()),
-        ).fetchall()
-    )
+        (HOME, today.isoformat()),
+    ).fetchall()
+    return set(found)
 
 
-def interval(days_away):
+def interval(days_away: int) -> int | None:
     return next((every for until, every in WEEKS_APART if days_away <= until), None)
 
 
-def weekday_of(airport, friday):
+def weekday_of(airport: str, friday: str) -> int:
     """The weekday (0 = Monday) a weekend is searched on: fixed, and spread evenly across the week."""
     return zlib.crc32(f'{airport} {friday}'.encode()) % 7
 
 
-def queue(t=None):
+def queue(t: dt.datetime | None = None) -> list[Weekend]:
     """Every festival weekend with its interval and whether it is due today, the most overdue first."""
     t = t or now()
     today = t.date()
-    jobs = {(j['airport'], j['depart']): j for j in read(JOBS)}
-    fetched = {}
-    for f in read(FARES):  # a weekend priced before it had a job counts as searched then
-        k = (f['airport'], f['depart'])
-        fetched[k] = max(fetched.get(k, ''), f['fetched_at'])
-    q = []
+    jobs = {(j.airport, j.depart): j for j in Job.read(JOBS)}
+    fetched: dict[tuple[str, str], str] = {}
+    for f in Fare.read(FARES):  # a weekend priced before it had a job counts as searched then
+        k = (f.airport, f.depart)
+        fetched[k] = max(fetched.get(k, ''), f.fetched_at)
+    q: list[Weekend] = []
     for airport, friday in weekends(today):
         days_away = (dt.date.fromisoformat(friday) - today).days
         every = interval(days_away)
-        last = (jobs.get((airport, friday)) or {}).get('last_run') or fetched.get((airport, friday))
-        age = (t - dt.datetime.fromisoformat(last)).total_seconds() / 86400 if last else None
+        job = jobs.get((airport, friday))
+        last = (job.last_run if job else '') or fetched.get((airport, friday))
+        age = (t - dt.datetime.fromisoformat(last)).total_seconds() / DAY if last else None
         on_day = weekday_of(airport, friday) == today.weekday()
         due = every is not None and (age is None or (age >= every and on_day) or age >= 2 * every)
-        q.append(dict(airport=airport, friday=friday, days_away=days_away, every=every, age=age, due=due))
-    return sorted(
-        q,
-        key=lambda r: (
-            not r['due'],
-            -(r['age'] / r['every'] if r['age'] is not None and r['every'] else 99),
-            r['friday'],
-        ),
-    )
+        q.append(Weekend(airport, friday, days_away, every, age, due))
+    return sorted(q, key=lambda w: (not w.due, -w.overdue, w.friday))
 
 
-def search(airport, friday):
-    """One Friday-to-Monday return; (status, fare row or None, note). status: priced, no price or refused."""
-    cmd = shlex.split(FLI) + [
-        'dates',
-        HOME,
-        airport,
-        '--from',
-        friday,
-        '--to',
-        friday,
-        '-d',
-        '3',
-        '--round',
-        '--friday',
-        '--currency',
-        'EUR',
-        '--format',
-        'json',
-    ]
+def search(airport: str, friday: str) -> tuple[Status, Fare | None, str]:
+    """One Friday-to-Monday return; (status, fare row or None, note)."""
+    args = ['dates', HOME, airport, '--from', friday, '--to', friday, '-d', '3', '--round', '--friday']
+    cmd = [*shlex.split(FLI), *args, '--currency', 'EUR', '--format', 'json']
     try:
-        p = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
+        p = subprocess.run(cmd, capture_output=True, text=True, timeout=TIMEOUT, check=False)  # noqa: S603 (fli, pinned in FLI, with arguments of ours)
     except subprocess.TimeoutExpired:
         return 'no price', None, 'timeout'
     if 'HTTP 429' in p.stderr or '"http_status": 429' in p.stdout:
         return 'refused', None, 'HTTP 429'
     try:
-        d = json.loads(p.stdout[p.stdout.index('{') :])
-    except ValueError:
-        return 'no price', None, (p.stderr.strip().splitlines() or ['no output'])[-1][:200]
-    x = next((x for x in d.get('dates', []) if x.get('price') and x.get('departure_date') == friday), None)
-    if not d.get('success') or not x:
-        return 'no price', None, str((d.get('error') or {}).get('message', ''))[:200]
-    return (
-        'priced',
-        dict(
-            airport=airport,
-            depart=friday,
-            **{'return': x['return_date']},
-            price=f'{x["price"]:.0f}',
-            currency=x.get('currency', 'EUR'),
-            fetched_at=now().isoformat(),
-        ),
-        '',
+        d = FliAnswer.model_validate_json(p.stdout[p.stdout.index('{') :])
+    except (ValueError, ValidationError):
+        return 'no price', None, (p.stderr.strip().splitlines() or ['no output'])[-1][:NOTE_LENGTH]
+    x = next((x for x in d.dates if x.price and x.departure_date == friday), None)
+    if not d.success or not x or x.price is None:
+        return 'no price', None, (d.error.message if d.error else '')[:NOTE_LENGTH]
+    fare = Fare(
+        airport=airport,
+        depart=friday,
+        return_=x.return_date,
+        price=f'{x.price:.0f}',
+        currency=x.currency,
+        fetched_at=now().isoformat(),
     )
+    return 'priced', fare, ''
 
 
-def refresh(budget, max_seconds):
+def refresh(budget: int, max_seconds: int) -> None:
     start, today = time.time(), now().date()
-    fares = {(r['airport'], r['depart'], r['return']): r for r in read(FARES)}
-    jobs = {(j['airport'], j['depart']): j for j in read(JOBS)}
+    fares = {(r.airport, r.depart, r.return_): r for r in Fare.read(FARES)}
+    jobs = {(j.airport, j.depart): j for j in Job.read(JOBS)}
     done, refused = 0, False
     for item in queue():
-        if not item['due'] or done >= budget or time.time() - start > max_seconds:
+        if not item.due or done >= budget or time.time() - start > max_seconds:
             break
-        status, row, note = search(item['airport'], item['friday'])
+        status, row, note = search(item.airport, item.friday)
         if status == 'refused':
             time.sleep(RETRY_AFTER)
-            status, row, note = search(item['airport'], item['friday'])
-        print(
-            f'{item["airport"]} {item["friday"]} ({item["days_away"]} days away): {status} {row["price"] + " EUR" if row else ""} {note}',
-            flush=True,
-        )
+            status, row, note = search(item.airport, item.friday)
+        price = row.price + ' EUR' if row else ''
+        print(f'{item.airport} {item.friday} ({item.days_away} days away): {status} {price} {note}', flush=True)
         if status == 'refused':
             refused = True
             break
         if row:
-            fares[(row['airport'], row['depart'], row['return'])] = row
-        jobs[(item['airport'], item['friday'])] = dict(
-            airport=item['airport'], depart=item['friday'], last_run=now().isoformat(), status=status, note=note
+            fares[(row.airport, row.depart, row.return_)] = row
+        jobs[(item.airport, item.friday)] = Job(
+            airport=item.airport, depart=item.friday, last_run=now().isoformat(), status=status, note=note
         )
         done += 1
         time.sleep(PAUSE)
     live = weekends(today)
-    fares = {k: v for k, v in fares.items() if (v['airport'], v['depart']) in live}
-    jobs = {k: v for k, v in jobs.items() if k in live}
-    write(FARES, FARE_FIELDS, fares.values(), key=lambda r: (r['airport'], r['depart'], r['return']))
-    write(JOBS, JOB_FIELDS, jobs.values(), key=lambda r: (r['airport'], r['depart']))
-    print(f'{done} searches; {len(fares)} fares stored for {len(live)} festival weekends')
+    kept_fares = sorted(
+        (f for f in fares.values() if (f.airport, f.depart) in live), key=lambda f: (f.airport, f.depart, f.return_)
+    )
+    kept_jobs = sorted((j for j in jobs.values() if (j.airport, j.depart) in live), key=lambda j: (j.airport, j.depart))
+    Fare.write(FARES, kept_fares)
+    Job.write(JOBS, kept_jobs)
+    print(f'{done} searches; {len(kept_fares)} fares stored for {len(live)} festival weekends')
     if refused:
         sys.exit('Google refused a search (HTTP 429); the rest waits for the next run')
 
 
-def plan():
+def plan() -> None:
     q = queue()
-    due = [x for x in q if x['due']]
+    due = [x for x in q if x.due]
     print(f'{len(due)} of {len(q)} festival weekends due today')
     for x in due:
-        seen = f'searched {x["age"]:.0f} days ago' if x['age'] is not None else 'never searched'
-        print(f'{x["airport"]} {x["friday"]}: {x["days_away"]} days away, every {x["every"]} days, {seen}')
+        seen = f'searched {x.age:.0f} days ago' if x.age is not None else 'never searched'
+        print(f'{x.airport} {x.friday}: {x.days_away} days away, every {x.every} days, {seen}')
 
 
-if __name__ == '__main__':
+class Args(argparse.Namespace):
+    cmd: str = ''
+    budget: int = 20
+    max_seconds: int = 1200
+
+
+def main() -> None:
     ap = argparse.ArgumentParser(description='Search Friday-to-Monday fares for festival weekends that are due.')
     sub = ap.add_subparsers(dest='cmd', required=True)
     r = sub.add_parser('refresh', help='search the weekends due today and save the fares')
-    r.add_argument('--budget', type=int, default=20, help='most searches in this run')
-    r.add_argument('--max-seconds', type=int, default=1200, help='stop starting searches after this long')
-    sub.add_parser('plan', help='list the weekends due today, without searching')
-    a = ap.parse_args()
+    _ = r.add_argument('--budget', type=int, default=20, help='most searches in this run')
+    _ = r.add_argument('--max-seconds', type=int, default=1200, help='stop starting searches after this long')
+    _ = sub.add_parser('plan', help='list the weekends due today, without searching')
+    a = ap.parse_args(namespace=Args())
     if a.cmd == 'refresh':
         refresh(a.budget, a.max_seconds)
     else:
         plan()
+
+
+if __name__ == '__main__':
+    main()

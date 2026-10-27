@@ -58,9 +58,9 @@ jobs:
           ONLY: ${{ inputs.festivals }}
       - name: Load the answers and resolve the artists
         run: |
-          python3 -m pipeline.extract.load_extract "$SRC"
+          uv run -m pipeline.extract.load_extract "$SRC"
           uv run -q --group artists -m pipeline.extract.resolve_artists "$SRC"
-          python3 -m pipeline.merge_suggestions "$SRC"
+          uv run -m pipeline.merge_suggestions "$SRC"
       - name: Commit
         id: commit
         run: |

@@ -113,7 +113,7 @@ overdue by twice its interval, doesn't wait for its day. Past weekends and weeke
 `docs/data/fares.csv` and `pipeline/fare_jobs.csv`. A weekend with no price on Google is noted and tried again at
 its next interval. If Google refuses a search, the run keeps what it found and is marked failed. A festival's
 airport is the nearest one in `pipeline/airports.csv` within 250 km. To see what is due today, run
-`python3 -m pipeline.fares plan`.
+`uv run -m pipeline.fares plan`.
 
 ## Duplicate artists
 
@@ -178,7 +178,7 @@ and "I'm going" buttons need accounts and a server, which the site doesn't have 
 Some festivals keep their prices off their description, on a ticket page. `pipeline/tickets.py` reads them there:
 judgment about a page is made once, by an agent or two models, and checked; every later read is code.
 
-- **A recipe per ticket site** (`pipeline/tickets/sites/<site>.json`, schema `pipeline/tickets/schemas/site.json`)
+- **A recipe per ticket site** (`pipeline/tickets/sites/<site>.json`, a `Recipe` of `pipeline/records.py`)
   says where the site's ticket rows are: each ticket's id on the site (its key), name, price as shown, amount,
   currency, a booking fee when the site shows it apart from the price (Weeztix's "+ €1.00 fee", added to the
   amount), a second price when the site shows one, and its sold-out mark; what its currency symbols stand for;
@@ -193,12 +193,12 @@ judgment about a page is made once, by an agent or two models, and checked; ever
   the event's id found on its page, the API's address, and each field a path into a ticket's JSON, a pattern on the
   page, or a text built from JSON values; it reads with plain requests, no browser. An agent writes one per site; FairPlay's needs a visible browser (it is behind a browser
   check).
-- **A log per festival** (`pipeline/tickets/log/<event_id>.jsonl`, schema `log.json`, checked on every write and
+- **A log per festival** (`pipeline/tickets/log/<event_id>.jsonl`, a `LogEntry` a line, checked on every write and
   read) gets one entry per read: `read` with every row, `refused` (no rows and an HTTP error, or the page would not
   load), or `layout_broken` (the recipe's selectors fail, no rows, two rows with one key, or a row missing its key,
   name, price, amount or currency: the recipe needs an agent). Git merges these files line by line
   (`.gitattributes`), so a session and the monthly run never conflict.
-- **A first read per festival** (`pipeline/tickets/reads/<event_id>.json`, schema `read.json`) says, from one logged
+- **A first read per festival** (`pipeline/tickets/reads/<event_id>.json`, a `FirstRead`) says, from one logged
   read and the festival's description, which pass each ticket is, in the prices pass's terms (the template
   `pipeline/tickets/prompts/first-read.md` on top of the prices pass's `prices.md`): every ticket is in a tier, by
   its key, or skipped with its reason, one of the skip reasons of `pipeline/states.py` (a ticket no reason fits
@@ -279,17 +279,18 @@ uv run --group browser -m pipeline.read_page URL --visible               # a vis
 Every coded value is one of the states of its data point, and `pipeline/states.py` holds each one as a typed row:
 what makes a value that state, what the site does with it (shows it on the card or in a view, says it as the card's
 reason for having no price, filters by it, keeps it, or waits for someone), its words on the site, and who acts on
-it (`pipeline/STATES.md`). Everything else is built from those rows: the code's enums, the schemas' enums (each
-schema names one as `"$ref": "#/$defs/<point>"`), the definitions in the prompts, the SQL checks, and
-`docs/js/states.js`, which the build writes for the site. So a new state is one new row, words included, and a
-value that is no state fails: when it is written (a schema, a check), in the tests (a name in the code the table
-doesn't have), or in `pipeline/audit.py`, which runs first in **Rebuild site database** and in **Tests** and names
-each value that is no state in the shared files and in the answers and first reads the load takes (those to the
-current prompt), and each row of `pipeline/exceptions.py` that departs from nothing any more: a recipe reads its
-site now, or no festival has its known ticket page there.
+it (`pipeline/STATES.md`). Everything else is built from those rows: the code's enums (`pipeline/enums.py`, which
+`uv run -m pipeline.generate` writes, with `docs/js/states.js` for the site), and through them the records of
+`pipeline/records.py` and the schemas the models answer to, generated from those records; the definitions in the
+prompts; and the SQL checks. So a new state is one new row, words included, and a value that is no state fails: when
+it is written or read (a record, a check), in the tests (a name in the code the table doesn't have), or in
+`pipeline/audit.py`, which runs first in **Rebuild site database** and in **Tests** and names each value its record
+refuses in the shared files and in the answers and first reads the load takes (those to the current prompt), and
+each row of `pipeline/exceptions.py` that departs from nothing any more: a recipe reads its site now, or no festival
+has its known ticket page there.
 
 ```bash
-uv run --group tickets -m pipeline.audit       # "0 unmapped, 0 stale", or what to add or remove
+uv run --group tickets -m pipeline.audit       # "0 refused, 0 stale", or what to add or remove
 ```
 
 ## Promo codes
@@ -318,7 +319,7 @@ and whether the festival is cancelled. Pages are fetched for new and changed fes
 to come, since a deal link can change without the festival's modified date, and a cancellation might too. They
 are fetched a few seconds apart, so a run takes about a quarter of an hour. Festivals the site no longer lists are removed. Once the export is committed, the
 Action starts **Rebuild site database** on the same branch, which checks every state in the data
-(`pipeline/audit.py`), geocodes new cities, rebuilds the database and `docs/js/states.js`, and commits them. That
+(`pipeline/audit.py`), geocodes new cities, rebuilds the database, and commits it. That
 workflow also runs on any push to `source/` or `pipeline/` on `main`.
 
 The site sits behind Cloudflare, which refuses ordinary scripts, so the scraper sends its requests the way
@@ -329,22 +330,22 @@ Line-ups, highlights from descriptions, rooms, genres and pass prices are read f
 (claude-haiku-5-5). After the scrape, the same Action runs `pipeline/extract/ask.py`: festivals in the export's
 `pending_extraction` table (new, or with a changed description) and festivals a pass has no answer for are asked
 about, one festival and one pass at a time, with that pass's prompt (its template in `pipeline/extract/prompts/`,
-the definitions of its states filled in from `pipeline/states.py`) and its schema as the required answer format. A checker then confirms that the answer has the right shape, and that every name,
-quote and price appears in the description, and that a pass has a style only at a festival whose genres name two
-dance styles or more (`prices.styles`). A failing answer goes back to Claude once, with the checker's
-lines. A second failure leaves the festival pending, to try again next month; a festival leaves pending once every
-pass has answered it. A prompt is known by the hash of everything fixed in its request: its text, its schema as the
-checker holds the answer to it, and its schema as sent (`pipeline/prompt.py`); each answer and first read records the
-hash it answered, and saving one first saves the text in `pipeline/prompts/asked/<hash>.md`.
-Editing a template, a state's criterion or a schema changes the hash of every prompt it is in, which makes every
-answer to that prompt, and every first read when it is the first read's, wait to be asked again, out of the database
-until then; so start **Refresh events** by hand once it is pushed, before anything reloads the database. Started with festival ids
-in `festivals` ("16909,18806"), it skips the scrape, and asks and reads those festivals only (`ask.py --only`,
-`tickets.py run --only`): after a fixed recipe, say, or to try a prompt on a few festivals first. The answers are saved in
-`pipeline/extract/answers/` and committed; `answers/log.csv` says who answered each file, with which model and
-prompt, and when. The first
-extraction's answers, from Claude Code subagents, are kept there too; rebuilding from them reproduces the
-export's tables exactly.
+the definitions of its states filled in from `pipeline/states.py`) and its record's schema as the required answer
+format. A checker then confirms that the answer is its record (`pipeline/records.py`), and that every name, quote
+and price appears in the description, and that a pass has a style only at a festival whose genres name two dance
+styles or more (`prices.styles`). A failing answer goes back to Claude once, with the checker's lines. A second
+failure leaves the festival pending, to try again next month; a festival leaves pending once every pass has answered
+it. A prompt is known by the hash of everything fixed in its request: its text, its record's schema as the checker
+holds the answer to it, and that schema as sent (`pipeline/prompt.py`); each answer and first read records the hash
+it answered, and saving one first saves the text in `pipeline/prompts/asked/<hash>.md`. Editing a template, a
+state's criterion or a record changes the hash of every prompt it is in, which makes every answer to that prompt,
+and every first read when it is the first read's, wait to be asked again, out of the database until then; so start
+**Refresh events** by hand once it is pushed, before anything reloads the database. Started with festival ids in
+`festivals` ("16909,18806"), it skips the scrape, and asks and reads those festivals only (`ask.py --only`,
+`tickets.py run --only`): after a fixed recipe, say, or to try a prompt on a few festivals first. The answers are
+saved in `pipeline/extract/answers/` and committed; `answers/log.csv` says who answered each file, with which model
+and prompt, and when. The first extraction's answers, from Claude Code subagents, are kept there too; rebuilding
+from them reproduces the export's tables exactly.
 
 `load_extract.py` then loads every festival's newest answer to each pass's current prompt, and the prices read on
 ticket pages to the current first-read prompt, into the export, in one transaction: a value a check refuses leaves the
@@ -361,25 +362,26 @@ To do the same locally:
 ```bash
 uv run --group scrape -m pipeline.scrape source/<events>.sqlite --dry-run    # what would change, without writing
 uv run --group scrape -m pipeline.scrape source/<events>.sqlite
-python3 -m pipeline.geocode source/<events>.sqlite                           # looks up new cities only
+uv run -m pipeline.geocode source/<events>.sqlite                           # looks up new cities only
 uv run --group ask -m pipeline.extract.ask source/<events>.sqlite --dry-run  # which festivals need asking
 uv run --group ask -m pipeline.extract.ask source/<events>.sqlite            # needs ANTHROPIC_API_KEY
-python3 -m pipeline.extract.load_extract source/<events>.sqlite
+uv run -m pipeline.extract.load_extract source/<events>.sqlite
 uv run --group artists -m pipeline.extract.resolve_artists source/<events>.sqlite
-python3 -m pipeline.rates                                                    # exchange rates for the site's prices
-python3 -m pipeline.build_site_db source/<events>.sqlite
-python3 -m pipeline.merge_suggestions source/<events>.sqlite
-python3 -m pipeline.fares refresh --budget 4                                 # needs uv; searches festival weekends due today
+uv run -m pipeline.rates                                                    # exchange rates for the site's prices
+uv run -m pipeline.build_site_db source/<events>.sqlite
+uv run -m pipeline.merge_suggestions source/<events>.sqlite
+uv run -m pipeline.fares refresh --budget 4                                 # needs uv; searches festival weekends due today
 python3 -m http.server -d docs 8000                                          # then open http://localhost:8000
 ```
 
 ## Running the steps
 
 The pipeline is one Python package, `pipeline`, run as modules from the repository's root. `pyproject.toml` pins
-every package once, in dependency groups, and each step installs only its group: `uv run --group tickets -m
-pipeline.tickets …` gets the browser, Claude's client and the checker; the steps that need Python alone (the loads,
-the build, the fares) run as `python3 -m pipeline.<step>`. `uv.lock` fixes the versions. A step opens its databases
-through `pipeline/db.py`, saying whether it reads, writes or creates each one, so a wrong path is an error.
+every package once: pydantic, which every step reads its records with, as the project's dependency, and the rest in
+dependency groups, each step installing only its group: `uv run --group tickets -m pipeline.tickets …` gets the
+browser, Claude's client and the checker; the steps that need nothing more (the loads, the build, the fares) run as
+`uv run -m pipeline.<step>`. `uv.lock` fixes the versions. A step opens its databases through `pipeline/db.py`,
+saying whether it reads, writes or creates each one, so a wrong path is an error.
 
 ## Tests
 
@@ -388,8 +390,8 @@ Every check runs through [mise](https://mise.jdx.dev) (`mise.toml`, which also p
 
 ```bash
 mise run check        # everything
-mise run check:fast   # the quick part: unused names, the site's structure
-mise tasks            # each check on its own: test:py, test:site, lint:py, audit
+mise run check:fast   # the quick part: unused names, the site's structure, the generated files
+mise tasks            # each check on its own: test:py, test:site, lint:py, audit, generate:check
 ```
 
 The site tests check the site's structure: unused code and styles, links, stored hints and the price states. The

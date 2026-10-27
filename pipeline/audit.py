@@ -1,124 +1,123 @@
 """What the build fails on that writing and Tests can't catch (pipeline/STATES.md §4): a value in the committed data
-that is no state of its point, such as a hand edit of a CSV; and an override in pipeline/exceptions.py that no
-longer departs from anything.
+that its record refuses, such as a hand edit of a CSV naming no state; and an override in pipeline/exceptions.py that
+no longer departs from anything.
 
     uv run --group tickets -m pipeline.audit
 
-Unmapped: every coded column of the files the steps share (tickets/pages.csv, tickets/status.csv, pass_prices.csv,
-the hand-kept decisions and plans), and the data the load takes: every answer and first read to its current prompt
-(one to another prompt waits to be asked again, and is not loaded), each value of an answer checked against the
-states its pass makes. Stale: an override for a site a recipe now reads, or one no festival the source database
-lists has its known ticket page on. Each finding goes to stderr; then "N unmapped, M stale", exiting 1 when either
-is not 0.
+Refused: every row of the CSV files the steps share (tickets/pages.csv, tickets/status.csv, pass_prices.csv,
+ticket_pages.csv, the answers' log, the hand-kept decisions and plans), each read as its record
+(pipeline/records.py); and the data the load takes: every answer and first read to its current prompt (one to
+another prompt waits to be asked again, and is not loaded), read as its record. Stale: an override for a site a
+recipe now reads, or one no festival the source database lists has its known ticket page on. Each finding goes to
+stderr; then "N refused, M stale", exiting 1 when either is not 0.
 """
 
 import argparse
-import csv
-import datetime as dt
-import json
 import sys
 from collections import defaultdict
+from collections.abc import Sequence
 from contextlib import closing
+from pathlib import Path
 
-from pipeline import exceptions, states, tickets
+from pydantic import ValidationError
+
+from pipeline import exceptions, tables, tickets
 from pipeline import prompt as prompts
+from pipeline.exceptions import Override
 from pipeline.extract import answers
+from pipeline.records import (
+    ArtistMergeRow,
+    CsvRow,
+    FirstRead,
+    FoundRow,
+    MergeRow,
+    PageRow,
+    PlanRow,
+    PriceRow,
+    Stamped,
+    StatusRow,
+    errors,
+)
 
 ROOT = tickets.ROOT
 
-# (file, column, point) for each coded column of a shared CSV; an empty value is no state where the column allows it
-COLUMNS = [
-    ('pipeline/tickets/pages.csv', 'state', 'sales'),
-    ('pipeline/tickets/status.csv', 'waits_for', 'waits_for'),
-    ('pipeline/tickets/status.csv', 'first_read', 'first_read'),
-    ('pipeline/tickets/status.csv', 'sales', 'sales'),
-    ('pipeline/pass_prices.csv', 'kind', 'pass_kind'),
-    ('pipeline/pass_prices.csv', 'style', 'style'),
-    ('pipeline/extract/merges.csv', 'decision', 'merge_decision'),
-    ('pipeline/artist_merges.csv', 'decision', 'merge_decision'),
-    ('pipeline/plans.csv', 'status', 'plan'),
-]
-EMPTY_ALLOWED = {('pipeline/tickets/status.csv', 'sales'), ('pipeline/pass_prices.csv', 'style')}
-
-# pass -> (where its states are in an answer's entry, point)
-ANSWERED = {
-    'extract': [
-        (lambda ev: [a['role'] for a in ev['artists']], 'role'),
-        (lambda ev: [x['feature'] for x in ev['features']], 'feature'),
-    ],
-    'rooms_genres': [
-        (lambda ev: [g['genre'] for g in ev['genres']] + [g for r in ev['rooms'] for g in r['genres']], 'genre'),
-        (lambda ev: [r['kind'] for r in ev['rooms']], 'room_kind'),
-    ],
-    'prices': [
-        (lambda ev: [p['kind'] for p in ev['passes']], 'pass_kind'),
-        (lambda ev: [p['style'] for p in ev['passes'] if p['style']], 'style'),
-    ],
+# each CSV file the steps share, by the record of its rows
+FILES: dict[str, type[CsvRow]] = {
+    'pipeline/tickets/pages.csv': FoundRow,
+    'pipeline/tickets/status.csv': StatusRow,
+    'pipeline/pass_prices.csv': PriceRow,
+    'pipeline/ticket_pages.csv': PageRow,
+    'pipeline/extract/answers/log.csv': answers.Logged,
+    'pipeline/extract/merges.csv': MergeRow,
+    'pipeline/artist_merges.csv': ArtistMergeRow,
+    'pipeline/plans.csv': PlanRow,
 }
 
 
-def unmapped(event_ids):
-    """(point, value, where) for each value that is no state of its point; event_ids are the festivals the source DB
-    has, whose answers count."""
-    out = []
-    for file, column, point in COLUMNS:
-        with (ROOT / file).open(encoding='utf-8') as f:
-            for n, r in enumerate(csv.DictReader(f), 2):
-                if r[column] not in states.keys(point) and not (r[column] == '' and (file, column) in EMPTY_ALLOWED):
-                    out.append((point, r[column], f'{file} line {n}, {column}'))
-    for pass_name, columns in ANSWERED.items():
-        for i, a in answers.latest(pass_name, event_ids).items():
-            if prompts.is_current(pass_name, a.prompt):
-                out += [
-                    (point, v, f'pipeline/extract/answers/{a.file}, festival {i}')
-                    for values, point in columns
-                    for v in values(a.entry)
-                    if v not in states.made(point)
-                ]
+def shown(path: Path) -> str:
+    return str(path.relative_to(ROOT)) if path.is_relative_to(ROOT) else str(path)
+
+
+def refused(event_ids: set[int]) -> list[str]:
+    """Each value its record refuses, with where it is; event_ids are the festivals the source DB has, whose answers
+    count."""
+    out: list[str] = []
+    for file, record in FILES.items():
+        for n, row in enumerate(tables.rows(ROOT / file), 2):
+            try:
+                _ = record.model_validate(row)
+            except ValidationError as e:
+                out += errors(e, f'{file} line {n}')
+    for pass_ in prompts.PASSES:
+        answered = answers.answered(pass_.name, event_ids).values()
+        for path in sorted({path for path, meta in answered if prompts.is_current(pass_.name, meta.prompt)}):
+            try:
+                _ = prompts.answer(pass_).parse(path.read_bytes())
+            except ValidationError as e:
+                out += errors(e, shown(path))
     for path in sorted(tickets.READS.glob('*.json')):
-        fr = json.loads(path.read_text(encoding='utf-8'))
-        if prompts.is_current('first_read', fr['prompt']):
-            said = (
-                [('skip_reason', s['reason']) for s in fr['skipped']]
-                + [('pass_kind', ps['kind']) for ps in fr['passes']]
-                + [('style', ps['style']) for ps in fr['passes'] if ps['style']]
-                + [('style', s) for s in fr['styles']]
-            )
-            out += [(p, v, str(path.relative_to(ROOT))) for p, v in said if v not in states.keys(p)]
+        if prompts.is_current('first_read', Stamped.model_validate_json(path.read_bytes()).prompt):
+            try:
+                _ = FirstRead.parse(path.read_bytes())
+            except ValidationError as e:
+                out += errors(e, shown(path))
     return out
 
 
-def stale(fs, known):
+def stale(fs: Sequence[tickets.Festival], known: dict[str, tickets.Site]) -> list[tuple[Override, str]]:
     """(override, why) for each override that departs from nothing any more: a recipe reads its site now, or no
     festival has its known ticket page there; fs is every festival (tickets.festivals(every=True)), known
     tickets.sites()."""
-    on = defaultdict(list)
+    on: defaultdict[str, list[int]] = defaultdict(list)
     for f in fs:
         if f.page:
             on[tickets.host(f.page)].append(f.id)
-    out = []
+    out: list[tuple[Override, str]] = []
     for o in exceptions.OVERRIDES:
         if site := tickets.site_for(f'https://{o.host}/', known):
-            out.append((o, f'the recipe {site[1]} reads it (festivals {", ".join(map(str, on[o.host])) or "none"})'))
+            out.append(
+                (o, f'the recipe {site.version} reads it (festivals {", ".join(map(str, on[o.host])) or "none"})')
+            )
         elif not on[o.host]:
             out.append((o, 'no festival has its known ticket page there'))
     return out
 
 
-def main():
-    argparse.ArgumentParser(
-        description='Name each value in the data that is no state of pipeline/states.py, and '
-        'each override of pipeline/exceptions.py that departs from nothing any more.'
+def main() -> None:
+    _ = argparse.ArgumentParser(
+        description='Name each value in the data its record refuses (a value that is no state of '
+        'pipeline/states.py, say), and each override of pipeline/exceptions.py that departs from nothing any more.'
     ).parse_args()
     with closing(tickets.src_db()) as db:
-        gone = unmapped({i for (i,) in db.execute('SELECT id FROM events')})
-        old = stale(tickets.festivals(db, dt.date.today().isoformat(), every=True), tickets.sites())
-    for point, value, where in gone:
-        print(f'unmapped: {point} {value!r} in {where}: add a row for it to pipeline/states.py', file=sys.stderr)
+        ids: list[tuple[int]] = db.execute('SELECT id FROM events').fetchall()
+        bad = refused({i for (i,) in ids})
+        old = stale(tickets.festivals(db, tickets.utc_today(), every=True), tickets.sites())
+    for line in bad:
+        print(f'refused: {line}', file=sys.stderr)
     for o, why in old:
         print(f'stale: pipeline/exceptions.py, {o.host}: {why}', file=sys.stderr)
-    print(f'{len(gone)} unmapped, {len(old)} stale')
-    if gone or old:
+    print(f'{len(bad)} refused, {len(old)} stale')
+    if bad or old:
         sys.exit(1)
 
 

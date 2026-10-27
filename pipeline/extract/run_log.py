@@ -8,6 +8,8 @@ These functions only write: the caller owns the transaction, and commits once it
 
 import json
 import sqlite3
+from collections.abc import Mapping
+from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -57,32 +59,36 @@ def now() -> str:
     return datetime.now(UTC).isoformat(timespec='seconds')
 
 
-def record(
-    con: sqlite3.Connection,
-    step: str,
-    description: str,
-    performed_by: str,
-    *,
-    performed_at: str | None = None,
-    model: str | None = None,
-    prompt: str | None = None,
-    inputs: str | None = None,
-    outputs: str | None = None,
-    details: dict | None = None,
-) -> None:
+@dataclass(frozen=True)
+class Step:
+    """A step's row of pipeline_steps (SCHEMA): what it did, by whom, when (now when not given), with which model and
+    prompts, from which inputs to which outputs, and its key numbers."""
+
+    step: str
+    description: str
+    performed_by: str
+    performed_at: str | None = None
+    model: str | None = None
+    prompt: str | None = None
+    inputs: str | None = None
+    outputs: str | None = None
+    details: Mapping[str, object] | None = None
+
+
+def record(con: sqlite3.Connection, s: Step) -> None:
     ensure(con)
-    con.execute(
+    _ = con.execute(
         'INSERT OR REPLACE INTO pipeline_steps VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
         (
-            step,
-            description,
-            performed_at or now(),
-            performed_by,
-            model,
-            prompt,
-            inputs,
-            outputs,
-            json.dumps(details, ensure_ascii=False) if details is not None else None,
+            s.step,
+            s.description,
+            s.performed_at or now(),
+            s.performed_by,
+            s.model,
+            s.prompt,
+            s.inputs,
+            s.outputs,
+            json.dumps(s.details, ensure_ascii=False) if s.details is not None else None,
         ),
     )
 
@@ -100,7 +106,8 @@ def record_prompt(con: sqlite3.Connection, hash_: str) -> None:
 
 
 OWN_DOCS = {
-    'pipeline_steps': 'How this database was produced: one row per step (scrape, images, extraction passes, rules, merge '
+    'pipeline_steps': 'How this database was produced: one row per step (scrape, images, extraction passes, rules, '
+    'merge '
     'review, artist resolution, human review) with when, by whom, model, prompts, inputs, '
     'outputs and key numbers as JSON. Read in step order.',
     'prompts': 'The full text of every prompt a model ran with, keyed by its hash, as pipeline_steps and the rows it '

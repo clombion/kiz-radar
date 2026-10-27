@@ -16,17 +16,21 @@ any (a genre's dance style). A State is one of them:
 
 Importing this module checks every row: a missing or wrong-typed field, an unknown point, two states with one key,
 a note or a filter without words, a waiting state without an owner, or an `under` naming no state fails here.
+
+The code's enums of the states (ENUMS) are pipeline/enums.py, written from the rows (enums_module) so that a type
+checker sees each state's name; `mise run generate:check` and Tests fail once it no longer says what the rows do.
 """
 
 import json
 import re
 import textwrap
 import types
-import typing
-from collections.abc import Mapping
-from dataclasses import dataclass, field
-from enum import StrEnum, unique
-from pathlib import Path
+from collections.abc import Iterable, Mapping
+from dataclasses import field
+from enum import StrEnum
+
+from pydantic import ConfigDict
+from pydantic.dataclasses import dataclass
 
 
 class Disposition(StrEnum):
@@ -43,30 +47,18 @@ class Link(StrEnum):
     PASSES = 'passes'  # the passes view
 
 
-def typed(row):
-    """Refuse a field whose value is not of its annotated type (a union: of one of its members)."""
-    for f, kind in typing.get_type_hints(type(row)).items():
-        value = getattr(row, f)
-        union = typing.get_origin(kind) in (types.UnionType, typing.Union)
-        if not any(
-            value is None if a is types.NoneType else isinstance(value, typing.get_origin(a) or a)
-            for a in (typing.get_args(kind) if union else (kind,))
-        ):
-            raise TypeError(f'{row!r}: {f} {value!r} is not {kind}')
+ROW = ConfigDict(strict=True, extra='forbid')  # a field of another type, or one no row has, is refused
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, config=ROW)
 class Point:
     name: str
     of: str  # what one instance is
     produced_by: str
     under: str | None = None  # the point its states fall under
 
-    def __post_init__(self):
-        typed(self)
 
-
-@dataclass(frozen=True)
+@dataclass(frozen=True, config=ROW)
 class State:
     point: str
     key: str
@@ -78,11 +70,10 @@ class State:
     icon: str | None = None
     link: Link | None = None
     under: str | None = None
-    forms: Mapping[str, str] = field(default_factory=dict)
+    forms: Mapping[str, str] = field(default_factory=dict[str, str])
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         object.__setattr__(self, 'forms', types.MappingProxyType(dict(self.forms)))
-        typed(self)
 
 
 P, S = Point, State
@@ -659,7 +650,7 @@ ROWS = (
 )
 
 
-def check(points, rows):
+def check(points: tuple[Point, ...], rows: tuple[State, ...]) -> None:
     """Refuse a table with two points of one name, a state of no point, two states with one key, a point with no
     state, a note or a filter without words, a waiting state without an owner, or an `under` that names no state of
     its point's `under` point."""
@@ -668,7 +659,7 @@ def check(points, rows):
         raise ValueError(
             f'two points named {sorted({p.name for p in points if [q.name for q in points].count(p.name) > 1})}'
         )
-    seen = set()
+    seen: set[tuple[str, str]] = set()
     for s in rows:
         if s.point not in by_name:
             raise ValueError(f'{s.point}.{s.key}: no point {s.point!r}')
@@ -694,31 +685,31 @@ KEYS = {p: tuple(s.key for s in rows) for p, rows in BY_POINT.items()}
 BY_KEY = {(s.point, s.key): s for s in ROWS}
 
 
-def of(point):
+def of(point: str) -> tuple[State, ...]:
     """The point's states, in table order."""
     if point not in BY_POINT:
         raise KeyError(f'no point {point!r} in pipeline/states.py')
     return BY_POINT[point]
 
 
-def keys(point):
+def keys(point: str) -> tuple[str, ...]:
     of(point)
     return KEYS[point]
 
 
-def made(point):
+def made(point: str) -> list[str]:
     """The keys of the point's states that its own producer makes (not those another step adds, made_by)."""
     return [s.key for s in of(point) if s.made_by is None]
 
 
-def state(point, key):
+def state(point: str, key: str) -> State:
     of(point)
     if found := BY_KEY.get((point, key)):
         return found
     raise not_a_state(point, key)
 
 
-def not_a_state(point, value, where=None):
+def not_a_state(point: str, value: str, where: str | None = None) -> LookupError:
     """The error for a value that is no state of its point, naming the point, its producer and what to do."""
     return LookupError(
         f'{point} {value!r}' + (f' in {where}' if where else '') + f' (produced by '
@@ -726,17 +717,12 @@ def not_a_state(point, value, where=None):
     )
 
 
-def member(key):
+def member(key: str) -> str:
     """A state's name in code: its key in capitals, any other character an underscore."""
     return re.sub(r'\W', '_', key).upper()
 
 
-def enum(name, point):
-    """A StrEnum of the point's states, members named by member()."""
-    return unique(StrEnum(name, [(member(k), k) for k in keys(point)]))
-
-
-def total(point, mapping, where):
+def total[K: str, V](point: str, mapping: dict[K, V], where: str) -> dict[K, V]:
     """mapping, once it has a value for every state of the point and for nothing else."""
     if missing := [k for k in keys(point) if k not in mapping]:
         raise LookupError(f'{where}: no value for the {point} states {missing} (pipeline/states.py)')
@@ -745,41 +731,16 @@ def total(point, mapping, where):
     return mapping
 
 
-def sql_in(point, keys_=None):
+def sql_in(point: str, keys_: Iterable[str] | None = None) -> str:
     """The point's keys (or these of them) as an SQL list, for a CHECK (... IN (...))."""
     return ', '.join("'" + state(point, k).key.replace("'", "''") + "'" for k in (keys_ or keys(point)))
 
 
-def schema(path):
-    """The JSON Schema at path with its $defs filled: each "$ref": "#/$defs/<point>" names an enum of the states the
-    point's producer makes. A reference to a $defs entry that is neither a point nor the file's own fails here."""
-    root = json.loads(Path(path).read_text(encoding='utf-8'))
-    own, refs = dict(root.get('$defs', {})), set()
-
-    def walk(node):
-        if isinstance(node, dict):
-            if isinstance(ref := node.get('$ref'), str) and ref.startswith('#/$defs/'):
-                refs.add(ref.removeprefix('#/$defs/'))
-            for v in node.values():
-                walk(v)
-        elif isinstance(node, list):
-            for v in node:
-                walk(v)
-
-    walk(root)
-    if clash := set(own) & set(POINT):
-        raise ValueError(f'{path}: $defs {sorted(clash)} are points; their enums come from pipeline/states.py')
-    if unknown := refs - set(own) - set(POINT):
-        raise ValueError(f'{path}: $ref to {sorted(unknown)}, no point in pipeline/states.py')
-    root['$defs'] = own | {p: {'enum': made(p)} for p in sorted(refs - set(own))}
-    return root
-
-
-def definitions(point, indent=''):
+def definitions(point: str, indent: str = '') -> str:
     """The states the point's producer makes, in key order (a view's order is not the prompt's), as a Markdown list
     for its prompt: each key and its criterion, and, for a state other states fall under (a style's genres), which
     ones."""
-    out = []
+    out: list[str] = []
     for s in sorted((state(point, k) for k in made(point)), key=lambda s: s.key):
         under = sorted(o.key for o in ROWS if POINT[o.point].under == point and o.under == s.key)
         text = f'`{s.key}`: {s.criterion}' + (f' (genres: {", ".join(under)})' if under else '')
@@ -787,7 +748,7 @@ def definitions(point, indent=''):
     return '\n'.join(out)
 
 
-def fill(template, where):
+def fill(template: str, where: str) -> str:
     """A prompt template with each line {{states:<point>}} replaced by the point's definitions; an unknown point or a
     marker left anywhere else fails."""
     text = re.sub(r'^( *)\{\{states:(\w+)\}\}$', lambda m: definitions(m[2], m[1]), template, flags=re.MULTILINE)
@@ -816,7 +777,7 @@ SITE_POINTS = (
 )  # the site's
 
 
-def js_module():
+def js_module() -> str:
     """docs/js/states.js: what the site needs of each point it shows, and each state's key by name."""
     rows = {
         p: {
@@ -843,25 +804,63 @@ def js_module():
     )
 
 
-Status = enum('Status', 'page_read')
-Sales = enum('Sales', 'sales')
-Ticket = enum('Ticket', 'ticket')
-SkipReason = enum('SkipReason', 'skip_reason')
-PassKind = enum('PassKind', 'pass_kind')
-Style = enum('Style', 'style')
-People = enum('People', 'people')
-Recheck = enum('Recheck', 're_read')
-FirstRead = enum('FirstRead', 'first_read')
-AnswerState = enum('AnswerState', 'answer')
-Waiting = enum('Waiting', 'waits_for')
-Price = enum('Price', 'price')
-Genre = enum('Genre', 'genre')
-GenreRule = enum('GenreRule', 'genre_rule')
-Source = enum('Source', 'source')
-PassSource = enum('PassSource', 'pass_source')
-Feature = enum('Feature', 'feature')
-Role = enum('Role', 'role')
-ArtistKind = enum('ArtistKind', 'artist_kind')
-HomeBasis = enum('HomeBasis', 'home_basis')
-MergeDecision = enum('MergeDecision', 'merge_decision')
+# the code's enums (pipeline/enums.py): each enum's point, and whether it holds only the states the point's own
+# producer makes (a schema's enum) rather than all of them
+ENUMS = {
+    'Status': ('page_read', False),
+    'Sales': ('sales', False),
+    'Ticket': ('ticket', False),
+    'SkipReason': ('skip_reason', False),
+    'PassKind': ('pass_kind', False),
+    'Style': ('style', False),
+    'People': ('people', False),
+    'Fee': ('fee', False),
+    'Hotel': ('hotel', False),
+    'Recheck': ('re_read', False),
+    'FirstRead': ('first_read', False),
+    'AnswerState': ('answer', False),
+    'Waiting': ('waits_for', False),
+    'Price': ('price', False),
+    'TierToday': ('tier_today', False),
+    'CardPrice': ('card_price', False),
+    'NextChange': ('next_change', False),
+    'Genre': ('genre', False),
+    'GenreRule': ('genre_rule', False),
+    'Source': ('source', False),
+    'PassSource': ('pass_source', False),
+    'RoomKind': ('room_kind', False),
+    'Feature': ('feature', False),
+    'ExtractedFeature': ('feature', True),
+    'Role': ('role', False),
+    'ArtistKind': ('artist_kind', False),
+    'HomeBasis': ('home_basis', False),
+    'MergeDecision': ('merge_decision', False),
+    'Pending': ('pending', False),
+    'Plan': ('plan', False),
+}
+
+
+def enum_keys(name: str) -> list[str]:
+    point, own = ENUMS[name]
+    return made(point) if own else list(keys(point))
+
+
+def enums_module() -> str:
+    """pipeline/enums.py: each enum of ENUMS as a StrEnum class, its members named by member()."""
+    out = [
+        (
+            '"""The code\'s enums of the states, written from pipeline/states.py (states.enums_module), which owns '
+            'every state:'
+        ),
+        'edit them there, then run: mise run generate."""',
+        '',
+        'from enum import StrEnum, unique',
+    ]
+    for name, (point, own) in ENUMS.items():
+        what = f'the {point} states its producer makes' if own else f'the {point} states'
+        out += ['', '', '@unique', f'class {name}(StrEnum):', f'    """{what}"""', '']
+        out += [f'    {member(k)} = {k!r}' for k in enum_keys(name)]
+    return '\n'.join(out) + '\n'
+
+
 STYLE_OF = {s.key: s.under for s in of('genre')}  # the dance style each genre falls under

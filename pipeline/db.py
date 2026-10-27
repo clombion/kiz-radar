@@ -4,28 +4,45 @@ new empty database. source_arg() is the command-line argument for the kizomba-wo
 
 import argparse
 import sqlite3
+from collections.abc import Sequence
 from pathlib import Path
+from typing import Literal
+
+from pydantic import BaseModel
 
 
-def connect(path, mode):
+def connect(path: Path | str, mode: Literal['ro', 'rw', 'rwc']) -> sqlite3.Connection:
     if mode not in ('ro', 'rw', 'rwc'):
         raise ValueError(f'mode {mode!r}: ro, rw or rwc')
     return sqlite3.connect(f'file:{Path(path).resolve()}?mode={mode}', uri=True)
 
 
-def existing(text):
+def records[R: BaseModel](db: sqlite3.Connection, record: type[R], sql: str, params: Sequence[object] = ()) -> list[R]:
+    """The query's rows as records, each column by its name. A row holds text and numbers, so it is read as its
+    record's types from those (lax: 'dj' is Role.DJ)."""
+    cursor = db.execute(sql, params)
+    names = [str(d[0]) for d in cursor.description]
+    fetched: list[tuple[object, ...]] = cursor.fetchall()
+    return [record.model_validate(dict(zip(names, row, strict=True)), strict=False) for row in fetched]
+
+
+def existing(text: str) -> Path:
     if not Path(text).is_file():
         raise argparse.ArgumentTypeError(f'{text}: no such file')
     return Path(text)
 
 
-def festival_ids(text):
+def festival_ids(text: str) -> set[int]:
     """Festival ids written "16909,18806", as a set."""
     try:
         return {int(i) for i in text.split(',') if i.strip()}
-    except ValueError:
-        raise argparse.ArgumentTypeError(f'{text}: festival ids, separated by commas')
+    except ValueError as e:
+        raise argparse.ArgumentTypeError(f'{text}: festival ids, separated by commas') from e
 
 
-def source_arg(ap):
-    ap.add_argument('src', type=existing, help='the kizomba-world export (source/<events>.sqlite)')
+class Source(argparse.Namespace):
+    src: Path = Path()
+
+
+def source_arg(ap: argparse.ArgumentParser) -> None:
+    _ = ap.add_argument('src', type=existing, help='the kizomba-world export (source/<events>.sqlite)')

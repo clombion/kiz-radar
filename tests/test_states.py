@@ -4,32 +4,34 @@ its states, and each function that chooses between states reaches every one of t
 import dataclasses
 import json
 import re
+from collections.abc import Callable, Sequence
 from pathlib import Path
 
 import pytest
-from jsonschema import Draft202012Validator
+from pydantic import ValidationError
 
-from pipeline import exceptions, states
+from pipeline import enums, exceptions, generate, prompt, states
+from pipeline.enums import PassKind, People, Price, Sales, Style, Waiting
 from pipeline.extract import prices
-from pipeline.states import Disposition, Link, People, Price, Sales, State, Waiting
+from pipeline.records import LOG_ENTRY, PricedPass, PricedTier
+from pipeline.states import Disposition, Link, State
 
 ROOT = Path(__file__).parent.parent
-SCHEMAS = sorted(ROOT.glob('pipeline/*/schemas/*.json'))
 
 
 @pytest.mark.parametrize(
     'make',
     [
-        lambda: State('price', 'priced', 'x'),  # a field missing
-        lambda: State('price', 'priced', 'x', 'card'),  # a disposition that is a string
-        lambda: State('price', 'priced', 'x', Disposition.CARD, wording=3),  # wording that is no string
-        lambda: State('price', 'priced', 'x', Disposition.CARD, link='page'),  # a link that is no Link
-        lambda: State('price', 'priced', 'x', Disposition.CARD, forms=3),  # forms that are no mapping
+        lambda: State('price', 'priced', 'x'),  # a field missing  # pyright: ignore[reportCallIssue]
+        lambda: State('price', 'priced', 'x', 'card'),  # a disposition that is a string  # pyright: ignore[reportArgumentType]
+        lambda: State('price', 'priced', 'x', Disposition.CARD, wording=3),  # wording that is no string  # pyright: ignore[reportArgumentType]
+        lambda: State('price', 'priced', 'x', Disposition.CARD, link='page'),  # a link that is no Link  # pyright: ignore[reportArgumentType]
+        lambda: State('price', 'priced', 'x', Disposition.CARD, forms=3),  # forms that are no mapping  # pyright: ignore[reportArgumentType]
     ],
 )
-def test_a_row_with_a_missing_or_wrong_typed_field_fails(make):
-    with pytest.raises(TypeError):
-        make()
+def test_a_row_with_a_missing_or_wrong_typed_field_fails(make: Callable[[], State]) -> None:
+    with pytest.raises(ValidationError):
+        _ = make()
 
 
 @pytest.mark.parametrize(
@@ -45,105 +47,106 @@ def test_a_row_with_a_missing_or_wrong_typed_field_fails(make):
         State('price', 'z', 'x', Disposition.WAITS),  # waiting with no one to act
     ],
 )
-def test_a_table_with_a_clash_or_a_dangling_state_fails(extra):
-    with pytest.raises(ValueError):
+def test_a_table_with_a_clash_or_a_dangling_state_fails(extra: State) -> None:
+    with pytest.raises(ValueError, match=re.escape(extra.point)):
         states.check(states.POINTS, (*states.ROWS, extra))
 
 
-def test_every_enum_reference_in_the_code_is_a_state():
-    """A member named in the code that the table doesn't have fails here, naming it."""
-    enums = {
-        name: getattr(states, name)
-        for name in dir(states)
-        if isinstance(getattr(states, name), type)
-        and issubclass(getattr(states, name), states.StrEnum)
-        and getattr(states, name) is not states.StrEnum
-    }
-    found = [
-        f'{path.relative_to(ROOT)}: {e}.{m}'
-        for path in sorted(ROOT.glob('pipeline/**/*.py'))
-        for e, m in re.findall(rf'\b({"|".join(enums)})\.([A-Z_]+)\b', path.read_text())
-        if m not in enums[e].__members__
-    ]
-    assert found == []
-
-
-@pytest.mark.parametrize('path', SCHEMAS, ids=lambda p: p.name)
-def test_every_schema_with_its_states_filled_is_a_valid_schema(path):
-    Draft202012Validator.check_schema(states.schema(path))
-
-
-def test_a_reference_to_no_point_fails(tmp_path):
-    (tmp_path / 's.json').write_text(json.dumps({'properties': {'k': {'$ref': '#/$defs/no_point'}}}))
-    with pytest.raises(ValueError, match='no_point'):
-        states.schema(tmp_path / 's.json')
-
-
-def test_a_rows_forms_cannot_be_changed():
+def test_a_rows_forms_cannot_be_changed() -> None:
     with pytest.raises(TypeError):
-        states.state('role', 'dj').forms['singular'] = 'Deejay'
+        states.state('role', 'dj').forms['singular'] = 'Deejay'  # pyright: ignore[reportIndexIssue]
 
 
-def test_a_link_and_a_form_reach_the_site():
+def test_a_link_and_a_form_reach_the_site() -> None:
     js = states.js_module()
-    assert '"link": "page"' in js and '"singular": "DJ"' in js and 'export const LINK = {"PAGE": "page"' in js
+    assert '"link": "page"' in js
+    assert '"singular": "DJ"' in js
+    assert 'export const LINK = {"PAGE": "page"' in js
     assert {s.link for s in states.ROWS} - {None} == set(Link)
 
 
-def test_a_schema_enum_holds_the_states_its_producer_makes():
-    passes = states.schema(ROOT / 'pipeline/extract/schemas/prices.json')
-    assert passes['$defs']['pass_kind']['enum'] == list(states.keys('pass_kind'))
-    features = states.schema(ROOT / 'pipeline/extract/schemas/extract.json')['$defs']['feature']['enum']
-    assert 'promo_code' not in features and set(features) < set(states.keys('feature'))
+def test_a_records_enum_holds_the_states_its_producer_makes() -> None:
+    assert [str(k) for k in PassKind] == list(states.keys('pass_kind'))
+    features = [str(k) for k in enums.ExtractedFeature]
+    assert 'promo_code' not in features
+    assert set(features) < set(states.keys('feature'))
+    assert [str(k) for k in enums.Feature] == list(states.keys('feature'))
 
 
-def test_the_log_says_each_page_read_state():
-    log = states.schema(ROOT / 'pipeline/tickets/schemas/log.json')
-    said = [
-        s for branch in log['oneOf'] for v in [branch['properties']['status']] for s in v.get('enum', [v.get('const')])
-    ]
-    assert sorted(said) == sorted(states.keys('page_read'))
+def test_the_schema_a_model_answers_names_its_enums_states() -> None:
+    text = json.dumps(prompt.current('prices').schema)
+    assert all(f'"{k}"' in text for k in states.keys('pass_kind'))
 
 
-def test_a_prompt_lists_the_states_its_producer_makes():
+def test_a_prompt_lists_the_states_its_producer_makes() -> None:
     text = states.definitions('feature')
-    assert '`taxi_dancers`:' in text and '`promo_code`' not in text
+    assert '`taxi_dancers`:' in text
+    assert '`promo_code`' not in text
 
 
-def test_a_prompt_lists_the_states_in_key_order_and_genres_under_their_style():
+def test_a_prompt_lists_the_states_in_key_order_and_genres_under_their_style() -> None:
     """So reordering the table (a view's order) asks nothing again."""
     listed = re.findall(r'`(\w+)`:', states.definitions('feature'))
     assert listed == sorted(listed)
     genres = states.definitions('genre')
-    assert genres.index('`semba`') < genres.index('`zouk`') and 'Kizomba' in genres
+    assert genres.index('`semba`') < genres.index('`zouk`')
+    assert 'Kizomba' in genres
 
 
-def test_the_sites_module_is_the_table():
-    assert (ROOT / 'docs/js/states.js').read_text() == states.js_module()
+def test_the_files_written_from_the_table_say_what_it_does() -> None:
+    assert {p: p.read_text(encoding='utf-8') for p in generate.FILES} == {p: b() for p, b in generate.FILES.items()}
 
 
-def test_total_names_what_a_map_misses_or_has_too_many_of():
+def test_total_names_what_a_map_misses_or_has_too_many_of() -> None:
     with pytest.raises(LookupError, match='closed'):
-        states.total('sales', {s: 1 for s in Sales if s != Sales.CLOSED}, 'here')
+        _ = states.total('sales', {s: 1 for s in Sales if s != Sales.CLOSED}, 'here')
     with pytest.raises(LookupError, match='soon'):
-        states.total('sales', dict.fromkeys(Sales, 1) | {'soon': 1}, 'here')
+        _ = states.total('sales', {str(s): 1 for s in Sales} | {'soon': 1}, 'here')
 
 
-def passes(*kinds, **k):
+def passes(
+    *kinds: PassKind,
+    style: Style | None = None,
+    group_size: int | None = 1,
+    days: int | None = None,
+    includes_hotel: bool = False,
+    amount: float = 9,
+) -> list[PricedPass]:
+    t = PricedTier(
+        amount=amount,
+        currency='EUR',
+        fee=None,
+        alt=None,
+        from_=None,
+        until=None,
+        quantity=None,
+        door=False,
+        sold_out=False,
+        current=False,
+        quote=f'{amount:g}',
+    )
     return [
-        {'kind': kind, 'style': None, 'group_size': 1, 'days': None, 'includes_hotel': False, 'tiers': [{'amount': 9}]}
-        | k
+        PricedPass(
+            kind=kind,
+            style=style,
+            label_quote=None,
+            group_size=group_size,
+            days=days,
+            includes_hotel=includes_hotel,
+            tiers=(t,),
+        )
         for kind in kinds
     ]
 
 
-PRICE_CASES = [
-    ((passes('full'), None, None), Price.PRICED),
-    ((passes('package', includes_hotel=True), None, None), Price.PRICED),
-    ((passes('package'), None, None), Price.OTHER_PASSES_ONLY),  # a package without a hotel
-    ((passes('day', 'party'), Sales.CLOSED, None), Price.OTHER_PASSES_ONLY),
-    ((passes('full', group_size=2), None, None), Price.OTHER_PASSES_ONLY),
-    ((passes('full', includes_hotel=True), None, None), Price.OTHER_PASSES_ONLY),
+FULL, PACKAGE = PassKind.FULL, PassKind.PACKAGE
+PRICE_CASES: list[tuple[tuple[Sequence[PricedPass], Sales | None, str | None], Price]] = [
+    ((passes(FULL), None, None), Price.PRICED),
+    ((passes(PACKAGE, includes_hotel=True), None, None), Price.PRICED),
+    ((passes(PACKAGE), None, None), Price.OTHER_PASSES_ONLY),  # a package without a hotel
+    ((passes(PassKind.DAY, PassKind.PARTY), Sales.CLOSED, None), Price.OTHER_PASSES_ONLY),
+    ((passes(FULL, group_size=2), None, None), Price.OTHER_PASSES_ONLY),
+    ((passes(FULL, includes_hotel=True), None, None), Price.OTHER_PASSES_ONLY),
     (([], Sales.SHOP, 'https://shop.example'), Price.PAGE_UNREAD),
     (([], None, 'https://shop.example'), Price.PAGE_UNREAD),
     (([], Sales.NOT_YET, None), Price.NOT_YET),
@@ -154,57 +157,67 @@ PRICE_CASES = [
 ]
 
 
-@pytest.mark.parametrize('args, state', PRICE_CASES)
-def test_every_price_state(args, state):
+@pytest.mark.parametrize(('args', 'state'), PRICE_CASES)
+def test_every_price_state(args: tuple[Sequence[PricedPass], Sales | None, str | None], state: Price) -> None:
     assert prices.price_state(*args) == state
 
 
-def test_the_price_states_tested_are_all_of_them():
+def test_the_price_states_tested_are_all_of_them() -> None:
     assert {state for _, state in PRICE_CASES} == set(Price)
 
 
-def test_the_card_prices_the_kizomba_full_pass_then_the_longest_then_the_cheapest_package_with_hotel():
-    mixed = passes('full', style='zouk') + passes('full', style='kizomba') + passes('full', days=3) + passes('full')
+def test_the_card_prices_the_kizomba_full_pass_then_the_longest_then_the_cheapest_package_with_hotel() -> None:
+    mixed = passes(FULL, style=Style.ZOUK) + passes(FULL, style=Style.KIZOMBA) + passes(FULL, days=3) + passes(FULL)
     assert prices.card_pass(mixed) == 1
-    assert prices.card_pass(passes('full', style='zouk') + passes('full', days=3)) == 1  # all styles before one
-    assert prices.card_pass(passes('full', days=3) + passes('full', days=4)) == 1
-    assert prices.card_pass(passes('full', days=3) + passes('full')) == 1  # a length not stated is the whole festival
-    hotel = dict(includes_hotel=True)
-    assert (
-        prices.card_pass(
-            passes('package', tiers=[{'amount': 900}], **hotel) + passes('package', tiers=[{'amount': 700}], **hotel)
-        )
-        == 1
-    )
-    assert prices.card_pass(passes('package', group_size=None, **hotel)) is None  # priced per room
-    assert prices.card_pass(passes('package')) is None  # no hotel
-    assert prices.card_pass(passes('package', **hotel) + passes('full')) == 1  # a full pass first
+    assert prices.card_pass(passes(FULL, style=Style.ZOUK) + passes(FULL, days=3)) == 1  # all styles before one
+    assert prices.card_pass(passes(FULL, days=3) + passes(FULL, days=4)) == 1
+    assert prices.card_pass(passes(FULL, days=3) + passes(FULL)) == 1  # a length not stated is the whole festival
+    hotel = passes(PACKAGE, amount=900, includes_hotel=True) + passes(PACKAGE, amount=700, includes_hotel=True)
+    assert prices.card_pass(hotel) == 1
+    assert prices.card_pass(passes(PACKAGE, group_size=None, includes_hotel=True)) is None  # priced per room
+    assert prices.card_pass(passes(PACKAGE)) is None  # no hotel
+    assert prices.card_pass(passes(PACKAGE, includes_hotel=True) + passes(FULL)) == 1  # a full pass first
 
 
-PEOPLE_CASES = [
-    ((1, 'full'), People.ONE),
-    ((None, 'full'), People.ONE),
-    ((None, 'package'), People.PER_ROOM),
-    ((2, 'party'), People.COUPLE),
-    ((4, 'full'), People.GROUP),
+PEOPLE_CASES: list[tuple[tuple[int | None, PassKind], People]] = [
+    ((1, FULL), People.ONE),
+    ((None, FULL), People.ONE),
+    ((None, PACKAGE), People.PER_ROOM),
+    ((2, PassKind.PARTY), People.COUPLE),
+    ((4, FULL), People.GROUP),
 ]
 
 
-@pytest.mark.parametrize('args, people', PEOPLE_CASES)
-def test_every_people_state(args, people):
+@pytest.mark.parametrize(('args', 'people'), PEOPLE_CASES)
+def test_every_people_state(args: tuple[int | None, PassKind], people: People) -> None:
     group_size, kind = args
-    assert prices.people({'group_size': group_size, 'kind': kind}) == people
+    assert prices.people(passes(kind, group_size=group_size)[0]) == people
 
 
-def test_the_people_states_tested_are_all_of_them():
+def test_the_people_states_tested_are_all_of_them() -> None:
     assert {p for _, p in PEOPLE_CASES} == set(People)
 
 
-def test_an_override_is_typed_dated_and_changes_something():
+def test_an_override_is_typed_dated_and_changes_something() -> None:
     o = exceptions.OVERRIDES[0]
-    with pytest.raises(TypeError):
-        dataclasses.replace(o, then='later')  # no state of waits_for
-    with pytest.raises(ValueError):
-        dataclasses.replace(o, decided_on='26 Oct')
-    with pytest.raises(ValueError):
-        dataclasses.replace(o, then=Waiting.RECIPE)  # an override from a state to itself
+    with pytest.raises(ValidationError):
+        _ = dataclasses.replace(o, then='later')  # no state of waits_for
+    with pytest.raises(ValidationError):
+        _ = dataclasses.replace(o, decided_on='26 Oct')
+    with pytest.raises(ValueError, match='to itself'):
+        _ = dataclasses.replace(o, then=Waiting.RECIPE)  # an override from a state to itself
+
+
+def test_the_log_says_each_page_read_state() -> None:
+    row = {'key': '1', 'name': 'n', 'price': '€9', 'amount': 9, 'currency': 'EUR', 'fee': None, 'sold_out': False}
+    row |= {'alt_price': None, 'alt_amount': None, 'alt_currency': None}
+    base = {'at': '2026-10-01T00:00:00+00:00', 'page': 'https://x.org', 'recipe': 'x@0123abcd'}
+    for key in states.keys('page_read'):
+        said = (
+            {'status': key, 'url': 'https://x.org', 'http': 200, 'rows': [row]}
+            if key == 'read'
+            else {'status': key, 'why': 'w'}
+        )
+        assert LOG_ENTRY.validate_json(json.dumps(base | said)).status == key
+    with pytest.raises(ValidationError):
+        _ = LOG_ENTRY.validate_json(json.dumps(base | {'status': 'soon', 'why': 'w'}))

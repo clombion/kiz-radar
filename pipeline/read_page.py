@@ -18,15 +18,26 @@ Finding the Chromium: --browser, else the Playwright browsers in /opt/pw-browser
 
 import argparse
 import contextlib
-import glob
 import os
 import shutil
 import sys
+from collections.abc import Generator
+from pathlib import Path
+from typing import TYPE_CHECKING, cast
+
+from pydantic import TypeAdapter
+
+from pipeline.records import PageRecipe
+
+if TYPE_CHECKING:
+    from patchright.sync_api import Page
+
+RAW: TypeAdapter[list[dict[str, str | None]]] = TypeAdapter(list[dict[str, str | None]])
 
 
-def chromium():
-    found = sorted(glob.glob('/opt/pw-browsers/chromium-*/chrome-linux*/chrome'))
-    return found[-1] if found else None
+def chromium() -> str | None:
+    found = sorted(Path('/opt/pw-browsers').glob('chromium-*/chrome-linux*/chrome'))
+    return str(found[-1]) if found else None
 
 
 class RecipeError(Exception):
@@ -34,7 +45,9 @@ class RecipeError(Exception):
 
 
 @contextlib.contextmanager
-def opened(url, wait=10, visible=False, browser=None):
+def opened(
+    url: str, wait: int = 10, *, visible: bool = False, browser: str | None = None
+) -> Generator[tuple['Page', int | None]]:
     """(the page, its HTTP status) once loaded and settled. visible needs a display (see on_display)."""
     from patchright.sync_api import sync_playwright
 
@@ -49,27 +62,29 @@ def opened(url, wait=10, visible=False, browser=None):
             b.close()
 
 
-def click_all(page, selector):
+def click_all(page: 'Page', selector: str) -> None:
     """Click every match of a CSS selector that can be clicked when its turn comes, to open sections a page shows
     collapsed: a page may keep hidden copies of a button for other screen sizes, and a dialog the first click opens
     covers the others. What stays shut leaves its rows unread, which a recipe's read reports."""
-    from patchright.sync_api import TimeoutError
+    from patchright.sync_api import TimeoutError as Unclickable
 
     for el in page.query_selector_all(selector):
         try:
             el.click(trial=True, timeout=2000)
-        except TimeoutError:
+        except Unclickable:
             continue
         el.click()
     page.wait_for_timeout(1500)
 
 
-def page_text(url, wait=10, visible=False, browser=None, screenshot=None):
+def page_text(
+    url: str, wait: int = 10, *, visible: bool = False, browser: str | None = None, screenshot: str | None = None
+) -> tuple[str, int | None, str]:
     """(title, HTTP status, the page's text as shown)."""
-    with opened(url, wait, visible, browser) as (page, status):
+    with opened(url, wait, visible=visible, browser=browser) as (page, status):
         out = page.title(), status, page.inner_text('body')
         if screenshot:
-            page.screenshot(path=screenshot, full_page=True)
+            _ = page.screenshot(path=screenshot, full_page=True)
     return out
 
 
@@ -106,43 +121,61 @@ ROWS_JS = """([row, fields]) => {
 }"""
 
 
-def rows(url, recipe, visible=None, browser=None):
-    """(HTTP status, title, the page's ticket rows) read by a site recipe (pipeline/tickets/schemas/site.json): each
+def rows(
+    url: str, recipe: PageRecipe, *, visible: bool | None = None, browser: str | None = None
+) -> tuple[int | None, str, list[dict[str, str | None]]]:
+    """(HTTP status, title, the page's ticket rows) read by a site recipe (pipeline/records.py, PageRecipe): each
     row maps the recipe's fields to the string found, or None. Patchright's errors are the page's (it would not
     load); RecipeError is the recipe's."""
     from patchright.sync_api import Error
 
-    with opened(url, recipe['wait'], recipe['visible'] if visible is None else visible, browser) as (page, status):
+    shown = recipe.visible if visible is None else visible
+    with opened(url, recipe.wait, visible=shown, browser=browser) as (page, status):
         title = page.title()
         try:
-            if recipe['open']:
-                click_all(page, recipe['open'])
-            return status, title, page.evaluate(ROWS_JS, [recipe['row'], recipe['fields']])
+            if recipe.open:
+                click_all(page, recipe.open)
+            found = cast(
+                'object', page.evaluate(ROWS_JS, [recipe.row, recipe.fields.model_dump(mode='json', by_alias=True)])
+            )
         except Error as e:
             raise RecipeError(str(e).splitlines()[0]) from e
+        return status, title, RAW.validate_python(found)
 
 
-def on_display():
+def on_display() -> None:
     """Run this process again under a virtual display (xvfb-run) when on Linux without one, so a visible browser
     can open; elsewhere a visible browser needs none."""
     if sys.platform != 'linux' or os.environ.get('DISPLAY'):
         return
     if not shutil.which('xvfb-run'):
         sys.exit('no display and no xvfb-run: install xvfb, or run where a display is available')
-    os.execvp('xvfb-run', ['xvfb-run', '-a', *sys.orig_argv])  # the same interpreter, flags and -m module
+    os.execvp('xvfb-run', ['xvfb-run', '-a', *sys.orig_argv])  # the same interpreter, flags and -m module  # noqa: S606, S607 (this process again, under xvfb-run from PATH)
 
 
-def main():
+class Args(argparse.Namespace):
+    url: str = ''
+    visible: bool = False
+    screenshot: str | None = None
+    wait: int = 10
+    browser: str | None = None
+
+
+def main() -> None:
     ap = argparse.ArgumentParser(description='Read one web page as a browser shows it: text on stdout.')
-    ap.add_argument('url')
-    ap.add_argument('--visible', action='store_true', help='a visible browser on a virtual display, for browser checks')
-    ap.add_argument('--screenshot', help='also save a full-page screenshot here (PNG)')
-    ap.add_argument('--wait', type=int, default=10, help='seconds to let the page settle after loading (default 10)')
-    ap.add_argument('--browser', help='the Chromium to run (default: see above)')
-    a = ap.parse_args()
+    _ = ap.add_argument('url')
+    _ = ap.add_argument(
+        '--visible', action='store_true', help='a visible browser on a virtual display, for browser checks'
+    )
+    _ = ap.add_argument('--screenshot', help='also save a full-page screenshot here (PNG)')
+    _ = ap.add_argument(
+        '--wait', type=int, default=10, help='seconds to let the page settle after loading (default 10)'
+    )
+    _ = ap.add_argument('--browser', help='the Chromium to run (default: see above)')
+    a = ap.parse_args(namespace=Args())
     if a.visible:
         on_display()
-    title, status, text = page_text(a.url, a.wait, a.visible, a.browser, a.screenshot)
+    title, status, text = page_text(a.url, a.wait, visible=a.visible, browser=a.browser, screenshot=a.screenshot)
     print(f'# {title} ({status or "no response"})', file=sys.stderr)
     print(text)
 

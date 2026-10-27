@@ -1,16 +1,21 @@
-"""Every test leaves the repository's data as it found it: a test module writing into pipeline/, docs/ or source/ fails."""
+"""Every test leaves the repository's data as it found it: a test module writing into pipeline/, docs/ or source/
+fails."""
 
+import shutil
 import subprocess
+from collections.abc import Iterator
 from pathlib import Path
 
 import pytest
 
+from pipeline import prompt, spend
+
 ROOT = Path(__file__).parent.parent
 
 
-def data_status():
+def data_status() -> str:
     return subprocess.run(
-        ['git', 'status', '--porcelain', '--untracked-files=all', '--', 'pipeline', 'docs', 'source'],
+        ['git', 'status', '--porcelain', '--untracked-files=all', '--', 'pipeline', 'docs', 'source'],  # noqa: S607 (git, from PATH)
         cwd=ROOT,
         capture_output=True,
         text=True,
@@ -19,29 +24,23 @@ def data_status():
 
 
 @pytest.fixture(autouse=True, scope='module')
-def repository_untouched():
+def repository_untouched() -> Iterator[None]:
     before = data_status()
     yield
     assert data_status() == before, 'a test in this module wrote into the repository'
 
 
 @pytest.fixture(autouse=True)
-def spend_ledger(tmp_path, monkeypatch):
+def spend_ledger(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     """Requests a test makes to a fake Claude go in a ledger of its own."""
-    from pipeline import spend
-
     monkeypatch.setattr(spend, 'LEDGER', tmp_path / 'spend.csv')
 
 
 @pytest.fixture(autouse=True)
-def prompts_asked(tmp_path, monkeypatch):
+def prompts_asked(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     """Prompts a test asks are archived in a folder of its own; the archive's own prompts can still be read."""
-    import shutil
-
-    from pipeline import prompt
-
     asked = tmp_path / 'asked'
     asked.mkdir()
     if prompt.ASKED.exists():
-        shutil.copytree(prompt.ASKED, asked, dirs_exist_ok=True)
+        _ = shutil.copytree(prompt.ASKED, asked, dirs_exist_ok=True)
     monkeypatch.setattr(prompt, 'ASKED', asked)

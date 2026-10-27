@@ -5,14 +5,14 @@
     uv run --group ask -m pipeline.extract.ask source/<events>.sqlite --limit 3   # ask about three festivals only
     uv run --group ask -m pipeline.extract.ask source/<events>.sqlite --only 16909,18806   # these festivals only
 
-A festival needs a pass when its answer is due (states.AnswerState): it is in pending_extraction (its description is
-new or changed), the pass has no answer for it yet, or its answer was asked with another prompt than the pass's
-current one (pipeline/prompt.py, known by its hash). Each question is one festival and one pass, with the pass's
-prompt and its schema as the required answer format. check_output.problems() (and prices.problems() for prices) checks the answer; on a
-failure Claude gets the checker's lines and answers once more, and a second failure leaves the festival
+A festival needs a pass when its answer is due (enums.AnswerState): it is in pending_extraction (its description is new
+or changed), the pass has no answer for it yet, or its answer was asked with another prompt than the pass's current one
+(pipeline/prompt.py, known by its hash). Each question is one festival and one pass, with the pass's prompt and its
+record's schema as the required answer format. check_output.checked() (and prices.problems() for prices) checks the
+answer; on a failure Claude gets the checker's lines and answers once more, and a second failure leaves the festival
 pending. A checked answer is saved as answers/<pass>/event-<id>.json, its prompt archived. A festival leaves
-pending_extraction once every pass has a checked answer from this run, so a run of some passes leaves it there. Requests stop once the month's budget for Claude is spent
-(pipeline/spend.py), and the run then fails. Needs ANTHROPIC_API_KEY.
+pending_extraction once every pass has a checked answer from this run, so a run of some passes leaves it there. Requests
+stop once the month's budget for Claude is spent (pipeline/spend.py), and the run then fails. Needs ANTHROPIC_API_KEY.
 """
 
 import argparse
@@ -21,45 +21,105 @@ import json
 import sqlite3
 import sys
 import threading
+from collections.abc import Callable, Sequence
 from concurrent.futures import ThreadPoolExecutor
+from contextlib import AbstractContextManager
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Protocol
 
 import anthropic
+from anthropic.types import Message, MessageParam, OutputConfigParam, TextBlock
 
 from pipeline import db as sqlite_db
 from pipeline import prompt as prompts
 from pipeline import spend
+from pipeline.enums import AnswerState, Style
 from pipeline.extract import answers, check_output, prices
-from pipeline.prompt import Prompt
-from pipeline.states import AnswerState
+from pipeline.prompt import Pass, Prompt
+from pipeline.records import Asked, AskedPrices, Batch, Entry, Priced, Record
 
 MODEL = 'claude-haiku-5-5'
 WORKERS = 8
 BY = 'pipeline/extract/ask.py (Messages API), one festival'
 
 
-def question(pass_name, row, styles=()):
-    """(the message, the batch it holds) asking one festival's pass."""
-    event = {'event_id': row['id'], 'title': row['title'], 'description': row['description_text']}
-    if pass_name == 'prices':
-        event = {
-            'event_id': row['id'],
-            'title': row['title'],
-            'start_date': row['start_date'][:10],
-            'end_date': row['end_date'][:10],
-            'country': row['country'],
-            'styles': list(styles),
-            'description': row['description_text'],
-        }
-    batch = {'batch': f'event-{row["id"]}', 'events': [event]}
-    return f'Batch input ({batch["batch"]}.json):\n{json.dumps(batch, ensure_ascii=False, indent=1)}', batch
+class Stream(Protocol):
+    def get_final_message(self) -> Message: ...
 
 
-def structured(client, model, prompt: Prompt, content, check, label, step):
-    """Claude's answer to the prompt and the message, in its schema's shape, once check() finds no problems in it; or
-    None after two tries: on a failure Claude gets the checker's lines and answers once more. Each request is checked
-    first against the month's budget (spend.BudgetSpent once it is spent) and the model's price and goes in the
-    ledger under step."""
-    messages = [{'role': 'user', 'content': content}]
+class Streams(Protocol):
+    def stream(
+        self,
+        *,
+        model: str,
+        max_tokens: int,
+        system: str,
+        messages: list[MessageParam],
+        output_config: OutputConfigParam,
+    ) -> AbstractContextManager[Stream]: ...
+
+
+class Client(Protocol):
+    """What the pipeline asks of a client of Claude's Messages API (anthropic.Anthropic): a streamed request."""
+
+    @property
+    def messages(self) -> Streams: ...
+
+
+class Festival(Record):
+    """A festival with a description, as the source database has it."""
+
+    id: int
+    title: str
+    description_text: str
+    start_date: str
+    end_date: str
+    country: str | None
+
+
+def asked(pass_: Pass[Entry, Asked], f: Festival, styles: Sequence[Style] = ()) -> Asked:
+    """The festival as the pass asks about it; styles are the festival's (prices.styles), for the prices pass."""
+    if pass_.asked is AskedPrices:
+        return AskedPrices(
+            event_id=f.id,
+            title=f.title,
+            description=f.description_text,
+            start_date=f.start_date[:10],
+            end_date=f.end_date[:10],
+            country=f.country,
+            styles=tuple(styles),
+        )
+    return Asked(event_id=f.id, title=f.title, description=f.description_text)
+
+
+def question(pass_: Pass[Entry, Asked], f: Festival, styles: Sequence[Style] = ()) -> tuple[str, Asked]:
+    """(the message asking one festival's pass, the festival as asked)."""
+    event, batch = asked(pass_, f, styles), f'event-{f.id}'
+    events: list[dict[str, object]] = [event.model_dump(mode='json')]  # as its own record, whichever it is
+    text = json.dumps({'batch': batch, 'events': events}, ensure_ascii=False, indent=1)
+    return f'Batch input ({batch}.json):\n{text}', event
+
+
+@dataclass(frozen=True)
+class Request:
+    """A question to Claude: the model, the prompt, the message, how its lines are labelled, and the step of the
+    ledger it is spent under."""
+
+    model: str
+    prompt: Prompt
+    content: str
+    label: str
+    step: str
+
+
+def structured[R: Record](client: Client, request: Request, check: Callable[[str], R | list[str]]) -> R | None:
+    """Claude's answer to the prompt and the message, as the prompt's record, once check() finds no problems in it;
+    or None after two tries: on a failure Claude gets the checker's lines and answers once more. Each request is
+    checked first against the month's budget (spend.BudgetSpentError once it is spent) and the model's price and goes
+    in the ledger under its step."""
+    model, prompt, label = request.model, request.prompt, request.label
+    messages: list[MessageParam] = [{'role': 'user', 'content': request.content}]
     for attempt in (1, 2):
         spend.check(model)
         try:
@@ -68,7 +128,7 @@ def structured(client, model, prompt: Prompt, content, check, label, step):
                 max_tokens=64000,
                 system=prompt.system,
                 messages=messages,
-                output_config={'format': {'type': 'json_schema', 'schema': prompt.sent_schema}},
+                output_config={'format': {'type': 'json_schema', 'schema': dict(prompt.sent_schema)}},
             ) as stream:
                 reply = stream.get_final_message()
         except anthropic.APIStatusError as e:
@@ -77,72 +137,81 @@ def structured(client, model, prompt: Prompt, content, check, label, step):
         except anthropic.APIConnectionError as e:
             print(f'{label}: connection failed ({e}); left pending', file=sys.stderr)
             return None
-        spend.record(step, model, reply.usage.input_tokens, reply.usage.output_tokens)
+        _ = spend.record(request.step, model, reply.usage.input_tokens, reply.usage.output_tokens)
         if reply.stop_reason != 'end_turn':
-            print(
-                f'{label}: stopped on {reply.stop_reason} (request {reply._request_id}); left pending', file=sys.stderr
-            )
+            print(f'{label}: stopped on {reply.stop_reason} (message {reply.id}); left pending', file=sys.stderr)
             return None
-        text = next(b.text for b in reply.content if b.type == 'text')
-        try:
-            output = json.loads(text)
-        except json.JSONDecodeError as e:
-            found = [f'not valid JSON ({e})']
-        else:
-            if not (found := check(output)):
+        text = next(b.text for b in reply.content if isinstance(b, TextBlock))
+        match check(text):
+            case list() as found:
+                pass
+            case output:
                 return output
         print(f'{label}: try {attempt} failed the checker: ' + ' | '.join(found), file=sys.stderr)
-        messages += [
-            {'role': 'assistant', 'content': reply.content},
-            {
-                'role': 'user',
-                'content': 'The checker found these problems:\n'
-                + '\n'.join(found)
-                + '\n\nAnswer again with the whole corrected object.',
-            },
-        ]
+        again = (
+            'The checker found these problems:\n'
+            + '\n'.join(found)
+            + '\n\nAnswer again with the whole corrected object.'
+        )
+        messages.append({'role': 'assistant', 'content': text})
+        messages.append({'role': 'user', 'content': again})
     return None
 
 
-def ask(client, pass_name, row, styles=()):
+def own_problems[E: Entry](answer: Batch[E], styles: Sequence[Style]) -> list[str]:
+    """What a pass's own checks find in an answer: the prices pass's (prices.problems) on its festivals' prices."""
+    return [p for ev in answer.events if isinstance(ev, Priced) for p in prices.problems(ev, styles)]
+
+
+def ask[E: Entry, Q: Asked](
+    client: Client, pass_: Pass[E, Q], f: Festival, styles: Sequence[Style] = ()
+) -> Batch[E] | None:
     """A checked answer for one festival and pass, or None after two failed tries; styles are the festival's
     (prices.styles), for the prices pass."""
-    content, batch = question(pass_name, row, styles)
-    prompt = prompts.current(pass_name)
-    check = lambda out: (
-        check_output.problems(prompt.schema, batch, out)
-        or (
-            prices.problems(out)
-            + [p for ev in out['events'] for p in prices.style_problems(ev['passes'], list(styles))]
-            if pass_name == 'prices'
-            else []
-        )
-    )
-    return structured(client, MODEL, prompt, content, check, f'{row["id"]} {pass_name}', pass_name)
+    content, event = question(pass_, f, styles)
+    texts = {event.event_id: event.description + '\n' + event.title}
+
+    def check(text: str) -> Batch[E] | list[str]:
+        match check_output.checked(prompts.answer(pass_), text, texts):
+            case list() as found:
+                return found
+            case answer:
+                return own_problems(answer, styles) or answer
+
+    request = Request(MODEL, prompts.current(pass_.name), content, f'{f.id} {pass_.name}', pass_.name)
+    return structured(client, request, check)
 
 
-def due(db, only, ids=None):
-    """(event row, pass) pairs to ask: each pass whose answer for a festival is none or stale (answer_state), of the
-    festivals ids names when it names some."""
-    rows = {r['id']: r for r in db.execute('select * from events where description_text is not null order by id')}
+type Job = tuple[Festival, Pass[Entry, Asked]]
+
+
+def due(
+    db: sqlite3.Connection, only: Sequence[prompts.PassName] | None, ids: set[int] | None = None
+) -> tuple[list[Job], set[int]]:
+    """((festival, pass) pairs to ask: each pass whose answer for a festival is none or stale (answer_state), of the
+    festivals ids names when it names some; the festivals pending_extraction holds)."""
+    query = 'select id, title, description_text, start_date, end_date, country from events'
+    rows = {f.id: f for f in sqlite_db.records(db, Festival, query + ' where description_text is not null order by id')}
     if ids:
         if missing := ids - set(rows):
             sys.exit(f'no festival with a description: {sorted(missing)}')
         rows = {i: r for i, r in rows.items() if i in ids}
-    pending = {i for (i,) in db.execute('select event_id from pending_extraction')}
-    out = []
-    for pass_name in only or prompts.PASSES:
-        have = answers.latest(pass_name, set(rows))
+    listed: list[tuple[int]] = db.execute('select event_id from pending_extraction').fetchall()
+    pending = {i for (i,) in listed}
+    out: list[Job] = []
+    for pass_ in (p for p in prompts.PASSES if not only or p.name in only):
+        have = answers.answered(pass_.name, set(rows))
         out += [
-            (rows[i], pass_name)
+            (rows[i], pass_)
             for i in rows
-            if answer_state(pass_name, have.get(i), i in pending) != AnswerState.CURRENT
+            if answer_state(pass_.name, have[i][1] if i in have else None, pending=i in pending) != AnswerState.CURRENT
         ]
     return out, pending
 
 
-def answer_state(pass_name, answer, pending):
-    """A festival's answer of a pass: none, stale (to another prompt, or its description changed since), or current."""
+def answer_state(pass_name: prompts.PassName, answer: answers.Logged | None, *, pending: bool) -> AnswerState:
+    """A festival's answer of a pass (its file's log row, None when it has none): none, stale (to another prompt,
+    or its description changed since), or current."""
     return (
         AnswerState.NONE
         if answer is None
@@ -152,70 +221,80 @@ def answer_state(pass_name, answer, pending):
     )
 
 
-def settled(answered, pending):
+def settled(answered: dict[int, set[prompts.PassName]], pending: set[int]) -> list[int]:
     """The pending festivals this run answered every pass of (answered: {festival: its passes answered}): they leave
     pending_extraction. One asked only some passes (--pass) stays, so its other passes are asked again."""
-    return sorted(i for i in pending if answered.get(i, set()) >= set(prompts.PASSES))
+    every = {p.name for p in prompts.PASSES}
+    return sorted(i for i in pending if answered.get(i, set()) >= every)
 
 
-def main():
+class Args(argparse.Namespace):
+    src: Path = Path()
+    dry_run: bool = False
+    limit: int | None = None
+    passes: list[prompts.PassName] | None = None
+    only: set[int] | None = None
+
+
+def main() -> None:
     ap = argparse.ArgumentParser(description='Ask Claude the extraction passes for the festivals that need them.')
-    ap.add_argument(
+    _ = ap.add_argument(
         'src', type=sqlite_db.existing, help='the source DB; festivals leave its pending_extraction once answered'
     )
-    ap.add_argument('--dry-run', action='store_true', help='list what would be asked, without asking')
-    ap.add_argument('--limit', type=int, help='ask about at most this many festivals')
-    ap.add_argument(
-        '--pass', dest='passes', action='append', choices=prompts.PASSES, help='only this pass (repeatable)'
+    _ = ap.add_argument('--dry-run', action='store_true', help='list what would be asked, without asking')
+    _ = ap.add_argument('--limit', type=int, help='ask about at most this many festivals')
+    _ = ap.add_argument(
+        '--pass',
+        dest='passes',
+        action='append',
+        choices=[p.name for p in prompts.PASSES],
+        help='only this pass (repeatable)',
     )
-    ap.add_argument('--only', type=sqlite_db.festival_ids, help='only these festivals, by id: "16909,18806"')
-    a = ap.parse_args()
+    _ = ap.add_argument('--only', type=sqlite_db.festival_ids, help='only these festivals, by id: "16909,18806"')
+    a = ap.parse_args(namespace=Args())
 
     db = sqlite_db.connect(a.src, 'rw')
-    db.row_factory = sqlite3.Row
     todo, pending = due(db, a.passes, a.only)
     if a.limit:
-        keep = sorted({r['id'] for r, _ in todo})[: a.limit]
-        todo = [(r, p) for r, p in todo if r['id'] in keep]
-    counts = {p: sum(1 for _, q in todo if q == p) for p in prompts.PASSES}
-    print(f'{len({r["id"] for r, _ in todo})} festivals to ask about: {counts}; {len(pending)} pending')
+        keep = sorted({f.id for f, _ in todo})[: a.limit]
+        todo = [(f, p) for f, p in todo if f.id in keep]
+    counts = {p.name: sum(1 for _, q in todo if q is p) for p in prompts.PASSES}
+    print(f'{len({f.id for f, _ in todo})} festivals to ask about: {counts}; {len(pending)} pending')
     if a.dry_run or not todo:
         return
 
     # read here, since the workers don't share the connection; genres a new festival's answers add load after this run
-    styles = {r['id']: prices.styles(db, r['id']) for r, p in todo if p == 'prices'}
-    client = anthropic.Anthropic()
-    lock, failed, answered, before, stopped = (
-        threading.Lock(),
-        set(),
-        collections.defaultdict(set),
-        spend.month_usd(),
-        [],
-    )
+    styles = {f.id: prices.styles(db, f.id) for f, p in todo if p is prompts.PRICES}
+    client: Client = anthropic.Anthropic()
+    lock, before = threading.Lock(), spend.month_usd()
+    failed: set[int] = set()
+    answered: collections.defaultdict[int, set[prompts.PassName]] = collections.defaultdict(set)
+    stopped: list[str] = []
 
-    def one(job):
-        row, pass_name = job
+    def one(job: Job) -> None:
+        f, pass_ = job
         try:
-            output = ask(client, pass_name, row, styles.get(row['id'], ()))
-        except spend.BudgetSpent as e:
+            output = ask(client, pass_, f, styles.get(f.id, ()))
+        except spend.BudgetSpentError as e:
             output = None
             stopped[:1] = [str(e)]
         with lock:
             if output is None:
-                failed.add(row['id'])
+                failed.add(f.id)
             else:
-                answers.save(pass_name, row['id'], output, MODEL, prompts.current(pass_name), BY)
-                answered[row['id']].add(pass_name)
+                _ = answers.save(pass_.name, output, MODEL, prompts.current(pass_.name), BY)
+                answered[f.id].add(pass_.name)
 
     with ThreadPoolExecutor(WORKERS) as pool:
-        list(pool.map(one, todo))
+        _ = list(pool.map(one, todo))
 
-    done = {r['id'] for r, _ in todo} - failed
-    db.executemany('delete from pending_extraction where event_id = ?', [(i,) for i in settled(answered, pending)])
+    done = {f.id for f, _ in todo} - failed
+    _ = db.executemany('delete from pending_extraction where event_id = ?', [(i,) for i in settled(answered, pending)])
     db.commit()
     print(
         f'{len(done)} festivals answered, {len(failed)} failed {sorted(failed)}; '
-        f'${spend.month_usd() - before:.2f} this run, €{spend.eur(spend.month_usd()):.2f} of €{spend.BUDGET_EUR} this month'
+        f'${spend.month_usd() - before:.2f} this run, €{spend.eur(spend.month_usd()):.2f} of €{spend.BUDGET_EUR} this '
+        'month'
     )
     if stopped:
         sys.exit(f'{stopped[0]}: the rest waits for next month')

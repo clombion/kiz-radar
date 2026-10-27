@@ -6,7 +6,7 @@ from pipeline.text import soften_caps, tidy_name, tidy_title
 
 
 @pytest.mark.parametrize(
-    'raw, tidy',
+    ('raw', 'tidy'),
     [
         ('AMI & JULIEN', 'Ami & Julien'),
         ('Dj Chico', 'DJ Chico'),
@@ -24,12 +24,12 @@ from pipeline.text import soften_caps, tidy_name, tidy_title
         ('ESTEBAN JR & BONDE', 'Esteban Jr & Bonde'),
     ],
 )
-def test_names(raw, tidy):
+def test_names(raw: str, tidy: str) -> None:
     assert tidy_name(raw) == tidy
 
 
 @pytest.mark.parametrize(
-    'raw, tidy',
+    ('raw', 'tidy'),
     [
         ('WEnd Kizomba Lille | ALL IN ONE | 23 au 25 Octobre', 'WEnd Kizomba Lille'),
         ('PRAGUE KWANZA FESTIVAL 2026 – Official 8.edition', 'Prague Kwanza Festival – 8.edition'),
@@ -45,14 +45,14 @@ def test_names(raw, tidy):
         ('2026', '2026'),  # nothing left: keep what was listed
     ],
 )
-def test_titles(raw, tidy):
+def test_titles(raw: str, tidy: str) -> None:
     assert tidy_title(raw) == tidy
 
 
-def test_venue():
+def test_venue() -> None:
     assert soften_caps('IBIS STYLE NEUVILLE EN FERRAIN') == 'Ibis Style Neuville en Ferrain'
 
 
-def test_home_airport_is_only_named_in_airports_csv():
+def test_home_airport_is_only_named_in_airports_csv() -> None:
     pipeline = pathlib.Path(__file__).parent.parent / 'pipeline'
     assert [p.name for p in pipeline.glob('*.py') if "'BGO'" in p.read_text() or '"BGO"' in p.read_text()] == []

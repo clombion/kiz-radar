@@ -1,6 +1,7 @@
 """Consistent text for the site, applied when the database is built.
 
-tidy_name: artist names as listings write them, in one casing ("AMI & JULIEN" → "Ami & Julien", "Dj Chico" → "DJ Chico").
+tidy_name: artist names as listings write them, in one casing ("AMI & JULIEN" → "Ami & Julien",
+  "Dj Chico" → "DJ Chico").
 tidy_title: festival titles for cards ("WEnd Kizomba Lille | ALL IN ONE | 23 au 25 Octobre" → "WEnd Kizomba Lille"):
   dates, years, "official" and separators removed, shouting capitals softened.
 soften_caps: shouting capitals softened, word by word (venues, and inside tidy_title).
@@ -16,14 +17,15 @@ WORD = re.compile(r"[^\W\d_](?:[^\W\d_]|['’])*")
 NAME_VOWEL = re.compile(r'[aeiouàáâãäåèéêëìíîïòóôõöùúûüæœ]', re.IGNORECASE)
 NAME_SMALL = {'y', 'e', 'et', 'and', 'de', 'da', 'do', 'dos', 'das', 'del', 'di', 'du', 'la', 'le', 'van', 'von'}
 NAME_KEEP = {'DJ', 'MC', 'II', 'III', 'IV'}
+NAME_LONG = 4  # a vowelless word this long with a Y in it is a name (GHYS), a shorter one initials (MKY)
 
 
-def tidy_name(name):
+def tidy_name(name: str) -> str:
     s = re.sub(r'\b(?:dj|Dj|dJ)\b\.?', 'DJ', name)
     s = re.sub(r'\bDJ\.', 'DJ', s)
     first = True
 
-    def word(m):
+    def word(m: re.Match[str]) -> str:
         nonlocal first
         w, start = m.group(0), m.start()
         is_first, first = first, False
@@ -35,7 +37,7 @@ def tidy_name(name):
             return w.lower()
         if w == 'JR':
             return 'Jr'
-        if not NAME_VOWEL.search(w) and not (len(w) >= 4 and 'Y' in w):  # GHYS is a name, MKY initials
+        if not NAME_VOWEL.search(w) and not (len(w) >= NAME_LONG and 'Y' in w):
             return w
         return w[0] + w[1:].lower()
 
@@ -106,14 +108,16 @@ SMALL = {
     'del',
 }
 VOWELS = re.compile(r'[aeiouyàâäéèêëîïôöûüáíóúãõ]', re.IGNORECASE)
+WORD_VOWELS = 2  # a shouted word with fewer vowels is an acronym or a stylised name
+SHORTEST_TITLE = 3  # a tidied title shorter than this gives way to the listed one
 
 
-def soften_caps(text):
+def soften_caps(text: str) -> str:
     """Soften shouting capitals word by word. Short words without two vowels (DJ, SBK, MKC, ILKSF, KIZZ) look like
     acronyms or stylised names, so they stay as written."""
     first = True
 
-    def word(m):
+    def word(m: re.Match[str]) -> str:
         nonlocal first
         w = m.group(0)
         is_first, first = first, False
@@ -122,14 +126,14 @@ def soften_caps(text):
         lower = w.lower()
         if not is_first and lower in SMALL:
             return lower
-        if len(VOWELS.findall(w)) < 2:
+        if len(VOWELS.findall(w)) < WORD_VOWELS:
             return w
         return lower[0].upper() + lower[1:]
 
     return WORD.sub(word, text)
 
 
-def tidy_title(title):
+def tidy_title(title: str) -> str:
     s = unicodedata.normalize('NFKC', title)  # 𝐁𝐄𝐂𝐀𝐔𝐒𝐄 → BECAUSE
     s = re.sub(r'\b20\d\d(?:\s*[-–/]\s*20\d\d)?\b', ' ', DATE.sub(' ', s), flags=re.ASCII)
     s = re.sub(r'\b\d{1,2}(?:\s*[,./-]\s*\d{1,2}){1,3}\b', ' ', s, flags=re.ASCII)  # 16,17,18-01
@@ -146,4 +150,4 @@ def tidy_title(title):
     s = re.sub(r'^[\s–—:,.\-/]+|[\s–—:,.\-#/]+$', '', re.sub(r'(?:\s*[–—-]\s*){2,}', ' – ', s))
     s = re.sub(r'\s+', ' ', re.sub(r'\s+([.,!?])', r'\1', s)).strip()
     s = soften_caps(s)
-    return s if len(s) >= 3 else title
+    return s if len(s) >= SHORTEST_TITLE else title

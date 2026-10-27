@@ -226,32 +226,48 @@ ALIASES.update(
 ALIASES.update({c.lower(): c for c in NAMES})  # bare ISO codes: FR, DE, NL …
 
 
-def _flags(s):
+INDICATOR_A, INDICATOR_Z = 0x1F1E6, 0x1F1FF  # the regional indicator symbols 🇦 … 🇿, two of which make a flag
+BLACK_FLAG = 0x1F3F4  # 🏴, which tag characters make a subdivision's flag (England, Scotland, Wales)
+TAG_FIRST, TAG_LAST = 0xE0000, 0xE007F
+EMOJI_FIRST = 0x1F000  # characters from here up are emoji, not words
+CODE_LENGTH = 2  # an ISO 3166 alpha-2 code's
+
+
+def indicator(o: int) -> bool:
+    return INDICATOR_A <= o <= INDICATOR_Z
+
+
+def tag(o: int) -> bool:
+    return TAG_FIRST <= o <= TAG_LAST
+
+
+def _flags(s: str) -> list[str]:
     """ISO codes from regional-indicator pairs and subdivision tag flags (England, Scotland, Wales)."""
-    out, i, chars = [], 0, list(s)
+    out: list[str] = []
+    i, chars = 0, list(s)
     while i < len(chars):
         o = ord(chars[i])
-        if 0x1F1E6 <= o <= 0x1F1FF and i + 1 < len(chars) and 0x1F1E6 <= ord(chars[i + 1]) <= 0x1F1FF:
-            code = chr(o - 0x1F1E6 + 65) + chr(ord(chars[i + 1]) - 0x1F1E6 + 65)
+        if indicator(o) and i + 1 < len(chars) and indicator(ord(chars[i + 1])):
+            code = chr(o - INDICATOR_A + ord('A')) + chr(ord(chars[i + 1]) - INDICATOR_A + ord('A'))
             code = FLAG_ALIAS.get(code, code)
             if code:
                 out.append(code)
             i += 2
             continue
-        if o == 0x1F3F4 and i + 1 < len(chars) and 0xE0000 <= ord(chars[i + 1]) <= 0xE007F:
+        if o == BLACK_FLAG and i + 1 < len(chars) and tag(ord(chars[i + 1])):
             out.append('GB')
-            while i + 1 < len(chars) and 0xE0000 <= ord(chars[i + 1]) <= 0xE007F:
+            while i + 1 < len(chars) and tag(ord(chars[i + 1])):
                 i += 1
         i += 1
     return out
 
 
-def codes(text):
+def codes(text: str | None) -> list[str]:
     """All countries named in a free-text field, in order, without duplicates."""
     if not text:
         return []
     found = _flags(text)
-    plain = ''.join(ch for ch in text if ord(ch) < 0x1F000 and not 0xE0000 <= ord(ch) <= 0xE007F)
+    plain = ''.join(ch for ch in text if ord(ch) < EMOJI_FIRST and not tag(ord(ch)))
     for part in re.split(r'\s*(?:/|&|,|–|—|\s-\s|-(?=[A-Z])|\band\b|7)\s*', plain):
         p = part.strip(' .-').lower()
         if not p:
@@ -261,9 +277,10 @@ def codes(text):
             continue
         # "Vancouver – Canada", "SXM-Guadeloupe": try each word group
         for w in re.split(r'[\s-]+', p):
-            if w in ALIASES and len(w) > 2:
+            if w in ALIASES and len(w) > CODE_LENGTH:  # a word, not a bare code
                 found.append(ALIASES[w])
-    seen, out = set(), []
+    seen: set[str] = set()
+    out: list[str] = []
     for c in found:
         if c and c not in seen:
             seen.add(c)
@@ -271,5 +288,5 @@ def codes(text):
     return out
 
 
-def flag(code):
-    return ''.join(chr(0x1F1E6 + ord(ch) - 65) for ch in code) if code and len(code) == 2 else ''
+def flag(code: str | None) -> str:
+    return ''.join(chr(INDICATOR_A + ord(ch) - ord('A')) for ch in code) if code and len(code) == CODE_LENGTH else ''

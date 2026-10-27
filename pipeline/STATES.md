@@ -6,14 +6,15 @@ total mapping from that type, owned in one place, and an unmapped state is a bui
 The test: *if the pipeline starts emitting a new state tomorrow, the build fails naming the state, its data point and
 its producer, and the words go in one new row of `pipeline/states.py`.*
 
-There is no type checker in this repository, so a failure *by construction* means one at import, when a value is
-written, or in Tests:
+A failure *by construction* means one from the type checker, at import, when a value is written or read, or in
+Tests:
+- every enum the code uses is built from the rows (`pipeline/enums.py`, which Tests and `mise run generate:check`
+  hold to them), so basedpyright (`mise run check`) refuses a state name the table doesn't have;
 - when `states.py` is imported, a row with a missing or wrong-typed field, a state of no point, two states with one
   key, a note or a filter without words, a waiting state without an owner, or an `under` naming no state fails;
-- every enum the code uses is built from the rows;
-- schemas and SQL checks are built from the rows, so a value outside them is refused when it is written;
-- Tests scan the Python for an enum member, and the site's code for state words or browser-made keys, the table
-  doesn't have;
+- the records (`pipeline/records.py`) and SQL checks are built from the rows, so a value outside them is refused when
+  it is written or read;
+- Tests scan the site's code for state words or browser-made keys the table doesn't have;
 - every function that chooses between states has a test reaching each of them.
 
 ## 1. State table: the census
@@ -21,7 +22,7 @@ written, or in Tests:
 `pipeline/states.py` holds one typed `Point` per data point (what one instance is, and what produces its states) and
 one typed `State` row per state: `point, key, criterion, disposition, wording, owner, made_by, icon, link, under,
 forms`. The states are
-what the code and the schemas **can** emit (their enums, their return sites, their sentinels), one per thing a
+what the code and the records **can** emit (their enums, their return sites, their sentinels), one per thing a
 consumer must treat differently.
 
 | Data point | States | Produced by |
@@ -82,8 +83,9 @@ The same rows carry the mapping:
   in the passes view. A form the table doesn't have fails where it is asked for.
 
 **Surfaces.** Every surface reads the rows and restates none:
-- **The schemas** name each enum as `$ref: "#/$defs/<point>"`. `states.schema()` fills in the `$defs` with the
-  states the point's own producer makes, so the files stay valid JSON Schema, and a reference to no point fails.
+- **The records** (`pipeline/records.py`) type each coded field as its enum of `pipeline/enums.py`, written from the
+  table (`ENUMS`; a field a model answers holds the states the point's own producer makes), so the schema a model
+  answers to, generated from its record, lists them, and a record holding a value that is no state is refused.
 - **The prompts** are templates: a line `{{states:<point>}}` becomes each state's key and criterion, and a marker
   left over fails.
 - **The SQL checks** are built from the table, in the source database, where every coded column has one; the
@@ -91,7 +93,7 @@ The same rows carry the mapping:
   `artist_stats.home_basis`). They are enforced on insert, which skips only a duplicate row (`ON CONFLICT DO
   NOTHING`), never a value outside the table, and a load runs in one transaction, so a refused value leaves the
   database as it was.
-- **The site** reads its words, forms, icons and links from `docs/js/states.js`, which the build writes from the
+- **The site** reads its words, forms, icons and links from `docs/js/states.js`, which `pipeline/generate.py` writes from the
   table next to the database, with every state's key by name (`KEY.price.PRICED`) and the links' (`LINK.PAGE`).
   `docs/js/wording.js` says them; a state, a form or a point the table doesn't have fails where it is asked for, and
   so does an icon `icons.js` doesn't draw. Tests scan the site's code for a state's words, a fragment of them between
@@ -122,11 +124,12 @@ needn't tell apart share their wording, but keep their own key and owner. Some r
 | feature · `all_in_one` | filter | All-in-one hotel | — |
 
 **Prompt identity.** A prompt the pipeline sends to a model is identified by the hash of everything fixed in its
-request: its text sets down the system text, the schema the checker holds the answer to, and the schema as sent,
+request: its text sets down the system text, the schema of the record the checker holds the answer to, and that
+schema as sent,
 each dumped with sorted keys (`pipeline/prompt.py`). A prompt lists its states' definitions in key order, so
 reordering the table asks nothing again. Each answer (`answers/log.csv`) and first read records that hash, and one
 is stale when its hash differs from the current one (`prompt.is_current`). So editing a template, a criterion, a
-schema enum or a constraint only the checker enforces re-asks exactly what it reaches. Whatever saves an answer or a
+record's enum or a constraint only the checker enforces re-asks exactly what it reaches. Whatever saves an answer or a
 first read saves the prompt's text under its hash in `pipeline/prompts/asked/` first, so every hash a file names has
 its text. An agent making a first read follows the same text (`tickets.py draft` writes it beside the draft), so its
 read carries the same hash.
@@ -163,17 +166,17 @@ longer holds, and the festival waits for a `page` again.
 ## 4. Audit rule: what fails the build
 
 A new or unmapped state fails at the first of these that meets it:
-1. **When it is written:** schemas and SQL checks are built from the table, so a log, read, answer or database row with
-   a value outside the table is refused.
-2. **In Tests:** the scans find a state name in the code that the table doesn't have, and the per-state tests of each
-   choosing function fail.
+1. **When it is written or read:** records and SQL checks are built from the table, so a log, read, answer or
+   database row with a value outside the table is refused.
+2. **In the type check and Tests:** basedpyright refuses a state name the code's enums don't have, the site's scans
+   find one in its code, and the per-state tests of each choosing function fail.
 3. **The audit:** `uv run --group tickets -m pipeline.audit` runs in **Tests** and first in **Rebuild site
    database**. It catches what bypasses the first two, such as a hand edit of `pages.csv`, `status.csv`, `pass_prices.csv`, the
-   decisions and plans, or the register. It reads the shared CSVs, and the first reads and answers to their current
-   prompts (one to another prompt waits to be asked again, and is not loaded), an answer's values checked against the
-   states its pass makes. It reports *"0 unmapped, 0 stale"*, and otherwise exits 1, naming each instance on stderr:
-   - **Unmapped:** a value that is no state of its point, named as *point, value, file: add a row to
-     pipeline/states.py*.
+   decisions and plans, or the register. It reads every row of the shared CSVs, and the first reads and answers to
+   their current prompts (one to another prompt waits to be asked again, and is not loaded), each as its record. It
+   reports *"0 refused, 0 stale"*, and otherwise exits 1, naming each instance on stderr:
+   - **Refused:** a value its record refuses, such as one that is no state of its point, named by file, line or
+     place in it, and what the record allows.
    - **Stale:** a register row for a site a recipe now reads, or one no festival has its known ticket page on.
 
 **Waits** states don't fail it. They have an owner, `status.csv` lists them, and the site words them, so a dispute,
