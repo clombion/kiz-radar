@@ -23,7 +23,8 @@ key, from the rows of one logged read (rows_at) and the festival's description: 
 skipped, and dates and price notes are quoted from the description or the tickets; its page is that read's. Only
 checked first reads are saved there: an agent fills a draft (tickets/drafts/, not committed) that record moves there
 once it passes, and in the Action Opus and Sonnet each write one, kept only when they agree (else
-tickets/disputed/<event_id>.json holds both for an agent). A festival needs one when it is still to come and its
+tickets/disputed/<event_id>.json holds both for an agent). Besides the schema and the quotes, the checker holds a first read to what its tickets' names say
+(rules_problems), so a model that misreads them answers again with the checker's lines. A festival needs one when it is still to come and its
 description's prices answer to the current prompt gives the pass a card prices (prices.card_pass) no dated price
 (until that answer is asked, it awaits it), or again when its description or its ticket page changes, its page shows
 tickets the first read doesn't know, or the first read follows another prompt (for a festival now past, made again
@@ -64,7 +65,7 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).parent.parent
 from pipeline import db as sqlite_db, exceptions, prompt as prompts, spend, states
 from pipeline.extract import answers, check_output, prices
-from pipeline.states import FirstRead, Recheck, Sales, SkipReason, Status, Waiting
+from pipeline.states import FirstRead, PassKind, Recheck, Sales, SkipReason, Status, Style, Waiting
 
 HERE = ROOT / 'pipeline' / 'tickets'
 SITES, READS, DRAFTS, LOG, DISPUTED = (HERE / d for d in ('sites', 'reads', 'drafts', 'log', 'disputed'))
@@ -81,6 +82,19 @@ LOG_SCHEMA = states.schema(HERE / 'schemas' / 'log.json')
 MODELS = ('claude-opus-5-5', 'claude-sonnet-5-5')    # the first one's read is kept when both agree
 REFUSALS = 3
 BOOTCAMP = re.compile(r'(?i)boot\s*-?camp')
+# what a ticket's name says that a first read must follow (rules_problems): its nights, its weekdays, its dance styles,
+# a meal sold with it, a deposit
+NIGHTS = re.compile(r'(?i)\b(\d+)\s*(?:nights?|noches|nuits?|notti|nächte|noites)\b')
+WEEKDAYS = {day: re.compile(rf'(?i)\b(?:{words})\b') for day, words in {
+    'monday': 'monday|lundi|lunes|montag|lunedì|lunedi', 'tuesday': 'tuesday|mardi|martes|dienstag|martedì|martedi',
+    'wednesday': 'wednesday|mercredi|miércoles|miercoles|mittwoch|mercoledì|mercoledi',
+    'thursday': 'thursday|jeudi|jueves|donnerstag|giovedì|giovedi', 'friday': 'friday|vendredi|viernes|freitag|venerdì|venerdi',
+    'saturday': 'saturday|samedi|sábado|sabado|samstag|sabato', 'sunday': 'sunday|dimanche|domingo|sonntag|domenica'}.items()}
+STYLE_WORDS = {style: re.compile(rf'(?i)\b(?:{words})\b') for style, words in {
+    Style.KIZOMBA: r'kizomba|semba|urban\s*kiz|tarraxo|tarraxinha', Style.ZOUK: 'zouk', Style.BACHATA: 'bachata',
+    Style.SALSA: 'salsa', Style.OTHER: 'kompa|konpa'}.items()}
+MEAL = re.compile(r'(?i)dinner|dîner|diner\b|\bcena\b|repas|abendessen|lunch|almuerzo|déjeuner|brunch|\bmeals?\b')
+DEPOSIT = re.compile(r'(?i)deposit|advance|anticipo|acompte|anzahlung|instal|payment|caparra|prepay')
 FREE = re.compile(r'(?i)\s*(free|gratuit|gratis|gratuito|kostenlos)\s*')
 # hosts that are never where tickets are sold: social networks, maps, hotels, kizomba-world itself
 NOT_TICKETS = ('facebook', 'instagram', 'youtube', 'kizomba-world', 'google', 'wa.me', 'whatsapp', 'tiktok', 'spotify',
@@ -347,9 +361,32 @@ def read_problems(fr, entries):
                              'that has passed is not theirs')
     found += [f'rule_quotes {q!r} is not in the description' for q in fr['rule_quotes'] if not in_text(q, desc)]
     found += prices.style_problems(fr['passes'], fr['styles'])
-    found += [f"key {s['key']} ({line(rows[s['key']])}): a bootcamp is a pass, skipped only as a {SkipReason.DEPOSIT} "
-              f"on one, not as a {s['reason']}" for s in fr['skipped']
-              if s['key'] in rows and BOOTCAMP.search(rows[s['key']]['name']) and s['reason'] != SkipReason.DEPOSIT]
+    return found + rules_problems(fr, rows)
+
+def rules_problems(fr, rows):
+    """What a first read gets wrong of what its tickets' names say, by the prompt's rules: a pass of tickets for N
+    nights covers N days; one pass's tickets name the same weekdays and the same dance styles (others are other
+    passes, not its tiers); a pass sold with a meal is a package; a bootcamp is a pass, skipped only as a deposit on
+    one, that its name calls one."""
+    named = lambda words, name: frozenset(k for k, rx in words.items() if rx.search(name))
+    found = []
+    for p, ps in enumerate(fr['passes']):
+        names = [rows[k]['name'] for t in ps['tiers'] for k in t['keys'] if k in rows]
+        nights = {int(m[1]) for n in names if (m := NIGHTS.search(n))}
+        if names and all(NIGHTS.search(n) for n in names) and len(nights) == 1 and ps['days'] != (n := nights.pop()):
+            found.append(f'passes[{p}].days {ps["days"]}: its tickets are for {n} nights, so it covers {n} days')
+        for what, words in (('weekdays', WEEKDAYS), ('dance styles', STYLE_WORDS)):
+            if len(said := {named(words, n) for n in names}) > 1:
+                found.append(f'passes[{p}]: its tickets name different {what} '
+                             f"({'; '.join(sorted(', '.join(sorted(w)) or 'none' for w in said))}): each is a pass of its "
+                             'own, not a tier of one')
+        if names and all(MEAL.search(n) for n in names) and ps['kind'] not in (PassKind.PACKAGE, PassKind.OTHER):
+            found.append(f"passes[{p}].kind {ps['kind']}: its tickets are sold with a meal, so it is a {PassKind.PACKAGE}")
+    for s in fr['skipped']:
+        if s['key'] in rows and BOOTCAMP.search(name := rows[s['key']]['name']) and \
+                (s['reason'] != SkipReason.DEPOSIT or not DEPOSIT.search(name)):
+            found.append(f"key {s['key']} ({line(rows[s['key']])}): a bootcamp is a pass ({PassKind.OTHER}), skipped only as "
+                         f'a {SkipReason.DEPOSIT} on one that its name calls one, not as a {s["reason"]}')
     return found
 
 

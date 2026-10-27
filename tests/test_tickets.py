@@ -812,3 +812,45 @@ def test_a_fee_the_site_shows_apart_is_in_the_quote_its_amount_is_checked_agains
     answer, _, found = tickets.build(fr, entry(rows))
     assert found == [] and answer['events'][0]['passes'][0]['tiers'][0]['quote'] == 'Fullpass 90,00 € + 2.25 fee'
     assert tickets.line(row('1', 'Fullpass', 120.0) | {'price': '€119.00 + €1.00 fee.', 'fee': 1.0}) == 'Fullpass €119.00 + €1.00 fee.'
+
+
+def one_pass(*names, kind='full', days=None, tiers=None):
+    """A first read of one pass over tickets with these names (one tier each, unless tiers groups their keys), and
+    the rows it was read from."""
+    rows = [row(str(n), name, 90.0 + n) for n, name in enumerate(names, 1)]
+    keys = tiers or [[r['key']] for r in rows]
+    fr = read(passes=[{'kind': kind, 'style': None, 'label_quote': None, 'group_size': 1, 'days': days,
+                       'includes_hotel': kind == 'package', 'tiers': [tier(*k) for k in keys]}], skipped=())
+    return fr, rows
+
+
+@pytest.mark.parametrize('names, change, wrong', [
+    (['Double room - 3 nights + 2 Full Pass'], dict(kind='package'), 'covers 3 days'),
+    (['Full Pass con habitación durante 2 noches'], dict(kind='package', days=3), 'covers 2 days'),
+    (['Friday Pass', 'Sunday Pass'], dict(kind='day', days=1), 'different weekdays'),
+    (['Full pass - Salsa leader', 'Full pass - Bachata leader'], {}, 'different dance styles'),
+    (['Early Bird Fullpass', 'KIZOMBA Fullpass'], {}, 'different dance styles'),
+    (['FULL PASS + DÎNER DU 31 DECEMBRE'], {}, 'sold with a meal'),
+])
+def test_a_first_read_follows_what_its_tickets_names_say(names, change, wrong):
+    fr, rows = one_pass(*names, **change)
+    assert any(wrong in p for p in tickets.read_problems(fr, [entry(rows)]))
+
+
+@pytest.mark.parametrize('names, change', [
+    (['Double room - 3 nights + 2 Full Pass'], dict(kind='package', days=3)),
+    (['Friday Pass Lady', 'Friday Pass Man'], dict(kind='day', days=1)),
+    (['Kizomba Fullpass Lady', 'Kizomba Fullpass Man'], {}),
+    (['FULL PASS + DÎNER DU 31 DECEMBRE'], dict(kind='package')),
+])
+def test_a_first_read_that_follows_its_tickets_names_passes(names, change):
+    fr, rows = one_pass(*names, **change)
+    assert tickets.rules_problems(fr, {r['key']: r for r in rows}) == []
+
+
+@pytest.mark.parametrize('name, ok', [('BE PRESENT Bootcamp - Standard Ticket', False),
+                                      ('Bootcamp deposit - advance payment', True)])
+def test_a_bootcamp_is_skipped_only_as_a_deposit_its_name_calls_one(name, ok):
+    rows = copy.deepcopy(ROWS)
+    rows[4] |= {'name': name}
+    assert (tickets.read_problems(read(skipped=(('5', 'deposit'),)), [entry(rows)]) == []) == ok
