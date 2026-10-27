@@ -13,8 +13,12 @@ from pipeline import db as sqlite_db
 
 ROOT = Path(__file__).parent.parent
 EXPORT = max((ROOT / 'source').glob('*.sqlite'), key=lambda p: p.stat().st_mtime)
-# when a step ran, which a second run changes and nothing else should
-WHEN = {'meta': "key = 'built_at'", 'pipeline_steps': None}
+# the tables that hold when a step ran, which a second run changes and nothing else should, read without it
+WITHOUT_WHEN = {
+    'meta': "select * from meta where key != 'built_at'",
+    'pipeline_steps': 'select step, description, performed_by, model, prompt, inputs, outputs, details '
+    'from pipeline_steps',
+}
 
 
 def column(db: sqlite3.Connection, sql: str, params: Sequence[object] = ()) -> list[object]:
@@ -34,14 +38,7 @@ def content(path: Path) -> dict[str, list[str]]:
     with sqlite_db.opened(path, 'ro') as db:
         tables: list[tuple[str]] = db.execute("select name from sqlite_master where type = 'table'").fetchall()
         for (t,) in tables:
-            if t == 'pipeline_steps':
-                rows: list[tuple[object, ...]] = db.execute(
-                    'select step, description, performed_by, model, prompt, inputs, outputs, details '
-                    'from pipeline_steps'
-                ).fetchall()
-            else:
-                where = WHEN.get(t)
-                rows = db.execute(f'select * from "{t}"' + (f' where not ({where})' if where else '')).fetchall()  # noqa: S608 (the database's own table names)
+            rows: list[tuple[object, ...]] = db.execute(WITHOUT_WHEN.get(t, f'select * from "{t}"')).fetchall()  # noqa: S608 (the database's own table names)
             out[t] = sorted(map(repr, rows))
     return out
 
