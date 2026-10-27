@@ -80,9 +80,24 @@ test('moving to another tab, the slime reaches out an arm and a drop, which are 
   pill(nav);
   expect(pills(nav)).toHaveLength(4); // the old oval, the arm, the drop and the new oval
   await settled();
+  await expect.poll(() => pills(nav)).toHaveLength(1);
   const [oval] = pills(nav);
-  expect(pills(nav)).toHaveLength(1);
   expect(oval?.style.left).toBe(`${(nav.querySelectorAll('a')[2]?.offsetLeft ?? 0) + 12}px`);
+});
+
+test('a move begun before the last one ends leaves the oval behind the tab it went to', async () => {
+  const nav = tabs(0);
+  const goTo = (i: number) => {
+    nav.querySelector('a.active')?.classList.remove('active');
+    nav.querySelectorAll('a')[i]?.classList.add('active');
+    pill(nav);
+  };
+  pill(nav);
+  goTo(1);
+  goTo(0); // straight back, while the slime is still reaching out
+  await settled();
+  await expect.poll(() => pills(nav)).toHaveLength(1);
+  expect(pills(nav).map((p) => p.style.left)).toEqual([`${(nav.querySelector('a')?.offsetLeft ?? 0) + 12}px`]);
 });
 
 test('a slide changes the page at once with no direction, and marks its direction while it runs', async () => {

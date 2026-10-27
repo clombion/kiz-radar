@@ -11,6 +11,8 @@ const calm = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 // a box in a row of tabs, in px
 type Box = { left: number; top: number; width: number; height: number };
 const last = new WeakMap<HTMLElement, Box>(); // a row of tabs → where its oval is
+// a row of tabs → its oval; the slime's other shapes share its class, but only while it moves
+const ovals = new WeakMap<HTMLElement, HTMLElement>();
 const box = (a: HTMLElement): Box => ({
   left: a.offsetLeft,
   top: a.offsetTop,
@@ -32,7 +34,11 @@ export function pill(nav: HTMLElement, { still = false } = {}): void {
   const goo =
     nav.querySelector<HTMLElement>(':scope > .goo') ??
     nav.insertBefore(h('span', { class: 'goo', 'aria-hidden': 'true' }), nav.firstChild);
-  const oval = goo.querySelector<HTMLElement>('.pill') ?? goo.appendChild(h('span', { class: 'pill' }));
+  const oval = ovals.get(nav) ?? goo.appendChild(h('span', { class: 'pill' }));
+  ovals.set(nav, oval);
+  // a move still running gives way to this one: its shapes go, and the oval starts from where it was going
+  for (const shape of goo.querySelectorAll('.pill')) if (shape !== oval) shape.remove();
+  for (const a of oval.getAnimations()) a.cancel();
   if (!tab || nav.hidden) {
     oval.hidden = true;
     last.delete(nav);
@@ -122,12 +128,15 @@ function absorb(goo: HTMLElement, oval: HTMLElement, was: Box, to: Box): void {
     ],
     { duration: SLIME.ms, easing: 'linear' },
   );
-  void grow.finished.finally(() => {
+  // once it rests, or when the next move cancels it
+  const done = () => {
     old.remove();
     reach.remove();
     tip.remove();
     oval.style.transformOrigin = '';
-  });
+  };
+  grow.addEventListener('finish', done);
+  grow.addEventListener('cancel', done);
 }
 
 // Change the page as a slide to the next (1) or previous (-1) section, or at once
