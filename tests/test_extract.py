@@ -1,12 +1,14 @@
 """The extraction step: price checks and dates, stable artist ids, and asking Claude with one retry."""
-import json, sqlite3
-from pathlib import Path
+import copy, dataclasses, hashlib, json, sqlite3
 from types import SimpleNamespace
 
 import pytest
 
-from pipeline.extract import ask, prices
+from pipeline import prompt, states
+from pipeline.extract import answers, ask, prices
 from pipeline.extract.resolve_artists import stable_ids
+from pipeline.prompt import Prompt, api_schema
+from pipeline.states import AnswerState
 
 
 @pytest.mark.parametrize('quote, amount', [
@@ -29,12 +31,12 @@ def test_amount_found_in_quote(quote, amount):
     ('🔸Early Bird: £85', 88, 3, False),                       # a fee the quote doesn't give
 ])
 def test_a_total_quotes_its_price_and_its_fee(quote, amount, fee, ok):
-    tier = dict(amount=amount, currency='GBP', fee=fee, alt_amount=None, alt_currency=None, quote=quote)
+    tier = dict(amount=amount, currency='GBP', fee=fee, alt=None, quote=quote)
     assert (prices.problems({'events': [{'event_id': 1, 'passes': [{'tiers': [tier]}]}]}) == []) == ok
 
 
 def test_amount_missing_from_quote_is_a_problem():
-    tier = dict(amount=150, currency='EUR', fee=None, alt_amount=None, alt_currency=None, quote='Full Pass – 180€ (Till Festival)')
+    tier = dict(amount=150, currency='EUR', fee=None, alt=None, quote='Full Pass – 180€ (Till Festival)')
     out = {'events': [{'event_id': 1, 'passes': [{'tiers': [tier]}]}]}
     assert prices.problems(out)[0].startswith('amounts: event 1: passes[0].tiers[0].amount 150')
 
@@ -52,7 +54,7 @@ def test_dates_without_a_year_fall_before_the_festival(answer, start, expected):
 
 
 def test_impossible_date_is_a_problem():
-    tier = dict(amount=1, currency='EUR', fee=None, alt_amount=None, alt_currency=None, quote='1€', **{'from': '02-30', 'until': None})
+    tier = dict(amount=1, currency='EUR', fee=None, alt=None, quote='1€', **{'from': '02-30', 'until': None})
     assert any(p.startswith('dates:') for p in prices.problems({'events': [{'event_id': 1, 'passes': [{'tiers': [tier]}]}]}))
 
 
@@ -95,9 +97,9 @@ ROW = {'id': 5, 'title': 'Test Fest', 'description_text': 'Full pass 80€ until
 
 
 def prices_answer(quote):
-    tier = {'amount': 80, 'currency': 'EUR', 'fee': None, 'alt_amount': None, 'alt_currency': None, 'from': None, 'until': '01-31',
+    tier = {'amount': 80, 'currency': 'EUR', 'fee': None, 'alt': None, 'from': None, 'until': '01-31',
             'quantity': None, 'door': False, 'sold_out': False, 'current': False, 'quote': quote}
-    return json.dumps({'batch': 'event-5', 'prompt_version': prices.PROMPT, 'events': [
+    return json.dumps({'batch': 'event-5', 'events': [
         {'event_id': 5, 'rule_quotes': [], 'passes': [{'kind': 'full', 'style': None, 'label_quote': None, 'group_size': 1, 'days': None,
                                                      'includes_hotel': False, 'tiers': [tier]}]}]})
 
@@ -133,19 +135,78 @@ def test_two_failures_leave_the_festival_unanswered():
     assert ask.ask(client, 'prices', ROW) is None
 
 
-def test_schema_sent_without_constraints_structured_outputs_reject():
-    schema = ask.api_schema(json.loads((Path(ask.HERE) / 'schemas' / 'rooms_genres.json').read_text()))
-    text = json.dumps(schema)
-    for word in ('minLength', 'maxLength', 'minimum', 'oneOf', 'pattern', '$schema'):
+@pytest.mark.parametrize('name', [*prompt.PASSES, 'first_read'])
+def test_schema_sent_without_constraints_structured_outputs_reject(name):
+    text = json.dumps(prompt.current(name).sent_schema)
+    for word in ('minLength', 'maxLength', 'minimum', 'oneOf', 'pattern', '$schema', '$ref', '$defs'):
         assert word not in text
 
 
+def test_a_prompt_is_known_by_the_hash_of_its_text_and_both_schemas():
+    base = prompt.current('prices')
+    assert Prompt(base.system, base.schema).hash == base.hash                  # hashing twice: one hash
+    assert Prompt(base.system + ' ', base.schema).hash != base.hash             # a template edited
+    schema = copy.deepcopy(base.schema)
+    schema['$defs']['pass_kind']['enum'].append('festival')
+    assert Prompt(base.system, schema).hash != base.hash                        # a state added to a schema's enum
+    checked = copy.deepcopy(base.schema)
+    checked['properties']['batch']['maxLength'] = 99
+    assert api_schema(checked) == base.sent_schema and Prompt(base.system, checked).hash != base.hash   # checker only
 
-def test_the_prices_prompt_its_schema_and_its_file_name_one_version():
-    schema = json.loads((Path(ask.HERE) / 'schemas' / 'prices.json').read_text())
-    assert schema['properties']['prompt_version']['const'] == prices.PROMPT
-    assert (Path(ask.HERE) / 'prompts' / f'{prices.PROMPT}.md').read_text().startswith(f'# {prices.PROMPT}:')
 
+def test_a_criterion_edited_changes_the_prompts_it_is_in():
+    names = [*prompt.PASSES, 'first_read']
+    before = {p: prompt.current(p).hash for p in names}
+    full = states.state('pass_kind', 'full')
+    edited = dataclasses.replace(full, criterion=full.criterion + ' (edited)')
+    prompt.current.cache_clear()
+    with pytest.MonkeyPatch.context() as m:
+        m.setitem(states.BY_KEY, ('pass_kind', 'full'), edited)
+        m.setitem(states.BY_POINT, 'pass_kind', tuple(edited if s is full else s for s in states.BY_POINT['pass_kind']))
+        after = {p: prompt.current(p).hash for p in names}
+    prompt.current.cache_clear()
+    assert {p for p in names if before[p] != after[p]} == {'prices', 'first_read'}
+
+
+def test_an_answer_saved_archives_its_prompt_first(tmp_path, monkeypatch):
+    monkeypatch.setattr(answers, 'ANSWERS', tmp_path)
+    monkeypatch.setattr(answers, 'LOG', tmp_path / 'log.csv')
+    (tmp_path / 'log.csv').write_text(','.join(answers.LOG_FIELDS) + '\n')
+    p = prompt.current('prices')
+    archived = prompt.ASKED / f'{p.hash}.md'
+    archived.unlink(missing_ok=True)
+    answers.save('prices', 5, json.loads(prices_answer('Full pass 80€ until 31.01')), 'm', p, 'test')
+    assert archived.read_text(encoding='utf-8') == p.text
+    assert answers.log()['prices/event-5.json']['prompt'] == p.hash
+
+
+def test_an_archive_cut_short_is_written_again():
+    p = prompt.current('prices')
+    archived = p.archive()
+    archived.write_text(p.text[:100], encoding='utf-8')
+    p.archive()
+    assert archived.read_text(encoding='utf-8') == p.text and not list(prompt.ASKED.glob('*.part'))
+
+
+def test_the_system_text_sent_is_the_prompts():
+    client = fake(prices_answer('Full pass 80€ until 31.01'))
+    ask.ask(client, 'prices', ROW)
+    assert client.calls[0]['system'] == prompt.current('prices').system
+
+
+def test_every_prompt_the_answers_and_reads_name_is_archived():
+    from pipeline import tickets
+    named = {r['prompt'] for r in answers.log().values()}
+    named |= {json.loads(p.read_text())['prompt'] for p in tickets.READS.glob('*.json')}
+    for h in named:                     # each archived text hashes to its name
+        assert hashlib.sha256(prompt.asked(h).encode()).hexdigest()[:16] == h
+
+
+def test_a_template_with_a_marker_left_fails():
+    with pytest.raises(ValueError, match='unfilled'):
+        states.fill('{{states:pass_kind}}\nand {{states:pass_kind}} inline', 'x.md')
+    with pytest.raises(KeyError):
+        states.fill('{{states:no_such_point}}', 'x.md')
 
 
 def test_requests_stop_once_the_months_budget_is_spent(tmp_path):
@@ -194,10 +255,32 @@ def test_an_answer_to_an_older_prompt_is_asked_again_and_left_out_until_then(mon
     db.executescript("create table events (id integer, description_text text, end_date text);"
                      "insert into events values (1, 'a', '2020-01-01'), (2, 'b', '2099-01-01');"
                      "create table pending_extraction (event_id integer);")
-    have = {1: SimpleNamespace(prompt_version='prices-v2'), 2: SimpleNamespace(prompt_version=prices.PROMPT)}
+    have = {1: SimpleNamespace(prompt='0' * 16), 2: SimpleNamespace(prompt=prompt.current('prices').hash)}
     monkeypatch.setattr(ask.answers, 'latest', lambda pass_name, ids: have)
     assert [r['id'] for r, _ in ask.due(db, ['prices'])[0]] == [1]     # past or not
-    assert list(load_extract.current(have)) == [2]
+    assert load_extract.current('prices', {1, 2}) == ({2: have[2]}, 1)
+
+
+NOW = SimpleNamespace(prompt=prompt.current('prices').hash)
+ANSWER_CASES = [
+    ((None, False), AnswerState.NONE), ((None, True), AnswerState.NONE),
+    ((SimpleNamespace(prompt='0' * 16), False), AnswerState.STALE), ((NOW, True), AnswerState.STALE),
+    ((NOW, False), AnswerState.CURRENT),
+]
+
+
+@pytest.mark.parametrize('args, state', ANSWER_CASES)
+def test_every_state_of_an_answer_that_due_tells_apart(args, state):
+    assert ask.answer_state('prices', *args) == state
+
+
+def test_the_answer_states_tested_are_all_of_them():
+    assert {s for _, s in ANSWER_CASES} == set(AnswerState)
+
+
+def test_a_festival_stays_pending_until_every_pass_is_answered():
+    every = set(prompt.PASSES)
+    assert ask.settled({1: {'prices'}, 2: every, 4: every}, {1, 2, 3}) == [2]
 
 
 @pytest.mark.parametrize('text, ids', [('16909,18806', {16909, 18806}), ('16909, 18806,', {16909, 18806}), ('x', None)])
@@ -218,3 +301,63 @@ def test_a_description_answer_gives_a_style_only_at_a_festival_of_several():
     assert ask.ask(client, 'prices', ROW, ['kizomba']) is None
     assert 'one style only' in str(client.calls[1]['messages'])
     assert ask.ask(fake(json.dumps(answer)), 'prices', ROW, ['bachata', 'kizomba']) is not None
+
+
+def test_the_run_log_writes_inside_the_callers_transaction():
+    from pipeline.extract import run_log
+    con = sqlite3.connect(':memory:')
+    con.execute('BEGIN')
+    run_log.record(con, 'step', 'what', 'test', details={'n': 1})
+    assert con.in_transaction
+    assert {n for n, in con.execute("SELECT name FROM sqlite_master WHERE type = 'table'")} == {'prompts', 'table_docs',
+                                                                                               'pipeline_steps'}
+    con.rollback()
+    assert con.execute("SELECT count(*) FROM sqlite_master").fetchone()[0] == 0
+
+
+def test_a_load_a_check_refuses_leaves_the_database_as_it_was(monkeypatch):
+    from pipeline.extract import load_extract
+    con = sqlite3.connect(':memory:')
+    con.execute('CREATE TABLE event_passes (kept INTEGER)')
+    con.commit()
+    con.executescript(load_extract.SCHEMA)
+    with pytest.raises(sqlite3.IntegrityError):
+        con.execute("INSERT INTO event_genres (event_id, genre, source) VALUES (1, 'tango', 'site_tag')")
+    con.rollback()
+    assert [r[1] for r in con.execute('PRAGMA table_info(event_passes)')] == ['kept']
+
+
+def loaded():
+    """An empty source database with load_extract's tables, inside the load's transaction."""
+    from pipeline.extract import load_extract
+    con = sqlite3.connect(':memory:')
+    con.executescript('CREATE TABLE events (id INTEGER PRIMARY KEY, start_date TEXT, modified_at TEXT);'
+                      "INSERT INTO events VALUES (5, '2026-03-20 18:00:00', '2026-01-01 10:00:00'), (6, '2026-04-01', '2026-01-01');")
+    con.executescript(load_extract.SCHEMA)
+    return con
+
+
+@pytest.mark.parametrize('sql', [
+    "INSERT INTO price_status VALUES (5, 'priced', NULL, NULL)",                    # priced, with no pass to price
+    "INSERT INTO price_status VALUES (5, 'not_looked', NULL, 1)",                  # a pass priced, said unpriced
+    "INSERT INTO price_status VALUES (5, 'soon', NULL, NULL)",
+    "INSERT INTO pass_tiers VALUES (5, 1, 1, 80, 'EUR', NULL, 2000, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 'q')",  # half a pair
+    "INSERT INTO event_genres (event_id, genre, source, prompt, rule) VALUES (5, 'zouk', 'description', 'h', 'title')",
+    "INSERT INTO event_genres (event_id, genre, source) VALUES (5, 'zouk', 'description')",       # from nothing
+    "INSERT INTO event_genres (event_id, genre, source, rule) VALUES (5, 'zouk', 'site_tag', 'title')",
+])
+def test_a_row_outside_the_table_or_its_rules_is_refused_when_written(sql):
+    with pytest.raises(sqlite3.IntegrityError):
+        loaded().execute(sql)
+
+
+def test_a_festival_is_priced_exactly_when_it_has_the_pass_a_card_prices():
+    from pipeline.extract import load_extract
+    con = loaded()
+    full = json.loads(prices_answer('Full pass 80€ until 31.01'))['events'][0]
+    party = copy.deepcopy(full)
+    party['event_id'], party['passes'][0]['kind'] = 6, 'party'
+    described = {e['event_id']: answers.Answer(e, 'h', 'b', 'f', 'm', 't', 'x') for e in (full, party)}
+    load_extract.load_prices(con, described, {}, {6: (states.Sales.SHOP, 'https://shop.example/6')})
+    assert con.execute('SELECT event_id, price, page, card_pass FROM price_status ORDER BY event_id').fetchall() == [
+        (5, 'priced', None, 1), (6, 'other_passes_only', 'https://shop.example/6', None)]

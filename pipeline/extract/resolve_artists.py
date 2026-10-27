@@ -23,7 +23,8 @@ Matching rules:
   - Near-matches are written to artist_merge_candidates, only when backed by evidence (a shared stated
     country, events in a shared country, or a shared partner), and only merged when pipeline/extract/merges.csv says so.
 
-pipeline/extract/merges.csv columns: key_a, key_b, decision (merge | separate), note. Keys are match_key values.
+pipeline/extract/merges.csv columns: key_a, key_b, decision (merge | separate), note. Keys are match_key values. A
+review that could not tell (unsure) is never stored: the pair stays in artist_merge_candidates, undecided.
 
 pipeline/extract/groups.csv names an act that several people perform as (a DJ duo booked under one name):
 group_key, display_name, members and aliases (both ';'-separated match_key values), note. Every alias
@@ -49,9 +50,10 @@ import unicodedata
 from collections import defaultdict
 from difflib import SequenceMatcher
 
-from pipeline import db as sqlite_db
+from pipeline import db as sqlite_db, states
+from pipeline.states import MergeDecision
 from pipeline.extract import run_log
-from pipeline.extract.answers import log
+from pipeline.extract.answers import log, logged
 
 import pycountry
 
@@ -63,6 +65,7 @@ SEPARATORS = re.compile(r"\s*&\s*|\s*\+\s*|\s+(?:and|et|e|y|und)\s+", re.I)
 PREFIX = re.compile(r"^(?:dj|deejay|d\.j\.|mc)\s+", re.I)
 
 SCHEMA = """
+BEGIN;
 DROP VIEW IF EXISTS artist_events;
 DROP TABLE IF EXISTS event_artists;
 DROP TABLE IF EXISTS couple_members;
@@ -76,7 +79,7 @@ DROP TABLE IF EXISTS artists;
 CREATE TABLE artists (
     id INTEGER PRIMARY KEY,
     display_name TEXT NOT NULL,
-    kind TEXT NOT NULL CHECK (kind IN ('person', 'couple', 'group', 'organisation')),
+    kind TEXT NOT NULL CHECK (kind IN ({artist_kind})),
     match_key TEXT NOT NULL UNIQUE
 );
 CREATE TABLE artist_keys (
@@ -98,7 +101,7 @@ CREATE TABLE event_artists (
     mention_id INTEGER PRIMARY KEY REFERENCES artist_mentions(id),
     event_id INTEGER NOT NULL REFERENCES events(id),
     artist_id INTEGER NOT NULL REFERENCES artists(id),
-    role TEXT NOT NULL,
+    role TEXT NOT NULL CHECK (role IN ({role})),
     style TEXT,
     country TEXT
 );
@@ -111,13 +114,13 @@ CREATE TABLE artist_merge_candidates (
     reason TEXT NOT NULL,
     similarity REAL NOT NULL,
     evidence TEXT NOT NULL,
-    decision TEXT,                -- from pipeline/extract/merges.csv, NULL = not reviewed
+    decision TEXT CHECK (decision IN ({stored_decision})),   -- from pipeline/extract/merges.csv, NULL = not reviewed
     PRIMARY KEY (key_a, key_b)
 );
 CREATE TABLE artist_merge_decisions (
     key_a TEXT NOT NULL,          -- match_key values, as in artist_keys
     key_b TEXT NOT NULL,
-    decision TEXT NOT NULL CHECK (decision IN ('merge', 'separate')),
+    decision TEXT NOT NULL CHECK (decision IN ({stored_decision})),
     source TEXT NOT NULL,         -- the review prompt version that decided it, or 'manual'
     note TEXT,
     PRIMARY KEY (key_a, key_b)
@@ -144,6 +147,10 @@ CREATE VIEW artist_events AS
     SELECT cm.member_id, ea.event_id, ea.role, 'member', ea.artist_id
     FROM event_artists ea JOIN couple_members cm ON cm.couple_id = ea.artist_id;
 """
+# a review that could not tell (unsure) decides nothing: the pair stays a candidate, and merges.csv never holds it
+STORED = (MergeDecision.MERGE, MergeDecision.SEPARATE)
+SCHEMA = SCHEMA.format_map({p.name: states.sql_in(p.name) for p in states.POINTS}
+                           | {"stored_decision": states.sql_in("merge_decision", STORED)})
 
 
 # Country spellings pycountry does not know: sports (IOC/FIFA) codes and French, Spanish, Portuguese and
@@ -298,24 +305,25 @@ def record_steps(con, n_mentions: int, kinds_count: dict, n_candidates: int, n_u
     run_log.document(con, TABLE_DOCS, "pipeline/extract/resolve_artists.py")
     reviews = sorted((run_log.HERE / "answers" / "merge_review").glob("*.json"))
     if reviews:
-        counts = defaultdict(lambda: defaultdict(int))
+        counts, followed = defaultdict(lambda: defaultdict(int)), log()
         for f in reviews:
             out = json.loads(f.read_text())
             for d in out["decisions"]:
-                counts[out["prompt_version"]][d["decision"]] += 1
-        for v in counts:
-            run_log.record_prompt(con, v, run_log.HERE / "prompts" / f"{v}.md")
+                counts[logged(followed, f"merge_review/{f.name}")["prompt"]][d["decision"]] += 1
+        for h in counts:
+            run_log.record_prompt(con, h)
         run_log.record(
             con, "6_merge_review",
             "Decide, for each pair of artist records the matching rules flagged as possibly the same artist, whether "
             "they are (merge), are not (separate), or the evidence does not settle it (unsure, left unmerged). "
             "Decisions are written to pipeline/extract/merges.csv, where manual decisions override them.",
             f"{len(reviews)} subagents (claude-haiku-5-5), one batch each",
-            performed_at=max(log()[f"merge_review/{f.name}"]["answered_at"] for f in reviews), model="claude-haiku-5-5",
-            prompt_version=", ".join(sorted(counts)),
+            performed_at=max(logged(followed, f"merge_review/{f.name}")["answered_at"] for f in reviews),
+            model="claude-haiku-5-5",
+            prompt=", ".join(sorted(counts)),
             inputs="each pair with every mention of both sides",
             outputs="pipeline/extract/merges.csv; table artist_merge_decisions",
-            details={"decisions_by_prompt_version": {k: dict(v) for k, v in counts.items()}, "batches": len(reviews)},
+            details={"decisions_by_prompt": {k: dict(v) for k, v in counts.items()}, "batches": len(reviews)},
         )
     rows = load_merge_rows()
     run_log.record(
@@ -329,7 +337,7 @@ def record_steps(con, n_mentions: int, kinds_count: dict, n_candidates: int, n_u
         outputs="tables artists, artist_aliases, artist_keys, couple_members, event_artists, artist_merge_candidates, "
                 "artist_merge_decisions, artist_group_definitions, artist_group_aliases; view artist_events",
         details={"mentions": n_mentions, "artists_by_kind": kinds_count,
-                 "merge_decisions": {d: sum(1 for r in rows if r["decision"] == d) for d in ("merge", "separate")},
+                 "merge_decisions": {d: sum(1 for r in rows if r["decision"] == d) for d in STORED},
                  "manual_decisions": sum(1 for r in rows if r.get("source") == "manual"),
                  "named_groups": n_groups, "candidates_listed": n_candidates,
                  "same_name_pairs_kept_apart_without_evidence": n_unsupported},
@@ -477,7 +485,7 @@ def main() -> None:
             for other in rest:
                 uf.union(first, other)
     for pair, decision in merges.items():
-        if decision == "merge" and len(pair) == 2 and all(k in kinds for k in pair):
+        if decision == MergeDecision.MERGE and len(pair) == 2 and all(k in kinds for k in pair):
             uf.union(*pair)
     # A single-word member is scoped to its couple's spelling of the partner ("ISA" in "MADY & ISA" and in
     # "Mady Keita & ISA"). Once the partners are merged, the same single word with the same partner is the
@@ -522,7 +530,7 @@ def main() -> None:
     # 4. Write tables, keeping the ids artists had
     ids = stable_ids(con, final_key)
     con.executescript(SCHEMA)
-    con.executemany("INSERT OR IGNORE INTO artist_ids VALUES (?, ?)", [(i, fk) for fk, i in ids.items()])
+    con.executemany("INSERT INTO artist_ids VALUES (?, ?) ON CONFLICT DO NOTHING", [(i, fk) for fk, i in ids.items()])
     alias_counts: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
     for k, ns in names.items():
         for n in ns:
@@ -539,7 +547,7 @@ def main() -> None:
     candidates = [c for c in candidates if c[0] == c[1] or final_key[c[0]] != final_key[c[1]]]
     for k, ms in members.items():
         con.executemany(
-            "INSERT OR IGNORE INTO couple_members VALUES (?, ?)",
+            "INSERT INTO couple_members VALUES (?, ?) ON CONFLICT DO NOTHING",
             [(ids[final_key[k]], ids[final_key[m]]) for m in ms],
         )
     con.executemany(
@@ -559,9 +567,9 @@ def main() -> None:
         con.executemany(
             "INSERT INTO artist_group_aliases VALUES (?, ?)", [(g["group_key"], a) for a in g["aliases"]]
         )
-    con.commit()
     kinds_count = dict(con.execute("SELECT kind, count(*) FROM artists GROUP BY kind").fetchall())
     record_steps(con, len(mentions), kinds_count, len(candidates), unsupported_same_name, len(groups))
+    con.commit()
     print(f"mentions {len(mentions)} -> artists {sum(kinds_count.values())} {kinds_count};"
           f" candidates {len(candidates)} ({sum(1 for c in candidates if c[7])} reviewed);"
           f" same-name pairs kept apart for lack of evidence: {unsupported_same_name}")

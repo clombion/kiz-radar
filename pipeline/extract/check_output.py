@@ -18,6 +18,8 @@ from pathlib import Path
 
 from jsonschema import Draft202012Validator
 
+from pipeline import states
+
 
 def norm(s: str) -> str:
     return " ".join(s.split()).casefold()
@@ -77,7 +79,7 @@ def main() -> None:
         ap.add_argument(name, type=Path, help=text)
     a = ap.parse_args()
     schema_path, batch_path, out_path = a.schema, a.batch, a.output
-    schema = json.loads(schema_path.read_text())
+    schema = states.schema(schema_path)
     batch = json.loads(batch_path.read_text())
     try:
         output = json.loads(out_path.read_text())

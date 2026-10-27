@@ -1,10 +1,10 @@
 """Ticket-page prices: rows to passes by key, the first read's checks, recording, changes, re-reads and agreement."""
-import collections, copy, json
+import collections, copy, dataclasses, json
 
 import pytest
 
-from pipeline import tickets
-from pipeline.tickets import Recheck, Status
+from pipeline import exceptions, prompt, tickets
+from pipeline.states import FirstRead, Recheck, Sales, Status, Waiting
 
 AT = '2026-10-01T05:00:00+00:00'
 
@@ -34,13 +34,14 @@ def tier(*keys, until=None, quantity=None, quote=None):
     return {'keys': list(keys), 'from': None, 'until': until, 'quantity': quantity, 'date_quote': quote}
 
 
-def read(passes=None, skipped=('5',), description='Prices rise on 1 December.', rule_quotes=()):
-    return {'event_id': 7, 'title': 'Fest', 'start_date': '2027-02-05', 'read_by': 'agent', 'prompt_version': tickets.PROMPT, 'styles': ['bachata', 'kizomba'],
+def read(passes=None, skipped=(('5', 'excursion'),), description='Prices rise on 1 December.', rule_quotes=()):
+    return {'event_id': 7, 'title': 'Fest', 'start_date': '2027-02-05', 'read_by': 'agent', 'prompt': prompt.current('first_read').hash,
+            'styles': ['bachata', 'kizomba'],
             'rows_at': AT,
             'description': description,
             'passes': passes or [{'kind': 'full', 'style': None, 'label_quote': 'Fullpass', 'group_size': 1, 'days': None,
                                   'includes_hotel': False, 'tiers': [tier('1', '2'), tier('3', '4')]}],
-            'skipped': list(skipped), 'rule_quotes': list(rule_quotes)}
+            'skipped': [{'key': k, 'reason': r} for k, r in skipped], 'rule_quotes': list(rule_quotes)}
 
 
 def test_rows_become_passes_by_key():
@@ -84,9 +85,9 @@ def test_amounts_are_checked_against_their_quotes():
 def test_first_read_maps_every_ticket_once():
     fr = read(skipped=())
     assert tickets.read_problems(fr, [entry(ROWS)]) == ['key 5 (Shuttle from the airport €56.41): neither in a tier nor skipped']
-    fr = read(skipped=('5', '3'))
+    fr = read(skipped=(('5', 'excursion'), ('3', 'class')))
     assert 'key 3: in the read twice' in tickets.read_problems(fr, [entry(ROWS)])
-    fr = read(skipped=('5', '9'))
+    fr = read(skipped=(('5', 'excursion'), ('9', 'class')))
     assert 'key 9: not on the page' in tickets.read_problems(fr, [entry(ROWS)])
 
 
@@ -121,33 +122,33 @@ def files(tmp_path, monkeypatch):
     monkeypatch.setattr(tickets, 'PRICES_CSV', tmp_path / 'pass_prices.csv')
     monkeypatch.setattr(tickets, 'PAGES_CSV', tmp_path / 'ticket_pages.csv')
     monkeypatch.setattr(tickets, 'FOUND_CSV', tmp_path / 'pages.csv')
-    monkeypatch.setattr(tickets, 'WAITING_CSV', tmp_path / 'waiting.csv')
+    monkeypatch.setattr(tickets, 'STATUS_CSV', tmp_path / 'status.csv')
     tickets.save_read(read())
     tickets.append(7, entry(ROWS))
     return tmp_path
 
 
 def test_recording_twice_writes_the_same_files(files):
-    assert tickets.record(7, quiet=True) == []
+    assert tickets.record(7) == []
     before = [(files / f).read_bytes() for f in ('pass_prices.csv', 'ticket_pages.csv')]
-    assert tickets.record(7, quiet=True) == []
+    assert tickets.record(7) == []
     assert [(files / f).read_bytes() for f in ('pass_prices.csv', 'ticket_pages.csv')] == before
 
 
 def test_an_unchanged_page_changes_only_the_read_date(files):
-    tickets.record(7, quiet=True)
+    tickets.record(7)
     prices_before, pages_before = [(files / f).read_text() for f in ('pass_prices.csv', 'ticket_pages.csv')]
     tickets.append(7, entry(ROWS, at='2026-11-03T05:00:00+00:00'))
-    tickets.record(7, quiet=True)
+    tickets.record(7)
     assert (files / 'pass_prices.csv').read_text() == prices_before
     assert (files / 'ticket_pages.csv').read_text() == pages_before.replace('2026-10-01', '2026-11-03')
 
 
 def test_a_failed_read_keeps_the_last_prices(files):
-    tickets.record(7, quiet=True)
+    tickets.record(7)
     before = (files / 'ticket_pages.csv').read_text()
     tickets.append(7, refused('2026-11-03T05:00:00+00:00'))
-    tickets.record(7, quiet=True)
+    tickets.record(7)
     assert (files / 'ticket_pages.csv').read_text() == before
 
 
@@ -172,9 +173,12 @@ def csv_tier(until='', quantity='', sold_out='0'):
     ([csv_tier('11-30'), csv_tier()], '2026-11-15', (Recheck.MONTHLY, True)),
     ([csv_tier(), csv_tier(sold_out='1')], '2026-11-15', (Recheck.MONTHLY, True)),
     ([csv_tier('11-30', sold_out='1')], '2026-11-15', (Recheck.MONTHLY, True)),
+    ([csv_tier('2026-11-15')], '2026-11-15', (Recheck.DATED, False)),          # its last date is today: not yet
+    ([csv_tier('2026-11-14')], '2026-11-15', (Recheck.DATED, True)),
 ])
 def test_recheck_classes(tiers, today, expected):
     assert tickets.recheck(tiers, '2027-02-05', today)[:2] == expected
+    assert {Recheck.DATED, Recheck.MONTHLY} == set(Recheck)
 
 
 def test_failures_count_back_to_the_last_read():
@@ -270,15 +274,15 @@ def test_a_log_line_edited_in_place_and_merged_back_is_caught(files):
 
 def test_a_new_ticket_page_needs_a_new_first_read(files):
     tickets.append(7, entry(ROWS, at='2026-11-03T05:00:00+00:00', page='https://my.weezevent.com/y'))
-    assert 'the ticket page changed' in tickets.record(7, quiet=True)[0]
+    assert 'the ticket page changed' in tickets.record(7)[0]
 
 
 def test_a_draft_becomes_the_first_read_once_it_passes(files):
-    tickets.save_read(read(skipped=()), draft=True)
-    assert tickets.record(7, quiet=True) != [] and (files / 'drafts' / '7.json').exists()
-    assert tickets.first_read(7)['skipped'] == ['5']             # the failing draft is not the first read
-    tickets.save_read(read(), draft=True)
-    assert tickets.record(7, quiet=True) == [] and not (files / 'drafts' / '7.json').exists()
+    tickets.save_draft(read(skipped=()))
+    assert tickets.record(7) != [] and (files / 'drafts' / '7.json').exists()
+    assert tickets.first_read(7)['skipped'] == read()['skipped']    # the failing draft is not the first read
+    tickets.save_draft(read())
+    assert tickets.record(7) == [] and not (files / 'drafts' / '7.json').exists()
     assert tickets.first_read(7) == read()
 
 
@@ -288,13 +292,6 @@ def test_recipes_are_checked_against_their_schema(tmp_path, monkeypatch):
     (tmp_path / 'x.json').write_text(json.dumps({'site': 'x'}))
     with pytest.raises(SystemExit):
         tickets.sites()
-
-
-def test_model_schema_is_accepted_by_structured_outputs():
-    from pipeline.extract import ask
-    text = json.dumps(ask.api_schema(tickets.model_schema()))
-    for word in ('minLength', 'maxLength', 'minimum', 'oneOf', 'pattern', '$schema'):
-        assert word not in text
 
 
 def client(*replies):
@@ -311,8 +308,15 @@ def client(*replies):
     return SimpleNamespace(messages=SimpleNamespace(stream=lambda **kw: Ctx()))
 
 
-FEST = {'id': 7, 'title': 'Fest', 'start_date': '2027-02-05', 'end_date': '2027-02-07', 'country': 'Germany',
-        'description_text': 'Prices rise on 1 December.', 'page': 'https://my.weezevent.com/x', 'styles': ['bachata', 'kizomba']}
+def festival(**k):
+    """A festival as festivals() gives it: by default to come, with no first read and no ticket page."""
+    return tickets.Festival(**dict(id=7, title='Fest', start_date='2027-02-05', end_date='2027-02-07', country='Germany',
+                                   description='Prices rise on 1 December.', over=False, styles=['bachata', 'kizomba'],
+                                   links=[], found=None, first_read=None, log=[], tiers=[], described=None, page=None,
+                                   site=None, disputed=False, need=FirstRead.NONE) | k)
+
+
+FEST = festival(page='https://my.weezevent.com/x')
 ANSWER = {k: read()[k] for k in ('passes', 'skipped', 'rule_quotes')}
 
 
@@ -333,13 +337,13 @@ def test_two_models_that_disagree_leave_both_for_an_agent(files):
 
 def test_both_files_hold_what_the_reads_and_logs_say_and_nothing_else(files):
     (files / 'pass_prices.csv').write_text('event_id,stale\n9,1\n')
-    assert tickets.record(7, quiet=True) == []
+    assert tickets.record(7) == []
     assert {r['event_id'] for r in tickets.csv_rows(files / 'pass_prices.csv')} == {'7'}
     assert list(tickets.csv_rows(files / 'pass_prices.csv')[0]) == tickets.PRICE_FIELDS
 
 
 def test_a_festival_that_no_longer_fits_its_first_read_is_left_out(files):
-    tickets.record(7, quiet=True)
+    tickets.record(7)
     rows = copy.deepcopy(ROWS)
     rows[3] |= {'amount': 128.21, 'price': '€128.21'}
     tickets.append(7, entry(rows, at='2026-11-03T05:00:00+00:00'))
@@ -347,55 +351,87 @@ def test_a_festival_that_no_longer_fits_its_first_read_is_left_out(files):
     assert tickets.csv_rows(files / 'ticket_pages.csv') == []
 
 
+HELD = exceptions.OVERRIDES[0]          # a site the register says no recipe can read
 
-def festival(**k):
-    """A festival as festivals() gives it, with no first read and no ticket page."""
-    return {'id': 7, 'title': 'Fest', 'start_date': '2027-02-05', 'first_read': None, 'log': [], 'why': 'no price in the description',
-            'disputed': False, 'found': None, 'page': None, 'site': None} | k
+
+def sold(state, page=''):
+    return {'state': state, 'page': page, 'links': '', 'note': 'n'}
 
 
 @pytest.mark.parametrize('f, expected', [
-    (festival(), tickets.Waiting.PAGE),
-    (festival(page='https://example.org/tickets'), tickets.Waiting.RECIPE),
-    (festival(page='https://my.weezevent.com/x', site=('r', 'v')), None),
-    (festival(found={'state': 'offline', 'page': '', 'note': 'by message only'}), tickets.Waiting.OFFLINE),
-    (festival(found={'state': 'not_yet', 'page': '', 'note': 'TBA'}), tickets.Waiting.NOT_YET),
-    (festival(found={'state': 'closed', 'page': '', 'note': 'registrations closed'}), tickets.Waiting.CLOSED),
-    (festival(page='https://my.weezevent.com/x', site=('r', 'v'), disputed=True), tickets.Waiting.AGENT),
-    (festival(why=None, first_read=read(), log=[refused('a'), refused('b'), refused('c')]), tickets.Waiting.SESSION),
-    (festival(why=None, first_read=read(), log=[entry(ROWS)]), None),
+    (festival(), Waiting.PAGE),
+    (festival(page='https://example.org/tickets'), Waiting.RECIPE),
+    (festival(page=f'https://{HELD.host}/x'), HELD.then),                       # pipeline/exceptions.py
+    (festival(page='https://my.weezevent.com/x', site=('r', 'v')), Waiting.NOTHING),
+    (festival(found=sold(Sales.OFFLINE)), Waiting.NOTHING),
+    (festival(found=sold(Sales.NOT_YET)), Waiting.SALES_OPEN),
+    (festival(found=sold(Sales.CLOSED)), Waiting.NOTHING),
+    (festival(found=sold(Sales.NONE_FOUND)), Waiting.NOTHING),
+    (festival(found=sold(Sales.SHOP, 'https://example.org/t'), page='https://example.org/t'), Waiting.RECIPE),
+    (festival(page='https://my.weezevent.com/x', site=('r', 'v'), need=FirstRead.DISPUTED), Waiting.AGENT),
+    (festival(need=FirstRead.CURRENT, first_read=read(), log=[refused('a'), refused('b'), refused('c')]), Waiting.SESSION),
+    (festival(need=FirstRead.CURRENT, first_read=read(), log=[entry(ROWS)]), Waiting.NOTHING),
+    (festival(need=FirstRead.NOT_NEEDED), Waiting.NOTHING),
+    (festival(need=FirstRead.AWAITS_ANSWER), Waiting.NOTHING),
+    (festival(over=True), Waiting.NOTHING),                                     # it is over: nothing to wait for
+    (festival(need=FirstRead.CURRENT, first_read=read(),                         # failures before a broken recipe
+              log=[refused('a'), refused('b'), {'at': 'c', 'status': Status.LAYOUT_BROKEN, 'why': 'x'}]), Waiting.SESSION),
 ])
 def test_what_a_festival_waits_for(f, expected):
     assert tickets.waiting(f) == expected
 
 
-def test_the_waiting_report_lists_every_waiting_festival(files):
-    counts = tickets.write_waiting([festival(), festival(id=8, page='https://example.org/t'), festival(id=9, why=None)])
-    assert [r['event_id'] for r in tickets.csv_rows(files / 'waiting.csv')] == ['7', '8']
-    assert counts == {tickets.Waiting.PAGE: 1, tickets.Waiting.RECIPE: 1}
+def test_every_waits_for_state_is_reached():
+    """waiting() is total over its states: each case above reaches one, and together they reach them all."""
+    reached = {tickets.waiting(f) for f in [festival(), festival(page='https://example.org/t'), festival(found=sold(Sales.NOT_YET)),
+               festival(need=FirstRead.DISPUTED), festival(log=[refused('a'), refused('b'), refused('c')]),
+               festival(log=[{'at': 'b', 'status': Status.LAYOUT_BROKEN, 'why': 'x'}]), festival(need=FirstRead.CURRENT)]}
+    assert reached == set(Waiting)
 
 
-def test_a_found_page_is_recorded_once_and_a_cut_link_refused(files, monkeypatch):
-    monkeypatch.setattr(tickets, 'one', lambda i: festival(id=i))
-    tickets.cmd_page(7, 'https://example.org/t', tickets.Sales.SHOP, 'its site', 'agent')
-    tickets.cmd_page(7, None, tickets.Sales.OFFLINE, 'by message only', 'agent')
-    assert [(r['state'], r['page'], r['note']) for r in tickets.csv_rows(files / 'pages.csv')] == [('offline', '', 'by message only')]
+def test_the_status_lists_every_festival_past_ones_too(files):
+    counts = tickets.write_status([festival(id=9, need=FirstRead.CURRENT), festival(), festival(id=8, page='https://example.org/t'),
+                                   festival(id=6, over=True, found=sold(Sales.CLOSED))])
+    got = [(r['event_id'], r['waits_for'], r['first_read'], r['sales']) for r in tickets.csv_rows(files / 'status.csv')]
+    assert got == [('6', 'nothing', 'none', 'closed'), ('7', 'page', 'none', ''), ('8', 'recipe', 'none', ''),
+                   ('9', 'nothing', 'current', '')]
+    assert counts == {Waiting.PAGE: 1, Waiting.RECIPE: 1, Waiting.NOTHING: 2}
+    assert list(tickets.csv_rows(files / 'status.csv')[0]) == tickets.STATUS_FIELDS
+
+
+@pytest.fixture
+def paging(files, monkeypatch):
+    monkeypatch.setattr(tickets, 'one', lambda db, i, page=None: festival(id=i, links=['https://example.org/a']))
+    monkeypatch.setattr(tickets, 'festivals', lambda db, today, only=None, every=False: [festival()])
+    return files
+
+
+def test_a_found_page_is_recorded_once_and_a_cut_link_refused(paging):
+    tickets.cmd_page(None, 7, 'https://example.org/t', Sales.SHOP, 'its site', 'agent')
+    tickets.cmd_page(None, 7, None, Sales.OFFLINE, 'by message only', 'agent')
+    assert [(r['state'], r['page'], r['note']) for r in tickets.csv_rows(paging / 'pages.csv')] == [('offline', '', 'by message only')]
+    assert tickets.csv_rows(paging / 'status.csv')[0]['waits_for'] == 'page'
     with pytest.raises(SystemExit):
-        tickets.cmd_page(7, 'https://example.org/t…', tickets.Sales.SHOP, 'cut', 'agent')
+        tickets.cmd_page(None, 7, 'https://example.org/t…', Sales.SHOP, 'cut', 'agent')
+
+
+def test_a_search_that_found_nothing_holds_until_the_links_change(paging):
+    tickets.cmd_page(None, 7, None, Sales.NONE_FOUND, 'a search found no ticket page', 'agent')
+    row = tickets.found_pages()[7]
+    assert row['links'] == tickets.links_hash(['https://example.org/a'])
+    assert row['links'] != tickets.links_hash(['https://example.org/a', 'https://example.org/b'])
 
 
 @pytest.mark.parametrize('url, state', [(None, 'shop'), ('https://example.org/t', 'offline'), ('https://example.org/t', 'closed')])
-def test_only_a_shop_has_a_page(files, monkeypatch, url, state):
-    monkeypatch.setattr(tickets, 'one', lambda i: festival(id=i))
+def test_only_a_shop_has_a_page(paging, url, state):
     with pytest.raises(SystemExit):
-        tickets.cmd_page(7, url, tickets.Sales(state), 'n', 'agent')
+        tickets.cmd_page(None, 7, url, Sales(state), 'n', 'agent')
 
 
-def test_sales_states_are_checked_when_read(files):
-    (files / 'pages.csv').write_text('event_id,event,state,page,found_by,note\n7,Fest,offline,https://x.org,agent,n\n')
-    with pytest.raises(SystemExit):
-        tickets.found_pages()
-    (files / 'pages.csv').write_text('event_id,event,state,page,found_by,note\n7,Fest,soon,,agent,n\n')
+@pytest.mark.parametrize('line', ['7,Fest,offline,https://x.org,,agent,n', '7,Fest,soon,,,agent,n',
+                                  '7,Fest,none_found,,,agent,n', '7,Fest,offline,,0123456789abcdef,agent,n'])
+def test_sales_states_are_checked_when_read(files, line):
+    (files / 'pages.csv').write_text('event_id,event,state,page,links,found_by,note\n' + line + '\n')
     with pytest.raises(SystemExit):
         tickets.found_pages()
 
@@ -469,7 +505,7 @@ def test_a_recipe_reads_the_page_or_the_api_never_a_mix():
 
 
 def test_a_first_read_with_no_pass_is_refused():
-    fr = read(passes=[], skipped=('1', '2', '3', '4', '5'))
+    fr = read(passes=[], skipped=[(k, 'room') for k in '12345'])
     fr['passes'] = []
     assert any('passes' in p for p in tickets.read_problems(fr, [entry(ROWS)]))
 
@@ -477,7 +513,7 @@ def test_a_first_read_with_no_pass_is_refused():
 def test_a_page_that_broke_its_recipe_waits_for_a_fix_with_or_without_a_first_read():
     broken = {'at': 'b', 'page': 'x', 'recipe': 'r', 'status': Status.LAYOUT_BROKEN, 'why': 'no ticket rows'}
     assert tickets.waiting(festival(page='https://my.weezevent.com/x', site=('r', 'v'), log=[broken])) == tickets.Waiting.RECIPE_FIX
-    assert tickets.waiting(festival(why=None, first_read=read(), log=[entry(ROWS), broken])) == tickets.Waiting.RECIPE_FIX
+    assert tickets.waiting(festival(first_read=read(), log=[entry(ROWS), broken])) == tickets.Waiting.RECIPE_FIX
 
 
 def test_a_day_pass_is_one_day_whether_its_days_say_1_or_nothing():
@@ -521,12 +557,12 @@ def test_first_reads_count_against_the_budget(files):
     assert round(spend.month_usd(), 3) == round(spend.usd('claude-opus-5-5', 6000, 2000) + spend.usd('claude-sonnet-5-5', 6000, 2000), 3)
 
 
-@pytest.mark.parametrize('version, style, ok', [
-    (tickets.PROMPT, 'kizomba', True), (tickets.PROMPT, None, True), (tickets.PROMPT, ..., False),
-    ('first-read-v2', ..., False),          # an older read: made again, never loaded
+@pytest.mark.parametrize('current, style, ok', [
+    (True, 'kizomba', True), (True, None, True), (True, ..., False),
+    (False, ..., False),          # a read to another prompt: made again, never loaded
 ])
-def test_a_first_read_names_each_pass_style_and_follows_the_current_prompt(version, style, ok):
-    fr = read() | {'prompt_version': version}
+def test_a_first_read_names_each_pass_style_and_follows_a_prompt(current, style, ok):
+    fr = read() | ({} if current else {'prompt': 'not a hash'})
     if style is ...:
         del fr['passes'][0]['style']
     else:
@@ -538,54 +574,95 @@ def test_a_pass_keeps_its_style_in_pass_prices_csv(files):
     fr = read()
     fr['passes'][0]['style'] = 'kizomba'
     tickets.save_read(fr)
-    assert tickets.record(7, quiet=True) == []
+    assert tickets.record(7) == []
     assert {r['style'] for r in tickets.csv_rows(files / 'pass_prices.csv')} == {'kizomba'}
 
 
-def test_a_first_read_made_for_an_older_prompt_is_made_again(files):
-    old = read() | {'prompt_version': 'first-read-v2'}
-    del old['passes'][0]['style']
-    f = {'first_read': old, 'log': tickets.log(7), 'description_text': old['description']}
-    assert tickets.why_first_read(f, '2026-11-01')[0] == f'the first read follows first-read-v2, not {tickets.PROMPT}'
-    f['first_read'] = read()
-    assert tickets.why_first_read(f, '2026-11-01')[0] is None
+def test_a_first_read_to_another_prompt_is_made_again_whatever_its_shape(files):
+    old = read() | {'prompt': '0' * 16, 'skipped': ['5']}
+    assert tickets.why_first_read(festival(first_read=old, log=tickets.log(7)), '2026-11-01')[0] == FirstRead.REDO_PROMPT
+    assert tickets.why_first_read(festival(first_read=read(), log=tickets.log(7)), '2026-11-01')[0] == FirstRead.CURRENT
+
+
+def test_a_first_read_to_another_prompt_is_never_written(files):
+    old = read() | {'prompt': '0' * 16}
+    with pytest.raises(ValueError, match='not the current'):
+        tickets.save_read(old)
+    tickets.dump(tickets.READS / '7.json', old)               # as a read made before the prompt changed
+    assert 'make it again' in tickets.record(7)[0]
+    assert tickets.write_all() == [] and tickets.csv_rows(files / 'ticket_pages.csv') == []   # set aside quietly
+
+
+def described(*passes):
+    from types import SimpleNamespace
+    return SimpleNamespace(entry={'passes': list(passes)})
+
+
+def card(kind='full', until='2027-01-31', **k):
+    return {'kind': kind, 'style': None, 'group_size': 1, 'days': None, 'includes_hotel': False,
+            'tiers': [{'from': None, 'until': until, 'amount': 90}]} | k
+
+
+FIRST_READ_CASES = [
+    ({}, FirstRead.CURRENT),
+    ({'disputed': True}, FirstRead.CURRENT),                    # a dispute settled by a current first read
+    ({'description': 'New prices.'}, FirstRead.REDO_DESCRIPTION),
+    ({'log': [entry(ROWS), entry(ROWS, at='2026-11-03T00:00:00+00:00', page='https://my.weezevent.com/y')]}, FirstRead.REDO_PAGE),
+    ({'log': [entry(ROWS + [row('6', 'Fullpass Male 140€', 143.59)])]}, FirstRead.REDO_UNREAD),
+    ({'first_read': read() | {'prompt': '0' * 16}}, FirstRead.REDO_PROMPT),
+    ({'first_read': read() | {'prompt': '0' * 16}, 'disputed': True}, FirstRead.DISPUTED),
+    ({'first_read': None, 'described': None}, FirstRead.AWAITS_ANSWER),
+    ({'first_read': None, 'described': None, 'description': ''}, FirstRead.NONE),        # nothing to answer
+    ({'first_read': None, 'described': described(card(until=None))}, FirstRead.NONE),
+    ({'first_read': None, 'described': described(card(kind='party'))}, FirstRead.NONE),  # not the card's pass
+    ({'first_read': None, 'described': described(card(until='2026-10-31'))}, FirstRead.NONE),
+    ({'first_read': None, 'described': described(card())}, FirstRead.NOT_NEEDED),
+    ({'first_read': None, 'described': described(card(until='2026-11-01'))}, FirstRead.NOT_NEEDED),   # dated today
+]
+
+
+@pytest.mark.parametrize('change, state', FIRST_READ_CASES)
+def test_every_first_read_state(change, state):
+    f = dataclasses.replace(festival(first_read=read(), log=[entry(ROWS)]), **change)
+    assert tickets.why_first_read(f, '2026-11-01')[0] == state
+
+
+def test_the_first_read_states_tested_are_all_of_them():
+    assert {s for _, s in FIRST_READ_CASES} == set(FirstRead)
 
 
 def test_a_run_for_named_festivals_reads_only_them(files, monkeypatch):
     import sqlite3
-    fest = lambda i: {'id': i, 'first_read': None, 'why': 'no price in the description', 'site': ('recipe',),
-                      'page': f'https://shop.example/{i}', 'disputed': False, 'log': [], 'tiers': [], 'start_date': '2027-02-05'}
+    fest = lambda i: festival(id=i, site=('recipe',), page=f'https://shop.example/{i}')
     db = sqlite3.connect(':memory:')
     db.executescript('create table events (id integer); insert into events values (6), (7), (8);')
-    monkeypatch.setattr(tickets, 'src_db', lambda: db)
-    monkeypatch.setattr(tickets, 'festivals', lambda db, today, only=None: [] if only else [fest(7), fest(8)])
-    monkeypatch.setattr(tickets, 'write_waiting', lambda fs: collections.Counter())
+    monkeypatch.setattr(tickets, 'festivals', lambda db, today, only=None, every=False: [] if only or every else [fest(7), fest(8)])
+    monkeypatch.setattr(tickets, 'status', lambda db: collections.Counter())
     read = []
     monkeypatch.setattr(tickets, 'attempt', lambda page, *site: read.append(page) or
                         {'at': AT, 'status': tickets.Status.REFUSED, 'why': 'HTTP 403', 'page': page})
     monkeypatch.setattr(tickets, 'append', lambda i, e: None)
-    tickets.cmd_run({8, 6})                 # 6 is past: nothing to read there
+    tickets.cmd_run(db, {8, 6})             # 6 is past: nothing to read there
     assert read == ['https://shop.example/8']
     with pytest.raises(SystemExit, match=r'\[9\]'):
-        tickets.cmd_run({9})
+        tickets.cmd_run(db, {9})
 
 
 def test_a_past_festivals_first_read_for_an_older_prompt_is_made_again_from_its_logged_rows(files, monkeypatch):
     import sqlite3
-    old = read() | {'prompt_version': 'first-read-v2'}
+    old = read() | {'prompt': '0' * 16}
     del old['passes'][0]['style']
-    tickets.save_read(old)
+    tickets.dump(tickets.READS / '7.json', old)
     db = sqlite3.connect(':memory:')
     db.executescript('create table events (id integer); insert into events values (7);')
-    past = FEST | {'first_read': old, 'log': tickets.log(7), 'disputed': False}
-    monkeypatch.setattr(tickets, 'src_db', lambda: db)
-    monkeypatch.setattr(tickets, 'festivals', lambda db, today, only=None: [past] if only == 7 else [])
-    monkeypatch.setattr(tickets, 'write_waiting', lambda fs: collections.Counter())
+    past = dataclasses.replace(FEST, over=True, first_read=old, log=tickets.log(7), need=FirstRead.REDO_PROMPT)
+    monkeypatch.setattr(tickets, 'festivals', lambda db, today, only=None, every=False: [past] if every else [])
+    monkeypatch.setattr(tickets, 'status', lambda db: collections.Counter())
     monkeypatch.setattr(tickets, 'attempt', lambda *a: pytest.fail('a past festival is not read again'))
     import anthropic
     monkeypatch.setattr(anthropic, 'Anthropic', lambda: client(ANSWER, ANSWER))
-    tickets.cmd_run()
-    assert tickets.first_read(7)['prompt_version'] == tickets.PROMPT
+    tickets.cmd_run(db)
+    assert tickets.first_read(7)['prompt'] == prompt.current('first_read').hash
 
 
 def test_passes_alike_in_every_field_load_back_as_the_passes_they_are(files, monkeypatch):
@@ -594,29 +671,11 @@ def test_passes_alike_in_every_field_load_back_as_the_passes_they_are(files, mon
     one = fr['passes'][0]
     fr['passes'] = [one | {'tiers': [one['tiers'][0]]}, one | {'tiers': [one['tiers'][1]]}]
     tickets.save_read(fr)
-    assert tickets.record(7, quiet=True) == []
+    assert tickets.record(7) == []
     monkeypatch.setattr(load_extract, 'PAGE_PRICES', files / 'pass_prices.csv')
     monkeypatch.setattr(load_extract, 'TICKET_PAGES', files / 'ticket_pages.csv')
-    entry_, _ = load_extract.page_prices({7})[7]
+    entry_, _ = load_extract.page_prices({7})[0][7]
     assert [len(p['tiers']) for p in entry_['passes']] == [1, 1]
-
-
-def test_kinds_styles_and_sales_states_are_stated_alike_everywhere():
-    import re
-    from pathlib import Path
-    from pipeline.extract import load_extract
-    docs = Path(tickets.ROOT) / 'docs' / 'js'
-    passes = tickets.PRICES_SCHEMA['properties']['events']['items']['properties']['passes']['items']['properties']
-    kinds, styles = passes['kind']['enum'], passes['style']['anyOf'][0]['enum']
-    read = tickets.READ_SCHEMA['properties']['passes']['items']['properties']
-    js = lambda file, name: re.findall(r"(\w+):", re.search(rf'const {name} = \{{([^}}]*)\}}', (docs / file).read_text())[1])
-    check = lambda column, table: re.findall(r"'(\w+)'", re.search(rf'CREATE TABLE {table} \((?:[^;]*?)\n    {column} TEXT[^\n]*?CHECK \({column} IN \(([^)]*)\)\)',
-                                                                   load_extract.SCHEMA)[1])
-    assert read['kind']['enum'] == kinds and read['style']['anyOf'][0]['enum'] == styles
-    assert js('passes.js', 'KIND') == kinds and js('passes.js', 'STYLE') == styles
-    assert check('kind', 'event_passes') == kinds and check('style', 'event_passes') == styles
-    assert check('state', 'ticket_sales') == list(tickets.Sales)
-    assert sorted(js('eventcard.js', 'NO_PRICE')) == sorted(set(tickets.Sales) - {tickets.Sales.SHOP})
 
 
 @pytest.mark.parametrize('styles, style, ok', [
@@ -631,12 +690,23 @@ def test_a_pass_has_a_style_only_at_a_festival_of_several_and_one_of_them(styles
     assert (tickets.read_problems(fr, [entry(ROWS)]) == []) == ok
 
 
-@pytest.mark.parametrize('name, ok', [('Shuttle from the airport', True), ('Bootcamp GENKIZ - Female', False),
-                                      ('BOOTCAMP Kizomba musicality advanced payment', True), ('Boot-camp acompte', True)])
-def test_a_bootcamp_is_never_skipped_unless_it_is_a_deposit(name, ok):
+@pytest.mark.parametrize('name, reason, ok', [('Shuttle from the airport', 'excursion', True),
+                                              ('Bootcamp GENKIZ - Female', 'class', False),
+                                              ('BOOTCAMP Kizomba musicality advanced payment', 'deposit', True)])
+def test_a_bootcamp_is_skipped_only_as_a_deposit(name, reason, ok):
     rows = copy.deepcopy(ROWS)
     rows[4] |= {'name': name}
-    assert (tickets.read_problems(read(), [entry(rows)]) == []) == ok
+    assert (tickets.read_problems(read(skipped=(('5', reason),)), [entry(rows)]) == []) == ok
+
+
+@pytest.mark.parametrize('skip', [{'key': '5'}, {'key': '5', 'reason': 'other'}, '5'])
+def test_a_skip_has_a_reason_of_the_table(skip):
+    fr = read() | {'skipped': [skip]}
+    assert any(p.startswith('schema: skipped/0') for p in tickets.read_problems(fr, [entry(ROWS)]))
+
+
+def test_two_reads_agree_whatever_reason_a_kept_skip_has():
+    assert tickets.meaning(read()) == tickets.meaning(read(skipped=(('5', 'food_drink'),)))
 
 
 def test_a_festivals_styles_are_its_genres_styles():
@@ -660,3 +730,76 @@ def test_a_recipe_field_is_one_the_page_can_run(field, ok):
     recipe = json.loads((tickets.SITES / 'tickera.json').read_text())
     recipe['fields']['sold_out'] = field
     assert (tickets.problems(tickets.SITE_SCHEMA, recipe) == []) == ok
+
+
+def test_a_festival_with_three_problems_is_left_out_like_any_other(files):
+    fr = read(skipped=(('5', 'excursion'), ('8', 'class'), ('9', 'class')))
+    fr['rule_quotes'] = ['not in the description']
+    assert len(tickets.read_problems(fr, tickets.log(7))) == 3
+    tickets.save_read(fr)
+    assert len(tickets.write_all()) == 3 and tickets.csv_rows(files / 'ticket_pages.csv') == []
+
+
+@pytest.mark.parametrize('urls, page', [
+    (['https://fest.example/', 'https://fest.example/tickets'], None),           # its own site: a guess, not a page
+    (['https://fest.example/', 'https://my.weezevent.com/x'], 'https://my.weezevent.com/x'),   # a shop a recipe reads
+    ([f'https://{HELD.host}/x'], f'https://{HELD.host}/x'),                      # a shop no recipe can read
+    (['https://my.weezevent.com/x…'], None),                                     # cut short
+])
+def test_a_ticket_page_is_known_only_on_a_ticket_shop(urls, page):
+    assert tickets.known_page(None, [], None, urls, tickets.shop_hosts(tickets.sites())) == page
+
+
+def test_a_page_an_agent_found_or_a_first_read_is_known_whatever_its_site(files):
+    shops = tickets.shop_hosts(tickets.sites())
+    assert tickets.known_page(None, [], sold(Sales.SHOP, 'https://fest.example/t'), [], shops) == 'https://fest.example/t'
+    assert tickets.known_page(None, [], sold(Sales.OFFLINE), ['https://my.weezevent.com/x'], shops) is None
+    assert tickets.known_page(read(), tickets.log(7), None, [], shops) == 'https://my.weezevent.com/x'
+
+
+def test_a_festival_with_links_to_no_shop_waits_for_its_page_and_has_no_page_to_link():
+    from pipeline.extract import prices
+    f = festival(links=['https://fest.example/'])
+    assert tickets.waiting(f) == Waiting.PAGE and prices.price_state([], None, f.page) == prices.Price.NOT_LOOKED
+
+
+def test_a_dispute_is_settled_by_a_first_read_of_rows_as_new(files):
+    (files / 'disputed').mkdir()
+    (files / 'disputed' / '7.json').write_text(json.dumps({'rows_at': AT, 'reads': {}}))
+    tickets.settle_dispute(7, read() | {'rows_at': '2026-09-01T00:00:00+00:00'})
+    assert (files / 'disputed' / '7.json').exists()                 # older rows settle nothing
+    tickets.settle_dispute(7, read())
+    assert not (files / 'disputed' / '7.json').exists()
+
+
+def test_a_recorded_draft_archives_its_prompt_and_leaves_no_prompt_file(files):
+    p = prompt.current('first_read')
+    (prompt.ASKED / f'{p.hash}.md').unlink(missing_ok=True)
+    tickets.save_draft(read())
+    (files / 'drafts' / '7.prompt.md').write_text(p.text)
+    assert not (prompt.ASKED / f'{p.hash}.md').exists()            # a draft names no archived prompt yet
+    assert tickets.record(7) == []
+    assert (prompt.ASKED / f'{p.hash}.md').read_text(encoding='utf-8') == p.text
+    assert not (files / 'drafts' / '7.prompt.md').exists()
+
+
+def test_a_url_given_to_read_is_a_full_address():
+    with pytest.raises(SystemExit, match='not a full address'):
+        tickets.cmd_read(None, 7, 'https://my.weezevent.com/x…')
+
+
+def test_a_second_price_is_one_value_in_the_answer_and_two_columns_in_the_file(files):
+    rows = copy.deepcopy(ROWS)
+    rows[2] |= {'alt_amount': 3050.0, 'alt_currency': 'CZK', 'alt_price': '3 050 CZK'}
+    rows[3] |= {'alt_amount': 3050.0, 'alt_currency': 'CZK', 'alt_price': '3 050 CZK'}
+    tiers = tickets.build(read(), entry(rows))[0]['events'][0]['passes'][0]['tiers']
+    assert [t['alt'] for t in tiers] == [None, {'amount': 3050.0, 'currency': 'CZK'}]
+    tickets.append(7, entry(rows, at='2026-11-03T05:00:00+00:00'))
+    assert tickets.record(7) == []
+    assert [(r['alt_amount'], r['alt_currency']) for r in tickets.csv_rows(files / 'pass_prices.csv')] == [('', ''), ('3050', 'CZK')]
+
+
+def test_a_first_reads_prompt_is_a_hash_as_long_as_the_prompts():
+    import re
+    pattern = tickets.READ_SCHEMA['properties']['prompt']['pattern']
+    assert re.fullmatch(pattern, prompt.current('first_read').hash) and not re.fullmatch(pattern, '0' * (prompt.DIGITS + 1))

@@ -1,19 +1,15 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Extraction output: artists and features per event (generated from config/vocab.json by hand-run snippet; enums must match vocab.json)",
+  "title": "Extraction output: artists and features per event",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "batch",
-    "prompt_version",
     "events"
   ],
   "properties": {
     "batch": {
       "type": "string"
-    },
-    "prompt_version": {
-      "const": "extract-v1"
     },
     "events": {
       "type": "array",
@@ -47,15 +43,7 @@
                   "minLength": 1
                 },
                 "role": {
-                  "enum": [
-                    "crew",
-                    "dj",
-                    "mc",
-                    "media",
-                    "organiser",
-                    "performer",
-                    "teacher"
-                  ]
+                  "$ref": "#/$defs/role"
                 },
                 "style": {
                   "type": [
@@ -88,41 +76,7 @@
               ],
               "properties": {
                 "feature": {
-                  "enum": [
-                    "accommodation_included",
-                    "adults_only",
-                    "after_party",
-                    "all_in_one",
-                    "all_levels_beginners",
-                    "beach_party",
-                    "boat_party",
-                    "bootcamp_intensive",
-                    "camping",
-                    "competition",
-                    "couple_pass",
-                    "cruise",
-                    "day_socials",
-                    "dress_code",
-                    "early_bird_tiers",
-                    "full_pass",
-                    "limited_or_sold_out",
-                    "live_music",
-                    "masterclass",
-                    "meals_included",
-                    "multiple_rooms",
-                    "name_change",
-                    "non_refundable",
-                    "partner_hotel",
-                    "party_pass",
-                    "pool_party",
-                    "pre_party",
-                    "private_classes",
-                    "shows",
-                    "taxi_dancers",
-                    "themed_parties",
-                    "transfers_shuttle",
-                    "workshops"
-                  ]
+                  "$ref": "#/$defs/feature"
                 },
                 "quote": {
                   "type": "string",

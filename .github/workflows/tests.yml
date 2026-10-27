@@ -20,3 +20,5 @@ jobs:
         run: uv run --group dev pytest -q
       - name: Unused and undefined names
         run: uv run --group dev pyflakes pipeline tests
+      - name: Every state in the data is in pipeline/states.py
+        run: uv run --group tickets -m pipeline.audit

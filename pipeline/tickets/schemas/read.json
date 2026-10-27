@@ -8,7 +8,7 @@
     "title",
     "start_date",
     "read_by",
-    "prompt_version",
+    "prompt",
     "rows_at",
     "styles",
     "description",
@@ -34,9 +34,10 @@
       "type": "string",
       "minLength": 1
     },
-    "prompt_version": {
-      "const": "first-read-v4",
-      "description": "A read for an older prompt means something else: it is made again (tickets.py run)."
+    "prompt": {
+      "description": "The hash of the request the read answered (pipeline/prompts/asked/<hash>.md); a read to another prompt is made again (tickets.py run).",
+      "type": "string",
+      "pattern": "^[0-9a-f]{16}$"
     },
     "rows_at": {
       "description": "The 'at' of the logged read (tickets/log/<event_id>.jsonl) whose tickets this read maps; every one of them is in a tier or skipped.",
@@ -47,13 +48,7 @@
       "description": "The festival's dance styles when the read was made (prices.styles), which a pass's style is one of.",
       "type": "array",
       "items": {
-        "enum": [
-          "kizomba",
-          "zouk",
-          "bachata",
-          "salsa",
-          "other"
-        ]
+        "$ref": "#/$defs/style"
       }
     },
     "description": {
@@ -76,25 +71,12 @@
         ],
         "properties": {
           "kind": {
-            "enum": [
-              "full",
-              "party",
-              "day",
-              "workshop",
-              "package",
-              "other"
-            ]
+            "$ref": "#/$defs/pass_kind"
           },
           "style": {
             "anyOf": [
               {
-                "enum": [
-                  "kizomba",
-                  "zouk",
-                  "bachata",
-                  "salsa",
-                  "other"
-                ]
+                "$ref": "#/$defs/style"
               },
               {
                 "type": "null"
@@ -216,11 +198,24 @@
       "description": "At least one: a page that sells none of the festival's passes (only hotel rooms, say) is not its ticket page."
     },
     "skipped": {
-      "description": "Tickets on the page that are no pass (bootcamps, single workshops, shuttles).",
+      "description": "The tickets on the page that are no pass, each with why (pipeline/states.py, skip_reason).",
       "type": "array",
       "items": {
-        "type": "string",
-        "minLength": 1
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "reason"
+        ],
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
+            "$ref": "#/$defs/skip_reason"
+          }
+        }
       }
     },
     "rule_quotes": {

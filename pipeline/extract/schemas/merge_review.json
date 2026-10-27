@@ -41,11 +41,7 @@
             "type": "string"
           },
           "decision": {
-            "enum": [
-              "merge",
-              "separate",
-              "unsure"
-            ]
+            "$ref": "#/$defs/merge_decision"
           },
           "rationale": {
             "type": "string",
