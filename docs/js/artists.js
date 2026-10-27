@@ -6,19 +6,27 @@ import { eventCard } from './eventcard.js';
 import { withDetails, readState, changed } from './festivals.js';
 import { artistsHref, artistHref, eventOnMapHref, personHref, showInAddressBar } from './routes.js';
 import { peopleOf, alsoGoingTo } from './plans.js';
+import { KEY } from './states.js';
+import { text, where } from './wording.js';
 
 const PAGE = 60;
 const festivals = n => `${n} festival${n === 1 ? '' : 's'}`;
 
-// "Teaching couple", "Teacher & DJ", "DJ"
-function roleLabel(a) {
-  if (a.kind === 'couple') return a.teacher ? 'Teaching couple' : a.performer ? 'Performing couple' : 'Couple';
-  const roles = [a.teacher && 'Teacher', a.dj && 'DJ', a.performer && 'Performer'].filter(Boolean);
-  return roles.length > 1 ? roles.slice(0, 2).join(' & ') : roles[0] || 'Artist';
+// "Teaching couple", "Teacher & DJ", "DJ": the roles an artist is booked in (artist_stats counts each by its key)
+const BOOKED = [KEY.role.TEACHER, KEY.role.DJ, KEY.role.PERFORMER];
+const alone = r => text('role', r, {}, 'singular');
+export function roleLabel(a) {
+  if (a.kind === KEY.artist_kind.COUPLE) return a.teacher || a.performer
+    ? text('role', a.teacher ? KEY.role.TEACHER : KEY.role.PERFORMER, {}, 'pair') : text('artist_kind', a.kind, {}, 'singular');
+  const roles = BOOKED.filter(r => a[r]).map(alone);
+  return roles.length > 1 ? roles.slice(0, 2).join(' & ') : roles[0] || text('artist_kind', KEY.artist_kind.PERSON, {}, 'singular');
 }
+// the roles a site shows, of a festival's comma-separated ones
+const SHOWN = where('role', 'view');
+const roleWords = roles => roles.split(',').filter(r => SHOWN.includes(r)).map(alone).join(', ');
 
-const ROLES = [['', 'Everyone'], ['teacher', 'Teachers'], ['dj', 'DJs']];
-const KINDS = [['', 'People and couples'], ['person', 'People'], ['couple', 'Couples']];
+const ROLES = [['', 'Everyone'], ...[KEY.role.TEACHER, KEY.role.DJ].map(r => [r, text('role', r)])];
+const KINDS = [['', 'People and couples'], ...where('artist_kind', 'view').map(k => [k, text('artist_kind', k)])];
 const ORDERS = { bookings: ['Most festivals', 'st.bookings DESC'], abroad: ['Most festivals abroad', 'st.abroad_bookings DESC, st.bookings DESC'],
   countries: ['Most countries', 'st.countries DESC, st.bookings DESC'], next: ['Next festival soonest', 'st.bookings DESC'], name: ['Name', 'a.display_name'] };
 const DEFAULTS = { q: '', role: '', country: '', sort: 'bookings', popular: 0, kind: '' };
@@ -140,14 +148,14 @@ function artistPage(root, id) {
           : a.booked_most_in ? [', booked mostly in ', countryName(a.booked_most_in)] : null,
         ' · ', festivals(a.bookings), a.abroad_bookings ? `, ${a.abroad_bookings} abroad` : ''] : 'Only booked as part of a couple'),
       members.length ? h('p', {}, 'Partners: ', list(members, m => person(m, m.bookings ? h('span', { class: 'muted' }, ` (${festivals(m.bookings)} on their own)`) : null))) : null,
-      couples.length ? h('p', {}, a.kind === 'couple' ? 'Also part of ' : 'Also books as ', list(couples, c => person(c, h('span', { class: 'muted' }, ` (${festivals(c.bookings || 0)})`)))) : null),
+      couples.length ? h('p', {}, a.kind === KEY.artist_kind.COUPLE ? 'Also part of ' : 'Also books as ', list(couples, c => person(c, h('span', { class: 'muted' }, ` (${festivals(c.bookings || 0)})`)))) : null),
     h('section', {}, h('h2', {}, upcoming.length ? `Coming up (${upcoming.length})` : 'Coming up'),
       upcoming.length ? h('div', { class: 'festival-cards' }, upcoming.map(e => eventCard(e)))
         : h('p', { class: 'muted' }, 'No upcoming festivals listed yet.')),
     going.length ? h('section', {}, h('h2', {}, `Also going to (${going.length})`),
       h('p', { class: 'muted' }, 'Where ', list(people, p => [h('a', { href: personHref(p.key) }, p.name)]), ' said they’re going, besides where they teach.'),
       h('div', { class: 'festival-cards' }, going.map(e => eventCard(e)))) : null,
-    cs.length ? h('section', {}, h('h2', {}, couples.length && a.kind !== 'couple' ? 'Where they’re booked on their own' : 'Where they’re booked'),
+    cs.length ? h('section', {}, h('h2', {}, couples.length && a.kind !== KEY.artist_kind.COUPLE ? 'Where they’re booked on their own' : 'Where they’re booked'),
       h('ul', { class: 'bars' }, cs.map(c => h('li', {},
         h('span', { class: 'label' }, flag(c.country_code), ' ', countryName(c.country_code), c.is_home ? h('small', { class: 'muted' }, ' home') : null),
         h('span', { class: 'bar', style: `--w:${(100 * c.bookings / max).toFixed(1)}%` }),
@@ -157,9 +165,8 @@ function artistPage(root, id) {
         h('span', { class: 'when' }, dayYear(e.start_date)),
         h('a', { href: eventOnMapHref(e.id) }, e.title),
         h('span', { class: 'muted' }, ' · ', flag(e.country_code), ' ', e.city,
-          roles[e.id] && roles[e.id] !== 'teacher' ? ` · ${roles[e.id].replace(/,/g, ', ')}` : ''))))) : null,
+          roles[e.id] && roles[e.id] !== KEY.role.TEACHER && roleWords(roles[e.id]) ? ` · ${roleWords(roles[e.id])}` : ''))))) : null,
     h('div', { class: 'profile-notes' },
       aliases.length ? h('p', {}, 'Also written as ', aliases.join(' · ')) : null,
-      h('p', {}, a.home_country ? { given: 'Home country added by hand.', stated: 'Home country as stated in line-ups.' }[a.home_basis]
-        : 'No line-up says where they’re from.'))));
+      h('p', {}, a.home_country ? text('home_basis', a.home_basis) : 'No line-up says where they’re from.'))));
 }

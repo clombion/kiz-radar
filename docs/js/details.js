@@ -1,16 +1,19 @@
 // What an opened card adds, most useful first: who's teaching and playing, what else the weekend has,
 // then the practical bits (venue, organisers) that matter once you've decided to go.
 import { q } from './db.js';
-import { h, flag, countryName } from './ui.js';
-import { TRAITS, MORE_TRAITS } from './icons.js';
+import { h, away, flag, countryName } from './ui.js';
+import { TRAITS, MORE_TRAITS, icon as featureIcon } from './icons.js';
 import { artistHref, eventOnMapHref } from './routes.js';
 import { whoIsGoing } from './plans.js';
 import { openPasses } from './passes.js';
+import { KEY, LINK } from './states.js';
+import { linkOf, text, where } from './wording.js';
 
-const ROLES = [['teacher', 'Teachers'], ['dj', 'DJs'], ['performer', 'Performers'], ['mc', 'MCs']];
+// the line-up by role, in the order pipeline/states.py lists them; organisers have a line of their own
+const ROLES = where('role', 'view').filter(r => r !== KEY.role.ORGANISER);
 const icon = svg => { const el = h('span', { class: 'ic' }); el.innerHTML = svg; return el; };
 // a highlight with prices behind it (couple & group deals) opens the passes over the page
-export const traitItems = (list, e) => list.map(([key, label, svg]) => h('li', {}, icon(svg), key === 'group_deals' && e
+export const traitItems = (list, e) => list.map(([key, label, svg]) => h('li', {}, icon(svg), linkOf('feature', key) === LINK.PASSES && e
   ? h('button', { type: 'button', class: 'link trait-link', onclick: ev => { ev.stopPropagation(); openPasses(e, ev.currentTarget); } }, label)
   : label));
 
@@ -22,18 +25,18 @@ export function cardDetails(e, shownTraits, close, { onMap = false } = {}) {
   for (const p of people) (byRole[p.role] ||= []).push(p);
   const rest = [...TRAITS, ...MORE_TRAITS].filter(([k]) => e.features.has(k) && !shownTraits.includes(k));
   const venue = e.venue;
-  const organisers = byRole.organiser || [];
+  const organisers = byRole[KEY.role.ORGANISER] || [];
   const person = p => h('a', { href: artistHref(p.id), class: 'artist' }, p.display_name);
 
   // the code first: it's ours to give, and it's what someone opening the card for it wants
   const copy = h('button', { type: 'button', class: 'link copy', onclick: () => navigator.clipboard?.writeText(e.promo.code)
     .then(() => { copy.textContent = 'Copied'; setTimeout(() => { copy.textContent = 'Copy'; }, 2000); }) }, 'Copy');
   return h('div', { class: 'card-details' },
-    e.promo ? h('p', { class: 'promo' }, icon(TRAITS.find(([k]) => k === 'promo_code')[2]), 'Promo code ', h('code', {}, e.promo.code),
+    e.promo ? h('p', { class: 'promo' }, icon(featureIcon(KEY.feature.PROMO_CODE)), text('feature', KEY.feature.PROMO_CODE), ' ', h('code', {}, e.promo.code),
       e.promo.offer ? ` · ${e.promo.offer}` : null, ' ', copy) : null,
     whoIsGoing(e),
-    ROLES.filter(([r]) => byRole[r]).map(([r, label]) => h('section', { class: 'roster' },
-      h('h4', {}, label, h('span', { class: 'n' }, byRole[r].length)),
+    ROLES.filter(r => byRole[r]).map(r => h('section', { class: 'roster' },
+      h('h4', {}, text('role', r), h('span', { class: 'n' }, byRole[r].length)),
       h('ul', {}, byRole[r].map(p => h('li', {}, person(p),
         p.home_country ? h('span', { class: 'flag', title: countryName(p.home_country) }, ' ', flag(p.home_country)) : null,
         p.bookings > 1 ? h('span', { class: 'bk' }, ` · ${p.bookings} festivals`) : null))))),
@@ -41,9 +44,9 @@ export function cardDetails(e, shownTraits, close, { onMap = false } = {}) {
     rest.length ? h('ul', { class: 'traits' }, traitItems(rest, e)) : null,
     venue || organisers.length ? h('p', { class: 'practical' },
       venue ? ['Venue: ', venue] : null, venue && organisers.length ? ' · ' : null,
-      organisers.length ? ['Organised by ', ...organisers.flatMap((p, i) => [i ? ', ' : '', person(p)])] : null) : null,
+      organisers.length ? [text('role', KEY.role.ORGANISER), ' ', ...organisers.flatMap((p, i) => [i ? ', ' : '', person(p)])] : null) : null,
     h('div', { class: 'links' },
       h('p', {}, onMap ? null : [h('a', { href: eventOnMapHref(e.id) }, 'See it on the map'), ' · '],
-        h('a', { href: e.url, target: '_blank', rel: 'noopener' }, 'Kizomba-world ↗')),
+        h('a', { href: e.url, target: '_blank', rel: 'noopener' }, 'Kizomba-world', away())),
       close));
 }

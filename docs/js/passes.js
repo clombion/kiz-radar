@@ -1,15 +1,14 @@
-// What a festival's passes cost (event_passes and pass_tiers, from the prices pass), worked out on the day the page
-// is viewed: a card prices one pass at today's tier, and a quick view lists each pass at today's price and its next
-// change.
-//
-// Today's tier: a tier applies from its valid_from (else the day after the tier before it ends) to its valid_until
-// (else the day before the tier after it starts); door prices apply during the festival. Of the tiers that apply
-// today and aren't sold out, the cheapest; when several undated tiers apply, the price reads "from". When none
-// applies yet, the first one to come. The next change is the first later tier, not sold out, that costs more.
+// What a festival's passes cost (event_passes and pass_tiers), on the day the page is viewed (pricing.js): what its
+// card says of its price, and a quick view listing each pass at today's price and its next change. Every word of a
+// state is pipeline/states.py's.
 import { q } from './db.js';
-import { h, dayMonth, dayRange, today, addDays } from './ui.js';
+import { h, away, dayMonth, dayRange } from './ui.js';
+import { today } from './days.js';
 import { money } from './money.js';
 import { modal } from './modal.js';
+import { tierNow, priceLine, nextChange } from './pricing.js';
+import { KEY } from './states.js';
+import { say, text } from './wording.js';
 
 let byEvent;
 function load() {
@@ -20,60 +19,24 @@ function load() {
 }
 const passesOf = eventId => { load(); return byEvent[eventId] || []; };
 
-// each tier's first and last day (null: open), from its own dates or its neighbours'
-function windows(pass, e) {
-  const sold = pass.tiers.filter(t => !t.door);
-  return pass.tiers.map(t => {
-    if (t.door) return { ...t, lo: e.start_date, hi: e.end_date };
-    const i = sold.indexOf(t), prev = sold[i - 1], next = sold[i + 1];
-    return { ...t, lo: t.valid_from ?? (prev?.valid_until ? addDays(prev.valid_until, 1) : null),
-      hi: t.valid_until ?? (next?.valid_from ? addDays(next.valid_from, -1) : null) };
-  });
-}
-const cheapest = ts => ts.reduce((a, b) => (b.amount < a.amount ? b : a));
+// what the card says of a festival's price today (pricing.js priceLine)
+export const priceToday = e => priceLine(e, passesOf(e.id), today());
 
-// A pass's price today: { tier, from (several undated tiers apply), next }, or { soldOut }, or null when every dated
-// tier has ended and there is no door price.
-function tierNow(pass, e) {
-  const ts = windows(pass, e), day = today();
-  const open = ts.filter(t => !t.sold_out);
-  if (!open.length) return { soldOut: true };
-  const now = open.filter(t => (t.lo == null || t.lo <= day) && (t.hi == null || day <= t.hi) && (!t.door || day >= e.start_date));
-  const later = open.filter(t => t.lo != null && t.lo > day).sort((a, b) => a.lo.localeCompare(b.lo));
-  const tier = now.length ? cheapest(now) : later[0];
-  if (!tier) return null;
-  const next = ts.slice(ts.indexOf(tier) + 1).find(t => !t.sold_out && t.amount > tier.amount && (t.lo == null || t.lo > day));
-  return { tier, from: now.filter(t => t.lo == null && t.hi == null).length > 1, next };
-}
-
-// The pass a card prices (a full pass that doesn't say for how many is for one): the per-person full pass (the Kizomba
-// one when a festival of several styles sells one, then the longest when sold in several lengths; another style's
-// only when there is no other), else the cheapest per-person package with a hotel; with its price today. Null when
-// the festival gives no price or it is over.
-export function priceNow(e) {
-  if (!e.upcoming) return null;
-  const ps = passesOf(e.id).filter(p => p.group_size === 1 || (p.group_size == null && p.kind === 'full'));
-  const rank = p => p.style === 'kizomba' ? 0 : p.style == null ? 1 : 2;
-  const full = ps.filter(p => p.kind === 'full' && !p.includes_hotel).sort((a, b) => rank(a) - rank(b) || (b.days ?? 99) - (a.days ?? 99));
-  const pass = full[0] || ps.filter(p => p.kind === 'package').sort((a, b) => cheapest(a.tiers).amount - cheapest(b.tiers).amount)[0];
-  const now = pass && tierNow(pass, e);
-  return now && { pass, hotel: pass.kind === 'package' || !!pass.includes_hotel, ...now };
-}
-
-// when a price changes: "from 15 Dec", "at the door", "later"
-const changeWhen = t => t.door ? 'at the door' : t.lo ? `from ${dayMonth(t.lo)}` : 'later';
-// the card's note of it: "price goes up 15 Dec", "price is higher at the door"
-export const riseNote = t => t.door ? 'price is higher at the door' : t.lo ? `price goes up ${dayMonth(t.lo)}` : 'price goes up later';
+// a tier's price change, in the card's words ("price goes up 15 Dec") or the passes view's form of them, with its price
+// ("then 120 € from 15 Dec")
+const change = t => ({ day: t.lo && dayMonth(t.lo), price: money(t.amount, t.currency) });
+export const riseNote = t => text('next_change', nextChange(t), change(t));
+const thenNote = t => text('next_change', nextChange(t), change(t), 'then');
 
 // ----- the quick view: each pass at today's price and its next change -----
-const KIND = { full: 'Full pass', party: 'Party pass', day: 'Day pass', workshop: 'Workshop pass', package: 'Package', other: 'Pass' };
-const STYLE = { kizomba: 'Kizomba', zouk: 'Zouk', bachata: 'Bachata', salsa: 'Salsa', other: 'Other style' };
-const forWhom = p => p.group_size == null || p.group_size === 1 ? null : p.group_size === 2 ? 'for a couple' : `for ${p.group_size}`;
 // a day or other pass by its own name ("20.Nov Friday PARTY"); the others by kind, style, length and for whom, or by
 // their own name when that alone would read the same as another pass's
-const passName = (p, own = false) => [own || ['day', 'other'].includes(p.kind) ? p.label || KIND[p.kind] : KIND[p.kind],
-  p.style && !(own || ['day', 'other'].includes(p.kind)) ? STYLE[p.style] : null, p.days > 1 ? `${p.days} days` : null, forWhom(p),
-  p.includes_hotel && p.kind !== 'package' ? 'with hotel' : null].filter(Boolean).join(' · ');
+const ownName = (p, own) => own || [KEY.pass_kind.DAY, KEY.pass_kind.OTHER].includes(p.kind);
+const passName = (p, own = false) => [ownName(p, own) ? p.label || text('pass_kind', p.kind) : text('pass_kind', p.kind),
+  p.style && !ownName(p, own) ? text('style', p.style) : null, p.days > 1 ? `${p.days} days` : null,
+  text('people', p.people, { n: p.group_size }),
+  p.kind !== KEY.pass_kind.PACKAGE ? text('hotel', p.includes_hotel ? KEY.hotel.INCLUDED : KEY.hotel.NONE) : null]
+  .filter(Boolean).join(' · ');
 
 let view;
 function passesDialog() {
@@ -96,21 +59,21 @@ export function openPasses(e, from) {
   // prices read from the ticket page say when, since the page may have moved on since, and whether it shows
   // tickets not read yet
   const page = q('SELECT page, reseller, read_on, unread FROM ticket_pages WHERE event_id = ?', [e.id])[0];
-  v.note.textContent = page ? `Prices from ${page.reseller ? `${page.reseller}, a reseller selling at its own prices,`
-      : 'the festival’s ticket page,'} as of ${dayMonth(page.read_on)}`
-      + (page.unread ? `; the page has ${page.unread === 1 ? 'a new ticket' : 'new tickets'}, not read yet` : '')
-      + '; check before buying.'
-    : 'Prices as the festival lists them; check before buying.';
+  const source = page ? KEY.pass_source.TICKET_PAGE : KEY.pass_source.DESCRIPTION;
+  v.note.textContent = [text('pass_source', source, page && { reseller: page.reseller, day: dayMonth(page.read_on) },
+    page?.reseller ? 'reseller' : null), page?.unread ? `${text('ticket', KEY.ticket.UNREAD)}.` : null,
+  'Check before buying.'].filter(Boolean).join(' ');
   v.link.href = page ? page.page : e.url;
-  v.link.textContent = page ? (page.reseller ? `${page.reseller} ↗` : 'The ticket page ↗') : 'The festival on kizomba-world ↗';
-  const rows = passesOf(e.id).map(p => [p, tierNow(p, e)]).filter(([, now]) => now);
+  v.link.replaceChildren(page?.reseller || text('pass_source', source, {}, 'link'), away());
+  const day = today();
+  const rows = passesOf(e.id).map(p => [p, tierNow(p, e, day)]).filter(([, now]) => now.state !== KEY.tier_today.ENDED);
   v.body.replaceChildren(rows.length ? h('ul', { class: 'pass-rows' }, rows.map(([p, now]) => h('li', {},
     h('span', { class: 'pass-name' }, passName(p, rows.filter(([q]) => passName(q) === passName(p)).length > 1)),
-    now.soldOut ? h('span', { class: 'muted' }, 'sold out')
-      : h('span', { class: 'pass-now' }, now.from ? 'from ' : null, h('strong', {}, money(now.tier.amount, now.tier.currency)),
-        now.tier.fee ? h('span', { class: 'muted' }, ` incl. ${money(now.tier.fee, now.tier.currency)} fee`) : null,
-        now.next ? h('span', { class: 'muted' }, ` · then ${money(now.next.amount, now.next.currency)} ${changeWhen(now.next)}`) : null))))
-    : h('p', { class: 'muted' }, 'No passes on sale any more.'));
+    now.state === KEY.tier_today.SOLD_OUT ? h('span', { class: 'muted' }, text('tier_today', now.state))
+      : h('span', { class: 'pass-now' }, say('tier_today', now.state, { price: h('strong', {}, money(now.tier.amount, now.tier.currency)) }),
+        now.tier.fee ? h('span', { class: 'muted' }, ' ', text('fee', KEY.fee.INCLUDED, { fee: money(now.tier.fee, now.tier.currency) })) : null,
+        now.next ? h('span', { class: 'muted' }, ` · ${thenNote(now.next)}`) : null))))
+    : h('p', { class: 'muted' }, text('tier_today', KEY.tier_today.ENDED, {}, 'all')));
   v.body.scrollTop = 0;
   v.m.open(from);
 }

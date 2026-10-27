@@ -18,6 +18,9 @@ export function h(tag, attrs = {}, ...kids) {
   return el;
 }
 
+// the arrow after words that lead off the site, shown and not read out (the link's own words say where it goes)
+export const away = () => h('span', { 'aria-hidden': 'true' }, ' ↗');
+
 export const flag = cc => cc && cc.length === 2
   ? String.fromCodePoint(...[...cc.toUpperCase()].map(c => 0x1F1E6 + c.charCodeAt(0) - 65)) : '';
 
@@ -50,11 +53,3 @@ export function flightsUrl(airport, depart, ret) {
   const qs = `Flights from ${home().code} to ${airport} on ${depart} through ${ret}`;
   return `https://www.google.com/travel/flights?q=${encodeURIComponent(qs)}&curr=${currency}`;
 }
-
-export function addDays(iso, n) {
-  const d = new Date(iso.slice(0, 10) + 'T12:00Z');
-  d.setUTCDate(d.getUTCDate() + n);
-  return d.toISOString().slice(0, 10);
-}
-
-export const today = () => new Date().toISOString().slice(0, 10);

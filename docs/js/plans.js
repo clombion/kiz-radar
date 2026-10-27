@@ -5,6 +5,8 @@ import { q, one } from './db.js';
 import { h, flag, countryName, dayRange } from './ui.js';
 import { personHref, artistHref, eventOnMapHref } from './routes.js';
 import { modal } from './modal.js';
+import { KEY } from './states.js';
+import { text } from './wording.js';
 
 let byEvent, couples;
 function load() {
@@ -105,7 +107,9 @@ function peekGroup(g, from, back) {
   // a line about them, from their artist record when they have one
   const artistId = g.artist || person(g.people[0].key)?.artists[0]?.id;
   const a = artistId && one('SELECT st.teacher, st.dj, st.home_country, a.kind FROM artist_stats st JOIN artists a ON a.id = st.artist_id WHERE a.id = ?', [artistId]);
-  const role = a && (a.teacher && a.dj ? 'Teacher & DJ' : a.dj ? 'DJ' : a.teacher ? 'Teacher' : 'Performer') + (g.people.length > 1 ? 's' : '');
+  const booked = a && [a.teacher && KEY.role.TEACHER, a.dj && KEY.role.DJ].filter(Boolean);
+  const role = a && (booked.length ? booked : [KEY.role.PERFORMER])
+    .map(r => text('role', r, {}, g.people.length > 1 ? null : 'singular')).join(' & ');
   const sub = a ? [role, a.home_country ? [' from ', flag(a.home_country), ' ', countryName(a.home_country)] : null] : 'Shares their festival plans';
   show(from, { faces: faces(g.people), title: g.name, sub,
     body: [back || null, h('h3', {}, `Coming up · ${byEvent.size}`),

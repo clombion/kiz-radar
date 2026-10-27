@@ -98,6 +98,10 @@ def test_a_prompt_lists_the_states_in_key_order_and_genres_under_their_style():
     assert genres.index('`semba`') < genres.index('`zouk`') and 'Kizomba' in genres
 
 
+def test_the_sites_module_is_the_table():
+    assert (ROOT / 'docs/js/states.js').read_text() == states.js_module()
+
+
 def test_total_names_what_a_map_misses_or_has_too_many_of():
     with pytest.raises(LookupError, match='closed'):
         states.total('sales', {s: 1 for s in Sales if s != Sales.CLOSED}, 'here')
