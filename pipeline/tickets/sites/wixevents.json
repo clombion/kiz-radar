@@ -1,0 +1,62 @@
+{
+  "site": "wixevents",
+  "hosts": [
+    "www.kizztalk.de",
+    "kizztalk.de"
+  ],
+  "reseller": null,
+  "widget": null,
+  "visible": false,
+  "wait": 10,
+  "open": "[data-hook=\"more-price-options-button\"]",
+  "symbols": {
+    "€": "EUR",
+    "£": "GBP",
+    "$": "USD",
+    "CHF": "CHF"
+  },
+  "row": "li[data-hook=\"ticket-pricing-option\"]",
+  "api": null,
+  "fields": {
+    "key": {
+      "css": "span[id^=\"label-price-\"]",
+      "attr": "id",
+      "match": "label-price-(.+)"
+    },
+    "name": {
+      "css": "h3[data-hook=\"name\"], #label-price-{key}",
+      "attr": null,
+      "match": null,
+      "up": "li[data-hook=\"ticket\"]",
+      "all": true
+    },
+    "price": {
+      "css": "p[data-hook=\"price\"]",
+      "attr": null,
+      "match": null
+    },
+    "amount": {
+      "css": "p[data-hook=\"price\"]",
+      "attr": null,
+      "match": "([\\d.,]+)"
+    },
+    "currency": {
+      "css": "p[data-hook=\"price\"]",
+      "attr": null,
+      "match": "([€£$]|CHF)"
+    },
+    "fee": {
+      "css": "p[data-hook=\"wix-fee\"]",
+      "attr": null,
+      "match": "([\\d.,]+)"
+    },
+    "alt_price": null,
+    "alt_amount": null,
+    "alt_currency": null,
+    "sold_out": {
+      "css": null,
+      "attr": null,
+      "match": "([Ss]old [Oo]ut|[Aa]usverkauft|AUSVERKAUFT|SOLD OUT)"
+    }
+  }
+}

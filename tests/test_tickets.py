@@ -647,3 +647,16 @@ def test_a_festivals_styles_are_its_genres_styles():
                      "insert into event_genres values (1, 'urbankiz'), (1, 'semba'), (2, 'kizomba'), (2, 'zouk'), (2, 'kompa');")
     assert prices.styles(db, 1) == ['kizomba']
     assert prices.styles(db, 2) == ['kizomba', 'other', 'zouk']
+
+
+@pytest.mark.parametrize('field, ok', [
+    ({'css': 'td', 'attr': None, 'match': '([Ss]old [Oo]ut)'}, True),
+    ({'css': 'td', 'attr': None, 'match': '(?i)(sold out)'}, False),       # JavaScript has no inline flags
+    ({'css': 'h3, span', 'attr': None, 'match': None, 'all': True, 'up': 'li'}, True),
+    ({'css': 'h3, span', 'attr': None, 'match': '(\\d+)', 'all': True}, False),
+    ({'css': 'h3', 'attr': None, 'match': None, 'page': True, 'up': 'li'}, False),
+])
+def test_a_recipe_field_is_one_the_page_can_run(field, ok):
+    recipe = json.loads((tickets.SITES / 'tickera.json').read_text())
+    recipe['fields']['sold_out'] = field
+    assert (tickets.problems(tickets.SITE_SCHEMA, recipe) == []) == ok

@@ -1,0 +1,55 @@
+{
+  "site": "tangierlatinfestival",
+  "hosts": [
+    "www.tangierlatinfestival.com",
+    "tangierlatinfestival.com"
+  ],
+  "reseller": null,
+  "widget": null,
+  "visible": false,
+  "wait": 8,
+  "open": null,
+  "symbols": {
+    "€": "EUR"
+  },
+  "row": "div.group.relative[class*=\"rounded-[2rem]\"]",
+  "api": null,
+  "fields": {
+    "key": {
+      "css": "h3, h3 + p, ul li:first-child span",
+      "attr": null,
+      "match": null,
+      "all": true
+    },
+    "name": {
+      "css": "h3, h3 + p, ul li:first-child span",
+      "attr": null,
+      "match": null,
+      "all": true
+    },
+    "price": {
+      "css": "div.items-end",
+      "attr": null,
+      "match": null
+    },
+    "amount": {
+      "css": "div.items-end span",
+      "attr": null,
+      "match": "([\\d.,]+)"
+    },
+    "currency": {
+      "css": "div.items-end",
+      "attr": null,
+      "match": "([€$£])"
+    },
+    "fee": null,
+    "alt_price": null,
+    "alt_amount": null,
+    "alt_currency": null,
+    "sold_out": {
+      "css": null,
+      "attr": null,
+      "match": "([Ss]old [Oo]ut|SOLD OUT|[Cc]omplet|COMPLET)"
+    }
+  }
+}

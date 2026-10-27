@@ -18,7 +18,7 @@
   ],
   "$defs": {
     "field": {
-      "description": "Where a row's value is: the first element matching css inside the row (the row itself when css is null), its attribute attr (its text when attr is null), and in that the first group of match (all of it when match is null). css and match may name the row's other fields as {field} and the row element's attributes as {@attr}.",
+      "description": "Where a row's value is: the first element matching css inside the row, or inside its enclosing element up (the row or that element itself when css is null), its attribute attr (its text when attr is null), and in that the first group of match (all of it when match is null). css and match may name the row's other fields as {field} and the row element's attributes as {@attr}.",
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -46,13 +46,54 @@
             "string",
             "null"
           ],
-          "minLength": 1
+          "minLength": 1,
+          "not": {
+            "type": "string",
+            "pattern": "\\(\\?[aimsux]+[):]"
+          },
+          "description": "A JavaScript regular expression, run in the page: no inline flags such as (?i); write [Ss]old [Oo]ut instead."
         },
         "page": {
           "type": "boolean",
           "description": "Read every match on the page (joined by line) instead of the first inside the row; for values a page keeps apart from its rows, such as its script data."
+        },
+        "up": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Read inside the row's nearest enclosing element matching this selector instead of the row: for values a row's group holds, such as the ticket type a price option belongs to."
+        },
+        "all": {
+          "type": "boolean",
+          "description": "Every match of css inside the row (or up), in page order, joined by ' · ', instead of the first: a name a page splits in two, such as a ticket type and its price option. No match then."
         }
-      }
+      },
+      "allOf": [
+        {
+          "not": {
+            "required": [
+              "page",
+              "up"
+            ]
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "all"
+            ]
+          },
+          "then": {
+            "properties": {
+              "match": {
+                "type": "null"
+              },
+              "css": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
     },
     "api_field": {
       "description": "Where a ticket's value is when the site's API gives the tickets: json, a dotted path into the ticket; page, a pattern on the festival's page (its first group); or text, a template naming dotted paths in braces (\"{price.price} € + {distributionFee} € fee\"); with match, the first group of a pattern on that value.",

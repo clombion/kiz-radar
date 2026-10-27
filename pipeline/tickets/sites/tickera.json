@@ -1,0 +1,55 @@
+{
+  "site": "tickera",
+  "hosts": [
+    "pure-kizzz.de",
+    "www.pure-kizzz.de"
+  ],
+  "reseller": null,
+  "widget": null,
+  "visible": false,
+  "wait": 4,
+  "open": null,
+  "symbols": {
+    "€": "EUR",
+    "£": "GBP",
+    "$": "USD"
+  },
+  "row": "table.event_tickets tr:has(td[data-column])",
+  "api": null,
+  "fields": {
+    "key": {
+      "css": "td[data-column=\"Ticket Type\"]",
+      "attr": null,
+      "match": null
+    },
+    "name": {
+      "css": "td[data-column=\"Ticket Type\"]",
+      "attr": null,
+      "match": null
+    },
+    "price": {
+      "css": "td[data-column=\"Price\"]",
+      "attr": null,
+      "match": null
+    },
+    "amount": {
+      "css": "td[data-column=\"Price\"]",
+      "attr": null,
+      "match": "([\\d.,]+)"
+    },
+    "currency": {
+      "css": "td[data-column=\"Price\"]",
+      "attr": null,
+      "match": "([€£$])"
+    },
+    "fee": null,
+    "alt_price": null,
+    "alt_amount": null,
+    "alt_currency": null,
+    "sold_out": {
+      "css": "td[data-column=\"Cart\"]",
+      "attr": null,
+      "match": "([Ss]old [Oo]ut|SOLD OUT|[Aa]usverkauft|AUSVERKAUFT)"
+    }
+  }
+}

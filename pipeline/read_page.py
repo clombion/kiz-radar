@@ -75,9 +75,12 @@ ROWS_JS = """([row, fields]) => {
   const get = (el, f, vals) => {
     if (!f) return null;
     const css = f.css && fill(f.css, el, vals, false);
-    const targets = f.page ? [...document.querySelectorAll(css)] : [css ? el.querySelector(css) : el];
+    const base = f.up ? el.closest(f.up) : el;
+    const targets = f.page ? [...document.querySelectorAll(css)] : !base ? [] :
+      f.all ? [...base.querySelectorAll(css)] : [css ? base.querySelector(css) : base];
     const vs = targets.filter(Boolean).map(t => f.attr ? t.getAttribute(f.attr) : t.innerText).filter(v => v != null);
     if (!vs.length) return null;
+    if (f.all) return vs.map(v => v.trim()).join(' · ');
     const m = f.match ? vs.join('\\n').match(new RegExp(fill(f.match, el, vals, true))) : [vs.join('\\n')];
     return m ? (m[1] ?? m[0]) : null;
   };
