@@ -1,0 +1,15 @@
+# The Markdown as mdformat writes it (mise run format:md). Prompt templates and the prompts asked are left as they
+# are: their text is what Claude is asked, and its hash names it (pipeline/prompt.py), so only an edit to the
+# prompt may change it. The fonts' licence is the foundry's text.
+wrap = 120
+end_of_line = "lf"
+number = true  # numbered steps keep their numbers in the source
+exclude = [
+    "pipeline/extract/prompts/*.md",
+    "pipeline/tickets/prompts/*.md",
+    "pipeline/prompts/asked/[0-9a-f]*.md",
+    "docs/fonts/LICENSE.md",
+]
+
+[plugin.tables]
+compact_tables = true

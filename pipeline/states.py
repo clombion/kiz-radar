@@ -831,7 +831,7 @@ ENUMS = {p.enum: (p.name, False) for p in POINTS} | {'ExtractedFeature': ('featu
 def points_table() -> str:
     """The data points as a Markdown table, for pipeline/STATES.md: what one instance is, its states, its producer."""
     rows = [f'| **{p.name}**, {p.of} | {", ".join(f"`{k}`" for k in keys(p.name))} | {p.produced_by} |' for p in POINTS]
-    return '\n'.join(['| Data point | States | Produced by |', '|---|---|---|', *rows])
+    return '\n'.join(['| Data point | States | Produced by |', '| -- | -- | -- |', *rows])  # as mdformat writes it
 
 
 def enum_keys(name: str) -> list[str]:

@@ -16,6 +16,8 @@ dev = [
     "pytest==8.4.2",
     "ruff==0.17.3",
     "basedpyright==1.40.2",
+    "mdformat==1.0.0",
+    "mdformat-gfm==1.0.0",
     {include-group = "tickets"},
     {include-group = "artists"},
 ]

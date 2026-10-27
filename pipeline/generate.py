@@ -24,9 +24,9 @@ END = '<!-- points:end -->'
 def states_md() -> str:
     """pipeline/STATES.md with its table of the data points written between its markers; the rest is prose."""
     text = STATES_MD.read_text(encoding='utf-8')
-    head, rest = text.split(BEGIN + '\n', 1)
+    head, rest = text.split(BEGIN, 1)
     _, tail = rest.split(END, 1)
-    return f'{head}{BEGIN}\n{states.points_table()}\n{END}{tail}'
+    return f'{head}{BEGIN}\n\n{states.points_table()}\n\n{END}{tail}'
 
 
 FILES: dict[Path, Callable[[], str]] = {

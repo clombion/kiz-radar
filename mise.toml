@@ -21,6 +21,10 @@ run = "uv run --group dev ruff check"
 description = "The Python code as ruff formats it"
 run = "uv run --group dev ruff format --check"
 
+[tasks."format:md"]
+description = "The Markdown as mdformat writes it (.mdformat.toml), the prompts left as they are"
+run = "git ls-files -z '*.md' | xargs -0 uv run --group dev mdformat --check"
+
 [tasks."types:py"]
 description = "basedpyright, strict, on the pipeline and its tests"
 run = "uv run --group dev basedpyright"
@@ -39,7 +43,7 @@ run = "uv run -m pipeline.generate --check"
 
 [tasks."check:fast"]
 description = "The quick checks, before each commit"
-depends = ["lint:py", "format:py", "types:py", "test:site", "generate:check"]
+depends = ["lint:py", "format:py", "format:md", "types:py", "test:site", "generate:check"]
 
 [tasks.check]
 description = "Every check"
