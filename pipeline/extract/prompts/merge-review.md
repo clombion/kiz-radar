@@ -1,4 +1,4 @@
-# merge-review-v2: decide whether two artist records are the same artist
+# The merge review: decide whether two artist records are the same artist
 
 The events database lists dance artists (teachers, DJs, performers) extracted from festival descriptions.
 A script grouped identical spellings; it could not decide the pairs in your batch. For each pair, decide

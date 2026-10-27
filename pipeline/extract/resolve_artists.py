@@ -24,8 +24,9 @@ Matching rules:
   - Near-matches are written to artist_merge_candidates, only when backed by evidence (a shared stated
     country, events in a shared country, or a shared partner), and only merged when pipeline/extract/merges.csv says so.
 
-pipeline/extract/merges.csv columns: key_a, key_b, decision (merge | separate), note. Keys are match_key values. A
-review that could not tell (unsure) is never stored: the pair stays in artist_merge_candidates, undecided.
+pipeline/extract/merges.csv columns: key_a, key_b, decision (merge | separate), prompt (the review prompt's hash, in
+pipeline/prompts/asked/; empty when decided by hand), note. Keys are match_key values. A review that could not tell
+(unsure) is never stored: the pair stays in artist_merge_candidates, undecided.
 
 pipeline/extract/groups.csv names an act that several people perform as (a DJ duo booked under one name):
 group_key, display_name, members and aliases (both ';'-separated match_key values), note. Every alias
@@ -129,7 +130,7 @@ CREATE TABLE artist_merge_decisions (
     key_a TEXT NOT NULL,          -- match_key values, as in artist_keys
     key_b TEXT NOT NULL,
     decision TEXT NOT NULL CHECK (decision IN ({stored_decision})),
-    source TEXT NOT NULL,         -- the review prompt version that decided it, or 'manual'
+    prompt TEXT,                  -- the hash of the review prompt that decided it, NULL when decided by hand
     note TEXT,
     PRIMARY KEY (key_a, key_b)
 );
@@ -360,10 +361,9 @@ TABLE_DOCS = {
     'artist_events': "Every event an artist appears at: directly (via 'direct') or as a member of a couple or group "
     "(via 'member', via_artist_id = the couple or group). Use it for a person's full event history.",
     'artist_merge_candidates': 'Pairs of name keys that may be the same artist, with the reason, similarity and '
-    'evidence; '
-    'decision is NULL when no merge or separate decision exists (left apart).',
-    'artist_merge_decisions': 'Every merge or separate decision applied, with its source (a review prompt version or '
-    "'manual') and rationale.",
+    'evidence; decision is NULL when no merge or separate decision exists (left apart).',
+    'artist_merge_decisions': 'Every merge or separate decision applied, with the review prompt that made it (its '
+    'hash; null when it was decided by hand) and rationale.',
     'artist_group_definitions': 'Named groups defined by hand (a DJ duo booked under one name), with a note; members '
     'are '
     'in couple_members.',
@@ -431,7 +431,7 @@ def record_steps(con: sqlite3.Connection, resolved: Resolved) -> None:
                 'mentions': n_mentions,
                 'artists_by_kind': kinds_count,
                 'merge_decisions': {str(d): sum(1 for r in rows if r.decision == d) for d in STORED},
-                'manual_decisions': sum(1 for r in rows if r.source == 'manual'),
+                'manual_decisions': sum(1 for r in rows if r.prompt is None),
                 'named_groups': n_groups,
                 'candidates_listed': n_candidates,
                 'same_name_pairs_kept_apart_without_evidence': n_unsupported,
@@ -777,7 +777,7 @@ def main() -> None:
     _ = con.executemany('INSERT OR REPLACE INTO artist_merge_candidates VALUES (?, ?, ?, ?, ?, ?, ?, ?)', found)
     _ = con.executemany(
         'INSERT OR REPLACE INTO artist_merge_decisions VALUES (?, ?, ?, ?, ?)',
-        [(r.key_a, r.key_b, r.decision, r.source or 'manual', r.note) for r in MergeRow.read(MERGES)],
+        [(r.key_a, r.key_b, r.decision, r.prompt, r.note) for r in MergeRow.read(MERGES)],
     )
     for g in groups:
         _ = con.execute(

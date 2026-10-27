@@ -1,56 +1,355 @@
 {
  "batch": "merge-review-010",
- "prompt_version": "merge-review-v1",
  "decisions": [
-  {"pair_id": 451, "key_a": "p:nicoberrettoni", "key_b": "p:nicolaberrettoni", "decision": "merge", "rationale": "Nico is the Italian diminutive of Nicola, both sides carry the same surname Berrettoni, and both are listed in Italy."},
-  {"pair_id": 452, "key_a": "p:nicole@dance", "key_b": "p:nicole@nicole+wookie", "decision": "unsure", "rationale": "Only the first name Nicole is shared; side A is a solo teacher with Bulgaria as the stated country and side B is a couple with Wookie, so the evidence does not settle identity."},
-  {"pair_id": 453, "key_a": "p:nii@astrid+nii", "key_b": "p:nii@dance", "decision": "unsure", "rationale": "Nii is shared and Ghana appears on both sides, but side A is a Kizomba/Semba couple with Astrid while side B is a solo Urbankiz/Konpa act, so the styles do not line up."},
-  {"pair_id": 454, "key_a": "p:nolimit", "key_b": "p:nolimits", "decision": "merge", "rationale": "DJ No Limit and DJ No Limits are the same stage name differing only by a trailing s, both DJs, both in Geneva or nearby Montpellier."},
-  {"pair_id": 455, "key_a": "p:nuno@catia+nuno", "key_b": "p:nuno@nagyla+nuno", "decision": "unsure", "rationale": "Only the first name Nuno is shared and the partners Catia and Nagyla differ, a common name with Portugal as the only shared country, so identity is not settled."},
-  {"pair_id": 456, "key_a": "p:nuno@catia+nuno", "key_b": "p:nuno@nuno+sarai", "decision": "unsure", "rationale": "Only the first name Nuno is shared across couples with different partners (Catia and Sarai), a common name with Portugal as the only shared country."},
-  {"pair_id": 457, "key_a": "p:nuno@catia+nuno", "key_b": "p:nunopesqueira", "decision": "unsure", "rationale": "Side B gives the full name Nuno Pesqueira as a solo Portuguese teacher while side A is a couple with Catia, and no event or partner evidence links them."},
-  {"pair_id": 458, "key_a": "p:nuno@catia+nuno", "key_b": "p:nunosilva", "decision": "unsure", "rationale": "Side B gives the full name Nuno Silva as a solo Portuguese teacher while side A is a couple with Catia, and nothing beyond the first name and Portugal links them."},
-  {"pair_id": 459, "key_a": "p:nuno@nagyla+nuno", "key_b": "p:nuno@nuno+sarai", "decision": "unsure", "rationale": "Only the first name Nuno is shared across couples with different partners (Nagyla and Sarai), a common name with Portugal as the only shared country."},
-  {"pair_id": 460, "key_a": "p:nuno@nagyla+nuno", "key_b": "p:nunopesqueira", "decision": "unsure", "rationale": "Side B gives the full name Nuno Pesqueira as a solo Portuguese teacher while side A is a couple with Nagyla, and nothing beyond the first name and Portugal links them."},
-  {"pair_id": 461, "key_a": "p:nuno@nagyla+nuno", "key_b": "p:nunosilva", "decision": "unsure", "rationale": "Side B gives the full name Nuno Silva as a solo Portuguese teacher while side A is a couple with Nagyla, and nothing beyond the first name and Portugal links them."},
-  {"pair_id": 462, "key_a": "p:nuno@nuno+sarai", "key_b": "p:nunopesqueira", "decision": "unsure", "rationale": "Side B gives the full name Nuno Pesqueira as a solo Portuguese teacher while side A is a couple with Sarai, and nothing beyond the first name and Portugal links them."},
-  {"pair_id": 463, "key_a": "p:nuno@nuno+sarai", "key_b": "p:nunosilva", "decision": "unsure", "rationale": "Side B gives the full name Nuno Silva as a solo Portuguese teacher while side A is a couple with Sarai, and nothing beyond the first name and Portugal links them."},
-  {"pair_id": 464, "key_a": "p:oksana@dance", "key_b": "p:oksana@oksana+said", "decision": "merge", "rationale": "The solo Oksana and the Said and Oksana couple share the first name, Ukraine as the stated country, and an overlapping Urban Kiz style."},
-  {"pair_id": 465, "key_a": "p:onclekani", "key_b": "p:unclekani", "decision": "merge", "rationale": "Oncle and Uncle are the French and English forms of the same name Kani, and both sides are listed as France-based teachers."},
-  {"pair_id": 466, "key_a": "p:oscar@claudia+oscar", "key_b": "p:oscaramore", "decision": "unsure", "rationale": "Only the first name Oscar is shared and the partners differ (Claudia on side A, Silvia on side B's couple entry), so the evidence does not settle identity."},
-  {"pair_id": 467, "key_a": "p:panaghiotis@katia+panaghiotis", "key_b": "p:panagiotis@christina+panagiotis", "decision": "unsure", "rationale": "The spelling Panaghiotis is a likely typo of Panagiotis and both are Greek, but the partners Katia and Christina differ and the name is common."},
-  {"pair_id": 468, "key_a": "p:pao@mikiz+pao", "key_b": "p:paolou", "decision": "merge", "rationale": "Pao appears with the same partner Mik'iz in France on both sides and Pao Lou is the same name written in full, so the same couple member is listed under both keys."},
-  {"pair_id": 469, "key_a": "p:paolo@angelica+paolo", "key_b": "p:paolocruz", "decision": "unsure", "rationale": "Both are Italian-linked Paolos, but the partners Angelica and Lanna differ and the shared first name is common, so identity is not settled."},
-  {"pair_id": 470, "key_a": "p:paolo@angelica+paolo", "key_b": "p:paolopetrax", "decision": "unsure", "rationale": "Side B gives the full name Paolo Petrax with Italy as the stated country, while side A is the common first name Paolo with a partner, and nothing else links them."},
-  {"pair_id": 471, "key_a": "p:paolomei", "key_b": "p:paolomeli", "decision": "separate", "rationale": "The surnames Mei and Meli differ by one letter, the partners differ (Kiaraibica and Lucia Tramonte), and the events are different."},
-  {"pair_id": 472, "key_a": "p:paolou", "key_b": "p:paoulou", "decision": "merge", "rationale": "Paou Lou is a spelling variant of Pao Lou, and the same Mik'iz partner appears in the same French festival listings on both sides."},
-  {"pair_id": 473, "key_a": "p:pascal@dj", "key_b": "p:pascalgomis", "decision": "unsure", "rationale": "DJ Pascal and Pascal Gomis share a common first name and France as the stated country, but the surname is absent on side A and the roles differ."},
-  {"pair_id": 474, "key_a": "p:paulo@lenna+paulo", "key_b": "p:paulo@mafalda+paulo", "decision": "unsure", "rationale": "Only the first name Paulo and Portugal are shared, and the partners Lenna and Mafalda differ, so the evidence does not settle identity."},
-  {"pair_id": 475, "key_a": "p:pdjay@enora+pdjay", "key_b": "p:pidjay@enora+pidjay", "decision": "merge", "rationale": "Pdjay and Pidjay are a spelling variant of the same name with the same partner Enora and France as the stated country."},
-  {"pair_id": 476, "key_a": "p:pedro@ana+pedro", "key_b": "p:pedro@ines+pedro", "decision": "unsure", "rationale": "Only the first name Pedro and Portugal are shared, and the partners Ana and Ines differ, a common name."},
-  {"pair_id": 477, "key_a": "p:pierre@dance", "key_b": "p:pierre@pierre+ulyana", "decision": "merge", "rationale": "The solo Pierre and the Pierre and Ulyana couple share the first name, Sweden as the stated country, Gothenburg and Stockholm events, and an overlapping Urban Kiz style."},
-  {"pair_id": 478, "key_a": "p:poema@dj", "key_b": "p:poemabeat", "decision": "merge", "rationale": "DJ Poema and Dj Poema beat are the same stage name with a DJ prefix, both listed with Sweden as the stated country."},
-  {"pair_id": 479, "key_a": "p:poema@dj", "key_b": "p:poemabeats", "decision": "merge", "rationale": "DJ Poema and DJ Poema Beats are the same stage name with a DJ prefix and a trailing word, both DJs with Sweden as the stated country."},
-  {"pair_id": 480, "key_a": "p:poema@dj", "key_b": "p:poemabeatz", "decision": "merge", "rationale": "DJ Poema and DJ Poema Beatz are the same stage name with a DJ prefix and a spelling variant of the suffix, both DJs with Sweden as the stated country."},
-  {"pair_id": 481, "key_a": "p:poemabeat", "key_b": "p:poemabeats", "decision": "merge", "rationale": "Poema beat and Poema Beats are the same DJ name differing only by a trailing s, both DJs with the same Swedish-linked events."},
-  {"pair_id": 482, "key_a": "p:poemabeat", "key_b": "p:poemabeatz", "decision": "merge", "rationale": "Poema beat and Poema Beatz are the same DJ name differing only in the spelling of the suffix, both DJs with Sweden as the stated country."},
-  {"pair_id": 483, "key_a": "p:poemabeats", "key_b": "p:poemabeatz", "decision": "merge", "rationale": "Poema Beats and Poema Beatz are the same DJ name differing only in the spelling of the suffix, both DJs with Sweden as the stated country."},
-  {"pair_id": 484, "key_a": "p:portu@dj", "key_b": "p:portu@mada+portu", "decision": "merge", "rationale": "DJ Portu and Portu and Mada are listed at the same Constance festival on the same date, the DJ-and-dancer case, with Spain as the stated country on both sides."},
-  {"pair_id": 485, "key_a": "p:prince@dj", "key_b": "p:prince@prince+vicky", "decision": "unsure", "rationale": "The stage name Prince is generic and shared with Italy as the stated country, but side B is a couple with Vicky and nothing else ties the DJ to it."},
-  {"pair_id": 486, "key_a": "p:putox", "key_b": "p:putox@dj", "decision": "merge", "rationale": "DJ Puto X on side A and DJ PUTO-X on side B are the same name with a DJ prefix and a hyphen variant, both listed with France as the stated country."},
-  {"pair_id": 487, "key_a": "p:quinn@dance", "key_b": "p:quinn@david+quinn", "decision": "unsure", "rationale": "Only the first name Quinn and a shared Thailand stated country appear, and the couple with David is not matched by any partner evidence on side A."},
-  {"pair_id": 488, "key_a": "p:radu@judit+radu", "key_b": "p:radu@judith+radu", "decision": "merge", "rationale": "The partner is Radu in both couples and Judit against Judith is a spelling variant of the same partner name, with Romania as the stated country on both sides."},
-  {"pair_id": 489, "key_a": "p:radu@judit+radu", "key_b": "p:radumanole", "decision": "unsure", "rationale": "Radu and Romania are shared, but side A is a couple with Judit while side B gives the full name Radu Manole as a solo teacher, and both are listed at the same Cluj festival."},
-  {"pair_id": 490, "key_a": "p:radu@judith+radu", "key_b": "p:radumanole", "decision": "unsure", "rationale": "Radu and Romania are shared, but side A is a couple with Judith while side B gives the full name Radu Manole as a solo teacher, and both are listed at the same Cluj festival."},
-  {"pair_id": 491, "key_a": "p:rafael@dance", "key_b": "p:rafael@giovana+rafael", "decision": "unsure", "rationale": "Rafael and Brazil are shared, but side A is a solo Kizomba/Urbankiz teacher while side B is a Bachata couple with Giovana, so the styles and the common name do not settle it."},
-  {"pair_id": 492, "key_a": "p:railey@benite+railey", "key_b": "p:railey@beniteb+railey", "decision": "merge", "rationale": "The couple Railey and Benite appears at the same Vienna Crystal Kizomba Congress in both years, and BENITEb is a stray-letter typo of Benite with the Netherlands as the stated country."},
-  {"pair_id": 493, "key_a": "p:ralpbb", "key_b": "p:ralphbb", "decision": "merge", "rationale": "DJ Ralp BB and DJ Ralph BB are a spelling variant of the same DJ name, both France-based with no conflicting evidence."},
-  {"pair_id": 494, "key_a": "p:raul@daniela+raul", "key_b": "p:raultorres", "decision": "unsure", "rationale": "Raul and Colombia are shared, but side A is a teacher in a couple with Daniela while side B is a DJ with the surname Torres, and side A gives no surname."},
-  {"pair_id": 495, "key_a": "p:relampago@dance", "key_b": "p:relampago@dj", "decision": "merge", "rationale": "Relampago the teacher and DJ Relampago are listed at the same Geneva festival on the same date, the DJ-and-dancer case, with Switzerland and Angola as the stated countries."},
-  {"pair_id": 496, "key_a": "p:ricardo@alcpaula+ricardo", "key_b": "p:ricardoferreira", "decision": "unsure", "rationale": "Ricardo and Portugal are shared, but side A is a couple with Alc Paula while side B gives the common surname Ferreira as a solo Kizomba teacher."},
-  {"pair_id": 497, "key_a": "p:richardvooght", "key_b": "p:richardvoogt", "decision": "merge", "rationale": "Vooght and Voogt are a spelling variant of the same surname, with the same first name and both teachers listed at London events."},
-  {"pair_id": 498, "key_a": "p:rico@manon+rico", "key_b": "p:ricosuave", "decision": "merge", "rationale": "Rico & Manon and Rico Suave & Manon share the same partner Manon and the same first name Rico, and both appear at the same London festival series."},
-  {"pair_id": 499, "key_a": "p:ricornelas", "key_b": "p:rornelas", "decision": "merge", "rationale": "Ric. Ornelas and R. Ornelas share the distinctive surname and an initial, and both teach at the Iceland Social Dance in Reykjavik."},
-  {"pair_id": 500, "key_a": "p:riikka@dance", "key_b": "p:riikkamaria", "decision": "merge", "rationale": "Riikka and Riikka Maria share the first name, both are teachers with Finland as the stated country, and the full form only adds a second given name."}
+  {
+   "pair_id": 451,
+   "key_a": "p:nicoberrettoni",
+   "key_b": "p:nicolaberrettoni",
+   "decision": "merge",
+   "rationale": "Nico is the Italian diminutive of Nicola, both sides carry the same surname Berrettoni, and both are listed in Italy."
+  },
+  {
+   "pair_id": 452,
+   "key_a": "p:nicole@dance",
+   "key_b": "p:nicole@nicole+wookie",
+   "decision": "unsure",
+   "rationale": "Only the first name Nicole is shared; side A is a solo teacher with Bulgaria as the stated country and side B is a couple with Wookie, so the evidence does not settle identity."
+  },
+  {
+   "pair_id": 453,
+   "key_a": "p:nii@astrid+nii",
+   "key_b": "p:nii@dance",
+   "decision": "unsure",
+   "rationale": "Nii is shared and Ghana appears on both sides, but side A is a Kizomba/Semba couple with Astrid while side B is a solo Urbankiz/Konpa act, so the styles do not line up."
+  },
+  {
+   "pair_id": 454,
+   "key_a": "p:nolimit",
+   "key_b": "p:nolimits",
+   "decision": "merge",
+   "rationale": "DJ No Limit and DJ No Limits are the same stage name differing only by a trailing s, both DJs, both in Geneva or nearby Montpellier."
+  },
+  {
+   "pair_id": 455,
+   "key_a": "p:nuno@catia+nuno",
+   "key_b": "p:nuno@nagyla+nuno",
+   "decision": "unsure",
+   "rationale": "Only the first name Nuno is shared and the partners Catia and Nagyla differ, a common name with Portugal as the only shared country, so identity is not settled."
+  },
+  {
+   "pair_id": 456,
+   "key_a": "p:nuno@catia+nuno",
+   "key_b": "p:nuno@nuno+sarai",
+   "decision": "unsure",
+   "rationale": "Only the first name Nuno is shared across couples with different partners (Catia and Sarai), a common name with Portugal as the only shared country."
+  },
+  {
+   "pair_id": 457,
+   "key_a": "p:nuno@catia+nuno",
+   "key_b": "p:nunopesqueira",
+   "decision": "unsure",
+   "rationale": "Side B gives the full name Nuno Pesqueira as a solo Portuguese teacher while side A is a couple with Catia, and no event or partner evidence links them."
+  },
+  {
+   "pair_id": 458,
+   "key_a": "p:nuno@catia+nuno",
+   "key_b": "p:nunosilva",
+   "decision": "unsure",
+   "rationale": "Side B gives the full name Nuno Silva as a solo Portuguese teacher while side A is a couple with Catia, and nothing beyond the first name and Portugal links them."
+  },
+  {
+   "pair_id": 459,
+   "key_a": "p:nuno@nagyla+nuno",
+   "key_b": "p:nuno@nuno+sarai",
+   "decision": "unsure",
+   "rationale": "Only the first name Nuno is shared across couples with different partners (Nagyla and Sarai), a common name with Portugal as the only shared country."
+  },
+  {
+   "pair_id": 460,
+   "key_a": "p:nuno@nagyla+nuno",
+   "key_b": "p:nunopesqueira",
+   "decision": "unsure",
+   "rationale": "Side B gives the full name Nuno Pesqueira as a solo Portuguese teacher while side A is a couple with Nagyla, and nothing beyond the first name and Portugal links them."
+  },
+  {
+   "pair_id": 461,
+   "key_a": "p:nuno@nagyla+nuno",
+   "key_b": "p:nunosilva",
+   "decision": "unsure",
+   "rationale": "Side B gives the full name Nuno Silva as a solo Portuguese teacher while side A is a couple with Nagyla, and nothing beyond the first name and Portugal links them."
+  },
+  {
+   "pair_id": 462,
+   "key_a": "p:nuno@nuno+sarai",
+   "key_b": "p:nunopesqueira",
+   "decision": "unsure",
+   "rationale": "Side B gives the full name Nuno Pesqueira as a solo Portuguese teacher while side A is a couple with Sarai, and nothing beyond the first name and Portugal links them."
+  },
+  {
+   "pair_id": 463,
+   "key_a": "p:nuno@nuno+sarai",
+   "key_b": "p:nunosilva",
+   "decision": "unsure",
+   "rationale": "Side B gives the full name Nuno Silva as a solo Portuguese teacher while side A is a couple with Sarai, and nothing beyond the first name and Portugal links them."
+  },
+  {
+   "pair_id": 464,
+   "key_a": "p:oksana@dance",
+   "key_b": "p:oksana@oksana+said",
+   "decision": "merge",
+   "rationale": "The solo Oksana and the Said and Oksana couple share the first name, Ukraine as the stated country, and an overlapping Urban Kiz style."
+  },
+  {
+   "pair_id": 465,
+   "key_a": "p:onclekani",
+   "key_b": "p:unclekani",
+   "decision": "merge",
+   "rationale": "Oncle and Uncle are the French and English forms of the same name Kani, and both sides are listed as France-based teachers."
+  },
+  {
+   "pair_id": 466,
+   "key_a": "p:oscar@claudia+oscar",
+   "key_b": "p:oscaramore",
+   "decision": "unsure",
+   "rationale": "Only the first name Oscar is shared and the partners differ (Claudia on side A, Silvia on side B's couple entry), so the evidence does not settle identity."
+  },
+  {
+   "pair_id": 467,
+   "key_a": "p:panaghiotis@katia+panaghiotis",
+   "key_b": "p:panagiotis@christina+panagiotis",
+   "decision": "unsure",
+   "rationale": "The spelling Panaghiotis is a likely typo of Panagiotis and both are Greek, but the partners Katia and Christina differ and the name is common."
+  },
+  {
+   "pair_id": 468,
+   "key_a": "p:pao@mikiz+pao",
+   "key_b": "p:paolou",
+   "decision": "merge",
+   "rationale": "Pao appears with the same partner Mik'iz in France on both sides and Pao Lou is the same name written in full, so the same couple member is listed under both keys."
+  },
+  {
+   "pair_id": 469,
+   "key_a": "p:paolo@angelica+paolo",
+   "key_b": "p:paolocruz",
+   "decision": "unsure",
+   "rationale": "Both are Italian-linked Paolos, but the partners Angelica and Lanna differ and the shared first name is common, so identity is not settled."
+  },
+  {
+   "pair_id": 470,
+   "key_a": "p:paolo@angelica+paolo",
+   "key_b": "p:paolopetrax",
+   "decision": "unsure",
+   "rationale": "Side B gives the full name Paolo Petrax with Italy as the stated country, while side A is the common first name Paolo with a partner, and nothing else links them."
+  },
+  {
+   "pair_id": 471,
+   "key_a": "p:paolomei",
+   "key_b": "p:paolomeli",
+   "decision": "separate",
+   "rationale": "The surnames Mei and Meli differ by one letter, the partners differ (Kiaraibica and Lucia Tramonte), and the events are different."
+  },
+  {
+   "pair_id": 472,
+   "key_a": "p:paolou",
+   "key_b": "p:paoulou",
+   "decision": "merge",
+   "rationale": "Paou Lou is a spelling variant of Pao Lou, and the same Mik'iz partner appears in the same French festival listings on both sides."
+  },
+  {
+   "pair_id": 473,
+   "key_a": "p:pascal@dj",
+   "key_b": "p:pascalgomis",
+   "decision": "unsure",
+   "rationale": "DJ Pascal and Pascal Gomis share a common first name and France as the stated country, but the surname is absent on side A and the roles differ."
+  },
+  {
+   "pair_id": 474,
+   "key_a": "p:paulo@lenna+paulo",
+   "key_b": "p:paulo@mafalda+paulo",
+   "decision": "unsure",
+   "rationale": "Only the first name Paulo and Portugal are shared, and the partners Lenna and Mafalda differ, so the evidence does not settle identity."
+  },
+  {
+   "pair_id": 475,
+   "key_a": "p:pdjay@enora+pdjay",
+   "key_b": "p:pidjay@enora+pidjay",
+   "decision": "merge",
+   "rationale": "Pdjay and Pidjay are a spelling variant of the same name with the same partner Enora and France as the stated country."
+  },
+  {
+   "pair_id": 476,
+   "key_a": "p:pedro@ana+pedro",
+   "key_b": "p:pedro@ines+pedro",
+   "decision": "unsure",
+   "rationale": "Only the first name Pedro and Portugal are shared, and the partners Ana and Ines differ, a common name."
+  },
+  {
+   "pair_id": 477,
+   "key_a": "p:pierre@dance",
+   "key_b": "p:pierre@pierre+ulyana",
+   "decision": "merge",
+   "rationale": "The solo Pierre and the Pierre and Ulyana couple share the first name, Sweden as the stated country, Gothenburg and Stockholm events, and an overlapping Urban Kiz style."
+  },
+  {
+   "pair_id": 478,
+   "key_a": "p:poema@dj",
+   "key_b": "p:poemabeat",
+   "decision": "merge",
+   "rationale": "DJ Poema and Dj Poema beat are the same stage name with a DJ prefix, both listed with Sweden as the stated country."
+  },
+  {
+   "pair_id": 479,
+   "key_a": "p:poema@dj",
+   "key_b": "p:poemabeats",
+   "decision": "merge",
+   "rationale": "DJ Poema and DJ Poema Beats are the same stage name with a DJ prefix and a trailing word, both DJs with Sweden as the stated country."
+  },
+  {
+   "pair_id": 480,
+   "key_a": "p:poema@dj",
+   "key_b": "p:poemabeatz",
+   "decision": "merge",
+   "rationale": "DJ Poema and DJ Poema Beatz are the same stage name with a DJ prefix and a spelling variant of the suffix, both DJs with Sweden as the stated country."
+  },
+  {
+   "pair_id": 481,
+   "key_a": "p:poemabeat",
+   "key_b": "p:poemabeats",
+   "decision": "merge",
+   "rationale": "Poema beat and Poema Beats are the same DJ name differing only by a trailing s, both DJs with the same Swedish-linked events."
+  },
+  {
+   "pair_id": 482,
+   "key_a": "p:poemabeat",
+   "key_b": "p:poemabeatz",
+   "decision": "merge",
+   "rationale": "Poema beat and Poema Beatz are the same DJ name differing only in the spelling of the suffix, both DJs with Sweden as the stated country."
+  },
+  {
+   "pair_id": 483,
+   "key_a": "p:poemabeats",
+   "key_b": "p:poemabeatz",
+   "decision": "merge",
+   "rationale": "Poema Beats and Poema Beatz are the same DJ name differing only in the spelling of the suffix, both DJs with Sweden as the stated country."
+  },
+  {
+   "pair_id": 484,
+   "key_a": "p:portu@dj",
+   "key_b": "p:portu@mada+portu",
+   "decision": "merge",
+   "rationale": "DJ Portu and Portu and Mada are listed at the same Constance festival on the same date, the DJ-and-dancer case, with Spain as the stated country on both sides."
+  },
+  {
+   "pair_id": 485,
+   "key_a": "p:prince@dj",
+   "key_b": "p:prince@prince+vicky",
+   "decision": "unsure",
+   "rationale": "The stage name Prince is generic and shared with Italy as the stated country, but side B is a couple with Vicky and nothing else ties the DJ to it."
+  },
+  {
+   "pair_id": 486,
+   "key_a": "p:putox",
+   "key_b": "p:putox@dj",
+   "decision": "merge",
+   "rationale": "DJ Puto X on side A and DJ PUTO-X on side B are the same name with a DJ prefix and a hyphen variant, both listed with France as the stated country."
+  },
+  {
+   "pair_id": 487,
+   "key_a": "p:quinn@dance",
+   "key_b": "p:quinn@david+quinn",
+   "decision": "unsure",
+   "rationale": "Only the first name Quinn and a shared Thailand stated country appear, and the couple with David is not matched by any partner evidence on side A."
+  },
+  {
+   "pair_id": 488,
+   "key_a": "p:radu@judit+radu",
+   "key_b": "p:radu@judith+radu",
+   "decision": "merge",
+   "rationale": "The partner is Radu in both couples and Judit against Judith is a spelling variant of the same partner name, with Romania as the stated country on both sides."
+  },
+  {
+   "pair_id": 489,
+   "key_a": "p:radu@judit+radu",
+   "key_b": "p:radumanole",
+   "decision": "unsure",
+   "rationale": "Radu and Romania are shared, but side A is a couple with Judit while side B gives the full name Radu Manole as a solo teacher, and both are listed at the same Cluj festival."
+  },
+  {
+   "pair_id": 490,
+   "key_a": "p:radu@judith+radu",
+   "key_b": "p:radumanole",
+   "decision": "unsure",
+   "rationale": "Radu and Romania are shared, but side A is a couple with Judith while side B gives the full name Radu Manole as a solo teacher, and both are listed at the same Cluj festival."
+  },
+  {
+   "pair_id": 491,
+   "key_a": "p:rafael@dance",
+   "key_b": "p:rafael@giovana+rafael",
+   "decision": "unsure",
+   "rationale": "Rafael and Brazil are shared, but side A is a solo Kizomba/Urbankiz teacher while side B is a Bachata couple with Giovana, so the styles and the common name do not settle it."
+  },
+  {
+   "pair_id": 492,
+   "key_a": "p:railey@benite+railey",
+   "key_b": "p:railey@beniteb+railey",
+   "decision": "merge",
+   "rationale": "The couple Railey and Benite appears at the same Vienna Crystal Kizomba Congress in both years, and BENITEb is a stray-letter typo of Benite with the Netherlands as the stated country."
+  },
+  {
+   "pair_id": 493,
+   "key_a": "p:ralpbb",
+   "key_b": "p:ralphbb",
+   "decision": "merge",
+   "rationale": "DJ Ralp BB and DJ Ralph BB are a spelling variant of the same DJ name, both France-based with no conflicting evidence."
+  },
+  {
+   "pair_id": 494,
+   "key_a": "p:raul@daniela+raul",
+   "key_b": "p:raultorres",
+   "decision": "unsure",
+   "rationale": "Raul and Colombia are shared, but side A is a teacher in a couple with Daniela while side B is a DJ with the surname Torres, and side A gives no surname."
+  },
+  {
+   "pair_id": 495,
+   "key_a": "p:relampago@dance",
+   "key_b": "p:relampago@dj",
+   "decision": "merge",
+   "rationale": "Relampago the teacher and DJ Relampago are listed at the same Geneva festival on the same date, the DJ-and-dancer case, with Switzerland and Angola as the stated countries."
+  },
+  {
+   "pair_id": 496,
+   "key_a": "p:ricardo@alcpaula+ricardo",
+   "key_b": "p:ricardoferreira",
+   "decision": "unsure",
+   "rationale": "Ricardo and Portugal are shared, but side A is a couple with Alc Paula while side B gives the common surname Ferreira as a solo Kizomba teacher."
+  },
+  {
+   "pair_id": 497,
+   "key_a": "p:richardvooght",
+   "key_b": "p:richardvoogt",
+   "decision": "merge",
+   "rationale": "Vooght and Voogt are a spelling variant of the same surname, with the same first name and both teachers listed at London events."
+  },
+  {
+   "pair_id": 498,
+   "key_a": "p:rico@manon+rico",
+   "key_b": "p:ricosuave",
+   "decision": "merge",
+   "rationale": "Rico & Manon and Rico Suave & Manon share the same partner Manon and the same first name Rico, and both appear at the same London festival series."
+  },
+  {
+   "pair_id": 499,
+   "key_a": "p:ricornelas",
+   "key_b": "p:rornelas",
+   "decision": "merge",
+   "rationale": "Ric. Ornelas and R. Ornelas share the distinctive surname and an initial, and both teach at the Iceland Social Dance in Reykjavik."
+  },
+  {
+   "pair_id": 500,
+   "key_a": "p:riikka@dance",
+   "key_b": "p:riikkamaria",
+   "decision": "merge",
+   "rationale": "Riikka and Riikka Maria share the first name, both are teachers with Finland as the stated country, and the full form only adds a second given name."
+  }
  ]
 }

@@ -1,6 +1,5 @@
 {
  "batch": "merge-review-008",
- "prompt_version": "merge-review-v1",
  "decisions": [
   {
    "pair_id": 351,

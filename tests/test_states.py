@@ -226,7 +226,6 @@ def test_the_log_says_each_page_read_state() -> None:
 
 # the string Literals the code may have: vocabularies that are no data point's states (pipeline/states.py holds those)
 LITERALS = {
-    frozenset({'merge-review-v1', 'merge-review-v2'}),  # the merge review prompts' files, records.MergeReview
     frozenset({'address', 'html'}),  # where a recipe's widget finds its event id, records.Widget
     frozenset({'fr', 'es', 'pt'}),  # kizomba-world's translations
     frozenset({'extract', 'rooms_genres', 'prices'}),  # the extraction passes, prompt.PassName

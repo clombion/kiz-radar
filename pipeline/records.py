@@ -229,7 +229,6 @@ class MergeReview(Record):
     """Whether each candidate pair of artists is one artist (answers/merge_review/)."""
 
     batch: str
-    prompt_version: Literal['merge-review-v1', 'merge-review-v2']
     decisions: tuple[Decision, ...]
 
 
@@ -702,7 +701,7 @@ class MergeRow(CsvRow):
     key_a: str
     key_b: str
     decision: MergeDecision
-    source: str  # the review prompt's version, or manual
+    prompt: Blank[Hash]  # the review prompt that decided it (answers/log.csv); empty when decided by hand
     note: str
 
 
