@@ -75,7 +75,7 @@ jobs:
           echo "pushed=1" >> "$GITHUB_OUTPUT"
       - name: Rebuild the site database
         if: steps.commit.outputs.pushed
-        run: gh workflow run build.yml --ref main
+        run: gh workflow run build.yml --ref "$GITHUB_REF_NAME"   # on the branch the refresh committed to
         env:
           GH_TOKEN: ${{ github.token }}
       - name: Fail if asking Claude or a ticket page failed
