@@ -2,7 +2,8 @@
 
 Keeps facts (titles, dates, places, genres, features, line-ups) and links back to kizomba-world;
 drops descriptions, images and extraction quotes. Adds places, airports, per-event and per-artist
-statistics, and a fares table filled from docs/data/fares.csv.
+statistics, a fares table filled from docs/data/fares.csv, and the states every coded column can hold (states, from
+pipeline/states.py), which the site reads from docs/js/states.js, written here too.
 
     python3 -m pipeline.build_site_db source/kizomba_events_2026_2027.compact.sqlite
 """
@@ -11,7 +12,8 @@ from pipeline import db as sqlite_db
 from pipeline.countries import codes, NAMES
 from pipeline.text import tidy_name, tidy_title, soften_caps
 from pipeline.airports import AIRPORTS, HOME
-from pipeline.extract.prices import STYLE_OF
+from pipeline import states
+from pipeline.states import Feature, Genre, HomeBasis, PassKind, People, Role, Style
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ap = argparse.ArgumentParser(description='Build docs/data/kiz.sqlite, the database the site loads.')
@@ -20,8 +22,9 @@ SRC = ap.parse_args().src.resolve()
 OUT = os.path.join(ROOT, 'docs', 'data', 'kiz.sqlite')
 POPULAR = 10            # bookings that make an artist "popular"
 MAX_AIRPORT_KM = 250
-KIZ = tuple(g for g, s in STYLE_OF.items() if s == 'kizomba')
-BOOKED_ROLES = ('teacher', 'dj', 'performer')
+KIZ = tuple(g for g, s in states.STYLE_OF.items() if s == Style.KIZOMBA)
+BOOKED_ROLES = (Role.TEACHER, Role.DJ, Role.PERFORMER)
+LINEUP_ROLES = (Role.TEACHER, Role.DJ)   # the roles a line-up counts
 
 def km(a, b, c, d):
     a, b, c, d = map(math.radians, (a, b, c, d))
@@ -185,7 +188,7 @@ x("""create view artist_events as
     union all
     select cm.member_id, ea.event_id, ea.role, 'member', ea.artist_id
     from event_artists ea join couple_members cm on cm.couple_id = ea.artist_id""")
-roles_sql = ','.join(f"'{r}'" for r in BOOKED_ROLES)
+roles_sql = states.sql_in('role', BOOKED_ROLES)
 ev_cc = dict(x("select id, country_code from events"))
 bookings = collections.defaultdict(set)
 role_count = collections.defaultdict(collections.Counter)
@@ -202,8 +205,8 @@ for a, text in x("select artist_id, country from event_artists where country is 
 x("create table artist_origin (artist_id integer, country_code text, mentions integer, primary key (artist_id, country_code))")
 out.executemany("insert into artist_origin values (?,?,?)", [(a, c, n) for a, cnt in stated.items() for c, n in cnt.items()])
 
-x("""create table artist_stats (artist_id integer primary key, bookings integer, teacher integer, dj integer,
-     performer integer, first_date text, last_date text, home_country text, home_basis text check (home_basis in ('given', 'stated')),
+x(f"""create table artist_stats (artist_id integer primary key, bookings integer, teacher integer, dj integer,
+     performer integer, first_date text, last_date text, home_country text, home_basis text check (home_basis in ({states.sql_in('home_basis')})),
      booked_most_in text, countries integer, abroad_bookings integer, popular integer, couple_bookings integer,
      check ((home_country is null) = (home_basis is null)))""")
 x("create table artist_countries (artist_id integer, country_code text, bookings integer, is_home integer, primary key (artist_id, country_code))")
@@ -221,14 +224,14 @@ home_of = {}
 for a, evs in bookings.items():
     where = collections.Counter(ev_cc[e] for e in evs if ev_cc[e])
     booked_origins = [c for c, _ in stated[a].most_common() if where.get(c)]
-    home, basis = ((given[a], 'given') if a in given
-                   else (max(booked_origins, key=lambda c: where[c]), 'stated') if booked_origins else (None, None))
+    home, basis = ((given[a], HomeBasis.GIVEN) if a in given
+                   else (max(booked_origins, key=lambda c: where[c]), HomeBasis.STATED) if booked_origins else (None, None))
     most = where.most_common(1)[0][0] if where else None
     home_of[a] = home or most
     ds = sorted(dates[e] for e in evs)
     abroad = sum(n for c, n in where.items() if c != home_of[a])
     x("insert into artist_stats values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-      (a, len(evs), role_count[a]['teacher'], role_count[a]['dj'], role_count[a]['performer'], ds[0], ds[-1],
+      (a, len(evs), role_count[a][Role.TEACHER], role_count[a][Role.DJ], role_count[a][Role.PERFORMER], ds[0], ds[-1],
        home, basis, most, len(where), abroad, int(len(evs) >= POPULAR), len(couple_bookings[a] - evs)))
     out.executemany("insert into artist_countries values (?,?,?,?)", [(a, c, n, int(c == home)) for c, n in where.items()])
 
@@ -243,24 +246,29 @@ for r in csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'promo_codes.csv'), 
     e = int(r['event_id'])
     if not x("select 1 from events where id = ?", (e,)).fetchone(): sys.exit(f"promo_codes.csv: no event {e} ({r['event']})")
     x("insert into event_promos values (?,?,?)", (e, r['code'].strip(), r['offer'].strip() or None))
-    feats[e].add('promo_code')
+    feats[e].add(Feature.PROMO_CODE)
 # pass prices, from the source's prices pass (without the quotes or price notes), and the rates the site converts them with
-x("""create table event_passes as select event_id, pass_no, kind, style, label, group_size, days, includes_hotel, source
-     from src.event_passes""")
+x("""create table event_passes as select event_id, pass_no, kind, style, label, group_size, people, days, includes_hotel,
+     source from src.event_passes""")
 # festivals whose prices are read on their ticket page: the page, when it was read, tickets on it not read yet
 x("create table ticket_pages as select event_id, page, reseller, read_on, unread from src.ticket_pages")
-# how a festival with no full ticket link sells, for the card of one without a price
-x("create table ticket_sales as select event_id, state, page from src.ticket_sales")
+# what a card can say of each festival's price, the ticket page it links to, and the pass it prices
+x(f"""create table price_status (event_id integer primary key references events(id),
+     price text not null check (price in ({states.sql_in('price')})), page text, card_pass integer,
+     check ((price = '{states.Price.PRICED}') = (card_pass is not null)))""")
+x("insert into price_status select event_id, price, page, card_pass from src.price_status")
 # a festival selling full, party or package passes for two or more people has the group_deals highlight
-for (e,) in x("select distinct event_id from event_passes where group_size >= 2 and kind in ('full', 'party', 'package')"):
-    feats[e].add('group_deals')
+for (e,) in x(f"""select distinct event_id from event_passes
+                  where people in ({states.sql_in('people', (People.COUPLE, People.GROUP))})
+                  and kind in ({states.sql_in('pass_kind', (PassKind.FULL, PassKind.PARTY, PassKind.PACKAGE))})"""):
+    feats[e].add(Feature.GROUP_DEALS)
 x("""create table pass_tiers as select event_id, pass_no, tier_no, amount, currency, fee, alt_amount, alt_currency, valid_from,
      valid_until, quantity, door, sold_out, current from src.pass_tiers""")
 x("create table rates (currency text primary key, per_eur real not null, date text not null)")
 out.executemany("insert into rates values (?,?,?)", [(r['currency'], float(r['per_eur']), r['date'])
     for r in csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'rates.csv'), encoding='utf-8'))])
 lineups = collections.defaultdict(set)
-for e, a in x("select event_id, artist_id from event_artists where role in ('teacher','dj') and as_couple is null"): lineups[e].add(a)
+for e, a in x(f"select event_id, artist_id from event_artists where role in ({states.sql_in('role', LINEUP_ROLES)}) and as_couple is null"): lineups[e].add(a)
 x("""create table event_stats (event_id integer primary key, lineup integer, popular_artists integer, imported integer,
      kiz integer, kiz_only integer, taxi_dancers integer, all_in_one integer, genres text, features text)""")
 for e, cc in ev_cc.items():
@@ -268,7 +276,7 @@ for e, cc in ev_cc.items():
     kiz = bool(g & set(KIZ))
     x("insert into event_stats values (?,?,?,?,?,?,?,?,?,?)",
       (e, len(l), sum(len(bookings[a]) >= POPULAR for a in l), sum(home_of.get(a) not in (None, cc) for a in l),
-       int(kiz), int(kiz and not g & {'salsa', 'bachata'}), int('taxi_dancers' in f), int('all_in_one' in f),
+       int(kiz), int(kiz and not g & {Genre.SALSA, Genre.BACHATA}), int(Feature.TAXI_DANCERS in f), int(Feature.ALL_IN_ONE in f),
        ','.join(sorted(g)), ','.join(sorted(f))))
 
 x("""create view country_stats as
@@ -285,8 +293,10 @@ x("""create view country_stats as
 x("""create view event_rows as
     select e.id, e.title, e.url, e.start_date, e.end_date, e.city, e.country_code, e.lat, e.lon, e.airport, e.airport_km,
       a.city as airport_city, e.weekend_friday, e.cancelled, e.venue, s.lineup, s.popular_artists, s.kiz_only,
-      s.taxi_dancers, s.all_in_one, s.features, e.end_date >= date('now') and e.cancelled is not 1 as upcoming
-    from events e join event_stats s on s.event_id = e.id left join airports a on a.code = e.airport""")
+      s.taxi_dancers, s.all_in_one, s.genres, s.features, e.end_date >= date('now') and e.cancelled is not 1 as upcoming,
+      p.price as price_state, p.page as ticket_page, p.card_pass
+    from events e join event_stats s on s.event_id = e.id left join airports a on a.code = e.airport
+      left join price_status p on p.event_id = e.id""")
 
 # --- who's going (pipeline/people.csv, pipeline/plans.csv) ------------------------------------------
 # People are ours, not the source's: a name, the artist records they are (if any), and whether the site names them
@@ -295,8 +305,8 @@ x("""create view event_rows as
 x("""create table people (id integer primary key, key text not null unique, name text not null,
      featured integer not null check (featured in (0, 1)))""")
 x("create table person_artists (person_id integer not null references people(id), artist_id integer not null references artists(id), primary key (person_id, artist_id))")
-x("""create table plans (person_id integer not null references people(id), event_id integer not null references events(id),
-     status text not null check (status in ('going')), primary key (person_id, event_id))""")
+x(f"""create table plans (person_id integer not null references people(id), event_id integer not null references events(id),
+     status text not null check (status in ({states.sql_in('plan')})), primary key (person_id, event_id))""")
 person_id = {}
 for i, r in enumerate(csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'people.csv'), encoding='utf-8')), 1):
     person_id[r['key']] = i
@@ -308,13 +318,19 @@ for r in csv.DictReader(open(os.path.join(ROOT, 'pipeline', 'plans.csv'), encodi
     if r['person'] not in person_id: sys.exit(f"plans.csv: no person {r['person']} in people.csv")
     if not x("select 1 from events where id = ?", (int(r['event_id']),)).fetchone(): sys.exit(f"plans.csv: no event {r['event_id']} ({r['event']})")
     x("insert into plans values (?,?,?)", (person_id[r['person']], int(r['event_id']), r['status']))
-x("""create view plan_rows as
+x(f"""create view plan_rows as
     select p.person_id, pe.key, pe.name, pe.featured, p.event_id, p.status,
       (select ea.role from person_artists pa join event_artists ea on ea.event_id = p.event_id and ea.as_couple is null
          and (ea.artist_id = pa.artist_id or ea.artist_id in (select couple_id from couple_members where member_id = pa.artist_id))
-       where pa.person_id = p.person_id and ea.role in ('teacher', 'dj', 'performer', 'mc')
-       order by ea.role = 'teacher' desc limit 1) as booked_as
+       where pa.person_id = p.person_id and ea.role in ({states.sql_in('role', (*BOOKED_ROLES, Role.MC))})
+       order by ea.role = '{Role.TEACHER}' desc limit 1) as booked_as
     from plans p join people pe on pe.id = p.person_id""")
+
+# what each coded column's values mean (pipeline/states.py)
+x("""create table states (point text not null, key text not null, criterion text not null, disposition text not null,
+     wording text, owner text, icon text, link text, primary key (point, key))""")
+out.executemany("insert into states values (?,?,?,?,?,?,?,?)",
+                [(s.point, s.key, s.criterion, s.disposition, s.wording, s.owner, s.icon, s.link) for s in states.ROWS])
 
 x("create table meta (key text primary key, value text)")
 out.executemany("insert into meta values (?,?)", [
@@ -337,8 +353,9 @@ DOCS = {
  'artist_countries': 'Bookings per artist and country; is_home marks the known home country in artist_stats.',
  'artist_origin': 'Countries stated next to an artist’s name in line-ups (flags or text), with how often.',
  'event_stats': 'Per event: line-up size (teachers and DJs), popular artists booked, imported artists (home country differs from the event’s), kizomba-family genres, kiz-only (no salsa or bachata), taxi dancers, all-in-one hotel.',
- 'event_passes': 'The passes a festival sells (full, party, day, workshop, package, other): people per price, days, hotel included; source is description, or ticket_page (see ticket_pages).',
- 'ticket_sales': 'How a festival with no full ticket link sells: shop (with its page), not_yet, offline (by message or form) or closed.',
+ 'event_passes': 'The passes a festival sells (kind): people per price (group_size, and people as a state), days, hotel included; source is description, or ticket_page (see ticket_pages).',
+ 'price_status': 'What each festival’s card can say of its price: priced, with the pass it prices (card_pass), or why not (price), with its ticket page when one is known.',
+ 'states': 'Every state a coded column can hold, by point (pipeline/states.py): what makes a value that state, what the site does with it (disposition), its words on the site, who acts on it, and how the site draws it (icon, or a link to the ticket page or the passes).',
  'ticket_pages': 'Festivals whose prices are read on their ticket page: the page, the reseller selling there when it is not the organiser, the day it was last read, and how many tickets on it are not read yet.',
  'pass_tiers': 'Each pass’s prices tier by tier: what a buyer pays and its currency, the booking fee that includes when stated, the days the tier applies, tickets at that price, door price, sold out.',
  'rates': 'Exchange rates the site converts prices with: units of each currency per euro (European Central Bank, pipeline/rates.csv).',
@@ -347,7 +364,7 @@ DOCS = {
  'person_artists': 'The artist records a person is, so their bookings and their plans meet.',
  'plans': 'Who said they are going to which festival (pipeline/plans.csv).',
  'plan_rows': 'Each plan with the person, and booked_as: their role when they are in that festival’s line-up, alone or in a couple.',
- 'event_rows': 'What the site reads: each event with its event_stats, and upcoming (not over yet and not cancelled, as of the moment of the query).',
+ 'event_rows': 'What the site reads: each event with its event_stats, what its card can say of its price (price_state, with its ticket_page and card_pass), and upcoming (not over yet and not cancelled, as of the moment of the query).',
  'country_stats': 'Per country: events, kiz-only events, taxi dancers, average line-up, bookings of popular artists, share of imported artists, most common airport.',
  'countries': 'ISO 3166 codes and names.',
  'meta': 'Build settings and provenance.',
@@ -374,4 +391,6 @@ x("vacuum")
 out.close()
 os.replace(BUILDING, OUT)
 json.dump(site, open(os.path.join(ROOT, 'docs', 'data', 'site.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+with open(os.path.join(ROOT, 'docs', 'js', 'states.js'), 'w', encoding='utf-8') as f:
+    f.write(states.js_module())
 print(OUT, os.path.getsize(OUT) // 1024, 'KB')

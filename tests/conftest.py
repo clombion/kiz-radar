@@ -24,3 +24,15 @@ def spend_ledger(tmp_path, monkeypatch):
     """Requests a test makes to a fake Claude go in a ledger of its own."""
     from pipeline import spend
     monkeypatch.setattr(spend, 'LEDGER', tmp_path / 'spend.csv')
+
+
+@pytest.fixture(autouse=True)
+def prompts_asked(tmp_path, monkeypatch):
+    """Prompts a test asks are archived in a folder of its own; the archive's own prompts can still be read."""
+    import shutil
+    from pipeline import prompt
+    asked = tmp_path / 'asked'
+    asked.mkdir()
+    if prompt.ASKED.exists():
+        shutil.copytree(prompt.ASKED, asked, dirs_exist_ok=True)
+    monkeypatch.setattr(prompt, 'ASKED', asked)

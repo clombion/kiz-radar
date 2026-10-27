@@ -5,15 +5,11 @@
   "additionalProperties": false,
   "required": [
     "batch",
-    "prompt_version",
     "events"
   ],
   "properties": {
     "batch": {
       "type": "string"
-    },
-    "prompt_version": {
-      "const": "prices-v6"
     },
     "events": {
       "type": "array",
@@ -45,25 +41,12 @@
               ],
               "properties": {
                 "kind": {
-                  "enum": [
-                    "full",
-                    "party",
-                    "day",
-                    "workshop",
-                    "package",
-                    "other"
-                  ]
+                  "$ref": "#/$defs/pass_kind"
                 },
                 "style": {
                   "anyOf": [
                     {
-                      "enum": [
-                        "kizomba",
-                        "zouk",
-                        "bachata",
-                        "salsa",
-                        "other"
-                      ]
+                      "$ref": "#/$defs/style"
                     },
                     {
                       "type": "null"
@@ -104,8 +87,7 @@
                       "amount",
                       "currency",
                       "fee",
-                      "alt_amount",
-                      "alt_currency",
+                      "alt",
                       "from",
                       "until",
                       "quantity",
@@ -130,18 +112,31 @@
                         ],
                         "exclusiveMinimum": 0
                       },
-                      "alt_amount": {
-                        "type": [
-                          "number",
-                          "null"
+                      "alt": {
+                        "description": "The same price in a second currency, when the line gives one.",
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                              "amount",
+                              "currency"
+                            ],
+                            "properties": {
+                              "amount": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                              },
+                              "currency": {
+                                "type": "string",
+                                "pattern": "^[A-Z]{3}$"
+                              }
+                            }
+                          },
+                          {
+                            "type": "null"
+                          }
                         ]
-                      },
-                      "alt_currency": {
-                        "type": [
-                          "string",
-                          "null"
-                        ],
-                        "pattern": "^[A-Z]{3}$"
                       },
                       "from": {
                         "type": [
