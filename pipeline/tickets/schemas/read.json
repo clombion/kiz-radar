@@ -34,11 +34,8 @@
       "minLength": 1
     },
     "prompt_version": {
-      "enum": [
-        "first-read-v1",
-        "first-read-v2",
-        "first-read-v3"
-      ]
+      "const": "first-read-v3",
+      "description": "A read for an older prompt means something else: it is made again (tickets.py run)."
     },
     "rows_at": {
       "description": "The 'at' of the logged read (tickets/log/<event_id>.jsonl) whose tickets this read maps; every one of them is in a tier or skipped.",
@@ -56,6 +53,7 @@
         "additionalProperties": false,
         "required": [
           "kind",
+          "style",
           "label_quote",
           "group_size",
           "days",
@@ -217,41 +215,6 @@
         "type": "string",
         "minLength": 1,
         "maxLength": 300
-      }
-    }
-  },
-  "if": {
-    "properties": {
-      "prompt_version": {
-        "enum": [
-          "first-read-v1",
-          "first-read-v2"
-        ]
-      }
-    }
-  },
-  "then": {
-    "properties": {
-      "passes": {
-        "items": {
-          "not": {
-            "required": [
-              "style"
-            ]
-          }
-        }
-      }
-    },
-    "description": "Reads before first-read-v3 have no style."
-  },
-  "else": {
-    "properties": {
-      "passes": {
-        "items": {
-          "required": [
-            "style"
-          ]
-        }
       }
     }
   }

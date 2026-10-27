@@ -2,13 +2,14 @@
  "event_id": 17515,
  "title": "NANTES KIZOMBA FESTIVAL 2026",
  "start_date": "2026-12-04",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt_version": "first-read-v1",
- "rows_at": "2026-10-26T18:13:45+00:00",
+ "read_by": "agent",
+ "prompt_version": "first-read-v3",
+ "rows_at": "2026-10-26T23:48:40+00:00",
  "description": "The Passion Kizomba team is pleased to invite you to its international event from December 03 to 07, 2026\n▪️▪️▪️Nantes Kizomba Festival▪️▪️▪️\n⚡️A grandiose event that will take place over 4 days to learn alongside renowned international teachers. Socials and parties with national and international deejays. In a spacious and comfortable hotel. All in one venue\n💫💫Festival Venue and Accommodation💫💫\nSure Hôtel by Best Western Nantes Beaujoire :\n27 rue du chemin rouge\n44300 Nantes\n🔹Book your Room here\nLink : https://my.weezevent.com/nantes-kizomba-festival-2026-1\n⚡️20 Hours of lessons\n⚡️a pre-party\n⚡️3 parties and 3 socials\n⚡️Two rooms, two atmospheres.\n⚡️Rooms 1 Urbankiz, Tarraxo, Douceur…\n⚡️Room 2 Kizomba, Semba, Ghettozouk…\n⚡️Teams of dancing taxis\n⚡️A crazy atmosphere\n⚡️Dress code\n⚡️ On site Catering\n🔸▪️🔸▪️🔸Full Pass🔸▪️🔸▪️🔸\nEarlybird 60€\n-Ticketing: https://my.weezevent.com/nantes-kizomba-festival-2026\n🔸▪️🔸 Book your Room🔸▪️🔸\nLink : https://my.weezevent.com/nantes-kizomba-festival-2026-1\n🔸▪️🔸▪️🔸Teachers 🔸▪️🔸▪️🔸\n☑️Urbankiz\nJustinho & Sara Rodriguez Paris / Mulhouse\nLuis & karen – Madrid\nSteven’s & Audrey – Paris\nGulnara – Lyon\nATOU – Le Mans\nSimone Kiz – Stuttgart\nCurtis & Kelly – Tours\nSara Rodriguez – Mulhouse\nRoxane & Corentin – La Rochelle\nJuan Mi & Anaïs Peleyrol – Nantes/ Paris\nLuis Mendes & Floriane – Paris\n☑️Kizomba / Semba / Afro\nElhadj & Jenah – Paris\nLaranjo & lotte – Lisbonne\nSeb & Sarita – Toulouse / Valence\nJonathan kani – Nantes / Le Mans\nMervil & Vanessa – Nantes / Cholet\nLandry & Wendy – Nantes\n🔸▪️🔸▪️🔸Deejays🔸▪️🔸▪️🔸\n☑️Urbankiz\nJDN – Reims\nColts – Paris\nLe grand ti wosh – Paris\nKin – Nantes\nWilly will – Tours\nMan – Nantes\nJarryd – Bordeaux\nKouan Orléans\nL-GI – Nantes\n☑️Kizomba / Semba\nMiro kikola – Londres\nVasco – Paris\nColts – Paris\nKyle – Nantes\nL-Dry – Nantes\nKin – Nantes\n🔸🔹🔸🔹TEAM TAXIS🔸🔹🔸🔹\nComing soon…\n▪️🔸▪️Photo and Video▪️🔸▪️\nKitoko\nEric\nLauren katiyo\nDani tothedance\nmore to come…\n⚡️⚡️⚡️⚡️⚡️STAND ⚡️⚡️⚡️⚡️⚡️\nComing soon…\n🔹Contact Organizer:\nPassion Kizomba Nantes\nEmail: passionkizombanantes@gmail.com",
  "passes": [
   {
    "kind": "full",
+   "style": null,
    "label_quote": null,
    "group_size": 1,
    "days": null,
@@ -28,6 +29,7 @@
   },
   {
    "kind": "full",
+   "style": null,
    "label_quote": null,
    "group_size": 2,
    "days": null,

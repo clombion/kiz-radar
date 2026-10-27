@@ -354,6 +354,11 @@ def read_problems(fr, entries):
 
 # ---- recording
 
+def unread_keys(fr, entry):
+    """The keys of the read rows' tickets that the first read neither puts in a tier nor skips."""
+    mapped = {k for ps in fr['passes'] for t in ps['tiers'] for k in t['keys']} | set(fr['skipped'])
+    return [r['key'] for r in entry['rows'] if r['key'] not in mapped]
+
 def build(fr, entry):
     """(prices answer, unread keys, problems) from a first read and read rows of the same page."""
     rows = {r['key']: r for r in entry['rows']}
@@ -373,11 +378,9 @@ def build(fr, entry):
                           'until': tier['until'], 'quantity': tier['quantity'], 'door': False,
                           'sold_out': all(r['sold_out'] for r in here), 'current': False, 'quote': line(lead)})
         if tiers:
-            # a read made before first-read-v3 names no style
-            passes.append({k: ps[k] for k in ('kind', 'label_quote', 'group_size', 'days', 'includes_hotel')}
-                          | {'style': ps.get('style'), 'tiers': tiers})
-    mapped = {k for ps in fr['passes'] for t in ps['tiers'] for k in t['keys']} | set(fr['skipped'])
-    unread = [k for k in rows if k not in mapped]
+            passes.append({k: ps[k] for k in ('kind', 'style', 'label_quote', 'group_size', 'days', 'includes_hotel')}
+                          | {'tiers': tiers})
+    unread = unread_keys(fr, entry)
     answer = {'batch': f"page-{fr['event_id']}", 'prompt_version': prices.PROMPT,
               'events': [{'event_id': fr['event_id'], 'passes': passes, 'rule_quotes': fr['rule_quotes']}]}
     text = '\n'.join(map(line, entry['rows'])) + '\n' + fr['description']
@@ -517,7 +520,7 @@ def why_first_read(f, today):
     """Why the festival needs a (new) first read, or None; and the latest rows' unread keys."""
     fr, entry, desc = f['first_read'], latest_read(f['log']), f['description_text'] or ''
     if fr:
-        unread = build(fr, entry)[1]
+        unread = unread_keys(fr, entry)
         return ('the description changed' if fr['description'] != desc else
                 f"the first read follows {fr['prompt_version']}, not {PROMPT}" if fr['prompt_version'] != PROMPT else
                 'the ticket page changed' if entry['page'] != read_at(fr, f['log'])['page'] else
@@ -582,10 +585,8 @@ def write_waiting(fs):
 
 def model_schema():
     keep = ('passes', 'skipped', 'rule_quotes')
-    props = {k: READ_SCHEMA['properties'][k] for k in keep}
-    items = props['passes']['items']
-    props['passes'] = props['passes'] | {'items': items | {'required': items['required'] + ['style']}}
-    return {'type': 'object', 'additionalProperties': False, 'required': list(keep), 'properties': props}
+    return {'type': 'object', 'additionalProperties': False, 'required': list(keep),
+            'properties': {k: READ_SCHEMA['properties'][k] for k in keep}}
 
 def question(f, entry):
     system = ((ROOT / 'pipeline' / 'extract' / 'prompts' / f'{prices.PROMPT}.md').read_text() + '\n\n'
@@ -607,7 +608,7 @@ def meaning(fr):
     """What two first reads must agree on: which tickets are skipped, which share a pass and a tier, each pass's
     kind, style, people, days (a day pass is one day, whether its days say 1 or nothing) and hotel, and each tier's dates
     and quantity. Labels and quotes may differ."""
-    return frozenset((ps['kind'], ps.get('style'), ps['group_size'], 1 if ps['kind'] == 'day' else ps['days'], ps['includes_hotel'],
+    return frozenset((ps['kind'], ps['style'], ps['group_size'], 1 if ps['kind'] == 'day' else ps['days'], ps['includes_hotel'],
                       frozenset((frozenset(t['keys']), t['from'], t['until'], t['quantity'])
                                 for t in ps['tiers'])) for ps in fr['passes']), frozenset(fr['skipped'])
 

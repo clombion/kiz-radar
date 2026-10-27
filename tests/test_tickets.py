@@ -523,9 +523,9 @@ def test_first_reads_count_against_the_budget(files):
 
 @pytest.mark.parametrize('version, style, ok', [
     ('first-read-v3', 'kizomba', True), ('first-read-v3', None, True), ('first-read-v3', ..., False),
-    ('first-read-v2', ..., True), ('first-read-v2', None, False),
+    ('first-read-v2', ..., False),          # an older read: made again, never loaded
 ])
-def test_a_style_is_named_from_first_read_v3_on_and_only_then(version, style, ok):
+def test_a_first_read_names_each_pass_style_and_follows_the_current_prompt(version, style, ok):
     fr = read() | {'prompt_version': version}
     if style is ...:
         del fr['passes'][0]['style']
