@@ -128,11 +128,12 @@ def test_every_module_a_command_runs_answers_help() -> None:
 
 
 def test_databases_are_opened_with_a_mode() -> None:
-    """Only pipeline/db.py calls sqlite3.connect, so every connection says whether it reads, writes or creates."""
+    """Only pipeline/db.py calls sqlite3.connect, so every connection, the tests' too, says whether it reads, writes or
+    creates, and is closed with its block; the memory fixture's in-memory databases (conftest.py) are no file."""
     calls = [
         f'{p.relative_to(ROOT)}:{n.lineno}'
-        for p in sorted((ROOT / 'pipeline').rglob('*.py'))
-        if p.name != 'db.py'
+        for p in sorted([*(ROOT / 'pipeline').rglob('*.py'), *(ROOT / 'tests').rglob('*.py')])
+        if p.relative_to(ROOT).as_posix() not in {'pipeline/db.py', 'tests/conftest.py'}
         for n in ast.walk(ast.parse(p.read_text(encoding='utf-8')))
         if isinstance(n, ast.Call)
         and isinstance(n.func, ast.Attribute)

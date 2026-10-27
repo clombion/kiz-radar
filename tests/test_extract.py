@@ -529,8 +529,7 @@ def answered_here(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
 def source_file(tmp_path: Path) -> Path:
     """A source DB holding FEST, pending extraction."""
     path = tmp_path / 'source.sqlite'
-    con = sqlite3.connect(path)
-    try:
+    with db.opened(path, 'rwc') as con:
         _ = con.executescript(
             'create table events (id integer, title text, description_text text, start_date text, end_date text, '
             'country text); create table pending_extraction (event_id integer, reason text, since text); '
@@ -542,8 +541,6 @@ def source_file(tmp_path: Path) -> Path:
             (FEST.id, FEST.title, FEST.description_text, FEST.start_date, FEST.end_date, FEST.country),
         )
         con.commit()
-    finally:
-        con.close()
     return path
 
 

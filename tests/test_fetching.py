@@ -3,7 +3,6 @@ places and kizomba-world's listings. No test reaches the network (pytest-socket)
 
 import datetime as dt
 import json
-import sqlite3
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -87,13 +86,10 @@ class Nominatim:
 
 def source_with(tmp_path: Path, places: list[tuple[str | None, str | None]]) -> Path:
     path = tmp_path / 'source.sqlite'
-    con = sqlite3.connect(path)
-    try:
+    with sqlite_db.opened(path, 'rwc') as con:
         _ = con.execute('create table events (id integer, city text, country text)')
         _ = con.executemany('insert into events values (?, ?, ?)', [(i, *p) for i, p in enumerate(places)])
         con.commit()
-    finally:
-        con.close()
     return path
 
 

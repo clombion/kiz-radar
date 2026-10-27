@@ -55,8 +55,7 @@ def copied(tmp_path: Path) -> Path:
 def trimmed(tmp_path: Path, festivals: int) -> Path:
     """The export with only its latest festivals that have a line-up, and every row of theirs."""
     src = copied(tmp_path)
-    con = sqlite3.connect(src)
-    try:
+    with sqlite_db.opened(src, 'rw') as con:
         kept = column(
             con,
             'select id from events where id in (select event_id from artist_mentions) order by start_date desc limit ?',
@@ -70,6 +69,4 @@ def trimmed(tmp_path: Path, festivals: int) -> Path:
                 sql = f'delete from "{t}" where {key} not in (select value from json_each(?))'  # noqa: S608 (the database's own names)
                 _ = con.execute(sql, (json.dumps(kept),))
         con.commit()
-    finally:
-        con.close()
     return src
