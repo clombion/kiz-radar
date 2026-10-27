@@ -157,6 +157,22 @@ def copy(x: sqlite3.Connection, table: str, columns: Sequence[str] | None = None
     _ = x.execute(f'insert into {table} ({names}) select {names} from src.{table}')  # noqa: S608 (a table of the source's and its columns)
 
 
+def stored_by_key(x: sqlite3.Connection) -> None:
+    """Each table whose key is not an integer row id is stored as its key (WITHOUT ROWID), so the key is the table
+    rather than a second index beside it, and no column of the key can be null."""
+    _ = x.execute('pragma legacy_alter_table = on')  # views name the table, not its renamed copy
+    found: list[tuple[str, str]] = x.execute("select name, sql from sqlite_master where type = 'table'").fetchall()
+    for name, ddl in found:
+        key: list[tuple[str]] = x.execute('select upper(type) from pragma_table_info(?) where pk', (name,)).fetchall()
+        if not key or key == [('INTEGER',)] or ddl.rstrip().lower().endswith('without rowid'):
+            continue
+        _ = x.execute(f'alter table {name} rename to {name}_rowid')
+        _ = x.execute(f'{ddl} without rowid')
+        _ = x.execute(f'insert into {name} select * from {name}_rowid')  # noqa: S608 (a table of ours)
+        _ = x.execute(f'drop table {name}_rowid')
+    _ = x.execute('pragma legacy_alter_table = off')
+
+
 def norm_name(s: str) -> str:
     s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode().lower()
     return re.sub(r'^(dj|mc|mr|dr|doctor)\s+', '', re.sub(r'[^a-z0-9 ]', '', s)).strip()
@@ -765,6 +781,7 @@ def main() -> None:
     meta(x, built_at)
     site = site_json(x, built_at)
     table_docs(x)
+    stored_by_key(x)
     broken: list[tuple[object, ...]] = x.execute('pragma foreign_key_check').fetchall()
     if broken:
         sys.exit(f'{len(broken)} rows refer to rows the site database has not, first: {broken[0]}')

@@ -14,7 +14,7 @@ PYRIGHT = re.compile(r'# pyright: ignore\[(?P<rules>\w+(?:, \w+)*)\]$')
 SUPPRESSION = re.compile(r'# (?:noqa|pyright: ?ignore|type: ?ignore)[^#]*')
 ALLOWED = Counter(
     {
-        ('pipeline/build_site_db.py', 'S608'): 5,
+        ('pipeline/build_site_db.py', 'S608'): 6,
         ('pipeline/extract/check_output.py', 'S105'): 1,
         ('pipeline/extract/load_extract.py', 'S608'): 2,
         ('pipeline/fares.py', 'S603'): 1,
