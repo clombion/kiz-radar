@@ -48,6 +48,16 @@ event_id,pass_no,kind,style,label,group_size,days,includes_hotel,amount,currency
 16884,6,day,,,1,1,0,31,EUR,1,,,,,,0,"FRIDAY NIGHT PASS ""MALE"" €30.00 + €1.00 fee."
 16884,7,day,,,1,1,0,36,EUR,1,,,,,,0,"SATURDAY NIGHT PASS ""MALE"" €35.00 + €1.00 fee."
 16884,8,day,,,1,1,0,31,EUR,1,,,,,,0,"SUNDAY NIGHT PASS ""MALE"" €30.00 + €1.00 fee."
+16889,1,party,,,2,,0,123.08,EUR,,,,,,,0,PARTY PASS COUPLE/PAREJA €123.08
+16889,2,party,,,1,,0,61.54,EUR,,,,,,,0,PARTY PASS LIDER/CHICO/GARÇON €61.54
+16889,3,day,,,1,1,0,51.28,EUR,,,,,,,0,DAY PASS SUNDAY LIDER €51.28
+16889,4,day,,,2,1,0,102.56,EUR,,,,,,,0,DAY PASS COUPLE PAREJA SUNDAY €102.56
+16889,5,day,,,1,1,0,71.79,EUR,,,,,,,0,DAY PASS SATURDAY LIDER €71.79
+16889,6,day,,,2,1,0,143.58,EUR,,,,,,,0,DAY PASS COUPLE PAREJA SATURDAY €143.58
+16889,7,day,,,1,1,0,41.03,EUR,,,,,,,0,DAY PASS FRIDAY LIDER €41.03
+16889,8,day,,,2,1,0,82.06,EUR,,,,,,,0,DAY PASS COUPLE PAREJA FRIDAY €82.06
+16889,9,full,,,1,3,0,100.51,EUR,,,,,,,0,FULLPASS MEN/CHICO/LIDER €100.51
+16889,10,full,,,2,3,0,186.66,EUR,,,,,,,0,FULLPASS COUPLE/PAREJA €186.66
 16899,1,other,,,1,,0,150,EUR,,,,,,,0,GOLDEN PASS - ALL ACCESS €150.00
 16899,2,full,,,1,,0,105,EUR,,,,,,,0,FULLPASS €105.00
 16904,1,full,,,2,,0,255,EUR,,,,,,,1,Couple Full Pass 255
@@ -183,6 +193,19 @@ event_id,pass_no,kind,style,label,group_size,days,includes_hotel,amount,currency
 18315,6,day,,,1,1,0,22,EUR,,,,,,,0,SOCIAL NON-STOP DU DIMANCHE €22.00
 18315,7,party,,,1,2,0,35,EUR,,,,,,,0,PARTY PASS — FEMME — SAMEDI & DIMANCHE €35.00
 18315,8,full,,,2,,0,115,EUR,,,,,,,0,Full pass Duo Femme + Homme €115.00
+18317,1,full,,,1,,0,51.28,EUR,,,,,,,0,OFFRE Halloween - MEN FULLPASS €51.28
+18317,1,full,,,1,,0,92.31,EUR,,,,,,,0,Fullpas WOMEN €92.31
+18317,2,other,,,1,,0,61.54,EUR,,,,,,,0,WEEKEND FULL PASS_WOMEN’S — PARIS NYE 10 €61.54
+18317,3,other,,,1,6,0,102.56,EUR,,,,,,,0,FULLPASS WOMEN + BOAT PARTY ( from 30/12 to 04/01 ) €102.56
+18317,4,other,,,1,,0,25,EUR,,,,,,,0,Kids 13-16 min. €25.00
+18317,5,day,,,1,1,0,20.99,EUR,,,,,,,0,Boat Party MEN Pass €20.99
+18317,6,day,,,1,1,0,51.28,EUR,,,,,,,0,31/12 PASS MEN - PARTY €51.28
+18317,7,day,,,1,1,0,41.03,EUR,,,,,,,0,01 jan 2027 : COMBO SOCIAL+PARTY €41.03
+18317,8,day,,,1,1,0,41.03,EUR,,,,,,,0,02 jan 2027 : COMBO SOCIAL+PARTY €41.03
+18317,9,day,,,1,1,0,41.03,EUR,,,,,,,0,03 jan 2027 : COMBO SOCIAL+PARTY €41.03
+18317,10,day,,,1,1,0,61.54,EUR,,,,,,,0,01 jan 2027 : DAY PASS All included €61.54
+18317,11,day,,,1,1,0,61.54,EUR,,,,,,,0,02 jan 2027 : DAY PASS All included €61.54
+18317,12,day,,,1,1,0,61.54,EUR,,,,,,,0,03 jan 2027 : DAY PASS All included €61.54
 18350,1,full,,,1,,0,70,CHF,,,,,,,1,EARLY BIRD CHF 70.00
 18350,2,full,,,1,,0,130,CHF,,,,,,,0,FULL PASS WOMEN CHF 130.00
 18350,2,full,,,1,,0,110,CHF,,,,,,,1,FULL PASS WOMEN CHF 110.00
