@@ -1,0 +1,36 @@
+{
+ "batch": "event-15275",
+ "events": [
+  {
+   "event_id": 15275,
+   "party_rooms": {
+    "count": 2,
+    "quote": "Friday evening: 2 rooms, 3 atmospheres with 1 class"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "salsa",
+     "quote": "Latin dance workshops (salsa, bachata, kizomba, Brazilian zouk, etc.)"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "bachata",
+     "quote": "Latin dance workshops (salsa, bachata, kizomba, Brazilian zouk, etc.)"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "Latin dance workshops (salsa, bachata, kizomba, Brazilian zouk, etc.)"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Brazilian zouk",
+     "quote": "Latin dance workshops (salsa, bachata, kizomba, Brazilian zouk, etc.)"
+    }
+   ]
+  }
+ ]
+}

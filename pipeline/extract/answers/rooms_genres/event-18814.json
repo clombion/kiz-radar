@@ -1,0 +1,79 @@
+{
+ "batch": "event-18814",
+ "events": [
+  {
+   "event_id": 18814,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 rooms/2 vibes"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "ROOM 1",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "semba",
+      "other",
+      "zouk",
+      "tarraxinha",
+      "afro"
+     ],
+     "quote": "50% Kizomba – Semba – Coladeira – Cabozouk"
+    },
+    {
+     "name_as_written": "ROOM 2",
+     "kind": "party",
+     "genres": [
+      "salsa",
+      "bachata"
+     ],
+     "quote": "50% Cuban Salsa, Timba, Son, Salsa Dura"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "3 Kizomba socials"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba/Semba"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa/Bachata"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "50% Modern, Sensual, and Dominican Bachata"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "GhettoZouk",
+     "quote": "50% GhettoZouk – Tarraxinha – Afropop – Afrohouse"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "50% GhettoZouk – Tarraxinha – Afropop – Afrohouse"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afropop",
+     "quote": "Afropop"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Coladeira",
+     "quote": "Coladeira"
+    }
+   ]
+  }
+ ]
+}

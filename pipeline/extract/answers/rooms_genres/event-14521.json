@@ -1,0 +1,66 @@
+{
+ "batch": "event-14521",
+ "events": [
+  {
+   "event_id": 14521,
+   "party_rooms": {
+    "count": 4,
+    "quote": "2 Parties in 4 Rooms"
+   },
+   "class_rooms": {
+    "count": 5,
+    "quote": "5 rooms for training"
+   },
+   "rooms": [
+    {
+     "name_as_written": "Social Room",
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "Social Room"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "in kizomba, semba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "semba",
+     "quote": "semba, urban kizomba"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "urban kizomba",
+     "quote": "urban kizomba, tarraxo"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "tarraxo",
+     "quote": "tarraxo, doceur"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "doceur",
+     "quote": "doceur, kizomba fusion"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Cuban salsa",
+     "quote": "Cuban salsa, Puerto Rican salsa"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "bachata",
+     "quote": "bachata, and Latin Hustle"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Latin Hustle",
+     "quote": "and Latin Hustle"
+    }
+   ]
+  }
+ ]
+}

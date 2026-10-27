@@ -1,0 +1,23 @@
+{
+ "batch": "event-17451",
+ "events": [
+  {
+   "event_id": 17451,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "ALL group dance classes (incl. kizomba, semba, etc)"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "semba",
+     "quote": "kizomba/semba lovers"
+    }
+   ]
+  }
+ ]
+}

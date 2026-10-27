@@ -1,0 +1,21 @@
+{
+ "batch": "event-14952",
+ "events": [
+  {
+   "event_id": 14952,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "workshops de qualités",
+     "rationale": "The description says workshops of quality are part of the weekend, so dance classes are included."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "De 17H00 à 20H00",
+     "rationale": "The Sunday programme includes an afternoon-to-evening SOCIALE session, which is a daytime social."
+    }
+   ]
+  }
+ ]
+}

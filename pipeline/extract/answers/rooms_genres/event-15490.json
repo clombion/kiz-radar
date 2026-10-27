@@ -1,0 +1,26 @@
+{
+ "batch": "event-15490",
+ "events": [
+  {
+   "event_id": 15490,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 Rooms, 2 Styles Urban kiz & Bachata"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban kiz",
+     "quote": "2 Rooms, 2 Styles Urban kiz & Bachata"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata Line up"
+    }
+   ]
+  }
+ ]
+}

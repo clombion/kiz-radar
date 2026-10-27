@@ -1,0 +1,26 @@
+{
+ "batch": "event-16390",
+ "events": [
+  {
+   "event_id": 16390,
+   "artists": [],
+   "features": [
+    {
+     "feature": "taxi_dancers",
+     "quote": "International Taxi Team",
+     "rationale": "The line 'International Taxi Team' shows that taxi dancers are present at the event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "3 Days of Inspiring Classes & Workshops",
+     "rationale": "The listing states that three days of classes and workshops are part of the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "2 Outdoor Day Socials",
+     "rationale": "The listing promises two outdoor daytime socials."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "batch": "event-16379",
+ "events": [
+  {
+   "event_id": 16379,
+   "party_rooms": {
+    "count": 2,
+    "quote": "The 2 party rooms at the moment (more to be announced)"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "BACHATA with Salsa",
+     "kind": "party",
+     "genres": [
+      "bachata",
+      "salsa"
+     ],
+     "quote": "BACHATA with Salsa"
+    },
+    {
+     "name_as_written": "KIZOMBA/URBAN KIZ/KOMPA",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "urbankiz",
+      "kompa"
+     ],
+     "quote": "KIZOMBA/URBAN KIZ/KOMPA"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "BACHATA with Salsa"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "BACHATA with Salsa"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "KIZOMBA/URBAN KIZ/KOMPA"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBAN KIZ",
+     "quote": "KIZOMBA/URBAN KIZ/KOMPA"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "KOMPA",
+     "quote": "KIZOMBA/URBAN KIZ/KOMPA"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "AFRO",
+     "quote": "KIZOMBA/URBAN KIZ/AFRO"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Zouk",
+     "quote": "Zouk"
+    }
+   ]
+  }
+ ]
+}

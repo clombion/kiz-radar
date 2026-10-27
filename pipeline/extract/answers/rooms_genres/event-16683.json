@@ -1,0 +1,23 @@
+{
+ "batch": "event-16683",
+ "events": [
+  {
+   "event_id": 16683,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Chris Py & Laly – Kizomba – CLK Dance School"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Pere – Bachata – GDS Dance School"
+    }
+   ]
+  }
+ ]
+}

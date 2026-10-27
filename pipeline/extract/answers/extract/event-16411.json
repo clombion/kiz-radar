@@ -1,0 +1,36 @@
+{
+ "batch": "event-16411",
+ "events": [
+  {
+   "event_id": 16411,
+   "artists": [],
+   "features": [
+    {
+     "feature": "shows",
+     "quote": "National Shows",
+     "rationale": "The description lists 'National Shows' as part of the programme, so shows by artists are present."
+    },
+    {
+     "feature": "shows",
+     "quote": "International Shows",
+     "rationale": "The description lists 'International Shows' as part of the programme, so shows by artists are present."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Workshops",
+     "rationale": "The listed programme item 'Workshops' shows that dance classes are part of the event."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "5 Rooms, 5 Atmospheres",
+     "rationale": "The quote states there are five rooms, which means more than one dance room."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Pool Parties",
+     "rationale": "The programme explicitly lists pool parties."
+    }
+   ]
+  }
+ ]
+}

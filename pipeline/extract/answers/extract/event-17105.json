@@ -1,0 +1,48 @@
+{
+ "batch": "event-17105",
+ "events": [
+  {
+   "event_id": 17105,
+   "artists": [
+    {
+     "name_as_written": "Stephy & JP",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💫 Stephy & JP from Paris and Top Dj Djeemix here in H-Town 💫"
+    },
+    {
+     "name_as_written": "Dj Djeemix",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "💫 Stephy & JP from Paris and Top Dj Djeemix here in H-Town 💫"
+    },
+    {
+     "name_as_written": "Youdance Dream Team",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Dein Youdance Dream Team"
+    }
+   ],
+   "features": [
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Bootcamp Topic:",
+     "rationale": "The event includes a bootcamp with a named topic and a Saturday bootcamp session."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Learn how to highlight musical accents",
+     "rationale": "The bootcamp lists dance learning sessions on musicality, which are classes within the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "30 min Social",
+     "rationale": "The Saturday afternoon schedule includes a social after the bootcamp."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,36 @@
+{
+ "batch": "event-19083",
+ "events": [
+  {
+   "event_id": 19083,
+   "artists": [],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "4 dance floors every night",
+     "rationale": "Stating four dance floors every night shows more than one dance room."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Workshops with international artists and instructors",
+     "rationale": "The description lists workshops as part of the event."
+    },
+    {
+     "feature": "shows",
+     "quote": "Evening shows and social dancing until late",
+     "rationale": "Evening shows are explicitly offered as part of the event."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "Workshops, parties and accommodation take place in a 5-star hotel",
+     "rationale": "The workshops, parties and accommodation are all held in the same hotel, so the event and accommodation share one venue."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "We welcome dancers of all levels",
+     "rationale": "Explicitly welcoming dancers of all levels matches the all-levels feature."
+    }
+   ]
+  }
+ ]
+}

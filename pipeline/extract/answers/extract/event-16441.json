@@ -1,0 +1,102 @@
+{
+ "batch": "event-16441",
+ "events": [
+  {
+   "event_id": 16441,
+   "artists": [
+    {
+     "name_as_written": "Babs",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "Babs – Toronto 🇨🇦"
+    },
+    {
+     "name_as_written": "Java",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "Java – Toronto 🇨🇦"
+    },
+    {
+     "name_as_written": "Yann & Larissa",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "Yann & Larissa – Toronto 🇨🇦"
+    },
+    {
+     "name_as_written": "David & Daria",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "David & Daria – Toronto 🇨🇦"
+    },
+    {
+     "name_as_written": "Ibri & Vamika",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "Ibri & Vamika – Toronto 🇨🇦"
+    },
+    {
+     "name_as_written": "Amen",
+     "role": "teacher",
+     "style": null,
+     "country": "🇺🇸",
+     "source_line": "Amen – Columbus 🇺🇸"
+    },
+    {
+     "name_as_written": "DJ Simo",
+     "role": "dj",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "DJ Simo – Windsor 🇨🇦"
+    },
+    {
+     "name_as_written": "DJ NS",
+     "role": "dj",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "DJ NS – Toronto 🇨🇦"
+    },
+    {
+     "name_as_written": "DJ Vlad",
+     "role": "dj",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "DJ Vlad – Toronto 🇨🇦"
+    },
+    {
+     "name_as_written": "Ryan Tolbert",
+     "role": "media",
+     "style": null,
+     "country": "🇺🇸",
+     "source_line": "📸 Media: Ryan Tolbert 🇺🇸"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "10 hours of workshops",
+     "rationale": "The description lists 10 hours of workshops as part of the event."
+    },
+    {
+     "feature": "private_classes",
+     "quote": "Private lessons available",
+     "rationale": "The description states that private lessons are offered."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Pre-Party Social",
+     "rationale": "A Pre-Party Social is listed on the Friday schedule before the main event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Day Social",
+     "rationale": "Daytime socials are listed on the Saturday and Sunday schedules."
+    }
+   ]
+  }
+ ]
+}

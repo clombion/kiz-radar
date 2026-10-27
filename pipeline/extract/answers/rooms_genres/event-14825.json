@@ -1,0 +1,28 @@
+{
+ "batch": "event-14825",
+ "events": [
+  {
+   "event_id": 14825,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "quote": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔 𝗟𝗜𝗡𝗘𝗨𝗣:"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔",
+     "quote": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔 𝗟𝗜𝗡𝗘𝗨𝗣:"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "𝗨𝗥𝗕𝗔𝗡𝗞𝗜𝗭",
+     "quote": "𝗨𝗥𝗕𝗔𝗡𝗞𝗜𝗭"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{
+ "batch": "event-16663",
+ "events": [
+  {
+   "event_id": 16663,
+   "party_rooms": {
+    "count": 5,
+    "quote": "5 dance floors for evening parties – Bachata, Salsa, Cubana, Kizomba, UrbanKiz"
+   },
+   "class_rooms": {
+    "count": 10,
+    "quote": "Minimum 10 workshop rooms"
+   },
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "only the bachata floor will be available"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "5 dance floors for evening parties – Bachata, Salsa, Cubana, Kizomba, UrbanKiz"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "5 dance floors for evening parties – Bachata, Salsa, Cubana, Kizomba, UrbanKiz"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Cubana",
+     "quote": "5 dance floors for evening parties – Bachata, Salsa, Cubana, Kizomba, UrbanKiz"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "5 dance floors for evening parties – Bachata, Salsa, Cubana, Kizomba, UrbanKiz"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "UrbanKiz",
+     "quote": "5 dance floors for evening parties – Bachata, Salsa, Cubana, Kizomba, UrbanKiz"
+    }
+   ]
+  }
+ ]
+}

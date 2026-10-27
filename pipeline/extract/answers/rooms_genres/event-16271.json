@@ -1,0 +1,33 @@
+{
+ "batch": "event-16271",
+ "events": [
+  {
+   "event_id": 16271,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Sensual Bachata",
+     "quote": "Sensual Bachata"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Urban Kiz & Kizomba"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Urban Kiz & Kizomba"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Brazilian Zouk",
+     "quote": "Brazilian Zouk at the ONLY beachfront social dance festival"
+    }
+   ]
+  }
+ ]
+}

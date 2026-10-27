@@ -1,0 +1,18 @@
+{
+ "batch": "event-15868",
+ "events": [
+  {
+   "event_id": 15868,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "GLOBAL TARRAXO COMING TO INDIA"
+    }
+   ]
+  }
+ ]
+}

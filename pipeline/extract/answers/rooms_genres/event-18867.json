@@ -1,0 +1,31 @@
+{
+ "batch": "event-18867",
+ "events": [
+  {
+   "event_id": 18867,
+   "party_rooms": {
+    "count": 3,
+    "quote": "Three rooms, Three atmospheres"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata, Kizomba & Salsa"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Bachata, Kizomba & Salsa"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Bachata, Kizomba & Salsa"
+    }
+   ]
+  }
+ ]
+}

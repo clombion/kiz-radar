@@ -1,0 +1,28 @@
+{
+ "batch": "event-14815",
+ "events": [
+  {
+   "event_id": 14815,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "SALSA, BACHATA & KIZOMBA"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "SALSA, BACHATA & KIZOMBA"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "SALSA, BACHATA & KIZOMBA"
+    }
+   ]
+  }
+ ]
+}

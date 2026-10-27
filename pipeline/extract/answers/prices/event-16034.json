@@ -1,6 +1,5 @@
 {
  "batch": "event-16034",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16034,
@@ -17,8 +16,7 @@
        "amount": 90,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "2025-11-14",
        "until": "2026-01-14",
        "quantity": null,
@@ -41,8 +39,7 @@
        "amount": 160,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "2025-11-14",
        "until": "2026-01-14",
        "quantity": null,
@@ -65,8 +62,7 @@
        "amount": 80,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "2025-11-14",
        "until": "2026-01-14",
        "quantity": null,
@@ -89,8 +85,7 @@
        "amount": 145,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "2025-11-14",
        "until": "2026-01-14",
        "quantity": null,
@@ -102,7 +97,9 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "Couple pass tickets – Man & Woman only"
+   ]
   }
  ]
 }

@@ -1,0 +1,49 @@
+{
+ "batch": "event-18896",
+ "events": [
+  {
+   "event_id": 18896,
+   "artists": [
+    {
+     "name_as_written": "C4 PEDRO",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🎤 C4 PEDRO"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE RESORT",
+     "rationale": "The event is described as an all-in-one resort, meaning the parties happen at the hotel where dancers stay."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "PRE PARTY",
+     "rationale": "A PRE PARTY is listed on Thursday 13th May before the festival starts."
+    },
+    {
+     "feature": "after_party",
+     "quote": "AFTER PARTY",
+     "rationale": "An AFTER PARTY is listed for Monday 17th."
+    },
+    {
+     "feature": "workshops",
+     "quote": "8 Workshops",
+     "rationale": "The programme lists 8 workshops as part of the festival."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Live concert with his band",
+     "rationale": "A live concert with a band is part of the programme."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Hotel promo: SUNNYC4",
+     "rationale": "A hotel promo code is given for a negotiated hotel rate, without the accommodation being part of the pass."
+    }
+   ]
+  }
+ ]
+}

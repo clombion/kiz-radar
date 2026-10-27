@@ -1,0 +1,18 @@
+{
+ "batch": "event-14511",
+ "events": [
+  {
+   "event_id": 14511,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "THE KIZOMBA EXPERIENCE JAMAICA IRIE EDITION"
+    }
+   ]
+  }
+ ]
+}

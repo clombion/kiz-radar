@@ -1,0 +1,18 @@
+{
+ "batch": "event-17858",
+ "events": [
+  {
+   "event_id": 17858,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "the best Kizomba vibes in Bali"
+    }
+   ]
+  }
+ ]
+}

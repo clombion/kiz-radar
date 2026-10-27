@@ -1,0 +1,43 @@
+{
+ "batch": "event-15754",
+ "events": [
+  {
+   "event_id": 15754,
+   "party_rooms": {
+    "count": 2,
+    "quote": "100% Bachata Room\n100% Kizomba Room"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "100% Bachata Room",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "100% Bachata Room"
+    },
+    {
+     "name_as_written": "100% Kizomba Room",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "100% Kizomba Room"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "100% Bachata Room"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "KIZOMBA\nFull pass"
+    }
+   ]
+  }
+ ]
+}

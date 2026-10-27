@@ -1,0 +1,196 @@
+{
+ "batch": "event-14466",
+ "events": [
+  {
+   "event_id": 14466,
+   "artists": [
+    {
+     "name_as_written": "Kizomba Geneva",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "💥 From the 9th to the 11th of January 2026, Kizomba Geneva welcomes you to an friendly festival in a festive and family atmosphere 🎉 2 Rooms, 2 Atmospheres 🤩"
+    },
+    {
+     "name_as_written": "Association Kizomba Genève",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "– Association Kizomba Genève"
+    },
+    {
+     "name_as_written": "DJ Lenhy",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "– DJ Lenhy 🇫🇷"
+    },
+    {
+     "name_as_written": "DJ Dani Fernandes",
+     "role": "dj",
+     "style": null,
+     "country": "🇳🇱",
+     "source_line": "– DJ Dani Fernandes 🇳🇱"
+    },
+    {
+     "name_as_written": "DJ Lisa Rose",
+     "role": "dj",
+     "style": null,
+     "country": "🇳🇱",
+     "source_line": "– DJ Lisa Rose 🇳🇱"
+    },
+    {
+     "name_as_written": "DJ Diablo",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "– DJ Diablo 🇫🇷"
+    },
+    {
+     "name_as_written": "DJ Mtee",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "– DJ Mtee 🇫🇷"
+    },
+    {
+     "name_as_written": "DJ Jahnaï",
+     "role": "dj",
+     "style": null,
+     "country": "🇨🇭",
+     "source_line": "– DJ Jahnaï 🇨🇭"
+    },
+    {
+     "name_as_written": "DJ Relampago",
+     "role": "dj",
+     "style": null,
+     "country": "🇨🇭",
+     "source_line": "– DJ Relampago 🇨🇭"
+    },
+    {
+     "name_as_written": "Jojo & Jenny",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "– Jojo & Jenny 🇫🇷"
+    },
+    {
+     "name_as_written": "Jp & Stephy",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "– Jp & Stephy 🇫🇷"
+    },
+    {
+     "name_as_written": "Heneco",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "– Heneco 🇫🇷"
+    },
+    {
+     "name_as_written": "Axel & Lucy",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "– Axel & Lucy 🇫🇷"
+    },
+    {
+     "name_as_written": "Ati",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "– Ati 🇫🇷"
+    },
+    {
+     "name_as_written": "Relampago",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇭🇦🇴",
+     "source_line": "– Relampago 🇨🇭🇦🇴"
+    },
+    {
+     "name_as_written": "Kalypso & Adé",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇭",
+     "source_line": "– Kalypso & Adé 🇨🇭"
+    },
+    {
+     "name_as_written": "Benkos Tarehi ProdArts",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "– Benkos Tarehi ProdArts"
+    },
+    {
+     "name_as_written": "Yoan Perrin",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "– Yoan Perrin"
+    },
+    {
+     "name_as_written": "KIZMANIE",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "– KIZMANIE"
+    },
+    {
+     "name_as_written": "PSBK",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "– PSBK"
+    },
+    {
+     "name_as_written": "UNIT KIZ",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "– UNIT KIZ"
+    },
+    {
+     "name_as_written": "VVK",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "– VVK"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE",
+     "rationale": "The festival title says ALL IN ONE and the parties are held at the hotel described in the listing."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 Rooms, 2 Atmospheres",
+     "rationale": "The description states the festival has two rooms."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "DRESS CODES:",
+     "rationale": "A dress code section is stated for the parties."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Sunday social –",
+     "rationale": "The Sunday programme is a daytime social running from 12H00 to 20H00."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "FREE SHUTTLES",
+     "rationale": "Free airport shuttles are offered with reservation."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "HOTEL MERCURE GENEVA AIRPORT: Special festival rates",
+     "rationale": "A partner hotel is recommended with negotiated festival room rates, not included in a pass."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,64 @@
+{
+ "batch": "event-16508",
+ "events": [
+  {
+   "event_id": 16508,
+   "party_rooms": {
+    "count": 1,
+    "quote": "one dance area"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "semba",
+      "zouk",
+      "tarraxinha",
+      "kompa"
+     ],
+     "quote": "one dance area"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba, Semba, and Afro partner dances"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba & Semba"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "Afro partner dances"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Zouk",
+     "quote": "Kizomba – Semba – Zouk – Tarraxinha"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "Zouk – Tarraxinha – Ghetto Zouk"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Ghetto Zouk – Konpa"
+    },
+    {
+     "genre": "kuduro",
+     "genre_as_written": "Kuduro",
+     "quote": "AfroHouse & Kuduro"
+    }
+   ]
+  }
+ ]
+}

@@ -1,6 +1,5 @@
 {
  "batch": "event-18522",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18522,
@@ -17,8 +16,7 @@
        "amount": 34.99,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -26,6 +24,29 @@
        "sold_out": false,
        "current": false,
        "quote": "Only €34.99"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "style": null,
+     "label_quote": "⭐ Masterclass (optional add-on)",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 39.99,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "• Both Masterclasses: €39.99"
       }
      ]
     },
@@ -41,8 +62,7 @@
        "amount": 14.99,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -65,8 +85,7 @@
        "amount": 14.99,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -89,8 +108,7 @@
        "amount": 9.99,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -98,30 +116,6 @@
        "sold_out": false,
        "current": false,
        "quote": "📍 Sunday: €9.99"
-      }
-     ]
-    },
-    {
-     "kind": "other",
-     "style": null,
-     "label_quote": "⭐ Masterclass (optional add-on)",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 39.99,
-       "currency": "EUR",
-       "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "• Both Masterclasses: €39.99"
       }
      ]
     }

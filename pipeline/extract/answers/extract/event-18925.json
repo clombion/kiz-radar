@@ -1,0 +1,186 @@
+{
+ "batch": "event-18925",
+ "events": [
+  {
+   "event_id": 18925,
+   "artists": [
+    {
+     "name_as_written": "AZZEDINE",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🕺 AZZEDINE"
+    },
+    {
+     "name_as_written": "DANIEL SCHAUENBURG & ELINA",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🕺 DANIEL SCHAUENBURG & ELINA 💃"
+    },
+    {
+     "name_as_written": "LUCA & ELENA",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🕺 LUCA & ELENA 💃"
+    },
+    {
+     "name_as_written": "OSCAR AMORE & SILVIA",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🕺 OSCAR AMORE & SILVIA 💃"
+    },
+    {
+     "name_as_written": "FABRIZIO CAMPANELLA & NICOLETTA",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🕺 FABRIZIO CAMPANELLA & NICOLETTA 💃"
+    },
+    {
+     "name_as_written": "CARLO & VERONICA",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🕺 CARLO & VERONICA 💃"
+    },
+    {
+     "name_as_written": "GIANFRANCO & CHANTAL",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🕺 GIANFRANCO & CHANTAL 💃"
+    },
+    {
+     "name_as_written": "DAFNE & AMIRA & RAUL HERNANDEZ",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "💃 DAFNE & AMIRA & RAUL HERNANDEZ 🕺"
+    },
+    {
+     "name_as_written": "LIDY KIZOMBA",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "💃 LIDY KIZOMBA"
+    },
+    {
+     "name_as_written": "MIKY VISSANI",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "💃 MIKY VISSANI"
+    },
+    {
+     "name_as_written": "LINDA GHIGGI",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "💃 LINDA GHIGGI"
+    },
+    {
+     "name_as_written": "GIORGIO & MAURA",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🕺 GIORGIO & MAURA 💃"
+    },
+    {
+     "name_as_written": "FABRIZIO CHIARENZA",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🕺 FABRIZIO CHIARENZA"
+    },
+    {
+     "name_as_written": "VALENTINA CONCI",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "💃 VALENTINA CONCI"
+    },
+    {
+     "name_as_written": "KELLY DUARTE",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "💃 KELLY DUARTE"
+    },
+    {
+     "name_as_written": "VALTER & VALERY",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🕺 VALTER & VALERY 💃"
+    },
+    {
+     "name_as_written": "ENZO & MICKY",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🕺 ENZO & MICKY 💃"
+    },
+    {
+     "name_as_written": "MARCO & JAHIA",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "🕺 MARCO & JAHIA 💃"
+    },
+    {
+     "name_as_written": "Liguria Kizomba Congress Organizers",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "➡️ Liguria Kizomba Congress Organizers ⬅️"
+    },
+    {
+     "name_as_written": "LUCA ARRIGONI",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "▶️ LUCA ARRIGONI https://www.facebook.com/LucaKiz1985"
+    },
+    {
+     "name_as_written": "SILVIA CICONTE",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "▶️ SILVIA CICONTE https://www.facebook.com/silvia.ciconte"
+    },
+    {
+     "name_as_written": "ROCCO MARIANI",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "▶️ ROCCO MARIANI https://www.facebook.com/rocco.mariani"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE LOCATION",
+     "rationale": "The event location is the same hotel where rooms are booked, so the parties take place in the hotel."
+    },
+    {
+     "feature": "workshops",
+     "quote": "3 days of workshops and 3 party nights",
+     "rationale": "The event includes three days of workshops."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 party nights with rooms dedicated to Kizomba",
+     "rationale": "The parties use several rooms dedicated to Kizomba."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Rates per room, per night, on a B&B basis",
+     "rationale": "A negotiated hotel room rate is offered, while accommodation is not part of the Full Pass."
+    }
+   ]
+  }
+ ]
+}

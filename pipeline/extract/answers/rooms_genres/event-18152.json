@@ -1,0 +1,18 @@
+{
+ "batch": "event-18152",
+ "events": [
+  {
+   "event_id": 18152,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "DAMA Kizomba Festival returns for its 4th edition."
+    }
+   ]
+  }
+ ]
+}

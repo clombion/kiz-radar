@@ -1,0 +1,64 @@
+{
+ "batch": "event-14624",
+ "events": [
+  {
+   "event_id": 14624,
+   "artists": [
+    {
+     "name_as_written": "Asia Voronova",
+     "role": "teacher",
+     "style": null,
+     "country": "🇺🇦",
+     "source_line": "• Asia Voronova 🇺🇦"
+    },
+    {
+     "name_as_written": "Jah J’a",
+     "role": "teacher",
+     "style": null,
+     "country": "🇬🇵🇨🇭",
+     "source_line": "• Jah J’a 🇬🇵🇨🇭"
+    },
+    {
+     "name_as_written": "Caarl & Patii",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹🇵🇱",
+     "source_line": "• Caarl & Patii 🇮🇹🇵🇱"
+    },
+    {
+     "name_as_written": "Ducu & Jojo",
+     "role": "teacher",
+     "style": null,
+     "country": "🇷🇴",
+     "source_line": "• Ducu & Jojo 🇷🇴"
+    },
+    {
+     "name_as_written": "DJ Lenhy",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "🎧 DJ Lenhy 🇫🇷"
+    },
+    {
+     "name_as_written": "DJ Ducu",
+     "role": "dj",
+     "style": null,
+     "country": "🇷🇴",
+     "source_line": "🎧 DJ Ducu 🇷🇴"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Body Movement & Footwork Classes",
+     "rationale": "The line-up lists dance classes as part of the event programme."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Tarraxo & Urban Kiz Workshops",
+     "rationale": "Tarraxo and Urban Kiz workshops with instructors are explicitly offered."
+    }
+   ]
+  }
+ ]
+}

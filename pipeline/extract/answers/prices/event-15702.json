@@ -1,6 +1,5 @@
 {
  "batch": "event-15702",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15702,
@@ -17,9 +16,8 @@
        "amount": 190,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
+       "alt": null,
+       "from": "2026-01-01",
        "until": "2026-02-28",
        "quantity": null,
        "door": false,
@@ -31,8 +29,7 @@
        "amount": 200,
        "currency": "CAD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "2026-03-01",
        "until": "2026-04-30",
        "quantity": null,

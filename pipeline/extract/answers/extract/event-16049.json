@@ -1,0 +1,78 @@
+{
+ "batch": "event-16049",
+ "events": [
+  {
+   "event_id": 16049,
+   "artists": [
+    {
+     "name_as_written": "Sara Rodriguez",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⭐️Sara Rodriguez"
+    },
+    {
+     "name_as_written": "Chris Dawhite",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⭐️Chris Dawhite"
+    },
+    {
+     "name_as_written": "Dan & Shelly",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⭐️Dan & Shelly"
+    },
+    {
+     "name_as_written": "Fabrice",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "⭐️Fabrice"
+    },
+    {
+     "name_as_written": "Dj7even",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "⭐️Dj7even"
+    },
+    {
+     "name_as_written": "DjCelly",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "⭐️DjCelly"
+    },
+    {
+     "name_as_written": "DjPatrick",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "⭐️DjPatrick"
+    },
+    {
+     "name_as_written": "Lekryptonien",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "⭐️Lekryptonien"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "with workshops, DJs",
+     "rationale": "The description states that the three days include workshops, and it lists 7 hours of workshops with teachers."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "IBIS BUDGET Belfort centre",
+     "rationale": "The description lists a hotel under the heading 'Hôtels', which suggests a recommended hotel without stating that accommodation is part of the pass."
+    }
+   ]
+  }
+ ]
+}

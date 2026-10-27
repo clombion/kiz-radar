@@ -1,0 +1,71 @@
+{
+ "batch": "event-16996",
+ "events": [
+  {
+   "event_id": 16996,
+   "artists": [
+    {
+     "name_as_written": "Last & Cécile",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💃🕺 Last & Cécile"
+    },
+    {
+     "name_as_written": "Ben Cyrille & Mlyn",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💃🕺 Ben Cyrille & Mlyn"
+    },
+    {
+     "name_as_written": "DJ Virus",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Virus"
+    },
+    {
+     "name_as_written": "DJ Ralp BB",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Ralp BB"
+    },
+    {
+     "name_as_written": "DJ Ska",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Ska"
+    },
+    {
+     "name_as_written": "DJ RC",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ RC"
+    },
+    {
+     "name_as_written": "Dance Taxis",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "⚡Dance Taxis"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Class (1 hour): €12",
+     "rationale": "A priced one-hour class is listed among the classes offered at the event, so dance classes are part of it."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "⚡Dance Taxis",
+     "rationale": "The program lists a Dance Taxis team, indicating taxi dancers are present."
+    }
+   ]
+  }
+ ]
+}

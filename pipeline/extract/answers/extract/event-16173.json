@@ -1,0 +1,135 @@
+{
+ "batch": "event-16173",
+ "events": [
+  {
+   "event_id": 16173,
+   "artists": [
+    {
+     "name_as_written": "Dwe & Gaby",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "– Dwe & Gaby"
+    },
+    {
+     "name_as_written": "Do Zangado",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "– Do Zangado"
+    },
+    {
+     "name_as_written": "Chamalo & Jalyssa",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "– Chamalo & Jalyssa"
+    },
+    {
+     "name_as_written": "Tresor & Aurea",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "– Tresor & Aurea"
+    },
+    {
+     "name_as_written": "Stefanio Lima",
+     "role": "dj",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "– Stefanio Lima"
+    },
+    {
+     "name_as_written": "Pingusso",
+     "role": "dj",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "– Pingusso"
+    },
+    {
+     "name_as_written": "Paraïso",
+     "role": "dj",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "– Paraïso"
+    },
+    {
+     "name_as_written": "On Fire",
+     "role": "dj",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "– On Fire"
+    },
+    {
+     "name_as_written": "Team ILKSF",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Team ILKSF"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "4 Days of Workshops “Thur, Fri, Sat & Sun”",
+     "rationale": "The event lists four days of workshops."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Masterclasses",
+     "rationale": "The activities list includes masterclasses."
+    },
+    {
+     "feature": "competition",
+     "quote": "Rising Star Competition “Urbankiz”",
+     "rationale": "A named Rising Star competition is part of the activities."
+    },
+    {
+     "feature": "shows",
+     "quote": "Live Dance Shows",
+     "rationale": "Live dance shows are listed among the activities."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Live Performance “Singers”",
+     "rationale": "A live performance by singers is listed."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Crazy, Sexy & Cool Dresscodes",
+     "rationale": "Dress codes are stated for the event."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Pre-Party 1",
+     "rationale": "The door price list names pre-parties before the main event."
+    },
+    {
+     "feature": "after_party",
+     "quote": "After party",
+     "rationale": "The door price list includes an after party on 10.08."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "4 Days of Socials “Social Dancing In & Outdoor.",
+     "rationale": "Daytime social dancing is offered on four days."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "5 Different Dancing rooms at Night",
+     "rationale": "Five different dance rooms are offered at night."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "𝗔𝗟𝗟 𝗜𝗡 𝟭 𝗩𝗘𝗡𝗨𝗘",
+     "rationale": "The accommodation section headed all-in-one venue ties the hotel to the event venue."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "The minimum stay is 3 nights and a double room per night is €… (includes breakfast, but excludes city tax).",
+     "rationale": "A hotel room rate is negotiated for attendees without being part of the pass."
+    }
+   ]
+  }
+ ]
+}

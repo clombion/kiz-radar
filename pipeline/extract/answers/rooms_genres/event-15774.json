@@ -1,0 +1,38 @@
+{
+ "batch": "event-15774",
+ "events": [
+  {
+   "event_id": 15774,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Semba"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro dance",
+     "quote": "heart of Latin and Afro dance"
+    }
+   ]
+  }
+ ]
+}

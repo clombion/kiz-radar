@@ -1,0 +1,18 @@
+{
+ "batch": "event-14921",
+ "events": [
+  {
+   "event_id": 14921,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Loves Kizomba returns in 2026 to celebrate spring through dance"
+    }
+   ]
+  }
+ ]
+}

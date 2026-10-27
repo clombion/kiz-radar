@@ -1,0 +1,147 @@
+{
+ "batch": "event-15622",
+ "events": [
+  {
+   "event_id": 15622,
+   "artists": [
+    {
+     "name_as_written": "LILIAN & IVANA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🟠 🟠 🟠 🟠 🟠 🟠 🟠LILIAN & IVANA (Marseille)"
+    },
+    {
+     "name_as_written": "PAO LOU & MARGAUX",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🟠 🟠 🟠 🟠 🟠 🟠PAO LOU & MARGAUX (Lyon)"
+    },
+    {
+     "name_as_written": "MAME DIATA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🟠 🟠 🟠 🟠 MAME DIATA (Paris)"
+    },
+    {
+     "name_as_written": "ARMANDO",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🟠 🟠 🟠 🟠ARMANDO (Toulon)"
+    },
+    {
+     "name_as_written": "NICKI KIZZ",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🟠 🟠 🟠NICKI KIZZ (Paris)"
+    },
+    {
+     "name_as_written": "BLACKCHINESE",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🟠 🟠BLACKCHINESE (Nice)"
+    },
+    {
+     "name_as_written": "FAZER ACONTECER",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🟠FAZER ACONTECER (Geneva)"
+    },
+    {
+     "name_as_written": "DJ PARAISO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧🎧🎧🎧🎧🎧 🎧 DJ PARAISO (Paris)"
+    },
+    {
+     "name_as_written": "DJ PUTO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧🎧🎧🎧🎧🎧 DJ PUTO"
+    },
+    {
+     "name_as_written": "DJ MKY",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧🎧🎧🎧🎧 DJ MKY (Geneva)"
+    },
+    {
+     "name_as_written": "DJ GALANTA",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧🎧🎧🎧 DJ GALANTA (Geneva)"
+    },
+    {
+     "name_as_written": "DJ CLARITA",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧🎧🎧 DJ CLARITA (Geneva)"
+    },
+    {
+     "name_as_written": "DJ DRIM",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧🎧 DJ DRIM (Geneva)"
+    },
+    {
+     "name_as_written": "DJ THY",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ THY (Toulon)"
+    },
+    {
+     "name_as_written": "KITOKO DANCE",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "KITOKO DANCE – The Best"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Workshops",
+     "rationale": "The description lists Workshops as part of what is offered."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Master Classes",
+     "rationale": "The description lists Master Classes as part of what is offered."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Courses over 10 hours",
+     "rationale": "Courses of over 10 hours describe a long training course."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "For everyone",
+     "rationale": "The phrase 'For everyone' along with a Beginner level course shows the event welcomes all levels."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "DANCER TAXIS",
+     "rationale": "A section headed DANCER TAXIS shows taxi dancers are present."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Shuttle €5 all weekend.",
+     "rationale": "A shuttle offered for the whole weekend is a shuttle transfer."
+    }
+   ]
+  }
+ ]
+}

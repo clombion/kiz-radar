@@ -1,0 +1,46 @@
+{
+ "batch": "event-16084",
+ "events": [
+  {
+   "event_id": 16084,
+   "artists": [],
+   "features": [
+    {
+     "feature": "beach_party",
+     "quote": "Beach Day",
+     "rationale": "The weekend includes a Beach Day."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Dance Workshops",
+     "rationale": "Dance workshops are listed as part of the weekend."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Day & Night Socials",
+     "rationale": "Daytime socials are listed in the highlights."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Pool Party",
+     "rationale": "A pool party is part of the Saturday schedule."
+    },
+    {
+     "feature": "after_party",
+     "quote": "an after-party",
+     "rationale": "The Thursday welcome includes an after-party."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "Theme: White Affair",
+     "rationale": "The Friday party has a stated dress theme."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Dress clean, elegant, and expressive",
+     "rationale": "The description states how guests should dress."
+    }
+   ]
+  }
+ ]
+}

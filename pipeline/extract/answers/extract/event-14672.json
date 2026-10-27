@@ -1,0 +1,367 @@
+{
+ "batch": "event-14672",
+ "events": [
+  {
+   "event_id": 14672,
+   "artists": [
+    {
+     "name_as_written": "Felix",
+     "role": "performer",
+     "style": "live bachata",
+     "country": null,
+     "source_line": "Friday Special Guest: Felix (live bachata)"
+    },
+    {
+     "name_as_written": "DJ Alexio",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Saturday Special Guest: DJ Alexio"
+    },
+    {
+     "name_as_written": "Dᴊ Geppo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️Dᴊ Geppo"
+    },
+    {
+     "name_as_written": "Dᴊ Stefanio Lima",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️Dᴊ Stefanio Lima"
+    },
+    {
+     "name_as_written": "Dᴊ Sam Gold",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️Dᴊ Sam Gold"
+    },
+    {
+     "name_as_written": "DJ Salvina",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸DJ Salvina"
+    },
+    {
+     "name_as_written": "Dᴊ Mr VK",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️Dᴊ Mr VK"
+    },
+    {
+     "name_as_written": "Dᴊ Eʟ Kᴜʙᴀɴɪᴛᴏ",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸Dᴊ Eʟ Kᴜʙᴀɴɪᴛᴏ"
+    },
+    {
+     "name_as_written": "Dᴊ Gɪᴀʙᴀ",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️Dᴊ Gɪᴀʙᴀ"
+    },
+    {
+     "name_as_written": "Dᴊ Eʟ Tɪᴍʙᴀ",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️Dᴊ Eʟ Tɪᴍʙᴀ"
+    },
+    {
+     "name_as_written": "Dᴊ Lᴇʟᴇ Kɪᴢ",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️Dᴊ Lᴇʟᴇ Kɪᴢ"
+    },
+    {
+     "name_as_written": "Dᴊ Starkiz",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️Dᴊ Starkiz"
+    },
+    {
+     "name_as_written": "Fernando & Michela",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Fernando & Michela"
+    },
+    {
+     "name_as_written": "Motenasso",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Motenasso"
+    },
+    {
+     "name_as_written": "Curtis & Gaya",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Curtis & Gaya"
+    },
+    {
+     "name_as_written": "Marcio",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Marcio"
+    },
+    {
+     "name_as_written": "Chamalo & Jalyssa",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Chamalo & Jalyssa"
+    },
+    {
+     "name_as_written": "Akram & Sara",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Akram & Sara"
+    },
+    {
+     "name_as_written": "Manuela Dose Santos & Laura",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Manuela Dose Santos & Laura"
+    },
+    {
+     "name_as_written": "Eᴠᴀʟᴅᴏ & Daniela",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Eᴠᴀʟᴅᴏ & Daniela"
+    },
+    {
+     "name_as_written": "Jᴀᴅɪʟsᴏɴ",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Jᴀᴅɪʟsᴏɴ"
+    },
+    {
+     "name_as_written": "Gugu & Carola",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Gugu & Carola"
+    },
+    {
+     "name_as_written": "Giuseppe & Vincenza",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Giuseppe & Vincenza"
+    },
+    {
+     "name_as_written": "Wᴀʟʟʏ & Fabiana",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸Wᴀʟʟʏ & Fabiana"
+    },
+    {
+     "name_as_written": "Domenico & Alessandra",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸Domenico & Alessandra"
+    },
+    {
+     "name_as_written": "Vitᴏ & Federica",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Vitᴏ & Federica"
+    },
+    {
+     "name_as_written": "Matteo & Diana",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Matteo & Diana"
+    },
+    {
+     "name_as_written": "Dᴀɴɪʟᴏ & Fᴀᴜsᴛᴀ",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Dᴀɴɪʟᴏ & Fᴀᴜsᴛᴀ"
+    },
+    {
+     "name_as_written": "Nɪᴄhᴏʟᴀs & Iʟᴀʀɪᴀ",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Nɪᴄhᴏʟᴀs & Iʟᴀʀɪᴀ"
+    },
+    {
+     "name_as_written": "Nɪᴄᴏ & Aʟᴇssɪᴀ",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸Nɪᴄᴏ & Aʟᴇssɪᴀ"
+    },
+    {
+     "name_as_written": "Paolo & Angelica",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸Paolo & Angelica"
+    },
+    {
+     "name_as_written": "Aʟᴇ & Tɪᴢɪᴀɴᴀ",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Aʟᴇ & Tɪᴢɪᴀɴᴀ"
+    },
+    {
+     "name_as_written": "Vᴀᴛʜᴀ & Eʟᴇɴᴀ",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Vᴀᴛʜᴀ & Eʟᴇɴᴀ"
+    },
+    {
+     "name_as_written": "Cɪʀᴏ & Patty",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸Cɪʀᴏ & Patty"
+    },
+    {
+     "name_as_written": "Maurizio & Carmelina",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Maurizio & Carmelina"
+    },
+    {
+     "name_as_written": "Melissa Saly",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸️Melissa Saly"
+    },
+    {
+     "name_as_written": "Mayuran",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️Mayuran (Boss Team)"
+    },
+    {
+     "name_as_written": "Michael Bosio",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️Michael Bosio"
+    },
+    {
+     "name_as_written": "Flavio Coletta",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️Flavio Coletta"
+    },
+    {
+     "name_as_written": "Domenico Pugliese",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️Domenico Pugliese"
+    },
+    {
+     "name_as_written": "Nando Troccoli",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️Nando Troccoli"
+    },
+    {
+     "name_as_written": "Moise",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️Moise"
+    },
+    {
+     "name_as_written": "Beppe",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️Beppe"
+    },
+    {
+     "name_as_written": "Matteo Voi",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️Matteo Voi"
+    },
+    {
+     "name_as_written": "Paolo Mieli",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️Paolo Mieli"
+    }
+   ],
+   "features": [
+    {
+     "feature": "live_music",
+     "quote": "Friday Special Guest: Felix (live bachata)",
+     "rationale": "A live bachata performer is listed as a special guest, which is live music."
+    },
+    {
+     "feature": "shows",
+     "quote": "𝑆𝐻𝑂𝑊𝑆",
+     "rationale": "The feature list includes shows."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "𝑃𝑅𝐸́-𝑃𝐴𝑅𝑇𝑌",
+     "rationale": "The feature list includes a pre-party."
+    },
+    {
+     "feature": "after_party",
+     "quote": "𝐴𝐹𝑇𝐸𝑅-𝑃𝐴𝑅𝑇𝑌",
+     "rationale": "The feature list includes an after-party."
+    },
+    {
+     "feature": "workshops",
+     "quote": "𝑊𝑂𝑅𝐾𝑆𝐻𝑂𝑃𝑆",
+     "rationale": "The feature list includes workshops."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Secondo floor Salsa & Bachata",
+     "rationale": "A second dance floor for salsa and bachata is listed alongside the main floor."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Main Hotel:",
+     "rationale": "A main recommended hotel is named for the event, with info and reservations handled through it."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "𝑆𝐻𝑈𝑇𝑇𝐿𝐸 𝐼𝑁𝐹𝑂",
+     "rationale": "A shuttle information section is listed, though its details are still pending."
+    }
+   ]
+  }
+ ]
+}

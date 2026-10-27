@@ -1,0 +1,46 @@
+{
+ "batch": "event-15541",
+ "events": [
+  {
+   "event_id": 15541,
+   "artists": [],
+   "features": [
+    {
+     "feature": "live_music",
+     "quote": "Salsa-Bachata-Kizomba Live Concerts",
+     "rationale": "The description promises live concerts as part of the event."
+    },
+    {
+     "feature": "shows",
+     "quote": "Shows",
+     "rationale": "The listing of Live Concerts, Shows, Competitions indicates shows are part of the event."
+    },
+    {
+     "feature": "competition",
+     "quote": "Competitions",
+     "rationale": "Competitions are named explicitly among the event's offerings."
+    },
+    {
+     "feature": "workshops",
+     "quote": "250+ Workshops in multiple dance styles and levels",
+     "rationale": "The event offers more than 250 dance workshops across many styles."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "7 different Dance Floors",
+     "rationale": "Seven separate dance floors are offered, so there is more than one dance room."
+    },
+    {
+     "feature": "cruise",
+     "quote": "Bosphorus Welcome Dance Cruise",
+     "rationale": "A dance cruise on the Bosphorus is part of the programme."
+    },
+    {
+     "feature": "beach_party",
+     "quote": "Island Beach Parties",
+     "rationale": "Beach parties on the Princess' Islands are part of the event."
+    }
+   ]
+  }
+ ]
+}

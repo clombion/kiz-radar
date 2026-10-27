@@ -1,0 +1,64 @@
+{
+ "batch": "event-15749",
+ "events": [
+  {
+   "event_id": 15749,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "1st Room",
+     "kind": "unspecified",
+     "genres": [
+      "kizomba",
+      "urbankiz",
+      "tarraxo",
+      "semba"
+     ],
+     "quote": "1st Room: Kizomba, Urban Kiz, Tarraxo, Semba"
+    },
+    {
+     "name_as_written": "2nd Room",
+     "kind": "unspecified",
+     "genres": [
+      "zouk",
+      "kompa"
+     ],
+     "quote": "2nd Room: Zouk – Kompa"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "1st Room: Kizomba, Urban Kiz, Tarraxo, Semba"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "1st Room: Kizomba, Urban Kiz, Tarraxo, Semba"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "1st Room: Kizomba, Urban Kiz, Tarraxo, Semba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "1st Room: Kizomba, Urban Kiz, Tarraxo, Semba"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Zouk",
+     "quote": "2nd Room: Zouk – Kompa"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Kompa",
+     "quote": "2nd Room: Zouk – Kompa"
+    }
+   ]
+  }
+ ]
+}

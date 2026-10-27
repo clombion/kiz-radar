@@ -1,0 +1,74 @@
+{
+ "batch": "event-15395",
+ "events": [
+  {
+   "event_id": 15395,
+   "artists": [
+    {
+     "name_as_written": "Virgil & Juneline",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💃🕺Virgil & Juneline"
+    },
+    {
+     "name_as_written": "Cathy & Remnie",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💃🕺Cathy & Remnie"
+    },
+    {
+     "name_as_written": "Julian & Nicky",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💃🕺Julian & Nicky"
+    },
+    {
+     "name_as_written": "DJ Absen",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎵DJ Absen"
+    },
+    {
+     "name_as_written": "DJ Ralph Ravega",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎵DJ Ralph Ravega"
+    },
+    {
+     "name_as_written": "DJ Incognito",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎵DJ Incognito"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "3 awesome Urban & Fusion kizz workshops",
+     "rationale": "The weekend lists three workshops as part of the Weekend Experience."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "Friday Party White & Shine",
+     "rationale": "The parties carry dress themes such as White & Shine, Black is Beautiful and Blue Jeans Casual."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "DRESSCODE",
+     "rationale": "A dress code section specifies outfit themes for each party night."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Hotels ….nearby….",
+     "rationale": "The description recommends nearby hotels with links, without including accommodation in the pass."
+    }
+   ]
+  }
+ ]
+}

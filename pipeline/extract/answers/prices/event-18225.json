@@ -1,6 +1,5 @@
 {
  "batch": "event-18225",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18225,
@@ -17,8 +16,7 @@
        "amount": 80,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -31,8 +29,7 @@
        "amount": 100,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -45,8 +42,7 @@
        "amount": 120,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -69,8 +65,7 @@
        "amount": 150,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -83,8 +78,7 @@
        "amount": 190,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -97,8 +91,7 @@
        "amount": 230,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -112,7 +105,7 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": "THURSDAY",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -121,15 +114,17 @@
        "amount": 10,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 40,
-       "alt_currency": "PLN",
+       "alt": {
+        "amount": 40,
+        "currency": "PLN"
+       },
        "from": null,
        "until": null,
        "quantity": null,
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "23:00-03:00 ( €10 at the door / PLN 40 )"
+       "quote": "( €10 at the door / PLN 40 )"
       }
      ]
     },
@@ -145,8 +140,7 @@
        "amount": 45,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -169,15 +163,14 @@
        "amount": 55,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "SATURDAY Day Pass (workshops +social+party)\n= €55"
+       "quote": "= €55"
       }
      ]
     },
@@ -193,8 +186,7 @@
        "amount": 55,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -206,7 +198,11 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "First phase – 30% of the capacity",
+    "Second phase – 40% of the capacity",
+    "Third phase – last 30% of the capacity"
+   ]
   }
  ]
 }

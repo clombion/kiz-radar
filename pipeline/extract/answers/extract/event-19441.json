@@ -1,0 +1,122 @@
+{
+ "batch": "event-19441",
+ "events": [
+  {
+   "event_id": 19441,
+   "artists": [
+    {
+     "name_as_written": "Fanio de Araújo",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴🇵🇹",
+     "source_line": "▪︎ Fanio de Araújo 🇦🇴🇵🇹"
+    },
+    {
+     "name_as_written": "Adilson & Telma",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "▪︎ Adilson & Telma 🇦🇴"
+    },
+    {
+     "name_as_written": "Eddy Vents",
+     "role": "teacher",
+     "style": null,
+     "country": "🇬🇼🇺🇸",
+     "source_line": "▪︎ Eddy Vents 🇬🇼🇺🇸"
+    },
+    {
+     "name_as_written": "Davide & Cilene",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹🇨🇻",
+     "source_line": "▪︎ Davide & Cilene 🇮🇹🇨🇻"
+    },
+    {
+     "name_as_written": "Elena & Zé Rui",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇭🇨🇻",
+     "source_line": "▪︎ Elena & Zé Rui 🇨🇭🇨🇻"
+    },
+    {
+     "name_as_written": "Walter Dias",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇭🇨🇻",
+     "source_line": "▪︎ Walter Dias 🇨🇭🇨🇻"
+    },
+    {
+     "name_as_written": "Guilhermé",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇭🇦🇴",
+     "source_line": "▪︎ Guilhermé 🇨🇭🇦🇴"
+    },
+    {
+     "name_as_written": "Luis Fernandes",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇭🇨🇻",
+     "source_line": "▪︎ Luis Fernandes 🇨🇭🇨🇻"
+    },
+    {
+     "name_as_written": "Johnny Agostino",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇭🇦🇴",
+     "source_line": "▪︎ Johnny Agostino 🇨🇭🇦🇴"
+    },
+    {
+     "name_as_written": "Cristina",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇭🇮🇹",
+     "source_line": "▪︎ Cristina 🇨🇭🇮🇹"
+    },
+    {
+     "name_as_written": "Dj Guelas",
+     "role": "dj",
+     "style": null,
+     "country": "🇺🇸🇨🇻",
+     "source_line": "▪︎ Dj Guelas 🇺🇸🇨🇻"
+    },
+    {
+     "name_as_written": "Dj Paparazzi",
+     "role": "dj",
+     "style": null,
+     "country": "🇪🇸🇦🇴",
+     "source_line": "▪︎ Dj Paparazzi 🇪🇸🇦🇴"
+    },
+    {
+     "name_as_written": "Dj Kindoki",
+     "role": "dj",
+     "style": null,
+     "country": "🇬🇧🇦🇴",
+     "source_line": "▪︎ Dj Kindoki 🇬🇧🇦🇴"
+    },
+    {
+     "name_as_written": "Dj Emess",
+     "role": "dj",
+     "style": null,
+     "country": "🇨🇭🇦🇴",
+     "source_line": "▪︎ Dj Emess 🇨🇭🇦🇴"
+    },
+    {
+     "name_as_written": "BatuqueEvent",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "#BernisKizomba I #BatuqueEvent"
+    }
+   ],
+   "features": [
+    {
+     "feature": "partner_hotel",
+     "quote": "Room rates (before discount):",
+     "rationale": "The Bern Youth Hostel is listed with negotiated room rates for dancers, while the accommodation is not stated to be part of the pass."
+    }
+   ]
+  }
+ ]
+}

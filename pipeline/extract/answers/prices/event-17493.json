@@ -1,6 +1,5 @@
 {
  "batch": "event-17493",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17493,
@@ -17,8 +16,7 @@
        "amount": 120,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -31,8 +29,7 @@
        "amount": 125,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "06-01",
        "until": null,
        "quantity": null,
@@ -40,20 +37,6 @@
        "sold_out": false,
        "current": false,
        "quote": "From 01/06 – 125eur"
-      },
-      {
-       "amount": 150,
-       "currency": "EUR",
-       "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "Full pass at the door 150 eur"
       }
      ]
     },
@@ -69,8 +52,7 @@
        "amount": 130,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -78,6 +60,29 @@
        "sold_out": false,
        "current": false,
        "quote": "Party pass at the door 130 eur"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 150,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "Full pass at the door 150 eur"
       }
      ]
     },
@@ -93,8 +98,7 @@
        "amount": 30,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -117,8 +121,7 @@
        "amount": 35,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -141,8 +144,7 @@
        "amount": 40,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -165,8 +167,7 @@
        "amount": 35,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -189,8 +190,7 @@
        "amount": 20,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -213,8 +213,7 @@
        "amount": 25,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -237,8 +236,7 @@
        "amount": 25,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -250,7 +248,9 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "*𝐩𝐫𝐞𝐩𝐚𝐫𝐭𝐲 𝐚𝐧𝐝 𝐚𝐟𝐭𝐞𝐫-𝐩𝐚𝐫𝐭𝐲 𝐚𝐫𝐞 𝐧𝐨𝐭 𝐢𝐧𝐜𝐥𝐮𝐝𝐞𝐝 𝐢𝐧 any pass ‼"
+   ]
   }
  ]
 }

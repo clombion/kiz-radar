@@ -1,0 +1,23 @@
+{
+ "batch": "event-16369",
+ "events": [
+  {
+   "event_id": 16369,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "international Bachata & Kizomba artists"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "international Bachata & Kizomba artists"
+    }
+   ]
+  }
+ ]
+}

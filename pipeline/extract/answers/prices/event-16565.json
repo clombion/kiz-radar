@@ -1,12 +1,11 @@
 {
  "batch": "event-16565",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16565,
    "passes": [
     {
-     "kind": "other",
+     "kind": "full",
      "style": null,
      "label_quote": null,
      "group_size": 1,
@@ -17,8 +16,7 @@
        "amount": 75,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -41,8 +39,7 @@
        "amount": 85,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,

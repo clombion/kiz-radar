@@ -1,0 +1,164 @@
+{
+ "event_id": 18647,
+ "title": "Multiverse Kizomba Congress (6 Rooms) – 3rd Edition – Lyon – All In One",
+ "start_date": "2027-03-25",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "cb864655c7075f56",
+ "rows_at": "2026-10-27T02:25:32+00:00",
+ "styles": [
+  "kizomba",
+  "other",
+  "zouk"
+ ],
+ "description": "🌌✨ MULTIVERSE KIZOMBA CONGRESS – 3RD EDITION ✨🌌\n📅 From March 25 to 30, 2027, during Easter Weekend.\n📍 Logis Hôtel Lyon Est, near Lyon, France.\n🔥 After welcoming more than 900 dancers, the Multiverse is coming back even stronger!\n💠 An ALL-IN-ONE experience featuring 6 official rooms and 6 unique Kizomba vibes.\n🎶 UrbanKiz, Kizomba, Semba, Ghetto Zouk, Tarraxinha, Tarraxo, Sweet and Afro Caribbean.\n㊙️ Get ready to discover a completely secret 7th bonus room!\n💥 Enjoy 5 parties, 4 socials and more than 30 hours of workshops.\n🌀 Enter unique musical universes filled with dance, connection and emotion.",
+ "passes": [
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "6932742"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    },
+    {
+     "keys": [
+      "6932748"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    },
+    {
+     "keys": [
+      "6932750"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    },
+    {
+     "keys": [
+      "6932753"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    },
+    {
+     "keys": [
+      "6932759"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    },
+    {
+     "keys": [
+      "6932762"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "6932778"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    },
+    {
+     "keys": [
+      "6932779"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    },
+    {
+     "keys": [
+      "6932782"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    },
+    {
+     "keys": [
+      "6932785"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    },
+    {
+     "keys": [
+      "6932786"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    },
+    {
+     "keys": [
+      "6932787"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    },
+    {
+     "keys": [
+      "6932789"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    },
+    {
+     "keys": [
+      "7273218"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [],
+ "rule_quotes": []
+}

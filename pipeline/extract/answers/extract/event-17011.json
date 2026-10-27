@@ -1,0 +1,44 @@
+{
+ "batch": "event-17011",
+ "events": [
+  {
+   "event_id": 17011,
+   "artists": [
+    {
+     "name_as_written": "DDF",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "🎉 *INTERNATIONAL GALA DANCE BOAT “REGINA DANUBIA meets DDF”* 🎉 Germany Dance Festival"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "intensive workshops",
+     "rationale": "The description says the weekend combines intensive workshops, and lists Friday and Saturday workshop sessions."
+    },
+    {
+     "feature": "cruise",
+     "quote": "A 4-hour dance cruise on the Danube",
+     "rationale": "The event includes a four-hour dance cruise on the Danube river."
+    },
+    {
+     "feature": "boat_party",
+     "quote": "where you dance on a real Danube riverboat",
+     "rationale": "Dancing takes place on a riverboat during the Danube dance boat trip."
+    },
+    {
+     "feature": "after_party",
+     "quote": "Afterparty",
+     "rationale": "An Afterparty from 9:30 PM to 12:00 AM is listed after the boat trip."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "HOTELS IN PASSAU (within walking distance)",
+     "rationale": "A list of recommended hotels is given, and accommodation is not stated as part of the pass."
+    }
+   ]
+  }
+ ]
+}

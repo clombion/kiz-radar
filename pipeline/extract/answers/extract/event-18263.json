@@ -1,0 +1,41 @@
+{
+ "batch": "event-18263",
+ "events": [
+  {
+   "event_id": 18263,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Daily workshops of Kizomba, Semba and traditional dances with local masters.",
+     "rationale": "The program explicitly lists daily dance workshops as part of the event."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Accommodation in double rooms at Semba House by Lápis Turism",
+     "rationale": "Accommodation is listed under the program's included items, so it is part of the package."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Breakfast included throughout the stay",
+     "rationale": "Breakfast is stated as included for the whole stay."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Organized transportation for all program activities",
+     "rationale": "Organised transport between program activities is provided."
+    },
+    {
+     "feature": "shows",
+     "quote": "Showcases and meet-and-greets with musicians and artists",
+     "rationale": "Showcases with musicians and artists are part of the program."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Live dance experiences with traditional and contemporary music",
+     "rationale": "The program offers live music experiences with traditional and contemporary music."
+    }
+   ]
+  }
+ ]
+}

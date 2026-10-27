@@ -1,0 +1,199 @@
+{
+ "batch": "event-17454",
+ "events": [
+  {
+   "event_id": 17454,
+   "artists": [
+    {
+     "name_as_written": "SBK",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "🟥AN SBK EVENT🟥"
+    },
+    {
+     "name_as_written": "Danger & Marielkis",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🔸Danger & Marielkis"
+    },
+    {
+     "name_as_written": "Osbanis & Aneta",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🔸️Osbanis & Aneta"
+    },
+    {
+     "name_as_written": "Melissa Jova",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🔸️Melissa Jova"
+    },
+    {
+     "name_as_written": "Will MP",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🔸Will MP"
+    },
+    {
+     "name_as_written": "Dayana",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🔸Dayana"
+    },
+    {
+     "name_as_written": "Jimi Jacks",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🔸Jimi Jacks"
+    },
+    {
+     "name_as_written": "Tarek",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🔸️Tarek"
+    },
+    {
+     "name_as_written": "Franck Salsahora & Laure",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🔸Franck Salsahora & Laure"
+    },
+    {
+     "name_as_written": "Kev Tropiklille",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🔸Kev Tropiklille"
+    },
+    {
+     "name_as_written": "Obinisa",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🔸️Obinisa"
+    },
+    {
+     "name_as_written": "Selim",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🔸Selim"
+    },
+    {
+     "name_as_written": "Will Dance Company",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "🔸Will Dance Company"
+    },
+    {
+     "name_as_written": "Will MP & Nad",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🔸️Will MP & Nad"
+    },
+    {
+     "name_as_written": "Ricky Manuel & Nanda",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🔸Ricky Manuel & Nanda"
+    },
+    {
+     "name_as_written": "Michael & Dori",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🔸Michael & Dori"
+    },
+    {
+     "name_as_written": "Alexis & Sania",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "🔸Alexis & Sania"
+    },
+    {
+     "name_as_written": "Al & Ambre",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "🔸Al & Ambre"
+    },
+    {
+     "name_as_written": "Dj Pastaguero",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️Dj Pastaguero"
+    },
+    {
+     "name_as_written": "Dj Chanchan",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️Dj Chanchan"
+    },
+    {
+     "name_as_written": "Dj Jecksy",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔹Dj Jecksy"
+    },
+    {
+     "name_as_written": "Dj Assane",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️Dj Assane"
+    },
+    {
+     "name_as_written": "Dj El Jefe",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔹Dj El Jefe"
+    },
+    {
+     "name_as_written": "Dj JDN",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️Dj JDN"
+    },
+    {
+     "name_as_written": "Dj Willo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔹Dj Willo"
+    },
+    {
+     "name_as_written": "Dj El Blanquillo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️Dj El Blanquillo"
+    }
+   ],
+   "features": [
+    {
+     "feature": "shows",
+     "quote": "Shows",
+     "rationale": "The description lists Shows among the event's offerings."
+    }
+   ]
+  }
+ ]
+}

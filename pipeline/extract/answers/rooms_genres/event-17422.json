@@ -1,0 +1,28 @@
+{
+ "batch": "event-17422",
+ "events": [
+  {
+   "event_id": 17422,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba Fusion Class"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Tarraxo Connection Class"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Urban Kiz Class (Connection)"
+    }
+   ]
+  }
+ ]
+}

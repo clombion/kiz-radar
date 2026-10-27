@@ -1,0 +1,245 @@
+{
+ "batch": "event-15954",
+ "events": [
+  {
+   "event_id": 15954,
+   "artists": [
+    {
+     "name_as_written": "La SOA x Let’s Play Kizomba x The New Touch x Li Régué",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "La SOA x Let’s Play Kizomba x The New Touch x Li Régué"
+    },
+    {
+     "name_as_written": "EST",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "🎧 EST 🇫🇷 Toulon"
+    },
+    {
+     "name_as_written": "COLTS",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "🎧 COLTS 🇫🇷 Paris"
+    },
+    {
+     "name_as_written": "VALET",
+     "role": "dj",
+     "style": null,
+     "country": "🇨🇭",
+     "source_line": "🎧 VALET 🇨🇭 Geneva"
+    },
+    {
+     "name_as_written": "LUCAS",
+     "role": "dj",
+     "style": null,
+     "country": "🇵🇹",
+     "source_line": "🎧 LUCAS 🇵🇹 Lisbon"
+    },
+    {
+     "name_as_written": "LENHY",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "🎧 LENHY 🇫🇷 Paris"
+    },
+    {
+     "name_as_written": "PUMBA",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "🎧 PUMBA 🇫🇷 Marseille"
+    },
+    {
+     "name_as_written": "THALES",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "🎧 THALES 🇫🇷 Paris"
+    },
+    {
+     "name_as_written": "DIABLO",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "🎧 DIABLO 🇫🇷 Paris"
+    },
+    {
+     "name_as_written": "ICHIGO",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "🎧 ICHIGO 🇫🇷 Paris"
+    },
+    {
+     "name_as_written": "PANKADAS",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "🎧 PANKADAS 🇫🇷 Nice"
+    },
+    {
+     "name_as_written": "JOJO & JENNY",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✨JOJO & JENNY 🇫🇷 Paris"
+    },
+    {
+     "name_as_written": "BLACKCHINESE",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✨BLACKCHINESE 🇫🇷 Nice"
+    },
+    {
+     "name_as_written": "FRANSOA & ELODIE CATENA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✨FRANSOA & ELODIE CATENA 🇫🇷 Fréjus"
+    },
+    {
+     "name_as_written": "MIKE & ELO",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✨MIKE & ELO 🇫🇷 Paris"
+    },
+    {
+     "name_as_written": "MIK’IZ & PAO",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✨MIK’IZ & PAO 🇫🇷 Lyon"
+    },
+    {
+     "name_as_written": "LILIAN & IVANA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✨LILIAN & IVANA 🇫🇷 Marseille"
+    },
+    {
+     "name_as_written": "VAL’R & SARAH",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✨VAL’R & SARAH 🇫🇷 Paris"
+    },
+    {
+     "name_as_written": "CHAMALO & JALYSSA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇳🇱",
+     "source_line": "✨CHAMALO & JALYSSA 🇳🇱 Amsterdam"
+    },
+    {
+     "name_as_written": "MANU & OLIVIA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✨MANU & OLIVIA 🇫🇷 Marseille"
+    },
+    {
+     "name_as_written": "CURTIS & KELLY",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✨CURTIS & KELLY 🇫🇷 Tours"
+    },
+    {
+     "name_as_written": "ANTHO & BÉNÉ",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✨ANTHO & BÉNÉ 🇫🇷 Marseille"
+    },
+    {
+     "name_as_written": "PY & SARAH",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✨PY & SARAH 🇫🇷 Paris"
+    },
+    {
+     "name_as_written": "AMELIA & GIBSON",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✨AMELIA & GIBSON 🇫🇷 Montpellier"
+    },
+    {
+     "name_as_written": "GORDON & MARION",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✨GORDON & MARION 🇫🇷 Aix"
+    },
+    {
+     "name_as_written": "JOHN",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✨JOHN 🇫🇷 Toulon"
+    },
+    {
+     "name_as_written": "FABIEN",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✨FABIEN 🇫🇷 Toulon"
+    },
+    {
+     "name_as_written": "RITCHIE ROSS",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✨RITCHIE ROSS 🇫🇷 Paris"
+    },
+    {
+     "name_as_written": "CHRIS PY & LALY",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✨CHRIS PY & LALY 🇫🇷 Nice"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "Tamasha Summer is an All-in-One Kizomba Festival",
+     "rationale": "The event is described as an All-in-One festival, with an All-in-One section and parties in the same setting as the stay."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Book your Full Pass & Accommodation here:",
+     "rationale": "The full pass and accommodation are sold together as one booking."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Pool Parties",
+     "rationale": "The event lists Pool Parties among its activities."
+    },
+    {
+     "feature": "beach_party",
+     "quote": "Beach Party",
+     "rationale": "The event lists a Beach Party among its activities."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Day socials & Night parties",
+     "rationale": "Daytime socials are explicitly listed as part of the programme."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Experienced teachers from across France & beyond to boost your dance",
+     "rationale": "A teachers line-up is offered to improve dancing, which implies classes."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,44 @@
+{
+ "batch": "event-17965",
+ "events": [
+  {
+   "event_id": 17965,
+   "artists": [
+    {
+     "name_as_written": "SBK",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 Join the SBK family for an unforgettable New Year!"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "All Workshops",
+     "rationale": "The VIP pass lists 'All Workshops' as included, so dance workshops are part of the event."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "intensive workshops and social parties",
+     "rationale": "The description names intensive workshops as a core part of the festival."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 rooms • 3 styles • 3 atmospheres",
+     "rationale": "The event states it has three rooms, so there is more than one dance floor."
+    },
+    {
+     "feature": "shows",
+     "quote": "Entertainment & surprises (live show)",
+     "rationale": "A live show is listed as part of the New Year's Eve programme."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Gala Dinner (Unlimited drinks on Dec 31 from 7:00 PM to 9:00 PM)",
+     "rationale": "The VIP full pass explicitly includes the gala dinner."
+    }
+   ]
+  }
+ ]
+}

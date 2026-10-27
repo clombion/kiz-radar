@@ -1,0 +1,79 @@
+{
+ "event_id": 16825,
+ "title": "SKR kiz relax Celebraçao 3 weekender",
+ "start_date": "2026-11-06",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "cb864655c7075f56",
+ "rows_at": "2026-10-27T02:22:07+00:00",
+ "styles": [
+  "kizomba"
+ ],
+ "description": "******KIZ RELAX Celebraçao 3*******\n6 NOV > 8 NOV 2026\n****** LINE UP\n✨ TEACHERS :\n🔘 a venir\n✨ DJS :\n🔘 🎧 a venir\n****** SALLE\nDOMAINE OSTARA\n134 ch de la pierre bleue CASTRIES (34)\n****** PROGRAMME\nA venir\n****** DRESS CODE 💃🏻🕺\nA venir\n****** TARIFS\nTarifs détaillés à venir\n******* BILLETTERIE\n******* COVER 📸\n******* HOTELS\nCamping, Hôtels, chambres d’hôtes et AirB&B dispo autour de la salle\nEntre 3 et 10 min en voiture\n🏩 HÔTEL PARTENAIRE\nThe Originals City, Hôtel Ecoparc, Montpellier Est (Inter-Hotel)\n68 rue du basilic, St Aunes\n15% de remise sur votre réservation\nEn précision kiz relax et domaine Ostara",
+ "passes": [
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5612140",
+      "5612142"
+     ],
+     "from": "09-01",
+     "until": null,
+     "quantity": null,
+     "date_quote": "01/09 > 11"
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5612145"
+     ],
+     "from": "09-01",
+     "until": null,
+     "quantity": null,
+     "date_quote": "01/09 > 11"
+    }
+   ]
+  },
+  {
+   "kind": "party",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5234918"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [
+  {
+   "key": "5234923",
+   "reason": "fee"
+  }
+ ],
+ "rule_quotes": []
+}

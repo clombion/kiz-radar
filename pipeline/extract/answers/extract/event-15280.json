@@ -1,0 +1,26 @@
+{
+ "batch": "event-15280",
+ "events": [
+  {
+   "event_id": 15280,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Workshops with international artists",
+     "rationale": "The description lists workshops as part of the five-day festival experience."
+    },
+    {
+     "feature": "shows",
+     "quote": "Shows & performances",
+     "rationale": "The description lists shows and performances as part of the festival experience."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "Whether you’re a beginner, intermediate, or advanced…",
+     "rationale": "The trip is stated to be open to beginners as well as intermediate and advanced dancers."
+    }
+   ]
+  }
+ ]
+}

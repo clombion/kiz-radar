@@ -1,0 +1,505 @@
+{
+ "rows_at": "2026-10-27T02:22:59+00:00",
+ "reads": {
+  "claude-opus-5-5": {
+   "event_id": 18317,
+   "title": "PARIS KIZOMBA NYE 10th KIZOMBA – KOMPA – URBANKIZ – BACHATA",
+   "start_date": "2026-12-30",
+   "read_by": "claude-opus-5-5",
+   "prompt": "cb864655c7075f56",
+   "rows_at": "2026-10-27T02:22:59+00:00",
+   "styles": [
+    "bachata",
+    "kizomba",
+    "other",
+    "salsa"
+   ],
+   "description": "🔥 THE PKS EXPERIENCE CONTINUES… PARIS NYE 10! 🔥\n❤️ PKS 2026 gave us unforgettable memories.\nBeautiful dances, amazing connections, smiles, energy, good vibes… and above all, an incredible community united by dance. 🙏🏾\nBut the story doesn’t end with summer… ☀️\n🎆 NEXT STOP: PARIS NYE 10 🇫🇷\n📅 30 DEC 2026 → 4 JAN 2027\n📍 PARIS, FRANCE\n❤️ Same spirit. A brand-new experience\n🥂 We welcome 2027 together in PARIS!\nWHAT TO EXPECT :\n🔥 5 VIBES • ONE EXPERIENCE\n💃 KIZOMBA\n⚡ URBANKIZ\n❤️‍🔥 KONPA\n💃 BACHATA\n🎉 OPEN FORMAT / PARTY VIBES\n⚡ Line Up PARIS NYE 10e\n🎥 OFFICIAL MEDIA CREW 📸\nCapture the Moment • Feel the Vibe 🔥\nFarantini • David Kongoo • Nani Chbani\n🔥 URBANKIZ × OPEN FORMAT 🔥\nOne Room • Unlimited Vibes\n🎧 🇱🇺 #Pingusso\n🎧 🇫🇷 #HugoSmile\n🎧 🇫🇷 #RalphOne\n🎧 🇫🇷 #Djvaxx\n🔥 BACK TO THE ROOTS 🔥\nWHERE KIZOMBA COMES HOME.\nKizomba • Semba • Ginga • African Vibes\n🎧 🇲🇿 DJ Hugo Boss\n🎧 🇦🇴 DJ Yha\n🎧 🇧🇪 DJ RA\n🎧 🇦🇴 Elydio DJ\nROOM #bachata – #salsa – #konpa\n🎧 🇫🇷 #DjMAK\n🎧 🇫🇷 #Djinno\n🎧 🇫🇷 #Djayluludancer\n🌴 KONPA & ❤️‍🔥 BACHATA\n👀 More coming soon…\n🎉 OPEN FORMAT / PARTY VIBES :\nDj Pingusso\n👀🔥 MORE TO BE ANNOUNCED!\n⚖️ OUR GOAL: THE BEST POSSIBLE LEADER / FOLLOWER BALANCE\nGreat social dancing starts with the right balance on the dance floor.\n🛡️ A SAFE & RESPECTFUL ENVIRONMENT\nRespect, good vibes and real connections a space where everyone can enjoy the dance and feel comfortable.\n🔥 Shows & special performances\n🎉 Days & nights of dancing\n🤝 Social vibes, sharing & beautiful connections\n🥂 An unforgettable way to welcome 2027 in Paris\n🇫🇷 AND PARIS IS PART OF THE EXPERIENCE! ❤️\nMake the most of your stay and discover one of Paris’ iconic landmarks:\n✨ OPÉRA GARNIER or ⛪ NOTRE-DAME DE PARIS\nYou choose your Paris experience! 🇫🇷\n🎁 And that’s not all… more surprises are coming!\nDid you love the Summer Experience? ☀️\nThen get ready for the New Year Experience!\n🎆🔥\nDANCE • BALANCE • CONNECTION • SAFE VIBES • PARIS\n❤️ Come for the dance. Stay for the atmosphere.\n🌍 PARIS NYE 10 — AROUND THE DANCE WORLD IN ONE NIGHT\n🎟️ DON’T WAIT — SECURE YOUR PASS NOW!",
+   "passes": [
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5324847",
+        "5324848"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5812104",
+        "5811973"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 6,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5829052",
+        "5829112"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5733643",
+        "5733640"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5812308",
+        "5812302"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5407772"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5856236"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5856237"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5856252"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5856249"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5856247"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    }
+   ],
+   "skipped": [
+    {
+     "key": "5770674",
+     "reason": "discount"
+    },
+    {
+     "key": "5770688",
+     "reason": "discount"
+    },
+    {
+     "key": "5743373",
+     "reason": "excursion"
+    },
+    {
+     "key": "5732273",
+     "reason": "excursion"
+    }
+   ],
+   "rule_quotes": []
+  },
+  "claude-sonnet-5-5": {
+   "event_id": 18317,
+   "title": "PARIS KIZOMBA NYE 10th KIZOMBA – KOMPA – URBANKIZ – BACHATA",
+   "start_date": "2026-12-30",
+   "read_by": "claude-sonnet-5-5",
+   "prompt": "cb864655c7075f56",
+   "rows_at": "2026-10-27T02:22:59+00:00",
+   "styles": [
+    "bachata",
+    "kizomba",
+    "other",
+    "salsa"
+   ],
+   "description": "🔥 THE PKS EXPERIENCE CONTINUES… PARIS NYE 10! 🔥\n❤️ PKS 2026 gave us unforgettable memories.\nBeautiful dances, amazing connections, smiles, energy, good vibes… and above all, an incredible community united by dance. 🙏🏾\nBut the story doesn’t end with summer… ☀️\n🎆 NEXT STOP: PARIS NYE 10 🇫🇷\n📅 30 DEC 2026 → 4 JAN 2027\n📍 PARIS, FRANCE\n❤️ Same spirit. A brand-new experience\n🥂 We welcome 2027 together in PARIS!\nWHAT TO EXPECT :\n🔥 5 VIBES • ONE EXPERIENCE\n💃 KIZOMBA\n⚡ URBANKIZ\n❤️‍🔥 KONPA\n💃 BACHATA\n🎉 OPEN FORMAT / PARTY VIBES\n⚡ Line Up PARIS NYE 10e\n🎥 OFFICIAL MEDIA CREW 📸\nCapture the Moment • Feel the Vibe 🔥\nFarantini • David Kongoo • Nani Chbani\n🔥 URBANKIZ × OPEN FORMAT 🔥\nOne Room • Unlimited Vibes\n🎧 🇱🇺 #Pingusso\n🎧 🇫🇷 #HugoSmile\n🎧 🇫🇷 #RalphOne\n🎧 🇫🇷 #Djvaxx\n🔥 BACK TO THE ROOTS 🔥\nWHERE KIZOMBA COMES HOME.\nKizomba • Semba • Ginga • African Vibes\n🎧 🇲🇿 DJ Hugo Boss\n🎧 🇦🇴 DJ Yha\n🎧 🇧🇪 DJ RA\n🎧 🇦🇴 Elydio DJ\nROOM #bachata – #salsa – #konpa\n🎧 🇫🇷 #DjMAK\n🎧 🇫🇷 #Djinno\n🎧 🇫🇷 #Djayluludancer\n🌴 KONPA & ❤️‍🔥 BACHATA\n👀 More coming soon…\n🎉 OPEN FORMAT / PARTY VIBES :\nDj Pingusso\n👀🔥 MORE TO BE ANNOUNCED!\n⚖️ OUR GOAL: THE BEST POSSIBLE LEADER / FOLLOWER BALANCE\nGreat social dancing starts with the right balance on the dance floor.\n🛡️ A SAFE & RESPECTFUL ENVIRONMENT\nRespect, good vibes and real connections a space where everyone can enjoy the dance and feel comfortable.\n🔥 Shows & special performances\n🎉 Days & nights of dancing\n🤝 Social vibes, sharing & beautiful connections\n🥂 An unforgettable way to welcome 2027 in Paris\n🇫🇷 AND PARIS IS PART OF THE EXPERIENCE! ❤️\nMake the most of your stay and discover one of Paris’ iconic landmarks:\n✨ OPÉRA GARNIER or ⛪ NOTRE-DAME DE PARIS\nYou choose your Paris experience! 🇫🇷\n🎁 And that’s not all… more surprises are coming!\nDid you love the Summer Experience? ☀️\nThen get ready for the New Year Experience!\n🎆🔥\nDANCE • BALANCE • CONNECTION • SAFE VIBES • PARIS\n❤️ Come for the dance. Stay for the atmosphere.\n🌍 PARIS NYE 10 — AROUND THE DANCE WORLD IN ONE NIGHT\n🎟️ DON’T WAIT — SECURE YOUR PASS NOW!",
+   "passes": [
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5324847",
+        "5324848"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5812104",
+        "5811973"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5829052",
+        "5829112"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5733643",
+        "5733640"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5812308",
+        "5812302"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5407772"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5856236"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5856237"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5856252"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5856249"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5856247"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    }
+   ],
+   "skipped": [
+    {
+     "key": "5770674",
+     "reason": "discount"
+    },
+    {
+     "key": "5770688",
+     "reason": "discount"
+    },
+    {
+     "key": "5743373",
+     "reason": "excursion"
+    },
+    {
+     "key": "5732273",
+     "reason": "excursion"
+    }
+   ],
+   "rule_quotes": []
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "batch": "event-15271",
+ "events": [
+  {
+   "event_id": 15271,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "BACHATA SENSUAL AND URBANKIZ"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBANKIZ",
+     "quote": "BACHATA SENSUAL AND URBANKIZ"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "Artists KIZOMBA"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "TARRAXO",
+     "quote": "Chris TARRAXO"
+    }
+   ]
+  }
+ ]
+}

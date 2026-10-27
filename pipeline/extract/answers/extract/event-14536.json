@@ -1,0 +1,95 @@
+{
+ "batch": "event-14536",
+ "events": [
+  {
+   "event_id": 14536,
+   "artists": [
+    {
+     "name_as_written": "GIORGIO ROD",
+     "role": "teacher",
+     "style": "Bachata Mix Style, Cuban Salsa",
+     "country": null,
+     "source_line": "✔️ GIORGIO ROD (Bachata Mix Style, Cuban Salsa)"
+    },
+    {
+     "name_as_written": "ALEX & TIPHAINE",
+     "role": "teacher",
+     "style": "Suelta Salsa and Rueda de Casino",
+     "country": null,
+     "source_line": "✔️ ALEX & TIPHAINE (Suelta Salsa and Rueda de Casino)"
+    },
+    {
+     "name_as_written": "FRANCK & LAURE DE ROUEN",
+     "role": "teacher",
+     "style": "Cuban Salsa/Puerto Rican Salsa",
+     "country": null,
+     "source_line": "✔️ FRANCK & LAURE DE ROUEN (Cuban Salsa/Puerto Rican Salsa)"
+    },
+    {
+     "name_as_written": "FRED MAESTRO",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "✔️ FRED MAESTRO (Urbankiz)"
+    },
+    {
+     "name_as_written": "LUDIVINE LUDIDANSE",
+     "role": "teacher",
+     "style": "Lady Styling, Heels",
+     "country": null,
+     "source_line": "✔️ LUDIVINE LUDIDANSE (Lady Styling, Heels)"
+    },
+    {
+     "name_as_written": "DJ GIORGIO ROD",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ GIORGIO ROD"
+    },
+    {
+     "name_as_written": "DJ ALEX SALSERITO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ ALEX SALSERITO"
+    },
+    {
+     "name_as_written": "DJ TAGADA",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ TAGADA"
+    },
+    {
+     "name_as_written": "Olivier “Oxyde”",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "⭐Olivier “Oxyde”⭐"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Classes in the morning, afternoon, and evening",
+     "rationale": "The event schedules dance classes across the day, so dance classes are part of the event."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "A team of Dance Taxis",
+     "rationale": "The description states that a team of Dance Taxis is provided."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "Friday Night: Disco Theme",
+     "rationale": "A named Friday night disco theme is a themed party."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Dress Code",
+     "rationale": "A dress code section is given for the event."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "batch": "event-16615",
+ "events": [
+  {
+   "event_id": 16615,
+   "artists": [],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE – 6 ROOMS / 6 ATMOSPHERES",
+     "rationale": "The event is labelled all in one and is held at a hotel venue (Logis Hôtel Lyon Est), so the parties take place in the hotel."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "6 Rooms · 6 Music Universes",
+     "rationale": "The event has six separate rooms, which means more than one dance floor."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Daily socials, night parties until sunrise",
+     "rationale": "Daily socials are offered alongside the night parties, which points to daytime socials."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "batch": "event-16374",
+ "events": [
+  {
+   "event_id": 16374,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba • Salsa • Semba • Bachata • Ghetto Zouk • Afrohouse"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Kizomba • Salsa • Semba • Bachata • Ghetto Zouk • Afrohouse"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba • Salsa • Semba • Bachata • Ghetto Zouk • Afrohouse"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Kizomba • Salsa • Semba • Bachata • Ghetto Zouk • Afrohouse"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Ghetto Zouk",
+     "quote": "Kizomba • Salsa • Semba • Bachata • Ghetto Zouk • Afrohouse"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afrohouse",
+     "quote": "Kizomba • Salsa • Semba • Bachata • Ghetto Zouk • Afrohouse"
+    }
+   ]
+  }
+ ]
+}

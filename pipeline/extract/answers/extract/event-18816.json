@@ -1,0 +1,100 @@
+{
+ "batch": "event-18816",
+ "events": [
+  {
+   "event_id": 18816,
+   "artists": [
+    {
+     "name_as_written": "𝐃j Paraiso",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️𝐃j Paraiso"
+    },
+    {
+     "name_as_written": "𝐃𝐣 𝐁𝐥𝐯𝐜𝐤𝐒𝐤𝐲𝐥𝐞",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️𝐃𝐣 𝐁𝐥𝐯𝐜𝐤𝐒𝐤𝐲𝐥𝐞"
+    },
+    {
+     "name_as_written": "𝐃𝐣 𝐕𝐚𝐥𝐞𝐭",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️𝐃𝐣 𝐕𝐚𝐥𝐞𝐭"
+    },
+    {
+     "name_as_written": "𝐃𝐣 𝐏𝐨𝐞𝐦𝐚 𝐁𝐞𝐚𝐭𝐳",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️𝐃𝐣 𝐏𝐨𝐞𝐦𝐚 𝐁𝐞𝐚𝐭𝐳"
+    },
+    {
+     "name_as_written": "𝐃𝐣 𝐅𝐨𝐟𝐨-𝐉𝐚𝐡",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️𝐃𝐣 𝐅𝐨𝐟𝐨-𝐉𝐚𝐡"
+    },
+    {
+     "name_as_written": "𝐃𝐣 𝐌𝐢𝐞𝐥",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️𝐃𝐣 𝐌𝐢𝐞𝐥 🍯"
+    },
+    {
+     "name_as_written": "𝐃𝐣 Lena Bright",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️𝐃𝐣 Lena Bright"
+    },
+    {
+     "name_as_written": "𝐃𝐣 𝐒𝐚𝐟𝐢𝐫’𝐬 𝐁𝐞𝐚𝐭𝐬",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️𝐃𝐣 𝐒𝐚𝐟𝐢𝐫’𝐬 𝐁𝐞𝐚𝐭𝐬"
+    },
+    {
+     "name_as_written": "𝐉𝐀𝐄 𝐌𝐞𝐝𝐢𝐚 𝐓𝐞𝐚𝐦",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "📱𝐉𝐀𝐄 𝐌𝐞𝐝𝐢𝐚 𝐓𝐞𝐚𝐦"
+    }
+   ],
+   "features": [
+    {
+     "feature": "pre_party",
+     "quote": "CRAZY PRE-PARTY",
+     "rationale": "The description lists a crazy pre-party before the main event."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "Book your 𝐀𝐥𝐥-𝐢𝐧-𝟏 incl. breakfast!",
+     "rationale": "The venue is the hotel itself and dancers can book the all-in-one accommodation there, so the parties and stay share one place."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "incl. breakfast!",
+     "rationale": "The all-in-one booking explicitly includes breakfast."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Room 1 – 𝗧𝗮𝗿𝗿𝗮𝘅𝗼 | 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇",
+     "rationale": "The event lists Room 1 and Room 2 as separate dance rooms."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "𝗛𝗼𝘁𝗲𝗹𝘀 𝗻𝗲𝗮𝗿𝗯𝘆",
+     "rationale": "A list of recommended hotels nearby is given for attendees."
+    }
+   ]
+  }
+ ]
+}

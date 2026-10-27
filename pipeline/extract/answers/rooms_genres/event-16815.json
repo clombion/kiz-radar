@@ -1,0 +1,43 @@
+{
+ "batch": "event-16815",
+ "events": [
+  {
+   "event_id": 16815,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 parties in dedicated rooms"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Afternoon Social Room",
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "Afternoon Social Room"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "KIZOMBA at 360°"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "this year also SALSA y BACHATA"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "this year also SALSA y BACHATA"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "TarraxoPop",
+     "quote": "JULES TarraxoPop"
+    }
+   ]
+  }
+ ]
+}

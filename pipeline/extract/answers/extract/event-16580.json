@@ -1,0 +1,209 @@
+{
+ "batch": "event-16580",
+ "events": [
+  {
+   "event_id": 16580,
+   "artists": [
+    {
+     "name_as_written": "Davide Venturi",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Davide Venturi"
+    },
+    {
+     "name_as_written": "David Pacavira",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "David Pacavira"
+    },
+    {
+     "name_as_written": "Maurizio",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Maurizio"
+    },
+    {
+     "name_as_written": "Claudia",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Claudia"
+    },
+    {
+     "name_as_written": "Arianna",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Arianna"
+    },
+    {
+     "name_as_written": "Andrea & Andry",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Andrea & Andry"
+    },
+    {
+     "name_as_written": "Michael & Federica",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Michael & Federica"
+    },
+    {
+     "name_as_written": "Roby & Anna",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Roby & Anna"
+    },
+    {
+     "name_as_written": "Chiara",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Chiara"
+    },
+    {
+     "name_as_written": "Valter Elena",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Valter Elena"
+    },
+    {
+     "name_as_written": "Ivan & Graziella",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Ivan & Graziella"
+    },
+    {
+     "name_as_written": "Tony Manero",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Tony Manero"
+    },
+    {
+     "name_as_written": "Giacomo & La Pà",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Giacomo & La Pà"
+    },
+    {
+     "name_as_written": "Stefano & Beatrice",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Stefano & Beatrice"
+    },
+    {
+     "name_as_written": "Pedro & Lorella",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Pedro & Lorella"
+    },
+    {
+     "name_as_written": "Giorgio Maura",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Giorgio Maura"
+    },
+    {
+     "name_as_written": "Annamaria Del Bono",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Annamaria Del Bono"
+    },
+    {
+     "name_as_written": "Carmine Stefania",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Carmine Stefania"
+    },
+    {
+     "name_as_written": "Elisa",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Elisa"
+    },
+    {
+     "name_as_written": "Jordan DJ",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Jordan DJ"
+    },
+    {
+     "name_as_written": "Ladeejay",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Ladeejay"
+    }
+   ],
+   "features": [
+    {
+     "feature": "beach_party",
+     "quote": "evenings on the beaches of the Romagna Riviera",
+     "rationale": "The event is held with evenings on the beaches, so it includes beach parties."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Three days of beach, poolside socials",
+     "rationale": "Poolside socials are part of the event programme."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Salsa Bachata Kizomba, Semba, Tarraxinha, Kizomba Fusion, Urban Kiz, and Lady Style workshops",
+     "rationale": "Dance workshops in several styles are part of the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Socials during the day",
+     "rationale": "The packages include daytime socials."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "3 days 2 nights from Friday dinner to Sunday lunch",
+     "rationale": "The Pack A package includes overnight stays."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Full board or bed and breakfast packages available.",
+     "rationale": "Full board packages include meals."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "For those staying at the Hotel Fra Pini, lunches and dinners will be served at the 4-star Hotel OXYGEN.",
+     "rationale": "Named partner hotels are linked to the event with meal arrangements."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "The Friday and Saturday evenings will take place at the Oxygen Hotel:",
+     "rationale": "The evening parties take place at a hotel that also offers rooms for dancers."
+    },
+    {
+     "feature": "shows",
+     "quote": "Maurizio and Claudia Florence Dance Show",
+     "rationale": "A dance show is listed as part of the event."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "3 days of Kizomba Salsa Bachata",
+     "rationale": "A three-day intensive dance programme is offered."
+    }
+   ]
+  }
+ ]
+}

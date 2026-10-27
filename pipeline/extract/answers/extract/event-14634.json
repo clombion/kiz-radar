@@ -1,0 +1,16 @@
+{
+ "batch": "event-14634",
+ "events": [
+  {
+   "event_id": 14634,
+   "artists": [],
+   "features": [
+    {
+     "feature": "accommodation_included",
+     "quote": "Full Pass & Hotel",
+     "rationale": "The quoted pass and hotel wording indicates that the full pass package includes hotel accommodation."
+    }
+   ]
+  }
+ ]
+}

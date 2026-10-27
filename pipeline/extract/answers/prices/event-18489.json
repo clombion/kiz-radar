@@ -1,6 +1,5 @@
 {
  "batch": "event-18489",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18489,
@@ -17,8 +16,7 @@
        "amount": 100,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -26,6 +24,282 @@
        "sold_out": false,
        "current": false,
        "quote": "Buy your full pass for €100."
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": null,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 117.5,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Single room €117.50 €143.50 €169.50"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": null,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 143.5,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Single room €117.50 €143.50 €169.50"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": null,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 169.5,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Single room €117.50 €143.50 €169.50"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": null,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 132.5,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Double room €132.50 €184.50 €236.50"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": null,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 184.5,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Double room €132.50 €184.50 €236.50"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": null,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 236.5,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Double room €132.50 €184.50 €236.50"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": null,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 176.5,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Triple room €176.50 €254.50 €332.50"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": null,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 254.5,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Triple room €176.50 €254.50 €332.50"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": null,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 332.5,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Triple room €176.50 €254.50 €332.50"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": null,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 220.5,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Quadruple room €220.50 €324.50 €532.50"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": null,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 324.5,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Quadruple room €220.50 €324.50 €532.50"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": null,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 532.5,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Quadruple room €220.50 €324.50 €532.50"
       }
      ]
     }

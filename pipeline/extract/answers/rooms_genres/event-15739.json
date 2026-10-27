@@ -1,0 +1,66 @@
+{
+ "batch": "event-15739",
+ "events": [
+  {
+   "event_id": 15739,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 rooms:"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "𝐑𝐎𝐎𝐌 1️⃣",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "semba"
+     ],
+     "quote": "𝐑𝐎𝐎𝐌 1️⃣: Kizomba & Semba ( Like in Angola )"
+    },
+    {
+     "name_as_written": "𝐑𝐎𝐎𝐌 2️⃣",
+     "kind": "party",
+     "genres": [
+      "zouk",
+      "tarraxinha",
+      "kompa"
+     ],
+     "quote": "𝐑𝐎𝐎𝐌 2️⃣: Ghettozouk, Tarraxinha, Zouk & Konpa"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "𝐑𝐎𝐎𝐌 1️⃣: Kizomba & Semba ( Like in Angola )"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "𝐑𝐎𝐎𝐌 1️⃣: Kizomba & Semba ( Like in Angola )"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Ghettozouk",
+     "quote": "𝐑𝐎𝐎𝐌 2️⃣: Ghettozouk, Tarraxinha, Zouk & Konpa"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "𝐑𝐎𝐎𝐌 2️⃣: Ghettozouk, Tarraxinha, Zouk & Konpa"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "𝐑𝐎𝐎𝐌 2️⃣: Ghettozouk, Tarraxinha, Zouk & Konpa"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Muzongué",
+     "quote": "Social + Muzongué"
+    }
+   ]
+  }
+ ]
+}

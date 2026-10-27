@@ -1,0 +1,83 @@
+{
+ "batch": "event-17497",
+ "events": [
+  {
+   "event_id": 17497,
+   "artists": [
+    {
+     "name_as_written": "Inna",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Inna (Munich)"
+    },
+    {
+     "name_as_written": "Agnes",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Agnes (Stockholm)"
+    },
+    {
+     "name_as_written": "Sim Kiz",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Sim Kiz (Heilbronn)"
+    },
+    {
+     "name_as_written": "Adeline Suédois",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Adeline Suédois (Paris)"
+    },
+    {
+     "name_as_written": "Claudia",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Claudia (Munich)"
+    },
+    {
+     "name_as_written": "Iva",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Iva (Munich)"
+    },
+    {
+     "name_as_written": "DJ Dany",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Dany (Prague)"
+    },
+    {
+     "name_as_written": "DJ Nipz",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Nipz (Oslo)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "focused workshops",
+     "rationale": "The text says the Friday evening includes focused workshops, so workshops are part of the event."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "exclusive masterclass",
+     "rationale": "The event offers an exclusive premium masterclass by Adeline Suédois, which is booked separately."
+    },
+    {
+     "feature": "private_classes",
+     "quote": "private class opportunities",
+     "rationale": "The description states that private class opportunities are offered."
+    }
+   ]
+  }
+ ]
+}

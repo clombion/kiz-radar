@@ -1,0 +1,18 @@
+{
+ "batch": "event-16266",
+ "events": [
+  {
+   "event_id": 16266,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "other",
+     "genre_as_written": "Kudissanga",
+     "quote": "guaranteed Kudissanga quality"
+    }
+   ]
+  }
+ ]
+}

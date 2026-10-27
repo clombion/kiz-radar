@@ -1,0 +1,112 @@
+{
+ "batch": "event-15038",
+ "events": [
+  {
+   "event_id": 15038,
+   "party_rooms": {
+    "count": 4,
+    "quote": "4 ROOMS: BACHATA – KIZOMBA – URBAN KIZ – KONPA, SALSA, AFRO BEATS and REGGAETON"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "BACHATA",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "4 ROOMS: BACHATA – KIZOMBA – URBAN KIZ – KONPA, SALSA, AFRO BEATS and REGGAETON"
+    },
+    {
+     "name_as_written": "KIZOMBA",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "4 ROOMS: BACHATA – KIZOMBA – URBAN KIZ – KONPA, SALSA, AFRO BEATS and REGGAETON"
+    },
+    {
+     "name_as_written": "URBAN KIZ",
+     "kind": "party",
+     "genres": [
+      "urbankiz"
+     ],
+     "quote": "4 ROOMS: BACHATA – KIZOMBA – URBAN KIZ – KONPA, SALSA, AFRO BEATS and REGGAETON"
+    },
+    {
+     "name_as_written": "KONPA, SALSA, AFRO BEATS and REGGAETON",
+     "kind": "party",
+     "genres": [
+      "kompa",
+      "salsa",
+      "afro",
+      "reggaeton"
+     ],
+     "quote": "4 ROOMS: BACHATA – KIZOMBA – URBAN KIZ – KONPA, SALSA, AFRO BEATS and REGGAETON"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "integrated Bachata"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa, Semba, Kizomba, Urban Kiz"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Salsa, Semba, Kizomba, Urban Kiz"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Salsa, Semba, Kizomba, Urban Kiz"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Salsa, Semba, Kizomba, Urban Kiz"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "Tarraxinha, Tarraxo, Douceur"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Tarraxinha, Tarraxo, Douceur"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "Tarraxinha, Tarraxo, Douceur"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro Beat",
+     "quote": "Afro Beat, Afro House"
+    },
+    {
+     "genre": "kuduro",
+     "genre_as_written": "Kuduro",
+     "quote": "Afro House, Kuduro and More"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "KONPA",
+     "quote": "KONPA, SALSA, AFRO BEATS and REGGAETON"
+    },
+    {
+     "genre": "reggaeton",
+     "genre_as_written": "REGGAETON",
+     "quote": "KONPA, SALSA, AFRO BEATS and REGGAETON"
+    }
+   ]
+  }
+ ]
+}

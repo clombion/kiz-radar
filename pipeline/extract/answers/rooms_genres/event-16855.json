@@ -1,0 +1,43 @@
+{
+ "batch": "event-16855",
+ "events": [
+  {
+   "event_id": 16855,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Cuban Salsa",
+     "quote": "Best SALSA CUBANA teacher in Norway"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata Sensual",
+     "quote": "R. ORNELAS – Bachata Sensual"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "Best BACHATA teacher in Portugal"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Best KIZOMBA teacher I know"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "B.Zouk",
+     "quote": "B.Zouk"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Urban Kiz"
+    }
+   ]
+  }
+ ]
+}

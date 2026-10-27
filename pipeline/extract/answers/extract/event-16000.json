@@ -1,0 +1,102 @@
+{
+ "batch": "event-16000",
+ "events": [
+  {
+   "event_id": 16000,
+   "artists": [
+    {
+     "name_as_written": "David Ruela",
+     "role": "dj",
+     "style": null,
+     "country": "NL",
+     "source_line": "David Ruela (NL)"
+    },
+    {
+     "name_as_written": "DJ Lowelo",
+     "role": "dj",
+     "style": null,
+     "country": "FR",
+     "source_line": "DJ Lowelo (FR)"
+    },
+    {
+     "name_as_written": "Malcom Beatz",
+     "role": "dj",
+     "style": null,
+     "country": "PT",
+     "source_line": "Malcom Beatz (PT)"
+    },
+    {
+     "name_as_written": "DJ Neo",
+     "role": "dj",
+     "style": null,
+     "country": "ES",
+     "source_line": "DJ Neo (ES)"
+    },
+    {
+     "name_as_written": "DJ Omega",
+     "role": "dj",
+     "style": null,
+     "country": "DE",
+     "source_line": "DJ Omega (DE)"
+    },
+    {
+     "name_as_written": "DJ Charley Raymdtc",
+     "role": "dj",
+     "style": null,
+     "country": "DE",
+     "source_line": "DJ Charley Raymdtc (DE)"
+    },
+    {
+     "name_as_written": "DJ Remcy",
+     "role": "dj",
+     "style": null,
+     "country": "DE",
+     "source_line": "DJ Remcy (DE)"
+    },
+    {
+     "name_as_written": "Fabrizio Kizpower",
+     "role": "teacher",
+     "style": null,
+     "country": "IT",
+     "source_line": "Fabrizio Kizpower (IT)"
+    },
+    {
+     "name_as_written": "Portu & Mada",
+     "role": "teacher",
+     "style": null,
+     "country": "ES",
+     "source_line": "Portu & Mada (ES)"
+    },
+    {
+     "name_as_written": "SilviCreative",
+     "role": "media",
+     "style": null,
+     "country": "ES",
+     "source_line": "SilviCreative (ES)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Fun and challenging workshops with the hottest current steps",
+     "rationale": "The description states that dance workshops are part of the event."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Official Hotel: FreshSuites",
+     "rationale": "A named official hotel is recommended for attendees, but accommodation is not stated as part of the pass."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "15:00 – 20:00 | Social",
+     "rationale": "The program lists a daytime social on Saturday afternoon."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Come as you are",
+     "rationale": "The description has a DRESS CODE section stating the dress code."
+    }
+   ]
+  }
+ ]
+}

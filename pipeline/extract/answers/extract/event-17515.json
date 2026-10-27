@@ -1,0 +1,299 @@
+{
+ "batch": "event-17515",
+ "events": [
+  {
+   "event_id": 17515,
+   "artists": [
+    {
+     "name_as_written": "Justinho & Sara Rodriguez",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Justinho & Sara Rodriguez Paris / Mulhouse"
+    },
+    {
+     "name_as_written": "Luis & karen",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Luis & karen – Madrid"
+    },
+    {
+     "name_as_written": "Steven’s & Audrey",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Steven’s & Audrey – Paris"
+    },
+    {
+     "name_as_written": "Gulnara",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Gulnara – Lyon"
+    },
+    {
+     "name_as_written": "ATOU",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "ATOU – Le Mans"
+    },
+    {
+     "name_as_written": "Simone Kiz",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Simone Kiz – Stuttgart"
+    },
+    {
+     "name_as_written": "Curtis & Kelly",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Curtis & Kelly – Tours"
+    },
+    {
+     "name_as_written": "Sara Rodriguez",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Sara Rodriguez – Mulhouse"
+    },
+    {
+     "name_as_written": "Roxane & Corentin",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Roxane & Corentin – La Rochelle"
+    },
+    {
+     "name_as_written": "Juan Mi & Anaïs Peleyrol",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Juan Mi & Anaïs Peleyrol – Nantes/ Paris"
+    },
+    {
+     "name_as_written": "Luis Mendes & Floriane",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Luis Mendes & Floriane – Paris"
+    },
+    {
+     "name_as_written": "Elhadj & Jenah",
+     "role": "teacher",
+     "style": "Kizomba / Semba / Afro",
+     "country": null,
+     "source_line": "Elhadj & Jenah – Paris"
+    },
+    {
+     "name_as_written": "Laranjo & lotte",
+     "role": "teacher",
+     "style": "Kizomba / Semba / Afro",
+     "country": null,
+     "source_line": "Laranjo & lotte – Lisbonne"
+    },
+    {
+     "name_as_written": "Seb & Sarita",
+     "role": "teacher",
+     "style": "Kizomba / Semba / Afro",
+     "country": null,
+     "source_line": "Seb & Sarita – Toulouse / Valence"
+    },
+    {
+     "name_as_written": "Jonathan kani",
+     "role": "teacher",
+     "style": "Kizomba / Semba / Afro",
+     "country": null,
+     "source_line": "Jonathan kani – Nantes / Le Mans"
+    },
+    {
+     "name_as_written": "Mervil & Vanessa",
+     "role": "teacher",
+     "style": "Kizomba / Semba / Afro",
+     "country": null,
+     "source_line": "Mervil & Vanessa – Nantes / Cholet"
+    },
+    {
+     "name_as_written": "Landry & Wendy",
+     "role": "teacher",
+     "style": "Kizomba / Semba / Afro",
+     "country": null,
+     "source_line": "Landry & Wendy – Nantes"
+    },
+    {
+     "name_as_written": "JDN",
+     "role": "dj",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "JDN – Reims"
+    },
+    {
+     "name_as_written": "Colts",
+     "role": "dj",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Colts – Paris"
+    },
+    {
+     "name_as_written": "Le grand ti wosh",
+     "role": "dj",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Le grand ti wosh – Paris"
+    },
+    {
+     "name_as_written": "Kin",
+     "role": "dj",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Kin – Nantes"
+    },
+    {
+     "name_as_written": "Willy will",
+     "role": "dj",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Willy will – Tours"
+    },
+    {
+     "name_as_written": "Man",
+     "role": "dj",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Man – Nantes"
+    },
+    {
+     "name_as_written": "Jarryd",
+     "role": "dj",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Jarryd – Bordeaux"
+    },
+    {
+     "name_as_written": "Kouan",
+     "role": "dj",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Kouan Orléans"
+    },
+    {
+     "name_as_written": "L-GI",
+     "role": "dj",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "L-GI – Nantes"
+    },
+    {
+     "name_as_written": "Miro kikola",
+     "role": "dj",
+     "style": "Kizomba / Semba",
+     "country": null,
+     "source_line": "Miro kikola – Londres"
+    },
+    {
+     "name_as_written": "Vasco",
+     "role": "dj",
+     "style": "Kizomba / Semba",
+     "country": null,
+     "source_line": "Vasco – Paris"
+    },
+    {
+     "name_as_written": "Kyle",
+     "role": "dj",
+     "style": "Kizomba / Semba",
+     "country": null,
+     "source_line": "Kyle – Nantes"
+    },
+    {
+     "name_as_written": "L-Dry",
+     "role": "dj",
+     "style": "Kizomba / Semba",
+     "country": null,
+     "source_line": "L-Dry – Nantes"
+    },
+    {
+     "name_as_written": "Kitoko",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Kitoko"
+    },
+    {
+     "name_as_written": "Eric",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Eric"
+    },
+    {
+     "name_as_written": "Lauren katiyo",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Lauren katiyo"
+    },
+    {
+     "name_as_written": "Dani tothedance",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Dani tothedance"
+    },
+    {
+     "name_as_written": "Passion Kizomba Nantes",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Passion Kizomba Nantes"
+    },
+    {
+     "name_as_written": "TEAM TAXIS",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "🔸🔹🔸🔹TEAM TAXIS🔸🔹🔸🔹"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "All in one venue",
+     "rationale": "The description says the event is all in one venue, with the festival venue and accommodation in the same hotel."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Sure Hôtel by Best Western Nantes Beaujoire",
+     "rationale": "The festival venue is a named hotel where attendees are invited to book rooms."
+    },
+    {
+     "feature": "workshops",
+     "quote": "20 Hours of lessons",
+     "rationale": "The event offers 20 hours of dance lessons."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "a pre-party",
+     "rationale": "The event lists a pre-party before the main festival."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Two rooms, two atmospheres.",
+     "rationale": "The event has two separate dance rooms."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "Teams of dancing taxis",
+     "rationale": "The event explicitly has teams of taxi dancers."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Dress code",
+     "rationale": "The description states a dress code."
+    }
+   ]
+  }
+ ]
+}

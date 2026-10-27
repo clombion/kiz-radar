@@ -1,6 +1,5 @@
 {
  "batch": "event-18686",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18686,
@@ -8,7 +7,7 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "Inside double cabin",
+     "label_quote": null,
      "group_size": 1,
      "days": 5,
      "includes_hotel": true,
@@ -17,8 +16,7 @@
        "amount": 520,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": 50,
@@ -31,8 +29,7 @@
        "amount": 555,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -46,7 +43,7 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "Outside double cabin",
+     "label_quote": null,
      "group_size": 1,
      "days": 5,
      "includes_hotel": true,
@@ -55,8 +52,7 @@
        "amount": 590,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": 50,
@@ -69,8 +65,7 @@
        "amount": 625,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -84,7 +79,7 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "Balcony double cabin",
+     "label_quote": null,
      "group_size": 1,
      "days": 5,
      "includes_hotel": true,
@@ -93,8 +88,7 @@
        "amount": 685,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": 50,
@@ -107,8 +101,7 @@
        "amount": 715,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -121,8 +114,7 @@
     }
    ],
    "rule_quotes": [
-    "Children under 18 stay FREE if sharing a cabin with 2 adults.",
-    "*Single/triple/quadruple cabins available upon request and subject to availability."
+    "Children under 18 stay FREE if sharing a cabin with 2 adults."
    ]
   }
  ]

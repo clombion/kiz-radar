@@ -1,0 +1,36 @@
+{
+ "batch": "event-16894",
+ "events": [
+  {
+   "event_id": 16894,
+   "party_rooms": {
+    "count": 2,
+    "quote": "Kizombada party 22.00-04.00 (2 rooms)"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "organazing a kizomba and semba festival"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "semba",
+     "quote": "organazing a kizomba and semba festival"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "afro",
+     "quote": "life concert + afro animations 18.00-19.00"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Samba",
+     "quote": "Klaudia & Jailson (Poland/Brazil) (Samba+carnaval animations)"
+    }
+   ]
+  }
+ ]
+}

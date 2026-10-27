@@ -1,0 +1,169 @@
+{
+ "batch": "event-15739",
+ "events": [
+  {
+   "event_id": 15739,
+   "artists": [
+    {
+     "name_as_written": "Eliza Sala",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴 🇳🇱",
+     "source_line": "◾️ Eliza Sala 🇦🇴 🇳🇱"
+    },
+    {
+     "name_as_written": "Bonifacio Aurio",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴 🇵🇹",
+     "source_line": "◾️ Bonifacio Aurio 🇦🇴 🇵🇹"
+    },
+    {
+     "name_as_written": "Adilson Maíza & Telma",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "◾️ Adilson Maíza & Telma 🇦🇴"
+    },
+    {
+     "name_as_written": "Tony Viser & Carla",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴 🇨🇻 🇪🇸",
+     "source_line": "◾️ Tony Viser & Carla 🇦🇴 🇨🇻 🇪🇸"
+    },
+    {
+     "name_as_written": "Mestre Petchu",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴 🇵🇹",
+     "source_line": "◾️ Mestre Petchu 🇦🇴 🇵🇹"
+    },
+    {
+     "name_as_written": "António Rosa",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "◾️ António Rosa 🇦🇴"
+    },
+    {
+     "name_as_written": "Elhadj & Jenny",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "◾️ Elhadj & Jenny 🇫🇷"
+    },
+    {
+     "name_as_written": "Vamula",
+     "role": "teacher",
+     "style": null,
+     "country": "🇵🇱",
+     "source_line": "◾️ Vamula 🇵🇱"
+    },
+    {
+     "name_as_written": "Braúlia Chieta",
+     "role": "teacher",
+     "style": null,
+     "country": "🇵🇱",
+     "source_line": "◾️ Braúlia Chieta 🇵🇱"
+    },
+    {
+     "name_as_written": "Fenomenos do Semba",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "◾️ Fenomenos do Semba 🇦🇴"
+    },
+    {
+     "name_as_written": "Neiken",
+     "role": "dj",
+     "style": null,
+     "country": "🇮🇹 🇵🇹",
+     "source_line": "◾️ Neiken 🇮🇹 🇵🇹"
+    },
+    {
+     "name_as_written": "Beleza",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "◾️ Beleza 🇦🇴"
+    },
+    {
+     "name_as_written": "Miro Kikola",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "◾️ Miro Kikola 🇦🇴 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Vasco",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "◾️ Vasco 🇫🇷"
+    },
+    {
+     "name_as_written": "Paraiso",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "◾️ Paraiso 🇫🇷"
+    },
+    {
+     "name_as_written": "Franck",
+     "role": "dj",
+     "style": null,
+     "country": "🇩🇪",
+     "source_line": "◾️ Franck 🇩🇪"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE",
+     "rationale": "The event is described as all in one, and the parties take place at the Main Hotel where dancers stay."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 rooms:",
+     "rationale": "The description states there are two dance rooms."
+    },
+    {
+     "feature": "workshops",
+     "quote": "12:00 – 17:00 workshops",
+     "rationale": "Daytime workshops are listed on Saturday and Sunday."
+    },
+    {
+     "feature": "shows",
+     "quote": "Social + Show + Concert",
+     "rationale": "A show is listed in the Saturday schedule."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Social + Show + Concert",
+     "rationale": "A concert is listed in the Saturday schedule."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "15:00 – 19:00 Social and more…",
+     "rationale": "A daytime social is scheduled on Friday afternoon."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "𝖯𝗋𝖾𝗉𝖺𝗋𝗍𝗒",
+     "rationale": "A Preparty is scheduled on Thursday before the main event."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "𝗗𝗥𝗘𝗦𝗦 𝗖𝗢𝗗𝗘",
+     "rationale": "A dress code section is included in the description."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "ELEGANTE & BESSANGANA",
+     "rationale": "Night parties carry dress themes such as white and elegant styles."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "batch": "event-19010",
+ "events": [
+  {
+   "event_id": 19010,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "five unforgettable days of Kizomba, Urban Kiz"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Urban Kiz, culture and community"
+    }
+   ]
+  }
+ ]
+}

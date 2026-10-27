@@ -1,0 +1,48 @@
+{
+ "batch": "event-15389",
+ "events": [
+  {
+   "event_id": 15389,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Timba",
+     "quote": "Timba"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Semba"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afrohouse",
+     "quote": "Afrohouse"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Tarraxo"
+    }
+   ]
+  }
+ ]
+}

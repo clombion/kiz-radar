@@ -1,0 +1,178 @@
+{
+ "batch": "event-16456",
+ "events": [
+  {
+   "event_id": 16456,
+   "artists": [
+    {
+     "name_as_written": "Sol",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Sol"
+    },
+    {
+     "name_as_written": "Ami Emirato & Yanna K",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Ami Emirato & Yanna K"
+    },
+    {
+     "name_as_written": "Chrysoula and Joanna",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Chrysoula and Joanna"
+    },
+    {
+     "name_as_written": "Tamba",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Tamba"
+    },
+    {
+     "name_as_written": "Andreas",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Andreas"
+    },
+    {
+     "name_as_written": "Rohan Brown",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Rohan Brown"
+    },
+    {
+     "name_as_written": "David and Laura",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "David and Laura"
+    },
+    {
+     "name_as_written": "Harvey Reddington",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Harvey Reddington – Urbankiz"
+    },
+    {
+     "name_as_written": "Maribel",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Maribel -Urbankiz"
+    },
+    {
+     "name_as_written": "Sal K",
+     "role": "teacher",
+     "style": "kizomba/semba",
+     "country": null,
+     "source_line": "Sal K – kizomba/semba"
+    },
+    {
+     "name_as_written": "Theo",
+     "role": "teacher",
+     "style": "Kizomba/Semba",
+     "country": null,
+     "source_line": "Theo – Kizomba/Semba"
+    },
+    {
+     "name_as_written": "Diana",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "Diana – Urbankiz"
+    },
+    {
+     "name_as_written": "Super Dixon",
+     "role": "teacher",
+     "style": "Kizomba and Urbankiz",
+     "country": null,
+     "source_line": "Super Dixon"
+    },
+    {
+     "name_as_written": "Mani",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Mani – Salsa"
+    },
+    {
+     "name_as_written": "Chrysola",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Chrysola – Bachata"
+    },
+    {
+     "name_as_written": "Ami",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Ami – Bachata"
+    },
+    {
+     "name_as_written": "Dixon",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Dixon – Kizomba"
+    },
+    {
+     "name_as_written": "Theo and Diana",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Theo and Diana"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_levels_beginners",
+     "quote": "Workshops for all levels",
+     "rationale": "The event states its workshops are open to all levels."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Lady-style boot camp",
+     "rationale": "A boot camp is offered for dancers wanting to level up."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 Music Rooms",
+     "rationale": "The event has two music rooms, so more than one dance floor."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Live Performances",
+     "rationale": "Live performances are advertised as part of the event."
+    },
+    {
+     "feature": "shows",
+     "quote": "Performances by international and local artists",
+     "rationale": "The event lists performances by artists."
+    },
+    {
+     "feature": "workshops",
+     "quote": "World-Class Workshops",
+     "rationale": "Dance workshops are part of the event."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "Hand-picked taxi dancers",
+     "rationale": "Taxi dancers are present to dance with attendees."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "Theme Nights",
+     "rationale": "The event has theme nights."
+    }
+   ]
+  }
+ ]
+}

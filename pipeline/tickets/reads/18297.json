@@ -3,10 +3,91 @@
  "title": "Kizomba Rainbow Festival Nancy 2026",
  "start_date": "2026-12-10",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "2be784db5d9944e6",
- "rows_at": "2026-10-26T23:50:31+00:00",
+ "prompt": "cb864655c7075f56",
+ "rows_at": "2026-10-27T11:51:15+00:00",
+ "styles": [
+  "bachata",
+  "kizomba",
+  "salsa"
+ ],
  "description": "Welcome to the Rainbow Festival Nancy 2026 – 9th Edition 🌈\nThis event is dedicated to KIZOMBA INFORMATION ❤️💛💚💙\nhttps://my.weezevent.com/rainbow-festival-nancy-2026\n✅ Amazing Venue with 4 different rooms\n✅ 4 parties + 3 pre-parties – 3 after-parties until 7:00 am, all in the Same Location\n✅ Best DJs & International Artists\n✅ More than 50 workshops\n✅ New Shows\n✅ Lots of Fun 🙂 🙂 🙂\nTICKETING : https://my.weezevent.com/rainbow-festival-nancy-2026\n❤️💛💙Kizomba DJs & Artists ❤️💛💙\n✅JP & Stephy\n✅Mam’s & Moorea\n✅Prince Bachir & Frida\n✅Sensei & Emma\n✅Jurcic\n✅Anderson\n✅Moo’y\n✅ Dj Paraïso\n✅ Dj Shark\n✅ Dj Snakes\n✅ Dj NiceLife\n✅ Dj Dj Stefanio Lima\n✅ Dj Valet\n✅ Dj Iron Mams\n✅ Dj JC Stripes\n✅ Dj Chorron",
  "passes": [
+  {
+   "kind": "other",
+   "style": "kizomba",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5783697"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "style": "bachata",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5783654"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "style": "salsa",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5783600"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "style": "salsa",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5783581"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
   {
    "kind": "party",
    "style": null,
@@ -103,11 +184,6 @@
    ]
   }
  ],
- "skipped": [
-  "5783697",
-  "5783654",
-  "5783600",
-  "5783581"
- ],
+ "skipped": [],
  "rule_quotes": []
 }

@@ -1,0 +1,96 @@
+{
+ "batch": "event-17965",
+ "events": [
+  {
+   "event_id": 17965,
+   "party_rooms": {
+    "count": 3,
+    "quote": "3 rooms • 3 styles • 3 atmospheres"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "salsa",
+      "bachata"
+     ],
+     "quote": "Salsa • Bachata"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "Kizomba (100%)"
+    },
+    {
+     "name_as_written": "Disco Room",
+     "kind": "party",
+     "genres": [],
+     "quote": "Disco Room"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "salsa",
+      "bachata"
+     ],
+     "quote": "Salsa & Bachata"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "100% Kizomba"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "100% Salsa"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "100% Bachata"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "100% Kizomba"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa • Bachata"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Salsa • Bachata"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba (100%)"
+    }
+   ]
+  }
+ ]
+}

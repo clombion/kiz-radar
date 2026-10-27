@@ -1,6 +1,5 @@
 {
  "batch": "event-17448",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17448,
@@ -17,50 +16,46 @@
        "amount": 75,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "Full Pass €75, 80, 85 (SOLD OUT)"
+       "quote": "~~Full Pass €75, 80, 85 (SOLD OUT)~~"
       },
       {
        "amount": 80,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "Full Pass €75, 80, 85 (SOLD OUT)"
+       "quote": "~~Full Pass €75, 80, 85 (SOLD OUT)~~"
       },
       {
        "amount": 85,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "Full Pass €75, 80, 85 (SOLD OUT)"
+       "quote": "~~Full Pass €75, 80, 85 (SOLD OUT)~~"
       },
       {
        "amount": 90,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -73,8 +68,7 @@
        "amount": 95,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,

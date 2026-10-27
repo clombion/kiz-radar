@@ -1,0 +1,56 @@
+{
+ "batch": "event-19760",
+ "events": [
+  {
+   "event_id": 19760,
+   "party_rooms": {
+    "count": 3,
+    "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "International Competition ( Salsa & Bachata )"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )"
+    }
+   ]
+  }
+ ]
+}

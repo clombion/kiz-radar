@@ -1,6 +1,5 @@
 {
  "batch": "event-14604",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 14604,
@@ -17,15 +16,14 @@
        "amount": 66,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "2025-08-31",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "fullpass for Men or Women at just €66 until August 31, 2025!"
+       "quote": "fullpass for Men or Women at just €66 until August 31, 2025"
       }
      ]
     }

@@ -1,0 +1,39 @@
+{
+ "batch": "event-16283",
+ "events": [
+  {
+   "event_id": 16283,
+   "artists": [
+    {
+     "name_as_written": "Latin Events Aarhus",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "MOBILEPAY: Latin Events Aarhus – 31345 (You should pay a charge of 1% every time you use this service;"
+    }
+   ],
+   "features": [
+    {
+     "feature": "accommodation_included",
+     "quote": "Accommodation from the 9th to 14th of September (Until Monday morning)",
+     "rationale": "The INCLUDED list states that accommodation for the dates is part of the trip package."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Transport from the house to the dancing places, restaurants and cultural places.",
+     "rationale": "The INCLUDED list says transport between the house and the event and other venues is provided."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Workshops every afternoon/evening and entrance to the dancing place.",
+     "rationale": "The included items list dance workshops every afternoon and evening."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Every day in the afternoon we will offer some workshops and Social Dances, if happening.",
+     "rationale": "Daytime social dances are offered every afternoon during the trip."
+    }
+   ]
+  }
+ ]
+}

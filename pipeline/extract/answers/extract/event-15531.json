@@ -1,0 +1,78 @@
+{
+ "batch": "event-15531",
+ "events": [
+  {
+   "event_id": 15531,
+   "artists": [
+    {
+     "name_as_written": "Rico Suave & Manon",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
+    },
+    {
+     "name_as_written": "Carlos Camba & Anna",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
+    },
+    {
+     "name_as_written": "Tony Viser & Carla",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
+    },
+    {
+     "name_as_written": "Mara & Andy",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
+    },
+    {
+     "name_as_written": "Boris & Xenia",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
+    },
+    {
+     "name_as_written": "DJ HUGO BOSS",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ HUGO BOSS DJ Carlos KinG"
+    },
+    {
+     "name_as_written": "DJ Carlos KinG",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ HUGO BOSS DJ Carlos KinG"
+    },
+    {
+     "name_as_written": "Kizomba Academy Team",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Your Kizomba Academy Team ❤️"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "We’ve prepared a minimum of 18+ hours of workshops for you",
+     "rationale": "The description states a minimum of 18+ hours of workshops are included in the event."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "Stay right in the center of the action in the beautiful setting of Hotel Pod Lipou Resort.",
+     "rationale": "Dancers are invited to stay at the same resort hotel where the event takes place."
+    }
+   ]
+  }
+ ]
+}

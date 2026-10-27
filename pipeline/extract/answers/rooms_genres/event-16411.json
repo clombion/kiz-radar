@@ -1,0 +1,31 @@
+{
+ "batch": "event-16411",
+ "events": [
+  {
+   "event_id": 16411,
+   "party_rooms": {
+    "count": 5,
+    "quote": "5 Rooms, 5 Atmospheres"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa, Bachata, and Kizomba festival"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Salsa, Bachata, and Kizomba festival"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Salsa, Bachata, and Kizomba festival"
+    }
+   ]
+  }
+ ]
+}

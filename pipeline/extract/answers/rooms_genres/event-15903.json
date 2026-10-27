@@ -1,0 +1,33 @@
+{
+ "batch": "event-15903",
+ "events": [
+  {
+   "event_id": 15903,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa • Bachata • Kizomba • Afrodance"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Salsa • Bachata • Kizomba • Afrodance"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Salsa • Bachata • Kizomba • Afrodance"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afrodance",
+     "quote": "Afrodance"
+    }
+   ]
+  }
+ ]
+}

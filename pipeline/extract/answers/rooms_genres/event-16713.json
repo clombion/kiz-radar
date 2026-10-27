@@ -1,0 +1,101 @@
+{
+ "batch": "event-16713",
+ "events": [
+  {
+   "event_id": 16713,
+   "party_rooms": {
+    "count": 5,
+    "quote": "SPECIAL FESTIVAL WITH 5 AREAS"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "SALSA CUBANA – AREA",
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "SALSA CUBANA – AREA"
+    },
+    {
+     "name_as_written": "URBAN-KIZOMBA/FUSION – AREA",
+     "kind": "party",
+     "genres": [
+      "urbankiz"
+     ],
+     "quote": "URBAN-KIZOMBA/FUSION – AREA"
+    },
+    {
+     "name_as_written": "KIZOMBA/SEMBA/KONPA/ZOUK – AREA",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "semba",
+      "kompa",
+      "zouk"
+     ],
+     "quote": "KIZOMBA/SEMBA/KONPA/ZOUK – AREA"
+    },
+    {
+     "name_as_written": "BACHATA – AREA",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "BACHATA – AREA"
+    },
+    {
+     "name_as_written": "MAMBO/SALSA – AREA",
+     "kind": "party",
+     "genres": [
+      "other",
+      "salsa"
+     ],
+     "quote": "MAMBO/SALSA – AREA"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA CUBANA",
+     "quote": "SALSA CUBANA – AREA"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "BACHATA – AREA"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "KIZOMBA/SEMBA/KONPA/ZOUK – AREA"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "SEMBA",
+     "quote": "KIZOMBA/SEMBA/KONPA/ZOUK – AREA"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "KONPA",
+     "quote": "KIZOMBA/SEMBA/KONPA/ZOUK – AREA"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "ZOUK",
+     "quote": "KIZOMBA/SEMBA/KONPA/ZOUK – AREA"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBAN-KIZOMBA/FUSION",
+     "quote": "URBAN-KIZOMBA/FUSION – AREA"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "MAMBO",
+     "quote": "MAMBO/SALSA – AREA"
+    }
+   ]
+  }
+ ]
+}

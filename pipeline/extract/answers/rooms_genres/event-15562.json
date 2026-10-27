@@ -1,0 +1,38 @@
+{
+ "batch": "event-15562",
+ "events": [
+  {
+   "event_id": 15562,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "workshop: kizomba, semba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "semba",
+     "quote": "kizomba, semba, urban kiz"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "urban kiz",
+     "quote": "semba, urban kiz, fusion"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "tarraxo",
+     "quote": "fusion, tarraxo, afrohouse"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "afrohouse",
+     "quote": "tarraxo, afrohouse, body control"
+    }
+   ]
+  }
+ ]
+}

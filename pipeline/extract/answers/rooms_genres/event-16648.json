@@ -1,0 +1,43 @@
+{
+ "batch": "event-16648",
+ "events": [
+  {
+   "event_id": 16648,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "we will dance kizomba, semba, bachata, salsa, cha-cha, bolero and more"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "semba",
+     "quote": "we will dance kizomba, semba, bachata, salsa, cha-cha, bolero and more"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "bachata",
+     "quote": "we will dance kizomba, semba, bachata, salsa, cha-cha, bolero and more"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "salsa",
+     "quote": "we will dance kizomba, semba, bachata, salsa, cha-cha, bolero and more"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "cha-cha",
+     "quote": "we will dance kizomba, semba, bachata, salsa, cha-cha, bolero and more"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "bolero",
+     "quote": "we will dance kizomba, semba, bachata, salsa, cha-cha, bolero and more"
+    }
+   ]
+  }
+ ]
+}

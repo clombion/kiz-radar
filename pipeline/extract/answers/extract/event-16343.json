@@ -1,0 +1,195 @@
+{
+ "batch": "event-16343",
+ "events": [
+  {
+   "event_id": 16343,
+   "artists": [
+    {
+     "name_as_written": "AfroKizZGroove",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Presented by AfroKizZGroove"
+    },
+    {
+     "name_as_written": "DJ Saï Saï",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇳🇫🇷",
+     "source_line": "🏆 DJ Saï Saï 🇸🇳🇫🇷"
+    },
+    {
+     "name_as_written": "DJ Dico",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇹🇬🇧",
+     "source_line": "🏆 DJ Dico 🇸🇹🇬🇧"
+    },
+    {
+     "name_as_written": "DJ Abes",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇳🇬🇧",
+     "source_line": "🏆 DJ Abes 🇸🇳🇬🇧"
+    },
+    {
+     "name_as_written": "DJ Antonio Filipe",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴🇬🇧",
+     "source_line": "🏆 DJ Antonio Filipe 🇦🇴🇬🇧"
+    },
+    {
+     "name_as_written": "DJ Fernando",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴🇬🇧",
+     "source_line": "🏆 DJ Fernando 🇦🇴🇬🇧"
+    },
+    {
+     "name_as_written": "DJ Petit",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇳🇬🇧",
+     "source_line": "🏆 DJ Petit 🇸🇳🇬🇧"
+    },
+    {
+     "name_as_written": "DJ Yana",
+     "role": "dj",
+     "style": null,
+     "country": "🇬🇧",
+     "source_line": "🏆 DJ Yana 🇬🇧"
+    },
+    {
+     "name_as_written": "DJ Abigail",
+     "role": "dj",
+     "style": null,
+     "country": "🇬🇧🇬🇧",
+     "source_line": "🏆 DJ Abigail 🇬🇧🇬🇧"
+    },
+    {
+     "name_as_written": "DJ S-Trella",
+     "role": "dj",
+     "style": null,
+     "country": "🇨🇳 🇬🇧",
+     "source_line": "🏆 DJ S-Trella 🇨🇳 🇬🇧"
+    },
+    {
+     "name_as_written": "Felicien & Isabel",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✅ Felicien & Isabel 🇫🇷"
+    },
+    {
+     "name_as_written": "GouyadNess",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✅ GouyadNess 🇫🇷"
+    },
+    {
+     "name_as_written": "Abigail",
+     "role": "teacher",
+     "style": null,
+     "country": "🇬🇧🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "✅ Abigail 🇬🇧🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Sarah & Kevin",
+     "role": "teacher",
+     "style": null,
+     "country": "🇬🇧",
+     "source_line": "✅ Sarah & Kevin 🇬🇧"
+    },
+    {
+     "name_as_written": "Alex Cojan",
+     "role": "teacher",
+     "style": null,
+     "country": "🇬🇧🇦🇴",
+     "source_line": "✅ Alex Cojan 🇬🇧🇦🇴"
+    },
+    {
+     "name_as_written": "Lady Gery",
+     "role": "teacher",
+     "style": null,
+     "country": "🇬🇧",
+     "source_line": "✅ Lady Gery 🇬🇧"
+    },
+    {
+     "name_as_written": "Fernando",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✅ Fernando"
+    },
+    {
+     "name_as_written": "Petite Madame",
+     "role": "teacher",
+     "style": null,
+     "country": "🇱🇨 🇯🇲",
+     "source_line": "✅ Petite Madame 🇱🇨 🇯🇲"
+    },
+    {
+     "name_as_written": "Felicien & Isabel",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🎬 Felicien & Isabel"
+    },
+    {
+     "name_as_written": "Amadora Team",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🎬 Amadora Team"
+    },
+    {
+     "name_as_written": "Latin Germ",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🎬 Latin Germ"
+    },
+    {
+     "name_as_written": "Sara & Kevin",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🎬 Sara & Kevin"
+    },
+    {
+     "name_as_written": "GouyadNess",
+     "role": "performer",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "🎬 GouyadNess 🇫🇷"
+    },
+    {
+     "name_as_written": "The Drummer",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🎬 The Drummer 🪘"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Featured Instructors:",
+     "rationale": "A list of featured instructors indicates dance classes are part of the event."
+    },
+    {
+     "feature": "shows",
+     "quote": "Performers:",
+     "rationale": "A performers section lists artists who perform at the event."
+    },
+    {
+     "feature": "live_music",
+     "quote": "The Drummer",
+     "rationale": "A drummer listed as a performer provides live music."
+    }
+   ]
+  }
+ ]
+}

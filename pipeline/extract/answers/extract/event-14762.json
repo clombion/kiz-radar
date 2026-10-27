@@ -1,0 +1,122 @@
+{
+ "batch": "event-14762",
+ "events": [
+  {
+   "event_id": 14762,
+   "artists": [
+    {
+     "name_as_written": "Dj Paraiso",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Paraiso"
+    },
+    {
+     "name_as_written": "Dj Sai Sai",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Sai Sai"
+    },
+    {
+     "name_as_written": "Dj Ichigo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Ichigo"
+    },
+    {
+     "name_as_written": "Dj Malick",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Malick"
+    },
+    {
+     "name_as_written": "Djette Kiss",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Djette Kiss"
+    },
+    {
+     "name_as_written": "Dj Smach",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Smach"
+    },
+    {
+     "name_as_written": "Dj Neo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Neo"
+    },
+    {
+     "name_as_written": "Dj Shark",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Shark"
+    },
+    {
+     "name_as_written": "Dj Nao",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Nao"
+    },
+    {
+     "name_as_written": "Dj Akym",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Akym"
+    },
+    {
+     "name_as_written": "Josué & Céline",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Josué & Céline"
+    },
+    {
+     "name_as_written": "Lilian & Ivana",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Lilian & Ivana"
+    },
+    {
+     "name_as_written": "Luis & Karen",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Luis & Karen"
+    },
+    {
+     "name_as_written": "Asia Voronova",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Asia Voronova"
+    },
+    {
+     "name_as_written": "Silviphotographics",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Silviphotographics"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "We have the best performing artists for workshops and DJs for parties.",
+     "rationale": "The description states that workshops are part of the event."
+    }
+   ]
+  }
+ ]
+}

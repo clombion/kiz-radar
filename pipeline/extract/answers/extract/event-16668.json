@@ -1,0 +1,61 @@
+{
+ "batch": "event-16668",
+ "events": [
+  {
+   "event_id": 16668,
+   "artists": [
+    {
+     "name_as_written": "@elisaveta_hristova",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "@elisaveta_hristova"
+    },
+    {
+     "name_as_written": "@pambos.agapiou",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "@pambos.agapiou"
+    }
+   ],
+   "features": [
+    {
+     "feature": "pool_party",
+     "quote": "pool parties",
+     "rationale": "The description lists pool parties as part of the festival program."
+    },
+    {
+     "feature": "shows",
+     "quote": "evening shows",
+     "rationale": "Participants can attend evening shows as part of the event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Access to all dance lessons and seminars",
+     "rationale": "Dance lessons and seminars are included in the event."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Accommodation of the participants in the hotel of the event",
+     "rationale": "The package includes accommodation in the event hotel."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Half board buffet meals – breakfasts & dinners",
+     "rationale": "Breakfasts and dinners are included in the package."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "Place: HELIOS SPA HOTEL, GOLDEN SANDS",
+     "rationale": "The event venue is the hotel where participants are accommodated."
+    },
+    {
+     "feature": "competition",
+     "quote": "shows, lessons and competitions",
+     "rationale": "Competitions are explicitly part of the event program."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,74 @@
+{
+ "batch": "event-19459",
+ "events": [
+  {
+   "event_id": 19459,
+   "party_rooms": {
+    "count": 3,
+    "quote": "»» Our Kizomba Rooms / Atmospheres:\n→ Kizomba and Semba\n→ UrbanKiz and Tarraxo\n→ Konpa and Tarraxinha"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Kizomba and Semba",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "semba"
+     ],
+     "quote": "→ Kizomba and Semba"
+    },
+    {
+     "name_as_written": "UrbanKiz and Tarraxo",
+     "kind": "party",
+     "genres": [
+      "urbankiz",
+      "tarraxo"
+     ],
+     "quote": "→ UrbanKiz and Tarraxo"
+    },
+    {
+     "name_as_written": "Konpa and Tarraxinha",
+     "kind": "party",
+     "genres": [
+      "kompa",
+      "tarraxinha"
+     ],
+     "quote": "→ Konpa and Tarraxinha"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba and Semba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba and Semba"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "UrbanKiz",
+     "quote": "UrbanKiz and Tarraxo"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "UrbanKiz and Tarraxo"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Konpa and Tarraxinha"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "Konpa and Tarraxinha"
+    }
+   ]
+  }
+ ]
+}

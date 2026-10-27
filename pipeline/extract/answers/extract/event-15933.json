@@ -1,0 +1,39 @@
+{
+ "batch": "event-15933",
+ "events": [
+  {
+   "event_id": 15933,
+   "artists": [
+    {
+     "name_as_written": "Detroit Kizomba Community",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Join the Detroit Kizomba Community as we celebrate our 10th Annual Kizomba Tá Doce Connection Weekender!"
+    },
+    {
+     "name_as_written": "Steve Ciki",
+     "role": "teacher",
+     "style": "Semba, Kizomba & Urban Kiz",
+     "country": null,
+     "source_line": "• Steve Ciki – NYC"
+    },
+    {
+     "name_as_written": "Tin Man & Breezy",
+     "role": "teacher",
+     "style": "Semba, Kizomba & Urban Kiz",
+     "country": null,
+     "source_line": "• Tin Man & Breezy – Rochester, NY"
+    },
+    {
+     "name_as_written": "DJ NS",
+     "role": "dj",
+     "style": "Semba, Kizomba & Urban Kiz",
+     "country": null,
+     "source_line": "• DJ NS – Toronto, Canada"
+    }
+   ],
+   "features": []
+  }
+ ]
+}

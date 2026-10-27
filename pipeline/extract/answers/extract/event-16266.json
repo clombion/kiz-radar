@@ -1,0 +1,45 @@
+{
+ "batch": "event-16266",
+ "events": [
+  {
+   "event_id": 16266,
+   "artists": [
+    {
+     "name_as_written": "Miro Kikola",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴🇬🇧",
+     "source_line": "⭐️ Miro Kikola (🇦🇴🇬🇧)"
+    },
+    {
+     "name_as_written": "Bakongo",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴🇵🇹",
+     "source_line": "⭐️ Bakongo (🇦🇴🇵🇹)"
+    },
+    {
+     "name_as_written": "Beleza",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "⭐️ Beleza (🇦🇴)"
+    },
+    {
+     "name_as_written": "Cayolla",
+     "role": "dj",
+     "style": null,
+     "country": "🇵🇹",
+     "source_line": "⭐️ Cayolla (🇵🇹)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "partner_hotel",
+     "quote": "Hotel Ibis Sintra",
+     "rationale": "The description names a hotel under the ACCOMMODATION heading as the place to stay, while the pass itself does not include accommodation."
+    }
+   ]
+  }
+ ]
+}

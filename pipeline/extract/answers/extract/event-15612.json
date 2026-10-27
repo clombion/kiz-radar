@@ -1,0 +1,36 @@
+{
+ "batch": "event-15612",
+ "events": [
+  {
+   "event_id": 15612,
+   "artists": [],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 rooms simultaneously",
+     "rationale": "The description says three rooms run at the same time, so there is more than one dance room."
+    },
+    {
+     "feature": "workshops",
+     "quote": "2 days of specialized workshops",
+     "rationale": "Specialized workshops are explicitly part of the event programme."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "3 intensive days of classes",
+     "rationale": "Three intensive days of classes describe an intensive training course."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "Open to all levels: beginners to advanced",
+     "rationale": "The event is explicitly open to beginners as well as advanced dancers."
+    },
+    {
+     "feature": "shows",
+     "quote": "Over 120 shows to inspire you",
+     "rationale": "The event offers over 120 shows, which are performances."
+    }
+   ]
+  }
+ ]
+}

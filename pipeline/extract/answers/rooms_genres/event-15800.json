@@ -1,0 +1,23 @@
+{
+ "batch": "event-15800",
+ "events": [
+  {
+   "event_id": 15800,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Welcome to Alma Bachata Festival 2026"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Alma Bachata & Kizomba Festival"
+    }
+   ]
+  }
+ ]
+}

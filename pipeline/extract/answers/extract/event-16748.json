@@ -1,0 +1,16 @@
+{
+ "batch": "event-16748",
+ "events": [
+  {
+   "event_id": 16748,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Teachers will share their knowledge",
+     "rationale": "The description says teachers will share their knowledge at the event, which indicates dance classes or workshops are part of it."
+    }
+   ]
+  }
+ ]
+}

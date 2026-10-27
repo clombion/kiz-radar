@@ -1,12 +1,11 @@
 {
  "batch": "event-14511",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 14511,
    "passes": [],
    "rule_quotes": [
-    "⚠️ PRICES INCREASE THE FIRST DAY OF EVERY MONTH ⚠️"
+    "PRICES INCREASE THE FIRST DAY OF EVERY MONTH"
    ]
   }
  ]

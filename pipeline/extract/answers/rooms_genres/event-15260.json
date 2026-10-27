@@ -1,0 +1,97 @@
+{
+ "batch": "event-15260",
+ "events": [
+  {
+   "event_id": 15260,
+   "party_rooms": {
+    "count": 3,
+    "quote": "3 dancefloors"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Kulturstudion",
+     "kind": "unspecified",
+     "genres": [
+      "tarraxo",
+      "urbankiz",
+      "semba",
+      "kompa",
+      "tarraxinha",
+      "kizomba",
+      "other"
+     ],
+     "quote": "Kizomba Party (”Kulturstudion”)"
+    },
+    {
+     "name_as_written": "Lilla scen",
+     "kind": "unspecified",
+     "genres": [
+      "urbankiz",
+      "tarraxo",
+      "kizomba"
+     ],
+     "quote": "Urban Kiz Party (”Lilla scen”)"
+    },
+    {
+     "name_as_written": "Stora scen",
+     "kind": "unspecified",
+     "genres": [
+      "kizomba",
+      "urbankiz",
+      "afro",
+      "other"
+     ],
+     "quote": "Afrobeat & Amapiano Party (”Stora scen”)"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Tarraxo Fundamentals | Amina & Mamadou"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Instructors Urban Kiz/Tango Kiz:"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Semba Fundamentals | Tina & Yves"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Konpa Love | Susan & Mamadou"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "Tarraxinha | Elli & Vanildo"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Instructors Kizomba:"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afrobeat",
+     "quote": "Afrobeat & Amapiano Party (”Stora scen”)"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Amapiano",
+     "quote": "Afrobeat & Amapiano Party (”Stora scen”)"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Tango Kiz",
+     "quote": "Tango Kiz Grace | Victoria & Pierre"
+    }
+   ]
+  }
+ ]
+}

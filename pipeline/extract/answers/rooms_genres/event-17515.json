@@ -1,0 +1,72 @@
+{
+ "batch": "event-17515",
+ "events": [
+  {
+   "event_id": 17515,
+   "party_rooms": {
+    "count": 2,
+    "quote": "Two rooms, two atmospheres."
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Rooms 1",
+     "kind": "party",
+     "genres": [
+      "urbankiz",
+      "tarraxo",
+      "douceur"
+     ],
+     "quote": "Rooms 1 Urbankiz, Tarraxo, Douceur"
+    },
+    {
+     "name_as_written": "Room 2",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "semba",
+      "zouk"
+     ],
+     "quote": "Room 2 Kizomba, Semba, Ghettozouk"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urbankiz",
+     "quote": "Rooms 1 Urbankiz, Tarraxo, Douceur"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Rooms 1 Urbankiz, Tarraxo, Douceur"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "Rooms 1 Urbankiz, Tarraxo, Douceur"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Room 2 Kizomba, Semba, Ghettozouk"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Room 2 Kizomba, Semba, Ghettozouk"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Ghettozouk",
+     "quote": "Room 2 Kizomba, Semba, Ghettozouk"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "Kizomba / Semba / Afro"
+    }
+   ]
+  }
+ ]
+}

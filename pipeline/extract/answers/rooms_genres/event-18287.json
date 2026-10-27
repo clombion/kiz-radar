@@ -1,0 +1,28 @@
+{
+ "batch": "event-18287",
+ "events": [
+  {
+   "event_id": 18287,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "A weekend dedicated 100% to Kizomba, Kompa, & Semba in Annecy"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Kompa",
+     "quote": "A weekend dedicated 100% to Kizomba, Kompa, & Semba in Annecy"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "A weekend dedicated 100% to Kizomba, Kompa, & Semba in Annecy"
+    }
+   ]
+  }
+ ]
+}

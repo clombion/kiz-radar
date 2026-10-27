@@ -1,0 +1,51 @@
+{
+ "batch": "event-16698",
+ "events": [
+  {
+   "event_id": 16698,
+   "artists": [
+    {
+     "name_as_written": "DJ ICHIGO",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✔ DJ ICHIGO 🇫🇷"
+    },
+    {
+     "name_as_written": "Tokoos Dance",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Contact us on our page Tokoos Dance"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE LOCATION",
+     "rationale": "The title states the festival takes place all in one location, which matches the all-in-one feature."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Hotel and pass:",
+     "rationale": "The ticket category combines the hotel and the pass, which suggests accommodation is part of that package."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "𝐓𝐀𝐗𝐈𝐒 𝐃𝐀𝐍𝐂𝐄𝐑𝐒:",
+     "rationale": "A taxi dancers section heading is listed, showing taxi dancers are planned for the event."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "𝐩𝐫𝐞/𝐚𝐟𝐭𝐞𝐫-𝐩𝐚𝐫𝐭𝐲 𝐧𝐨𝐭 𝐢𝐧𝐜𝐥𝐮𝐝𝐞𝐝 𝐢𝐧 𝐭𝐡𝐞 𝐟𝐮𝐥𝐥 𝐩𝐚𝐬𝐬",
+     "rationale": "The text refers to pre-parties existing but not being included in the full pass."
+    },
+    {
+     "feature": "after_party",
+     "quote": "𝐩𝐫𝐞/𝐚𝐟𝐭𝐞𝐫-𝐩𝐚𝐫𝐭𝐲 𝐧𝐨𝐭 𝐢𝐧𝐜𝐥𝐮𝐝𝐞𝐝 𝐢𝐧 𝐭𝐡𝐞 𝐟𝐮𝐥𝐥 𝐩𝐚𝐬𝐬",
+     "rationale": "The text refers to after-parties existing but not being included in the full pass."
+    }
+   ]
+  }
+ ]
+}

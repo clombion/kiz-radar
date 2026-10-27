@@ -1,0 +1,312 @@
+{
+ "batch": "event-18686",
+ "events": [
+  {
+   "event_id": 18686,
+   "artists": [
+    {
+     "name_as_written": "Sakis & Mia",
+     "role": "teacher",
+     "style": "Bachazouk",
+     "country": null,
+     "source_line": "Sakis & Mia from Holland Bachazouk"
+    },
+    {
+     "name_as_written": "Flowly & Anastasiia",
+     "role": "teacher",
+     "style": "Bachata fusion",
+     "country": null,
+     "source_line": "Flowly & Anastasiia from China and Ukraine Bachata fusion"
+    },
+    {
+     "name_as_written": "Habibi & Nicole",
+     "role": "teacher",
+     "style": "Bachata sensual /zouk",
+     "country": null,
+     "source_line": "Habibi & Nicole from Morroco and Russia Bachata sensual /zouk"
+    },
+    {
+     "name_as_written": "Richard Eleganzia",
+     "role": "teacher",
+     "style": "Bachata influence",
+     "country": null,
+     "source_line": "Richard Eleganzia from Congo Bachata influence"
+    },
+    {
+     "name_as_written": "Gaby Flores",
+     "role": "teacher",
+     "style": "Bachata Dominicana",
+     "country": null,
+     "source_line": "Gaby Flores from Peru Bachata Dominicana"
+    },
+    {
+     "name_as_written": "Omaros & Hajer",
+     "role": "teacher",
+     "style": "Bachata sensual",
+     "country": null,
+     "source_line": "Omaros & Hajer from Tunisia Bachata sensual"
+    },
+    {
+     "name_as_written": "Ana Serban",
+     "role": "teacher",
+     "style": "Bachata sensual",
+     "country": null,
+     "source_line": "Ana Serban from Romania Bachata sensual"
+    },
+    {
+     "name_as_written": "Abes & Stephanie",
+     "role": "teacher",
+     "style": "Salsa Cuban",
+     "country": null,
+     "source_line": "Abes & Stephanie from England Salsa Cuban"
+    },
+    {
+     "name_as_written": "Dany & Dravko",
+     "role": "teacher",
+     "style": "Salsa Cuban",
+     "country": null,
+     "source_line": "Dany & Dravko from Bulgaria Salsa Cuban"
+    },
+    {
+     "name_as_written": "Lydwine & Mika",
+     "role": "teacher",
+     "style": "Salsa Porto",
+     "country": null,
+     "source_line": "Lydwine & Mika from Belgium and Brazil Salsa Porto"
+    },
+    {
+     "name_as_written": "Clive & Ana",
+     "role": "teacher",
+     "style": "Salsa Porto",
+     "country": null,
+     "source_line": "Clive & Ana from Iles Maurisse and from Bulgaria Salsa Porto"
+    },
+    {
+     "name_as_written": "David & Sylvie",
+     "role": "teacher",
+     "style": "Salsa Porto",
+     "country": null,
+     "source_line": "David & Sylvie from Belgium Salsa Porto"
+    },
+    {
+     "name_as_written": "Fred Chan",
+     "role": "teacher",
+     "style": "Salsa Porto",
+     "country": null,
+     "source_line": "Fred Chan from China Salsa Porto"
+    },
+    {
+     "name_as_written": "Anna Laura",
+     "role": "teacher",
+     "style": "Salsa Porto",
+     "country": null,
+     "source_line": "Anna Laura from Belgium Salsa Porto"
+    },
+    {
+     "name_as_written": "Flowly & Mira",
+     "role": "teacher",
+     "style": "Kizomba Fusion",
+     "country": null,
+     "source_line": "Flowly & Mira from China and Bulgaria Kizomba Fusion"
+    },
+    {
+     "name_as_written": "Matteo & Diana",
+     "role": "teacher",
+     "style": "Urban Kizz",
+     "country": null,
+     "source_line": "Matteo & Diana from Italy Urban Kizz"
+    },
+    {
+     "name_as_written": "Tony & Silvia",
+     "role": "teacher",
+     "style": "Urban Kizz",
+     "country": null,
+     "source_line": "Tony & Silvia from Ireland Urban Kizz"
+    },
+    {
+     "name_as_written": "Ash",
+     "role": "teacher",
+     "style": "Urban Kizz",
+     "country": null,
+     "source_line": "Ash from Belgium Urban Kizz"
+    },
+    {
+     "name_as_written": "DJ Sparkl SBK",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Sparkl SBK from Italy"
+    },
+    {
+     "name_as_written": "DJ Kamilo SB",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Kamilo SB from Chile"
+    },
+    {
+     "name_as_written": "DJ Thomas SBK",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Thomas SBK from Cameroon"
+    },
+    {
+     "name_as_written": "Dj Abess SK",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Abess SK from England"
+    },
+    {
+     "name_as_written": "DJ Bambino SBK",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Bambino SBK from Cote d Ivoires"
+    },
+    {
+     "name_as_written": "Dj 2.1 SBK",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj 2.1 SBK from Brazil"
+    },
+    {
+     "name_as_written": "Dj Alma Latina",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Alma Latina from Belgium"
+    },
+    {
+     "name_as_written": "Faissal El Mouedden",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "Faissal El Mouedden"
+    },
+    {
+     "name_as_written": "Vanessa Luna",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "Vanessa Luna BrunoMiranda Di Vito"
+    },
+    {
+     "name_as_written": "BrunoMiranda Di Vito",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "Vanessa Luna BrunoMiranda Di Vito"
+    },
+    {
+     "name_as_written": "Maite Thiry",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "Maite Thiry"
+    },
+    {
+     "name_as_written": "Andrea Olivieri",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "Andrea OlivieriPauline MoulartSamia HabassiAbderrazak MelhraouiKiki Athanassopoulos"
+    },
+    {
+     "name_as_written": "Pauline Moulart",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "Andrea OlivieriPauline MoulartSamia HabassiAbderrazak MelhraouiKiki Athanassopoulos"
+    },
+    {
+     "name_as_written": "Samia Habassi",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "Andrea OlivieriPauline MoulartSamia HabassiAbderrazak MelhraouiKiki Athanassopoulos"
+    },
+    {
+     "name_as_written": "Abderrazak Melhraoui",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "Andrea OlivieriPauline MoulartSamia HabassiAbderrazak MelhraouiKiki Athanassopoulos"
+    },
+    {
+     "name_as_written": "Kiki Athanassopoulos",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "Andrea OlivieriPauline MoulartSamia HabassiAbderrazak MelhraouiKiki Athanassopoulos"
+    },
+    {
+     "name_as_written": "Flowly events",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Flowly events: id.labelling@gmail.com"
+    }
+   ],
+   "features": [
+    {
+     "feature": "cruise",
+     "quote": "DANCE CRUISE BKS 2027",
+     "rationale": "The event is a dance cruise on a ship."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Workshops during the day",
+     "rationale": "Daytime dance workshops are part of the programme."
+    },
+    {
+     "feature": "shows",
+     "quote": "Shows and/or demos by our Artists",
+     "rationale": "Artists give shows and demos during the cruise."
+    },
+    {
+     "feature": "competition",
+     "quote": "Daily Dress Code Competition",
+     "rationale": "A daily competition is held during the cruise."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Daily Dress Code Competition",
+     "rationale": "The competition is built around a dress code."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 private rooms for simultaneous workshops and 2 rooms for parties",
+     "rationale": "Several rooms are used for simultaneous dancing activities."
+    },
+    {
+     "feature": "after_party",
+     "quote": "After -parties under the stars",
+     "rationale": "After-parties are advertised."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Pool parties, sunsets and festival atmosphere at sea",
+     "rationale": "Pool parties are part of the programme."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "including shuttles",
+     "rationale": "The group trip from Belgium includes shuttles."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Inside double cabin: €555* (per person)*",
+     "rationale": "Cabin prices per person are part of the festival package on the cruise."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Gourmet lunch and dinner.",
+     "rationale": "Gourmet lunch and dinner are listed under what is included in the cruise."
+    }
+   ]
+  }
+ ]
+}

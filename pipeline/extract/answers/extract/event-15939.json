@@ -1,0 +1,433 @@
+{
+ "batch": "event-15939",
+ "events": [
+  {
+   "event_id": 15939,
+   "artists": [
+    {
+     "name_as_written": "Paraiso",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": "🇸🇳",
+     "source_line": "🪘Paraiso 🇸🇳"
+    },
+    {
+     "name_as_written": "Stefanio Lima",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": null,
+     "source_line": "🪘Stefanio Lima"
+    },
+    {
+     "name_as_written": "Snakes",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": null,
+     "source_line": "🪘Snakes"
+    },
+    {
+     "name_as_written": "Miro Kikola",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": "🇦🇴",
+     "source_line": "🪘Miro Kikola 🇦🇴"
+    },
+    {
+     "name_as_written": "Hugo Smile",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": "🇬🇵",
+     "source_line": "🪘Hugo Smile 🇬🇵"
+    },
+    {
+     "name_as_written": "Kin",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": "🇨🇲",
+     "source_line": "🪘Kin 🇨🇲"
+    },
+    {
+     "name_as_written": "Ichigo",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": "🇨🇩",
+     "source_line": "🪘Ichigo 🇨🇩"
+    },
+    {
+     "name_as_written": "JDN",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": "🇫🇷",
+     "source_line": "🪘JDN 🇫🇷"
+    },
+    {
+     "name_as_written": "L-Dry",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": "🇨🇲",
+     "source_line": "🪘L-Dry 🇨🇲"
+    },
+    {
+     "name_as_written": "Man",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": "🇰🇲",
+     "source_line": "🪘Man 🇰🇲"
+    },
+    {
+     "name_as_written": "QDS",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": "🇾🇹",
+     "source_line": "🪘QDS 🇾🇹"
+    },
+    {
+     "name_as_written": "Miel",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": "🇷🇪",
+     "source_line": "🪘Miel 🇷🇪"
+    },
+    {
+     "name_as_written": "Do Zangado",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": "🇦🇴",
+     "source_line": "🪘Do Zangado 🇦🇴"
+    },
+    {
+     "name_as_written": "Akym",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": null,
+     "source_line": "🪘Akym"
+    },
+    {
+     "name_as_written": "Madjik",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": "🇰🇲",
+     "source_line": "🪘Madjik 🇰🇲"
+    },
+    {
+     "name_as_written": "Marly’s",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": "🇬🇵",
+     "source_line": "🪘Marly’s 🇬🇵"
+    },
+    {
+     "name_as_written": "Kyle",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": "🇲🇶",
+     "source_line": "🪘Kyle 🇲🇶"
+    },
+    {
+     "name_as_written": "Myco",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": "🇬🇵",
+     "source_line": "🪘Myco 🇬🇵"
+    },
+    {
+     "name_as_written": "Raph One",
+     "role": "dj",
+     "style": "KIZOMBA | URBANKIZ | SEMBA | AFRO",
+     "country": "🇨🇲",
+     "source_line": "🪘Raph One 🇨🇲"
+    },
+    {
+     "name_as_written": "Kwenda Lima",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇨🇻",
+     "source_line": "🪘Kwenda Lima 🇨🇻"
+    },
+    {
+     "name_as_written": "Chamalo & T-zer",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇨🇲🇸🇪",
+     "source_line": "🪘Chamalo & T-zer 🇨🇲🇸🇪"
+    },
+    {
+     "name_as_written": "Iron Mams & Ivana",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "🪘Iron Mams & Ivana"
+    },
+    {
+     "name_as_written": "Guy Tawa & Bicky",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇨🇲🇻🇳",
+     "source_line": "🪘Guy Tawa & Bicky 🇨🇲🇻🇳"
+    },
+    {
+     "name_as_written": "Juninho & Sara",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇦🇴🇫🇷",
+     "source_line": "🪘Juninho & Sara 🇦🇴🇫🇷"
+    },
+    {
+     "name_as_written": "Bonga & Aline",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇨🇲🇫🇷",
+     "source_line": "🪘Bonga & Aline 🇨🇲🇫🇷"
+    },
+    {
+     "name_as_written": "Kamil & Amandine",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇰🇲🇫🇷",
+     "source_line": "🪘Kamil & Amandine 🇰🇲🇫🇷"
+    },
+    {
+     "name_as_written": "Armand & Aidah",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇨🇲🇰🇲",
+     "source_line": "🪘Armand & Aidah 🇨🇲🇰🇲"
+    },
+    {
+     "name_as_written": "Malick & Carla",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "🪘Malick & Carla"
+    },
+    {
+     "name_as_written": "Josué & Celine",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇲🇶🇨🇭",
+     "source_line": "🪘Josué & Celine 🇲🇶🇨🇭"
+    },
+    {
+     "name_as_written": "Landry & Windy",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇨🇲🇲🇶",
+     "source_line": "🪘Landry & Windy 🇨🇲🇲🇶"
+    },
+    {
+     "name_as_written": "Justinho",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇸🇳",
+     "source_line": "🪘Justinho 🇸🇳"
+    },
+    {
+     "name_as_written": "Mylena",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇫🇷",
+     "source_line": "🪘Mylena 🇫🇷"
+    },
+    {
+     "name_as_written": "Atou",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇸🇳",
+     "source_line": "🪘Atou 🇸🇳"
+    },
+    {
+     "name_as_written": "Ludo & Constance",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇲🇶",
+     "source_line": "🪘Ludo & Constance 🇲🇶"
+    },
+    {
+     "name_as_written": "Adilson & Telma",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇦🇴",
+     "source_line": "🪘Adilson & Telma 🇦🇴"
+    },
+    {
+     "name_as_written": "ElHadj & Jenna",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇨🇮 🇬🇵",
+     "source_line": "🪘ElHadj & Jenna 🇨🇮 🇬🇵"
+    },
+    {
+     "name_as_written": "Pamela",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇨🇲",
+     "source_line": "🪘Pamela 🇨🇲"
+    },
+    {
+     "name_as_written": "Jules & Yuna",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇨🇲",
+     "source_line": "🪘Jules & Yuna 🇨🇲"
+    },
+    {
+     "name_as_written": "Mervil",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "🪘Mervil"
+    },
+    {
+     "name_as_written": "Gökhan & Debora",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇹🇷🇫🇷",
+     "source_line": "🪘Gökhan & Debora 🇹🇷🇫🇷"
+    },
+    {
+     "name_as_written": "Jonathan Kani",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇸🇳",
+     "source_line": "🪘Jonathan Kani 🇸🇳"
+    },
+    {
+     "name_as_written": "Moussa",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": "🇸🇳",
+     "source_line": "🪘Moussa 🇸🇳"
+    },
+    {
+     "name_as_written": "Dorian",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "🪘Dorian"
+    },
+    {
+     "name_as_written": "Serge Drums",
+     "role": "teacher",
+     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+     "country": null,
+     "source_line": "🪘Serge Drums"
+    },
+    {
+     "name_as_written": "El mambo",
+     "role": "teacher",
+     "style": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔",
+     "country": "🇨🇲",
+     "source_line": "🪇 El mambo 🇨🇲"
+    },
+    {
+     "name_as_written": "Hicham",
+     "role": "teacher",
+     "style": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔",
+     "country": "🇲🇦",
+     "source_line": "🪇 Hicham 🇲🇦"
+    },
+    {
+     "name_as_written": "Ibra",
+     "role": "teacher",
+     "style": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔",
+     "country": "🇨🇺",
+     "source_line": "🪇 Ibra 🇨🇺"
+    },
+    {
+     "name_as_written": "Bourgeois",
+     "role": "teacher",
+     "style": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔",
+     "country": "🇨🇲",
+     "source_line": "🪇 Bourgeois 🇨🇲"
+    },
+    {
+     "name_as_written": "Bourgeois & Maria",
+     "role": "teacher",
+     "style": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔",
+     "country": "🇨🇲🇷🇺",
+     "source_line": "🪇 Bourgeois & Maria 🇨🇲🇷🇺"
+    },
+    {
+     "name_as_written": "Gwen & Carolina",
+     "role": "teacher",
+     "style": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔",
+     "country": "🇫🇷🇲🇽",
+     "source_line": "🪇 Gwen & Carolina 🇫🇷🇲🇽"
+    },
+    {
+     "name_as_written": "Tarehi Prodarts",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "► Tarehi Prodarts"
+    },
+    {
+     "name_as_written": "Legacy Agency",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "► Legacy Agency"
+    },
+    {
+     "name_as_written": "WA Media",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "► WA Media"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "4 days of dance learning",
+     "rationale": "Dance learning days indicate classes are part of the event."
+    },
+    {
+     "feature": "competition",
+     "quote": "Dance school competition in choreographic formation #challenge",
+     "rationale": "A dance school competition is explicitly offered."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Concerts and shows with renowned artists",
+     "rationale": "Concerts are explicitly part of the event."
+    },
+    {
+     "feature": "shows",
+     "quote": "Concerts and shows with renowned artists",
+     "rationale": "Shows by renowned artists are explicitly part of the event."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "Taxi dancers",
+     "rationale": "Taxi dancers are listed as present."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "4 rooms / 4 vibes: URBAN – SEMBA – BACHATA/SALSA – GENERAL",
+     "rationale": "Four separate rooms are listed."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "3 dress codes",
+     "rationale": "The event states that dress codes apply."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "1 pre-party",
+     "rationale": "A pre-party is explicitly offered."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Free shuttles every 15 minutes between the venue and the hotel.",
+     "rationale": "Shuttles run between the venue and the hotel."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "https://kizombagalachallenge.com/hotels",
+     "rationale": "A hotel page is linked, indicating recommended hotels for the event."
+    }
+   ]
+  }
+ ]
+}

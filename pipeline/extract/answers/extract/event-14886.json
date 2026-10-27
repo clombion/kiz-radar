@@ -1,0 +1,31 @@
+{
+ "batch": "event-14886",
+ "events": [
+  {
+   "event_id": 14886,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Workshops & Masterclasses",
+     "rationale": "The description states that dance workshops are part of the event, with 15+ hours of them."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Masterclasses",
+     "rationale": "The event lists Masterclasses among its offerings."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Live Music",
+     "rationale": "The event lists Live Music among its highlights."
+    },
+    {
+     "feature": "shows",
+     "quote": "Shows",
+     "rationale": "The event lists Shows among its highlights."
+    }
+   ]
+  }
+ ]
+}

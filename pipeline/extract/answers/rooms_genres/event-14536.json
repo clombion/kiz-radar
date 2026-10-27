@@ -1,0 +1,33 @@
+{
+ "batch": "event-14536",
+ "events": [
+  {
+   "event_id": 14536,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "33% SALSA 33% BACHATA 33% KIZOMBA"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "33% SALSA 33% BACHATA 33% KIZOMBA"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "33% SALSA 33% BACHATA 33% KIZOMBA"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urbankiz",
+     "quote": "FRED MAESTRO (Urbankiz)"
+    }
+   ]
+  }
+ ]
+}

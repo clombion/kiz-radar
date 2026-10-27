@@ -1,0 +1,74 @@
+{
+ "batch": "event-18342",
+ "events": [
+  {
+   "event_id": 18342,
+   "party_rooms": {
+    "count": 2,
+    "quote": "During the nights, there will be 2 social rooms:"
+   },
+   "class_rooms": {
+    "count": 2,
+    "quote": "2 exclusive rooms for workshops of Kizomba, Semba, Kuduro, Afrohouse, etc…"
+   },
+   "rooms": [
+    {
+     "name_as_written": "Room 1",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "semba"
+     ],
+     "quote": "Room 1: KIZOMBA & SEMBA"
+    },
+    {
+     "name_as_written": "Room 2",
+     "kind": "party",
+     "genres": [
+      "urbankiz",
+      "tarraxo",
+      "douceur"
+     ],
+     "quote": "Room 2: URBAN & TARRAXO & DOUCEUR"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "A festival of Kizomba 100%"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "and Semba, Kuduro, Urban, Tarraxo, Douceur"
+    },
+    {
+     "genre": "kuduro",
+     "genre_as_written": "Kuduro",
+     "quote": "Semba, Kuduro, Urban, Tarraxo, Douceur"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban",
+     "quote": "Kuduro, Urban, Tarraxo, Douceur"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Urban, Tarraxo, Douceur"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "Urban, Tarraxo, Douceur"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afrohouse",
+     "quote": "Kuduro, Afrohouse"
+    }
+   ]
+  }
+ ]
+}

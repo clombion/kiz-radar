@@ -1,0 +1,185 @@
+{
+ "batch": "event-18282",
+ "events": [
+  {
+   "event_id": 18282,
+   "artists": [
+    {
+     "name_as_written": "Enah Lebon",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔸 Enah Lebon"
+    },
+    {
+     "name_as_written": "Methodz",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️ Methodz"
+    },
+    {
+     "name_as_written": "Jenny",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔸 Jenny"
+    },
+    {
+     "name_as_written": "Ti Wosh",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️ Ti Wosh"
+    },
+    {
+     "name_as_written": "Sanjay MJ",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️ Sanjay MJ"
+    },
+    {
+     "name_as_written": "Daniel Schauenburg",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️ Daniel Schauenburg"
+    },
+    {
+     "name_as_written": "Benoit & Sneja",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️ Benoit & Sneja"
+    },
+    {
+     "name_as_written": "Lucas",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️ Lucas"
+    },
+    {
+     "name_as_written": "Onça",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️ Onça"
+    },
+    {
+     "name_as_written": "Luca Arrigoni",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️ Luca Arrigoni"
+    },
+    {
+     "name_as_written": "Luca & Francesca",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️ Luca & Francesca"
+    },
+    {
+     "name_as_written": "Stef Matt",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️ Stef Matt"
+    },
+    {
+     "name_as_written": "Lali",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️ Lali"
+    },
+    {
+     "name_as_written": "Valentina Conci",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔹️ Valentina Conci"
+    },
+    {
+     "name_as_written": "Stefano Montanari",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔸️ Stefano Montanari"
+    },
+    {
+     "name_as_written": "DJ Le Grand Ti Wosh",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Le Grand Ti Wosh"
+    },
+    {
+     "name_as_written": "DJ High Energy",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ High Energy"
+    },
+    {
+     "name_as_written": "DJ Rax",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Rax"
+    },
+    {
+     "name_as_written": "DJ Bikini",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Bikini"
+    }
+   ],
+   "features": [
+    {
+     "feature": "taxi_dancers",
+     "quote": "TAXI DANCERS",
+     "rationale": "The opening list of the description names taxi dancers as present at the event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "WORKSHOPS WITH INTERNATIONAL ARTISTS",
+     "rationale": "The description explicitly lists workshops with international artists as part of the event."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "Dress Code: GOLD",
+     "rationale": "The programme gives themed party nights with a colour dress code (GOLD, RED, WHITE)."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Dress Code: GOLD",
+     "rationale": "A dress code is explicitly stated for the parties."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Social Kiz",
+     "rationale": "The programme schedules Social Kiz sessions during the afternoons and daytime."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "SOCIAL ROOM",
+     "rationale": "Mention of a separate social room indicates more than one dance room."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "Location: Hotel Verri",
+     "rationale": "The event takes place at the hotel where dancers are invited to stay, with check-in and rooms on site."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "includes breakfast and city tax",
+     "rationale": "The room package price explicitly includes breakfast."
+    }
+   ]
+  }
+ ]
+}

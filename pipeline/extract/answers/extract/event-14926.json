@@ -1,0 +1,103 @@
+{
+ "batch": "event-14926",
+ "events": [
+  {
+   "event_id": 14926,
+   "artists": [
+    {
+     "name_as_written": "Val’r & Sarah",
+     "role": "teacher",
+     "style": null,
+     "country": "FRANCE",
+     "source_line": "Val’r & Sarah (FRANCE)"
+    },
+    {
+     "name_as_written": "Yannick & Ama",
+     "role": "teacher",
+     "style": null,
+     "country": "AUSTRALIA",
+     "source_line": "Yannick & Ama (AUSTRALIA)"
+    },
+    {
+     "name_as_written": "Chris & Yasmin",
+     "role": "teacher",
+     "style": null,
+     "country": "AUSTRALIA",
+     "source_line": "Chris & Yasmin (AUSTRALIA)Sydney Battle Kiz Winners 2025"
+    },
+    {
+     "name_as_written": "Kudzi & Maddy",
+     "role": "teacher",
+     "style": null,
+     "country": "AUSTRALIA",
+     "source_line": "Kudzi & Maddy (AUSTRALIA) Sydney Battle Kiz Finalists 2025"
+    },
+    {
+     "name_as_written": "Jérémy & Léa",
+     "role": "teacher",
+     "style": null,
+     "country": "NEW CALEDONIA",
+     "source_line": "Jérémy & Léa (NEW CALEDONIA)"
+    },
+    {
+     "name_as_written": "DB Chris",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DB Chris"
+    },
+    {
+     "name_as_written": "Ama",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Ama"
+    },
+    {
+     "name_as_written": "JAYJAY",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "JAYJAY"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "15 heures de cours",
+     "rationale": "The description lists the dance classes that make up the 15 hours of lessons and workshops."
+    },
+    {
+     "feature": "shows",
+     "quote": "stunning shows",
+     "rationale": "The English text advertises stunning shows as part of the event."
+    },
+    {
+     "feature": "after_party",
+     "quote": "After party le lundi 12 janvier",
+     "rationale": "An after party on Monday 12 January is announced."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "incredible themed parties",
+     "rationale": "The event has themed nights such as Island Vibes, Oceanic Gala and Denim Fever."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Dress code : tenues tropicales et colorées",
+     "rationale": "A dress code is stated for the Friday party."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Code promo spécial : KIZ15 pour vos réservations",
+     "rationale": "A special promo code gives a negotiated hotel rate for the recommended Ramada Hôtel without accommodation being part of the pass."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "Ramada Hôtel – Nouméa, Nouvelle-Calédonie",
+     "rationale": "The event venue is the Ramada Hôtel, which is also the listed accommodation, so the parties take place where dancers stay."
+    }
+   ]
+  }
+ ]
+}

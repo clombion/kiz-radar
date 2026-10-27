@@ -1,0 +1,18 @@
+{
+ "batch": "event-15469",
+ "events": [
+  {
+   "event_id": 15469,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "TARRAXO",
+     "quote": "If you want to mix TARRAXO chemicals"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,183 @@
+{
+ "batch": "event-16105",
+ "events": [
+  {
+   "event_id": 16105,
+   "artists": [
+    {
+     "name_as_written": "Audi & Laura",
+     "role": "teacher",
+     "style": "Urban Kiz",
+     "country": "ESP",
+     "source_line": "▫️Audi & Laura (ESP)"
+    },
+    {
+     "name_as_written": "Gwany & Liliana",
+     "role": "teacher",
+     "style": "Urban Kiz",
+     "country": "FR",
+     "source_line": "▫️Gwany & Liliana (FR)"
+    },
+    {
+     "name_as_written": "Azzedine",
+     "role": "teacher",
+     "style": "Urban Kiz",
+     "country": "ESP",
+     "source_line": "▫️Azzedine (ESP)"
+    },
+    {
+     "name_as_written": "Luis & Karen",
+     "role": "teacher",
+     "style": "Urban Kiz",
+     "country": "ESP",
+     "source_line": "▫️Luis & Karen (ESP)"
+    },
+    {
+     "name_as_written": "Elli",
+     "role": "teacher",
+     "style": "Urban Kiz",
+     "country": "SWE",
+     "source_line": "▫️Elli (SWE)"
+    },
+    {
+     "name_as_written": "Tony & Carla",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": "ESP",
+     "source_line": "▫️Tony & Carla (ESP)"
+    },
+    {
+     "name_as_written": "Jacinto Teca & Lucy",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": "CZE",
+     "source_line": "▫️Jacinto Teca & Lucy (CZE)"
+    },
+    {
+     "name_as_written": "Do Zangado",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": "ANG",
+     "source_line": "▫️Do Zangado (ANG)"
+    },
+    {
+     "name_as_written": "Ana & Stephane",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": "RO/BEL",
+     "source_line": "▫️Ana & Stephane (RO/BEL)"
+    },
+    {
+     "name_as_written": "Mik’iz & Pao",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": "FR",
+     "source_line": "▫️Mik’iz & Pao (FR)"
+    },
+    {
+     "name_as_written": "DJ Stefanio Lima",
+     "role": "dj",
+     "style": null,
+     "country": "NL",
+     "source_line": "▫️DJ Stefanio Lima (NL)"
+    },
+    {
+     "name_as_written": "DJ Vasco",
+     "role": "dj",
+     "style": null,
+     "country": "FR",
+     "source_line": "▫️DJ Vasco (FR)"
+    },
+    {
+     "name_as_written": "DJ Nao",
+     "role": "dj",
+     "style": null,
+     "country": "BEL",
+     "source_line": "▫️DJ Nao (BEL)"
+    },
+    {
+     "name_as_written": "DJ Narc6",
+     "role": "dj",
+     "style": null,
+     "country": "GER",
+     "source_line": "▫️DJ Narc6 (GER)"
+    },
+    {
+     "name_as_written": "DJ Bartef",
+     "role": "dj",
+     "style": null,
+     "country": "PL",
+     "source_line": "▫️DJ Bartef (PL)"
+    },
+    {
+     "name_as_written": "DJ David Ruela",
+     "role": "dj",
+     "style": null,
+     "country": "NL",
+     "source_line": "▫️DJ David Ruela (NL)"
+    },
+    {
+     "name_as_written": "DJ Supaman",
+     "role": "dj",
+     "style": null,
+     "country": "NL",
+     "source_line": "▫️DJ Supaman (NL)"
+    },
+    {
+     "name_as_written": "DJ Idra",
+     "role": "dj",
+     "style": null,
+     "country": "GER",
+     "source_line": "▫️DJ Idra (GER)"
+    },
+    {
+     "name_as_written": "DJ Eddy Nice",
+     "role": "dj",
+     "style": null,
+     "country": "ANG",
+     "source_line": "▫️DJ Eddy Nice (ANG)"
+    },
+    {
+     "name_as_written": "DJ Ando",
+     "role": "dj",
+     "style": null,
+     "country": "GH",
+     "source_line": "▫️DJ Ando (GH)"
+    },
+    {
+     "name_as_written": "LNA Carla",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "▫️LNA Carla"
+    },
+    {
+     "name_as_written": "MojoProd",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "▫️MojoProd"
+    },
+    {
+     "name_as_written": "Hres Photography",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "▫️Hres Photography"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "female-led partnerwork classes",
+     "rationale": "The description advertises partnerwork classes as part of the festival programme."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Hotel Zarenhof Prenzlauer Berg (MAIN HOTEL)",
+     "rationale": "The description lists recommended hotels with booking links, including a main hotel, without saying accommodation is part of the pass."
+    }
+   ]
+  }
+ ]
+}

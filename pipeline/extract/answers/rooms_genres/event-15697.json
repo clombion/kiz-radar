@@ -1,0 +1,76 @@
+{
+ "batch": "event-15697",
+ "events": [
+  {
+   "event_id": 15697,
+   "party_rooms": null,
+   "class_rooms": {
+    "count": 4,
+    "quote": "4 Dancefloors / 4 Rooms"
+   },
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "class",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "Sensual & Modern Bachata"
+    },
+    {
+     "name_as_written": null,
+     "kind": "class",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "Cuban & Puerto Rican Salsa"
+    },
+    {
+     "name_as_written": null,
+     "kind": "class",
+     "genres": [
+      "bachata",
+      "other",
+      "zouk"
+     ],
+     "quote": "Dominican Bachata, Merengue, Zouk"
+    },
+    {
+     "name_as_written": null,
+     "kind": "class",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "Kizomba"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "(Bachata, Salsa, Kizomba, Zouk)"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "(Bachata, Salsa, Kizomba, Zouk)"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "(Bachata, Salsa, Kizomba, Zouk)"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Zouk",
+     "quote": "(Bachata, Salsa, Kizomba, Zouk)"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Merengue",
+     "quote": "Dominican Bachata, Merengue, Zouk"
+    }
+   ]
+  }
+ ]
+}

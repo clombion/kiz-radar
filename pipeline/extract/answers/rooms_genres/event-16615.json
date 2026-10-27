@@ -1,0 +1,46 @@
+{
+ "batch": "event-16615",
+ "events": [
+  {
+   "event_id": 16615,
+   "party_rooms": {
+    "count": 6,
+    "quote": "6 ROOMS / 6 ATMOSPHERES"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "6 Music Universes (Kizomba, Semba, UrbanKiz, Tarraxo, ZoukLove, Afrobeat & more)"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "6 Music Universes (Kizomba, Semba, UrbanKiz, Tarraxo, ZoukLove, Afrobeat & more)"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "UrbanKiz",
+     "quote": "6 Music Universes (Kizomba, Semba, UrbanKiz, Tarraxo, ZoukLove, Afrobeat & more)"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "6 Music Universes (Kizomba, Semba, UrbanKiz, Tarraxo, ZoukLove, Afrobeat & more)"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "ZoukLove",
+     "quote": "6 Music Universes (Kizomba, Semba, UrbanKiz, Tarraxo, ZoukLove, Afrobeat & more)"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afrobeat",
+     "quote": "6 Music Universes (Kizomba, Semba, UrbanKiz, Tarraxo, ZoukLove, Afrobeat & more)"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,141 @@
+{
+ "batch": "event-18981",
+ "events": [
+  {
+   "event_id": 18981,
+   "artists": [
+    {
+     "name_as_written": "DJ Charley Raymdtc",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Charley Raymdtc"
+    },
+    {
+     "name_as_written": "DJ Poema Beatz",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Poema Beatz"
+    },
+    {
+     "name_as_written": "DJ Timeline",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Timeline"
+    },
+    {
+     "name_as_written": "DJ Remcy",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Remcy"
+    },
+    {
+     "name_as_written": "DJ Sorin",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Sorin"
+    },
+    {
+     "name_as_written": "DJ El Momo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ El Momo"
+    },
+    {
+     "name_as_written": "DJ Dino",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Dino"
+    },
+    {
+     "name_as_written": "George & Iva",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "George & Iva"
+    },
+    {
+     "name_as_written": "Radu & Judit",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Radu & Judit"
+    },
+    {
+     "name_as_written": "Daniel & Elina",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Daniel & Elina"
+    },
+    {
+     "name_as_written": "Selim & Nana",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Selim & Nana"
+    },
+    {
+     "name_as_written": "Lio & Helen",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Lio & Helen"
+    },
+    {
+     "name_as_written": "Murmel & Clara",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Murmel & Clara"
+    },
+    {
+     "name_as_written": "Fajul",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Fajul"
+    },
+    {
+     "name_as_written": "Hassou",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Hassou"
+    },
+    {
+     "name_as_written": "Maja",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Maja"
+    },
+    {
+     "name_as_written": "Eva",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Eva"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "14 hours of workshops with international artists",
+     "rationale": "The description states that workshops are part of the festival programme."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "THEMED NIGHTS",
+     "rationale": "The event lists themed nights with a colour or dress theme for each evening."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,59 @@
+{
+ "batch": "event-18750",
+ "events": [
+  {
+   "event_id": 18750,
+   "party_rooms": null,
+   "class_rooms": {
+    "count": 1,
+    "quote": "Workshops | Main Hall"
+   },
+   "rooms": [
+    {
+     "name_as_written": "Main Hall",
+     "kind": "class",
+     "genres": [],
+     "quote": "Workshops | Main Hall"
+    },
+    {
+     "name_as_written": "Pool Room",
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "Afternoon Social | Pool Room"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Workshops in Kizomba"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Urban Kiz"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Semba"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Tarraxo"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "Douceur"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Konpa"
+    }
+   ]
+  }
+ ]
+}

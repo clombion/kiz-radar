@@ -1,0 +1,125 @@
+{
+ "batch": "event-16909",
+ "events": [
+  {
+   "event_id": 16909,
+   "artists": [
+    {
+     "name_as_written": "Tony & Carla",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💃🏽 Tony & Carla"
+    },
+    {
+     "name_as_written": "Stephane & Ana",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💃🏽 Stephane & Ana"
+    },
+    {
+     "name_as_written": "Seb & Sara",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💃🏽 Seb & Sara"
+    },
+    {
+     "name_as_written": "Dino Da Cruz",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💃🏽 Dino Da Cruz"
+    },
+    {
+     "name_as_written": "Jeanette & Maria",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💃🏽 Jeanette & Maria"
+    },
+    {
+     "name_as_written": "Esteban & Sandra",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💃🏽 Esteban & Sandra"
+    },
+    {
+     "name_as_written": "Carlos & Sandra",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💃🏽 Carlos & Sandra"
+    },
+    {
+     "name_as_written": "Fernando & Daniela",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💃🏽 Fernando & Daniela"
+    },
+    {
+     "name_as_written": "Carol & Ainhoa",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "💃🏽 Carol & Ainhoa"
+    },
+    {
+     "name_as_written": "DJ Linduka",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 DJ Linduka"
+    },
+    {
+     "name_as_written": "DJ Kikola",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 DJ Kikola"
+    },
+    {
+     "name_as_written": "DJ Akym",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 DJ Akym"
+    },
+    {
+     "name_as_written": "DJ Kazukuta",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 DJ Kazukuta"
+    },
+    {
+     "name_as_written": "DJ Mikelaine",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 DJ Mikelaine"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE – ALANNIA RESORTS GUARDAMAR",
+     "rationale": "The header states the event is all in one at the Alannia Resorts Guardamar hotel where dancers stay."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "When booking your Guardamar cabin, use the code KALUANDA26 to stay on the same street as the organization",
+     "rationale": "A booking code is given for the partner hotel, which is not part of the pass."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Get ready to learn, feel, and dance with artists and DJs who will elevate every moment of the festival",
+     "rationale": "Learning with the teaching artists indicates dance classes are part of the festival."
+    }
+   ]
+  }
+ ]
+}

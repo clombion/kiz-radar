@@ -1,0 +1,36 @@
+{
+ "batch": "event-14942",
+ "events": [
+  {
+   "event_id": 14942,
+   "party_rooms": {
+    "count": 3,
+    "quote": "3 x Dance Floor (Mambo/Salsa-Bachata-Kizomba)"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Mambo / Salsa Teachers"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Mambo",
+     "quote": "Mambo / Salsa Teachers"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata Teachers"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba Teachers"
+    }
+   ]
+  }
+ ]
+}

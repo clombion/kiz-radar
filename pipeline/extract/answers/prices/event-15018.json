@@ -1,6 +1,5 @@
 {
  "batch": "event-15018",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15018,
@@ -17,15 +16,14 @@
        "amount": 100,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "2025-09-30",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Full Pass – 100 Euro"
+       "quote": "• Full Pass – 100 Euro"
       }
      ]
     },
@@ -41,22 +39,19 @@
        "amount": 90,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "2025-09-30",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Party Pass -90 Euro"
+       "quote": "• Party Pass -90 Euro"
       }
      ]
     }
    ],
-   "rule_quotes": [
-    "The organizer reserves the right to change event prices and rules at any time without prior notice."
-   ]
+   "rule_quotes": []
   }
  ]
 }

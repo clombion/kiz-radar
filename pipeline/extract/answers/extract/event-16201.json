@@ -1,0 +1,44 @@
+{
+ "batch": "event-16201",
+ "events": [
+  {
+   "event_id": 16201,
+   "artists": [
+    {
+     "name_as_written": "Lee “El Gringuito Kat “La Gata”",
+     "role": "mc",
+     "style": null,
+     "country": null,
+     "source_line": "Lee “El Gringuito Kat “La Gata” & our Executive Board Present…"
+    }
+   ],
+   "features": [
+    {
+     "feature": "day_socials",
+     "quote": "Day Parties & classes daily!",
+     "rationale": "The text states that day parties are held daily, which are daytime socials."
+    },
+    {
+     "feature": "workshops",
+     "quote": "100+ Workshops!",
+     "rationale": "The festival advertises more than 100 workshops, which are dance classes."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Nightly Bachata, Salsa & Kizomba Concerts!",
+     "rationale": "Nightly concerts are advertised, which are live music."
+    },
+    {
+     "feature": "shows",
+     "quote": "200+ Performances!",
+     "rationale": "The festival advertises over 200 performances, which are shows by artists."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "7+ Ballrooms of Dancing Nightly",
+     "rationale": "Seven or more ballrooms are used for dancing, so there is more than one dance room."
+    }
+   ]
+  }
+ ]
+}

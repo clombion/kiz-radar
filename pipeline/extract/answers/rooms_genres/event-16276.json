@@ -1,0 +1,64 @@
+{
+ "batch": "event-16276",
+ "events": [
+  {
+   "event_id": 16276,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 free dance floors"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Urbankiz",
+     "kind": "unspecified",
+     "genres": [
+      "urbankiz"
+     ],
+     "quote": "(Urbankiz + Kizomba/Semba Room)"
+    },
+    {
+     "name_as_written": "Kizomba/Semba Room",
+     "kind": "unspecified",
+     "genres": [
+      "kizomba",
+      "semba"
+     ],
+     "quote": "Kizomba/Semba Room"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "UrbanKiz",
+     "quote": "UrbanKiz"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba/Semba Room"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba/Semba Room"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Konpa"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarracho",
+     "quote": "Tarracho"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "and Afro"
+    }
+   ]
+  }
+ ]
+}

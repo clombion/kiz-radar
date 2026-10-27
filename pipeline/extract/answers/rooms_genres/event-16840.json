@@ -1,0 +1,23 @@
+{
+ "batch": "event-16840",
+ "events": [
+  {
+   "event_id": 16840,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Prague Kizomba Festival"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "launched the Afro RAVE parties"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,39 @@
+{
+ "batch": "event-16768",
+ "events": [
+  {
+   "event_id": 16768,
+   "artists": [
+    {
+     "name_as_written": "Nasser Nassemba",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "– Nasser Nassemba ( +33767241705)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Workshops",
+     "rationale": "The event lists workshops as one of its offerings."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "préparties/surprises",
+     "rationale": "The FULLPASS includes pre-parties, so a pre-party is part of the event."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "hotel accomodation",
+     "rationale": "The FULLPASS package explicitly includes hotel accommodation."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "airport pick-up/drop-off",
+     "rationale": "The FULLPASS package includes airport pick-up and drop-off transfers."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{
+ "batch": "event-16708",
+ "events": [
+  {
+   "event_id": 16708,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "● Kizomba ● Semba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "● Kizomba ● Semba"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "● Urban Kiz ● Tarraxinha"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "● Urban Kiz ● Tarraxinha"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Cabo Love",
+     "quote": "● Cabo Love ● Ghetto zouk"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Ghetto zouk",
+     "quote": "● Cabo Love ● Ghetto zouk"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Zouk",
+     "quote": "● Zouk ● Konpa"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "● Zouk ● Konpa"
+    }
+   ]
+  }
+ ]
+}

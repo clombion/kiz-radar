@@ -1,0 +1,31 @@
+{
+ "batch": "event-15692",
+ "events": [
+  {
+   "event_id": 15692,
+   "party_rooms": {
+    "count": 3,
+    "quote": "Separate party rooms for 𝐁𝐀𝐂𝐇𝐀𝐓𝐀 | 𝐊𝐈𝐙𝐎𝐌𝐁𝐀 | 𝐒𝐀𝐋𝐒𝐀 till the morning!"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Giving respect and equal space to Bachata, Kizomba, and Salsa"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Giving respect and equal space to Bachata, Kizomba, and Salsa"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Giving respect and equal space to Bachata, Kizomba, and Salsa"
+    }
+   ]
+  }
+ ]
+}

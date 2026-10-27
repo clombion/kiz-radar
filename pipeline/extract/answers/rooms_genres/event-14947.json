@@ -1,0 +1,18 @@
+{
+ "batch": "event-14947",
+ "events": [
+  {
+   "event_id": 14947,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kiz",
+     "quote": "100% kiz festival"
+    }
+   ]
+  }
+ ]
+}

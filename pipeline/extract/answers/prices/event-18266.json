@@ -1,6 +1,5 @@
 {
  "batch": "event-18266",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18266,
@@ -17,8 +16,7 @@
        "amount": 75,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "08-31",
        "quantity": null,
@@ -31,8 +29,7 @@
        "amount": 100,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "09-01",
        "until": "11-30",
        "quantity": null,

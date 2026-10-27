@@ -1,0 +1,18 @@
+{
+ "batch": "event-18919",
+ "events": [
+  {
+   "event_id": 18919,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba Barcelona CONGRESS 2027 – 11ª Edición"
+    }
+   ]
+  }
+ ]
+}

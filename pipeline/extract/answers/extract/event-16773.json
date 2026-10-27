@@ -1,0 +1,72 @@
+{
+ "batch": "event-16773",
+ "events": [
+  {
+   "event_id": 16773,
+   "artists": [
+    {
+     "name_as_written": "Tomas Rei di Kizomba",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Tomas Rei di Kizomba"
+    },
+    {
+     "name_as_written": "Tony Pirata",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Tony Pirata"
+    },
+    {
+     "name_as_written": "Dr Kizomba",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Dr Kizomba"
+    },
+    {
+     "name_as_written": "Mayra & Code",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Mayra & Code"
+    },
+    {
+     "name_as_written": "DJ Cubano",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Cubano"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "International Kizomba, Semba and Tarraxo workshops",
+     "rationale": "The event lists international Kizomba, Semba and Tarraxo workshops as part of what awaits attendees."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Live music",
+     "rationale": "The 'What Awaits You' list explicitly includes live music."
+    },
+    {
+     "feature": "beach_party",
+     "quote": "Beach & Pool Party",
+     "rationale": "The list names a beach party combined with a pool party."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Beach & Pool Party",
+     "rationale": "The list names a pool party combined with a beach party."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Tarraxo Bootcamp",
+     "rationale": "A Tarraxo Bootcamp is offered as part of the programme."
+    }
+   ]
+  }
+ ]
+}

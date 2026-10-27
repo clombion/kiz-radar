@@ -1,0 +1,102 @@
+{
+ "batch": "event-16889",
+ "events": [
+  {
+   "event_id": 16889,
+   "artists": [
+    {
+     "name_as_written": "LOWELO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "LOWELO (Paris)"
+    },
+    {
+     "name_as_written": "ASH",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "ASH (Bordeaux)"
+    },
+    {
+     "name_as_written": "MOSKY",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "MOSKY (Barcelona)"
+    },
+    {
+     "name_as_written": "JP & RAMONA",
+     "role": "teacher",
+     "style": null,
+     "country": "SWITZERLAND",
+     "source_line": "JP & RAMONA (SWITZERLAND)"
+    },
+    {
+     "name_as_written": "STEVEN’S & AUDREY",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "STEVEN’S & AUDREY (PARIS)"
+    },
+    {
+     "name_as_written": "DAMIR",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "DAMIR (PARIS)"
+    },
+    {
+     "name_as_written": "AMADOU",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "AMADOU (BORDEAUX)"
+    },
+    {
+     "name_as_written": "FRANCISCO & MARY",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "FRANCISCO & MARY (BARCELONA)"
+    },
+    {
+     "name_as_written": "JOSE MUÑOZ",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "JOSE MUÑOZ (SANTANDER)"
+    },
+    {
+     "name_as_written": "PEPA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "PEPA (SAN SEBASTIAN)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "The entire event will take place at the HOTEL VENTA DE ETXALAR",
+     "rationale": "The whole event takes place in the hotel where dancers are invited to stay, so event and accommodation share one venue."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "RATES FOR 2 NIGHTS (FRIDAY TO SUNDAY)",
+     "rationale": "The hotel offers negotiated room rates for event guests, although accommodation is not part of the pass."
+    },
+    {
+     "feature": "workshops",
+     "quote": "6 PM – 8 PM Workshops",
+     "rationale": "The provisional program lists workshops as part of the event schedule."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "4 PM – 8 PM Social",
+     "rationale": "The program includes an afternoon social session on Saturday and Sunday."
+    }
+   ]
+  }
+ ]
+}

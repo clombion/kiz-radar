@@ -1,0 +1,139 @@
+{
+ "batch": "event-14858",
+ "events": [
+  {
+   "event_id": 14858,
+   "artists": [
+    {
+     "name_as_written": "Daisy",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Daisy"
+    },
+    {
+     "name_as_written": "Stre",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Stre"
+    },
+    {
+     "name_as_written": "Nadia",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Nadia"
+    },
+    {
+     "name_as_written": "Julie and Antoine",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Julie and Antoine"
+    },
+    {
+     "name_as_written": "Emy",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Emy"
+    },
+    {
+     "name_as_written": "Safir’s beats",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Safir’s beats"
+    },
+    {
+     "name_as_written": "Samysam beats",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Samysam beats"
+    },
+    {
+     "name_as_written": "DJ Diablo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Diablo"
+    },
+    {
+     "name_as_written": "Dedinho Beatts",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dedinho Beatts"
+    },
+    {
+     "name_as_written": "DJ Trew",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Trew"
+    },
+    {
+     "name_as_written": "DJ Sunky Kizmanie",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Sunky Kizmanie,"
+    },
+    {
+     "name_as_written": "DJ Obsidian Kizmanie",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Obsidian Kizmanie"
+    },
+    {
+     "name_as_written": "DjJay971",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DjJay971"
+    },
+    {
+     "name_as_written": "All for one",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "All for one"
+    },
+    {
+     "name_as_written": "Kizmanie Team",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "Kizmanie Team"
+    },
+    {
+     "name_as_written": "Stéphane Tavares",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Stéphane Tavares"
+    }
+   ],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "Room 1: Urban Kiz Tarraxo",
+     "rationale": "The festival lists two separate rooms, Room 1 and Room 2, with different dance styles."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "Taxi Team:",
+     "rationale": "A taxi team is listed, showing that taxi dancers are present."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Partner hotel: to be announced",
+     "rationale": "The description names a partner hotel, though it is not yet announced."
+    }
+   ]
+  }
+ ]
+}

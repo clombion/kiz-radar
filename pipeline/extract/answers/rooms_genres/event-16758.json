@@ -1,0 +1,97 @@
+{
+ "batch": "event-16758",
+ "events": [
+  {
+   "event_id": 16758,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 AMBIANCES"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "🅢🅐🅛🅛🅔【①】|Urban",
+     "kind": "party",
+     "genres": [
+      "urbankiz",
+      "tarraxinha",
+      "other",
+      "kizomba",
+      "semba",
+      "other",
+      "zouk"
+     ],
+     "quote": "● UrbanKiz ● Tarraxinha ● Softness ● Kizomba ● Semba"
+    },
+    {
+     "name_as_written": "🅢🅐🅛🅛🅔【②】",
+     "kind": "party",
+     "genres": [
+      "salsa",
+      "bachata",
+      "other",
+      "reggaeton"
+     ],
+     "quote": "🅢🅐🅛🅛🅔【②】|●Salsa ●Bachata ●Mérengué ●Reggaeton"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba takes center stage"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "●Salsa ●Bachata"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "sunny bachata"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "UrbanKiz",
+     "quote": "● UrbanKiz"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "● Tarraxinha"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Softness",
+     "quote": "● Softness"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "● Semba"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Cabo Love",
+     "quote": "● Cabo Love"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Ghetto zouk",
+     "quote": "●Ghetto zouk"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Mérengué",
+     "quote": "●Mérengué"
+    },
+    {
+     "genre": "reggaeton",
+     "genre_as_written": "Reggaeton",
+     "quote": "●Reggaeton"
+    }
+   ]
+  }
+ ]
+}

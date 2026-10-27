@@ -1,0 +1,33 @@
+{
+ "batch": "event-16600",
+ "events": [
+  {
+   "event_id": 16600,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "spinning Kizomba, Semba, Kuduro, Afro‑house, and more"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Dance workshops (Semba, Kizomba, Kuduro)"
+    },
+    {
+     "genre": "kuduro",
+     "genre_as_written": "Kuduro",
+     "quote": "Live Angolan music & DJ sets (Kizomba, Kuduro, Semba, Afro‑house)"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro‑house",
+     "quote": "spinning Kizomba, Semba, Kuduro, Afro‑house, and more"
+    }
+   ]
+  }
+ ]
+}

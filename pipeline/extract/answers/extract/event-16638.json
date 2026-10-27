@@ -1,0 +1,99 @@
+{
+ "batch": "event-16638",
+ "events": [
+  {
+   "event_id": 16638,
+   "artists": [
+    {
+     "name_as_written": "Albir & Natalia",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "UNIDOS is proud to present; Kizomba International super stars Albir & Natalia! Melbourne Kizomba Weekender."
+    },
+    {
+     "name_as_written": "Kudzi & Maddy",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Kudzi & Maddy (Sydney)"
+    },
+    {
+     "name_as_written": "Carlos & Amal",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Carlos & Amal (Melbourne)"
+    },
+    {
+     "name_as_written": "Lukas & Kimmy",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Lukas & Kimmy (Melbourne)"
+    },
+    {
+     "name_as_written": "Leonardo Quiroz",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Leonardo Quiroz (Melbourne)"
+    },
+    {
+     "name_as_written": "CUTXU",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "CUTXU"
+    },
+    {
+     "name_as_written": "AMA",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "AMA"
+    },
+    {
+     "name_as_written": "BERRIES",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "BERRIES"
+    },
+    {
+     "name_as_written": "LUKALOKO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "LUKALOKO"
+    },
+    {
+     "name_as_written": "VISSER",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "VISSER"
+    },
+    {
+     "name_as_written": "NONO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "NONO"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "2 full days of workshops",
+     "rationale": "The description states that the event includes two full days of workshops."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "2 x 1.5 hour masterclasses",
+     "rationale": "The description lists two masterclasses with Albir & Natalia as part of the event."
+    }
+   ]
+  }
+ ]
+}

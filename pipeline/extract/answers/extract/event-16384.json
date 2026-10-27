@@ -1,0 +1,36 @@
+{
+ "batch": "event-16384",
+ "events": [
+  {
+   "event_id": 16384,
+   "artists": [
+    {
+     "name_as_written": "Salsapills",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Salsapills presents its 5th annual “Summer SBK” party on July 3rd and 4th"
+    },
+    {
+     "name_as_written": "Srhphotographie",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Srhphotographie"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Workshops + SBK party",
+     "rationale": "The event schedule lists a Saturday workshop alongside the SBK party."
+    },
+    {
+     "feature": "shows",
+     "quote": "SHOW",
+     "rationale": "The program includes a SHOW segment, which is a show by artists."
+    }
+   ]
+  }
+ ]
+}

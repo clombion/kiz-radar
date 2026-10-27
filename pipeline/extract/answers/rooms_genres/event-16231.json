@@ -1,0 +1,48 @@
+{
+ "batch": "event-16231",
+ "events": [
+  {
+   "event_id": 16231,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urbankiz",
+     "quote": "Music and vibes from Urbankiz, Kizomba, Ghetto Zouk, Afro, Tarraxo, Konpa, Douceur, and more"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Music and vibes from Urbankiz, Kizomba, Ghetto Zouk, Afro, Tarraxo, Konpa, Douceur, and more"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Ghetto Zouk",
+     "quote": "Music and vibes from Urbankiz, Kizomba, Ghetto Zouk, Afro, Tarraxo, Konpa, Douceur, and more"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "Music and vibes from Urbankiz, Kizomba, Ghetto Zouk, Afro, Tarraxo, Konpa, Douceur, and more"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Music and vibes from Urbankiz, Kizomba, Ghetto Zouk, Afro, Tarraxo, Konpa, Douceur, and more"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Music and vibes from Urbankiz, Kizomba, Ghetto Zouk, Afro, Tarraxo, Konpa, Douceur, and more"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "Music and vibes from Urbankiz, Kizomba, Ghetto Zouk, Afro, Tarraxo, Konpa, Douceur, and more"
+    }
+   ]
+  }
+ ]
+}

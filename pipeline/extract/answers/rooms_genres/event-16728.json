@@ -1,0 +1,33 @@
+{
+ "batch": "event-16728",
+ "events": [
+  {
+   "event_id": 16728,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "celebrates the roots of Kizomba, Semba, and Kuduro"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "celebrates the roots of Kizomba, Semba, and Kuduro"
+    },
+    {
+     "genre": "kuduro",
+     "genre_as_written": "Kuduro",
+     "quote": "celebrates the roots of Kizomba, Semba, and Kuduro"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro House",
+     "quote": "Dance Styles: Kizomba, Semba, Kuduro, Afro House"
+    }
+   ]
+  }
+ ]
+}

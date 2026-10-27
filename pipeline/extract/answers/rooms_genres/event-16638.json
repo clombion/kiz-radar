@@ -1,0 +1,23 @@
+{
+ "batch": "event-16638",
+ "events": [
+  {
+   "event_id": 16638,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba International super stars"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Kizomba fusion",
+     "quote": "Pioneer of Kizomba fusion"
+    }
+   ]
+  }
+ ]
+}

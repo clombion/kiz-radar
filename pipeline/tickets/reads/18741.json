@@ -1,0 +1,55 @@
+{
+ "event_id": 18741,
+ "title": "Konpa 2 Kizomba Festival",
+ "start_date": "2026-11-06",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "cb864655c7075f56",
+ "rows_at": "2026-10-27T02:26:31+00:00",
+ "styles": [
+  "kizomba",
+  "other"
+ ],
+ "description": "🔥 K2K (Konpa 2 Kizomba) Festival 2027 🔥\nTwo Cultures, One Love.\nGet ready for an unforgettable weekend where Konpa meets Kizomba and cultures come together through music, dance, and connection!\n✨ WHAT TO EXPECT\n💃🏽 Workshops: Konpa, Kizomba, Semba, Afrobeats, Gouyad & more\n🔥 Pre-Party + 3 Official Party Nights — dancing until 6 AM\n🎓 Konpa • Kizomba • Semba Bootcamps\n🎶 Incredible DJs, instructors, artists & cultural experiences\n🏨 HOST HOTEL\nSonesta at Gwinnett Place LINK ⤵️\nhttps://be.synxis.com/?adult=1&arrive=2027-02-11…\n🎟️ TICKETS & PAYMENT\nGrab your pass now and don’t miss out!\n💸 Save on fees with CashApp: $k2katl\n➡️ Please include your full name and email address in the payment note.\n⚠️ ALL SALES ARE FINAL\n📲 STAY CONNECTED\nFollow our Facebook & Instagram Event Page for announcements, updates & everything K2K 2027.\n💃🏽🕺🏽 Join the movement. Celebrate the culture. Dance the night away.\nK2K is more than a festival—it’s an all-in-one cultural experience!\nTwo Cultures. One Love. One Unforgettable Experience.",
+ "passes": [
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "3420737055"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "3420737054"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [],
+ "rule_quotes": []
+}

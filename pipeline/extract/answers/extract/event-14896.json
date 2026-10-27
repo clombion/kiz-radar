@@ -1,0 +1,83 @@
+{
+ "batch": "event-14896",
+ "events": [
+  {
+   "event_id": 14896,
+   "artists": [
+    {
+     "name_as_written": "JAMAICA NEGRO",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "💎JAMAICA NEGRO🇦🇴"
+    },
+    {
+     "name_as_written": "ARY & MAURA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "💎ARY & MAURA🇦🇴"
+    },
+    {
+     "name_as_written": "EMANUEL & TERESA FREITAS",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "💎EMANUEL & TERESA FREITAS🇦🇴"
+    },
+    {
+     "name_as_written": "PAULO SELELE",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "💎PAULO SELELE🇦🇴"
+    },
+    {
+     "name_as_written": "A. CELMO & ELIZABETH TAYLOR",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "💎A. CELMO & ELIZABETH TAYLOR🇦🇴"
+    },
+    {
+     "name_as_written": "DJ. BAKONGO",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "💎 DJ. BAKONGO🇦🇴"
+    },
+    {
+     "name_as_written": "DJ. ELYDIO",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "💎 DJ. ELYDIO🇦🇴"
+    },
+    {
+     "name_as_written": "DJ. YHA",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "💎 DJ. YHA🇦🇴"
+    }
+   ],
+   "features": [
+    {
+     "feature": "day_socials",
+     "quote": "3-DAY SOCIALS (INCLUDING our Kizomba na Rua)",
+     "rationale": "The full pass includes three days of socials, which are daytime dance sessions."
+    },
+    {
+     "feature": "workshops",
+     "quote": "WORKSHOPS",
+     "rationale": "The full pass includes workshops, which are dance classes."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "WE HAVE A SPECIAL ROOM-RATE AT THE VENUE FOR FULLPASS HOLDERS",
+     "rationale": "The venue negotiates a special room rate for pass holders, but accommodation is not stated as part of the pass."
+    }
+   ]
+  }
+ ]
+}

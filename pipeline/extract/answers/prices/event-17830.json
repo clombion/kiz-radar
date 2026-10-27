@@ -1,6 +1,5 @@
 {
  "batch": "event-17830",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17830,
@@ -17,8 +16,10 @@
        "amount": 1800,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": 45000,
-       "alt_currency": "CZK",
+       "alt": {
+        "amount": 45000,
+        "currency": "CZK"
+       },
        "from": null,
        "until": null,
        "quantity": null,

@@ -1,0 +1,39 @@
+{
+ "batch": "event-16693",
+ "events": [
+  {
+   "event_id": 16693,
+   "artists": [
+    {
+     "name_as_written": "TNT- The New Touch",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "▷ Facebook Page: TNT- The New Touch"
+    }
+   ],
+   "features": [
+    {
+     "feature": "accommodation_included",
+     "quote": "✔️ On-site accommodation",
+     "rationale": "The All Inclusive Package listed alongside the Full Pass includes on-site accommodation."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Half-board included",
+     "rationale": "The package description states that half-board is included."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "everything is in one place",
+     "rationale": "The event and on-site accommodation are presented together in one venue, matching the all-in-one title."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Kizomba & Afro workshops with professional couples",
+     "rationale": "The package explicitly includes dance workshops taught by professional couples."
+    }
+   ]
+  }
+ ]
+}

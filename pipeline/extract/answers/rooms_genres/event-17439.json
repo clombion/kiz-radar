@@ -1,0 +1,38 @@
+{
+ "batch": "event-17439",
+ "events": [
+  {
+   "event_id": 17439,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba-Semba-Getho Zouk- Antilhas- Coladeira"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba-Semba-Getho Zouk- Antilhas- Coladeira"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Getho Zouk",
+     "quote": "Kizomba-Semba-Getho Zouk- Antilhas- Coladeira"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Antilhas",
+     "quote": "Kizomba-Semba-Getho Zouk- Antilhas- Coladeira"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Coladeira",
+     "quote": "Kizomba-Semba-Getho Zouk- Antilhas- Coladeira"
+    }
+   ]
+  }
+ ]
+}

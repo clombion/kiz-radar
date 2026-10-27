@@ -1,0 +1,38 @@
+{
+ "batch": "event-18311",
+ "events": [
+  {
+   "event_id": 18311,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "NEVERENDING KIZOMBA FESTIVAL"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba/Semba"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "(Urban Kiz)"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Urban Kiz / Tarraxo"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "Afro / Kizomba Fusion"
+    }
+   ]
+  }
+ ]
+}

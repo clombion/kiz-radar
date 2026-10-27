@@ -1,0 +1,111 @@
+{
+ "batch": "event-16543",
+ "events": [
+  {
+   "event_id": 16543,
+   "artists": [
+    {
+     "name_as_written": "Eddy Vents",
+     "role": "teacher",
+     "style": null,
+     "country": "🇬🇳",
+     "source_line": "Eddy Vents 🇬🇳"
+    },
+    {
+     "name_as_written": "Sebastien Azaïs",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "Sebastien Azaïs 🇫🇷"
+    },
+    {
+     "name_as_written": "Ana-Maria Stoica",
+     "role": "teacher",
+     "style": null,
+     "country": "🇷🇴",
+     "source_line": "Ana-Maria Stoica 🇷🇴"
+    },
+    {
+     "name_as_written": "Jasna",
+     "role": "teacher",
+     "style": null,
+     "country": "🇷🇸",
+     "source_line": "Jasna 🇷🇸"
+    },
+    {
+     "name_as_written": "Mik’iz",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "Mik’iz 🇫🇷"
+    },
+    {
+     "name_as_written": "Franet",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "Franet 🇦🇴"
+    },
+    {
+     "name_as_written": "David Ruach",
+     "role": "teacher",
+     "style": null,
+     "country": "🇿🇦",
+     "source_line": "David Ruach 🇿🇦"
+    },
+    {
+     "name_as_written": "Maria",
+     "role": "teacher",
+     "style": null,
+     "country": "🇷🇴",
+     "source_line": "Maria 🇷🇴"
+    },
+    {
+     "name_as_written": "Dj Retrocesso",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "Dj Retrocesso 🇫🇷"
+    },
+    {
+     "name_as_written": "Mexe",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "Mexe 🇫🇷"
+    },
+    {
+     "name_as_written": "Dj Jozsi",
+     "role": "dj",
+     "style": null,
+     "country": "🇷🇴",
+     "source_line": "Dj Jozsi 🇷🇴"
+    },
+    {
+     "name_as_written": "Dj A.Dela",
+     "role": "dj",
+     "style": null,
+     "country": "🇷🇴",
+     "source_line": "Dj A.Dela 🇷🇴"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Workshops + Parties",
+     "rationale": "The full pass explicitly includes workshops alongside the parties."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Workshop with David Ruach",
+     "rationale": "A scheduled workshop taught by David Ruach is part of the programme."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "SATURDAY: 2 different rooms:",
+     "rationale": "The description states that Saturday has two different dance rooms."
+    }
+   ]
+  }
+ ]
+}

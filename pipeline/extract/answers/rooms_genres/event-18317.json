@@ -1,0 +1,77 @@
+{
+ "batch": "event-18317",
+ "events": [
+  {
+   "event_id": 18317,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "One Room",
+     "kind": "party",
+     "genres": [
+      "urbankiz"
+     ],
+     "quote": "One Room • Unlimited Vibes"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "semba",
+      "other"
+     ],
+     "quote": "BACK TO THE ROOTS"
+    },
+    {
+     "name_as_written": "ROOM #bachata – #salsa – #konpa",
+     "kind": "party",
+     "genres": [
+      "bachata",
+      "salsa",
+      "kompa"
+     ],
+     "quote": "ROOM #bachata – #salsa – #konpa"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "WHERE KIZOMBA COMES HOME."
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBANKIZ",
+     "quote": "URBANKIZ × OPEN FORMAT"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "konpa",
+     "quote": "#konpa"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "bachata",
+     "quote": "#bachata"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "salsa",
+     "quote": "#salsa"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba • Semba • Ginga • African Vibes"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Ginga",
+     "quote": "Ginga"
+    }
+   ]
+  }
+ ]
+}

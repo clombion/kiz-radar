@@ -1,0 +1,21 @@
+{
+ "batch": "event-18222",
+ "events": [
+  {
+   "event_id": 18222,
+   "party_rooms": {
+    "count": 4,
+    "quote": "4 social parties"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "the sensuality of kizomba"
+    }
+   ]
+  }
+ ]
+}

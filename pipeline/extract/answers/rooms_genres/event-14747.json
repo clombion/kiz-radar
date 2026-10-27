@@ -1,0 +1,28 @@
+{
+ "batch": "event-14747",
+ "events": [
+  {
+   "event_id": 14747,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba, Salsa, and Bachata Festival"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Kizomba, Salsa, and Bachata Festival"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Kizomba, Salsa, and Bachata Festival"
+    }
+   ]
+  }
+ ]
+}

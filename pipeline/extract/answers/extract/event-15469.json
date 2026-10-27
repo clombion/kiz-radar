@@ -1,0 +1,94 @@
+{
+ "batch": "event-15469",
+ "events": [
+  {
+   "event_id": 15469,
+   "artists": [
+    {
+     "name_as_written": "Liliana de Lima",
+     "role": "teacher",
+     "style": null,
+     "country": "Brazil/Denmark",
+     "source_line": "🇧🇷🇩🇰 Liliana de Lima (Brazil/Denmark) – Tarraxo specialist bringing precision and sensuality from the source"
+    },
+    {
+     "name_as_written": "Dawou",
+     "role": "teacher",
+     "style": null,
+     "country": "France",
+     "source_line": "🇫🇷 Dawou (France) – Master of musicality and body mechanics"
+    },
+    {
+     "name_as_written": "Juli",
+     "role": "teacher",
+     "style": null,
+     "country": "Germany",
+     "source_line": "🇩🇪 Juli (Germany) & 🇦🇹 Felix (Austria) – Technical excellence in leading and following"
+    },
+    {
+     "name_as_written": "Felix",
+     "role": "teacher",
+     "style": null,
+     "country": "Austria",
+     "source_line": "🇩🇪 Juli (Germany) & 🇦🇹 Felix (Austria) – Technical excellence in leading and following"
+    },
+    {
+     "name_as_written": "Gülşah & Thierry",
+     "role": "teacher",
+     "style": null,
+     "country": "Netherlands",
+     "source_line": "🇳🇱 Gülşah & Thierry (Netherlands) – Deep connection work and grounded movement"
+    },
+    {
+     "name_as_written": "Yulia",
+     "role": "teacher",
+     "style": null,
+     "country": "Ukraine",
+     "source_line": "🇺🇦 Yulia (Ukraine) & 🇳🇱 Fayyaz (Netherlands) – Structural breakdown and analytical movement specialists"
+    },
+    {
+     "name_as_written": "Fayyaz",
+     "role": "teacher",
+     "style": null,
+     "country": "Netherlands",
+     "source_line": "🇺🇦 Yulia (Ukraine) & 🇳🇱 Fayyaz (Netherlands) – Structural breakdown and analytical movement specialists"
+    },
+    {
+     "name_as_written": "TrayBeatz",
+     "role": "dj",
+     "style": null,
+     "country": "🇳🇱",
+     "source_line": "🇳🇱 TrayBeatz – Producer and music engineer crafting urban soundscapes"
+    },
+    {
+     "name_as_written": "Rene Amplo",
+     "role": "dj",
+     "style": null,
+     "country": "🇳🇱",
+     "source_line": "🇳🇱 Rene Amplo – Soulful storyteller weaving emotion into every set"
+    },
+    {
+     "name_as_written": "DJ Rara",
+     "role": "dj",
+     "style": null,
+     "country": "🇺🇦🇪🇸",
+     "source_line": "🇺🇦🇪🇸 DJ Rara – Tarraxo beats specialist from Ukraine/Spain"
+    },
+    {
+     "name_as_written": "DJ RomOz",
+     "role": "dj",
+     "style": null,
+     "country": "🇩🇪",
+     "source_line": "🇩🇪 DJ RomOz – German precision meets Tarraxo energy"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "High-level workshops focused on technique, structure, and creative expression",
+     "rationale": "The description states that high-level workshops are part of the weekender."
+    }
+   ]
+  }
+ ]
+}

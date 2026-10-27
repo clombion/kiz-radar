@@ -1,6 +1,5 @@
 {
  "batch": "event-15908",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15908,
@@ -17,15 +16,14 @@
        "amount": 269,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "2 Nights €269"
+       "quote": "QUADRUPLE ROOM: 2 Nights €269 | 3 Nights €349"
       }
      ]
     },
@@ -41,15 +39,14 @@
        "amount": 349,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "3 Nights €349"
+       "quote": "QUADRUPLE ROOM: 2 Nights €269 | 3 Nights €349"
       }
      ]
     },
@@ -65,15 +62,14 @@
        "amount": 279,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "2 Nights €279"
+       "quote": "TRIPLE ROOM: 2 Nights €279 | 3 Nights €359"
       }
      ]
     },
@@ -89,15 +85,14 @@
        "amount": 359,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "3 Nights €359"
+       "quote": "TRIPLE ROOM: 2 Nights €279 | 3 Nights €359"
       }
      ]
     },
@@ -113,15 +108,14 @@
        "amount": 299,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "2 Nights €299"
+       "quote": "DOUBLE ROOM: 2 Nights €299 | 3 Nights €379"
       }
      ]
     },
@@ -137,15 +131,14 @@
        "amount": 379,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "3 Nights €379"
+       "quote": "DOUBLE ROOM: 2 Nights €299 | 3 Nights €379"
       }
      ]
     },
@@ -161,15 +154,14 @@
        "amount": 359,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "2 Nights €359"
+       "quote": "SINGLE ROOM: 2 Nights €359 | 3 Nights €469"
       }
      ]
     },
@@ -185,15 +177,14 @@
        "amount": 469,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "3 Nights €469"
+       "quote": "SINGLE ROOM: 2 Nights €359 | 3 Nights €469"
       }
      ]
     },
@@ -209,15 +200,14 @@
        "amount": 289,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "2 Nights €289"
+       "quote": "SEA-VIEW QUADRUPLE ROOM: 2 Nights €289 | 3 Nights €369"
       }
      ]
     },
@@ -233,15 +223,14 @@
        "amount": 369,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "3 Nights €369"
+       "quote": "SEA-VIEW QUADRUPLE ROOM: 2 Nights €289 | 3 Nights €369"
       }
      ]
     },
@@ -257,15 +246,14 @@
        "amount": 299,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "2 Nights €299"
+       "quote": "SEA-VIEW TRIPLE ROOM: 2 Nights €299 | 3 Nights €379"
       }
      ]
     },
@@ -281,15 +269,14 @@
        "amount": 379,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "3 Nights €379"
+       "quote": "SEA-VIEW TRIPLE ROOM: 2 Nights €299 | 3 Nights €379"
       }
      ]
     },
@@ -305,15 +292,14 @@
        "amount": 319,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "2 Nights €319"
+       "quote": "SEA-VIEW DOUBLE ROOM: 2 Nights €319 | 3 Nights €399"
       }
      ]
     },
@@ -329,15 +315,14 @@
        "amount": 399,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "3 Nights €399"
+       "quote": "SEA-VIEW DOUBLE ROOM: 2 Nights €319 | 3 Nights €399"
       }
      ]
     },
@@ -353,15 +338,14 @@
        "amount": 379,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "2 Nights €379"
+       "quote": "SEA-VIEW SINGLE ROOM: 2 Nights €379 | 3 Nights €489"
       }
      ]
     },
@@ -377,15 +361,14 @@
        "amount": 489,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "3 Nights €489"
+       "quote": "SEA-VIEW SINGLE ROOM: 2 Nights €379 | 3 Nights €489"
       }
      ]
     },
@@ -401,22 +384,20 @@
        "amount": 40,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "➕ MASTERPASS: €40"
+       "quote": "MASTERPASS: €40"
       }
      ]
     }
    ],
    "rule_quotes": [
-    "PRICES WILL RISE ON FEBRUARY 16TH",
-    "NO PASSES WILL BE SOLD AT THE ENTRANCE."
+    "PRICES WILL RISE ON FEBRUARY 16TH"
    ]
   }
  ]

@@ -1,0 +1,19 @@
+{
+ "batch": "event-16518",
+ "events": [
+  {
+   "event_id": 16518,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Dark Room",
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "Dark Room"
+    }
+   ],
+   "genres": []
+  }
+ ]
+}

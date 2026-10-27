@@ -1,0 +1,161 @@
+{
+ "batch": "event-17122",
+ "events": [
+  {
+   "event_id": 17122,
+   "artists": [
+    {
+     "name_as_written": "PAMELA K",
+     "role": "performer",
+     "style": "Konpa/Zouk",
+     "country": "🇫🇷",
+     "source_line": "✔️ PAMELA K — Live Konpa/Zouk 🇫🇷"
+    },
+    {
+     "name_as_written": "Ronie Saleh",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": "🇸🇪",
+     "source_line": "✔️ Ronie Saleh — Urbankiz 🇸🇪"
+    },
+    {
+     "name_as_written": "Frida Ellinor",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": "🇸🇪",
+     "source_line": "✔️ Frida Ellinor — Urbankiz 🇸🇪"
+    },
+    {
+     "name_as_written": "Kiki Elsilensio",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": "🇹🇬",
+     "source_line": "✔️ Kiki Elsilensio — Kizomba 🇹🇬"
+    },
+    {
+     "name_as_written": "Lauren Elsilensio",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": "🇺🇸",
+     "source_line": "✔️ Lauren Elsilensio — Kizomba 🇺🇸"
+    },
+    {
+     "name_as_written": "Butterly",
+     "role": "teacher",
+     "style": "Konpa",
+     "country": "🇭🇹",
+     "source_line": "✔️ Butterly — Konpa 🇭🇹"
+    },
+    {
+     "name_as_written": "Jonay",
+     "role": "teacher",
+     "style": "Afro-Amapiano",
+     "country": "🇺🇸",
+     "source_line": "✔️ Jonay — Afro-Amapiano 🇺🇸"
+    },
+    {
+     "name_as_written": "NII",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": "🇬🇭",
+     "source_line": "✔️ NII — Urbankiz 🇬🇭"
+    },
+    {
+     "name_as_written": "Annie",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": "🇺🇸",
+     "source_line": "✔️ Annie — Urbankiz 🇺🇸"
+    },
+    {
+     "name_as_written": "Prajolita",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": "🇳🇵",
+     "source_line": "✔️ Prajolita — Urbankiz 🇳🇵"
+    },
+    {
+     "name_as_written": "DJ Mojo",
+     "role": "dj",
+     "style": null,
+     "country": "🇲🇶",
+     "source_line": "✔️ DJ Mojo 🇲🇶 | DJ Afrodeshiak 🇺🇸 | DJ Jair 🇨🇻 | DJ Shams 🇸🇳 | DJ Profe 🇺🇸 | DJ Matt 🇸🇳 | DJ Oz 🇲🇽"
+    },
+    {
+     "name_as_written": "DJ Afrodeshiak",
+     "role": "dj",
+     "style": null,
+     "country": "🇺🇸",
+     "source_line": "✔️ DJ Mojo 🇲🇶 | DJ Afrodeshiak 🇺🇸 | DJ Jair 🇨🇻 | DJ Shams 🇸🇳 | DJ Profe 🇺🇸 | DJ Matt 🇸🇳 | DJ Oz 🇲🇽"
+    },
+    {
+     "name_as_written": "DJ Jair",
+     "role": "dj",
+     "style": null,
+     "country": "🇨🇻",
+     "source_line": "✔️ DJ Mojo 🇲🇶 | DJ Afrodeshiak 🇺🇸 | DJ Jair 🇨🇻 | DJ Shams 🇸🇳 | DJ Profe 🇺🇸 | DJ Matt 🇸🇳 | DJ Oz 🇲🇽"
+    },
+    {
+     "name_as_written": "DJ Shams",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇳",
+     "source_line": "✔️ DJ Mojo 🇲🇶 | DJ Afrodeshiak 🇺🇸 | DJ Jair 🇨🇻 | DJ Shams 🇸🇳 | DJ Profe 🇺🇸 | DJ Matt 🇸🇳 | DJ Oz 🇲🇽"
+    },
+    {
+     "name_as_written": "DJ Profe",
+     "role": "dj",
+     "style": null,
+     "country": "🇺🇸",
+     "source_line": "✔️ DJ Mojo 🇲🇶 | DJ Afrodeshiak 🇺🇸 | DJ Jair 🇨🇻 | DJ Shams 🇸🇳 | DJ Profe 🇺🇸 | DJ Matt 🇸🇳 | DJ Oz 🇲🇽"
+    },
+    {
+     "name_as_written": "DJ Matt",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇳",
+     "source_line": "✔️ DJ Mojo 🇲🇶 | DJ Afrodeshiak 🇺🇸 | DJ Jair 🇨🇻 | DJ Shams 🇸🇳 | DJ Profe 🇺🇸 | DJ Matt 🇸🇳 | DJ Oz 🇲🇽"
+    },
+    {
+     "name_as_written": "DJ Oz",
+     "role": "dj",
+     "style": null,
+     "country": "🇲🇽",
+     "source_line": "✔️ DJ Mojo 🇲🇶 | DJ Afrodeshiak 🇺🇸 | DJ Jair 🇨🇻 | DJ Shams 🇸🇳 | DJ Profe 🇺🇸 | DJ Matt 🇸🇳 | DJ Oz 🇲🇽"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Dance Workshops with top instructors",
+     "rationale": "The event offers dance workshops taught by instructors."
+    },
+    {
+     "feature": "shows",
+     "quote": "Live Performances by renowned global artists",
+     "rationale": "The event includes performances by artists."
+    },
+    {
+     "feature": "live_music",
+     "quote": "PAMELA K — Live Konpa/Zouk",
+     "rationale": "A singer performs live at the Friday night show."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "Theme Dance Socials",
+     "rationale": "Themed dance socials are offered as parties."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 separate ROOMS of entertainment",
+     "rationale": "The socials take place in two separate rooms."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Hotel: Courtyard by Marriott",
+     "rationale": "A named hotel is listed for guests, not as part of a pass."
+    }
+   ]
+  }
+ ]
+}

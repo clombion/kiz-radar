@@ -1,0 +1,74 @@
+{
+ "batch": "event-14594",
+ "events": [
+  {
+   "event_id": 14594,
+   "party_rooms": {
+    "count": 4,
+    "quote": "Party in 4 Rooms until 3am (officially)"
+   },
+   "class_rooms": {
+    "count": 6,
+    "quote": "Workshops in 6 Areas"
+   },
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa | Cuban | Bachata | Kizomba"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Cuban",
+     "quote": "Salsa | Cuban | Bachata | Kizomba"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "BACHATA (will be Updates soon)"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "KIZOMBA / SEMBA / URBAN KIZ"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "SEMBA",
+     "quote": "KIZOMBA / SEMBA / URBAN KIZ"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBAN KIZ",
+     "quote": "KIZOMBA / SEMBA / URBAN KIZ"
+    },
+    {
+     "genre": "reggaeton",
+     "genre_as_written": "REGGAETON",
+     "quote": "REGGAETON / HIPHOP / URBAN / AFROBEAT / AFROHOUSE OTHER STYLES"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "SALSA on1, on2, Cuban, Afro & more"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "HIPHOP",
+     "quote": "REGGAETON / HIPHOP / URBAN / AFROBEAT / AFROHOUSE OTHER STYLES"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Lyrical",
+     "quote": "reggaeton, HipHop, Lyrical"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Break Dance",
+     "quote": "Break Dance"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "batch": "event-15292",
+ "events": [
+  {
+   "event_id": 15292,
+   "artists": [],
+   "features": [
+    {
+     "feature": "accommodation_included",
+     "quote": "Package of Full Pass & Accomodation & FREE OPEN NIGHT BAR:",
+     "rationale": "The package explicitly combines the full pass with accommodation."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Excellent workshops in 5 halls",
+     "rationale": "The description advertises workshops as part of the event."
+    },
+    {
+     "feature": "shows",
+     "quote": "spectacular shows",
+     "rationale": "The description promises spectacular shows at the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Afternoon Parties",
+     "rationale": "Afternoon parties are listed as part of the programme."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Excellent workshops in 5 halls",
+     "rationale": "Workshops and parties take place in five halls, so there is more than one dance room."
+    },
+    {
+     "feature": "competition",
+     "quote": "Exciting COMPETITION: Rueda, LA, NY, man & lady solo, kids;",
+     "rationale": "The event includes competitions in several categories."
+    }
+   ]
+  }
+ ]
+}

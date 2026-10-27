@@ -1,0 +1,98 @@
+{
+ "batch": "event-16044",
+ "events": [
+  {
+   "event_id": 16044,
+   "party_rooms": {
+    "count": 2,
+    "quote": "There will be 2 rooms, 2 DJs, 2 vibes"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "afro",
+      "other",
+      "reggaeton"
+     ],
+     "quote": "A special room for Afro/Dancehall/Heels/Reggaeton"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "bachata",
+      "salsa",
+      "kompa"
+     ],
+     "quote": "A room for Kizomba (60%), Bachata, Salsa, Konpa"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "With Afro dancehall and hip hop entertainment"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba, Afro, Dancehall, Reggaeton vibes"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "bachata",
+     "quote": "with a touch of salsa and bachata"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "salsa",
+     "quote": "with a touch of salsa and bachata"
+    },
+    {
+     "genre": "reggaeton",
+     "genre_as_written": "Reggaeton",
+     "quote": "Kizomba, Afro, Dancehall, Reggaeton vibes"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Dancehall",
+     "quote": "Kizomba, Afro, Dancehall, Reggaeton vibes"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Heels",
+     "quote": "Dancehall Heels"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "hip hop",
+     "quote": "With Afro dancehall and hip hop entertainment"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urbankiz",
+     "quote": "Kizomba Urbankiz Semba Kompa"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba Urbankiz Semba Kompa"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "konpa",
+     "quote": "With konpa, reggaeton, and salsa entertainment"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Tarraxo"
+    }
+   ]
+  }
+ ]
+}

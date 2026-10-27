@@ -1,0 +1,118 @@
+{
+ "batch": "event-14916",
+ "events": [
+  {
+   "event_id": 14916,
+   "party_rooms": {
+    "count": 5,
+    "quote": "Lose yourself across our 5 distinct party rooms"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Room 1",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "semba"
+     ],
+     "quote": "Room 1: Kizomba and Semba"
+    },
+    {
+     "name_as_written": "Room 2",
+     "kind": "party",
+     "genres": [
+      "urbankiz",
+      "tarraxo"
+     ],
+     "quote": "Room 2: UrbanKiz and Tarraxo"
+    },
+    {
+     "name_as_written": "Room 3",
+     "kind": "party",
+     "genres": [
+      "kompa",
+      "other",
+      "douceur",
+      "zouk",
+      "tarraxinha"
+     ],
+     "quote": "Room 3: Konpa, Gouyad, Douceur, ZoukLove, Tarraxinha"
+    },
+    {
+     "name_as_written": "Room 4",
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "Room 4: Salsa"
+    },
+    {
+     "name_as_written": "Room 5",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "Room 5: Bachata"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Improve your Kizomba skills"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba and Semba"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "UrbanKiz",
+     "quote": "UrbanKiz and Tarraxo"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "UrbanKiz and Tarraxo"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Konpa, Gouyad"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Gouyad",
+     "quote": "Konpa, Gouyad"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "Douceur, ZoukLove"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "ZoukLove",
+     "quote": "ZoukLove, Tarraxinha"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "ZoukLove, Tarraxinha"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Room 4: Salsa"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Room 5: Bachata"
+    }
+   ]
+  }
+ ]
+}

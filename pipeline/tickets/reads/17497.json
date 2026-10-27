@@ -1,0 +1,143 @@
+{
+ "event_id": 17497,
+ "title": "HER FREQUENCY – URBANKIZ, KIZOMBA, KONPA, AFRO WEEKENDER",
+ "start_date": "2026-11-27",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "cb864655c7075f56",
+ "rows_at": "2026-10-27T02:00:29+00:00",
+ "styles": [
+  "kizomba",
+  "other"
+ ],
+ "description": "Her Frequency Weekender is a carefully curated dance experience created for those who value depth, quality, and artistic substance.\nBringing together exceptional artists in Urban Kiz, Kizomba, Konpa, and Afro, this special edition is built around one clear intention: to offer a weekend where teaching quality, musical understanding, social dance excellence, and artistic individuality take center stage.\nThis is not a styling-focused concept and not a symbolic format built around labels alone. It is a complete weekender, open to all dancers and all roles, with a consciously selected line-up of teachers and DJs to show case the strong female artistry we have in the Urbankiz-Kizomba-Konpa-Afro Community. The result is a weekend shaped by distinct artistic perspectives, strong pedagogical quality, and a refined atmosphere both in class and on the dance floor.\nAcross the weekend, guests can expect a thoughtfully balanced program: a welcoming Friday evening with focused workshops and an opening party, a rich and high-level Saturday with parallel workshops, private class opportunities, a dedicated social space, and a premium masterclass, followed by a relaxed Sunday closing social designed to let the weekend settle in the most beautiful way.\nThe artistic direction of Her Frequency Weekender is rooted in quality over quantity. Each class is chosen to offer real value: clearer technique, deeper musicality, stronger connection, greater body awareness, and more confidence in social dancing. Rather than overwhelming participants with excess, the weekend is designed to create space for learning, embodiment, exchange, and enjoyment.\nA particular highlight of this edition is the exclusive masterclass:\nThe Urban Kiz Masterclass by Adeline Suédois is created to explore the role switching options of leaders and followers, how to lead and follow in an equal manner .\nThe masterclasse is conceived as premium learning experience beyond the regular workshop format.\nPlease note:\nThe masterclass is not included in the Full Pass and requires separate booking.\nWhether you come to refine your dance, immerse yourself in inspiring social energy, connect with outstanding artists, or simply enjoy a beautifully curated weekend in Munich, Her Frequency Weekender offers an experience designed with intention, elegance, and artistic integrity.\nWhat to expect\n*a premium weekend experience in Munich\n*high-level teaching with a strong focus on quality\n*selected female teachers and DJs\n*Urban Kiz, Kizomba, Konpa, and Afro\n*a dedicated social space throughout the event\n*private class opportunities\n* exclusive premium masterclass (not included in full pass)\n*Friday Opening Party\n*Saturday Main Party\n*Sunday Closing Social and Workshops\n**Artist Line-up**\nInna (Munich)\nAgnes (Stockholm)\nSim Kiz (Heilbronn)\nAdeline Suédois (Paris)\nClaudia (Munich)\nIva (Munich)\n**DJ Line-up**\nDJ Dany (Prague)\nDJ Nipz (Oslo)\nTicket Information\nTickets are available in Leader, Follower, and Hybrid versions for each pass category.\nTo support a balanced learning and social experience throughout the weekend, ticket availability may be adjusted depending on role distribution.\nPlease note:\nThe Urban Kiz Masterclass by Adeline Suédois is not included in the Full Pass and must be booked separately.\nYou will join the Festival? Then feel free to use our Frame:\nhttps://twb.nz/herfrequency",
+ "passes": [
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "512aec7b-5631-44cf-afd7-06af5fcf07ed",
+      "9a601848-87e9-4b95-a3ff-c2f58f0e9433",
+      "7054c083-dfe6-47d0-84c2-31ab1cbcbcd2"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": 1,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "6132208b-25f2-4ad2-9126-5ee8a166f3a1",
+      "28fd1ed1-f668-4c43-abee-8ee0205c2ec6",
+      "174122b6-a1ba-4a5b-9709-e966512230c2"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": 1,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "ddf9bc9a-70e8-47e4-a15c-6c075b6a365e",
+      "bb10545e-93bf-4982-a78b-6843bbd535cf",
+      "f4cce0be-c47b-44ee-82f0-564f556bc3c4"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": 1,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "42ef091d-1669-409c-9cbd-056e0d3a4861",
+      "f7e59bc7-5acd-466f-bd44-85fb9fbf0839",
+      "bd0f3a75-7486-4531-a4fc-a1925b273fef"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": 1,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "e36b9199-481f-47fd-97af-1aaa7add7bd7",
+      "d7d085de-040f-4bf2-b1a2-8d01092aeb73",
+      "d21fa4e5-6859-43d2-a242-96b9b0c36c30"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": 1,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "e9c2483f-33cd-4229-b5dd-12a9febfa898",
+      "da2164f3-9410-4e58-9255-9a4651148adb",
+      "432faa08-d3c3-4b93-825e-15c64dc1cdd0"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [],
+ "rule_quotes": []
+}

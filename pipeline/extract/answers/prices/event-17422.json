@@ -1,6 +1,5 @@
 {
  "batch": "event-17422",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17422,
@@ -17,8 +16,7 @@
        "amount": 55,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "04-17",
        "until": "05-16",
        "quantity": null,
@@ -31,8 +29,7 @@
        "amount": 60,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "05-17",
        "until": "06-16",
        "quantity": null,
@@ -45,8 +42,7 @@
        "amount": 70,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "06-17",
        "until": "07-16",
        "quantity": null,
@@ -59,8 +55,7 @@
        "amount": 75,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -83,29 +78,27 @@
        "amount": 15,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "€15 presale"
+       "quote": "☛ €15 presale / €20 at the door"
       },
       {
        "amount": 20,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "€20 at the door"
+       "quote": "☛ €15 presale / €20 at the door"
       }
      ]
     },
@@ -121,29 +114,27 @@
        "amount": 25,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "€25 presale"
+       "quote": "☛ €25 presale / €40 at the door"
       },
       {
        "amount": 40,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "€40 at the door"
+       "quote": "☛ €25 presale / €40 at the door"
       }
      ]
     }

@@ -1,0 +1,36 @@
+{
+ "batch": "event-17493",
+ "events": [
+  {
+   "event_id": 17493,
+   "party_rooms": {
+    "count": 2,
+    "quote": "𝐓𝐖𝐎 𝐑𝐎𝐎𝐌𝐒/ 𝐓𝐖𝐎 𝐃𝐈𝐅𝐅𝐄𝐑𝐄𝐍𝐓 𝐀𝐌𝐁𝐈𝐄𝐍𝐂𝐄𝐒"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "𝐔𝐑𝐁𝐀𝐍 𝐊𝐈𝐙",
+     "quote": "𝐔𝐑𝐁𝐀𝐍 𝐊𝐈𝐙/𝐊𝐈𝐙𝐎𝐌𝐁𝐀/𝐒𝐄𝐌𝐁𝐀/𝐂𝐎𝐍𝐏𝐀"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀",
+     "quote": "𝐔𝐑𝐁𝐀𝐍 𝐊𝐈𝐙/𝐊𝐈𝐙𝐎𝐌𝐁𝐀/𝐒𝐄𝐌𝐁𝐀/𝐂𝐎𝐍𝐏𝐀"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "𝐒𝐄𝐌𝐁𝐀",
+     "quote": "𝐔𝐑𝐁𝐀𝐍 𝐊𝐈𝐙/𝐊𝐈𝐙𝐎𝐌𝐁𝐀/𝐒𝐄𝐌𝐁𝐀/𝐂𝐎𝐍𝐏𝐀"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "𝐂𝐎𝐍𝐏𝐀",
+     "quote": "𝐔𝐑𝐁𝐀𝐍 𝐊𝐈𝐙/𝐊𝐈𝐙𝐎𝐌𝐁𝐀/𝐒𝐄𝐌𝐁𝐀/𝐂𝐎𝐍𝐏𝐀"
+    }
+   ]
+  }
+ ]
+}

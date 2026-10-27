@@ -1,0 +1,297 @@
+{
+ "batch": "event-18887",
+ "events": [
+  {
+   "event_id": 18887,
+   "artists": [
+    {
+     "name_as_written": "Fofo Jah",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Fofo Jah 🇫🇷"
+    },
+    {
+     "name_as_written": "Ti Wosh",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Ti Wosh 🇫🇷"
+    },
+    {
+     "name_as_written": "Bartef",
+     "role": "dj",
+     "style": null,
+     "country": "🇵🇱",
+     "source_line": "• Bartef 🇵🇱"
+    },
+    {
+     "name_as_written": "Blvck Skyle",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Blvck Skyle 🇫🇷"
+    },
+    {
+     "name_as_written": "Dee C Beats",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Dee C Beats 🇫🇷"
+    },
+    {
+     "name_as_written": "T’Peak",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• T’Peak 🇫🇷"
+    },
+    {
+     "name_as_written": "Poema Beatz",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Poema Beatz 🇸🇪"
+    },
+    {
+     "name_as_written": "Lee Ross",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Lee Ross 🇫🇷"
+    },
+    {
+     "name_as_written": "Eden",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Eden 🇫🇷"
+    },
+    {
+     "name_as_written": "Joey C",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Joey C 🇸🇪"
+    },
+    {
+     "name_as_written": "Shiro",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Shiro 🇸🇪"
+    },
+    {
+     "name_as_written": "Soulbeat",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Soulbeat 🇸🇪"
+    },
+    {
+     "name_as_written": "Style of Music",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Style of Music 🇫🇷"
+    },
+    {
+     "name_as_written": "Karl Bekene",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Karl Bekene 🇫🇷"
+    },
+    {
+     "name_as_written": "Sacko Dadié",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "• Sacko Dadié"
+    },
+    {
+     "name_as_written": "Jah J’a",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Jah J’a 🇫🇷"
+    },
+    {
+     "name_as_written": "Enora & Pidjay",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Enora & Pidjay 🇫🇷"
+    },
+    {
+     "name_as_written": "T’Peak & Djé",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• T’Peak & Djé 🇫🇷"
+    },
+    {
+     "name_as_written": "Michael Diamon & Anika",
+     "role": "teacher",
+     "style": null,
+     "country": "🇳🇱",
+     "source_line": "• Michael Diamon & Anika 🇳🇱"
+    },
+    {
+     "name_as_written": "Selim & Anastasia",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷🇺🇦",
+     "source_line": "• Selim & Anastasia 🇫🇷🇺🇦"
+    },
+    {
+     "name_as_written": "Elli",
+     "role": "teacher",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Elli 🇸🇪"
+    },
+    {
+     "name_as_written": "Kiki",
+     "role": "teacher",
+     "style": null,
+     "country": "🇩🇪",
+     "source_line": "• Kiki 🇩🇪"
+    },
+    {
+     "name_as_written": "Ellen",
+     "role": "teacher",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Ellen 🇸🇪"
+    },
+    {
+     "name_as_written": "Lessly et Naomi",
+     "role": "teacher",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Lessly et Naomi 🇸🇪"
+    },
+    {
+     "name_as_written": "Pierre",
+     "role": "teacher",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Pierre 🇸🇪"
+    },
+    {
+     "name_as_written": "Rebirth",
+     "role": "performer",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Rebirth 🇫🇷"
+    },
+    {
+     "name_as_written": "Funomen",
+     "role": "performer",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Funomen 🇫🇷"
+    },
+    {
+     "name_as_written": "PSBK Matrix",
+     "role": "performer",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• PSBK Matrix 🇫🇷"
+    },
+    {
+     "name_as_written": "EYK – Elevate Your Kiz",
+     "role": "performer",
+     "style": null,
+     "country": "🇳🇱",
+     "source_line": "• EYK – Elevate Your Kiz 🇳🇱"
+    },
+    {
+     "name_as_written": "Kizzryders",
+     "role": "performer",
+     "style": null,
+     "country": "🇳🇱",
+     "source_line": "• Kizzryders 🇳🇱"
+    },
+    {
+     "name_as_written": "Bratez Kizz",
+     "role": "performer",
+     "style": null,
+     "country": "🇸🇪",
+     "source_line": "• Bratez Kizz 🇸🇪"
+    },
+    {
+     "name_as_written": "FusionKizz Aarhus",
+     "role": "performer",
+     "style": null,
+     "country": "🇩🇰",
+     "source_line": "• FusionKizz Aarhus 🇩🇰"
+    },
+    {
+     "name_as_written": "TV Socialdance",
+     "role": "media",
+     "style": null,
+     "country": "🇨🇭",
+     "source_line": "• TV Socialdance 🇨🇭"
+    },
+    {
+     "name_as_written": "Ndamoseprod",
+     "role": "media",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Ndamoseprod 🇫🇷"
+    },
+    {
+     "name_as_written": "Alexlprod",
+     "role": "media",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "• Alexlprod 🇫🇷"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL-IN-ONE HOTEL EXPERIENCE",
+     "rationale": "The heading describes parties held at the hotel where dancers stay."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "FULL PASS+ROOM combos",
+     "rationale": "The pass is sold combined with a hotel room, so accommodation is part of the package."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "2 breakfasts included",
+     "rationale": "Breakfasts are included in the room price of the pass packages."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Thursday (Pre-Party)",
+     "rationale": "A Pre-Party is scheduled before the main Friday to Sunday program."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "16:00 – 20:00 Social",
+     "rationale": "Afternoon social sessions are listed in the program."
+    },
+    {
+     "feature": "workshops",
+     "quote": "18:00 – 20:00 Workshop",
+     "rationale": "Dance workshops are scheduled in the program."
+    },
+    {
+     "feature": "competition",
+     "quote": "20:00 – 21:00 Competition",
+     "rationale": "A competition slot is listed on Saturday."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "GUESTS / TAXI DANCERS",
+     "rationale": "The section explicitly names taxi dancers as present."
+    }
+   ]
+  }
+ ]
+}

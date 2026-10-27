@@ -1,0 +1,177 @@
+{
+ "batch": "event-17891",
+ "events": [
+  {
+   "event_id": 17891,
+   "artists": [
+    {
+     "name_as_written": "JP & Stephy",
+     "role": "teacher",
+     "style": "URBAN KIZZ",
+     "country": null,
+     "source_line": "🌊 JP & Stephy"
+    },
+    {
+     "name_as_written": "Jojo & Jenny",
+     "role": "teacher",
+     "style": "URBAN KIZZ",
+     "country": null,
+     "source_line": "🌊 Jojo & Jenny"
+    },
+    {
+     "name_as_written": "Jah Ja",
+     "role": "teacher",
+     "style": "URBAN KIZZ",
+     "country": null,
+     "source_line": "🌊 Jah Ja"
+    },
+    {
+     "name_as_written": "Nick & Alex",
+     "role": "teacher",
+     "style": "URBAN KIZZ",
+     "country": null,
+     "source_line": "🌊 Nick & Alex"
+    },
+    {
+     "name_as_written": "Rodri & Elena",
+     "role": "teacher",
+     "style": "URBAN KIZZ",
+     "country": null,
+     "source_line": "🌊 Rodri & Elena"
+    },
+    {
+     "name_as_written": "Juanin & Romina",
+     "role": "teacher",
+     "style": "URBAN KIZZ",
+     "country": null,
+     "source_line": "🌊 Juanin & Romina"
+    },
+    {
+     "name_as_written": "T Peak & Dje",
+     "role": "teacher",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔥 T Peak & Dje"
+    },
+    {
+     "name_as_written": "Carlo & Pati",
+     "role": "teacher",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔥 Carlo & Pati"
+    },
+    {
+     "name_as_written": "Jack & Sara",
+     "role": "teacher",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔥 Jack & Sara"
+    },
+    {
+     "name_as_written": "Nane & Ronny",
+     "role": "teacher",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔥 Nane & Ronny"
+    },
+    {
+     "name_as_written": "Yoan",
+     "role": "teacher",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔥 Yoan"
+    },
+    {
+     "name_as_written": "Rober & Marta",
+     "role": "teacher",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔥 Rober & Marta"
+    },
+    {
+     "name_as_written": "DJ Shark",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Shark"
+    },
+    {
+     "name_as_written": "DJ Ichigo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Ichigo"
+    },
+    {
+     "name_as_written": "DJ Lucas",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Lucas"
+    },
+    {
+     "name_as_written": "DJ Miel",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Miel"
+    },
+    {
+     "name_as_written": "DJ Hegza",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Hegza"
+    },
+    {
+     "name_as_written": "DJ Jack",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Jack"
+    },
+    {
+     "name_as_written": "DJ Eclipse",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Eclipse"
+    },
+    {
+     "name_as_written": "Loves Kizomba & Tarraxo Spain",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Loves Kizomba & Tarraxo Spain present:"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE!",
+     "rationale": "The description states that everything is in one place, with the parties and dancing held at the hotel where dancers stay."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "BOOK YOUR ACCOMMODATION at the HOST HOTEL AT THE BEST PRICE NOW",
+     "rationale": "The host hotel is recommended and offered at a negotiated best price, though accommodation is booked separately."
+    },
+    {
+     "feature": "workshops",
+     "quote": "3 DAYS OF WORKSHOPS",
+     "rationale": "The event lists three days of workshops as part of the programme."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "CRAZY POOL PARTY",
+     "rationale": "A pool party is explicitly listed among the event highlights."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "4 AFTERNOON SOCIALS",
+     "rationale": "Afternoon socials are listed as one of the event's daytime offerings."
+    }
+   ]
+  }
+ ]
+}

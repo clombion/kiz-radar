@@ -1,0 +1,29 @@
+{
+ "batch": "event-14446",
+ "events": [
+  {
+   "event_id": 14446,
+   "artists": [
+    {
+     "name_as_written": "Criola Milton Keynes & Ginga Boo UK Kizomba Festival",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Morabeza UK Kizomba festival focus on KIZOMBA & SEMBA and brought to you by Criola Milton Keynes & Ginga Boo UK Kizomba Festival :"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_levels_beginners",
+     "quote": "Whether you’re a seasoned dancer or beginner, we have you covered with several levels.",
+     "rationale": "The description explicitly states the festival caters to beginners as well as seasoned dancers."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Join our opening Kizomba & Semba & Funana classes",
+     "rationale": "Dance classes are offered as part of the festival programme."
+    }
+   ]
+  }
+ ]
+}

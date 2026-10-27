@@ -1,0 +1,33 @@
+{
+ "batch": "event-19439",
+ "events": [
+  {
+   "event_id": 19439,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "to feature Salsa, Bachata, Kizomba & Zouk at one event"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "to feature Salsa, Bachata, Kizomba & Zouk at one event"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "to feature Salsa, Bachata, Kizomba & Zouk at one event"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Brazilian Zouk",
+     "quote": "Brazilian Zouk Dance Council Jack & Jill Competition"
+    }
+   ]
+  }
+ ]
+}

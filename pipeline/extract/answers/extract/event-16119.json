@@ -1,0 +1,21 @@
+{
+ "batch": "event-16119",
+ "events": [
+  {
+   "event_id": 16119,
+   "artists": [],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 salles, 3 ambiances",
+     "rationale": "The event lists three separate dance rooms (Salle 1, 2 and 3), so it has more than one dance floor."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Various classes:",
+     "rationale": "The description lists several dance classes (ginga, urban Kiz, tarraxo, kizomba, semba and others) as part of the event."
+    }
+   ]
+  }
+ ]
+}

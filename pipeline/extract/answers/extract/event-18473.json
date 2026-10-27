@@ -1,0 +1,18 @@
+{
+ "batch": "event-18473",
+ "events": [
+  {
+   "event_id": 18473,
+   "artists": [
+    {
+     "name_as_written": "French Kiz Event",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Organized by French Kiz Event, KIZ ME FIVE invites you to a 12th edition that’s even more 🔥🔥🔥."
+    }
+   ],
+   "features": []
+  }
+ ]
+}

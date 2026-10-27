@@ -1,0 +1,113 @@
+{
+ "batch": "event-18315",
+ "events": [
+  {
+   "event_id": 18315,
+   "artists": [
+    {
+     "name_as_written": "Curtis Seldon",
+     "role": "teacher",
+     "style": "Urban Kizomba",
+     "country": null,
+     "source_line": "🔥 Curtis Seldon – Urban Kizomba"
+    },
+    {
+     "name_as_written": "Auguste Gouriou",
+     "role": "teacher",
+     "style": "Kizomba Slow Motion",
+     "country": null,
+     "source_line": "🔥 Auguste Gouriou – Kizomba Slow Motion"
+    },
+    {
+     "name_as_written": "Séverine",
+     "role": "teacher",
+     "style": "Kompa",
+     "country": null,
+     "source_line": "🔥 Séverine – Kompa"
+    },
+    {
+     "name_as_written": "Erwan & Clémence",
+     "role": "teacher",
+     "style": "Urban Kizomba",
+     "country": null,
+     "source_line": "🔥 Erwan & Clémence – Urban Kizomba"
+    },
+    {
+     "name_as_written": "Sanka N’Gage",
+     "role": "teacher",
+     "style": "Afro House",
+     "country": null,
+     "source_line": "🔥 Sanka N’Gage – Afro House"
+    },
+    {
+     "name_as_written": "DJ Lenhy Bushido",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 DJ Lenhy Bushido"
+    },
+    {
+     "name_as_written": "DJ Geero Beatz",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 DJ Geero Beatz"
+    },
+    {
+     "name_as_written": "Deejay Elson",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 Deejay Elson"
+    },
+    {
+     "name_as_written": "DJ Naty",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 DJ Naty"
+    },
+    {
+     "name_as_written": "DJ Lys",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 DJ Lys"
+    },
+    {
+     "name_as_written": "AFRI",
+     "role": "teacher",
+     "style": "Semba Konpa",
+     "country": null,
+     "source_line": "✨ TEACHER / AFRI : Semba Konpa"
+    },
+    {
+     "name_as_written": "Gloire",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "✨ TEACHER / Gloire : Kizomba"
+    },
+    {
+     "name_as_written": "DJ LCSLOW",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✨ DEEJAY / DJ LCSLOW"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Classes designed to elevate you, help you progress, and let you feel every movement.",
+     "rationale": "The description advertises dance classes as part of the program."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "PARTNER ACCOMMODATION",
+     "rationale": "A partner hotel is recommended, but accommodation is not stated as part of the pass."
+    }
+   ]
+  }
+ ]
+}

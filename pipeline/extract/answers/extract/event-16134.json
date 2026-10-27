@@ -1,0 +1,26 @@
+{
+ "batch": "event-16134",
+ "events": [
+  {
+   "event_id": 16134,
+   "artists": [],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL-IN-ONE festival plus",
+     "rationale": "The description labels the event as an all-in-one festival, and the venue is a hotel, so the parties take place where dancers can stay."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "alternative hotel with shuttle to venue",
+     "rationale": "A shuttle to the venue is explicitly offered from the alternative hotel."
+    },
+    {
+     "feature": "workshops",
+     "quote": "filled with workshops, socials, and vibes",
+     "rationale": "The text says the festival days are filled with workshops."
+    }
+   ]
+  }
+ ]
+}

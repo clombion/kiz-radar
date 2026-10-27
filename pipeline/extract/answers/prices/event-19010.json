@@ -1,6 +1,5 @@
 {
  "batch": "event-19010",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 19010,
@@ -10,15 +9,14 @@
      "style": null,
      "label_quote": "FULL PASSES",
      "group_size": 1,
-     "days": 5,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 85,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "2026-06-21",
        "quantity": null,
@@ -31,8 +29,7 @@
        "amount": 90,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "2026-07-12",
        "quantity": null,
@@ -44,7 +41,9 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "Passes will cost more at the door"
+   ]
   }
  ]
 }

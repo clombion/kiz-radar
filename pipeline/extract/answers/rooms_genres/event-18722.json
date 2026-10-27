@@ -1,0 +1,34 @@
+{
+ "batch": "event-18722",
+ "events": [
+  {
+   "event_id": 18722,
+   "party_rooms": {
+    "count": 2,
+    "quote": "4 NIGHT PARTIES- 2 rooms"
+   },
+   "class_rooms": {
+    "count": 2,
+    "quote": "WORKSHOPS- 2 rooms"
+   },
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔 – 𝗨𝗥𝗕𝗔𝗡𝗞𝗜𝗭"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBANKIZ",
+     "quote": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔 – 𝗨𝗥𝗕𝗔𝗡𝗞𝗜𝗭"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "TarraxoPop",
+     "quote": "Jules & Yuna TarraxoPop"
+    }
+   ]
+  }
+ ]
+}

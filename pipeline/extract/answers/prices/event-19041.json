@@ -1,6 +1,5 @@
 {
  "batch": "event-19041",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 19041,
@@ -17,8 +16,7 @@
        "amount": 60,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "10-31",
        "quantity": null,
@@ -31,8 +29,7 @@
        "amount": 70,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "01-15",
        "quantity": null,
@@ -45,8 +42,7 @@
        "amount": 80,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "02-15",
        "quantity": null,
@@ -59,8 +55,7 @@
        "amount": 90,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -68,6 +63,75 @@
        "sold_out": false,
        "current": false,
        "quote": "FULL PASS: €90"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": "PALMERA PLAYA PRE-PARTY",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 10,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "€10"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": "SATURDAY SOCIAL – HOTEL ATTICA21",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 25,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "€25"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": "SUNDAY SOCIAL – HOTEL ATTICA21",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 15,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "€15"
       }
      ]
     }

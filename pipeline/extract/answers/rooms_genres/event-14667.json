@@ -1,0 +1,31 @@
+{
+ "batch": "event-14667",
+ "events": [
+  {
+   "event_id": 14667,
+   "party_rooms": {
+    "count": 3,
+    "quote": "3 DANCEFLOORS ( BACHATA – KIZOMBA – SALSA)"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "CONFIRMED BACHATA ARTISTS"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "CONFIRMED KIZOMBA ARTISTS"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "CONFIRMED SALSA ARTISTS"
+    }
+   ]
+  }
+ ]
+}

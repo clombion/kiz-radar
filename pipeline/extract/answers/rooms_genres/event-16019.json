@@ -1,0 +1,28 @@
+{
+ "batch": "event-16019",
+ "events": [
+  {
+   "event_id": 16019,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "kizomba fusion",
+     "quote": "Intensive dance workshops in kizomba fusion, urban kiz, and tarraxo"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Jakub & Agnieszka Sajko –Tarraxo"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "Douceur Tarraxo"
+    }
+   ]
+  }
+ ]
+}

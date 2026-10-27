@@ -1,6 +1,5 @@
 {
  "batch": "event-15531",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15531,
@@ -17,29 +16,27 @@
        "amount": 87.0,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
-       "current": false,
+       "current": true,
        "quote": "FULLPASS (Workshops + Party + Social): Now only €87.00!"
       },
       {
        "amount": 149.0,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Regular price will be €149.00"
+       "quote": "(Regular price will be €149.00 – save up to €62!)"
       }
      ]
     },
@@ -55,8 +52,7 @@
        "amount": 59.0,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -79,8 +75,7 @@
        "amount": 149.0,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": 20,
@@ -93,7 +88,7 @@
     }
    ],
    "rule_quotes": [
-    "prices valid only until limited capacity sells out"
+    "prices valid only until limited capacity sells out!"
    ]
   }
  ]

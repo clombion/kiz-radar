@@ -1,0 +1,31 @@
+{
+ "batch": "event-18974",
+ "events": [
+  {
+   "event_id": 18974,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Kizomba & Semba workshops",
+     "rationale": "The description lists Kizomba & Semba workshops as part of the Luanda programme, so dance classes are part of the event."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Accommodation",
+     "rationale": "Under the INCLUDED heading of the packages, accommodation is listed as included."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Meals & gastronomy experiences",
+     "rationale": "Meals are listed under the INCLUDED heading of the packages."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Transport in Angola",
+     "rationale": "Transport is listed under the INCLUDED heading, which indicates transfers are provided during the trip."
+    }
+   ]
+  }
+ ]
+}

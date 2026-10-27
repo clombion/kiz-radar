@@ -1,0 +1,86 @@
+{
+ "batch": "event-17041",
+ "events": [
+  {
+   "event_id": 17041,
+   "artists": [
+    {
+     "name_as_written": "SIMON & LOLAHONTAS",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": "Italy & Spain",
+     "source_line": "✅ SIMON & LOLAHONTAS (Italy & Spain) – Bachata"
+    },
+    {
+     "name_as_written": "CHRYS PY & LALY",
+     "role": "teacher",
+     "style": "Kizomba – Afro",
+     "country": null,
+     "source_line": "✅ CHRYS PY & LALY (Nice) – Kizomba – Afro"
+    },
+    {
+     "name_as_written": "GUINS & BARBARITA",
+     "role": "teacher",
+     "style": "Kizomba – Bachata",
+     "country": null,
+     "source_line": "✅ GUINS & BARBARITA (Reims) – Kizomba – Bachata"
+    },
+    {
+     "name_as_written": "RODRIGUE & LÉA",
+     "role": "teacher",
+     "style": "Kizomba – Semba",
+     "country": null,
+     "source_line": "✅ RODRIGUE & LÉA (Paris) – Kizomba – Semba"
+    },
+    {
+     "name_as_written": "JOHAN ORSINNET",
+     "role": "teacher",
+     "style": "Salsa – Bachata",
+     "country": null,
+     "source_line": "✅ JOHAN ORSINNET (Belfort) – Salsa – Bachata"
+    },
+    {
+     "name_as_written": "GIORGIO ROD",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "✅ GIORGIO ROD (Paris) – Salsa – DJ SBK + Generalist"
+    },
+    {
+     "name_as_written": "DJ ANGELO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✅ DJ ANGELO (Reims) – DJ SBK + Generalist"
+    }
+   ],
+   "features": [
+    {
+     "feature": "cruise",
+     "quote": "Embark on a dream cruise",
+     "rationale": "The event is a cruise ship trip, as the title and opening state."
+    },
+    {
+     "feature": "workshops",
+     "quote": "SBK dance classes with a lively atmosphere Madness",
+     "rationale": "Dance classes are listed as part of the onboard programme."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Pool parties",
+     "rationale": "Pool parties are listed among the onboard activities."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "All-you-can-eat food to recharge your batteries",
+     "rationale": "Unlimited food is offered on board as part of the event."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "INSIDE CABINS",
+     "rationale": "The cruise description details the cabins that guests stay in on board."
+    }
+   ]
+  }
+ ]
+}

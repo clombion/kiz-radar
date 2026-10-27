@@ -1,0 +1,67 @@
+{
+ "batch": "event-17491",
+ "events": [
+  {
+   "event_id": 17491,
+   "artists": [
+    {
+     "name_as_written": "DJ G-Sousa",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ G-Sousa"
+    },
+    {
+     "name_as_written": "DJ Frank",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Frank"
+    },
+    {
+     "name_as_written": "DJ Supaman",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Supaman"
+    },
+    {
+     "name_as_written": "DJ LHeat",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ LHeat"
+    },
+    {
+     "name_as_written": "Mik’iz and May",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🕺🏿💃🏿 Mik’iz and May"
+    }
+   ],
+   "features": [
+    {
+     "feature": "day_socials",
+     "quote": "Daytime socials",
+     "rationale": "The description lists daytime socials as part of the event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "High-quality workshops",
+     "rationale": "The description promises high-quality workshops as part of the weekend."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Official accommodation:",
+     "rationale": "The event names an official hotel with a special offer, which is a negotiated hotel rate not part of the pass."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Breakfast included!",
+     "rationale": "The room options for the official hotel include breakfast in the package price."
+    }
+   ]
+  }
+ ]
+}

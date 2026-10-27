@@ -1,0 +1,82 @@
+{
+ "batch": "event-16110",
+ "events": [
+  {
+   "event_id": 16110,
+   "artists": [
+    {
+     "name_as_written": "Adilson & Telma",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "Adilson & Telma 🇦🇴"
+    },
+    {
+     "name_as_written": "Jojo & Jenny",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "Jojo & Jenny 🇫🇷"
+    },
+    {
+     "name_as_written": "Dj Shark",
+     "role": "dj",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "Dj Shark 🇪🇸"
+    },
+    {
+     "name_as_written": "Dj Ellen",
+     "role": "dj",
+     "style": null,
+     "country": "🇧🇶",
+     "source_line": "Dj Ellen 🇧🇶"
+    },
+    {
+     "name_as_written": "Dj Lucas",
+     "role": "dj",
+     "style": null,
+     "country": "🇵🇹",
+     "source_line": "Dj Lucas 🇵🇹"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE – SHERATON HOTEL LAVAL",
+     "rationale": "The parties and workshops take place in the Sheraton hotel, which is the same venue where dancers are invited to stay."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Excellent workshops",
+     "rationale": "The description lists workshops as a core part of the festival, and a workshop list follows."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "day socials",
+     "rationale": "The schedule explicitly lists day socials among the daytime activities."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "PRE-PARTY",
+     "rationale": "A pre-party is listed on Thursday July 23 before the main festival days."
+    },
+    {
+     "feature": "after_party",
+     "quote": "GNK FESTIVAL – AFTER-PARTY",
+     "rationale": "An after-party is scheduled for Monday July 27."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 rooms",
+     "rationale": "The description states there are three rooms, meaning more than one dance floor."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "SHUTTLE SERVICE (NEW)",
+     "rationale": "A shuttle service is offered, though details are still to come."
+    }
+   ]
+  }
+ ]
+}

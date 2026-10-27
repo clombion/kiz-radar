@@ -1,0 +1,109 @@
+{
+ "batch": "event-16319",
+ "events": [
+  {
+   "event_id": 16319,
+   "artists": [
+    {
+     "name_as_written": "MARC & MARILYN",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "MARC & MARILYN"
+    },
+    {
+     "name_as_written": "MOZART & LAURE",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "MOZART & LAURE"
+    },
+    {
+     "name_as_written": "DADY & MANUELA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "DADY & MANUELA"
+    },
+    {
+     "name_as_written": "PHILLYP & SOPHIE",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "PHILLYP & SOPHIE"
+    },
+    {
+     "name_as_written": "ALAIN & KATERINA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "ALAIN & KATERINA"
+    },
+    {
+     "name_as_written": "DJ IBRA",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ IBRA"
+    },
+    {
+     "name_as_written": "DJ NAOMI",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ NAOMI"
+    },
+    {
+     "name_as_written": "DJ SOLIN",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ SOLIN"
+    },
+    {
+     "name_as_written": "DJ SALVA",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ SALVA"
+    },
+    {
+     "name_as_written": "DJ ENDRICK",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ ENDRICK"
+    },
+    {
+     "name_as_written": "Angoulême Salsa & Pica Danse",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Angoulême Salsa & Pica Danse"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_levels_beginners",
+     "quote": "whether you’re a beginner or an experienced dancer",
+     "rationale": "The description says the event suits beginners as well as experienced dancers."
+    },
+    {
+     "feature": "shows",
+     "quote": "Saturday evening shows",
+     "rationale": "The program lists Saturday evening shows as part of the event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "+ 15 hours of classes",
+     "rationale": "The event offers 15 hours of dance classes as part of the program."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "1 Room: Salsa & Bachata",
+     "rationale": "The evenings are split across two dance rooms, one for Salsa and Bachata and one for Kizomba, Semba and Konpa."
+    }
+   ]
+  }
+ ]
+}

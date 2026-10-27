@@ -1,0 +1,40 @@
+{
+ "batch": "event-16904",
+ "events": [
+  {
+   "event_id": 16904,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "SOCIAL ROOM",
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "SOCIAL ROOM"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba, Semba, Tarraxhinha, Afro house"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba, Semba, Tarraxhinha, Afro house"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxhinha",
+     "quote": "Kizomba, Semba, Tarraxhinha, Afro house"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro house",
+     "quote": "Kizomba, Semba, Tarraxhinha, Afro house"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "batch": "event-15602",
+ "events": [
+  {
+   "event_id": 15602,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Workshops & Bootcamps",
+     "rationale": "The event lists workshops as part of its programme."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Workshops & Bootcamps",
+     "rationale": "Bootcamps are listed as part of the programme alongside workshops."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "14:00 – 20:00 Social",
+     "rationale": "A daytime social is scheduled on Sunday afternoon."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Masterclass (separat buchbar)",
+     "rationale": "A masterclass is offered as a separately bookable session."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 Dancefloors",
+     "rationale": "The event has two dance floors."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Main Hotel",
+     "rationale": "A hotel is named and guests are directed to booking for accommodation, which suggests a recommended hotel."
+    }
+   ]
+  }
+ ]
+}

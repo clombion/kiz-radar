@@ -1,0 +1,80 @@
+{
+ "batch": "event-16196",
+ "events": [
+  {
+   "event_id": 16196,
+   "party_rooms": {
+    "count": 4,
+    "quote": "4 ROOMS:"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "zouk",
+      "tarraxo"
+     ],
+     "quote": "100% GHETTOZOUK/TARRAXA"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "100% BACHATA"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "semba"
+     ],
+     "quote": "100% SEMBA"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "100% SALSA"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "9th EDITION of the Italian Event of KIZOMBA & BACHATA"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "100% BACHATA"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "GHETTOZOUK",
+     "quote": "100% GHETTOZOUK/TARRAXA"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "TARRAXA",
+     "quote": "100% GHETTOZOUK/TARRAXA"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "SEMBA",
+     "quote": "100% SEMBA"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "100% SALSA"
+    }
+   ]
+  }
+ ]
+}

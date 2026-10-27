@@ -1,0 +1,38 @@
+{
+ "batch": "event-16178",
+ "events": [
+  {
+   "event_id": 16178,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "KIZOMBA"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBAN KIZ",
+     "quote": "URBAN KIZ"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "TARRAXO",
+     "quote": "TARRAXO"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "SEMBA",
+     "quote": "SEMBA"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "KONPA",
+     "quote": "KONPA"
+    }
+   ]
+  }
+ ]
+}

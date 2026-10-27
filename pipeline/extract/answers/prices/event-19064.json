@@ -1,6 +1,5 @@
 {
  "batch": "event-19064",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 19064,
@@ -10,15 +9,14 @@
      "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": 4,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 999,
        "currency": "NOK",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -31,8 +29,7 @@
        "amount": 1200,
        "currency": "NOK",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -48,15 +45,14 @@
      "style": null,
      "label_quote": null,
      "group_size": 2,
-     "days": 4,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 1850,
        "currency": "NOK",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -69,8 +65,7 @@
        "amount": 2300,
        "currency": "NOK",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,

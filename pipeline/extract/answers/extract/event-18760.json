@@ -1,0 +1,100 @@
+{
+ "batch": "event-18760",
+ "events": [
+  {
+   "event_id": 18760,
+   "artists": [
+    {
+     "name_as_written": "Jesus & Anni",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "☁️ Jesus & Anni"
+    },
+    {
+     "name_as_written": "Dwé & Gaby",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "☁️ Dwé & Gaby"
+    },
+    {
+     "name_as_written": "June & Virgile",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "☁️ June & Virgile"
+    },
+    {
+     "name_as_written": "Stefan & Chloé",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "☁️ Stefan & Chloé"
+    },
+    {
+     "name_as_written": "Morelasoul",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "☁️ Morelasoul"
+    },
+    {
+     "name_as_written": "Dwé Dyson",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "☁️ Dwé Dyson"
+    },
+    {
+     "name_as_written": "Jessie Santos",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "☁️Jessie Santos"
+    },
+    {
+     "name_as_written": "RomOZ",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "☁️ RomOZ"
+    },
+    {
+     "name_as_written": "I.am.REGGIE",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "☁️ I.am.REGGIE"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "With workshops, collabs and training moments by:",
+     "rationale": "The description states that workshops, collabs and training moments are part of the event."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Intensive #1",
+     "rationale": "Intensive sessions are scheduled as part of the programme."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Pre-Party @ Rico Latino",
+     "rationale": "A pre-party is scheduled on Thursday before the main weekend."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "16:00–20:00 Social",
+     "rationale": "A daytime social is scheduled on Saturday afternoon."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Official Accommodation Partner: Little Monkey (10min walk)",
+     "rationale": "A partner accommodation is recommended and linked to the event, without being part of the pass."
+    }
+   ]
+  }
+ ]
+}

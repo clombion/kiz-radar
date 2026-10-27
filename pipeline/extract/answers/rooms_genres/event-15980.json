@@ -1,0 +1,21 @@
+{
+ "batch": "event-15980",
+ "events": [
+  {
+   "event_id": 15980,
+   "party_rooms": {
+    "count": 3,
+    "quote": "3 AREAS TO PARTY"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "KKC KIZZVENLO KIZOMBA CONGRESS 2026"
+    }
+   ]
+  }
+ ]
+}

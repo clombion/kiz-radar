@@ -1,0 +1,78 @@
+{
+ "batch": "event-15949",
+ "events": [
+  {
+   "event_id": 15949,
+   "artists": [
+    {
+     "name_as_written": "DJ PINGUSSO",
+     "role": "dj",
+     "style": null,
+     "country": "🇱🇺",
+     "source_line": "🔸DJ PINGUSSO 🇱🇺"
+    },
+    {
+     "name_as_written": "DJ PARAISO",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "🔸DJ PARAISO 🇫🇷"
+    },
+    {
+     "name_as_written": "DJ NAO",
+     "role": "dj",
+     "style": null,
+     "country": "🇧🇪",
+     "source_line": "🔸DJ NAO 🇧🇪"
+    },
+    {
+     "name_as_written": "DJ STEFANIO LIMA",
+     "role": "dj",
+     "style": null,
+     "country": "🇳🇱",
+     "source_line": "🔸DJ STEFANIO LIMA 🇳🇱"
+    },
+    {
+     "name_as_written": "DJ IRON MAMS",
+     "role": "dj",
+     "style": null,
+     "country": "🇨🇭",
+     "source_line": "🔸DJ IRON MAMS 🇨🇭"
+    },
+    {
+     "name_as_written": "DJ GUELAS",
+     "role": "dj",
+     "style": null,
+     "country": "🇺🇸",
+     "source_line": "🔸DJ GUELAS 🇺🇸"
+    },
+    {
+     "name_as_written": "AMADOU KANE",
+     "role": "media",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "🔹AMADOU KANE 🇨🇦"
+    },
+    {
+     "name_as_written": "AKIM",
+     "role": "media",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "🔹AKIM 🇨🇦"
+    }
+   ],
+   "features": [
+    {
+     "feature": "after_party",
+     "quote": "After Party Kizo Fest Beach Club!",
+     "rationale": "The description announces an after-party event held on Monday, June 29th."
+    },
+    {
+     "feature": "beach_party",
+     "quote": "takes over Beach Club with electrifying vibes",
+     "rationale": "The after-party is held at a Beach Club with sun-soaked rhythms, which makes it a beach party."
+    }
+   ]
+  }
+ ]
+}

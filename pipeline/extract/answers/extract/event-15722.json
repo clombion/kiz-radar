@@ -1,0 +1,63 @@
+{
+ "batch": "event-15722",
+ "events": [
+  {
+   "event_id": 15722,
+   "artists": [
+    {
+     "name_as_written": "Rui Djassi Morácen",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Welcome to the 8th edition of #BeyondKizomba, the cultural immersion program in Angola that is designed by Rui Djassi Morácen, the founder of the University of Kizomba initiative, in partnership with – and backed by the logistics support of – Kunanga Life, a legally registered Angolan cultural tourism agency. In this edition, we will have, amongst a vast array of exciting events, a special party dedicated to honor the great work that #Back2Basic has been doing in promoting kizomba (and Angolan culture at large) in Europe consistently for so many years."
+    },
+    {
+     "name_as_written": "Rui Djassi Moracén",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Alternatively, feel free to send a DM to Rui Djassi Moracén and/or to the Kunanga Life page inbox at any time (24/7)."
+    },
+    {
+     "name_as_written": "Kunanga Life",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "If this is an option that you wish to pursue, please send a text message to the Kunanga Life Customer Care infoline on WhatsApp (+244 923 712 555) so we can send you all the details and applicable Terms & Conditions."
+    }
+   ],
+   "features": [
+    {
+     "feature": "accommodation_included",
+     "quote": "Hotel accommodation (12 days, 11 nights);",
+     "rationale": "The Full package list states that hotel accommodation is included."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Three (3) meals a day (breakfast, lunch, dinner);",
+     "rationale": "The package explicitly includes three meals a day."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Airport transfers (pick-up & airport drop-off);",
+     "rationale": "Airport pick-up and drop-off transfers are included in the package."
+    },
+    {
+     "feature": "workshops",
+     "quote": "ALL group dance classes (incl. kizomba, semba, etc)",
+     "rationale": "The package includes group dance classes, which are workshops."
+    },
+    {
+     "feature": "private_classes",
+     "quote": "any last-minute private dance classes",
+     "rationale": "The text mentions private dance classes that participants can book."
+    },
+    {
+     "feature": "live_music",
+     "quote": "music concerts",
+     "rationale": "Group nightlife activities included in the package feature music concerts."
+    }
+   ]
+  }
+ ]
+}

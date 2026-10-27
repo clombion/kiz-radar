@@ -1,0 +1,400 @@
+{
+ "batch": "event-15823",
+ "events": [
+  {
+   "event_id": 15823,
+   "artists": [
+    {
+     "name_as_written": "Victor and Yanet",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Victor and Yanet"
+    },
+    {
+     "name_as_written": "Dayana",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Dayana"
+    },
+    {
+     "name_as_written": "Michael and Neily",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Michael and Neily"
+    },
+    {
+     "name_as_written": "Andros",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Andros"
+    },
+    {
+     "name_as_written": "Seo and Eneris",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Seo and Eneris"
+    },
+    {
+     "name_as_written": "Julio",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Julio"
+    },
+    {
+     "name_as_written": "Chiky",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Chiky"
+    },
+    {
+     "name_as_written": "Mercedes",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Mercedes"
+    },
+    {
+     "name_as_written": "David and Lisse",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "David and Lisse"
+    },
+    {
+     "name_as_written": "Maya and Yosvan",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Maya and Yosvan"
+    },
+    {
+     "name_as_written": "Alain and Katherine",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Alain and Katherine"
+    },
+    {
+     "name_as_written": "Yoyo Flow",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Yoyo Flow"
+    },
+    {
+     "name_as_written": "Sheila",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Sheila"
+    },
+    {
+     "name_as_written": "Andrian",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Andrian"
+    },
+    {
+     "name_as_written": "Alejandro and Rosy",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Alejandro and Rosy"
+    },
+    {
+     "name_as_written": "Rafael and Virginie",
+     "role": "teacher",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "Rafael and Virginie"
+    },
+    {
+     "name_as_written": "DJ Pelotero",
+     "role": "dj",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "DJ Pelotero"
+    },
+    {
+     "name_as_written": "DJ Yordan",
+     "role": "dj",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "DJ Yordan"
+    },
+    {
+     "name_as_written": "DJ Mike",
+     "role": "dj",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "DJ Mike"
+    },
+    {
+     "name_as_written": "Julie Dellagrasta",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Julie Dellagrasta"
+    },
+    {
+     "name_as_written": "Romeo and Laura-Lise",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Romeo and Laura-Lise"
+    },
+    {
+     "name_as_written": "Nicolas T",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Nicolas T"
+    },
+    {
+     "name_as_written": "Sam and Emona",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Sam and Emona"
+    },
+    {
+     "name_as_written": "Cynthia and Lisandre",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Cynthia and Lisandre"
+    },
+    {
+     "name_as_written": "Estelle Ramos",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Estelle Ramos"
+    },
+    {
+     "name_as_written": "Xavier and Diana",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Xavier and Diana"
+    },
+    {
+     "name_as_written": "Mous and Sam",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Mous and Sam"
+    },
+    {
+     "name_as_written": "Remy and Wissem",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Remy and Wissem"
+    },
+    {
+     "name_as_written": "Nicky and Sofia",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Nicky and Sofia"
+    },
+    {
+     "name_as_written": "Nico and Jess",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Nico and Jess"
+    },
+    {
+     "name_as_written": "DJ Aimen",
+     "role": "dj",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "DJ Aimen"
+    },
+    {
+     "name_as_written": "DJ Alegria",
+     "role": "dj",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "DJ Alegria"
+    },
+    {
+     "name_as_written": "DJ Bryan",
+     "role": "dj",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "DJ Bryan"
+    },
+    {
+     "name_as_written": "DJ Obi",
+     "role": "dj",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "DJ Obi"
+    },
+    {
+     "name_as_written": "Nuno and Nagyla",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Nuno and Nagyla"
+    },
+    {
+     "name_as_written": "Ben and Ana",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Ben and Ana"
+    },
+    {
+     "name_as_written": "Don Nelo",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Don Nelo"
+    },
+    {
+     "name_as_written": "Cebo and Emmanuelle",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Cebo and Emmanuelle"
+    },
+    {
+     "name_as_written": "Sandrine",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Sandrine"
+    },
+    {
+     "name_as_written": "Emma and Sensei",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Emma and Sensei"
+    },
+    {
+     "name_as_written": "Fabien and Athena",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Fabien and Athena"
+    },
+    {
+     "name_as_written": "Matt and Sam",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Matt and Sam"
+    },
+    {
+     "name_as_written": "Fitz",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Fitz"
+    },
+    {
+     "name_as_written": "Charly and Morgane",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Charly and Morgane"
+    },
+    {
+     "name_as_written": "Gordon and Marion",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Gordon and Marion"
+    },
+    {
+     "name_as_written": "Jo Dang and Morgane",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Jo Dang and Morgane"
+    },
+    {
+     "name_as_written": "DJ Est",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ Est"
+    },
+    {
+     "name_as_written": "DJ May",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ May"
+    },
+    {
+     "name_as_written": "DJ Mo",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ Mo"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Over 70 hours of workshops with international and regional artists",
+     "rationale": "The program lists over 70 hours of workshops with artists."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 evenings – 3 rooms",
+     "rationale": "Three rooms are dedicated to Salsa, Bachata and Kizomba evenings."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "2 Pool Parties",
+     "rationale": "The program lists two pool parties."
+    },
+    {
+     "feature": "boat_party",
+     "quote": "1 Boat Party",
+     "rationale": "The program includes a boat party."
+    },
+    {
+     "feature": "shows",
+     "quote": "1 dance show",
+     "rationale": "The program includes a dance show."
+    },
+    {
+     "feature": "live_music",
+     "quote": "LIVE musicians",
+     "rationale": "Live musicians play during classes, evenings and pool parties."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Full Pass + Accommodation",
+     "rationale": "The price packages include accommodation with the full pass."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Full Pass + Accommodation + Full Board",
+     "rationale": "The packages include full board meals."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Full Board + Transportation",
+     "rationale": "The higher-priced package includes transportation."
+    }
+   ]
+  }
+ ]
+}

@@ -1,6 +1,5 @@
 {
  "batch": "event-15959",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15959,
@@ -10,17 +9,16 @@
      "style": null,
      "label_quote": "FULL PASSES",
      "group_size": 1,
-     "days": 4,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 70,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
-       "until": "2026-02-01",
+       "until": "02-01",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -31,8 +29,7 @@
        "amount": 80,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "2026-02-02",
        "until": null,
        "quantity": null,
@@ -45,8 +42,7 @@
        "amount": 90,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "2026-03-02",
        "until": null,
        "quantity": null,

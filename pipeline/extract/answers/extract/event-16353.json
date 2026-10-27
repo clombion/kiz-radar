@@ -1,0 +1,26 @@
+{
+ "batch": "event-16353",
+ "events": [
+  {
+   "event_id": 16353,
+   "artists": [],
+   "features": [
+    {
+     "feature": "beach_party",
+     "quote": "an unforgettable beach party at the hotel’s chiringuito",
+     "rationale": "The text describes a beach party held at the hotel's chiringuito on the final day."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "The afternoon social took place in a lovely outdoor area of the hotel",
+     "rationale": "An afternoon social is described as part of the event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "The workshops were intense and inspiring",
+     "rationale": "The workshops are mentioned as part of the event held in the past edition."
+    }
+   ]
+  }
+ ]
+}

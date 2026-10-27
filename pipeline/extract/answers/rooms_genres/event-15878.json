@@ -1,0 +1,71 @@
+{
+ "batch": "event-15878",
+ "events": [
+  {
+   "event_id": 15878,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "unspecified",
+     "genres": [
+      "kizomba",
+      "tarraxinha",
+      "urbankiz",
+      "tarraxo",
+      "douceur"
+     ],
+     "quote": "= Kɪᴢᴏᴍʙᴀ\n== Tᴀʀʀᴀxɪɴʜᴀ\n=== Uʀʙᴀɴ ᴋɪᴢ\n==== Tᴀʀʀᴀxᴏ\n===== Dᴏᴜᴄᴇᴜʀ"
+    },
+    {
+     "name_as_written": null,
+     "kind": "unspecified",
+     "genres": [
+      "douceur",
+      "zouk",
+      "kompa"
+     ],
+     "quote": "=== Douceur\n==== Zᴏᴜᴋ\n===== Kᴏᴍᴘᴀ"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kɪᴢᴏᴍʙᴀ",
+     "quote": "= Kɪᴢᴏᴍʙᴀ"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tᴀʀʀᴀxɪɴʜᴀ",
+     "quote": "== Tᴀʀʀᴀxɪɴʜᴀ"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Uʀʙᴀɴ ᴋɪᴢ",
+     "quote": "=== Uʀʙᴀɴ ᴋɪᴢ"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tᴀʀʀᴀxᴏ",
+     "quote": "==== Tᴀʀʀᴀxᴏ"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "=== Douceur"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Zᴏᴜᴋ",
+     "quote": "==== Zᴏᴜᴋ"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Kᴏᴍᴘᴀ",
+     "quote": "===== Kᴏᴍᴘᴀ"
+    }
+   ]
+  }
+ ]
+}

@@ -1,6 +1,5 @@
 {
  "batch": "event-15260",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15260,
@@ -17,8 +16,10 @@
        "amount": 2000,
        "currency": "SEK",
        "fee": null,
-       "alt_amount": 190,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 190,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -41,8 +42,10 @@
        "amount": 1500,
        "currency": "SEK",
        "fee": null,
-       "alt_amount": 140,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 140,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -65,8 +68,10 @@
        "amount": 950,
        "currency": "SEK",
        "fee": null,
-       "alt_amount": 90,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 90,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -89,8 +94,10 @@
        "amount": 500,
        "currency": "SEK",
        "fee": null,
-       "alt_amount": 45,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 45,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -113,8 +120,10 @@
        "amount": 500,
        "currency": "SEK",
        "fee": null,
-       "alt_amount": 45,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 45,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -137,8 +146,10 @@
        "amount": 500,
        "currency": "SEK",
        "fee": null,
-       "alt_amount": 45,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 45,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -161,8 +172,10 @@
        "amount": 500,
        "currency": "SEK",
        "fee": null,
-       "alt_amount": 45,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 45,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -185,8 +198,10 @@
        "amount": 300,
        "currency": "SEK",
        "fee": null,
-       "alt_amount": 30,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 30,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,
@@ -209,8 +224,10 @@
        "amount": 200,
        "currency": "SEK",
        "fee": null,
-       "alt_amount": 20,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 20,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": null,

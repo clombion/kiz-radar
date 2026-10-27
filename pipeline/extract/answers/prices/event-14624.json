@@ -1,6 +1,5 @@
 {
  "batch": "event-14624",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 14624,
@@ -17,8 +16,10 @@
        "amount": 350,
        "currency": "RON",
        "fee": null,
-       "alt_amount": 70,
-       "alt_currency": "EUR",
+       "alt": {
+        "amount": 70,
+        "currency": "EUR"
+       },
        "from": null,
        "until": null,
        "quantity": 30,

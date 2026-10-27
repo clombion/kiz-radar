@@ -1,0 +1,34 @@
+{
+ "batch": "event-19534",
+ "events": [
+  {
+   "event_id": 19534,
+   "artists": [
+    {
+     "name_as_written": "Karibean Trip Kiz",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "From May 1st to 9th, 2027, Karibean Trip Kiz takes you to Bali for a new experience blending travel, discovery, escapism, and dance."
+    }
+   ],
+   "features": [
+    {
+     "feature": "accommodation_included",
+     "quote": "Accommodation",
+     "rationale": "The trip includes list names Accommodation as part of the package."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Breakfast",
+     "rationale": "Breakfast is listed under what the trip includes."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Transfers",
+     "rationale": "Transfers are listed under what the trip includes."
+    }
+   ]
+  }
+ ]
+}

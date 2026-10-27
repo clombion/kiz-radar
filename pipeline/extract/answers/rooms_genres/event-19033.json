@@ -1,0 +1,55 @@
+{
+ "batch": "event-19033",
+ "events": [
+  {
+   "event_id": 19033,
+   "party_rooms": {
+    "count": 2,
+    "quote": "Djs 2 rooms"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Kizomba Room",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "LIVE CONCERT TO DANCE, Kizomba Room"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Semba"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Urban Kiz"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "Tarraxinha"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Tarraxo"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Konpa"
+    }
+   ]
+  }
+ ]
+}

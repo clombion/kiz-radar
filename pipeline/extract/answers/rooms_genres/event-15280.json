@@ -1,0 +1,28 @@
+{
+ "batch": "event-15280",
+ "events": [
+  {
+   "event_id": 15280,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "salsa",
+     "quote": "Dancers, salsa, bachata, and kizomba enthusiasts"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "bachata",
+     "quote": "Dancers, salsa, bachata, and kizomba enthusiasts"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "Dancers, salsa, bachata, and kizomba enthusiasts"
+    }
+   ]
+  }
+ ]
+}

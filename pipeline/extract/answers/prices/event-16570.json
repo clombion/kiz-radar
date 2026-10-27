@@ -1,6 +1,5 @@
 {
  "batch": "event-16570",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16570,
@@ -17,43 +16,40 @@
        "amount": 179,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": 20,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Accommodation + Welcome Drink + Full Pass = €179"
+       "quote": "⭕ Accommodation + Welcome Drink + Full Pass = €179"
       },
       {
        "amount": 189,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": 30,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Accommodation + Welcome Drink + Full Pass = €189"
+       "quote": "⭕ ⭕ Accommodation + Welcome Drink + Full Pass = €189"
       },
       {
        "amount": 199,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": 40,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Accommodation + Welcome Drink + Full Pass = €199"
+       "quote": "⭕ ⭕ ⭕ Accommodation + Welcome Drink + Full Pass = €199"
       }
      ]
     },
@@ -69,15 +65,14 @@
        "amount": 80,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Full Pass (Access (All classes + Friday and Saturday evenings) = €80"
+       "quote": "⭐⭐ Full Pass (Access (All classes + Friday and Saturday evenings) = €80"
       }
      ]
     },
@@ -93,15 +88,14 @@
        "amount": 60,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Full Saturday Pass (Access to all Saturday classes + evening) = €60"
+       "quote": "⭐⭐ Full Saturday Pass (Access to all Saturday classes + evening) = €60"
       }
      ]
     },
@@ -117,20 +111,19 @@
        "amount": 25,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Evening Pass (Friday + Saturday) = €25"
+       "quote": "⭕ ⭕ ⭕ ⭕ Evening Pass (Friday + Saturday) = €25"
       }
      ]
     },
     {
-     "kind": "party",
+     "kind": "day",
      "style": null,
      "label_quote": null,
      "group_size": 1,
@@ -141,20 +134,19 @@
        "amount": 15,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Friday Evening = €15"
+       "quote": "⭕ ⭕ ⭕ ⭕ Friday Evening = €15"
       }
      ]
     },
     {
-     "kind": "party",
+     "kind": "day",
      "style": null,
      "label_quote": null,
      "group_size": 1,
@@ -165,15 +157,14 @@
        "amount": 15,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Saturday Evening = €15"
+       "quote": "⭕ ⭕ ⭕ ⭕ Saturday Evening = €15"
       }
      ]
     }

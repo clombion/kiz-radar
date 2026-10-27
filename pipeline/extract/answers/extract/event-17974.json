@@ -1,0 +1,184 @@
+{
+ "batch": "event-17974",
+ "events": [
+  {
+   "event_id": 17974,
+   "artists": [
+    {
+     "name_as_written": "LION KINGS EVENTS",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "The LION KINGS EVENTS team present the 3rd Edition of the"
+    },
+    {
+     "name_as_written": "DJ DO ZANGADO",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "💜🎧 DJ DO ZANGADO (Godfather)"
+    },
+    {
+     "name_as_written": "DJ PARAISO",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "💜🎧 DJ PARAISO"
+    },
+    {
+     "name_as_written": "DJ NICE LIFE",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "💜🎧 DJ NICE LIFE"
+    },
+    {
+     "name_as_written": "DJ NAO",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "💜🎧 DJ NAO"
+    },
+    {
+     "name_as_written": "DJ ICHIGO",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "💜🎧 DJ ICHIGO"
+    },
+    {
+     "name_as_written": "DJ LUCAS",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "💜🎧 DJ LUCAS"
+    },
+    {
+     "name_as_written": "DJ COLTS",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "💜🎧 DJ COLTS"
+    },
+    {
+     "name_as_written": "DJ MTEE",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "💜🎧 DJ MTEE"
+    },
+    {
+     "name_as_written": "DJ ANGELO",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "💜🎧 DJ ANGELO"
+    },
+    {
+     "name_as_written": "DJ SABER",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "💜🎧 DJ SABER"
+    },
+    {
+     "name_as_written": "DJ WILLY G",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "💜🎧 DJ WILLY G"
+    },
+    {
+     "name_as_written": "DJ MIROKIKOLA",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "💜🎧 DJ MIROKIKOLA"
+    },
+    {
+     "name_as_written": "FABRICIO DO ZANGADO & MAME",
+     "role": "teacher",
+     "style": "Semba",
+     "country": null,
+     "source_line": "💜🗣 FABRICIO DO ZANGADO & MAME (Semba)"
+    },
+    {
+     "name_as_written": "PAO LOU & MARGAUX",
+     "role": "teacher",
+     "style": "Semba",
+     "country": null,
+     "source_line": "💜🗣 PAO LOU & MARGAUX (Semba)"
+    },
+    {
+     "name_as_written": "SABER & MAJDOULINE",
+     "role": "teacher",
+     "style": "Urban kiz",
+     "country": null,
+     "source_line": "💜🗣 SABER & MAJDOULINE (Urban kiz)"
+    },
+    {
+     "name_as_written": "JP & STEPHY",
+     "role": "teacher",
+     "style": "Urban kiz",
+     "country": null,
+     "source_line": "💜🗣 JP & STEPHY (Urban kiz)"
+    },
+    {
+     "name_as_written": "AXEL & LUCCY",
+     "role": "teacher",
+     "style": "Tarraxo",
+     "country": null,
+     "source_line": "💜🗣 AXEL & LUCCY (Tarraxo)"
+    },
+    {
+     "name_as_written": "DINARA",
+     "role": "teacher",
+     "style": "Lady styling & Body moov",
+     "country": null,
+     "source_line": "💜🗣 DINARA (Lady styling & Body moov)"
+    },
+    {
+     "name_as_written": "KIZOTECA MEDIA",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "💜 KIZOTECA MEDIA"
+    },
+    {
+     "name_as_written": "LNA CARLA",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "💜 LNA CARLA"
+    }
+   ],
+   "features": [
+    {
+     "feature": "taxi_dancers",
+     "quote": "TAXIS DANCERS",
+     "rationale": "The section heading announces taxi dancers for the event."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "To take advantage of the negotiated rates, a minimum of 3 nights must be booked.",
+     "rationale": "A hotel with negotiated rates is offered, but the hotel stay is not part of the pass."
+    },
+    {
+     "feature": "workshops",
+     "quote": "5 days of dancing, workshops, and parties",
+     "rationale": "The description states that workshops are part of the five days."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "DRESS CODES",
+     "rationale": "A dress code section lists dress codes for each day."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "(3 rooms)",
+     "rationale": "The programme states that several days take place across three rooms."
+    }
+   ]
+  }
+ ]
+}

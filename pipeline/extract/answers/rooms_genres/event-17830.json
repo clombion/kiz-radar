@@ -1,0 +1,18 @@
+{
+ "batch": "event-17830",
+ "events": [
+  {
+   "event_id": 17830,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "dancing on famous Kizomba na Rua"
+    }
+   ]
+  }
+ ]
+}

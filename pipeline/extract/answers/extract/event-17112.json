@@ -1,0 +1,112 @@
+{
+ "batch": "event-17112",
+ "events": [
+  {
+   "event_id": 17112,
+   "artists": [
+    {
+     "name_as_written": "KYAKU KYADAFF",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🎤 KYAKU KYADAFF"
+    },
+    {
+     "name_as_written": "KLAUDIO HOSHAI",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🎤 KLAUDIO HOSHAI"
+    },
+    {
+     "name_as_written": "BAKONGO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🟠 BAKONGO"
+    },
+    {
+     "name_as_written": "COBIÇADO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🟠 COBIÇADO"
+    },
+    {
+     "name_as_written": "ELYDIO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🟠 ELYDIO"
+    },
+    {
+     "name_as_written": "MIRO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🟠 MIRO"
+    },
+    {
+     "name_as_written": "ARY & MAURA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🟡 ARY & MAURA"
+    },
+    {
+     "name_as_written": "CLAUDIO & VANESSA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🟡 CLAUDIO & VANESSA"
+    },
+    {
+     "name_as_written": "FABRICIO",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🟡 FABRICIO"
+    },
+    {
+     "name_as_written": "PAULO & LANNA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🟡 PAULO & LANNA"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Workshops with top teachers",
+     "rationale": "The event lists workshops with top teachers as part of what is prepared."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Afternoon Social",
+     "rationale": "An afternoon social is offered as part of the programme."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "DRESS CODES",
+     "rationale": "The description explicitly states dress codes for the parties."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "Friday Party — BLACK",
+     "rationale": "Parties are themed by colour, such as the black Friday Party."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Singers",
+     "rationale": "Singers are listed in the line-up, indicating live singing performances."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "Venue: Novotel Airport – Warsaw, Poland",
+     "rationale": "The venue is the Novotel Airport, which is the same hotel listed under Hotel for accommodation."
+    }
+   ]
+  }
+ ]
+}

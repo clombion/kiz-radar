@@ -1,6 +1,5 @@
 {
  "batch": "event-18282",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18282,
@@ -10,15 +9,14 @@
      "style": null,
      "label_quote": "♻️ PASS & ROOM PRICES",
      "group_size": 1,
-     "days": 4,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 45,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": 30,
@@ -31,7 +29,7 @@
     }
    ],
    "rule_quotes": [
-    "price increases by €5 each month thereafter"
+    "First 30 passes at €45; price increases by €5 each month thereafter."
    ]
   }
  ]

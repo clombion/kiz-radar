@@ -1,0 +1,28 @@
+{
+ "batch": "event-19453",
+ "events": [
+  {
+   "event_id": 19453,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba, Semba, Kuduro"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba, Semba, Kuduro"
+    },
+    {
+     "genre": "kuduro",
+     "genre_as_written": "Kuduro",
+     "quote": "Kizomba, Semba, Kuduro"
+    }
+   ]
+  }
+ ]
+}

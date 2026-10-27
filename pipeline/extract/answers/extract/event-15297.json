@@ -1,0 +1,69 @@
+{
+ "batch": "event-15297",
+ "events": [
+  {
+   "event_id": 15297,
+   "artists": [
+    {
+     "name_as_written": "Starlight",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "• A unique format of master classes with the participation of foreign star teachers Starlight."
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_levels_beginners",
+     "quote": "styling master classes for all levels",
+     "rationale": "The text says the styling master classes are for all levels."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Master classes and parties in 5 directions",
+     "rationale": "The event offers master classes across five dance directions."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Afterparty for guests staying in festival hotels",
+     "rationale": "The festival refers to festival hotels where guests stay, which suggests a partner or recommended hotel."
+    },
+    {
+     "feature": "after_party",
+     "quote": "Afterparty for guests staying in festival hotels",
+     "rationale": "An afterparty is explicitly offered."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Live salsa concert",
+     "rationale": "A live concert is explicitly part of the programme."
+    },
+    {
+     "feature": "competition",
+     "quote": "World Bachata Social World Cup qualifying round (amateurs and professionals)",
+     "rationale": "A qualifying round for a World Cup is a competition."
+    },
+    {
+     "feature": "shows",
+     "quote": "shows, animations",
+     "rationale": "Shows are explicitly listed as part of the event."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "bootcamps",
+     "rationale": "Bootcamps are explicitly listed as part of the event."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "themed halls and parties",
+     "rationale": "Themed parties are explicitly announced."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Kizomba social room",
+     "rationale": "The event has a separate Kizomba social room in addition to other halls."
+    }
+   ]
+  }
+ ]
+}

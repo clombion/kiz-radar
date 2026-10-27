@@ -1,0 +1,41 @@
+{
+ "batch": "event-15414",
+ "events": [
+  {
+   "event_id": 15414,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 Rooms"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa ✧ Bachata ✧ Kizomba ✧ Zouk"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Salsa ✧ Bachata ✧ Kizomba ✧ Zouk"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Salsa ✧ Bachata ✧ Kizomba ✧ Zouk"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Brazilian Zouk",
+     "quote": "Brazilian Zouk:"
+    },
+    {
+     "genre": "reggaeton",
+     "genre_as_written": "Reggaeton",
+     "quote": "(Reggaeton)"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "batch": "event-19447",
+ "events": [
+  {
+   "event_id": 19447,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Holding each other while dancing Kizomba beside cascading waterfalls"
+    }
+   ]
+  }
+ ]
+}

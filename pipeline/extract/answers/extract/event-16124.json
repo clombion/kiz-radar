@@ -1,0 +1,36 @@
+{
+ "batch": "event-16124",
+ "events": [
+  {
+   "event_id": 16124,
+   "artists": [],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE!",
+     "rationale": "The description states the event is all in one, and says guests can enjoy everything without leaving the hotel."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 fully air-conditioned rooms with different vibes",
+     "rationale": "Two separate dance rooms with different music styles are described."
+    },
+    {
+     "feature": "workshops",
+     "quote": "3 days of workshops in 2 simultaneous rooms to choose from",
+     "rationale": "Dance workshops are explicitly listed as part of the festival."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "The best Pool Party of the summer",
+     "rationale": "A pool party is explicitly advertised as part of the event."
+    },
+    {
+     "feature": "shows",
+     "quote": "2 nights of shows with companies and guest artists",
+     "rationale": "Shows by companies and guest artists are explicitly promised."
+    }
+   ]
+  }
+ ]
+}

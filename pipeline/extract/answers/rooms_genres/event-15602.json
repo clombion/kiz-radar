@@ -1,0 +1,53 @@
+{
+ "batch": "event-15602",
+ "events": [
+  {
+   "event_id": 15602,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 Dancefloors"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Room 1",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "Room 1: 100% Bachata"
+    },
+    {
+     "name_as_written": "Room 2",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "Room 2: 100% Kizomba"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "1 100% Kizomba, Kompa, Semba"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Kompa",
+     "quote": "1 100% Kizomba, Kompa, Semba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "1 100% Kizomba, Kompa, Semba"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Room 1: 100% Bachata"
+    }
+   ]
+  }
+ ]
+}

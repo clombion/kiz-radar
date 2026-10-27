@@ -1,0 +1,107 @@
+{
+ "batch": "event-16678",
+ "events": [
+  {
+   "event_id": 16678,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 dance studios"
+   },
+   "class_rooms": {
+    "count": 8,
+    "quote": "8 dance floors"
+   },
+   "rooms": [
+    {
+     "name_as_written": "1 SBK studio",
+     "kind": "party",
+     "genres": [],
+     "quote": "1 SBK studio"
+    },
+    {
+     "name_as_written": "1 Kizomba studio",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "1 Kizomba studio"
+    },
+    {
+     "name_as_written": null,
+     "kind": "class",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "2 Salsa"
+    },
+    {
+     "name_as_written": null,
+     "kind": "class",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "2 Bachata"
+    },
+    {
+     "name_as_written": null,
+     "kind": "class",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "2 Kizomba"
+    },
+    {
+     "name_as_written": null,
+     "kind": "class",
+     "genres": [
+      "reggaeton",
+      "other"
+     ],
+     "quote": "2 Individual Dances (Reggaeton, Belly Dance, etc.)"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa • Bachata • Kizomba • Reggaeton • Afro • Oriental • Heels"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Salsa • Bachata • Kizomba • Reggaeton • Afro • Oriental • Heels"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "1 Kizomba studio"
+    },
+    {
+     "genre": "reggaeton",
+     "genre_as_written": "Reggaeton",
+     "quote": "Farah (Reggaeton)"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "Will MP (Afro)"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Oriental",
+     "quote": "Marine (Oriental dance)"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Heels",
+     "quote": "Lili (Heels)"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Belly Dance",
+     "quote": "2 Individual Dances (Reggaeton, Belly Dance, etc.)"
+    }
+   ]
+  }
+ ]
+}

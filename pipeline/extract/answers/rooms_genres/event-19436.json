@@ -1,0 +1,58 @@
+{
+ "batch": "event-19436",
+ "events": [
+  {
+   "event_id": 19436,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "focus on KIZOMBA & SEMBA DANCING"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "SEMBA",
+     "quote": "focus on KIZOMBA & SEMBA DANCING"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "Semba | Afro | Tarraxinha"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "Semba | Afro | Tarraxinha"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Zouk",
+     "quote": "Ghetto Zouk | Funana | Coladeira | Zouk | Kompa"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Kompa",
+     "quote": "Zouk | Kompa | Cabo Love"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "urbankiz",
+     "quote": "#urbankizlondon"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Funana",
+     "quote": "Ghetto Zouk | Funana | Coladeira"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Coladeira",
+     "quote": "Funana | Coladeira | Zouk"
+    }
+   ]
+  }
+ ]
+}

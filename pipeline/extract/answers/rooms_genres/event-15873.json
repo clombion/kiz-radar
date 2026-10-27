@@ -1,0 +1,33 @@
+{
+ "batch": "event-15873",
+ "events": [
+  {
+   "event_id": 15873,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "salsa",
+     "quote": "LA / NY salsa, Cha-cha, animations"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Cha-cha",
+     "quote": "LA / NY salsa, Cha-cha, animations"
+    }
+   ]
+  }
+ ]
+}

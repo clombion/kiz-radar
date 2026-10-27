@@ -1,0 +1,56 @@
+{
+ "batch": "event-15944",
+ "events": [
+  {
+   "event_id": 15944,
+   "artists": [
+    {
+     "name_as_written": "Vladimir Izomba & Nikolett",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "This retreat is hosted and curated by Vladimir Izomba & Nikolett, the team behind Budapest Kizomba Connection, one of the pioneering kizomba festivals worldwide combined with first hand local Angolan insights and experience."
+    },
+    {
+     "name_as_written": "Academia de Dança Sona Passada LDA",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "It is organized in close collaboration with Academia de Dança Sona Passada LDA, our local partner in Luanda, who supports the retreat across logistics, cultural programming, dance classes, and the professional Angolan team accompanying the group throughout the experience."
+    }
+   ],
+   "features": [
+    {
+     "feature": "accommodation_included",
+     "quote": "10 nights accommodation in a resort in Luanda (double or twin rooms)",
+     "rationale": "The included list states that the package covers ten nights of accommodation in a resort."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Daily breakfast",
+     "rationale": "Breakfast is listed among the items included in the retreat package."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Group dance classes and socials",
+     "rationale": "Group dance classes are part of what is included in the retreat."
+    },
+    {
+     "feature": "private_classes",
+     "quote": "1 private dance class per participant",
+     "rationale": "Each participant receives one private dance class as part of the package."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "Professional taxi dancer team and local guides throughout the retreat",
+     "rationale": "The description states that a professional taxi dancer team is present throughout the retreat."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Airport pick-up and drop-off",
+     "rationale": "Airport transfers are listed as included in the package."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,31 @@
+{
+ "batch": "event-15408",
+ "events": [
+  {
+   "event_id": 15408,
+   "party_rooms": {
+    "count": 4,
+    "quote": "4 Dance Floors"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa, Bachata, Kizomba"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Salsa, Bachata, Kizomba"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Salsa, Bachata, Kizomba"
+    }
+   ]
+  }
+ ]
+}

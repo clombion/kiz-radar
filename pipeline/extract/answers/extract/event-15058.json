@@ -1,0 +1,191 @@
+{
+ "batch": "event-15058",
+ "events": [
+  {
+   "event_id": 15058,
+   "artists": [
+    {
+     "name_as_written": "Dj Blvck Skyle",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Dj Blvck Skyle"
+    },
+    {
+     "name_as_written": "Dj Nice life",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Dj Nice life"
+    },
+    {
+     "name_as_written": "Dj Fofo-Jah",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Dj Fofo-Jah"
+    },
+    {
+     "name_as_written": "Dj Chad",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Dj Chad"
+    },
+    {
+     "name_as_written": "Dj Levis",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Dj Levis"
+    },
+    {
+     "name_as_written": "Dj Jack",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Dj Jack"
+    },
+    {
+     "name_as_written": "Dj T’peak",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Dj T’peak"
+    },
+    {
+     "name_as_written": "Dj Safir’s Beats",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Dj Safir’s Beats"
+    },
+    {
+     "name_as_written": "Deejay Elson",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Deejay Elson"
+    },
+    {
+     "name_as_written": "Gwany & Liliana",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Gwany & Liliana"
+    },
+    {
+     "name_as_written": "Jack & Sara",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Jack & Sara"
+    },
+    {
+     "name_as_written": "Antho & Bene",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Antho & Bene"
+    },
+    {
+     "name_as_written": "Carlo & Paty",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Carlo & Paty"
+    },
+    {
+     "name_as_written": "Drick & Laurence",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Drick & Laurence"
+    },
+    {
+     "name_as_written": "Asia",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Asia"
+    },
+    {
+     "name_as_written": "Axel",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Axel"
+    },
+    {
+     "name_as_written": "Lucy",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Lucy"
+    },
+    {
+     "name_as_written": "T’peak",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ T’peak"
+    },
+    {
+     "name_as_written": "Blandine",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Blandine"
+    },
+    {
+     "name_as_written": "Natacha Claude",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✔️ Natacha Claude"
+    },
+    {
+     "name_as_written": "DANI TOTHEDANCE",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "DANI TOTHEDANCE"
+    },
+    {
+     "name_as_written": "AXEL KOUMBA",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "AXEL KOUMBA"
+    }
+   ],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 PARTY ROOMS/2 VIBES",
+     "rationale": "The text announces two party rooms, so there is more than one dance room."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "PRE-PARTY",
+     "rationale": "A separate pre-party section is listed before the main event."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "NOVOTEL LYON BRON MEETING & EVENTS",
+     "rationale": "The event venue, pre-party and accommodation are all listed at the same Novotel hotel."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "HOW TO BOOK YOUR HOTEL ROOM ?",
+     "rationale": "Guests are directed to book a hotel room at the Novotel by email, which is a negotiated hotel arrangement not part of the pass."
+    },
+    {
+     "feature": "workshops",
+     "quote": "TEACHERS",
+     "rationale": "A list of teaching couples and solo teachers indicates dance classes are part of the event."
+    }
+   ]
+  }
+ ]
+}

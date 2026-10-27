@@ -1,0 +1,188 @@
+{
+ "batch": "event-15287",
+ "events": [
+  {
+   "event_id": 15287,
+   "artists": [
+    {
+     "name_as_written": "Diamond Fam",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Diamond Fam welcomes you already now to next year’s DIAMONDS FOREVER EDITION 3 27/2-1/3 2026!!! A weekend packed with inspiration and joy on 3 dance floors. We offer workshops with international instructors and DJs from Europe."
+    },
+    {
+     "name_as_written": "Gwany & Liliana",
+     "role": "teacher",
+     "style": "Urbankiz & Tarraxo",
+     "country": "France",
+     "source_line": "Gwany & Liliana (France)"
+    },
+    {
+     "name_as_written": "Mamadou & Mickaela",
+     "role": "teacher",
+     "style": "Urbankiz & Tarraxo",
+     "country": "Sweden",
+     "source_line": "Mamadou & Mickaela (Sweden)"
+    },
+    {
+     "name_as_written": "Ledou Kingsman & Amina",
+     "role": "teacher",
+     "style": "Urbankiz & Tarraxo",
+     "country": "France & Sweden",
+     "source_line": "Ledou Kingsman & Amina (France & Sweden)"
+    },
+    {
+     "name_as_written": "Master P",
+     "role": "teacher",
+     "style": "Urbankiz & Tarraxo",
+     "country": "Italy",
+     "source_line": "Master P (Italy)"
+    },
+    {
+     "name_as_written": "Lessly",
+     "role": "teacher",
+     "style": "Urbankiz & Tarraxo",
+     "country": "Sweden",
+     "source_line": "Lessly (Sweden)"
+    },
+    {
+     "name_as_written": "Gazl & Katariina",
+     "role": "teacher",
+     "style": "Urbankiz & Tarraxo",
+     "country": "France",
+     "source_line": "Gazl & Katariina -Kompa- (France )"
+    },
+    {
+     "name_as_written": "Pierre & Ulyana",
+     "role": "teacher",
+     "style": "Urbankiz & Tarraxo",
+     "country": "Sweden & Belarus",
+     "source_line": "Pierre & Ulyana (Sweden & Belarus)"
+    },
+    {
+     "name_as_written": "Gazl & Isabelle",
+     "role": "teacher",
+     "style": "Urbankiz & Tarraxo",
+     "country": "France",
+     "source_line": "Gazl & Isabelle -Kompa- (France)"
+    },
+    {
+     "name_as_written": "Dj Poema beat",
+     "role": "dj",
+     "style": "Urbankiz & Tarraxo",
+     "country": "Sweden",
+     "source_line": "Dj Poema beat (Sweden)"
+    },
+    {
+     "name_as_written": "Dj Vaxx",
+     "role": "dj",
+     "style": "Urbankiz & Tarraxo",
+     "country": "France",
+     "source_line": "Dj Vaxx (France)"
+    },
+    {
+     "name_as_written": "DJ Joey",
+     "role": "dj",
+     "style": "Urbankiz & Tarraxo",
+     "country": "Sweden",
+     "source_line": "DJ Joey (Sweden)"
+    },
+    {
+     "name_as_written": "Dj Jois",
+     "role": "dj",
+     "style": "Urbankiz & Tarraxo",
+     "country": "Sweden",
+     "source_line": "Dj Jois (Anna) (Sweden)"
+    },
+    {
+     "name_as_written": "Dj C-PRIMO",
+     "role": "dj",
+     "style": "Urbankiz & Tarraxo",
+     "country": "Sweden",
+     "source_line": "Dj C-PRIMO (Sweden)"
+    },
+    {
+     "name_as_written": "Dj Fofinho",
+     "role": "dj",
+     "style": "Urbankiz & Tarraxo",
+     "country": "France",
+     "source_line": "Dj Fofinho (France)"
+    },
+    {
+     "name_as_written": "Yves Raymond",
+     "role": "teacher",
+     "style": "Kizomba & Semba",
+     "country": "Sweden",
+     "source_line": "Yves Raymond (Sweden)"
+    },
+    {
+     "name_as_written": "Hanna & Doudou",
+     "role": "teacher",
+     "style": "Kizomba & Semba",
+     "country": "Sweden",
+     "source_line": "Hanna & Doudou (Sweden)"
+    },
+    {
+     "name_as_written": "Tomas Dansar & Susan",
+     "role": "teacher",
+     "style": "Kizomba & Semba",
+     "country": "Sweden",
+     "source_line": "Tomas Dansar & Susan (Sweden)"
+    },
+    {
+     "name_as_written": "Dj Beck",
+     "role": "dj",
+     "style": "Kizomba & semba",
+     "country": "Finland",
+     "source_line": "Dj Beck (Finland)"
+    },
+    {
+     "name_as_written": "Dj Adnan",
+     "role": "dj",
+     "style": "Kizomba & semba",
+     "country": "Sweden",
+     "source_line": "Dj Adnan (Sweden)"
+    },
+    {
+     "name_as_written": "Dj Denis",
+     "role": "dj",
+     "style": "Kizomba & semba",
+     "country": "Sweden",
+     "source_line": "Dj Denis (Sweden)"
+    },
+    {
+     "name_as_written": "Dj Mia",
+     "role": "dj",
+     "style": "Kizomba & semba",
+     "country": "Tallinn",
+     "source_line": "Dj Mia (Tallinn)"
+    },
+    {
+     "name_as_written": "Josefin and David",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": "Sweden",
+     "source_line": "Josefin and David (Sweden)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "We offer workshops with international instructors",
+     "rationale": "The description states that workshops with international instructors are offered."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "on 3 dance floors",
+     "rationale": "Three dance floors means more than one dance room."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "There will also be more than 60 fantastic taxi dancers",
+     "rationale": "The description says taxi dancers will be present during the parties."
+    }
+   ]
+  }
+ ]
+}

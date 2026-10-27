@@ -1,34 +1,9 @@
 {
  "batch": "event-16054",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16054,
    "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "PRICE",
-     "group_size": 1,
-     "days": 5,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 620,
-       "currency": "EUR",
-       "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€620: Full Pass + Full-board Accommodation"
-      }
-     ]
-    },
     {
      "kind": "package",
      "style": null,
@@ -41,8 +16,7 @@
        "amount": 620,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -65,8 +39,7 @@
        "amount": 570,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -89,8 +62,7 @@
        "amount": 720,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -113,8 +85,7 @@
        "amount": 650,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -124,9 +95,33 @@
        "quote": "Double room: €650"
       }
      ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "4★ HOTEL – SUPERIOR ROOM – FULL BOARD",
+     "group_size": 1,
+     "days": 6,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 150,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Single room: €150"
+      }
+     ]
     }
    ],
    "rule_quotes": [
+    "Participation and booking of passes + accommodation are exclusively reserved for members of the Smooth Dances Association.",
     "Full board applies to all prices offered."
    ]
   }

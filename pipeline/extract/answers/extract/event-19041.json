@@ -1,0 +1,64 @@
+{
+ "batch": "event-19041",
+ "events": [
+  {
+   "event_id": 19041,
+   "artists": [
+    {
+     "name_as_written": "ÓSCAR DEL MORAL",
+     "role": "media",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "ÓSCAR DEL MORAL (Vigo)🇪🇸"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Workshops, shows, social dancing",
+     "rationale": "The description states that workshops are part of the event."
+    },
+    {
+     "feature": "shows",
+     "quote": "Workshops, shows, social dancing",
+     "rationale": "The description lists shows as part of the event."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "PRE-PARTY @ PALMERA PLAYA",
+     "rationale": "A Friday pre-party at Palmera Playa is listed in the schedule."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "*** NIGHT SOCIAL @ HOTEL ATTICA 21 ***",
+     "rationale": "The socials take place at Hotel Attica 21, where the hotel section offers rooms to attendees."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Discount Code:",
+     "rationale": "A discount code for room bookings at Hotel Attica21 is offered, without accommodation being part of the pass."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "DRESS CODE:",
+     "rationale": "The schedule states a dress code for the parties."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "AFTERNOON/EVENING SOCIAL @ HOTEL ATTICA 21",
+     "rationale": "An afternoon/evening social is scheduled on Sunday."
+    },
+    {
+     "feature": "live_music",
+     "quote": "concert",
+     "rationale": "The party pass includes a concert."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "SOCIAL (2 ROOMS)",
+     "rationale": "The Saturday social is held across two rooms."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,28 @@
+{
+ "batch": "event-16069",
+ "events": [
+  {
+   "event_id": 16069,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 ROOMS — 2 VIBES"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Room 1",
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "Room 1"
+    },
+    {
+     "name_as_written": "Room 2",
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "Room 2"
+    }
+   ],
+   "genres": []
+  }
+ ]
+}

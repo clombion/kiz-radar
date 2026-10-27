@@ -1,0 +1,28 @@
+{
+ "batch": "event-19060",
+ "events": [
+  {
+   "event_id": 19060,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Over 3000 sqm of dance floor with Bachata, Kiz and WCS"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "🔥Kizomba🔥"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "WCS",
+     "quote": "Bachata, Kiz and WCS"
+    }
+   ]
+  }
+ ]
+}

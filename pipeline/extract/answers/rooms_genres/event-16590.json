@@ -1,0 +1,18 @@
+{
+ "batch": "event-16590",
+ "events": [
+  {
+   "event_id": 16590,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Emily Tarraxo"
+    }
+   ]
+  }
+ ]
+}

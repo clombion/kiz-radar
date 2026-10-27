@@ -1,6 +1,5 @@
 {
  "batch": "event-17451",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17451,
@@ -8,7 +7,7 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "4️⃣ PACKAGE DETAILS:",
+     "label_quote": null,
      "group_size": 1,
      "days": 12,
      "includes_hotel": true,
@@ -17,8 +16,7 @@
        "amount": 1800,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -30,11 +28,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "the cost is based on a shared room arrangement",
-    "the cost of airfares from your home city to Luanda are not included",
-    "you may also have to pay a balance in case the cost of our BK packages increase next year"
-   ]
+   "rule_quotes": []
   }
  ]
 }

@@ -1,0 +1,18 @@
+{
+ "batch": "event-18757",
+ "events": [
+  {
+   "event_id": 18757,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba Sensual",
+     "quote": "Kizomba Sensual Festival 2027"
+    }
+   ]
+  }
+ ]
+}

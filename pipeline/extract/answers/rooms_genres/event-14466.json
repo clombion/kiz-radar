@@ -1,0 +1,21 @@
+{
+ "batch": "event-14466",
+ "events": [
+  {
+   "event_id": 14466,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 Rooms, 2 Atmospheres"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "NEVER ENOUGH KIZOMBA FESTIVAL"
+    }
+   ]
+  }
+ ]
+}

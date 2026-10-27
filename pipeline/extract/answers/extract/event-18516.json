@@ -1,0 +1,41 @@
+{
+ "batch": "event-18516",
+ "events": [
+  {
+   "event_id": 18516,
+   "artists": [
+    {
+     "name_as_written": "Salsa Zone",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Salsa Zone and Brighton Fiesta Latinos are thrilled to announce our second International SBK Summer Festival this year!"
+    },
+    {
+     "name_as_written": "Brighton Fiesta Latinos",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Salsa Zone and Brighton Fiesta Latinos are thrilled to announce our second International SBK Summer Festival this year!"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Workshops run from 2:00 PM to 5:00 PM",
+     "rationale": "The schedule states that workshops run during the afternoon, so dance classes are part of the event."
+    },
+    {
+     "feature": "shows",
+     "quote": "outstanding performances and shows",
+     "rationale": "The description promises outstanding performances and shows by artists."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 rooms",
+     "rationale": "The event has three dance rooms: Salsa, Bachata and Kizomba."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,67 @@
+{
+ "batch": "event-15431",
+ "events": [
+  {
+   "event_id": 15431,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 Dancefloors and 2 Atmospheres"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Golden Wave I",
+     "kind": "unspecified",
+     "genres": [
+      "kizomba",
+      "urbankiz",
+      "tarraxo"
+     ],
+     "quote": "Golden Wave I – Kizomba, Urban Kiz, Tarraxo"
+    },
+    {
+     "name_as_written": "Golden Wave II",
+     "kind": "unspecified",
+     "genres": [
+      "kizomba",
+      "semba",
+      "kompa"
+     ],
+     "quote": "Golden Wave II – Authentic Kizomba, Semba, Kompa"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba and its vibrant family of dance styles"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "including Kizomba, Semba, Urban Kiz"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Golden Wave I – Kizomba, Urban Kiz, Tarraxo"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Golden Wave I – Kizomba, Urban Kiz, Tarraxo"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Kompa",
+     "quote": "Golden Wave II – Authentic Kizomba, Semba, Kompa"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "Kompa, Tarraxo or Afro"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,89 @@
+{
+ "batch": "event-14732",
+ "events": [
+  {
+   "event_id": 14732,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 PARTY ROOMS"
+   },
+   "class_rooms": {
+    "count": 3,
+    "quote": "3 WS AREA"
+   },
+   "rooms": [
+    {
+     "name_as_written": "Room 1",
+     "kind": "party",
+     "genres": [],
+     "quote": "Night Party Room 1"
+    },
+    {
+     "name_as_written": "Room 2",
+     "kind": "party",
+     "genres": [],
+     "quote": "Night Party Room 2"
+    },
+    {
+     "name_as_written": "Room 1",
+     "kind": "class",
+     "genres": [],
+     "quote": "Workshops – Room 1"
+    },
+    {
+     "name_as_written": "2A",
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "Social – Room 2 & 2A"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBANKIZ",
+     "quote": "URBANKIZ"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "TARRAXO",
+     "quote": "TARRAXO"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "TARRAXINHA",
+     "quote": "TARRAXINHA"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "KIZOMBA"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "SEMBA",
+     "quote": "SEMBA"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "KONPA",
+     "quote": "KONPA"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "GHETTO ZOUK",
+     "quote": "GHETTO ZOUK"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "DOUCEUR",
+     "quote": "DOUCEUR"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "AFRO",
+     "quote": "AFRO"
+    }
+   ]
+  }
+ ]
+}

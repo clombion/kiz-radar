@@ -1,0 +1,199 @@
+{
+ "batch": "event-18915",
+ "events": [
+  {
+   "event_id": 18915,
+   "artists": [
+    {
+     "name_as_written": "DJ BLVCK SKYLE",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "* DJ BLVCK SKYLE"
+    },
+    {
+     "name_as_written": "DJ MTEE",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "* DJ MTEE"
+    },
+    {
+     "name_as_written": "DJ STOMPY",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "* DJ STOMPY"
+    },
+    {
+     "name_as_written": "SAMY SAM BEATS",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "* SAMY SAM BEATS"
+    },
+    {
+     "name_as_written": "DEEJAY ELSON",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "* DEEJAY ELSON"
+    },
+    {
+     "name_as_written": "SAFIR BEATS",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "* SAFIR BEATS"
+    },
+    {
+     "name_as_written": "DJ NATY",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "* DJ NATY"
+    },
+    {
+     "name_as_written": "DJ MIKY MIKE",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "* DJ MIKY MIKE"
+    },
+    {
+     "name_as_written": "DJ CHORRON",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "* DJ CHORRON"
+    },
+    {
+     "name_as_written": "DJ DANILO PLINIO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "* DJ DANILO PLINIO"
+    },
+    {
+     "name_as_written": "Iron Mams",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "* Iron Mams"
+    },
+    {
+     "name_as_written": "Ivana",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "* Ivana"
+    },
+    {
+     "name_as_written": "Dimdim",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "* Dimdim"
+    },
+    {
+     "name_as_written": "Ophélie",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "* Ophélie"
+    },
+    {
+     "name_as_written": "Dadou",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "* Dadou"
+    },
+    {
+     "name_as_written": "Lastar",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "* Lastar"
+    },
+    {
+     "name_as_written": "Franet",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "* Franet"
+    },
+    {
+     "name_as_written": "Jade",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "* Jade"
+    },
+    {
+     "name_as_written": "Christina",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "* Christina"
+    },
+    {
+     "name_as_written": "Daisy",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "* Daisy"
+    },
+    {
+     "name_as_written": "Les Gouyadness",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "* Les Gouyadness"
+    },
+    {
+     "name_as_written": "LODE ART MÉDIA",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "* LODE ART MÉDIA"
+    },
+    {
+     "name_as_written": "K",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "* K"
+    },
+    {
+     "name_as_written": "L",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "* L"
+    },
+    {
+     "name_as_written": "B",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "* B"
+    },
+    {
+     "name_as_written": "TEAM KIZMANIE",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "* TEAM KIZMANIE"
+    }
+   ],
+   "features": [
+    {
+     "feature": "taxi_dancers",
+     "quote": "TAXI DANCERS",
+     "rationale": "The section heading states that taxi dancers are present at the event."
+    }
+   ]
+  }
+ ]
+}

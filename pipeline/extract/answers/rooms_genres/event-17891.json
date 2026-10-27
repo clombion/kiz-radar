@@ -1,0 +1,23 @@
+{
+ "batch": "event-17891",
+ "events": [
+  {
+   "event_id": 17891,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBAN KIZZ",
+     "quote": "URBAN KIZZ"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "TARRAXO",
+     "quote": "TARRAXO"
+    }
+   ]
+  }
+ ]
+}

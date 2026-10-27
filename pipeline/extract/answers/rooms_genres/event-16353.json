@@ -1,0 +1,18 @@
+{
+ "batch": "event-16353",
+ "events": [
+  {
+   "event_id": 16353,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "it’s a journey into the heart of kizomba"
+    }
+   ]
+  }
+ ]
+}

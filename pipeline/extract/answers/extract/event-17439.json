@@ -1,0 +1,126 @@
+{
+ "batch": "event-17439",
+ "events": [
+  {
+   "event_id": 17439,
+   "artists": [
+    {
+     "name_as_written": "Eliza Sala",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "▪️Eliza Sala 🇦🇴"
+    },
+    {
+     "name_as_written": "Tony Pirata",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇻",
+     "source_line": "▪️Tony Pirata 🇨🇻"
+    },
+    {
+     "name_as_written": "Márcio Junqueira",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "▪️Márcio Junqueira 🇦🇴"
+    },
+    {
+     "name_as_written": "Kinkela & Giorgia",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "▪️Kinkela & Giorgia 🇦🇴"
+    },
+    {
+     "name_as_written": "Ary & Maura",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "▪️Ary & Maura 🇦🇴"
+    },
+    {
+     "name_as_written": "Maik & Daniela",
+     "role": "teacher",
+     "style": null,
+     "country": "🇩🇪",
+     "source_line": "▪️Maik & Daniela 🇩🇪"
+    },
+    {
+     "name_as_written": "Tony Viser & Carla Andrade",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴🇨🇻",
+     "source_line": "▪️Tony Viser & Carla Andrade 🇦🇴🇨🇻"
+    },
+    {
+     "name_as_written": "MALANDRO",
+     "role": "dj",
+     "style": null,
+     "country": "🇬🇼🇨🇻",
+     "source_line": "▪️MALANDRO 🇬🇼🇨🇻"
+    },
+    {
+     "name_as_written": "KAPITULA",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "▪️KAPITULA 🇦🇴"
+    },
+    {
+     "name_as_written": "DJANE CARMEN",
+     "role": "dj",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "▪️DJANE CARMEN 🇪🇸"
+    },
+    {
+     "name_as_written": "DJ BLACK GENUÍNO",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "▪️DJ BLACK GENUÍNO 🇦🇴"
+    },
+    {
+     "name_as_written": "DJ FENOMENO",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "▪️DJ FENOMENO 🇦🇴"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "WORKSHOPS",
+     "rationale": "The description lists workshops as a feature of the event under the highlights."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Masterclass",
+     "rationale": "The schedule explicitly includes a Masterclass."
+    },
+    {
+     "feature": "live_music",
+     "quote": "L I V E M U S I C",
+     "rationale": "A live music section heading appears in the artist listing."
+    },
+    {
+     "feature": "shows",
+     "quote": "SHOW",
+     "rationale": "A show section is listed among the event's artist categories."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "🔵Workshop + Social Dance 🟠11:00-21:00",
+     "rationale": "A social dance session is scheduled during the daytime on Saturday."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "H O T E L O P T I O N S",
+     "rationale": "A hotel options section suggests recommended or partner hotels for attendees."
+    }
+   ]
+  }
+ ]
+}

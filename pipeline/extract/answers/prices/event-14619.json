@@ -1,6 +1,5 @@
 {
  "batch": "event-14619",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 14619,
@@ -17,8 +16,7 @@
        "amount": 70,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": 30,
@@ -31,8 +29,7 @@
        "amount": 90,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": 50,
@@ -55,8 +52,7 @@
        "amount": 160,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": 50,

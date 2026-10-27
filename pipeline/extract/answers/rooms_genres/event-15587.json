@@ -1,0 +1,79 @@
+{
+ "batch": "event-15587",
+ "events": [
+  {
+   "event_id": 15587,
+   "party_rooms": {
+    "count": 4,
+    "quote": "Main room / Kizomba & Semba room /\nDouceur& Tarraxhina / Zouk"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Main room",
+     "kind": "party",
+     "genres": [],
+     "quote": "Main room"
+    },
+    {
+     "name_as_written": "Kizomba & Semba room",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "semba"
+     ],
+     "quote": "Kizomba & Semba room"
+    },
+    {
+     "name_as_written": "Douceur& Tarraxhina",
+     "kind": "party",
+     "genres": [
+      "douceur",
+      "tarraxinha"
+     ],
+     "quote": "Douceur& Tarraxhina"
+    },
+    {
+     "name_as_written": "Zouk",
+     "kind": "party",
+     "genres": [
+      "zouk"
+     ],
+     "quote": "Zouk"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBANKIZ",
+     "quote": "URBANKIZ TEACHERS"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "KIZOMBA & SEMBA TEACHERS"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "KIZOMBA & SEMBA TEACHERS"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "Douceur& Tarraxhina"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxhina",
+     "quote": "Douceur& Tarraxhina"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Zouk",
+     "quote": "Zouk social"
+    }
+   ]
+  }
+ ]
+}

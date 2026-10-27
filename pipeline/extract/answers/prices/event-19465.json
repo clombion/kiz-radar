@@ -1,6 +1,5 @@
 {
  "batch": "event-19465",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 19465,
@@ -17,15 +16,14 @@
        "amount": 10,
        "currency": "USD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "US$10 at the door"
+       "quote": "💸 US$10 at the door — completely FREE for VLX participants!"
       }
      ]
     }

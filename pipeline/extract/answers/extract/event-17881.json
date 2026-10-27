@@ -1,0 +1,44 @@
+{
+ "batch": "event-17881",
+ "events": [
+  {
+   "event_id": 17881,
+   "artists": [
+    {
+     "name_as_written": "PINTO PICASSO",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🎙️PINTO PICASSO will be performing with us… 😍🔥"
+    }
+   ],
+   "features": [
+    {
+     "feature": "multiple_rooms",
+     "quote": "Salsa / Bachata / Kizomba rooms",
+     "rationale": "The line lists separate Salsa, Bachata and Kizomba rooms, which indicates more than one dance room."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Pool parties",
+     "rationale": "The description lists pool parties as part of the event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Workshops with the best artists",
+     "rationale": "The event includes workshops with artists."
+    },
+    {
+     "feature": "shows",
+     "quote": "PINTO PICASSO will be performing with us",
+     "rationale": "A named artist is announced as performing at the event."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "TRANSFER DEL EVENTO DISPONIBLE",
+     "rationale": "An event transfer is offered, which is a shuttle service."
+    }
+   ]
+  }
+ ]
+}

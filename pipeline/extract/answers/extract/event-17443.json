@@ -1,0 +1,31 @@
+{
+ "batch": "event-17443",
+ "events": [
+  {
+   "event_id": 17443,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Warm-Up Workshop",
+     "rationale": "A warm-up workshop is scheduled on Friday evening, so dance classes are part of the event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Pre-Party Workshop",
+     "rationale": "A Pre-Party Workshop is scheduled on Saturday, another dance class within the event."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "POOL PARTY!",
+     "rationale": "The Sunday schedule lists a pool party with music and poolside time."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Guinguette Afternoon",
+     "rationale": "The Saturday 4 PM to 7 PM Guinguette Afternoon is a daytime social with dancing."
+    }
+   ]
+  }
+ ]
+}

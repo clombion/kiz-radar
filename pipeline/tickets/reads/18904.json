@@ -1,0 +1,77 @@
+{
+ "event_id": 18904,
+ "title": "Kizztalk New Years Weekender Munich",
+ "start_date": "2026-12-30",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "cb864655c7075f56",
+ "rows_at": "2026-10-27T02:00:09+00:00",
+ "styles": [
+  "kizomba"
+ ],
+ "description": "KIZZTALK NEW YEAR WEEKENDER 2026/2027\nDec 30, 2026 – Jan 3, 2027 | Munich\nWe want to wrap up 2026 together with you—and start 2027 exactly the way we love: with plenty of dancing, music, community, and time spent together.\nFrom December 30 to January 3, the KIZZTALK Dance Academy will become our shared home for five days of UrbanKiz, Kizomba, workshops, socials, long party nights, and, of course, a very special New Year’s Eve.\nWhether you’ve been part of our community for a long time or are visiting KIZZTALK for the first time, you are warmly invited to bid farewell to the old year and dance your way into the new one with us.\nCONFIRMED ARTIST\nFajul – KIZZTALK\nCONFIRMED DJs\nDJ Sorin\nDJ Mixmillion\nDJ Frank\nAdditional artists, DJs, and the full program will be announced gradually.\nWhat to expect:\n• 5 days of KIZZTALK from Dec 30 to Jan 3\n• Workshops & bootcamps\n• Day socials\n• Parties lasting late into the night\n• Big New Year’s Eve party on Dec 31\n• UrbanKiz & Kizomba\n• International DJs & artists\n• Plenty of time for dancing and socializing\n• KIZZTALK community vibes to ring in the new year\nWe don’t want just a brief New Year’s Eve evening; we want to turn it into a multi-day experience together: arriving, dancing, learning, celebrating, sleeping in, and starting the new year together.\nDec 30, 2026 – Jan 3, 2027\nKIZZTALK Dance Academy\nArnulfstraße 195, Munich\nThe first full passes are already available. Spots are limited.\nCome dance with us into 2027.\nLet’s close 2026 together and start 2027 on the dancefloor. Need a place to stay? You can stay in our guestroom with up to 3 people, get in touch for more info and reservation!",
+ "passes": [
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "dd26b0ed-42a2-4baf-8861-e6fa2d379b49",
+      "056048a5-0a43-40ad-be01-2bca3183a2b7",
+      "6fdbea13-73d1-46b5-82f6-f45a3f1fe68e"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "ad706287-28ac-4c27-9493-1b69724f47db"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "package",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "f15eb4b5-f76b-4ae6-81b8-0158958b7e2e",
+      "80db4de3-5209-4c0a-9325-7654ca16d26f",
+      "0bb996c0-9fe4-4b82-9754-b62a340407d5"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [],
+ "rule_quotes": []
+}

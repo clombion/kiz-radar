@@ -1,0 +1,132 @@
+{
+ "batch": "event-18864",
+ "events": [
+  {
+   "event_id": 18864,
+   "artists": [
+    {
+     "name_as_written": "DJ Nao",
+     "role": "dj",
+     "style": null,
+     "country": "🇧🇪",
+     "source_line": "🔥 DJ Nao 🇧🇪"
+    },
+    {
+     "name_as_written": "DJ Paraiso",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "🔥 DJ Paraiso 🇫🇷"
+    },
+    {
+     "name_as_written": "DJ Neiken",
+     "role": "dj",
+     "style": null,
+     "country": "🇵🇹",
+     "source_line": "🔥 DJ Neiken 🇵🇹"
+    },
+    {
+     "name_as_written": "DJ Galaxy",
+     "role": "dj",
+     "style": null,
+     "country": "🇩🇪",
+     "source_line": "🔥 DJ Galaxy 🇩🇪"
+    },
+    {
+     "name_as_written": "DJ Brutobeats",
+     "role": "dj",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "🔥 DJ Brutobeats 🇪🇸"
+    },
+    {
+     "name_as_written": "DJ Dino",
+     "role": "dj",
+     "style": null,
+     "country": "🇹🇳",
+     "source_line": "🔥 DJ Dino 🇹🇳"
+    },
+    {
+     "name_as_written": "Chamalo & T_zer",
+     "role": "teacher",
+     "style": null,
+     "country": "🇳🇱 🇳🇱",
+     "source_line": "🔥 Chamalo & T_zer 🇳🇱 🇳🇱"
+    },
+    {
+     "name_as_written": "Jules & Yuna",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷 🇫🇷",
+     "source_line": "🔥 Jules & Yuna 🇫🇷 🇫🇷"
+    },
+    {
+     "name_as_written": "Chris & Eva",
+     "role": "teacher",
+     "style": null,
+     "country": "🇩🇪 🇩🇪",
+     "source_line": "🔥 Chris & Eva 🇩🇪 🇩🇪"
+    },
+    {
+     "name_as_written": "Stones Rock & Tabea",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇲 🇩🇪",
+     "source_line": "🔥 Stones Rock & Tabea 🇨🇲 🇩🇪"
+    },
+    {
+     "name_as_written": "Arnaud & Roya",
+     "role": "teacher",
+     "style": null,
+     "country": "🇩🇪 🇫🇷",
+     "source_line": "🔥 Arnaud & Roya 🇩🇪 🇫🇷"
+    },
+    {
+     "name_as_written": "Philipp",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "-Philipp"
+    },
+    {
+     "name_as_written": "Maddy",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "– Maddy"
+    },
+    {
+     "name_as_written": "Kizz Empire",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Join Kizz Empire on the same period as the famous Stuttgart Spring Festival. You can spend the day enjoying the vibrant fair, food, attractions, and atmosphere, then dance the night away with the international Kizomba community."
+    },
+    {
+     "name_as_written": "Dance Empire dance School Böblingen",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "In Cooperation with Dance Empire dance School Böblingen."
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "3 days of Workshops/Parties/Socials",
+     "rationale": "The description states that the three-day event includes workshops alongside parties and socials."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Friday: Spring festival local traditional",
+     "rationale": "A dress suggestion is given for Friday, showing that a dress code is stated."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Accommodations:",
+     "rationale": "The description lists recommended hotels with booking links, which are not part of the event pass."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,28 @@
+{
+ "batch": "event-15923",
+ "events": [
+  {
+   "event_id": 15923,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba and Urban Festival"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kizz",
+     "quote": "Kizomba Fusion, Urban Kizz"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Urban and Tarraxo Championship"
+    }
+   ]
+  }
+ ]
+}

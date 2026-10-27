@@ -1,0 +1,63 @@
+{
+ "batch": "event-15577",
+ "events": [
+  {
+   "event_id": 15577,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Cuban Salsa",
+     "quote": "workshops in Cuban Salsa"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Crossbody Salsa",
+     "quote": "Crossbody for Salsa Dancers"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Sensual Bachata",
+     "quote": "12:10-13:10 – Sensual Bachata with"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Dominican Bachata",
+     "quote": "Dominican Bachata"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata Moderna",
+     "quote": "Bachata Moderna with"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Smooth Kizomba",
+     "quote": "Smooth Kizomba with"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba vs Semba with"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Dominican Footwork",
+     "quote": "Dominican Footwork with"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Rueda de Casino",
+     "quote": "Rueda de Casino with"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Cuban Son",
+     "quote": "Cuban Son with"
+    }
+   ]
+  }
+ ]
+}

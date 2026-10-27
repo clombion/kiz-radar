@@ -1,0 +1,43 @@
+{
+ "batch": "event-15928",
+ "events": [
+  {
+   "event_id": 15928,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa Porto",
+     "quote": "Salsa Porto, Cuban Salsa, Bachata, Kizomba, Semba, and Fitness"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata, Kizomba, Semba, and Fitness"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Bachata, Kizomba, Semba, and Fitness"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba, Semba, and Reggaeton"
+    },
+    {
+     "genre": "reggaeton",
+     "genre_as_written": "Reggaeton",
+     "quote": "Semba, and Reggaeton"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afrohouse",
+     "quote": "Kizomba/Semba/Afrohouse:"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,74 @@
+{
+ "batch": "event-18686",
+ "events": [
+  {
+   "event_id": 18686,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 rooms for parties"
+   },
+   "class_rooms": {
+    "count": 3,
+    "quote": "3 private rooms for simultaneous workshops"
+   },
+   "rooms": [
+    {
+     "name_as_written": "Room 1",
+     "kind": "unspecified",
+     "genres": [
+      "bachata",
+      "salsa"
+     ],
+     "quote": "Room 1: Bachata / Cuban Salsa / Puerto Rican Salsa"
+    },
+    {
+     "name_as_written": "Room 2",
+     "kind": "unspecified",
+     "genres": [
+      "kizomba",
+      "semba",
+      "urbankiz"
+     ],
+     "quote": "Room 2: Kizomba / Semba / Urban Kizz"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "The Bachata • Salsa • Kizomba Cruise"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa / Cha-cha:"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba/ Semba/Urban Kizz"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Dany & Dravko from Bulgaria Semba"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kizz",
+     "quote": "Matteo & Diana from Italy Urban Kizz"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "zouk",
+     "quote": "Bachata sensual /zouk"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro vibes",
+     "quote": "Afro vibes"
+    }
+   ]
+  }
+ ]
+}

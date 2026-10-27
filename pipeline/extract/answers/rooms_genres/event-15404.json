@@ -1,0 +1,61 @@
+{
+ "batch": "event-15404",
+ "events": [
+  {
+   "event_id": 15404,
+   "party_rooms": {
+    "count": 3,
+    "quote": "ROOM 💯% SALSA\n➡️ ROOM 💯% BACHATA\n➡️ ROOM 💯% KIZOMBA"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "ROOM 💯% SALSA",
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "ROOM 💯% SALSA"
+    },
+    {
+     "name_as_written": "ROOM 💯% BACHATA",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "ROOM 💯% BACHATA"
+    },
+    {
+     "name_as_written": "ROOM 💯% KIZOMBA",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "ROOM 💯% KIZOMBA"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "SALSA – BACHATA – KIZOMBA – ZUMBA"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "SALSA – BACHATA – KIZOMBA – ZUMBA"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "SALSA – BACHATA – KIZOMBA – ZUMBA"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "ZUMBA",
+     "quote": "SALSA – BACHATA – KIZOMBA – ZUMBA"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,61 @@
+{
+ "batch": "event-16246",
+ "events": [
+  {
+   "event_id": 16246,
+   "artists": [
+    {
+     "name_as_written": "ILKSF",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Team ILKSF & HOT ICE KI"
+    },
+    {
+     "name_as_written": "𝐇𝐎𝐓 𝐈𝐂𝐄 𝐊𝐈𝐙",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "ᴡᴇʟᴄᴏᴍᴇ ʙᴀᴄᴋ ᴛᴏ ɪʟᴋꜱꜰ ʀɪɢᴀ ᴇᴅɪᴛɪᴏɴ. Together with our partners 𝐇𝐎𝐓 𝐈𝐂𝐄 𝐊𝐈𝐙 from Riga, we are super excited to organize this event for the fifth time in Latvia. After the last and successful edition, we can assure you that we will take you to the next level. This festival will be “All-in One Hotel”."
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "“All-in One Hotel”",
+     "rationale": "The festival is described as an All-in One Hotel, meaning the parties happen in the hotel where dancers stay."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Thursday preparty",
+     "rationale": "The programme lists a Thursday preparty before the main event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "3 days of social",
+     "rationale": "The expectations list three days of socials, which are daytime socials."
+    },
+    {
+     "feature": "workshops",
+     "quote": "3 days of workshops",
+     "rationale": "The expectations list three days of workshops as part of the event."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Masterclasses",
+     "rationale": "Masterclasses are listed among the event expectations."
+    },
+    {
+     "feature": "competition",
+     "quote": "Dance competition",
+     "rationale": "A dance competition is listed among the event expectations."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "taxi/guest dancers",
+     "rationale": "The expectations list taxi and guest dancers being present."
+    }
+   ]
+  }
+ ]
+}

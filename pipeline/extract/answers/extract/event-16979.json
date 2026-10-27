@@ -1,0 +1,116 @@
+{
+ "batch": "event-16979",
+ "events": [
+  {
+   "event_id": 16979,
+   "artists": [
+    {
+     "name_as_written": "Miguel & Susana",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 Miguel & Susana"
+    },
+    {
+     "name_as_written": "Capitão & Pris",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 Capitão & Pris"
+    },
+    {
+     "name_as_written": "Ricardo & Rute",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 Ricardo & Rute"
+    },
+    {
+     "name_as_written": "Ary & Maura",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 Ary & Maura"
+    },
+    {
+     "name_as_written": "Alex & Sofi",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 Alex & Sofi"
+    },
+    {
+     "name_as_written": "Xenos Mr. X",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 Xenos Mr. X"
+    },
+    {
+     "name_as_written": "Phil & Dani",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 Phil & Dani"
+    },
+    {
+     "name_as_written": "DJ M&M",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎶 DJ M&M"
+    },
+    {
+     "name_as_written": "DJ Márcio Kazukuta",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎶 DJ Márcio Kazukuta"
+    },
+    {
+     "name_as_written": "DJ Xenos",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎶 DJ Xenos"
+    },
+    {
+     "name_as_written": "DJ Emerson D’Franklin",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎶 DJ Emerson D’Franklin"
+    },
+    {
+     "name_as_written": "DJ Tavas",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎶 DJ Tavas"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "+20 Workshops for ALL LEVELS",
+     "rationale": "The Full Pass includes more than twenty workshops, so dance classes are part of the event."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "+20 Workshops for ALL LEVELS",
+     "rationale": "The workshops are stated to be for all levels, which welcomes beginners."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Pre-Parties",
+     "rationale": "The Full Pass includes Pre-Parties, which are events before the main festival."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Afternoon Socials",
+     "rationale": "Afternoon Socials are listed as included daytime social events."
+    }
+   ]
+  }
+ ]
+}

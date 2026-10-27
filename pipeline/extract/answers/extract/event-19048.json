@@ -1,0 +1,91 @@
+{
+ "batch": "event-19048",
+ "events": [
+  {
+   "event_id": 19048,
+   "artists": [
+    {
+     "name_as_written": "Ramses y Sandra",
+     "role": "teacher",
+     "style": "Casino / Son Cubano",
+     "country": null,
+     "source_line": "Ramses y Sandra – Avanza dance (Casino / Son Cubano)"
+    },
+    {
+     "name_as_written": "Juan Pablo Paredes",
+     "role": "teacher",
+     "style": "Bachata / Merengue",
+     "country": null,
+     "source_line": "Juan Pablo Paredes (Bachata / Merengue)"
+    },
+    {
+     "name_as_written": "Mariana",
+     "role": "teacher",
+     "style": "Konpa",
+     "country": null,
+     "source_line": "Mariana (Konpa)"
+    },
+    {
+     "name_as_written": "Daniela",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Daniela (Kizomba)"
+    },
+    {
+     "name_as_written": "Frank E",
+     "role": "teacher",
+     "style": "Son Dominicano / Bolero",
+     "country": null,
+     "source_line": "Frank E (Son Dominicano / Bolero)"
+    },
+    {
+     "name_as_written": "Mette",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Mette (Organizer)"
+    },
+    {
+     "name_as_written": "DJ la Desi",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ la Desi"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "+12 hours of Workshops in 2 rooms",
+     "rationale": "The description states that workshops take place over 12 hours in 2 rooms."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Workshops in 2 rooms",
+     "rationale": "Workshops are held in two separate rooms, so there is more than one dance room."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Social dancing 2 evenings on 2 floors",
+     "rationale": "Social dancing takes place on two floors, so there is more than one dance floor."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "A welcoming space for both new and experienced dancers",
+     "rationale": "The event explicitly welcomes both new and experienced dancers."
+    },
+    {
+     "feature": "after_party",
+     "quote": "This event will continue with a closed party afterwards for ticket holders.",
+     "rationale": "A closed party for ticket holders is held after the main event."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "these are suggestions based on accessibility to the venue",
+     "rationale": "The event lists recommended hotels near the venue, although it states it has no deals with them."
+    }
+   ]
+  }
+ ]
+}

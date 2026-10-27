@@ -1,0 +1,66 @@
+{
+ "batch": "event-16524",
+ "events": [
+  {
+   "event_id": 16524,
+   "party_rooms": {
+    "count": 2,
+    "quote": "DJ Dada: Salsa/Bachata Room\nDJ Mister D: Kizomba/Urban/Semba Room"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Salsa/Bachata Room",
+     "kind": "party",
+     "genres": [
+      "salsa",
+      "bachata"
+     ],
+     "quote": "DJ Dada: Salsa/Bachata Room"
+    },
+    {
+     "name_as_written": "Kizomba/Urban/Semba Room",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "urbankiz",
+      "semba"
+     ],
+     "quote": "DJ Mister D: Kizomba/Urban/Semba Room"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "SALSA:"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "BACHATA",
+     "quote": "BACHATA:"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "KIZOMBA:"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "KONPA",
+     "quote": "KONPA:"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "DJ Mister D: Kizomba/Urban/Semba Room"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban",
+     "quote": "DJ Mister D: Kizomba/Urban/Semba Room"
+    }
+   ]
+  }
+ ]
+}

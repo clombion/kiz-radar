@@ -1,0 +1,48 @@
+{
+ "batch": "event-15395",
+ "events": [
+  {
+   "event_id": 15395,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba, Semba, UrbanKizz, Konpa, GhettoZouk, Tarraxinha, and more music"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Semba"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "UrbanKizz",
+     "quote": "Kizomba, Semba, UrbanKizz, Konpa, GhettoZouk, Tarraxinha, and more music"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Konpa"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "GhettoZouk",
+     "quote": "GhettoZouk"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "Tarraxinha"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "Douceur"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,28 @@
+{
+ "batch": "event-16105",
+ "events": [
+  {
+   "event_id": 16105,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "TEACHERS LINE UP – KIZOMBA"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "URBAN KIZ",
+     "quote": "TEACHERS LINE UP – URBAN KIZ"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "tarraxo",
+     "quote": "urban kiz and tarraxo artists"
+    }
+   ]
+  }
+ ]
+}

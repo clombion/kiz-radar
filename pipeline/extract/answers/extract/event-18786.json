@@ -1,0 +1,26 @@
+{
+ "batch": "event-18786",
+ "events": [
+  {
+   "event_id": 18786,
+   "artists": [],
+   "features": [
+    {
+     "feature": "accommodation_included",
+     "quote": "🏠 Accommodation in a residence with pool & sauna access",
+     "rationale": "The trip includes accommodation in a residence, listed under 'TRIP INCLUDES'."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Round-trip coach transport",
+     "rationale": "A round-trip coach from several departure cities is included, which is a shuttle transfer."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Workshops held at the resort’s bowling alley.",
+     "rationale": "The description states that dance workshops are held at the resort's bowling alley."
+    }
+   ]
+  }
+ ]
+}

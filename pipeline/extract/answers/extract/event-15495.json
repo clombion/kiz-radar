@@ -1,0 +1,95 @@
+{
+ "batch": "event-15495",
+ "events": [
+  {
+   "event_id": 15495,
+   "artists": [
+    {
+     "name_as_written": "Sarah & Stef",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Sarah & Stef"
+    },
+    {
+     "name_as_written": "Lawryana & Steve",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Lawryana & Steve"
+    },
+    {
+     "name_as_written": "Trew & Naïs",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Trew & Naïs"
+    },
+    {
+     "name_as_written": "Constance & Joan",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Constance & Joan"
+    },
+    {
+     "name_as_written": "Jeff & Ghys",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Jeff & Ghys"
+    },
+    {
+     "name_as_written": "Cheikh & Wana",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Cheikh & Wana"
+    },
+    {
+     "name_as_written": "DJ David Ruela",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ David Ruela"
+    },
+    {
+     "name_as_written": "DJ Trew",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Trew"
+    },
+    {
+     "name_as_written": "DJ Khal",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Khal"
+    },
+    {
+     "name_as_written": "DJ Angelo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Angelo"
+    },
+    {
+     "name_as_written": "Steve Cherry",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Steve Cherry"
+    },
+    {
+     "name_as_written": "All For Kizomba team",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "After an exceptional first edition, All For Kizomba team is back ❤️"
+    }
+   ],
+   "features": []
+  }
+ ]
+}

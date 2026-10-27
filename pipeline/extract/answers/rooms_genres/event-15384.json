@@ -1,0 +1,23 @@
+{
+ "batch": "event-15384",
+ "events": [
+  {
+   "event_id": 15384,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "kizomba/Semba/other Angolan dances"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "kizomba/Semba/other Angolan dances"
+    }
+   ]
+  }
+ ]
+}

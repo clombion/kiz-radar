@@ -1,6 +1,5 @@
 {
  "batch": "event-17489",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17489,
@@ -8,7 +7,7 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": "Full Pass (workshops, social dance & party)",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -17,8 +16,7 @@
        "amount": 65,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -32,7 +30,7 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": "Full Pass (workshops, social dance & party)",
+     "label_quote": null,
      "group_size": 2,
      "days": null,
      "includes_hotel": false,
@@ -41,8 +39,7 @@
        "amount": 110,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,

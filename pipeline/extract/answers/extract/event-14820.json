@@ -1,0 +1,21 @@
+{
+ "batch": "event-14820",
+ "events": [
+  {
+   "event_id": 14820,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "workshops",
+     "rationale": "The description lists workshops as part of the three days of festivities."
+    },
+    {
+     "feature": "shows",
+     "quote": "a gala show",
+     "rationale": "The description mentions a gala show as part of the event."
+    }
+   ]
+  }
+ ]
+}

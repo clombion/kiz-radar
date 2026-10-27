@@ -1,0 +1,28 @@
+{
+ "batch": "event-15672",
+ "events": [
+  {
+   "event_id": 15672,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "I Love Kizomba Sensual Festival Montreal 3rd Edition"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "𝗦𝗲𝗺𝗯𝗮",
+     "quote": "𝗧𝗵𝗲 𝗿𝗼𝗼𝘁𝘀 𝗼𝗳 𝗞𝗶𝘇𝗼𝗺𝗯𝗮 & 𝗦𝗲𝗺𝗯𝗮"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇",
+     "quote": "𝗧𝗵𝗲 𝗲𝗻𝗲𝗿𝗴𝘆 𝗼𝗳 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇"
+    }
+   ]
+  }
+ ]
+}

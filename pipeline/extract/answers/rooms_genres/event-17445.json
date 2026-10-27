@@ -1,0 +1,33 @@
+{
+ "batch": "event-17445",
+ "events": [
+  {
+   "event_id": 17445,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Urban Kiz, Douceur, Kizomba/Semba & more"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "Urban Kiz, Douceur, Kizomba/Semba & more"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Urban Kiz, Douceur, Kizomba/Semba & more"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Urban Kiz, Douceur, Kizomba/Semba & more"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,126 @@
+{
+ "batch": "event-15843",
+ "events": [
+  {
+   "event_id": 15843,
+   "artists": [
+    {
+     "name_as_written": "Titia & Mehdi",
+     "role": "teacher",
+     "style": "Semba",
+     "country": "🇫🇷",
+     "source_line": "✪ Titia & Mehdi – Semba 🇫🇷"
+    },
+    {
+     "name_as_written": "Laly & Chris’Py",
+     "role": "teacher",
+     "style": "Urban Kiz",
+     "country": "🇫🇷",
+     "source_line": "✪ Laly & Chris’Py – Urban Kiz 🇫🇷"
+    },
+    {
+     "name_as_written": "Sylvie and Yoan",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": "🇫🇷",
+     "source_line": "✪ Sylvie and Yoan – Kizomba 🇫🇷"
+    },
+    {
+     "name_as_written": "An’So Cubango",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "✪ An’So Cubango 🇫🇷"
+    },
+    {
+     "name_as_written": "Esteban and Sandra",
+     "role": "teacher",
+     "style": "Semba / Kizomba",
+     "country": "🇪🇸",
+     "source_line": "✪ Esteban and Sandra – Semba / Kizomba 🇪🇸"
+    },
+    {
+     "name_as_written": "DJ ASH",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ ASH – Bordeaux"
+    },
+    {
+     "name_as_written": "DJ AKYM",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ AKYM – Toulouse"
+    },
+    {
+     "name_as_written": "DJ MOYAZ",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ MOYAZ – Montpellier"
+    },
+    {
+     "name_as_written": "DJ MASTA",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ MASTA – Limoges"
+    },
+    {
+     "name_as_written": "DJ PSCAL",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ PSCAL – Agen"
+    },
+    {
+     "name_as_written": "OBED BROWN",
+     "role": "performer",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "🎤 OBED BROWN 🇦🇴"
+    },
+    {
+     "name_as_written": "Photobox",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "📷 Photobox"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "14 Hours of Classes, with a special program",
+     "rationale": "The event offers 14 hours of dance classes as part of the program."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "Team Guests/Dance Taxis (for the clubs)",
+     "rationale": "Dance taxis are listed as present for the clubs."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "3 Simple Dress Codes >2026: GREEN theme",
+     "rationale": "The program states dress codes for the event."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "3 Simple Dress Codes >2026: GREEN theme",
+     "rationale": "A GREEN theme is stated for the dress codes, which marks themed nights."
+    },
+    {
+     "feature": "shows",
+     "quote": "1 Teacher Show/Demo",
+     "rationale": "A teacher show or demo is part of the program."
+    },
+    {
+     "feature": "shows",
+     "quote": "Showcase 🎤",
+     "rationale": "A showcase with performing artists is listed in the program."
+    }
+   ]
+  }
+ ]
+}

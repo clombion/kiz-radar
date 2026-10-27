@@ -1,0 +1,18 @@
+{
+ "batch": "event-16314",
+ "events": [
+  {
+   "event_id": 16314,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urbankiz",
+     "quote": "Justinho Urbankiz"
+    }
+   ]
+  }
+ ]
+}

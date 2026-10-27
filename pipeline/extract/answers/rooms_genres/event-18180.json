@@ -1,0 +1,36 @@
+{
+ "batch": "event-18180",
+ "events": [
+  {
+   "event_id": 18180,
+   "party_rooms": {
+    "count": 2,
+    "quote": "Kizomba Room\nLatino Room"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Kizomba Room",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "Kizomba Room"
+    },
+    {
+     "name_as_written": "Latino Room",
+     "kind": "party",
+     "genres": [],
+     "quote": "Latino Room"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba Room"
+    }
+   ]
+  }
+ ]
+}

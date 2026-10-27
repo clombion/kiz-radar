@@ -1,0 +1,28 @@
+{
+ "batch": "event-18709",
+ "events": [
+  {
+   "event_id": 18709,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "World-class workshops (Kizomba, Urban Kiz, Tarraxo, Fusion)"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "World-class workshops (Kizomba, Urban Kiz, Tarraxo, Fusion)"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "World-class workshops (Kizomba, Urban Kiz, Tarraxo, Fusion)"
+    }
+   ]
+  }
+ ]
+}

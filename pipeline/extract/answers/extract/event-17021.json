@@ -1,0 +1,95 @@
+{
+ "batch": "event-17021",
+ "events": [
+  {
+   "event_id": 17021,
+   "artists": [
+    {
+     "name_as_written": "PUTO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🦄 PUTO"
+    },
+    {
+     "name_as_written": "DJ NUO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🦄 DJ NUO"
+    },
+    {
+     "name_as_written": "DJ TATI",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🦄 DJ TATI"
+    },
+    {
+     "name_as_written": "DJ CORAZÓN CORAÇÃO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🦄 DJ CORAZÓN CORAÇÃO"
+    },
+    {
+     "name_as_written": "DJ LFIGO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🦄 DJ LFIGO"
+    },
+    {
+     "name_as_written": "KALYPSO & ADE",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🦄 KALYPSO & ADE"
+    },
+    {
+     "name_as_written": "MANU SAUDADE & OLIVIA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🦄 MANU SAUDADE & OLIVIA"
+    },
+    {
+     "name_as_written": "ALEX MALEMBE & MAYLIE",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🦄 ALEX MALEMBE & MAYLIE"
+    },
+    {
+     "name_as_written": "MERVIL",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🦄 MERVIL"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Urban Kizomba Charm Class with Alex Malembe & Maylie",
+     "rationale": "The schedule lists dance classes taught by the teachers, so classes are part of the event."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "Alchimie Kizomba Class (All Levels) with Mervil",
+     "rationale": "The class is explicitly labelled as open to all levels."
+    },
+    {
+     "feature": "beach_party",
+     "quote": "𝘂𝗻𝗲 𝗕𝗲𝗮𝗰𝗵 𝗣𝗮𝗿𝘁𝘆",
+     "rationale": "The event closes with a beach party on the Hulot beach."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Social Welcome",
+     "rationale": "The 2:00 PM Social Welcome on August 30 is a daytime social."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "batch": "event-17434",
+ "events": [
+  {
+   "event_id": 17434,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": []
+  }
+ ]
+}

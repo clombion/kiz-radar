@@ -1,0 +1,31 @@
+{
+ "batch": "event-14805",
+ "events": [
+  {
+   "event_id": 14805,
+   "artists": [],
+   "features": [
+    {
+     "feature": "partner_hotel",
+     "quote": "Accommodation at Hotel Le Meridien Lav",
+     "rationale": "The description gives a hotel accommodation section with room rates, so the event has a partner hotel without the rates being part of the pass."
+    },
+    {
+     "feature": "workshops",
+     "quote": "30+ hours of premium workshops",
+     "rationale": "The event offers dance workshops as part of the programme."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "5 unforgettable socials (evening, daytime, and open-air)",
+     "rationale": "The socials explicitly include daytime events."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 vibrant dancefloors",
+     "rationale": "Three dance floors means more than one dance room."
+    }
+   ]
+  }
+ ]
+}

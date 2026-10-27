@@ -1,6 +1,5 @@
 {
  "batch": "event-16308",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16308,
@@ -17,22 +16,20 @@
        "amount": 80,
        "currency": "GBP",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "EARLY BIRD FULL PASS £80"
+       "quote": "EARLY BIRD FULL PASS £80 ON SALE NOW"
       },
       {
        "amount": 95,
        "currency": "GBP",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -55,8 +52,7 @@
        "amount": 175,
        "currency": "GBP",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,

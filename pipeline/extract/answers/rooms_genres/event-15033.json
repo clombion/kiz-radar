@@ -1,0 +1,38 @@
+{
+ "batch": "event-15033",
+ "events": [
+  {
+   "event_id": 15033,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata & Urban vibes"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban",
+     "quote": "DJ HUGO SMILE (Urban)"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "DJ BLVCK SKYLE (Urban/Tarraxo)"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "CELINE (Kizomba)"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "ISSA (Afro)"
+    }
+   ]
+  }
+ ]
+}

@@ -1,6 +1,5 @@
 {
  "batch": "event-16968",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16968,
@@ -10,15 +9,14 @@
      "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 135,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -34,15 +32,14 @@
      "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 175,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -55,7 +52,7 @@
     }
    ],
    "rule_quotes": [
-    "Prices are per person and for the entire event stay:"
+    "Prices are per person and for the entire event stay"
    ]
   }
  ]

@@ -1,0 +1,23 @@
+{
+ "batch": "event-16693",
+ "events": [
+  {
+   "event_id": 16693,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "an event designed for those who want to fully experience Kizomba."
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "complete immersion in the world of Kizomba and Afro"
+    }
+   ]
+  }
+ ]
+}

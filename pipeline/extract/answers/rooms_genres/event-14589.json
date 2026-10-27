@@ -1,0 +1,18 @@
+{
+ "batch": "event-14589",
+ "events": [
+  {
+   "event_id": 14589,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Are you ready for the ultimate Kizomba experience?"
+    }
+   ]
+  }
+ ]
+}

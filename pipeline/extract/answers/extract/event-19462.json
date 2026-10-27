@@ -1,0 +1,21 @@
+{
+ "batch": "event-19462",
+ "events": [
+  {
+   "event_id": 19462,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "3 days of dance classes",
+     "rationale": "The description states the festival includes three days of dance classes, which are workshops."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "welcoming place for dancers of all skill and experience levels",
+     "rationale": "The description says the festival welcomes dancers of all skill and experience levels, including those just getting started."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "batch": "event-14672",
+ "events": [
+  {
+   "event_id": 14672,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Secondo floor",
+     "kind": "party",
+     "genres": [
+      "salsa",
+      "bachata"
+     ],
+     "quote": "Secondo floor Salsa & Bachata"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "KIZOMBA & SEMBA"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "SEMBA",
+     "quote": "KIZOMBA & SEMBA"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Secondo floor Salsa & Bachata"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Secondo floor Salsa & Bachata"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "bachata",
+     "quote": "Friday Special Guest: Felix (live bachata)"
+    }
+   ]
+  }
+ ]
+}

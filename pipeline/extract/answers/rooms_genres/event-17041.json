@@ -1,0 +1,38 @@
+{
+ "batch": "event-17041",
+ "events": [
+  {
+   "event_id": 17041,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "your ultimate Salsa, Bachata & Kizomba cruise"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "your ultimate Salsa, Bachata & Kizomba cruise"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "your ultimate Salsa, Bachata & Kizomba cruise"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro",
+     "quote": "CHRYS PY & LALY (Nice) – Kizomba – Afro"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "RODRIGUE & LÉA (Paris) – Kizomba – Semba"
+    }
+   ]
+  }
+ ]
+}

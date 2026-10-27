@@ -1,0 +1,23 @@
+{
+ "batch": "event-16150",
+ "events": [
+  {
+   "event_id": 16150,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "explore the elements of Kizomba and UrbanKiz"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "UrbanKiz",
+     "quote": "Kizomba and UrbanKiz."
+    }
+   ]
+  }
+ ]
+}

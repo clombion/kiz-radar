@@ -1,0 +1,44 @@
+{
+ "batch": "event-18763",
+ "events": [
+  {
+   "event_id": 18763,
+   "artists": [
+    {
+     "name_as_written": "Lápis Eventest By Gabriel Cabinda",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Produced by Lápis Eventest By Gabriel Cabinda"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Eight hours of workshops",
+     "rationale": "The programme lists eight hours of workshops as part of the festival."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Renowned musicians and live bands",
+     "rationale": "The programme explicitly includes live bands and musicians."
+    },
+    {
+     "feature": "shows",
+     "quote": "Two exclusive live shows",
+     "rationale": "The programme lists two exclusive live shows by performers."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "A specialised intensive training programme",
+     "rationale": "The Master Training 360° is described as a specialised intensive training programme."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "For participants travelling to Lisbon, we recommend staying in or around Cais do Sodré",
+     "rationale": "The event recommends hotels and hostels for stays without including accommodation in the pass."
+    }
+   ]
+  }
+ ]
+}

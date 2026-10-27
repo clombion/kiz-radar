@@ -1,0 +1,73 @@
+{
+ "batch": "event-16461",
+ "events": [
+  {
+   "event_id": 16461,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "We will dance to Kizomba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba, Semba"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "Semba, Tarraxinha"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Kompa",
+     "quote": "Tarraxinha, Kompa"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Zouk",
+     "quote": "Kompa, Zouk"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Koladera",
+     "quote": "Zouk, Koladera"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Funana",
+     "quote": "Koladera, Funana"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Gumbe",
+     "quote": "Funana, Gumbe"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Tina",
+     "quote": "Gumbe, Tina"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Ndombolo",
+     "quote": "Tina, Ndombolo"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Decale",
+     "quote": "Ndombolo, Decale"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afrohouse",
+     "quote": "Decale, Afrohouse"
+    }
+   ]
+  }
+ ]
+}

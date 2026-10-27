@@ -1,0 +1,23 @@
+{
+ "batch": "event-18974",
+ "events": [
+  {
+   "event_id": 18974,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba & Semba workshops"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba & Semba workshops"
+    }
+   ]
+  }
+ ]
+}

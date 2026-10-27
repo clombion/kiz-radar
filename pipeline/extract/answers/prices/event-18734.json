@@ -1,11 +1,12 @@
 {
  "batch": "event-18734",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18734,
    "passes": [],
-   "rule_quotes": []
+   "rule_quotes": [
+    "All ticket sales (Passes & Hotel rooms) are final and non-refundable."
+   ]
   }
  ]
 }

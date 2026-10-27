@@ -1,0 +1,179 @@
+{
+ "batch": "event-15974",
+ "events": [
+  {
+   "event_id": 15974,
+   "artists": [
+    {
+     "name_as_written": "Bonifacio & Jessica",
+     "role": "teacher",
+     "style": null,
+     "country": "PT/SW",
+     "source_line": "★ Bonifacio & Jessica (PT/SW)"
+    },
+    {
+     "name_as_written": "Eddy Vents & Stolid",
+     "role": "teacher",
+     "style": null,
+     "country": "USA/UK",
+     "source_line": "★ Eddy Vents & Stolid (USA/UK)"
+    },
+    {
+     "name_as_written": "Miss Ginga Boo",
+     "role": "teacher",
+     "style": null,
+     "country": "UK",
+     "source_line": "★ Miss Ginga Boo (UK)"
+    },
+    {
+     "name_as_written": "Audi & Laura",
+     "role": "teacher",
+     "style": null,
+     "country": "SP",
+     "source_line": "★ Audi & Laura (SP)"
+    },
+    {
+     "name_as_written": "Jules & Yuna",
+     "role": "teacher",
+     "style": null,
+     "country": "FR",
+     "source_line": "★ Jules & Yuna (FR)"
+    },
+    {
+     "name_as_written": "Ines Miranda",
+     "role": "teacher",
+     "style": null,
+     "country": "PT",
+     "source_line": "★ Ines Miranda (PT)"
+    },
+    {
+     "name_as_written": "Dwe & Gaby",
+     "role": "teacher",
+     "style": null,
+     "country": "NL",
+     "source_line": "★ Dwe & Gaby (NL)"
+    },
+    {
+     "name_as_written": "Jeydikson Lima",
+     "role": "teacher",
+     "style": null,
+     "country": "UK",
+     "source_line": "★ Jeydikson Lima (UK)"
+    },
+    {
+     "name_as_written": "Adda Dociu",
+     "role": "teacher",
+     "style": null,
+     "country": "UK",
+     "source_line": "★ Adda Dociu (UK)"
+    },
+    {
+     "name_as_written": "Jayjay & Natalia",
+     "role": "teacher",
+     "style": null,
+     "country": "UK",
+     "source_line": "★ Jayjay & Natalia (UK)"
+    },
+    {
+     "name_as_written": "Manu",
+     "role": "teacher",
+     "style": null,
+     "country": "FR",
+     "source_line": "★ Manu (FR)"
+    },
+    {
+     "name_as_written": "Dj Poema Beatz",
+     "role": "dj",
+     "style": null,
+     "country": "SW",
+     "source_line": "★ Dj Poema Beatz (SW)"
+    },
+    {
+     "name_as_written": "Dj Monteyro",
+     "role": "dj",
+     "style": null,
+     "country": "PT",
+     "source_line": "★ Dj Monteyro (PT)"
+    },
+    {
+     "name_as_written": "Dj Frank",
+     "role": "dj",
+     "style": null,
+     "country": "GR",
+     "source_line": "★ Dj Frank (GR)"
+    },
+    {
+     "name_as_written": "Dj Sam Gold",
+     "role": "dj",
+     "style": null,
+     "country": "FR",
+     "source_line": "★ Dj Sam Gold (FR)"
+    },
+    {
+     "name_as_written": "Dj G- Sousa",
+     "role": "dj",
+     "style": null,
+     "country": "UK",
+     "source_line": "★ Dj G- Sousa (UK)"
+    },
+    {
+     "name_as_written": "Dj Dico",
+     "role": "dj",
+     "style": null,
+     "country": "UK",
+     "source_line": "★ Dj Dico (UK)"
+    },
+    {
+     "name_as_written": "Dj 5 starkid",
+     "role": "dj",
+     "style": null,
+     "country": "UK",
+     "source_line": "★ Dj 5 starkid (UK)"
+    },
+    {
+     "name_as_written": "Dj Fashion",
+     "role": "dj",
+     "style": null,
+     "country": "UK",
+     "source_line": "★ Dj Fashion (UK)"
+    },
+    {
+     "name_as_written": "Dj Dwe Tyson",
+     "role": "dj",
+     "style": null,
+     "country": "NL",
+     "source_line": "★ Dj Dwe Tyson (NL)"
+    },
+    {
+     "name_as_written": "Dj Jeydikson Lima",
+     "role": "dj",
+     "style": null,
+     "country": "UK",
+     "source_line": "★ Dj Jeydikson Lima (UK)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "competition",
+     "quote": "Proudly introduce the International UK Open Competition",
+     "rationale": "The event includes an International UK Open Competition for dancers to show their talent."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 ROOMS",
+     "rationale": "The event has three dance rooms, each with its own styles."
+    },
+    {
+     "feature": "workshops",
+     "quote": "DAY WORKSHOPS",
+     "rationale": "Daytime workshops are listed as part of the event schedule."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "STAY (Recommendations)",
+     "rationale": "The organisers recommend several hotels near the venue, without the accommodation being part of the pass."
+    }
+   ]
+  }
+ ]
+}

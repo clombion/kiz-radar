@@ -1,0 +1,85 @@
+{
+ "batch": "event-16099",
+ "events": [
+  {
+   "event_id": 16099,
+   "party_rooms": {
+    "count": 3,
+    "quote": "6 great parties on 3 Dance floors"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "1 floor 100% Bachata Sensual/Modern"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "urbankiz",
+      "afro",
+      "kompa",
+      "semba"
+     ],
+     "quote": "1 floor 100% Kizomba/Urban Kiz/Afro House/Konpa/Semba/Afro House"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "1 floor 100% Dominican Bachata"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "1 floor 100% Bachata Sensual/Modern"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "1 floor 100% Kizomba/Urban Kiz/Afro House/Konpa/Semba/Afro House"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Kizomba/Urban Kiz & Konpa"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "1 floor 100% Kizomba/Urban Kiz/Afro House/Konpa/Semba/Afro House"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Kizomba/Urban Kiz & Konpa"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro House",
+     "quote": "1 floor 100% Kizomba/Urban Kiz/Afro House/Konpa/Semba/Afro House"
+    },
+    {
+     "genre": "reggaeton",
+     "genre_as_written": "Reggaeton",
+     "quote": "Reggaeton/Afro Artists;"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Salsa DJs;"
+    }
+   ]
+  }
+ ]
+}

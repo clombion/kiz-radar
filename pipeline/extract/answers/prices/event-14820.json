@@ -1,6 +1,5 @@
 {
  "batch": "event-14820",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 14820,
@@ -10,15 +9,14 @@
      "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": 3,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 40,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "2025-06-15",
        "quantity": null,
@@ -41,8 +39,7 @@
        "amount": 12,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "2025-06-15",
        "quantity": null,

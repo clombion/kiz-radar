@@ -1,0 +1,18 @@
+{
+ "batch": "event-14820",
+ "events": [
+  {
+   "event_id": 14820,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "afro",
+     "genre_as_written": "afrolatino",
+     "quote": "Congreso de baile afrolatino."
+    }
+   ]
+  }
+ ]
+}

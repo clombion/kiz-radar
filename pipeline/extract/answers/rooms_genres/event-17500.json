@@ -1,0 +1,18 @@
+{
+ "batch": "event-17500",
+ "events": [
+  {
+   "event_id": 17500,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizombadas",
+     "quote": "Two days of workshops, two Kizombadas, two socials"
+    }
+   ]
+  }
+ ]
+}

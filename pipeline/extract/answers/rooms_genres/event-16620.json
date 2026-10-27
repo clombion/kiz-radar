@@ -1,0 +1,33 @@
+{
+ "batch": "event-16620",
+ "events": [
+  {
+   "event_id": 16620,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "11hrs Workshops (Kizomba, Semba, Kizomba Fusion, Urbankiz, Tarraxo)"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "11hrs Workshops (Kizomba, Semba, Kizomba Fusion, Urbankiz, Tarraxo)"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urbankiz",
+     "quote": "11hrs Workshops (Kizomba, Semba, Kizomba Fusion, Urbankiz, Tarraxo)"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "11hrs Workshops (Kizomba, Semba, Kizomba Fusion, Urbankiz, Tarraxo)"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,31 @@
+{
+ "batch": "event-15873",
+ "events": [
+  {
+   "event_id": 15873,
+   "artists": [],
+   "features": [
+    {
+     "feature": "accommodation_included",
+     "quote": "Package of Full Pass & Accomodation & All Inclusive till 10 May 2026",
+     "rationale": "The package named in the quote combines the full pass with accommodation, so accommodation is included in the pass."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Breakfast – Lunch – Dinner – Drinks: Alcahol and Non Alcahol",
+     "rationale": "The All Inclusive listing names breakfast, lunch, dinner and drinks as part of the package."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "pool parties",
+     "rationale": "The description lists pool parties as part of the holiday's activities."
+    },
+    {
+     "feature": "workshops",
+     "quote": "elite lessons",
+     "rationale": "Elite lessons are part of the event, which means dance classes are included."
+    }
+   ]
+  }
+ ]
+}

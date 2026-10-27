@@ -1,0 +1,234 @@
+{
+ "batch": "event-17946",
+ "events": [
+  {
+   "event_id": 17946,
+   "artists": [
+    {
+     "name_as_written": "DJ POEMA BEATZ",
+     "role": "dj",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔰DJ POEMA BEATZ ( confirmed ✅)"
+    },
+    {
+     "name_as_written": "DJ ICHIGO",
+     "role": "dj",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔰DJ ICHIGO ( confirmed ✅)"
+    },
+    {
+     "name_as_written": "DJ CHAD",
+     "role": "dj",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔰DJ CHAD ( confirmed ✅)"
+    },
+    {
+     "name_as_written": "DJ FOFO J’AH",
+     "role": "dj",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔰DJ FOFO J’AH ( confirmed ✅)"
+    },
+    {
+     "name_as_written": "DJ CHRIS",
+     "role": "dj",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔰DJ CHRIS ( Confirmed ✅)"
+    },
+    {
+     "name_as_written": "DJ HUGO SMILE",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "🔰DJ HUGO SMILE ( Confirmed ✅)"
+    },
+    {
+     "name_as_written": "DJ DAVID RUELA",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "🔰DJ DAVID RUELA ( Confirmed ✅)"
+    },
+    {
+     "name_as_written": "DJ DJ SNAKES",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "🔰DJ DJ SNAKES ( Confirmed ✅)"
+    },
+    {
+     "name_as_written": "DJ EDEN",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "🔰DJ EDEN ( Confirmed ✅)"
+    },
+    {
+     "name_as_written": "DJ MOSE MILANO",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "🔰DJ MOSE MILANO (Confirmed ✅)"
+    },
+    {
+     "name_as_written": "JACK & SARAH",
+     "role": "teacher",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔰JACK & SARAH ( confirmed ✅)"
+    },
+    {
+     "name_as_written": "T’PEAK & DJÉ",
+     "role": "teacher",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔰T’PEAK & DJÉ ( confirmed ✅)"
+    },
+    {
+     "name_as_written": "CAARL & PATII",
+     "role": "teacher",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔰 CAARL & PATII ( confirmed ✅)"
+    },
+    {
+     "name_as_written": "ASIA VORONOVA",
+     "role": "teacher",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔰ASIA VORONOVA ( confirmed ✅)"
+    },
+    {
+     "name_as_written": "KARL BEKENE",
+     "role": "teacher",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "🔰 KARL BEKENE ( Confirmed ✅"
+    },
+    {
+     "name_as_written": "NICK & ALEX",
+     "role": "teacher",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "🔰 NICK & ALEX ( Confirmed ✅)"
+    },
+    {
+     "name_as_written": "ARMAND & AIDAH",
+     "role": "teacher",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "🔰 ARMAND & AIDAH ( Confirmed ✅)"
+    },
+    {
+     "name_as_written": "GUY TAWA & BICKY",
+     "role": "teacher",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "🔰 GUY TAWA & BICKY ( Confirmed ✅)"
+    },
+    {
+     "name_as_written": "JP & STEPHY",
+     "role": "teacher",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "🔰 JP & STEPHY (Confirmed ✅)"
+    },
+    {
+     "name_as_written": "DADIÉ SACKO",
+     "role": "teacher",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "🔰DADIÉ SACKO ( Confirmed ✅)"
+    },
+    {
+     "name_as_written": "JONATHAN KANI",
+     "role": "teacher",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "🔰JONATHAN KANI ( Confirmed ✅)"
+    },
+    {
+     "name_as_written": "BENKOS",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "🔰BENKOS"
+    },
+    {
+     "name_as_written": "FEDERICA",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "🔰FEDERICA"
+    },
+    {
+     "name_as_written": "TEAM UNIT’KIZ",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "TEAM UNIT’KIZ (PARIS)"
+    },
+    {
+     "name_as_written": "TEAM FUNOMEN",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "TEAM FUNOMEN (PARIS)"
+    },
+    {
+     "name_as_written": "TEAM VVK",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "TEAM VVK (PARIS)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "competition",
+     "quote": "JACK & JILL COMPETITION",
+     "rationale": "The event runs a Jack & Jill competition, which is a competition format."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "ROOM 💯 URBAN KIZ",
+     "rationale": "The event lists several separate rooms, one per dance style, so more than one dance room is present."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "All in one Hotel",
+     "rationale": "The parties take place in the hotel where dancers are invited to stay, so the event and accommodation share one venue."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "1 Preparty at the main hotel",
+     "rationale": "A preparty is scheduled at the main hotel before the main event."
+    },
+    {
+     "feature": "after_party",
+     "quote": "After party",
+     "rationale": "The schedule includes after parties on several days."
+    },
+    {
+     "feature": "workshops",
+     "quote": "20:00 – 22:00 : workshops",
+     "rationale": "Dance workshops are scheduled as part of the programme."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "15:00 pm – 21:00 : Social",
+     "rationale": "Daytime and afternoon socials are scheduled on the Friday."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "GUEST TAXIS TEAMS",
+     "rationale": "Guest taxi-dancer teams are listed as present at the event."
+    }
+   ]
+  }
+ ]
+}

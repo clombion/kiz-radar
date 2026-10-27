@@ -1,0 +1,23 @@
+{
+ "batch": "event-16875",
+ "events": [
+  {
+   "event_id": 16875,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Urban Kiz"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "West Coast Swing",
+     "quote": "West Coast Swing"
+    }
+   ]
+  }
+ ]
+}

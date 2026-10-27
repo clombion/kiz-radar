@@ -1,0 +1,36 @@
+{
+ "batch": "event-18757",
+ "events": [
+  {
+   "event_id": 18757,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Amazing dance workshops",
+     "rationale": "The description lists amazing dance workshops as part of the event program."
+    },
+    {
+     "feature": "competition",
+     "quote": "Rising Star Competition",
+     "rationale": "The event includes a Rising Star Competition titled Dutch Selection."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Black & Red Gala",
+     "rationale": "A dress code is stated for Saturday Night, namely Black & Red Gala."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "All White",
+     "rationale": "Sunday Night is a themed party with an all-white dress theme."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Parties & Socials",
+     "rationale": "The three full days include socials alongside the parties, and the weekend program lists daytime socials."
+    }
+   ]
+  }
+ ]
+}

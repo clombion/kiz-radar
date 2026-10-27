@@ -1,0 +1,23 @@
+{
+ "batch": "event-18263",
+ "events": [
+  {
+   "event_id": 18263,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "designed for those who want to learn, socialize, and fully experience Kizomba."
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Daily workshops of Kizomba, Semba and traditional dances with local masters."
+    }
+   ]
+  }
+ ]
+}

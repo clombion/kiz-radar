@@ -1,0 +1,46 @@
+{
+ "batch": "event-16446",
+ "events": [
+  {
+   "event_id": 16446,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "Kizomba Room",
+     "kind": "unspecified",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "Exclusive Kizomba Room"
+    },
+    {
+     "name_as_written": "Bachata and Salsa Room",
+     "kind": "unspecified",
+     "genres": [
+      "bachata",
+      "salsa"
+     ],
+     "quote": "Exclusive Bachata and Salsa Room"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Exclusive Kizomba Room"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Exclusive Bachata and Salsa Room"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Exclusive Bachata and Salsa Room"
+    }
+   ]
+  }
+ ]
+}

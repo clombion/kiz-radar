@@ -1,0 +1,74 @@
+{
+ "batch": "event-15727",
+ "events": [
+  {
+   "event_id": 15727,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 Rooms • 2 Vibes"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "LOMÉ ROOM",
+     "kind": "unspecified",
+     "genres": [
+      "kizomba",
+      "urbankiz",
+      "tarraxo",
+      "zouk",
+      "semba"
+     ],
+     "quote": "MAIN PARTY – LOMÉ ROOM"
+    },
+    {
+     "name_as_written": "KINSHASA ROOM",
+     "kind": "party",
+     "genres": [
+      "kompa",
+      "zouk",
+      "other"
+     ],
+     "quote": "KINSHASA ROOM"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "ALOHA SWEET KIZOMBA WEEKENDER"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "UrbanKiz",
+     "quote": "UrbanKiz – Progressive Level"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Kizomba • UrbanKiz • Tarraxo"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "GhettoZouk",
+     "quote": "GhettoZouk • Semba & more"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "GhettoZouk • Semba & more"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Kompa",
+     "quote": "🇭🇹💃 Kompa"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Gouyad",
+     "quote": "Kompa Gouyad"
+    }
+   ]
+  }
+ ]
+}

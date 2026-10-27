@@ -1,0 +1,18 @@
+{
+ "batch": "event-18810",
+ "events": [
+  {
+   "event_id": 18810,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "THE KIZOMBA EXPERIENCE JAMAICA"
+    }
+   ]
+  }
+ ]
+}

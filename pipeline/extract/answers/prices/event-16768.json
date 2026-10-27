@@ -1,6 +1,5 @@
 {
  "batch": "event-16768",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16768,
@@ -8,7 +7,7 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "✪ FULLPASS",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": true,
@@ -17,8 +16,7 @@
        "amount": 1390,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -30,33 +28,9 @@
      ]
     },
     {
-     "kind": "package",
-     "style": null,
-     "label_quote": "✪ EXCURSIONS (from 26Oct to 30Oct )",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 525,
-       "currency": "EUR",
-       "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "✪ EXCURSIONS (from 26Oct to 30Oct ) : includes excursions and transportation : 525€"
-      }
-     ]
-    },
-    {
      "kind": "full",
      "style": null,
-     "label_quote": "Dance Pass",
+     "label_quote": "✪ Dance Pass : including parties, socials, workshops & conference.",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -65,8 +39,7 @@
        "amount": 92.99,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "10-31",
        "until": "11-02",
        "quantity": null,

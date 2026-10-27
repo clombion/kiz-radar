@@ -1,0 +1,92 @@
+{
+ "batch": "event-16575",
+ "events": [
+  {
+   "event_id": 16575,
+   "artists": [
+    {
+     "name_as_written": "DJ Ziggy",
+     "role": "dj",
+     "style": null,
+     "country": "🇧🇬",
+     "source_line": "DJ Ziggy 🇧🇬"
+    },
+    {
+     "name_as_written": "DJ Al”ben",
+     "role": "dj",
+     "style": null,
+     "country": "🇧🇬",
+     "source_line": "DJ Al”ben 🇧🇬"
+    },
+    {
+     "name_as_written": "DJ Jovince",
+     "role": "dj",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "DJ Jovince 🇦🇴"
+    },
+    {
+     "name_as_written": "Eliza Sala",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "💥 Eliza Sala 🇦🇴"
+    },
+    {
+     "name_as_written": "Tony & Sylwia",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇪",
+     "source_line": "💥Tony & Sylwia 🇮🇪"
+    },
+    {
+     "name_as_written": "Ziggy & Dani",
+     "role": "teacher",
+     "style": null,
+     "country": "🇧🇬",
+     "source_line": "💥Ziggy & Dani 🇧🇬"
+    },
+    {
+     "name_as_written": "Alben & Dobi",
+     "role": "teacher",
+     "style": null,
+     "country": "🇧🇬",
+     "source_line": "💥Alben & Dobi 🇧🇬"
+    },
+    {
+     "name_as_written": "Lady Gery",
+     "role": "teacher",
+     "style": null,
+     "country": "🇧🇬",
+     "source_line": "💥Lady Gery 🇧🇬"
+    },
+    {
+     "name_as_written": "Esmeraldo Black Diamond",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴",
+     "source_line": "💥Esmeraldo Black Diamond 🇦🇴"
+    },
+    {
+     "name_as_written": "Nacim",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇵",
+     "source_line": "💥Nacim 🇨🇵"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Workshops",
+     "rationale": "The event lists workshops as part of what to expect, and the schedule includes 2 workshops on Friday and 6 on Saturday."
+    },
+    {
+     "feature": "shows",
+     "quote": "Shows",
+     "rationale": "The event lists shows among its features and includes a Shows slot on Saturday."
+    }
+   ]
+  }
+ ]
+}

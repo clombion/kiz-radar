@@ -1,0 +1,26 @@
+{
+ "batch": "event-18327",
+ "events": [
+  {
+   "event_id": 18327,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Workshops avec des artistes internationaux",
+     "rationale": "The programme lists workshops with international artists, so dance classes are part of the event."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Soirées et pool parties enflammées",
+     "rationale": "The programme explicitly mentions pool parties."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "vol + hébergement + full pass inclus",
+     "rationale": "The price of 1399€ includes accommodation together with the full pass."
+    }
+   ]
+  }
+ ]
+}

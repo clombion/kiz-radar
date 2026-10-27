@@ -1,0 +1,41 @@
+{
+ "batch": "event-14461",
+ "events": [
+  {
+   "event_id": 14461,
+   "artists": [
+    {
+     "name_as_written": "TONY VISER & CARLA ANDRADE",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "TONY VISER & CARLA ANDRADE"
+    },
+    {
+     "name_as_written": "BONIFACIO",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "BONIFACIO"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Wokshops will be delivered by our international teachers",
+     "rationale": "The description states that workshops will be delivered by international teachers."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "HOTEL : Mercure Hotel",
+     "rationale": "A recommended hotel is named with a negotiated rate link, and accommodation is not stated as part of the pass."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "16:00 SOCIAL",
+     "rationale": "The program lists afternoon socials at 16:00 on Saturday and Sunday."
+    }
+   ]
+  }
+ ]
+}

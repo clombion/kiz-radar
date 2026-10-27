@@ -1,0 +1,152 @@
+{
+ "batch": "event-16034",
+ "events": [
+  {
+   "event_id": 16034,
+   "artists": [
+    {
+     "name_as_written": "CHAMALO & JALLYSA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 CHAMALO & JALLYSA"
+    },
+    {
+     "name_as_written": "LANDRY & WINDY",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 LANDRY & WINDY"
+    },
+    {
+     "name_as_written": "J.TECA & LUCY",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 J.TECA & LUCY"
+    },
+    {
+     "name_as_written": "FELIX & JULI",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 FELIX & JULI"
+    },
+    {
+     "name_as_written": "KATARINA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 KATARINA"
+    },
+    {
+     "name_as_written": "DJ HUGO BOSS",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 DJ HUGO BOSS"
+    },
+    {
+     "name_as_written": "DJ FRANK",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 DJ FRANK"
+    },
+    {
+     "name_as_written": "DJ ROCK",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 DJ ROCK"
+    },
+    {
+     "name_as_written": "DJ RM KETA",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 DJ RM KETA"
+    },
+    {
+     "name_as_written": "DJ ZEN",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 DJ ZEN"
+    },
+    {
+     "name_as_written": "DJ BARTEF",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 DJ BARTEF"
+    },
+    {
+     "name_as_written": "DJ 5 STAR KID",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 DJ 5 STAR KID"
+    },
+    {
+     "name_as_written": "DJ DANY",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 DJ DANY"
+    },
+    {
+     "name_as_written": "BKF TEAM",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "BKF TEAM"
+    },
+    {
+     "name_as_written": "João & Lucy",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "João & Lucy"
+    }
+   ],
+   "features": [
+    {
+     "feature": "boat_party",
+     "quote": "A unique boat venue on the Danube river",
+     "rationale": "The festival venue is described as a boat on the Danube, so the event takes place on a boat."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 ROOMS // 2 ATMOSPHERES",
+     "rationale": "The description states the festival has two rooms."
+    },
+    {
+     "feature": "workshops",
+     "quote": "High-quality workshops",
+     "rationale": "High-quality workshops are listed as part of the event."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Thursday Pre-Party",
+     "rationale": "A Thursday pre-party is mentioned as part of the event schedule."
+    },
+    {
+     "feature": "after_party",
+     "quote": "Monday After-Party",
+     "rationale": "A Monday after-party is mentioned as part of the event schedule."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "give access to the 3 socials",
+     "rationale": "The passes give access to three socials, which are daytime social sessions."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "PROMOCODE – KIZO26",
+     "rationale": "A promo code for negotiated room rates at a listed hotel is given, without the hotel being part of the pass."
+    }
+   ]
+  }
+ ]
+}

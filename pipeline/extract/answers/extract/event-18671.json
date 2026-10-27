@@ -1,0 +1,150 @@
+{
+ "batch": "event-18671",
+ "events": [
+  {
+   "event_id": 18671,
+   "artists": [
+    {
+     "name_as_written": "DJ Paraiso",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ Paraiso"
+    },
+    {
+     "name_as_written": "DJ Nao",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ Nao"
+    },
+    {
+     "name_as_written": "DJ Nicelife",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ Nicelife"
+    },
+    {
+     "name_as_written": "DJ Sai Sai",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ Sai Sai"
+    },
+    {
+     "name_as_written": "DJ L-Figo",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ L-Figo"
+    },
+    {
+     "name_as_written": "DJ Malick",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ Malick"
+    },
+    {
+     "name_as_written": "DJ Kiss",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ Kiss"
+    },
+    {
+     "name_as_written": "DJ Smach",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ Smach"
+    },
+    {
+     "name_as_written": "DJ Ibra",
+     "role": "dj",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "DJ Ibra"
+    },
+    {
+     "name_as_written": "Justinho",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Justinho"
+    },
+    {
+     "name_as_written": "Josue & Celine",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Josue & Celine"
+    },
+    {
+     "name_as_written": "Asia",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Asia"
+    },
+    {
+     "name_as_written": "Fred Ag & Chiara",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Fred Ag & Chiara"
+    },
+    {
+     "name_as_written": "Sophia Alma",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Sophia Alma (Barcelona)"
+    },
+    {
+     "name_as_written": "Keymo",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Keymo (Nice)"
+    },
+    {
+     "name_as_written": "Moz’art",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Moz’art (Marseille)"
+    },
+    {
+     "name_as_written": "Alex & Delphine",
+     "role": "teacher",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "Alex & Delphine (Bordeaux)"
+    },
+    {
+     "name_as_written": "DJ Pedron",
+     "role": "dj",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "DJ Pedron (Paris)"
+    },
+    {
+     "name_as_written": "DJ Praz",
+     "role": "dj",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "DJ Praz (Bordeaux)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "We have top-tier artists for workshops and DJs for the parties.",
+     "rationale": "The description states that artists are present for workshops, so dance classes are part of the event."
+    }
+   ]
+  }
+ ]
+}

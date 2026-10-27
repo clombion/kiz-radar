@@ -1,0 +1,425 @@
+{
+ "batch": "event-16820",
+ "events": [
+  {
+   "event_id": 16820,
+   "artists": [
+    {
+     "name_as_written": "WALF Devon",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "🔹🔹🔹WALF Devon welcomes you to its 8th Edition of Winter Afro-Latin Festival. Join us as we celebrate with a collaboration of SALSA, BACHATA, KIZOMBA , URBANKIZ & AFRO-HOUSE and many more with incredible line up of both International and Local Teachers, and Dj’s to keep you entertained all the weekend. We will have 4 dance floors available, a late licence and late bar to allow you to keep dancing and drinking through the night."
+    },
+    {
+     "name_as_written": "Max Dousey",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "🇸🇳 🇮🇹",
+     "source_line": "Max Dousey 🇸🇳 🇮🇹"
+    },
+    {
+     "name_as_written": "Mauricio Reyes",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "🇬🇹 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Mauricio Reyes TBC 🇬🇹 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Gormack Dione & Alessandra",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "🇸🇳 🇫🇷 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Gormack Dione & Alessandra 🇸🇳 🇫🇷 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Philippe Gomis",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "🇸🇳 🇫🇷",
+     "source_line": "Philippe Gomis 🇸🇳 🇫🇷"
+    },
+    {
+     "name_as_written": "Tamba Hissirou",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "🇸🇳 🇫🇷",
+     "source_line": "Tamba Hissirou TBC 🇸🇳 🇫🇷"
+    },
+    {
+     "name_as_written": "Edwin Rodriguez",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "🇲🇽 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Edwin Rodriguez TBC 🇲🇽 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Esref Ulas",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "🇹🇷 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Esref Ulas 🇹🇷 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Alvin & Ramona",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 🇷🇴",
+     "source_line": "Alvin & Ramona 🏴󠁧󠁢󠁥󠁮󠁧󠁿 🇷🇴"
+    },
+    {
+     "name_as_written": "Lady Gery",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "🇧🇬 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Lady Gery 🇧🇬 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Chris Barnes",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Chris Barnes 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "John Adenitire-Zielinska & Gaby",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "🇳🇬 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "John Adenitire-Zielinska & Gaby 🇳🇬 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Uncle Phil",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "🇿🇲 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Uncle Phil TBC 🇿🇲 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Toyo Sando",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "🇨🇬 🇫🇷",
+     "source_line": "Toyo Sando 🇨🇬 🇫🇷"
+    },
+    {
+     "name_as_written": "Steve & Naz",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Steve & Naz 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Shahid",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+     "source_line": "Shahid 🏴󠁧󠁢󠁷󠁬󠁳󠁿"
+    },
+    {
+     "name_as_written": "Sol Hissirou",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "🇸🇳 🇫🇷 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Sol Hissirou 🇸🇳 🇫🇷 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Richard & Anastasia",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "🇨🇬 🇧🇪 🇺🇦",
+     "source_line": "Richard & Anastasia 🇨🇬 🇧🇪 🇺🇦"
+    },
+    {
+     "name_as_written": "Angel Peynao",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "🇪🇸 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Angel Peynao TBC 🇪🇸 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Grabriel Bravo Riviera",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "🇧🇴 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Grabriel Bravo Riviera (Happy Feet) 🇧🇴 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Lucy Ashley",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Lucy Ashley 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Lye Duc",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "🇨🇳 🇷🇴",
+     "source_line": "Lye Duc 🇨🇳 🇷🇴"
+    },
+    {
+     "name_as_written": "Ange Sando",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": "🇨🇬 🇫🇷",
+     "source_line": "Ange Sando 🇨🇬 🇫🇷"
+    },
+    {
+     "name_as_written": "Simba & Manon",
+     "role": "teacher",
+     "style": "BRAZILIAN ZOUK",
+     "country": "🇸🇳 🇫🇷",
+     "source_line": "Simba & Manon TBC 🇸🇳 🇫🇷"
+    },
+    {
+     "name_as_written": "Priince Bachir",
+     "role": "teacher",
+     "style": "KIZOMBA URBANKIZ & AFRO-BEATS",
+     "country": "🇸🇳 🇫🇷",
+     "source_line": "Priince Bachir 🇸🇳 🇫🇷"
+    },
+    {
+     "name_as_written": "Jeydickson Lima",
+     "role": "teacher",
+     "style": "KIZOMBA URBANKIZ & AFRO-BEATS",
+     "country": "🇸🇹 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Jeydickson Lima TBC 🇸🇹 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Mousta Thiane",
+     "role": "teacher",
+     "style": "KIZOMBA URBANKIZ & AFRO-BEATS",
+     "country": "🇸🇳🇪🇸",
+     "source_line": "Mousta Thiane 🇸🇳🇪🇸"
+    },
+    {
+     "name_as_written": "Charles Semba",
+     "role": "teacher",
+     "style": "KIZOMBA URBANKIZ & AFRO-BEATS",
+     "country": "🇦🇴🇫🇷",
+     "source_line": "Charles Semba 🇦🇴🇫🇷"
+    },
+    {
+     "name_as_written": "Pascal Gomis",
+     "role": "teacher",
+     "style": "KIZOMBA URBANKIZ & AFRO-BEATS",
+     "country": "🇸🇳 🇫🇷",
+     "source_line": "Pascal Gomis 🇸🇳 🇫🇷"
+    },
+    {
+     "name_as_written": "Isabelle Michalon Aka Colibri",
+     "role": "teacher",
+     "style": "KIZOMBA URBANKIZ & AFRO-BEATS",
+     "country": "🇲🇶 🇫🇷",
+     "source_line": "Isabelle Michalon Aka Colibri 🇲🇶 🇫🇷"
+    },
+    {
+     "name_as_written": "Séverine Claude Saussois aka Gazl",
+     "role": "teacher",
+     "style": "KIZOMBA URBANKIZ & AFRO-BEATS",
+     "country": "🇲🇶 🇫🇷",
+     "source_line": "Séverine Claude Saussois aka Gazl 🇲🇶 🇫🇷"
+    },
+    {
+     "name_as_written": "Ben TheEntertainer",
+     "role": "teacher",
+     "style": "KIZOMBA URBANKIZ & AFRO-BEATS",
+     "country": "🇸🇳 🇫🇷 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Ben TheEntertainer 🇸🇳 🇫🇷 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Atou Ba aka A2Man",
+     "role": "teacher",
+     "style": "KIZOMBA URBANKIZ & AFRO-BEATS",
+     "country": "🇸🇳 🇫🇷",
+     "source_line": "Atou Ba aka A2Man 🇸🇳 🇫🇷"
+    },
+    {
+     "name_as_written": "Edson Monteiro",
+     "role": "teacher",
+     "style": "KIZOMBA URBANKIZ & AFRO-BEATS",
+     "country": "🇬🇼 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Edson Monteiro TBC 🇬🇼 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Gora Dieye",
+     "role": "teacher",
+     "style": "KIZOMBA URBANKIZ & AFRO-BEATS",
+     "country": "🇸🇳 🇪🇸",
+     "source_line": "Gora Dieye 🇸🇳 🇪🇸"
+    },
+    {
+     "name_as_written": "Dani & KizZG",
+     "role": "teacher",
+     "style": "KIZOMBA URBANKIZ & AFRO-BEATS",
+     "country": "🇧🇬",
+     "source_line": "Dani & KizZG 🇧🇬"
+    },
+    {
+     "name_as_written": "Prince & Vicky",
+     "role": "teacher",
+     "style": "KIZOMBA URBANKIZ & AFRO-BEATS",
+     "country": "🇮🇹🇮🇳 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Prince & Vicky TBC 🇮🇹🇮🇳 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Nick Cyprus",
+     "role": "teacher",
+     "style": "KIZOMBA URBANKIZ & AFRO-BEATS",
+     "country": "🇦🇺🇨🇾",
+     "source_line": "Nick Cyprus TBC 🇦🇺🇨🇾"
+    },
+    {
+     "name_as_written": "Dj Philippe Gomis",
+     "role": "dj",
+     "style": "SALSA-BACHATA",
+     "country": "🇸🇳 🇫🇷",
+     "source_line": "Dj Philippe Gomis 🇸🇳 🇫🇷"
+    },
+    {
+     "name_as_written": "Dj Mark Huddleston",
+     "role": "dj",
+     "style": "SALSA-BACHATA",
+     "country": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Dj Mark Huddleston 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Dj Vincent Tennant",
+     "role": "dj",
+     "style": "SALSA-BACHATA",
+     "country": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Dj Vincent Tennant 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Dj Angel Peynao",
+     "role": "dj",
+     "style": "SALSA-BACHATA",
+     "country": "🇪🇸 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Dj Angel Peynao 🇪🇸 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Dj Gabriel Bravo Riviera",
+     "role": "dj",
+     "style": "SALSA-BACHATA",
+     "country": "🇧🇴 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Dj Gabriel Bravo Riviera 🇧🇴 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Dj Ange BBA",
+     "role": "dj",
+     "style": "SALSA-BACHATA",
+     "country": "🇨🇬 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Dj Ange BBA 🇨🇬 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Dj Mike Whitbread",
+     "role": "dj",
+     "style": "SALSA-BACHATA",
+     "country": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Dj Mike Whitbread 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Dj Steve Eden",
+     "role": "dj",
+     "style": "SALSA-BACHATA",
+     "country": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Dj Steve Eden 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Dj Saï Saï",
+     "role": "dj",
+     "style": "KIZOMBA-URBANKIZ",
+     "country": "🇸🇳 🇫🇷",
+     "source_line": "Dj Saï Saï 🇸🇳 🇫🇷"
+    },
+    {
+     "name_as_written": "Dj Style of Music",
+     "role": "dj",
+     "style": "KIZOMBA-URBANKIZ",
+     "country": "🇸🇳🇫🇷",
+     "source_line": "Dj Style of Music 🇸🇳🇫🇷"
+    },
+    {
+     "name_as_written": "Dj MB Kizomba",
+     "role": "dj",
+     "style": "KIZOMBA-URBANKIZ",
+     "country": "🇸🇳🇫🇷",
+     "source_line": "Dj MB Kizomba 🇸🇳🇫🇷"
+    },
+    {
+     "name_as_written": "Dee Joe",
+     "role": "dj",
+     "style": "KIZOMBA-URBANKIZ",
+     "country": "🇸🇳🇷🇴",
+     "source_line": "Dee Joe 🇸🇳🇷🇴"
+    },
+    {
+     "name_as_written": "Dj Abes",
+     "role": "dj",
+     "style": "KIZOMBA-URBANKIZ",
+     "country": "🇸🇳 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Dj Abes 🇸🇳 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Mister Nino",
+     "role": "performer",
+     "style": "Kizomba & Semba",
+     "country": "🇦🇴 🇵🇹 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+     "source_line": "Mister Nino (Kizomba & Semba) 🇦🇴 🇵🇹 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    {
+     "name_as_written": "Sergent O",
+     "role": "performer",
+     "style": "Kompa",
+     "country": "🇨🇲 🇫🇷",
+     "source_line": "Sergent O (Kompa) 🇨🇲 🇫🇷"
+    },
+    {
+     "name_as_written": "Magda Dobrowolska",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Magda Dobrowolska"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "Please contact the organisers directly to arrange as they have exclusive use of the hotel.",
+     "rationale": "The organisers have exclusive use of the hotel where guests stay, so the event and accommodation share one venue."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "On Friday day time chill & social",
+     "rationale": "The description names a daytime social on Friday."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "We will have 4 dance floors available",
+     "rationale": "Four dance floors are stated, so there is more than one dance room."
+    },
+    {
+     "feature": "workshops",
+     "quote": "(7 hours workshops)",
+     "rationale": "Dance workshops are listed in the Saturday and Sunday schedules."
+    },
+    {
+     "feature": "shows",
+     "quote": "Live spectacle with top performers in the industry.",
+     "rationale": "A live spectacle with performers is scheduled."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Live Concert will be confirmed",
+     "rationale": "A live concert is scheduled on Sunday, under the SUNDAY LIVE MUSIC heading."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "TAXI DANCERS & PERFORMERS:",
+     "rationale": "The description has a section for taxi dancers and performers."
+    }
+   ]
+  }
+ ]
+}

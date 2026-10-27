@@ -1,0 +1,18 @@
+{
+ "batch": "event-14847",
+ "events": [
+  {
+   "event_id": 14847,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Eclipse Kizomba Festival"
+    }
+   ]
+  }
+ ]
+}

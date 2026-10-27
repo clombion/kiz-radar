@@ -1,0 +1,165 @@
+{
+ "batch": "event-14873",
+ "events": [
+  {
+   "event_id": 14873,
+   "artists": [
+    {
+     "name_as_written": "Fred-Nelson & Morgane",
+     "role": "teacher",
+     "style": null,
+     "country": "France",
+     "source_line": "Fred-Nelson & Morgane (France)"
+    },
+    {
+     "name_as_written": "JP & Stephy",
+     "role": "teacher",
+     "style": null,
+     "country": "France",
+     "source_line": "JP & Stephy (France)"
+    },
+    {
+     "name_as_written": "Val`R & Sarah",
+     "role": "teacher",
+     "style": null,
+     "country": "France",
+     "source_line": "Val`R & Sarah (France)"
+    },
+    {
+     "name_as_written": "Jack & Sara",
+     "role": "teacher",
+     "style": null,
+     "country": "Spain",
+     "source_line": "Jack & Sara (Spain)"
+    },
+    {
+     "name_as_written": "Jesús & Anni",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Jesús & Anni (Madrid)"
+    },
+    {
+     "name_as_written": "Luis & Karen",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Luis & Karen (Madrid)"
+    },
+    {
+     "name_as_written": "Lety & Dani",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Lety & Dani (Madrid)"
+    },
+    {
+     "name_as_written": "Keco & Moni",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Keco & Moni (Madrid)"
+    },
+    {
+     "name_as_written": "Luismi & Angeles",
+     "role": "teacher",
+     "style": null,
+     "country": "Spain",
+     "source_line": "Luismi & Angeles (Spain)"
+    },
+    {
+     "name_as_written": "Marisa & Jorge",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Marisa & Jorge (Madrid)"
+    },
+    {
+     "name_as_written": "Javi & Belén",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Javi & Belén (Madrid)"
+    },
+    {
+     "name_as_written": "Kevin",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Kevin (Madrid)"
+    },
+    {
+     "name_as_written": "Alberto & Paula",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Alberto & Paula (Madrid)"
+    },
+    {
+     "name_as_written": "Dj Lucas",
+     "role": "dj",
+     "style": null,
+     "country": "Portugal",
+     "source_line": "Dj Lucas (Portugal)"
+    },
+    {
+     "name_as_written": "Dj Neo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Neo (Madrid)"
+    },
+    {
+     "name_as_written": "Dj Jack",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Jack (Valencia)"
+    },
+    {
+     "name_as_written": "Dj Kot",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Kot (Madrid)"
+    },
+    {
+     "name_as_written": "Dj Nono",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Nono (Madrid)"
+    },
+    {
+     "name_as_written": "Dj Eclipse",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Eclipse (Valencia)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Workshops and social dance",
+     "rationale": "The Friday schedule lists workshops as part of the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "12h-20h Social Dance",
+     "rationale": "A daytime social dance session is scheduled on Sunday afternoon."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Only pack Main hotel & Full pass.",
+     "rationale": "The package combining the main hotel and the full pass includes the accommodation."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "All the event will be in “Isla de la Garena” Hotel",
+     "rationale": "The event takes place in the same hotel where dancers are invited to stay."
+    }
+   ]
+  }
+ ]
+}

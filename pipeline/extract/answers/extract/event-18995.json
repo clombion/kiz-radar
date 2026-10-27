@@ -1,0 +1,128 @@
+{
+ "batch": "event-18995",
+ "events": [
+  {
+   "event_id": 18995,
+   "artists": [
+    {
+     "name_as_written": "ANGEL ROJAS",
+     "role": "teacher",
+     "style": null,
+     "country": "Cuba",
+     "source_line": "🇨🇺 ANGEL ROJAS (Cuba)"
+    },
+    {
+     "name_as_written": "BØRGE & LINN",
+     "role": "teacher",
+     "style": null,
+     "country": "Norway",
+     "source_line": "🇳🇴 BØRGE & LINN (Norway)"
+    },
+    {
+     "name_as_written": "RIC. ORNELAS",
+     "role": "teacher",
+     "style": null,
+     "country": "Portugal",
+     "source_line": "🇵🇹 RIC. ORNELAS (Portugal)"
+    },
+    {
+     "name_as_written": "OLOF",
+     "role": "teacher",
+     "style": null,
+     "country": "Iceland",
+     "source_line": "🇮🇸 OLOF (Iceland)"
+    },
+    {
+     "name_as_written": "DAO RYDQVIST",
+     "role": "teacher",
+     "style": null,
+     "country": "Sweden",
+     "source_line": "🇸🇪 DAO RYDQVIST (Sweden)"
+    },
+    {
+     "name_as_written": "DANIELA HORTA",
+     "role": "teacher",
+     "style": null,
+     "country": "Denmark",
+     "source_line": "🇩🇰 DANIELA HORTA (Denmark)"
+    },
+    {
+     "name_as_written": "ANYSABEL",
+     "role": "teacher",
+     "style": null,
+     "country": "Scotland",
+     "source_line": "🏴󠁧󠁢󠁳󠁣󠁴󠁿 ANYSABEL (Scotland)"
+    },
+    {
+     "name_as_written": "RICARDO FERREIRA",
+     "role": "teacher",
+     "style": null,
+     "country": "Portugal",
+     "source_line": "🇵🇹 RICARDO FERREIRA (Portugal)"
+    },
+    {
+     "name_as_written": "MÅRTEN ANGNER",
+     "role": "teacher",
+     "style": null,
+     "country": "Sweden",
+     "source_line": "🇸🇪 MÅRTEN ANGNER (Sweden)"
+    },
+    {
+     "name_as_written": "LAURA TIGUERONA",
+     "role": "teacher",
+     "style": null,
+     "country": "Scotland",
+     "source_line": "🏴󠁧󠁢󠁳󠁣󠁴󠁿 LAURA TIGUERONA (Scotland)"
+    },
+    {
+     "name_as_written": "ANITA & MARCOS",
+     "role": "teacher",
+     "style": null,
+     "country": "Portugal",
+     "source_line": "🇵🇹 ANITA & MARCOS (Portugal)"
+    },
+    {
+     "name_as_written": "RICKI GONZALEZ",
+     "role": "teacher",
+     "style": null,
+     "country": "Sweden",
+     "source_line": "🇸🇪 RICKI GONZALEZ (Sweden)"
+    },
+    {
+     "name_as_written": "Dance In Norway",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Dance In Norway"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_levels_beginners",
+     "quote": "From the foundation to advanced",
+     "rationale": "The description states the course runs from foundation to advanced levels, so it suits all levels."
+    },
+    {
+     "feature": "workshops",
+     "quote": "TEACHING",
+     "rationale": "A teaching section lists instructors, showing that dance classes are part of the event."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 rooms",
+     "rationale": "The location line states the venue has two rooms."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "SUNDAY social afternoon",
+     "rationale": "A Sunday social afternoon is listed among the parties."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "5 nights accommodation",
+     "rationale": "The FULL PAC package explicitly includes five nights of accommodation."
+    }
+   ]
+  }
+ ]
+}

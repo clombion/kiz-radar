@@ -1,0 +1,24 @@
+{
+ "batch": "event-15868",
+ "events": [
+  {
+   "event_id": 15868,
+   "artists": [
+    {
+     "name_as_written": "Paul & Gwany",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "📲 Contact: Paul & Gwany +91 8860181779"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "LEARN FROM WORLD-CLASS DANCERS AND INSTRUCTORS",
+     "rationale": "The description promises learning from instructors, which indicates dance classes are part of the event."
+    }
+   ]
+  }
+ ]
+}

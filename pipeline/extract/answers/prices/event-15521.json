@@ -1,6 +1,5 @@
 {
  "batch": "event-15521",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15521,
@@ -8,7 +7,7 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": "Full pass (3 Days) : 59€ online (69 € at the door)",
+     "label_quote": null,
      "group_size": 1,
      "days": 3,
      "includes_hotel": false,
@@ -17,36 +16,34 @@
        "amount": 59,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Full pass (3 Days) : 59€ online"
+       "quote": "Full pass (3 Days) : 59€ online (69 € at the door)"
       },
       {
        "amount": 69,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "69 € at the door"
+       "quote": "Full pass (3 Days) : 59€ online (69 € at the door)"
       }
      ]
     },
     {
      "kind": "day",
      "style": null,
-     "label_quote": "Friday Full Pass",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -55,8 +52,7 @@
        "amount": 15,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -70,7 +66,7 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": "Friday Party: 7€",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -79,8 +75,7 @@
        "amount": 7,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -94,7 +89,7 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": "Saturday Full Pass",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -103,36 +98,34 @@
        "amount": 45,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Saturday Full Pass: 45 €"
+       "quote": "Saturday Full Pass: 45 € (55€ at the door)"
       },
       {
        "amount": 55,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "55€ at the door"
+       "quote": "Saturday Full Pass: 45 € (55€ at the door)"
       }
      ]
     },
     {
      "kind": "other",
      "style": "bachata",
-     "label_quote": "Saturday Beginner Pass",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -141,8 +134,7 @@
        "amount": 29,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -156,7 +148,7 @@
     {
      "kind": "day",
      "style": "salsa",
-     "label_quote": "Saturday Salsa Pass: 29€ (35€)",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -165,36 +157,34 @@
        "amount": 29,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Saturday Salsa Pass: 29€"
+       "quote": "Saturday Salsa Pass: 29€ (35€)"
       },
       {
        "amount": 35,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "(35€)"
+       "quote": "Saturday Salsa Pass: 29€ (35€)"
       }
      ]
     },
     {
      "kind": "day",
      "style": null,
-     "label_quote": "Saturday 2 last Workshops + party",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -203,36 +193,34 @@
        "amount": 29,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Saturday 2 last Workshops + party: 29€"
+       "quote": "Saturday 2 last Workshops + party: 29€ (35€ at the door)"
       },
       {
        "amount": 35,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "35€ at the door"
+       "quote": "Saturday 2 last Workshops + party: 29€ (35€ at the door)"
       }
      ]
     },
     {
      "kind": "day",
      "style": null,
-     "label_quote": "Saturday Party : 14€ (15€ at the door)",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -241,36 +229,34 @@
        "amount": 14,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Saturday Party : 14€"
+       "quote": "Saturday Party : 14€ (15€ at the door)"
       },
       {
        "amount": 15,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "15€ at the door"
+       "quote": "Saturday Party : 14€ (15€ at the door)"
       }
      ]
     },
     {
      "kind": "other",
      "style": null,
-     "label_quote": "Sunday Master Pass",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -279,8 +265,7 @@
        "amount": 29,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,

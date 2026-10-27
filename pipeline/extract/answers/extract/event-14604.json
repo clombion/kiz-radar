@@ -1,0 +1,94 @@
+{
+ "batch": "event-14604",
+ "events": [
+  {
+   "event_id": 14604,
+   "artists": [
+    {
+     "name_as_written": "DJ PARAÏSO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ PARAÏSO"
+    },
+    {
+     "name_as_written": "DJ DIABLO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ DIABLO"
+    },
+    {
+     "name_as_written": "DJ CHAD",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ CHAD"
+    },
+    {
+     "name_as_written": "DJ STOMPY",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ STOMPY"
+    },
+    {
+     "name_as_written": "DJ DEDINHO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ DEDINHO"
+    },
+    {
+     "name_as_written": "DJ MTEE",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ MTEE"
+    },
+    {
+     "name_as_written": "DJ ROH",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ ROH"
+    },
+    {
+     "name_as_written": "AKRAM & SARA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "– AKRAM & SARA"
+    },
+    {
+     "name_as_written": "JOSUÉ & CÉLINE",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "– JOSUÉ & CÉLINE"
+    },
+    {
+     "name_as_written": "MANU & OLIVIA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "– MANU & OLIVIA"
+    },
+    {
+     "name_as_written": "LASTAR & CORA",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "– LASTAR & CORA"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Socials, parties, workshops",
+     "rationale": "The description lists workshops as part of the event program."
+    }
+   ]
+  }
+ ]
+}

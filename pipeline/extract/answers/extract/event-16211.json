@@ -1,0 +1,133 @@
+{
+ "batch": "event-16211",
+ "events": [
+  {
+   "event_id": 16211,
+   "artists": [
+    {
+     "name_as_written": "Curtis & Gaya",
+     "role": "teacher",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "🌟 Curtis & Gaya 🇫🇷"
+    },
+    {
+     "name_as_written": "Armand & Lavinia",
+     "role": "teacher",
+     "style": null,
+     "country": "🇷🇴",
+     "source_line": "🌟 Armand & Lavinia 🇷🇴"
+    },
+    {
+     "name_as_written": "Daniel & Elina",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🌟 Daniel & Elina"
+    },
+    {
+     "name_as_written": "Heneco & Marta",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🌟 Heneco & Marta"
+    },
+    {
+     "name_as_written": "Nam",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🌟 Nam"
+    },
+    {
+     "name_as_written": "Dan & Shelly",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🌟 Dan & Shelly"
+    },
+    {
+     "name_as_written": "DJ Style",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Style – France"
+    },
+    {
+     "name_as_written": "DJ Porto",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Porto – Spain"
+    },
+    {
+     "name_as_written": "DJ Harryz Kiz",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Harryz Kiz – Germany"
+    },
+    {
+     "name_as_written": "DJ High Energy",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ High Energy – Germany"
+    },
+    {
+     "name_as_written": "DJ Juanqui",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Juanqui – Switzerland"
+    },
+    {
+     "name_as_written": "DJ Maikel",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Maikel – Switzerland"
+    },
+    {
+     "name_as_written": "Team KizInvasion Family",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "👑 Team KizInvasion Family"
+    }
+   ],
+   "features": [
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Tarraxo Bootcamp",
+     "rationale": "The event lists a Tarraxo Bootcamp as part of its program."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Inspiring Workshops",
+     "rationale": "The description lists Inspiring Workshops as part of the event."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Exclusive Masterclasses",
+     "rationale": "The event lists Exclusive Masterclasses in its offerings."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Daytime Socials",
+     "rationale": "The event explicitly offers Daytime Socials."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Thursday Pre-Party",
+     "rationale": "A Thursday Pre-Party is listed before the main event."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Room 2",
+     "rationale": "The event has Room 1 and Room 2 as separate party rooms."
+    }
+   ]
+  }
+ ]
+}

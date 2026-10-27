@@ -1,0 +1,88 @@
+{
+ "batch": "event-17476",
+ "events": [
+  {
+   "event_id": 17476,
+   "artists": [
+    {
+     "name_as_written": "Ledoux Kingsman",
+     "role": "teacher",
+     "style": "Kizomba Artists",
+     "country": null,
+     "source_line": "Ledoux Kingsman"
+    },
+    {
+     "name_as_written": "Selim & Anastasia",
+     "role": "teacher",
+     "style": "Kizomba Artists",
+     "country": null,
+     "source_line": "Selim & Anastasia"
+    },
+    {
+     "name_as_written": "Loyal",
+     "role": "teacher",
+     "style": "Kizomba Artists",
+     "country": null,
+     "source_line": "Loyal"
+    },
+    {
+     "name_as_written": "EVOKEEZ Team Paris",
+     "role": "teacher",
+     "style": "Kizomba Artists",
+     "country": null,
+     "source_line": "EVOKEEZ Team Paris"
+    },
+    {
+     "name_as_written": "Daniel & Elina",
+     "role": "teacher",
+     "style": "Kizomba Artists",
+     "country": null,
+     "source_line": "Daniel & Elina"
+    },
+    {
+     "name_as_written": "Dj Le Grand Tiwosh",
+     "role": "dj",
+     "style": "Kizomba Djs",
+     "country": null,
+     "source_line": "Dj Le Grand Tiwosh"
+    },
+    {
+     "name_as_written": "Dj Timeline",
+     "role": "dj",
+     "style": "Kizomba Djs",
+     "country": null,
+     "source_line": "Dj Timeline"
+    },
+    {
+     "name_as_written": "Dj Galaxy",
+     "role": "dj",
+     "style": "Kizomba Djs",
+     "country": null,
+     "source_line": "Dj Galaxy"
+    }
+   ],
+   "features": [
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Each bootcamp is led by 6 international teachers working 3 hrs together",
+     "rationale": "The bootcamps are described as intensive teaching sessions of 3 hours led by six teachers, a long training course."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Workshops & Immersive bootcamps with international teachers",
+     "rationale": "The event explicitly lists workshops with international teachers as part of what to expect."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 dance floors",
+     "rationale": "Two dance floors means more than one dance room."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Day Socials & Night Parties",
+     "rationale": "Daytime socials are explicitly listed among the event's three days of programme."
+    }
+   ]
+  }
+ ]
+}

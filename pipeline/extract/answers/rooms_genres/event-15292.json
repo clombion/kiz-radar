@@ -1,0 +1,44 @@
+{
+ "batch": "event-15292",
+ "events": [
+  {
+   "event_id": 15292,
+   "party_rooms": {
+    "count": 5,
+    "quote": "Amazing parties until sunrise in 5 halls"
+   },
+   "class_rooms": {
+    "count": 5,
+    "quote": "Excellent workshops in 5 halls"
+   },
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "SALSA",
+     "quote": "15TH INTERNATIONAL SALSA – BACHATA – KIZOMBA CONGRESS"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Cha-cha, Bachata, Kizomba"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Bachata, Kizomba"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Cha-cha",
+     "quote": "Cuban, LA, NY, Cha-cha"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Rueda",
+     "quote": "Exciting COMPETITION: Rueda"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,24 @@
+{
+ "batch": "event-17445",
+ "events": [
+  {
+   "event_id": 17445,
+   "artists": [
+    {
+     "name_as_written": "Kizomba Lounge",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "🧡Kizomba Lounge"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Warm, welcoming workshops with passionate teachers",
+     "rationale": "The description states that workshops are part of the weekender."
+    }
+   ]
+  }
+ ]
+}

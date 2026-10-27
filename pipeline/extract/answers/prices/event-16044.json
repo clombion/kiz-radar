@@ -1,6 +1,5 @@
 {
  "batch": "event-16044",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16044,
@@ -17,8 +16,7 @@
        "amount": 99,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -26,23 +24,12 @@
        "sold_out": false,
        "current": false,
        "quote": "€99/€119/€130"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "🎟️ Prices, depending on your status:",
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
+      },
       {
        "amount": 119,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -50,23 +37,12 @@
        "sold_out": false,
        "current": false,
        "quote": "€99/€119/€130"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "(€130 for non-BDC members ^^)",
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
+      },
       {
        "amount": 130,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -78,7 +54,10 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "Prices, depending on your status:",
+    "(€130 for non-BDC members ^^)"
+   ]
   }
  ]
 }

@@ -1,6 +1,5 @@
 {
  "batch": "event-15442",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15442,
@@ -10,15 +9,14 @@
      "style": null,
      "label_quote": null,
      "group_size": 2,
-     "days": 3,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 100,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": 30,
@@ -34,15 +32,14 @@
      "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": 3,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 65,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": 30,
@@ -50,13 +47,22 @@
        "sold_out": false,
        "current": false,
        "quote": "30 Full Passes for Women (Followers) at €65"
-      },
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
       {
        "amount": 65,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": 30,

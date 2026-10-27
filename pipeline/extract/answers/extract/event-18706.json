@@ -1,0 +1,74 @@
+{
+ "batch": "event-18706",
+ "events": [
+  {
+   "event_id": 18706,
+   "artists": [
+    {
+     "name_as_written": "KIZCON",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "❤️ KIZCON is glad to invite you to the 7th Edition! ❤️"
+    }
+   ],
+   "features": [
+    {
+     "feature": "transfers_shuttle",
+     "quote": "SHUTTLES FRIDAY SINCE MALAGA AIRPORT TO MAIN HOTEL IN ALMUNECAR",
+     "rationale": "Shuttles run from Malaga airport to the main hotel and back."
+    },
+    {
+     "feature": "workshops",
+     "quote": "2 Rooms of Classes",
+     "rationale": "Two rooms are dedicated to dance classes."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 Rooms for Parties",
+     "rationale": "The event has more than one dance room."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "5 Pool Parties",
+     "rationale": "The programme lists pool parties."
+    },
+    {
+     "feature": "beach_party",
+     "quote": "1 After beach party",
+     "rationale": "The programme lists an after beach party."
+    },
+    {
+     "feature": "after_party",
+     "quote": "2 After pool parties",
+     "rationale": "The programme lists after pool parties."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "6 Nights partys in Main Hotel",
+     "rationale": "The parties take place in the main hotel where dancers stay."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "2 NIGHTS – FULL BOARD WITH DRINKS",
+     "rationale": "The room packages include full board with drinks."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "HOTEL BAHIA TROPICAL",
+     "rationale": "A second recommended hotel is listed with booking details."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "PAJAMA PARTY! YOUR BEST PIJAMA",
+     "rationale": "A Wednesday pajama party is a themed night with a dress theme."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "PAJAMA PARTY! YOUR BEST PIJAMA",
+     "rationale": "A dress code for the pajama party is stated."
+    }
+   ]
+  }
+ ]
+}

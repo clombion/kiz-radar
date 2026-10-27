@@ -1,0 +1,95 @@
+{
+ "batch": "event-15990",
+ "events": [
+  {
+   "event_id": 15990,
+   "artists": [
+    {
+     "name_as_written": "Jojo et Jenny",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Jojo et Jenny"
+    },
+    {
+     "name_as_written": "Enah et Pocahontas",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Enah et Pocahontas"
+    },
+    {
+     "name_as_written": "Jack Et Sarah",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Jack Et Sarah"
+    },
+    {
+     "name_as_written": "Ami et Julien",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Ami et Julien"
+    },
+    {
+     "name_as_written": "Sebastien Vague",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Sebastien Vague (zouzout)"
+    },
+    {
+     "name_as_written": "Cecilien et Lucie",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Cecilien et Lucie"
+    },
+    {
+     "name_as_written": "Lenhy",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Lenhy"
+    },
+    {
+     "name_as_written": "jack",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "jack"
+    },
+    {
+     "name_as_written": "MG",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "MG"
+    },
+    {
+     "name_as_written": "Anthony tarraxa",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Anthony tarraxa"
+    },
+    {
+     "name_as_written": "Fofo-Jah",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Fofo-Jah"
+    },
+    {
+     "name_as_written": "S-Line",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "S-Line"
+    }
+   ],
+   "features": []
+  }
+ ]
+}

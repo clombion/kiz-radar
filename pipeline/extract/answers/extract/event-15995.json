@@ -1,0 +1,217 @@
+{
+ "batch": "event-15995",
+ "events": [
+  {
+   "event_id": 15995,
+   "artists": [
+    {
+     "name_as_written": "Marco & Sara",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Marco & Sara"
+    },
+    {
+     "name_as_written": "Ronald & Alba",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Ronald & Alba"
+    },
+    {
+     "name_as_written": "David & Inés",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "David & Inés"
+    },
+    {
+     "name_as_written": "Marta & Roy",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Marta & Roy"
+    },
+    {
+     "name_as_written": "Jose & Layla",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Jose & Layla"
+    },
+    {
+     "name_as_written": "Stphan & Neyi",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Stphan & Neyi"
+    },
+    {
+     "name_as_written": "Fran & Mica",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Fran & Mica"
+    },
+    {
+     "name_as_written": "Mario & Lidia",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Mario & Lidia"
+    },
+    {
+     "name_as_written": "Anita & Varea",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Anita & Varea"
+    },
+    {
+     "name_as_written": "Elwin & Gaby",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Elwin & Gaby"
+    },
+    {
+     "name_as_written": "Juanjo & Silvia",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Juanjo & Silvia"
+    },
+    {
+     "name_as_written": "Valentín & Angy",
+     "role": "teacher",
+     "style": "BACHATA",
+     "country": null,
+     "source_line": "Valentín & Angy"
+    },
+    {
+     "name_as_written": "Talia & Pocho",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "Talia & Pocho"
+    },
+    {
+     "name_as_written": "Otho & Yuko",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "Otho & Yuko"
+    },
+    {
+     "name_as_written": "Jesús & Sevy",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "Jesús & Sevy"
+    },
+    {
+     "name_as_written": "Ricardo & Desi",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "Ricardo & Desi"
+    },
+    {
+     "name_as_written": "Ester & Efrén",
+     "role": "teacher",
+     "style": "SALSA",
+     "country": null,
+     "source_line": "Ester & Efrén"
+    },
+    {
+     "name_as_written": "Lety & Dani",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "Lety & Dani"
+    },
+    {
+     "name_as_written": "Kevin",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "Kevin"
+    },
+    {
+     "name_as_written": "Jaimekiz",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "Jaimekiz"
+    },
+    {
+     "name_as_written": "Alberto y Paula",
+     "role": "teacher",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "Alberto y Paula"
+    },
+    {
+     "name_as_written": "Dj Pier",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "Dj Pier"
+    },
+    {
+     "name_as_written": "Dj Rebo",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "Dj Rebo"
+    },
+    {
+     "name_as_written": "Dj Kevin",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "Dj Kevin"
+    },
+    {
+     "name_as_written": "Dj Yago",
+     "role": "dj",
+     "style": "KIZOMBA",
+     "country": null,
+     "source_line": "Dj Yago"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "will be in “Isla de la Garena” Hotel (2 nights)",
+     "rationale": "The whole event is held in the hotel where dancers stay for two nights."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "2 nights Just Accommodation + 2 Full Pass",
+     "rationale": "The main hotel pack bundles two nights of accommodation with two full passes."
+    },
+    {
+     "feature": "workshops",
+     "quote": "17h-21h Workshops",
+     "rationale": "The Friday program lists workshop sessions."
+    },
+    {
+     "feature": "shows",
+     "quote": "23:30h-01h Shows",
+     "rationale": "The Friday program schedules shows."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "17h-21h Sunset Party",
+     "rationale": "A sunset party in the afternoon-evening is a daytime social."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "* SHUTTLE FROM THE AIRPORT *",
+     "rationale": "A shuttle from the airport is announced."
+    }
+   ]
+  }
+ ]
+}

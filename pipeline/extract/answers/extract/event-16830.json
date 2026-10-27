@@ -1,0 +1,109 @@
+{
+ "batch": "event-16830",
+ "events": [
+  {
+   "event_id": 16830,
+   "artists": [
+    {
+     "name_as_written": "DJ RENE AMPLO",
+     "role": "dj",
+     "style": null,
+     "country": "🇳🇱",
+     "source_line": "▪️ DJ RENE AMPLO 🇳🇱"
+    },
+    {
+     "name_as_written": "DJ BARTEF",
+     "role": "dj",
+     "style": null,
+     "country": "🇵🇱",
+     "source_line": "▪️ DJ BARTEF 🇵🇱"
+    },
+    {
+     "name_as_written": "DJ NUO",
+     "role": "dj",
+     "style": null,
+     "country": "🇺🇦",
+     "source_line": "▪️ DJ NUO 🇺🇦"
+    },
+    {
+     "name_as_written": "DJ NURLIVING",
+     "role": "dj",
+     "style": null,
+     "country": "🇰🇬",
+     "source_line": "▪️ DJ NURLIVING 🇰🇬"
+    },
+    {
+     "name_as_written": "DJ PZL",
+     "role": "dj",
+     "style": null,
+     "country": "🇧🇬",
+     "source_line": "▪️ DJ PZL 🇧🇬"
+    },
+    {
+     "name_as_written": "NICK & ALEX",
+     "role": "teacher",
+     "style": null,
+     "country": "🇨🇦",
+     "source_line": "▪️ NICK & ALEX 🇨🇦"
+    },
+    {
+     "name_as_written": "DAMIR & LAURA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇰🇿🇳🇱",
+     "source_line": "▪️ DAMIR & LAURA 🇰🇿🇳🇱"
+    },
+    {
+     "name_as_written": "GIUSEPPE & KLAUDYNA",
+     "role": "teacher",
+     "style": null,
+     "country": "🇮🇹🇵🇱",
+     "source_line": "▪️ GIUSEPPE & KLAUDYNA 🇮🇹🇵🇱"
+    },
+    {
+     "name_as_written": "STYLE BENDER CHAMPIONS",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "▪️ STYLE BENDER CHAMPIONS 🌍"
+    },
+    {
+     "name_as_written": "KIZZ RYDERS",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "▪️ KIZZ RYDERS"
+    },
+    {
+     "name_as_written": "Kizz Ryders",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "▪️ Only event passes directly bought at Kizz Ryders ticketlink are valid:"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Mind-blowing workshops & bootcamps",
+     "rationale": "The description states that workshops are part of the event."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Mind-blowing workshops & bootcamps",
+     "rationale": "The description advertises bootcamps as part of the event."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Pre-Party",
+     "rationale": "A Pre-Party is scheduled on Thursday before the main event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "16:00 – 20:00 – 🤝 Social",
+     "rationale": "A social scheduled in the afternoon on Saturday and Sunday is a daytime social."
+    }
+   ]
+  }
+ ]
+}

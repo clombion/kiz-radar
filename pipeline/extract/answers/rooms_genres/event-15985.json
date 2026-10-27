@@ -1,0 +1,61 @@
+{
+ "batch": "event-15985",
+ "events": [
+  {
+   "event_id": 15985,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 rooms, 2 different vibes"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": "𝖬𝗐𝖺𝗇𝗀𝗈𝗅é 𝗋𝗈𝗈𝗆",
+     "kind": "unspecified",
+     "genres": [
+      "kizomba",
+      "semba"
+     ],
+     "quote": "𝖬𝗐𝖺𝗇𝗀𝗈𝗅é 𝗋𝗈𝗈𝗆 Kizomba & Semba"
+    },
+    {
+     "name_as_written": null,
+     "kind": "unspecified",
+     "genres": [
+      "zouk",
+      "tarraxinha",
+      "kompa"
+     ],
+     "quote": "Ghettozouk, Tarraxinha, Zouk & Konpa"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba & Semba"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba & Semba"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Zouk",
+     "quote": "Ghettozouk, Tarraxinha, Zouk & Konpa"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "Ghettozouk, Tarraxinha, Zouk & Konpa"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Ghettozouk, Tarraxinha, Zouk & Konpa"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+{
+ "batch": "event-16145",
+ "events": [
+  {
+   "event_id": 16145,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata Sensual",
+     "quote": "Bachata Sensual"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba & Urban Kiz"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Kizomba & Urban Kiz"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "DJs Semba:"
+    }
+   ]
+  }
+ ]
+}

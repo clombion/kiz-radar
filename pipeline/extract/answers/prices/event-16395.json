@@ -1,6 +1,5 @@
 {
  "batch": "event-16395",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16395,
@@ -17,15 +16,14 @@
        "amount": 150,
        "currency": "CHF",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔥2-Day Full Pass CHF 150.00 (classes, social events, and parties for 2 days)"
+       "quote": "2-Day Full Pass CHF 150.00 (classes, social events, and parties for 2 days)"
       }
      ]
     },
@@ -41,15 +39,14 @@
        "amount": 80,
        "currency": "CHF",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔥1-Day Full Pass CHF 80.00 (classes, social events, and parties for 1 day)"
+       "quote": "1-Day Full Pass CHF 80.00 (classes, social events, and parties for 1 day)"
       }
      ]
     },
@@ -65,15 +62,14 @@
        "amount": 60,
        "currency": "CHF",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔥1-Day Social Event + Party CHF 60.00"
+       "quote": "1-Day Social Event + Party CHF 60.00"
       }
      ]
     },
@@ -89,15 +85,14 @@
        "amount": 60,
        "currency": "CHF",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔥Social event + party CHF 60.00"
+       "quote": "Social event + party CHF 60.00"
       }
      ]
     }

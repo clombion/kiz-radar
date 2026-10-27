@@ -1,0 +1,32 @@
+{
+ "batch": "event-15302",
+ "events": [
+  {
+   "event_id": 15302,
+   "artists": [
+    {
+     "name_as_written": "Kizomba MTL",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "✨ Kizomba MTL presents… ✨"
+    },
+    {
+     "name_as_written": "Eliza Sala",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "– Eliza Sala"
+    },
+    {
+     "name_as_written": "Cyril",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "– Cyril"
+    }
+   ],
+   "features": []
+  }
+ ]
+}

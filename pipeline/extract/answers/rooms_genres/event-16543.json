@@ -1,0 +1,85 @@
+{
+ "batch": "event-16543",
+ "events": [
+  {
+   "event_id": 16543,
+   "party_rooms": {
+    "count": 2,
+    "quote": "SATURDAY: 2 different rooms:"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [],
+     "quote": "FRIDAY: 1 room with all the vibes"
+    },
+    {
+     "name_as_written": "𝐑𝐎𝐎𝐌 1",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "semba",
+      "zouk",
+      "kompa"
+     ],
+     "quote": "Kizomba, Semba, Zouk & Konpa"
+    },
+    {
+     "name_as_written": "𝐑𝐎𝐎𝐌 2",
+     "kind": "party",
+     "genres": [
+      "urbankiz",
+      "tarraxo",
+      "tarraxinha",
+      "other"
+     ],
+     "quote": "Urban, Tarraxo, Tarraxhina & Gouyad"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba, Semba, Zouk & Konpa"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Kizomba, Semba, Zouk & Konpa"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Zouk",
+     "quote": "Kizomba, Semba, Zouk & Konpa"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Kizomba, Semba, Zouk & Konpa"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban",
+     "quote": "Urban, Tarraxo, Tarraxhina & Gouyad"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Urban, Tarraxo, Tarraxhina & Gouyad"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxhina",
+     "quote": "Workshop with David Ruach (Tarraxhina vibes)"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Gouyad",
+     "quote": "Urban, Tarraxo, Tarraxhina & Gouyad"
+    }
+   ]
+  }
+ ]
+}

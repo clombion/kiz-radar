@@ -1,0 +1,39 @@
+{
+ "batch": "event-15326",
+ "events": [
+  {
+   "event_id": 15326,
+   "artists": [
+    {
+     "name_as_written": "Crazy Kiz Events",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "🔹 FB Page: Crazy Kiz Events ⤵️ https://www.facebook.com/CrazyKizEvents"
+    },
+    {
+     "name_as_written": "Snezhana Dimitrova",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "▪️ Manager: Snezhana Dimitrova https://www.facebook.com/sneja.dimitrova"
+    },
+    {
+     "name_as_written": "Luca Arrigoni",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "▪️ Art Director: Luca Arrigoni https://www.facebook.com/LucaKiz1985"
+    },
+    {
+     "name_as_written": "Daniel Schauenburg",
+     "role": "teacher",
+     "style": null,
+     "country": "🇩🇪",
+     "source_line": "🕺🏻 Daniel Schauenburg 🇩🇪"
+    }
+   ],
+   "features": []
+  }
+ ]
+}

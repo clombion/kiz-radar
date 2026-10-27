@@ -1,6 +1,5 @@
 {
  "batch": "event-16553",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16553,
@@ -17,8 +16,7 @@
        "amount": 50,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -31,8 +29,7 @@
        "amount": 60,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -55,8 +52,7 @@
        "amount": 130,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -69,8 +65,7 @@
        "amount": 150,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -82,10 +77,33 @@
      ]
     },
     {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 30,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔹 1 party: €30"
+      }
+     ]
+    },
+    {
      "kind": "package",
      "style": null,
      "label_quote": null,
-     "group_size": null,
+     "group_size": 1,
      "days": 3,
      "includes_hotel": true,
      "tiers": [
@@ -93,8 +111,7 @@
        "amount": 430,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": "2026-01-15",
        "quantity": null,
@@ -107,9 +124,8 @@
        "amount": 470,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": "2025-01-16",
+       "alt": null,
+       "from": null,
        "until": null,
        "quantity": null,
        "door": false,
@@ -120,7 +136,9 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "After January 15, 2025"
+   ]
   }
  ]
 }

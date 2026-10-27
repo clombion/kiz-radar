@@ -1,0 +1,87 @@
+{
+ "batch": "event-16251",
+ "events": [
+  {
+   "event_id": 16251,
+   "artists": [
+    {
+     "name_as_written": "DJ Nao",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Nao"
+    },
+    {
+     "name_as_written": "DJ Nice Life",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Nice Life"
+    },
+    {
+     "name_as_written": "DJ Paraiso",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎧 DJ Paraiso"
+    },
+    {
+     "name_as_written": "Farantini Photography",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "🎥 Farantini Photography"
+    },
+    {
+     "name_as_written": "Amadou Kane",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "🎥 Amadou Kane"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "4 days of workshops",
+     "rationale": "The included items list names workshops as part of the event."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Two dedicated workshop rooms",
+     "rationale": "The description states there are two dedicated workshop rooms, so more than one dance room."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Pre-party",
+     "rationale": "A pre-party is listed among the included items."
+    },
+    {
+     "feature": "after_party",
+     "quote": "After-party",
+     "rationale": "An after-party is listed among the included items."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Pool Party",
+     "rationale": "A pool party is listed alongside the after-party."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Day socials",
+     "rationale": "Daytime socials are offered, as stated in the description."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "OFFICIAL HOTEL – BOOK NOW",
+     "rationale": "The Holiday Inn is named as the official hotel with a booking link, without the accommodation being part of the pass."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "Stay where the party lives!",
+     "rationale": "The festival is held at the Holiday Inn, and dancers are invited to stay at that same hotel."
+    }
+   ]
+  }
+ ]
+}

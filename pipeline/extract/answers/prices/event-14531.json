@@ -1,6 +1,5 @@
 {
  "batch": "event-14531",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 14531,
@@ -17,15 +16,14 @@
        "amount": 55,
        "currency": "EUR",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": "03-05",
        "until": "03-05",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "with a promotional Full Pass offer at €55 for 24 hours (from midnight to 11:55 p.m.)"
+       "quote": "promotional Full Pass offer at €55 for 24 hours"
       }
      ]
     }

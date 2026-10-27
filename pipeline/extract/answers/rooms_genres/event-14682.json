@@ -1,0 +1,18 @@
+{
+ "batch": "event-14682",
+ "events": [
+  {
+   "event_id": 14682,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urbankiz",
+     "quote": "The biggest Urbankiz Jack & Jill made by Rebirth Crew"
+    }
+   ]
+  }
+ ]
+}

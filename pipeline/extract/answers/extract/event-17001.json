@@ -1,0 +1,92 @@
+{
+ "batch": "event-17001",
+ "events": [
+  {
+   "event_id": 17001,
+   "artists": [
+    {
+     "name_as_written": "Nexus Crew",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Nexus Crew présente son 2eme événement"
+    },
+    {
+     "name_as_written": "Mary et Jos",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "20h-21h : Cours by Mary et Jos (Nexus Crew)"
+    },
+    {
+     "name_as_written": "JessyPop et Mélanie",
+     "role": "teacher",
+     "style": "Tarraxo",
+     "country": null,
+     "source_line": "14h-15h30 : Stage Tarraxo avec JessyPop et Mélanie (Tours)"
+    },
+    {
+     "name_as_written": "Jos et Cerise",
+     "role": "teacher",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "15h30-17h : Stage Urbankiz avec Jos et Cerise (Paris)"
+    },
+    {
+     "name_as_written": "Therry et Océane",
+     "role": "teacher",
+     "style": "Tarraxo",
+     "country": null,
+     "source_line": "20h : Cours Tarraxo avec Therry et Océane (Paris)"
+    },
+    {
+     "name_as_written": "DJ Nsie",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Nsie (Paris)"
+    },
+    {
+     "name_as_written": "DJ Kouan",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Kouan (Orléans)"
+    },
+    {
+     "name_as_written": "DJ Leericks",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "DJ Leericks (Paris)"
+    },
+    {
+     "name_as_written": "Kitoko",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Vidéaste : Kitoko (Toulouse)"
+    },
+    {
+     "name_as_written": "LNA Carla",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Photographe : LNA Carla (Paris)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "day_socials",
+     "quote": "17h-20h : Sociale",
+     "rationale": "The programme lists afternoon socials on Saturday and Sunday."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Cours by Mary et Jos (Nexus Crew)",
+     "rationale": "The programme includes dance classes and training sessions taught by the artists."
+    }
+   ]
+  }
+ ]
+}

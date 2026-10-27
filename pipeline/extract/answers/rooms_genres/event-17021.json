@@ -1,0 +1,28 @@
+{
+ "batch": "event-17021",
+ "events": [
+  {
+   "event_id": 17021,
+   "party_rooms": null,
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "Get ready for an epic kizomba experience!"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Urban Kiz Sortilège Intermediate Class with Manu Saudade & Olivia"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "Excalibur Konpa Class with Kalypso & Adé"
+    }
+   ]
+  }
+ ]
+}

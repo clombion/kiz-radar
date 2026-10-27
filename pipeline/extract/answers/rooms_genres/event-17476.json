@@ -1,0 +1,26 @@
+{
+ "batch": "event-17476",
+ "events": [
+  {
+   "event_id": 17476,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 dance floors – kizomba & bachata"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "2 dance floors – kizomba & bachata"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata Artists"
+    }
+   ]
+  }
+ ]
+}

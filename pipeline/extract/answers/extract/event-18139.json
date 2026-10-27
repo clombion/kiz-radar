@@ -1,0 +1,158 @@
+{
+ "batch": "event-18139",
+ "events": [
+  {
+   "event_id": 18139,
+   "artists": [
+    {
+     "name_as_written": "Ary & Maura",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🧨Ary & Maura"
+    },
+    {
+     "name_as_written": "Fernando & Michela",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🧨Fernando & Michela"
+    },
+    {
+     "name_as_written": "Marcio Junqueira",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🧨Marcio Junqueira"
+    },
+    {
+     "name_as_written": "Jadilson Santarosa",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🧨Jadilson Santarosa"
+    },
+    {
+     "name_as_written": "Alex Vunda & MaryJay",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🧨Alex Vunda & MaryJay"
+    },
+    {
+     "name_as_written": "Pacavira & Celine",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🧨Pacavira & Celine"
+    },
+    {
+     "name_as_written": "Alberto Celmo",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🧨Alberto Celmo"
+    },
+    {
+     "name_as_written": "Francis & Lucy",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🧨Francis & Lucy"
+    },
+    {
+     "name_as_written": "Melania Andrei",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🧨Melania Andrei"
+    },
+    {
+     "name_as_written": "Sara Iacobacci",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🧨Sara Iacobacci"
+    },
+    {
+     "name_as_written": "Alessandro & Tiziana",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🧨Alessandro & Tiziana"
+    },
+    {
+     "name_as_written": "Federica Lucarelli",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "🧨Federica Lucarelli"
+    },
+    {
+     "name_as_written": "Dj Bakongo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🧨Dj Bakongo"
+    },
+    {
+     "name_as_written": "Dj LadyJay",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🧨Dj LadyJay"
+    },
+    {
+     "name_as_written": "Dj Emess",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🧨Dj Emess"
+    },
+    {
+     "name_as_written": "Dj Tiago Tuga",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🧨Dj Tiago Tuga"
+    },
+    {
+     "name_as_written": "Dj Marc",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🧨Dj Marc"
+    },
+    {
+     "name_as_written": "Dj Salvyne",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🧨Dj Salvyne"
+    }
+   ],
+   "features": [
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE LOCATION (Hotel + Classes + Parties)",
+     "rationale": "The description states that classes and parties take place in the same location as the hotel."
+    },
+    {
+     "feature": "workshops",
+     "quote": "all workshops & socials",
+     "rationale": "The full pass explicitly includes all workshops, showing that dance classes are part of the event."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Hotel Booking requared via: info@villamariaparkhotel.it",
+     "rationale": "Dancers are asked to book the event's hotel with a promo code, which is a negotiated hotel rate not included in the pass."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Shuttle service from the hotel to Fiumicino and Ciampino airports",
+     "rationale": "The text offers a shuttle service between the hotel and the airports."
+    }
+   ]
+  }
+ ]
+}

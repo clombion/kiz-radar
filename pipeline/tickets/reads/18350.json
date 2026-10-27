@@ -3,8 +3,11 @@
  "title": "UrbanKiz Geneva 2026",
  "start_date": "2026-12-04",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "2be784db5d9944e6",
- "rows_at": "2026-10-26T23:49:24+00:00",
+ "prompt": "cb864655c7075f56",
+ "rows_at": "2026-10-27T11:49:48+00:00",
+ "styles": [
+  "kizomba"
+ ],
  "description": "After the incredible success of UKG 2025, we’re thrilled to announce the next edition: URBANKIZ GENEVA — December 4–7, 2026.\nSomething even bigger is coming… 😳…💜Stay tuned, save the dates, and get ready 💜✨🔥💜🌌💜⭐️💜\n🏨 Partner Hotel Mercure Geneva Airport\n🚌FREE SHUTTLE 🚌\n🚌 Shuttle -> Hôtel to Venue 💃 (4min)\n🚌 Shuttle -> 💃 Venue to Hôtel (4min)\n💜💜💜URBANKIZ GENEVA 2026💜💜💜\n🟣Tickets🟣\nurlr.me/ZwSVRT\n🟣🟣🟣CONFIRMED ARTISTS 🟣🟣🟣\n🟣🟣🟣DJ’S 🟣🟣🟣\n💜 DJ NAO\n💜 DJ ICHIGO\n💜 DJ NICE LIFE\n💜 DJ NO LIMIT\n💜 DJ MKY\n💜 DJ GEERO BEATS\n💜 DJ STYLE OF MUSC\n💜 DJ DEDINHO\n🟪TEACHERS & CO 🟪\n💜 INÈS MIRANDA\n💜 ASIA VORONOVA\n💜 JOHN & LÉA\n💜 DADIE\n💜 CAARL & PATI\n💜 MOUSSA\n💜 YACE GALANTA\n💜 YANNIS GLT\n💜 BAIDY\n💜 LEA\n🟣Tickets🟣\nurlr.me/ZwSVRT\n🕺💜TAXIS DANCERS💜 💃\nComing soon\n🟪 PHOTOGRAPHE/VIDÉASTE\n💜 BENKOS 💜",
  "passes": [
   {
@@ -114,7 +117,10 @@
   }
  ],
  "skipped": [
-  "5799988"
+  {
+   "key": "5799988",
+   "reason": "fee"
+  }
  ],
  "rule_quotes": []
 }

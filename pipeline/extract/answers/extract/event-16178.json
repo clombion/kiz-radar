@@ -1,0 +1,232 @@
+{
+ "batch": "event-16178",
+ "events": [
+  {
+   "event_id": 16178,
+   "artists": [
+    {
+     "name_as_written": "SXM Loves Kizomba",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "💥 Organized by: SXM Loves Kizomba"
+    },
+    {
+     "name_as_written": "Dani FERNANDEZ",
+     "role": "dj",
+     "style": null,
+     "country": "Netherlands",
+     "source_line": "🎧 Dani FERNANDEZ (Netherlands)"
+    },
+    {
+     "name_as_written": "Lisa ROSE",
+     "role": "dj",
+     "style": null,
+     "country": "Netherlands",
+     "source_line": "🎧 Lisa ROSE (Netherlands)"
+    },
+    {
+     "name_as_written": "DJ Iron Mams",
+     "role": "dj",
+     "style": null,
+     "country": "France",
+     "source_line": "🎧 DJ Iron Mams (France)"
+    },
+    {
+     "name_as_written": "DJ Lion",
+     "role": "dj",
+     "style": null,
+     "country": "France-Guadeloupe",
+     "source_line": "🎧 DJ Lion (France-Guadeloupe)"
+    },
+    {
+     "name_as_written": "DJ Budcee",
+     "role": "dj",
+     "style": null,
+     "country": "Guadeloupe",
+     "source_line": "🎧 DJ Budcee (Guadeloupe)"
+    },
+    {
+     "name_as_written": "DJ Brice SAX",
+     "role": "dj",
+     "style": null,
+     "country": "Guadeloupe",
+     "source_line": "🎧 DJ Brice SAX (Guadeloupe)"
+    },
+    {
+     "name_as_written": "DJ Mik’iz",
+     "role": "dj",
+     "style": null,
+     "country": "Guadeloupe",
+     "source_line": "🎧 DJ Mik’iz (Guadeloupe)"
+    },
+    {
+     "name_as_written": "DJ Jefe",
+     "role": "dj",
+     "style": null,
+     "country": "Trinidad-and-Tobago",
+     "source_line": "🎧 DJ Jefe (Trinidad-and-Tobago)"
+    },
+    {
+     "name_as_written": "DJ Jeff",
+     "role": "dj",
+     "style": null,
+     "country": "Guadeloupe",
+     "source_line": "🎧 DJ Jeff (Guadeloupe)"
+    },
+    {
+     "name_as_written": "DJ Manon",
+     "role": "dj",
+     "style": null,
+     "country": "Guadeloupe",
+     "source_line": "🎧 DJ Manon (Guadeloupe)"
+    },
+    {
+     "name_as_written": "DJ Mike",
+     "role": "dj",
+     "style": null,
+     "country": "SXM-French Guyana",
+     "source_line": "🎧 DJ Mike (SXM-French Guyana)"
+    },
+    {
+     "name_as_written": "DJ Wakétala",
+     "role": "dj",
+     "style": null,
+     "country": "SXM-Guadeloupe",
+     "source_line": "🎧 DJ Wakétala (SXM-Guadeloupe)"
+    },
+    {
+     "name_as_written": "Jonathan MAHOTO",
+     "role": "teacher",
+     "style": null,
+     "country": "France",
+     "source_line": "✨ Jonathan MAHOTO (France)"
+    },
+    {
+     "name_as_written": "Karl BEKENE",
+     "role": "teacher",
+     "style": null,
+     "country": "France",
+     "source_line": "✨ Karl BEKENE (France)"
+    },
+    {
+     "name_as_written": "Val’R & Sarah",
+     "role": "teacher",
+     "style": null,
+     "country": "France",
+     "source_line": "✨ Val’R & Sarah (France)"
+    },
+    {
+     "name_as_written": "Jah J’a",
+     "role": "teacher",
+     "style": null,
+     "country": "France-Guadeloupe",
+     "source_line": "✨ Jah J’a (France-Guadeloupe)"
+    },
+    {
+     "name_as_written": "Iron Mams",
+     "role": "teacher",
+     "style": null,
+     "country": "France",
+     "source_line": "✨ Iron Mams (France)"
+    },
+    {
+     "name_as_written": "Moorea",
+     "role": "teacher",
+     "style": null,
+     "country": "France-French Guyana",
+     "source_line": "✨ Moorea (France-French Guyana)"
+    },
+    {
+     "name_as_written": "Saïd DStreet",
+     "role": "teacher",
+     "style": null,
+     "country": "France",
+     "source_line": "✨ Saïd DStreet (France)"
+    },
+    {
+     "name_as_written": "Allan & Daniela",
+     "role": "teacher",
+     "style": null,
+     "country": "SXM-French Guyana / Romania",
+     "source_line": "✨ Allan & Daniela (SXM-French Guyana / Romania)"
+    },
+    {
+     "name_as_written": "Jeff & Manon",
+     "role": "teacher",
+     "style": null,
+     "country": "Guadeloupe",
+     "source_line": "✨ Jeff & Manon (Guadeloupe)"
+    },
+    {
+     "name_as_written": "Ludo & Noémie",
+     "role": "teacher",
+     "style": null,
+     "country": "Martinique",
+     "source_line": "✨ Ludo & Noémie (Martinique)"
+    },
+    {
+     "name_as_written": "Jefe & Diana",
+     "role": "teacher",
+     "style": null,
+     "country": "Trinidad-and-Tobago",
+     "source_line": "✨ Jefe & Diana (Trinidad-and-Tobago)"
+    },
+    {
+     "name_as_written": "Anthony & Dalia",
+     "role": "teacher",
+     "style": null,
+     "country": "Saint-Barthélemy",
+     "source_line": "✨ Anthony & Dalia (Saint-Barthélemy)"
+    },
+    {
+     "name_as_written": "King Obadiah",
+     "role": "teacher",
+     "style": null,
+     "country": "SXM",
+     "source_line": "✨ King Obadiah (SXM)"
+    },
+    {
+     "name_as_written": "Sharine",
+     "role": "teacher",
+     "style": null,
+     "country": "SXM",
+     "source_line": "✨ Sharine (SXM)"
+    },
+    {
+     "name_as_written": "Damien",
+     "role": "teacher",
+     "style": null,
+     "country": "SXM-Statia",
+     "source_line": "✨ Damien (SXM-Statia)"
+    },
+    {
+     "name_as_written": "Juliana",
+     "role": "teacher",
+     "style": null,
+     "country": "SXM-Guadeloupe",
+     "source_line": "✨ Juliana(SXM-Guadeloupe)"
+    },
+    {
+     "name_as_written": "Lionel",
+     "role": "teacher",
+     "style": null,
+     "country": "SXM-Guadeloupe",
+     "source_line": "✨ Lionel (SXM-Guadeloupe)"
+    }
+   ],
+   "features": [
+    {
+     "feature": "pool_party",
+     "quote": "Pool Parties",
+     "rationale": "The programme lists Pool Parties as part of the event."
+    },
+    {
+     "feature": "beach_party",
+     "quote": "Beach Party",
+     "rationale": "The programme lists a Beach Party as part of the event."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,54 @@
+{
+ "batch": "event-15682",
+ "events": [
+  {
+   "event_id": 15682,
+   "artists": [
+    {
+     "name_as_written": "Charlie",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Tel: +34 619 991636 Charlie"
+    }
+   ],
+   "features": [
+    {
+     "feature": "cruise",
+     "quote": "aboard the Costa Fascinosa",
+     "rationale": "The description states the event takes place aboard a cruise ship."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "4 nights’ accommodation on the exceptional Costa Cruiser ship",
+     "rationale": "The included list states that the package covers four nights of accommodation on the ship."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "Dance under the stars in the evenings on the spacious ship’s deck.",
+     "rationale": "The parties and dancing take place on the same ship where the dancers stay."
+    },
+    {
+     "feature": "shows",
+     "quote": "enjoy shows, themed parties, and workshops",
+     "rationale": "The text promises shows during the day as part of the event."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "themed parties",
+     "rationale": "The description explicitly lists themed parties as part of the event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Participation in all parties, shows, and workshops",
+     "rationale": "Workshops are listed as included in the package."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Transfer and flight to and from the ship",
+     "rationale": "Transfers to and from the ship are offered as an optional extra."
+    }
+   ]
+  }
+ ]
+}

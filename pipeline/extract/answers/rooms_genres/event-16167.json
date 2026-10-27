@@ -1,0 +1,31 @@
+{
+ "batch": "event-16167",
+ "events": [
+  {
+   "event_id": 16167,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 Social rooms at the Academy – Aix-les-Bains"
+   },
+   "class_rooms": null,
+   "rooms": [],
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "kizomba",
+     "quote": "3 special DAYS with kizomba, urban kiz, and tarraxo classes"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "urban kiz",
+     "quote": "3 special DAYS with kizomba, urban kiz, and tarraxo classes"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "tarraxo",
+     "quote": "3 special DAYS with kizomba, urban kiz, and tarraxo classes"
+    }
+   ]
+  }
+ ]
+}

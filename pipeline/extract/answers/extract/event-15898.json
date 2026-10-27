@@ -1,0 +1,16 @@
+{
+ "batch": "event-15898",
+ "events": [
+  {
+   "event_id": 15898,
+   "artists": [],
+   "features": [
+    {
+     "feature": "partner_hotel",
+     "quote": "Bastion Hotel Rotterdam Alexander",
+     "rationale": "The description lists nearby hotels, which is a recommended-hotel arrangement that is not described as part of the pass."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "batch": "event-17448",
+ "events": [
+  {
+   "event_id": 17448,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "40+ Workshops",
+     "rationale": "The description lists 40+ workshops as part of the event."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "All levels covered by 30+ world-class artists.",
+     "rationale": "The workshops are stated to cover all levels."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Pool Parties",
+     "rationale": "Pool parties are listed among the event's highlights."
+    },
+    {
+     "feature": "shows",
+     "quote": "live shows",
+     "rationale": "The event highlights live shows."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 Social Rooms",
+     "rationale": "The event has three separate social rooms, meaning more than one dance room."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Stay right where the magic happens!",
+     "rationale": "The event recommends the Alua Tenerife hotel as the place to stay, with booking through the event site."
+    }
+   ]
+  }
+ ]
+}

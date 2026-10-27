@@ -1,0 +1,36 @@
+{
+ "batch": "event-15672",
+ "events": [
+  {
+   "event_id": 15672,
+   "artists": [],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "Amazing dance workshops",
+     "rationale": "The event lists amazing dance workshops as part of the programme."
+    },
+    {
+     "feature": "competition",
+     "quote": "Rising Star Competition",
+     "rationale": "The description names a Rising Star Competition, which is a competition."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Cool, Sexy & Crazy Dresscodes",
+     "rationale": "The description explicitly states dress codes for the event nights."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "All White",
+     "rationale": "The Sunday night is given a dress theme, All White, which makes it a themed party."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "3 Full Days of Dancing; Parties & Socials",
+     "rationale": "The description promises daytime socials across the three full days of dancing."
+    }
+   ]
+  }
+ ]
+}

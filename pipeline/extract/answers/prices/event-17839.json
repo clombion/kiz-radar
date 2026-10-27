@@ -1,12 +1,11 @@
 {
  "batch": "event-17839",
- "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17839,
    "passes": [
     {
-     "kind": "other",
+     "kind": "full",
      "style": null,
      "label_quote": null,
      "group_size": 1,
@@ -17,8 +16,7 @@
        "amount": 125,
        "currency": "USD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -41,8 +39,7 @@
        "amount": 140,
        "currency": "USD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -55,8 +52,7 @@
        "amount": 160,
        "currency": "USD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -69,8 +65,7 @@
        "amount": 180,
        "currency": "USD",
        "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
+       "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
@@ -78,30 +73,6 @@
        "sold_out": false,
        "current": false,
        "quote": "Full Pass Tier 3: $180"
-      }
-     ]
-    },
-    {
-     "kind": "workshop",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 75,
-       "currency": "USD",
-       "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Training: $75 (limited capacity – level check required)"
       }
      ]
     }

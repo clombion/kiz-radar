@@ -1,0 +1,193 @@
+{
+ "batch": "event-15662",
+ "events": [
+  {
+   "event_id": 15662,
+   "artists": [
+    {
+     "name_as_written": "We Kiz family",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "en Martinique avec la We Kiz family"
+    },
+    {
+     "name_as_written": "Auréa & Trésor",
+     "role": "teacher",
+     "style": "UrbanKiz – Kizomba – Tarraxo",
+     "country": null,
+     "source_line": "Auréa & Trésor"
+    },
+    {
+     "name_as_written": "Dr Papelini",
+     "role": "teacher",
+     "style": "UrbanKiz – Kizomba – Tarraxo",
+     "country": null,
+     "source_line": "Dr Papelini"
+    },
+    {
+     "name_as_written": "Karen & Luis",
+     "role": "teacher",
+     "style": "UrbanKiz – Kizomba – Tarraxo",
+     "country": null,
+     "source_line": "Karen & Luis"
+    },
+    {
+     "name_as_written": "Jo Seize",
+     "role": "teacher",
+     "style": "UrbanKiz – Kizomba – Tarraxo",
+     "country": null,
+     "source_line": "Jo Seize"
+    },
+    {
+     "name_as_written": "Noémie & Ludo",
+     "role": "teacher",
+     "style": "UrbanKiz – Kizomba – Tarraxo",
+     "country": null,
+     "source_line": "Noémie & Ludo"
+    },
+    {
+     "name_as_written": "Ami & Julien",
+     "role": "teacher",
+     "style": "UrbanKiz – Kizomba – Tarraxo",
+     "country": null,
+     "source_line": "Ami & Julien"
+    },
+    {
+     "name_as_written": "Yuna & Jules",
+     "role": "teacher",
+     "style": "UrbanKiz – Kizomba – Tarraxo",
+     "country": null,
+     "source_line": "Yuna & Jules (TarraxoPop)"
+    },
+    {
+     "name_as_written": "Adeline",
+     "role": "teacher",
+     "style": "Self-improvement",
+     "country": null,
+     "source_line": "Adeline"
+    },
+    {
+     "name_as_written": "Noémie",
+     "role": "teacher",
+     "style": "Self-improvement",
+     "country": null,
+     "source_line": "Noémie"
+    },
+    {
+     "name_as_written": "Nelly M",
+     "role": "teacher",
+     "style": "Self-improvement",
+     "country": null,
+     "source_line": "Nelly M"
+    },
+    {
+     "name_as_written": "Ludo",
+     "role": "teacher",
+     "style": "Self-improvement",
+     "country": null,
+     "source_line": "Ludo"
+    },
+    {
+     "name_as_written": "Dédé Douceur",
+     "role": "teacher",
+     "style": "Dom. Bachata",
+     "country": null,
+     "source_line": "Dédé Douceur"
+    },
+    {
+     "name_as_written": "Nelly M & Dimitri",
+     "role": "teacher",
+     "style": "Dom. Bachata",
+     "country": null,
+     "source_line": "Nelly M & Dimitri"
+    },
+    {
+     "name_as_written": "Marlone",
+     "role": "teacher",
+     "style": "Dom. Bachata",
+     "country": null,
+     "source_line": "Marlone"
+    },
+    {
+     "name_as_written": "Coyo & Krystobal",
+     "role": "teacher",
+     "style": "Dom. Bachata",
+     "country": null,
+     "source_line": "Coyo & Krystobal"
+    },
+    {
+     "name_as_written": "Dj Ichigo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Ichigo"
+    },
+    {
+     "name_as_written": "Dee Cee Beats",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dee Cee Beats"
+    },
+    {
+     "name_as_written": "Dj Lau",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Lau"
+    },
+    {
+     "name_as_written": "Dj Joyce",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Joyce"
+    },
+    {
+     "name_as_written": "Dj Krystobal",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Krystobal"
+    },
+    {
+     "name_as_written": "Dj Fluffman",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Fluffman"
+    },
+    {
+     "name_as_written": "Dj Arno",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Arno"
+    },
+    {
+     "name_as_written": "Dj Helow",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Helow"
+    },
+    {
+     "name_as_written": "Dj Elson",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Elson"
+    },
+    {
+     "name_as_written": "Kday & La Tempête",
+     "role": "mc",
+     "style": null,
+     "country": null,
+     "source_line": "MCs : Kday & La Tempête"
+    }
+   ],
+   "features": []
+  }
+ ]
+}

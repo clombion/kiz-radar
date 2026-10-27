@@ -1,0 +1,146 @@
+{
+ "batch": "event-15474",
+ "events": [
+  {
+   "event_id": 15474,
+   "artists": [
+    {
+     "name_as_written": "Leny",
+     "role": "teacher",
+     "style": null,
+     "country": "🇦🇴🇬🇧",
+     "source_line": "Leny 🇦🇴🇬🇧"
+    },
+    {
+     "name_as_written": "Rui",
+     "role": "teacher",
+     "style": null,
+     "country": "🇸🇹🇵🇹",
+     "source_line": "Rui 🇸🇹🇵🇹"
+    },
+    {
+     "name_as_written": "DJ Igor",
+     "role": "dj",
+     "style": null,
+     "country": "🇭🇷",
+     "source_line": "DJ Igor 🇭🇷"
+    },
+    {
+     "name_as_written": "DJ Caliph",
+     "role": "dj",
+     "style": null,
+     "country": "🇬🇭",
+     "source_line": "DJ Caliph 🇬🇭"
+    },
+    {
+     "name_as_written": "DJ Hope’s",
+     "role": "dj",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "DJ Hope’s 🇫🇷"
+    },
+    {
+     "name_as_written": "DJ Kuki",
+     "role": "dj",
+     "style": null,
+     "country": "🇸🇮",
+     "source_line": "DJ Kuki 🇸🇮"
+    },
+    {
+     "name_as_written": "Michel",
+     "role": "performer",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "Michel 🇫🇷"
+    },
+    {
+     "name_as_written": "Joel",
+     "role": "performer",
+     "style": null,
+     "country": "🇨🇮",
+     "source_line": "Joel 🇨🇮"
+    },
+    {
+     "name_as_written": "Luke",
+     "role": "performer",
+     "style": null,
+     "country": "🇬🇧",
+     "source_line": "Luke 🇬🇧"
+    },
+    {
+     "name_as_written": "Ivan",
+     "role": "performer",
+     "style": null,
+     "country": "🇪🇸",
+     "source_line": "Ivan 🇪🇸"
+    },
+    {
+     "name_as_written": "Charles",
+     "role": "performer",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "Charles 🇫🇷"
+    },
+    {
+     "name_as_written": "Boucif",
+     "role": "performer",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "Boucif 🇫🇷"
+    },
+    {
+     "name_as_written": "Ruben",
+     "role": "performer",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "Ruben 🇫🇷"
+    },
+    {
+     "name_as_written": "Lin",
+     "role": "performer",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "Lin 🇫🇷"
+    },
+    {
+     "name_as_written": "Garcia",
+     "role": "performer",
+     "style": null,
+     "country": "🇧🇪",
+     "source_line": "Garcia 🇧🇪"
+    },
+    {
+     "name_as_written": "Anthony",
+     "role": "performer",
+     "style": null,
+     "country": "🇫🇷",
+     "source_line": "Anthony 🇫🇷"
+    },
+    {
+     "name_as_written": "Joe",
+     "role": "performer",
+     "style": null,
+     "country": "🇬🇧",
+     "source_line": "Joe 🇬🇧"
+    }
+   ],
+   "features": [
+    {
+     "feature": "workshops",
+     "quote": "workshops:",
+     "rationale": "The program lists dance classes such as kizomba by Leny and semba by Leny under a workshops heading."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "P A R T Y on 2 floors:",
+     "rationale": "The parties take place on two floors, meaning more than one dance floor."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Rooms Madison https://www.zagrebrooms.com/",
+     "rationale": "The accommodation section lists recommended rooms near the event, without them being part of the pass."
+    }
+   ]
+  }
+ ]
+}

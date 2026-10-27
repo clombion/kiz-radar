@@ -1,0 +1,79 @@
+{
+ "batch": "event-16658",
+ "events": [
+  {
+   "event_id": 16658,
+   "party_rooms": {
+    "count": 4,
+    "quote": "4 rooms for the parties with"
+   },
+   "class_rooms": null,
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "▪️Salsa On1/On2"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "▪️Cuban Salsa"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "▪️Kizomba"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "▪️Bachata"
+    }
+   ],
+   "genres": [
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa On1/On2",
+     "quote": "▪️Salsa On1/On2"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Cuban Salsa",
+     "quote": "▪️Cuban Salsa"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "▪️Kizomba"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "▪️Bachata"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "Salsa (every kind of Salsa), Bachata, Kizomba, Semba, Chacha"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Chacha",
+     "quote": "Salsa (every kind of Salsa), Bachata, Kizomba, Semba, Chacha"
+    }
+   ]
+  }
+ ]
+}
