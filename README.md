@@ -383,14 +383,18 @@ through `pipeline/db.py`, saying whether it reads, writes or creates each one, s
 
 ## Tests
 
-The **Tests** Action runs on every push. Locally:
+Every check runs through [mise](https://mise.jdx.dev) (`mise.toml`, which also pins node and uv), and the
+**Tests** Action runs the same command on every push:
 
 ```bash
-node --test tests/*.test.mjs      # the site's structure: unused code and styles, links, stored hints, the price states
-uv run --group dev pytest -q      # the pipeline: the states, text, kizomba-world's pages, extraction, ticket pages, commands
-uv run --group dev pyflakes pipeline tests   # unused and undefined names
-uv run --group tickets -m pipeline.audit        # every state in the data is one of pipeline/states.py
+mise run check        # everything
+mise run check:fast   # the quick part: unused names, the site's structure
+mise tasks            # each check on its own: test:py, test:site, lint:py, audit
 ```
+
+The site tests check the site's structure: unused code and styles, links, stored hints and the price states. The
+pipeline tests cover the states, text, kizomba-world's pages, extraction, ticket pages and the commands. The audit
+checks that every state in the data is one of `pipeline/states.py`.
 
 The site tests check what JavaScript and CSS cannot enforce themselves. Examples include an export nothing
 imports, a CSS rule overridden by a second one for the same selector, and a link written outside `routes.js`.

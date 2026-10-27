@@ -1,5 +1,6 @@
 name: Tests
 
+# Every check the repository has, as `mise run check` runs it (mise.toml).
 on:
   push:
   pull_request:
@@ -7,18 +8,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - uses: astral-sh/setup-uv@v6
-      - name: Site checks
-        run: node --test tests/*.test.mjs
-      - name: Pipeline tests
-        run: uv run --group dev pytest -q
-      - name: Unused and undefined names
-        run: uv run --group dev pyflakes pipeline tests
-      - name: Every state in the data is in pipeline/states.py
-        run: uv run --group tickets -m pipeline.audit
+      - uses: jdx/mise-action@v2
+      - name: Every check
+        run: mise run check
