@@ -336,7 +336,7 @@ def test_a_request_costs_its_models_prices() -> None:
 def source(con: sqlite3.Connection, *events: tuple[int, str | None]) -> sqlite3.Connection:
     _ = con.executescript(
         'create table events (id integer, title text, description_text text, start_date text, end_date text, '
-        'country text); create table pending_extraction (event_id integer);'
+        'country text); create table pending_extraction (event_id integer, since text);'
     )
     _ = con.executemany(
         "insert into events values (?, 'F', ?, '2099-01-01', '2099-01-02', null)", [(i, d) for i, d in events]
@@ -357,8 +357,8 @@ def test_only_the_named_festivals_are_asked(memory: Memory, monkeypatch: pytest.
         _ = ask.due(con, ['prices'], {2, 3})  # no description: nothing to ask it
 
 
-def logged(prompt_: str) -> answers.Logged:
-    return answers.Logged(file='prices/event-1.json', answered_at='t', model='m', prompt=prompt_, answered_by='x')
+def logged(prompt_: str, at: str = '2026-10-02T09:00:00+00:00') -> answers.Logged:
+    return answers.Logged(file='prices/event-1.json', answered_at=at, model='m', prompt=prompt_, answered_by='x')
 
 
 NOW = logged(prompt.current('prices').hash)
@@ -375,31 +375,45 @@ def test_an_answer_to_an_older_prompt_is_asked_again(memory: Memory, monkeypatch
     assert [f.id for f, _ in ask.due(con, ['prices'])[0]] == [1]
 
 
-ANSWER_CASES: list[tuple[tuple[answers.Logged | None, bool], AnswerState]] = [
-    ((None, False), AnswerState.NONE),
-    ((None, True), AnswerState.NONE),
-    ((logged('0' * 16), False), AnswerState.STALE),
-    ((NOW, True), AnswerState.STALE),
-    ((NOW, False), AnswerState.CURRENT),
+# (an answer asked on 2 October, the day its festival's description last changed when it is pending)
+ANSWER_CASES: list[tuple[tuple[answers.Logged | None, str | None], AnswerState]] = [
+    ((None, None), AnswerState.NONE),
+    ((None, '2026-10-01'), AnswerState.NONE),
+    ((logged('0' * 16), None), AnswerState.STALE),
+    ((NOW, '2026-10-03'), AnswerState.STALE),  # asked before the change
+    ((NOW, '2026-10-02'), AnswerState.CURRENT),  # asked on the day of the change: after the refresh that found it
+    ((NOW, '2026-10-01'), AnswerState.CURRENT),
+    ((NOW, None), AnswerState.CURRENT),
 ]
 
 
 @pytest.mark.parametrize(('args', 'state'), ANSWER_CASES)
 def test_every_state_of_an_answer_that_due_tells_apart(
-    args: tuple[answers.Logged | None, bool], state: AnswerState
+    args: tuple[answers.Logged | None, str | None], state: AnswerState
 ) -> None:
-    answer, pending = args
-    assert ask.answer_state('prices', answer, pending=pending) == state
+    answer, since = args
+    assert ask.answer_state('prices', answer, since=since) == state
 
 
 def test_the_answer_states_tested_are_all_of_them() -> None:
     assert {s for _, s in ANSWER_CASES} == set(AnswerState)
 
 
-def test_a_festival_stays_pending_until_every_pass_is_answered() -> None:
-    every: set[prompt.PassName] = {p.name for p in prompt.PASSES}
-    answered: dict[int, set[prompt.PassName]] = {1: {'prices'}, 2: every, 4: every}
-    assert ask.settled(answered, {1, 2, 3}) == [2]
+def test_a_festival_stays_pending_until_every_pass_has_an_answer_since_its_change(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # 1 has only its prices answered, 2 every pass, 3 nothing, 4 every pass but before its description changed
+    now = {p.name: logged(prompt.current(p.name).hash) for p in prompt.PASSES}
+    have = {'prices': {1: now['prices'], 2: now['prices'], 4: now['prices']}} | {
+        p: {2: now[p], 4: now[p]} for p in ('extract', 'rooms_genres')
+    }
+
+    def answered(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, answers.Logged]]:
+        return {i: (Path(f'{pass_name}/event-{i}.json'), a) for i, a in have[pass_name].items() if i in ids}
+
+    monkeypatch.setattr(ask.answers, 'answered', answered)
+    since = '2026-10-01'
+    assert ask.settled({1: since, 2: since, 3: since, 4: '2026-10-03'}) == [2]
 
 
 @pytest.mark.parametrize(
@@ -495,3 +509,57 @@ def test_a_festival_is_priced_exactly_when_it_has_the_pass_a_card_prices(memory:
         'SELECT event_id, price, page, card_pass FROM price_status ORDER BY event_id'
     ).fetchall()
     assert statuses == [(5, 'priced', None, 1), (6, 'other_passes_only', 'https://shop.example/6', None)]
+
+
+@pytest.fixture
+def answered_here(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
+    """Answers saved in a folder of the test's own, with an empty log."""
+    monkeypatch.setattr(answers, 'ANSWERS', tmp_path / 'answers')
+    monkeypatch.setattr(answers, 'LOG', tmp_path / 'answers' / 'log.csv')
+    (tmp_path / 'answers').mkdir()
+    _ = (tmp_path / 'answers' / 'log.csv').write_text(','.join(answers.Logged.columns()) + '\n')
+    return tmp_path / 'answers'
+
+
+def source_file(tmp_path: Path) -> Path:
+    """A source DB holding FEST, pending extraction."""
+    path = tmp_path / 'source.sqlite'
+    con = sqlite3.connect(path)
+    try:
+        _ = con.executescript(
+            'create table events (id integer, title text, description_text text, start_date text, end_date text, '
+            'country text); create table pending_extraction (event_id integer, reason text, since text); '
+            'create table event_genres (event_id integer, genre text); '
+            "insert into pending_extraction values (5, 'description changed', '2026-01-01');"
+        )
+        _ = con.execute(
+            'insert into events values (?, ?, ?, ?, ?, ?)',
+            (FEST.id, FEST.title, FEST.description_text, FEST.start_date, FEST.end_date, FEST.country),
+        )
+        con.commit()
+    finally:
+        con.close()
+    return path
+
+
+def run_ask(monkeypatch: pytest.MonkeyPatch, client: Client, *args: object) -> None:
+    monkeypatch.setattr(ask.anthropic, 'Anthropic', lambda: client)
+    monkeypatch.setattr('sys.argv', ['ask', *map(str, args)])
+    ask.main()
+
+
+def test_a_festival_is_asked_its_passes_and_leaves_pending_once_all_are_answered(
+    tmp_path: Path, answered_here: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    src = source_file(tmp_path)
+    client = Client(prices_answer('Full pass 80€ until 31.01'))
+    run_ask(monkeypatch, client, src, '--dry-run')
+    assert capsys.readouterr().out.startswith('1 festivals to ask about: ')
+    assert client.messages.asked == []
+    run_ask(monkeypatch, client, src, '--pass', 'prices')
+    assert answers.current(prompt.PRICES, {5})[5].entry.passes[0].tiers[0].amount == 80
+    with db.opened(src, 'ro') as con:
+        assert con.execute('select event_id from pending_extraction').fetchall() == [(5,)]  # the other passes wait
+    run_ask(monkeypatch, client, src, '--pass', 'prices')
+    assert 'festivals to ask about: ' in capsys.readouterr().out
+    assert len(client.messages.asked) == 1  # answered to the current prompt: not asked again

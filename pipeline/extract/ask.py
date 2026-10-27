@@ -5,23 +5,23 @@
     uv run --group ask -m pipeline.extract.ask source/<events>.sqlite --limit 3   # ask about three festivals only
     uv run --group ask -m pipeline.extract.ask source/<events>.sqlite --only 16909,18806   # these festivals only
 
-A festival needs a pass when its answer is due (enums.AnswerState): it is in pending_extraction (its description is new
-or changed), the pass has no answer for it yet, or its answer was asked with another prompt than the pass's current one
-(pipeline/prompt.py, known by its hash). Each question is one festival and one pass, with the pass's prompt and its
-record's schema as the required answer format. check_output.checked() (and prices.problems() for prices) checks the
-answer; on a failure Claude gets the checker's lines and answers once more, and a second failure leaves the festival
-pending. A checked answer is saved as answers/<pass>/event-<id>.json, its prompt archived. A festival leaves
-pending_extraction once every pass has a checked answer from this run, so a run of some passes leaves it there. Requests
-stop once the month's budget for Claude is spent (pipeline/spend.py), and the run then fails. Needs ANTHROPIC_API_KEY.
+A festival needs a pass when its answer is due (enums.AnswerState): the pass has no answer for it yet, its answer was
+asked with another prompt than the pass's current one (pipeline/prompt.py, known by its hash), or it was asked before
+the day the festival's description last changed (pending_extraction's since). Each question is one festival and one
+pass, with the pass's prompt and its record's schema as the required answer format. check_output.checked() (and
+prices.problems() for prices) checks the answer; on a failure Claude gets the checker's lines and answers once more, and
+a second failure leaves the festival pending. A checked answer is saved as answers/<pass>/event-<id>.json, its prompt
+archived. A festival leaves pending_extraction once every pass has an answer that is current, from this run or an
+earlier one, so a run of some passes leaves it there and the next asks only the rest. Requests stop once the month's
+budget for Claude is spent (pipeline/spend.py), and the run then fails. Needs ANTHROPIC_API_KEY.
 """
 
 import argparse
-import collections
 import json
 import sqlite3
 import sys
 import threading
-from collections.abc import Callable, Sequence
+from collections.abc import Callable, Mapping, Sequence
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import AbstractContextManager
 from dataclasses import dataclass
@@ -187,45 +187,53 @@ type Job = tuple[Festival, Pass[Entry, Asked]]
 
 def due(
     db: sqlite3.Connection, only: Sequence[prompts.PassName] | None, ids: set[int] | None = None
-) -> tuple[list[Job], set[int]]:
+) -> tuple[list[Job], dict[int, str]]:
     """((festival, pass) pairs to ask: each pass whose answer for a festival is none or stale (answer_state), of the
-    festivals ids names when it names some; the festivals pending_extraction holds)."""
+    festivals ids names when it names some; the festivals pending_extraction holds, with the day their description
+    last changed)."""
     query = 'select id, title, description_text, start_date, end_date, country from events'
     rows = {f.id: f for f in sqlite_db.records(db, Festival, query + ' where description_text is not null order by id')}
     if ids:
         if missing := ids - set(rows):
             sys.exit(f'no festival with a description: {sorted(missing)}')
         rows = {i: r for i, r in rows.items() if i in ids}
-    listed: list[tuple[int]] = db.execute('select event_id from pending_extraction').fetchall()
-    pending = {i for (i,) in listed}
+    listed: list[tuple[int, str]] = db.execute('select event_id, since from pending_extraction').fetchall()
+    pending = dict(listed)
     out: list[Job] = []
     for pass_ in (p for p in prompts.PASSES if not only or p.name in only):
         have = answers.answered(pass_.name, set(rows))
         out += [
             (rows[i], pass_)
             for i in rows
-            if answer_state(pass_.name, have[i][1] if i in have else None, pending=i in pending) != AnswerState.CURRENT
+            if answer_state(pass_.name, have[i][1] if i in have else None, since=pending.get(i)) != AnswerState.CURRENT
         ]
     return out, pending
 
 
-def answer_state(pass_name: prompts.PassName, answer: answers.Logged | None, *, pending: bool) -> AnswerState:
-    """A festival's answer of a pass (its file's log row, None when it has none): none, stale (to another prompt,
-    or its description changed since), or current."""
-    return (
-        AnswerState.NONE
-        if answer is None
-        else AnswerState.STALE
-        if pending or not prompts.is_current(pass_name, answer.prompt)
-        else AnswerState.CURRENT
+def answer_state(pass_name: prompts.PassName, answer: answers.Logged | None, *, since: str | None) -> AnswerState:
+    """A festival's answer of a pass (its file's log row, None when it has none): none, stale (to another prompt, or
+    asked before since, the day its description last changed, when it is pending), or current. An answer asked on that
+    day counts as asked after it: the refresh that finds a change runs before the questions."""
+    if answer is None:
+        return AnswerState.NONE
+    if not prompts.is_current(pass_name, answer.prompt) or (since is not None and answer.answered_at[:10] < since):
+        return AnswerState.STALE
+    return AnswerState.CURRENT
+
+
+def settled(pending: Mapping[int, str]) -> list[int]:
+    """The pending festivals whose every pass now has a current answer: they leave pending_extraction. One whose
+    passes were asked only in part (--pass) stays, and the next run asks the rest."""
+    have: list[tuple[prompts.PassName, dict[int, tuple[Path, answers.Logged]]]] = [
+        (p.name, answers.answered(p.name, set(pending))) for p in prompts.PASSES
+    ]
+    return sorted(
+        i
+        for i, since in pending.items()
+        if all(
+            i in found and answer_state(name, found[i][1], since=since) == AnswerState.CURRENT for name, found in have
+        )
     )
-
-
-def settled(answered: dict[int, set[prompts.PassName]], pending: set[int]) -> list[int]:
-    """The pending festivals this run answered every pass of (answered: {festival: its passes answered}): they leave
-    pending_extraction. One asked only some passes (--pass) stays, so its other passes are asked again."""
-    every = {p.name for p in prompts.PASSES}
-    return sorted(i for i in pending if answered.get(i, set()) >= every)
 
 
 class Args(argparse.Namespace):
@@ -269,7 +277,6 @@ def main() -> None:
         client: Client = anthropic.Anthropic()
         lock, before = threading.Lock(), spend.month_usd()
         failed: set[int] = set()
-        answered: collections.defaultdict[int, set[prompts.PassName]] = collections.defaultdict(set)
         stopped: list[str] = []
 
         def one(job: Job) -> None:
@@ -284,15 +291,12 @@ def main() -> None:
                     failed.add(f.id)
                 else:
                     _ = answers.save(pass_.name, output, MODEL, prompts.current(pass_.name), BY)
-                    answered[f.id].add(pass_.name)
 
         with ThreadPoolExecutor(WORKERS) as pool:
             _ = list(pool.map(one, todo))
 
         done = {f.id for f, _ in todo} - failed
-        _ = db.executemany(
-            'delete from pending_extraction where event_id = ?', [(i,) for i in settled(answered, pending)]
-        )
+        _ = db.executemany('delete from pending_extraction where event_id = ?', [(i,) for i in settled(pending)])
         db.commit()
         print(
             f'{len(done)} festivals answered, {len(failed)} failed {sorted(failed)}; '

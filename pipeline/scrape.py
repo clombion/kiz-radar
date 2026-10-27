@@ -207,8 +207,10 @@ def write(db: sqlite3.Connection, fetch: Fetcher, r: Refreshed, today: str) -> b
         _ = db.execute('delete from event_links where event_id = ?', (i,))
         _ = db.executemany('insert into event_links values (?, ?)', [(i, u) for u in r.links])
     if r.old is None or r.old.description_text != r.row.description_text:
+        # a festival still pending keeps why, and waits from its latest change
         _ = db.execute(
-            'insert or ignore into pending_extraction values (?, ?, ?)',
+            'insert into pending_extraction values (?, ?, ?) '
+            'on conflict (event_id) do update set since = excluded.since',
             (i, 'new' if r.old is None else 'description changed', today),
         )
     return write_poster(db, fetch, r.row)

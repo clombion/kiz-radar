@@ -324,8 +324,8 @@ ROWS = (
     S(
         'answer',
         'stale',
-        'its answer was asked with another prompt (it is not loaded), or its description changed '
-        'since (pending_extraction; it stays loaded until asked again)',
+        'its answer was asked with another prompt (it is not loaded), or before its description last changed '
+        '(pending_extraction; it stays loaded until asked again)',
         WAITS,
         owner='the next run',
     ),
