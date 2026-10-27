@@ -48,6 +48,16 @@ event_id,pass_no,kind,style,label,group_size,days,includes_hotel,amount,currency
 16884,6,day,,,1,1,0,31,EUR,1,,,,,,0,"FRIDAY NIGHT PASS ""MALE"" €30.00 + €1.00 fee."
 16884,7,day,,,1,1,0,36,EUR,1,,,,,,0,"SATURDAY NIGHT PASS ""MALE"" €35.00 + €1.00 fee."
 16884,8,day,,,1,1,0,31,EUR,1,,,,,,0,"SUNDAY NIGHT PASS ""MALE"" €30.00 + €1.00 fee."
+16889,1,party,,,2,,0,123.08,EUR,,,,,,,0,PARTY PASS COUPLE/PAREJA €123.08
+16889,2,party,,,1,,0,61.54,EUR,,,,,,,0,PARTY PASS LIDER/CHICO/GARÇON €61.54
+16889,3,day,,,1,1,0,51.28,EUR,,,,,,,0,DAY PASS SUNDAY LIDER €51.28
+16889,4,day,,,2,1,0,102.56,EUR,,,,,,,0,DAY PASS COUPLE PAREJA SUNDAY €102.56
+16889,5,day,,,1,1,0,71.79,EUR,,,,,,,0,DAY PASS SATURDAY LIDER €71.79
+16889,6,day,,,2,1,0,143.58,EUR,,,,,,,0,DAY PASS COUPLE PAREJA SATURDAY €143.58
+16889,7,day,,,1,1,0,41.03,EUR,,,,,,,0,DAY PASS FRIDAY LIDER €41.03
+16889,8,day,,,2,1,0,82.06,EUR,,,,,,,0,DAY PASS COUPLE PAREJA FRIDAY €82.06
+16889,9,full,,,1,3,0,100.51,EUR,,,,,,,0,FULLPASS MEN/CHICO/LIDER €100.51
+16889,10,full,,,2,3,0,186.66,EUR,,,,,,,0,FULLPASS COUPLE/PAREJA €186.66
 16899,1,other,,,1,,0,150,EUR,,,,,,,0,GOLDEN PASS - ALL ACCESS €150.00
 16899,2,full,,,1,,0,105,EUR,,,,,,,0,FULLPASS €105.00
 16904,1,full,,,2,,0,255,EUR,,,,,,,1,Couple Full Pass 255
@@ -64,8 +74,44 @@ event_id,pass_no,kind,style,label,group_size,days,includes_hotel,amount,currency
 16927,3,other,,,1,,0,2036,THB,36,,,,,,0,"2 MASTERCLASSES Bachata & Kizomba ( Leader ) THB 2,000.00 + THB 36.00 fee."
 16927,4,full,,,2,,0,7836,THB,36,,,,,,0,"COUPLE Full Pass ( Male & Female ) THB 7,800.00 + THB 36.00 fee."
 16927,5,full,,,2,,0,7636,THB,36,,,,,,0,"BRO Full Pass ( Male & Male ) THB 7,600.00 + THB 36.00 fee."
+17092,1,full,,,1,,0,124.4,EUR,4.4,,,,,,0,FULL ACCESS WOMAN - NOT EXCHANGEABLE 120.0 + 4.4 fee
+17092,2,full,,,1,,0,134.75,EUR,4.75,,,,,,0,FULL ACCESS WOMAN - EXCHANGEABLE 130.0 + 4.75 fee
+17092,3,full,,,2,,0,238.35,EUR,8.35,,,,,,0,COUPLE PASS (M/W) - NOT EXCHANGEABLE 230.0 + 8.35 fee
+17092,4,full,,,2,,0,259.1,EUR,9.1,,,,,,0,COUPLE PASS (M/W) - EXCHANGEABLE 250.0 + 9.1 fee
+17092,5,package,,,1,2,1,372.05,EUR,13.05,,,,,,0,[NOVOTEL] Single room - 2 nights FRI/SAT + 1 Full Pass (359€ +bank fees) 359.0 + 13.05 fee
+17092,6,package,,,2,2,1,486.05,EUR,17.05,,,,,,0,[NOVOTEL] Double room - 2 nights FRI/SAT + 2 Full Pass (469€ +bank fees) 469.0 + 17.05 fee
+17092,7,package,,,1,3,1,506.75,EUR,17.75,,,,,,0,[NOVOTEL] Single room - 3 nights FRI/SAT/SUN + 1 Full Pass (489€ +bank fees) 489.0 + 17.75 fee
+17092,8,package,,,2,3,1,631.15,EUR,22.15,,,,,,0,[NOVOTEL] Double room - 3 nights FRI/SAT/SUN + 2 Full Pass (609€ +bank fees) 609.0 + 22.15 fee
+17092,9,package,,,1,4,1,651.85,EUR,22.85,,,,,,0,[NOVOTEL] Single room - 4 nights THU/FRI/SAT/SUN + 1 Full Pass (629€ +bank fees) 629.0 + 22.85 fee
+17092,10,package,,,2,4,1,786.55,EUR,27.55,,,,,,0,[NOVOTEL] Double room - 4 nights THU/FRI/SAT/SUN + 2 Full Pass (759€ +bank fees) 759.0 + 27.55 fee
 17125,1,full,,,1,,0,129.88,USD,,,,,,,0,Tier 1 - Republic (Jedi) $129.88 incl. $9.89 Fee
 17125,2,other,,,1,,0,108.54,USD,,,,,,,0,Performance Pass $108.54 incl. $8.55 Fee
+17476,1,full,,,1,,0,81.03,EUR,,,,,,,1,Early Bird Single Fullpass male 79€ €81.03
+17476,2,full,kizomba,,1,,0,107.69,EUR,,,,,,,1,Single KIZOMBA Fullpass Female 105€ €107.69
+17476,2,full,kizomba,,1,,0,112.82,EUR,,,,,,,1,Single KIZOMBA Fullpass Female 110€ €112.82
+17476,2,full,kizomba,,1,,0,123.08,EUR,,,,,,,0,Single KIZOMBA Fullpass Female 120€ €123.08
+17476,3,full,kizomba,,2,,0,204.1,EUR,,,,,,,1,Couple KIZOMBA Fullpass 199€ €204.10
+17476,3,full,kizomba,,2,,0,224.62,EUR,,,,,,,0,Couple KIZOMBA Fullpass 219€ €224.62
+17476,4,other,kizomba,,1,,0,81.03,EUR,,,,,,,0,Single KIZOMBA 36H pass Female 79€ €81.03
+17476,5,full,bachata,,1,,0,97.44,EUR,,,,,,,0,Bachata Fullpass Female 95€ €97.44
+17476,6,party,,,1,,0,87.18,EUR,,,,,,,0,Partypass Female 85€ €87.18
+17476,7,other,kizomba,,1,,0,56.41,EUR,,,,,,,0,Bootcamp FOUNDATION & EVOLUTION - Male €56.41
+17476,8,other,kizomba,,1,,0,56.41,EUR,,,,,,,0,Bootcamp EVOKEEZ - Male €56.41
+17476,9,other,kizomba,,1,,0,56.41,EUR,,,,,,,0,Bootcamp GENKIZ -Male €56.41
+17476,10,other,kizomba,,1,,0,56.41,EUR,,,,,,,0,Bootcamp URBAN GROUNDNESS​ - Male €56.41
+17476,11,other,kizomba,,1,,0,56.41,EUR,,,,,,,0,Bootcamp MUSICALITY SECRETS​ - Male €56.41
+17476,12,other,bachata,,1,,0,35.99,EUR,,,,,,,0,DEVELOP YOUR OWN STYLE - BACHATA BOOTCAMP - Male €35.99
+17476,13,other,bachata,,1,,0,35.99,EUR,,,,,,,0,SQUID GAME - BACHATA MUSICALITY BOOTCAMP - Male €35.99
+17476,14,day,,,1,1,0,46.15,EUR,,,,,,,0,SATURDAY PASS €46.15
+17476,15,day,,,1,1,0,41.03,EUR,,,,,,,0,SUNDAY PASS €41.03
+17493,1,full,,,1,,0,143.59,EUR,,,,,,,0,FULL PASS (MALE) €143.59
+17493,2,other,kizomba,,1,,0,102.56,EUR,,,,,,,0,KIZOMBA PASS (MALE) €102.56
+17493,3,day,,,1,1,0,30.99,EUR,,,,,,,0,THURSDAY WORKSHOP & PREPARTY 26/11/2026 (MALE) €30.99
+17493,4,party,,,1,,0,117.95,EUR,,,,,,,0,PARTY PASS (MALE) €117.95
+17493,5,full,,,2,,0,246.15,EUR,,,,,,,0,COUPLE PASS €246.15
+17493,6,other,,,2,,0,71.79,EUR,,,,,,,0,BE PRESENT Bootcamp - COUPLE PASS €71.79
+17493,7,other,,,1,,0,56.41,EUR,,,,,,,0,BE PRESENT Bootcamp - Standard Ticket €56.41
+17493,8,other,,,1,,0,41.03,EUR,,,,,,,0,BE PRESENT Bootcamp - HIK Full Pass Holder €41.03
 17497,1,full,,,1,,0,92.25,EUR,2.25,,,,,,0,"Fullpass · Full Pass – Follower 90,00 € + 2.25 fee"
 17497,2,day,,,1,1,0,56.38,EUR,1.38,,,,,,0,"Friday Pass · Friday Pass – Follower 55,00 € + 1.38 fee"
 17497,3,day,,,1,1,0,66.63,EUR,1.63,,,,,,0,"Saturday Pass · Saturday Pass – Follower 65,00 € + 1.63 fee"
@@ -80,6 +126,10 @@ event_id,pass_no,kind,style,label,group_size,days,includes_hotel,amount,currency
 17500,4,party,,,1,,0,360,PLN,,83,EUR,,,,0,Dance Pass Man 360 PLN \ 83 EUR · 83 EUR
 17515,1,full,,,1,,0,102.56,EUR,,,,,,,0,FULLPASS FEMME/ WOMEN €102.56
 17515,2,full,,,2,,0,164.1,EUR,,,,,,,0,FULLPASS DUO Leader and Leader (MAN ONLY) €164.10
+17853,1,full,,,1,,0,230,USD,,,,,2026-10-31,,0,FULL PASS (TO 2026/10/31) $ 230
+17853,2,full,kizomba,,1,,0,130,USD,,,,,2026-10-31,,0,KIZZ PASS (TO 2026/10/31) $ 130
+17853,3,party,,,1,,0,195,USD,,,,,2026-10-31,,0,PARTY PASS (TO 2026/10/31) $ 195
+17853,4,other,,,1,,0,270,USD,,,,,2026-10-31,,0,VIP PASS (TO 2026/10/31) $ 270
 17946,1,full,,,2,3,0,225.64,EUR,,,,,,,0,UNIQUE PASS - COUPLE €225.64
 17946,1,full,,,2,3,0,220.51,EUR,,,,,,,0,UNIQUE PASS - COUPLE €220.51
 17946,2,full,,,1,3,0,133.33,EUR,,,,,,,0,UNIQUE PASS - WOMAN €133.33
@@ -143,6 +193,17 @@ event_id,pass_no,kind,style,label,group_size,days,includes_hotel,amount,currency
 18315,6,day,,,1,1,0,22,EUR,,,,,,,0,SOCIAL NON-STOP DU DIMANCHE €22.00
 18315,7,party,,,1,2,0,35,EUR,,,,,,,0,PARTY PASS — FEMME — SAMEDI & DIMANCHE €35.00
 18315,8,full,,,2,,0,115,EUR,,,,,,,0,Full pass Duo Femme + Homme €115.00
+18317,1,full,,,1,,0,92.31,EUR,,,,,,,0,Fullpas WOMEN €92.31
+18317,2,other,,,1,,0,51.28,EUR,,,,,,,0,WEEKEND FULL PASS_WOMEN’S — PARIS NYE 10 €51.28
+18317,3,full,,,1,6,0,102.56,EUR,,,,,,,0,FULLPASS WOMEN + BOAT PARTY ( from 30/12 to 04/01 ) €102.56
+18317,4,day,,,1,1,0,20.99,EUR,,,,,,,0,Boat Party MEN Pass €20.99
+18317,5,day,,,1,1,0,51.28,EUR,,,,,,,0,31/12 PASS MEN - PARTY €51.28
+18317,6,day,,,1,1,0,41.03,EUR,,,,,,,0,01 jan 2027 : COMBO SOCIAL+PARTY €41.03
+18317,7,day,,,1,1,0,41.03,EUR,,,,,,,0,02 jan 2027 : COMBO SOCIAL+PARTY €41.03
+18317,8,day,,,1,1,0,41.03,EUR,,,,,,,0,03 jan 2027 : COMBO SOCIAL+PARTY €41.03
+18317,9,day,,,1,1,0,61.54,EUR,,,,,,,0,01 jan 2027 : DAY PASS All included €61.54
+18317,10,day,,,1,1,0,61.54,EUR,,,,,,,0,02 jan 2027 : DAY PASS All included €61.54
+18317,11,day,,,1,1,0,61.54,EUR,,,,,,,0,03 jan 2027 : DAY PASS All included €61.54
 18350,1,full,,,1,,0,70,CHF,,,,,,,1,EARLY BIRD CHF 70.00
 18350,2,full,,FULL PASS WOMEN,1,,0,130,CHF,,,,,,,0,FULL PASS WOMEN CHF 130.00
 18350,2,full,,FULL PASS WOMEN,1,,0,110,CHF,,,,,,,1,FULL PASS WOMEN CHF 110.00
@@ -157,6 +218,10 @@ event_id,pass_no,kind,style,label,group_size,days,includes_hotel,amount,currency
 18362,2,full,,,1,,0,125,EUR,,,,,,,0,Leader - Full Pass 125 €
 18362,3,party,,,2,,0,140,EUR,,,,,,,0,Couple - Social & Party Pass 140 €
 18362,4,party,,,1,,0,80,EUR,,,,,,,0,Switch - Social & Party Pass 80 €
+18460,1,full,,,1,,0,81.09,EUR,,,,,,,1,Single Lady Full Pass 81.09€
+18460,1,full,,,1,,0,91.19,EUR,,,,,,100,0,Single Lady Full Pass 91.19€
+18460,2,full,,,2,,0,141.98,EUR,,,,,,,1,Couple Full Pass 141.98€
+18460,2,full,,,2,,0,162.18,EUR,,,,,,100,0,Couple Full Pass 162.18€
 18470,1,full,,,1,,0,113.33,EUR,8.33,,,,,,0,FOLLOWER PASS €105.00 +€8.33 Fee
 18470,2,full,,,2,,0,219.02,EUR,15.02,,,,,,0,COUPLE PASS €204.00 +€15.02 Fee
 18479,1,full,,,1,,0,125,EUR,,,,,,,0,"FULL PASS WOMAN 2026 125,00€"
@@ -185,6 +250,9 @@ event_id,pass_no,kind,style,label,group_size,days,includes_hotel,amount,currency
 18647,2,full,,,1,,0,140.68,EUR,,,,,,,0,Homme / Man - FULL PASS - 139€ 140.68€
 18647,2,full,,,1,,0,150.78,EUR,,,,,,,0,Homme / Man - FULL PASS - 149€ 150.78€
 18654,1,full,,,1,,0,70,CHF,,,,,,,0,Leader Full Pass EARLY BIRDS CHF 70.00
+18657,1,full,,,1,,0,114,EUR,4,,,,,,0,FULL PASS WOMAN - Suave Paris 2027 - 2nd wave 110.0 + 4.0 fee
+18657,1,full,,,1,,0,67.4,EUR,2.4,,,,,,0,EARLY BIRD - FULL PASS WOMAN 65.0 + 2.4 fee
+18657,2,other,,,1,,0,103.65,EUR,3.65,,,,,,0,EARLY BIRD BUNDLE - x2 FULL PASS WOMAN - Suave Paris 2027 + Suave Easter 2026 100.0 + 3.65 fee
 18660,1,party,,,1,,0,93.27,EUR,,,,,,,0,PKF27 - DANCEPASS MAN - FEBRUARY €93.27
 18660,2,full,,,1,,0,113.99,EUR,,,,,,,0,PKF27 - FULLPASS MAN - FEBRUARY €113.99
 18660,3,party,,,2,,0,176.17,EUR,,,,,,,0,PKF27 - DANCEPASS COUPLEPASS - FEBRUARY €176.17
@@ -198,6 +266,11 @@ event_id,pass_no,kind,style,label,group_size,days,includes_hotel,amount,currency
 18669,3,full,,,2,,0,160,EUR,,,,,,,0,DUO FULLPASS homme/femme 160.00€
 18680,1,full,,,1,,0,123.08,EUR,,,,,,,0,UNIQUE Pass (Man) + fee €123.08
 18680,1,full,,,1,,0,71.8,EUR,,,,,,,1,EARLY GIFT - UNIQUE PASS MAN €71.80
+18690,1,full,,,2,,0,291,EUR,1,,,,,,0,Couple ticket ( Fase 8 ) - All styles €290.00 + €1.00 fee.
+18690,2,full,bachata,,1,,0,151,EUR,1,,,,,,0,Full pass ( Fase 8 ) - Bachata leader €150.00 + €1.00 fee.
+18690,3,full,kizomba,,1,,0,151,EUR,1,,,,,,0,Full pass ( Fase 8 ) - Kizomba leader €150.00 + €1.00 fee.
+18690,4,full,salsa,,1,,0,151,EUR,1,,,,,,0,Full pass ( Fase 8 ) - Salsa leader €150.00 + €1.00 fee.
+18690,5,full,,,1,,0,151,EUR,1,,,,,,0,Switch pass (Fase 8) €150.00 + €1.00 fee.
 18697,1,full,,,1,,0,65,CHF,,,,,,,1,Early Bird: Homme / Man CHF 65.00
 18697,1,full,,,1,,0,105,CHF,,,,,,,0,Full Pass Homme / Man 105chf CHF 105.00
 18697,2,party,,,1,,0,90,CHF,,,,,,,0,Party Pass Homme / Man - 90chf CHF 90.00
@@ -283,6 +356,18 @@ event_id,pass_no,kind,style,label,group_size,days,includes_hotel,amount,currency
 18820,1,full,,,1,,0,85,EUR,,,,,,,0,Full Pass LEADER 85.00
 18820,2,full,,,2,,0,160,EUR,,,,,,,0,Full Pass COUPLE - PAREJA 160.00
 18820,3,other,,,1,,0,150,EUR,,,,,,,0,COMBO FULL PASS - TÁ BOM & MWANGOLÉ BELGIUM 150.00
+18826,1,full,,,1,,0,95,EUR,,,,,,,0,"Full Pass 95,00 €"
+18826,2,other,,,1,,0,115,EUR,,,,,,,0,"Incluye VIP Pass con prioridad para sentarse en las primeras filas durante los shows, una camiseta oficial del Málaga Dance Congress y beneficios adic 115,00 €"
+18826,3,party,,,1,,0,89,EUR,,,,,,,0,"Party Pass – Solo Sociales y Fiestas ¡Disfruta de todas las fiestas y eventos sociales! , Talleres no incluidos 89,00 €"
+18826,4,package,,,1,2,1,362,EUR,,,,,,,0,"Full Pass + habitación individual + 2 noches + pensión completa + bebidas ilimitadas (vino, cerveza, refrescos y agua) en el principal hotel estival T 362,00 €"
+18826,5,package,,,2,2,1,530,EUR,,,,,,,0,"Full Pass con alojamiento.habitación doble para 2 personas durante 2 noches, pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) e 530,00 €"
+18826,6,package,,,3,2,1,780,EUR,,,,,,,0,"Full Pass con alojamiento en habitación triple para 3 personas durante 2 noches, con pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y 780,00 €"
+18826,7,package,,,1,3,1,473,EUR,,,,,,,0,"Full Pass con alojamiento en habitación individual durante 3 noches, con pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) en el 473,00 €"
+18826,8,package,,,2,3,1,738,EUR,,,,,,,0,"Full Pass que incluye alojamiento en habitación doble durante 3 noches, pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) en el 738,00 €"
+18826,9,package,,,3,3,1,1090,EUR,,,,,,,0,"Full Pass con alojamiento en habitación triple durante 3 noches, con pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) en el hot 1.090,00 €"
+18826,10,package,,,1,4,1,567,EUR,,,,,,,0,"Full Pass con alojamiento en habitación individual durante 4 noches, pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) en el hot 567,00 €"
+18826,11,package,,,2,4,1,914,EUR,,,,,,,0,"Full Pass con alojamiento en habitación doble durante 4 noches, pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) en el hotel Es 914,00 €"
+18826,12,package,,,3,4,1,1356,EUR,,,,,,,0,"Full Pass con alojamiento en habitación triple durante 4 noches, pensión completa y bebidas ilimitadas (vino, cerveza, refrescos y agua) en el hotel E 1.356,00 €"
 18835,1,full,,,2,3,0,200,EUR,,,,,,,0,"COUPLE FULLPASS (Friday - Sunday) € 195,-- (+ 5,-- fee) €200.00"
 18835,2,full,,,1,3,0,110,EUR,,,,,,,0,"MEN FULLPASS (Friday - Sunday) € 105,-- (+ fee € 5,--) €110.00"
 18838,1,full,,,1,3,0,109.84,EUR,3.85,,,,,,0,Women Week-end Full pass ( friday to sunday) 105.99 + 3.85 fee
@@ -328,6 +413,14 @@ event_id,pass_no,kind,style,label,group_size,days,includes_hotel,amount,currency
 18981,2,full,,,1,,0,85,EUR,,,,,,,0,Man Full Pass €85.00
 18985,1,full,,,1,,0,181.69,CAD,,,,,,,0,VIKF 7TH EDITION LEAD FULL PASS CA$181.69 incl. CA$12.69 Fee
 19026,1,full,,,1,,0,65,EUR,,,,,,50,0,FULLPASS EARLY BIRD €65.00
+19037,1,full,,,1,,0,80,EUR,,,,,,,0,FULL PASS FEMME €80.00
+19037,2,full,,,2,,0,150,EUR,,,,,,,0,FULL PASS DUO €150.00
+19037,3,package,,,1,,0,99,EUR,,,,,,,0,FULL PASS + DÎNER DU 31 DECEMBRE 2026 €99.00
+19037,4,package,,,1,,1,335,EUR,,,,,,,0,FULL PASS SOLO INTEGRAL €335.00
+19037,5,package,,,2,,1,460,EUR,,,,,,,0,FULL ESCAPE DUO €460.00
+19037,6,package,,,1,1,0,55,EUR,,,,,,,0,PACK REPAS ET SOIREE NOUVEL AN €55.00
+19037,7,day,,,1,1,0,30.99,EUR,,,,,,,0,SOIREE DU JOUR DE L'AN €30.99
+19037,8,package,,,2,,1,230,EUR,,,,,,,0,PACK DUO HÔTEL DUO SOIREE DU JOUR DE L'AN €230.00
 19060,1,party,bachata,,2,,0,191.75,EUR,6.75,,,,,,0,Bachata Couples Party Pass 185.0 + 6.75 fee
 19060,2,full,bachata,,1,,0,186.55,EUR,6.55,,,,,,0,Stockholm Sensual Leader Bachata Full Pass 180.0 + 6.55 fee
 19060,3,party,bachata,,1,,0,102.6,EUR,3.6,,,,,,0,Stockholm Sensual Bachata Leader Party Pass 99.0 + 3.6 fee
@@ -352,11 +445,20 @@ event_id,pass_no,kind,style,label,group_size,days,includes_hotel,amount,currency
 19444,3,full,,,1,,0,132.89,EUR,,,,,,,0,Unique Pass - Man 132.89€
 19450,1,full,,,1,,0,60,EUR,,,,,,,0,Early Bird MAN + Taxes €60.00
 19450,2,full,,,2,,0,110,EUR,,,,,,,0,Early Bird COUPLE + Taxes €110.00
+19453,1,full,,,2,,0,210,EUR,,,,,,,0,Couple Pass €210.00
+19453,2,full,,,1,,0,115,EUR,,,,,,,0,Fullpass Woman €115.00
+19453,3,day,,,1,1,0,87,EUR,,,,,,,0,Saturday pass €87.00
+19453,4,day,,,1,1,0,60,EUR,,,,,,,0,Sunday Pass €60.00
+19453,5,day,,,1,1,0,60,EUR,,,,,,,0,Friday Pass €60.00
 19456,1,full,,,2,,0,170,EUR,,,,,,,0,Couple Full Pass 170
 19456,2,full,,,1,,0,85,EUR,,,,,,,0,Full Pass Men 85
 19552,1,full,,,1,,0,90,EUR,,,,,,,0,Full Pass Femme 90.00€
 19552,1,full,,,1,,0,60,EUR,,,,,,,1,Early bird 60.00€
 19552,1,full,,,1,,0,70,EUR,,,,,,,1,Early bird 70 euros 70.00€
+19756,1,full,,🎟️ BLOODY FULL PASS,1,,0,181.35,EUR,6.35,,,10-01,10-31,,0,BLOODY FULL PASS 175.0 + 6.35 fee
+19756,2,party,,🌙 DARKSIDE PARTY PASS,1,,0,155.45,EUR,5.45,,,10-01,10-31,,0,DARKSIDE PARTY PASS 150.0 + 5.45 fee
+19756,3,full,kizomba,,1,,0,103.65,EUR,3.65,,,,,,0,KIZOMBIE PASS 100.0 + 3.65 fee
+19756,4,other,salsa,,1,,0,88.1,EUR,3.1,,,,,,1,Salsa Bootcamp with Kristina 85.0 + 3.1 fee
 19760,1,full,,,1,,0,125,EUR,,,,,,,0,FULL PASS · WITHOUT ACCOMMODATION · +50 HOURS OF WORKSHOPS 125 € / PASS
 19760,2,package,,,1,2,1,325,EUR,,,,,,,0,DOUBLE ROOM · KENZI SOLAZUR · 2 NIGHTS 325 € / PER PERSON
 19760,3,package,,,1,3,1,375,EUR,,,,,,,0,DOUBLE ROOM · KENZI SOLAZUR · 3 NIGHTS 375 € / PER PERSON

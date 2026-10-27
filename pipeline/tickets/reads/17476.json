@@ -3,13 +3,17 @@
  "title": "Dance Affinity Festival Freiburg",
  "start_date": "2026-10-30",
  "read_by": "agent",
- "prompt": "2be784db5d9944e6",
- "rows_at": "2026-10-26T23:37:48+00:00",
+ "prompt": "cb864655c7075f56",
+ "rows_at": "2026-10-27T11:38:48+00:00",
+ "styles": [
+  "bachata",
+  "kizomba"
+ ],
  "description": "💫Dear dancers\nWe are thrilled to announce the 4th edition of Dance Affinity Festival!\n📍30.10 – 02.11 2026\n📍M.A.K Studios, Freiburg im Breisgau, Germany\n💚💜OUR UNIQUE CONCEPT💜💚\nAt Dance Affinity bootcamps are not an add‑on, they are the heart of the festival!\nEach bootcamp is led by 6 international teachers working 3 hrs together to bring you the highest quality of teaching with strong focus on:\n– technique\n– musicality\n– connection\n– experimentation\n– feedback & exercise\nLimited places, personalised guidance, and a real progression you feel throughout the weekend — this is what makes Dance Affinity unique.\n🔜 Stay tuned to not miss our special bootcamps!\n💫 WHAT TO EXPECT THIS YEAR\n– Workshops & Immersive bootcamps with international teachers\n– 2 dance floors – kizomba & bachata\n– 3 days of Day Socials & Night Parties with international DJs\n– A warm, intimate and community‑focused atmosphere\n– A festival created by dancers, for dancers\n🔽🔽🔽ARTIST LINEUP🔽🔽🔽\n💚Kizomba Artists💚\nLedoux Kingsman\nSelim & Anastasia\nLoyal\nEVOKEEZ Team Paris\nDaniel & Elina\n🤩More coming very soon…\n💚Kizomba Djs💚\nDj Le Grand Tiwosh\nDj Timeline\nDj Galaxy\n🤩More coming very soon…\n💜Bachata Artists💜\n🤩Coming very soon…\nBOOK YOUR PASS!\nhttps://my.weezevent.com/dance-affinity-2026\n💫Be Part of the Affinity!💫",
  "passes": [
   {
    "kind": "full",
-   "style": "kizomba",
+   "style": null,
    "label_quote": null,
    "group_size": 1,
    "days": null,
@@ -24,7 +28,17 @@
      "until": null,
      "quantity": null,
      "date_quote": null
-    },
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "style": "kizomba",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
     {
      "keys": [
       "5551740",
@@ -146,6 +160,146 @@
    ]
   },
   {
+   "kind": "other",
+   "style": "kizomba",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5494316",
+      "5839364"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "style": "kizomba",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5839370",
+      "5494319"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "style": "kizomba",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5839390",
+      "5494317"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "style": "kizomba",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5839395",
+      "5494305"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "style": "kizomba",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5839401",
+      "5494318"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "style": "bachata",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5860074",
+      "5494327"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "style": "bachata",
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5860075",
+      "5494325"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
    "kind": "day",
    "style": null,
    "label_quote": null,
@@ -184,21 +338,6 @@
    ]
   }
  ],
- "skipped": [
-  "5494316",
-  "5839364",
-  "5839370",
-  "5494319",
-  "5839390",
-  "5494317",
-  "5839395",
-  "5494305",
-  "5839401",
-  "5494318",
-  "5860074",
-  "5494327",
-  "5860075",
-  "5494325"
- ],
+ "skipped": [],
  "rule_quotes": []
 }

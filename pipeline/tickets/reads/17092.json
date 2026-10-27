@@ -1,0 +1,255 @@
+{
+ "event_id": 17092,
+ "title": "10th ANNIVERSARY Luxembourg Unified Dance Festival",
+ "start_date": "2026-12-17",
+ "read_by": "agent",
+ "prompt": "cb864655c7075f56",
+ "rows_at": "2026-10-27T02:05:19+00:00",
+ "styles": [
+  "bachata",
+  "kizomba",
+  "salsa"
+ ],
+ "description": "☛☛☛☛ 17,18,19,20 December 2026\n💥 ONE OF THE BIGGEST EUROPEAN FESTIVAL\n💥 RENOWNED ARTISTS & DEEJAYS\n💥 NEW ARTISTS AND DEEJAYS IN THE LINEUP\n💥 4 DANCEFLOORS WITH 4 DIFFERENT TYPES OF MUSIC\n💥 4 STARS OFFICIAL HOTEL\n💥 NEW SHOWS\n💥 BACHATA JACK & JILL COMPETITION\n•••••••• CONFIRMED ARTISTS ••••••••\nBACHATA:\nMelvin & Gatica\nKIZOMBA:\nTBA\nSALSA:\nTBA\n•••••••• MEDIA TEAM ••••••••\nTBA\n✅ Tickets: http://unifiedfestival.lu/\n✅ All informations:\nhttps://linktr.ee/unifieddancefestival…\n✅ Official Hotel:\n🏨 Book your hotel room here : LINK COMING SOON\n⚜️ NOVOTEL KIRCHBERG\n⚜️ NOVOTEL SUITES\n⚜️ MAMA SHELTER\n⚜️ SOFITEL\n👠👗 Don’t miss the opportunity to explore these stands and upgrade your dance festival experience. Get ready to shop, spritz and style your way through the festival!🛍️\nTBA\n—————————————————————\n✅ website: www.unifiedfestival.lu\n✅ contact: info@unifiedfestival.lu\n✅ Dancers Group: https://www.facebook.com/groups/922632941182402",
+ "passes": [
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "c25e2e6d-0fa4-425a-b9e6-b93f85bd4ab0",
+      "1d9069b8-f80a-43b4-9842-46eecc30f76b"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "04aca4c0-cd1a-4e98-a12e-8e5c52e01fb3",
+      "3a8ae21d-9d0d-4c10-b0d3-2aef57b3eccd"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "a681d0e7-43a7-4357-8175-c4647f6ac0bf"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "full",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "db5b2550-06f5-449e-a5d4-bd05cca454fb"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "package",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": 2,
+   "includes_hotel": true,
+   "tiers": [
+    {
+     "keys": [
+      "444ca852-251e-4aad-8510-f0e3927c6e0c"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "package",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": 2,
+   "includes_hotel": true,
+   "tiers": [
+    {
+     "keys": [
+      "9496cee9-5864-4b4a-b84d-165292f16192"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "package",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": 3,
+   "includes_hotel": true,
+   "tiers": [
+    {
+     "keys": [
+      "6d24c068-0f1a-4693-8250-f90bc21893ab"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "package",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": 3,
+   "includes_hotel": true,
+   "tiers": [
+    {
+     "keys": [
+      "37488d2b-e946-4572-9b40-8e162163cf45"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "package",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": 4,
+   "includes_hotel": true,
+   "tiers": [
+    {
+     "keys": [
+      "d54ce5b6-0f8b-42bf-97cf-f40593bba97b"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "package",
+   "style": null,
+   "label_quote": null,
+   "group_size": 2,
+   "days": 4,
+   "includes_hotel": true,
+   "tiers": [
+    {
+     "keys": [
+      "9ce310a5-8d34-4f53-a1d8-6a825a9be4a7"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  }
+ ],
+ "skipped": [
+  {
+   "key": "0adb1255-3dfb-4e47-bbcc-e9b66b8e98b0",
+   "reason": "class"
+  },
+  {
+   "key": "862a2fe3-8f0c-4df2-9ddc-f178d2859bc0",
+   "reason": "class"
+  },
+  {
+   "key": "6533888b-b5c1-45a4-8301-92d9a9917f34",
+   "reason": "room"
+  },
+  {
+   "key": "3ef78080-a6cc-4f4a-be55-8cd957866458",
+   "reason": "room"
+  },
+  {
+   "key": "a92b0740-eef5-42f5-b50b-910a85e1e211",
+   "reason": "room"
+  },
+  {
+   "key": "77029ebb-bfed-40a2-a967-c9b711e92245",
+   "reason": "room"
+  },
+  {
+   "key": "059a0ed4-fdea-4483-823f-d34cc3ef9eb5",
+   "reason": "room"
+  },
+  {
+   "key": "8f38d14b-1e2a-48ce-a321-02cde95b635b",
+   "reason": "room"
+  },
+  {
+   "key": "8edc7332-2be0-4c95-ba7c-96888697d3fe",
+   "reason": "room"
+  },
+  {
+   "key": "3b427dbc-ef6d-4f0a-8796-adfa3b99acca",
+   "reason": "room"
+  },
+  {
+   "key": "5cd35417-31fb-40c4-bf43-a4e3fdf5d242",
+   "reason": "room"
+  }
+ ],
+ "rule_quotes": []
+}
