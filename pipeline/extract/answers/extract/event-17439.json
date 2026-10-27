@@ -93,32 +93,27 @@
     {
      "feature": "workshops",
      "quote": "WORKSHOPS",
-     "rationale": "The description lists workshops as a feature of the event under the highlights."
+     "rationale": "The description lists WORKSHOPS as a part of the event."
     },
     {
      "feature": "masterclass",
      "quote": "Masterclass",
-     "rationale": "The schedule explicitly includes a Masterclass."
+     "rationale": "The schedule explicitly mentions a Masterclass."
     },
     {
      "feature": "live_music",
      "quote": "L I V E M U S I C",
-     "rationale": "A live music section heading appears in the artist listing."
+     "rationale": "A Live Music section is listed among the artists."
     },
     {
      "feature": "shows",
      "quote": "SHOW",
-     "rationale": "A show section is listed among the event's artist categories."
+     "rationale": "A SHOW section announces performances by artists."
     },
     {
      "feature": "day_socials",
-     "quote": "🔵Workshop + Social Dance 🟠11:00-21:00",
-     "rationale": "A social dance session is scheduled during the daytime on Saturday."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "H O T E L O P T I O N S",
-     "rationale": "A hotel options section suggests recommended or partner hotels for attendees."
+     "quote": "Workshop + Social Dance",
+     "rationale": "Social dances are scheduled during the day on Saturday and Sunday."
     }
    ]
   }

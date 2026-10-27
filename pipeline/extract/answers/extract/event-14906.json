@@ -5,18 +5,18 @@
    "event_id": 14906,
    "artists": [
     {
-     "name_as_written": "STEFANIO LIMA",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱 🇨🇻",
-     "source_line": "▪️ STEFANIO LIMA 🇳🇱 🇨🇻"
-    },
-    {
      "name_as_written": "DJ REMCY",
      "role": "dj",
      "style": null,
      "country": "🇩🇪",
      "source_line": "▪️ DJ REMCY 🇩🇪"
+    },
+    {
+     "name_as_written": "STEFANIO LIMA",
+     "role": "dj",
+     "style": null,
+     "country": "🇳🇱 🇨🇻",
+     "source_line": "▪️ STEFANIO LIMA 🇳🇱 🇨🇻"
     },
     {
      "name_as_written": "DJ BARTEF",
@@ -156,22 +156,17 @@
     {
      "feature": "taxi_dancers",
      "quote": "TAXI DANCERS TEAM",
-     "rationale": "A taxi dancers team is listed in the line-up, so taxi dancers are present."
+     "rationale": "The line-up includes a taxi dancers team."
     },
     {
      "feature": "dress_code",
      "quote": "Wardrobe is mandatory",
-     "rationale": "A mandatory wardrobe rule is stated in the house rules, which sets a dress requirement."
+     "rationale": "A mandatory wardrobe requirement is stated in the house rules."
     },
     {
      "feature": "partner_hotel",
      "quote": "▪️VIENNA, AUSTRIA, HOTEL BEST WESTERN VÖSENDORF",
-     "rationale": "The description gives a hotel under its HOTEL heading as the event's recommended hotel, separate from any pass."
-    },
-    {
-     "feature": "workshops",
-     "quote": "TEACHERS 💃🕺🏻 LINE UP",
-     "rationale": "A teachers line-up implies dance classes are part of the event."
+     "rationale": "The event lists a specific hotel under its hotel information section."
     }
    ]
   }

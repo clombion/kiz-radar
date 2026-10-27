@@ -2,9 +2,9 @@
  "event_id": 18460,
  "title": "𝐔𝐦𝐨𝐣𝐚 𝐃𝐚𝐧𝐜𝐞 𝐅𝐞𝐬𝐭𝐢𝐯𝐚𝐥 𝐑𝐨𝐦𝐚𝐧𝐢𝐚 𝟐𝟎𝟐𝟔",
  "start_date": "2026-12-04",
- "read_by": "agent",
- "prompt": "cb864655c7075f56",
- "rows_at": "2026-10-27T02:22:36+00:00",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "1a3b603636d758ee",
+ "rows_at": "2026-10-27T18:17:59+00:00",
  "styles": [
   "kizomba"
  ],
@@ -35,8 +35,8 @@
      ],
      "from": null,
      "until": null,
-     "quantity": 100,
-     "date_quote": "PHASE 1 : 100 FULL PASS (20 PASSES LEFT)"
+     "quantity": null,
+     "date_quote": null
     }
    ]
   },
@@ -63,8 +63,8 @@
      ],
      "from": null,
      "until": null,
-     "quantity": 100,
-     "date_quote": "PHASE 1 : 100 FULL PASS (20 PASSES LEFT)"
+     "quantity": null,
+     "date_quote": null
     }
    ]
   }

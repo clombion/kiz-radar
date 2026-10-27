@@ -7,18 +7,13 @@
    "features": [
     {
      "feature": "transfers_shuttle",
-     "quote": "Round trip from Fabra i Puig (BCN) €13.99 with advance purchase through ENTRADIUM",
-     "rationale": "The round-trip transfer from Fabra i Puig station is offered for purchase, so transport is provided to the event."
+     "quote": "we’ll take you by taxi from the Nord station (RENFE and FGC) to FDS",
+     "rationale": "The organisers state they will provide taxi transfers from Terrassa Nord station to the venue."
     },
     {
      "feature": "partner_hotel",
      "quote": "Accommodation: Hotel Terrassa Confort (4-star hotel, a 6-minute walk from the venue)",
-     "rationale": "The description recommends a specific hotel near the venue and gives a discount code for it, without including it in the pass."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Includes accommodation and access to services.",
-     "rationale": "The overnight package explicitly states that it includes accommodation."
+     "rationale": "A recommended hotel is named for accommodation, with a discount code, and it is not stated to be part of the pass."
     }
    ]
   }

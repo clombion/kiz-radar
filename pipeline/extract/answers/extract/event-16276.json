@@ -8,22 +8,22 @@
     {
      "feature": "multiple_rooms",
      "quote": "2 free dance floors",
-     "rationale": "The description states there are two dance floors, which means more than one dance room."
+     "rationale": "The description states there are two free dance floors, so the event has more than one dance room."
     },
     {
      "feature": "workshops",
      "quote": "More than 20h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)",
-     "rationale": "The event offers more than 20 hours of dance workshops across several styles."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "15:00 – 20:00 Social",
-     "rationale": "The schedule lists an afternoon social from 15:00 to 20:00 on Saturday."
+     "rationale": "The event explicitly offers more than 20 hours of dance workshops across several styles."
     },
     {
      "feature": "partner_hotel",
      "quote": "City Hotel Kaiserhof (7 min walk)",
-     "rationale": "A hotel near the venue is named as a recommended option, and accommodation is not stated as part of the pass."
+     "rationale": "The Hotel section lists recommended hotels near the venue, which is a partner or recommended hotel rather than included accommodation."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "15:00 – 20:00 Social",
+     "rationale": "A daytime social is scheduled on Saturday from 15:00 to 20:00."
     }
    ]
   }

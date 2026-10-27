@@ -84,14 +84,14 @@
    ],
    "features": [
     {
-     "feature": "workshops",
-     "quote": "Our amazing teachers will share with you their knowledge and love to their culture and teach you stuff you haven’t seen before.",
-     "rationale": "The teachers teach dance content to participants, which indicates dance classes are part of the event."
-    },
-    {
      "feature": "live_music",
      "quote": "we gonna have a singer from Guinea Bissau",
-     "rationale": "A singer performing at the edition is live music."
+     "rationale": "A singer is announced as performing at the event, which is live music."
+    },
+    {
+     "feature": "workshops",
+     "quote": "teach you stuff you haven’t seen before",
+     "rationale": "The teachers will give classes that teach dancers new material, so dance classes are part of the event."
     }
    ]
   }

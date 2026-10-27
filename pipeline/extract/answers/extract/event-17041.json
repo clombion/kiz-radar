@@ -47,6 +47,13 @@
      "source_line": "✅ GIORGIO ROD (Paris) – Salsa – DJ SBK + Generalist"
     },
     {
+     "name_as_written": "GIORGIO ROD",
+     "role": "dj",
+     "style": "Salsa",
+     "country": null,
+     "source_line": "✅ GIORGIO ROD (Paris) – Salsa – DJ SBK + Generalist"
+    },
+    {
      "name_as_written": "DJ ANGELO",
      "role": "dj",
      "style": null,
@@ -58,27 +65,27 @@
     {
      "feature": "cruise",
      "quote": "Embark on a dream cruise",
-     "rationale": "The event is a cruise ship trip, as the title and opening state."
-    },
-    {
-     "feature": "workshops",
-     "quote": "SBK dance classes with a lively atmosphere Madness",
-     "rationale": "Dance classes are listed as part of the onboard programme."
+     "rationale": "The event is a cruise ship trip described as a dream cruise."
     },
     {
      "feature": "pool_party",
      "quote": "Pool parties",
-     "rationale": "Pool parties are listed among the onboard activities."
+     "rationale": "The onboard list includes pool parties."
+    },
+    {
+     "feature": "workshops",
+     "quote": "SBK dance classes with a lively atmosphere Madness",
+     "rationale": "Dance classes are part of the onboard programme."
     },
     {
      "feature": "meals_included",
      "quote": "All-you-can-eat food to recharge your batteries",
-     "rationale": "Unlimited food is offered on board as part of the event."
+     "rationale": "Unlimited food is offered as part of the onboard experience."
     },
     {
      "feature": "accommodation_included",
      "quote": "INSIDE CABINS",
-     "rationale": "The cruise description details the cabins that guests stay in on board."
+     "rationale": "The cruise description lists cabin types, showing that sleeping accommodation is part of the trip."
     }
    ]
   }

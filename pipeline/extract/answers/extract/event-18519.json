@@ -106,18 +106,18 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "Workshops for all levels.",
-     "rationale": "The description announces workshops as part of the weekend agenda."
+     "quote": "Workshops for all levels",
+     "rationale": "The description announces workshops as part of the agenda."
     },
     {
      "feature": "all_levels_beginners",
-     "quote": "Workshops for all levels.",
-     "rationale": "Workshops are explicitly offered for all levels, so the event suits beginners."
+     "quote": "Workshops for all levels",
+     "rationale": "Workshops are offered for all levels, so the event suits beginners."
     },
     {
      "feature": "shows",
      "quote": "Shows.",
-     "rationale": "The agenda lists shows as one of the planned activities."
+     "rationale": "The agenda lists shows as one of the activities."
     }
    ]
   }

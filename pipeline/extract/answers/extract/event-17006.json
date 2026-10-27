@@ -12,6 +12,62 @@
      "source_line": "Sensation Kizomba presents an unmissable event…"
     },
     {
+     "name_as_written": "DJ Hugo Smile",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ Hugo Smile"
+    },
+    {
+     "name_as_written": "DJ Colts",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ Colts"
+    },
+    {
+     "name_as_written": "DJ Ti Wosh",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ Ti Wosh"
+    },
+    {
+     "name_as_written": "DJ LD",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ LD"
+    },
+    {
+     "name_as_written": "DJ L-GI",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ L-GI"
+    },
+    {
+     "name_as_written": "DJ Nam’s",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ Nam’s"
+    },
+    {
+     "name_as_written": "DJ Blu",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ Blu"
+    },
+    {
+     "name_as_written": "DJ Swimy",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "– DJ Swimy"
+    },
+    {
      "name_as_written": "Fuego & Clarita",
      "role": "teacher",
      "style": null,
@@ -52,84 +108,28 @@
      "style": null,
      "country": null,
      "source_line": "– Dan & Anais"
-    },
-    {
-     "name_as_written": "DJ Hugo Smile",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "– DJ Hugo Smile"
-    },
-    {
-     "name_as_written": "DJ Colts",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "– DJ Colts"
-    },
-    {
-     "name_as_written": "DJ Ti Wosh",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "– DJ Ti Wosh"
-    },
-    {
-     "name_as_written": "DJ LD",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "– DJ LD"
-    },
-    {
-     "name_as_written": "DJ L-GI",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "– DJ L-GI"
-    },
-    {
-     "name_as_written": "DJ Nam’s",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "– DJ Nam’s"
-    },
-    {
-     "name_as_written": "DJ Blu",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "– DJ Blu"
-    },
-    {
-     "name_as_written": "DJ Swimy",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "– DJ Swimy"
     }
    ],
    "features": [
     {
      "feature": "pool_party",
-     "quote": "An amazing pool party, bring your best swimsuit!",
-     "rationale": "The description explicitly lists a pool party as part of the program."
+     "quote": "An amazing pool party",
+     "rationale": "The program explicitly lists a pool party."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Dance classes for all levels",
+     "rationale": "Dance classes are part of the program."
     },
     {
      "feature": "all_levels_beginners",
      "quote": "Dance classes for all levels",
-     "rationale": "The phrase 'for all levels' shows the classes are suitable for every level, including beginners."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Dance classes for all levels with the best instructors",
-     "rationale": "Dance classes taught by instructors are part of the event program."
+     "rationale": "The dance classes are stated to be for all levels."
     },
     {
      "feature": "dress_code",
      "quote": "MEN’S SWIM SHORTS REQUIRED",
-     "rationale": "A required clothing item is stated, which is a dress code."
+     "rationale": "A required clothing item is stated for men."
     }
    ]
   }

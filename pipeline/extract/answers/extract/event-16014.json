@@ -197,33 +197,33 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "ALL IN ONE format where everything happens in the same hotel",
-     "rationale": "The parties take place in the same hotel where dancers stay, as stated in the ALL IN ONE format description."
+     "quote": "ALL IN ONE",
+     "rationale": "The description states the event is an ALL IN ONE format in the same hotel where dancers stay."
     },
     {
      "feature": "pool_party",
-     "quote": "with pool parties",
-     "rationale": "The description states that the festival includes pool parties."
-    },
-    {
-     "feature": "workshops",
-     "quote": "top artists’ workshops",
-     "rationale": "Workshops by top artists are announced as part of the week."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "afternoon socials in the Pool Room",
-     "rationale": "Afternoon socials are listed as part of the programme."
+     "quote": "pool parties",
+     "rationale": "The description promotes pool parties as part of the event."
     },
     {
      "feature": "themed_parties",
      "quote": "theme parties at night",
-     "rationale": "Theme parties at night are explicitly mentioned."
+     "rationale": "Theme parties are offered at night."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "afternoon socials",
+     "rationale": "Afternoon socials are held in the Pool Room."
+    },
+    {
+     "feature": "workshops",
+     "quote": "workshops",
+     "rationale": "Top artists' workshops are part of the programme."
     },
     {
      "feature": "multiple_rooms",
      "quote": "dance floors",
-     "rationale": "The venue is described with several dance floors alongside pool and gardens."
+     "rationale": "The hotel has several dance floors mentioned as part of the venue."
     }
    ]
   }

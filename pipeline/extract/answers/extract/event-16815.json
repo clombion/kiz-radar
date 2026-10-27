@@ -275,52 +275,52 @@
     {
      "feature": "all_in_one",
      "quote": "All in one Location",
-     "rationale": "The event is described as all in one location, and the venue is the hotel where dancers stay."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Bootcamp with International Artists",
-     "rationale": "A bootcamp with international artists is part of the programme."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops",
-     "rationale": "Workshops appear repeatedly in the programme schedule."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Afternoon Social Room",
-     "rationale": "An afternoon social room is part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 parties in dedicated rooms",
-     "rationale": "Two parties in dedicated rooms indicate more than one dance room."
-    },
-    {
-     "feature": "competition",
-     "quote": "Taxi Dancers Competition",
-     "rationale": "A Taxi Dancers Competition is part of the event."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Taxi Dancers Competition",
-     "rationale": "The taxi dancers competition indicates taxi dancers are present."
+     "rationale": "The event is stated to be all in one location, with the hotel where dancers stay as the venue."
     },
     {
      "feature": "accommodation_included",
      "quote": "2-night stay in full board",
-     "rationale": "The packages include a two-night hotel stay with the pass."
+     "rationale": "The packages include a two-night hotel stay."
     },
     {
      "feature": "meals_included",
      "quote": "2-night stay in full board",
-     "rationale": "Full board meals are included in the package stay."
+     "rationale": "The packages include full board meals with the stay."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Bootcamp with International Artists, Workshops",
+     "rationale": "Workshops are listed as part of the programme."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Bootcamp with International Artists",
+     "rationale": "The event includes a bootcamp with international artists."
     },
     {
      "feature": "masterclass",
-     "quote": "Masterclass with JP & STEPHY, JULES TarraxoPop, CAARL & PATII",
-     "rationale": "Masterclasses are offered with named teachers."
+     "quote": "Masterclass with JP & STEPHY",
+     "rationale": "Paid masterclasses with named teachers are offered."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Afternoon Social Room",
+     "rationale": "A daytime social room is part of the programme."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 parties in dedicated rooms",
+     "rationale": "Two parties in dedicated rooms mean more than one dance room."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "Taxi Dancers Competition",
+     "rationale": "Taxi dancers are present in the event."
+    },
+    {
+     "feature": "competition",
+     "quote": "Taxi Dancers Competition",
+     "rationale": "A taxi dancers competition is part of the event."
     }
    ]
   }

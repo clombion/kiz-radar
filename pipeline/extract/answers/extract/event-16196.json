@@ -446,13 +446,6 @@
      "source_line": "✔️ 𝑱𝒐𝒆 𝒚 𝑺𝒐𝒇𝒊𝒂"
     },
     {
-     "name_as_written": "𝑫𝒐𝒓 𝒚 𝑷𝒂𝒖𝒍𝒂",
-     "role": "teacher",
-     "style": "𝐁A𝐂H𝐀T𝐀",
-     "country": null,
-     "source_line": "✔️ 𝑫𝒐𝒓 𝒚 𝑷𝒂𝒖𝒍𝒂"
-    },
-    {
      "name_as_written": "𝑷𝒂𝒐𝒍𝒐 𝒚 𝑴𝒂𝒓𝒕𝒚",
      "role": "teacher",
      "style": "𝐁A𝐂H𝐀T𝐀",
@@ -630,34 +623,34 @@
    ],
    "features": [
     {
-     "feature": "all_in_one",
-     "quote": "HOTEL COLOMBO",
-     "rationale": "The event is held in one hotel, the Hotel Colombo, where the parties and the stay take place together."
-    },
-    {
      "feature": "accommodation_included",
      "quote": "5 Nights in the Main Hotel",
-     "rationale": "The 5-night package price includes stay in the main hotel together with the full pass."
+     "rationale": "The full pass package explicitly includes five nights in the main hotel."
     },
     {
-     "feature": "pool_party",
-     "quote": "4 Pool Party, All workshops, All Night Parties",
-     "rationale": "The full pass includes four pool parties."
-    },
-    {
-     "feature": "workshops",
-     "quote": "4 Pool Party, All workshops, All Night Parties",
-     "rationale": "The full pass includes all workshops, and the event advertises 100+ workshops."
+     "feature": "all_in_one",
+     "quote": "a single location for 5 days of workshops and fun",
+     "rationale": "The event is held in one location, with the hotel hosting the parties and workshops."
     },
     {
      "feature": "day_socials",
-     "quote": "4 Social Room",
-     "rationale": "The full pass includes four social room sessions during the day."
+     "quote": "𝟰 𝘿𝘼𝙔𝙎 𝙎𝙊𝘾𝙄𝘼𝙇 𝙍𝙊𝙊𝙈",
+     "rationale": "A social room open for four days is offered during the day."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "4 ROOMS:",
-     "rationale": "The nightly parties are split across four separate rooms by style."
+     "quote": "4 ROOMS",
+     "rationale": "The parties run in four separate dance rooms, one per style."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "𝟰 𝗣𝗢𝗢𝗟 𝗣𝗔𝗥𝗧𝗜𝗘𝗦",
+     "rationale": "Four pool parties are listed as part of the event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "𝟭𝟬𝟬+ 𝗪𝗢𝗥𝗞𝗦𝗛𝗢𝗣𝗦",
+     "rationale": "Over 100 workshops are part of the event."
     }
    ]
   }

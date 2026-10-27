@@ -65,27 +65,27 @@
     {
      "feature": "masterclass",
      "quote": "Masterclass",
-     "rationale": "The description lists Masterclass as part of the event program."
+     "rationale": "The event lists a masterclass session on Sunday with Eliza Sala."
     },
     {
      "feature": "workshops",
      "quote": "WORKSHOPS",
-     "rationale": "A workshops section with scheduled dance classes is listed."
+     "rationale": "A WORKSHOPS section lists dance classes on both days."
     },
     {
      "feature": "day_socials",
-     "quote": "SOCIAL",
-     "rationale": "Daytime social sessions are scheduled in the afternoon on both days."
+     "quote": "5:00 PM – 8:00 PM | DJ Lemzo & DJ Kapitula",
+     "rationale": "A daytime social runs from 5 PM to 8 PM on Saturday with DJs."
     },
     {
      "feature": "dress_code",
      "quote": "Dress Code: Elegant in Red & Black",
-     "rationale": "A dress code is explicitly stated for Saturday."
+     "rationale": "A dress code is explicitly stated for Saturday evening."
     },
     {
      "feature": "partner_hotel",
      "quote": "Hotels Nearby",
-     "rationale": "The description recommends nearby hotels for attendees."
+     "rationale": "The description recommends several nearby hotels without including accommodation in the pass."
     }
    ]
   }

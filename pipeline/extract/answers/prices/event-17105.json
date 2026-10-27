@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 69,
+       "amount": 69.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "🔥 Early Bird – 69€ (10 Tickets)"
       },
       {
-       "amount": 89,
+       "amount": 89.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "✨ Regular – 89€ (20 Tickets)"
       },
       {
-       "amount": 99,
+       "amount": 99.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -62,7 +62,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 10,
+       "amount": 10.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -85,7 +85,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 15,
+       "amount": 15.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

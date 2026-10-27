@@ -6,7 +6,13 @@
    "party_rooms": null,
    "class_rooms": null,
    "rooms": [],
-   "genres": []
+   "genres": [
+    {
+     "genre": "other",
+     "genre_as_written": "Kizbomba",
+     "quote": "Step into four days of pure Kizbomba magic"
+    }
+   ]
   }
  ]
 }

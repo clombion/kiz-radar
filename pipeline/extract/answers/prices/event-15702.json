@@ -13,8 +13,8 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 190,
-       "currency": "CAD",
+       "amount": 190.0,
+       "currency": "USD",
        "fee": null,
        "alt": null,
        "from": "2026-01-01",
@@ -26,8 +26,8 @@
        "quote": "🐓 Tier 3 Passes | $190 | Jan 1 – Feb 28, 2026"
       },
       {
-       "amount": 200,
-       "currency": "CAD",
+       "amount": 200.0,
+       "currency": "USD",
        "fee": null,
        "alt": null,
        "from": "2026-03-01",
@@ -41,9 +41,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "*the masterclass, pre-party, and small group supper are separate from the Full Weekend Pass*"
-   ]
+   "rule_quotes": []
   }
  ]
 }

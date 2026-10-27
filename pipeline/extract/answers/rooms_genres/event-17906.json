@@ -5,12 +5,19 @@
    "event_id": 17906,
    "party_rooms": null,
    "class_rooms": null,
-   "rooms": [],
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "2 dedicated rooms"
+    }
+   ],
    "genres": [
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Whether you’re new to Kizomba or an experienced dancer"
+     "quote": "BOM BALANÇO KIZOMBA WEEKENDER MANCHESTER 2026"
     }
    ]
   }

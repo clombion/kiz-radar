@@ -3,26 +3,23 @@
  "events": [
   {
    "event_id": 15572,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 Parties"
-   },
+   "party_rooms": null,
    "class_rooms": null,
    "rooms": [],
    "genres": [
     {
      "genre": "kizomba",
      "genre_as_written": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "quote": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔 / 𝗦𝗘𝗠𝗕𝗔"
+     "quote": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔"
     },
     {
      "genre": "semba",
      "genre_as_written": "𝗦𝗘𝗠𝗕𝗔",
-     "quote": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔 / 𝗦𝗘𝗠𝗕𝗔"
+     "quote": "𝗦𝗘𝗠𝗕𝗔"
     },
     {
      "genre": "zouk",
-     "genre_as_written": "𝗭𝗢𝗨𝗞",
+     "genre_as_written": "𝗚𝗛𝗘𝗧𝗧𝗢 𝗭𝗢𝗨𝗞",
      "quote": "𝗚𝗛𝗘𝗧𝗧𝗢 𝗭𝗢𝗨𝗞"
     },
     {
@@ -31,19 +28,19 @@
      "quote": "𝗧𝗔𝗥𝗥𝗔𝗫𝗜𝗡𝗛𝗔"
     },
     {
-     "genre": "afro",
-     "genre_as_written": "𝗔𝗙𝗥𝗢",
+     "genre": "zouk",
+     "genre_as_written": "𝗔𝗙𝗥𝗢 𝗭𝗢𝗨𝗞",
      "quote": "𝗔𝗙𝗥𝗢 𝗭𝗢𝗨𝗞"
     },
     {
      "genre": "other",
      "genre_as_written": "𝗖𝗔𝗕𝗢",
-     "quote": "𝗖𝗔𝗕𝗢 / 𝗞𝗢𝗡𝗣𝗔"
+     "quote": "𝗖𝗔𝗕𝗢"
     },
     {
      "genre": "kompa",
      "genre_as_written": "𝗞𝗢𝗡𝗣𝗔",
-     "quote": "𝗖𝗔𝗕𝗢 / 𝗞𝗢𝗡𝗣𝗔"
+     "quote": "𝗞𝗢𝗡𝗣𝗔"
     }
    ]
   }

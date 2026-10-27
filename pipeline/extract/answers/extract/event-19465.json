@@ -28,29 +28,29 @@
    ],
    "features": [
     {
-     "feature": "pool_party",
-     "quote": "POOL PARTIES",
-     "rationale": "The event lists pool parties among its offerings."
-    },
-    {
      "feature": "beach_party",
      "quote": "BEACH PARTY",
-     "rationale": "The event lists a beach party among its offerings."
+     "rationale": "The description lists a beach party among its party offerings."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "POOL PARTIES",
+     "rationale": "The description lists pool parties among its party offerings."
     },
     {
      "feature": "workshops",
-     "quote": "WORKSHOPS & MASTERCLASSES",
-     "rationale": "Dance workshops are listed as part of the event."
+     "quote": "Unwind after the dance workshops with us",
+     "rationale": "The dance workshops are referred to as part of the event."
     },
     {
      "feature": "masterclass",
      "quote": "MASTERCLASSES",
-     "rationale": "Masterclasses are listed as part of the event."
+     "rationale": "The description lists masterclasses alongside workshops."
     },
     {
      "feature": "day_socials",
-     "quote": "(4 PM – 8 PM)",
-     "rationale": "The pool party is held in the afternoon and early evening, a daytime social."
+     "quote": "by the pool on Saturday, Oct 3rd (4 PM – 8 PM)",
+     "rationale": "The pool party runs in the afternoon and early evening, which is a daytime social."
     }
    ]
   }

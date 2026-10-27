@@ -5,13 +5,6 @@
    "event_id": 15287,
    "artists": [
     {
-     "name_as_written": "Diamond Fam",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Diamond Fam welcomes you already now to next year’s DIAMONDS FOREVER EDITION 3 27/2-1/3 2026!!! A weekend packed with inspiration and joy on 3 dance floors. We offer workshops with international instructors and DJs from Europe."
-    },
-    {
      "name_as_written": "Gwany & Liliana",
      "role": "teacher",
      "style": "Urbankiz & Tarraxo",
@@ -49,7 +42,7 @@
     {
      "name_as_written": "Gazl & Katariina",
      "role": "teacher",
-     "style": "Urbankiz & Tarraxo",
+     "style": "Kompa",
      "country": "France",
      "source_line": "Gazl & Katariina -Kompa- (France )"
     },
@@ -63,7 +56,7 @@
     {
      "name_as_written": "Gazl & Isabelle",
      "role": "teacher",
-     "style": "Urbankiz & Tarraxo",
+     "style": "Kompa",
      "country": "France",
      "source_line": "Gazl & Isabelle -Kompa- (France)"
     },
@@ -155,7 +148,7 @@
      "name_as_written": "Dj Mia",
      "role": "dj",
      "style": "Kizomba & semba",
-     "country": "Tallinn",
+     "country": null,
      "source_line": "Dj Mia (Tallinn)"
     },
     {
@@ -173,14 +166,14 @@
      "rationale": "The description states that workshops with international instructors are offered."
     },
     {
-     "feature": "multiple_rooms",
-     "quote": "on 3 dance floors",
-     "rationale": "Three dance floors means more than one dance room."
+     "feature": "taxi_dancers",
+     "quote": "more than 60 fantastic taxi dancers",
+     "rationale": "The description says more than 60 taxi dancers will be present for social dancing."
     },
     {
-     "feature": "taxi_dancers",
-     "quote": "There will also be more than 60 fantastic taxi dancers",
-     "rationale": "The description says taxi dancers will be present during the parties."
+     "feature": "multiple_rooms",
+     "quote": "on 3 dance floors",
+     "rationale": "The event takes place on three dance floors, meaning more than one dance room."
     }
    ]
   }

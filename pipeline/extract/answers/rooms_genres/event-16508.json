@@ -8,50 +8,37 @@
     "quote": "one dance area"
    },
    "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba",
-      "zouk",
-      "tarraxinha",
-      "kompa"
-     ],
-     "quote": "one dance area"
-    }
-   ],
+   "rooms": [],
    "genres": [
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Kizomba, Semba, and Afro partner dances"
+     "quote": "Kizomba – Semba – Zouk – Tarraxinha – Ghetto Zouk – Konpa"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "Kizomba & Semba"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "Afro partner dances"
+     "quote": "Kizomba – Semba – Zouk – Tarraxinha – Ghetto Zouk – Konpa"
     },
     {
      "genre": "zouk",
      "genre_as_written": "Zouk",
-     "quote": "Kizomba – Semba – Zouk – Tarraxinha"
+     "quote": "Kizomba – Semba – Zouk – Tarraxinha – Ghetto Zouk – Konpa"
     },
     {
      "genre": "tarraxinha",
      "genre_as_written": "Tarraxinha",
-     "quote": "Zouk – Tarraxinha – Ghetto Zouk"
+     "quote": "Kizomba – Semba – Zouk – Tarraxinha – Ghetto Zouk – Konpa"
     },
     {
      "genre": "kompa",
      "genre_as_written": "Konpa",
-     "quote": "Ghetto Zouk – Konpa"
+     "quote": "Kizomba – Semba – Zouk – Tarraxinha – Ghetto Zouk – Konpa"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "AfroHouse",
+     "quote": "AfroHouse & Kuduro"
     },
     {
      "genre": "kuduro",

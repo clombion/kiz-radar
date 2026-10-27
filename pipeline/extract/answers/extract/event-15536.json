@@ -6,59 +6,49 @@
    "artists": [],
    "features": [
     {
-     "feature": "bootcamp_intensive",
-     "quote": "Masterclasses & Intensive Bootcamps",
-     "rationale": "The event offers intensive bootcamps as part of its programme."
-    },
-    {
      "feature": "masterclass",
      "quote": "Masterclasses & Intensive Bootcamps",
-     "rationale": "The event explicitly lists masterclasses among its offerings."
+     "rationale": "The line lists Masterclasses as part of the festival offer."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Intensive Bootcamps",
+     "rationale": "The line lists Intensive Bootcamps as part of the festival offer."
     },
     {
      "feature": "workshops",
      "quote": "3 Workshop Rooms",
-     "rationale": "Three workshop rooms are listed, so dance classes are part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Dance Party Rooms",
-     "rationale": "Two dance party rooms are listed, which means more than one dance floor."
+     "rationale": "Three workshop rooms are offered, so dance classes are part of the event."
     },
     {
      "feature": "shows",
      "quote": "Shows & Animations",
-     "rationale": "Shows and animations are listed as part of what to expect."
+     "rationale": "The description lists shows and animations as part of the event."
     },
     {
      "feature": "pool_party",
      "quote": "Pool Party & Boat Party",
-     "rationale": "A pool party is explicitly listed."
+     "rationale": "A pool party is explicitly listed as part of the event."
     },
     {
      "feature": "boat_party",
-     "quote": "Sunset Boat Party",
-     "rationale": "A sunset boat party is listed in the festival highlights."
+     "quote": "Boat Party",
+     "rationale": "A boat party is explicitly listed, including a Sunset Boat Party on 16 April."
     },
     {
      "feature": "competition",
      "quote": "Jack & Jill – Notion Cup",
-     "rationale": "A Jack & Jill competition is explicitly listed."
+     "rationale": "A Jack & Jill competition is explicitly listed as part of the event."
     },
     {
-     "feature": "competition",
-     "quote": "Bachata Battle",
-     "rationale": "A Bachata battle is a dance competition listed in the programme."
+     "feature": "multiple_rooms",
+     "quote": "2 Dance Party Rooms",
+     "rationale": "Two dance party rooms are offered, so there is more than one dance floor."
     },
     {
      "feature": "pre_party",
      "quote": "Night Pre-Party",
-     "rationale": "A night pre-party is listed as a festival highlight before the main days."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "Eastern Grand Palace Hotel",
-     "rationale": "The festival venue is a hotel where dancers are invited to book rooms, so the parties and accommodation share one venue."
+     "rationale": "A Night Pre-Party on 16 April is listed before the festival days."
     }
    ]
   }

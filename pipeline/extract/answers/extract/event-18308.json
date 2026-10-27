@@ -119,19 +119,19 @@
    ],
    "features": [
     {
-     "feature": "multiple_rooms",
-     "quote": "2 rooms, multiple vibes!",
-     "rationale": "The description states there are two rooms, each dedicated to a different style group."
-    },
-    {
      "feature": "workshops",
      "quote": "10 hours of classes",
-     "rationale": "The program lists 10 hours of classes, which are dance classes part of the event."
+     "rationale": "The program lists 10 hours of classes, which are dance classes that form part of the event."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 rooms, multiple vibes!",
+     "rationale": "The description states the event has two dance rooms."
     },
     {
      "feature": "partner_hotel",
      "quote": "🏨 Hotels",
-     "rationale": "A hotels section lists recommended hotels with contact details, without stating that accommodation is part of the pass."
+     "rationale": "The event lists several hotels with contact details, which act as recommended hotels without accommodation being part of the pass."
     }
    ]
   }

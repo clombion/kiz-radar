@@ -434,24 +434,24 @@
    ],
    "features": [
     {
-     "feature": "multiple_rooms",
-     "quote": "5 dance floors for evening parties",
-     "rationale": "Five dance floors are offered, which means more than one dance room."
+     "feature": "shows",
+     "quote": "Spectacular dance performances",
+     "rationale": "The description promises spectacular dance performances, which are shows by artists."
     },
     {
      "feature": "workshops",
      "quote": "Minimum 120 hours of inspiring workshops",
-     "rationale": "The event offers a minimum of 120 hours of dance workshops."
+     "rationale": "The event offers a minimum of 120 hours of workshops."
     },
     {
-     "feature": "shows",
-     "quote": "Spectacular dance performances",
-     "rationale": "The description promises dance performances, which are shows by artists."
+     "feature": "multiple_rooms",
+     "quote": "5 dance floors for evening parties",
+     "rationale": "Five dance floors across the event means more than one dance room."
     },
     {
      "feature": "pre_party",
      "quote": "Pre-party: August 13th",
-     "rationale": "A pre-party is scheduled on August 13th before the main event."
+     "rationale": "A pre-party is scheduled on August 13th before the main event on August 14th to 16th."
     }
    ]
   }

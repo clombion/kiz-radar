@@ -6,29 +6,29 @@
    "artists": [],
    "features": [
     {
-     "feature": "pool_party",
-     "quote": "Pool Parties!",
-     "rationale": "The description announces Pool Parties as a new feature of this year's event."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "TRANSPORTATION FROM SEVILLE AIRPORT TO THE HOST HOTEL",
-     "rationale": "Transportation from Seville airport to the host hotel is offered."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Exclusive Kizomba Room Exclusive Bachata and Salsa Room",
-     "rationale": "Separate dedicated rooms are listed for Kizomba and for Bachata and Salsa."
-    },
-    {
      "feature": "workshops",
      "quote": "HIGH-LEVEL WORKSHOPS AND MASTERCLASSES",
-     "rationale": "High-level workshops are explicitly part of the event programme."
+     "rationale": "The description states that high-level workshops are part of the event."
     },
     {
      "feature": "masterclass",
      "quote": "HIGH-LEVEL WORKSHOPS AND MASTERCLASSES",
-     "rationale": "Masterclasses are explicitly part of the event programme."
+     "rationale": "The description explicitly mentions masterclasses."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Pool Parties!",
+     "rationale": "The description announces pool parties as a new feature this year."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "TRANSPORTATION FROM SEVILLE AIRPORT TO THE HOST HOTEL",
+     "rationale": "Transportation from the airport to the host hotel is offered."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Exclusive Kizomba Room Exclusive Bachata and Salsa Room",
+     "rationale": "The event has separate dance rooms for kizomba and for bachata and salsa."
     }
    ]
   }

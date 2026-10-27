@@ -5,6 +5,13 @@
    "event_id": 16708,
    "artists": [
     {
+     "name_as_written": "Fazer Acontecer",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "🚨 Fazer Acontecer presents: 3rd edition"
+    },
+    {
      "name_as_written": "BEN & ANA",
      "role": "teacher",
      "style": null,
@@ -38,25 +45,18 @@
      "style": null,
      "country": null,
      "source_line": "🎧🎧🎧DJ DRIM. (Geneva)"
-    },
-    {
-     "name_as_written": "Fazer Acontecer",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🚨 Fazer Acontecer presents: 3rd edition"
     }
    ],
    "features": [
     {
      "feature": "competition",
      "quote": "SWISS COMPETITION",
-     "rationale": "The description states it is a competition event."
+     "rationale": "The event is described as a competition in its opening line."
     },
     {
      "feature": "taxi_dancers",
      "quote": "TAXIS DANCERS",
-     "rationale": "The description explicitly says taxi dancers are present."
+     "rationale": "The description states that taxi dancers are present."
     }
    ]
   }

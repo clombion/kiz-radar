@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 75,
+       "amount": 75.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "Fullpasses Earlybirds. €75,00"
       },
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "Regularbird .€80,00"
       },
       {
-       "amount": 85,
+       "amount": 85.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -62,7 +62,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -75,7 +75,7 @@
        "quote": "Party passes Earlybirds €50,00"
       },
       {
-       "amount": 55,
+       "amount": 55.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -88,7 +88,7 @@
        "quote": "Regularbird €55.00"
       },
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -111,7 +111,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 25,
+       "amount": 25.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -134,7 +134,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 25,
+       "amount": 25.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -157,7 +157,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -172,7 +172,9 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "Ticket name change is free until 23th of Oktober 2025 After that theres a name changefee of €10."
+   ]
   }
  ]
 }

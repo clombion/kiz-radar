@@ -7,13 +7,13 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "workshops",
-     "rationale": "The description lists workshops as part of the three days of festivities."
+     "quote": "3 days of festivities, workshops, and a gala show.",
+     "rationale": "The description states that workshops are part of the event."
     },
     {
      "feature": "shows",
-     "quote": "a gala show",
-     "rationale": "The description mentions a gala show as part of the event."
+     "quote": "3 days of festivities, workshops, and a gala show.",
+     "rationale": "A gala show is mentioned as part of the event."
     }
    ]
   }

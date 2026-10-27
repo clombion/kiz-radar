@@ -35,32 +35,32 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "paradise of Kizomba, Semba, Urban kiz, Tarraxo, Cabo love and Douceur"
+     "quote": "5 DAYS Kizomba, Semba, Urban Kiz, Tarraxo, Douceur et Afro House"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "paradise of Kizomba, Semba, Urban kiz, Tarraxo, Cabo love and Douceur"
+     "quote": "Kizomba, Semba, Urban Kiz, Tarraxo, Cabo love and Douceur"
     },
     {
      "genre": "urbankiz",
-     "genre_as_written": "Urban kiz",
-     "quote": "paradise of Kizomba, Semba, Urban kiz, Tarraxo, Cabo love and Douceur"
+     "genre_as_written": "Urban Kiz",
+     "quote": "Semba, Urban Kiz, Tarraxo"
     },
     {
      "genre": "tarraxo",
      "genre_as_written": "Tarraxo",
-     "quote": "paradise of Kizomba, Semba, Urban kiz, Tarraxo, Cabo love and Douceur"
+     "quote": "Tarraxo, Cabo love and Douceur"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "Tarraxo, Tarraxinha, Douceur"
     },
     {
      "genre": "douceur",
      "genre_as_written": "Douceur",
-     "quote": "paradise of Kizomba, Semba, Urban kiz, Tarraxo, Cabo love and Douceur"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cabo love",
-     "quote": "paradise of Kizomba, Semba, Urban kiz, Tarraxo, Cabo love and Douceur"
+     "quote": "Cabo love and Douceur"
     },
     {
      "genre": "afro",
@@ -68,19 +68,19 @@
      "quote": "Douceur et Afro House"
     },
     {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "ROOM 1 : Urban kiz, Tarraxo, Tarraxinha, Douceur, GhettoZouk, Afrobeat"
+     "genre": "other",
+     "genre_as_written": "Cabo love",
+     "quote": "Tarraxo, Cabo love and Douceur"
     },
     {
      "genre": "zouk",
      "genre_as_written": "GhettoZouk",
-     "quote": "ROOM 1 : Urban kiz, Tarraxo, Tarraxinha, Douceur, GhettoZouk, Afrobeat"
+     "quote": "GhettoZouk, Afrobeat"
     },
     {
      "genre": "kompa",
      "genre_as_written": "Kompa",
-     "quote": "ROOM 2 : KIZOMBA KCMA, Semba, Cabo love, and Kompa"
+     "quote": "and Kompa"
     }
    ]
   }

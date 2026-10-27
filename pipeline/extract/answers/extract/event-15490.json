@@ -182,19 +182,24 @@
    ],
    "features": [
     {
-     "feature": "multiple_rooms",
-     "quote": "2 Rooms, 2 Styles Urban kiz & Bachata",
-     "rationale": "The festival lists two rooms, one per style."
-    },
-    {
      "feature": "pre_party",
      "quote": "Pre Party on Thursday",
-     "rationale": "A pre-party is explicitly offered before the festival days."
+     "rationale": "The description announces a pre-party on Thursday before the festival."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 Rooms, 2 Styles Urban kiz & Bachata",
+     "rationale": "Two dance rooms are offered, one for each style."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "Taxidancers Team",
+     "rationale": "A taxi-dancer team is listed as part of the event crew."
     },
     {
      "feature": "partner_hotel",
      "quote": "Novotel Budapest Congress: 4 min walk",
-     "rationale": "The description lists hotels near the venue, which indicates recommended hotels without stating accommodation is part of the pass."
+     "rationale": "Hotels are listed as nearby recommendations with walking times, without being part of a pass."
     }
    ]
   }

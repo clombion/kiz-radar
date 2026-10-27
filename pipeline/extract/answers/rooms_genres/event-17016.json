@@ -13,32 +13,37 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "#Kizomba"
+     "quote": "#Kizomba #Semba #Urbankiz #Tarraxo"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "#Semba"
+     "quote": "SEMBA*"
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "Urbankiz",
-     "quote": "#Urbankiz"
+     "quote": "#Kizomba #Semba #Urbankiz #Tarraxo"
     },
     {
      "genre": "tarraxo",
      "genre_as_written": "Tarraxo",
-     "quote": "#Tarraxo"
+     "quote": "#Kizomba #Semba #Urbankiz #Tarraxo"
     },
     {
      "genre": "tarraxinha",
      "genre_as_written": "TARRAXINHA",
-     "quote": "TARRAXINHA"
+     "quote": "TARRAXINHA*"
     },
     {
      "genre": "douceur",
      "genre_as_written": "DOUCER",
      "quote": "DOUCER*"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "AfroHouse",
+     "quote": "#AfroHouse"
     },
     {
      "genre": "salsa",
@@ -49,16 +54,6 @@
      "genre": "bachata",
      "genre_as_written": "Bachata",
      "quote": "#Bachata"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "AfroHouse",
-     "quote": "#AfroHouse"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "RodadeCasino",
-     "quote": "RodadeCasino"
     }
    ]
   }

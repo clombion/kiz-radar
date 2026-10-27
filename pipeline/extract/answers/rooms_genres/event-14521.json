@@ -11,39 +11,37 @@
     "count": 5,
     "quote": "5 rooms for training"
    },
-   "rooms": [
-    {
-     "name_as_written": "Social Room",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "Social Room"
-    }
-   ],
+   "rooms": [],
    "genres": [
     {
      "genre": "kizomba",
      "genre_as_written": "kizomba",
-     "quote": "in kizomba, semba"
+     "quote": "kizomba, semba, urban kizomba"
     },
     {
      "genre": "semba",
      "genre_as_written": "semba",
-     "quote": "semba, urban kizomba"
+     "quote": "kizomba, semba, urban kizomba"
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "urban kizomba",
-     "quote": "urban kizomba, tarraxo"
+     "quote": "urban kizomba, tarraxo, doceur"
     },
     {
      "genre": "tarraxo",
      "genre_as_written": "tarraxo",
-     "quote": "tarraxo, doceur"
+     "quote": "urban kizomba, tarraxo, doceur"
     },
     {
      "genre": "douceur",
      "genre_as_written": "doceur",
-     "quote": "doceur, kizomba fusion"
+     "quote": "tarraxo, doceur, kizomba fusion"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "Florence Kizomba Salsa Bachata Festival"
     },
     {
      "genre": "salsa",

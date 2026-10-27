@@ -105,29 +105,29 @@
    ],
    "features": [
     {
-     "feature": "workshops",
-     "quote": "for world-class workshops designed to inspire",
-     "rationale": "The description promotes world-class workshops taught by the featured artists."
-    },
-    {
      "feature": "beach_party",
      "quote": "Our legendary Beach Party on Great Western Beach",
      "rationale": "The event includes a beach party on Great Western Beach."
     },
     {
-     "feature": "all_in_one",
-     "quote": "Every class, every party, every laugh — all under one roof.",
-     "rationale": "Classes and parties take place under one roof in the hotel where dancers are invited to stay."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Book your place in our fabulous festival hotel The Sandy Lodge",
-     "rationale": "The festival hotel is recommended and booked separately, with rooms charged apart from the pass."
+     "feature": "workshops",
+     "quote": "world-class workshops",
+     "rationale": "The description states that dance workshops are part of the festival."
     },
     {
      "feature": "multiple_rooms",
      "quote": "We have three beautiful dance spaces",
-     "rationale": "The venue offers three separate dance spaces."
+     "rationale": "Three dance spaces means more than one dance room."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "Every class, every party, every laugh — all under one roof.",
+     "rationale": "Classes and parties take place in the same hotel where dancers are invited to stay."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "To book the hotel, please call 01637 872851 and quote ‘Dança Bonita’.",
+     "rationale": "A festival hotel is recommended with a negotiated room rate, and the accommodation is not part of the pass."
     }
    ]
   }

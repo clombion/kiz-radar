@@ -7,7 +7,7 @@
     {
      "name_as_written": "PAMELA K",
      "role": "performer",
-     "style": "Konpa/Zouk",
+     "style": "Live Konpa/Zouk",
      "country": "🇫🇷",
      "source_line": "✔️ PAMELA K — Live Konpa/Zouk 🇫🇷"
     },
@@ -128,22 +128,17 @@
     {
      "feature": "workshops",
      "quote": "Dance Workshops with top instructors",
-     "rationale": "The event offers dance workshops taught by instructors."
-    },
-    {
-     "feature": "shows",
-     "quote": "Live Performances by renowned global artists",
-     "rationale": "The event includes performances by artists."
+     "rationale": "The event lists dance workshops with instructors as part of what is offered."
     },
     {
      "feature": "live_music",
-     "quote": "PAMELA K — Live Konpa/Zouk",
-     "rationale": "A singer performs live at the Friday night show."
+     "quote": "Live Performances by renowned global artists",
+     "rationale": "Live performances by artists, including a live konpa/zouk act, are promised."
     },
     {
-     "feature": "themed_parties",
-     "quote": "Theme Dance Socials",
-     "rationale": "Themed dance socials are offered as parties."
+     "feature": "shows",
+     "quote": "Live Show + Social",
+     "rationale": "The schedule includes a live show by artists on Friday."
     },
     {
      "feature": "multiple_rooms",
@@ -151,9 +146,14 @@
      "rationale": "The socials take place in two separate rooms."
     },
     {
+     "feature": "themed_parties",
+     "quote": "Theme Dance Socials",
+     "rationale": "The socials are described as themed dance parties."
+    },
+    {
      "feature": "partner_hotel",
      "quote": "Hotel: Courtyard by Marriott",
-     "rationale": "A named hotel is listed for guests, not as part of a pass."
+     "rationale": "A specific hotel is listed for the event, suggesting a recommended hotel that is not part of the pass."
     }
    ]
   }

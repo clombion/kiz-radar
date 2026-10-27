@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 75,
+       "amount": 75.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "Early Birds 75€ (SOLD OUT)"
       },
       {
-       "amount": 85,
+       "amount": 85.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "Jun. – Jul. | Giu. – Lug. €85 (SOLD OUT)"
       },
       {
-       "amount": 95,
+       "amount": 95.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "Aug. – Sep. | Ago. – Sett. €95 (SOLD OUT)"
       },
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -60,12 +60,12 @@
        "until": "11-30",
        "quantity": null,
        "door": false,
-       "sold_out": false,
+       "sold_out": true,
        "current": false,
        "quote": "Out. – Nov. | Ott. – Nov. €100 / Couple €180 (SOLD OUT)"
       },
       {
-       "amount": 105,
+       "amount": 105.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -75,10 +75,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Dec. – Feb. | Dic. – Feb. €105 / Couple €190"
+       "quote": "Dic. – Feb. €105 / Couple €190"
       },
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -91,7 +91,7 @@
        "quote": "Mar. – May. | Mar. – Mag. €110 / Couple €200"
       },
       {
-       "amount": 115,
+       "amount": 115.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -114,7 +114,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 180,
+       "amount": 180.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -127,7 +127,7 @@
        "quote": "Out. – Nov. | Ott. – Nov. €100 / Couple €180 (SOLD OUT)"
       },
       {
-       "amount": 190,
+       "amount": 190.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -137,10 +137,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Dec. – Feb. | Dic. – Feb. €105 / Couple €190"
+       "quote": "Dic. – Feb. €105 / Couple €190"
       },
       {
-       "amount": 200,
+       "amount": 200.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -153,7 +153,7 @@
        "quote": "Mar. – May. | Mar. – Mag. €110 / Couple €200"
       },
       {
-       "amount": 210,
+       "amount": 210.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

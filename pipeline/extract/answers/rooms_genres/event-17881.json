@@ -3,31 +3,28 @@
  "events": [
   {
    "event_id": 17881,
-   "party_rooms": {
-    "count": 3,
-    "quote": "Salsa / Bachata / Kizomba rooms"
-   },
+   "party_rooms": null,
    "class_rooms": null,
    "rooms": [
     {
-     "name_as_written": null,
-     "kind": "party",
+     "name_as_written": "Salsa",
+     "kind": "unspecified",
      "genres": [
       "salsa"
      ],
      "quote": "Salsa / Bachata / Kizomba rooms"
     },
     {
-     "name_as_written": null,
-     "kind": "party",
+     "name_as_written": "Bachata",
+     "kind": "unspecified",
      "genres": [
       "bachata"
      ],
      "quote": "Salsa / Bachata / Kizomba rooms"
     },
     {
-     "name_as_written": null,
-     "kind": "party",
+     "name_as_written": "Kizomba",
+     "kind": "unspecified",
      "genres": [
       "kizomba"
      ],

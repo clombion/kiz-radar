@@ -82,7 +82,7 @@
      "source_line": "✅ Dj NiceLife"
     },
     {
-     "name_as_written": "Dj Dj Stefanio Lima",
+     "name_as_written": "Dj Stefanio Lima",
      "role": "dj",
      "style": "Kizomba",
      "country": null,
@@ -121,12 +121,12 @@
     {
      "feature": "multiple_rooms",
      "quote": "Amazing Venue with 4 different rooms",
-     "rationale": "The event states it has four different rooms, so more than one dance room is present."
+     "rationale": "The venue has four different rooms, meaning more than one dance room."
     },
     {
      "feature": "pre_party",
      "quote": "3 pre-parties",
-     "rationale": "The description lists three pre-parties before the main parties."
+     "rationale": "The description states there are three pre-parties before the main parties."
     },
     {
      "feature": "after_party",
@@ -136,12 +136,12 @@
     {
      "feature": "workshops",
      "quote": "More than 50 workshops",
-     "rationale": "The event offers more than 50 workshops as part of the programme."
+     "rationale": "The event offers more than 50 dance workshops."
     },
     {
      "feature": "shows",
      "quote": "New Shows",
-     "rationale": "The description announces new shows as part of the event."
+     "rationale": "The description advertises new shows as part of the event."
     }
    ]
   }

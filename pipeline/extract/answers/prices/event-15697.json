@@ -7,13 +7,13 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": "🏖️ Your Full Pass, Party Pass, Day Pass and Evening Passes :",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "🔥First 10 Full Passes at €80 (sold out)"
       },
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "🔥Full Pass at €90 until 10/31/25 (sold out)"
       },
       {
-       "amount": 105,
+       "amount": 105.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "🔥Full Pass at €105 until 12/31/25 (sold out)"
       },
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -65,7 +65,7 @@
        "quote": "🔥Full Pass at €110 until 02/28/26"
       },
       {
-       "amount": 115,
+       "amount": 115.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -78,7 +78,7 @@
        "quote": "🔥Full Pass at €115 until 03/31/26"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -91,7 +91,7 @@
        "quote": "🔥Full Pass at €120 until 04/23/26"
       },
       {
-       "amount": 130,
+       "amount": 130.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

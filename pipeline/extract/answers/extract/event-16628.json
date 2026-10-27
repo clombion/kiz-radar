@@ -5,6 +5,13 @@
    "event_id": 16628,
    "artists": [
     {
+     "name_as_written": "RockDance association",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Festival organized in partnership with the RockDance association of La Rochelle"
+    },
+    {
      "name_as_written": "Jean-Pierre & Pascale",
      "role": "teacher",
      "style": "West Coast Swing",
@@ -31,20 +38,13 @@
      "style": "multi-dance",
      "country": null,
      "source_line": "Henry & Pascaline – Poitiers (multi-dance)"
-    },
-    {
-     "name_as_written": "RockDance association",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Festival organized in partnership with the RockDance association of La Rochelle"
     }
    ],
    "features": [
     {
      "feature": "workshops",
      "quote": "more than 20 hours of classes",
-     "rationale": "The description states that the festival includes more than 20 hours of classes, so dance classes are part of the event."
+     "rationale": "The festival offers more than 20 hours of dance classes, so dance classes are part of the event."
     }
    ]
   }

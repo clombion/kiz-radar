@@ -92,7 +92,7 @@
      "name_as_written": "Michel & Aga",
      "role": "teacher",
      "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 / 𝐒𝐄𝐌𝐁𝐀",
-     "country": null,
+     "country": "🇫🇷",
      "source_line": "🩶 🇫🇷 Michel & Aga"
     },
     {
@@ -252,39 +252,39 @@
    ],
    "features": [
     {
-     "feature": "competition",
-     "quote": "The Kizz Factor – TV show original competition",
-     "rationale": "The description lists a TV show original competition called The Kizz Factor as part of the event activities."
-    },
-    {
      "feature": "workshops",
      "quote": "Workshops with top international artists",
-     "rationale": "The event explicitly offers workshops taught by international artists."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Exclusive masterclasses",
-     "rationale": "The event explicitly lists masterclasses among its activities."
+     "rationale": "The description states that workshops with international artists are part of the event."
     },
     {
      "feature": "multiple_rooms",
      "quote": "3 Rooms",
-     "rationale": "The party line states there are 3 rooms, and the rooms section lists three dance rooms."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "taxi teams return in 2027",
-     "rationale": "Taxi teams, which serve as taxi dancers, are stated to be present at the 2027 edition."
+     "rationale": "The event has three rooms for dancing, so more than one dance room is present."
     },
     {
      "feature": "themed_parties",
      "quote": "Your status, your color party",
-     "rationale": "A colour-themed party is listed as one of the event's parties."
+     "rationale": "A colour-themed party is announced as part of the programme."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "taxi teams return in 2027",
+     "rationale": "Taxi teams are said to return, and a taxi team section lists them."
     },
     {
      "feature": "shows",
      "quote": "Live performances full of emotion",
-     "rationale": "The description lists live performances as part of the event."
+     "rationale": "Live performances by artists are advertised as part of the event."
+    },
+    {
+     "feature": "competition",
+     "quote": "The Kizz Factor – TV show original competition",
+     "rationale": "A competition called The Kizz Factor is listed among the activities."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Exclusive masterclasses",
+     "rationale": "Masterclasses are explicitly offered."
     }
    ]
   }

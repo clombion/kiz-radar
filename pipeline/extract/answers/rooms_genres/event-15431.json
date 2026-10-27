@@ -11,23 +11,23 @@
    "rooms": [
     {
      "name_as_written": "Golden Wave I",
-     "kind": "unspecified",
+     "kind": "party",
      "genres": [
       "kizomba",
       "urbankiz",
       "tarraxo"
      ],
-     "quote": "Golden Wave I – Kizomba, Urban Kiz, Tarraxo"
+     "quote": "Golden Wave I – 494 m2 (Workshops, Social, Party and Showcase)"
     },
     {
      "name_as_written": "Golden Wave II",
-     "kind": "unspecified",
+     "kind": "party",
      "genres": [
       "kizomba",
       "semba",
       "kompa"
      ],
-     "quote": "Golden Wave II – Authentic Kizomba, Semba, Kompa"
+     "quote": "Golden Wave II – 222 m2 (Workshops and Party)"
     }
    ],
    "genres": [
@@ -39,7 +39,7 @@
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "including Kizomba, Semba, Urban Kiz"
+     "quote": "Semba, Urban Kiz, Kizomba Fusion"
     },
     {
      "genre": "urbankiz",
@@ -59,7 +59,7 @@
     {
      "genre": "afro",
      "genre_as_written": "Afro",
-     "quote": "Kompa, Tarraxo or Afro"
+     "quote": "Tarraxo or Afro"
     }
    ]
   }

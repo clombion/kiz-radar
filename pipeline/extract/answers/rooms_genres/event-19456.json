@@ -9,22 +9,22 @@
    "genres": [
     {
      "genre": "bachata",
-     "genre_as_written": "Bachata",
+     "genre_as_written": "BACHATA",
      "quote": "BACHATA ARTISTS"
     },
     {
      "genre": "kizomba",
-     "genre_as_written": "Kizomba",
+     "genre_as_written": "KIZOMBA",
      "quote": "KIZOMBA ARTISTS"
     },
     {
      "genre": "salsa",
-     "genre_as_written": "Salsa",
+     "genre_as_written": "SALSA",
      "quote": "SALSA ARTISTS"
     },
     {
      "genre": "zouk",
-     "genre_as_written": "Brazilian Zouk",
+     "genre_as_written": "BRAZILIAN ZOUK",
      "quote": "BRAZILIAN ZOUK ARTISTS"
     }
    ]

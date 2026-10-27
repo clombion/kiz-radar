@@ -13,7 +13,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 219,
+       "amount": 219.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "Full pass €219 (until October 15th, then price increase)"
       },
       {
-       "amount": 230,
+       "amount": 230.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "Full pass €230 (October 16th to 30th)"
       },
       {
-       "amount": 240,
+       "amount": 240.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -56,13 +56,13 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": null,
+     "label_quote": "* Evenings;",
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 15,
+       "amount": 15.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -72,7 +72,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Friday evening: 2 rooms, 3 atmospheres with 1 class; €15"
+       "quote": "– Friday evening: 2 rooms, 3 atmospheres with 1 class; €15"
       }
      ]
     }

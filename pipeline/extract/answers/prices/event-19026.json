@@ -7,13 +7,13 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": null,
+     "label_quote": "🎟️ FULLPASS PRICING",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 65,
+       "amount": 65.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "🔥 FULLPASS EARLY BIRD — €65"
       },
       {
-       "amount": 79,
+       "amount": 79.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

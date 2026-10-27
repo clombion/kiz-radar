@@ -5,7 +5,7 @@
    "event_id": 16079,
    "party_rooms": {
     "count": 2,
-    "quote": "2 rooms for the parties during the night:"
+    "quote": "2 rooms for the parties during the night"
    },
    "class_rooms": {
     "count": 2,
@@ -40,8 +40,8 @@
     },
     {
      "genre": "urbankiz",
-     "genre_as_written": "UrbanKiz",
-     "quote": "Room: Fussion & UrbanKiz & Kizomba & Semba"
+     "genre_as_written": "Urban Kiz",
+     "quote": "2 exclusive rooms for workshops of Kizomba-Urban Kiz-Tarraxo"
     },
     {
      "genre": "tarraxo",

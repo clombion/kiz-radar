@@ -317,7 +317,12 @@
     {
      "feature": "workshops",
      "quote": "4 days of Workshops",
-     "rationale": "The program lists four days of workshops, so dance classes are part of the event."
+     "rationale": "The program lists workshops as part of the four festival days."
+    },
+    {
+     "feature": "shows",
+     "quote": "Professional Shows",
+     "rationale": "The program lists professional shows as part of the festival."
     },
     {
      "feature": "competition",
@@ -325,19 +330,14 @@
      "rationale": "The program lists an international competition."
     },
     {
-     "feature": "shows",
-     "quote": "Professional Shows",
-     "rationale": "The program lists professional shows by artists."
+     "feature": "multiple_rooms",
+     "quote": "2 Rooms",
+     "rationale": "The program states the festival has two dance rooms."
     },
     {
      "feature": "partner_hotel",
      "quote": "Partner hotel: B&B Hotel Liège Rocourt",
-     "rationale": "A named partner hotel is recommended, with a discount code, while accommodation is not part of the pass."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Rooms",
-     "rationale": "The program states the event has two dance rooms."
+     "rationale": "A partner hotel is named, with a discount code, while accommodation is not stated as part of the pass."
     }
    ]
   }

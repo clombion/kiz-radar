@@ -84,27 +84,22 @@
     {
      "feature": "day_socials",
      "quote": "Afternoon Social",
-     "rationale": "An afternoon social is offered as part of the programme."
+     "rationale": "An afternoon social is offered as part of the event."
     },
     {
      "feature": "dress_code",
-     "quote": "DRESS CODES",
-     "rationale": "The description explicitly states dress codes for the parties."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Friday Party — BLACK",
-     "rationale": "Parties are themed by colour, such as the black Friday Party."
+     "quote": "DRESS CODES 🕺",
+     "rationale": "The description states dress codes for each party and the Sunday social."
     },
     {
      "feature": "live_music",
      "quote": "Singers",
-     "rationale": "Singers are listed in the line-up, indicating live singing performances."
+     "rationale": "The line-up includes singers who perform at the event."
     },
     {
      "feature": "all_in_one",
      "quote": "Venue: Novotel Airport – Warsaw, Poland",
-     "rationale": "The venue is the Novotel Airport, which is the same hotel listed under Hotel for accommodation."
+     "rationale": "The venue is the Novotel Airport hotel, which is also the hotel listed for the event, so parties and accommodation are in the same place."
     }
    ]
   }

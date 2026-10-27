@@ -62,6 +62,11 @@
      "quote": "===== Afro house"
     },
     {
+     "genre": "afro",
+     "genre_as_written": "Afrobeat",
+     "quote": "=== Afrobeat"
+    },
+    {
      "genre": "douceur",
      "genre_as_written": "Douceur",
      "quote": "=== Douceur"
@@ -75,6 +80,26 @@
      "genre": "other",
      "genre_as_written": "dancehall",
      "quote": "=== dancehall"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "hip hop",
+     "quote": "==== hip hop"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "amapiano",
+     "quote": "===== amapiano"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "RnB",
+     "quote": "==== RnB"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Shatta",
+     "quote": "===== Shatta"
     }
    ]
   }

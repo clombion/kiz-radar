@@ -113,7 +113,7 @@
      "name_as_written": "Oscar & Anna",
      "role": "teacher",
      "style": "𝓑𝓐𝓒𝓗𝓐𝓣𝓐",
-     "country": "Vietnam / Argentina",
+     "country": "Vietnam / 🇦🇷 Argentina",
      "source_line": "Oscar & Anna 🇻🇳 Vietnam / 🇦🇷 Argentina"
     },
     {
@@ -185,45 +185,38 @@
      "style": null,
      "country": null,
      "source_line": "𝑰𝒏𝒕𝒆𝒓𝒏𝒂𝒕𝒊𝒐𝒏𝒂𝒍 𝑴𝑪 John Anthony"
-    },
-    {
-     "name_as_written": "𝑫𝒂𝒊𝒔𝒚 𝑵𝒈𝒖𝒚𝒆𝒏",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "☎️ For more information, WhatsApp us at +66 822 085 681(𝑫𝒂𝒊𝒔𝒚 𝑵𝒈𝒖𝒚𝒆𝒏) 𝒐𝒓 +91 9845433370 (𝑱𝒐𝒉𝒏 𝑨𝒏𝒕𝒉𝒐𝒏𝒚)"
     }
    ],
    "features": [
     {
-     "feature": "competition",
-     "quote": "𝑨𝒔𝒊𝒂 𝑱𝒂𝒄𝒌 & 𝑱𝒊𝒍𝒍 𝑪𝒐𝒎𝒑𝒆𝒕𝒊𝒕𝒊𝒐𝒏",
-     "rationale": "A Jack & Jill competition is listed among the highlights."
-    },
-    {
-     "feature": "workshops",
-     "quote": "𝑴𝒐𝒓𝒆 𝒕𝒉𝒂𝒏 50 𝒐𝒇 𝑬𝒙𝒄𝒊𝒕𝒊𝒏𝒈 𝑾𝒐𝒓𝒌𝒔𝒉𝒐𝒑𝒔",
-     "rationale": "The description promotes more than 50 workshops as part of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "𝑰𝒏𝒄𝒓𝒆𝒅𝒊𝒃𝒍𝒆 𝑺𝒉𝒐𝒘𝒔 𝒂𝒏𝒅 𝑷𝒆𝒓𝒇𝒐𝒓𝒎𝒂𝒏𝒄𝒆𝒔",
-     "rationale": "Shows and performances are explicitly advertised."
-    },
-    {
      "feature": "beach_party",
      "quote": "𝑩𝒆𝒂𝒄𝒉 𝒑𝒂𝒓𝒕𝒚",
-     "rationale": "A beach party is listed as a feature."
+     "rationale": "The description lists a beach party as part of the festival."
     },
     {
      "feature": "multiple_rooms",
      "quote": "3 𝑫𝒚𝒏𝒂𝒎𝒊𝒄 𝑫𝒂𝒏𝒄𝒆 𝑹𝒐𝒐𝒎𝒔",
-     "rationale": "Three dance rooms are advertised, so there is more than one dance floor."
+     "rationale": "Three dance rooms are advertised, meaning more than one dance floor."
+    },
+    {
+     "feature": "workshops",
+     "quote": "𝑴𝒐𝒓𝒆 𝒕𝒉𝒂𝒏 50 𝒐𝒇 𝑬𝒙𝒄𝒊𝒕𝒊𝒏𝒈 𝑾𝒐𝒓𝒌𝒔𝒉𝒐𝒑𝒔",
+     "rationale": "More than 50 workshops are offered as part of the event."
+    },
+    {
+     "feature": "competition",
+     "quote": "𝑨𝒔𝒊𝒂 𝑱𝒂𝒄𝒌 & 𝑱𝒊𝒍𝒍 𝑪𝒐𝒎𝒑𝒆𝒕𝒊𝒕𝒊𝒐𝒏",
+     "rationale": "An Asia Jack & Jill competition is announced."
+    },
+    {
+     "feature": "shows",
+     "quote": "𝑰𝒏𝒄𝒓𝒆𝒅𝒊𝒃𝒍𝒆 𝑺𝒉𝒐𝒘𝒔 𝒂𝒏𝒅 𝑷𝒆𝒓𝒇𝒐𝒓𝒎𝒂𝒏𝒄𝒆𝒔",
+     "rationale": "Shows and performances by artists are advertised."
     },
     {
      "feature": "pre_party",
-     "quote": "– Pre-parties: Thursday",
-     "rationale": "Pre-parties on Thursday are scheduled before the main nights."
+     "quote": "Pre-parties: Thursday",
+     "rationale": "Pre-parties are scheduled before the three main nights."
     }
    ]
   }

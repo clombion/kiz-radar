@@ -119,39 +119,39 @@
    ],
    "features": [
     {
-     "feature": "live_music",
-     "quote": "3-LIVE MUSIC ACT.",
-     "rationale": "The pass includes three live music acts."
-    },
-    {
      "feature": "workshops",
      "quote": "15 WORKSHOPS",
-     "rationale": "The pass includes 15 workshops."
+     "rationale": "The package includes 15 workshops, so dance classes are part of the event."
     },
     {
      "feature": "shows",
-     "quote": "SHOWS/",
-     "rationale": "Shows are listed as part of what the pass includes."
+     "quote": "3 SOCIAL SBK / SHOWS",
+     "rationale": "The included items list shows by artists."
     },
     {
      "feature": "themed_parties",
      "quote": "3- TEMATIC PARTIES",
-     "rationale": "The pass includes three themed parties."
+     "rationale": "The pass includes three thematic parties."
+    },
+    {
+     "feature": "live_music",
+     "quote": "3-LIVE MUSIC ACT.",
+     "rationale": "The pass includes live music acts."
     },
     {
      "feature": "masterclass",
      "quote": "3-Master clases",
-     "rationale": "The VIP extra includes three masterclasses."
+     "rationale": "The extra VIP pass includes three masterclasses."
     },
     {
      "feature": "accommodation_included",
-     "quote": "FULL PASS+HOTEL-2 NIGHT TRIPLE BED ROOM!",
-     "rationale": "The promotion bundles the full pass with two nights of hotel accommodation."
+     "quote": "FULL PASS+HOTEL-2 NIGHT TRIPLE BED ROOM",
+     "rationale": "The full pass plus hotel package includes two nights of accommodation in a triple room."
     },
     {
      "feature": "meals_included",
-     "quote": "HOTEL+ BREAKFAST+2 NIGHT IN TRIPLE ROOM!",
-     "rationale": "The hotel package includes breakfast."
+     "quote": "FULL PASS + HOTEL+ BREAKFAST+2 NIGHT IN TRIPLE ROOM",
+     "rationale": "The hotel package explicitly includes breakfast."
     }
    ]
   }

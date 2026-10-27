@@ -8,8 +8,8 @@
    "rooms": [],
    "genres": [
     {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
+     "genre": "urbankiz",
+     "genre_as_written": "Kizomba Fusion",
      "quote": "Kizomba Fusion Class"
     },
     {
@@ -20,7 +20,7 @@
     {
      "genre": "urbankiz",
      "genre_as_written": "Urban Kiz",
-     "quote": "Urban Kiz Class (Connection)"
+     "quote": "Urban Kiz Class"
     }
    ]
   }

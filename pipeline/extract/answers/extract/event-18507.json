@@ -82,6 +82,13 @@
      "source_line": "🔥 DJ Dia 🇵🇹"
     },
     {
+     "name_as_written": "Kizz Empire",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Kizz Empire New Year‘s Eve 🥳 🎊"
+    },
+    {
      "name_as_written": "Dance Empire dance School Böblingen",
      "role": "organiser",
      "style": null,
@@ -98,17 +105,12 @@
     {
      "feature": "dress_code",
      "quote": "Dress code",
-     "rationale": "The description has a Dress code section specifying outfits for each day."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Friday: African Flair",
-     "rationale": "The dress code gives each night a dress theme, such as African Flair on Friday."
+     "rationale": "The description states a dress code and gives one per day."
     },
     {
      "feature": "partner_hotel",
-     "quote": "– B&B Hotel Böblingen : 3 mnts walk",
-     "rationale": "The description recommends several accommodations near the venue, which are not part of the pass."
+     "quote": "Accommodations:",
+     "rationale": "The description recommends several nearby hotels with booking links, without including them in a pass."
     }
    ]
   }

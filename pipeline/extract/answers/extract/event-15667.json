@@ -5,18 +5,18 @@
    "event_id": 15667,
    "artists": [
     {
-     "name_as_written": "Sabor Latino Entertainment",
-     "role": "organiser",
-     "style": null,
+     "name_as_written": "Chacán",
+     "role": "performer",
+     "style": "Salsa Bigband",
      "country": null,
-     "source_line": "From April 10–12, 2026, the city center of Erlangen will transform into a vibrant hub of Latin American joy and passion. Sabor Latino Entertainment presents the 2nd edition of the SBK Spring Festival, bringing together dancers from all over Germany and across Europe to celebrate a weekend filled with music, passion, and movement."
+     "source_line": "🎺 A unique Salsa Bigband concert with “Chacán”"
     }
    ],
    "features": [
     {
      "feature": "live_music",
      "quote": "exclusive Salsa Bigband concert “Chacán”",
-     "rationale": "The description advertises a Salsa big band concert, which is live music."
+     "rationale": "The description advertises a Salsa Bigband concert, which is live music."
     },
     {
      "feature": "shows",
@@ -26,7 +26,7 @@
     {
      "feature": "multiple_rooms",
      "quote": "On three different dancefloors",
-     "rationale": "Three separate dancefloors mean more than one dance floor."
+     "rationale": "Three separate dancefloors are offered, so there is more than one dance room."
     },
     {
      "feature": "workshops",

@@ -91,19 +91,19 @@
    ],
    "features": [
     {
-     "feature": "competition",
-     "quote": "The Battle Kizz Official Swiss Qualification 2026",
-     "rationale": "The event is a official qualification battle, which is a competition."
+     "feature": "workshops",
+     "quote": "workshops given by national",
+     "rationale": "The description states that workshops are given by national and international instructors."
     },
     {
-     "feature": "workshops",
-     "quote": "thanks to workshops given by national",
-     "rationale": "The description says workshops are given by national and international instructors."
+     "feature": "competition",
+     "quote": "Who will be the first Swiss champions in the couples",
+     "rationale": "The event is a qualification battle to choose Swiss champions in couples and solo categories."
     },
     {
      "feature": "partner_hotel",
      "quote": "has rooms available at a special rate",
-     "rationale": "A nearby hotel offers festival participants a negotiated rate, and the accommodation is not part of the pass."
+     "rationale": "A hotel near the venue offers a negotiated special rate for festival participants, while accommodation is not part of the pass."
     }
    ]
   }

@@ -310,12 +310,17 @@
     {
      "feature": "all_in_one",
      "quote": "ALL IN ONE LUXURY VENUE",
-     "rationale": "The description labels the venue as all in one, combining the event with the hotel where dancers stay."
+     "rationale": "The description names the event venue as an all-in-one venue inside the Van Der Valk hotel, so the parties and accommodation share one place."
     },
     {
      "feature": "workshops",
      "quote": "Workshops intensifs",
-     "rationale": "Intensive workshops are listed as part of the festival programme."
+     "rationale": "Intensive workshops are listed as part of the festival program."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Workshops intensifs",
+     "rationale": "The workshops are described as intensive, which matches an intensive training course."
     }
    ]
   }

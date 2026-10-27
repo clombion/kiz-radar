@@ -5,12 +5,12 @@
    "event_id": 15474,
    "party_rooms": {
     "count": 2,
-    "quote": "P A R T Y on 2 floors"
+    "quote": "P A R T Y on 2 floors:"
    },
    "class_rooms": null,
    "rooms": [
     {
-     "name_as_written": "floor 1",
+     "name_as_written": null,
      "kind": "party",
      "genres": [
       "kizomba",
@@ -22,7 +22,7 @@
      "quote": "floor 1: KIZOMBA, SEMBA , Konpa, Zouk, Coladeira, Ghetto zouk etc."
     },
     {
-     "name_as_written": "floor 2",
+     "name_as_written": null,
      "kind": "party",
      "genres": [
       "zouk",
@@ -35,32 +35,32 @@
     {
      "genre": "kizomba",
      "genre_as_written": "KIZOMBA",
-     "quote": "kizomba by Leny"
+     "quote": "floor 1: KIZOMBA, SEMBA , Konpa, Zouk, Coladeira, Ghetto zouk etc."
     },
     {
      "genre": "semba",
      "genre_as_written": "SEMBA",
-     "quote": "semba by Leny"
+     "quote": "floor 1: KIZOMBA, SEMBA , Konpa, Zouk, Coladeira, Ghetto zouk etc."
     },
     {
      "genre": "kompa",
      "genre_as_written": "Konpa",
-     "quote": "Konpa, Zouk"
+     "quote": "floor 1: KIZOMBA, SEMBA , Konpa, Zouk, Coladeira, Ghetto zouk etc."
     },
     {
      "genre": "zouk",
      "genre_as_written": "Zouk",
-     "quote": "Konpa, Zouk, Coladeira"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Ghetto zouk, Tarraxinha"
+     "quote": "floor 1: KIZOMBA, SEMBA , Konpa, Zouk, Coladeira, Ghetto zouk etc."
     },
     {
      "genre": "other",
      "genre_as_written": "Coladeira",
-     "quote": "Coladeira"
+     "quote": "floor 1: KIZOMBA, SEMBA , Konpa, Zouk, Coladeira, Ghetto zouk etc."
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "floor 2: Ghetto zouk, Tarraxinha"
     }
    ]
   }

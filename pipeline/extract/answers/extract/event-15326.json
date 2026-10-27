@@ -5,6 +5,13 @@
    "event_id": 15326,
    "artists": [
     {
+     "name_as_written": "Daniel Schauenburg",
+     "role": "teacher",
+     "style": null,
+     "country": "🇩🇪",
+     "source_line": "🕺🏻 Daniel Schauenburg 🇩🇪"
+    },
+    {
      "name_as_written": "Crazy Kiz Events",
      "role": "organiser",
      "style": null,
@@ -24,13 +31,6 @@
      "style": null,
      "country": null,
      "source_line": "▪️ Art Director: Luca Arrigoni https://www.facebook.com/LucaKiz1985"
-    },
-    {
-     "name_as_written": "Daniel Schauenburg",
-     "role": "teacher",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "🕺🏻 Daniel Schauenburg 🇩🇪"
     }
    ],
    "features": []

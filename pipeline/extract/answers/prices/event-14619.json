@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 70,
+       "amount": 70.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -23,10 +23,10 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "30 Premiers Full Pass à 70€"
+       "quote": "🏷 30 Premiers Full Pass à 70€ ❌️"
       },
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -36,7 +36,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "50 Full Pass à 90€"
+       "quote": "🏷 50 Full Pass à 90€ ⏳️"
       }
      ]
     },
@@ -49,7 +49,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 160,
+       "amount": 160.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -59,7 +59,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "50 Full Pass Duo a 160€"
+       "quote": "🎟️ 50 Full Pass Duo a 160€ ⏳"
       }
      ]
     }

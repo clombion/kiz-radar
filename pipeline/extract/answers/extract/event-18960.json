@@ -325,58 +325,65 @@
      "style": null,
      "country": null,
      "source_line": "Cheyenne"
+    },
+    {
+     "name_as_written": "Claudia Iannoli",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "📞 3299410647 Claudia Iannoli"
     }
    ],
    "features": [
     {
-     "feature": "workshops",
-     "quote": "3 intense days featuring over 45 hours of workshops",
-     "rationale": "The event offers dance workshops across three days."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Taxi dancer team",
-     "rationale": "A taxi dancer team is listed as part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "5 workshop rooms",
-     "rationale": "Several workshop rooms are provided, so more than one dance room exists."
+     "feature": "all_in_one",
+     "quote": "Everything in the same hotel",
+     "rationale": "The description states that everything takes place in the same hotel, which is where the event and accommodation are held together."
     },
     {
      "feature": "day_socials",
      "quote": "2:00 PM – 8:00 PM: Kizomba Social Room",
-     "rationale": "A daytime social room runs in the afternoon."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows",
-     "rationale": "Shows by artists are listed among the event features."
+     "rationale": "A daytime social room is scheduled in the afternoon."
     },
     {
      "feature": "masterclass",
-     "quote": "Masterclasses",
-     "rationale": "Masterclasses are part of the programme."
+     "quote": "11:00 AM – 2:00 PM: Masterclasses",
+     "rationale": "Masterclasses are listed in the program."
     },
     {
-     "feature": "pre_party",
-     "quote": "Pre-party workshop",
-     "rationale": "A pre-party workshop takes place before the main party."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Themed party nights across 4 dance floors",
-     "rationale": "The parties are described as themed party nights."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "ALL-IN-ONE",
-     "rationale": "The event is described as all in one, with everything in the same hotel."
+     "feature": "multiple_rooms",
+     "quote": "5 workshop rooms",
+     "rationale": "The event has five workshop rooms, meaning more than one dance room."
     },
     {
      "feature": "partner_hotel",
      "quote": "HOTEL ACCOMMODATION BOOKING AVAILABLE",
-     "rationale": "Hotel accommodation can be booked through the event at the hotel, separately from the pass."
+     "rationale": "The event offers hotel booking at the partner hotel, separate from the pass."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "10:00 PM: Pre-party workshop",
+     "rationale": "A pre-party workshop takes place before the main party."
+    },
+    {
+     "feature": "shows",
+     "quote": "Shows",
+     "rationale": "Shows are listed as part of the event and pass packages."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "Taxi dancer team",
+     "rationale": "The event explicitly lists a taxi dancer team."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "Themed party nights across 4 dance floors",
+     "rationale": "Themed party nights are offered across four dance floors."
+    },
+    {
+     "feature": "workshops",
+     "quote": "over 45 hours of workshops",
+     "rationale": "The event features more than 45 hours of dance workshops."
     }
    ]
   }

@@ -8,22 +8,22 @@
     {
      "feature": "cruise",
      "quote": "Come aboard the MSC Virtuosa, this magnificent cruise ship",
-     "rationale": "The event takes place on a cruise ship, the MSC Virtuosa."
+     "rationale": "The description states the event takes place on the MSC Virtuosa cruise ship."
     },
     {
      "feature": "live_music",
      "quote": "quality concerts with well-known artists from the Caribbean and beyond",
-     "rationale": "The description promises concerts by artists, which is live music."
+     "rationale": "The description promises concerts on board by artists from the Caribbean."
     },
     {
      "feature": "shows",
      "quote": "varied entertainment, shows, pools and jacuzzis",
-     "rationale": "Shows are listed as part of the on-board entertainment."
+     "rationale": "The description lists shows as part of the on-board entertainment."
     },
     {
      "feature": "meals_included",
      "quote": "all-inclusive (unlimited drinks and food)",
-     "rationale": "The package is stated to be all-inclusive with unlimited food and drinks."
+     "rationale": "The all-inclusive package explicitly includes unlimited food, so meals are included."
     }
    ]
   }

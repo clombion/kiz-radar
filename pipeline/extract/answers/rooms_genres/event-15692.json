@@ -8,7 +8,32 @@
     "quote": "Separate party rooms for 𝐁𝐀𝐂𝐇𝐀𝐓𝐀 | 𝐊𝐈𝐙𝐎𝐌𝐁𝐀 | 𝐒𝐀𝐋𝐒𝐀 till the morning!"
    },
    "class_rooms": null,
-   "rooms": [],
+   "rooms": [
+    {
+     "name_as_written": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "Separate party rooms for 𝐁𝐀𝐂𝐇𝐀𝐓𝐀 | 𝐊𝐈𝐙𝐎𝐌𝐁𝐀 | 𝐒𝐀𝐋𝐒𝐀 till the morning!"
+    },
+    {
+     "name_as_written": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "Separate party rooms for 𝐁𝐀𝐂𝐇𝐀𝐓𝐀 | 𝐊𝐈𝐙𝐎𝐌𝐁𝐀 | 𝐒𝐀𝐋𝐒𝐀 till the morning!"
+    },
+    {
+     "name_as_written": "𝐒𝐀𝐋𝐒𝐀",
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "Separate party rooms for 𝐁𝐀𝐂𝐇𝐀𝐓𝐀 | 𝐊𝐈𝐙𝐎𝐌𝐁𝐀 | 𝐒𝐀𝐋𝐒𝐀 till the morning!"
+    }
+   ],
    "genres": [
     {
      "genre": "bachata",

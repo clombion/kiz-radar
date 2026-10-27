@@ -26,86 +26,79 @@
      "source_line": "Farantini • David Kongoo • Nani Chbani"
     },
     {
-     "name_as_written": "OFFICIAL MEDIA CREW",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🎥 OFFICIAL MEDIA CREW 📸"
-    },
-    {
      "name_as_written": "#Pingusso",
      "role": "dj",
-     "style": "URBANKIZ × OPEN FORMAT",
+     "style": null,
      "country": "🇱🇺",
      "source_line": "🎧 🇱🇺 #Pingusso"
     },
     {
      "name_as_written": "#HugoSmile",
      "role": "dj",
-     "style": "URBANKIZ × OPEN FORMAT",
+     "style": null,
      "country": "🇫🇷",
      "source_line": "🎧 🇫🇷 #HugoSmile"
     },
     {
      "name_as_written": "#RalphOne",
      "role": "dj",
-     "style": "URBANKIZ × OPEN FORMAT",
+     "style": null,
      "country": "🇫🇷",
      "source_line": "🎧 🇫🇷 #RalphOne"
     },
     {
      "name_as_written": "#Djvaxx",
      "role": "dj",
-     "style": "URBANKIZ × OPEN FORMAT",
+     "style": null,
      "country": "🇫🇷",
      "source_line": "🎧 🇫🇷 #Djvaxx"
     },
     {
      "name_as_written": "DJ Hugo Boss",
      "role": "dj",
-     "style": "Kizomba • Semba • Ginga • African Vibes",
+     "style": null,
      "country": "🇲🇿",
      "source_line": "🎧 🇲🇿 DJ Hugo Boss"
     },
     {
      "name_as_written": "DJ Yha",
      "role": "dj",
-     "style": "Kizomba • Semba • Ginga • African Vibes",
+     "style": null,
      "country": "🇦🇴",
      "source_line": "🎧 🇦🇴 DJ Yha"
     },
     {
      "name_as_written": "DJ RA",
      "role": "dj",
-     "style": "Kizomba • Semba • Ginga • African Vibes",
+     "style": null,
      "country": "🇧🇪",
      "source_line": "🎧 🇧🇪 DJ RA"
     },
     {
      "name_as_written": "Elydio DJ",
      "role": "dj",
-     "style": "Kizomba • Semba • Ginga • African Vibes",
+     "style": null,
      "country": "🇦🇴",
      "source_line": "🎧 🇦🇴 Elydio DJ"
     },
     {
      "name_as_written": "#DjMAK",
      "role": "dj",
-     "style": "#bachata – #salsa – #konpa",
+     "style": null,
      "country": "🇫🇷",
      "source_line": "🎧 🇫🇷 #DjMAK"
     },
     {
      "name_as_written": "#Djinno",
      "role": "dj",
-     "style": "#bachata – #salsa – #konpa",
+     "style": null,
      "country": "🇫🇷",
      "source_line": "🎧 🇫🇷 #Djinno"
     },
     {
      "name_as_written": "#Djayluludancer",
      "role": "dj",
-     "style": "#bachata – #salsa – #konpa",
+     "style": null,
      "country": "🇫🇷",
      "source_line": "🎧 🇫🇷 #Djayluludancer"
     }
@@ -114,7 +107,12 @@
     {
      "feature": "shows",
      "quote": "Shows & special performances",
-     "rationale": "The description promises shows and special performances by artists."
+     "rationale": "The description promises shows and special performances during the event."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "ROOM #bachata – #salsa – #konpa",
+     "rationale": "A separate named room for bachata, salsa and konpa indicates more than one dance room."
     }
    ]
   }

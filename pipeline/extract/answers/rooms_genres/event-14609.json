@@ -5,19 +5,12 @@
    "event_id": 14609,
    "party_rooms": null,
    "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [],
-     "quote": "Romantic parties with our DJS at hotel roof top."
-    }
-   ],
+   "rooms": [],
    "genres": [
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "SABOR A CABO VERDE KIZOMBA FESTIVAL IN LISBON"
+     "quote": "Kizomba, Semba, Tarraxinha, Cape Verdean Traditional Dances, Bachata!"
     },
     {
      "genre": "semba",

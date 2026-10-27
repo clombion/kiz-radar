@@ -33,27 +33,27 @@
     {
      "genre": "tarraxo",
      "genre_as_written": "Tarraxo",
-     "quote": "ROOM 1 : Tarraxo 70 % / Urban Kiz 30 %"
+     "quote": "Tarraxo 70 %"
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "Urban Kiz",
-     "quote": "ROOM 1 : Tarraxo 70 % / Urban Kiz 30 %"
+     "quote": "Urban Kiz 30 %"
     },
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "ROOM 2 : Kizomba – Ghetto Zouk – Douceur"
+     "quote": "Kizomba – Ghetto Zouk – Douceur"
     },
     {
      "genre": "zouk",
      "genre_as_written": "Ghetto Zouk",
-     "quote": "ROOM 2 : Kizomba – Ghetto Zouk – Douceur"
+     "quote": "Ghetto Zouk"
     },
     {
      "genre": "douceur",
      "genre_as_written": "Douceur",
-     "quote": "ROOM 2 : Kizomba – Ghetto Zouk – Douceur"
+     "quote": "Douceur"
     }
    ]
   }

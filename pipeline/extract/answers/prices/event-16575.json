@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "🔸️Early birds Full Pass €80 till end of January"
       },
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "🔸️Late birds Full Pass € 100"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -62,7 +62,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -85,7 +85,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

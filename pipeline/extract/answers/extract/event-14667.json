@@ -177,17 +177,17 @@
     {
      "feature": "all_in_one",
      "quote": "ALL IN ONE",
-     "rationale": "The event is advertised as all in one, indicating the parties take place in the same hotel where dancers stay."
+     "rationale": "The description states the event is all in one, meaning the parties take place in the hotel where dancers stay."
     },
     {
      "feature": "multiple_rooms",
      "quote": "3 DANCEFLOORS ( BACHATA – KIZOMBA – SALSA)",
-     "rationale": "Three dancefloors are announced, so there is more than one dance room."
+     "rationale": "Three dancefloors are announced for the event."
     },
     {
      "feature": "partner_hotel",
-     "quote": "Official Hotel: Grand Hotel des Anglais",
-     "rationale": "A official hotel is named for the event, which is a recommended hotel rather than accommodation included in the pass."
+     "quote": "4 STARS OFFICIAL HOTEL",
+     "rationale": "The event names an official hotel for dancers to stay in."
     }
    ]
   }

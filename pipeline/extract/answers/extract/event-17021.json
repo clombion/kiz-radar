@@ -72,22 +72,27 @@
     {
      "feature": "workshops",
      "quote": "Urban Kizomba Charm Class with Alex Malembe & Maylie",
-     "rationale": "The schedule lists dance classes taught by the teachers, so classes are part of the event."
+     "rationale": "The schedule lists dance classes taught by named teachers."
     },
     {
      "feature": "all_levels_beginners",
-     "quote": "Alchimie Kizomba Class (All Levels) with Mervil",
+     "quote": "Alchimie Kizomba Class (All Levels)",
      "rationale": "The class is explicitly labelled as open to all levels."
     },
     {
+     "feature": "pre_party",
+     "quote": "Urban Kiz Ritual Pre-Party Class",
+     "rationale": "A pre-party session is scheduled before the main party of the evening."
+    },
+    {
      "feature": "beach_party",
-     "quote": "𝘂𝗻𝗲 𝗕𝗲𝗮𝗰𝗵 𝗣𝗮𝗿𝘁𝘆",
-     "rationale": "The event closes with a beach party on the Hulot beach."
+     "quote": "Webinar & Beach Paraty",
+     "rationale": "The event title and header name a beach party as part of the event."
     },
     {
      "feature": "day_socials",
-     "quote": "Social Welcome",
-     "rationale": "The 2:00 PM Social Welcome on August 30 is a daytime social."
+     "quote": "Grand FEERIK Social Party",
+     "rationale": "A social party is scheduled in the afternoon at 4:00 PM on the beach day."
     }
    ]
   }

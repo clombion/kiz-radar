@@ -13,7 +13,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 480,
+       "amount": 480.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -23,7 +23,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔷 Package: 2 full passes + double room → 480€"
+       "quote": "Package: 2 full passes + double room → 480€"
       }
      ]
     }

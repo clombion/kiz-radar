@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "January: 90€"
       },
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "February: 100€"
       },
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "March: 110€"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -65,7 +65,7 @@
        "quote": "April: 120€"
       },
       {
-       "amount": 130,
+       "amount": 130.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -78,7 +78,7 @@
        "quote": "May: 130€"
       },
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -124,7 +124,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 325,
+       "amount": 325.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -147,7 +147,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 400,
+       "amount": 400.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -170,76 +170,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 152.5,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "2 nights double room + Full board: 𝟭𝟱𝟮,𝟱€/𝗽𝗲𝗿𝘀𝗼𝗻"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 227.5,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "3 nights double room + Full board: 𝟮𝟮𝟳,𝟱€/𝗽𝗲𝗿𝘀𝗼𝗻"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 4,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 290,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "4 nights double room + Full board: 𝟮𝟵𝟬€/𝗽𝗲𝗿𝘀𝗼𝗻"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 360,
+       "amount": 360.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -262,7 +193,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 485,
+       "amount": 485.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -285,7 +216,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 510,
+       "amount": 510.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -300,75 +231,6 @@
      ]
     },
     {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 255,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "2 nights single room + Full board: 𝟮𝟱𝟱€"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 380,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "3 nights single room + Full board: 𝟯𝟴𝟬€"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 4,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 505,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "4 nights single room + Full board: 𝟱𝟬𝟱€"
-      }
-     ]
-    },
-    {
      "kind": "day",
      "style": null,
      "label_quote": "💶 𝗣𝗔𝗥𝗧𝗬 𝗣𝗥𝗜𝗖𝗘𝗦 💶",
@@ -377,7 +239,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 15,
+       "amount": 15.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -400,7 +262,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 25,
+       "amount": 25.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -423,7 +285,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 30,
+       "amount": 30.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -446,7 +308,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -469,7 +331,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -492,7 +354,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -515,7 +377,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -531,7 +393,8 @@
     }
    ],
    "rule_quotes": [
-    "Prices are current and will increase every month."
+    "Prices are current and will increase every month.",
+    "*Accommodation is only available with Full Board."
    ]
   }
  ]

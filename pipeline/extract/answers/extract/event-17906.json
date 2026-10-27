@@ -112,24 +112,24 @@
    ],
    "features": [
     {
-     "feature": "multiple_rooms",
-     "quote": "2 ROOMS",
-     "rationale": "The event has two dedicated dance rooms."
-    },
-    {
      "feature": "workshops",
      "quote": "10 hours of high-quality workshops",
-     "rationale": "Workshops are included as part of the event."
+     "rationale": "The description lists workshops as part of what is included."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 dedicated rooms",
+     "rationale": "The event has two dedicated rooms."
     },
     {
      "feature": "all_levels_beginners",
      "quote": "Whether you’re new to Kizomba or an experienced dancer",
-     "rationale": "The description explicitly welcomes beginners as well as experienced dancers."
+     "rationale": "The event explicitly welcomes newcomers to Kizomba as well as experienced dancers."
     },
     {
      "feature": "adults_only",
      "quote": "No ID = No Entry (18+)",
-     "rationale": "Entry is restricted to people aged 18 and over."
+     "rationale": "Entry is restricted to adults aged 18 and over."
     }
    ]
   }

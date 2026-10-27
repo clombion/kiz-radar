@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "FULL PASS > €90 until Aug 1"
       },
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "FULL PASS > €100 until Oct 1"
       },
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "FULL PASS > €110 until Dec 1"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -65,7 +65,7 @@
        "quote": "FULL PASS > €120 until Feb 1"
       },
       {
-       "amount": 130,
+       "amount": 130.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -78,7 +78,7 @@
        "quote": "FULL PASS > €130 until ticket sales close"
       },
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -101,7 +101,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 160,
+       "amount": 160.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -114,7 +114,7 @@
        "quote": "COUPLE FULL PASS > €160 until Dec 1"
       },
       {
-       "amount": 170,
+       "amount": 170.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -127,7 +127,7 @@
        "quote": "COUPLE FULL PASS > €170 until Feb 1"
       },
       {
-       "amount": 180,
+       "amount": 180.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -140,7 +140,7 @@
        "quote": "COUPLE FULL PASS > €180 until ticket sales close"
       },
       {
-       "amount": 200,
+       "amount": 200.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -163,7 +163,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -176,7 +176,7 @@
        "quote": "PARTY PASS > €90 (sales open Nov 1)"
       },
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -192,7 +192,8 @@
     }
    ],
    "rule_quotes": [
-    "*Prices exclude ticketing fees"
+    "Prices exclude ticketing fees",
+    "Promo codes valid only for Full Passes"
    ]
   }
  ]

@@ -13,8 +13,7 @@
      "name_as_written": "SALSA Room",
      "kind": "party",
      "genres": [
-      "salsa",
-      "other"
+      "salsa"
      ],
      "quote": "SALSA Room"
     },
@@ -30,18 +29,87 @@
      "name_as_written": "KIZOMBA Room",
      "kind": "party",
      "genres": [
-      "kizomba",
-      "urbankiz",
-      "afro",
-      "semba"
+      "kizomba"
      ],
      "quote": "KIZOMBA Room"
+    },
+    {
+     "name_as_written": "SALSA Room",
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "SALSA Room"
+    },
+    {
+     "name_as_written": "BACHATA Room",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "BACHATA Room"
+    },
+    {
+     "name_as_written": "KIZOMBA Room",
+     "kind": "party",
+     "genres": [
+      "afro"
+     ],
+     "quote": "Afrohouse Workshop with Mundy"
+    },
+    {
+     "name_as_written": "SALSA Room",
+     "kind": "party",
+     "genres": [
+      "other"
+     ],
+     "quote": "Rueda Workshop with Clément and Marianne"
+    },
+    {
+     "name_as_written": "BACHATA Room",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "BACHATA Room"
+    },
+    {
+     "name_as_written": "KIZOMBA Room",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "KIZOMBA Room"
+    },
+    {
+     "name_as_written": "SALSA Room",
+     "kind": "party",
+     "genres": [
+      "other"
+     ],
+     "quote": "Rueda Workshop with Clément and Marianne"
+    },
+    {
+     "name_as_written": "BACHATA Room",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "Bachata Dom Workshop with Julio & Sandra"
+    },
+    {
+     "name_as_written": "KIZOMBA Room",
+     "kind": "party",
+     "genres": [
+      "semba"
+     ],
+     "quote": "Semba Workshop with Mundy & Laurie"
     }
    ],
    "genres": [
     {
      "genre": "salsa",
-     "genre_as_written": "Salsa",
+     "genre_as_written": "Cuban and Puerto Rican Salsa",
      "quote": "Cuban and Puerto Rican Salsa"
     },
     {
@@ -71,23 +139,23 @@
     },
     {
      "genre": "bachata",
-     "genre_as_written": "Bachata",
+     "genre_as_written": "Bachata styling for men & women",
      "quote": "Bachata styling for men & women"
     },
     {
      "genre": "kizomba",
-     "genre_as_written": "Kizomba",
+     "genre_as_written": "Kizomba (traditional & urban)",
      "quote": "Kizomba (traditional & urban)"
     },
     {
      "genre": "urbankiz",
-     "genre_as_written": "urban",
+     "genre_as_written": "Kizomba (traditional & urban)",
      "quote": "Kizomba (traditional & urban)"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "and Semba"
+     "quote": "Semba"
     },
     {
      "genre": "afro",

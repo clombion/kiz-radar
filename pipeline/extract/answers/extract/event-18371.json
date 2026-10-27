@@ -5,58 +5,67 @@
    "event_id": 18371,
    "artists": [
     {
-     "name_as_written": "lospambosevents",
+     "name_as_written": "@lospambosevents",
      "role": "organiser",
      "style": null,
      "country": null,
      "source_line": "@lospambosevents"
+    },
+    {
+     "name_as_written": "@elisaveta_hristova",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "@elisaveta_hristova"
+    },
+    {
+     "name_as_written": "@pambos.agapiou",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "@pambos.agapiou"
     }
    ],
    "features": [
     {
      "feature": "accommodation_included",
      "quote": "Package of Full Pass & Accomodation",
-     "rationale": "The package pricing lists a full pass together with accommodation, so accommodation is included in the pass."
+     "rationale": "The package bundles the full pass with accommodation."
     },
     {
      "feature": "meals_included",
      "quote": "4 nights & 4 breakfasts & 4 Nights",
-     "rationale": "The listed package includes breakfasts for each night."
+     "rationale": "The package lists breakfasts alongside the nights of accommodation."
     },
     {
      "feature": "pool_party",
      "quote": "Pool Parties",
-     "rationale": "The description lists Pool Parties as part of the event."
+     "rationale": "Pool parties are listed among the event's features."
     },
     {
      "feature": "day_socials",
      "quote": "Afternoon Parties",
-     "rationale": "Afternoon Parties are listed, which are daytime socials."
+     "rationale": "Afternoon parties are offered as part of the event."
     },
     {
      "feature": "workshops",
      "quote": "Excellent workshops in 8 halls",
-     "rationale": "The event offers dance workshops across eight halls."
+     "rationale": "Dance workshops are part of the congress."
     },
     {
      "feature": "shows",
      "quote": "spectacular shows",
-     "rationale": "The description promises spectacular shows as part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Excellent workshops in 8 halls",
-     "rationale": "Workshops in 8 halls and parties in 5 halls mean more than one dance room."
+     "rationale": "Shows are promised as part of the event."
     },
     {
      "feature": "competition",
      "quote": "Exciting BALKAN COMPETITION",
-     "rationale": "A BALKAN COMPETITION with several categories is announced."
+     "rationale": "A dance competition is part of the event."
     },
     {
-     "feature": "all_in_one",
-     "quote": "Place: Hotel Samokov, Borovets, Bulgaria",
-     "rationale": "The venue is the hotel itself, and the accommodation packages are sold for that same hotel, so the parties and lodging are in the same venue."
+     "feature": "multiple_rooms",
+     "quote": "Amazing parties until sunrise in 5 halls",
+     "rationale": "Parties take place in five separate halls, so there is more than one dance room."
     }
    ]
   }

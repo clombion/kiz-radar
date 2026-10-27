@@ -71,23 +71,38 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "Classes in the morning, afternoon, and evening",
-     "rationale": "The event schedules dance classes across the day, so dance classes are part of the event."
+     "quote": "S B K Dance Classes",
+     "rationale": "The description lists SBK dance classes as part of the weekend."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Classes in the morning, afternoon, and evening!!!!",
+     "rationale": "Classes are scheduled across the day as part of the event."
     },
     {
      "feature": "taxi_dancers",
      "quote": "A team of Dance Taxis",
-     "rationale": "The description states that a team of Dance Taxis is provided."
+     "rationale": "A team of dance taxis is explicitly offered."
     },
     {
      "feature": "themed_parties",
      "quote": "Friday Night: Disco Theme",
-     "rationale": "A named Friday night disco theme is a themed party."
+     "rationale": "The Friday night party has a stated disco theme."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "Saturday Night: Casino Theme Royal",
+     "rationale": "The Saturday night party has a stated casino theme."
     },
     {
      "feature": "dress_code",
      "quote": "Dress Code",
      "rationale": "A dress code section is given for the event."
+    },
+    {
+     "feature": "camping",
+     "quote": "Create your Cottage",
+     "rationale": "Accommodation is in cottages at the Center Parcs park, which counts as bungalow-style lodging."
     }
    ]
   }

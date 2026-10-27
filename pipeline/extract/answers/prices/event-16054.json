@@ -7,13 +7,36 @@
     {
      "kind": "package",
      "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 620.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "€620: Full Pass + Full-board Accommodation"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
      "label_quote": "4★ HOTEL – STANDARD ROOM – FULL BOARD",
      "group_size": 1,
      "days": 7,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 620,
+       "amount": 620.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -36,7 +59,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 570,
+       "amount": 570.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -59,7 +82,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 720,
+       "amount": 720.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -82,7 +105,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 650,
+       "amount": 650.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -95,34 +118,12 @@
        "quote": "Double room: €650"
       }
      ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "4★ HOTEL – SUPERIOR ROOM – FULL BOARD",
-     "group_size": 1,
-     "days": 6,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 150,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Single room: €150"
-      }
-     ]
     }
    ],
    "rule_quotes": [
-    "Participation and booking of passes + accommodation are exclusively reserved for members of the Smooth Dances Association.",
-    "Full board applies to all prices offered."
+    "Full board applies to all prices offered.",
+    "Single standard room: +€180 supplement",
+    "Single room: +€150 supplement"
    ]
   }
  ]

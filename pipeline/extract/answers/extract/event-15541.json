@@ -6,39 +6,44 @@
    "artists": [],
    "features": [
     {
+     "feature": "workshops",
+     "quote": "250+ Workshops in multiple dance styles and levels",
+     "rationale": "The description states that over 250 workshops in multiple dance styles and levels are offered."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "on 7 different Dance Floors",
+     "rationale": "Seven different dance floors are mentioned, so there is more than one dance room."
+    },
+    {
      "feature": "live_music",
-     "quote": "Salsa-Bachata-Kizomba Live Concerts",
-     "rationale": "The description promises live concerts as part of the event."
+     "quote": "Live Concerts",
+     "rationale": "Salsa-Bachata-Kizomba live concerts are part of the programme."
     },
     {
      "feature": "shows",
-     "quote": "Shows",
-     "rationale": "The listing of Live Concerts, Shows, Competitions indicates shows are part of the event."
+     "quote": "Live Concerts, Shows, Competitions",
+     "rationale": "Shows are listed among the event's offerings."
     },
     {
      "feature": "competition",
      "quote": "Competitions",
-     "rationale": "Competitions are named explicitly among the event's offerings."
+     "rationale": "Competitions are listed among the event's offerings."
     },
     {
-     "feature": "workshops",
-     "quote": "250+ Workshops in multiple dance styles and levels",
-     "rationale": "The event offers more than 250 dance workshops across many styles."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "7 different Dance Floors",
-     "rationale": "Seven separate dance floors are offered, so there is more than one dance room."
+     "feature": "day_socials",
+     "quote": "Day & Night Parties",
+     "rationale": "Day parties are offered alongside night parties."
     },
     {
      "feature": "cruise",
      "quote": "Bosphorus Welcome Dance Cruise",
-     "rationale": "A dance cruise on the Bosphorus is part of the programme."
+     "rationale": "The welcome event is a dance cruise on the Bosphorus."
     },
     {
      "feature": "beach_party",
      "quote": "Island Beach Parties",
-     "rationale": "Beach parties on the Princess' Islands are part of the event."
+     "rationale": "Beach parties on the Princess' Islands are part of the programme."
     }
    ]
   }

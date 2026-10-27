@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 59,
+       "amount": 59.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "Full pass (3 Days) : 59€ online (69 € at the door)"
       },
       {
-       "amount": 69,
+       "amount": 69.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -49,7 +49,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 15,
+       "amount": 15.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -72,7 +72,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 7,
+       "amount": 7.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -95,7 +95,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 45,
+       "amount": 45.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -108,7 +108,7 @@
        "quote": "Saturday Full Pass: 45 € (55€ at the door)"
       },
       {
-       "amount": 55,
+       "amount": 55.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -131,7 +131,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 29,
+       "amount": 29.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -154,7 +154,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 29,
+       "amount": 29.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -167,14 +167,14 @@
        "quote": "Saturday Salsa Pass: 29€ (35€)"
       },
       {
-       "amount": 35,
+       "amount": 35.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
        "until": null,
        "quantity": null,
-       "door": false,
+       "door": true,
        "sold_out": false,
        "current": false,
        "quote": "Saturday Salsa Pass: 29€ (35€)"
@@ -190,7 +190,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 29,
+       "amount": 29.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -203,7 +203,7 @@
        "quote": "Saturday 2 last Workshops + party: 29€ (35€ at the door)"
       },
       {
-       "amount": 35,
+       "amount": 35.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -226,7 +226,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 14,
+       "amount": 14.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -239,7 +239,7 @@
        "quote": "Saturday Party : 14€ (15€ at the door)"
       },
       {
-       "amount": 15,
+       "amount": 15.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -254,7 +254,7 @@
      ]
     },
     {
-     "kind": "other",
+     "kind": "day",
      "style": null,
      "label_quote": null,
      "group_size": 1,
@@ -262,7 +262,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 29,
+       "amount": 29.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

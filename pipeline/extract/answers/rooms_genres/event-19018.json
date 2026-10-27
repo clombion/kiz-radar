@@ -5,14 +5,16 @@
    "event_id": 19018,
    "party_rooms": {
     "count": 2,
-    "quote": "KIZOMBA MAIN DANCEFLOOR !!!\n✅ SOCIAL DANCEFLOOR"
+    "quote": "KIZOMBA MAIN DANCEFLOOR !!!\n✅ SOCIAL DANCEFLOOR !!!"
    },
    "class_rooms": null,
    "rooms": [
     {
      "name_as_written": "KIZOMBA MAIN DANCEFLOOR",
      "kind": "party",
-     "genres": [],
+     "genres": [
+      "kizomba"
+     ],
      "quote": "KIZOMBA MAIN DANCEFLOOR !!!"
     },
     {
@@ -32,32 +34,37 @@
     {
      "genre": "kizomba",
      "genre_as_written": "KIZOMBA",
-     "quote": "★ KIZOMBA ★ URBANKIZ"
+     "quote": "★ KIZOMBA ★ URBANKIZ ★ SEMBA ★ AFROHOUSE ★ LADY STYLING ★ ZOUK ★ COMPA …"
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "URBANKIZ",
-     "quote": "★ KIZOMBA ★ URBANKIZ"
+     "quote": "★ KIZOMBA ★ URBANKIZ ★ SEMBA ★ AFROHOUSE ★ LADY STYLING ★ ZOUK ★ COMPA …"
     },
     {
      "genre": "semba",
      "genre_as_written": "SEMBA",
-     "quote": "★ URBANKIZ ★ SEMBA"
+     "quote": "★ KIZOMBA ★ URBANKIZ ★ SEMBA ★ AFROHOUSE ★ LADY STYLING ★ ZOUK ★ COMPA …"
     },
     {
      "genre": "afro",
      "genre_as_written": "AFROHOUSE",
-     "quote": "★ SEMBA ★ AFROHOUSE"
+     "quote": "★ KIZOMBA ★ URBANKIZ ★ SEMBA ★ AFROHOUSE ★ LADY STYLING ★ ZOUK ★ COMPA …"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "LADY STYLING",
+     "quote": "★ KIZOMBA ★ URBANKIZ ★ SEMBA ★ AFROHOUSE ★ LADY STYLING ★ ZOUK ★ COMPA …"
     },
     {
      "genre": "zouk",
      "genre_as_written": "ZOUK",
-     "quote": "★ LADY STYLING ★ ZOUK"
+     "quote": "★ KIZOMBA ★ URBANKIZ ★ SEMBA ★ AFROHOUSE ★ LADY STYLING ★ ZOUK ★ COMPA …"
     },
     {
      "genre": "kompa",
      "genre_as_written": "COMPA",
-     "quote": "ZOUK ★ COMPA"
+     "quote": "★ KIZOMBA ★ URBANKIZ ★ SEMBA ★ AFROHOUSE ★ LADY STYLING ★ ZOUK ★ COMPA …"
     }
    ]
   }

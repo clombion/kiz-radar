@@ -3,30 +3,22 @@
  "events": [
   {
    "event_id": 18654,
-   "artists": [
-    {
-     "name_as_written": "CERTEZA",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "CERTEZA Join us to celebrate a weekend full of joy and entertainment around Kizomba , Semba & Ghetto Zouk music"
-    }
-   ],
+   "artists": [],
    "features": [
     {
      "feature": "workshops",
      "quote": "Wokshops will be delivered by our international teachers",
-     "rationale": "The description states that workshops will be delivered by international teachers."
+     "rationale": "The description states that workshops are part of the event, delivered by teachers."
     },
     {
      "feature": "partner_hotel",
      "quote": "HOTEL : Mercure Hotel",
-     "rationale": "A named hotel is given with a booking rate link, which indicates a partner or negotiated hotel without the accommodation being stated as part of the pass."
+     "rationale": "A named hotel is given for the event, with a booking link to a negotiated rate."
     },
     {
      "feature": "day_socials",
      "quote": "17:00 SOCIAL",
-     "rationale": "A social is scheduled at 17:00 on Saturday, which is a daytime social."
+     "rationale": "A social is scheduled in the afternoon on Saturday, which is a daytime social."
     }
    ]
   }

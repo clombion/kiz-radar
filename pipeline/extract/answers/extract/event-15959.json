@@ -114,27 +114,32 @@
     {
      "feature": "workshops",
      "quote": "8 hours of premium workshops",
-     "rationale": "The description lists eight hours of premium workshops as part of the event."
+     "rationale": "The event offers hours of premium workshops, which are dance classes."
     },
     {
      "feature": "masterclass",
      "quote": "2 hours of exclusive masterclasses",
-     "rationale": "The description lists two hours of exclusive masterclasses."
+     "rationale": "Exclusive masterclasses are explicitly listed as part of the event."
     },
     {
      "feature": "pre_party",
      "quote": "A Vibrant Thursday Pre-Party to kick things off",
-     "rationale": "A Thursday pre-party is advertised to start the festival."
+     "rationale": "The description names a Thursday Pre-Party that opens the event."
     },
     {
      "feature": "all_in_one",
      "quote": "All happening under one roof at a stylish 4-star hotel in Kraków’s lively city center!",
-     "rationale": "The parties and events take place in the same hotel venue where dancers stay."
+     "rationale": "The events take place under one roof in the hotel, so event and accommodation share a venue."
     },
     {
      "feature": "day_socials",
      "quote": "16:00 – 20:00 – SOCIAL",
-     "rationale": "The Friday program includes an afternoon social from 16:00 to 20:00."
+     "rationale": "The program lists an afternoon social from 16:00 to 20:00."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Wardrobe is mandatory",
+     "rationale": "The house rules state that a specific wardrobe is mandatory, which is a dress requirement."
     }
    ]
   }

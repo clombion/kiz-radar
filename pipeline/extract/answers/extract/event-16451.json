@@ -73,23 +73,30 @@
      "style": null,
      "country": "🇸🇪",
      "source_line": "🎧 DJ Joey C 🇸🇪"
+    },
+    {
+     "name_as_written": "Kizmania",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Insta: Kizmania.sthlm"
     }
    ],
    "features": [
     {
      "feature": "workshops",
      "quote": "Workshops with world-class instructors",
-     "rationale": "The event lists workshops with instructors as part of its program."
+     "rationale": "The description lists workshops with world-class instructors as part of the event."
     },
     {
      "feature": "day_socials",
-     "quote": "vibrant day socials",
-     "rationale": "The description explicitly mentions day socials as part of the event."
+     "quote": "Epic parties & vibrant day socials",
+     "rationale": "The description promotes vibrant day socials as part of the event."
     },
     {
      "feature": "partner_hotel",
-     "quote": "RECOMMENDED HOTEL",
-     "rationale": "A recommended hotel (Quality Hotel Globe) is named for attendees, without accommodation being part of the pass."
+     "quote": "MAIN HOTEL: QUALITY HOTEL GLOBE",
+     "rationale": "The event recommends a main hotel, which is a partner hotel not included in the pass."
     }
    ]
   }

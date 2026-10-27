@@ -10,7 +10,12 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "100% Kizomba weekend"
+     "quote": "Get ready for a 100% Kizomba weekend"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Ginga",
+     "quote": "Ginga (1.5 hours): €15"
     }
    ]
   }

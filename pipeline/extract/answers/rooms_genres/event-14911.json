@@ -8,52 +8,22 @@
     "quote": "3 party Room : Salsa, Bachata and Kizomba"
    },
    "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "3 party Room : Salsa, Bachata and Kizomba"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "3 party Room : Salsa, Bachata and Kizomba"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "3 party Room : Salsa, Bachata and Kizomba"
-    }
-   ],
+   "rooms": [],
    "genres": [
     {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "PARIS AFRO LATIN CONGRESS"
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "3 party Room : Salsa, Bachata and Kizomba"
     },
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "BACHATA"
+     "quote": "3 party Room : Salsa, Bachata and Kizomba"
     },
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "KIZOMBA"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "SALSA"
+     "quote": "3 party Room : Salsa, Bachata and Kizomba"
     },
     {
      "genre": "zouk",

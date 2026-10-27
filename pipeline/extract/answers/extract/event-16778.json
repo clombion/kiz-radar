@@ -247,27 +247,27 @@
     {
      "feature": "all_in_one",
      "quote": "ALL IN ONE HOTEL",
-     "rationale": "The event celebrates an all-in-one hotel, meaning the parties take place where dancers stay."
+     "rationale": "The description says the event celebrates ALL IN ONE HOTEL, so the parties take place in the hotel where dancers stay."
     },
     {
      "feature": "multiple_rooms",
      "quote": "3 AMAZING SOCIAL ROOMS",
-     "rationale": "The description lists three separate social dance rooms."
+     "rationale": "The event lists three separate social dance rooms."
     },
     {
      "feature": "workshops",
-     "quote": "Includes: Workshops + Social Dance + Shows + Open Room",
+     "quote": "Workshops",
      "rationale": "The full pass includes workshops as part of the event."
     },
     {
      "feature": "shows",
-     "quote": "Includes: Workshops + Social Dance + Shows + Open Room",
-     "rationale": "The full pass includes shows as part of the event."
+     "quote": "Shows",
+     "rationale": "The full pass includes shows."
     },
     {
      "feature": "partner_hotel",
-     "quote": "Enter the promo code KIZOMBAMAD at:",
-     "rationale": "A promo code for booking rooms at a named partner hotel is given, without the hotel being part of the pass."
+     "quote": "Eurostars Hotels – Exe Convention Plaza Madrid",
+     "rationale": "A specific hotel is named with a promo code for booking rooms there, while the room is not part of the pass."
     }
    ]
   }

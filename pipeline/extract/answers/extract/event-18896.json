@@ -5,43 +5,43 @@
    "event_id": 18896,
    "artists": [
     {
-     "name_as_written": "C4 PEDRO",
+     "name_as_written": "C4 Pedro",
      "role": "performer",
      "style": null,
      "country": null,
-     "source_line": "🎤 C4 PEDRO"
+     "source_line": "•C4 Pedro concert"
     }
    ],
    "features": [
     {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE RESORT",
-     "rationale": "The event is described as an all-in-one resort, meaning the parties happen at the hotel where dancers stay."
-    },
-    {
      "feature": "pre_party",
      "quote": "PRE PARTY",
-     "rationale": "A PRE PARTY is listed on Thursday 13th May before the festival starts."
+     "rationale": "The description lists a PRE PARTY on Thursday 13th May before the main festival."
     },
     {
      "feature": "after_party",
      "quote": "AFTER PARTY",
-     "rationale": "An AFTER PARTY is listed for Monday 17th."
+     "rationale": "The description has an AFTER PARTY section on Monday 17th."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE RESORT",
+     "rationale": "The event is described as all in one resort, with the festival held at Hotel Orquidea and a hotel promo for the event."
     },
     {
      "feature": "workshops",
      "quote": "8 Workshops",
-     "rationale": "The programme lists 8 workshops as part of the festival."
+     "rationale": "The festival lineup includes eight workshops."
     },
     {
      "feature": "live_music",
      "quote": "Live concert with his band",
-     "rationale": "A live concert with a band is part of the programme."
+     "rationale": "A live concert with a band is part of the event."
     },
     {
      "feature": "partner_hotel",
      "quote": "Hotel promo: SUNNYC4",
-     "rationale": "A hotel promo code is given for a negotiated hotel rate, without the accommodation being part of the pass."
+     "rationale": "A hotel promo code is offered for booking the event hotels, without the accommodation being included in the pass."
     }
    ]
   }

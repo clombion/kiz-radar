@@ -93,12 +93,12 @@
     {
      "feature": "workshops",
      "quote": "Offers tailor-made workshops to develop all aspects of your dance",
-     "rationale": "The description states that tailor-made workshops are offered."
+     "rationale": "The event offers tailor-made dance workshops."
     },
     {
      "feature": "partner_hotel",
      "quote": "HOTEL RECOMMENDATIONS:",
-     "rationale": "The event recommends a main hotel and a closest option for accommodation, which is not part of the pass."
+     "rationale": "The event recommends hotels, which are not part of the pass."
     }
    ]
   }

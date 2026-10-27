@@ -131,13 +131,6 @@
      "source_line": "🕺 MARCO & JAHIA 💃"
     },
     {
-     "name_as_written": "Liguria Kizomba Congress Organizers",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "➡️ Liguria Kizomba Congress Organizers ⬅️"
-    },
-    {
      "name_as_written": "LUCA ARRIGONI",
      "role": "organiser",
      "style": null,
@@ -157,28 +150,35 @@
      "style": null,
      "country": null,
      "source_line": "▶️ ROCCO MARIANI https://www.facebook.com/rocco.mariani"
+    },
+    {
+     "name_as_written": "Liguria Kizomba Congress Organizers",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "➡️ Liguria Kizomba Congress Organizers ⬅️"
     }
    ],
    "features": [
     {
      "feature": "all_in_one",
      "quote": "ALL IN ONE LOCATION",
-     "rationale": "The event location is the same hotel where rooms are booked, so the parties take place in the hotel."
+     "rationale": "The event is held in one location, the same hotel where dancers are invited to stay."
     },
     {
      "feature": "workshops",
-     "quote": "3 days of workshops and 3 party nights",
-     "rationale": "The event includes three days of workshops."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 party nights with rooms dedicated to Kizomba",
-     "rationale": "The parties use several rooms dedicated to Kizomba."
+     "quote": "3 days of workshops",
+     "rationale": "The congress includes three days of dance workshops."
     },
     {
      "feature": "partner_hotel",
      "quote": "Rates per room, per night, on a B&B basis",
-     "rationale": "A negotiated hotel room rate is offered, while accommodation is not part of the Full Pass."
+     "rationale": "The hotel offers negotiated room rates for attendees without accommodation being part of the pass."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 party nights with rooms dedicated to Kizomba",
+     "rationale": "The party nights use several rooms dedicated to Kizomba."
     }
    ]
   }

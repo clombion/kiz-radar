@@ -8,32 +8,32 @@
     {
      "feature": "workshops",
      "quote": "Over 25 Master Dance Workshops",
-     "rationale": "The description advertises more than twenty-five dance workshops across the weekend."
+     "rationale": "The description states that more than 25 dance workshops are part of the event."
+    },
+    {
+     "feature": "shows",
+     "quote": "Spectacular World Dance Champions & Pro-Am Dance Performances",
+     "rationale": "Performances by dancers are advertised, and a showcase is scheduled at 8:00pm each day."
     },
     {
      "feature": "competition",
      "quote": "Kids Dance Competitions",
-     "rationale": "Dance competitions for kids are listed as part of the event."
+     "rationale": "The event includes dance competitions for kids."
     },
     {
      "feature": "pool_party",
-     "quote": "Pool Party 2:00pm",
-     "rationale": "A pool party is scheduled on Saturday at 2:00pm."
+     "quote": "Pool Parties",
+     "rationale": "Pool parties are listed among the event's offerings and scheduled on Saturday and Sunday."
     },
     {
      "feature": "pre_party",
      "quote": "PRE PARTY @ 9:00 PM",
-     "rationale": "A pre-party is scheduled on Thursday evening before the main event."
-    },
-    {
-     "feature": "shows",
-     "quote": "Dance Showcases 8:00pm",
-     "rationale": "Dance showcases with performances are scheduled each evening."
+     "rationale": "A pre-party is scheduled for Thursday before the main weekend."
     },
     {
      "feature": "partner_hotel",
      "quote": "$149.00 HOTEL ROOMS DISCOUNT LINK BELOW",
-     "rationale": "A discounted hotel room rate is offered through a link, without the accommodation being part of the pass."
+     "rationale": "A negotiated discounted hotel room rate is offered without the accommodation being part of the pass."
     }
    ]
   }

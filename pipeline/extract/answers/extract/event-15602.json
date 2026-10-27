@@ -8,12 +8,17 @@
     {
      "feature": "workshops",
      "quote": "Workshops & Bootcamps",
-     "rationale": "The event lists workshops as part of its programme."
+     "rationale": "The event lists workshops as part of the programme."
     },
     {
      "feature": "bootcamp_intensive",
      "quote": "Workshops & Bootcamps",
-     "rationale": "Bootcamps are listed as part of the programme alongside workshops."
+     "rationale": "The programme explicitly includes bootcamps."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 Dancefloors",
+     "rationale": "The description states there are two dancefloors."
     },
     {
      "feature": "day_socials",
@@ -26,14 +31,9 @@
      "rationale": "A masterclass is offered as a separately bookable session."
     },
     {
-     "feature": "multiple_rooms",
-     "quote": "2 Dancefloors",
-     "rationale": "The event has two dance floors."
-    },
-    {
      "feature": "partner_hotel",
      "quote": "Main Hotel",
-     "rationale": "A hotel is named and guests are directed to booking for accommodation, which suggests a recommended hotel."
+     "rationale": "A named hotel is listed for accommodation, with bookings made through the organisers, without accommodation included in the pass."
     }
    ]
   }

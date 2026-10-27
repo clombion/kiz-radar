@@ -79,7 +79,7 @@
     {
      "feature": "partner_hotel",
      "quote": "The main venue and the recommended hotel are just steps apart",
-     "rationale": "The description names a recommended hotel located near the main venue, without saying accommodation is part of the pass."
+     "rationale": "The description names a recommended hotel close to the main venue, which is a partner hotel not included in the pass."
     }
    ]
   }

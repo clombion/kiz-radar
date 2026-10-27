@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 690,
+       "amount": 690.0,
        "currency": "DKK",
        "fee": null,
        "alt": null,
@@ -21,12 +21,12 @@
        "until": "06-12",
        "quantity": null,
        "door": false,
-       "sold_out": true,
+       "sold_out": false,
        "current": false,
-       "quote": "❌Blind pass – 690 dkk (29th May-12th June) ❌"
+       "quote": "Blind pass – 690 dkk (29th May-12th June)"
       },
       {
-       "amount": 850,
+       "amount": 850.0,
        "currency": "DKK",
        "fee": null,
        "alt": null,
@@ -34,12 +34,12 @@
        "until": "08-31",
        "quantity": null,
        "door": false,
-       "sold_out": true,
+       "sold_out": false,
        "current": false,
-       "quote": "❌ Early supporter – 850 dkk (13th June -31st August)❌"
+       "quote": "Early supporter – 850 dkk (13th June -31st August)"
       },
       {
-       "amount": 990,
+       "amount": 990.0,
        "currency": "DKK",
        "fee": null,
        "alt": null,

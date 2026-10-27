@@ -44,7 +44,7 @@
     {
      "feature": "workshops",
      "quote": "Workshops & bootcamps",
-     "rationale": "The event lists workshops as part of what to expect."
+     "rationale": "The event lists workshops as part of the program."
     },
     {
      "feature": "bootcamp_intensive",
@@ -54,7 +54,7 @@
     {
      "feature": "day_socials",
      "quote": "Day socials",
-     "rationale": "The event lists day socials in its program."
+     "rationale": "The 'What to expect' list explicitly includes daytime socials."
     }
    ]
   }

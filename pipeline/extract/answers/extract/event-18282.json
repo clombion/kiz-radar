@@ -140,44 +140,44 @@
    ],
    "features": [
     {
-     "feature": "taxi_dancers",
-     "quote": "TAXI DANCERS",
-     "rationale": "The opening list of the description names taxi dancers as present at the event."
-    },
-    {
      "feature": "workshops",
      "quote": "WORKSHOPS WITH INTERNATIONAL ARTISTS",
-     "rationale": "The description explicitly lists workshops with international artists as part of the event."
+     "rationale": "The description lists workshops with international artists as part of the event."
     },
     {
-     "feature": "themed_parties",
-     "quote": "Dress Code: GOLD",
-     "rationale": "The programme gives themed party nights with a colour dress code (GOLD, RED, WHITE)."
+     "feature": "taxi_dancers",
+     "quote": "TAXI DANCERS",
+     "rationale": "The description explicitly states that taxi dancers are present."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "Location: Hotel Verri, Via Beata Vergine, 4, 24040 Misano di Gera d’Adda (BG)",
+     "rationale": "The event location is the hotel where dancers can book rooms, so the parties and accommodation share one venue."
     },
     {
      "feature": "dress_code",
      "quote": "Dress Code: GOLD",
-     "rationale": "A dress code is explicitly stated for the parties."
+     "rationale": "A dress code is stated for the gala party."
     },
     {
-     "feature": "day_socials",
-     "quote": "Social Kiz",
-     "rationale": "The programme schedules Social Kiz sessions during the afternoons and daytime."
+     "feature": "themed_parties",
+     "quote": "22:30: Friday Party – Dress Code: RED",
+     "rationale": "Parties with colour dress codes such as RED and WHITE are themed nights."
     },
     {
      "feature": "multiple_rooms",
      "quote": "SOCIAL ROOM",
-     "rationale": "Mention of a separate social room indicates more than one dance room."
+     "rationale": "A separate social room is mentioned alongside the main dance space, indicating more than one dance room."
     },
     {
-     "feature": "all_in_one",
-     "quote": "Location: Hotel Verri",
-     "rationale": "The event takes place at the hotel where dancers are invited to stay, with check-in and rooms on site."
+     "feature": "day_socials",
+     "quote": "11:00 – 13:00: Social Kiz",
+     "rationale": "Daytime social dance sessions are listed in the programme."
     },
     {
      "feature": "meals_included",
-     "quote": "includes breakfast and city tax",
-     "rationale": "The room package price explicitly includes breakfast."
+     "quote": "(includes breakfast and city tax)",
+     "rationale": "The room rate package explicitly includes breakfast."
     }
    ]
   }

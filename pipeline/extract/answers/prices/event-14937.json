@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "90 𝙀𝙐𝙍𝙊 first 50 passes – SOLD OUT"
       },
       {
-       "amount": 95,
+       "amount": 95.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -37,19 +37,9 @@
        "sold_out": true,
        "current": false,
        "quote": "95 𝙀𝙐𝙍𝙊 next 50 passes – SOLD OUT"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
+      },
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -62,7 +52,7 @@
        "quote": "FULL Pass – 110 euro"
       },
       {
-       "amount": 115,
+       "amount": 115.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -75,7 +65,7 @@
        "quote": "FULL Pass – 115 euro"
       },
       {
-       "amount": 160,
+       "amount": 160.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -98,7 +88,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 95,
+       "amount": 95.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -111,7 +101,7 @@
        "quote": "PARTY Pass – 95 euro"
       },
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

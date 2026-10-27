@@ -133,39 +133,39 @@
    ],
    "features": [
     {
-     "feature": "taxi_dancers",
-     "quote": "TAXI DANCERS",
-     "rationale": "The description has a TAXI DANCERS section, so taxi dancers are present."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Ibis Lyon Est – Chaponnay",
-     "rationale": "Recommended hotels are listed under ACCOMMODATION without being part of the pass."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Social Afternoon",
-     "rationale": "A daytime social afternoon is part of the programme."
+     "feature": "workshops",
+     "quote": "Kizomba Fusion – Progressive Level",
+     "rationale": "The program schedules dance classes at named levels, such as Kizomba Fusion at Progressive Level."
     },
     {
      "feature": "masterclass",
      "quote": "MASTERCLASSES",
-     "rationale": "A MASTERCLASSES section is listed in the programme."
+     "rationale": "A masterclass section is listed in the program with named teachers."
     },
     {
      "feature": "multiple_rooms",
      "quote": "2 Rooms • 2 Vibes",
-     "rationale": "The event uses more than one dance room, Lomé Room and Kinshasa Room."
+     "rationale": "The Saturday heading states the event has two rooms."
     },
     {
-     "feature": "workshops",
-     "quote": "Kizomba – Intermediate Level",
-     "rationale": "Leveled dance classes are scheduled as part of the programme."
+     "feature": "taxi_dancers",
+     "quote": "TAXI DANCERS",
+     "rationale": "A taxi dancers section lists dancer teams."
     },
     {
      "feature": "dress_code",
      "quote": "Dress Code Respected = Sweet Treats Offered",
-     "rationale": "The description refers to a dress code being respected."
+     "rationale": "The text refers to a dress code that participants are expected to respect."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Ibis Lyon Est – Chaponnay",
+     "rationale": "Hotels are listed under the accommodation heading as places to stay for the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Social Afternoon",
+     "rationale": "The Friday program includes a daytime social afternoon session."
     }
    ]
   }

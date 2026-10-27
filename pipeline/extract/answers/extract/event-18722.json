@@ -96,9 +96,9 @@
      "source_line": "Said Dstreet 🇫🇷"
     },
     {
-     "name_as_written": "Jules & Yuna",
+     "name_as_written": "Jules & Yuna TarraxoPop",
      "role": "teacher",
-     "style": "TarraxoPop",
+     "style": null,
      "country": "🇫🇷",
      "source_line": "Jules & Yuna TarraxoPop 🇫🇷"
     },
@@ -177,27 +177,27 @@
     {
      "feature": "multiple_rooms",
      "quote": "4 NIGHT PARTIES- 2 rooms",
-     "rationale": "The line states that the night parties take place in 2 rooms, so there is more than one dance floor."
+     "rationale": "The night parties are listed as taking place in 2 rooms, so there is more than one dance floor."
     },
     {
      "feature": "day_socials",
      "quote": "3 DAY SOCIALS- 2 rooms",
-     "rationale": "The event lists three day socials, which are daytime socials."
+     "rationale": "The programme includes three daytime socials."
     },
     {
      "feature": "workshops",
      "quote": "WORKSHOPS- 2 rooms",
-     "rationale": "Workshops are listed as part of the event programme."
+     "rationale": "Dance workshops are part of the programme."
     },
     {
      "feature": "competition",
      "quote": "BATTLE KIZZ Qualifications",
-     "rationale": "Battle qualifications are a competition within the event."
+     "rationale": "A battle qualification round is part of the event."
     },
     {
      "feature": "private_classes",
      "quote": "PRIVATE CLASSES",
-     "rationale": "Private classes are listed as an offering of the event."
+     "rationale": "Private classes are listed among the offerings."
     }
    ]
   }

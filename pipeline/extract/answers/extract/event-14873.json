@@ -141,23 +141,23 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "Workshops and social dance",
-     "rationale": "The Friday schedule lists workshops as part of the event."
+     "quote": "Workshops and social dance.",
+     "rationale": "The schedule lists workshops and social dance as part of the event."
     },
     {
      "feature": "day_socials",
      "quote": "12h-20h Social Dance",
-     "rationale": "A daytime social dance session is scheduled on Sunday afternoon."
+     "rationale": "A daytime social dance session runs from 12h to 20h on Sunday."
     },
     {
      "feature": "accommodation_included",
      "quote": "Only pack Main hotel & Full pass.",
-     "rationale": "The package combining the main hotel and the full pass includes the accommodation."
+     "rationale": "The hotel package is sold together with the full pass, so accommodation is part of the pass package."
     },
     {
      "feature": "all_in_one",
      "quote": "All the event will be in “Isla de la Garena” Hotel",
-     "rationale": "The event takes place in the same hotel where dancers are invited to stay."
+     "rationale": "The parties and workshops take place in the same hotel where dancers are invited to stay."
     }
    ]
   }

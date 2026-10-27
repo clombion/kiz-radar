@@ -10,7 +10,7 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Kizomba • Semba • Konpa • Urban Kiz • Tarraxo • Ghetto Zouk • Afro"
+     "quote": "Multiple styles:\nKizomba • Semba • Konpa • Urban Kiz • Tarraxo • Ghetto Zouk • Afro"
     },
     {
      "genre": "semba",
@@ -20,27 +20,27 @@
     {
      "genre": "kompa",
      "genre_as_written": "Konpa",
-     "quote": "Kizomba • Semba • Konpa • Urban Kiz • Tarraxo • Ghetto Zouk • Afro"
+     "quote": "Semba • Konpa • Urban Kiz"
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "Urban Kiz",
-     "quote": "Kizomba • Semba • Konpa • Urban Kiz • Tarraxo • Ghetto Zouk • Afro"
+     "quote": "Konpa • Urban Kiz • Tarraxo"
     },
     {
      "genre": "tarraxo",
      "genre_as_written": "Tarraxo",
-     "quote": "Kizomba • Semba • Konpa • Urban Kiz • Tarraxo • Ghetto Zouk • Afro"
+     "quote": "Urban Kiz • Tarraxo • Ghetto Zouk"
     },
     {
      "genre": "zouk",
      "genre_as_written": "Ghetto Zouk",
-     "quote": "Kizomba • Semba • Konpa • Urban Kiz • Tarraxo • Ghetto Zouk • Afro"
+     "quote": "Tarraxo • Ghetto Zouk • Afro"
     },
     {
      "genre": "afro",
      "genre_as_written": "Afro",
-     "quote": "Kizomba • Semba • Konpa • Urban Kiz • Tarraxo • Ghetto Zouk • Afro"
+     "quote": "Ghetto Zouk • Afro"
     }
    ]
   }

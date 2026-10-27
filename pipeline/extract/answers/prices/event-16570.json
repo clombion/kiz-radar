@@ -13,7 +13,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 179,
+       "amount": 179.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "⭕ Accommodation + Welcome Drink + Full Pass = €179"
       },
       {
-       "amount": 189,
+       "amount": 189.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "⭕ ⭕ Accommodation + Welcome Drink + Full Pass = €189"
       },
       {
-       "amount": 199,
+       "amount": 199.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -62,7 +62,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -85,7 +85,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -108,7 +108,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 25,
+       "amount": 25.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -131,7 +131,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 15,
+       "amount": 15.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -154,7 +154,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 15,
+       "amount": 15.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

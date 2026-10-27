@@ -114,17 +114,17 @@
     {
      "feature": "workshops",
      "quote": "3 days of Workshops/Parties/Socials",
-     "rationale": "The description states that the three-day event includes workshops alongside parties and socials."
+     "rationale": "The event lists workshops as part of its three days."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "B&B Hotel Böblingen : 3 mnts walk",
+     "rationale": "The description recommends a list of named hotels near the venue under its Accommodations heading, without the accommodation being part of a pass."
     },
     {
      "feature": "dress_code",
      "quote": "Friday: Spring festival local traditional",
-     "rationale": "A dress suggestion is given for Friday, showing that a dress code is stated."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Accommodations:",
-     "rationale": "The description lists recommended hotels with booking links, which are not part of the event pass."
+     "rationale": "A dress code for Friday is explicitly stated under the Dress code heading."
     }
    ]
   }

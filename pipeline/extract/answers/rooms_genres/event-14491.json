@@ -11,12 +11,12 @@
    "rooms": [
     {
      "name_as_written": "𝖬𝗐𝖺𝗇𝗀𝗈𝗅é 𝗋𝗈𝗈𝗆",
-     "kind": "unspecified",
+     "kind": "party",
      "genres": [],
      "quote": "𝐑𝐎𝐎𝐌 1️⃣: 𝖬𝗐𝖺𝗇𝗀𝗈𝗅é 𝗋𝗈𝗈𝗆 (same as the Paris edition)"
     },
     {
-     "name_as_written": "𝐑𝐎𝐎𝐌 2️⃣",
+     "name_as_written": null,
      "kind": "party",
      "genres": [
       "zouk",
@@ -26,13 +26,15 @@
      "quote": "𝐑𝐎𝐎𝐌 2️⃣: Ghettozouk, Tarraxinha, Zouk, Konpa"
     },
     {
-     "name_as_written": "𝐑𝐎𝐎𝐌 3️⃣",
+     "name_as_written": null,
      "kind": "party",
      "genres": [
       "afro",
       "other",
       "kuduro",
-      "reggaeton"
+      "reggaeton",
+      "other",
+      "other"
      ],
      "quote": "𝐑𝐎𝐎𝐌 3️⃣: Afrohouse, Amapiano, Kuduro, reggaeton, R&B, Hip hop, Afrobeats"
     }
@@ -71,6 +73,16 @@
     {
      "genre": "reggaeton",
      "genre_as_written": "reggaeton",
+     "quote": "𝐑𝐎𝐎𝐌 3️⃣: Afrohouse, Amapiano, Kuduro, reggaeton, R&B, Hip hop, Afrobeats"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "R&B",
+     "quote": "𝐑𝐎𝐎𝐌 3️⃣: Afrohouse, Amapiano, Kuduro, reggaeton, R&B, Hip hop, Afrobeats"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Hip hop",
      "quote": "𝐑𝐎𝐎𝐌 3️⃣: Afrohouse, Amapiano, Kuduro, reggaeton, R&B, Hip hop, Afrobeats"
     }
    ]

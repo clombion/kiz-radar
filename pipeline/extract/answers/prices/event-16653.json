@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 119,
+       "amount": 119.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -29,7 +29,7 @@
     }
    ],
    "rule_quotes": [
-    "Prices will increase as the event approaches"
+    "Prices will increase as the event approaches, so secure your ticket early"
    ]
   }
  ]

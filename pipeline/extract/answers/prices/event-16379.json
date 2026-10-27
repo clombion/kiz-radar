@@ -7,13 +7,13 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": null,
+     "label_quote": "✳️BOOKING YOUR PASS✳️",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -23,10 +23,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "First 50 full passes for ONLY £90 until 14th February 2026 OR when the first 50 are sold out"
+       "quote": "🔴First 50 full passes for ONLY £90 until 14th February 2026 OR when the first 50 are sold out🔥"
       },
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -36,10 +36,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "£110 until 1st May 2026"
+       "quote": "🔴£110 until 1st May 2026"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -49,10 +49,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "£120 until 1st June 2026"
+       "quote": "🔴£120 until 1st June 2026"
       },
       {
-       "amount": 130,
+       "amount": 130.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -62,10 +62,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "£130 until 1st July 2026"
+       "quote": "🔴£130 until 1st July 2026"
       },
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -75,7 +75,7 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "£140 on the door (subject to availability)"
+       "quote": "🔴£140 on the door (subject to availability)"
       }
      ]
     }

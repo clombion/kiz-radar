@@ -9,13 +9,8 @@
    "genres": [
     {
      "genre": "salsa",
-     "genre_as_written": "Cuban Salsa",
+     "genre_as_written": "SALSA CUBANA",
      "quote": "Best SALSA CUBANA teacher in Norway"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata Sensual",
-     "quote": "R. ORNELAS – Bachata Sensual"
     },
     {
      "genre": "bachata",
@@ -24,18 +19,18 @@
     },
     {
      "genre": "kizomba",
-     "genre_as_written": "Kizomba",
+     "genre_as_written": "KIZOMBA",
      "quote": "Best KIZOMBA teacher I know"
     },
     {
      "genre": "zouk",
      "genre_as_written": "B.Zouk",
-     "quote": "B.Zouk"
+     "quote": "CELINA & KAROL – B.Zouk"
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "Urban Kiz",
-     "quote": "Urban Kiz"
+     "quote": "JULIAN & HEIðA – Urban Kiz"
     }
    ]
   }

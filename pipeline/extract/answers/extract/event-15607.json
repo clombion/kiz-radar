@@ -106,33 +106,33 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "in our All in one Hotel Meersburg",
-     "rationale": "The description says the event is held in an all-in-one hotel, so the parties and accommodation share one venue."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Main Hotel:",
-     "rationale": "A main hotel is named for guests to book rooms, which is a recommended hotel rather than an included stay."
+     "quote": "All in one Hotel Meersburg",
+     "rationale": "The description names the event as an all-in-one hotel event, so the parties take place in the hotel where dancers stay."
     },
     {
      "feature": "workshops",
      "quote": "Workshops & Bootcamps",
-     "rationale": "The program lists workshops as part of the event."
+     "rationale": "The programme lists workshops as part of the event."
     },
     {
      "feature": "bootcamp_intensive",
      "quote": "Workshops & Bootcamps",
-     "rationale": "The highlights list bootcamps as part of the event."
+     "rationale": "Bootcamps are listed as part of the event programme."
     },
     {
      "feature": "masterclass",
      "quote": "Masterclass (separat buchbar)",
-     "rationale": "A masterclass is scheduled in the program and can be booked separately."
+     "rationale": "A masterclass is listed in the programme on Sunday."
     },
     {
      "feature": "day_socials",
      "quote": "16:00 -20:00Social",
-     "rationale": "A daytime social runs on Sunday afternoon in the program."
+     "rationale": "A daytime social is scheduled on Sunday afternoon."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Book your Room on this Email & password",
+     "rationale": "Rooms are booked through the venue hotel with a dedicated booking access, which suggests a negotiated hotel rate outside the pass."
     }
    ]
   }

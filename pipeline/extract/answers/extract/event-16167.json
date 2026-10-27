@@ -73,55 +73,48 @@
      "style": null,
      "country": null,
      "source_line": "📷📹 Photographer/Videographer: KITOKO Dance"
-    },
-    {
-     "name_as_written": "Independent Taxis",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🔥😍Independent Taxis"
     }
    ],
    "features": [
     {
      "feature": "workshops",
      "quote": "8 hours of workshops",
-     "rationale": "The line states that the event includes eight hours of workshops."
+     "rationale": "The line states that there are 8 hours of workshops."
     },
     {
      "feature": "taxi_dancers",
      "quote": "Independent Taxis",
-     "rationale": "The event lists an Independent Taxis team, which indicates taxi dancers are present."
+     "rationale": "The line lists Independent Taxis, indicating taxi dancers are present."
     },
     {
      "feature": "pre_party",
      "quote": "1 FREE outdoor pre-party",
-     "rationale": "A free outdoor pre-party is listed before the main festival evenings."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Saturday social event from 4 PM to 8 PM",
-     "rationale": "A daytime social event from 4 PM to 8 PM is scheduled on Saturday."
+     "rationale": "A free outdoor pre-party is announced before the main evenings."
     },
     {
      "feature": "partner_hotel",
      "quote": "PARTNER HOTEL:",
-     "rationale": "The description names a partner hotel, B&B HOTEL AIX LES BAINS, with a discount code."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "DRESS CODES",
-     "rationale": "A dress code section is given for each festival night."
+     "rationale": "A partner hotel is named, with a 10% discount code, and accommodation is not part of the pass."
     },
     {
      "feature": "themed_parties",
      "quote": "2 Themes for 2 evenings",
-     "rationale": "Two evenings are given themes, so themed parties are part of the event."
+     "rationale": "Two evenings have themes, which are themed parties."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "DRESS CODES",
+     "rationale": "The description has a dress codes section listing codes for each night."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Saturday social event from 4 PM to 8 PM",
+     "rationale": "A daytime social event runs from 4 PM to 8 PM on Saturday."
     },
     {
      "feature": "multiple_rooms",
      "quote": "2 Social rooms at the Academy",
-     "rationale": "The venue has two social rooms, meaning more than one dance floor."
+     "rationale": "Two social rooms at the venue means more than one dance room."
     }
    ]
   }

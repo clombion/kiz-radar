@@ -107,19 +107,24 @@
      "role": "media",
      "style": null,
      "country": "🇪🇸",
-     "source_line": "#PHOTOGRAPHY & VIDEO:"
+     "source_line": "ÓSCAR DEL MORAL (Vigo)🇪🇸"
     }
    ],
    "features": [
     {
      "feature": "workshops",
      "quote": "All workshops on Friday, Saturday, and Sunday",
-     "rationale": "The full pass description states that workshops take place on all three days."
+     "rationale": "The full pass includes all workshops on the three days, so dance classes are part of the event."
     },
     {
      "feature": "shows",
      "quote": "SHOWS | 11:00 PM",
-     "rationale": "The Saturday schedule lists a shows slot performed by the artists."
+     "rationale": "A shows slot is listed in the Saturday social night schedule."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "PRE-PARTY @ PALMERA PLAYA",
+     "rationale": "A pre-party at Palmera Playa is scheduled before the Saturday and Sunday socials."
     },
     {
      "feature": "live_music",
@@ -127,34 +132,29 @@
      "rationale": "The party pass includes a concert."
     },
     {
-     "feature": "pre_party",
-     "quote": "PRE-PARTY @ PALMERA PLAYA",
-     "rationale": "A Friday pre-party is listed before the main social events."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "SOCIAL | 12:30 PM to 1:30 PM",
-     "rationale": "The Sunday schedule includes a daytime social in the early afternoon."
-    },
-    {
      "feature": "multiple_rooms",
      "quote": "SOCIAL WITH 2 ROOMS",
-     "rationale": "The Saturday social is advertised with two dance rooms."
+     "rationale": "The Saturday social has two dance rooms."
     },
     {
      "feature": "dress_code",
      "quote": "DRESS CODE:",
-     "rationale": "Dress codes are stated for the Friday, Saturday and Sunday programme."
+     "rationale": "Dress codes are stated for the event nights."
     },
     {
      "feature": "partner_hotel",
      "quote": "Discount Code:",
-     "rationale": "Hotel Attica21 rooms are offered at a negotiated rate with a discount code, separate from the pass."
+     "rationale": "Room rentals at Hotel Attica21 come with a discount code for event guests, without the room being part of the pass."
     },
     {
      "feature": "all_in_one",
-     "quote": "*** SOCIAL NIGHT @ HOTEL ATTICA 21 ***",
-     "rationale": "The Saturday social night takes place in the hotel where the room rentals are offered."
+     "quote": "HOTEL ATTICA21 – SAMIL, VIGO",
+     "rationale": "The Saturday and Sunday socials are held at the hotel that also offers rooms to event guests."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "AFTERNOON/NIGHT SOCIAL",
+     "rationale": "An afternoon social is part of the Sunday programme."
     }
    ]
   }

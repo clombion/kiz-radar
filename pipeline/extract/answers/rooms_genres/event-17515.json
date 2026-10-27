@@ -17,7 +17,7 @@
       "tarraxo",
       "douceur"
      ],
-     "quote": "Rooms 1 Urbankiz, Tarraxo, Douceur"
+     "quote": "Rooms 1 Urbankiz, Tarraxo, Douceur…"
     },
     {
      "name_as_written": "Room 2",
@@ -27,39 +27,39 @@
       "semba",
       "zouk"
      ],
-     "quote": "Room 2 Kizomba, Semba, Ghettozouk"
+     "quote": "Room 2 Kizomba, Semba, Ghettozouk…"
     }
    ],
    "genres": [
     {
      "genre": "urbankiz",
      "genre_as_written": "Urbankiz",
-     "quote": "Rooms 1 Urbankiz, Tarraxo, Douceur"
+     "quote": "Rooms 1 Urbankiz, Tarraxo, Douceur…"
     },
     {
      "genre": "tarraxo",
      "genre_as_written": "Tarraxo",
-     "quote": "Rooms 1 Urbankiz, Tarraxo, Douceur"
+     "quote": "Rooms 1 Urbankiz, Tarraxo, Douceur…"
     },
     {
      "genre": "douceur",
      "genre_as_written": "Douceur",
-     "quote": "Rooms 1 Urbankiz, Tarraxo, Douceur"
+     "quote": "Rooms 1 Urbankiz, Tarraxo, Douceur…"
     },
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Room 2 Kizomba, Semba, Ghettozouk"
+     "quote": "Room 2 Kizomba, Semba, Ghettozouk…"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "Room 2 Kizomba, Semba, Ghettozouk"
+     "quote": "Room 2 Kizomba, Semba, Ghettozouk…"
     },
     {
      "genre": "zouk",
      "genre_as_written": "Ghettozouk",
-     "quote": "Room 2 Kizomba, Semba, Ghettozouk"
+     "quote": "Ghettozouk"
     },
     {
      "genre": "afro",

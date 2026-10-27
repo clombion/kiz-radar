@@ -253,13 +253,13 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "An all-in-one experience",
-     "rationale": "The description presents the event as an all-in-one experience where everything happens on site in the hotel."
+     "quote": "Everything happens on site, in an elegant and welcoming venue.",
+     "rationale": "The event and its accommodation take place in the same hotel, so the parties happen on site at the Marriott."
     },
     {
      "feature": "partner_hotel",
      "quote": "OFFICIAL HOTEL – MARRIOTT RIVE GAUCHE",
-     "rationale": "The official hotel is named, with negotiated room rates given, without the accommodation being part of the pass."
+     "rationale": "The description names an official hotel with negotiated room rates that is separate from the pass."
     }
    ]
   }

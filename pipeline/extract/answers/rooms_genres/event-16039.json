@@ -6,13 +6,7 @@
    "party_rooms": null,
    "class_rooms": null,
    "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizzz",
-     "quote": "Pure Kizzz *The Last* Summer Edition"
-    }
-   ]
+   "genres": []
   }
  ]
 }

@@ -6,24 +6,24 @@
    "artists": [],
    "features": [
     {
-     "feature": "multiple_rooms",
-     "quote": "3 parties until dawn in 3 different rooms",
-     "rationale": "The description states that the parties take place in three different rooms, so there is more than one dance room."
-    },
-    {
      "feature": "workshops",
      "quote": "45 hours of themed SBK classes",
-     "rationale": "The event offers 45 hours of dance classes, which are workshops within the event."
+     "rationale": "The event offers 45 hours of dance classes across three levels, which are workshops."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 parties until dawn in 3 different rooms",
+     "rationale": "The parties take place in three different rooms, so there is more than one dance floor."
     },
     {
      "feature": "pre_party",
      "quote": "SBK Pre-Party Workshop (3 Rooms)",
-     "rationale": "A pre-party is scheduled before the main Friday open party."
+     "rationale": "An SBK Pre-Party is scheduled before the main party on Friday and Saturday."
     },
     {
      "feature": "day_socials",
-     "quote": "5:30 PM – 9:00 PM | SBK Social Happy Hour (Indoor/Outdoor)",
-     "rationale": "The social happy hour is an afternoon and early evening social held during the day."
+     "quote": "SBK Social Happy Hour (Indoor/Outdoor)",
+     "rationale": "The SBK Social Happy Hour is an afternoon social held from 5:30 PM."
     }
    ]
   }

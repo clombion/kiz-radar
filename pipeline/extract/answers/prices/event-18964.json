@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 75,
+       "amount": 75.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "★FIRST 20 FULL PASSES AT ONLY £75 (SOLD OUT)"
       },
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "★ Full pass – £80 until the 30th of AUG"
       },
       {
-       "amount": 85,
+       "amount": 85.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "★ Full pass – £85 until the 30th of SEPT"
       },
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -65,7 +65,7 @@
        "quote": "★ Full pass – £90 until the 30th of OCT"
       },
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -82,13 +82,13 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": null,
+     "label_quote": "FIRST 10 FULL COUPLE PASSES",
      "group_size": 2,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -101,7 +101,7 @@
        "quote": "★FIRST 10 FULL COUPLE PASSES AT ONLY £140 (SOLD OUT)"
       },
       {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -114,7 +114,7 @@
        "quote": "★ Full pass – £150 until the 30th of AUG"
       },
       {
-       "amount": 160,
+       "amount": 160.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -127,7 +127,7 @@
        "quote": "★ Full pass – £160 until the 30th of SEPT"
       },
       {
-       "amount": 170,
+       "amount": 170.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -140,7 +140,7 @@
        "quote": "★ Full pass – £170 until the 30th of OCT"
       },
       {
-       "amount": 180,
+       "amount": 180.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -157,13 +157,13 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": null,
+     "label_quote": "💫Early Birds Group deals💫",
      "group_size": 5,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 350,
+       "amount": 350.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -180,13 +180,13 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": null,
+     "label_quote": "💫Early Birds Group deals💫",
      "group_size": 10,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 650,
+       "amount": 650.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -209,7 +209,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 800,
+       "amount": 800.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -232,7 +232,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 1000,
+       "amount": 1000.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -255,7 +255,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 1400,
+       "amount": 1400.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,

@@ -10,7 +10,7 @@
    "class_rooms": null,
    "rooms": [
     {
-     "name_as_written": null,
+     "name_as_written": "100% Bachata Sensual/Modern",
      "kind": "party",
      "genres": [
       "bachata"
@@ -18,7 +18,7 @@
      "quote": "1 floor 100% Bachata Sensual/Modern"
     },
     {
-     "name_as_written": null,
+     "name_as_written": "100% Kizomba/Urban Kiz/Afro House/Konpa/Semba",
      "kind": "party",
      "genres": [
       "kizomba",
@@ -30,7 +30,7 @@
      "quote": "1 floor 100% Kizomba/Urban Kiz/Afro House/Konpa/Semba/Afro House"
     },
     {
-     "name_as_written": null,
+     "name_as_written": "100% Dominican Bachata",
      "kind": "party",
      "genres": [
       "bachata"
@@ -42,42 +42,42 @@
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "1 floor 100% Bachata Sensual/Modern"
+     "quote": "Bachata Sensual/Moderna/Fusion/Dominican"
     },
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "1 floor 100% Kizomba/Urban Kiz/Afro House/Konpa/Semba/Afro House"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Kizomba/Urban Kiz & Konpa"
+     "quote": "Kizomba/Semba/Urban Kiz/Konpa/Afro House"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "1 floor 100% Kizomba/Urban Kiz/Afro House/Konpa/Semba/Afro House"
+     "quote": "Kizomba/Semba/Urban Kiz/Konpa/Afro House"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "Kizomba/Semba/Urban Kiz/Konpa/Afro House"
     },
     {
      "genre": "kompa",
      "genre_as_written": "Konpa",
-     "quote": "Kizomba/Urban Kiz & Konpa"
+     "quote": "Kizomba/Semba/Urban Kiz/Konpa/Afro House"
     },
     {
      "genre": "afro",
      "genre_as_written": "Afro House",
-     "quote": "1 floor 100% Kizomba/Urban Kiz/Afro House/Konpa/Semba/Afro House"
-    },
-    {
-     "genre": "reggaeton",
-     "genre_as_written": "Reggaeton",
-     "quote": "Reggaeton/Afro Artists;"
+     "quote": "Kizomba/Semba/Urban Kiz/Konpa/Afro House"
     },
     {
      "genre": "salsa",
      "genre_as_written": "Salsa",
      "quote": "Salsa DJs;"
+    },
+    {
+     "genre": "reggaeton",
+     "genre_as_written": "Reggaeton",
+     "quote": "Reggaeton/Afro Artists;"
     }
    ]
   }

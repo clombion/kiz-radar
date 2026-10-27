@@ -7,7 +7,10 @@
     "count": 3,
     "quote": "3 dance rooms: Salsa • Bachata • Kizomba"
    },
-   "class_rooms": null,
+   "class_rooms": {
+    "count": 3,
+    "quote": "3 rooms simultaneously"
+   },
    "rooms": [
     {
      "name_as_written": "Salsa",

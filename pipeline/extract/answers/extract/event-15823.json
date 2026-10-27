@@ -351,13 +351,13 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "Over 70 hours of workshops with international and regional artists",
-     "rationale": "The program lists over 70 hours of workshops with artists."
+     "quote": "Over 70 hours of workshops",
+     "rationale": "The program offers more than 70 hours of workshops with artists."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "3 evenings – 3 rooms",
-     "rationale": "Three rooms are dedicated to Salsa, Bachata and Kizomba evenings."
+     "quote": "3 rooms",
+     "rationale": "Three evenings are held in three separate rooms for the dance styles."
     },
     {
      "feature": "pool_party",
@@ -367,7 +367,7 @@
     {
      "feature": "boat_party",
      "quote": "1 Boat Party",
-     "rationale": "The program includes a boat party."
+     "rationale": "The program includes one boat party."
     },
     {
      "feature": "shows",
@@ -381,18 +381,18 @@
     },
     {
      "feature": "accommodation_included",
-     "quote": "Full Pass + Accommodation",
-     "rationale": "The price packages include accommodation with the full pass."
+     "quote": "Full Pass + Accommodation + Full Board",
+     "rationale": "The 450 euro package includes the full pass together with accommodation."
     },
     {
      "feature": "meals_included",
-     "quote": "Full Pass + Accommodation + Full Board",
+     "quote": "Full Board",
      "rationale": "The packages include full board meals."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "Full Board + Transportation",
-     "rationale": "The higher-priced package includes transportation."
+     "rationale": "The 510 euro package includes transportation."
     }
    ]
   }

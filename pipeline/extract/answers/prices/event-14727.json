@@ -13,12 +13,12 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": null,
-       "until": null,
+       "from": "09-01",
+       "until": "09-30",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -26,12 +26,12 @@
        "quote": "*FULL PASS September: €110"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": null,
-       "until": null,
+       "from": "10-01",
+       "until": "10-31",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -39,12 +39,12 @@
        "quote": "FULL PASS October: €120"
       },
       {
-       "amount": 130,
+       "amount": 130.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": null,
-       "until": null,
+       "from": "11-01",
+       "until": "11-30",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -52,12 +52,12 @@
        "quote": "FULL PASS November: €130"
       },
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": null,
-       "until": null,
+       "from": "12-01",
+       "until": "12-31",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -65,12 +65,12 @@
        "quote": "FULL PASS December: €140"
       },
       {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": null,
-       "until": null,
+       "from": "01-01",
+       "until": "01-31",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -80,9 +80,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "The price will increase every month so get your ticket asap!"
-   ]
+   "rule_quotes": []
   }
  ]
 }

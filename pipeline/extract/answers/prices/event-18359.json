@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 65,
+       "amount": 65.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "– FULL PASS 𝑆𝑜𝑙𝑜 ………….. 65€ ✅"
       },
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "– FULL PASS 𝑆𝑜𝑙𝑜 ………….. 60€ ❌"
       },
       {
-       "amount": 55,
+       "amount": 55.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -62,7 +62,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -75,7 +75,7 @@
        "quote": "– FULL PASS 𝐷𝑢𝑜 𝑚𝑖𝑥𝑡𝑒 ….120€ ✅"
       },
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -98,7 +98,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -121,7 +121,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -132,19 +132,6 @@
        "sold_out": true,
        "current": false,
        "quote": "– 10 EARLY BIRD 𝐿𝑒𝑎𝑑𝑒𝑟 … 50€ ❌"
-      },
-      {
-       "amount": 50,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 10,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "– 10 EARLY BIRD 𝐹𝑜𝑙𝑙𝑜𝑤 …. 50€ ❌"
       }
      ]
     }

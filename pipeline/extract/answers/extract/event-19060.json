@@ -233,7 +233,12 @@
     {
      "feature": "workshops",
      "quote": "+30 hours of workshops",
-     "rationale": "The description states that more than 30 hours of workshops are part of the event."
+     "rationale": "The event lists more than 30 hours of workshops as part of what to expect."
+    },
+    {
+     "feature": "shows",
+     "quote": "Awe inspiring performances and show",
+     "rationale": "The description promises performances and a show by the artists."
     },
     {
      "feature": "competition",
@@ -241,9 +246,9 @@
      "rationale": "A Jack & Jill competition with prizes is announced."
     },
     {
-     "feature": "shows",
-     "quote": "Awe inspiring performances and show",
-     "rationale": "Performances and a show by artists are advertised."
+     "feature": "multiple_rooms",
+     "quote": "3000m² dance floor with four floors",
+     "rationale": "Four floors of dance floor indicate more than one dance floor at the venue."
     },
     {
      "feature": "pre_party",
@@ -256,24 +261,24 @@
      "rationale": "Afternoon socials are listed as part of the programme."
     },
     {
-     "feature": "multiple_rooms",
-     "quote": "3000m² dance floor with four floors",
-     "rationale": "The venue has several dance floors across four floors."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "“Quality Hotel Strawberry Arena” in Solna",
-     "rationale": "An official hotel venue is named under the Venue & Hotels section."
-    },
-    {
      "feature": "themed_parties",
      "quote": "Friday: Halloween Party",
-     "rationale": "The dress codes list themed nights such as a Halloween party and a Sparkle & Glam Gala."
+     "rationale": "The Friday night is a themed Halloween party."
     },
     {
      "feature": "dress_code",
      "quote": "Dress Codes",
-     "rationale": "A dress code section lists a dress code for each night."
+     "rationale": "A section titled Dress Codes lists the dress theme for each night."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "“Quality Hotel Strawberry Arena” in Solna",
+     "rationale": "The official venue is a named hotel in Solna."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "All parties and workshops in one amazing venue in the heart of Solna",
+     "rationale": "All parties and workshops take place in the same venue, which is the hotel."
     }
    ]
   }

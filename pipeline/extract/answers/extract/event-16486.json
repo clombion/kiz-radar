@@ -5,13 +5,6 @@
    "event_id": 16486,
    "artists": [
     {
-     "name_as_written": "KIZAL",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "KIZAL – ALBANIA KIZOMBA FESTIVAL"
-    },
-    {
      "name_as_written": "Jojo & Jenny",
      "role": "teacher",
      "style": null,
@@ -240,12 +233,7 @@
     {
      "feature": "all_in_one",
      "quote": "All-in-one resort",
-     "rationale": "The event is held at an all-in-one resort, so the parties take place in the venue where guests stay."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "HOTEL OPTIONS BOOKING",
-     "rationale": "A hotel options booking section suggests a recommended or negotiated hotel without stating that accommodation is part of the pass."
+     "rationale": "The event is held at an all-in-one resort, so the parties take place where dancers stay."
     },
     {
      "feature": "multiple_rooms",
@@ -254,8 +242,13 @@
     },
     {
      "feature": "dress_code",
-     "quote": "DRESS CODES",
-     "rationale": "A dress codes section is listed, although the day entries are empty."
+     "quote": "I DRESS CODES I",
+     "rationale": "A section headed dress codes lists a dress code for each day of the event."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "I HOTEL OPTIONS BOOKING I",
+     "rationale": "A hotel options booking section offers hotel choices without stating that accommodation is part of the pass."
     }
    ]
   }

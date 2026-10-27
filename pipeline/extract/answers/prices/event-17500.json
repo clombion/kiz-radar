@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 135,
+       "amount": 135.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "Early Birds 1st – 135E/couple – SOLD OUT"
       },
       {
-       "amount": 146,
+       "amount": 146.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "Early Birds 2nd – 146E/couple – SOLD OUT"
       },
       {
-       "amount": 158,
+       "amount": 158.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -62,7 +62,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 86,
+       "amount": 86.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

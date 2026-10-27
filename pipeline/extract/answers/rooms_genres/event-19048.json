@@ -5,23 +5,23 @@
    "event_id": 19048,
    "party_rooms": {
     "count": 2,
-    "quote": "Social dancing on 2 floors"
+    "quote": "+13 hours of Social dancing on 2 floors"
    },
    "class_rooms": {
     "count": 2,
-    "quote": "Workshops in 2 rooms"
+    "quote": "+12 hours of Workshops in 2 rooms"
    },
    "rooms": [],
    "genres": [
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "Juan Pablo Paredes (Bachata / Merengue)"
+     "quote": "Bachata, Salsa/Casino, Konpa, Kizomba, Merengue and more"
     },
     {
      "genre": "salsa",
      "genre_as_written": "Salsa/Casino",
-     "quote": "Bachata, Salsa/Casino, Konpa, Kizomba, Merengue and more."
+     "quote": "Bachata, Salsa/Casino, Konpa, Kizomba, Merengue and more"
     },
     {
      "genre": "kompa",
@@ -37,6 +37,11 @@
      "genre": "other",
      "genre_as_written": "Merengue",
      "quote": "Juan Pablo Paredes (Bachata / Merengue)"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Son Cubano",
+     "quote": "(Casino / Son Cubano)"
     },
     {
      "genre": "other",

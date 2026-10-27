@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 85,
+       "amount": 85.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -23,10 +23,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "💎 Mai: 85 €"
+       "quote": "Mai: 85 €"
       },
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -36,10 +36,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "💎 June: 90 €"
+       "quote": "June: 90 €"
       },
       {
-       "amount": 95,
+       "amount": 95.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -49,10 +49,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "💎 July: 95 €"
+       "quote": "July: 95 €"
       },
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -62,10 +62,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "💎 August: 100 €"
+       "quote": "August: 100 €"
       },
       {
-       "amount": 105,
+       "amount": 105.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -75,10 +75,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "💎 September: 105 €"
+       "quote": "September: 105 €"
       },
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -88,10 +88,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "💎 October: 110 €"
+       "quote": "October: 110 €"
       },
       {
-       "amount": 115,
+       "amount": 115.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -101,10 +101,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "💎 November: 115 €"
+       "quote": "November: 115 €"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -114,10 +114,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "💎 December: 120 €"
+       "quote": "December: 120 €"
       },
       {
-       "amount": 125,
+       "amount": 125.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -127,10 +127,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "💎 January: 125 €"
+       "quote": "January: 125 €"
       },
       {
-       "amount": 130,
+       "amount": 130.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -140,10 +140,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "💎 February: 130 €"
+       "quote": "February: 130 €"
       },
       {
-       "amount": 135,
+       "amount": 135.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -153,10 +153,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "💎 March: 135 €"
+       "quote": "March: 135 €"
       },
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -166,7 +166,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "💎 April: 140 €"
+       "quote": "April: 140 €"
       }
      ]
     }

@@ -9,11 +9,11 @@
      "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 7,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 1050,
+       "amount": 1050.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -32,11 +32,11 @@
      "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 14,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 2000,
+       "amount": 2000.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 1500,
+       "amount": 1500.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "1500 nok"
       },
       {
-       "amount": 1400,
+       "amount": 1400.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "🌖 1400 nok – fr 01.Ago-30.Sep"
       },
       {
-       "amount": 1500,
+       "amount": 1500.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -62,7 +62,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 2400,
+       "amount": 2400.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -75,7 +75,7 @@
        "quote": "🌘 2400 nok – fr 01.jun-30.Sep"
       },
       {
-       "amount": 2800,
+       "amount": 2800.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -98,7 +98,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 1100,
+       "amount": 1100.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -111,7 +111,7 @@
        "quote": "🌘 1100 nok – fr 01.Jun-30.Sep"
       },
       {
-       "amount": 1400,
+       "amount": 1400.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -134,7 +134,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 220,
+       "amount": 220.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -157,7 +157,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 260,
+       "amount": 260.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -180,7 +180,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,

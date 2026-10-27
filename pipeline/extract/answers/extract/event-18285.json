@@ -99,18 +99,18 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "(ALL IN ONE)",
-     "rationale": "The event title is labelled as all in one, which in this scene means the parties take place in the hotel where dancers stay."
+     "quote": "LA LUNA FESTIVAL KIZZ DISTRICT 2026 (ALL IN ONE)",
+     "rationale": "The title line labels the event as all in one, which signals that event and accommodation are combined in one venue."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "TICKETS & HOTEL",
+     "rationale": "A hotel link is offered alongside the tickets, which points to a recommended or partner hotel."
     },
     {
      "feature": "multiple_rooms",
      "quote": "Two floors, two energies",
-     "rationale": "Two floors are described, each hosting a different dance style, so there is more than one dance floor."
-    },
-    {
-     "feature": "workshops",
-     "quote": "TEACHERS LINE UP",
-     "rationale": "A teacher line-up indicates that dance classes are part of the event."
+     "rationale": "Two floors are mentioned, meaning more than one dance floor."
     }
    ]
   }

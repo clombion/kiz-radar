@@ -9,13 +9,18 @@
    "genres": [
     {
      "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Welcome to Alma Bachata Festival 2026"
+     "genre_as_written": "BACHATA",
+     "quote": "ALMA BACHATA & KIZOMBA FESTIVAL 2026"
     },
     {
      "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Alma Bachata & Kizomba Festival"
+     "genre_as_written": "KIZOMBA",
+     "quote": "ALMA BACHATA & KIZOMBA FESTIVAL 2026"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata Festival",
+     "quote": "Welcome to Alma Bachata Festival 2026"
     }
    ]
   }

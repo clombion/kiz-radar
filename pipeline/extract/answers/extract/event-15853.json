@@ -5,6 +5,13 @@
    "event_id": 15853,
    "artists": [
     {
+     "name_as_written": "Salsa Zone and Brighton Fiesta Latino",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "*Organisers:* Salsa Zone and Brighton Fiesta Latino – Leading Latin Entertainment Providers"
+    },
+    {
      "name_as_written": "Angel Peinado",
      "role": "teacher",
      "style": null,
@@ -40,7 +47,7 @@
      "source_line": "🔸Jay Jay"
     },
     {
-     "name_as_written": "Gervasio",
+     "name_as_written": "DJ Gervasio",
      "role": "dj",
      "style": null,
      "country": null,
@@ -143,35 +150,28 @@
      "style": null,
      "country": null,
      "source_line": "🔸Rudy"
-    },
-    {
-     "name_as_written": "Salsa Zone and Brighton Fiesta Latino",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "*Organisers:* Salsa Zone and Brighton Fiesta Latino – Leading Latin Entertainment Providers"
     }
    ],
    "features": [
     {
-     "feature": "all_levels_beginners",
-     "quote": "Beginners friendly classes too.",
-     "rationale": "The text explicitly states that the classes are friendly to beginners."
+     "feature": "workshops",
+     "quote": "🔹33 dance classes across 4 days",
+     "rationale": "The event offers 33 dance classes over four days, so classes are part of the event."
     },
     {
-     "feature": "workshops",
-     "quote": "33 dance classes across 4 days",
-     "rationale": "The festival offers a schedule of dance classes as part of the event."
+     "feature": "all_levels_beginners",
+     "quote": "Beginners friendly classes too.",
+     "rationale": "The description explicitly says the classes are beginner friendly."
     },
     {
      "feature": "shows",
      "quote": "Shows, fun music, and great entertainment throughout the event",
-     "rationale": "The highlights list shows as part of the event programme."
+     "rationale": "The highlights list shows as part of the event entertainment."
     },
     {
      "feature": "multiple_rooms",
      "quote": "Three dance rooms",
-     "rationale": "The event has three separate dance rooms."
+     "rationale": "The festival highlights state there are three dance rooms."
     }
    ]
   }

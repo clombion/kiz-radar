@@ -44,37 +44,37 @@
     {
      "feature": "all_in_one",
      "quote": "ALL IN ONE – SHERATON HOTEL LAVAL",
-     "rationale": "The parties and workshops take place in the Sheraton hotel, which is the same venue where dancers are invited to stay."
+     "rationale": "The parties take place in the Sheraton hotel where the event and accommodation share the same venue."
     },
     {
      "feature": "workshops",
      "quote": "Excellent workshops",
-     "rationale": "The description lists workshops as a core part of the festival, and a workshop list follows."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "day socials",
-     "rationale": "The schedule explicitly lists day socials among the daytime activities."
+     "rationale": "The description lists workshops as part of the event."
     },
     {
      "feature": "pre_party",
      "quote": "PRE-PARTY",
-     "rationale": "A pre-party is listed on Thursday July 23 before the main festival days."
+     "rationale": "A pre-party is listed on Thursday before the main event."
     },
     {
      "feature": "after_party",
      "quote": "GNK FESTIVAL – AFTER-PARTY",
-     "rationale": "An after-party is scheduled for Monday July 27."
+     "rationale": "An after-party is listed for Monday July 27th."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "day socials",
+     "rationale": "Daytime socials are listed in the Friday to Sunday schedule."
     },
     {
      "feature": "multiple_rooms",
      "quote": "3 rooms",
-     "rationale": "The description states there are three rooms, meaning more than one dance floor."
+     "rationale": "The schedule states there are three dance rooms."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "SHUTTLE SERVICE (NEW)",
-     "rationale": "A shuttle service is offered, though details are still to come."
+     "rationale": "A shuttle service is announced as a heading for the event."
     }
    ]
   }

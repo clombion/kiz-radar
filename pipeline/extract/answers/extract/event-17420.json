@@ -113,23 +113,23 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "Workshop 19:00-23:00",
-     "rationale": "The schedule lists dance workshops on Friday evening and throughout Saturday and Sunday."
+     "quote": "Workshops: 11:00 – 18:00",
+     "rationale": "The schedule lists workshop sessions on Saturday and Sunday."
     },
     {
      "feature": "pre_party",
      "quote": "Pre Party Workshops",
-     "rationale": "A pre-party session is scheduled on Saturday from 21:00 to 23:00 before the main party."
+     "rationale": "A pre party is scheduled on Saturday from 21:00 to 23:00."
     },
     {
      "feature": "multiple_rooms",
      "quote": "Room 2 Football WM Spiele live on a big Wall",
-     "rationale": "The event has Room 1 and Room 2, so more than one dance room is used."
+     "rationale": "The schedule names Room 1 and Room 2 as separate dance spaces."
     },
     {
      "feature": "day_socials",
      "quote": "Social Room: 14:00-15:00 / 18:00-21:00",
-     "rationale": "Daytime and afternoon social sessions are listed on Saturday."
+     "rationale": "A social room runs in the afternoon and early evening on Saturday."
     }
    ]
   }

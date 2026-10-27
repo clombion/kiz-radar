@@ -92,33 +92,28 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "14 Hours of Classes, with a special program",
-     "rationale": "The event offers 14 hours of dance classes as part of the program."
+     "quote": "14 Hours of Classes",
+     "rationale": "The description states that 14 hours of classes are part of the program."
     },
     {
      "feature": "taxi_dancers",
-     "quote": "Team Guests/Dance Taxis (for the clubs)",
-     "rationale": "Dance taxis are listed as present for the clubs."
+     "quote": "Dance Taxis",
+     "rationale": "The program lists Team Guests/Dance Taxis for the clubs, so taxi dancers are present."
     },
     {
      "feature": "dress_code",
-     "quote": "3 Simple Dress Codes >2026: GREEN theme",
-     "rationale": "The program states dress codes for the event."
+     "quote": "3 Simple Dress Codes",
+     "rationale": "The description explicitly lists dress codes for the event."
     },
     {
      "feature": "themed_parties",
-     "quote": "3 Simple Dress Codes >2026: GREEN theme",
-     "rationale": "A GREEN theme is stated for the dress codes, which marks themed nights."
+     "quote": "GREEN theme",
+     "rationale": "The dress codes have a stated GREEN theme for the parties."
     },
     {
      "feature": "shows",
      "quote": "1 Teacher Show/Demo",
-     "rationale": "A teacher show or demo is part of the program."
-    },
-    {
-     "feature": "shows",
-     "quote": "Showcase 🎤",
-     "rationale": "A showcase with performing artists is listed in the program."
+     "rationale": "A teacher show or demo is scheduled as part of the event."
     }
    ]
   }

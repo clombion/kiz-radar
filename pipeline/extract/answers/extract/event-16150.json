@@ -79,27 +79,22 @@
     {
      "feature": "workshops",
      "quote": "Alchemical Workshops",
-     "rationale": "The event lists Alchemical Workshops among its offerings, so dance classes are part of the event."
+     "rationale": "The event lists Alchemical Workshops as part of what is offered."
     },
     {
      "feature": "day_socials",
      "quote": "3 Daytime Socials",
-     "rationale": "The event lists three daytime socials."
+     "rationale": "The listed program includes three daytime socials."
     },
     {
      "feature": "competition",
      "quote": "THE BATTLE KIZZ Qualifications",
-     "rationale": "The BATTLE KIZZ Qualifications are a competition held during the festival."
+     "rationale": "A battle qualification competition is part of the festival."
     },
     {
      "feature": "partner_hotel",
      "quote": "A beautiful 4-star hotel by the lake with:",
-     "rationale": "A specific hotel is offered alongside the festival with accommodation booking, which indicates a partner hotel."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Breakfast included to fuel your days",
-     "rationale": "Breakfast is stated as included with the hotel stay offered through the festival."
+     "rationale": "The festival promotes a specific hotel for accommodation, with rooms booked separately from the pass."
     }
    ]
   }

@@ -100,17 +100,17 @@
     {
      "feature": "bootcamp_intensive",
      "quote": "Two wonderfull bootcamps under the same roof",
-     "rationale": "The event is described as two bootcamps held under the same roof."
+     "rationale": "The event is described as two bootcamps held together."
     },
     {
      "feature": "workshops",
      "quote": "6 dance classes, chosen dance style, with different themes",
-     "rationale": "The pass includes six dance classes, so dance classes are part of the event."
+     "rationale": "The pass includes six dance classes, which are dance classes that are part of the event."
     },
     {
      "feature": "day_socials",
-     "quote": "Training day and socials between 12 and 17",
-     "rationale": "Daytime socials are scheduled on Sunday between 12 and 17."
+     "quote": "Sun / Training day and socials between 12 and 17",
+     "rationale": "A daytime social is scheduled on Sunday between 12 and 17."
     }
    ]
   }

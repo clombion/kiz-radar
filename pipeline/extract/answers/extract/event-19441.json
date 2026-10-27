@@ -113,8 +113,8 @@
    "features": [
     {
      "feature": "partner_hotel",
-     "quote": "Room rates (before discount):",
-     "rationale": "The Bern Youth Hostel is listed with negotiated room rates for dancers, while the accommodation is not stated to be part of the pass."
+     "quote": "Use code “Bern is Kizomba” for 15% OFF",
+     "rationale": "The youth hostel offers a discounted room rate for participants, but the accommodation is not part of the pass."
     }
    ]
   }

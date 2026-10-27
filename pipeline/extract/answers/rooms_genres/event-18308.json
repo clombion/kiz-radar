@@ -11,7 +11,7 @@
    "rooms": [
     {
      "name_as_written": null,
-     "kind": "unspecified",
+     "kind": "party",
      "genres": [
       "kizomba",
       "semba",
@@ -21,7 +21,7 @@
     },
     {
      "name_as_written": null,
-     "kind": "unspecified",
+     "kind": "party",
      "genres": [
       "urbankiz",
       "tarraxo"
@@ -33,12 +33,12 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "One dedicated to Kizomba / Semba / Ghetto Zouk"
+     "quote": "to the depth of Kizomba"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "From the roots of Semba,"
+     "quote": "From the roots of Semba"
     },
     {
      "genre": "zouk",
@@ -48,7 +48,7 @@
     {
      "genre": "urbankiz",
      "genre_as_written": "Urban Kiz",
-     "quote": "One dedicated to Urban Kiz / Tarraxo"
+     "quote": "to the burning intensity of Urban Kiz"
     },
     {
      "genre": "tarraxo",

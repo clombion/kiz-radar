@@ -140,19 +140,19 @@
    ],
    "features": [
     {
-     "feature": "partner_hotel",
-     "quote": "Partner Hotel Mercure Geneva Airport",
-     "rationale": "The description names a partner hotel for the event."
-    },
-    {
      "feature": "transfers_shuttle",
      "quote": "FREE SHUTTLE",
-     "rationale": "A free shuttle runs between the hotel and the venue."
+     "rationale": "The description advertises a free shuttle between the hotel and the venue."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Partner Hotel Mercure Geneva Airport",
+     "rationale": "The event names a partner hotel where dancers can stay, without saying accommodation is part of the pass."
     },
     {
      "feature": "taxi_dancers",
      "quote": "TAXIS DANCERS",
-     "rationale": "The description has a heading announcing taxi dancers."
+     "rationale": "A section heading states that taxi dancers are present."
     }
    ]
   }

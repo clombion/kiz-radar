@@ -13,7 +13,7 @@
     {
      "feature": "workshops",
      "quote": "2 days of specialized workshops",
-     "rationale": "Specialized workshops are explicitly part of the event programme."
+     "rationale": "The description advertises specialized workshops as part of the weekend."
     },
     {
      "feature": "bootcamp_intensive",
@@ -23,12 +23,12 @@
     {
      "feature": "all_levels_beginners",
      "quote": "Open to all levels: beginners to advanced",
-     "rationale": "The event is explicitly open to beginners as well as advanced dancers."
+     "rationale": "The text explicitly welcomes beginners as well as advanced dancers."
     },
     {
      "feature": "shows",
      "quote": "Over 120 shows to inspire you",
-     "rationale": "The event offers over 120 shows, which are performances."
+     "rationale": "The description promises more than 120 shows by artists."
     }
    ]
   }

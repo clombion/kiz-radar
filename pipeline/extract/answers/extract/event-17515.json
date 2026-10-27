@@ -248,25 +248,13 @@
      "style": null,
      "country": null,
      "source_line": "Passion Kizomba Nantes"
-    },
-    {
-     "name_as_written": "TEAM TAXIS",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🔸🔹🔸🔹TEAM TAXIS🔸🔹🔸🔹"
     }
    ],
    "features": [
     {
      "feature": "all_in_one",
      "quote": "All in one venue",
-     "rationale": "The description says the event is all in one venue, with the festival venue and accommodation in the same hotel."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Sure Hôtel by Best Western Nantes Beaujoire",
-     "rationale": "The festival venue is a named hotel where attendees are invited to book rooms."
+     "rationale": "The description says the event is all in one venue, with the festival venue and accommodation at the same hotel."
     },
     {
      "feature": "workshops",
@@ -276,22 +264,27 @@
     {
      "feature": "pre_party",
      "quote": "a pre-party",
-     "rationale": "The event lists a pre-party before the main festival."
+     "rationale": "A pre-party is listed as part of the event."
     },
     {
      "feature": "multiple_rooms",
      "quote": "Two rooms, two atmospheres.",
-     "rationale": "The event has two separate dance rooms."
+     "rationale": "The event has two dance rooms."
     },
     {
      "feature": "taxi_dancers",
      "quote": "Teams of dancing taxis",
-     "rationale": "The event explicitly has teams of taxi dancers."
+     "rationale": "Dancing taxi teams are present at the event."
     },
     {
      "feature": "dress_code",
      "quote": "Dress code",
-     "rationale": "The description states a dress code."
+     "rationale": "A dress code is stated in the description."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Book your Room here",
+     "rationale": "The description links to a booking page for rooms at the event hotel, without accommodation being part of the pass."
     }
    ]
   }

@@ -194,7 +194,14 @@
      "source_line": "Vanessa Luna BrunoMiranda Di Vito"
     },
     {
-     "name_as_written": "BrunoMiranda Di Vito",
+     "name_as_written": "Bruno",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "Vanessa Luna BrunoMiranda Di Vito"
+    },
+    {
+     "name_as_written": "Miranda Di Vito",
      "role": "crew",
      "style": null,
      "country": null,
@@ -243,68 +250,117 @@
      "source_line": "Andrea OlivieriPauline MoulartSamia HabassiAbderrazak MelhraouiKiki Athanassopoulos"
     },
     {
-     "name_as_written": "Flowly events",
+     "name_as_written": "Flowly Events",
      "role": "organiser",
      "style": null,
      "country": null,
-     "source_line": "Flowly events: id.labelling@gmail.com"
+     "source_line": "Flowly Events"
+    },
+    {
+     "name_as_written": "Quierobailar Academy",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Quierobailar Academy"
+    },
+    {
+     "name_as_written": "Kizomba World",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Kizomba World"
+    },
+    {
+     "name_as_written": "Kizzbee",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Kizzbee"
+    },
+    {
+     "name_as_written": "Elegancia royal",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Elegancia royal"
+    },
+    {
+     "name_as_written": "Impulse school",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Impulse school"
+    },
+    {
+     "name_as_written": "Tunisa Spirit",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Tunisa Spirit"
+    },
+    {
+     "name_as_written": "Latina Vibes",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Latina Vibes"
     }
    ],
    "features": [
     {
-     "feature": "cruise",
-     "quote": "DANCE CRUISE BKS 2027",
-     "rationale": "The event is a dance cruise on a ship."
+     "feature": "workshops",
+     "quote": "Workshops during the day, dance & social evenings",
+     "rationale": "The description states that workshops take place during the day."
     },
     {
-     "feature": "workshops",
-     "quote": "Workshops during the day",
-     "rationale": "Daytime dance workshops are part of the programme."
+     "feature": "competition",
+     "quote": "Daily Dress Code Competition to win cruise prizes",
+     "rationale": "A daily dress code competition with prizes is offered."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Daily Dress Code Competition to win cruise prizes",
+     "rationale": "The competition is a dress code competition, so a dress code is stated."
     },
     {
      "feature": "shows",
      "quote": "Shows and/or demos by our Artists",
-     "rationale": "Artists give shows and demos during the cruise."
-    },
-    {
-     "feature": "competition",
-     "quote": "Daily Dress Code Competition",
-     "rationale": "A daily competition is held during the cruise."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Daily Dress Code Competition",
-     "rationale": "The competition is built around a dress code."
+     "rationale": "Shows and demos by artists are part of the programme."
     },
     {
      "feature": "multiple_rooms",
      "quote": "3 private rooms for simultaneous workshops and 2 rooms for parties",
-     "rationale": "Several rooms are used for simultaneous dancing activities."
+     "rationale": "Five rooms are listed for simultaneous workshops and parties."
     },
     {
      "feature": "after_party",
      "quote": "After -parties under the stars",
-     "rationale": "After-parties are advertised."
+     "rationale": "After-parties are announced under the stars."
     },
     {
      "feature": "pool_party",
      "quote": "Pool parties, sunsets and festival atmosphere at sea",
-     "rationale": "Pool parties are part of the programme."
+     "rationale": "Pool parties are mentioned in the programme."
+    },
+    {
+     "feature": "cruise",
+     "quote": "on a luxury cruise ship",
+     "rationale": "The event takes place on a luxury cruise ship."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Gourmet lunch and dinner.",
+     "rationale": "Gourmet lunch and dinner are included in the cruise package."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Inside double cabin: €555* (per person)*",
+     "rationale": "The cabin price per person for the cruise implies the accommodation is part of the package."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "including shuttles",
      "rationale": "The group trip from Belgium includes shuttles."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Inside double cabin: €555* (per person)*",
-     "rationale": "Cabin prices per person are part of the festival package on the cruise."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Gourmet lunch and dinner.",
-     "rationale": "Gourmet lunch and dinner are listed under what is included in the cruise."
     }
    ]
   }

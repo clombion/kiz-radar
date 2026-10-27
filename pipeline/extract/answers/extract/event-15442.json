@@ -120,23 +120,23 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "Afro dance classes led by top-notch artists",
-     "rationale": "The description states that dance classes in several styles are part of the festival."
+     "quote": "Approximately 12 hours of workshops over the weekend",
+     "rationale": "The description states that about 12 hours of workshops take place over the weekend."
     },
     {
      "feature": "day_socials",
      "quote": "2 Socials",
-     "rationale": "Two socials are listed, on Saturday and Sunday afternoons."
+     "rationale": "Two socials are listed, held on Saturday and Sunday afternoons."
     },
     {
      "feature": "taxi_dancers",
      "quote": "TAXIS",
-     "rationale": "A section headed TAXIS lists taxi-dancer teams."
+     "rationale": "A TAXIS section lists taxi-dancer teams."
     },
     {
      "feature": "partner_hotel",
      "quote": "Partner hotels for the event:",
-     "rationale": "The description names a partner hotel, Campanile Orléans Nord, offering a discount, without including accommodation in the pass."
+     "rationale": "The description names partner hotels for the event, with a discount for attendees."
     }
    ]
   }

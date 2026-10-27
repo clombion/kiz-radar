@@ -13,12 +13,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 269,
+       "amount": 269.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": null,
+       "until": "02-15",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -36,12 +36,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 349,
+       "amount": 349.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": null,
+       "until": "02-15",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -59,12 +59,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 279,
+       "amount": 279.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": null,
+       "until": "02-15",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -82,12 +82,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 359,
+       "amount": 359.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": null,
+       "until": "02-15",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -105,12 +105,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 299,
+       "amount": 299.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": null,
+       "until": "02-15",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -128,12 +128,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 379,
+       "amount": 379.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": null,
+       "until": "02-15",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -151,12 +151,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 359,
+       "amount": 359.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": null,
+       "until": "02-15",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -174,12 +174,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 469,
+       "amount": 469.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": null,
+       "until": "02-15",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -197,12 +197,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 289,
+       "amount": 289.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": null,
+       "until": "02-15",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -220,12 +220,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 369,
+       "amount": 369.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": null,
+       "until": "02-15",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -243,12 +243,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 299,
+       "amount": 299.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": null,
+       "until": "02-15",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -266,12 +266,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 379,
+       "amount": 379.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": null,
+       "until": "02-15",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -289,12 +289,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 319,
+       "amount": 319.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": null,
+       "until": "02-15",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -312,12 +312,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 399,
+       "amount": 399.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": null,
+       "until": "02-15",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -335,12 +335,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 379,
+       "amount": 379.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": null,
+       "until": "02-15",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -358,12 +358,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 489,
+       "amount": 489.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": null,
+       "until": "02-15",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -381,7 +381,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 40,
+       "amount": 40.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -391,7 +391,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "MASTERPASS: €40"
+       "quote": "➕ MASTERPASS: €40"
       }
      ]
     }

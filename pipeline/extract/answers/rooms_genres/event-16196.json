@@ -16,7 +16,7 @@
       "zouk",
       "tarraxo"
      ],
-     "quote": "100% GHETTOZOUK/TARRAXA"
+     "quote": "1 – 100% GHETTOZOUK/TARRAXA"
     },
     {
      "name_as_written": null,
@@ -24,7 +24,7 @@
      "genres": [
       "bachata"
      ],
-     "quote": "100% BACHATA"
+     "quote": "2 – 100% BACHATA"
     },
     {
      "name_as_written": null,
@@ -32,7 +32,7 @@
      "genres": [
       "semba"
      ],
-     "quote": "100% SEMBA"
+     "quote": "3 – 100% SEMBA"
     },
     {
      "name_as_written": null,
@@ -40,7 +40,7 @@
      "genres": [
       "salsa"
      ],
-     "quote": "100% SALSA"
+     "quote": "4 – 100% SALSA"
     }
    ],
    "genres": [
@@ -52,27 +52,27 @@
     {
      "genre": "bachata",
      "genre_as_written": "BACHATA",
-     "quote": "100% BACHATA"
+     "quote": "9th EDITION of the Italian Event of KIZOMBA & BACHATA"
     },
     {
      "genre": "zouk",
      "genre_as_written": "GHETTOZOUK",
-     "quote": "100% GHETTOZOUK/TARRAXA"
+     "quote": "1 – 100% GHETTOZOUK/TARRAXA"
     },
     {
      "genre": "tarraxo",
      "genre_as_written": "TARRAXA",
-     "quote": "100% GHETTOZOUK/TARRAXA"
+     "quote": "1 – 100% GHETTOZOUK/TARRAXA"
     },
     {
      "genre": "semba",
      "genre_as_written": "SEMBA",
-     "quote": "100% SEMBA"
+     "quote": "3 – 100% SEMBA"
     },
     {
      "genre": "salsa",
      "genre_as_written": "SALSA",
-     "quote": "100% SALSA"
+     "quote": "4 – 100% SALSA"
     }
    ]
   }

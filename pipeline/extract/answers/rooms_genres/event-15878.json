@@ -16,7 +16,7 @@
       "tarraxo",
       "douceur"
      ],
-     "quote": "= Kɪᴢᴏᴍʙᴀ\n== Tᴀʀʀᴀxɪɴʜᴀ\n=== Uʀʙᴀɴ ᴋɪᴢ\n==== Tᴀʀʀᴀxᴏ\n===== Dᴏᴜᴄᴇᴜʀ"
+     "quote": "= Kɪᴢᴏᴍʙᴀ"
     },
     {
      "name_as_written": null,
@@ -26,7 +26,7 @@
       "zouk",
       "kompa"
      ],
-     "quote": "=== Douceur\n==== Zᴏᴜᴋ\n===== Kᴏᴍᴘᴀ"
+     "quote": "==== Zᴏᴜᴋ"
     }
    ],
    "genres": [
@@ -52,8 +52,8 @@
     },
     {
      "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "=== Douceur"
+     "genre_as_written": "Dᴏᴜᴄᴇᴜʀ",
+     "quote": "===== Dᴏᴜᴄᴇᴜʀ"
     },
     {
      "genre": "zouk",

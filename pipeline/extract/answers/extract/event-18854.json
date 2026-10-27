@@ -325,14 +325,14 @@
      "rationale": "Three dance floors are offered, so there is more than one dance room."
     },
     {
-     "feature": "partner_hotel",
-     "quote": "Hotelempfehlung (Hotel recommendations):",
-     "rationale": "A list of recommended hotels is given, without accommodation being part of a pass."
+     "feature": "taxi_dancers",
+     "quote": "TEAM UNIT’KIZ",
+     "rationale": "A section headed taxi dancers lists dance teams as present."
     },
     {
-     "feature": "after_party",
-     "quote": "Closing Party at MI-Salsa",
-     "rationale": "A closing party is listed as the final party of the event."
+     "feature": "partner_hotel",
+     "quote": "Hotelempfehlung (Hotel recommendations)",
+     "rationale": "The description lists recommended hotels without including accommodation in the pass."
     }
    ]
   }

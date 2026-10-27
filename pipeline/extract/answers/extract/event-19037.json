@@ -7,18 +7,18 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "without ever leaving the event site",
-     "rationale": "The text says the hotel becomes the dance venue and attendees can sleep, dance and celebrate there without leaving the event site, so the parties are in the hotel where they stay."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "workshops open to all skill levels",
-     "rationale": "The workshops are explicitly open to all skill levels, and the text adds that there is a place for beginners."
+     "quote": "the magnificent Ibis Styles Toulouse Labège hotel transforms into a venue entirely dedicated to dance",
+     "rationale": "The description presents the event as held in the hotel where guests sleep, so the parties and accommodation share one venue."
     },
     {
      "feature": "workshops",
-     "quote": "classes and workshops",
-     "rationale": "Dance classes and workshops are described as part of the weekend's programme."
+     "quote": "renowned instructors will share their passion through classes and workshops open to all skill levels",
+     "rationale": "Dance classes and workshops are stated as part of the weekend."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "Whether you are a beginner, an experienced dancer, or simply a music lover, there is a place for everyone in this adventure.",
+     "rationale": "The text explicitly welcomes beginners and all levels."
     }
    ]
   }

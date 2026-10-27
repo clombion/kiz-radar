@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 99,
+       "amount": 99.0,
        "currency": "USD",
        "fee": null,
        "alt": null,
@@ -31,35 +31,12 @@
      "kind": "full",
      "style": null,
      "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 99,
-       "currency": "USD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "$99 Full Pass – Leads"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
      "group_size": 2,
      "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 165,
+       "amount": 165.0,
        "currency": "USD",
        "fee": null,
        "alt": null,
@@ -82,7 +59,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 180,
+       "amount": 180.0,
        "currency": "USD",
        "fee": null,
        "alt": null,

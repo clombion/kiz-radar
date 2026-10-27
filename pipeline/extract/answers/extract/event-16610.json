@@ -714,9 +714,14 @@
    ],
    "features": [
     {
+     "feature": "all_in_one",
+     "quote": "Location: HOTEL BAIA FLAMINIA, Pesaro (PU)",
+     "rationale": "The festival venue is the hotel itself, which is also the main hotel where dancers are directed to stay."
+    },
+    {
      "feature": "partner_hotel",
-     "quote": "HOTEL BAIA FLAMINIA – Main Hotel",
-     "rationale": "The main hotel is named with a direct reservation route, which makes it a partner hotel rather than included accommodation."
+     "quote": "Reservations can be made by contacting APA agency",
+     "rationale": "A second recommended hotel is offered through APA agency, separate from the pass."
     }
    ]
   }

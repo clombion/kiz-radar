@@ -120,48 +120,58 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "ALL IN ONE",
-     "rationale": "The event is described as all in one, and the parties take place at the Main Hotel where dancers stay."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 rooms:",
-     "rationale": "The description states there are two dance rooms."
+     "quote": "ALL IN ONE> Warsaw",
+     "rationale": "The event is labelled all in one with Warsaw, and the parties are held at the hotel where the event and accommodation share the same venue."
     },
     {
      "feature": "workshops",
      "quote": "12:00 – 17:00 workshops",
-     "rationale": "Daytime workshops are listed on Saturday and Sunday."
+     "rationale": "The schedule lists daytime workshops on Saturday and Sunday."
     },
     {
      "feature": "shows",
      "quote": "Social + Show + Concert",
-     "rationale": "A show is listed in the Saturday schedule."
+     "rationale": "The Saturday schedule lists a show by artists."
     },
     {
      "feature": "live_music",
      "quote": "Social + Show + Concert",
-     "rationale": "A concert is listed in the Saturday schedule."
+     "rationale": "The Saturday schedule lists a concert, which is live music."
     },
     {
-     "feature": "day_socials",
-     "quote": "15:00 – 19:00 Social and more…",
-     "rationale": "A daytime social is scheduled on Friday afternoon."
+     "feature": "after_party",
+     "quote": "🗓️ Monday 20.07: After𝗉𝖺𝗋𝗍𝗒",
+     "rationale": "The schedule includes an after-party on Monday 20.07."
     },
     {
      "feature": "pre_party",
-     "quote": "𝖯𝗋𝖾𝗉𝖺𝗋𝗍𝗒",
-     "rationale": "A Preparty is scheduled on Thursday before the main event."
+     "quote": "Thursday 16.07: 𝖯𝗋𝖾𝗉𝖺𝗋𝗍𝗒",
+     "rationale": "The schedule includes a pre-party on Thursday 16.07 before the main event."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 rooms:",
+     "rationale": "The event has two dance rooms, one for Kizomba and Semba and one for other styles."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Social and more…",
+     "rationale": "The Friday schedule lists a daytime social from 15:00 to 19:00."
     },
     {
      "feature": "dress_code",
      "quote": "𝗗𝗥𝗘𝗦𝗦 𝗖𝗢𝗗𝗘",
-     "rationale": "A dress code section is included in the description."
+     "rationale": "A section titled dress code gives the dress code for the evenings."
     },
     {
      "feature": "themed_parties",
-     "quote": "ELEGANTE & BESSANGANA",
-     "rationale": "Night parties carry dress themes such as white and elegant styles."
+     "quote": "🌙𝘕𝘪𝘨𝘩𝑡𝑡𝑖𝑚𝑒 — WHITE",
+     "rationale": "The dress code sets themed evening looks such as white, elegant and African touch for the parties."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Hot & cold buffet",
+     "rationale": "The dinner buffet package lists the hot and cold buffet as included."
     }
    ]
   }

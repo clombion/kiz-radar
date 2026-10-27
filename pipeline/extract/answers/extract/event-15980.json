@@ -134,38 +134,38 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "NEW LOCATION ALL IN ONE",
-     "rationale": "The event is announced as all in one at a new location, indicating the parties and the stay take place in the same venue."
+     "quote": "ALL IN ONE",
+     "rationale": "The description states the event is all in one, with the parties held at the venue where dancers stay."
     },
     {
      "feature": "camping",
      "quote": "Camping De Schatberg",
-     "rationale": "The venue is a campsite, and the chalet and bungalow accommodation is part of the same location."
+     "rationale": "The venue listed is a campsite, so the event takes place at camping accommodation."
     },
     {
      "feature": "workshops",
      "quote": "3 DAYS OF WORKSHOPS",
-     "rationale": "The description lists workshop days as part of the event program."
+     "rationale": "The description announces three days of workshops as part of the congress."
     },
     {
      "feature": "day_socials",
      "quote": "3 DAYS OF SOCIALS",
-     "rationale": "The description lists daytime social days, and the schedule includes FRIDAY SOCIAL and SATURDAY SOCIAL sessions."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "TRAINSTATION VENLO | Netherlands",
-     "rationale": "A travel section lists airport and train station pick-up points for transfers to the event."
+     "rationale": "The description announces three days of socials, which are daytime events."
     },
     {
      "feature": "pre_party",
      "quote": "THURSDAY PRE PARTY",
-     "rationale": "The schedule explicitly lists a Thursday pre party before the main event."
+     "rationale": "A Thursday pre party is listed in the schedule before the main event."
     },
     {
      "feature": "multiple_rooms",
      "quote": "3 AREAS TO PARTY",
-     "rationale": "The description states there are three areas to party, meaning more than one dance floor."
+     "rationale": "Three separate areas to party imply more than one dance room or floor."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "AIRPORT EINDHOVEN",
+     "rationale": "The travel section lists airport and train station transfers to the event."
     }
    ]
   }

@@ -7,23 +7,23 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "Workshops & Masterclasses",
-     "rationale": "The description states that dance workshops are part of the event, with 15+ hours of them."
+     "quote": "15+ Hours of Workshops & Masterclasses",
+     "rationale": "The description states that workshops are part of the event, with 15+ hours of them."
     },
     {
      "feature": "masterclass",
-     "quote": "Masterclasses",
-     "rationale": "The event lists Masterclasses among its offerings."
+     "quote": "15+ Hours of Workshops & Masterclasses",
+     "rationale": "The description lists masterclasses as part of the programme."
     },
     {
      "feature": "live_music",
      "quote": "Live Music",
-     "rationale": "The event lists Live Music among its highlights."
+     "rationale": "The description lists live music among the event's offerings."
     },
     {
      "feature": "shows",
      "quote": "Shows",
-     "rationale": "The event lists Shows among its highlights."
+     "rationale": "The description lists shows as part of the event's offerings."
     }
    ]
   }

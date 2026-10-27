@@ -17,22 +17,27 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Kizomba, Semba, Tarraxhinha, Afro house"
+     "quote": "Kizomba, Semba, Tarraxhinha, Afro house, African Danse"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "Kizomba, Semba, Tarraxhinha, Afro house"
+     "quote": "Kizomba, Semba, Tarraxhinha, Afro house, African Danse"
     },
     {
      "genre": "tarraxinha",
      "genre_as_written": "Tarraxhinha",
-     "quote": "Kizomba, Semba, Tarraxhinha, Afro house"
+     "quote": "Kizomba, Semba, Tarraxhinha, Afro house, African Danse"
     },
     {
      "genre": "afro",
      "genre_as_written": "Afro house",
-     "quote": "Kizomba, Semba, Tarraxhinha, Afro house"
+     "quote": "Kizomba, Semba, Tarraxhinha, Afro house, African Danse"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "African Danse",
+     "quote": "African Danse"
     }
    ]
   }

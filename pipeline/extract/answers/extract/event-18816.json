@@ -72,27 +72,32 @@
     {
      "feature": "pre_party",
      "quote": "CRAZY PRE-PARTY",
-     "rationale": "The description lists a crazy pre-party before the main event."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "Book your 𝐀𝐥𝐥-𝐢𝐧-𝟏 incl. breakfast!",
-     "rationale": "The venue is the hotel itself and dancers can book the all-in-one accommodation there, so the parties and stay share one place."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "incl. breakfast!",
-     "rationale": "The all-in-one booking explicitly includes breakfast."
+     "rationale": "The description advertises a crazy pre-party before the main event."
     },
     {
      "feature": "multiple_rooms",
      "quote": "Room 1 – 𝗧𝗮𝗿𝗿𝗮𝘅𝗼 | 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇",
-     "rationale": "The event lists Room 1 and Room 2 as separate dance rooms."
+     "rationale": "Room 1 and Room 2 are listed as separate dance rooms."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "Book your 𝐀𝐥𝐥-𝐢𝐧-𝟏 incl. breakfast!",
+     "rationale": "The All-in-1 package at the venue hotel combines the event with accommodation in the same hotel."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Book your 𝐀𝐥𝐥-𝐢𝐧-𝟏 incl. breakfast!",
+     "rationale": "The All-in-1 booking is a package that includes the hotel stay."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Book your 𝐀𝐥𝐥-𝐢𝐧-𝟏 incl. breakfast!",
+     "rationale": "The All-in-1 package explicitly includes breakfast."
     },
     {
      "feature": "partner_hotel",
      "quote": "𝗛𝗼𝘁𝗲𝗹𝘀 𝗻𝗲𝗮𝗿𝗯𝘆",
-     "rationale": "A list of recommended hotels nearby is given for attendees."
+     "rationale": "A list of recommended hotels nearby is given with addresses."
     }
    ]
   }

@@ -100,12 +100,12 @@
     {
      "feature": "taxi_dancers",
      "quote": "TAXI TEAMS",
-     "rationale": "A section headed TAXI TEAMS lists taxi dancer teams, showing taxi dancers are present."
+     "rationale": "The description has a taxi teams section listing taxi-dancer teams."
     },
     {
      "feature": "partner_hotel",
-     "quote": "HÔTELS",
-     "rationale": "A HÔTELS section lists recommended hotels near the venue, which are not part of the pass."
+     "quote": "Mercure Bâle Mulhouse Aéroport",
+     "rationale": "The description lists recommended hotels with booking links and distance to the venue, without saying they are part of the pass."
     }
    ]
   }

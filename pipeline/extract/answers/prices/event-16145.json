@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "• Until Dec 31 → 90€"
       },
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "• Until Jan 31 → 100€"
       },
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "• Until Feb 28 → 110€"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -65,7 +65,7 @@
        "quote": "• Until Mar 31 → 120€"
       },
       {
-       "amount": 130,
+       "amount": 130.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -78,7 +78,7 @@
        "quote": "• Until Apr 30 → 130€"
       },
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -91,7 +91,7 @@
        "quote": "• Until May 31 → 140€"
       },
       {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -114,7 +114,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -127,7 +127,7 @@
        "quote": "• Until Dec 31 → 100€"
       },
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -140,7 +140,7 @@
        "quote": "• Until Jan 31 → 110€"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -153,7 +153,7 @@
        "quote": "• Until Feb 28 → 120€"
       },
       {
-       "amount": 130,
+       "amount": 130.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -166,7 +166,7 @@
        "quote": "• Until Mar 31 → 130€"
       },
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -179,7 +179,7 @@
        "quote": "• Until Apr 30 → 140€"
       },
       {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -192,7 +192,7 @@
        "quote": "• Until May 31 → 150€"
       },
       {
-       "amount": 160,
+       "amount": 160.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -205,106 +205,9 @@
        "quote": "🔥 Final price → 160€"
       }
      ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "ROOM + BREAKFAST",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 130,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "• 1 person → 130€ / person / night"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "ROOM + BREAKFAST",
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 74,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "• 2 persons → 74€ / person / night"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "ROOM + BREAKFAST + DINNER",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 151,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "• 1 person → 151€ / person / night"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "ROOM + BREAKFAST + DINNER",
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 99,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "• 2 persons → 99€ / person / night"
-      }
-     ]
     }
    ],
-   "rule_quotes": [
-    "(163€ all taxes included)",
-    "(91€ all taxes included)",
-    "(184€ all taxes included)",
-    "(119€ all taxes included)"
-   ]
+   "rule_quotes": []
   }
  ]
 }

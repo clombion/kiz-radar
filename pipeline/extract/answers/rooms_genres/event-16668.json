@@ -33,14 +33,19 @@
      "quote": "Traditional Balkan Folklore"
     },
     {
-     "genre": "other",
-     "genre_as_written": "zumba",
-     "quote": "zumba, reggaeton, traditional dances"
-    },
-    {
      "genre": "reggaeton",
      "genre_as_written": "reggaeton",
-     "quote": "zumba, reggaeton, traditional dances"
+     "quote": "reggaeton"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "zumba",
+     "quote": "zumba"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "modern",
+     "quote": "modern"
     }
    ]
   }

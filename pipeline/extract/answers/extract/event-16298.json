@@ -7,13 +7,13 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "4★ All-in-1 hotel: Crowne Plaza Düsseldorf Neuss",
-     "rationale": "The event venue and the stay hotel are the same, the Crowne Plaza Düsseldorf Neuss, described as an All-in-1 hotel."
+     "quote": "All-in-1 hotel: Crowne Plaza Düsseldorf Neuss",
+     "rationale": "The description names the event hotel as an all-in-one venue, so the event and accommodation share the same hotel."
     },
     {
      "feature": "partner_hotel",
      "quote": "Book hotel: https://tinyurl.com/stepstephotel",
-     "rationale": "A link to book the event's hotel is given, which points to a recommended hotel without the accommodation being part of the pass."
+     "rationale": "A link to book the event hotel is given, which points to a recommended hotel without the accommodation being part of the pass."
     }
    ]
   }

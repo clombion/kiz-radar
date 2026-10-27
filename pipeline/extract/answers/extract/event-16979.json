@@ -91,6 +91,16 @@
    ],
    "features": [
     {
+     "feature": "pre_party",
+     "quote": "Pre-Parties",
+     "rationale": "The Full Pass explicitly includes Pre-Parties before the main festival."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Afternoon Socials",
+     "rationale": "The Full Pass includes Afternoon Socials, which are daytime socials."
+    },
+    {
      "feature": "workshops",
      "quote": "+20 Workshops for ALL LEVELS",
      "rationale": "The Full Pass includes more than twenty workshops, so dance classes are part of the event."
@@ -98,17 +108,7 @@
     {
      "feature": "all_levels_beginners",
      "quote": "+20 Workshops for ALL LEVELS",
-     "rationale": "The workshops are stated to be for all levels, which welcomes beginners."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Parties",
-     "rationale": "The Full Pass includes Pre-Parties, which are events before the main festival."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Afternoon Socials",
-     "rationale": "Afternoon Socials are listed as included daytime social events."
+     "rationale": "The workshops are explicitly stated to be for all levels, so they welcome beginners."
     }
    ]
   }

@@ -5,11 +5,11 @@
    "event_id": 18342,
    "party_rooms": {
     "count": 2,
-    "quote": "During the nights, there will be 2 social rooms:"
+    "quote": "there will be 2 social rooms"
    },
    "class_rooms": {
     "count": 2,
-    "quote": "2 exclusive rooms for workshops of Kizomba, Semba, Kuduro, Afrohouse, etc…"
+    "quote": "2 exclusive rooms for workshops"
    },
    "rooms": [
     {
@@ -41,27 +41,27 @@
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "and Semba, Kuduro, Urban, Tarraxo, Douceur"
+     "quote": "and Semba"
     },
     {
      "genre": "kuduro",
      "genre_as_written": "Kuduro",
-     "quote": "Semba, Kuduro, Urban, Tarraxo, Douceur"
+     "quote": "Semba, Kuduro"
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "Urban",
-     "quote": "Kuduro, Urban, Tarraxo, Douceur"
+     "quote": "Kuduro, Urban"
     },
     {
      "genre": "tarraxo",
      "genre_as_written": "Tarraxo",
-     "quote": "Urban, Tarraxo, Douceur"
+     "quote": "Urban, Tarraxo"
     },
     {
      "genre": "douceur",
      "genre_as_written": "Douceur",
-     "quote": "Urban, Tarraxo, Douceur"
+     "quote": "Tarraxo, Douceur"
     },
     {
      "genre": "afro",

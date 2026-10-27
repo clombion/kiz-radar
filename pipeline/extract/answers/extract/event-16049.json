@@ -64,13 +64,13 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "with workshops, DJs",
-     "rationale": "The description states that the three days include workshops, and it lists 7 hours of workshops with teachers."
+     "quote": "7 hours of workshops with:",
+     "rationale": "The event offers seven hours of dance workshops."
     },
     {
      "feature": "partner_hotel",
      "quote": "IBIS BUDGET Belfort centre",
-     "rationale": "The description lists a hotel under the heading 'Hôtels', which suggests a recommended hotel without stating that accommodation is part of the pass."
+     "rationale": "A hotel is listed under the Hôtels heading as a recommended venue for the event."
     }
    ]
   }

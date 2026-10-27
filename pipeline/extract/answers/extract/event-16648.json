@@ -30,7 +30,7 @@
     {
      "feature": "accommodation_included",
      "quote": "2 nights + pool, SPA and relaxation",
-     "rationale": "The full pass lists two nights of accommodation as included."
+     "rationale": "The full pass includes two nights of accommodation."
     },
     {
      "feature": "meals_included",
@@ -39,8 +39,8 @@
     },
     {
      "feature": "workshops",
-     "quote": "+ lessons, games and adventures.",
-     "rationale": "Lessons are listed as part of the full pass, so dance classes are part of the event."
+     "quote": "+ lessons, games and adventures",
+     "rationale": "Dance lessons are included as part of the package."
     }
    ]
   }

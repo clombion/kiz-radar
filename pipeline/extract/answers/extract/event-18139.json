@@ -135,22 +135,22 @@
     {
      "feature": "all_in_one",
      "quote": "ALL IN ONE LOCATION (Hotel + Classes + Parties)",
-     "rationale": "The description states that classes and parties take place in the same location as the hotel."
+     "rationale": "The description says the event is all in one location, covering hotel, classes and parties together."
     },
     {
      "feature": "workshops",
      "quote": "all workshops & socials",
-     "rationale": "The full pass explicitly includes all workshops, showing that dance classes are part of the event."
+     "rationale": "The full pass and couple pass include all workshops, so dance classes are part of the event."
     },
     {
      "feature": "partner_hotel",
-     "quote": "Hotel Booking requared via: info@villamariaparkhotel.it",
-     "rationale": "Dancers are asked to book the event's hotel with a promo code, which is a negotiated hotel rate not included in the pass."
+     "quote": "€53 per night per person, half board (breakfast and dinner included)",
+     "rationale": "A negotiated hotel rate is offered for the venue hotel, separate from the pass."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "Shuttle service from the hotel to Fiumicino and Ciampino airports",
-     "rationale": "The text offers a shuttle service between the hotel and the airports."
+     "rationale": "The description offers a shuttle between the hotel and the airports."
     }
    ]
   }

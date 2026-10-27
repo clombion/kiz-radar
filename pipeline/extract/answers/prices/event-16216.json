@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 59,
+       "amount": 59.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "Early birds – €59"
       },
       {
-       "amount": 69,
+       "amount": 69.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "Nov – €69"
       },
       {
-       "amount": 79,
+       "amount": 79.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "May – €79"
       },
       {
-       "amount": 89,
+       "amount": 89.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -65,7 +65,7 @@
        "quote": "July – €89"
       },
       {
-       "amount": 99,
+       "amount": 99.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -78,7 +78,7 @@
        "quote": "Aug – €99"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -101,7 +101,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 119,
+       "amount": 119.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -114,7 +114,7 @@
        "quote": "Nov – €119"
       },
       {
-       "amount": 129,
+       "amount": 129.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -127,7 +127,7 @@
        "quote": "May – €129"
       },
       {
-       "amount": 149,
+       "amount": 149.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -140,7 +140,7 @@
        "quote": "July – €149"
       },
       {
-       "amount": 169,
+       "amount": 169.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

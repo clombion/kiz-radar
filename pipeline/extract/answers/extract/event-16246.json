@@ -9,7 +9,7 @@
      "role": "organiser",
      "style": null,
      "country": null,
-     "source_line": "Team ILKSF & HOT ICE KI"
+     "source_line": "ILKSF invests in new talents and helps developing new events with the its vision"
     },
     {
      "name_as_written": "𝐇𝐎𝐓 𝐈𝐂𝐄 𝐊𝐈𝐙",
@@ -22,38 +22,43 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "“All-in One Hotel”",
-     "rationale": "The festival is described as an All-in One Hotel, meaning the parties happen in the hotel where dancers stay."
+     "quote": "This festival will be “All-in One Hotel”.",
+     "rationale": "The description states the festival is an all-in-one hotel event, meaning the parties take place in the hotel where dancers stay."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "MAIN HOTEL: Bellevue Park Hotel**",
+     "rationale": "A main hotel is named for the event, which points dancers to a recommended venue."
     },
     {
      "feature": "pre_party",
      "quote": "Thursday preparty",
-     "rationale": "The programme lists a Thursday preparty before the main event."
+     "rationale": "A Thursday preparty is listed before the main three days of parties."
     },
     {
      "feature": "day_socials",
      "quote": "3 days of social",
-     "rationale": "The expectations list three days of socials, which are daytime socials."
+     "rationale": "Socials are listed as taking place over three days, which are daytime socials."
     },
     {
      "feature": "workshops",
      "quote": "3 days of workshops",
-     "rationale": "The expectations list three days of workshops as part of the event."
+     "rationale": "Workshops are listed as part of the event across three days."
     },
     {
      "feature": "masterclass",
      "quote": "Masterclasses",
-     "rationale": "Masterclasses are listed among the event expectations."
+     "rationale": "Masterclasses are listed in the expectations section of the event."
     },
     {
      "feature": "competition",
      "quote": "Dance competition",
-     "rationale": "A dance competition is listed among the event expectations."
+     "rationale": "A dance competition is listed among the expectations."
     },
     {
      "feature": "taxi_dancers",
      "quote": "taxi/guest dancers",
-     "rationale": "The expectations list taxi and guest dancers being present."
+     "rationale": "Taxi and guest dancers are listed as present at the event."
     }
    ]
   }

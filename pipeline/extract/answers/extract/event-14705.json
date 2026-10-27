@@ -113,18 +113,18 @@
    "features": [
     {
      "feature": "cruise",
-     "quote": "Get ready for a unique festival aboard a cruise ship in the Caribbean!",
-     "rationale": "The quote states the event takes place aboard a cruise ship."
+     "quote": "unique festival aboard a cruise ship",
+     "rationale": "The event takes place aboard a cruise ship in the Caribbean."
     },
     {
      "feature": "workshops",
      "quote": "to improve your Bachata and Kizomba skills",
-     "rationale": "The description advertises over 22 hours of workshops to improve dance skills."
+     "rationale": "Over 22 hours of dance workshops are part of the event."
     },
     {
      "feature": "shows",
      "quote": "spectacular shows",
-     "rationale": "The description promises spectacular shows as part of the week."
+     "rationale": "The description promises spectacular shows as part of the cruise."
     },
     {
      "feature": "meals_included",
@@ -134,7 +134,7 @@
     {
      "feature": "accommodation_included",
      "quote": "Inside cabin (double): €979",
-     "rationale": "Prices are per person for cabins on the cruise, so the cabin accommodation is part of the package."
+     "rationale": "The per-person cabin prices indicate the cabin accommodation is part of the cruise package."
     }
    ]
   }

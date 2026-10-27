@@ -40,23 +40,18 @@
    "genres": [
     {
      "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "#KIZOMBA"
+     "genre_as_written": "Kizomba",
+     "quote": "1 – Kizomba & Semba"
     },
     {
      "genre": "semba",
-     "genre_as_written": "SEMBA",
-     "quote": "#SEMBA"
+     "genre_as_written": "Semba",
+     "quote": "1 – Kizomba & Semba"
     },
     {
      "genre": "urbankiz",
-     "genre_as_written": "URBANKIZ",
-     "quote": "#URBANKIZ"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "AFRO",
-     "quote": "#AFRO"
+     "genre_as_written": "Urban Kiz",
+     "quote": "2 – Urban Kiz & Tarraxo"
     },
     {
      "genre": "tarraxo",
@@ -72,6 +67,11 @@
      "genre": "tarraxinha",
      "genre_as_written": "Tarraxinha",
      "quote": "3 – Douceur & Tarraxinha"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "AFRO",
+     "quote": "#AFRO"
     }
    ]
   }

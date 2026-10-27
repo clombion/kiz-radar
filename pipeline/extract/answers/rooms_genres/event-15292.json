@@ -21,22 +21,22 @@
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "Cha-cha, Bachata, Kizomba"
+     "quote": "Bachata"
     },
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Bachata, Kizomba"
+     "quote": "Kizomba, Traditional dances"
     },
     {
      "genre": "other",
      "genre_as_written": "Cha-cha",
-     "quote": "Cuban, LA, NY, Cha-cha"
+     "quote": "Cha-cha"
     },
     {
      "genre": "other",
      "genre_as_written": "Rueda",
-     "quote": "Exciting COMPETITION: Rueda"
+     "quote": "Rueda"
     }
    ]
   }

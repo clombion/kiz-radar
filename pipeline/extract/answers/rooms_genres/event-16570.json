@@ -35,18 +35,18 @@
    "genres": [
     {
      "genre": "salsa",
-     "genre_as_written": "Salsa",
+     "genre_as_written": "salsa",
      "quote": "Whether you’re a salsa, bachata, kizomba dancer"
     },
     {
      "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Whether you’re a salsa, bachata, kizomba dancer"
+     "genre_as_written": "Traditional Bachata",
+     "quote": "> Traditional Bachata"
     },
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Whether you’re a salsa, bachata, kizomba dancer"
+     "quote": "> Kizomba"
     },
     {
      "genre": "other",

@@ -183,28 +183,33 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "will be in “Isla de la Garena” Hotel (2 nights)",
-     "rationale": "The whole event is held in the hotel where dancers stay for two nights."
+     "quote": "All in on Hotel, near to Madrid Airport.",
+     "rationale": "The description says the whole event is held at the hotel where dancers stay, so the parties and accommodation share one venue."
     },
     {
      "feature": "accommodation_included",
-     "quote": "2 nights Just Accommodation + 2 Full Pass",
-     "rationale": "The main hotel pack bundles two nights of accommodation with two full passes."
+     "quote": "PACKS MAIN HOTEL + FULL PASS:",
+     "rationale": "The packs bundle hotel accommodation together with the full pass."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Single Rooms, pack in Hotel Campanile (10 minutes walking)",
+     "rationale": "A nearby hotel is recommended for single-room guests, separate from the main hotel package."
     },
     {
      "feature": "workshops",
      "quote": "17h-21h Workshops",
-     "rationale": "The Friday program lists workshop sessions."
+     "rationale": "The program lists workshop sessions on Friday, Saturday and Sunday."
     },
     {
      "feature": "shows",
      "quote": "23:30h-01h Shows",
-     "rationale": "The Friday program schedules shows."
+     "rationale": "The program schedules shows on Friday and Saturday nights."
     },
     {
      "feature": "day_socials",
      "quote": "17h-21h Sunset Party",
-     "rationale": "A sunset party in the afternoon-evening is a daytime social."
+     "rationale": "A sunset party in the afternoon is a daytime social."
     },
     {
      "feature": "transfers_shuttle",

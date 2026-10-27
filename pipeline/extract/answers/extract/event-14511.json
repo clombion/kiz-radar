@@ -105,54 +105,59 @@
    ],
    "features": [
     {
+     "feature": "all_in_one",
+     "quote": "Scenic beach, garden & pool-side parties",
+     "rationale": "The parties are held at the beachfront resort where the group's rooms are booked, so event and accommodation share one venue."
+    },
+    {
      "feature": "accommodation_included",
      "quote": "One price includes your room",
-     "rationale": "The single price for the package includes the room."
+     "rationale": "The package price explicitly includes the room."
     },
     {
      "feature": "meals_included",
      "quote": "all-inclusive food and drinks at the resort",
-     "rationale": "Food and drinks are included in the package price."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Add-on nights at our group rate pricing are available",
-     "rationale": "A negotiated group rate is offered for extra nights at the resort hotel, separate from the pass."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "Scenic beach, garden & pool-side parties",
-     "rationale": "The parties take place at the resort where the group block of rooms is held."
+     "rationale": "Food and drinks at the resort are included in the package price."
     },
     {
      "feature": "pool_party",
      "quote": "pool-side parties",
-     "rationale": "The event includes pool-side parties."
+     "rationale": "The event lists pool-side parties."
     },
     {
      "feature": "beach_party",
      "quote": "Scenic beach, garden & pool-side parties",
-     "rationale": "Parties are held on the beach."
+     "rationale": "The event lists parties on the scenic beach."
     },
     {
      "feature": "boat_party",
-     "quote": "boat parties",
-     "rationale": "Boat parties are mentioned as optional events."
+     "quote": "boat parties and masterclasses and special dinners are not included and are optional",
+     "rationale": "The description refers to boat parties as an optional event element."
     },
     {
      "feature": "masterclass",
-     "quote": "boat parties and masterclasses",
-     "rationale": "Masterclasses are offered as part of the event."
+     "quote": "masterclasses",
+     "rationale": "Masterclasses are mentioned as part of the event pass options."
     },
     {
      "feature": "workshops",
      "quote": "Classes & expert instruction",
-     "rationale": "Dance classes are part of the event."
+     "rationale": "Dance classes with expert instruction are part of the event."
     },
     {
      "feature": "themed_parties",
      "quote": "Themed day and night parties",
-     "rationale": "The event has themed parties."
+     "rationale": "The event lists themed day and night parties."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "day and night parties",
+     "rationale": "The event pass covers daytime parties as well as night parties."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Add-on nights at our group rate pricing are available",
+     "rationale": "A negotiated group rate is offered for extra hotel nights that are not part of the pass."
     }
    ]
   }

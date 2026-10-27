@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 42000,
+       "amount": 42000.0,
        "currency": "JPY",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "Super Early Bird: ¥42,000 Sold out❌"
       },
       {
-       "amount": 48000,
+       "amount": 48000.0,
        "currency": "JPY",
        "fee": null,
        "alt": null,
@@ -49,7 +49,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 24000,
+       "amount": 24000.0,
        "currency": "JPY",
        "fee": null,
        "alt": null,
@@ -62,7 +62,7 @@
        "quote": "Super Early Bird: ¥24,000 Sold out❌"
       },
       {
-       "amount": 28000,
+       "amount": 28000.0,
        "currency": "JPY",
        "fee": null,
        "alt": null,

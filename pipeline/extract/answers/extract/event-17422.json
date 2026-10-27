@@ -66,50 +66,43 @@
      "style": null,
      "country": null,
      "source_line": "☛ 3 PM–5 PM Jack and Jill (Open to all) (🎧DJ: NICE LIFE / Host: DAISY)"
-    },
-    {
-     "name_as_written": "KIZZUA",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "✨ KIZZUA WEEKENDER #2 ✨"
     }
    ],
    "features": [
     {
      "feature": "partner_hotel",
      "quote": "Negotiated special rate: Rooms starting at €65 per night",
-     "rationale": "The Ibis Budget hotel is offered at a negotiated special rate, but accommodation is not part of the pass."
+     "rationale": "The Ibis Budget Hotel next to the venue is offered at a negotiated rate while accommodation is not part of the pass."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "Shuttles available by reservation to make your arrival and departure easier",
-     "rationale": "The description offers shuttles for arrival and departure."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Tarraxo Connection Class",
-     "rationale": "Dance classes such as this one are scheduled as part of the event."
-    },
-    {
-     "feature": "competition",
-     "quote": "Jack and Jill (Open to all)",
-     "rationale": "A Jack and Jill is a competition format listed in the schedule."
+     "rationale": "Shuttles are offered by reservation for arrival and departure."
     },
     {
      "feature": "day_socials",
      "quote": "4 PM–8 PM Social",
-     "rationale": "A social is scheduled in the afternoon on Saturday."
+     "rationale": "A daytime social runs on Saturday afternoon and early evening."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Kizomba Fusion Class",
+     "rationale": "Dance classes are part of the schedule."
+    },
+    {
+     "feature": "competition",
+     "quote": "Jack and Jill (Open to all)",
+     "rationale": "A Jack and Jill competition is scheduled on Sunday."
     },
     {
      "feature": "themed_parties",
      "quote": "Friday — Tropical Mood",
-     "rationale": "Each night has a dress theme such as Tropical Mood for the party."
+     "rationale": "Each day has a named dress theme for the parties."
     },
     {
      "feature": "dress_code",
-     "quote": "DRESS CODES",
-     "rationale": "The description states a dress code section with per-day themes."
+     "quote": "Friday — Tropical Mood",
+     "rationale": "The description states a dress code for each day of the weekender."
     }
    ]
   }

@@ -54,7 +54,7 @@
      "source_line": "DJ HUGO BOSS DJ Carlos KinG"
     },
     {
-     "name_as_written": "Kizomba Academy Team",
+     "name_as_written": "Kizomba Academy",
      "role": "organiser",
      "style": null,
      "country": null,
@@ -64,13 +64,23 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "We’ve prepared a minimum of 18+ hours of workshops for you",
-     "rationale": "The description states a minimum of 18+ hours of workshops are included in the event."
+     "quote": "We’ve prepared a minimum of 18+ hours of workshops for you (Kizomba, Semba, AfroHouse and more)",
+     "rationale": "The description states that a minimum of 18+ hours of workshops is prepared for attendees."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Accommodation for 2 nights in a luxury room",
+     "rationale": "The early bird hotel package includes two nights of accommodation."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Breakfast + Unlimited Wellness",
+     "rationale": "The early bird hotel package includes breakfast."
     },
     {
      "feature": "all_in_one",
      "quote": "Stay right in the center of the action in the beautiful setting of Hotel Pod Lipou Resort.",
-     "rationale": "Dancers are invited to stay at the same resort hotel where the event takes place."
+     "rationale": "Accommodation is offered at the same resort hotel where the event takes place."
     }
    ]
   }

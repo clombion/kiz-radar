@@ -9,11 +9,11 @@
      "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "🔺 FULL PASS SOLO: 90 CHF"
       },
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "🔺 FULL PASS SOLO: 100 CHF"
       },
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -52,11 +52,11 @@
        "quote": "🔺 FULL PASS SOLO: 110 CHF"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
-       "from": "10-30",
+       "from": null,
        "until": null,
        "quantity": null,
        "door": false,
@@ -71,11 +71,11 @@
      "style": null,
      "label_quote": null,
      "group_size": 2,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 170,
+       "amount": 170.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -88,7 +88,7 @@
        "quote": "🔺 FULL PASS COUPLE (FOR 1 MAN & 1 WOMAN): 170 CHF"
       },
       {
-       "amount": 190,
+       "amount": 190.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -101,7 +101,7 @@
        "quote": "🔺 FULL PASS COUPLE (FOR 1 MAN & 1 WOMAN): 190 CHF"
       },
       {
-       "amount": 210,
+       "amount": 210.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -114,11 +114,11 @@
        "quote": "🔺 FULL COUPLE PASS (FOR 1 MAN & 1 WOMAN): 210 CHF"
       },
       {
-       "amount": 230,
+       "amount": 230.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
-       "from": "10-30",
+       "from": null,
        "until": null,
        "quantity": null,
        "door": false,
@@ -137,7 +137,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -150,7 +150,7 @@
        "quote": "🔺 DAY PASS (FRIDAY) – WORKSHOPS + PARTY: 50 CHF"
       },
       {
-       "amount": 55,
+       "amount": 55.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -163,7 +163,7 @@
        "quote": "🔺 DAY PASS (FRIDAY) – WORKSHOPS + PARTY: 55 CHF"
       },
       {
-       "amount": 55,
+       "amount": 55.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -176,11 +176,11 @@
        "quote": "🔺 DAY PASS (FRIDAY) – COURSES + PARTY: 55 CHF"
       },
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
-       "from": "10-30",
+       "from": null,
        "until": null,
        "quantity": null,
        "door": false,
@@ -199,7 +199,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -212,7 +212,7 @@
        "quote": "🔺 DAY PASS (SATURDAY) – (WORKSHOPS + SOCIAL + PARTY + AFTER-PARTY): 60 CHF"
       },
       {
-       "amount": 70,
+       "amount": 70.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -225,7 +225,7 @@
        "quote": "🔺 DAY PASS (SATURDAY) – (COURSES + SOCIAL + PARTY + AFTER PARTY): 70 CHF"
       },
       {
-       "amount": 75,
+       "amount": 75.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -238,11 +238,11 @@
        "quote": "🔺 DAY PASS (SATURDAY) – (COURSES + SOCIAL + PARTY + AFTER PARTY): 75 CHF"
       },
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
-       "from": "10-30",
+       "from": null,
        "until": null,
        "quantity": null,
        "door": false,
@@ -261,7 +261,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -274,7 +274,7 @@
        "quote": "🔺 DAY PASS (SUNDAY) – WORKSHOPS + SOCIAL: 50 CHF"
       },
       {
-       "amount": 55,
+       "amount": 55.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -287,7 +287,7 @@
        "quote": "🔺 DAY PASS (SUNDAY) – COURSES + SOCIAL: 55 CHF"
       },
       {
-       "amount": 55,
+       "amount": 55.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -300,11 +300,11 @@
        "quote": "🔺 DAY PASS (SUNDAY) – COURSES + SOCIAL: 55 CHF"
       },
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
-       "from": "10-30",
+       "from": null,
        "until": null,
        "quantity": null,
        "door": false,
@@ -323,7 +323,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 40,
+       "amount": 40.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -336,7 +336,7 @@
        "quote": "🔺 PARTY PASS (PARTY + SOCIAL + AFTER-PARTY): 40 CHF"
       },
       {
-       "amount": 45,
+       "amount": 45.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -349,7 +349,7 @@
        "quote": "🔺 PARTY PASS (PARTY + SOCIAL + AFTER PARTY): 45 CHF"
       },
       {
-       "amount": 45,
+       "amount": 45.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -362,11 +362,11 @@
        "quote": "🔺 PARTY PASS (PARTY + SOCIAL + AFTER PARTY): 45 CHF"
       },
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
-       "from": "10-30",
+       "from": null,
        "until": null,
        "quantity": null,
        "door": false,
@@ -385,7 +385,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -408,7 +408,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 25,
+       "amount": 25.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -431,7 +431,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 15,
+       "amount": 15.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -454,7 +454,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 15,
+       "amount": 15.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,

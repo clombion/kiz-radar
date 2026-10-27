@@ -47,24 +47,24 @@
      "rationale": "The event lists international Kizomba, Semba and Tarraxo workshops as part of what awaits attendees."
     },
     {
-     "feature": "live_music",
-     "quote": "Live music",
-     "rationale": "The 'What Awaits You' list explicitly includes live music."
+     "feature": "pool_party",
+     "quote": "Beach & Pool Party",
+     "rationale": "The event offers a pool party, named in the Beach & Pool Party item."
     },
     {
      "feature": "beach_party",
      "quote": "Beach & Pool Party",
-     "rationale": "The list names a beach party combined with a pool party."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Beach & Pool Party",
-     "rationale": "The list names a pool party combined with a beach party."
+     "rationale": "The event offers a beach party, named in the Beach & Pool Party item."
     },
     {
      "feature": "bootcamp_intensive",
      "quote": "Tarraxo Bootcamp",
-     "rationale": "A Tarraxo Bootcamp is offered as part of the programme."
+     "rationale": "A Tarraxo Bootcamp is listed as part of the programme, which is an intensive training course."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Live music",
+     "rationale": "The event lists live music among its offerings."
     }
    ]
   }

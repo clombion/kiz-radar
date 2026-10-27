@@ -84,44 +84,44 @@
    ],
    "features": [
     {
-     "feature": "after_party",
-     "quote": "6:00 am – 12:00 pm : After party",
-     "rationale": "The schedule lists an After party slot on each day."
-    },
-    {
      "feature": "workshops",
      "quote": "8:00 pm – 00:00 pm : Workshops",
-     "rationale": "The schedule lists Workshops as part of the event program."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "6:00 pm – 7:30 pm : Masterclass",
-     "rationale": "The Saturday schedule includes a Masterclass slot."
+     "rationale": "The schedule lists Workshops sessions on the Friday."
     },
     {
      "feature": "day_socials",
      "quote": "12:00 pm – 9:00 pm : Social",
-     "rationale": "Daytime and afternoon Social sessions are scheduled across the days."
+     "rationale": "The schedule lists a daytime Social from noon to 9 pm."
+    },
+    {
+     "feature": "after_party",
+     "quote": "6:00 am – 12:00 pm : After party",
+     "rationale": "The schedule lists an After party running in the morning."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "6:00 pm – 7:30 pm : Masterclass",
+     "rationale": "The schedule lists a Masterclass session on Saturday."
     },
     {
      "feature": "multiple_rooms",
      "quote": "2 Rᴏᴏᴍs",
-     "rationale": "The description states the event has 2 rooms."
+     "rationale": "The description states the event has 2 rooms, meaning more than one dance room."
     },
     {
      "feature": "taxi_dancers",
      "quote": "TAXIS TEAMS",
-     "rationale": "A taxi-dancer teams section lists teams serving the dancers."
+     "rationale": "A section lists taxi-dancer teams for the event."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "Fʀᴇᴇ Sʜᴜᴛᴛʟᴇs",
-     "rationale": "Free shuttles are advertised as part of the event."
+     "rationale": "The description advertises free shuttles for attendees."
     },
     {
      "feature": "partner_hotel",
-     "quote": "Prices per night with promo code ↪️ KNY ↩️ 10% DISCOUNT",
-     "rationale": "A negotiated hotel rate with a promo code is offered at the listed main hotel, not included in the pass."
+     "quote": "Prices per night with promo code",
+     "rationale": "A main partner hotel is named with a negotiated promo rate for bookings."
     }
    ]
   }

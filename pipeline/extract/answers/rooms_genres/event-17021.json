@@ -10,17 +10,22 @@
     {
      "genre": "kizomba",
      "genre_as_written": "kizomba",
-     "quote": "Get ready for an epic kizomba experience!"
+     "quote": "epic kizomba experience"
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "Urban Kiz",
-     "quote": "Urban Kiz Sortilège Intermediate Class with Manu Saudade & Olivia"
+     "quote": "Urban Kiz Sortilège Intermediate Class"
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Kizomba Fusion",
+     "quote": "Intermediate Kizomba Fusion Class"
     },
     {
      "genre": "kompa",
      "genre_as_written": "Konpa",
-     "quote": "Excalibur Konpa Class with Kalypso & Adé"
+     "quote": "Excalibur Konpa Class"
     }
    ]
   }

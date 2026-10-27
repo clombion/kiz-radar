@@ -5,76 +5,47 @@
    "event_id": 16678,
    "party_rooms": {
     "count": 2,
-    "quote": "2 dance studios"
+    "quote": "2 dance studios:\n– 1 SBK studio\n– 1 Kizomba studio"
    },
    "class_rooms": {
     "count": 8,
-    "quote": "8 dance floors"
+    "quote": "8 dance floors, with approximately the following breakdown:"
    },
    "rooms": [
     {
-     "name_as_written": "1 SBK studio",
+     "name_as_written": "SBK studio",
      "kind": "party",
-     "genres": [],
+     "genres": [
+      "salsa",
+      "bachata",
+      "kizomba"
+     ],
      "quote": "1 SBK studio"
     },
     {
-     "name_as_written": "1 Kizomba studio",
+     "name_as_written": "Kizomba studio",
      "kind": "party",
      "genres": [
       "kizomba"
      ],
      "quote": "1 Kizomba studio"
-    },
-    {
-     "name_as_written": null,
-     "kind": "class",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "2 Salsa"
-    },
-    {
-     "name_as_written": null,
-     "kind": "class",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "2 Bachata"
-    },
-    {
-     "name_as_written": null,
-     "kind": "class",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "2 Kizomba"
-    },
-    {
-     "name_as_written": null,
-     "kind": "class",
-     "genres": [
-      "reggaeton",
-      "other"
-     ],
-     "quote": "2 Individual Dances (Reggaeton, Belly Dance, etc.)"
     }
    ],
    "genres": [
     {
      "genre": "salsa",
      "genre_as_written": "Salsa",
-     "quote": "Salsa • Bachata • Kizomba • Reggaeton • Afro • Oriental • Heels"
+     "quote": "– 2 Salsa"
     },
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "Salsa • Bachata • Kizomba • Reggaeton • Afro • Oriental • Heels"
+     "quote": "– 2 Bachata"
     },
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "1 Kizomba studio"
+     "quote": "– 2 Kizomba"
     },
     {
      "genre": "reggaeton",
@@ -88,18 +59,13 @@
     },
     {
      "genre": "other",
-     "genre_as_written": "Oriental",
+     "genre_as_written": "Oriental dance",
      "quote": "Marine (Oriental dance)"
     },
     {
      "genre": "other",
      "genre_as_written": "Heels",
      "quote": "Lili (Heels)"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Belly Dance",
-     "quote": "2 Individual Dances (Reggaeton, Belly Dance, etc.)"
     }
    ]
   }

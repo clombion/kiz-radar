@@ -141,13 +141,13 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "Friday 19/02: WAKANDA FESTIVAL (𝗩𝗮𝗻 𝗱𝗲𝗿 𝗩𝗮𝗹𝗸 𝗛𝗼𝘁𝗲𝗹 𝗣𝗮𝗿𝗶𝘀 𝗖𝗗𝗚 𝗔𝗶𝗿𝗽𝗼𝗿𝘁) Social 4PM-8PM / party 23PM-7AM",
-     "rationale": "The Friday party takes place in the Van der Valk hotel where dancers are invited to stay, so event and accommodation share one venue."
+     "quote": "For your comfort, we have chosen the luxurious 4-star hotel 𝗩𝗮𝗻 𝗱𝗲𝗿 𝗩𝗮𝗹𝗸 𝗛𝗼𝘁𝗲𝗹 𝗣𝗮𝗿𝗶𝘀 𝗖𝗗𝗚 𝗔𝗶𝗿𝗽𝗼𝗿𝘁 with more than 600 m2 of dance space.",
+     "rationale": "The main hotel hosts the dance space, so the parties take place where dancers are invited to stay."
     },
     {
-     "feature": "multiple_rooms",
-     "quote": "The two rooms have air conditioning.",
-     "rationale": "Naming two rooms (Room 1 and Room 2) shows the event has more than one dance room."
+     "feature": "accommodation_included",
+     "quote": "Main hotel and pass:",
+     "rationale": "The pass is listed together with the main hotel, indicating accommodation is part of the package."
     },
     {
      "feature": "partner_hotel",
@@ -155,19 +155,14 @@
      "rationale": "A list of recommended nearby hotels is given for dancers to stay in."
     },
     {
-     "feature": "accommodation_included",
-     "quote": "Main hotel and pass:",
-     "rationale": "The main hotel is listed under the pass heading, suggesting the pass package covers the hotel."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "𝗧𝗔𝗫𝗜 𝗗𝗔𝗡𝗖𝗘𝗥𝗦",
-     "rationale": "A taxi dancers section heading is present, so taxi dancers are part of the event."
+     "feature": "multiple_rooms",
+     "quote": "The two rooms have air conditioning.",
+     "rationale": "The event has two dance rooms, Room 1 and Room 2."
     },
     {
      "feature": "day_socials",
      "quote": "Social 4PM-8PM / party 23PM-7AM",
-     "rationale": "Afternoon socials from 4PM to 8PM are scheduled each day."
+     "rationale": "Daytime social sessions are scheduled before the evening parties."
     }
    ]
   }

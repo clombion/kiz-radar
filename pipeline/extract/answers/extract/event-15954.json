@@ -5,7 +5,28 @@
    "event_id": 15954,
    "artists": [
     {
-     "name_as_written": "La SOA x Let’s Play Kizomba x The New Touch x Li Régué",
+     "name_as_written": "La SOA",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "La SOA x Let’s Play Kizomba x The New Touch x Li Régué"
+    },
+    {
+     "name_as_written": "Let’s Play Kizomba",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "La SOA x Let’s Play Kizomba x The New Touch x Li Régué"
+    },
+    {
+     "name_as_written": "The New Touch",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "La SOA x Let’s Play Kizomba x The New Touch x Li Régué"
+    },
+    {
+     "name_as_written": "Li Régué",
      "role": "organiser",
      "style": null,
      "country": null,
@@ -211,33 +232,28 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "Tamasha Summer is an All-in-One Kizomba Festival",
-     "rationale": "The event is described as an All-in-One festival, with an All-in-One section and parties in the same setting as the stay."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Book your Full Pass & Accommodation here:",
-     "rationale": "The full pass and accommodation are sold together as one booking."
+     "quote": "is an All-in-One Kizomba Festival",
+     "rationale": "The festival describes itself as an All-in-One event, and the All-in-One section lists its pool, beach and party features."
     },
     {
      "feature": "pool_party",
      "quote": "Pool Parties",
-     "rationale": "The event lists Pool Parties among its activities."
+     "rationale": "The description lists Pool Parties among the event's activities."
     },
     {
      "feature": "beach_party",
      "quote": "Beach Party",
-     "rationale": "The event lists a Beach Party among its activities."
+     "rationale": "The description lists a Beach Party among the event's activities."
     },
     {
      "feature": "day_socials",
      "quote": "Day socials & Night parties",
-     "rationale": "Daytime socials are explicitly listed as part of the programme."
+     "rationale": "The description promises daytime socials alongside night parties."
     },
     {
      "feature": "workshops",
      "quote": "Experienced teachers from across France & beyond to boost your dance",
-     "rationale": "A teachers line-up is offered to improve dancing, which implies classes."
+     "rationale": "A teachers line-up offering classes to improve dancing indicates dance classes are part of the event."
     }
    ]
   }

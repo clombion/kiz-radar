@@ -208,70 +208,65 @@
      "source_line": "Mirko and Mara"
     },
     {
-     "name_as_written": "Claudia Iannoli",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "📞 3299410647 Claudia Iannoli"
-    },
-    {
      "name_as_written": "TEAM taxi Dancers",
      "role": "crew",
      "style": null,
      "country": null,
      "source_line": "✴ TEAM taxi Dancers"
+    },
+    {
+     "name_as_written": "Claudia Iannoli",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "📞 3299410647 Claudia Iannoli"
     }
    ],
    "features": [
     {
      "feature": "workshops",
      "quote": "over 45 hours of WORKSHOPS",
-     "rationale": "The text states the event has over 45 hours of workshops."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "5 rooms for training",
-     "rationale": "Five training rooms means more than one dance room."
+     "rationale": "The description states that there are over 45 hours of workshops across the three days."
     },
     {
      "feature": "taxi_dancers",
      "quote": "TEAM taxi Dancers",
-     "rationale": "A named taxi dancer team is listed."
+     "rationale": "A taxi dancer team is listed as present at the festival."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "5 rooms for training",
+     "rationale": "Five separate rooms are offered for training, so there is more than one dance room."
     },
     {
      "feature": "shows",
      "quote": "Shows",
-     "rationale": "The description lists shows as part of the event and passes."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Themed evenings on 4 dance floors.",
-     "rationale": "Themed evenings are offered as parties."
+     "rationale": "The event lists shows as part of what is offered."
     },
     {
      "feature": "all_in_one",
      "quote": "All in the same hotel.",
-     "rationale": "The parties are held in the same hotel where dancers stay."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "HOTEL VALMARINA (Via Baldanzese 146, 50041 Calenzano, Florence, ITALY (500 meters on foot and a 2-minute drive from HOTEL DELTA FLORENCE).",
-     "rationale": "A recommended hotel is named for accommodation, which is not part of the pass."
+     "rationale": "The description says the events take place in the same hotel where accommodation is offered."
     },
     {
      "feature": "masterclass",
      "quote": "Master Class",
-     "rationale": "The program lists Master Class sessions."
+     "rationale": "The programme includes Master Class sessions on Saturday and Sunday."
     },
     {
      "feature": "day_socials",
      "quote": "Kizomba Social Room",
-     "rationale": "The social room runs in the afternoon as a daytime social."
+     "rationale": "The programme schedules the Kizomba Social Room in the afternoon hours on each day."
     },
     {
-     "feature": "pre_party",
-     "quote": "Pre-evening Workshop",
-     "rationale": "A workshop is held before the evening party."
+     "feature": "themed_parties",
+     "quote": "Themed evenings on 4 dance floors.",
+     "rationale": "The description advertises themed evenings held on four dance floors."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "HOTEL VALMARINA",
+     "rationale": "A recommended hotel with negotiated room rates is listed separately from the pass prices."
     }
    ]
   }

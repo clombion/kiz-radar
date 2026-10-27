@@ -16,32 +16,27 @@
     {
      "feature": "workshops",
      "quote": "More than 40 hours of WORKSHOPS",
-     "rationale": "The description states that more than 40 hours of workshops are part of the congress."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "1 PRE-PARTY + 3 PARTY",
-     "rationale": "A pre-party is explicitly listed alongside the main parties."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "3 THEMED PARTIES DURING THE WEEKEND",
-     "rationale": "The weekend includes three parties with a theme."
+     "rationale": "The description states that more than 40 hours of workshops are part of the event."
     },
     {
      "feature": "multiple_rooms",
      "quote": "SOCIAL ROOM",
-     "rationale": "A separate social room is listed in addition to the main dancefloor, so there is more than one dance room."
+     "rationale": "A separate social room is mentioned alongside the main dancefloor, so there is more than one dance room."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "1 PRE-PARTY + 3 PARTY",
+     "rationale": "The programme lists one pre-party before the main parties."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "3 THEMED PARTIES DURING THE WEEKEND",
+     "rationale": "The event includes three themed parties during the weekend."
     },
     {
      "feature": "partner_hotel",
      "quote": "Hotels near the festival from November 19 to 23, 2026:",
-     "rationale": "A list of hotels recommended near the festival is given, and accommodation is not described as part of the pass."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "HOTEL HILTON – 8 rue de Rome 93290 Tremblay en France",
-     "rationale": "The Friday-to-Monday parties take place at the Hilton, which is also named as the main hotel for the festival."
+     "rationale": "A list of recommended hotels near the festival is given, with the main hotel named, without accommodation being part of the pass."
     }
    ]
   }

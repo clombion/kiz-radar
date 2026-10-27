@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 85,
+       "amount": 85.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "Full-pass – 85 eur"
       },
       {
-       "amount": 95,
+       "amount": 95.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "5th Feb 95€"
       },
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "5th April 100€"
       },
       {
-       "amount": 105,
+       "amount": 105.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -65,7 +65,7 @@
        "quote": "5th June 105€"
       },
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -78,7 +78,7 @@
        "quote": "5th aug 110€"
       },
       {
-       "amount": 115,
+       "amount": 115.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -91,7 +91,7 @@
        "quote": "5th sep 115€"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -104,7 +104,7 @@
        "quote": "5th Oct 120€"
       },
       {
-       "amount": 130,
+       "amount": 130.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -121,18 +121,18 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "Full-pass special package ( place in a double room to share)",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 230,
+       "amount": 230.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": null,
+       "until": "2026-02-05",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -144,18 +144,18 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "Full-pass special package – single room",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 340,
+       "amount": 340.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": null,
+       "until": "2026-02-05",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -173,7 +173,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 75,
+       "amount": 75.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -186,7 +186,7 @@
        "quote": "Party-pass: 75 eur until the event ( 85 eur at the door)"
       },
       {
-       "amount": 85,
+       "amount": 85.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -203,13 +203,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "Party-pass special package ( place in a double room to share)",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 220,
+       "amount": 220.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -226,13 +226,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "Party-pass special package – single room",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 330,
+       "amount": 330.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

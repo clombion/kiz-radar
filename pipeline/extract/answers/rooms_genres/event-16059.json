@@ -3,15 +3,12 @@
  "events": [
   {
    "event_id": 16059,
-   "party_rooms": {
-    "count": 2,
-    "quote": "𝐑𝐎𝐎𝐌 𝟏"
-   },
+   "party_rooms": null,
    "class_rooms": null,
    "rooms": [
     {
-     "name_as_written": "𝐑𝐎𝐎𝐌 𝟏",
-     "kind": "party",
+     "name_as_written": null,
+     "kind": "unspecified",
      "genres": [
       "urbankiz",
       "tarraxo",
@@ -21,23 +18,24 @@
      "quote": "Urban kiz"
     },
     {
-     "name_as_written": "𝐑𝐎𝐎𝐌 𝟐 (200m2)",
-     "kind": "party",
+     "name_as_written": null,
+     "kind": "unspecified",
      "genres": [
       "kizomba",
       "semba",
       "zouk",
       "kompa",
-      "tarraxinha"
+      "tarraxinha",
+      "other"
      ],
-     "quote": "Tarraxinha"
+     "quote": "Kizomba"
     }
    ],
    "genres": [
     {
      "genre": "urbankiz",
-     "genre_as_written": "Urban kiz",
-     "quote": "The Legendary Urban Kiz"
+     "genre_as_written": "Urban Kiz",
+     "quote": "The Legendary Urban Kiz, Tarraxo"
     },
     {
      "genre": "tarraxo",
@@ -47,7 +45,7 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Tarraxo & Kizomba Celebration"
+     "quote": "Kizomba Celebration"
     },
     {
      "genre": "douceur",
@@ -73,6 +71,11 @@
      "genre": "tarraxinha",
      "genre_as_written": "Tarraxinha",
      "quote": "Tarraxinha"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "World Music",
+     "quote": "World Music"
     }
    ]
   }

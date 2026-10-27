@@ -180,13 +180,6 @@
      "source_line": "DJ Nico"
     },
     {
-     "name_as_written": "INFLUENCED DJ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "INFLUENCED DJ"
-    },
-    {
      "name_as_written": "Mylah Pless",
      "role": "media",
      "style": null,
@@ -253,13 +246,28 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "Workshops (included with Friday evening)",
-     "rationale": "The program lists workshops as part of the event, included with the Friday evening pass."
+     "quote": "8:30 PM to 10:30 PM Workshops (included with Friday evening)",
+     "rationale": "The schedule lists workshops as part of the Friday evening programme, and Sunday also has dance classes."
     },
     {
      "feature": "shows",
      "quote": "10:00 PM: 2K Show",
-     "rationale": "A 2K Show is scheduled on Saturday evening, which is a show by the artists."
+     "rationale": "The programme includes a 2K Show on Saturday evening."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "4 rooms = salsa, bachata, kizomba, and mix",
+     "rationale": "The party is stated to take place across four rooms."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "DRESS SETTINGS:",
+     "rationale": "A dress setting section specifies the dress for each evening and afternoon."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "2 PM to 6 PM SBKZ Social on the beach at Sand",
+     "rationale": "An afternoon social runs from 2 PM to 6 PM on Friday."
     },
     {
      "feature": "competition",
@@ -267,24 +275,9 @@
      "rationale": "A SYS Battle is scheduled on Sunday, which is a competition."
     },
     {
-     "feature": "day_socials",
-     "quote": "2 PM to 6 PM SBKZ Social on the beach at Sand",
-     "rationale": "A daytime social runs from 2 PM to 6 PM on Friday."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "4 rooms = salsa, bachata, kizomba, and mix",
-     "rationale": "The party is stated to have four separate rooms for different styles."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Dress codes for each section:",
-     "rationale": "The description states dress codes for each section of the event."
-    },
-    {
      "feature": "transfers_shuttle",
      "quote": "with local shuttles between the station and Le Touquet",
-     "rationale": "Local shuttles are provided between the train station and Le Touquet."
+     "rationale": "Local shuttles run between the train station and Le Touquet."
     }
    ]
   }

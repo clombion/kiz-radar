@@ -5,6 +5,55 @@
    "event_id": 15969,
    "artists": [
     {
+     "name_as_written": "DANI J",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "🎤 DANI J is coming to Reims for an EXCLUSIVE SHOWCASE 🔥"
+    },
+    {
+     "name_as_written": "David Pedron",
+     "role": "dj",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "🎶 David Pedron (Bachata)"
+    },
+    {
+     "name_as_written": "ICHIGO",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎶 ICHIGO"
+    },
+    {
+     "name_as_written": "SCIO",
+     "role": "dj",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "🎶 SCIO (Bachata)"
+    },
+    {
+     "name_as_written": "Ti Wosh",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎶 Ti Wosh"
+    },
+    {
+     "name_as_written": "Diablo",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎶 Diablo"
+    },
+    {
+     "name_as_written": "DJ JDN",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "🎶 DJ JDN"
+    },
+    {
      "name_as_written": "Will MP & Nad",
      "role": "teacher",
      "style": "BACHATA",
@@ -59,84 +108,28 @@
      "style": "KIZOMBA",
      "country": null,
      "source_line": "🔥 JM Bandal"
-    },
-    {
-     "name_as_written": "David Pedron",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🎶 David Pedron (Bachata)"
-    },
-    {
-     "name_as_written": "ICHIGO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎶 ICHIGO"
-    },
-    {
-     "name_as_written": "SCIO",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🎶 SCIO (Bachata)"
-    },
-    {
-     "name_as_written": "Ti Wosh",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎶 Ti Wosh"
-    },
-    {
-     "name_as_written": "Diablo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎶 Diablo"
-    },
-    {
-     "name_as_written": "DJ JDN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎶 DJ JDN"
-    },
-    {
-     "name_as_written": "DANI J",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "🌟 DANI J 🌟"
-    },
-    {
-     "name_as_written": "Pandi Panda",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "📘 Facebook: Pandi Panda / DJ JDN"
     }
    ],
    "features": [
     {
-     "feature": "workshops",
-     "quote": "8:00 PM – 10:00 PM: Classes",
-     "rationale": "The program lists dance classes as part of the event on both days."
+     "feature": "shows",
+     "quote": "10:00 PM – 11:00 PM: Showcase",
+     "rationale": "A showcase slot in the programme means artists perform on stage."
     },
     {
-     "feature": "shows",
-     "quote": "DANI J is coming to Reims for an EXCLUSIVE SHOWCASE",
-     "rationale": "Artist DANI J performs a showcase during the event."
+     "feature": "workshops",
+     "quote": "8:00 PM – 10:00 PM: Classes",
+     "rationale": "Scheduled classes are part of the event programme."
     },
     {
      "feature": "multiple_rooms",
      "quote": "2-Room Party – 2 Atmospheres",
-     "rationale": "The party is run across two separate dance rooms."
+     "rationale": "The party takes place in two separate rooms."
     },
     {
      "feature": "day_socials",
      "quote": "5:00 PM – 7:00 PM: Social KB",
-     "rationale": "A daytime social session is scheduled on Saturday afternoon."
+     "rationale": "An afternoon social is listed in the schedule."
     }
    ]
   }

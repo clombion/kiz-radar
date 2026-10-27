@@ -106,28 +106,28 @@
    "features": [
     {
      "feature": "multiple_rooms",
-     "quote": "𝟏 𝐬𝐚𝐥𝐥𝐞 𝐝𝐞 𝟑𝟎𝟎𝐦𝟐",
-     "rationale": "The description lists two separate rooms, one of 300m2 and one of 200m2, so there is more than one dance floor."
-    },
-    {
-     "feature": "workshops",
-     "quote": "☆ ☆ 𝕃𝕀ℕ𝔼 𝕌ℙ 𝕂𝕀ℤ𝕆𝕄𝔹𝔸 ☆ ☆",
-     "rationale": "A line-up of teaching couples and solo teachers under this heading implies dance classes are part of the event."
+     "quote": "𝟏 𝐬𝐚𝐥𝐥𝐞 𝐝𝐞 𝟑𝟎𝟎𝐦𝟐 𝐝𝐞́𝐝𝐢𝐞́𝐞",
+     "rationale": "The description lists two separate dance rooms, one of 300m2 and one of 200m2."
     },
     {
      "feature": "taxi_dancers",
      "quote": "20 𝑻𝒂𝒙𝒊𝒔",
-     "rationale": "The line-up lists 20 taxi dancers present at the event."
+     "rationale": "The line-up includes twenty taxi dancers."
     },
     {
      "feature": "themed_parties",
      "quote": "Samedi soir : 𝐌𝐚𝐬𝐤𝐚𝐫𝐚𝐝𝐞",
-     "rationale": "Saturday night is announced as a masquerade night, which is a themed party."
+     "rationale": "A Saturday night masquerade is a themed party."
     },
     {
      "feature": "dress_code",
      "quote": "𝔻ℝ𝔼𝕊𝕊 ℂ𝕆𝔻𝔼",
-     "rationale": "The description has a heading DRESS CODE followed by the requirements for each night."
+     "rationale": "The description has a heading DRESS CODE followed by the dress code details."
+    },
+    {
+     "feature": "workshops",
+     "quote": "𝕃𝕀ℕ𝔼 𝕌ℙ 𝕂𝕀ℤ𝕆𝕄𝔹𝔸",
+     "rationale": "A kizomba line-up of teaching couples and solo teachers implies dance classes are part of the event."
     }
    ]
   }

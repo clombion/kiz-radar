@@ -13,7 +13,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -36,7 +36,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 200,
+       "amount": 200.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -59,7 +59,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 250,
+       "amount": 250.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -82,7 +82,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 159,
+       "amount": 159.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -105,7 +105,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 209,
+       "amount": 209.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -128,7 +128,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 259,
+       "amount": 259.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -151,7 +151,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 250,
+       "amount": 250.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -174,7 +174,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 330,
+       "amount": 330.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -197,7 +197,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 410,
+       "amount": 410.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -220,7 +220,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -243,7 +243,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -266,7 +266,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -289,7 +289,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -312,7 +312,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

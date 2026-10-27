@@ -15,7 +15,7 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "Latin dance workshops",
+     "quote": "Latin dance workshops (salsa, bachata, kizomba, Brazilian zouk, etc.)",
      "rationale": "The description states that Latin dance workshops are part of the event."
     },
     {
@@ -24,14 +24,19 @@
      "rationale": "The workshops are explicitly open to all levels."
     },
     {
-     "feature": "meals_included",
-     "quote": "Full board",
-     "rationale": "Full board is listed as part of the full pass package."
-    },
-    {
      "feature": "accommodation_included",
      "quote": "Includes 3 days, 2 nights",
-     "rationale": "The full pass includes two nights, which means accommodation is part of the package."
+     "rationale": "The full pass is stated to include nights, meaning accommodation is part of the package."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Full board",
+     "rationale": "Full board is listed as part of the pass or package."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 rooms, 3 atmospheres with 1 class",
+     "rationale": "The evening parties take place in two rooms with three atmospheres."
     }
    ]
   }

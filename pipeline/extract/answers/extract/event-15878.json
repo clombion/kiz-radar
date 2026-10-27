@@ -5,6 +5,13 @@
    "event_id": 15878,
    "artists": [
     {
+     "name_as_written": "KIZ ME UP",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "PAGE FB : KIZ ME UP"
+    },
+    {
      "name_as_written": "DJ SNAKES",
      "role": "dj",
      "style": null,
@@ -177,32 +184,32 @@
     {
      "feature": "all_in_one",
      "quote": "All in one Hotel",
-     "rationale": "The description says the festival is all in one hotel, with parties at the main hotel where dancers stay."
+     "rationale": "The description says the festival is all in one hotel, where the parties take place."
     },
     {
      "feature": "pre_party",
      "quote": "Thursday PREPARTY",
-     "rationale": "A Thursday prep party is scheduled before the main festival days."
-    },
-    {
-     "feature": "after_party",
-     "quote": "8:00 am – 11:00 am : After party",
-     "rationale": "The schedule lists an after party on Friday morning."
+     "rationale": "A Thursday pre-party is listed before the main festival days."
     },
     {
      "feature": "workshops",
      "quote": "21:00 – 23:00 : Workshops",
-     "rationale": "The schedule lists dance workshops on Friday evening."
+     "rationale": "Workshops appear in the daily schedule as part of the event."
     },
     {
      "feature": "day_socials",
-     "quote": "16:00 – 21:00 : Social",
-     "rationale": "The schedule lists afternoon social sessions on the festival days."
+     "quote": "14:00 pm – 21:00 : Social",
+     "rationale": "Afternoon socials are scheduled on Friday."
+    },
+    {
+     "feature": "after_party",
+     "quote": "8:00 am – 11:00 am : After party",
+     "rationale": "An after-party is scheduled in the morning hours."
     },
     {
      "feature": "taxi_dancers",
      "quote": "GUEST TAXIS TEAMS",
-     "rationale": "A guest taxi-dancer team section is listed, so taxi dancers are present."
+     "rationale": "Guest taxi-dancer teams are listed as present at the event."
     }
    ]
   }

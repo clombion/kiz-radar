@@ -140,14 +140,9 @@
    ],
    "features": [
     {
-     "feature": "themed_parties",
-     "quote": "FLOWER POWER EDITION",
-     "rationale": "The event is themed as a flower power edition, so its parties carry a dress theme."
-    },
-    {
      "feature": "workshops",
      "quote": "Single Class: €20 (subject to availability)",
-     "rationale": "Single classes are sold, showing that dance classes are part of the event."
+     "rationale": "A single class is offered for purchase, showing that dance classes are part of the event."
     }
    ]
   }

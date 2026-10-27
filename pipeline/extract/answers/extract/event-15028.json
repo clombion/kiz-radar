@@ -5,13 +5,6 @@
    "event_id": 15028,
    "artists": [
     {
-     "name_as_written": "Havana D’Primera",
-     "role": "performer",
-     "style": "SALSA",
-     "country": "Cuba",
-     "source_line": "💥 Havana D’Primera (Cuba) Live Concert"
-    },
-    {
      "name_as_written": "Alberto Valdes & Andria Panagi",
      "role": "teacher",
      "style": "SALSA",
@@ -171,6 +164,13 @@
      "style": "SALSA",
      "country": "Greece",
      "source_line": "🔴 Dj Mauri (Greece)"
+    },
+    {
+     "name_as_written": "Havana D’Primera",
+     "role": "performer",
+     "style": "SALSA",
+     "country": "Cuba",
+     "source_line": "💥 Havana D’Primera (Cuba) Live Concert"
     },
     {
      "name_as_written": "Pinto Picasso",
@@ -420,34 +420,34 @@
    ],
    "features": [
     {
-     "feature": "workshops",
-     "quote": "Amazing Shows and Workshops",
-     "rationale": "The highlights list promises workshops as part of the event."
+     "feature": "live_music",
+     "quote": "Live Concert",
+     "rationale": "The line-up lists live concerts by Havana D’Primera and Pinto Picasso."
     },
     {
      "feature": "shows",
      "quote": "Amazing Shows and Workshops",
-     "rationale": "The highlights list promises amazing shows during the event."
+     "rationale": "The highlights promise amazing shows by the artists."
     },
     {
-     "feature": "live_music",
-     "quote": "Havana D’Primera (Cuba) Live Concert",
-     "rationale": "A live concert by a band is listed among the artists."
+     "feature": "workshops",
+     "quote": "Amazing Shows and Workshops",
+     "rationale": "The highlights advertise workshops as part of the event."
     },
     {
      "feature": "masterclass",
      "quote": "Salsa/Bachata/Kizomba Master Classes",
-     "rationale": "Master classes in the three styles are advertised as highlights."
+     "rationale": "Master classes in salsa, bachata and kizomba are listed as highlights."
     },
     {
      "feature": "competition",
      "quote": "Dance Competitions",
-     "rationale": "Dance competitions are listed as a highlight."
+     "rationale": "Dance competitions are listed among the highlights."
     },
     {
      "feature": "bootcamp_intensive",
      "quote": "Choreo Bootcamps",
-     "rationale": "Choreography bootcamps are listed as a highlight."
+     "rationale": "Choreo bootcamps are listed as a highlight of the congress."
     }
    ]
   }

@@ -20,7 +20,7 @@
       "tarraxinha",
       "afro"
      ],
-     "quote": "50% Kizomba – Semba – Coladeira – Cabozouk"
+     "quote": "ROOM 1:\n50% Kizomba – Semba – Coladeira – Cabozouk\n50% GhettoZouk – Tarraxinha – Afropop – Afrohouse"
     },
     {
      "name_as_written": "ROOM 2",
@@ -29,7 +29,7 @@
       "salsa",
       "bachata"
      ],
-     "quote": "50% Cuban Salsa, Timba, Son, Salsa Dura"
+     "quote": "ROOM 2:\n50% Cuban Salsa, Timba, Son, Salsa Dura\n50% Modern, Sensual, and Dominican Bachata"
     }
    ],
    "genres": [
@@ -51,17 +51,17 @@
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "50% Modern, Sensual, and Dominican Bachata"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "GhettoZouk",
-     "quote": "50% GhettoZouk – Tarraxinha – Afropop – Afrohouse"
+     "quote": "Salsa/Bachata"
     },
     {
      "genre": "tarraxinha",
      "genre_as_written": "Tarraxinha",
-     "quote": "50% GhettoZouk – Tarraxinha – Afropop – Afrohouse"
+     "quote": "Tarraxinha"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "GhettoZouk",
+     "quote": "GhettoZouk"
     },
     {
      "genre": "afro",

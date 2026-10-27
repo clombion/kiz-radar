@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -36,7 +36,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 160,
+       "amount": 160.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -59,7 +59,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -82,7 +82,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 145,
+       "amount": 145.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -97,9 +97,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "Couple pass tickets – Man & Woman only"
-   ]
+   "rule_quotes": []
   }
  ]
 }

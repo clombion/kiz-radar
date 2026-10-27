@@ -113,13 +113,13 @@
    "features": [
     {
      "feature": "partner_hotel",
-     "quote": "HÔTEL PARTNER",
-     "rationale": "A partner hotel is named with a 15% booking discount, without being part of the pass."
+     "quote": "The Originals City, Hôtel Ecoparc, Montpellier Est (Inter-Hotel)",
+     "rationale": "A partner hotel is named with a 15% discount on bookings, and it is not part of the pass."
     },
     {
      "feature": "camping",
      "quote": "Hotels, campsites, and Airbnbs available near the new venue",
-     "rationale": "Campsite accommodation is listed as available near the venue."
+     "rationale": "The description states that campsite accommodation is available near the venue."
     }
    ]
   }

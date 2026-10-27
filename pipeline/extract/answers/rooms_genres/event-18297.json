@@ -3,17 +3,14 @@
  "events": [
   {
    "event_id": 18297,
-   "party_rooms": {
-    "count": 4,
-    "quote": "Amazing Venue with 4 different rooms"
-   },
+   "party_rooms": null,
    "class_rooms": null,
    "rooms": [],
    "genres": [
     {
      "genre": "kizomba",
      "genre_as_written": "KIZOMBA",
-     "quote": "This event is dedicated to KIZOMBA INFORMATION"
+     "quote": "dedicated to KIZOMBA INFORMATION"
     }
    ]
   }

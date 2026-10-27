@@ -8,27 +8,27 @@
     {
      "feature": "all_levels_beginners",
      "quote": "50 hours of workshops for all levels",
-     "rationale": "The text states the workshops are for all levels, which explicitly welcomes beginners."
+     "rationale": "The quote explicitly says the workshops are for all levels, which welcomes beginners."
     },
     {
      "feature": "workshops",
-     "quote": "50 hours of workshops for all levels",
-     "rationale": "The event offers 50 hours of dance workshops."
+     "quote": "50 hours of workshops",
+     "rationale": "The festival offers dance workshops totalling 50 hours."
     },
     {
      "feature": "shows",
      "quote": "50 international shows",
-     "rationale": "The event lists 50 international shows as part of the programme."
+     "rationale": "The description promotes 50 international shows by artists."
     },
     {
      "feature": "competition",
      "quote": "International Competition ( Salsa & Bachata )",
-     "rationale": "The event includes an international competition in Salsa and Bachata."
+     "rationale": "The festival includes an international competition in Salsa and Bachata."
     },
     {
      "feature": "multiple_rooms",
      "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )",
-     "rationale": "The event has three dance rooms, so more than one dance floor."
+     "rationale": "Three separate dance rooms are listed, so there is more than one dance floor."
     }
    ]
   }

@@ -434,19 +434,14 @@
    ],
    "features": [
     {
-     "feature": "dress_code",
-     "quote": "Dress Code",
-     "rationale": "The description states a dress code for the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Dark Room",
-     "rationale": "A separate Dark Room indicates more than one dance room."
-    },
-    {
      "feature": "taxi_dancers",
      "quote": "TAXI DANCERS",
-     "rationale": "A taxi dancer section lists named taxi dancers present at the event."
+     "rationale": "The description has a heading TAXI DANCERS followed by a list of named taxi dancers."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Dress Code",
+     "rationale": "The description states a dress code under the Dress Code heading."
     }
    ]
   }

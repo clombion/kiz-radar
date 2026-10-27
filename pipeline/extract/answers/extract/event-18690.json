@@ -366,27 +366,17 @@
     {
      "feature": "workshops",
      "quote": "WORKSHOPS / SHOWS / PARTYS / SOCIALS",
-     "rationale": "The description lists workshops as part of the festival."
+     "rationale": "The list of event components names workshops as part of the festival."
     },
     {
      "feature": "shows",
      "quote": "WORKSHOPS / SHOWS / PARTYS / SOCIALS",
-     "rationale": "The description lists shows as part of the festival."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "WORKSHOPS / SHOWS / PARTYS / SOCIALS",
-     "rationale": "Socials are listed as part of the festival programme."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 EXCLUSIVE LOCATIONS FOR PARTYS AND SOCIALS",
-     "rationale": "Three separate locations for parties and socials means more than one dance room or floor."
+     "rationale": "The list of event components names shows as part of the festival."
     },
     {
      "feature": "partner_hotel",
      "quote": "6 HOTELS NEARBY (STARTING AT € 75,- PER ROOM)",
-     "rationale": "Six nearby hotels are offered at a stated room rate, without accommodation being part of the pass."
+     "rationale": "The festival lists nearby hotels at a negotiated room rate, separate from the pass."
     }
    ]
   }

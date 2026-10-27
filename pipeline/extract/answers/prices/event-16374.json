@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 70,
+       "amount": 70.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "💃 Single: €70"
       },
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "the price will increase to €80 as of May 1st."
       },
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -52,20 +52,7 @@
        "quote": "First 15 FULL PASSES: €60 → then €70"
       },
       {
-       "amount": 70,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "First 15 FULL PASSES: €60 → then €70"
-      },
-      {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -78,7 +65,7 @@
        "quote": "FULL PASS SINGLE: €80"
       },
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -101,46 +88,33 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 130,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
        "until": null,
-       "quantity": 20,
+       "quantity": 15,
+       "door": false,
+       "sold_out": true,
+       "current": false,
+       "quote": "COUPLE PASS M/F: €110 → then €130"
+      },
+      {
+       "amount": 130.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
        "quote": "🕺 Couple: €130"
       },
       {
-       "amount": 110,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "COUPLE PASS M/F: €110 → then €130"
-      },
-      {
-       "amount": 130,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "COUPLE PASS M/F: €110 → then €130"
-      },
-      {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -153,7 +127,7 @@
        "quote": "COUPLE PASS M/F: €150"
       },
       {
-       "amount": 190,
+       "amount": 190.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

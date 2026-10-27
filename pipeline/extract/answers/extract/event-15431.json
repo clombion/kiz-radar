@@ -283,63 +283,70 @@
      "style": null,
      "country": "HOLLAND",
      "source_line": "📸FARANTINI (HOLLAND)"
+    },
+    {
+     "name_as_written": "FARANTINI",
+     "role": "media",
+     "style": null,
+     "country": "HOLLAND",
+     "source_line": "🎥 FARANTINI (HOLLAND)"
     }
    ],
    "features": [
     {
-     "feature": "all_in_one",
-     "quote": "an all-in-one destination offering",
-     "rationale": "The event is run in the Melia hotel tower, which serves as the congress venue, with parties held there."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Dancefloors and 2 Atmospheres",
-     "rationale": "The description states there are two dancefloors and two atmospheres."
-    },
-    {
-     "feature": "workshops",
-     "quote": "36 Workshops",
-     "rationale": "The event lists 36 workshops as part of the programme."
+     "feature": "live_music",
+     "quote": "JENNIFER DIAS (PORTUGAL)",
+     "rationale": "The lineup lists singers Jennifer Dias and Landrick, which means live performances."
     },
     {
      "feature": "shows",
      "quote": "UNIQUE SHOW ACTS",
-     "rationale": "Show acts by artists are advertised as a feature of the event."
+     "rationale": "The event advertises unique show acts and a showcase."
     },
     {
-     "feature": "live_music",
-     "quote": "SINGERs",
-     "rationale": "Singers Jennifer Dias and Landrick are listed as performers."
+     "feature": "workshops",
+     "quote": "36 Workshops",
+     "rationale": "The description states there are 36 workshops."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 Dancefloors and 2 Atmospheres",
+     "rationale": "Two dancefloors are offered, so there is more than one dance room."
     },
     {
      "feature": "day_socials",
      "quote": "3 Socials",
-     "rationale": "Three social dance sessions are listed in the programme."
+     "rationale": "Three social dances are listed, which are daytime socials."
     },
     {
      "feature": "themed_parties",
-     "quote": "Friday: SPRING NIGHT – NEON ENERGY",
-     "rationale": "Each party night has a named theme such as Spring Night with a neon energy style."
+     "quote": "SPRING NIGHT – NEON ENERGY",
+     "rationale": "The parties have named themes such as Neon Energy and Black & Silver Shiny Glam."
     },
     {
      "feature": "dress_code",
      "quote": "PARTY – DRESSCODE",
-     "rationale": "A dress code is explicitly stated for the parties."
+     "rationale": "The description explicitly states a dress code for the parties."
     },
     {
      "feature": "pre_party",
      "quote": "THURSDAY: Pre Party – MELIA Hotel Vienna",
-     "rationale": "A pre-party on Thursday before the main festival is listed."
+     "rationale": "A pre-party is scheduled on Thursday before the main festival."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "an all-in-one destination offering",
+     "rationale": "The Hotel Melia hosts the congress centre and parties, so event and hotel share one venue."
     },
     {
      "feature": "partner_hotel",
      "quote": "Hotel recommendations",
-     "rationale": "Recommended hotels are listed with a negotiated room rate, not included in the pass."
+     "rationale": "Recommended hotels are listed, including a negotiated room rate."
     },
     {
      "feature": "taxi_dancers",
      "quote": "TAXIDANCERS:",
-     "rationale": "A list of taxi dancers is given in the description."
+     "rationale": "A list of taxi dancers is given."
     }
    ]
   }

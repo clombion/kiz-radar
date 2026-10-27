@@ -70,24 +70,24 @@
    ],
    "features": [
     {
-     "feature": "accommodation_included",
-     "quote": "Full-pass special package ( place in a double room to share): 230 eur / person",
-     "rationale": "The special full-pass package explicitly includes a room to share, so accommodation is part of the pass."
-    },
-    {
      "feature": "all_in_one",
      "quote": "Accommodation and Main Venue",
-     "rationale": "The main venue is the hotel where dancers are invited to stay, so the event and accommodation share one venue."
+     "rationale": "The accommodation section names the main venue as the same hotel, so the parties and the accommodation share one venue."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Full-pass special package ( place in a double room to share): 230 eur / person",
+     "rationale": "The full-pass special package includes a place in a room, so accommodation is part of the pass."
     },
     {
      "feature": "pre_party",
      "quote": "Pre Party – 22nd Oct",
-     "rationale": "A pre-party is announced before the main event dates."
+     "rationale": "A pre-party is listed before the main event dates."
     },
     {
      "feature": "after_party",
      "quote": "After Party – 26th Oct",
-     "rationale": "An after-party is announced for 26th October."
+     "rationale": "An after-party is listed after the main event."
     }
    ]
   }

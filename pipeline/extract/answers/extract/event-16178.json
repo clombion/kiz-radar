@@ -5,13 +5,6 @@
    "event_id": 16178,
    "artists": [
     {
-     "name_as_written": "SXM Loves Kizomba",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "💥 Organized by: SXM Loves Kizomba"
-    },
-    {
      "name_as_written": "Dani FERNANDEZ",
      "role": "dj",
      "style": null,
@@ -213,6 +206,13 @@
      "style": null,
      "country": "SXM-Guadeloupe",
      "source_line": "✨ Lionel (SXM-Guadeloupe)"
+    },
+    {
+     "name_as_written": "SXM Loves Kizomba",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "💥 Organized by: SXM Loves Kizomba"
     }
    ],
    "features": [

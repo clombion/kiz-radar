@@ -140,19 +140,19 @@
    ],
    "features": [
     {
+     "feature": "all_in_one",
+     "quote": "LOGIS HOTEL LYON-EST",
+     "rationale": "The event takes place at a hotel, and the title labels the edition as ALL IN ONE, indicating the parties are held where dancers stay."
+    },
+    {
      "feature": "multiple_rooms",
      "quote": "2 PARTY ROOMS/2 VIBES",
-     "rationale": "The description states there are two party rooms, so more than one dance room is present."
+     "rationale": "The description states there are two party rooms."
     },
     {
      "feature": "pre_party",
      "quote": "PRE-PARTY",
-     "rationale": "A separate PRE-PARTY is announced before the main event with its own venue details."
-    },
-    {
-     "feature": "workshops",
-     "quote": "TEACHERS",
-     "rationale": "A list of teachers under a TEACHERS heading indicates dance classes are part of the event."
+     "rationale": "A separate PRE-PARTY is announced before the main event."
     }
    ]
   }

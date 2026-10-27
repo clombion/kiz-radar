@@ -7,13 +7,13 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "Access to all workshops, Shows and parties",
-     "rationale": "The full pass gives access to all workshops, so dance classes are part of the event."
+     "quote": "Workshops throughout the morning and afternoon",
+     "rationale": "The program lists workshops on each day of the event."
     },
     {
      "feature": "shows",
      "quote": "Access to all workshops, Shows and parties",
-     "rationale": "The full pass gives access to shows, so performances are part of the event."
+     "rationale": "The full pass grants access to shows, so shows are part of the event."
     },
     {
      "feature": "day_socials",
@@ -23,12 +23,17 @@
     {
      "feature": "multiple_rooms",
      "quote": "Latino Room",
-     "rationale": "The program lists a Kizomba Room and a Latino Room, so there is more than one dance room."
+     "rationale": "The program names a Latino Room in addition to the Kizomba Room, so there is more than one dance room."
     },
     {
      "feature": "partner_hotel",
      "quote": "CENTRAL HOTEL – SAN CRISTÓBAL SCHOOL HOTEL",
-     "rationale": "The event recommends its school hotel with negotiated per-person room rates, and the pass does not include the accommodation."
+     "rationale": "The description gives a recommended hotel with negotiated per-person room rates, and the accommodation is not part of the pass."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "A FULL PASS is required to stay at the host hotel.",
+     "rationale": "Dancers stay at the host hotel, which is the same school venue where the event takes place."
     }
    ]
   }

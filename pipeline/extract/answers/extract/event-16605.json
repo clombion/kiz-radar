@@ -168,24 +168,24 @@
    ],
    "features": [
     {
-     "feature": "workshops",
-     "quote": "dance workshops covering all 3 disciplines",
-     "rationale": "The program lists dance workshops covering the three disciplines."
+     "feature": "all_levels_beginners",
+     "quote": "accessible to all levels",
+     "rationale": "The workshops are explicitly stated to be accessible to all levels."
     },
     {
-     "feature": "all_levels_beginners",
-     "quote": "classes accessible to all levels",
-     "rationale": "The workshops are described as accessible to all levels."
+     "feature": "workshops",
+     "quote": "dance workshops covering all 3 disciplines",
+     "rationale": "Dance workshops are part of the program."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "2 rooms, 2 atmospheres, 1 single location",
-     "rationale": "The event has two dance rooms with different atmospheres."
+     "quote": "4 EVENINGS, 2 rooms, 2 atmospheres, 1 single location",
+     "rationale": "The event has two dance rooms."
     },
     {
      "feature": "shows",
      "quote": "ELJI BEATZKILLA SHOWCASE",
-     "rationale": "A showcase is announced as part of the event program."
+     "rationale": "A showcase is a performance by artists."
     }
    ]
   }

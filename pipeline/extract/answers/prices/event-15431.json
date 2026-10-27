@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 115,
+       "amount": 115.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "💎 September: 115 €"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "💎 October: 120 €"
       },
       {
-       "amount": 125,
+       "amount": 125.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "💎 November: 125 €"
       },
       {
-       "amount": 130,
+       "amount": 130.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -65,7 +65,7 @@
        "quote": "💎 December: 130 €"
       },
       {
-       "amount": 135,
+       "amount": 135.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -78,7 +78,7 @@
        "quote": "💎 January: 135 €"
       },
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -91,7 +91,7 @@
        "quote": "💎 February: 140 €"
       },
       {
-       "amount": 145,
+       "amount": 145.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -104,7 +104,7 @@
        "quote": "💎 March: 145 €"
       },
       {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -119,7 +119,9 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "they will increase each 1st of the month"
+   ]
   }
  ]
 }

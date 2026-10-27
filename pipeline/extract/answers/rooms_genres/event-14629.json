@@ -5,12 +5,19 @@
    "event_id": 14629,
    "party_rooms": null,
    "class_rooms": null,
-   "rooms": [],
+   "rooms": [
+    {
+     "name_as_written": "CHILL & SHOP ROOMS",
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "CHILL & SHOP ROOMS"
+    }
+   ],
    "genres": [
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "The Bern is Kizomba Weekend is back, for the fourth time"
+     "quote": "The Bern is Kizomba Weekend is back"
     }
    ]
   }

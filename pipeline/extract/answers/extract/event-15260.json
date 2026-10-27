@@ -285,43 +285,43 @@
      "source_line": "* DJ Den Megavolt 🇸🇪/🇷🇺"
     },
     {
-     "name_as_written": "Didi Swege Harrison",
+     "name_as_written": "Ironlady Events",
      "role": "organiser",
      "style": null,
      "country": null,
-     "source_line": "Messenger: Didi Swege Harrison"
+     "source_line": "Instagram: Ironlady Events (didi…)"
     }
    ],
    "features": [
     {
      "feature": "workshops",
      "quote": "Workshops",
-     "rationale": "The schedule lists dance workshops across Thursday to Sunday."
+     "rationale": "The description lists workshops as part of the festival."
     },
     {
      "feature": "shows",
      "quote": "Shows",
-     "rationale": "The highlights list includes Shows as part of the festival."
+     "rationale": "The highlights list includes shows."
     },
     {
      "feature": "live_music",
-     "quote": "Live Guest Artists:",
-     "rationale": "A line-up of live guest artists performs at the festival."
+     "quote": "Live Guest Artists",
+     "rationale": "Live guest artists perform as singers and musicians at the festival."
     },
     {
      "feature": "multiple_rooms",
      "quote": "3 dancefloors",
-     "rationale": "The venue specification states there are three dancefloors."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Saturday Afternoon Social",
-     "rationale": "Afternoon socials are scheduled on Saturday and Sunday."
+     "rationale": "The venue specification lists three dancefloors."
     },
     {
      "feature": "meals_included",
      "quote": "Dinner buffets + 1 glass of wine/night Friday & Saturday",
      "rationale": "The full festival pass includes dinner buffets on Friday and Saturday."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Saturday Afternoon Social",
+     "rationale": "The schedule includes afternoon socials on Saturday and Sunday."
     }
    ]
   }

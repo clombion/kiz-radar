@@ -7,35 +7,35 @@
     {
      "name_as_written": "Audi & Laura",
      "role": "teacher",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": "ESP",
      "source_line": "▫️Audi & Laura (ESP)"
     },
     {
      "name_as_written": "Gwany & Liliana",
      "role": "teacher",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": "FR",
      "source_line": "▫️Gwany & Liliana (FR)"
     },
     {
      "name_as_written": "Azzedine",
      "role": "teacher",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": "ESP",
      "source_line": "▫️Azzedine (ESP)"
     },
     {
      "name_as_written": "Luis & Karen",
      "role": "teacher",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": "ESP",
      "source_line": "▫️Luis & Karen (ESP)"
     },
     {
      "name_as_written": "Elli",
      "role": "teacher",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": "SWE",
      "source_line": "▫️Elli (SWE)"
     },
@@ -170,12 +170,12 @@
     {
      "feature": "workshops",
      "quote": "female-led partnerwork classes",
-     "rationale": "The description advertises partnerwork classes as part of the festival programme."
+     "rationale": "The description says female-led partnerwork classes are part of the festival, so dance classes are offered."
     },
     {
      "feature": "partner_hotel",
-     "quote": "Hotel Zarenhof Prenzlauer Berg (MAIN HOTEL)",
-     "rationale": "The description lists recommended hotels with booking links, including a main hotel, without saying accommodation is part of the pass."
+     "quote": "1. Hotel Zarenhof Prenzlauer Berg (MAIN HOTEL)",
+     "rationale": "The description lists a main hotel and other hotels with booking links as recommended accommodation, without saying they are part of the pass."
     }
    ]
   }

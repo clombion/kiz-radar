@@ -80,6 +80,13 @@
      "style": null,
      "country": null,
      "source_line": "🔸Geppo Dj"
+    },
+    {
+     "name_as_written": "ASD PACHANGA",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Beneficiary: ASD PACHANGA"
     }
    ],
    "features": [
@@ -90,13 +97,13 @@
     },
     {
      "feature": "partner_hotel",
-     "quote": "NEARBY ALTERNATIVE OPTIONS",
-     "rationale": "The description recommends nearby hotels and rooms for guests, outside the pass."
+     "quote": "Where to Stay – Recommended Options",
+     "rationale": "The description recommends nearby hotels and offers negotiated room rates for guests."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "Scheduled shuttle service from the main event location is available.",
-     "rationale": "A shuttle service from the event venue is offered."
+     "rationale": "The description says a shuttle service from the event venue is available."
     }
    ]
   }

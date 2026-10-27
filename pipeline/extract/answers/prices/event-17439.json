@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 65,
+       "amount": 65.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,12 +26,12 @@
        "quote": "🎟️FULL PASS: 65€!!"
       },
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": "2026-01-10",
-       "until": null,
+       "until": "2026-04-30",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -39,7 +39,7 @@
        "quote": "🎟️FULL PASS: 80€"
       },
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -62,25 +62,25 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
        "until": "2026-01-09",
-       "quantity": null,
+       "quantity": 15,
        "door": false,
        "sold_out": false,
        "current": false,
        "quote": "🎟️COUPLE PASS M/F: 120€!!"
       },
       {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": "2026-01-10",
-       "until": null,
+       "until": "2026-04-30",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -88,7 +88,7 @@
        "quote": "🎟️COUPLE PASS M/F: 150€"
       },
       {
-       "amount": 170,
+       "amount": 170.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

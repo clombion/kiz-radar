@@ -13,11 +13,11 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 1800,
+       "amount": 1800.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 45000,
+        "amount": 45000.0,
         "currency": "CZK"
        },
        "from": null,

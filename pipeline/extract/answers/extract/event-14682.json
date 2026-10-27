@@ -150,43 +150,50 @@
      "style": null,
      "country": "🇷🇴",
      "source_line": "🤳 KIZOTECA 🇷🇴"
+    },
+    {
+     "name_as_written": "Rebirth Crew",
+     "role": "organiser",
+     "style": "Urbankiz",
+     "country": null,
+     "source_line": "The biggest Urbankiz Jack & Jill made by Rebirth Crew"
     }
    ],
    "features": [
     {
      "feature": "all_in_one",
      "quote": "All in one Venue in the most central point of Ljubljana",
-     "rationale": "The event is described as all in one venue, and the venue is the Grand Hotel Union / Eurostars uHotel where dancers can stay."
+     "rationale": "The event is stated to be all in one venue, combining the festival and the hotels in the centre of Ljubljana."
     },
     {
      "feature": "competition",
-     "quote": "The biggest Jack & Jill Competition",
-     "rationale": "A Jack & Jill competition is explicitly advertised as part of the festival."
+     "quote": "The biggest Urbankiz Jack & Jill made by Rebirth Crew",
+     "rationale": "A Jack & Jill competition is part of the event."
     },
     {
      "feature": "workshops",
      "quote": "Workshops with the best international artists",
-     "rationale": "Workshops with international artists are listed as a feature of the festival."
+     "rationale": "Workshops with international artists are listed as part of the festival."
     },
     {
      "feature": "day_socials",
      "quote": "3 Socials (Fri-Sun)",
-     "rationale": "Socials on Friday to Sunday are daytime or afternoon social events."
+     "rationale": "Socials are listed on Friday to Sunday, which are daytime or afternoon events."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Enjoy special prices exclusively for KIZZ KISS Festival participants",
+     "rationale": "A negotiated hotel rate for participants is offered without the accommodation being part of the pass."
     },
     {
      "feature": "dress_code",
      "quote": "𝓓𝓻𝓮𝓼𝓼 𝓬𝓸𝓭𝓮𝓼",
-     "rationale": "A section titled dress codes lists a colour per day, so a dress code is stated."
+     "rationale": "A section titled dress codes gives dress codes for each day."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "Book your shuttle from Ljubljana and nearby airports",
      "rationale": "Shuttles from Ljubljana and nearby airports are offered for booking."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Enjoy special prices exclusively for KIZZ KISS Festival participants",
-     "rationale": "Negotiated special hotel prices for participants are offered without the accommodation being part of the pass."
     }
    ]
   }

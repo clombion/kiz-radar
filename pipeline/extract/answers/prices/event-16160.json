@@ -13,7 +13,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 1800,
+       "amount": 1800.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -31,12 +31,12 @@
      "kind": "package",
      "style": null,
      "label_quote": "Package 1 – Angola Cultural Experience (10 days)",
-     "group_size": 2,
+     "group_size": null,
      "days": 10,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 1500,
+       "amount": 1500.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -59,7 +59,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 2800,
+       "amount": 2800.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -77,12 +77,12 @@
      "kind": "package",
      "style": null,
      "label_quote": "Package 2 – Culture & Desert Experience (13 days)",
-     "group_size": 2,
+     "group_size": null,
      "days": 13,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 2500,
+       "amount": 2500.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

@@ -9,11 +9,11 @@
      "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": 2,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -23,7 +23,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "60e Full Pass"
+       "quote": "– 60e Full Pass"
       }
      ]
     },
@@ -36,7 +36,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -46,7 +46,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "20e Friday pre-party class + party"
+       "quote": "– 20e Friday pre-party class + party"
       }
      ]
     },
@@ -59,7 +59,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -69,7 +69,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "50e Saturday Pass"
+       "quote": "– 50e Saturday Pass"
       }
      ]
     },
@@ -82,7 +82,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 25,
+       "amount": 25.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -92,7 +92,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "25e Saturday pre-party class + party"
+       "quote": "– 25e Saturday pre-party class + party"
       }
      ]
     }

@@ -65,12 +65,12 @@
     {
      "feature": "workshops",
      "quote": "we expect you to lead in all workshops",
-     "rationale": "The passes are tied to roles in the workshops, which shows that dance classes are part of the event."
+     "rationale": "The passes are tied to participation in workshops, which shows dance classes are part of the event."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "Sunday: støberiet",
-     "rationale": "Rooms are listed per day, with værkstedet and støberiet named as separate dance rooms."
+     "quote": "Friday & Saturday: værkstedet\nSunday: støberiet",
+     "rationale": "The description lists different named rooms used on different days, so there is more than one dance room."
     }
    ]
   }

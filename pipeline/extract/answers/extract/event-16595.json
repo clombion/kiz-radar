@@ -15,8 +15,8 @@
    "features": [
     {
      "feature": "partner_hotel",
-     "quote": "Hotel Reservations: guests can now reserve bedrooms directly with us.",
-     "rationale": "The organisers offer negotiated bed-and-breakfast room rates through the hotel, and the accommodation is booked separately from the event pass."
+     "quote": "guests can now reserve bedrooms directly with us",
+     "rationale": "The organisers offer hotel bedroom reservations through a form with negotiated bed and breakfast room rates, without the rooms being part of the pass."
     }
    ]
   }

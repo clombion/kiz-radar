@@ -100,37 +100,37 @@
     {
      "feature": "all_in_one",
      "quote": "ALL-IN-ONE HOTEL (4⭐ Hotel Hyatt Place Krakow)",
-     "rationale": "The parties take place in the hotel where dancers are invited to stay, as the all-in-one hotel line shows."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "THURSDAY – Pre-Party",
-     "rationale": "A Thursday pre-party is scheduled before the main event."
-    },
-    {
-     "feature": "after_party",
-     "quote": "MONDAY – After Party",
-     "rationale": "A Monday after-party is listed in the program."
-    },
-    {
-     "feature": "workshops",
-     "quote": "22:00 – 23:00 Workshops",
-     "rationale": "Dance workshops are part of the Friday program."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "16:00 – 20:00 Social",
-     "rationale": "A daytime social is scheduled on Friday afternoon."
+     "rationale": "The parties take place in the hotel where dancers are invited to stay, so event and accommodation share one venue."
     },
     {
      "feature": "partner_hotel",
      "quote": "special discounted rates are already applied",
-     "rationale": "A negotiated hotel rate is offered for the partner hotel without accommodation being part of the pass."
+     "rationale": "A negotiated hotel rate is offered for the partner hotel, while accommodation is not part of the pass."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "THURSDAY – Pre-Party",
+     "rationale": "A pre-party is listed on Thursday before the main event."
+    },
+    {
+     "feature": "after_party",
+     "quote": "MONDAY – After Party",
+     "rationale": "An after-party is listed on Monday after the main event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "22:00 – 23:00 Workshops",
+     "rationale": "Dance workshops are scheduled as part of the programme on Friday and other days."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "16:00 – 20:00 Social",
+     "rationale": "Afternoon social sessions are listed in the programme."
     },
     {
      "feature": "taxi_dancers",
-     "quote": "Taxi Dancers – coming soon",
-     "rationale": "The description states that taxi dancers will be present, though details are still to come."
+     "quote": "We ensure leader/follower balance with taxi teams and guest dancers",
+     "rationale": "The description states that taxi teams are used to balance leaders and followers."
     }
    ]
   }

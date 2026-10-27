@@ -92,18 +92,13 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "Workshops + Parties",
-     "rationale": "The full pass explicitly includes workshops alongside the parties."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshop with David Ruach",
-     "rationale": "A scheduled workshop taught by David Ruach is part of the programme."
+     "quote": "Workshops focused on:",
+     "rationale": "The description states that dance workshops are part of the weekend."
     },
     {
      "feature": "multiple_rooms",
      "quote": "SATURDAY: 2 different rooms:",
-     "rationale": "The description states that Saturday has two different dance rooms."
+     "rationale": "Saturday is run across two separate dance rooms."
     }
    ]
   }

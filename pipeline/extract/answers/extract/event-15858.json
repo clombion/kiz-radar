@@ -107,17 +107,17 @@
     {
      "feature": "workshops",
      "quote": "3 days of workshops with international artists",
-     "rationale": "The program explicitly lists workshops as part of the festival."
+     "rationale": "The description states that there are three days of workshops."
     },
     {
      "feature": "all_levels_beginners",
-     "quote": "open to all levels: beginner, intermediate, and advanced",
-     "rationale": "The festival is stated to be open to all levels including beginners."
+     "quote": "open to all levels",
+     "rationale": "The festival is explicitly open to all levels, including beginners."
     },
     {
      "feature": "multiple_rooms",
      "quote": "Two dedicated dance rooms:",
-     "rationale": "The description names two separate dance rooms, a Salsa & Bachata Room and a Kizomba Room."
+     "rationale": "The festival has two separate dance rooms, one for salsa and bachata and one for kizomba."
     }
    ]
   }

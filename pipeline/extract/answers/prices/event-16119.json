@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "❌Early bird I Prix de lancement : 50€"
       },
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -35,7 +35,7 @@
        "quantity": null,
        "door": false,
        "sold_out": false,
-       "current": false,
+       "current": true,
        "quote": "✅FULL PASS : 60€"
       }
      ]

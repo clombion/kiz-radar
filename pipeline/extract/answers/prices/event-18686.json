@@ -9,11 +9,11 @@
      "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": 5,
+     "days": null,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 520,
+       "amount": 520.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "Inside double cabin: €520 sold out !"
       },
       {
-       "amount": 555,
+       "amount": 555.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -45,11 +45,11 @@
      "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": 5,
+     "days": null,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 590,
+       "amount": 590.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -62,7 +62,7 @@
        "quote": "Outside double cabin: €590 sold out !"
       },
       {
-       "amount": 625,
+       "amount": 625.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -81,11 +81,11 @@
      "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": 5,
+     "days": null,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 685,
+       "amount": 685.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -98,7 +98,7 @@
        "quote": "Balcony double cabin: €685 sold out !"
       },
       {
-       "amount": 715,
+       "amount": 715.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -114,7 +114,8 @@
     }
    ],
    "rule_quotes": [
-    "Children under 18 stay FREE if sharing a cabin with 2 adults."
+    "Children under 18 stay FREE if sharing a cabin with 2 adults.",
+    "Boat tax and stay: EUR 150 per child"
    ]
   }
  ]

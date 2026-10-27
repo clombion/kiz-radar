@@ -177,32 +177,37 @@
     {
      "feature": "all_in_one",
      "quote": "Everything happens at the Pullman hotel in Bordeaux.",
-     "rationale": "The event takes place in the hotel where dancers stay, as the all-in-one name indicates."
+     "rationale": "The parties take place at the Pullman hotel, which is where dancers are invited to stay."
     },
     {
      "feature": "workshops",
      "quote": "20 hours of workshop: kizomba, semba, urban kiz, fusion, tarraxo, afrohouse, body control.",
-     "rationale": "Dance workshops are part of the weekend pass."
+     "rationale": "The weekend pass includes 20 hours of dance workshops in several styles."
     },
     {
      "feature": "masterclass",
      "quote": "Master classes are not included in the pass.",
-     "rationale": "Master classes are offered as part of the event, sold separately from the pass."
+     "rationale": "The text states that master classes are offered, though they are not part of the pass."
     },
     {
      "feature": "pre_party",
      "quote": "Preparty isn’t included in the pass",
-     "rationale": "A preparty is offered before the main event."
+     "rationale": "A preparty is mentioned as part of the event, though it is not included in the pass."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "3 socials (Friday, Saturday, Sunday).",
+     "rationale": "The pass includes socials on each day of the weekend."
     },
     {
      "feature": "themed_parties",
-     "quote": "THEME PARTY",
-     "rationale": "The event has a themed party with a fairy world edition."
+     "quote": "FAIRY WORLD EDITION",
+     "rationale": "The event has a theme party with a Fairy World edition dress theme."
     },
     {
      "feature": "dress_code",
      "quote": "DRESS CODE : coming soon",
-     "rationale": "A dress code is stated, with details to follow."
+     "rationale": "The description states that a dress code will be announced."
     }
    ]
   }

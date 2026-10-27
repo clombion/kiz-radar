@@ -14,59 +14,59 @@
    ],
    "features": [
     {
-     "feature": "transfers_shuttle",
-     "quote": "SHUTTLES FRIDAY SINCE MALAGA AIRPORT TO MAIN HOTEL IN ALMUNECAR",
-     "rationale": "Shuttles run from Malaga airport to the main hotel and back."
-    },
-    {
-     "feature": "workshops",
-     "quote": "2 Rooms of Classes",
-     "rationale": "Two rooms are dedicated to dance classes."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Rooms for Parties",
-     "rationale": "The event has more than one dance room."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "5 Pool Parties",
-     "rationale": "The programme lists pool parties."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "1 After beach party",
-     "rationale": "The programme lists an after beach party."
-    },
-    {
-     "feature": "after_party",
-     "quote": "2 After pool parties",
-     "rationale": "The programme lists after pool parties."
-    },
-    {
      "feature": "all_in_one",
      "quote": "6 Nights partys in Main Hotel",
-     "rationale": "The parties take place in the main hotel where dancers stay."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "2 NIGHTS – FULL BOARD WITH DRINKS",
-     "rationale": "The room packages include full board with drinks."
+     "rationale": "The parties are held in the Main Hotel, where dancers are invited to stay."
     },
     {
      "feature": "partner_hotel",
      "quote": "HOTEL BAHIA TROPICAL",
-     "rationale": "A second recommended hotel is listed with booking details."
+     "rationale": "A second hotel is listed with its booking contacts as an option for dancers."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "5 Pool Parties",
+     "rationale": "The program lists five pool parties."
+    },
+    {
+     "feature": "beach_party",
+     "quote": "1 After beach party",
+     "rationale": "The program lists an after beach party."
+    },
+    {
+     "feature": "after_party",
+     "quote": "2 After pool parties",
+     "rationale": "The program lists after pool parties."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "SHUTTLES FRIDAY SINCE MALAGA AIRPORT TO MAIN HOTEL IN ALMUNECAR",
+     "rationale": "Shuttles run between Malaga airport and the main hotel."
     },
     {
      "feature": "themed_parties",
      "quote": "PAJAMA PARTY! YOUR BEST PIJAMA",
-     "rationale": "A Wednesday pajama party is a themed night with a dress theme."
+     "rationale": "Wednesday is a pajama party with a dress theme."
     },
     {
      "feature": "dress_code",
-     "quote": "PAJAMA PARTY! YOUR BEST PIJAMA",
-     "rationale": "A dress code for the pajama party is stated."
+     "quote": "DRESSCODE",
+     "rationale": "The description has a dress code section giving a dress for each night."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 Rooms for Parties",
+     "rationale": "There is more than one dance room for parties."
+    },
+    {
+     "feature": "workshops",
+     "quote": "2 Rooms of Classes",
+     "rationale": "Dance classes are held in two rooms."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "FULL BOARD WITH DRINKS",
+     "rationale": "The room packages include full board with drinks."
     }
    ]
   }

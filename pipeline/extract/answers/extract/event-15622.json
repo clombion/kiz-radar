@@ -114,32 +114,32 @@
     {
      "feature": "workshops",
      "quote": "Workshops",
-     "rationale": "The description lists Workshops as part of what is offered."
+     "rationale": "The event lists Workshops as one of the things offered."
     },
     {
      "feature": "masterclass",
      "quote": "Master Classes",
-     "rationale": "The description lists Master Classes as part of what is offered."
+     "rationale": "The event lists Master Classes as part of the offer."
     },
     {
      "feature": "bootcamp_intensive",
      "quote": "Courses over 10 hours",
-     "rationale": "Courses of over 10 hours describe a long training course."
+     "rationale": "The courses are described as lasting over 10 hours, a long training course."
     },
     {
      "feature": "all_levels_beginners",
      "quote": "For everyone",
-     "rationale": "The phrase 'For everyone' along with a Beginner level course shows the event welcomes all levels."
+     "rationale": "The courses are stated to be for everyone, and the levels include Beginner."
     },
     {
      "feature": "taxi_dancers",
      "quote": "DANCER TAXIS",
-     "rationale": "A section headed DANCER TAXIS shows taxi dancers are present."
+     "rationale": "A section titled DANCER TAXIS indicates taxi dancers are present."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "Shuttle €5 all weekend.",
-     "rationale": "A shuttle offered for the whole weekend is a shuttle transfer."
+     "rationale": "A shuttle service is offered for €5 for the whole weekend."
     }
    ]
   }

@@ -13,11 +13,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 95,
+       "amount": 95.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 2375,
+        "amount": 2375.0,
         "currency": "CZK"
        },
        "from": null,
@@ -39,11 +39,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 85,
+       "amount": 85.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 2125,
+        "amount": 2125.0,
         "currency": "CZK"
        },
        "from": null,
@@ -65,11 +65,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 170,
+       "amount": 170.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 4250,
+        "amount": 4250.0,
         "currency": "CZK"
        },
        "from": null,
@@ -91,11 +91,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 3750,
+        "amount": 3750.0,
         "currency": "CZK"
        },
        "from": null,
@@ -117,11 +117,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 400,
+       "amount": 400.0,
        "currency": "CZK",
        "fee": null,
        "alt": {
-        "amount": 15,
+        "amount": 15.0,
         "currency": "EUR"
        },
        "from": null,

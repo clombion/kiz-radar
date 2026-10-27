@@ -7,7 +7,7 @@
    "class_rooms": null,
    "rooms": [
     {
-     "name_as_written": "𝗥𝗢𝗢𝗠 𝟭 (𝗨𝗥𝗕𝗔𝗡) (400 m2)",
+     "name_as_written": "𝗥𝗢𝗢𝗠 𝟭 (𝗨𝗥𝗕𝗔𝗡)",
      "kind": "unspecified",
      "genres": [
       "urbankiz",
@@ -19,10 +19,11 @@
      "quote": "𝗥𝗢𝗢𝗠 𝟭 (𝗨𝗥𝗕𝗔𝗡) (400 m2):"
     },
     {
-     "name_as_written": "𝗥𝗢𝗢𝗠 𝟮 (𝗞𝗜𝗭𝗢𝗠𝗕𝗔) (200m2)",
+     "name_as_written": "𝗥𝗢𝗢𝗠 𝟮 (𝗞𝗜𝗭𝗢𝗠𝗕𝗔)",
      "kind": "unspecified",
      "genres": [
       "zouk",
+      "kizomba",
       "kompa",
       "tarraxinha"
      ],
@@ -63,7 +64,7 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Kizomba was better before"
+     "quote": "“Kizomba was better before”"
     },
     {
      "genre": "kompa",

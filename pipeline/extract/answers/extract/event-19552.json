@@ -7,14 +7,14 @@
     {
      "name_as_written": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔 𝗧𝗘𝗔𝗠",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": null,
      "country": null,
      "source_line": "🌟 𝗕𝗔𝗖𝗛𝗔𝗧𝗔 𝗧𝗘𝗔𝗠 🌟"
     },
     {
      "name_as_written": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔 𝗧𝗘𝗔𝗠",
      "role": "teacher",
-     "style": "KIZOMBA",
+     "style": null,
      "country": null,
      "source_line": "💛 𝗞𝗜𝗭𝗢𝗠𝗕𝗔 𝗧𝗘𝗔𝗠 💛"
     },
@@ -28,14 +28,14 @@
    ],
    "features": [
     {
-     "feature": "camping",
-     "quote": "Camping — Emplacement tentes",
-     "rationale": "The accommodation list offers camping pitches for tents."
-    },
-    {
      "feature": "multiple_rooms",
      "quote": "Salle 100% BACHATA",
-     "rationale": "The event has separate halls, one 100% bachata and one 100% kizomba."
+     "rationale": "The event lists two separate dance rooms, one 100% bachata and one 100% kizomba."
+    },
+    {
+     "feature": "camping",
+     "quote": "Camping — Emplacement tentes",
+     "rationale": "The accommodation options include camping with tent pitches on the site."
     }
    ]
   }

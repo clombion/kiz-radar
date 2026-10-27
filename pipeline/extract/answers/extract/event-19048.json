@@ -58,32 +58,27 @@
     {
      "feature": "workshops",
      "quote": "+12 hours of Workshops in 2 rooms",
-     "rationale": "The description states that workshops take place over 12 hours in 2 rooms."
+     "rationale": "The description lists workshops running for twelve hours across two rooms."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "Workshops in 2 rooms",
-     "rationale": "Workshops are held in two separate rooms, so there is more than one dance room."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Social dancing 2 evenings on 2 floors",
-     "rationale": "Social dancing takes place on two floors, so there is more than one dance floor."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "A welcoming space for both new and experienced dancers",
-     "rationale": "The event explicitly welcomes both new and experienced dancers."
+     "quote": "+12 hours of Workshops in 2 rooms",
+     "rationale": "Workshops take place in two rooms, so there is more than one dance room."
     },
     {
      "feature": "after_party",
      "quote": "This event will continue with a closed party afterwards for ticket holders.",
-     "rationale": "A closed party for ticket holders is held after the main event."
+     "rationale": "A closed party is held afterwards for ticket holders, which is an after-party."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "A welcoming space for both new and experienced dancers",
+     "rationale": "The event explicitly welcomes new dancers as well as experienced ones."
     },
     {
      "feature": "partner_hotel",
      "quote": "these are suggestions based on accessibility to the venue",
-     "rationale": "The event lists recommended hotels near the venue, although it states it has no deals with them."
+     "rationale": "The description gives a list of recommended hotels near the venue, not included in the pass."
     }
    ]
   }

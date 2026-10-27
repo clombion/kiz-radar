@@ -7,13 +7,13 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": "Fullpass",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 160,
+       "amount": 160.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "Fullpass: €160,-"
       },
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -43,13 +43,13 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": "Day Pass Saturday",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 115,
+       "amount": 115.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -62,7 +62,7 @@
        "quote": "Day Pass Saturday: €115,-"
       },
       {
-       "amount": 105,
+       "amount": 105.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -79,13 +79,13 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": "Day Pass Sunday",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -98,7 +98,7 @@
        "quote": "Day Pass Sunday: €80,-"
       },
       {
-       "amount": 70,
+       "amount": 70.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -115,13 +115,13 @@
     {
      "kind": "party",
      "style": null,
-     "label_quote": "Party Pass",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -134,7 +134,7 @@
        "quote": "Party Pass: €60,-"
       },
       {
-       "amount": 56,
+       "amount": 56.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

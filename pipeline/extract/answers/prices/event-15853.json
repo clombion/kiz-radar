@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 65,
+       "amount": 65.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "£65 4 DAYS FULL PASS"
       },
       {
-       "amount": 75,
+       "amount": 75.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "£75 FULL PASS including all classes and social parties for the 4 days."
       },
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -52,14 +52,14 @@
        "quote": "£80 FULL PASS including all classes and social parties for the 4 days."
       },
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
        "from": "05-21",
        "until": "05-24",
        "quantity": null,
-       "door": true,
+       "door": false,
        "sold_out": false,
        "current": false,
        "quote": "£90 FULL PASS online or at the door"
@@ -75,7 +75,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -98,7 +98,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 25,
+       "amount": 25.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -111,7 +111,7 @@
        "quote": "£25 for SOCIAL PARTIES only (4 days)."
       },
       {
-       "amount": 30,
+       "amount": 30.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -124,7 +124,7 @@
        "quote": "£30 for SOCIAL PARTIES only (4 days)."
       },
       {
-       "amount": 35,
+       "amount": 35.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -137,7 +137,7 @@
        "quote": "£35 for SOCIAL PARTIES only (4 days)."
       },
       {
-       "amount": 40,
+       "amount": 40.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -160,7 +160,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 10,
+       "amount": 10.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -173,7 +173,7 @@
        "quote": "£10 for one day SOCIAL ONLY."
       },
       {
-       "amount": 12,
+       "amount": 12.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -186,7 +186,7 @@
        "quote": "£12 for ONE DAY SOCIAL PARTY only. Not including Thursday"
       },
       {
-       "amount": 14,
+       "amount": 14.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -199,7 +199,7 @@
        "quote": "£14 ONE DAY SOCIAL PARTY only. Not including Thursday."
       },
       {
-       "amount": 15,
+       "amount": 15.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,

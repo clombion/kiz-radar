@@ -13,7 +13,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 1800,
+       "amount": 1800.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -23,12 +23,14 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "we will have 1 package which costs EUR 1.800"
+       "quote": "In this edition, we will have 1 package which costs EUR 1.800 and includes the following main items:"
       }
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "you may also have to pay a balance in case the cost of our BK packages increase next year"
+   ]
   }
  ]
 }

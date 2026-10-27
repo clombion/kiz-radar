@@ -68,25 +68,25 @@
      "source_line": "• On the decks: Nice Life, Ichigo, Poema Beatz, DJ Saudade, DJ MH, DJ MIKY-MIKE, IZI et Leston to light up the dancefloor all weekend long 🎶"
     },
     {
-     "name_as_written": "IZI et Leston",
+     "name_as_written": "IZI",
      "role": "dj",
      "style": null,
      "country": null,
      "source_line": "• On the decks: Nice Life, Ichigo, Poema Beatz, DJ Saudade, DJ MH, DJ MIKY-MIKE, IZI et Leston to light up the dancefloor all weekend long 🎶"
     },
     {
-     "name_as_written": "KizZua",
-     "role": "organiser",
+     "name_as_written": "Leston",
+     "role": "dj",
      "style": null,
      "country": null,
-     "source_line": "🔥 KizZua: your 💯 Kizomba experience in the South!"
+     "source_line": "• On the decks: Nice Life, Ichigo, Poema Beatz, DJ Saudade, DJ MH, DJ MIKY-MIKE, IZI et Leston to light up the dancefloor all weekend long 🎶"
     }
    ],
    "features": [
     {
      "feature": "workshops",
      "quote": "Classes with Arnaud DJBN, Ichigo, Manu & Olivia",
-     "rationale": "The description lists dance classes with named teachers as part of the event."
+     "rationale": "The event lists dance classes taught by named teachers."
     },
     {
      "feature": "day_socials",
@@ -96,27 +96,32 @@
     {
      "feature": "multiple_rooms",
      "quote": "3 ROOMS. 3 EXPERIENCES.",
-     "rationale": "The event has three separate dance rooms."
+     "rationale": "The event has three dance rooms."
     },
     {
      "feature": "dress_code",
      "quote": "** DRESSCODES ** Back to school",
-     "rationale": "A dress code is explicitly stated for the event."
+     "rationale": "A dress code theme is explicitly stated."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "Saturday: campus chill (social) & night of the prom (party)",
+     "rationale": "Party nights are built around dress themes such as the night of the prom."
     },
     {
      "feature": "accommodation_included",
-     "quote": "FULLPASS : 150 to 190€ with accommodation *",
-     "rationale": "The full pass price is given with accommodation included."
+     "quote": "FULLPASS : 150 to 190€ with accommodation",
+     "rationale": "The full pass price bundles accommodation."
     },
     {
      "feature": "meals_included",
-     "quote": "with breakfasts included in rooms for 2 or 10 people",
-     "rationale": "Breakfasts are included in the accommodation that comes with the pass."
+     "quote": "with breakfasts included in rooms",
+     "rationale": "Breakfasts are included with the accommodation package."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "Shuttles will be provided for festival-goers arriving by train or plane on Friday and Sunday.",
-     "rationale": "Shuttle transfers from train or plane are offered to attendees."
+     "rationale": "Shuttles are provided to and from train and plane arrivals."
     }
    ]
   }

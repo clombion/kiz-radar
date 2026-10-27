@@ -5,14 +5,7 @@
    "event_id": 16191,
    "artists": [
     {
-     "name_as_written": "MAD",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "MAD and Giorgio Rod Event present:"
-    },
-    {
-     "name_as_written": "Giorgio Rod Event",
+     "name_as_written": "MAD and Giorgio Rod Event",
      "role": "organiser",
      "style": null,
      "country": null,
@@ -128,32 +121,37 @@
     {
      "feature": "accommodation_included",
      "quote": "Accommodation + Classes + Evening Events",
-     "rationale": "The launch offer price is a package that explicitly includes accommodation."
+     "rationale": "The offer packages list accommodation as part of the priced pass."
     },
     {
      "feature": "workshops",
      "quote": "Accommodation + Classes + Evening Events",
-     "rationale": "Classes are part of the package, showing dance classes are part of the event."
+     "rationale": "Classes are listed as part of the packaged week."
     },
     {
      "feature": "pre_party",
      "quote": "Pre-Party",
-     "rationale": "The packages list a Pre-Party as an included element."
+     "rationale": "The packages explicitly include a Pre-Party."
     },
     {
      "feature": "pool_party",
      "quote": "Pool Party",
-     "rationale": "The packages list a Pool Party as an included element."
+     "rationale": "The packages explicitly include a Pool Party."
     },
     {
      "feature": "beach_party",
      "quote": "Beach Party After-Parties",
-     "rationale": "The leisure activities list explicitly names beach party after-parties."
+     "rationale": "The leisure activities list beach party after-parties."
     },
     {
      "feature": "after_party",
      "quote": "Beach Party After-Parties",
-     "rationale": "The leisure activities list explicitly names after-parties following the beach parties."
+     "rationale": "The leisure activities list after-parties held after the beach parties."
+    },
+    {
+     "feature": "competition",
+     "quote": "Beach Volleyball Tournament",
+     "rationale": "A beach volleyball tournament is listed among the extra activities."
     }
    ]
   }

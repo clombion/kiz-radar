@@ -7,13 +7,13 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": "FULL PASS",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -36,7 +36,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -59,7 +59,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

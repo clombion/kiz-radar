@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "👉🏼𝗦𝗜𝗡𝗚𝗟𝗘 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 𝟭𝟭𝟬€ 👈🏼"
       },
       {
-       "amount": 115,
+       "amount": 115.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "10 Agosto 115€"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -62,7 +62,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 200,
+       "amount": 200.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

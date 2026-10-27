@@ -3,35 +3,27 @@
  "events": [
   {
    "event_id": 16884,
-   "artists": [
-    {
-     "name_as_written": "ILKSF",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Welcome to the next ILKSF festival and this one will be different."
-    }
-   ],
+   "artists": [],
    "features": [
     {
      "feature": "workshops",
      "quote": "Parties, socials & workshops",
-     "rationale": "The event lists workshops as part of what to expect."
+     "rationale": "The description lists workshops as part of what attendees can expect."
     },
     {
      "feature": "competition",
      "quote": "Semba Dance Battle",
-     "rationale": "A Semba Dance Battle is listed as part of the programme, which is a competition."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Samacaca",
-     "rationale": "Named dress codes are given for each night, such as Samacaca for Friday Night."
+     "rationale": "A Semba Dance Battle is listed as part of the festival programme."
     },
     {
      "feature": "themed_parties",
      "quote": "All White",
-     "rationale": "Nights carry dress themes like All White and Black & Red Gala, which makes them themed parties."
+     "rationale": "The Sunday night is given a dress theme of all white, one of several themed nights."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "All White",
+     "rationale": "A stated dress code is given for each night, including all white for Sunday."
     }
    ]
   }

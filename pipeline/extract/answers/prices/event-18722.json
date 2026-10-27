@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 75,
+       "amount": 75.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "3-Day Full Pass — €75"
       },
       {
-       "amount": 85,
+       "amount": 85.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "3-Day Full Pass — €85"
       },
       {
-       "amount": 95,
+       "amount": 95.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "3-Day Full Pass — €95"
       },
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -65,7 +65,7 @@
        "quote": "3-Day Full Pass — €110"
       },
       {
-       "amount": 125,
+       "amount": 125.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -78,7 +78,7 @@
        "quote": "3-Day Full Pass — €125"
       },
       {
-       "amount": 145,
+       "amount": 145.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -101,7 +101,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 95,
+       "amount": 95.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -114,7 +114,7 @@
        "quote": "4-Day Full Pass — €95"
       },
       {
-       "amount": 105,
+       "amount": 105.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -127,7 +127,7 @@
        "quote": "4-Day Full Pass — €105"
       },
       {
-       "amount": 115,
+       "amount": 115.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -140,7 +140,7 @@
        "quote": "4-Day Full Pass — €115"
       },
       {
-       "amount": 135,
+       "amount": 135.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -153,7 +153,7 @@
        "quote": "4-Day Full Pass — €135"
       },
       {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -166,7 +166,7 @@
        "quote": "4-Day Full Pass — €150"
       },
       {
-       "amount": 170,
+       "amount": 170.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -189,7 +189,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 210,
+       "amount": 210.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -202,7 +202,7 @@
        "quote": "3-Day Couple Pass — €210"
       },
       {
-       "amount": 240,
+       "amount": 240.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -225,7 +225,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 250,
+       "amount": 250.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -238,7 +238,7 @@
        "quote": "4-Day Couple Pass — €250"
       },
       {
-       "amount": 280,
+       "amount": 280.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -261,7 +261,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 75,
+       "amount": 75.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -274,7 +274,7 @@
        "quote": "3-Day Party Pass — €75"
       },
       {
-       "amount": 95,
+       "amount": 95.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -287,7 +287,7 @@
        "quote": "3-Day Party Pass — €95"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -310,7 +310,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -323,7 +323,7 @@
        "quote": "4-Day Party Pass — €90"
       },
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -336,7 +336,7 @@
        "quote": "4-Day Party Pass — €110"
       },
       {
-       "amount": 130,
+       "amount": 130.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

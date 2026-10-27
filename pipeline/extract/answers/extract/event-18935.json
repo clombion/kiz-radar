@@ -12,6 +12,13 @@
      "source_line": "• 🎓 10 hours of intensive workshops with the brilliant Jovany Kizatours & Céline."
     },
     {
+     "name_as_written": "Chill & Trip",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Dreamed of it? Chill & Trip made it happen. Forget standard dance workshops; we’re launching a unique concept that blends the prestige of a 5-star luxury resort with the authentic soul of Cape Verde. 🌍✨"
+    },
+    {
      "name_as_written": "Guillaume",
      "role": "organiser",
      "style": null,
@@ -23,27 +30,22 @@
     {
      "feature": "accommodation_included",
      "quote": "Enjoy the full package (5-star All-Inclusive hotel + dance + parties) for just €1,290.",
-     "rationale": "The full package includes the 5-star All-Inclusive hotel stay together with the dance and parties."
+     "rationale": "The full package explicitly includes the 5-star All-Inclusive hotel stay."
     },
     {
      "feature": "meals_included",
      "quote": "24-hour All-Inclusive package: Gourmet buffets and unlimited drinks.",
-     "rationale": "The All-Inclusive package explicitly includes gourmet buffets and unlimited drinks."
+     "rationale": "The All-Inclusive package includes gourmet buffets and unlimited drinks."
     },
     {
      "feature": "transfers_shuttle",
-     "quote": "Round-trip flights and transfers included.",
-     "rationale": "Transfers are included in the package, so transport is provided."
+     "quote": "Round-trip flights and transfers included",
+     "rationale": "Transfers are included in the package."
     },
     {
      "feature": "workshops",
-     "quote": "10 hours of intensive workshops",
-     "rationale": "The event includes 10 hours of dance workshops."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "10 hours of intensive workshops",
-     "rationale": "The workshops are described as intensive, forming an intensive training course."
+     "quote": "10 hours of intensive workshops with the brilliant Jovany Kizatours & Céline",
+     "rationale": "Dance workshops with teachers are part of the event."
     }
    ]
   }

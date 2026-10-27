@@ -212,12 +212,17 @@
     {
      "feature": "pre_party",
      "quote": "Pre-party until late",
-     "rationale": "The description lists a pre-party running until late as part of the event."
+     "rationale": "The description states there is a pre-party until late."
     },
     {
      "feature": "workshops",
      "quote": "High quality workshops",
-     "rationale": "The description states that high quality workshops are part of the event."
+     "rationale": "The description lists high quality workshops as part of the event."
+    },
+    {
+     "feature": "after_party",
+     "quote": "Goodbye party until 3PM on Monday",
+     "rationale": "A closing party running until Monday afternoon is an after-party."
     }
    ]
   }

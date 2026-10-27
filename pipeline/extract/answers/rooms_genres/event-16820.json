@@ -13,27 +13,32 @@
     {
      "genre": "salsa",
      "genre_as_written": "SALSA",
-     "quote": "SALSA, BACHATA, KIZOMBA"
+     "quote": "collaboration of SALSA, BACHATA, KIZOMBA , URBANKIZ & AFRO-HOUSE"
     },
     {
      "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "SALSA, BACHATA"
+     "genre_as_written": "Bachata",
+     "quote": "Salsa Bachata Kizomba & Urbankiz"
     },
     {
      "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "SALSA, BACHATA, KIZOMBA"
+     "genre_as_written": "Kizomba",
+     "quote": "Salsa Bachata Kizomba & Urbankiz"
     },
     {
      "genre": "urbankiz",
-     "genre_as_written": "URBANKIZ",
-     "quote": "URBANKIZ & AFRO-HOUSE"
+     "genre_as_written": "Urbankiz",
+     "quote": "Salsa Bachata Kizomba & Urbankiz"
     },
     {
      "genre": "afro",
      "genre_as_written": "AFRO-HOUSE",
-     "quote": "URBANKIZ & AFRO-HOUSE"
+     "quote": "collaboration of SALSA, BACHATA, KIZOMBA , URBANKIZ & AFRO-HOUSE"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "AFRO-BEATS",
+     "quote": "KIZOMBA URBANKIZ & AFRO-BEATS TEACHERS:"
     },
     {
      "genre": "zouk",

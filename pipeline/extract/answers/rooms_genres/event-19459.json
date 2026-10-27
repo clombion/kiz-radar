@@ -5,36 +5,36 @@
    "event_id": 19459,
    "party_rooms": {
     "count": 3,
-    "quote": "»» Our Kizomba Rooms / Atmospheres:\n→ Kizomba and Semba\n→ UrbanKiz and Tarraxo\n→ Konpa and Tarraxinha"
+    "quote": "Our Kizomba Rooms / Atmospheres:\n→ Kizomba and Semba\n→ UrbanKiz and Tarraxo\n→ Konpa and Tarraxinha"
    },
    "class_rooms": null,
    "rooms": [
     {
-     "name_as_written": "Kizomba and Semba",
+     "name_as_written": null,
      "kind": "party",
      "genres": [
       "kizomba",
       "semba"
      ],
-     "quote": "→ Kizomba and Semba"
+     "quote": "Kizomba and Semba"
     },
     {
-     "name_as_written": "UrbanKiz and Tarraxo",
+     "name_as_written": null,
      "kind": "party",
      "genres": [
       "urbankiz",
       "tarraxo"
      ],
-     "quote": "→ UrbanKiz and Tarraxo"
+     "quote": "UrbanKiz and Tarraxo"
     },
     {
-     "name_as_written": "Konpa and Tarraxinha",
+     "name_as_written": null,
      "kind": "party",
      "genres": [
       "kompa",
       "tarraxinha"
      ],
-     "quote": "→ Konpa and Tarraxinha"
+     "quote": "Konpa and Tarraxinha"
     }
    ],
    "genres": [

@@ -5,13 +5,6 @@
    "event_id": 15805,
    "artists": [
     {
-     "name_as_written": "Francis Sandro Maniongui",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Francis Sandro Maniongui"
-    },
-    {
      "name_as_written": "Dj Paparazzi",
      "role": "dj",
      "style": null,
@@ -205,17 +198,12 @@
     {
      "feature": "workshops",
      "quote": "20 Hours of Workshops",
-     "rationale": "The event lists twenty hours of workshops as part of what to expect."
+     "rationale": "The description promises twenty hours of workshops as part of the event."
     },
     {
      "feature": "multiple_rooms",
      "quote": "2 Dedicated Workshops Rooms",
-     "rationale": "Two dedicated workshop rooms are offered in addition to the main space."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Social Dancing: 17:00 – 19:00",
-     "rationale": "A daytime social dancing session is scheduled on Sunday afternoon."
+     "rationale": "Two dedicated workshop rooms besides the main workshop setup means more than one dance room."
     },
     {
      "feature": "masterclass",
@@ -223,9 +211,14 @@
      "rationale": "An exclusive masterclass is listed among the offerings."
     },
     {
+     "feature": "day_socials",
+     "quote": "Social Dancing: 17:00 – 19:00",
+     "rationale": "A daytime social dancing session in the late afternoon is scheduled."
+    },
+    {
      "feature": "partner_hotel",
-     "quote": "Use the promo code PALADANZE26 to get a discount on the base rate",
-     "rationale": "A partner hotel offers a negotiated discounted rate without accommodation being part of the pass."
+     "quote": "Use the promo code PALADANZE26 to get a discount on the base rate:",
+     "rationale": "A partner hotel with a negotiated discounted rate is offered, separate from the pass."
     }
    ]
   }

@@ -50,47 +50,47 @@
      "name_as_written": "DJ Style",
      "role": "dj",
      "style": null,
-     "country": null,
+     "country": "France",
      "source_line": "🎧 DJ Style – France"
     },
     {
      "name_as_written": "DJ Porto",
      "role": "dj",
      "style": null,
-     "country": null,
+     "country": "Spain",
      "source_line": "🎧 DJ Porto – Spain"
     },
     {
      "name_as_written": "DJ Harryz Kiz",
      "role": "dj",
      "style": null,
-     "country": null,
+     "country": "Germany",
      "source_line": "🎧 DJ Harryz Kiz – Germany"
     },
     {
      "name_as_written": "DJ High Energy",
      "role": "dj",
      "style": null,
-     "country": null,
+     "country": "Germany",
      "source_line": "🎧 DJ High Energy – Germany"
     },
     {
      "name_as_written": "DJ Juanqui",
      "role": "dj",
      "style": null,
-     "country": null,
+     "country": "Switzerland",
      "source_line": "🎧 DJ Juanqui – Switzerland"
     },
     {
      "name_as_written": "DJ Maikel",
      "role": "dj",
      "style": null,
-     "country": null,
+     "country": "Switzerland",
      "source_line": "🎧 DJ Maikel – Switzerland"
     },
     {
      "name_as_written": "Team KizInvasion Family",
-     "role": "performer",
+     "role": "crew",
      "style": null,
      "country": null,
      "source_line": "👑 Team KizInvasion Family"
@@ -98,34 +98,34 @@
    ],
    "features": [
     {
-     "feature": "bootcamp_intensive",
-     "quote": "Tarraxo Bootcamp",
-     "rationale": "The event lists a Tarraxo Bootcamp as part of its program."
-    },
-    {
      "feature": "workshops",
      "quote": "Inspiring Workshops",
-     "rationale": "The description lists Inspiring Workshops as part of the event."
+     "rationale": "The event lists inspiring workshops as part of what awaits attendees."
     },
     {
-     "feature": "masterclass",
-     "quote": "Exclusive Masterclasses",
-     "rationale": "The event lists Exclusive Masterclasses in its offerings."
+     "feature": "bootcamp_intensive",
+     "quote": "Tarraxo Bootcamp",
+     "rationale": "A Tarraxo Bootcamp is listed among the event offerings."
     },
     {
      "feature": "day_socials",
      "quote": "Daytime Socials",
-     "rationale": "The event explicitly offers Daytime Socials."
+     "rationale": "Daytime socials are listed as part of the programme."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Exclusive Masterclasses",
+     "rationale": "Masterclasses are explicitly offered at the event."
     },
     {
      "feature": "pre_party",
      "quote": "Thursday Pre-Party",
-     "rationale": "A Thursday Pre-Party is listed before the main event."
+     "rationale": "A pre-party is held on Thursday before the main event."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "Room 2",
-     "rationale": "The event has Room 1 and Room 2 as separate party rooms."
+     "quote": "🔥 Room 2",
+     "rationale": "The party rooms section lists Room 1 and Room 2, meaning more than one dance room."
     }
    ]
   }

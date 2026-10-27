@@ -7,13 +7,13 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": null,
+     "label_quote": "EARLY BIRD – BIG PROMOTION!!",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 200,
+       "amount": 200.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -36,7 +36,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 270,
+       "amount": 270.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -49,7 +49,7 @@
        "quote": "PRICE: 270 EUROS P/P!"
       },
       {
-       "amount": 320,
+       "amount": 320.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -62,7 +62,7 @@
        "quote": "PRICE: 320 EUROS P/P!"
       },
       {
-       "amount": 370,
+       "amount": 370.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -85,12 +85,12 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "09-01",
-       "until": "09-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -98,12 +98,12 @@
        "quote": "1 DAY – 150 EUROS"
       },
       {
-       "amount": 200,
+       "amount": 200.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "10-01",
-       "until": "10-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -111,12 +111,12 @@
        "quote": "1 DAY- 200 EUROS"
       },
       {
-       "amount": 250,
+       "amount": 250.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-01",
-       "until": "11-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -134,12 +134,12 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 200,
+       "amount": 200.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "09-01",
-       "until": "09-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -147,12 +147,12 @@
        "quote": "2 DAYS- 200 EUROS"
       },
       {
-       "amount": 250,
+       "amount": 250.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "10-01",
-       "until": "10-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -160,12 +160,12 @@
        "quote": "2 DAYS -250 EUROS"
       },
       {
-       "amount": 300,
+       "amount": 300.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-01",
-       "until": "11-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -183,12 +183,12 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 250,
+       "amount": 250.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "09-01",
-       "until": "09-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -196,12 +196,12 @@
        "quote": "3 DAYS -250 EUROS"
       },
       {
-       "amount": 300,
+       "amount": 300.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "10-01",
-       "until": "10-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -209,12 +209,12 @@
        "quote": "3 DAYS -300 EUROS"
       },
       {
-       "amount": 350,
+       "amount": 350.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-01",
-       "until": "11-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -232,12 +232,12 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 200,
+       "amount": 200.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "09-01",
-       "until": "09-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -245,12 +245,12 @@
        "quote": "1 DAY -200 EUROS"
       },
       {
-       "amount": 250,
+       "amount": 250.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "10-01",
-       "until": "10-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -258,12 +258,12 @@
        "quote": "1 DAY -250 EUROS"
       },
       {
-       "amount": 300,
+       "amount": 300.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-01",
-       "until": "11-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -281,12 +281,12 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 250,
+       "amount": 250.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "09-01",
-       "until": "09-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -294,12 +294,12 @@
        "quote": "2 DAYS-250 EUROS"
       },
       {
-       "amount": 300,
+       "amount": 300.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "10-01",
-       "until": "10-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -307,12 +307,12 @@
        "quote": "2 DAYS-300 EUROS"
       },
       {
-       "amount": 350,
+       "amount": 350.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-01",
-       "until": "11-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -330,12 +330,12 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 300,
+       "amount": 300.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "09-01",
-       "until": "09-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -343,12 +343,12 @@
        "quote": "3 DAYS-300 EUROS"
       },
       {
-       "amount": 350,
+       "amount": 350.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "10-01",
-       "until": "10-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -356,12 +356,12 @@
        "quote": "3 DAYS-350 EUROS"
       },
       {
-       "amount": 400,
+       "amount": 400.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-01",
-       "until": "11-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -379,12 +379,12 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 350,
+       "amount": 350.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "09-01",
-       "until": "09-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -392,12 +392,12 @@
        "quote": "3-DAYS/350 EUROS"
       },
       {
-       "amount": 400,
+       "amount": 400.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "10-01",
-       "until": "10-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -405,12 +405,12 @@
        "quote": "3-DAYS/ 400 EUROS"
       },
       {
-       "amount": 450,
+       "amount": 450.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-01",
-       "until": "11-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -428,12 +428,12 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "09-01",
-       "until": "09-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -451,12 +451,12 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 180,
+       "amount": 180.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "09-01",
-       "until": "09-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -474,12 +474,12 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 220,
+       "amount": 220.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "09-01",
-       "until": "09-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,

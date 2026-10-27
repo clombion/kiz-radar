@@ -5,35 +5,10 @@
    "event_id": 14516,
    "party_rooms": {
     "count": 3,
-    "quote": "3 dance floors : Bachata, Salsa, Kizomba"
+    "quote": "3 dance floors : Bachata, Salsa, Kizomba on 4800 sq meters"
    },
    "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Bachata",
-     "kind": "party",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "3 dance floors : Bachata"
-    },
-    {
-     "name_as_written": "Salsa",
-     "kind": "party",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "Bachata, Salsa, Kizomba"
-    },
-    {
-     "name_as_written": "Kizomba",
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "Salsa, Kizomba"
-    }
-   ],
+   "rooms": [],
    "genres": [
     {
      "genre": "kizomba",

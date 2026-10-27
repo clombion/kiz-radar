@@ -8,7 +8,12 @@
     {
      "feature": "workshops",
      "quote": "Workshops: Konpa, Kizomba, Semba, Afrobeats, Gouyad & more",
-     "rationale": "The line lists dance workshops in several styles as part of the event."
+     "rationale": "The description lists dance workshops in several styles as part of the event."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Konpa • Kizomba • Semba Bootcamps",
+     "rationale": "Bootcamps in three styles are offered as part of the event."
     },
     {
      "feature": "pre_party",
@@ -16,14 +21,9 @@
      "rationale": "A pre-party is explicitly listed before the official party nights."
     },
     {
-     "feature": "bootcamp_intensive",
-     "quote": "Konpa • Kizomba • Semba Bootcamps",
-     "rationale": "Bootcamps are offered in these styles, which fits the bootcamp or intensive training feature."
-    },
-    {
      "feature": "partner_hotel",
      "quote": "Sonesta at Gwinnett Place",
-     "rationale": "A host hotel is named for dancers, but the text does not say accommodation is part of the pass."
+     "rationale": "The event names a host hotel with a booking link, without stating that accommodation is part of the pass."
     }
    ]
   }

@@ -6,19 +6,19 @@
    "artists": [],
    "features": [
     {
-     "feature": "multiple_rooms",
-     "quote": "Rooms, 4 unique atmospheres",
-     "rationale": "The text says there are 4 rooms, each with its own atmosphere, which means more than one dance room."
+     "feature": "pre_party",
+     "quote": "Preparty on thursday the 12th",
+     "rationale": "The description announces a pre-party on Thursday the 12th, before the main event."
     },
     {
      "feature": "meals_included",
      "quote": "Soft & catering INCLUDED",
-     "rationale": "The listed soft drinks and catering are marked as included, so meals are part of the pass."
+     "rationale": "The description states that soft drinks and catering are included."
     },
     {
-     "feature": "pre_party",
-     "quote": "Preparty on thursday the 12th",
-     "rationale": "A preparty is announced for the evening before the main event dates."
+     "feature": "multiple_rooms",
+     "quote": "Rooms, 4 unique atmospheres",
+     "rationale": "The event has four rooms, which means more than one dance floor."
     }
    ]
   }

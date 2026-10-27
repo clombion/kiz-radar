@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "★ EARLY BIRD £60 1st 20 peoples | SOLD OUT"
       },
       {
-       "amount": 65,
+       "amount": 65.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,

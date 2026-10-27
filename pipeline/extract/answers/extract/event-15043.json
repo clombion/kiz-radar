@@ -181,23 +181,18 @@
     },
     {
      "feature": "competition",
-     "quote": "Rising Star Competition “Dutch Selection”",
-     "rationale": "A Rising Star Competition is named as part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 Full Days of Dancing; Parties & Socials",
-     "rationale": "Socials are offered alongside the three days of dancing."
+     "quote": "Rising Star Competition",
+     "rationale": "The event includes a Rising Star Competition called Dutch Selection."
     },
     {
      "feature": "dress_code",
-     "quote": "𝗦𝘂𝗻𝗱𝗮𝘆 𝗡𝗶𝗴𝗵𝘁: All White",
-     "rationale": "A dress code is stated for each night, such as All White for Sunday night."
+     "quote": "Black & Red Gala",
+     "rationale": "The description lists dress codes per night, such as Black & Red Gala for Saturday night."
     },
     {
      "feature": "themed_parties",
-     "quote": "𝗦𝘂𝗻𝗱𝗮𝘆 𝗡𝗶𝗴𝗵𝘁: All White",
-     "rationale": "The parties carry dress themes such as All White for Sunday night."
+     "quote": "Black & Red Gala",
+     "rationale": "The nights have dress themes such as Street Fashion, Black & Red Gala and All White."
     }
    ]
   }

@@ -79,17 +79,17 @@
     {
      "feature": "workshops",
      "quote": "Workshops",
-     "rationale": "The list of highlights includes Workshops, meaning dance classes are part of the event."
+     "rationale": "The event lists workshops as part of its program."
     },
     {
      "feature": "partner_hotel",
      "quote": "Partner Hotel",
-     "rationale": "The event names an official partner hotel with negotiated rates, without the accommodation being part of the pass."
+     "rationale": "The description names Hôtel AKENA as the partner hotel, with negotiated rates that are booked separately."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "Shuttles will only depart from this hotel.",
-     "rationale": "The description states that shuttles run from the partner hotel, so shuttle transfers are offered."
+     "rationale": "The description states that shuttles run from the partner hotel."
     }
    ]
   }

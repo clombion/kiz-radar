@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 105,
+       "amount": 105.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -23,7 +23,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Full Passes start from only 105€!"
+       "quote": "PASSES are now available – Full Passes start from only 105€!"
       }
      ]
     }

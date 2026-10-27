@@ -13,11 +13,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 950,
+       "amount": 950.0,
        "currency": "SEK",
        "fee": null,
        "alt": {
-        "amount": 85,
+        "amount": 85.0,
         "currency": "EUR"
        },
        "from": null,
@@ -29,11 +29,11 @@
        "quote": "Early Bird – 950 SEK (€85)"
       },
       {
-       "amount": 1000,
+       "amount": 1000.0,
        "currency": "SEK",
        "fee": null,
        "alt": {
-        "amount": 90,
+        "amount": 90.0,
         "currency": "EUR"
        },
        "from": "03-27",
@@ -45,11 +45,11 @@
        "quote": "From 27th March – 1000 SEK (€90)"
       },
       {
-       "amount": 1100,
+       "amount": 1100.0,
        "currency": "SEK",
        "fee": null,
        "alt": {
-        "amount": 99,
+        "amount": 99.0,
         "currency": "EUR"
        },
        "from": "05-27",
@@ -61,11 +61,11 @@
        "quote": "From 27th May – 1100 SEK (€99)"
       },
       {
-       "amount": 1200,
+       "amount": 1200.0,
        "currency": "SEK",
        "fee": null,
        "alt": {
-        "amount": 108,
+        "amount": 108.0,
         "currency": "EUR"
        },
        "from": "07-27",
@@ -77,11 +77,11 @@
        "quote": "From 27th July – 1200 SEK (€108)"
       },
       {
-       "amount": 1300,
+       "amount": 1300.0,
        "currency": "SEK",
        "fee": null,
        "alt": {
-        "amount": 118,
+        "amount": 118.0,
         "currency": "EUR"
        },
        "from": "09-27",
@@ -93,11 +93,11 @@
        "quote": "From 27th September – 1300 SEK (€118)"
       },
       {
-       "amount": 1400,
+       "amount": 1400.0,
        "currency": "SEK",
        "fee": null,
        "alt": {
-        "amount": 127,
+        "amount": 127.0,
         "currency": "EUR"
        },
        "from": "11-27",
@@ -109,11 +109,11 @@
        "quote": "From 27th November – 1400 SEK (€127)"
       },
       {
-       "amount": 1500,
+       "amount": 1500.0,
        "currency": "SEK",
        "fee": null,
        "alt": {
-        "amount": 136,
+        "amount": 136.0,
         "currency": "EUR"
        },
        "from": "01-17",

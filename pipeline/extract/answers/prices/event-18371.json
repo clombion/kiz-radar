@@ -13,12 +13,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 170,
+       "amount": 170.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "10-09",
+       "until": "2026-10-09",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -26,12 +26,12 @@
        "quote": "2 nights – 170€"
       },
       {
-       "amount": 180,
+       "amount": 180.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "11-06",
+       "until": "2026-11-06",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -39,11 +39,11 @@
        "quote": "2 nights – 180€"
       },
       {
-       "amount": 190,
+       "amount": 190.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-07",
+       "from": "2026-11-07",
        "until": null,
        "quantity": null,
        "door": false,
@@ -62,12 +62,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 220,
+       "amount": 220.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "10-09",
+       "until": "2026-10-09",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -75,12 +75,12 @@
        "quote": "3 nights – 220€"
       },
       {
-       "amount": 230,
+       "amount": 230.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "11-06",
+       "until": "2026-11-06",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -88,11 +88,11 @@
        "quote": "3 nights – 230€"
       },
       {
-       "amount": 240,
+       "amount": 240.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-07",
+       "from": "2026-11-07",
        "until": null,
        "quantity": null,
        "door": false,
@@ -111,12 +111,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 270,
+       "amount": 270.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "10-09",
+       "until": "2026-10-09",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -124,12 +124,12 @@
        "quote": "4 nights – 270€"
       },
       {
-       "amount": 280,
+       "amount": 280.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "11-06",
+       "until": "2026-11-06",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -137,11 +137,11 @@
        "quote": "4 nights – 280€"
       },
       {
-       "amount": 290,
+       "amount": 290.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-07",
+       "from": "2026-11-07",
        "until": null,
        "quantity": null,
        "door": false,
@@ -160,12 +160,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 180,
+       "amount": 180.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "10-09",
+       "until": "2026-10-09",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -173,12 +173,12 @@
        "quote": "2 nights – 180€"
       },
       {
-       "amount": 190,
+       "amount": 190.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "11-06",
+       "until": "2026-11-06",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -186,11 +186,11 @@
        "quote": "2 nights – 190€"
       },
       {
-       "amount": 200,
+       "amount": 200.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-07",
+       "from": "2026-11-07",
        "until": null,
        "quantity": null,
        "door": false,
@@ -209,12 +209,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 230,
+       "amount": 230.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "10-09",
+       "until": "2026-10-09",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -222,12 +222,12 @@
        "quote": "3 nights – 230€"
       },
       {
-       "amount": 240,
+       "amount": 240.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "11-06",
+       "until": "2026-11-06",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -235,11 +235,11 @@
        "quote": "3 nights – 240€"
       },
       {
-       "amount": 250,
+       "amount": 250.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-07",
+       "from": "2026-11-07",
        "until": null,
        "quantity": null,
        "door": false,
@@ -258,12 +258,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 280,
+       "amount": 280.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "10-09",
+       "until": "2026-10-09",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -271,12 +271,12 @@
        "quote": "4 nights – 280€"
       },
       {
-       "amount": 290,
+       "amount": 290.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "11-06",
+       "until": "2026-11-06",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -284,11 +284,11 @@
        "quote": "4 nights – 290€"
       },
       {
-       "amount": 300,
+       "amount": 300.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-07",
+       "from": "2026-11-07",
        "until": null,
        "quantity": null,
        "door": false,
@@ -307,12 +307,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 240,
+       "amount": 240.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "10-09",
+       "until": "2026-10-09",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -320,12 +320,12 @@
        "quote": "2 nights – 240€"
       },
       {
-       "amount": 250,
+       "amount": 250.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "11-06",
+       "until": "2026-11-06",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -333,11 +333,11 @@
        "quote": "2 nights – 250€"
       },
       {
-       "amount": 260,
+       "amount": 260.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-07",
+       "from": "2026-11-07",
        "until": null,
        "quantity": null,
        "door": false,
@@ -356,12 +356,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 330,
+       "amount": 330.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "10-09",
+       "until": "2026-10-09",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -369,12 +369,12 @@
        "quote": "3 nights – 330€"
       },
       {
-       "amount": 340,
+       "amount": 340.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "11-06",
+       "until": "2026-11-06",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -382,11 +382,11 @@
        "quote": "3 nights – 340€"
       },
       {
-       "amount": 350,
+       "amount": 350.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-07",
+       "from": "2026-11-07",
        "until": null,
        "quantity": null,
        "door": false,
@@ -405,12 +405,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 420,
+       "amount": 420.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "10-09",
+       "until": "2026-10-09",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -418,12 +418,12 @@
        "quote": "4 nights – 420€"
       },
       {
-       "amount": 430,
+       "amount": 430.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "11-06",
+       "until": "2026-11-06",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -431,11 +431,11 @@
        "quote": "4 nights – 430€"
       },
       {
-       "amount": 440,
+       "amount": 440.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-07",
+       "from": "2026-11-07",
        "until": null,
        "quantity": null,
        "door": false,

@@ -3,8 +3,8 @@
  "title": "Stockholm Sensual Festival 2026",
  "start_date": "2026-10-29",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "cb864655c7075f56",
- "rows_at": "2026-10-27T11:37:53+00:00",
+ "prompt": "1a3b603636d758ee",
+ "rows_at": "2026-10-27T18:03:11+00:00",
  "styles": [
   "bachata",
   "kizomba",
@@ -220,8 +220,8 @@
    "tiers": [
     {
      "keys": [
-      "ca410fba-4a7b-4f02-a5d2-4ec3d2ea39e8",
-      "065f85a5-24d2-4f55-9527-496747e9ef24"
+      "065f85a5-24d2-4f55-9527-496747e9ef24",
+      "ca410fba-4a7b-4f02-a5d2-4ec3d2ea39e8"
      ],
      "from": null,
      "until": null,

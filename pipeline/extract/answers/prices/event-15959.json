@@ -13,12 +13,12 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 70,
+       "amount": 70.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
        "from": null,
-       "until": "02-01",
+       "until": "2026-02-01",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -26,7 +26,7 @@
        "quote": "EARLY BIRDS TILL – 1 FEB. 2026 – €70 EXCL."
       },
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "PHASE 1 PRICE FROM – 2 FEB. 2026 – € 80 EXCL."
       },
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

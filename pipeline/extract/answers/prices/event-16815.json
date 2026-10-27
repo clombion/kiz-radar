@@ -13,7 +13,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 225,
+       "amount": 225.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -36,7 +36,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 240,
+       "amount": 240.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -59,7 +59,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 300,
+       "amount": 300.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -82,7 +82,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -98,7 +98,7 @@
     }
    ],
    "rule_quotes": [
-    "ℹ️😮 The price of the Packages will have the following increases:",
+    "The price of the Packages will have the following increases:",
     "– increase in May 2026 ➡️ +10€",
     "– increase in September 2026 ➡️ +10€",
     "– increase in November 2026 ➡️ +10€"

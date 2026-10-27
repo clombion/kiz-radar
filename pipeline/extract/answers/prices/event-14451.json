@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -30,13 +30,13 @@
     {
      "kind": "other",
      "style": null,
-     "label_quote": null,
+     "label_quote": "The ▪️VIP Pass▪️",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -51,9 +51,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "Rooms do not include the €4 per person daily tourist tax."
-   ]
+   "rule_quotes": []
   }
  ]
 }

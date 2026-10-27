@@ -146,7 +146,7 @@
     },
     {
      "name_as_written": "GUEST DANCERS from KizInvasio",
-     "role": "crew",
+     "role": "performer",
      "style": null,
      "country": null,
      "source_line": "❤️‍🔥 GUEST DANCERS from KizInvasio"
@@ -156,22 +156,22 @@
     {
      "feature": "workshops",
      "quote": "3 Days of Workshops, Socials, and Parties",
-     "rationale": "The festival is described as offering workshops across its three days."
+     "rationale": "The festival is described as including workshops alongside socials and parties."
     },
     {
      "feature": "multiple_rooms",
      "quote": "2 Dance Rooms",
-     "rationale": "The description states there are two dance rooms."
+     "rationale": "The event offers two dance rooms, so there is more than one dance floor."
     },
     {
      "feature": "taxi_dancers",
-     "quote": "Guest Taxi Teams",
-     "rationale": "Guest taxi teams are listed as part of the event."
+     "quote": "Guest Taxi Teams & Surprise Animations",
+     "rationale": "Guest taxi teams are listed as part of the event, so taxi dancers are present."
     },
     {
      "feature": "partner_hotel",
      "quote": "Main Hotel: IBIS Hotel",
-     "rationale": "A main hotel is named with bookings available, without accommodation being part of a pass."
+     "rationale": "A main hotel is named with bookings available until a set date, which indicates a partner hotel outside the pass."
     }
    ]
   }

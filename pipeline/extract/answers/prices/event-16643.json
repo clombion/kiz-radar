@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 800,
+       "amount": 800.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "Super early bird until 31.12.25: 800 NOK"
       },
       {
-       "amount": 900,
+       "amount": 900.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "Early bird until 31.01.26: 900 NOK"
       },
       {
-       "amount": 1200,
+       "amount": 1200.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "Late bird until 30.04.26: 1200 NOK"
       },
       {
-       "amount": 1600,
+       "amount": 1600.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -75,7 +75,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 1700,
+       "amount": 1700.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -88,7 +88,7 @@
        "quote": "Early bird from 01.01-31.01.26: 1700 NOK"
       },
       {
-       "amount": 2200,
+       "amount": 2200.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -101,7 +101,7 @@
        "quote": "Late bird from 01.02-30.04.26: 2200 NOK"
       },
       {
-       "amount": 2900,
+       "amount": 2900.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -116,7 +116,9 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "There is no discount on early bird tickets."
+   ]
   }
  ]
 }

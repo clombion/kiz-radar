@@ -11,7 +11,7 @@
    "rooms": [
     {
      "name_as_written": "Room 1",
-     "kind": "party",
+     "kind": "unspecified",
      "genres": [
       "urbankiz",
       "tarraxo"
@@ -20,7 +20,7 @@
     },
     {
      "name_as_written": "Room 2",
-     "kind": "party",
+     "kind": "unspecified",
      "genres": [
       "kizomba",
       "semba"

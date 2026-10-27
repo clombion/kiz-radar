@@ -154,29 +154,24 @@
    ],
    "features": [
     {
-     "feature": "shows",
-     "quote": "Fantastic shows",
-     "rationale": "The description advertises fantastic shows as part of the event."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Show & live act",
-     "rationale": "A live act is listed as part of the programme, indicating live performance."
-    },
-    {
      "feature": "workshops",
      "quote": "Workshops, master classes and bootcamps",
-     "rationale": "The event explicitly offers workshops, masterclasses and bootcamps."
+     "rationale": "The description lists workshops as part of the event."
     },
     {
      "feature": "masterclass",
      "quote": "master classes",
-     "rationale": "Master classes are named as part of the programme."
+     "rationale": "Masterclasses are named among the offerings."
     },
     {
      "feature": "bootcamp_intensive",
      "quote": "bootcamps",
-     "rationale": "Bootcamps are named as part of the programme."
+     "rationale": "Bootcamps are named among the offerings."
+    },
+    {
+     "feature": "shows",
+     "quote": "Show & live act",
+     "rationale": "Shows and live acts by artists are advertised."
     }
    ]
   }

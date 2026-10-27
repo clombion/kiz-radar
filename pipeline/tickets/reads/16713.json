@@ -2,9 +2,9 @@
  "event_id": 16713,
  "title": "Makutano SBK Festival “2nd edition”",
  "start_date": "2026-12-18",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "cb864655c7075f56",
- "rows_at": "2026-10-27T11:53:30+00:00",
+ "read_by": "claude-sonnet-5-5 + claude-fable-5-1",
+ "prompt": "1a3b603636d758ee",
+ "rows_at": "2026-10-27T18:21:33+00:00",
  "styles": [
   "bachata",
   "kizomba",
@@ -57,7 +57,7 @@
    "style": null,
    "label_quote": null,
    "group_size": 1,
-   "days": 2,
+   "days": null,
    "includes_hotel": false,
    "tiers": [
     {

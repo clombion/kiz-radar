@@ -96,13 +96,6 @@
      "source_line": "🔥 DJ DANY"
     },
     {
-     "name_as_written": "BKF TEAM",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "BKF TEAM"
-    },
-    {
      "name_as_written": "João & Lucy",
      "role": "organiser",
      "style": null,
@@ -112,39 +105,39 @@
    ],
    "features": [
     {
-     "feature": "boat_party",
-     "quote": "A unique boat venue on the Danube river",
-     "rationale": "The festival venue is described as a boat on the Danube, so the event takes place on a boat."
+     "feature": "workshops",
+     "quote": "High-quality workshops",
+     "rationale": "The description states that high-quality workshops are part of the event."
     },
     {
      "feature": "multiple_rooms",
      "quote": "2 ROOMS // 2 ATMOSPHERES",
-     "rationale": "The description states the festival has two rooms."
+     "rationale": "The event has two dance rooms."
     },
     {
-     "feature": "workshops",
-     "quote": "High-quality workshops",
-     "rationale": "High-quality workshops are listed as part of the event."
+     "feature": "boat_party",
+     "quote": "A unique boat venue on the Danube river",
+     "rationale": "The event venue is a boat on the Danube, so the parties take place on a boat."
     },
     {
-     "feature": "pre_party",
-     "quote": "Thursday Pre-Party",
-     "rationale": "A Thursday pre-party is mentioned as part of the event schedule."
-    },
-    {
-     "feature": "after_party",
-     "quote": "Monday After-Party",
-     "rationale": "A Monday after-party is mentioned as part of the event schedule."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "give access to the 3 socials",
-     "rationale": "The passes give access to three socials, which are daytime social sessions."
+     "feature": "transfers_shuttle",
+     "quote": "direct bus to the Bratislava",
+     "rationale": "A direct bus from Vienna airport to Bratislava is offered as transport to the event."
     },
     {
      "feature": "partner_hotel",
      "quote": "PROMOCODE – KIZO26",
-     "rationale": "A promo code for negotiated room rates at a listed hotel is given, without the hotel being part of the pass."
+     "rationale": "A promo code gives negotiated hotel rates at a recommended hotel that is not part of the pass."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Thursday Pre-Party not included in any ticket",
+     "rationale": "The event has a Thursday pre-party, though it is not covered by the tickets."
+    },
+    {
+     "feature": "after_party",
+     "quote": "Monday After-Party not included in any ticket",
+     "rationale": "The event has a Monday after-party, though it is not covered by the tickets."
     }
    ]
   }

@@ -8,32 +8,32 @@
     {
      "feature": "accommodation_included",
      "quote": "Package of Full Pass & Accomodation & FREE OPEN NIGHT BAR:",
-     "rationale": "The package explicitly combines the full pass with accommodation."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Excellent workshops in 5 halls",
-     "rationale": "The description advertises workshops as part of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "spectacular shows",
-     "rationale": "The description promises spectacular shows at the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Afternoon Parties",
-     "rationale": "Afternoon parties are listed as part of the programme."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Excellent workshops in 5 halls",
-     "rationale": "Workshops and parties take place in five halls, so there is more than one dance room."
+     "rationale": "The package named as a Full Pass with accommodation includes the accommodation."
     },
     {
      "feature": "competition",
      "quote": "Exciting COMPETITION: Rueda, LA, NY, man & lady solo, kids;",
-     "rationale": "The event includes competitions in several categories."
+     "rationale": "The description lists a competition with several categories."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Excellent workshops in 5 halls and spectacular shows",
+     "rationale": "The description states that workshops are part of the event."
+    },
+    {
+     "feature": "shows",
+     "quote": "Excellent workshops in 5 halls and spectacular shows",
+     "rationale": "The description mentions spectacular shows as part of the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Afternoon Parties",
+     "rationale": "The description lists afternoon parties among the event's offerings."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Excellent workshops in 5 halls and spectacular shows",
+     "rationale": "Mentioning 5 halls shows that there is more than one dance room."
     }
    ]
   }

@@ -182,17 +182,17 @@
     {
      "feature": "workshops",
      "quote": "4 Days of Workshops",
-     "rationale": "Workshops are listed as part of the event over four days."
+     "rationale": "The event offers four days of dance workshops."
     },
     {
      "feature": "day_socials",
      "quote": "3 Days of Social Dancing",
-     "rationale": "Social dancing is offered over three days, and the program shows daytime social slots."
+     "rationale": "Daytime social dancing sessions are part of the programme."
     },
     {
      "feature": "multiple_rooms",
      "quote": "2 Beautiful Dance Rooms",
-     "rationale": "The event has two dance rooms."
+     "rationale": "The event has two separate dance rooms."
     },
     {
      "feature": "transfers_shuttle",
@@ -202,7 +202,7 @@
     {
      "feature": "partner_hotel",
      "quote": "Partner Hotels",
-     "rationale": "The event names partner hotels with a free shuttle bus to the venue."
+     "rationale": "The event lists partner hotels with a shuttle to the venue."
     }
    ]
   }

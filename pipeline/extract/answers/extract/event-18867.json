@@ -5,13 +5,6 @@
    "event_id": 18867,
    "artists": [
     {
-     "name_as_written": "Passion kizomba Nantes",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Passion kizomba Nantes"
-    },
-    {
      "name_as_written": "Malwi & Juanes",
      "role": "teacher",
      "style": "Bachata",
@@ -161,14 +154,14 @@
     {
      "name_as_written": "Dj Saly",
      "role": "dj",
-     "style": "Bachata",
+     "style": "bachata",
      "country": null,
      "source_line": "Dj Saly – bachata – Nantes"
     },
     {
      "name_as_written": "Dj Dhoirif",
      "role": "dj",
-     "style": "Bachata",
+     "style": "bachata",
      "country": null,
      "source_line": "Dj Dhoirif – bachata – Rennes"
     },
@@ -182,63 +175,63 @@
     {
      "name_as_written": "Dj Charley Raymdtc",
      "role": "dj",
-     "style": "Kizomba",
+     "style": "kizomba",
      "country": null,
      "source_line": "Dj Charley Raymdtc – Munich"
     },
     {
      "name_as_written": "Dj Hugo smile",
      "role": "dj",
-     "style": "Kizomba",
+     "style": "kizomba",
      "country": null,
      "source_line": "Dj Hugo smile – Bordeaux"
     },
     {
      "name_as_written": "Dj T-Wosh",
      "role": "dj",
-     "style": "Kizomba",
+     "style": "kizomba",
      "country": null,
      "source_line": "Dj T-Wosh – Paris"
     },
     {
      "name_as_written": "Dj Kin",
      "role": "dj",
-     "style": "Kizomba",
+     "style": "kizomba",
      "country": null,
      "source_line": "Dj Kin – Nantes"
     },
     {
      "name_as_written": "Dj Man",
      "role": "dj",
-     "style": "Kizomba",
+     "style": "kizomba",
      "country": null,
      "source_line": "Dj Man – Nantes"
     },
     {
      "name_as_written": "Dj Mowjah",
      "role": "dj",
-     "style": "Kizomba",
+     "style": "kizomba",
      "country": null,
      "source_line": "Dj Mowjah – Caen"
     },
     {
      "name_as_written": "Dj Lova",
      "role": "dj",
-     "style": "Kizomba",
+     "style": "kizomba",
      "country": null,
      "source_line": "Dj Lova – Bordeaux"
     },
     {
      "name_as_written": "Dj EFZO",
      "role": "dj",
-     "style": "Kizomba",
+     "style": "kizomba",
      "country": null,
      "source_line": "Dj EFZO – Nantes"
     },
     {
      "name_as_written": "Dj L-Gi",
      "role": "dj",
-     "style": "Kizomba",
+     "style": "kizomba",
      "country": null,
      "source_line": "Dj L-Gi – Nantes"
     },
@@ -262,43 +255,50 @@
      "style": "Salsa",
      "country": null,
      "source_line": "Dj Ibra Chavez – Nantes"
+    },
+    {
+     "name_as_written": "Passion kizomba Nantes",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Passion kizomba Nantes"
     }
    ],
    "features": [
     {
      "feature": "all_in_one",
      "quote": "All in one venue",
-     "rationale": "The description states the event is held in one venue, the hotel where accommodation is offered."
+     "rationale": "The text says the festival and accommodation are in one venue, so the parties take place in the hotel where dancers stay."
     },
     {
      "feature": "workshops",
      "quote": "Over 30 hours of workshops",
-     "rationale": "The event offers more than 30 hours of workshops."
+     "rationale": "The event offers more than 30 hours of dance workshops."
     },
     {
      "feature": "masterclass",
      "quote": "The master classes",
-     "rationale": "Master classes are listed as part of the event."
+     "rationale": "The event lists master classes among its features."
     },
     {
      "feature": "competition",
      "quote": "Bachata battle",
-     "rationale": "A battle is a competition format listed in the event."
+     "rationale": "A battle is a dance competition."
     },
     {
      "feature": "shows",
      "quote": "Shows",
-     "rationale": "Shows are listed as part of the programme."
+     "rationale": "The event lists shows as a feature."
     },
     {
      "feature": "pre_party",
      "quote": "A pre-party",
-     "rationale": "A pre-party is listed before the main event."
+     "rationale": "The event includes a pre-party."
     },
     {
      "feature": "multiple_rooms",
      "quote": "Three rooms, Three atmospheres",
-     "rationale": "Three separate rooms are described."
+     "rationale": "The event has three dance rooms."
     },
     {
      "feature": "taxi_dancers",
@@ -308,12 +308,12 @@
     {
      "feature": "partner_hotel",
      "quote": "A special negotiated rate for your stay in a 4-star hotel",
-     "rationale": "A negotiated hotel rate is offered without being part of the pass."
+     "rationale": "A negotiated hotel rate is offered without the accommodation being part of the pass."
     },
     {
      "feature": "themed_parties",
      "quote": "Masquerade Party Edition",
-     "rationale": "The edition is a masquerade-themed party."
+     "rationale": "The masquerade theme gives the party a dress theme."
     }
    ]
   }

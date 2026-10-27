@@ -5,7 +5,7 @@
    "event_id": 15903,
    "artists": [
     {
-     "name_as_written": "O’DANCE HOLIDAY",
+     "name_as_written": "O’DANCE",
      "role": "organiser",
      "style": null,
      "country": null,
@@ -16,12 +16,12 @@
     {
      "feature": "accommodation_included",
      "quote": "Accommodation in a standard double room",
-     "rationale": "The 'YOUR STAY INCLUDES' list names accommodation in a standard double room as part of the package."
+     "rationale": "The stay section lists accommodation as part of what the package includes."
     },
     {
      "feature": "meals_included",
      "quote": "Full board (from dinner on Day 1 to breakfast on Day 5",
-     "rationale": "Full board is listed under 'YOUR STAY INCLUDES', so meals are included in the package."
+     "rationale": "Full board meals are listed under what the stay includes."
     },
     {
      "feature": "workshops",
@@ -30,8 +30,8 @@
     },
     {
      "feature": "themed_parties",
-     "quote": "Theme parties & fun animations in and outside the hotel",
-     "rationale": "The description explicitly offers theme parties as part of the stay."
+     "quote": "Theme parties",
+     "rationale": "The package includes theme parties during the holiday."
     }
    ]
   }

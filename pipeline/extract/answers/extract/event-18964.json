@@ -5,6 +5,13 @@
    "event_id": 18964,
    "artists": [
     {
+     "name_as_written": "The African Dance Association",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "The African Dance Association (ADA) is beyond thrilled to welcome you to The People’s KIZOMBA Festival – SCOTLAND Edition 5.0! 🙌🏾🙌🏾"
+    },
+    {
      "name_as_written": "BRUNO & MINA",
      "role": "teacher",
      "style": null,
@@ -77,7 +84,7 @@
     {
      "name_as_written": "ANDRINA",
      "role": "teacher",
-     "style": null,
+     "style": "STRETCHING",
      "country": null,
      "source_line": "✨ANDRINA"
     },
@@ -94,45 +101,43 @@
      "style": null,
      "country": null,
      "source_line": "✨QU4TRO"
-    },
-    {
-     "name_as_written": "The African Dance Association",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "The African Dance Association (ADA) is beyond thrilled to welcome you to The People’s KIZOMBA Festival – SCOTLAND Edition 5.0! 🙌🏾🙌🏾"
     }
    ],
    "features": [
     {
      "feature": "accommodation_included",
      "quote": "Full pass & accommodation deals available",
-     "rationale": "The pass deals bundle a full pass with accommodation, so accommodation is part of a package."
+     "rationale": "The description offers passes combined with accommodation deals."
     },
     {
      "feature": "meals_included",
      "quote": "FULL BOARD",
-     "rationale": "Full board group deals include meals as part of the package."
+     "rationale": "Full board group deals include meals as well as accommodation."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "FULL BOARD",
+     "rationale": "Full board group deals include the accommodation."
     },
     {
      "feature": "workshops",
      "quote": "Workshops (all levels)",
-     "rationale": "The event lists workshops as part of the programme."
+     "rationale": "Dance workshops are listed as part of the event."
     },
     {
      "feature": "all_levels_beginners",
      "quote": "Workshops (all levels)",
-     "rationale": "Workshops are offered for all levels, which welcomes beginners."
+     "rationale": "The workshops are stated to be open to all levels."
     },
     {
      "feature": "taxi_dancers",
-     "quote": "guests & taxi dancers present",
-     "rationale": "The description states that taxi dancers are present at the event."
+     "quote": "taxi dancers present",
+     "rationale": "The event states that taxi dancers are present."
     },
     {
      "feature": "after_party",
      "quote": "AFTERPARTY",
-     "rationale": "An AFTERPARTY entry appears in the DJ lineup, indicating an after-party."
+     "rationale": "An afterparty is listed in the DJ lineup."
     }
    ]
   }

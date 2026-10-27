@@ -42,7 +42,12 @@
     },
     {
      "genre": "afro",
-     "genre_as_written": "AFRO-HOUSE/AMAPIANO",
+     "genre_as_written": "AFRO-HOUSE",
+     "quote": "AFRO-HOUSE/AMAPIANO"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "AMAPIANO",
      "quote": "AFRO-HOUSE/AMAPIANO"
     },
     {

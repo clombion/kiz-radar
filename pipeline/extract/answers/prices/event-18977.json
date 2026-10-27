@@ -9,15 +9,15 @@
      "style": null,
      "label_quote": "▪️FULL PASS",
      "group_size": 1,
-     "days": 3,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 57000,
+        "amount": 57000.0,
         "currency": "HUF"
        },
        "from": null,
@@ -29,11 +29,11 @@
        "quote": "€150 / 57.000 Ft until 30 September"
       },
       {
-       "amount": 160,
+       "amount": 160.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 61000,
+        "amount": 61000.0,
         "currency": "HUF"
        },
        "from": null,
@@ -45,11 +45,11 @@
        "quote": "€160 / 61.000 Ft until 5 November"
       },
       {
-       "amount": 170,
+       "amount": 170.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 65000,
+        "amount": 65000.0,
         "currency": "HUF"
        },
        "from": null,
@@ -67,15 +67,15 @@
      "style": null,
      "label_quote": "▪️SOCIAL PARTY PASS",
      "group_size": 1,
-     "days": 3,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 115,
+       "amount": 115.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 44000,
+        "amount": 44000.0,
         "currency": "HUF"
        },
        "from": null,
@@ -87,11 +87,11 @@
        "quote": "€115 / 44.000 Ft until 30 September"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 46000,
+        "amount": 46000.0,
         "currency": "HUF"
        },
        "from": null,
@@ -103,11 +103,11 @@
        "quote": "€120 / 46.000 Ft until 5 November"
       },
       {
-       "amount": 125,
+       "amount": 125.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 48000,
+        "amount": 48000.0,
         "currency": "HUF"
        },
        "from": null,
@@ -125,15 +125,15 @@
      "style": null,
      "label_quote": "▪️PARTY PASS",
      "group_size": 1,
-     "days": 3,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 85,
+       "amount": 85.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 33000,
+        "amount": 33000.0,
         "currency": "HUF"
        },
        "from": null,
@@ -145,11 +145,11 @@
        "quote": "€85 / 33.000 Ft until 30 September"
       },
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 35000,
+        "amount": 35000.0,
         "currency": "HUF"
        },
        "from": null,
@@ -161,11 +161,11 @@
        "quote": "€90 / 35.000 Ft until 5 November"
       },
       {
-       "amount": 95,
+       "amount": 95.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 37000,
+        "amount": 37000.0,
         "currency": "HUF"
        },
        "from": null,
@@ -187,11 +187,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 20000,
+        "amount": 20000.0,
         "currency": "HUF"
        },
        "from": null,
@@ -203,11 +203,11 @@
        "quote": "€50 / 20.000 Ft until 30 September"
       },
       {
-       "amount": 55,
+       "amount": 55.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 22000,
+        "amount": 22000.0,
         "currency": "HUF"
        },
        "from": null,
@@ -219,11 +219,11 @@
        "quote": "€55 / 22.000 Ft until 5 November"
       },
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 24000,
+        "amount": 24000.0,
         "currency": "HUF"
        },
        "from": null,
@@ -245,11 +245,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 55,
+       "amount": 55.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 22000,
+        "amount": 22000.0,
         "currency": "HUF"
        },
        "from": null,
@@ -261,11 +261,11 @@
        "quote": "€55 / 22.000 Ft until 30 September"
       },
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 24000,
+        "amount": 24000.0,
         "currency": "HUF"
        },
        "from": null,
@@ -277,11 +277,11 @@
        "quote": "€60 / 24.000 Ft until 5 November"
       },
       {
-       "amount": 65,
+       "amount": 65.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 26000,
+        "amount": 26000.0,
         "currency": "HUF"
        },
        "from": null,
@@ -303,11 +303,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 20000,
+        "amount": 20000.0,
         "currency": "HUF"
        },
        "from": null,
@@ -319,11 +319,11 @@
        "quote": "€50 / 20.000 Ft until 30 September"
       },
       {
-       "amount": 55,
+       "amount": 55.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 22000,
+        "amount": 22000.0,
         "currency": "HUF"
        },
        "from": null,
@@ -335,11 +335,11 @@
        "quote": "€55 / 22.000 Ft until 5 November"
       },
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 24000,
+        "amount": 24000.0,
         "currency": "HUF"
        },
        "from": null,

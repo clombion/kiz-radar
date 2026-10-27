@@ -47,7 +47,7 @@
      "source_line": "✅⚜️ DJ MH Marseille 🇫🇷"
     },
     {
-     "name_as_written": "DJ Kaz Paris – Marseille",
+     "name_as_written": "DJ Kaz Paris",
      "role": "dj",
      "style": null,
      "country": "🇫🇷",
@@ -65,32 +65,32 @@
     {
      "feature": "workshops",
      "quote": "Workshops",
-     "rationale": "The event lists Workshops among its activities."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows & Entertainment",
-     "rationale": "The event lists Shows & Entertainment among its activities."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Dancing taxis from Paris, Toulon, Marseille",
-     "rationale": "Dancing taxis from several cities are present at the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 ROOMS",
-     "rationale": "The event states it has two dance rooms."
+     "rationale": "The description lists Workshops as part of the event's offerings."
     },
     {
      "feature": "all_in_one",
      "quote": "A crazy weekend (all in one) KBS",
-     "rationale": "The weekend is described as all in one at the Hotel Stella Di Mare, where accommodation is also offered."
+     "rationale": "The weekend is described as all in one at the Hotel Stella Di Mare, where the parties and accommodation are held."
+    },
+    {
+     "feature": "shows",
+     "quote": "Shows & Entertainment",
+     "rationale": "Shows & Entertainment is listed among the event's offerings."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 ROOMS",
+     "rationale": "The event has two dance rooms, one for Kizomba and Urbankiz and one for Salsa and Bachata."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "Dancing taxis from Paris, Toulon, Marseille",
+     "rationale": "Dancing taxis from several cities are stated to be present."
     },
     {
      "feature": "meals_included",
      "quote": "All-inclusive packages with meal and Full Pass",
-     "rationale": "The packages include meals along with the Full Pass."
+     "rationale": "The all-inclusive packages explicitly include a meal."
     }
    ]
   }

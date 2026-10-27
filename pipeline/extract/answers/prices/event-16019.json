@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "Until 30.09.2025 – 60 Euro"
       },
       {
-       "amount": 70,
+       "amount": 70.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "01.10.2025 – 31.12.2025 – 70 Euro"
       },
       {
-       "amount": 75,
+       "amount": 75.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "01.01.2026 – 31.03.2026 – 75 Euro"
       },
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -75,7 +75,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -88,7 +88,7 @@
        "quote": "Until 30.09.2025 – 110 Euro"
       },
       {
-       "amount": 125,
+       "amount": 125.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -101,7 +101,7 @@
        "quote": "01.10.2025 – 31.12.2025 – 125 Euro"
       },
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -114,7 +114,7 @@
        "quote": "01.01.2026 – 31.03.2026 – 140 Euro"
       },
       {
-       "amount": 170,
+       "amount": 170.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -137,7 +137,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 25,
+       "amount": 25.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -150,7 +150,7 @@
        "quote": "Until 30.09.2025 – 25 Euro"
       },
       {
-       "amount": 30,
+       "amount": 30.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -163,7 +163,7 @@
        "quote": "01.10.2025 – 31.12.2025 – 30 Euro"
       },
       {
-       "amount": 35,
+       "amount": 35.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -176,7 +176,7 @@
        "quote": "01.01.2026 – 31.03.2026 – 35 Euro"
       },
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -199,7 +199,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

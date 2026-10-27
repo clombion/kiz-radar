@@ -56,34 +56,34 @@
    ],
    "features": [
     {
-     "feature": "all_levels_beginners",
-     "quote": "Intensive open-level workshops",
-     "rationale": "The open-level wording indicates the workshops suit all levels."
+     "feature": "bootcamp_intensive",
+     "quote": "MORABEZA KIZOMBA BOOTCAMP",
+     "rationale": "The event is titled as a bootcamp, which is an intensive training course."
     },
     {
-     "feature": "bootcamp_intensive",
-     "quote": "MORABEZA KIZOMBA BOOTCAMP – EDITION II",
-     "rationale": "The event is titled as a bootcamp, and the workshops are described as intensive."
+     "feature": "all_levels_beginners",
+     "quote": "Intensive open-level workshops",
+     "rationale": "Open-level workshops are suitable for all levels."
     },
     {
      "feature": "workshops",
      "quote": "Intensive open-level workshops",
-     "rationale": "The description lists intensive workshops as part of the event."
+     "rationale": "The description lists workshops as part of the event."
     },
     {
      "feature": "live_music",
      "quote": "Live Music",
-     "rationale": "Live music is listed among the event's offerings."
+     "rationale": "The event lists live music among its features."
     },
     {
      "feature": "shows",
      "quote": "Exclusive showcase & live performance",
-     "rationale": "The event includes a showcase and live performance by the guest artist."
+     "rationale": "Artists give a showcase and live performance at the event."
     },
     {
      "feature": "partner_hotel",
      "quote": "Recommended Hotel",
-     "rationale": "A recommended hotel is named, without accommodation being part of the pass."
+     "rationale": "A recommended hotel is named without being stated as part of the pass."
     }
    ]
   }

@@ -3,12 +3,20 @@
  "events": [
   {
    "event_id": 15898,
-   "artists": [],
+   "artists": [
+    {
+     "name_as_written": "Elevate your Kiz",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Elevate your Kiz Dance Studio"
+    }
+   ],
    "features": [
     {
      "feature": "partner_hotel",
      "quote": "Bastion Hotel Rotterdam Alexander",
-     "rationale": "The description lists nearby hotels, which is a recommended-hotel arrangement that is not described as part of the pass."
+     "rationale": "The description lists hotels near the venue under a 'Hotels nearby' heading, which points to recommended hotels that are not part of the pass."
     }
    ]
   }

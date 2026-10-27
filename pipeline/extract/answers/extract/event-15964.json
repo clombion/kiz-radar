@@ -49,29 +49,24 @@
    ],
    "features": [
     {
-     "feature": "workshops",
-     "quote": "18-21: Workshops",
-     "rationale": "The Friday agenda lists workshops as part of the event schedule."
-    },
-    {
      "feature": "pre_party",
      "quote": "Pre-Party to be confirmed",
-     "rationale": "The agenda includes a Thursday pre-party, although its details are still to be confirmed."
+     "rationale": "The agenda lists a Thursday pre-party, so the event has a pre-party before the main event."
     },
     {
-     "feature": "partner_hotel",
-     "quote": "Roberta’s Society Aarhus",
-     "rationale": "The description recommends named hotels with booking links, without the accommodation being part of the pass."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "There are busses, trams and nightbusses that run from the city to the venue.",
-     "rationale": "The description states that public transport runs between the city and the venue."
+     "feature": "workshops",
+     "quote": "18-21: Workshops",
+     "rationale": "The Friday agenda lists workshops, so dance classes are part of the event."
     },
     {
      "feature": "day_socials",
      "quote": "17- 20: Dinner / Socials",
-     "rationale": "The Saturday and Sunday agendas include an afternoon/early-evening social session."
+     "rationale": "The agenda lists afternoon/early-evening socials on Saturday and Sunday."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Roberta’s Society Aarhus",
+     "rationale": "The description recommends specific hotels with booking links, without including accommodation in the pass."
     }
    ]
   }

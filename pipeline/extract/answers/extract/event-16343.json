@@ -175,19 +175,19 @@
    ],
    "features": [
     {
-     "feature": "workshops",
-     "quote": "Featured Instructors:",
-     "rationale": "A list of featured instructors indicates dance classes are part of the event."
-    },
-    {
      "feature": "shows",
      "quote": "Performers:",
-     "rationale": "A performers section lists artists who perform at the event."
+     "rationale": "A Performers section lists acts that perform at the event."
     },
     {
      "feature": "live_music",
-     "quote": "The Drummer",
-     "rationale": "A drummer listed as a performer provides live music."
+     "quote": "The Drummer 🪘",
+     "rationale": "A listed performer is a drummer, indicating live music."
+    },
+    {
+     "feature": "workshops",
+     "quote": "international instructors",
+     "rationale": "A lineup of international instructors indicates dance classes are part of the congress."
     }
    ]
   }

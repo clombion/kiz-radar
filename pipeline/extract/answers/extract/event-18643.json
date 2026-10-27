@@ -85,13 +85,13 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "An elegant all-in-one 4-star hotel experience",
-     "rationale": "The event is described as an all-in-one experience held at the same 4-star hotel where dancers stay."
+     "quote": "All-in-one 4-star hotel",
+     "rationale": "The description presents the event as an all-in-one experience at the 4-star Sound Garden Hotel, where dancers stay and the events take place."
     },
     {
      "feature": "workshops",
      "quote": "Premium workshops with international artists",
-     "rationale": "The description lists premium workshops with international artists as part of the experience."
+     "rationale": "The description explicitly lists premium workshops with international artists as part of the experience."
     }
    ]
   }

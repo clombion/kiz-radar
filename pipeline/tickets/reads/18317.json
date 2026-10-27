@@ -2,9 +2,9 @@
  "event_id": 18317,
  "title": "PARIS KIZOMBA NYE 10th KIZOMBA – KOMPA – URBANKIZ – BACHATA",
  "start_date": "2026-12-30",
- "read_by": "agent",
- "prompt": "cb864655c7075f56",
- "rows_at": "2026-10-27T02:22:59+00:00",
+ "read_by": "claude-opus-5-5 + claude-fable-5-1",
+ "prompt": "1a3b603636d758ee",
+ "rows_at": "2026-10-27T18:23:03+00:00",
  "styles": [
   "bachata",
   "kizomba",
@@ -21,6 +21,16 @@
    "days": null,
    "includes_hotel": false,
    "tiers": [
+    {
+     "keys": [
+      "5876002",
+      "5876001"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    },
     {
      "keys": [
       "5324847",
@@ -54,7 +64,7 @@
    ]
   },
   {
-   "kind": "full",
+   "kind": "other",
    "style": null,
    "label_quote": null,
    "group_size": 1,
@@ -65,6 +75,44 @@
      "keys": [
       "5829052",
       "5829112"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5770674"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "5770688"
      ],
      "from": null,
      "until": null,
@@ -229,14 +277,6 @@
   }
  ],
  "skipped": [
-  {
-   "key": "5770674",
-   "reason": "discount"
-  },
-  {
-   "key": "5770688",
-   "reason": "discount"
-  },
   {
    "key": "5743373",
    "reason": "excursion"

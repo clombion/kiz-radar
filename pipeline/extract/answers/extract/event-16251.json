@@ -49,7 +49,7 @@
     {
      "feature": "multiple_rooms",
      "quote": "Two dedicated workshop rooms",
-     "rationale": "The description states there are two dedicated workshop rooms, so more than one dance room."
+     "rationale": "Two dedicated workshop rooms means more than one dance room."
     },
     {
      "feature": "pre_party",
@@ -64,22 +64,22 @@
     {
      "feature": "pool_party",
      "quote": "Pool Party",
-     "rationale": "A pool party is listed alongside the after-party."
+     "rationale": "A pool party is listed among the included items."
     },
     {
      "feature": "day_socials",
      "quote": "Day socials",
-     "rationale": "Daytime socials are offered, as stated in the description."
+     "rationale": "Daytime socials are part of the event."
     },
     {
      "feature": "partner_hotel",
      "quote": "OFFICIAL HOTEL – BOOK NOW",
-     "rationale": "The Holiday Inn is named as the official hotel with a booking link, without the accommodation being part of the pass."
+     "rationale": "The Holiday Inn is the official hotel with a booking link, while accommodation is not part of the pass."
     },
     {
      "feature": "all_in_one",
      "quote": "Stay where the party lives!",
-     "rationale": "The festival is held at the Holiday Inn, and dancers are invited to stay at that same hotel."
+     "rationale": "The text implies the parties take place at the hotel where dancers are invited to stay."
     }
    ]
   }

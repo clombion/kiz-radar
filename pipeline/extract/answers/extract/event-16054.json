@@ -58,26 +58,26 @@
     {
      "feature": "accommodation_included",
      "quote": "Full Pass + Full-board Accommodation",
-     "rationale": "The price line states that the full pass includes full-board accommodation."
+     "rationale": "The 620 euro full pass explicitly includes full-board accommodation."
     },
     {
      "feature": "meals_included",
      "quote": "Full board applies to all prices offered.",
-     "rationale": "The booking section says full board applies to all prices, so meals are part of the packages."
+     "rationale": "Full board is applied to all prices, so meals are included in the packages."
     },
     {
      "feature": "all_in_one",
-     "quote": "will take place from Monday, July 6th to Sunday, July 12th, 2026 at the Alhambra Hotel",
-     "rationale": "The event takes place at the same hotel where the accommodation is booked."
+     "quote": "at the Alhambra Hotel in Santa Susanna",
+     "rationale": "The event is held at the same hotel where the dancers are invited to stay."
     },
     {
      "feature": "pool_party",
      "quote": "POOL PARTY starting at 4:30 pm",
-     "rationale": "The program lists a pool party starting at 4:30 pm."
+     "rationale": "The program lists a pool party."
     },
     {
      "feature": "workshops",
-     "quote": "Classes will be held every day from 11:30 am to 12:30 pm and from 2:30 pm to 5:30 pm.",
+     "quote": "Classes will be held every day from 11:30 am to 12:30 pm",
      "rationale": "Daily dance classes are part of the event program."
     },
     {

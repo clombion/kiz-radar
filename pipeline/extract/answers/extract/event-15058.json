@@ -163,27 +163,27 @@
     {
      "feature": "multiple_rooms",
      "quote": "2 PARTY ROOMS/2 VIBES",
-     "rationale": "The text announces two party rooms, so there is more than one dance room."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "PRE-PARTY",
-     "rationale": "A separate pre-party section is listed before the main event."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "NOVOTEL LYON BRON MEETING & EVENTS",
-     "rationale": "The event venue, pre-party and accommodation are all listed at the same Novotel hotel."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "HOW TO BOOK YOUR HOTEL ROOM ?",
-     "rationale": "Guests are directed to book a hotel room at the Novotel by email, which is a negotiated hotel arrangement not part of the pass."
+     "rationale": "The description names two party rooms, so there is more than one dance floor."
     },
     {
      "feature": "workshops",
      "quote": "TEACHERS",
-     "rationale": "A list of teaching couples and solo teachers indicates dance classes are part of the event."
+     "rationale": "A teachers line-up indicates dance classes are part of the event."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "PRE-PARTY",
+     "rationale": "A PRE-PARTY section is announced before the main event."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "NOVOTEL LYON BRON MEETING & EVENTS",
+     "rationale": "The event venue and the accommodation are both the same Novotel hotel."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "HOW TO BOOK YOUR HOTEL ROOM",
+     "rationale": "Dancers are directed to book a hotel room through a dedicated hotel email, indicating a negotiated hotel arrangement outside the pass."
     }
    ]
   }

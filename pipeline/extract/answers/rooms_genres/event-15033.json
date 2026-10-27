@@ -10,12 +10,12 @@
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "Bachata & Urban vibes"
+     "quote": "Join us for a weekend of Bachata & Urban vibes"
     },
     {
-     "genre": "urbankiz",
+     "genre": "other",
      "genre_as_written": "Urban",
-     "quote": "DJ HUGO SMILE (Urban)"
+     "quote": "Join us for a weekend of Bachata & Urban vibes"
     },
     {
      "genre": "tarraxo",
@@ -23,14 +23,14 @@
      "quote": "DJ BLVCK SKYLE (Urban/Tarraxo)"
     },
     {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "CELINE (Kizomba)"
-    },
-    {
      "genre": "afro",
      "genre_as_written": "Afro",
      "quote": "ISSA (Afro)"
+    },
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "CELINE (Kizomba)"
     }
    ]
   }

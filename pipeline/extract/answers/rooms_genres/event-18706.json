@@ -12,7 +12,13 @@
     "quote": "2 Rooms of Classes"
    },
    "rooms": [],
-   "genres": []
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "KIZOMBA",
+     "quote": "KIZOMBA FESTIVAL"
+    }
+   ]
   }
  ]
 }

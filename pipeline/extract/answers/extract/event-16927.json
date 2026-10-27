@@ -14,19 +14,19 @@
    ],
    "features": [
     {
-     "feature": "multiple_rooms",
-     "quote": "2 Epic Party Rooms every night",
-     "rationale": "The description states there are two party rooms every night, meaning more than one dance room."
-    },
-    {
      "feature": "workshops",
      "quote": "30+ Workshops with International Artists",
-     "rationale": "The event lists more than thirty workshops as part of the programme."
+     "rationale": "The description states that the festival includes more than 30 workshops."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 Epic Party Rooms every night",
+     "rationale": "Two party rooms are run each night, so there is more than one dance floor."
     },
     {
      "feature": "shows",
      "quote": "Energetic shows and fun animations",
-     "rationale": "The event promises energetic shows as part of its programme."
+     "rationale": "The festival offers energetic shows as part of its programme."
     },
     {
      "feature": "pool_party",
@@ -36,7 +36,7 @@
     {
      "feature": "day_socials",
      "quote": "Outdoor SBK Day Social",
-     "rationale": "A daytime social event is listed in the programme."
+     "rationale": "A daytime social is listed in the programme."
     }
    ]
   }

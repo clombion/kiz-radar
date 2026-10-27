@@ -5,10 +5,51 @@
    "event_id": 16308,
    "party_rooms": {
     "count": 5,
-    "quote": "5 PARTY ROOMS"
+    "quote": "5 PARTY ROOMS:"
    },
    "class_rooms": null,
-   "rooms": [],
+   "rooms": [
+    {
+     "name_as_written": "SALSA",
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "SALSA"
+    },
+    {
+     "name_as_written": "BACHATA",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "BACHATA"
+    },
+    {
+     "name_as_written": "URBANKIZ",
+     "kind": "party",
+     "genres": [
+      "urbankiz"
+     ],
+     "quote": "URBANKIZ"
+    },
+    {
+     "name_as_written": "KIZOMBA",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "KIZOMBA"
+    },
+    {
+     "name_as_written": "BRAZILIAN ZOUK",
+     "kind": "party",
+     "genres": [
+      "zouk"
+     ],
+     "quote": "BRAZILIAN ZOUK"
+    }
+   ],
    "genres": [
     {
      "genre": "salsa",

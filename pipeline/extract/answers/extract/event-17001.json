@@ -5,13 +5,6 @@
    "event_id": 17001,
    "artists": [
     {
-     "name_as_written": "Nexus Crew",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Nexus Crew présente son 2eme événement"
-    },
-    {
      "name_as_written": "Mary et Jos",
      "role": "teacher",
      "style": null,
@@ -73,18 +66,25 @@
      "style": null,
      "country": null,
      "source_line": "Photographe : LNA Carla (Paris)"
+    },
+    {
+     "name_as_written": "Nexus Crew",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Nexus Crew présente son 2eme événement"
     }
    ],
    "features": [
     {
-     "feature": "day_socials",
-     "quote": "17h-20h : Sociale",
-     "rationale": "The programme lists afternoon socials on Saturday and Sunday."
+     "feature": "workshops",
+     "quote": "Stage Tarraxo avec JessyPop et Mélanie (Tours)",
+     "rationale": "The programme lists dance classes (stages and cours) with named teachers as part of the event."
     },
     {
-     "feature": "workshops",
-     "quote": "Cours by Mary et Jos (Nexus Crew)",
-     "rationale": "The programme includes dance classes and training sessions taught by the artists."
+     "feature": "day_socials",
+     "quote": "17h-20h : Sociale",
+     "rationale": "A daytime social is scheduled on Saturday afternoon/evening in the programme."
     }
    ]
   }

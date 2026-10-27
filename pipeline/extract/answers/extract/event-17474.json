@@ -134,23 +134,23 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "transformed into an all-in-one AfroKiz playground",
-     "rationale": "The hotel where dancers are invited to stay is described as the all-in-one AfroKiz venue, so the event and accommodation share one location."
+     "quote": "All-in-one venue",
+     "rationale": "The event takes place in the hotel where dancers are invited to stay, described as an all-in-one venue."
     },
     {
      "feature": "multiple_rooms",
      "quote": "2 dance rooms (Authentic & Fusion)",
-     "rationale": "Two named dance rooms are offered, meaning more than one dance floor."
-    },
-    {
-     "feature": "competition",
-     "quote": "AfroKiz Got Talent Competition (1,000 USD prize)",
-     "rationale": "The event includes a named competition with a cash prize."
+     "rationale": "The description names two dance rooms."
     },
     {
      "feature": "cruise",
      "quote": "Cruise Party (300 pax capacity)",
-     "rationale": "A party described as a cruise with a passenger capacity indicates the event includes a cruise."
+     "rationale": "A Cruise Party with a stated capacity is listed as part of the event."
+    },
+    {
+     "feature": "competition",
+     "quote": "AfroKiz Got Talent Competition (1,000 USD prize)",
+     "rationale": "A talent competition with a prize is part of the event."
     }
    ]
   }

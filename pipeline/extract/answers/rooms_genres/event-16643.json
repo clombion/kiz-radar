@@ -18,25 +18,19 @@
     {
      "name_as_written": "Room 2",
      "kind": "party",
-     "genres": [
-      "salsa",
-      "bachata"
-     ],
+     "genres": [],
      "quote": "22:00-01:30 Salsa & Bachata party"
     },
     {
      "name_as_written": "Room 1",
-     "kind": "unspecified",
+     "kind": "party",
      "genres": [],
-     "quote": "13:00-> Workshops"
+     "quote": "22:30-01:30 Party"
     },
     {
      "name_as_written": "Room 2",
-     "kind": "unspecified",
-     "genres": [
-      "salsa",
-      "bachata"
-     ],
+     "kind": "party",
+     "genres": [],
      "quote": "22:30-01:30 Salsa & bachata party"
     },
     {

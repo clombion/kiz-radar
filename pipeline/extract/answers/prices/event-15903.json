@@ -9,11 +9,11 @@
      "style": null,
      "label_quote": "SUPER PROMO – EARLY BOOKING DISCOUNTS",
      "group_size": 1,
-     "days": 4,
+     "days": null,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 680,
+       "amount": 680.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "Until Nov 20, 2025 → €680"
       },
       {
-       "amount": 730,
+       "amount": 730.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "Until Dec 10, 2025 → €730"
       },
       {
-       "amount": 780,
+       "amount": 780.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "Until feb 5, 2026 → €780"
       },
       {
-       "amount": 830,
+       "amount": 830.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -67,7 +67,9 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "Single room supplement: €165"
+   ]
   }
  ]
 }

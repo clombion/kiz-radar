@@ -7,7 +7,7 @@
     {
      "name_as_written": "Elo & Adil",
      "role": "teacher",
-     "style": "SALSA/BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "✪ Elo & Adil (2026 World Champions – Bachata)"
     },
@@ -24,43 +24,50 @@
      "style": "Salsa/Bachata",
      "country": null,
      "source_line": "🎧 DJ MANGO (Salsa/Bachata)"
+    },
+    {
+     "name_as_written": "Photobox",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "📷 Photobox"
     }
    ],
    "features": [
     {
+     "feature": "workshops",
+     "quote": "30 hours of workshops",
+     "rationale": "The programme lists 30 hours of workshops as part of the event."
+    },
+    {
      "feature": "taxi_dancers",
      "quote": "Guest Team/Taxi Dancers (for workshops)",
-     "rationale": "The line states that taxi dancers are present for the workshops."
-    },
-    {
-     "feature": "workshops",
-     "quote": "30 hours of workshops (Kizomba/Semba & Salsa/Bachata)",
-     "rationale": "The event offers 30 hours of dance workshops."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "3 simple dress codes > 2027: PINK theme",
-     "rationale": "The description explicitly announces dress codes for the event."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "FRIDAY – SMART PINK",
-     "rationale": "The parties have dress themes such as Smart Pink, Africana and Elegant for each night."
-    },
-    {
-     "feature": "shows",
-     "quote": "1 Instructor show/demo",
-     "rationale": "An instructor show or demonstration is part of the programme."
+     "rationale": "The description states that taxi dancers are present for the workshops."
     },
     {
      "feature": "multiple_rooms",
      "quote": "2 rooms/2 vibes",
-     "rationale": "The parties run in two separate rooms with different music."
+     "rationale": "Two dance rooms are advertised."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "3 simple dress codes",
+     "rationale": "The event states a dress code for each day."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "3 simple dress codes > 2027: PINK theme",
+     "rationale": "The parties carry a pink dress theme with daily dress codes."
+    },
+    {
+     "feature": "shows",
+     "quote": "1 Instructor show/demo",
+     "rationale": "Instructors perform a show or demonstration at the event."
     },
     {
      "feature": "adults_only",
-     "quote": "Our events are not suitable for minors.",
-     "rationale": "The organisers state that the events are not for minors, which restricts attendance to adults."
+     "quote": "Our events are not suitable for minors",
+     "rationale": "The organisers exclude minors, so the events are restricted to adults."
     }
    ]
   }

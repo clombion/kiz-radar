@@ -71,23 +71,23 @@
    "features": [
     {
      "feature": "all_levels_beginners",
-     "quote": "Lessons at Beginner/Intermediate, Intermediate/Advanced, or All Levels levels",
-     "rationale": "The lessons are offered at all levels, including beginner/intermediate, so the event suits beginners."
+     "quote": "or All Levels levels",
+     "rationale": "The description states that lessons are offered at an All Levels level, which welcomes beginners."
     },
     {
      "feature": "workshops",
      "quote": "Lessons from 11 AM to 4 PM",
-     "rationale": "Daytime lesson sessions are scheduled as part of the weekender."
+     "rationale": "Scheduled daytime lessons show that dance classes are part of the event."
     },
     {
      "feature": "day_socials",
      "quote": "Social bowling from 4 PM to 8 PM",
-     "rationale": "Afternoon social bowling sessions are part of the schedule."
+     "rationale": "A daytime social session is scheduled on Saturday."
     },
     {
      "feature": "partner_hotel",
-     "quote": "Hotel Ibis Budget Bayonne",
-     "rationale": "The description lists recommended hotels for attendees, without including accommodation in the pass."
+     "quote": "Hotel Le Bayonne",
+     "rationale": "The description lists recommended hotels under a Hotels heading, without including accommodation in the pass."
     }
    ]
   }

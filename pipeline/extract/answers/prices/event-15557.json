@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 950,
+       "amount": 950.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -23,10 +23,10 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "💥 Leader – 950kr– SOLD OUT"
+       "quote": "Leader – 950kr– SOLD OUT"
       },
       {
-       "amount": 1200,
+       "amount": 1200.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -36,7 +36,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "💥 Leader – 1200kr– AVAILABLE"
+       "quote": "Leader – 1200kr– AVAILABLE"
       }
      ]
     },
@@ -49,7 +49,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 1800,
+       "amount": 1800.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -59,10 +59,10 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "💥 Couple Pass – 1800kr— SOLD OUT"
+       "quote": "Couple Pass – 1800kr— SOLD OUT"
       },
       {
-       "amount": 2400,
+       "amount": 2400.0,
        "currency": "NOK",
        "fee": null,
        "alt": null,
@@ -72,7 +72,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "💥 Couple Pass – 2400kr— AVAILABLE"
+       "quote": "Couple Pass – 2400kr— AVAILABLE"
       }
      ]
     }

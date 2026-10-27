@@ -3,7 +3,10 @@
  "events": [
   {
    "event_id": 16575,
-   "party_rooms": null,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 Night’s Parties"
+   },
    "class_rooms": null,
    "rooms": [],
    "genres": [

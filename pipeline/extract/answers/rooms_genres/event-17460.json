@@ -5,7 +5,7 @@
    "event_id": 17460,
    "party_rooms": {
     "count": 2,
-    "quote": "Room 1 – 𝗧𝗮𝗿𝗿𝗮𝘅𝗼 | 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇"
+    "quote": "Room 1 – 𝗧𝗮𝗿𝗿𝗮𝘅𝗼 | 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇 💯\nRoom 2 – 𝗗𝗼𝘂𝗰𝗲𝘂𝗿 | 𝗞𝗼𝗻𝗽𝗮 | 𝗚𝘂𝗲𝘁𝘁𝗼 𝗭𝗼𝘂𝗸"
    },
    "class_rooms": null,
    "rooms": [
@@ -16,7 +16,7 @@
       "tarraxo",
       "urbankiz"
      ],
-     "quote": "Room 1 – 𝗧𝗮𝗿𝗿𝗮𝘅𝗼 | 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇"
+     "quote": "Room 1 – 𝗧𝗮𝗿𝗿𝗮𝘅𝗼 | 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇 💯"
     },
     {
      "name_as_written": "Room 2",
@@ -38,7 +38,7 @@
     {
      "genre": "urbankiz",
      "genre_as_written": "𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇",
-     "quote": "Room 1 – 𝗧𝗮𝗿𝗿𝗮𝘅𝗼 | 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇"
+     "quote": "Room 1 – 𝗧𝗮𝗿𝗿𝗮𝘅𝗼 | 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇 💯"
     },
     {
      "genre": "douceur",
@@ -52,8 +52,8 @@
     },
     {
      "genre": "zouk",
-     "genre_as_written": "𝗭𝗼𝘂𝗸",
-     "quote": "𝗚𝘂𝗲𝘁𝘁𝗼 𝗭𝗼𝘂𝗸"
+     "genre_as_written": "𝗚𝘂𝗲𝘁𝘁𝗼 𝗭𝗼𝘂𝗸",
+     "quote": "Room 2 – 𝗗𝗼𝘂𝗰𝗲𝘂𝗿 | 𝗞𝗼𝗻𝗽𝗮 | 𝗚𝘂𝗲𝘁𝘁𝗼 𝗭𝗼𝘂𝗸"
     }
    ]
   }

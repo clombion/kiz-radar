@@ -5,6 +5,13 @@
    "event_id": 15033,
    "artists": [
     {
+     "name_as_written": "Suave Dance Festival",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "✨️After Paris 🇫🇷🥖, Suave Dance Festival lands in Belgium for its first Easter Edition – All in One 🐇🥚🍫 in a 4 ⭐️ prestigious hotel from Apr. 2nd to 6th, 2026! 🇧🇪 Join us for a weekend of Bachata & Urban vibes with international artists and dancers.🕺🏾💃🏾"
+    },
+    {
      "name_as_written": "DJ D&L BEATS",
      "role": "dj",
      "style": "Urban",
@@ -155,13 +162,13 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "All in One",
-     "rationale": "The Easter Edition is described as All in One, held in a hotel where the parties take place."
+     "quote": "All in One 🐇🥚🍫 in a 4 ⭐️ prestigious hotel",
+     "rationale": "The event is held in a prestigious hotel, so the parties and the accommodation are in the same venue."
     },
     {
      "feature": "workshops",
      "quote": "INSTRUCTORS",
-     "rationale": "A line-up of instructors listed for the event indicates dance classes are part of it."
+     "rationale": "A list of instructors teaching the event shows that dance classes are part of it."
     }
    ]
   }

@@ -8,7 +8,25 @@
     "quote": "2 Music Rooms: Salsa/Bachata & Kizomba"
    },
    "class_rooms": null,
-   "rooms": [],
+   "rooms": [
+    {
+     "name_as_written": "Salsa/Bachata",
+     "kind": "party",
+     "genres": [
+      "salsa",
+      "bachata"
+     ],
+     "quote": "2 Music Rooms: Salsa/Bachata & Kizomba"
+    },
+    {
+     "name_as_written": "Kizomba",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "2 Music Rooms: Salsa/Bachata & Kizomba"
+    }
+   ],
    "genres": [
     {
      "genre": "salsa",
@@ -23,7 +41,7 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Kizomba and Urbankiz"
+     "quote": "2 Music Rooms: Salsa/Bachata & Kizomba"
     },
     {
      "genre": "urbankiz",

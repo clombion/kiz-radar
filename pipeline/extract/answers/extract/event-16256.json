@@ -224,39 +224,39 @@
    ],
    "features": [
     {
-     "feature": "pool_party",
-     "quote": "POOL PARTY",
-     "rationale": "The line lists a POOL PARTY as part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 DEDICATED ROOMS",
-     "rationale": "The event has two dedicated dance rooms."
-    },
-    {
-     "feature": "workshops",
-     "quote": "with WORKSHOPS and PARTIES",
-     "rationale": "Workshops are stated as part of the event."
+     "feature": "all_in_one",
+     "quote": "Location: Hotel Balance, Milano Marittima (RA), 4*S hotel facing the sea",
+     "rationale": "The event is held at Hotel Balance, the same hotel where the rooms are sold, so event and accommodation share one venue."
     },
     {
      "feature": "accommodation_included",
      "quote": "Half-board room for 3 days and 2 nights and Full Event Pass",
-     "rationale": "The package combines the room with the Full Event Pass."
+     "rationale": "The package bundles the half-board room with the Full Event Pass."
     },
     {
      "feature": "meals_included",
-     "quote": "Half-board room",
-     "rationale": "Half-board in the package implies meals are included with the room."
+     "quote": "Half-board room for 3 days and 2 nights",
+     "rationale": "Half-board means meals are included in the room package."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "POOL PARTY",
+     "rationale": "The event lists a pool party among its activities."
+    },
+    {
+     "feature": "workshops",
+     "quote": "with WORKSHOPS and PARTIES",
+     "rationale": "The description states that the dedicated rooms host workshops."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 DEDICATED ROOMS",
+     "rationale": "Two dedicated dance rooms are mentioned."
     },
     {
      "feature": "partner_hotel",
      "quote": "other partner hotels will be provided",
-     "rationale": "Partner hotels are offered once the main hotel rooms sell out."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "Location: Hotel Balance, Milano Marittima (RA), 4*S hotel facing the sea",
-     "rationale": "The event is held at the hotel where the rooms in the package are located."
+     "rationale": "Partner hotels are offered once the main hotel is sold out."
     }
    ]
   }

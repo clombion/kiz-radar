@@ -5,7 +5,7 @@
    "event_id": 16804,
    "party_rooms": {
     "count": 2,
-    "quote": "2 ROOMS. 2 ATMOSPHERES."
+    "quote": "2 ROOMS. 2 ATMOSPHERES. 1 SINGLE ENERGY."
    },
    "class_rooms": null,
    "rooms": [
@@ -36,8 +36,8 @@
     },
     {
      "genre": "zouk",
-     "genre_as_written": "Zoukompa",
-     "quote": "Kizomba • Zoukompa • Gouyad • Afro Vibes"
+     "genre_as_written": "ZOUKOMPA",
+     "quote": "Room 2: ZOUKOMPA / AFRO VIBES – energy, warmth, madness"
     },
     {
      "genre": "kompa",
@@ -52,7 +52,7 @@
     {
      "genre": "other",
      "genre_as_written": "Gouyad",
-     "quote": "Kizomba • Zoukompa • Gouyad • Afro Vibes"
+     "quote": "🎶 Kizomba • Zoukompa • Gouyad • Afro Vibes"
     }
    ]
   }

@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "Couple Full Pass: 120€"
       },
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "Couple Full Pass: 140€"
       },
       {
-       "amount": 160,
+       "amount": 160.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "Couple Full Pass: 160€"
       },
       {
-       "amount": 170,
+       "amount": 170.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -65,7 +65,7 @@
        "quote": "Couple Full Pass: 170€"
       },
       {
-       "amount": 180,
+       "amount": 180.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -78,7 +78,7 @@
        "quote": "Couple Full Pass: 180€"
       },
       {
-       "amount": 190,
+       "amount": 190.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -101,7 +101,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 65,
+       "amount": 65.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -114,7 +114,7 @@
        "quote": "Full Pass Leader: 65€"
       },
       {
-       "amount": 75,
+       "amount": 75.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -127,7 +127,7 @@
        "quote": "Full Pass Leader: 75€"
       },
       {
-       "amount": 85,
+       "amount": 85.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -140,7 +140,7 @@
        "quote": "Full Pass Leader: 85€"
       },
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -153,7 +153,7 @@
        "quote": "Full Pass Leader: 90€"
       },
       {
-       "amount": 95,
+       "amount": 95.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -166,7 +166,7 @@
        "quote": "Full Pass Leader: 95€"
       },
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -189,7 +189,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 225,
+       "amount": 225.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -202,7 +202,7 @@
        "quote": "Full Pass Friends – 225€"
       },
       {
-       "amount": 245,
+       "amount": 245.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -215,7 +215,7 @@
        "quote": "Full Pass Friends – 245€"
       },
       {
-       "amount": 255,
+       "amount": 255.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -230,7 +230,9 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "No refund! It can be postponed to 2027 festival, with an additional 20€ fee if same holder or 35€ if under a different name."
+   ]
   }
  ]
 }

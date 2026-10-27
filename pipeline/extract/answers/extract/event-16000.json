@@ -79,12 +79,12 @@
     {
      "feature": "workshops",
      "quote": "Fun and challenging workshops with the hottest current steps",
-     "rationale": "The description states that dance workshops are part of the event."
+     "rationale": "The description promises workshops with the latest steps as part of the weekend."
     },
     {
      "feature": "partner_hotel",
      "quote": "Official Hotel: FreshSuites",
-     "rationale": "A named official hotel is recommended for attendees, but accommodation is not stated as part of the pass."
+     "rationale": "FreshSuites is named as the official hotel, a partner hotel not stated to be included in the pass."
     },
     {
      "feature": "day_socials",
@@ -94,7 +94,7 @@
     {
      "feature": "dress_code",
      "quote": "Come as you are",
-     "rationale": "The description has a DRESS CODE section stating the dress code."
+     "rationale": "The description has a dress code section stating the dress expectation."
     }
    ]
   }

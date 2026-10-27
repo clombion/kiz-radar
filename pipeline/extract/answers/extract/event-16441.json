@@ -79,22 +79,22 @@
     {
      "feature": "workshops",
      "quote": "10 hours of workshops",
-     "rationale": "The description lists 10 hours of workshops as part of the event."
+     "rationale": "The event lists 10 hours of workshops under What to Expect."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Day Social",
+     "rationale": "The schedule lists Day Social sessions on Saturday and Sunday."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Pre-Party Social",
+     "rationale": "The Friday schedule lists a Pre-Party Social before the main event."
     },
     {
      "feature": "private_classes",
      "quote": "Private lessons available",
      "rationale": "The description states that private lessons are offered."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Party Social",
-     "rationale": "A Pre-Party Social is listed on the Friday schedule before the main event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Day Social",
-     "rationale": "Daytime socials are listed on the Saturday and Sunday schedules."
     }
    ]
   }

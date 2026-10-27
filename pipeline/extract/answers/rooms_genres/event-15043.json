@@ -6,7 +6,13 @@
    "party_rooms": null,
    "class_rooms": null,
    "rooms": [],
-   "genres": []
+   "genres": [
+    {
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba Sensual",
+     "quote": "I Love Kizomba Sensual Festival Rotterdam 2nd Edition"
+    }
+   ]
   }
  ]
 }

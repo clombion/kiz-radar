@@ -112,24 +112,24 @@
    ],
    "features": [
     {
-     "feature": "workshops",
-     "quote": "1:00 PM – 4:00 PM Workshops",
-     "rationale": "The general schedule lists a Workshops slot on Saturday and Sunday, so dance classes are part of the event."
-    },
-    {
      "feature": "taxi_dancers",
      "quote": "DANCER TAXIS",
-     "rationale": "A DANCER TAXIS heading with a KIZMANIE TEAM and a TAXI MANAGER shows taxi dancers are present."
+     "rationale": "The description has a dancer taxis section listing taxi dancer teams."
     },
     {
-     "feature": "partner_hotel",
-     "quote": "SECONDARY HOTELS",
-     "rationale": "The description recommends a main hotel and several secondary hotels with addresses, without the accommodation being part of the pass."
+     "feature": "workshops",
+     "quote": "1:00 PM – 4:00 PM Workshops",
+     "rationale": "The general schedule lists a Workshops slot on Saturday and Sunday."
     },
     {
      "feature": "day_socials",
      "quote": "3:00 PM – 8:00 PM Social",
-     "rationale": "The Saturday schedule lists an afternoon and evening Social slot, which is a daytime social."
+     "rationale": "The schedule lists a daytime social from 3 PM to 8 PM."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "SECONDARY HOTELS",
+     "rationale": "The description recommends a main hotel and several secondary hotels near the venue, without stating accommodation is part of the pass."
     }
    ]
   }

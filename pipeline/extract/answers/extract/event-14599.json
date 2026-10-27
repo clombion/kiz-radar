@@ -8,22 +8,22 @@
     {
      "feature": "workshops",
      "quote": "full weekend of daily workshops",
-     "rationale": "The description says the weekend includes daily workshops."
+     "rationale": "The description says the weekend includes daily workshops, so dance classes are part of the event."
     },
     {
      "feature": "day_socials",
      "quote": "afternoon socials",
-     "rationale": "The description lists afternoon socials as part of the event."
+     "rationale": "Afternoon socials are explicitly offered, which matches daytime socials."
     },
     {
      "feature": "shows",
      "quote": "nightly performances",
-     "rationale": "The description mentions nightly performances, which are shows by artists."
+     "rationale": "Nightly performances indicate shows or performances by artists."
     },
     {
      "feature": "competition",
      "quote": "Jack & Jill Competition",
-     "rationale": "The event hosts a Jack & Jill competition for several divisions."
+     "rationale": "A Jack & Jill competition is explicitly hosted at the event."
     }
    ]
   }

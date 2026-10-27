@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -23,7 +23,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔶Couple Full Pass (One Man + One Woman): €110"
+       "quote": "Couple Full Pass (One Man + One Woman): €110"
       }
      ]
     },
@@ -36,7 +36,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 75,
+       "amount": 75.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -46,7 +46,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🔶Women’s Full Pass (Follows): €75"
+       "quote": "Women’s Full Pass (Follows): €75"
       }
      ]
     }

@@ -64,14 +64,6 @@
       "bachata"
      ],
      "quote": "100% Bachata"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "100% Kizomba"
     }
    ],
    "genres": [
@@ -83,7 +75,7 @@
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "Salsa • Bachata"
+     "quote": "Bachata"
     },
     {
      "genre": "kizomba",

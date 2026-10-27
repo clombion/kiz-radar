@@ -308,21 +308,21 @@
     {
      "name_as_written": "Jessica Guastella",
      "role": "teacher",
-     "style": "Reggaeton",
+     "style": "REGGAETON / HIPHOP / URBAN / AFROBEAT / AFROHOUSE OTHER STYLES",
      "country": null,
      "source_line": "★ Jessica Guastella ( Reggaeton )"
     },
     {
      "name_as_written": "George Christophorou",
      "role": "teacher",
-     "style": "Break Dance",
+     "style": "REGGAETON / HIPHOP / URBAN / AFROBEAT / AFROHOUSE OTHER STYLES",
      "country": null,
      "source_line": "★ George Christophorou (Break Dance)"
     },
     {
      "name_as_written": "Dani k",
      "role": "teacher",
-     "style": "Afro Contemporary",
+     "style": "REGGAETON / HIPHOP / URBAN / AFROBEAT / AFROHOUSE OTHER STYLES",
      "country": null,
      "source_line": "★ Dani k – Afro Contemporary"
     },
@@ -439,6 +439,13 @@
      "source_line": "★ DJ Massimo (UK)"
     },
     {
+     "name_as_written": "FKDANCE TEAM",
+     "role": "crew",
+     "style": null,
+     "country": null,
+     "source_line": "FKDANCE TEAM"
+    },
+    {
      "name_as_written": "FADI K",
      "role": "crew",
      "style": null,
@@ -490,24 +497,19 @@
    ],
    "features": [
     {
-     "feature": "workshops",
-     "quote": "Workshops in 6 Areas",
-     "rationale": "The schedule lists workshops running in six areas during the festival days."
-    },
-    {
-     "feature": "shows",
-     "quote": "Short break for shows.",
-     "rationale": "The schedule plans a break for shows and a showcase is also listed."
-    },
-    {
      "feature": "pre_party",
      "quote": "Pre- Party at Bar Salsa Soho.",
-     "rationale": "A pre-party is scheduled on the Thursday before the main event."
+     "rationale": "The description announces a pre-party at Bar Salsa Soho."
     },
     {
-     "feature": "after_party",
-     "quote": "This year we have negotiated 2 after parties for you to continue",
-     "rationale": "The description announces two after-parties for dancers to continue the night."
+     "feature": "workshops",
+     "quote": "Workshops in 6 Areas",
+     "rationale": "Workshops are scheduled across six areas on Saturday and Sunday."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "Party in 4 Rooms until 3am (officially)",
+     "rationale": "The party takes place in four rooms, so there is more than one dance floor."
     },
     {
      "feature": "day_socials",
@@ -515,9 +517,14 @@
      "rationale": "An afternoon social is scheduled on Saturday."
     },
     {
-     "feature": "multiple_rooms",
-     "quote": "Party in 4 Rooms until 3am (officially)",
-     "rationale": "The party is held across four rooms, so there is more than one dance floor."
+     "feature": "shows",
+     "quote": "Short break for shows.",
+     "rationale": "The Friday schedule includes a break for shows by artists."
+    },
+    {
+     "feature": "after_party",
+     "quote": "This year we have negotiated 2 after parties for you to continue",
+     "rationale": "Two after parties are arranged for attendees to continue the night."
     }
    ]
   }

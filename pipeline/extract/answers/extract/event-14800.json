@@ -218,13 +218,8 @@
    "features": [
     {
      "feature": "taxi_dancers",
-     "quote": "+ 35 TAXIS",
+     "quote": "35 TAXIS",
      "rationale": "The line '🚖 + 35 TAXIS' states that about 35 taxi dancers are present."
-    },
-    {
-     "feature": "live_music",
-     "quote": "🎻OPHELIE DEBROISE",
-     "rationale": "A violinist is listed in the line-up, so live music is part of the event."
     }
    ]
   }

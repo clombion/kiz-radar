@@ -5,7 +5,7 @@
    "event_id": 17122,
    "party_rooms": {
     "count": 2,
-    "quote": "Theme Dance Socials featuring 2 separate ROOMS of entertainment"
+    "quote": "2 separate ROOMS of entertainment"
    },
    "class_rooms": null,
    "rooms": [],
@@ -13,42 +13,52 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Kizomba | Urbankiz | Konpa Gouyad | Zouk | Afrobeat | Douceur | Tarraxo | Tarraxinha"
+     "quote": "Kizomba | Urbankiz"
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "Urbankiz",
-     "quote": "Kizomba | Urbankiz | Konpa Gouyad | Zouk | Afrobeat | Douceur | Tarraxo | Tarraxinha"
+     "quote": "Kizomba | Urbankiz"
     },
     {
      "genre": "kompa",
      "genre_as_written": "Konpa Gouyad",
-     "quote": "Kizomba | Urbankiz | Konpa Gouyad | Zouk | Afrobeat | Douceur | Tarraxo | Tarraxinha"
+     "quote": "Konpa Gouyad | Zouk"
     },
     {
      "genre": "zouk",
      "genre_as_written": "Zouk",
-     "quote": "Kizomba | Urbankiz | Konpa Gouyad | Zouk | Afrobeat | Douceur | Tarraxo | Tarraxinha"
+     "quote": "Konpa Gouyad | Zouk"
     },
     {
      "genre": "afro",
      "genre_as_written": "Afrobeat",
-     "quote": "Kizomba | Urbankiz | Konpa Gouyad | Zouk | Afrobeat | Douceur | Tarraxo | Tarraxinha"
+     "quote": "Zouk | Afrobeat"
     },
     {
      "genre": "douceur",
      "genre_as_written": "Douceur",
-     "quote": "Kizomba | Urbankiz | Konpa Gouyad | Zouk | Afrobeat | Douceur | Tarraxo | Tarraxinha"
+     "quote": "Afrobeat | Douceur"
     },
     {
      "genre": "tarraxo",
      "genre_as_written": "Tarraxo",
-     "quote": "Kizomba | Urbankiz | Konpa Gouyad | Zouk | Afrobeat | Douceur | Tarraxo | Tarraxinha"
+     "quote": "Douceur | Tarraxo"
     },
     {
      "genre": "tarraxinha",
      "genre_as_written": "Tarraxinha",
-     "quote": "Kizomba | Urbankiz | Konpa Gouyad | Zouk | Afrobeat | Douceur | Tarraxo | Tarraxinha"
+     "quote": "Tarraxo | Tarraxinha"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Afro-Amapiano",
+     "quote": "Jonay — Afro-Amapiano"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Konpa",
+     "quote": "PAMELA K — Live Konpa/Zouk"
     }
    ]
   }

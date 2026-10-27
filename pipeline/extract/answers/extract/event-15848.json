@@ -98,24 +98,24 @@
    ],
    "features": [
     {
-     "feature": "workshops",
-     "quote": "Next-level workshops",
-     "rationale": "The description promotes next-level workshops as part of the festival."
+     "feature": "partner_hotel",
+     "quote": "City Hotel Biel Bienne",
+     "rationale": "The description names City Hotel Biel Bienne as the Kianda partner hotel with a discount link, without saying accommodation is part of the pass."
     },
     {
-     "feature": "day_socials",
-     "quote": "SOCIAL PARTY & FAREWELL",
-     "rationale": "A daytime social party from 15:00 to 19:00 is listed on Day 3."
+     "feature": "workshops",
+     "quote": "Next-level workshops.",
+     "rationale": "The description advertises workshops as part of the event, and the programme lists Workshops."
     },
     {
      "feature": "dress_code",
      "quote": "Party Dress Code: to be announced",
-     "rationale": "The party dress code is stated as a feature, although its details are still to be announced."
+     "rationale": "The description states a party dress code, even though its details are still to be announced."
     },
     {
-     "feature": "partner_hotel",
-     "quote": "Save 13% by using this link TBC",
-     "rationale": "A partner hotel, City Hotel Biel Bienne, is offered with a negotiated discount rate."
+     "feature": "day_socials",
+     "quote": "SOCIAL PARTY & FAREWELL",
+     "rationale": "This is a daytime social party scheduled from 15:00 to 19:00 on Day 3."
     }
    ]
   }

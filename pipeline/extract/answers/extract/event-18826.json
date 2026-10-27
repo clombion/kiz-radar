@@ -329,24 +329,24 @@
    ],
    "features": [
     {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE: HOTEL ESTIVAL TORREQUEBRADA",
-     "rationale": "The event is described as all in one at the hotel Estival Torrequebrada, where the parties take place with accommodation."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Spectacular 4⭐ superior hotel included",
-     "rationale": "The full pass plus hotel package explicitly includes the hotel accommodation."
-    },
-    {
      "feature": "workshops",
      "quote": "Workshops with top-tier artists, both national and international",
-     "rationale": "The full pass includes workshops taught by top-tier artists."
+     "rationale": "The full pass includes workshops with artists."
     },
     {
      "feature": "shows",
      "quote": "Shows that will leave you speechless.",
-     "rationale": "The pass description promises shows by artists during the congress."
+     "rationale": "The description promises shows by the artists at the congress."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Spectacular 4⭐ superior hotel included",
+     "rationale": "The FULL PASS + HOTEL package explicitly includes the hotel."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE: HOTEL ESTIVAL TORREQUEBRADA",
+     "rationale": "The congress takes place in the hotel where dancers are invited to stay."
     }
    ]
   }

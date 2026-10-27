@@ -169,33 +169,28 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "1 workshop – 20 eur",
-     "rationale": "A price is listed for a single workshop, showing dance workshops are part of the event."
+     "quote": "𝐖𝐎𝐑𝐊𝐒𝐇𝐎𝐏𝐒",
+     "rationale": "The guarantee list names workshops as part of the festival."
     },
     {
      "feature": "taxi_dancers",
-     "quote": "𝐓𝐀𝐗𝐈 𝐃𝐀𝐍𝐂𝐄𝐑𝐒 (𝐌𝐄𝐍 𝐀𝐍𝐃 𝐖𝐎𝐌𝐄𝐍)",
-     "rationale": "The guarantees list names taxi dancers, men and women."
+     "quote": "𝐓𝐀𝐗𝐈 𝐃𝐀𝐍𝐂𝐄𝐑𝐒",
+     "rationale": "The guarantee list states that taxi dancers (men and women) are present."
     },
     {
      "feature": "pre_party",
-     "quote": "Thursday preparty – 30eur",
-     "rationale": "A priced Thursday preparty is offered before the main party days."
+     "quote": "Thursday preparty",
+     "rationale": "A Thursday preparty is listed with its own price."
     },
     {
      "feature": "after_party",
      "quote": "𝐏𝐑𝐄- 𝐚𝐧𝐝 𝐀𝐅𝐓𝐄𝐑-𝐏𝐀𝐑𝐓𝐘",
-     "rationale": "The guarantees list an after-party alongside the pre-party."
+     "rationale": "The guarantee list mentions pre- and after-party events."
     },
     {
      "feature": "multiple_rooms",
      "quote": "𝐓𝐖𝐎 𝐑𝐎𝐎𝐌𝐒/ 𝐓𝐖𝐎 𝐃𝐈𝐅𝐅𝐄𝐑𝐄𝐍𝐓 𝐀𝐌𝐁𝐈𝐄𝐍𝐂𝐄𝐒",
-     "rationale": "The guarantees promise two rooms with two different ambiences."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "𝐁𝐄𝐋𝐋𝐄𝐕𝐔𝐄 𝐏𝐀𝐑𝐊 𝐇𝐎𝐓𝐄𝐋****",
-     "rationale": "The main venue is named as a hotel, indicating the event is held at a partner hotel."
+     "rationale": "The description promises two rooms with two different ambiences."
     }
    ]
   }

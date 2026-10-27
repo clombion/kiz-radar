@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "Current price – 120eur."
       },
       {
-       "amount": 125,
+       "amount": 125.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -37,42 +37,9 @@
        "sold_out": false,
        "current": false,
        "quote": "From 01/06 – 125eur"
-      }
-     ]
-    },
-    {
-     "kind": "party",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
+      },
       {
-       "amount": 130,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "Party pass at the door 130 eur"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -87,6 +54,29 @@
      ]
     },
     {
+     "kind": "party",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 130.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "Party pass at the door 130 eur"
+      }
+     ]
+    },
+    {
      "kind": "day",
      "style": null,
      "label_quote": null,
@@ -95,7 +85,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 30,
+       "amount": 30.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -118,7 +108,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 35,
+       "amount": 35.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -141,7 +131,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 40,
+       "amount": 40.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -164,7 +154,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 35,
+       "amount": 35.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -187,7 +177,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -210,7 +200,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 25,
+       "amount": 25.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -233,7 +223,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 25,
+       "amount": 25.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

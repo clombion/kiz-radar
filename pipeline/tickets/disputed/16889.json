@@ -1,0 +1,623 @@
+{
+ "rows_at": "2026-10-27T18:10:02+00:00",
+ "reads": {
+  "claude-opus-5-5": {
+   "event_id": 16889,
+   "title": "AURA KIZOMBA FESTIVAL III",
+   "start_date": "2026-11-13",
+   "read_by": "claude-opus-5-5",
+   "prompt": "1a3b603636d758ee",
+   "rows_at": "2026-10-27T18:10:02+00:00",
+   "styles": [
+    "kizomba"
+   ],
+   "description": "AURA KIZOMBA FESTIVAL III\nThe third edition of the “Aura Kizomba Festival” is here! A 100% Kizomba/Urban Kiz event at the “HOTEL VENTA DE ETXALAR,” which will host us during the weekend of November 13th, 14th, and 15th, 2026. An event where good energy and a family atmosphere will undoubtedly take center stage.\nSo, we just want to say that we hope to see you again at the Aura Kizomba Festival!!!!\n*** VENUE/ACCOMMODATION ***\nThe entire event will take place at the HOTEL VENTA DE ETXALAR\nPamplona-Irún Road, km 60, 31760 Etxalar.\nWebsite: https://www.etxalar.com/\n* IMPORTANT: Accommodation reservations can be made until December 21st, or from March 15th onwards by emailing info@etxalar.com. Please mention the event name: AURA.\n* A two-night stay is required (Friday to Sunday).\n* Cancellation Policy: Cancellations must be made one month prior to the event via email. Cancellations made less than this time or no-shows will incur a full charge.\n#RATES FOR 2 NIGHTS (FRIDAY TO SUNDAY)\n– Double Room with Half Board (Breakfast and Dinner) for two people: €130 per night incl. VAT\n– Triple Room with Half Board (Breakfast and Dinner) for three people: €180 per night incl. VAT\n– Quadruple room with half board (breakfast and dinner) for four people: €220 per night incl. VAT.\n* Prices are per room per night. For any questions, please contact the hotel at (+34) 948 635 000.\n*****PASS PRICES*****\n**FULL PASS (WORKSHOPS + SOCIAL EVENTS + PARTIES from Friday to Sunday)**\nhttps://my.weezevent.com/aurakizombafestivaliii\n– FULL PASS 1st Price = €80 (Until April 1st)\n– FULL PASS COUPLE 1st Price = €150 (Until April 1st)\n– FULL PASS 2nd Price = €90 (Until September 15th)\n– FULL PASS COUPLE 2nd Price = €165 (Until September 15th)\n– FULL PASS 3rd Price = €100 (Until the date of the event and at the door)\n– FULL PASS COUPLE 3rd Price = €185 (Until the date of the event and at the door)\n* LIMITED CAPACITY AND PARITY CONTROL: Therefore, there will be a number of Follower tickets and a number of Leader tickets. Once the quota is reached, sales will close (priority will be given to Fullpasses; if the maximum permitted capacity is reached, no tickets will be sold for the evening parties or social events).\n* FULLPASSES ARE NON-REFUNDABLE. ONLY NAME CHANGES FROM FOLLOWER TO FOLLOWER AND FROM LEADER TO LEADER WILL BE PERMITTED FREE OF CHARGE. Name changes must be reported. To do so, the person selling the Fullpass must send an email to pepasan@yahoo.com indicating the name, surname, and email address of the person purchasing the Fullpass.\n***** ARTISTS *****\n# DJs #\nLOWELO (Paris)\nASH (Bordeaux)\nMOSKY (Barcelona)\n# INSTRUCTORS #\nJP & RAMONA (SWITZERLAND)\nSTEVEN’S & AUDREY (PARIS)\nDAMIR (PARIS)\nAMADOU (BORDEAUX)\nFRANCISCO & MARY (BARCELONA)\nJOSE MUÑOZ (SANTANDER)\nPEPA (SAN SEBASTIAN)\n*** PROVISIONAL PROGRAM ***\nFRIDAY, NOVEMBER 13, 2026\n6 PM – 8 PM Workshops\n10 PM – 5 AM 100% Kiz Party\nSATURDAY, NOVEMBER 14, 2026\n11 AM – 3 PM Workshops\n4 PM – 8 PM Social\n10 PM – 5 AM 100% Kiz Party\nSUNDAY, NOVEMBER 15 NOVEMBER 2026\n11:00 AM – 3:00 PM Workshops\n4:00 PM – 8:00 PM Social\n***** HOW TO GET THERE*****\nYou can arrive by car (the hotel has over 250 free parking spaces).\nYou can also take the “Destino Elizondo” bus from various locations in Gipuzkoa (San Sebastián, Errenteria, Irún, Behobia, etc.). The “Etxalar II” bus stop is 90 meters from the hotel.\nFor more information about the event, please contact us at pepasan@yahoo.com",
+   "passes": [
+    {
+     "kind": "party",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852050"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852038"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852034"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852032"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852027"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852026"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852023"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852021"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5288481"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": 3,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5288557"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    }
+   ],
+   "skipped": [],
+   "rule_quotes": []
+  },
+  "claude-sonnet-5-5": {
+   "event_id": 16889,
+   "title": "AURA KIZOMBA FESTIVAL III",
+   "start_date": "2026-11-13",
+   "read_by": "claude-sonnet-5-5",
+   "prompt": "1a3b603636d758ee",
+   "rows_at": "2026-10-27T18:10:02+00:00",
+   "styles": [
+    "kizomba"
+   ],
+   "description": "AURA KIZOMBA FESTIVAL III\nThe third edition of the “Aura Kizomba Festival” is here! A 100% Kizomba/Urban Kiz event at the “HOTEL VENTA DE ETXALAR,” which will host us during the weekend of November 13th, 14th, and 15th, 2026. An event where good energy and a family atmosphere will undoubtedly take center stage.\nSo, we just want to say that we hope to see you again at the Aura Kizomba Festival!!!!\n*** VENUE/ACCOMMODATION ***\nThe entire event will take place at the HOTEL VENTA DE ETXALAR\nPamplona-Irún Road, km 60, 31760 Etxalar.\nWebsite: https://www.etxalar.com/\n* IMPORTANT: Accommodation reservations can be made until December 21st, or from March 15th onwards by emailing info@etxalar.com. Please mention the event name: AURA.\n* A two-night stay is required (Friday to Sunday).\n* Cancellation Policy: Cancellations must be made one month prior to the event via email. Cancellations made less than this time or no-shows will incur a full charge.\n#RATES FOR 2 NIGHTS (FRIDAY TO SUNDAY)\n– Double Room with Half Board (Breakfast and Dinner) for two people: €130 per night incl. VAT\n– Triple Room with Half Board (Breakfast and Dinner) for three people: €180 per night incl. VAT\n– Quadruple room with half board (breakfast and dinner) for four people: €220 per night incl. VAT.\n* Prices are per room per night. For any questions, please contact the hotel at (+34) 948 635 000.\n*****PASS PRICES*****\n**FULL PASS (WORKSHOPS + SOCIAL EVENTS + PARTIES from Friday to Sunday)**\nhttps://my.weezevent.com/aurakizombafestivaliii\n– FULL PASS 1st Price = €80 (Until April 1st)\n– FULL PASS COUPLE 1st Price = €150 (Until April 1st)\n– FULL PASS 2nd Price = €90 (Until September 15th)\n– FULL PASS COUPLE 2nd Price = €165 (Until September 15th)\n– FULL PASS 3rd Price = €100 (Until the date of the event and at the door)\n– FULL PASS COUPLE 3rd Price = €185 (Until the date of the event and at the door)\n* LIMITED CAPACITY AND PARITY CONTROL: Therefore, there will be a number of Follower tickets and a number of Leader tickets. Once the quota is reached, sales will close (priority will be given to Fullpasses; if the maximum permitted capacity is reached, no tickets will be sold for the evening parties or social events).\n* FULLPASSES ARE NON-REFUNDABLE. ONLY NAME CHANGES FROM FOLLOWER TO FOLLOWER AND FROM LEADER TO LEADER WILL BE PERMITTED FREE OF CHARGE. Name changes must be reported. To do so, the person selling the Fullpass must send an email to pepasan@yahoo.com indicating the name, surname, and email address of the person purchasing the Fullpass.\n***** ARTISTS *****\n# DJs #\nLOWELO (Paris)\nASH (Bordeaux)\nMOSKY (Barcelona)\n# INSTRUCTORS #\nJP & RAMONA (SWITZERLAND)\nSTEVEN’S & AUDREY (PARIS)\nDAMIR (PARIS)\nAMADOU (BORDEAUX)\nFRANCISCO & MARY (BARCELONA)\nJOSE MUÑOZ (SANTANDER)\nPEPA (SAN SEBASTIAN)\n*** PROVISIONAL PROGRAM ***\nFRIDAY, NOVEMBER 13, 2026\n6 PM – 8 PM Workshops\n10 PM – 5 AM 100% Kiz Party\nSATURDAY, NOVEMBER 14, 2026\n11 AM – 3 PM Workshops\n4 PM – 8 PM Social\n10 PM – 5 AM 100% Kiz Party\nSUNDAY, NOVEMBER 15 NOVEMBER 2026\n11:00 AM – 3:00 PM Workshops\n4:00 PM – 8:00 PM Social\n***** HOW TO GET THERE*****\nYou can arrive by car (the hotel has over 250 free parking spaces).\nYou can also take the “Destino Elizondo” bus from various locations in Gipuzkoa (San Sebastián, Errenteria, Irún, Behobia, etc.). The “Etxalar II” bus stop is 90 meters from the hotel.\nFor more information about the event, please contact us at pepasan@yahoo.com",
+   "passes": [
+    {
+     "kind": "party",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852050"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852038"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852034"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852032"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852027"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852026"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852023"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852021"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5288481"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5288557"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    }
+   ],
+   "skipped": [],
+   "rule_quotes": []
+  },
+  "claude-fable-5-1": {
+   "event_id": 16889,
+   "title": "AURA KIZOMBA FESTIVAL III",
+   "start_date": "2026-11-13",
+   "read_by": "claude-fable-5-1",
+   "prompt": "1a3b603636d758ee",
+   "rows_at": "2026-10-27T18:10:02+00:00",
+   "styles": [
+    "kizomba"
+   ],
+   "description": "AURA KIZOMBA FESTIVAL III\nThe third edition of the “Aura Kizomba Festival” is here! A 100% Kizomba/Urban Kiz event at the “HOTEL VENTA DE ETXALAR,” which will host us during the weekend of November 13th, 14th, and 15th, 2026. An event where good energy and a family atmosphere will undoubtedly take center stage.\nSo, we just want to say that we hope to see you again at the Aura Kizomba Festival!!!!\n*** VENUE/ACCOMMODATION ***\nThe entire event will take place at the HOTEL VENTA DE ETXALAR\nPamplona-Irún Road, km 60, 31760 Etxalar.\nWebsite: https://www.etxalar.com/\n* IMPORTANT: Accommodation reservations can be made until December 21st, or from March 15th onwards by emailing info@etxalar.com. Please mention the event name: AURA.\n* A two-night stay is required (Friday to Sunday).\n* Cancellation Policy: Cancellations must be made one month prior to the event via email. Cancellations made less than this time or no-shows will incur a full charge.\n#RATES FOR 2 NIGHTS (FRIDAY TO SUNDAY)\n– Double Room with Half Board (Breakfast and Dinner) for two people: €130 per night incl. VAT\n– Triple Room with Half Board (Breakfast and Dinner) for three people: €180 per night incl. VAT\n– Quadruple room with half board (breakfast and dinner) for four people: €220 per night incl. VAT.\n* Prices are per room per night. For any questions, please contact the hotel at (+34) 948 635 000.\n*****PASS PRICES*****\n**FULL PASS (WORKSHOPS + SOCIAL EVENTS + PARTIES from Friday to Sunday)**\nhttps://my.weezevent.com/aurakizombafestivaliii\n– FULL PASS 1st Price = €80 (Until April 1st)\n– FULL PASS COUPLE 1st Price = €150 (Until April 1st)\n– FULL PASS 2nd Price = €90 (Until September 15th)\n– FULL PASS COUPLE 2nd Price = €165 (Until September 15th)\n– FULL PASS 3rd Price = €100 (Until the date of the event and at the door)\n– FULL PASS COUPLE 3rd Price = €185 (Until the date of the event and at the door)\n* LIMITED CAPACITY AND PARITY CONTROL: Therefore, there will be a number of Follower tickets and a number of Leader tickets. Once the quota is reached, sales will close (priority will be given to Fullpasses; if the maximum permitted capacity is reached, no tickets will be sold for the evening parties or social events).\n* FULLPASSES ARE NON-REFUNDABLE. ONLY NAME CHANGES FROM FOLLOWER TO FOLLOWER AND FROM LEADER TO LEADER WILL BE PERMITTED FREE OF CHARGE. Name changes must be reported. To do so, the person selling the Fullpass must send an email to pepasan@yahoo.com indicating the name, surname, and email address of the person purchasing the Fullpass.\n***** ARTISTS *****\n# DJs #\nLOWELO (Paris)\nASH (Bordeaux)\nMOSKY (Barcelona)\n# INSTRUCTORS #\nJP & RAMONA (SWITZERLAND)\nSTEVEN’S & AUDREY (PARIS)\nDAMIR (PARIS)\nAMADOU (BORDEAUX)\nFRANCISCO & MARY (BARCELONA)\nJOSE MUÑOZ (SANTANDER)\nPEPA (SAN SEBASTIAN)\n*** PROVISIONAL PROGRAM ***\nFRIDAY, NOVEMBER 13, 2026\n6 PM – 8 PM Workshops\n10 PM – 5 AM 100% Kiz Party\nSATURDAY, NOVEMBER 14, 2026\n11 AM – 3 PM Workshops\n4 PM – 8 PM Social\n10 PM – 5 AM 100% Kiz Party\nSUNDAY, NOVEMBER 15 NOVEMBER 2026\n11:00 AM – 3:00 PM Workshops\n4:00 PM – 8:00 PM Social\n***** HOW TO GET THERE*****\nYou can arrive by car (the hotel has over 250 free parking spaces).\nYou can also take the “Destino Elizondo” bus from various locations in Gipuzkoa (San Sebastián, Errenteria, Irún, Behobia, etc.). The “Etxalar II” bus stop is 90 meters from the hotel.\nFor more information about the event, please contact us at pepasan@yahoo.com",
+   "passes": [
+    {
+     "kind": "party",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852050"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852038"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852034"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852032"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852027"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852026"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852023"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5852021"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5288481"
+       ],
+       "from": null,
+       "until": "2026-11-13",
+       "quantity": null,
+       "date_quote": "Until the date of the event and at the door"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5288557"
+       ],
+       "from": null,
+       "until": "2026-11-13",
+       "quantity": null,
+       "date_quote": "Until the date of the event and at the door"
+      }
+     ]
+    }
+   ],
+   "skipped": [],
+   "rule_quotes": []
+  }
+ }
+}

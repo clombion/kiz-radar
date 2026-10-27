@@ -198,22 +198,17 @@
     {
      "feature": "all_in_one",
      "quote": "ALL EVENTS IN 1 HOTEL",
-     "rationale": "The parties and events take place in the same hotel where dancers stay, as stated by the venue line and the 'same hotel' remark."
+     "rationale": "The venue line states that all events take place in one hotel, which is the same hotel where dancers stay."
     },
     {
      "feature": "workshops",
-     "quote": "exclusive workshops",
-     "rationale": "The description says dancers can immerse themselves in exclusive workshops."
+     "quote": "immerse yourself in exclusive workshops",
+     "rationale": "The description promotes exclusive workshops as part of the festival."
     },
     {
      "feature": "shows",
      "quote": "captivating shows",
-     "rationale": "The festival includes shows and performances by artists."
-    },
-    {
-     "feature": "competition",
-     "quote": "J&J Winners 2025",
-     "rationale": "Naming winners of J&J (Jack & Jill) implies a competition held at the event."
+     "rationale": "The description advertises captivating shows as part of the event."
     }
    ]
   }

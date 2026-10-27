@@ -72,7 +72,7 @@
     {
      "feature": "day_socials",
      "quote": "3pm-6pm Day Social",
-     "rationale": "The tentative schedule lists daytime socials from 3pm to 6pm on each day."
+     "rationale": "The schedule lists daytime socials from 3pm to 6pm on Friday, Saturday and Sunday."
     },
     {
      "feature": "workshops",
@@ -82,12 +82,7 @@
     {
      "feature": "partner_hotel",
      "quote": "YYK Discounted Booking Link",
-     "rationale": "A discounted booking link for a recommended hotel is given, and the hotel is not stated to be part of the pass."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "YYK will coordinate rideshare groups",
-     "rationale": "The organiser coordinates shared rideshares to and from the venue."
+     "rationale": "The organisers provide a discounted booking link for a nearby hotel, which is a negotiated rate rather than an included accommodation."
     }
    ]
   }

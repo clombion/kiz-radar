@@ -121,12 +121,12 @@
     {
      "feature": "camping",
      "quote": "Camping Bon Repos",
-     "rationale": "The event is held at a campsite, named as Camping Bon Repos."
+     "rationale": "The festival is held at a campsite, and the bungalow accommodation is campsite accommodation."
     },
     {
      "feature": "accommodation_included",
      "quote": "Accommodation in a 5-person bungalow + Full Pass",
-     "rationale": "The full pass is sold together with bungalow accommodation."
+     "rationale": "The pass price includes accommodation in a bungalow."
     },
     {
      "feature": "meals_included",

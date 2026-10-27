@@ -7,7 +7,7 @@
    "features": [
     {
      "feature": "beach_party",
-     "quote": "an unforgettable beach party at the hotel’s chiringuito",
+     "quote": "the final day ended with an unforgettable beach party at the hotel’s chiringuito",
      "rationale": "The text describes a beach party held at the hotel's chiringuito on the final day."
     },
     {
@@ -18,7 +18,7 @@
     {
      "feature": "workshops",
      "quote": "The workshops were intense and inspiring",
-     "rationale": "The workshops are mentioned as part of the event held in the past edition."
+     "rationale": "The text reports that workshops took place during the event."
     }
    ]
   }

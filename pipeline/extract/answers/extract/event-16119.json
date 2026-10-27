@@ -6,14 +6,14 @@
    "artists": [],
    "features": [
     {
-     "feature": "multiple_rooms",
-     "quote": "3 salles, 3 ambiances",
-     "rationale": "The event lists three separate dance rooms (Salle 1, 2 and 3), so it has more than one dance floor."
+     "feature": "workshops",
+     "quote": "Divers cours",
+     "rationale": "The description lists various dance classes (ginga, banga, urban Kiz, sensual, tarraxo, kizomba, semba, lady styling heels, afro) as part of the event."
     },
     {
-     "feature": "workshops",
-     "quote": "Various classes:",
-     "rationale": "The description lists several dance classes (ginga, urban Kiz, tarraxo, kizomba, semba and others) as part of the event."
+     "feature": "multiple_rooms",
+     "quote": "3 salles, 3 ambiances, 100% vibes !",
+     "rationale": "Stating three separate dance rooms (salles) shows the event has more than one dance room."
     }
    ]
   }

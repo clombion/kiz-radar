@@ -15,12 +15,17 @@
     {
      "genre": "other",
      "genre_as_written": "rock",
-     "quote": "2 days of rock/swing and Latin dances (Saturday and Sunday)"
+     "quote": "3 days of dancing (rock, swing, Latin dances, WCS…)"
     },
     {
      "genre": "other",
      "genre_as_written": "swing",
-     "quote": "3 days of dancing (rock, swing, Latin dances, WCS…)"
+     "quote": "2 days of rock/swing and Latin dances (Saturday and Sunday)"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Latin dances",
+     "quote": "2 days of rock/swing and Latin dances (Saturday and Sunday)"
     }
    ]
   }

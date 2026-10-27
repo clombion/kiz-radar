@@ -369,13 +369,6 @@
      "source_line": "– Michl & Nina (Konstanz)"
     },
     {
-     "name_as_written": "Armand",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "– Armand (Basel)"
-    },
-    {
      "name_as_written": "DJ Prachi",
      "role": "dj",
      "style": "Salsa",
@@ -388,13 +381,6 @@
      "style": "Salsa",
      "country": null,
      "source_line": "– DJ EL ASTICO"
-    },
-    {
-     "name_as_written": "DJ Lobo",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "– DJ Lobo (Heidelberg)"
     }
    ],
    "features": [
@@ -406,7 +392,7 @@
     {
      "feature": "day_socials",
      "quote": "16:00 – 20:30 Social Dance",
-     "rationale": "A daytime/afternoon social dance is scheduled on Saturday."
+     "rationale": "A daytime social dance session is scheduled on Saturday afternoon."
     }
    ]
   }

@@ -122,40 +122,33 @@
      "style": null,
      "country": "🇰🇷",
      "source_line": "◾️ ZIKIMMY 🇰🇷"
-    },
-    {
-     "name_as_written": "Kizz Ryders",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🌐 Facebook: Asia Kizomba Collab & Kizz Ryders"
     }
    ],
    "features": [
     {
      "feature": "workshops",
      "quote": "15+ hrs of workshops",
-     "rationale": "The event lists more than 15 hours of workshops as part of the programme."
+     "rationale": "The description lists more than 15 hours of workshops as part of the event."
     },
     {
      "feature": "masterclass",
      "quote": "6 hrs VIP masterclasses",
-     "rationale": "The event offers VIP masterclasses totalling 6 hours."
+     "rationale": "The description lists VIP masterclasses as part of the programme."
     },
     {
      "feature": "after_party",
-     "quote": "after-party & after party",
-     "rationale": "The description explicitly mentions an after-party."
+     "quote": "After Party: June 15 @On2 Bar in Seoul",
+     "rationale": "The description announces an after party on June 15 at On2 Bar."
     },
     {
      "feature": "all_in_one",
      "quote": "all under one luxurious roof at JiJiHyang Resort",
-     "rationale": "The parties and events take place under one roof at the resort where dancers stay."
+     "rationale": "The parties and workshops take place in the same resort where dancers stay, so the event and accommodation share one venue."
     },
     {
      "feature": "multiple_rooms",
      "quote": "Massive halls with world-class sound & lighting",
-     "rationale": "Plural halls indicate more than one dance room."
+     "rationale": "The plural halls indicate more than one dance room."
     }
    ]
   }

@@ -260,23 +260,23 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "international workshops",
-     "rationale": "The description states that international workshops are part of the festival."
+     "quote": "with workshops, shows, social dancing, parties",
+     "rationale": "The description states that the festival includes workshops."
     },
     {
      "feature": "shows",
-     "quote": "workshops, shows, social dancing, parties",
-     "rationale": "The description lists shows among the festival's offerings."
+     "quote": "workshops, shows, social dancing",
+     "rationale": "The description states that shows are part of the festival."
     },
     {
      "feature": "competition",
      "quote": "shows and competitions throughout the weekend",
-     "rationale": "The description states that competitions take place during the weekend."
+     "rationale": "The description mentions competitions during the weekend."
     },
     {
      "feature": "multiple_rooms",
      "quote": "multiple dance floors",
-     "rationale": "The description states the festival features multiple dance floors."
+     "rationale": "The festival is said to feature multiple dance floors, meaning more than one dance room."
     }
    ]
   }

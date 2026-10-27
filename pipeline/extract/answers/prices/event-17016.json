@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 65,
+       "amount": 65.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "👉 FULLPASS AVAILABLE (65€) –"
       },
       {
-       "amount": 75,
+       "amount": 75.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "— THE NEXT – ( 75 )"
       },
       {
-       "amount": 115,
+       "amount": 115.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -54,29 +54,6 @@
      ]
     },
     {
-     "kind": "other",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 110,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "— VIP FULLPASS GOLD — ( 110€ )"
-      }
-     ]
-    },
-    {
      "kind": "full",
      "style": null,
      "label_quote": null,
@@ -85,7 +62,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 95,
+       "amount": 95.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -98,9 +75,34 @@
        "quote": "👉 COUPLE FULLPASS (95€)"
       }
      ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 110.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "— VIP FULLPASS GOLD — ( 110€ )"
+      }
+     ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "To get a 10 euro discount, use the code on your purchase."
+   ]
   }
  ]
 }

@@ -5,15 +5,15 @@
    "event_id": 17011,
    "passes": [
     {
-     "kind": "full",
+     "kind": "package",
      "style": null,
-     "label_quote": null,
+     "label_quote": "GOLD FULL PASS",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 89,
+       "amount": 89.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -28,15 +28,15 @@
      ]
     },
     {
-     "kind": "day",
+     "kind": "package",
      "style": null,
-     "label_quote": null,
+     "label_quote": "SILVER PASS",
      "group_size": 1,
-     "days": 1,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 79,
+       "amount": 79.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -51,15 +51,15 @@
      ]
     },
     {
-     "kind": "day",
+     "kind": "package",
      "style": null,
-     "label_quote": null,
+     "label_quote": "BOAT CRUISE",
      "group_size": 1,
-     "days": 1,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 59,
+       "amount": 59.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

@@ -10,12 +10,12 @@
     {
      "genre": "salsa",
      "genre_as_written": "Salsa",
-     "quote": "Salsa, Bachata, Kizomba/UrbanKiz & Zouk!"
+     "quote": "Salsa"
     },
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "Salsa, Bachata, Kizomba/UrbanKiz & Zouk!"
+     "quote": "Bachata"
     },
     {
      "genre": "kizomba",
@@ -30,7 +30,7 @@
     {
      "genre": "zouk",
      "genre_as_written": "Zouk",
-     "quote": "Salsa, Bachata, Kizomba/UrbanKiz & Zouk!"
+     "quote": "Zouk"
     }
    ]
   }

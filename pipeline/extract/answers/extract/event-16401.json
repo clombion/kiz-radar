@@ -177,22 +177,22 @@
     {
      "feature": "workshops",
      "quote": "5 days of workshops & open-air socials",
-     "rationale": "The description states that the event includes workshops."
+     "rationale": "The description lists workshops as part of the five-day event."
     },
     {
      "feature": "beach_party",
      "quote": "7 nights of beach parties",
-     "rationale": "Beach parties are explicitly listed as part of the program."
+     "rationale": "The description states that there are beach parties on seven nights."
     },
     {
      "feature": "pre_party",
      "quote": "Pre-party: 15.09",
-     "rationale": "A pre-party is announced with a date before the main event."
+     "rationale": "A pre-party is announced for 15.09."
     },
     {
      "feature": "after_party",
      "quote": "After-party: 21.09",
-     "rationale": "An after-party is announced with a date after the main event."
+     "rationale": "An after-party is announced for 21.09."
     }
    ]
   }

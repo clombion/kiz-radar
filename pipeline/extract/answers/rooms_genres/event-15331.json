@@ -5,7 +5,7 @@
    "event_id": 15331,
    "party_rooms": {
     "count": 4,
-    "quote": "– 4 dance floors"
+    "quote": "4 dance floors"
    },
    "class_rooms": null,
    "rooms": [],
@@ -13,17 +13,17 @@
     {
      "genre": "bachata",
      "genre_as_written": "BACHATA",
-     "quote": "The Great BACHATA-KIZOMBA & SALSA FESTIVAL"
+     "quote": "BACHATA:"
     },
     {
      "genre": "kizomba",
      "genre_as_written": "KIZOMBA",
-     "quote": "BACHATA-KIZOMBA & SALSA FESTIVAL"
+     "quote": "KIZOMBA:"
     },
     {
      "genre": "salsa",
      "genre_as_written": "SALSA",
-     "quote": "& SALSA FESTIVAL"
+     "quote": "SALSA:"
     }
    ]
   }

@@ -8,17 +8,17 @@
     {
      "feature": "all_in_one",
      "quote": "ALL-IN-ONE festival plus",
-     "rationale": "The description labels the event as an all-in-one festival, and the venue is a hotel, so the parties take place where dancers can stay."
+     "rationale": "The text describes the festival as all-in-one, indicating the event and accommodation are combined at one hotel venue."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "alternative hotel with shuttle to venue",
-     "rationale": "A shuttle to the venue is explicitly offered from the alternative hotel."
+     "rationale": "The quote states that a shuttle runs between the alternative hotel and the venue."
     },
     {
      "feature": "workshops",
      "quote": "filled with workshops, socials, and vibes",
-     "rationale": "The text says the festival days are filled with workshops."
+     "rationale": "The quote says the festival days include workshops."
     }
    ]
   }

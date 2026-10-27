@@ -254,27 +254,32 @@
     {
      "feature": "all_in_one",
      "quote": "All-in-one venue",
-     "rationale": "The description says the main hotel is an all-in-one venue, so the parties take place in the hotel."
+     "rationale": "The main hotel is described as an all-in-one venue, so the parties take place where dancers stay."
     },
     {
      "feature": "partner_hotel",
      "quote": "Porto Giardino – CDS Hotels",
-     "rationale": "The event names a main hotel where dancers are invited to stay."
+     "rationale": "The event names a main hotel for participants to use."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "SHUTTLES from BARI airport, BRINDISI airport & MONOPOLI train station",
-     "rationale": "Shuttles from airports and a train station are offered."
+     "rationale": "Shuttles are offered from several airports and a train station."
     },
     {
      "feature": "pool_party",
      "quote": "1 Pool Party",
-     "rationale": "The program lists a pool party as part of the festival."
+     "rationale": "The programme lists a pool party among the events."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "2 Socials",
+     "rationale": "The programme lists two socials, which are daytime social sessions."
     },
     {
      "feature": "taxi_dancers",
      "quote": "Taxi&Guests",
-     "rationale": "A taxi and guests section lists dance teams serving as taxi dancers."
+     "rationale": "A taxi and guests section lists the dancers serving as taxi dancers, with the Alpha Pack and Let-inn Dance teams."
     }
    ]
   }

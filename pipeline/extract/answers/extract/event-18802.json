@@ -225,13 +225,13 @@
    "features": [
     {
      "feature": "multiple_rooms",
-     "quote": "Three rooms. Different vibes.",
-     "rationale": "The description says there are three rooms with different vibes, so more than one dance room is present."
+     "quote": "3 ROOMS",
+     "rationale": "The heading states there are three rooms, which means more than one dance room."
     },
     {
      "feature": "workshops",
      "quote": "KIZOMBA & SEMBA — INSTRUCTORS",
-     "rationale": "A line-up of instructors under an instructors heading indicates dance classes are part of the event."
+     "rationale": "A list of instructors under this heading shows that dance classes are part of the event."
     }
    ]
   }

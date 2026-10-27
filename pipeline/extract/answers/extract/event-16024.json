@@ -14,63 +14,63 @@
     {
      "name_as_written": "DJ PARAISO",
      "role": "dj",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": null,
      "source_line": "🔱🎧 DJ PARAISO ( Goodfater )"
     },
     {
      "name_as_written": "DJ MADISS",
      "role": "dj",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": null,
      "source_line": "🔱🎧 DJ MADISS"
     },
     {
      "name_as_written": "DJ NAO",
      "role": "dj",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": null,
      "source_line": "🔱🎧 DJ NAO"
     },
     {
      "name_as_written": "DJ STOMPY",
      "role": "dj",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": null,
      "source_line": "🔱🎧 DJ STOMPY"
     },
     {
      "name_as_written": "DJ DIABLO",
      "role": "dj",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": null,
      "source_line": "🔱🎧 DJ DIABLO"
     },
     {
      "name_as_written": "VAL’R & SARAH",
      "role": "teacher",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": null,
      "source_line": "🔱🗣 VAL’R & SARAH"
     },
     {
      "name_as_written": "LILIAN & IVANA",
      "role": "teacher",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": null,
      "source_line": "🔱🗣 LILIAN & IVANA"
     },
     {
      "name_as_written": "MIK’IZ & PAO LOU",
      "role": "teacher",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": null,
      "source_line": "🔱🗣 MIK’IZ & PAO LOU"
     },
     {
      "name_as_written": "BLACKCHINESE",
      "role": "teacher",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": null,
      "source_line": "🔱🗣 BLACKCHINESE"
     },
@@ -198,32 +198,37 @@
     {
      "feature": "all_in_one",
      "quote": "ALL IN ONE",
-     "rationale": "The description states the event is all in one, meaning the parties take place in the hotel where dancers stay."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "4 STARS OFFICIAL HOTEL",
-     "rationale": "The event names an official hotel as its venue, which is a partner hotel."
+     "rationale": "The title and body state the event is all in one, and the hotel is listed as the official hotel."
     },
     {
      "feature": "multiple_rooms",
      "quote": "3 ROOMS",
-     "rationale": "The event explicitly has three dance rooms."
+     "rationale": "The description states the event has 3 dance rooms."
     },
     {
      "feature": "workshops",
      "quote": "22H00-00H00 Workshops",
-     "rationale": "The general program lists workshops as part of the event schedule."
+     "rationale": "The program lists workshops on Friday, Saturday and Sunday."
     },
     {
      "feature": "masterclass",
      "quote": "Workshops & Masterclass",
-     "rationale": "The program lists masterclasses alongside workshops on Saturday and Sunday."
+     "rationale": "The Saturday and Sunday program lists masterclasses."
     },
     {
      "feature": "day_socials",
      "quote": "15H00-20H00 Social",
-     "rationale": "The program includes afternoon socials."
+     "rationale": "The program lists afternoon social sessions from 15h00 to 20h00."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "5 – Taxis dancers",
+     "rationale": "The summary lists a taxi dancers section for the event."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "7 – Dress codes",
+     "rationale": "The summary lists a dress codes section, indicating a dress code is stated."
     }
    ]
   }

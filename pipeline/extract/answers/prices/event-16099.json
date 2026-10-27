@@ -7,13 +7,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "White & Blue Secret Vineyard Party",
+     "label_quote": "> White & Blue Secret Vineyard Party",
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "AUD",
        "fee": null,
        "alt": null,

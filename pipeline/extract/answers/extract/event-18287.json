@@ -121,12 +121,12 @@
     {
      "feature": "workshops",
      "quote": "4 Workshops",
-     "rationale": "The agenda lists four workshops as part of the weekend."
+     "rationale": "The agenda lists 4 Workshops as part of the weekend."
     },
     {
      "feature": "partner_hotel",
      "quote": "Partner Hotels",
-     "rationale": "The description names recommended partner hotels with booking links, without saying accommodation is part of the pass."
+     "rationale": "The description has a Partner Hotels section listing recommended hotels with booking links."
     }
    ]
   }

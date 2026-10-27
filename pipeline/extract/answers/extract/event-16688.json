@@ -44,32 +44,32 @@
     {
      "feature": "all_in_one",
      "quote": "ALL IN ONE concept:",
-     "rationale": "The description presents an ALL IN ONE concept combining the hotel stay with the event, so the event and accommodation share one venue."
+     "rationale": "The description presents the event as an ALL IN ONE concept held at the hotel where guests stay."
     },
     {
      "feature": "accommodation_included",
-     "quote": "Accommodation",
-     "rationale": "Accommodation is listed as part of the ALL IN ONE concept, so it is included in the package."
+     "quote": "• Accommodation",
+     "rationale": "Accommodation is listed as part of the ALL IN ONE concept."
     },
     {
      "feature": "meals_included",
-     "quote": "Meals",
-     "rationale": "Meals are listed as part of the ALL IN ONE concept, so they are included."
+     "quote": "• Meals",
+     "rationale": "Meals are listed as part of the ALL IN ONE concept."
     },
     {
      "feature": "workshops",
-     "quote": "Workshops",
-     "rationale": "Workshops are listed as part of the ALL IN ONE concept, so dance classes are part of the event."
+     "quote": "• Workshops",
+     "rationale": "Workshops are listed as part of the event package."
     },
     {
      "feature": "taxi_dancers",
-     "quote": "TAXI DANCERS",
-     "rationale": "A section announces a team of 50+ taxi dancers at the event."
+     "quote": "A team of 50+ taxi dancers",
+     "rationale": "The description states that a team of taxi dancers will be present."
     },
     {
-     "feature": "all_levels_beginners",
-     "quote": "support beginners",
-     "rationale": "The taxi dancers are selected to support beginners, showing the event welcomes beginners."
+     "feature": "dress_code",
+     "quote": "DRESS CODE (coming soon)",
+     "rationale": "A dress code section is announced, though its details are still to come."
     }
    ]
   }

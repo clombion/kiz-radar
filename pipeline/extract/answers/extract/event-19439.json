@@ -7,23 +7,28 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "full weekend of daily workshops",
-     "rationale": "The description says the weekend includes daily workshops, so dance classes are part of the event."
+     "quote": "daily workshops",
+     "rationale": "The description says the weekend includes daily workshops."
     },
     {
      "feature": "day_socials",
      "quote": "afternoon socials",
-     "rationale": "Afternoon socials are explicitly listed as part of the weekend, which are daytime social events."
+     "rationale": "The description advertises afternoon socials."
     },
     {
      "feature": "shows",
      "quote": "nightly performances",
-     "rationale": "Nightly performances are listed as part of the event, indicating shows by artists."
+     "rationale": "The description advertises nightly performances."
     },
     {
      "feature": "competition",
-     "quote": "Brazilian Zouk Dance Council Jack & Jill Competition",
-     "rationale": "A Jack & Jill competition is explicitly stated to be hosted at the event."
+     "quote": "Jack & Jill Competition",
+     "rationale": "The event hosts a Brazilian Zouk Jack & Jill competition."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "HOTEL INFO",
+     "rationale": "A hotel info section with a hotel link points dancers to a recommended hotel, though it is not stated as part of the pass."
     }
    ]
   }

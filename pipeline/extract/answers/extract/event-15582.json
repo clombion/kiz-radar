@@ -239,7 +239,7 @@
      "name_as_written": "DJ Corazón Coração",
      "role": "dj",
      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "France",
+     "country": "Saint-Nazaire (France)",
      "source_line": "🇫🇷 DJ Corazón Coração — Saint-Nazaire (France)"
     },
     {
@@ -380,17 +380,17 @@
     {
      "feature": "pre_party",
      "quote": "Magical Pre-Party on Thursday",
-     "rationale": "The programme lists a pre-party on Thursday."
+     "rationale": "The description advertises a Magical Pre-Party on Thursday as part of the programme."
     },
     {
      "feature": "workshops",
      "quote": "Over 40 hours of workshops",
-     "rationale": "The event includes dance workshops totalling over 40 hours."
+     "rationale": "The programme highlights over 40 hours of workshops."
     },
     {
      "feature": "shows",
-     "quote": "Shows, animations, professional photographers & videographers",
-     "rationale": "The description lists shows and performances by artists."
+     "quote": "Shows, animations",
+     "rationale": "The description lists shows and animations as part of the event."
     },
     {
      "feature": "transfers_shuttle",
@@ -398,14 +398,9 @@
      "rationale": "Shuttles from the airport to the event are offered for a fee."
     },
     {
-     "feature": "partner_hotel",
-     "quote": "Partnership with nearby hotels for every budget!",
-     "rationale": "The organiser has partner hotels with negotiated rates, not included in the pass."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 Socials",
-     "rationale": "The event includes daytime socials."
+     "feature": "multiple_rooms",
+     "quote": "1 Room 100% Kizomba / Urban Kiz / Tarraxo / Semba",
+     "rationale": "The event has several dance rooms, including one dedicated to kizomba and related styles."
     },
     {
      "feature": "beach_party",
@@ -413,19 +408,19 @@
      "rationale": "A beach party is explicitly listed."
     },
     {
-     "feature": "multiple_rooms",
-     "quote": "1 Room 50% Salsa – 50% Bachata",
-     "rationale": "The event has several dance rooms, each with a different style mix."
+     "feature": "themed_parties",
+     "quote": "Saturday: Just Chic",
+     "rationale": "Each night has a dress theme such as Saturday: Just Chic."
     },
     {
      "feature": "dress_code",
      "quote": "Thursday: Bring the Color",
-     "rationale": "A dress code is stated for each day of the event."
+     "rationale": "A day-by-day dress code is stated for the event."
     },
     {
-     "feature": "themed_parties",
-     "quote": "Friday: Ocean Wax",
-     "rationale": "Each night has a dress theme such as Ocean Wax."
+     "feature": "partner_hotel",
+     "quote": "Partnership with nearby hotels for every budget!",
+     "rationale": "The event has partner hotels with negotiated rates that are not part of the pass."
     }
    ]
   }

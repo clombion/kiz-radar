@@ -5,6 +5,13 @@
    "event_id": 17891,
    "artists": [
     {
+     "name_as_written": "Loves Kizomba & Tarraxo Spain",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Loves Kizomba & Tarraxo Spain present:"
+    },
+    {
      "name_as_written": "JP & Stephy",
      "role": "teacher",
      "style": "URBAN KIZZ",
@@ -136,40 +143,33 @@
      "style": null,
      "country": null,
      "source_line": "🎧 DJ Eclipse"
-    },
-    {
-     "name_as_written": "Loves Kizomba & Tarraxo Spain",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Loves Kizomba & Tarraxo Spain present:"
     }
    ],
    "features": [
     {
      "feature": "all_in_one",
      "quote": "ALL IN ONE!",
-     "rationale": "The description states that everything is in one place, with the parties and dancing held at the hotel where dancers stay."
+     "rationale": "The description says the event is all in one place, with the parties held at the host hotel where dancers stay."
     },
     {
      "feature": "partner_hotel",
      "quote": "BOOK YOUR ACCOMMODATION at the HOST HOTEL AT THE BEST PRICE NOW",
-     "rationale": "The host hotel is recommended and offered at a negotiated best price, though accommodation is booked separately."
-    },
-    {
-     "feature": "workshops",
-     "quote": "3 DAYS OF WORKSHOPS",
-     "rationale": "The event lists three days of workshops as part of the programme."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "CRAZY POOL PARTY",
-     "rationale": "A pool party is explicitly listed among the event highlights."
+     "rationale": "The host hotel is promoted with a negotiated best-price rate for accommodation."
     },
     {
      "feature": "day_socials",
      "quote": "4 AFTERNOON SOCIALS",
-     "rationale": "Afternoon socials are listed as one of the event's daytime offerings."
+     "rationale": "Afternoon socials are listed as part of the programme."
+    },
+    {
+     "feature": "workshops",
+     "quote": "3 DAYS OF WORKSHOPS",
+     "rationale": "Workshops are listed as part of the event."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "CRAZY POOL PARTY",
+     "rationale": "A pool party is listed in the programme."
     }
    ]
   }

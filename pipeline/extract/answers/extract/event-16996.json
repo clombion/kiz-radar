@@ -7,14 +7,14 @@
     {
      "name_as_written": "Last & Cécile",
      "role": "teacher",
-     "style": null,
+     "style": "Kizomba",
      "country": null,
      "source_line": "💃🕺 Last & Cécile"
     },
     {
      "name_as_written": "Ben Cyrille & Mlyn",
      "role": "teacher",
-     "style": null,
+     "style": "Kizomba",
      "country": null,
      "source_line": "💃🕺 Ben Cyrille & Mlyn"
     },
@@ -57,13 +57,13 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "Class (1 hour): €12",
-     "rationale": "A priced one-hour class is listed among the classes offered at the event, so dance classes are part of it."
+     "quote": "Classes & Socials (individual)",
+     "rationale": "The listing offers individual classes and socials, so dance classes are part of the event."
     },
     {
      "feature": "taxi_dancers",
-     "quote": "⚡Dance Taxis",
-     "rationale": "The program lists a Dance Taxis team, indicating taxi dancers are present."
+     "quote": "Dance Taxis",
+     "rationale": "The program lists Dance Taxis, which indicates taxi dancers are present."
     }
    ]
   }

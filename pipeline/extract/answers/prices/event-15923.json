@@ -8,35 +8,12 @@
      "kind": "full",
      "style": null,
      "label_quote": "Full Pass: classes and events.",
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 700,
-       "currency": "PLN",
-       "fee": null,
-       "alt": null,
-       "from": "06-19",
-       "until": "06-30",
-       "quantity": 20,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Up to 20 couples, PLN 700 per couple"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "Full Pass: classes and events.",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 350,
+       "amount": 350.0,
        "currency": "PLN",
        "fee": null,
        "alt": null,
@@ -49,7 +26,7 @@
        "quote": "Up to 10 followers, PLN 350"
       },
       {
-       "amount": 350,
+       "amount": 350.0,
        "currency": "PLN",
        "fee": null,
        "alt": null,
@@ -60,6 +37,29 @@
        "sold_out": false,
        "current": false,
        "quote": "Leader, PLN 350 (unlimited number)"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": "Full Pass: classes and events.",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 700.0,
+       "currency": "PLN",
+       "fee": null,
+       "alt": null,
+       "from": "06-19",
+       "until": "06-30",
+       "quantity": 20,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Up to 20 couples, PLN 700 per couple"
       }
      ]
     }

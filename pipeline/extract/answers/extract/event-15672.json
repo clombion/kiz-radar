@@ -3,32 +3,40 @@
  "events": [
   {
    "event_id": 15672,
-   "artists": [],
+   "artists": [
+    {
+     "name_as_written": "𝗜𝗟𝗞𝗦𝗙 & 𝗔𝗗𝗦 𝗧𝗘𝗔𝗠",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "𝗜𝗟𝗞𝗦𝗙 & 𝗔𝗗𝗦 𝗧𝗘𝗔𝗠…"
+    }
+   ],
    "features": [
     {
      "feature": "workshops",
      "quote": "Amazing dance workshops",
-     "rationale": "The event lists amazing dance workshops as part of the programme."
+     "rationale": "The line lists amazing dance workshops as part of the event."
     },
     {
      "feature": "competition",
-     "quote": "Rising Star Competition",
-     "rationale": "The description names a Rising Star Competition, which is a competition."
+     "quote": "Rising Star Competition “Canada Selection”",
+     "rationale": "The line names a Rising Star Competition as part of the event."
     },
     {
      "feature": "dress_code",
      "quote": "Cool, Sexy & Crazy Dresscodes",
-     "rationale": "The description explicitly states dress codes for the event nights."
+     "rationale": "The line states that dress codes apply to the event."
     },
     {
      "feature": "themed_parties",
-     "quote": "All White",
-     "rationale": "The Sunday night is given a dress theme, All White, which makes it a themed party."
+     "quote": "𝗦𝘂𝗻𝗱𝗮𝘆 𝗡𝗶𝗴𝗵𝘁: All White",
+     "rationale": "Each party night has a named dress theme such as All White."
     },
     {
      "feature": "day_socials",
      "quote": "3 Full Days of Dancing; Parties & Socials",
-     "rationale": "The description promises daytime socials across the three full days of dancing."
+     "rationale": "The event includes socials during its full days of dancing."
     }
    ]
   }

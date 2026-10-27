@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,

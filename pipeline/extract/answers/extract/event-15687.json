@@ -7,56 +7,56 @@
     {
      "name_as_written": "Carlos & Paz",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Carlos & Paz"
     },
     {
      "name_as_written": "Kornel & Catharine",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Kornel & Catharine"
     },
     {
      "name_as_written": "Chico & Lisa",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Chico & Lisa"
     },
     {
      "name_as_written": "Juanma & Tania",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Juanma & Tania"
     },
     {
      "name_as_written": "Owen & Eva",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Owen & Eva"
     },
     {
      "name_as_written": "Dennis & Elena",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Dennis & Elena"
     },
     {
      "name_as_written": "Arthur",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Arthur"
     },
     {
      "name_as_written": "Zoran & Andjela",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Zoran & Andjela"
     },
@@ -212,22 +212,22 @@
     {
      "feature": "workshops",
      "quote": "Access to all workshops, socials & parties.",
-     "rationale": "The full pass gives access to all workshops, so workshops are part of the event."
+     "rationale": "The full pass gives access to the workshops."
     },
     {
      "feature": "day_socials",
      "quote": "Daily Social",
-     "rationale": "The schedule lists daily socials in the afternoon, which are daytime socials."
+     "rationale": "The schedule lists daytime Daily Social sessions."
     },
     {
      "feature": "competition",
-     "quote": "KIZZ COMPETITION",
-     "rationale": "The schedule lists a KIZZ competition on Friday evening."
+     "quote": "21:30 · KIZZ COMPETITION",
+     "rationale": "A KIZZ competition is scheduled on Friday."
     },
     {
      "feature": "pre_party",
      "quote": "Pre-party: April 16 (separately charged)",
-     "rationale": "A pre-party is held on April 16 before the main festival dates."
+     "rationale": "A pre-party is held on April 16 before the main event."
     },
     {
      "feature": "transfers_shuttle",

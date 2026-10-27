@@ -163,12 +163,7 @@
     {
      "feature": "workshops",
      "quote": "Dance Workshops SBKW",
-     "rationale": "The program lists dance workshops in Salsa, Bachata and Kizomba West Coast as part of the event."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Salsa/Bachata & Kizomba West Coast themed dance parties",
-     "rationale": "The program lists themed dance parties for the event."
+     "rationale": "The program lists dance workshops as part of the event."
     },
     {
      "feature": "beach_party",
@@ -176,24 +171,29 @@
      "rationale": "The program explicitly lists a beach party."
     },
     {
-     "feature": "camping",
-     "quote": "Bungalow accommodation",
-     "rationale": "Accommodation is offered in bungalows, which falls under the camping feature."
+     "feature": "themed_parties",
+     "quote": "Salsa/Bachata & Kizomba West Coast themed dance parties",
+     "rationale": "The parties are explicitly described as themed dance parties."
     },
     {
-     "feature": "accommodation_included",
-     "quote": "Full board stay 3 days/3 nights: €430",
-     "rationale": "The registration price for the stay covers the full board accommodation package."
+     "feature": "camping",
+     "quote": "Bungalow accommodation",
+     "rationale": "Bungalow accommodation is offered as the stay option."
     },
     {
      "feature": "meals_included",
      "quote": "Full board",
-     "rationale": "The accommodation package is listed as full board, which includes meals."
+     "rationale": "Full board is part of the accommodation package."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Full board 3 nights",
+     "rationale": "The full board stay price covers the accommodation for the stay."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "Bus: See registration form here",
-     "rationale": "A bus transport option to the event is offered through the registration form."
+     "rationale": "A bus transport option for getting to the event is mentioned."
     }
    ]
   }

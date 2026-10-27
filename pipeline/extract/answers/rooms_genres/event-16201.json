@@ -15,7 +15,7 @@
      "genres": [
       "salsa"
      ],
-     "quote": "(Salsa,"
+     "quote": "(Salsa, 2 Bachata Rooms"
     },
     {
      "name_as_written": null,
@@ -31,7 +31,7 @@
      "genres": [
       "zouk"
      ],
-     "quote": "Zouk,"
+     "quote": "Zouk"
     },
     {
      "name_as_written": null,
@@ -39,13 +39,14 @@
      "genres": [
       "kizomba"
      ],
-     "quote": "Kizomba,"
+     "quote": "Kizomba"
     },
     {
      "name_as_written": null,
      "kind": "party",
      "genres": [
-      "salsa"
+      "salsa",
+      "other"
      ],
      "quote": "Cuban Salsa/Rueda"
     }
@@ -75,6 +76,11 @@
      "genre": "zouk",
      "genre_as_written": "ZOUK",
      "quote": "DCBX is ZOUK"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Rueda",
+     "quote": "Cuban Salsa/Rueda"
     }
    ]
   }

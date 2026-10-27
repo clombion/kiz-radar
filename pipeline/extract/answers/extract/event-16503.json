@@ -41,7 +41,7 @@
     },
     {
      "name_as_written": "DJ NS",
-     "role": "dj",
+     "role": "organiser",
      "style": null,
      "country": null,
      "source_line": "💛 Presented by DJ NS"
@@ -49,19 +49,19 @@
    ],
    "features": [
     {
-     "feature": "bootcamp_intensive",
-     "quote": "Exclusive Bootcamps & Workshops",
-     "rationale": "The line advertises exclusive bootcamps as part of the event."
-    },
-    {
      "feature": "workshops",
      "quote": "Exclusive Bootcamps & Workshops",
-     "rationale": "The line advertises workshops as part of the event."
+     "rationale": "The description lists Bootcamps & Workshops as part of the event."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Exclusive Bootcamps & Workshops",
+     "rationale": "Bootcamps are explicitly offered as part of the event."
     },
     {
      "feature": "shows",
      "quote": "Surprise Performances & Media Moments",
-     "rationale": "The line promises surprise performances by artists at the event."
+     "rationale": "Surprise performances are announced as part of the event."
     }
    ]
   }

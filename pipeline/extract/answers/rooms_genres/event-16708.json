@@ -10,42 +10,37 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "● Kizomba ● Semba"
+     "quote": "Kizomba"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "● Kizomba ● Semba"
+     "quote": "Semba"
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "Urban Kiz",
-     "quote": "● Urban Kiz ● Tarraxinha"
+     "quote": "Urban Kiz"
     },
     {
      "genre": "tarraxinha",
      "genre_as_written": "Tarraxinha",
-     "quote": "● Urban Kiz ● Tarraxinha"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cabo Love",
-     "quote": "● Cabo Love ● Ghetto zouk"
+     "quote": "Tarraxinha"
     },
     {
      "genre": "zouk",
      "genre_as_written": "Ghetto zouk",
-     "quote": "● Cabo Love ● Ghetto zouk"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "● Zouk ● Konpa"
+     "quote": "Ghetto zouk"
     },
     {
      "genre": "kompa",
      "genre_as_written": "Konpa",
-     "quote": "● Zouk ● Konpa"
+     "quote": "Konpa"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Cabo Love",
+     "quote": "Cabo Love"
     }
    ]
   }

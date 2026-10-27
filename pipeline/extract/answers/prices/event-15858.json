@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 79,
+       "amount": 79.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -23,7 +23,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Full Pass: 79€"
+       "quote": "👉 Full Pass: 79€"
       }
      ]
     },
@@ -36,7 +36,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 49,
+       "amount": 49.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -46,7 +46,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Party Pass: 49€"
+       "quote": "👉 Party Pass: 49€"
       }
      ]
     }

@@ -8,27 +8,27 @@
     {
      "feature": "workshops",
      "quote": "Amazing dance workshops",
-     "rationale": "The description lists amazing dance workshops as part of the event program."
+     "rationale": "The description lists amazing dance workshops as part of the event."
     },
     {
      "feature": "competition",
      "quote": "Rising Star Competition",
-     "rationale": "The event includes a Rising Star Competition titled Dutch Selection."
+     "rationale": "A Rising Star Competition is listed in the expectations and the Sunday programme."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "3 Full Days of Dancing; Parties & Socials",
+     "rationale": "The weekend programme lists socials on each day, which are daytime socials alongside the parties."
     },
     {
      "feature": "dress_code",
-     "quote": "Black & Red Gala",
-     "rationale": "A dress code is stated for Saturday Night, namely Black & Red Gala."
+     "quote": "Urban Attitude",
+     "rationale": "The description states dress codes for each night, such as Urban Attitude on Friday."
     },
     {
      "feature": "themed_parties",
      "quote": "All White",
-     "rationale": "Sunday Night is a themed party with an all-white dress theme."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Parties & Socials",
-     "rationale": "The three full days include socials alongside the parties, and the weekend program lists daytime socials."
+     "rationale": "The Sunday night is a themed party with an all-white dress theme."
     }
    ]
   }

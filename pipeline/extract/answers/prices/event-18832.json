@@ -9,11 +9,11 @@
      "style": null,
      "label_quote": "FULL PASS Pricing:",
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 290,
+       "amount": 290.0,
        "currency": "PLN",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "1. 290 PLN/person – sold out"
       },
       {
-       "amount": 320,
+       "amount": 320.0,
        "currency": "PLN",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "2. 320 PLN/person (10 couples) – sold out"
       },
       {
-       "amount": 350,
+       "amount": 350.0,
        "currency": "PLN",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "3. 350 PLN/person – September/October/November"
       },
       {
-       "amount": 380,
+       "amount": 380.0,
        "currency": "PLN",
        "fee": null,
        "alt": null,
@@ -65,7 +65,7 @@
        "quote": "4. 380 PLN/person – December/January"
       },
       {
-       "amount": 410,
+       "amount": 410.0,
        "currency": "PLN",
        "fee": null,
        "alt": null,
@@ -78,7 +78,7 @@
        "quote": "5. 410 PLN/person – February"
       },
       {
-       "amount": 430,
+       "amount": 430.0,
        "currency": "PLN",
        "fee": null,
        "alt": null,
@@ -91,7 +91,7 @@
        "quote": "6. 430 PLN/person – March"
       },
       {
-       "amount": 450,
+       "amount": 450.0,
        "currency": "PLN",
        "fee": null,
        "alt": null,
@@ -106,9 +106,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "Registration for couples only."
-   ]
+   "rule_quotes": []
   }
  ]
 }

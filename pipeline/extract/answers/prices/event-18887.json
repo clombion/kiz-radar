@@ -13,7 +13,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 340,
+       "amount": 340.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -24,9 +24,134 @@
        "sold_out": false,
        "current": false,
        "quote": "2 nights: 200€ + (70€ × 2) = 340€"
-      },
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "Combo (2 persons) Room + full pass",
+     "group_size": 2,
+     "days": 3,
+     "includes_hotel": true,
+     "tiers": [
       {
-       "amount": 360,
+       "amount": 440.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "3 nights: 300€ + (70€ × 2) = 440€"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "Combo (2 persons) Room + full pass",
+     "group_size": 2,
+     "days": 4,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 540.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "4 nights: 400€ + (70€ × 2) = 540€"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "Combo (1 person) Room + full pass",
+     "group_size": 1,
+     "days": 2,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 270.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "2 nights: 200€ + 70€ = 270€"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "Combo (1 person) Room + full pass",
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 370.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "3 nights: 300€ + 70€ = 370€"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "Combo (1 person) Room + full pass",
+     "group_size": 1,
+     "days": 4,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 470.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "4 nights: 400€ + 70€ = 470€"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "Combo (2 persons) Room + full pass",
+     "group_size": 2,
+     "days": 2,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 360.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -49,20 +174,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 440,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "3 nights: 300€ + (70€ × 2) = 440€"
-      },
-      {
-       "amount": 460,
+       "amount": 460.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -85,20 +197,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 540,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "4 nights: 400€ + (70€ × 2) = 540€"
-      },
-      {
-       "amount": 560,
+       "amount": 560.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -121,20 +220,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 270,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "2 nights: 200€ + 70€ = 270€"
-      },
-      {
-       "amount": 280,
+       "amount": 280.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -157,20 +243,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 370,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "3 nights: 300€ + 70€ = 370€"
-      },
-      {
-       "amount": 380,
+       "amount": 380.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -193,20 +266,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 470,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "4 nights: 400€ + 70€ = 470€"
-      },
-      {
-       "amount": 480,
+       "amount": 480.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

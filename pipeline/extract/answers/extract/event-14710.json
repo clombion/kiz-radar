@@ -92,7 +92,7 @@
      "name_as_written": "Iron Mams🇨🇭 & Moorea",
      "role": "teacher",
      "style": null,
-     "country": null,
+     "country": "🇨🇭 & 🇫🇷",
      "source_line": "✔ Iron Mams🇨🇭 & Moorea 🇫🇷"
     },
     {
@@ -141,7 +141,7 @@
      "name_as_written": "Oncle Kani 🇫🇷 & Linda",
      "role": "teacher",
      "style": null,
-     "country": null,
+     "country": "🇫🇷 & 🇨🇭",
      "source_line": "✔ Oncle Kani 🇫🇷 & Linda🇨🇭"
     },
     {
@@ -155,33 +155,33 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "Friday 20/02: WAKANDA FESTIVAL (𝗩𝗮𝗻 𝗱𝗲𝗿 𝗩𝗮𝗹𝗸 𝗛𝗼𝘁𝗲𝗹 𝗣𝗮𝗿𝗶𝘀 𝗖𝗗𝗚 𝗔𝗶𝗿𝗽𝗼𝗿𝘁) Social 4PM-8PM / party 23PM-7AM",
-     "rationale": "The party and social sessions are held at the Van der Valk hotel, which is the hotel dancers are invited to stay in, so event and accommodation share one venue."
+     "quote": "For your comfort, we have chosen the luxurious 4-star hotel 𝗩𝗮𝗻 𝗱𝗲𝗿 𝗩𝗮𝗹𝗸 𝗛𝗼𝘁𝗲𝗹 𝗣𝗮𝗿𝗶𝘀 𝗖𝗗𝗚 𝗔𝗶𝗿𝗽𝗼𝗿𝘁",
+     "rationale": "The festival parties are held in the same hotel where dancers are invited to stay, with its dance space."
     },
     {
      "feature": "pre_party",
      "quote": "plus a pre-party on Thursday",
-     "rationale": "The announcement explicitly mentions a pre-party on Thursday before the main event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Second hotels, 2min walk:",
-     "rationale": "A list of recommended hotels within a two-minute walk is given, while accommodation is not stated as part of the pass."
-    },
-    {
-     "feature": "workshops",
-     "quote": "𝗧𝗘𝗔𝗖𝗛𝗘𝗥𝗦",
-     "rationale": "A teachers section lists the teaching couples and solo instructors for the event's dance classes."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "𝗥𝗢𝗢𝗠 𝟮 (𝗞𝗜𝗭𝗢𝗠𝗕𝗔) (200m2)",
-     "rationale": "The venue section describes at least two separate dance rooms, Room 1 and Room 2."
+     "rationale": "The description announces a pre-party on Thursday before the main event."
     },
     {
      "feature": "day_socials",
      "quote": "Social 4PM-8PM / party 23PM-7AM",
-     "rationale": "The program lists daytime social sessions in the afternoon before the evening parties."
+     "rationale": "The program lists daytime socials from 4PM to 8PM each day."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "The two rooms have air conditioning.",
+     "rationale": "The venue has two separate dance rooms, Room 1 and Room 2."
+    },
+    {
+     "feature": "workshops",
+     "quote": "𝗧𝗘𝗔𝗖𝗛𝗘𝗥𝗦",
+     "rationale": "A teachers line-up indicates dance classes are part of the event."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Second hotels, 2min walk:",
+     "rationale": "The description recommends several nearby hotels as alternatives to the main hotel."
     }
    ]
   }

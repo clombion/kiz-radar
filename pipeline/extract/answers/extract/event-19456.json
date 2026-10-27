@@ -280,14 +280,14 @@
    ],
    "features": [
     {
-     "feature": "workshops",
-     "quote": "WORKSHOPS",
-     "rationale": "The event lists workshops as part of what it offers."
-    },
-    {
      "feature": "all_in_one",
      "quote": "Hosted at the Paris Marriott Charles de Gaulle Airport Hotel, bringing together workshops, artists, socials and parties all in one place.",
-     "rationale": "The parties and workshops take place in the hotel where the event is hosted, so event and accommodation share one venue."
+     "rationale": "The event is hosted at the hotel and bundles workshops, artists, socials and parties in one place, so event and accommodation share a venue."
+    },
+    {
+     "feature": "workshops",
+     "quote": "WORKSHOPS • PARTIES • SOCIALS",
+     "rationale": "Workshops are listed as part of the event programme."
     }
    ]
   }

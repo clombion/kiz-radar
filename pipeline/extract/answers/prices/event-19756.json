@@ -13,12 +13,12 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "05-01",
-       "until": "05-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -26,12 +26,12 @@
        "quote": "May — 150 €"
       },
       {
-       "amount": 155,
+       "amount": 155.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "06-01",
-       "until": "06-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -39,12 +39,12 @@
        "quote": "June — 155 €"
       },
       {
-       "amount": 160,
+       "amount": 160.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "07-01",
-       "until": "07-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -52,12 +52,12 @@
        "quote": "July — 160 €"
       },
       {
-       "amount": 165,
+       "amount": 165.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "08-01",
-       "until": "08-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -65,12 +65,12 @@
        "quote": "August — 165 €"
       },
       {
-       "amount": 170,
+       "amount": 170.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "09-01",
-       "until": "09-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -78,12 +78,12 @@
        "quote": "September — 170 €"
       },
       {
-       "amount": 175,
+       "amount": 175.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "10-01",
-       "until": "10-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -91,12 +91,12 @@
        "quote": "October — 175 €"
       },
       {
-       "amount": 180,
+       "amount": 180.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-01",
-       "until": "11-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -114,12 +114,12 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 125,
+       "amount": 125.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "05-01",
-       "until": "05-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -127,12 +127,12 @@
        "quote": "May — 125 €"
       },
       {
-       "amount": 130,
+       "amount": 130.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "06-01",
-       "until": "06-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -140,12 +140,12 @@
        "quote": "June — 130 €"
       },
       {
-       "amount": 135,
+       "amount": 135.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "07-01",
-       "until": "07-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -153,12 +153,12 @@
        "quote": "July — 135 €"
       },
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "08-01",
-       "until": "08-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -166,12 +166,12 @@
        "quote": "August — 140 €"
       },
       {
-       "amount": 145,
+       "amount": 145.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "09-01",
-       "until": "09-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -179,12 +179,12 @@
        "quote": "September — 145 €"
       },
       {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "10-01",
-       "until": "10-31",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -192,12 +192,12 @@
        "quote": "October — 150 €"
       },
       {
-       "amount": 155,
+       "amount": 155.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-01",
-       "until": "11-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -208,7 +208,7 @@
     }
    ],
    "rule_quotes": [
-    "Through our ambassadors and partner dance schools, you may unlock preferred prices with minimum 10 € discount for Full Passes and 5 € discount for Party Passes."
+    "you may unlock preferred prices with minimum 10 € discount for Full Passes and 5 € discount for Party Passes"
    ]
   }
  ]

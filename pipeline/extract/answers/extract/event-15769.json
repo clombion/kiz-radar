@@ -92,38 +92,38 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "ALL IN ONE RESORT 4",
-     "rationale": "The event is held in an all-in-one resort where the hotels are the venue for the stay and parties."
-    },
-    {
-     "feature": "workshops",
-     "quote": "WORKSHOPS",
-     "rationale": "The line-up lists workshops as part of the festival programme."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "15:00 – 18:00 Beach•Pool Social",
-     "rationale": "Daytime beach and pool socials are listed in the programme."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre Party",
-     "rationale": "A pre party is scheduled on Thursday before the main event."
+     "quote": "HOTELS ALL IN ONE",
+     "rationale": "The description states that the hotels are all in one resort, so the parties are held where dancers can stay."
     },
     {
      "feature": "multiple_rooms",
      "quote": "2 ROOMS / 2 ENERGIES",
-     "rationale": "The event advertises two dance rooms."
+     "rationale": "The event has two dance rooms."
     },
     {
-     "feature": "partner_hotel",
-     "quote": "To book with our discounts",
-     "rationale": "Discounted hotel booking within the resort is offered through the event's hotels, separate from the pass."
+     "feature": "workshops",
+     "quote": "WORKSHOPS",
+     "rationale": "Workshops are listed as part of the programme."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "23:00 – 04:00 Pre Party",
+     "rationale": "A pre party is scheduled on Thursday before the main event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "15:00 – 18:00 Beach•Pool Social",
+     "rationale": "Afternoon beach and pool socials are scheduled each day."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Beach•Pool Social",
+     "rationale": "The socials are held at the beach and pool, which suggests pool sessions."
     },
     {
      "feature": "meals_included",
-     "quote": "ALL INCLUSIVE",
-     "rationale": "The all-inclusive hotel package includes breakfast, lunch, dinner, snacks and drinks."
+     "quote": "73€ ALL INCLUSIVE",
+     "rationale": "The all-inclusive hotel rate covers meals along with drinks."
     }
    ]
   }

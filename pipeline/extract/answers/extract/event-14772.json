@@ -5,6 +5,20 @@
    "event_id": 14772,
    "artists": [
     {
+     "name_as_written": "LOGIA",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 LOGIA + MKC 2026: SURVIVORS 🔥"
+    },
+    {
+     "name_as_written": "Mexico Kizomba Congress",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "🚀 Welcome to the ultimate evolution. In 2026, LOGIA and the Mexico Kizomba Congress join forces to create an unprecedented experience: SURVIVORS. An event where only the most passionate, the boldest, and the true dance lovers dare to make it to the end. 💃🔥🕺"
+    },
+    {
      "name_as_written": "JP & Stephy",
      "role": "teacher",
      "style": null,
@@ -37,7 +51,7 @@
      "role": "teacher",
      "style": null,
      "country": "Swedeen",
-     "source_line": "*Teresa Jimenez (Swedeen)"
+     "source_line": "Teresa Jimenez (Swedeen)"
     },
     {
      "name_as_written": "Asia Voronova",
@@ -115,20 +129,6 @@
      "style": null,
      "country": null,
      "source_line": "DJ Morelasoul"
-    },
-    {
-     "name_as_written": "LOGIA",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🚀 Welcome to the ultimate evolution. In 2026, LOGIA and the Mexico Kizomba Congress join forces to create an unprecedented experience: SURVIVORS. An event where only the most passionate, the boldest, and the true dance lovers dare to make it to the end. 💃🔥🕺"
-    },
-    {
-     "name_as_written": "Mexico Kizomba Congress",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🚀 Welcome to the ultimate evolution. In 2026, LOGIA and the Mexico Kizomba Congress join forces to create an unprecedented experience: SURVIVORS. An event where only the most passionate, the boldest, and the true dance lovers dare to make it to the end. 💃🔥🕺"
     },
     {
      "name_as_written": "EL JEFE",

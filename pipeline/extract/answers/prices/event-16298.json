@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 79,
+       "amount": 79.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "May — €79"
       },
       {
-       "amount": 89,
+       "amount": 89.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "August — €89"
       },
       {
-       "amount": 99,
+       "amount": 99.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "September — €99"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -75,7 +75,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 129,
+       "amount": 129.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -88,7 +88,7 @@
        "quote": "May — €129"
       },
       {
-       "amount": 149,
+       "amount": 149.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -101,7 +101,7 @@
        "quote": "August — €149"
       },
       {
-       "amount": 169,
+       "amount": 169.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

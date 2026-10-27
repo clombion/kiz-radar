@@ -18,27 +18,27 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "2 Dance Rooms – Urban Kiz | Kizomba | Semba | Tarraxo | Kompa | Douceur"
+     "quote": "Urban Kiz | Kizomba | Semba | Tarraxo | Kompa | Douceur"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "2 Dance Rooms – Urban Kiz | Kizomba | Semba | Tarraxo | Kompa | Douceur"
+     "quote": "Kizomba | Semba | Tarraxo | Kompa | Douceur"
     },
     {
      "genre": "tarraxo",
      "genre_as_written": "Tarraxo",
-     "quote": "2 Dance Rooms – Urban Kiz | Kizomba | Semba | Tarraxo | Kompa | Douceur"
+     "quote": "Semba | Tarraxo | Kompa | Douceur"
     },
     {
      "genre": "kompa",
      "genre_as_written": "Kompa",
-     "quote": "2 Dance Rooms – Urban Kiz | Kizomba | Semba | Tarraxo | Kompa | Douceur"
+     "quote": "Tarraxo | Kompa | Douceur"
     },
     {
      "genre": "douceur",
      "genre_as_written": "Douceur",
-     "quote": "2 Dance Rooms – Urban Kiz | Kizomba | Semba | Tarraxo | Kompa | Douceur"
+     "quote": "Kompa | Douceur"
     }
    ]
   }

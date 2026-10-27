@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 650,
+       "amount": 650.0,
        "currency": "DKK",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "Super Supporter Passes: 650kr (SOLD OUT!)"
       },
       {
-       "amount": 700,
+       "amount": 700.0,
        "currency": "DKK",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "Early Bird Passes: 700kr (SOLD OUT!)"
       },
       {
-       "amount": 750,
+       "amount": 750.0,
        "currency": "DKK",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "December batch: 750kr (SOLD OUT!)"
       },
       {
-       "amount": 800,
+       "amount": 800.0,
        "currency": "DKK",
        "fee": null,
        "alt": null,
@@ -65,7 +65,7 @@
        "quote": "January batch: 800kr (SOLD OUT)"
       },
       {
-       "amount": 875,
+       "amount": 875.0,
        "currency": "DKK",
        "fee": null,
        "alt": null,

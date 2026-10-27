@@ -3,8 +3,8 @@
  "title": "La Luna Festival – Kizz District 2026",
  "start_date": "2026-11-06",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "cb864655c7075f56",
- "rows_at": "2026-10-27T11:42:05+00:00",
+ "prompt": "1a3b603636d758ee",
+ "rows_at": "2026-10-27T18:07:40+00:00",
  "styles": [
   "kizomba"
  ],
@@ -39,9 +39,9 @@
    "tiers": [
     {
      "keys": [
+      "8b14d2da-ff15-48fc-8a5b-cb30d5fc4dff",
       "2a7b4ef0-d264-46cc-bcba-1f70f199ef64",
-      "2bcdf958-b7a0-43db-9951-5a51037e67b2",
-      "8b14d2da-ff15-48fc-8a5b-cb30d5fc4dff"
+      "2bcdf958-b7a0-43db-9951-5a51037e67b2"
      ],
      "from": null,
      "until": null,

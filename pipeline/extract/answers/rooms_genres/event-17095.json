@@ -10,7 +10,7 @@
    "class_rooms": null,
    "rooms": [
     {
-     "name_as_written": "Ralitsa Aquaclub",
+     "name_as_written": null,
      "kind": "party",
      "genres": [
       "kizomba"
@@ -18,7 +18,7 @@
      "quote": "Kizomba – in Ralitsa Aquaclub"
     },
     {
-     "name_as_written": "Maritim Hotel Paradise Blue",
+     "name_as_written": null,
      "kind": "party",
      "genres": [
       "salsa"
@@ -26,7 +26,7 @@
      "quote": "Salsa – at the pool of Maritim Hotel Paradise Blue"
     },
     {
-     "name_as_written": "Ganvie Beach Club",
+     "name_as_written": null,
      "kind": "party",
      "genres": [
       "bachata"
@@ -34,7 +34,7 @@
      "quote": "Bachata – On the Beach"
     },
     {
-     "name_as_written": "Aquapark",
+     "name_as_written": null,
      "kind": "party",
      "genres": [
       "zouk"
@@ -46,22 +46,22 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "** Kizomba Lineup **"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "** Zouk Lineup **"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "** Bachata Lineup **"
+     "quote": "Kizomba – in Ralitsa Aquaclub"
     },
     {
      "genre": "salsa",
      "genre_as_written": "Salsa",
-     "quote": "** Salsa Lineup **"
+     "quote": "Salsa – at the pool of Maritim Hotel Paradise Blue"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Bachata – On the Beach"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Zouk",
+     "quote": "Zouk – it the Aquapark"
     }
    ]
   }

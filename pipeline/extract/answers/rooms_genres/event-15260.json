@@ -11,50 +11,86 @@
    "rooms": [
     {
      "name_as_written": "Kulturstudion",
-     "kind": "unspecified",
+     "kind": "class",
      "genres": [
-      "tarraxo",
+      "kizomba",
       "urbankiz",
+      "tarraxo",
+      "tarraxinha",
       "semba",
       "kompa",
-      "tarraxinha",
-      "kizomba",
       "other"
+     ],
+     "quote": "WORKSHOPS (”Kulturstudion”)"
+    },
+    {
+     "name_as_written": "Kulturstudion",
+     "kind": "party",
+     "genres": [
+      "kizomba",
+      "tarraxo"
      ],
      "quote": "Kizomba Party (”Kulturstudion”)"
     },
     {
      "name_as_written": "Lilla scen",
-     "kind": "unspecified",
+     "kind": "class",
      "genres": [
       "urbankiz",
       "tarraxo",
+      "kizomba"
+     ],
+     "quote": "WORKSHOPS (”Lilla scen”)"
+    },
+    {
+     "name_as_written": "Lilla scen",
+     "kind": "party",
+     "genres": [
+      "urbankiz",
       "kizomba"
      ],
      "quote": "Urban Kiz Party (”Lilla scen”)"
     },
     {
      "name_as_written": "Stora scen",
-     "kind": "unspecified",
+     "kind": "class",
      "genres": [
       "kizomba",
-      "urbankiz",
+      "urbankiz"
+     ],
+     "quote": "WORKSHOP (”Stora scen”)"
+    },
+    {
+     "name_as_written": "Stora scen",
+     "kind": "party",
+     "genres": [
       "afro",
-      "other"
+      "other",
+      "urbankiz"
      ],
      "quote": "Afrobeat & Amapiano Party (”Stora scen”)"
     }
    ],
    "genres": [
     {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Tarraxo Fundamentals | Amina & Mamadou"
+     "genre": "kizomba",
+     "genre_as_written": "Kizomba",
+     "quote": "Instructors Kizomba:"
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "Urban Kiz",
      "quote": "Instructors Urban Kiz/Tango Kiz:"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Instructors Tarraxo/Tarraxinha/Konpa:"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "Tarraxinha | Elli & Vanildo"
     },
     {
      "genre": "semba",
@@ -67,24 +103,14 @@
      "quote": "Konpa Love | Susan & Mamadou"
     },
     {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Tarraxinha | Elli & Vanildo"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Instructors Kizomba:"
-    },
-    {
      "genre": "afro",
      "genre_as_written": "Afrobeat",
-     "quote": "Afrobeat & Amapiano Party (”Stora scen”)"
+     "quote": "Afrobeat & Amapiano Party"
     },
     {
      "genre": "other",
      "genre_as_written": "Amapiano",
-     "quote": "Afrobeat & Amapiano Party (”Stora scen”)"
+     "quote": "Amapiano Party"
     },
     {
      "genre": "other",

@@ -5,81 +5,6 @@
    "event_id": 18995,
    "passes": [
     {
-     "kind": "other",
-     "style": null,
-     "label_quote": "⭐Price per person FUL PAC",
-     "group_size": 1,
-     "days": 5,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 5900,
-       "currency": "NOK",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Norway – 5900 NOK"
-      },
-      {
-       "amount": 5890,
-       "currency": "SEK",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Sweden – 5890 SEK"
-      },
-      {
-       "amount": 4020,
-       "currency": "DKK",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Denmark – 4020 DKK"
-      },
-      {
-       "amount": 465,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Scotland – 465 GBP"
-      },
-      {
-       "amount": 540,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Portugal – 540 EUR"
-      }
-     ]
-    },
-    {
      "kind": "full",
      "style": null,
      "label_quote": null,
@@ -88,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 15000,
+       "amount": 15000.0,
        "currency": "ISK",
        "fee": null,
        "alt": null,
@@ -111,7 +36,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 26000,
+       "amount": 26000.0,
        "currency": "ISK",
        "fee": null,
        "alt": null,
@@ -134,7 +59,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 11000,
+       "amount": 11000.0,
        "currency": "ISK",
        "fee": null,
        "alt": null,
@@ -157,7 +82,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 8000,
+       "amount": 8000.0,
        "currency": "ISK",
        "fee": null,
        "alt": null,
@@ -180,7 +105,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 2000,
+       "amount": 2000.0,
        "currency": "ISK",
        "fee": null,
        "alt": null,
@@ -191,6 +116,121 @@
        "sold_out": false,
        "current": false,
        "quote": "2,000 ISK – FRIDAY NIGHT (with WKS)"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "style": null,
+     "label_quote": "⭐Price per person FUL PAC",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 5900.0,
+       "currency": "NOK",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Norway – 5900 NOK"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "style": null,
+     "label_quote": "⭐Price per person FUL PAC",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 5890.0,
+       "currency": "SEK",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Sweden – 5890 SEK"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "style": null,
+     "label_quote": "⭐Price per person FUL PAC",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 4020.0,
+       "currency": "DKK",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Denmark – 4020 DKK"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "style": null,
+     "label_quote": "⭐Price per person FUL PAC",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 465.0,
+       "currency": "GBP",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Scotland – 465 GBP"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "style": null,
+     "label_quote": "⭐Price per person FUL PAC",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 540.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Portugal – 540 EUR"
       }
      ]
     }

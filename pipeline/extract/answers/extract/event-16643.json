@@ -155,43 +155,43 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "workshops for all styles represented",
-     "rationale": "The event explicitly offers workshops covering all styles."
+     "quote": "with workshops for all styles represented!",
+     "rationale": "The description states that workshops for all styles are part of the event."
     },
     {
      "feature": "all_levels_beginners",
      "quote": "workshop beginner friendly",
-     "rationale": "Several workshops are explicitly labelled beginner friendly."
+     "rationale": "Beginner-friendly workshops are explicitly offered."
     },
     {
      "feature": "dress_code",
      "quote": "DRESSCODES",
-     "rationale": "A section titled DRESSCODES lists a dress code for each day."
+     "rationale": "A dress code section lists the dress code for each day."
     },
     {
      "feature": "themed_parties",
-     "quote": "Friday: Summer Bouquet",
-     "rationale": "Each day has a dress theme for its party, such as Summer Bouquet or Black & Gold Elegance."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "17:45-19:45: Social",
-     "rationale": "Daytime and afternoon social sessions are on the schedule."
+     "quote": "Saturday: Black & Gold Elegance 💛",
+     "rationale": "Each day has a dress theme for its party, such as Black & Gold Elegance."
     },
     {
      "feature": "pre_party",
      "quote": "20:00-22:00 Pre-party workshops",
-     "rationale": "A pre-party workshop session runs before the Friday party."
+     "rationale": "A pre-party session is scheduled before the Friday party."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "17:45-19:45: Social",
+     "rationale": "A daytime social is scheduled on Saturday afternoon and evening."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "(cheap recommendations)",
+     "rationale": "The description recommends hotels for staying, without them being part of the pass."
     },
     {
      "feature": "multiple_rooms",
      "quote": "Room 2:",
-     "rationale": "The event uses more than one dance room, Room 1 and Room 2."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "cheap recommendations",
-     "rationale": "The section lists recommended hotels, which are not part of the pass."
+     "rationale": "The schedule lists more than one dance room, Room 1 and Room 2."
     }
    ]
   }

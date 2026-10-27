@@ -3,10 +3,13 @@
  "events": [
   {
    "event_id": 15697,
-   "party_rooms": null,
-   "class_rooms": {
+   "party_rooms": {
     "count": 4,
     "quote": "4 Dancefloors / 4 Rooms"
+   },
+   "class_rooms": {
+    "count": 4,
+    "quote": "1- Sensual & Modern Bachata 💃🏽\n2- Cuban & Puerto Rican Salsa 🕺🏻\n3- Dominican Bachata, Merengue, Zouk 💃🏽\n4- Kizomba 🕺🏻"
    },
    "rooms": [
     {
@@ -15,7 +18,7 @@
      "genres": [
       "bachata"
      ],
-     "quote": "Sensual & Modern Bachata"
+     "quote": "1- Sensual & Modern Bachata"
     },
     {
      "name_as_written": null,
@@ -23,7 +26,7 @@
      "genres": [
       "salsa"
      ],
-     "quote": "Cuban & Puerto Rican Salsa"
+     "quote": "2- Cuban & Puerto Rican Salsa"
     },
     {
      "name_as_written": null,
@@ -33,7 +36,7 @@
       "other",
       "zouk"
      ],
-     "quote": "Dominican Bachata, Merengue, Zouk"
+     "quote": "3- Dominican Bachata, Merengue, Zouk"
     },
     {
      "name_as_written": null,
@@ -41,29 +44,29 @@
      "genres": [
       "kizomba"
      ],
-     "quote": "Kizomba"
+     "quote": "4- Kizomba"
     }
    ],
    "genres": [
     {
      "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "(Bachata, Salsa, Kizomba, Zouk)"
+     "genre_as_written": "BACHATA",
+     "quote": "BACHATA BEACH FEVER BSK FESTIVAL"
     },
     {
      "genre": "salsa",
      "genre_as_written": "Salsa",
-     "quote": "(Bachata, Salsa, Kizomba, Zouk)"
+     "quote": "Cuban & Puerto Rican Salsa"
     },
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "(Bachata, Salsa, Kizomba, Zouk)"
+     "quote": "4- Kizomba"
     },
     {
      "genre": "zouk",
      "genre_as_written": "Zouk",
-     "quote": "(Bachata, Salsa, Kizomba, Zouk)"
+     "quote": "Dominican Bachata, Merengue, Zouk"
     },
     {
      "genre": "other",

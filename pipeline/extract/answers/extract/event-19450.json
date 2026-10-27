@@ -93,32 +93,37 @@
     {
      "feature": "all_in_one",
      "quote": "All-in-one hotel experience",
-     "rationale": "The description promotes an all-in-one hotel experience, indicating event and accommodation in the same venue."
+     "rationale": "The description says the event is an all-in-one hotel experience, meaning the parties happen in the hotel where dancers stay."
     },
     {
      "feature": "multiple_rooms",
      "quote": "2 rooms – 2 different vibes",
-     "rationale": "The event has two dance rooms with different vibes, plus a third room."
+     "rationale": "The event has two rooms with different vibes, and a third room is also listed."
     },
     {
      "feature": "workshops",
      "quote": "High-quality workshops from new generation",
-     "rationale": "The event includes workshops taught by new-generation teachers."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "15:00 – 19:00 Social",
-     "rationale": "The schedule lists afternoon socials from 15:00 to 19:00."
+     "rationale": "High-quality workshops are listed as part of the event."
     },
     {
      "feature": "partner_hotel",
      "quote": "Exe Lev (partner)",
-     "rationale": "A partner hotel is listed in the accommodation section alongside a special offer."
+     "rationale": "Exe Lev is named as a partner hotel for accommodation."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "3 socials & 3 parties",
+     "rationale": "The schedule includes afternoon socials from 15:00 to 19:00 on several days."
     },
     {
      "feature": "shows",
      "quote": "Tiwosh Show 🇭🇹",
-     "rationale": "Tiwosh is listed as performing a show at the event."
+     "rationale": "Tiwosh Show is listed as a show performance by an artist."
+    },
+    {
+     "feature": "competition",
+     "quote": "olympiades semba 1st",
+     "rationale": "A semba Olympiad, which is a competition, is mentioned next to a teacher's name."
     }
    ]
   }

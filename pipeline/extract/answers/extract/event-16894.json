@@ -63,34 +63,34 @@
    ],
    "features": [
     {
+     "feature": "live_music",
+     "quote": "Live music",
+     "rationale": "The description lists live music under a microphone heading and mentions a live concert in the pass inclusions."
+    },
+    {
      "feature": "competition",
      "quote": "Polish Kizomba & Semba contest",
-     "rationale": "A kizomba and semba contest is part of the event programme."
+     "rationale": "A Polish Kizomba & Semba contest is held as part of the festival."
     },
     {
      "feature": "workshops",
      "quote": "workshops 12:00-17:00",
-     "rationale": "Saturday workshops are scheduled as part of the event."
+     "rationale": "Workshops are scheduled on Saturday during the festival."
     },
     {
      "feature": "day_socials",
      "quote": "social 14.00-18.00",
-     "rationale": "An afternoon social is scheduled on Saturday."
+     "rationale": "Afternoon socials are scheduled on Saturday."
     },
     {
      "feature": "multiple_rooms",
      "quote": "(2 rooms)",
-     "rationale": "The Saturday party is held in two rooms."
+     "rationale": "The Saturday party is held in two rooms, so there is more than one dance floor."
     },
     {
      "feature": "after_party",
      "quote": "Afterparty 17.00-24:30",
      "rationale": "An afterparty is scheduled on Sunday."
-    },
-    {
-     "feature": "live_music",
-     "quote": "live concert",
-     "rationale": "A live concert is part of the programme and included in the pass."
     }
    ]
   }

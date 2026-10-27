@@ -6,13 +6,7 @@
    "party_rooms": null,
    "class_rooms": null,
    "rooms": [],
-   "genres": [
-    {
-     "genre": "afro",
-     "genre_as_written": "AFROFESTIVAL",
-     "quote": "AFROFESTIVAL MALAGA 11TH EDITION BUTTERFLIES"
-    }
-   ]
+   "genres": []
   }
  ]
 }

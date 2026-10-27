@@ -7,17 +7,17 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": "FULL PASS (Fri & Sat: Workshops + Parties)",
+     "label_quote": null,
      "group_size": 1,
      "days": 2,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 70,
+       "amount": 70.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 350,
+        "amount": 350.0,
         "currency": "RON"
        },
        "from": null,
@@ -33,17 +33,17 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": "SATURDAY DAY PASS (Workshops + Party)",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 300,
+        "amount": 300.0,
         "currency": "RON"
        },
        "from": null,
@@ -59,17 +59,17 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": "SATURDAY PARTY PASS (Party Only)",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 16,
+       "amount": 16.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 80,
+        "amount": 80.0,
         "currency": "RON"
        },
        "from": null,
@@ -85,17 +85,17 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": "FRIDAY PARTY PASS (Party and workshop offered)",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 12,
+       "amount": 12.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 60,
+        "amount": 60.0,
         "currency": "RON"
        },
        "from": null,
@@ -109,9 +109,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "Pass transfers involve a fee of 10 €"
-   ]
+   "rule_quotes": []
   }
  ]
 }

@@ -10,37 +10,37 @@
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "Bachata"
+     "quote": "workshops: Bachata , Salsa"
     },
     {
      "genre": "salsa",
      "genre_as_written": "Salsa",
-     "quote": "Salsa"
+     "quote": "Bachata , Salsa , Timba"
     },
     {
      "genre": "other",
      "genre_as_written": "Timba",
-     "quote": "Timba"
+     "quote": "Salsa , Timba, Kizomba"
     },
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Kizomba"
+     "quote": "Timba, Kizomba, , Semba"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "Semba"
+     "quote": "Kizomba, , Semba"
     },
     {
      "genre": "afro",
      "genre_as_written": "Afrohouse",
-     "quote": "Afrohouse"
+     "quote": "Afrohouse Tarraxo"
     },
     {
      "genre": "tarraxo",
      "genre_as_written": "Tarraxo",
-     "quote": "Tarraxo"
+     "quote": "Afrohouse Tarraxo"
     }
    ]
   }

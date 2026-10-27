@@ -177,7 +177,7 @@
     {
      "feature": "all_in_one",
      "quote": "ALL IN ONE LOCATION",
-     "rationale": "The event and the official hotels are stated to be in one location."
+     "rationale": "The event and the hotels where dancers are invited to stay are in one location."
     },
     {
      "feature": "multiple_rooms",
@@ -187,42 +187,42 @@
     {
      "feature": "workshops",
      "quote": "25H WORKSHOPS",
-     "rationale": "Workshops are listed as part of the programme."
+     "rationale": "The festival offers 25 hours of workshops."
     },
     {
      "feature": "pre_party",
      "quote": "1 PRE-PARTY IN SAME LOCATION",
-     "rationale": "A pre-party is held before the main event at the same location."
+     "rationale": "A pre-party is held before the festival at the same location."
     },
     {
      "feature": "after_party",
      "quote": "1 AFTER – PARTY",
-     "rationale": "An after-party is listed among the features."
+     "rationale": "An after-party is listed among the highlights."
     },
     {
      "feature": "day_socials",
      "quote": "15:00 – 20:00 Social – Room 2 & 2A",
-     "rationale": "Daytime and afternoon socials are scheduled in the programme."
+     "rationale": "Afternoon social sessions are scheduled during the day."
     },
     {
      "feature": "competition",
-     "quote": "KZL Championship preselection – Authentic",
-     "rationale": "A championship preselection is scheduled on the Sunday."
+     "quote": "KZL Championship preselection",
+     "rationale": "A championship preselection is held as part of the programme."
     },
     {
      "feature": "dress_code",
      "quote": "PARTY DRESS CODES",
-     "rationale": "The description explicitly sets dress codes for the parties."
+     "rationale": "The description states dress codes for the parties."
     },
     {
      "feature": "themed_parties",
-     "quote": "SATURDAY – ELEGANT",
-     "rationale": "Each party night has a dress theme such as elegant or pink and white."
+     "quote": "FRIDAY – PINK & WHITE",
+     "rationale": "Each party night has a dress theme such as pink and white."
     },
     {
      "feature": "partner_hotel",
-     "quote": "OUR OFFICIAL HOTELS",
-     "rationale": "The organisers recommend official hotels with a discount arranged, while accommodation is not part of the pass."
+     "quote": "Accommodation is separately, with the advantage of a discount, which we arranged for you.",
+     "rationale": "A negotiated discount on hotel rooms is offered, with accommodation separate from the pass."
     }
    ]
   }

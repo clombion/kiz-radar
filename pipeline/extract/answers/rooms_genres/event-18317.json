@@ -12,17 +12,16 @@
      "genres": [
       "urbankiz"
      ],
-     "quote": "One Room • Unlimited Vibes"
+     "quote": "URBANKIZ × OPEN FORMAT"
     },
     {
-     "name_as_written": null,
+     "name_as_written": "BACK TO THE ROOTS",
      "kind": "party",
      "genres": [
       "kizomba",
-      "semba",
-      "other"
+      "semba"
      ],
-     "quote": "BACK TO THE ROOTS"
+     "quote": "Kizomba • Semba • Ginga • African Vibes"
     },
     {
      "name_as_written": "ROOM #bachata – #salsa – #konpa",
@@ -38,28 +37,23 @@
    "genres": [
     {
      "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "WHERE KIZOMBA COMES HOME."
+     "genre_as_written": "KIZOMBA",
+     "quote": "💃 KIZOMBA"
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "URBANKIZ",
-     "quote": "URBANKIZ × OPEN FORMAT"
+     "quote": "⚡ URBANKIZ"
     },
     {
      "genre": "kompa",
-     "genre_as_written": "konpa",
-     "quote": "#konpa"
+     "genre_as_written": "KONPA",
+     "quote": "🌴 KONPA & ❤️‍🔥 BACHATA"
     },
     {
      "genre": "bachata",
-     "genre_as_written": "bachata",
-     "quote": "#bachata"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "salsa",
-     "quote": "#salsa"
+     "genre_as_written": "BACHATA",
+     "quote": "💃 BACHATA"
     },
     {
      "genre": "semba",
@@ -67,9 +61,9 @@
      "quote": "Kizomba • Semba • Ginga • African Vibes"
     },
     {
-     "genre": "other",
-     "genre_as_written": "Ginga",
-     "quote": "Ginga"
+     "genre": "salsa",
+     "genre_as_written": "#salsa",
+     "quote": "ROOM #bachata – #salsa – #konpa"
     }
    ]
   }

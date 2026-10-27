@@ -64,13 +64,13 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "15 heures de cours",
-     "rationale": "The description lists the dance classes that make up the 15 hours of lessons and workshops."
+     "quote": "WORKSHOPS :",
+     "rationale": "The description lists dance workshops such as Kizomba Fusion, UrbanKiz and Semba as part of the event."
     },
     {
      "feature": "shows",
-     "quote": "stunning shows",
-     "rationale": "The English text advertises stunning shows as part of the event."
+     "quote": "des shows",
+     "rationale": "The event includes shows by artists, mentioned in the French text."
     },
     {
      "feature": "after_party",
@@ -80,22 +80,17 @@
     {
      "feature": "themed_parties",
      "quote": "incredible themed parties",
-     "rationale": "The event has themed nights such as Island Vibes, Oceanic Gala and Denim Fever."
+     "rationale": "The English text describes the evenings as themed parties with specific vibes and dress codes."
     },
     {
      "feature": "dress_code",
      "quote": "Dress code : tenues tropicales et colorées",
-     "rationale": "A dress code is stated for the Friday party."
+     "rationale": "A dress code for the Friday night is explicitly stated."
     },
     {
      "feature": "partner_hotel",
      "quote": "Code promo spécial : KIZ15 pour vos réservations",
-     "rationale": "A special promo code gives a negotiated hotel rate for the recommended Ramada Hôtel without accommodation being part of the pass."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "Ramada Hôtel – Nouméa, Nouvelle-Calédonie",
-     "rationale": "The event venue is the Ramada Hôtel, which is also the listed accommodation, so the parties take place where dancers stay."
+     "rationale": "A promo code for discounted bookings at the Ramada Hôtel indicates a negotiated hotel rate, not included in the pass."
     }
    ]
   }

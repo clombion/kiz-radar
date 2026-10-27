@@ -40,14 +40,14 @@
      "source_line": "Olivier 🇲🇶 & Delphine 🇲🇶"
     },
     {
-     "name_as_written": "Audrey 🇲🇶",
+     "name_as_written": "Audrey",
      "role": "teacher",
      "style": null,
      "country": "🇲🇶",
      "source_line": "Audrey 🇲🇶"
     },
     {
-     "name_as_written": "Idania 🇨🇺",
+     "name_as_written": "Idania",
      "role": "teacher",
      "style": null,
      "country": "🇨🇺",
@@ -89,28 +89,28 @@
      "source_line": "Franck 🇬🇵 & Maeva 🇬🇵"
     },
     {
-     "name_as_written": "Thomas 🇬🇵",
+     "name_as_written": "Thomas",
      "role": "teacher",
      "style": null,
      "country": "🇬🇵",
      "source_line": "Thomas 🇬🇵"
     },
     {
-     "name_as_written": "Lucile 🇬🇵",
+     "name_as_written": "Lucile",
      "role": "teacher",
      "style": null,
      "country": "🇬🇵",
      "source_line": "Lucile 🇬🇵"
     },
     {
-     "name_as_written": "Fransliz 🇬🇵",
+     "name_as_written": "Fransliz",
      "role": "teacher",
      "style": null,
      "country": "🇬🇵",
      "source_line": "Fransliz 🇬🇵"
     },
     {
-     "name_as_written": "Val / AKADEMIDUKA 🇬🇵",
+     "name_as_written": "Val / AKADEMIDUKA",
      "role": "teacher",
      "style": null,
      "country": "🇬🇵",
@@ -191,27 +191,27 @@
     {
      "feature": "workshops",
      "quote": "36 Workshops",
-     "rationale": "The description states the festival has 36 workshops."
+     "rationale": "The line '🔥 36 Workshops' states that dance workshops are part of the event."
     },
     {
      "feature": "multiple_rooms",
      "quote": "4 Dancefloors / 4 Rooms",
-     "rationale": "The festival has four dancefloors and four rooms."
+     "rationale": "The description states there are four dancefloors and four rooms."
     },
     {
      "feature": "pool_party",
      "quote": "2 Pool Parties BSKZ",
-     "rationale": "Two pool parties are listed among the events."
+     "rationale": "The description lists two pool parties."
     },
     {
      "feature": "after_party",
      "quote": "1 After Party",
-     "rationale": "One after party is listed among the events."
+     "rationale": "The description lists one after party."
     },
     {
-     "feature": "all_in_one",
-     "quote": "Zenitude Le Salako Hotel, Gosier, Guadeloupe",
-     "rationale": "The festival venue is the hotel where a hotel package is offered to attendees, so the events and accommodation share one venue."
+     "feature": "accommodation_included",
+     "quote": "Your Full Pass/Hotel Package",
+     "rationale": "A Full Pass/Hotel Package is offered, indicating the pass can include hotel accommodation."
     }
    ]
   }

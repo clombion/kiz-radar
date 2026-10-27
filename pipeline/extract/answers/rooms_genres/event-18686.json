@@ -14,7 +14,7 @@
    "rooms": [
     {
      "name_as_written": "Room 1",
-     "kind": "unspecified",
+     "kind": "party",
      "genres": [
       "bachata",
       "salsa"
@@ -23,7 +23,7 @@
     },
     {
      "name_as_written": "Room 2",
-     "kind": "unspecified",
+     "kind": "party",
      "genres": [
       "kizomba",
       "semba",
@@ -36,7 +36,7 @@
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "The Bachata • Salsa • Kizomba Cruise"
+     "quote": "The Bachata"
     },
     {
      "genre": "salsa",
@@ -67,6 +67,11 @@
      "genre": "afro",
      "genre_as_written": "Afro vibes",
      "quote": "Afro vibes"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Disco",
+     "quote": "Clubbing Disco vibes"
     }
    ]
   }

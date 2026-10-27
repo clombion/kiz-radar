@@ -135,32 +135,32 @@
     {
      "feature": "live_music",
      "quote": "2 Live Concerts",
-     "rationale": "The description promises two live concerts at the festival."
+     "rationale": "The description announces two live concerts."
     },
     {
      "feature": "shows",
      "quote": "650 seats theater for Saturday BIG SHOW",
-     "rationale": "A big show on Saturday in a 650-seat theatre is advertised."
+     "rationale": "A big show is staged in a theater on Saturday."
     },
     {
      "feature": "multiple_rooms",
      "quote": "4 rooms for the parties with",
-     "rationale": "Four rooms are provided for the parties, so there is more than one dance floor."
+     "rationale": "Four rooms are provided for the parties."
     },
     {
      "feature": "workshops",
      "quote": "50 dance & music workshops",
-     "rationale": "The event lists fifty dance and music workshops."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "into all levels",
-     "rationale": "Teachers are described as covering all levels, which suits beginners."
+     "rationale": "The festival offers dance and music workshops."
     },
     {
      "feature": "day_socials",
      "quote": "Garden Party Sunday afternoon",
-     "rationale": "A garden party on Sunday afternoon is a daytime social event."
+     "rationale": "A garden party on Sunday afternoon is a daytime social."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "into all levels",
+     "rationale": "The workshops are described as suitable for all levels."
     }
    ]
   }

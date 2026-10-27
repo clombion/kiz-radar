@@ -212,32 +212,32 @@
     {
      "feature": "workshops",
      "quote": "Workshops • Bootcamps",
-     "rationale": "The description lists workshops as part of the festival."
+     "rationale": "The event lists workshops as part of the programme."
     },
     {
      "feature": "bootcamp_intensive",
      "quote": "Bootcamps",
-     "rationale": "The description lists bootcamps as part of the festival."
+     "rationale": "Bootcamps are listed among the event's offerings."
     },
     {
      "feature": "shows",
      "quote": "1 Night of Shows",
-     "rationale": "A night of shows is listed as a feature of the event."
+     "rationale": "A night of shows by artists is advertised."
     },
     {
      "feature": "pool_party",
      "quote": "All-Day Pool Party Socials",
-     "rationale": "The event includes pool party socials."
+     "rationale": "The event includes a pool party."
     },
     {
      "feature": "day_socials",
      "quote": "All-Day Pool Party Socials",
-     "rationale": "Pool party socials running all day are daytime socials."
+     "rationale": "Daytime pool socials are part of the event."
     },
     {
      "feature": "multiple_rooms",
      "quote": "2 Rooms",
-     "rationale": "Two rooms indicates more than one dance room or floor."
+     "rationale": "The festival has two rooms, so more than one dance floor."
     }
    ]
   }

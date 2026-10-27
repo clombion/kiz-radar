@@ -64,13 +64,13 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "The weekend will offer workshops",
-     "rationale": "The description states that the weekend will offer workshops."
+     "quote": "The weekend will offer workshops, socials, performances & more.",
+     "rationale": "The description states that the weekend offers workshops."
     },
     {
      "feature": "shows",
-     "quote": "performances & more",
-     "rationale": "The description promises performances as part of the weekend program."
+     "quote": "The weekend will offer workshops, socials, performances & more.",
+     "rationale": "The description mentions performances as part of the weekend offering."
     }
    ]
   }

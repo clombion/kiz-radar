@@ -121,42 +121,42 @@
     {
      "feature": "all_in_one",
      "quote": "ALL IN ONE, Brussels",
-     "rationale": "The event is named all in one and its parties are scheduled at the Main Hotel where dancers stay."
+     "rationale": "The event is described as all in one, and the parties take place in the Main Hotel where dancers sleep."
     },
     {
-     "feature": "live_music",
-     "quote": "Social + Live concert",
-     "rationale": "A live concert is part of the Saturday and Sunday schedule."
+     "feature": "multiple_rooms",
+     "quote": "3 different rooms and vibes:",
+     "rationale": "The description states there are three different dance rooms."
     },
     {
      "feature": "workshops",
-     "quote": "23:00 – 00:00 workshop",
-     "rationale": "Workshops are listed in the schedule as part of the event."
+     "quote": "11:00 – 16:00 workshops",
+     "rationale": "Workshops are listed in the schedule for Saturday and Sunday."
+    },
+    {
+     "feature": "live_music",
+     "quote": "16:00 – 20:00 Social + Live concert",
+     "rationale": "A live concert is scheduled during the event."
     },
     {
      "feature": "masterclass",
      "quote": "𝖬𝖠𝖲𝖳𝖤𝖱𝖢𝖫𝖠𝖲𝖲ES",
-     "rationale": "A masterclass section is announced in the event description."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 different rooms and vibes",
-     "rationale": "The description states there are three different dance rooms."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "16:00 – 20:00 Social",
-     "rationale": "Afternoon socials are scheduled on Friday, Saturday and Sunday."
+     "rationale": "A masterclasses section heading appears in the description."
     },
     {
      "feature": "pre_party",
      "quote": "Thursday 15.01: 𝖯𝗋𝖾𝗉𝖺𝗋𝗍𝗒",
-     "rationale": "A pre-party is scheduled on Thursday before the main event."
+     "rationale": "A Preparty is scheduled on Thursday before the main event."
     },
     {
      "feature": "after_party",
      "quote": "Monday 19.01: After𝗉𝖺𝗋𝗍𝗒",
-     "rationale": "An after-party is scheduled on Monday after the main event."
+     "rationale": "An afterparty is scheduled on Monday after the main event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "16:00 – 20:00 Social",
+     "rationale": "Afternoon social sessions are scheduled on the event days."
     }
    ]
   }

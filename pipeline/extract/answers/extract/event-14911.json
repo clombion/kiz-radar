@@ -338,27 +338,27 @@
     {
      "feature": "all_in_one",
      "quote": "All in One – Marriott Hotel",
-     "rationale": "The event is held in the Marriott Hotel, described as 'All in One', meaning the parties take place in the hotel where dancers can stay."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 party Room : Salsa, Bachata and Kizomba",
-     "rationale": "The event lists three party rooms, so more than one dance room is present."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Free schuttle",
-     "rationale": "A free shuttle from the airport is offered, which is a transfer service."
+     "rationale": "The event is stated to be held as All in One at the Marriott Hotel, where the parties take place in the hotel."
     },
     {
      "feature": "partner_hotel",
      "quote": "Hôtel Officiel: Paris Marriott Charles de Gaulle Airport Hotel",
-     "rationale": "An official hotel is named for the event, which is a partner hotel suggestion."
+     "rationale": "The description names an official hotel for the event."
     },
     {
-     "feature": "workshops",
-     "quote": "TEACHER",
-     "rationale": "Teaching couples and solo teachers are listed for each dance style, indicating dance classes are part of the event."
+     "feature": "multiple_rooms",
+     "quote": "3 party Room : Salsa, Bachata and Kizomba",
+     "rationale": "Three separate party rooms are listed for different styles."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Free schuttle",
+     "rationale": "A free shuttle from the airport and station to the venue is offered."
+    },
+    {
+     "feature": "competition",
+     "quote": "𝐎𝐋𝐘𝐌𝐏𝐈𝐀𝐃𝐒 𝐎𝐅 𝐁𝐀𝐂𝐇𝐀𝐓𝐀",
+     "rationale": "Olympiads of Bachata is a dance competition."
     }
    ]
   }

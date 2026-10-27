@@ -128,19 +128,19 @@
      "role": "organiser",
      "style": null,
      "country": null,
-     "source_line": "🙏 THANK YOU 🙏"
+     "source_line": "A huge thank you to the entire Kiz Relax team, the artists, the volunteers, and above all to YOU—you bring this festival to life and give it its soul 🫶🏻"
     }
    ],
    "features": [
     {
-     "feature": "dress_code",
-     "quote": "Coming soon… get your best outfits ready!",
-     "rationale": "The DRESS CODE heading shows a dress code is stated, though details are still to come."
-    },
-    {
      "feature": "partner_hotel",
      "quote": "15% discount on your booking",
-     "rationale": "A negotiated 15% discount at the main hotel is offered, while accommodation is not stated as part of the pass."
+     "rationale": "A negotiated hotel discount is offered for the main hotel while the accommodation is not included in the pass."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "DRESS CODE",
+     "rationale": "The description has a DRESS CODE section, so a dress code is stated."
     }
    ]
   }

@@ -5,24 +5,24 @@
    "event_id": 15436,
    "artists": [
     {
-     "name_as_written": "ANDRIUS 🇱🇹& DOTI",
+     "name_as_written": "ANDRIUS 🇱🇹& DOTI 🇵🇱",
      "role": "teacher",
      "style": null,
-     "country": "🇱🇹 🇵🇱",
+     "country": null,
      "source_line": "👣 ANDRIUS 🇱🇹& DOTI 🇵🇱"
     },
     {
-     "name_as_written": "ZÉ RUI 🇵🇹& ELENA",
+     "name_as_written": "ZÉ RUI 🇵🇹& ELENA 🇺🇦",
      "role": "teacher",
      "style": null,
-     "country": "🇵🇹 🇺🇦",
+     "country": null,
      "source_line": "👣 ZÉ RUI 🇵🇹& ELENA 🇺🇦"
     },
     {
-     "name_as_written": "CAPITAO 🇵🇹& PRIS",
+     "name_as_written": "CAPITAO 🇵🇹& PRIS 🇵🇹",
      "role": "teacher",
      "style": null,
-     "country": "🇵🇹 🇵🇹",
+     "country": null,
      "source_line": "👣 CAPITAO 🇵🇹& PRIS 🇵🇹"
     },
     {
@@ -79,17 +79,17 @@
     {
      "feature": "workshops",
      "quote": "different high-level workshops",
-     "rationale": "The organisers say the festival brings different high-level workshops to participants."
+     "rationale": "The organisers state that the instructors will bring different high-level workshops."
     },
     {
      "feature": "day_socials",
-     "quote": "Day time socials",
+     "quote": "Day time socials.",
      "rationale": "The description lists daytime socials as part of the event."
     },
     {
      "feature": "partner_hotel",
-     "quote": "Calvary Hotel Vilnius offers an exclusive promo code LKF for our event guests",
-     "rationale": "A negotiated hotel promo for participants is offered without accommodation being part of the pass."
+     "quote": "Calvary Hotel Vilnius offers an exclusive promo code LKF for our event guests:",
+     "rationale": "A partner hotel offers a negotiated discount for participants, and accommodation is not stated as part of the pass."
     }
    ]
   }

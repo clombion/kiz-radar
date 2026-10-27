@@ -261,22 +261,22 @@
     {
      "feature": "workshops",
      "quote": "dance workshops",
-     "rationale": "The description advertises dance workshops as part of the festival lineup."
+     "rationale": "The description states that dance workshops are part of the event."
     },
     {
      "feature": "shows",
      "quote": "and shows",
-     "rationale": "The description lists shows as part of the festival and an artist showcase is in the schedule."
+     "rationale": "The description lists shows as part of the event, and the schedule includes an artist showcase."
     },
     {
      "feature": "multiple_rooms",
      "quote": "3 rooms/3 vibes",
-     "rationale": "Three dance rooms are described, showing more than one dance room."
+     "rationale": "Parties take place in three separate rooms with different vibes."
     },
     {
      "feature": "partner_hotel",
      "quote": "5-minute walk",
-     "rationale": "Several named hotels are listed as nearby lodging options for dancers."
+     "rationale": "Several hotels are listed as nearby options near the venue, which indicates recommended hotels without accommodation being part of the pass."
     }
    ]
   }

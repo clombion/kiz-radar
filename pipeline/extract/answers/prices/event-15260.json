@@ -13,11 +13,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 2000,
+       "amount": 2000.0,
        "currency": "SEK",
        "fee": null,
        "alt": {
-        "amount": 190,
+        "amount": 190.0,
         "currency": "EUR"
        },
        "from": null,
@@ -31,7 +31,7 @@
      ]
     },
     {
-     "kind": "full",
+     "kind": "other",
      "style": null,
      "label_quote": "FRIDAY+SATURDAY PASS",
      "group_size": 1,
@@ -39,11 +39,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 1500,
+       "amount": 1500.0,
        "currency": "SEK",
        "fee": null,
        "alt": {
-        "amount": 140,
+        "amount": 140.0,
         "currency": "EUR"
        },
        "from": null,
@@ -65,11 +65,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 950,
+       "amount": 950.0,
        "currency": "SEK",
        "fee": null,
        "alt": {
-        "amount": 90,
+        "amount": 90.0,
         "currency": "EUR"
        },
        "from": null,
@@ -91,11 +91,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 500,
+       "amount": 500.0,
        "currency": "SEK",
        "fee": null,
        "alt": {
-        "amount": 45,
+        "amount": 45.0,
         "currency": "EUR"
        },
        "from": null,
@@ -117,11 +117,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 500,
+       "amount": 500.0,
        "currency": "SEK",
        "fee": null,
        "alt": {
-        "amount": 45,
+        "amount": 45.0,
         "currency": "EUR"
        },
        "from": null,
@@ -143,11 +143,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 500,
+       "amount": 500.0,
        "currency": "SEK",
        "fee": null,
        "alt": {
-        "amount": 45,
+        "amount": 45.0,
         "currency": "EUR"
        },
        "from": null,
@@ -169,11 +169,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 500,
+       "amount": 500.0,
        "currency": "SEK",
        "fee": null,
        "alt": {
-        "amount": 45,
+        "amount": 45.0,
         "currency": "EUR"
        },
        "from": null,
@@ -195,11 +195,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 300,
+       "amount": 300.0,
        "currency": "SEK",
        "fee": null,
        "alt": {
-        "amount": 30,
+        "amount": 30.0,
         "currency": "EUR"
        },
        "from": null,
@@ -221,11 +221,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 200,
+       "amount": 200.0,
        "currency": "SEK",
        "fee": null,
        "alt": {
-        "amount": 20,
+        "amount": 20.0,
         "currency": "EUR"
        },
        "from": null,

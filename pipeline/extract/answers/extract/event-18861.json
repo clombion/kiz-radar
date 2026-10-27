@@ -197,38 +197,38 @@
    "features": [
     {
      "feature": "taxi_dancers",
-     "quote": "TEAM TAXIS:",
-     "rationale": "A team of about 100 taxis is listed to serve the dancers during the festival."
+     "quote": "+- 100 TAXIS",
+     "rationale": "The description lists about 100 taxis and a taxi team, so taxi dancers are present."
     },
     {
      "feature": "accommodation_included",
-     "quote": "petit dejeuner, taxes stay and full-pass duo/couple included",
-     "rationale": "The hotel room package explicitly includes the full pass for the couple."
+     "quote": "full-pass duo/couple included",
+     "rationale": "The hotel package states that the full pass for a couple is included with the room."
     },
     {
      "feature": "meals_included",
      "quote": "petit dejeuner",
-     "rationale": "Breakfast is part of the accommodation package."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "4 rooms in the domain of the chateau 100m from the living room",
-     "rationale": "Accommodation is offered in the chateau domain, where the festival is held."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "HOURS TRANSFERS:",
-     "rationale": "Scheduled airport and station transfers are listed for the festival."
+     "rationale": "Breakfast is part of the hotel package together with the pass."
     },
     {
      "feature": "partner_hotel",
      "quote": "PARTNERS HOTELS:",
-     "rationale": "A partner hotel, Apart city, is listed for attendees."
+     "rationale": "The description has a partners hotels section recommending Apart city."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "HOURS TRANSFERS:",
+     "rationale": "The description gives shuttle times from airports and stations."
     },
     {
      "feature": "live_music",
-     "quote": "🎻 – » OPHELIE DEBROISE 🇲🇫",
-     "rationale": "A violinist is listed as a performer on the line-up."
+     "quote": "OPHELIE DEBROISE",
+     "rationale": "A violinist is listed as a performer, which means live music."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "4 rooms in the domain of the chateau 100m from the living room",
+     "rationale": "Rooms in the chateau domain are offered next to the event venue, so the event and accommodation are in the same place."
     }
    ]
   }

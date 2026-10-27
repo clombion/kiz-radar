@@ -18,9 +18,7 @@
     {
      "name_as_written": "AFRO ROOM",
      "kind": "party",
-     "genres": [
-      "afro"
-     ],
+     "genres": [],
      "quote": "🟡 AFRO ROOM"
     },
     {
@@ -33,23 +31,23 @@
    "genres": [
     {
      "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "4 SPECIALS DAYS FULL OF Kizomba, Semba, Tarraxo, Afro house, African Danse"
+     "genre_as_written": "KIZOMBA",
+     "quote": "THE BIGGEST KIZOMBA DANCEFLOOR OF BORDEAUX"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "4 SPECIALS DAYS FULL OF Kizomba, Semba, Tarraxo, Afro house, African Danse"
+     "quote": "Kizomba, Semba, Tarraxo, Afro house, African Danse"
     },
     {
      "genre": "tarraxo",
      "genre_as_written": "Tarraxo",
-     "quote": "4 SPECIALS DAYS FULL OF Kizomba, Semba, Tarraxo, Afro house, African Danse"
+     "quote": "Kizomba, Semba, Tarraxo, Afro house, African Danse"
     },
     {
      "genre": "afro",
      "genre_as_written": "Afro house",
-     "quote": "4 SPECIALS DAYS FULL OF Kizomba, Semba, Tarraxo, Afro house, African Danse"
+     "quote": "Afro house, African Danse"
     }
    ]
   }

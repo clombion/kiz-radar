@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "⚡ EARLY BIRD: €50 (first 10 tickets only)"
       },
       {
-       "amount": 65,
+       "amount": 65.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "🔥 Online price (sliding scale): €65"
       },
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -55,7 +55,7 @@
     }
    ],
    "rule_quotes": [
-    "The longer you wait, the more you pay"
+    "The longer you wait, the more you pay 🚨‼️"
    ]
   }
  ]

@@ -309,43 +309,33 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "All-In-One",
-     "rationale": "The bullet describes the event as All-In-One, matching the title, and the parties and workshops take place in the hotel venue."
+     "quote": "All the event (workshops, parties, shows), will be in:",
+     "rationale": "The description states that the workshops, parties and shows all take place at the Grand Hotel Barone di Sassj, where dancers can stay."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "2 exclusive rooms for workshops.",
-     "rationale": "The event offers two exclusive rooms for workshops, meaning more than one dance room."
+     "quote": "2 exclusive rooms for workshops",
+     "rationale": "Two exclusive rooms are offered for workshops, so there is more than one dance room."
     },
     {
      "feature": "workshops",
-     "quote": "2 exclusive rooms for workshops.",
-     "rationale": "Workshops are explicitly part of the event programme."
+     "quote": "2 exclusive rooms for workshops",
+     "rationale": "Workshops are part of the event program across the weekend."
     },
     {
      "feature": "masterclass",
      "quote": "Master Classes (only with MASTERPASS)",
-     "rationale": "Master classes are listed as part of the event, restricted to a pass holder."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "LINE UP TAXI DANCER",
-     "rationale": "A taxi dancer line-up is listed, so taxi dancers are present."
+     "rationale": "Master classes are explicitly offered, restricted to MASTERPASS holders."
     },
     {
      "feature": "shows",
      "quote": "All the event (workshops, parties, shows), will be in:",
-     "rationale": "The description states that shows by artists take place at the event."
+     "rationale": "Shows are listed as part of the event and held at the venue."
     },
     {
      "feature": "partner_hotel",
      "quote": "Books here: https://www.baronedisassj.com/",
-     "rationale": "Guests are directed to book the hotel with a negotiated per-night rate and promo code."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "PRICE (per night with breakfast)",
-     "rationale": "The per-night price includes breakfast."
+     "rationale": "A negotiated per-night hotel rate with a promo code is offered at the hotel, sold separately from the event pass."
     }
    ]
   }

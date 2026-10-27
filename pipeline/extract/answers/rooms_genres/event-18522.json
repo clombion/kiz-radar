@@ -3,25 +3,22 @@
  "events": [
   {
    "event_id": 18522,
-   "party_rooms": {
-    "count": 3,
-    "quote": "Party – 3 rooms • 3 vibes"
-   },
+   "party_rooms": null,
    "class_rooms": null,
    "rooms": [],
    "genres": [
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "KIZOMBA & KONPA EDITION"
+     "quote": "KIFF DANCE – KIZOMBA & KONPA EDITION"
     },
     {
      "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "Kizomba and Kompa enthusiasts"
+     "genre_as_written": "Konpa",
+     "quote": "Konpa workshop with Zouzout & Synthia"
     },
     {
-     "genre": "tarraxo",
+     "genre": "other",
      "genre_as_written": "Tarra Show",
      "quote": "Tarra Show workshop with Kristel & Ichigo"
     }

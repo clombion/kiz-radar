@@ -86,22 +86,22 @@
     {
      "feature": "workshops",
      "quote": "Mind-blowing workshops & bootcamps",
-     "rationale": "The description states that workshops are part of the event."
+     "rationale": "The description promises workshops as part of the event."
     },
     {
      "feature": "bootcamp_intensive",
      "quote": "Mind-blowing workshops & bootcamps",
-     "rationale": "The description advertises bootcamps as part of the event."
+     "rationale": "The description mentions bootcamps, which are intensive training sessions."
     },
     {
      "feature": "pre_party",
      "quote": "Pre-Party",
-     "rationale": "A Pre-Party is scheduled on Thursday before the main event."
+     "rationale": "The schedule lists a Pre-Party on Thursday before the main Friday program."
     },
     {
      "feature": "day_socials",
      "quote": "16:00 – 20:00 – 🤝 Social",
-     "rationale": "A social scheduled in the afternoon on Saturday and Sunday is a daytime social."
+     "rationale": "The Saturday and Sunday schedules include an afternoon social from 16:00 to 20:00."
     }
    ]
   }

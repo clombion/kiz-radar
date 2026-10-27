@@ -77,28 +77,28 @@
     {
      "name_as_written": "DJ Loonay",
      "role": "dj",
-     "style": null,
+     "style": "Bachata",
      "country": null,
      "source_line": "Bachata Room: DJ Loonay • DJ Taga’da"
     },
     {
      "name_as_written": "DJ Taga’da",
      "role": "dj",
-     "style": null,
+     "style": "Bachata",
      "country": null,
      "source_line": "Bachata Room: DJ Loonay • DJ Taga’da"
     },
     {
      "name_as_written": "DJ Leericks",
      "role": "dj",
-     "style": null,
+     "style": "Kizomba",
      "country": null,
      "source_line": "Kizomba Room: DJ Leericks (Resident) • DJ El Chapo"
     },
     {
      "name_as_written": "DJ El Chapo",
      "role": "dj",
-     "style": null,
+     "style": "Kizomba",
      "country": null,
      "source_line": "Kizomba Room: DJ Leericks (Resident) • DJ El Chapo"
     },
@@ -128,7 +128,7 @@
      "role": "crew",
      "style": null,
      "country": null,
-     "source_line": "Team LiquidStyle • Team Senkita & other GUESTS"
+     "source_line": "💃 Taxi Dancers:"
     },
     {
      "name_as_written": "Team Senkita",
@@ -140,24 +140,29 @@
    ],
    "features": [
     {
-     "feature": "workshops",
-     "quote": "High-quality workshops all weekend long",
-     "rationale": "The description states that workshops run all weekend."
+     "feature": "meals_included",
+     "quote": "Weekend pass with or without meals",
+     "rationale": "The weekend pass is offered with meals included as an option."
     },
     {
      "feature": "multiple_rooms",
      "quote": "2 rooms – 2 vibes",
-     "rationale": "The event has two dance rooms, one for Kizomba and one for Bachata."
+     "rationale": "Two dance rooms are described."
     },
     {
-     "feature": "taxi_dancers",
-     "quote": "Taxi Dancers:",
-     "rationale": "The description lists taxi dance teams for the event."
+     "feature": "workshops",
+     "quote": "High-quality workshops all weekend long",
+     "rationale": "Workshops are part of the event all weekend."
     },
     {
      "feature": "shows",
      "quote": "EXCLUSIVE SHOWCASE – Jennifer Dias (Saturday night)",
-     "rationale": "A showcase performance by a named artist is part of the event."
+     "rationale": "A showcase performance by Jennifer Dias is part of the programme."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "Taxi Dancers:",
+     "rationale": "Taxi dancer teams are listed as present."
     }
    ]
   }

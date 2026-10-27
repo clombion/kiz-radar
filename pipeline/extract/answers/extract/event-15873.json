@@ -3,27 +3,35 @@
  "events": [
   {
    "event_id": 15873,
-   "artists": [],
+   "artists": [
+    {
+     "name_as_written": "@lospambosevents",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "@lospambosevents"
+    }
+   ],
    "features": [
+    {
+     "feature": "meals_included",
+     "quote": "All Inclusive : Breakfast – Lunch – Dinner – Drinks: Alcahol and Non Alcahol",
+     "rationale": "The All Inclusive line lists breakfast, lunch, dinner and drinks, so meals are included in the offer."
+    },
     {
      "feature": "accommodation_included",
      "quote": "Package of Full Pass & Accomodation & All Inclusive till 10 May 2026",
-     "rationale": "The package named in the quote combines the full pass with accommodation, so accommodation is included in the pass."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Breakfast – Lunch – Dinner – Drinks: Alcahol and Non Alcahol",
-     "rationale": "The All Inclusive listing names breakfast, lunch, dinner and drinks as part of the package."
+     "rationale": "The package explicitly combines the full pass with accommodation."
     },
     {
      "feature": "pool_party",
      "quote": "pool parties",
-     "rationale": "The description lists pool parties as part of the holiday's activities."
+     "rationale": "The description promises pool parties as part of the holiday."
     },
     {
      "feature": "workshops",
      "quote": "elite lessons",
-     "rationale": "Elite lessons are part of the event, which means dance classes are included."
+     "rationale": "Elite lessons are offered as part of the event, which means dance classes are included."
     }
    ]
   }

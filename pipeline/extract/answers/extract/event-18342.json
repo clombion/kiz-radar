@@ -126,44 +126,44 @@
    ],
    "features": [
     {
+     "feature": "all_in_one",
+     "quote": "All the event (workshops, parties and shows), will be in the same hotel, Hotel Olimpyc Park",
+     "rationale": "The workshops, parties and shows take place in the same hotel where dancers are invited to stay."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 exclusive rooms for workshops of Kizomba",
+     "rationale": "The festival describes two dance rooms during the day and two social rooms at night."
+    },
+    {
      "feature": "workshops",
      "quote": "17-20: Workshops",
-     "rationale": "The program lists workshop sessions during the day on Friday, Saturday and Sunday."
+     "rationale": "The program lists workshop sessions on each day."
     },
     {
      "feature": "shows",
      "quote": "parties and shows",
-     "rationale": "The description states that shows by artists take place at the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 exclusive rooms for workshops",
-     "rationale": "Two separate rooms are used for workshops, and two social rooms are used at night."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "will be in the same hotel",
-     "rationale": "Workshops, parties and shows all take place in the hotel where dancers are invited to stay."
+     "rationale": "The description says that shows by artists are part of the event."
     },
     {
      "feature": "pool_party",
      "quote": "17-20h: Pool Party",
-     "rationale": "A pool party is listed in the Sunday program."
+     "rationale": "The Sunday program lists a pool party."
     },
     {
      "feature": "partner_hotel",
      "quote": "BOOK YOUR ROOM IN THE MAIN HOTEL KARGA KIZOMBA FESTIVAL 2026!",
-     "rationale": "A main recommended hotel is offered with a negotiated room rate that is not part of the pass."
+     "rationale": "The event recommends its main hotel and offers negotiated room prices, while accommodation is not part of the pass."
     },
     {
      "feature": "meals_included",
-     "quote": "with full board + water",
-     "rationale": "The hotel room price package includes full board meals."
+     "quote": "Main Hotel with full board + water",
+     "rationale": "The hotel room rate explicitly includes full board meals."
     },
     {
      "feature": "transfers_shuttle",
-     "quote": "SHUTTLE FORM THE AIRPORTS",
-     "rationale": "Shuttle transfers from Barcelona and Girona airports to Lloret de Mar are provided through a company."
+     "quote": "INFORMATION ABOUT SHUTTLE FROM BARCELONA AIRPORT OR GIRONA AIRPORT",
+     "rationale": "The description gives shuttle options and prices from the airports to Lloret de Mar."
     }
    ]
   }

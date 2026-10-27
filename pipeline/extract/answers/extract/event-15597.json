@@ -142,32 +142,32 @@
     {
      "feature": "workshops",
      "quote": "Dance Workshops",
-     "rationale": "The Friday, Saturday and Sunday programme lists Dance Workshops as part of the festival."
+     "rationale": "The festival program lists dance workshops on each day."
     },
     {
      "feature": "live_music",
      "quote": "Bonga Kwenda (with live band)",
-     "rationale": "A musical artist is billed with a live band, which is live music."
+     "rationale": "A musical artist is listed as performing with a live band."
     },
     {
      "feature": "shows",
-     "quote": "Muzongue (Social ) with live show 45 minutes Showcase (afternoon)",
-     "rationale": "The afternoon social includes a live show showcase performed by artists."
+     "quote": "live show 45 minutes Showcase (afternoon)",
+     "rationale": "The afternoon Muzongue includes a live show showcase performed by artists."
     },
     {
      "feature": "day_socials",
      "quote": "Muzongue (Social ) with live show 45 minutes Showcase (afternoon)",
-     "rationale": "The Muzongue social is an afternoon social event during the festival days."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Convenient Accommodation Nearby",
-     "rationale": "A list of recommended hotels and hostels near the venue is given, outside the festival pass."
+     "rationale": "The Muzongue social is held in the afternoon."
     },
     {
      "feature": "bootcamp_intensive",
      "quote": "A Full Immersive Dance & Culture Experience – 6 hours per day",
-     "rationale": "The 360° workshop series is a multi-day intensive course of six hours of daily training."
+     "rationale": "The 360° workshops are a full immersive program of 6 hours per day."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "here are some accommodation options within 1/2 km of the festival venue",
+     "rationale": "The description recommends nearby hotels and hostels without including them in the pass."
     }
    ]
   }

@@ -13,11 +13,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "CHF",
        "fee": null,
        "alt": {
-        "amount": 80,
+        "amount": 80.0,
         "currency": "EUR"
        },
        "from": null,

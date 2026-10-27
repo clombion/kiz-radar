@@ -8,22 +8,17 @@
     {
      "feature": "workshops",
      "quote": "Warm-Up Workshop",
-     "rationale": "A warm-up workshop is scheduled on Friday evening, so dance classes are part of the event."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Pre-Party Workshop",
-     "rationale": "A Pre-Party Workshop is scheduled on Saturday, another dance class within the event."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "POOL PARTY!",
-     "rationale": "The Sunday schedule lists a pool party with music and poolside time."
+     "rationale": "The schedule lists a Warm-Up Workshop and a Pre-Party Workshop as dance classes within the event."
     },
     {
      "feature": "day_socials",
      "quote": "Guinguette Afternoon",
-     "rationale": "The Saturday 4 PM to 7 PM Guinguette Afternoon is a daytime social with dancing."
+     "rationale": "The event includes a daytime afternoon social at Le Rendez-Vous, where SBK dancing takes place in a laid-back atmosphere."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "POOL PARTY!",
+     "rationale": "The Sunday schedule includes a pool party with music and poolside chilling."
     }
    ]
   }

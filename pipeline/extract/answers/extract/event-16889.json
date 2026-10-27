@@ -82,19 +82,14 @@
      "rationale": "The whole event takes place in the hotel where dancers are invited to stay, so event and accommodation share one venue."
     },
     {
-     "feature": "partner_hotel",
-     "quote": "RATES FOR 2 NIGHTS (FRIDAY TO SUNDAY)",
-     "rationale": "The hotel offers negotiated room rates for event guests, although accommodation is not part of the pass."
-    },
-    {
      "feature": "workshops",
-     "quote": "6 PM – 8 PM Workshops",
-     "rationale": "The provisional program lists workshops as part of the event schedule."
+     "quote": "FULL PASS (WORKSHOPS + SOCIAL EVENTS + PARTIES from Friday to Sunday)",
+     "rationale": "The full pass explicitly includes workshops as part of the event."
     },
     {
      "feature": "day_socials",
      "quote": "4 PM – 8 PM Social",
-     "rationale": "The program includes an afternoon social session on Saturday and Sunday."
+     "rationale": "A daytime social is listed in the provisional program on Saturday afternoon."
     }
    ]
   }

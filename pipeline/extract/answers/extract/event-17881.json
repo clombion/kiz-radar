@@ -16,27 +16,27 @@
     {
      "feature": "multiple_rooms",
      "quote": "Salsa / Bachata / Kizomba rooms",
-     "rationale": "The line lists separate Salsa, Bachata and Kizomba rooms, which indicates more than one dance room."
+     "rationale": "The line-up lists separate Salsa, Bachata and Kizomba rooms, which means more than one dance room."
     },
     {
      "feature": "pool_party",
      "quote": "Pool parties",
-     "rationale": "The description lists pool parties as part of the event."
+     "rationale": "The description lists pool parties among the event's offerings."
     },
     {
      "feature": "workshops",
      "quote": "Workshops with the best artists",
-     "rationale": "The event includes workshops with artists."
+     "rationale": "The event explicitly offers workshops with artists."
     },
     {
      "feature": "shows",
-     "quote": "PINTO PICASSO will be performing with us",
+     "quote": "will be performing with us",
      "rationale": "A named artist is announced as performing at the event."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "TRANSFER DEL EVENTO DISPONIBLE",
-     "rationale": "An event transfer is offered, which is a shuttle service."
+     "rationale": "Event transfers are offered, and the schedule gives departure and return times from Madrid and Benidorm."
     }
    ]
   }

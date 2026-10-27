@@ -105,29 +105,19 @@
    ],
    "features": [
     {
-     "feature": "all_levels_beginners",
-     "quote": "Workshops for all levels & styles",
-     "rationale": "The workshops are stated to be suitable for all levels."
-    },
-    {
      "feature": "workshops",
      "quote": "Workshops for all levels & styles",
-     "rationale": "Dance workshops are listed as part of the event program."
+     "rationale": "The event lists workshops as part of what is in store."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "Workshops for all levels & styles",
+     "rationale": "Workshops for all levels indicate the event is suitable for all levels."
     },
     {
      "feature": "multiple_rooms",
      "quote": "TWO rooms: Kizomba/Semba + UrbanKiz",
-     "rationale": "The event explicitly has two dance rooms."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Party: Thursday @ Café Sør",
-     "rationale": "A pre-party is scheduled on Thursday before the main event."
-    },
-    {
-     "feature": "after_party",
-     "quote": "Afterparty from 2AM",
-     "rationale": "An afterparty is listed as part of the schedule."
+     "rationale": "Two separate dance rooms are offered."
     },
     {
      "feature": "dress_code",
@@ -137,7 +127,17 @@
     {
      "feature": "themed_parties",
      "quote": "Friday – White – Celebration of culture",
-     "rationale": "Each night has a dress theme such as white or African, making the parties themed."
+     "rationale": "Each night has a dress theme, such as the white party on Friday."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Pre-Party: Thursday @ Café Sør",
+     "rationale": "A pre-party is scheduled on Thursday before the main event."
+    },
+    {
+     "feature": "after_party",
+     "quote": "Afterparty from 2AM: Dancecity",
+     "rationale": "An afterparty is listed at Dancecity from 2AM."
     }
    ]
   }

@@ -14,29 +14,29 @@
    ],
    "features": [
     {
-     "feature": "workshops",
-     "quote": "10 hours of dance classes for all levels",
-     "rationale": "The program lists 10 hours of dance classes, so dance classes are part of the event."
-    },
-    {
      "feature": "all_levels_beginners",
      "quote": "10 hours of dance classes for all levels",
-     "rationale": "The classes are explicitly stated to be for all levels."
+     "rationale": "The quote states the dance classes are for all levels, which means beginners are welcome."
+    },
+    {
+     "feature": "workshops",
+     "quote": "10 hours of dance classes for all levels",
+     "rationale": "The event includes 10 hours of dance classes as part of the programme."
     },
     {
      "feature": "themed_parties",
      "quote": "3 vibrant themed evenings",
-     "rationale": "The event includes three themed evenings."
+     "rationale": "The programme lists three themed evenings."
     },
     {
      "feature": "pool_party",
      "quote": "pool parties",
-     "rationale": "The program advertises pool parties."
+     "rationale": "The programme includes pool parties."
     },
     {
      "feature": "camping",
      "quote": "Camping Les Cigales 4****",
-     "rationale": "The venue is a campsite with bungalow accommodation."
+     "rationale": "The venue is a campsite, and the bungalows are the accommodation on site."
     }
    ]
   }

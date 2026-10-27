@@ -12,62 +12,6 @@
      "source_line": "Badja is creating a good and positive vibe for you like always."
     },
     {
-     "name_as_written": "Luis & Karen",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Luis & Karen"
-    },
-    {
-     "name_as_written": "Krystian & Wiola",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Krystian & Wiola"
-    },
-    {
-     "name_as_written": "Dawou",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Dawou"
-    },
-    {
-     "name_as_written": "Tata Daalas",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Tata Daalas"
-    },
-    {
-     "name_as_written": "Avinash",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Avinash"
-    },
-    {
-     "name_as_written": "Rodney",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Rodney"
-    },
-    {
-     "name_as_written": "Tabanka",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Tabanka"
-    },
-    {
-     "name_as_written": "Mika",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Mika"
-    },
-    {
      "name_as_written": "Traybeatz",
      "role": "dj",
      "style": null,
@@ -138,6 +82,62 @@
      "source_line": "🔥 Incognito"
     },
     {
+     "name_as_written": "Luis & Karen",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ Luis & Karen"
+    },
+    {
+     "name_as_written": "Krystian & Wiola",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ Krystian & Wiola"
+    },
+    {
+     "name_as_written": "Dawou",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ Dawou"
+    },
+    {
+     "name_as_written": "Tata Daalas",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ Tata Daalas"
+    },
+    {
+     "name_as_written": "Avinash",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ Avinash"
+    },
+    {
+     "name_as_written": "Rodney",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ Rodney"
+    },
+    {
+     "name_as_written": "Tabanka",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ Tabanka"
+    },
+    {
+     "name_as_written": "Mika",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "✨ Mika"
+    },
+    {
      "name_as_written": "Brine Taz Media",
      "role": "media",
      "style": null,
@@ -156,27 +156,27 @@
     {
      "feature": "all_in_one",
      "quote": "All in 1 venue ( 15 minutes from the airport )",
-     "rationale": "The event is described as held in an all-in-one venue, and the venue is the main hotel where rooms are offered."
+     "rationale": "The event is held in an all-in-one venue, with the parties taking place in the hotel where dancers can stay."
     },
     {
      "feature": "multiple_rooms",
      "quote": "2 Rooms (The vibe room) & (Urbankiz/kizomba room)",
-     "rationale": "The description lists two separate dance rooms."
+     "rationale": "The description lists two dance rooms."
     },
     {
      "feature": "pre_party",
-     "quote": "1 Pre-party (Thur) & 3 parties (Fri,Sat & Sun)",
-     "rationale": "A pre-party on Thursday is explicitly listed before the main parties."
+     "quote": "1 Pre-party (Thur)",
+     "rationale": "A pre-party is scheduled on Thursday before the main parties."
     },
     {
      "feature": "day_socials",
      "quote": "3 Socials (Friday, Saturday and Sunday)",
-     "rationale": "Daytime socials are listed on each festival day, with the schedule showing 16:00-20:00 socials."
+     "rationale": "Socials are held in the afternoon/early evening on each festival day."
     },
     {
      "feature": "workshops",
-     "quote": "3 days of good classes (14 hours starting on Friday before the first social)",
-     "rationale": "Dance classes are part of the event schedule as workshops."
+     "quote": "3 days of good classes",
+     "rationale": "Dance classes are part of the event schedule over three days."
     },
     {
      "feature": "transfers_shuttle",
@@ -185,8 +185,8 @@
     },
     {
      "feature": "partner_hotel",
-     "quote": "HOTEL ROOM PRICES:",
-     "rationale": "The event offers negotiated room rates at its venue hotel, separate from the pass prices."
+     "quote": "Air Hotel Warsaw",
+     "rationale": "The main hotel is named, with discounted room prices offered separately from the pass."
     }
    ]
   }

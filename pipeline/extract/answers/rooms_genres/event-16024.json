@@ -25,7 +25,7 @@
      "genres": [
       "kizomba",
       "semba",
-      "kompa",
+      "other",
       "other"
      ],
      "quote": "Room 2 => Kizomba – Semba – Kcma – Ghetto"
@@ -46,13 +46,13 @@
      "quote": "Room 1 => Urban Kiz – Ghetto – Douceur"
     },
     {
-     "genre": "other",
-     "genre_as_written": "Ghetto",
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
      "quote": "Room 1 => Urban Kiz – Ghetto – Douceur"
     },
     {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
+     "genre": "other",
+     "genre_as_written": "Ghetto",
      "quote": "Room 1 => Urban Kiz – Ghetto – Douceur"
     },
     {
@@ -66,7 +66,7 @@
      "quote": "Room 2 => Kizomba – Semba – Kcma – Ghetto"
     },
     {
-     "genre": "kompa",
+     "genre": "other",
      "genre_as_written": "Kcma",
      "quote": "Room 2 => Kizomba – Semba – Kcma – Ghetto"
     },

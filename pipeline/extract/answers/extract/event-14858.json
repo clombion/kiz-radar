@@ -121,17 +121,17 @@
     {
      "feature": "multiple_rooms",
      "quote": "Room 1: Urban Kiz Tarraxo",
-     "rationale": "The festival lists two separate rooms, Room 1 and Room 2, with different dance styles."
+     "rationale": "The description lists two separate rooms, Room 1 and Room 2, with different dance styles."
     },
     {
      "feature": "taxi_dancers",
      "quote": "Taxi Team:",
-     "rationale": "A taxi team is listed, showing that taxi dancers are present."
+     "rationale": "A taxi team is listed, indicating taxi dancers are present at the event."
     },
     {
      "feature": "partner_hotel",
      "quote": "Partner hotel: to be announced",
-     "rationale": "The description names a partner hotel, though it is not yet announced."
+     "rationale": "The event names a partner hotel, although its identity is still to be announced."
     }
    ]
   }

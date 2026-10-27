@@ -7,84 +7,84 @@
     {
      "name_as_written": "Eddy Vents",
      "role": "teacher",
-     "style": "QUALITY TEACHERS",
+     "style": null,
      "country": "🇬🇼🇺🇸",
      "source_line": "▪︎ Eddy Vents 🇬🇼🇺🇸"
     },
     {
      "name_as_written": "Fanio de Araújo",
      "role": "teacher",
-     "style": "QUALITY TEACHERS",
+     "style": null,
      "country": "🇦🇴🇵🇹",
      "source_line": "▪︎ Fanio de Araújo 🇦🇴🇵🇹"
     },
     {
      "name_as_written": "Ary & Maura",
      "role": "teacher",
-     "style": "QUALITY TEACHERS",
+     "style": null,
      "country": "🇦🇴🇵🇹",
      "source_line": "▪︎ Ary & Maura 🇦🇴🇵🇹"
     },
     {
      "name_as_written": "Ybra & Gina",
      "role": "teacher",
-     "style": "QUALITY TEACHERS",
+     "style": null,
      "country": "🇬🇼🇨🇭",
      "source_line": "▪︎ Ybra & Gina 🇬🇼🇨🇭"
     },
     {
      "name_as_written": "Mauro D-One & Célia",
      "role": "teacher",
-     "style": "QUALITY TEACHERS",
+     "style": null,
      "country": "🇦🇴🇵🇹🇨🇭",
      "source_line": "▪︎ Mauro D-One & Célia 🇦🇴🇵🇹🇨🇭"
     },
     {
      "name_as_written": "Pedro & Ana",
      "role": "teacher",
-     "style": "QUALITY TEACHERS",
+     "style": null,
      "country": "🇵🇹🇨🇭",
      "source_line": "▪︎ Pedro & Ana 🇵🇹🇨🇭"
     },
     {
      "name_as_written": "Guillhermé",
      "role": "teacher",
-     "style": "QUALITY TEACHERS",
+     "style": null,
      "country": "🇦🇴🇨🇭",
      "source_line": "▪︎ Guillhermé 🇦🇴🇨🇭"
     },
     {
      "name_as_written": "Cristina",
      "role": "teacher",
-     "style": "QUALITY TEACHERS",
+     "style": null,
      "country": "🇮🇹🇨🇭",
      "source_line": "▪︎ Cristina 🇮🇹🇨🇭"
     },
     {
      "name_as_written": "Dj Paparazzi",
      "role": "dj",
-     "style": "MUSICMASTERS",
+     "style": null,
      "country": "🇪🇸🇦🇴",
      "source_line": "▪︎ Dj Paparazzi 🇪🇸🇦🇴"
     },
     {
      "name_as_written": "Dj Kindoki",
      "role": "dj",
-     "style": "MUSICMASTERS",
+     "style": null,
      "country": "🇬🇧🇦🇴",
      "source_line": "▪︎ Dj Kindoki 🇬🇧🇦🇴"
     },
     {
      "name_as_written": "Dj Relampago",
      "role": "dj",
-     "style": "MUSICMASTERS",
+     "style": null,
      "country": "🇦🇴🇨🇭",
      "source_line": "▪︎ Dj Relampago 🇦🇴🇨🇭"
     },
     {
      "name_as_written": "Dj Emess",
      "role": "dj",
-     "style": "MUSICMASTERS",
+     "style": null,
      "country": "🇦🇴🇨🇭",
      "source_line": "▪︎ Dj Emess 🇦🇴🇨🇭"
     }
@@ -93,7 +93,7 @@
     {
      "feature": "workshops",
      "quote": "3 DAYS THEMATIC WORKSHOPS FOR ALL DANCE LEVELS",
-     "rationale": "The description lists thematic workshops over three days."
+     "rationale": "The event lists thematic workshops over three days."
     },
     {
      "feature": "all_levels_beginners",
@@ -103,12 +103,12 @@
     {
      "feature": "shows",
      "quote": "SHOW & ENTERTAINMENT",
-     "rationale": "The event lists shows and entertainment as part of the program."
+     "rationale": "The event advertises shows and entertainment."
     },
     {
      "feature": "partner_hotel",
      "quote": "Get a 10% discount on your room reservation with our hotel partners!",
-     "rationale": "A negotiated discount with partner hotels is offered, while accommodation is not part of the pass."
+     "rationale": "Partner hotels are named and offer a discount, without accommodation being part of the pass."
     }
    ]
   }

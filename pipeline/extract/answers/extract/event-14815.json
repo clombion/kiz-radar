@@ -134,13 +134,13 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "More than 20 hours of classes (Salsa, Bachata, Kizomba, etc.)",
-     "rationale": "The description advertises over 20 hours of dance classes, so classes are part of the event."
+     "quote": "More than 20 hours of classes",
+     "rationale": "The description states that more than 20 hours of dance classes are part of the festival."
     },
     {
      "feature": "taxi_dancers",
      "quote": "Plenty of taxis!",
-     "rationale": "The phrase 'Plenty of taxis' signals that taxi dancers are present at the festival."
+     "rationale": "The description promises plenty of taxis, which refers to taxi dancers being present at the event."
     }
    ]
   }

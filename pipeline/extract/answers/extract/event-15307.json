@@ -5,6 +5,20 @@
    "event_id": 15307,
    "artists": [
     {
+     "name_as_written": "GIORGIO",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Registration by 🔥GIORGIO🔥"
+    },
+    {
+     "name_as_written": "Club PEA",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Ski Latino, organized by Club PEA, offers the atmosphere of a private holiday club:"
+    },
+    {
      "name_as_written": "Onassaka & Maïlys",
      "role": "teacher",
      "style": "Salsa",
@@ -220,40 +234,33 @@
      "style": "Kizomba",
      "country": null,
      "source_line": "– DJ Johann Orsinet (Kizomba)"
-    },
-    {
-     "name_as_written": "Club PEA",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Ski Latino, organized by Club PEA, offers the atmosphere of a private holiday club:"
     }
    ],
    "features": [
     {
      "feature": "workshops",
      "quote": "Daytime & après-ski workshops",
-     "rationale": "The program lists daytime and après-ski dance workshops as part of the event."
+     "rationale": "The program lists daytime and après-ski workshops as part of the event."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "3 themed evenings",
+     "rationale": "The event is built around three themed evenings."
     },
     {
      "feature": "multiple_rooms",
      "quote": "Evenings in 3 rooms: Salsa, Bachata, Kizomba",
-     "rationale": "The evenings take place in three separate rooms, so more than one dance floor is used."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "3 themed party rooms",
-     "rationale": "The event has themed party rooms and themed evenings."
+     "rationale": "Evenings take place across three rooms."
     },
     {
      "feature": "accommodation_included",
      "quote": "includes 7 nights’ accommodation",
-     "rationale": "The base price of the package explicitly includes accommodation."
+     "rationale": "The base price includes seven nights of accommodation."
     },
     {
      "feature": "all_levels_beginners",
      "quote": "All levels: beginner, intermediate, advanced",
-     "rationale": "The description states the event is open to all levels, including beginners."
+     "rationale": "The description states the event is for all levels, including beginners."
     }
    ]
   }

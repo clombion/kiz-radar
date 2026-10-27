@@ -37,7 +37,7 @@
     {
      "feature": "partner_hotel",
      "quote": "Hotel Ibis Sintra",
-     "rationale": "The description names a hotel under the ACCOMMODATION heading as the place to stay, while the pass itself does not include accommodation."
+     "rationale": "The description names a hotel under the accommodation heading, 10 minutes from the venue, without saying it is included in the pass."
     }
    ]
   }

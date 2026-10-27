@@ -69,7 +69,7 @@
     },
     {
      "name_as_written": "KIZ FOR LIFE TEAM",
-     "role": "crew",
+     "role": "organiser",
      "style": null,
      "country": null,
      "source_line": "& the KIZ FOR LIFE TEAM 🔥"
@@ -77,24 +77,19 @@
    ],
    "features": [
     {
-     "feature": "meals_included",
-     "quote": "ALL-INCLUSIVE venue",
-     "rationale": "An all-inclusive venue implies that meals are included in the event package."
-    },
-    {
      "feature": "taxi_dancers",
      "quote": "A high-energy team of taxi dancers will be there all weekend long",
-     "rationale": "The text states that a team of taxi dancers will be present all weekend."
+     "rationale": "The description states that a team of taxi dancers will be present throughout the weekend."
     },
     {
      "feature": "workshops",
-     "quote": "7:30 PM – 9:30 PM | WORKSHOPS",
+     "quote": "WORKSHOPS",
      "rationale": "The program lists workshop sessions on Friday, Saturday and Sunday."
     },
     {
      "feature": "day_socials",
      "quote": "4:00 PM – 8:00 PM | SOCIAL",
-     "rationale": "The Saturday program includes an afternoon social from 4 PM to 8 PM."
+     "rationale": "The Saturday program lists a daytime social from 4:00 PM to 8:00 PM."
     }
    ]
   }

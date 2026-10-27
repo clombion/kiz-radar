@@ -8,70 +8,32 @@
     "quote": "4 rooms for the parties with"
    },
    "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "▪️Salsa On1/On2"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "▪️Cuban Salsa"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "▪️Kizomba"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "▪️Bachata"
-    }
-   ],
+   "rooms": [],
    "genres": [
     {
      "genre": "salsa",
-     "genre_as_written": "Salsa On1/On2",
-     "quote": "▪️Salsa On1/On2"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Cuban Salsa",
-     "quote": "▪️Cuban Salsa"
+     "genre_as_written": "Salsa",
+     "quote": "Salsa On1/On2"
     },
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "▪️Kizomba"
+     "quote": "Kizomba"
     },
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "▪️Bachata"
+     "quote": "Bachata"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "Salsa (every kind of Salsa), Bachata, Kizomba, Semba, Chacha"
+     "quote": "Semba, Chacha, Lady Styling"
     },
     {
      "genre": "other",
      "genre_as_written": "Chacha",
-     "quote": "Salsa (every kind of Salsa), Bachata, Kizomba, Semba, Chacha"
+     "quote": "Semba, Chacha, Lady Styling"
     }
    ]
   }

@@ -10,7 +10,12 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Blending Kizomba, Afro Konpa"
+     "quote": "Blending Kizomba, Afro Konpa, connection, and pure energy"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afro vibes",
+     "quote": "Afro vibes"
     },
     {
      "genre": "kompa",
@@ -28,14 +33,9 @@
      "quote": "Urban Kizomba"
     },
     {
-     "genre": "afro",
-     "genre_as_written": "Afro vibes",
-     "quote": "Afro vibes"
-    },
-    {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "TEACHER / AFRI : Semba Konpa"
+     "quote": "Semba Konpa"
     }
    ]
   }

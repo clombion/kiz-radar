@@ -10,27 +10,27 @@
     {
      "genre": "salsa",
      "genre_as_written": "Salsa",
-     "quote": "PURA PASIÓN ~ Salsa"
+     "quote": "Salsa, Bachata, Kizomba, Urban & Semba."
     },
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "ALFONSO & MONICA ~ Bachata"
+     "quote": "Salsa, Bachata, Kizomba, Urban & Semba."
     },
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "(Kizomba)"
+     "quote": "Salsa, Bachata, Kizomba, Urban & Semba."
+    },
+    {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban",
+     "quote": "Urban & Semba."
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "(Kizomba/Semba)"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "(Urbankiz)"
+     "quote": "Urban & Semba."
     }
    ]
   }

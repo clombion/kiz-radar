@@ -34,7 +34,7 @@
     },
     {
      "name_as_written": "Mik’iz and May",
-     "role": "performer",
+     "role": "teacher",
      "style": null,
      "country": null,
      "source_line": "🕺🏿💃🏿 Mik’iz and May"
@@ -42,24 +42,19 @@
    ],
    "features": [
     {
+     "feature": "workshops",
+     "quote": "High-quality workshops",
+     "rationale": "The description lists high-quality workshops as part of the event."
+    },
+    {
      "feature": "day_socials",
      "quote": "Daytime socials",
      "rationale": "The description lists daytime socials as part of the event."
     },
     {
-     "feature": "workshops",
-     "quote": "High-quality workshops",
-     "rationale": "The description promises high-quality workshops as part of the weekend."
-    },
-    {
      "feature": "partner_hotel",
-     "quote": "Official accommodation:",
-     "rationale": "The event names an official hotel with a special offer, which is a negotiated hotel rate not part of the pass."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Breakfast included!",
-     "rationale": "The room options for the official hotel include breakfast in the package price."
+     "quote": "Ibis Vilnius Centre Hotel",
+     "rationale": "The official accommodation is a named hotel with a special event rate, not included in a pass."
     }
    ]
   }

@@ -351,23 +351,23 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "Three days of workshops, competitions, and non-stop social parties",
-     "rationale": "The description states that the festival includes workshops."
+     "quote": "Three days of workshops",
+     "rationale": "The description says the three-day festival has workshops."
     },
     {
      "feature": "competition",
-     "quote": "workshops, competitions, and non-stop social parties",
-     "rationale": "The festival explicitly includes competitions."
+     "quote": "Workshops, competitions & nightly parties",
+     "rationale": "The highlights list explicitly includes competitions."
     },
     {
      "feature": "pre_party",
      "quote": "Pre-Party: Thursday, 27 August 2026",
-     "rationale": "A pre-party is listed on the date schedule before the main festival days."
+     "rationale": "A pre-party is listed on Thursday before the main event."
     },
     {
      "feature": "after_party",
      "quote": "After-Party: Monday, 31 August 2026",
-     "rationale": "An after-party is listed on the date schedule after the main festival days."
+     "rationale": "An after-party is listed on Monday after the festival."
     }
    ]
   }

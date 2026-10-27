@@ -79,12 +79,12 @@
     {
      "feature": "workshops",
      "quote": "Workshops",
-     "rationale": "The event lists workshops as part of what to expect, and the schedule includes 2 workshops on Friday and 6 on Saturday."
+     "rationale": "The description lists 'Workshops' as something to expect, and the schedule includes 2 and 6 workshops per day."
     },
     {
      "feature": "shows",
      "quote": "Shows",
-     "rationale": "The event lists shows among its features and includes a Shows slot on Saturday."
+     "rationale": "The 'What to Expect' list includes 'Shows' as part of the event."
     }
    ]
   }

@@ -7,49 +7,49 @@
     {
      "name_as_written": "Gwany & Liliana",
      "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
+     "style": null,
      "country": null,
      "source_line": "🔸️Gwany & Liliana"
     },
     {
      "name_as_written": "Jack & Sara",
      "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
+     "style": null,
      "country": null,
      "source_line": "🔸️Jack & Sara"
     },
     {
      "name_as_written": "Axel & Lucy",
      "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
+     "style": null,
      "country": null,
      "source_line": "🔸️Axel & Lucy"
     },
     {
      "name_as_written": "T-peak & Djé",
      "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
+     "style": null,
      "country": null,
      "source_line": "🔸️T-peak & Djé"
     },
     {
      "name_as_written": "Antho & Bene",
      "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
+     "style": null,
      "country": null,
      "source_line": "🔸️Antho & Bene"
     },
     {
      "name_as_written": "Josué & Céline",
      "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
+     "style": null,
      "country": null,
      "source_line": "🔸️Josué & Céline"
     },
     {
      "name_as_written": "Yoan",
      "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
+     "style": null,
      "country": null,
      "source_line": "🔸️Yoan"
     },
@@ -128,32 +128,32 @@
     {
      "feature": "boat_party",
      "quote": "BOAT PARTY",
-     "rationale": "The event lists a boat party among its highlights."
+     "rationale": "The event lists a boat party as a feature."
     },
     {
      "feature": "competition",
      "quote": "TARRAXO BATTLE COMPETITION",
-     "rationale": "A battle competition is listed as part of the event."
+     "rationale": "The event includes a Tarraxo battle competition."
     },
     {
      "feature": "workshops",
      "quote": "4 DAYS OF WORKSHOPS",
-     "rationale": "Workshops over four days are part of the event."
+     "rationale": "Dance workshops are listed as part of the four-day event."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "Room 1 – 𝗧𝗮𝗿𝗿𝗮𝘅𝗼 | 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇",
-     "rationale": "The description lists several rooms, including Room 1 and Room 2, as dance spaces."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Altafulla Mar Hotel",
-     "rationale": "The event names a venue hotel that dancers can book, which is not stated to be part of the pass."
+     "quote": "Room 2 – 𝗗𝗼𝘂𝗰𝗲𝘂𝗿 | 𝗞𝗼𝗻𝗽𝗮 | 𝗚𝘂𝗲𝘁𝘁𝗼 𝗭𝗼𝘂𝗸",
+     "rationale": "The description lists several rooms, including Room 1 and Room 2, so there is more than one dance room."
     },
     {
      "feature": "all_in_one",
-     "quote": "Book your 𝐀𝐥𝐥-𝐢𝐧-𝟏 !",
-     "rationale": "The venue is the hotel and dancers are invited to book the all-in-one hotel package there."
+     "quote": "Altafulla Mar Hotel",
+     "rationale": "The venue is the hotel, and guests are invited to book the all-in-one option there."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Full board",
+     "rationale": "Breakfast, half board and full board are offered as booking options with the hotel package."
     }
    ]
   }

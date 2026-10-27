@@ -70,29 +70,24 @@
    ],
    "features": [
     {
-     "feature": "all_in_one",
-     "quote": "𝐀𝐋𝐋 𝐈𝐍 𝐎𝐍𝐄 𝐕𝐄𝐍𝐔𝐄",
-     "rationale": "The section titled all in one venue gives the hotel as the venue for the event, so the parties take place where dancers stay."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 dance floors (air‑conditioned)",
-     "rationale": "Two dance floors are stated, which means more than one dance room."
+     "feature": "workshops",
+     "quote": "13:00–16:00 Workshops",
+     "rationale": "The programme lists workshops on Saturday and Sunday afternoons."
     },
     {
      "feature": "day_socials",
      "quote": "16:00–20:00 Social",
-     "rationale": "Afternoon social sessions are listed in the schedule."
+     "rationale": "The programme lists daytime socials from 16:00 to 20:00 on several days."
     },
     {
-     "feature": "workshops",
-     "quote": "13:00–16:00 Workshops",
-     "rationale": "Daytime workshop sessions are part of the programme."
+     "feature": "multiple_rooms",
+     "quote": "2 dance floors",
+     "rationale": "The event has two dance floors, Room 1 and Room 2."
     },
     {
-     "feature": "masterclass",
-     "quote": "𝐓𝐄𝐀𝐂𝐇𝐄𝐑𝐒 – 𝐌𝐀𝐒𝐓𝐄𝐑𝐂𝐋𝐀𝐒𝐒𝐄𝐒",
-     "rationale": "A masterclass teacher section heading shows masterclasses are part of the event."
+     "feature": "all_in_one",
+     "quote": "➖➖➖ 𝐀𝐋𝐋 𝐈𝐍 𝐎𝐍𝐄 𝐕𝐄𝐍𝐔𝐄",
+     "rationale": "The all-in-one venue section names the hotel where the event and accommodation take place together."
     }
    ]
   }

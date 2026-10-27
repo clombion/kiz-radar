@@ -65,17 +65,17 @@
     {
      "feature": "all_levels_beginners",
      "quote": "From the foundation till more advanced dance",
-     "rationale": "The description says the festival runs from the foundation level up to more advanced dance, so it suits beginners."
-    },
-    {
-     "feature": "workshops",
-     "quote": "TEACHING",
-     "rationale": "The section lists teachers and their dance styles, showing that dance classes are part of the festival."
+     "rationale": "The description states the festival runs from the foundation level up to more advanced dance, so it welcomes beginners."
     },
     {
      "feature": "accommodation_included",
      "quote": "5 nights hotel",
-     "rationale": "The special touristic package listed includes five nights of hotel accommodation."
+     "rationale": "The special touristic package lists five nights of hotel, so accommodation is included in the package."
+    },
+    {
+     "feature": "workshops",
+     "quote": "TEACHING",
+     "rationale": "The program has a teaching section listing dance classes by teacher and style."
     }
    ]
   }

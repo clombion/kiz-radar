@@ -16,7 +16,7 @@
     {
      "feature": "workshops",
      "quote": "Workshops, shows, social dancing",
-     "rationale": "The description states that workshops are part of the event."
+     "rationale": "The description says workshops are part of the event."
     },
     {
      "feature": "shows",
@@ -24,39 +24,39 @@
      "rationale": "The description lists shows as part of the event."
     },
     {
+     "feature": "live_music",
+     "quote": "INCLUDES CONCERT, SHOWS, AND SOCIAL ACROSS 2 ROOMS",
+     "rationale": "The Saturday social ticket includes a concert."
+    },
+    {
      "feature": "pre_party",
      "quote": "PRE-PARTY @ PALMERA PLAYA",
-     "rationale": "A Friday pre-party at Palmera Playa is listed in the schedule."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "*** NIGHT SOCIAL @ HOTEL ATTICA 21 ***",
-     "rationale": "The socials take place at Hotel Attica 21, where the hotel section offers rooms to attendees."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Discount Code:",
-     "rationale": "A discount code for room bookings at Hotel Attica21 is offered, without accommodation being part of the pass."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "DRESS CODE:",
-     "rationale": "The schedule states a dress code for the parties."
+     "rationale": "A Friday pre-party at Palmera Playa is scheduled before the main weekend."
     },
     {
      "feature": "day_socials",
      "quote": "AFTERNOON/EVENING SOCIAL @ HOTEL ATTICA 21",
-     "rationale": "An afternoon/evening social is scheduled on Sunday."
-    },
-    {
-     "feature": "live_music",
-     "quote": "concert",
-     "rationale": "The party pass includes a concert."
+     "rationale": "A social is scheduled in the afternoon and evening on Sunday."
     },
     {
      "feature": "multiple_rooms",
      "quote": "SOCIAL (2 ROOMS)",
-     "rationale": "The Saturday social is held across two rooms."
+     "rationale": "The Saturday social takes place across two rooms."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "DRESS CODE:",
+     "rationale": "Each day's schedule states a dress code."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "NIGHT SOCIAL @ HOTEL ATTICA 21",
+     "rationale": "The socials take place at Hotel Attica21, where room bookings are offered."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Room Bookings",
+     "rationale": "Rooms can be booked at Hotel Attica21 with a discount code, separate from the pass."
     }
    ]
   }

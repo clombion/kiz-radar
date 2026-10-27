@@ -7,18 +7,18 @@
    "features": [
     {
      "feature": "accommodation_included",
-     "quote": "🏠 Accommodation in a residence with pool & sauna access",
-     "rationale": "The trip includes accommodation in a residence, listed under 'TRIP INCLUDES'."
+     "quote": "Accommodation in a residence with pool & sauna access",
+     "rationale": "The trip includes accommodation in a residence as part of the all-inclusive package."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "Round-trip coach transport",
-     "rationale": "A round-trip coach from several departure cities is included, which is a shuttle transfer."
+     "rationale": "A coach transport between the departure cities and the resort is included."
     },
     {
      "feature": "workshops",
      "quote": "Workshops held at the resort’s bowling alley.",
-     "rationale": "The description states that dance workshops are held at the resort's bowling alley."
+     "rationale": "Dance workshops are held as part of the trip."
     }
    ]
   }

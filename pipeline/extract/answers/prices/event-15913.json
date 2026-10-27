@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "December: 80€"
       },
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "January: 90€"
       },
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "February: 100€"
       },
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -65,7 +65,7 @@
        "quote": "March: 110€"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -78,7 +78,7 @@
        "quote": "April: 120€"
       },
       {
-       "amount": 130,
+       "amount": 130.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -91,7 +91,7 @@
        "quote": "May: 130€"
       },
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -104,7 +104,7 @@
        "quote": "June: 140€"
       },
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -121,13 +121,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "🏨🍽️ ACCOMMODATION + FULL BOARD (drinks included)",
-     "group_size": null,
+     "label_quote": null,
+     "group_size": 1,
      "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 237,
+       "amount": 237.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -144,13 +144,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "🏨🍽️ ACCOMMODATION + FULL BOARD (drinks included)",
-     "group_size": null,
+     "label_quote": null,
+     "group_size": 2,
      "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 348,
+       "amount": 348.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -167,13 +167,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "🏨🍽️ ACCOMMODATION + FULL BOARD (drinks included)",
-     "group_size": null,
+     "label_quote": null,
+     "group_size": 3,
      "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 504,
+       "amount": 504.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -190,13 +190,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "🏨🍽️ ACCOMMODATION + FULL BOARD (drinks included)",
-     "group_size": null,
+     "label_quote": null,
+     "group_size": 1,
      "days": 4,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 316,
+       "amount": 316.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -213,13 +213,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "🏨🍽️ ACCOMMODATION + FULL BOARD (drinks included)",
-     "group_size": null,
+     "label_quote": null,
+     "group_size": 2,
      "days": 4,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 464,
+       "amount": 464.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -236,13 +236,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "🏨🍽️ ACCOMMODATION + FULL BOARD (drinks included)",
-     "group_size": null,
+     "label_quote": null,
+     "group_size": 3,
      "days": 4,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 672,
+       "amount": 672.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -259,82 +259,13 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": "🎫 DAY PASS",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 60,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "05.06 Friday: 60€"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "🎫 DAY PASS",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 80,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "06.06 Saturday: 80€"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "🎫 DAY PASS",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 50,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "07.06 Sunday: 50€"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
      "label_quote": "💶 PARTY PRICES 💶",
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 25,
+       "amount": 25.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -357,7 +288,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 30,
+       "amount": 30.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -380,7 +311,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -393,9 +324,81 @@
        "quote": "07.06 Sunday: 20€"
       }
      ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": "🎫 DAY PASS",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 60.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "05.06 Friday: 60€"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": "🎫 DAY PASS",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 80.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "06.06 Saturday: 80€"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": "🎫 DAY PASS",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 50.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "07.06 Sunday: 50€"
+      }
+     ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "Prices increase monthly — get your pass now!",
+    "Accommodation available only with full board."
+   ]
   }
  ]
 }

@@ -63,24 +63,24 @@
    ],
    "features": [
     {
+     "feature": "workshops",
+     "quote": "Workshops",
+     "rationale": "The style line lists Workshops as part of the event."
+    },
+    {
      "feature": "taxi_dancers",
      "quote": "Taxi Dancers",
-     "rationale": "The line '⚡👻 Taxi Dancers 👻⚡' states that taxi dancers are present."
+     "rationale": "A Taxi Dancers heading introduces a named taxi-dancer team."
     },
     {
      "feature": "dress_code",
      "quote": "DRESS CODE",
-     "rationale": "The line '👹🎃 DRESS CODE 🎃👹' explicitly states a dress code."
+     "rationale": "The description has an explicit DRESS CODE heading."
     },
     {
      "feature": "themed_parties",
      "quote": "Halloween Elegance & Dark Vibes",
-     "rationale": "The Halloween dress theme for the event is a themed dress concept for the parties."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops",
-     "rationale": "The event tag line lists Workshops as part of the event."
+     "rationale": "The parties carry a stated Halloween dress theme."
     }
    ]
   }

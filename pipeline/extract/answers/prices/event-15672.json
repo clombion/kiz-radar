@@ -9,11 +9,11 @@
      "style": null,
      "label_quote": "🌟𝗧𝗶𝗰𝗸𝗲𝘁 𝗣𝗿𝗶𝗰𝗲",
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 145,
+       "amount": 145.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -36,7 +36,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 75,
+       "amount": 75.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -59,7 +59,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -82,7 +82,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 70,
+       "amount": 70.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -105,7 +105,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 75,
+       "amount": 75.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -128,7 +128,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -151,7 +151,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 70,
+       "amount": 70.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -174,7 +174,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 75,
+       "amount": 75.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,

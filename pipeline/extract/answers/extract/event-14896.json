@@ -63,19 +63,19 @@
    ],
    "features": [
     {
-     "feature": "day_socials",
-     "quote": "3-DAY SOCIALS (INCLUDING our Kizomba na Rua)",
-     "rationale": "The full pass includes three days of socials, which are daytime dance sessions."
-    },
-    {
      "feature": "workshops",
      "quote": "WORKSHOPS",
-     "rationale": "The full pass includes workshops, which are dance classes."
+     "rationale": "The full pass includes workshops, so dance classes are part of the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "3-DAY SOCIALS",
+     "rationale": "The full pass includes daytime socials over three days."
     },
     {
      "feature": "partner_hotel",
      "quote": "WE HAVE A SPECIAL ROOM-RATE AT THE VENUE FOR FULLPASS HOLDERS",
-     "rationale": "The venue negotiates a special room rate for pass holders, but accommodation is not stated as part of the pass."
+     "rationale": "A negotiated room rate is offered for pass holders, while the pass itself does not include accommodation."
     }
    ]
   }

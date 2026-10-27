@@ -7,13 +7,13 @@
     {
      "kind": "other",
      "style": "kizomba",
-     "label_quote": "Prices:",
+     "label_quote": "🩵 Urban Kiz",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 105,
+       "amount": 105.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "🩷 24h sale – 105 €, when you register with in the first 24h"
       },
       {
-       "amount": 126,
+       "amount": 126.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "🩵 Early Bird until 21.6. – 126€"
       },
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -56,13 +56,13 @@
     {
      "kind": "other",
      "style": "other",
-     "label_quote": "Prices:",
+     "label_quote": "🩷 West Coast Swing",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 105,
+       "amount": 105.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -75,7 +75,7 @@
        "quote": "🩷 24h sale – 105 €, when you register with in the first 24h"
       },
       {
-       "amount": 126,
+       "amount": 126.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -88,7 +88,7 @@
        "quote": "🩵 Early Bird until 21.6. – 126€"
       },
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

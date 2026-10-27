@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -36,7 +36,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -59,12 +59,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 630,
+       "amount": 630.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "09-01",
-       "until": "11-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -82,12 +82,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 1096,
+       "amount": 1096.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "09-01",
-       "until": "11-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -105,12 +105,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 1524,
+       "amount": 1524.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "09-01",
-       "until": "11-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -128,12 +128,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 770,
+       "amount": 770.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "09-01",
-       "until": "11-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -151,12 +151,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 1392,
+       "amount": 1392.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "09-01",
-       "until": "11-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -174,12 +174,12 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 1932,
+       "amount": 1932.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "09-01",
-       "until": "11-30",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,

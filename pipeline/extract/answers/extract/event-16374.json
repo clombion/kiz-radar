@@ -100,17 +100,12 @@
     {
      "feature": "workshops",
      "quote": "Workshops",
-     "rationale": "The event lists dance workshops as a core part of the three days."
+     "rationale": "The event offers dance workshops over three days."
     },
     {
      "feature": "shows",
      "quote": "Animation show",
-     "rationale": "An animation show is listed among the event's offerings, which counts as a performance."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "12:00 PM – 6:00 PM",
-     "rationale": "The Sunday programme is a daytime Workshops + Social session in the afternoon."
+     "rationale": "An animation show is listed as part of the programme."
     }
    ]
   }

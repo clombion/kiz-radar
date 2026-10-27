@@ -13,11 +13,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 350,
+       "amount": 350.0,
        "currency": "RON",
        "fee": null,
        "alt": {
-        "amount": 70,
+        "amount": 70.0,
         "currency": "EUR"
        },
        "from": null,

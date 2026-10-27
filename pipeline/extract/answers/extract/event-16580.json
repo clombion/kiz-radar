@@ -150,58 +150,60 @@
      "style": null,
      "country": null,
      "source_line": "Ladeejay"
+    },
+    {
+     "name_as_written": "Maurizio and Claudia",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Maurizio and Claudia Florence Dance Show less"
     }
    ],
    "features": [
     {
      "feature": "beach_party",
      "quote": "evenings on the beaches of the Romagna Riviera",
-     "rationale": "The event is held with evenings on the beaches, so it includes beach parties."
+     "rationale": "The description promotes evenings on the beaches, which indicates a beach party."
     },
     {
      "feature": "pool_party",
-     "quote": "Three days of beach, poolside socials",
-     "rationale": "Poolside socials are part of the event programme."
+     "quote": "poolside socials",
+     "rationale": "The description mentions poolside socials as part of the event."
     },
     {
      "feature": "workshops",
      "quote": "Salsa Bachata Kizomba, Semba, Tarraxinha, Kizomba Fusion, Urban Kiz, and Lady Style workshops",
-     "rationale": "Dance workshops in several styles are part of the event."
+     "rationale": "The event offers dance workshops in several styles."
     },
     {
      "feature": "day_socials",
      "quote": "Socials during the day",
-     "rationale": "The packages include daytime socials."
+     "rationale": "Daytime socials are included in the packages."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "water and wine with meals",
+     "rationale": "Pack A includes meals with water and wine."
     },
     {
      "feature": "accommodation_included",
      "quote": "3 days 2 nights from Friday dinner to Sunday lunch",
-     "rationale": "The Pack A package includes overnight stays."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Full board or bed and breakfast packages available.",
-     "rationale": "Full board packages include meals."
+     "rationale": "The Pack A package includes two nights of accommodation."
     },
     {
      "feature": "partner_hotel",
-     "quote": "For those staying at the Hotel Fra Pini, lunches and dinners will be served at the 4-star Hotel OXYGEN.",
-     "rationale": "Named partner hotels are linked to the event with meal arrangements."
+     "quote": "Hotel Serena",
+     "rationale": "Specific partner hotels with negotiated room rates are listed."
     },
     {
      "feature": "all_in_one",
-     "quote": "The Friday and Saturday evenings will take place at the Oxygen Hotel:",
-     "rationale": "The evening parties take place at a hotel that also offers rooms for dancers."
+     "quote": "The Friday and Saturday evenings will take place at the Oxygen Hotel",
+     "rationale": "The evening parties take place at the hotel where dancers can stay."
     },
     {
      "feature": "shows",
-     "quote": "Maurizio and Claudia Florence Dance Show",
+     "quote": "Florence Dance Show",
      "rationale": "A dance show is listed as part of the event."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "3 days of Kizomba Salsa Bachata",
-     "rationale": "A three-day intensive dance programme is offered."
     }
    ]
   }

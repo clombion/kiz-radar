@@ -56,19 +56,24 @@
    ],
    "features": [
     {
+     "feature": "shows",
+     "quote": "2 festive evenings with DJs, shows & an amazing atmosphere",
+     "rationale": "The program lists shows as part of the festive evenings."
+    },
+    {
      "feature": "workshops",
      "quote": "Workshops with passionate artists for all levels",
-     "rationale": "The program lists workshops with artists as part of the event."
+     "rationale": "The event explicitly offers workshops with artists."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "Workshops with passionate artists for all levels",
+     "rationale": "The workshops are explicitly stated to be for all levels."
     },
     {
      "feature": "all_levels_beginners",
      "quote": "Whether you’re a beginner or an experienced dancer, come experience Palanca Negra.",
-     "rationale": "The description explicitly welcomes beginners as well as experienced dancers."
-    },
-    {
-     "feature": "shows",
-     "quote": "2 festive evenings with DJs, shows & an amazing atmosphere",
-     "rationale": "The program explicitly includes shows alongside the festive evenings."
+     "rationale": "The description explicitly welcomes beginners."
     }
    ]
   }

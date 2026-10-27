@@ -3,52 +3,60 @@
  "events": [
   {
    "event_id": 16079,
-   "artists": [],
+   "artists": [
+    {
+     "name_as_written": "DANCE TRAVEL",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "For information contact with DANCE TRAVEL:"
+    }
+   ],
    "features": [
     {
      "feature": "all_in_one",
      "quote": "All in one hotel",
-     "rationale": "The description says the festival is in an all-in-one hotel, so the parties and the accommodation share one venue."
+     "rationale": "The parties take place in Don Angel Hotel, the same hotel where dancers are invited to stay."
     },
     {
      "feature": "pool_party",
-     "quote": "A Pool Party from 17h to 21h.",
-     "rationale": "The event explicitly schedules a pool party."
+     "quote": "A Pool Party",
+     "rationale": "The description lists a pool party from 17h to 21h."
     },
     {
      "feature": "workshops",
-     "quote": "2 exclusive rooms for workshops of Kizomba-Urban Kiz-Tarraxo.",
-     "rationale": "Dance workshops in dedicated rooms are part of the event."
+     "quote": "exclusive rooms for workshops",
+     "rationale": "Daytime workshops in dedicated rooms are part of the programme."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "2 rooms for the parties during the night:",
-     "rationale": "Two dance rooms are used for the night parties."
+     "quote": "2 rooms for the parties during the night",
+     "rationale": "Two separate dance rooms are used for the night parties."
     },
     {
      "feature": "pre_party",
-     "quote": "23:30h-04h Pre-Party",
-     "rationale": "A pre-party is listed on the Wednesday programme before the main event."
+     "quote": "Pre-Party",
+     "rationale": "A Wednesday pre-party is listed in the programme before the main parties."
     },
     {
      "feature": "shows",
-     "quote": "All the event (workshops, parties, shows)",
-     "rationale": "The text states that shows take place as part of the event."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "PRICE (per person and day with FULL BOARD):",
-     "rationale": "The package prices are stated as full board, which includes meals."
+     "quote": "workshops, parties, shows",
+     "rationale": "The location section says the event includes shows."
     },
     {
      "feature": "accommodation_included",
-     "quote": "Double Room: € x person",
-     "rationale": "Prices per room type and number of nights show that accommodation is sold as part of the package."
+     "quote": "PRICE (per person and day with FULL BOARD):",
+     "rationale": "The per-day room prices are for full-board packages that include accommodation."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "FULL BOARD",
+     "rationale": "The room prices are stated as full board, so meals are included in the package."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "INFORMATION ABOUT SHUTTLE FROM BARCELONA AIRPORT OR GIRONA AIRPORT",
-     "rationale": "The description gives shuttle options from the airports to the venue."
+     "rationale": "The description gives bus and train shuttle options from the airports to the hotel."
     }
    ]
   }

@@ -84,34 +84,34 @@
    ],
    "features": [
     {
-     "feature": "live_music",
-     "quote": "experience live music with the Massanari band and Joao Dontana",
-     "rationale": "The description promises live music from a band and a musician at the event."
+     "feature": "workshops",
+     "quote": "In our dance workshops",
+     "rationale": "The text says dance workshops are part of the event."
     },
     {
-     "feature": "workshops",
-     "quote": "In our dance workshops, you will be able to improve your Ginga",
-     "rationale": "The text describes dance workshops as part of the event program."
+     "feature": "live_music",
+     "quote": "experience live music with the Massanari band",
+     "rationale": "The event offers live music from a band."
     },
     {
      "feature": "masterclass",
-     "quote": "AfroGinga – Master Class",
-     "rationale": "The program lists a Master Class on Sunday."
+     "quote": "Master Class",
+     "rationale": "The Sunday programme lists an AfroGinga Master Class."
     },
     {
      "feature": "pre_party",
-     "quote": "10:00 PM – 2:00 AM Pre-Party",
-     "rationale": "The program schedules a Pre-Party on Friday evening before the main weekend."
+     "quote": "Pre-Party",
+     "rationale": "The programme lists a Pre-Party on Friday evening before the main event."
     },
     {
      "feature": "day_socials",
-     "quote": "12:00 – 13:00 Dance Social",
-     "rationale": "A daytime Dance Social is listed on the Saturday program."
+     "quote": "Dance Social",
+     "rationale": "The programme lists daytime Dance Socials on Saturday."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "21:00 Kizomba Workshop (Room 2) & Dance Social (Room 3)",
-     "rationale": "Two simultaneous activities are held in separate numbered rooms."
+     "quote": "Kizomba Workshop (Room 2) & Dance Social (Room 3)",
+     "rationale": "Two sessions run in separate numbered rooms at the same time."
     }
    ]
   }

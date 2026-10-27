@@ -6,13 +6,7 @@
    "party_rooms": null,
    "class_rooms": null,
    "rooms": [],
-   "genres": [
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Emily Tarraxo"
-    }
-   ]
+   "genres": []
   }
  ]
 }

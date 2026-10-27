@@ -7,13 +7,13 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": null,
+     "label_quote": "Online prices:",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 55,
+       "amount": 55.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

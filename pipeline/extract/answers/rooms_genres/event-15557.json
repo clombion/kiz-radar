@@ -10,7 +10,7 @@
    "class_rooms": null,
    "rooms": [
     {
-     "name_as_written": "Kizomba/Semba",
+     "name_as_written": null,
      "kind": "party",
      "genres": [
       "kizomba",
@@ -19,7 +19,7 @@
      "quote": "TWO rooms: Kizomba/Semba + UrbanKiz"
     },
     {
-     "name_as_written": "UrbanKiz",
+     "name_as_written": null,
      "kind": "party",
      "genres": [
       "urbankiz"

@@ -16,27 +16,27 @@
     {
      "feature": "all_in_one",
      "quote": "The H4 Hotel Wyndham Paris Pleyel Resort offers a unique all-in-one experience:",
-     "rationale": "The event is described as an all-in-one experience held in the hotel venue itself."
+     "rationale": "The event is held in the hotel, which is described as an all-in-one experience, so the parties take place where the dancers stay."
     },
     {
-     "feature": "all_levels_beginners",
-     "quote": "Workshops for all levels, from beginners to advanced dancers",
-     "rationale": "The description explicitly says the workshops suit all levels, including beginners."
+     "feature": "multiple_rooms",
+     "quote": "5 dance floors",
+     "rationale": "The congress center is said to have five dance floors, which means more than one dance room."
     },
     {
      "feature": "workshops",
      "quote": "Workshops for all levels, from beginners to advanced dancers",
-     "rationale": "Dance workshops are listed as part of what to expect at the congress."
+     "rationale": "The description lists workshops as part of what to expect at the event."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "Workshops for all levels, from beginners to advanced dancers",
+     "rationale": "The workshops are explicitly offered for all levels, including beginners."
     },
     {
      "feature": "themed_parties",
      "quote": "Themed parties & nights until morning",
      "rationale": "The event lists themed parties and nights as part of the programme."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2-floor congress center with 5 dance floors",
-     "rationale": "The venue is stated to have five dance floors, which means more than one dance room."
     }
    ]
   }

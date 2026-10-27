@@ -28,32 +28,9 @@
      ]
     },
     {
-     "kind": "other",
-     "style": null,
-     "label_quote": "⭐ Masterclass (optional add-on)",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 39.99,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "• Both Masterclasses: €39.99"
-      }
-     ]
-    },
-    {
      "kind": "day",
      "style": null,
-     "label_quote": "🎉 Individual Party Tickets",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -76,7 +53,7 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": "🎉 Individual Party Tickets",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -99,7 +76,7 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": "🎉 Individual Party Tickets",
+     "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,

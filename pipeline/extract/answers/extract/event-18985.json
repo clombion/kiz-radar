@@ -5,7 +5,7 @@
    "event_id": 18985,
    "artists": [
     {
-     "name_as_written": "VIKF",
+     "name_as_written": "VIKF 8th Edition",
      "role": "organiser",
      "style": null,
      "country": null,
@@ -92,7 +92,7 @@
      "name_as_written": "Alex & Desirée",
      "role": "teacher",
      "style": "BACHATA",
-     "country": "USA",
+     "country": "Dom Rep & USA",
      "source_line": "✅ Alex & Desirée (Dom Rep & USA 🇺🇸)"
     },
     {
@@ -148,43 +148,43 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "*4 days of workshops",
-     "rationale": "The festival offers four days of workshops."
+     "quote": "4 days of workshops",
+     "rationale": "The offer lists four days of workshops as part of the festival."
     },
     {
      "feature": "day_socials",
-     "quote": "*3 day-time socials",
-     "rationale": "The festival offers three daytime socials."
+     "quote": "3 day-time socials",
+     "rationale": "The offer lists three daytime socials."
     },
     {
      "feature": "multiple_rooms",
      "quote": "4 ROOMS:",
-     "rationale": "The event has four dance rooms."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Advanced Special trainings, Bootcamps and Master Classes",
-     "rationale": "Bootcamps are listed as an event component that the full pass does not cover."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Advanced Special trainings, Bootcamps and Master Classes",
-     "rationale": "Master Classes are listed as an event component."
+     "rationale": "The festival describes four separate dance rooms."
     },
     {
      "feature": "shows",
-     "quote": "40+ LOCAL AND INTERNATIONAL PERFORMERS",
-     "rationale": "The line-up includes performers who put on shows at the event."
+     "quote": "performances and fashion shows by African Designers",
+     "rationale": "The gala night includes performances and fashion shows."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Bootcamps",
+     "rationale": "Bootcamps are offered as a separate intensive training, excluded from the full pass."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Master Classes",
+     "rationale": "Master classes are offered as a separate paid component."
     },
     {
      "feature": "partner_hotel",
-     "quote": "VICTORIA MARRIOTT INNER HARBOUR HOTEL DEALS:",
-     "rationale": "A negotiated Marriott hotel rate is offered, but the accommodation is not part of the pass."
+     "quote": "VICTORIA MARRIOTT INNER HARBOUR HOTEL DEALS",
+     "rationale": "A negotiated hotel rate is offered, but the accommodation is not part of the pass."
     },
     {
      "feature": "adults_only",
      "quote": "Must be 18+ to attend this event",
-     "rationale": "Attendance is restricted to people aged 18 and over."
+     "rationale": "The event is restricted to attendees aged 18 and over."
     }
    ]
   }

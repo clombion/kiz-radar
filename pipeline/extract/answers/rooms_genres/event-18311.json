@@ -9,13 +9,8 @@
    "genres": [
     {
      "genre": "kizomba",
-     "genre_as_written": "Kizomba",
+     "genre_as_written": "KIZOMBA",
      "quote": "NEVERENDING KIZOMBA FESTIVAL"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba/Semba"
     },
     {
      "genre": "urbankiz",
@@ -25,12 +20,17 @@
     {
      "genre": "tarraxo",
      "genre_as_written": "Tarraxo",
-     "quote": "Urban Kiz / Tarraxo"
+     "quote": "(Urban Kiz / Tarraxo)"
     },
     {
      "genre": "afro",
      "genre_as_written": "Afro",
-     "quote": "Afro / Kizomba Fusion"
+     "quote": "(Afro / Kizomba Fusion)"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "(Kizomba/Semba)"
     }
    ]
   }

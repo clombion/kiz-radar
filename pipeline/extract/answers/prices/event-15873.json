@@ -13,7 +13,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 180,
+       "amount": 180.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "2 nights – 180€"
       },
       {
-       "amount": 200,
+       "amount": 200.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -49,7 +49,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 240,
+       "amount": 240.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -62,7 +62,7 @@
        "quote": "3 nights – 240€"
       },
       {
-       "amount": 260,
+       "amount": 260.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -85,7 +85,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 300,
+       "amount": 300.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -98,7 +98,7 @@
        "quote": "4 nights – 300€"
       },
       {
-       "amount": 320,
+       "amount": 320.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -121,7 +121,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 360,
+       "amount": 360.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -134,7 +134,7 @@
        "quote": "5 nights – 360€"
       },
       {
-       "amount": 380,
+       "amount": 380.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -157,7 +157,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 190,
+       "amount": 190.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -170,7 +170,7 @@
        "quote": "2 nights – 190€"
       },
       {
-       "amount": 210,
+       "amount": 210.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -193,7 +193,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 255,
+       "amount": 255.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -206,7 +206,7 @@
        "quote": "3 nights – 255€"
       },
       {
-       "amount": 275,
+       "amount": 275.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -229,7 +229,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 320,
+       "amount": 320.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -242,7 +242,7 @@
        "quote": "4 nights – 320€"
       },
       {
-       "amount": 340,
+       "amount": 340.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -265,7 +265,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 385,
+       "amount": 385.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -278,7 +278,7 @@
        "quote": "5 nights – 385€"
       },
       {
-       "amount": 405,
+       "amount": 405.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -301,7 +301,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 280,
+       "amount": 280.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -314,7 +314,7 @@
        "quote": "2 nights – 280€"
       },
       {
-       "amount": 300,
+       "amount": 300.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -337,7 +337,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 390,
+       "amount": 390.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -350,7 +350,7 @@
        "quote": "3 nights – 390€"
       },
       {
-       "amount": 410,
+       "amount": 410.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -373,7 +373,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 500,
+       "amount": 500.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -386,7 +386,7 @@
        "quote": "4 nights – 500€"
       },
       {
-       "amount": 520,
+       "amount": 520.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -409,7 +409,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 610,
+       "amount": 610.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -422,7 +422,7 @@
        "quote": "5 nights – 610€"
       },
       {
-       "amount": 630,
+       "amount": 630.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

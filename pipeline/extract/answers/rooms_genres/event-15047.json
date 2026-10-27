@@ -5,7 +5,7 @@
    "event_id": 15047,
    "party_rooms": {
     "count": 2,
-    "quote": "1 100,000% Kizomba room / 1 Salsa Bachata Fun room."
+    "quote": "1 100,000% Kizomba room / 1 Salsa Bachata Fun room"
    },
    "class_rooms": null,
    "rooms": [
@@ -41,7 +41,7 @@
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "Salsa Bachata Fun room"
+     "quote": "1 Salsa Bachata Fun room"
     }
    ]
   }

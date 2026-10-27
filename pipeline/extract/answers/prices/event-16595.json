@@ -13,20 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 95,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "£95 Deposit"
-      },
-      {
-       "amount": 105,
+       "amount": 105.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -39,7 +26,7 @@
        "quote": "£105 – 1st Feb"
       },
       {
-       "amount": 115,
+       "amount": 115.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -52,7 +39,7 @@
        "quote": "£115 – 1st Mar"
       },
       {
-       "amount": 125,
+       "amount": 125.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -65,7 +52,7 @@
        "quote": "£125 – 1st Apr"
       },
       {
-       "amount": 135,
+       "amount": 135.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -78,7 +65,7 @@
        "quote": "£135 – 1st May"
       },
       {
-       "amount": 145,
+       "amount": 145.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -91,7 +78,7 @@
        "quote": "£145 – 1st June"
       },
       {
-       "amount": 155,
+       "amount": 155.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -104,7 +91,7 @@
        "quote": "£155 – 1st July"
       },
       {
-       "amount": 165,
+       "amount": 165.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -119,9 +106,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "Prices increasing with time"
-   ]
+   "rule_quotes": []
   }
  ]
 }

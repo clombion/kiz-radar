@@ -40,69 +40,6 @@
      "source_line": "*** ENJOYOURKIZ EVENTS ***"
     },
     {
-     "name_as_written": "Alexa",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "– Alexa"
-    },
-    {
-     "name_as_written": "Marie",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "– Marie"
-    },
-    {
-     "name_as_written": "Krys",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "– Krys"
-    },
-    {
-     "name_as_written": "Maty",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "– Maty"
-    },
-    {
-     "name_as_written": "Bruno",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "– Bruno"
-    },
-    {
-     "name_as_written": "Marion",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "– Marion"
-    },
-    {
-     "name_as_written": "Nora",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "– Nora"
-    },
-    {
-     "name_as_written": "Rose",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "– Rose"
-    },
-    {
-     "name_as_written": "Emma",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "– Emma"
-    },
-    {
      "name_as_written": "Martin I’m Your Média",
      "role": "media",
      "style": null,
@@ -121,22 +58,17 @@
     {
      "feature": "multiple_rooms",
      "quote": "1 Additional Room for Social Events and Classes",
-     "rationale": "The description announces an additional dance room for social events and classes, meaning more than one room."
+     "rationale": "The description announces an additional room, so there is more than one dance room."
     },
     {
      "feature": "workshops",
-     "quote": "Additional Room for Social Events and Classes",
-     "rationale": "The description mentions classes taking place in the venue, so dance classes are part of the event."
+     "quote": "Social Events and Classes",
+     "rationale": "Classes are announced as part of the event alongside social events."
     },
     {
      "feature": "taxi_dancers",
      "quote": "THE DANCING TAXIS",
-     "rationale": "A section announces dancing taxis as part of the event."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "Domaine Belric has apartments with multiple beds",
-     "rationale": "The accommodation is offered at the same venue, Domaine BELRIC, where the event takes place."
+     "rationale": "A section announces dancing taxis, so taxi dancers are present."
     }
    ]
   }

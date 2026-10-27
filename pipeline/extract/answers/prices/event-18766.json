@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 105,
+       "amount": 105.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "105€ September"
       },
       {
-       "amount": 115,
+       "amount": 115.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "115€ October"
       },
       {
-       "amount": 125,
+       "amount": 125.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "125€ November"
       },
       {
-       "amount": 135,
+       "amount": 135.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -65,7 +65,7 @@
        "quote": "135€ December"
       },
       {
-       "amount": 145,
+       "amount": 145.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -88,7 +88,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -101,7 +101,7 @@
        "quote": "140€ July Early bird x 5"
       },
       {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -114,7 +114,7 @@
        "quote": "150€ July Early bird x 5"
       },
       {
-       "amount": 160,
+       "amount": 160.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -127,7 +127,7 @@
        "quote": "160€ July Early bird x 5"
       },
       {
-       "amount": 170,
+       "amount": 170.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -140,7 +140,7 @@
        "quote": "170€ August"
       },
       {
-       "amount": 190,
+       "amount": 190.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -153,7 +153,7 @@
        "quote": "190€ September"
       },
       {
-       "amount": 210,
+       "amount": 210.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -166,7 +166,7 @@
        "quote": "210€ October"
       },
       {
-       "amount": 230,
+       "amount": 230.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -179,7 +179,7 @@
        "quote": "230€ November"
       },
       {
-       "amount": 250,
+       "amount": 250.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -192,7 +192,7 @@
        "quote": "250€ December"
       },
       {
-       "amount": 270,
+       "amount": 270.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

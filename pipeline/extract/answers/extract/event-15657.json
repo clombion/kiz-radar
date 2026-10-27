@@ -167,33 +167,33 @@
     },
     {
      "feature": "shows",
-     "quote": "4 days of workshops, parties, and shows",
-     "rationale": "The event includes shows, and a SHOWS section lists performing acts."
+     "quote": "★ Cédric & Sabrina (Quebec – CAN)",
+     "rationale": "The SHOWS section lists acts that perform at the event."
+    },
+    {
+     "feature": "competition",
+     "quote": "Kizomba Ladies Challenge (Quebec – CAN)",
+     "rationale": "A ladies challenge is a dance competition listed among the shows."
     },
     {
      "feature": "multiple_rooms",
      "quote": "Party with 3 Rooms",
-     "rationale": "The parties take place with three rooms, meaning more than one dance room."
+     "rationale": "The party is stated to have three rooms."
     },
     {
      "feature": "pre_party",
      "quote": "PRE-PARTY",
-     "rationale": "Thursday March 5 is labelled as a pre-party before the main event."
+     "rationale": "The Thursday session is labelled as a pre-party."
     },
     {
      "feature": "day_socials",
      "quote": "Zouk Day Social",
-     "rationale": "A Zouk Day Social is held as a daytime social on Sunday afternoon."
-    },
-    {
-     "feature": "competition",
-     "quote": "Bachata Ladies Challenge",
-     "rationale": "A ladies challenge is a contest in the programme."
+     "rationale": "The Sunday afternoon is a daytime social."
     },
     {
      "feature": "themed_parties",
      "quote": "ALL WHITE SENSUAL PARTY",
-     "rationale": "The party is named with a dress theme of all white."
+     "rationale": "The party has a dress theme of all white."
     }
    ]
   }

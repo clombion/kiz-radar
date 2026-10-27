@@ -11,7 +11,7 @@
    "rooms": [
     {
      "name_as_written": "LOMÉ ROOM",
-     "kind": "unspecified",
+     "kind": "party",
      "genres": [
       "kizomba",
       "urbankiz",
@@ -25,6 +25,7 @@
      "name_as_written": "KINSHASA ROOM",
      "kind": "party",
      "genres": [
+      "urbankiz",
       "kompa",
       "zouk",
       "other"
@@ -35,8 +36,8 @@
    "genres": [
     {
      "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "ALOHA SWEET KIZOMBA WEEKENDER"
+     "genre_as_written": "Kizomba",
+     "quote": "Kizomba – Progressive Level"
     },
     {
      "genre": "urbankiz",
@@ -51,17 +52,17 @@
     {
      "genre": "zouk",
      "genre_as_written": "GhettoZouk",
-     "quote": "GhettoZouk • Semba & more"
+     "quote": "GhettoZouk"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "GhettoZouk • Semba & more"
+     "quote": "Semba & more"
     },
     {
      "genre": "kompa",
      "genre_as_written": "Kompa",
-     "quote": "🇭🇹💃 Kompa"
+     "quote": "Kompa"
     },
     {
      "genre": "other",

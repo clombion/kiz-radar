@@ -5,13 +5,6 @@
    "event_id": 16548,
    "artists": [
     {
-     "name_as_written": "Zambia House",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "✅ DJ Sink X Zambia House present: Tarraxinha vs Tarraxo Weekender"
-    },
-    {
      "name_as_written": "Emily",
      "role": "teacher",
      "style": null,
@@ -59,18 +52,25 @@
      "style": null,
      "country": null,
      "source_line": "DJ JC Stripes"
+    },
+    {
+     "name_as_written": "Zambia House",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "✅ DJ Sink X Zambia House present: Tarraxinha vs Tarraxo Weekender"
     }
    ],
    "features": [
     {
      "feature": "workshops",
      "quote": "13:00 – 16:00 Workshops",
-     "rationale": "The Saturday schedule lists a workshop block, so dance workshops are part of the event."
+     "rationale": "The Saturday schedule lists a daytime workshop block, so dance workshops are part of the event."
     },
     {
      "feature": "day_socials",
      "quote": "5:00PM – 7:00PM Social",
-     "rationale": "The Sunday schedule lists an afternoon social from 5:00PM to 7:00PM."
+     "rationale": "The Sunday schedule lists an afternoon social, which is a daytime social."
     }
    ]
   }

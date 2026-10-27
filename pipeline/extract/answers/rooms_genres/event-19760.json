@@ -3,15 +3,12 @@
  "events": [
   {
    "event_id": 19760,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )"
-   },
+   "party_rooms": null,
    "class_rooms": null,
    "rooms": [
     {
      "name_as_written": null,
-     "kind": "party",
+     "kind": "unspecified",
      "genres": [
       "salsa"
      ],
@@ -19,7 +16,7 @@
     },
     {
      "name_as_written": null,
-     "kind": "party",
+     "kind": "unspecified",
      "genres": [
       "bachata"
      ],
@@ -27,7 +24,7 @@
     },
     {
      "name_as_written": null,
-     "kind": "party",
+     "kind": "unspecified",
      "genres": [
       "kizomba"
      ],
@@ -38,7 +35,7 @@
     {
      "genre": "salsa",
      "genre_as_written": "Salsa",
-     "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )"
+     "quote": "International Competition ( Salsa & Bachata )"
     },
     {
      "genre": "bachata",

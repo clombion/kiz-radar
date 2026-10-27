@@ -236,13 +236,6 @@
      "source_line": "✅ CATARINA ART"
     },
     {
-     "name_as_written": "DanceJackson",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☑️ Special Workshop 👉 DanceJackson"
-    },
-    {
      "name_as_written": "NOELA ARES",
      "role": "dj",
      "style": null,
@@ -306,14 +299,14 @@
      "source_line": "🎧 W 🇪🇸"
     },
     {
-     "name_as_written": "Escola de Dança – Joana machado",
+     "name_as_written": "Joana machado",
      "role": "performer",
      "style": null,
      "country": null,
      "source_line": "Escola de Dança – Joana machado ( Lisboa )"
     },
     {
-     "name_as_written": "Estudio de dança – Paulo & Adelaide",
+     "name_as_written": "Paulo & Adelaide",
      "role": "performer",
      "style": null,
      "country": null,
@@ -359,47 +352,47 @@
     {
      "feature": "all_in_one",
      "quote": "VENUE LOCATION ( All in One )",
-     "rationale": "The label 'All in One' states that the event and accommodation are in the same venue, the Golden Tulip hotel."
+     "rationale": "The venue is the Golden Tulip hotel, so the parties take place where dancers are invited to stay."
     },
     {
      "feature": "partner_hotel",
-     "quote": "To get a discount on your reservation say you are going to the festival",
-     "rationale": "A hotel reservation discount is negotiated for festival attendees, with accommodation booked separately from the pass."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops",
-     "rationale": "The list of highlights names workshops as part of the event."
+     "quote": "BOOK YOUR ACCOMMODATION HERE",
+     "rationale": "Dancers are directed to book accommodation at a partner hotel, with a discount for festival attendees, while accommodation is not part of the pass."
     },
     {
      "feature": "pool_party",
      "quote": "Poolparty",
-     "rationale": "A pool party is listed among the event highlights."
+     "rationale": "The description lists a pool party among the event highlights."
     },
     {
-     "feature": "pre_party",
-     "quote": "Pré-Party",
-     "rationale": "A pre-party is listed among the event highlights."
-    },
-    {
-     "feature": "competition",
-     "quote": "Dance competition",
-     "rationale": "A dance competition is listed among the event highlights."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Best dress code",
-     "rationale": "A dress code is stated as a highlight."
-    },
-    {
-     "feature": "shows",
-     "quote": "Show // Apresentação",
-     "rationale": "A show section lists performing teams and schools presenting shows."
+     "feature": "workshops",
+     "quote": "Workshops",
+     "rationale": "Dance workshops are listed as part of the event."
     },
     {
      "feature": "multiple_rooms",
      "quote": "3 Rooms",
-     "rationale": "The event states it has three dance rooms."
+     "rationale": "The event offers three dance rooms."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Pré-Party",
+     "rationale": "A pre-party is listed as one of the event features."
+    },
+    {
+     "feature": "competition",
+     "quote": "Dance competition",
+     "rationale": "A dance competition is part of the programme."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Best dress code",
+     "rationale": "A dress code is stated as a feature of the event."
+    },
+    {
+     "feature": "shows",
+     "quote": "Show // Apresentação",
+     "rationale": "A show section lists schools and teams presenting performances."
     }
    ]
   }

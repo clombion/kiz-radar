@@ -6,34 +6,34 @@
    "artists": [],
    "features": [
     {
-     "feature": "pool_party",
-     "quote": "Crazy Pool Parties",
-     "rationale": "The description advertises pool parties as part of the event."
-    },
-    {
      "feature": "workshops",
      "quote": "Daily Workshops",
-     "rationale": "Daily workshops are listed as part of the programme."
+     "rationale": "The description advertises daily workshops as part of the event."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Pool Parties",
+     "rationale": "The description lists pool parties among the event's offerings."
     },
     {
      "feature": "shows",
      "quote": "International Shows",
-     "rationale": "International shows are advertised as part of the event."
+     "rationale": "The description advertises international shows as part of the event."
     },
     {
      "feature": "multiple_rooms",
      "quote": "4 Dance Floors",
-     "rationale": "Four dance floors means more than one dance room."
+     "rationale": "The description states that there are four dance floors."
     },
     {
      "feature": "accommodation_included",
      "quote": "Not just accommodation, food, and drinks – but all the extras included in the price!",
-     "rationale": "The all-inclusive concept states that accommodation is included in the price."
+     "rationale": "The quote says accommodation is included in the price under the all-inclusive concept."
     },
     {
      "feature": "meals_included",
-     "quote": "Not just accommodation, food, and drinks",
-     "rationale": "The all-inclusive concept states that food is included in the price."
+     "quote": "Not just accommodation, food, and drinks – but all the extras included in the price!",
+     "rationale": "The quote says food is included in the price under the all-inclusive concept."
     }
    ]
   }

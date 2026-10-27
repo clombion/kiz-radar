@@ -112,24 +112,24 @@
    ],
    "features": [
     {
-     "feature": "all_levels_beginners",
-     "quote": "WORKSHOPS FOR ALL LEVELS",
-     "rationale": "The event states its workshops are for all levels."
-    },
-    {
      "feature": "workshops",
      "quote": "WORKSHOPS FOR ALL LEVELS",
-     "rationale": "The event offers dance workshops across three days."
+     "rationale": "The event lists workshops for all levels as part of the programme."
     },
     {
-     "feature": "multiple_rooms",
-     "quote": "KIZOMBA MAIN DANCEFLOOR",
-     "rationale": "Naming a main dancefloor and a separate social dancefloor shows more than one dance floor."
+     "feature": "all_levels_beginners",
+     "quote": "WORKSHOPS FOR ALL LEVELS",
+     "rationale": "The workshops are stated to be for all levels, including beginners."
     },
     {
      "feature": "after_party",
      "quote": "AFTER-PARTY (SATURDAY)",
-     "rationale": "An after-party on Saturday is listed among the event features."
+     "rationale": "An after-party on Saturday is listed among the event's parties."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "SOCIAL DANCEFLOOR",
+     "rationale": "Naming a separate social dancefloor alongside the main dancefloor shows more than one dance floor."
     },
     {
      "feature": "partner_hotel",

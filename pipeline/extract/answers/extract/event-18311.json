@@ -176,18 +176,18 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "***ALL IN ONE***",
-     "rationale": "The text states the event is all in one, with the parties held at the hotel where dancers stay."
+     "quote": "ALL IN ONE",
+     "rationale": "The description states the event is all in one, and the venue is the Hotel Nautic Park where the parties take place."
     },
     {
      "feature": "workshops",
      "quote": "+24H OF WORKSHOPS",
-     "rationale": "The description promotes 24 hours of workshops as part of the festival."
+     "rationale": "The festival includes more than 24 hours of workshops."
     },
     {
      "feature": "competition",
      "quote": "THE BATTLE KIZZ (SPAIN FINAL)",
-     "rationale": "A battle competition with a Spain final is part of the event."
+     "rationale": "A Battle Kizz competition final is part of the event."
     }
    ]
   }

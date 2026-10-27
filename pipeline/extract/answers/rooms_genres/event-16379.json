@@ -5,12 +5,12 @@
    "event_id": 16379,
    "party_rooms": {
     "count": 2,
-    "quote": "The 2 party rooms at the moment (more to be announced)"
+    "quote": "The 2 party rooms at the moment (more to be announced) will be as follows:"
    },
    "class_rooms": null,
    "rooms": [
     {
-     "name_as_written": "BACHATA with Salsa",
+     "name_as_written": null,
      "kind": "party",
      "genres": [
       "bachata",
@@ -19,7 +19,7 @@
      "quote": "BACHATA with Salsa"
     },
     {
-     "name_as_written": "KIZOMBA/URBAN KIZ/KOMPA",
+     "name_as_written": null,
      "kind": "party",
      "genres": [
       "kizomba",

@@ -21,11 +21,11 @@
     {
      "feature": "pre_party",
      "quote": "préparties/surprises",
-     "rationale": "The FULLPASS includes pre-parties, so a pre-party is part of the event."
+     "rationale": "The FULLPASS includes pre-parties, described as préparties/surprises."
     },
     {
      "feature": "accommodation_included",
-     "quote": "hotel accomodation",
+     "quote": "hotel accomodation + airport pick-up/drop-off",
      "rationale": "The FULLPASS package explicitly includes hotel accommodation."
     },
     {

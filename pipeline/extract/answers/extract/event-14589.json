@@ -143,65 +143,63 @@
      "style": null,
      "country": null,
      "source_line": "1 – Alla Luksha"
-    },
-    {
-     "name_as_written": "Exodus Kizomba Congress",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "FB page : Exodus Kizomba Congress"
     }
    ],
    "features": [
     {
      "feature": "all_in_one",
      "quote": "ALL-IN-ONE HOTEL",
-     "rationale": "The parties and event are held in the hotel where dancers stay, as stated by the all-in-one hotel line."
+     "rationale": "The event is described as an all-in-one hotel, meaning the parties take place in the hotel where dancers stay."
     },
     {
      "feature": "accommodation_included",
      "quote": "Book your PASS AND ROOM HERE",
-     "rationale": "Pass and room are booked together as a package, so accommodation is part of the offer."
+     "rationale": "The pass and room are booked together as a package, suggesting accommodation is part of the pass."
     },
     {
      "feature": "meals_included",
      "quote": "BREAKFAST INCLUDED",
-     "rationale": "The services list states breakfast is included."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "TAXI DANCERS",
-     "rationale": "The description lists taxi dancers as part of the event."
+     "rationale": "Breakfast is stated as included in the hotel services."
     },
     {
      "feature": "workshops",
      "quote": "OVER 20H OF AMAZING WORKSHOPS",
-     "rationale": "Over 20 hours of dance workshops are offered."
+     "rationale": "Over 20 hours of dance workshops are listed as part of the program."
     },
     {
-     "feature": "after_party",
-     "quote": "AFTER PARTIES (6AM TO 9AM)",
-     "rationale": "After parties are listed in the programme with their times."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "1 PRE-PARTY ON WEDNESDAY",
-     "rationale": "A pre-party on Wednesday before the main event is announced."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "4 SOCIALS (3PM TO 8PM)",
-     "rationale": "Afternoon socials from 3PM to 8PM are scheduled."
+     "feature": "taxi_dancers",
+     "quote": "TAXI DANCERS",
+     "rationale": "The description explicitly lists taxi dancers among the features."
     },
     {
      "feature": "competition",
      "quote": "BATTLE KIZZ CONTEST",
-     "rationale": "A battle contest is part of the programme."
+     "rationale": "A battle contest is part of the program."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "1 PRE-PARTY ON WEDNESDAY",
+     "rationale": "A pre-party on Wednesday is listed before the main event."
+    },
+    {
+     "feature": "after_party",
+     "quote": "AFTER PARTIES (6AM TO 9AM)",
+     "rationale": "After parties are scheduled from 6AM to 9AM."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "4 SOCIALS (3PM TO 8PM)",
+     "rationale": "Four daytime socials from 3PM to 8PM are listed."
     },
     {
      "feature": "masterclass",
      "quote": "excluding Masterclasses",
-     "rationale": "The pass description refers to masterclasses as a distinct part of the event."
+     "rationale": "The pass description refers to masterclasses being offered as separate from the pass."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "LARGE DANCE FLOORS",
+     "rationale": "The plural dance floors indicate more than one dance floor."
     }
    ]
   }

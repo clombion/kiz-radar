@@ -5,13 +5,6 @@
    "event_id": 15521,
    "artists": [
     {
-     "name_as_written": "QuieroBailar",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "✨QuieroBailar Mega Gala Weekend is Back in EVERE!✨"
-    },
-    {
      "name_as_written": "DJ Pepito",
      "role": "dj",
      "style": null,
@@ -324,22 +317,17 @@
     {
      "feature": "multiple_rooms",
      "quote": "5 Dance Rooms",
-     "rationale": "The event runs across five dance rooms."
+     "rationale": "The event runs across five separate dance rooms."
     },
     {
      "feature": "workshops",
-     "quote": "3 Days — 30+ Workshops",
-     "rationale": "The event advertises more than thirty workshops."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows : Ahmedy Teams – Gaetan – Éléonora – Ellas bachata",
-     "rationale": "The line-up lists performing acts under Shows."
+     "quote": "30+ Workshops",
+     "rationale": "The event lists more than thirty workshops."
     },
     {
      "feature": "bootcamp_intensive",
      "quote": "a 3-hour beginner bootcamp",
-     "rationale": "A three-hour beginner bootcamp is offered in one room."
+     "rationale": "The Bachata Room 2 offering is a three-hour bootcamp."
     },
     {
      "feature": "all_levels_beginners",
@@ -347,9 +335,14 @@
      "rationale": "The bootcamp is explicitly aimed at beginners."
     },
     {
+     "feature": "shows",
+     "quote": "Shows : Ahmedy Teams – Gaetan – Éléonora – Ellas bachata",
+     "rationale": "Several acts are listed to perform shows during the event."
+    },
+    {
      "feature": "dress_code",
-     "quote": "Dress Code: 🤍🤍Withe and Red 🥵🥵",
-     "rationale": "A dress code for the Friday is stated explicitly."
+     "quote": "Dress Code: 🤍🤍Withe and Red",
+     "rationale": "A dress code for the Friday is stated."
     }
    ]
   }

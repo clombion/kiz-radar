@@ -12,7 +12,7 @@
      "source_line": "Miranna & Mauricio (Finland 🇫🇮/ Colombia 🇨🇴)"
     },
     {
-     "name_as_written": "Mirka & Pekka",
+     "name_as_written": "Mirka & Pekka – Virgula",
      "role": "teacher",
      "style": null,
      "country": "Finland 🇫🇮",
@@ -80,28 +80,30 @@
      "style": null,
      "country": "Bulgaria 🇧🇬",
      "source_line": "DJ Stani (Bulgaria 🇧🇬)"
+    },
+    {
+     "name_as_written": "Tampere Social Dancing",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Tampere Social Dancing"
     }
    ],
    "features": [
     {
      "feature": "workshops",
      "quote": "11h of Workshops",
-     "rationale": "The description lists eleven hours of workshops as part of the event."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Opening Party: White & Blue",
-     "rationale": "The opening party has a colour dress theme, shown by its name."
+     "rationale": "The festival lists eleven hours of workshops as part of the event."
     },
     {
      "feature": "pre_party",
      "quote": "Pre-party workshops are Open Level",
-     "rationale": "The description refers to pre-party workshops, which shows that a pre-party takes place before the main event."
+     "rationale": "The description refers to pre-party workshops, showing a pre-party part of the event."
     },
     {
-     "feature": "day_socials",
-     "quote": "2 Parties & 1 Matinée",
-     "rationale": "A matinée is a daytime social, listed as one of the event's sessions."
+     "feature": "themed_parties",
+     "quote": "Opening Party: White & Blue",
+     "rationale": "The opening party has a colour dress theme, which is a themed party."
     }
    ]
   }

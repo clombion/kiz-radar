@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 65,
+       "amount": 65.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -23,10 +23,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "• 🎟 Solo pass: €65"
+       "quote": "🎟 Solo pass: €65"
       },
       {
-       "amount": 75,
+       "amount": 75.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -36,10 +36,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "• 🎟 Solo Pass: €75"
+       "quote": "🎟 Solo Pass: €75"
       },
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -49,10 +49,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "• 🎟 Solo Pass: €80"
+       "quote": "🎟 Solo Pass: €80"
       },
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -62,7 +62,7 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "• 🎟 Solo Pass: €90"
+       "quote": "🎟 Solo Pass: €90"
       }
      ]
     },
@@ -75,7 +75,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -85,10 +85,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "• 🎟 Couple Pass: €140"
+       "quote": "🎟 Couple Pass: €140"
       },
       {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -98,10 +98,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "• 🎟 Couple Pass: €150"
+       "quote": "🎟 Couple Pass: €150"
       },
       {
-       "amount": 160,
+       "amount": 160.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -111,7 +111,7 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "• 🎟 Couple Pass: €160"
+       "quote": "🎟 Couple Pass: €160"
       }
      ]
     }

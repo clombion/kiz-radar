@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 14000,
+       "amount": 14000.0,
        "currency": "ISK",
        "fee": null,
        "alt": null,
@@ -36,7 +36,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 25000,
+       "amount": 25000.0,
        "currency": "ISK",
        "fee": null,
        "alt": null,
@@ -59,7 +59,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 10000,
+       "amount": 10000.0,
        "currency": "ISK",
        "fee": null,
        "alt": null,
@@ -82,7 +82,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 8000,
+       "amount": 8000.0,
        "currency": "ISK",
        "fee": null,
        "alt": null,

@@ -5,6 +5,13 @@
    "event_id": 16226,
    "artists": [
     {
+     "name_as_written": "Diamond Fam",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Kizomberos! Diamond Fam welcomes you to our party of the year!!! 28-/08-29/08/2026 A weekend packed with inspiration and joy. We offer workshops with international instructors from Paris and (Sweden) Parties with DJs from Sthlm/Gtbg. Our international instructors are fantastic teachers and dancers in Urbankiz, Kizomba, Tarraxo and Konpa. There will also be more than 20 fantastic taxi dancers for social dancing during the party. Check out who will be coming under “discussion” here in the event."
+    },
+    {
      "name_as_written": "Val’R & Sara",
      "role": "teacher",
      "style": null,
@@ -45,13 +52,6 @@
      "style": null,
      "country": "Sweden",
      "source_line": "Dj Joey (Sweden)"
-    },
-    {
-     "name_as_written": "Diamond Fam",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Kizomberos! Diamond Fam welcomes you to our party of the year!!! 28-/08-29/08/2026 A weekend packed with inspiration and joy. We offer workshops with international instructors from Paris and (Sweden) Parties with DJs from Sthlm/Gtbg. Our international instructors are fantastic teachers and dancers in Urbankiz, Kizomba, Tarraxo and Konpa. There will also be more than 20 fantastic taxi dancers for social dancing during the party. Check out who will be coming under “discussion” here in the event."
     }
    ],
    "features": [

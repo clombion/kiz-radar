@@ -77,24 +77,24 @@
    ],
    "features": [
     {
-     "feature": "partner_hotel",
-     "quote": "Accommodation Suggestions:",
-     "rationale": "Suggested hotels are listed, but the description does not say accommodation is part of the pass."
-    },
-    {
-     "feature": "workshops",
-     "quote": "8 hours of intense workshops!",
-     "rationale": "The event offers eight hours of dance workshops."
-    },
-    {
      "feature": "shows",
      "quote": "LIVE SHOW (SATURDAY NIGHT)",
-     "rationale": "A live show by artists is part of the programme."
+     "rationale": "A live show on Saturday night is an show by the artists."
     },
     {
      "feature": "live_music",
      "quote": "Puto Português",
-     "rationale": "A singer is listed as performing at the event."
+     "rationale": "Puto Português is listed as a performer at the live show, indicating live music."
+    },
+    {
+     "feature": "workshops",
+     "quote": "8 hours of intense workshops!",
+     "rationale": "The event includes eight hours of dance workshops."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Accommodation Suggestions:",
+     "rationale": "The description recommends hotels for accommodation without stating that accommodation is part of the pass."
     }
    ]
   }

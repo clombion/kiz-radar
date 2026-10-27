@@ -3,8 +3,8 @@
  "title": "BIG3 Festival",
  "start_date": "2027-02-18",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "cb864655c7075f56",
- "rows_at": "2026-10-27T12:03:04+00:00",
+ "prompt": "1a3b603636d758ee",
+ "rows_at": "2026-10-27T18:34:40+00:00",
  "styles": [
   "bachata",
   "kizomba",
@@ -155,7 +155,7 @@
   },
   {
    "key": "0522a82c-0ec8-49b4-acf9-4cef4386f5cf",
-   "reason": "deposit"
+   "reason": "class"
   },
   {
    "key": "01432ebf-f421-4890-9e94-f34dfcad6e6c",

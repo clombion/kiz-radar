@@ -7,28 +7,28 @@
     {
      "name_as_written": "Yanis Scruock",
      "role": "teacher",
-     "style": "World Champions of Kizomba and Semba",
+     "style": "Kizomba and Semba",
      "country": "🇦🇴",
      "source_line": "1. Yanis Scruock — World Champions of Kizomba and Semba 🇦🇴"
     },
     {
      "name_as_written": "Valentino & Nelinha",
      "role": "teacher",
-     "style": "World Champions of Kizomba and Semba",
+     "style": "Kizomba and Semba",
      "country": "🇦🇴",
      "source_line": "2. Valentino & Nelinha — World Champions of Kizomba and Semba 🇦🇴"
     },
     {
      "name_as_written": "Ary & Maura",
      "role": "teacher",
-     "style": "World Champions of Kizomba and Semba",
+     "style": "Kizomba and Semba",
      "country": "🇦🇴",
      "source_line": "3. Ary & Maura — World Champions of Kizomba and Semba 🇦🇴"
     },
     {
      "name_as_written": "Davide Nola & Cilene",
      "role": "teacher",
-     "style": "World Champions of Kizomba and Semba",
+     "style": "Kizomba and Semba",
      "country": "🇨🇻🇦🇴🇮🇹",
      "source_line": "4. Davide Nola & Cilene — World Champions of Kizomba and Semba 🇨🇻🇦🇴🇮🇹"
     },
@@ -168,24 +168,24 @@
    ],
    "features": [
     {
+     "feature": "beach_party",
+     "quote": "Beach Party on 26 July",
+     "rationale": "The description lists a beach party on 26 July."
+    },
+    {
      "feature": "workshops",
-     "quote": "with workshops, shows, socials",
-     "rationale": "The description states that the three days include workshops."
+     "quote": "with workshops, shows, socials, and parties of Kizomba",
+     "rationale": "The event includes workshops as part of its programme."
     },
     {
      "feature": "shows",
      "quote": "workshops, shows, socials",
-     "rationale": "The description lists shows as part of the event program."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "Beach Party on 26 July",
-     "rationale": "A beach party is explicitly scheduled for 26 July."
+     "rationale": "The programme includes shows."
     },
     {
      "feature": "partner_hotel",
      "quote": "Main Hotel: https://sardegnahotelcagliari.it/camere-suite/",
-     "rationale": "The event names a main hotel link, which is a recommended hotel rather than an included accommodation."
+     "rationale": "A main hotel is linked for attendees, without any statement that accommodation is part of the pass."
     }
    ]
   }

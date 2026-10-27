@@ -5,6 +5,13 @@
    "event_id": 14863,
    "artists": [
     {
+     "name_as_written": "Kitumba Events",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Kitumba Events presents the 4th edition of Dancing Weekend."
+    },
+    {
      "name_as_written": "DJ ASH",
      "role": "dj",
      "style": null,
@@ -129,22 +136,9 @@
      "style": null,
      "country": null,
      "source_line": "S-LINE"
-    },
-    {
-     "name_as_written": "Kitumba Events",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Kitumba Events presents the 4th edition of Dancing Weekend."
     }
    ],
-   "features": [
-    {
-     "feature": "day_socials",
-     "quote": "Sunday: 2:00 PM – 8:00 PM",
-     "rationale": "The schedule lists afternoon daytime sessions on Sunday, which fits daytime socials."
-    }
-   ]
+   "features": []
   }
  ]
 }

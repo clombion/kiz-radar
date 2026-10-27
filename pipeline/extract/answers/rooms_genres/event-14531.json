@@ -5,19 +5,12 @@
    "event_id": 14531,
    "party_rooms": null,
    "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "1 Additional Room for Social Events and Classes"
-    }
-   ],
+   "rooms": [],
    "genres": [
     {
      "genre": "kizomba",
      "genre_as_written": "KIZOMBA",
-     "quote": "100% KIZOMBA"
+     "quote": "*** 100% KIZOMBA ***"
     }
    ]
   }

@@ -163,7 +163,7 @@
     {
      "feature": "all_in_one",
      "quote": "ALL in ONE place – Exclusive Resort",
-     "rationale": "The event is advertised as all in one place at an exclusive resort where the parties and accommodation are together."
+     "rationale": "The event is held at one exclusive resort where the parties take place, so event and accommodation share the same venue."
     },
     {
      "feature": "pool_party",
@@ -178,12 +178,12 @@
     {
      "feature": "boat_party",
      "quote": "Boat Party",
-     "rationale": "The description lists a Boat Party as part of the event and sells it separately."
+     "rationale": "The description lists a Boat Party with its own ticket price."
     },
     {
      "feature": "workshops",
      "quote": "Quality lessons",
-     "rationale": "The event offers dance lessons taught by the listed teachers."
+     "rationale": "Dance lessons are offered as part of the event."
     },
     {
      "feature": "accommodation_included",
@@ -193,7 +193,7 @@
     {
      "feature": "partner_hotel",
      "quote": "To book your accommodation individually:",
-     "rationale": "Dancers are directed to book the recommended resort hotel separately from the pass."
+     "rationale": "Participants are directed to book the event's resort hotel separately through a booking link."
     }
    ]
   }

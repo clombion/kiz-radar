@@ -47,6 +47,13 @@
      "source_line": "👣 Lukasz & Karolina (Vamula)"
     },
     {
+     "name_as_written": "MIKAS CABRAL",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "✨Live Concert with MIKAS CABRAL"
+    },
+    {
      "name_as_written": "King",
      "role": "dj",
      "style": null,
@@ -66,25 +73,18 @@
      "style": null,
      "country": null,
      "source_line": "🎧Sarai"
-    },
-    {
-     "name_as_written": "MIKAS CABRAL",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "✨Live Concert with MIKAS CABRAL"
     }
    ],
    "features": [
     {
      "feature": "all_in_one",
      "quote": "VENUE LOCATION ( All in One )",
-     "rationale": "The venue is labelled All in One and the hotel rooms are offered at the same hotel where the festival takes place."
+     "rationale": "The venue is labelled All in One, with the parties held at the hotel where dancers can stay."
     },
     {
      "feature": "live_music",
      "quote": "Live Concert with MIKAS CABRAL",
-     "rationale": "A live concert by a named musician is part of the event highlights."
+     "rationale": "A live concert by a named artist is part of the event highlights."
     },
     {
      "feature": "pre_party",

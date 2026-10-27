@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 195,
+       "amount": 195.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -23,7 +23,7 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "$195 /Person"
+       "quote": "– $195 /Person"
       }
      ]
     },
@@ -36,7 +36,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 365,
+       "amount": 365.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -46,7 +46,7 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "$365/Two People"
+       "quote": "– $365/Two People"
       }
      ]
     },
@@ -59,7 +59,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -82,7 +82,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 105,
+       "amount": 105.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -105,7 +105,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 125,
+       "amount": 125.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -128,7 +128,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 40,
+       "amount": 40.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -151,7 +151,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 70,
+       "amount": 70.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -174,7 +174,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 40,
+       "amount": 40.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -197,7 +197,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 70,
+       "amount": 70.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -213,29 +213,6 @@
     },
     {
      "kind": "day",
-     "style": "zouk",
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 20,
-       "currency": "CAD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Zouk Day Social Sunday = $20"
-      }
-     ]
-    },
-    {
-     "kind": "day",
      "style": null,
      "label_quote": null,
      "group_size": 1,
@@ -243,7 +220,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 15,
+       "amount": 15.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -266,7 +243,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -289,7 +266,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "CAD",
        "fee": null,
        "alt": null,
@@ -300,6 +277,29 @@
        "sold_out": false,
        "current": false,
        "quote": "Saturday Night = $20"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": "zouk",
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 20.0,
+       "currency": "CAD",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Zouk Day Social Sunday = $20"
       }
      ]
     }

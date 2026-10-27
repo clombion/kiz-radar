@@ -5,6 +5,13 @@
    "event_id": 15265,
    "artists": [
     {
+     "name_as_written": "DJ LAMIN",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "DJ LAMIN in collaboration with Mellow present high-quality 𝗨𝗥𝗕𝗔𝗡𝗞𝗜𝗭 and 𝗧𝗔𝗥𝗥𝗔𝗫𝗢 event:"
+    },
+    {
      "name_as_written": "Mellow",
      "role": "organiser",
      "style": null,
@@ -107,17 +114,17 @@
     {
      "feature": "all_in_one",
      "quote": "𝗔𝗹𝗹-𝗶𝗻-𝗼𝗻𝗲 𝗹𝗼𝗰𝗮𝘁𝗶𝗼𝗻.",
-     "rationale": "The venue is the hotel where dancers can stay, so the event and accommodation share one location."
+     "rationale": "The hotel is described as an all-in-one location where dancers can stay, so the event and accommodation share one venue."
     },
     {
      "feature": "pre_party",
      "quote": "𝗮 𝗽𝗿𝗲-𝗽𝗮𝗿𝘁𝘆 (not included in the pass / paid separately)",
-     "rationale": "A pre-party is announced before the main event, though it is paid separately from the pass."
+     "rationale": "The text states the event starts with a pre-party, though it is paid separately."
     },
     {
      "feature": "workshops",
      "quote": "Workshops",
-     "rationale": "The list of what to look forward to includes workshops as part of the event."
+     "rationale": "The list of what to expect includes workshops as part of the event."
     }
    ]
   }

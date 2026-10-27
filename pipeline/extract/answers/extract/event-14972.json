@@ -86,12 +86,12 @@
     {
      "feature": "pre_party",
      "quote": "1 Pre-Party",
-     "rationale": "The listing names a pre-party before the main event."
+     "rationale": "The description announces a pre-party before the main festival parties."
     },
     {
      "feature": "all_in_one",
      "quote": "The All In One venue brings all the shiny souls together.",
-     "rationale": "The event is named All in One and the venue is described alongside the hotel where dancers stay, suggesting the parties are held in the same hotel."
+     "rationale": "The description presents the All In One venue as the single place where the festival gathers, and the modern hotel is part of that venue."
     }
    ]
   }

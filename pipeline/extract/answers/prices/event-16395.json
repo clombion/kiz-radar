@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -23,7 +23,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "2-Day Full Pass CHF 150.00 (classes, social events, and parties for 2 days)"
+       "quote": "🔥2-Day Full Pass CHF 150.00 (classes, social events, and parties for 2 days)"
       }
      ]
     },
@@ -36,7 +36,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -46,7 +46,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "1-Day Full Pass CHF 80.00 (classes, social events, and parties for 1 day)"
+       "quote": "🔥1-Day Full Pass CHF 80.00 (classes, social events, and parties for 1 day)"
       }
      ]
     },
@@ -59,7 +59,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -69,7 +69,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "1-Day Social Event + Party CHF 60.00"
+       "quote": "🔥1-Day Social Event + Party CHF 60.00"
       }
      ]
     },
@@ -82,7 +82,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "CHF",
        "fee": null,
        "alt": null,
@@ -92,7 +92,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Social event + party CHF 60.00"
+       "quote": "🔥Social event + party CHF 60.00"
       }
      ]
     }

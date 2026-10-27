@@ -142,42 +142,42 @@
     {
      "feature": "all_in_one",
      "quote": "ALL-IN-1 Hotel in Prague, Czech Republic.",
-     "rationale": "The event is described as an all-in-one hotel in Prague, so the parties take place where dancers stay."
+     "rationale": "The event is described as an all-in-one hotel, so the parties and accommodation share the same venue."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Hotel Booking: >>HOTEL OLYMPIK, SOKOLOVSKA 138, PRAGUE 8<<",
+     "rationale": "A specific hotel is named for booking, which indicates a recommended or partner hotel."
     },
     {
      "feature": "pre_party",
      "quote": "Pre-Party Included in the Full Pass.",
-     "rationale": "A pre-party is explicitly offered and included in the Full Pass."
+     "rationale": "A pre-party is explicitly offered and included in the full pass."
     },
     {
      "feature": "workshops",
      "quote": "4 Days Workshop",
-     "rationale": "Dance workshops are listed as part of the programme over four days."
+     "rationale": "The description lists four days of workshops as part of the event."
     },
     {
      "feature": "day_socials",
-     "quote": "Vibrant Socials from 5pm.",
-     "rationale": "Daytime-to-evening socials are scheduled from 5pm."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Themed Night Parties from 10pm.",
-     "rationale": "Themed night parties are explicitly scheduled."
+     "quote": "3 Days Socials",
+     "rationale": "The description lists three days of socials, which are daytime events."
     },
     {
      "feature": "competition",
      "quote": "LeadX & DamsKiz Groove Competition",
-     "rationale": "A named dance competition is part of the programme."
+     "rationale": "A named competition for leaders and followers is part of the programme."
     },
     {
      "feature": "taxi_dancers",
      "quote": "Guest/Taxi Dancers",
-     "rationale": "Taxi dancers are listed as present at the event."
+     "rationale": "The event lists taxi dancers among its guests."
     },
     {
-     "feature": "partner_hotel",
-     "quote": "HOTEL OLYMPIK, SOKOLOVSKA 138, PRAGUE 8",
-     "rationale": "A specific hotel is given for booking, which is a recommended hotel rather than an included accommodation."
+     "feature": "themed_parties",
+     "quote": "Themed Night Parties from 10pm.",
+     "rationale": "The description lists themed night parties as part of the schedule."
     }
    ]
   }

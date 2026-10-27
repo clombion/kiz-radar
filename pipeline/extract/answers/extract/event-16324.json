@@ -133,47 +133,42 @@
     {
      "feature": "accommodation_included",
      "quote": "Full Pass + Hotel Room + Full Board",
-     "rationale": "The package listed includes the hotel room as part of the pass."
+     "rationale": "The packages list a hotel room as part of the full pass."
     },
     {
      "feature": "meals_included",
      "quote": "Full board: buffet style: Breakfast, lunch, and dinner + water + wine",
-     "rationale": "Full board meals are listed as part of the included pass."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "SOCIAL & POOL PARTY",
-     "rationale": "The event schedule includes a dedicated pool party session."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "AFTERNOON | 1 Zone (bar or pool)",
-     "rationale": "An afternoon social party with DJs runs from 4:30 PM."
-    },
-    {
-     "feature": "shows",
-     "quote": "PARTIES & SHOWS",
-     "rationale": "The programme includes shows and artist performances."
+     "rationale": "Full board meals are listed as included in the pass."
     },
     {
      "feature": "workshops",
      "quote": "WORKSHOPS (CLASSES)",
-     "rationale": "Dance classes are offered as a named workshops section."
+     "rationale": "A workshops section lists dance classes as part of the event."
     },
     {
-     "feature": "masterclass",
-     "quote": "advanced & master class",
-     "rationale": "A master class level is offered among the class levels."
+     "feature": "pool_party",
+     "quote": "SOCIAL & POOL PARTY",
+     "rationale": "A social and pool party section is part of the programme."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "AFTERNOON | 1 Zone (bar or pool)",
+     "rationale": "An afternoon social party is scheduled at the bar or pool."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "2 to 4 ROOMS",
-     "rationale": "Several dance rooms are used for the workshops."
+     "quote": "2 ROOMS for 2 VIBES",
+     "rationale": "The parties take place in two rooms, each with its own vibe."
+    },
+    {
+     "feature": "shows",
+     "quote": "PARTIES & SHOWS",
+     "rationale": "The programme has a section for shows and artist performances."
     },
     {
      "feature": "dress_code",
      "quote": "Evening & dress code",
-     "rationale": "The description states that a dress code applies to evenings."
+     "rationale": "The description explicitly mentions a dress code."
     }
    ]
   }

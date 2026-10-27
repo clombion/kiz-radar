@@ -6,24 +6,24 @@
    "artists": [],
    "features": [
     {
+     "feature": "shows",
+     "quote": "Live Performances",
+     "rationale": "The event lists live performances as a highlight, which are shows by artists."
+    },
+    {
      "feature": "after_party",
      "quote": "Official Afterparties Every Night",
      "rationale": "The description states that official afterparties take place every night."
     },
     {
-     "feature": "shows",
-     "quote": "Live Performances",
-     "rationale": "Live performances are listed as part of the event, which means shows by artists."
-    },
-    {
      "feature": "multiple_rooms",
-     "quote": "2 Rooms Welcome Party",
-     "rationale": "The Friday party is held in two rooms, so the event has more than one dance room."
+     "quote": "Lets GO All Out in 2 Rooms",
+     "rationale": "Saturday is explicitly described as taking place in 2 rooms, so there is more than one dance room."
     },
     {
      "feature": "partner_hotel",
-     "quote": "Ibis Birmingham central New Street Station Hotel",
-     "rationale": "A list of recommended hotels is given under the Hotels heading, and no pass includes accommodation."
+     "quote": "Aparthotel Adagio Birmingham City Centre",
+     "rationale": "A list of recommended hotels is given under a Hotels heading, without the accommodation being part of the pass."
     }
    ]
   }

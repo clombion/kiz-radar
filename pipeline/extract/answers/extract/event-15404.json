@@ -406,28 +406,28 @@
     {
      "name_as_written": "DJ Rax",
      "role": "dj",
-     "style": "KIZOMBA",
+     "style": "Kizomba",
      "country": null,
      "source_line": "🎧 DJ Rax"
     },
     {
      "name_as_written": "DJ Glight",
      "role": "dj",
-     "style": "KIZOMBA",
+     "style": "Kizomba",
      "country": null,
      "source_line": "🎧 DJ Glight"
     },
     {
      "name_as_written": "DJ Ted",
      "role": "dj",
-     "style": "KIZOMBA",
+     "style": "Kizomba",
      "country": null,
      "source_line": "🎧 DJ Ted"
     },
     {
      "name_as_written": "DJ Salvyne",
      "role": "dj",
-     "style": "KIZOMBA",
+     "style": "Kizomba",
      "country": null,
      "source_line": "🎧 DJ Salvyne"
     },
@@ -437,13 +437,6 @@
      "style": null,
      "country": null,
      "source_line": "🪘Fabio Cafarella La Voz"
-    },
-    {
-     "name_as_written": "Ivana Mangullo",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🪘Ivana Mangullo"
     },
     {
      "name_as_written": "Ilaria Bigi",
@@ -475,7 +468,7 @@
     },
     {
      "name_as_written": "La Jefa",
-     "role": "crew",
+     "role": "organiser",
      "style": null,
      "country": null,
      "source_line": "🪘La Jefa"
@@ -490,13 +483,13 @@
    ],
    "features": [
     {
-     "feature": "taxi_dancers",
-     "quote": "Adam Molle – Taxi Dancer",
-     "rationale": "Named individuals are listed as taxi dancers in the Kizomba line-up."
+     "feature": "workshops",
+     "quote": "4 DAYS OF WORKSHOPS",
+     "rationale": "The event lists four days of dance workshops."
     },
     {
      "feature": "accommodation_included",
-     "quote": "3 NIGHTS/4 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+     "quote": "3 NIGHTS/4 DAYS IN THE MAIN HOTEL + FULL PASS",
      "rationale": "The package bundles hotel nights with the full pass."
     },
     {
@@ -506,13 +499,18 @@
     },
     {
      "feature": "multiple_rooms",
-     "quote": "ROOM 💯% SALSA",
-     "rationale": "The description lists separate dance rooms for Salsa, Bachata and Kizomba."
+     "quote": "ROOM 💯% KIZOMBA",
+     "rationale": "The event has separate dance rooms for salsa, bachata and kizomba."
     },
     {
-     "feature": "workshops",
-     "quote": "4 DAYS OF WORKSHOPS",
-     "rationale": "The event explicitly offers multiple days of workshops."
+     "feature": "all_in_one",
+     "quote": "Location: PARC HOTEL OLIMPO ANTARES",
+     "rationale": "The event venue is the hotel where dancers stay for the packages."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "Taxi Dancer",
+     "rationale": "Several named taxi dancers are listed in the line-up."
     }
    ]
   }

@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -23,7 +23,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Full Pass (Male – Female) / Early Bird: €50"
+       "quote": "– Full Pass (Male – Female) / Early Bird: €50"
       }
      ]
     },
@@ -36,7 +36,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -46,7 +46,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Full Pass Couple / Early Bird: €90"
+       "quote": "– Full Pass Couple / Early Bird: €90"
       }
      ]
     }

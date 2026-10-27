@@ -13,17 +13,17 @@
     {
      "genre": "salsa",
      "genre_as_written": "Salsa",
-     "quote": "Salsa ✧ Bachata ✧ Kizomba ✧ Zouk"
+     "quote": "Salsa:"
     },
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "Salsa ✧ Bachata ✧ Kizomba ✧ Zouk"
+     "quote": "Bachata:"
     },
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Salsa ✧ Bachata ✧ Kizomba ✧ Zouk"
+     "quote": "Kizomba:"
     },
     {
      "genre": "zouk",
@@ -34,6 +34,11 @@
      "genre": "reggaeton",
      "genre_as_written": "Reggaeton",
      "quote": "(Reggaeton)"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Femme",
+     "quote": "(Femme)"
     }
    ]
   }

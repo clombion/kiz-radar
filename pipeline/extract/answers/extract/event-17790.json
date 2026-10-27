@@ -51,12 +51,12 @@
     {
      "feature": "bootcamp_intensive",
      "quote": "Intensive classes",
-     "rationale": "The event lists intensive classes as part of the program."
+     "rationale": "The description lists intensive classes as part of the event program."
     },
     {
      "feature": "partner_hotel",
      "quote": "Closest Hotels",
-     "rationale": "The description lists several nearby hotels with links, which are recommended hotels rather than included accommodation."
+     "rationale": "The description lists nearby recommended hotels with their websites, without including accommodation in the pass."
     }
    ]
   }

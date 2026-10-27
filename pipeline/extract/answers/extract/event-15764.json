@@ -216,31 +216,24 @@
     },
     {
      "name_as_written": "Les Cactus",
-     "role": "teacher",
+     "role": "performer",
      "style": null,
      "country": "🇧🇪",
      "source_line": "• Les Cactus 🇧🇪"
     },
     {
      "name_as_written": "Ryu",
-     "role": "teacher",
+     "role": "performer",
      "style": null,
      "country": "🇨🇴🇯🇵",
      "source_line": "• Ryu 🇨🇴🇯🇵"
     },
     {
      "name_as_written": "Clayton",
-     "role": "teacher",
+     "role": "performer",
      "style": null,
      "country": "🇮🇳",
      "source_line": "• Clayton 🇮🇳"
-    },
-    {
-     "name_as_written": "DJ Jasmine",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "• DJ Jasmine"
     },
     {
      "name_as_written": "Rei",
@@ -253,28 +246,28 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "Full Pass: All Workshops & Socials",
-     "rationale": "The full pass explicitly includes all workshops, and the schedule lists Workshop sessions."
+     "quote": "19:30–20:30 Workshop",
+     "rationale": "The schedule lists workshop sessions as part of the event."
     },
     {
      "feature": "bootcamp_intensive",
      "quote": "13:00 Bootcamp",
-     "rationale": "The schedule lists a Bootcamp session on both Saturday and Sunday."
+     "rationale": "The schedule lists a bootcamp session on Saturday and Sunday."
     },
     {
      "feature": "masterclass",
      "quote": "Tetris Masterclass by Val’r & Sarah",
-     "rationale": "A masterclass is offered as part of the VIP Pass."
-    },
-    {
-     "feature": "after_party",
-     "quote": "24:00–5:00 After Party",
-     "rationale": "The schedule lists an After Party on May 16."
+     "rationale": "A masterclass is offered as part of the VIP pass."
     },
     {
      "feature": "taxi_dancers",
      "quote": "【Taxi Dancer Team】",
-     "rationale": "The event lists a team of taxi dancers."
+     "rationale": "A taxi dancer team is listed with named dancers."
+    },
+    {
+     "feature": "after_party",
+     "quote": "24:00–5:00 After Party",
+     "rationale": "The schedule includes an after party on Saturday night."
     }
    ]
   }

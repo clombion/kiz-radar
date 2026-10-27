@@ -25,17 +25,12 @@
     {
      "genre": "afro",
      "genre_as_written": "Afro",
-     "quote": "Afro | Tarraxinha | Ghetto Zouk"
+     "quote": "Kizomba | Semba | Afro | Tarraxinha"
     },
     {
      "genre": "tarraxinha",
      "genre_as_written": "Tarraxinha",
-     "quote": "Afro | Tarraxinha | Ghetto Zouk"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghetto Zouk",
-     "quote": "Afro | Tarraxinha | Ghetto Zouk"
+     "quote": "Kizomba | Semba | Afro | Tarraxinha"
     },
     {
      "genre": "other",
@@ -45,17 +40,17 @@
     {
      "genre": "zouk",
      "genre_as_written": "Zouk",
-     "quote": "Funana | Coladeira | Zouk"
+     "quote": "Coladeira | Zouk | Kompa"
     },
     {
      "genre": "kompa",
      "genre_as_written": "Kompa",
-     "quote": "Zouk | Kompa | Cabo Love"
+     "quote": "Coladeira | Zouk | Kompa"
     },
     {
      "genre": "other",
      "genre_as_written": "Cabo Love",
-     "quote": "Zouk | Kompa | Cabo Love"
+     "quote": "Kompa | Cabo Love"
     }
    ]
   }

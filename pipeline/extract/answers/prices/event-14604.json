@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 66,
+       "amount": 66.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -23,7 +23,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "fullpass for Men or Women at just €66 until August 31, 2025"
+       "quote": "fullpass for Men or Women at just €66 until August 31, 2025!"
       }
      ]
     }

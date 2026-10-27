@@ -16,57 +16,47 @@
     {
      "feature": "all_levels_beginners",
      "quote": "Introductory classes AND Level Up classes for each discipline",
-     "rationale": "Introductory classes alongside Level Up classes show that beginners are welcome."
-    },
-    {
-     "feature": "camping",
-     "quote": "We’ve booked the entire campsite for you!",
-     "rationale": "The whole campsite is booked for the event, so the stay is campsite-based."
+     "rationale": "Introductory classes alongside Level Up classes show that beginners are catered for."
     },
     {
      "feature": "accommodation_included",
      "quote": "A 4-person bungalow",
-     "rationale": "The event offers a bungalow as part of the all-inclusive package."
+     "rationale": "The event's package includes a bungalow for accommodation."
+    },
+    {
+     "feature": "camping",
+     "quote": "We’ve booked the entire campsite for you!",
+     "rationale": "The event takes place on a booked campsite."
     },
     {
      "feature": "meals_included",
-     "quote": "ALL-INCLUSIVE holiday complex",
-     "rationale": "The all-inclusive complex, with catering listed, indicates meals are included."
+     "quote": "Catering",
+     "rationale": "Catering is listed as part of the package."
     },
     {
      "feature": "workshops",
-     "quote": "Classes to try all the Disciplines:",
-     "rationale": "The event includes dance classes across several disciplines."
+     "quote": "Classes to try all the Disciplines",
+     "rationale": "Dance classes in several disciplines are part of the event."
     },
     {
      "feature": "competition",
      "quote": "Fun and friendly BDC Olympics",
-     "rationale": "The BDC Olympics is a competition with prizes."
+     "rationale": "The BDC Olympics is a competitive event."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Dress code: Murder Mystery party",
+     "rationale": "A dress code is explicitly stated for the Murder Mystery party."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "Dress code: CARNIVAL",
+     "rationale": "A carnival-themed dress code applies to the Saturday party."
     },
     {
      "feature": "multiple_rooms",
      "quote": "There will be 2 rooms, 2 DJs, 2 vibes",
-     "rationale": "The event states there will be two rooms with separate vibes."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Dress code: Murder Mystery party",
-     "rationale": "The Friday party is a themed Murder Mystery night."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Dress code: CARNIVAL",
-     "rationale": "The Saturday party is a themed Carnival night."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Dress code: Murder Mystery party",
-     "rationale": "A dress code is stated for the Murder Mystery party."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Dress code: CARNIVAL",
-     "rationale": "A dress code is stated for the Carnival party."
+     "rationale": "The event explicitly has two dance rooms."
     }
    ]
   }

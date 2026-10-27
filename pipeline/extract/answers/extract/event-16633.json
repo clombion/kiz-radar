@@ -108,43 +108,50 @@
      "style": null,
      "country": null,
      "source_line": "Dj Vasquez 🔥"
+    },
+    {
+     "name_as_written": "Kiz Fusion Kizomba",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Facebook: Kiz Fusion Kizomba"
     }
    ],
    "features": [
     {
      "feature": "workshops",
      "quote": "Workshops:",
-     "rationale": "A workshop list of teachers is given under the Workshops heading, so dance classes are part of the event."
-    },
-    {
-     "feature": "competition",
-     "quote": "Special Battle Kiz Competition",
-     "rationale": "The event includes a Battle Kiz competition qualification edition."
-    },
-    {
-     "feature": "shows",
-     "quote": "Workshop + Party + Shows",
-     "rationale": "The Saturday night pass explicitly includes shows."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Master Class Workshops",
-     "rationale": "Monday master classes are listed as part of the schedule."
+     "rationale": "The description lists workshops with named teachers under a Workshops heading."
     },
     {
      "feature": "pre_party",
      "quote": "Pre Party – Thursday (8pm-02am)",
-     "rationale": "A Thursday pre-party before the main weekend is listed in the schedule."
+     "rationale": "A Thursday pre-party is scheduled before the main event."
     },
     {
      "feature": "after_party",
-     "quote": "Monday After Party",
-     "rationale": "A Monday after-party is listed with its own pass price."
+     "quote": "Monday After Party – Workshop + Party : $35",
+     "rationale": "A Monday after-party is offered as a night pass."
+    },
+    {
+     "feature": "competition",
+     "quote": "Special Battle Kiz Competition World Final Sydney Qualification Edition",
+     "rationale": "The event includes a battle competition qualifying for a world final."
     },
     {
      "feature": "bootcamp_intensive",
-     "quote": "Beginner Bootcamp",
-     "rationale": "A beginner bootcamp is part of the programme."
+     "quote": "Beginner Bootcamp!",
+     "rationale": "A beginner bootcamp is offered as part of the event."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "Master Class Workshops",
+     "rationale": "Monday masterclass workshops are scheduled."
+    },
+    {
+     "feature": "shows",
+     "quote": "Workshop + Party + Shows",
+     "rationale": "The Saturday night pass includes shows by artists."
     }
    ]
   }

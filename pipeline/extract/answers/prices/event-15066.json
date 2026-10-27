@@ -13,11 +13,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 300,
+       "amount": 300.0,
        "currency": "PLN",
        "fee": null,
        "alt": {
-        "amount": 70,
+        "amount": 70.0,
         "currency": "EUR"
        },
        "from": null,
@@ -26,33 +26,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Full Pass Follower starts with 300 pln (70 eur)"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 300,
-       "currency": "PLN",
-       "fee": null,
-       "alt": {
-        "amount": 70,
-        "currency": "EUR"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Full Pass Leader starts with 300 pln (70 eur)"
+       "quote": "💃 Full Pass Follower starts with 300 pln (70 eur)"
       }
      ]
     },
@@ -65,11 +39,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 580,
+       "amount": 580.0,
        "currency": "PLN",
        "fee": null,
        "alt": {
-        "amount": 137,
+        "amount": 137.0,
         "currency": "EUR"
        },
        "from": null,
@@ -78,7 +52,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Couple Pass starts with 580 pln (137 eur)"
+       "quote": "💞 Couple Pass starts with 580 pln (137 eur)"
       }
      ]
     },
@@ -91,7 +65,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 10,
+       "amount": 10.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -101,7 +75,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "THURSDAY – Pre-Party (Sabrosa Dance School) 10 eur (not included in pass; paid in cash or online)"
+       "quote": "🔥 THURSDAY – Pre-Party (Sabrosa Dance School) 10 eur (not included in pass; paid in cash or online)"
       }
      ]
     }

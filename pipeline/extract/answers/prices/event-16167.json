@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "10 early bird leader and 10 early bird follower passes: €60 until 12/31/2025"
       },
       {
-       "amount": 70,
+       "amount": 70.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "10 full pass leader and 10 full pass follower passes: €70 until 03/15/2026"
       },
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "10 full pass leader and 10 full pass follower passes: €80 until 06/15/2026"
       },
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -65,7 +65,7 @@
        "quote": "5 full pass leader and 5 full pass follower passes: €90 until 08/05/2026"
       },
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -88,7 +88,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -111,7 +111,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 15,
+       "amount": 15.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -134,7 +134,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 10,
+       "amount": 10.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -157,7 +157,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 10,
+       "amount": 10.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -180,7 +180,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

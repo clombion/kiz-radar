@@ -79,42 +79,42 @@
     {
      "feature": "competition",
      "quote": "WORLD KIZOMBA & SEMBA COMPETITION",
-     "rationale": "The event is a world dance competition, as named in the programme heading."
+     "rationale": "The event is a world competition festival with a named competition."
     },
     {
      "feature": "workshops",
      "quote": "Workshops with international artists",
-     "rationale": "The premium programme lists workshops taught by international artists."
+     "rationale": "The premium program lists workshops taught by international artists."
     },
     {
      "feature": "day_socials",
      "quote": "3 daytime socials",
-     "rationale": "The programme includes three daytime socials."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Dinner included",
-     "rationale": "The premium programme states that dinner is included."
+     "rationale": "The program explicitly includes three daytime socials."
     },
     {
      "feature": "live_music",
      "quote": "Live music show",
-     "rationale": "A live music show is part of the programme."
+     "rationale": "The grand final gala includes a live music show."
     },
     {
      "feature": "shows",
      "quote": "Special performances",
-     "rationale": "The programme lists special performances by artists."
+     "rationale": "The program lists special performances by artists."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Dinner included",
+     "rationale": "The grand final gala states that dinner is included."
     },
     {
      "feature": "partner_hotel",
      "quote": "IBIS HOTEL SINTRA. Booking your accommodations",
-     "rationale": "An official hotel is recommended for booking, separate from the pass."
+     "rationale": "An official hotel is named with a booking link, without being part of the pass."
     },
     {
      "feature": "transfers_shuttle",
-     "quote": "Shuttle service available every 30 minutes",
-     "rationale": "An official shuttle runs between the hotel and the venue throughout the event."
+     "quote": "OFFICIAL SHUTTLE SERVICE",
+     "rationale": "A shuttle service transports participants between the hotel and the venue."
     }
    ]
   }

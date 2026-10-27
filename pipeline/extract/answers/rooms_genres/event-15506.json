@@ -19,18 +19,18 @@
     },
     {
      "genre": "kizomba",
-     "genre_as_written": "traditional Kizomba",
+     "genre_as_written": "Kizomba",
      "quote": "traditional Kizomba"
     },
     {
      "genre": "afro",
      "genre_as_written": "Afro",
-     "quote": "Afro & Kompa"
+     "quote": "Afro"
     },
     {
      "genre": "kompa",
      "genre_as_written": "Kompa",
-     "quote": "Afro & Kompa"
+     "quote": "Kompa"
     }
    ]
   }

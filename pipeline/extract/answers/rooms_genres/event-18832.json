@@ -3,10 +3,7 @@
  "events": [
   {
    "event_id": 18832,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 dance rooms"
-   },
+   "party_rooms": null,
    "class_rooms": null,
    "rooms": [
     {

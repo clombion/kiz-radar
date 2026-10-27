@@ -5,55 +5,6 @@
    "event_id": 17965,
    "passes": [
     {
-     "kind": "day",
-     "style": null,
-     "label_quote": "💃 PARTY-ONLY ENTRY",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 30,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🐦 EARLY BIRD: €30"
-      },
-      {
-       "amount": 35,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🎟️ REGULAR: €35"
-      },
-      {
-       "amount": 40,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "🔥 LAST MINUTE / AT THE DOOR: €40"
-      }
-     ]
-    },
-    {
      "kind": "package",
      "style": null,
      "label_quote": "🍽️ GALA DINNER + PARTY PACKAGE",
@@ -62,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -75,7 +26,7 @@
        "quote": "🐦 EARLY BIRD: €90"
       },
       {
-       "amount": 105,
+       "amount": 105.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -88,7 +39,7 @@
        "quote": "🎟️ REGULAR: €105"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -105,13 +56,62 @@
     {
      "kind": "day",
      "style": null,
+     "label_quote": "💃 PARTY-ONLY ENTRY",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 30.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🐦 EARLY BIRD: €30"
+      },
+      {
+       "amount": 35.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️ REGULAR: €35"
+      },
+      {
+       "amount": 40.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔥 LAST MINUTE / AT THE DOOR: €40"
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 25,
+       "amount": 25.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -134,7 +134,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 12,
+       "amount": 12.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -157,7 +157,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 35,
+       "amount": 35.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -180,7 +180,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 15,
+       "amount": 15.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -195,15 +195,15 @@
      ]
     },
     {
-     "kind": "package",
+     "kind": "other",
      "style": null,
      "label_quote": "👑 ROYAL VIP FULL PASS 👑",
      "group_size": 1,
-     "days": 3,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 149,
+       "amount": 149.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -216,7 +216,7 @@
        "quote": "💎 EARLY BIRD: €149"
       },
       {
-       "amount": 169,
+       "amount": 169.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -229,7 +229,7 @@
        "quote": "💎 REGULAR: €169"
       },
       {
-       "amount": 189,
+       "amount": 189.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -244,6 +244,29 @@
      ]
     },
     {
+     "kind": "full",
+     "style": null,
+     "label_quote": "💎 SBK WEEKEND PACK",
+     "group_size": 1,
+     "days": 2,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 49.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🎟️ PACK: €49"
+      }
+     ]
+    },
+    {
      "kind": "package",
      "style": null,
      "label_quote": "🥂 ROYAL SILVER PACK",
@@ -252,7 +275,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 105,
+       "amount": 105.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -265,7 +288,7 @@
        "quote": "🐦 €115 → €105 (-€10)"
       },
       {
-       "amount": 119,
+       "amount": 119.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -278,7 +301,7 @@
        "quote": "🎟️ €130 → €119 (-€11)"
       },
       {
-       "amount": 130,
+       "amount": 130.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -293,7 +316,7 @@
      ]
     },
     {
-     "kind": "other",
+     "kind": "party",
      "style": null,
      "label_quote": "💃 PARTY SILVER PACK",
      "group_size": 1,
@@ -301,7 +324,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 38,
+       "amount": 38.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -314,7 +337,7 @@
        "quote": "🐦 €42 → €38 (-€4)"
       },
       {
-       "amount": 42,
+       "amount": 42.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -327,7 +350,7 @@
        "quote": "🎟️ €47 → €42 (-€5)"
       },
       {
-       "amount": 46,
+       "amount": 46.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -350,7 +373,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 112,
+       "amount": 112.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -363,7 +386,7 @@
        "quote": "🐦 €125 → €112 (-€13)"
       },
       {
-       "amount": 126,
+       "amount": 126.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -376,7 +399,7 @@
        "quote": "🎟️ €140 → €126 (-€14)"
       },
       {
-       "amount": 139,
+       "amount": 139.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -391,7 +414,7 @@
      ]
     },
     {
-     "kind": "other",
+     "kind": "party",
      "style": null,
      "label_quote": "🔥 GOLD PARTY PACK",
      "group_size": 1,
@@ -399,7 +422,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 40,
+       "amount": 40.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -412,7 +435,7 @@
        "quote": "🐦 €45 → €40 (-€5)"
       },
       {
-       "amount": 44,
+       "amount": 44.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -425,7 +448,7 @@
        "quote": "🎟️ €50 → €44 (-€6)"
       },
       {
-       "amount": 48,
+       "amount": 48.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -436,29 +459,6 @@
        "sold_out": false,
        "current": false,
        "quote": "🔥 €55 → €48 (-€7)"
-      }
-     ]
-    },
-    {
-     "kind": "other",
-     "style": null,
-     "label_quote": "💎 SBK WEEKEND PACK",
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 49,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🎟️ PACK: €49"
       }
      ]
     }

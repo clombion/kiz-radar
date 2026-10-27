@@ -28,24 +28,24 @@
    ],
    "genres": [
     {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "Room 1: 100% Bachata"
+    },
+    {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "1 100% Kizomba, Kompa, Semba"
+     "quote": "Room 2: 100% Kizomba"
     },
     {
      "genre": "kompa",
      "genre_as_written": "Kompa",
-     "quote": "1 100% Kizomba, Kompa, Semba"
+     "quote": "100% Kizomba, Kompa, Semba"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "1 100% Kizomba, Kompa, Semba"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Room 1: 100% Bachata"
+     "quote": "100% Kizomba, Kompa, Semba"
     }
    ]
   }

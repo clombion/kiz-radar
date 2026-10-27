@@ -149,12 +149,12 @@
     {
      "feature": "all_in_one",
      "quote": "ALL IN ONE HOTEL",
-     "rationale": "The heading says all in one hotel, and the text says everything is in one place, so the parties are in the hotel."
+     "rationale": "The heading says the event is held in one hotel, so event and accommodation share a venue."
     },
     {
      "feature": "workshops",
-     "quote": "dance, parties, workshops and unforgettable moments",
-     "rationale": "The text lists workshops as part of the congress."
+     "quote": "workshops",
+     "rationale": "The description lists workshops as part of the congress program."
     }
    ]
   }

@@ -1,14 +1,13 @@
 decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,keep_countries,merge_countries,countries,calendar,calendar_note,similarity,score,reason
-,p:albir@dance,p:albir@albir+natalia,Albir Rojas,ALBIR,7,0,ES,ES PA RO,same,shared circuit,same city: warsaw,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:albir@dance,p:albir@albir+natalia,Albir Rojas,ALBIR,8,0,ES,ES PA RO,same,shared circuit,"same city: melbourne, warsaw",1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:carla@carla+mario,p:carla@carla+tony,CARLA,Carla,0,0,AO FR,AO CV ES,same,shared circuit,same city: katowice,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:david@david+laura,p:davide@cilene+davide,Davide,DAVIDE,0,0,IT,AO CV IT,same,shared circuit,same city: milano,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:youss@dj,p:youss@dance,DJ Youss,DJ Youss,2,1,FR,FR,same,shared circuit,same city: london,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:elina@dance,p:elina@crownperk+elina,ELINA,ELINA,1,0,CZ,CZ DE,same,shared circuit,same city: prague,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:luismi@arantxa+luismi,p:luismi@luismi+marian,Luismi,Luismi,0,0,ES,ES,same,shared circuit,same city: liège,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:marco@dance,p:marco@ivana+marco,Marco,Marco,1,0,IT,IT,same,shared circuit,same city: massa,1.0,1.15,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:andrea@andrea+luis,p:andrea@andrea+pablo,Andrea,Andrea,0,0,ES,ES,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:andrea@andrea+natalia,p:andrea@andrea+silvia,ANDREA,Andrea,0,0,IT,IT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:angelica@alessio+angelica,p:angelica@angelica+paolo,Angelica,Angelica,0,0,IT,IT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:aurea@dance,p:aurea@aurea+tresor,Aurea,Aurea,1,0,BR ES,BR ES NL,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:carla@carla+malick,p:carla@carla+mario,Carla,CARLA,0,0,FR,AO FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:clemence@clemence+curtis,p:clemence@clemence+erwan,CLÉMENCE,Clémence,0,0,FR,FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:dani@dani+kizzg,p:dani@dani+ziggy,Dani,Dani,0,0,BG,BG,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
@@ -26,9 +25,10 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:elina@dance,p:elina@elina+ferris,ELINA,Elina,1,0,CZ,CZ DE,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:elo@adil+elo,p:elo@elo+mike,Elo,ELO,0,0,FR,FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:fernando@fernando+micaela,p:fernando@fernando+michela,Fernando,Fernando,0,0,IT,AO IT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:jorge@angela+jorge,p:jorge@jorge+monica,Jorge,Jorge,0,0,ES,CZ ES,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:jose@anja+jose,p:jose@coralie+jose,JOSE,José,0,0,CH,CH,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:katalin@dance,p:katalin@azmael+katalin,KATALIN,Katalin,1,0,AT,AT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:katalin@azmael+katalin,p:katalin@katalin+mathias,Katalin,Katalin,0,0,AT,AT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:katalin@azmael+katalin,p:katalin@katalin+mathias,Katalin,Katalin,0,0,AT,AT HU,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:kiki@dance,p:kiki@fuego+kiki,Kiki,Kiki,5,0,DE,DE FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:kiki@fuego+kiki,p:kiki@heneco+kiki,Kiki,KIKI,0,0,DE FR,DE FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:kiki@fuego+kiki,p:kiki@kiki+selim,Kiki,Kiki,0,0,DE FR,DE FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
@@ -44,6 +44,8 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:luismi@angeles+luismi,p:luismi@arantxa+luismi,Luismi,Luismi,0,0,ES,ES,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:manon@manon+rico,p:manon@manon+simba,Manon,Manon,0,0,FR GW,FR SN,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:maria@jesus+maria,p:maria@jose+maria,María,María,0,0,ES,ES,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:monica@blackchinese+monica,p:monica@jorge+monica,Monica,Mónica,0,0,ES FR,CZ ES,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:morgane@bastien+morgane,p:morgane@fred+morgane,Morgane,Morgane,0,0,FR,FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:mrtecas,p:mrtecas@dance,Mr. Tecas,MR.Tecas,2,1,AO FR,FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:natalia@alessio+natalia,p:natalia@andrea+natalia,Natalia,NATALIA,0,0,IT,IT,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:pablo@andrea+pablo,p:pablo@pablo+raquel,Pablo,Pablo,0,0,ES,ES,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
@@ -56,10 +58,11 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:selim@anastasia+selim,p:selim@kiki+selim,Selim,Sélim,0,0,FR UA,DE FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:selim@dance,p:selim@kiki+selim,Selim,Sélim,4,0,FR,DE FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:sonia@richard+sonia,p:sonia@sonia+stef,Sonia,Sonia,0,0,FR IT,DE FR,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:tresor@dance,p:tresor@aurea+tresor,Tresor,Tresor,1,0,NL,BR ES NL,same,no clash,,1.0,1.1,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:maria@jesus+maria,p:marian@luismi+marian,María,Marian,0,0,ES,ES,same,shared circuit,same city: liège,0.91,1.06,similar spelling
 ,p:panaghiotis@katia+panaghiotis,p:panagiotis@christina+panagiotis,Panaghiotis,Panagiotis,0,0,GR,GR,same,no clash,,0.95,1.05,similar spelling
 ,c:fernando@fernando+michela+michela@fernando+michela,c:fernando@fernando+micaela+micaela@fernando+micaela,Fernando & Michela,Fernando & Micaela,6,1,AO IT,IT,same,no clash,,0.93,1.03,couple with matching names
+,p:guestdancersfromkizinvasion,p:guestdancersfromkizinvasio,Guest Dancers from KizInvasion,GUEST DANCERS from KizInvasio,1,1,~CH,~CH,same,no clash,,0.98,1.03,similar spelling
+,p:alyssa@alyssa+sacha,p:jalyssa@chamalo+jalyssa,Alyssa,Jalyssa,0,0,FR,FR NL,same,no clash,,0.92,1.02,similar spelling
 ,p:javierdelarosa,p:javierlarosa,DJ JAVIER DE LA ROSA,DJ Javier La Rosa,1,1,GB,CU GB,same,no clash,,0.92,1.02,similar spelling
 ,p:manuel@benedicte+manuel,p:emanuel@emanuel+teresa,MANUEL,Emanuel,1,0,PT,AO PT,same,no clash,,0.92,1.02,similar spelling
 ,p:sandrag,p:sandra@esteban+sandra,SANDRA G,Sandra,1,0,ES,ES,same,no clash,,0.92,1.02,one name is the first word(s) of the other
@@ -85,7 +88,6 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,c:andrea@andrea+natalia+natalia@andrea+natalia,c:andrea@andrea+katia+katia@andrea+katia,NATALIA & ANDREA,Andrea & Katia,3,1,IT,~IT,same,no clash,,0.83,0.93,couple with matching names
 ,c:jessica@jessica+willy+willy@jessica+willy,c:jessy@jessy+willy+willy@jessica+willy,Willy & Jessica,Willy & Jessy,1,1,IT MX,IT,same,no clash,,0.83,0.93,couple with matching names
 ,p:morgan@fred+morgan,p:morgane@fred+morgane,Morgan,Morgane,0,0,,FR,unknown,no clash,,0.92,0.92,"same partner, one name shortens the other"
-,p:estefaniolima,p:djstefaniolima,Stefanio Lima,Dj Dj Stefanio Lima,30,1,CV NL,~FR,unclear,no clash,,0.92,0.92,similar spelling
 ,c:alain@alain+katerina+katerina@alain+katerina,c:alain@alain+katherine+katherine@alain+katherine,ALAIN & KATERINA,Alain and Katherine,2,1,~FR,~ES,unclear,no clash,,0.91,0.91,couple with matching names
 ,c:alejandro@alejandro+vanessa+vanessa@alejandro+vanessa,c:alberto@alberto+vanessa+vanessa@alberto+vanessa,Alejandro y Vanessa,Alberto & Vanessa,4,1,ES,~ES,same,no clash,,0.81,0.91,couple with matching names
 ,p:mario@dj,p:marion@chandryl+marion,DJ Mario,Marion,2,0,FR,,unknown,no clash,,0.91,0.91,similar spelling
@@ -100,7 +102,7 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,c:fabrizio@fabrizio+gina+gina@fabrizio+gina,c:fabrizio@fabrizio+giulia+giulia@fabrizio+giulia,Fabrizio & Gina,Fabrizio & Giulia,1,1,~IT,IT,same,no clash,,0.8,0.9,couple with matching names
 ,c:francesca@francesca+luca+luca@francesca+luca,c:francis@francis+lucy+lucy@francis+lucy,Luca & Francesca,Francis & Lucy,10,3,IT,IT SN,same,shared circuit,same city: roma,0.75,0.9,couple with matching names
 ,c:alessandra@alessandra+marc+marc@alessandra+marc,c:alessandra@alessandra+marzio+marzio@alessandra+marzio,Marc & Alessandra,Marzio & Alessandra,2,1,AO IT,~IT,same,no clash,,0.8,0.9,couple with matching names
-,c:jahia@jahia+marco+marco@jahia+marco,c:marco@marco+maria+maria@marco+maria,MARCO & JAHIA,MARCO Y MARIA,1,1,~IT,~IT,same,shared circuit,same organiser,0.8,0.9,couple with matching names
+,c:jahia@jahia+marco+marco@jahia+marco,c:marco@marco+maria+maria@marco+maria,Marco & Jahia,MARCO Y MARIA,2,1,~IT,~IT,same,shared circuit,same organiser,0.8,0.9,couple with matching names
 ,c:lanna@lanna+paulo+paulo@lanna+paulo,c:lenna@lenna+paulo+paulo@lenna+paulo,PAULO & LANNA,PAULO & LENNA,1,1,~PL,PT,unclear,no clash,,0.9,0.9,couple with matching names
 ,c:sarita@sarita+seb+seb@sarita+seb,c:sara@sara+seb+seb@sara+seb,Seb & Sarita,Seb & Sara,2,1,~FR,~ES,unclear,no clash,,0.9,0.9,couple with matching names
 ,c:elisa@elisa+stefano+stefano@elisa+stefano,c:elena@elena+stefano+stefano@elena+stefano,Stefano & Elisa,Stefano & Elena,3,2,IT,~IT,same,no clash,,0.8,0.9,couple with matching names
@@ -117,7 +119,7 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:cristinaolmos,p:cristina@cristina+manu,CRISTINA OLMOS,CRISTINA,1,0,ES,ES,same,no clash,,0.76,0.86,one name is the first word(s) of the other
 ,c:daniela@daniela+franco+franco@daniela+franco,c:daniela@daniela+fernando+fernando@daniela+fernando,Franco & Daniela,Fernando & Daniela,3,2,~IT,~DE,unclear,no clash,,0.86,0.86,couple with matching names
 ,c:luca@luca+marta+marta@luca+marta,c:luca@luca+marianna+marianna@luca+marianna,LUCA Y MARTA,Luca & Marianna,2,1,~IT,~IT,same,same line-up,"both listed as teacher at the event of 2026-03-13 in Castelfidardo, Italy",0.81,0.86,couple with matching names
-,c:jahia@jahia+marco+marco@jahia+marco,c:janina@janina+marco+marco@dj,MARCO & JAHIA,Marco & Janina,1,1,~IT,DE,unclear,no clash,,0.86,0.86,couple with matching names
+,c:jahia@jahia+marco+marco@jahia+marco,c:janina@janina+marco+marco@dj,Marco & Jahia,Marco & Janina,2,1,~IT,DE,unclear,no clash,,0.86,0.86,couple with matching names
 ,c:nicola@nicola+sabrina+sabrina@nicola+sabrina,c:nicholas@nicholas+sabrine+sabrine@nicholas+sabrine,Nicola & Sabrina,Sabrine et nicholas,2,1,~IT,~FR,unclear,no clash,,0.86,0.86,couple with matching names
 ,c:stefania@stefania+umberto+umberto@stefania+umberto,c:stefy@stefy+umberto+umberto@stefy+umberto,Stefania & Umberto,Stefy & Umberto,1,1,~IT,~IT,same,no clash,,0.81,0.86,couple with matching names
 ,c:luca@luca+marta+marta@luca+marta,c:ambra@ambra+luca+luca@ambra+luca,LUCA Y MARTA,Luca & Ambra,2,1,~IT,~IT,same,no clash,,0.8,0.85,couple with matching names
@@ -155,13 +157,13 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,c:ana@ana+stephane+stephane@ana+stephane,c:sandra@sandra+stephane+stephane@sandra+stephane,Stephane & Ana,Stephane & Sandra,6,1,BE RO,~RS,unclear,no clash,,0.83,0.83,couple with matching names
 ,c:silvia@silvia+tony+tony@silvia+tony,c:sylwia@sylwia+tony+tony@sylwia+tony,Tony & Silvia,Tony & Sylwia,1,1,~FR,IE,unclear,no clash,,0.83,0.83,couple with matching names
 ,c:otho@otho+umeko+umeko@otho+umeko,c:otho@otho+yuko+yuko@otho+yuko,Umeko & Otho,Otho & Yuko,1,1,~SE,~ES,unclear,no clash,,0.83,0.83,couple with matching names
-,c:akram@akram+sara+sara@akram+sara,c:aram@aram+lara+lara@aram+lara,Akram & Sara,Aram & Lara,10,1,CH NL,~FR,unclear,no clash,,0.82,0.82,couple with matching names
+,c:akram@akram+sara+sara@akram+sara,c:aram@aram+lara+lara@aram+lara,Akram & Sara,Aram & Lara,11,1,CH NL,~FR,unclear,no clash,,0.82,0.82,couple with matching names
 ,p:fernando@dance,p:fernandomonteiro,Fernando,Fernando Monteiro,2,1,PT,CH PT,same,shared circuit,same city: augsburg,0.67,0.82,one name is the first word(s) of the other
 ,p:ioannajoowaa,p:ioanna@chrysoula+ioanna,Ioanna Joowaa,Ioanna,1,0,GR,GB GR,same,shared circuit,same city: thessaloniki,0.67,0.82,one name is the first word(s) of the other
 ,c:juan@juan+sara+sara@juan+sara,c:juni@juni+sarah+sarah@juni+sarah,Juan y Sara,Juni & Sarah,2,1,ES,~FR,unclear,no clash,,0.82,0.82,couple with matching names
 ,p:oscaramore,p:oscar@claudia+oscar,Oscar Amore,Oscar,1,0,IT,IT,same,shared circuit,same organiser,0.67,0.82,one name is the first word(s) of the other
 ,p:pascal@dj,p:pascalgomis,DJ PASCAL,Pascal Gomis,2,1,FR,FR SN,same,no clash,,0.71,0.81,one name is the first word(s) of the other
-,p:kevin@dance,p:kevinsato,Kevin,Kevin Sato,4,1,GW PH,PH,same,no clash,,0.71,0.81,one name is the first word(s) of the other
+,p:kevin@dance,p:kevinsato,Kevin,Kevin Sato,5,1,GW PH,PH,same,no clash,,0.71,0.81,one name is the first word(s) of the other
 ,c:karen@karen+kevin+kevin@karen+kevin,c:kevin@kevin+khatelyn+khatelyn@kevin+khatelyn,Kevin&Karen,Kevin & Khatelyn,1,1,~BE,~NL,unclear,no clash,,0.81,0.81,couple with matching names
 ,c:luca@luca+marianna+marianna@luca+marianna,c:luca@luca+renna+renna@luca+renna,Luca & Marianna,Luca & Renna,1,1,~IT,~CH,unclear,no clash,,0.81,0.81,couple with matching names
 ,c:marc@marc+marilyn+marilyn@marc+marilyn,c:marco@marco+mary+mary@marco+mary,Marc & Marilyn,Mary y Marco,2,1,~FR,~IT,unclear,no clash,,0.81,0.81,couple with matching names
@@ -185,6 +187,7 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:andreamurgia,p:andrea@andrea+natalia,ANDREA MURGIA,ANDREA,1,0,IT,IT,same,no clash,,0.67,0.77,one name is the first word(s) of the other
 ,p:andreamurgia,p:andrea@andrea+silvia,ANDREA MURGIA,Andrea,1,0,IT,IT,same,no clash,,0.67,0.77,one name is the first word(s) of the other
 ,p:celine@dance,p:celinesemkiz,CELINE,Celine Semkiz,4,1,BE FR IT,FR,same,no clash,,0.67,0.77,one name is the first word(s) of the other
+,p:celinesemkiz,p:celine@celine+josue,Celine Semkiz,Céline,1,0,FR,CH FR MQ,same,no clash,,0.67,0.77,one name is the first word(s) of the other
 ,p:davidcohen,p:david@david+quinn,David Cohen,David,1,0,ZA,TH ZA,same,no clash,,0.67,0.77,one name is the first word(s) of the other
 ,p:davidruach,p:david@david+quinn,David Ruach,David,2,0,ZA,TH ZA,same,no clash,,0.67,0.77,one name is the first word(s) of the other
 ,p:fabrizio@dj,p:fabriziokizpower,Dj Fabrizio,Fabrizio Kizpower,2,1,IT,IT,same,no clash,,0.67,0.77,one name is the first word(s) of the other
@@ -211,14 +214,17 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:paolopetrax,p:paolo@angelica+paolo,Paolo Petrax,Paolo,1,0,IT,IT,same,no clash,,0.62,0.72,one name is the first word(s) of the other
 ,p:amine@dj,p:amineurbankiz,Amine,Amine UrbanKiz,2,2,FR GB,GB,same,shared circuit,same city: barcelona,0.56,0.71,one name is the first word(s) of the other
 ,p:arun@dance,p:arunpauer,ARUN,Arun Pauer,1,1,AT,AT,same,no clash,,0.61,0.71,one name is the first word(s) of the other
+,p:floriansensacion,p:florian@audrey+florian,DJ Florian Sensacion,Florian,2,0,FR,FR,same,no clash,,0.61,0.71,one name is the first word(s) of the other
 ,p:mikeevens,p:mike@elo+mike,Mike Evens,MIKE,1,0,FR,FR,same,no clash,,0.61,0.71,one name is the first word(s) of the other
 ,p:nunosilva,p:nuno@catia+nuno,Nuno Silva,NUNO,1,0,PT,ES PT,same,no clash,,0.61,0.71,one name is the first word(s) of the other
 ,p:nunosilva,p:nuno@nagyla+nuno,Nuno Silva,Nuno,1,0,PT,PT,same,no clash,,0.61,0.71,one name is the first word(s) of the other
 ,p:nunosilva,p:nuno@nuno+sarai,Nuno Silva,NUNO,1,0,PT,ES PT,same,no clash,,0.61,0.71,one name is the first word(s) of the other
 ,p:ritaszabo,p:rita@dance,RITA SZABO,RITA,2,1,HU,HU,same,no clash,,0.61,0.71,one name is the first word(s) of the other
 ,p:ritaszabo,p:rita@eddy+rita,RITA SZABO,Rita,2,0,HU,HU,same,no clash,,0.61,0.71,one name is the first word(s) of the other
+,p:saralecis,p:sara@sara+vilmar,Sara Lecis,Sara,1,0,IT,IT,same,no clash,,0.61,0.71,one name is the first word(s) of the other
 ,p:fridaellinor,p:frida@frida+ronie,Frida Ellinor,Frida,1,0,SE,SE,same,no clash,,0.59,0.69,one name is the first word(s) of the other
 ,p:sarainavalon,p:sarai@nuno+sarai,Sarai Navalon,SARAI,1,0,ES,ES PT,same,no clash,,0.59,0.69,one name is the first word(s) of the other
+,p:styleofmusc,p:style@dj,Style of Music,DJ Style,5,1,FR SN,FR,same,no clash,,0.59,0.69,one name is the first word(s) of the other
 ,p:adeldasalsa,p:adel@adel+hanna,Adel Dasalsa,Adel,1,0,FR,DE FR,same,shared circuit,same city: mulhouse,0.53,0.68,one name is the first word(s) of the other
 ,p:jojo@jenny+jojo,p:jojokizomba,Jojo,Jojo Kizomba,1,1,CG FR HT,FR,same,shared circuit,same city: barcelona,0.53,0.68,one name is the first word(s) of the other
 ,p:lindaguiteriez,p:linda@linda+rossi,Linda Guiteriez,Linda,1,0,DE,BE DE,same,shared circuit,same city: rotterdam,0.53,0.68,one name is the first word(s) of the other
@@ -229,8 +235,8 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:danielsanchez,p:daniel@daniel+irati,DANIEL SANCHEZ,Daniel,1,0,ES,,unknown,no clash,,0.63,0.63,one name is the first word(s) of the other
 ,p:inesmiranda,p:ines@dance,Inês Miranda,INÈS,9,1,PT,PT,same,no clash,,0.53,0.63,one name is the first word(s) of the other
 ,p:inesmiranda,p:ines@ines+pedro,Inês Miranda,Inês,9,0,PT,PT,same,no clash,,0.53,0.63,one name is the first word(s) of the other
-,p:marcopalladino,p:marco@dance,Marco Palladino,Marco,1,1,IT,IT,same,no clash,,0.53,0.63,one name is the first word(s) of the other
 ,p:marcopalladino,p:marco@ivana+marco,Marco Palladino,Marco,1,0,IT,IT,same,no clash,,0.53,0.63,one name is the first word(s) of the other
+,p:saracorpino,p:sara@sara+vilmar,Sara Corpino,Sara,1,0,IT,IT,same,no clash,,0.53,0.63,one name is the first word(s) of the other
 ,p:vickydelmastro,p:vicky@prince+vicky,Vicky del Mastro,Vicky,1,0,IT,GB IN IT,same,no clash,,0.53,0.63,one name is the first word(s) of the other
 ,c:daniel@daniel+elina+elina@daniel+elina,c:daniel@daniel+uliana+uliana@dance,Daniel & Elina,Uliana & Daniel,9,1,CZ DE,NO UA,different,no clash,,0.86,0.61,couple with matching names
 ,p:alex@alex+ornella,p:alexgrafiada,Alex,Alex Grafiada,1,1,ES,ES,same,no clash,,0.5,0.6,one name is the first word(s) of the other
@@ -247,9 +253,9 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:sandra@esteban+sandra,p:sandra@sandra+selim,Sandra,SANDRA,0,0,ES,ES TR,same,clash,"2026-04-24: booked in Lisbon, Portugal and in Luxembourg, Luxembourg",1.0,0.6,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:sara@juninho+sara,p:sara@sara+valr,Sara,Sarah,0,0,AO FR,FR,same,clash,"2026-06-05: booked in Poitiers, France and in Riga, Latvia",1.0,0.6,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,p:sara@sara+stef,p:sara@sara+valr,Sarah,Sarah,0,0,FR,FR,same,clash,"2027-01-08: booked in Rotterdam, Netherlands and in Geneva, Switzerland",1.0,0.6,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
-,p:sonia@martina+sonia,p:sonia@sonia+stef,Sónia,Sonia,0,0,DE,DE FR,same,clash,"2026-03-26: booked in Wels, Austria and in St. Gallen, Switzerland",1.0,0.6,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
+,p:sonia@martina+sonia,p:sonia@sonia+stef,Sónia,Sonia,0,0,DE PT,DE FR,same,clash,"2026-03-26: booked in Wels, Austria and in St. Gallen, Switzerland",1.0,0.6,"same name under different keys (DJ and dancer, solo and in a couple, or in different couples)"
 ,c:christina@christina+david+david@christina+david,c:crisandra@crisandra+david+david@crisandra+david,David & Christina,David & Crisandra,2,1,FR,CA HT,different,no clash,,0.83,0.58,couple with matching names
-,c:jorge@jorge+monica+monica@jorge+monica,c:jorelle@jorelle+monica+monica@jorelle+monica,Jorge y Mónica,Jorelle & Monica,2,1,CZ,CA,different,no clash,,0.83,0.58,couple with matching names
+,c:jorge@jorge+monica+monica@jorge+monica,c:jorelle@jorelle+monica+monica@jorelle+monica,Jorge y Mónica,Jorelle & Monica,2,1,CZ ES,CA,different,no clash,,0.83,0.58,couple with matching names
 ,p:linda@dance,p:lindaghiggisemba,Linda,LINDA GHIGGI SEMBA,2,1,IT,IT,same,no clash,,0.48,0.58,one name is the first word(s) of the other
 ,p:lindaghiggisemba,p:linda@jacopo+linda,LINDA GHIGGI SEMBA,Linda,1,0,IT,IT,same,no clash,,0.48,0.58,one name is the first word(s) of the other
 ,p:matt@dj,p:mattdecarmona,Dj Matt,DJ Matt de Carmona,6,1,BE FR SN,FR,same,no clash,,0.47,0.57,one name is the first word(s) of the other
@@ -261,6 +267,7 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:nunopesqueira,p:nuno@nagyla+nuno,Nuno Pesqueira,Nuno,1,0,PT,PT,same,no clash,,0.47,0.57,one name is the first word(s) of the other
 ,p:nunopesqueira,p:nuno@nuno+sarai,Nuno Pesqueira,NUNO,1,0,PT,ES PT,same,no clash,,0.47,0.57,one name is the first word(s) of the other
 ,p:sani@dance,p:sanipragkizer,SANI,SANI PRAGKIZER,1,1,CZ,CZ GH,same,no clash,,0.47,0.57,one name is the first word(s) of the other
+,p:saraiacobacci,p:sara@sara+vilmar,SARA IACOBACCI,Sara,4,0,IT,IT,same,no clash,,0.47,0.57,one name is the first word(s) of the other
 ,p:daniela@andrea+daniela,p:danielaclubtortuga,Daniela,Daniela Club Tortuga,0,0,,,unknown,no clash,,0.56,0.56,one name is the first word(s) of the other
 ,c:ironmams+moorea@ironmams+moorea,c:mams@mams+moorea+moorea@mams+moorea,Iron Mams & Moorea,MAMS&MOOREA,6,2,CH FR GF SN,ES,different,no clash,,0.81,0.56,couple with matching names
 ,c:eleanna@eleanna+marco+marco@eleanna+marco,c:janina@janina+marco+marco@dj,Marco & Eleanna,Marco & Janina,1,1,GR,DE,different,no clash,,0.81,0.56,couple with matching names
@@ -274,7 +281,7 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,c:andrea@andrea+silvia+silvia@andrea+silvia,c:ilias@ilias+sandra+sandra@ilias+sandra,Andrea & Silvia,Ilias & Sandra,4,1,IT,RO,different,no clash,,0.78,0.53,couple with matching names
 ,p:laure@franck+laure,p:lauresalsahora,Laure,Laure SalsaHora,0,0,,,unknown,no clash,,0.53,0.53,one name is the first word(s) of the other
 ,p:manuel@laura+manuel,p:manueladosesantos,Manuel,Manuela Dose Santos,0,0,,,unknown,no clash,,0.52,0.52,"same partner, one name shortens the other"
-,p:said@dance,p:saidmrbattlekiz,Said,Said Mr Battle Kiz,7,1,FR IT,FR,same,no clash,,0.42,0.52,one name is the first word(s) of the other
+,p:said@dance,p:saidmrbattlekiz,Said,Said Mr Battle Kiz,6,1,FR,FR,same,no clash,,0.42,0.52,one name is the first word(s) of the other
 ,p:said@oksana+said,p:saidmrbattlekiz,Said,Said Mr Battle Kiz,7,1,FR,FR,same,no clash,,0.42,0.52,one name is the first word(s) of the other
 ,c:andreas@andreas+silvia+silvia@andreas+silvia,c:ilias@ilias+sandra+sandra@ilias+sandra,Andreas & Silvia,Ilias & Sandra,1,1,IT,RO,different,no clash,,0.75,0.5,couple with matching names
 ,c:davide@davide+noemi+noemi@davide+noemi,c:david@david+noemie+noemie@david+noemie,DAVIDE & NOEMI,DAVID & NOÉMIE,2,1,~IT,~FR,unclear,clash,"2026-11-06: booked in Padua, Italy and in Paris, France",0.91,0.41,couple with matching names

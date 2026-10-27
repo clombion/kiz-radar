@@ -122,40 +122,38 @@
      "style": null,
      "country": "🇦🇴",
      "source_line": "▪️DJ FENOMENO ✅🇦🇴"
-    },
-    {
-     "name_as_written": "@kizombasembaAfrobielefeld",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "@kizombasembaAfrobielefeld"
     }
    ],
    "features": [
     {
      "feature": "workshops",
      "quote": "WORKSHOPS",
-     "rationale": "The description lists WORKSHOPS as a feature of the event."
-    },
-    {
-     "feature": "live_music",
-     "quote": "L I V E M U S I C",
-     "rationale": "A live music heading is given in the line-up section."
-    },
-    {
-     "feature": "shows",
-     "quote": "✅SHOW",
-     "rationale": "SHOW is listed as a feature of the event."
+     "rationale": "The event lists workshops as a component of the three-day programme."
     },
     {
      "feature": "masterclass",
      "quote": "Masterclass",
-     "rationale": "A masterclass is announced on Sunday."
+     "rationale": "The description explicitly mentions a masterclass on Sunday."
+    },
+    {
+     "feature": "shows",
+     "quote": "SHOW",
+     "rationale": "A show by artists is listed among the event's features."
+    },
+    {
+     "feature": "live_music",
+     "quote": "L I V E M U S I C",
+     "rationale": "A live music section is listed, indicating live musicians performing."
     },
     {
      "feature": "day_socials",
      "quote": "Workshop + Social Dance 🟠11:00-21:00",
-     "rationale": "A social dance runs in the daytime from 11:00 to 21:00 on Saturday."
+     "rationale": "Saturday includes a social dance during the daytime from 11:00 to 21:00."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "H O T E L O P T I O N S",
+     "rationale": "A hotel options section suggests recommended hotels for attendees."
     }
    ]
   }

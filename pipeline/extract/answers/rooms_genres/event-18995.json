@@ -3,7 +3,10 @@
  "events": [
   {
    "event_id": 18995,
-   "party_rooms": null,
+   "party_rooms": {
+    "count": 2,
+    "quote": "Reykjavik – Iceland, 2 rooms"
+   },
    "class_rooms": null,
    "rooms": [],
    "genres": [

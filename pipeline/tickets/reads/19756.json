@@ -2,9 +2,9 @@
  "event_id": 19756,
  "title": "14th Transilvania Salsa Fest, 2026 Cluj-Napoca",
  "start_date": "2026-11-19",
- "read_by": "agent",
- "prompt": "cb864655c7075f56",
- "rows_at": "2026-10-27T11:44:57+00:00",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "1a3b603636d758ee",
+ "rows_at": "2026-10-27T18:11:15+00:00",
  "styles": [
   "bachata",
   "kizomba",
@@ -15,7 +15,7 @@
   {
    "kind": "full",
    "style": null,
-   "label_quote": "🎟️ BLOODY FULL PASS",
+   "label_quote": null,
    "group_size": 1,
    "days": null,
    "includes_hotel": false,
@@ -34,7 +34,7 @@
   {
    "kind": "party",
    "style": null,
-   "label_quote": "🌙 DARKSIDE PARTY PASS",
+   "label_quote": null,
    "group_size": 1,
    "days": null,
    "includes_hotel": false,

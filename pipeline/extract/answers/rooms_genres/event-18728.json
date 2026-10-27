@@ -3,27 +3,25 @@
  "events": [
   {
    "event_id": 18728,
-   "party_rooms": {
-    "count": 2,
-    "quote": "The two rooms have air conditioning."
-   },
+   "party_rooms": null,
    "class_rooms": null,
    "rooms": [
     {
-     "name_as_written": "𝗥𝗢𝗢𝗠 𝟭 (𝗨𝗥𝗕𝗔𝗡) (400 m2):",
-     "kind": "party",
+     "name_as_written": "𝗥𝗢𝗢𝗠 𝟭 (𝗨𝗥𝗕𝗔𝗡)",
+     "kind": "unspecified",
      "genres": [
       "urbankiz",
       "tarraxo",
       "afro",
       "douceur",
-      "semba"
+      "semba",
+      "other"
      ],
      "quote": "𝗥𝗢𝗢𝗠 𝟭 (𝗨𝗥𝗕𝗔𝗡) (400 m2):"
     },
     {
-     "name_as_written": "𝗥𝗢𝗢𝗠 𝟮 (𝗞𝗜𝗭𝗢𝗠𝗕𝗔) (200m2)",
-     "kind": "party",
+     "name_as_written": "𝗥𝗢𝗢𝗠 𝟮 (𝗞𝗜𝗭𝗢𝗠𝗕𝗔)",
+     "kind": "unspecified",
      "genres": [
       "zouk",
       "kizomba",
@@ -58,6 +56,11 @@
      "genre": "semba",
      "genre_as_written": "Semba",
      "quote": "Semba"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "World wide music",
+     "quote": "World wide music"
     },
     {
      "genre": "zouk",

@@ -75,7 +75,14 @@
      "source_line": "DJ Kranes !!!"
     },
     {
-     "name_as_written": "Fundacja Benefit / La Playa Gdańsk",
+     "name_as_written": "Fundacja Benefit",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Fundacja Benefit / La Playa Gdańsk"
+    },
+    {
+     "name_as_written": "La Playa Gdańsk",
      "role": "organiser",
      "style": null,
      "country": null,
@@ -85,18 +92,23 @@
    "features": [
     {
      "feature": "pre_party",
-     "quote": "starting already on Thursday evening with a pre-party",
-     "rationale": "The text announces a pre-party on Thursday evening before the main festival."
+     "quote": "with a pre-party!",
+     "rationale": "The description announces a pre-party starting on Thursday evening before the main event."
     },
     {
      "feature": "workshops",
      "quote": "Intensive dance workshops in kizomba fusion, urban kiz, and tarraxo",
-     "rationale": "The event offers dance workshops in several styles as part of the programme."
+     "rationale": "Dance workshops in several styles are listed as part of the festival."
+    },
+    {
+     "feature": "bootcamp_intensive",
+     "quote": "Intensive dance workshops",
+     "rationale": "The workshops are described as intensive, which matches an intensive training format."
     },
     {
      "feature": "beach_party",
      "quote": "Open-air beach parties under the stars",
-     "rationale": "The text lists open-air beach parties as part of the event."
+     "rationale": "The event includes open-air beach parties."
     }
    ]
   }

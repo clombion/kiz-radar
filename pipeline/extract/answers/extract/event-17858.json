@@ -70,39 +70,34 @@
    ],
    "features": [
     {
-     "feature": "pre_party",
-     "quote": "Pre-Party: Thursday, 3 December",
-     "rationale": "The description lists a pre-party on Thursday, 3 December before the festival."
-    },
-    {
-     "feature": "after_party",
-     "quote": "After Party: Tuesday, 8 December",
-     "rationale": "The description lists an after party on Tuesday, 8 December."
-    },
-    {
-     "feature": "workshops",
-     "quote": "inspiring workshops",
-     "rationale": "The description promises inspiring workshops as part of the festival."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "beach parties",
-     "rationale": "The description mentions beach parties among the festival highlights."
-    },
-    {
      "feature": "all_in_one",
      "quote": "Main Venue & Official Hotel",
-     "rationale": "The main venue is also the official hotel, so the parties take place where dancers stay."
+     "rationale": "The main venue is also the official hotel, so the parties and accommodation are in the same place."
     },
     {
      "feature": "partner_hotel",
      "quote": "Second Hotel",
-     "rationale": "A second hotel is named as a recommended place to stay for the festival."
+     "rationale": "A second recommended hotel is named for dancers."
     },
     {
-     "feature": "camping",
-     "quote": "Bali Beach Glamping",
-     "rationale": "The official hotel is a glamping site, which is camping-style accommodation."
+     "feature": "workshops",
+     "quote": "inspiring workshops",
+     "rationale": "The description promises workshops as part of the festival."
+    },
+    {
+     "feature": "beach_party",
+     "quote": "beach parties",
+     "rationale": "Beach parties are listed among the festival experiences."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Pre-Party: Thursday, 3 December",
+     "rationale": "A pre-party is scheduled before the festival starts."
+    },
+    {
+     "feature": "after_party",
+     "quote": "After Party: Tuesday, 8 December",
+     "rationale": "An after-party is scheduled after the festival."
     }
    ]
   }

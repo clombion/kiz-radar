@@ -5,13 +5,6 @@
    "event_id": 16840,
    "artists": [
     {
-     "name_as_written": "Balumuka",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Balumuka is Back!"
-    },
-    {
      "name_as_written": "Vanessa Paris",
      "role": "teacher",
      "style": null,
@@ -107,27 +100,32 @@
     {
      "feature": "workshops",
      "quote": "Dance Workshops",
-     "rationale": "The Full Pass explicitly includes Dance Workshops as part of the event."
+     "rationale": "The ticket options list dance workshops as included in the Full Pass."
     },
     {
      "feature": "pre_party",
-     "quote": "Thursday pre-party",
-     "rationale": "The pass description lists a Thursday pre-party among the night parties."
+     "quote": "including Thursday pre-party",
+     "rationale": "The Full Pass includes a Thursday pre-party before the main event."
     },
     {
      "feature": "after_party",
-     "quote": "1 after-party",
-     "rationale": "The Full Pass includes one after-party."
+     "quote": "3 Night Parties + 1 After Party",
+     "rationale": "The Party Pass explicitly includes an after-party."
     },
     {
      "feature": "partner_hotel",
-     "quote": "Enjoy special festival rates",
-     "rationale": "A negotiated festival rate at the Ibis Old Town hotel is offered, without accommodation being part of the pass."
+     "quote": "Enjoy special festival rates (valid 3 days before and after the event)",
+     "rationale": "The event negotiates special hotel rates at the Ibis Old Town Hotel, booked separately from the pass."
     },
     {
      "feature": "all_in_one",
-     "quote": "Everything under one roof",
-     "rationale": "The hotel hosts the workshops, socials and after-party so dance and stay are in the same venue."
+     "quote": "Everything under one roof — dance, socialize, and rest comfortably at Ibis Old Town!",
+     "rationale": "The workshops, socials and after-party take place in the same hotel where dancers are invited to stay."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "breakfast included (€90/night)",
+     "rationale": "The festival hotel room packages include breakfast."
     }
    ]
   }

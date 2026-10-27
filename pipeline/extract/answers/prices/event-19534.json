@@ -13,7 +13,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 1550,
+       "amount": 1550.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "CURRENT PRICE: €1,550"
       },
       {
-       "amount": 1650,
+       "amount": 1650.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

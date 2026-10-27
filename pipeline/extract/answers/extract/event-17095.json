@@ -5,13 +5,6 @@
    "event_id": 17095,
    "artists": [
     {
-     "name_as_written": "SENSATION DAYS",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "SENSATION DAYS – ALBENA (1st edition):"
-    },
-    {
      "name_as_written": "Yami & Kali",
      "role": "teacher",
      "style": "Kizomba",
@@ -331,32 +324,32 @@
     {
      "feature": "workshops",
      "quote": "Workshops & Daytime socials",
-     "rationale": "The description lists workshops as part of the event program."
+     "rationale": "The description lists workshops as part of the 75H programme."
     },
     {
      "feature": "day_socials",
-     "quote": "Workshops & Daytime socials",
-     "rationale": "The description explicitly lists daytime socials as part of the event."
+     "quote": "Daytime socials",
+     "rationale": "The programme explicitly includes daytime socials."
     },
     {
      "feature": "shows",
-     "quote": "Saturday shows on the beach, under the stars",
-     "rationale": "The description announces shows on Saturday on the beach."
+     "quote": "Saturday shows on the beach",
+     "rationale": "Shows on the beach on Saturday are promised."
     },
     {
      "feature": "meals_included",
      "quote": "Friday Community Dinner included in the Full Pass",
-     "rationale": "The Full Pass explicitly includes the Friday dinner."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "At 4 unique Outdoor stages:",
-     "rationale": "Four separate dance stages are listed, meaning more than one dance floor."
+     "rationale": "A meal is stated to be included in the Full Pass."
     },
     {
      "feature": "partner_hotel",
      "quote": "All hotels below offer Double & Private rooms",
-     "rationale": "The event lists recommended hotels with negotiated room rates, separate from the pass price."
+     "rationale": "Negotiated hotel options with per-person rates are listed without accommodation being part of the pass."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "At 4 unique Outdoor stages",
+     "rationale": "There are four separate dance stages running at once."
     }
    ]
   }

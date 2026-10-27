@@ -11,7 +11,32 @@
     "count": 5,
     "quote": "5 dance studios for classes"
    },
-   "rooms": [],
+   "rooms": [
+    {
+     "name_as_written": "Salsa",
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "Evenings in 3 rooms: Salsa, Bachata, Kizomba"
+    },
+    {
+     "name_as_written": "Bachata",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "Evenings in 3 rooms: Salsa, Bachata, Kizomba"
+    },
+    {
+     "name_as_written": "Kizomba",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "Evenings in 3 rooms: Salsa, Bachata, Kizomba"
+    }
+   ],
    "genres": [
     {
      "genre": "salsa",
@@ -56,7 +81,7 @@
     {
      "genre": "other",
      "genre_as_written": "tango",
-     "quote": "(tango, improvisation, salsa, etc.)"
+     "quote": "tango, improvisation, salsa, etc."
     }
    ]
   }

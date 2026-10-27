@@ -71,23 +71,23 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "13:00 – 14:00 – WORKSHOP",
-     "rationale": "The program lists several timed WORKSHOP slots, so dance classes are part of the event."
+     "quote": "21:00 – 22:00 – WORKSHOP",
+     "rationale": "The program lists dance WORKSHOP slots on Friday and Saturday and Sunday."
     },
     {
      "feature": "after_party",
      "quote": "04:00 – 05:00 – APRÈS – KIZ",
-     "rationale": "The program includes an APRÈS – KIZ slot after the night party, which is an after-party."
+     "rationale": "An APRÈS – KIZ slot after the party is listed in the program."
     },
     {
      "feature": "day_socials",
      "quote": "16:00 – 20:00 – SOCIAL",
-     "rationale": "The afternoon-to-evening SOCIAL slot is a daytime social."
+     "rationale": "Afternoon SOCIAL sessions from 16:00 to 20:00 are scheduled on the program days."
     },
     {
      "feature": "dress_code",
      "quote": "Wardrobe is mandatory",
-     "rationale": "The house rules state that wardrobe is mandatory, which is a stated clothing requirement."
+     "rationale": "The house rules state that wardrobe is mandatory, which is a stated dress requirement."
     }
    ]
   }

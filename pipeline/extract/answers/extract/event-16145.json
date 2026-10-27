@@ -7,100 +7,135 @@
     {
      "name_as_written": "Antoni & Belen",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Antoni & Belen"
     },
     {
      "name_as_written": "York & Lisa",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "York & Lisa"
     },
     {
      "name_as_written": "Sakis & Mia",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Sakis & Mia"
     },
     {
      "name_as_written": "Geno & Steffie",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Geno & Steffie"
     },
     {
      "name_as_written": "Tedy & Chun",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Tedy & Chun"
     },
     {
      "name_as_written": "Oscar & Raquel",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Oscar & Raquel"
     },
     {
      "name_as_written": "Anass & Louise",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Anass & Louise"
     },
     {
      "name_as_written": "Flowly & Anastasia",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Flowly & Anastasia"
     },
     {
      "name_as_written": "Joris & Laura",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Joris & Laura"
     },
     {
      "name_as_written": "Walid & Bella",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Walid & Bella"
     },
     {
      "name_as_written": "Aram & Lara",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Aram & Lara"
     },
     {
      "name_as_written": "Jaden & Laura",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Bachata",
      "country": null,
      "source_line": "Jaden & Laura"
     },
     {
-     "name_as_written": "Julia & Partner",
+     "name_as_written": "Jonathan Mahoto & Jenny",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Kizomba",
      "country": null,
-     "source_line": "Julia & Partner"
+     "source_line": "Jonathan Mahoto & Jenny"
     },
     {
-     "name_as_written": "Ly & Partner",
+     "name_as_written": "Enah Lebon",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "Kizomba",
      "country": null,
-     "source_line": "Ly & Partner"
+     "source_line": "Enah Lebon"
+    },
+    {
+     "name_as_written": "Curtis Seldon",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Curtis Seldon"
+    },
+    {
+     "name_as_written": "Methodz & Julia",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Methodz & Julia"
+    },
+    {
+     "name_as_written": "Ami & Julian",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Ami & Julian"
+    },
+    {
+     "name_as_written": "Virgile & Juneline",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Virgile & Juneline"
+    },
+    {
+     "name_as_written": "Mode Zero",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": null,
+     "source_line": "Mode Zero"
     },
     {
      "name_as_written": "DJ York",
@@ -143,55 +178,6 @@
      "style": "Bachata",
      "country": null,
      "source_line": "DJ Sami"
-    },
-    {
-     "name_as_written": "Jonathan Mahoto & Jenny",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Jonathan Mahoto & Jenny"
-    },
-    {
-     "name_as_written": "Enah Lebon",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Enah Lebon"
-    },
-    {
-     "name_as_written": "Curtis Seldon",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Curtis Seldon"
-    },
-    {
-     "name_as_written": "Methodz & Julia",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Methodz & Julia"
-    },
-    {
-     "name_as_written": "Ami & Julian",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Ami & Julian"
-    },
-    {
-     "name_as_written": "Virgile & Juneline",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Virgile & Juneline"
-    },
-    {
-     "name_as_written": "Mode Zero",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Mode Zero"
     },
     {
      "name_as_written": "DJ Snakes",
@@ -317,7 +303,7 @@
     {
      "feature": "all_in_one",
      "quote": "All-in-one hotel experience",
-     "rationale": "The event states it is an all-in-one hotel experience where everything happens in one place."
+     "rationale": "The description says the event is held in the hotel where dancers are invited to stay, so event and accommodation share one venue."
     },
     {
      "feature": "workshops",
@@ -327,17 +313,12 @@
     {
      "feature": "pre_party",
      "quote": "Pre-party (Thursday) is NOT included in any Full Pass",
-     "rationale": "A Thursday pre-party is mentioned as part of the event schedule."
+     "rationale": "The description mentions a Thursday pre-party held before the main event."
     },
     {
      "feature": "partner_hotel",
      "quote": "HOTEL – PARK PLAZA AMSTERDAM AIRPORT",
-     "rationale": "The event promotes a specific hotel with room rates, sold separately from the pass."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "ROOM + BREAKFAST + DINNER",
-     "rationale": "The hotel room package explicitly includes dinner along with breakfast."
+     "rationale": "A specific hotel is named with room rates offered, while the accommodation is not part of the pass."
     }
    ]
   }

@@ -10,57 +10,57 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "We will dance to Kizomba"
+     "quote": "We will dance to Kizomba, Semba, Tarraxinha"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "Kizomba, Semba"
+     "quote": "We will dance to Kizomba, Semba, Tarraxinha"
     },
     {
      "genre": "tarraxinha",
      "genre_as_written": "Tarraxinha",
-     "quote": "Semba, Tarraxinha"
+     "quote": "Semba, Tarraxinha, Kompa"
     },
     {
      "genre": "kompa",
      "genre_as_written": "Kompa",
-     "quote": "Tarraxinha, Kompa"
+     "quote": "Tarraxinha, Kompa, Zouk"
     },
     {
      "genre": "zouk",
      "genre_as_written": "Zouk",
-     "quote": "Kompa, Zouk"
+     "quote": "Kompa, Zouk, Koladera"
     },
     {
      "genre": "other",
      "genre_as_written": "Koladera",
-     "quote": "Zouk, Koladera"
+     "quote": "Zouk, Koladera, Funana"
     },
     {
      "genre": "other",
      "genre_as_written": "Funana",
-     "quote": "Koladera, Funana"
+     "quote": "Koladera, Funana, Gumbe"
     },
     {
      "genre": "other",
      "genre_as_written": "Gumbe",
-     "quote": "Funana, Gumbe"
+     "quote": "Funana, Gumbe, Tina"
     },
     {
      "genre": "other",
      "genre_as_written": "Tina",
-     "quote": "Gumbe, Tina"
+     "quote": "Gumbe, Tina, Ndombolo"
     },
     {
      "genre": "other",
      "genre_as_written": "Ndombolo",
-     "quote": "Tina, Ndombolo"
+     "quote": "Tina, Ndombolo, Decale"
     },
     {
      "genre": "other",
      "genre_as_written": "Decale",
-     "quote": "Ndombolo, Decale"
+     "quote": "Ndombolo, Decale, Afrohouse"
     },
     {
      "genre": "afro",

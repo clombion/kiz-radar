@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 269,
+       "amount": 269.0,
        "currency": "AUD",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "SUPER EARLY BIRD FULL PASS $269 (First release Only 10 tickets available until the 28th February)"
       },
       {
-       "amount": 295,
+       "amount": 295.0,
        "currency": "AUD",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "Fullpass February AUD$295"
       },
       {
-       "amount": 310,
+       "amount": 310.0,
        "currency": "AUD",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "Fullpass March AUD$310"
       },
       {
-       "amount": 335,
+       "amount": 335.0,
        "currency": "AUD",
        "fee": null,
        "alt": null,
@@ -65,7 +65,7 @@
        "quote": "Fullpass April/May AUD$335"
       },
       {
-       "amount": 350,
+       "amount": 350.0,
        "currency": "AUD",
        "fee": null,
        "alt": null,
@@ -80,7 +80,7 @@
      ]
     },
     {
-     "kind": "other",
+     "kind": "full",
      "style": null,
      "label_quote": null,
      "group_size": 1,
@@ -88,7 +88,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 125,
+       "amount": 125.0,
        "currency": "AUD",
        "fee": null,
        "alt": null,
@@ -111,7 +111,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 35,
+       "amount": 35.0,
        "currency": "AUD",
        "fee": null,
        "alt": null,
@@ -134,7 +134,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "AUD",
        "fee": null,
        "alt": null,
@@ -157,7 +157,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "AUD",
        "fee": null,
        "alt": null,
@@ -180,7 +180,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "AUD",
        "fee": null,
        "alt": null,
@@ -203,7 +203,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 35,
+       "amount": 35.0,
        "currency": "AUD",
        "fee": null,
        "alt": null,
@@ -226,7 +226,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "AUD",
        "fee": null,
        "alt": null,

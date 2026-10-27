@@ -21,34 +21,34 @@
    ],
    "features": [
     {
-     "feature": "transfers_shuttle",
-     "quote": "airport pick-ups and drop-offs are included in your package",
-     "rationale": "The package includes airport pick-ups and drop-offs, which are shuttle transfers."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Hotel accommodation (12 days, 11 nights)",
-     "rationale": "The package includes hotel accommodation for the trip."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Three (3) meals a day (breakfast, lunch, dinner)",
-     "rationale": "Meals are included in the package."
-    },
-    {
      "feature": "workshops",
      "quote": "ALL group dance classes (incl. kizomba, semba, etc)",
-     "rationale": "Group dance classes are part of the package."
+     "rationale": "The package explicitly includes group dance classes in kizomba and semba."
     },
     {
      "feature": "private_classes",
      "quote": "private classes are booked and paid individually out of pocket",
-     "rationale": "Private dance classes are offered but paid for separately."
+     "rationale": "The text states private dance classes are offered and booked separately."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "Hotel accommodation (12 days, 11 nights)",
+     "rationale": "The package listing includes hotel accommodation for the trip."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Three (3) meals a day (breakfast, lunch, dinner)",
+     "rationale": "The package includes three meals a day."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "Airport transfers (pick-up & airport drop-off)",
+     "rationale": "The package includes airport pick-up and drop-off transfers."
     },
     {
      "feature": "live_music",
      "quote": "music concerts",
-     "rationale": "Music concerts are included among the group nightlife activities."
+     "rationale": "The nightlife activities included in the package feature music concerts."
     }
    ]
   }

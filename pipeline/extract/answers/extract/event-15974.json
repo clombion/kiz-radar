@@ -155,23 +155,23 @@
    "features": [
     {
      "feature": "competition",
-     "quote": "Proudly introduce the International UK Open Competition",
-     "rationale": "The event includes an International UK Open Competition for dancers to show their talent."
+     "quote": "INTERNATIONAL UK Open competition 2026",
+     "rationale": "The event includes an international UK Open competition in 2026."
     },
     {
      "feature": "multiple_rooms",
      "quote": "3 ROOMS",
-     "rationale": "The event has three dance rooms, each with its own styles."
+     "rationale": "The festival has three dance rooms, each with its own styles."
     },
     {
      "feature": "workshops",
      "quote": "DAY WORKSHOPS",
-     "rationale": "Daytime workshops are listed as part of the event schedule."
+     "rationale": "Day workshops and evening classes are part of the schedule."
     },
     {
      "feature": "partner_hotel",
      "quote": "STAY (Recommendations)",
-     "rationale": "The organisers recommend several hotels near the venue, without the accommodation being part of the pass."
+     "rationale": "The event recommends hotels for dancers to stay at, outside the pass."
     }
    ]
   }

@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -23,10 +23,10 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "👉 Early bird : 60 euros"
+       "quote": "Early bird : 60 euros"
       },
       {
-       "amount": 70,
+       "amount": 70.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -36,7 +36,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "👉 Second Early bird : 70 euros"
+       "quote": "Second Early bird : 70 euros"
       }
      ]
     }

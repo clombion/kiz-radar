@@ -7,13 +7,13 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": null,
+     "label_quote": "Full Pass (workshops, social dance & party)",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 65,
+       "amount": 65.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -23,20 +23,20 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Solo: €65 (advance sale)"
+       "quote": "– Solo: €65 (advance sale)"
       }
      ]
     },
     {
      "kind": "full",
      "style": null,
-     "label_quote": null,
+     "label_quote": "Full Pass (workshops, social dance & party)",
      "group_size": 2,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -46,7 +46,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Couple: €110 (advance sale)"
+       "quote": "– Couple: €110 (advance sale)"
       }
      ]
     }

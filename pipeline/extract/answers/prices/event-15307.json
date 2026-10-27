@@ -13,7 +13,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 399,
+       "amount": 399.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "From €399 per week"
       },
       {
-       "amount": 419,
+       "amount": 419.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

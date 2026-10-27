@@ -121,17 +121,17 @@
     {
      "feature": "all_in_one",
      "quote": "MAIN HOTEL • ALL IN ONE",
-     "rationale": "The heading states the main hotel is an all-in-one venue, meaning the parties take place in the hotel where dancers stay."
+     "rationale": "The heading states that the main hotel is an all-in-one venue, so the parties take place in the hotel where dancers stay."
     },
     {
      "feature": "accommodation_included",
      "quote": "Package: 2 full passes + double room → 480€",
-     "rationale": "The package bundles two full passes with a double room, so accommodation is part of the package."
+     "rationale": "The package price combines passes with a double room, so accommodation is included in the package."
     },
     {
-     "feature": "workshops",
-     "quote": "TEACHERS",
-     "rationale": "A teachers line-up indicates that dance classes are part of the event."
+     "feature": "partner_hotel",
+     "quote": "Double room: for 2 persons for 3 nights with breakfast → 340€",
+     "rationale": "A discounted room rate at the event's hotel is offered as a separate option from the passes."
     }
    ]
   }

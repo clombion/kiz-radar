@@ -16,22 +16,27 @@
     {
      "feature": "all_in_one",
      "quote": "All In ONE Hotel",
-     "rationale": "The description lists an 'All In ONE Hotel' expectation, indicating the parties take place in the hotel where dancers stay."
-    },
-    {
-     "feature": "workshops",
-     "quote": "High Quality Workshops",
-     "rationale": "The description lists high quality workshops as part of the event."
+     "rationale": "The line states the event is held in one hotel, so the parties and the stay share a venue."
     },
     {
      "feature": "pool_party",
      "quote": "Pool Parties",
-     "rationale": "The expectations list includes Pool Parties."
+     "rationale": "The expectations list names pool parties as part of the event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "High Quality Workshops",
+     "rationale": "The expectations list names workshops as part of the event."
     },
     {
      "feature": "competition",
      "quote": "The Rising Star Competition",
-     "rationale": "The event includes a named competition."
+     "rationale": "The expectations list names a competition as part of the event."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Booking link coming soon!",
+     "rationale": "A hotel booking link is given under the HOTEL heading, which implies a recommended hotel that is not part of the pass."
     }
    ]
   }

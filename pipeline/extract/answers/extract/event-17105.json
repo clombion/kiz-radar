@@ -16,7 +16,7 @@
      "role": "dj",
      "style": null,
      "country": null,
-     "source_line": "💫 Stephy & JP from Paris and Top Dj Djeemix here in H-Town 💫"
+     "source_line": "We are so excited to welcome international artists"
     },
     {
      "name_as_written": "Youdance Dream Team",
@@ -30,17 +30,12 @@
     {
      "feature": "bootcamp_intensive",
      "quote": "Bootcamp Topic:",
-     "rationale": "The event includes a bootcamp with a named topic and a Saturday bootcamp session."
+     "rationale": "The description advertises a bootcamp with a stated topic, which is an intensive training component."
     },
     {
      "feature": "workshops",
      "quote": "Learn how to highlight musical accents",
-     "rationale": "The bootcamp lists dance learning sessions on musicality, which are classes within the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "30 min Social",
-     "rationale": "The Saturday afternoon schedule includes a social after the bootcamp."
+     "rationale": "The bulleted items describe dance learning sessions that are part of the event."
     }
    ]
   }

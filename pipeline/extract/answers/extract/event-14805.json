@@ -6,24 +6,29 @@
    "artists": [],
    "features": [
     {
-     "feature": "partner_hotel",
-     "quote": "Accommodation at Hotel Le Meridien Lav",
-     "rationale": "The description gives a hotel accommodation section with room rates, so the event has a partner hotel without the rates being part of the pass."
-    },
-    {
      "feature": "workshops",
      "quote": "30+ hours of premium workshops",
-     "rationale": "The event offers dance workshops as part of the programme."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "5 unforgettable socials (evening, daytime, and open-air)",
-     "rationale": "The socials explicitly include daytime events."
+     "rationale": "The description states that over 30 hours of workshops are part of the congress."
     },
     {
      "feature": "multiple_rooms",
      "quote": "3 vibrant dancefloors",
-     "rationale": "Three dance floors means more than one dance room."
+     "rationale": "Three dancefloors are offered, which means more than one dance floor."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "5 unforgettable socials (evening, daytime, and open-air)",
+     "rationale": "The listed socials include daytime socials."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "set in the luxurious Le Meridien Lav Hotel in Split, Croatia",
+     "rationale": "The congress is held in the same hotel where dancers are invited to stay, so the event and accommodation share one venue."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "Accommodation at Hotel Le Meridien Lav:",
+     "rationale": "A negotiated hotel room rate list is offered for the partner hotel, and the rates are not part of the congress pass."
     }
    ]
   }

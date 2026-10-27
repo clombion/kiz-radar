@@ -11,7 +11,8 @@
      "kind": "unspecified",
      "genres": [
       "bachata",
-      "salsa"
+      "salsa",
+      "other"
      ],
      "quote": "BACHATA ROOM (Bachata Sensual, Bachata Dominican, Bachazouk, Salsa)"
     },
@@ -45,69 +46,74 @@
       "reggaeton",
       "other"
      ],
-     "quote": "VIBE ROOM (Konpa, Salsa, Afro Beats, Reggaeton, Hip Hop and More"
+     "quote": "VIBE ROOM (Konpa, Salsa, Afro Beats, Reggaeton, Hip Hop and More…)"
     }
    ],
    "genres": [
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "teaching: Kizomba"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Semba, Konpa"
+     "quote": "teaching: Kizomba, Urban Kiz"
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "Urban Kiz",
-     "quote": "Urban Kiz"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Salsa, Tarraxo"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "Douceur, Afro Beat"
+     "quote": "Kizomba, Urban Kiz, Konpa"
     },
     {
      "genre": "kompa",
      "genre_as_written": "Konpa",
-     "quote": "Urban Kiz, Konpa"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghetto Zouk",
-     "quote": "Ghetto Zouk"
+     "quote": "Urban Kiz, Konpa, Bachata"
     },
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "Bachata, Salsa"
+     "quote": "Konpa, Bachata, Salsa"
     },
     {
      "genre": "salsa",
      "genre_as_written": "Salsa",
-     "quote": "Bachata, Salsa"
+     "quote": "Bachata, Salsa, Tarraxo"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Salsa, Tarraxo, Douceur"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "Douceur",
+     "quote": "Tarraxo, Douceur, Afro Beat"
     },
     {
      "genre": "afro",
      "genre_as_written": "Afro Beat",
-     "quote": "Douceur, Afro Beat"
+     "quote": "Douceur, Afro Beat, Afro House"
+    },
+    {
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "KIZOMBA (Kizomba, Semba, Konpa)"
+    },
+    {
+     "genre": "zouk",
+     "genre_as_written": "Ghetto Zouk",
+     "quote": "URBAN KIZ (Urban, Tarraxho, Ghetto Zouk)"
     },
     {
      "genre": "reggaeton",
      "genre_as_written": "Reggaeton",
-     "quote": "Reggaeton, Hip Hop"
+     "quote": "Afro Beats, Reggaeton, Hip Hop"
     },
     {
      "genre": "other",
      "genre_as_written": "Hip Hop",
-     "quote": "Hip Hop and More"
+     "quote": "Reggaeton, Hip Hop and More"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Bachazouk",
+     "quote": "Bachata Dominican, Bachazouk, Salsa"
     }
    ]
   }

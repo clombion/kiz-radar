@@ -5,6 +5,13 @@
    "event_id": 16069,
    "artists": [
     {
+     "name_as_written": "Kizz Stepp Kiff",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "To celebrate Kizz Stepp Kiff’s 2nd anniversary, we’re preparing an exceptional festival in Normandy 💣🎵"
+    },
+    {
      "name_as_written": "DJ ICHIGO",
      "role": "dj",
      "style": null,
@@ -205,12 +212,12 @@
     {
      "feature": "workshops",
      "quote": "Intensive Workshops",
-     "rationale": "The event lists Intensive Workshops as part of the programme."
+     "rationale": "The description advertises intensive workshops as part of the festival."
     },
     {
      "feature": "multiple_rooms",
      "quote": "2 ROOMS — 2 VIBES",
-     "rationale": "The event has two rooms, so more than one dance floor is stated."
+     "rationale": "The festival runs two rooms, so there is more than one dance floor."
     }
    ]
   }

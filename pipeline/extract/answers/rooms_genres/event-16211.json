@@ -5,7 +5,7 @@
    "event_id": 16211,
    "party_rooms": {
     "count": 2,
-    "quote": "🎶 Party Rooms\n🔥 Room 1"
+    "quote": "🔥 Room 1\n• Urban Kiz\n• Kizomba\n• Tarraxo\n• Urban Tarraxo\n• Kompa\n🔥 Room 2\n• Kizomba\n• Semba\n• Douceur\n• Kompa\n• All Styles"
    },
    "class_rooms": null,
    "rooms": [
@@ -39,14 +39,24 @@
      "quote": "Urban Kiz experience"
     },
     {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "🌀 Tarraxo Bootcamp"
-    },
-    {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "💥 Kizomba Bootcamp"
+     "quote": "Kizomba Bootcamp"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "Tarraxo Bootcamp"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Urban Tarraxo",
+     "quote": "• Urban Tarraxo"
+    },
+    {
+     "genre": "kompa",
+     "genre_as_written": "Kompa",
+     "quote": "• Kompa"
     },
     {
      "genre": "semba",
@@ -57,11 +67,6 @@
      "genre": "douceur",
      "genre_as_written": "Douceur",
      "quote": "• Douceur"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "• Kompa"
     }
    ]
   }

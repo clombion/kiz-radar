@@ -415,22 +415,22 @@
     {
      "feature": "taxi_dancers",
      "quote": "recognized teams of taxi dancers from different countries",
-     "rationale": "The description states that recognized taxi dancer teams from different countries are part of the festival."
+     "rationale": "The description says recognized teams of taxi dancers from different countries will attend."
     },
     {
      "feature": "workshops",
      "quote": "with the best national and international teachers and DJs",
-     "rationale": "Teachers and instructors listed for the festival indicate dance classes are part of the event."
+     "rationale": "The festival features teachers giving classes, so dance classes are part of the event."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "CARIBBEAN",
-     "rationale": "The programme lists several dance rooms, including Lisboa rooms and a Caribbean room, in the same event."
+     "quote": "𝑺𝑶𝑪𝑰𝑨𝑳 𝑹𝑶𝑶𝑴",
+     "rationale": "The description lists several social rooms (Lisboa, Caribbean) with different dance styles."
     },
     {
      "feature": "all_in_one",
-     "quote": "in the 5 Star HOTEL ALGARVE MARRIOT SALGADOS ***** in Algarve (Portugal)",
-     "rationale": "The festival is held in the hotel where dancers can book rooms, so event and accommodation share one venue."
+     "quote": "𝘼𝙇𝙇 𝙄𝙉 𝙊𝙉𝙀",
+     "rationale": "The event is held in the hotel where the accommodation is offered, so parties and rooms are in the same venue."
     }
    ]
   }

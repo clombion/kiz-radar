@@ -13,12 +13,12 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 55,
+       "amount": 55.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "03-05",
-       "until": "03-05",
+       "from": null,
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,

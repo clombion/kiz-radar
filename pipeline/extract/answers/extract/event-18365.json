@@ -86,37 +86,32 @@
     {
      "feature": "all_in_one",
      "quote": "ALL-IN-ONE Festival Venue & Hotel",
-     "rationale": "The description calls the event an all-in-one venue and hotel, so the parties take place in the hotel where dancers are invited to stay."
+     "rationale": "The description states the festival venue and hotel are the same place, so the parties are held in the hotel where dancers stay."
     },
     {
      "feature": "partner_hotel",
      "quote": "DISCOUNTED HOTEL LINK BELOW ONLY $139.99 per night",
-     "rationale": "A negotiated discounted hotel rate is offered, but it is not part of the festival pass."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Breakfast included.",
-     "rationale": "The hotel room package explicitly includes breakfast."
+     "rationale": "A discounted hotel rate is offered via a booking link, but the pass does not include the room."
     },
     {
      "feature": "competition",
      "quote": "Jack & Jill Competition is BACK!",
-     "rationale": "A Jack & Jill competition is part of the event."
+     "rationale": "The event includes a Jack & Jill competition with placings."
     },
     {
      "feature": "masterclass",
      "quote": "Masterclasses",
-     "rationale": "The event lists masterclasses under What to Expect."
+     "rationale": "Masterclasses are listed under What to Expect."
     },
     {
      "feature": "pre_party",
      "quote": "Thursday Pre-Party",
-     "rationale": "A pre-party is listed on Thursday before the main event."
+     "rationale": "A Thursday pre-party is listed before the main weekend."
     },
     {
      "feature": "after_party",
-     "quote": "Nightly Socials & After-Parties",
-     "rationale": "After-parties are listed as part of the nightly program."
+     "quote": "After-Parties",
+     "rationale": "Nightly socials and after-parties are listed until 5:00 AM."
     }
    ]
   }

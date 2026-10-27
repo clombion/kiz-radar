@@ -5,55 +5,6 @@
    "event_id": 15479,
    "artists": [
     {
-     "name_as_written": "JP & Stephy",
-     "role": "teacher",
-     "style": "UrbanKiz",
-     "country": "France",
-     "source_line": "👨🏿‍🎓JP & Stephy(France)UrbanKiz"
-    },
-    {
-     "name_as_written": "MR.Tecas",
-     "role": "teacher",
-     "style": "Semba",
-     "country": "France",
-     "source_line": "👨🏿‍🎓MR.Tecas (France)Semba"
-    },
-    {
-     "name_as_written": "Jocelyn Loubaki",
-     "role": "teacher",
-     "style": "UrbanKiz",
-     "country": "Belgium",
-     "source_line": "👨🏿‍🎓Jocelyn Loubaki (Belgium) UrbanKiz"
-    },
-    {
-     "name_as_written": "Alvine Brown",
-     "role": "teacher",
-     "style": "Afro all steps",
-     "country": "France",
-     "source_line": "👨🏿‍🎓Alvine Brown(France)Afro all steps"
-    },
-    {
-     "name_as_written": "Jaqui & Fola",
-     "role": "teacher",
-     "style": "UrbanKiz",
-     "country": "Germany",
-     "source_line": "👨🏿‍🎓Jaqui & Fola(Germany)UrbanKiz"
-    },
-    {
-     "name_as_written": "Mady Keita",
-     "role": "teacher",
-     "style": "Kompa",
-     "country": "Germany",
-     "source_line": "👨🏿‍🎓Mady Keita (Germany)Kompa"
-    },
-    {
-     "name_as_written": "Pat Ollo",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": "Finland",
-     "source_line": "👨🏿‍🎓Pat Ollo (Finland)Kizomba"
-    },
-    {
      "name_as_written": "DJ Wesss",
      "role": "dj",
      "style": "KIZOMBA & URBANKIZ",
@@ -103,6 +54,55 @@
      "source_line": "🏛️DJ Matt de Carmona (France)We Love Semba"
     },
     {
+     "name_as_written": "JP & Stephy",
+     "role": "teacher",
+     "style": "UrbanKiz",
+     "country": "France",
+     "source_line": "👨🏿‍🎓JP & Stephy(France)UrbanKiz"
+    },
+    {
+     "name_as_written": "MR.Tecas",
+     "role": "teacher",
+     "style": "Semba",
+     "country": "France",
+     "source_line": "👨🏿‍🎓MR.Tecas (France)Semba"
+    },
+    {
+     "name_as_written": "Jocelyn Loubaki",
+     "role": "teacher",
+     "style": "UrbanKiz",
+     "country": "Belgium",
+     "source_line": "👨🏿‍🎓Jocelyn Loubaki (Belgium) UrbanKiz"
+    },
+    {
+     "name_as_written": "Alvine Brown",
+     "role": "teacher",
+     "style": "Afro all steps",
+     "country": "France",
+     "source_line": "👨🏿‍🎓Alvine Brown(France)Afro all steps"
+    },
+    {
+     "name_as_written": "Jaqui & Fola",
+     "role": "teacher",
+     "style": "UrbanKiz",
+     "country": "Germany",
+     "source_line": "👨🏿‍🎓Jaqui & Fola(Germany)UrbanKiz"
+    },
+    {
+     "name_as_written": "Mady Keita",
+     "role": "teacher",
+     "style": "Kompa",
+     "country": "Germany",
+     "source_line": "👨🏿‍🎓Mady Keita (Germany)Kompa"
+    },
+    {
+     "name_as_written": "Pat Ollo",
+     "role": "teacher",
+     "style": "Kizomba",
+     "country": "Finland",
+     "source_line": "👨🏿‍🎓Pat Ollo (Finland)Kizomba"
+    },
+    {
      "name_as_written": "Master Didier",
      "role": "mc",
      "style": null,
@@ -121,12 +121,12 @@
     {
      "feature": "workshops",
      "quote": "We present hours of workshops",
-     "rationale": "The description states that hours of workshops are presented as part of the event."
+     "rationale": "The description states that workshops are presented as part of the event."
     },
     {
      "feature": "partner_hotel",
-     "quote": "booking link coming soon!with a discount",
-     "rationale": "A booking link for the hotel next door comes with a discount, which is a negotiated hotel rate outside the pass."
+     "quote": "Hotel and venue are next door to each other. booking link coming soon!with a discount",
+     "rationale": "A nearby hotel is recommended with a booking discount, without the accommodation being part of the pass."
     }
    ]
   }

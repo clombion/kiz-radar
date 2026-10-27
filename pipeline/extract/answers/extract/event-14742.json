@@ -16,12 +16,12 @@
     {
      "feature": "accommodation_included",
      "quote": "14 nights’ accommodation",
-     "rationale": "The price list under 'Price includes' lists 14 nights' accommodation as part of the package."
+     "rationale": "The price list under 'Price includes' lists accommodation for 14 nights."
     },
     {
      "feature": "meals_included",
      "quote": "Meals (full board)",
-     "rationale": "Meals at full board are listed under 'Price includes', so they are part of the package."
+     "rationale": "Meals are listed as part of what the price includes."
     }
    ]
   }

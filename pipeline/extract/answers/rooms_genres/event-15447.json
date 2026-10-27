@@ -16,7 +16,7 @@
     },
     {
      "name_as_written": "Room 3",
-     "kind": "party",
+     "kind": "unspecified",
      "genres": [],
      "quote": "Dance Social (Room 3)"
     }
@@ -25,7 +25,7 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Do you enjoy authentic Kizomba, Semba, and Bavarian dances?"
+     "quote": "Kizomba Asangi presents for the second time,"
     },
     {
      "genre": "semba",
@@ -39,8 +39,8 @@
     },
     {
      "genre": "other",
-     "genre_as_written": "Bavarian dance",
-     "quote": "Bavarian Dance Workshops"
+     "genre_as_written": "Bavarian dances",
+     "quote": "Do you enjoy authentic Kizomba, Semba, and Bavarian dances?"
     }
    ]
   }

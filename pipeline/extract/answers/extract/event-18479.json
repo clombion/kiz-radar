@@ -476,19 +476,24 @@
    ],
    "features": [
     {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE LOCATION",
+     "rationale": "The description says the parties and workshops take place all in one location, at the KLIMA Hotel venue."
+    },
+    {
      "feature": "workshops",
      "quote": "3 DAYS of Workshops",
-     "rationale": "The description states that there are three days of workshops."
+     "rationale": "The description advertises three days of workshops within the event."
     },
     {
      "feature": "multiple_rooms",
      "quote": "4 Dance Floors",
-     "rationale": "The event has four dance floors, so more than one dance room."
+     "rationale": "The event has four separate dance floors or rooms."
     },
     {
      "feature": "day_socials",
-     "quote": "15.00 – 20.30 Social Room",
-     "rationale": "A daytime social room runs in the afternoon on several days."
+     "quote": "16.30 – 20.30 Social Room",
+     "rationale": "A daytime social room runs in the afternoon on Friday."
     }
    ]
   }

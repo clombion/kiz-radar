@@ -3,7 +3,10 @@
  "events": [
   {
    "event_id": 17474,
-   "party_rooms": null,
+   "party_rooms": {
+    "count": 2,
+    "quote": "2 dance rooms (Authentic & Fusion)"
+   },
    "class_rooms": null,
    "rooms": [
     {

@@ -13,7 +13,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 689,
+       "amount": 689.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -23,7 +23,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Inside double cabin €689/person"
+       "quote": "Inside double cabin €689/person. Full package: breakfast, lunch, afternoon snack, and dinner"
       }
      ]
     },
@@ -36,7 +36,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 789,
+       "amount": 789.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -46,7 +46,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Inside double cabin with porthole and sea view €789/person"
+       "quote": "Inside double cabin with porthole and sea view €789/person. Full package: breakfast, lunch, afternoon snack, and dinner"
       }
      ]
     },
@@ -59,7 +59,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 914,
+       "amount": 914.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -69,7 +69,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Outside double cabin with balcony and sea view €914/person"
+       "quote": "Outside double cabin with balcony and sea view €914/person. Full package: breakfast, lunch, afternoon snack, and dinner"
       }
      ]
     }

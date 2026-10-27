@@ -16,39 +16,39 @@
      "role": "organiser",
      "style": null,
      "country": null,
-     "source_line": "It is organized in close collaboration with Academia de Dança Sona Passada LDA, our local partner in Luanda, who supports the retreat across logistics, cultural programming, dance classes, and the professional Angolan team accompanying the group throughout the experience."
+     "source_line": "All bank transfers are made in euros (€) to Academia de Dança Sona Passada LDA, the local organizer responsible for invoicing and financial administration."
     }
    ],
    "features": [
     {
      "feature": "accommodation_included",
-     "quote": "10 nights accommodation in a resort in Luanda (double or twin rooms)",
-     "rationale": "The included list states that the package covers ten nights of accommodation in a resort."
+     "quote": "10 nights accommodation in a resort in Luanda",
+     "rationale": "The retreat package includes the resort accommodation for ten nights."
     },
     {
      "feature": "meals_included",
-     "quote": "Daily breakfast",
-     "rationale": "Breakfast is listed among the items included in the retreat package."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Group dance classes and socials",
-     "rationale": "Group dance classes are part of what is included in the retreat."
-    },
-    {
-     "feature": "private_classes",
-     "quote": "1 private dance class per participant",
-     "rationale": "Each participant receives one private dance class as part of the package."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Professional taxi dancer team and local guides throughout the retreat",
-     "rationale": "The description states that a professional taxi dancer team is present throughout the retreat."
+     "quote": "One group meal per day (lunch or dinner), with water included",
+     "rationale": "The package includes a group meal each day."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "Airport pick-up and drop-off",
-     "rationale": "Airport transfers are listed as included in the package."
+     "rationale": "Airport transfers are included in the retreat."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "Professional taxi dancer team",
+     "rationale": "The retreat provides a professional taxi dancer team."
+    },
+    {
+     "feature": "private_classes",
+     "quote": "1 private dance class per participant",
+     "rationale": "Each participant receives a private dance class."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Group dance classes and socials",
+     "rationale": "Group dance classes are part of the retreat programme."
     }
    ]
   }

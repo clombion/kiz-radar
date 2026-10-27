@@ -16,17 +16,17 @@
     {
      "feature": "accommodation_included",
      "quote": "Accommodation",
-     "rationale": "The trip includes list names Accommodation as part of the package."
+     "rationale": "The trip package under 'THE TRIP INCLUDES' lists accommodation as included."
     },
     {
      "feature": "meals_included",
      "quote": "Breakfast",
-     "rationale": "Breakfast is listed under what the trip includes."
+     "rationale": "Breakfast is listed under 'THE TRIP INCLUDES', so meals are included in the package."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "Transfers",
-     "rationale": "Transfers are listed under what the trip includes."
+     "rationale": "Transfers are listed as part of what the trip includes."
     }
    ]
   }

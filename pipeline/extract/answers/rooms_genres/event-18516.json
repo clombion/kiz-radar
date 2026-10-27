@@ -37,13 +37,13 @@
    "genres": [
     {
      "genre": "salsa",
-     "genre_as_written": "Cuban Salsa",
+     "genre_as_written": "Salsa",
      "quote": "Cuban Salsa"
     },
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "Bachata room"
+     "quote": "Bachata"
     },
     {
      "genre": "kizomba",
@@ -51,14 +51,14 @@
      "quote": "Kizomba room"
     },
     {
-     "genre": "reggaeton",
-     "genre_as_written": "Reggaeton",
-     "quote": "Reggaeton"
-    },
-    {
      "genre": "other",
      "genre_as_written": "Merengue",
      "quote": "Merengue"
+    },
+    {
+     "genre": "reggaeton",
+     "genre_as_written": "Reggaeton",
+     "quote": "Reggaeton"
     }
    ]
   }

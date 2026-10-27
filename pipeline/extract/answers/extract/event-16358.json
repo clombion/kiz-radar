@@ -260,38 +260,38 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "Pre-Party – 1 Room (Main Hotel)",
-     "rationale": "The parties are run in the main hotel, the Logis Hôtel venue, which is where the event takes place."
+     "quote": "ALL IN ONE – 6 ROOMS / 6 VIBES",
+     "rationale": "The title line states the event is all in one, and the party schedule places the parties at the Main Hotel."
     },
     {
      "feature": "multiple_rooms",
      "quote": "6 Rooms / 6 Universes",
-     "rationale": "The congress has six separate dance rooms, each with its own music style."
+     "rationale": "The description explicitly states there are six dance rooms."
     },
     {
      "feature": "workshops",
      "quote": "30+ Hours of Workshops",
-     "rationale": "The program lists more than thirty hours of workshops as part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 Socials – 3pm to 8pm",
-     "rationale": "Afternoon socials from 3pm to 8pm are part of the programme."
+     "rationale": "Dance workshops are listed as part of the programme."
     },
     {
      "feature": "pre_party",
      "quote": "Pre-Party – 1 Room (Main Hotel)",
-     "rationale": "A pre-party is scheduled on Thursday night before the main event."
+     "rationale": "A pre-party on Thursday night is listed in the programme."
     },
     {
      "feature": "after_party",
      "quote": "After-Party – 1 Room (Main Hotel)",
-     "rationale": "An after-party is scheduled on Monday night."
+     "rationale": "An after-party on Monday night is listed in the programme."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "3 Socials – 3pm to 8pm / 2 Rooms – 2 Vibes",
+     "rationale": "Afternoon socials from 3pm to 8pm are part of the programme."
     },
     {
      "feature": "partner_hotel",
      "quote": "partner hotels nearby",
-     "rationale": "The description mentions partner hotels nearby as accommodation options."
+     "rationale": "The description mentions partner hotels nearby, without including accommodation in the pass."
     }
    ]
   }

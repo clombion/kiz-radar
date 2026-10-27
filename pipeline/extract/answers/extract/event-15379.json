@@ -37,7 +37,7 @@
     {
      "feature": "all_levels_beginners",
      "quote": "Beginner friendly event.",
-     "rationale": "The description explicitly states the event is beginner friendly and open level."
+     "rationale": "The description explicitly states the event is beginner friendly and aimed at people with no experience."
     },
     {
      "feature": "workshops",
@@ -47,17 +47,17 @@
     {
      "feature": "pre_party",
      "quote": "Pre-Party Class",
-     "rationale": "A pre-party class is held before the evening party."
+     "rationale": "A pre-party class is held before the main party on both days."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "2 dance floors",
-     "rationale": "The party is stated to have two dance floors."
+     "quote": "2 dance floors, urbankiz/tarraxo + douceur/tarraxinha",
+     "rationale": "The party is stated to take place on two dance floors."
     },
     {
      "feature": "day_socials",
      "quote": "Mini Socials",
-     "rationale": "A daytime social is scheduled from 16:00 to 17:00."
+     "rationale": "A daytime social is listed in the Saturday afternoon schedule."
     }
    ]
   }

@@ -5,7 +5,7 @@
    "event_id": 15823,
    "party_rooms": {
     "count": 3,
-    "quote": "3 rooms 💃🏻 dedicated to Salsa / Bachata / Kizomba"
+    "quote": "3 evenings – 3 rooms"
    },
    "class_rooms": null,
    "rooms": [
@@ -15,7 +15,7 @@
      "genres": [
       "salsa"
      ],
-     "quote": "3 rooms 💃🏻 dedicated to Salsa / Bachata / Kizomba"
+     "quote": "dedicated to Salsa / Bachata / Kizomba"
     },
     {
      "name_as_written": null,
@@ -23,7 +23,7 @@
      "genres": [
       "bachata"
      ],
-     "quote": "3 rooms 💃🏻 dedicated to Salsa / Bachata / Kizomba"
+     "quote": "dedicated to Salsa / Bachata / Kizomba"
     },
     {
      "name_as_written": null,
@@ -31,24 +31,24 @@
      "genres": [
       "kizomba"
      ],
-     "quote": "3 rooms 💃🏻 dedicated to Salsa / Bachata / Kizomba"
+     "quote": "dedicated to Salsa / Bachata / Kizomba"
     }
    ],
    "genres": [
     {
      "genre": "salsa",
      "genre_as_written": "Salsa",
-     "quote": "👉 Salsa"
+     "quote": "Salsa"
     },
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "👉 Bachata"
+     "quote": "Bachata"
     },
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "👉 Kizomba"
+     "quote": "Kizomba"
     }
    ]
   }

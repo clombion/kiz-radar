@@ -100,27 +100,27 @@
     {
      "feature": "all_levels_beginners",
      "quote": "From the foundation to advanced",
-     "rationale": "The description states the course runs from foundation to advanced levels, so it suits all levels."
+     "rationale": "The description says the event runs from foundation to advanced levels, so it is suitable for all levels."
     },
     {
      "feature": "workshops",
      "quote": "TEACHING",
-     "rationale": "A teaching section lists instructors, showing that dance classes are part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 rooms",
-     "rationale": "The location line states the venue has two rooms."
+     "rationale": "A teaching section with named teachers shows that dance classes are part of the event."
     },
     {
      "feature": "day_socials",
      "quote": "SUNDAY social afternoon",
-     "rationale": "A Sunday social afternoon is listed among the parties."
+     "rationale": "A Sunday social afternoon is a daytime social."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "2 rooms",
+     "rationale": "The location is stated as having two rooms, meaning more than one dance floor."
     },
     {
      "feature": "accommodation_included",
      "quote": "5 nights accommodation",
-     "rationale": "The FULL PAC package explicitly includes five nights of accommodation."
+     "rationale": "The FULL PAC package lists 5 nights of accommodation as part of its contents."
     }
    ]
   }

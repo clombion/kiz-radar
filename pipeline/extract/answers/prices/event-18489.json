@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -31,7 +31,7 @@
      "kind": "package",
      "style": null,
      "label_quote": null,
-     "group_size": null,
+     "group_size": 1,
      "days": null,
      "includes_hotel": true,
      "tiers": [
@@ -46,7 +46,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Single room €117.50 €143.50 €169.50"
+       "quote": "Single room €117.50"
       }
      ]
     },
@@ -54,7 +54,7 @@
      "kind": "package",
      "style": null,
      "label_quote": null,
-     "group_size": null,
+     "group_size": 1,
      "days": null,
      "includes_hotel": true,
      "tiers": [
@@ -69,7 +69,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Single room €117.50 €143.50 €169.50"
+       "quote": "€143.50"
       }
      ]
     },
@@ -77,7 +77,7 @@
      "kind": "package",
      "style": null,
      "label_quote": null,
-     "group_size": null,
+     "group_size": 1,
      "days": null,
      "includes_hotel": true,
      "tiers": [
@@ -92,7 +92,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Single room €117.50 €143.50 €169.50"
+       "quote": "€169.50"
       }
      ]
     },
@@ -100,7 +100,7 @@
      "kind": "package",
      "style": null,
      "label_quote": null,
-     "group_size": null,
+     "group_size": 2,
      "days": null,
      "includes_hotel": true,
      "tiers": [
@@ -115,7 +115,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Double room €132.50 €184.50 €236.50"
+       "quote": "Double room €132.50"
       }
      ]
     },
@@ -123,7 +123,7 @@
      "kind": "package",
      "style": null,
      "label_quote": null,
-     "group_size": null,
+     "group_size": 2,
      "days": null,
      "includes_hotel": true,
      "tiers": [
@@ -138,7 +138,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Double room €132.50 €184.50 €236.50"
+       "quote": "€184.50"
       }
      ]
     },
@@ -146,7 +146,7 @@
      "kind": "package",
      "style": null,
      "label_quote": null,
-     "group_size": null,
+     "group_size": 2,
      "days": null,
      "includes_hotel": true,
      "tiers": [
@@ -161,7 +161,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Double room €132.50 €184.50 €236.50"
+       "quote": "€236.50"
       }
      ]
     },
@@ -169,7 +169,7 @@
      "kind": "package",
      "style": null,
      "label_quote": null,
-     "group_size": null,
+     "group_size": 3,
      "days": null,
      "includes_hotel": true,
      "tiers": [
@@ -184,7 +184,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Triple room €176.50 €254.50 €332.50"
+       "quote": "Triple room €176.50"
       }
      ]
     },
@@ -192,7 +192,7 @@
      "kind": "package",
      "style": null,
      "label_quote": null,
-     "group_size": null,
+     "group_size": 3,
      "days": null,
      "includes_hotel": true,
      "tiers": [
@@ -207,7 +207,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Triple room €176.50 €254.50 €332.50"
+       "quote": "€254.50"
       }
      ]
     },
@@ -215,7 +215,7 @@
      "kind": "package",
      "style": null,
      "label_quote": null,
-     "group_size": null,
+     "group_size": 3,
      "days": null,
      "includes_hotel": true,
      "tiers": [
@@ -230,7 +230,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Triple room €176.50 €254.50 €332.50"
+       "quote": "€332.50"
       }
      ]
     },
@@ -238,7 +238,7 @@
      "kind": "package",
      "style": null,
      "label_quote": null,
-     "group_size": null,
+     "group_size": 4,
      "days": null,
      "includes_hotel": true,
      "tiers": [
@@ -253,7 +253,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Quadruple room €220.50 €324.50 €532.50"
+       "quote": "Quadruple room €220.50"
       }
      ]
     },
@@ -261,7 +261,7 @@
      "kind": "package",
      "style": null,
      "label_quote": null,
-     "group_size": null,
+     "group_size": 4,
      "days": null,
      "includes_hotel": true,
      "tiers": [
@@ -276,7 +276,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Quadruple room €220.50 €324.50 €532.50"
+       "quote": "€324.50"
       }
      ]
     },
@@ -284,7 +284,7 @@
      "kind": "package",
      "style": null,
      "label_quote": null,
-     "group_size": null,
+     "group_size": 4,
      "days": null,
      "includes_hotel": true,
      "tiers": [
@@ -299,7 +299,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Quadruple room €220.50 €324.50 €532.50"
+       "quote": "€532.50"
       }
      ]
     }

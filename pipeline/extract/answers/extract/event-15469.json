@@ -7,7 +7,7 @@
     {
      "name_as_written": "Liliana de Lima",
      "role": "teacher",
-     "style": null,
+     "style": "Tarraxo",
      "country": "Brazil/Denmark",
      "source_line": "🇧🇷🇩🇰 Liliana de Lima (Brazil/Denmark) – Tarraxo specialist bringing precision and sensuality from the source"
     },
@@ -70,14 +70,14 @@
     {
      "name_as_written": "DJ Rara",
      "role": "dj",
-     "style": null,
+     "style": "Tarraxo",
      "country": "🇺🇦🇪🇸",
      "source_line": "🇺🇦🇪🇸 DJ Rara – Tarraxo beats specialist from Ukraine/Spain"
     },
     {
      "name_as_written": "DJ RomOz",
      "role": "dj",
-     "style": null,
+     "style": "Tarraxo",
      "country": "🇩🇪",
      "source_line": "🇩🇪 DJ RomOz – German precision meets Tarraxo energy"
     }
@@ -86,7 +86,7 @@
     {
      "feature": "workshops",
      "quote": "High-level workshops focused on technique, structure, and creative expression",
-     "rationale": "The description states that high-level workshops are part of the weekender."
+     "rationale": "The line explicitly lists high-level workshops as part of what awaits participants."
     }
    ]
   }

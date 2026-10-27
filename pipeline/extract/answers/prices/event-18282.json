@@ -7,13 +7,13 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": "♻️ PASS & ROOM PRICES",
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 45,
+       "amount": 45.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -29,7 +29,7 @@
     }
    ],
    "rule_quotes": [
-    "First 30 passes at €45; price increases by €5 each month thereafter."
+    "price increases by €5 each month thereafter"
    ]
   }
  ]

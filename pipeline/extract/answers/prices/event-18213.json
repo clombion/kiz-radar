@@ -7,13 +7,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": null,
+     "label_quote": "💰 𝐏𝐫𝐢𝐜𝐢𝐧𝐠 & 𝐏𝐚𝐲𝐦𝐞𝐧𝐭 𝐏𝐥𝐚𝐧",
      "group_size": 1,
      "days": 10,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 1300,
+       "amount": 1300.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

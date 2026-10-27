@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 93,
+       "amount": 93.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "🟠 Early Bird: £93"
       },
       {
-       "amount": 103,
+       "amount": 103.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "🟠 Advanced: £103"
       },
       {
-       "amount": 113,
+       "amount": 113.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,
@@ -62,7 +62,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 165,
+       "amount": 165.0,
        "currency": "GBP",
        "fee": null,
        "alt": null,

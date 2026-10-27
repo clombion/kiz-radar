@@ -232,13 +232,8 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "includes the opportunity to participate in all the lessons",
-     "rationale": "The Full Pass includes participation in all the lessons, which are dance classes."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "includes only the Jesus y Anni Masterclass",
-     "rationale": "A separate Masterclass is offered and sold as its own pass."
+     "quote": "participate in all the lessons",
+     "rationale": "The Full Pass gives the opportunity to take part in all the lessons, so dance classes are part of the event."
     },
     {
      "feature": "day_socials",
@@ -246,14 +241,14 @@
      "rationale": "The Full Pass includes an afternoon social, which is a daytime social."
     },
     {
-     "feature": "all_in_one",
-     "quote": "All in One Location",
-     "rationale": "The hotel section states that the event and the rooms are in one location, so the parties are in the hotel where dancers stay."
+     "feature": "masterclass",
+     "quote": "Jesus y Anni Masterclass",
+     "rationale": "A separately priced masterclass by Jesus y Anni is offered."
     },
     {
-     "feature": "partner_hotel",
-     "quote": "Hotel room reservations can be made by calling your contact person in the Line Up",
-     "rationale": "The event negotiates hotel room rates that are bookable through the organisers, while rooms are not part of the pass."
+     "feature": "all_in_one",
+     "quote": "All in One Location",
+     "rationale": "The hotel section states that the event and the hotel rooms are in one location."
     }
    ]
   }

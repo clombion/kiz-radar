@@ -159,6 +159,13 @@
      "source_line": "⭐DJ Moncef (Tours)"
     },
     {
+     "name_as_written": "KIZATOURS",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "Facebook/Insta/Tik Tok : KIZATOURS"
+    },
+    {
      "name_as_written": "Alexandre Bozkurt",
      "role": "media",
      "style": null,
@@ -178,35 +185,28 @@
      "style": null,
      "country": null,
      "source_line": "🎥Alex Boz"
-    },
-    {
-     "name_as_written": "KIZATOURS",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Facebook/Insta/Tik Tok : KIZATOURS"
     }
    ],
    "features": [
     {
      "feature": "workshops",
      "quote": "More than 20 hours of workshops",
-     "rationale": "The description states that more than 20 hours of workshops are part of the festival."
+     "rationale": "The description states that more than 20 hours of workshops are part of the event."
     },
     {
      "feature": "multiple_rooms",
      "quote": "3 dance rooms – 3 different vibes",
-     "rationale": "Three dance rooms are listed, so there is more than one dance floor."
+     "rationale": "The event has three separate dance rooms."
     },
     {
      "feature": "shows",
      "quote": "Shows & performances",
-     "rationale": "The highlights list explicitly promises shows and performances."
+     "rationale": "The highlights list promises shows and performances."
     },
     {
      "feature": "partner_hotel",
-     "quote": "We offer accommodation options to suit a variety of budgets as much as possible: Hotel or Cottage.",
-     "rationale": "Recommended hotels are listed as accommodation options, but they are not stated to be part of the pass."
+     "quote": "IBIS TOURS NORD",
+     "rationale": "Hotels are listed as recommended accommodation options near the venue without being part of the pass."
     }
    ]
   }

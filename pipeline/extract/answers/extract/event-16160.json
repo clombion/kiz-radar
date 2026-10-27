@@ -28,12 +28,12 @@
     {
      "feature": "bootcamp_intensive",
      "quote": "Intensive training: 1 hour/day in small groups (1 instructor per 3 participants)",
-     "rationale": "A daily intensive training course is described as part of the trip."
+     "rationale": "A daily intensive training course is listed as included."
     },
     {
      "feature": "live_music",
      "quote": "Live music, backyard parties & street celebrations",
-     "rationale": "Live music is listed as an included element of the trip."
+     "rationale": "Live music is explicitly listed as part of the experience."
     },
     {
      "feature": "accommodation_included",
@@ -44,11 +44,6 @@
      "feature": "meals_included",
      "quote": "Includes accommodation, transport, activities & 2 meals per day",
      "rationale": "The package explicitly includes two meals per day."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "24h assistance & local transportation included",
-     "rationale": "Local transportation is included in the trip."
     },
     {
      "feature": "camping",

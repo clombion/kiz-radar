@@ -22,17 +22,11 @@
      "name_as_written": "Room 2",
      "kind": "party",
      "genres": [],
-     "quote": "Night Party Room 2"
+     "quote": "Social – Room 2 & 2A"
     },
     {
-     "name_as_written": "Room 1",
-     "kind": "class",
-     "genres": [],
-     "quote": "Workshops – Room 1"
-    },
-    {
-     "name_as_written": "2A",
-     "kind": "unspecified",
+     "name_as_written": null,
+     "kind": "party",
      "genres": [],
      "quote": "Social – Room 2 & 2A"
     }
@@ -52,6 +46,11 @@
      "genre": "tarraxinha",
      "genre_as_written": "TARRAXINHA",
      "quote": "TARRAXINHA"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "FUSION",
+     "quote": "FUSION"
     },
     {
      "genre": "kizomba",

@@ -85,23 +85,23 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "designed to improve your technique, musicality and style",
-     "rationale": "The description states that the 10 workshops are designed to improve technique, musicality and style."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Shows & Live Music",
-     "rationale": "The Saturday program lists live music at midnight."
+     "quote": "Workshops include:",
+     "rationale": "The description lists workshops as part of the event."
     },
     {
      "feature": "shows",
      "quote": "Shows & Live Music",
-     "rationale": "The Saturday program lists shows at midnight."
+     "rationale": "The Saturday program includes shows by artists."
+    },
+    {
+     "feature": "live_music",
+     "quote": "Shows & Live Music",
+     "rationale": "The Saturday program lists live music."
     },
     {
      "feature": "day_socials",
      "quote": "12:00 – Social Dance",
-     "rationale": "A daytime social dance is scheduled at noon on Sunday."
+     "rationale": "A daytime social dance is scheduled on Sunday at 12:00."
     }
    ]
   }

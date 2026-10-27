@@ -175,43 +175,43 @@
     {
      "name_as_written": "Danielle De Jong",
      "role": "teacher",
-     "style": null,
+     "style": "𝗙𝗘𝗠𝗜𝗡𝗜𝗧𝗬 𝗙𝗟𝗢𝗪 𝗕𝗢𝗢𝗧𝗖𝗔𝗠𝗣",
      "country": null,
      "source_line": "Danielle De Jong"
     },
     {
      "name_as_written": "Nora Bre",
      "role": "teacher",
-     "style": null,
+     "style": "𝗙𝗘𝗠𝗜𝗡𝗜𝗧𝗬 𝗙𝗟𝗢𝗪 𝗕𝗢𝗢𝗧𝗖𝗔𝗠𝗣",
      "country": null,
      "source_line": "Nora Bre"
     }
    ],
    "features": [
     {
+     "feature": "day_socials",
+     "quote": "DAY SOCIALS",
+     "rationale": "The description lists day socials as part of the event programme."
+    },
+    {
      "feature": "workshops",
      "quote": "WORKSHOPS",
-     "rationale": "The description lists workshops among the event's offerings."
+     "rationale": "The description lists workshops as part of the event programme."
     },
     {
      "feature": "bootcamp_intensive",
      "quote": "BOOTCAMP",
-     "rationale": "A bootcamp is listed as part of the event programme."
+     "rationale": "The description lists a bootcamp as part of the event programme."
     },
     {
      "feature": "masterclass",
      "quote": "MASTERCLASSES",
-     "rationale": "Masterclasses are listed among the event's offerings."
+     "rationale": "The description lists masterclasses as part of the event programme."
     },
     {
      "feature": "private_classes",
      "quote": "PRIVATE CLASSES",
-     "rationale": "Private classes are listed among the event's offerings."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "DAY SOCIALS",
-     "rationale": "Day socials are listed among the event's offerings."
+     "rationale": "The description lists private classes as part of the event programme."
     }
    ]
   }

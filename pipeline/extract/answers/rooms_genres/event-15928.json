@@ -9,33 +9,33 @@
    "genres": [
     {
      "genre": "salsa",
-     "genre_as_written": "Salsa Porto",
-     "quote": "Salsa Porto, Cuban Salsa, Bachata, Kizomba, Semba, and Fitness"
+     "genre_as_written": "Salsa Porto/Cuban",
+     "quote": "Workshops in Salsa Porto/Cuban, Bachata, Kizomba, Semba, and Reggaeton"
     },
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "Bachata, Kizomba, Semba, and Fitness"
+     "quote": "Workshops in Salsa Porto/Cuban, Bachata, Kizomba, Semba, and Reggaeton"
     },
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Bachata, Kizomba, Semba, and Fitness"
+     "quote": "Workshops in Salsa Porto/Cuban, Bachata, Kizomba, Semba, and Reggaeton"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "Kizomba, Semba, and Reggaeton"
+     "quote": "Workshops in Salsa Porto/Cuban, Bachata, Kizomba, Semba, and Reggaeton"
     },
     {
      "genre": "reggaeton",
      "genre_as_written": "Reggaeton",
-     "quote": "Semba, and Reggaeton"
+     "quote": "Workshops in Salsa Porto/Cuban, Bachata, Kizomba, Semba, and Reggaeton"
     },
     {
      "genre": "afro",
      "genre_as_written": "Afrohouse",
-     "quote": "Kizomba/Semba/Afrohouse:"
+     "quote": "Kizomba/Semba/Afrohouse"
     }
    ]
   }

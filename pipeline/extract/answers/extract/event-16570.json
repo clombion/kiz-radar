@@ -65,17 +65,17 @@
     {
      "feature": "accommodation_included",
      "quote": "Accommodation + Welcome Drink + Full Pass = €179",
-     "rationale": "The package price explicitly bundles accommodation with the full pass."
+     "rationale": "The package price explicitly combines accommodation with the full pass."
     },
     {
      "feature": "multiple_rooms",
      "quote": "PARIS ROOM – INTERMEDIATE LEVEL – Upper Room",
-     "rationale": "The program lists two separate dance rooms, Paris Room and Honfleur Room."
+     "rationale": "The schedule lists two separate dance rooms, the Paris Room and the Honfleur Room."
     },
     {
      "feature": "workshops",
-     "quote": "Access to all Saturday classes + evening",
-     "rationale": "The passes give access to dance classes that are part of the event program."
+     "quote": "Full Saturday Pass (Access to all Saturday classes + evening) = €60",
+     "rationale": "The passes give access to the dance classes that form part of the event schedule."
     }
    ]
   }

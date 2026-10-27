@@ -238,24 +238,24 @@
    ],
    "features": [
     {
-     "feature": "workshops",
-     "quote": "15:00 – 16:00 Workshop",
-     "rationale": "The program lists dance workshop slots on Friday, Saturday and Sunday."
+     "feature": "partner_hotel",
+     "quote": "Main Hotel – Kviberg Park Hotel",
+     "rationale": "A named main hotel with a negotiated room rate is given, while the accommodation is not part of the pass."
     },
     {
      "feature": "pre_party",
-     "quote": "18:00 – 20:00 Pre-party Workshop",
+     "quote": "20:00 – 02:00 Pre-party",
      "rationale": "A pre-party is scheduled on Thursday before the main event."
+    },
+    {
+     "feature": "workshops",
+     "quote": "15:00 – 16:00 Workshop",
+     "rationale": "The program lists dance workshops during the festival days."
     },
     {
      "feature": "day_socials",
      "quote": "16:00 – 20:00 Social",
-     "rationale": "Daytime and afternoon social sessions are part of the program."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Main Hotel – Kviberg Park Hotel",
-     "rationale": "A main recommended hotel with a negotiated room rate is listed, separate from the pass."
+     "rationale": "Afternoon socials are scheduled on Friday and Saturday."
     }
    ]
   }

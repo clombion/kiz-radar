@@ -39,11 +39,11 @@
      "genres": [
       "bachata"
      ],
-     "quote": "Bachata Room 2 (Lisbon)"
+     "quote": "Bachata Room 2 (Lisbon) — Bootcamp Bachata beginner"
     },
     {
      "name_as_written": "Bachata Influence Room (Paris)",
-     "kind": "party",
+     "kind": "unspecified",
      "genres": [
       "bachata"
      ],
@@ -86,12 +86,12 @@
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "Bachata Room 1 (Madrid)"
+     "quote": "Bachata, Salsa, Kizomba, and Brazilian Zouk"
     },
     {
      "genre": "salsa",
      "genre_as_written": "Salsa",
-     "quote": "Salsa Room (New York)"
+     "quote": "Salsa on1 with Gianni"
     },
     {
      "genre": "kizomba",

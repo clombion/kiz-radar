@@ -5,7 +5,7 @@
    "event_id": 15815,
    "party_rooms": {
     "count": 4,
-    "quote": "𝟒 𝑺𝑶𝑪𝑰𝑨𝑳 𝑹𝑶𝑶𝑴:"
+    "quote": "𝟒 𝑺𝑶𝑪𝑰𝑨𝑳 𝑹𝑶𝑶𝑴"
    },
    "class_rooms": null,
    "rooms": [
@@ -18,7 +18,7 @@
       "tarraxo",
       "tarraxinha"
      ],
-     "quote": "👉LISBOA 𝑅𝑂𝑂𝑀 – 𝑈𝑟𝑏𝑎𝑛 𝐾𝑖𝑧, 𝑑𝑜𝑢𝑐𝑒𝑢𝑟, 𝑇𝑎𝑟𝑟𝑎𝑥𝑜, 𝑇𝑎𝑟𝑟𝑎𝑥𝑖𝑛ℎ𝑎 𝐸𝑡𝑐"
+     "quote": "LISBOA 𝑅𝑂𝑂𝑀 – 𝑈𝑟𝑏𝑎𝑛 𝐾𝑖𝑧, 𝑑𝑜𝑢𝑐𝑒𝑢𝑟, 𝑇𝑎𝑟𝑟𝑎𝑥𝑜, 𝑇𝑎𝑟𝑟𝑎𝑥𝑖𝑛ℎ𝑎 𝐸𝑡𝑐"
     },
     {
      "name_as_written": "LISBOA 𝑅𝑂𝑂𝑀",
@@ -29,7 +29,7 @@
       "kompa",
       "afro"
      ],
-     "quote": "👉LISBOA 𝑅𝑂𝑂𝑀 – 𝐾𝑖𝑧𝑜𝑚𝑏𝑎, 𝑆𝑒𝑚𝑏𝑎, 𝑘𝑜𝑚𝑝𝑎, 𝐴𝑓𝑟𝑜 ℎ𝑜𝑢𝑠𝑒 𝑒𝑡𝑐"
+     "quote": "LISBOA 𝑅𝑂𝑂𝑀 – 𝐾𝑖𝑧𝑜𝑚𝑏𝑎, 𝑆𝑒𝑚𝑏𝑎, 𝑘𝑜𝑚𝑝𝑎, 𝐴𝑓𝑟𝑜 ℎ𝑜𝑢𝑠𝑒 𝑒𝑡𝑐"
     },
     {
      "name_as_written": "CARIBBEAN 𝑅𝑂𝑂𝑀",
@@ -38,59 +38,59 @@
       "bachata",
       "salsa"
      ],
-     "quote": "👉CARIBBEAN 𝑅𝑂𝑂𝑀 – 𝐵𝑎𝑐ℎ𝑎𝑡𝑎 & 𝑆𝑎𝑙𝑠𝑎"
+     "quote": "CARIBBEAN 𝑅𝑂𝑂𝑀 – 𝐵𝑎𝑐ℎ𝑎𝑡𝑎 & 𝑆𝑎𝑙𝑠𝑎."
     }
    ],
    "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "𝑈𝑟𝑏𝑎𝑛 𝐾𝑖𝑧",
-     "quote": "𝑈𝑟𝑏𝑎𝑛 𝐾𝑖𝑧, 𝑑𝑜𝑢𝑐𝑒𝑢𝑟, 𝑇𝑎𝑟𝑟𝑎𝑥𝑜, 𝑇𝑎𝑟𝑟𝑎𝑥𝑖𝑛ℎ𝑎 𝐸𝑡𝑐"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "𝑑𝑜𝑢𝑐𝑒𝑢𝑟",
-     "quote": "𝑑𝑜𝑢𝑐𝑒𝑢𝑟, 𝑇𝑎𝑟𝑟𝑎𝑥𝑜"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "𝑇𝑎𝑟𝑟𝑎𝑥𝑜",
-     "quote": "𝑇𝑎𝑟𝑟𝑎𝑥𝑜, 𝑇𝑎𝑟𝑟𝑎𝑥𝑖𝑛ℎ𝑎 𝐸𝑡𝑐"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "𝑇𝑎𝑟𝑟𝑎𝑥𝑖𝑛ℎ𝑎",
-     "quote": "𝑇𝑎𝑟𝑟𝑎𝑥𝑖𝑛ℎ𝑎 𝐸𝑡𝑐"
-    },
     {
      "genre": "kizomba",
      "genre_as_written": "KIZOMBA",
      "quote": "KIZOMBA DJS"
     },
     {
+     "genre": "urbankiz",
+     "genre_as_written": "Urban Kiz",
+     "quote": "𝑈𝑟𝑏𝑎𝑛 𝐾𝑖𝑧"
+    },
+    {
+     "genre": "douceur",
+     "genre_as_written": "douceur",
+     "quote": "𝑑𝑜𝑢𝑐𝑒𝑢𝑟"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
+     "quote": "𝑇𝑎𝑟𝑟𝑎𝑥𝑜"
+    },
+    {
+     "genre": "tarraxinha",
+     "genre_as_written": "Tarraxinha",
+     "quote": "𝑇𝑎𝑟𝑟𝑎𝑥𝑖𝑛ℎ𝑎"
+    },
+    {
      "genre": "semba",
-     "genre_as_written": "𝑆𝑒𝑚𝑏𝑎",
-     "quote": "𝑆𝑒𝑚𝑏𝑎, 𝑘𝑜𝑚𝑝𝑎"
+     "genre_as_written": "Semba",
+     "quote": "𝑆𝑒𝑚𝑏𝑎"
     },
     {
      "genre": "kompa",
-     "genre_as_written": "𝑘𝑜𝑚𝑝𝑎",
-     "quote": "𝑘𝑜𝑚𝑝𝑎, 𝐴𝑓𝑟𝑜 ℎ𝑜𝑢𝑠𝑒"
+     "genre_as_written": "kompa",
+     "quote": "𝑘𝑜𝑚𝑝𝑎"
     },
     {
      "genre": "afro",
-     "genre_as_written": "𝐴𝑓𝑟𝑜",
-     "quote": "𝐴𝑓𝑟𝑜 ℎ𝑜𝑢𝑠𝑒 𝑒𝑡𝑐"
+     "genre_as_written": "Afro house",
+     "quote": "𝐴𝑓𝑟𝑜 ℎ𝑜𝑢𝑠𝑒"
     },
     {
      "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "BACHATA INSTRUCTORS & DJ"
+     "genre_as_written": "Bachata",
+     "quote": "𝐵𝑎𝑐ℎ𝑎𝑡𝑎"
     },
     {
      "genre": "salsa",
-     "genre_as_written": "𝑆𝑎𝑙𝑠𝑎",
-     "quote": "𝐵𝑎𝑐ℎ𝑎𝑡𝑎 & 𝑆𝑎𝑙𝑠𝑎"
+     "genre_as_written": "Salsa",
+     "quote": "𝑆𝑎𝑙𝑠𝑎"
     }
    ]
   }

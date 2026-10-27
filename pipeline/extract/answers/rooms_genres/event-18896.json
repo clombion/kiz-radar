@@ -5,14 +5,7 @@
    "event_id": 18896,
    "party_rooms": null,
    "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Sala Gabos",
-     "kind": "party",
-     "genres": [],
-     "quote": "Sala Gabos"
-    }
-   ],
+   "rooms": [],
    "genres": [
     {
      "genre": "kizomba",

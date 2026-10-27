@@ -5,20 +5,6 @@
    "event_id": 14466,
    "artists": [
     {
-     "name_as_written": "Kizomba Geneva",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "💥 From the 9th to the 11th of January 2026, Kizomba Geneva welcomes you to an friendly festival in a festive and family atmosphere 🎉 2 Rooms, 2 Atmospheres 🤩"
-    },
-    {
-     "name_as_written": "Association Kizomba Genève",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "– Association Kizomba Genève"
-    },
-    {
      "name_as_written": "DJ Lenhy",
      "role": "dj",
      "style": null,
@@ -157,38 +143,50 @@
      "style": null,
      "country": null,
      "source_line": "– VVK"
+    },
+    {
+     "name_as_written": "Association Kizomba Genève",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "– Association Kizomba Genève"
     }
    ],
    "features": [
     {
      "feature": "all_in_one",
      "quote": "ALL IN ONE",
-     "rationale": "The festival title says ALL IN ONE and the parties are held at the hotel described in the listing."
+     "rationale": "The title says all in one and the parties are held in the 4 star hotel where guests stay."
     },
     {
      "feature": "multiple_rooms",
      "quote": "2 Rooms, 2 Atmospheres",
-     "rationale": "The description states the festival has two rooms."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "DRESS CODES:",
-     "rationale": "A dress code section is stated for the parties."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Sunday social –",
-     "rationale": "The Sunday programme is a daytime social running from 12H00 to 20H00."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "FREE SHUTTLES",
-     "rationale": "Free airport shuttles are offered with reservation."
+     "rationale": "The event has two rooms with different atmospheres."
     },
     {
      "feature": "partner_hotel",
      "quote": "HOTEL MERCURE GENEVA AIRPORT: Special festival rates",
-     "rationale": "A partner hotel is recommended with negotiated festival room rates, not included in a pass."
+     "rationale": "A partner hotel offers negotiated festival rates, and accommodation is not part of the pass."
+    },
+    {
+     "feature": "transfers_shuttle",
+     "quote": "FREE SHUTTLES",
+     "rationale": "Free airport shuttles are offered to attendees."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "DRESS CODES:",
+     "rationale": "The description states dress codes for the parties."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "TEAM TAXIS/GUESTS",
+     "rationale": "A taxi-dancer team is listed for the event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Sunday social",
+     "rationale": "A Sunday social runs from 12H00 to 20H00, which is a daytime social."
     }
    ]
   }

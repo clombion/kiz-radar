@@ -5,7 +5,7 @@
    "event_id": 14916,
    "party_rooms": {
     "count": 5,
-    "quote": "Lose yourself across our 5 distinct party rooms"
+    "quote": "5 distinct party rooms"
    },
    "class_rooms": null,
    "rooms": [
@@ -60,47 +60,47 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Improve your Kizomba skills"
+     "quote": "Improve your Kizomba skills with a diverse range of workshops led by renowned instructors."
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "Kizomba and Semba"
+     "quote": "Room 1: Kizomba and Semba"
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "UrbanKiz",
-     "quote": "UrbanKiz and Tarraxo"
+     "quote": "Room 2: UrbanKiz and Tarraxo"
     },
     {
      "genre": "tarraxo",
      "genre_as_written": "Tarraxo",
-     "quote": "UrbanKiz and Tarraxo"
+     "quote": "Room 2: UrbanKiz and Tarraxo"
     },
     {
      "genre": "kompa",
      "genre_as_written": "Konpa",
-     "quote": "Konpa, Gouyad"
+     "quote": "Room 3: Konpa, Gouyad, Douceur, ZoukLove, Tarraxinha"
     },
     {
      "genre": "other",
      "genre_as_written": "Gouyad",
-     "quote": "Konpa, Gouyad"
+     "quote": "Room 3: Konpa, Gouyad, Douceur, ZoukLove, Tarraxinha"
     },
     {
      "genre": "douceur",
      "genre_as_written": "Douceur",
-     "quote": "Douceur, ZoukLove"
+     "quote": "Room 3: Konpa, Gouyad, Douceur, ZoukLove, Tarraxinha"
     },
     {
      "genre": "zouk",
      "genre_as_written": "ZoukLove",
-     "quote": "ZoukLove, Tarraxinha"
+     "quote": "Room 3: Konpa, Gouyad, Douceur, ZoukLove, Tarraxinha"
     },
     {
      "genre": "tarraxinha",
      "genre_as_written": "Tarraxinha",
-     "quote": "ZoukLove, Tarraxinha"
+     "quote": "Room 3: Konpa, Gouyad, Douceur, ZoukLove, Tarraxinha"
     },
     {
      "genre": "salsa",

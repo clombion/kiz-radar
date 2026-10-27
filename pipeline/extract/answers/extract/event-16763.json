@@ -8,7 +8,12 @@
     {
      "feature": "workshops",
      "quote": "Workshops, awards ceremony performances & night social",
-     "rationale": "The Saturday line lists workshops as part of the event programme."
+     "rationale": "The Saturday line lists workshops as part of the event."
+    },
+    {
+     "feature": "shows",
+     "quote": "awards ceremony performances",
+     "rationale": "The Saturday line mentions performances at the awards ceremony, which are shows by artists."
     }
    ]
   }

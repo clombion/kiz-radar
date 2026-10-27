@@ -16,22 +16,22 @@
     {
      "feature": "workshops",
      "quote": "More than 22 hours of WORKSHOPS",
-     "rationale": "The description states that more than 22 hours of workshops are part of the event."
+     "rationale": "The description states that more than 22 hours of workshops are included, so dance classes are part of the event."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "AFRO ROOM",
+     "rationale": "The listed venue areas include an Afro room and a main room, so there is more than one dance room."
     },
     {
      "feature": "themed_parties",
      "quote": "4 THEMED PARTIES DURING THE WEEKEND",
-     "rationale": "The event runs four themed parties during the weekend."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "MAIN ROOM",
-     "rationale": "The event lists several dance rooms, including the Afro room, the main room and the garden party area."
+     "rationale": "The event has four themed parties during the weekend."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "Free shuttle between the hotels and the venue of the event",
-     "rationale": "A free shuttle runs between the hotels and the event venue."
+     "rationale": "A free shuttle runs between the partner hotels and the event venue."
     }
    ]
   }

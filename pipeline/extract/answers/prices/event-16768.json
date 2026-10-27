@@ -7,13 +7,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": null,
+     "label_quote": "✪ FULLPASS : hotel accomodation + airport pick-up/drop-off + excursions & transportation + festival pass & préparties/surprises : 1390€",
      "group_size": 1,
      "days": null,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 1390,
+       "amount": 1390.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

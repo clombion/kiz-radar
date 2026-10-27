@@ -10,46 +10,45 @@
    "class_rooms": null,
    "rooms": [
     {
-     "name_as_written": "Room 1 URBAN – TARRAXA – GHETTO",
+     "name_as_written": "Room 1",
      "kind": "party",
-     "genres": [
-      "urbankiz",
-      "tarraxo"
-     ],
+     "genres": [],
      "quote": "Room 1 URBAN – TARRAXA – GHETTO"
     },
     {
-     "name_as_written": "Room 2 KIZOMBA SEMBA 100%",
+     "name_as_written": "Room 2",
      "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba"
-     ],
+     "genres": [],
      "quote": "Room 2 KIZOMBA SEMBA 100%"
     },
     {
-     "name_as_written": "Room 3 NOSTALGY – DOUCEUR",
+     "name_as_written": "Room 3",
      "kind": "party",
-     "genres": [
-      "douceur"
-     ],
-     "quote": "Room 3 NOSTALGY – DOUCEUR"
+     "genres": [],
+     "quote": "Room 3 NOSTALGY – DOUCEUR at 14th Floor with a view of Milano"
     },
     {
-     "name_as_written": "Room 4 SALSA y BACHATA",
+     "name_as_written": "Room 4",
      "kind": "party",
-     "genres": [
-      "salsa",
-      "bachata"
-     ],
+     "genres": [],
      "quote": "Room 4 SALSA y BACHATA"
     }
    ],
    "genres": [
     {
      "genre": "urbankiz",
+     "genre_as_written": "URBAN",
+     "quote": "Room 1 URBAN – TARRAXA – GHETTO"
+    },
+    {
+     "genre": "urbankiz",
      "genre_as_written": "Urban",
      "quote": "Fusion/Urban/Tarraxo"
+    },
+    {
+     "genre": "tarraxo",
+     "genre_as_written": "TARRAXA",
+     "quote": "Room 1 URBAN – TARRAXA – GHETTO"
     },
     {
      "genre": "tarraxo",
@@ -58,13 +57,18 @@
     },
     {
      "genre": "kizomba",
+     "genre_as_written": "KIZOMBA SEMBA",
+     "quote": "Room 2 KIZOMBA SEMBA 100%"
+    },
+    {
+     "genre": "kizomba",
      "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA SEMBA 100%"
+     "quote": "KIZOMBA/SEMBA/AFROHOUSE"
     },
     {
      "genre": "semba",
      "genre_as_written": "SEMBA",
-     "quote": "KIZOMBA SEMBA 100%"
+     "quote": "Room 2 KIZOMBA SEMBA 100%"
     },
     {
      "genre": "douceur",
@@ -74,12 +78,12 @@
     {
      "genre": "salsa",
      "genre_as_written": "SALSA",
-     "quote": "SALSA y BACHATA"
+     "quote": "Room 4 SALSA y BACHATA"
     },
     {
      "genre": "bachata",
      "genre_as_written": "BACHATA",
-     "quote": "SALSA y BACHATA"
+     "quote": "Room 4 SALSA y BACHATA"
     },
     {
      "genre": "afro",

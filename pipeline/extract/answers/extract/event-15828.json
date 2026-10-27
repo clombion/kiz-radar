@@ -106,23 +106,23 @@
    "features": [
     {
      "feature": "live_music",
-     "quote": "An immersive live concert with a singer straight from Angola",
-     "rationale": "A live concert with a singer is advertised as part of the event."
+     "quote": "An immersive live concert with a singer straight from Angola.",
+     "rationale": "The quote announces a live concert with a singer, which is live music."
     },
     {
      "feature": "masterclass",
-     "quote": "surprise masterclasses",
-     "rationale": "The description explicitly lists masterclasses among the event's offerings."
+     "quote": "hand picked exclusive Kizomba, Semba, Konpa & surprise masterclasses",
+     "rationale": "The quote states that the festival includes masterclasses."
     },
     {
      "feature": "day_socials",
-     "quote": "3 unforgettable Socials",
-     "rationale": "Socials are listed as part of the three days, which indicates daytime social sessions alongside the night parties."
+     "quote": "3 unforgettable Socials & 3 Night Parties",
+     "rationale": "The quote lists Socials, which are daytime social sessions, alongside night parties."
     },
     {
      "feature": "partner_hotel",
      "quote": "Hotel booking link:",
-     "rationale": "A hotel booking link with a promotion code is provided, a negotiated rate separate from any pass."
+     "rationale": "A hotel booking link with a promotion code points to a recommended hotel rate without the accommodation being part of the pass."
     }
    ]
   }

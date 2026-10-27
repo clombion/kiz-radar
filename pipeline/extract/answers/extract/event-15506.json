@@ -133,12 +133,12 @@
     {
      "feature": "themed_parties",
      "quote": "THEMED NIGHTS",
-     "rationale": "The description lists themed nights such as Red of Passion, Dress to Impress and Hygge Vibes."
+     "rationale": "The event has themed nights with a dress theme such as Red of Passion and Dress to Impress."
     },
     {
      "feature": "partner_hotel",
-     "quote": "Leonardo Royal Hotel Ulm",
-     "rationale": "The description names a main hotel for the event without saying accommodation is included in the pass."
+     "quote": "Main Hotel:",
+     "rationale": "A main hotel is named for the event without the accommodation being stated as part of the pass."
     }
    ]
   }

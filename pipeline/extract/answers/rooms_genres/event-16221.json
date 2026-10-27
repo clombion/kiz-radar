@@ -10,22 +10,22 @@
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "Bachata • Salsa • Brazilian Zouk • Kizomba"
+     "quote": "Bachata • Salsa"
     },
     {
      "genre": "salsa",
      "genre_as_written": "Salsa",
-     "quote": "Bachata • Salsa • Brazilian Zouk • Kizomba"
+     "quote": "Bachata • Salsa"
     },
     {
      "genre": "zouk",
      "genre_as_written": "Brazilian Zouk",
-     "quote": "Bachata • Salsa • Brazilian Zouk • Kizomba"
+     "quote": "Brazilian Zouk"
     },
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Bachata • Salsa • Brazilian Zouk • Kizomba"
+     "quote": "Brazilian Zouk • Kizomba"
     }
    ]
   }

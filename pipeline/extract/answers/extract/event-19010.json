@@ -141,23 +141,28 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "A true all-in-one festival experience under one roof",
-     "rationale": "The event describes itself as all-in-one, held under one roof in the hotel where dancers stay."
+     "quote": "All-in-one 4-star hotel – Salut Hotel Almaty",
+     "rationale": "The description states the parties are held in the same hotel where dancers stay, described as all-in-one."
     },
     {
      "feature": "workshops",
      "quote": "18+ hrs of workshops",
-     "rationale": "The description states that 18+ hours of workshops are part of the event."
+     "rationale": "The event lists more than 18 hours of workshops as part of the programme."
     },
     {
      "feature": "pre_party",
      "quote": "Thursday “Vibrant” Pre-Party",
-     "rationale": "A Thursday pre-party is listed before the main congress days."
+     "rationale": "A named pre-party is scheduled before the main event."
     },
     {
      "feature": "after_party",
      "quote": "Monday “Exhale” After-Party",
-     "rationale": "A Monday after-party is listed in the schedule highlights."
+     "rationale": "A named after-party is scheduled at the end of the event."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Wardrobe is mandatory",
+     "rationale": "A mandatory wardrobe requirement is a stated dress code for attendees."
     }
    ]
   }

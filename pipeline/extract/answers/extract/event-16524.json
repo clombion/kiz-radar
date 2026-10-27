@@ -35,14 +35,14 @@
     {
      "name_as_written": "DJ Dada",
      "role": "dj",
-     "style": "Salsa/Bachata",
+     "style": null,
      "country": null,
      "source_line": "DJ Dada: Salsa/Bachata Room"
     },
     {
      "name_as_written": "DJ Mister D",
      "role": "dj",
-     "style": "Kizomba/Urban/Semba",
+     "style": null,
      "country": null,
      "source_line": "DJ Mister D: Kizomba/Urban/Semba Room"
     },
@@ -65,22 +65,22 @@
     {
      "feature": "workshops",
      "quote": "2 workshops with Harold Kinanga",
-     "rationale": "The description lists workshops taught by Harold Kinanga, so dance classes are part of the event."
+     "rationale": "The event lists several dance workshops taught by named teachers."
     },
     {
-     "feature": "workshops",
-     "quote": "Saturday: Workshops + Party",
-     "rationale": "The schedule states that Saturday includes workshops."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Saturday: White and Gold",
-     "rationale": "A dress code is stated for Saturday."
+     "feature": "competition",
+     "quote": "World Champions in several competitions",
+     "rationale": "The description mentions competitions held during the event."
     },
     {
      "feature": "multiple_rooms",
      "quote": "DJ Dada: Salsa/Bachata Room",
-     "rationale": "The event has separate named dance rooms, one for Salsa/Bachata and one for Kizomba/Urban/Semba."
+     "rationale": "Separate named rooms are given for Salsa/Bachata and Kizomba/Urban/Semba, so there is more than one dance room."
+    },
+    {
+     "feature": "dress_code",
+     "quote": "Saturday: White and Gold",
+     "rationale": "A dress code of white and gold is stated for Saturday."
     }
    ]
   }

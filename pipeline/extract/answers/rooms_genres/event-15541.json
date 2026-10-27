@@ -5,10 +5,67 @@
    "event_id": 15541,
    "party_rooms": {
     "count": 7,
-    "quote": "7 different Dance Floors (Salsa LA/NY, Salsa Cuban, Bachata, Kizomba, Zouk, Tango, Urban/Afro)"
+    "quote": "on 7 different Dance Floors"
    },
    "class_rooms": null,
-   "rooms": [],
+   "rooms": [
+    {
+     "name_as_written": "Salsa LA/NY",
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "Salsa LA/NY"
+    },
+    {
+     "name_as_written": "Salsa Cuban",
+     "kind": "party",
+     "genres": [
+      "salsa"
+     ],
+     "quote": "Salsa Cuban"
+    },
+    {
+     "name_as_written": "Bachata",
+     "kind": "party",
+     "genres": [
+      "bachata"
+     ],
+     "quote": "Bachata"
+    },
+    {
+     "name_as_written": "Kizomba",
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "Kizomba"
+    },
+    {
+     "name_as_written": "Zouk",
+     "kind": "party",
+     "genres": [
+      "zouk"
+     ],
+     "quote": "Zouk"
+    },
+    {
+     "name_as_written": "Tango",
+     "kind": "party",
+     "genres": [
+      "other"
+     ],
+     "quote": "Tango"
+    },
+    {
+     "name_as_written": "Urban/Afro",
+     "kind": "party",
+     "genres": [
+      "afro"
+     ],
+     "quote": "Urban/Afro"
+    }
+   ],
    "genres": [
     {
      "genre": "salsa",
@@ -28,7 +85,7 @@
     {
      "genre": "zouk",
      "genre_as_written": "Zouk",
-     "quote": "Kizomba, Zouk, Tango, Urban/Afro"
+     "quote": "Kizomba, Zouk, Tango"
     },
     {
      "genre": "afro",
@@ -38,12 +95,12 @@
     {
      "genre": "reggaeton",
      "genre_as_written": "Reggaeton",
-     "quote": "Afro, Reggaeton, Hip Hop"
+     "quote": "Afro-Dancehall/Reggaeton/Hip Hop"
     },
     {
      "genre": "other",
      "genre_as_written": "Tango",
-     "quote": "Kizomba, Zouk, Tango, Urban/Afro"
+     "quote": "Tango"
     },
     {
      "genre": "other",
@@ -53,12 +110,12 @@
     {
      "genre": "other",
      "genre_as_written": "Hip Hop",
-     "quote": "Hip Hop, High Heels"
+     "quote": "Hip Hop"
     },
     {
      "genre": "other",
      "genre_as_written": "High Heels",
-     "quote": "Hip Hop, High Heels"
+     "quote": "High Heels"
     },
     {
      "genre": "other",
@@ -68,32 +125,32 @@
     {
      "genre": "other",
      "genre_as_written": "Zumba",
-     "quote": "Dancehall, Zumba"
+     "quote": "Zumba"
     },
     {
      "genre": "other",
      "genre_as_written": "Samba",
-     "quote": "Samba, Flamenco"
+     "quote": "Samba"
     },
     {
      "genre": "other",
      "genre_as_written": "Flamenco",
-     "quote": "Samba, Flamenco"
+     "quote": "Flamenco"
     },
     {
      "genre": "other",
      "genre_as_written": "Belly Dance",
-     "quote": "Belly Dance, Bollywood, Syrtaki"
+     "quote": "Belly Dance"
     },
     {
      "genre": "other",
      "genre_as_written": "Bollywood",
-     "quote": "Belly Dance, Bollywood, Syrtaki"
+     "quote": "Bollywood"
     },
     {
      "genre": "other",
      "genre_as_written": "Syrtaki",
-     "quote": "Belly Dance, Bollywood, Syrtaki"
+     "quote": "Syrtaki"
     }
    ]
   }

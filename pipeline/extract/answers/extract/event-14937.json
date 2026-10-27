@@ -56,165 +56,165 @@
     {
      "name_as_written": "Do zangado",
      "role": "teacher",
-     "style": null,
+     "style": "KIZOMBA ROOM",
      "country": null,
      "source_line": "🔥Do zangado"
     },
     {
      "name_as_written": "Allana & Rabbil",
      "role": "teacher",
-     "style": null,
+     "style": "KIZOMBA ROOM",
      "country": null,
      "source_line": "🔥Allana & Rabbil"
     },
     {
      "name_as_written": "Stephane & Ana",
      "role": "teacher",
-     "style": null,
+     "style": "KIZOMBA ROOM",
      "country": null,
      "source_line": "🔥Stephane & Ana"
     },
     {
      "name_as_written": "Marius & Florina",
      "role": "teacher",
-     "style": null,
+     "style": "KIZOMBA ROOM",
      "country": null,
      "source_line": "🔥Marius & Florina"
     },
     {
      "name_as_written": "DJ SHARK",
      "role": "dj",
-     "style": null,
+     "style": "Urban Room",
      "country": null,
      "source_line": "🔥DJ SHARK"
     },
     {
      "name_as_written": "DJ Ichigo",
      "role": "dj",
-     "style": null,
+     "style": "Urban Room",
      "country": null,
      "source_line": "🔥DJ Ichigo"
     },
     {
      "name_as_written": "DJ David Ruela",
      "role": "dj",
-     "style": null,
+     "style": "Urban Room",
      "country": null,
      "source_line": "🔥DJ David Ruela"
     },
     {
      "name_as_written": "DJ Savvy",
      "role": "dj",
-     "style": null,
+     "style": "Urban Room",
      "country": null,
      "source_line": "🔥DJ Savvy"
     },
     {
      "name_as_written": "DJ Jozsi",
      "role": "dj",
-     "style": null,
+     "style": "Urban Room",
      "country": null,
      "source_line": "🔥DJ Jozsi"
     },
     {
      "name_as_written": "DJ B!JU",
      "role": "dj",
-     "style": null,
+     "style": "Urban Room",
      "country": null,
      "source_line": "🔥DJ B!JU"
     },
     {
      "name_as_written": "DJ Do Zangado",
      "role": "dj",
-     "style": null,
+     "style": "Kizomba Room",
      "country": null,
      "source_line": "🔥DJ Do Zangado"
     },
     {
      "name_as_written": "Dj Ra",
      "role": "dj",
-     "style": null,
+     "style": "Kizomba Room",
      "country": null,
      "source_line": "🔥Dj Ra"
     },
     {
      "name_as_written": "Dj Kinuk",
      "role": "dj",
-     "style": null,
+     "style": "Kizomba Room",
      "country": null,
      "source_line": "🔥Dj Kinuk"
     },
     {
      "name_as_written": "DJ Stephane",
      "role": "dj",
-     "style": null,
+     "style": "Kizomba Room",
      "country": null,
      "source_line": "🔥DJ Stephane"
     },
     {
      "name_as_written": "DJ Clau",
      "role": "dj",
-     "style": null,
+     "style": "Latin Room",
      "country": null,
      "source_line": "🔥DJ Clau"
     },
     {
      "name_as_written": "DJ Baloo",
      "role": "dj",
-     "style": null,
+     "style": "Latin Room",
      "country": null,
      "source_line": "🔥DJ Baloo"
     },
     {
      "name_as_written": "DJ 2Fish",
      "role": "dj",
-     "style": null,
+     "style": "Latin Room",
      "country": null,
      "source_line": "🔥DJ 2Fish"
     },
     {
-     "name_as_written": "CKF",
+     "name_as_written": "Cluj Kizomba Festival",
      "role": "organiser",
      "style": null,
      "country": null,
-     "source_line": "☆☆☆ CKF – BRINGING DANCERS TOGETHER! ☆☆☆"
+     "source_line": "Facebook: Cluj Kizomba Festival"
     }
    ],
    "features": [
     {
      "feature": "all_in_one",
      "quote": "ALL IN ONE PLACE",
-     "rationale": "The event is stated to be all in one place, and the venue is the Grand Hotel Napoca where dancers can stay."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "rooms dedicated for each style",
-     "rationale": "The festival has separate dance rooms for each style, such as Urban, Kizomba and Latin."
+     "rationale": "The description says the event is all in one place and names the Grand Hotel Napoca as the venue, so the parties are held in the hotel."
     },
     {
      "feature": "workshops",
      "quote": "over 20 hours of Workshops",
-     "rationale": "The description states that more than 20 hours of workshops are part of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "3 days of workshops & shows",
-     "rationale": "The full pass includes shows by artists over three days."
+     "rationale": "The event offers more than 20 hours of workshops."
     },
     {
      "feature": "day_socials",
      "quote": "3 socials during the day",
-     "rationale": "Daytime socials are included in the passes."
+     "rationale": "The passes include daytime socials."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "rooms dedicated for each style",
+     "rationale": "The festival has separate dance rooms for each style."
     },
     {
      "feature": "taxi_dancers",
      "quote": "International Guests & Taxi dancers",
-     "rationale": "The description explicitly says taxi dancers are present."
+     "rationale": "Taxi dancers are listed as present at the festival."
+    },
+    {
+     "feature": "shows",
+     "quote": "3 days of workshops & shows",
+     "rationale": "The full pass includes shows by artists."
     },
     {
      "feature": "partner_hotel",
      "quote": "GRAND HOTEL NAPOCA 4★ (MAIN HOTEL)",
-     "rationale": "A main hotel with negotiated room rates is recommended, while accommodation is not part of the pass."
+     "rationale": "A main hotel is recommended with room rates, but accommodation is not part of the pass price."
     }
    ]
   }

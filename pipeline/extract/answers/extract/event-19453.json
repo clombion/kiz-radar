@@ -26,14 +26,14 @@
      "source_line": "🔥 DJ Emess 🇦🇴🇨🇭"
     },
     {
-     "name_as_written": "DJ Tecas.",
+     "name_as_written": "DJ Tecas",
      "role": "dj",
      "style": null,
      "country": "🇦🇴🇫🇷",
      "source_line": "🔥 DJ Tecas. 🇦🇴🇫🇷"
     },
     {
-     "name_as_written": "DJ Xavix.",
+     "name_as_written": "DJ Xavix",
      "role": "dj",
      "style": null,
      "country": "🇦🇴🇨🇭",
@@ -121,17 +121,17 @@
     {
      "feature": "workshops",
      "quote": "educational workshops",
-     "rationale": "The description says the weekend includes educational workshops."
+     "rationale": "The description says the festival includes educational workshops."
     },
     {
      "feature": "masterclass",
      "quote": "More Masterclasses",
-     "rationale": "The announcement promises more masterclasses at this edition."
+     "rationale": "The announcement highlights more masterclasses as part of the event."
     },
     {
      "feature": "live_music",
-     "quote": "LIVE ACT with singer:",
-     "rationale": "A live act with a singer is listed as part of the line-up."
+     "quote": "LIVE ACT with singer",
+     "rationale": "A live act with a singer is announced for the event."
     }
    ]
   }

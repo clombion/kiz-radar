@@ -7,28 +7,28 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "Daytime cultural workshops led by our Cultural Ambassadors",
-     "rationale": "The schedule lists daytime cultural workshops led by Cultural Ambassadors."
-    },
-    {
-     "feature": "competition",
-     "quote": "a prestigious cultural pageant open to individuals of Angolan descent",
-     "rationale": "The Mr. & Miss Angola Canada Competition is a pageant with contestants and winners, so it counts as a competition."
+     "quote": "Dance workshops (Semba, Kizomba, Kuduro)",
+     "rationale": "The schedule lists dance classes as part of the weekend."
     },
     {
      "feature": "live_music",
      "quote": "Live Angolan music & DJ sets",
-     "rationale": "The opening night schedule includes live Angolan music."
+     "rationale": "The opening night includes live music alongside DJ sets."
     },
     {
      "feature": "shows",
-     "quote": "Live performances from Angolan",
-     "rationale": "The Day 2 schedule lists live performances by Angolan-Canadian artists."
+     "quote": "Cultural dance showcases",
+     "rationale": "The 'What to Expect' section promises dance showcases."
+    },
+    {
+     "feature": "competition",
+     "quote": "Mr. & Miss Angola Canada Competition, a prestigious cultural pageant",
+     "rationale": "The event centres on a pageant competition for contestants."
     },
     {
      "feature": "after_party",
      "quote": "concert and after‑party",
-     "rationale": "The Day 3 finale ends with a concert and an after-party."
+     "rationale": "The final night ends with an after-party following the concert."
     }
    ]
   }

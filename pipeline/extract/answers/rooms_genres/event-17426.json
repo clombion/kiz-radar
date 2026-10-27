@@ -5,7 +5,7 @@
    "event_id": 17426,
    "party_rooms": {
     "count": 2,
-    "quote": "2 Party Rooms:"
+    "quote": "2 Party Rooms"
    },
    "class_rooms": null,
    "rooms": [
@@ -16,7 +16,7 @@
       "urbankiz",
       "tarraxo"
      ],
-     "quote": "UrbanKiz & Tarraxo"
+     "quote": "Room 1:\nUrbanKiz & Tarraxo"
     },
     {
      "name_as_written": "Room 2",
@@ -25,7 +25,7 @@
       "kizomba",
       "kompa"
      ],
-     "quote": "Kizomba & Konpa"
+     "quote": "Room 2:\nKizomba & Konpa"
     }
    ],
    "genres": [

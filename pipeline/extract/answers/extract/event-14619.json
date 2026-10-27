@@ -57,8 +57,8 @@
    "features": [
     {
      "feature": "partner_hotel",
-     "quote": "Hôtel Partenaire :",
-     "rationale": "The description names a partner hotel (LV Lagrange Apart’hôtel) for the event, and the passes listed do not include accommodation."
+     "quote": "Hôtel Partenaire",
+     "rationale": "The description names a partner hotel (LV Lagrange Apart’hôtel) for the event without stating that accommodation is included in the pass."
     }
    ]
   }

@@ -13,16 +13,16 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 800,
+       "amount": 800.0,
        "currency": "SEK",
        "fee": null,
        "alt": {
-        "amount": 80,
+        "amount": 80.0,
         "currency": "EUR"
        },
        "from": null,
        "until": null,
-       "quantity": null,
+       "quantity": 15,
        "door": false,
        "sold_out": false,
        "current": false,
@@ -39,11 +39,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 500,
+       "amount": 500.0,
        "currency": "SEK",
        "fee": null,
        "alt": {
-        "amount": 50,
+        "amount": 50.0,
         "currency": "EUR"
        },
        "from": null,

@@ -5,7 +5,7 @@
    "event_id": 17443,
    "party_rooms": {
     "count": 1,
-    "quote": "One room, 100% Salsa, Bachata, and Kizomba."
+    "quote": "One room, 100% Salsa, Bachata, and Kizomba"
    },
    "class_rooms": null,
    "rooms": [
@@ -17,24 +17,24 @@
       "bachata",
       "kizomba"
      ],
-     "quote": "One room, 100% Salsa, Bachata, and Kizomba."
+     "quote": "One room, 100% Salsa, Bachata, and Kizomba"
     }
    ],
    "genres": [
     {
      "genre": "salsa",
      "genre_as_written": "Salsa",
-     "quote": "One room, 100% Salsa, Bachata, and Kizomba."
+     "quote": "One room, 100% Salsa, Bachata, and Kizomba"
     },
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "One room, 100% Salsa, Bachata, and Kizomba."
+     "quote": "One room, 100% Salsa, Bachata, and Kizomba"
     },
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "One room, 100% Salsa, Bachata, and Kizomba."
+     "quote": "One room, 100% Salsa, Bachata, and Kizomba"
     }
    ]
   }

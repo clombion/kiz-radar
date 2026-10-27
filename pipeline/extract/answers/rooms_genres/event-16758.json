@@ -5,7 +5,7 @@
    "event_id": 16758,
    "party_rooms": {
     "count": 2,
-    "quote": "2 AMBIANCES"
+    "quote": "❚2 AMBIANCES❚"
    },
    "class_rooms": null,
    "rooms": [
@@ -21,7 +21,7 @@
       "other",
       "zouk"
      ],
-     "quote": "● UrbanKiz ● Tarraxinha ● Softness ● Kizomba ● Semba"
+     "quote": "🅢🅐🅛🅛🅔【①】|Urban"
     },
     {
      "name_as_written": "🅢🅐🅛🅛🅔【②】",
@@ -42,14 +42,9 @@
      "quote": "Kizomba takes center stage"
     },
     {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "●Salsa ●Bachata"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "sunny bachata"
+     "genre": "semba",
+     "genre_as_written": "Semba",
+     "quote": "● Semba"
     },
     {
      "genre": "urbankiz",
@@ -67,11 +62,6 @@
      "quote": "● Softness"
     },
     {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "● Semba"
-    },
-    {
      "genre": "other",
      "genre_as_written": "Cabo Love",
      "quote": "● Cabo Love"
@@ -80,6 +70,16 @@
      "genre": "zouk",
      "genre_as_written": "Ghetto zouk",
      "quote": "●Ghetto zouk"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Salsa",
+     "quote": "●Salsa"
+    },
+    {
+     "genre": "bachata",
+     "genre_as_written": "Bachata",
+     "quote": "●Bachata"
     },
     {
      "genre": "other",

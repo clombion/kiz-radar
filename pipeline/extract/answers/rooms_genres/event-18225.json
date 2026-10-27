@@ -11,18 +11,18 @@
    "rooms": [
     {
      "name_as_written": "The vibe room",
-     "kind": "unspecified",
+     "kind": "party",
      "genres": [],
-     "quote": "The vibe room"
+     "quote": "(The vibe room)"
     },
     {
      "name_as_written": "Urbankiz/kizomba room",
-     "kind": "unspecified",
+     "kind": "party",
      "genres": [
       "urbankiz",
       "kizomba"
      ],
-     "quote": "Urbankiz/kizomba room"
+     "quote": "(Urbankiz/kizomba room)"
     }
    ],
    "genres": [

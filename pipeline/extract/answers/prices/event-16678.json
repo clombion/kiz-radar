@@ -7,13 +7,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": null,
+     "label_quote": "▶️ PRICES",
      "group_size": 1,
      "days": 8,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 579,
+       "amount": 579.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -36,7 +36,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 220,
+       "amount": 220.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

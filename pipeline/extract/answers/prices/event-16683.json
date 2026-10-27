@@ -13,7 +13,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 295,
+       "amount": 295.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 3000,
+       "amount": 3000.0,
        "currency": "THB",
        "fee": null,
        "alt": null,

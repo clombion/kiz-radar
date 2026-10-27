@@ -6,34 +6,34 @@
    "artists": [],
    "features": [
     {
-     "feature": "day_socials",
-     "quote": "lively afternoon parties",
-     "rationale": "The description advertises afternoon parties, which are daytime socials."
-    },
-    {
      "feature": "workshops",
      "quote": "engaging workshops",
-     "rationale": "The festival offers workshops as part of the programme."
+     "rationale": "The description advertises workshops as part of the festival programme."
     },
     {
-     "feature": "masterclass",
-     "quote": "MASTERCLASS",
-     "rationale": "A masterclass section is listed in the event description."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "multiple Kizomba party rooms",
-     "rationale": "The event has several dance rooms, each with its own atmosphere."
+     "feature": "day_socials",
+     "quote": "lively afternoon parties",
+     "rationale": "Afternoon parties are explicitly offered, which are daytime socials."
     },
     {
      "feature": "all_in_one",
      "quote": "All-in-one 4-star hotel conveniently located near London Heathrow Airport",
-     "rationale": "The parties take place in the hotel where dancers are invited to stay."
+     "rationale": "The venue is a hotel and the parties take place there, so event and accommodation share one venue."
     },
     {
      "feature": "partner_hotel",
      "quote": "hotel room at special discounted festival rates",
-     "rationale": "Discounted festival rates for hotel rooms are offered, separate from the ticket."
+     "rationale": "Discounted festival rates for a hotel room are offered separately from the ticket."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "multiple Kizomba party rooms",
+     "rationale": "The event has several dance rooms, each with its own rhythm style."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "MASTERCLASS",
+     "rationale": "A masterclass section is listed in the programme, with the teacher to be confirmed."
     }
    ]
   }

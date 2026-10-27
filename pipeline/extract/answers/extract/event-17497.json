@@ -65,17 +65,17 @@
     {
      "feature": "workshops",
      "quote": "focused workshops",
-     "rationale": "The text says the Friday evening includes focused workshops, so workshops are part of the event."
+     "rationale": "The description states that the Friday evening includes focused workshops."
     },
     {
      "feature": "masterclass",
      "quote": "exclusive masterclass",
-     "rationale": "The event offers an exclusive premium masterclass by Adeline Suédois, which is booked separately."
+     "rationale": "The description presents an exclusive masterclass as a highlight of the event."
     },
     {
      "feature": "private_classes",
      "quote": "private class opportunities",
-     "rationale": "The description states that private class opportunities are offered."
+     "rationale": "The description lists private class opportunities as part of the weekend."
     }
    ]
   }

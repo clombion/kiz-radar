@@ -127,18 +127,23 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "workshops:",
-     "rationale": "The program lists dance classes such as kizomba by Leny and semba by Leny under a workshops heading."
+     "quote": "14.30 – 15.30 kizomba by Leny",
+     "rationale": "The program lists timed kizomba and semba workshop classes taught by Leny and Rui."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "P A R T Y on 2 floors:",
-     "rationale": "The parties take place on two floors, meaning more than one dance floor."
+     "quote": "P A R T Y on 2 floors",
+     "rationale": "The parties run on two separate floors, meaning more than one dance floor."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "18.00 – 19.15 Social",
+     "rationale": "A timed social slot is listed in the afternoon-evening workshop programme on Saturday."
     },
     {
      "feature": "partner_hotel",
      "quote": "Rooms Madison https://www.zagrebrooms.com/",
-     "rationale": "The accommodation section lists recommended rooms near the event, without them being part of the pass."
+     "rationale": "Recommended rooms near the venue are listed as accommodation options, not as part of the pass."
     }
    ]
   }

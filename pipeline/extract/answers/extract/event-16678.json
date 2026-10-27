@@ -177,22 +177,22 @@
     {
      "feature": "all_levels_beginners",
      "quote": "All levels: beginner to advanced",
-     "rationale": "The text states the classes are open from beginner to advanced levels."
+     "rationale": "The description states the classes cover all levels from beginner to advanced."
     },
     {
      "feature": "workshops",
      "quote": "Workshops and additional classes in the afternoon",
-     "rationale": "Afternoon workshops and extra classes are listed as part of the event."
+     "rationale": "Workshops are explicitly listed as part of the afternoon programme."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "8 dance floors, with approximately the following breakdown:",
-     "rationale": "Eight dance floors and eight simultaneous studios mean more than one dance room."
+     "quote": "8 simultaneous dance studios!",
+     "rationale": "Eight simultaneous dance studios means more than one dance room."
     },
     {
      "feature": "accommodation_included",
      "quote": "8 days / 7 nights accommodation",
-     "rationale": "The all-inclusive stay package lists the accommodation as part of the package."
+     "rationale": "The all-inclusive stay package includes the accommodation."
     },
     {
      "feature": "meals_included",

@@ -47,6 +47,27 @@
      "source_line": "🎧 DJ TEGS"
     },
     {
+     "name_as_written": "DJ Husky",
+     "role": "dj",
+     "style": "Bachata",
+     "country": null,
+     "source_line": "🎧 DJ Husky ~ Bachata"
+    },
+    {
+     "name_as_written": "DJ Charli Ponceño",
+     "role": "dj",
+     "style": "BACHATA / SALSA",
+     "country": null,
+     "source_line": "🎧 DJ Charli Ponceño"
+    },
+    {
+     "name_as_written": "DJ Jose vela",
+     "role": "dj",
+     "style": "BACHATA / SALSA",
+     "country": null,
+     "source_line": "🎧 DJ Jose vela"
+    },
+    {
      "name_as_written": "JOJO LPK",
      "role": "teacher",
      "style": "Urbankiz",
@@ -215,27 +236,6 @@
      "source_line": "🔥 ABDOUL – (Urbankiz)"
     },
     {
-     "name_as_written": "DJ Husky",
-     "role": "dj",
-     "style": "BACHATA / SALSA",
-     "country": null,
-     "source_line": "🎧 DJ Husky ~ Bachata"
-    },
-    {
-     "name_as_written": "DJ Charli Ponceño",
-     "role": "dj",
-     "style": "BACHATA / SALSA",
-     "country": null,
-     "source_line": "🎧 DJ Charli Ponceño"
-    },
-    {
-     "name_as_written": "DJ Jose vela",
-     "role": "dj",
-     "style": "BACHATA / SALSA",
-     "country": null,
-     "source_line": "🎧 DJ Jose vela"
-    },
-    {
      "name_as_written": "ALFONSO & MONICA",
      "role": "teacher",
      "style": "Bachata",
@@ -364,19 +364,19 @@
    ],
    "features": [
     {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE: LAS PALMERAS FUENGIROLA",
-     "rationale": "The event is headlined as all in one at a named hotel, meaning the parties take place where dancers stay."
-    },
-    {
      "feature": "workshops",
      "quote": "Workshops, social dancing, and shows in stunning ballrooms",
-     "rationale": "The description states workshops are part of the event."
+     "rationale": "The description states that workshops are part of the congress."
     },
     {
      "feature": "shows",
      "quote": "Workshops, social dancing, and shows in stunning ballrooms",
-     "rationale": "The description states there are shows in the ballrooms."
+     "rationale": "The description mentions shows taking place at the congress."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "ALL IN ONE: LAS PALMERAS FUENGIROLA",
+     "rationale": "The event is labelled all in one at the Las Palmeras hotel where the congress is held."
     }
    ]
   }

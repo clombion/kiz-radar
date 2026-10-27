@@ -58,12 +58,12 @@
     {
      "feature": "workshops",
      "quote": "Workshops | Teachers",
-     "rationale": "The heading 'Workshops' shows that dance classes are part of the event."
+     "rationale": "The listed header 'Workshops' shows that dance classes or workshops are part of the event."
     },
     {
      "feature": "shows",
      "quote": "Parties | Shows | Dinners",
-     "rationale": "The event lists 'Shows' among its programme items, indicating performances."
+     "rationale": "The description lists 'Shows' among the event's activities, indicating shows by artists."
     }
    ]
   }

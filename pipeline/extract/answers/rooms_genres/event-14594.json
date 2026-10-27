@@ -19,11 +19,6 @@
      "quote": "Salsa | Cuban | Bachata | Kizomba"
     },
     {
-     "genre": "other",
-     "genre_as_written": "Cuban",
-     "quote": "Salsa | Cuban | Bachata | Kizomba"
-    },
-    {
      "genre": "bachata",
      "genre_as_written": "BACHATA",
      "quote": "BACHATA (will be Updates soon)"
@@ -44,29 +39,19 @@
      "quote": "KIZOMBA / SEMBA / URBAN KIZ"
     },
     {
-     "genre": "reggaeton",
-     "genre_as_written": "REGGAETON",
-     "quote": "REGGAETON / HIPHOP / URBAN / AFROBEAT / AFROHOUSE OTHER STYLES"
-    },
-    {
      "genre": "afro",
      "genre_as_written": "Afro",
      "quote": "SALSA on1, on2, Cuban, Afro & more"
     },
     {
-     "genre": "other",
-     "genre_as_written": "HIPHOP",
-     "quote": "REGGAETON / HIPHOP / URBAN / AFROBEAT / AFROHOUSE OTHER STYLES"
+     "genre": "reggaeton",
+     "genre_as_written": "Reggaeton",
+     "quote": "Jessica Guastella ( Reggaeton )"
     },
     {
      "genre": "other",
-     "genre_as_written": "Lyrical",
-     "quote": "reggaeton, HipHop, Lyrical"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Break Dance",
-     "quote": "Break Dance"
+     "genre_as_written": "HipHop",
+     "quote": "Moe Flex ( reggaeton, HipHop, Lyrical)"
     }
    ]
   }

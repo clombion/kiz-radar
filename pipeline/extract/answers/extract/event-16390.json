@@ -6,19 +6,24 @@
    "artists": [],
    "features": [
     {
-     "feature": "taxi_dancers",
-     "quote": "International Taxi Team",
-     "rationale": "The line 'International Taxi Team' shows that taxi dancers are present at the event."
+     "feature": "all_in_one",
+     "quote": "Onsite accommodation is back!",
+     "rationale": "The description places the event and on-campus rooms at the same home base, so the parties and accommodation share one venue."
     },
     {
      "feature": "workshops",
      "quote": "3 Days of Inspiring Classes & Workshops",
-     "rationale": "The listing states that three days of classes and workshops are part of the event."
+     "rationale": "The listed highlights include three days of classes and workshops as part of the event."
     },
     {
      "feature": "day_socials",
      "quote": "2 Outdoor Day Socials",
-     "rationale": "The listing promises two outdoor daytime socials."
+     "rationale": "The event lists two outdoor day socials, which are daytime social events."
+    },
+    {
+     "feature": "taxi_dancers",
+     "quote": "International Taxi Team",
+     "rationale": "The highlights mention a taxi team, which indicates taxi dancers are present."
     }
    ]
   }

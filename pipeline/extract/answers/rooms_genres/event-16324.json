@@ -60,16 +60,6 @@
      "quote": "Kizomba, Semba, Urbankiz, Tarraxa"
     },
     {
-     "genre": "reggaeton",
-     "genre_as_written": "Reggaeton",
-     "quote": "Afro-Cuban, Cuban Rumba, Reggaeton"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "DJs Salsa, Bachata, Kizomba, Urbankiz, Kompa"
-    },
-    {
      "genre": "other",
      "genre_as_written": "Rock",
      "quote": "Rock, Lindy Hop"
@@ -78,6 +68,21 @@
      "genre": "other",
      "genre_as_written": "Lindy Hop",
      "quote": "Rock, Lindy Hop"
+    },
+    {
+     "genre": "reggaeton",
+     "genre_as_written": "Reggaeton",
+     "quote": "Afro-Cuban, Cuban Rumba, Reggaeton"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Afro-Cuban",
+     "quote": "Afro-Cuban, Cuban Rumba, Reggaeton"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Cuban Rumba",
+     "quote": "Afro-Cuban, Cuban Rumba, Reggaeton"
     },
     {
      "genre": "other",
@@ -95,14 +100,9 @@
      "quote": "Cuban Salsa, Timba, Rueda de Casino, Cuban Son"
     },
     {
-     "genre": "other",
-     "genre_as_written": "Cuban Rumba",
-     "quote": "Afro-Cuban, Cuban Rumba, Reggaeton"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Afro-Cuban",
-     "quote": "Afro-Cuban, Cuban Rumba, Reggaeton"
+     "genre": "kompa",
+     "genre_as_written": "Kompa",
+     "quote": "DJs Salsa, Bachata, Kizomba, Urbankiz, Kompa"
     }
    ]
   }

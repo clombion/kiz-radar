@@ -68,28 +68,14 @@
      "source_line": "🎧 DJ Flow 🇮🇹"
     },
     {
-     "name_as_written": "Tresor",
+     "name_as_written": "Tresor 🇳🇱 & Aurea",
      "role": "teacher",
      "style": null,
-     "country": "🇳🇱",
+     "country": null,
      "source_line": "🕺🏻Tresor 🇳🇱 & Aurea 🇧🇷🇪🇸"
     },
     {
-     "name_as_written": "Aurea",
-     "role": "teacher",
-     "style": null,
-     "country": "🇧🇷🇪🇸",
-     "source_line": "🕺🏻Tresor 🇳🇱 & Aurea 🇧🇷🇪🇸"
-    },
-    {
-     "name_as_written": "Akram Bouchiba",
-     "role": "teacher",
-     "style": null,
-     "country": "🇳🇱🇨🇭",
-     "source_line": "🕺🏻💃🏻 Akram Bouchiba 🇳🇱🇨🇭 & Sara Paxolieta 🇨🇭"
-    },
-    {
-     "name_as_written": "Sara Paxolieta",
+     "name_as_written": "Akram Bouchiba 🇳🇱🇨🇭 & Sara Paxolieta",
      "role": "teacher",
      "style": null,
      "country": "🇨🇭",
@@ -166,17 +152,10 @@
      "source_line": "🕺🏻 Oscar Amore 🇮🇹"
     },
     {
-     "name_as_written": "Marco",
+     "name_as_written": "Marco 🇮🇹 & Jahia",
      "role": "teacher",
      "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻💃🏻 Marco 🇮🇹 & Jahia 🇨🇵"
-    },
-    {
-     "name_as_written": "Jahia",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇵",
+     "country": null,
      "source_line": "🕺🏻💃🏻 Marco 🇮🇹 & Jahia 🇨🇵"
     },
     {
@@ -215,17 +194,10 @@
      "source_line": "💃🏻 Mili 🇫🇷"
     },
     {
-     "name_as_written": "Matar",
+     "name_as_written": "Matar 🇸🇳🇮🇹 & Adriana",
      "role": "teacher",
      "style": null,
-     "country": "🇸🇳🇮🇹",
-     "source_line": "🕺🏻💃🏻 Matar 🇸🇳🇮🇹 & Adriana 🇮🇹"
-    },
-    {
-     "name_as_written": "Adriana",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
+     "country": null,
      "source_line": "🕺🏻💃🏻 Matar 🇸🇳🇮🇹 & Adriana 🇮🇹"
     },
     {
@@ -271,21 +243,14 @@
      "source_line": "💃🏻 Mary Valencia & Serena Cesarini 🇮🇹"
     },
     {
-     "name_as_written": "Gloria",
+     "name_as_written": "Gloria 🇮🇹 & Srinath",
      "role": "teacher",
      "style": null,
-     "country": "🇮🇹",
+     "country": null,
      "source_line": "🕺🏻💃🏻 Gloria 🇮🇹 & Srinath 🇮🇳"
     },
     {
-     "name_as_written": "Srinath",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇳",
-     "source_line": "🕺🏻💃🏻 Gloria 🇮🇹 & Srinath 🇮🇳"
-    },
-    {
-     "name_as_written": "Said",
+     "name_as_written": "Said | KizombaFly",
      "role": "teacher",
      "style": null,
      "country": "🇮🇹",
@@ -355,7 +320,7 @@
      "source_line": "💃🏻 Claudia Spano 🇮🇹"
     },
     {
-     "name_as_written": "Luce",
+     "name_as_written": "Luce | Brescia Latin Lovers",
      "role": "teacher",
      "style": null,
      "country": "🇮🇹",
@@ -436,37 +401,42 @@
     {
      "feature": "all_in_one",
      "quote": "ALL IN ONE VENUE",
-     "rationale": "The event takes place in a holiday village reserved for the festival, where the accommodation is also located."
+     "rationale": "The event is held in one venue, a holiday village reserved for the event where dancers stay."
     },
     {
-     "feature": "accommodation_included",
-     "quote": "ACCOMMODATION & BREAKFAST in the hotel reserved",
-     "rationale": "The rates for the hotel and full pass package explicitly include accommodation."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "FULL BOARD: Buffet-style Lunch and Dinner in the Restaurant of the main venue (local wine and water included at meals)",
-     "rationale": "The rates explicitly include full board meals in the package."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "3 Themed Night Parties (Friday – Saturday – Sunday)",
-     "rationale": "The event offers themed night parties on three evenings."
+     "feature": "day_socials",
+     "quote": "Seafront Social Kiz",
+     "rationale": "Seafront Social Kiz and the AperiSun daytime events are listed as daytime social activities."
     },
     {
      "feature": "masterclass",
      "quote": "Masterclasses with International Artists",
-     "rationale": "The event lists masterclasses with international artists."
+     "rationale": "The description advertises masterclasses with international artists."
     },
     {
      "feature": "workshops",
-     "quote": "Workshops and Masterclasses of any Style and Level with fabulous Artists and Teachers",
-     "rationale": "Dance workshops are explicitly offered as part of the event."
+     "quote": "Workshops and Masterclasses of any Style and Level",
+     "rationale": "Dance workshops are explicitly part of the programme."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "3 Themed Night Parties",
+     "rationale": "Three themed night parties are part of the programme."
+    },
+    {
+     "feature": "accommodation_included",
+     "quote": "ACCOMMODATION & BREAKFAST in the hotel reserved",
+     "rationale": "The package rates explicitly include accommodation and breakfast in the reserved hotel."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "FULL BOARD: Buffet-style Lunch and Dinner",
+     "rationale": "The package rates include full board meals at the main venue restaurant."
     },
     {
      "feature": "multiple_rooms",
      "quote": "Rooms for Workshops",
-     "rationale": "Several rooms are available for workshops, so there is more than one dance room."
+     "rationale": "There are three separate rooms for workshops, so more than one dance room is available."
     }
    ]
   }

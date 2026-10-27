@@ -6,14 +6,14 @@
    "artists": [],
    "features": [
     {
-     "feature": "camping",
-     "quote": "Camping, Hôtels, chambres d’hôtes et AirB&B dispo autour de la salle",
-     "rationale": "The description says campsite accommodation is available around the venue, though it is not part of a pass."
-    },
-    {
      "feature": "partner_hotel",
      "quote": "HÔTEL PARTENAIRE",
-     "rationale": "A partner hotel is named, with a 15% discount on bookings, without accommodation being part of the pass."
+     "rationale": "The description names a partner hotel and gives a 15% discount on bookings there, without the accommodation being part of the pass."
+    },
+    {
+     "feature": "camping",
+     "quote": "Camping, Hôtels, chambres d’hôtes et AirB&B dispo autour de la salle",
+     "rationale": "The description lists campsite accommodation as one of the options available around the venue."
     }
    ]
   }

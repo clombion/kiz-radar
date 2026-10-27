@@ -287,49 +287,44 @@
    ],
    "features": [
     {
-     "feature": "all_levels_beginners",
-     "quote": "For all levels, Beginners to Advanced",
-     "rationale": "The description states the workshops are for all levels, including beginners."
-    },
-    {
      "feature": "bootcamp_intensive",
-     "quote": "4 Days of BEGINNER BOOTCAMPS",
-     "rationale": "Four days of beginner bootcamps are offered, which are intensive training courses."
+     "quote": "BEGINNER BOOTCAMPS",
+     "rationale": "The event offers four days of beginner bootcamps."
     },
     {
      "feature": "workshops",
-     "quote": "4 Days of WORKSHOPS",
-     "rationale": "Dance workshops run for four days as part of the festival."
+     "quote": "immersive workshops",
+     "rationale": "Each day is filled with immersive workshops."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "For all levels, Beginners to Advanced",
+     "rationale": "The workshops are explicitly open to all levels including beginners."
     },
     {
      "feature": "shows",
      "quote": "inspiring performances",
-     "rationale": "Performances by artists are part of each day of the festival."
+     "rationale": "Each day includes inspiring performances by artists."
     },
     {
      "feature": "themed_parties",
      "quote": "4 Nights of Theme Parties till 5am!",
-     "rationale": "Theme parties are held on four nights of the festival."
+     "rationale": "Theme parties are held on four nights."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "5 Dance rooms, each with a different style:",
-     "rationale": "The festival has five separate dance rooms."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "Stay where the action happens and walk straight from your room to the dance floor",
-     "rationale": "Dancers are invited to stay at the venue hotel where the parties happen."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "QCDF Official Hotel Roommate Group:",
-     "rationale": "An official festival hotel group is listed for dancers seeking rooms."
+     "quote": "5 Dance rooms",
+     "rationale": "The festival has five dance rooms, each with a different style."
     },
     {
      "feature": "day_socials",
-     "quote": "unforgettable day and night parties",
-     "rationale": "Daytime parties are held alongside night parties."
+     "quote": "day and night parties",
+     "rationale": "The festival includes daytime parties as well as night parties."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "walk straight from your room to the dance floor",
+     "rationale": "Dancers are invited to stay at the hotel where the dance parties take place."
     }
    ]
   }

@@ -10,12 +10,12 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "targeted to Kizomba, Semba and Afro dance lovers"
+     "quote": "Kizomba/Semba/Ghetto Zouk/Tarraxinha/ Zouk music"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "Kizomba, Semba and Afro dance lovers"
+     "quote": "Kizomba/Semba"
     },
     {
      "genre": "afro",
@@ -25,22 +25,22 @@
     {
      "genre": "zouk",
      "genre_as_written": "Ghetto Zouk",
-     "quote": "Ghetto Zouk"
+     "quote": "Ghetto Zouk/Tarraxinha/ Zouk music"
     },
     {
      "genre": "tarraxinha",
      "genre_as_written": "Tarraxinha",
-     "quote": "Tarraxinha"
+     "quote": "Ghetto Zouk/Tarraxinha/ Zouk music"
     },
     {
      "genre": "kompa",
      "genre_as_written": "Konpa",
-     "quote": "Konpa"
+     "quote": "Afrohouse&Afrobeats/Konpa/ Funana"
     },
     {
      "genre": "other",
      "genre_as_written": "Funana",
-     "quote": "Funana"
+     "quote": "Konpa/ Funana"
     }
    ]
   }

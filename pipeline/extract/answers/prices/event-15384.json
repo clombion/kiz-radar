@@ -13,11 +13,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 69,
+       "amount": 69.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 350,
+        "amount": 350.0,
         "currency": "RON"
        },
        "from": null,
@@ -29,11 +29,11 @@
        "quote": "Single full pass-69 Euro/ 350 lei"
       },
       {
-       "amount": 75,
+       "amount": 75.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 380,
+        "amount": 380.0,
         "currency": "RON"
        },
        "from": "01-16",
@@ -45,11 +45,11 @@
        "quote": "Single full pass-75 Euro/ 380 lei"
       },
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 410,
+        "amount": 410.0,
         "currency": "RON"
        },
        "from": "03-01",
@@ -71,11 +71,11 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 125,
+       "amount": 125.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 635,
+        "amount": 635.0,
         "currency": "RON"
        },
        "from": null,
@@ -87,11 +87,11 @@
        "quote": "Couple full pass – 125 Euro/ 635 lei"
       },
       {
-       "amount": 135,
+       "amount": 135.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 685,
+        "amount": 685.0,
         "currency": "RON"
        },
        "from": "01-16",
@@ -103,11 +103,11 @@
        "quote": "Couple full pass – 135 Euro/ 685 lei"
       },
       {
-       "amount": 145,
+       "amount": 145.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 740,
+        "amount": 740.0,
         "currency": "RON"
        },
        "from": "03-01",

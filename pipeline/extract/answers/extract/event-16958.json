@@ -57,23 +57,23 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "15h – 17h whorshop urban kiz Yace galanta & Camille",
-     "rationale": "A workshop with Yace galanta & Camille is scheduled on Saturday afternoon."
+     "quote": "cours de semba King & Amélie",
+     "rationale": "A semba class taught by King & Amélie shows that dance classes are part of the event."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "soirée SBK 3 salles 3 ambiances",
-     "rationale": "The party takes place in three rooms with different atmospheres."
+     "quote": "3 salles 3 ambiances",
+     "rationale": "The Saturday night party is held in three rooms, each with its own atmosphere."
     },
     {
      "feature": "day_socials",
      "quote": "17h – 21h social Kiz Semba Kompa Zouk 5€",
-     "rationale": "A daytime social runs on Sunday afternoon."
+     "rationale": "A daytime social from 17h to 21h on Sunday is listed in the programme."
     },
     {
      "feature": "camping",
-     "quote": "En partenariat avec le camping sainte veziane sur Bessan.",
-     "rationale": "Accommodation is offered at a partner campsite."
+     "quote": "En partenariat avec le camping sainte veziane sur Bessan",
+     "rationale": "Accommodation is arranged through a partnership with a campsite."
     }
    ]
   }

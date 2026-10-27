@@ -4,54 +4,51 @@
   {
    "event_id": 18750,
    "party_rooms": null,
-   "class_rooms": {
-    "count": 1,
-    "quote": "Workshops | Main Hall"
-   },
+   "class_rooms": null,
    "rooms": [
     {
      "name_as_written": "Main Hall",
      "kind": "class",
      "genres": [],
-     "quote": "Workshops | Main Hall"
+     "quote": "16:00 – 20:00 · Workshops | Main Hall"
     },
     {
      "name_as_written": "Pool Room",
      "kind": "unspecified",
      "genres": [],
-     "quote": "Afternoon Social | Pool Room"
+     "quote": "18:00 – 21:00 · Afternoon Social | Pool Room"
     }
    ],
    "genres": [
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Workshops in Kizomba"
+     "quote": "Workshops in Kizomba, Urban Kiz, Semba, Tarraxo, Douceur and Konpa"
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "Urban Kiz",
-     "quote": "Urban Kiz"
+     "quote": "Workshops in Kizomba, Urban Kiz, Semba, Tarraxo, Douceur and Konpa"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "Semba"
+     "quote": "Workshops in Kizomba, Urban Kiz, Semba, Tarraxo, Douceur and Konpa"
     },
     {
      "genre": "tarraxo",
      "genre_as_written": "Tarraxo",
-     "quote": "Tarraxo"
+     "quote": "Workshops in Kizomba, Urban Kiz, Semba, Tarraxo, Douceur and Konpa"
     },
     {
      "genre": "douceur",
      "genre_as_written": "Douceur",
-     "quote": "Douceur"
+     "quote": "Workshops in Kizomba, Urban Kiz, Semba, Tarraxo, Douceur and Konpa"
     },
     {
      "genre": "kompa",
      "genre_as_written": "Konpa",
-     "quote": "Konpa"
+     "quote": "Workshops in Kizomba, Urban Kiz, Semba, Tarraxo, Douceur and Konpa"
     }
    ]
   }

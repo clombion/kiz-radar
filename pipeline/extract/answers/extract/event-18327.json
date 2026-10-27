@@ -8,17 +8,17 @@
     {
      "feature": "workshops",
      "quote": "Workshops avec des artistes internationaux",
-     "rationale": "The programme lists workshops with international artists, so dance classes are part of the event."
+     "rationale": "The description states that workshops with international artists are part of the programme."
     },
     {
      "feature": "pool_party",
-     "quote": "Soirées et pool parties enflammées",
-     "rationale": "The programme explicitly mentions pool parties."
+     "quote": "pool parties enflammées",
+     "rationale": "The programme lists pool parties."
     },
     {
      "feature": "accommodation_included",
      "quote": "vol + hébergement + full pass inclus",
-     "rationale": "The price of 1399€ includes accommodation together with the full pass."
+     "rationale": "The package price explicitly includes accommodation together with the full pass."
     }
    ]
   }

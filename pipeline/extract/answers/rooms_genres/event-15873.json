@@ -10,22 +10,32 @@
     {
      "genre": "salsa",
      "genre_as_written": "salsa",
-     "quote": "LA / NY salsa, Cha-cha, animations"
+     "quote": "LA / NY salsa"
     },
     {
      "genre": "bachata",
      "genre_as_written": "Bachata",
-     "quote": "Bachata"
+     "quote": "– Bachata"
     },
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Kizomba"
+     "quote": "– Kizomba"
     },
     {
      "genre": "other",
      "genre_as_written": "Cha-cha",
-     "quote": "LA / NY salsa, Cha-cha, animations"
+     "quote": "Cha-cha"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Cuban",
+     "quote": "– Cuban"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Traditional Greek, Bulgarian and Romanian Dances",
+     "quote": "Traditional Greek, Bulgarian and Romanian Dances"
     }
    ]
   }

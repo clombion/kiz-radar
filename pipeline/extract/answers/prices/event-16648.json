@@ -13,11 +13,11 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 155,
+       "amount": 155.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 310,
+        "amount": 310.0,
         "currency": "BGN"
        },
        "from": null,
@@ -29,11 +29,11 @@
        "quote": "Until March 31 155€ (310BGN)"
       },
       {
-       "amount": 170,
+       "amount": 170.0,
        "currency": "EUR",
        "fee": null,
        "alt": {
-        "amount": 340,
+        "amount": 340.0,
         "currency": "BGN"
        },
        "from": "04-01",
@@ -47,9 +47,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "To confirm your place, please make a prepayment of 50% of the price to your instructor."
-   ]
+   "rule_quotes": []
   }
  ]
 }

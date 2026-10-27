@@ -10,40 +10,33 @@
      "style": null,
      "country": "🇫🇷",
      "source_line": "✅ SAID & OKSANA 🇫🇷"
-    },
-    {
-     "name_as_written": "The CBKF Team",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "The CBKF Team"
     }
    ],
    "features": [
     {
      "feature": "workshops",
-     "quote": "4 days of dance classes",
-     "rationale": "The description states that the festival includes four days of dance classes."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "welcoming place for dancers of all skill and experience levels",
-     "rationale": "The description says CBKF welcomes dancers of all skill and experience levels."
+     "quote": "CBKF features 4 days of dance classes",
+     "rationale": "The description states the festival includes four days of dance classes."
     },
     {
      "feature": "all_in_one",
      "quote": "LOCATION ALL IN ONE",
-     "rationale": "The location is announced as all in one, with the event held at the Hilton hotel where dancers can stay."
+     "rationale": "The location heading indicates the parties take place at the hotel where dancers are invited to stay."
     },
     {
      "feature": "partner_hotel",
-     "quote": "discounted group rate of $189",
-     "rationale": "The event negotiates a discounted group hotel rate for attendees, without the accommodation being part of a pass."
+     "quote": "Rooms will be available at a discounted group rate of $189",
+     "rationale": "A negotiated hotel group rate is offered for the festival, separate from any pass."
     },
     {
      "feature": "transfers_shuttle",
-     "quote": "by free shuttle",
-     "rationale": "A free shuttle is offered from the airport to the hotel area."
+     "quote": "free shuttle",
+     "rationale": "A free shuttle from Reagan National Airport to the hotel is mentioned."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "CBKF is a welcoming place for dancers of all skill and experience levels",
+     "rationale": "The description explicitly says the festival welcomes dancers of all levels, including those just starting."
     }
    ]
   }

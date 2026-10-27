@@ -224,9 +224,9 @@
     {
      "name_as_written": "Farid Ferchach",
      "role": "mc",
-     "style": "SPEAKER",
+     "style": null,
      "country": null,
-     "source_line": "🟠 SPEAKER"
+     "source_line": "✨️ Farid Ferchach"
     },
     {
      "name_as_written": "Barbara",
@@ -253,38 +253,38 @@
    "features": [
     {
      "feature": "all_in_one",
-     "quote": "All-in-one with swimming pool",
-     "rationale": "The description states the festival is all-in-one, with the venue being a residence where the parties take place."
+     "quote": "All-in-one with swimming pool (La Londe beach, Var)",
+     "rationale": "The description calls the festival all-in-one and says it is all-in-one with a swimming pool at a seaside residence."
     },
     {
      "feature": "taxi_dancers",
      "quote": "30 taxi dancers",
-     "rationale": "The description states that 30 taxi dancers will be present."
+     "rationale": "The description states that 30 taxi dancers are present."
     },
     {
      "feature": "multiple_rooms",
      "quote": "5 rooms, 5 atmospheres",
-     "rationale": "The festival has five dance rooms, which is more than one."
+     "rationale": "The festival has five separate dance rooms."
     },
     {
      "feature": "workshops",
      "quote": "50 hours of workshops",
-     "rationale": "The description promises 50 hours of dance workshops."
+     "rationale": "Dance workshops are part of the programme."
     },
     {
      "feature": "shows",
      "quote": "Shows, Entertainment, After-Parties",
-     "rationale": "The description lists shows as part of the event."
+     "rationale": "The event lists shows and entertainment as part of the programme."
     },
     {
      "feature": "after_party",
      "quote": "After-Parties",
-     "rationale": "The description lists after-parties among the event's offerings."
+     "rationale": "The programme explicitly includes after-parties."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "Shuttles",
-     "rationale": "The services section lists shuttles as provided."
+     "rationale": "The services section lists shuttles."
     }
    ]
   }

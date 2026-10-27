@@ -303,22 +303,22 @@
     {
      "feature": "workshops",
      "quote": "3 days of workshops",
-     "rationale": "The description lists three days of workshops as part of the event."
-    },
-    {
-     "feature": "after_party",
-     "quote": "Monday After Party",
-     "rationale": "A Monday After Party is listed as one of the event's offerings."
+     "rationale": "The description states that there are three days of workshops."
     },
     {
      "feature": "shows",
      "quote": "Shows, energy, connection and bloody memories",
-     "rationale": "The description promises shows as part of the event."
+     "rationale": "The description lists shows as part of the event."
+    },
+    {
+     "feature": "after_party",
+     "quote": "1 Monday After Party",
+     "rationale": "The description announces a Monday after party."
     },
     {
      "feature": "day_socials",
      "quote": "Social by day",
-     "rationale": "A daytime social is listed among the event's features."
+     "rationale": "The description mentions daytime socials."
     }
    ]
   }

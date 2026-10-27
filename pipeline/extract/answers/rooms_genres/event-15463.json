@@ -38,12 +38,17 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Kizomba, Urban, Softness, Tarraxo"
+     "quote": "Classes with Arnaud DJBN, Ichigo, Manu & Olivia (Kizomba, Urban, Softness, Tarraxo)"
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "Urban",
-     "quote": "Kizomba, Urban, Softness, Tarraxo"
+     "quote": "Classes with Arnaud DJBN, Ichigo, Manu & Olivia (Kizomba, Urban, Softness, Tarraxo)"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "Softness",
+     "quote": "Classes with Arnaud DJBN, Ichigo, Manu & Olivia (Kizomba, Urban, Softness, Tarraxo)"
     },
     {
      "genre": "tarraxo",

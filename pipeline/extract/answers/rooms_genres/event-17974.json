@@ -3,10 +3,7 @@
  "events": [
   {
    "event_id": 17974,
-   "party_rooms": {
-    "count": 3,
-    "quote": "⚜️Thursday 31 December 2026 : (3 rooms)"
-   },
+   "party_rooms": null,
    "class_rooms": null,
    "rooms": [],
    "genres": [
@@ -17,12 +14,12 @@
     },
     {
      "genre": "semba",
-     "genre_as_written": "SEMBA",
+     "genre_as_written": "Semba",
      "quote": "SEMBA DEEJAYS"
     },
     {
      "genre": "tarraxo",
-     "genre_as_written": "TARRAXO",
+     "genre_as_written": "Tarraxo",
      "quote": "TARRAXO DEEJAYS"
     }
    ]

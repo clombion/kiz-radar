@@ -8,7 +8,12 @@
     {
      "feature": "accommodation_included",
      "quote": "Full Pass & Hotel",
-     "rationale": "The quoted pass and hotel wording indicates that the full pass package includes hotel accommodation."
+     "rationale": "The quote names a Full Pass that includes a hotel, so accommodation is part of the pass."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "A L L · I N · O N E",
+     "rationale": "The spaced-out 'ALL IN ONE' label alongside the hotel pass suggests the event and accommodation are in the same venue."
     }
    ]
   }

@@ -10,7 +10,7 @@
    },
    "rooms": [
     {
-     "name_as_written": "Social room",
+     "name_as_written": "Social Dance Room",
      "kind": "unspecified",
      "genres": [],
      "quote": "Social room during the evening, from 17h to 20h."
@@ -19,8 +19,8 @@
    "genres": [
     {
      "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "LoveMi KIZOMBA Festival 2nd Edition"
+     "genre_as_written": "Kizomba",
+     "quote": "Because Kizomba IS Love"
     }
    ]
   }

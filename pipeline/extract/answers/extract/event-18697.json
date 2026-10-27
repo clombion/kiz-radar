@@ -124,13 +124,6 @@
      "source_line": "– Yoan Perrin"
     },
     {
-     "name_as_written": "TEAM TAXIS & STANDS",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🚕 TEAM TAXIS & STANDS 👚"
-    },
-    {
      "name_as_written": "Association Kizomba Genève",
      "role": "organiser",
      "style": null,
@@ -142,37 +135,27 @@
     {
      "feature": "all_in_one",
      "quote": "Exceptional setting in a 4 stars hotel between lake and mountains",
-     "rationale": "The festival is set in a 4-star hotel where the parties run, matching the all-in-one venue concept."
+     "rationale": "The event is held in a hotel setting where the parties take place, matching the all-in-one format named in the title."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 Rooms, 3 Atmospheres",
+     "rationale": "The text states the festival has three rooms."
     },
     {
      "feature": "partner_hotel",
      "quote": "Special festival rates, please be aware that rooms are limited.",
-     "rationale": "A hotel with negotiated festival room rates is recommended, without the accommodation being part of the pass."
+     "rationale": "A partner hotel offers negotiated festival rates without the accommodation being part of a pass."
     },
     {
      "feature": "transfers_shuttle",
-     "quote": "From and to the airport with reservation only",
+     "quote": "FREE SHUTTLES",
      "rationale": "Free shuttles to and from the airport are offered."
     },
     {
      "feature": "taxi_dancers",
      "quote": "TEAM TAXIS & STANDS",
-     "rationale": "A named taxi-dancer team is listed."
-    },
-    {
-     "feature": "workshops",
-     "quote": "PROFESSEURS",
-     "rationale": "A list of teachers is given, indicating dance classes are part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Sunday: 12H00 – 20H00",
-     "rationale": "Daytime programme slots are listed for Saturday and Sunday."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 Rooms, 3 Atmospheres",
-     "rationale": "The event has three dance rooms."
+     "rationale": "A taxi team is listed as part of the event."
     }
    ]
   }

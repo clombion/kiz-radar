@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 10,
+       "amount": 10.0,
        "currency": "USD",
        "fee": null,
        "alt": null,
@@ -23,12 +23,14 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "💸 US$10 at the door — completely FREE for VLX participants!"
+       "quote": "US$10 at the door"
       }
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "completely FREE for VLX participants!"
+   ]
   }
  ]
 }

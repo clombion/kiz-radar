@@ -5,76 +5,6 @@
    "event_id": 17946,
    "artists": [
     {
-     "name_as_written": "DJ POEMA BEATZ",
-     "role": "dj",
-     "style": "TARRAXO",
-     "country": null,
-     "source_line": "🔰DJ POEMA BEATZ ( confirmed ✅)"
-    },
-    {
-     "name_as_written": "DJ ICHIGO",
-     "role": "dj",
-     "style": "TARRAXO",
-     "country": null,
-     "source_line": "🔰DJ ICHIGO ( confirmed ✅)"
-    },
-    {
-     "name_as_written": "DJ CHAD",
-     "role": "dj",
-     "style": "TARRAXO",
-     "country": null,
-     "source_line": "🔰DJ CHAD ( confirmed ✅)"
-    },
-    {
-     "name_as_written": "DJ FOFO J’AH",
-     "role": "dj",
-     "style": "TARRAXO",
-     "country": null,
-     "source_line": "🔰DJ FOFO J’AH ( confirmed ✅)"
-    },
-    {
-     "name_as_written": "DJ CHRIS",
-     "role": "dj",
-     "style": "TARRAXO",
-     "country": null,
-     "source_line": "🔰DJ CHRIS ( Confirmed ✅)"
-    },
-    {
-     "name_as_written": "DJ HUGO SMILE",
-     "role": "dj",
-     "style": "URBAN KIZ",
-     "country": null,
-     "source_line": "🔰DJ HUGO SMILE ( Confirmed ✅)"
-    },
-    {
-     "name_as_written": "DJ DAVID RUELA",
-     "role": "dj",
-     "style": "URBAN KIZ",
-     "country": null,
-     "source_line": "🔰DJ DAVID RUELA ( Confirmed ✅)"
-    },
-    {
-     "name_as_written": "DJ DJ SNAKES",
-     "role": "dj",
-     "style": "URBAN KIZ",
-     "country": null,
-     "source_line": "🔰DJ DJ SNAKES ( Confirmed ✅)"
-    },
-    {
-     "name_as_written": "DJ EDEN",
-     "role": "dj",
-     "style": "URBAN KIZ",
-     "country": null,
-     "source_line": "🔰DJ EDEN ( Confirmed ✅)"
-    },
-    {
-     "name_as_written": "DJ MOSE MILANO",
-     "role": "dj",
-     "style": "URBAN KIZ",
-     "country": null,
-     "source_line": "🔰DJ MOSE MILANO (Confirmed ✅)"
-    },
-    {
      "name_as_written": "JACK & SARAH",
      "role": "teacher",
      "style": "TARRAXO",
@@ -152,6 +82,76 @@
      "source_line": "🔰JONATHAN KANI ( Confirmed ✅)"
     },
     {
+     "name_as_written": "DJ POEMA BEATZ",
+     "role": "dj",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔰DJ POEMA BEATZ ( confirmed ✅)"
+    },
+    {
+     "name_as_written": "DJ ICHIGO",
+     "role": "dj",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔰DJ ICHIGO ( confirmed ✅)"
+    },
+    {
+     "name_as_written": "DJ CHAD",
+     "role": "dj",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔰DJ CHAD ( confirmed ✅)"
+    },
+    {
+     "name_as_written": "DJ FOFO J’AH",
+     "role": "dj",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔰DJ FOFO J’AH ( confirmed ✅)"
+    },
+    {
+     "name_as_written": "DJ CHRIS",
+     "role": "dj",
+     "style": "TARRAXO",
+     "country": null,
+     "source_line": "🔰DJ CHRIS ( Confirmed ✅)"
+    },
+    {
+     "name_as_written": "DJ HUGO SMILE",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "🔰DJ HUGO SMILE ( Confirmed ✅)"
+    },
+    {
+     "name_as_written": "DJ DAVID RUELA",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "🔰DJ DAVID RUELA ( Confirmed ✅)"
+    },
+    {
+     "name_as_written": "DJ DJ SNAKES",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "🔰DJ DJ SNAKES ( Confirmed ✅)"
+    },
+    {
+     "name_as_written": "DJ EDEN",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "🔰DJ EDEN ( Confirmed ✅)"
+    },
+    {
+     "name_as_written": "DJ MOSE MILANO",
+     "role": "dj",
+     "style": "URBAN KIZ",
+     "country": null,
+     "source_line": "🔰DJ MOSE MILANO (Confirmed ✅)"
+    },
+    {
      "name_as_written": "BENKOS",
      "role": "media",
      "style": null,
@@ -191,42 +191,42 @@
     {
      "feature": "competition",
      "quote": "JACK & JILL COMPETITION",
-     "rationale": "The event runs a Jack & Jill competition, which is a competition format."
+     "rationale": "The event includes a Jack & Jill competition."
     },
     {
      "feature": "multiple_rooms",
      "quote": "ROOM 💯 URBAN KIZ",
-     "rationale": "The event lists several separate rooms, one per dance style, so more than one dance room is present."
+     "rationale": "The event lists several dance rooms, one per style."
     },
     {
      "feature": "all_in_one",
      "quote": "All in one Hotel",
-     "rationale": "The parties take place in the hotel where dancers are invited to stay, so the event and accommodation share one venue."
+     "rationale": "The description states the event is all in one hotel, where the parties take place."
     },
     {
      "feature": "pre_party",
      "quote": "1 Preparty at the main hotel",
-     "rationale": "A preparty is scheduled at the main hotel before the main event."
+     "rationale": "A preparty at the main hotel is announced before the main event."
     },
     {
      "feature": "after_party",
-     "quote": "After party",
-     "rationale": "The schedule includes after parties on several days."
+     "quote": "7:00 am – 9:00 am : After party",
+     "rationale": "Scheduled after parties are listed in the programme."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "3 Socials at the main hotel",
+     "rationale": "Socials are scheduled, including afternoon socials in the programme."
     },
     {
      "feature": "workshops",
      "quote": "20:00 – 22:00 : workshops",
-     "rationale": "Dance workshops are scheduled as part of the programme."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "15:00 pm – 21:00 : Social",
-     "rationale": "Daytime and afternoon socials are scheduled on the Friday."
+     "rationale": "Dance workshops are part of the programme."
     },
     {
      "feature": "taxi_dancers",
      "quote": "GUEST TAXIS TEAMS",
-     "rationale": "Guest taxi-dancer teams are listed as present at the event."
+     "rationale": "Guest taxi-dancer teams are present at the event."
     }
    ]
   }

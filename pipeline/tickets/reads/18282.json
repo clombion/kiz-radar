@@ -3,8 +3,8 @@
  "title": "NEW YEAR 2027 – CRAZY KIZ",
  "start_date": "2026-12-31",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "cb864655c7075f56",
- "rows_at": "2026-10-27T11:55:59+00:00",
+ "prompt": "1a3b603636d758ee",
+ "rows_at": "2026-10-27T18:26:03+00:00",
  "styles": [
   "kizomba"
  ],
@@ -121,6 +121,6 @@
   }
  ],
  "rule_quotes": [
-  "price increases by €5 each month thereafter."
+  "price increases by €5 each month thereafter"
  ]
 }

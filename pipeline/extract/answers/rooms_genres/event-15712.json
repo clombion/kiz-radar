@@ -10,22 +10,22 @@
     {
      "genre": "salsa",
      "genre_as_written": "salsa",
-     "quote": "Classes for all levels: salsa, bachata, kizomba, Urban Kizomba"
+     "quote": "Classes for all levels: salsa"
     },
     {
      "genre": "bachata",
      "genre_as_written": "bachata",
-     "quote": "Classes for all levels: salsa, bachata, kizomba, Urban Kizomba"
+     "quote": "salsa, bachata"
     },
     {
      "genre": "kizomba",
      "genre_as_written": "kizomba",
-     "quote": "Classes for all levels: salsa, bachata, kizomba, Urban Kizomba"
+     "quote": "bachata, kizomba"
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "Urban Kizomba",
-     "quote": "Classes for all levels: salsa, bachata, kizomba, Urban Kizomba"
+     "quote": "kizomba, Urban Kizomba"
     }
    ]
   }

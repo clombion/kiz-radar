@@ -8,17 +8,17 @@
     {
      "feature": "all_in_one",
      "quote": "An ALL-IN-ONE experience featuring 6 official rooms",
-     "rationale": "The description calls the event an all-in-one experience and the title repeats it, and the venue is the Logis Hôtel Lyon Est, which suggests the event and accommodation share one hotel."
+     "rationale": "The description calls the event an all-in-one experience held at the Logis Hôtel Lyon Est, which suggests the parties take place in the hotel where dancers stay."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "featuring 6 official rooms and 6 unique Kizomba vibes",
-     "rationale": "The event has six official dance rooms, so it has more than one dance room."
+     "quote": "featuring 6 official rooms",
+     "rationale": "Six official dance rooms are explicitly stated, plus a secret seventh bonus room."
     },
     {
      "feature": "workshops",
      "quote": "more than 30 hours of workshops",
-     "rationale": "The description states that the event includes more than 30 hours of workshops."
+     "rationale": "The event explicitly offers more than 30 hours of workshops."
     }
    ]
   }

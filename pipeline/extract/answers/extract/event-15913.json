@@ -128,31 +128,26 @@
     {
      "feature": "all_in_one",
      "quote": "ALL-IN-ONE CONCEPT",
-     "rationale": "The concept is stated as all-in-one, and the event is held at the Hotel Alhambra where accommodation is offered."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "ACCOMMODATION + FULL BOARD (drinks included)",
-     "rationale": "Accommodation is offered as a package together with full board."
+     "rationale": "The heading presents the event as all-in-one, and the surrounding lines describe a single hotel hosting the festival."
     },
     {
      "feature": "meals_included",
-     "quote": "FULL BOARD (drinks included)",
-     "rationale": "Full board meals are included in the accommodation package."
+     "quote": "ACCOMMODATION + FULL BOARD (drinks included)",
+     "rationale": "The accommodation package explicitly includes full board meals."
     },
     {
      "feature": "workshops",
      "quote": "Workshops, parties, pool party, jacuzzi & many surprises",
-     "rationale": "Workshops are listed as part of the main program."
+     "rationale": "The main program lists workshops as part of the event."
     },
     {
      "feature": "masterclass",
      "quote": "Masterclasses",
-     "rationale": "Masterclasses are listed in the main program."
+     "rationale": "The main program lists masterclasses."
     },
     {
      "feature": "pool_party",
-     "quote": "pool party, jacuzzi & many surprises",
+     "quote": "pool party",
      "rationale": "A pool party is listed in the main program."
     },
     {

@@ -8,7 +8,24 @@
     "quote": "Two floors, two energies: UrbanKiz and Kizomba, side by side."
    },
    "class_rooms": null,
-   "rooms": [],
+   "rooms": [
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "urbankiz"
+     ],
+     "quote": "Two floors, two energies: UrbanKiz"
+    },
+    {
+     "name_as_written": null,
+     "kind": "party",
+     "genres": [
+      "kizomba"
+     ],
+     "quote": "and Kizomba, side by side."
+    }
+   ],
    "genres": [
     {
      "genre": "urbankiz",

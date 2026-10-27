@@ -91,29 +91,24 @@
    ],
    "features": [
     {
-     "feature": "all_in_one",
-     "quote": "All-in-one venue experience",
-     "rationale": "The event lists an all-in-one venue experience, indicating the parties and stay are in the same venue."
-    },
-    {
      "feature": "workshops",
      "quote": "World-class workshops",
-     "rationale": "The description lists world-class workshops in Kizomba, Urban Kiz, Tarraxo and Fusion as part of the event."
+     "rationale": "The event lists workshops in Kizomba, Urban Kiz, Tarraxo and Fusion as part of the programme."
     },
     {
      "feature": "themed_parties",
      "quote": "High-energy themed night parties",
-     "rationale": "Themed night parties are explicitly listed as part of the event."
+     "rationale": "The description promises themed night parties."
     },
     {
      "feature": "pool_party",
      "quote": "Pool parties",
-     "rationale": "Pool parties are explicitly listed among the event features."
+     "rationale": "The expectations list includes pool parties."
     },
     {
      "feature": "boat_party",
      "quote": "Signature boat party",
-     "rationale": "A signature boat party is explicitly listed as part of the event."
+     "rationale": "The event advertises a signature boat party."
     },
     {
      "feature": "competition",
@@ -121,9 +116,14 @@
      "rationale": "The battle qualifications are a competition within the event."
     },
     {
+     "feature": "all_in_one",
+     "quote": "All-in-one venue experience",
+     "rationale": "The event is described as an all-in-one venue experience, matching the main venue hotel where dancers stay."
+    },
+    {
      "feature": "partner_hotel",
      "quote": "Avani Ibn Battuta Hotel",
-     "rationale": "The hotel is named as the main venue with a booking link and group rate code, without accommodation being stated as part of the pass."
+     "rationale": "The main venue hotel is linked to a group booking code, indicating a negotiated hotel rate outside the pass."
     }
    ]
   }

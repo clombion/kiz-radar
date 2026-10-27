@@ -156,22 +156,22 @@
     {
      "feature": "pre_party",
      "quote": "Pre-Party: 20 August 2026",
-     "rationale": "The description announces a pre-party held on 20 August 2026, before the main festival dates."
+     "rationale": "The description announces a pre-party on 20 August 2026 before the festival dates."
     },
     {
      "feature": "workshops",
      "quote": "High-level workshops",
-     "rationale": "The event lists high-level workshops as part of the programme."
+     "rationale": "The event lists high-level workshops among its offerings."
     },
     {
      "feature": "competition",
      "quote": "Battle Kizz World Final",
-     "rationale": "The event includes a battle world final, which is a competition."
+     "rationale": "The event is a battle and world final, which is a competition."
     },
     {
      "feature": "partner_hotel",
-     "quote": "119€/night (2 people + breakfast)",
-     "rationale": "A negotiated hotel rate is offered at Van der Valk Hotel Paris CDG, and it is not described as part of the festival pass."
+     "quote": "Van der Valk Hotel Paris CDG",
+     "rationale": "A recommended hotel is named with a negotiated nightly rate, and accommodation is not stated as part of the pass."
     }
    ]
   }

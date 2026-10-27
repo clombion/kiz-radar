@@ -5,7 +5,7 @@
    "event_id": 14868,
    "artists": [
     {
-     "name_as_written": "The I WILL DANCE team",
+     "name_as_written": "I WILL DANCE team",
      "role": "organiser",
      "style": null,
      "country": null,
@@ -252,24 +252,39 @@
    ],
    "features": [
     {
-     "feature": "workshops",
-     "quote": "17 hours of WORKSHOPS",
-     "rationale": "The program lists 17 hours of workshops in several dance styles."
+     "feature": "all_in_one",
+     "quote": "🏩 HOTEL RESIDHOME SUITES PARIS SENART – 12 Allée du Trait d’Union – 77127 – Lieusaint (FRANCE)",
+     "rationale": "The main venue is a hotel, so the event and the accommodation are in the same place."
+    },
+    {
+     "feature": "partner_hotel",
+     "quote": "NOVOTEL Senart Golf de Greenparc (4min by car)",
+     "rationale": "The description recommends a nearby hotel that is not part of the pass."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "brunch, social dance) 12H – 15H included in the fullpass",
+     "rationale": "The brunch at the goodbye party is included in the full pass."
     },
     {
      "feature": "day_socials",
      "quote": "3 SOCIALS (afternoon)",
-     "rationale": "Three afternoon socials are part of the program."
+     "rationale": "Three afternoon socials are listed in the program."
     },
     {
      "feature": "after_party",
      "quote": "2 AFTER PARTIES",
-     "rationale": "The program lists two after parties."
+     "rationale": "Two after parties are listed in the program."
+    },
+    {
+     "feature": "workshops",
+     "quote": "17 hours of WORKSHOPS (KIZOMBA, SEMBA, URBAN KIZ, TARRAXO and AFRO HOUSE)",
+     "rationale": "Dance workshops in several styles are part of the event."
     },
     {
      "feature": "themed_parties",
      "quote": "4 DRESSED UP PARTIES DURING THE WEEKEND",
-     "rationale": "Four dressed-up parties are scheduled, which are themed nights."
+     "rationale": "Dressed-up parties are themed nights across the weekend."
     },
     {
      "feature": "dress_code",
@@ -279,22 +294,12 @@
     {
      "feature": "multiple_rooms",
      "quote": "ROOM 1 : Urban kiz, Tarraxo, Tarraxinha, Douceur, GhettoZouk, Afrobeat",
-     "rationale": "There are two named dance rooms, Room 1 and Room 2."
+     "rationale": "The event has two rooms, each with its own styles."
     },
     {
      "feature": "taxi_dancers",
      "quote": "TAXIS DANCERS TEAMS",
      "rationale": "A section lists taxi dancer teams."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "NOVOTEL Senart Golf de Greenparc (4min by car)",
-     "rationale": "Partner hotels are listed for attendees, separate from the pass."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "1 GOODBYE PARTY (brunch, social dance) 12H – 15H included in the fullpass",
-     "rationale": "The goodbye brunch is included in the full pass."
     }
    ]
   }

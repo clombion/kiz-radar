@@ -10,7 +10,7 @@
    "class_rooms": null,
    "rooms": [
     {
-     "name_as_written": null,
+     "name_as_written": "URBAN KIZ",
      "kind": "party",
      "genres": [
       "urbankiz"
@@ -18,7 +18,7 @@
      "quote": "URBAN KIZ"
     },
     {
-     "name_as_written": null,
+     "name_as_written": "KIZOMBA & SEMBA",
      "kind": "party",
      "genres": [
       "kizomba",
@@ -27,7 +27,7 @@
      "quote": "KIZOMBA & SEMBA"
     },
     {
-     "name_as_written": null,
+     "name_as_written": "BACHATA & SALSA",
      "kind": "party",
      "genres": [
       "bachata",

@@ -7,13 +7,13 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "3 days of dance classes",
-     "rationale": "The description states the festival includes three days of dance classes, which are workshops."
+     "quote": "CBKF features 3 days of dance classes",
+     "rationale": "The description states that the festival includes three days of dance classes."
     },
     {
      "feature": "all_levels_beginners",
-     "quote": "welcoming place for dancers of all skill and experience levels",
-     "rationale": "The description says the festival welcomes dancers of all skill and experience levels, including those just getting started."
+     "quote": "CBKW is a welcoming place for dancers of all skill and experience levels.",
+     "rationale": "The description says the event welcomes dancers of all skill and experience levels, including those just getting started."
     }
    ]
   }

@@ -5,7 +5,7 @@
    "event_id": 16119,
    "party_rooms": {
     "count": 3,
-    "quote": "3 salles, 3 ambiances, 100% vibes"
+    "quote": "3 salles, 3 ambiances, 100% vibes !"
    },
    "class_rooms": null,
    "rooms": [
@@ -24,8 +24,7 @@
      "kind": "party",
      "genres": [
       "kizomba",
-      "semba",
-      "other"
+      "semba"
      ],
      "quote": "Salle 2 : KCMA, Kizomba/Semba"
     },
@@ -43,13 +42,13 @@
      "quote": "Salle 1 : UrbanKiz/Tarraxo/Guetto Zouk"
     },
     {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
+     "genre": "zouk",
+     "genre_as_written": "Guetto Zouk",
      "quote": "Salle 1 : UrbanKiz/Tarraxo/Guetto Zouk"
     },
     {
-     "genre": "zouk",
-     "genre_as_written": "Guetto Zouk",
+     "genre": "tarraxo",
+     "genre_as_written": "Tarraxo",
      "quote": "Salle 1 : UrbanKiz/Tarraxo/Guetto Zouk"
     },
     {
@@ -63,14 +62,24 @@
      "quote": "Salle 2 : KCMA, Kizomba/Semba"
     },
     {
-     "genre": "other",
-     "genre_as_written": "KCMA",
-     "quote": "Salle 2 : KCMA, Kizomba/Semba"
-    },
-    {
      "genre": "afro",
      "genre_as_written": "afro",
      "quote": "▫️afro"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "ginga",
+     "quote": "ginga, banga,"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "banga",
+     "quote": "ginga, banga,"
+    },
+    {
+     "genre": "other",
+     "genre_as_written": "lady styling heels",
+     "quote": "lady styling heels"
     }
    ]
   }

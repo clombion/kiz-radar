@@ -221,7 +221,7 @@ event_id,event,start,waits_for,first_read,sales,page
 16064,Global Tarraxo Spain (Barcelona),2026-07-09,nothing,none,,https://www.goandance.com/en/event/9198/global-tarraxo-spain
 16069,KIZZ STEPP KIFF lV BIRTHDAY,2026-07-10,nothing,none,,
 16074,SKR kiz relax – Summer tropical,2026-07-10,nothing,none,,
-16079,KIZOMBA SPAIN World Congress 2026,2026-07-15,nothing,awaits_answer,,https://lasalsadelbaile.com/KizombaSpain2026
+16079,KIZOMBA SPAIN World Congress 2026,2026-07-15,nothing,none,,https://lasalsadelbaile.com/KizombaSpain2026
 16084,MR ANGOLA WEEKEND,2026-07-16,nothing,none,,
 16089,9th Annual Neo Kizomba Festival 2026,2026-07-17,nothing,none,,
 16094,2K FESTIVAL 2026 – SALSA BACHATA KIZOMBA & CO,2026-07-17,nothing,none,,
@@ -364,7 +364,7 @@ event_id,event,start,waits_for,first_read,sales,page
 16870,TKF 2026 – TOULOUSE KIZOMBA FESTIVAL,2026-10-16,nothing,none,,https://my.weezevent.com/tkf-2026-toulouse-kizomba-festival
 16875,Kiz & Coast 2026,2026-08-07,nothing,none,,
 16884,I Love Kizomba Sensual Festival Semba Festival “A Nossa Moda” 1st Edition,2026-11-06,nothing,current,,https://weeztix.shop/cnaqeexn
-16889,AURA KIZOMBA FESTIVAL III,2026-11-13,nothing,current,,https://my.weezevent.com/aurakizombafestivaliii
+16889,AURA KIZOMBA FESTIVAL III,2026-11-13,agent,disputed,,https://my.weezevent.com/aurakizombafestivaliii
 16894,Kizomba & Semba Champions Festival 2026,2026-11-13,nothing,none,offline,
 16899,MULEMBA XANGOLA FESTIVAL,2026-11-13,nothing,current,,https://my.weezevent.com/mulembaxangola2026
 16904,PARIS KIZOMBA CONGRESS 2026,2026-11-19,nothing,current,shop,https://www.kizzbee.com/product/paris-kizomba-congress-2026/

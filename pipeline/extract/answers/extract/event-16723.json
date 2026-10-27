@@ -259,29 +259,29 @@
    ],
    "features": [
     {
-     "feature": "workshops",
-     "quote": "engaging workshops",
-     "rationale": "The description advertises engaging workshops as part of the festival."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "lively afternoon parties",
-     "rationale": "Afternoon parties are offered, which are daytime socials."
+     "feature": "all_in_one",
+     "quote": "All-in-one 4-star hotel conveniently located near London Heathrow Airport",
+     "rationale": "The parties are held in the Radisson Blu Hotel, which is the venue where dancers can stay."
     },
     {
      "feature": "multiple_rooms",
      "quote": "our 4 distinct party rooms",
-     "rationale": "The festival has four separate party rooms, so more than one dance floor."
+     "rationale": "The event has four separate party rooms, each with its own rhythm."
     },
     {
-     "feature": "all_in_one",
-     "quote": "All-in-one 4-star hotel conveniently located near London Heathrow Airport",
-     "rationale": "The parties take place in the hotel where dancers can stay, as the venue is the Radisson Blu Hotel."
+     "feature": "workshops",
+     "quote": "engaging workshops",
+     "rationale": "Workshops are advertised as part of the festival."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "lively afternoon parties",
+     "rationale": "Afternoon parties and socials are part of the daytime program."
     },
     {
      "feature": "partner_hotel",
-     "quote": "hotel room at special discounted festival rates",
-     "rationale": "Hotel rooms are offered at negotiated discounted rates bought separately from the festival ticket."
+     "quote": "book your festival ticket, and hotel room at special discounted festival rates",
+     "rationale": "A negotiated discounted hotel rate is offered separately from the festival pass."
     }
    ]
   }

@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 10,
+       "amount": 10.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -28,7 +28,9 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "❌ PRICES INCREASE ❌"
+   ]
   }
  ]
 }

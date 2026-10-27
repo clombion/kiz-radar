@@ -3,8 +3,8 @@
  "title": "LOVES KIZOMBA ORIGINS 2027 🌺🐝",
  "start_date": "2027-03-04",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "cb864655c7075f56",
- "rows_at": "2026-10-27T12:04:05+00:00",
+ "prompt": "1a3b603636d758ee",
+ "rows_at": "2026-10-27T18:35:39+00:00",
  "styles": [
   "kizomba",
   "other"
@@ -52,6 +52,6 @@
  ],
  "skipped": [],
  "rule_quotes": [
-  "⚠️ Limited spots. Once they’re gone, the price goes up."
+  "Limited spots. Once they’re gone, the price goes up."
  ]
 }

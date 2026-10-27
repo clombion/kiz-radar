@@ -91,24 +91,9 @@
    ],
    "features": [
     {
-     "feature": "all_levels_beginners",
-     "quote": "Classes for all levels",
-     "rationale": "The line states that classes are offered for all levels."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Themed day & night parties",
-     "rationale": "The description lists themed day and night parties."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Beach, garden & poolside parties",
-     "rationale": "The listed parties include poolside parties."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "Beach, garden & poolside parties",
-     "rationale": "The listed parties include beach parties."
+     "feature": "meals_included",
+     "quote": "All-inclusive food & drinks",
+     "rationale": "The pass includes all-inclusive food and drinks."
     },
     {
      "feature": "accommodation_included",
@@ -116,14 +101,29 @@
      "rationale": "The Experience Pass includes a 4-night resort stay."
     },
     {
-     "feature": "meals_included",
-     "quote": "All-inclusive food & drinks",
-     "rationale": "The Experience Pass includes all-inclusive food and drinks."
+     "feature": "all_levels_beginners",
+     "quote": "Classes for all levels",
+     "rationale": "Classes are offered for all levels."
     },
     {
      "feature": "workshops",
-     "quote": "Full event access (classes + parties)",
-     "rationale": "The pass gives access to dance classes as part of the event."
+     "quote": "Classes for all levels",
+     "rationale": "Dance classes are part of the event programme."
+    },
+    {
+     "feature": "themed_parties",
+     "quote": "Themed day & night parties",
+     "rationale": "The event includes themed day and night parties."
+    },
+    {
+     "feature": "pool_party",
+     "quote": "Beach, garden & poolside parties",
+     "rationale": "Poolside parties are listed among the event's parties."
+    },
+    {
+     "feature": "beach_party",
+     "quote": "Beach, garden & poolside parties",
+     "rationale": "Beach parties are listed among the event's parties."
     }
    ]
   }

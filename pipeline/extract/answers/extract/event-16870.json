@@ -7,77 +7,77 @@
     {
      "name_as_written": "Jojo & Jenny",
      "role": "teacher",
-     "style": "Artists line up",
+     "style": null,
      "country": null,
      "source_line": "✨️Jojo & Jenny"
     },
     {
      "name_as_written": "Akram & Sara",
      "role": "teacher",
-     "style": "Artists line up",
+     "style": null,
      "country": null,
      "source_line": "✨️Akram & Sara"
     },
     {
      "name_as_written": "Py & Sarah",
      "role": "teacher",
-     "style": "Artists line up",
+     "style": null,
      "country": null,
      "source_line": "✨️Py & Sarah"
     },
     {
      "name_as_written": "Jah I have",
      "role": "teacher",
-     "style": "Artists line up",
+     "style": null,
      "country": null,
      "source_line": "✨️Jah I have"
     },
     {
      "name_as_written": "Friend & Julien",
      "role": "teacher",
-     "style": "Artists line up",
+     "style": null,
      "country": null,
      "source_line": "✨️ Friend & Julien"
     },
     {
      "name_as_written": "Moorea",
      "role": "teacher",
-     "style": "Artists line up",
+     "style": null,
      "country": null,
      "source_line": "✨️Moorea"
     },
     {
      "name_as_written": "Janna",
      "role": "teacher",
-     "style": "Artists line up",
+     "style": null,
      "country": null,
      "source_line": "✨️Janna"
     },
     {
      "name_as_written": "T Peak & Dielika",
      "role": "teacher",
-     "style": "Artists line up",
+     "style": null,
      "country": null,
      "source_line": "✨️T Peak & Dielika"
     },
     {
      "name_as_written": "Kristel Ju",
      "role": "teacher",
-     "style": "Artists line up",
+     "style": null,
      "country": null,
      "source_line": "✨️Kristel Ju"
     },
     {
      "name_as_written": "Seb & Sarita",
      "role": "teacher",
-     "style": "Artists line up",
+     "style": null,
      "country": null,
      "source_line": "✨️ Seb & Sarita"
     },
     {
      "name_as_written": "FX",
      "role": "teacher",
-     "style": "Artists line up",
+     "style": null,
      "country": null,
      "source_line": "✨️FX"
     },
@@ -159,17 +159,17 @@
     {
      "feature": "multiple_rooms",
      "quote": "2 rooms, 2 atmospheres in the evening:",
-     "rationale": "The description states the event has two dance rooms with different atmospheres."
+     "rationale": "The event has two dance rooms with different atmospheres."
     },
     {
      "feature": "partner_hotel",
      "quote": "Partner hotels",
-     "rationale": "A section lists partner hotels with booking links, without the accommodation being part of the pass."
+     "rationale": "The event names partner hotels with booking links."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "Airport shuttle",
-     "rationale": "The Novotel listing mentions an airport shuttle."
+     "rationale": "A shuttle to the airport is mentioned for the Novotel hotel."
     }
    ]
   }

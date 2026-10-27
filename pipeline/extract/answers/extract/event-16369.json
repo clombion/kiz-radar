@@ -13,12 +13,12 @@
     {
      "feature": "pool_party",
      "quote": "Sunset pool & beach party",
-     "rationale": "The quote names a sunset pool party."
+     "rationale": "The quote names a sunset pool party as one of the event's activities."
     },
     {
      "feature": "beach_party",
      "quote": "Sunset pool & beach party",
-     "rationale": "The same listed item names a beach party."
+     "rationale": "The same quote also names a beach party as one of the event's activities."
     }
    ]
   }

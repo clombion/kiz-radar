@@ -89,12 +89,12 @@
     {
      "feature": "meals_included",
      "quote": "Full board included",
-     "rationale": "Full board is included in the stay, so meals are part of the package."
+     "rationale": "Full board, meaning meals, is included in the event package."
     },
     {
      "feature": "accommodation_included",
      "quote": "Just unpack your bags, we’ll take care of everything.",
-     "rationale": "Telling guests to just unpack their bags implies the accommodation is included in the package."
+     "rationale": "Telling guests to just unpack their bags implies accommodation is included in the package."
     }
    ]
   }

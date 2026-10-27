@@ -72,27 +72,27 @@
     {
      "feature": "workshops",
      "quote": "With workshops, collabs and training moments by:",
-     "rationale": "The description states that workshops, collabs and training moments are part of the event."
+     "rationale": "The description states that workshops are part of the event."
     },
     {
      "feature": "bootcamp_intensive",
-     "quote": "Intensive #1",
-     "rationale": "Intensive sessions are scheduled as part of the programme."
+     "quote": "Intensive #2 | Dwé & Gaby",
+     "rationale": "The schedule lists intensive training sessions."
     },
     {
      "feature": "pre_party",
      "quote": "Pre-Party @ Rico Latino",
-     "rationale": "A pre-party is scheduled on Thursday before the main weekend."
+     "rationale": "A pre-party is scheduled on Thursday before the main event."
     },
     {
      "feature": "day_socials",
      "quote": "16:00–20:00 Social",
-     "rationale": "A daytime social is scheduled on Saturday afternoon."
+     "rationale": "A daytime social is listed on Saturday afternoon."
     },
     {
      "feature": "partner_hotel",
-     "quote": "Official Accommodation Partner: Little Monkey (10min walk)",
-     "rationale": "A partner accommodation is recommended and linked to the event, without being part of the pass."
+     "quote": "Official Accommodation Partner: Little Monkey",
+     "rationale": "The event names an official partner hotel for accommodation, which is not part of the pass."
     }
    ]
   }

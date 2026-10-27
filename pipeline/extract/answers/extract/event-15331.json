@@ -261,22 +261,22 @@
     {
      "feature": "workshops",
      "quote": "60 + Workshops",
-     "rationale": "The listing states there are more than 60 workshops at the festival."
+     "rationale": "The listed '60 + Workshops' shows dance workshops are part of the event."
     },
     {
      "feature": "shows",
-     "quote": "– Shows",
-     "rationale": "The description lists Shows as part of the event programme."
+     "quote": "Shows",
+     "rationale": "The event lists 'Shows' among its offerings."
     },
     {
      "feature": "competition",
      "quote": "Jack & Jill",
-     "rationale": "Jack & Jill is a partner-based dance competition listed in the programme."
+     "rationale": "Jack & Jill is a partner dance competition format listed in the event."
     },
     {
      "feature": "multiple_rooms",
      "quote": "4 dance floors",
-     "rationale": "Four dance floors means more than one dance room is available."
+     "rationale": "Stating four dance floors means more than one dance room is available."
     }
    ]
   }

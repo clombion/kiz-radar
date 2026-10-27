@@ -7,98 +7,91 @@
     {
      "name_as_written": "Mikas Cabral",
      "role": "teacher",
-     "style": "Kizomba",
+     "style": "KIZOMBA",
      "country": null,
      "source_line": "🌍 Mikas Cabral"
     },
     {
-     "name_as_written": "Mikas Cabral",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "MIKAS CABRAL"
-    },
-    {
      "name_as_written": "Ricardo Ferreira",
      "role": "teacher",
-     "style": "Kizomba",
+     "style": "KIZOMBA",
      "country": "Portugal",
      "source_line": "🌍 Ricardo Ferreira (Portugal)"
     },
     {
      "name_as_written": "Riikka Maria",
      "role": "teacher",
-     "style": "Kizomba",
+     "style": "KIZOMBA",
      "country": "Finland",
      "source_line": "🌍 Riikka Maria (Finland)"
     },
     {
      "name_as_written": "Helio Santos",
      "role": "teacher",
-     "style": "Kizomba",
+     "style": "KIZOMBA",
      "country": "Cape Verde",
      "source_line": "🌍 Helio Santos (Cape Verde)"
     },
     {
      "name_as_written": "Lucas, Exclusive",
      "role": "teacher",
-     "style": "Kizomba",
+     "style": "KIZOMBA",
      "country": "Portugal",
      "source_line": "🌍 Lucas, Exclusive (Portugal)"
     },
     {
      "name_as_written": "Ebe Nezer",
      "role": "teacher",
-     "style": "Kizomba",
+     "style": "KIZOMBA",
      "country": "Norway",
      "source_line": "🌍 Ebe Nezer (Norway)"
     },
     {
      "name_as_written": "Valdemiro Machado",
      "role": "teacher",
-     "style": "Kizomba",
+     "style": "KIZOMBA",
      "country": "Angola",
      "source_line": "🌍 Valdemiro Machado (Angola)"
     },
     {
      "name_as_written": "Skate Stome",
      "role": "teacher",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": null,
      "source_line": "🌍 Skate Stome (Paris)"
     },
     {
      "name_as_written": "Romeo Kuolo",
      "role": "teacher",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": "Swe",
      "source_line": "🌍 Romeo Kuolo (Swe)"
     },
     {
      "name_as_written": "Mårten Angner",
      "role": "teacher",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": "Swe",
      "source_line": "🌍 Mårten Angner (Swe)"
     },
     {
      "name_as_written": "Christina & Cédric",
      "role": "teacher",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": null,
      "source_line": "🌍 Christina & Cédric (Bergen)"
     },
     {
      "name_as_written": "Uliana & Daniel",
      "role": "teacher",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": "Ukr & Nor",
      "source_line": "🌍 Uliana & Daniel (Ukr & Nor)"
     },
     {
      "name_as_written": "Kyioshi",
      "role": "teacher",
-     "style": "Urban Kiz",
+     "style": "URBAN KIZ",
      "country": "Norway",
      "source_line": "🌍 Kyioshi (Norway)"
     },
@@ -115,6 +108,13 @@
      "style": null,
      "country": null,
      "source_line": "⭐ Taxi Dancers from Bergen"
+    },
+    {
+     "name_as_written": "Mikas Cabral",
+     "role": "performer",
+     "style": null,
+     "country": null,
+     "source_line": "MIKAS CABRAL"
     },
     {
      "name_as_written": "Dance In Norway",
@@ -147,22 +147,22 @@
     {
      "feature": "workshops",
      "quote": "workshop Kizomba",
-     "rationale": "Kizomba and Urban Kiz workshops are scheduled before the parties."
+     "rationale": "The party schedule lists dance workshops in Kizomba and Urban Kiz before the parties."
     },
     {
      "feature": "taxi_dancers",
      "quote": "Taxi Dancers from Stockholm",
-     "rationale": "Named taxi dancer teams from Stockholm and Bergen are listed."
+     "rationale": "Taxi dancers from Stockholm and Bergen are listed as present at the event."
     },
     {
      "feature": "day_socials",
      "quote": "22.Nov Sunday SOCIAL",
-     "rationale": "A daytime Sunday social is scheduled from 15:00."
+     "rationale": "A daytime Sunday social is scheduled from 15:00 to 18:00 with DJs."
     },
     {
      "feature": "multiple_rooms",
      "quote": "Djs 2 rooms",
-     "rationale": "The parties have DJs playing in two rooms."
+     "rationale": "The parties have DJs in two rooms, meaning more than one dance floor."
     }
    ]
   }

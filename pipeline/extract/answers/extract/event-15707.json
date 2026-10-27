@@ -6,7 +6,7 @@
    "artists": [
     {
      "name_as_written": "Steve Bakoula",
-     "role": "teacher",
+     "role": "organiser",
      "style": null,
      "country": null,
      "source_line": "Dance to the rhythms of salsa, bachata, and kizomba with your captain, Steve Bakoula! 🎵💃🕺"
@@ -23,39 +23,39 @@
      "role": "organiser",
      "style": null,
      "country": null,
-     "source_line": "Payment must be made by check payable to Martini Voyages: in 1, 2, or 3 installments maximum, cashed 1 month apart if you wish. Holiday vouchers are also accepted 💡"
+     "source_line": "– Gaelle / Martini Voyages:"
     }
    ],
    "features": [
     {
      "feature": "cruise",
      "quote": "Cruise on the Costa Deliziosa",
-     "rationale": "The price includes a cruise on a named ship, so the event takes place on a cruise ship."
+     "rationale": "The description states the event takes place aboard a cruise ship."
     },
     {
      "feature": "workshops",
      "quote": "Daily dance lessons (2 hours of lessons per day onboard)",
-     "rationale": "Daily dance lessons are part of the package, so dance classes are part of the event."
+     "rationale": "Daily dance lessons are part of the cruise package."
     },
     {
      "feature": "themed_parties",
-     "quote": "Enjoy themed SBK evenings, dance classes, and relaxing moments.",
-     "rationale": "Themed evenings are offered as part of the cruise programme."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Full board onboard",
-     "rationale": "The price includes full board, meaning meals are included in the package."
+     "quote": "themed SBK evenings",
+     "rationale": "The event offers themed evenings with a dress theme."
     },
     {
      "feature": "accommodation_included",
      "quote": "Mandatory onboard accommodation package",
-     "rationale": "The cabin accommodation package is mandatory and included in the price."
+     "rationale": "The price includes the onboard accommodation package."
+    },
+    {
+     "feature": "meals_included",
+     "quote": "Full board onboard",
+     "rationale": "Full board meals are included in the price."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "Round-trip bus transfer Nice/Venice",
-     "rationale": "A round-trip bus transfer between Nice and Venice is included in the price."
+     "rationale": "A round-trip bus transfer is included in the price."
     }
    ]
   }

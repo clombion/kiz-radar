@@ -135,37 +135,37 @@
     {
      "feature": "workshops",
      "quote": "Workshops for all levels & styles",
-     "rationale": "The event lists workshops as part of what is in store."
+     "rationale": "The event offers workshops for dancers of all levels and styles."
     },
     {
      "feature": "all_levels_beginners",
      "quote": "Workshops for all levels & styles",
-     "rationale": "Workshops are offered for all levels, so the event suits all levels."
+     "rationale": "Stating workshops are for all levels shows it suits every level including beginners."
     },
     {
      "feature": "multiple_rooms",
      "quote": "TWO rooms: Kizomba/Semba + UrbanKiz",
-     "rationale": "The event states it has two dance rooms."
+     "rationale": "Two separate dance rooms are listed, one for Kizomba/Semba and one for UrbanKiz."
     },
     {
-     "feature": "pre_party",
-     "quote": "Pre-Party: Thursday @ Café Sør",
-     "rationale": "A Thursday pre-party is listed among the venues."
-    },
-    {
-     "feature": "after_party",
-     "quote": "Afterparty from 2AM",
-     "rationale": "An afterparty from 2AM at Dancecity is listed."
+     "feature": "dress_code",
+     "quote": "Full Schedule & Dress Code",
+     "rationale": "A dress code is stated in the schedule section."
     },
     {
      "feature": "themed_parties",
      "quote": "Friday – White – Celebration of culture",
-     "rationale": "Each night has a dress theme such as White or African, which makes them themed parties."
+     "rationale": "The parties have dress themes per night, such as white, African and sleek casual."
     },
     {
-     "feature": "dress_code",
-     "quote": "Dress Code",
-     "rationale": "The schedule heading explicitly names a dress code with per-day themes."
+     "feature": "pre_party",
+     "quote": "Pre-Party: Thursday",
+     "rationale": "A pre-party is held on Thursday before the main event."
+    },
+    {
+     "feature": "after_party",
+     "quote": "Afterparty from 2AM",
+     "rationale": "An afterparty starting at 2AM is listed at Dancecity."
     }
    ]
   }

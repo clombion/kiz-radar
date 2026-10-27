@@ -5,32 +5,39 @@
    "event_id": 15913,
    "party_rooms": null,
    "class_rooms": null,
-   "rooms": [],
+   "rooms": [
+    {
+     "name_as_written": "main ballroom",
+     "kind": "unspecified",
+     "genres": [],
+     "quote": "1 main ballroom"
+    }
+   ],
    "genres": [
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Kizomba – Semba"
+     "quote": "Kizomba – Semba – Tarraxinha – Zouk – Kompa – Ghetto Zouk"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "Kizomba – Semba"
+     "quote": "Kizomba – Semba – Tarraxinha"
     },
     {
      "genre": "tarraxinha",
      "genre_as_written": "Tarraxinha",
-     "quote": "Semba – Tarraxinha"
+     "quote": "Semba – Tarraxinha – Zouk"
     },
     {
      "genre": "zouk",
      "genre_as_written": "Zouk",
-     "quote": "Zouk – Kompa – Ghetto Zouk"
+     "quote": "Tarraxinha – Zouk – Kompa"
     },
     {
      "genre": "kompa",
      "genre_as_written": "Kompa",
-     "quote": "Zouk – Kompa"
+     "quote": "Zouk – Kompa – Ghetto Zouk"
     }
    ]
   }

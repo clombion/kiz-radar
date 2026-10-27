@@ -7,63 +7,63 @@
     {
      "name_as_written": "Cornel & Rithika",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "BACHATA ARTISTS",
      "country": null,
      "source_line": "🌅 Cornel & Rithika"
     },
     {
      "name_as_written": "Melvin & Gatica",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "BACHATA ARTISTS",
      "country": null,
      "source_line": "🌅 Melvin & Gatica"
     },
     {
      "name_as_written": "Abdel & Lety",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "BACHATA ARTISTS",
      "country": null,
      "source_line": "🌅 Abdel & Lety"
     },
     {
      "name_as_written": "Willy & Lauriane",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "BACHATA ARTISTS",
      "country": null,
      "source_line": "🌅 Willy & Lauriane"
     },
     {
      "name_as_written": "Sakis & Mia",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "BACHATA ARTISTS",
      "country": null,
      "source_line": "🌅 Sakis & Mia"
     },
     {
      "name_as_written": "York & Lisa",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "BACHATA ARTISTS",
      "country": null,
      "source_line": "🌅 York & Lisa"
     },
     {
      "name_as_written": "Cavalier El Craco",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "BACHATA ARTISTS",
      "country": null,
      "source_line": "🌅 Cavalier El Craco"
     },
     {
      "name_as_written": "Joan & Franceska",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "BACHATA ARTISTS",
      "country": null,
      "source_line": "🌅 Joan & Franceska"
     },
     {
      "name_as_written": "Samantha",
      "role": "teacher",
-     "style": "BACHATA",
+     "style": "BACHATA ARTISTS",
      "country": null,
      "source_line": "🌅 Samantha"
     },
@@ -112,49 +112,49 @@
     {
      "name_as_written": "Jojo & Jenny",
      "role": "teacher",
-     "style": "KIZOMBA",
+     "style": "KIZOMBA ARTISTS",
      "country": null,
      "source_line": "🌊 Jojo & Jenny"
     },
     {
      "name_as_written": "Dwe & Gaby",
      "role": "teacher",
-     "style": "KIZOMBA",
+     "style": "KIZOMBA ARTISTS",
      "country": null,
      "source_line": "🌊 Dwe & Gaby"
     },
     {
      "name_as_written": "Chamalo & Jalyssa",
      "role": "teacher",
-     "style": "KIZOMBA",
+     "style": "KIZOMBA ARTISTS",
      "country": null,
      "source_line": "🌊 Chamalo & Jalyssa"
     },
     {
      "name_as_written": "Jesus & Anni",
      "role": "teacher",
-     "style": "KIZOMBA",
+     "style": "KIZOMBA ARTISTS",
      "country": null,
      "source_line": "🌊 Jesus & Anni"
     },
     {
      "name_as_written": "Tony & Carla",
      "role": "teacher",
-     "style": "KIZOMBA",
+     "style": "KIZOMBA ARTISTS",
      "country": null,
      "source_line": "🌊 Tony & Carla"
     },
     {
      "name_as_written": "Justinho",
      "role": "teacher",
-     "style": "KIZOMBA",
+     "style": "KIZOMBA ARTISTS",
      "country": null,
      "source_line": "🌊 Justinho"
     },
     {
      "name_as_written": "Lucas & Desiree",
      "role": "teacher",
-     "style": "KIZOMBA",
+     "style": "KIZOMBA ARTISTS",
      "country": null,
      "source_line": "🌊 Lucas & Desiree"
     },
@@ -252,21 +252,28 @@
     {
      "name_as_written": "Panagiotis & Myrto",
      "role": "teacher",
-     "style": "SALSA",
+     "style": "SALSA ARTISTS",
      "country": null,
      "source_line": "🍹 Panagiotis & Myrto"
     },
     {
      "name_as_written": "Adrian & Anita",
      "role": "teacher",
-     "style": "SALSA",
+     "style": "SALSA ARTISTS",
      "country": null,
      "source_line": "🍹 Adrian & Anita"
     },
     {
+     "name_as_written": "Dancefloor",
+     "role": "teacher",
+     "style": "SALSA ARTISTS",
+     "country": null,
+     "source_line": "🍹 Dancefloor"
+    },
+    {
      "name_as_written": "Yoyo Flow",
      "role": "teacher",
-     "style": "SALSA",
+     "style": "SALSA ARTISTS",
      "country": null,
      "source_line": "🍹 Yoyo Flow"
     },
@@ -351,8 +358,8 @@
    "features": [
     {
      "feature": "partner_hotel",
-     "quote": "🏨 FAFA :",
-     "rationale": "A hotel named FAFA is listed under the hotel booking section, which points to a recommended hotel for the event."
+     "quote": "Passes & Hotel rooms",
+     "rationale": "The refund policy lists hotel rooms as a separate sale from passes, indicating a hotel booking offered alongside the event."
     },
     {
      "feature": "dress_code",
@@ -361,8 +368,8 @@
     },
     {
      "feature": "themed_parties",
-     "quote": "🌺 THURSDAY: 🐆 Animal Print",
-     "rationale": "Each day has a dress theme such as Animal Print, which describes themed nights."
+     "quote": "Arabian Nights",
+     "rationale": "The daily dress codes such as Arabian Nights are themed nights with a dress theme."
     }
    ]
   }

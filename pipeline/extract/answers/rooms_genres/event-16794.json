@@ -11,8 +11,6 @@
      "kind": "unspecified",
      "genres": [
       "salsa",
-      "other",
-      "other",
       "other"
      ],
      "quote": "Salsa Room (Salsa, ChaChaCha, Timba, Mambo)"
@@ -50,7 +48,6 @@
      "name_as_written": "Chicago Stepping/Detroit Ballroom",
      "kind": "unspecified",
      "genres": [
-      "other",
       "other"
      ],
      "quote": "Chicago Stepping/Detroit Ballroom (R&B, Soul, Jazz-funk, and Neo-soul)"
@@ -80,17 +77,12 @@
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "Kizomba, Konpa, Semba, Afrohouse)"
+     "quote": "Kizomba, Konpa, Semba, Afrohouse"
     },
     {
      "genre": "afro",
      "genre_as_written": "Afrohouse",
-     "quote": "Kizomba, Konpa, Semba, Afrohouse)"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghetto-Zouk",
-     "quote": "Ghetto-Zouk, Brazilian Zouk, Tarraxinha, and remixes with R&B"
+     "quote": "Kizomba, Konpa, Semba, Afrohouse"
     },
     {
      "genre": "urbankiz",
@@ -98,24 +90,29 @@
      "quote": "Urbankiz/BZouk Room"
     },
     {
+     "genre": "zouk",
+     "genre_as_written": "BZouk",
+     "quote": "Urbankiz/BZouk Room"
+    },
+    {
      "genre": "tarraxinha",
      "genre_as_written": "Tarraxinha",
-     "quote": "Brazilian Zouk, Tarraxinha, and remixes"
+     "quote": "Ghetto-Zouk, Brazilian Zouk, Tarraxinha"
     },
     {
      "genre": "other",
      "genre_as_written": "ChaChaCha",
-     "quote": "Salsa, ChaChaCha, Timba, Mambo"
+     "quote": "Salsa Room (Salsa, ChaChaCha, Timba, Mambo)"
     },
     {
      "genre": "other",
      "genre_as_written": "Timba",
-     "quote": "Salsa, ChaChaCha, Timba, Mambo"
+     "quote": "Salsa Room (Salsa, ChaChaCha, Timba, Mambo)"
     },
     {
      "genre": "other",
      "genre_as_written": "Mambo",
-     "quote": "Salsa, ChaChaCha, Timba, Mambo"
+     "quote": "Salsa Room (Salsa, ChaChaCha, Timba, Mambo)"
     },
     {
      "genre": "other",

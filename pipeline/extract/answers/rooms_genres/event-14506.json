@@ -5,7 +5,7 @@
    "event_id": 14506,
    "party_rooms": {
     "count": 2,
-    "quote": "2 Rooms Welcome Party"
+    "quote": "Lets GO All Out in 2 Rooms"
    },
    "class_rooms": null,
    "rooms": [],
@@ -13,42 +13,42 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Kizomba"
+     "quote": "Expect Kizomba, Semba, Zouk, Ghetto Zouk, Kompa and Taraxinha."
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "Semba"
+     "quote": "Expect Kizomba, Semba, Zouk, Ghetto Zouk, Kompa and Taraxinha."
     },
     {
      "genre": "zouk",
      "genre_as_written": "Zouk",
-     "quote": "Zouk"
+     "quote": "Expect Kizomba, Semba, Zouk, Ghetto Zouk, Kompa and Taraxinha."
     },
     {
      "genre": "kompa",
      "genre_as_written": "Kompa",
-     "quote": "Kompa"
+     "quote": "Expect Kizomba, Semba, Zouk, Ghetto Zouk, Kompa and Taraxinha."
     },
     {
      "genre": "tarraxinha",
      "genre_as_written": "Taraxinha",
-     "quote": "Taraxinha"
+     "quote": "Expect Kizomba, Semba, Zouk, Ghetto Zouk, Kompa and Taraxinha."
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "Urban Kiz",
-     "quote": "Urban Kiz"
+     "quote": "Expect Urban Kiz, Tarraxo, Douceur and Fusion"
     },
     {
      "genre": "tarraxo",
      "genre_as_written": "Tarraxo",
-     "quote": "Tarraxo"
+     "quote": "Expect Urban Kiz, Tarraxo, Douceur and Fusion"
     },
     {
      "genre": "douceur",
      "genre_as_written": "Douceur",
-     "quote": "Douceur"
+     "quote": "Expect Urban Kiz, Tarraxo, Douceur and Fusion"
     }
    ]
   }

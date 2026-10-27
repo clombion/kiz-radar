@@ -13,12 +13,12 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 70,
+       "amount": 70.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "03-01",
-       "until": "03-31",
+       "from": null,
+       "until": null,
        "quantity": 50,
        "door": false,
        "sold_out": false,
@@ -26,12 +26,12 @@
        "quote": "⏱️ March: €70.00"
       },
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "04-01",
-       "until": "04-30",
+       "from": null,
+       "until": null,
        "quantity": 50,
        "door": false,
        "sold_out": false,
@@ -39,12 +39,12 @@
        "quote": "✅ April: €80.00"
       },
       {
-       "amount": 90,
+       "amount": 90.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "05-01",
-       "until": "05-31",
+       "from": null,
+       "until": null,
        "quantity": 50,
        "door": false,
        "sold_out": false,
@@ -52,12 +52,12 @@
        "quote": "✅ May: €90.00"
       },
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "06-01",
-       "until": "09-30",
+       "from": null,
+       "until": null,
        "quantity": 50,
        "door": false,
        "sold_out": false,
@@ -65,12 +65,12 @@
        "quote": "✅ June – September**: €100.00"
       },
       {
-       "amount": 110,
+       "amount": 110.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "10-01",
-       "until": "10-31",
+       "from": null,
+       "until": null,
        "quantity": 50,
        "door": false,
        "sold_out": false,
@@ -78,12 +78,12 @@
        "quote": "✅ October: €110.00"
       },
       {
-       "amount": 120,
+       "amount": 120.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "11-01",
-       "until": "11-30",
+       "from": null,
+       "until": null,
        "quantity": 50,
        "door": false,
        "sold_out": false,
@@ -91,12 +91,12 @@
        "quote": "✅ November: €120.00"
       },
       {
-       "amount": 130,
+       "amount": 130.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "12-01",
-       "until": "12-31",
+       "from": null,
+       "until": null,
        "quantity": 50,
        "door": false,
        "sold_out": false,
@@ -104,12 +104,12 @@
        "quote": "✅ December: €130.00"
       },
       {
-       "amount": 140,
+       "amount": 140.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "01-01",
-       "until": "01-31",
+       "from": null,
+       "until": null,
        "quantity": 50,
        "door": false,
        "sold_out": false,
@@ -117,17 +117,155 @@
        "quote": "✅ January: €140.00"
       },
       {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
-       "from": "02-01",
-       "until": "02-28",
+       "from": null,
+       "until": null,
        "quantity": 50,
        "door": false,
        "sold_out": false,
        "current": false,
        "quote": "✅ February: €150.00"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 100.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "– Single room: €100.00"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 70.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "– Double room: €70.00"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 65.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "– Triple room: €65.00"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 125.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "– Single room: €125.00"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 95.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "– Double room: €95.00"
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "amount": 90.0,
+       "currency": "EUR",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "– Triple room: €90.00"
       }
      ]
     }

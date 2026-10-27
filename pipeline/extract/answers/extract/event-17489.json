@@ -78,8 +78,18 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "Full Pass (workshops, social dance & party)",
-     "rationale": "The pass explicitly includes workshops, so dance classes are part of the event."
+     "quote": "Social dance, workshops & party",
+     "rationale": "The programme lists workshops alongside social dancing and parties on the Friday and Saturday."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Non-stop workshops & social dancing until 9 PM",
+     "rationale": "Sunday's social dancing runs through the day until 9 PM, which is a daytime social."
+    },
+    {
+     "feature": "all_in_one",
+     "quote": "On-site rooms & brunch (9 AM – 1 PM)",
+     "rationale": "Accommodation is offered in on-site rooms at the same venue as the event, suggesting the parties and stay share one location."
     }
    ]
   }

@@ -6,29 +6,29 @@
    "artists": [],
    "features": [
     {
-     "feature": "shows",
-     "quote": "National Shows",
-     "rationale": "The description lists 'National Shows' as part of the programme, so shows by artists are present."
-    },
-    {
-     "feature": "shows",
-     "quote": "International Shows",
-     "rationale": "The description lists 'International Shows' as part of the programme, so shows by artists are present."
+     "feature": "pool_party",
+     "quote": "Pool Parties",
+     "rationale": "The description lists Pool Parties among the event's offerings."
     },
     {
      "feature": "workshops",
      "quote": "Workshops",
-     "rationale": "The listed programme item 'Workshops' shows that dance classes are part of the event."
+     "rationale": "The list of event elements includes Workshops."
+    },
+    {
+     "feature": "shows",
+     "quote": "International Shows",
+     "rationale": "The event lists International Shows, which are performances by artists."
     },
     {
      "feature": "multiple_rooms",
      "quote": "5 Rooms, 5 Atmospheres",
-     "rationale": "The quote states there are five rooms, which means more than one dance room."
+     "rationale": "The description states the event has five rooms."
     },
     {
-     "feature": "pool_party",
-     "quote": "Pool Parties",
-     "rationale": "The programme explicitly lists pool parties."
+     "feature": "all_in_one",
+     "quote": "On-site accommodation with a swimming pool",
+     "rationale": "The festival takes place at a complex that also offers on-site accommodation, so event and accommodation share one venue."
     }
    ]
   }

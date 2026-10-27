@@ -113,18 +113,13 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "featuring classes in Kizomba, Semba, Urbankiz, and Tarraxo",
-     "rationale": "The event offers dance classes in several styles."
-    },
-    {
-     "feature": "workshops",
      "quote": "Approx. 12 hours of workshops over the weekend",
-     "rationale": "Workshops are explicitly part of the weekend programme."
+     "rationale": "The description states that about 12 hours of workshops take place over the weekend."
     },
     {
      "feature": "day_socials",
      "quote": "2 Socials",
-     "rationale": "Two daytime socials are scheduled on Saturday and Sunday afternoons."
+     "rationale": "Two socials are held, including on Saturday and Sunday afternoons."
     },
     {
      "feature": "taxi_dancers",
@@ -133,8 +128,8 @@
     },
     {
      "feature": "partner_hotel",
-     "quote": "Event partner hotels",
-     "rationale": "The event lists partner hotels, with a discount for participants at one of them."
+     "quote": "Event partner hotels:",
+     "rationale": "The description lists partner hotels for participants."
     }
    ]
   }

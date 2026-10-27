@@ -33,6 +33,13 @@
      "source_line": "Organized by: Aix Riviera Tourist Office, Musica Cubana Association, and Nicolas El Buceador"
     },
     {
+     "name_as_written": "Stef Profido",
+     "role": "media",
+     "style": null,
+     "country": null,
+     "source_line": "Graphic Designer: Stef Profido"
+    },
+    {
      "name_as_written": "Yanet Ochun Chango",
      "role": "teacher",
      "style": null,
@@ -212,17 +219,17 @@
     {
      "feature": "workshops",
      "quote": "54 hours of workshops (+9 hours)",
-     "rationale": "The description states that workshops are part of the festival, with a stated number of hours."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 rooms / 3 vibes",
-     "rationale": "Each evening has three separate rooms, showing more than one dance floor."
+     "rationale": "The description states a total of 54 hours of dance workshops, plus 9 more hours."
     },
     {
      "feature": "shows",
      "quote": "Local and international artists, 19 instructors, and 13 DJs will be performing",
-     "rationale": "The text says the artists will perform at the festival."
+     "rationale": "The artists and DJs are stated to be performing at the festival."
+    },
+    {
+     "feature": "multiple_rooms",
+     "quote": "3 rooms / 3 vibes",
+     "rationale": "Each evening is run across three separate dance rooms, Salsa, Bachata and Kizomba."
     }
    ]
   }

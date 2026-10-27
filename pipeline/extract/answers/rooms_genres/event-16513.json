@@ -15,7 +15,7 @@
      "genres": [
       "bachata"
      ],
-     "quote": "800m² 100% bachata room"
+     "quote": "an 800m² 100% bachata room"
     },
     {
      "name_as_written": null,
@@ -29,9 +29,9 @@
      "name_as_written": null,
      "kind": "party",
      "genres": [
-      "salsa"
+      "tarraxo"
      ],
-     "quote": "100% salsa porto room"
+     "quote": "one urban tarraxo room"
     },
     {
      "name_as_written": null,
@@ -39,36 +39,41 @@
      "genres": [
       "salsa"
      ],
-     "quote": "100% Cuban salsa room"
+     "quote": "a 100% salsa porto room"
     },
     {
      "name_as_written": null,
-     "kind": "unspecified",
+     "kind": "party",
      "genres": [
-      "tarraxo"
+      "salsa"
      ],
-     "quote": "one urban tarraxo room"
+     "quote": "a 100% Cuban salsa room"
     }
    ],
    "genres": [
     {
      "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "🟣 BACHATA"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "🔵 SALSA"
+     "genre_as_written": "bachata",
+     "quote": "an 800m² 100% bachata room"
     },
     {
      "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "🟢 KIZOMBA"
+     "genre_as_written": "kizomba",
+     "quote": "2 100% kizomba rooms"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "salsa",
+     "quote": "a 100% salsa porto room"
+    },
+    {
+     "genre": "salsa",
+     "genre_as_written": "Cuban salsa",
+     "quote": "a 100% Cuban salsa room"
     },
     {
      "genre": "tarraxo",
-     "genre_as_written": "tarraxo",
+     "genre_as_written": "urban tarraxo",
      "quote": "one urban tarraxo room"
     }
    ]

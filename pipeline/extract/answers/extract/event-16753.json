@@ -36,7 +36,7 @@
      "name_as_written": "DAVIDE (IT) & CILENE (CV)",
      "role": "teacher",
      "style": null,
-     "country": "IT, CV",
+     "country": null,
      "source_line": "👨‍🎓 ✨ National and international instructors already confirmed: MATS (CV)& STEPHANIE (CV); LUKASZ & KAROLINA (VAMULA PL); DAVIDE (IT) & CILENE (CV); ESTEBAN & SANDRA (ESP); Soon more news…"
     },
     {
@@ -56,44 +56,44 @@
    ],
    "features": [
     {
-     "feature": "all_levels_beginners",
-     "quote": "Beginners and advanced dancers!",
-     "rationale": "The description explicitly welcomes beginners alongside advanced dancers."
-    },
-    {
      "feature": "accommodation_included",
      "quote": "7 Nights accommodation on an ALL-INCLUSIVE basis (Meals, drinks and snacks).",
      "rationale": "The flight package explicitly includes seven nights of accommodation."
     },
     {
      "feature": "meals_included",
-     "quote": "Meals, drinks and snacks",
-     "rationale": "The accommodation package includes meals, drinks and snacks on an all-inclusive basis."
+     "quote": "7 Nights accommodation on an ALL-INCLUSIVE basis (Meals, drinks and snacks).",
+     "rationale": "The all-inclusive basis lists meals, drinks and snacks as included in the package."
     },
     {
      "feature": "transfers_shuttle",
      "quote": "Private transfers airport / hotel / airport with assistance.",
-     "rationale": "Airport and hotel transfers are included in the packages."
+     "rationale": "The packages include private airport and hotel transfers."
     },
     {
      "feature": "shows",
      "quote": "Daily shows and animation at hotel.",
-     "rationale": "The packages include daily shows at the hotel."
+     "rationale": "The included items list daily shows at the hotel."
     },
     {
      "feature": "workshops",
-     "quote": "FULL PASS (Workshops, Social dance by the pool and Beach parties)",
+     "quote": "FULL PASS (Workshops, Social dance by the pool and Beach parties).",
      "rationale": "The full pass explicitly includes workshops."
     },
     {
      "feature": "pool_party",
      "quote": "Social dance by the pool",
-     "rationale": "The full pass includes social dancing by the pool, which is a pool party style event."
+     "rationale": "Social dancing by the pool is offered as part of the full pass."
     },
     {
      "feature": "beach_party",
      "quote": "Beach parties",
      "rationale": "The full pass explicitly includes beach parties."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "Beginners and advanced dancers!",
+     "rationale": "The description explicitly welcomes beginners alongside advanced dancers."
     }
    ]
   }

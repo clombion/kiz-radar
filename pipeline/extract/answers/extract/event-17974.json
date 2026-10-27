@@ -154,29 +154,29 @@
    ],
    "features": [
     {
+     "feature": "workshops",
+     "quote": "workshops, and parties",
+     "rationale": "The text says the five days include dancing, workshops and parties, so dance workshops are part of the event."
+    },
+    {
      "feature": "taxi_dancers",
      "quote": "TAXIS DANCERS",
-     "rationale": "The section heading announces taxi dancers for the event."
+     "rationale": "A section headed TAXIS DANCERS lists taxi dancer teams and independents."
     },
     {
      "feature": "partner_hotel",
      "quote": "To take advantage of the negotiated rates, a minimum of 3 nights must be booked.",
-     "rationale": "A hotel with negotiated rates is offered, but the hotel stay is not part of the pass."
-    },
-    {
-     "feature": "workshops",
-     "quote": "5 days of dancing, workshops, and parties",
-     "rationale": "The description states that workshops are part of the five days."
+     "rationale": "A main hotel is recommended with negotiated room rates, and the rooms are sold separately from the pass."
     },
     {
      "feature": "dress_code",
      "quote": "DRESS CODES",
-     "rationale": "A dress code section lists dress codes for each day."
+     "rationale": "A dress code section is given for each day and a social dress item."
     },
     {
      "feature": "multiple_rooms",
      "quote": "(3 rooms)",
-     "rationale": "The programme states that several days take place across three rooms."
+     "rationale": "The program states that several days have three dance rooms."
     }
    ]
   }

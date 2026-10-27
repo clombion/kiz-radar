@@ -7,13 +7,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "💎 3 NIGHTS/4 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+     "label_quote": null,
      "group_size": 1,
      "days": 4,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 375,
+       "amount": 375.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -30,13 +30,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "💎 3 NIGHTS/4 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+     "label_quote": null,
      "group_size": 1,
      "days": 4,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 399,
+       "amount": 399.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -53,13 +53,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "💎 3 NIGHTS/4 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+     "label_quote": null,
      "group_size": 1,
      "days": 4,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 389,
+       "amount": 389.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -76,13 +76,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "💎 3 NIGHTS/4 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+     "label_quote": null,
      "group_size": 1,
      "days": 4,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 525,
+       "amount": 525.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -99,13 +99,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "💎 3 NIGHTS/4 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+     "label_quote": null,
      "group_size": 1,
      "days": 4,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 160,
+       "amount": 160.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -122,13 +122,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "💎 2 NIGHTS/3 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+     "label_quote": null,
      "group_size": 1,
      "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 275,
+       "amount": 275.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -145,13 +145,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "💎 2 NIGHTS/3 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+     "label_quote": null,
      "group_size": 1,
      "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 299,
+       "amount": 299.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -168,13 +168,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "💎 2 NIGHTS/3 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+     "label_quote": null,
      "group_size": 1,
      "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 289,
+       "amount": 289.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -191,13 +191,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "💎 2 NIGHTS/3 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+     "label_quote": null,
      "group_size": 1,
      "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 405,
+       "amount": 405.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -214,13 +214,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "💎 2 NIGHTS/3 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+     "label_quote": null,
      "group_size": 1,
      "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 100,
+       "amount": 100.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -237,13 +237,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "💎 1 NIGHT/2 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+     "label_quote": null,
      "group_size": 1,
      "days": 2,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 175,
+       "amount": 175.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -260,13 +260,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "💎 1 NIGHT/2 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+     "label_quote": null,
      "group_size": 1,
      "days": 2,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 199,
+       "amount": 199.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -283,13 +283,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "💎 1 NIGHT/2 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+     "label_quote": null,
      "group_size": 1,
      "days": 2,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 189,
+       "amount": 189.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -306,13 +306,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "💎 1 NIGHT/2 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+     "label_quote": null,
      "group_size": 1,
      "days": 2,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 255,
+       "amount": 255.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -329,13 +329,13 @@
     {
      "kind": "package",
      "style": null,
-     "label_quote": "💎 1 NIGHT/2 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+     "label_quote": null,
      "group_size": 1,
      "days": 2,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -358,7 +358,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 25,
+       "amount": 25.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -381,7 +381,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 30,
+       "amount": 30.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -404,7 +404,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 65,
+       "amount": 65.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -427,7 +427,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 25,
+       "amount": 25.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -450,7 +450,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -473,7 +473,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -496,7 +496,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 25,
+       "amount": 25.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -511,10 +511,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "NO DRINK INCLUDED",
-    "EVENT AND ENTRY RESERVED FOR FRESKITO APS MEMBERS ONLY."
-   ]
+   "rule_quotes": []
   }
  ]
 }

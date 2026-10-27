@@ -23,32 +23,32 @@
     {
      "feature": "live_music",
      "quote": "LIVE salsa concert",
-     "rationale": "The listed highlights include a live salsa concert, which is live music."
+     "rationale": "The highlights list promises a live salsa concert, which is live music."
     },
     {
      "feature": "shows",
      "quote": "45+ shows, workshops & masterclasses",
-     "rationale": "The highlights promise 45+ shows as part of the programme."
+     "rationale": "The description promises 45+ shows by artists."
     },
     {
      "feature": "workshops",
      "quote": "45+ shows, workshops & masterclasses",
-     "rationale": "The highlights state that workshops are part of the event."
+     "rationale": "The same highlight line explicitly lists workshops as part of the event."
     },
     {
      "feature": "masterclass",
      "quote": "45+ shows, workshops & masterclasses",
-     "rationale": "The highlights explicitly list masterclasses as part of the event."
+     "rationale": "The same highlight line explicitly lists masterclasses as part of the event."
     },
     {
      "feature": "competition",
      "quote": "Jack & Jill & The Battle Bachata",
-     "rationale": "A Jack & Jill and a battle are listed, which are competitions."
+     "rationale": "Jack & Jill and a battle are competitions."
     },
     {
      "feature": "multiple_rooms",
      "quote": "3 rooms of social dancing until 4AM",
-     "rationale": "The event has three rooms for social dancing, so more than one dance floor."
+     "rationale": "Three rooms of social dancing means more than one dance floor."
     }
    ]
   }

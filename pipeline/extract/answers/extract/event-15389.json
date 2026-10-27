@@ -5,6 +5,13 @@
    "event_id": 15389,
    "artists": [
     {
+     "name_as_written": "MKF",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "KARMA INTERNATIONAL FESTIVAL direz.MKF"
+    },
+    {
      "name_as_written": "ISABELLE y FELICIEN",
      "role": "teacher",
      "style": "KIZOMBA",
@@ -423,6 +430,13 @@
      "style": null,
      "country": null,
      "source_line": "Andrea & Katja"
+    },
+    {
+     "name_as_written": "Alessandro & Simona",
+     "role": "teacher",
+     "style": null,
+     "country": null,
+     "source_line": "Alessandro & Simona"
     },
     {
      "name_as_written": "Cristina & Duncan",
@@ -1171,7 +1185,7 @@
      "role": "dj",
      "style": null,
      "country": null,
-     "source_line": "🔸DJ SALVINA"
+     "source_line": "DJ SALVINA"
     }
    ],
    "features": [
@@ -1183,7 +1197,7 @@
     {
      "feature": "taxi_dancers",
      "quote": "TAXI DANCERS",
-     "rationale": "A section headed TAXI DANCERS lists taxi dancers present at the event."
+     "rationale": "The description has a TAXI DANCERS section listing dancers who are present."
     }
    ]
   }

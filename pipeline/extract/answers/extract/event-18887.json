@@ -181,49 +181,49 @@
     },
     {
      "name_as_written": "Rebirth",
-     "role": "performer",
+     "role": "crew",
      "style": null,
      "country": "🇫🇷",
      "source_line": "• Rebirth 🇫🇷"
     },
     {
      "name_as_written": "Funomen",
-     "role": "performer",
+     "role": "crew",
      "style": null,
      "country": "🇫🇷",
      "source_line": "• Funomen 🇫🇷"
     },
     {
      "name_as_written": "PSBK Matrix",
-     "role": "performer",
+     "role": "crew",
      "style": null,
      "country": "🇫🇷",
      "source_line": "• PSBK Matrix 🇫🇷"
     },
     {
      "name_as_written": "EYK – Elevate Your Kiz",
-     "role": "performer",
+     "role": "crew",
      "style": null,
      "country": "🇳🇱",
      "source_line": "• EYK – Elevate Your Kiz 🇳🇱"
     },
     {
      "name_as_written": "Kizzryders",
-     "role": "performer",
+     "role": "crew",
      "style": null,
      "country": "🇳🇱",
      "source_line": "• Kizzryders 🇳🇱"
     },
     {
      "name_as_written": "Bratez Kizz",
-     "role": "performer",
+     "role": "crew",
      "style": null,
      "country": "🇸🇪",
      "source_line": "• Bratez Kizz 🇸🇪"
     },
     {
      "name_as_written": "FusionKizz Aarhus",
-     "role": "performer",
+     "role": "crew",
      "style": null,
      "country": "🇩🇰",
      "source_line": "• FusionKizz Aarhus 🇩🇰"
@@ -254,42 +254,32 @@
     {
      "feature": "all_in_one",
      "quote": "ALL-IN-ONE HOTEL EXPERIENCE",
-     "rationale": "The heading describes parties held at the hotel where dancers stay."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "FULL PASS+ROOM combos",
-     "rationale": "The pass is sold combined with a hotel room, so accommodation is part of the package."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "2 breakfasts included",
-     "rationale": "Breakfasts are included in the room price of the pass packages."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Thursday (Pre-Party)",
-     "rationale": "A Pre-Party is scheduled before the main Friday to Sunday program."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "16:00 – 20:00 Social",
-     "rationale": "Afternoon social sessions are listed in the program."
-    },
-    {
-     "feature": "workshops",
-     "quote": "18:00 – 20:00 Workshop",
-     "rationale": "Dance workshops are scheduled in the program."
-    },
-    {
-     "feature": "competition",
-     "quote": "20:00 – 21:00 Competition",
-     "rationale": "A competition slot is listed on Saturday."
+     "rationale": "The event section is titled all-in-one hotel experience, with the parties held at the Best Western Plus Åby Hotel where room combos are sold."
     },
     {
      "feature": "taxi_dancers",
      "quote": "GUESTS / TAXI DANCERS",
-     "rationale": "The section explicitly names taxi dancers as present."
+     "rationale": "The guest list is explicitly headed as taxi dancers."
+    },
+    {
+     "feature": "workshops",
+     "quote": "18:00 – 20:00 Workshop",
+     "rationale": "The program lists workshop sessions as part of the event."
+    },
+    {
+     "feature": "competition",
+     "quote": "20:00 – 21:00 Competition",
+     "rationale": "The Saturday program includes a competition slot."
+    },
+    {
+     "feature": "pre_party",
+     "quote": "Thursday (Pre-Party)",
+     "rationale": "The Thursday program is labelled as a pre-party before the main event."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "16:00 – 20:00 Social",
+     "rationale": "The program lists afternoon social sessions on Friday, Saturday and Sunday."
     }
    ]
   }

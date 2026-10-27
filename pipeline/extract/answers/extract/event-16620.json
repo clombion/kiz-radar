@@ -64,8 +64,8 @@
    "features": [
     {
      "feature": "workshops",
-     "quote": "11hrs Workshops (Kizomba, Semba, Kizomba Fusion, Urbankiz, Tarraxo)",
-     "rationale": "The event lists eleven hours of dance workshops across several styles."
+     "quote": "11hrs Workshops",
+     "rationale": "The event offers dance workshops in several styles, stated as 11 hours of workshops."
     },
     {
      "feature": "masterclass",
@@ -74,13 +74,13 @@
     },
     {
      "feature": "pre_party",
-     "quote": "8:30pm-12am Pre Party",
-     "rationale": "A Thursday pre party is scheduled before the main event."
+     "quote": "Pre Party",
+     "rationale": "The programme lists a Thursday pre party before the main event."
     },
     {
      "feature": "day_socials",
      "quote": "3-6pm Day Social",
-     "rationale": "A daytime social is listed in the Sunday programme."
+     "rationale": "The Sunday programme includes a daytime social from 3 to 6pm."
     }
    ]
   }

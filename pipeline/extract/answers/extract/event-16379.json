@@ -10,44 +10,23 @@
      "style": null,
      "country": null,
      "source_line": "LTP presents: BACHAKIZ NOTTINGHAM FESTIVAL 8TH EDITION"
-    },
-    {
-     "name_as_written": "Laura",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Laura +44 7956 339472"
-    },
-    {
-     "name_as_written": "Jason",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Jason +44 7500 505326"
-    },
-    {
-     "name_as_written": "Sol",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Sol +44 7849 983098"
     }
    ],
    "features": [
     {
      "feature": "all_in_one",
      "quote": "Anything and everything will take place under one roof at BachaKiz:",
-     "rationale": "The text says the festival events take place under one roof, at the Mercure hotel venue where dancers are invited to stay."
+     "rationale": "The description says all events take place under one roof at the Mercure hotel venue, where dancers are also invited to book rooms."
     },
     {
      "feature": "multiple_rooms",
-     "quote": "The 2 party rooms at the moment (more to be announced) will be as follows:",
-     "rationale": "Two separate party rooms are stated, meaning more than one dance room."
+     "quote": "The 2 party rooms at the moment",
+     "rationale": "The text states there are two party rooms, meaning more than one dance room."
     },
     {
      "feature": "workshops",
-     "quote": "attending the workshops",
-     "rationale": "The text refers to workshops that attendees of the full pass take part in, so classes are part of the event."
+     "quote": "the comfort of everyone attending the workshops",
+     "rationale": "The text refers to attendees of the workshops, so dance classes are part of the event."
     }
    ]
   }

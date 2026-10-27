@@ -16,37 +16,37 @@
     {
      "feature": "multiple_rooms",
      "quote": "3 BIG ROOMS",
-     "rationale": "The venue listing states there are three big rooms, so more than one dance floor."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Social from 16:00 – 20:00",
-     "rationale": "The Saturday and Sunday programme lists daytime socials from 16:00."
+     "rationale": "The listed venue features state three big rooms, meaning more than one dance room."
     },
     {
      "feature": "workshops",
      "quote": "35 HOURS WORKSHOPS",
-     "rationale": "The festival advertises 35 hours of workshops as part of the event."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "MASTERCLASSES",
-     "rationale": "Masterclasses are listed as a bookable ticket option."
+     "rationale": "The venue section lists 35 hours of workshops as part of the festival."
     },
     {
      "feature": "taxi_dancers",
      "quote": "TAXI TEAMS",
-     "rationale": "The venue section lists taxi teams, meaning taxi dancers are present."
+     "rationale": "The venue section lists taxi teams among the festival's features."
+    },
+    {
+     "feature": "masterclass",
+     "quote": "MASTERCLASSES",
+     "rationale": "Masterclasses are listed as a ticket option, booked extra."
+    },
+    {
+     "feature": "day_socials",
+     "quote": "Social from 16:00 – 20:00",
+     "rationale": "The Saturday program includes a social in the afternoon and early evening."
     },
     {
      "feature": "partner_hotel",
      "quote": "MAIN HOTEL FOR BOOKING:",
-     "rationale": "A main booking hotel with a discount code is recommended, while accommodation is not part of the pass."
+     "rationale": "A main booking hotel is recommended, with a special discount code, without the accommodation being part of the pass."
     },
     {
      "feature": "transfers_shuttle",
-     "quote": "Airport Nürnberg – 20 minutes from Location",
-     "rationale": "A transfer section gives airport and station transport information relative to the venue, but no shuttle service is explicitly stated."
+     "quote": "Transfer",
+     "rationale": "A transfer section lists the airport, main station and bus station with travel times from the venue."
     }
    ]
   }

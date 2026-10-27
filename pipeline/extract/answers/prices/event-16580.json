@@ -13,7 +13,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 245,
+       "amount": 245.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "€245 Double or Twin Room March"
       },
       {
-       "amount": 255,
+       "amount": 255.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "€255 Double or Twin Room April"
       },
       {
-       "amount": 265,
+       "amount": 265.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -62,7 +62,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 235,
+       "amount": 235.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -75,7 +75,7 @@
        "quote": "€235 Triple Room March"
       },
       {
-       "amount": 245,
+       "amount": 245.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -88,7 +88,7 @@
        "quote": "€245 Triple Room April"
       },
       {
-       "amount": 255,
+       "amount": 255.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -111,7 +111,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 230,
+       "amount": 230.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -124,7 +124,7 @@
        "quote": "€230 Quadruple Room March"
       },
       {
-       "amount": 240,
+       "amount": 240.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -137,7 +137,7 @@
        "quote": "€240 Quadruple Room April"
       },
       {
-       "amount": 250,
+       "amount": 250.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -160,7 +160,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 295,
+       "amount": 295.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -173,7 +173,7 @@
        "quote": "€295 Single Room March"
       },
       {
-       "amount": 305,
+       "amount": 305.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -186,7 +186,7 @@
        "quote": "€305 Single Room April"
       },
       {
-       "amount": 310,
+       "amount": 310.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -209,7 +209,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 270,
+       "amount": 270.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -222,7 +222,7 @@
        "quote": "€270 Double or Twin Room March"
       },
       {
-       "amount": 280,
+       "amount": 280.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -235,7 +235,7 @@
        "quote": "€280 Double or Twin Room April"
       },
       {
-       "amount": 290,
+       "amount": 290.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -258,7 +258,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 325,
+       "amount": 325.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -271,7 +271,7 @@
        "quote": "€325 Double or Twin Room March"
       },
       {
-       "amount": 335,
+       "amount": 335.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -284,7 +284,7 @@
        "quote": "€335 Double or Twin Room April"
       },
       {
-       "amount": 345,
+       "amount": 345.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -307,7 +307,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 315,
+       "amount": 315.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -320,7 +320,7 @@
        "quote": "€315 Triple Room March"
       },
       {
-       "amount": 325,
+       "amount": 325.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -333,7 +333,7 @@
        "quote": "€325 Triple Room April"
       },
       {
-       "amount": 335,
+       "amount": 335.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -356,7 +356,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 310,
+       "amount": 310.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -369,7 +369,7 @@
        "quote": "€310 Quadruple Room March"
       },
       {
-       "amount": 320,
+       "amount": 320.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -382,7 +382,7 @@
        "quote": "€320 Quadruple Room April"
       },
       {
-       "amount": 330,
+       "amount": 330.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -405,7 +405,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 190,
+       "amount": 190.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -418,7 +418,7 @@
        "quote": "€190 Double or Twin Room March"
       },
       {
-       "amount": 200,
+       "amount": 200.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -431,7 +431,7 @@
        "quote": "€200 Double or Twin Room April"
       },
       {
-       "amount": 210,
+       "amount": 210.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -454,7 +454,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 175,
+       "amount": 175.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -467,7 +467,7 @@
        "quote": "€175 Triple Room March"
       },
       {
-       "amount": 185,
+       "amount": 185.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -480,7 +480,7 @@
        "quote": "€185 Triple Room April"
       },
       {
-       "amount": 195,
+       "amount": 195.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -503,7 +503,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 170,
+       "amount": 170.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -516,7 +516,7 @@
        "quote": "€170 Quadruple Room March"
       },
       {
-       "amount": 180,
+       "amount": 180.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -529,7 +529,7 @@
        "quote": "€180 Quadruple Room April"
       },
       {
-       "amount": 190,
+       "amount": 190.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -552,7 +552,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 190,
+       "amount": 190.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -565,7 +565,7 @@
        "quote": "€190 Double or Twin Room March"
       },
       {
-       "amount": 200,
+       "amount": 200.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -578,7 +578,7 @@
        "quote": "€200 Double or Twin Room April"
       },
       {
-       "amount": 210,
+       "amount": 210.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -601,7 +601,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 180,
+       "amount": 180.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -614,7 +614,7 @@
        "quote": "€180 Triple Room March"
       },
       {
-       "amount": 190,
+       "amount": 190.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -627,7 +627,7 @@
        "quote": "€190 Triple Room April"
       },
       {
-       "amount": 200,
+       "amount": 200.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -650,7 +650,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 175,
+       "amount": 175.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -663,7 +663,7 @@
        "quote": "€175 Quadruple Room March"
       },
       {
-       "amount": 185,
+       "amount": 185.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -676,7 +676,7 @@
        "quote": "€185 Quadruple Room April"
       },
       {
-       "amount": 195,
+       "amount": 195.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -699,7 +699,7 @@
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 215,
+       "amount": 215.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -712,7 +712,7 @@
        "quote": "€215 Single Room March"
       },
       {
-       "amount": 240,
+       "amount": 240.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -725,7 +725,7 @@
        "quote": "€240 Single Room April"
       },
       {
-       "amount": 265,
+       "amount": 265.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -740,7 +740,9 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "All rates are per person."
+   ]
   }
  ]
 }

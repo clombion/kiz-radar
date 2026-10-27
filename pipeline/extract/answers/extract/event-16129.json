@@ -7,65 +7,51 @@
     {
      "name_as_written": "Dj Snakes",
      "role": "dj",
-     "style": "URBANKIZ",
+     "style": null,
      "country": "🇫🇷",
      "source_line": "🇫🇷 Dj Snakes,"
     },
     {
      "name_as_written": "Poema Beatz",
      "role": "dj",
-     "style": "URBANKIZ",
+     "style": null,
      "country": "🇸🇪🇨🇩",
      "source_line": "🇸🇪🇨🇩Poema Beatz"
     },
     {
      "name_as_written": "Dj Lenhy",
      "role": "dj",
-     "style": "URBANKIZ",
+     "style": null,
      "country": "🇫🇷",
      "source_line": "🇫🇷 Dj Lenhy,"
     },
     {
      "name_as_written": "Dj Hugo Smile",
      "role": "dj",
-     "style": "URBANKIZ",
+     "style": null,
      "country": "🇫🇷",
      "source_line": "🇫🇷 Dj Hugo Smile"
     },
     {
      "name_as_written": "Dj Bakongo",
      "role": "dj",
-     "style": "KIZOMBA",
+     "style": null,
      "country": "🇦🇴",
      "source_line": "🇦🇴Dj Bakongo"
     },
     {
      "name_as_written": "Dj Matt",
      "role": "dj",
-     "style": "KIZOMBA",
+     "style": null,
      "country": "🇫🇷",
      "source_line": "🇫🇷 Dj Matt"
     },
     {
      "name_as_written": "Dj RA",
      "role": "dj",
-     "style": "KIZOMBA",
+     "style": null,
      "country": "🇧🇪",
      "source_line": "🇧🇪 Dj RA"
-    },
-    {
-     "name_as_written": "Dj NiceLife",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Snakes, Dj Lenhy, Dj NiceLife and Dj Lucas will be with us"
-    },
-    {
-     "name_as_written": "Dj Lucas",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj Snakes, Dj Lenhy, Dj NiceLife and Dj Lucas will be with us"
     },
     {
      "name_as_written": "Harvey Reddington",
@@ -92,8 +78,22 @@
      "name_as_written": "Amélie & 🇫🇷King",
      "role": "teacher",
      "style": null,
-     "country": "🇮🇹",
+     "country": null,
      "source_line": "🇮🇹Amélie & 🇫🇷King"
+    },
+    {
+     "name_as_written": "Dj NiceLife",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Snakes, Dj Lenhy, Dj NiceLife and Dj Lucas will be with us"
+    },
+    {
+     "name_as_written": "Dj Lucas",
+     "role": "dj",
+     "style": null,
+     "country": null,
+     "source_line": "Dj Snakes, Dj Lenhy, Dj NiceLife and Dj Lucas will be with us"
     }
    ],
    "features": [
@@ -104,8 +104,8 @@
     },
     {
      "feature": "multiple_rooms",
-     "quote": "ROOM URBANKIZ",
-     "rationale": "Separate rooms are named, including ROOM URBANKIZ and ROOM KIZOMBA, so there is more than one dance room."
+     "quote": "ROOM KIZOMBA",
+     "rationale": "The line-up is split into more than one dance room, ROOM URBANKIZ and ROOM KIZOMBA."
     }
    ]
   }

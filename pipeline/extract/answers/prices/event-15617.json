@@ -13,7 +13,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 85,
+       "amount": 85.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -26,7 +26,7 @@
        "quote": "85€ (100 Full Pass)"
       },
       {
-       "amount": 95,
+       "amount": 95.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -39,7 +39,7 @@
        "quote": "95€ (till August, 31th)"
       },
       {
-       "amount": 105,
+       "amount": 105.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -52,7 +52,7 @@
        "quote": "105€ (till October, 31th)"
       },
       {
-       "amount": 115,
+       "amount": 115.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -65,7 +65,7 @@
        "quote": "115€ (till December, 31th)"
       },
       {
-       "amount": 125,
+       "amount": 125.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -78,7 +78,7 @@
        "quote": "125€ (till february, 15th)"
       },
       {
-       "amount": 135,
+       "amount": 135.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -91,7 +91,7 @@
        "quote": "135€ (till april, 30th)"
       },
       {
-       "amount": 145,
+       "amount": 145.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -104,7 +104,7 @@
        "quote": "145€ (from may, 1st)"
       },
       {
-       "amount": 150,
+       "amount": 150.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -127,7 +127,7 @@
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 105,
+       "amount": 105.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -140,7 +140,7 @@
        "quote": "105€ (30 Vip Pass)"
       },
       {
-       "amount": 115,
+       "amount": 115.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -153,7 +153,7 @@
        "quote": "115€ (till december, 15th)"
       },
       {
-       "amount": 125,
+       "amount": 125.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -166,7 +166,7 @@
        "quote": "125€ (till february, 15th)"
       },
       {
-       "amount": 135,
+       "amount": 135.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -179,7 +179,7 @@
        "quote": "135€ (till april, 30th)"
       },
       {
-       "amount": 145,
+       "amount": 145.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -192,7 +192,7 @@
        "quote": "145€ (from may, 1st)"
       },
       {
-       "amount": 175,
+       "amount": 175.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -209,13 +209,13 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": null,
+     "label_quote": "PRICES PER NIGHT:",
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 10,
+       "amount": 10.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -232,13 +232,13 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": null,
+     "label_quote": "PRICES PER NIGHT:",
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 20,
+       "amount": 20.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -255,13 +255,13 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": null,
+     "label_quote": "PRICES PER NIGHT:",
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 30,
+       "amount": 30.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -278,13 +278,13 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": null,
+     "label_quote": "PRICES PER NIGHT:",
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 35,
+       "amount": 35.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -301,13 +301,13 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": null,
+     "label_quote": "PRICES PER NIGHT:",
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 25,
+       "amount": 25.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -324,13 +324,13 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": null,
+     "label_quote": "PRICES PER DAY:",
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 30,
+       "amount": 30.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -347,13 +347,13 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": null,
+     "label_quote": "PRICES PER DAY:",
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 40,
+       "amount": 40.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -370,13 +370,13 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": null,
+     "label_quote": "PRICES PER DAY:",
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 60,
+       "amount": 60.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -393,13 +393,13 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": null,
+     "label_quote": "PRICES PER DAY:",
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 80,
+       "amount": 80.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,
@@ -416,13 +416,13 @@
     {
      "kind": "day",
      "style": null,
-     "label_quote": null,
+     "label_quote": "PRICES PER DAY:",
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 50,
+       "amount": 50.0,
        "currency": "EUR",
        "fee": null,
        "alt": null,

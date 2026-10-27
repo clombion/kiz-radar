@@ -10,7 +10,7 @@
    "class_rooms": null,
    "rooms": [
     {
-     "name_as_written": "Room: Salsa & Bachata",
+     "name_as_written": null,
      "kind": "party",
      "genres": [
       "salsa",
@@ -19,7 +19,7 @@
      "quote": "1 Room: Salsa & Bachata"
     },
     {
-     "name_as_written": "Room: Kizomba, Semba & Konpa",
+     "name_as_written": null,
      "kind": "party",
      "genres": [
       "kizomba",
@@ -53,7 +53,7 @@
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "1 Room: Kizomba, Semba & Konpa"
+     "quote": "Kizomba, Semba & Konpa"
     }
    ]
   }

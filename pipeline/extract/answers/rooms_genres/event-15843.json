@@ -10,42 +10,47 @@
     {
      "genre": "kizomba",
      "genre_as_written": "Kizomba",
-     "quote": "Kizomba – Semba – Coladeira – Cabozouk"
+     "quote": "50%: Kizomba – Semba – Coladeira – Cabozouk"
     },
     {
      "genre": "semba",
      "genre_as_written": "Semba",
-     "quote": "Kizomba – Semba – Coladeira – Cabozouk"
+     "quote": "50%: Kizomba – Semba – Coladeira – Cabozouk"
     },
     {
      "genre": "other",
      "genre_as_written": "Coladeira",
-     "quote": "Kizomba – Semba – Coladeira – Cabozouk"
+     "quote": "50%: Kizomba – Semba – Coladeira – Cabozouk"
     },
     {
      "genre": "other",
      "genre_as_written": "Cabozouk",
-     "quote": "Kizomba – Semba – Coladeira – Cabozouk"
+     "quote": "50%: Kizomba – Semba – Coladeira – Cabozouk"
     },
     {
      "genre": "zouk",
      "genre_as_written": "GhettoZouk",
-     "quote": "GhettoZouk – Tarraxinha – Afropop – Afrohouse"
+     "quote": "50%: GhettoZouk – Tarraxinha – Afropop – Afrohouse"
     },
     {
      "genre": "tarraxinha",
      "genre_as_written": "Tarraxinha",
-     "quote": "GhettoZouk – Tarraxinha – Afropop – Afrohouse"
+     "quote": "50%: GhettoZouk – Tarraxinha – Afropop – Afrohouse"
     },
     {
      "genre": "afro",
      "genre_as_written": "Afropop",
-     "quote": "GhettoZouk – Tarraxinha – Afropop – Afrohouse"
+     "quote": "50%: GhettoZouk – Tarraxinha – Afropop – Afrohouse"
+    },
+    {
+     "genre": "afro",
+     "genre_as_written": "Afrohouse",
+     "quote": "50%: GhettoZouk – Tarraxinha – Afropop – Afrohouse"
     },
     {
      "genre": "urbankiz",
      "genre_as_written": "Urban Kiz",
-     "quote": "Laly & Chris’Py – Urban Kiz"
+     "quote": "Laly & Chris’Py – Urban Kiz 🇫🇷"
     }
    ]
   }

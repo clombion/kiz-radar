@@ -7,7 +7,7 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": "✅ Lead Single Pass",
+     "label_quote": "Lead Single Pass",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -30,7 +30,30 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": "✅ Lead + Lead Pass",
+     "label_quote": "Follow Single Pass",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 179.99,
+       "currency": "CAD",
+       "fee": null,
+       "alt": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "$179.99 → $169.99 with code AFROKIZZ"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": "Lead + Lead Pass",
      "group_size": 2,
      "days": null,
      "includes_hotel": false,
@@ -53,7 +76,7 @@
     {
      "kind": "full",
      "style": null,
-     "label_quote": "✅ Lead + Follow Pass",
+     "label_quote": "Lead + Follow Pass",
      "group_size": 2,
      "days": null,
      "includes_hotel": false,
@@ -76,7 +99,7 @@
     {
      "kind": "party",
      "style": null,
-     "label_quote": "✅ Party Pass",
+     "label_quote": "Party Pass",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,

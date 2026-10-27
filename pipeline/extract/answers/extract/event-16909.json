@@ -107,17 +107,17 @@
     {
      "feature": "all_in_one",
      "quote": "ALL IN ONE – ALANNIA RESORTS GUARDAMAR",
-     "rationale": "The header states the event is all in one at the Alannia Resorts Guardamar hotel where dancers stay."
+     "rationale": "The event is announced as all in one with the Alannia Resorts Guardamar hotel, where dancers can stay."
     },
     {
      "feature": "partner_hotel",
-     "quote": "When booking your Guardamar cabin, use the code KALUANDA26 to stay on the same street as the organization",
-     "rationale": "A booking code is given for the partner hotel, which is not part of the pass."
+     "quote": "When booking your Guardamar cabin, use the code KALUANDA26",
+     "rationale": "A discount code for booking the partner hotel accommodation is given, without the accommodation being part of the pass."
     },
     {
      "feature": "workshops",
-     "quote": "Get ready to learn, feel, and dance with artists and DJs who will elevate every moment of the festival",
-     "rationale": "Learning with the teaching artists indicates dance classes are part of the festival."
+     "quote": "Get ready to learn, feel, and dance with artists and DJs",
+     "rationale": "Learning with the teaching artists indicates that dance classes are part of the event."
     }
    ]
   }

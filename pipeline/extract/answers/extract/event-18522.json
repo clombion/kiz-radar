@@ -12,6 +12,13 @@
      "source_line": "🔥 KIFF DANCE x LE PARK STUDIO PRESENT 🔥"
     },
     {
+     "name_as_written": "LE PARK STUDIO",
+     "role": "organiser",
+     "style": null,
+     "country": null,
+     "source_line": "🔥 KIFF DANCE x LE PARK STUDIO PRESENT 🔥"
+    },
+    {
      "name_as_written": "Zouzout & Synthia",
      "role": "teacher",
      "style": "Konpa",
@@ -70,19 +77,19 @@
    ],
    "features": [
     {
-     "feature": "multiple_rooms",
-     "quote": "Enjoy multiple dance areas",
-     "rationale": "The description says there are multiple dance areas, and the schedule lists parties with 2 and 3 rooms."
+     "feature": "workshops",
+     "quote": "Enjoy multiple dance areas, workshops, parties",
+     "rationale": "The description states that workshops are part of the weekend."
     },
     {
-     "feature": "workshops",
-     "quote": "Konpa workshop with Zouzout & Synthia",
-     "rationale": "A Konpa workshop with Zouzout & Synthia is scheduled on Saturday."
+     "feature": "multiple_rooms",
+     "quote": "Party – 2 rooms • 2 vibes",
+     "rationale": "The Friday party runs in two rooms, so there is more than one dance room."
     },
     {
      "feature": "masterclass",
-     "quote": "Tarra Show Masterclass with Kristel & Ichigo",
-     "rationale": "A Tarra Show Masterclass with Kristel & Ichigo is listed on Sunday."
+     "quote": "Konpa Masterclass with Zouzout & Synthia",
+     "rationale": "A Konpa Masterclass is scheduled on Saturday."
     },
     {
      "feature": "day_socials",

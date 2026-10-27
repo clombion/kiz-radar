@@ -14,29 +14,34 @@
    ],
    "features": [
     {
-     "feature": "workshops",
-     "quote": "Eight hours of workshops",
-     "rationale": "The programme lists eight hours of workshops as part of the festival."
-    },
-    {
      "feature": "live_music",
      "quote": "Renowned musicians and live bands",
-     "rationale": "The programme explicitly includes live bands and musicians."
+     "rationale": "The programme lists renowned musicians and live bands."
     },
     {
      "feature": "shows",
      "quote": "Two exclusive live shows",
-     "rationale": "The programme lists two exclusive live shows by performers."
+     "rationale": "The programme includes two exclusive live shows by artists."
+    },
+    {
+     "feature": "workshops",
+     "quote": "Eight hours of workshops",
+     "rationale": "Dance workshops are part of the festival programme."
     },
     {
      "feature": "bootcamp_intensive",
      "quote": "A specialised intensive training programme",
-     "rationale": "The Master Training 360° is described as a specialised intensive training programme."
+     "rationale": "The Master Training 360° is described as an intensive training programme."
     },
     {
      "feature": "partner_hotel",
-     "quote": "For participants travelling to Lisbon, we recommend staying in or around Cais do Sodré",
-     "rationale": "The event recommends hotels and hostels for stays without including accommodation in the pass."
+     "quote": "we recommend staying in or around Cais do Sodré, Chiado and the city centre",
+     "rationale": "The organisers recommend hotels and a stay area without including accommodation in the pass."
+    },
+    {
+     "feature": "all_levels_beginners",
+     "quote": "Progression from beginner to intermediate level",
+     "rationale": "The Level 1 foundation training explicitly takes dancers from beginner level."
     }
    ]
   }
