@@ -31,7 +31,9 @@ One entry per pass the festival sells, with its price tiers:
 - `style`: at a festival of several dance styles, the one style a pass is limited to: `kizomba` (kizomba, semba,
   urbankiz, tarraxinha, tarraxo, or a mix of them), `zouk` (Brazilian zouk), `bachata`, `salsa`, or `other`. Null
   when the pass covers all the festival's styles, or the festival has one style only (a "Kizomba Full Pass" at a
-  kizomba festival is null).
+  kizomba festival is null). Tickets for different styles are different passes, even at one price. At a
+  festival of kizomba styles only, a pass for one of them (a "Kizomba Pass" beside urbankiz) has no style, and is
+  `other`, not `full`.
 - `label_quote`: the pass's name or heading exactly as written ("FULL PASS COUPLES", "🎫 TICKET INFO"), when the
   price lines don't name the pass themselves; else null. Prices are often listed under a heading a few lines
   above them: the label is that heading.
@@ -42,8 +44,8 @@ One entry per pass the festival sells, with its price tiers:
   "duo" pass for two men or two leaders at the same price are one pass with `group_size` 2.
 - `days`: the number of days the pass covers when the description says so ("3-Day Full Pass" is 3; a pass for
   "3 nights", "3 evenings" or "3 serate" is 3 too; a pass whose name lists its days, "Samedi + Dimanche" or
-  "Friday to Sunday", covers that many; one that "includes all 3 party nights" covers 3), else null. A day pass
-  is 1. The festival's own length ("4 DAYS OF TARRAXO", "3 days of workshops") is no pass's `days`.
+  "Friday to Sunday", covers that many), else null. A day pass is 1. Only the pass's own length counts: neither
+  the festival's ("4 DAYS OF TARRAXO") nor a count of the parties a pass includes ("4 Night Parties") is its `days`.
 - `includes_hotel`: true when the price includes accommodation.
 - `tiers`: the pass's prices in the order the description lists them. Tiers are successive prices of one pass:
   early bird, waves, dates, or after so many tickets. Prices for different people on sale at the same time are

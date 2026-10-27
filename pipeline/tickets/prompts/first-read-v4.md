@@ -21,5 +21,5 @@ Answer with one object: `{"passes": [...], "skipped": [...], "rule_quotes": [...
     description or from the ticket's name; else null.
   - The tiers of a pass are in the order the page lists them.
 - `skipped`: the keys of the tickets the rules above leave out, or that are no pass under them (single classes,
-  hotel rooms sold apart, shuttles, meals, competition entries). A bootcamp is a pass (`other`), never skipped. Every ticket is in exactly one tier or in `skipped`.
+  hotel rooms sold apart, shuttles, meals, competition entries). A bootcamp is a pass (`other`), never skipped; a deposit or advance payment on one is no pass. Every ticket is in exactly one tier or in `skipped`.
 - `rule_quotes`: as above, copied from the description only.
