@@ -35,7 +35,7 @@ from pydantic import BaseModel, ConfigDict, ValidationError
 from pipeline import db as sqlite_db
 from pipeline.airports import HOME
 from pipeline.enums import FareSearch
-from pipeline.records import Fare, Job
+from pipeline.records import Date, Fare, Job, Record, now
 
 ROOT = Path(__file__).parent.parent
 DATA = ROOT / 'docs' / 'data'
@@ -68,8 +68,8 @@ class Fli(BaseModel):
 
 class FliDate(Fli):
     price: float | None = None
-    departure_date: str | None = None
-    return_date: str = ''
+    departure_date: Date | None = None
+    return_date: Date | None = None
     currency: str = 'EUR'
 
 
@@ -89,7 +89,7 @@ class Weekend:
     is due today."""
 
     airport: str
-    friday: str
+    friday: dt.date
     days_away: int
     every: int | None  # None: further ahead than Google sells
     age: float | None  # in days; None when it was never searched
@@ -101,26 +101,26 @@ class Weekend:
         return self.age / self.every if self.age is not None and self.every else NEVER
 
 
-def now() -> dt.datetime:
-    return dt.datetime.now(dt.UTC).replace(microsecond=0)
+class Flown(Record):
+    """A festival weekend with flights to search: the airport near it, and the Friday a trip to it leaves on."""
+
+    airport: str
+    weekend_friday: Date
 
 
-def weekends(today: dt.date) -> set[tuple[str, str]]:
+def weekends(today: dt.date) -> set[tuple[str, dt.date]]:
     """(airport, Friday) of every upcoming, not cancelled festival with an airport other than home, from the site DB."""
     with sqlite_db.opened(DATA / 'kiz.sqlite', 'ro') as c:
-        found: list[tuple[str, str]] = c.execute(
-            """select airport, weekend_friday from events where airport is not null and airport != ?
-            and cancelled is not 1 and weekend_friday > ?""",
-            (HOME, today.isoformat()),
-        ).fetchall()
-        return set(found)
+        query = """select airport, weekend_friday from events where airport is not null and airport != ?
+            and cancelled is not 1 and weekend_friday > ?"""
+        return {(w.airport, w.weekend_friday) for w in sqlite_db.records(c, Flown, query, (HOME, today))}
 
 
 def interval(days_away: int) -> int | None:
     return next((every for until, every in WEEKS_APART if days_away <= until), None)
 
 
-def weekday_of(airport: str, friday: str) -> int:
+def weekday_of(airport: str, friday: dt.date) -> int:
     """The weekday (0 = Monday) a weekend is searched on: fixed, and spread evenly across the week."""
     return zlib.crc32(f'{airport} {friday}'.encode()) % 7
 
@@ -130,26 +130,27 @@ def queue(t: dt.datetime | None = None) -> list[Weekend]:
     t = t or now()
     today = t.date()
     jobs = {(j.airport, j.depart): j for j in Job.read(JOBS)}
-    fetched: dict[tuple[str, str], str] = {}
+    fetched: dict[tuple[str, dt.date], dt.datetime] = {}
     for f in Fare.read(FARES):  # a weekend priced before it had a job counts as searched then
         k = (f.airport, f.depart)
-        fetched[k] = max(fetched.get(k, ''), f.fetched_at)
+        fetched[k] = max(fetched.get(k, f.fetched_at), f.fetched_at)
     q: list[Weekend] = []
     for airport, friday in weekends(today):
-        days_away = (dt.date.fromisoformat(friday) - today).days
+        days_away = (friday - today).days
         every = interval(days_away)
         job = jobs.get((airport, friday))
-        last = (job.last_run if job else '') or fetched.get((airport, friday))
-        age = (t - dt.datetime.fromisoformat(last)).total_seconds() / DAY if last else None
+        last = job.last_run if job else fetched.get((airport, friday))
+        age = (t - last).total_seconds() / DAY if last is not None else None
         on_day = weekday_of(airport, friday) == today.weekday()
         due = every is not None and (age is None or (age >= every and on_day) or age >= 2 * every)
         q.append(Weekend(airport, friday, days_away, every, age, due))
     return sorted(q, key=lambda w: (not w.due, -w.overdue, w.friday))
 
 
-def search(airport: str, friday: str) -> Fare | Missed:
+def search(airport: str, friday: dt.date) -> Fare | Missed:
     """One Friday-to-Monday return: its fare, or why there is none."""
-    args = ['dates', HOME, airport, '--from', friday, '--to', friday, '-d', '3', '--round', '--friday']
+    day = friday.isoformat()
+    args = ['dates', HOME, airport, '--from', day, '--to', day, '-d', '3', '--round', '--friday']
     cmd = [*shlex.split(FLI), *args, '--currency', 'EUR', '--format', 'json']
     try:
         p = subprocess.run(cmd, capture_output=True, text=True, timeout=TIMEOUT, check=False)  # noqa: S603 (fli, pinned in FLI, with arguments of ours)
@@ -162,7 +163,7 @@ def search(airport: str, friday: str) -> Fare | Missed:
     except (ValueError, ValidationError):
         return Missed(FareSearch.NO_PRICE, (p.stderr.strip().splitlines() or ['no output'])[-1][:NOTE_LENGTH])
     x = next((x for x in d.dates if x.price and x.departure_date == friday), None)
-    if not d.success or not x or x.price is None:
+    if not d.success or not x or x.price is None or x.return_date is None:
         return Missed(FareSearch.NO_PRICE, (d.error.message if d.error else '')[:NOTE_LENGTH])
     return Fare(
         airport=airport,
@@ -170,7 +171,7 @@ def search(airport: str, friday: str) -> Fare | Missed:
         return_=x.return_date,
         price=round(x.price),
         currency=x.currency,
-        fetched_at=now().isoformat(),
+        fetched_at=now(),
     )
 
 
@@ -199,7 +200,7 @@ def refresh(budget: int, max_seconds: int) -> None:
                 said = note
         print(f'{item.airport} {item.friday} ({item.days_away} days away): {status} {said}', flush=True)
         jobs[(item.airport, item.friday)] = Job(
-            airport=item.airport, depart=item.friday, last_run=now().isoformat(), status=status, note=note
+            airport=item.airport, depart=item.friday, last_run=now(), status=status, note=note
         )
         done += 1
         time.sleep(PAUSE)

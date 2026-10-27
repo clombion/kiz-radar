@@ -1,9 +1,11 @@
 """Opening the pipeline's SQLite databases. Every connection names what it may do with the file: read it (ro), write
 it (rw), or create it (rwc); only a step that builds a database may create one, so a wrong path is an error, never a
-new empty database, and a connection is closed with its block. source_arg() is the command-line argument for the
-kizomba-world export a step works on."""
+new empty database, and a connection is closed with its block. A day or a time is written as the text records read
+(2026-10-27, 2026-10-27T17:38:51+00:00). source_arg() is the command-line argument for the kizomba-world export a
+step works on."""
 
 import argparse
+import datetime as dt
 import sqlite3
 from collections.abc import Generator, Sequence
 from contextlib import contextmanager
@@ -11,6 +13,9 @@ from pathlib import Path
 from typing import Literal
 
 from pydantic import BaseModel
+
+sqlite3.register_adapter(dt.date, dt.date.isoformat)
+sqlite3.register_adapter(dt.datetime, dt.datetime.isoformat)
 
 
 @contextmanager

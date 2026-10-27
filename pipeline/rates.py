@@ -5,6 +5,7 @@ reference rates, as units of each currency per euro. When the bank can't be reac
 """
 
 import argparse
+import datetime as dt
 import re
 import sys
 from pathlib import Path
@@ -18,12 +19,12 @@ ECB = web.Https('www.ecb.europa.eu', '/stats/eurofxref/eurofxref-daily.xml')
 FIXED = {'EUR': 1.0, 'BGN': 1.95583}
 
 
-def rates(xml: str) -> tuple[str, dict[str, float]]:
+def rates(xml: str) -> tuple[dt.date, dict[str, float]]:
     """(the day of the bank's rates, the units of each currency per euro) from its daily file."""
     if not (day := re.search(r"time='(\d{4}-\d{2}-\d{2})'", xml)):
         raise ValueError(f'{ECB.url()}: no day in its file')
     found = {m[1]: float(m[2]) for m in re.finditer(r"currency='([A-Z]{3})' rate='([\d.]+)'", xml)}
-    return day[1], found | FIXED
+    return dt.date.fromisoformat(day[1]), found | FIXED
 
 
 def main() -> None:

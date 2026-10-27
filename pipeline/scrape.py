@@ -28,9 +28,10 @@ from curl_cffi.requests import Response
 
 from pipeline import db as sqlite_db
 from pipeline.kizomba_world import TAG_FEATURES, TAG_GENRES, ApiEvent, ApiPage, Listed, Paged, api_fields, page_fields
+from pipeline.records import day_of, now
 
 SITE = 'https://kizomba-world.com'
-FIRST_DAY = '2026-01-01'  # the export covers events from here to the end of next year
+FIRST_DAY = dt.date(2026, 1, 1)  # the export covers events from here to the end of next year
 PAUSE = 3  # seconds between requests
 TRIES, RETRY = 3, 30  # tries of a refused request, and seconds to wait before the next, times the tries so far
 LISTED_SHARE = 0.9  # a site listing fewer of the events still to come than this share of them is taken to have failed
@@ -67,8 +68,7 @@ class Fetcher:
 def listed(fetch: Fetcher) -> list[ApiEvent]:
     """Every event the API lists from FIRST_DAY to the end of next year."""
     url: str | None = (
-        f'{SITE}/wp-json/tribe/events/v1/events?per_page=50&start_date={FIRST_DAY}'
-        f'&end_date={dt.datetime.now(dt.UTC).year + 1}-12-31'
+        f'{SITE}/wp-json/tribe/events/v1/events?per_page=50&start_date={FIRST_DAY}&end_date={now().year + 1}-12-31'
     )
     events: list[ApiEvent] = []
     while url:
@@ -150,11 +150,11 @@ class Refreshed:
 
 
 def refreshed(
-    fetch: Fetcher, listing: tuple[Listed, list[str], list[str]], old: EventRow | None, today: str
+    fetch: Fetcher, listing: tuple[Listed, list[str], list[str]], old: EventRow | None, today: dt.date
 ) -> Refreshed:
     """The event's row: its page read again when it is new, changed or still to come, else its page fields kept."""
     e, categories, tags = listing
-    due = old is None or old.modified_at != e.modified_at or (e.end_date or e.start_date)[:10] >= today
+    due = old is None or old.modified_at != e.modified_at or day_of(e.end_date or e.start_date) >= today
     links: list[str] | None = None
     if due or old is None:
         paged, links = page_fields(fetch.get(e.url).text)
@@ -198,7 +198,7 @@ class Report:
         print('changed fields:', dict(sorted(self.differs.items(), key=lambda kv: -kv[1])))
 
 
-def write(db: sqlite3.Connection, fetch: Fetcher, r: Refreshed, today: str) -> bool:
+def write(db: sqlite3.Connection, fetch: Fetcher, r: Refreshed, today: dt.date) -> bool:
     """The event's row, tags, links and poster; whether it downloaded a poster. An event whose description is new or
     changed waits for the extraction steps."""
     write_event(db, r.row, r.categories, r.tags)
@@ -236,7 +236,7 @@ def finish(db: sqlite3.Connection, report: Report, events: int, gone: list[int],
         pending_extraction; event_genres and event_features (source site_tag)',
         details = ? where step = '1_scrape'""",
         (
-            dt.datetime.now(dt.UTC).strftime('%Y-%m-%dT%H:%M:%SZ'),
+            now(),
             f'{SITE}/wp-json/tribe/events/v1/events from {FIRST_DAY}; each new, changed or upcoming event page',
             json.dumps(details),
         ),
@@ -250,11 +250,11 @@ def run(src: Path, *, dry_run: bool) -> None:
         if not dry_run:
             prepare(db)
         known = {r.id: r for r in sqlite_db.records(db, EventRow, f'select {", ".join(COLUMNS)} from events')}  # noqa: S608 (table and column names of ours)
-        today = dt.datetime.now(dt.UTC).date().isoformat()
+        today = now().date()
         fetch = Fetcher()
         events = [api_fields(e) for e in listed(fetch)]
         print(f'{len(events)} events listed; {len(known)} in the source DB')
-        if len(events) < LISTED_SHARE * sum(1 for e in known.values() if e.start_date[:10] >= FIRST_DAY):
+        if len(events) < LISTED_SHARE * sum(1 for e in known.values() if day_of(e.start_date) >= FIRST_DAY):
             sys.exit('the site lists far fewer events than before; stopping instead of deleting them')
         report, posters = Report(), 0
         for listing in events:

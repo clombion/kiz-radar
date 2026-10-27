@@ -29,7 +29,19 @@ from pipeline.airports import AIRPORTS, HOME
 from pipeline.countries import NAMES, codes
 from pipeline.enums import Feature, Genre, HomeBasis, PassKind, People, Role, Style
 from pipeline.extract.prices import COUPLE
-from pipeline.records import ArtistMergeRow, Booking, Fare, HomeCountry, Person, Place, PlanRow, Promo, Rate
+from pipeline.records import (
+    ArtistMergeRow,
+    Booking,
+    Fare,
+    HomeCountry,
+    Person,
+    Place,
+    PlanRow,
+    Promo,
+    Rate,
+    day_of,
+    now,
+)
 from pipeline.text import soften_caps, tidy_name, tidy_title
 
 ROOT = Path(__file__).parent.parent
@@ -105,8 +117,8 @@ def copy_tables(x: sqlite3.Connection) -> None:
                 t,
                 url,
                 slug,
-                start[:10],
-                end[:10],
+                day_of(start),
+                day_of(end),
                 tz,
                 all_day,
                 feat,
@@ -790,7 +802,7 @@ def main() -> None:
         fares(x)
         event_stats(x, artist_stats(x, artists))
         plans(x, artists)
-        built_at = dt.datetime.now(dt.UTC).strftime('%Y-%m-%dT%H:%M:%SZ')
+        built_at = now().isoformat()
         meta(x, built_at)
         site = site_json(x, built_at)
         table_docs(x)

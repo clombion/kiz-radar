@@ -9,7 +9,6 @@ follow another shape, so only an answer to the current prompt is read as its pas
 only which festivals they answer (answered).
 """
 
-import datetime as dt
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -17,7 +16,7 @@ from pydantic import BaseModel, ConfigDict
 
 from pipeline import prompt as prompts
 from pipeline.prompt import Pass, Prompt
-from pipeline.records import Asked, Batch, CsvRow, Entry
+from pipeline.records import Asked, Batch, CsvRow, Entry, Stamp, now
 
 HERE = Path(__file__).parent
 ANSWERS = HERE / 'answers'
@@ -28,7 +27,7 @@ class Logged(CsvRow):
     """A row of answers/log.csv: who answered a file (relative to answers/), when, with which model and prompt."""
 
     file: str
-    answered_at: str
+    answered_at: Stamp
     model: str
     prompt: str
     answered_by: str
@@ -112,7 +111,7 @@ def save[E: Entry](pass_name: str, output: Batch[E], model: str, prompt: Prompt,
     rel = str(path.relative_to(ANSWERS))
     rows[rel] = Logged(
         file=rel,
-        answered_at=dt.datetime.now(dt.UTC).isoformat(timespec='seconds'),
+        answered_at=now(),
         model=model,
         prompt=prompt.hash,
         answered_by=answered_by,

@@ -96,6 +96,13 @@ ignore = [
 "tests/test_tickets.py" = ["PLC0415"]
 # written from pipeline/states.py: FULL_PASS is a ticket, no password
 "pipeline/enums.py" = ["S105"]
+# the one clock the pipeline reads
+"pipeline/records.py" = ["TID251"]
+
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+"datetime.datetime.now".msg = "the pipeline's time is pipeline.records.now(), UTC to the second, and its day today()"
+"datetime.datetime.utcnow".msg = "the pipeline's time is pipeline.records.now(), UTC to the second, and its day today()"
+"datetime.date.today".msg = "the pipeline's day is pipeline.records.today(), in UTC"
 
 [tool.ruff.lint.mccabe]
 max-complexity = 10

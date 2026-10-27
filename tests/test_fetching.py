@@ -12,11 +12,12 @@ import pytest
 
 from pipeline import db as sqlite_db
 from pipeline import geocode, rates, scrape, web
-from pipeline.records import JSON, Place, Rate, Spot
+from pipeline.records import JSON, Place, Rate, Spot, today
 from tests import jsons
 from tests.exports import column, content, run, trimmed
 from tests.samples import API, PAGE
 
+ECB_DAY = dt.date(2026, 10, 27)
 ECB_FILE = """<gesmes:Envelope><Cube><Cube time='2026-10-27'>
 <Cube currency='USD' rate='1.0812'/><Cube currency='NOK' rate='11.705'/></Cube></Cube></gesmes:Envelope>"""
 
@@ -36,10 +37,10 @@ def test_the_rates_are_the_banks_and_the_fixed_ones(tmp_path: Path, monkeypatch:
     monkeypatch.setattr(web, 'get', get)
     run(rates.main, monkeypatch)
     assert Rate.read(tmp_path / 'rates.csv') == [
-        Rate(currency='BGN', per_eur=1.95583, date='2026-10-27'),
-        Rate(currency='EUR', per_eur=1.0, date='2026-10-27'),
-        Rate(currency='NOK', per_eur=11.705, date='2026-10-27'),
-        Rate(currency='USD', per_eur=1.0812, date='2026-10-27'),
+        Rate(currency='BGN', per_eur=1.95583, date=ECB_DAY),
+        Rate(currency='EUR', per_eur=1.0, date=ECB_DAY),
+        Rate(currency='NOK', per_eur=11.705, date=ECB_DAY),
+        Rate(currency='USD', per_eur=1.0812, date=ECB_DAY),
     ]
 
 
@@ -238,4 +239,4 @@ def test_a_pending_festival_changed_again_waits_from_its_latest_change(
     with sqlite_db.opened(src, 'ro') as db:
         reasons = column(db, 'select reason from pending_extraction where event_id = 17001')
         since = column(db, 'select since from pending_extraction where event_id = 17001')
-    assert (reasons, since) == (['new'], [dt.datetime.now(dt.UTC).date().isoformat()])  # still new to the passes
+    assert (reasons, since) == (['new'], [today().isoformat()])  # still new to the passes

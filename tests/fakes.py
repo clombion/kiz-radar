@@ -2,6 +2,7 @@
 its replies, as a real message of the SDK, and keeping what it was asked; and a database, as the type of the memory
 fixture (conftest.py)."""
 
+import datetime as dt
 import sqlite3
 from collections.abc import Callable, Sequence
 from types import TracebackType
@@ -10,6 +11,7 @@ from typing import Self
 from anthropic.types import Message, MessageParam, StopReason, TextBlock, Usage
 
 INPUT_TOKENS, OUTPUT_TOKENS = 6000, 2000  # what each request costs
+AT = dt.datetime(2026, 10, 1, 5, tzinfo=dt.UTC)  # when a page was read, or an answer given
 
 # what the memory fixture gives: an in-memory database, closed when the test ends (conftest.py)
 type Memory = Callable[[], sqlite3.Connection]

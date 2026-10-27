@@ -2,6 +2,7 @@
 
 import argparse
 import dataclasses
+import datetime as dt
 import hashlib
 import json
 import sqlite3
@@ -17,9 +18,9 @@ from pipeline.enums import AnswerState, PassKind, Style
 from pipeline.extract import answers, ask, check_output, load_extract, prices, run_log
 from pipeline.extract.resolve_artists import stable_ids
 from pipeline.prompt import Prompt, api_schema
-from pipeline.records import JSON, Batch, Priced, PricedPass, PricedTier, Record, Stamped, real_day
+from pipeline.records import JSON, Batch, Priced, PricedPass, PricedTier, Record, Stamped, day_of, real_day
 from tests import jsons
-from tests.fakes import Client, Memory
+from tests.fakes import AT, Client, Memory
 
 
 @pytest.mark.parametrize(
@@ -100,7 +101,8 @@ def test_amount_missing_from_quote_is_a_problem() -> None:
     ],
 )
 def test_dates_without_a_year_fall_before_the_festival(answer: str | None, start: str, expected: str | None) -> None:
-    assert prices.on_date(None if answer is None else real_day(answer), start) == expected
+    day = prices.on_date(None if answer is None else real_day(answer), day_of(start))
+    assert (None if day is None else day.isoformat()) == expected
 
 
 @pytest.mark.parametrize('value', ['02-30', '2027-13-01', '2026-02-29'])
@@ -154,8 +156,8 @@ FEST = ask.Festival(
     id=5,
     title='Test Fest',
     description_text='Full pass 80€ until 31.01\nDJ Neiken',
-    start_date='2026-03-20 18:00:00',
-    end_date='2026-03-22 18:00:00',
+    start_date=dt.date(2026, 3, 20),
+    end_date=dt.date(2026, 3, 22),
     country='Norway',
 )
 
@@ -274,7 +276,7 @@ def test_only_an_answer_to_the_current_prompt_is_read_as_its_record(
     _ = (tmp_path / 'prices' / 'prices-001.json').write_text(
         json.dumps({'batch': 'b', 'events': [{'event_id': 5, 'old': 1}]})
     )
-    rows = [answers.Logged(file='prices/prices-001.json', answered_at='t', model='m', prompt='0' * 16, answered_by='x')]
+    rows = [answers.Logged(file='prices/prices-001.json', answered_at=AT, model='m', prompt='0' * 16, answered_by='x')]
     answers.Logged.write(tmp_path / 'log.csv', rows)
     assert list(answers.answered('prices', {5})) == [5]  # its festivals are known, whatever its shape
     assert answers.current(prompt.PRICES, {5}) == {}
@@ -357,7 +359,7 @@ def test_only_the_named_festivals_are_asked(memory: Memory, monkeypatch: pytest.
         _ = ask.due(con, ['prices'], {2, 3})  # no description: nothing to ask it
 
 
-def logged(prompt_: str, at: str = '2026-10-02T09:00:00+00:00') -> answers.Logged:
+def logged(prompt_: str, at: dt.datetime = dt.datetime(2026, 10, 2, 9, tzinfo=dt.UTC)) -> answers.Logged:
     return answers.Logged(file='prices/event-1.json', answered_at=at, model='m', prompt=prompt_, answered_by='x')
 
 
@@ -376,20 +378,23 @@ def test_an_answer_to_an_older_prompt_is_asked_again(memory: Memory, monkeypatch
 
 
 # (an answer asked on 2 October, the day its festival's description last changed when it is pending)
-ANSWER_CASES: list[tuple[tuple[answers.Logged | None, str | None], AnswerState]] = [
+ANSWER_CASES: list[tuple[tuple[answers.Logged | None, dt.date | None], AnswerState]] = [
     ((None, None), AnswerState.NONE),
-    ((None, '2026-10-01'), AnswerState.NONE),
+    ((None, dt.date(2026, 10, 1)), AnswerState.NONE),
     ((logged('0' * 16), None), AnswerState.STALE),
-    ((NOW, '2026-10-03'), AnswerState.STALE),  # asked before the change
-    ((NOW, '2026-10-02'), AnswerState.CURRENT),  # asked on the day of the change: after the refresh that found it
-    ((NOW, '2026-10-01'), AnswerState.CURRENT),
+    ((NOW, dt.date(2026, 10, 3)), AnswerState.STALE),  # asked before the change
+    (
+        (NOW, dt.date(2026, 10, 2)),
+        AnswerState.CURRENT,
+    ),  # asked on the day of the change: after the refresh that found it
+    ((NOW, dt.date(2026, 10, 1)), AnswerState.CURRENT),
     ((NOW, None), AnswerState.CURRENT),
 ]
 
 
 @pytest.mark.parametrize(('args', 'state'), ANSWER_CASES)
 def test_every_state_of_an_answer_that_due_tells_apart(
-    args: tuple[answers.Logged | None, str | None], state: AnswerState
+    args: tuple[answers.Logged | None, dt.date | None], state: AnswerState
 ) -> None:
     answer, since = args
     assert ask.answer_state('prices', answer, since=since) == state
@@ -412,8 +417,8 @@ def test_a_festival_stays_pending_until_every_pass_has_an_answer_since_its_chang
         return {i: (Path(f'{pass_name}/event-{i}.json'), a) for i, a in have[pass_name].items() if i in ids}
 
     monkeypatch.setattr(ask.answers, 'answered', answered)
-    since = '2026-10-01'
-    assert ask.settled({1: since, 2: since, 3: since, 4: '2026-10-03'}) == [2]
+    since = dt.date(2026, 10, 1)
+    assert ask.settled({1: since, 2: since, 3: since, 4: dt.date(2026, 10, 3)}) == [2]
 
 
 @pytest.mark.parametrize(

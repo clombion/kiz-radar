@@ -28,6 +28,7 @@ from pydantic import (
     Tag,
     TypeAdapter,
     ValidationError,
+    WithJsonSchema,
     WrapSerializer,
     model_validator,
 )
@@ -70,8 +71,73 @@ def real_day(value: str) -> RealDay:
 
 # YYYY-MM-DD, or MM-DD when no year is given
 Day = Annotated[RealDay, Field(pattern=r'^(\d{4}-)?\d{2}-\d{2}$'), AfterValidator(real_day)]
-Date = Annotated[str, Field(pattern=r'^\d{4}-\d{2}-\d{2}$'), AfterValidator(real_day)]
-Stamp = Annotated[str, Field(pattern=r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\+00:00$')]  # a UTC time to the second
+DATE = r'^\d{4}-\d{2}-\d{2}$'
+LOCAL = r'^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}:\d{2})?$'
+STAMP = r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\+00:00$'
+
+
+def date_of(value: object) -> object:
+    """A date's text read as its day (2026-10-27, nothing else); a day stays one."""
+    if isinstance(value, str):
+        if not re.fullmatch(DATE, value):
+            raise ValueError(f'{value!r} is no date (YYYY-MM-DD)')
+        return dt.date.fromisoformat(value)
+    return value
+
+
+def day_of(value: str) -> dt.date:
+    """The day of a time as kizomba-world gives it, in the festival's own time (2026-01-02 18:00:00), or of a date."""
+    if not re.fullmatch(LOCAL, value):
+        raise ValueError(f'{value!r} is no local time (YYYY-MM-DD HH:MM:SS) and no date')
+    return dt.date.fromisoformat(value[:10])
+
+
+def local_day(value: object) -> object:
+    return day_of(value) if isinstance(value, str) else value
+
+
+def stamp_time(value: object) -> object:
+    """A stamp's text read as its time (2026-10-27T17:38:51+00:00, nothing else); a time stays one."""
+    if isinstance(value, str):
+        if not re.fullmatch(STAMP, value):
+            raise ValueError(f'{value!r} is no stamp (YYYY-MM-DDTHH:MM:SS+00:00)')
+        return dt.datetime.fromisoformat(value)
+    return value
+
+
+def utc_second(value: dt.datetime) -> dt.datetime:
+    if value.utcoffset() != dt.timedelta(0) or value.microsecond:
+        raise ValueError(f'{value} is no UTC time to the second')
+    return value
+
+
+def now() -> dt.datetime:
+    """The time, as every stamp the pipeline writes holds it: UTC, to the second."""
+    return dt.datetime.now(dt.UTC).replace(microsecond=0)
+
+
+def today() -> dt.date:
+    """Today, in UTC, where the Actions run."""
+    return now().date()
+
+
+# a day of the calendar, written as 2026-10-27
+Date = Annotated[
+    dt.date,
+    BeforeValidator(date_of),
+    PlainSerializer(dt.date.isoformat, return_type=str),
+    WithJsonSchema({'type': 'string', 'pattern': DATE}),
+]
+# the day of a time in the festival's own time, read from kizomba-world's 2026-01-02 18:00:00
+On = Annotated[dt.date, BeforeValidator(local_day)]
+# a UTC time to the second, written as 2026-10-27T17:38:51+00:00
+Stamp = Annotated[
+    dt.datetime,
+    BeforeValidator(stamp_time),
+    AfterValidator(utc_second),
+    PlainSerializer(dt.datetime.isoformat, return_type=str),
+    WithJsonSchema({'type': 'string', 'pattern': STAMP}),
+]
 Url = Annotated[str, Field(pattern=r'^https?://')]
 Hash = Annotated[str, Field(pattern=rf'^[0-9a-f]{{{DIGITS}}}$')]
 Count = Annotated[int, Field(ge=1)]
@@ -365,7 +431,7 @@ class Dated(BaseModel):
 
     model_config = ConfigDict(strict=True, extra='ignore', frozen=True)
 
-    rows_at: str
+    rows_at: Stamp
 
 
 class Stamped(Dated):

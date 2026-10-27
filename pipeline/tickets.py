@@ -97,6 +97,7 @@ from pipeline.records import (
     FromPage,
     FromText,
     Json,
+    On,
     PageRecipe,
     PageRow,
     Priced,
@@ -111,6 +112,8 @@ from pipeline.records import (
     Stamped,
     StatusRow,
     errors,
+    now,
+    today,
 )
 
 ROOT = Path(__file__).parent.parent
@@ -332,7 +335,7 @@ def failed(base: Mapping[str, object], status: Status, why: str) -> Failed:
 def attempt(page: str, site: Site, *, visible: bool | None = None) -> Entry:
     """One read of a ticket page, as its log entry."""
     base: dict[str, object] = {
-        'at': dt.datetime.now(dt.UTC).isoformat(timespec='seconds'),
+        'at': now(),
         'page': page,
         'recipe': site.version,
     }
@@ -418,7 +421,7 @@ def log(event_id: int) -> list[Entry]:
     # git merges the log line by line (.gitattributes), so a line edited in place comes back twice
     stamps = [e.at for e in entries]
     if twice := sorted({at for at in stamps if stamps.count(at) > 1}):
-        sys.exit(f'{shown(path)}: two entries at {", ".join(twice)}; the log is only ever appended to')
+        sys.exit(f'{shown(path)}: two entries at {", ".join(map(str, twice))}; the log is only ever appended to')
     return sorted(entries, key=lambda e: e.at)
 
 
@@ -532,7 +535,7 @@ def keys_of(fr: FirstRead) -> list[str]:
 def read_problems(fr: FirstRead, entries: Sequence[Entry]) -> list[str]:
     """What is wrong with a first read, against the rows it was made from and its description; empty when sound."""
     if (at := read_at(fr, entries)) is None:
-        return [f'rows_at {fr.rows_at!r} is no read in tickets/log/{fr.event_id}.jsonl']
+        return [f'rows_at {fr.rows_at.isoformat()} is no read in tickets/log/{fr.event_id}.jsonl']
     rows = {r.key: r for r in at.rows}
     keys = keys_of(fr)
     found = [f'key {k}: in the read twice' for k in sorted({k for k in keys if keys.count(k) > 1})]
@@ -563,9 +566,14 @@ def tier_problems(fr: FirstRead, where: str, tier: ReadTier, here: Sequence[Row]
     found += [f'{where}: {d}' for d in [split_price(here)] if d]
     # the page sold these tickets when it was read, so their price can't have ended before that day
     until = tier.until
-    if until and any(not r.sold_out for r in here) and (prices.on_date(until, fr.start_date) or '') < fr.rows_at[:10]:
+    if (
+        until
+        and any(not r.sold_out for r in here)
+        and (ends := prices.on_date(until, fr.start_date)) is not None
+        and ends < fr.rows_at.date()
+    ):
         found.append(
-            f'{where}.until {until}: the page sold these tickets on {fr.rows_at[:10]}; a date that has passed is not '
+            f'{where}.until {until}: the page sold these tickets on {fr.rows_at.date()}; a date that has passed is not '
             'theirs'
         )
     return found
@@ -737,7 +745,7 @@ def written(
         event=fr.title,
         page=entry.page,
         reseller=site.recipe.reseller if site else None,
-        read_on=entry.at[:10],
+        read_on=entry.at.date(),
         read_by=fr.read_by,
         prompt=fr.prompt,
         recipe=entry.recipe,
@@ -821,7 +829,7 @@ def changes(entries: Sequence[Entry]) -> list[tuple[str, str]]:
             continue
         now = {r.key: r for r in e.rows}
         if before is not None:
-            day = e.at[:10]
+            day = e.at.date().isoformat()
             out += [(day, f'new: {line(now[k])}') for k in now if k not in before]
             out += [(day, f'gone: {line(before[k])}') for k in before if k not in now]
             for k in (k for k in now if k in before):
@@ -834,11 +842,11 @@ def changes(entries: Sequence[Entry]) -> list[tuple[str, str]]:
     return out
 
 
-def recheck(tiers: Sequence[PriceRow], start: str, today: str) -> tuple[Recheck, bool, str]:
+def recheck(tiers: Sequence[PriceRow], start: dt.date, today: dt.date) -> tuple[Recheck, bool, str]:
     """(class, due, why) from a festival's recorded tiers (its pass_prices.csv rows)."""
     on_sale = [t for t in tiers if not t.sold_out]
     if on_sale and all(t.until and not t.quantity for t in on_sale):
-        last = max(prices.on_date(t.until, start) or '' for t in on_sale)
+        last = max(d for t in on_sale if (d := prices.on_date(t.until, start)) is not None)
         return Recheck.DATED, last < today, f'last price date {last}'
     return Recheck.MONTHLY, True, 'read on every monthly run'
 
@@ -849,11 +857,6 @@ def recheck(tiers: Sequence[PriceRow], start: str, today: str) -> tuple[Recheck,
 def src_db() -> AbstractContextManager[sqlite3.Connection]:
     """The newest kizomba-world export, to read, closed with its block."""
     return sqlite_db.opened(max((ROOT / 'source').glob('*.sqlite'), key=lambda p: p.stat().st_mtime), 'ro')
-
-
-def utc_today() -> str:
-    """Today, in UTC, where the Actions run."""
-    return dt.datetime.now(dt.UTC).date().isoformat()
 
 
 def host(url: str) -> str:
@@ -883,19 +886,21 @@ def known_page(
     (tickets/pages.csv), or its first full link to a ticket shop."""
     if fr:
         if (at := read_at(fr, entries)) is None:
-            sys.exit(f'a first read of rows at {fr.rows_at}, which its log has no read of')
+            sys.exit(f'a first read of rows at {fr.rows_at.isoformat()}, which its log has no read of')
         return at.page
     if sold:
         return sold.page if sold.state == Sales.SHOP else None
     return next((u for u in urls if '…' not in u and host(u) in shops), None)
 
 
-def dated_in_description(entry: Priced, start: str, today: str) -> bool:
+def dated_in_description(entry: Priced, start: dt.date, today: dt.date) -> bool:
     """Whether the description's own prices answer gives the pass a card prices (prices.card_pass) a price dated
     today or later."""
     card = prices.card_pass(entry.passes)
     return card is not None and any(
-        (prices.on_date(d, start) or '') >= today for t in entry.passes[card].tiers for d in (t.from_, t.until) if d
+        (day := prices.on_date(d, start)) is not None and day >= today
+        for t in entry.passes[card].tiers
+        for d in (t.from_, t.until)
     )
 
 
@@ -922,8 +927,8 @@ class Event(Record):
 
     id: int
     title: str
-    start_date: str
-    end_date: str
+    start_date: On
+    end_date: On
     country: str | None
     description_text: str | None
 
@@ -934,8 +939,8 @@ class Festival:
 
     id: int
     title: str
-    start_date: str
-    end_date: str
+    start_date: dt.date
+    end_date: dt.date
     country: str | None
     description: str  # '' when it has none
     over: bool  # it ended before today
@@ -957,7 +962,7 @@ class Festival:
         return NEEDS[self.need]
 
 
-def why_first_read(f: Festival, today: str) -> tuple[FirstReadState, tuple[str, ...]]:
+def why_first_read(f: Festival, today: dt.date) -> tuple[FirstReadState, tuple[str, ...]]:
     """(the festival's first_read state, the latest rows' unread keys). A first read to another prompt is judged by its
     prompt alone, since it may follow another shape."""
     fr, entry = f.first_read, latest_read(f.log)
@@ -975,7 +980,7 @@ def why_first_read(f: Festival, today: str) -> tuple[FirstReadState, tuple[str, 
             state = FirstReadState.REDO_PROMPT
         case FirstRead():
             if entry is None or (at := read_at(fr, f.log)) is None:
-                sys.exit(f'{f.id}: a first read of rows at {fr.rows_at}, which its log has no read of')
+                sys.exit(f'{f.id}: a first read of rows at {fr.rows_at.isoformat()}, which its log has no read of')
             unread = tuple(unread_keys(fr, entry))
             state = (
                 FirstReadState.REDO_DESCRIPTION
@@ -989,7 +994,7 @@ def why_first_read(f: Festival, today: str) -> tuple[FirstReadState, tuple[str, 
     return (FirstReadState.DISPUTED if NEEDS[state] and f.disputed else state), unread
 
 
-def assessed(f: Festival, today: str) -> Festival:
+def assessed(f: Festival, today: dt.date) -> Festival:
     """The festival with its first_read state as of today."""
     need, unread = why_first_read(f, today)
     return replace(f, need=need, unread=unread)
@@ -1000,7 +1005,9 @@ def links_hash(urls: Iterable[str]) -> str:
     return hashlib.sha256('\n'.join(sorted(urls)).encode()).hexdigest()[:16]
 
 
-def festivals(db: sqlite3.Connection, today: str, only: int | None = None, *, every: bool = False) -> list[Festival]:
+def festivals(
+    db: sqlite3.Connection, today: dt.date, only: int | None = None, *, every: bool = False
+) -> list[Festival]:
     """The festivals still to come, every festival the source database lists (every), or the one asked for (only),
     leaving out the cancelled ones, as Festival records."""
     query = 'select id, title, start_date, end_date, country, description_text from events where cancelled is not 1'
@@ -1100,7 +1107,7 @@ def write_status(fs: Sequence[Festival]) -> collections.Counter[Waiting]:
         StatusRow(
             event_id=f.id,
             event=f.title,
-            start=f.start_date[:10],
+            start=f.start_date,
             waits_for=waiting(f),
             first_read=f.need,
             sales=f.found.state if f.found else None,
@@ -1114,7 +1121,7 @@ def write_status(fs: Sequence[Festival]) -> collections.Counter[Waiting]:
 
 def status(db: sqlite3.Connection) -> collections.Counter[Waiting]:
     """Write tickets/status.csv for every festival the source database lists; the counts of what they wait for."""
-    return write_status(festivals(db, utc_today(), every=True))
+    return write_status(festivals(db, today(), every=True))
 
 
 # ---- first reads by the models
@@ -1126,8 +1133,8 @@ def question(f: Festival, entry: Read) -> str:
         {
             'event_id': f.id,
             'title': f.title,
-            'start_date': f.start_date[:10],
-            'end_date': f.end_date[:10],
+            'start_date': f.start_date.isoformat(),
+            'end_date': f.end_date.isoformat(),
             'country': f.country,
             'styles': list(f.styles),
             'description': f.description,
@@ -1243,7 +1250,7 @@ def draft_of(f: Festival, entry: Read, by: str) -> ReadHeader:
     return ReadHeader(
         event_id=f.id,
         title=f.title,
-        start_date=f.start_date[:10],
+        start_date=f.start_date,
         read_by=by,
         prompt=prompts.current('first_read').hash,
         rows_at=entry.at,
@@ -1253,7 +1260,7 @@ def draft_of(f: Festival, entry: Read, by: str) -> ReadHeader:
 
 
 def one(db: sqlite3.Connection, event_id: int, page: str | None = None) -> Festival:
-    f = next(iter(festivals(db, utc_today(), event_id)), None)
+    f = next(iter(festivals(db, today(), event_id)), None)
     if f is None:
         sys.exit(f'{event_id}: no such festival, or it is cancelled')
     return replace(f, page=page, site=site_for(page, sites())) if page else f
@@ -1280,7 +1287,7 @@ def cmd_read(db: sqlite3.Connection, event_id: int, url: str | None = None, *, v
                 else ''
             )
         )
-    print(f'{event_id}: {len(entry.rows)} tickets read at {entry.at} from {entry.url}')
+    print(f'{event_id}: {len(entry.rows)} tickets read at {entry.at.isoformat()} from {entry.url}')
     for r in entry.rows:
         print(f'  {r.key:>12}  {line(r)}{"  (sold out)" if r.sold_out else ""}')
 
@@ -1299,7 +1306,7 @@ def cmd_draft(db: sqlite3.Connection, event_id: int) -> None:
     )
     print(
         f'Fill passes, skipped and rule_quotes in {shown(path)} following {shown(asked)}, the prompt the models '
-        f'answer, with the festival and the tickets of the read at {entry.at}; '
+        f'answer, with the festival and the tickets of the read at {entry.at.isoformat()}; '
         f'then run: uv run --group tickets -m pipeline.tickets record {event_id}'
     )
 
@@ -1332,7 +1339,7 @@ def cmd_record(db: sqlite3.Connection, event_id: int) -> None:
     )
 
 
-def todo_notes(f: Festival, today: str) -> list[str]:
+def todo_notes(f: Festival, today: dt.date) -> list[str]:
     """What todo says of a festival: when to read it again, its failed reads, and its first read."""
     notes: list[str] = []
     if f.first_read:
@@ -1359,12 +1366,12 @@ def todo_notes(f: Festival, today: str) -> list[str]:
 
 
 def cmd_todo(db: sqlite3.Connection) -> None:
-    day = utc_today()
+    day = today()
     fs = festivals(db, day)
     for f in fs:
         if not f.first_read and not f.needs_read:
             continue
-        print(f'{f.id}  {f.start_date[:10]}  {f.title[:50]}')
+        print(f'{f.id}  {f.start_date}  {f.title[:50]}')
         for n in todo_notes(f, day):
             print(f'      {n}')
         for u in ([f.page] if f.page else list(f.links))[:3]:
@@ -1446,7 +1453,7 @@ class Run:
     """The monthly Action's run: the reads it makes, what it found wrong, and whether the month's budget stopped
     the first reads."""
 
-    def __init__(self, db: sqlite3.Connection, today: str) -> None:
+    def __init__(self, db: sqlite3.Connection, today: dt.date) -> None:
         self.db, self.today = db, today
         self.client: ask.Client | None = None
         self.alarms: list[str] = []
@@ -1490,7 +1497,7 @@ class Run:
         if not (f.needs_read and f.need != FirstReadState.DISPUTED and f.site):
             return
         entry = latest_read(f.log)
-        if entry is None or entry.at[:10] != self.today:
+        if entry is None or entry.at.date() != self.today:
             append(f.id, fresh := attempt(f.page or '', f.site))
             entry = fresh
         if isinstance(entry, Read) and not self.budget:
@@ -1505,7 +1512,7 @@ def cmd_run(db: sqlite3.Connection, ids: set[int] | None = None) -> None:
     latest logged rows, the first reads of festivals now past that follow another prompt (of the festivals ids
     names, when it names some); then write both files. Exits 1 naming each festival whose page broke its recipe,
     reached REFUSALS failures, or no longer fits its first read."""
-    day = utc_today()
+    day = today()
     every: list[tuple[int]] = db.execute('select id from events').fetchall()
     if ids and (missing := ids - {i for (i,) in every}):
         sys.exit(f'no such festival: {sorted(missing)}')

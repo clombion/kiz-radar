@@ -9,6 +9,9 @@ import pytest
 
 from pipeline import fares
 from pipeline.enums import FareSearch
+from pipeline.records import today
+
+FRIDAY = dt.date(2026, 11, 6)  # a festival weekend's
 
 
 def test_closer_weekends_are_searched_more_often() -> None:
@@ -22,16 +25,14 @@ def test_weekends_google_doesnt_sell_yet_wait() -> None:
 def test_weekdays_spread_over_the_week() -> None:
     friday = dt.date(2026, 11, 6)
     days = [
-        fares.weekday_of(a, (friday + dt.timedelta(weeks=w)).isoformat())
-        for a in ('OSL', 'GLA', 'LIS', 'BCN')
-        for w in range(20)
+        fares.weekday_of(a, friday + dt.timedelta(weeks=w)) for a in ('OSL', 'GLA', 'LIS', 'BCN') for w in range(20)
     ]
     assert set(days) == set(range(7))
     assert max(days.count(d) for d in range(7)) < 25
 
 
-def one_weekend(today: dt.date) -> set[tuple[str, str]]:
-    return {('GLA', '2026-11-06')}
+def one_weekend(today: dt.date) -> set[tuple[str, dt.date]]:
+    return {('GLA', FRIDAY)}
 
 
 def run_queue(
@@ -50,9 +51,9 @@ def test_never_searched_is_due_any_day(tmp_path: Path, monkeypatch: pytest.Monke
 
 def test_due_again_on_its_own_weekday_only(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     # GLA on 6 Nov is weekly; searched a week before its weekday in the week of 26 Oct
-    its_day = dt.date(2026, 10, 26) + dt.timedelta(days=fares.weekday_of('GLA', '2026-11-06'))
-    last = (its_day - dt.timedelta(days=7)).isoformat() + 'T06:00:00+00:00'
-    job = fares.Job(airport='GLA', depart='2026-11-06', last_run=last, status=FareSearch.PRICED, note='')
+    its_day = dt.date(2026, 10, 26) + dt.timedelta(days=fares.weekday_of('GLA', FRIDAY))
+    last = dt.datetime.combine(its_day - dt.timedelta(days=7), dt.time(6), dt.UTC)
+    job = fares.Job(airport='GLA', depart=FRIDAY, last_run=last, status=FareSearch.PRICED, note='')
 
     def due(day: dt.date) -> bool:
         return run_queue(tmp_path, monkeypatch, [job], day).due
@@ -90,7 +91,7 @@ def test_a_search_reads_fli_s_answer(
     stdout: str, stderr: str, expected: tuple[str, object], monkeypatch: pytest.MonkeyPatch
 ) -> None:
     monkeypatch.setattr(subprocess, 'run', fli(stdout, stderr))
-    found = fares.search('GLA', '2026-11-06')
+    found = fares.search('GLA', FRIDAY)
     got = ('priced', found.price) if isinstance(found, fares.Fare) else (found.status, found.note)
     assert got == expected
 
@@ -100,11 +101,11 @@ def test_a_search_that_takes_too_long_finds_no_price(monkeypatch: pytest.MonkeyP
         raise subprocess.TimeoutExpired(cmd, fares.TIMEOUT)
 
     monkeypatch.setattr(subprocess, 'run', run)
-    assert fares.search('GLA', '2026-11-06') == fares.Missed(FareSearch.NO_PRICE, 'timeout')
+    assert fares.search('GLA', FRIDAY) == fares.Missed(FareSearch.NO_PRICE, 'timeout')
 
 
-AT = '2026-10-27T06:00:00+00:00'  # when a fare was found
-SOON = (dt.datetime.now(dt.UTC).date() + dt.timedelta(days=10)).isoformat()  # due, weekly, never searched
+AT = dt.datetime(2026, 10, 27, 6, tzinfo=dt.UTC)  # when a fare was found
+SOON = today() + dt.timedelta(days=10)  # due, weekly, never searched
 
 
 @pytest.fixture
@@ -115,12 +116,14 @@ def weekends(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     monkeypatch.setattr(fares, 'weekends', two_weekends)
     monkeypatch.setattr('time.sleep', no_wait)
     fares.Job.write(fares.JOBS, [])
-    gone = fares.Fare(airport='OSL', depart='2026-01-02', return_='2026-01-05', price=1, currency='EUR', fetched_at=AT)
+    gone = fares.Fare(
+        airport='OSL', depart=dt.date(2026, 1, 2), return_=dt.date(2026, 1, 5), price=1, currency='EUR', fetched_at=AT
+    )
     fares.Fare.write(fares.FARES, [gone])
     return tmp_path
 
 
-def two_weekends(_: dt.date) -> set[tuple[str, str]]:
+def two_weekends(_: dt.date) -> set[tuple[str, dt.date]]:
     return {('GLA', SOON), ('LIS', SOON)}
 
 
@@ -128,7 +131,7 @@ def no_wait(_: float) -> None:
     """time.sleep, without the wait."""
 
 
-def searched(found: dict[str, fares.Fare | fares.Missed]) -> Callable[[str, str], fares.Fare | fares.Missed]:
+def searched(found: dict[str, fares.Fare | fares.Missed]) -> Callable[[str, dt.date], fares.Fare | fares.Missed]:
     return lambda airport, _: found[airport]
 
 

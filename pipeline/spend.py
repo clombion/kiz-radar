@@ -7,11 +7,10 @@ BudgetSpentError; the step stops asking, leaves the rest for next month, and its
 already under way can take the month a little over.
 """
 
-import datetime as dt
 import threading
 from pathlib import Path
 
-from pipeline.records import Rate, Spent
+from pipeline.records import Rate, Spent, now
 
 HERE = Path(__file__).parent
 LEDGER, RATES = HERE / 'spend.csv', HERE / 'rates.csv'
@@ -38,10 +37,10 @@ def usd(model: str, input_tokens: int, output_tokens: int) -> float:
     return (input_tokens * rate_in + output_tokens * rate_out) / 1e6
 
 
-def month_usd(month: str | None = None) -> float:
-    """Dollars spent in a calendar month (YYYY-MM, this one by default)."""
-    month = month or dt.datetime.now(dt.UTC).strftime('%Y-%m')
-    return sum(r.usd for r in Spent.read(LEDGER) if r.at.startswith(month))
+def month_usd() -> float:
+    """Dollars spent this calendar month (in UTC)."""
+    t = now()
+    return sum(r.usd for r in Spent.read(LEDGER) if (r.at.year, r.at.month) == (t.year, t.month))
 
 
 def eur(dollars: float) -> float:
@@ -61,7 +60,7 @@ def record(step: str, model: str, input_tokens: int, output_tokens: int) -> floa
     """Add one request to the ledger; its cost in dollars."""
     cost = usd(model, input_tokens, output_tokens)
     row = Spent(
-        at=dt.datetime.now(dt.UTC).isoformat(timespec='seconds'),
+        at=now(),
         step=step,
         model=model,
         input_tokens=input_tokens,

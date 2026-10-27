@@ -2,6 +2,7 @@
 is stale; the report is the same each time."""
 
 import dataclasses
+import datetime as dt
 import json
 import shutil
 import sqlite3
@@ -13,7 +14,7 @@ from pipeline import audit, exceptions, prompt, tickets
 from pipeline.enums import FirstRead
 from pipeline.extract import answers
 from pipeline.records import PageRecipe
-from tests.fakes import Memory
+from tests.fakes import AT, Memory
 
 
 def copied(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
@@ -46,8 +47,8 @@ def festival(page: str | None, **change: object) -> tickets.Festival:
     base = tickets.Festival(
         id=1,
         title='F',
-        start_date='2027-01-01',
-        end_date='2027-01-02',
+        start_date=dt.date(2027, 1, 1),
+        end_date=dt.date(2027, 1, 2),
         country=None,
         description='',
         over=False,
@@ -104,7 +105,7 @@ def test_an_answer_to_the_current_prompt_holds_only_states_its_pass_makes(
         return {
             i: (
                 folder / f'event-{i}.json',
-                answers.Logged(file='f', answered_at='t', model='m', prompt=h, answered_by='x'),
+                answers.Logged(file='f', answered_at=AT, model='m', prompt=h, answered_by='x'),
             )
             for i, h in ((1, now), (2, old))
         }

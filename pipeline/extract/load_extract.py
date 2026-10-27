@@ -62,6 +62,7 @@ from pipeline.records import (
     PriceRow,
     RoomsGenres,
     StatusRow,
+    day_of,
 )
 
 PAGE_PRICES = run_log.HERE.parent / 'pass_prices.csv'
@@ -355,7 +356,7 @@ def load_prices(
     """Each festival's passes: from its ticket page when ticket_pages.csv has it, else from its description; and what
     its card can say of its price, and the pass it prices, from them and how it sells (sold: status())."""
     events: list[tuple[int, str, str]] = con.execute('SELECT id, start_date, modified_at FROM events').fetchall()
-    dates = {i: (start, edited) for i, start, edited in events}
+    dates = {i: (day_of(start), day_of(edited)) for i, start, edited in events}
     rows = [(a.entry, 'description', a.logged.prompt, a.logged.model) for e, a in described.items() if e not in pages]
     rows += [(entry, 'ticket_page', page.prompt, page.read_by) for entry, page in pages.values()]
     _ = con.executemany(
@@ -389,7 +390,7 @@ def load_prices(
             for t, tier in enumerate(ps.tiers, 1):
                 frm, until = on_date(tier.from_, start), on_date(tier.until, start)
                 if tier.current and frm is None:
-                    frm = edited[:10]
+                    frm = edited
                 yearless = any(v and len(v) == len('MM-DD') for v in (tier.from_, tier.until))
                 _ = con.execute(
                     'INSERT INTO pass_tiers VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
@@ -465,8 +466,8 @@ def record_pass[E: Entry](
             details={
                 'answer_files': len({a.logged.file for a in got.values()}),
                 'festivals': len(got),
-                'first_answer': times[0],
-                'last_answer': times[-1],
+                'first_answer': times[0].isoformat(),
+                'last_answer': times[-1].isoformat(),
                 **numbers,
             },
         ),

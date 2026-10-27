@@ -48,6 +48,7 @@ from pipeline.records import (
     StatusRow,
     Suggestion,
     errors,
+    today,
 )
 
 ROOT = tickets.ROOT
@@ -134,7 +135,7 @@ def main() -> None:
     with tickets.src_db() as db:
         ids: list[tuple[int]] = db.execute('SELECT id FROM events').fetchall()
         bad = refused({i for (i,) in ids})
-        old = stale(tickets.festivals(db, tickets.utc_today(), every=True), tickets.sites())
+        old = stale(tickets.festivals(db, today(), every=True), tickets.sites())
     for line in bad:
         print(f'refused: {line}', file=sys.stderr)
     for o, why in old:

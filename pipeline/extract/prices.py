@@ -35,18 +35,17 @@ def numbers_in(text: str) -> set[float]:
     return out
 
 
-def on_date(value: RealDay | None, start_date: str) -> str | None:
-    """An answer's date as YYYY-MM-DD; a date without a year gets the latest year that is not after start_date."""
+def on_date(value: RealDay | None, start: dt.date) -> dt.date | None:
+    """An answer's date as a day; a date without a year gets the latest year that is not after the festival's start."""
     if value is None:
         return None
     *year, m, d = map(int, value.split('-'))
     if year:
-        return value
-    start = dt.date.fromisoformat(start_date[:10])
+        return dt.date(year[0], m, d)
     y = start.year if (m, d) <= (start.month, start.day) else start.year - 1
     if (m, d) == (2, 29) and y % 4:
         d = 28
-    return f'{y:04d}-{m:02d}-{d:02d}'
+    return dt.date(y, m, d)
 
 
 def styles(db: sqlite3.Connection, event_id: int) -> list[Style]:

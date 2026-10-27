@@ -17,6 +17,7 @@ budget for Claude is spent (pipeline/spend.py), and the run then fails. Needs AN
 """
 
 import argparse
+import datetime as dt
 import json
 import sqlite3
 import sys
@@ -37,7 +38,7 @@ from pipeline import spend
 from pipeline.enums import AnswerState, Style
 from pipeline.extract import answers, check_output, prices
 from pipeline.prompt import Pass, Prompt
-from pipeline.records import Asked, AskedPrices, Batch, Entry, Priced, Record
+from pipeline.records import Asked, AskedPrices, Batch, Date, Entry, On, Priced, Record
 
 MODEL = 'claude-haiku-5-5'
 WORKERS = 8
@@ -73,9 +74,16 @@ class Festival(Record):
     id: int
     title: str
     description_text: str
-    start_date: str
-    end_date: str
+    start_date: On
+    end_date: On
     country: str | None
+
+
+class Pending(Record):
+    """A festival pending_extraction holds: the day its description last changed."""
+
+    event_id: int
+    since: Date
 
 
 def asked(pass_: Pass[Entry, Asked], f: Festival, styles: Sequence[Style] = ()) -> Asked:
@@ -85,8 +93,8 @@ def asked(pass_: Pass[Entry, Asked], f: Festival, styles: Sequence[Style] = ()) 
             event_id=f.id,
             title=f.title,
             description=f.description_text,
-            start_date=f.start_date[:10],
-            end_date=f.end_date[:10],
+            start_date=f.start_date,
+            end_date=f.end_date,
             country=f.country,
             styles=tuple(styles),
         )
@@ -187,7 +195,7 @@ type Job = tuple[Festival, Pass[Entry, Asked]]
 
 def due(
     db: sqlite3.Connection, only: Sequence[prompts.PassName] | None, ids: set[int] | None = None
-) -> tuple[list[Job], dict[int, str]]:
+) -> tuple[list[Job], dict[int, dt.date]]:
     """((festival, pass) pairs to ask: each pass whose answer for a festival is none or stale (answer_state), of the
     festivals ids names when it names some; the festivals pending_extraction holds, with the day their description
     last changed)."""
@@ -197,8 +205,9 @@ def due(
         if missing := ids - set(rows):
             sys.exit(f'no festival with a description: {sorted(missing)}')
         rows = {i: r for i, r in rows.items() if i in ids}
-    listed: list[tuple[int, str]] = db.execute('select event_id, since from pending_extraction').fetchall()
-    pending = dict(listed)
+    pending = {
+        p.event_id: p.since for p in sqlite_db.records(db, Pending, 'select event_id, since from pending_extraction')
+    }
     out: list[Job] = []
     for pass_ in (p for p in prompts.PASSES if not only or p.name in only):
         have = answers.answered(pass_.name, set(rows))
@@ -210,18 +219,18 @@ def due(
     return out, pending
 
 
-def answer_state(pass_name: prompts.PassName, answer: answers.Logged | None, *, since: str | None) -> AnswerState:
+def answer_state(pass_name: prompts.PassName, answer: answers.Logged | None, *, since: dt.date | None) -> AnswerState:
     """A festival's answer of a pass (its file's log row, None when it has none): none, stale (to another prompt, or
     asked before since, the day its description last changed, when it is pending), or current. An answer asked on that
     day counts as asked after it: the refresh that finds a change runs before the questions."""
     if answer is None:
         return AnswerState.NONE
-    if not prompts.is_current(pass_name, answer.prompt) or (since is not None and answer.answered_at[:10] < since):
+    if not prompts.is_current(pass_name, answer.prompt) or (since is not None and answer.answered_at.date() < since):
         return AnswerState.STALE
     return AnswerState.CURRENT
 
 
-def settled(pending: Mapping[int, str]) -> list[int]:
+def settled(pending: Mapping[int, dt.date]) -> list[int]:
     """The pending festivals whose every pass now has a current answer: they leave pending_extraction. One whose
     passes were asked only in part (--pass) stays, and the next run asks the rest."""
     have: list[tuple[prompts.PassName, dict[int, tuple[Path, answers.Logged]]]] = [

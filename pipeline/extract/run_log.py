@@ -6,14 +6,15 @@ which inputs to which outputs, and the step's key numbers as JSON. Every pipelin
 These functions only write: the caller owns the transaction, and commits once its step is whole.
 """
 
+import datetime as dt
 import json
 import sqlite3
 from collections.abc import Mapping
 from dataclasses import dataclass
-from datetime import UTC, datetime
 from pathlib import Path
 
 from pipeline import prompt as prompts
+from pipeline.records import now
 
 HERE = Path(__file__).parent
 ROOT = HERE.parent.parent
@@ -55,10 +56,6 @@ def ensure(con: sqlite3.Connection) -> None:
             part = ''
 
 
-def now() -> str:
-    return datetime.now(UTC).isoformat(timespec='seconds')
-
-
 @dataclass(frozen=True)
 class Step:
     """A step's row of pipeline_steps (SCHEMA): what it did, by whom, when (now when not given), with which model and
@@ -67,7 +64,7 @@ class Step:
     step: str
     description: str
     performed_by: str
-    performed_at: str | None = None
+    performed_at: dt.datetime | None = None
     model: str | None = None
     prompt: str | None = None
     inputs: str | None = None

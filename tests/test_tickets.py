@@ -3,6 +3,7 @@
 import collections
 import contextlib
 import dataclasses
+import datetime as dt
 import json
 import re
 import sqlite3
@@ -42,16 +43,16 @@ from pipeline.records import (
     real_day,
 )
 from tests import jsons
-from tests.fakes import Client, Memory
+from tests.fakes import AT, Client, Memory
 
-AT = '2026-10-01T05:00:00+00:00'
-LATER = '2026-11-03T05:00:00+00:00'
+LATER = dt.datetime(2026, 11, 3, 5, tzinfo=dt.UTC)
+DAY = dt.date(2026, 11, 1)  # a day after the reads
 PAGE = 'https://my.weezevent.com/x'
 SITE = tickets.sites()['weezevent']
 
 
-def stamp(day: int) -> str:
-    return f'2026-10-{day:02d}T00:00:00+00:00'
+def stamp(day: int) -> dt.datetime:
+    return dt.datetime(2026, 10, day, tzinfo=dt.UTC)
 
 
 def row(
@@ -78,15 +79,15 @@ def row(
     )
 
 
-def entry(rows: Sequence[Row], at: str = AT, page: str = PAGE) -> Read:
+def entry(rows: Sequence[Row], at: dt.datetime = AT, page: str = PAGE) -> Read:
     return Read(at=at, page=page, recipe='weezevent@0123abcd', url=page, http=200, status=Status.READ, rows=tuple(rows))
 
 
-def refused(at: str) -> Failed:
+def refused(at: dt.datetime) -> Failed:
     return Failed(at=at, page=PAGE, recipe='weezevent@0123abcd', status=Status.REFUSED, why='HTTP 429')
 
 
-def broken(at: str) -> Failed:
+def broken(at: dt.datetime) -> Failed:
     return Failed(at=at, page=PAGE, recipe='weezevent@0123abcd', status=Status.LAYOUT_BROKEN, why='no ticket rows')
 
 
@@ -137,12 +138,12 @@ def read(
     rule_quotes: Sequence[str] = (),
     styles: Sequence[Style] = (Style.BACHATA, Style.KIZOMBA),
     prompt_: str | None = None,
-    rows_at: str = AT,
+    rows_at: dt.datetime = AT,
 ) -> FirstRead:
     return FirstRead(
         event_id=7,
         title='Fest',
-        start_date='2027-02-05',
+        start_date=dt.date(2027, 2, 5),
         read_by='agent',
         prompt=prompt_ or prompt.current('first_read').hash,
         styles=tuple(styles),
@@ -215,7 +216,7 @@ def test_first_read_maps_every_ticket_once() -> None:
 
 
 def test_first_read_needs_the_logged_read_it_names() -> None:
-    assert 'is no read' in tickets.read_problems(read(), [entry(ROWS, at='2026-10-02T00:00:00+00:00')])[0]
+    assert 'is no read' in tickets.read_problems(read(), [entry(ROWS, at=stamp(2))])[0]
 
 
 @pytest.mark.parametrize(
@@ -329,7 +330,7 @@ def csv_tier(until: str = '', quantity: str = '', sold_out: str = '0') -> PriceR
     ],
 )
 def test_recheck_classes(tiers: list[PriceRow], today: str, expected: tuple[Recheck, bool]) -> None:
-    assert tickets.recheck(tiers, '2027-02-05', today)[:2] == expected
+    assert tickets.recheck(tiers, dt.date(2027, 2, 5), dt.date.fromisoformat(today))[:2] == expected
     assert {Recheck.DATED, Recheck.MONTHLY} == set(Recheck)
 
 
@@ -462,7 +463,7 @@ def test_a_log_line_edited_in_place_and_merged_back_is_caught(files: Path) -> No
 def test_a_log_line_is_written_as_the_entry_was_made(files: Path) -> None:
     tickets.append(7, refused(LATER))
     assert JSON.validate_json((files / 'log' / '7.jsonl').read_text().splitlines()[-1]) == {
-        'at': LATER,
+        'at': LATER.isoformat(),
         'page': PAGE,
         'recipe': 'weezevent@0123abcd',
         'status': 'refused',
@@ -497,7 +498,7 @@ def test_a_draft_becomes_the_first_read_once_it_passes(files: Path) -> None:
 def test_a_draft_starts_with_the_festival_and_nothing_read(files: Path) -> None:
     tickets.save_draft(tickets.draft_of(FEST, entry(ROWS), 'agent'))
     saved = jsons.read(files / 'drafts' / '7.json')
-    assert [jsons.at(saved, k) for k in ('passes', 'skipped', 'rule_quotes', 'rows_at')] == [[], [], [], AT]
+    assert [jsons.at(saved, k) for k in ('passes', 'skipped', 'rule_quotes', 'rows_at')] == [[], [], [], AT.isoformat()]
     assert any('passes' in p for p in tickets.record(7))  # a draft with no pass is not a first read
 
 
@@ -517,8 +518,8 @@ def festival(**change: object) -> tickets.Festival:
 BASE = tickets.Festival(
     id=7,
     title='Fest',
-    start_date='2027-02-05',
-    end_date='2027-02-07',
+    start_date=dt.date(2027, 2, 5),
+    end_date=dt.date(2027, 2, 7),
     country='Germany',
     description='Prices rise on 1 December.',
     over=False,
@@ -956,11 +957,11 @@ def test_a_first_read_to_another_prompt_is_made_again_whatever_its_shape(files: 
     assert old is not None
     assert not isinstance(old, FirstRead)
     assert (
-        tickets.why_first_read(festival(first_read=old, log=tuple(tickets.log(7))), '2026-11-01')[0]
+        tickets.why_first_read(festival(first_read=old, log=tuple(tickets.log(7))), DAY)[0]
         == FirstReadState.REDO_PROMPT
     )
     current = festival(first_read=read(), log=tuple(tickets.log(7)))
-    assert tickets.why_first_read(current, '2026-11-01')[0] == FirstReadState.CURRENT
+    assert tickets.why_first_read(current, DAY)[0] == FirstReadState.CURRENT
 
 
 def test_a_first_read_to_another_prompt_is_never_written(files: Path) -> None:
@@ -1018,7 +1019,7 @@ FIRST_READ_CASES: list[tuple[dict[str, object], FirstReadState]] = [
 @pytest.mark.parametrize(('change', 'state'), FIRST_READ_CASES)
 def test_every_first_read_state(change: dict[str, object], state: FirstReadState) -> None:
     f = dataclasses.replace(festival(first_read=read(), log=(entry(ROWS),)), **change)
-    assert tickets.why_first_read(f, '2026-11-01')[0] == state
+    assert tickets.why_first_read(f, DAY)[0] == state
 
 
 def test_the_first_read_states_tested_are_all_of_them() -> None:
@@ -1219,8 +1220,8 @@ def test_a_festival_with_links_to_no_shop_waits_for_its_page_and_has_no_page_to_
 
 def test_a_dispute_is_settled_by_a_first_read_of_rows_as_new(files: Path) -> None:
     (files / 'disputed').mkdir()
-    _ = (files / 'disputed' / '7.json').write_text(json.dumps({'rows_at': AT, 'reads': {}}))
-    tickets.settle_dispute(7, read(rows_at='2026-09-01T00:00:00+00:00'))
+    _ = (files / 'disputed' / '7.json').write_text(json.dumps({'rows_at': AT.isoformat(), 'reads': {}}))
+    tickets.settle_dispute(7, read(rows_at=dt.datetime(2026, 9, 1, tzinfo=dt.UTC)))
     assert (files / 'disputed' / '7.json').exists()  # older rows settle nothing
     tickets.settle_dispute(7, read())
     assert not (files / 'disputed' / '7.json').exists()
