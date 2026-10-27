@@ -12,7 +12,11 @@ pipeline/tickets/prompts/first-read.md, with the part of tickets/schemas/read.js
 first read records the hash it answered, and is current while is_current(name, hash). Whatever writes one archives
 its prompt first (archive()), so every hash a file names has its text in pipeline/prompts/asked/<hash>.md.
 """
-import hashlib, json, os, tempfile
+
+import hashlib
+import json
+import os
+import tempfile
 from dataclasses import dataclass
 from functools import cache, cached_property
 from pathlib import Path
@@ -24,7 +28,7 @@ ASKED = ROOT / 'pipeline' / 'prompts' / 'asked'
 DIGITS = 16
 CHECKED, SENT = '\n\n======== schema as checked ========\n\n', '\n\n======== schema as sent ========\n\n'
 EXTRACT, TICKETS = ROOT / 'pipeline' / 'extract', ROOT / 'pipeline' / 'tickets'
-PASSES = {'extract': 'extract', 'rooms_genres': 'rooms-genres', 'prices': 'prices'}   # pass -> its template
+PASSES = {'extract': 'extract', 'rooms_genres': 'rooms-genres', 'prices': 'prices'}  # pass -> its template
 
 
 def inlined(node, defs):
@@ -34,22 +38,37 @@ def inlined(node, defs):
     if not isinstance(node, dict):
         return node
     if '$ref' in node:
-        return inlined(defs[node['$ref'].removeprefix('#/$defs/')], defs) | {k: inlined(v, defs) for k, v in node.items()
-                                                                          if k != '$ref'}
+        return inlined(defs[node['$ref'].removeprefix('#/$defs/')], defs) | {
+            k: inlined(v, defs) for k, v in node.items() if k != '$ref'
+        }
     return {k: inlined(v, defs) for k, v in node.items() if k != '$defs'}
 
 
 def api_schema(node):
     """The schema as structured outputs accept it: references inlined, no length, range, pattern or if/then
     constraints (the checker keeps them), anyOf for oneOf, and no annotations."""
+
     def strip(node):
         if isinstance(node, list):
             return [strip(v) for v in node]
         if not isinstance(node, dict):
             return node
-        drop = {'$schema', 'title', 'minLength', 'maxLength', 'minimum', 'maximum', 'exclusiveMinimum', 'minItems',
-                'pattern', 'if', 'then', 'else'}
+        drop = {
+            '$schema',
+            'title',
+            'minLength',
+            'maxLength',
+            'minimum',
+            'maximum',
+            'exclusiveMinimum',
+            'minItems',
+            'pattern',
+            'if',
+            'then',
+            'else',
+        }
         return {('anyOf' if k == 'oneOf' else k): strip(v) for k, v in node.items() if k not in drop}
+
     return strip(inlined(node, node.get('$defs', {})))
 
 
@@ -64,7 +83,7 @@ def digest(text):
 @dataclass(frozen=True)
 class Prompt:
     system: str
-    schema: dict          # with its $defs filled (states.schema)
+    schema: dict  # with its $defs filled (states.schema)
 
     @cached_property
     def sent_schema(self):
@@ -100,10 +119,19 @@ def current(name):
     """The current prompt of an extraction pass, or of the first read ('first_read')."""
     if name == 'first_read':
         read, keep = states.schema(TICKETS / 'schemas' / 'read.json'), ('passes', 'skipped', 'rule_quotes')
-        return Prompt(current('prices').system + '\n\n' + template(TICKETS / 'prompts' / 'first-read.md'),
-                      {'type': 'object', 'additionalProperties': False, 'required': list(keep),
-                       'properties': {k: read['properties'][k] for k in keep}, '$defs': read['$defs']})
-    return Prompt(template(EXTRACT / 'prompts' / f'{PASSES[name]}.md'), states.schema(EXTRACT / 'schemas' / f'{name}.json'))
+        return Prompt(
+            current('prices').system + '\n\n' + template(TICKETS / 'prompts' / 'first-read.md'),
+            {
+                'type': 'object',
+                'additionalProperties': False,
+                'required': list(keep),
+                'properties': {k: read['properties'][k] for k in keep},
+                '$defs': read['$defs'],
+            },
+        )
+    return Prompt(
+        template(EXTRACT / 'prompts' / f'{PASSES[name]}.md'), states.schema(EXTRACT / 'schemas' / f'{name}.json')
+    )
 
 
 def is_current(name, hash_):

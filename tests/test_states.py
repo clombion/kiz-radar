@@ -1,6 +1,9 @@
 """The closed world of states (pipeline/STATES.md): the table checks itself, everything built from it holds exactly
 its states, and each function that chooses between states reaches every one of them."""
-import dataclasses, json, re
+
+import dataclasses
+import json
+import re
 from pathlib import Path
 
 import pytest
@@ -14,28 +17,34 @@ ROOT = Path(__file__).parent.parent
 SCHEMAS = sorted(ROOT.glob('pipeline/*/schemas/*.json'))
 
 
-@pytest.mark.parametrize('make', [
-    lambda: State('price', 'priced', 'x'),                                  # a field missing
-    lambda: State('price', 'priced', 'x', 'card'),                          # a disposition that is a string
-    lambda: State('price', 'priced', 'x', Disposition.CARD, wording=3),     # wording that is no string
-    lambda: State('price', 'priced', 'x', Disposition.CARD, link='page'),   # a link that is no Link
-    lambda: State('price', 'priced', 'x', Disposition.CARD, forms=3),       # forms that are no mapping
-])
+@pytest.mark.parametrize(
+    'make',
+    [
+        lambda: State('price', 'priced', 'x'),  # a field missing
+        lambda: State('price', 'priced', 'x', 'card'),  # a disposition that is a string
+        lambda: State('price', 'priced', 'x', Disposition.CARD, wording=3),  # wording that is no string
+        lambda: State('price', 'priced', 'x', Disposition.CARD, link='page'),  # a link that is no Link
+        lambda: State('price', 'priced', 'x', Disposition.CARD, forms=3),  # forms that are no mapping
+    ],
+)
 def test_a_row_with_a_missing_or_wrong_typed_field_fails(make):
     with pytest.raises(TypeError):
         make()
 
 
-@pytest.mark.parametrize('extra', [
-    State('price', 'priced', 'again', Disposition.CARD),                    # two states with one key
-    State('no_point', 'x', 'x', Disposition.KEPT),                          # a state of no point
-    State('genre', 'x', 'x', Disposition.KEPT, under='tango'),          # under no style
-    State('genre', 'y', 'x', Disposition.KEPT),                         # a genre under nothing
-    State('price', 'z', 'x', Disposition.CARD, under='kizomba'),        # under, for a point that falls under none
-    State('price', 'z', 'x', Disposition.NOTE),                         # a note without words
-    State('price', 'z', 'x', Disposition.FILTER),                       # a filter without words
-    State('price', 'z', 'x', Disposition.WAITS),                        # waiting with no one to act
-])
+@pytest.mark.parametrize(
+    'extra',
+    [
+        State('price', 'priced', 'again', Disposition.CARD),  # two states with one key
+        State('no_point', 'x', 'x', Disposition.KEPT),  # a state of no point
+        State('genre', 'x', 'x', Disposition.KEPT, under='tango'),  # under no style
+        State('genre', 'y', 'x', Disposition.KEPT),  # a genre under nothing
+        State('price', 'z', 'x', Disposition.CARD, under='kizomba'),  # under, for a point that falls under none
+        State('price', 'z', 'x', Disposition.NOTE),  # a note without words
+        State('price', 'z', 'x', Disposition.FILTER),  # a filter without words
+        State('price', 'z', 'x', Disposition.WAITS),  # waiting with no one to act
+    ],
+)
 def test_a_table_with_a_clash_or_a_dangling_state_fails(extra):
     with pytest.raises(ValueError):
         states.check(states.POINTS, (*states.ROWS, extra))
@@ -43,10 +52,19 @@ def test_a_table_with_a_clash_or_a_dangling_state_fails(extra):
 
 def test_every_enum_reference_in_the_code_is_a_state():
     """A member named in the code that the table doesn't have fails here, naming it."""
-    enums = {name: getattr(states, name) for name in dir(states) if isinstance(getattr(states, name), type)
-             and issubclass(getattr(states, name), states.StrEnum) and getattr(states, name) is not states.StrEnum}
-    found = [f'{path.relative_to(ROOT)}: {e}.{m}' for path in sorted(ROOT.glob('pipeline/**/*.py'))
-             for e, m in re.findall(rf"\b({'|'.join(enums)})\.([A-Z_]+)\b", path.read_text()) if m not in enums[e].__members__]
+    enums = {
+        name: getattr(states, name)
+        for name in dir(states)
+        if isinstance(getattr(states, name), type)
+        and issubclass(getattr(states, name), states.StrEnum)
+        and getattr(states, name) is not states.StrEnum
+    }
+    found = [
+        f'{path.relative_to(ROOT)}: {e}.{m}'
+        for path in sorted(ROOT.glob('pipeline/**/*.py'))
+        for e, m in re.findall(rf'\b({"|".join(enums)})\.([A-Z_]+)\b', path.read_text())
+        if m not in enums[e].__members__
+    ]
     assert found == []
 
 
@@ -81,7 +99,9 @@ def test_a_schema_enum_holds_the_states_its_producer_makes():
 
 def test_the_log_says_each_page_read_state():
     log = states.schema(ROOT / 'pipeline/tickets/schemas/log.json')
-    said = [s for branch in log['oneOf'] for v in [branch['properties']['status']] for s in v.get('enum', [v.get('const')])]
+    said = [
+        s for branch in log['oneOf'] for v in [branch['properties']['status']] for s in v.get('enum', [v.get('const')])
+    ]
     assert sorted(said) == sorted(states.keys('page_read'))
 
 
@@ -106,18 +126,21 @@ def test_total_names_what_a_map_misses_or_has_too_many_of():
     with pytest.raises(LookupError, match='closed'):
         states.total('sales', {s: 1 for s in Sales if s != Sales.CLOSED}, 'here')
     with pytest.raises(LookupError, match='soon'):
-        states.total('sales', {s: 1 for s in Sales} | {'soon': 1}, 'here')
+        states.total('sales', dict.fromkeys(Sales, 1) | {'soon': 1}, 'here')
 
 
 def passes(*kinds, **k):
-    return [{'kind': kind, 'style': None, 'group_size': 1, 'days': None, 'includes_hotel': False, 'tiers': [{'amount': 9}]} | k
-            for kind in kinds]
+    return [
+        {'kind': kind, 'style': None, 'group_size': 1, 'days': None, 'includes_hotel': False, 'tiers': [{'amount': 9}]}
+        | k
+        for kind in kinds
+    ]
 
 
 PRICE_CASES = [
     ((passes('full'), None, None), Price.PRICED),
     ((passes('package', includes_hotel=True), None, None), Price.PRICED),
-    ((passes('package'), None, None), Price.OTHER_PASSES_ONLY),             # a package without a hotel
+    ((passes('package'), None, None), Price.OTHER_PASSES_ONLY),  # a package without a hotel
     ((passes('day', 'party'), Sales.CLOSED, None), Price.OTHER_PASSES_ONLY),
     ((passes('full', group_size=2), None, None), Price.OTHER_PASSES_ONLY),
     ((passes('full', includes_hotel=True), None, None), Price.OTHER_PASSES_ONLY),
@@ -143,19 +166,28 @@ def test_the_price_states_tested_are_all_of_them():
 def test_the_card_prices_the_kizomba_full_pass_then_the_longest_then_the_cheapest_package_with_hotel():
     mixed = passes('full', style='zouk') + passes('full', style='kizomba') + passes('full', days=3) + passes('full')
     assert prices.card_pass(mixed) == 1
-    assert prices.card_pass(passes('full', style='zouk') + passes('full', days=3)) == 1     # all styles before one
+    assert prices.card_pass(passes('full', style='zouk') + passes('full', days=3)) == 1  # all styles before one
     assert prices.card_pass(passes('full', days=3) + passes('full', days=4)) == 1
-    assert prices.card_pass(passes('full', days=3) + passes('full')) == 1    # a length not stated is the whole festival
+    assert prices.card_pass(passes('full', days=3) + passes('full')) == 1  # a length not stated is the whole festival
     hotel = dict(includes_hotel=True)
-    assert prices.card_pass(passes('package', tiers=[{'amount': 900}], **hotel)
-                            + passes('package', tiers=[{'amount': 700}], **hotel)) == 1
-    assert prices.card_pass(passes('package', group_size=None, **hotel)) is None    # priced per room
-    assert prices.card_pass(passes('package')) is None                           # no hotel
-    assert prices.card_pass(passes('package', **hotel) + passes('full')) == 1     # a full pass first
+    assert (
+        prices.card_pass(
+            passes('package', tiers=[{'amount': 900}], **hotel) + passes('package', tiers=[{'amount': 700}], **hotel)
+        )
+        == 1
+    )
+    assert prices.card_pass(passes('package', group_size=None, **hotel)) is None  # priced per room
+    assert prices.card_pass(passes('package')) is None  # no hotel
+    assert prices.card_pass(passes('package', **hotel) + passes('full')) == 1  # a full pass first
 
 
-PEOPLE_CASES = [((1, 'full'), People.ONE), ((None, 'full'), People.ONE), ((None, 'package'), People.PER_ROOM),
-                ((2, 'party'), People.COUPLE), ((4, 'full'), People.GROUP)]
+PEOPLE_CASES = [
+    ((1, 'full'), People.ONE),
+    ((None, 'full'), People.ONE),
+    ((None, 'package'), People.PER_ROOM),
+    ((2, 'party'), People.COUPLE),
+    ((4, 'full'), People.GROUP),
+]
 
 
 @pytest.mark.parametrize('args, people', PEOPLE_CASES)
@@ -171,8 +203,8 @@ def test_the_people_states_tested_are_all_of_them():
 def test_an_override_is_typed_dated_and_changes_something():
     o = exceptions.OVERRIDES[0]
     with pytest.raises(TypeError):
-        dataclasses.replace(o, then='later')                    # no state of waits_for
+        dataclasses.replace(o, then='later')  # no state of waits_for
     with pytest.raises(ValueError):
         dataclasses.replace(o, decided_on='26 Oct')
     with pytest.raises(ValueError):
-        dataclasses.replace(o, then=Waiting.RECIPE)             # an override from a state to itself
+        dataclasses.replace(o, then=Waiting.RECIPE)  # an override from a state to itself

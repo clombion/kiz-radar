@@ -6,7 +6,10 @@ batches written by Claude Code subagents (<pass>-NNN.json); later ones come one 
 (event-<id>.json). A festival's own file replaces its entry in a batch. A file's prompt is the hash of the prompt it
 answered (pipeline/prompt.py), archived when the file is saved.
 """
-import csv, datetime as dt, json
+
+import csv
+import datetime as dt
+import json
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -20,10 +23,10 @@ LOG_FIELDS = ['file', 'answered_at', 'model', 'prompt', 'answered_by']
 
 @dataclass(frozen=True)
 class Answer:
-    entry: dict           # the festival's entry in the file's "events"
-    prompt: str           # the hash of the prompt it answered
+    entry: dict  # the festival's entry in the file's "events"
+    prompt: str  # the hash of the prompt it answered
     batch: str
-    file: str             # relative to answers/
+    file: str  # relative to answers/
     model: str
     answered_at: str
     answered_by: str
@@ -56,9 +59,10 @@ def latest(pass_name: str, event_ids: set[int]) -> dict[int, Answer]:
         data = json.loads(path.read_text(encoding='utf-8'))
         for entry in data['events']:
             if entry['event_id'] in event_ids:
-                out.pop(entry['event_id'], None)   # a newer answer moves to the end
-                out[entry['event_id']] = Answer(entry, meta['prompt'], data['batch'], rel,
-                                                meta['model'], meta['answered_at'], meta['answered_by'])
+                out.pop(entry['event_id'], None)  # a newer answer moves to the end
+                out[entry['event_id']] = Answer(
+                    entry, meta['prompt'], data['batch'], rel, meta['model'], meta['answered_at'], meta['answered_by']
+                )
     return out
 
 
@@ -70,8 +74,13 @@ def save(pass_name: str, event_id: int, output: dict, model: str, prompt: Prompt
     path.write_text(json.dumps(output, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
     rows = log()
     rel = str(path.relative_to(ANSWERS))
-    rows[rel] = {'file': rel, 'answered_at': dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds'),
-                 'model': model, 'prompt': prompt.hash, 'answered_by': answered_by}
+    rows[rel] = {
+        'file': rel,
+        'answered_at': dt.datetime.now(dt.UTC).isoformat(timespec='seconds'),
+        'model': model,
+        'prompt': prompt.hash,
+        'answered_by': answered_by,
+    }
     with LOG.open('w', encoding='utf-8', newline='') as f:
         w = csv.DictWriter(f, LOG_FIELDS)
         w.writeheader()

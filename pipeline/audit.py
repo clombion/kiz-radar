@@ -11,11 +11,17 @@ states its pass makes. Stale: an override for a site a recipe now reads, or one 
 lists has its known ticket page on. Each finding goes to stderr; then "N unmapped, M stale", exiting 1 when either
 is not 0.
 """
-import argparse, csv, datetime as dt, json, sys
+
+import argparse
+import csv
+import datetime as dt
+import json
+import sys
 from collections import defaultdict
 from contextlib import closing
 
-from pipeline import exceptions, prompt as prompts, states, tickets
+from pipeline import exceptions, states, tickets
+from pipeline import prompt as prompts
 from pipeline.extract import answers
 
 ROOT = tickets.ROOT
@@ -36,13 +42,18 @@ EMPTY_ALLOWED = {('pipeline/tickets/status.csv', 'sales'), ('pipeline/pass_price
 
 # pass -> (where its states are in an answer's entry, point)
 ANSWERED = {
-    'extract': [(lambda ev: [a['role'] for a in ev['artists']], 'role'),
-                (lambda ev: [x['feature'] for x in ev['features']], 'feature')],
-    'rooms_genres': [(lambda ev: [g['genre'] for g in ev['genres']] + [g for r in ev['rooms'] for g in r['genres']],
-                      'genre'),
-                     (lambda ev: [r['kind'] for r in ev['rooms']], 'room_kind')],
-    'prices': [(lambda ev: [p['kind'] for p in ev['passes']], 'pass_kind'),
-               (lambda ev: [p['style'] for p in ev['passes'] if p['style']], 'style')],
+    'extract': [
+        (lambda ev: [a['role'] for a in ev['artists']], 'role'),
+        (lambda ev: [x['feature'] for x in ev['features']], 'feature'),
+    ],
+    'rooms_genres': [
+        (lambda ev: [g['genre'] for g in ev['genres']] + [g for r in ev['rooms'] for g in r['genres']], 'genre'),
+        (lambda ev: [r['kind'] for r in ev['rooms']], 'room_kind'),
+    ],
+    'prices': [
+        (lambda ev: [p['kind'] for p in ev['passes']], 'pass_kind'),
+        (lambda ev: [p['style'] for p in ev['passes'] if p['style']], 'style'),
+    ],
 }
 
 
@@ -58,13 +69,21 @@ def unmapped(event_ids):
     for pass_name, columns in ANSWERED.items():
         for i, a in answers.latest(pass_name, event_ids).items():
             if prompts.is_current(pass_name, a.prompt):
-                out += [(point, v, f'pipeline/extract/answers/{a.file}, festival {i}') for values, point in columns
-                        for v in values(a.entry) if v not in states.made(point)]
+                out += [
+                    (point, v, f'pipeline/extract/answers/{a.file}, festival {i}')
+                    for values, point in columns
+                    for v in values(a.entry)
+                    if v not in states.made(point)
+                ]
     for path in sorted(tickets.READS.glob('*.json')):
         fr = json.loads(path.read_text(encoding='utf-8'))
         if prompts.is_current('first_read', fr['prompt']):
-            said = ([('skip_reason', s['reason']) for s in fr['skipped']] + [('pass_kind', ps['kind']) for ps in fr['passes']]
-                    + [('style', ps['style']) for ps in fr['passes'] if ps['style']] + [('style', s) for s in fr['styles']])
+            said = (
+                [('skip_reason', s['reason']) for s in fr['skipped']]
+                + [('pass_kind', ps['kind']) for ps in fr['passes']]
+                + [('style', ps['style']) for ps in fr['passes'] if ps['style']]
+                + [('style', s) for s in fr['styles']]
+            )
             out += [(p, v, str(path.relative_to(ROOT))) for p, v in said if v not in states.keys(p)]
     return out
 
@@ -80,18 +99,19 @@ def stale(fs, known):
     out = []
     for o in exceptions.OVERRIDES:
         if site := tickets.site_for(f'https://{o.host}/', known):
-            out.append((o, f"the recipe {site[1]} reads it (festivals {', '.join(map(str, on[o.host])) or 'none'})"))
+            out.append((o, f'the recipe {site[1]} reads it (festivals {", ".join(map(str, on[o.host])) or "none"})'))
         elif not on[o.host]:
             out.append((o, 'no festival has its known ticket page there'))
     return out
 
 
 def main():
-    argparse.ArgumentParser(description='Name each value in the data that is no state of pipeline/states.py, and '
-                                        'each override of pipeline/exceptions.py that departs from nothing any more.'
-                            ).parse_args()
+    argparse.ArgumentParser(
+        description='Name each value in the data that is no state of pipeline/states.py, and '
+        'each override of pipeline/exceptions.py that departs from nothing any more.'
+    ).parse_args()
     with closing(tickets.src_db()) as db:
-        gone = unmapped({i for i, in db.execute('SELECT id FROM events')})
+        gone = unmapped({i for (i,) in db.execute('SELECT id FROM events')})
         old = stale(tickets.festivals(db, dt.date.today().isoformat(), every=True), tickets.sites())
     for point, value, where in gone:
         print(f'unmapped: {point} {value!r} in {where}: add a row for it to pipeline/states.py', file=sys.stderr)

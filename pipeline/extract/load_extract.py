@@ -38,27 +38,30 @@ import sqlite3
 import sys
 import unicodedata
 
-from pipeline import db as sqlite_db, prompt as prompts, states
-from pipeline.extract import answers, prices as price_rules, run_log
+from pipeline import db as sqlite_db
+from pipeline import prompt as prompts
+from pipeline import states
+from pipeline.extract import answers, run_log
+from pipeline.extract import prices as price_rules
 from pipeline.extract.prices import on_date
-from pipeline.states import Sales
 from pipeline.kizomba_world import TAG_FEATURES, TAG_GENRES
+from pipeline.states import Sales
 
-PAGE_PRICES = run_log.HERE.parent / "pass_prices.csv"
-TICKET_PAGES = run_log.HERE.parent / "ticket_pages.csv"
-STATUS = run_log.HERE.parent / "tickets" / "status.csv"     # how each festival sells, and its known ticket page
+PAGE_PRICES = run_log.HERE.parent / 'pass_prices.csv'
+TICKET_PAGES = run_log.HERE.parent / 'ticket_pages.csv'
+STATUS = run_log.HERE.parent / 'tickets' / 'status.csv'  # how each festival sells, and its known ticket page
 
 # Whole-word genre names recognised in event titles (brand spellings like "AfroKiz" or "Kizz" do not match)
 TITLE_GENRES = {
-    "kizomba": r"\bkizomba\b",
-    "semba": r"\bsemba\b",
-    "urbankiz": r"\burban\s*kiz\b",
-    "tarraxo": r"\btarraxo\b",
-    "tarraxinha": r"\btarraxinha\b",
-    "kompa": r"\bk[o]n?mpa\b|\bkonpa\b",
-    "zouk": r"\bzouk\b",
-    "bachata": r"\bbachata\b",
-    "salsa": r"\bsalsa\b",
+    'kizomba': r'\bkizomba\b',
+    'semba': r'\bsemba\b',
+    'urbankiz': r'\burban\s*kiz\b',
+    'tarraxo': r'\btarraxo\b',
+    'tarraxinha': r'\btarraxinha\b',
+    'kompa': r'\bk[o]n?mpa\b|\bkonpa\b',
+    'zouk': r'\bzouk\b',
+    'bachata': r'\bbachata\b',
+    'salsa': r'\bsalsa\b',
 }
 
 SCHEMA = """
@@ -208,38 +211,38 @@ SCHEMA = SCHEMA.format_map({p.name: states.sql_in(p.name) for p in states.POINTS
 
 
 TABLE_DOCS = {
-    "artist_mentions": "Every artist, couple, group or organiser named in an event description, exactly as written, with "
-                       "role, style, stated country, the line it came from, and the prompt and model that extracted it. "
-                       "event_artists links each mention to its resolved artist.",
-    "event_features": "Event features (all-in-one hotel, competition, workshops, pool party, ...), one row per event, feature "
-                      "and source: 'description' rows carry the supporting quote and rationale; 'site_tag' rows mirror the "
-                      "site's own tags for the features it also tags. feature_definitions defines each feature.",
-    "feature_definitions": "What each feature in event_features means.",
-    "role_definitions": "What each artist role in artist_mentions and event_artists means.",
-    "event_genres": "Dance genres each event covers, one row per event, genre and source: 'description' rows (quote, "
-                    "prompt, or the rule that added it) and 'site_tag' rows from the site's style tags. "
-                    "genre_definitions defines each genre.",
-    "genre_definitions": "What each genre in event_genres and event_room_list means.",
-    "event_rooms": "Per event, the stated number of party rooms and of class rooms (NULL = not stated), with quotes.",
-    "event_room_list": "Rooms a description lists one by one, with their kind (party / class) and genres (JSON array).",
-    "event_passes": "The passes each festival sells (kind), the one dance style a pass is limited to at a festival of "
-                    "several, how many people one price is for (group_size, and people as a state), its days, and whether "
-                    "it includes a hotel. pass_tiers holds the prices. source "
-                    "is 'description', or 'ticket_page' when its prices were read on its ticket page (see "
-                    "ticket_pages), which replaces what its description gives. The states each column can hold are "
-                    "pipeline/states.py's.",
-    "pass_tiers": "Each pass's prices tier by tier: what a buyer pays, fee included (fee: the booking fee it "
-                  "includes, when stated), with currency, the dates each tier applies (a date written without a "
-                  "year gets the latest year not after the festival's start), tickets at that price, door price, sold "
-                  "out, and the quote it came from.",
-    "price_status": "What each festival's card can say of its price (pipeline/states.py, price): priced, with the "
-                    "pass it prices (card_pass), or why not, from its passes and how it sells "
-                    "(pipeline/tickets/status.csv), with its ticket page when one is known.",
-    "ticket_pages": "Festivals whose prices are read on their ticket page (pipeline/tickets.py): the page, the "
-                    "reseller selling there at its own prices when it isn't the organiser, the day it was last read, "
-                    "the site recipe that read it, and how many of its tickets are not read yet.",
-    "event_price_notes": "Price rules a festival states that the tiers can't hold (\"Prices exclude ticketing fees\", "
-                         "\"the price rises €10 every month\").",
+    'artist_mentions': 'Every artist, couple, group or organiser named in an event description, exactly as written, with '
+    'role, style, stated country, the line it came from, and the prompt and model that extracted it. '
+    'event_artists links each mention to its resolved artist.',
+    'event_features': 'Event features (all-in-one hotel, competition, workshops, pool party, ...), one row per event, feature '
+    "and source: 'description' rows carry the supporting quote and rationale; 'site_tag' rows mirror the "
+    "site's own tags for the features it also tags. feature_definitions defines each feature.",
+    'feature_definitions': 'What each feature in event_features means.',
+    'role_definitions': 'What each artist role in artist_mentions and event_artists means.',
+    'event_genres': "Dance genres each event covers, one row per event, genre and source: 'description' rows (quote, "
+    "prompt, or the rule that added it) and 'site_tag' rows from the site's style tags. "
+    'genre_definitions defines each genre.',
+    'genre_definitions': 'What each genre in event_genres and event_room_list means.',
+    'event_rooms': 'Per event, the stated number of party rooms and of class rooms (NULL = not stated), with quotes.',
+    'event_room_list': 'Rooms a description lists one by one, with their kind (party / class) and genres (JSON array).',
+    'event_passes': 'The passes each festival sells (kind), the one dance style a pass is limited to at a festival of '
+    'several, how many people one price is for (group_size, and people as a state), its days, and whether '
+    'it includes a hotel. pass_tiers holds the prices. source '
+    "is 'description', or 'ticket_page' when its prices were read on its ticket page (see "
+    'ticket_pages), which replaces what its description gives. The states each column can hold are '
+    "pipeline/states.py's.",
+    'pass_tiers': "Each pass's prices tier by tier: what a buyer pays, fee included (fee: the booking fee it "
+    'includes, when stated), with currency, the dates each tier applies (a date written without a '
+    "year gets the latest year not after the festival's start), tickets at that price, door price, sold "
+    'out, and the quote it came from.',
+    'price_status': "What each festival's card can say of its price (pipeline/states.py, price): priced, with the "
+    'pass it prices (card_pass), or why not, from its passes and how it sells '
+    '(pipeline/tickets/status.csv), with its ticket page when one is known.',
+    'ticket_pages': 'Festivals whose prices are read on their ticket page (pipeline/tickets.py): the page, the '
+    "reseller selling there at its own prices when it isn't the organiser, the day it was last read, "
+    'the site recipe that read it, and how many of its tickets are not read yet.',
+    'event_price_notes': 'Price rules a festival states that the tiers can\'t hold ("Prices exclude ticketing fees", '
+    '"the price rises €10 every month").',
 }
 
 
@@ -248,7 +251,7 @@ def performed_by(answers: dict) -> str:
     by: dict[str, set] = {}
     for a in answers.values():
         by.setdefault(a.answered_by, set()).add(a.file)
-    return "; ".join(f"{len(fs)} answer files by {who}" for who, fs in sorted(by.items()))
+    return '; '.join(f'{len(fs)} answer files by {who}' for who, fs in sorted(by.items()))
 
 
 def page_prices(event_ids: set[int]) -> tuple[dict[int, tuple[dict, dict]], int]:
@@ -256,31 +259,50 @@ def page_prices(event_ids: set[int]) -> tuple[dict[int, tuple[dict, dict]], int]
     prices answer, the festival's ticket_pages.csv row)}, how many are to another first-read prompt). In
     pass_prices.csv (one row per tier, in order) a pass is the rows with one pass_no; the price notes are
     ticket_pages.csv's, one per line. A page read to another prompt is left out, as an answer is."""
-    with TICKET_PAGES.open(encoding="utf-8") as f:
+    with TICKET_PAGES.open(encoding='utf-8') as f:
         rows = list(csv.DictReader(f))
     for r in rows:
-        if int(r["event_id"]) not in event_ids:
-            sys.exit(f"ticket_pages.csv: no festival {r['event_id']} ({r['event']})")
-    out = {int(r["event_id"]): ({"event_id": int(r["event_id"]), "passes": [], "rule_quotes": r["notes"].splitlines()}, r)
-           for r in rows if prompts.is_current("first_read", r["prompt"])}
-    with PAGE_PRICES.open(encoding="utf-8") as f:
+        if int(r['event_id']) not in event_ids:
+            sys.exit(f'ticket_pages.csv: no festival {r["event_id"]} ({r["event"]})')
+    out = {
+        int(r['event_id']): ({'event_id': int(r['event_id']), 'passes': [], 'rule_quotes': r['notes'].splitlines()}, r)
+        for r in rows
+        if prompts.is_current('first_read', r['prompt'])
+    }
+    with PAGE_PRICES.open(encoding='utf-8') as f:
         for r in csv.DictReader(f):
-            if int(r["event_id"]) not in out:
+            if int(r['event_id']) not in out:
                 continue
-            entry, _ = out[int(r["event_id"])]
-            if len(entry["passes"]) < int(r["pass_no"]):
-                entry["passes"].append({"kind": r["kind"], "style": r["style"] or None,
-                                        "label_quote": r["label"] or None,
-                                        "group_size": int(r["group_size"]) if r["group_size"] else None,
-                                        "days": int(r["days"]) if r["days"] else None,
-                                        "includes_hotel": r["includes_hotel"] == "1", "tiers": []})
-            entry["passes"][-1]["tiers"].append({
-                "amount": float(r["amount"]), "currency": r["currency"], "fee": float(r["fee"]) if r["fee"] else None,
-                "alt": {"amount": float(r["alt_amount"]), "currency": r["alt_currency"]} if r["alt_amount"] else None,
-                "from": r["from"] or None, "until": r["until"] or None,
-                "quantity": int(r["quantity"]) if r["quantity"] else None,
-                "door": False, "sold_out": r["sold_out"] == "1", "current": False,   # a page sells online, what is on sale
-                "quote": r["quote"]})
+            entry, _ = out[int(r['event_id'])]
+            if len(entry['passes']) < int(r['pass_no']):
+                entry['passes'].append(
+                    {
+                        'kind': r['kind'],
+                        'style': r['style'] or None,
+                        'label_quote': r['label'] or None,
+                        'group_size': int(r['group_size']) if r['group_size'] else None,
+                        'days': int(r['days']) if r['days'] else None,
+                        'includes_hotel': r['includes_hotel'] == '1',
+                        'tiers': [],
+                    }
+                )
+            entry['passes'][-1]['tiers'].append(
+                {
+                    'amount': float(r['amount']),
+                    'currency': r['currency'],
+                    'fee': float(r['fee']) if r['fee'] else None,
+                    'alt': {'amount': float(r['alt_amount']), 'currency': r['alt_currency']}
+                    if r['alt_amount']
+                    else None,
+                    'from': r['from'] or None,
+                    'until': r['until'] or None,
+                    'quantity': int(r['quantity']) if r['quantity'] else None,
+                    'door': False,
+                    'sold_out': r['sold_out'] == '1',
+                    'current': False,  # a page sells online, what is on sale
+                    'quote': r['quote'],
+                }
+            )
     return out, len(rows) - len(out)
 
 
@@ -294,109 +316,172 @@ def current(pass_name: str, event_ids: set[int]) -> tuple[dict, int]:
 
 def status() -> dict[int, tuple[Sales | None, str | None]]:
     """tickets/status.csv by festival: (how an agent found it sells, None when none did; its known ticket page)."""
-    with STATUS.open(encoding="utf-8") as f:
-        return {int(r["event_id"]): (Sales(r["sales"]) if r["sales"] else None, r["page"] or None)
-                for r in csv.DictReader(f)}
+    with STATUS.open(encoding='utf-8') as f:
+        return {
+            int(r['event_id']): (Sales(r['sales']) if r['sales'] else None, r['page'] or None)
+            for r in csv.DictReader(f)
+        }
 
 
 def load_prices(con: sqlite3.Connection, described: dict, pages: dict, sold: dict) -> None:
     """Each festival's passes: from its ticket page when ticket_pages.csv has it, else from its description; and what
     its card can say of its price, and the pass it prices, from them and how it sells (sold: status())."""
-    dates = {i: (start, edited) for i, start, edited in con.execute("SELECT id, start_date, modified_at FROM events")}
-    rows = [(a.entry, "description", a.prompt, a.model) for e, a in described.items() if e not in pages]
-    rows += [(entry, "ticket_page", page["prompt"], page["read_by"]) for entry, page in pages.values()]
-    con.executemany("INSERT INTO ticket_pages VALUES (?, ?, ?, ?, ?, ?)",
-                    [(e, p["page"], p["reseller"] or None, p["read_on"], p["recipe"], int(p["unread"]))
-                     for e, (_, p) in pages.items()])
+    dates = {i: (start, edited) for i, start, edited in con.execute('SELECT id, start_date, modified_at FROM events')}
+    rows = [(a.entry, 'description', a.prompt, a.model) for e, a in described.items() if e not in pages]
+    rows += [(entry, 'ticket_page', page['prompt'], page['read_by']) for entry, page in pages.values()]
+    con.executemany(
+        'INSERT INTO ticket_pages VALUES (?, ?, ?, ?, ?, ?)',
+        [
+            (e, p['page'], p['reseller'] or None, p['read_on'], p['recipe'], int(p['unread']))
+            for e, (_, p) in pages.items()
+        ],
+    )
     passes = {}
     for ev, source, prompt, model in rows:
-        start, edited = dates[ev["event_id"]]
-        passes[ev["event_id"]] = ev["passes"]
-        if ev["rule_quotes"]:
-            con.execute("INSERT INTO event_price_notes VALUES (?, ?)", (ev["event_id"], "\n".join(ev["rule_quotes"])))
-        for p, ps in enumerate(ev["passes"], 1):
-            con.execute("INSERT INTO event_passes VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                        (ev["event_id"], p, ps["kind"], ps["style"], ps["label_quote"], ps["group_size"],
-                         price_rules.people(ps), ps["days"], int(ps["includes_hotel"]), source, prompt, model))
-            for t, tier in enumerate(ps["tiers"], 1):
-                frm, until = on_date(tier["from"], start), on_date(tier["until"], start)
-                if tier["current"] and frm is None:
+        start, edited = dates[ev['event_id']]
+        passes[ev['event_id']] = ev['passes']
+        if ev['rule_quotes']:
+            con.execute('INSERT INTO event_price_notes VALUES (?, ?)', (ev['event_id'], '\n'.join(ev['rule_quotes'])))
+        for p, ps in enumerate(ev['passes'], 1):
+            con.execute(
+                'INSERT INTO event_passes VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                (
+                    ev['event_id'],
+                    p,
+                    ps['kind'],
+                    ps['style'],
+                    ps['label_quote'],
+                    ps['group_size'],
+                    price_rules.people(ps),
+                    ps['days'],
+                    int(ps['includes_hotel']),
+                    source,
+                    prompt,
+                    model,
+                ),
+            )
+            for t, tier in enumerate(ps['tiers'], 1):
+                frm, until = on_date(tier['from'], start), on_date(tier['until'], start)
+                if tier['current'] and frm is None:
                     frm = edited[:10]
-                yearless = any(v and len(v) == 5 for v in (tier["from"], tier["until"]))
+                yearless = any(v and len(v) == 5 for v in (tier['from'], tier['until']))
                 con.execute(
-                    "INSERT INTO pass_tiers VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                    (ev["event_id"], p, t, tier["amount"], tier["currency"], tier["fee"],
-                     *((tier["alt"]["amount"], tier["alt"]["currency"]) if tier["alt"] else (None, None)),
-                     frm, until, json.dumps({"from": tier["from"], "until": tier["until"]}) if yearless else None,
-                     tier["quantity"], int(tier["door"]), int(tier["sold_out"]), int(tier["current"]), tier["quote"]))
+                    'INSERT INTO pass_tiers VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                    (
+                        ev['event_id'],
+                        p,
+                        t,
+                        tier['amount'],
+                        tier['currency'],
+                        tier['fee'],
+                        *((tier['alt']['amount'], tier['alt']['currency']) if tier['alt'] else (None, None)),
+                        frm,
+                        until,
+                        json.dumps({'from': tier['from'], 'until': tier['until']}) if yearless else None,
+                        tier['quantity'],
+                        int(tier['door']),
+                        int(tier['sold_out']),
+                        int(tier['current']),
+                        tier['quote'],
+                    ),
+                )
     rows = []
     for e in dates:
         sales, page = sold.get(e, (None, None))
         card = price_rules.card_pass(passes.get(e, []))
-        rows.append((e, price_rules.price_state(passes.get(e, []), sales, page), page,
-                     None if card is None else card + 1))
-    con.executemany("INSERT INTO price_status VALUES (?, ?, ?, ?)", rows)
+        rows.append(
+            (e, price_rules.price_state(passes.get(e, []), sales, page), page, None if card is None else card + 1)
+        )
+    con.executemany('INSERT INTO price_status VALUES (?, ?, ?, ?)', rows)
 
 
 def record_steps(con: sqlite3.Connection, extract: dict, rooms_genres: dict, prices: dict, pages: dict) -> None:
-    run_log.document(con, TABLE_DOCS, "pipeline/extract/load_extract.py")
+    run_log.document(con, TABLE_DOCS, 'pipeline/extract/load_extract.py')
     q = lambda sql: con.execute(sql).fetchone()[0]
     passes = [
-        ("3_extract", extract,
-         "Extract, from each event description, the named artists (name as written, role, style, country, source "
-         "line) and the event features (with a supporting quote and a rationale). Every name and quote is checked "
-         "word for word against the description before loading.",
-         "tables artist_mentions, event_features (source 'description')",
-         {"artist_mentions": q("SELECT count(*) FROM artist_mentions"),
-          "feature_rows_kept": q("SELECT count(*) FROM event_features WHERE source = 'description'"),
-          "features_defined": q("SELECT count(*) FROM feature_definitions")}),
-        ("4_rooms_genres", rooms_genres,
-         "Extract, from each event description, the stated number of party and class rooms, the rooms described "
-         "one by one, and the dance genres covered, each with a supporting quote checked word for word.",
-         "tables event_rooms, event_room_list, event_genres (source 'description')",
-         {"events_with_party_room_count": q("SELECT count(party_rooms) FROM event_rooms"),
-          "events_with_class_room_count": q("SELECT count(class_rooms) FROM event_rooms"),
-          "rooms_listed": q("SELECT count(*) FROM event_room_list"),
-          "genre_rows": q("SELECT count(*) FROM event_genres WHERE source = 'description' AND rule IS NULL")}),
-        ("4b_prices", prices,
-         "Extract, from each event description, the passes it sells and their prices tier by tier, each price "
-         "checked against its quote; dates without a year get the latest year not after the festival's start. "
-         "Festivals read on their ticket page (pipeline/tickets.py) take their passes from there.",
-         "tables event_passes, pass_tiers, event_price_notes, ticket_pages, price_status",
-         {"festivals_with_prices": q("SELECT count(DISTINCT event_id) FROM event_passes"),
-          "festivals_from_ticket_pages": q("SELECT count(*) FROM ticket_pages"),
-          "passes": q("SELECT count(*) FROM event_passes"), "tiers": q("SELECT count(*) FROM pass_tiers")}),
+        (
+            '3_extract',
+            extract,
+            'Extract, from each event description, the named artists (name as written, role, style, country, source '
+            'line) and the event features (with a supporting quote and a rationale). Every name and quote is checked '
+            'word for word against the description before loading.',
+            "tables artist_mentions, event_features (source 'description')",
+            {
+                'artist_mentions': q('SELECT count(*) FROM artist_mentions'),
+                'feature_rows_kept': q("SELECT count(*) FROM event_features WHERE source = 'description'"),
+                'features_defined': q('SELECT count(*) FROM feature_definitions'),
+            },
+        ),
+        (
+            '4_rooms_genres',
+            rooms_genres,
+            'Extract, from each event description, the stated number of party and class rooms, the rooms described '
+            'one by one, and the dance genres covered, each with a supporting quote checked word for word.',
+            "tables event_rooms, event_room_list, event_genres (source 'description')",
+            {
+                'events_with_party_room_count': q('SELECT count(party_rooms) FROM event_rooms'),
+                'events_with_class_room_count': q('SELECT count(class_rooms) FROM event_rooms'),
+                'rooms_listed': q('SELECT count(*) FROM event_room_list'),
+                'genre_rows': q("SELECT count(*) FROM event_genres WHERE source = 'description' AND rule IS NULL"),
+            },
+        ),
+        (
+            '4b_prices',
+            prices,
+            'Extract, from each event description, the passes it sells and their prices tier by tier, each price '
+            "checked against its quote; dates without a year get the latest year not after the festival's start. "
+            'Festivals read on their ticket page (pipeline/tickets.py) take their passes from there.',
+            'tables event_passes, pass_tiers, event_price_notes, ticket_pages, price_status',
+            {
+                'festivals_with_prices': q('SELECT count(DISTINCT event_id) FROM event_passes'),
+                'festivals_from_ticket_pages': q('SELECT count(*) FROM ticket_pages'),
+                'passes': q('SELECT count(*) FROM event_passes'),
+                'tiers': q('SELECT count(*) FROM pass_tiers'),
+            },
+        ),
     ]
-    read_with = {page["prompt"] for _, page in pages.values()}
+    read_with = {page['prompt'] for _, page in pages.values()}
     for step, got, what, outputs, numbers in passes:
         if not got:
-            run_log.forget(con, step)       # none to the current prompt yet: the step's rows are gone
+            run_log.forget(con, step)  # none to the current prompt yet: the step's rows are gone
             continue
-        hashes = sorted({a.prompt for a in got.values()} | (read_with if step == "4b_prices" else set()))
+        hashes = sorted({a.prompt for a in got.values()} | (read_with if step == '4b_prices' else set()))
         for h in hashes:
             run_log.record_prompt(con, h)
         times = sorted({a.answered_at for a in got.values()})
         files = {a.file for a in got.values()}
         run_log.record(
-            con, step, what, performed_by(got),
-            performed_at=times[-1], model=", ".join(sorted({a.model for a in got.values()})),
-            prompt=", ".join(hashes),
-            inputs="pipeline/prompts/asked/<prompt>.md; event descriptions",
+            con,
+            step,
+            what,
+            performed_by(got),
+            performed_at=times[-1],
+            model=', '.join(sorted({a.model for a in got.values()})),
+            prompt=', '.join(hashes),
+            inputs='pipeline/prompts/asked/<prompt>.md; event descriptions',
             outputs=outputs,
-            details={"answer_files": len(files), "festivals": len(got), "first_answer": times[0],
-                     "last_answer": times[-1], **numbers},
+            details={
+                'answer_files': len(files),
+                'festivals': len(got),
+                'first_answer': times[0],
+                'last_answer': times[-1],
+                **numbers,
+            },
         )
     run_log.record(
-        con, "5_genre_rules",
+        con,
+        '5_genre_rules',
         "Add genres the rooms-genres pass applied unevenly: 'SBK' anywhere in a title or description means salsa, "
-        "bachata and kizomba (rule sbk); a genre named as a whole word in the title counts (rule title). Rows the "
-        "pass already had are kept as they were.",
-        "pipeline/extract/load_extract.py",
+        'bachata and kizomba (rule sbk); a genre named as a whole word in the title counts (rule title). Rows the '
+        'pass already had are kept as they were.',
+        'pipeline/extract/load_extract.py',
         outputs="table event_genres (rule 'sbk' / 'title')",
-        details={"rule_sbk_rows": q("SELECT count(*) FROM event_genres WHERE rule = 'sbk'"),
-                 "rule_title_rows": q("SELECT count(*) FROM event_genres WHERE rule = 'title'"),
-                 "site_tag_genre_rows": q("SELECT count(*) FROM event_genres WHERE source = 'site_tag'"),
-                 "site_tag_feature_rows": q("SELECT count(*) FROM event_features WHERE source = 'site_tag'")},
+        details={
+            'rule_sbk_rows': q("SELECT count(*) FROM event_genres WHERE rule = 'sbk'"),
+            'rule_title_rows': q("SELECT count(*) FROM event_genres WHERE rule = 'title'"),
+            'site_tag_genre_rows': q("SELECT count(*) FROM event_genres WHERE source = 'site_tag'"),
+            'site_tag_feature_rows': q("SELECT count(*) FROM event_features WHERE source = 'site_tag'"),
+        },
     )
 
 
@@ -405,70 +490,80 @@ def main() -> None:
     sqlite_db.source_arg(ap)
     db_path = ap.parse_args().src
     con = sqlite_db.connect(db_path, 'rw')
-    event_ids = {i for i, in con.execute("SELECT id FROM events")}
+    event_ids = {i for (i,) in con.execute('SELECT id FROM events')}
     loaded = {}
     for pass_name in prompts.PASSES:
         loaded[pass_name], stale = current(pass_name, event_ids)
         if stale:
             print(f"{stale} festivals' {pass_name} answers were asked with another prompt; left out until asked again")
-    extract, rooms_genres, prices = loaded["extract"], loaded["rooms_genres"], loaded["prices"]
+    extract, rooms_genres, prices = loaded['extract'], loaded['rooms_genres'], loaded['prices']
     pages, stale = page_prices(event_ids)
     if stale:
         print(f"{stale} festivals' ticket pages were read with another first-read prompt; left out until read again")
     con.executescript(SCHEMA)
-    for point in ("feature", "genre", "role"):
-        con.executemany(f"INSERT INTO {point}_definitions VALUES (?, ?)", [(s.key, s.criterion) for s in states.of(point)])
+    for point in ('feature', 'genre', 'role'):
+        con.executemany(
+            f'INSERT INTO {point}_definitions VALUES (?, ?)', [(s.key, s.criterion) for s in states.of(point)]
+        )
 
     for a in rooms_genres.values():
         ev, prompt, model = a.entry, a.prompt, a.model
-        pr, cr = ev["party_rooms"] or {}, ev["class_rooms"] or {}
+        pr, cr = ev['party_rooms'] or {}, ev['class_rooms'] or {}
         con.execute(
-            "INSERT INTO event_rooms VALUES (?, ?, ?, ?, ?, ?, ?)",
-            (ev["event_id"], pr.get("count"), pr.get("quote"), cr.get("count"), cr.get("quote"), prompt, model),
+            'INSERT INTO event_rooms VALUES (?, ?, ?, ?, ?, ?, ?)',
+            (ev['event_id'], pr.get('count'), pr.get('quote'), cr.get('count'), cr.get('quote'), prompt, model),
         )
         con.executemany(
-            "INSERT INTO event_room_list VALUES (?, ?, ?, ?, ?, ?)",
+            'INSERT INTO event_room_list VALUES (?, ?, ?, ?, ?, ?)',
             [
-                (ev["event_id"], n, r["name_as_written"], r["kind"], json.dumps(sorted(set(r["genres"]))), r["quote"])
-                for n, r in enumerate(ev["rooms"], 1)
+                (ev['event_id'], n, r['name_as_written'], r['kind'], json.dumps(sorted(set(r['genres']))), r['quote'])
+                for n, r in enumerate(ev['rooms'], 1)
             ],
         )
         con.executemany(
-            "INSERT INTO event_genres (event_id, genre, source, other_name, genre_as_written, quote, prompt, model)"
+            'INSERT INTO event_genres (event_id, genre, source, other_name, genre_as_written, quote, prompt, model)'
             " VALUES (?, ?, 'description', ?, ?, ?, ?, ?) ON CONFLICT DO NOTHING",
             [
-                (ev["event_id"], g["genre"],
-                 " ".join(g["genre_as_written"].split()).casefold() if g["genre"] == "other" else "",
-                 g["genre_as_written"], g["quote"], prompt, model)
-                for g in ev["genres"]
+                (
+                    ev['event_id'],
+                    g['genre'],
+                    ' '.join(g['genre_as_written'].split()).casefold() if g['genre'] == 'other' else '',
+                    g['genre_as_written'],
+                    g['quote'],
+                    prompt,
+                    model,
+                )
+                for g in ev['genres']
             ],
         )
     # "SBK" names salsa, bachata and kizomba together; the rooms-genres pass does not expand it consistently
     sbk_rows = []
-    for eid, title, desc in con.execute("SELECT id, title, description_text FROM events"):
-        text = f"{title}\n{desc or ''}"
-        if m := re.search(r"[^\n]{0,60}\bSBK\b[^\n]{0,60}", text):
-            sbk_rows += [(eid, g, "SBK", m.group(0).strip(), "sbk") for g in ("salsa", "bachata", "kizomba")]
+    for eid, title, desc in con.execute('SELECT id, title, description_text FROM events'):
+        text = f'{title}\n{desc or ""}'
+        if m := re.search(r'[^\n]{0,60}\bSBK\b[^\n]{0,60}', text):
+            sbk_rows += [(eid, g, 'SBK', m.group(0).strip(), 'sbk') for g in ('salsa', 'bachata', 'kizomba')]
     con.executemany(
-        "INSERT INTO event_genres (event_id, genre, source, genre_as_written, quote, rule)"
-        " VALUES (?, ?, 'description', ?, ?, ?) ON CONFLICT DO NOTHING", sbk_rows
+        'INSERT INTO event_genres (event_id, genre, source, genre_as_written, quote, rule)'
+        " VALUES (?, ?, 'description', ?, ?, ?) ON CONFLICT DO NOTHING",
+        sbk_rows,
     )
     # A genre named in the title counts; batches of the rooms-genres pass applied this unevenly
     title_rows = []
-    for eid, title in con.execute("SELECT id, title FROM events"):
-        plain = unicodedata.normalize("NFKC", title)
+    for eid, title in con.execute('SELECT id, title FROM events'):
+        plain = unicodedata.normalize('NFKC', title)
         for genre, pattern in TITLE_GENRES.items():
-            if m := re.search(pattern, plain, re.I):
-                title_rows.append((eid, genre, m.group(0), title, "title"))
+            if m := re.search(pattern, plain, re.IGNORECASE):
+                title_rows.append((eid, genre, m.group(0), title, 'title'))
     con.executemany(
-        "INSERT INTO event_genres (event_id, genre, source, genre_as_written, quote, rule)"
-        " VALUES (?, ?, 'description', ?, ?, ?) ON CONFLICT DO NOTHING", title_rows
+        'INSERT INTO event_genres (event_id, genre, source, genre_as_written, quote, rule)'
+        " VALUES (?, ?, 'description', ?, ?, ?) ON CONFLICT DO NOTHING",
+        title_rows,
     )
     con.executemany(
         "INSERT INTO event_genres (event_id, genre, source) VALUES (?, ?, 'site_tag') ON CONFLICT DO NOTHING",
         [
             (eid, genre)
-            for eid, tag in con.execute("SELECT event_id, tag FROM event_tags")
+            for eid, tag in con.execute('SELECT event_id, tag FROM event_tags')
             for genre in TAG_GENRES.get(tag, [])
         ],
     )
@@ -477,15 +572,24 @@ def main() -> None:
         ev, prompt, model = a.entry, a.prompt, a.model
         con.executemany(
             "INSERT INTO event_features VALUES (?, ?, 'description', ?, ?, ?, ?) ON CONFLICT DO NOTHING",
-            [(ev["event_id"], x["feature"], x["quote"], x["rationale"], prompt, model) for x in ev["features"]],
+            [(ev['event_id'], x['feature'], x['quote'], x['rationale'], prompt, model) for x in ev['features']],
         )
         con.executemany(
-            "INSERT INTO artist_mentions (event_id, role, name_as_written, style, country, source_line,"
-            " batch, prompt, model) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            'INSERT INTO artist_mentions (event_id, role, name_as_written, style, country, source_line,'
+            ' batch, prompt, model) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
             [
-                (ev["event_id"], a_["role"], a_["name_as_written"], a_["style"], a_["country"],
-                 a_["source_line"], a.batch, prompt, model)
-                for a_ in ev["artists"]
+                (
+                    ev['event_id'],
+                    a_['role'],
+                    a_['name_as_written'],
+                    a_['style'],
+                    a_['country'],
+                    a_['source_line'],
+                    a.batch,
+                    prompt,
+                    model,
+                )
+                for a_ in ev['artists']
             ],
         )
 
@@ -493,17 +597,26 @@ def main() -> None:
         "INSERT INTO event_features (event_id, feature, source) VALUES (?, ?, 'site_tag') ON CONFLICT DO NOTHING",
         [
             (eid, TAG_FEATURES[tag])
-            for eid, tag in con.execute("SELECT event_id, tag FROM event_tags")
+            for eid, tag in con.execute('SELECT event_id, tag FROM event_tags')
             if tag in TAG_FEATURES
         ],
     )
     load_prices(con, prices, pages, status())
     record_steps(con, extract, rooms_genres, prices, pages)
     con.commit()
-    for table in ("event_features", "artist_mentions", "event_genres", "event_rooms", "event_room_list", "event_passes",
-                  "pass_tiers", "ticket_pages", "price_status"):
-        print(table, con.execute(f"SELECT count(*) FROM {table}").fetchone()[0])
+    for table in (
+        'event_features',
+        'artist_mentions',
+        'event_genres',
+        'event_rooms',
+        'event_room_list',
+        'event_passes',
+        'pass_tiers',
+        'ticket_pages',
+        'price_status',
+    ):
+        print(table, con.execute(f'SELECT count(*) FROM {table}').fetchone()[0])
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

@@ -13,7 +13,14 @@ ask = ["anthropic==2.3.0", {include-group = "check"}]
 artists = ["pycountry==26.2.16"]
 browser = ["patchright==1.55.2"]
 tickets = [{include-group = "ask"}, {include-group = "scrape"}, {include-group = "browser"}]
-dev = ["pytest==8.4.2", "pyflakes==3.4.0", {include-group = "tickets"}, {include-group = "artists"}]
+dev = [
+    "pytest==8.4.2",
+    "pyflakes==3.4.0",
+    "ruff>=0.17.3",
+    "basedpyright>=1.40.2",
+    {include-group = "tickets"},
+    {include-group = "artists"},
+]
 
 [tool.uv]
 package = false
@@ -22,3 +29,42 @@ default-groups = []
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
+
+[tool.basedpyright]
+typeCheckingMode = "strict"
+reportAny = "error"
+include = ["pipeline", "tests"]
+pythonVersion = "3.13"
+
+[tool.ruff]
+line-length = 120
+target-version = "py313"
+include = ["pipeline/**/*.py", "tests/**/*.py"]
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "D",        # docstrings here say what a thing is and why, in prose, not pydocstyle's sections and mood
+    "CPY001",   # no copyright header
+    "COM812",   # conflicts with the formatter
+    "T201",     # the steps are command-line programs: what they print is their output
+    "EM101", "EM102", "TRY003",  # an exception's message is written where it is raised
+    "PLC0415",  # imports inside functions keep each step to its own dependency group (pyproject.toml)
+    "RUF001", "RUF002", "RUF003",  # typographic quotes and dashes are the site's words
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = [
+    "S101",     # pytest's assert
+    "PLR2004",  # a test's expected values are its own
+    "INP001",   # tests/ is pytest's rootdir, not a package
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"

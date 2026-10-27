@@ -44,49 +44,68 @@ CREATE TABLE IF NOT EXISTS pipeline_steps (
 def ensure(con: sqlite3.Connection) -> None:
     """Create the log's tables when they are missing, inside the caller's transaction (one statement at a time, since
     a script would commit it)."""
-    part = ""
-    for piece in SCHEMA.split(";"):
-        part += piece + ";"
-        if sqlite3.complete_statement(part):       # a ; in a comment ends no statement
-            if part.strip(" \n;"):
+    part = ''
+    for piece in SCHEMA.split(';'):
+        part += piece + ';'
+        if sqlite3.complete_statement(part):  # a ; in a comment ends no statement
+            if part.strip(' \n;'):
                 con.execute(part)
-            part = ""
+            part = ''
 
 
 def now() -> str:
-    return datetime.now(UTC).isoformat(timespec="seconds")
+    return datetime.now(UTC).isoformat(timespec='seconds')
 
 
-def record(con: sqlite3.Connection, step: str, description: str, performed_by: str, *, performed_at: str | None = None,
-           model: str | None = None, prompt: str | None = None, inputs: str | None = None,
-           outputs: str | None = None, details: dict | None = None) -> None:
+def record(
+    con: sqlite3.Connection,
+    step: str,
+    description: str,
+    performed_by: str,
+    *,
+    performed_at: str | None = None,
+    model: str | None = None,
+    prompt: str | None = None,
+    inputs: str | None = None,
+    outputs: str | None = None,
+    details: dict | None = None,
+) -> None:
     ensure(con)
     con.execute(
-        "INSERT OR REPLACE INTO pipeline_steps VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        (step, description, performed_at or now(), performed_by, model, prompt, inputs, outputs,
-         json.dumps(details, ensure_ascii=False) if details is not None else None),
+        'INSERT OR REPLACE INTO pipeline_steps VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+        (
+            step,
+            description,
+            performed_at or now(),
+            performed_by,
+            model,
+            prompt,
+            inputs,
+            outputs,
+            json.dumps(details, ensure_ascii=False) if details is not None else None,
+        ),
     )
 
 
 def forget(con: sqlite3.Connection, step: str) -> None:
     """Remove a step's row: what it produced is no longer in the database."""
     ensure(con)
-    con.execute("DELETE FROM pipeline_steps WHERE step = ?", (step,))
+    con.execute('DELETE FROM pipeline_steps WHERE step = ?', (step,))
 
 
 def record_prompt(con: sqlite3.Connection, hash_: str) -> None:
     """Store a prompt's full text, so the database says exactly what each model was told."""
     ensure(con)
-    con.execute("INSERT OR REPLACE INTO prompts VALUES (?, ?)", (hash_, prompts.asked(hash_)))
+    con.execute('INSERT OR REPLACE INTO prompts VALUES (?, ?)', (hash_, prompts.asked(hash_)))
 
 
 OWN_DOCS = {
-    "pipeline_steps": "How this database was produced: one row per step (scrape, images, extraction passes, rules, merge "
-                      "review, artist resolution, human review) with when, by whom, model, prompts, inputs, "
-                      "outputs and key numbers as JSON. Read in step order.",
-    "prompts": "The full text of every prompt a model ran with, keyed by its hash, as pipeline_steps and the rows it "
-               "produced (prompt columns) name it.",
-    "table_docs": "This table: what each table and view holds and how they connect.",
+    'pipeline_steps': 'How this database was produced: one row per step (scrape, images, extraction passes, rules, merge '
+    'review, artist resolution, human review) with when, by whom, model, prompts, inputs, '
+    'outputs and key numbers as JSON. Read in step order.',
+    'prompts': 'The full text of every prompt a model ran with, keyed by its hash, as pipeline_steps and the rows it '
+    'produced (prompt columns) name it.',
+    'table_docs': 'This table: what each table and view holds and how they connect.',
 }
 
 
@@ -96,9 +115,11 @@ def document(con: sqlite3.Connection, docs: dict[str, str], written_by: str) -> 
     kinds = dict(con.execute("SELECT name, type FROM sqlite_master WHERE type IN ('table', 'view')"))
     for name, description in {**docs, **OWN_DOCS}.items():
         if name not in kinds:
-            raise ValueError(f"table_docs: {name} is not a table or view in this database")
-        by = written_by if name in docs else "pipeline/extract/run_log.py"
-        con.execute("INSERT OR REPLACE INTO table_docs VALUES (?, ?, ?, ?)", (name, kinds[name], description, by))
+            raise ValueError(f'table_docs: {name} is not a table or view in this database')
+        by = written_by if name in docs else 'pipeline/extract/run_log.py'
+        con.execute('INSERT OR REPLACE INTO table_docs VALUES (?, ?, ?, ?)', (name, kinds[name], description, by))
     # a table the script no longer creates leaves with its description
-    con.execute(f"DELETE FROM table_docs WHERE written_by = ? AND name NOT IN ({', '.join('?' * len(docs))})",
-                (written_by, *docs))
+    con.execute(
+        f'DELETE FROM table_docs WHERE written_by = ? AND name NOT IN ({", ".join("?" * len(docs))})',
+        (written_by, *docs),
+    )

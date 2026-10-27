@@ -1,7 +1,9 @@
 """Opening the pipeline's SQLite databases. Every connection names what it may do with the file: read it (ro), write
 it (rw), or create it (rwc); only a step that builds a database may create one, so a wrong path is an error, never a
 new empty database. source_arg() is the command-line argument for the kizomba-world export a step works on."""
-import argparse, sqlite3
+
+import argparse
+import sqlite3
 from pathlib import Path
 
 

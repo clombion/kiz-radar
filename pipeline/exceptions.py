@@ -8,6 +8,7 @@ nothing: a recipe reads the site now, or no festival the source database lists h
 Importing this module checks every row: a missing or wrong-typed field, an undated decision, an override that
 changes nothing, or two rows for one site fails here.
 """
+
 import datetime as dt
 from dataclasses import dataclass
 
@@ -17,12 +18,12 @@ from pipeline.states import Waiting
 
 @dataclass(frozen=True)
 class Override:
-    host: str               # the identity: the site the festivals' ticket pages are on
-    instead_of: Waiting     # what they would wait for by default
-    then: Waiting           # what they wait for
+    host: str  # the identity: the site the festivals' ticket pages are on
+    instead_of: Waiting  # what they would wait for by default
+    then: Waiting  # what they wait for
     why: str
     decided_by: str
-    decided_on: str         # YYYY-MM-DD
+    decided_on: str  # YYYY-MM-DD
 
     def __post_init__(self):
         states.typed(self)
@@ -36,8 +37,14 @@ OVERRIDES = (
     Override('www.helloasso.com', Waiting.RECIPE, Waiting.NOTHING, BOT_CHECK, 'user', '2026-10-26'),
     Override('www.tickettailor.com', Waiting.RECIPE, Waiting.NOTHING, BOT_CHECK, 'user', '2026-10-26'),
     Override('buytickets.at', Waiting.RECIPE, Waiting.NOTHING, BOT_CHECK, 'user', '2026-10-26'),
-    Override('www.tikello.com', Waiting.RECIPE, Waiting.NOTHING,
-             "its prices are shown in the visitor's currency, which changes between loads", 'agent', '2026-10-27'),
+    Override(
+        'www.tikello.com',
+        Waiting.RECIPE,
+        Waiting.NOTHING,
+        "its prices are shown in the visitor's currency, which changes between loads",
+        'agent',
+        '2026-10-27',
+    ),
     Override('kizomba.lt', Waiting.RECIPE, Waiting.NOTHING, 'its page gives its tickets no ids', 'agent', '2026-10-27'),
     Override('www.sarajevosalsa.com', Waiting.RECIPE, Waiting.NOTHING, 'its prices are images', 'agent', '2026-10-27'),
 )

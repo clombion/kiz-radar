@@ -17,47 +17,73 @@ after saving what it found.
     python3 -m pipeline.fares refresh --budget 20      # what the GitHub Action runs
     python3 -m pipeline.fares plan                     # show what is due, without searching
 """
-import argparse, csv, datetime as dt, json, os, shlex, subprocess, sys, time, zlib
+
+import argparse
+import csv
+import datetime as dt
+import json
+import os
+import shlex
+import subprocess
+import sys
+import time
+import zlib
+
 from pipeline import db as sqlite_db
 from pipeline.airports import HOME
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, 'docs', 'data')
 FARES, JOBS = os.path.join(DATA, 'fares.csv'), os.path.join(ROOT, 'pipeline', 'fare_jobs.csv')
-FLI_SHA = '881aee5ff4321e81ea2157cb44be94ce6a21dc1b'   # punitarani/fli, the only place the version is pinned
+FLI_SHA = '881aee5ff4321e81ea2157cb44be94ce6a21dc1b'  # punitarani/fli, the only place the version is pinned
 FLI = os.environ.get('FLI_CMD', f'uvx -q --from git+https://github.com/punitarani/fli@{FLI_SHA} fli')
-SELLS_DAYS = 330          # Google sells about 11 months ahead
+SELLS_DAYS = 330  # Google sells about 11 months ahead
 # (days until the Friday, days between searches): weekly when it is close, every six weeks when it is far
 WEEKS_APART = [(35, 7), (91, 14), (182, 28), (SELLS_DAYS, 42)]
-PAUSE = 10                # seconds between searches; Google refuses after about 20 searches 5 seconds apart
-RETRY_AFTER = 60          # seconds to wait before trying a refused search once more
+PAUSE = 10  # seconds between searches; Google refuses after about 20 searches 5 seconds apart
+RETRY_AFTER = 60  # seconds to wait before trying a refused search once more
 
 FARE_FIELDS = ['airport', 'depart', 'return', 'price', 'currency', 'fetched_at']
 JOB_FIELDS = ['airport', 'depart', 'last_run', 'status', 'note']
 
+
 def now():
-    return dt.datetime.now(dt.timezone.utc).replace(microsecond=0)
+    return dt.datetime.now(dt.UTC).replace(microsecond=0)
+
 
 def read(path):
-    if not os.path.exists(path): return []
+    if not os.path.exists(path):
+        return []
     return list(csv.DictReader(open(path, encoding='utf-8')))
+
 
 def write(path, fields, rows, key):
     with open(path, 'w', newline='', encoding='utf-8') as f:
-        w = csv.DictWriter(f, fieldnames=fields, lineterminator='\n'); w.writeheader(); w.writerows(sorted(rows, key=key))
+        w = csv.DictWriter(f, fieldnames=fields, lineterminator='\n')
+        w.writeheader()
+        w.writerows(sorted(rows, key=key))
+
 
 def weekends(today):
     """(airport, Friday) of every upcoming, not cancelled festival with an airport other than home, from the site DB."""
     c = sqlite_db.connect(os.path.join(DATA, 'kiz.sqlite'), 'ro')
-    return set(c.execute("""select airport, weekend_friday from events where airport is not null and airport != ?
-        and cancelled is not 1 and weekend_friday > ?""", (HOME, today.isoformat())).fetchall())
+    return set(
+        c.execute(
+            """select airport, weekend_friday from events where airport is not null and airport != ?
+        and cancelled is not 1 and weekend_friday > ?""",
+            (HOME, today.isoformat()),
+        ).fetchall()
+    )
+
 
 def interval(days_away):
     return next((every for until, every in WEEKS_APART if days_away <= until), None)
 
+
 def weekday_of(airport, friday):
     """The weekday (0 = Monday) a weekend is searched on: fixed, and spread evenly across the week."""
     return zlib.crc32(f'{airport} {friday}'.encode()) % 7
+
 
 def queue(t=None):
     """Every festival weekend with its interval and whether it is due today, the most overdue first."""
@@ -65,7 +91,7 @@ def queue(t=None):
     today = t.date()
     jobs = {(j['airport'], j['depart']): j for j in read(JOBS)}
     fetched = {}
-    for f in read(FARES):                      # a weekend priced before it had a job counts as searched then
+    for f in read(FARES):  # a weekend priced before it had a job counts as searched then
         k = (f['airport'], f['depart'])
         fetched[k] = max(fetched.get(k, ''), f['fetched_at'])
     q = []
@@ -77,12 +103,35 @@ def queue(t=None):
         on_day = weekday_of(airport, friday) == today.weekday()
         due = every is not None and (age is None or (age >= every and on_day) or age >= 2 * every)
         q.append(dict(airport=airport, friday=friday, days_away=days_away, every=every, age=age, due=due))
-    return sorted(q, key=lambda r: (not r['due'], -(r['age'] / r['every'] if r['age'] is not None and r['every'] else 99), r['friday']))
+    return sorted(
+        q,
+        key=lambda r: (
+            not r['due'],
+            -(r['age'] / r['every'] if r['age'] is not None and r['every'] else 99),
+            r['friday'],
+        ),
+    )
+
 
 def search(airport, friday):
     """One Friday-to-Monday return; (status, fare row or None, note). status: priced, no price or refused."""
-    cmd = shlex.split(FLI) + ['dates', HOME, airport, '--from', friday, '--to', friday,
-                              '-d', '3', '--round', '--friday', '--currency', 'EUR', '--format', 'json']
+    cmd = shlex.split(FLI) + [
+        'dates',
+        HOME,
+        airport,
+        '--from',
+        friday,
+        '--to',
+        friday,
+        '-d',
+        '3',
+        '--round',
+        '--friday',
+        '--currency',
+        'EUR',
+        '--format',
+        'json',
+    ]
     try:
         p = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
     except subprocess.TimeoutExpired:
@@ -90,14 +139,25 @@ def search(airport, friday):
     if 'HTTP 429' in p.stderr or '"http_status": 429' in p.stdout:
         return 'refused', None, 'HTTP 429'
     try:
-        d = json.loads(p.stdout[p.stdout.index('{'):])
+        d = json.loads(p.stdout[p.stdout.index('{') :])
     except ValueError:
         return 'no price', None, (p.stderr.strip().splitlines() or ['no output'])[-1][:200]
     x = next((x for x in d.get('dates', []) if x.get('price') and x.get('departure_date') == friday), None)
     if not d.get('success') or not x:
         return 'no price', None, str((d.get('error') or {}).get('message', ''))[:200]
-    return 'priced', dict(airport=airport, depart=friday, **{'return': x['return_date']}, price=f"{x['price']:.0f}",
-                          currency=x.get('currency', 'EUR'), fetched_at=now().isoformat()), ''
+    return (
+        'priced',
+        dict(
+            airport=airport,
+            depart=friday,
+            **{'return': x['return_date']},
+            price=f'{x["price"]:.0f}',
+            currency=x.get('currency', 'EUR'),
+            fetched_at=now().isoformat(),
+        ),
+        '',
+    )
+
 
 def refresh(budget, max_seconds):
     start, today = time.time(), now().date()
@@ -105,17 +165,24 @@ def refresh(budget, max_seconds):
     jobs = {(j['airport'], j['depart']): j for j in read(JOBS)}
     done, refused = 0, False
     for item in queue():
-        if not item['due'] or done >= budget or time.time() - start > max_seconds: break
+        if not item['due'] or done >= budget or time.time() - start > max_seconds:
+            break
         status, row, note = search(item['airport'], item['friday'])
         if status == 'refused':
             time.sleep(RETRY_AFTER)
             status, row, note = search(item['airport'], item['friday'])
-        print(f"{item['airport']} {item['friday']} ({item['days_away']} days away): {status} {row['price'] + ' EUR' if row else ''} {note}", flush=True)
+        print(
+            f'{item["airport"]} {item["friday"]} ({item["days_away"]} days away): {status} {row["price"] + " EUR" if row else ""} {note}',
+            flush=True,
+        )
         if status == 'refused':
-            refused = True; break
-        if row: fares[(row['airport'], row['depart'], row['return'])] = row
-        jobs[(item['airport'], item['friday'])] = dict(airport=item['airport'], depart=item['friday'], last_run=now().isoformat(),
-                                                       status=status, note=note)
+            refused = True
+            break
+        if row:
+            fares[(row['airport'], row['depart'], row['return'])] = row
+        jobs[(item['airport'], item['friday'])] = dict(
+            airport=item['airport'], depart=item['friday'], last_run=now().isoformat(), status=status, note=note
+        )
         done += 1
         time.sleep(PAUSE)
     live = weekends(today)
@@ -124,14 +191,18 @@ def refresh(budget, max_seconds):
     write(FARES, FARE_FIELDS, fares.values(), key=lambda r: (r['airport'], r['depart'], r['return']))
     write(JOBS, JOB_FIELDS, jobs.values(), key=lambda r: (r['airport'], r['depart']))
     print(f'{done} searches; {len(fares)} fares stored for {len(live)} festival weekends')
-    if refused: sys.exit('Google refused a search (HTTP 429); the rest waits for the next run')
+    if refused:
+        sys.exit('Google refused a search (HTTP 429); the rest waits for the next run')
+
 
 def plan():
-    q = queue(); due = [x for x in q if x['due']]
+    q = queue()
+    due = [x for x in q if x['due']]
     print(f'{len(due)} of {len(q)} festival weekends due today')
     for x in due:
-        seen = f"searched {x['age']:.0f} days ago" if x['age'] is not None else 'never searched'
-        print(f"{x['airport']} {x['friday']}: {x['days_away']} days away, every {x['every']} days, {seen}")
+        seen = f'searched {x["age"]:.0f} days ago' if x['age'] is not None else 'never searched'
+        print(f'{x["airport"]} {x["friday"]}: {x["days_away"]} days away, every {x["every"]} days, {seen}')
+
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser(description='Search Friday-to-Monday fares for festival weekends that are due.')
@@ -141,5 +212,7 @@ if __name__ == '__main__':
     r.add_argument('--max-seconds', type=int, default=1200, help='stop starting searches after this long')
     sub.add_parser('plan', help='list the weekends due today, without searching')
     a = ap.parse_args()
-    if a.cmd == 'refresh': refresh(a.budget, a.max_seconds)
-    else: plan()
+    if a.cmd == 'refresh':
+        refresh(a.budget, a.max_seconds)
+    else:
+        plan()

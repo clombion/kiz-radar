@@ -15,11 +15,19 @@ scheduled reader is pipeline/tickets.py, which reads ticket pages through rows()
 Finding the Chromium: --browser, else the Playwright browsers in /opt/pw-browsers, else Patchright's own
 (`uv run --group browser patchright install chromium`).
 """
-import argparse, contextlib, glob, os, shutil, sys
+
+import argparse
+import contextlib
+import glob
+import os
+import shutil
+import sys
+
 
 def chromium():
     found = sorted(glob.glob('/opt/pw-browsers/chromium-*/chrome-linux*/chrome'))
     return found[-1] if found else None
+
 
 class RecipeError(Exception):
     """A site recipe's selectors or patterns fail on the page that loaded."""
@@ -29,6 +37,7 @@ class RecipeError(Exception):
 def opened(url, wait=10, visible=False, browser=None):
     """(the page, its HTTP status) once loaded and settled. visible needs a display (see on_display)."""
     from patchright.sync_api import sync_playwright
+
     with sync_playwright() as p:
         b = p.chromium.launch(executable_path=browser or chromium(), headless=not visible)
         try:
@@ -39,11 +48,13 @@ def opened(url, wait=10, visible=False, browser=None):
         finally:
             b.close()
 
+
 def click_all(page, selector):
     """Click every match of a CSS selector that can be clicked when its turn comes, to open sections a page shows
     collapsed: a page may keep hidden copies of a button for other screen sizes, and a dialog the first click opens
     covers the others. What stays shut leaves its rows unread, which a recipe's read reports."""
     from patchright.sync_api import TimeoutError
+
     for el in page.query_selector_all(selector):
         try:
             el.click(trial=True, timeout=2000)
@@ -52,6 +63,7 @@ def click_all(page, selector):
         el.click()
     page.wait_for_timeout(1500)
 
+
 def page_text(url, wait=10, visible=False, browser=None, screenshot=None):
     """(title, HTTP status, the page's text as shown)."""
     with opened(url, wait, visible, browser) as (page, status):
@@ -59,6 +71,7 @@ def page_text(url, wait=10, visible=False, browser=None, screenshot=None):
         if screenshot:
             page.screenshot(path=screenshot, full_page=True)
     return out
+
 
 # every element matching the row selector that holds no other match, as {field: string or null}. A field reads the
 # first match of its css inside the row (the row itself when css is null), or with page set every match on the page,
@@ -92,11 +105,13 @@ ROWS_JS = """([row, fields]) => {
   });
 }"""
 
+
 def rows(url, recipe, visible=None, browser=None):
     """(HTTP status, title, the page's ticket rows) read by a site recipe (pipeline/tickets/schemas/site.json): each
     row maps the recipe's fields to the string found, or None. Patchright's errors are the page's (it would not
     load); RecipeError is the recipe's."""
     from patchright.sync_api import Error
+
     with opened(url, recipe['wait'], recipe['visible'] if visible is None else visible, browser) as (page, status):
         title = page.title()
         try:
@@ -106,6 +121,7 @@ def rows(url, recipe, visible=None, browser=None):
         except Error as e:
             raise RecipeError(str(e).splitlines()[0]) from e
 
+
 def on_display():
     """Run this process again under a virtual display (xvfb-run) when on Linux without one, so a visible browser
     can open; elsewhere a visible browser needs none."""
@@ -113,7 +129,8 @@ def on_display():
         return
     if not shutil.which('xvfb-run'):
         sys.exit('no display and no xvfb-run: install xvfb, or run where a display is available')
-    os.execvp('xvfb-run', ['xvfb-run', '-a', *sys.orig_argv])      # the same interpreter, flags and -m module
+    os.execvp('xvfb-run', ['xvfb-run', '-a', *sys.orig_argv])  # the same interpreter, flags and -m module
+
 
 def main():
     ap = argparse.ArgumentParser(description='Read one web page as a browser shows it: text on stdout.')
@@ -128,6 +145,7 @@ def main():
     title, status, text = page_text(a.url, a.wait, a.visible, a.browser, a.screenshot)
     print(f'# {title} ({status or "no response"})', file=sys.stderr)
     print(text)
+
 
 if __name__ == '__main__':
     main()
