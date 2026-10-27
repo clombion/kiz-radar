@@ -1,13 +1,14 @@
 {
  "batch": "event-17830",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17830,
    "passes": [
     {
      "kind": "package",
-     "label_quote": "PRICE 💶",
+     "style": null,
+     "label_quote": null,
      "group_size": 1,
      "days": 14,
      "includes_hotel": true,

@@ -1,15 +1,16 @@
 {
  "batch": "event-18995",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18995,
    "passes": [
     {
      "kind": "other",
+     "style": null,
      "label_quote": "⭐Price per person FUL PAC",
      "group_size": 1,
-     "days": 5,
+     "days": null,
      "includes_hotel": true,
      "tiers": [
       {
@@ -24,7 +25,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Norway – 5900 NOK"
+       "quote": "🇳🇴 Norway – 5900 NOK"
       },
       {
        "amount": 5890,
@@ -38,7 +39,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Sweden – 5890 SEK"
+       "quote": "🇸🇪 Sweden – 5890 SEK"
       },
       {
        "amount": 4020,
@@ -52,7 +53,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Denmark – 4020 DKK"
+       "quote": "🇩🇰 Denmark – 4020 DKK"
       },
       {
        "amount": 465,
@@ -66,7 +67,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Scotland – 465 GBP"
+       "quote": "🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland – 465 GBP"
       },
       {
        "amount": 540,
@@ -80,12 +81,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Portugal – 540 EUR"
+       "quote": "🇵🇹 Portugal – 540 EUR"
       }
      ]
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -109,6 +111,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": null,
@@ -132,6 +135,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -155,6 +159,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -178,6 +183,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -201,7 +207,7 @@
     }
    ],
    "rule_quotes": [
-    "Conversion rates will be updated monthly"
+    "(Conversion rates will be updated monthly)"
    ]
   }
  ]

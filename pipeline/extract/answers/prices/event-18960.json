@@ -1,13 +1,14 @@
 {
  "batch": "event-18960",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18960,
    "passes": [
     {
      "kind": "full",
-     "label_quote": "PACK A (3-Day Full Pass)",
+     "style": null,
+     "label_quote": "-PACK A (3-Day Full Pass)",
      "group_size": 1,
      "days": 3,
      "includes_hotel": false,
@@ -114,7 +115,8 @@
     },
     {
      "kind": "day",
-     "label_quote": "PACK B (Day Pass)",
+     "style": null,
+     "label_quote": "-PACK B (Day Pass)",
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -221,7 +223,8 @@
     },
     {
      "kind": "party",
-     "label_quote": "PACK C (Social & Party Pass)",
+     "style": null,
+     "label_quote": "-PACK C (Social & Party Pass)",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -327,10 +330,11 @@
      ]
     },
     {
-     "kind": "other",
+     "kind": "day",
+     "style": null,
      "label_quote": "ADMISSION TO DANCE PARTIES",
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {

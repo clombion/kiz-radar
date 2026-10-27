@@ -1,12 +1,13 @@
 {
  "batch": "event-18896",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18896,
    "passes": [
     {
      "kind": "day",
+     "style": null,
      "label_quote": "🔥PRE PARTY",
      "group_size": 1,
      "days": 1,

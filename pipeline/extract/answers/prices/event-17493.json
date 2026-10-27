@@ -1,12 +1,13 @@
 {
  "batch": "event-17493",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17493,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "✦𝐎𝐍𝐋𝐈𝐍𝐄 𝐓𝐈𝐂𝐊𝐄𝐓𝐒:",
      "group_size": 1,
      "days": null,
@@ -39,11 +40,50 @@
        "sold_out": false,
        "current": false,
        "quote": "From 01/06 – 125eur"
+      },
+      {
+       "amount": 150,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "Full pass at the door 150 eur"
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 130,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "Party pass at the door 130 eur"
       }
      ]
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -67,6 +107,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -90,6 +131,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -113,6 +155,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -136,6 +179,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -159,6 +203,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -182,6 +227,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -202,57 +248,9 @@
        "quote": "Sunday social – 25eur"
       }
      ]
-    },
-    {
-     "kind": "party",
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 130,
-       "currency": "EUR",
-       "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "Party pass at the door 130 eur"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 150,
-       "currency": "EUR",
-       "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "Full pass at the door 150 eur"
-      }
-     ]
     }
    ],
-   "rule_quotes": [
-    "𝐩𝐫𝐞𝐩𝐚𝐫𝐭𝐲 𝐚𝐧𝐝 𝐚𝐟𝐭𝐞𝐫-𝐩𝐚𝐫𝐭𝐲 𝐚𝐫𝐞 𝐧𝐨𝐭 𝐢𝐧𝐜𝐥𝐮𝐝𝐞𝐝 𝐢𝐧 any pass ‼"
-   ]
+   "rule_quotes": []
   }
  ]
 }

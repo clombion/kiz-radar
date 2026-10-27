@@ -1,12 +1,13 @@
 {
  "batch": "event-18877",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18877,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -99,9 +100,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "Please note, after this date only day passes are will be available"
-   ]
+   "rule_quotes": []
   }
  ]
 }

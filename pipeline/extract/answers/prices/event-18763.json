@@ -1,12 +1,13 @@
 {
  "batch": "event-18763",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18763,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "FESTIVAL FULL PASS",
      "group_size": 1,
      "days": 3,
@@ -30,6 +31,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": "FESTIVAL FULL PASS",
      "group_size": 2,
      "days": 3,
@@ -53,6 +55,7 @@
     },
     {
      "kind": "other",
+     "style": null,
      "label_quote": "MASTER TRAINING",
      "group_size": 1,
      "days": null,
@@ -76,6 +79,7 @@
     },
     {
      "kind": "other",
+     "style": null,
      "label_quote": "MASTER TRAINING",
      "group_size": 2,
      "days": null,
@@ -99,6 +103,7 @@
     },
     {
      "kind": "other",
+     "style": null,
      "label_quote": "FULL EXPERIENCE",
      "group_size": 1,
      "days": null,
@@ -122,6 +127,7 @@
     },
     {
      "kind": "other",
+     "style": null,
      "label_quote": "FULL EXPERIENCE",
      "group_size": 2,
      "days": null,

@@ -1,12 +1,13 @@
 {
  "batch": "event-18282",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18282,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "♻️ PASS & ROOM PRICES",
      "group_size": 1,
      "days": 4,

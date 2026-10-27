@@ -1,12 +1,13 @@
 {
  "batch": "event-17839",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17839,
    "passes": [
     {
      "kind": "other",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -30,6 +31,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -81,6 +83,7 @@
     },
     {
      "kind": "workshop",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,

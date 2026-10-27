@@ -1,16 +1,17 @@
 {
  "batch": "event-19079",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 19079,
    "passes": [
     {
-     "kind": "full",
-     "label_quote": null,
+     "kind": "package",
+     "style": null,
+     "label_quote": "FULL PASS+HOTEL-2 NIGHT TRIPLE BED ROOM!",
      "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
+     "days": 2,
+     "includes_hotel": true,
      "tiers": [
       {
        "amount": 200,
@@ -30,6 +31,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "FULL PASS + HOTEL+ BREAKFAST+2 NIGHT IN TRIPLE ROOM!",
      "group_size": 1,
      "days": 2,
@@ -81,6 +83,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "INDIVIDUAL FULL PASS ( 1 PERSON)!",
      "group_size": 1,
      "days": 1,
@@ -132,6 +135,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": "INDIVIDUAL FULL PASS ( 1 PERSON)!",
      "group_size": 1,
      "days": 2,
@@ -183,6 +187,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": "INDIVIDUAL FULL PASS ( 1 PERSON)!",
      "group_size": 1,
      "days": 3,
@@ -234,6 +239,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "COUPLES FULL PASS !( 2 PERSON /MAN+WOMAN)!",
      "group_size": 2,
      "days": 1,
@@ -285,6 +291,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": "COUPLES FULL PASS !( 2 PERSON /MAN+WOMAN)!",
      "group_size": 2,
      "days": 2,
@@ -336,6 +343,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": "COUPLES FULL PASS !( 2 PERSON /MAN+WOMAN)!",
      "group_size": 2,
      "days": 3,
@@ -387,6 +395,7 @@
     },
     {
      "kind": "other",
+     "style": null,
      "label_quote": "FULL PASS VIP- ( 1 PERSON/ ONLY 3 DAYS)!",
      "group_size": 1,
      "days": 3,
@@ -438,7 +447,8 @@
     },
     {
      "kind": "day",
-     "label_quote": "FULL PASS- ONLY( SOCIAL- SBK /SHOWS/ LIVE MUSIC/PARTIES/ ( 1 PERSON)",
+     "style": null,
+     "label_quote": "FULL PASS- ONLY( SOCIAL- SBK /SHOWS/ LIVE MUSIC/PARTIES/",
      "group_size": 1,
      "days": 1,
      "includes_hotel": false,
@@ -461,7 +471,8 @@
     },
     {
      "kind": "party",
-     "label_quote": "FULL PASS- ONLY( SOCIAL- SBK /SHOWS/ LIVE MUSIC/PARTIES/ ( 1 PERSON)",
+     "style": null,
+     "label_quote": "FULL PASS- ONLY( SOCIAL- SBK /SHOWS/ LIVE MUSIC/PARTIES/",
      "group_size": 1,
      "days": 2,
      "includes_hotel": false,
@@ -484,7 +495,8 @@
     },
     {
      "kind": "party",
-     "label_quote": "FULL PASS- ONLY( SOCIAL- SBK /SHOWS/ LIVE MUSIC/PARTIES/ ( 1 PERSON)",
+     "style": null,
+     "label_quote": "FULL PASS- ONLY( SOCIAL- SBK /SHOWS/ LIVE MUSIC/PARTIES/",
      "group_size": 1,
      "days": 3,
      "includes_hotel": false,

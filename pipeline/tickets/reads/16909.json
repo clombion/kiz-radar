@@ -3,12 +3,13 @@
  "title": "KALUANDA KIZOMBA FESTIVAL 4° EDITION",
  "start_date": "2026-11-20",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt_version": "first-read-v2",
- "rows_at": "2026-10-26T21:39:26+00:00",
+ "prompt_version": "first-read-v3",
+ "rows_at": "2026-10-26T23:45:16+00:00",
  "description": "✨ KALUANDA KIZOMBA FESTIVAL 2026 ✨\nWe welcome you to a new edition of Kaluanda Kizomba Festival 2026.\nIt is our pleasure to officially announce the line-up that will be joining us this year to make you live a unique experience, full of music, connection, and pure Kizomba essence.\nGet ready to learn, feel, and dance with artists and DJs who will elevate every moment of the festival 🔥\n✨ ARTISTS ✨\n💃🏽 Tony & Carla\n💃🏽 Stephane & Ana\n💃🏽 Seb & Sara\n💃🏽 Dino Da Cruz\n💃🏽 Jeanette & Maria\n💃🏽 Esteban & Sandra\n💃🏽 Carlos & Sandra\n💃🏽 Fernando & Daniela\n💃🏽 Carol & Ainhoa\n🎧 DJ’S 🎧\n🔥 DJ Linduka\n🔥 DJ Kikola\n🔥 DJ Akym\n🔥 DJ Kazukuta\n🔥 DJ Mikelaine\n📅 From November 20th to 22nd\n📍ALICANTE – SPAIN\n🏨 ALL IN ONE – ALANNIA RESORTS GUARDAMAR\nWhen booking your Guardamar cabin, use the code KALUANDA26 to stay on the same street as the organization, creating a stronger community vibe and shared festival experience.\nAdditionally, subscribe to the Alannia Club through the hotel’s official website and enjoy a 5% discount.\n🎟 TICKETS ⬇️\nhttps://www.goandance.com/…/kaluanda-festival-2026-4th…\n✨ If you feel Kizomba, this is your place.\nThe energy, the level, and the magic of Kaluanda can’t be explained… they must be lived.\n👉 Get your Full Pass and be part of the experience.\nWHATSAPP COMMUNITY\nhttps://chat.whatsapp.com/KeMUMwidz9i3dWsDMecI1h\nINSTAGRAM\nhttps://www.instagram.com/_kaluanda?igsh=Z3ZnOGppM2Mza3kx",
  "passes": [
   {
    "kind": "full",
+   "style": null,
    "label_quote": "MAN FULL PASS",
    "group_size": 1,
    "days": null,
@@ -27,6 +28,7 @@
   },
   {
    "kind": "full",
+   "style": null,
    "label_quote": "WOMAN FULL PASS",
    "group_size": 1,
    "days": null,
@@ -45,6 +47,7 @@
   },
   {
    "kind": "full",
+   "style": null,
    "label_quote": "COUPLE FULL PASS (man-woman)",
    "group_size": 2,
    "days": null,

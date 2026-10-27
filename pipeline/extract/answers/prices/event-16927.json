@@ -1,12 +1,13 @@
 {
  "batch": "event-16927",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16927,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,

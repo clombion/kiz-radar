@@ -1,12 +1,13 @@
 {
  "batch": "event-16246",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16246,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -25,11 +26,50 @@
        "sold_out": false,
        "current": true,
        "quote": "FULLPASS – 89 EARLY BIRD"
+      },
+      {
+       "amount": 140,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "Full pass at the door 140 eur"
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 120,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "Party pass at the door 120 eur"
       }
      ]
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -53,6 +93,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -76,6 +117,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -99,6 +141,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -122,6 +165,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -145,6 +189,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -168,6 +213,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -190,53 +236,8 @@
      ]
     },
     {
-     "kind": "party",
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 120,
-       "currency": "EUR",
-       "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "Party pass at the door 120 eur"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 140,
-       "currency": "EUR",
-       "fee": null,
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "Full pass at the door 140 eur"
-      }
-     ]
-    },
-    {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -260,6 +261,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -283,6 +285,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,

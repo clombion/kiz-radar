@@ -1,12 +1,13 @@
 {
  "batch": "event-18686",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18686,
    "passes": [
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Inside double cabin",
      "group_size": 1,
      "days": 5,
@@ -44,6 +45,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Outside double cabin",
      "group_size": 1,
      "days": 5,
@@ -81,6 +83,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Balcony double cabin",
      "group_size": 1,
      "days": 5,
@@ -118,7 +121,8 @@
     }
    ],
    "rule_quotes": [
-    "Children under 18 stay FREE if sharing a cabin with 2 adults."
+    "Children under 18 stay FREE if sharing a cabin with 2 adults.",
+    "*Single/triple/quadruple cabins available upon request and subject to availability."
    ]
   }
  ]

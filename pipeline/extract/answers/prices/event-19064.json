@@ -1,12 +1,13 @@
 {
  "batch": "event-19064",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 19064,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 4,
@@ -44,6 +45,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": 4,

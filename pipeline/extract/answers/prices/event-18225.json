@@ -1,12 +1,13 @@
 {
  "batch": "event-18225",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18225,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -58,6 +59,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": null,
@@ -109,6 +111,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "THURSDAY",
      "group_size": 1,
      "days": 1,
@@ -132,6 +135,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -155,6 +159,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -172,12 +177,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "= €55"
+       "quote": "SATURDAY Day Pass (workshops +social+party)\n= €55"
       }
      ]
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,

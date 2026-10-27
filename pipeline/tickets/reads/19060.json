@@ -3,12 +3,13 @@
  "title": "Stockholm Sensual Festival 2026",
  "start_date": "2026-10-29",
  "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt_version": "first-read-v2",
- "rows_at": "2026-10-26T21:39:23+00:00",
+ "prompt_version": "first-read-v3",
+ "rows_at": "2026-10-26T23:36:51+00:00",
  "description": "Get ready for the highly anticipated 4th Edition of the Stockholm Sensual Festival on Oct 29 – Nov 1, 2026. With more than 1500 dancers from all over the world, you can enjoy a weekend full of dancing, music, and fun in one of the most amazing cities in Scandinavia! Join us for 4 nights of parties, performances, workshops, our social dance competition, and more. Don’t miss out on this exciting event, get your ticket now!\n📆 Oct 29 – Nov 1st 2026\n▬▬▬▬▬▬ ✥ SSF ✥ ▬▬▬▬▬▬\n💫 What to expect:\n💃 +30 hours of workshops\n🎩 Top International Artists\n🎶 Over 3000 sqm of dance floor with Bachata, Kiz and WCS\n🎉 4 Amazing Parties, pre-party, afternoon socials (pre-party included in our full pass)\n🎦 Awe inspiring performances and show\n🏩 All parties and workshops in one amazing venue in the heart of Solna\n✨ Only a 5 minute walk to Mall of Scandinavia with over 40 restaurants and many shops\n🌎 Professional Jack & Jill Competition with prizes\n💃 Over 100 International Guest dancers\n🎫 Full pass that includes social dance competition for WCS and Bachata.\n📷 Photo sessions at Friday and Saturday Socials. Come pose and get amazing pictures.\n▬▬▬▬▬▬ ✥ International Artists ✥ ▬▬▬▬▬▬\n✨Bachata✨\n⚜ Ofir & Ofri\n⚜ Agustin & Alba\n⚜ York & Lisa\n⚜ Anita & Varea\n⚜ Sia & Rezi\n⚜ Umeko & Otho\n⚜ Claudio\n⚜ Ronie Saleh\n⚜ Emigen & Emanuela\n⚜ Jesus Ortiz\n⚜ Sergio & Gabby\n⚜ Ezequiel & Julia\n🔥Kizomba🔥\n⚜Moorea\n⚜Ronie Saleh\n⚜Luis & Karen\n⚜Stephane\n⚜Mickaela\n⚜Agnes\n⚜Elli\n▬▬▬▬▬▬ ✥ International DJs & Photographers ✥ ▬▬▬▬▬▬\n🎧 Bachata 🎧\n🎶 DJ York\n🎶 DJ Nina\n🎶 DJ King\n🎶 DJ Valenz\n🎶 DJ Den Megavolt\n🎧 Kizomba 🎧\n🎶 DJ Neiken\n🎶 DJ Al Nova\n🎶 DJ Laak\n🎶 DJ Joey C\n🎶 DJ Traxx\n🎶 DJ Den Megavolt\n📹 Video & Photo 📷\n📹 Romero Productions\n📹 LDR productions\n📷 El Gallo Photos\n▬▬▬▬▬▬ ✥ Tickets & Purchase Info ✥ ▬▬▬▬▬▬\n🎫 TICKET INFO 🎫\nTickets Available on Go & Dance\nBachata Full Pass\n⭐ Blind Pass – 100€ (sold out)\n⭐ Black Friday Pass – 110€ (sold out)\n⭐ Early Bird Pass – 130€ (50 or till May 1st)\n⭐ Summer Bird Pass – 160€ (till Aug 15th)\n⭐ Fall Bird Pass – 170€ (Till October 1st)\n⭐ Full Pass – 180€ (Till Festival)\nKizomba Full Pass\n⭐ Blind Pass – 100€ (Sold out)\n⭐ Black Friday Pass – 110€ (sold out)\n⭐ Early Bird Pass – 130€ (50 or till May 1st)\n⭐ Summer Bird Pass – 145€ (till Aug 15th)\n⭐ Fall Bird Pass 150€ (Till October 1st)\n⭐ Full Pass – 160€ (Till Festival)\n💳 Payment methods:\n▸ Card/Stripe available by default online\n▸ Int. Bank transfer by request\n▸ Revolut by request\n▬▬▬▬▬▬ ✥ Venue & Hotels ✥ ▬▬▬▬▬▬\n💎💎 Official Venue 💎💎\n“Quality Hotel Strawberry Arena” in Solna\n⭐ 3000m² dance floor with four floors\n⭐ Massive high quality sound system\n⭐Very high Quality dance floor\n⭐Workshops and Socials in the same venue\nLink: https://app.mews.com/…/ebc1a773-8476-4ad2-b8ca…\n▬▬▬▬▬▬ ✥ Dress Codes ✥ ▬▬▬▬▬▬\n✪ Thursday Preparty: Represent Your Flag\n✪ Friday: Halloween Party\n✪ Saturday: Sparkle & Glam Gala\n✪ Sunday: Wear Your Jersey\n▬▬▬▬▬▬ ✥ Social Media ✥ ▬▬▬▬▬▬\nFollow our pages for updates and more information.\n✨ Festival Instagram ✨\nhttps://www.instagram.com/stockholmsensual/\n💥 Festival Facebook 💥\nhttps://www.facebook.com/profile.php?id=100092763844059\n✨ Festival Youtube ✨\nwww.youtube.com/@StockholmSensualFestival\n▬▬▬▬▬▬ ✥ Travel Information ✥ ▬▬▬▬▬▬\n✈ Main airport: Arlanda Airport\nTransport to city:\n🚌 Flygbussarna of Flix bus – you can buy the ticket through an app or at the airport!\n🚄 Arlanda Express – Train to city Center\n🚆 Pendaltag – Stockholm Local train Line that stops right at Solna Station a 5 minute walk to our hotel.\n🚕 Taxi + Bolt + Uber\nFor any other questions or inquiries please contact:\n☛ Mail: stockholmsensual@gmail.com\n☛ Organized by: Club Mayambo Events",
  "passes": [
   {
    "kind": "party",
+   "style": "bachata",
    "label_quote": null,
    "group_size": 2,
    "days": null,
@@ -27,6 +28,7 @@
   },
   {
    "kind": "full",
+   "style": "bachata",
    "label_quote": null,
    "group_size": 1,
    "days": null,
@@ -46,6 +48,7 @@
   },
   {
    "kind": "party",
+   "style": "bachata",
    "label_quote": null,
    "group_size": 1,
    "days": null,
@@ -65,6 +68,7 @@
   },
   {
    "kind": "party",
+   "style": "kizomba",
    "label_quote": null,
    "group_size": 2,
    "days": null,
@@ -83,6 +87,7 @@
   },
   {
    "kind": "full",
+   "style": "kizomba",
    "label_quote": null,
    "group_size": 1,
    "days": null,
@@ -102,6 +107,7 @@
   },
   {
    "kind": "party",
+   "style": "kizomba",
    "label_quote": null,
    "group_size": 1,
    "days": null,
@@ -121,6 +127,7 @@
   },
   {
    "kind": "day",
+   "style": null,
    "label_quote": null,
    "group_size": 1,
    "days": 1,
@@ -140,6 +147,7 @@
   },
   {
    "kind": "day",
+   "style": null,
    "label_quote": null,
    "group_size": 1,
    "days": 1,
@@ -159,6 +167,7 @@
   },
   {
    "kind": "day",
+   "style": null,
    "label_quote": null,
    "group_size": 1,
    "days": 1,
@@ -178,6 +187,7 @@
   },
   {
    "kind": "day",
+   "style": null,
    "label_quote": null,
    "group_size": 1,
    "days": 1,
@@ -197,6 +207,7 @@
   },
   {
    "kind": "day",
+   "style": null,
    "label_quote": null,
    "group_size": 1,
    "days": 1,
@@ -216,6 +227,7 @@
   },
   {
    "kind": "day",
+   "style": null,
    "label_quote": null,
    "group_size": 1,
    "days": 1,

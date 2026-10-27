@@ -1,12 +1,13 @@
 {
  "batch": "event-18935",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18935,
    "passes": [
     {
      "kind": "package",
+     "style": null,
      "label_quote": "“LAND ONLY” OPTION",
      "group_size": 1,
      "days": null,

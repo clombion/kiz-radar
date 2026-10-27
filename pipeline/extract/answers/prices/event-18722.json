@@ -1,12 +1,13 @@
 {
  "batch": "event-18722",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18722,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 3,
@@ -47,7 +48,7 @@
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": "2026-06-15",
+       "until": "06-15",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -100,6 +101,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 4,
@@ -140,7 +142,7 @@
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": "2026-06-15",
+       "until": "06-15",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -193,6 +195,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": 3,
@@ -230,6 +233,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": 4,
@@ -267,6 +271,7 @@
     },
     {
      "kind": "party",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 3,
@@ -318,6 +323,7 @@
     },
     {
      "kind": "party",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 4,

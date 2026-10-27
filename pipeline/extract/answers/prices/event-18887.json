@@ -1,12 +1,13 @@
 {
  "batch": "event-18887",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18887,
    "passes": [
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Combo (2 persons) Room + full pass",
      "group_size": 2,
      "days": 2,
@@ -44,6 +45,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Combo (2 persons) Room + full pass",
      "group_size": 2,
      "days": 3,
@@ -81,6 +83,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Combo (2 persons) Room + full pass",
      "group_size": 2,
      "days": 4,
@@ -118,6 +121,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Combo (1 person) Room + full pass",
      "group_size": 1,
      "days": 2,
@@ -155,6 +159,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Combo (1 person) Room + full pass",
      "group_size": 1,
      "days": 3,
@@ -192,6 +197,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Combo (1 person) Room + full pass",
      "group_size": 1,
      "days": 4,

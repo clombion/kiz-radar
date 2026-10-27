@@ -1,12 +1,13 @@
 {
  "batch": "event-18766",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18766,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "PRICE EVOLUTION FOR SINGLE FULL PASS (MEN/ WOMEN PASSES)",
      "group_size": 1,
      "days": null,
@@ -86,6 +87,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": "PRICE EVOLUTION FOR COUPLE FULL PASS",
      "group_size": 2,
      "days": null,

@@ -1,12 +1,13 @@
 {
  "batch": "event-19033",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 19033,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "Full Pass",
      "group_size": 1,
      "days": null,
@@ -58,6 +59,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": "Couple Full Pass (lead+follow)",
      "group_size": 2,
      "days": null,
@@ -95,6 +97,7 @@
     },
     {
      "kind": "other",
+     "style": null,
      "label_quote": "Full Pass if you come from abroad *",
      "group_size": 1,
      "days": null,
@@ -132,6 +135,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "20.Nov Friday PARTY",
      "group_size": 1,
      "days": 1,
@@ -155,6 +159,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "21.Nov Saturday PARTY",
      "group_size": 1,
      "days": 1,
@@ -178,6 +183,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "22.Nov Sunday SOCIAL",
      "group_size": 1,
      "days": 1,

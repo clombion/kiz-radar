@@ -1,0 +1,199 @@
+{
+ "rows_at": "2026-10-26T23:48:05+00:00",
+ "reads": {
+  "claude-opus-5-5": {
+   "event_id": 17500,
+   "title": "SaBaKi – The Very Special Event",
+   "start_date": "2026-11-27",
+   "read_by": "claude-opus-5-5",
+   "prompt_version": "first-read-v3",
+   "rows_at": "2026-10-26T23:48:05+00:00",
+   "description": "🇬🇧🇬🇧 3, 2, 1… We’re starting the 12th edition of an event that will be remembered for a long time!\nStarting in 2025, after a four-year of break, we’ve changed our profile to 100% Angola! Urban Kiz has no place here. Two days of workshops, two Kizombadas, two socials—sound like a plan? Join us, we assure you, it’s worth it!\n🏠🏠Venue\nPyras Dance Studio\nŁódzka 35, Toruń\nArtists\n💃🕺Ary&Maura – Angola/ PT\n💃🕺\n🕺\nDJs\n🎧Miro Kikola – Angola/UK\n🎧Dos Anjos – CV/Hollandn\n🎧Yha – Angola/FR\nPrice List\nEarly Birds 1st – 135E/couple – SOLD OUT\nEarly Birds 2nd – 146E/couple – SOLD OUT\nCouple Pass – 158E/couple\nFemale Solo – 86E\nMale Solo – 86E\nRegistration Form\nhttps://iwencik.pl/registrations/SaBaKi2026/EN\nThe event is organized by\nPyras Dance Studio\nKocham Taniec Sports Club",
+   "passes": [
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": "Couple Pass",
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "d69a349e-2833-44fe-a5f7-7d7b92f28271"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      },
+      {
+       "keys": [
+        "4e26c9c7-7e76-4944-af2d-54f525e287bc"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      },
+      {
+       "keys": [
+        "d846f1ca-32e5-45eb-a202-f2a35519b30e"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "296cf42e-f7ef-48ac-b1d8-f90d87fd66aa"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "bb401dba-2a19-42a4-89ce-2ef57aee6af5"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "party",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "eecf5352-cd63-44a1-b6ad-1179100246c8"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    }
+   ],
+   "skipped": [],
+   "rule_quotes": []
+  },
+  "claude-sonnet-5-5": {
+   "event_id": 17500,
+   "title": "SaBaKi – The Very Special Event",
+   "start_date": "2026-11-27",
+   "read_by": "claude-sonnet-5-5",
+   "prompt_version": "first-read-v3",
+   "rows_at": "2026-10-26T23:48:05+00:00",
+   "description": "🇬🇧🇬🇧 3, 2, 1… We’re starting the 12th edition of an event that will be remembered for a long time!\nStarting in 2025, after a four-year of break, we’ve changed our profile to 100% Angola! Urban Kiz has no place here. Two days of workshops, two Kizombadas, two socials—sound like a plan? Join us, we assure you, it’s worth it!\n🏠🏠Venue\nPyras Dance Studio\nŁódzka 35, Toruń\nArtists\n💃🕺Ary&Maura – Angola/ PT\n💃🕺\n🕺\nDJs\n🎧Miro Kikola – Angola/UK\n🎧Dos Anjos – CV/Hollandn\n🎧Yha – Angola/FR\nPrice List\nEarly Birds 1st – 135E/couple – SOLD OUT\nEarly Birds 2nd – 146E/couple – SOLD OUT\nCouple Pass – 158E/couple\nFemale Solo – 86E\nMale Solo – 86E\nRegistration Form\nhttps://iwencik.pl/registrations/SaBaKi2026/EN\nThe event is organized by\nPyras Dance Studio\nKocham Taniec Sports Club",
+   "passes": [
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "d69a349e-2833-44fe-a5f7-7d7b92f28271"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      },
+      {
+       "keys": [
+        "4e26c9c7-7e76-4944-af2d-54f525e287bc"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      },
+      {
+       "keys": [
+        "d846f1ca-32e5-45eb-a202-f2a35519b30e"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      },
+      {
+       "keys": [
+        "bb401dba-2a19-42a4-89ce-2ef57aee6af5"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "296cf42e-f7ef-48ac-b1d8-f90d87fd66aa"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      },
+      {
+       "keys": [
+        "eecf5352-cd63-44a1-b6ad-1179100246c8"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    }
+   ],
+   "skipped": [],
+   "rule_quotes": []
+  }
+ }
+}

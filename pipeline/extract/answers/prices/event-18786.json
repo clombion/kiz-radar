@@ -1,12 +1,13 @@
 {
  "batch": "event-18786",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18786,
    "passes": [
     {
      "kind": "package",
+     "style": null,
      "label_quote": "🎿 All-inclusive ski & snowboard package",
      "group_size": 1,
      "days": null,
@@ -30,6 +31,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "🥾 Non-skier package",
      "group_size": 1,
      "days": null,
@@ -53,6 +55,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "For children aged 5 to 12",
      "group_size": 1,
      "days": null,

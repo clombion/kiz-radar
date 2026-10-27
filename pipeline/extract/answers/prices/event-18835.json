@@ -1,15 +1,16 @@
 {
  "batch": "event-18835",
- "prompt_version": "prices-v4",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18835,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "Online FULL-PASS",
      "group_size": 1,
-     "days": 3,
+     "days": null,
      "includes_hotel": false,
      "tiers": [
       {
@@ -18,13 +19,13 @@
        "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": null,
-       "until": null,
+       "from": "05-01",
+       "until": "05-31",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Mai: 85 €"
+       "quote": "💎 Mai: 85 €"
       },
       {
        "amount": 90,
@@ -32,13 +33,13 @@
        "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": null,
-       "until": null,
+       "from": "06-01",
+       "until": "06-30",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "June: 90 €"
+       "quote": "💎 June: 90 €"
       },
       {
        "amount": 95,
@@ -46,13 +47,13 @@
        "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": null,
-       "until": null,
+       "from": "07-01",
+       "until": "07-31",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "July: 95 €"
+       "quote": "💎 July: 95 €"
       },
       {
        "amount": 100,
@@ -60,13 +61,13 @@
        "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": null,
-       "until": null,
+       "from": "08-01",
+       "until": "08-31",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "August: 100 €"
+       "quote": "💎 August: 100 €"
       },
       {
        "amount": 105,
@@ -74,13 +75,13 @@
        "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": null,
-       "until": null,
+       "from": "09-01",
+       "until": "09-30",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "September: 105 €"
+       "quote": "💎 September: 105 €"
       },
       {
        "amount": 110,
@@ -88,13 +89,13 @@
        "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": null,
-       "until": null,
+       "from": "10-01",
+       "until": "10-31",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "October: 110 €"
+       "quote": "💎 October: 110 €"
       },
       {
        "amount": 115,
@@ -102,13 +103,13 @@
        "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": null,
-       "until": null,
+       "from": "11-01",
+       "until": "11-30",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "November: 115 €"
+       "quote": "💎 November: 115 €"
       },
       {
        "amount": 120,
@@ -116,13 +117,13 @@
        "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": null,
-       "until": null,
+       "from": "12-01",
+       "until": "12-31",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "December: 120 €"
+       "quote": "💎 December: 120 €"
       },
       {
        "amount": 125,
@@ -130,13 +131,13 @@
        "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": null,
-       "until": null,
+       "from": "01-01",
+       "until": "01-31",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "January: 125 €"
+       "quote": "💎 January: 125 €"
       },
       {
        "amount": 130,
@@ -144,13 +145,13 @@
        "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": null,
-       "until": null,
+       "from": "02-01",
+       "until": "02-28",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "February: 130 €"
+       "quote": "💎 February: 130 €"
       },
       {
        "amount": 135,
@@ -158,13 +159,13 @@
        "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": null,
-       "until": null,
+       "from": "03-01",
+       "until": "03-31",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "March: 135 €"
+       "quote": "💎 March: 135 €"
       },
       {
        "amount": 140,
@@ -172,13 +173,13 @@
        "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": null,
-       "until": null,
+       "from": "04-01",
+       "until": "04-30",
        "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "April: 140 €"
+       "quote": "💎 April: 140 €"
       }
      ]
     }
