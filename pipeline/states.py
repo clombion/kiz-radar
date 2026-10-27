@@ -203,7 +203,7 @@ ROWS = (
     S('first_read', 'redo_description', 'the description changed since the first read', WAITS, owner='the next run'),
     S('first_read', 'redo_page', 'the ticket page changed since the first read', WAITS, owner='the next run'),
     S('first_read', 'redo_unread', 'the page shows tickets the first read does not know', WAITS, owner='the next run'),
-    S('first_read', 'disputed', 'a first read is needed, and the two models disagreed on it (tickets/disputed/)', WAITS,
+    S('first_read', 'disputed', 'a first read is needed, and no two of the models agreed on it (tickets/disputed/)', WAITS,
       owner='agent: settle it'),
 
     S('answer', 'none', 'the festival has no answer of the pass', WAITS, owner='the next run'),
@@ -217,7 +217,7 @@ ROWS = (
     S('waits_for', 'recipe_fix', 'its latest read broke the recipe: the page no longer fits it', WAITS,
       owner='agent: fix the recipe'),
     S('waits_for', 'session', 'its reads keep failing', WAITS, owner='agent: read it in a session'),
-    S('waits_for', 'agent', 'the two models disagreed on its first read', WAITS, owner='agent: settle it'),
+    S('waits_for', 'agent', 'no two models agreed on its first read', WAITS, owner='agent: settle it'),
     S('waits_for', 'sales_open', 'its sales are announced but not open', WAITS, owner='organiser'),
     S('waits_for', 'nothing', 'nothing: its prices are read, or it needs no first read, sells offline, has closed its '
                               'sales, is over, or an exception says so (pipeline/exceptions.py)', KEPT),

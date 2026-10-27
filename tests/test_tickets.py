@@ -320,19 +320,27 @@ FEST = festival(page='https://my.weezevent.com/x')
 ANSWER = {k: read()[k] for k in ('passes', 'skipped', 'rule_quotes')}
 
 
+def answer(kind='full', label='Fullpass'):
+    out = copy.deepcopy(ANSWER)
+    out['passes'][0] |= {'kind': kind, 'label_quote': label}
+    return out
+
+
 def test_two_models_that_agree_give_the_first_ones_read(files):
-    other = copy.deepcopy(ANSWER)
-    other['passes'][0]['label_quote'] = None
-    fr = tickets.two_model_read(client(ANSWER, other), FEST, entry(ROWS), [entry(ROWS)])
+    fr = tickets.models_read(client(answer(), answer(label=None)), FEST, entry(ROWS), [entry(ROWS)])
     assert fr['passes'] == ANSWER['passes'] and fr['read_by'] == 'claude-opus-5-5 + claude-sonnet-5-5'
     assert not (files / 'disputed' / '7.json').exists()
 
 
-def test_two_models_that_disagree_leave_both_for_an_agent(files):
-    other = copy.deepcopy(ANSWER)
-    other['passes'][0]['kind'] = 'party'
-    assert tickets.two_model_read(client(ANSWER, other), FEST, entry(ROWS), [entry(ROWS)]) is None
-    assert set(json.loads((files / 'disputed' / '7.json').read_text())['reads']) == set(tickets.MODELS)
+def test_when_two_models_disagree_a_third_read_settles_it(files):
+    fr = tickets.models_read(client(answer(), answer('party'), answer('party')), FEST, entry(ROWS), [entry(ROWS)])
+    assert fr['passes'][0]['kind'] == 'party' and fr['read_by'] == 'claude-sonnet-5-5 + claude-fable-5-1'
+    assert not (files / 'disputed' / '7.json').exists()
+
+
+def test_when_no_two_models_agree_all_reads_wait_for_an_agent(files):
+    assert tickets.models_read(client(answer(), answer('party'), answer('other')), FEST, entry(ROWS), [entry(ROWS)]) is None
+    assert set(json.loads((files / 'disputed' / '7.json').read_text())['reads']) == {*tickets.MODELS, tickets.TIE_BREAK}
 
 
 def test_both_files_hold_what_the_reads_and_logs_say_and_nothing_else(files):
@@ -553,7 +561,7 @@ def test_a_free_ticket_costs_0(price, amount):
 
 def test_first_reads_count_against_the_budget(files):
     from pipeline import spend
-    tickets.two_model_read(client(ANSWER, ANSWER), FEST, entry(ROWS), [entry(ROWS)])
+    tickets.models_read(client(ANSWER, ANSWER), FEST, entry(ROWS), [entry(ROWS)])
     assert round(spend.month_usd(), 3) == round(spend.usd('claude-opus-5-5', 6000, 2000) + spend.usd('claude-sonnet-5-5', 6000, 2000), 3)
 
 

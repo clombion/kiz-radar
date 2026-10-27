@@ -245,12 +245,13 @@ of tickets), when it is read again once its last date has passed. The monthly **
 Opus and Sonnet for each festival that needs one on a site with a recipe (no first read yet, or one made with a
 changed description, for another page, or to another prompt). The two read independently, and the first read is kept
 when they agree on every ticket's pass, style, tier, skip and dates (and on why a ticket is skipped, for a skip
-reason the site tells apart); when they don't, both are kept in `pipeline/tickets/disputed/<event_id>.json` for an
-agent and the festival waits. Each read is checked before it counts, and one that misreads what its tickets' names
-say (a package for 3 nights covers 3 days; tickets naming different weekdays or dance styles are different passes; a
-pass sold with a meal is a package; a bootcamp is a pass) goes back to its model once with the checker's lines. The
-run fails, after committing, when a page broke its recipe, a festival's read failed three times in a row, or a
-festival no longer fits its first read; `todo` then marks it for
+reason the site tells apart). When they don't, Fable reads it too, and a read two of the three agree on is kept;
+when no two agree, all are kept in `pipeline/tickets/disputed/<event_id>.json` for an agent and the festival waits.
+Each read is checked before it counts, and one that misreads what its tickets' names say (a package for 3 nights
+covers 3 days; tickets naming different weekdays or dance styles are different passes; a pass sold with a meal is a
+package; a bootcamp is a pass) goes back to its model once with the checker's lines. The run fails, after
+committing, when a page broke its recipe, a festival's read failed three times in a row, or a festival no longer
+fits its first read; `todo` then marks it for
 a session, where `retry` reads it with a visible browser. A festival's ticket page is known when it is its first
 read's, the shop an agent recorded, or its first full link to a ticket shop (a site a recipe reads, or one
 `pipeline/exceptions.py` names); a link to anything else, the festival's own site say, is no ticket page. Every

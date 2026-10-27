@@ -22,8 +22,9 @@ A first read (tickets/reads/<event_id>.json, schema tickets/schemas/read.json) s
 key, from the rows of one logged read (rows_at) and the festival's description: every ticket is in a tier or
 skipped, and dates and price notes are quoted from the description or the tickets; its page is that read's. Only
 checked first reads are saved there: an agent fills a draft (tickets/drafts/, not committed) that record moves there
-once it passes, and in the Action Opus and Sonnet each write one, kept only when they agree (else
-tickets/disputed/<event_id>.json holds both for an agent). Besides the schema and the quotes, the checker holds a first read to what its tickets' names say
+once it passes, and in the Action Opus and Sonnet each write one, kept when they agree; when they don't, Fable
+writes a third, and one two of the three agree on is kept (else tickets/disputed/<event_id>.json holds them all for
+an agent). Besides the schema and the quotes, the checker holds a first read to what its tickets' names say
 (rules_problems), so a model that misreads them answers again with the checker's lines. A festival needs one when it is still to come and its
 description's prices answer to the current prompt gives the pass a card prices (prices.card_pass) no dated price
 (until that answer is asked, it awaits it), or again when its description or its ticket page changes, its page shows
@@ -46,7 +47,7 @@ still to come waits for something (states.Waiting), or for nothing: its ticket p
 or go to no ticket shop; tickets/pages.csv, written by page, records how an agent found it sells them: its shop's
 page, or that its sales haven't opened, happen offline or are closed, or that a search found no page, which holds
 until its links change), a recipe for its site (unless pipeline/exceptions.py says a recipe can't read the site),
-its recipe fixed, its sales to open, or an agent when the two models disagreed; one whose reads keep failing waits
+its recipe fixed, its sales to open, or an agent when no two models agreed; one whose reads keep failing waits
 for a session. tickets/status.csv holds, for every festival the source database lists, what it waits for (nothing
 once it is over), its first_read state, how it sells and its known page; page, read, retry, record and run write it
 again. Waiting is backlog, not a failure.
@@ -79,7 +80,8 @@ STATUS_FIELDS = ['event_id', 'event', 'start', 'waits_for', 'first_read', 'sales
 SITE_SCHEMA = json.loads((HERE / 'schemas' / 'site.json').read_text())
 READ_SCHEMA = states.schema(HERE / 'schemas' / 'read.json')
 LOG_SCHEMA = states.schema(HERE / 'schemas' / 'log.json')
-MODELS = ('claude-opus-5-5', 'claude-sonnet-5-5')    # the first one's read is kept when both agree
+MODELS = ('claude-opus-5-5', 'claude-sonnet-5-5')    # each makes a first read; the first one's is kept when they agree
+TIE_BREAK = 'claude-fable-5-1'                         # reads too when they don't, so that two of three may agree
 REFUSALS = 3
 BOOTCAMP = re.compile(r'(?i)boot\s*-?camp')
 # what a ticket's name says that a first read must follow (rules_problems): its nights, its weekdays, its dance styles,
@@ -749,11 +751,24 @@ def meaning(fr):
                                 for t in ps['tiers'])) for ps in fr['passes']), \
         frozenset((s['key'], s['reason'] if s['reason'] in told else None) for s in fr['skipped'])
 
-def two_model_read(client, f, entry, entries):
-    """The first model's read when both agree; else None, with both in tickets/disputed/."""
+def agreed(reads):
+    """Of the models' reads ({model: read, or None when it failed}), the first that another agrees with, its read_by
+    naming every model that agrees; else None."""
+    done = [(m, r) for m, r in reads.items() if r]
+    for m, r in done:
+        if len(same := [n for n, other in done if meaning(other) == meaning(r)]) > 1:
+            return r | {'read_by': ' + '.join(same)}
+    return None
+
+def models_read(client, f, entry, entries):
+    """The first read two models agree on: MODELS', or when they don't, one TIE_BREAK agrees with; else None, with
+    every read in tickets/disputed/ for an agent."""
     reads = {m: ask_read(client, m, f, entry, entries) for m in MODELS}
-    if all(reads.values()) and len({meaning(r) for r in reads.values()}) == 1:
-        return reads[MODELS[0]] | {'read_by': ' + '.join(MODELS)}
+    if found := agreed(reads):
+        return found
+    reads[TIE_BREAK] = ask_read(client, TIE_BREAK, f, entry, entries)
+    if found := agreed(reads):
+        return found
     DISPUTED.mkdir(exist_ok=True)
     (DISPUTED / f'{f.id}.json').write_text(json.dumps({'rows_at': entry['at'], 'reads': reads}, ensure_ascii=False,
                                                       indent=1) + '\n', encoding='utf-8')
@@ -846,7 +861,7 @@ def cmd_todo(db):
             notes.append(f"first read needed, {f.need}: {states.state('first_read', f.need).criterion}"
                          + ('' if w == Waiting.NOTHING else f"; waits for {w} ({states.state('waits_for', w).owner})"))
         if f.disputed:
-            notes.append(f'the two models disagreed: tickets/disputed/{f.id}.json')
+            notes.append(f'no two models agreed: tickets/disputed/{f.id}.json')
         print(f'{f.id}  {f.start_date[:10]}  {f.title[:50]}')
         for n in notes:
             print(f'      {n}')
@@ -899,7 +914,7 @@ def cmd_retry(db, event_id):
     cmd_record(db, event_id)
 
 def cmd_run(db, ids=None):
-    """Re-read what is due and retry failures, first-read with two models what needs it, and make again, from their
+    """Re-read what is due and retry failures, first-read with the models what needs it, and make again, from their
     latest logged rows, the first reads of festivals now past that follow another prompt (of the festivals ids
     names, when it names some); then write both files. Exits 1 naming each festival whose page broke its recipe,
     reached REFUSALS failures, or no longer fits its first read."""
@@ -913,7 +928,7 @@ def cmd_run(db, ids=None):
         nonlocal client, budget
         client = client or anthropic.Anthropic()
         try:
-            new = two_model_read(client, f, entry, log(f.id))
+            new = models_read(client, f, entry, log(f.id))
             if new:
                 save_read(new)
                 settle_dispute(f.id, new)

@@ -23,7 +23,7 @@
      with the festival and its tickets. Every ticket goes in a tier, by its key, or in `skipped` with its reason, one
      of the skip reasons of `pipeline/states.py`; a ticket that is no pass and no reason fits is a new state: ask
      before adding a row. The same goes for a first read to do again (the description or the page changed, new
-     tickets, or `pipeline/tickets/disputed/ID.json` holds two models' disagreeing reads).
+     tickets, or `pipeline/tickets/disputed/ID.json` holds the models' reads, no two of which agreed).
   4. `uv run --group tickets -m pipeline.tickets record ID` checks the draft and, once it passes, makes it the first
      read in `pipeline/tickets/reads/ID.json`, with the prompt it followed archived in `pipeline/prompts/asked/`. On a
      failure, fix what it names and record again.

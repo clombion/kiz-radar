@@ -14,7 +14,8 @@ LEDGER, RATES = HERE / 'spend.csv', HERE / 'rates.csv'
 FIELDS = ['at', 'step', 'model', 'input_tokens', 'output_tokens', 'usd']
 BUDGET_EUR = 100
 # dollars per million tokens, in and out, by model; Haiku's long prompts (over 100K tokens) cost more
-PRICES = {'claude-opus-5-5': (4, 20), 'claude-sonnet-5-5': (2, 10), 'claude-haiku-5-5': (0.10, 0.50)}
+PRICES = {'claude-fable-5-1': (10, 50), 'claude-opus-5-5': (4, 20), 'claude-sonnet-5-5': (2, 10),
+          'claude-haiku-5-5': (0.10, 0.50)}
 LONG = {'claude-haiku-5-5': (100_000, 0.50, 2.50)}
 _lock = threading.Lock()
 

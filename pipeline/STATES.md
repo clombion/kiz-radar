@@ -134,7 +134,8 @@ read carries the same hash.
 The answers and reads made before prompts were known by their hash carry the hash of the files they followed, at
 the commit they were made at; `pipeline/prompts/asked/README.md` lists them.
 
-**Agreement.** Two models' reads agree on what each consumer treats differently, which the table decides:
+**Agreement.** Two models' reads (Opus and Sonnet, and Fable when those two don't agree) agree on what each consumer
+treats differently, which the table decides:
 - the same passes, tiers and skipped tickets;
 - for every skip reason whose disposition is not `kept`, the same reason. No reason has another disposition today.
 
