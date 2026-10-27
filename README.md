@@ -390,9 +390,14 @@ Every check runs through [mise](https://mise.jdx.dev) (`mise.toml`, which also p
 
 ```bash
 mise run check        # everything
-mise run check:fast   # the quick part: unused names, the site's structure, the generated files
-mise tasks            # each check on its own: test:py, test:site, lint:py, audit, generate:check
+mise run check:fast   # the quick part: lint, format, types, the site's structure, the generated files
+mise tasks            # each check on its own: lint:py, format:py, types:py, test:py, test:site, audit
 ```
+
+The Python code is held to every ruff rule but the few `pyproject.toml` ignores, each with its reason, and to
+basedpyright's strict mode with `Any` an error: what comes from outside (an answer, a page, a CSV) is parsed into a
+record of `pipeline/records.py` where it enters. A check is suppressed only on its line, naming its rule and why, and
+`tests/test_suppressions.py` lists each suppression, so a new one is a change to that list.
 
 The site tests check the site's structure: unused code and styles, links, stored hints and the price states. The
 pipeline tests cover the states, text, kizomba-world's pages, extraction, ticket pages and the commands. The audit

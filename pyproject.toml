@@ -14,7 +14,6 @@ browser = ["patchright==1.55.2"]
 tickets = [{include-group = "ask"}, {include-group = "scrape"}, {include-group = "browser"}]
 dev = [
     "pytest==8.4.2",
-    "pyflakes==3.4.0",
     "ruff==0.17.3",
     "basedpyright==1.40.2",
     {include-group = "tickets"},
@@ -32,6 +31,9 @@ testpaths = ["tests"]
 [tool.basedpyright]
 typeCheckingMode = "strict"
 reportAny = "error"
+enableTypeIgnoreComments = false  # a suppression names its rule: pyright: ignore[rule]
+reportIgnoreCommentWithoutRule = "error"
+reportUnnecessaryTypeIgnoreComment = "error"
 include = ["pipeline", "tests"]
 pythonVersion = "3.13"
 
@@ -53,6 +55,7 @@ ignore = [
     "EM101", "EM102", "TRY003",  # an exception's message is written where it is raised
     "PLC0415",  # imports inside functions keep each step to its own dependency group (pyproject.toml)
     "RUF001", "RUF002", "RUF003",  # typographic quotes and dashes are the site's words
+    "S105", "S106", "S107",  # a pass is a festival's ticket here: the names that hold the word are no passwords
 ]
 
 [tool.ruff.lint.per-file-ignores]
@@ -60,7 +63,16 @@ ignore = [
     "S101",     # pytest's assert
     "PLR2004",  # a test's expected values are its own
     "INP001",   # tests/ is pytest's rootdir, not a package
+    "ARG001",   # a fake keeps the signature of the function it stands in for, used or not
+    "FBT001",   # a parametrized test takes its cases' flags as arguments
+    "PLR0913",  # a test's factory takes each field a case may vary
 ]
+# their SQL embeds table names and the state table's keys (states.sql_in), never a value from outside
+"pipeline/build_site_db.py" = ["S608"]
+"pipeline/extract/load_extract.py" = ["S608"]
+"pipeline/extract/resolve_artists.py" = ["S608"]
+"pipeline/extract/run_log.py" = ["S608"]
+"pipeline/scrape.py" = ["S608"]
 
 [tool.ruff.lint.mccabe]
 max-complexity = 10

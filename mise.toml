@@ -14,8 +14,16 @@ description = "The site's tests"
 run = "node --test tests/site.test.mjs"
 
 [tasks."lint:py"]
-description = "Unused and undefined Python names"
-run = "uv run --group dev pyflakes pipeline tests"
+description = "Ruff's rules on the Python code"
+run = "uv run --group dev ruff check"
+
+[tasks."format:py"]
+description = "The Python code as ruff formats it"
+run = "uv run --group dev ruff format --check"
+
+[tasks."types:py"]
+description = "basedpyright, strict, on the pipeline and its tests"
+run = "uv run --group dev basedpyright"
 
 [tasks.audit]
 description = "Every state in the data is one of pipeline/states.py"
@@ -31,7 +39,7 @@ run = "uv run -m pipeline.generate --check"
 
 [tasks."check:fast"]
 description = "The quick checks, before each commit"
-depends = ["lint:py", "test:site", "generate:check"]
+depends = ["lint:py", "format:py", "types:py", "test:site", "generate:check"]
 
 [tasks.check]
 description = "Every check"
