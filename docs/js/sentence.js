@@ -1,6 +1,9 @@
 // The Festivals page: a sentence with blanks, festival cards below, and a sticky bar with the same choices
 // (plus "More filters") once the sentence has scrolled away.
-import { h, addDays, flag, today, home, loading } from './ui.js';
+import { h, flag, home, loading } from './ui.js';
+import { addDays, today } from './days.js';
+import { KEY } from './states.js';
+import { text } from './wording.js';
 import { site } from './db.js';
 import { festivals, readState, changed, WITH, hasWith, withPhrase } from './festivals.js';
 import { money, step, currency } from './money.js';
@@ -25,7 +28,7 @@ function note(cls, arrow, ...text) {
 }
 
 // the dance in the sentence changes every few seconds; "a" gains its n before a vowel ("an Urban Kiz festival")
-const DANCES = ['Kizomba', 'Urban Kiz', 'Tarraxo'];
+const DANCES = [KEY.genre.KIZOMBA, KEY.genre.URBANKIZ, KEY.genre.TARRAXO].map(g => text('genre', g));
 const takesAn = word => /^[aeiou]/i.test(word);
 // in words, and in digits for screens where only the shorter form keeps the blank on the "festival in" line
 const WHEN = [[1, 'the next month'], [2, 'the next two months'], [3, 'the next three months'], [6, 'the next six months'], [12, 'the coming year']];
@@ -46,7 +49,7 @@ function matches(all, s) {
   const end = addDays(today(), Math.round(s.months * 30.4));
   return all.filter(e => e.depart <= end &&
       // with a price limit: the trip within it; sold out never; an unknown trip only when asked for
-      (!s.reach || (e.price?.soldOut ? false : e.trip != null ? e.trip <= step('trip', STEP[s.reach]) : s.unchecked)) &&
+      (!s.reach || (e.price.point === 'card_price' && e.price.key === KEY.card_price.SOLD_OUT ? false : e.trip != null ? e.trip <= step('trip', STEP[s.reach]) : s.unchecked)) &&
       (!s.country || e.country_code === s.country) && (!s.with || hasWith(e, s.with)) && (!s.friends || e.goers.some(g => g.featured)) &&
       (!s.taxi || e.taxi_dancers) && (!s.allin || e.all_in_one) &&
       e.lineup >= s.lineup)
@@ -100,7 +103,7 @@ export function sentenceView(root, qs, { signal, data }) {
   const n = h('span', { class: 'article-n' }, 'n');
   const hero = h('header', { class: 'sentence-hero arriving' },
     h('p', { class: 'sentence' }, 'I want to go to a',
-      h('span', { 'aria-hidden': 'true' }, n, ' ', dance), h('span', { class: 'visually-hidden' }, ' Kizomba'),
+      h('span', { 'aria-hidden': 'true' }, n, ' ', dance), h('span', { class: 'visually-hidden' }, ' ', text('genre', KEY.genre.KIZOMBA)),
       h('br', { class: 'phone-break' }), festivalIn,
       sentenceBlanks.months, `, flying from ${home().city} to `,
       h('span', { class: 'anchor' }, sentenceBlanks.country, whereNote),
@@ -126,7 +129,7 @@ export function sentenceView(root, qs, { signal, data }) {
       h('label', { class: 'field' }, h('span', {}, 'Destination'), blank('country', DEST_SHORT, 'plain'))),
     h('label', { class: 'field' }, h('span', {}, 'Line-up'), blank('lineup', LINEUP, 'plain')),
     h('label', { class: 'field' }, h('span', {}, 'Order'), blank('sort', ORDER, 'plain')),
-    h('div', { class: 'checks' }, check('friends', 'Only festivals friends go to'), check('taxi', 'Taxi dancers'), check('allin', 'All-in-one hotel'),
+    h('div', { class: 'checks' }, check('friends', 'Only festivals friends go to'), check('taxi', text('feature', KEY.feature.TAXI_DANCERS)), check('allin', text('feature', KEY.feature.ALL_IN_ONE)),
       check('unchecked', 'Include festivals with unknown prices')),
   ];
   const panel = h('div', { class: 'more-panel', id: 'more-panel', hidden: true }, moreFields());

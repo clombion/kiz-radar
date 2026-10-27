@@ -4,17 +4,22 @@
 // Picking a result goes where that kind of thing lives: a festival opens on the map, an artist on their page, a city
 // on the map, and a country, style or highlight narrows the festival list, keeping its other choices.
 import { q, site } from './db.js';
-import { h, flag, dayMonth, today } from './ui.js';
-import { festivals, STYLE_NAMES, WITH, hasWith } from './festivals.js';
-import { TRAITS, MORE_TRAITS } from './icons.js';
+import { h, away, flag, dayMonth } from './ui.js';
+import { today } from './days.js';
+import { festivals, DANCES, WITH, hasWith } from './festivals.js';
+import { icon } from './icons.js';
+import { KEY } from './states.js';
+import { text } from './wording.js';
 import { festivalsHref, eventOnMapHref, cityOnMapHref, artistHref, artistsHref, mapHref, personHref } from './routes.js';
 import { person } from './plans.js';
+import { roleLabel } from './artists.js';
 import { modal } from './modal.js';
 
 const SHOWN = 5;                      // results per group until "Show all"
 const GROUPS = [['person', 'People'], ['festival', 'Festivals'], ['artist', 'Artists'], ['place', 'Places'], ['tag', 'Dances & highlights']];
 // before anything is typed: what can be searched, as things to tap
-const SUGGEST = { styles: ['salsa', 'zouk', 'bachata', 'kompa'], highlights: ['promo_code', 'taxi', 'pool_party', 'allin'], countries: 4 };
+const SUGGEST = { styles: [KEY.genre.SALSA, KEY.genre.ZOUK, KEY.genre.BACHATA, KEY.genre.KOMPA],
+  highlights: [KEY.feature.PROMO_CODE, 'taxi', KEY.feature.POOL_PARTY, 'allin'], countries: 4 };
 
 // "Łódź" and "lodz" match, and so do "Rencontres" and "rencontrés"
 const fold = s => s.normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase()
@@ -57,7 +62,7 @@ function buildIndex() {
 
   const aliases = {};
   for (const a of q('SELECT artist_id, alias FROM artist_aliases')) (aliases[a.artist_id] ||= []).push(a.alias);
-  for (const a of q(`SELECT a.id, a.display_name, a.kind, s.bookings, s.teacher, s.dj, s.home_country FROM artist_stats s
+  for (const a of q(`SELECT a.id, a.display_name, a.kind, s.bookings, s.teacher, s.dj, s.performer, s.home_country FROM artist_stats s
       JOIN artists a ON a.id = s.artist_id`))
     add('artist', a.display_name, aliases[a.id] || [], { a, shares: sharing.has(a.id), rank: a.bookings });
 
@@ -73,14 +78,13 @@ function buildIndex() {
   for (const c of cities.values()) add('place', c.city, [], { city: c, past: !c.upcoming, rank: c.upcoming * 100 + c.all });
 
   // styles and highlights narrow the festival list; taxi dancers and the all-in-one hotel use its own checkboxes
-  const icons = Object.fromEntries([...TRAITS, ...MORE_TRAITS].map(([k, , svg]) => [k, svg]));
-  const tag = (key, name, params, test, icon = key) => {
+  const tag = (key, name, params, test, svg = DANCES.includes(key) ? null : icon(key)) => {
     const n = pool.filter(test).length;
-    if (n) add('tag', name, [key.replace(/_/g, ' ')], { key, params, n, icon: icons[icon], style: key in STYLE_NAMES, rank: n });
+    if (n) add('tag', name, [key.replace(/_/g, ' ')], { key, params, n, icon: svg, style: DANCES.includes(key), rank: n });
   };
   for (const [key, name] of WITH) tag(key, name, { with: key }, e => hasWith(e, key));
-  tag('taxi', 'Taxi dancers', { taxi: 1 }, e => e.taxi_dancers, 'taxi_dancers');
-  tag('allin', 'All-in-one hotel', { allin: 1 }, e => e.all_in_one, 'accommodation_included');
+  tag('taxi', text('feature', KEY.feature.TAXI_DANCERS), { taxi: 1 }, e => e.taxi_dancers, icon(KEY.feature.TAXI_DANCERS));
+  tag('allin', text('feature', KEY.feature.ALL_IN_ONE), { allin: 1 }, e => e.all_in_one, icon(KEY.feature.ALL_IN_ONE));
   return items;
 }
 
@@ -163,7 +167,7 @@ export function initSearch(trigger, data) {
       const e = it.e, yr = e.start_date.slice(0, 4) !== today().slice(0, 4) ? ' ' + e.start_date.slice(0, 4) : '';
       lead = h('span', { class: 'lead date' }, dayMonth(e.start_date).replace(' ', ' '));
       sub = [flag(e.country_code), ' ', e.city || 'Place not given', yr,
-        e.cancelled ? ' · cancelled' : !e.upcoming ? ' · has taken place' : '', e.lat == null ? ' · on kizomba-world ↗' : ''];
+        e.cancelled ? ' · cancelled' : !e.upcoming ? ' · has taken place' : '', e.lat == null ? [' · on kizomba-world', away()] : ''];
     } else if (it.kind === 'person') {
       lead = h('span', { class: 'lead mono' }, it.name[0]);
       sub = [it.upcoming ? `${plural(it.upcoming, 'festival')} planned` : 'no plans coming up',
@@ -171,7 +175,7 @@ export function initSearch(trigger, data) {
     } else if (it.kind === 'artist') {
       const a = it.a;
       lead = h('span', { class: 'lead mono' }, a.display_name.trim()[0] || '?');
-      sub = [a.home_country ? flag(a.home_country) + ' ' : '', a.kind === 'couple' ? 'Couple' : a.teacher && a.dj ? 'Teacher & DJ' : a.dj ? 'DJ' : a.teacher ? 'Teacher' : 'Performer',
+      sub = [a.home_country ? flag(a.home_country) + ' ' : '', roleLabel(a),
         ' · ', plural(a.bookings, 'festival'), it.shares ? ' · shares plans' : ''];
     } else if (it.country) {
       lead = h('span', { class: 'lead flag' }, flag(it.country.code));

@@ -1,9 +1,11 @@
 // The festival card used across the site: date, place, title, styles, highlights, a few names and the flight,
 // opening in place to the full line-up and practical details. Rows come from festivals.js (withDetails).
-import { q } from './db.js';
-import { h, addDays, today, flightsUrl, home, dayMonth } from './ui.js';
+import { h, away, flightsUrl, home, dayMonth } from './ui.js';
+import { addDays, today } from './days.js';
 import { money, convert, step, total } from './money.js';
 import { riseNote, openPasses } from './passes.js';
+import { KEY, LINK } from './states.js';
+import { linkOf, say, text } from './wording.js';
 import { place, styleLine } from './festivals.js';
 import { TRAITS } from './icons.js';
 import { cardDetails, traitItems } from './details.js';
@@ -39,30 +41,30 @@ function flight(e) {
 //   Cost ~4 130 kr, without accommodation · price goes up 15 Dec
 //   1 670 kr full pass + ~2 460 kr flight to Stockholm, then 37 km
 // The pass opens the passes quick view; the flight opens Google Flights. With only one of the two, that one alone.
-// Without a price, why: the ticket page has one we haven't read, sales haven't opened, sell by message or form, or
-// are closed; else no price is listed anywhere we know.
-const NO_PRICE = { not_yet: 'Tickets not on sale yet', offline: 'Tickets by message or form, no price online',
-  closed: 'Ticket sales closed' };
-let sales;
-function noPrice(e) {
-  sales ||= new Map(q('SELECT event_id, state, page FROM ticket_sales').map(r => [r.event_id, r]));
-  const s = sales.get(e.id);
-  const text = s?.state === 'shop' ? h('a', { href: s.page, target: '_blank', rel: 'noopener', onclick: ev => ev.stopPropagation() },
-    'Prices on the ticket page ↗') : NO_PRICE[s?.state] || 'No price listed';
-  return h('p', { class: 'pass-price muted' }, '🎟 ', text);
+// Without a price, why (price_status, in the words of pipeline/states.py): a link to the ticket page or to the
+// passes when its state renders as one.
+// a card's price is a button to the passes view, which opens over the page
+const passBtn = (e, ...words) => h('button', { type: 'button', class: 'link pass-btn',
+  onclick: ev => { ev.stopPropagation(); openPasses(e, ev.currentTarget); } }, ...words);
+function linked(e, words, link) {
+  if (link === LINK.PAGE) return h('a', { href: e.ticket_page, target: '_blank', rel: 'noopener', onclick: ev => ev.stopPropagation() },
+    words, away());
+  if (link === LINK.PASSES) return passBtn(e, words);
+  return words;
 }
+const note = (e, { point, key }) => h('p', { class: 'pass-price muted' }, '🎟 ', linked(e, text(point, key), linkOf(point, key)));
 
 function prices(e) {
   const p = e.price;
-  if (!p) return [noPrice(e), flight(e)];
-  const passBtn = text => h('button', { type: 'button', class: 'link pass-btn',
-    onclick: ev => { ev.stopPropagation(); openPasses(e, ev.currentTarget); } }, text);
-  if (p.soldOut) return [h('p', { class: 'pass-price muted' }, '🎟 ', passBtn(`${p.hotel ? 'Packages' : 'Full passes'} sold out`)), flight(e)];
-  const pass = passBtn(`${p.from ? 'from ' : ''}${money(p.tier.amount, p.tier.currency)} ${p.hotel ? 'package with hotel' : 'full pass'}`);
-  const rise = p.next ? ` · ${riseNote(p.next)}` : '';
-  const sum = e.fare && total([[p.tier.amount, p.tier.currency], [e.fare.home ? 0 : e.fare.price, 'EUR']]);
+  if (p.point === 'price' || p.key === KEY.card_price.ENDED) return [note(e, p), flight(e)];
+  if (p.key === KEY.card_price.SOLD_OUT) return [h('p', { class: 'pass-price muted' }, '🎟 ',
+    passBtn(e, text('card_price', p.key, { pass: text('pass_kind', p.pass.kind) }))), flight(e)];
+  const { now } = p;
+  const pass = passBtn(e, text('card_price', p.key, { price: text('tier_today', now.state, { price: money(now.tier.amount, now.tier.currency) }) }));
+  const rise = now.next ? ` · ${riseNote(now.next)}` : '';
+  const sum = e.fare && total([[now.tier.amount, now.tier.currency], [e.fare.home ? 0 : e.fare.price, 'EUR']]);
   if (!sum) return [h('p', { class: 'pass-price' }, '🎟 ', pass, rise), flight(e)];
-  return [h('p', { class: 'cost' }, 'Cost ', h('strong', {}, p.from ? 'from ' : '', sum), p.hotel ? ', hotel included' : ', without accommodation', rise),
+  return [h('p', { class: 'cost' }, say('card_price', p.key, { sum: h('strong', {}, say('tier_today', now.state, { price: sum })) }, 'cost'), rise),
     h('p', { class: 'cost-parts' }, pass, ' + ', e.fare.home ? `no flight, in ${home().city}`
       : [h('span', { class: cheap(e) ? 'easy' : null }, flightLink(e, `${money(e.fare.price, 'EUR', { approx: true })} flight`)), ...after(e)])];
 }
