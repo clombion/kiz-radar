@@ -32,11 +32,10 @@
      `uv run -m pipeline.build_site_db` on the newest `source/*.sqlite`, then commit `pipeline/tickets/` (with its
      `status.csv`), `pipeline/prompts/asked/`, `pipeline/pass_prices.csv` and `pipeline/ticket_pages.csv` with them.
 - Every state a data point can be in is one row of `pipeline/states.py`, with its words on the site: the enums (and
-  through them the records and their schemas), the prompts' definitions, the SQL checks and `docs/js/states.js` are
-  built from it, so a new state is one new row there and nowhere else (then `mise run generate`). An instance that
-  departs from its state's default is a row of `pipeline/exceptions.py`. `uv run --group tickets -m pipeline.audit`
-  names any value in the data its record refuses (one that is no state, say), and any override that departs from nothing
-  any more.
+  through them the records and their schemas), the prompts' definitions, the SQL checks and `site/states.ts` are built
+  from it, so a new state is one new row there and nowhere else (then `mise run generate`). An instance that departs
+  from its state's default is a row of `pipeline/exceptions.py`. `uv run --group tickets -m pipeline.audit` names any
+  value in the data its record refuses (one that is no state, say), and any override that departs from nothing any more.
 - A prompt is known by the hash of its text and its record's schema (`pipeline/prompt.py`), so editing a template, a
   state's criterion or a record re-asks everything that prompt answered. After pushing such a change, start the
   **Refresh events** Action at once: answers and first reads to another prompt stay out of the database until asked

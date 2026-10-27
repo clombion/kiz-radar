@@ -1,17 +1,49 @@
 # The task runner: `mise run check` runs every check the repository has, and is what Tests and the push hook run.
-# `mise run check:fast` is its quick part, run before each commit. Python and its packages are uv's (uv.lock).
+# `mise run check:fast` is its quick part, run before each commit. Python and its packages are uv's (uv.lock); the
+# site's TypeScript tools are pnpm's (package.json, pnpm-lock.yaml).
 
 [tools]
 node = "22.22.0"
+pnpm = "10.30.0"
 uv = "0.11.32"
 
 [tasks."test:py"]
 description = "The pipeline's tests"
 run = "uv run --group dev pytest -q"
 
+[tasks."install:site"]
+description = "The site's tools, as pnpm-lock.yaml pins them"
+run = "pnpm install --frozen-lockfile"
+
+[tasks."build:site"]
+description = "The site's TypeScript (site/) compiled into docs/js/, which the page loads"
+depends = ["install:site"]
+run = "pnpm run build"
+
+[tasks.serve]
+description = "The site built and served at http://localhost:8000"
+depends = ["build:site"]
+run = "python3 -m http.server -d docs 8000"
+
+[tasks."types:site"]
+description = "tsc, strict, on the site and its tests"
+depends = ["install:site"]
+run = "pnpm run types"
+
+[tasks."lint:site"]
+description = "Biome's rules and format on the site, its tests and its CSS, with the lint/ plugins"
+depends = ["install:site"]
+run = "pnpm run lint"
+
+[tasks.knip]
+description = "No module, export or package the site doesn't use"
+depends = ["install:site"]
+run = "pnpm run knip"
+
 [tasks."test:site"]
-description = "The site's tests"
-run = "node --test tests/site.test.mjs"
+description = "The site's tests, in Node and in Chromium (vitest.config.ts)"
+depends = ["install:site"]
+run = "pnpm run test"
 
 [tasks."lint:py"]
 description = "Ruff's rules on the Python code"
@@ -43,7 +75,17 @@ run = "uv run -m pipeline.generate --check"
 
 [tasks."check:fast"]
 description = "The quick checks, before each commit"
-depends = ["lint:py", "format:py", "format:md", "types:py", "test:site", "generate:check"]
+depends = [
+  "lint:py",
+  "format:py",
+  "format:md",
+  "types:py",
+  "lint:site",
+  "types:site",
+  "knip",
+  "test:site",
+  "generate:check",
+]
 
 [tasks.check]
 description = "Every check"

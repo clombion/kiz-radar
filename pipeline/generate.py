@@ -3,7 +3,7 @@
     uv run -m pipeline.generate          # write them
     uv run -m pipeline.generate --check  # exit 1 naming each one that differs
 
-pipeline/enums.py holds the code's enums of the states, docs/js/states.js the site's words for them and
+pipeline/enums.py holds the code's enums of the states, site/states.ts the site's words for them and
 pipeline/STATES.md's table the data points; each is written here and nowhere else, so a new state is one row of
 pipeline/states.py and then this command.
 """
@@ -31,7 +31,7 @@ def states_md() -> str:
 
 FILES: dict[Path, Callable[[], str]] = {
     ROOT / 'pipeline' / 'enums.py': states.enums_module,
-    ROOT / 'docs' / 'js' / 'states.js': states.js_module,
+    ROOT / 'site' / 'states.ts': states.ts_module,
     STATES_MD: states_md,
 }
 

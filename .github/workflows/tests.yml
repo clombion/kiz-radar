@@ -12,5 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: jdx/mise-action@v2
+      - name: The site's tools, and the browser its tests run in
+        run: |
+          mise run install:site
+          pnpm exec playwright install --with-deps chromium
       - name: Every check
         run: mise run check

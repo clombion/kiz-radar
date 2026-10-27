@@ -1,0 +1,33 @@
+{
+  // The site's TypeScript (site/), compiled module by module into docs/js/ for the browser: no bundler. The imports name
+  // the .ts files, and tsc rewrites them to the .js files the browser loads.
+  "compilerOptions": {
+    "target": "es2023",
+    "lib": ["es2023", "dom", "dom.iterable"],
+    "module": "es2022",
+    "moduleResolution": "bundler",
+    "rewriteRelativeImportExtensions": true,
+    "rootDir": "site",
+    "outDir": "docs/js",
+    "types": [],
+    "allowUmdGlobalAccess": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "useUnknownInCatchVariables": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "erasableSyntaxOnly": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false
+  },
+  "include": ["site"]
+}

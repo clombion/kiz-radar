@@ -1,0 +1,7 @@
+language js
+
+or { JsStringLiteralExpression(), JsTemplateChunkElement() } as $text where {
+  $text <: r"^['\"]?#(?:finder|map|artists?|countries|friends|people|sql)\b[\s\S]*",
+  $filename <: not r".*/routes\.ts",
+  register_diagnostic(span=$text, message="Links are built by routes.ts, so a route has one spelling.")
+}

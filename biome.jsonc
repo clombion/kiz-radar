@@ -1,0 +1,83 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
+  "files": { "includes": ["site/**", "tests/**/*.ts", "docs/css/**", "*.json", "*.jsonc", "!pnpm-lock.yaml"] },
+  // site/states.ts is laid out by its generator (pipeline/states.py), and checked against it by generate:check
+  "formatter": { "indentStyle": "space", "indentWidth": 2, "lineWidth": 120, "includes": ["**", "!site/states.ts"] },
+  "javascript": { "formatter": { "quoteStyle": "single" } },
+  "plugins": ["./lint/routes.grit", "./lint/storage.grit", "./lint/formats.grit", "./lint/home.grit"],
+  "linter": {
+    "rules": {
+      // every rule, then the few that would fight how this code is written, each with its reason
+      "preset": "all",
+      "style": {
+        "noTernary": "off", // a conditional value is a ternary here, not a statement
+        "noNestedTernary": "off", // the same, for a choice between more than two values
+        "useNamingConvention": "off", // a row's keys are its database columns (start_date, card_pass)
+        "noMagicNumbers": "off", // geometry, timings and limits are named where they mean something
+        "useBlockStatements": "off", // a guard is one line: if (!x) return;
+        "useSingleVarDeclarator": "off", // values computed together are declared together
+        "noIncrementDecrement": "off",
+        "noContinue": "off",
+        "useExportsLast": "off", // an export sits beside the code it belongs to
+        "noHexColors": "off", // the design tokens are hex colours
+        "noExcessiveLinesPerFile": "off", // a module is one concern however long; states.ts is generated
+        "noDescendingSpecificity": "off", // site.css is ordered by component; specificity decides between weights
+        "useDefaultSwitchClause": "off", // a switch over a union names every case (useExhaustiveSwitchCases)
+        "useConsistentTypeDefinitions": "off" // a shape that must fit a Record is a type: an interface has no index signature
+      },
+      "complexity": {
+        "noVoid": "off", // void marks a promise left to run on its own (noFloatingPromises)
+        "useLiteralKeys": "off", // tsconfig's noPropertyAccessFromIndexSignature wants dataset['nav']
+        "noExcessiveLinesPerFunction": "off" // a view is one closure over its state; complexity is bounded instead
+      },
+      "suspicious": {
+        "noEqualsToNull": "off", // == null is null or undefined, both absent
+        "useBaseline": "off" // newer CSS is progressive enhancement: backdrop-filter, @starting-style
+      },
+      "correctness": {
+        "noUndeclaredVariables": "off", // tsc rejects an undeclared name, and knows globals.d.ts's
+        "noUnresolvedImports": "off", // tsc resolves every import, against the types as well
+        "useQwikValidLexicalScope": "off" // no Qwik here
+      },
+      "security": {
+        "noSecrets": "off" // the site holds no secret; its long strings are SVG and selectors
+      },
+      "nursery": {
+        "noFloatingPromises": "error",
+        "noMisusedPromises": "error",
+        "useExhaustiveSwitchCases": "error",
+        "noUnsafeTypeAssertion": "error",
+        "useAwaitThenable": "error",
+        "noUselessTypeConversion": "error",
+        "noUnsafePlusOperands": "error",
+        "noBaseToString": "error",
+        "useNullishCoalescing": "error",
+        "useStringStartsEndsWith": "error",
+        "useIncludes": "error",
+        "useRegexpExec": "error",
+        "noUselessAssignment": "error",
+        "noUnmodifiedLoopCondition": "error",
+        "noDuplicateMapKeys": "error",
+        "noUselessCall": "error",
+        "noObjectConstructor": "error",
+        "useStrictBooleanExpressions": "error",
+        "noUnsafeReturn": "error",
+        "noMisleadingReturnType": "error"
+      }
+    }
+  },
+  "overrides": [
+    {
+      // the tests and their config run in Node, and a test is test() wherever it is
+      "includes": ["tests/**", "vitest.config.ts"],
+      "linter": {
+        "rules": {
+          "correctness": { "noNodejsModules": "off" },
+          "performance": { "useTopLevelRegex": "off" }, // an assertion's pattern, matched once
+          "style": { "useConsistentTestIt": { "level": "error", "options": { "function": "test" } } }
+        }
+      }
+    }
+  ]
+}

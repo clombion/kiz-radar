@@ -3,7 +3,8 @@
 Kiz Radar finds Kizomba, Urban Kiz and Tarraxo festivals worth flying to from Bergen. It lists every festival on
 [kizomba-world.com](https://kizomba-world.com/), prices the Friday-to-Monday flight to each, and lets you explore who
 teaches where. It runs as a static site on GitHub Pages: the browser loads a SQLite database with
-[sql.js](https://sql.js.org/) and runs every query itself.
+[sql.js](https://sql.js.org/) and runs every query itself. The site's code is TypeScript (`site/`), compiled module by
+module into `docs/js/` by the **Publish site** Action whenever `main` changes; `docs/js/` is not committed.
 
 ## What the site does
 
@@ -14,12 +15,12 @@ under Filters. The choices live in the URL, so a view can be bookmarked or share
 
 The header's tabs are Festivals, Friends and Explore, whose second row holds the Map, Artists and Countries. On a touch
 screen, a swipe left or right goes to the next or previous of those five, in that order (`SECTIONS` in
-`docs/js/routes.js`); on the map, a swipe counts from near the screen's sides, and one from the very edge is left to the
+`site/routes.ts`); on the map, a swipe counts from near the screen's sides, and one from the very edge is left to the
 phone's back gesture. Going to another section, by a swipe or a tab, the page slides in from that side, and the oval
 behind the current tab moves like a slime: drawn through a gooey SVG filter, so shapes that touch flow into one, it
-pushes an arm with a drop at its tip out to the next tab, swells there and wobbles to rest on a spring
-(`docs/js/tabs.js`); with reduced motion, both change at once. On a phone the header shows only the logo, so the site's
-name stands above the sentence.
+pushes an arm with a drop at its tip out to the next tab, swells there and wobbles to rest on a spring (`site/tabs.ts`);
+with reduced motion, both change at once. On a phone the header shows only the logo, so the site's name stands above the
+sentence.
 
 The price is the trip's: the full pass at today's price plus the Friday-to-Monday return flight. "A cheap price" is
 under 3 000 kr (€300, $350) and "a reasonable price" under 5 000 kr (€500, $550). With a price chosen, festivals whose
@@ -78,6 +79,7 @@ kizomba-world. The fares are our own searches.
 | `pipeline/tickets/`, `pipeline/pass_prices.csv`, `pipeline/ticket_pages.csv` | Ticket-page recipes, read logs, first reads, the prices read there, and what each festival waits for (`tickets/status.csv`) | `pipeline/tickets.py`: the **Refresh events** Action, or an agent |
 | `pipeline/states.py`, `pipeline/exceptions.py` | Every state a data point can be in, what it means and the site's words for it; the instances that depart from their state's default | by hand (see "States") |
 | `pipeline/prompts/asked/` | Every prompt asked, by its hash | whatever saves an answer or a first read, before it names the hash |
+| `site/*.ts` | The site's code, which the **Publish site** Action compiles into `docs/js/` and publishes with `docs/` | by hand; `site/states.ts` by `mise run generate` |
 
 The build also tidies the text. Artist names get one casing ("AMI & JULIEN" becomes "Ami & Julien"). Festival titles
 lose dates, years and shouting capitals; `events.listed_title` keeps them as listed. Venues are recased. The rules live
@@ -92,13 +94,13 @@ Prices show in kroner, or in euros or dollars (`?cur=eur`, `?cur=usd`, switched 
 currencies are converted with `pipeline/rates.csv` and marked "~". A festival card shows what the weekend costs without
 accommodation (the per-person full pass at today's price, plus the flight; at a festival of several dance styles, its
 Kizomba full pass when it sells one; else a package with a hotel for one) and when the pass price next goes up; tapping
-the pass opens every pass at today's price and its next change (`docs/js/passes.js`). Which pass a card prices is the
+the pass opens every pass at today's price and its next change (`site/passes.ts`). Which pass a card prices is the
 pipeline's choice (`prices.card_pass`, `price_status.card_pass`); its price on the day is the browser's
-(`docs/js/pricing.js`). A card without a price says why (`price_status`): the festival sells no pass the card prices,
-its prices are on a ticket page not read yet, its sales haven't opened, it sells by message or form, its sales are
-closed, or no price is published. A price is what a buyer pays, booking fee included; the passes view says which fee it
-includes when the description or the ticket page states one (an answer to another prompt is asked again, past festival
-or not, and stays out of the database until then).
+(`site/pricing.ts`). A card without a price says why (`price_status`): the festival sells no pass the card prices, its
+prices are on a ticket page not read yet, its sales haven't opened, it sells by message or form, its sales are closed,
+or no price is published. A price is what a buyer pays, booking fee included; the passes view says which fee it includes
+when the description or the ticket page states one (an answer to another prompt is asked again, past festival or not,
+and stays out of the database until then).
 
 For the SQL page, every table is described in the `table_docs` table. The `event_rows` view is the one to start from: it
 joins each event to its statistics and says whether it is still to come.
@@ -283,7 +285,7 @@ Every coded value is one of the states of its data point, and `pipeline/states.p
 makes a value that state, what the site does with it (shows it on the card or in a view, says it as the card's reason
 for having no price, filters by it, keeps it, or waits for someone), its words on the site, and who acts on it
 (`pipeline/STATES.md`). Everything else is built from those rows: the code's enums (`pipeline/enums.py`, which
-`uv run -m pipeline.generate` writes, with `docs/js/states.js` for the site), and through them the records of
+`uv run -m pipeline.generate` writes, with `site/states.ts` for the site), and through them the records of
 `pipeline/records.py` and the schemas the models answer to, generated from those records; the definitions in the
 prompts; and the SQL checks. So a new state is one new row, words included, and a value that is no state fails: when it
 is written or read (a record, a check), in the tests (a name in the code the table doesn't have), or in
@@ -373,7 +375,7 @@ uv run -m pipeline.rates                                                    # ex
 uv run -m pipeline.build_site_db source/<events>.sqlite
 uv run -m pipeline.merge_suggestions source/<events>.sqlite
 uv run -m pipeline.fares refresh --budget 4                                 # needs uv; searches festival weekends due today
-python3 -m http.server -d docs 8000                                          # then open http://localhost:8000
+mise run serve                                                              # builds the site, then open http://localhost:8000
 ```
 
 ## Running the steps
@@ -392,8 +394,9 @@ Action runs the same command on every push:
 
 ```bash
 mise run check        # everything
-mise run check:fast   # the quick part: lint, format, types, the site's structure, the generated files
-mise tasks            # each check on its own: lint:py, format:py, format:md, types:py, test:py, test:site, audit
+mise run check:fast   # the quick part: lint, format, types, the site's tests, the generated files
+mise tasks            # each check on its own: lint:py, format:py, format:md, types:py, test:py, lint:site, types:site,
+                      # knip, test:site, audit
 ```
 
 The Python code is held to every ruff rule but the few `pyproject.toml` ignores, each with its reason, and to
@@ -405,12 +408,19 @@ file and the code that writes it can't drift apart. The Markdown is as mdformat 
 prompt templates and the prompts asked: their text is what Claude is asked and its hash names it, so only an edit to a
 prompt changes it.
 
-The site tests check the site's structure: unused code and styles, links, stored hints and the price states. The
-pipeline tests cover the states, text, kizomba-world's pages, extraction, ticket pages and the commands. The audit
-checks that every state in the data is one of `pipeline/states.py`.
+The site is TypeScript under tsc's strict mode and the further flags `tsconfig.json` sets, and every Biome rule but the
+few `biome.jsonc` turns off, each with its reason; Biome formats the code, its tests and the stylesheet too. A value
+from outside enters through one reader: a database row is read by its shape (`site/rows.ts`), which names each column
+and fails on a value of another type, so nothing past it meets an unread value. A type assertion is a suppressed
+`noUnsafeTypeAssertion`, and `tests/test_suppressions.py` lists those as it lists Python's. Biome's plugins in `lint/`
+keep what belongs to one module there: links in `routes.ts`, the stored hints in `hints.ts`, dates and flight links in
+`ui.ts`, and the home city in the data. knip fails on a module, export or package nothing uses.
 
-The site tests check what JavaScript and CSS cannot enforce themselves. Examples include an export nothing imports, a
-CSS rule overridden by a second one for the same selector, and a link written outside `routes.js`.
+The site tests run in vitest (`vitest.config.ts`): in Node, the prices and wording, the shapes against the database the
+site ships, the stylesheet against the page, and the state words and keys the code may not write itself; in Chromium,
+what the page does (the tab's oval, the slide, a dialog's history entry). The pipeline tests cover the states, text,
+kizomba-world's pages, extraction, ticket pages and the commands. The audit checks that every state in the data is one
+of `pipeline/states.py`.
 
 The database enforces its own rules. Dates are days, required fields are set, and `cancelled` is 1, 0 or empty. Empty
 means not known: the source flags it only for events still listed as upcoming, so most past festivals have none. As a

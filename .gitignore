@@ -3,3 +3,6 @@ __pycache__/
 docs/data/*.building
 pipeline/tickets/drafts/
 .venv/
+node_modules/
+docs/js/
+.vitest/

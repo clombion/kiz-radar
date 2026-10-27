@@ -1,0 +1,12 @@
+language js
+
+// Dates are worded, and flight searches linked, by ui.ts alone, so every page says them the same way.
+or {
+  `Intl.DateTimeFormat`,
+  `$_.toLocaleDateString($...)`,
+  `$_.toLocaleTimeString($...)`,
+  or { JsStringLiteralExpression(), JsTemplateChunkElement() } as $url where { $url <: r"[\s\S]*google\.com/travel[\s\S]*" }
+} as $use where {
+  $filename <: not r".*/ui\.ts",
+  register_diagnostic(span=$use, message="Dates are worded, and flight searches linked, by ui.ts.")
+}

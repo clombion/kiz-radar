@@ -59,7 +59,7 @@ def test_a_rows_forms_cannot_be_changed() -> None:
 
 
 def test_a_link_and_a_form_reach_the_site() -> None:
-    js = states.js_module()
+    js = states.ts_module()
     assert '"link": "page"' in js
     assert '"singular": "DJ"' in js
     assert 'export const LINK = {"PAGE": "page"' in js

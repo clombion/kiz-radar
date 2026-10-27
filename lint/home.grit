@@ -1,0 +1,7 @@
+language js
+
+// The home city and its airport are the data's (site.json's home), not the code's.
+or { JsStringLiteralExpression(), JsTemplateChunkElement() } as $text where {
+  $text <: r"[\s\S]*(?:Bergen|\bBGO\b)[\s\S]*",
+  register_diagnostic(span=$text, message="The home city comes from site.json's home, not from the code.")
+}

@@ -1,0 +1,12 @@
+{
+  // The site's tests and the vitest config, checked with the site's own rules; they are run by vitest, never emitted.
+  // Their libraries' declarations aren't checked: playwright's are written for an older TypeScript.
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "../..",
+    "noEmit": true,
+    "types": ["node"],
+    "skipLibCheck": true
+  },
+  "include": [".", "../../site", "../../vitest.config.ts"]
+}

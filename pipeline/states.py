@@ -11,7 +11,7 @@ any (a genre's dance style). A State is one of them:
   forms         the words other surfaces show for it, by name (a role's singular, the card's cost line)
   owner         who acts on it, or None
   made_by       the producer of this state, when it is not the point's
-  icon, link    how the site renders it: its icon (docs/js/icons.js), or a link to the ticket page or the passes view
+  icon, link    how the site renders it: its icon (site/icons.ts), or a link to the ticket page or the passes view
   under         the state of the point's `under` point it falls under
 
 Importing this module checks every row: a missing or wrong-typed field, an unknown point, two states with one key,
@@ -111,12 +111,12 @@ POINTS = (
         'tickets.waiting, in tickets/status.csv',
     ),
     P('price', 'Price', 'each festival, by what its card can say of its price', 'prices.price_state, in price_status'),
-    P('tier_today', 'TierToday', "a pass's price on the day it is viewed", 'pricing.js tierNow'),
+    P('tier_today', 'TierToday', "a pass's price on the day it is viewed", 'pricing.ts tierNow'),
     P(
         'card_price',
         'CardPrice',
         'a priced festival, by what its card says on the day it is viewed',
-        'pricing.js priceNow',
+        'pricing.ts cardPrice',
     ),
     P(
         'genre',
@@ -142,7 +142,7 @@ POINTS = (
         "a festival weekend's latest flight search (pipeline/fare_jobs.csv)",
         'fares.search',
     ),
-    P('next_change', 'NextChange', "a pass's next price change on the day it is viewed", 'pricing.js nextChange'),
+    P('next_change', 'NextChange', "a pass's next price change on the day it is viewed", 'pricing.ts nextChange'),
     P('hotel', 'Hotel', 'each pass, by whether its price includes a hotel', 'the prices pass; the first read'),
 )
 
@@ -646,7 +646,7 @@ ROWS = (
         'the next tier is the price at the door',
         CARD,
         'price is higher at the door',
-        forms={'then': 'then {price} at the door'},
+        forms={'after': 'then {price} at the door'},
     ),
     S(
         'next_change',
@@ -654,7 +654,7 @@ ROWS = (
         'the next tier starts on a known day',
         CARD,
         'price goes up {day}',
-        forms={'then': 'then {price} from {day}'},
+        forms={'after': 'then {price} from {day}'},
     ),
     S(
         'next_change',
@@ -662,7 +662,7 @@ ROWS = (
         'the next tier starts on a day not known',
         CARD,
         'price goes up later',
-        forms={'then': 'then {price} later'},
+        forms={'after': 'then {price} later'},
     ),
     S('hotel', 'included', 'the price includes accommodation', VIEW, 'with hotel'),
     S('hotel', 'none', 'the price includes no accommodation', VIEW),
@@ -796,8 +796,8 @@ SITE_POINTS = (
 )  # the site's
 
 
-def js_module() -> str:
-    """docs/js/states.js: what the site needs of each point it shows, and each state's key by name."""
+def ts_module() -> str:
+    """site/states.ts: what the site needs of each point it shows, and each state's key by name."""
     rows = {
         p: {
             s.key: {
@@ -813,13 +813,25 @@ def js_module() -> str:
     }
     names = {p: {member(k): k for k in keys(p)} for p in SITE_POINTS}
     return (
-        '// Written by pipeline/build_site_db.py from pipeline/states.py, which owns every state and its words: '
-        'edit them there.\n'
-        f'export const STATES = {json.dumps(rows, ensure_ascii=False, indent=1)};\n\n'
+        '// Written from pipeline/states.py (states.ts_module), which owns every state and its words: edit them '
+        'there,\n// then run: mise run generate.\n\n'
+        f'export type Disposition = {" | ".join(json.dumps(str(d)) for d in Disposition)};\n'
+        '// what the site has of a state: how it is shown, its words and their named forms, its icon, what it links '
+        'to\n'
+        'export interface StateRow {\n'
+        '  readonly disposition: Disposition;\n'
+        '  readonly wording: string | null;\n'
+        '  readonly forms: Readonly<Record<string, string>>;\n'
+        '  readonly icon: string | null;\n'
+        '  readonly link: string | null;\n'
+        '}\n\n'
+        f'export const STATES = {json.dumps(rows, ensure_ascii=False, indent=1)} as const satisfies Readonly<\n'
+        '  Record<string, Readonly<Record<string, StateRow>>>\n'
+        '>;\n\n'
         "// each state's key by name: KEY.price.PRICED\n"
-        f'export const KEY = {json.dumps(names, indent=1)};\n\n'
+        f'export const KEY = {json.dumps(names, indent=1)} as const;\n\n'
         '// what a state links to, by name\n'
-        f'export const LINK = {json.dumps({member(k): str(k) for k in Link})};\n'
+        f'export const LINK = {json.dumps({member(k): str(k) for k in Link})} as const;\n'
     )
 
 

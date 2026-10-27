@@ -41,8 +41,8 @@ thing a consumer must treat differently.
 | **answer**, a festival's answer of one extraction pass | `none`, `current`, `stale` | ask.answer_state |
 | **waits_for**, each festival, by what its prices from its ticket page wait for | `page`, `recipe`, `recipe_fix`, `session`, `agent`, `sales_open`, `nothing` | tickets.waiting, in tickets/status.csv |
 | **price**, each festival, by what its card can say of its price | `priced`, `other_passes_only`, `page_unread`, `not_yet`, `offline`, `closed`, `none_found`, `not_looked` | prices.price_state, in price_status |
-| **tier_today**, a pass's price on the day it is viewed | `now`, `from`, `next`, `sold_out`, `ended` | pricing.js tierNow |
-| **card_price**, a priced festival, by what its card says on the day it is viewed | `full_pass`, `package`, `sold_out`, `ended` | pricing.js priceNow |
+| **tier_today**, a pass's price on the day it is viewed | `now`, `from`, `next`, `sold_out`, `ended` | pricing.ts tierNow |
+| **card_price**, a priced festival, by what its card says on the day it is viewed | `full_pass`, `package`, `sold_out`, `ended` | pricing.ts cardPrice |
 | **genre**, each dance genre a festival covers | `kizomba`, `semba`, `urbankiz`, `tarraxo`, `tarraxinha`, `douceur`, `kompa`, `zouk`, `bachata`, `salsa`, `afro`, `reggaeton`, `kuduro`, `other` | the rooms-genres pass; the genre rules; the site tags |
 | **genre_rule**, a genre the rules add | `sbk`, `title` | load_extract |
 | **source**, where a genre or feature row comes from | `description`, `site_tag` | load_extract |
@@ -56,7 +56,7 @@ thing a consumer must treat differently.
 | **pending**, a festival waiting for its extraction passes | `new`, `description changed` | scrape |
 | **plan**, each plan someone shares (pipeline/plans.csv) | `going` | pipeline/plans.csv |
 | **fare_search**, a festival weekend's latest flight search (pipeline/fare_jobs.csv) | `priced`, `no price`, `refused` | fares.search |
-| **next_change**, a pass's next price change on the day it is viewed | `door`, `dated`, `later` | pricing.js nextChange |
+| **next_change**, a pass's next price change on the day it is viewed | `door`, `dated`, `later` | pricing.ts nextChange |
 | **hotel**, each pass, by whether its price includes a hotel | `included`, `none` | the prices pass; the first read |
 
 <!-- points:end -->
@@ -70,7 +70,7 @@ thing a consumer must treat differently.
   recorded, or a festival's first full link to a ticket shop (a site a recipe reads, or one the register names); a link
   to anything else is no ticket page, and the festival waits for its `page`.
 - **The browser** decides `tier_today`, `next_change` and `card_price`, because they depend on today's date.
-  `pricing.js` takes the day as an argument and touches nothing on the page, so a test reaches each of their states, and
+  `pricing.ts` takes the day as an argument and touches nothing on the page, so a test reaches each of their states, and
   `priceLine` gives the state whose words a card shows.
 
 **Skip reasons.** They are the prompts' list of what is no pass, made explicit. There is no catch-all: a ticket that no
@@ -108,10 +108,11 @@ The same rows carry the mapping:
   database copies those rows and checks the columns of its own tables (`price_status`, `plans`,
   `artist_stats.home_basis`). They are enforced on insert, which skips only a duplicate row (`ON CONFLICT DO NOTHING`),
   never a value outside the table, and a load runs in one transaction, so a refused value leaves the database as it was.
-- **The site** reads its words, forms, icons and links from `docs/js/states.js`, which `pipeline/generate.py` writes
-  from the table next to the database, with every state's key by name (`KEY.price.PRICED`) and the links' (`LINK.PAGE`).
-  `docs/js/wording.js` says them; a state, a form or a point the table doesn't have fails where it is asked for, and so
-  does an icon `icons.js` doesn't draw. Tests scan the site's code for a state's words, a fragment of them between
+- **The site** reads its words, forms, icons and links from `site/states.ts`, which `pipeline/generate.py` writes from
+  the table next to the database, with every state's key by name (`KEY.price.PRICED`) and the links' (`LINK.PAGE`).
+  `site/wording.ts` says them. The table types them: a point, a state or a form it doesn't have fails to compile, a key
+  from the database is parsed into its point's type where its row is read (`site/rows.ts`), and an icon `icons.ts`
+  doesn't draw fails where it is asked for. Tests scan the site's code for a state's words, a fragment of them between
   `{names}`, or a key written in quotes. The site's database has the same rows as its `states` table, for whoever reads
   the data.
 

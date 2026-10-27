@@ -1,0 +1,6 @@
+language js
+
+`localStorage` as $use where {
+  $filename <: not r".*/hints\.ts",
+  register_diagnostic(span=$use, message="Only hints.ts touches localStorage: what a visitor has seen is the one thing the site remembers.")
+}
