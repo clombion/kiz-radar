@@ -759,6 +759,15 @@ def test_a_ticket_on_sale_cant_have_a_price_that_ended(until: str, sold_out: boo
     assert (tickets.read_problems(fr, [entry(rows)]) == []) == ok
 
 
+def test_a_free_ticket_is_skipped_not_priced() -> None:
+    rows = [*ROWS, row('6', 'Kids 12 & under : FREE', 0.0, price='Free')]
+    fr = read((pass_(), pass_(tier('6'), kind=PassKind.OTHER, label=None)))
+    free = 'key 6 (Kids 12 & under : FREE Free) is free: no pass is sold for nothing; skip it with its reason'
+    assert tickets.read_problems(fr, [entry(rows)]) == [f'passes[1].tiers[0]: {free}']
+    fr = read(skipped=(('5', SkipReason.EXCURSION), ('6', SkipReason.DISCOUNT)))
+    assert tickets.read_problems(fr, [entry(rows)]) == []
+
+
 def test_recipe_placeholders_name_fields_or_attributes() -> None:
     """The row reader fills {field} and {@attr} in css and match (its own pattern, taken from its script); any other
     name would leave the field empty on every page, and {3} must stay a regex count."""

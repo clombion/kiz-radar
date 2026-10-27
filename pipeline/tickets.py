@@ -551,8 +551,13 @@ def read_problems(fr: FirstRead, entries: Sequence[Entry]) -> list[str]:
 
 
 def tier_problems(fr: FirstRead, where: str, tier: ReadTier, here: Sequence[Row]) -> list[str]:
-    """What is wrong with a tier of a first read: its quote, its dates, its tickets' prices."""
-    found: list[str] = []
+    """What is wrong with a tier of a first read: its quote, its dates, its tickets' prices. A free ticket is no
+    pass's price (a priced tier's amount is more than 0, records.PricedTier), so it is skipped."""
+    found: list[str] = [
+        f'{where}: key {r.key} ({r.name} {r.price}) is free: no pass is sold for nothing; skip it with its reason'
+        for r in here
+        if r.amount == 0
+    ]
     if tier.date_quote and not in_text(tier.date_quote, '\n'.join(map(line, here)) + '\n' + fr.description):
         found.append(f'{where}.date_quote {tier.date_quote!r} is neither in its tickets nor in the description')
     found += [f'{where}: {d}' for d in [split_price(here)] if d]
