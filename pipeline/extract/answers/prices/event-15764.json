@@ -1,13 +1,14 @@
 {
  "batch": "event-15764",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15764,
    "passes": [
     {
      "kind": "other",
-     "label_quote": "VIP Pass (2 Masterclasses + 3 days WS + Party)",
+     "style": null,
+     "label_quote": "▶️ VIP Pass (2 Masterclasses + 3 days WS + Party)",
      "group_size": 1,
      "days": 3,
      "includes_hotel": false,
@@ -15,6 +16,7 @@
       {
        "amount": 42000,
        "currency": "JPY",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 48000,
        "currency": "JPY",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -42,7 +45,8 @@
     },
     {
      "kind": "full",
-     "label_quote": "Full Pass (3 days WS + Party)",
+     "style": null,
+     "label_quote": "▶️ Full Pass (3 days WS + Party)",
      "group_size": 1,
      "days": 3,
      "includes_hotel": false,
@@ -50,6 +54,7 @@
       {
        "amount": 24000,
        "currency": "JPY",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -63,6 +68,7 @@
       {
        "amount": 28000,
        "currency": "JPY",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

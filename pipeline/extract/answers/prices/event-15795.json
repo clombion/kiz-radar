@@ -1,12 +1,13 @@
 {
  "batch": "event-15795",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15795,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 100,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,37 +30,17 @@
      ]
     },
     {
-     "kind": "day",
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 50,
-       "currency": "EUR",
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🛥️Boat Party: 50€"
-      }
-     ]
-    },
-    {
      "kind": "package",
-     "label_quote": "🟦 PACKAGES (Full pass+hotel+boat party) 🟦",
+     "style": null,
+     "label_quote": "PACKAGES (Full pass+hotel+boat party)",
      "group_size": 2,
-     "days": null,
+     "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 630,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -73,14 +55,16 @@
     },
     {
      "kind": "package",
-     "label_quote": "🟦 PACKAGES (Full pass+hotel+boat party) 🟦",
+     "style": null,
+     "label_quote": "PACKAGES (Full pass+hotel+boat party)",
      "group_size": 4,
-     "days": null,
+     "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 1096,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -95,14 +79,16 @@
     },
     {
      "kind": "package",
-     "label_quote": "🟦 PACKAGES (Full pass+hotel+boat party) 🟦",
+     "style": null,
+     "label_quote": "PACKAGES (Full pass+hotel+boat party)",
      "group_size": 6,
-     "days": null,
+     "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 1524,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -117,14 +103,16 @@
     },
     {
      "kind": "package",
-     "label_quote": "🟦 PACKAGES (Full pass+hotel+boat party) 🟦",
+     "style": null,
+     "label_quote": "PACKAGES (Full pass+hotel+boat party)",
      "group_size": 2,
-     "days": null,
+     "days": 5,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 770,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -139,14 +127,16 @@
     },
     {
      "kind": "package",
-     "label_quote": "🟦 PACKAGES (Full pass+hotel+boat party) 🟦",
+     "style": null,
+     "label_quote": "PACKAGES (Full pass+hotel+boat party)",
      "group_size": 4,
-     "days": null,
+     "days": 5,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 1392,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -161,14 +151,16 @@
     },
     {
      "kind": "package",
-     "label_quote": "🟦 PACKAGES (Full pass+hotel+boat party) 🟦",
+     "style": null,
+     "label_quote": "PACKAGES (Full pass+hotel+boat party)",
      "group_size": 6,
-     "days": null,
+     "days": 5,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 1932,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

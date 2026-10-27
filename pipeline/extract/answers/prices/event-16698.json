@@ -1,12 +1,13 @@
 {
  "batch": "event-16698",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16698,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 85,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "06-01",
@@ -28,6 +30,7 @@
       {
        "amount": 100,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "07-03",
@@ -41,6 +44,7 @@
       {
        "amount": 110,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "08-03",
@@ -50,10 +54,21 @@
        "sold_out": false,
        "current": false,
        "quote": "03/08 – FULL PASS: 110€"
-      },
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
       {
        "amount": 120,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "09-01",
@@ -68,7 +83,6 @@
     }
    ],
    "rule_quotes": [
-    "FULL PASS: 120€ (ONLY MEN)",
     "𝐩𝐫𝐞/𝐚𝐟𝐭𝐞𝐫-𝐩𝐚𝐫𝐭𝐲 𝐧𝐨𝐭 𝐢𝐧𝐜𝐥𝐮𝐝𝐞𝐝 𝐢𝐧 𝐭𝐡𝐞 𝐟𝐮𝐥𝐥 𝐩𝐚𝐬𝐬"
    ]
   }

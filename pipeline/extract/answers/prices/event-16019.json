@@ -1,12 +1,13 @@
 {
  "batch": "event-16019",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16019,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "🎟️ Single Pass – access to all workshops and parties for 1 person:",
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 70,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2025-10-01",
@@ -41,6 +44,7 @@
       {
        "amount": 75,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-01-01",
@@ -54,6 +58,7 @@
       {
        "amount": 90,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-04-01",
@@ -68,6 +73,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": "💃🕺 Couple Pass – access to all workshops and parties for a couple (1 leader + 1 follower):",
      "group_size": 2,
      "days": null,
@@ -76,6 +82,7 @@
       {
        "amount": 110,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -89,6 +96,7 @@
       {
        "amount": 125,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2025-10-01",
@@ -102,6 +110,7 @@
       {
        "amount": 140,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-01-01",
@@ -115,6 +124,7 @@
       {
        "amount": 170,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-04-01",
@@ -129,6 +139,7 @@
     },
     {
      "kind": "party",
+     "style": null,
      "label_quote": "🎉 Party Pass – access to all parties ( day and night in this Foam Party ) for 1 person:",
      "group_size": 1,
      "days": null,
@@ -137,6 +148,7 @@
       {
        "amount": 25,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -150,6 +162,7 @@
       {
        "amount": 30,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2025-10-01",
@@ -163,6 +176,7 @@
       {
        "amount": 35,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-01-01",
@@ -176,6 +190,7 @@
       {
        "amount": 50,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-04-01",
@@ -190,14 +205,16 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 20,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

@@ -1,12 +1,13 @@
 {
  "batch": "event-16338",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16338,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 3,
@@ -15,6 +16,7 @@
       {
        "amount": 70,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,20 +25,22 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "☑️ FULL PASS (3 days of daytime dance workshops + 4 evenings) = €70"
+       "quote": "FULL PASS (3 days of daytime dance workshops + 4 evenings) = €70"
       }
      ]
     },
     {
      "kind": "other",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 4,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 45,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -51,6 +55,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -59,6 +64,7 @@
       {
        "amount": 10,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -73,6 +79,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -81,6 +88,7 @@
       {
        "amount": 15,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -95,6 +103,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -103,6 +112,7 @@
       {
        "amount": 15,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -117,6 +127,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -125,6 +136,7 @@
       {
        "amount": 15,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

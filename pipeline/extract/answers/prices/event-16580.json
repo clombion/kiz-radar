@@ -1,13 +1,14 @@
 {
  "batch": "event-16580",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16580,
    "passes": [
     {
      "kind": "package",
-     "label_quote": "Pack A includes",
+     "style": null,
+     "label_quote": "Pack A includes:",
      "group_size": 1,
      "days": 3,
      "includes_hotel": true,
@@ -15,6 +16,7 @@
       {
        "amount": 245,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 255,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -41,6 +44,7 @@
       {
        "amount": 265,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -50,10 +54,21 @@
        "sold_out": false,
        "current": false,
        "quote": "€265 Double or Twin Room May"
-      },
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "Pack A includes:",
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": true,
+     "tiers": [
       {
        "amount": 235,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -67,6 +82,7 @@
       {
        "amount": 245,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -80,6 +96,7 @@
       {
        "amount": 255,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -89,10 +106,21 @@
        "sold_out": false,
        "current": false,
        "quote": "€255 Triple Room May"
-      },
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "Pack A includes:",
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": true,
+     "tiers": [
       {
        "amount": 230,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -106,6 +134,7 @@
       {
        "amount": 240,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -119,6 +148,7 @@
       {
        "amount": 250,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -128,10 +158,21 @@
        "sold_out": false,
        "current": false,
        "quote": "€250 Quadruple Room May"
-      },
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "Pack A includes:",
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": true,
+     "tiers": [
       {
        "amount": 295,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -145,6 +186,7 @@
       {
        "amount": 305,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -158,6 +200,7 @@
       {
        "amount": 310,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -167,10 +210,21 @@
        "sold_out": false,
        "current": false,
        "quote": "€310 Single Room May"
-      },
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "Pack A includes:",
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": true,
+     "tiers": [
       {
        "amount": 270,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -184,6 +238,7 @@
       {
        "amount": 280,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -197,6 +252,7 @@
       {
        "amount": 290,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -206,10 +262,21 @@
        "sold_out": false,
        "current": false,
        "quote": "€290 Double or Twin Room May"
-      },
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "Pack A includes:",
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": true,
+     "tiers": [
       {
        "amount": 325,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -223,6 +290,7 @@
       {
        "amount": 335,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -236,6 +304,7 @@
       {
        "amount": 345,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -245,10 +314,21 @@
        "sold_out": false,
        "current": false,
        "quote": "€345 Double or Twin Room May"
-      },
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "Pack A includes:",
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": true,
+     "tiers": [
       {
        "amount": 315,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -262,6 +342,7 @@
       {
        "amount": 325,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -275,6 +356,7 @@
       {
        "amount": 335,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -284,10 +366,21 @@
        "sold_out": false,
        "current": false,
        "quote": "€335 Triple Room May"
-      },
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "Pack A includes:",
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": true,
+     "tiers": [
       {
        "amount": 310,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -301,6 +394,7 @@
       {
        "amount": 320,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -314,6 +408,7 @@
       {
        "amount": 330,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -328,7 +423,8 @@
     },
     {
      "kind": "package",
-     "label_quote": "Pack B includes",
+     "style": null,
+     "label_quote": "🟦 Pack B includes:",
      "group_size": 1,
      "days": 3,
      "includes_hotel": true,
@@ -336,6 +432,7 @@
       {
        "amount": 190,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -349,6 +446,7 @@
       {
        "amount": 200,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -362,6 +460,7 @@
       {
        "amount": 210,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -371,10 +470,21 @@
        "sold_out": false,
        "current": false,
        "quote": "€210 Double or Twin Room May"
-      },
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "🟦 Pack B includes:",
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": true,
+     "tiers": [
       {
        "amount": 175,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -388,6 +498,7 @@
       {
        "amount": 185,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -401,6 +512,7 @@
       {
        "amount": 195,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -410,10 +522,21 @@
        "sold_out": false,
        "current": false,
        "quote": "€195 Triple Room May"
-      },
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "🟦 Pack B includes:",
+     "group_size": 1,
+     "days": 3,
+     "includes_hotel": true,
+     "tiers": [
       {
        "amount": 170,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -427,6 +550,7 @@
       {
        "amount": 180,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -440,6 +564,7 @@
       {
        "amount": 190,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -454,7 +579,8 @@
     },
     {
      "kind": "package",
-     "label_quote": "Package C includes",
+     "style": null,
+     "label_quote": "🟥 Package C includes:",
      "group_size": 1,
      "days": 2,
      "includes_hotel": true,
@@ -462,6 +588,7 @@
       {
        "amount": 190,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -475,6 +602,7 @@
       {
        "amount": 200,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -488,6 +616,7 @@
       {
        "amount": 210,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -497,10 +626,21 @@
        "sold_out": false,
        "current": false,
        "quote": "€210 Double or Twin Room May"
-      },
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "🟥 Package C includes:",
+     "group_size": 1,
+     "days": 2,
+     "includes_hotel": true,
+     "tiers": [
       {
        "amount": 180,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -514,6 +654,7 @@
       {
        "amount": 190,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -527,6 +668,7 @@
       {
        "amount": 200,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -536,10 +678,21 @@
        "sold_out": false,
        "current": false,
        "quote": "€200 Triple Room May"
-      },
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "🟥 Package C includes:",
+     "group_size": 1,
+     "days": 2,
+     "includes_hotel": true,
+     "tiers": [
       {
        "amount": 175,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -553,6 +706,7 @@
       {
        "amount": 185,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -566,6 +720,7 @@
       {
        "amount": 195,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -575,10 +730,21 @@
        "sold_out": false,
        "current": false,
        "quote": "€195 Quadruple Room May"
-      },
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": "🟥 Package C includes:",
+     "group_size": 1,
+     "days": 2,
+     "includes_hotel": true,
+     "tiers": [
       {
        "amount": 215,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -592,6 +758,7 @@
       {
        "amount": 240,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -605,6 +772,7 @@
       {
        "amount": 265,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -619,8 +787,7 @@
     }
    ],
    "rule_quotes": [
-    "All rates are per person.",
-    "€35 to be paid on site to keep the room until 6:00 PM (where possible)"
+    "All rates are per person."
    ]
   }
  ]

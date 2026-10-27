@@ -1,12 +1,13 @@
 {
  "batch": "event-15567",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15567,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 3,
@@ -15,6 +16,7 @@
       {
        "amount": 130,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -29,7 +31,7 @@
     }
    ],
    "rule_quotes": [
-    "Available only until 🔜 FEBRUARY 28! Hurry, the price is expected to rise!"
+    "Hurry, the price is expected to rise!"
    ]
   }
  ]

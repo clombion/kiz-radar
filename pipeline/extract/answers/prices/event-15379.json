@@ -1,12 +1,13 @@
 {
  "batch": "event-15379",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15379,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-01-12",
@@ -23,12 +25,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "– 60e Full Pass"
+       "quote": "60e Full Pass"
       }
      ]
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -37,6 +40,7 @@
       {
        "amount": 20,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-01-12",
@@ -45,12 +49,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "– 20e Friday pre-party class + party"
+       "quote": "20e Friday pre-party class + party"
       }
      ]
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -59,6 +64,7 @@
       {
        "amount": 50,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-01-12",
@@ -67,12 +73,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "– 50e Saturday Pass"
+       "quote": "50e Saturday Pass"
       }
      ]
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -81,6 +88,7 @@
       {
        "amount": 25,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-01-12",
@@ -89,14 +97,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "– 25e Saturday pre-party class + party"
+       "quote": "25e Saturday pre-party class + party"
       }
      ]
     }
    ],
-   "rule_quotes": [
-    "𝟑𝟓% 𝐝𝐢𝐬𝐜𝐨𝐮𝐧𝐭 𝐟𝐨𝐫 𝐮𝐧𝐞𝐦𝐩𝐥𝐨𝐲𝐞𝐝 / 𝐬𝐭𝐮𝐝𝐞𝐧𝐭𝐬 / 𝐞𝐭𝐜 / people from abroad"
-   ]
+   "rule_quotes": []
   }
  ]
 }

@@ -1,13 +1,14 @@
 {
  "batch": "event-15495",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15495,
    "passes": [
     {
      "kind": "full",
-     "label_quote": null,
+     "style": null,
+     "label_quote": "Online prices:",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -15,11 +16,12 @@
       {
        "amount": 55,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
        "until": null,
-       "quantity": 20,
+       "quantity": null,
        "door": false,
        "sold_out": false,
        "current": false,

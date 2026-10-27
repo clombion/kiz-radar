@@ -1,12 +1,13 @@
 {
  "batch": "event-15066",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15066,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 300,
        "currency": "PLN",
+       "fee": null,
        "alt_amount": 70,
        "alt_currency": "EUR",
        "from": null,
@@ -29,6 +31,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": null,
@@ -37,6 +40,7 @@
       {
        "amount": 580,
        "currency": "PLN",
+       "fee": null,
        "alt_amount": 137,
        "alt_currency": "EUR",
        "from": null,

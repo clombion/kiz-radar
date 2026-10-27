@@ -1,12 +1,13 @@
 {
  "batch": "event-15722",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15722,
    "passes": [
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Full (or SAÍDA)",
      "group_size": 1,
      "days": 12,
@@ -15,11 +16,12 @@
       {
        "amount": 1800,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
        "until": null,
-       "quantity": null,
+       "quantity": 30,
        "door": false,
        "sold_out": false,
        "current": false,
@@ -28,20 +30,22 @@
      ]
     },
     {
-     "kind": "other",
+     "kind": "package",
+     "style": null,
      "label_quote": "Lite (or VÍRGULA)",
      "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
+     "days": 12,
+     "includes_hotel": true,
      "tiers": [
       {
        "amount": 1350,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
        "until": null,
-       "quantity": null,
+       "quantity": 20,
        "door": false,
        "sold_out": false,
        "current": false,
@@ -51,8 +55,7 @@
     }
    ],
    "rule_quotes": [
-    "you may also have to pay a balance in case the cost of our BK packages increase in October.",
-    "we reserve the right to deduct a handling/penalty fee of €500 from your payment in case of unjustifiable late cancellations"
+    "you may also have to pay a balance in case the cost of our BK packages increase in October"
    ]
   }
  ]

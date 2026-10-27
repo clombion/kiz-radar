@@ -1,12 +1,13 @@
 {
  "batch": "event-16653",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16653,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 3,
@@ -15,6 +16,7 @@
       {
        "amount": 119,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -29,7 +31,7 @@
     }
    ],
    "rule_quotes": [
-    "Prices will increase as the event approaches, so secure your ticket early"
+    "Prices will increase as the event approaches"
    ]
   }
  ]

@@ -1,12 +1,13 @@
 {
  "batch": "event-15903",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15903,
    "passes": [
     {
      "kind": "package",
+     "style": null,
      "label_quote": "SUPER PROMO – EARLY BOOKING DISCOUNTS",
      "group_size": 1,
      "days": 5,
@@ -15,6 +16,7 @@
       {
        "amount": 680,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 730,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -41,6 +44,7 @@
       {
        "amount": 780,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -54,6 +58,7 @@
       {
        "amount": 830,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-02-05",
@@ -67,9 +72,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "Single room supplement: €165"
-   ]
+   "rule_quotes": []
   }
  ]
 }

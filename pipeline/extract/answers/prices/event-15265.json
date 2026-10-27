@@ -1,12 +1,13 @@
 {
  "batch": "event-15265",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15265,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 2375,
        "currency": "CZK",
+       "fee": null,
        "alt_amount": 95,
        "alt_currency": "EUR",
        "from": "2025-10-05",
@@ -28,6 +30,7 @@
       {
        "amount": 2750,
        "currency": "CZK",
+       "fee": null,
        "alt_amount": 110,
        "alt_currency": "EUR",
        "from": "2025-10-26",
@@ -41,6 +44,7 @@
       {
        "amount": 3000,
        "currency": "CZK",
+       "fee": null,
        "alt_amount": 120,
        "alt_currency": "EUR",
        "from": "2025-11-16",
@@ -54,6 +58,7 @@
       {
        "amount": 3250,
        "currency": "CZK",
+       "fee": null,
        "alt_amount": 130,
        "alt_currency": "EUR",
        "from": "2025-12-16",
@@ -68,6 +73,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": null,
@@ -76,6 +82,7 @@
       {
        "amount": 4500,
        "currency": "CZK",
+       "fee": null,
        "alt_amount": 180,
        "alt_currency": "EUR",
        "from": "2025-10-05",
@@ -89,6 +96,7 @@
       {
        "amount": 5250,
        "currency": "CZK",
+       "fee": null,
        "alt_amount": 210,
        "alt_currency": "EUR",
        "from": "2025-10-26",
@@ -102,6 +110,7 @@
       {
        "amount": 5750,
        "currency": "CZK",
+       "fee": null,
        "alt_amount": 230,
        "alt_currency": "EUR",
        "from": "2025-11-16",
@@ -115,6 +124,7 @@
       {
        "amount": 6250,
        "currency": "CZK",
+       "fee": null,
        "alt_amount": 250,
        "alt_currency": "EUR",
        "from": "2025-12-16",

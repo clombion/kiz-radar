@@ -1,13 +1,14 @@
 {
  "batch": "event-15622",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15622,
    "passes": [
     {
      "kind": "full",
-     "label_quote": "FULL PASS:",
+     "style": null,
+     "label_quote": "Full pass",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -15,6 +16,7 @@
       {
        "amount": 65,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,11 +25,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "💸Early bird tickets: Full Pass: €65 (for the first 50) available"
+       "quote": "Full Pass: €65 (for the first 50) available"
       },
       {
        "amount": 80,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "12-01",
@@ -41,6 +44,7 @@
       {
        "amount": 90,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "01-01",
@@ -54,6 +58,7 @@
       {
        "amount": 100,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "02-01",
@@ -67,6 +72,7 @@
       {
        "amount": 105,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "03-01",
@@ -80,6 +86,7 @@
       {
        "amount": 115,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "04-01",

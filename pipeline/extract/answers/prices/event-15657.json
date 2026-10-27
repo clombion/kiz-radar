@@ -1,12 +1,13 @@
 {
  "batch": "event-15657",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15657,
    "passes": [
     {
-     "kind": "full",
+     "kind": "other",
+     "style": null,
      "label_quote": "🎀 PRE-SALE PASS SOLD OUT",
      "group_size": 1,
      "days": null,
@@ -15,10 +16,11 @@
       {
        "amount": 195,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": "2026-02-27",
+       "until": "2026-02-28",
        "quantity": null,
        "door": false,
        "sold_out": true,
@@ -28,7 +30,8 @@
      ]
     },
     {
-     "kind": "full",
+     "kind": "other",
+     "style": null,
      "label_quote": "🎀 PRE-SALE PASS SOLD OUT",
      "group_size": 2,
      "days": null,
@@ -37,10 +40,11 @@
       {
        "amount": 365,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": "2026-02-27",
+       "until": "2026-02-28",
        "quantity": null,
        "door": false,
        "sold_out": true,
@@ -50,8 +54,9 @@
      ]
     },
     {
-     "kind": "workshop",
-     "label_quote": null,
+     "kind": "other",
+     "style": null,
+     "label_quote": "🎀 COMBOS",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -59,6 +64,7 @@
       {
        "amount": 80,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -72,8 +78,9 @@
      ]
     },
     {
-     "kind": "workshop",
-     "label_quote": null,
+     "kind": "other",
+     "style": null,
+     "label_quote": "🎀 COMBOS",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -81,6 +88,7 @@
       {
        "amount": 105,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -94,8 +102,9 @@
      ]
     },
     {
-     "kind": "workshop",
-     "label_quote": null,
+     "kind": "other",
+     "style": null,
+     "label_quote": "🎀 COMBOS",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -103,6 +112,7 @@
       {
        "amount": 125,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -117,14 +127,16 @@
     },
     {
      "kind": "day",
-     "label_quote": null,
+     "style": null,
+     "label_quote": "🎀 COMBOS",
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 40,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -138,8 +150,9 @@
      ]
     },
     {
-     "kind": "day",
-     "label_quote": null,
+     "kind": "other",
+     "style": null,
+     "label_quote": "🎀 COMBOS",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -147,6 +160,7 @@
       {
        "amount": 70,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -161,14 +175,16 @@
     },
     {
      "kind": "day",
-     "label_quote": null,
+     "style": "zouk",
+     "label_quote": "🎀 COMBOS",
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 40,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -183,14 +199,16 @@
     },
     {
      "kind": "day",
-     "label_quote": null,
+     "style": "zouk",
+     "label_quote": "🎀 COMBOS",
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 70,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -205,14 +223,16 @@
     },
     {
      "kind": "day",
-     "label_quote": null,
+     "style": null,
+     "label_quote": "💰 À LA CARTE RATES",
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 15,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -227,14 +247,16 @@
     },
     {
      "kind": "day",
-     "label_quote": null,
+     "style": null,
+     "label_quote": "💰 À LA CARTE RATES",
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 20,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -249,14 +271,16 @@
     },
     {
      "kind": "day",
-     "label_quote": null,
+     "style": null,
+     "label_quote": "💰 À LA CARTE RATES",
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 20,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -271,14 +295,16 @@
     },
     {
      "kind": "day",
-     "label_quote": null,
+     "style": "zouk",
+     "label_quote": "💰 À LA CARTE RATES",
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 20,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

@@ -1,12 +1,13 @@
 {
  "batch": "event-15260",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15260,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "FULL FESTIVAL PASS",
      "group_size": 1,
      "days": 4,
@@ -15,6 +16,7 @@
       {
        "amount": 2000,
        "currency": "SEK",
+       "fee": null,
        "alt_amount": 190,
        "alt_currency": "EUR",
        "from": null,
@@ -28,7 +30,8 @@
      ]
     },
     {
-     "kind": "other",
+     "kind": "full",
+     "style": null,
      "label_quote": "FRIDAY+SATURDAY PASS",
      "group_size": 1,
      "days": 2,
@@ -37,6 +40,7 @@
       {
        "amount": 1500,
        "currency": "SEK",
+       "fee": null,
        "alt_amount": 140,
        "alt_currency": "EUR",
        "from": null,
@@ -50,7 +54,8 @@
      ]
     },
     {
-     "kind": "other",
+     "kind": "party",
+     "style": null,
      "label_quote": "PARTIES FRIDAY & SATURDAY ONLY",
      "group_size": 1,
      "days": 2,
@@ -59,6 +64,7 @@
       {
        "amount": 950,
        "currency": "SEK",
+       "fee": null,
        "alt_amount": 90,
        "alt_currency": "EUR",
        "from": null,
@@ -73,6 +79,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "FRIDAY PARTIES ONLY",
      "group_size": 1,
      "days": 1,
@@ -81,6 +88,7 @@
       {
        "amount": 500,
        "currency": "SEK",
+       "fee": null,
        "alt_amount": 45,
        "alt_currency": "EUR",
        "from": null,
@@ -95,6 +103,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "SATURDAY PARTIES ONLY",
      "group_size": 1,
      "days": 1,
@@ -103,6 +112,7 @@
       {
        "amount": 500,
        "currency": "SEK",
+       "fee": null,
        "alt_amount": 45,
        "alt_currency": "EUR",
        "from": null,
@@ -117,6 +127,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "THURSDAY PASS",
      "group_size": 1,
      "days": 1,
@@ -125,6 +136,7 @@
       {
        "amount": 500,
        "currency": "SEK",
+       "fee": null,
        "alt_amount": 45,
        "alt_currency": "EUR",
        "from": null,
@@ -139,6 +151,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "SUNDAY PASS",
      "group_size": 1,
      "days": 1,
@@ -147,6 +160,7 @@
       {
        "amount": 500,
        "currency": "SEK",
+       "fee": null,
        "alt_amount": 45,
        "alt_currency": "EUR",
        "from": null,
@@ -161,6 +175,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "PARTY THURSDAY ONLY",
      "group_size": 1,
      "days": 1,
@@ -169,6 +184,7 @@
       {
        "amount": 300,
        "currency": "SEK",
+       "fee": null,
        "alt_amount": 30,
        "alt_currency": "EUR",
        "from": null,
@@ -183,6 +199,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "SOCIAL SUNDAY ONLY",
      "group_size": 1,
      "days": 1,
@@ -191,6 +208,7 @@
       {
        "amount": 200,
        "currency": "SEK",
+       "fee": null,
        "alt_amount": 20,
        "alt_currency": "EUR",
        "from": null,

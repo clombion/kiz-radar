@@ -1,12 +1,13 @@
 {
  "batch": "event-17122",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17122,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 149,
        "currency": "USD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 199,
        "currency": "USD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -42,6 +45,7 @@
     },
     {
      "kind": "other",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": null,
@@ -50,6 +54,7 @@
       {
        "amount": 279,
        "currency": "USD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

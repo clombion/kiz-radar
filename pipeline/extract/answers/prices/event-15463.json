@@ -1,12 +1,13 @@
 {
  "batch": "event-15463",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15463,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 70,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,12 +25,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "– FULLPASS : 70€ until 13/02/2026"
+       "quote": "FULLPASS : 70€ until 13/02/2026"
       }
      ]
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": null,
@@ -37,6 +40,7 @@
       {
        "amount": 130,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -45,12 +49,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "– FULLPASS couple : 130€ until 13/02/2026"
+       "quote": "FULLPASS couple : 130€ until 13/02/2026"
       }
      ]
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -59,6 +64,7 @@
       {
        "amount": 150,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -67,11 +73,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "– FULLPASS : 150 to 190€ with accommodation *"
+       "quote": "FULLPASS : 150 to 190€ with accommodation"
       },
       {
        "amount": 190,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -80,12 +87,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "– FULLPASS : 150 to 190€ with accommodation *"
+       "quote": "FULLPASS : 150 to 190€ with accommodation"
       }
      ]
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -94,6 +102,7 @@
       {
        "amount": 80,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -102,20 +111,22 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "– FULLPASS €80 on-site"
+       "quote": "FULLPASS €80 on-site"
       }
      ]
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 20,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -124,20 +135,22 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "– friday party : 20€ with class"
+       "quote": "friday party : 20€ with class"
       }
      ]
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 20,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -146,20 +159,22 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "– saturday social : 20€ with class"
+       "quote": "saturday social : 20€ with class"
       }
      ]
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 25,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -168,20 +183,22 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "– soiréesaturday party : 25€ with class"
+       "quote": "soiréesaturday party : 25€ with class"
       }
      ]
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 40,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -190,20 +207,22 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "– saturday day pass : 40€ with 2 classes (social + party)"
+       "quote": "saturday day pass : 40€ with 2 classes (social + party)"
       }
      ]
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 20,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -212,14 +231,12 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "– sunday social : 20€ with class"
+       "quote": "sunday social : 20€ with class"
       }
      ]
     }
    ],
-   "rule_quotes": [
-    "FULLPASS : 150 to 190€ with accommodation"
-   ]
+   "rule_quotes": []
   }
  ]
 }

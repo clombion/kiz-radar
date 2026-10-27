@@ -1,12 +1,13 @@
 {
  "batch": "event-15805",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15805,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "Full Pass / Couple Pass",
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 75,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 85,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "06-01",
@@ -41,6 +44,7 @@
       {
        "amount": 95,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "08-01",
@@ -49,11 +53,12 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "Ago. – Sett. €95 (SOLD OUT)"
+       "quote": "Aug. – Sep. | Ago. – Sett. €95 (SOLD OUT)"
       },
       {
        "amount": 100,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "10-01",
@@ -67,6 +72,7 @@
       {
        "amount": 105,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "12-01",
@@ -75,11 +81,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Dic. – Feb. €105 / Couple €190"
+       "quote": "Dec. – Feb. | Dic. – Feb. €105 / Couple €190"
       },
       {
        "amount": 110,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "03-01",
@@ -93,6 +100,7 @@
       {
        "amount": 115,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -107,6 +115,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": "Full Pass / Couple Pass",
      "group_size": 2,
      "days": null,
@@ -115,6 +124,7 @@
       {
        "amount": 180,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "10-01",
@@ -128,6 +138,7 @@
       {
        "amount": 190,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "12-01",
@@ -136,11 +147,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Dic. – Feb. €105 / Couple €190"
+       "quote": "Dec. – Feb. | Dic. – Feb. €105 / Couple €190"
       },
       {
        "amount": 200,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "03-01",
@@ -154,6 +166,7 @@
       {
        "amount": 210,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

@@ -1,13 +1,14 @@
 {
  "batch": "event-18365",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18365,
    "passes": [
     {
      "kind": "full",
-     "label_quote": "Lead Single Pass",
+     "style": null,
+     "label_quote": "✅ Lead Single Pass",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -15,6 +16,7 @@
       {
        "amount": 179.99,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -29,7 +31,32 @@
     },
     {
      "kind": "full",
-     "label_quote": "Lead + Lead Pass",
+     "style": null,
+     "label_quote": "✅ Follow Single Pass",
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 179.99,
+       "currency": "CAD",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "$179.99 → $169.99 with code AFROKIZZ"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": "✅ Lead + Lead Pass",
      "group_size": 2,
      "days": null,
      "includes_hotel": false,
@@ -37,6 +64,7 @@
       {
        "amount": 299.99,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -51,7 +79,8 @@
     },
     {
      "kind": "full",
-     "label_quote": "Lead + Follow Pass",
+     "style": null,
+     "label_quote": "✅ Lead + Follow Pass",
      "group_size": 2,
      "days": null,
      "includes_hotel": false,
@@ -59,6 +88,7 @@
       {
        "amount": 319.99,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -73,7 +103,8 @@
     },
     {
      "kind": "party",
-     "label_quote": "Party Pass",
+     "style": null,
+     "label_quote": "✅ Party Pass",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -81,6 +112,7 @@
       {
        "amount": 129.99,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -95,8 +127,7 @@
     }
    ],
    "rule_quotes": [
-    "NEXT PRICE INCREASE: SEPT 3RD!",
-    "Pass transfers are permitted for a $25 transfer fee."
+    "NEXT PRICE INCREASE: SEPT 3RD!"
    ]
   }
  ]

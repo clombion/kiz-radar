@@ -1,13 +1,12 @@
 {
  "batch": "event-14511",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 14511,
    "passes": [],
    "rule_quotes": [
-    "PRICES INCREASE THE FIRST DAY OF EVERY MONTH",
-    "A 6% payment plan administration fee is added to your order total when you finance your purchase with our payment plan."
+    "⚠️ PRICES INCREASE THE FIRST DAY OF EVERY MONTH ⚠️"
    ]
   }
  ]

@@ -1,12 +1,13 @@
 {
  "batch": "event-15769",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15769,
    "passes": [
     {
      "kind": "day",
+     "style": null,
      "label_quote": "23:00 – 04:00 Pre Party",
      "group_size": 1,
      "days": 1,
@@ -15,6 +16,7 @@
       {
        "amount": 10,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,9 +30,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "PRICES INCREASE"
-   ]
+   "rule_quotes": []
   }
  ]
 }

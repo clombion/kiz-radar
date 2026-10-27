@@ -1,24 +1,26 @@
 {
  "batch": "event-17439",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17439,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 65,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": "01-09",
+       "until": "2026-01-09",
        "quantity": 15,
        "door": false,
        "sold_out": false,
@@ -28,9 +30,10 @@
       {
        "amount": 80,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "01-10",
+       "from": "2026-01-10",
        "until": null,
        "quantity": null,
        "door": false,
@@ -41,6 +44,7 @@
       {
        "amount": 90,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -55,18 +59,20 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 120,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": "01-09",
+       "until": "2026-01-09",
        "quantity": 15,
        "door": false,
        "sold_out": false,
@@ -76,9 +82,10 @@
       {
        "amount": 150,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "01-10",
+       "from": "2026-01-10",
        "until": null,
        "quantity": null,
        "door": false,
@@ -89,6 +96,7 @@
       {
        "amount": 170,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

@@ -1,14 +1,11 @@
 {
  "batch": "event-16451",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16451,
    "passes": [],
-   "rule_quotes": [
-    "Card payment through Stripe (5€ extra)",
-    "Change of name cost is 15€ and available until one week before event."
-   ]
+   "rule_quotes": []
   }
  ]
 }

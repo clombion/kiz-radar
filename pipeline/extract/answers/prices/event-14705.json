@@ -1,12 +1,13 @@
 {
  "batch": "event-14705",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 14705,
    "passes": [
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 979,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -29,6 +31,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -37,6 +40,7 @@
       {
        "amount": 1259,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -51,6 +55,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -59,6 +64,7 @@
       {
        "amount": 1460,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -72,9 +78,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "Reserve your spot for just €100 until February 20, 2025, and pay the balance in installments with no extra fees!"
-   ]
+   "rule_quotes": []
   }
  ]
 }

@@ -1,12 +1,13 @@
 {
  "batch": "event-15964",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15964,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 650,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 700,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -41,6 +44,7 @@
       {
        "amount": 750,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -54,6 +58,7 @@
       {
        "amount": 800,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -67,10 +72,11 @@
       {
        "amount": 875,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": null,
+       "until": "02-28",
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -80,9 +86,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "Price increase of 1st of March"
-   ]
+   "rule_quotes": []
   }
  ]
 }

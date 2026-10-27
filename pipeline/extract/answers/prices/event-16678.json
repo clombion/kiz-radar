@@ -1,12 +1,13 @@
 {
  "batch": "event-16678",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16678,
    "passes": [
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 8,
@@ -15,6 +16,7 @@
       {
        "amount": 579,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -29,6 +31,7 @@
     },
     {
      "kind": "other",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -37,6 +40,7 @@
       {
        "amount": 220,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

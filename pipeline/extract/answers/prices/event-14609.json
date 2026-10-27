@@ -1,12 +1,13 @@
 {
  "batch": "event-14609",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 14609,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "FULL PASS LEADER or FOLLOWER",
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 75,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 85,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -41,6 +44,7 @@
       {
        "amount": 95,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -54,6 +58,7 @@
       {
        "amount": 100,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -67,6 +72,7 @@
       {
        "amount": 110,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -80,6 +86,7 @@
       {
        "amount": 120,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -94,6 +101,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": "FULL PASS DUO 1 LEADER + 1 FOLLOWER",
      "group_size": 2,
      "days": null,
@@ -102,6 +110,7 @@
       {
        "amount": 140,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -115,6 +124,7 @@
       {
        "amount": 160,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -128,6 +138,7 @@
       {
        "amount": 180,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -141,6 +152,7 @@
       {
        "amount": 190,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -154,6 +166,7 @@
       {
        "amount": 210,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -167,6 +180,7 @@
       {
        "amount": 230,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -181,6 +195,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": "🔥FULL PASS FRIENDS ( 3 )",
      "group_size": 3,
      "days": null,
@@ -189,6 +204,7 @@
       {
        "amount": 250,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -202,9 +218,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "GET 5% Discount by using our artists PROMOCODES👇"
-   ]
+   "rule_quotes": []
   }
  ]
 }

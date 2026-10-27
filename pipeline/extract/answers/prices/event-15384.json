@@ -1,12 +1,13 @@
 {
  "batch": "event-15384",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15384,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 69,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 350,
        "alt_currency": "RON",
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 75,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 380,
        "alt_currency": "RON",
        "from": "01-16",
@@ -41,6 +44,7 @@
       {
        "amount": 80,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 410,
        "alt_currency": "RON",
        "from": "03-01",
@@ -55,6 +59,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": null,
@@ -63,6 +68,7 @@
       {
        "amount": 125,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 635,
        "alt_currency": "RON",
        "from": null,
@@ -76,6 +82,7 @@
       {
        "amount": 135,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 685,
        "alt_currency": "RON",
        "from": "01-16",
@@ -89,6 +96,7 @@
       {
        "amount": 145,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 740,
        "alt_currency": "RON",
        "from": "03-01",

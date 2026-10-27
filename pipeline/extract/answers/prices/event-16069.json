@@ -1,20 +1,22 @@
 {
  "batch": "event-16069",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16069,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "🎟️ TICKETS ON SALE",
      "group_size": 1,
-     "days": null,
+     "days": 4,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 50,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 65,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -41,6 +44,7 @@
       {
        "amount": 140,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -55,7 +59,7 @@
     }
    ],
    "rule_quotes": [
-    "The longer you wait, the more you pay 🚨‼️"
+    "👉 The longer you wait, the more you pay 🚨‼️"
    ]
   }
  ]

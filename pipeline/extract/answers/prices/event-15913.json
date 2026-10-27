@@ -1,20 +1,22 @@
 {
  "batch": "event-15913",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15913,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "🎟️ GAF FULL PASS PRICES 🎟️",
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 80,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "12-01",
@@ -28,6 +30,7 @@
       {
        "amount": 90,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "01-01",
@@ -41,6 +44,7 @@
       {
        "amount": 100,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "02-01",
@@ -54,6 +58,7 @@
       {
        "amount": 110,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "03-01",
@@ -67,6 +72,7 @@
       {
        "amount": 120,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "04-01",
@@ -80,6 +86,7 @@
       {
        "amount": 130,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "05-01",
@@ -93,6 +100,7 @@
       {
        "amount": 140,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "06-01",
@@ -106,6 +114,7 @@
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -114,20 +123,22 @@
        "door": false,
        "sold_out": false,
        "current": true,
-       "quote": "💥 (Current price: 60€ Early Bird – limited spots)"
+       "quote": "Current price: 60€ Early Bird – limited spots"
       }
      ]
     },
     {
      "kind": "package",
-     "label_quote": null,
+     "style": null,
+     "label_quote": "🏨🍽️ ACCOMMODATION + FULL BOARD (drinks included)",
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 237,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -142,14 +153,16 @@
     },
     {
      "kind": "package",
-     "label_quote": null,
+     "style": null,
+     "label_quote": "🏨🍽️ ACCOMMODATION + FULL BOARD (drinks included)",
      "group_size": 2,
-     "days": null,
+     "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 348,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -164,14 +177,16 @@
     },
     {
      "kind": "package",
-     "label_quote": null,
+     "style": null,
+     "label_quote": "🏨🍽️ ACCOMMODATION + FULL BOARD (drinks included)",
      "group_size": 3,
-     "days": null,
+     "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 504,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -186,14 +201,16 @@
     },
     {
      "kind": "package",
-     "label_quote": null,
+     "style": null,
+     "label_quote": "🏨🍽️ ACCOMMODATION + FULL BOARD (drinks included)",
      "group_size": 1,
-     "days": null,
+     "days": 4,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 316,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -208,14 +225,16 @@
     },
     {
      "kind": "package",
-     "label_quote": null,
+     "style": null,
+     "label_quote": "🏨🍽️ ACCOMMODATION + FULL BOARD (drinks included)",
      "group_size": 2,
-     "days": null,
+     "days": 4,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 464,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -230,14 +249,16 @@
     },
     {
      "kind": "package",
-     "label_quote": null,
+     "style": null,
+     "label_quote": "🏨🍽️ ACCOMMODATION + FULL BOARD (drinks included)",
      "group_size": 3,
-     "days": null,
+     "days": 4,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 672,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -252,6 +273,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "💶 PARTY PRICES 💶",
      "group_size": 1,
      "days": 1,
@@ -260,6 +282,7 @@
       {
        "amount": 25,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -274,6 +297,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "💶 PARTY PRICES 💶",
      "group_size": 1,
      "days": 1,
@@ -282,6 +306,7 @@
       {
        "amount": 30,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -296,6 +321,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "💶 PARTY PRICES 💶",
      "group_size": 1,
      "days": 1,
@@ -304,6 +330,7 @@
       {
        "amount": 20,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -318,6 +345,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "🎫 DAY PASS",
      "group_size": 1,
      "days": 1,
@@ -326,6 +354,7 @@
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -340,6 +369,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "🎫 DAY PASS",
      "group_size": 1,
      "days": 1,
@@ -348,6 +378,7 @@
       {
        "amount": 80,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -362,6 +393,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "🎫 DAY PASS",
      "group_size": 1,
      "days": 1,
@@ -370,6 +402,7 @@
       {
        "amount": 50,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -384,8 +417,8 @@
     }
    ],
    "rule_quotes": [
-    "⚡ Prices increase monthly — get your pass now!",
-    "👉 Accommodation available only with full board."
+    "Prices increase monthly — get your pass now!",
+    "Accommodation available only with full board."
    ]
   }
  ]

@@ -1,14 +1,11 @@
 {
  "batch": "event-15717",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15717,
    "passes": [],
-   "rule_quotes": [
-    "Name changes can be completed directly through Go&Dance and cost €15.",
-    "All ticket sales (Passes & Hotel rooms) are final and non-refundable."
-   ]
+   "rule_quotes": []
   }
  ]
 }

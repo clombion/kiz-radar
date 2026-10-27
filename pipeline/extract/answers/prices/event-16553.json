@@ -1,47 +1,13 @@
 {
  "batch": "event-16553",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16553,
    "passes": [
     {
-     "kind": "full",
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 130,
-       "currency": "EUR",
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🔹 Full pass €130"
-      },
-      {
-       "amount": 150,
-       "currency": "EUR",
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "🔹 Full pass €150"
-      }
-     ]
-    },
-    {
      "kind": "party",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -50,6 +16,7 @@
       {
        "amount": 50,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -63,6 +30,7 @@
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -76,15 +44,31 @@
      ]
     },
     {
-     "kind": "day",
+     "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 30,
+       "amount": 130,
        "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "🔹 Full pass €130"
+      },
+      {
+       "amount": 150,
+       "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -93,20 +77,22 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "🔹 1 party: €30"
+       "quote": "🔹 Full pass €150"
       }
      ]
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
-     "group_size": 1,
+     "group_size": null,
      "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 430,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -120,6 +106,7 @@
       {
        "amount": 470,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2025-01-16",

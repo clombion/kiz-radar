@@ -1,12 +1,13 @@
 {
  "batch": "event-15933",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15933,
    "passes": [
     {
-     "kind": "full",
+     "kind": "other",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 75,
        "currency": "USD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,11 +25,22 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "• $75 Believer Passes Available through July 31, 2025!"
-      },
+       "quote": "$75 Believer Passes Available through July 31, 2025!"
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
       {
        "amount": 100,
        "currency": "USD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -36,7 +49,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "• $100 Early Bird Passes Available through March 31, 2026!"
+       "quote": "$100 Early Bird Passes Available through March 31, 2026!"
       }
      ]
     }

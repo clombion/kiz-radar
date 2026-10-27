@@ -1,12 +1,13 @@
 {
  "batch": "event-15577",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15577,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,14 +25,15 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Full Pass – 60€ (Only 10 – 5 Leaders/5 Followers)"
+       "quote": "Full Pass – 60€"
       },
       {
        "amount": 70,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "12-01",
+       "from": null,
        "until": null,
        "quantity": null,
        "door": false,
@@ -41,9 +44,10 @@
       {
        "amount": 80,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "01-01",
+       "from": null,
        "until": null,
        "quantity": null,
        "door": false,
@@ -54,9 +58,10 @@
       {
        "amount": 90,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "02-01",
+       "from": null,
        "until": null,
        "quantity": null,
        "door": false,
@@ -67,9 +72,10 @@
       {
        "amount": 100,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "03-01",
+       "from": null,
        "until": null,
        "quantity": null,
        "door": false,
@@ -80,9 +86,10 @@
       {
        "amount": 110,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "04-01",
+       "from": null,
        "until": null,
        "quantity": null,
        "door": false,
@@ -94,6 +101,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": null,
@@ -102,9 +110,10 @@
       {
        "amount": 130,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "12-01",
+       "from": null,
        "until": null,
        "quantity": null,
        "door": false,
@@ -115,9 +124,10 @@
       {
        "amount": 150,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "01-01",
+       "from": null,
        "until": null,
        "quantity": null,
        "door": false,
@@ -128,9 +138,10 @@
       {
        "amount": 170,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "02-01",
+       "from": null,
        "until": null,
        "quantity": null,
        "door": false,
@@ -141,9 +152,10 @@
       {
        "amount": 190,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "03-01",
+       "from": null,
        "until": null,
        "quantity": null,
        "door": false,
@@ -154,9 +166,10 @@
       {
        "amount": 200,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "04-01",
+       "from": null,
        "until": null,
        "quantity": null,
        "door": false,

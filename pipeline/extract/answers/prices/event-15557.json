@@ -1,12 +1,13 @@
 {
  "batch": "event-15557",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15557,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 950,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 1200,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -42,6 +45,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": null,
@@ -50,6 +54,7 @@
       {
        "amount": 1800,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -63,6 +68,7 @@
       {
        "amount": 2400,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -76,9 +82,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "Grab yours before prices go up!"
-   ]
+   "rule_quotes": []
   }
  ]
 }

@@ -1,12 +1,13 @@
 {
  "batch": "event-16384",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16384,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 30,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,11 +25,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "⚠️⚠️⚠️PROMO €30 for the first 30 Full Passes⚠️⚠️⚠️"
+       "quote": "PROMO €30 for the first 30 Full Passes"
       },
       {
        "amount": 40,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -41,6 +44,7 @@
       {
        "amount": 50,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -54,6 +58,7 @@
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -67,9 +72,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "Discount for Salsapills Members & Partners (contact the association for the ⚠️ promo code for the €50 and €60 full passes)"
-   ]
+   "rule_quotes": []
   }
  ]
 }

@@ -1,20 +1,22 @@
 {
  "batch": "event-15307",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15307,
    "passes": [
     {
      "kind": "package",
+     "style": null,
      "label_quote": "✔️ PRICES",
      "group_size": 1,
-     "days": null,
+     "days": 7,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 399,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 419,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2025-12-05",

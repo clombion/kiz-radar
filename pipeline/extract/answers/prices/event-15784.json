@@ -1,12 +1,13 @@
 {
  "batch": "event-15784",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15784,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 470,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": 62,
        "alt_currency": "EUR",
        "from": null,
@@ -23,11 +25,12 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "🐣Early bird leader/follower: 470dkk/62€"
+       "quote": "Early bird leader/follower: 470dkk/62€"
       },
       {
        "amount": 570,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": 76,
        "alt_currency": "EUR",
        "from": null,
@@ -41,6 +44,7 @@
       {
        "amount": 670,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": 89,
        "alt_currency": "EUR",
        "from": null,
@@ -54,6 +58,7 @@
       {
        "amount": 770,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": 103,
        "alt_currency": "EUR",
        "from": null,
@@ -67,6 +72,7 @@
       {
        "amount": 970,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": 130,
        "alt_currency": "EUR",
        "from": null,
@@ -81,6 +87,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -89,6 +96,7 @@
       {
        "amount": 440,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": 59,
        "alt_currency": "EUR",
        "from": null,
@@ -97,11 +105,12 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "🐣Early bird omni: 440dkk/59€"
+       "quote": "Early bird omni: 440dkk/59€"
       },
       {
        "amount": 540,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": 72,
        "alt_currency": "EUR",
        "from": null,
@@ -115,6 +124,7 @@
       {
        "amount": 640,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": 85,
        "alt_currency": "EUR",
        "from": null,
@@ -128,6 +138,7 @@
       {
        "amount": 740,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": 99,
        "alt_currency": "EUR",
        "from": null,
@@ -141,6 +152,7 @@
       {
        "amount": 940,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": 126,
        "alt_currency": "EUR",
        "from": null,
@@ -155,6 +167,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": null,
@@ -163,6 +176,7 @@
       {
        "amount": 1060,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": 142,
        "alt_currency": "EUR",
        "from": null,
@@ -176,6 +190,7 @@
       {
        "amount": 1240,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": 166,
        "alt_currency": "EUR",
        "from": null,
@@ -189,6 +204,7 @@
       {
        "amount": 1440,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": 192,
        "alt_currency": "EUR",
        "from": null,
@@ -202,6 +218,7 @@
       {
        "amount": 1840,
        "currency": "DKK",
+       "fee": null,
        "alt_amount": 246,
        "alt_currency": "EUR",
        "from": null,

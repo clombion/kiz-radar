@@ -1,12 +1,13 @@
 {
  "batch": "event-15702",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15702,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,9 +16,10 @@
       {
        "amount": 190,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
-       "from": "2026-01-01",
+       "from": null,
        "until": "2026-02-28",
        "quantity": null,
        "door": false,
@@ -28,6 +30,7 @@
       {
        "amount": 200,
        "currency": "CAD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-03-01",
@@ -41,7 +44,9 @@
      ]
     }
    ],
-   "rule_quotes": []
+   "rule_quotes": [
+    "*the masterclass, pre-party, and small group supper are separate from the Full Weekend Pass*"
+   ]
   }
  ]
 }

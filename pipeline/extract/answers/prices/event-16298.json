@@ -1,12 +1,13 @@
 {
  "batch": "event-16298",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16298,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "🎟️ Full Pass",
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 79,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 89,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -41,6 +44,7 @@
       {
        "amount": 99,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -54,6 +58,7 @@
       {
        "amount": 120,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -68,6 +73,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": "💞 Couple Pass",
      "group_size": 2,
      "days": null,
@@ -76,6 +82,7 @@
       {
        "amount": 129,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -89,6 +96,7 @@
       {
        "amount": 149,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -102,6 +110,7 @@
       {
        "amount": 169,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

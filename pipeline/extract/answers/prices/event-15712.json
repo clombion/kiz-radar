@@ -1,12 +1,13 @@
 {
  "batch": "event-15712",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15712,
    "passes": [
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 5,
@@ -15,6 +16,7 @@
       {
        "amount": 689,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,12 +25,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Inside double cabin €689/person."
+       "quote": "Inside double cabin €689/person"
       }
      ]
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 5,
@@ -37,6 +40,7 @@
       {
        "amount": 789,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -45,12 +49,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Inside double cabin with porthole and sea view €789/person."
+       "quote": "Inside double cabin with porthole and sea view €789/person"
       }
      ]
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 5,
@@ -59,6 +64,7 @@
       {
        "amount": 914,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -67,7 +73,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Outside double cabin with balcony and sea view €914/person."
+       "quote": "Outside double cabin with balcony and sea view €914/person"
       }
      ]
     }

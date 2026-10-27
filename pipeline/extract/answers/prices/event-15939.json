@@ -1,13 +1,14 @@
 {
  "batch": "event-15939",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15939,
    "passes": [
     {
      "kind": "full",
-     "label_quote": "██ FULL PASS: €90 ██",
+     "style": null,
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -15,6 +16,7 @@
       {
        "amount": 90,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,7 +25,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "██ FULL PASS: €90 ██"
+       "quote": "FULL PASS: €90"
       }
      ]
     }

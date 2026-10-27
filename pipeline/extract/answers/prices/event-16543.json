@@ -1,12 +1,13 @@
 {
  "batch": "event-16543",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16543,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 2,
@@ -15,6 +16,7 @@
       {
        "amount": 70,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 350,
        "alt_currency": "RON",
        "from": null,
@@ -29,6 +31,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -37,6 +40,7 @@
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 300,
        "alt_currency": "RON",
        "from": null,
@@ -51,6 +55,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -59,6 +64,7 @@
       {
        "amount": 16,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 80,
        "alt_currency": "RON",
        "from": null,
@@ -73,6 +79,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -81,6 +88,7 @@
       {
        "amount": 12,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 60,
        "alt_currency": "RON",
        "from": null,
@@ -94,9 +102,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "Pass transfers involve a fee of 10 €"
-   ]
+   "rule_quotes": []
   }
  ]
 }

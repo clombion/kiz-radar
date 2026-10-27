@@ -1,12 +1,13 @@
 {
  "batch": "event-16034",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16034,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 90,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2025-11-14",
@@ -29,6 +31,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": null,
@@ -37,6 +40,7 @@
       {
        "amount": 160,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2025-11-14",
@@ -51,6 +55,7 @@
     },
     {
      "kind": "party",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -59,6 +64,7 @@
       {
        "amount": 80,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2025-11-14",
@@ -73,6 +79,7 @@
     },
     {
      "kind": "party",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": null,
@@ -81,6 +88,7 @@
       {
        "amount": 145,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2025-11-14",
@@ -94,10 +102,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "EARLY BIRD OFFER till 13.11.",
-    "NAME CHANGE FEE – 15E"
-   ]
+   "rule_quotes": []
   }
  ]
 }

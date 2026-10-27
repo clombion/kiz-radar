@@ -1,13 +1,14 @@
 {
  "batch": "event-16610",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16610,
    "passes": [
     {
      "kind": "full",
-     "label_quote": null,
+     "style": null,
+     "label_quote": "FULL PASS PACK A – 4 DAYS",
      "group_size": 1,
      "days": 4,
      "includes_hotel": false,
@@ -15,6 +16,7 @@
       {
        "amount": 105,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,8 +30,9 @@
      ]
     },
     {
-     "kind": "full",
-     "label_quote": null,
+     "kind": "other",
+     "style": null,
+     "label_quote": "FULL PASS PACK A VIP – 4 DAYS",
      "group_size": 1,
      "days": 4,
      "includes_hotel": false,
@@ -37,6 +40,7 @@
       {
        "amount": 120,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -51,7 +55,8 @@
     },
     {
      "kind": "full",
-     "label_quote": null,
+     "style": null,
+     "label_quote": "FULL PASS PACK B – 3 DAYS",
      "group_size": 1,
      "days": 3,
      "includes_hotel": false,
@@ -59,6 +64,7 @@
       {
        "amount": 95,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -72,8 +78,9 @@
      ]
     },
     {
-     "kind": "full",
-     "label_quote": null,
+     "kind": "other",
+     "style": null,
+     "label_quote": "FULL PASS PACK B VIP – 3 DAYS",
      "group_size": 1,
      "days": 3,
      "includes_hotel": false,
@@ -81,6 +88,7 @@
       {
        "amount": 110,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -95,7 +103,8 @@
     },
     {
      "kind": "other",
-     "label_quote": null,
+     "style": null,
+     "label_quote": "VIP PACK",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -103,6 +112,7 @@
       {
        "amount": 20,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

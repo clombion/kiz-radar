@@ -1,12 +1,13 @@
 {
  "batch": "event-16620",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16620,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 3,
@@ -15,6 +16,7 @@
       {
        "amount": 230,
        "currency": "NZD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 295,
        "currency": "NZD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "07-01",
@@ -42,6 +45,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": 3,
@@ -50,6 +54,7 @@
       {
        "amount": 450,
        "currency": "NZD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -63,6 +68,7 @@
       {
        "amount": 560,
        "currency": "NZD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "07-01",
@@ -77,6 +83,7 @@
     },
     {
      "kind": "other",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 3,
@@ -85,6 +92,7 @@
       {
        "amount": 320,
        "currency": "NZD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -98,6 +106,7 @@
       {
        "amount": 400,
        "currency": "NZD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "07-01",
@@ -112,6 +121,7 @@
     },
     {
      "kind": "other",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": 3,
@@ -120,6 +130,7 @@
       {
        "amount": 620,
        "currency": "NZD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -133,6 +144,7 @@
       {
        "amount": 780,
        "currency": "NZD",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "07-01",
@@ -142,6 +154,44 @@
        "sold_out": false,
        "current": false,
        "quote": "MASTER PASS – Couple (Exclusive to a Lead & Follow) $780"
+      }
+     ]
+    },
+    {
+     "kind": "other",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 90,
+       "currency": "NZD",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": "2026-02-25",
+       "quantity": 20,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Masterclass Both or Couples Single $90.00"
+      },
+      {
+       "amount": 100,
+       "currency": "NZD",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": "07-01",
+       "until": null,
+       "quantity": null,
+       "door": true,
+       "sold_out": false,
+       "current": false,
+       "quote": "Masterclass Both or Couples Single $100.00"
       }
      ]
     }

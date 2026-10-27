@@ -1,12 +1,11 @@
 {
  "batch": "event-16390",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16390,
    "passes": [],
    "rule_quotes": [
-    "Accommodation & ticket pricing is released in phases and is strictly first come, first served.",
     "Prices may increase or change at any time based on demand."
    ]
   }

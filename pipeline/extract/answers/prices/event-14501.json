@@ -1,12 +1,13 @@
 {
  "batch": "event-14501",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 14501,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "🎟 FULL PASS 🎟",
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 950,
        "currency": "SEK",
+       "fee": null,
        "alt_amount": 85,
        "alt_currency": "EUR",
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 1000,
        "currency": "SEK",
+       "fee": null,
        "alt_amount": 90,
        "alt_currency": "EUR",
        "from": "03-27",
@@ -41,6 +44,7 @@
       {
        "amount": 1100,
        "currency": "SEK",
+       "fee": null,
        "alt_amount": 99,
        "alt_currency": "EUR",
        "from": "05-27",
@@ -54,6 +58,7 @@
       {
        "amount": 1200,
        "currency": "SEK",
+       "fee": null,
        "alt_amount": 108,
        "alt_currency": "EUR",
        "from": "07-27",
@@ -67,6 +72,7 @@
       {
        "amount": 1300,
        "currency": "SEK",
+       "fee": null,
        "alt_amount": 118,
        "alt_currency": "EUR",
        "from": "09-27",
@@ -80,6 +86,7 @@
       {
        "amount": 1400,
        "currency": "SEK",
+       "fee": null,
        "alt_amount": 127,
        "alt_currency": "EUR",
        "from": "11-27",
@@ -93,6 +100,7 @@
       {
        "amount": 1500,
        "currency": "SEK",
+       "fee": null,
        "alt_amount": 136,
        "alt_currency": "EUR",
        "from": "01-17",
@@ -106,10 +114,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "Couple Pass: 300 SEK (€27) discount per couple",
-    "Name change fee: €12 (until one week before the event)"
-   ]
+   "rule_quotes": []
   }
  ]
 }

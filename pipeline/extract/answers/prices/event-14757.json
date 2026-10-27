@@ -1,20 +1,22 @@
 {
  "batch": "event-14757",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 14757,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "🎟️FULL PASS | MAGIC WINTER 2026 🎟",
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 55,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -41,6 +44,7 @@
       {
        "amount": 65,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -54,6 +58,7 @@
       {
        "amount": 75,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -67,6 +72,7 @@
       {
        "amount": 80,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -81,6 +87,7 @@
     },
     {
      "kind": "other",
+     "style": null,
      "label_quote": "🎟️COMBO PASS | MAGIC WINTER 2026 + MAGIC SUMMER 2026 🎟️",
      "group_size": 1,
      "days": null,
@@ -89,6 +96,7 @@
       {
        "amount": 95,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -102,6 +110,7 @@
       {
        "amount": 100,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -115,6 +124,7 @@
       {
        "amount": 105,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -128,6 +138,7 @@
       {
        "amount": 115,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -141,8 +152,9 @@
      ]
     },
     {
-     "kind": "party",
-     "label_quote": null,
+     "kind": "other",
+     "style": null,
+     "label_quote": "💳 PARTY PASS | MAGIC WINTER 💳",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -150,6 +162,7 @@
       {
        "amount": 40,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -164,6 +177,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "PRE-PARTY PALMERA PLAYA",
      "group_size": 1,
      "days": 1,
@@ -172,6 +186,7 @@
       {
        "amount": 10,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -186,6 +201,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "SATURDAY SOCIAL AT HOTEL ATTICA21",
      "group_size": 1,
      "days": 1,
@@ -194,6 +210,7 @@
       {
        "amount": 25,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -208,6 +225,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "SUNDAY SOCIAL AT HOTEL ATTICA21",
      "group_size": 1,
      "days": 1,
@@ -216,6 +234,7 @@
       {
        "amount": 10,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -229,9 +248,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "200 FULL PASS | 100 LEADERS X 100 FOLLOWERS"
-   ]
+   "rule_quotes": []
   }
  ]
 }

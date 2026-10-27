@@ -1,13 +1,14 @@
 {
  "batch": "event-15868",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15868,
    "passes": [
     {
      "kind": "full",
-     "label_quote": "🎁 EARLY BIRD OFFERS! 🎁",
+     "style": null,
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -15,6 +16,7 @@
       {
        "amount": 50,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,12 +25,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "👉 Follower: 50€"
+       "quote": "👉 Follower: 50€\n👉 Leader: 50€"
       }
      ]
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": null,
@@ -37,6 +40,7 @@
       {
        "amount": 90,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

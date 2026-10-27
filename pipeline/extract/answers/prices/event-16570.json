@@ -1,12 +1,13 @@
 {
  "batch": "event-16570",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16570,
    "passes": [
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 179,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,11 +25,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "⭕ Accommodation + Welcome Drink + Full Pass = €179"
+       "quote": "Accommodation + Welcome Drink + Full Pass = €179"
       },
       {
        "amount": 189,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -36,11 +39,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "⭕ ⭕ Accommodation + Welcome Drink + Full Pass = €189"
+       "quote": "Accommodation + Welcome Drink + Full Pass = €189"
       },
       {
        "amount": 199,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -49,12 +53,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "⭕ ⭕ ⭕ Accommodation + Welcome Drink + Full Pass = €199"
+       "quote": "Accommodation + Welcome Drink + Full Pass = €199"
       }
      ]
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -63,6 +68,7 @@
       {
        "amount": 80,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -71,12 +77,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "⭐⭐ Full Pass (Access (All classes + Friday and Saturday evenings) = €80"
+       "quote": "Full Pass (Access (All classes + Friday and Saturday evenings) = €80"
       }
      ]
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -85,6 +92,7 @@
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -93,12 +101,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "⭐⭐ Full Saturday Pass (Access to all Saturday classes + evening) = €60"
+       "quote": "Full Saturday Pass (Access to all Saturday classes + evening) = €60"
       }
      ]
     },
     {
-     "kind": "other",
+     "kind": "party",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 2,
@@ -107,6 +116,7 @@
       {
        "amount": 25,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -115,12 +125,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "⭕ ⭕ ⭕ ⭕ Evening Pass (Friday + Saturday) = €25"
+       "quote": "Evening Pass (Friday + Saturday) = €25"
       }
      ]
     },
     {
-     "kind": "day",
+     "kind": "party",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -129,6 +140,7 @@
       {
        "amount": 15,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -137,12 +149,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "⭕ ⭕ ⭕ ⭕ Friday Evening = €15"
+       "quote": "Friday Evening = €15"
       }
      ]
     },
     {
-     "kind": "day",
+     "kind": "party",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -151,6 +164,7 @@
       {
        "amount": 15,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -159,14 +173,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "⭕ ⭕ ⭕ ⭕ Saturday Evening = €15"
+       "quote": "Saturday Evening = €15"
       }
      ]
     }
    ],
-   "rule_quotes": [
-    "Option to book a studio for one person for an additional €90"
-   ]
+   "rule_quotes": []
   }
  ]
 }

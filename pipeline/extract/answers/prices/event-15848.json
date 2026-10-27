@@ -1,12 +1,13 @@
 {
  "batch": "event-15848",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15848,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "FULL PASS early bird offer | single person",
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 80,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": 80,
        "alt_currency": "EUR",
        "from": null,

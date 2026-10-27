@@ -1,13 +1,14 @@
 {
  "batch": "event-16054",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16054,
    "passes": [
     {
      "kind": "package",
-     "label_quote": null,
+     "style": null,
+     "label_quote": "PRICE",
      "group_size": 1,
      "days": 5,
      "includes_hotel": true,
@@ -15,6 +16,7 @@
       {
        "amount": 620,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -29,6 +31,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "4★ HOTEL – STANDARD ROOM – FULL BOARD",
      "group_size": 1,
      "days": 7,
@@ -37,6 +40,7 @@
       {
        "amount": 620,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -51,6 +55,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "4★ HOTEL – STANDARD ROOM – FULL BOARD",
      "group_size": 1,
      "days": 6,
@@ -59,6 +64,7 @@
       {
        "amount": 570,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -73,6 +79,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "4★ HOTEL – SUPERIOR ROOM – FULL BOARD",
      "group_size": 1,
      "days": 7,
@@ -81,6 +88,7 @@
       {
        "amount": 720,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -95,6 +103,7 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "4★ HOTEL – SUPERIOR ROOM – FULL BOARD",
      "group_size": 1,
      "days": 6,
@@ -103,6 +112,7 @@
       {
        "amount": 650,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -117,9 +127,7 @@
     }
    ],
    "rule_quotes": [
-    "Single standard room: +€180 supplement",
-    "Single room: +€150 supplement",
-    "Single room: +€180 supplement"
+    "Full board applies to all prices offered."
    ]
   }
  ]

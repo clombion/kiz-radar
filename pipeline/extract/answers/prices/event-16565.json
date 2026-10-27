@@ -1,12 +1,13 @@
 {
  "batch": "event-16565",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16565,
    "passes": [
     {
      "kind": "other",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 3,
@@ -15,6 +16,7 @@
       {
        "amount": 75,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -29,6 +31,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 4,
@@ -37,6 +40,7 @@
       {
        "amount": 85,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -46,28 +50,6 @@
        "sold_out": false,
        "current": false,
        "quote": "🌻 Love Pass (Thursday / Friday / Saturday / Sunday): €85"
-      }
-     ]
-    },
-    {
-     "kind": "other",
-     "label_quote": "✨ Stage option in addition to the pass",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 25,
-       "currency": "EUR",
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🌸 in addition to the Peace Pass or the Love Pass: €25 (limited availability)"
       }
      ]
     }

@@ -1,12 +1,13 @@
 {
  "batch": "event-15944",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15944,
    "passes": [
     {
      "kind": "package",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 10,
@@ -15,6 +16,7 @@
       {
        "amount": 2000,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,9 +30,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "All payments are non-refundable."
-   ]
+   "rule_quotes": []
   }
  ]
 }

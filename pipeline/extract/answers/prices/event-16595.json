@@ -1,13 +1,14 @@
 {
  "batch": "event-16595",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16595,
    "passes": [
     {
      "kind": "full",
-     "label_quote": "FULL WEEKEND PASS: Early bird Weekend pass",
+     "style": null,
+     "label_quote": "🎟️ FULL WEEKEND PASS: Early bird Weekend pass",
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
@@ -15,6 +16,7 @@
       {
        "amount": 105,
        "currency": "GBP",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 115,
        "currency": "GBP",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -41,6 +44,7 @@
       {
        "amount": 125,
        "currency": "GBP",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -54,6 +58,7 @@
       {
        "amount": 135,
        "currency": "GBP",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -67,6 +72,7 @@
       {
        "amount": 145,
        "currency": "GBP",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -80,6 +86,7 @@
       {
        "amount": 155,
        "currency": "GBP",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -93,6 +100,7 @@
       {
        "amount": 165,
        "currency": "GBP",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -106,9 +114,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "Prices increasing with time"
-   ]
+   "rule_quotes": []
   }
  ]
 }

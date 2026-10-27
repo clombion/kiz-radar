@@ -1,12 +1,13 @@
 {
  "batch": "event-16703",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16703,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 64,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,7 +25,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "– FULLPASS : 64€"
+       "quote": "FULLPASS : 64€"
       }
      ]
     }

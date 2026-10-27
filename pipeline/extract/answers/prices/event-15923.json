@@ -1,20 +1,22 @@
 {
  "batch": "event-15923",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15923,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "Full Pass: classes and events.",
      "group_size": 2,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 700,
        "currency": "PLN",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "06-19",
@@ -29,14 +31,16 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": "Full Pass: classes and events.",
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 350,
        "currency": "PLN",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "06-19",
@@ -50,6 +54,7 @@
       {
        "amount": 350,
        "currency": "PLN",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "06-19",

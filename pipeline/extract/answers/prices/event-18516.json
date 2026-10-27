@@ -1,12 +1,13 @@
 {
  "batch": "event-18516",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 18516,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 2,
@@ -15,6 +16,7 @@
       {
        "amount": 30,
        "currency": "GBP",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 40,
        "currency": "GBP",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -42,6 +45,7 @@
     },
     {
      "kind": "party",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 2,
@@ -50,6 +54,7 @@
       {
        "amount": 20,
        "currency": "GBP",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -63,6 +68,7 @@
       {
        "amount": 25,
        "currency": "GBP",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -77,6 +83,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -85,6 +92,7 @@
       {
        "amount": 20,
        "currency": "GBP",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -98,6 +106,7 @@
       {
        "amount": 25,
        "currency": "GBP",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -112,6 +121,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -120,6 +130,7 @@
       {
        "amount": 12,
        "currency": "GBP",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -133,6 +144,7 @@
       {
        "amount": 15,
        "currency": "GBP",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

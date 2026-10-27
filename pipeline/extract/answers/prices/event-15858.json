@@ -1,12 +1,13 @@
 {
  "batch": "event-15858",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15858,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,10 +16,11 @@
       {
        "amount": 79,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": "01-31",
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,
@@ -29,6 +31,7 @@
     },
     {
      "kind": "party",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -37,10 +40,11 @@
       {
        "amount": 49,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
-       "until": "01-31",
+       "until": null,
        "quantity": null,
        "door": false,
        "sold_out": false,

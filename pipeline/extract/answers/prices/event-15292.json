@@ -1,20 +1,22 @@
 {
  "batch": "event-15292",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15292,
    "passes": [
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Triple or Apartment room (per person):",
      "group_size": 1,
-     "days": null,
+     "days": 2,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 150,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -29,14 +31,16 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Triple or Apartment room (per person):",
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 200,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -51,14 +55,16 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Triple or Apartment room (per person):",
      "group_size": 1,
-     "days": null,
+     "days": 4,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 250,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -73,14 +79,16 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Double room (per person):",
      "group_size": 1,
-     "days": null,
+     "days": 2,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 159,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -95,14 +103,16 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Double room (per person):",
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 209,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -117,14 +127,16 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Double room (per person):",
      "group_size": 1,
-     "days": null,
+     "days": 4,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 259,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -139,14 +151,16 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Single room:",
      "group_size": 1,
-     "days": null,
+     "days": 2,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 250,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -161,14 +175,16 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Single room:",
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 330,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -183,14 +199,16 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Single room:",
      "group_size": 1,
-     "days": null,
+     "days": 4,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 410,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -205,6 +223,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -213,6 +232,7 @@
       {
        "amount": 80,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -227,6 +247,7 @@
     },
     {
      "kind": "party",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -235,6 +256,7 @@
       {
        "amount": 50,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -249,14 +271,16 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 20,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -271,14 +295,16 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 20,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -293,14 +319,16 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 1,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 20,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

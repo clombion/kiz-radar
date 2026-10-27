@@ -1,12 +1,13 @@
 {
  "batch": "event-17095",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17095,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 120,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,7 +25,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Until 31.05.2026 – 120€ – Full Pass with Friday Community Dinner included"
+       "quote": "🎟️ Until 31.05.2026 – 120€ – Full Pass with Friday Community Dinner included"
       }
      ]
     }

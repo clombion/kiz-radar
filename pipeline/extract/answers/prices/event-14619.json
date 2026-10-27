@@ -1,12 +1,13 @@
 {
  "batch": "event-14619",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 14619,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 70,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,11 +25,12 @@
        "door": false,
        "sold_out": true,
        "current": false,
-       "quote": "🏷 30 Premiers Full Pass à 70€ ❌️"
+       "quote": "30 Premiers Full Pass à 70€"
       },
       {
        "amount": 90,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -36,12 +39,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🏷 50 Full Pass à 90€ ⏳️"
+       "quote": "50 Full Pass à 90€"
       }
      ]
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
      "days": null,
@@ -50,6 +54,7 @@
       {
        "amount": 160,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -58,7 +63,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "🎟️ 50 Full Pass Duo a 160€"
+       "quote": "50 Full Pass Duo a 160€"
       }
      ]
     }

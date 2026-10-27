@@ -1,12 +1,13 @@
 {
  "batch": "event-17422",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 17422,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "✨ FULL PASS ✨",
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 55,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "04-17",
@@ -28,6 +30,7 @@
       {
        "amount": 60,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "05-17",
@@ -41,6 +44,7 @@
       {
        "amount": 70,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "06-17",
@@ -54,6 +58,7 @@
       {
        "amount": 75,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -68,6 +73,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "Social or party (Friday, Saturday, Sunday – classes or Jack & Jill included)",
      "group_size": 1,
      "days": 1,
@@ -76,6 +82,7 @@
       {
        "amount": 15,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -84,11 +91,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "☛ €15 presale / €20 at the door"
+       "quote": "€15 presale"
       },
       {
        "amount": 20,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -97,12 +105,13 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "☛ €15 presale / €20 at the door"
+       "quote": "€20 at the door"
       }
      ]
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": "Saturday Day Pass (social + party + 3 classes)",
      "group_size": 1,
      "days": 1,
@@ -111,6 +120,7 @@
       {
        "amount": 25,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -119,11 +129,12 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "☛ €25 presale / €40 at the door"
+       "quote": "€25 presale"
       },
       {
        "amount": 40,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -132,7 +143,7 @@
        "door": true,
        "sold_out": false,
        "current": false,
-       "quote": "☛ €25 presale / €40 at the door"
+       "quote": "€40 at the door"
       }
      ]
     }

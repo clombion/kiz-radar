@@ -1,13 +1,38 @@
 {
  "batch": "event-15275",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15275,
    "passes": [
     {
+     "kind": "day",
+     "style": null,
+     "label_quote": "* Evenings;",
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "amount": 15,
+       "currency": "EUR",
+       "fee": null,
+       "alt_amount": null,
+       "alt_currency": null,
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "door": false,
+       "sold_out": false,
+       "current": false,
+       "quote": "Friday evening: 2 rooms, 3 atmospheres with 1 class; €15"
+      }
+     ]
+    },
+    {
      "kind": "package",
-     "label_quote": "*Full Pass",
+     "style": null,
+     "label_quote": null,
      "group_size": 1,
      "days": 3,
      "includes_hotel": true,
@@ -15,6 +40,7 @@
       {
        "amount": 219,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +54,7 @@
       {
        "amount": 230,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "10-16",
@@ -41,6 +68,7 @@
       {
        "amount": 240,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "11-01",
@@ -52,33 +80,9 @@
        "quote": "Full pass €240 (November 1st to 15th)"
       }
      ]
-    },
-    {
-     "kind": "day",
-     "label_quote": "* Evenings;",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 15,
-       "currency": "EUR",
-       "alt_amount": null,
-       "alt_currency": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Friday evening: 2 rooms, 3 atmospheres with 1 class; €15"
-      }
-     ]
     }
    ],
-   "rule_quotes": [
-    "then price increase"
-   ]
+   "rule_quotes": []
   }
  ]
 }

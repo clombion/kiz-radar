@@ -1,20 +1,22 @@
 {
  "batch": "event-15531",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15531,
    "passes": [
     {
      "kind": "full",
-     "label_quote": "FULLPASS (Workshops + Party + Social)",
+     "style": null,
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 87,
+       "amount": 87.0,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -26,8 +28,9 @@
        "quote": "FULLPASS (Workshops + Party + Social): Now only €87.00!"
       },
       {
-       "amount": 149,
+       "amount": 149.0,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -36,20 +39,22 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "(Regular price will be €149.00 – save up to €62!)"
+       "quote": "Regular price will be €149.00"
       }
      ]
     },
     {
      "kind": "party",
-     "label_quote": "FUN-PASS (Party + Social only)",
+     "style": null,
+     "label_quote": null,
      "group_size": 1,
      "days": null,
      "includes_hotel": false,
      "tiers": [
       {
-       "amount": 59,
+       "amount": 59.0,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -64,14 +69,16 @@
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "EARLY BIRD HOTEL PACKAGE",
      "group_size": 1,
-     "days": null,
+     "days": 2,
      "includes_hotel": true,
      "tiers": [
       {
-       "amount": 149,
+       "amount": 149.0,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -80,14 +87,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "💰 Price: Only €149.00 / person!"
+       "quote": "Price: Only €149.00 / person!"
       }
      ]
     }
    ],
    "rule_quotes": [
-    "prices valid only until limited capacity sells out!",
-    "After this date, there is a fee of 10 EUR (administrative charge)."
+    "prices valid only until limited capacity sells out"
    ]
   }
  ]

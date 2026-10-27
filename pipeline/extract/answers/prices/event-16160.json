@@ -1,12 +1,13 @@
 {
  "batch": "event-16160",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16160,
    "passes": [
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Package 1 – Angola Cultural Experience (10 days)",
      "group_size": 1,
      "days": 10,
@@ -15,6 +16,7 @@
       {
        "amount": 1800,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,20 +25,22 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Single room: €1,800 (deposit €200)"
+       "quote": "Single room: €1,800"
       }
      ]
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Package 1 – Angola Cultural Experience (10 days)",
-     "group_size": null,
+     "group_size": 1,
      "days": 10,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 1500,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -45,12 +49,13 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Double room: €1,500 (deposit €150)"
+       "quote": "Double room: €1,500"
       }
      ]
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Package 2 – Culture & Desert Experience (13 days)",
      "group_size": 1,
      "days": 13,
@@ -59,6 +64,7 @@
       {
        "amount": 2800,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -67,20 +73,22 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Single room: €2,800 (deposit €700)"
+       "quote": "Single room: €2,800"
       }
      ]
     },
     {
      "kind": "package",
+     "style": null,
      "label_quote": "Package 2 – Culture & Desert Experience (13 days)",
-     "group_size": null,
+     "group_size": 1,
      "days": 13,
      "includes_hotel": true,
      "tiers": [
       {
        "amount": 2500,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -89,7 +97,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "Double room: €2,500 (deposit €600)"
+       "quote": "Double room: €2,500"
       }
      ]
     }

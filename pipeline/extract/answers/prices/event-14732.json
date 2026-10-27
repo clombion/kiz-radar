@@ -1,20 +1,22 @@
 {
  "batch": "event-14732",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 14732,
    "passes": [
     {
      "kind": "full",
-     "label_quote": "🕺 FULLPASS MAN",
+     "style": null,
+     "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 95,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 2375,
        "alt_currency": "CZK",
        "from": null,
@@ -29,14 +31,16 @@
     },
     {
      "kind": "party",
-     "label_quote": "🕺 DANCEPASS MAN",
+     "style": null,
+     "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 85,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 2125,
        "alt_currency": "CZK",
        "from": null,
@@ -51,14 +55,16 @@
     },
     {
      "kind": "full",
-     "label_quote": "💃🕺FULLPASS COUPLEPASS",
+     "style": null,
+     "label_quote": null,
      "group_size": 2,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 170,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 4250,
        "alt_currency": "CZK",
        "from": null,
@@ -73,14 +79,16 @@
     },
     {
      "kind": "party",
-     "label_quote": "💃🕺DANCEPASS COUPLEPASS",
+     "style": null,
+     "label_quote": null,
      "group_size": 2,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 150,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": 3750,
        "alt_currency": "CZK",
        "from": null,

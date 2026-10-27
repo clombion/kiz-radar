@@ -1,12 +1,13 @@
 {
  "batch": "event-16395",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16395,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 2,
@@ -15,6 +16,7 @@
       {
        "amount": 150,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -29,6 +31,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -37,6 +40,7 @@
       {
        "amount": 80,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -51,6 +55,7 @@
     },
     {
      "kind": "day",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": 1,
@@ -59,6 +64,7 @@
       {
        "amount": 60,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -73,6 +79,7 @@
     },
     {
      "kind": "party",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -81,6 +88,7 @@
       {
        "amount": 60,
        "currency": "CHF",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,

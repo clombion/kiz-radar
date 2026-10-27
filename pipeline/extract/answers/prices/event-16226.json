@@ -1,12 +1,13 @@
 {
  "batch": "event-16226",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16226,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 800,
        "currency": "SEK",
+       "fee": null,
        "alt_amount": 80,
        "alt_currency": "EUR",
        "from": null,
@@ -29,6 +31,7 @@
     },
     {
      "kind": "party",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
      "days": null,
@@ -37,6 +40,7 @@
       {
        "amount": 500,
        "currency": "SEK",
+       "fee": null,
        "alt_amount": 50,
        "alt_currency": "EUR",
        "from": null,

@@ -1,12 +1,13 @@
 {
  "batch": "event-16643",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 16643,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": "🕺🏾💃Single pass",
      "group_size": 1,
      "days": null,
@@ -15,6 +16,7 @@
       {
        "amount": 800,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -28,6 +30,7 @@
       {
        "amount": 900,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -41,6 +44,7 @@
       {
        "amount": 1200,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -54,6 +58,7 @@
       {
        "amount": 1600,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -68,6 +73,7 @@
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": "👫Couples pass",
      "group_size": 2,
      "days": null,
@@ -76,6 +82,7 @@
       {
        "amount": 1700,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-01-01",
@@ -89,6 +96,7 @@
       {
        "amount": 2200,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": "2026-02-01",
@@ -102,6 +110,7 @@
       {
        "amount": 2900,
        "currency": "NOK",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -115,9 +124,7 @@
      ]
     }
    ],
-   "rule_quotes": [
-    "There is no discount on early bird tickets."
-   ]
+   "rule_quotes": []
   }
  ]
 }

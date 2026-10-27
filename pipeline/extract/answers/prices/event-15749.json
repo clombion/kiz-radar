@@ -1,20 +1,22 @@
 {
  "batch": "event-15749",
- "prompt_version": "prices-v2",
+ "prompt_version": "prices-v5",
  "events": [
   {
    "event_id": 15749,
    "passes": [
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 1,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 50,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -23,20 +25,22 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "– Full Pass (Male – Female) / Early Bird: €50"
+       "quote": "Full Pass (Male – Female) / Early Bird: €50"
       }
      ]
     },
     {
      "kind": "full",
+     "style": null,
      "label_quote": null,
      "group_size": 2,
-     "days": null,
+     "days": 3,
      "includes_hotel": false,
      "tiers": [
       {
        "amount": 90,
        "currency": "EUR",
+       "fee": null,
        "alt_amount": null,
        "alt_currency": null,
        "from": null,
@@ -45,7 +49,7 @@
        "door": false,
        "sold_out": false,
        "current": false,
-       "quote": "– Full Pass Couple / Early Bird: €90"
+       "quote": "Full Pass Couple / Early Bird: €90"
       }
      ]
     }
