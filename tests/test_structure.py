@@ -83,8 +83,9 @@ def test_only_db_looks_for_the_export() -> None:
 
 def test_mise_toml_holds_the_tools_alone() -> None:
     """The Actions cache the tools by mise.toml's hash; a task written there would make every edit of it download them
-    all again (tasks.toml holds the tasks)."""
-    assert set(tomllib.loads((ROOT / 'mise.toml').read_text(encoding='utf-8'))) == {'tools', 'task_config'}
+    all again (tasks.toml holds the tasks). It holds the tools, where the tasks are, and what installing them also
+    installs."""
+    assert set(tomllib.loads((ROOT / 'mise.toml').read_text(encoding='utf-8'))) == {'tools', 'task_config', 'hooks'}
 
 
 BUILT = ('docs/js/', 'docs/data/kiz.sqlite', 'docs/data/site.json')  # what a build makes from what is committed
