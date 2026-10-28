@@ -45,6 +45,15 @@ description = "The site's tests, in Node and in Chromium (vitest.config.ts)"
 depends = ["install:site"]
 run = "pnpm run test"
 
+[tasks.dup]
+description = "No block of 30 tokens or more written twice, in the code, tests, stylesheet or Actions (.jscpd.json); the generated files aside"
+depends = ["install:site"]
+run = "pnpm run dup"
+
+[tasks."lock:py"]
+description = "uv.lock is what pyproject.toml resolves to (the site's lock is held by install:site's --frozen-lockfile)"
+run = "uv lock --check"
+
 [tasks."lint:py"]
 description = "Ruff's rules on the Python code"
 run = "uv run --group dev ruff check"
@@ -84,6 +93,7 @@ run = "uv run --group dev prek validate-config prek.toml"
 [tasks."check:fast"]
 description = "The quick checks, before each commit"
 depends = [
+  "lock:py",
   "lint:py",
   "format:py",
   "format:md",
@@ -91,6 +101,7 @@ depends = [
   "lint:site",
   "types:site",
   "knip",
+  "dup",
   "test:site",
   "generate:check",
   "hooks:check",

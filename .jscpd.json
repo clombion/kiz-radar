@@ -1,0 +1,10 @@
+{
+  "path": ["pipeline", "site", "tests", "docs/css", ".github", "lint"],
+  "format": ["python", "typescript", "css", "yaml"],
+  "ignore": ["**/pipeline/enums.py", "**/site/states.ts"],
+  "minTokens": 30,
+  "threshold": 0,
+  "reporters": ["console"],
+  "exitCode": 1,
+  "gitignore": true
+}

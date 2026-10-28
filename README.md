@@ -396,8 +396,8 @@ Action runs the same command on every push:
 ```bash
 mise run check        # everything
 mise run check:fast   # the quick part: lint, format, types, the site's tests, the generated files
-mise tasks            # each check on its own: lint:py, format:py, format:md, types:py, test:py, lint:site, types:site,
-                      # knip, test:site, audit
+mise tasks            # each check on its own: lock:py, lint:py, format:py, format:md, types:py, test:py, lint:site,
+                      # types:site, knip, dup, test:site, generate:check, hooks:check, audit
 mise run hooks        # once per clone: the git hooks of prek.toml
 ```
 
@@ -434,8 +434,11 @@ pytest runs strict (an unknown option or marker, a repeated case id or a warning
 each run, with no network socket and a time limit per test; `mise run test:py` also fails below the branch coverage
 `pyproject.toml` sets. A database connection is opened only by `pipeline/db.py`, closed when its block ends, the tests'
 too. A day is a date and a time a UTC datetime, read from one clock (`records.now()`, `today()`; ruff bans the others).
-`tests/test_structure.py` fails on a function written twice and on the repository's folder found anywhere but
-`pipeline.ROOT`. The audit checks that every state in the data is one of `pipeline/states.py`.
+`tests/test_structure.py` fails on a function written twice, on the repository's folder found anywhere but
+`pipeline.ROOT`, on an Action that sets up a tool mise doesn't give it, and on a look for the export but
+`db.export()`'s. jscpd fails on a block of 30 tokens written twice anywhere in the code, the tests, the stylesheet or
+the Actions (`.jscpd.json`), and `lock:py` on a `uv.lock` that is not what `pyproject.toml` resolves to. The audit
+checks that every state in the data is one of `pipeline/states.py`.
 
 The database enforces its own rules. Dates are days, required fields are set, and `cancelled` is 1, 0 or empty. Empty
 means not known: the source flags it only for events still listed as upcoming, so most past festivals have none. As a
