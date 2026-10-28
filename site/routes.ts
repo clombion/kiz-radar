@@ -20,6 +20,8 @@ export const countriesHref = (params?: Params) => hash('countries', params);
 // the views a tab or a swipe goes to, by name, and the tabs of the header
 export type Section = 'finder' | 'friends' | 'map' | 'artists' | 'countries';
 export type Tab = 'finder' | 'friends' | 'explore';
+// every view an address names: the sections, and the SQL page the footer links to (index.html)
+export type Route = Section | 'sql';
 // the header's tabs (a view's nav names its tab), and the second row Explore opens; a swipe on a touch screen steps
 // through the sections in this order: Festivals, Friends, then Explore's
 export const EXPLORE: readonly (readonly [Section, string, string])[] = [

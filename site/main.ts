@@ -10,7 +10,7 @@ import { artistHint, exploreHint } from './hints.ts';
 import { mapView } from './map.ts';
 import { currencySwitch } from './money.ts';
 import { personView } from './people.ts';
-import { EXPLORE, renamed, SECTIONS, TABS, type Tab } from './routes.ts';
+import { EXPLORE, type Route, renamed, SECTIONS, TABS, type Tab } from './routes.ts';
 import { initSearch } from './search.ts';
 import { sentenceView } from './sentence.ts';
 import { sqlView } from './tables.ts';
@@ -48,17 +48,16 @@ const FINDER: View = {
   waitsForData: false,
   show: (root, _, qs, opts) => sentenceView(root, qs, opts),
 };
-const VIEWS = new Map<string, View>([
-  ['finder', FINDER],
-  ['map', { title: 'Map', nav: 'explore', waitsForData: true, show: mapView }],
-  ['artists', { title: 'Artists', nav: 'explore', waitsForData: true, show: artistsView }],
-  [
-    'countries',
-    { title: 'Countries', nav: 'explore', waitsForData: true, show: (root, _, qs) => countriesView(root, qs) },
-  ],
-  ['sql', { title: 'SQL', nav: null, waitsForData: true, show: (root) => sqlView(root) }],
-  ['friends', { title: 'Friends', nav: 'friends', waitsForData: true, show: (root, sub) => personView(root, sub) }],
-]);
+// each route's view: a route without one does not compile
+const VIEWS: Readonly<Record<Route, View>> = {
+  finder: FINDER,
+  map: { title: 'Map', nav: 'explore', waitsForData: true, show: mapView },
+  artists: { title: 'Artists', nav: 'explore', waitsForData: true, show: artistsView },
+  countries: { title: 'Countries', nav: 'explore', waitsForData: true, show: (root, _, qs) => countriesView(root, qs) },
+  sql: { title: 'SQL', nav: null, waitsForData: true, show: (root) => sqlView(root) },
+  friends: { title: 'Friends', nav: 'friends', waitsForData: true, show: (root, sub) => personView(root, sub) },
+};
+const isRoute = (name: string): name is Route => Object.hasOwn(VIEWS, name);
 const failed = (root: HTMLElement, e: unknown) =>
   root.replaceChildren(
     h('p', { class: 'status error' }, `Could not load the data: ${e instanceof Error ? e.message : String(e)}`),
@@ -90,7 +89,7 @@ function route({ scrollUp = false } = {}): void {
 }
 
 function show(name: string, sub: readonly string[], qs: string): void {
-  const view = VIEWS.get(name) ?? FINDER;
+  const view = isRoute(name) ? VIEWS[name] : FINDER; // an address naming no view shows the festivals
   if (view.nav === 'explore') exploreHint.mark();
   if (name === 'artists' && sub[0]) artistHint.mark();
   leave?.abort();
