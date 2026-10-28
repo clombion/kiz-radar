@@ -16,7 +16,7 @@ import pytest
 from pydantic import Field, ValidationError
 
 from pipeline import data, db, enums, generate, prompt, spend, states, tickets
-from pipeline.enums import AnswerState, PassKind, Role, Style
+from pipeline.enums import AnswerState, MergeReason, PassKind, Role, Style
 from pipeline.extract import answers, ask, check_output, load_extract, prices, resolve_artists, run_log
 from pipeline.extract.resolve_artists import stable_ids
 from pipeline.prompt import Prompt, api_schema
@@ -201,6 +201,40 @@ def test_the_pairs_judged_are_every_pair_a_candidate_can_be() -> None:
     assert weak == {('p:yawmensah', 'p:yawmensha')}  # alike at events in one country, not two
     same_name = [(a, b) for a, b in every if pairing.people[a].bare == pairing.people[b].bare]
     assert kept_apart == len(set(same_name) - accepted)
+
+
+def test_each_reason_gives_the_pairs_it_names() -> None:
+    """Pairs written out by hand, each for what its reason needs: a stated country in common and a spelling a letter
+    apart; a single name that begins the other; a partner in common and a name shortened; events in one country only
+    for names of several words spelled alike. Pairs without what a reason needs are no candidates: names a letter apart
+    stated with different countries, or alike at events in different countries."""
+    written = [
+        ('Daniel Silva', 'Portugal', None),
+        ('Daniel Silvaa', 'Portugal', None),
+        ('Ana', 'Angola', None),
+        ('Ana Santos', 'Angola', None),
+        ('Ricardo & Isabel', None, None),
+        ('Ricard & Isabel', None, None),
+        ('Yaw Mensah', None, 'Ghana'),
+        ('Yaw Mensha', None, 'Ghana'),
+        ('Kojo Boateng', None, 'Ghana'),
+        ('Kojo Boateg', None, 'Togo'),
+        ('Mariana Moreau', 'France', None),
+        ('Marian Moreau', 'Spain', None),
+    ]
+    mentions = [
+        resolve_artists.Mention(
+            id=i, event_id=i, role=Role.TEACHER, name_as_written=n, style=None, country=c, event_country=e
+        )
+        for i, (n, c, e) in enumerate(written)
+    ]
+    found, _ = resolve_artists.candidates(resolve_artists.keyed(mentions, []), {})
+    assert {(c.key_a, c.key_b, c.reason) for c in found} == {
+        ('p:danielsilva', 'p:danielsilvaa', MergeReason.SIMILAR_SPELLING),
+        ('p:ana@dance', 'p:anasantos', MergeReason.FIRST_WORDS_OF_THE_OTHER),
+        ('p:ricard@isabel+ricard', 'p:ricardo@isabel+ricardo', MergeReason.SAME_PARTNER__SHORTENED_NAME),
+        ('p:yawmensah', 'p:yawmensha', MergeReason.SIMILAR_SPELLING),
+    }
 
 
 def test_the_spelling_filter_finds_every_pair_alike_enough() -> None:

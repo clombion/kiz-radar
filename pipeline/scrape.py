@@ -27,7 +27,8 @@ from curl_cffi import requests
 from curl_cffi.requests import Response
 
 from pipeline import db as sqlite_db
-from pipeline.kizomba_world import TAG_FEATURES, TAG_GENRES, ApiEvent, ApiPage, Listed, Paged, api_fields, page_fields
+from pipeline import states
+from pipeline.kizomba_world import ApiEvent, ApiPage, Listed, Paged, api_fields, page_fields
 from pipeline.records import day_of, now
 
 SITE = 'https://kizomba-world.com'
@@ -118,12 +119,12 @@ def write_event(db: sqlite3.Connection, row: EventRow, categories: list[str], ta
     _ = db.execute("delete from event_genres where event_id = ? and source = 'site_tag'", (i,))
     _ = db.executemany(
         "insert into event_genres (event_id, genre, source) values (?, ?, 'site_tag')",
-        sorted({(i, g) for t in tags for g in TAG_GENRES.get(t, [])}),
+        sorted({(i, g) for t in tags for g in states.TAG_GENRES.get(t, [])}),
     )
     _ = db.execute("delete from event_features where event_id = ? and source = 'site_tag'", (i,))
     _ = db.executemany(
         "insert into event_features (event_id, feature, source) values (?, ?, 'site_tag')",
-        sorted({(i, TAG_FEATURES[t]) for t in tags if t in TAG_FEATURES}),
+        sorted({(i, states.TAG_FEATURES[t]) for t in tags if t in states.TAG_FEATURES}),
     )
 
 

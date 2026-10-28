@@ -928,7 +928,8 @@ def test_first_reads_count_against_the_budget(files: Path) -> None:
     )
 
 
-@pytest.mark.parametrize(('style', 'ok'), [(Style.KIZOMBA, True), (None, True)])
+# the festival of read() is one of bachata and kizomba: a pass is of one of them, or of all
+@pytest.mark.parametrize(('style', 'ok'), [(Style.KIZOMBA, True), (None, True), (Style.ZOUK, False)])
 def test_a_first_read_names_each_pass_style(style: Style | None, ok: bool) -> None:
     assert (tickets.read_problems(with_pass(read(), style=style), [entry(ROWS)]) == []) == ok
 

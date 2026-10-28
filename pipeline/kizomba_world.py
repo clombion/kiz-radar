@@ -10,26 +10,6 @@ from pydantic import BaseModel, ConfigDict
 from pipeline.records import Json, Record
 
 LANGS: tuple[Literal['fr', 'es', 'pt'], ...] = ('fr', 'es', 'pt')  # the page's translations (Paged.url_<lang>)
-# site tags that state a genre or a feature (the rest are site sections, such as Deal or Holidays)
-TAG_GENRES = {
-    'Bachata': ['bachata'],
-    'Kizomba': ['kizomba'],
-    'Kompa': ['kompa'],
-    'SBK': ['salsa', 'bachata', 'kizomba'],
-    'Salsa': ['salsa'],
-    'Semba': ['semba'],
-    'Tarraxo': ['tarraxo'],
-    'Urbankiz': ['urbankiz'],
-    'Zouk': ['zouk'],
-}
-TAG_FEATURES = {
-    'All in One': 'all_in_one',
-    'Beach Party': 'beach_party',
-    'Boat Party': 'boat_party',
-    'Competition': 'competition',
-    'Cruise': 'cruise',
-    'Pool Party': 'pool_party',
-}
 
 
 class Api(BaseModel):

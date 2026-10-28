@@ -135,8 +135,11 @@ test('a dialog has a history entry of its own: the back button closes it, and cl
   });
   expect(dlg.open).toBe(false);
 
+  const state: unknown = history.state;
   m.open(opener);
+  expect(history.state).toEqual({ modal: true });
   dlg.close(); // as Escape does
   await expect.poll(() => document.activeElement).toBe(opener);
   expect(dlg.open).toBe(false);
+  await expect.poll((): unknown => history.state).toEqual(state); // back on the entry before the dialog's
 });

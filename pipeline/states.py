@@ -13,9 +13,13 @@ any (a genre's dance style). A State is one of them:
   made_by       the producer of this state, when it is not the point's
   icon, link    how the site renders it: its icon (site/icons.ts), or a link to the ticket page or the passes view
   under         the state of the point's `under` point it falls under
+  title         a genre: how a festival's title names it, a pattern matched as whole words, any case
+  tags          a genre, a feature or a genre rule: kizomba-world's site tags that state it
+  genres        a genre rule: the genres it adds
 
 Importing this module checks every row: a missing or wrong-typed field, an unknown point, two states with one key,
-a note or a filter without words, a waiting state without an owner, or an `under` naming no state fails here.
+a note or a filter without words, a waiting state without an owner, an `under` naming no state, or a title, a tag or a
+genre on a state of another point fails here.
 
 The code's enums of the states (ENUMS) are pipeline/enums.py, written from the rows (enums_module) so that a type
 checker sees each state's name; `mise run generate:check` and Tests fail once it no longer says what the rows do.
@@ -72,6 +76,9 @@ class State:
     link: Link | None = None
     under: str | None = None
     forms: Mapping[str, str] = field(default_factory=dict[str, str])
+    title: str | None = None
+    tags: tuple[str, ...] = ()
+    genres: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         object.__setattr__(self, 'forms', types.MappingProxyType(dict(self.forms)))
@@ -447,21 +454,73 @@ ROWS = (
         'organiser',
     ),
     # ---- genres, features, roles: the extraction passes' definitions
-    S('genre', 'kizomba', 'Kizomba (traditional / sensual kizomba)', CARD, 'Kizomba', under='kizomba'),
-    S('genre', 'semba', 'Semba', CARD, 'Semba', under='kizomba'),
-    S('genre', 'urbankiz', 'Urban Kiz / Urbankiz / Kizomba fusion', CARD, 'Urban Kiz', under='kizomba'),
-    S('genre', 'tarraxo', 'Tarraxo', CARD, 'Tarraxo', under='kizomba'),
-    S('genre', 'tarraxinha', 'Tarraxinha', CARD, 'Tarraxinha', under='kizomba'),
+    S(
+        'genre',
+        'kizomba',
+        'Kizomba (traditional / sensual kizomba)',
+        CARD,
+        'Kizomba',
+        under='kizomba',
+        title=r'\bkizomba\b',
+        tags=('Kizomba',),
+    ),
+    S('genre', 'semba', 'Semba', CARD, 'Semba', under='kizomba', title=r'\bsemba\b', tags=('Semba',)),
+    S(
+        'genre',
+        'urbankiz',
+        'Urban Kiz / Urbankiz / Kizomba fusion',
+        CARD,
+        'Urban Kiz',
+        under='kizomba',
+        title=r'\burban\s*kiz\b',
+        tags=('Urbankiz',),
+    ),
+    S('genre', 'tarraxo', 'Tarraxo', CARD, 'Tarraxo', under='kizomba', title=r'\btarraxo\b', tags=('Tarraxo',)),
+    S('genre', 'tarraxinha', 'Tarraxinha', CARD, 'Tarraxinha', under='kizomba', title=r'\btarraxinha\b'),
     S('genre', 'douceur', 'Douceur', CARD, 'Douceur', under='kizomba'),
-    S('genre', 'kompa', 'Kompa / Konpa / Kompas', CARD, 'Kompa', under='other'),
-    S('genre', 'zouk', 'Zouk (including Brazilian zouk and ghetto zouk)', CARD, 'Zouk', under='zouk'),
-    S('genre', 'bachata', 'Bachata (any style)', CARD, 'Bachata', under='bachata'),
-    S('genre', 'salsa', 'Salsa (any style)', CARD, 'Salsa', under='salsa'),
+    S(
+        'genre',
+        'kompa',
+        'Kompa / Konpa / Kompas',
+        CARD,
+        'Kompa',
+        under='other',
+        title=r'\bk[o]n?mpa\b|\bkonpa\b',
+        tags=('Kompa',),
+    ),
+    S(
+        'genre',
+        'zouk',
+        'Zouk (including Brazilian zouk and ghetto zouk)',
+        CARD,
+        'Zouk',
+        under='zouk',
+        title=r'\bzouk\b',
+        tags=('Zouk',),
+    ),
+    S(
+        'genre',
+        'bachata',
+        'Bachata (any style)',
+        CARD,
+        'Bachata',
+        under='bachata',
+        title=r'\bbachata\b',
+        tags=('Bachata',),
+    ),
+    S('genre', 'salsa', 'Salsa (any style)', CARD, 'Salsa', under='salsa', title=r'\bsalsa\b', tags=('Salsa',)),
     S('genre', 'afro', 'Afro dances: afrobeats, afro house, afro dance', CARD, 'Afro', under='other'),
     S('genre', 'reggaeton', 'Reggaeton', CARD, 'Reggaeton', under='other'),
     S('genre', 'kuduro', 'Kuduro', CARD, 'Kuduro', under='other'),
     S('genre', 'other', 'Any other dance genre; give its name in genre_as_written', KEPT, under='other'),
-    S('genre_rule', 'sbk', '"SBK" anywhere in the title or description: salsa, bachata and kizomba', KEPT),
+    S(
+        'genre_rule',
+        'sbk',
+        '"SBK" anywhere in the title or description: the genres it names',
+        KEPT,
+        tags=('SBK',),
+        genres=('salsa', 'bachata', 'kizomba'),
+    ),
     S('genre_rule', 'title', 'a genre named as a whole word in the title', KEPT),
     S('source', 'description', "the festival's description, by an extraction pass or a rule", KEPT),
     S('source', 'site_tag', "kizomba-world's own tag", KEPT),
@@ -533,10 +592,10 @@ ROWS = (
         'Airport shuttle',
         icon='bus',
     ),
-    S('feature', 'pool_party', 'A pool party', CARD, 'Pool party', icon='waves'),
-    S('feature', 'beach_party', 'A beach party', CARD, 'Beach party', icon='sun'),
-    S('feature', 'boat_party', 'A boat party', CARD, 'Boat party', icon='sailboat'),
-    S('feature', 'cruise', 'The event takes place on a cruise ship', CARD, 'Cruise', icon='ship'),
+    S('feature', 'pool_party', 'A pool party', CARD, 'Pool party', icon='waves', tags=('Pool Party',)),
+    S('feature', 'beach_party', 'A beach party', CARD, 'Beach party', icon='sun', tags=('Beach Party',)),
+    S('feature', 'boat_party', 'A boat party', CARD, 'Boat party', icon='sailboat', tags=('Boat Party',)),
+    S('feature', 'cruise', 'The event takes place on a cruise ship', CARD, 'Cruise', icon='ship', tags=('Cruise',)),
     S('feature', 'live_music', 'Live music: a band, singer or concert', CARD, 'Live music', icon='music'),
     S(
         'feature',
@@ -553,6 +612,7 @@ ROWS = (
         CARD,
         'Competition',
         icon='trophy',
+        tags=('Competition',),
     ),
     S('feature', 'camping', 'Camping, bungalows or campsite accommodation', CARD, 'Camping', icon='tent'),
     S('feature', 'masterclass', 'Masterclasses', VIEW, 'Masterclass', icon='graduation-cap'),
@@ -588,6 +648,7 @@ ROWS = (
         FILTER,
         'All-in-one hotel',
         icon='bed-double',
+        tags=('All in One',),
     ),
     S('feature', 'workshops', 'Dance classes or workshops are part of the event', KEPT),
     S('feature', 'dress_code', 'A dress code is stated', KEPT),
@@ -737,7 +798,23 @@ def check(points: tuple[Point, ...], rows: tuple[State, ...]) -> None:
         raise ValueError(f'points with no state: {sorted(empty)}')
 
 
+# the fields only some points' states have
+FIELDS_OF = {'title': {'genre'}, 'tags': {'genre', 'feature', 'genre_rule'}, 'genres': {'genre_rule'}}
+
+
+def check_fields(rows: tuple[State, ...]) -> None:
+    """Refuse a title, a tag or a genre on a state of another point, and a rule's genre that is no genre."""
+    genres = {s.key for s in rows if s.point == 'genre'}
+    for s in rows:
+        for name, points_of in FIELDS_OF.items():
+            if getattr(s, name) and s.point not in points_of:
+                raise ValueError(f'{s.point}.{s.key}: a {name} belongs to a state of {sorted(points_of)}')
+        if unknown := sorted(set(s.genres) - genres):
+            raise ValueError(f'{s.point}.{s.key}: genres {unknown} are no genres')
+
+
 check(POINTS, ROWS)
+check_fields(ROWS)
 POINT = {p.name: p for p in POINTS}
 BY_POINT = {p.name: tuple(s for s in ROWS if s.point == p.name) for p in POINTS}
 KEYS = {p: tuple(s.key for s in rows) for p, rows in BY_POINT.items()}
@@ -910,3 +987,8 @@ def enums_module() -> str:
 
 
 STYLE_OF = {s.key: s.under for s in of('genre')}  # the dance style each genre falls under
+# what kizomba-world's site tags state: the genres a tag names (a genre's own, or a rule's), and the feature
+TAG_GENRES = {t: [s.key] for s in of('genre') for t in s.tags} | {
+    t: list(s.genres) for s in of('genre_rule') for t in s.tags
+}
+TAG_FEATURES = {t: s.key for s in of('feature') for t in s.tags}

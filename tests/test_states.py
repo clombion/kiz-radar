@@ -3,6 +3,7 @@ its states, and each function that chooses between states reaches every one of t
 
 import ast
 import dataclasses
+import itertools
 import json
 import re
 from collections.abc import Callable, Sequence
@@ -171,17 +172,38 @@ def test_the_price_states_tested_are_all_of_them() -> None:
     assert {state for _, state in PRICE_CASES} == set(Price)
 
 
+def card(*options: Sequence[PricedPass]) -> PricedPass | None:
+    """The pass a card prices among these, which is the same in every order they are listed in."""
+    listed = [p for ps in options for p in ps]
+    chosen = set[int]()
+    for order in itertools.permutations(listed):
+        i = prices.card_pass(order)
+        chosen.add(-1 if i is None else listed.index(order[i]))
+    assert len(chosen) == 1, f'the card prices another pass in another order: {sorted(chosen)}'
+    (i,) = chosen
+    return None if i == -1 else listed[i]
+
+
 def test_the_card_prices_the_kizomba_full_pass_then_the_longest_then_the_cheapest_package_with_hotel() -> None:
-    mixed = passes(FULL, style=Style.ZOUK) + passes(FULL, style=Style.KIZOMBA) + passes(FULL, days=3) + passes(FULL)
-    assert prices.card_pass(mixed) == 1
-    assert prices.card_pass(passes(FULL, style=Style.ZOUK) + passes(FULL, days=3)) == 1  # all styles before one
-    assert prices.card_pass(passes(FULL, days=3) + passes(FULL, days=4)) == 1
-    assert prices.card_pass(passes(FULL, days=3) + passes(FULL)) == 1  # a length not stated is the whole festival
-    hotel = passes(PACKAGE, amount=900, includes_hotel=True) + passes(PACKAGE, amount=700, includes_hotel=True)
-    assert prices.card_pass(hotel) == 1
-    assert prices.card_pass(passes(PACKAGE, group_size=None, includes_hotel=True)) is None  # priced per room
-    assert prices.card_pass(passes(PACKAGE)) is None  # no hotel
-    assert prices.card_pass(passes(PACKAGE, includes_hotel=True) + passes(FULL)) == 1  # a full pass first
+    (zouk,), (kizomba,), (three,), (four,), (whole,) = (
+        passes(FULL, style=Style.ZOUK),
+        passes(FULL, style=Style.KIZOMBA),
+        passes(FULL, days=3),
+        passes(FULL, days=4),
+        passes(FULL),
+    )
+    assert card([zouk], [kizomba], [three], [whole]) is kizomba
+    assert card([zouk], [three]) is three  # all styles before one
+    assert card([three], [four]) is four
+    assert card([three], [whole]) is whole  # a length not stated is the whole festival
+    (dear,), (cheap,) = (
+        passes(PACKAGE, amount=900, includes_hotel=True),
+        passes(PACKAGE, amount=700, includes_hotel=True),
+    )
+    assert card([dear], [cheap]) is cheap
+    assert card(passes(PACKAGE, group_size=None, includes_hotel=True)) is None  # priced per room
+    assert card(passes(PACKAGE)) is None  # no hotel
+    assert card([dear], [whole]) is whole  # a full pass first
 
 
 PEOPLE_CASES: list[tuple[tuple[int | None, PassKind], People]] = [
@@ -250,3 +272,29 @@ def test_a_string_literal_is_no_set_of_states() -> None:
     modules = (ROOT / 'pipeline').rglob('*.py')
     found = {w for path in modules for node in ast.walk(ast.parse(path.read_text())) if (w := literal_words(node))}
     assert found == LITERALS
+
+
+def states_written(node: ast.AST) -> set[str]:
+    """The points whose keys a set, list, tuple or dict of strings holds, every one of them; none for another node."""
+    match node:
+        case ast.Dict(keys=items) | ast.Set(elts=items) | ast.List(elts=items) | ast.Tuple(elts=items):
+            words = [i.value for i in items if isinstance(i, ast.Constant) and isinstance(i.value, str)]
+        case _:
+            return set()
+    if len(words) < len(items) or len(words) < 2:
+        return set()
+    points = [{p for p, rows in states.BY_POINT.items() if w in {r.key for r in rows}} for w in words]
+    return set[str].intersection(*points)
+
+
+def test_no_collection_of_strings_is_one_of_states() -> None:
+    """A set of states, or a table keyed by them, is written with the enums (or as columns of their rows), so a state
+    renamed or added is seen everywhere; outside the rows and the modules written from them."""
+    found = [
+        f'{path.relative_to(ROOT)}:{node.lineno} {sorted(points)}'
+        for path in sorted((ROOT / 'pipeline').rglob('*.py'))
+        if path.name not in {'states.py', 'enums.py'}
+        for node in ast.walk(ast.parse(path.read_text()))
+        if isinstance(node, ast.expr) and (points := states_written(node))
+    ]
+    assert found == []

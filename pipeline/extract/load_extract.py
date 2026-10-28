@@ -48,7 +48,6 @@ from pipeline.extract import answers, run_log
 from pipeline.extract import prices as price_rules
 from pipeline.extract.answers import Answer
 from pipeline.extract.prices import on_date
-from pipeline.kizomba_world import TAG_FEATURES, TAG_GENRES
 from pipeline.prompt import Pass
 from pipeline.records import (
     Alt,
@@ -64,19 +63,6 @@ from pipeline.records import (
     StatusRow,
     day_of,
 )
-
-# Whole-word genre names recognised in event titles (brand spellings like "AfroKiz" or "Kizz" do not match)
-TITLE_GENRES = {
-    'kizomba': r'\bkizomba\b',
-    'semba': r'\bsemba\b',
-    'urbankiz': r'\burban\s*kiz\b',
-    'tarraxo': r'\btarraxo\b',
-    'tarraxinha': r'\btarraxinha\b',
-    'kompa': r'\bk[o]n?mpa\b|\bkonpa\b',
-    'zouk': r'\bzouk\b',
-    'bachata': r'\bbachata\b',
-    'salsa': r'\bsalsa\b',
-}
 
 TABLES = """
 BEGIN;
@@ -590,15 +576,18 @@ def load_rooms_genres(con: sqlite3.Connection, got: Mapping[int, Answer[RoomsGen
 
 def load_genre_rules(con: sqlite3.Connection) -> None:
     """The genres the rooms-genres pass applies unevenly (SBK, a genre in the title), and the site's style tags'."""
-    # "SBK" names salsa, bachata and kizomba together; the rooms-genres pass does not expand it consistently
+    # a rule's word ("SBK", its tag) names several genres together; the rooms-genres pass does not expand it
+    # consistently
     sbk_rows: list[tuple[int, str, str, str, str]] = []
     described: list[tuple[int, str, str | None]] = con.execute(
         'SELECT id, title, description_text FROM events'
     ).fetchall()
     for eid, title, desc in described:
         text = f'{title}\n{desc or ""}'
-        if m := re.search(r'[^\n]{0,60}\bSBK\b[^\n]{0,60}', text):
-            sbk_rows += [(eid, g, 'SBK', m.group(0).strip(), 'sbk') for g in ('salsa', 'bachata', 'kizomba')]
+        for rule in states.of('genre_rule'):
+            for word in rule.tags:
+                if m := re.search(rf'[^\n]{{0,60}}\b{re.escape(word)}\b[^\n]{{0,60}}', text):
+                    sbk_rows += [(eid, g, word, m.group(0).strip(), rule.key) for g in rule.genres]
     _ = con.executemany(
         'INSERT INTO event_genres (event_id, genre, source, genre_as_written, quote, rule)'
         " VALUES (?, ?, 'description', ?, ?, ?) ON CONFLICT DO NOTHING",
@@ -608,9 +597,11 @@ def load_genre_rules(con: sqlite3.Connection) -> None:
     title_rows: list[tuple[int, str, str, str, str]] = []
     for eid, title, _ in described:
         plain = unicodedata.normalize('NFKC', title)
-        for genre, pattern in TITLE_GENRES.items():
-            if m := re.search(pattern, plain, re.IGNORECASE):
-                title_rows.append((eid, genre, m.group(0), title, 'title'))
+        title_rows += [  # brand spellings ("AfroKiz", "Kizz") are no title of a genre
+            (eid, genre.key, m.group(0), title, 'title')
+            for genre in states.of('genre')
+            if genre.title and (m := re.search(genre.title, plain, re.IGNORECASE))
+        ]
     _ = con.executemany(
         'INSERT INTO event_genres (event_id, genre, source, genre_as_written, quote, rule)'
         " VALUES (?, ?, 'description', ?, ?, ?) ON CONFLICT DO NOTHING",
@@ -619,7 +610,7 @@ def load_genre_rules(con: sqlite3.Connection) -> None:
     tags: list[tuple[int, str]] = con.execute('SELECT event_id, tag FROM event_tags').fetchall()
     _ = con.executemany(
         "INSERT INTO event_genres (event_id, genre, source) VALUES (?, ?, 'site_tag') ON CONFLICT DO NOTHING",
-        [(eid, genre) for eid, tag in tags for genre in TAG_GENRES.get(tag, [])],
+        [(eid, genre) for eid, tag in tags for genre in states.TAG_GENRES.get(tag, [])],
     )
 
 
@@ -676,7 +667,7 @@ def main() -> None:
         tags: list[tuple[int, str]] = con.execute('SELECT event_id, tag FROM event_tags').fetchall()
         _ = con.executemany(
             "INSERT INTO event_features (event_id, feature, source) VALUES (?, ?, 'site_tag') ON CONFLICT DO NOTHING",
-            [(eid, TAG_FEATURES[tag]) for eid, tag in tags if tag in TAG_FEATURES],
+            [(eid, states.TAG_FEATURES[tag]) for eid, tag in tags if tag in states.TAG_FEATURES],
         )
         load_prices(con, prices, pages, status())
         record_steps(con, extract, rooms_genres, prices, pages)
