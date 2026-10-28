@@ -43,15 +43,16 @@ Usage: uv run --group artists -m pipeline.extract.resolve_artists source/<events
 
 import argparse
 import itertools
+import math
 import re
 import sqlite3
 import sys
 import unicodedata
-from collections import defaultdict
+from collections import Counter, defaultdict
 from collections.abc import Iterable, Mapping
 from dataclasses import dataclass, field
 from difflib import SequenceMatcher
-from typing import NamedTuple
+from typing import NamedTuple, Self
 
 import pycountry
 
@@ -560,6 +561,37 @@ SHORTEST = 3  # the shortest name a name can shorten, or begin
 SIMILAR_SHORTEST = 5  # the shortest name compared by spelling
 
 
+def letters(name: str) -> list[tuple[str, int]]:
+    """A name's letters as a set: each letter with how many times it came before ('anna': a1 n1 n2 a2)."""
+    seen: Counter[str] = Counter()
+    out: list[tuple[str, int]] = []
+    for ch in name:
+        seen[ch] += 1
+        out.append((ch, seen[ch]))
+    return out
+
+
+def spelled_alike(names: Mapping[str, str]) -> set[tuple[str, str]]:
+    """The pairs of keys whose names have letters enough in common to be SIMILAR by quick_ratio (twice the letters in
+    common over both lengths), an upper bound of ratio. Two names with that many letters in common share one among
+    each name's first letters, in one order of all letters, rarest first; so only names sharing one of those are
+    compared."""
+    of = {k: letters(n) for k, n in names.items()}
+    rarity = Counter(t for ls in of.values() for t in ls)
+    first: defaultdict[tuple[str, int], list[str]] = defaultdict(list)
+    for k, ls in of.items():
+        # the fewest letters it has in common with a name SIMILAR to it: SIMILAR / (2 - SIMILAR) of its own
+        common = math.ceil(SIMILAR * len(ls) / (2 - SIMILAR) - 1e-9)
+        for t in sorted(ls, key=lambda t: (rarity[t], t))[: len(ls) - common + 1]:
+            first[t].append(k)
+    return {
+        pair
+        for g in first.values()
+        for pair in itertools.combinations(sorted(g), 2)
+        if SequenceMatcher(None, names[pair[0]], names[pair[1]]).quick_ratio() >= SIMILAR
+    }
+
+
 @dataclass(frozen=True)
 class Pairing:
     """What the candidates are judged on, per person key: its bare name, its words, and its partners' names."""
@@ -568,6 +600,13 @@ class Pairing:
     bare: dict[str, str]
     words: dict[str, list[str]]
     partner_names: dict[str, set[str]]
+
+    @classmethod
+    def of(cls, keys: Keys) -> Self:
+        """The pairing of the person keys."""
+        bare = {k: k[2:].split('@')[0] for k in keys.kinds if k.startswith('p:')}
+        words = {k: words_of(keys.names[k][0]) for k in bare}
+        return cls(keys, bare, words, {k: {bare.get(p, p) for p in keys.partners[k]} for k in bare})
 
     def strong(self, a: str, b: str) -> bool:
         """A shared stated country or a shared partner. Events in the same country are weak evidence (one country
@@ -610,6 +649,21 @@ class Pairing:
         several = len(self.words[a]) > 1 and len(self.words[b]) > 1
         return ('similar spelling', sim) if (several and supported) or strong else None
 
+    def judged(self, persons: Iterable[str]) -> set[tuple[str, str]]:
+        """The pairs reason() can accept: those sharing a stated country or a partner (strong evidence, which every
+        other reason needs), and those of several words each spelled alike enough to be similar()."""
+        k = self.keys
+        shared: defaultdict[str, list[str]] = defaultdict(list)
+        several: dict[str, str] = {}
+        for p in persons:
+            for c in k.stated_countries[p]:
+                shared['country ' + c].append(p)
+            for n in self.partner_names[p]:
+                shared['partner ' + n].append(p)
+            if len(self.words[p]) > 1 and len(self.bare[p]) >= SIMILAR_SHORTEST:
+                several[p] = self.bare[p]
+        return {pair for g in shared.values() for pair in itertools.combinations(sorted(g), 2)} | spelled_alike(several)
+
     def evidence(self, a: str, b: str) -> str:
         k = self.keys
         return (
@@ -624,19 +678,11 @@ class Pairing:
 def candidates(keys: Keys, merges: Mapping[frozenset[str], MergeDecision]) -> tuple[list[Candidate], int]:
     """(the pairs among person keys that may be one artist, with any decision on them; how many same-name pairs were
     kept apart for want of evidence). Couples follow their members."""
-    persons = sorted(k for k in keys.kinds if k.startswith('p:'))
-    bare = {k: k[2:].split('@')[0] for k in persons}
-    pairing = Pairing(
-        keys,
-        bare,
-        {k: words_of(keys.names[k][0]) for k in persons},
-        {k: {bare.get(p, p) for p in keys.partners[k]} for k in persons},
-    )
+    pairing = Pairing.of(keys)
+    persons, bare = sorted(pairing.bare), pairing.bare
     out: list[Candidate] = []
-    unsupported = 0
-    for a, b in itertools.combinations(persons, 2):
+    for a, b in sorted(pairing.judged(persons)):
         if (found := pairing.reason(a, b)) is None:
-            unsupported += bare[a] == bare[b]
             continue
         reason, sim = found
         names = keys.names
@@ -648,7 +694,9 @@ def candidates(keys: Keys, merges: Mapping[frozenset[str], MergeDecision]) -> tu
             reason = 'single name stated with different countries; may be several people'
             evidence = f'countries {sorted(keys.stated_countries[k])}'
             out.append(Candidate(k, k, name, name, reason, 0.0, evidence, merges.get(frozenset((k,)))))
-    return out, unsupported
+    # a same-name pair is a candidate exactly when the evidence is strong; the others were kept apart
+    same_name = sum(n * (n - 1) // 2 for n in Counter(bare.values()).values())
+    return out, same_name - sum(c.key_a != c.key_b and bare[c.key_a] == bare[c.key_b] for c in out)
 
 
 def merged(keys: Keys, merges: Mapping[frozenset[str], MergeDecision]) -> UnionFind:

@@ -3,6 +3,7 @@
 import argparse
 import dataclasses
 import datetime as dt
+import itertools
 import json
 import sqlite3
 from enum import StrEnum
@@ -13,7 +14,7 @@ import pytest
 from pydantic import Field, ValidationError
 
 from pipeline import db, enums, generate, prompt, spend, states, tickets
-from pipeline.enums import AnswerState, PassKind, Style
+from pipeline.enums import AnswerState, PassKind, Role, Style
 from pipeline.extract import answers, ask, check_output, load_extract, prices, resolve_artists, run_log
 from pipeline.extract.resolve_artists import stable_ids
 from pipeline.prompt import Prompt, api_schema
@@ -114,6 +115,55 @@ def test_an_answer_with_no_real_day_is_refused(value: str) -> None:
 
 def test_any_year_s_day_is_a_real_day() -> None:
     assert real_day('02-29') == '02-29'
+
+
+def spelled(name: str, n: int) -> str:
+    """The name, or the name a letter off by n: one dropped, doubled or swapped with the next."""
+    i = n % (len(name) - 1)
+    return [
+        name,
+        name[:i] + name[i + 1 :],
+        name[:i] + name[i] + name[i:],
+        name[:i] + name[i + 1] + name[i] + name[i + 2 :],
+    ][n % 4]
+
+
+def test_the_pairs_judged_are_every_pair_a_candidate_can_be() -> None:
+    """Only the pairs sharing a stated country or a partner, and those spelled alike, are judged: every other pair
+    lacks what each reason needs. Names a letter apart, alone and in couples, with countries stated, events'
+    countries or neither, give each reason's pairs; and a same-name pair judged or not is kept apart all the same."""
+    firsts = ['Daniel', 'Daniela', 'Mariana', 'Marian', 'Joao', 'Kwame', 'Isabelle', 'Isabel', 'Ricardo', 'Ana']
+    lasts = ['Silva', 'Santos', 'Moreau', 'Mendes', 'Okafor', 'Ferreira', '']
+    places = ['France', 'Portugal', 'Angola', None]
+    mentions: list[resolve_artists.Mention] = []
+    for i in range(400):
+        last = lasts[i % 7]
+        name = spelled(firsts[i % 10], i // 10) + (f' {spelled(last, i // 7)}' if last else '')
+        if i % 3 == 0:
+            name += f' & {spelled(firsts[i * 7 % 10], i // 3)}'
+        mentions.append(
+            resolve_artists.Mention(
+                id=i,
+                event_id=i,
+                role=[Role.TEACHER, Role.DJ][i % 2],
+                name_as_written=name,
+                style=None,
+                country=places[i // 5 % 4],
+                event_country=places[i // 11 % 4],
+            )
+        )
+    keys = resolve_artists.keyed(mentions)
+    pairing = resolve_artists.Pairing.of(keys)
+    every = list(itertools.combinations(sorted(pairing.bare), 2))
+    accepted = {pair for pair in every if pairing.reason(*pair)}
+    reasons = {found[0] for pair in accepted if (found := pairing.reason(*pair))}
+    assert len(reasons) == 4
+    assert accepted <= pairing.judged(pairing.bare)
+    found, kept_apart = resolve_artists.candidates(keys, {})
+    assert {(c.key_a, c.key_b) for c in found if c.key_a != c.key_b} == accepted
+    assert kept_apart == sum(
+        pairing.bare[a] == pairing.bare[b] and pair not in accepted for pair in every for a, b in [pair]
+    )
 
 
 def db_with(con: sqlite3.Connection, keys: dict[str, int], issued: dict[str, int]) -> sqlite3.Connection:
