@@ -222,7 +222,7 @@ TABLE_DOCS = {
     'artist_mentions': 'Every artist, couple, group or organiser named in an event description, exactly as written, '
     'with '
     'role, style, stated country, the line it came from, and the prompt and model that extracted it. '
-    'event_artists links each mention to its resolved artist.',
+    'mention_artists links each mention to its resolved artist.',
     'event_features': 'Event features (all-in-one hotel, competition, workshops, pool party, ...), one row per event, '
     'feature '
     "and source: 'description' rows carry the supporting quote and rationale; 'site_tag' rows mirror the "

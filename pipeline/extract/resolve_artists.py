@@ -4,7 +4,8 @@ Reads artist_mentions (from load_extract.py) and pipeline/extract/merges.csv; wr
   artists                 id, display_name, kind (person | couple | group | organisation), match_key
   artist_aliases          every name an artist was written as
   couple_members          couple/group id -> member person id
-  event_artists           event -> artist links, one per mention (role, style, country, mention id)
+  mention_artists         each mention's artist
+  event_artists (view)    each artist booked at an event in a role, once however often its line-up names them
   artist_merge_candidates pairs that may be the same artist, with evidence, for review
   merge_reason_definitions
                           reason -> definition, from pipeline/states.py (the reasons artist_merge_candidates gives)
@@ -103,15 +104,14 @@ CREATE TABLE couple_members (
     member_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED,
     PRIMARY KEY (couple_id, member_id)
 ) STRICT;
-CREATE TABLE event_artists (
+CREATE TABLE mention_artists (
     mention_id INTEGER PRIMARY KEY REFERENCES artist_mentions(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
-    event_id INTEGER NOT NULL REFERENCES events(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
-    artist_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED,
-    role TEXT NOT NULL CHECK (role IN ({role})),
-    style TEXT,
-    country TEXT
+    artist_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED
 ) STRICT;
-CREATE INDEX event_artists_artist ON event_artists(artist_id);
+CREATE INDEX mention_artists_artist ON mention_artists(artist_id);
+CREATE VIEW event_artists AS
+    SELECT DISTINCT m.event_id, ma.artist_id, m.role
+    FROM mention_artists ma JOIN artist_mentions m ON m.id = ma.mention_id;
 CREATE TABLE merge_reason_definitions (
     reason TEXT PRIMARY KEY,
     definition TEXT NOT NULL
@@ -367,8 +367,9 @@ TABLE_DOCS = {
     'included). The keys in artist_merge_candidates, artist_merge_decisions and artist_group_aliases '
     'are these keys.',
     'couple_members': "The people in each couple or group (couple_id is the couple's or group's artist id).",
-    'event_artists': 'Each artist mention (artist_mentions.id) linked to its event and resolved artist, with role, '
-    'style and stated country.',
+    'mention_artists': 'The resolved artist of each mention (artist_mentions.id), whose style and stated country '
+    'artist_mentions holds.',
+    'event_artists': 'Each artist booked at an event, in a role: once however often its line-up names them.',
     'artist_events': "Every event an artist appears at: directly (via 'direct') or as a member of a couple or group "
     "(via 'member', via_artist_id = the couple or group). Use it for a person's full event history.",
     'artist_merge_candidates': 'Pairs of name keys that may be the same artist, with the reason, similarity and '
@@ -434,10 +435,10 @@ def record_steps(con: Transaction, resolved: Resolved, rows: Sequence[MergeRow])
             'decision are kept apart and listed in artist_merge_candidates.',
             'pipeline/extract/resolve_artists.py',
             inputs='table artist_mentions; pipeline/extract/merges.csv; pipeline/extract/groups.csv',
-            outputs='tables artists, artist_aliases, artist_keys, couple_members, event_artists, '
+            outputs='tables artists, artist_aliases, artist_keys, couple_members, mention_artists, '
             'artist_merge_candidates, merge_reason_definitions, artist_merge_decisions, artist_group_definitions, '
             'artist_group_aliases; '
-            'view artist_events',
+            'views event_artists, artist_events',
             details={
                 'mentions': n_mentions,
                 'artists_by_kind': kinds_count,
@@ -913,18 +914,8 @@ def main() -> None:
         )
         found = [c for c in found if c.key_a == c.key_b or final_key[c.key_a] != final_key[c.key_b]]
         con.insert(
-            'event_artists',
-            (
-                {
-                    'mention_id': m.id,
-                    'event_id': m.event_id,
-                    'artist_id': ids[final_key[keys.mention_key[m.id]]],
-                    'role': m.role,
-                    'style': m.style,
-                    'country': m.country,
-                }
-                for m in mentions
-            ),
+            'mention_artists',
+            ({'mention_id': m.id, 'artist_id': ids[final_key[keys.mention_key[m.id]]]} for m in mentions),
         )
         con.insert('artist_merge_candidates', (c._asdict() for c in found))
         con.insert(

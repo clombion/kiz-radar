@@ -64,7 +64,6 @@ COPIED = (
     'artists',
     'artist_aliases',
     'couple_members',
-    'event_artists',
     'genre_definitions',
     'feature_definitions',
     'role_definitions',
@@ -347,8 +346,8 @@ def merged(x: Transaction) -> tuple[Artists, int]:
 
 
 def fold(x: Transaction, old: int, new: int) -> None:
-    """An artist folded into another: its bookings, members, spellings and name become the other's."""
-    x.execute('update event_artists set artist_id = ? where artist_id = ?', (new, old))
+    """An artist folded into another: its mentions, members, spellings and name become the other's."""
+    x.execute('update mentions set artist_id = ? where artist_id = ?', (new, old))
     for side in ('couple_id', 'member_id'):  # a pair the other already has is left to the delete
         x.execute(f'update or ignore couple_members set {side} = ? where {side} = ?', (new, old))  # noqa: S608 (a column of ours)
         x.execute(f'delete from couple_members where {side} = ?', (old,))  # noqa: S608 (a column of ours)
@@ -369,7 +368,12 @@ def fold(x: Transaction, old: int, new: int) -> None:
 
 
 def merge_artists(x: Transaction) -> Artists:
-    """Apply the manual merges and the moved bookings; old ids stay reachable through artist_redirects."""
+    """Apply the manual merges and the moved bookings to the mentions' artists (a table of this build alone), and
+    book each artist once per event and role; old ids stay reachable through artist_redirects."""
+    x.execute("""create temp table mentions (mention_id integer primary key, event_id integer not null,
+       artist_id integer not null, role text not null, country text)""")
+    x.execute("""insert into mentions select ma.mention_id, m.event_id, ma.artist_id, m.role, m.country
+       from src.mention_artists ma join src.artist_mentions m on m.id = ma.mention_id""")
     artists, n_merges = merged(x)
     root = artists.root
     redirects = [(a, root(a)) for a in list(artists.parent) if root(a) != a]
@@ -393,15 +397,18 @@ def merge_artists(x: Transaction) -> Artists:
         frm, to = artists.key_id.get(r.from_key), artists.key_id.get(r.to_key)
         if not frm or not to:
             sys.exit(f'artist_bookings.csv: unknown key in {r.from_name} → {r.to_name}')
-        if not x.exists('select 1 from event_artists where event_id = ? and artist_id = ?', (r.event_id, root(frm))):
+        if not x.exists('select 1 from mentions where event_id = ? and artist_id = ?', (r.event_id, root(frm))):
             sys.exit(f'artist_bookings.csv: {r.from_name} is not booked at {r.event}')
         x.execute(
-            'update event_artists set artist_id = ? where event_id = ? and artist_id = ?',
+            'update mentions set artist_id = ? where event_id = ? and artist_id = ?',
             (root(to), r.event_id, root(frm)),
         )
-    # a merge or a moved booking can name the same artist twice in one line-up: the first mention stays
-    x.execute("""delete from event_artists where mention_id not in (
-       select min(mention_id) from event_artists group by event_id, artist_id, role)""")
+    # a merge or a moved booking can name the same artist twice in one line-up, booked once
+    x.execute(f"""create table event_artists (
+       event_id integer not null references events(id) deferrable initially deferred,
+       artist_id integer not null references artists(id) deferrable initially deferred,
+       role text not null check (role in ({states.sql_in('role')})), primary key (event_id, artist_id, role))""")
+    x.execute('insert into event_artists select distinct event_id, artist_id, role from mentions')
     print(f'{n_merges} merge rows, {len(redirects)} artists folded into others, {len(moves)} bookings moved')
 
     # one casing for names across the site: "AMI & JULIEN" → "Ami & Julien", "Dj Chico" → "DJ Chico"
@@ -536,11 +543,15 @@ def artist_stats(x: Transaction, artists: Artists) -> Booked:
     ):
         couple_bookings[m.artist_id].add(m.event_id)
     stated: collections.defaultdict[int, collections.Counter[str]] = collections.defaultdict(collections.Counter)
+    # a booking's country is the one its first mention states
     for said in x.rows(
-        Stated, "select artist_id, country from event_artists where country is not null and country != ''"
+        Stated,
+        """select artist_id, country from mentions where country is not null and country != ''
+           and mention_id in (select min(mention_id) from mentions group by event_id, artist_id, role)""",
     ):
         for c in codes(said.country):
             stated[said.artist_id][c] += 1
+    x.execute('drop table temp.mentions')
     x.execute(
         'create table artist_origin (artist_id integer, country_code text, mentions integer, primary key (artist_id, '
         'country_code))'
@@ -843,8 +854,8 @@ DOCS = {
     'booked_most_in (the country with most of their bookings), countries booked in, bookings abroad (outside the home '
     f'country, or outside booked_most_in when that is unknown), popular = at least {POPULAR} bookings, couple_bookings '
     '= further events where they appear only as part of a couple. People booked only as part of a couple have no row.',
-    'event_artists': 'Each artist named in a line-up, resolved to an artist, with role, style and stated country. '
-    'as_couple is set when a member is listed in the same role as their couple at the same event: that row repeats the '
+    'event_artists': 'Each artist booked at an event, in a role: once however often its line-up names them. as_couple '
+    'is set when a member is listed in the same role as their couple at the same event: that row repeats the '
     'couple’s booking and is left out of line-ups and statistics.',
     'artist_redirects': 'Artists merged into another, by pipeline/artist_merges.csv or by the source pipeline: old_id '
     'now reads as new_id.',

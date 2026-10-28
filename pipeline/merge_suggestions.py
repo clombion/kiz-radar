@@ -202,7 +202,9 @@ def origins(c: Reader) -> collections.defaultdict[int, collections.Counter[str]]
     couple's."""
     stated: collections.defaultdict[int, collections.Counter[str]] = collections.defaultdict(collections.Counter)
     for said in c.rows(
-        Stated, "select artist_id, country from event_artists where country is not null and country != ''"
+        Stated,
+        'select ma.artist_id, m.country from mention_artists ma join artist_mentions m on m.id = ma.mention_id'
+        " where m.country is not null and m.country != ''",
     ):
         for cc in codes(said.country):
             stated[said.artist_id][cc] += 1

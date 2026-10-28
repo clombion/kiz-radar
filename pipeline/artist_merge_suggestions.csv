@@ -11,7 +11,7 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:carla@carla+malick,p:carla@carla+mario,Carla,CARLA,0,0,FR,AO FR,same,no clash,,1.0,1.1,"same name, different keys"
 ,p:clemence@clemence+curtis,p:clemence@clemence+erwan,CLÉMENCE,Clémence,0,0,FR,FR,same,no clash,,1.0,1.1,"same name, different keys"
 ,p:dani@dani+kizzg,p:dani@dani+ziggy,Dani,Dani,0,0,BG,BG,same,no clash,,1.0,1.1,"same name, different keys"
-,p:daniel@dance,p:daniel@daniel+uliana,Daniel,Daniel,2,0,GB NO,NO UA,same,no clash,,1.0,1.1,"same name, different keys"
+,p:daniel@dance,p:daniel@daniel+uliana,Daniel,Daniel,1,0,GB NO,NO UA,same,no clash,,1.0,1.1,"same name, different keys"
 ,p:david@aylin+david,p:david@david+ines,David,David,0,0,ES,ES,same,no clash,,1.0,1.1,"same name, different keys"
 ,p:david@crisandra+david,p:david@daria+david,David,David,0,0,CA HT,CA,same,no clash,,1.0,1.1,"same name, different keys"
 ,p:dimitris@christina+dimitris,p:dimitris@dimitris+yolena,Dimitris,Dimitris,0,0,GR LU,GR,same,no clash,,1.0,1.1,"same name, different keys"
@@ -101,7 +101,7 @@ decision,keep_key,merge_key,keep_name,merge_name,keep_bookings,merge_bookings,ke
 ,p:carolinarosa,p:carolina@carolina+kadu,CAROLINA ROSA,Carolina,1,0,ES,BR ES,same,no clash,,0.8,0.9,first words of the other
 ,c:fabrizio@fabrizio+gina+gina@fabrizio+gina,c:fabrizio@fabrizio+giulia+giulia@fabrizio+giulia,Fabrizio & Gina,Fabrizio & Giulia,1,1,~IT,IT,same,no clash,,0.8,0.9,couples with matching names
 ,c:francesca@francesca+luca+luca@francesca+luca,c:francis@francis+lucy+lucy@francis+lucy,Luca & Francesca,Francis & Lucy,10,3,IT,IT SN,same,shared circuit,same city: roma,0.75,0.9,couples with matching names
-,c:alessandra@alessandra+marc+marc@alessandra+marc,c:alessandra@alessandra+marzio+marzio@alessandra+marzio,Marc & Alessandra,Marzio & Alessandra,2,1,AO IT,~IT,same,no clash,,0.8,0.9,couples with matching names
+,c:alessandra@alessandra+marc+marc@alessandra+marc,c:alessandra@alessandra+marzio+marzio@alessandra+marzio,Marc & Alessandra,Marzio & Alessandra,1,1,AO IT,~IT,same,no clash,,0.8,0.9,couples with matching names
 ,c:jahia@jahia+marco+marco@jahia+marco,c:marco@marco+maria+maria@marco+maria,Marco & Jahia,MARCO Y MARIA,2,1,~IT,~IT,same,shared circuit,same organiser,0.8,0.9,couples with matching names
 ,c:lanna@lanna+paulo+paulo@lanna+paulo,c:lenna@lenna+paulo+paulo@lenna+paulo,PAULO & LANNA,PAULO & LENNA,1,1,~PL,PT,unclear,no clash,,0.9,0.9,couples with matching names
 ,c:sarita@sarita+seb+seb@sarita+seb,c:sara@sara+seb+seb@sara+seb,Seb & Sarita,Seb & Sara,2,1,~FR,~ES,unclear,no clash,,0.9,0.9,couples with matching names
