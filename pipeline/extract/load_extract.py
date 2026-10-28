@@ -65,9 +65,15 @@ from pipeline.records import (
     StatusRow,
     day_of,
 )
+from pipeline.text import soften_caps, tidy_title
 
 # the tables this step makes again each time it runs
 DDL = """
+CREATE TABLE event_display (
+    event_id INTEGER PRIMARY KEY REFERENCES events(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
+    title TEXT NOT NULL,          -- the title as a card shows it (pipeline/text.py tidy_title)
+    venue TEXT                    -- the venue, its shouting capitals softened
+) STRICT;
 CREATE TABLE event_passes (
     event_id INTEGER NOT NULL REFERENCES events(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     pass_no INTEGER NOT NULL,
@@ -207,6 +213,12 @@ class Dated(BaseModel):
     modified_at: str
 
 
+class Venued(BaseModel):
+    id: int
+    title: str
+    venue: str | None
+
+
 class Described(BaseModel):
     id: int
     title: str
@@ -219,6 +231,8 @@ class Tagged(BaseModel):
 
 
 TABLE_DOCS = {
+    'event_display': "Each event's title and venue as the site shows them: the title without its dates, years, "
+    "'official' and shouting capitals, the venue's capitals softened (pipeline/text.py).",
     'artist_mentions': 'Every artist, couple, group or organiser named in an event description, exactly as written, '
     'with '
     'role, style, stated country, the line it came from, and the prompt and model that extracted it. '
@@ -718,6 +732,13 @@ def main() -> None:
                 f"{stale} festivals' ticket pages were read with another first-read prompt; left out until read again"
             )
         con.remake(TABLES)
+        con.insert(
+            'event_display',
+            (
+                {'event_id': e.id, 'title': tidy_title(e.title), 'venue': soften_caps(e.venue) if e.venue else None}
+                for e in con.rows(Venued, 'SELECT id, title, venue FROM events')
+            ),
+        )
         for point in ('feature', 'genre', 'role'):
             con.insert(f'{point}_definitions', ({point: s.key, 'definition': s.criterion} for s in states.of(point)))
         load_rooms_genres(con, rooms_genres)

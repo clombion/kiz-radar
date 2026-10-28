@@ -8,6 +8,7 @@ from collections.abc import Iterable
 from pathlib import Path
 
 import pytest
+from pydantic import BaseModel
 
 from pipeline import build_site_db, data, merge_suggestions, scrape
 from pipeline import db as sqlite_db
@@ -105,6 +106,35 @@ UNDEFERRED = re.compile(
 # every table and view of the export, by the step that declares it: the ones it makes again each run, and the ones it
 # keeps, which change by migration (pipeline/export.py)
 DECLARED = (scrape.KEPT, run_log.KEPT, resolve_artists.KEPT, resolve_artists.TABLES, load_extract.TABLES)
+
+
+class Declared(BaseModel):
+    """A column as SQLite has it declared."""
+
+    name: str
+    type: str
+    notnull: int
+
+
+# a column's CHECK over the states it may hold, in the export's DDL
+STATE_CHECK = re.compile(r'\b(\w+) TEXT[^,]*?CHECK \(\1 IN \(([^)]*)\)\)', re.IGNORECASE)
+
+
+def test_the_site_keeps_a_copied_column_as_the_export_declares_it(site_db: Path) -> None:
+    """A table the site copies keeps each column it copies as the export declares it: its type, NOT NULL, and the states
+    its CHECK allows."""
+    with sqlite_db.opened(site_db, 'ro') as site:
+        site.attach('src', EXPORT, 'ro')
+        for t in build_site_db.COPIED:
+            columns = 'select name, upper(type) as type, "notnull" from pragma_table_info(?, ?)'
+            ours = {c.name: c for c in site.rows(Declared, columns, (t, 'main'))}
+            theirs = {c.name: c for c in site.rows(Declared, columns, (t, 'src'))}
+            assert ours == {n: theirs[n] for n in ours}, t
+            exported = site.value(str, 'select sql from src.sqlite_master where name = ?', (t,))
+            kept = ' '.join(site.value(str, 'select sql from sqlite_master where name = ?', (t,)).lower().split())
+            for m in STATE_CHECK.finditer(exported):
+                if m[1] in ours:
+                    assert f'check ({m[1]} in ({m[2].lower()}))' in kept, (t, m[1])
 
 
 def test_every_reference_is_held_at_commit(site_db: Path) -> None:

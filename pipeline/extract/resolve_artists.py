@@ -72,6 +72,7 @@ from pipeline.extract import run_log
 from pipeline.extract.answers import log, logged
 from pipeline.extract.prices import COUPLE
 from pipeline.records import ANSWERS, Group, MergeReview, MergeRow, Record
+from pipeline.text import tidy_name
 
 SPLIT_ROLES = {Role.TEACHER, Role.DJ, Role.PERFORMER, Role.MC}
 ORG_ROLES = {Role.ORGANISER, Role.MEDIA, Role.CREW}
@@ -361,7 +362,8 @@ class UnionFind:
 
 TABLE_DOCS = {
     'artists': 'One row per resolved artist: a person, a couple, a group (several people booked under one name, or '
-    'a team) or an organisation, with the most common spelling as display name.',
+    'a team) or an organisation, with its most common spelling, in one casing (pipeline/text.py tidy_name), as '
+    'display name.',
     'artist_aliases': 'Every spelling an artist was written as, with how many mentions used it.',
     'artist_keys': 'Every name key a mention or couple member produced, and the artist it resolved to (merged keys '
     'included). The keys in artist_merge_candidates, artist_merge_decisions and artist_group_aliases '
@@ -860,7 +862,7 @@ def write_artists(
             max(alias_counts[fk].items(), key=lambda kv: (kv[1], -len(kv[0])))[0] if alias_counts[fk] else fk
         )
         kind = ArtistKind.GROUP if fk in group_display else keys.kinds[first[fk]]
-        artists.append({'id': ids[fk], 'display_name': display, 'kind': kind, 'match_key': fk})
+        artists.append({'id': ids[fk], 'display_name': tidy_name(display), 'kind': kind, 'match_key': fk})
     con.insert('artists', artists)
     con.insert(
         'artist_aliases',
