@@ -606,6 +606,7 @@ def test_the_run_log_writes_inside_the_callers_transaction(memory: Memory) -> No
 
 def test_a_load_a_check_refuses_leaves_the_database_as_it_was(memory: Memory) -> None:
     con = memory()
+    _ = con.execute('CREATE TABLE events (id INTEGER PRIMARY KEY)')  # the source's, which the step's tables refer to
     _ = con.execute('CREATE TABLE event_passes (kept INTEGER)')
     con.commit()
     _ = con.executescript(load_extract.SCHEMA)

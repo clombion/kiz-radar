@@ -1,6 +1,7 @@
 """Opening the pipeline's SQLite databases. Every connection names what it may do with the file: read it (ro), write
 it (rw), or create it (rwc); only a step that builds a database may create one, so a wrong path is an error, never a
-new empty database, and a connection is closed with its block. A day or a time is written as the text records read
+new empty database, and a connection is closed with its block. Every connection holds its tables to their foreign
+keys, a file's and a test's in-memory database alike. A day or a time is written as the text records read
 (2026-10-27, 2026-10-27T17:38:51+00:00). export() is the kizomba-world export the steps work on, the one file of
 source/ (python -m pipeline.db prints its path, for the Actions), and source_arg() the command-line argument a step
 takes it by."""
@@ -22,12 +23,22 @@ sqlite3.register_adapter(dt.date, dt.date.isoformat)
 sqlite3.register_adapter(dt.datetime, dt.datetime.isoformat)
 
 
+def connected(uri: str) -> sqlite3.Connection:
+    """A connection to the database at uri, holding its tables to their foreign keys."""
+    con = sqlite3.connect(uri, uri=True)
+    _ = con.execute('PRAGMA foreign_keys = ON')
+    return con
+
+
+def memory() -> sqlite3.Connection:
+    """A new in-memory database, set up as a file's is."""
+    return connected(':memory:')
+
+
 @contextmanager
 def opened(path: Path | str, mode: Literal['ro', 'rw', 'rwc']) -> Generator[sqlite3.Connection]:
     """The database, closed when the block ends; what the block wrote and didn't commit is lost with it."""
-    if mode not in ('ro', 'rw', 'rwc'):
-        raise ValueError(f'mode {mode!r}: ro, rw or rwc')
-    con = sqlite3.connect(f'file:{Path(path).resolve()}?mode={mode}', uri=True)
+    con = connected(f'file:{Path(path).resolve()}?mode={mode}')
     try:
         yield con
     finally:

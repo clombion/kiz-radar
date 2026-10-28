@@ -57,7 +57,10 @@ def trimmed(tmp_path: Path, festivals: int) -> Path:
             'select id from events where id in (select event_id from artist_mentions) order by start_date desc limit ?',
             (festivals,),
         )
-        tables: list[tuple[str]] = con.execute("select name from sqlite_master where type = 'table'").fetchall()
+        # the events last: the source's own tables refer to them, and are held to it at once
+        tables: list[tuple[str]] = con.execute(
+            "select name from sqlite_master where type = 'table' order by name = 'events'"
+        ).fetchall()
         for (t,) in tables:
             columns = set(column(con, f'select name from pragma_table_info("{t}")'))  # noqa: S608 (the database's own names)
             key = 'id' if t == 'events' else 'event_id' if 'event_id' in columns else None

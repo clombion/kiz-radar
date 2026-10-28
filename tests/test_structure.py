@@ -108,3 +108,16 @@ def test_only_the_build_names_the_site_database() -> None:
         and re.search(r'kiz\.sqlite|site\.json', p.read_text(encoding='utf-8'))
     ]
     assert found == []
+
+
+def test_every_reference_is_held_at_commit() -> None:
+    """A step drops and rebuilds its tables in one transaction, so a reference holds when the step commits, not
+    between its statements (pipeline/db.py turns the references on)."""
+    reference = re.compile(r'\breferences\s+\w+\s*\([^)]*\)(?!\s*deferrable initially deferred)', re.IGNORECASE)
+    found = [
+        f'{p.relative_to(ROOT)}:{n.lineno}'
+        for p in sorted((ROOT / 'pipeline').rglob('*.py'))
+        for n in ast.walk(ast.parse(p.read_text(encoding='utf-8')))
+        if isinstance(n, ast.Constant) and isinstance(n.value, str) and reference.search(n.value)
+    ]
+    assert found == []

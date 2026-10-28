@@ -10,6 +10,7 @@ import subprocess
 import sys
 import tomllib
 from collections.abc import Iterator
+from contextlib import closing
 from importlib.metadata import packages_distributions
 from pathlib import Path
 
@@ -128,12 +129,12 @@ def test_every_module_a_command_runs_answers_help() -> None:
 
 
 def test_databases_are_opened_with_a_mode() -> None:
-    """Only pipeline/db.py calls sqlite3.connect, so every connection, the tests' too, says whether it reads, writes or
-    creates, and is closed with its block; the memory fixture's in-memory databases (conftest.py) are no file."""
+    """Only pipeline/db.py calls sqlite3.connect, so every connection, the tests' too, holds its tables to their foreign
+    keys, and a file's says whether it reads, writes or creates, and is closed with its block."""
     calls = [
         f'{p.relative_to(ROOT)}:{n.lineno}'
         for p in sorted([*(ROOT / 'pipeline').rglob('*.py'), *(ROOT / 'tests').rglob('*.py')])
-        if p.relative_to(ROOT).as_posix() not in {'pipeline/db.py', 'tests/conftest.py'}
+        if p.relative_to(ROOT).as_posix() != 'pipeline/db.py'
         for n in ast.walk(ast.parse(p.read_text(encoding='utf-8')))
         if isinstance(n, ast.Call)
         and isinstance(n.func, ast.Attribute)
@@ -159,3 +160,16 @@ def test_packages_are_pinned_in_pyproject_only() -> None:
         for m in re.finditer(r'\b[\w.-]+==\d[\w.]*', p.read_text(encoding='utf-8'))
     ]
     assert pins == []
+
+
+def test_a_connection_holds_its_references_at_commit() -> None:
+    """A row may refer to one written later in the transaction, but not to none once it commits."""
+    with closing(db.memory()) as con:
+        _ = con.execute('create table parent (id integer primary key)')
+        _ = con.execute('create table child (parent_id integer references parent(id) deferrable initially deferred)')
+        _ = con.execute('insert into child values (1)')
+        _ = con.execute('insert into parent values (1)')
+        con.commit()
+        _ = con.execute('insert into child values (2)')
+        with pytest.raises(sqlite3.IntegrityError, match='FOREIGN KEY'):
+            con.commit()

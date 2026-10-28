@@ -80,7 +80,7 @@ def listed(fetch: Fetcher) -> list[ApiEvent]:
 
 # the export's table of the events the extraction steps are to read (tests/test_steps.py holds the export to it)
 PENDING = """create table pending_extraction (
-        event_id integer primary key references events(id),
+        event_id integer primary key references events(id) deferrable initially deferred,
         reason text not null check (reason in ('new', 'description changed')),
         since text not null)"""
 

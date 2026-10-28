@@ -130,13 +130,14 @@ def copy_tables(x: sqlite3.Connection) -> None:
             for i, t, url, slug, start, end, tz, all_day, feat, canc, venue, *rest in events
         ],
     )
+    # each table after the tables it refers to
+    copy(x, 'artist_mentions', ('id', 'event_id', 'role', 'name_as_written', 'style', 'country'))
     for t in COPIED:
         copy(x, t)
     copy(x, 'event_genres', ('event_id', 'genre', 'source', 'other_name', 'genre_as_written'))
     copy(x, 'event_features', ('event_id', 'feature', 'source'))
     copy(x, 'event_rooms', ('event_id', 'party_rooms', 'class_rooms'))
     copy(x, 'event_room_list', ('event_id', 'room_no', 'name_as_written', 'kind', 'genres'))
-    copy(x, 'artist_mentions', ('id', 'event_id', 'role', 'name_as_written', 'style', 'country'))
 
 
 def copy(x: sqlite3.Connection, table: str, columns: Sequence[str] | None = None) -> None:
@@ -165,7 +166,7 @@ def copy(x: sqlite3.Connection, table: str, columns: Sequence[str] | None = None
         ref = list(group)
         if all(c in columns for _, c, _, _ in ref):
             ends = ', '.join(c for _, c, _, _ in ref), ', '.join(to for _, _, _, to in ref)
-            lines.append(f'foreign key ({ends[0]}) references {ref[0][2]}({ends[1]})')
+            lines.append(f'foreign key ({ends[0]}) references {ref[0][2]}({ends[1]}) deferrable initially deferred')
     names = ', '.join(columns)
     _ = x.execute(f'create table {table} ({", ".join(lines)})')
     _ = x.execute(f'insert into {table} ({names}) select {names} from src.{table}')  # noqa: S608 (a table of the source's and its columns)
@@ -173,7 +174,10 @@ def copy(x: sqlite3.Connection, table: str, columns: Sequence[str] | None = None
 
 def stored_by_key(x: sqlite3.Connection) -> None:
     """Each table whose key is not an integer row id is stored as its key (WITHOUT ROWID), so the key is the table
-    rather than a second index beside it, and no column of the key can be null."""
+    rather than a second index beside it, and no column of the key can be null. Each is rebuilt as SQLite rebuilds a
+    table: with its references unheld until all are, then each row's checked."""
+    x.commit()  # references can be unheld only between transactions
+    _ = x.execute('pragma foreign_keys = off')
     _ = x.execute('pragma legacy_alter_table = on')  # views name the table, not its renamed copy
     found: list[tuple[str, str]] = x.execute("select name, sql from sqlite_master where type = 'table'").fetchall()
     for name, ddl in found:
@@ -185,6 +189,11 @@ def stored_by_key(x: sqlite3.Connection) -> None:
         _ = x.execute(f'insert into {name} select * from {name}_rowid')  # noqa: S608 (a table of ours)
         _ = x.execute(f'drop table {name}_rowid')
     _ = x.execute('pragma legacy_alter_table = off')
+    broken: list[tuple[object, ...]] = x.execute('pragma foreign_key_check').fetchall()
+    if broken:
+        sys.exit(f'{len(broken)} rows refer to rows the site database has not, first: {broken[0]}')
+    x.commit()
+    _ = x.execute('pragma foreign_keys = on')
 
 
 @dataclass
@@ -502,8 +511,8 @@ def features(x: sqlite3.Connection) -> collections.defaultdict[int, set[str]]:
     for e, f in found:
         feats[e].add(f)
     _ = x.execute(
-        'create table event_promos (event_id integer primary key references events(id), code text not null check (code '
-        "!= ''), offer text check (offer != ''))"
+        'create table event_promos (event_id integer primary key references events(id) deferrable initially deferred,'
+        " code text not null check (code != ''), offer text check (offer != ''))"
     )
     for r in Promo.read(ROOT / 'pipeline' / 'promo_codes.csv'):
         if not exists(x, 'select 1 from events where id = ?', (r.event_id,)):
@@ -519,7 +528,8 @@ def features(x: sqlite3.Connection) -> collections.defaultdict[int, set[str]]:
     # festivals whose prices are read on their ticket page: the page, when it was read, tickets on it not read yet
     copy(x, 'ticket_pages', ('event_id', 'page', 'reseller', 'read_on', 'unread'))
     # what a card can say of each festival's price, the ticket page it links to, and the pass it prices
-    _ = x.execute(f"""create table price_status (event_id integer primary key references events(id),
+    _ = x.execute(f"""create table price_status (
+     event_id integer primary key references events(id) deferrable initially deferred,
      price text not null check (price in ({states.sql_in('price')})), page text, card_pass integer,
      check ((price = '{enums.Price.PRICED}') = (card_pass is not null)))""")
     _ = x.execute('insert into price_status select event_id, price, page, card_pass from src.price_status')
@@ -624,11 +634,13 @@ def plans(x: sqlite3.Connection, artists: Artists) -> None:
     _ = x.execute("""create table people (id integer primary key, key text not null unique, name text not null,
      featured integer not null check (featured in (0, 1)))""")
     _ = x.execute(
-        'create table person_artists (person_id integer not null references people(id), artist_id integer not null '
-        'references artists(id), primary key (person_id, artist_id))'
+        'create table person_artists (person_id integer not null references people(id) deferrable initially deferred,'
+        ' artist_id integer not null references artists(id) deferrable initially deferred,'
+        ' primary key (person_id, artist_id))'
     )
-    _ = x.execute(f"""create table plans (person_id integer not null references people(id),
-         event_id integer not null references events(id),
+    _ = x.execute(f"""create table plans (
+     person_id integer not null references people(id) deferrable initially deferred,
+         event_id integer not null references events(id) deferrable initially deferred,
      status text not null check (status in ({states.sql_in('plan')})), primary key (person_id, event_id))""")
     person_id: dict[str, int] = {}
     for i, r in enumerate(Person.read(ROOT / 'pipeline' / 'people.csv'), 1):
@@ -796,10 +808,6 @@ def build(src: Path, out: Path) -> dict[str, object]:
         site = site_json(x, built_at)
         table_docs(x)
         stored_by_key(x)
-        broken: list[tuple[object, ...]] = x.execute('pragma foreign_key_check').fetchall()
-        if broken:
-            sys.exit(f'{len(broken)} rows refer to rows the site database has not, first: {broken[0]}')
-        x.commit()
         _ = x.execute('detach database src')
         _ = x.execute('vacuum')
     _ = building.replace(out)

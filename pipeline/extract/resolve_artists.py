@@ -6,6 +6,8 @@ Reads artist_mentions (from load_extract.py) and pipeline/extract/merges.csv; wr
   couple_members          couple/group id -> member person id
   event_artists           event -> artist links, one per mention (role, style, country, mention id)
   artist_merge_candidates pairs that may be the same artist, with evidence, for review
+  merge_reason_definitions
+                          reason -> definition, from pipeline/states.py (the reasons artist_merge_candidates gives)
   artist_merge_decisions  every merge/separate decision applied, copied from pipeline/extract/merges.csv
   artist_group_definitions, artist_group_aliases
                           the named groups from pipeline/extract/groups.csv: note,
@@ -87,6 +89,7 @@ DROP TABLE IF EXISTS couple_members;
 DROP TABLE IF EXISTS artist_aliases;
 DROP TABLE IF EXISTS artist_keys;
 DROP TABLE IF EXISTS artist_merge_candidates;
+DROP TABLE IF EXISTS merge_reason_definitions;
 DROP TABLE IF EXISTS artist_merge_decisions;
 DROP TABLE IF EXISTS artist_group_aliases;
 DROP TABLE IF EXISTS artist_group_definitions;
@@ -99,28 +102,32 @@ CREATE TABLE artists (
 );
 CREATE TABLE artist_keys (
     match_key TEXT PRIMARY KEY,   -- every key a mention or member produced, including merged ones
-    artist_id INTEGER NOT NULL REFERENCES artists(id)
+    artist_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED
 );
 CREATE TABLE artist_aliases (
-    artist_id INTEGER NOT NULL REFERENCES artists(id),
+    artist_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED,
     alias TEXT NOT NULL,
     mentions INTEGER NOT NULL,
     PRIMARY KEY (artist_id, alias)
 );
 CREATE TABLE couple_members (
-    couple_id INTEGER NOT NULL REFERENCES artists(id),
-    member_id INTEGER NOT NULL REFERENCES artists(id),
+    couple_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED,
+    member_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED,
     PRIMARY KEY (couple_id, member_id)
 );
 CREATE TABLE event_artists (
-    mention_id INTEGER PRIMARY KEY REFERENCES artist_mentions(id),
-    event_id INTEGER NOT NULL REFERENCES events(id),
-    artist_id INTEGER NOT NULL REFERENCES artists(id),
+    mention_id INTEGER PRIMARY KEY REFERENCES artist_mentions(id) DEFERRABLE INITIALLY DEFERRED,
+    event_id INTEGER NOT NULL REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
+    artist_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED,
     role TEXT NOT NULL CHECK (role IN ({role})),
     style TEXT,
     country TEXT
 );
 CREATE INDEX event_artists_artist ON event_artists(artist_id);
+CREATE TABLE merge_reason_definitions (
+    reason TEXT PRIMARY KEY,
+    definition TEXT NOT NULL
+);
 CREATE TABLE artist_merge_candidates (
     key_a TEXT NOT NULL,
     key_b TEXT NOT NULL,
@@ -142,12 +149,12 @@ CREATE TABLE artist_merge_decisions (
 );
 CREATE TABLE artist_group_definitions (
     group_key TEXT PRIMARY KEY,
-    artist_id INTEGER NOT NULL REFERENCES artists(id),
+    artist_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED,
     display_name TEXT NOT NULL,
     note TEXT
 );
 CREATE TABLE artist_group_aliases (
-    group_key TEXT NOT NULL REFERENCES artist_group_definitions(group_key),
+    group_key TEXT NOT NULL REFERENCES artist_group_definitions(group_key) DEFERRABLE INITIALLY DEFERRED,
     match_key TEXT NOT NULL,      -- a spelling's key whose mentions count as the group's
     PRIMARY KEY (group_key, match_key)
 );
@@ -376,6 +383,7 @@ TABLE_DOCS = {
     "(via 'member', via_artist_id = the couple or group). Use it for a person's full event history.",
     'artist_merge_candidates': 'Pairs of name keys that may be the same artist, with the reason, similarity and '
     'evidence; decision is NULL when no merge or separate decision exists (left apart).',
+    'merge_reason_definitions': 'What each reason in artist_merge_candidates means.',
     'artist_merge_decisions': 'Every merge or separate decision applied, with the review prompt that made it (its '
     'hash; null when it was decided by hand) and rationale.',
     'artist_group_definitions': 'Named groups defined by hand (a DJ duo booked under one name), with a note; members '
@@ -437,7 +445,8 @@ def record_steps(con: sqlite3.Connection, resolved: Resolved, rows: Sequence[Mer
             'pipeline/extract/resolve_artists.py',
             inputs='table artist_mentions; pipeline/extract/merges.csv; pipeline/extract/groups.csv',
             outputs='tables artists, artist_aliases, artist_keys, couple_members, event_artists, '
-            'artist_merge_candidates, artist_merge_decisions, artist_group_definitions, artist_group_aliases; '
+            'artist_merge_candidates, merge_reason_definitions, artist_merge_decisions, artist_group_definitions, '
+            'artist_group_aliases; '
             'view artist_events',
             details={
                 'mentions': n_mentions,
@@ -890,6 +899,10 @@ def main() -> None:
             'INSERT INTO artist_ids VALUES (?, ?) ON CONFLICT DO NOTHING', [(i, fk) for fk, i in ids.items()]
         )
         write_artists(con, keys, final_key, groups, ids)
+        _ = con.executemany(
+            'INSERT INTO merge_reason_definitions VALUES (?, ?)',
+            [(s.key, s.criterion) for s in states.of('merge_reason')],
+        )
         found = [c for c in found if c.key_a == c.key_b or final_key[c.key_a] != final_key[c.key_b]]
         _ = con.executemany(
             'INSERT INTO event_artists VALUES (?, ?, ?, ?, ?, ?)',

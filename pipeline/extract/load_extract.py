@@ -94,14 +94,14 @@ DROP TABLE IF EXISTS role_definitions;
 DROP TABLE IF EXISTS event_genres;
 DROP TABLE IF EXISTS event_rooms;
 DROP TABLE IF EXISTS event_room_list;
-DROP TABLE IF EXISTS event_passes;
 DROP TABLE IF EXISTS pass_tiers;
+DROP TABLE IF EXISTS price_status;
+DROP TABLE IF EXISTS event_passes;
 DROP TABLE IF EXISTS event_price_notes;
 DROP TABLE IF EXISTS ticket_pages;
 DROP TABLE IF EXISTS ticket_sales;
-DROP TABLE IF EXISTS price_status;
 CREATE TABLE event_passes (
-    event_id INTEGER NOT NULL REFERENCES events(id),
+    event_id INTEGER NOT NULL REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
     pass_no INTEGER NOT NULL,
     kind TEXT NOT NULL CHECK (kind IN ({pass_kind})),
     style TEXT CHECK (style IN ({style})),  -- the one dance style the pass is
@@ -134,22 +134,22 @@ CREATE TABLE pass_tiers (
     current INTEGER NOT NULL,     -- called the current price; valid_from is then when the description was edited
     quote TEXT NOT NULL,
     PRIMARY KEY (event_id, pass_no, tier_no),
-    FOREIGN KEY (event_id, pass_no) REFERENCES event_passes(event_id, pass_no)
+    FOREIGN KEY (event_id, pass_no) REFERENCES event_passes(event_id, pass_no) DEFERRABLE INITIALLY DEFERRED
 );
 CREATE TABLE event_price_notes (
-    event_id INTEGER PRIMARY KEY REFERENCES events(id),
+    event_id INTEGER PRIMARY KEY REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
     notes TEXT NOT NULL           -- the description's words, one rule per line
 );
 CREATE TABLE price_status (
-    event_id INTEGER PRIMARY KEY REFERENCES events(id),
+    event_id INTEGER PRIMARY KEY REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
     price TEXT NOT NULL CHECK (price IN ({price})),
     page TEXT,                    -- the ticket page, when one is known
     card_pass INTEGER,            -- the pass a card prices (prices.card_pass), exactly when it is priced
     CHECK ((price = 'priced') = (card_pass IS NOT NULL)),
-    FOREIGN KEY (event_id, card_pass) REFERENCES event_passes(event_id, pass_no)
+    FOREIGN KEY (event_id, card_pass) REFERENCES event_passes(event_id, pass_no) DEFERRABLE INITIALLY DEFERRED
 );
 CREATE TABLE ticket_pages (
-    event_id INTEGER PRIMARY KEY REFERENCES events(id),
+    event_id INTEGER PRIMARY KEY REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
     page TEXT NOT NULL,           -- the ticket page the festival links to
     reseller TEXT,                -- the reseller selling there at its own prices (Kizzbee), when it isn't the organiser
     read_on TEXT NOT NULL,        -- the day its prices were last read there
@@ -165,7 +165,7 @@ CREATE TABLE genre_definitions (
     definition TEXT NOT NULL
 );
 CREATE TABLE event_genres (
-    event_id INTEGER NOT NULL REFERENCES events(id),
+    event_id INTEGER NOT NULL REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
     genre TEXT NOT NULL CHECK (genre IN ({genre})),
     source TEXT NOT NULL CHECK (source IN ({source})),
     other_name TEXT NOT NULL DEFAULT '',  -- for genre 'other', its name in lower case; '' otherwise
@@ -180,7 +180,7 @@ CREATE TABLE event_genres (
     PRIMARY KEY (event_id, genre, source, other_name)
 );
 CREATE TABLE event_rooms (
-    event_id INTEGER PRIMARY KEY REFERENCES events(id),
+    event_id INTEGER PRIMARY KEY REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
     party_rooms INTEGER,          -- NULL = not stated
     party_rooms_quote TEXT,
     class_rooms INTEGER,          -- NULL = not stated
@@ -189,7 +189,7 @@ CREATE TABLE event_rooms (
     model TEXT NOT NULL
 );
 CREATE TABLE event_room_list (
-    event_id INTEGER NOT NULL REFERENCES events(id),
+    event_id INTEGER NOT NULL REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
     room_no INTEGER NOT NULL,
     name_as_written TEXT,
     kind TEXT NOT NULL CHECK (kind IN ({room_kind})),
@@ -202,7 +202,7 @@ CREATE TABLE feature_definitions (
     definition TEXT NOT NULL
 );
 CREATE TABLE event_features (
-    event_id INTEGER NOT NULL REFERENCES events(id),
+    event_id INTEGER NOT NULL REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
     feature TEXT NOT NULL CHECK (feature IN ({feature})),
     source TEXT NOT NULL CHECK (source IN ({source})),
     quote TEXT,
@@ -213,7 +213,7 @@ CREATE TABLE event_features (
 );
 CREATE TABLE artist_mentions (
     id INTEGER PRIMARY KEY,
-    event_id INTEGER NOT NULL REFERENCES events(id),
+    event_id INTEGER NOT NULL REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
     role TEXT NOT NULL CHECK (role IN ({role})),
     name_as_written TEXT NOT NULL,
     style TEXT,
