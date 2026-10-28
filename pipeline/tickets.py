@@ -566,7 +566,7 @@ def tier_problems(fr: FirstRead, where: str, tier: ReadTier, here: Sequence[Row]
     if (
         until
         and any(not r.sold_out for r in here)
-        and (ends := prices.on_date(until, fr.start_date)) is not None
+        and (ends := prices.window(tier.from_, until, fr.start_date).until) is not None
         and ends < fr.rows_at.date()
     ):
         found.append(
@@ -843,7 +843,7 @@ def recheck(tiers: Sequence[PriceRow], start: dt.date, today: dt.date) -> tuple[
     """(class, due, why) from a festival's recorded tiers (its pass_prices.csv rows)."""
     on_sale = [t for t in tiers if not t.sold_out]
     if on_sale and all(t.until and not t.quantity for t in on_sale):
-        last = max(d for t in on_sale if (d := prices.on_date(t.until, start)) is not None)
+        last = max(d for t in on_sale if (d := prices.window(t.from_, t.until, start).until) is not None)
         return Recheck.DATED, last < today, f'last price date {last}'
     return Recheck.MONTHLY, True, 'read on every monthly run'
 
@@ -893,9 +893,9 @@ def dated_in_description(entry: Priced, start: dt.date, today: dt.date) -> bool:
     today or later."""
     card = prices.card_pass(entry.passes)
     return card is not None and any(
-        (day := prices.on_date(d, start)) is not None and day >= today
+        day is not None and day >= today
         for t in entry.passes[card].tiers
-        for d in (t.from_, t.until)
+        for day in prices.window(t.from_, t.until, start)
     )
 
 

@@ -26,7 +26,7 @@ from curl_cffi.requests import Response
 
 from pipeline import db as sqlite_db
 from pipeline import export, states
-from pipeline.db import Reader, Transaction
+from pipeline.db import Transaction
 from pipeline.extract import run_log
 from pipeline.kizomba_world import ApiEvent, ApiPage, Listed, Paged, api_fields, page_fields
 from pipeline.records import day_of, now
@@ -99,10 +99,10 @@ create table events (
     start_date_utc text,
     end_date_utc text,
     timezone text,
-    all_day integer not null,
-    featured integer not null,
-    sticky integer not null,
-    cancelled integer,            -- 1/0 for events in the upcoming listing; NULL = unknown (past events)
+    all_day integer not null check (all_day in (0, 1)),
+    featured integer not null check (featured in (0, 1)),
+    sticky integer not null check (sticky in (0, 1)),
+    cancelled integer check (cancelled in (0, 1)),  -- NULL = unknown (a past event's page)
     venue text,
     address text,
     city text,
@@ -118,30 +118,30 @@ create table events (
     url_pt text,
     published_at text,
     modified_at text,
-    page_fetched integer not null  -- 0 when the event page could not be fetched
-);
+    page_fetched integer not null check (page_fetched in (0, 1))  -- 0 when the event page could not be fetched
+) strict;
 create table event_categories (
-    event_id integer not null references events(id),
+    event_id integer not null references events(id) on delete cascade deferrable initially deferred,
     category text not null,
     primary key (event_id, category)
-);
+) strict;
 create table event_tags (
-    event_id integer not null references events(id),
+    event_id integer not null references events(id) on delete cascade deferrable initially deferred,
     tag text not null,
     primary key (event_id, tag)
-);
+) strict;
 create table event_links (
-    event_id integer not null references events(id),
+    event_id integer not null references events(id) on delete cascade deferrable initially deferred,
     url text not null,
     primary key (event_id, url)
-);
+) strict;
 create index events_start on events(start_date);
 create index events_country on events(country);
 create table pending_extraction (
-    event_id integer primary key references events(id) deferrable initially deferred,
+    event_id integer primary key references events(id) on delete cascade deferrable initially deferred,
     reason text not null check (reason in ('new', 'description changed')),
     since text not null
-);
+) strict;
 """)
 
 
@@ -156,15 +156,6 @@ def describe(db: Transaction) -> None:
             'line-up, features, rooms and genres from the description are missing or out of date.',
             'written_by': 'pipeline/scrape.py',
         },
-    )
-
-
-def event_tables(db: Reader) -> list[str]:
-    """The tables whose rows belong to one event, cleared when the site drops it."""
-    return db.column(
-        str,
-        "select m.name from sqlite_master m, pragma_table_info(m.name) c where m.type = 'table' and m.name != 'events'"
-        " and c.name = 'event_id' order by m.name",
     )
 
 
@@ -267,9 +258,8 @@ def write(db: Transaction, r: Refreshed, today: dt.date) -> None:
 
 
 def finish(db: Transaction, report: Report, events: int, gone: list[int]) -> None:
-    """Delete the events the site no longer lists, with everything that refers to them, and log the step."""
-    for t in event_tables(db):
-        db.executemany(f'delete from {sqlite_db.name(t)} where event_id = ?', [(i,) for i in gone])  # noqa: S608 (the database's own table names, quoted)
+    """Delete the events the site no longer lists, with everything that refers to them (each reference to an event
+    cascades), and log the step."""
     db.executemany('delete from events where id = ?', [(i,) for i in gone])
     details = {
         'events': events,

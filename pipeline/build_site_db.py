@@ -291,7 +291,8 @@ def stored_by_key(x: Transaction) -> None:
             continue
         t, old = sqlite_db.name(table.name), sqlite_db.name(f'{table.name}_rowid')
         x.execute(f'alter table {t} rename to {old}')
-        x.execute(f'{table.sql} without rowid')
+        strict = table.sql.rstrip().lower().endswith('strict')
+        x.execute(f'{table.sql}{"," if strict else ""} without rowid')
         x.execute(f'insert into {t} select * from {old}')  # noqa: S608 (a table of ours, quoted)
         x.execute(f'drop table {old}')
 

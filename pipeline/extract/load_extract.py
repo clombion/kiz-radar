@@ -49,7 +49,7 @@ from pipeline.enums import Genre, Sales
 from pipeline.extract import answers, run_log
 from pipeline.extract import prices as price_rules
 from pipeline.extract.answers import Answer
-from pipeline.extract.prices import on_date
+from pipeline.extract.prices import window
 from pipeline.prompt import Pass
 from pipeline.records import (
     Alt,
@@ -69,7 +69,7 @@ from pipeline.records import (
 # the tables this step makes again each time it runs
 DDL = """
 CREATE TABLE event_passes (
-    event_id INTEGER NOT NULL REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
+    event_id INTEGER NOT NULL REFERENCES events(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     pass_no INTEGER NOT NULL,
     kind TEXT NOT NULL CHECK (kind IN ({pass_kind})),
     style TEXT CHECK (style IN ({style})),  -- the one dance style the pass is
@@ -78,12 +78,12 @@ CREATE TABLE event_passes (
     group_size INTEGER,           -- people one price is for; NULL = not stated (a package per room)
     people TEXT NOT NULL CHECK (people IN ({people})),   -- group_size as a state (prices.people)
     days INTEGER,                 -- NULL = not stated
-    includes_hotel INTEGER NOT NULL,
+    includes_hotel INTEGER NOT NULL CHECK (includes_hotel IN (0, 1)),
     source TEXT NOT NULL CHECK (source IN ({pass_source})),   -- ticket_page: see ticket_pages
     prompt TEXT NOT NULL,         -- the hash of the prices prompt, or for a ticket page the first read's
     model TEXT,                   -- the model that answered; for a ticket page, who made its first read
     PRIMARY KEY (event_id, pass_no)
-);
+) STRICT;
 CREATE TABLE pass_tiers (
     event_id INTEGER NOT NULL,
     pass_no INTEGER NOT NULL,
@@ -97,43 +97,47 @@ CREATE TABLE pass_tiers (
     valid_until TEXT,
     dates_as_answered TEXT,       -- from/until as answered, when a date had no year (MM-DD) and got one here
     quantity INTEGER,             -- tickets at this price, when limited
-    door INTEGER NOT NULL,        -- the price at the door; never from a ticket page, which sells online
-    sold_out INTEGER NOT NULL,
-    current INTEGER NOT NULL,     -- called the current price; valid_from is then when the description was edited
+    door INTEGER NOT NULL CHECK (door IN (0, 1)),  -- the price at the door; never from a ticket page, which sells
+                                  -- online
+    sold_out INTEGER NOT NULL CHECK (sold_out IN (0, 1)),
+    current INTEGER NOT NULL CHECK (current IN (0, 1)),  -- called the current price; valid_from is then when the
+                                  -- description was edited
     quote TEXT NOT NULL,
     PRIMARY KEY (event_id, pass_no, tier_no),
-    FOREIGN KEY (event_id, pass_no) REFERENCES event_passes(event_id, pass_no) DEFERRABLE INITIALLY DEFERRED
-);
+    CHECK (valid_from <= valid_until),
+    FOREIGN KEY (event_id, pass_no) REFERENCES event_passes(event_id, pass_no) ON DELETE CASCADE
+        DEFERRABLE INITIALLY DEFERRED
+) STRICT;
 CREATE TABLE event_price_notes (
-    event_id INTEGER PRIMARY KEY REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
+    event_id INTEGER PRIMARY KEY REFERENCES events(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     notes TEXT NOT NULL           -- the description's words, one rule per line
-);
+) STRICT;
 CREATE TABLE price_status (
-    event_id INTEGER PRIMARY KEY REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
+    event_id INTEGER PRIMARY KEY REFERENCES events(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     price TEXT NOT NULL CHECK (price IN ({price})),
     page TEXT,                    -- the ticket page, when one is known
     card_pass INTEGER,            -- the pass a card prices (prices.card_pass), exactly when it is priced
     CHECK ((price = 'priced') = (card_pass IS NOT NULL)),
     FOREIGN KEY (event_id, card_pass) REFERENCES event_passes(event_id, pass_no) DEFERRABLE INITIALLY DEFERRED
-);
+) STRICT;
 CREATE TABLE ticket_pages (
-    event_id INTEGER PRIMARY KEY REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
+    event_id INTEGER PRIMARY KEY REFERENCES events(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     page TEXT NOT NULL,           -- the ticket page the festival links to
     reseller TEXT,                -- the reseller selling there at its own prices (Kizzbee), when it isn't the organiser
     read_on TEXT NOT NULL,        -- the day its prices were last read there
     recipe TEXT NOT NULL,         -- the site recipe that read it (pipeline/tickets/sites), with its version
-    unread INTEGER NOT NULL       -- tickets on the page its first read doesn't know yet
-);
+    unread INTEGER NOT NULL CHECK (unread >= 0)  -- tickets on the page its first read doesn't know yet
+) STRICT;
 CREATE TABLE role_definitions (
     role TEXT PRIMARY KEY,
     definition TEXT NOT NULL
-);
+) STRICT;
 CREATE TABLE genre_definitions (
     genre TEXT PRIMARY KEY,
     definition TEXT NOT NULL
-);
+) STRICT;
 CREATE TABLE event_genres (
-    event_id INTEGER NOT NULL REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
+    event_id INTEGER NOT NULL REFERENCES events(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     genre TEXT NOT NULL CHECK (genre IN ({genre})),
     source TEXT NOT NULL CHECK (source IN ({source})),
     other_name TEXT NOT NULL DEFAULT '',  -- for genre 'other', its name in lower case; '' otherwise
@@ -146,31 +150,31 @@ CREATE TABLE event_genres (
     CHECK (CASE source WHEN 'description' THEN (prompt IS NULL) <> (rule IS NULL)
                        ELSE prompt IS NULL AND rule IS NULL END),
     PRIMARY KEY (event_id, genre, source, other_name)
-);
+) STRICT;
 CREATE TABLE event_rooms (
-    event_id INTEGER PRIMARY KEY REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
+    event_id INTEGER PRIMARY KEY REFERENCES events(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     party_rooms INTEGER,          -- NULL = not stated
     party_rooms_quote TEXT,
     class_rooms INTEGER,          -- NULL = not stated
     class_rooms_quote TEXT,
     prompt TEXT NOT NULL,
     model TEXT NOT NULL
-);
+) STRICT;
 CREATE TABLE event_room_list (
-    event_id INTEGER NOT NULL REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
+    event_id INTEGER NOT NULL REFERENCES events(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     room_no INTEGER NOT NULL,
     name_as_written TEXT,
     kind TEXT NOT NULL CHECK (kind IN ({room_kind})),
     genres TEXT NOT NULL,         -- JSON array of genres
     quote TEXT NOT NULL,
     PRIMARY KEY (event_id, room_no)
-);
+) STRICT;
 CREATE TABLE feature_definitions (
     feature TEXT PRIMARY KEY,
     definition TEXT NOT NULL
-);
+) STRICT;
 CREATE TABLE event_features (
-    event_id INTEGER NOT NULL REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
+    event_id INTEGER NOT NULL REFERENCES events(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     feature TEXT NOT NULL CHECK (feature IN ({feature})),
     source TEXT NOT NULL CHECK (source IN ({source})),
     quote TEXT,
@@ -178,10 +182,10 @@ CREATE TABLE event_features (
     prompt TEXT,
     model TEXT,
     PRIMARY KEY (event_id, feature, source)
-);
+) STRICT;
 CREATE TABLE artist_mentions (
     id INTEGER PRIMARY KEY,
-    event_id INTEGER NOT NULL REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
+    event_id INTEGER NOT NULL REFERENCES events(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     role TEXT NOT NULL CHECK (role IN ({role})),
     name_as_written TEXT NOT NULL,
     style TEXT,
@@ -190,7 +194,7 @@ CREATE TABLE artist_mentions (
     batch TEXT NOT NULL,
     prompt TEXT NOT NULL,
     model TEXT NOT NULL
-);
+) STRICT;
 CREATE INDEX artist_mentions_event ON artist_mentions(event_id);
 """
 TABLES = sqlite_db.declared(DDL.format_map({p.name: states.sql_in(p.name) for p in states.POINTS}))
@@ -388,7 +392,7 @@ def load_prices(
                 }
             )
             for t, tier in enumerate(ps.tiers, 1):
-                frm, until = on_date(tier.from_, start), on_date(tier.until, start)
+                frm, until = window(tier.from_, tier.until, start)
                 if tier.current and frm is None:
                     frm = edited
                 yearless = any(v and len(v) == len('MM-DD') for v in (tier.from_, tier.until))

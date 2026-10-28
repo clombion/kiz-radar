@@ -11,6 +11,7 @@ import pytest
 
 from pipeline import data, export, geocode, rates, scrape, web
 from pipeline import db as sqlite_db
+from pipeline.db import Reader
 from pipeline.records import JSON, Place, Rate, Spot, today
 from tests import jsons
 from tests.exports import content, festival, run, shaped, trimmed
@@ -162,6 +163,15 @@ def site(monkeypatch: pytest.MonkeyPatch, listed: Sequence[Mapping[str, object]]
     return served
 
 
+def event_tables(db: Reader) -> list[str]:
+    """The tables whose rows belong to one event, cleared when the site drops it."""
+    return db.column(
+        str,
+        "select m.name from sqlite_master m, pragma_table_info(m.name) c where m.type = 'table' and m.name != 'events'"
+        " and c.name = 'event_id' order by m.name",
+    )
+
+
 def ids(src: Path) -> set[int]:
     with sqlite_db.opened(src, 'ro') as db:
         return set(db.column(int, 'select id from events'))
@@ -177,7 +187,7 @@ def test_a_refresh_adds_the_new_festivals_and_deletes_the_gone_with_their_rows(
     assert ids(src) == {17001}
     assert POSTER not in served.asked  # where its poster is, which nothing downloads
     with sqlite_db.opened(src, 'ro') as db:
-        for t in scrape.event_tables(db):
+        for t in event_tables(db):
             assert gone not in db.column(int, f'select event_id from {sqlite_db.name(t)}'), t  # noqa: S608 (the database's own names, quoted)
         assert db.column(str, 'select reason from pending_extraction where event_id = 17001') == ['new']
         assert db.column(str, 'select image_url from events where id = 17001') == [POSTER]

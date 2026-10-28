@@ -2,16 +2,17 @@
 
 Each tier's quote must contain its amount (and its second amount, alt), written in any of the usual ways: 1800, 1.800,
 1,800, 1 800, 8.50 or 8,50; a tier whose amount adds a fee must quote the fee and the price before it. Dates come back
-as YYYY-MM-DD, or MM-DD when the description gives no year; on_date() gives an MM-DD the year that puts it on or before
-the festival's first day, since prices are dated before the festival they are for.
+as YYYY-MM-DD, or MM-DD when the description gives no year; window() gives a tier's dates their years.
 
 What a festival's card can say of its price (enums.Price) is decided here too: the pass a card prices (card_pass)
 and, when there is none, why (price_state).
 """
 
+import calendar
 import datetime as dt
 import re
 from collections.abc import Sequence
+from typing import NamedTuple
 
 from pipeline import states
 from pipeline.db import Reader
@@ -35,17 +36,48 @@ def numbers_in(text: str) -> set[float]:
     return out
 
 
-def on_date(value: RealDay | None, start: dt.date) -> dt.date | None:
-    """An answer's date as a day; a date without a year gets the latest year that is not after the festival's start."""
-    if value is None:
-        return None
+class Window(NamedTuple):
+    """A tier's dates as days, from on or before until when it has both."""
+
+    from_: dt.date | None
+    until: dt.date | None
+
+
+def window(from_: RealDay | None, until: RealDay | None, start: dt.date) -> Window:
+    """A tier's dates as days. A date without a year gets the latest year that puts it on or before the festival's
+    first day, since prices are dated before the festival they are for; but the end of a tier whose start is known gets
+    the first year that puts it on or after that start, and a start without a year before an end with one, the latest
+    year that puts it on or before that end."""
+    if from_ is not None and until is not None:
+        if yearless(from_) and not yearless(until):
+            end = on_or_before(until, start)
+            return Window(on_or_before(from_, end), end)
+        begin = on_or_before(from_, start)
+        return Window(begin, on_or_after(until, begin))
+    return Window(
+        None if from_ is None else on_or_before(from_, start), None if until is None else on_or_before(until, start)
+    )
+
+
+def yearless(value: RealDay) -> bool:
+    return value.count('-') == 1
+
+
+def on_or_before(value: RealDay, limit: dt.date) -> dt.date:
+    """The day, in its own year when it has one, else in the latest year that puts it on or before limit."""
     *year, m, d = map(int, value.split('-'))
-    if year:
-        return dt.date(year[0], m, d)
-    y = start.year if (m, d) <= (start.month, start.day) else start.year - 1
-    if (m, d) == (2, 29) and y % 4:
-        d = 28
-    return dt.date(y, m, d)
+    return day(year[0] if year else limit.year - ((m, d) > (limit.month, limit.day)), m, d)
+
+
+def on_or_after(value: RealDay, floor: dt.date) -> dt.date:
+    """The day, in its own year when it has one, else in the first year that puts it on or after floor."""
+    *year, m, d = map(int, value.split('-'))
+    return day(year[0] if year else floor.year + ((m, d) < (floor.month, floor.day)), m, d)
+
+
+def day(y: int, m: int, d: int) -> dt.date:
+    """The day; 29 February in a year that has none is the 28th."""
+    return dt.date(y, m, 28 if (m, d) == (2, 29) and not calendar.isleap(y) else d)
 
 
 def styles(db: Reader, event_id: int) -> list[Style]:

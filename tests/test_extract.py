@@ -122,13 +122,41 @@ def test_amount_missing_from_quote_is_a_problem() -> None:
         ('04-30', '2026-03-20', '2025-04-30'),  # a list that started the spring before
         ('12-31', '2026-01-02', '2025-12-31'),
         ('03-20', '2026-03-20 18:00:00', '2026-03-20'),
+        ('02-29', '2026-03-20', '2026-02-28'),  # a year with no 29 February
         ('2027-02-01', '2026-03-20', '2027-02-01'),  # a written year is kept
         (None, '2026-03-20', None),
     ],
 )
 def test_dates_without_a_year_fall_before_the_festival(answer: str | None, start: str, expected: str | None) -> None:
-    day = prices.on_date(None if answer is None else real_day(answer), day_of(start))
-    assert (None if day is None else day.isoformat()) == expected
+    until = prices.window(None, None if answer is None else real_day(answer), day_of(start)).until
+    assert (None if until is None else until.isoformat()) == expected
+
+
+@pytest.mark.parametrize(
+    ('from_', 'until', 'start', 'expected'),
+    [
+        ('01-01', '01-31', '2026-01-08', ('2026-01-01', '2026-01-31')),  # a tier that ends after the festival begins
+        ('11-01', '11-22', '2026-11-06', ('2026-11-01', '2026-11-22')),
+        ('12-01', '01-15', '2026-03-20', ('2025-12-01', '2026-01-15')),  # across the new year
+        ('12-01', '2026-01-15', '2026-03-20', ('2025-12-01', '2026-01-15')),  # the end's year
+        ('2025-10-01', '03-01', '2026-03-20', ('2025-10-01', '2026-03-01')),  # the start's
+    ],
+)
+def test_a_tiers_end_without_a_year_falls_after_its_start(
+    from_: str, until: str, start: str, expected: tuple[str, str]
+) -> None:
+    w = prices.window(real_day(from_), real_day(until), day_of(start))
+    assert (w.from_, w.until) == tuple(map(dt.date.fromisoformat, expected))
+
+
+def test_a_tier_given_dates_without_years_never_ends_before_it_starts() -> None:
+    days = [f'{m:02}-{d:02}' for m in range(1, 13) for d in (1, 15, 28)] + ['02-29']
+    for start in (dt.date(2026, 1, 8), dt.date(2026, 6, 30), dt.date(2028, 2, 29)):
+        for a, b in itertools.product(days, days):
+            w = prices.window(real_day(a), real_day(b), start)
+            assert w.from_ is not None
+            assert w.until is not None
+            assert w.from_ <= w.until <= w.from_ + dt.timedelta(366)
 
 
 @pytest.mark.parametrize('value', ['02-30', '2027-13-01', '2026-02-29'])

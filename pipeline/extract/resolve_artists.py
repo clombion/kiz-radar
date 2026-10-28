@@ -87,35 +87,35 @@ CREATE TABLE artists (
     display_name TEXT NOT NULL,
     kind TEXT NOT NULL CHECK (kind IN ({artist_kind})),
     match_key TEXT NOT NULL UNIQUE
-);
+) STRICT;
 CREATE TABLE artist_keys (
     match_key TEXT PRIMARY KEY,   -- every key a mention or member produced, including merged ones
     artist_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED
-);
+) STRICT;
 CREATE TABLE artist_aliases (
     artist_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED,
     alias TEXT NOT NULL,
     mentions INTEGER NOT NULL,
     PRIMARY KEY (artist_id, alias)
-);
+) STRICT;
 CREATE TABLE couple_members (
     couple_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED,
     member_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED,
     PRIMARY KEY (couple_id, member_id)
-);
+) STRICT;
 CREATE TABLE event_artists (
     mention_id INTEGER PRIMARY KEY REFERENCES artist_mentions(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
-    event_id INTEGER NOT NULL REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
+    event_id INTEGER NOT NULL REFERENCES events(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     artist_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED,
     role TEXT NOT NULL CHECK (role IN ({role})),
     style TEXT,
     country TEXT
-);
+) STRICT;
 CREATE INDEX event_artists_artist ON event_artists(artist_id);
 CREATE TABLE merge_reason_definitions (
     reason TEXT PRIMARY KEY,
     definition TEXT NOT NULL
-);
+) STRICT;
 CREATE TABLE artist_merge_candidates (
     key_a TEXT NOT NULL,
     key_b TEXT NOT NULL,
@@ -126,7 +126,7 @@ CREATE TABLE artist_merge_candidates (
     evidence TEXT NOT NULL,
     decision TEXT CHECK (decision IN ({stored_decision})),   -- from pipeline/extract/merges.csv, NULL = not reviewed
     PRIMARY KEY (key_a, key_b)
-);
+) STRICT;
 CREATE TABLE artist_merge_decisions (
     key_a TEXT NOT NULL,          -- match_key values, as in artist_keys
     key_b TEXT NOT NULL,
@@ -134,18 +134,18 @@ CREATE TABLE artist_merge_decisions (
     prompt TEXT,                  -- the hash of the review prompt that decided it, NULL when decided by hand
     note TEXT,
     PRIMARY KEY (key_a, key_b)
-);
+) STRICT;
 CREATE TABLE artist_group_definitions (
     group_key TEXT PRIMARY KEY,
     artist_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED,
     display_name TEXT NOT NULL,
     note TEXT
-);
+) STRICT;
 CREATE TABLE artist_group_aliases (
     group_key TEXT NOT NULL REFERENCES artist_group_definitions(group_key) DEFERRABLE INITIALLY DEFERRED,
     match_key TEXT NOT NULL,      -- a spelling's key whose mentions count as the group's
     PRIMARY KEY (group_key, match_key)
-);
+) STRICT;
 CREATE VIEW artist_events AS
     SELECT ea.artist_id, ea.event_id, ea.role, 'direct' AS via, NULL AS via_artist_id
     FROM event_artists ea
@@ -156,8 +156,8 @@ CREATE VIEW artist_events AS
 # the export's table of every id given, which this step only adds to (tests/test_steps.py holds the export to it)
 KEPT = sqlite_db.declared("""CREATE TABLE artist_ids (
     artist_id INTEGER PRIMARY KEY,  -- every artist id ever given; never reused
-    match_key TEXT NOT NULL         -- the key it was given to
-)""")
+    match_key TEXT NOT NULL UNIQUE  -- the key it was given to
+) STRICT""")
 # a review that could not tell (unsure) decides nothing: the pair stays a candidate, and merges.csv never holds it
 STORED = (MergeDecision.MERGE, MergeDecision.SEPARATE)
 TABLES = sqlite_db.declared(

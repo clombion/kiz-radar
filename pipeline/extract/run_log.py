@@ -23,13 +23,13 @@ KEPT = sqlite_db.declared("""
 CREATE TABLE prompts (
     prompt TEXT PRIMARY KEY,      -- its hash, as pipeline_steps.prompt and the rows the prompt produced name it
     text TEXT NOT NULL            -- pipeline/prompts/asked/<prompt>.md
-);
+) STRICT;
 CREATE TABLE table_docs (
     name TEXT PRIMARY KEY,        -- a table or view in this database
     kind TEXT NOT NULL,
     description TEXT NOT NULL,
     written_by TEXT NOT NULL      -- the script that creates the table and keeps this description
-);
+) STRICT;
 CREATE TABLE pipeline_steps (
     step TEXT PRIMARY KEY,
     description TEXT NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE pipeline_steps (
     inputs TEXT,
     outputs TEXT,
     details TEXT                  -- JSON: the step's key numbers and settings
-);
+) STRICT;
 """)
 
 

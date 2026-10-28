@@ -102,8 +102,6 @@ UNDEFERRED = re.compile(
     r'(?!\s*deferrable initially deferred)',
     re.IGNORECASE,
 )
-# the source's own tables, as kizomba-world made them (scrape.KEPT)
-SOURCE_MADE = {'event_categories', 'event_tags', 'event_links'}
 # every table and view of the export, by the step that declares it: the ones it makes again each run, and the ones it
 # keeps, which change by migration (pipeline/export.py)
 DECLARED = (scrape.KEPT, run_log.KEPT, resolve_artists.KEPT, resolve_artists.TABLES, load_extract.TABLES)
@@ -118,7 +116,18 @@ def test_every_reference_is_held_at_commit(site_db: Path) -> None:
         with sqlite_db.opened(path, 'ro') as db:
             made = db.rows(Made, "select type, name, sql from sqlite_master where type = 'table'")
             found |= {m.name for m in made if m.sql and UNDEFERRED.search(m.sql)}
-    assert found == SOURCE_MADE
+    assert found == set()
+
+
+def test_every_table_of_the_export_is_strict() -> None:
+    """A value is stored as its column's type or refused, never kept as whatever it came as."""
+    with sqlite_db.opened(EXPORT, 'ro') as db:
+        loose = db.column(
+            str,
+            "select name from pragma_table_list where type = 'table' and schema = 'main' and not strict "
+            "and name not like 'sqlite_%'",
+        )
+    assert loose == []
 
 
 def test_every_table_of_the_export_is_one_steps() -> None:

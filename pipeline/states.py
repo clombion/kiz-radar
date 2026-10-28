@@ -868,8 +868,9 @@ def total[K: str, V](point: str, mapping: dict[K, V], where: str) -> dict[K, V]:
 
 
 def sql_in(point: str, keys_: Iterable[str] | None = None) -> str:
-    """The point's keys (or these of them) as an SQL list, for a CHECK (... IN (...))."""
-    return ', '.join("'" + state(point, k).key.replace("'", "''") + "'" for k in (keys_ or keys(point)))
+    """The point's keys (or these of them: none is an empty list) as an SQL list, for a CHECK (... IN (...))."""
+    chosen = keys(point) if keys_ is None else keys_
+    return ', '.join("'" + state(point, k).key.replace("'", "''") + "'" for k in chosen)
 
 
 def definitions(point: str, indent: str = '') -> str:

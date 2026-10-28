@@ -299,3 +299,9 @@ def test_no_collection_of_strings_is_one_of_states() -> None:
         if isinstance(node, ast.expr) and (points := states_written(node))
     ]
     assert found == []
+
+
+def test_no_keys_are_an_empty_list() -> None:
+    """A CHECK over none of a point's keys refuses every value, rather than admitting them all."""
+    assert states.sql_in('role', ()) == ''
+    assert states.sql_in('role', ['dj']) == "'dj'"
