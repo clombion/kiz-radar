@@ -48,33 +48,28 @@ function rules(text: string): Rule[] {
   return out;
 }
 
-test('no selector has two rules in the same media context', () => {
+// what is defined twice across the stylesheets: each definition as [what it is, the key it must be alone under], with
+// the files of both
+function twice(defined: (r: Rule) => (readonly [string, string])[]): string[] {
   const seen = new Map<string, string>(),
     dup: string[] = [];
   for (const [file, text] of css)
     for (const r of rules(text))
-      for (const s of r.selectors) {
-        const key = `${r.media} ${s}`;
+      for (const [what, key] of defined(r)) {
         const before = seen.get(key);
         if (before === undefined) seen.set(key, file);
-        else dup.push(`${key.trim()} (${before} and ${file})`);
+        else dup.push(`${what} (${before} and ${file})`);
       }
-  expect(dup).toEqual([]);
+  return dup;
+}
+
+test('no selector has two rules in the same media context', () => {
+  expect(twice((r) => r.selectors.map((s) => [`${r.media} ${s}`.trim(), `${r.media} ${s}`]))).toEqual([]);
 });
 
 test('each design token is defined once per theme', () => {
-  const seen = new Map<string, string>(),
-    dup: string[] = [];
-  for (const [file, text] of css)
-    for (const r of rules(text))
-      for (const { groups } of r.body.matchAll(TOKEN)) {
-        const name = groups?.['name'] ?? '';
-        const key = `${r.media} ${r.selectors.join(',')} ${name}`;
-        const before = seen.get(key);
-        if (before === undefined) seen.set(key, file);
-        else dup.push(`${name} (${before} and ${file})`);
-      }
-  expect(dup).toEqual([]);
+  const tokens = (r: Rule) => [...r.body.matchAll(TOKEN)].map(({ groups }) => groups?.['name'] ?? '');
+  expect(twice((r) => tokens(r).map((name) => [name, `${r.media} ${r.selectors.join(',')} ${name}`]))).toEqual([]);
 });
 
 test('the rules see a selector repeated in a second block of one media query, and inside a selector list', () => {

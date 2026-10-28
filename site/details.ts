@@ -2,7 +2,7 @@
 // then the practical bits (venue, organisers) that matter once you've decided to go.
 import { q, sql } from './db.ts';
 import type { Kid } from './dom.ts';
-import { h } from './dom.ts';
+import { h, own } from './dom.ts';
 import type { Festival } from './festivals.ts';
 import { icon as featureIcon, MORE_TRAITS, TRAITS, type Trait } from './icons.ts';
 import { openPasses } from './passes.ts';
@@ -28,18 +28,7 @@ export const traitItems = (list: readonly Trait[], e?: Festival): HTMLElement[] 
       {},
       icon(svg),
       linkOf('feature', key) === LINK.PASSES && e
-        ? h(
-            'button',
-            {
-              type: 'button',
-              class: 'link trait-link',
-              onclick: (ev: Event) => {
-                ev.stopPropagation();
-                openPasses(e, ev.currentTarget instanceof Element ? ev.currentTarget : null);
-              },
-            },
-            label,
-          )
+        ? h('button', { type: 'button', class: 'link trait-link', onclick: own((b) => openPasses(e, b)) }, label)
         : label,
     ),
   );

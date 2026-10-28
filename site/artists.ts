@@ -1,11 +1,11 @@
 // Artists: a scannable list (who, from where, how often booked, where next) and a page per artist that
 // leads with their upcoming festivals.
 import { one, q, Sql, sql } from './db.ts';
-import { h, type Kid } from './dom.ts';
+import { dropdown, h, type Kid } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { changed, type Festival, readState, withDetails } from './festivals.ts';
 import { alsoGoingTo, peopleOf } from './plans.ts';
-import { artistHref, artistsHref, eventOnMapHref, personHref, showInAddressBar } from './routes.ts';
+import { artistHref, artistsHref, eventOnMapHref, personHref, type Show, showInAddressBar } from './routes.ts';
 import { ARTIST_STATS, EVENT, flag as flagCol, num, opt, type RowOf, state, str } from './rows.ts';
 import { KEY } from './states.ts';
 import { countryName, dayMonth, dayYear, flag, place } from './ui.ts';
@@ -71,12 +71,7 @@ const DEFAULTS: { q: string; role: string; country: string; sort: string; popula
   kind: '',
 };
 
-export function artistsView(
-  root: HTMLElement,
-  sub: readonly string[],
-  qs: string,
-  { signal }: { signal: AbortSignal },
-): void {
+export const artistsView: Show = (root, sub, qs, { signal }) => {
   if (sub[0]) {
     artistPage(root, Number(sub[0]));
     return;
@@ -177,21 +172,7 @@ export function artistsView(
     ),
     h('label', { class: 'check' }, pop, ' Only well-known artists (10+ festivals)'),
   );
-  moreBtn.addEventListener('click', (ev) => {
-    ev.stopPropagation();
-    panel.hidden = !panel.hidden;
-    moreBtn.setAttribute('aria-expanded', String(!panel.hidden));
-  });
-  document.addEventListener(
-    'click',
-    (ev) => {
-      if (!(panel.hidden || (ev.target instanceof Node && panel.contains(ev.target)))) {
-        panel.hidden = true;
-        moreBtn.setAttribute('aria-expanded', 'false');
-      }
-    },
-    { signal },
-  );
+  dropdown(moreBtn, panel, [moreBtn, panel], signal);
   const summary = h('p', { class: 'list-summary' });
   const list = h('ul', { class: 'artist-list' });
   const showMore = h('button', { type: 'button', class: 'more-btn show-more' });
@@ -263,7 +244,7 @@ export function artistsView(
     }, 150);
   });
   render();
-}
+};
 
 function row(
   a: Artist,

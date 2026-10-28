@@ -5,7 +5,7 @@
 import { today } from './days.ts';
 import { one, q, sql } from './db.ts';
 import { h } from './dom.ts';
-import { type Modal, modal } from './modal.ts';
+import { type Peek, peek } from './modal.ts';
 import { money } from './money.ts';
 import { nextChange, type Priced, type PriceLine, priceLine, type TierNow, tierNow, type Window } from './pricing.ts';
 import { num, opt, PASS, type RowOf, str, TIER, type TierRow } from './rows.ts';
@@ -59,37 +59,17 @@ const passName = (p: Pass, own = false): string =>
     .filter(Boolean)
     .join(' · ');
 
-interface PassesView {
-  m: Modal;
-  title: HTMLElement;
-  sub: HTMLElement;
-  body: HTMLElement;
-  note: HTMLElement;
-  link: HTMLAnchorElement;
-}
+// the passes' quick view, with a note on where the prices come from and a link there in its foot
+type PassesView = Peek & { note: HTMLElement; link: HTMLAnchorElement };
 let view: PassesView | undefined;
 function passesDialog(): PassesView {
   if (view) return view;
-  const title = h('h2', { id: 'passes-title' }),
-    sub = h('p', { class: 'sub' }),
-    body = h('div', { class: 'peek-body' });
   const note = h('p', { class: 'muted small' }),
     link = h('a', { target: '_blank', rel: 'noopener' });
-  const close = h(
-    'button',
-    { type: 'button', class: 'peek-close', 'aria-label': 'Close', onclick: () => void view?.m.shut() },
-    '×',
-  );
-  const dlg = h(
-    'dialog',
-    { class: 'peek', 'aria-labelledby': 'passes-title' },
-    h('div', { class: 'peek-head' }, h('div', {}, title, sub), close),
-    body,
-    h('div', { class: 'peek-foot' }, note, link),
-  );
-  const made = { m: modal(dlg), title, sub, body, note, link };
-  view = made;
-  return made;
+  const shown = peek('passes-title');
+  shown.foot.append(note, link);
+  view = { ...shown, note, link };
+  return view;
 }
 
 // Opens over the page; each pass on sale with today's price, and the next change when one is listed.

@@ -10,7 +10,7 @@ import { artistHint, exploreHint } from './hints.ts';
 import { mapView } from './map.ts';
 import { currencySwitch } from './money.ts';
 import { personView } from './people.ts';
-import { EXPLORE, type Route, renamed, SECTIONS, TABS, type Tab } from './routes.ts';
+import { EXPLORE, type Route, renamed, SECTIONS, type Show, TABS, type Tab } from './routes.ts';
 import { initSearch } from './search.ts';
 import { sentenceView } from './sentence.ts';
 import { sqlView } from './tables.ts';
@@ -35,12 +35,7 @@ interface View {
   nav: Tab | null;
   // the view queries the database as it builds, so it shows once the database is in
   waitsForData: boolean;
-  show: (
-    root: HTMLElement,
-    sub: readonly string[],
-    qs: string,
-    opts: { signal: AbortSignal; data: Promise<unknown> },
-  ) => void;
+  show: Show;
 }
 const FINDER: View = {
   title: null,

@@ -20,6 +20,14 @@ export const countriesHref = (params?: Params) => hash('countries', params);
 // the views a tab or a swipe goes to, by name, and the tabs of the header
 export type Section = 'finder' | 'friends' | 'map' | 'artists' | 'countries';
 export type Tab = 'finder' | 'friends' | 'explore';
+// A view, drawn into root from the address: the parts after the view's name, the query string, a signal that aborts
+// once another view shows, and the database loading.
+export type Show = (
+  root: HTMLElement,
+  sub: readonly string[],
+  qs: string,
+  opts: { signal: AbortSignal; data: Promise<unknown> },
+) => void;
 // every view an address names: the sections, and the SQL page the footer links to (index.html)
 export type Route = Section | 'sql';
 // the header's tabs (a view's nav names its tab), and the second row Explore opens; a swipe on a touch screen steps

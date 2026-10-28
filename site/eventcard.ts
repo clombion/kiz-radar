@@ -4,7 +4,7 @@
 import { addDays, today } from './days.ts';
 import { cardDetails, traitItems } from './details.ts';
 import type { Kid } from './dom.ts';
-import { h } from './dom.ts';
+import { h, own } from './dom.ts';
 import { type Festival, styleLine } from './festivals.ts';
 import { artistHint } from './hints.ts';
 import { TRAITS } from './icons.ts';
@@ -80,26 +80,10 @@ function flight(e: Festival): HTMLElement {
 // passes when its state renders as one.
 // a card's price is a button to the passes view, which opens over the page
 const passBtn = (e: Festival, ...words: Kid[]) =>
-  h(
-    'button',
-    {
-      type: 'button',
-      class: 'link pass-btn',
-      onclick: (ev: Event) => {
-        ev.stopPropagation();
-        openPasses(e, ev.currentTarget instanceof Element ? ev.currentTarget : null);
-      },
-    },
-    ...words,
-  );
+  h('button', { type: 'button', class: 'link pass-btn', onclick: own((b) => openPasses(e, b)) }, ...words);
 function linked(e: Festival, words: string | null, link: string | null): Kid {
   if (link === LINK.PAGE && e.ticket_page)
-    return h(
-      'a',
-      { href: e.ticket_page, target: '_blank', rel: 'noopener', onclick: (ev: Event) => ev.stopPropagation() },
-      words,
-      away(),
-    );
+    return h('a', { href: e.ticket_page, target: '_blank', rel: 'noopener', onclick: own() }, words, away());
   if (link === LINK.PASSES) return passBtn(e, words);
   return words;
 }
@@ -230,10 +214,7 @@ export function eventCard(
         type: 'button',
         class: cls,
         'aria-expanded': 'false',
-        onclick: (ev: Event) => {
-          ev.stopPropagation();
-          toggle();
-        },
+        onclick: own(toggle),
       },
       ...kids,
     );

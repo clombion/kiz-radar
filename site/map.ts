@@ -3,11 +3,11 @@
 import type { Feature, FeatureCollection, MultiPolygon, Polygon, Position } from 'geojson';
 import type { GeometryCollection, Topology } from 'topojson-specification';
 import { q, sql } from './db.ts';
-import { h } from './dom.ts';
+import { dropdown, h } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { changed, type Festival, readState, withDetails } from './festivals.ts';
 import { convert, currency, money, step } from './money.ts';
-import { cityOnMapHref, eventOnMapHref, mapHref, showInAddressBar } from './routes.ts';
+import { cityOnMapHref, eventOnMapHref, mapHref, type Show, showInAddressBar } from './routes.ts';
 import { EVENT } from './rows.ts';
 import { flag, home } from './ui.ts';
 
@@ -104,12 +104,7 @@ const WHEN: readonly (readonly [string, string])[] = [
 const DEFAULTS: { when: string; color: string; country: string } = { when: 'upcoming', color: 'fare', country: '' };
 const placed = (e: Festival): e is Placed => e.city !== null && e.lat !== null && e.lon !== null;
 
-export function mapView(
-  root: HTMLElement,
-  sub: readonly string[],
-  qs: string,
-  { signal }: { signal: AbortSignal },
-): void {
+export const mapView: Show = (root, sub, qs, { signal }) => {
   const events = withDetails(q(EVENT, sql`SELECT * FROM event_rows WHERE lat IS NOT NULL ORDER BY start_date`)).filter(
     placed,
   );
@@ -170,18 +165,7 @@ export function mapView(
     { class: 'more-panel', id: 'map-filters', hidden: true },
     h('label', { class: 'field' }, h('span', {}, 'Colour the bubbles by'), colorSel),
   );
-  filtersBtn.addEventListener('click', (ev) => {
-    ev.stopPropagation();
-    filters.hidden = !filters.hidden;
-    filtersBtn.setAttribute('aria-expanded', String(!filters.hidden));
-  });
-  const closeFilters = (ev: Event) => {
-    if (!(filters.hidden || (ev.target instanceof Node && filters.contains(ev.target)))) {
-      filters.hidden = true;
-      filtersBtn.setAttribute('aria-expanded', 'false');
-    }
-  };
-  document.addEventListener('click', closeFilters, { signal });
+  dropdown(filtersBtn, filters, [filtersBtn, filters], signal);
   const paintFiltersBtn = () => {
     const n = Number(state.color !== DEFAULTS.color);
     filtersBtn.textContent = `Filters${n ? ` (${n})` : ''} ▾`;
@@ -523,7 +507,7 @@ export function mapView(
     map.off();
     setTimeout(() => map.remove(), 300);
   });
-}
+};
 
 // world-atlas, at the version WORLD names, is a topology whose countries are a collection of named shapes
 type World = Topology<{ countries: GeometryCollection<{ name: string }> }>;

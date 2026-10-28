@@ -3,8 +3,8 @@
 // couple, is teaching (or playing) there rather than just going.
 import { one, q, sql } from './db.ts';
 import type { Kid } from './dom.ts';
-import { h, nodes } from './dom.ts';
-import { type Modal, modal } from './modal.ts';
+import { h, nodes, own } from './dom.ts';
+import { type Peek, peek } from './modal.ts';
 import { artistHref, eventOnMapHref, personHref } from './routes.ts';
 import { flag as flagCol, num, opt, type RowOf, state, str } from './rows.ts';
 import { KEY } from './states.ts';
@@ -138,10 +138,7 @@ const nameButton = (g: Named) =>
     {
       type: 'button',
       class: 'goer-name',
-      onclick: (ev: Event) => {
-        ev.stopPropagation();
-        peekGroup(g, ev.currentTarget);
-      },
+      onclick: own((b) => peekGroup(g, b)),
     },
     g.name,
   );
@@ -160,10 +157,7 @@ export function goingLine(e: Going): HTMLElement | null {
       {
         type: 'button',
         class: 'goer-name',
-        onclick: (ev: Event) => {
-          ev.stopPropagation();
-          peekEvent(e, ev.currentTarget);
-        },
+        onclick: own((b) => peekEvent(e, b)),
       },
       words,
     );
@@ -207,38 +201,11 @@ const everyone = (e: Going): Named[] => [
 ];
 
 // ----- the quick view: a person or couple's plans, or everyone going to a festival, over the page -----
-interface Peek {
-  m: Modal;
-  title: HTMLElement;
-  sub: HTMLElement;
-  lead: HTMLElement;
-  body: HTMLElement;
-  foot: HTMLElement;
-}
 let view: Peek | undefined;
-function peekDialog(): Peek {
-  if (view) return view;
-  const title = h('h2', { id: 'peek-title' }),
-    sub = h('p', { class: 'sub' }),
-    lead = h('span', { class: 'peek-faces' });
-  const body = h('div', { class: 'peek-body' }),
-    foot = h('div', { class: 'peek-foot' });
-  const close = h(
-    'button',
-    { type: 'button', class: 'peek-close', 'aria-label': 'Close', onclick: () => void view?.m.shut() },
-    '×',
-  );
-  const dlg = h(
-    'dialog',
-    { class: 'peek', 'aria-labelledby': 'peek-title' },
-    h('div', { class: 'peek-head' }, lead, h('div', {}, title, sub), close),
-    body,
-    foot,
-  );
-  const made = { m: modal(dlg), title, sub, lead, body, foot };
-  view = made;
-  return made;
-}
+const peekDialog = (): Peek => {
+  view ??= peek('peek-title');
+  return view;
+};
 function show(
   from: EventTarget | null,
   { faces: f, title, sub, body, foot }: { faces?: HTMLElement; title: string; sub: Kid; body: Kid[]; foot?: Kid },

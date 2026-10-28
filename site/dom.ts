@@ -34,3 +34,30 @@ export const nodes = (kids: readonly Kid[]): Node[] =>
           ? [kid]
           : [document.createTextNode(String(kid))],
   );
+
+// A click handler for a control inside a card, which opens on a click: the click is the control's alone. act gets the
+// control, for a dialog to give the focus back to.
+export const own =
+  (act?: (control: Element | null) => void) =>
+  (ev: Event): void => {
+    ev.stopPropagation();
+    act?.(ev.currentTarget instanceof Element ? ev.currentTarget : null);
+  };
+
+// A button that shows or hides a panel of more choices; a click outside what counts as inside (the button and the
+// panel, or the bar they are on) hides it again, until signal aborts.
+export function dropdown(button: HTMLElement, panel: HTMLElement, inside: readonly Node[], signal: AbortSignal): void {
+  button.addEventListener('click', () => {
+    panel.hidden = !panel.hidden;
+    button.setAttribute('aria-expanded', String(!panel.hidden));
+  });
+  document.addEventListener(
+    'click',
+    ({ target }) => {
+      if (panel.hidden || (target instanceof Node && inside.some((n) => n.contains(target)))) return;
+      panel.hidden = true;
+      button.setAttribute('aria-expanded', 'false');
+    },
+    { signal },
+  );
+}

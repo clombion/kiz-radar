@@ -2585,6 +2585,9 @@ html:has(dialog.peek[open]) {
   flex: 1;
   min-width: 0;
 }
+.peek-faces:empty {
+  display: none; /* no faces: no gap before the title */
+}
 .peek-faces .face {
   width: 34px;
   height: 34px;

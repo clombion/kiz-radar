@@ -3,7 +3,7 @@
 
 import { addDays, today } from './days.ts';
 import { site } from './db.ts';
-import { h, type Kid, nodes } from './dom.ts';
+import { dropdown, h, type Kid, nodes, own } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import {
   CHECKED,
@@ -177,6 +177,21 @@ export function sentenceView(
     allin: FLAGS,
     unchecked: FLAGS,
   });
+  // a link that drops every choice but the order, so every festival shows; then
+  const loosen = (words: string, then?: () => void) =>
+    h(
+      'button',
+      {
+        type: 'button',
+        class: 'link',
+        onclick: () => {
+          Object.assign(s, LOOSEST);
+          render();
+          then?.();
+        },
+      },
+      words,
+    );
 
   const blank = (key: keyof Choices, opts: readonly (readonly [string | number, string])[], cls = 'blank') => {
     const el = h(
@@ -225,11 +240,10 @@ export function sentenceView(
           type: 'button',
           class: 'remove',
           'aria-label': `Remove “${String(what)}”`,
-          onclick: (ev: Event) => {
-            ev.stopPropagation();
+          onclick: own(() => {
             remove();
             render();
-          },
+          }),
         },
         '×',
       ),
@@ -307,19 +321,7 @@ export function sentenceView(
     h(
       'p',
       { class: 'nevermind' },
-      h(
-        'button',
-        {
-          type: 'button',
-          class: 'link',
-          onclick: () => {
-            Object.assign(s, LOOSEST);
-            render();
-            results.scrollIntoView({ behavior: 'smooth' });
-          },
-        },
-        'Never mind, show me all events',
-      ),
+      loosen('Never mind, show me all events', () => results.scrollIntoView({ behavior: 'smooth' })),
     ),
   );
 
@@ -362,10 +364,6 @@ export function sentenceView(
     ),
   ];
   const panel = h('div', { class: 'more-panel', id: 'more-panel', hidden: true }, moreFields());
-  moreBtn.addEventListener('click', () => {
-    panel.hidden = !panel.hidden;
-    moreBtn.setAttribute('aria-expanded', String(!panel.hidden));
-  });
   const bar = h(
     'div',
     { class: 'sticky-bar', 'aria-label': 'Filters' },
@@ -380,16 +378,7 @@ export function sentenceView(
     ),
     panel,
   );
-  document.addEventListener(
-    'click',
-    (ev) => {
-      if (!(panel.hidden || (ev.target instanceof Node && bar.contains(ev.target)))) {
-        panel.hidden = true;
-        moreBtn.setAttribute('aria-expanded', 'false');
-      }
-    },
-    { signal },
-  );
+  dropdown(moreBtn, panel, [bar], signal);
 
   const results = h('section', { class: 'sentence-results' });
   // once someone has changed a blank they've got it: fade the hints, and don't show them again
@@ -549,23 +538,7 @@ export function sentenceView(
       );
     }
     if (widened) return h('p', { class: 'empty' }, 'No festival fits that time and price. ', widen(widened));
-    return h(
-      'p',
-      { class: 'empty' },
-      'No festival fits all of that. ',
-      h(
-        'button',
-        {
-          type: 'button',
-          class: 'link',
-          onclick: () => {
-            Object.assign(s, LOOSEST);
-            render();
-          },
-        },
-        'Show all events instead',
-      ),
-    );
+    return h('p', { class: 'empty' }, 'No festival fits all of that. ', loosen('Show all events instead'));
   }
 
   function render(): void {
