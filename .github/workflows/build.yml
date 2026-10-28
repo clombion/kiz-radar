@@ -2,8 +2,7 @@ name: Rebuild site database
 
 # When a new kizomba-world export or anything in pipeline/ is pushed, check every state in the data is one of
 # pipeline/states.py (pipeline/audit.py), geocode any new cities, refresh the exchange rates, rebuild
-# docs/data/kiz.sqlite, and refresh the merge suggestions. The newest .sqlite file in source/ is
-# used.
+# docs/data/kiz.sqlite, and refresh the merge suggestions, from the export in source/ (pipeline/db.py export).
 on:
   push:
     branches: [main]
@@ -25,9 +24,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
-      - name: Pick the newest export
-        run: echo "SRC=$(ls -t source/*.sqlite | head -1)" >> "$GITHUB_ENV"
+      - uses: ./.github/actions/steps
       - name: Every state in the data is in pipeline/states.py
         run: uv run -q --group tickets -m pipeline.audit
       - name: Geocode new cities

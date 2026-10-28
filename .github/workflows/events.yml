@@ -33,9 +33,7 @@ jobs:
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
-      - name: Pick the newest export
-        run: echo "SRC=$(ls -t source/*.sqlite | head -1)" >> "$GITHUB_ENV"
+      - uses: ./.github/actions/steps
       - name: Refresh the events
         if: ${{ !inputs.festivals }}
         run: uv run -q --group scrape -m pipeline.scrape "$SRC"

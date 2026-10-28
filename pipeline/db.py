@@ -1,18 +1,22 @@
 """Opening the pipeline's SQLite databases. Every connection names what it may do with the file: read it (ro), write
 it (rw), or create it (rwc); only a step that builds a database may create one, so a wrong path is an error, never a
 new empty database, and a connection is closed with its block. A day or a time is written as the text records read
-(2026-10-27, 2026-10-27T17:38:51+00:00). source_arg() is the command-line argument for the kizomba-world export a
-step works on."""
+(2026-10-27, 2026-10-27T17:38:51+00:00). export() is the kizomba-world export the steps work on, the one file of
+source/ (python -m pipeline.db prints its path, for the Actions), and source_arg() the command-line argument a step
+takes it by."""
 
 import argparse
 import datetime as dt
 import sqlite3
+import sys
 from collections.abc import Generator, Sequence
 from contextlib import contextmanager
 from pathlib import Path
 from typing import Literal
 
 from pydantic import BaseModel
+
+from pipeline import ROOT
 
 sqlite3.register_adapter(dt.date, dt.date.isoformat)
 sqlite3.register_adapter(dt.datetime, dt.datetime.isoformat)
@@ -59,3 +63,22 @@ class Source(argparse.Namespace):
 
 def source_arg(ap: argparse.ArgumentParser) -> None:
     _ = ap.add_argument('src', type=existing, help='the kizomba-world export (source/<events>.sqlite)')
+
+
+def export() -> Path:
+    """The kizomba-world export: source/ holds one, which the Refresh events Action replaces in place. Two would leave
+    which one the steps read to chance (a checkout gives every file the same time), so they are an error."""
+    found = sorted((ROOT / 'source').glob('*.sqlite'))
+    if len(found) != 1:
+        sys.exit(f'source/ holds {len(found)} exports ({", ".join(p.name for p in found)}): it holds one')
+    return found[0]
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description='Print the path of the kizomba-world export the steps work on.')
+    _ = ap.parse_args()
+    print(export().relative_to(ROOT))
+
+
+if __name__ == '__main__':
+    main()

@@ -9,11 +9,11 @@ from pathlib import Path
 
 import pytest
 
-from pipeline import build_site_db, merge_suggestions, scrape
+from pipeline import ROOT, build_site_db, merge_suggestions, scrape
 from pipeline import db as sqlite_db
 from pipeline.extract import load_extract, resolve_artists, run_log
 from tests import jsons
-from tests.exports import EXPORT, ROOT, column, content, copied, run, trimmed
+from tests.exports import EXPORT, column, content, copied, run, trimmed
 from tests.fakes import Memory
 
 SITE_DB = ROOT / 'docs' / 'data' / 'kiz.sqlite'

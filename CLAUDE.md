@@ -29,8 +29,9 @@
      read in `pipeline/tickets/reads/ID.json`, with the prompt it followed archived in `pipeline/prompts/asked/`. On a
      failure, fix what it names and record again.
   5. `uv run -m pipeline.extract.load_extract`, `uv run --group artists -m pipeline.extract.resolve_artists` and
-     `uv run -m pipeline.build_site_db` on the newest `source/*.sqlite`, then commit `pipeline/tickets/` (with its
-     `status.csv`), `pipeline/prompts/asked/`, `pipeline/pass_prices.csv` and `pipeline/ticket_pages.csv` with them.
+     `uv run -m pipeline.build_site_db` on the export (`uv run -m pipeline.db` names it), then commit
+     `pipeline/tickets/` (with its `status.csv`), `pipeline/prompts/asked/`, `pipeline/pass_prices.csv` and
+     `pipeline/ticket_pages.csv` with them.
 - Every state a data point can be in is one row of `pipeline/states.py`, with its words on the site: the enums (and
   through them the records and their schemas), the prompts' definitions, the SQL checks and `site/states.ts` are built
   from it, so a new state is one new row there and nowhere else (then `mise run generate`). An instance that departs

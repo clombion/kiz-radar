@@ -854,8 +854,8 @@ def recheck(tiers: Sequence[PriceRow], start: dt.date, today: dt.date) -> tuple[
 
 
 def src_db() -> AbstractContextManager[sqlite3.Connection]:
-    """The newest kizomba-world export, to read, closed with its block."""
-    return sqlite_db.opened(max((ROOT / 'source').glob('*.sqlite'), key=lambda p: p.stat().st_mtime), 'ro')
+    """The kizomba-world export (db.export), to read, closed with its block."""
+    return sqlite_db.opened(sqlite_db.export(), 'ro')
 
 
 def host(url: str) -> str:
@@ -1334,7 +1334,7 @@ def cmd_record(db: sqlite3.Connection, event_id: int) -> None:
     _ = status(db)
     print(
         'Then: uv run -m pipeline.extract.load_extract, uv run --group artists -m pipeline.extract.resolve_artists and '
-        'uv run -m pipeline.build_site_db on the newest source/*.sqlite'
+        'uv run -m pipeline.build_site_db on the export (python -m pipeline.db names it)'
     )
 
 

@@ -9,10 +9,9 @@ from pathlib import Path
 
 import pytest
 
-from pipeline import ROOT
 from pipeline import db as sqlite_db
 
-EXPORT = max((ROOT / 'source').glob('*.sqlite'), key=lambda p: p.stat().st_mtime)
+EXPORT = sqlite_db.export()
 # the tables that hold when a step ran, which a second run changes and nothing else should, read without it
 WITHOUT_WHEN = {
     'meta': "select * from meta where key != 'built_at'",

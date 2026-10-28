@@ -1,9 +1,11 @@
 """The repository's Python, read as code: a function is written once, in the module the others import it from, and the
 repository's folder is found once, as pipeline.ROOT; and a table of the export is the export's, which no step creates
-when it is missing."""
+when it is missing. The Actions take their tools from mise.toml, and the steps their export from db.export."""
 
 import ast
 import collections
+import re
+from pathlib import Path
 
 from pipeline import ROOT
 
@@ -49,5 +51,29 @@ def test_no_step_creates_a_table_when_it_is_missing() -> None:
         for p in sorted((ROOT / 'pipeline').rglob('*.py'))
         for n in ast.walk(ast.parse(p.read_text(encoding='utf-8')))
         if isinstance(n, ast.Constant) and isinstance(n.value, str) and 'if not exists' in n.value.lower()
+    ]
+    assert found == []
+
+
+def test_the_actions_take_their_tools_from_mise() -> None:
+    """mise.toml pins node, pnpm and uv; an Action that set one up by itself would run another version."""
+    setups = re.compile(r'uses: (actions/setup-\w+|astral-sh/setup-uv|pnpm/action-setup)')
+    found = [
+        f'{p.relative_to(ROOT)}: {m[1]}'
+        for p in sorted((ROOT / '.github').rglob('*.yml'))
+        for m in setups.finditer(p.read_text(encoding='utf-8'))
+    ]
+    assert found == []
+
+
+def test_only_db_looks_for_the_export() -> None:
+    """source/ holds one export, which db.export finds; a step that looked for one itself could read another."""
+    looks = re.compile(r"source/\*\.sqlite|glob\('\*\.sqlite'\)")
+    found = [
+        f'{p.relative_to(ROOT)}'
+        for p in sorted(
+            [*(ROOT / 'pipeline').rglob('*.py'), *(ROOT / 'tests').rglob('*.py'), *(ROOT / '.github').rglob('*.yml')]
+        )
+        if p not in {ROOT / 'pipeline' / 'db.py', Path(__file__)} and looks.search(p.read_text(encoding='utf-8'))
     ]
     assert found == []

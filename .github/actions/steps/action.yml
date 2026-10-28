@@ -1,0 +1,9 @@
+name: The pipeline's steps
+description: The tools as mise.toml pins them, and SRC, the export the steps work on (pipeline/db.py)
+runs:
+  using: composite
+  steps:
+    - uses: jdx/mise-action@v2
+    - name: The export the steps work on
+      shell: bash
+      run: echo "SRC=$(uv run -q -m pipeline.db)" >> "$GITHUB_ENV"

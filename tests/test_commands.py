@@ -20,6 +20,7 @@ from pipeline import ROOT, db
 
 SOURCES = [
     *sorted((ROOT / '.github' / 'workflows').glob('*.yml')),
+    *sorted((ROOT / '.github' / 'actions').rglob('*.yml')),
     ROOT / 'README.md',
     ROOT / 'CLAUDE.md',
     *sorted((ROOT / 'pipeline').rglob('*.py')),
