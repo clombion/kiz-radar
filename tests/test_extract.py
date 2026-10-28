@@ -178,7 +178,7 @@ def test_the_pairs_judged_are_every_pair_a_candidate_can_be() -> None:
                 id=i, event_id=i, role=Role.DJ, name_as_written='Kizzy', style=None, country=place, event_country=None
             )
         )
-    keys = resolve_artists.keyed(mentions)
+    keys = resolve_artists.keyed(mentions, [])
     pairing = resolve_artists.Pairing.of(keys)
     every = list(itertools.combinations(sorted(pairing.people), 2))
     accepted = {pair for pair in every if pairing.reason(*pair)}
@@ -204,23 +204,20 @@ def test_a_named_group_absorbs_its_aliases_whatever_their_keys() -> None:
         )
         for i, n in enumerate(['Ana & Bea', 'AB Sound'])
     ]
-    keys = resolve_artists.keyed(mentions)
-    final = resolve_artists.final_keys(keys, resolve_artists.merged(keys, {}), [duo('g:ab', 'c:ana+bea;p:absound')])
+    groups = [duo('g:ab', 'c:ana+bea;p:absound')]
+    keys = resolve_artists.keyed(mentions, groups)
+    final = resolve_artists.final_keys(keys, resolve_artists.merged(keys, {}), groups)
     assert final['c:ana+bea'] == final['p:absound'] == 'g:ab'
 
 
 def test_an_alias_two_groups_claim_is_refused() -> None:
-    keys = resolve_artists.keyed(
-        [
-            resolve_artists.Mention(
-                id=0, event_id=0, role=Role.DJ, name_as_written='AB Sound', style=None, country=None, event_country=None
-            )
-        ]
+    mention = resolve_artists.Mention(
+        id=0, event_id=0, role=Role.DJ, name_as_written='AB Sound', style=None, country=None, event_country=None
     )
+    groups = [duo('g:ab', 'p:absound'), duo('g:ba', 'p:absound')]
+    keys = resolve_artists.keyed([mention], groups)
     with pytest.raises(SystemExit, match='g:ba: its aliases are already the group g:ab'):
-        _ = resolve_artists.final_keys(
-            keys, resolve_artists.merged(keys, {}), [duo('g:ab', 'p:absound'), duo('g:ba', 'p:absound')]
-        )
+        _ = resolve_artists.final_keys(keys, resolve_artists.merged(keys, {}), groups)
 
 
 @pytest.mark.parametrize(

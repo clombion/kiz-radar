@@ -51,6 +51,7 @@ import sys
 import unicodedata
 from collections import Counter, defaultdict
 from collections.abc import Iterable, Mapping, Sequence
+from collections.abc import Set as AbstractSet
 from dataclasses import dataclass, field
 from difflib import SequenceMatcher
 from fractions import Fraction
@@ -492,7 +493,24 @@ class Mention(Record):
 class Keys:
     """What the mentions say of each key: its names as written, its kind, its members (a couple or group's), the
     countries stated with it (all of them, and each mention's), its events' countries, its partners, and each
-    couple's spellings of a member."""
+    couple's spellings of a member. Read-only: keyed() gathers it."""
+
+    names: Mapping[str, Sequence[str]]
+    kinds: Mapping[str, ArtistKind]
+    members: Mapping[str, Sequence[str]]
+    stated_countries: Mapping[str, AbstractSet[str]]
+    stated_sets: Mapping[str, AbstractSet[frozenset[str]]]
+    event_countries: Mapping[str, AbstractSet[str]]
+    partners: Mapping[str, AbstractSet[str]]
+    mention_key: Mapping[int, str]
+    # couple key -> member token -> person keys seen for that member ("Chris’Py" and "Chris Py" in the same couple
+    # give one single-word and one multi-word key for the same person)
+    member_forms: Mapping[str, Mapping[str, AbstractSet[str]]]
+
+
+@dataclass(frozen=True)
+class Gathered:
+    """Keys as keyed() gathers them, mention by mention."""
 
     names: defaultdict[str, list[str]] = field(default_factory=lambda: defaultdict(list))
     kinds: dict[str, ArtistKind] = field(default_factory=dict[str, ArtistKind])
@@ -502,14 +520,26 @@ class Keys:
     event_countries: defaultdict[str, set[str]] = field(default_factory=lambda: defaultdict(set))
     partners: defaultdict[str, set[str]] = field(default_factory=lambda: defaultdict(set))
     mention_key: dict[int, str] = field(default_factory=dict[int, str])
-    # couple key -> member token -> person keys seen for that member ("Chris’Py" and "Chris Py" in the same couple
-    # give one single-word and one multi-word key for the same person)
     member_forms: defaultdict[str, defaultdict[str, set[str]]] = field(
         default_factory=lambda: defaultdict(lambda: defaultdict(set))
     )
 
+    def keys(self) -> Keys:
+        """What was gathered, as plain mappings: reading a key nothing said gives no entry."""
+        return Keys(
+            dict(self.names),
+            dict(self.kinds),
+            dict(self.members),
+            dict(self.stated_countries),
+            dict(self.stated_sets),
+            dict(self.event_countries),
+            dict(self.partners),
+            dict(self.mention_key),
+            {k: dict(v) for k, v in self.member_forms.items()},
+        )
 
-def person_keys(keys: Keys, m: Mention) -> tuple[str, list[str]]:
+
+def person_keys(keys: Gathered, m: Mention) -> tuple[str, list[str]]:
     """(the mention's key, the person keys of its members) for a mention of people: one, a couple or a group."""
     parts = members_of(m.name_as_written, m.role)
     scope = '+'.join(sorted(token_key(p) for p in parts)) if len(parts) > 1 else None
@@ -533,9 +563,9 @@ def person_keys(keys: Keys, m: Mention) -> tuple[str, list[str]]:
     return key, pkeys
 
 
-def keyed(mentions: Iterable[Mention]) -> Keys:
-    """The keys of every mention and of its members."""
-    keys = Keys()
+def keyed(mentions: Iterable[Mention], groups: Iterable[Group]) -> Keys:
+    """The keys of every mention and of its members, and the named groups' keys with their members."""
+    keys = Gathered()
     for m in mentions:
         pkeys_seen: list[str] = []
         if m.role in ORG_ROLES:
@@ -548,7 +578,10 @@ def keyed(mentions: Iterable[Mention]) -> Keys:
         if m.event_country:
             keys.event_countries[key].add(m.event_country)
         keys.mention_key[m.id] = key
-    return keys
+    for g in groups:
+        keys.kinds[g.group_key] = ArtistKind.GROUP
+        keys.members[g.group_key] = [m for m in g.members if m in keys.kinds]
+    return keys.keys()
 
 
 class Candidate(NamedTuple):
@@ -607,6 +640,7 @@ class Person:
     bare: str
     words: tuple[str, ...]
     stated: frozenset[str]
+    stated_sets: frozenset[frozenset[str]]  # each mention's
     events: frozenset[str]
     partners: frozenset[str]
 
@@ -672,6 +706,7 @@ class Pairing:
                 b,
                 tuple(words_of(keys.names[k][0])),
                 frozenset(keys.stated_countries.get(k, ())),
+                frozenset(keys.stated_sets.get(k, ())),
                 frozenset(keys.event_countries.get(k, ())),
                 frozenset(bare[p] for p in keys.partners[k]),
             )
@@ -724,10 +759,10 @@ def candidates(keys: Keys, merges: Mapping[frozenset[str], MergeDecision]) -> tu
             out.append(
                 Candidate(a, b, names[a][0], names[b][0], reason, round(sim, 3), pairing.evidence(a, b), decision)
             )
-    for k in sorted(pairing.people):
-        if '@' in k and any(not (x & y) for x, y in itertools.combinations(keys.stated_sets[k], 2)):
+    for k, p in sorted(pairing.people.items()):
+        if '@' in k and any(not (x & y) for x, y in itertools.combinations(p.stated_sets, 2)):
             name = names[k][0]
-            evidence = f'countries {sorted(keys.stated_countries[k])}'
+            evidence = f'countries {sorted(p.stated)}'
             out.append(
                 Candidate(
                     k,
@@ -786,8 +821,6 @@ def final_keys(keys: Keys, uf: UnionFind, groups: Iterable[Group]) -> dict[str, 
     for g in groups:
         gk = g.group_key
         group_keys.add(gk)
-        keys.kinds[gk] = ArtistKind.GROUP
-        keys.members[gk] = [m for m in g.members if m in keys.kinds]
         aliases = [a for a in g.aliases if a in keys.kinds]
         if taken := sorted({uf.find(a) for a in aliases} & (group_keys - {gk})):
             sys.exit(f'{gk}: its aliases are already the group {", ".join(taken)}')
@@ -840,11 +873,11 @@ def main() -> None:
             'SELECT m.id, m.event_id, m.role, m.name_as_written, m.style, m.country, e.country AS event_country'
             ' FROM artist_mentions m JOIN events e ON e.id = m.event_id',
         )
-        keys = keyed(mentions)
+        groups = Group.read(GROUPS)
+        keys = keyed(mentions, groups)
         rows = MergeRow.read(MERGES)
         merges = decided(rows)
         found, unsupported_same_name = candidates(keys, merges)
-        groups = Group.read(GROUPS)
         final_key = final_keys(keys, merged(keys, merges), groups)
 
         # keeping the ids artists had
