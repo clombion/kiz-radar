@@ -941,7 +941,7 @@ class Group(CsvRow):
 class Suggestion(CsvRow):
     """A pair of artists that may be one (pipeline/artist_merge_suggestions.csv), for a reviewer to decide."""
 
-    decision: str  # empty: the reviewer copies the row into artist_merges.csv with merge or separate
+    decision: Blank[MergeDecision]  # empty: the reviewer copies the row into artist_merges.csv with merge or separate
     keep_key: str
     merge_key: str
     keep_name: str

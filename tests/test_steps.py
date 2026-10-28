@@ -65,7 +65,7 @@ def test_merge_suggestions_leave_out_decided_pairs_and_keep_the_more_booked() ->
     assert all(r.keep_bookings >= r.merge_bookings for r in rows)
     done, _ = merge_suggestions.decided()
     assert not [r for r in rows if frozenset((r.keep_key, r.merge_key)) in done]
-    assert all(r.decision == '' for r in rows)
+    assert all(r.decision is None for r in rows)
 
 
 def tables(db: sqlite3.Connection, names: Iterable[str]) -> dict[str, str]:

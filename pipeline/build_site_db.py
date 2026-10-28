@@ -28,7 +28,7 @@ from pipeline import ROOT, enums, states
 from pipeline import db as sqlite_db
 from pipeline.airports import AIRPORTS, HOME
 from pipeline.countries import NAMES, codes
-from pipeline.enums import Feature, Genre, HomeBasis, PassKind, People, Role, Style
+from pipeline.enums import Feature, Genre, HomeBasis, MergeDecision, PassKind, People, Role, Style
 from pipeline.extract.prices import COUPLE
 from pipeline.names import norm, sim
 from pipeline.records import (
@@ -221,7 +221,9 @@ def merged(x: sqlite3.Connection) -> tuple[Artists, int]:
     keys: list[tuple[str, int]] = x.execute('select match_key, artist_id from src.artist_keys').fetchall()
     own: list[tuple[str, int]] = x.execute('select match_key, id from artists').fetchall()
     found = Artists(dict(keys) | dict(own))
-    merge_rows = [r for r in ArtistMergeRow.read(ROOT / 'pipeline' / 'artist_merges.csv') if r.decision == 'merge']
+    merge_rows = [
+        r for r in ArtistMergeRow.read(ROOT / 'pipeline' / 'artist_merges.csv') if r.decision == MergeDecision.MERGE
+    ]
     members_of: collections.defaultdict[int, list[tuple[int, str]]] = collections.defaultdict(list)
     names: list[tuple[int, int, str]] = x.execute(
         'select cm.couple_id, cm.member_id, a.display_name from couple_members cm join artists a on a.id = cm.member_id'

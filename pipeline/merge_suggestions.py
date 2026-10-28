@@ -26,7 +26,7 @@ from dataclasses import dataclass, field
 from pipeline import ROOT, build_site_db
 from pipeline import db as sqlite_db
 from pipeline.countries import codes
-from pipeline.enums import MergeReason
+from pipeline.enums import MergeDecision, MergeReason
 from pipeline.extract.prices import COUPLE
 from pipeline.names import norm, sim
 from pipeline.records import ArtistMergeRow, Suggestion
@@ -52,7 +52,7 @@ def decided() -> tuple[set[frozenset[str]], Callable[[str], str]]:
         return k
 
     for r in rows:
-        if r.decision == 'merge':
+        if r.decision == MergeDecision.MERGE:
             a, b = group(r.keep_key), group(r.merge_key)
             if a != b:
                 parent[b] = a
@@ -253,7 +253,7 @@ def suggestions(c: sqlite3.Connection, site: sqlite3.Connection) -> list[Suggest
         signal, adj = known.country_signal(keep, merge)
         cal, cadj, cnote = known.calendar_signal(keep, merge)
         rows[k] = Suggestion(
-            decision='',
+            decision=None,
             keep_key=art[keep][1],
             merge_key=art[merge][1],
             keep_name=art[keep][0],
