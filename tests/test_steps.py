@@ -1,6 +1,7 @@
 """The pipeline's steps run whole on the committed kizomba-world export, each into a copy or a folder of the test's
 own: each builds what it says, and run again it changes nothing, but the time its run log says it ran."""
 
+import collections
 import json
 import re
 from collections.abc import Iterable
@@ -59,6 +60,21 @@ def test_loading_the_answers_again_changes_nothing(tmp_path: Path, monkeypatch: 
     assert content(src) == once
 
 
+def test_a_load_leaves_the_artists_but_none_of_the_mentions_it_replaced(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """load_extract makes its mentions again, under new ids: the bookings of the old ones go with them (a reference
+    that cascades), and the artists stay, for resolve_artists to book the new mentions."""
+    src = copied()
+    with sqlite_db.opened(src, 'ro') as db:
+        artists = db.value(int, 'select count(*) from artists')
+        assert db.exists('select 1 from event_artists')
+    run(load_extract.main, monkeypatch)
+    with sqlite_db.opened(src, 'ro') as db:
+        assert not db.exists('select 1 from event_artists')
+        assert db.value(int, 'select count(*) from artists') == artists
+
+
 def test_resolving_the_artists_again_changes_nothing(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     # the whole export takes the step most of a minute: the latest festivals with line-ups are enough
     src = trimmed(40)
@@ -80,12 +96,17 @@ def test_merge_suggestions_leave_out_decided_pairs_and_keep_the_more_booked(site
     assert all(r.decision is None for r in rows)
 
 
-# a reference, its table and columns matched whole, that is not held until commit
+# a reference, its table and columns matched whole, and what it does when its row goes, that is not held until commit
 UNDEFERRED = re.compile(
-    r'\breferences\s+"?\w++"?+(?:\s*\([^)]*\))?+(?!\s*deferrable initially deferred)', re.IGNORECASE
+    r'\breferences\s+"?\w++"?+(?:\s*\([^)]*\))?+(?:\s+on\s+(?:delete|update)\s+(?:cascade|restrict|set\s+null))*+'
+    r'(?!\s*deferrable initially deferred)',
+    re.IGNORECASE,
 )
-# the source's own tables, as kizomba-world made them (scrape.SCHEMA)
+# the source's own tables, as kizomba-world made them (scrape.KEPT)
 SOURCE_MADE = {'event_categories', 'event_tags', 'event_links'}
+# every table and view of the export, by the step that declares it: the ones it makes again each run, and the ones it
+# keeps, which change by migration (pipeline/export.py)
+DECLARED = (scrape.KEPT, run_log.KEPT, resolve_artists.KEPT, resolve_artists.TABLES, load_extract.TABLES)
 
 
 def test_every_reference_is_held_at_commit(site_db: Path) -> None:
@@ -98,6 +119,15 @@ def test_every_reference_is_held_at_commit(site_db: Path) -> None:
             made = db.rows(Made, "select type, name, sql from sqlite_master where type = 'table'")
             found |= {m.name for m in made if m.sql and UNDEFERRED.search(m.sql)}
     assert found == SOURCE_MADE
+
+
+def test_every_table_of_the_export_is_one_steps() -> None:
+    """A step drops and makes again only its own tables: one another step made too would lose that step's rows."""
+    owners = collections.Counter(n for tables in DECLARED for n in tables)
+    assert [n for n, c in owners.items() if c > 1] == []
+    with sqlite_db.opened(EXPORT, 'ro') as db:
+        made = db.column(str, "select name from sqlite_master where type in ('table', 'view')")
+    assert set(owners) == set(made)
 
 
 def tables(db: Reader, names: Iterable[str]) -> dict[str, str]:
@@ -114,14 +144,7 @@ def tables(db: Reader, names: Iterable[str]) -> dict[str, str]:
 def test_the_export_has_the_tables_the_steps_write_as_they_declare_them(memory: Memory) -> None:
     declared = memory()
     with declared.transaction() as tx:
-        for ddl in (
-            run_log.SCHEMA,
-            scrape.SCHEMA,
-            scrape.PENDING,
-            resolve_artists.ARTIST_IDS,
-            resolve_artists.SCHEMA,
-            load_extract.SCHEMA,
-        ):
+        for ddl in (d for tables in DECLARED for d in tables.values()):
             tx.script(ddl)
     # every table, index and view they declare
     names = declared.column(str, 'select name from sqlite_master where sql is not null')

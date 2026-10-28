@@ -3,7 +3,7 @@
 One row per step (the latest run of that step replaces the earlier one): what was done, when, by whom
 (a script, a model, or the human reviewer), with which model and prompts (their hashes, pipeline/prompt.py), from
 which inputs to which outputs, and the step's key numbers as JSON. Every pipeline script records its own step.
-These functions only write, into the export's tables (SCHEMA, which tests/test_steps.py holds the export to), in the
+These functions only write, into the export's tables (KEPT, which tests/test_steps.py holds the export to), in the
 caller's transaction, which commits once its step is whole.
 """
 
@@ -14,11 +14,12 @@ from dataclasses import dataclass
 
 from pydantic import BaseModel
 
+from pipeline import db as sqlite_db
 from pipeline import prompt as prompts
 from pipeline.db import Transaction
 from pipeline.records import now
 
-SCHEMA = """
+KEPT = sqlite_db.declared("""
 CREATE TABLE prompts (
     prompt TEXT PRIMARY KEY,      -- its hash, as pipeline_steps.prompt and the rows the prompt produced name it
     text TEXT NOT NULL            -- pipeline/prompts/asked/<prompt>.md
@@ -40,12 +41,12 @@ CREATE TABLE pipeline_steps (
     outputs TEXT,
     details TEXT                  -- JSON: the step's key numbers and settings
 );
-"""
+""")
 
 
 @dataclass(frozen=True)
 class Step:
-    """A step's row of pipeline_steps (SCHEMA): what it did, by whom, when (now when not given), with which model and
+    """A step's row of pipeline_steps (KEPT): what it did, by whom, when (now when not given), with which model and
     prompts, from which inputs to which outputs, and its key numbers."""
 
     step: str

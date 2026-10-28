@@ -44,6 +44,15 @@ class Unheld(BaseModel):
     fkid: int
 
 
+class Made(BaseModel):
+    """A table, view or index as SQLite stores it."""
+
+    type: str
+    name: str
+    tbl_name: str
+    sql: str
+
+
 class Reader:
     """What any use of a database may do: read rows, each as a record."""
 
@@ -119,6 +128,15 @@ class Transaction(Reader):
         """Statements one after the other, inside the transaction (a connection in autocommit commits nothing first)."""
         _ = self._con.executescript(sql)
 
+    def remake(self, tables: Mapping[str, str]) -> None:
+        """Drop these tables and views (declared), the last first, with their rows, and make them again, empty."""
+        made = "select type from sqlite_master where name = ? and type in ('table', 'view')"
+        for t in reversed(list(tables)):
+            for kind in self.column(str, made, (t,)):
+                self.execute(f'drop {kind} {name(t)}')
+        for ddl in tables.values():
+            self.script(ddl)
+
 
 class Db(Reader):
     """An open database: read it, write it in a transaction, or vacuum it, which a transaction cannot."""
@@ -180,6 +198,20 @@ def memory() -> Generator[Db]:
         yield Db(con)
     finally:
         con.close()
+
+
+def declared(ddl: str) -> dict[str, str]:
+    """The tables and views a script makes, as SQLite reads it: each by its name, with its statement and its indexes',
+    in the script's order."""
+    with memory() as db:
+        with db.transaction() as tx:
+            tx.script(ddl)
+        made = db.rows(Made, 'select type, name, tbl_name, sql from sqlite_master where sql is not null order by rowid')
+    out = {m.name: m.sql for m in made if m.type != 'index'}
+    for m in made:
+        if m.type == 'index':
+            out[m.tbl_name] += f';\n{m.sql}'
+    return out
 
 
 @contextmanager

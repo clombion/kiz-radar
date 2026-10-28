@@ -86,9 +86,9 @@ STEP = (
     "browser would (curl_cffi), since the site's Cloudflare protection refuses other clients."
 )
 
-# the export's tables of the site's events, as kizomba-world's own export made them (tests/test_steps.py holds the
-# export to them)
-SCHEMA = """
+# the export's tables of the site's events, as kizomba-world's own export made them, and of the events the extraction
+# steps are to read (tests/test_steps.py holds the export to them)
+KEPT = sqlite_db.declared("""
 create table events (
     id integer primary key,
     title text not null,
@@ -137,13 +137,12 @@ create table event_links (
 );
 create index events_start on events(start_date);
 create index events_country on events(country);
-"""
-
-# the export's table of the events the extraction steps are to read (tests/test_steps.py holds the export to it)
-PENDING = """create table pending_extraction (
-        event_id integer primary key references events(id) deferrable initially deferred,
-        reason text not null check (reason in ('new', 'description changed')),
-        since text not null)"""
+create table pending_extraction (
+    event_id integer primary key references events(id) deferrable initially deferred,
+    reason text not null check (reason in ('new', 'description changed')),
+    since text not null
+);
+""")
 
 
 def describe(db: Transaction) -> None:

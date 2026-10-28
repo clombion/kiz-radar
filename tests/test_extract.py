@@ -665,7 +665,7 @@ def record_then_stop(con: Db) -> None:
 def test_the_run_log_writes_inside_the_callers_transaction(memory: Memory) -> None:
     con = memory()
     with con.transaction() as tx:
-        tx.script(run_log.SCHEMA)
+        tx.remake(run_log.KEPT)
     with pytest.raises(StoppedError):
         record_then_stop(con)
     assert load_extract.count(con, 'SELECT count(*) FROM pipeline_steps') == 0
@@ -673,7 +673,7 @@ def test_the_run_log_writes_inside_the_callers_transaction(memory: Memory) -> No
 
 def load_refused(con: Db) -> None:
     with con.transaction() as tx:
-        tx.script(load_extract.SCHEMA)
+        tx.remake(load_extract.TABLES)
         tx.execute("INSERT INTO event_genres (event_id, genre, source) VALUES (1, 'tango', 'site_tag')")
 
 
@@ -700,7 +700,7 @@ def loaded(con: Db) -> Generator[Transaction]:
     with shaped(con).transaction() as tx:
         festival(tx, 5, start_date='2026-03-20 18:00:00', modified_at='2026-01-01 10:00:00')
         festival(tx, 6, start_date='2026-04-01', modified_at='2026-01-01')
-        tx.script(load_extract.SCHEMA)
+        tx.remake(load_extract.TABLES)
         yield tx
 
 

@@ -63,6 +63,7 @@ import pycountry
 from pydantic import BaseModel
 
 from pipeline import data, export, states
+from pipeline import db as sqlite_db
 from pipeline.countries import CODE_LENGTH, INDICATOR_A, indicator
 from pipeline.db import Reader, Transaction
 from pipeline.enums import ArtistKind, MergeDecision, MergeReason, Role
@@ -79,18 +80,8 @@ SHORTEST_NAME = 2  # a member's name key shorter than this is a letter of a name
 REVIEWER = 'claude-haiku-5-5'  # the model of the merge review's subagents
 PAIR = 2  # the keys of a decision on two artists; one key's decides a single name
 
-TABLES = """
-DROP VIEW IF EXISTS artist_events;
-DROP TABLE IF EXISTS event_artists;
-DROP TABLE IF EXISTS couple_members;
-DROP TABLE IF EXISTS artist_aliases;
-DROP TABLE IF EXISTS artist_keys;
-DROP TABLE IF EXISTS artist_merge_candidates;
-DROP TABLE IF EXISTS merge_reason_definitions;
-DROP TABLE IF EXISTS artist_merge_decisions;
-DROP TABLE IF EXISTS artist_group_aliases;
-DROP TABLE IF EXISTS artist_group_definitions;
-DROP TABLE IF EXISTS artists;
+# the tables this step makes again each time it runs
+DDL = """
 CREATE TABLE artists (
     id INTEGER PRIMARY KEY,
     display_name TEXT NOT NULL,
@@ -113,7 +104,7 @@ CREATE TABLE couple_members (
     PRIMARY KEY (couple_id, member_id)
 );
 CREATE TABLE event_artists (
-    mention_id INTEGER PRIMARY KEY REFERENCES artist_mentions(id) DEFERRABLE INITIALLY DEFERRED,
+    mention_id INTEGER PRIMARY KEY REFERENCES artist_mentions(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
     event_id INTEGER NOT NULL REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
     artist_id INTEGER NOT NULL REFERENCES artists(id) DEFERRABLE INITIALLY DEFERRED,
     role TEXT NOT NULL CHECK (role IN ({role})),
@@ -163,15 +154,17 @@ CREATE VIEW artist_events AS
     FROM event_artists ea JOIN couple_members cm ON cm.couple_id = ea.artist_id;
 """
 # the export's table of every id given, which this step only adds to (tests/test_steps.py holds the export to it)
-ARTIST_IDS = """CREATE TABLE artist_ids (
+KEPT = sqlite_db.declared("""CREATE TABLE artist_ids (
     artist_id INTEGER PRIMARY KEY,  -- every artist id ever given; never reused
     match_key TEXT NOT NULL         -- the key it was given to
-)"""
+)""")
 # a review that could not tell (unsure) decides nothing: the pair stays a candidate, and merges.csv never holds it
 STORED = (MergeDecision.MERGE, MergeDecision.SEPARATE)
-SCHEMA = TABLES.format_map(
-    {p.name: states.sql_in(p.name) for p in states.POINTS}
-    | {'stored_decision': states.sql_in('merge_decision', STORED)}
+TABLES = sqlite_db.declared(
+    DDL.format_map(
+        {p.name: states.sql_in(p.name) for p in states.POINTS}
+        | {'stored_decision': states.sql_in('merge_decision', STORED)}
+    )
 )
 
 
@@ -911,7 +904,7 @@ def main() -> None:
 
         # keeping the ids artists had
         ids = stable_ids(con, final_key)
-        con.script(SCHEMA)
+        con.remake(TABLES)
         con.insert('artist_ids', ({'artist_id': i, 'match_key': fk} for fk, i in ids.items()), unless=('artist_id',))
         write_artists(con, keys, final_key, groups, ids)
         con.insert(

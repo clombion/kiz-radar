@@ -66,23 +66,8 @@ from pipeline.records import (
     day_of,
 )
 
-TABLES = """
-DROP VIEW IF EXISTS artist_events;
-DROP TABLE IF EXISTS event_artists;
-DROP TABLE IF EXISTS feature_definitions;
-DROP TABLE IF EXISTS event_features;
-DROP TABLE IF EXISTS artist_mentions;
-DROP TABLE IF EXISTS genre_definitions;
-DROP TABLE IF EXISTS role_definitions;
-DROP TABLE IF EXISTS event_genres;
-DROP TABLE IF EXISTS event_rooms;
-DROP TABLE IF EXISTS event_room_list;
-DROP TABLE IF EXISTS pass_tiers;
-DROP TABLE IF EXISTS price_status;
-DROP TABLE IF EXISTS event_passes;
-DROP TABLE IF EXISTS event_price_notes;
-DROP TABLE IF EXISTS ticket_pages;
-DROP TABLE IF EXISTS ticket_sales;
+# the tables this step makes again each time it runs
+DDL = """
 CREATE TABLE event_passes (
     event_id INTEGER NOT NULL REFERENCES events(id) DEFERRABLE INITIALLY DEFERRED,
     pass_no INTEGER NOT NULL,
@@ -208,7 +193,7 @@ CREATE TABLE artist_mentions (
 );
 CREATE INDEX artist_mentions_event ON artist_mentions(event_id);
 """
-SCHEMA = TABLES.format_map({p.name: states.sql_in(p.name) for p in states.POINTS})
+TABLES = sqlite_db.declared(DDL.format_map({p.name: states.sql_in(p.name) for p in states.POINTS}))
 GENRE_KEY, FEATURE_KEY = ('event_id', 'genre', 'source', 'other_name'), ('event_id', 'feature', 'source')
 
 
@@ -728,7 +713,7 @@ def main() -> None:
             print(
                 f"{stale} festivals' ticket pages were read with another first-read prompt; left out until read again"
             )
-        con.script(SCHEMA)
+        con.remake(TABLES)
         for point in ('feature', 'genre', 'role'):
             con.insert(f'{point}_definitions', ({point: s.key, 'definition': s.criterion} for s in states.of(point)))
         load_rooms_genres(con, rooms_genres)
