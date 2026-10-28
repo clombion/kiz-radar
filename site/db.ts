@@ -101,9 +101,28 @@ function replaceFares(to: Database, csv: string): void {
   to.run('COMMIT');
 }
 
+// SQL written in the code. A query is one, joined only from others (sql`… ${other} …`, Sql.joined), so a value from
+// outside is never part of its text: it is bound to a ? instead.
+export class Sql {
+  readonly #text: string;
+  private constructor(text: string) {
+    this.#text = text;
+  }
+  static of(parts: TemplateStringsArray, ...between: readonly Sql[]): Sql {
+    return new Sql(String.raw({ raw: parts.raw }, ...between.map((s) => s.#text)));
+  }
+  static joined(parts: readonly Sql[], by: Sql): Sql {
+    return new Sql(parts.map((s) => s.#text).join(by.#text));
+  }
+  get text(): string {
+    return this.#text;
+  }
+}
+export const sql = (parts: TemplateStringsArray, ...between: readonly Sql[]): Sql => Sql.of(parts, ...between);
+
 // the query's rows, each read by the shape (rows.ts)
-export function q<S extends Shape>(shape: S, sql: string, params: BindParams = []): RowOf<S>[] {
-  const st = opened().prepare(sql);
+export function q<S extends Shape>(shape: S, query: Sql, params: BindParams = []): RowOf<S>[] {
+  const st = opened().prepare(query.text);
   st.bind(params);
   const rows: RowOf<S>[] = [];
   while (st.step()) rows.push(read(shape, st.getAsObject()));
@@ -111,8 +130,8 @@ export function q<S extends Shape>(shape: S, sql: string, params: BindParams = [
   return rows;
 }
 
-export const one = <S extends Shape>(shape: S, sql: string, params?: BindParams): RowOf<S> | undefined =>
-  q(shape, sql, params)[0];
+export const one = <S extends Shape>(shape: S, query: Sql, params?: BindParams): RowOf<S> | undefined =>
+  q(shape, query, params)[0];
 
 // a query someone types (the SQL page): its columns and values as they are
-export const exec = (sql: string): QueryExecResult[] => opened().exec(sql);
+export const exec = (typed: string): QueryExecResult[] => opened().exec(typed);

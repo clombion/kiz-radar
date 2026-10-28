@@ -412,10 +412,12 @@ prompt changes it.
 The site is TypeScript under tsc's strict mode and the further flags `tsconfig.json` sets, and every Biome rule but the
 few `biome.jsonc` turns off, each with its reason; Biome formats the code, its tests and the stylesheet too. A value
 from outside enters through one reader: a database row is read by its shape (`site/rows.ts`), which names each column
-and fails on a value of another type, so nothing past it meets an unread value. A type assertion is a suppressed
-`noUnsafeTypeAssertion`, and `tests/test_suppressions.py` lists those as it lists Python's. Biome's plugins in `lint/`
-keep what belongs to one module there: links in `routes.ts`, the stored hints in `hints.ts`, dates and flight links in
-`ui.ts`, and the home city in the data. knip fails on a module, export or package nothing uses.
+and fails on a value of another type, so nothing past it meets an unread value. A query is an `Sql` (`site/db.ts`),
+which only the `sql` tag makes, from the code's own text and other `Sql`: a value is bound to a `?`, never written into
+the query. A type assertion is a suppressed `noUnsafeTypeAssertion`, and `tests/test_suppressions.py` lists those as it
+lists Python's. Biome's plugins in `lint/` keep what belongs to one module there: links in `routes.ts`, the stored hints
+in `hints.ts`, dates and flight links in `ui.ts`, and the home city in the data. knip fails on a module, export or
+package nothing uses.
 
 The site tests run in vitest (`vitest.config.ts`): in Node, the prices and wording, the shapes against the database the
 site ships, the stylesheet against the page, and the state words and keys the code may not write itself; in Chromium,

@@ -1,6 +1,6 @@
 // Countries: which scenes are worth a trip from home. One row per country: what's coming up, what the
 // flights to those festivals cost, and what the scene is like.
-import { one, q } from './db.ts';
+import { one, q, sql } from './db.ts';
 import { h } from './dom.ts';
 import { changed, readState } from './festivals.ts';
 import { convert, money, step } from './money.ts';
@@ -48,17 +48,17 @@ export function countriesView(root: HTMLElement, qs: string): void {
   const fares = new Map(
     q(
       { country_code: opt(str), airport_city: opt(str), price: num },
-      `SELECT e.country_code, e.airport_city, min(f.price) AS price FROM event_rows e
+      sql`SELECT e.country_code, e.airport_city, min(f.price) AS price FROM event_rows e
       JOIN fares f ON f.airport = e.airport AND f.depart = e.weekend_friday
       WHERE e.upcoming AND e.airport != ? GROUP BY e.country_code`,
       [home().code],
     ).map((r) => [r.country_code, r]),
   );
   // "coming up" runs from today to the last listed festival; most are only listed a few months ahead
-  const last = one({ d: opt(str) }, 'SELECT max(start_date) AS d FROM event_rows WHERE upcoming')?.d ?? null;
+  const last = one({ d: opt(str) }, sql`SELECT max(start_date) AS d FROM event_rows WHERE upcoming`)?.d ?? null;
   const rows: Country[] = q(
     COUNTRY,
-    `SELECT cs.*, u.upcoming, u.reachable FROM country_stats cs
+    sql`SELECT cs.*, u.upcoming, u.reachable FROM country_stats cs
       LEFT JOIN (SELECT country_code, sum(upcoming) AS upcoming, sum(upcoming AND airport IS NOT NULL) AS reachable
         FROM event_rows GROUP BY country_code) u ON u.country_code = cs.country_code
       WHERE cs.country_code IS NOT NULL`,

@@ -2,7 +2,7 @@
 // footer switches it). Amounts in another currency are converted with the rates table and marked "~". Price steps
 // are round numbers in each currency: for a return flight (the map, a cheap flight in green) and for a trip, the full
 // pass and the flight together (the festival filter).
-import { q } from './db.ts';
+import { q, sql } from './db.ts';
 import { h } from './dom.ts';
 import { num, str } from './rows.ts';
 
@@ -22,7 +22,7 @@ export const step = (what: 'flight' | 'trip', name: keyof Steps): number => CURR
 let rates: Map<string, number> | undefined;
 const rate = (c: string): number | undefined => {
   rates ??= new Map(
-    q({ currency: str, per_eur: num }, 'SELECT currency, per_eur FROM rates').map((r) => [r.currency, r.per_eur]),
+    q({ currency: str, per_eur: num }, sql`SELECT currency, per_eur FROM rates`).map((r) => [r.currency, r.per_eur]),
   );
   return rates.get(c);
 };

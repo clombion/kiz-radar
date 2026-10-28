@@ -7,7 +7,7 @@
 
 import { roleLabel } from './artists.ts';
 import { today } from './days.ts';
-import { q, site } from './db.ts';
+import { q, site, sql } from './db.ts';
 import { h, type Kid } from './dom.ts';
 import { CHECKED, type Checked, type Festival, festivals, hasWith, isDance, WITH, type With } from './festivals.ts';
 import { icon } from './icons.ts';
@@ -141,7 +141,7 @@ type Indexed = readonly [Entry, readonly string[]];
 const festivalEntries = (): Indexed[] =>
   q(
     FOUND_EVENT,
-    `SELECT r.id, r.title, x.listed_title, r.venue, r.city, r.country_code, r.start_date, r.end_date, r.upcoming,
+    sql`SELECT r.id, r.title, x.listed_title, r.venue, r.city, r.country_code, r.start_date, r.end_date, r.upcoming,
       r.cancelled, r.lat, x.url, p.code FROM event_rows r JOIN events x ON x.id = r.id
       LEFT JOIN event_promos p ON p.event_id = r.id`,
   ).map((e) => [
@@ -159,7 +159,7 @@ const festivalEntries = (): Indexed[] =>
 const personEntries = (): Indexed[] =>
   q(
     { key: str, name: str, upcoming: num },
-    `SELECT pe.key, pe.name, sum(e.upcoming) AS upcoming FROM people pe JOIN plans p ON p.person_id = pe.id
+    sql`SELECT pe.key, pe.name, sum(e.upcoming) AS upcoming FROM people pe JOIN plans p ON p.person_id = pe.id
       JOIN event_rows e ON e.id = p.event_id GROUP BY pe.id`,
   ).flatMap((r): Indexed[] => {
     const p = person(r.key);
@@ -178,16 +178,16 @@ function artistEntries(): Indexed[] {
   const sharing = new Set(
     q(
       { artist_id: num },
-      `SELECT artist_id FROM person_artists UNION SELECT couple_id FROM couple_members
+      sql`SELECT artist_id FROM person_artists UNION SELECT couple_id FROM couple_members
     WHERE member_id IN (SELECT artist_id FROM person_artists)`,
     ).map((r) => r.artist_id),
   );
   const aliases = new Map<number, string[]>();
-  for (const a of q({ artist_id: num, alias: str }, 'SELECT artist_id, alias FROM artist_aliases'))
+  for (const a of q({ artist_id: num, alias: str }, sql`SELECT artist_id, alias FROM artist_aliases`))
     aliases.set(a.artist_id, [...(aliases.get(a.artist_id) ?? []), a.alias]);
   return q(
     FOUND_ARTIST,
-    `SELECT a.id, a.display_name, a.kind, s.bookings, s.teacher, s.dj, s.performer, s.home_country FROM artist_stats s
+    sql`SELECT a.id, a.display_name, a.kind, s.bookings, s.teacher, s.dj, s.performer, s.home_country FROM artist_stats s
       JOIN artists a ON a.id = s.artist_id`,
   ).map((a) => [
     { kind: 'artist', name: a.display_name, a, shares: sharing.has(a.id), rank: a.bookings },
@@ -207,7 +207,7 @@ function placeEntries(pool: readonly Festival[]): Indexed[] {
   const cities = new Map<string, City>();
   for (const e of q(
     { city: str, country_code: opt(str), upcoming: flagCol },
-    'SELECT city, country_code, upcoming FROM event_rows WHERE lat IS NOT NULL',
+    sql`SELECT city, country_code, upcoming FROM event_rows WHERE lat IS NOT NULL`,
   )) {
     const k = `${e.city}|${e.country_code}`;
     const c = cities.get(k) ?? { city: e.city, cc: e.country_code, upcoming: 0, all: 0 };

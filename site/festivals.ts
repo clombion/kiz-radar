@@ -1,6 +1,6 @@
 // The festivals the site works with, in the shape every card expects, and the small helpers the festival
 // views share.
-import { q } from './db.ts';
+import { q, sql } from './db.ts';
 import type { Kid } from './dom.ts';
 import { MORE_TRAITS, TRAITS } from './icons.ts';
 import { convert } from './money.ts';
@@ -42,7 +42,7 @@ function details() {
     // one row per person: someone listed as both teacher and DJ is still one name
     for (const r of q(
       { event_id: num, id: num, display_name: str },
-      `SELECT ea.event_id, a.id, a.display_name FROM event_artists ea
+      sql`SELECT ea.event_id, a.id, a.display_name FROM event_artists ea
         JOIN artists a ON a.id = ea.artist_id JOIN artist_stats st ON st.artist_id = a.id WHERE ea.role IN (?, ?) AND ea.as_couple IS NULL
         GROUP BY ea.event_id, a.id ORDER BY ea.event_id, st.bookings DESC`,
       [KEY.role.TEACHER, KEY.role.DJ],
@@ -51,10 +51,10 @@ function details() {
       if (at.length < 3) heads.set(r.event_id, [...at, { id: r.id, name: r.display_name }]);
     }
     const fares = new Map(
-      q({ k: str, price: num }, 'SELECT airport || depart AS k, price FROM fares').map((f) => [f.k, f.price]),
+      q({ k: str, price: num }, sql`SELECT airport || depart AS k, price FROM fares`).map((f) => [f.k, f.price]),
     );
     const promos = new Map(
-      q({ event_id: num, code: str, offer: opt(str) }, 'SELECT event_id, code, offer FROM event_promos').map((p) => [
+      q({ event_id: num, code: str, offer: opt(str) }, sql`SELECT event_id, code, offer FROM event_promos`).map((p) => [
         p.event_id,
         { code: p.code, offer: p.offer },
       ]),
@@ -96,7 +96,7 @@ export function withDetails(rows: readonly EventRow[]): Festival[] {
 }
 
 // Everything still to come.
-export const festivals = (): Festival[] => withDetails(q(EVENT, 'SELECT * FROM event_rows WHERE upcoming'));
+export const festivals = (): Festival[] => withDetails(q(EVENT, sql`SELECT * FROM event_rows WHERE upcoming`));
 
 // the genres a card names, in the order pipeline/states.py lists them
 const DANCES = where('genre', 'card');

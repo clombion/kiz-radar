@@ -1,6 +1,6 @@
 // Who's going where: the festivals people said they're going to, by date, and each person's plans page with a link
 // to share it.
-import { q } from './db.ts';
+import { q, sql } from './db.ts';
 import { h, type Kid } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { withDetails } from './festivals.ts';
@@ -25,7 +25,7 @@ export function personView(root: HTMLElement, [key]: readonly string[]): void {
   const events = withDetails(
     q(
       EVENT,
-      `SELECT e.* FROM plan_rows pr JOIN event_rows e ON e.id = pr.event_id WHERE pr.person_id = ? AND e.upcoming
+      sql`SELECT e.* FROM plan_rows pr JOIN event_rows e ON e.id = pr.event_id WHERE pr.person_id = ? AND e.upcoming
     ORDER BY e.start_date`,
       [p.id],
     ),
@@ -90,11 +90,11 @@ export function personView(root: HTMLElement, [key]: readonly string[]): void {
 function everyone(root: HTMLElement): void {
   const events = q(
     EVENT,
-    'SELECT e.* FROM event_rows e WHERE e.upcoming AND e.id IN (SELECT event_id FROM plans) ORDER BY e.start_date',
+    sql`SELECT e.* FROM event_rows e WHERE e.upcoming AND e.id IN (SELECT event_id FROM plans) ORDER BY e.start_date`,
   );
   const people = q(
     { key: str, name: str, n: num },
-    `SELECT pe.key, pe.name, sum(e.upcoming) AS n FROM people pe JOIN plans p ON p.person_id = pe.id
+    sql`SELECT pe.key, pe.name, sum(e.upcoming) AS n FROM people pe JOIN plans p ON p.person_id = pe.id
     JOIN event_rows e ON e.id = p.event_id GROUP BY pe.id ORDER BY pe.featured DESC, pe.name`,
   );
   const when = (e: { start_date: string; end_date: string }) => dayRange(e.start_date, e.end_date);

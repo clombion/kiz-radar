@@ -1,6 +1,6 @@
 // The SQL page: free queries against the database, run in the browser.
 import type { SqlValue } from 'sql.js';
-import { exec, q } from './db.ts';
+import { exec, q, sql } from './db.ts';
 import { h } from './dom.ts';
 import { opt, str } from './rows.ts';
 
@@ -96,7 +96,7 @@ export function sqlView(root: HTMLElement): void {
   });
   const tables = q(
     { name: str, type: str, description: opt(str) },
-    `SELECT m.name, m.type, d.description FROM sqlite_master m LEFT JOIN table_docs d ON d.name = m.name
+    sql`SELECT m.name, m.type, d.description FROM sqlite_master m LEFT JOIN table_docs d ON d.name = m.name
     WHERE m.type IN ('table','view') AND m.name NOT LIKE 'sqlite_%' ORDER BY m.name`,
   );
   root.replaceChildren(

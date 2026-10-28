@@ -2,7 +2,7 @@
 // On a phone the list is a sheet over the map that peeks at the bottom and slides up.
 import type { Feature, FeatureCollection, MultiPolygon, Polygon, Position } from 'geojson';
 import type { GeometryCollection, Topology } from 'topojson-specification';
-import { q } from './db.ts';
+import { q, sql } from './db.ts';
 import { h } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { changed, type Festival, readState, withDetails } from './festivals.ts';
@@ -110,7 +110,7 @@ export function mapView(
   qs: string,
   { signal }: { signal: AbortSignal },
 ): void {
-  const events = withDetails(q(EVENT, 'SELECT * FROM event_rows WHERE lat IS NOT NULL ORDER BY start_date')).filter(
+  const events = withDetails(q(EVENT, sql`SELECT * FROM event_rows WHERE lat IS NOT NULL ORDER BY start_date`)).filter(
     placed,
   );
   const byId = new Map(events.map((e) => [e.id, e]));

@@ -3,7 +3,7 @@
 // state is pipeline/states.py's.
 
 import { today } from './days.ts';
-import { one, q } from './db.ts';
+import { one, q, sql } from './db.ts';
 import { h } from './dom.ts';
 import { type Modal, modal } from './modal.ts';
 import { money } from './money.ts';
@@ -20,12 +20,12 @@ let byEvent: Map<number, Pass[]> | undefined;
 function load(): Map<number, Pass[]> {
   if (byEvent) return byEvent;
   const passes = new Map<number, Pass[]>();
-  for (const p of q(PASS, 'SELECT * FROM event_passes ORDER BY event_id, pass_no')) {
+  for (const p of q(PASS, sql`SELECT * FROM event_passes ORDER BY event_id, pass_no`)) {
     const list = passes.get(p.event_id) ?? [];
     list.push({ ...p, tiers: [] });
     passes.set(p.event_id, list);
   }
-  for (const t of q(TIER, 'SELECT * FROM pass_tiers ORDER BY event_id, pass_no, tier_no')) {
+  for (const t of q(TIER, sql`SELECT * FROM pass_tiers ORDER BY event_id, pass_no, tier_no`)) {
     const pass = passes.get(t.event_id)?.find((p) => p.pass_no === t.pass_no);
     if (!pass) throw new Error(`pass_tiers: festival ${t.event_id} has no pass ${t.pass_no}`);
     pass.tiers.push(t);
@@ -101,7 +101,7 @@ export function openPasses(e: { id: number; title: string; url: string } & Price
   // tickets not read yet
   const page = one(
     { page: str, reseller: opt(str), read_on: str, unread: num },
-    'SELECT page, reseller, read_on, unread FROM ticket_pages WHERE event_id = ?',
+    sql`SELECT page, reseller, read_on, unread FROM ticket_pages WHERE event_id = ?`,
     [e.id],
   );
   const from_ = page

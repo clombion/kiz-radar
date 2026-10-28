@@ -1,6 +1,6 @@
 // What an opened card adds, most useful first: who's teaching and playing, what else the weekend has,
 // then the practical bits (venue, organisers) that matter once you've decided to go.
-import { q } from './db.ts';
+import { q, sql } from './db.ts';
 import type { Kid } from './dom.ts';
 import { h } from './dom.ts';
 import type { Festival } from './festivals.ts';
@@ -129,7 +129,7 @@ export function cardDetails(
 ): HTMLElement {
   const people = q(
     LINEUP,
-    `SELECT a.id, a.display_name, ea.role, st.bookings, st.popular, st.home_country
+    sql`SELECT a.id, a.display_name, ea.role, st.bookings, st.popular, st.home_country
     FROM event_artists ea JOIN artists a ON a.id = ea.artist_id LEFT JOIN artist_stats st ON st.artist_id = a.id
     WHERE ea.event_id = ? AND ea.as_couple IS NULL ORDER BY st.bookings DESC, a.display_name`,
     [e.id],

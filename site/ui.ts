@@ -1,5 +1,5 @@
 // Formatting helpers shared by the views: dates, countries, flight links, the home city.
-import { q, site } from './db.ts';
+import { q, site, sql } from './db.ts';
 import { h, type Kid } from './dom.ts';
 import { currency } from './money.ts';
 import { str } from './rows.ts';
@@ -19,7 +19,7 @@ export const place = (e: { country_code: string | null; city: string | null }): 
 
 let names: Map<string, string> | undefined;
 export function countryName(cc: string | null | undefined): string {
-  names ??= new Map(q({ code: str, name: str }, 'SELECT code, name FROM countries').map((r) => [r.code, r.name]));
+  names ??= new Map(q({ code: str, name: str }, sql`SELECT code, name FROM countries`).map((r) => [r.code, r.name]));
   return cc == null || cc === '' ? '—' : (names.get(cc) ?? cc);
 }
 

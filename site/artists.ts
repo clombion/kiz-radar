@@ -1,6 +1,6 @@
 // Artists: a scannable list (who, from where, how often booked, where next) and a page per artist that
 // leads with their upcoming festivals.
-import { one, q } from './db.ts';
+import { one, q, Sql, sql } from './db.ts';
 import { h, type Kid } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { changed, type Festival, readState, withDetails } from './festivals.ts';
@@ -47,13 +47,21 @@ const KINDS: [string, string][] = [
   ...where('artist_kind', 'view').map((k): [string, string] => [k, text('artist_kind', k)]),
 ];
 // each order's words and its SQL
-const ORDERS: Readonly<Record<string, readonly [string, string]>> = {
-  bookings: ['Most festivals', 'st.bookings DESC'],
-  abroad: ['Most festivals abroad', 'st.abroad_bookings DESC, st.bookings DESC'],
-  countries: ['Most countries', 'st.countries DESC, st.bookings DESC'],
-  next: ['Next festival soonest', 'st.bookings DESC'],
-  name: ['Name', 'a.display_name'],
+const ORDERS: Readonly<Record<string, readonly [string, Sql]>> = {
+  bookings: ['Most festivals', sql`st.bookings DESC`],
+  abroad: ['Most festivals abroad', sql`st.abroad_bookings DESC, st.bookings DESC`],
+  countries: ['Most countries', sql`st.countries DESC, st.bookings DESC`],
+  next: ['Next festival soonest', sql`st.bookings DESC`],
+  name: ['Name', sql`a.display_name`],
 };
+// the column of artist_stats that counts each role's bookings
+const COUNTS: Readonly<Record<string, Sql>> = { [KEY.role.TEACHER]: sql`st.teacher`, [KEY.role.DJ]: sql`st.dj` };
+// a choice the address names, which readState keeps to those the list offers
+function chosen<T>(choices: Readonly<Record<string, T>>, key: string): T {
+  const found = choices[key];
+  if (found === undefined) throw new Error(`artists: ${key} is no choice of the list`);
+  return found;
+}
 const DEFAULTS: { q: string; role: string; country: string; sort: string; popular: number; kind: string } = {
   q: '',
   role: '',
@@ -75,7 +83,7 @@ export function artistsView(
   }
   const countries = q(
     { c: str },
-    'SELECT DISTINCT country_code AS c FROM artist_countries WHERE country_code IS NOT NULL',
+    sql`SELECT DISTINCT country_code AS c FROM artist_countries WHERE country_code IS NOT NULL`,
   )
     .map((r) => r.c)
     .sort((a, b) => countryName(a).localeCompare(countryName(b)));
@@ -90,7 +98,7 @@ export function artistsView(
   const next = new Map(
     q(
       { artist_id: num, city: opt(str), country_code: opt(str), start_date: str },
-      `SELECT ae.artist_id, e.city, e.country_code, min(e.start_date) AS start_date
+      sql`SELECT ae.artist_id, e.city, e.country_code, min(e.start_date) AS start_date
       FROM artist_events ae JOIN event_rows e ON e.id = ae.event_id
       WHERE ae.via = 'direct' AND e.upcoming GROUP BY ae.artist_id`,
     ).map((r) => [r.artist_id, r]),
@@ -206,28 +214,28 @@ export function artistsView(
     paintRoles();
     const extra = [st.kind, st.country, st.sort !== 'bookings', st.popular].filter(Boolean).length;
     moreBtn.textContent = `More${extra ? ` (${extra})` : ''} ▾`;
-    const order = ORDERS[st.sort]?.[1] ?? 'st.bookings DESC';
-    const cond = ['1=1'],
+    const [, order] = chosen(ORDERS, st.sort);
+    const cond = [sql`1=1`],
       args: string[] = [];
     if (st.q) {
-      cond.push(`(a.display_name LIKE ? OR a.id IN (SELECT artist_id FROM artist_aliases WHERE alias LIKE ?)
+      cond.push(sql`(a.display_name LIKE ? OR a.id IN (SELECT artist_id FROM artist_aliases WHERE alias LIKE ?)
         OR a.id IN (SELECT cm.couple_id FROM couple_members cm JOIN artists m ON m.id = cm.member_id WHERE m.display_name LIKE ?))`);
       args.push(`%${st.q}%`, `%${st.q}%`, `%${st.q}%`);
     }
-    if (st.role) cond.push(`st.${st.role} > 0`);
+    if (st.role) cond.push(sql`${chosen(COUNTS, st.role)} > 0`);
     if (st.kind) {
-      cond.push('a.kind = ?');
+      cond.push(sql`a.kind = ?`);
       args.push(st.kind);
     }
-    if (st.popular) cond.push('st.popular = 1');
+    if (st.popular) cond.push(sql`st.popular = 1`);
     if (st.country) {
-      cond.push('a.id IN (SELECT artist_id FROM artist_countries WHERE country_code = ?)');
+      cond.push(sql`a.id IN (SELECT artist_id FROM artist_countries WHERE country_code = ?)`);
       args.push(st.country);
     }
     rows = q(
       ARTIST,
-      `SELECT st.*, a.display_name, a.kind FROM artist_stats st JOIN artists a ON a.id = st.artist_id
-      WHERE ${cond.join(' AND ')} ORDER BY ${order}`,
+      sql`SELECT st.*, a.display_name, a.kind FROM artist_stats st JOIN artists a ON a.id = st.artist_id
+      WHERE ${Sql.joined(cond, sql` AND `)} ORDER BY ${order}`,
       args,
     );
     const soonest = (a: Artist) => next.get(a.artist_id)?.start_date ?? '';
@@ -361,7 +369,7 @@ function alsoGoing(people: ReturnType<typeof peopleOf>): HTMLElement | null {
   const ids = alsoGoingTo(people.map((p) => p.id));
   if (ids.length === 0) return null;
   const going = withDetails(
-    q(EVENT, 'SELECT * FROM event_rows WHERE id IN (SELECT value FROM json_each(?)) ORDER BY start_date', [
+    q(EVENT, sql`SELECT * FROM event_rows WHERE id IN (SELECT value FROM json_each(?)) ORDER BY start_date`, [
       JSON.stringify(ids),
     ]),
   );
@@ -388,7 +396,7 @@ function alsoGoing(people: ReturnType<typeof peopleOf>): HTMLElement | null {
 function bookedIn(id: number, ownOnly: boolean): HTMLElement | null {
   const cs = q(
     { country_code: str, bookings: num, is_home: flagCol },
-    `SELECT country_code, bookings, is_home FROM artist_countries WHERE artist_id = ? AND country_code IS NOT NULL
+    sql`SELECT country_code, bookings, is_home FROM artist_countries WHERE artist_id = ? AND country_code IS NOT NULL
     ORDER BY is_home DESC, bookings DESC`,
     [id],
   );
@@ -427,7 +435,7 @@ function pastList(id: number, past: readonly Festival[]): HTMLElement | null {
   const roles = new Map(
     q(
       { event_id: num, r: str },
-      `SELECT event_id, group_concat(DISTINCT role) AS r FROM artist_events WHERE artist_id = ? AND via = 'direct'
+      sql`SELECT event_id, group_concat(DISTINCT role) AS r FROM artist_events WHERE artist_id = ? AND via = 'direct'
       GROUP BY event_id`,
       [id],
     ).map((r) => [r.event_id, r.r]),
@@ -460,7 +468,7 @@ function pastList(id: number, past: readonly Festival[]): HTMLElement | null {
 function notes(a: Pick<Artist, 'display_name'>, id: number, stats: Artist | null): HTMLElement {
   const aliases = q(
     { alias: str },
-    'SELECT alias FROM artist_aliases WHERE artist_id = ? ORDER BY mentions DESC LIMIT 6',
+    sql`SELECT alias FROM artist_aliases WHERE artist_id = ? ORDER BY mentions DESC LIMIT 6`,
     [id],
   )
     .map((r) => r.alias)
@@ -481,7 +489,7 @@ function notes(a: Pick<Artist, 'display_name'>, id: number, stats: Artist | null
 
 const BARE = { artist_id: num, display_name: str, kind: state('artist_kind') } as const;
 function artistPage(root: HTMLElement, id: number): void {
-  const moved = one({ new_id: num }, 'SELECT new_id FROM artist_redirects WHERE old_id = ?', [id]);
+  const moved = one({ new_id: num }, sql`SELECT new_id FROM artist_redirects WHERE old_id = ?`, [id]);
   if (moved) {
     location.replace(artistHref(moved.new_id));
     return;
@@ -490,10 +498,11 @@ function artistPage(root: HTMLElement, id: number): void {
   const stats =
     one(
       ARTIST,
-      'SELECT st.*, a.display_name, a.kind FROM artist_stats st JOIN artists a ON a.id = st.artist_id WHERE a.id = ?',
+      sql`SELECT st.*, a.display_name, a.kind FROM artist_stats st JOIN artists a ON a.id = st.artist_id WHERE a.id = ?`,
       [id],
     ) ?? null;
-  const a = stats ?? one(BARE, 'SELECT a.id AS artist_id, a.display_name, a.kind FROM artists a WHERE a.id = ?', [id]);
+  const a =
+    stats ?? one(BARE, sql`SELECT a.id AS artist_id, a.display_name, a.kind FROM artists a WHERE a.id = ?`, [id]);
   if (!a) {
     root.replaceChildren(h('p', {}, 'Artist not found.'));
     return;
@@ -501,20 +510,20 @@ function artistPage(root: HTMLElement, id: number): void {
   const events = withDetails(
     q(
       EVENT,
-      `SELECT * FROM event_rows
+      sql`SELECT * FROM event_rows
     WHERE id IN (SELECT event_id FROM artist_events WHERE artist_id = ? AND via = 'direct') ORDER BY start_date`,
       [id],
     ),
   );
   const members = q(
     LINKED,
-    `SELECT m.id, m.display_name, st.bookings FROM couple_members cm JOIN artists m ON m.id = cm.member_id
+    sql`SELECT m.id, m.display_name, st.bookings FROM couple_members cm JOIN artists m ON m.id = cm.member_id
     LEFT JOIN artist_stats st ON st.artist_id = m.id WHERE cm.couple_id = ?`,
     [id],
   );
   const couples = q(
     LINKED,
-    `SELECT c.id, c.display_name, st.bookings FROM couple_members cm JOIN artists c ON c.id = cm.couple_id
+    sql`SELECT c.id, c.display_name, st.bookings FROM couple_members cm JOIN artists c ON c.id = cm.couple_id
     LEFT JOIN artist_stats st ON st.artist_id = c.id WHERE cm.member_id = ? ORDER BY st.bookings DESC`,
     [id],
   );

@@ -1,7 +1,7 @@
 // Who said they're going to a festival (pipeline/people.csv and plans.csv). Cards name featured people and count
 // the rest; partners who are both going are named as their couple. Someone in a festival's line-up, alone or in a
 // couple, is teaching (or playing) there rather than just going.
-import { one, q } from './db.ts';
+import { one, q, sql } from './db.ts';
 import type { Kid } from './dom.ts';
 import { h, nodes } from './dom.ts';
 import { type Modal, modal } from './modal.ts';
@@ -47,12 +47,12 @@ function load(): { byEvent: Map<number, Goer[]>; couples: Couple[] } {
   const byEvent = new Map<number, Goer[]>();
   for (const r of q(
     GOER,
-    'SELECT person_id, key, name, featured, event_id, booked_as FROM plan_rows ORDER BY featured DESC, name',
+    sql`SELECT person_id, key, name, featured, event_id, booked_as FROM plan_rows ORDER BY featured DESC, name`,
   ))
     byEvent.set(r.event_id, [...(byEvent.get(r.event_id) ?? []), r]);
   const couples = q(
     { id: num, display_name: str, people: str, n: num, members: num },
-    `SELECT a.id, a.display_name,
+    sql`SELECT a.id, a.display_name,
       group_concat(pa.person_id) AS people, count(*) AS n, (SELECT count(*) FROM couple_members WHERE couple_id = a.id) AS members
     FROM couple_members cm JOIN artists a ON a.id = cm.couple_id JOIN person_artists pa ON pa.artist_id = cm.member_id GROUP BY a.id`,
   )
@@ -282,7 +282,7 @@ function plansOf(g: Named): Map<number, { e: Plan; people: Plan[] }> {
   const byEvent = new Map<number, { e: Plan; people: Plan[] }>();
   for (const r of q(
     PLAN,
-    `SELECT pr.person_id, pr.name, pr.booked_as, e.id, e.title, e.city, e.country_code, e.start_date, e.end_date
+    sql`SELECT pr.person_id, pr.name, pr.booked_as, e.id, e.title, e.city, e.country_code, e.start_date, e.end_date
     FROM plan_rows pr JOIN event_rows e ON e.id = pr.event_id
     WHERE pr.person_id IN (SELECT value FROM json_each(?)) AND e.upcoming ORDER BY e.start_date`,
     [JSON.stringify(g.people.map((p) => p.person_id))],
@@ -303,7 +303,7 @@ function aboutLine(g: Named): Kid {
       ? undefined
       : one(
           { teacher: num, dj: num, home_country: opt(str) },
-          'SELECT st.teacher, st.dj, st.home_country FROM artist_stats st JOIN artists a ON a.id = st.artist_id WHERE a.id = ?',
+          sql`SELECT st.teacher, st.dj, st.home_country FROM artist_stats st JOIN artists a ON a.id = st.artist_id WHERE a.id = ?`,
           [artistId],
         );
   if (a === undefined) return 'Shares their festival plans';
@@ -398,13 +398,13 @@ export function person(key: string): {
   featured: boolean;
   artists: { id: number; display_name: string }[];
 } | null {
-  const p = one({ id: num, key: str, name: str, featured: flagCol }, 'SELECT * FROM people WHERE key = ?', [key]);
+  const p = one({ id: num, key: str, name: str, featured: flagCol }, sql`SELECT * FROM people WHERE key = ?`, [key]);
   if (!p) return null;
   return {
     ...p,
     artists: q(
       { id: num, display_name: str },
-      `SELECT a.id, a.display_name FROM artists a JOIN artist_stats st ON st.artist_id = a.id WHERE a.id IN (
+      sql`SELECT a.id, a.display_name FROM artists a JOIN artist_stats st ON st.artist_id = a.id WHERE a.id IN (
       SELECT artist_id FROM person_artists WHERE person_id = ?
       UNION SELECT cm.couple_id FROM person_artists pa JOIN couple_members cm ON cm.member_id = pa.artist_id WHERE pa.person_id = ?)
     ORDER BY st.bookings DESC`,
@@ -417,16 +417,16 @@ export const alsoGoingTo = (personIds: readonly number[]): number[] =>
   personIds.length > 0
     ? q(
         { event_id: num },
-        `SELECT DISTINCT event_id FROM plan_rows JOIN event_rows e ON e.id = event_id
-  WHERE person_id IN (${personIds.map(() => '?').join(',')}) AND booked_as IS NULL AND e.upcoming`,
-        [...personIds],
+        sql`SELECT DISTINCT event_id FROM plan_rows JOIN event_rows e ON e.id = event_id
+  WHERE person_id IN (SELECT value FROM json_each(?)) AND booked_as IS NULL AND e.upcoming`,
+        [JSON.stringify(personIds)],
       ).map((r) => r.event_id)
     : [];
 // The people who are this artist, or a partner in this couple.
 export const peopleOf = (artistId: number) =>
   q(
     { id: num, key: str, name: str },
-    `SELECT DISTINCT pe.id, pe.key, pe.name FROM person_artists pa JOIN people pe ON pe.id = pa.person_id
+    sql`SELECT DISTINCT pe.id, pe.key, pe.name FROM person_artists pa JOIN people pe ON pe.id = pa.person_id
   WHERE pa.artist_id = ? OR pa.artist_id IN (SELECT member_id FROM couple_members WHERE couple_id = ?) ORDER BY pe.name`,
     [artistId, artistId],
   );
