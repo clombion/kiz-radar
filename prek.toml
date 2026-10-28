@@ -16,9 +16,10 @@ always_run = true
 
 [[repos.hooks]]
 id = "check"
-name = "mise run check"
-# prek sets aside what is not staged; what is staged and not committed would be checked in place of the commit pushed
-entry = "sh -c 'git diff --cached --quiet || { echo \"staged changes are not in the commit being pushed\" >&2; exit 1; }; mise run check'"
+name = "mise run check:push"
+# on the commit pushed, checked out on its own (mise.toml check:push): neither what is staged nor the branch checked
+# out stands in for it
+entry = "mise run check:push"
 language = "system"
 stages = ["pre-push"]
 pass_filenames = false

@@ -107,6 +107,17 @@ depends = [
   "hooks:check",
 ]
 
+[tasks."check:push"]
+description = "Every check, before a push (prek.toml), on the commit pushed, in a worktree of its own"
+run = """
+to="${PRE_COMMIT_TO_REF:-$(git rev-parse HEAD)}"
+[ "$to" = 0000000000000000000000000000000000000000 ] && exit 0  # a branch deleted: nothing to check
+tree="$(mktemp -d)/check"
+git worktree add -q --detach "$tree" "$to"
+trap 'git worktree remove --force "$tree"' EXIT
+cd "$tree" && mise trust -q && mise run check
+"""
+
 [tasks.check]
 description = "Every check"
 depends = ["check:fast", "test:py", "audit"]
