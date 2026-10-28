@@ -1,0 +1,6 @@
+language js
+
+`$event.stopPropagation()` as $call where {
+  $filename <: not r".*/(?:dom|main)\.ts",
+  register_diagnostic(span=$call, message="A control inside a card keeps its click with dom.ts own(); main.ts alone stops a swipe on the map.")
+}

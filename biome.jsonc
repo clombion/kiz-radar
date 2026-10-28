@@ -5,7 +5,13 @@
   // site/states.ts is laid out by its generator (pipeline/states.py), and checked against it by generate:check
   "formatter": { "indentStyle": "space", "indentWidth": 2, "lineWidth": 120, "includes": ["**", "!site/states.ts"] },
   "javascript": { "formatter": { "quoteStyle": "single" } },
-  "plugins": ["./lint/routes.grit", "./lint/storage.grit", "./lint/formats.grit", "./lint/home.grit"],
+  "plugins": [
+    "./lint/routes.grit",
+    "./lint/storage.grit",
+    "./lint/formats.grit",
+    "./lint/home.grit",
+    "./lint/clicks.grit"
+  ],
   "linter": {
     "rules": {
       // every rule, then the few that would fight how this code is written, each with its reason
