@@ -43,6 +43,7 @@ Usage: uv run --group artists -m pipeline.extract.resolve_artists source/<events
 """
 
 import argparse
+import functools
 import itertools
 import math
 import re
@@ -644,10 +645,14 @@ class Person:
     events: frozenset[str]
     partners: frozenset[str]
 
+    @functools.cached_property
+    def strong_evidence(self) -> frozenset[str]:
+        """What two people must have in common for strong evidence: a stated country or a partner. Events in the same
+        country are weak evidence (one country hosts a quarter of all events)."""
+        return frozenset({f'country {c}' for c in self.stated} | {f'partner {n}' for n in self.partners})
+
     def strong(self, other: Self) -> bool:
-        """A stated country or a partner in common. Events in the same country are weak evidence (one country hosts
-        a quarter of all events)."""
-        return bool(self.stated & other.stated or self.partners & other.partners)
+        return bool(self.strong_evidence & other.strong_evidence)
 
     def several(self) -> bool:
         """Of several words, and long enough to be compared by spelling."""
@@ -721,14 +726,12 @@ class Pairing:
         return strongly(pa, pb) if pa.strong(pb) else weakly(pa, pb)
 
     def judged(self) -> set[tuple[str, str]]:
-        """The pairs reason() can accept: those with strong evidence, a stated country or a partner in common, and
-        those weakly() can, of several words each and spelled alike."""
+        """The pairs reason() can accept: those with strong evidence in common, and those weakly() can, of several
+        words each and spelled alike."""
         shared: defaultdict[str, list[str]] = defaultdict(list)
         for k, p in self.people.items():
-            for c in p.stated:
-                shared['country ' + c].append(k)
-            for n in p.partners:
-                shared['partner ' + n].append(k)
+            for e in p.strong_evidence:
+                shared[e].append(k)
         strong = {pair for g in shared.values() for pair in itertools.combinations(sorted(g), 2)}
         return strong | spelled_alike({k: p.bare for k, p in self.people.items() if p.several()})
 

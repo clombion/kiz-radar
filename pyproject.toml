@@ -70,6 +70,8 @@ include = ["pipeline/**/*.py", "tests/**/*.py"]
 
 [tool.ruff.format]
 quote-style = "single"
+# laid out by its generator (pipeline/states.py), and checked against it by generate:check
+exclude = ["pipeline/enums.py"]
 
 [tool.ruff.lint]
 select = ["ALL"]
@@ -95,8 +97,8 @@ ignore = [
 "pipeline/read_page.py" = ["PLC0415"]
 "pipeline/tickets.py" = ["PLC0415"]
 "tests/test_tickets.py" = ["PLC0415"]
-# written from pipeline/states.py: FULL_PASS is a ticket, no password
-"pipeline/enums.py" = ["S105"]
+# written from pipeline/states.py: FULL_PASS is a ticket, no password; a line is as long as its state's key
+"pipeline/enums.py" = ["S105", "E501"]
 # the one clock the pipeline reads
 "pipeline/records.py" = ["TID251"]
 

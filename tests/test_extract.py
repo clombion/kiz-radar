@@ -7,6 +7,7 @@ import itertools
 import json
 import sqlite3
 from collections.abc import Callable
+from difflib import SequenceMatcher
 from enum import StrEnum
 from pathlib import Path
 from typing import Annotated
@@ -190,6 +191,19 @@ def test_the_pairs_judged_are_every_pair_a_candidate_can_be() -> None:
     assert weak == {('p:yawmensah', 'p:yawmensha')}  # alike at events in one country, not two
     same_name = [(a, b) for a, b in every if pairing.people[a].bare == pairing.people[b].bare]
     assert kept_apart == len(set(same_name) - accepted)
+
+
+def test_the_spelling_filter_finds_every_pair_alike_enough() -> None:
+    """The prefix filter compares only names with a letter in common among their first ones, and that is every pair
+    quick_ratio puts at SIMILAR or more: names a letter apart, of every length up to 30."""
+    stem = 'abcdefghijklmnopqrstuvwxyzåéîø'
+    names = {f'{n}:{k}': spelled(stem[:n], k) for n in range(3, 31) for k in range(8)}
+    alike = {
+        (a, b)
+        for a, b in itertools.combinations(sorted(names), 2)
+        if SequenceMatcher(None, names[a], names[b]).quick_ratio() >= resolve_artists.SIMILAR
+    }
+    assert resolve_artists.spelled_alike(names) == alike
 
 
 def duo(key: str, aliases: str) -> Group:
