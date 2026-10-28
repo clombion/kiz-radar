@@ -27,6 +27,7 @@ ALLOWED = Counter(
         ('tests/exports.py', 'S608'): 3,
         ('tests/test_audit.py', 'S105'): 1,
         ('tests/test_commands.py', 'S603'): 1,
+        ('tests/test_extract.py', 'S608'): 1,
         ('tests/test_fetching.py', 'S608'): 1,
         ('tests/test_records.py', 'S607'): 1,
         ('tests/test_states.py', 'reportArgumentType'): 4,

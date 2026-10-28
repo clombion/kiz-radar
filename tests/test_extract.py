@@ -286,9 +286,25 @@ def test_the_system_text_sent_is_the_prompts() -> None:
     assert client.messages.requests[0]['system'] == prompt.current('prices').system
 
 
-def test_every_prompt_the_answers_and_reads_name_is_archived_under_its_hash() -> None:
+def export_prompts() -> set[str]:
+    """The prompts the export's rows name, in every column called prompt (a step's lists them, separated by commas)."""
+    with db.opened(db.export(), 'ro') as con:
+        tables: list[tuple[str]] = con.execute("select name from sqlite_master where type = 'table'").fetchall()
+        named: set[str] = set()
+        for (t,) in tables:
+            columns: list[tuple[int, str, str, int, object, int]] = con.execute(f'pragma table_info("{t}")').fetchall()
+            if any(c[1] == 'prompt' for c in columns):
+                values: list[tuple[str]] = con.execute(
+                    f'select distinct prompt from "{t}" where prompt is not null'  # noqa: S608 (the export's own table names)
+                ).fetchall()
+                named |= {h for (v,) in values for h in v.split(', ')}
+    return named
+
+
+def test_every_prompt_the_answers_reads_and_export_name_is_archived_under_its_hash() -> None:
     named = {r.prompt for r in answers.log().values()}
     named |= {Stamped.model_validate_json(p.read_bytes()).prompt for p in tickets.READS.glob('*.json')}
+    named |= export_prompts()
     archived = {p.stem: p.read_text(encoding='utf-8') for p in prompt.ASKED.glob('*.md') if p.name != 'README.md'}
     assert named <= set(archived)
     # every prompt ever asked stays, each under the hash of its text
