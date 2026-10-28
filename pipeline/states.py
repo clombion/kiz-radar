@@ -146,6 +146,7 @@ POINTS = (
     P('merge_decision', 'MergeDecision', 'each artist merge reviewed', 'the merge review; pipeline/artist_merges.csv'),
     P('merge_reason', 'MergeReason', 'each pair of artists that may be one, for the merge review', 'resolve_artists'),
     P('pending', 'Pending', 'a festival waiting for its extraction passes', 'scrape'),
+    P('via', 'Via', 'each appearance of an artist at an event (artist_events)', 'resolve_artists; build_site_db'),
     P('listing', 'Listing', 'each festival, by whether the site it comes from still lists it', 'scrape'),
     P('event_source', 'EventSource', "the site a festival's listing comes from (source_ids)", 'scrape'),
     P('plan', 'Plan', 'each plan someone shares (pipeline/plans.csv)', 'pipeline/plans.csv'),
@@ -483,7 +484,7 @@ ROWS = (
     ),
     S('genre', 'tarraxo', 'Tarraxo', CARD, 'Tarraxo', under='kizomba', title=r'\btarraxo\b', tags=('Tarraxo',)),
     S('genre', 'tarraxinha', 'Tarraxinha', CARD, 'Tarraxinha', under='kizomba', title=r'\btarraxinha\b'),
-    S('genre', 'douceur', 'Douceur', CARD, 'Douceur', under='kizomba'),
+    S('genre', 'douceur', 'Douceur', CARD, 'Douceur', under='kizomba', title=r'\bdouceur\b'),
     S(
         'genre',
         'kompa',
@@ -491,7 +492,7 @@ ROWS = (
         CARD,
         'Kompa',
         under='other',
-        title=r'\bk[o]n?mpa\b|\bkonpa\b',
+        title=r'\bkompas?\b|\bkonpa\b',
         tags=('Kompa',),
     ),
     S(
@@ -516,8 +517,8 @@ ROWS = (
     ),
     S('genre', 'salsa', 'Salsa (any style)', CARD, 'Salsa', under='salsa', title=r'\bsalsa\b', tags=('Salsa',)),
     S('genre', 'afro', 'Afro dances: afrobeats, afro house, afro dance', CARD, 'Afro', under='other'),
-    S('genre', 'reggaeton', 'Reggaeton', CARD, 'Reggaeton', under='other'),
-    S('genre', 'kuduro', 'Kuduro', CARD, 'Kuduro', under='other'),
+    S('genre', 'reggaeton', 'Reggaeton', CARD, 'Reggaeton', under='other', title=r'\breggaet[oó]n\b'),
+    S('genre', 'kuduro', 'Kuduro', CARD, 'Kuduro', under='other', title=r'\bkuduro\b'),
     S('genre', 'other', 'Any other dance genre; give its name in genre_as_written', KEPT, under='other'),
     S(
         'genre_rule',
@@ -743,6 +744,8 @@ ROWS = (
     ),
     S('pending', 'new', 'the festival is new', WAITS, owner='the next run'),
     S('pending', 'description changed', 'its description changed', WAITS, owner='the next run'),
+    S('via', 'direct', 'the artist is named in the line-up', KEPT),
+    S('via', 'member', 'a couple or group the artist is in is named in the line-up', KEPT),
     S('listing', 'listed', 'the site lists the festival', KEPT),
     S(
         'listing',

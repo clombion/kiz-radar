@@ -27,7 +27,7 @@ from pydantic import BaseModel
 from pipeline import build_site_db, export
 from pipeline.countries import codes
 from pipeline.db import Reader
-from pipeline.enums import MergeDecision, MergeReason, Role
+from pipeline.enums import MergeDecision, MergeReason, Role, Via
 from pipeline.extract.prices import COUPLE
 from pipeline.names import norm, sim
 from pipeline.records import ArtistMergeRow, Suggestion
@@ -171,7 +171,7 @@ class Appearance(BaseModel):
     artist_id: int
     event_id: int
     role: Role
-    via: str
+    via: Via
 
 
 class Named(BaseModel):
@@ -227,7 +227,7 @@ def calendar(found: Evidence, c: Reader, site: Reader) -> None:
         if a.role == Role.ORGANISER:
             continue
         found.events_of[a.artist_id].add(a.event_id)  # any appearance, also through a couple
-        if a.via == 'direct':
+        if a.via == Via.DIRECT:
             found.direct_roles[a.artist_id].add((a.event_id, a.role))  # (event, role) where the artist itself is named
 
 

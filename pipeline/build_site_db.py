@@ -368,10 +368,10 @@ create view event_fares as
          and substr(m.depart, 1, 7) = substr(e.weekend_friday, 1, 7)) as month_min
     from events e left join fares f on f.airport = e.airport and f.depart = e.weekend_friday;
 create view artist_events as
-    select ea.artist_id, ea.event_id, ea.role, 'direct' as via, null as via_artist_id from event_artists ea
+    select ea.artist_id, ea.event_id, ea.role, '{direct}' as via, null as via_artist_id from event_artists ea
     where ea.as_couple is null
     union all
-    select cm.member_id, ea.event_id, ea.role, 'member', ea.artist_id
+    select cm.member_id, ea.event_id, ea.role, '{member}', ea.artist_id
     from event_artists ea join couple_members cm on cm.couple_id = ea.artist_id;
 create view country_stats as
     select e.country_code, c.name, count(*) as events, sum(s.kiz_only) as kiz_only, sum(s.taxi_dancers) as taxi_dancers,
@@ -409,6 +409,8 @@ TABLES = sqlite_db.declared(
             'priced': enums.Price.PRICED,
             'teacher': Role.TEACHER,
             'listed': enums.Listing.LISTED,
+            'direct': enums.Via.DIRECT,
+            'member': enums.Via.MEMBER,
         }
     )
 )
@@ -748,9 +750,9 @@ def artist_stats(x: Transaction, artists: Artists) -> Booked:
     couple_bookings: collections.defaultdict[int, set[int]] = collections.defaultdict(set)  # events booked in a couple
     for m in x.rows(
         BookedRow,
-        "select artist_id, event_id, role from artist_events where via = 'member' and role in "
-        '(select value from json_each(?))',
-        roles,
+        'select artist_id, event_id, role from artist_events where via = ?'
+        ' and role in (select value from json_each(?))',
+        (enums.Via.MEMBER, *roles),
     ):
         couple_bookings[m.artist_id].add(m.event_id)
     stated: collections.defaultdict[int, collections.Counter[str]] = collections.defaultdict(collections.Counter)

@@ -33,6 +33,7 @@ type Point = Literal[
     'merge_decision',
     'merge_reason',
     'pending',
+    'via',
     'listing',
     'event_source',
     'plan',
@@ -356,6 +357,14 @@ class Pending(StrEnum):
 
     NEW = 'new'
     DESCRIPTION_CHANGED = 'description changed'
+
+
+@unique
+class Via(StrEnum):
+    """the via states"""
+
+    DIRECT = 'direct'
+    MEMBER = 'member'
 
 
 @unique

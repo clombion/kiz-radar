@@ -140,15 +140,11 @@ WEEKDAYS: dict[str, re.Pattern[str]] = {
         'sunday': 'sunday|dimanche|domingo|sonntag|domenica',
     }.items()
 }
+# the words that name each dance style: its genres' as a title names them (pipeline/states.py)
 STYLE_WORDS: dict[str, re.Pattern[str]] = {
-    style: re.compile(rf'(?i)\b(?:{words})\b')
-    for style, words in {
-        Style.KIZOMBA: r'kizomba|semba|urban\s*kiz|tarraxo|tarraxinha',
-        Style.ZOUK: 'zouk',
-        Style.BACHATA: 'bachata',
-        Style.SALSA: 'salsa',
-        Style.OTHER: 'kompa|konpa',
-    }.items()
+    style: re.compile('|'.join(titles), re.IGNORECASE)
+    for style in Style
+    if (titles := [g.title for g in states.of('genre') if g.under == style and g.title])
 }
 MEAL = re.compile(r'(?i)dinner|dîner|diner\b|\bcena\b|repas|abendessen|lunch|almuerzo|déjeuner|brunch|\bmeals?\b')
 DEPOSIT = re.compile(r'(?i)deposit|advance|anticipo|acompte|anzahlung|instal|payment|caparra|prepay')

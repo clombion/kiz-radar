@@ -55,6 +55,7 @@ thing a consumer must treat differently.
 | **merge_decision**, each artist merge reviewed | `merge`, `separate`, `unsure` | the merge review; pipeline/artist_merges.csv |
 | **merge_reason**, each pair of artists that may be one, for the merge review | `same name, different keys`, `first words of the other`, `same partner, shortened name`, `similar spelling`, `single name, several countries`, `couples with matching names` | resolve_artists |
 | **pending**, a festival waiting for its extraction passes | `new`, `description changed` | scrape |
+| **via**, each appearance of an artist at an event (artist_events) | `direct`, `member` | resolve_artists; build_site_db |
 | **listing**, each festival, by whether the site it comes from still lists it | `listed`, `gone` | scrape |
 | **event_source**, the site a festival's listing comes from (source_ids) | `kizomba-world` | scrape |
 | **plan**, each plan someone shares (pipeline/plans.csv) | `going` | pipeline/plans.csv |

@@ -67,7 +67,7 @@ from pipeline import data, export, states
 from pipeline import db as sqlite_db
 from pipeline.countries import CODE_LENGTH, INDICATOR_A, indicator
 from pipeline.db import Reader, Transaction
-from pipeline.enums import ArtistKind, MergeDecision, MergeReason, Model, Role
+from pipeline.enums import ArtistKind, MergeDecision, MergeReason, Model, Role, Via
 from pipeline.extract import run_log
 from pipeline.extract.answers import log, logged
 from pipeline.extract.prices import COUPLE
@@ -148,10 +148,10 @@ CREATE TABLE artist_group_aliases (
     PRIMARY KEY (group_key, match_key)
 ) STRICT;
 CREATE VIEW artist_events AS
-    SELECT ea.artist_id, ea.event_id, ea.role, 'direct' AS via, NULL AS via_artist_id
+    SELECT ea.artist_id, ea.event_id, ea.role, '{direct}' AS via, NULL AS via_artist_id
     FROM event_artists ea
     UNION ALL
-    SELECT cm.member_id, ea.event_id, ea.role, 'member', ea.artist_id
+    SELECT cm.member_id, ea.event_id, ea.role, '{member}', ea.artist_id
     FROM event_artists ea JOIN couple_members cm ON cm.couple_id = ea.artist_id;
 """
 # the export's table of every id given, which this step only adds to (tests/test_steps.py holds the export to it)
@@ -162,7 +162,10 @@ KEPT = sqlite_db.declared("""CREATE TABLE artist_ids (
 # a review that could not tell (unsure) decides nothing: the pair stays a candidate, and merges.csv never holds it
 STORED = (MergeDecision.MERGE, MergeDecision.SEPARATE)
 TABLES = sqlite_db.declared(
-    DDL.format_map(states.SQL_IN | {'stored_decision': states.sql_in('merge_decision', STORED)})
+    DDL.format_map(
+        states.SQL_IN
+        | {'stored_decision': states.sql_in('merge_decision', STORED), 'direct': Via.DIRECT, 'member': Via.MEMBER}
+    )
 )
 
 

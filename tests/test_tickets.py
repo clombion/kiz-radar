@@ -1374,3 +1374,18 @@ def test_changes_name_what_a_read_found_new_or_different(command: Command) -> No
     tickets.append(7, entry(changed(ROWS, 2, amount=130.0, price='€130.00'), at=stamp(2)))
     assert command('changes', 7) == command('changes')
     assert '7  2026-10-02  ' in command('changes', 7)
+
+
+@pytest.mark.parametrize(
+    ('name', 'styles'),
+    [
+        ('Kompas night pass', {Style.OTHER}),
+        ('Douceur & Kizomba weekend', {Style.KIZOMBA}),
+        ('Reggaetón party', {Style.OTHER}),
+        ('Urban Kiz full pass', {Style.KIZOMBA}),
+        ('Full pass', set[Style]()),
+    ],
+)
+def test_a_tickets_name_names_the_styles_of_the_genres_it_names(name: str, styles: set[Style]) -> None:
+    """The words of a dance style are its genres' (pipeline/states.py), every genre a title can name included."""
+    assert tickets.named(tickets.STYLE_WORDS, name) == styles

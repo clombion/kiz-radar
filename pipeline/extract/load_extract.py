@@ -35,7 +35,7 @@ import json
 import re
 import sys
 import unicodedata
-from collections.abc import Mapping
+from collections.abc import Mapping, Sequence
 from collections.abc import Set as AbstractSet
 from typing import NamedTuple
 
@@ -45,7 +45,7 @@ from pipeline import db as sqlite_db
 from pipeline import export, states
 from pipeline import prompt as prompts
 from pipeline.db import Reader, Transaction
-from pipeline.enums import Genre, Sales
+from pipeline.enums import Genre, GenreRule, Sales, Source
 from pipeline.extract import answers, run_log
 from pipeline.extract import prices as price_rules
 from pipeline.extract.answers import Answer
@@ -446,8 +446,8 @@ def load_prices(
     con.insert('price_status', status_rows)
 
 
-def count(con: Reader, sql: str) -> int:
-    return con.value(int, sql)
+def count(con: Reader, sql: str, params: Sequence[object] = ()) -> int:
+    return con.value(int, sql, params)
 
 
 class PassStep(NamedTuple):
@@ -565,10 +565,14 @@ def record_steps(
             'pipeline/extract/load_extract.py',
             outputs="table event_genres (rule 'sbk' / 'title')",
             details={
-                'rule_sbk_rows': count(con, "SELECT count(*) FROM event_genres WHERE rule = 'sbk'"),
-                'rule_title_rows': count(con, "SELECT count(*) FROM event_genres WHERE rule = 'title'"),
-                'site_tag_genre_rows': count(con, "SELECT count(*) FROM event_genres WHERE source = 'site_tag'"),
-                'site_tag_feature_rows': count(con, "SELECT count(*) FROM event_features WHERE source = 'site_tag'"),
+                'rule_sbk_rows': count(con, 'SELECT count(*) FROM event_genres WHERE rule = ?', (GenreRule.SBK,)),
+                'rule_title_rows': count(con, 'SELECT count(*) FROM event_genres WHERE rule = ?', (GenreRule.TITLE,)),
+                'site_tag_genre_rows': count(
+                    con, 'SELECT count(*) FROM event_genres WHERE source = ?', (Source.SITE_TAG,)
+                ),
+                'site_tag_feature_rows': count(
+                    con, 'SELECT count(*) FROM event_features WHERE source = ?', (Source.SITE_TAG,)
+                ),
             },
         ),
     )
@@ -612,7 +616,7 @@ def load_rooms_genres(con: Transaction, got: Mapping[int, Answer[RoomsGenres]]) 
                 {
                     'event_id': ev.event_id,
                     'genre': g.genre,
-                    'source': 'description',
+                    'source': Source.DESCRIPTION,
                     'other_name': ' '.join(g.genre_as_written.split()).casefold() if g.genre == Genre.OTHER else '',
                     'genre_as_written': g.genre_as_written,
                     'quote': g.quote,
@@ -631,11 +635,11 @@ def load_genre_rules(con: Transaction) -> None:
     # consistently
     described = con.rows(Described, 'SELECT id, title, description_text FROM events')
 
-    def added(eid: int, genre: str, as_written: str, quote: str, rule: str) -> dict[str, object]:
+    def added(eid: int, genre: str, as_written: str, quote: str, rule: GenreRule) -> dict[str, object]:
         return {
             'event_id': eid,
             'genre': genre,
-            'source': 'description',
+            'source': Source.DESCRIPTION,
             'genre_as_written': as_written,
             'quote': quote,
             'rule': rule,
@@ -647,14 +651,14 @@ def load_genre_rules(con: Transaction) -> None:
         for rule in states.of('genre_rule'):
             for word in rule.tags:
                 if m := re.search(rf'[^\n]{{0,60}}\b{re.escape(word)}\b[^\n]{{0,60}}', text):
-                    rule_rows += [added(e.id, g, word, m.group(0).strip(), rule.key) for g in rule.genres]
+                    rule_rows += [added(e.id, g, word, m.group(0).strip(), GenreRule(rule.key)) for g in rule.genres]
     con.insert('event_genres', rule_rows, unless=GENRE_KEY)
     # A genre named in the title counts; batches of the rooms-genres pass applied this unevenly
     title_rows: list[dict[str, object]] = []
     for e in described:
         plain = unicodedata.normalize('NFKC', e.title)
         title_rows += [  # brand spellings ("AfroKiz", "Kizz") are no title of a genre
-            added(e.id, genre.key, m.group(0), e.title, 'title')
+            added(e.id, genre.key, m.group(0), e.title, GenreRule.TITLE)
             for genre in states.of('genre')
             if genre.title and (m := re.search(genre.title, plain, re.IGNORECASE))
         ]
@@ -662,7 +666,7 @@ def load_genre_rules(con: Transaction) -> None:
     con.insert(
         'event_genres',
         (
-            {'event_id': t.event_id, 'genre': genre, 'source': 'site_tag'}
+            {'event_id': t.event_id, 'genre': genre, 'source': Source.SITE_TAG}
             for t in con.rows(Tagged, 'SELECT event_id, tag FROM event_tags')
             for genre in states.TAG_GENRES.get(t.tag, [])
         ),
@@ -679,7 +683,7 @@ def load_extracted(con: Transaction, got: Mapping[int, Answer[Extracted]]) -> No
                 {
                     'event_id': ev.event_id,
                     'feature': x.feature,
-                    'source': 'description',
+                    'source': Source.DESCRIPTION,
                     'quote': x.quote,
                     'rationale': x.rationale,
                     'prompt': prompt,
@@ -747,7 +751,7 @@ def main() -> None:
         con.insert(
             'event_features',
             (
-                {'event_id': t.event_id, 'feature': states.TAG_FEATURES[t.tag], 'source': 'site_tag'}
+                {'event_id': t.event_id, 'feature': states.TAG_FEATURES[t.tag], 'source': Source.SITE_TAG}
                 for t in con.rows(Tagged, 'SELECT event_id, tag FROM event_tags')
                 if t.tag in states.TAG_FEATURES
             ),

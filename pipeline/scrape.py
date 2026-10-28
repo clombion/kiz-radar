@@ -28,7 +28,7 @@ from pydantic import BaseModel
 from pipeline import db as sqlite_db
 from pipeline import export, states
 from pipeline.db import Reader, Transaction
-from pipeline.enums import EventSource, Listing
+from pipeline.enums import EventSource, Listing, Pending
 from pipeline.extract import run_log
 from pipeline.kizomba_world import ApiEvent, ApiPage, Listed, Paged, api_fields, page_fields
 from pipeline.records import day_of, now
@@ -90,7 +90,8 @@ STEP = (
 
 # the export's tables of the site's events, as kizomba-world's own export made them, and of the events the extraction
 # steps are to read (tests/test_steps.py holds the export to them)
-KEPT = sqlite_db.declared("""
+KEPT = sqlite_db.declared(
+    """
 create table events (
     id integer primary key,
     title text not null,
@@ -151,10 +152,11 @@ create index events_start on events(start_date);
 create index events_country on events(country);
 create table pending_extraction (
     event_id integer primary key references events(id) on delete cascade deferrable initially deferred,
-    reason text not null check (reason in ('new', 'description changed')),
+    reason text not null check (reason in ({pending})),
     since text not null
 ) strict;
-""")
+""".format_map(states.SQL_IN)
+)
 
 
 def describe(db: Transaction) -> None:
@@ -172,23 +174,13 @@ def describe(db: Transaction) -> None:
 
 
 def write_event(db: Transaction, row: EventRow, categories: list[str], tags: list[str]) -> None:
-    """The event's row, its categories and tags, and the genres and features its tags name."""
+    """The event's row, and its categories and tags (load_extract derives the genres and features they name)."""
     db.upsert('events', ['id'], row.model_dump())
     i = row.id
     db.execute('delete from event_categories where event_id = ?', (i,))
     db.executemany('insert into event_categories (event_id, category) values (?, ?)', [(i, c) for c in categories])
     db.execute('delete from event_tags where event_id = ?', (i,))
     db.executemany('insert into event_tags (event_id, tag) values (?, ?)', [(i, t) for t in tags])
-    db.execute("delete from event_genres where event_id = ? and source = 'site_tag'", (i,))
-    db.executemany(
-        "insert into event_genres (event_id, genre, source) values (?, ?, 'site_tag')",
-        sorted({(i, g) for t in tags for g in states.TAG_GENRES.get(t, [])}),
-    )
-    db.execute("delete from event_features where event_id = ? and source = 'site_tag'", (i,))
-    db.executemany(
-        "insert into event_features (event_id, feature, source) values (?, ?, 'site_tag')",
-        sorted({(i, states.TAG_FEATURES[t]) for t in tags if t in states.TAG_FEATURES}),
-    )
 
 
 @dataclass(frozen=True)
@@ -302,7 +294,7 @@ def write(db: Transaction, r: Refreshed, source_id: int, today: dt.date) -> None
         db.execute(
             'insert into pending_extraction (event_id, reason, since) values (?, ?, ?) '
             'on conflict (event_id) do update set since = excluded.since',
-            (i, 'new' if r.old is None else 'description changed', today),
+            (i, Pending.NEW if r.old is None else Pending.DESCRIPTION_CHANGED, today),
         )
 
 
@@ -325,9 +317,7 @@ def finish(db: Transaction, report: Report, events: int, gone: list[int], today:
             STEP,
             performed_by='pipeline/scrape.py (curl_cffi)',
             inputs=f'{SITE}/wp-json/tribe/events/v1/events from {FIRST_DAY}; each new, changed or upcoming event page',
-            outputs='tables events, source_ids, event_categories, event_tags, event_links, pending_extraction; '
-            'event_genres and '
-            'event_features (source site_tag)',
+            outputs='tables events, source_ids, event_categories, event_tags, event_links, pending_extraction',
             details=details,
         ),
     )
