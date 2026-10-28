@@ -390,8 +390,8 @@ whether it reads, writes or creates each one, so a wrong path is an error.
 
 ## Tests
 
-Every check runs through [mise](https://mise.jdx.dev) (`mise.toml`, which also pins node and uv), and the **Tests**
-Action runs the same command on every push:
+Every check runs through [mise](https://mise.jdx.dev) (`tasks.toml`, with the tools `mise.toml` pins: node, pnpm and
+uv), and the **Tests** Action runs the same command on every push:
 
 ```bash
 mise run check        # everything
@@ -401,9 +401,9 @@ mise tasks            # each check on its own: lock:py, lint:py, format:py, form
 mise run hooks        # once per clone: the git hooks of prek.toml
 ```
 
-The hooks (prek, pinned in `uv.lock`) run `mise run check:fast` before a commit, on what is staged (prek sets the rest
-aside while it runs), and every check before a push, on the commit pushed, checked out in a worktree of its own
-(`check:push`): neither what is staged nor the branch checked out stands in for it.
+The hooks (prek, pinned in `uv.lock`) run the quick checks before a commit, on what is staged (`check:commit`), and
+every check before a push, on the commit pushed (`check:push`), each in a worktree of its own: neither a change left
+unstaged, a file not added, nor the branch checked out stands in for what is committed or pushed.
 
 The Python code is held to every ruff rule but the few `pyproject.toml` ignores, each with its reason, and to
 basedpyright's strict mode with `Any` an error: what comes from outside (an answer, a page, a CSV) is parsed into a

@@ -7,8 +7,10 @@ repo = "local"
 
 [[repos.hooks]]
 id = "check-fast"
-name = "mise run check:fast"
-entry = "mise run check:fast"
+name = "mise run check:commit"
+# on what is staged, checked out on its own (tasks.toml check:commit): neither what is unstaged nor a file not added
+# stands in for it
+entry = "mise run check:commit"
 language = "system"
 stages = ["pre-commit"]
 pass_filenames = false
@@ -17,7 +19,7 @@ always_run = true
 [[repos.hooks]]
 id = "check"
 name = "mise run check:push"
-# on the commit pushed, checked out on its own (mise.toml check:push): neither what is staged nor the branch checked
+# on the commit pushed, checked out on its own (tasks.toml check:push): neither what is staged nor the branch checked
 # out stands in for it
 entry = "mise run check:push"
 language = "system"

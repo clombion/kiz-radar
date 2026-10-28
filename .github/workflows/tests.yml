@@ -1,6 +1,6 @@
 name: Tests
 
-# Every check the repository has, as `mise run check` runs it (mise.toml).
+# Every check the repository has, as `mise run check` runs it (tasks.toml).
 on:
   push:
   pull_request:

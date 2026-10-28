@@ -5,6 +5,7 @@ when it is missing. The Actions take their tools from mise.toml, and the steps t
 import ast
 import collections
 import re
+import tomllib
 from pathlib import Path
 
 from pipeline import ROOT
@@ -77,3 +78,9 @@ def test_only_db_looks_for_the_export() -> None:
         if p not in {ROOT / 'pipeline' / 'db.py', Path(__file__)} and looks.search(p.read_text(encoding='utf-8'))
     ]
     assert found == []
+
+
+def test_mise_toml_holds_the_tools_alone() -> None:
+    """The Actions cache the tools by mise.toml's hash; a task written there would make every edit of it download them
+    all again (tasks.toml holds the tasks)."""
+    assert set(tomllib.loads((ROOT / 'mise.toml').read_text(encoding='utf-8'))) == {'tools', 'task_config'}

@@ -1,0 +1,128 @@
+# The task runner's tasks, which mise.toml includes: `mise run check` runs every check the repository has, and is what
+# Tests and the push hook run; `mise run check:fast` is its quick part, run before each commit (prek.toml).
+
+["test:py"]
+description = "The pipeline's tests, on every core in a new order, and the branches they reach (pyproject.toml)"
+run = "uv run --group dev pytest -q --cov"
+
+["install:site"]
+description = "The site's tools, as pnpm-lock.yaml pins them"
+run = "pnpm install --frozen-lockfile"
+
+["build:site"]
+description = "The site's TypeScript (site/) compiled into docs/js/, which the page loads"
+depends = ["install:site"]
+run = "pnpm run build"
+
+[serve]
+description = "The site built and served at http://localhost:8000"
+depends = ["build:site"]
+run = "python3 -m http.server -d docs 8000"
+
+["types:site"]
+description = "tsc, strict, on the site and its tests"
+depends = ["install:site"]
+run = "pnpm run types"
+
+["lint:site"]
+description = "Biome's rules and format on the site, its tests and its CSS, with the lint/ plugins"
+depends = ["install:site"]
+run = "pnpm run lint"
+
+[knip]
+description = "No module, export or package the site doesn't use"
+depends = ["install:site"]
+run = "pnpm run knip"
+
+["test:site"]
+description = "The site's tests, in Node and in Chromium (vitest.config.ts)"
+depends = ["install:site"]
+run = "pnpm run test"
+
+[dup]
+description = "No block of 30 tokens or more written twice, in the code, tests, stylesheet or Actions (.jscpd.json); the generated files aside"
+depends = ["install:site"]
+run = "pnpm run dup"
+
+["lock:py"]
+description = "uv.lock is what pyproject.toml resolves to (the site's lock is held by install:site's --frozen-lockfile)"
+run = "uv lock --check"
+
+["lint:py"]
+description = "Ruff's rules on the Python code"
+run = "uv run --group dev ruff check"
+
+["format:py"]
+description = "The Python code as ruff formats it"
+run = "uv run --group dev ruff format --check"
+
+["format:md"]
+description = "The Markdown as mdformat writes it (.mdformat.toml), the prompts left as they are"
+run = "git ls-files -z '*.md' | xargs -0 uv run --group dev mdformat --check"
+
+["types:py"]
+description = "basedpyright, strict, on the pipeline and its tests"
+run = "uv run --group dev basedpyright"
+
+[audit]
+description = "Every state in the data is one of pipeline/states.py"
+run = "uv run --group tickets -m pipeline.audit"
+
+[generate]
+description = "Write the files built from pipeline/states.py"
+run = "uv run -m pipeline.generate"
+
+["generate:check"]
+description = "The files built from pipeline/states.py still say what it does"
+run = "uv run -m pipeline.generate --check"
+
+[hooks]
+description = "Install the git hooks (prek.toml): the quick checks before a commit, every check before a push"
+run = "uv run --group dev prek install"
+
+["hooks:check"]
+description = "prek.toml is a configuration prek reads"
+run = "uv run --group dev prek validate-config prek.toml"
+
+["check:fast"]
+description = "The quick checks, before each commit"
+depends = [
+  "lock:py",
+  "lint:py",
+  "format:py",
+  "format:md",
+  "types:py",
+  "lint:site",
+  "types:site",
+  "knip",
+  "dup",
+  "test:site",
+  "generate:check",
+  "hooks:check",
+]
+
+["check:commit"]
+description = "The quick checks, before a commit (prek.toml), on what is staged, in a worktree of its own"
+run = """
+staged="$(git commit-tree "$(git write-tree)" -p HEAD -m staged)"
+unset GIT_INDEX_FILE  # git gives a hook the commit's index; the worktree has its own
+tree="$(mktemp -d)/check"
+git worktree add -q --detach "$tree" "$staged"
+trap 'git worktree remove --force "$tree"' EXIT
+cd "$tree" && mise trust -q && mise run check:fast
+"""
+
+["check:push"]
+description = "Every check, before a push (prek.toml), on the commit pushed, in a worktree of its own"
+run = """
+to="${PRE_COMMIT_TO_REF:-$(git rev-parse HEAD)}"
+[ "$to" = 0000000000000000000000000000000000000000 ] && exit 0  # a branch deleted: nothing to check
+tree="$(mktemp -d)/check"
+git worktree add -q --detach "$tree" "$to"
+trap 'git worktree remove --force "$tree"' EXIT
+cd "$tree" && mise trust -q && mise run check
+"""
+
+[check]
+description = "Every check"
+depends = ["check:fast", "test:py", "audit"]
