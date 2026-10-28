@@ -11,6 +11,7 @@ amount and currency, a recipe reads rows from the page or from the site's API.
 
 import csv
 import datetime as dt
+import hashlib
 import re
 from collections.abc import Iterable
 from pathlib import Path
@@ -59,7 +60,14 @@ JSON: TypeAdapter[Json] = TypeAdapter(Json)  # any JSON text, as its value
 type PassName = Literal['extract', 'rooms_genres', 'prices']  # the extraction passes (pipeline/prompt.py)
 type Name = PassName | Literal['first_read']  # every prompt, by name
 
-DIGITS = 16  # a prompt's hash is the first DIGITS hex digits of its text's SHA-256 (pipeline/prompt.py)
+DIGITS = 16  # a hash (a prompt's, the links a search was of) is the first DIGITS hex digits of a SHA-256
+SHORT = 8  # a recipe's version names its file by this many
+
+
+def digest(data: str | bytes, digits: int = DIGITS) -> str:
+    """The first digits hex digits of the data's SHA-256 (text as UTF-8): a Hash, or a Version's part."""
+    return hashlib.sha256(data.encode() if isinstance(data, str) else data).hexdigest()[:digits]
+
 
 Text = Annotated[str, Field(min_length=1)]
 Quote = Annotated[str, Field(min_length=1, max_length=300)]
@@ -72,6 +80,11 @@ def real_day(value: str) -> RealDay:
     *year, month, day = map(int, value.split('-'))
     _ = dt.date(year[0] if year else 2024, month, day)  # a leap year has every MM-DD; ValueError when no year does
     return RealDay(value)
+
+
+def yearless(value: RealDay) -> bool:
+    """Whether the day is written without its year (MM-DD)."""
+    return value.count('-') == 1
 
 
 # YYYY-MM-DD, or MM-DD when no year is given
@@ -305,7 +318,7 @@ class MergeReview(Record):
 
 # ---- a ticket page's log (pipeline/tickets.py)
 
-Version = Annotated[str, Field(pattern=r'^[a-z0-9-]+@[0-9a-f]{8}$')]  # a recipe's site and its file's hash
+Version = Annotated[str, Field(pattern=rf'^[a-z0-9-]+@[0-9a-f]{{{SHORT}}}$')]  # a recipe's site and its file's digest
 
 
 class Row(Record):
@@ -869,10 +882,10 @@ class Airport(CsvRow):
     home: Flag
 
 
-class Spot(BaseModel):
+class Spot(Record):
     """Where Nominatim puts a place, and its name for it."""
 
-    model_config = ConfigDict(frozen=True)
+    model_config = ConfigDict(strict=False)  # a geocode.csv row's text, or Nominatim's
 
     lat: float
     lon: float

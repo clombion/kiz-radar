@@ -70,7 +70,7 @@ def stale(fs: Sequence[tickets.Festival], known: dict[str, tickets.Site]) -> lis
     on: defaultdict[str, list[int]] = defaultdict(list)
     for f in fs:
         if f.page:
-            on[tickets.host(f.page)].append(f.id)
+            on[tickets.host(f.page.url)].append(f.id)
     out: list[tuple[Override, str]] = []
     for o in exceptions.OVERRIDES:
         if site := tickets.site_for(f'https://{o.host}/', known):

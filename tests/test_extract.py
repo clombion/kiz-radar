@@ -16,7 +16,7 @@ from typing import Annotated
 import pytest
 from pydantic import BaseModel, Field, ValidationError
 
-from pipeline import data, db, enums, export, generate, prompt, spend, states, tickets
+from pipeline import data, db, enums, export, generate, prompt, records, spend, states, tickets
 from pipeline.db import Db, Transaction
 from pipeline.enums import AnswerState, MergeReason, Model, PassKind, Role, Style
 from pipeline.extract import answers, ask, check_output, load_extract, prices, resolve_artists, run_log
@@ -542,7 +542,7 @@ def test_every_prompt_the_answers_reads_and_export_name_is_archived_under_its_ha
     archived = {p.stem: p.read_text(encoding='utf-8') for p in data(prompt.ASKED).glob('*.md') if p.name != 'README.md'}
     assert named <= set(archived)
     # every prompt ever asked stays, each under the hash of its text
-    assert [h for h, text in archived.items() if prompt.digest(text) != h] == []
+    assert [h for h, text in archived.items() if records.digest(text) != h] == []
 
 
 def test_a_template_with_a_marker_left_fails() -> None:

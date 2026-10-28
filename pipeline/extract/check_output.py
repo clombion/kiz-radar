@@ -19,7 +19,7 @@ from pathlib import Path
 from pydantic import ValidationError
 
 from pipeline import prompt as prompts
-from pipeline.records import Batch, Entry, Json, errors
+from pipeline.records import Asked, Batch, Entry, FirstRead, Json, errors
 
 VERBATIM_KEYS = frozenset({'quote', 'label_quote', 'rule_quotes', 'source_line', 'name_as_written', 'names'})
 
@@ -47,6 +47,11 @@ def verbatim_fields(node: Json, path: str = '') -> list[tuple[str, str]]:
 def entry_json(entry: Entry) -> dict[str, Json]:
     dumped: dict[str, Json] = entry.model_dump(mode='json', by_alias=True)
     return dumped
+
+
+def source_text(festival: Asked | FirstRead, *rows: str) -> str:
+    """The text a festival's answer quotes: the rows read (a ticket page's), its description, then its title."""
+    return '\n'.join([*rows, festival.description, festival.title])
 
 
 def found_in[E: Entry](answer: Batch[E], texts: Mapping[int, str]) -> list[str]:
@@ -98,7 +103,7 @@ def main() -> None:
         asked = Batch[pass_.asked].parse(a.question.read_text(encoding='utf-8'))
     except ValidationError as e:
         sys.exit('\n'.join(errors(e, f'{a.question.name}: not a question of the {a.pass_name} pass')))
-    texts = {e.event_id: e.description + '\n' + e.title for e in asked.events}
+    texts = {e.event_id: source_text(e) for e in asked.events}
     match checked(prompts.answer(pass_), a.answer.read_text(encoding='utf-8'), texts):
         case list() as found:
             for p in found:

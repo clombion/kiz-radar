@@ -14,7 +14,6 @@ hash it answered, and is current while is_current(name, hash). Whatever writes o
 (archive()), so every hash a file names has its text in pipeline/prompts/asked/<hash>.md.
 """
 
-import hashlib
 import json
 import tempfile
 from dataclasses import dataclass
@@ -84,9 +83,11 @@ def inlined(node: Json, defs: Schema) -> Json:
     if not isinstance(node, dict):
         return node
     out = {k: inlined(v, defs) for k, v in node.items() if k not in {'$ref', '$defs'}}
-    if isinstance(ref := node.get('$ref'), str) and isinstance(target := inlined(defs[ref.split('/')[-1]], defs), dict):
-        return target | out
-    return out
+    if (ref := node.get('$ref')) is None:
+        return out
+    if not isinstance(ref, str) or not isinstance(target := inlined(defs[ref.removeprefix('#/$defs/')], defs), dict):
+        raise TypeError(f'{ref!r}: a reference names a definition, an object')
+    return target | out
 
 
 def api_schema(schema: Schema) -> Schema:
@@ -100,17 +101,15 @@ def api_schema(schema: Schema) -> Schema:
             return node
         return {('anyOf' if k == 'oneOf' else k): strip(v) for k, v in node.items() if k not in UNSENT}
 
-    defs = schema.get('$defs')
-    out = strip(inlined(schema, defs if isinstance(defs, dict) else {}))
-    return out if isinstance(out, dict) else {}
+    if not isinstance(defs := schema.get('$defs', {}), dict):
+        raise TypeError(f'$defs {defs!r}: the definitions are an object')
+    if not isinstance(out := strip(inlined(schema, defs)), dict):
+        raise TypeError('a schema is an object')
+    return out
 
 
 def dumped(schema: Json) -> str:
     return json.dumps(schema, ensure_ascii=False, sort_keys=True, indent=1)
-
-
-def digest(text: str) -> str:
-    return hashlib.sha256(text.encode()).hexdigest()[: records.DIGITS]
 
 
 @dataclass(frozen=True)
@@ -132,13 +131,13 @@ class Prompt:
 
     @cached_property
     def hash(self) -> str:
-        return digest(self.text)
+        return records.digest(self.text)
 
     def archive(self) -> Path:
         """Save the prompt's text under its hash, unless the file there already holds it: written whole beside it,
         then renamed, so no reader sees part of it."""
         path = data(ASKED) / f'{self.hash}.md'
-        if path.exists() and digest(path.read_text(encoding='utf-8')) == self.hash:
+        if path.exists() and records.digest(path.read_text(encoding='utf-8')) == self.hash:
             return path
         path.parent.mkdir(parents=True, exist_ok=True)
         with tempfile.NamedTemporaryFile('w', encoding='utf-8', dir=path.parent, suffix='.part', delete=False) as f:

@@ -64,6 +64,7 @@ from pipeline.records import (
     RoomsGenres,
     StatusRow,
     day_of,
+    yearless,
 )
 from pipeline.text import soften_caps, tidy_title
 
@@ -409,7 +410,7 @@ def load_prices(
                 frm, until = window(tier.from_, tier.until, start)
                 if tier.current and frm is None:
                     frm = edited
-                yearless = any(v and len(v) == len('MM-DD') for v in (tier.from_, tier.until))
+                no_year = any(v is not None and yearless(v) for v in (tier.from_, tier.until))
                 tier_rows.append(
                     {
                         'event_id': ev.event_id,
@@ -422,9 +423,7 @@ def load_prices(
                         'alt_currency': tier.alt.currency if tier.alt else None,
                         'valid_from': frm,
                         'valid_until': until,
-                        'dates_as_answered': json.dumps({'from': tier.from_, 'until': tier.until})
-                        if yearless
-                        else None,
+                        'dates_as_answered': json.dumps({'from': tier.from_, 'until': tier.until}) if no_year else None,
                         'quantity': tier.quantity,
                         'door': int(tier.door),
                         'sold_out': int(tier.sold_out),

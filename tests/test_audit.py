@@ -57,8 +57,7 @@ def festival(page: str | None, **change: object) -> tickets.Festival:
         log=(),
         tiers=(),
         described=None,
-        page=page,
-        site=None,
+        page=tickets.KnownPage(page, None) if page else None,
         disputed=False,
         need=FirstRead.NONE,
     )

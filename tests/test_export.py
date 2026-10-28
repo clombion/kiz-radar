@@ -1,12 +1,12 @@
 """The export's schema changes by numbered migrations, each applied once, in order: a step that writes the export
 brings it to the code's version, and a step that reads it, the site's build included, refuses another version."""
 
-import hashlib
 from pathlib import Path
 
 import pytest
 
 from pipeline import build_site_db, export
+from pipeline.records import digest
 from tests.exports import EXPORT, copied
 
 LATER = 'create table later (x integer)'  # a migration the code has and the export hasn't had
@@ -65,5 +65,5 @@ APPLIED = ('691b0f9bb402b8d8', 'af0be5773d153b5a', 'dd7880df897ee566', '804e7616
 
 
 def test_a_migration_is_never_edited_once_applied() -> None:
-    digests = tuple(hashlib.sha256(m.encode()).hexdigest()[:16] for m in export.MIGRATIONS)
+    digests = tuple(digest(m) for m in export.MIGRATIONS)
     assert digests[: len(APPLIED)] == APPLIED

@@ -59,7 +59,6 @@ every run; after REFUSALS failures in a row, todo marks it for a session, where 
 import argparse
 import collections
 import datetime as dt
-import hashlib
 import json
 import re
 import sys
@@ -67,7 +66,7 @@ from collections.abc import Iterable, Mapping, Sequence
 from contextlib import AbstractContextManager
 from dataclasses import dataclass, replace
 from pathlib import Path
-from typing import NamedTuple
+from typing import Literal, NamedTuple
 from urllib.parse import urlparse
 
 import anthropic
@@ -83,6 +82,7 @@ from pipeline.records import (
     JSON,
     LOG_ENTRY,
     RECIPE,
+    SHORT,
     Alt,
     ApiRecipe,
     Batch,
@@ -96,6 +96,7 @@ from pipeline.records import (
     FromPage,
     FromText,
     Json,
+    LogEntry,
     On,
     PageRecipe,
     PageRow,
@@ -110,6 +111,7 @@ from pipeline.records import (
     Row,
     Stamped,
     StatusRow,
+    digest,
     errors,
     now,
     today,
@@ -177,7 +179,6 @@ NOT_TICKETS = (
     'fb.me',
     'forms.gle',
 )
-type Entry = Read | Failed
 LIST: TypeAdapter[list[Json]] = TypeAdapter(list[Json])  # an API's list of tickets
 type Raw = Mapping[str, str | None]  # a ticket as read_page.rows() reads it: each recipe field's text, or None
 
@@ -202,7 +203,7 @@ def sites() -> dict[str, Site]:
             recipe = RECIPE.validate_json(path.read_bytes())
         except ValidationError as e:
             sys.exit('; '.join(errors(e, str(shown(path)))))
-        out[recipe.site] = Site(recipe, f'{recipe.site}@{hashlib.sha256(path.read_bytes()).hexdigest()[:8]}')
+        out[recipe.site] = Site(recipe, f'{recipe.site}@{digest(path.read_bytes(), SHORT)}')
     return out
 
 
@@ -320,39 +321,65 @@ def api_rows(page: str, recipe: ApiRecipe) -> tuple[int, str, list[dict[str, str
     return response.status_code, url, [{k: api_value(f, item, html.text) for k, f in fields} for item in items]
 
 
-def failed(base: Mapping[str, object], status: Status, why: str) -> Failed:
-    """A failed read's log entry: base (when, which page, by which recipe, and the address and HTTP status when it
-    got that far), and why it failed."""
-    return Failed.model_validate({**base, 'status': status, 'why': why[:WHY_LENGTH]})
+@dataclass(frozen=True)
+class Attempt:
+    """A read of a ticket page under way: when, which page, by which recipe, and once it got that far, the address
+    read and its HTTP status."""
+
+    at: dt.datetime
+    page: str
+    recipe: str
+    url: str | None = None
+    http: int | None = None
+
+    def failed(self, status: Literal[Status.REFUSED, Status.LAYOUT_BROKEN], why: str) -> Failed:
+        """The log entry of a read that failed, and why."""
+        return Failed(
+            at=self.at,
+            page=self.page,
+            recipe=self.recipe,
+            url=self.url,
+            http=self.http,
+            status=status,
+            why=why[:WHY_LENGTH],
+        )
+
+    def read(self, url: str, rows: Sequence[Row]) -> Read:
+        """The log entry of a read of these rows at this address."""
+        return Read(
+            at=self.at,
+            page=self.page,
+            recipe=self.recipe,
+            url=url,
+            http=self.http,
+            status=Status.READ,
+            rows=tuple(rows),
+        )
 
 
-def attempt(page: str, site: Site, *, visible: bool | None = None) -> Entry:
+def attempt(page: str, site: Site, *, visible: bool | None = None) -> LogEntry:
     """One read of a ticket page, as its log entry."""
-    base: dict[str, object] = {
-        'at': now(),
-        'page': page,
-        'recipe': site.version,
-    }
+    started = Attempt(now(), page, site.version)
     recipe = site.recipe
     if isinstance(recipe, ApiRecipe):
-        return api_attempt(base, page, recipe)
-    return page_attempt(base, page, recipe, visible=visible)
+        return api_attempt(started, recipe)
+    return page_attempt(started, recipe, visible=visible)
 
 
-def api_attempt(base: dict[str, object], page: str, recipe: ApiRecipe) -> Entry:
+def api_attempt(started: Attempt, recipe: ApiRecipe) -> LogEntry:
     """A read of a site's API: its tickets, or why it failed."""
     from curl_cffi.requests.exceptions import RequestException
 
     try:
-        status, url, raw = api_rows(page, recipe)
+        status, url, raw = api_rows(started.page, recipe)
     except (LookupError, ValueError) as e:  # no event id, no ticket list, or no JSON
-        return failed(base, Status.LAYOUT_BROKEN, f'{type(e).__name__}: {e}')
+        return started.failed(Status.LAYOUT_BROKEN, f'{type(e).__name__}: {e}')
     except RequestException as e:
-        return failed(base, Status.REFUSED, f'{type(e).__name__}: {e}')
-    return judged({**base, 'url': url}, status, url, raw, recipe.symbols)
+        return started.failed(Status.REFUSED, f'{type(e).__name__}: {e}')
+    return judged(replace(started, url=url, http=status), url, url, raw, recipe.symbols)
 
 
-def page_attempt(base: dict[str, object], page: str, recipe: PageRecipe, *, visible: bool | None) -> Entry:
+def page_attempt(started: Attempt, recipe: PageRecipe, *, visible: bool | None) -> LogEntry:
     """A read of a ticket page in a browser: its tickets, or why it failed."""
     from curl_cffi.requests.exceptions import RequestException
     from patchright.sync_api import Error
@@ -360,29 +387,26 @@ def page_attempt(base: dict[str, object], page: str, recipe: PageRecipe, *, visi
     from pipeline.read_page import RecipeError, rows
 
     try:
-        url = widget(page, recipe)
+        url = widget(started.page, recipe)
     except LookupError as e:
-        return failed(base, Status.LAYOUT_BROKEN, str(e))
+        return started.failed(Status.LAYOUT_BROKEN, str(e))
     except RequestException as e:
-        return failed(base, Status.REFUSED, f'{type(e).__name__}: {e}')
-    base['url'] = url
+        return started.failed(Status.REFUSED, f'{type(e).__name__}: {e}')
+    reached = replace(started, url=url)
     try:
         status, title, raw = rows(url, recipe, visible=visible)
     except RecipeError as e:
-        return failed(base, Status.LAYOUT_BROKEN, f'the recipe fails on the page: {e}')
+        return reached.failed(Status.LAYOUT_BROKEN, f'the recipe fails on the page: {e}')
     except Error as e:  # the page would not load
-        return failed(base, Status.REFUSED, f'{type(e).__name__}: {e}')
-    return judged(base, status, title, raw, recipe.symbols)
+        return reached.failed(Status.REFUSED, f'{type(e).__name__}: {e}')
+    return judged(replace(reached, http=status), url, title, raw, recipe.symbols)
 
 
-def judged(
-    base: Mapping[str, object], status: int | None, title: str, raw: Sequence[Raw], symbols: Mapping[str, str]
-) -> Entry:
+def judged(reached: Attempt, url: str, title: str, raw: Sequence[Raw], symbols: Mapping[str, str]) -> LogEntry:
     """The log entry for a read that got this far: refused, layout_broken, or read with its rows."""
-    base = {**base, 'http': status}
     # a browser check answers 4xx, then shows the page once it has passed, so the status alone decides nothing
-    if not raw and status and status >= HTTP_ERROR:
-        return failed(base, Status.REFUSED, f'HTTP {status} ({title})')
+    if not raw and reached.http and reached.http >= HTTP_ERROR:
+        return reached.failed(Status.REFUSED, f'HTTP {reached.http} ({title})')
     got: list[Row] = []
     bad: list[str] = []
     for i, r in enumerate(raw):
@@ -394,18 +418,18 @@ def judged(
     keys = [r.key for r in got]
     bad += [f'two rows with key {k}' for k in sorted({k for k in keys if keys.count(k) > 1})]
     if bad or not got:
-        return failed(base, Status.LAYOUT_BROKEN, '; '.join(bad or ['no ticket rows']))
-    return Read.model_validate({**base, 'status': Status.READ, 'rows': tuple(got)})
+        return reached.failed(Status.LAYOUT_BROKEN, '; '.join(bad or ['no ticket rows']))
+    return reached.read(url, got)
 
 
 # ---- the log and the first reads
 
 
-def log(event_id: int) -> list[Entry]:
+def log(event_id: int) -> list[LogEntry]:
     path = data(LOG) / f'{event_id}.jsonl'
     if not path.exists():
         return []
-    entries: list[Entry] = []
+    entries: list[LogEntry] = []
     for n, s in enumerate(path.read_text(encoding='utf-8').splitlines(), 1):
         if s.strip():
             try:
@@ -419,7 +443,7 @@ def log(event_id: int) -> list[Entry]:
     return sorted(entries, key=lambda e: e.at)
 
 
-def append(event_id: int, entry: Entry) -> None:
+def append(event_id: int, entry: LogEntry) -> None:
     """Add a line to the festival's log: the entry's fields as it was made (a failure that reached no address has
     none), keys sorted."""
     data(LOG).mkdir(parents=True, exist_ok=True)
@@ -429,11 +453,11 @@ def append(event_id: int, entry: Entry) -> None:
         )
 
 
-def latest_read(entries: Sequence[Entry]) -> Read | None:
+def latest_read(entries: Sequence[LogEntry]) -> Read | None:
     return next((e for e in reversed(entries) if isinstance(e, Read)), None)
 
 
-def failures(entries: Sequence[Entry]) -> int:
+def failures(entries: Sequence[LogEntry]) -> int:
     """How many attempts in a row have failed, counting back from the latest."""
     n = 0
     for e in reversed(entries):
@@ -498,7 +522,7 @@ def settle_dispute(event_id: int, fr: FirstRead) -> None:
         path.unlink()
 
 
-def read_at(fr: Dated | FirstRead, entries: Sequence[Entry]) -> Read | None:
+def read_at(fr: Dated | FirstRead, entries: Sequence[LogEntry]) -> Read | None:
     """The logged read a first read was made from, or None."""
     return next((e for e in entries if isinstance(e, Read) and e.at == fr.rows_at), None)
 
@@ -526,7 +550,7 @@ def keys_of(fr: FirstRead) -> list[str]:
     return [k for ps in fr.passes for t in ps.tiers for k in t.keys] + [s.key for s in fr.skipped]
 
 
-def read_problems(fr: FirstRead, entries: Sequence[Entry]) -> list[str]:
+def read_problems(fr: FirstRead, entries: Sequence[LogEntry]) -> list[str]:
     """What is wrong with a first read, against the rows it was made from and its description; empty when sound."""
     if (at := read_at(fr, entries)) is None:
         return [f'rows_at {fr.rows_at.isoformat()} is no read in tickets/log/{fr.event_id}.jsonl']
@@ -672,9 +696,9 @@ def build(fr: FirstRead, entry: Read) -> tuple[Priced, list[str], list[str]]:
                 )
             )
     answer = Priced(event_id=fr.event_id, passes=tuple(passes), rule_quotes=fr.rule_quotes)
-    text = '\n'.join(map(line, entry.rows)) + '\n' + fr.description
     batch = Batch[Priced](batch=f'page-{fr.event_id}', events=(answer,))
-    found += check_output.found_in(batch, {fr.event_id: text + '\n' + fr.title}) + prices.problems(answer, fr.styles)
+    texts = {fr.event_id: check_output.source_text(fr, *map(line, entry.rows))}
+    found += check_output.found_in(batch, texts) + prices.problems(answer, fr.styles)
     return answer, unread_keys(fr, entry), found
 
 
@@ -712,7 +736,7 @@ def price_rows(answer: Priced) -> list[PriceRow]:
 
 
 def written(
-    event_id: int, fr: FirstRead | Stamped, entries: Sequence[Entry], known: Mapping[str, Site]
+    event_id: int, fr: FirstRead | Stamped, entries: Sequence[LogEntry], known: Mapping[str, Site]
 ) -> Written | list[str]:
     """What a festival writes (Written), or the problems that stop it, a list; known is sites(), for the reseller its
     page is on."""
@@ -814,7 +838,7 @@ def record(event_id: int) -> list[str]:
 # ---- what changed, and when to read again
 
 
-def changes(entries: Sequence[Entry]) -> list[tuple[str, str]]:
+def changes(entries: Sequence[LogEntry]) -> list[tuple[str, str]]:
     """What differs between each read and the one before it, as (date, line) pairs."""
     out: list[tuple[str, str]] = []
     before: dict[str, Row] | None = None
@@ -872,7 +896,11 @@ def shop_hosts(known: Mapping[str, Site]) -> set[str]:
 
 
 def known_page(
-    fr: Dated | FirstRead | None, entries: Sequence[Entry], sold: FoundRow | None, urls: Sequence[str], shops: set[str]
+    fr: Dated | FirstRead | None,
+    entries: Sequence[LogEntry],
+    sold: FoundRow | None,
+    urls: Sequence[str],
+    shops: set[str],
 ) -> str | None:
     """The festival's ticket page when it is known, else None: its first read's, the shop an agent found it sells in
     (tickets/pages.csv), or its first full link to a ticket shop."""
@@ -925,6 +953,13 @@ class Event(Record):
     description_text: str | None
 
 
+class KnownPage(NamedTuple):
+    """A festival's known ticket page, and the recipe and version for its site, when one can read it."""
+
+    url: str
+    site: Site | None
+
+
 @dataclass(frozen=True)
 class Festival:
     """A festival with what tickets.py knows of it."""
@@ -940,11 +975,10 @@ class Festival:
     links: tuple[str, ...]  # links()
     found: FoundRow | None  # its tickets/pages.csv row, unless a search that found nothing was of other links
     first_read: FirstRead | Stamped | None  # first_read()
-    log: tuple[Entry, ...]
+    log: tuple[LogEntry, ...]
     tiers: tuple[PriceRow, ...]  # its pass_prices.csv rows
     described: answers.Answer[Priced] | None  # its description's prices answer to the current prompt
-    page: str | None  # known_page()
-    site: Site | None  # the recipe and version for its page's site
+    page: KnownPage | None  # known_page()
     disputed: bool  # tickets/disputed/<id>.json exists
     need: FirstReadState = FirstReadState.NONE
     unread: tuple[str, ...] = ()  # the latest rows' tickets the first read doesn't know
@@ -994,7 +1028,7 @@ def assessed(f: Festival, today: dt.date) -> Festival:
 
 def links_hash(urls: Iterable[str]) -> str:
     """What a none_found search was made of: the festival's links."""
-    return hashlib.sha256('\n'.join(sorted(urls)).encode()).hexdigest()[:16]
+    return digest('\n'.join(sorted(urls)))
 
 
 def festivals(db: sqlite_db.Reader, today: dt.date, only: int | None = None, *, every: bool = False) -> list[Festival]:
@@ -1039,8 +1073,7 @@ def festivals(db: sqlite_db.Reader, today: dt.date, only: int | None = None, *, 
             log=tuple(entries),
             tiers=tuple(tiers.get(e.id, [])),
             described=described.get(e.id),
-            page=page,
-            site=site_for(page, known) if page else None,
+            page=KnownPage(page, site_for(page, known)) if page else None,
             disputed=(data(DISPUTED) / f'{e.id}.json').exists(),
         )
         out.append(assessed(f, today))
@@ -1065,7 +1098,7 @@ def waiting(f: Festival) -> Waiting:
     """What the festival waits for before its prices can come from its ticket page (enums.Waiting): what it waits for
     by default, unless an override for its page's site (pipeline/exceptions.py) replaces that."""
     w = waits_by_default(f)
-    o = exceptions.by_host().get(host(f.page)) if f.page else None
+    o = exceptions.by_host().get(host(f.page.url)) if f.page else None
     return o.then if o and w == o.instead_of else w
 
 
@@ -1090,7 +1123,7 @@ def waits_for_first_read(f: Festival) -> Waiting:
         return w
     if not f.page:
         return Waiting.PAGE
-    return Waiting.RECIPE if not f.site else Waiting.NOTHING
+    return Waiting.RECIPE if not f.page.site else Waiting.NOTHING
 
 
 def write_status(fs: Sequence[Festival]) -> collections.Counter[Waiting]:
@@ -1104,7 +1137,7 @@ def write_status(fs: Sequence[Festival]) -> collections.Counter[Waiting]:
             waits_for=waiting(f),
             first_read=f.need,
             sales=f.found.state if f.found else None,
-            page=f.page,
+            page=f.page.url if f.page else None,
         )
         for f in sorted(fs, key=lambda f: f.id)
     ]
@@ -1155,7 +1188,9 @@ def joined(header: ReadHeader, answer: FirstReadAnswer) -> FirstRead:
     )
 
 
-def ask_read(client: ask.Client, model: Model, f: Festival, entry: Read, entries: Sequence[Entry]) -> FirstRead | None:
+def ask_read(
+    client: ask.Client, model: Model, f: Festival, entry: Read, entries: Sequence[LogEntry]
+) -> FirstRead | None:
     """One model's first read, checked, with one retry on the checker's lines; None when it fails twice."""
     header = draft_of(f, entry, model)
 
@@ -1214,7 +1249,7 @@ def agreed(reads: Mapping[Model, FirstRead | None]) -> FirstRead | None:
     return None
 
 
-def models_read(client: ask.Client, f: Festival, entry: Read, entries: Sequence[Entry]) -> FirstRead | None:
+def models_read(client: ask.Client, f: Festival, entry: Read, entries: Sequence[LogEntry]) -> FirstRead | None:
     """The first read two models agree on: MODELS', or when they don't, one TIE_BREAK agrees with; else None, with
     every read in tickets/disputed/ for an agent."""
     reads = {m: ask_read(client, m, f, entry, entries) for m in MODELS}
@@ -1256,19 +1291,20 @@ def one(db: sqlite_db.Reader, event_id: int, page: str | None = None) -> Festiva
     f = next(iter(festivals(db, today(), event_id)), None)
     if f is None:
         sys.exit(f'{event_id}: no such festival, or it is cancelled or no longer listed')
-    return replace(f, page=page, site=site_for(page, sites())) if page else f
+    return replace(f, page=KnownPage(page, site_for(page, sites()))) if page else f
 
 
 def cmd_read(db: sqlite_db.Reader, event_id: int, url: str | None = None, *, visible: bool | None = None) -> None:
     f = one(db, event_id, url and full_url(url))
     if not f.page:
         sys.exit(f'{event_id}: no known ticket page; find it and pass --url')
-    if not f.site:
+    url, site = f.page
+    if not site:
         sys.exit(
-            f'{event_id}: no recipe for {host(f.page)}; write tickets/sites/<site>.json '
+            f'{event_id}: no recipe for {host(url)}; write tickets/sites/<site>.json '
             '(its record: pipeline/records.py, Recipe) from the page, then read again'
         )
-    entry = attempt(f.page, f.site, visible=visible)
+    entry = attempt(url, site, visible=visible)
     append(event_id, entry)
     _ = status(db)
     if isinstance(entry, Failed):
@@ -1356,7 +1392,7 @@ def cmd_todo(db: sqlite_db.Reader) -> None:
         print(f'{f.id}  {f.start_date}  {f.title[:50]}')
         for n in todo_notes(f, day):
             print(f'      {n}')
-        for u in ([f.page] if f.page else list(f.links))[:3]:
+        for u in ([f.page.url] if f.page else list(f.links))[:3]:
             print(f'      {u}')
     counts = collections.Counter(waiting(f) for f in fs)
     print('\nwaits for: ' + '; '.join(f'{n} {w}' for w, n in counts.most_common()))
@@ -1383,7 +1419,7 @@ def cmd_page(db: sqlite_db.Reader, event_id: int, sold: Sold) -> None:
     url, state, note, by = sold
     f = one(db, event_id)
     if f.first_read:
-        sys.exit(f'{event_id}: it has a first read of {f.page}; read a new page with: read {event_id} --url URL')
+        sys.exit(f'{event_id}: it has a first read; read a new page with: read {event_id} --url URL')
     if url:
         _ = full_url(url)
     try:
@@ -1442,16 +1478,18 @@ class Run:
             self.budget = f'{e}: the other first reads wait for next month'
             self.alarms.append(self.budget)
 
-    def broken(self, i: int, entry: Entry) -> None:
+    def broken(self, i: int, entry: LogEntry) -> None:
         if isinstance(entry, Failed) and entry.status == Status.LAYOUT_BROKEN:
             self.alarms.append(f'{i}: layout broken ({entry.why}); the recipe {entry.recipe} needs an agent')
 
     def reread(self, f: Festival) -> Festival:
         """Read again a festival whose prices are due or whose reads failed, raising the alarm on a broken recipe or
         the REFUSALS-th failure; the festival as of the new read."""
-        if not (f.first_read and f.site and (recheck(f.tiers, f.start_date, self.today)[1] or failures(f.log))):
+        if not (f.first_read and f.page and f.page.site):
             return f
-        i, entry = f.id, attempt(f.page or '', f.site)
+        if not (recheck(f.tiers, f.start_date, self.today)[1] or failures(f.log)):
+            return f
+        i, entry = f.id, attempt(f.page.url, f.page.site)
         append(i, entry)
         print(f'{i}: {entry.status}' + (f': {entry.why}' if isinstance(entry, Failed) else ''))
         self.broken(i, entry)
@@ -1464,11 +1502,11 @@ class Run:
 
     def first_reads(self, f: Festival) -> None:
         """A first read for a festival that needs one, from rows read today."""
-        if not (f.needs_read and f.need != FirstReadState.DISPUTED and f.site):
+        if not (f.needs_read and f.need != FirstReadState.DISPUTED and f.page and f.page.site):
             return
         entry = latest_read(f.log)
         if entry is None or entry.at.date() != self.today:
-            append(f.id, fresh := attempt(f.page or '', f.site))
+            append(f.id, fresh := attempt(f.page.url, f.page.site))
             entry = fresh
         if isinstance(entry, Read) and not self.budget:
             self.make(f, entry)

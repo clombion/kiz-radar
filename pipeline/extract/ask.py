@@ -178,7 +178,7 @@ def ask[E: Entry, Q: Asked](
     """A checked answer for one festival and pass, or None after two failed tries; styles are the festival's
     (prices.styles), for the prices pass."""
     content, event = question(pass_, f, styles)
-    texts = {event.event_id: event.description + '\n' + event.title}
+    texts = {event.event_id: check_output.source_text(event)}
 
     def check(text: str) -> Batch[E] | list[str]:
         match check_output.checked(prompts.answer(pass_), text, texts):

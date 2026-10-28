@@ -28,6 +28,7 @@ from pipeline.records import (
     FromPage,
     FromText,
     Json,
+    LogEntry,
     PageRecipe,
     PageRow,
     Priced,
@@ -44,6 +45,7 @@ from pipeline.records import (
     Widget,
     real_day,
 )
+from pipeline.tickets import KnownPage
 from tests import exports, jsons
 from tests.exports import committed, shaped
 from tests.fakes import AT, REGISTER, Client, Memory
@@ -394,7 +396,7 @@ RAW: dict[str, str | None] = {
 
 def attempt_with(
     monkeypatch: pytest.MonkeyPatch, raw: Sequence[dict[str, str | None]] = (), error: Exception | None = None
-) -> tickets.Entry:
+) -> LogEntry:
     """attempt() on a page whose recipe finds these rows, or fails with this error."""
     from pipeline import read_page
 
@@ -407,7 +409,7 @@ def attempt_with(
     return tickets.attempt(PAGE, SITE._replace(recipe=SITE.recipe.model_copy(update={'widget': None})))
 
 
-def why(entry_: tickets.Entry) -> str:
+def why(entry_: LogEntry) -> str:
     assert isinstance(entry_, Failed)
     return entry_.why
 
@@ -535,11 +537,10 @@ BASE = tickets.Festival(
     tiers=(),
     described=None,
     page=None,
-    site=None,
     disputed=False,
     need=FirstReadState.NONE,
 )
-FEST = festival(page=PAGE)
+FEST = festival(page=KnownPage(PAGE, None))
 ANSWER = FirstReadAnswer(passes=read().passes, skipped=read().skipped, rule_quotes=read().rule_quotes)
 
 
@@ -608,15 +609,18 @@ def sold(state: Sales, page: str | None = None) -> FoundRow:
     ('f', 'expected'),
     [
         (festival(), Waiting.PAGE),
-        (festival(page='https://example.org/tickets'), Waiting.RECIPE),
-        (festival(page=f'https://{HELD.host}/x'), HELD.then),  # pipeline/exceptions.py
-        (festival(page=PAGE, site=SITE), Waiting.NOTHING),
+        (festival(page=KnownPage('https://example.org/tickets', None)), Waiting.RECIPE),
+        (festival(page=KnownPage(f'https://{HELD.host}/x', None)), HELD.then),  # pipeline/exceptions.py
+        (festival(page=KnownPage(PAGE, SITE)), Waiting.NOTHING),
         (festival(found=sold(Sales.OFFLINE)), Waiting.NOTHING),
         (festival(found=sold(Sales.NOT_YET)), Waiting.SALES_OPEN),
         (festival(found=sold(Sales.CLOSED)), Waiting.NOTHING),
         (festival(found=sold(Sales.NONE_FOUND)), Waiting.NOTHING),
-        (festival(found=sold(Sales.SHOP, 'https://example.org/t'), page='https://example.org/t'), Waiting.RECIPE),
-        (festival(page=PAGE, site=SITE, need=FirstReadState.DISPUTED), Waiting.AGENT),
+        (
+            festival(found=sold(Sales.SHOP, 'https://example.org/t'), page=KnownPage('https://example.org/t', None)),
+            Waiting.RECIPE,
+        ),
+        (festival(page=KnownPage(PAGE, SITE), need=FirstReadState.DISPUTED), Waiting.AGENT),
         (
             festival(
                 need=FirstReadState.CURRENT,
@@ -649,7 +653,7 @@ def test_every_waits_for_state_is_reached() -> None:
         tickets.waiting(f)
         for f in [
             festival(),
-            festival(page='https://example.org/t'),
+            festival(page=KnownPage('https://example.org/t', None)),
             festival(found=sold(Sales.NOT_YET)),
             festival(need=FirstReadState.DISPUTED),
             festival(log=(refused(stamp(1)), refused(stamp(2)), refused(stamp(3)))),
@@ -665,7 +669,7 @@ def test_the_status_lists_every_festival_past_ones_too(files: Path) -> None:
         [
             festival(id=9, need=FirstReadState.CURRENT),
             festival(),
-            festival(id=8, page='https://example.org/t'),
+            festival(id=8, page=KnownPage('https://example.org/t', None)),
             festival(id=6, over=True, found=sold(Sales.CLOSED)),
         ]
     )
@@ -850,7 +854,7 @@ def test_a_first_read_with_no_pass_is_refused() -> None:
 
 
 def test_a_page_that_broke_its_recipe_waits_for_a_fix_with_or_without_a_first_read() -> None:
-    assert tickets.waiting(festival(page=PAGE, site=SITE, log=(broken(stamp(2)),))) == Waiting.RECIPE_FIX
+    assert tickets.waiting(festival(page=KnownPage(PAGE, SITE), log=(broken(stamp(2)),))) == Waiting.RECIPE_FIX
     assert tickets.waiting(festival(first_read=read(), log=(entry(ROWS), broken(LATER)))) == Waiting.RECIPE_FIX
 
 
@@ -1048,11 +1052,13 @@ def test_a_run_for_named_festivals_reads_only_them(
     memory: Memory, files: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     def festivals(db: Reader, today: str, only: int | None = None, *, every: bool = False) -> list[tickets.Festival]:
-        return [] if only or every else [festival(id=i, site=SITE, page=f'https://shop.example/{i}') for i in (7, 8)]
+        return (
+            [] if only or every else [festival(id=i, page=KnownPage(f'https://shop.example/{i}', SITE)) for i in (7, 8)]
+        )
 
     asked: list[str] = []
 
-    def attempt(page: str, site: tickets.Site, *, visible: bool | None = None) -> tickets.Entry:
+    def attempt(page: str, site: tickets.Site, *, visible: bool | None = None) -> LogEntry:
         asked.append(page)
         return Failed(at=AT, page=page, recipe=site.version, status=Status.REFUSED, why='HTTP 403')
 
@@ -1060,7 +1066,7 @@ def test_a_run_for_named_festivals_reads_only_them(
     monkeypatch.setattr(tickets, 'status', no_status)
     monkeypatch.setattr(tickets, 'attempt', attempt)
 
-    def append(event_id: int, entry_: tickets.Entry) -> None:
+    def append(event_id: int, entry_: LogEntry) -> None:
         return None
 
     monkeypatch.setattr(tickets, 'append', append)
@@ -1221,7 +1227,7 @@ def test_a_page_an_agent_found_or_a_first_read_is_known_whatever_its_site(files:
 def test_a_festival_with_links_to_no_shop_waits_for_its_page_and_has_no_page_to_link() -> None:
     f = festival(links=('https://fest.example/',))
     assert tickets.waiting(f) == Waiting.PAGE
-    assert prices.price_state([], None, f.page) == Price.NOT_LOOKED
+    assert prices.price_state([], None, None) == Price.NOT_LOOKED
 
 
 def test_a_dispute_is_settled_by_a_first_read_of_rows_as_new(files: Path) -> None:
@@ -1330,7 +1336,7 @@ def command(
     files: Path, memory: Memory, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> Command:
     """A ticket command as its command line runs it, on a festival with one read logged; what it prints."""
-    fest = festival(page=PAGE, log=(entry(ROWS),))
+    fest = festival(page=KnownPage(PAGE, None), log=(entry(ROWS),))
 
     def festivals(db: Reader, today: str, only: int | None = None, *, every: bool = False) -> list[tickets.Festival]:
         return [fest]
