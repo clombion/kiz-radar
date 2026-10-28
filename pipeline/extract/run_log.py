@@ -3,7 +3,8 @@
 One row per step (the latest run of that step replaces the earlier one): what was done, when, by whom
 (a script, a model, or the human reviewer), with which model and prompts (their hashes, pipeline/prompt.py), from
 which inputs to which outputs, and the step's key numbers as JSON. Every pipeline script records its own step.
-These functions only write: the caller owns the transaction, and commits once its step is whole.
+These functions only write, into the export's tables (SCHEMA, which tests/test_steps.py holds the export to): the
+caller owns the transaction, and commits once its step is whole.
 """
 
 import datetime as dt
@@ -19,17 +20,17 @@ from pipeline.records import now
 HERE = Path(__file__).parent
 
 SCHEMA = """
-CREATE TABLE IF NOT EXISTS prompts (
+CREATE TABLE prompts (
     prompt TEXT PRIMARY KEY,      -- its hash, as pipeline_steps.prompt and the rows the prompt produced name it
     text TEXT NOT NULL            -- pipeline/prompts/asked/<prompt>.md
 );
-CREATE TABLE IF NOT EXISTS table_docs (
+CREATE TABLE table_docs (
     name TEXT PRIMARY KEY,        -- a table or view in this database
     kind TEXT NOT NULL,
     description TEXT NOT NULL,
     written_by TEXT NOT NULL      -- the script that creates the table and keeps this description
 );
-CREATE TABLE IF NOT EXISTS pipeline_steps (
+CREATE TABLE pipeline_steps (
     step TEXT PRIMARY KEY,
     description TEXT NOT NULL,
     performed_at TEXT NOT NULL,   -- ISO 8601, UTC; for a step spread over time, when it finished
@@ -41,18 +42,6 @@ CREATE TABLE IF NOT EXISTS pipeline_steps (
     details TEXT                  -- JSON: the step's key numbers and settings
 );
 """
-
-
-def ensure(con: sqlite3.Connection) -> None:
-    """Create the log's tables when they are missing, inside the caller's transaction (one statement at a time, since
-    a script would commit it)."""
-    part = ''
-    for piece in SCHEMA.split(';'):
-        part += piece + ';'
-        if sqlite3.complete_statement(part):  # a ; in a comment ends no statement
-            if part.strip(' \n;'):
-                con.execute(part)
-            part = ''
 
 
 @dataclass(frozen=True)
@@ -72,7 +61,6 @@ class Step:
 
 
 def record(con: sqlite3.Connection, s: Step) -> None:
-    ensure(con)
     _ = con.execute(
         'INSERT OR REPLACE INTO pipeline_steps VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
         (
@@ -91,13 +79,11 @@ def record(con: sqlite3.Connection, s: Step) -> None:
 
 def forget(con: sqlite3.Connection, step: str) -> None:
     """Remove a step's row: what it produced is no longer in the database."""
-    ensure(con)
     con.execute('DELETE FROM pipeline_steps WHERE step = ?', (step,))
 
 
 def record_prompt(con: sqlite3.Connection, hash_: str) -> None:
     """Store a prompt's full text, so the database says exactly what each model was told."""
-    ensure(con)
     con.execute('INSERT OR REPLACE INTO prompts VALUES (?, ?)', (hash_, prompts.asked(hash_)))
 
 
@@ -114,7 +100,6 @@ OWN_DOCS = {
 
 def document(con: sqlite3.Connection, docs: dict[str, str], written_by: str) -> None:
     """Describe the tables and views a script creates, and only those; every script documents its own."""
-    ensure(con)
     kinds = dict(con.execute("SELECT name, type FROM sqlite_master WHERE type IN ('table', 'view')"))
     for name, description in {**docs, **OWN_DOCS}.items():
         if name not in kinds:

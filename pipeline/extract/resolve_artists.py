@@ -145,10 +145,6 @@ CREATE TABLE artist_group_aliases (
     match_key TEXT NOT NULL,      -- a spelling's key whose mentions count as the group's
     PRIMARY KEY (group_key, match_key)
 );
-CREATE TABLE IF NOT EXISTS artist_ids (
-    artist_id INTEGER PRIMARY KEY,  -- every artist id ever given; never reused
-    match_key TEXT NOT NULL         -- the key it was given to
-);
 CREATE VIEW artist_events AS
     SELECT ea.artist_id, ea.event_id, ea.role, 'direct' AS via, NULL AS via_artist_id
     FROM event_artists ea
@@ -156,6 +152,11 @@ CREATE VIEW artist_events AS
     SELECT cm.member_id, ea.event_id, ea.role, 'member', ea.artist_id
     FROM event_artists ea JOIN couple_members cm ON cm.couple_id = ea.artist_id;
 """
+# the export's table of every id given, which this step only adds to (tests/test_steps.py holds the export to it)
+ARTIST_IDS = """CREATE TABLE artist_ids (
+    artist_id INTEGER PRIMARY KEY,  -- every artist id ever given; never reused
+    match_key TEXT NOT NULL         -- the key it was given to
+)"""
 # a review that could not tell (unsure) decides nothing: the pair stays a candidate, and merges.csv never holds it
 STORED = (MergeDecision.MERGE, MergeDecision.SEPARATE)
 SCHEMA = TABLES.format_map(
@@ -443,19 +444,9 @@ def record_steps(con: sqlite3.Connection, resolved: Resolved) -> None:
 def stable_ids(con: sqlite3.Connection, final_key: Mapping[str, str]) -> dict[str, int]:
     """An id for each artist (final key): its own earlier id, else the lowest earlier id of a key it absorbed that
     no artist still owns, else the next id never given."""
-    names: list[tuple[str]] = con.execute("SELECT name FROM sqlite_master WHERE type = 'table'").fetchall()
-    tables = {t for (t,) in names}
-    given: list[tuple[str, int]] = con.execute(
-        'SELECT match_key, artist_id FROM artist_ids'
-        if 'artist_ids' in tables
-        else 'SELECT match_key, id FROM artists'
-        if 'artists' in tables
-        else 'SELECT 1, 1 WHERE 0'
-    ).fetchall()
+    given: list[tuple[str, int]] = con.execute('SELECT match_key, artist_id FROM artist_ids').fetchall()
     issued = dict(given)
-    was: list[tuple[str, int]] = (
-        con.execute('SELECT match_key, artist_id FROM artist_keys').fetchall() if 'artist_keys' in tables else []
-    )
+    was: list[tuple[str, int]] = con.execute('SELECT match_key, artist_id FROM artist_keys').fetchall()
     key_was = dict(was)
     finals = sorted(set(final_key.values()))
     ids = {fk: issued[fk] for fk in finals if fk in issued}

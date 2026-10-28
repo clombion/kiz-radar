@@ -15,7 +15,7 @@ from pydantic import Field, ValidationError
 
 from pipeline import db, enums, generate, prompt, spend, states, tickets
 from pipeline.enums import AnswerState, PassKind, Style
-from pipeline.extract import answers, ask, check_output, load_extract, prices, run_log
+from pipeline.extract import answers, ask, check_output, load_extract, prices, resolve_artists, run_log
 from pipeline.extract.resolve_artists import stable_ids
 from pipeline.prompt import Prompt, api_schema
 from pipeline.records import JSON, Batch, Priced, PricedPass, PricedTier, Record, Stamped, day_of, real_day
@@ -117,16 +117,12 @@ def test_any_year_s_day_is_a_real_day() -> None:
     assert real_day('02-29') == '02-29'
 
 
-def db_with(
-    con: sqlite3.Connection, artists: dict[str, int], keys: dict[str, int], issued: dict[str, int] | None = None
-) -> sqlite3.Connection:
-    _ = con.execute('create table artists (id integer primary key, display_name, kind, match_key)')
-    _ = con.executemany('insert into artists values (?, ?, ?, ?)', [(i, k, 'person', k) for k, i in artists.items()])
+def db_with(con: sqlite3.Connection, keys: dict[str, int], issued: dict[str, int]) -> sqlite3.Connection:
+    """The export's tables stable_ids reads: each spelling's artist, and every id given."""
     _ = con.execute('create table artist_keys (match_key primary key, artist_id)')
     _ = con.executemany('insert into artist_keys values (?, ?)', keys.items())
-    if issued is not None:
-        _ = con.execute('create table artist_ids (artist_id integer primary key, match_key)')
-        _ = con.executemany('insert into artist_ids values (?, ?)', [(i, k) for k, i in issued.items()])
+    _ = con.execute(resolve_artists.ARTIST_IDS)
+    _ = con.executemany('insert into artist_ids values (?, ?)', [(i, k) for k, i in issued.items()])
     return con
 
 
@@ -137,7 +133,7 @@ def test_unchanged_artists_keep_their_ids(memory: Memory) -> None:
 
 def test_new_artist_gets_an_id_never_used(memory: Memory) -> None:
     # id 9 belonged to an artist whose festival was deleted; it is not given again
-    con = db_with(memory(), {'p:a': 7}, {'p:a': 7}, issued={'p:a': 7, 'p:gone': 9})
+    con = db_with(memory(), {'p:a': 7}, issued={'p:a': 7, 'p:gone': 9})
     assert stable_ids(con, {'p:a': 'p:a', 'p:new': 'p:new'}) == {'p:a': 7, 'p:new': 10}
 
 
@@ -148,7 +144,7 @@ def test_merged_artist_keeps_the_lowest_free_id(memory: Memory) -> None:
 
 
 def test_returning_artist_gets_its_old_id_back(memory: Memory) -> None:
-    con = db_with(memory(), {}, {}, issued={'p:a': 4})
+    con = db_with(memory(), {}, issued={'p:a': 4})
     assert stable_ids(con, {'p:a': 'p:a'}) == {'p:a': 4}
 
 
@@ -452,13 +448,13 @@ def test_the_question_asked_is_the_festival_as_its_pass_asks() -> None:
 
 def test_the_run_log_writes_inside_the_callers_transaction(memory: Memory) -> None:
     con = memory()
+    _ = con.executescript(run_log.SCHEMA)
     _ = con.execute('BEGIN')
     run_log.record(con, run_log.Step('step', 'what', 'test', details={'n': 1}))
     assert con.in_transaction
-    tables: list[tuple[str]] = con.execute("SELECT name FROM sqlite_master WHERE type = 'table'").fetchall()
-    assert {n for (n,) in tables} == {'prompts', 'table_docs', 'pipeline_steps'}
+    assert load_extract.count(con, 'SELECT count(*) FROM pipeline_steps') == 1
     con.rollback()
-    assert load_extract.count(con, 'SELECT count(*) FROM sqlite_master') == 0
+    assert load_extract.count(con, 'SELECT count(*) FROM pipeline_steps') == 0
 
 
 def test_a_load_a_check_refuses_leaves_the_database_as_it_was(memory: Memory) -> None:

@@ -78,11 +78,14 @@ def listed(fetch: Fetcher) -> list[ApiEvent]:
     return events
 
 
-def prepare(db: sqlite3.Connection) -> None:
-    _ = db.execute("""create table if not exists pending_extraction (
+# the export's table of the events the extraction steps are to read (tests/test_steps.py holds the export to it)
+PENDING = """create table pending_extraction (
         event_id integer primary key references events(id),
         reason text not null check (reason in ('new', 'description changed')),
-        since text not null)""")
+        since text not null)"""
+
+
+def describe(db: sqlite3.Connection) -> None:
     _ = db.execute("""insert or replace into table_docs values ('pending_extraction', 'table',
         'Events whose description is new or changed since the extraction steps last ran, so their line-up, features,
         rooms and genres from the description are missing or out of date.',
@@ -248,7 +251,7 @@ def finish(db: sqlite3.Connection, report: Report, events: int, gone: list[int],
 def run(src: Path, *, dry_run: bool) -> None:
     with sqlite_db.opened(src, 'ro' if dry_run else 'rw') as db:
         if not dry_run:
-            prepare(db)
+            describe(db)
         known = {r.id: r for r in sqlite_db.records(db, EventRow, f'select {", ".join(COLUMNS)} from events')}  # noqa: S608 (table and column names of ours)
         today = now().date()
         fetch = Fetcher()

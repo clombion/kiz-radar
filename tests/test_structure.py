@@ -1,5 +1,6 @@
 """The repository's Python, read as code: a function is written once, in the module the others import it from, and the
-repository's folder is found once, as pipeline.ROOT."""
+repository's folder is found once, as pipeline.ROOT; and a table of the export is the export's, which no step creates
+when it is missing."""
 
 import ast
 import collections
@@ -38,3 +39,15 @@ def test_the_repository_is_found_from_one_file() -> None:
         and n.value.attr == 'parent'
     ]
     assert climbs == []
+
+
+def test_no_step_creates_a_table_when_it_is_missing() -> None:
+    """A step that rebuilds its tables drops them first; one of the export's (tests/test_steps.py holds the export to
+    them) is there, and a create ... if not exists would make a database of another shape pass for it."""
+    found = [
+        f'{p.relative_to(ROOT)}:{n.lineno}'
+        for p in sorted((ROOT / 'pipeline').rglob('*.py'))
+        for n in ast.walk(ast.parse(p.read_text(encoding='utf-8')))
+        if isinstance(n, ast.Constant) and isinstance(n.value, str) and 'if not exists' in n.value.lower()
+    ]
+    assert found == []

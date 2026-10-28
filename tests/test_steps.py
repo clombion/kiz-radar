@@ -1,15 +1,20 @@
 """The pipeline's steps run whole on the committed kizomba-world export, each into a copy or a folder of the test's
 own: each builds what it says, and run again it changes nothing, but the time its run log says it ran."""
 
+import json
+import re
+import sqlite3
+from collections.abc import Iterable
 from pathlib import Path
 
 import pytest
 
-from pipeline import build_site_db, merge_suggestions
+from pipeline import build_site_db, merge_suggestions, scrape
 from pipeline import db as sqlite_db
-from pipeline.extract import load_extract, resolve_artists
+from pipeline.extract import load_extract, resolve_artists, run_log
 from tests import jsons
 from tests.exports import EXPORT, ROOT, column, content, copied, run, trimmed
+from tests.fakes import Memory
 
 SITE_DB = ROOT / 'docs' / 'data' / 'kiz.sqlite'
 
@@ -63,3 +68,21 @@ def test_merge_suggestions_leave_out_decided_pairs_and_keep_the_more_booked() ->
     done, _ = merge_suggestions.decided()
     assert not [r for r in rows if frozenset((r.keep_key, r.merge_key)) in done]
     assert all(r.decision == '' for r in rows)
+
+
+def tables(db: sqlite3.Connection, names: Iterable[str]) -> dict[str, str]:
+    """The create statements of these tables, as SQLite reads them: without comments, in lower case, spaced alike."""
+    found: list[tuple[str, str]] = db.execute(
+        'select name, sql from sqlite_master where name in (select value from json_each(?))', (json.dumps(list(names)),)
+    ).fetchall()
+    shaped = {n: ' '.join(re.sub(r'--[^\n]*', '', sql).lower().split()) for n, sql in found}
+    return {n: re.sub(r'\s*([(),])\s*', r'\1', sql) for n, sql in shaped.items()}
+
+
+def test_the_export_has_the_tables_the_steps_write_as_they_declare_them(memory: Memory) -> None:
+    declared = memory()
+    for ddl in (run_log.SCHEMA, scrape.PENDING, resolve_artists.ARTIST_IDS):
+        _ = declared.executescript(ddl)
+    names: list[tuple[str]] = declared.execute("select name from sqlite_master where type = 'table'").fetchall()
+    with sqlite_db.opened(EXPORT, 'ro') as db:
+        assert tables(db, [n for (n,) in names]) == tables(declared, [n for (n,) in names])
