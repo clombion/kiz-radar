@@ -10,9 +10,17 @@ import { h } from './dom.ts';
 const calm = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 // a box in a row of tabs, in px
 type Box = { left: number; top: number; width: number; height: number };
-const last = new WeakMap<HTMLElement, Box>(); // a row of tabs → where its oval is
-// a row of tabs → its oval; the slime's other shapes share its class, but only while it moves
-const ovals = new WeakMap<HTMLElement, HTMLElement>();
+// a row of tabs' oval: its goo layer, the oval, its box (null while hidden), and the shapes of a move under way
+type Oval = { goo: HTMLElement; oval: HTMLElement; at: Box | null; moving: HTMLElement[] };
+const rows = new WeakMap<HTMLElement, Oval>();
+function ovalOf(nav: HTMLElement): Oval {
+  const known = rows.get(nav);
+  if (known) return known;
+  const goo = nav.insertBefore(h('span', { class: 'goo', 'aria-hidden': 'true' }), nav.firstChild);
+  const made = { goo, oval: goo.appendChild(h('span', { class: 'pill' })), at: null, moving: [] };
+  rows.set(nav, made);
+  return made;
+}
 const box = (a: HTMLElement): Box => ({
   left: a.offsetLeft,
   top: a.offsetTop,
@@ -31,32 +39,33 @@ const SOFT = 'cubic-bezier(.45, 0, .2, 1)';
 // Put the row's oval behind its current tab: moving there, unless still (on a resize) or there was none
 export function pill(nav: HTMLElement, { still = false } = {}): void {
   const tab = nav.querySelector<HTMLElement>('a.active');
-  const goo =
-    nav.querySelector<HTMLElement>(':scope > .goo') ??
-    nav.insertBefore(h('span', { class: 'goo', 'aria-hidden': 'true' }), nav.firstChild);
-  const oval = ovals.get(nav) ?? goo.appendChild(h('span', { class: 'pill' }));
-  ovals.set(nav, oval);
+  const row = ovalOf(nav);
+  const { oval } = row;
   // a move still running gives way to this one: its shapes go, and the oval starts from where it was going
-  for (const shape of goo.querySelectorAll('.pill')) if (shape !== oval) shape.remove();
+  for (const shape of row.moving.splice(0)) shape.remove();
   for (const a of oval.getAnimations()) a.cancel();
   if (!tab || nav.hidden) {
     oval.hidden = true;
-    last.delete(nav);
+    row.at = null;
     return;
   }
-  const was = last.get(nav),
+  const was = row.at,
     to = box(tab);
-  last.set(nav, to);
+  row.at = to;
   oval.hidden = false;
   Object.assign(oval.style, px(inGoo(to)));
   if (still || !was || calm() || (was.left === to.left && was.top === to.top)) return;
-  absorb(goo, oval, inGoo(was), inGoo(to));
+  absorb(row, inGoo(was), inGoo(to));
 }
 
 const inGoo = (b: Box): Box => ({ ...b, left: b.left + PAD, top: b.top + PAD });
 
 // The slime's move from one tab's box to another's, in the goo layer's coordinates (see above)
-function absorb(goo: HTMLElement, oval: HTMLElement, was: Box, to: Box): void {
+function absorb(row: Oval, was: Box, to: Box): void {
+  const { goo, oval } = row;
+  // this move's shapes, which the next move removes if it starts before they are done
+  const moving: HTMLElement[] = [];
+  row.moving = moving;
   const time = (easing = SOFT) => ({ duration: SLIME.ms, easing });
   const dir = to.left > was.left ? 1 : -1;
   const from = was.left + was.width / 2,
@@ -79,6 +88,7 @@ function absorb(goo: HTMLElement, oval: HTMLElement, was: Box, to: Box): void {
   const part = (style: Readonly<Record<string, string>>) => {
     const e = h('span', { class: 'pill' });
     Object.assign(e.style, style);
+    moving.push(e);
     return goo.insertBefore(e, oval);
   };
   // the old oval: it leans toward the new tab, then drains away into the arm
@@ -130,9 +140,7 @@ function absorb(goo: HTMLElement, oval: HTMLElement, was: Box, to: Box): void {
   );
   // once it rests, or when the next move cancels it
   const done = () => {
-    old.remove();
-    reach.remove();
-    tip.remove();
+    for (const shape of moving.splice(0)) shape.remove();
     oval.style.transformOrigin = '';
   };
   grow.addEventListener('finish', done);

@@ -95,6 +95,9 @@ test('a move begun before the last one ends leaves the oval behind the tab it we
   pill(nav);
   goTo(1);
   goTo(0); // straight back, while the slime is still reaching out
+  // the first move's cancel event, sent with the next frame's animation updates, leaves this move's shapes
+  await new Promise((done) => requestAnimationFrame(() => requestAnimationFrame(done)));
+  expect(pills(nav)).toHaveLength(4);
   await settled();
   await expect.poll(() => pills(nav)).toHaveLength(1);
   expect(pills(nav).map((p) => p.style.left)).toEqual([`${(nav.querySelector('a')?.offsetLeft ?? 0) + 12}px`]);
