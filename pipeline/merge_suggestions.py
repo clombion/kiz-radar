@@ -24,8 +24,7 @@ from dataclasses import dataclass, field
 
 from pydantic import BaseModel
 
-from pipeline import build_site_db
-from pipeline import db as sqlite_db
+from pipeline import build_site_db, export
 from pipeline.countries import codes
 from pipeline.db import Reader
 from pipeline.enums import MergeDecision, MergeReason, Role
@@ -323,8 +322,7 @@ def suggestions(c: Reader, site: Reader) -> list[Suggestion]:
 def main() -> None:
     ap = argparse.ArgumentParser(description='List likely duplicate artists for review.')
     _ = ap.parse_args()
-    src = sqlite_db.export()
-    with sqlite_db.opened(src, 'ro') as c, build_site_db.built(src) as site:
+    with export.opened('ro') as c, build_site_db.built(export.path()) as site:
         rows = suggestions(c, site)
     Suggestion.write(rows)
     print(f'{len(rows)} suggestions in {Suggestion.FILE}')

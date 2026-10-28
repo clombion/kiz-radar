@@ -62,8 +62,7 @@ from typing import NamedTuple, Self
 import pycountry
 from pydantic import BaseModel
 
-from pipeline import data, states
-from pipeline import db as sqlite_db
+from pipeline import data, export, states
 from pipeline.countries import CODE_LENGTH, INDICATOR_A, indicator
 from pipeline.db import Reader, Transaction
 from pipeline.enums import ArtistKind, MergeDecision, MergeReason, Role
@@ -897,7 +896,7 @@ class Counted(BaseModel):
 def main() -> None:
     ap = argparse.ArgumentParser(description='Resolve artist mentions into artists, with stable ids.')
     _ = ap.parse_args()
-    with sqlite_db.opened(sqlite_db.export(), 'rw') as db, db.transaction() as con:
+    with export.opened('rw') as db, db.transaction() as con:
         mentions = con.rows(
             Mention,
             'SELECT m.id, m.event_id, m.role, m.name_as_written, m.style, m.country, e.country AS event_country'

@@ -25,7 +25,7 @@ from pathlib import Path
 
 from pydantic import BaseModel
 
-from pipeline import airports, data, enums, states
+from pipeline import airports, data, enums, export, states
 from pipeline import db as sqlite_db
 from pipeline.countries import NAMES, codes
 from pipeline.db import Reader, Transaction
@@ -922,6 +922,7 @@ def build(src: Path, out: Path) -> dict[str, object]:
     building.unlink(missing_ok=True)
     with sqlite_db.opened(building, 'rwc') as db:
         db.attach('src', src, 'ro')
+        export.current(db, 'src')
         with db.transaction() as x:
             copy_tables(x)
             artists = merge_artists(x)
@@ -956,7 +957,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description='Build docs/data/kiz.sqlite and site.json, which the site loads.')
     _ = ap.parse_args()
     out = data(OUT)
-    site = build(sqlite_db.export(), out)
+    site = build(export.path(), out)
     _ = data(SITE_JSON).write_text(json.dumps(site, ensure_ascii=False, indent=1), encoding='utf-8')
     print(OUT, out.stat().st_size // 1024, 'KB')
 

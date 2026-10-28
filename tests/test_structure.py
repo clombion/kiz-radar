@@ -1,7 +1,7 @@
 """The repository's Python, read as code: a function is written once, in the module the others import it from; the
 repository's folder is found once, as pipeline.ROOT, and a step finds its data through pipeline.data(); and a table of
 the export is the export's, which no step creates when it is missing. The Actions take their tools from mise.toml, and
-the steps their export from db.export."""
+the steps their export from pipeline/export.py, at its schema's version."""
 
 import ast
 import collections
@@ -81,15 +81,27 @@ def test_the_actions_take_their_tools_from_mise() -> None:
     assert found == []
 
 
-def test_only_db_looks_for_the_export() -> None:
-    """source/ holds one export, which db.export finds; a step that looked for one itself could read another."""
+def test_only_export_looks_for_the_export() -> None:
+    """source/ holds one export, which export.path finds; a step that looked for one itself could read another."""
     looks = re.compile(r"source/\*\.sqlite|glob\('\*\.sqlite'\)")
     found = [
         f'{p.relative_to(ROOT)}'
         for p in sorted(
             [*(ROOT / 'pipeline').rglob('*.py'), *(ROOT / 'tests').rglob('*.py'), *(ROOT / '.github').rglob('*.yml')]
         )
-        if p not in {ROOT / 'pipeline' / 'db.py', Path(__file__)} and looks.search(p.read_text(encoding='utf-8'))
+        if p not in {ROOT / 'pipeline' / 'export.py', Path(__file__)} and looks.search(p.read_text(encoding='utf-8'))
+    ]
+    assert found == []
+
+
+def test_a_step_opens_the_export_at_its_version() -> None:
+    """A step opens the export with export.opened, which migrates it or refuses another version; a database is opened
+    by file only where it is made (the site's, whose build refuses an export of another version)."""
+    opens = re.compile(r'\bsqlite_db\.opened\(')
+    found = [
+        f'{p.relative_to(ROOT)}'
+        for p in sorted((ROOT / 'pipeline').rglob('*.py'))
+        if p.name not in {'db.py', 'export.py', 'build_site_db.py'} and opens.search(p.read_text(encoding='utf-8'))
     ]
     assert found == []
 

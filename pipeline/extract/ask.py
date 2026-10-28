@@ -31,8 +31,8 @@ import anthropic
 from anthropic.types import Message, MessageParam, OutputConfigParam, TextBlock
 
 from pipeline import db as sqlite_db
+from pipeline import export, spend
 from pipeline import prompt as prompts
-from pipeline import spend
 from pipeline.enums import AnswerState, Style
 from pipeline.extract import answers, check_output, prices
 from pipeline.prompt import Pass, Prompt
@@ -265,7 +265,7 @@ def main() -> None:
     _ = ap.add_argument('--only', type=sqlite_db.festival_ids, help='only these festivals, by id: "16909,18806"')
     a = ap.parse_args(namespace=Args())
 
-    with sqlite_db.opened(sqlite_db.export(), 'rw') as db:  # festivals leave its pending_extraction once answered
+    with export.opened('rw') as db:  # festivals leave its pending_extraction once answered
         todo, pending = due(db, a.passes, a.only)
         if a.limit:
             keep = sorted({f.id for f, _ in todo})[: a.limit]

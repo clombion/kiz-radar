@@ -84,8 +84,8 @@ def test_merge_suggestions_leave_out_decided_pairs_and_keep_the_more_booked(site
 UNDEFERRED = re.compile(
     r'\breferences\s+"?\w++"?+(?:\s*\([^)]*\))?+(?!\s*deferrable initially deferred)', re.IGNORECASE
 )
-# the source's own tables, made as kizomba-world made them: scrape declares no DDL for them yet
-SOURCE_MADE = {'event_categories', 'event_tags', 'event_links', 'event_images'}
+# the source's own tables, as kizomba-world made them (scrape.SCHEMA)
+SOURCE_MADE = {'event_categories', 'event_tags', 'event_links'}
 
 
 def test_every_reference_is_held_at_commit(site_db: Path) -> None:
@@ -116,6 +116,7 @@ def test_the_export_has_the_tables_the_steps_write_as_they_declare_them(memory: 
     with declared.transaction() as tx:
         for ddl in (
             run_log.SCHEMA,
+            scrape.SCHEMA,
             scrape.PENDING,
             resolve_artists.ARTIST_IDS,
             resolve_artists.SCHEMA,

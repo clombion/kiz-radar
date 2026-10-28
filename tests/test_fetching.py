@@ -9,7 +9,7 @@ from pathlib import Path
 
 import pytest
 
-from pipeline import data, geocode, rates, scrape, web
+from pipeline import data, export, geocode, rates, scrape, web
 from pipeline import db as sqlite_db
 from pipeline.records import JSON, Place, Rate, Spot, today
 from tests import jsons
@@ -81,7 +81,7 @@ class Nominatim:
 
 def source_with(places: list[tuple[str | None, str | None]]) -> Path:
     """An export in the test's data folder holding festivals in these places."""
-    path = data(sqlite_db.SOURCE) / 'source.sqlite'
+    path = data(export.SOURCE) / 'source.sqlite'
     path.parent.mkdir(parents=True)
     with sqlite_db.opened(path, 'rwc') as con, shaped(con).transaction() as tx:
         for i, (city, country) in enumerate(places):
@@ -132,7 +132,6 @@ def test_a_place_nominatim_fails_on_is_left_for_the_next_run(tmp_path: Path, mon
 @dataclass(frozen=True)
 class Served:
     content: bytes
-    headers: dict[str, str] = field(default_factory=dict[str, str])
 
     @property
     def text(self) -> str:
@@ -145,7 +144,7 @@ NEW = API | {'image': {'url': POSTER}}  # a festival the export doesn't have yet
 
 @dataclass
 class Site:
-    """kizomba-world as the fake serves it: its event list, each event's page, and the posters; what it was asked."""
+    """kizomba-world as the fake serves it: its event list and each event's page; what it was asked."""
 
     listed: Sequence[Mapping[str, object]]
     asked: list[str] = field(default_factory=list[str])
@@ -154,8 +153,6 @@ class Site:
         self.asked.append(url)
         if url.startswith(f'{scrape.SITE}/wp-json/'):
             return Served(json.dumps({'events': self.listed, 'next_rest_url': None}).encode())
-        if url == POSTER:
-            return Served(b'\xff\xd8jpeg', {'content-type': 'image/jpeg'})
         return Served(PAGE.encode())
 
 
@@ -175,31 +172,30 @@ def test_a_refresh_adds_the_new_festivals_and_deletes_the_gone_with_their_rows(
 ) -> None:
     src = trimmed(1)
     [gone] = ids(src)
-    site(monkeypatch, [NEW])
+    served = site(monkeypatch, [NEW])
     run(scrape.main, monkeypatch)
     assert ids(src) == {17001}
+    assert POSTER not in served.asked  # where its poster is, which nothing downloads
     with sqlite_db.opened(src, 'ro') as db:
         for t in scrape.event_tables(db):
             assert gone not in db.column(int, f'select event_id from {sqlite_db.name(t)}'), t  # noqa: S608 (the database's own names, quoted)
         assert db.column(str, 'select reason from pending_extraction where event_id = 17001') == ['new']
-        assert db.column(bytes, 'select data from event_images where event_id = 17001') == [b'\xff\xd8jpeg']
-        assert db.column(int, 'select size_bytes from event_images where event_id = 17001') == [6]
+        assert db.column(str, 'select image_url from events where id = 17001') == [POSTER]
         links = set(db.column(str, 'select url from event_links where event_id = 17001'))
         assert links == {'https://www.facebook.com/events/1', 'https://www.instagram.com/x'}
         tags = set(db.column(str, 'select tag from event_tags where event_id = 17001'))
         assert tags == {'All in One', 'Zouk'}
         logged = db.value(str, "select details from pipeline_steps where step = '1_scrape'")
     details = JSON.validate_json(logged)
-    assert [jsons.at(details, k) for k in ('new', 'deleted', 'posters_downloaded')] == [1, 1, 1]
+    assert [jsons.at(details, k) for k in ('new', 'deleted')] == [1, 1]
 
 
 def test_a_dry_run_reads_the_site_and_writes_nothing(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     src = trimmed(1)
     before = content(src)
-    served = site(monkeypatch, [NEW])
+    site(monkeypatch, [NEW])
     run(scrape.main, monkeypatch, '--dry-run')
     assert content(src) == before
-    assert POSTER not in served.asked  # nor downloads a poster
 
 
 def test_a_list_far_shorter_than_before_stops_before_deleting(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:

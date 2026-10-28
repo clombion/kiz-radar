@@ -12,12 +12,12 @@ import pytest
 from pydantic import BaseModel
 
 import pipeline
-from pipeline import ROOT, prompt, tickets
+from pipeline import ROOT, export, prompt, tickets
 from pipeline import db as sqlite_db
 from pipeline.db import Transaction
 from pipeline.records import ANSWERS, CsvRow
 
-EXPORT = sqlite_db.export_in(ROOT / sqlite_db.SOURCE)  # the repository's, whatever the data folder
+EXPORT = export.path_in(ROOT / export.SOURCE)  # the repository's, whatever the data folder
 # when a step ran, which a second run changes and nothing else should: read without it (a column, or the rows a
 # where clause leaves out)
 WHEN_COLUMNS = {'pipeline_steps': 'performed_at'}
@@ -48,9 +48,11 @@ def schema() -> str:
 
 
 def shaped(db: sqlite_db.Db) -> sqlite_db.Db:
-    """The database with the export's tables, empty, for a test to put the rows it reads in."""
+    """The database with the export's tables, empty, at the export's version, for a test to put the rows it reads
+    in."""
     with db.transaction() as tx:
         tx.script(schema())
+        tx.execute(f'pragma user_version = {len(export.MIGRATIONS)}')
     return db
 
 
@@ -103,8 +105,8 @@ def content(path: Path) -> dict[str, list[str]]:
 
 def copied() -> Path:
     """The export, copied into the test's data folder, where the steps open it."""
-    committed(f'{sqlite_db.SOURCE}/{EXPORT.name}')
-    return sqlite_db.export()
+    committed(f'{export.SOURCE}/{EXPORT.name}')
+    return export.path()
 
 
 def trimmed(festivals: int) -> Path:

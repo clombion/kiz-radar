@@ -32,8 +32,7 @@ from typing import NamedTuple
 
 from pydantic import BaseModel, ConfigDict, ValidationError
 
-from pipeline import airports, build_site_db
-from pipeline import db as sqlite_db
+from pipeline import airports, build_site_db, export
 from pipeline.enums import FareSearch
 from pipeline.records import Date, Fare, Job, Record, now
 
@@ -109,7 +108,7 @@ class Flown(Record):
 def weekends(today: dt.date) -> set[tuple[str, dt.date]]:
     """(airport, Friday) of every upcoming, not cancelled festival with an airport other than home, from the site DB
     built for it from the export."""
-    with build_site_db.built(sqlite_db.export()) as c:
+    with build_site_db.built(export.path()) as c:
         query = """select airport, weekend_friday from events where airport is not null and airport != ?
             and cancelled is not 1 and weekend_friday > ?"""
         return {(w.airport, w.weekend_friday) for w in c.rows(Flown, query, (airports.home(), today))}

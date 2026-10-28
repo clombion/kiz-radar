@@ -42,8 +42,8 @@ from typing import NamedTuple
 from pydantic import BaseModel
 
 from pipeline import db as sqlite_db
+from pipeline import export, states
 from pipeline import prompt as prompts
-from pipeline import states
 from pipeline.db import Reader, Transaction
 from pipeline.enums import Genre, Sales
 from pipeline.extract import answers, run_log
@@ -708,7 +708,7 @@ def load_extracted(con: Transaction, got: Mapping[int, Answer[Extracted]]) -> No
 def main() -> None:
     ap = argparse.ArgumentParser(description='Load the saved answers of the extraction passes into the source DB.')
     _ = ap.parse_args()
-    with sqlite_db.opened(sqlite_db.export(), 'rw') as db, db.transaction() as con:
+    with export.opened('rw') as db, db.transaction() as con:
         event_ids = set(con.column(int, 'SELECT id FROM events'))
         extract, stale_extract = current(prompts.EXTRACT, event_ids)
         rooms_genres, stale_rooms = current(prompts.ROOMS_GENRES, event_ids)

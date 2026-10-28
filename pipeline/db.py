@@ -6,23 +6,18 @@ with its block. Every connection holds its tables to their foreign keys, refuses
 would read it as a column name, or as text when no column has it), and is in autocommit: a write happens only inside
 a transaction (Db.transaction), which commits when its block ends and is rolled back when the block raises. A row is
 read as a record (Db.rows), each column by its name, so no row is read by position. A day or a time is written as the
-text records read (2026-10-27, 2026-10-27T17:38:51+00:00).
-
-export() is the kizomba-world export the steps work on, the one file of the data folder's source/, which every step
-opens itself (python -m pipeline.db prints its path)."""
+text records read (2026-10-27, 2026-10-27T17:38:51+00:00). The export the steps work on is opened through
+pipeline/export.py."""
 
 import argparse
 import datetime as dt
 import sqlite3
-import sys
 from collections.abc import Generator, Iterable, Mapping, Sequence
 from contextlib import contextmanager
 from pathlib import Path
 from typing import Literal
 
 from pydantic import BaseModel, TypeAdapter
-
-from pipeline import data
 
 sqlite3.register_adapter(dt.date, dt.date.isoformat)
 sqlite3.register_adapter(dt.datetime, dt.datetime.isoformat)
@@ -203,30 +198,3 @@ def festival_ids(text: str) -> set[int]:
         return {int(i) for i in text.split(',') if i.strip()}
     except ValueError as e:
         raise argparse.ArgumentTypeError(f'{text}: festival ids, separated by commas') from e
-
-
-SOURCE = 'source'  # the kizomba-world export, and the steps' tables in it
-
-
-def export() -> Path:
-    """The kizomba-world export of the data folder."""
-    return export_in(data(SOURCE))
-
-
-def export_in(folder: Path) -> Path:
-    """The export in a folder: it holds one, which the Refresh events Action replaces in place. Two would leave which
-    one the steps read to chance (a checkout gives every file the same time), so they are an error."""
-    found = sorted(folder.glob('*.sqlite'))
-    if len(found) != 1:
-        sys.exit(f'source/ holds {len(found)} exports ({", ".join(p.name for p in found)}): it holds one')
-    return found[0]
-
-
-def main() -> None:
-    ap = argparse.ArgumentParser(description='Print the path of the kizomba-world export the steps work on.')
-    _ = ap.parse_args()
-    print(f'{SOURCE}/{export().name}')
-
-
-if __name__ == '__main__':
-    main()

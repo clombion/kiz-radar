@@ -16,7 +16,7 @@ from typing import Annotated
 import pytest
 from pydantic import BaseModel, Field, ValidationError
 
-from pipeline import data, db, enums, generate, prompt, spend, states, tickets
+from pipeline import data, db, enums, export, generate, prompt, spend, states, tickets
 from pipeline.db import Db, Transaction
 from pipeline.enums import AnswerState, MergeReason, PassKind, Role, Style
 from pipeline.extract import answers, ask, check_output, load_extract, prices, resolve_artists, run_log
@@ -747,7 +747,7 @@ def answered_here() -> Path:
 
 def source_file() -> Path:
     """An export in the test's data folder holding FEST, pending extraction."""
-    path = data(db.SOURCE) / 'source.sqlite'
+    path = data(export.SOURCE) / 'source.sqlite'
     path.parent.mkdir(parents=True)
     with db.opened(path, 'rwc') as con, shaped(con).transaction() as tx:
         festival(

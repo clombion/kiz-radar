@@ -8,15 +8,14 @@ address, city, country, the deal link, the organiser's links, the translations a
 Pages are fetched for new and changed events and for every event still to come: a deal link can change
 without changing the event's modified date,
      and a cancellation might too. Events the site no longer lists are deleted with everything that refers
-to them. New festivals get their poster; their line-up and features wait for the extraction steps, and the
-events whose description is new or changed since then are listed in pending_extraction.
+to them. A new festival's line-up and features wait for the extraction steps, and the events whose description is
+new or changed since then are listed in pending_extraction.
 
 kizomba-world publishes its listings under CC BY-SA 4.0. Requests are spaced a few seconds apart.
 """
 
 import argparse
 import datetime as dt
-import json
 import sys
 import time
 from dataclasses import dataclass, field
@@ -26,8 +25,9 @@ from curl_cffi import requests
 from curl_cffi.requests import Response
 
 from pipeline import db as sqlite_db
-from pipeline import states
+from pipeline import export, states
 from pipeline.db import Reader, Transaction
+from pipeline.extract import run_log
 from pipeline.kizomba_world import ApiEvent, ApiPage, Listed, Paged, api_fields, page_fields
 from pipeline.records import day_of, now
 
@@ -79,6 +79,66 @@ def listed(fetch: Fetcher) -> list[ApiEvent]:
     return events
 
 
+STEP = (
+    f'Collect kizomba-world.com events dated {FIRST_DAY.day} {FIRST_DAY:%B %Y} to the end of next year: the event '
+    "list from The Events Calendar REST API, then each new, changed or upcoming event's page for the fields the API "
+    'lacks (venue, address, city, country, deal link, related links, translations, the cancelled flag), fetched as a '
+    "browser would (curl_cffi), since the site's Cloudflare protection refuses other clients."
+)
+
+# the export's tables of the site's events, as kizomba-world's own export made them (tests/test_steps.py holds the
+# export to them)
+SCHEMA = """
+create table events (
+    id integer primary key,
+    title text not null,
+    url text not null unique,
+    slug text,
+    start_date text not null,
+    end_date text,
+    start_date_utc text,
+    end_date_utc text,
+    timezone text,
+    all_day integer not null,
+    featured integer not null,
+    sticky integer not null,
+    cancelled integer,            -- 1/0 for events in the upcoming listing; NULL = unknown (past events)
+    venue text,
+    address text,
+    city text,
+    country text,
+    deal_text text,
+    deal_url text,
+    website text,
+    image_url text,
+    description_text text,
+    description_html text,
+    url_fr text,
+    url_es text,
+    url_pt text,
+    published_at text,
+    modified_at text,
+    page_fetched integer not null  -- 0 when the event page could not be fetched
+);
+create table event_categories (
+    event_id integer not null references events(id),
+    category text not null,
+    primary key (event_id, category)
+);
+create table event_tags (
+    event_id integer not null references events(id),
+    tag text not null,
+    primary key (event_id, tag)
+);
+create table event_links (
+    event_id integer not null references events(id),
+    url text not null,
+    primary key (event_id, url)
+);
+create index events_start on events(start_date);
+create index events_country on events(country);
+"""
+
 # the export's table of the events the extraction steps are to read (tests/test_steps.py holds the export to it)
 PENDING = """create table pending_extraction (
         event_id integer primary key references events(id) deferrable initially deferred,
@@ -127,26 +187,6 @@ def write_event(db: Transaction, row: EventRow, categories: list[str], tags: lis
         "insert into event_features (event_id, feature, source) values (?, ?, 'site_tag')",
         sorted({(i, states.TAG_FEATURES[t]) for t in tags if t in states.TAG_FEATURES}),
     )
-
-
-def write_poster(db: Transaction, fetch: Fetcher, row: EventRow) -> bool:
-    """Download the event's poster when it has a new one; whether it did."""
-    posters = db.column(str, 'select url from event_images where event_id = ?', (row.id,))
-    if not row.image_url or (posters and posters[0] == row.image_url):
-        return False
-    img = fetch.get(row.image_url)
-    db.upsert(
-        'event_images',
-        ['event_id'],
-        {
-            'event_id': row.id,
-            'url': row.image_url,
-            'mime_type': img.headers.get('content-type', 'image/jpeg'),
-            'size_bytes': len(img.content),
-            'data': img.content,
-        },
-    )
-    return True
 
 
 @dataclass(frozen=True)
@@ -210,9 +250,9 @@ class Report:
         print('changed fields:', dict(sorted(self.differs.items(), key=lambda kv: -kv[1])))
 
 
-def write(db: Transaction, fetch: Fetcher, r: Refreshed, today: dt.date) -> bool:
-    """The event's row, tags, links and poster; whether it downloaded a poster. An event whose description is new or
-    changed waits for the extraction steps."""
+def write(db: Transaction, r: Refreshed, today: dt.date) -> None:
+    """The event's row, tags and links. An event whose description is new or changed waits for the extraction
+    steps."""
     write_event(db, r.row, r.categories, r.tags)
     i = r.row.id
     if r.links is not None:
@@ -225,10 +265,9 @@ def write(db: Transaction, fetch: Fetcher, r: Refreshed, today: dt.date) -> bool
             'on conflict (event_id) do update set since = excluded.since',
             (i, 'new' if r.old is None else 'description changed', today),
         )
-    return write_poster(db, fetch, r.row)
 
 
-def finish(db: Transaction, report: Report, events: int, gone: list[int], posters: int) -> None:
+def finish(db: Transaction, report: Report, events: int, gone: list[int]) -> None:
     """Delete the events the site no longer lists, with everything that refers to them, and log the step."""
     for t in event_tables(db):
         db.executemany(f'delete from {sqlite_db.name(t)} where event_id = ?', [(i,) for i in gone])  # noqa: S608 (the database's own table names, quoted)
@@ -238,25 +277,25 @@ def finish(db: Transaction, report: Report, events: int, gone: list[int], poster
         'new': len(report.added),
         'changed': len(report.changed),
         'deleted': len(gone),
-        'posters_downloaded': posters,
         'pending_extraction': db.value(int, 'select count(*) from pending_extraction'),
     }
-    db.execute(
-        """update pipeline_steps set performed_at = ?, performed_by = 'pipeline/scrape.py (curl_cffi)',
-        inputs = ?, outputs = 'tables events, event_categories, event_tags, event_links, event_images,
-        pending_extraction; event_genres and event_features (source site_tag)',
-        details = ? where step = '1_scrape'""",
-        (
-            now(),
-            f'{SITE}/wp-json/tribe/events/v1/events from {FIRST_DAY}; each new, changed or upcoming event page',
-            json.dumps(details),
+    run_log.record(
+        db,
+        run_log.Step(
+            '1_scrape',
+            STEP,
+            performed_by='pipeline/scrape.py (curl_cffi)',
+            inputs=f'{SITE}/wp-json/tribe/events/v1/events from {FIRST_DAY}; each new, changed or upcoming event page',
+            outputs='tables events, event_categories, event_tags, event_links, pending_extraction; event_genres and '
+            'event_features (source site_tag)',
+            details=details,
         ),
     )
     print(details)
 
 
 def run(src: Path, *, dry_run: bool) -> None:
-    with sqlite_db.opened(src, 'ro' if dry_run else 'rw') as db:
+    with export.opened('ro' if dry_run else 'rw', src) as db:
         known = {r.id: r for r in db.rows(EventRow, f'select {", ".join(map(sqlite_db.name, COLUMNS))} from events')}  # noqa: S608 (the record's own column names, quoted)
         today = now().date()
         fetch = Fetcher()
@@ -264,19 +303,19 @@ def run(src: Path, *, dry_run: bool) -> None:
         print(f'{len(events)} events listed; {len(known)} in the source DB')
         if len(events) < LISTED_SHARE * sum(1 for e in known.values() if day_of(e.start_date) >= FIRST_DAY):
             sys.exit('the site lists far fewer events than before; stopping instead of deleting them')
-        report, posters = Report(), 0
+        report = Report()
         for listing in events:
             r = refreshed(fetch, listing, known.get(listing[0].id), today)
             report.note(r)
             if not dry_run:
                 with db.transaction() as tx:  # each event apart: the crawl takes no lock but while it writes one
-                    posters += write(tx, fetch, r, today)
+                    write(tx, r, today)
         gone = sorted(set(known) - {e.id for e, _, _ in events})
         report.show([known[i].title for i in gone])
         if not dry_run:
             with db.transaction() as tx:
                 describe(tx)
-                finish(tx, report, len(events), gone, posters)
+                finish(tx, report, len(events), gone)
 
 
 class Args(argparse.Namespace):
@@ -287,7 +326,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description='Refresh the events in the source DB from kizomba-world.com.')
     _ = ap.add_argument('--dry-run', action='store_true', help='fetch and report the changes without writing')
     a = ap.parse_args(namespace=Args())
-    run(sqlite_db.export(), dry_run=a.dry_run)
+    run(export.path(), dry_run=a.dry_run)
 
 
 if __name__ == '__main__':

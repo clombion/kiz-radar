@@ -10,8 +10,7 @@ import time
 
 from pydantic import BaseModel, ConfigDict, TypeAdapter, ValidationError
 
-from pipeline import db as sqlite_db
-from pipeline import web
+from pipeline import export, web
 from pipeline.records import Place, Spot
 
 SEARCH = web.Https('nominatim.openstreetmap.org', '/search')
@@ -55,7 +54,7 @@ class Located(BaseModel):
 def main() -> None:
     ap = argparse.ArgumentParser(description="Geocode the source DB's cities with OpenStreetMap Nominatim.")
     _ = ap.parse_args()
-    with sqlite_db.opened(sqlite_db.export(), 'ro') as db:
+    with export.opened('ro') as db:
         known = {(p.city, p.country): p for p in Place.read()}
         # a country alone is no place on the map; one the export leaves empty is none
         places = db.rows(Located, "select distinct city, nullif(country, '') as country from events where city != ''")

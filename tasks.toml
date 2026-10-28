@@ -14,7 +14,7 @@ run = "uv run -m pipeline.build_site_db"
 
 [export]
 description = "The path of the kizomba-world export the steps work on"
-run = "uv run -q -m pipeline.db"
+run = "uv run -q -m pipeline.export"
 
 [scrape]
 description = "Refresh the export's events from kizomba-world.com"

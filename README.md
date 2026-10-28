@@ -437,11 +437,11 @@ each run, with no network socket and a time limit per test; `mise run test:py` a
 `pyproject.toml` sets. A database connection is opened only by `pipeline/db.py`, closed when its block ends, the tests'
 too. A day is a date and a time a UTC datetime, read from one clock (`records.now()`, `today()`; ruff bans the others).
 `tests/test_structure.py` fails on a function written twice, on the repository's folder found anywhere but
-`pipeline.ROOT`, on an Action that sets up a tool mise doesn't give it, on a look for the export but `db.export()`'s, on
-a task in `mise.toml`, and on a built file (the site's code, database or summary) committed or read anywhere but from
-its build. jscpd fails on a block of 20 tokens written twice anywhere in the code, the tests, the stylesheet or the
-Actions (`.jscpd.json`), and `lock:py` on a `uv.lock` that is not what `pyproject.toml` resolves to. The audit checks
-that every state in the data is one of `pipeline/states.py`.
+`pipeline.ROOT`, on an Action that sets up a tool mise doesn't give it, on a look for the export but `export.path()`'s,
+on the export opened but at its schema's version, on a task in `mise.toml`, and on a built file (the site's code,
+database or summary) committed or read anywhere but from its build. jscpd fails on a block of 20 tokens written twice
+anywhere in the code, the tests, the stylesheet or the Actions (`.jscpd.json`), and `lock:py` on a `uv.lock` that is not
+what `pyproject.toml` resolves to. The audit checks that every state in the data is one of `pipeline/states.py`.
 
 The database enforces its own rules. Dates are days, required fields are set, and `cancelled` is 1, 0 or empty. Empty
 means not known: the source flags it only for events still listed as upcoming, so most past festivals have none. As a

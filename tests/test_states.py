@@ -257,6 +257,7 @@ LITERALS = {
     frozenset({'extract', 'rooms_genres', 'prices'}),  # the extraction passes, prompt.PassName
     frozenset({'first_read'}),  # the prompt that is no pass, prompt.Name
     frozenset({'ro', 'rw', 'rwc'}),  # SQLite's open modes, db.opened
+    frozenset({'ro', 'rw'}),  # the export's, which no step creates, export.opened
 }
 
 

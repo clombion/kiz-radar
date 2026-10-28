@@ -73,7 +73,7 @@ from urllib.parse import urlparse
 import anthropic
 from pydantic import TypeAdapter, ValidationError
 
-from pipeline import data, exceptions, spend, states
+from pipeline import data, exceptions, export, spend, states
 from pipeline import db as sqlite_db
 from pipeline import prompt as prompts
 from pipeline.enums import FirstRead as FirstReadState
@@ -852,8 +852,8 @@ def recheck(tiers: Sequence[PriceRow], start: dt.date, today: dt.date) -> tuple[
 
 
 def src_db() -> AbstractContextManager[sqlite_db.Db]:
-    """The kizomba-world export (db.export), to read, closed with its block."""
-    return sqlite_db.opened(sqlite_db.export(), 'ro')
+    """The kizomba-world export, to read, closed with its block."""
+    return export.opened('ro')
 
 
 def host(url: str) -> str:
