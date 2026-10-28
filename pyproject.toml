@@ -23,6 +23,7 @@ dev = [
     "basedpyright==1.40.2",
     "mdformat==1.0.0",
     "mdformat-gfm==1.0.0",
+    "prek==0.5.7",              # the git hooks (prek.toml)
     {include-group = "tickets"},
     {include-group = "artists"},
 ]

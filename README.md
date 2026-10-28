@@ -398,7 +398,12 @@ mise run check        # everything
 mise run check:fast   # the quick part: lint, format, types, the site's tests, the generated files
 mise tasks            # each check on its own: lint:py, format:py, format:md, types:py, test:py, lint:site, types:site,
                       # knip, test:site, audit
+mise run hooks        # once per clone: the git hooks of prek.toml
 ```
+
+The hooks (prek, pinned in `uv.lock`) run `mise run check:fast` before a commit and `mise run check` before a push, on
+what is staged: prek sets the rest aside while they run, and the push hook refuses while something staged is not yet
+committed, since that, and not the commit pushed, is what it would check.
 
 The Python code is held to every ruff rule but the few `pyproject.toml` ignores, each with its reason, and to
 basedpyright's strict mode with `Any` an error: what comes from outside (an answer, a page, a CSV) is parsed into a
