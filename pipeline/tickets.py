@@ -1,15 +1,15 @@
 """Prices from festivals' ticket pages: judgment once, then code.
 
-    uv run --group tickets -m pipeline.tickets todo           # what needs doing
-    uv run --group tickets -m pipeline.tickets read ID [--url U]  # read the page by its recipe, log the rows
-    uv run --group tickets -m pipeline.tickets draft ID       # a first read to fill (tickets/drafts/ID.json)
-    uv run --group tickets -m pipeline.tickets check ID       # what record would find wrong, writing nothing
-    uv run --group tickets -m pipeline.tickets record ID      # check the draft or first read, write ID's prices
-    uv run --group tickets -m pipeline.tickets retry ID       # read with a visible browser, then record
-    uv run --group tickets -m pipeline.tickets changes [ID]   # what changed between consecutive reads
-    uv run --group tickets -m pipeline.tickets page ID URL --note N  # where a festival with no known page sells
-    uv run --group tickets -m pipeline.tickets page ID --state S --note N  # or not_yet, offline, closed, none_found
-    uv run --group tickets -m pipeline.tickets run            # the monthly Action
+    mise run tickets -- todo           # what needs doing
+    mise run tickets -- read ID [--url U]  # read the page by its recipe, log the rows
+    mise run tickets -- draft ID       # a first read to fill (tickets/drafts/ID.json)
+    mise run tickets -- check ID       # what record would find wrong, writing nothing
+    mise run tickets -- record ID      # check the draft or first read, write ID's prices
+    mise run tickets -- retry ID       # read with a visible browser, then record
+    mise run tickets -- changes [ID]   # what changed between consecutive reads
+    mise run tickets -- page ID URL --note N  # where a festival with no known page sells
+    mise run tickets -- page ID --state S --note N  # or not_yet, offline, closed, none_found
+    mise run tickets -- run            # the monthly Action
 
 A site recipe (tickets/sites/<site>.json, a records.Recipe) says where a site's ticket rows are; an
 agent writes one per site. read applies it in a browser (read_page.rows) and appends one entry per attempt to
@@ -1279,11 +1279,7 @@ def cmd_read(db: sqlite3.Connection, event_id: int, url: str | None = None, *, v
     if isinstance(entry, Failed):
         sys.exit(
             f'{event_id}: {entry.status}: {entry.why}'
-            + (
-                f'; try: uv run --group tickets -m pipeline.tickets retry {event_id}'
-                if entry.status == Status.REFUSED
-                else ''
-            )
+            + (f'; try: mise run tickets -- retry {event_id}' if entry.status == Status.REFUSED else '')
         )
     print(f'{event_id}: {len(entry.rows)} tickets read at {entry.at.isoformat()} from {entry.url}')
     for r in entry.rows:
@@ -1295,7 +1291,7 @@ def cmd_draft(db: sqlite3.Connection, event_id: int) -> None:
     if path.exists():
         sys.exit(f'{shown(path)} exists; delete it to start the draft again')
     if not (entry := latest_read(f.log)):
-        sys.exit(f'{event_id}: no read rows yet; run: uv run --group tickets -m pipeline.tickets read {event_id}')
+        sys.exit(f'{event_id}: no read rows yet; run: mise run tickets -- read {event_id}')
     save_draft(draft_of(f, entry, 'agent'))
     asked = data(DRAFTS) / f'{event_id}.prompt.md'
     _ = asked.write_text(
@@ -1305,7 +1301,7 @@ def cmd_draft(db: sqlite3.Connection, event_id: int) -> None:
     print(
         f'Fill passes, skipped and rule_quotes in {shown(path)} following {shown(asked)}, the prompt the models '
         f'answer, with the festival and the tickets of the read at {entry.at.isoformat()}; '
-        f'then run: uv run --group tickets -m pipeline.tickets record {event_id}'
+        f'then run: mise run tickets -- record {event_id}'
     )
 
 
@@ -1331,10 +1327,7 @@ def cmd_record(db: sqlite3.Connection, event_id: int) -> None:
     if found := record(event_id):
         sys.exit('\n'.join(found))
     _ = status(db)
-    print(
-        'Then: uv run -m pipeline.extract.load_extract, uv run --group artists -m pipeline.extract.resolve_artists and '
-        'uv run -m pipeline.build_site_db on the export (python -m pipeline.db names it)'
-    )
+    print('Then: mise run load, mise run resolve and mise run build:data')
 
 
 def todo_notes(f: Festival, today: dt.date) -> list[str]:
@@ -1346,11 +1339,7 @@ def todo_notes(f: Festival, today: dt.date) -> list[str]:
         if (n := failures(f.log)) and isinstance(last := f.log[-1], Failed):
             notes.append(
                 f'{n} failed reads in a row ({last.status}: {last.why})'
-                + (
-                    f'; read it in a session: uv run --group tickets -m pipeline.tickets retry {f.id}'
-                    if n >= REFUSALS
-                    else ''
-                )
+                + (f'; read it in a session: mise run tickets -- retry {f.id}' if n >= REFUSALS else '')
             )
     if f.needs_read:
         w = waiting(f)

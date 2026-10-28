@@ -123,7 +123,7 @@ Each weekend has its own weekday, so each day's run checks about a seventh of th
 by twice its interval, doesn't wait for its day. Past weekends and weekends no festival uses any more leave
 `docs/data/fares.csv` and `pipeline/fare_jobs.csv`. A weekend with no price on Google is noted and tried again at its
 next interval. If Google refuses a search, the run keeps what it found and is marked failed. A festival's airport is the
-nearest one in `pipeline/airports.csv` within 250 km. To see what is due today, run `uv run -m pipeline.fares plan`.
+nearest one in `pipeline/airports.csv` within 250 km. To see what is due today, run `mise run fares -- plan`.
 
 ## Duplicate artists
 
@@ -231,15 +231,15 @@ A festival in `ticket_pages.csv` takes its passes from its page in place of its 
 `ticket_page`), and the quick view says when the page was read.
 
 ```bash
-uv run --group tickets -m pipeline.tickets todo               # what needs doing
-uv run --group tickets -m pipeline.tickets read ID [--url U]  # read the page by its site's recipe and log the rows
-uv run --group tickets -m pipeline.tickets draft ID           # a first read to fill, from the latest rows
-uv run --group tickets -m pipeline.tickets check ID           # what record would find wrong, writing nothing
-uv run --group tickets -m pipeline.tickets record ID          # check the draft or first read, write the prices
-uv run --group tickets -m pipeline.tickets retry ID           # read with a visible browser, then record
-uv run --group tickets -m pipeline.tickets changes [ID]       # what changed between consecutive reads
-uv run --group tickets -m pipeline.tickets page ID URL --note N        # where a festival with no full link sells
-uv run --group tickets -m pipeline.tickets page ID --state S --note N  # or not_yet, offline, closed, none_found
+mise run tickets -- todo               # what needs doing
+mise run tickets -- read ID [--url U]  # read the page by its site's recipe and log the rows
+mise run tickets -- draft ID           # a first read to fill, from the latest rows
+mise run tickets -- check ID           # what record would find wrong, writing nothing
+mise run tickets -- record ID          # check the draft or first read, write the prices
+mise run tickets -- retry ID           # read with a visible browser, then record
+mise run tickets -- changes [ID]       # what changed between consecutive reads
+mise run tickets -- page ID URL --note N        # where a festival with no full link sells
+mise run tickets -- page ID --state S --note N  # or not_yet, offline, closed, none_found
 ```
 
 A festival needs a first read when it is still to come and its description's prices answer gives the pass a card prices
@@ -275,8 +275,8 @@ refusing. A site a recipe can't read (behind a check that a visitor is human, sa
 reader that uses it:
 
 ```bash
-uv run --group browser -m pipeline.read_page URL --screenshot page.png   # the page's text, and a screenshot
-uv run --group browser -m pipeline.read_page URL --visible               # a visible browser on a virtual display (xvfb-run)
+mise run read-page -- URL --screenshot page.png   # the page's text, and a screenshot
+mise run read-page -- URL --visible               # a visible browser on a virtual display (xvfb-run)
 ```
 
 ## States
@@ -285,17 +285,16 @@ Every coded value is one of the states of its data point, and `pipeline/states.p
 makes a value that state, what the site does with it (shows it on the card or in a view, says it as the card's reason
 for having no price, filters by it, keeps it, or waits for someone), its words on the site, and who acts on it
 (`pipeline/STATES.md`). Everything else is built from those rows: the code's enums (`pipeline/enums.py`, which
-`uv run -m pipeline.generate` writes, with `site/states.ts` for the site), and through them the records of
-`pipeline/records.py` and the schemas the models answer to, generated from those records; the definitions in the
-prompts; and the SQL checks. So a new state is one new row, words included, and a value that is no state fails: when it
-is written or read (a record, a check), in the tests (a name in the code the table doesn't have), or in
-`pipeline/audit.py`, which runs first in **Refresh places and rates** and in **Tests** and names each value its record
-refuses in the shared files and in the answers and first reads the load takes (those to the current prompt), and each
-row of `pipeline/exceptions.py` that departs from nothing any more: a recipe reads its site now, or no festival has its
-known ticket page there.
+`mise run generate` writes, with `site/states.ts` for the site), and through them the records of `pipeline/records.py`
+and the schemas the models answer to, generated from those records; the definitions in the prompts; and the SQL checks.
+So a new state is one new row, words included, and a value that is no state fails: when it is written or read (a record,
+a check), in the tests (a name in the code the table doesn't have), or in `pipeline/audit.py`, which runs first in
+**Refresh places and rates** and in **Tests** and names each value its record refuses in the shared files and in the
+answers and first reads the load takes (those to the current prompt), and each row of `pipeline/exceptions.py` that
+departs from nothing any more: a recipe reads its site now, or no festival has its known ticket page there.
 
 ```bash
-uv run --group tickets -m pipeline.audit       # "0 refused, 0 stale", or what to add or remove
+mise run audit          # "0 refused, 0 stale", or what to add or remove
 ```
 
 ## Promo codes
@@ -366,28 +365,29 @@ it spent and the month's total.
 To do the same locally:
 
 ```bash
-uv run --group scrape -m pipeline.scrape source/<events>.sqlite --dry-run    # what would change, without writing
-uv run --group scrape -m pipeline.scrape source/<events>.sqlite
-uv run -m pipeline.geocode source/<events>.sqlite                           # looks up new cities only
-uv run --group ask -m pipeline.extract.ask source/<events>.sqlite --dry-run  # which festivals need asking
-uv run --group ask -m pipeline.extract.ask source/<events>.sqlite            # needs ANTHROPIC_API_KEY
-uv run -m pipeline.extract.load_extract source/<events>.sqlite
-uv run --group artists -m pipeline.extract.resolve_artists source/<events>.sqlite
-uv run -m pipeline.rates                                                    # exchange rates for the site's prices
-uv run -m pipeline.merge_suggestions source/<events>.sqlite                 # on a site database built for it
-uv run -m pipeline.fares refresh --budget 4                                 # needs uv; searches festival weekends due today
-mise run build:data                                                         # docs/data/kiz.sqlite and site.json, never committed
-mise run serve                                                              # builds the site and its data, then open http://localhost:8000
+mise run scrape -- --dry-run         # what would change, without writing
+mise run scrape
+mise run geocode                     # looks up new cities only
+mise run ask -- --dry-run            # which festivals need asking
+mise run ask                         # needs ANTHROPIC_API_KEY
+mise run load
+mise run resolve
+mise run rates                       # exchange rates for the site's prices
+mise run suggest-merges              # on a site database built for it
+mise run fares -- refresh --budget 4 # searches festival weekends due today
+mise run build:data                  # docs/data/kiz.sqlite and site.json, never committed
+mise run serve                       # builds the site and its data, then open http://localhost:8000
 ```
 
 ## Running the steps
 
-The pipeline is one Python package, `pipeline`, run as modules from the repository's root. `pyproject.toml` pins every
-package once: pydantic, which every step reads its records with, as the project's dependency, and the rest in dependency
-groups, each step installing only its group: `uv run --group tickets -m pipeline.tickets …` gets the browser, Claude's
-client and the checker; the steps that need nothing more (the loads, the build, the fares) run as
-`uv run -m pipeline.<step>`. `uv.lock` fixes the versions. A step opens its databases through `pipeline/db.py`, saying
-whether it reads, writes or creates each one, so a wrong path is an error.
+The pipeline is one Python package, `pipeline`, and each step is a task of `tasks.toml` (`mise run <step>`, its own
+arguments after `--`), which runs its module with the dependency group it needs. `pyproject.toml` pins every package
+once: pydantic, which every step reads its records with, as the project's dependency, and the rest in dependency groups:
+`mise run tickets` gets the browser, Claude's client and the checker, and the steps that need nothing more (the loads,
+the build, the fares) none. `uv.lock` fixes the versions. Every step opens the export itself (`mise run export` prints
+its path). A step opens its databases through `pipeline/db.py`, saying whether it reads, writes or creates each one, so
+a wrong path is an error.
 
 ## Tests
 

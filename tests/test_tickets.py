@@ -1354,7 +1354,7 @@ def test_a_first_read_is_drafted_checked_and_recorded_by_its_commands(files: Pat
         _ = command('check', 7)  # the draft as made has no pass yet
     draft_file(files, read())
     assert command('check', 7).startswith('7: passes; ')
-    assert command('record', 7).startswith('7: 2 prices recorded, read 2026-10-01\nThen: uv run -m pipeline.extract')
+    assert command('record', 7).startswith('7: 2 prices recorded, read 2026-10-01\nThen: mise run load')
     assert not (files / 'drafts' / '7.json').exists()
 
 

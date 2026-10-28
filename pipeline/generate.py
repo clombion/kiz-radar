@@ -1,7 +1,7 @@
 """Write the files built from pipeline/states.py, or check that they still say what it does.
 
-    uv run -m pipeline.generate          # write them
-    uv run -m pipeline.generate --check  # exit 1 naming each one that differs
+    mise run generate          # write them
+    mise run generate:check    # exit 1 naming each one that differs
 
 pipeline/enums.py holds the code's enums of the states, site/states.ts the site's words for them and
 pipeline/STATES.md's table the data points; each is written here and nowhere else, so a new state is one row of

@@ -27,13 +27,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/steps
       - name: Every state in the data is in pipeline/states.py
-        run: uv run -q --group tickets -m pipeline.audit
+        run: mise run audit
       - name: Geocode new cities
-        run: uv run -m pipeline.geocode "$SRC"
+        run: mise run geocode
       - name: Refresh the exchange rates
-        run: uv run -m pipeline.rates || true   # when the bank can't be reached, the last rates stay
+        run: mise run rates || true   # when the bank can't be reached, the last rates stay
       - name: Refresh merge suggestions
-        run: uv run -m pipeline.merge_suggestions "$SRC"
+        run: mise run suggest-merges
       - name: Commit
         run: |
           git add pipeline/geocode.csv pipeline/artist_merge_suggestions.csv pipeline/rates.csv

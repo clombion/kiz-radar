@@ -6,7 +6,7 @@ drops descriptions, images and extraction quotes. Adds places, airports, per-eve
 statistics, a fares table filled from docs/data/fares.csv, and the states every coded column can hold (states, from
 pipeline/states.py).
 
-    uv run -m pipeline.build_site_db "$(uv run -q -m pipeline.db)"
+    mise run build:data
 """
 
 import argparse
@@ -825,9 +825,9 @@ def built(src: Path) -> Generator[sqlite3.Connection]:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description='Build docs/data/kiz.sqlite and site.json, which the site loads.')
-    sqlite_db.source_arg(ap)
+    _ = ap.parse_args()
     out = data(OUT)
-    site = build(ap.parse_args(namespace=sqlite_db.Source()).src, out)
+    site = build(sqlite_db.export(), out)
     _ = data(SITE_JSON).write_text(json.dumps(site, ensure_ascii=False, indent=1), encoding='utf-8')
     print(OUT, out.stat().st_size // 1024, 'KB')
 

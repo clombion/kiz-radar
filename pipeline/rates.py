@@ -1,7 +1,7 @@
 """Refresh pipeline/rates.csv, the exchange rates the site converts prices with: the European Central Bank's daily
 reference rates, as units of each currency per euro. When the bank can't be reached the file stays as it was.
 
-    uv run -m pipeline.rates
+    mise run rates
 """
 
 import argparse

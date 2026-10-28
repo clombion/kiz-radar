@@ -1,7 +1,7 @@
-"""Every command the Actions and the docs give installs what its module needs: the packages imported by the module
-and by every pipeline module it imports, anywhere in their code, are in the dependency groups the command names
-(pyproject.toml), with the project's own dependencies for every uv run. A module run with plain python3 imports only
-the standard library."""
+"""Every pipeline command is a task of tasks.toml, and the Actions, the docs and the modules' docstrings run the tasks,
+never a module: a task they name exists, and a task installs what its module needs (the packages imported by the
+module and by every pipeline module it imports, anywhere in their code, are in the dependency groups the task names in
+pyproject.toml, with the project's own dependencies)."""
 
 import ast
 import re
@@ -15,7 +15,7 @@ from importlib.metadata import packages_distributions
 from pathlib import Path
 
 import pytest
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, TypeAdapter
 
 from pipeline import ROOT, db
 
@@ -27,6 +27,7 @@ SOURCES = [
     *sorted((ROOT / 'pipeline').rglob('*.py')),
 ]
 COMMAND = re.compile(r'(?:uv run(?: -q)?((?: --group [\w-]+)*)|python3) -m (pipeline(?:\.\w+)+)')
+TASK = re.compile(r'\bmise run(?: -q)? ([\w:-]+)')
 NAME = re.compile(r'[=<>~!\[ ]')  # where a requirement's name ends
 
 
@@ -49,14 +50,34 @@ class Pyproject(Toml):
     groups: dict[str, tuple[str | Include, ...]] = Field(alias='dependency-groups')
 
 
+class Task(Toml):
+    run: str = ''
+
+
 PYPROJECT = Pyproject.model_validate(tomllib.loads((ROOT / 'pyproject.toml').read_text()))
+TASKS = TypeAdapter(dict[str, Task]).validate_python(tomllib.loads((ROOT / 'tasks.toml').read_text()))
 
 
 def commands() -> Iterator[tuple[str, str, list[str]]]:
-    """(where, module, groups) for each command written in the Actions, the docs and the modules' docstrings."""
-    for path in SOURCES:
-        for m in COMMAND.finditer(path.read_text(encoding='utf-8')):
-            yield f'{path.relative_to(ROOT)}: {m[0]}', m[2], re.findall(r'--group ([\w-]+)', m[1] or '')
+    """(where, module, groups) for each pipeline command of tasks.toml."""
+    for name, task in TASKS.items():
+        for m in COMMAND.finditer(task.run):
+            yield f'tasks.toml [{name}]: {m[0]}', m[2], re.findall(r'--group ([\w-]+)', m[1] or '')
+
+
+def test_a_module_is_run_by_its_task_only() -> None:
+    """A command written beside its task would drift from it: the group it installs, the options it passes."""
+    written = [
+        f'{p.relative_to(ROOT)}: {m[0]}' for p in SOURCES for m in COMMAND.finditer(p.read_text(encoding='utf-8'))
+    ]
+    assert written == []
+
+
+def test_every_task_named_is_one() -> None:
+    named = {
+        (p.relative_to(ROOT).as_posix(), m[1]) for p in SOURCES for m in TASK.finditer(p.read_text(encoding='utf-8'))
+    }
+    assert {(where, task) for where, task in named if task not in TASKS} == set()
 
 
 def group_packages(name: str) -> set[str]:
@@ -113,7 +134,7 @@ def test_commands_install_what_their_modules_import() -> None:
 
 
 def test_commands_are_found() -> None:
-    assert len(list(commands())) > 30
+    assert len(list(commands())) > 10
 
 
 def test_every_module_a_command_runs_answers_help() -> None:

@@ -1,7 +1,7 @@
 """Refresh the events in the source DB from kizomba-world.com, in place.
 
-    uv run --group scrape -m pipeline.scrape source/<events>.sqlite             # what the monthly Action runs
-    uv run --group scrape -m pipeline.scrape source/<events>.sqlite --dry-run   # report the changes without writing
+    mise run scrape             # what the monthly Action runs
+    mise run scrape -- --dry-run   # report the changes without writing
 
 The event list comes from the site's Events Calendar API. Each event page adds what the API leaves out: venue,
 address, city, country, the deal link, the organiser's links, the translations and whether it is cancelled.
@@ -271,16 +271,15 @@ def run(src: Path, *, dry_run: bool) -> None:
             finish(db, report, len(events), gone, posters)
 
 
-class Args(sqlite_db.Source):
+class Args(argparse.Namespace):
     dry_run: bool = False
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description='Refresh the events in the source DB from kizomba-world.com.')
-    _ = ap.add_argument('src', type=sqlite_db.existing, help='the source DB, updated in place')
     _ = ap.add_argument('--dry-run', action='store_true', help='fetch and report the changes without writing')
     a = ap.parse_args(namespace=Args())
-    run(a.src, dry_run=a.dry_run)
+    run(sqlite_db.export(), dry_run=a.dry_run)
 
 
 if __name__ == '__main__':

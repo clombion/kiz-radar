@@ -6,9 +6,9 @@ It opens Chromium through Patchright, a Playwright build that doesn't announce a
 JavaScript pages; --visible opens it on a virtual display instead, since browser checks refuse headless browsers.
 On Linux without a display, --visible restarts itself under xvfb-run.
 
-    uv run --group browser -m pipeline.read_page URL                         # the page's text
-    uv run --group browser -m pipeline.read_page URL --visible               # for a page behind a browser check
-    uv run --group browser -m pipeline.read_page URL --screenshot page.png   # and a full-page screenshot
+    mise run read-page -- URL                         # the page's text
+    mise run read-page -- URL --visible               # for a page behind a browser check
+    mise run read-page -- URL --screenshot page.png   # and a full-page screenshot
 
 One page per run, for a person's one-off question; never in a scheduled job or a loop of one's own. The one
 scheduled reader is pipeline/tickets.py, which reads ticket pages through rows() below, by a site recipe.

@@ -59,15 +59,16 @@ def content(path: Path) -> dict[str, list[str]]:
     return out
 
 
-def copied(tmp_path: Path) -> Path:
-    path = tmp_path / EXPORT.name
-    _ = shutil.copyfile(EXPORT, path)
-    return path
+def copied() -> Path:
+    """The export, copied into the test's data folder, where the steps open it."""
+    committed(f'{sqlite_db.SOURCE}/{EXPORT.name}')
+    return sqlite_db.export()
 
 
-def trimmed(tmp_path: Path, festivals: int) -> Path:
-    """The export with only its latest festivals that have a line-up, and every row of theirs."""
-    src = copied(tmp_path)
+def trimmed(festivals: int) -> Path:
+    """The export in the test's data folder, with only its latest festivals that have a line-up, and every row of
+    theirs."""
+    src = copied()
     with sqlite_db.opened(src, 'rw') as con:
         kept = column(
             con,

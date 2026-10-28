@@ -41,7 +41,7 @@ keeps the id of its own key, else the lowest earlier id among the keys it absorb
 next id never used. An id whose artist was merged into another reads, through its key in artist_keys, as
 the artist that absorbed it.
 
-Usage: uv run --group artists -m pipeline.extract.resolve_artists source/<events>.sqlite
+Usage: mise run resolve
 """
 
 import argparse
@@ -875,8 +875,8 @@ def write_artists(
 
 def main() -> None:
     ap = argparse.ArgumentParser(description='Resolve artist mentions into artists, with stable ids.')
-    sqlite_db.source_arg(ap)
-    with sqlite_db.opened(ap.parse_args(namespace=sqlite_db.Source()).src, 'rw') as con:
+    _ = ap.parse_args()
+    with sqlite_db.opened(sqlite_db.export(), 'rw') as con:
         mentions = sqlite_db.records(
             con,
             Mention,

@@ -3,8 +3,7 @@ it (rw), or create it (rwc); only a step that builds a database may create one, 
 new empty database, and a connection is closed with its block. Every connection holds its tables to their foreign
 keys, a file's and a test's in-memory database alike. A day or a time is written as the text records read
 (2026-10-27, 2026-10-27T17:38:51+00:00). export() is the kizomba-world export the steps work on, the one file of
-source/ (python -m pipeline.db prints its path, for the Actions), and source_arg() the command-line argument a step
-takes it by."""
+the data folder's source/, which every step opens itself (python -m pipeline.db prints its path)."""
 
 import argparse
 import datetime as dt
@@ -54,26 +53,12 @@ def records[R: BaseModel](db: sqlite3.Connection, record: type[R], sql: str, par
     return [record.model_validate(dict(zip(names, row, strict=True)), strict=False) for row in fetched]
 
 
-def existing(text: str) -> Path:
-    if not Path(text).is_file():
-        raise argparse.ArgumentTypeError(f'{text}: no such file')
-    return Path(text)
-
-
 def festival_ids(text: str) -> set[int]:
     """Festival ids written "16909,18806", as a set."""
     try:
         return {int(i) for i in text.split(',') if i.strip()}
     except ValueError as e:
         raise argparse.ArgumentTypeError(f'{text}: festival ids, separated by commas') from e
-
-
-class Source(argparse.Namespace):
-    src: Path = Path()
-
-
-def source_arg(ap: argparse.ArgumentParser) -> None:
-    _ = ap.add_argument('src', type=existing, help='the kizomba-world export (source/<events>.sqlite)')
 
 
 SOURCE = 'source'  # the kizomba-world export, and the steps' tables in it

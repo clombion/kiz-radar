@@ -9,8 +9,8 @@ from pathlib import Path
 
 import pytest
 
+from pipeline import data, geocode, rates, scrape, web
 from pipeline import db as sqlite_db
-from pipeline import geocode, rates, scrape, web
 from pipeline.records import JSON, Place, Rate, Spot, today
 from tests import jsons
 from tests.exports import column, content, run, trimmed
@@ -79,8 +79,10 @@ class Nominatim:
         return json.dumps([self.places[key]] if key in self.places else []).encode()
 
 
-def source_with(tmp_path: Path, places: list[tuple[str | None, str | None]]) -> Path:
-    path = tmp_path / 'source.sqlite'
+def source_with(places: list[tuple[str | None, str | None]]) -> Path:
+    """An export in the test's data folder holding festivals in these places."""
+    path = data(sqlite_db.SOURCE) / 'source.sqlite'
+    path.parent.mkdir(parents=True)
     with sqlite_db.opened(path, 'rwc') as con:
         _ = con.execute('create table events (id integer, city text, country text)')
         _ = con.executemany('insert into events values (?, ?, ?)', [(i, *p) for i, p in enumerate(places)])
@@ -95,8 +97,7 @@ def test_new_places_are_asked_for_once_and_kept_with_the_known(tmp_path: Path, m
     lisbon = {'lat': '38.7', 'lon': '-9.1', 'display_name': 'Lisboa, Portugal'}
     nominatim = Nominatim({'Lisbon, Portugal': lisbon, 'Bairro Alto, Portugal': lisbon})
     monkeypatch.setattr(web, 'get', nominatim.get)
-    src = source_with(
-        tmp_path,
+    _ = source_with(
         [
             ('Oslo', 'Norway'),
             ('Lisbon', 'Portugal'),
@@ -105,7 +106,7 @@ def test_new_places_are_asked_for_once_and_kept_with_the_known(tmp_path: Path, m
             (None, None),
         ],
     )
-    run(geocode.main, monkeypatch, src)
+    run(geocode.main, monkeypatch)
     found = {(p.city, p.country): p.found for p in Place.read()}
     assert found == {
         ('Oslo', 'Norway'): known.found,
@@ -116,7 +117,7 @@ def test_new_places_are_asked_for_once_and_kept_with_the_known(tmp_path: Path, m
     }
     assert not [q for q in nominatim.asked if q.get('city') == 'Oslo']  # known already
     asked = len(nominatim.asked)
-    run(geocode.main, monkeypatch, src)
+    run(geocode.main, monkeypatch)
     assert len(nominatim.asked) == asked  # a place not found is known too
 
 
@@ -124,7 +125,8 @@ def test_a_place_nominatim_fails_on_is_left_for_the_next_run(tmp_path: Path, mon
     Place.write([])
     monkeypatch.setattr('time.sleep', no_wait)
     monkeypatch.setattr(web, 'get', Nominatim({}, down=True).get)
-    run(geocode.main, monkeypatch, source_with(tmp_path, [('Lisbon', 'Portugal')]))
+    source_with([('Lisbon', 'Portugal')])
+    run(geocode.main, monkeypatch)
     assert Place.read() == []
 
 
@@ -172,10 +174,10 @@ def ids(src: Path) -> set[object]:
 def test_a_refresh_adds_the_new_festivals_and_deletes_the_gone_with_their_rows(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    src = trimmed(tmp_path, 1)
+    src = trimmed(1)
     [gone] = ids(src)
     site(monkeypatch, [NEW])
-    run(scrape.main, monkeypatch, src)
+    run(scrape.main, monkeypatch)
     assert ids(src) == {17001}
     with sqlite_db.opened(src, 'ro') as db:
         for t in scrape.event_tables(db):
@@ -195,34 +197,34 @@ def test_a_refresh_adds_the_new_festivals_and_deletes_the_gone_with_their_rows(
 
 
 def test_a_dry_run_reads_the_site_and_writes_nothing(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    src = trimmed(tmp_path, 1)
+    src = trimmed(1)
     before = content(src)
     served = site(monkeypatch, [NEW])
-    run(scrape.main, monkeypatch, src, '--dry-run')
+    run(scrape.main, monkeypatch, '--dry-run')
     assert content(src) == before
     assert POSTER not in served.asked  # nor downloads a poster
 
 
 def test_a_list_far_shorter_than_before_stops_before_deleting(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    src = trimmed(tmp_path, 3)
+    src = trimmed(3)
     before = content(src)
     site(monkeypatch, [NEW])
     with pytest.raises(SystemExit, match='far fewer events'):
-        run(scrape.main, monkeypatch, src)
+        run(scrape.main, monkeypatch)
     assert content(src) == before
 
 
 def test_a_pending_festival_changed_again_waits_from_its_latest_change(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    src = trimmed(tmp_path, 1)
+    src = trimmed(1)
     site(monkeypatch, [NEW])
-    run(scrape.main, monkeypatch, src)
+    run(scrape.main, monkeypatch)
     with sqlite_db.opened(src, 'rw') as db:
         _ = db.execute("update pending_extraction set since = '2026-01-01' where event_id = 17001")
         db.commit()
     site(monkeypatch, [NEW | {'description': '<p>Hello again</p>', 'modified': '2026-10-20 10:00:00'}])
-    run(scrape.main, monkeypatch, src)
+    run(scrape.main, monkeypatch)
     with sqlite_db.opened(src, 'ro') as db:
         reasons = column(db, 'select reason from pending_extraction where event_id = 17001')
         since = column(db, 'select since from pending_extraction where event_id = 17001')

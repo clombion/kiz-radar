@@ -36,11 +36,11 @@ jobs:
       - uses: ./.github/actions/steps
       - name: Refresh the events
         if: ${{ !inputs.festivals }}
-        run: uv run -q --group scrape -m pipeline.scrape "$SRC"
+        run: mise run scrape
       - name: Ask Claude about new and changed festivals
         id: ask
         continue-on-error: true
-        run: uv run -q --group ask -m pipeline.extract.ask "$SRC" ${LIMIT:+--limit "$LIMIT"} ${ONLY:+--only "$ONLY"}
+        run: mise run ask -- ${LIMIT:+--limit "$LIMIT"} ${ONLY:+--only "$ONLY"}
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           LIMIT: ${{ inputs.limit }}
@@ -50,15 +50,15 @@ jobs:
       - name: Read ticket pages
         id: tickets
         continue-on-error: true
-        run: xvfb-run -a uv run -q --group tickets -m pipeline.tickets run ${ONLY:+--only "$ONLY"}
+        run: xvfb-run -a mise run tickets -- run ${ONLY:+--only "$ONLY"}
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ONLY: ${{ inputs.festivals }}
       - name: Load the answers and resolve the artists
         run: |
-          uv run -m pipeline.extract.load_extract "$SRC"
-          uv run -q --group artists -m pipeline.extract.resolve_artists "$SRC"
-          uv run -m pipeline.merge_suggestions "$SRC"
+          mise run load
+          mise run resolve
+          mise run suggest-merges
       - name: Commit
         id: commit
         run: |

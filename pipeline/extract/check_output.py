@@ -8,7 +8,7 @@ Checks, in order:
 
 Exits 1 with one actionable line per problem when any check fails.
 
-Usage: uv run -m pipeline.extract.check_output PASS QUESTION ANSWER
+Usage: mise run check-answer -- PASS QUESTION ANSWER
 """
 
 import argparse

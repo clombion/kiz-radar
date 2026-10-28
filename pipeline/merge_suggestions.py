@@ -13,7 +13,7 @@ one line-up is noted but not scored (festivals list artists per room, so names r
 Pairs already decided in pipeline/artist_merges.csv (merge or separate) are left out. To act on a
 suggestion, copy its row into artist_merges.csv with decision "merge" or "separate".
 
-    uv run -m pipeline.merge_suggestions source/<events>.sqlite
+    mise run suggest-merges
 """
 
 import argparse
@@ -284,8 +284,8 @@ def suggestions(c: sqlite3.Connection, site: sqlite3.Connection) -> list[Suggest
 
 def main() -> None:
     ap = argparse.ArgumentParser(description='List likely duplicate artists for review.')
-    sqlite_db.source_arg(ap)
-    src = ap.parse_args(namespace=sqlite_db.Source()).src
+    _ = ap.parse_args()
+    src = sqlite_db.export()
     with sqlite_db.opened(src, 'ro') as c, build_site_db.built(src) as site:
         rows = suggestions(c, site)
     Suggestion.write(rows)

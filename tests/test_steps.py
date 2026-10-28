@@ -29,7 +29,8 @@ def committed_data() -> None:
 def test_the_site_database_builds_alike_twice_with_every_table_documented(
     site_db: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    run(build_site_db.main, monkeypatch, EXPORT)
+    _ = copied()
+    run(build_site_db.main, monkeypatch)
     built = data(build_site_db.OUT)
     assert content(built) == content(site_db)
     with sqlite_db.opened(built, 'ro') as db:
@@ -42,20 +43,20 @@ def test_the_site_database_builds_alike_twice_with_every_table_documented(
 
 
 def test_loading_the_answers_again_changes_nothing(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    src = copied(tmp_path)
-    run(load_extract.main, monkeypatch, src)
+    src = copied()
+    run(load_extract.main, monkeypatch)
     once = content(src)
-    run(load_extract.main, monkeypatch, src)
+    run(load_extract.main, monkeypatch)
     assert content(src) == once
 
 
 def test_resolving_the_artists_again_changes_nothing(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     # the whole export takes the step most of a minute: the latest festivals with line-ups are enough
-    src = trimmed(tmp_path, 40)
-    run(resolve_artists.main, monkeypatch, src)
+    src = trimmed(40)
+    run(resolve_artists.main, monkeypatch)
     once = content(src)
     assert once['artists']
-    run(resolve_artists.main, monkeypatch, src)
+    run(resolve_artists.main, monkeypatch)
     assert content(src) == once
 
 

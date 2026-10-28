@@ -7,7 +7,58 @@ run = "uv run --group dev pytest -q --cov"
 
 ["build:data"]
 description = "docs/data/kiz.sqlite and site.json, which the site loads, built from the export (they are never committed)"
-run = 'uv run -m pipeline.build_site_db "$(uv run -q -m pipeline.db)"'
+run = "uv run -m pipeline.build_site_db"
+
+# The pipeline's steps, each run with the dependency group its module needs (pyproject.toml); what follows -- is the
+# step's own arguments (`mise run tickets -- todo`), and every step opens the export itself.
+
+[export]
+description = "The path of the kizomba-world export the steps work on"
+run = "uv run -q -m pipeline.db"
+
+[scrape]
+description = "Refresh the export's events from kizomba-world.com"
+run = "uv run -q --group scrape -m pipeline.scrape"
+
+[ask]
+description = "Ask Claude the extraction passes for the festivals that need them"
+run = "uv run -q --group ask -m pipeline.extract.ask"
+
+["check-answer"]
+description = "Check an answer to an extraction pass against its question, as ask does"
+run = "uv run -q -m pipeline.extract.check_output"
+
+[tickets]
+description = "Ticket pages and first reads, one festival at a time (CLAUDE.md)"
+run = "uv run -q --group tickets -m pipeline.tickets"
+
+["read-page"]
+description = "Read one web page a plain request can't, for a one-off check"
+run = "uv run -q --group browser -m pipeline.read_page"
+
+[load]
+description = "Load the saved answers and ticket reads into the export"
+run = "uv run -q -m pipeline.extract.load_extract"
+
+[resolve]
+description = "Resolve the export's artist mentions into artists, with stable ids"
+run = "uv run -q --group artists -m pipeline.extract.resolve_artists"
+
+["suggest-merges"]
+description = "List likely duplicate artists for review (pipeline/artist_merge_suggestions.csv)"
+run = "uv run -q -m pipeline.merge_suggestions"
+
+[geocode]
+description = "Place the export's cities on the map with OpenStreetMap Nominatim"
+run = "uv run -q -m pipeline.geocode"
+
+[rates]
+description = "The euro's exchange rates from the European Central Bank"
+run = "uv run -q -m pipeline.rates"
+
+[fares]
+description = "Search and keep the festival weekends' return fares"
+run = "uv run -q -m pipeline.fares"
 
 ["install:site"]
 description = "The site's tools, as pnpm-lock.yaml pins them"
@@ -70,7 +121,7 @@ run = "uv run --group dev basedpyright"
 
 [audit]
 description = "Every state in the data is one of pipeline/states.py"
-run = "uv run --group tickets -m pipeline.audit"
+run = "uv run -q --group tickets -m pipeline.audit"
 
 [generate]
 description = "Write the files built from pipeline/states.py"

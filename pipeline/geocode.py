@@ -1,7 +1,7 @@
 """Geocode every (city, country) in the source DB with OpenStreetMap Nominatim, 1 request/s, keeping already-known
 places in pipeline/geocode.csv so reruns only ask for new cities.
 
-    uv run -m pipeline.geocode source/<events>.sqlite
+    mise run geocode
 """
 
 import argparse
@@ -49,8 +49,8 @@ def located(city: str, country: str | None) -> Place:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description="Geocode the source DB's cities with OpenStreetMap Nominatim.")
-    sqlite_db.source_arg(ap)
-    with sqlite_db.opened(ap.parse_args(namespace=sqlite_db.Source()).src, 'ro') as db:
+    _ = ap.parse_args()
+    with sqlite_db.opened(sqlite_db.export(), 'ro') as db:
         known = {(p.city, p.country): p for p in Place.read()}
         # a country alone is no place on the map; one the export leaves empty is none
         places: list[tuple[str, str | None]] = db.execute(

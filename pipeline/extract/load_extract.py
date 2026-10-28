@@ -27,7 +27,7 @@ current prompt (pipeline/prompt.py); one to another prompt waits to be asked aga
 longer in the DB are left out. Every column holding a state checks it against pipeline/states.py. The load is one
 transaction: a value a check refuses leaves the database as it was.
 
-Usage: uv run -m pipeline.extract.load_extract source/<events>.sqlite
+Usage: mise run load
 """
 
 import argparse
@@ -642,8 +642,8 @@ def load_extracted(con: sqlite3.Connection, got: Mapping[int, Answer[Extracted]]
 
 def main() -> None:
     ap = argparse.ArgumentParser(description='Load the saved answers of the extraction passes into the source DB.')
-    sqlite_db.source_arg(ap)
-    with sqlite_db.opened(ap.parse_args(namespace=sqlite_db.Source()).src, 'rw') as con:
+    _ = ap.parse_args()
+    with sqlite_db.opened(sqlite_db.export(), 'rw') as con:
         ids: list[tuple[int]] = con.execute('SELECT id FROM events').fetchall()
         event_ids = {i for (i,) in ids}
         extract, stale_extract = current(prompts.EXTRACT, event_ids)

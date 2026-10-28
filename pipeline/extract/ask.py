@@ -1,9 +1,9 @@
 """Ask Claude the extraction passes for the festivals that need them, and save each answer.
 
-    uv run --group ask -m pipeline.extract.ask source/<events>.sqlite             # what the monthly Action runs
-    uv run --group ask -m pipeline.extract.ask source/<events>.sqlite --dry-run   # list what would be asked
-    uv run --group ask -m pipeline.extract.ask source/<events>.sqlite --limit 3   # ask about three festivals only
-    uv run --group ask -m pipeline.extract.ask source/<events>.sqlite --only 16909,18806   # these festivals only
+    mise run ask             # what the monthly Action runs
+    mise run ask -- --dry-run   # list what would be asked
+    mise run ask -- --limit 3   # ask about three festivals only
+    mise run ask -- --only 16909,18806   # these festivals only
 
 A festival needs a pass when its answer is due (enums.AnswerState): the pass has no answer for it yet, its answer was
 asked with another prompt than the pass's current one (pipeline/prompt.py, known by its hash), or it was asked before
@@ -247,7 +247,7 @@ def settled(pending: Mapping[int, dt.date]) -> list[int]:
     )
 
 
-class Args(sqlite_db.Source):
+class Args(argparse.Namespace):
     dry_run: bool = False
     limit: int | None = None
     passes: list[prompts.PassName] | None = None
@@ -256,9 +256,6 @@ class Args(sqlite_db.Source):
 
 def main() -> None:
     ap = argparse.ArgumentParser(description='Ask Claude the extraction passes for the festivals that need them.')
-    _ = ap.add_argument(
-        'src', type=sqlite_db.existing, help='the source DB; festivals leave its pending_extraction once answered'
-    )
     _ = ap.add_argument('--dry-run', action='store_true', help='list what would be asked, without asking')
     _ = ap.add_argument('--limit', type=int, help='ask about at most this many festivals')
     _ = ap.add_argument(
@@ -271,7 +268,7 @@ def main() -> None:
     _ = ap.add_argument('--only', type=sqlite_db.festival_ids, help='only these festivals, by id: "16909,18806"')
     a = ap.parse_args(namespace=Args())
 
-    with sqlite_db.opened(a.src, 'rw') as db:
+    with sqlite_db.opened(sqlite_db.export(), 'rw') as db:  # festivals leave its pending_extraction once answered
         todo, pending = due(db, a.passes, a.only)
         if a.limit:
             keep = sorted({f.id for f, _ in todo})[: a.limit]

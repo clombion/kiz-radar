@@ -678,9 +678,10 @@ def answered_here() -> Path:
     return data(ANSWERS)
 
 
-def source_file(tmp_path: Path) -> Path:
-    """A source DB holding FEST, pending extraction."""
-    path = tmp_path / 'source.sqlite'
+def source_file() -> Path:
+    """An export in the test's data folder holding FEST, pending extraction."""
+    path = data(db.SOURCE) / 'source.sqlite'
+    path.parent.mkdir(parents=True)
     with db.opened(path, 'rwc') as con:
         _ = con.executescript(
             'create table events (id integer, title text, description_text text, start_date text, end_date text, '
@@ -705,16 +706,16 @@ def run_ask(monkeypatch: pytest.MonkeyPatch, client: Client, *args: object) -> N
 def test_a_festival_is_asked_its_passes_and_leaves_pending_once_all_are_answered(
     tmp_path: Path, answered_here: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
-    src = source_file(tmp_path)
+    src = source_file()
     client = Client(prices_answer('Full pass 80€ until 31.01'))
-    run_ask(monkeypatch, client, src, '--dry-run')
+    run_ask(monkeypatch, client, '--dry-run')
     assert capsys.readouterr().out.startswith('1 festivals to ask about: ')
     assert client.messages.asked == []
-    run_ask(monkeypatch, client, src, '--pass', 'prices')
+    run_ask(monkeypatch, client, '--pass', 'prices')
     assert answers.current(prompt.PRICES, {5})[5].entry.passes[0].tiers[0].amount == 80
     with db.opened(src, 'ro') as con:
         assert con.execute('select event_id from pending_extraction').fetchall() == [(5,)]  # the other passes wait
-    run_ask(monkeypatch, client, src, '--pass', 'prices')
+    run_ask(monkeypatch, client, '--pass', 'prices')
     assert 'festivals to ask about: ' in capsys.readouterr().out
     assert len(client.messages.asked) == 1  # answered to the current prompt: not asked again
 

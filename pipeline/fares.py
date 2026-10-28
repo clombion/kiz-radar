@@ -14,8 +14,8 @@ for is recorded as such and tried again at its next interval. Google sometimes r
 a refused search is tried once more after a minute; refused again, it stops the run, which then exits with an error
 after saving what it found.
 
-    uv run -m pipeline.fares refresh --budget 20      # what the GitHub Action runs
-    uv run -m pipeline.fares plan                     # show what is due, without searching
+    mise run fares -- refresh --budget 20      # what the GitHub Action runs
+    mise run fares -- plan                     # show what is due, without searching
 """
 
 import argparse

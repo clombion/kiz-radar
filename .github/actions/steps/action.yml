@@ -8,4 +8,4 @@ runs:
         install_args: uv
     - name: The export the steps work on
       shell: bash
-      run: echo "SRC=$(uv run -q -m pipeline.db)" >> "$GITHUB_ENV"
+      run: echo "SRC=$(mise run -q export)" >> "$GITHUB_ENV"

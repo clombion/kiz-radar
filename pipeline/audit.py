@@ -2,7 +2,7 @@
 that its record refuses, such as a hand edit of a CSV naming no state; and an override in pipeline/exceptions.py that
 no longer departs from anything.
 
-    uv run --group tickets -m pipeline.audit
+    mise run audit
 
 Refused: every row of the CSV files the steps share (tickets/pages.csv, tickets/status.csv, pass_prices.csv,
 ticket_pages.csv, the answers' log, the hand-kept decisions and plans), each read as its record
