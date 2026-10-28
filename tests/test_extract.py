@@ -248,10 +248,8 @@ def test_a_criterion_edited_changes_the_prompts_it_is_in() -> None:
     assert {p for p in names if before[p] != after[p]} == {'prices', 'first_read'}
 
 
-def test_an_answer_saved_archives_its_prompt_first(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.setattr(answers, 'ANSWERS', tmp_path)
-    monkeypatch.setattr(answers, 'LOG', tmp_path / 'log.csv')
-    _ = (tmp_path / 'log.csv').write_text(','.join(answers.Logged.columns()) + '\n')
+@pytest.mark.usefixtures('answered_here')
+def test_an_answer_saved_archives_its_prompt_first() -> None:
     p = prompt.current('prices')
     archived = prompt.ASKED / f'{p.hash}.md'
     archived.unlink(missing_ok=True)
@@ -262,17 +260,13 @@ def test_an_answer_saved_archives_its_prompt_first(tmp_path: Path, monkeypatch: 
     assert answers.current(prompt.PRICES, {5})[5].entry == out.events[0]
 
 
-def test_only_an_answer_to_the_current_prompt_is_read_as_its_record(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    monkeypatch.setattr(answers, 'ANSWERS', tmp_path)
-    monkeypatch.setattr(answers, 'LOG', tmp_path / 'log.csv')
-    (tmp_path / 'prices').mkdir()
-    _ = (tmp_path / 'prices' / 'prices-001.json').write_text(
+def test_only_an_answer_to_the_current_prompt_is_read_as_its_record(answered_here: Path) -> None:
+    (answered_here / 'prices').mkdir()
+    _ = (answered_here / 'prices' / 'prices-001.json').write_text(
         json.dumps({'batch': 'b', 'events': [{'event_id': 5, 'old': 1}]})
     )
     rows = [answers.Logged(file='prices/prices-001.json', answered_at=AT, model='m', prompt='0' * 16, answered_by='x')]
-    answers.Logged.write(tmp_path / 'log.csv', rows)
+    answers.Logged.write(answers.LOG, rows)
     assert list(answers.answered('prices', {5})) == [5]  # its festivals are known, whatever its shape
     assert answers.current(prompt.PRICES, {5}) == {}
 
