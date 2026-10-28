@@ -320,6 +320,21 @@ class Pending(StrEnum):
 
 
 @unique
+class Listing(StrEnum):
+    """the listing states"""
+
+    LISTED = 'listed'
+    GONE = 'gone'
+
+
+@unique
+class EventSource(StrEnum):
+    """the event_source states"""
+
+    KIZOMBA_WORLD = 'kizomba-world'
+
+
+@unique
 class Plan(StrEnum):
     """the plan states"""
 

@@ -501,7 +501,10 @@ function artistPage(root: HTMLElement, id: number): void {
       comingUp(events.filter((e) => e.upcoming)),
       alsoGoing(peopleOf(id)),
       bookedIn(id, couples.length > 0 && a.kind !== KEY.artist_kind.COUPLE),
-      pastList(id, events.filter((e) => !(e.upcoming || e.cancelled === true)).reverse()),
+      pastList(
+        id,
+        events.filter((e) => !(e.upcoming || e.cancelled === true || e.listing === KEY.listing.GONE)).reverse(),
+      ),
       notes(a, id, stats),
     ),
   );

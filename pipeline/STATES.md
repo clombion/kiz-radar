@@ -55,6 +55,8 @@ thing a consumer must treat differently.
 | **merge_decision**, each artist merge reviewed | `merge`, `separate`, `unsure` | the merge review; pipeline/artist_merges.csv |
 | **merge_reason**, each pair of artists that may be one, for the merge review | `same name, different keys`, `first words of the other`, `same partner, shortened name`, `similar spelling`, `single name, several countries`, `couples with matching names` | resolve_artists |
 | **pending**, a festival waiting for its extraction passes | `new`, `description changed` | scrape |
+| **listing**, each festival, by whether the site it comes from still lists it | `listed`, `gone` | scrape |
+| **event_source**, the site a festival's listing comes from (source_ids) | `kizomba-world` | scrape |
 | **plan**, each plan someone shares (pipeline/plans.csv) | `going` | pipeline/plans.csv |
 | **fare_search**, a festival weekend's latest flight search (pipeline/fare_jobs.csv) | `priced`, `no price`, `refused` | fares.search |
 | **next_change**, a pass's next price change on the day it is viewed | `door`, `dated`, `later` | pricing.ts nextChange |

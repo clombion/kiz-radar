@@ -36,7 +36,7 @@ ALLOWED = Counter(
         ('pipeline/build_site_db.py', 'S608'): 3,
         ('pipeline/extract/check_output.py', 'S105'): 1,
         ('pipeline/db.py', 'S608'): 2,
-        ('pipeline/export.py', 'S608'): 1,
+        ('pipeline/export.py', 'S608'): 2,
         ('pipeline/extract/load_extract.py', 'S608'): 1,
         ('pipeline/fares.py', 'S603'): 1,
         ('pipeline/read_page.py', 'S606'): 1,

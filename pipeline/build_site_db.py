@@ -91,6 +91,7 @@ create table events (
     all_day integer not null check (all_day in (0, 1)),
     featured integer not null check (featured in (0, 1)),
     cancelled integer check (cancelled in (0, 1)),
+    listing text not null check (listing in ({listing})),  -- gone: kept for its plans and links, listed no more
     venue text check (venue != ''),
     city text check (city != ''),
     country text check (country != ''),
@@ -379,14 +380,15 @@ create view country_stats as
       (select airport from events e2 where e2.country_code = e.country_code and e2.airport is not null
          group by airport order by count(*) desc limit 1) as main_airport
     from events e join event_stats s on s.event_id = e.id left join countries c on c.code = e.country_code
-    where e.cancelled is not 1 group by e.country_code;
+    where e.cancelled is not 1 and e.listing = '{listed}' group by e.country_code;
 -- what the site reads for festivals: each event with its statistics, and whether it is still to come (evaluated when
 -- queried, so "upcoming" means the same thing on every page)
 create view event_rows as
     select e.id, e.title, e.url, e.start_date, e.end_date, e.city, e.country_code, e.lat, e.lon, e.airport,
-      e.airport_km, a.city as airport_city, e.weekend_friday, e.cancelled, e.venue, s.lineup, s.popular_artists,
+      e.airport_km, a.city as airport_city, e.weekend_friday, e.cancelled, e.listing, e.venue, s.lineup,
+      s.popular_artists,
       s.kiz_only, s.taxi_dancers, s.all_in_one, s.genres, s.features,
-      e.end_date >= date('now') and e.cancelled is not 1 as upcoming,
+      e.end_date >= date('now') and e.cancelled is not 1 and e.listing = '{listed}' as upcoming,
       p.price as price_state, p.page as ticket_page, p.card_pass
     from events e join event_stats s on s.event_id = e.id left join airports a on a.code = e.airport
       left join price_status p on p.event_id = e.id;
@@ -406,6 +408,7 @@ TABLES = sqlite_db.declared(
             'booked_as': states.sql_in('role', (*BOOKED_ROLES, Role.MC)),
             'priced': enums.Price.PRICED,
             'teacher': Role.TEACHER,
+            'listed': enums.Listing.LISTED,
         }
     )
 )
@@ -428,6 +431,7 @@ class Listed(BaseModel):
     all_day: int
     featured: int
     cancelled: int | None
+    listing: enums.Listing
     venue: str | None
     city: str | None
     country: str | None
@@ -657,7 +661,7 @@ def places(x: Transaction) -> None:
     listed = x.rows(
         Listed,
         """select e.id, d.title, e.title as listed_title, e.url, e.slug, e.start_date, e.end_date, e.timezone,
-             e.all_day, e.featured, e.cancelled, d.venue, nullif(e.city, '') as city,
+             e.all_day, e.featured, e.cancelled, e.listing, d.venue, nullif(e.city, '') as city,
              nullif(e.country, '') as country, e.website, e.published_at, e.modified_at
            from src.events e join src.event_display d on d.event_id = e.id""",
     )
@@ -942,9 +946,9 @@ def meta(x: Transaction, built_at: str) -> None:
 DOCS = {
     'events': 'One row per kizomba-world event: title (tidied: dates, years and shouting capitals removed; '
     'listed_title is as listed), dates (days), venue and city, link (url), cancelled (1 or 0; null when not known, '
-    'since the source flags it only for events still listed as upcoming). Added: country_code, lat/lon (OpenStreetMap '
-    'geocode of the city), airport (nearest in airports, within max_airport_km), airport_km, weekend_friday (the '
-    'Friday of a Fri→Mon trip to it).',
+    'since the source flags it only for events still listed as upcoming), listing (gone: no longer listed, kept for '
+    'the plans and links to it). Added: country_code, lat/lon (OpenStreetMap geocode of the city), airport (nearest '
+    'in airports, within max_airport_km), airport_km, weekend_friday (the Friday of a Fri→Mon trip to it).',
     'airports': 'Airports a festival can fly to, with the city they serve; a festival flies to the nearest within '
     'max_airport_km. home = 1 is where flights leave from.',
     'fares': 'Round-trip economy fares from the home airport (airports.home = 1), one adult, Friday out and Monday '
@@ -994,8 +998,8 @@ DOCS = {
     'plan_rows': 'Each plan with the person, and booked_as: their role when they are in that festival’s line-up, alone '
     'or in a couple.',
     'event_rows': 'What the site reads: each event with its event_stats, what its card can say of its price '
-    '(price_state, with its ticket_page and card_pass), and upcoming (not over yet and not cancelled, as of the moment '
-    'of the query).',
+    '(price_state, with its ticket_page and card_pass), and upcoming (not over yet, not cancelled and still listed, as '
+    'of the moment of the query).',
     'country_stats': 'Per country: events, kiz-only events, taxi dancers, average line-up, bookings of popular '
     'artists, share of imported artists, most common airport.',
     'countries': 'ISO 3166 codes and names.',
@@ -1009,7 +1013,8 @@ def site_json(x: Reader, built_at: str) -> dict[str, object]:
     destinations = x.rows(
         Country,
         """select distinct e.country_code as code, c.name from events e
-        join countries c on c.code = e.country_code where e.cancelled is not 1""",
+        join countries c on c.code = e.country_code where e.cancelled is not 1 and e.listing = ?""",
+        (enums.Listing.LISTED,),
     )
     return {
         'home': {'code': airports.home(), 'city': home_city},

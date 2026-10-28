@@ -320,11 +320,13 @@ On the 3rd of each month, the **Refresh events** Action updates the export in `s
 out: the venue and city, the deal link, the organiser's links, the translations and whether the festival is cancelled.
 Pages are fetched for new and changed festivals and for every festival still to come, since a deal link can change
 without the festival's modified date, and a cancellation might too. They are fetched a few seconds apart, so a run takes
-about a quarter of an hour. Festivals the site no longer lists are removed. Once the export is committed, the Action
-starts **Refresh places and rates** on the same branch, which checks every state in the data (`pipeline/audit.py`),
-geocodes new cities, refreshes the exchange rates and the merge suggestions, and commits them; **Publish site** then
-builds the database from it all and publishes it. That workflow also runs on any push to `source/` or `pipeline/` on
-`main`.
+about a quarter of an hour. Each festival has an id of ours, given once, beside kizomba-world's (`source_ids`); the two
+are the same for every festival listed before ids were ours. A festival the site no longer lists is kept, marked gone
+since that day, so plans and links to it still hold; its card says it is no longer listed, and the listings leave it
+out. Once the export is committed, the Action starts **Refresh places and rates** on the same branch, which checks every
+state in the data (`pipeline/audit.py`), geocodes new cities, refreshes the exchange rates and the merge suggestions,
+and commits them; **Publish site** then builds the database from it all and publishes it. That workflow also runs on any
+push to `source/` or `pipeline/` on `main`.
 
 The site sits behind Cloudflare, which refuses ordinary scripts, so the scraper sends its requests the way Chrome does,
 through [curl_cffi](https://github.com/lexiforest/curl_cffi). If Cloudflare stops letting it through, the Action fails

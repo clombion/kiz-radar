@@ -6,10 +6,10 @@
 The event list comes from the site's Events Calendar API. Each event page adds what the API leaves out: venue,
 address, city, country, the deal link, the organiser's links, the translations and whether it is cancelled.
 Pages are fetched for new and changed events and for every event still to come: a deal link can change
-without changing the event's modified date,
-     and a cancellation might too. Events the site no longer lists are deleted with everything that refers
-to them. A new festival's line-up and features wait for the extraction steps, and the events whose description is
-new or changed since then are listed in pending_extraction.
+without changing the event's modified date, and a cancellation might too. A festival has an id of ours, given once and
+never again, beside the site's (source_ids). One the site no longer lists is kept, gone since that day, so plans and
+links to it still hold; listed again, it is listed again. A new festival's line-up and features wait for the
+extraction steps, and the events whose description is new or changed since then are listed in pending_extraction.
 
 kizomba-world publishes its listings under CC BY-SA 4.0. Requests are spaced a few seconds apart.
 """
@@ -23,10 +23,12 @@ from pathlib import Path
 
 from curl_cffi import requests
 from curl_cffi.requests import Response
+from pydantic import BaseModel
 
 from pipeline import db as sqlite_db
 from pipeline import export, states
-from pipeline.db import Transaction
+from pipeline.db import Reader, Transaction
+from pipeline.enums import EventSource, Listing
 from pipeline.extract import run_log
 from pipeline.kizomba_world import ApiEvent, ApiPage, Listed, Paged, api_fields, page_fields
 from pipeline.records import day_of, now
@@ -118,7 +120,10 @@ create table events (
     url_pt text,
     published_at text,
     modified_at text,
-    page_fetched integer not null check (page_fetched in (0, 1))  -- 0 when the event page could not be fetched
+    page_fetched integer not null check (page_fetched in (0, 1)),  -- 0 when the event page could not be fetched
+    listing text not null default 'listed' check (listing in ('listed', 'gone')),
+    unlisted_on text,             -- the day the site stopped listing it
+    check ((listing = 'gone') = (unlisted_on is not null))
 ) strict;
 create table event_categories (
     event_id integer not null references events(id) on delete cascade deferrable initially deferred,
@@ -135,6 +140,13 @@ create table event_links (
     url text not null,
     primary key (event_id, url)
 ) strict;
+create table source_ids (
+    source text not null check (source in ('kizomba-world')),
+    source_id integer not null,   -- the festival's id there
+    event_id integer not null references events(id) on delete cascade deferrable initially deferred,
+    primary key (source, source_id)
+) strict, without rowid;
+create index source_ids_event on source_ids(event_id);
 create index events_start on events(start_date);
 create index events_country on events(country);
 create table pending_extraction (
@@ -240,11 +252,48 @@ class Report:
         print('changed fields:', dict(sorted(self.differs.items(), key=lambda kv: -kv[1])))
 
 
-def write(db: Transaction, r: Refreshed, today: dt.date) -> None:
-    """The event's row, tags and links. An event whose description is new or changed waits for the extraction
-    steps."""
+class SourceId(BaseModel):
+    source_id: int
+    event_id: int
+
+
+@dataclass
+class Ids:
+    """Our id of each of the site's festivals, by its id there: the one it was given, else the next one never given."""
+
+    given: dict[int, int]
+    next_id: int
+
+    def of(self, source_id: int) -> int:
+        if source_id not in self.given:
+            self.given[source_id], self.next_id = self.next_id, self.next_id + 1
+        return self.given[source_id]
+
+
+def ids(db: Reader) -> Ids:
+    given = db.rows(
+        SourceId, 'select source_id, event_id from source_ids where source = ?', (EventSource.KIZOMBA_WORLD,)
+    )
+    taken = db.value(
+        int, 'select coalesce(max(id), 0) from (select id from events union all select event_id from source_ids)'
+    )
+    return Ids({r.source_id: r.event_id for r in given}, taken + 1)
+
+
+def write(db: Transaction, r: Refreshed, source_id: int, today: dt.date) -> None:
+    """The event's row, tags and links, the site's id of it, and its listing. An event whose description is new or
+    changed waits for the extraction steps."""
     write_event(db, r.row, r.categories, r.tags)
     i = r.row.id
+    db.insert(
+        'source_ids',
+        [{'source': EventSource.KIZOMBA_WORLD, 'source_id': source_id, 'event_id': i}],
+        unless=('source', 'source_id'),
+    )
+    db.execute(
+        'update events set listing = ?, unlisted_on = null where id = ? and listing = ?',
+        (Listing.LISTED, i, Listing.GONE),
+    )
     if r.links is not None:
         db.execute('delete from event_links where event_id = ?', (i,))
         db.executemany('insert into event_links (event_id, url) values (?, ?)', [(i, u) for u in r.links])
@@ -257,15 +306,16 @@ def write(db: Transaction, r: Refreshed, today: dt.date) -> None:
         )
 
 
-def finish(db: Transaction, report: Report, events: int, gone: list[int]) -> None:
-    """Delete the events the site no longer lists, with everything that refers to them (each reference to an event
-    cascades), and log the step."""
-    db.executemany('delete from events where id = ?', [(i,) for i in gone])
+def finish(db: Transaction, report: Report, events: int, gone: list[int], today: dt.date) -> None:
+    """Keep the events the site no longer lists as gone since today, and log the step."""
+    db.executemany(
+        'update events set listing = ?, unlisted_on = ? where id = ?', [(Listing.GONE, today, i) for i in gone]
+    )
     details = {
         'events': events,
         'new': len(report.added),
         'changed': len(report.changed),
-        'deleted': len(gone),
+        'unlisted': len(gone),
         'pending_extraction': db.value(int, 'select count(*) from pending_extraction'),
     }
     run_log.record(
@@ -275,7 +325,8 @@ def finish(db: Transaction, report: Report, events: int, gone: list[int]) -> Non
             STEP,
             performed_by='pipeline/scrape.py (curl_cffi)',
             inputs=f'{SITE}/wp-json/tribe/events/v1/events from {FIRST_DAY}; each new, changed or upcoming event page',
-            outputs='tables events, event_categories, event_tags, event_links, pending_extraction; event_genres and '
+            outputs='tables events, source_ids, event_categories, event_tags, event_links, pending_extraction; '
+            'event_genres and '
             'event_features (source site_tag)',
             details=details,
         ),
@@ -286,25 +337,29 @@ def finish(db: Transaction, report: Report, events: int, gone: list[int]) -> Non
 def run(src: Path, *, dry_run: bool) -> None:
     with export.opened('ro' if dry_run else 'rw', src) as db:
         known = {r.id: r for r in db.rows(EventRow, f'select {", ".join(map(sqlite_db.name, COLUMNS))} from events')}  # noqa: S608 (the record's own column names, quoted)
+        listed_ids = set(db.column(int, 'select id from events where listing = ?', (Listing.LISTED,)))
         today = now().date()
         fetch = Fetcher()
-        events = [api_fields(e) for e in listed(fetch)]
-        print(f'{len(events)} events listed; {len(known)} in the source DB')
-        if len(events) < LISTED_SHARE * sum(1 for e in known.values() if day_of(e.start_date) >= FIRST_DAY):
-            sys.exit('the site lists far fewer events than before; stopping instead of deleting them')
+        ours = ids(db)
+        events = [
+            (e.id, (e.model_copy(update={'id': ours.of(e.id)}), c, t)) for e, c, t in map(api_fields, listed(fetch))
+        ]
+        print(f'{len(events)} events listed; {len(listed_ids)} listed in the source DB')
+        if len(events) < LISTED_SHARE * sum(1 for i in listed_ids if day_of(known[i].start_date) >= FIRST_DAY):
+            sys.exit('the site lists far fewer events than before; stopping instead of taking them off the listing')
         report = Report()
-        for listing in events:
+        for source_id, listing in events:
             r = refreshed(fetch, listing, known.get(listing[0].id), today)
             report.note(r)
             if not dry_run:
                 with db.transaction() as tx:  # each event apart: the crawl takes no lock but while it writes one
-                    write(tx, r, today)
-        gone = sorted(set(known) - {e.id for e, _, _ in events})
+                    write(tx, r, source_id, today)
+        gone = sorted(listed_ids - {e.id for _, (e, _, _) in events})
         report.show([known[i].title for i in gone])
         if not dry_run:
             with db.transaction() as tx:
                 describe(tx)
-                finish(tx, report, len(events), gone)
+                finish(tx, report, len(events), gone, today)
 
 
 class Args(argparse.Namespace):

@@ -8,10 +8,12 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 import pytest
+from pydantic import BaseModel
 
 from pipeline import data, export, geocode, rates, scrape, web
 from pipeline import db as sqlite_db
 from pipeline.db import Reader
+from pipeline.enums import Listing
 from pipeline.records import JSON, Place, Rate, Spot, today
 from tests import jsons
 from tests.exports import content, festival, run, shaped, trimmed
@@ -177,27 +179,74 @@ def ids(src: Path) -> set[int]:
         return set(db.column(int, 'select id from events'))
 
 
-def test_a_refresh_adds_the_new_festivals_and_deletes_the_gone_with_their_rows(
+class Kept(BaseModel):
+    listing: Listing
+    unlisted_on: str | None
+
+
+def ours(db: Reader, source_id: int) -> int:
+    """Our id of the festival the site gives this id."""
+    return db.value(
+        int, "select event_id from source_ids where source = 'kizomba-world' and source_id = ?", (source_id,)
+    )
+
+
+def rows_of(db: Reader, event_id: int) -> dict[str, int]:
+    return {
+        t: db.value(int, f'select count(*) from {sqlite_db.name(t)} where event_id = ?', (event_id,))  # noqa: S608 (the database's own names, quoted)
+        for t in event_tables(db)
+    }
+
+
+def test_a_refresh_adds_the_new_festivals_and_keeps_the_gone_with_their_rows(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     src = trimmed(1)
     [gone] = ids(src)
+    with sqlite_db.opened(src, 'ro') as db:
+        before = rows_of(db, gone)
     served = site(monkeypatch, [NEW])
     run(scrape.main, monkeypatch)
-    assert ids(src) == {17001}
     assert POSTER not in served.asked  # where its poster is, which nothing downloads
     with sqlite_db.opened(src, 'ro') as db:
-        for t in event_tables(db):
-            assert gone not in db.column(int, f'select event_id from {sqlite_db.name(t)}'), t  # noqa: S608 (the database's own names, quoted)
-        assert db.column(str, 'select reason from pending_extraction where event_id = 17001') == ['new']
-        assert db.column(str, 'select image_url from events where id = 17001') == [POSTER]
-        links = set(db.column(str, 'select url from event_links where event_id = 17001'))
+        new = ours(db, 17001)
+        assert new > gone  # an id never given
+        assert ids(src) == {gone, new}
+        assert db.rows(Kept, 'select listing, unlisted_on from events where id = ?', (gone,)) == [
+            Kept(listing=Listing.GONE, unlisted_on=today().isoformat())
+        ]
+        assert rows_of(db, gone) == before  # its plans and links still hold
+        assert db.column(str, 'select reason from pending_extraction where event_id = ?', (new,)) == ['new']
+        assert db.column(str, 'select image_url from events where id = ?', (new,)) == [POSTER]
+        links = set(db.column(str, 'select url from event_links where event_id = ?', (new,)))
         assert links == {'https://www.facebook.com/events/1', 'https://www.instagram.com/x'}
-        tags = set(db.column(str, 'select tag from event_tags where event_id = 17001'))
+        tags = set(db.column(str, 'select tag from event_tags where event_id = ?', (new,)))
         assert tags == {'All in One', 'Zouk'}
         logged = db.value(str, "select details from pipeline_steps where step = '1_scrape'")
     details = JSON.validate_json(logged)
-    assert [jsons.at(details, k) for k in ('new', 'deleted')] == [1, 1]
+    assert [jsons.at(details, k) for k in ('new', 'unlisted')] == [1, 1]
+
+
+def with_new(monkeypatch: pytest.MonkeyPatch, then: str) -> tuple[Path, int]:
+    """An export refreshed once, from a site listing a festival it hadn't, and then changed by a statement on that
+    festival (its id the statement's one parameter); our id of it."""
+    src = trimmed(1)
+    site(monkeypatch, [NEW])
+    run(scrape.main, monkeypatch)
+    with sqlite_db.opened(src, 'rw') as db, db.transaction() as tx:
+        new = ours(tx, 17001)
+        tx.execute(then, (new,))
+    return src, new
+
+
+def test_a_festival_listed_again_is_listed_under_its_id(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    src, new = with_new(monkeypatch, "update events set listing = 'gone', unlisted_on = '2026-01-01' where id = ?")
+    run(scrape.main, monkeypatch)
+    with sqlite_db.opened(src, 'ro') as db:
+        assert ours(db, 17001) == new
+        assert db.rows(Kept, 'select listing, unlisted_on from events where id = ?', (new,)) == [
+            Kept(listing=Listing.LISTED, unlisted_on=None)
+        ]
 
 
 def test_a_dry_run_reads_the_site_and_writes_nothing(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
@@ -220,14 +269,10 @@ def test_a_list_far_shorter_than_before_stops_before_deleting(tmp_path: Path, mo
 def test_a_pending_festival_changed_again_waits_from_its_latest_change(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    src = trimmed(1)
-    site(monkeypatch, [NEW])
-    run(scrape.main, monkeypatch)
-    with sqlite_db.opened(src, 'rw') as db, db.transaction() as tx:
-        tx.execute("update pending_extraction set since = '2026-01-01' where event_id = 17001")
+    src, new = with_new(monkeypatch, "update pending_extraction set since = '2026-01-01' where event_id = ?")
     site(monkeypatch, [NEW | {'description': '<p>Hello again</p>', 'modified': '2026-10-20 10:00:00'}])
     run(scrape.main, monkeypatch)
     with sqlite_db.opened(src, 'ro') as db:
-        reasons = db.column(str, 'select reason from pending_extraction where event_id = 17001')
-        since = db.column(str, 'select since from pending_extraction where event_id = 17001')
+        reasons = db.column(str, 'select reason from pending_extraction where event_id = ?', (new,))
+        since = db.column(str, 'select since from pending_extraction where event_id = ?', (new,))
     assert (reasons, since) == (['new'], [today().isoformat()])  # still new to the passes

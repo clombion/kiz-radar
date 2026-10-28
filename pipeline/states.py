@@ -143,6 +143,8 @@ POINTS = (
     P('merge_decision', 'MergeDecision', 'each artist merge reviewed', 'the merge review; pipeline/artist_merges.csv'),
     P('merge_reason', 'MergeReason', 'each pair of artists that may be one, for the merge review', 'resolve_artists'),
     P('pending', 'Pending', 'a festival waiting for its extraction passes', 'scrape'),
+    P('listing', 'Listing', 'each festival, by whether the site it comes from still lists it', 'scrape'),
+    P('event_source', 'EventSource', "the site a festival's listing comes from (source_ids)", 'scrape'),
     P('plan', 'Plan', 'each plan someone shares (pipeline/plans.csv)', 'pipeline/plans.csv'),
     P(
         'fare_search',
@@ -737,6 +739,17 @@ ROWS = (
     ),
     S('pending', 'new', 'the festival is new', WAITS, owner='the next run'),
     S('pending', 'description changed', 'its description changed', WAITS, owner='the next run'),
+    S('listing', 'listed', 'the site lists the festival', KEPT),
+    S(
+        'listing',
+        'gone',
+        'the site no longer lists the festival: it is kept (unlisted_on), so plans and links to it still hold, and '
+        'left out of the festivals listed',
+        CARD,
+        'This festival is no longer listed.',
+        forms={'search': '· no longer listed'},
+    ),
+    S('event_source', 'kizomba-world', 'kizomba-world.com, whose ids its source_id are', KEPT),
     S('plan', 'going', 'they said they are going', VIEW),
     S('fare_search', 'priced', 'Google gave a return for the weekend; its price is in docs/data/fares.csv', KEPT),
     S('fare_search', 'no price', 'Google gave no return, or fli failed or timed out; note says which', KEPT),
@@ -911,6 +924,7 @@ SITE_POINTS = (
     'role',
     'artist_kind',
     'home_basis',
+    'listing',
 )  # the site's
 
 

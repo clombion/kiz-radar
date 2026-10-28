@@ -59,6 +59,7 @@ const after = (e: Festival): string[] => [
 const cheap = (e: Flown) => (convert(e.fare.price) ?? Number.POSITIVE_INFINITY) <= step('flight', 'cheap');
 function flight(e: Festival): HTMLElement {
   if (e.cancelled) return h('p', { class: 'flight muted' }, 'This festival was cancelled.');
+  if (e.listing === KEY.listing.GONE) return h('p', { class: 'flight muted' }, text('listing', e.listing));
   if (!e.upcoming) return h('p', { class: 'flight muted' }, 'This festival has taken place.');
   if (!e.airport) return h('p', { class: 'flight muted' }, `✈ too far from ${home().city} for our flight prices`);
   if (e.fare?.home) return h('p', { class: 'flight easy' }, `In ${home().city}, no flight needed`);

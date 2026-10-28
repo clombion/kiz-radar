@@ -769,6 +769,24 @@ export const STATES = {
    "icon": null,
    "link": null
   }
+ },
+ "listing": {
+  "listed": {
+   "disposition": "kept",
+   "wording": null,
+   "forms": {},
+   "icon": null,
+   "link": null
+  },
+  "gone": {
+   "disposition": "card",
+   "wording": "This festival is no longer listed.",
+   "forms": {
+    "search": "· no longer listed"
+   },
+   "icon": null,
+   "link": null
+  }
  }
 } as const satisfies Readonly<
   Record<string, Readonly<Record<string, StateRow>>>
@@ -906,6 +924,10 @@ export const KEY = {
  "home_basis": {
   "GIVEN": "given",
   "STATED": "stated"
+ },
+ "listing": {
+  "LISTED": "listed",
+  "GONE": "gone"
  }
 } as const;
 

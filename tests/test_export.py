@@ -1,6 +1,7 @@
 """The export's schema changes by numbered migrations, each applied once, in order: a step that writes the export
 brings it to the code's version, and a step that reads it, the site's build included, refuses another version."""
 
+import hashlib
 from pathlib import Path
 
 import pytest
@@ -56,3 +57,13 @@ def test_a_migration_that_fails_leaves_the_export_as_it_was(monkeypatch: pytest.
     with export.opened('ro') as db:
         assert export.version(db) == len(export.MIGRATIONS)
     assert 'later' not in tables(src)
+
+
+# each migration's text as it was applied: one changed after would leave exports migrated by its old text unlike the
+# ones its new text makes (a change is a new migration)
+APPLIED = ('691b0f9bb402b8d8', 'af0be5773d153b5a', 'dd7880df897ee566', '804e761686b9ed45')
+
+
+def test_a_migration_is_never_edited_once_applied() -> None:
+    digests = tuple(hashlib.sha256(m.encode()).hexdigest()[:16] for m in export.MIGRATIONS)
+    assert digests[: len(APPLIED)] == APPLIED

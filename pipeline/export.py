@@ -11,7 +11,7 @@ migrated yet, or which a newer version of the code wrote.
 
 import argparse
 import sys
-from collections.abc import Generator
+from collections.abc import Generator, Mapping, Sequence
 from contextlib import contextmanager
 from pathlib import Path
 from typing import Literal
@@ -22,20 +22,31 @@ from pipeline import db as sqlite_db
 SOURCE = 'source'  # the kizomba-world export, and the steps' tables in it
 
 
-def rebuilt(ddl: str) -> str:
+def rebuilt(ddl: str, added: Mapping[str, Sequence[str]] | None = None, then: str = '') -> str:
     """A migration that makes these tables again as the script declares them, with their rows, column for column: the
-    old ones renamed aside (no reference to them follows, Db.rebuilding), their indexes dropped for the new ones'."""
+    old ones renamed aside (no reference to them follows, Db.rebuilding), their indexes dropped for the new ones'. A
+    table's added columns (the ones its old one hasn't) take their defaults, which the script then runs after may
+    fill."""
     with sqlite_db.memory() as db:
         with db.transaction() as tx:
             tx.script(ddl)
         tables = db.column(str, "select name from sqlite_master where type = 'table' order by rowid")
         indexes = db.column(str, "select name from sqlite_master where type = 'index' and sql is not null")
-    old = [(sqlite_db.name(t), sqlite_db.name(f'{t}__old')) for t in tables]
+        columns = {t: db.column(str, 'select name from pragma_table_info(?)', (t,)) for t in tables}
+    copies: list[str] = []
+    for t in tables:
+        new, old = sqlite_db.name(t), sqlite_db.name(f'{t}__old')
+        if t in (added or {}):
+            kept = ', '.join(sqlite_db.name(c) for c in columns[t] if c not in (added or {})[t])
+            copies.append(f'insert into {new} ({kept}) select {kept} from {old};')  # noqa: S608 (declared names, quoted)
+        else:
+            copies.append(f'insert into {new} select * from {old};')  # noqa: S608 (declared names, quoted)
+        copies.append(f'drop table {old};')
     return '\n'.join(
         [f'drop index if exists {sqlite_db.name(i)};' for i in indexes]
-        + [f'alter table {t} rename to {o};' for t, o in old]
-        + [ddl]
-        + [f'insert into {t} select * from {o};\ndrop table {o};' for t, o in old]  # noqa: S608 (declared names, quoted)
+        + [f'alter table {sqlite_db.name(t)} rename to {sqlite_db.name(f"{t}__old")};' for t in tables]
+        + [ddl, *copies]
+        + ([then] if then else [])
     )
 
 
@@ -131,6 +142,58 @@ CREATE TABLE pipeline_steps (
     match_key TEXT NOT NULL UNIQUE  -- the key it was given to
 ) STRICT;
 """
+    ),
+    # 4: a festival the site stops listing kept (listing gone, since unlisted_on), and the source's id of each festival
+    # beside ours, which is the same to begin with
+    rebuilt(
+        """create table events (
+    id integer primary key,
+    title text not null,
+    url text not null unique,
+    slug text,
+    start_date text not null,
+    end_date text,
+    start_date_utc text,
+    end_date_utc text,
+    timezone text,
+    all_day integer not null check (all_day in (0, 1)),
+    featured integer not null check (featured in (0, 1)),
+    sticky integer not null check (sticky in (0, 1)),
+    cancelled integer check (cancelled in (0, 1)),  -- NULL = unknown (a past event's page)
+    venue text,
+    address text,
+    city text,
+    country text,
+    deal_text text,
+    deal_url text,
+    website text,
+    image_url text,
+    description_text text,
+    description_html text,
+    url_fr text,
+    url_es text,
+    url_pt text,
+    published_at text,
+    modified_at text,
+    page_fetched integer not null check (page_fetched in (0, 1)),  -- 0 when the event page could not be fetched
+    listing text not null default 'listed' check (listing in ('listed', 'gone')),
+    unlisted_on text,             -- the day the site stopped listing it
+    check ((listing = 'gone') = (unlisted_on is not null))
+) strict;
+create index events_start on events(start_date);
+create index events_country on events(country);
+""",
+        added={'events': ('listing', 'unlisted_on')},
+        then="""
+create table source_ids (
+    source text not null check (source in ('kizomba-world')),
+    source_id integer not null,   -- the festival's id there
+    event_id integer not null references events(id) on delete cascade deferrable initially deferred,
+    primary key (source, source_id)
+) strict, without rowid;
+create index source_ids_event on source_ids(event_id);
+insert into source_ids (source, source_id, event_id) select 'kizomba-world', id, id from events;
+""",
     ),
 )
 

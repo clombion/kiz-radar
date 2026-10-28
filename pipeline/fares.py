@@ -33,7 +33,7 @@ from typing import NamedTuple
 from pydantic import BaseModel, ConfigDict, ValidationError
 
 from pipeline import airports, build_site_db, export
-from pipeline.enums import FareSearch
+from pipeline.enums import FareSearch, Listing
 from pipeline.records import Date, Fare, Job, Record, now
 
 FLI_SHA = '881aee5ff4321e81ea2157cb44be94ce6a21dc1b'  # punitarani/fli, the only place the version is pinned
@@ -106,12 +106,12 @@ class Flown(Record):
 
 @functools.cache
 def weekends(today: dt.date) -> set[tuple[str, dt.date]]:
-    """(airport, Friday) of every upcoming, not cancelled festival with an airport other than home, from the site DB
-    built for it from the export."""
+    """(airport, Friday) of every upcoming festival still listed and not cancelled, with an airport other than home,
+    from the site DB built for it from the export."""
     with build_site_db.built(export.path()) as c:
         query = """select airport, weekend_friday from events where airport is not null and airport != ?
-            and cancelled is not 1 and weekend_friday > ?"""
-        return {(w.airport, w.weekend_friday) for w in c.rows(Flown, query, (airports.home(), today))}
+            and cancelled is not 1 and listing = ? and weekend_friday > ?"""
+        return {(w.airport, w.weekend_friday) for w in c.rows(Flown, query, (airports.home(), Listing.LISTED, today))}
 
 
 def interval(days_away: int) -> int | None:

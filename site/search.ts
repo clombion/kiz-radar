@@ -53,6 +53,7 @@ const FOUND_EVENT = {
   ...PLACE_AND_DAYS,
   upcoming: flagCol,
   cancelled: opt(flagCol),
+  listing: state('listing'),
   lat: opt(num),
   url: str,
   code: opt(str),
@@ -139,7 +140,7 @@ const festivalEntries = (): Indexed[] =>
   q(
     FOUND_EVENT,
     sql`SELECT r.id, r.title, x.listed_title, r.venue, r.city, r.country_code, r.start_date, r.end_date, r.upcoming,
-      r.cancelled, r.lat, x.url, p.code FROM event_rows r JOIN events x ON x.id = r.id
+      r.cancelled, r.listing, r.lat, x.url, p.code FROM event_rows r JOIN events x ON x.id = r.id
       LEFT JOIN event_promos p ON p.event_id = r.id`,
   ).map((e) => [
     {
@@ -320,7 +321,13 @@ function festivalParts(e: FoundEvent): Parts {
     [
       place(e),
       yr,
-      e.cancelled === true ? ' · cancelled' : e.upcoming ? '' : ' · has taken place',
+      e.cancelled === true
+        ? ' · cancelled'
+        : e.listing === KEY.listing.GONE
+          ? ` ${text('listing', e.listing, {}, 'search')}`
+          : e.upcoming
+            ? ''
+            : ' · has taken place',
       e.lat === null ? [' · on kizomba-world', away()] : '',
     ],
   ];

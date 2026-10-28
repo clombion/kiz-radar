@@ -77,7 +77,7 @@ from pipeline import data, exceptions, export, spend, states
 from pipeline import db as sqlite_db
 from pipeline import prompt as prompts
 from pipeline.enums import FirstRead as FirstReadState
-from pipeline.enums import PassKind, Recheck, Sales, SkipReason, Status, Style, Waiting
+from pipeline.enums import Listing, PassKind, Recheck, Sales, SkipReason, Status, Style, Waiting
 from pipeline.extract import answers, ask, check_output, prices
 from pipeline.records import (
     JSON,
@@ -1002,12 +1002,15 @@ def links_hash(urls: Iterable[str]) -> str:
 
 def festivals(db: sqlite_db.Reader, today: dt.date, only: int | None = None, *, every: bool = False) -> list[Festival]:
     """The festivals still to come, every festival the source database lists (every), or the one asked for (only),
-    leaving out the cancelled ones, as Festival records."""
-    query = 'select id, title, start_date, end_date, country, description_text from events where cancelled is not 1'
+    leaving out the cancelled ones and the ones the site no longer lists, as Festival records."""
+    query = (
+        'select id, title, start_date, end_date, country, description_text from events where cancelled is not 1'
+        ' and listing = ?'
+    )
     events = (
-        db.rows(Event, query + ' and id = ?', (only,))
+        db.rows(Event, query + ' and id = ?', (Listing.LISTED, only))
         if only
-        else db.rows(Event, query + ' order by start_date')
+        else db.rows(Event, query + ' order by start_date', (Listing.LISTED,))
         if every
         else db.rows(Event, query + ' and end_date >= ? order by start_date', (today,))
     )
@@ -1255,7 +1258,7 @@ def draft_of(f: Festival, entry: Read, by: str) -> ReadHeader:
 def one(db: sqlite_db.Reader, event_id: int, page: str | None = None) -> Festival:
     f = next(iter(festivals(db, today(), event_id)), None)
     if f is None:
-        sys.exit(f'{event_id}: no such festival, or it is cancelled')
+        sys.exit(f'{event_id}: no such festival, or it is cancelled or no longer listed')
     return replace(f, page=page, site=site_for(page, sites())) if page else f
 
 

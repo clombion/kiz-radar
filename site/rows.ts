@@ -68,6 +68,7 @@ export const EVENT = {
   airport_city: opt(str),
   weekend_friday: opt(str),
   cancelled: opt(flag),
+  listing: state('listing'),
   venue: opt(str),
   lineup: opt(num),
   popular_artists: opt(num),
