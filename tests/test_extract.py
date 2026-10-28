@@ -6,16 +6,18 @@ import datetime as dt
 import itertools
 import json
 import sqlite3
-from collections.abc import Callable
+from collections.abc import Callable, Generator
+from contextlib import contextmanager
 from difflib import SequenceMatcher
 from enum import StrEnum
 from pathlib import Path
 from typing import Annotated
 
 import pytest
-from pydantic import Field, ValidationError
+from pydantic import BaseModel, Field, ValidationError
 
 from pipeline import data, db, enums, generate, prompt, spend, states, tickets
+from pipeline.db import Db, Transaction
 from pipeline.enums import AnswerState, MergeReason, PassKind, Role, Style
 from pipeline.extract import answers, ask, check_output, load_extract, prices, resolve_artists, run_log
 from pipeline.extract.resolve_artists import stable_ids
@@ -309,10 +311,15 @@ def test_a_row_of_the_artists_csvs_is_written_one_way(row: Callable[[], object],
         _ = row()
 
 
-def db_with(con: sqlite3.Connection, keys: dict[str, int], issued: dict[str, int]) -> sqlite3.Connection:
+def db_with(con: Db, keys: dict[str, int], issued: dict[str, int]) -> Db:
     """The export's tables stable_ids reads: each spelling's artist, and every id given."""
-    _ = shaped(con).executemany('insert into artist_keys values (?, ?)', keys.items())
-    _ = con.executemany('insert into artist_ids values (?, ?)', [(i, k) for k, i in issued.items()])
+    with shaped(con).transaction() as tx:
+        tx.insert(
+            'artists',
+            ({'id': i, 'display_name': k, 'kind': 'person', 'match_key': k} for k, i in sorted(keys.items())),
+        )
+        tx.insert('artist_keys', ({'match_key': k, 'artist_id': i} for k, i in keys.items()))
+        tx.insert('artist_ids', ({'artist_id': i, 'match_key': k} for k, i in issued.items()))
     return con
 
 
@@ -480,15 +487,14 @@ def test_the_system_text_sent_is_the_prompts() -> None:
 def export_prompts() -> set[str]:
     """The prompts the export's rows name, in every column called prompt (a step's lists them, separated by commas)."""
     with db.opened(EXPORT, 'ro') as con:
-        tables: list[tuple[str]] = con.execute("select name from sqlite_master where type = 'table'").fetchall()
         named: set[str] = set()
-        for (t,) in tables:
-            columns: list[tuple[int, str, str, int, object, int]] = con.execute(f'pragma table_info("{t}")').fetchall()
-            if any(c[1] == 'prompt' for c in columns):
-                values: list[tuple[str]] = con.execute(
-                    f'select distinct prompt from "{t}" where prompt is not null'  # noqa: S608 (the export's own table names)
-                ).fetchall()
-                named |= {h for (v,) in values for h in v.split(', ')}
+        prompted = (
+            "select m.name from sqlite_master m, pragma_table_info(m.name) c where m.type = 'table'"
+            " and c.name = 'prompt'"
+        )
+        for t in con.column(str, prompted):
+            values = con.column(str, f'select distinct prompt from {db.name(t)} where prompt is not null')  # noqa: S608 (the export's own table names, quoted)
+            named |= {h for v in values for h in v.split(', ')}
     return named
 
 
@@ -534,10 +540,10 @@ def test_a_request_costs_its_models_prices() -> None:
     assert spend.usd('claude-sonnet-5-5', 1_000, 1_000) == 0.012
 
 
-def source(con: sqlite3.Connection, *events: tuple[int, str | None]) -> sqlite3.Connection:
-    _ = shaped(con)
-    for i, d in events:
-        festival(con, i, title='F', description_text=d, end_date='2099-01-02')
+def source(con: Db, *events: tuple[int, str | None]) -> Db:
+    with shaped(con).transaction() as tx:
+        for i, d in events:
+            festival(tx, i, title='F', description_text=d, end_date='2099-01-02')
     return con
 
 
@@ -645,38 +651,57 @@ def test_the_question_asked_is_the_festival_as_its_pass_asks() -> None:
     assert 'styles' not in extract
 
 
+class StoppedError(Exception):
+    """A step stopping halfway."""
+
+
+def record_then_stop(con: Db) -> None:
+    with con.transaction() as tx:
+        run_log.record(tx, run_log.Step('step', 'what', 'test', details={'n': 1}))
+        assert load_extract.count(tx, 'SELECT count(*) FROM pipeline_steps') == 1
+        raise StoppedError
+
+
 def test_the_run_log_writes_inside_the_callers_transaction(memory: Memory) -> None:
     con = memory()
-    _ = con.executescript(run_log.SCHEMA)
-    _ = con.execute('BEGIN')
-    run_log.record(con, run_log.Step('step', 'what', 'test', details={'n': 1}))
-    assert con.in_transaction
-    assert load_extract.count(con, 'SELECT count(*) FROM pipeline_steps') == 1
-    con.rollback()
+    with con.transaction() as tx:
+        tx.script(run_log.SCHEMA)
+    with pytest.raises(StoppedError):
+        record_then_stop(con)
     assert load_extract.count(con, 'SELECT count(*) FROM pipeline_steps') == 0
+
+
+def load_refused(con: Db) -> None:
+    with con.transaction() as tx:
+        tx.script(load_extract.SCHEMA)
+        tx.execute("INSERT INTO event_genres (event_id, genre, source) VALUES (1, 'tango', 'site_tag')")
 
 
 def test_a_load_a_check_refuses_leaves_the_database_as_it_was(memory: Memory) -> None:
     con = memory()
-    _ = con.execute('CREATE TABLE events (id INTEGER PRIMARY KEY)')  # the source's, which the step's tables refer to
-    _ = con.execute('CREATE TABLE event_passes (kept INTEGER)')
-    con.commit()
-    _ = con.executescript(load_extract.SCHEMA)
+    with con.transaction() as tx:
+        tx.execute('CREATE TABLE events (id INTEGER PRIMARY KEY)')  # the source's, which the step's tables refer to
+        tx.execute('CREATE TABLE event_passes (kept INTEGER)')
     with pytest.raises(sqlite3.IntegrityError):
-        _ = con.execute("INSERT INTO event_genres (event_id, genre, source) VALUES (1, 'tango', 'site_tag')")
-    con.rollback()
-    columns: list[tuple[int, str]] = con.execute('PRAGMA table_info(event_passes)').fetchall()
-    assert [c[1] for c in columns] == ['kept']
+        load_refused(con)
+    assert con.column(str, "SELECT name FROM pragma_table_info('event_passes')") == ['kept']
 
 
-def loaded(con: sqlite3.Connection) -> sqlite3.Connection:
+class PriceStatus(BaseModel):
+    event_id: int
+    price: str
+    page: str | None
+    card_pass: int | None
+
+
+@contextmanager
+def loaded(con: Db) -> Generator[Transaction]:
     """An empty source database with load_extract's tables, inside the load's transaction."""
-    _ = con.executescript(
-        'CREATE TABLE events (id INTEGER PRIMARY KEY, start_date TEXT, modified_at TEXT);'
-        "INSERT INTO events VALUES (5, '2026-03-20 18:00:00', '2026-01-01 10:00:00'), (6, '2026-04-01', '2026-01-01');"
-    )
-    _ = con.executescript(load_extract.SCHEMA)
-    return con
+    with shaped(con).transaction() as tx:
+        festival(tx, 5, start_date='2026-03-20 18:00:00', modified_at='2026-01-01 10:00:00')
+        festival(tx, 6, start_date='2026-04-01', modified_at='2026-01-01')
+        tx.script(load_extract.SCHEMA)
+        yield tx
 
 
 @pytest.mark.parametrize(
@@ -696,20 +721,21 @@ def loaded(con: sqlite3.Connection) -> sqlite3.Connection:
     ],
 )
 def test_a_row_outside_the_table_or_its_rules_is_refused_when_written(memory: Memory, sql: str) -> None:
-    with pytest.raises(sqlite3.IntegrityError):
-        _ = loaded(memory()).execute(sql)
+    with loaded(memory()) as tx, pytest.raises(sqlite3.IntegrityError):
+        tx.execute(sql)
 
 
 def test_a_festival_is_priced_exactly_when_it_has_the_pass_a_card_prices(memory: Memory) -> None:
-    con = loaded(memory())
     full = priced(tier('Full pass 80€ until 31.01'))
     party = priced(tier('Full pass 80€ until 31.01'), kind=PassKind.PARTY, event_id=6)
     described = {e.event_id: answers.Answer(e, 'b', logged('h')) for e in (full, party)}
-    load_extract.load_prices(con, described, {}, {6: (enums.Sales.SHOP, 'https://shop.example/6')})
-    statuses: list[tuple[int, str, str | None, int | None]] = con.execute(
-        'SELECT event_id, price, page, card_pass FROM price_status ORDER BY event_id'
-    ).fetchall()
-    assert statuses == [(5, 'priced', None, 1), (6, 'other_passes_only', 'https://shop.example/6', None)]
+    with loaded(memory()) as con:
+        load_extract.load_prices(con, described, {}, {6: (enums.Sales.SHOP, 'https://shop.example/6')})
+        statuses = con.rows(PriceStatus, 'SELECT event_id, price, page, card_pass FROM price_status ORDER BY event_id')
+    assert [(r.event_id, r.price, r.page, r.card_pass) for r in statuses] == [
+        (5, 'priced', None, 1),
+        (6, 'other_passes_only', 'https://shop.example/6', None),
+    ]
 
 
 @pytest.fixture
@@ -723,9 +749,9 @@ def source_file() -> Path:
     """An export in the test's data folder holding FEST, pending extraction."""
     path = data(db.SOURCE) / 'source.sqlite'
     path.parent.mkdir(parents=True)
-    with db.opened(path, 'rwc') as con:
+    with db.opened(path, 'rwc') as con, shaped(con).transaction() as tx:
         festival(
-            shaped(con),
+            tx,
             FEST.id,
             title=FEST.title,
             description_text=FEST.description_text,
@@ -733,8 +759,7 @@ def source_file() -> Path:
             end_date=FEST.end_date,
             country=FEST.country,
         )
-        _ = con.execute("insert into pending_extraction values (?, 'description changed', '2026-01-01')", (FEST.id,))
-        con.commit()
+        tx.insert('pending_extraction', [{'event_id': FEST.id, 'reason': 'description changed', 'since': '2026-01-01'}])
     return path
 
 
@@ -755,7 +780,7 @@ def test_a_festival_is_asked_its_passes_and_leaves_pending_once_all_are_answered
     run_ask(monkeypatch, client, '--pass', 'prices')
     assert answers.current(prompt.PRICES, {5})[5].entry.passes[0].tiers[0].amount == 80
     with db.opened(src, 'ro') as con:
-        assert con.execute('select event_id from pending_extraction').fetchall() == [(5,)]  # the other passes wait
+        assert con.column(int, 'select event_id from pending_extraction') == [5]  # the other passes wait
     run_ask(monkeypatch, client, '--pass', 'prices')
     assert 'festivals to ask about: ' in capsys.readouterr().out
     assert len(client.messages.asked) == 1  # answered to the current prompt: not asked again

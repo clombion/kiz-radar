@@ -49,7 +49,6 @@ import functools
 import itertools
 import math
 import re
-import sqlite3
 import sys
 import unicodedata
 from collections import Counter, defaultdict
@@ -61,10 +60,12 @@ from fractions import Fraction
 from typing import NamedTuple, Self
 
 import pycountry
+from pydantic import BaseModel
 
 from pipeline import data, states
 from pipeline import db as sqlite_db
 from pipeline.countries import CODE_LENGTH, INDICATOR_A, indicator
+from pipeline.db import Reader, Transaction
 from pipeline.enums import ArtistKind, MergeDecision, MergeReason, Role
 from pipeline.extract import run_log
 from pipeline.extract.answers import log, logged
@@ -80,7 +81,6 @@ REVIEWER = 'claude-haiku-5-5'  # the model of the merge review's subagents
 PAIR = 2  # the keys of a decision on two artists; one key's decides a single name
 
 TABLES = """
-BEGIN;
 DROP VIEW IF EXISTS artist_events;
 DROP TABLE IF EXISTS event_artists;
 DROP TABLE IF EXISTS couple_members;
@@ -403,7 +403,7 @@ class Resolved(NamedTuple):
     groups: int
 
 
-def record_steps(con: sqlite3.Connection, resolved: Resolved, rows: Sequence[MergeRow]) -> None:
+def record_steps(con: Transaction, resolved: Resolved, rows: Sequence[MergeRow]) -> None:
     n_mentions, kinds_count, n_candidates, n_unsupported, n_groups = resolved
     run_log.document(con, TABLE_DOCS, 'pipeline/extract/resolve_artists.py')
     reviews = sorted((data(ANSWERS) / 'merge_review').glob('*.json'))
@@ -459,13 +459,16 @@ def record_steps(con: sqlite3.Connection, resolved: Resolved, rows: Sequence[Mer
     )
 
 
-def stable_ids(con: sqlite3.Connection, final_key: Mapping[str, str]) -> dict[str, int]:
+class Keyed(BaseModel):
+    match_key: str
+    artist_id: int
+
+
+def stable_ids(con: Reader, final_key: Mapping[str, str]) -> dict[str, int]:
     """An id for each artist (final key): its own earlier id, else the lowest earlier id of a key it absorbed that
     no artist still owns, else the next id never given."""
-    given: list[tuple[str, int]] = con.execute('SELECT match_key, artist_id FROM artist_ids').fetchall()
-    issued = dict(given)
-    was: list[tuple[str, int]] = con.execute('SELECT match_key, artist_id FROM artist_keys').fetchall()
-    key_was = dict(was)
+    issued = {r.match_key: r.artist_id for r in con.rows(Keyed, 'SELECT match_key, artist_id FROM artist_ids')}
+    key_was = {r.match_key: r.artist_id for r in con.rows(Keyed, 'SELECT match_key, artist_id FROM artist_keys')}
     finals = sorted(set(final_key.values()))
     ids = {fk: issued[fk] for fk in finals if fk in issued}
     taken = set(ids.values())
@@ -847,7 +850,7 @@ def final_keys(keys: Keys, uf: UnionFind, groups: Iterable[Group]) -> dict[str, 
 
 
 def write_artists(
-    con: sqlite3.Connection, keys: Keys, final_key: Mapping[str, str], groups: list[Group], ids: Mapping[str, int]
+    con: Transaction, keys: Keys, final_key: Mapping[str, str], groups: list[Group], ids: Mapping[str, int]
 ) -> None:
     """The artists, their spellings, keys and members."""
     group_display = {g.group_key: g.display_name for g in groups}
@@ -855,30 +858,47 @@ def write_artists(
     for k, ns in keys.names.items():
         for n in ns:
             alias_counts[final_key[k]][n] += 1
+    first: dict[str, str] = {}  # each artist's first key, whose kind it is unless it is a group
+    for k in keys.kinds:
+        _ = first.setdefault(final_key[k], k)
+    artists: list[dict[str, object]] = []
     for fk in sorted(set(final_key.values())):
-        src = next(k for k in keys.kinds if final_key[k] == fk)
         display = group_display.get(fk) or (
             max(alias_counts[fk].items(), key=lambda kv: (kv[1], -len(kv[0])))[0] if alias_counts[fk] else fk
         )
-        kind = ArtistKind.GROUP if fk in group_display else keys.kinds[src]
-        _ = con.execute('INSERT INTO artists VALUES (?, ?, ?, ?)', (ids[fk], display, kind, fk))
-        _ = con.executemany(
-            'INSERT INTO artist_aliases VALUES (?, ?, ?)', [(ids[fk], a, n) for a, n in alias_counts[fk].items()]
-        )
-    _ = con.executemany('INSERT INTO artist_keys VALUES (?, ?)', [(k, ids[fk]) for k, fk in final_key.items()])
-    for k, ms in keys.members.items():
-        _ = con.executemany(
-            'INSERT INTO couple_members VALUES (?, ?) ON CONFLICT DO NOTHING',
-            [(ids[final_key[k]], ids[final_key[m]]) for m in ms],
-        )
+        kind = ArtistKind.GROUP if fk in group_display else keys.kinds[first[fk]]
+        artists.append({'id': ids[fk], 'display_name': display, 'kind': kind, 'match_key': fk})
+    con.insert('artists', artists)
+    con.insert(
+        'artist_aliases',
+        (
+            {'artist_id': ids[fk], 'alias': a, 'mentions': n}
+            for fk in sorted(set(final_key.values()))
+            for a, n in alias_counts[fk].items()
+        ),
+    )
+    con.insert('artist_keys', ({'match_key': k, 'artist_id': ids[fk]} for k, fk in final_key.items()))
+    con.insert(
+        'couple_members',
+        (
+            {'couple_id': ids[final_key[k]], 'member_id': ids[final_key[m]]}
+            for k, ms in keys.members.items()
+            for m in ms
+        ),
+        unless=('couple_id', 'member_id'),
+    )
+
+
+class Counted(BaseModel):
+    kind: str
+    n: int
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description='Resolve artist mentions into artists, with stable ids.')
     _ = ap.parse_args()
-    with sqlite_db.opened(sqlite_db.export(), 'rw') as con:
-        mentions = sqlite_db.records(
-            con,
+    with sqlite_db.opened(sqlite_db.export(), 'rw') as db, db.transaction() as con:
+        mentions = con.rows(
             Mention,
             'SELECT m.id, m.event_id, m.role, m.name_as_written, m.style, m.country, e.country AS event_country'
             ' FROM artist_mentions m JOIN events e ON e.id = m.event_id',
@@ -892,35 +912,53 @@ def main() -> None:
 
         # keeping the ids artists had
         ids = stable_ids(con, final_key)
-        _ = con.executescript(SCHEMA)
-        _ = con.executemany(
-            'INSERT INTO artist_ids VALUES (?, ?) ON CONFLICT DO NOTHING', [(i, fk) for fk, i in ids.items()]
-        )
+        con.script(SCHEMA)
+        con.insert('artist_ids', ({'artist_id': i, 'match_key': fk} for fk, i in ids.items()), unless=('artist_id',))
         write_artists(con, keys, final_key, groups, ids)
-        _ = con.executemany(
-            'INSERT INTO merge_reason_definitions VALUES (?, ?)',
-            [(s.key, s.criterion) for s in states.of('merge_reason')],
+        con.insert(
+            'merge_reason_definitions',
+            ({'reason': s.key, 'definition': s.criterion} for s in states.of('merge_reason')),
         )
         found = [c for c in found if c.key_a == c.key_b or final_key[c.key_a] != final_key[c.key_b]]
-        _ = con.executemany(
-            'INSERT INTO event_artists VALUES (?, ?, ?, ?, ?, ?)',
-            [(m.id, m.event_id, ids[final_key[keys.mention_key[m.id]]], m.role, m.style, m.country) for m in mentions],
+        con.insert(
+            'event_artists',
+            (
+                {
+                    'mention_id': m.id,
+                    'event_id': m.event_id,
+                    'artist_id': ids[final_key[keys.mention_key[m.id]]],
+                    'role': m.role,
+                    'style': m.style,
+                    'country': m.country,
+                }
+                for m in mentions
+            ),
         )
-        _ = con.executemany('INSERT INTO artist_merge_candidates VALUES (?, ?, ?, ?, ?, ?, ?, ?)', found)
-        _ = con.executemany(
-            'INSERT INTO artist_merge_decisions VALUES (?, ?, ?, ?, ?)',
-            [(r.key_a, r.key_b, r.decision, r.prompt, r.note) for r in rows],
+        con.insert('artist_merge_candidates', (c._asdict() for c in found))
+        con.insert(
+            'artist_merge_decisions',
+            (
+                {'key_a': r.key_a, 'key_b': r.key_b, 'decision': r.decision, 'prompt': r.prompt, 'note': r.note}
+                for r in rows
+            ),
         )
-        for g in groups:
-            _ = con.execute(
-                'INSERT INTO artist_group_definitions VALUES (?, ?, ?, ?)',
-                (g.group_key, ids[g.group_key], g.display_name, g.note),
-            )
-            _ = con.executemany('INSERT INTO artist_group_aliases VALUES (?, ?)', [(g.group_key, a) for a in g.aliases])
-        counted: list[tuple[str, int]] = con.execute('SELECT kind, count(*) FROM artists GROUP BY kind').fetchall()
-        kinds_count = dict(counted)
+        con.insert(
+            'artist_group_definitions',
+            (
+                {
+                    'group_key': g.group_key,
+                    'artist_id': ids[g.group_key],
+                    'display_name': g.display_name,
+                    'note': g.note,
+                }
+                for g in groups
+            ),
+        )
+        con.insert(
+            'artist_group_aliases', ({'group_key': g.group_key, 'match_key': a} for g in groups for a in g.aliases)
+        )
+        kinds_count = {k.kind: k.n for k in con.rows(Counted, 'SELECT kind, count(*) AS n FROM artists GROUP BY kind')}
         record_steps(con, Resolved(len(mentions), kinds_count, len(found), unsupported_same_name, len(groups)), rows)
-        con.commit()
         print(
             f'mentions {len(mentions)} -> artists {sum(kinds_count.values())} {kinds_count};'
             f' candidates {len(found)} ({sum(1 for c in found if c.decision)} reviewed);'

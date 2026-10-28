@@ -62,7 +62,6 @@ import datetime as dt
 import hashlib
 import json
 import re
-import sqlite3
 import sys
 from collections.abc import Iterable, Mapping, Sequence
 from contextlib import AbstractContextManager
@@ -852,7 +851,7 @@ def recheck(tiers: Sequence[PriceRow], start: dt.date, today: dt.date) -> tuple[
 # ---- festivals
 
 
-def src_db() -> AbstractContextManager[sqlite3.Connection]:
+def src_db() -> AbstractContextManager[sqlite_db.Db]:
     """The kizomba-world export (db.export), to read, closed with its block."""
     return sqlite_db.opened(sqlite_db.export(), 'ro')
 
@@ -861,13 +860,11 @@ def host(url: str) -> str:
     return (urlparse(url).netloc or '').lower()
 
 
-def links(db: sqlite3.Connection, event_id: int) -> list[str]:
+def links(db: sqlite_db.Reader, event_id: int) -> list[str]:
     """The festival's links that may sell tickets, full ones first; a cut-short one ends in …."""
-    linked: list[tuple[str]] = db.execute('select url from event_links where event_id = ?', (event_id,)).fetchall()
-    described: list[tuple[str]] = db.execute(
-        'select coalesce(description_text, "") from events where id = ?', (event_id,)
-    ).fetchall()
-    urls = [u for (u,) in linked] + [m[0] for (text,) in described for m in re.finditer(r'https?://[^\s<>"|)]+', text)]
+    linked = db.column(str, 'select url from event_links where event_id = ?', (event_id,))
+    described = db.column(str, "select coalesce(description_text, '') from events where id = ?", (event_id,))
+    urls = linked + [m[0] for text in described for m in re.finditer(r'https?://[^\s<>"|)]+', text)]
     keep = {u for u in urls if (h := host(u)) and not any(n in h for n in NOT_TICKETS)}
     return sorted(keep, key=lambda u: ('…' in u, u))
 
@@ -1003,18 +1000,16 @@ def links_hash(urls: Iterable[str]) -> str:
     return hashlib.sha256('\n'.join(sorted(urls)).encode()).hexdigest()[:16]
 
 
-def festivals(
-    db: sqlite3.Connection, today: dt.date, only: int | None = None, *, every: bool = False
-) -> list[Festival]:
+def festivals(db: sqlite_db.Reader, today: dt.date, only: int | None = None, *, every: bool = False) -> list[Festival]:
     """The festivals still to come, every festival the source database lists (every), or the one asked for (only),
     leaving out the cancelled ones, as Festival records."""
     query = 'select id, title, start_date, end_date, country, description_text from events where cancelled is not 1'
     events = (
-        sqlite_db.records(db, Event, query + ' and id = ?', (only,))
+        db.rows(Event, query + ' and id = ?', (only,))
         if only
-        else sqlite_db.records(db, Event, query + ' order by start_date')
+        else db.rows(Event, query + ' order by start_date')
         if every
-        else sqlite_db.records(db, Event, query + ' and end_date >= ? order by start_date', (today,))
+        else db.rows(Event, query + ' and end_date >= ? order by start_date', (today,))
     )
     described = answers.current(prompts.PRICES, {e.id for e in events})
     known, found = sites(), found_pages()
@@ -1117,7 +1112,7 @@ def write_status(fs: Sequence[Festival]) -> collections.Counter[Waiting]:
     return collections.Counter(r.waits_for for r in rows)
 
 
-def status(db: sqlite3.Connection) -> collections.Counter[Waiting]:
+def status(db: sqlite_db.Reader) -> collections.Counter[Waiting]:
     """Write tickets/status.csv for every festival the source database lists; the counts of what they wait for."""
     return write_status(festivals(db, today(), every=True))
 
@@ -1257,14 +1252,14 @@ def draft_of(f: Festival, entry: Read, by: str) -> ReadHeader:
     )
 
 
-def one(db: sqlite3.Connection, event_id: int, page: str | None = None) -> Festival:
+def one(db: sqlite_db.Reader, event_id: int, page: str | None = None) -> Festival:
     f = next(iter(festivals(db, today(), event_id)), None)
     if f is None:
         sys.exit(f'{event_id}: no such festival, or it is cancelled')
     return replace(f, page=page, site=site_for(page, sites())) if page else f
 
 
-def cmd_read(db: sqlite3.Connection, event_id: int, url: str | None = None, *, visible: bool | None = None) -> None:
+def cmd_read(db: sqlite_db.Reader, event_id: int, url: str | None = None, *, visible: bool | None = None) -> None:
     f = one(db, event_id, url and full_url(url))
     if not f.page:
         sys.exit(f'{event_id}: no known ticket page; find it and pass --url')
@@ -1286,7 +1281,7 @@ def cmd_read(db: sqlite3.Connection, event_id: int, url: str | None = None, *, v
         print(f'  {r.key:>12}  {line(r)}{"  (sold out)" if r.sold_out else ""}')
 
 
-def cmd_draft(db: sqlite3.Connection, event_id: int) -> None:
+def cmd_draft(db: sqlite_db.Reader, event_id: int) -> None:
     f, path = one(db, event_id), data(DRAFTS) / f'{event_id}.json'
     if path.exists():
         sys.exit(f'{shown(path)} exists; delete it to start the draft again')
@@ -1323,7 +1318,7 @@ def cmd_check(event_id: int) -> None:
             sys.exit('\n'.join(found))
 
 
-def cmd_record(db: sqlite3.Connection, event_id: int) -> None:
+def cmd_record(db: sqlite_db.Reader, event_id: int) -> None:
     if found := record(event_id):
         sys.exit('\n'.join(found))
     _ = status(db)
@@ -1352,7 +1347,7 @@ def todo_notes(f: Festival, today: dt.date) -> list[str]:
     return notes
 
 
-def cmd_todo(db: sqlite3.Connection) -> None:
+def cmd_todo(db: sqlite_db.Reader) -> None:
     day = today()
     fs = festivals(db, day)
     for f in fs:
@@ -1393,7 +1388,7 @@ class Sold(NamedTuple):
     by: str
 
 
-def cmd_page(db: sqlite3.Connection, event_id: int, sold: Sold) -> None:
+def cmd_page(db: sqlite_db.Reader, event_id: int, sold: Sold) -> None:
     """Record how a festival with no known ticket page sells its tickets: its shop's page, or that its sales haven't
     opened, happen offline, are closed, or that a search of its links and the web found no page."""
     url, state, note, by = sold
@@ -1431,7 +1426,7 @@ def cmd_changes(event_id: int | None = None) -> None:
             print(f'{i}  {day}  {text}')
 
 
-def cmd_retry(db: sqlite3.Connection, event_id: int) -> None:
+def cmd_retry(db: sqlite_db.Reader, event_id: int) -> None:
     cmd_read(db, event_id, visible=True)
     cmd_record(db, event_id)
 
@@ -1440,7 +1435,7 @@ class Run:
     """The monthly Action's run: the reads it makes, what it found wrong, and whether the month's budget stopped
     the first reads."""
 
-    def __init__(self, db: sqlite3.Connection, today: dt.date) -> None:
+    def __init__(self, db: sqlite_db.Reader, today: dt.date) -> None:
         self.db, self.today = db, today
         self.client: ask.Client | None = None
         self.alarms: list[str] = []
@@ -1494,14 +1489,14 @@ class Run:
             self.broken(f.id, entry)
 
 
-def cmd_run(db: sqlite3.Connection, ids: set[int] | None = None) -> None:
+def cmd_run(db: sqlite_db.Reader, ids: set[int] | None = None) -> None:
     """Re-read what is due and retry failures, first-read with the models what needs it, and make again, from their
     latest logged rows, the first reads of festivals now past that follow another prompt (of the festivals ids
     names, when it names some); then write both files. Exits 1 naming each festival whose page broke its recipe,
     reached REFUSALS failures, or no longer fits its first read."""
     day = today()
-    every: list[tuple[int]] = db.execute('select id from events').fetchall()
-    if ids and (missing := ids - {i for (i,) in every}):
+    every = set(db.column(int, 'select id from events'))
+    if ids and (missing := ids - every):
         sys.exit(f'no such festival: {sorted(missing)}')
     run = Run(db, day)
     for f in (f for f in festivals(db, day) if not ids or f.id in ids):

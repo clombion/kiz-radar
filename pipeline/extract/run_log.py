@@ -3,17 +3,19 @@
 One row per step (the latest run of that step replaces the earlier one): what was done, when, by whom
 (a script, a model, or the human reviewer), with which model and prompts (their hashes, pipeline/prompt.py), from
 which inputs to which outputs, and the step's key numbers as JSON. Every pipeline script records its own step.
-These functions only write, into the export's tables (SCHEMA, which tests/test_steps.py holds the export to): the
-caller owns the transaction, and commits once its step is whole.
+These functions only write, into the export's tables (SCHEMA, which tests/test_steps.py holds the export to), in the
+caller's transaction, which commits once its step is whole.
 """
 
 import datetime as dt
 import json
-import sqlite3
 from collections.abc import Mapping
 from dataclasses import dataclass
 
+from pydantic import BaseModel
+
 from pipeline import prompt as prompts
+from pipeline.db import Transaction
 from pipeline.records import now
 
 SCHEMA = """
@@ -57,31 +59,32 @@ class Step:
     details: Mapping[str, object] | None = None
 
 
-def record(con: sqlite3.Connection, s: Step) -> None:
-    _ = con.execute(
-        'INSERT OR REPLACE INTO pipeline_steps VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-        (
-            s.step,
-            s.description,
-            s.performed_at or now(),
-            s.performed_by,
-            s.model,
-            s.prompt,
-            s.inputs,
-            s.outputs,
-            json.dumps(s.details, ensure_ascii=False) if s.details is not None else None,
-        ),
+def record(con: Transaction, s: Step) -> None:
+    con.upsert(
+        'pipeline_steps',
+        ['step'],
+        {
+            'step': s.step,
+            'description': s.description,
+            'performed_at': s.performed_at or now(),
+            'performed_by': s.performed_by,
+            'model': s.model,
+            'prompt': s.prompt,
+            'inputs': s.inputs,
+            'outputs': s.outputs,
+            'details': json.dumps(s.details, ensure_ascii=False) if s.details is not None else None,
+        },
     )
 
 
-def forget(con: sqlite3.Connection, step: str) -> None:
+def forget(con: Transaction, step: str) -> None:
     """Remove a step's row: what it produced is no longer in the database."""
     con.execute('DELETE FROM pipeline_steps WHERE step = ?', (step,))
 
 
-def record_prompt(con: sqlite3.Connection, hash_: str) -> None:
+def record_prompt(con: Transaction, hash_: str) -> None:
     """Store a prompt's full text, so the database says exactly what each model was told."""
-    con.execute('INSERT OR REPLACE INTO prompts VALUES (?, ?)', (hash_, prompts.asked(hash_)))
+    con.upsert('prompts', ['prompt'], {'prompt': hash_, 'text': prompts.asked(hash_)})
 
 
 OWN_DOCS = {
@@ -95,14 +98,23 @@ OWN_DOCS = {
 }
 
 
-def document(con: sqlite3.Connection, docs: dict[str, str], written_by: str) -> None:
+class Made(BaseModel):
+    name: str
+    type: str
+
+
+def document(con: Transaction, docs: dict[str, str], written_by: str) -> None:
     """Describe the tables and views a script creates, and only those; every script documents its own."""
-    kinds = dict(con.execute("SELECT name, type FROM sqlite_master WHERE type IN ('table', 'view')"))
+    kinds = {
+        m.name: m.type for m in con.rows(Made, "SELECT name, type FROM sqlite_master WHERE type IN ('table', 'view')")
+    }
     for name, description in {**docs, **OWN_DOCS}.items():
         if name not in kinds:
             raise ValueError(f'table_docs: {name} is not a table or view in this database')
         by = written_by if name in docs else 'pipeline/extract/run_log.py'
-        con.execute('INSERT OR REPLACE INTO table_docs VALUES (?, ?, ?, ?)', (name, kinds[name], description, by))
+        con.upsert(
+            'table_docs', ['name'], {'name': name, 'kind': kinds[name], 'description': description, 'written_by': by}
+        )
     # a table the script no longer creates leaves with its description
     con.execute(
         'DELETE FROM table_docs WHERE written_by = ? AND name NOT IN (SELECT value FROM json_each(?))',

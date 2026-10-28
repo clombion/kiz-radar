@@ -88,8 +88,7 @@ def main() -> None:
         'pipeline/states.py, say), and each override of pipeline/exceptions.py that departs from nothing any more.'
     ).parse_args()
     with tickets.src_db() as db:
-        ids: list[tuple[int]] = db.execute('SELECT id FROM events').fetchall()
-        bad = refused({i for (i,) in ids})
+        bad = refused(set(db.column(int, 'SELECT id FROM events')))
         old = stale(tickets.festivals(db, today(), every=True), tickets.sites())
     for line in bad:
         print(f'refused: {line}', file=sys.stderr)

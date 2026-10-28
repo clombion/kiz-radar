@@ -10,7 +10,6 @@ import subprocess
 import sys
 import tomllib
 from collections.abc import Iterator
-from contextlib import closing
 from importlib.metadata import packages_distributions
 from pathlib import Path
 
@@ -18,6 +17,7 @@ import pytest
 from pydantic import BaseModel, ConfigDict, Field, TypeAdapter
 
 from pipeline import ROOT, db
+from tests.fakes import Memory
 
 SOURCES = [
     *sorted((ROOT / '.github' / 'workflows').glob('*.yml')),
@@ -191,12 +191,65 @@ def test_packages_are_pinned_in_pyproject_only() -> None:
 
 def test_a_connection_holds_its_references_at_commit() -> None:
     """A row may refer to one written later in the transaction, but not to none once it commits."""
-    with closing(db.memory()) as con:
-        _ = con.execute('create table parent (id integer primary key)')
-        _ = con.execute('create table child (parent_id integer references parent(id) deferrable initially deferred)')
-        _ = con.execute('insert into child values (1)')
-        _ = con.execute('insert into parent values (1)')
-        con.commit()
-        _ = con.execute('insert into child values (2)')
-        with pytest.raises(sqlite3.IntegrityError, match='FOREIGN KEY'):
-            con.commit()
+    with db.memory() as con:
+        with con.transaction() as tx:
+            tx.execute('create table parent (id integer primary key)')
+            tx.execute('create table child (parent_id integer references parent(id) deferrable initially deferred)')
+            tx.execute('insert into child values (1)')
+            tx.execute('insert into parent values (1)')
+        with pytest.raises(sqlite3.IntegrityError, match='FOREIGN KEY'), con.transaction() as tx:
+            tx.execute('insert into child values (2)')
+        assert con.value(int, 'select count(*) from child') == 1  # the refused transaction left nothing
+
+
+def insert_then_fail(con: db.Db) -> None:
+    with con.transaction() as tx:
+        tx.execute('insert into t values (1)')
+        _ = 1 / 0
+
+
+def test_a_transaction_that_raises_leaves_nothing(tmp_path: Path) -> None:
+    with db.opened(tmp_path / 'x.sqlite', 'rwc') as con:
+        assert con.value(int, 'pragma foreign_keys') == 1  # a file's connection holds its references too
+        with con.transaction() as tx:
+            tx.execute('create table t (a integer)')
+        with pytest.raises(ZeroDivisionError):
+            insert_then_fail(con)
+        assert con.value(int, 'select count(*) from t') == 0
+
+
+def test_a_string_in_double_quotes_is_no_column() -> None:
+    with db.memory() as con, pytest.raises(sqlite3.OperationalError, match='no such column'):
+        _ = con.value(str, 'select "x"')
+
+
+def test_a_path_with_a_hash_opens_that_file(tmp_path: Path) -> None:
+    """A path is the file's, whatever it holds: a `#` would end an unencoded URI there and open another file."""
+    path = tmp_path / 'a#b.sqlite'
+    with db.opened(path, 'rwc') as con, con.transaction() as tx:
+        tx.execute('create table t (a integer)')
+    assert path.exists()
+    assert not (tmp_path / 'a').exists()
+
+
+def test_two_columns_of_one_name_are_refused(memory: Memory) -> None:
+    class Row(BaseModel):
+        a: int
+
+    with pytest.raises(ValueError, match='two columns'):
+        _ = memory().rows(Row, 'select 1 as a, 2 as a')
+
+
+def test_only_db_opens_databases() -> None:
+    """The pipeline's modules use a database through pipeline/db.py's Db, never sqlite3."""
+    users = [
+        p.relative_to(ROOT).as_posix()
+        for p in sorted((ROOT / 'pipeline').rglob('*.py'))
+        if p.name != 'db.py'
+        and any(
+            isinstance(n, ast.Import | ast.ImportFrom)
+            and ('sqlite3' in [a.name for a in n.names] if isinstance(n, ast.Import) else n.module == 'sqlite3')
+            for n in ast.walk(ast.parse(p.read_text(encoding='utf-8')))
+        )
+    ]
+    assert users == []

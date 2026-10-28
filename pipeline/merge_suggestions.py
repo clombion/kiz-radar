@@ -19,14 +19,16 @@ suggestion, copy its row into artist_merges.csv with decision "merge" or "separa
 import argparse
 import collections
 import datetime as dt
-import sqlite3
 from collections.abc import Callable
 from dataclasses import dataclass, field
+
+from pydantic import BaseModel
 
 from pipeline import build_site_db
 from pipeline import db as sqlite_db
 from pipeline.countries import codes
-from pipeline.enums import MergeDecision, MergeReason
+from pipeline.db import Reader
+from pipeline.enums import MergeDecision, MergeReason, Role
 from pipeline.extract.prices import COUPLE
 from pipeline.names import norm, sim
 from pipeline.records import ArtistMergeRow, Suggestion
@@ -143,61 +145,102 @@ class Evidence:
         return 'no clash', 0, ''
 
 
-def origins(c: sqlite3.Connection) -> collections.defaultdict[int, collections.Counter[str]]:
+class Stated(BaseModel):
+    artist_id: int
+    country: str | None
+
+
+class Member(BaseModel):
+    couple_id: int
+    member_id: int
+
+
+class Dates(BaseModel):
+    id: int
+    start_date: dt.date
+    end_date: dt.date
+    city: str | None
+    country: str | None
+
+
+class Organised(BaseModel):
+    event_id: int
+    artist_id: int
+
+
+class Appearance(BaseModel):
+    artist_id: int
+    event_id: int
+    role: Role
+    via: str
+
+
+class Named(BaseModel):
+    id: int
+    display_name: str
+    match_key: str
+
+
+class Keyed(BaseModel):
+    match_key: str
+    artist_id: int
+
+
+class Redirect(BaseModel):
+    old_id: int
+    new_id: int
+
+
+class Undecided(BaseModel):
+    key_a: str
+    key_b: str
+    reason: MergeReason
+    similarity: float
+
+
+def origins(c: Reader) -> collections.defaultdict[int, collections.Counter[str]]:
     """The countries line-ups state next to each artist's name (flags or text); members without one take their
     couple's."""
     stated: collections.defaultdict[int, collections.Counter[str]] = collections.defaultdict(collections.Counter)
-    said: list[tuple[int, str]] = c.execute(
-        "select artist_id, country from event_artists where country is not null and country != ''"
-    ).fetchall()
-    for a, text in said:
-        for cc in codes(text):
-            stated[a][cc] += 1
-    pairs: list[tuple[int, int]] = c.execute('select couple_id, member_id from couple_members').fetchall()
-    for cid, mid in pairs:
-        if not stated[mid] and stated[cid]:
-            stated[mid].update(stated[cid])
+    for said in c.rows(
+        Stated, "select artist_id, country from event_artists where country is not null and country != ''"
+    ):
+        for cc in codes(said.country):
+            stated[said.artist_id][cc] += 1
+    for m in c.rows(Member, 'select couple_id, member_id from couple_members'):
+        if not stated[m.member_id] and stated[m.couple_id]:
+            stated[m.member_id].update(stated[m.couple_id])
     return stated
 
 
-def calendar(found: Evidence, c: sqlite3.Connection, site: sqlite3.Connection) -> None:
+def calendar(found: Evidence, c: Reader, site: Reader) -> None:
     """Every event an artist appears at (directly or through a couple), with dates, city and organisers."""
-    events: list[tuple[int, str, str, str | None, str | None]] = site.execute(
-        'select id, start_date, end_date, city, country from events'
-    ).fetchall()
-    for eid, start, end, city, country in events:
-        a, b = dt.date.fromisoformat(start), dt.date.fromisoformat(end)
-        place = ', '.join(p for p in (city, country) if p is not None) or 'a place not given'
-        short = (b - a).days <= SHORT_EVENT_DAYS
-        found.ev[eid] = Event(a, b, short, None if city is None else city.strip().lower(), place)
-    organised: list[tuple[int, int]] = c.execute(
-        "select event_id, artist_id from event_artists where role = 'organiser'"
-    ).fetchall()
-    for eid, a in organised:
-        found.organisers[eid].add(a)
-    appearances: list[tuple[int, int, str, str]] = c.execute(
-        'select artist_id, event_id, role, via from artist_events'
-    ).fetchall()
-    for a, eid, role, via in appearances:
-        if role == 'organiser':
+    for e in site.rows(Dates, 'select id, start_date, end_date, city, country from events'):
+        place = ', '.join(p for p in (e.city, e.country) if p is not None) or 'a place not given'
+        short = (e.end_date - e.start_date).days <= SHORT_EVENT_DAYS
+        city = None if e.city is None else e.city.strip().lower()
+        found.ev[e.id] = Event(e.start_date, e.end_date, short, city, place)
+    for o in c.rows(Organised, "select event_id, artist_id from event_artists where role = 'organiser'"):
+        found.organisers[o.event_id].add(o.artist_id)
+    for a in c.rows(Appearance, 'select artist_id, event_id, role, via from artist_events'):
+        if a.role == Role.ORGANISER:
             continue
-        found.events_of[a].add(eid)  # any appearance, also through a couple
-        if via == 'direct':
-            found.direct_roles[a].add((eid, role))  # (event, role) where the artist itself is named
+        found.events_of[a.artist_id].add(a.event_id)  # any appearance, also through a couple
+        if a.via == 'direct':
+            found.direct_roles[a.artist_id].add((a.event_id, a.role))  # (event, role) where the artist itself is named
 
 
-def evidence(c: sqlite3.Connection, site: sqlite3.Connection) -> Evidence:
-    artists: list[tuple[int, str, str]] = c.execute('select id, display_name, match_key from artists').fetchall()
-    bookings: list[tuple[int]] = c.execute('select artist_id from event_artists').fetchall()
+def evidence(c: Reader, site: Reader) -> Evidence:
     booked_in: collections.defaultdict[int, collections.Counter[str]] = collections.defaultdict(collections.Counter)
-    where: list[tuple[int, str | None]] = c.execute(
-        'select ea.artist_id, e.country from event_artists ea join events e on e.id = ea.event_id'
-    ).fetchall()
-    for a, country in where:
-        for cc in codes(country)[:1]:
-            booked_in[a][cc] += 1
-    art = {i: (n, k) for i, n, k in artists}
-    found = Evidence(art, collections.Counter(a for (a,) in bookings), origins(c), booked_in)
+    where = 'select ea.artist_id, e.country from event_artists ea join events e on e.id = ea.event_id'
+    for w in c.rows(Stated, where):
+        for cc in codes(w.country)[:1]:
+            booked_in[w.artist_id][cc] += 1
+    art = {
+        a.id: (a.display_name, a.match_key) for a in c.rows(Named, 'select id, display_name, match_key from artists')
+    }
+    bookings = collections.Counter(c.column(int, 'select artist_id from event_artists'))
+    found = Evidence(art, bookings, origins(c), booked_in)
     calendar(found, c, site)
     return found
 
@@ -223,20 +266,17 @@ def couple_pairs(members: dict[int, list[str]]) -> list[tuple[int, int, float]]:
     return out
 
 
-def suggestions(c: sqlite3.Connection, site: sqlite3.Connection) -> list[Suggestion]:
+def suggestions(c: Reader, site: Reader) -> list[Suggestion]:
     """Likely duplicates, the likeliest first, from the source DB and the built site DB, which knows every merge,
     including members merged along with their couples, and has the events as days."""
     known = evidence(c, site)
     art, booked = known.art, known.booked
-    keys: list[tuple[str, int]] = c.execute('select match_key, artist_id from artist_keys').fetchall()
-    key_id = dict(keys)
+    key_id = {k.match_key: k.artist_id for k in c.rows(Keyed, 'select match_key, artist_id from artist_keys')}
     members: collections.defaultdict[int, list[str]] = collections.defaultdict(list)
-    pairs: list[tuple[int, int]] = c.execute('select couple_id, member_id from couple_members').fetchall()
-    for cid, mid in pairs:
-        members[cid].append(norm(art[mid][0]))
+    for m in c.rows(Member, 'select couple_id, member_id from couple_members'):
+        members[m.couple_id].append(norm(art[m.member_id][0]))
     done, group = decided()
-    redirects: list[tuple[int, int]] = site.execute('select old_id, new_id from artist_redirects').fetchall()
-    moved = dict(redirects)
+    moved = {r.old_id: r.new_id for r in site.rows(Redirect, 'select old_id, new_id from artist_redirects')}
     rows: dict[tuple[int, int], Suggestion] = {}
 
     def add(a: int, b: int, score: float, reason: MergeReason) -> None:
@@ -271,13 +311,11 @@ def suggestions(c: sqlite3.Connection, site: sqlite3.Connection) -> list[Suggest
     for i, j, score in couple_pairs(members):
         add(i, j, score, MergeReason.COUPLES_WITH_MATCHING_NAMES)
     # the source pipeline's undecided candidates
-    undecided: list[tuple[str, str, str, float]] = c.execute(
-        'select key_a, key_b, reason, similarity from artist_merge_candidates where decision is null'
-    ).fetchall()
-    for ka, kb, reason, s in undecided:
-        a, b = key_id.get(ka), key_id.get(kb)
+    undecided = 'select key_a, key_b, reason, similarity from artist_merge_candidates where decision is null'
+    for u in c.rows(Undecided, undecided):
+        a, b = key_id.get(u.key_a), key_id.get(u.key_b)
         if a and b:
-            add(a, b, s, MergeReason(reason))
+            add(a, b, u.similarity, u.reason)
 
     return sorted(rows.values(), key=lambda r: (-r.score, r.keep_name.lower()))
 

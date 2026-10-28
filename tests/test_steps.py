@@ -3,7 +3,6 @@ own: each builds what it says, and run again it changes nothing, but the time it
 
 import json
 import re
-import sqlite3
 from collections.abc import Iterable
 from pathlib import Path
 
@@ -11,10 +10,11 @@ import pytest
 
 from pipeline import build_site_db, data, merge_suggestions, scrape
 from pipeline import db as sqlite_db
+from pipeline.db import Reader
 from pipeline.extract import load_extract, resolve_artists, run_log
 from pipeline.records import Json
 from tests import jsons
-from tests.exports import EVERYTHING, EXPORT, column, committed, content, copied, run, trimmed
+from tests.exports import EVERYTHING, EXPORT, Made, committed, content, copied, run, trimmed
 from tests.fakes import Memory
 
 # a whole run of a step takes seconds, its runs here a few of them
@@ -41,9 +41,9 @@ def test_the_site_database_builds_alike_twice_with_every_table_documented(
     built = data(build_site_db.OUT)
     assert content(built) == content(site_db)
     with sqlite_db.opened(built, 'ro') as db:
-        names = set(column(db, "select name from sqlite_master where type in ('table', 'view')"))
-        documented = set(column(db, 'select name from table_docs'))
-        built_at = column(db, "select value from meta where key = 'built_at'")
+        names = set(db.column(str, "select name from sqlite_master where type in ('table', 'view')"))
+        documented = set(db.column(str, 'select name from table_docs'))
+        built_at = db.column(str, "select value from meta where key = 'built_at'")
     assert names == documented
     page = jsons.read(data(build_site_db.SITE_JSON))
     assert [jsons.at(page, 'built_at')] == built_at
@@ -95,33 +95,34 @@ def test_every_reference_is_held_at_commit(site_db: Path) -> None:
     found: set[str] = set()
     for path in (EXPORT, site_db):
         with sqlite_db.opened(path, 'ro') as db:
-            made: list[tuple[str, str]] = db.execute(
-                "select name, sql from sqlite_master where type = 'table'"
-            ).fetchall()
-            found |= {name for name, sql in made if UNDEFERRED.search(sql)}
+            made = db.rows(Made, "select type, name, sql from sqlite_master where type = 'table'")
+            found |= {m.name for m in made if m.sql and UNDEFERRED.search(m.sql)}
     assert found == SOURCE_MADE
 
 
-def tables(db: sqlite3.Connection, names: Iterable[str]) -> dict[str, str]:
+def tables(db: Reader, names: Iterable[str]) -> dict[str, str]:
     """The create statements of these tables, as SQLite reads them: without comments, in lower case, spaced alike."""
-    found: list[tuple[str, str]] = db.execute(
-        'select name, sql from sqlite_master where name in (select value from json_each(?))', (json.dumps(list(names)),)
-    ).fetchall()
-    shaped = {n: ' '.join(re.sub(r'--[^\n]*', '', sql).lower().split()) for n, sql in found}
+    found = db.rows(
+        Made,
+        'select type, name, sql from sqlite_master where name in (select value from json_each(?))',
+        (json.dumps(list(names)),),
+    )
+    shaped = {m.name: ' '.join(re.sub(r'--[^\n]*', '', m.sql or '').lower().split()) for m in found}
     return {n: re.sub(r'\s*([(),])\s*', r'\1', sql) for n, sql in shaped.items()}
 
 
 def test_the_export_has_the_tables_the_steps_write_as_they_declare_them(memory: Memory) -> None:
     declared = memory()
-    for ddl in (
-        run_log.SCHEMA,
-        scrape.PENDING,
-        resolve_artists.ARTIST_IDS,
-        resolve_artists.SCHEMA,
-        load_extract.SCHEMA,
-    ):
-        _ = declared.executescript(ddl)
+    with declared.transaction() as tx:
+        for ddl in (
+            run_log.SCHEMA,
+            scrape.PENDING,
+            resolve_artists.ARTIST_IDS,
+            resolve_artists.SCHEMA,
+            load_extract.SCHEMA,
+        ):
+            tx.script(ddl)
     # every table, index and view they declare
-    names: list[tuple[str]] = declared.execute('select name from sqlite_master where sql is not null').fetchall()
+    names = declared.column(str, 'select name from sqlite_master where sql is not null')
     with sqlite_db.opened(EXPORT, 'ro') as db:
-        assert tables(db, [n for (n,) in names]) == tables(declared, [n for (n,) in names])
+        assert tables(db, names) == tables(declared, names)

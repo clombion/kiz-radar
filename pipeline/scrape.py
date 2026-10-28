@@ -17,7 +17,6 @@ kizomba-world publishes its listings under CC BY-SA 4.0. Requests are spaced a f
 import argparse
 import datetime as dt
 import json
-import sqlite3
 import sys
 import time
 from dataclasses import dataclass, field
@@ -28,6 +27,7 @@ from curl_cffi.requests import Response
 
 from pipeline import db as sqlite_db
 from pipeline import states
+from pipeline.db import Reader, Transaction
 from pipeline.kizomba_world import ApiEvent, ApiPage, Listed, Paged, api_fields, page_fields
 from pipeline.records import day_of, now
 
@@ -86,57 +86,65 @@ PENDING = """create table pending_extraction (
         since text not null)"""
 
 
-def describe(db: sqlite3.Connection) -> None:
-    _ = db.execute("""insert or replace into table_docs values ('pending_extraction', 'table',
-        'Events whose description is new or changed since the extraction steps last ran, so their line-up, features,
-        rooms and genres from the description are missing or out of date.',
-        'pipeline/scrape.py')""")
-
-
-def event_tables(db: sqlite3.Connection) -> list[str]:
-    """The tables whose rows belong to one event, cleared when the site drops it."""
-    tables: list[tuple[str]] = db.execute("select name from sqlite_master where type = 'table'").fetchall()
-    out: list[str] = []
-    for (t,) in tables:
-        columns: list[tuple[int, str]] = db.execute(f'pragma table_info({t})').fetchall()
-        if t != 'events' and any(c[1] == 'event_id' for c in columns):
-            out.append(t)
-    return out
-
-
-def write_event(db: sqlite3.Connection, row: EventRow, categories: list[str], tags: list[str]) -> None:
-    """The event's row, its categories and tags, and the genres and features its tags name."""
-    values: dict[str, object] = row.model_dump()
-    _ = db.execute(
-        f'insert or replace into events ({", ".join(values)}) values ({", ".join("?" * len(values))})',  # noqa: S608 (table and column names of ours)
-        list(values.values()),
+def describe(db: Transaction) -> None:
+    db.upsert(
+        'table_docs',
+        ['name'],
+        {
+            'name': 'pending_extraction',
+            'kind': 'table',
+            'description': 'Events whose description is new or changed since the extraction steps last ran, so their '
+            'line-up, features, rooms and genres from the description are missing or out of date.',
+            'written_by': 'pipeline/scrape.py',
+        },
     )
+
+
+def event_tables(db: Reader) -> list[str]:
+    """The tables whose rows belong to one event, cleared when the site drops it."""
+    return db.column(
+        str,
+        "select m.name from sqlite_master m, pragma_table_info(m.name) c where m.type = 'table' and m.name != 'events'"
+        " and c.name = 'event_id' order by m.name",
+    )
+
+
+def write_event(db: Transaction, row: EventRow, categories: list[str], tags: list[str]) -> None:
+    """The event's row, its categories and tags, and the genres and features its tags name."""
+    db.upsert('events', ['id'], row.model_dump())
     i = row.id
-    _ = db.execute('delete from event_categories where event_id = ?', (i,))
-    _ = db.executemany('insert into event_categories values (?, ?)', [(i, c) for c in categories])
-    _ = db.execute('delete from event_tags where event_id = ?', (i,))
-    _ = db.executemany('insert into event_tags values (?, ?)', [(i, t) for t in tags])
-    _ = db.execute("delete from event_genres where event_id = ? and source = 'site_tag'", (i,))
-    _ = db.executemany(
+    db.execute('delete from event_categories where event_id = ?', (i,))
+    db.executemany('insert into event_categories (event_id, category) values (?, ?)', [(i, c) for c in categories])
+    db.execute('delete from event_tags where event_id = ?', (i,))
+    db.executemany('insert into event_tags (event_id, tag) values (?, ?)', [(i, t) for t in tags])
+    db.execute("delete from event_genres where event_id = ? and source = 'site_tag'", (i,))
+    db.executemany(
         "insert into event_genres (event_id, genre, source) values (?, ?, 'site_tag')",
         sorted({(i, g) for t in tags for g in states.TAG_GENRES.get(t, [])}),
     )
-    _ = db.execute("delete from event_features where event_id = ? and source = 'site_tag'", (i,))
-    _ = db.executemany(
+    db.execute("delete from event_features where event_id = ? and source = 'site_tag'", (i,))
+    db.executemany(
         "insert into event_features (event_id, feature, source) values (?, ?, 'site_tag')",
         sorted({(i, states.TAG_FEATURES[t]) for t in tags if t in states.TAG_FEATURES}),
     )
 
 
-def write_poster(db: sqlite3.Connection, fetch: Fetcher, row: EventRow) -> bool:
+def write_poster(db: Transaction, fetch: Fetcher, row: EventRow) -> bool:
     """Download the event's poster when it has a new one; whether it did."""
-    posters: list[tuple[str]] = db.execute('select url from event_images where event_id = ?', (row.id,)).fetchall()
-    if not row.image_url or (posters and posters[0][0] == row.image_url):
+    posters = db.column(str, 'select url from event_images where event_id = ?', (row.id,))
+    if not row.image_url or (posters and posters[0] == row.image_url):
         return False
     img = fetch.get(row.image_url)
-    _ = db.execute(
-        'insert or replace into event_images values (?, ?, ?, ?, ?)',
-        (row.id, row.image_url, img.headers.get('content-type', 'image/jpeg'), len(img.content), img.content),
+    db.upsert(
+        'event_images',
+        ['event_id'],
+        {
+            'event_id': row.id,
+            'url': row.image_url,
+            'mime_type': img.headers.get('content-type', 'image/jpeg'),
+            'size_bytes': len(img.content),
+            'data': img.content,
+        },
     )
     return True
 
@@ -202,39 +210,38 @@ class Report:
         print('changed fields:', dict(sorted(self.differs.items(), key=lambda kv: -kv[1])))
 
 
-def write(db: sqlite3.Connection, fetch: Fetcher, r: Refreshed, today: dt.date) -> bool:
+def write(db: Transaction, fetch: Fetcher, r: Refreshed, today: dt.date) -> bool:
     """The event's row, tags, links and poster; whether it downloaded a poster. An event whose description is new or
     changed waits for the extraction steps."""
     write_event(db, r.row, r.categories, r.tags)
     i = r.row.id
     if r.links is not None:
-        _ = db.execute('delete from event_links where event_id = ?', (i,))
-        _ = db.executemany('insert into event_links values (?, ?)', [(i, u) for u in r.links])
+        db.execute('delete from event_links where event_id = ?', (i,))
+        db.executemany('insert into event_links (event_id, url) values (?, ?)', [(i, u) for u in r.links])
     if r.old is None or r.old.description_text != r.row.description_text:
         # a festival still pending keeps why, and waits from its latest change
-        _ = db.execute(
-            'insert into pending_extraction values (?, ?, ?) '
+        db.execute(
+            'insert into pending_extraction (event_id, reason, since) values (?, ?, ?) '
             'on conflict (event_id) do update set since = excluded.since',
             (i, 'new' if r.old is None else 'description changed', today),
         )
     return write_poster(db, fetch, r.row)
 
 
-def finish(db: sqlite3.Connection, report: Report, events: int, gone: list[int], posters: int) -> None:
+def finish(db: Transaction, report: Report, events: int, gone: list[int], posters: int) -> None:
     """Delete the events the site no longer lists, with everything that refers to them, and log the step."""
     for t in event_tables(db):
-        _ = db.executemany(f'delete from {t} where event_id = ?', [(i,) for i in gone])  # noqa: S608 (table and column names of ours)
-    _ = db.executemany('delete from events where id = ?', [(i,) for i in gone])
-    pending: list[tuple[int]] = db.execute('select count(*) from pending_extraction').fetchall()
+        db.executemany(f'delete from {sqlite_db.name(t)} where event_id = ?', [(i,) for i in gone])  # noqa: S608 (the database's own table names, quoted)
+    db.executemany('delete from events where id = ?', [(i,) for i in gone])
     details = {
         'events': events,
         'new': len(report.added),
         'changed': len(report.changed),
         'deleted': len(gone),
         'posters_downloaded': posters,
-        'pending_extraction': pending[0][0],
+        'pending_extraction': db.value(int, 'select count(*) from pending_extraction'),
     }
-    _ = db.execute(
+    db.execute(
         """update pipeline_steps set performed_at = ?, performed_by = 'pipeline/scrape.py (curl_cffi)',
         inputs = ?, outputs = 'tables events, event_categories, event_tags, event_links, event_images,
         pending_extraction; event_genres and event_features (source site_tag)',
@@ -245,15 +252,12 @@ def finish(db: sqlite3.Connection, report: Report, events: int, gone: list[int],
             json.dumps(details),
         ),
     )
-    db.commit()
     print(details)
 
 
 def run(src: Path, *, dry_run: bool) -> None:
     with sqlite_db.opened(src, 'ro' if dry_run else 'rw') as db:
-        if not dry_run:
-            describe(db)
-        known = {r.id: r for r in sqlite_db.records(db, EventRow, f'select {", ".join(COLUMNS)} from events')}  # noqa: S608 (table and column names of ours)
+        known = {r.id: r for r in db.rows(EventRow, f'select {", ".join(map(sqlite_db.name, COLUMNS))} from events')}  # noqa: S608 (the record's own column names, quoted)
         today = now().date()
         fetch = Fetcher()
         events = [api_fields(e) for e in listed(fetch)]
@@ -265,11 +269,14 @@ def run(src: Path, *, dry_run: bool) -> None:
             r = refreshed(fetch, listing, known.get(listing[0].id), today)
             report.note(r)
             if not dry_run:
-                posters += write(db, fetch, r, today)
+                with db.transaction() as tx:  # each event apart: the crawl takes no lock but while it writes one
+                    posters += write(tx, fetch, r, today)
         gone = sorted(set(known) - {e.id for e, _, _ in events})
         report.show([known[i].title for i in gone])
         if not dry_run:
-            finish(db, report, len(events), gone, posters)
+            with db.transaction() as tx:
+                describe(tx)
+                finish(tx, report, len(events), gone, posters)
 
 
 class Args(argparse.Namespace):

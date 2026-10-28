@@ -3,13 +3,13 @@ its replies, as a real message of the SDK, and keeping what it was asked; and a 
 fixture (conftest.py); time.sleep, without the wait; and the register of exceptions, the tests' own."""
 
 import datetime as dt
-import sqlite3
 from collections.abc import Callable, Sequence
 from types import TracebackType
 from typing import Self
 
 from anthropic.types import Message, MessageParam, StopReason, TextBlock, Usage
 
+from pipeline.db import Db
 from pipeline.enums import Waiting
 from pipeline.exceptions import Override
 
@@ -29,7 +29,7 @@ def no_wait(_: float) -> None:
 
 
 # what the memory fixture gives: an in-memory database, closed when the test ends (conftest.py)
-type Memory = Callable[[], sqlite3.Connection]
+type Memory = Callable[[], Db]
 
 
 def message(text: str, stop_reason: StopReason = 'end_turn') -> Message:

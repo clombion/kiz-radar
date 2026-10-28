@@ -6,13 +6,13 @@ import dataclasses
 import datetime as dt
 import json
 import re
-import sqlite3
 from collections.abc import Callable, Sequence
 from pathlib import Path
 
 import pytest
 
 from pipeline import ROOT, data, prompt, spend, tickets
+from pipeline.db import Db, Reader
 from pipeline.enums import FirstRead as FirstReadState
 from pipeline.enums import PassKind, Price, Recheck, Sales, SkipReason, Status, Style, Waiting
 from pipeline.extract import answers, load_extract, prices
@@ -680,12 +680,10 @@ def test_the_status_lists_every_festival_past_ones_too(files: Path) -> None:
 
 @pytest.fixture
 def paging(files: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
-    def one(db: sqlite3.Connection, i: int, page: str | None = None) -> tickets.Festival:
+    def one(db: Reader, i: int, page: str | None = None) -> tickets.Festival:
         return festival(id=i, links=('https://example.org/a',))
 
-    def festivals(
-        db: sqlite3.Connection, today: str, only: int | None = None, *, every: bool = False
-    ) -> list[tickets.Festival]:
+    def festivals(db: Reader, today: str, only: int | None = None, *, every: bool = False) -> list[tickets.Festival]:
         return [festival()]
 
     monkeypatch.setattr(tickets, 'one', one)
@@ -1030,24 +1028,22 @@ def test_the_first_read_states_tested_are_all_of_them() -> None:
     assert {s for _, s in FIRST_READ_CASES} == set(FirstReadState)
 
 
-def events(db: sqlite3.Connection, *ids: int) -> sqlite3.Connection:
+def events(db: Db, *ids: int) -> Db:
     """The database with the export's tables and these festivals."""
-    _ = shaped(db)
-    for i in ids:
-        exports.festival(db, i)
+    with shaped(db).transaction() as tx:
+        for i in ids:
+            exports.festival(tx, i)
     return db
 
 
-def no_status(db: sqlite3.Connection) -> collections.Counter[Waiting]:
+def no_status(db: Reader) -> collections.Counter[Waiting]:
     return collections.Counter()
 
 
 def test_a_run_for_named_festivals_reads_only_them(
     memory: Memory, files: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    def festivals(
-        db: sqlite3.Connection, today: str, only: int | None = None, *, every: bool = False
-    ) -> list[tickets.Festival]:
+    def festivals(db: Reader, today: str, only: int | None = None, *, every: bool = False) -> list[tickets.Festival]:
         return [] if only or every else [festival(id=i, site=SITE, page=f'https://shop.example/{i}') for i in (7, 8)]
 
     asked: list[str] = []
@@ -1080,9 +1076,7 @@ def test_a_past_festivals_first_read_for_an_older_prompt_is_made_again_from_its_
         FEST, over=True, first_read=tickets.first_read(7), log=tuple(tickets.log(7)), need=FirstReadState.REDO_PROMPT
     )
 
-    def festivals(
-        db: sqlite3.Connection, today: str, only: int | None = None, *, every: bool = False
-    ) -> list[tickets.Festival]:
+    def festivals(db: Reader, today: str, only: int | None = None, *, every: bool = False) -> list[tickets.Festival]:
         return [past] if every else []
 
     monkeypatch.setattr(tickets, 'festivals', festivals)
@@ -1151,11 +1145,15 @@ def test_two_reads_agree_whatever_reason_a_kept_skip_has() -> None:
 
 
 def test_a_festivals_styles_are_its_genres_styles(memory: Memory) -> None:
-    db = shaped(memory())
-    _ = db.executemany(
-        "insert into event_genres (event_id, genre, source, other_name) values (?, ?, 'site_tag', '')",
-        [(1, 'urbankiz'), (1, 'semba'), (2, 'kizomba'), (2, 'zouk'), (2, 'kompa')],
-    )
+    db = events(memory(), 1, 2)
+    with db.transaction() as tx:
+        tx.insert(
+            'event_genres',
+            (
+                {'event_id': e, 'genre': g, 'source': 'site_tag'}
+                for e, g in [(1, 'urbankiz'), (1, 'semba'), (2, 'kizomba'), (2, 'zouk'), (2, 'kompa')]
+            ),
+        )
     assert prices.styles(db, 1) == [Style.KIZOMBA]
     assert prices.styles(db, 2) == [Style.KIZOMBA, Style.OTHER, Style.ZOUK]
 
@@ -1330,9 +1328,7 @@ def command(
     """A ticket command as its command line runs it, on a festival with one read logged; what it prints."""
     fest = festival(page=PAGE, log=(entry(ROWS),))
 
-    def festivals(
-        db: sqlite3.Connection, today: str, only: int | None = None, *, every: bool = False
-    ) -> list[tickets.Festival]:
+    def festivals(db: Reader, today: str, only: int | None = None, *, every: bool = False) -> list[tickets.Festival]:
         return [fest]
 
     monkeypatch.setattr(tickets, 'festivals', festivals)

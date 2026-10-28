@@ -112,7 +112,7 @@ def weekends(today: dt.date) -> set[tuple[str, dt.date]]:
     with build_site_db.built(sqlite_db.export()) as c:
         query = """select airport, weekend_friday from events where airport is not null and airport != ?
             and cancelled is not 1 and weekend_friday > ?"""
-        return {(w.airport, w.weekend_friday) for w in sqlite_db.records(c, Flown, query, (airports.home(), today))}
+        return {(w.airport, w.weekend_friday) for w in c.rows(Flown, query, (airports.home(), today))}
 
 
 def interval(days_away: int) -> int | None:

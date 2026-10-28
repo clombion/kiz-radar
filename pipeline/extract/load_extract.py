@@ -33,17 +33,19 @@ Usage: mise run load
 import argparse
 import json
 import re
-import sqlite3
 import sys
 import unicodedata
 from collections.abc import Mapping
 from collections.abc import Set as AbstractSet
 from typing import NamedTuple
 
+from pydantic import BaseModel
+
 from pipeline import db as sqlite_db
 from pipeline import prompt as prompts
 from pipeline import states
-from pipeline.enums import Genre, Price, Sales
+from pipeline.db import Reader, Transaction
+from pipeline.enums import Genre, Sales
 from pipeline.extract import answers, run_log
 from pipeline.extract import prices as price_rules
 from pipeline.extract.answers import Answer
@@ -65,7 +67,6 @@ from pipeline.records import (
 )
 
 TABLES = """
-BEGIN;
 DROP VIEW IF EXISTS artist_events;
 DROP TABLE IF EXISTS event_artists;
 DROP TABLE IF EXISTS feature_definitions;
@@ -208,6 +209,24 @@ CREATE TABLE artist_mentions (
 CREATE INDEX artist_mentions_event ON artist_mentions(event_id);
 """
 SCHEMA = TABLES.format_map({p.name: states.sql_in(p.name) for p in states.POINTS})
+GENRE_KEY, FEATURE_KEY = ('event_id', 'genre', 'source', 'other_name'), ('event_id', 'feature', 'source')
+
+
+class Dated(BaseModel):
+    id: int
+    start_date: str
+    modified_at: str
+
+
+class Described(BaseModel):
+    id: int
+    title: str
+    description_text: str | None
+
+
+class Tagged(BaseModel):
+    event_id: int
+    tag: str
 
 
 TABLE_DOCS = {
@@ -330,83 +349,102 @@ def status() -> dict[int, tuple[Sales | None, str | None]]:
 
 
 def load_prices(
-    con: sqlite3.Connection,
+    con: Transaction,
     described: Mapping[int, Answer[Priced]],
     pages: Mapping[int, tuple[Priced, PageRow]],
     sold: Mapping[int, tuple[Sales | None, str | None]],
 ) -> None:
     """Each festival's passes: from its ticket page when ticket_pages.csv has it, else from its description; and what
     its card can say of its price, and the pass it prices, from them and how it sells (sold: status())."""
-    events: list[tuple[int, str, str]] = con.execute('SELECT id, start_date, modified_at FROM events').fetchall()
-    dates = {i: (day_of(start), day_of(edited)) for i, start, edited in events}
+    dates = {
+        e.id: (day_of(e.start_date), day_of(e.modified_at))
+        for e in con.rows(Dated, 'SELECT id, start_date, modified_at FROM events')
+    }
     rows = [(a.entry, 'description', a.logged.prompt, a.logged.model) for e, a in described.items() if e not in pages]
     rows += [(entry, 'ticket_page', page.prompt, page.read_by) for entry, page in pages.values()]
-    _ = con.executemany(
-        'INSERT INTO ticket_pages VALUES (?, ?, ?, ?, ?, ?)',
-        [(e, p.page, p.reseller, p.read_on, p.recipe, p.unread) for e, (_, p) in pages.items()],
+    con.insert(
+        'ticket_pages',
+        (
+            {
+                'event_id': e,
+                'page': p.page,
+                'reseller': p.reseller,
+                'read_on': p.read_on,
+                'recipe': p.recipe,
+                'unread': p.unread,
+            }
+            for e, (_, p) in pages.items()
+        ),
     )
     passes: dict[int, tuple[PricedPass, ...]] = {}
+    notes: list[dict[str, object]] = []
+    pass_rows: list[dict[str, object]] = []
+    tier_rows: list[dict[str, object]] = []
     for ev, source, prompt, model in rows:
         start, edited = dates[ev.event_id]
         passes[ev.event_id] = ev.passes
         if ev.rule_quotes:
-            _ = con.execute('INSERT INTO event_price_notes VALUES (?, ?)', (ev.event_id, '\n'.join(ev.rule_quotes)))
+            notes.append({'event_id': ev.event_id, 'notes': '\n'.join(ev.rule_quotes)})
         for p, ps in enumerate(ev.passes, 1):
-            _ = con.execute(
-                'INSERT INTO event_passes VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                (
-                    ev.event_id,
-                    p,
-                    ps.kind,
-                    ps.style,
-                    ps.label_quote,
-                    ps.group_size,
-                    price_rules.people(ps),
-                    ps.days,
-                    int(ps.includes_hotel),
-                    source,
-                    prompt,
-                    model,
-                ),
+            pass_rows.append(
+                {
+                    'event_id': ev.event_id,
+                    'pass_no': p,
+                    'kind': ps.kind,
+                    'style': ps.style,
+                    'label': ps.label_quote,
+                    'group_size': ps.group_size,
+                    'people': price_rules.people(ps),
+                    'days': ps.days,
+                    'includes_hotel': int(ps.includes_hotel),
+                    'source': source,
+                    'prompt': prompt,
+                    'model': model,
+                }
             )
             for t, tier in enumerate(ps.tiers, 1):
                 frm, until = on_date(tier.from_, start), on_date(tier.until, start)
                 if tier.current and frm is None:
                     frm = edited
                 yearless = any(v and len(v) == len('MM-DD') for v in (tier.from_, tier.until))
-                _ = con.execute(
-                    'INSERT INTO pass_tiers VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                    (
-                        ev.event_id,
-                        p,
-                        t,
-                        tier.amount,
-                        tier.currency,
-                        tier.fee,
-                        *((tier.alt.amount, tier.alt.currency) if tier.alt else (None, None)),
-                        frm,
-                        until,
-                        json.dumps({'from': tier.from_, 'until': tier.until}) if yearless else None,
-                        tier.quantity,
-                        int(tier.door),
-                        int(tier.sold_out),
-                        int(tier.current),
-                        tier.quote,
-                    ),
+                tier_rows.append(
+                    {
+                        'event_id': ev.event_id,
+                        'pass_no': p,
+                        'tier_no': t,
+                        'amount': tier.amount,
+                        'currency': tier.currency,
+                        'fee': tier.fee,
+                        'alt_amount': tier.alt.amount if tier.alt else None,
+                        'alt_currency': tier.alt.currency if tier.alt else None,
+                        'valid_from': frm,
+                        'valid_until': until,
+                        'dates_as_answered': json.dumps({'from': tier.from_, 'until': tier.until})
+                        if yearless
+                        else None,
+                        'quantity': tier.quantity,
+                        'door': int(tier.door),
+                        'sold_out': int(tier.sold_out),
+                        'current': int(tier.current),
+                        'quote': tier.quote,
+                    }
                 )
-    status_rows: list[tuple[int, Price, str | None, int | None]] = []
+    con.insert('event_price_notes', notes)
+    con.insert('event_passes', pass_rows)
+    con.insert('pass_tiers', tier_rows)
+    status_rows: list[dict[str, object]] = []
     for e in dates:
         sales, page = sold.get(e, (None, None))
         card = price_rules.card_pass(passes.get(e, ()))
+        price = price_rules.price_state(passes.get(e, ()), sales, page)
         status_rows.append(
-            (e, price_rules.price_state(passes.get(e, ()), sales, page), page, None if card is None else card + 1)
+            {'event_id': e, 'price': price, 'page': page, 'card_pass': None if card is None else card + 1}
         )
-    _ = con.executemany('INSERT INTO price_status VALUES (?, ?, ?, ?)', status_rows)
+    con.insert('price_status', status_rows)
 
 
-def count(con: sqlite3.Connection, sql: str) -> int:
-    found: list[tuple[int]] = con.execute(sql).fetchall()
-    return found[0][0]
+def count(con: Reader, sql: str) -> int:
+    return con.value(int, sql)
 
 
 class PassStep(NamedTuple):
@@ -418,7 +456,7 @@ class PassStep(NamedTuple):
 
 
 def record_pass[E: Entry](
-    con: sqlite3.Connection,
+    con: Transaction,
     doc: PassStep,
     got: Mapping[int, Answer[E]],
     numbers: dict[str, int],
@@ -457,7 +495,7 @@ def record_pass[E: Entry](
 
 
 def record_steps(
-    con: sqlite3.Connection,
+    con: Transaction,
     extract: Mapping[int, Answer[Extracted]],
     rooms_genres: Mapping[int, Answer[RoomsGenres]],
     prices: Mapping[int, Answer[Priced]],
@@ -533,110 +571,145 @@ def record_steps(
     )
 
 
-def load_rooms_genres(con: sqlite3.Connection, got: Mapping[int, Answer[RoomsGenres]]) -> None:
+def load_rooms_genres(con: Transaction, got: Mapping[int, Answer[RoomsGenres]]) -> None:
+    con.insert(
+        'event_rooms',
+        (
+            {
+                'event_id': a.entry.event_id,
+                'party_rooms': (pr := a.entry.party_rooms) and pr.count,
+                'party_rooms_quote': pr and pr.quote,
+                'class_rooms': (cr := a.entry.class_rooms) and cr.count,
+                'class_rooms_quote': cr and cr.quote,
+                'prompt': a.logged.prompt,
+                'model': a.logged.model,
+            }
+            for a in got.values()
+        ),
+    )
     for a in got.values():
         ev, prompt, model = a.entry, a.logged.prompt, a.logged.model
-        pr, cr = ev.party_rooms, ev.class_rooms
-        _ = con.execute(
-            'INSERT INTO event_rooms VALUES (?, ?, ?, ?, ?, ?, ?)',
+        con.insert(
+            'event_room_list',
             (
-                ev.event_id,
-                pr and pr.count,
-                pr and pr.quote,
-                cr and cr.count,
-                cr and cr.quote,
-                prompt,
-                model,
+                {
+                    'event_id': ev.event_id,
+                    'room_no': n,
+                    'name_as_written': r.name_as_written,
+                    'kind': r.kind,
+                    'genres': json.dumps(sorted(set(r.genres))),
+                    'quote': r.quote,
+                }
+                for n, r in enumerate(ev.rooms, 1)
             ),
         )
-        _ = con.executemany(
-            'INSERT INTO event_room_list VALUES (?, ?, ?, ?, ?, ?)',
-            [
-                (ev.event_id, n, r.name_as_written, r.kind, json.dumps(sorted(set(r.genres))), r.quote)
-                for n, r in enumerate(ev.rooms, 1)
-            ],
-        )
-        _ = con.executemany(
-            'INSERT INTO event_genres (event_id, genre, source, other_name, genre_as_written, quote, prompt, model)'
-            " VALUES (?, ?, 'description', ?, ?, ?, ?, ?) ON CONFLICT DO NOTHING",
-            [
-                (
-                    ev.event_id,
-                    g.genre,
-                    ' '.join(g.genre_as_written.split()).casefold() if g.genre == Genre.OTHER else '',
-                    g.genre_as_written,
-                    g.quote,
-                    prompt,
-                    model,
-                )
+        con.insert(
+            'event_genres',
+            (
+                {
+                    'event_id': ev.event_id,
+                    'genre': g.genre,
+                    'source': 'description',
+                    'other_name': ' '.join(g.genre_as_written.split()).casefold() if g.genre == Genre.OTHER else '',
+                    'genre_as_written': g.genre_as_written,
+                    'quote': g.quote,
+                    'prompt': prompt,
+                    'model': model,
+                }
                 for g in ev.genres
-            ],
+            ),
+            unless=GENRE_KEY,
         )
 
 
-def load_genre_rules(con: sqlite3.Connection) -> None:
+def load_genre_rules(con: Transaction) -> None:
     """The genres the rooms-genres pass applies unevenly (SBK, a genre in the title), and the site's style tags'."""
     # a rule's word ("SBK", its tag) names several genres together; the rooms-genres pass does not expand it
     # consistently
-    sbk_rows: list[tuple[int, str, str, str, str]] = []
-    described: list[tuple[int, str, str | None]] = con.execute(
-        'SELECT id, title, description_text FROM events'
-    ).fetchall()
-    for eid, title, desc in described:
-        text = f'{title}\n{desc or ""}'
+    described = con.rows(Described, 'SELECT id, title, description_text FROM events')
+
+    def added(eid: int, genre: str, as_written: str, quote: str, rule: str) -> dict[str, object]:
+        return {
+            'event_id': eid,
+            'genre': genre,
+            'source': 'description',
+            'genre_as_written': as_written,
+            'quote': quote,
+            'rule': rule,
+        }
+
+    rule_rows: list[dict[str, object]] = []
+    for e in described:
+        text = f'{e.title}\n{e.description_text or ""}'
         for rule in states.of('genre_rule'):
             for word in rule.tags:
                 if m := re.search(rf'[^\n]{{0,60}}\b{re.escape(word)}\b[^\n]{{0,60}}', text):
-                    sbk_rows += [(eid, g, word, m.group(0).strip(), rule.key) for g in rule.genres]
-    _ = con.executemany(
-        'INSERT INTO event_genres (event_id, genre, source, genre_as_written, quote, rule)'
-        " VALUES (?, ?, 'description', ?, ?, ?) ON CONFLICT DO NOTHING",
-        sbk_rows,
-    )
+                    rule_rows += [added(e.id, g, word, m.group(0).strip(), rule.key) for g in rule.genres]
+    con.insert('event_genres', rule_rows, unless=GENRE_KEY)
     # A genre named in the title counts; batches of the rooms-genres pass applied this unevenly
-    title_rows: list[tuple[int, str, str, str, str]] = []
-    for eid, title, _ in described:
-        plain = unicodedata.normalize('NFKC', title)
+    title_rows: list[dict[str, object]] = []
+    for e in described:
+        plain = unicodedata.normalize('NFKC', e.title)
         title_rows += [  # brand spellings ("AfroKiz", "Kizz") are no title of a genre
-            (eid, genre.key, m.group(0), title, 'title')
+            added(e.id, genre.key, m.group(0), e.title, 'title')
             for genre in states.of('genre')
             if genre.title and (m := re.search(genre.title, plain, re.IGNORECASE))
         ]
-    _ = con.executemany(
-        'INSERT INTO event_genres (event_id, genre, source, genre_as_written, quote, rule)'
-        " VALUES (?, ?, 'description', ?, ?, ?) ON CONFLICT DO NOTHING",
-        title_rows,
-    )
-    tags: list[tuple[int, str]] = con.execute('SELECT event_id, tag FROM event_tags').fetchall()
-    _ = con.executemany(
-        "INSERT INTO event_genres (event_id, genre, source) VALUES (?, ?, 'site_tag') ON CONFLICT DO NOTHING",
-        [(eid, genre) for eid, tag in tags for genre in states.TAG_GENRES.get(tag, [])],
+    con.insert('event_genres', title_rows, unless=GENRE_KEY)
+    con.insert(
+        'event_genres',
+        (
+            {'event_id': t.event_id, 'genre': genre, 'source': 'site_tag'}
+            for t in con.rows(Tagged, 'SELECT event_id, tag FROM event_tags')
+            for genre in states.TAG_GENRES.get(t.tag, [])
+        ),
+        unless=GENRE_KEY,
     )
 
 
-def load_extracted(con: sqlite3.Connection, got: Mapping[int, Answer[Extracted]]) -> None:
+def load_extracted(con: Transaction, got: Mapping[int, Answer[Extracted]]) -> None:
     for a in got.values():
         ev, prompt, model = a.entry, a.logged.prompt, a.logged.model
-        _ = con.executemany(
-            "INSERT INTO event_features VALUES (?, ?, 'description', ?, ?, ?, ?) ON CONFLICT DO NOTHING",
-            [(ev.event_id, x.feature, x.quote, x.rationale, prompt, model) for x in ev.features],
+        con.insert(
+            'event_features',
+            (
+                {
+                    'event_id': ev.event_id,
+                    'feature': x.feature,
+                    'source': 'description',
+                    'quote': x.quote,
+                    'rationale': x.rationale,
+                    'prompt': prompt,
+                    'model': model,
+                }
+                for x in ev.features
+            ),
+            unless=FEATURE_KEY,
         )
-        _ = con.executemany(
-            'INSERT INTO artist_mentions (event_id, role, name_as_written, style, country, source_line,'
-            ' batch, prompt, model) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            [
-                (ev.event_id, m.role, m.name_as_written, m.style, m.country, m.source_line, a.batch, prompt, model)
+        con.insert(
+            'artist_mentions',
+            (
+                {
+                    'event_id': ev.event_id,
+                    'role': m.role,
+                    'name_as_written': m.name_as_written,
+                    'style': m.style,
+                    'country': m.country,
+                    'source_line': m.source_line,
+                    'batch': a.batch,
+                    'prompt': prompt,
+                    'model': model,
+                }
                 for m in ev.artists
-            ],
+            ),
         )
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description='Load the saved answers of the extraction passes into the source DB.')
     _ = ap.parse_args()
-    with sqlite_db.opened(sqlite_db.export(), 'rw') as con:
-        ids: list[tuple[int]] = con.execute('SELECT id FROM events').fetchall()
-        event_ids = {i for (i,) in ids}
+    with sqlite_db.opened(sqlite_db.export(), 'rw') as db, db.transaction() as con:
+        event_ids = set(con.column(int, 'SELECT id FROM events'))
         extract, stale_extract = current(prompts.EXTRACT, event_ids)
         rooms_genres, stale_rooms = current(prompts.ROOMS_GENRES, event_ids)
         prices, stale_prices = current(prompts.PRICES, event_ids)
@@ -655,23 +728,23 @@ def main() -> None:
             print(
                 f"{stale} festivals' ticket pages were read with another first-read prompt; left out until read again"
             )
-        _ = con.executescript(SCHEMA)
+        con.script(SCHEMA)
         for point in ('feature', 'genre', 'role'):
-            _ = con.executemany(
-                f'INSERT INTO {point}_definitions VALUES (?, ?)',  # noqa: S608 (a table name of ours)
-                [(s.key, s.criterion) for s in states.of(point)],
-            )
+            con.insert(f'{point}_definitions', ({point: s.key, 'definition': s.criterion} for s in states.of(point)))
         load_rooms_genres(con, rooms_genres)
         load_genre_rules(con)
         load_extracted(con, extract)
-        tags: list[tuple[int, str]] = con.execute('SELECT event_id, tag FROM event_tags').fetchall()
-        _ = con.executemany(
-            "INSERT INTO event_features (event_id, feature, source) VALUES (?, ?, 'site_tag') ON CONFLICT DO NOTHING",
-            [(eid, states.TAG_FEATURES[tag]) for eid, tag in tags if tag in states.TAG_FEATURES],
+        con.insert(
+            'event_features',
+            (
+                {'event_id': t.event_id, 'feature': states.TAG_FEATURES[t.tag], 'source': 'site_tag'}
+                for t in con.rows(Tagged, 'SELECT event_id, tag FROM event_tags')
+                if t.tag in states.TAG_FEATURES
+            ),
+            unless=FEATURE_KEY,
         )
         load_prices(con, prices, pages, status())
         record_steps(con, extract, rooms_genres, prices, pages)
-        con.commit()
         for table in (
             'event_features',
             'artist_mentions',
@@ -683,7 +756,7 @@ def main() -> None:
             'ticket_pages',
             'price_status',
         ):
-            print(table, count(con, f'SELECT count(*) FROM {table}'))  # noqa: S608 (a table name of ours)
+            print(table, count(db, f'SELECT count(*) FROM {sqlite_db.name(table)}'))  # noqa: S608 (a table name of ours, quoted)
 
 
 if __name__ == '__main__':

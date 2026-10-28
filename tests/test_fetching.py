@@ -13,7 +13,7 @@ from pipeline import data, geocode, rates, scrape, web
 from pipeline import db as sqlite_db
 from pipeline.records import JSON, Place, Rate, Spot, today
 from tests import jsons
-from tests.exports import column, content, festival, run, shaped, trimmed
+from tests.exports import content, festival, run, shaped, trimmed
 from tests.fakes import no_wait
 from tests.samples import API, PAGE
 
@@ -83,11 +83,9 @@ def source_with(places: list[tuple[str | None, str | None]]) -> Path:
     """An export in the test's data folder holding festivals in these places."""
     path = data(sqlite_db.SOURCE) / 'source.sqlite'
     path.parent.mkdir(parents=True)
-    with sqlite_db.opened(path, 'rwc') as con:
-        _ = shaped(con)
+    with sqlite_db.opened(path, 'rwc') as con, shaped(con).transaction() as tx:
         for i, (city, country) in enumerate(places):
-            festival(con, i, city=city, country=country)
-        con.commit()
+            festival(tx, i, city=city, country=country)
     return path
 
 
@@ -167,9 +165,9 @@ def site(monkeypatch: pytest.MonkeyPatch, listed: Sequence[Mapping[str, object]]
     return served
 
 
-def ids(src: Path) -> set[object]:
+def ids(src: Path) -> set[int]:
     with sqlite_db.opened(src, 'ro') as db:
-        return set(column(db, 'select id from events'))
+        return set(db.column(int, 'select id from events'))
 
 
 def test_a_refresh_adds_the_new_festivals_and_deletes_the_gone_with_their_rows(
@@ -182,18 +180,16 @@ def test_a_refresh_adds_the_new_festivals_and_deletes_the_gone_with_their_rows(
     assert ids(src) == {17001}
     with sqlite_db.opened(src, 'ro') as db:
         for t in scrape.event_tables(db):
-            assert gone not in column(db, f'select event_id from {t}'), t  # noqa: S608 (the database's own names)
-        assert db.execute('select reason from pending_extraction where event_id = 17001').fetchone() == ('new',)
-        assert db.execute('select size_bytes, data from event_images where event_id = 17001').fetchone() == (
-            6,
-            b'\xff\xd8jpeg',
-        )
-        links = set(column(db, 'select url from event_links where event_id = 17001'))
+            assert gone not in db.column(int, f'select event_id from {sqlite_db.name(t)}'), t  # noqa: S608 (the database's own names, quoted)
+        assert db.column(str, 'select reason from pending_extraction where event_id = 17001') == ['new']
+        assert db.column(bytes, 'select data from event_images where event_id = 17001') == [b'\xff\xd8jpeg']
+        assert db.column(int, 'select size_bytes from event_images where event_id = 17001') == [6]
+        links = set(db.column(str, 'select url from event_links where event_id = 17001'))
         assert links == {'https://www.facebook.com/events/1', 'https://www.instagram.com/x'}
-        tags = set(column(db, 'select tag from event_tags where event_id = 17001'))
+        tags = set(db.column(str, 'select tag from event_tags where event_id = 17001'))
         assert tags == {'All in One', 'Zouk'}
-        [logged] = column(db, "select details from pipeline_steps where step = '1_scrape'")
-    details = JSON.validate_json(str(logged))
+        logged = db.value(str, "select details from pipeline_steps where step = '1_scrape'")
+    details = JSON.validate_json(logged)
     assert [jsons.at(details, k) for k in ('new', 'deleted', 'posters_downloaded')] == [1, 1, 1]
 
 
@@ -221,12 +217,11 @@ def test_a_pending_festival_changed_again_waits_from_its_latest_change(
     src = trimmed(1)
     site(monkeypatch, [NEW])
     run(scrape.main, monkeypatch)
-    with sqlite_db.opened(src, 'rw') as db:
-        _ = db.execute("update pending_extraction set since = '2026-01-01' where event_id = 17001")
-        db.commit()
+    with sqlite_db.opened(src, 'rw') as db, db.transaction() as tx:
+        tx.execute("update pending_extraction set since = '2026-01-01' where event_id = 17001")
     site(monkeypatch, [NEW | {'description': '<p>Hello again</p>', 'modified': '2026-10-20 10:00:00'}])
     run(scrape.main, monkeypatch)
     with sqlite_db.opened(src, 'ro') as db:
-        reasons = column(db, 'select reason from pending_extraction where event_id = 17001')
-        since = column(db, 'select since from pending_extraction where event_id = 17001')
+        reasons = db.column(str, 'select reason from pending_extraction where event_id = 17001')
+        since = db.column(str, 'select since from pending_extraction where event_id = 17001')
     assert (reasons, since) == (['new'], [today().isoformat()])  # still new to the passes

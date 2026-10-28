@@ -11,11 +11,11 @@ and, when there is none, why (price_state).
 
 import datetime as dt
 import re
-import sqlite3
 from collections.abc import Sequence
 
 from pipeline import states
-from pipeline.enums import PassKind, People, Price, Sales, Style
+from pipeline.db import Reader
+from pipeline.enums import Genre, PassKind, People, Price, Sales, Style
 from pipeline.records import PassTerms, Priced, PricedPass, RealDay
 
 SEVERAL = 2  # dance styles that make a festival of several
@@ -48,10 +48,10 @@ def on_date(value: RealDay | None, start: dt.date) -> dt.date | None:
     return dt.date(y, m, d)
 
 
-def styles(db: sqlite3.Connection, event_id: int) -> list[Style]:
+def styles(db: Reader, event_id: int) -> list[Style]:
     """The dance styles a festival's genres (event_genres: its description's and its kizomba-world tags) name."""
-    genres: list[tuple[str]] = db.execute('SELECT genre FROM event_genres WHERE event_id = ?', (event_id,)).fetchall()
-    return sorted({Style(states.STYLE_OF[g]) for (g,) in genres})
+    genres = db.column(Genre, 'SELECT genre FROM event_genres WHERE event_id = ?', (event_id,))
+    return sorted({Style(states.STYLE_OF[g]) for g in genres})
 
 
 def style_problems(passes: Sequence[PassTerms], styles: Sequence[Style], where: str = '') -> list[str]:

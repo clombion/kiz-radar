@@ -19,7 +19,6 @@ budget for Claude is spent (pipeline/spend.py), and the run then fails. Needs AN
 import argparse
 import datetime as dt
 import json
-import sqlite3
 import sys
 import threading
 from collections.abc import Callable, Mapping, Sequence
@@ -196,20 +195,18 @@ type Job = tuple[Festival, Pass[Entry, Asked]]
 
 
 def due(
-    db: sqlite3.Connection, only: Sequence[prompts.PassName] | None, ids: set[int] | None = None
+    db: sqlite_db.Reader, only: Sequence[prompts.PassName] | None, ids: set[int] | None = None
 ) -> tuple[list[Job], dict[int, dt.date]]:
     """((festival, pass) pairs to ask: each pass whose answer for a festival is none or stale (answer_state), of the
     festivals ids names when it names some; the festivals pending_extraction holds, with the day their description
     last changed)."""
     query = 'select id, title, description_text, start_date, end_date, country from events'
-    rows = {f.id: f for f in sqlite_db.records(db, Festival, query + ' where description_text is not null order by id')}
+    rows = {f.id: f for f in db.rows(Festival, query + ' where description_text is not null order by id')}
     if ids:
         if missing := ids - set(rows):
             sys.exit(f'no festival with a description: {sorted(missing)}')
         rows = {i: r for i, r in rows.items() if i in ids}
-    pending = {
-        p.event_id: p.since for p in sqlite_db.records(db, Pending, 'select event_id, since from pending_extraction')
-    }
+    pending = {p.event_id: p.since for p in db.rows(Pending, 'select event_id, since from pending_extraction')}
     out: list[Job] = []
     for pass_ in (p for p in prompts.PASSES if not only or p.name in only):
         have = answers.answered(pass_.name, set(rows))
@@ -303,8 +300,8 @@ def main() -> None:
             _ = list(pool.map(one, todo))
 
         done = {f.id for f, _ in todo} - failed
-        _ = db.executemany('delete from pending_extraction where event_id = ?', [(i,) for i in settled(pending)])
-        db.commit()
+        with db.transaction() as tx:
+            tx.executemany('delete from pending_extraction where event_id = ?', [(i,) for i in settled(pending)])
         print(
             f'{len(done)} festivals answered, {len(failed)} failed {sorted(failed)}; '
             f'${spend.month_usd() - before:.2f} this run, '

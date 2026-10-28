@@ -47,16 +47,19 @@ def located(city: str, country: str | None) -> Place:
     return Place(city=city, country=country, found=spot)
 
 
+class Located(BaseModel):
+    city: str
+    country: str | None
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description="Geocode the source DB's cities with OpenStreetMap Nominatim.")
     _ = ap.parse_args()
     with sqlite_db.opened(sqlite_db.export(), 'ro') as db:
         known = {(p.city, p.country): p for p in Place.read()}
         # a country alone is no place on the map; one the export leaves empty is none
-        places: list[tuple[str, str | None]] = db.execute(
-            "select distinct city, nullif(country, '') from events where city != ''"
-        ).fetchall()
-        for city, country in places:
+        places = db.rows(Located, "select distinct city, nullif(country, '') as country from events where city != ''")
+        for city, country in ((p.city, p.country) for p in places):
             if (city, country) in known:
                 continue
             try:

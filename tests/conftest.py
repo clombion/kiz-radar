@@ -5,7 +5,7 @@ ignored ones included, are as it found them."""
 import json
 import os
 from collections.abc import Iterator
-from contextlib import ExitStack, closing
+from contextlib import ExitStack
 from pathlib import Path
 
 import pytest
@@ -79,4 +79,4 @@ def site_db(tmp_path_factory: pytest.TempPathFactory) -> Path:
 def memory() -> Iterator[Memory]:
     """In-memory databases for a test, each closed when it ends."""
     with ExitStack() as opened:
-        yield lambda: opened.enter_context(closing(db.memory()))
+        yield lambda: opened.enter_context(db.memory())

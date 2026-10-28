@@ -5,24 +5,23 @@ run as its command line would."""
 import functools
 import json
 import shutil
-import sqlite3
-from collections.abc import Callable, Sequence
+from collections.abc import Callable
 from pathlib import Path
 
 import pytest
+from pydantic import BaseModel
 
 import pipeline
 from pipeline import ROOT, prompt, tickets
 from pipeline import db as sqlite_db
+from pipeline.db import Transaction
 from pipeline.records import ANSWERS, CsvRow
 
 EXPORT = sqlite_db.export_in(ROOT / sqlite_db.SOURCE)  # the repository's, whatever the data folder
-# the tables that hold when a step ran, which a second run changes and nothing else should, read without it
-WITHOUT_WHEN = {
-    'meta': "select * from meta where key != 'built_at'",
-    'pipeline_steps': 'select step, description, performed_by, model, prompt, inputs, outputs, details '
-    'from pipeline_steps',
-}
+# when a step ran, which a second run changes and nothing else should: read without it (a column, or the rows a
+# where clause leaves out)
+WHEN_COLUMNS = {'pipeline_steps': 'performed_at'}
+WHEN_ROWS = {'meta': "key != 'built_at'"}
 
 
 # everything the steps read beside the export: every CSV file, the answers, the ticket reads and their log, and the
@@ -42,19 +41,20 @@ def committed(*paths: str) -> None:
 def schema() -> str:
     """The export's tables, indexes and views as SQLite stores them, in the order they were made."""
     with sqlite_db.opened(EXPORT, 'ro') as db:
-        made: list[tuple[str]] = db.execute(
-            "select sql from sqlite_master where sql is not null and name != 'sqlite_sequence' order by rowid"
-        ).fetchall()
-    return ';\n'.join(sql for (sql,) in made) + ';'
+        made = db.column(
+            str, "select sql from sqlite_master where sql is not null and name != 'sqlite_sequence' order by rowid"
+        )
+    return ';\n'.join(made) + ';'
 
 
-def shaped(db: sqlite3.Connection) -> sqlite3.Connection:
+def shaped(db: sqlite_db.Db) -> sqlite_db.Db:
     """The database with the export's tables, empty, for a test to put the rows it reads in."""
-    _ = db.executescript(schema())
+    with db.transaction() as tx:
+        tx.script(schema())
     return db
 
 
-def festival(db: sqlite3.Connection, event_id: int, **columns: object) -> None:
+def festival(db: Transaction, event_id: int, **columns: object) -> None:
     """A festival of the export: the columns events requires, with a test's values, and these."""
     row: dict[str, object] = {
         'id': event_id,
@@ -66,14 +66,15 @@ def festival(db: sqlite3.Connection, event_id: int, **columns: object) -> None:
         'sticky': 0,
         'page_fetched': 1,
     } | columns
-    names = ', '.join(row)
-    _ = db.execute(f'insert into events ({names}) values ({", ".join("?" * len(row))})', tuple(row.values()))  # noqa: S608 (the test's own column names)
+    db.insert('events', [row])
 
 
-def column(db: sqlite3.Connection, sql: str, params: Sequence[object] = ()) -> list[object]:
-    """The first column of a query's rows."""
-    rows: list[tuple[object, ...]] = db.execute(sql, params).fetchall()
-    return [r[0] for r in rows]
+class Made(BaseModel):
+    """A table, index or view as SQLite stores it."""
+
+    type: str
+    name: str
+    sql: str | None
 
 
 def run(main: Callable[[], None], monkeypatch: pytest.MonkeyPatch, *args: object) -> None:
@@ -85,14 +86,18 @@ def content(path: Path) -> dict[str, list[str]]:
     """The database's schema (each table, index and view as SQLite stores it) and every table's rows in the order they
     are stored, so a row that moves or takes another id is a change; without the time a step ran."""
     with sqlite_db.opened(path, 'ro') as db:
-        schema: list[tuple[str, str, str | None]] = db.execute(
-            'select type, name, sql from sqlite_master order by type, name'
-        ).fetchall()
-        out = {'': list(map(repr, schema))}
-        for kind, t, _ in schema:
-            if kind == 'table':
-                rows: list[tuple[object, ...]] = db.execute(WITHOUT_WHEN.get(t, f'select * from "{t}"')).fetchall()  # noqa: S608 (the database's own table names)
-                out[t] = list(map(repr, rows))
+        made = db.rows(Made, 'select type, name, sql from sqlite_master order by type, name')
+        out = {'': [repr(m) for m in made]}
+        for m in made:
+            if m.type == 'table':
+                columns = db.column(
+                    str, 'select name from pragma_table_info(?) where name != ?', (m.name, WHEN_COLUMNS.get(m.name, ''))
+                )
+                values = " || ',' || ".join(
+                    f'quote({sqlite_db.name(c)})' for c in columns
+                )  # each value as SQL writes it
+                where = f' where {WHEN_ROWS[m.name]}' if m.name in WHEN_ROWS else ''
+                out[m.name] = db.column(str, f'select {values} from {sqlite_db.name(m.name)}{where}')  # noqa: S608 (the database's own names, quoted)
     return out
 
 
@@ -106,21 +111,17 @@ def trimmed(festivals: int) -> Path:
     """The export in the test's data folder, with only its latest festivals that have a line-up, and every row of
     theirs."""
     src = copied()
-    with sqlite_db.opened(src, 'rw') as con:
-        kept = column(
-            con,
+    with sqlite_db.opened(src, 'rw') as db, db.transaction() as con:
+        kept = con.column(
+            int,
             'select id from events where id in (select event_id from artist_mentions) order by start_date desc limit ?',
             (festivals,),
         )
         # the events last: the source's own tables refer to them, and are held to it at once
-        tables: list[tuple[str]] = con.execute(
-            "select name from sqlite_master where type = 'table' order by name = 'events'"
-        ).fetchall()
-        for (t,) in tables:
-            columns = set(column(con, f'select name from pragma_table_info("{t}")'))  # noqa: S608 (the database's own names)
+        for t in con.column(str, "select name from sqlite_master where type = 'table' order by name = 'events'"):
+            columns = set(con.column(str, 'select name from pragma_table_info(?)', (t,)))
             key = 'id' if t == 'events' else 'event_id' if 'event_id' in columns else None
             if key:
-                sql = f'delete from "{t}" where {key} not in (select value from json_each(?))'  # noqa: S608 (the database's own names)
-                _ = con.execute(sql, (json.dumps(kept),))
-        con.commit()
+                sql = f'delete from {sqlite_db.name(t)} where {key} not in (select value from json_each(?))'  # noqa: S608 (the database's own names, quoted)
+                con.execute(sql, (json.dumps(kept),))
     return src

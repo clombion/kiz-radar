@@ -1,6 +1,7 @@
 """pipeline.audit: a value its record refuses is named with its file and place; an override that departs from nothing
 is stale; the report is the same each time."""
 
+import contextlib
 import dataclasses
 import datetime as dt
 import json
@@ -136,7 +137,7 @@ def test_the_audit_exits_1_naming_what_it_found_on_stderr(
     ) -> list[tickets.Festival]:
         return []
 
-    monkeypatch.setattr(audit.tickets, 'src_db', lambda: db)
+    monkeypatch.setattr(audit.tickets, 'src_db', lambda: contextlib.nullcontext(db))
 
     def refused(ids: set[int]) -> list[str]:
         return ['pages.csv line 2: state: no state']
