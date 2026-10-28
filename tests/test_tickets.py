@@ -14,7 +14,7 @@ import pytest
 from pipeline import ROOT, data, prompt, spend, tickets
 from pipeline.db import Db, Reader
 from pipeline.enums import FirstRead as FirstReadState
-from pipeline.enums import PassKind, Price, Recheck, Sales, SkipReason, Status, Style, Waiting
+from pipeline.enums import Model, PassKind, Price, Recheck, Sales, SkipReason, Status, Style, Waiting
 from pipeline.extract import answers, load_extract, prices
 from pipeline.records import (
     JSON,
@@ -575,9 +575,9 @@ def test_when_no_two_models_agree_all_reads_wait_for_an_agent(files: Path) -> No
 def test_a_model_that_misreads_answers_again_with_the_checkers_lines(files: Path) -> None:
     wrong = ANSWER.model_copy(update={'skipped': ()}).model_dump_json()
     client = Client(wrong, answer())
-    fr = tickets.ask_read(client, 'claude-opus-5-5', FEST, entry(ROWS), [entry(ROWS)])
+    fr = tickets.ask_read(client, Model.CLAUDE_OPUS_5_5, FEST, entry(ROWS), [entry(ROWS)])
     assert fr is not None
-    assert fr.read_by == 'claude-opus-5-5'
+    assert fr.read_by == Model.CLAUDE_OPUS_5_5
     assert 'neither in a tier nor skipped' in str(client.messages.asked[1][-1]['content'])
 
 
@@ -599,7 +599,9 @@ HELD = REGISTER[0]  # a site the register says no recipe can read
 
 
 def sold(state: Sales, page: str | None = None) -> FoundRow:
-    return FoundRow(event_id=7, event='Fest', state=state, page=page, links=None, found_by='agent', note='n')
+    """How an agent found festival 7 sells: a search that found nothing was of its links (festival()'s)."""
+    links = tickets.links_hash(()) if state == Sales.NONE_FOUND else None
+    return FoundRow(event_id=7, event='Fest', state=state, page=page, links=links, found_by='agent', note='n')
 
 
 @pytest.mark.parametrize(
@@ -922,7 +924,7 @@ def test_first_reads_count_against_the_budget(files: Path) -> None:
         Client(ANSWER.model_dump_json(), ANSWER.model_dump_json()), FEST, entry(ROWS), [entry(ROWS)]
     )
     assert round(spend.month_usd(), 3) == round(
-        spend.usd('claude-opus-5-5', 6000, 2000) + spend.usd('claude-sonnet-5-5', 6000, 2000), 3
+        spend.usd(Model.CLAUDE_OPUS_5_5, 6000, 2000) + spend.usd(Model.CLAUDE_SONNET_5_5, 6000, 2000), 3
     )
 
 
@@ -976,7 +978,9 @@ def test_a_first_read_to_another_prompt_is_never_written(files: Path) -> None:
 
 
 def described(*passes: PricedPass) -> answers.Answer[Priced]:
-    logged = answers.Logged(file='prices/event-7.json', answered_at=AT, model='m', prompt='h', answered_by='x')
+    logged = answers.Logged(
+        file='prices/event-7.json', answered_at=AT, model=Model.CLAUDE_HAIKU_5_5, prompt='0' * 16, answered_by='x'
+    )
     return answers.Answer(Priced(event_id=7, passes=passes, rule_quotes=()), 'b', logged)
 
 

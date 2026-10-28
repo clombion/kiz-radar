@@ -203,7 +203,7 @@ CREATE TABLE artist_mentions (
 ) STRICT;
 CREATE INDEX artist_mentions_event ON artist_mentions(event_id);
 """
-TABLES = sqlite_db.declared(DDL.format_map({p.name: states.sql_in(p.name) for p in states.POINTS}))
+TABLES = sqlite_db.declared(DDL.format_map(states.SQL_IN))
 GENRE_KEY, FEATURE_KEY = ('event_id', 'genre', 'source', 'other_name'), ('event_id', 'feature', 'source')
 
 

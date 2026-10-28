@@ -32,9 +32,12 @@ import types
 from collections.abc import Iterable, Mapping
 from dataclasses import field
 from enum import StrEnum
+from typing import TypeIs
 
 from pydantic import ConfigDict
 from pydantic.dataclasses import dataclass
+
+from pipeline.enums import Point as PointName
 
 
 class Disposition(StrEnum):
@@ -154,6 +157,7 @@ POINTS = (
     ),
     P('next_change', 'NextChange', "a pass's next price change on the day it is viewed", 'pricing.ts nextChange'),
     P('hotel', 'Hotel', 'each pass, by whether its price includes a hotel', 'the prices pass; the first read'),
+    P('model', 'Model', 'each Claude model the pipeline asks, which spend.PRICES prices', 'ask; tickets; merge review'),
 )
 
 ROWS = (
@@ -780,6 +784,10 @@ ROWS = (
     ),
     S('hotel', 'included', 'the price includes accommodation', VIEW, 'with hotel'),
     S('hotel', 'none', 'the price includes no accommodation', VIEW),
+    S('model', 'claude-fable-5-1', "the first read's tie-break, when the two models' reads differ", KEPT),
+    S('model', 'claude-opus-5-5', 'a model of the first read', KEPT),
+    S('model', 'claude-sonnet-5-5', 'a model of the first read', KEPT),
+    S('model', 'claude-haiku-5-5', 'the extraction passes and the merge review', KEPT),
 )
 
 
@@ -834,31 +842,32 @@ KEYS = {p: tuple(s.key for s in rows) for p, rows in BY_POINT.items()}
 BY_KEY = {(s.point, s.key): s for s in ROWS}
 
 
-def of(point: str) -> tuple[State, ...]:
+def is_point(name: str) -> TypeIs[PointName]:
+    """Whether a name read at run time (a template's marker) names a point."""
+    return name in POINT
+
+
+def of(point: PointName) -> tuple[State, ...]:
     """The point's states, in table order."""
-    if point not in BY_POINT:
-        raise KeyError(f'no point {point!r} in pipeline/states.py')
     return BY_POINT[point]
 
 
-def keys(point: str) -> tuple[str, ...]:
-    of(point)
+def keys(point: PointName) -> tuple[str, ...]:
     return KEYS[point]
 
 
-def made(point: str) -> list[str]:
+def made(point: PointName) -> list[str]:
     """The keys of the point's states that its own producer makes (not those another step adds, made_by)."""
     return [s.key for s in of(point) if s.made_by is None]
 
 
-def state(point: str, key: str) -> State:
-    of(point)
+def state(point: PointName, key: str) -> State:
     if found := BY_KEY.get((point, key)):
         return found
     raise not_a_state(point, key)
 
 
-def not_a_state(point: str, value: str, where: str | None = None) -> LookupError:
+def not_a_state(point: PointName, value: str, where: str | None = None) -> LookupError:
     """The error for a value that is no state of its point, naming the point, its producer and what to do."""
     return LookupError(
         f'{point} {value!r}' + (f' in {where}' if where else '') + f' (produced by '
@@ -871,7 +880,7 @@ def member(key: str) -> str:
     return re.sub(r'\W', '_', key).upper()
 
 
-def total[K: str, V](point: str, mapping: dict[K, V], where: str) -> dict[K, V]:
+def total[K: str, V](point: PointName, mapping: dict[K, V], where: str) -> dict[K, V]:
     """mapping, once it has a value for every state of the point and for nothing else."""
     if missing := [k for k in keys(point) if k not in mapping]:
         raise LookupError(f'{where}: no value for the {point} states {missing} (pipeline/states.py)')
@@ -880,13 +889,20 @@ def total[K: str, V](point: str, mapping: dict[K, V], where: str) -> dict[K, V]:
     return mapping
 
 
-def sql_in(point: str, keys_: Iterable[str] | None = None) -> str:
+def sql_in(point: PointName, keys_: Iterable[str] | None = None) -> str:
     """The point's keys (or these of them: none is an empty list) as an SQL list, for a CHECK (... IN (...))."""
     chosen = keys(point) if keys_ is None else keys_
-    return ', '.join("'" + state(point, k).key.replace("'", "''") + "'" for k in chosen)
+    return quoted(state(point, k).key for k in chosen)
 
 
-def definitions(point: str, indent: str = '') -> str:
+def quoted(keys_: Iterable[str]) -> str:
+    return ', '.join("'" + k.replace("'", "''") + "'" for k in keys_)
+
+
+SQL_IN = {p: quoted(k) for p, k in KEYS.items()}  # each point's keys as an SQL list, by name, for a DDL's {point}
+
+
+def definitions(point: PointName, indent: str = '') -> str:
     """The states the point's producer makes, in key order (a view's order is not the prompt's), as a Markdown list
     for its prompt: each key and its criterion, and, for a state other states fall under (a style's genres), which
     ones."""
@@ -901,13 +917,19 @@ def definitions(point: str, indent: str = '') -> str:
 def fill(template: str, where: str) -> str:
     """A prompt template with each line {{states:<point>}} replaced by the point's definitions; an unknown point or a
     marker left anywhere else fails."""
-    text = re.sub(r'^( *)\{\{states:(\w+)\}\}$', lambda m: definitions(m[2], m[1]), template, flags=re.MULTILINE)
+
+    def filled(m: re.Match[str]) -> str:
+        if not is_point(name := m[2]):
+            raise ValueError(f'{where}: {{{{states:{name}}}}} names no point of pipeline/states.py')
+        return definitions(name, m[1])
+
+    text = re.sub(r'^( *)\{\{states:(\w+)\}\}$', filled, template, flags=re.MULTILINE)
     if left := re.findall(r'\{\{.*?\}\}', text):
         raise ValueError(f'{where}: unfilled {left}')
     return text
 
 
-SITE_POINTS = (
+SITE_POINTS: tuple[PointName, ...] = (
     'ticket',
     'pass_kind',
     'style',
@@ -974,13 +996,13 @@ ENUMS = {p.enum: (p.name, False) for p in POINTS} | {'ExtractedFeature': ('featu
 
 def points_table() -> str:
     """The data points as a Markdown table, for pipeline/STATES.md: what one instance is, its states, its producer."""
-    rows = [f'| **{p.name}**, {p.of} | {", ".join(f"`{k}`" for k in keys(p.name))} | {p.produced_by} |' for p in POINTS]
+    rows = [f'| **{p.name}**, {p.of} | {", ".join(f"`{k}`" for k in KEYS[p.name])} | {p.produced_by} |' for p in POINTS]
     return '\n'.join(['| Data point | States | Produced by |', '| -- | -- | -- |', *rows])  # as mdformat writes it
 
 
 def enum_keys(name: str) -> list[str]:
-    point, own = ENUMS[name]
-    return made(point) if own else list(keys(point))
+    point, own = ENUMS[name]  # by name: the enums are written from the rows, whatever enums.py says yet
+    return [s.key for s in BY_POINT[point] if s.made_by is None] if own else list(KEYS[point])
 
 
 def enums_module() -> str:
@@ -993,6 +1015,12 @@ def enums_module() -> str:
         'edit them there, then run: mise run generate."""',
         '',
         'from enum import StrEnum, unique',
+        'from typing import Literal',
+        '',
+        '# every data point of pipeline/states.py, by name',
+        'type Point = Literal[',
+        *(f'    {p.name!r},' for p in POINTS),
+        ']',
     ]
     for name, (point, own) in ENUMS.items():
         what = f'the {point} states its producer makes' if own else f'the {point} states'

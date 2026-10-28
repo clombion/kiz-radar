@@ -20,14 +20,23 @@ import tempfile
 from dataclasses import dataclass
 from functools import cache, cached_property
 from pathlib import Path
-from typing import Literal
 
 from pipeline import ROOT, data, records, states
-from pipeline.records import Asked, AskedPrices, Batch, Entry, Extracted, Json, Priced, Record, RoomsGenres
+from pipeline.records import (
+    Asked,
+    AskedPrices,
+    Batch,
+    Entry,
+    Extracted,
+    Json,
+    Name,
+    PassName,
+    Priced,
+    Record,
+    RoomsGenres,
+)
 
 type Schema = dict[str, Json]
-type PassName = Literal['extract', 'rooms_genres', 'prices']
-type Name = PassName | Literal['first_read']
 
 ASKED = 'pipeline/prompts/asked'  # every prompt an answer or a read followed, by its hash
 CHECKED, SENT = '\n\n======== schema as checked ========\n\n', '\n\n======== schema as sent ========\n\n'

@@ -18,7 +18,7 @@ from pydantic import BaseModel, Field, ValidationError
 
 from pipeline import data, db, enums, export, generate, prompt, spend, states, tickets
 from pipeline.db import Db, Transaction
-from pipeline.enums import AnswerState, MergeReason, PassKind, Role, Style
+from pipeline.enums import AnswerState, MergeReason, Model, PassKind, Role, Style
 from pipeline.extract import answers, ask, check_output, load_extract, prices, resolve_artists, run_log
 from pipeline.extract.resolve_artists import stable_ids
 from pipeline.prompt import Prompt, api_schema
@@ -480,7 +480,7 @@ def test_an_answer_saved_archives_its_prompt_first() -> None:
     archived = data(prompt.ASKED) / f'{p.hash}.md'
     archived.unlink(missing_ok=True)
     out = Batch[Priced].parse(prices_answer('Full pass 80€ until 31.01'))
-    _ = answers.save('prices', out, 'm', p, 'test')
+    _ = answers.save('prices', out, Model.CLAUDE_HAIKU_5_5, p, 'test')
     assert archived.read_text(encoding='utf-8') == p.text
     assert answers.log()['prices/event-5.json'].prompt == p.hash
     assert answers.current(prompt.PRICES, {5})[5].entry == out.events[0]
@@ -491,7 +491,15 @@ def test_only_an_answer_to_the_current_prompt_is_read_as_its_record(answered_her
     _ = (answered_here / 'prices' / 'prices-001.json').write_text(
         json.dumps({'batch': 'b', 'events': [{'event_id': 5, 'old': 1}]})
     )
-    rows = [Logged(file='prices/prices-001.json', answered_at=AT, model='m', prompt='0' * 16, answered_by='x')]
+    rows = [
+        Logged(
+            file='prices/prices-001.json',
+            answered_at=AT,
+            model=Model.CLAUDE_HAIKU_5_5,
+            prompt='0' * 16,
+            answered_by='x',
+        )
+    ]
     Logged.write(rows)
     assert list(answers.answered('prices', {5})) == [5]  # its festivals are known, whatever its shape
     assert answers.current(prompt.PRICES, {5}) == {}
@@ -540,32 +548,24 @@ def test_every_prompt_the_answers_reads_and_export_name_is_archived_under_its_ha
 def test_a_template_with_a_marker_left_fails() -> None:
     with pytest.raises(ValueError, match='unfilled'):
         _ = states.fill('{{states:pass_kind}}\nand {{states:pass_kind}} inline', 'x.md')
-    with pytest.raises(KeyError):
+    with pytest.raises(ValueError, match='names no point'):
         _ = states.fill('{{states:no_such_point}}', 'x.md')
 
 
 def test_requests_stop_once_the_months_budget_is_spent() -> None:
-    _ = spend.record('prices', 'claude-opus-5-5', 1_000_000, 5_000_000)  # $104, about €93
+    _ = spend.record('prices', Model.CLAUDE_OPUS_5_5, 1_000_000, 5_000_000)  # $104, about €93
     client = Client(prices_answer('Full pass 80€ until 31.01'))
     assert ask.ask(client, prompt.PRICES, FEST) is not None
-    _ = spend.record('prices', 'claude-opus-5-5', 0, 1_000_000)  # $20 more: over €100
+    _ = spend.record('prices', Model.CLAUDE_OPUS_5_5, 0, 1_000_000)  # $20 more: over €100
     with pytest.raises(spend.BudgetSpentError):
         _ = ask.ask(client, prompt.PRICES, FEST)
     assert len(client.messages.asked) == 1
 
 
-def test_a_model_with_no_price_is_never_asked(monkeypatch: pytest.MonkeyPatch) -> None:
-    client = Client(prices_answer('Full pass 80€ until 31.01'))
-    monkeypatch.setattr(ask, 'MODEL', 'claude-unpriced')
-    with pytest.raises(KeyError, match='claude-unpriced'):
-        _ = ask.ask(client, prompt.PRICES, FEST)
-    assert client.messages.asked == []
-
-
 def test_a_request_costs_its_models_prices() -> None:
-    assert spend.usd('claude-haiku-5-5', 100_000, 100_000) == 0.06
-    assert spend.usd('claude-haiku-5-5', 200_000, 0) == 0.10  # a long prompt costs Haiku more
-    assert spend.usd('claude-sonnet-5-5', 1_000, 1_000) == 0.012
+    assert spend.usd(Model.CLAUDE_HAIKU_5_5, 100_000, 100_000) == 0.06
+    assert spend.usd(Model.CLAUDE_HAIKU_5_5, 200_000, 0) == 0.10  # a long prompt costs Haiku more
+    assert spend.usd(Model.CLAUDE_SONNET_5_5, 1_000, 1_000) == 0.012
 
 
 def source(con: Db, *events: tuple[int, str | None]) -> Db:
@@ -589,7 +589,9 @@ def test_only_the_named_festivals_are_asked(memory: Memory, monkeypatch: pytest.
 
 
 def logged(prompt_: str, at: dt.datetime = dt.datetime(2026, 10, 2, 9, tzinfo=dt.UTC)) -> Logged:
-    return Logged(file='prices/event-1.json', answered_at=at, model='m', prompt=prompt_, answered_by='x')
+    return Logged(
+        file='prices/event-1.json', answered_at=at, model=Model.CLAUDE_HAIKU_5_5, prompt=prompt_, answered_by='x'
+    )
 
 
 NOW = logged(prompt.current('prices').hash)
@@ -756,7 +758,7 @@ def test_a_row_outside_the_table_or_its_rules_is_refused_when_written(memory: Me
 def test_a_festival_is_priced_exactly_when_it_has_the_pass_a_card_prices(memory: Memory) -> None:
     full = priced(tier('Full pass 80€ until 31.01'))
     party = priced(tier('Full pass 80€ until 31.01'), kind=PassKind.PARTY, event_id=6)
-    described = {e.event_id: answers.Answer(e, 'b', logged('h')) for e in (full, party)}
+    described = {e.event_id: answers.Answer(e, 'b', logged('0' * 16)) for e in (full, party)}
     with loaded(memory()) as con:
         load_extract.load_prices(con, described, {}, {6: (enums.Sales.SHOP, 'https://shop.example/6')})
         statuses = con.rows(PriceStatus, 'SELECT event_id, price, page, card_pass FROM price_status ORDER BY event_id')

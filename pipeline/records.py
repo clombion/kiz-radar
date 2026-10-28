@@ -40,6 +40,7 @@ from pipeline.enums import (
     Genre,
     MergeDecision,
     MergeReason,
+    Model,
     PassKind,
     Plan,
     Role,
@@ -54,6 +55,9 @@ from pipeline.enums import FirstRead as FirstReadState
 
 type Json = dict[str, Json] | list[Json] | str | int | float | bool | None
 JSON: TypeAdapter[Json] = TypeAdapter(Json)  # any JSON text, as its value
+
+type PassName = Literal['extract', 'rooms_genres', 'prices']  # the extraction passes (pipeline/prompt.py)
+type Name = PassName | Literal['first_read']  # every prompt, by name
 
 DIGITS = 16  # a prompt's hash is the first DIGITS hex digits of its text's SHA-256 (pipeline/prompt.py)
 
@@ -438,14 +442,14 @@ class Dated(BaseModel):
 class Stamped(Dated):
     """A first read, whatever prompt it follows: the logged read it maps, and the prompt it names."""
 
-    prompt: str
+    prompt: Hash
 
 
 class Dispute(Record):
     """The first reads of the models, no two of which agreed (tickets/disputed/<event_id>.json)."""
 
     rows_at: Stamp
-    reads: dict[str, FirstRead | None]  # by model; None when its read failed the checker twice
+    reads: dict[Model, FirstRead | None]  # by model; None when its read failed the checker twice
 
 
 # ---- site recipes
@@ -646,6 +650,7 @@ def flag_text(value: object) -> str:
 type Blank[T] = Annotated[T | None, BeforeValidator(blank), WrapSerializer(unblank)]  # empty when there is none
 type Number = Annotated[float, PlainSerializer(number_text, return_type=str)]  # 80, 80.5
 type Flag = Annotated[bool, PlainSerializer(flag_text, return_type=str)]  # 1 or 0
+type Amount = Annotated[float, Field(gt=0), PlainSerializer(number_text, return_type=str)]  # a price, more than 0
 
 
 def split_keys(value: object) -> object:
@@ -732,19 +737,25 @@ class PriceRow(CsvRow):
     kind: PassKind
     style: Blank[Style]
     label: Blank[str]
-    group_size: Blank[int]
-    days: Blank[int]
+    group_size: Blank[Count]
+    days: Blank[Count]
     includes_hotel: Flag
-    amount: Number
-    currency: str
-    fee: Blank[Number]
-    alt_amount: Blank[Number]
-    alt_currency: Blank[str]
+    amount: Amount
+    currency: Currency
+    fee: Blank[Amount]
+    alt_amount: Blank[Amount]
+    alt_currency: Blank[Currency]
     from_: Blank[Day] = Field(validation_alias='from', serialization_alias='from')
     until: Blank[Day]
-    quantity: Blank[int]
+    quantity: Blank[Count]
     sold_out: Flag
-    quote: str
+    quote: Text
+
+    @model_validator(mode='after')
+    def one_second_price(self) -> Self:
+        if (self.alt_amount is None) != (self.alt_currency is None):
+            raise ValueError('a second price has its amount and its currency, or neither')
+        return self
 
 
 class PageRow(CsvRow):
@@ -754,28 +765,38 @@ class PageRow(CsvRow):
 
     event_id: int
     event: str
-    page: str
+    page: Url
     reseller: Blank[str]
     read_on: Date
-    read_by: str
-    prompt: str
-    recipe: str
-    unread: int  # its tickets the first read doesn't know
+    read_by: Text
+    prompt: Hash
+    recipe: Version
+    unread: Annotated[int, Field(ge=0)]  # its tickets the first read doesn't know
     notes: str  # its first read's rule quotes, one per line
 
 
 class FoundRow(CsvRow):
-    """How an agent found a festival with no known ticket page sells."""
+    """How an agent found a festival with no known ticket page sells: a page exactly when it sells in a shop (a
+    festival whose sales haven't opened may name its coming page), the links searched exactly when a search found
+    nothing."""
 
     FILE = 'pipeline/tickets/pages.csv'
 
     event_id: int
     event: str
     state: Sales
-    page: Blank[str]
-    links: Blank[str]  # what a search that found nothing was of (tickets.links_hash)
-    found_by: str
-    note: str
+    page: Blank[Url]
+    links: Blank[Hash]  # what a search that found nothing was of (tickets.links_hash)
+    found_by: Text
+    note: Text
+
+    @model_validator(mode='after')
+    def as_it_sells(self) -> Self:
+        if (self.state == Sales.SHOP) != (self.page is not None) and self.state != Sales.NOT_YET:
+            raise ValueError(f'state {self.state}: a shop has its page, and only a shop (or a sale to come) has one')
+        if (self.state == Sales.NONE_FOUND) != (self.links is not None):
+            raise ValueError(f'state {self.state}: the links searched, exactly when a search found nothing')
+        return self
 
 
 class StatusRow(CsvRow):
@@ -789,7 +810,7 @@ class StatusRow(CsvRow):
     waits_for: Waiting
     first_read: FirstReadState
     sales: Blank[Sales]
-    page: Blank[str]
+    page: Blank[Url]
 
 
 class MergeRow(CsvRow):
@@ -892,8 +913,8 @@ class Fare(CsvRow):
     airport: str
     depart: Date
     return_: Date = Field(validation_alias='return', serialization_alias='return')
-    price: int  # in whole euros
-    currency: str
+    price: Count  # in whole euros
+    currency: Currency
     fetched_at: Stamp
 
 
@@ -915,8 +936,8 @@ class Spent(CsvRow):
     FILE = 'pipeline/spend.csv'
 
     at: Stamp
-    step: str
-    model: str
+    step: Name
+    model: Model
     input_tokens: int
     output_tokens: int
     usd: Number
@@ -927,8 +948,8 @@ class Rate(CsvRow):
 
     FILE = 'pipeline/rates.csv'
 
-    currency: str
-    per_eur: float
+    currency: Currency
+    per_eur: Annotated[float, Field(gt=0)]
     date: Date
 
 
@@ -1000,11 +1021,11 @@ class Logged(CsvRow):
 
     FILE = f'{ANSWERS}/log.csv'
 
-    file: str
+    file: Text
     answered_at: Stamp
-    model: str
-    prompt: str
-    answered_by: str
+    model: Model
+    prompt: Hash
+    answered_by: Text
 
 
 class Suggestion(CsvRow):

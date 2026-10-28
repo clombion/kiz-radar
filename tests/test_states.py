@@ -258,6 +258,7 @@ LITERALS = {
     frozenset({'first_read'}),  # the prompt that is no pass, prompt.Name
     frozenset({'ro', 'rw', 'rwc'}),  # SQLite's open modes, db.opened
     frozenset({'ro', 'rw'}),  # the export's, which no step creates, export.opened
+    frozenset(p.name for p in states.POINTS),  # the points' names, enums.Point
 }
 
 

@@ -11,7 +11,7 @@ from pathlib import Path
 import pytest
 
 from pipeline import audit, data, exceptions, prompt, tickets
-from pipeline.enums import FirstRead
+from pipeline.enums import FirstRead, Model
 from pipeline.records import CsvRow, Logged, PageRecipe
 from tests.exports import committed, shaped
 from tests.fakes import AT, REGISTER, Memory
@@ -104,7 +104,7 @@ def test_an_answer_to_the_current_prompt_holds_only_states_its_pass_makes(
         return {
             i: (
                 folder / f'event-{i}.json',
-                Logged(file='f', answered_at=AT, model='m', prompt=h, answered_by='x'),
+                Logged(file='f', answered_at=AT, model=Model.CLAUDE_HAIKU_5_5, prompt=h, answered_by='x'),
             )
             for i, h in ((1, now), (2, old))
         }

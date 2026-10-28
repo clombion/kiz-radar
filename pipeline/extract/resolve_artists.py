@@ -67,7 +67,7 @@ from pipeline import data, export, states
 from pipeline import db as sqlite_db
 from pipeline.countries import CODE_LENGTH, INDICATOR_A, indicator
 from pipeline.db import Reader, Transaction
-from pipeline.enums import ArtistKind, MergeDecision, MergeReason, Role
+from pipeline.enums import ArtistKind, MergeDecision, MergeReason, Model, Role
 from pipeline.extract import run_log
 from pipeline.extract.answers import log, logged
 from pipeline.extract.prices import COUPLE
@@ -79,7 +79,7 @@ ORG_ROLES = {Role.ORGANISER, Role.MEDIA, Role.CREW}
 SEPARATORS = re.compile(r'\s*&\s*|\s*\+\s*|\s+(?:and|et|e|y|und)\s+', re.IGNORECASE)
 PREFIX = re.compile(r'^(?:dj|deejay|d\.j\.|mc)\s+', re.IGNORECASE)
 SHORTEST_NAME = 2  # a member's name key shorter than this is a letter of a name built around "&" ("D&L Beats")
-REVIEWER = 'claude-haiku-5-5'  # the model of the merge review's subagents
+REVIEWER = Model.CLAUDE_HAIKU_5_5  # the model of the merge review's subagents
 PAIR = 2  # the keys of a decision on two artists; one key's decides a single name
 
 # the tables this step makes again each time it runs
@@ -162,10 +162,7 @@ KEPT = sqlite_db.declared("""CREATE TABLE artist_ids (
 # a review that could not tell (unsure) decides nothing: the pair stays a candidate, and merges.csv never holds it
 STORED = (MergeDecision.MERGE, MergeDecision.SEPARATE)
 TABLES = sqlite_db.declared(
-    DDL.format_map(
-        {p.name: states.sql_in(p.name) for p in states.POINTS}
-        | {'stored_decision': states.sql_in('merge_decision', STORED)}
-    )
+    DDL.format_map(states.SQL_IN | {'stored_decision': states.sql_in('merge_decision', STORED)})
 )
 
 

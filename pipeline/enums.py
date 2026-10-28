@@ -2,6 +2,45 @@
 edit them there, then run: mise run generate."""
 
 from enum import StrEnum, unique
+from typing import Literal
+
+# every data point of pipeline/states.py, by name
+type Point = Literal[
+    'page_read',
+    'sales',
+    'ticket',
+    'skip_reason',
+    'pass_kind',
+    'style',
+    'people',
+    'fee',
+    're_read',
+    'first_read',
+    'answer',
+    'waits_for',
+    'price',
+    'tier_today',
+    'card_price',
+    'genre',
+    'genre_rule',
+    'source',
+    'pass_source',
+    'room_kind',
+    'feature',
+    'role',
+    'artist_kind',
+    'home_basis',
+    'merge_decision',
+    'merge_reason',
+    'pending',
+    'listing',
+    'event_source',
+    'plan',
+    'fare_search',
+    'next_change',
+    'hotel',
+    'model',
+]
 
 
 @unique
@@ -365,6 +404,16 @@ class Hotel(StrEnum):
 
     INCLUDED = 'included'
     NONE = 'none'
+
+
+@unique
+class Model(StrEnum):
+    """the model states"""
+
+    CLAUDE_FABLE_5_1 = 'claude-fable-5-1'
+    CLAUDE_OPUS_5_5 = 'claude-opus-5-5'
+    CLAUDE_SONNET_5_5 = 'claude-sonnet-5-5'
+    CLAUDE_HAIKU_5_5 = 'claude-haiku-5-5'
 
 
 @unique

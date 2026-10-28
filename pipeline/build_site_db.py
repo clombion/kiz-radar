@@ -403,7 +403,7 @@ create view plan_rows as
 """
 TABLES = sqlite_db.declared(
     DDL.format_map(
-        {p.name: states.sql_in(p.name) for p in states.POINTS}
+        states.SQL_IN
         | {
             'booked_as': states.sql_in('role', (*BOOKED_ROLES, Role.MC)),
             'priced': enums.Price.PRICED,

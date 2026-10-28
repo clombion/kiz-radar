@@ -61,6 +61,7 @@ thing a consumer must treat differently.
 | **fare_search**, a festival weekend's latest flight search (pipeline/fare_jobs.csv) | `priced`, `no price`, `refused` | fares.search |
 | **next_change**, a pass's next price change on the day it is viewed | `door`, `dated`, `later` | pricing.ts nextChange |
 | **hotel**, each pass, by whether its price includes a hotel | `included`, `none` | the prices pass; the first read |
+| **model**, each Claude model the pipeline asks, which spend.PRICES prices | `claude-fable-5-1`, `claude-opus-5-5`, `claude-sonnet-5-5`, `claude-haiku-5-5` | ask; tickets; merge review |
 
 <!-- points:end -->
 

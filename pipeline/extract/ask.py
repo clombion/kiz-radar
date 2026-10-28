@@ -33,7 +33,7 @@ from anthropic.types import Message, MessageParam, OutputConfigParam, TextBlock
 from pipeline import db as sqlite_db
 from pipeline import export, spend
 from pipeline import prompt as prompts
-from pipeline.enums import AnswerState, Style
+from pipeline.enums import AnswerState, Model, Style
 from pipeline.extract import answers, check_output, prices
 from pipeline.prompt import Pass, Prompt
 from pipeline.records import Asked, AskedPrices, Batch, Date, Entry, On, Priced, Record
@@ -41,7 +41,7 @@ from pipeline.records import Asked, AskedPrices, Batch, Date, Entry, On, Priced,
 if TYPE_CHECKING:
     from pathlib import Path
 
-MODEL = 'claude-haiku-5-5'
+MODEL = Model.CLAUDE_HAIKU_5_5
 WORKERS = 8
 BY = 'pipeline/extract/ask.py (Messages API), one festival'
 
@@ -115,11 +115,11 @@ class Request:
     """A question to Claude: the model, the prompt, the message, how its lines are labelled, and the step of the
     ledger it is spent under."""
 
-    model: str
+    model: Model
     prompt: Prompt
     content: str
     label: str
-    step: str
+    step: prompts.Name
 
 
 def structured[R: Record](client: Client, request: Request, check: Callable[[str], R | list[str]]) -> R | None:
@@ -130,7 +130,7 @@ def structured[R: Record](client: Client, request: Request, check: Callable[[str
     model, prompt, label = request.model, request.prompt, request.label
     messages: list[MessageParam] = [{'role': 'user', 'content': request.content}]
     for attempt in (1, 2):
-        spend.check(model)
+        spend.check()
         try:
             with client.messages.stream(
                 model=model,

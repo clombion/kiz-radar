@@ -9,17 +9,24 @@ already under way can take the month a little over.
 
 import threading
 
+from pipeline import states
+from pipeline.enums import Model
+from pipeline.prompt import Name
 from pipeline.records import Rate, Spent, now
 
 BUDGET_EUR = 100
-# dollars per million tokens, in and out, by model; Haiku's long prompts (over 100K tokens) cost more
-PRICES = {
-    'claude-fable-5-1': (10, 50),
-    'claude-opus-5-5': (4, 20),
-    'claude-sonnet-5-5': (2, 10),
-    'claude-haiku-5-5': (0.10, 0.50),
-}
-LONG = {'claude-haiku-5-5': (100_000, 0.50, 2.50)}
+# dollars per million tokens, in and out, of every model; Haiku's long prompts (over 100K tokens) cost more
+PRICES = states.total(
+    'model',
+    {
+        Model.CLAUDE_FABLE_5_1: (10, 50),
+        Model.CLAUDE_OPUS_5_5: (4, 20),
+        Model.CLAUDE_SONNET_5_5: (2, 10),
+        Model.CLAUDE_HAIKU_5_5: (0.10, 0.50),
+    },
+    'spend.PRICES',
+)
+LONG = {Model.CLAUDE_HAIKU_5_5: (100_000, 0.50, 2.50)}
 _lock = threading.Lock()
 
 
@@ -27,7 +34,7 @@ class BudgetSpentError(Exception):
     pass
 
 
-def usd(model: str, input_tokens: int, output_tokens: int) -> float:
+def usd(model: Model, input_tokens: int, output_tokens: int) -> float:
     rate_in, rate_out = PRICES[model]
     if model in LONG and input_tokens > LONG[model][0]:
         _, rate_in, rate_out = LONG[model]
@@ -44,16 +51,13 @@ def eur(dollars: float) -> float:
     return dollars / next(r.per_eur for r in Rate.read() if r.currency == 'USD')
 
 
-def check(model: str) -> None:
-    """Before a request to model: KeyError when PRICES can't cost it (it could not be recorded), BudgetSpentError once
-    the month's budget is spent."""
-    if model not in PRICES:
-        raise KeyError(f'{model}: no price in spend.PRICES')
+def check() -> None:
+    """Before a request: BudgetSpentError once the month's budget is spent."""
     if (spent := eur(month_usd())) >= BUDGET_EUR:
         raise BudgetSpentError(f'this month has spent €{spent:.2f} of its €{BUDGET_EUR} budget for Claude')
 
 
-def record(step: str, model: str, input_tokens: int, output_tokens: int) -> float:
+def record(step: Name, model: Model, input_tokens: int, output_tokens: int) -> float:
     """Add one request to the ledger; its cost in dollars."""
     cost = usd(model, input_tokens, output_tokens)
     row = Spent(

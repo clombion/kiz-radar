@@ -77,7 +77,7 @@ from pipeline import data, exceptions, export, spend, states
 from pipeline import db as sqlite_db
 from pipeline import prompt as prompts
 from pipeline.enums import FirstRead as FirstReadState
-from pipeline.enums import Listing, PassKind, Recheck, Sales, SkipReason, Status, Style, Waiting
+from pipeline.enums import Listing, Model, PassKind, Recheck, Sales, SkipReason, Status, Style, Waiting
 from pipeline.extract import answers, ask, check_output, prices
 from pipeline.records import (
     JSON,
@@ -118,8 +118,9 @@ from pipeline.records import (
 TICKETS = 'pipeline/tickets'
 # each a folder of TICKETS: the sites' recipes, first reads, drafts, the log of reads, and reads no two models agreed on
 SITES, READS, DRAFTS, LOG, DISPUTED = (f'{TICKETS}/{d}' for d in ('sites', 'reads', 'drafts', 'log', 'disputed'))
-MODELS = ('claude-opus-5-5', 'claude-sonnet-5-5')  # each makes a first read; the first one's is kept when they agree
-TIE_BREAK = 'claude-fable-5-1'  # reads too when they don't, so that two of three may agree
+# each makes a first read; the first one's is kept when they agree
+MODELS = (Model.CLAUDE_OPUS_5_5, Model.CLAUDE_SONNET_5_5)
+TIE_BREAK = Model.CLAUDE_FABLE_5_1  # reads too when they don't, so that two of three may agree
 REFUSALS = 3
 WHY_LENGTH = 300  # a failed read's why is cut to this many characters
 HTTP_ERROR = 400  # an HTTP status from this one up is an error
@@ -1158,7 +1159,7 @@ def joined(header: ReadHeader, answer: FirstReadAnswer) -> FirstRead:
     )
 
 
-def ask_read(client: ask.Client, model: str, f: Festival, entry: Read, entries: Sequence[Entry]) -> FirstRead | None:
+def ask_read(client: ask.Client, model: Model, f: Festival, entry: Read, entries: Sequence[Entry]) -> FirstRead | None:
     """One model's first read, checked, with one retry on the checker's lines; None when it fails twice."""
     header = draft_of(f, entry, model)
 
@@ -1169,7 +1170,7 @@ def ask_read(client: ask.Client, model: str, f: Festival, entry: Read, entries: 
             return errors(e, 'schema')
         return read_problems(fr, entries) or fr
 
-    request = ask.Request(model, prompts.current('first_read'), question(f, entry), f'{f.id} {model}', 'first-read')
+    request = ask.Request(model, prompts.current('first_read'), question(f, entry), f'{f.id} {model}', 'first_read')
     return ask.structured(client, request, check)
 
 
@@ -1207,7 +1208,7 @@ def meaning(fr: FirstRead) -> Meaning:
     ), frozenset((s.key, s.reason if s.reason in told else None) for s in fr.skipped)
 
 
-def agreed(reads: Mapping[str, FirstRead | None]) -> FirstRead | None:
+def agreed(reads: Mapping[Model, FirstRead | None]) -> FirstRead | None:
     """Of the models' reads ({model: read, or None when it failed}), the first that another agrees with, its read_by
     naming every model that agrees; else None."""
     done = [(m, r) for m, r in reads.items() if r]
@@ -1366,19 +1367,8 @@ def cmd_todo(db: sqlite_db.Reader) -> None:
 
 
 def found_pages() -> dict[int, FoundRow]:
-    """{event_id: tickets/pages.csv row}, each checked: a page exactly when it sells in a shop (a festival whose
-    sales haven't opened may name its coming page); the links searched exactly when a search found nothing."""
-    out: dict[int, FoundRow] = {}
-    for r in FoundRow.read():
-        if ((r.state == Sales.SHOP) != bool(r.page) and r.state != Sales.NOT_YET) or (
-            r.state == Sales.NONE_FOUND
-        ) != bool(r.links):
-            sys.exit(
-                f'{FoundRow.FILE}: festival {r.event_id}: state {str(r.state)!r} with page {r.page or ""!r} and '
-                f'links {r.links or ""!r}'
-            )
-        out[r.event_id] = r
-    return out
+    """{event_id: tickets/pages.csv row}."""
+    return {r.event_id: r for r in FoundRow.read()}
 
 
 class Sold(NamedTuple):
@@ -1398,13 +1388,10 @@ def cmd_page(db: sqlite_db.Reader, event_id: int, sold: Sold) -> None:
     f = one(db, event_id)
     if f.first_read:
         sys.exit(f'{event_id}: it has a first read of {f.page}; read a new page with: read {event_id} --url URL')
-    if (state == Sales.SHOP) != bool(url) and state != Sales.NOT_YET:
-        sys.exit('a shop needs its page, and only a shop (or sales not open yet) has one')
     if url:
         _ = full_url(url)
-    rows = [r for r in FoundRow.read() if r.event_id != event_id]
-    rows.append(
-        FoundRow(
+    try:
+        found = FoundRow(
             event_id=event_id,
             event=f.title,
             state=state,
@@ -1413,8 +1400,10 @@ def cmd_page(db: sqlite_db.Reader, event_id: int, sold: Sold) -> None:
             found_by=by,
             note=note,
         )
-    )
-    FoundRow.write(sorted(rows, key=lambda r: r.event_id))
+    except ValidationError as e:
+        sys.exit('\n'.join(errors(e, f'{event_id}')))
+    rows = [r for r in FoundRow.read() if r.event_id != event_id]
+    FoundRow.write(sorted([*rows, found], key=lambda r: r.event_id))
     _ = status(db)
     print(
         f'{event_id}: {state}'

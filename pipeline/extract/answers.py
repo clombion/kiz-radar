@@ -16,6 +16,7 @@ from pydantic import BaseModel, ConfigDict
 
 from pipeline import data
 from pipeline import prompt as prompts
+from pipeline.enums import Model
 from pipeline.prompt import Pass, Prompt
 from pipeline.records import ANSWERS, Asked, Batch, Entry, Logged, now
 
@@ -87,7 +88,7 @@ def current[E: Entry, Q: Asked](pass_: Pass[E, Q], event_ids: set[int]) -> dict[
     return out
 
 
-def save[E: Entry](pass_name: str, output: Batch[E], model: str, prompt: Prompt, answered_by: str) -> Path:
+def save[E: Entry](pass_name: str, output: Batch[E], model: Model, prompt: Prompt, answered_by: str) -> Path:
     """Save one festival's answer (an answer of its one entry), its prompt archived first, and log who answered it."""
     (entry,) = output.events
     _ = prompt.archive()
