@@ -26,6 +26,7 @@ from dataclasses import dataclass, field
 from pipeline import ROOT, build_site_db
 from pipeline import db as sqlite_db
 from pipeline.countries import codes
+from pipeline.enums import MergeReason
 from pipeline.extract.prices import COUPLE
 from pipeline.names import norm, sim
 from pipeline.records import ArtistMergeRow, Suggestion
@@ -240,7 +241,7 @@ def suggestions(c: sqlite3.Connection, site: sqlite3.Connection) -> list[Suggest
     moved = dict(redirects)
     rows: dict[tuple[int, int], Suggestion] = {}
 
-    def add(a: int, b: int, score: float, reason: str) -> None:
+    def add(a: int, b: int, score: float, reason: MergeReason) -> None:
         ka, kb = art[a][1], art[b][1]
         same = a == b or moved.get(a, a) == moved.get(b, b)
         if same or frozenset((ka, kb)) in done or group(ka) == group(kb):
@@ -270,7 +271,7 @@ def suggestions(c: sqlite3.Connection, site: sqlite3.Connection) -> list[Suggest
         )
 
     for i, j, score in couple_pairs(members):
-        add(i, j, score, 'couple with matching names')
+        add(i, j, score, MergeReason.COUPLES_WITH_MATCHING_NAMES)
     # the source pipeline's undecided candidates
     undecided: list[tuple[str, str, str, float]] = c.execute(
         'select key_a, key_b, reason, similarity from artist_merge_candidates where decision is null'
@@ -278,7 +279,7 @@ def suggestions(c: sqlite3.Connection, site: sqlite3.Connection) -> list[Suggest
     for ka, kb, reason, s in undecided:
         a, b = key_id.get(ka), key_id.get(kb)
         if a and b:
-            add(a, b, s, reason)
+            add(a, b, s, MergeReason(reason))
 
     return sorted(rows.values(), key=lambda r: (-r.score, r.keep_name.lower()))
 

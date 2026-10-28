@@ -53,6 +53,7 @@ thing a consumer must treat differently.
 | **artist_kind**, each artist | `person`, `couple`, `group`, `organisation` | resolve_artists |
 | **home_basis**, an artist's home country, by how it is known | `given`, `stated` | build_site_db |
 | **merge_decision**, each artist merge reviewed | `merge`, `separate`, `unsure` | the merge review; pipeline/artist_merges.csv |
+| **merge_reason**, each pair of artists that may be one, for the merge review | `same name, different keys`, `first words of the other`, `same partner, shortened name`, `similar spelling`, `single name, several countries`, `couples with matching names` | resolve_artists |
 | **pending**, a festival waiting for its extraction passes | `new`, `description changed` | scrape |
 | **plan**, each plan someone shares (pipeline/plans.csv) | `going` | pipeline/plans.csv |
 | **fare_search**, a festival weekend's latest flight search (pipeline/fare_jobs.csv) | `priced`, `no price`, `refused` | fares.search |

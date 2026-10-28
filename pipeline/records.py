@@ -39,6 +39,7 @@ from pipeline.enums import (
     FareSearch,
     Genre,
     MergeDecision,
+    MergeReason,
     PassKind,
     Plan,
     Role,
@@ -770,6 +771,12 @@ class MergeRow(CsvRow):
     prompt: Blank[Hash]  # the review prompt that decided it (answers/log.csv); empty when decided by hand
     note: str
 
+    @model_validator(mode='after')
+    def keys_in_order(self) -> Self:
+        if self.key_a > self.key_b:
+            raise ValueError('a pair is written in key order, key_a first, so that it is written one way')
+        return self
+
 
 class ArtistMergeRow(CsvRow):
     """A merge of two artists the source pipeline keeps apart, decided by hand (pipeline/artist_merges.csv)."""
@@ -924,7 +931,7 @@ class Group(CsvRow):
     """A named group (pipeline/extract/groups.csv): an act several people perform as, its members and the spellings
     that mean it, each a match_key."""
 
-    group_key: str
+    group_key: Annotated[str, Field(pattern=r'^g:')]  # apart from every mention's key (p:, c: or o:)
     display_name: str
     members: Keys
     aliases: Keys
@@ -948,4 +955,4 @@ class Suggestion(CsvRow):
     calendar_note: str
     similarity: float
     score: float
-    reason: str
+    reason: MergeReason

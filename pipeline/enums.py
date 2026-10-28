@@ -300,6 +300,18 @@ class MergeDecision(StrEnum):
 
 
 @unique
+class MergeReason(StrEnum):
+    """the merge_reason states"""
+
+    SAME_NAME__DIFFERENT_KEYS = 'same name, different keys'
+    FIRST_WORDS_OF_THE_OTHER = 'first words of the other'
+    SAME_PARTNER__SHORTENED_NAME = 'same partner, shortened name'
+    SIMILAR_SPELLING = 'similar spelling'
+    SINGLE_NAME__SEVERAL_COUNTRIES = 'single name, several countries'
+    COUPLES_WITH_MATCHING_NAMES = 'couples with matching names'
+
+
+@unique
 class Pending(StrEnum):
     """the pending states"""
 

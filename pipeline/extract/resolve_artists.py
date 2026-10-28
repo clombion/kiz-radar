@@ -21,8 +21,9 @@ Matching rules:
     key is their name key when the name has several words. A single-word name is weak evidence of identity
     (many teachers share a first name), so its key is scoped: a solo single-word name to its role family
     (dj / dance), and a single-word couple member to that couple.
-  - Near-matches are written to artist_merge_candidates, only when backed by evidence (a shared stated
-    country, events in a shared country, or a shared partner), and only merged when pipeline/extract/merges.csv says so.
+  - Near-matches are written to artist_merge_candidates, with their reason (pipeline/states.py, merge_reason), only
+    when backed by evidence: a shared stated country or a shared partner, or, for two names of several words
+    spelled alike, events in a shared country. They are only merged when pipeline/extract/merges.csv says so.
 
 pipeline/extract/merges.csv columns: key_a, key_b, decision (merge | separate), prompt (the review prompt's hash, in
 pipeline/prompts/asked/; empty when decided by hand), note. Keys are match_key values. A review that could not tell
@@ -49,9 +50,10 @@ import sqlite3
 import sys
 import unicodedata
 from collections import Counter, defaultdict
-from collections.abc import Iterable, Mapping
+from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass, field
 from difflib import SequenceMatcher
+from fractions import Fraction
 from typing import NamedTuple, Self
 
 import pycountry
@@ -59,7 +61,7 @@ import pycountry
 from pipeline import db as sqlite_db
 from pipeline import states
 from pipeline.countries import CODE_LENGTH, INDICATOR_A, indicator
-from pipeline.enums import ArtistKind, MergeDecision, Role
+from pipeline.enums import ArtistKind, MergeDecision, MergeReason, Role
 from pipeline.extract import run_log
 from pipeline.extract.answers import log, logged
 from pipeline.extract.prices import COUPLE
@@ -72,6 +74,7 @@ ORG_ROLES = {Role.ORGANISER, Role.MEDIA, Role.CREW}
 SEPARATORS = re.compile(r'\s*&\s*|\s*\+\s*|\s+(?:and|et|e|y|und)\s+', re.IGNORECASE)
 PREFIX = re.compile(r'^(?:dj|deejay|d\.j\.|mc)\s+', re.IGNORECASE)
 SHORTEST_NAME = 2  # a member's name key shorter than this is a letter of a name built around "&" ("D&L Beats")
+REVIEWER = 'claude-haiku-5-5'  # the model of the merge review's subagents
 PAIR = 2  # the keys of a decision on two artists; one key's decides a single name
 
 TABLES = """
@@ -121,7 +124,7 @@ CREATE TABLE artist_merge_candidates (
     key_b TEXT NOT NULL,
     name_a TEXT NOT NULL,
     name_b TEXT NOT NULL,
-    reason TEXT NOT NULL,
+    reason TEXT NOT NULL CHECK (reason IN ({merge_reason})),
     similarity REAL NOT NULL,
     evidence TEXT NOT NULL,
     decision TEXT CHECK (decision IN ({stored_decision})),   -- from pipeline/extract/merges.csv, NULL = not reviewed
@@ -319,8 +322,9 @@ def person_key(name: str, role: Role, couple_scope: str | None) -> str:
     return f'p:{k}@{couple_scope}' if couple_scope else f'p:{k}@{role_family(role)}'
 
 
-def load_merges() -> dict[frozenset[str], MergeDecision]:
-    return {frozenset((r.key_a, r.key_b)): r.decision for r in MergeRow.read(MERGES)}
+def decided(rows: Iterable[MergeRow]) -> dict[frozenset[str], MergeDecision]:
+    """Each decision, by the keys it decides."""
+    return {frozenset((r.key_a, r.key_b)): r.decision for r in rows}
 
 
 class UnionFind:
@@ -338,6 +342,12 @@ class UnionFind:
         ra, rb = self.find(a), self.find(b)
         if ra != rb:
             self.parent[max(ra, rb)] = min(ra, rb)
+
+    def absorb(self, root: str, keys: Iterable[str]) -> None:
+        """Join these keys into root, which stays their root."""
+        _ = self.find(root)
+        for k in keys:
+            self.parent[self.find(k)] = root
 
     def join(self, keys: Iterable[str]) -> None:
         """Join these keys into one."""
@@ -367,8 +377,7 @@ TABLE_DOCS = {
     'artist_merge_decisions': 'Every merge or separate decision applied, with the review prompt that made it (its '
     'hash; null when it was decided by hand) and rationale.',
     'artist_group_definitions': 'Named groups defined by hand (a DJ duo booked under one name), with a note; members '
-    'are '
-    'in couple_members.',
+    'are in couple_members.',
     'artist_group_aliases': "The name keys whose mentions count as a named group's.",
     'artist_ids': 'Every artist id ever given and the match_key it was given to. An id missing from artists was merged '
     'into another artist: artist_keys gives the artist its key belongs to now.',
@@ -386,7 +395,7 @@ class Resolved(NamedTuple):
     groups: int
 
 
-def record_steps(con: sqlite3.Connection, resolved: Resolved) -> None:
+def record_steps(con: sqlite3.Connection, resolved: Resolved, rows: Sequence[MergeRow]) -> None:
     n_mentions, kinds_count, n_candidates, n_unsupported, n_groups = resolved
     run_log.document(con, TABLE_DOCS, 'pipeline/extract/resolve_artists.py')
     reviews = sorted((run_log.HERE / 'answers' / 'merge_review').glob('*.json'))
@@ -403,19 +412,18 @@ def record_steps(con: sqlite3.Connection, resolved: Resolved) -> None:
             run_log.Step(
                 '6_merge_review',
                 'Decide, for each pair of artist records the matching rules flagged as possibly the same artist, '
-                'whether '
-                'they are (merge), are not (separate), or the evidence does not settle it (unsure, left unmerged). '
+                'whether they are (merge), are not (separate), or the evidence does not settle it (unsure, left '
+                'unmerged). '
                 'Decisions are written to pipeline/extract/merges.csv, where manual decisions override them.',
-                f'{len(reviews)} subagents (claude-haiku-5-5), one batch each',
+                f'{len(reviews)} subagents ({REVIEWER}), one batch each',
                 performed_at=max(logged(followed, f'merge_review/{f.name}').answered_at for f in reviews),
-                model='claude-haiku-5-5',
+                model=REVIEWER,
                 prompt=', '.join(sorted(counts)),
                 inputs='each pair with every mention of both sides',
                 outputs='pipeline/extract/merges.csv; table artist_merge_decisions',
                 details={'decisions_by_prompt': {k: dict(v) for k, v in counts.items()}, 'batches': len(reviews)},
             ),
         )
-    rows = MergeRow.read(MERGES)
     run_log.record(
         con,
         run_log.Step(
@@ -550,13 +558,13 @@ class Candidate(NamedTuple):
     key_b: str
     name_a: str
     name_b: str
-    reason: str
+    reason: MergeReason
     similarity: float
     evidence: str
     decision: MergeDecision | None
 
 
-SIMILAR = 0.88  # how alike two spellings must be to be a candidate
+SIMILAR = Fraction(22, 25)  # how alike two spellings must be to be a candidate, exactly
 SHORTEST = 3  # the shortest name a name can shorten, or begin
 SIMILAR_SHORTEST = 5  # the shortest name compared by spelling
 
@@ -573,15 +581,14 @@ def letters(name: str) -> list[tuple[str, int]]:
 
 def spelled_alike(names: Mapping[str, str]) -> set[tuple[str, str]]:
     """The pairs of keys whose names have letters enough in common to be SIMILAR by quick_ratio (twice the letters in
-    common over both lengths), an upper bound of ratio. Two names with that many letters in common share one among
-    each name's first letters, in one order of all letters, rarest first; so only names sharing one of those are
-    compared."""
+    common over both lengths), an upper bound of ratio. A name SIMILAR to another has SIMILAR / (2 - SIMILAR) of its
+    letters in common with it, so the two share a letter among each name's first letters past that many, in one
+    order of all letters, rarest first; only names sharing one of those are compared."""
     of = {k: letters(n) for k, n in names.items()}
     rarity = Counter(t for ls in of.values() for t in ls)
     first: defaultdict[tuple[str, int], list[str]] = defaultdict(list)
     for k, ls in of.items():
-        # the fewest letters it has in common with a name SIMILAR to it: SIMILAR / (2 - SIMILAR) of its own
-        common = math.ceil(SIMILAR * len(ls) / (2 - SIMILAR) - 1e-9)
+        common = math.ceil(SIMILAR * len(ls) / (2 - SIMILAR))
         for t in sorted(ls, key=lambda t: (rarity[t], t))[: len(ls) - common + 1]:
             first[t].append(k)
     return {
@@ -593,110 +600,149 @@ def spelled_alike(names: Mapping[str, str]) -> set[tuple[str, str]]:
 
 
 @dataclass(frozen=True)
+class Person:
+    """What a person key's pairs are judged on: its bare name, its words, the countries stated with it, its events'
+    countries and its partners' bare names."""
+
+    bare: str
+    words: tuple[str, ...]
+    stated: frozenset[str]
+    events: frozenset[str]
+    partners: frozenset[str]
+
+    def strong(self, other: Self) -> bool:
+        """A stated country or a partner in common. Events in the same country are weak evidence (one country hosts
+        a quarter of all events)."""
+        return bool(self.stated & other.stated or self.partners & other.partners)
+
+    def several(self) -> bool:
+        """Of several words, and long enough to be compared by spelling."""
+        return len(self.words) > 1 and len(self.bare) >= SIMILAR_SHORTEST
+
+
+def similar(a: Person, b: Person) -> float | None:
+    """How alike the two are spelled, when at least SIMILAR."""
+    if min(len(a.bare), len(b.bare)) < SIMILAR_SHORTEST:
+        return None
+    sm = SequenceMatcher(None, a.bare, b.bare)
+    # real_quick_ratio and quick_ratio are upper bounds of ratio, so they rule pairs out cheaply
+    if sm.real_quick_ratio() < SIMILAR or sm.quick_ratio() < SIMILAR or (sim := sm.ratio()) < SIMILAR:
+        return None
+    return sim
+
+
+def strongly(a: Person, b: Person) -> tuple[MergeReason, float] | None:
+    """Why a pair with strong evidence may be one person, and how alike their names are."""
+    short, long_ = (a.words, b.words) if len(a.words) <= len(b.words) else (b.words, a.words)
+    if a.bare == b.bare:
+        return MergeReason.SAME_NAME__DIFFERENT_KEYS, 1.0
+    if short and len(short) < len(long_) and long_[: len(short)] == short and len(short[0]) >= SHORTEST:
+        return MergeReason.FIRST_WORDS_OF_THE_OTHER, SequenceMatcher(None, a.bare, b.bare).ratio()
+    if (
+        a.partners & b.partners
+        and min(len(a.bare), len(b.bare)) >= SHORTEST
+        and (a.bare.startswith(b.bare) or b.bare.startswith(a.bare))
+    ):
+        return MergeReason.SAME_PARTNER__SHORTENED_NAME, SequenceMatcher(None, a.bare, b.bare).ratio()
+    return None if (sim := similar(a, b)) is None else (MergeReason.SIMILAR_SPELLING, sim)
+
+
+def weakly(a: Person, b: Person) -> tuple[MergeReason, float] | None:
+    """A pair with weak evidence: names of several words each spelled alike, at events in one country. Different
+    first names are often one letter apart (Daniel / Daniela), and many people share one, so single words, and
+    same names, need strong evidence."""
+    if not (a.several() and b.several() and a.events & b.events):
+        return None
+    return None if (sim := similar(a, b)) is None else (MergeReason.SIMILAR_SPELLING, sim)
+
+
+@dataclass(frozen=True)
 class Pairing:
-    """What the candidates are judged on, per person key: its bare name, its words, and its partners' names."""
+    """The person keys, and what their pairs are judged on."""
 
     keys: Keys
-    bare: dict[str, str]
-    words: dict[str, list[str]]
-    partner_names: dict[str, set[str]]
+    people: dict[str, Person]
 
     @classmethod
     def of(cls, keys: Keys) -> Self:
         """The pairing of the person keys."""
         bare = {k: k[2:].split('@')[0] for k in keys.kinds if k.startswith('p:')}
-        words = {k: words_of(keys.names[k][0]) for k in bare}
-        return cls(keys, bare, words, {k: {bare.get(p, p) for p in keys.partners[k]} for k in bare})
+        people = {
+            k: Person(
+                b,
+                tuple(words_of(keys.names[k][0])),
+                frozenset(keys.stated_countries.get(k, ())),
+                frozenset(keys.event_countries.get(k, ())),
+                frozenset(bare[p] for p in keys.partners[k]),
+            )
+            for k, b in bare.items()
+        }
+        return cls(keys, people)
 
-    def strong(self, a: str, b: str) -> bool:
-        """A shared stated country or a shared partner. Events in the same country are weak evidence (one country
-        hosts a quarter of all events)."""
-        k = self.keys
-        return bool(k.stated_countries[a] & k.stated_countries[b] or self.partner_names[a] & self.partner_names[b])
-
-    def reason(self, a: str, b: str) -> tuple[str, float] | None:
+    def reason(self, a: str, b: str) -> tuple[MergeReason, float] | None:
         """Why the pair may be one person, and how alike their names are; None when it may not, or the evidence is
-        too weak (a same-name pair, or a pair of single words, needs strong evidence)."""
-        ba, bb = self.bare[a], self.bare[b]
-        wa, wb = self.words[a], self.words[b]
-        short, long_ = (wa, wb) if len(wa) <= len(wb) else (wb, wa)
-        if ba == bb:
-            reason = 'same name under different keys (DJ and dancer, solo and in a couple, or in different couples)'
-            return (reason, 1.0) if self.strong(a, b) else None
-        if short and len(short) < len(long_) and long_[: len(short)] == short and len(short[0]) >= SHORTEST:
-            reason = 'one name is the first word(s) of the other'
-            return (reason, SequenceMatcher(None, ba, bb).ratio()) if self.strong(a, b) else None
-        if (
-            (self.partner_names[a] & self.partner_names[b])
-            and min(len(ba), len(bb)) >= SHORTEST
-            and (ba.startswith(bb) or bb.startswith(ba))
-        ):
-            return 'same partner, one name shortens the other', SequenceMatcher(None, ba, bb).ratio()
-        return self.similar(a, b)
+        too weak."""
+        pa, pb = self.people[a], self.people[b]
+        return strongly(pa, pb) if pa.strong(pb) else weakly(pa, pb)
 
-    def similar(self, a: str, b: str) -> tuple[str, float] | None:
-        """A pair spelled alike, when the evidence backs it: different first names are often one letter apart
-        (Daniel / Daniela), so single-word pairs need the same evidence as same-name pairs."""
-        ba, bb = self.bare[a], self.bare[b]
-        if min(len(ba), len(bb)) < SIMILAR_SHORTEST:
-            return None
-        sm = SequenceMatcher(None, ba, bb)
-        # real_quick_ratio and quick_ratio are upper bounds of ratio, so they rule pairs out cheaply
-        if sm.real_quick_ratio() < SIMILAR or sm.quick_ratio() < SIMILAR or (sim := sm.ratio()) < SIMILAR:
-            return None
-        strong = self.strong(a, b)
-        supported = strong or bool(self.keys.event_countries[a] & self.keys.event_countries[b])
-        several = len(self.words[a]) > 1 and len(self.words[b]) > 1
-        return ('similar spelling', sim) if (several and supported) or strong else None
-
-    def judged(self, persons: Iterable[str]) -> set[tuple[str, str]]:
-        """The pairs reason() can accept: those sharing a stated country or a partner (strong evidence, which every
-        other reason needs), and those of several words each spelled alike enough to be similar()."""
-        k = self.keys
+    def judged(self) -> set[tuple[str, str]]:
+        """The pairs reason() can accept: those with strong evidence, a stated country or a partner in common, and
+        those weakly() can, of several words each and spelled alike."""
         shared: defaultdict[str, list[str]] = defaultdict(list)
-        several: dict[str, str] = {}
-        for p in persons:
-            for c in k.stated_countries[p]:
-                shared['country ' + c].append(p)
-            for n in self.partner_names[p]:
-                shared['partner ' + n].append(p)
-            if len(self.words[p]) > 1 and len(self.bare[p]) >= SIMILAR_SHORTEST:
-                several[p] = self.bare[p]
-        return {pair for g in shared.values() for pair in itertools.combinations(sorted(g), 2)} | spelled_alike(several)
+        for k, p in self.people.items():
+            for c in p.stated:
+                shared['country ' + c].append(k)
+            for n in p.partners:
+                shared['partner ' + n].append(k)
+        strong = {pair for g in shared.values() for pair in itertools.combinations(sorted(g), 2)}
+        return strong | spelled_alike({k: p.bare for k, p in self.people.items() if p.several()})
 
     def evidence(self, a: str, b: str) -> str:
+        """What a reviewer weighs: each side's name, stated countries, events' countries and partners."""
         k = self.keys
-        return (
-            f'{k.names[a][0]!r}: countries {sorted(k.stated_countries[a]) or "-"}, events in '
-            f'{sorted(k.event_countries[a])[:4]},'
-            f' partners {sorted(p[2:] for p in k.partners[a])[:4]} | {k.names[b][0]!r}: countries '
-            f'{sorted(k.stated_countries[b]) or "-"},'
-            f' events in {sorted(k.event_countries[b])[:4]}, partners {sorted(p[2:] for p in k.partners[b])[:4]}'
-        )
+
+        def side(x: str) -> str:
+            p = self.people[x]
+            return (
+                f'{k.names[x][0]!r}: countries {sorted(p.stated) or "-"}, events in {sorted(p.events)[:4]},'
+                f' partners {sorted(q[2:] for q in k.partners[x])[:4]}'
+            )
+
+        return f'{side(a)} | {side(b)}'
 
 
 def candidates(keys: Keys, merges: Mapping[frozenset[str], MergeDecision]) -> tuple[list[Candidate], int]:
     """(the pairs among person keys that may be one artist, with any decision on them; how many same-name pairs were
     kept apart for want of evidence). Couples follow their members."""
     pairing = Pairing.of(keys)
-    persons, bare = sorted(pairing.bare), pairing.bare
+    names = keys.names
     out: list[Candidate] = []
-    for a, b in sorted(pairing.judged(persons)):
-        if (found := pairing.reason(a, b)) is None:
-            continue
-        reason, sim = found
-        names = keys.names
-        decision = merges.get(frozenset((a, b)))
-        out.append(Candidate(a, b, names[a][0], names[b][0], reason, round(sim, 3), pairing.evidence(a, b), decision))
-    for k in persons:
+    for a, b in sorted(pairing.judged()):
+        if (found := pairing.reason(a, b)) is not None:
+            reason, sim = found
+            decision = merges.get(frozenset((a, b)))
+            out.append(
+                Candidate(a, b, names[a][0], names[b][0], reason, round(sim, 3), pairing.evidence(a, b), decision)
+            )
+    for k in sorted(pairing.people):
         if '@' in k and any(not (x & y) for x, y in itertools.combinations(keys.stated_sets[k], 2)):
-            name = keys.names[k][0]
-            reason = 'single name stated with different countries; may be several people'
+            name = names[k][0]
             evidence = f'countries {sorted(keys.stated_countries[k])}'
-            out.append(Candidate(k, k, name, name, reason, 0.0, evidence, merges.get(frozenset((k,)))))
+            out.append(
+                Candidate(
+                    k,
+                    k,
+                    name,
+                    name,
+                    MergeReason.SINGLE_NAME__SEVERAL_COUNTRIES,
+                    0.0,
+                    evidence,
+                    merges.get(frozenset((k,))),
+                )
+            )
     # a same-name pair is a candidate exactly when the evidence is strong; the others were kept apart
-    same_name = sum(n * (n - 1) // 2 for n in Counter(bare.values()).values())
-    return out, same_name - sum(c.key_a != c.key_b and bare[c.key_a] == bare[c.key_b] for c in out)
+    same_name = sum(n * (n - 1) // 2 for n in Counter(p.bare for p in pairing.people.values()).values())
+    return out, same_name - sum(c.reason == MergeReason.SAME_NAME__DIFFERENT_KEYS for c in out)
 
 
 def merged(keys: Keys, merges: Mapping[frozenset[str], MergeDecision]) -> UnionFind:
@@ -742,11 +788,10 @@ def final_keys(keys: Keys, uf: UnionFind, groups: Iterable[Group]) -> dict[str, 
         group_keys.add(gk)
         keys.kinds[gk] = ArtistKind.GROUP
         keys.members[gk] = [m for m in g.members if m in keys.kinds]
-        for alias in g.aliases:
-            if alias in keys.kinds:
-                uf.union(gk, alias)
-        if uf.find(gk) != gk:
-            sys.exit(f"{gk}: group keys must sort before the keys they absorb (start them with 'g:')")
+        aliases = [a for a in g.aliases if a in keys.kinds]
+        if taken := sorted({uf.find(a) for a in aliases} & (group_keys - {gk})):
+            sys.exit(f'{gk}: its aliases are already the group {", ".join(taken)}')
+        uf.absorb(gk, aliases)
 
     def couple_root(k: str) -> str:
         return 'c:' + '+'.join(sorted(uf.find(m)[2:] for m in keys.members[k]))
@@ -796,7 +841,8 @@ def main() -> None:
             ' FROM artist_mentions m JOIN events e ON e.id = m.event_id',
         )
         keys = keyed(mentions)
-        merges = load_merges()
+        rows = MergeRow.read(MERGES)
+        merges = decided(rows)
         found, unsupported_same_name = candidates(keys, merges)
         groups = Group.read(GROUPS)
         final_key = final_keys(keys, merged(keys, merges), groups)
@@ -813,10 +859,10 @@ def main() -> None:
             'INSERT INTO event_artists VALUES (?, ?, ?, ?, ?, ?)',
             [(m.id, m.event_id, ids[final_key[keys.mention_key[m.id]]], m.role, m.style, m.country) for m in mentions],
         )
-        _ = con.executemany('INSERT OR REPLACE INTO artist_merge_candidates VALUES (?, ?, ?, ?, ?, ?, ?, ?)', found)
+        _ = con.executemany('INSERT INTO artist_merge_candidates VALUES (?, ?, ?, ?, ?, ?, ?, ?)', found)
         _ = con.executemany(
-            'INSERT OR REPLACE INTO artist_merge_decisions VALUES (?, ?, ?, ?, ?)',
-            [(r.key_a, r.key_b, r.decision, r.prompt, r.note) for r in MergeRow.read(MERGES)],
+            'INSERT INTO artist_merge_decisions VALUES (?, ?, ?, ?, ?)',
+            [(r.key_a, r.key_b, r.decision, r.prompt, r.note) for r in rows],
         )
         for g in groups:
             _ = con.execute(
@@ -826,7 +872,7 @@ def main() -> None:
             _ = con.executemany('INSERT INTO artist_group_aliases VALUES (?, ?)', [(g.group_key, a) for a in g.aliases])
         counted: list[tuple[str, int]] = con.execute('SELECT kind, count(*) FROM artists GROUP BY kind').fetchall()
         kinds_count = dict(counted)
-        record_steps(con, Resolved(len(mentions), kinds_count, len(found), unsupported_same_name, len(groups)))
+        record_steps(con, Resolved(len(mentions), kinds_count, len(found), unsupported_same_name, len(groups)), rows)
         con.commit()
         print(
             f'mentions {len(mentions)} -> artists {sum(kinds_count.values())} {kinds_count};'

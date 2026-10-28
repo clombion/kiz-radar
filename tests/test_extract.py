@@ -6,6 +6,7 @@ import datetime as dt
 import itertools
 import json
 import sqlite3
+from collections.abc import Callable
 from enum import StrEnum
 from pathlib import Path
 from typing import Annotated
@@ -18,7 +19,19 @@ from pipeline.enums import AnswerState, PassKind, Role, Style
 from pipeline.extract import answers, ask, check_output, load_extract, prices, resolve_artists, run_log
 from pipeline.extract.resolve_artists import stable_ids
 from pipeline.prompt import Prompt, api_schema
-from pipeline.records import JSON, Batch, Priced, PricedPass, PricedTier, Record, Stamped, day_of, real_day
+from pipeline.records import (
+    JSON,
+    Batch,
+    Group,
+    MergeRow,
+    Priced,
+    PricedPass,
+    PricedTier,
+    Record,
+    Stamped,
+    day_of,
+    real_day,
+)
 from tests import jsons
 from tests.fakes import AT, Client, Memory
 
@@ -152,18 +165,80 @@ def test_the_pairs_judged_are_every_pair_a_candidate_can_be() -> None:
                 event_country=places[i // 11 % 4],
             )
         )
+    alike = [('Yaw Mensah', 'Ghana'), ('Yaw Mensha', 'Ghana'), ('Kojo Boateng', 'Ghana'), ('Kojo Boateg', 'Togo')]
+    for i, (name, place) in enumerate(alike, 402):  # spelled alike, at events in one country or two
+        mentions.append(
+            resolve_artists.Mention(
+                id=i, event_id=i, role=Role.DJ, name_as_written=name, style=None, country=None, event_country=place
+            )
+        )
+    for i, place in enumerate(['France', 'Angola'], 400):  # one single name, stated with two countries
+        mentions.append(
+            resolve_artists.Mention(
+                id=i, event_id=i, role=Role.DJ, name_as_written='Kizzy', style=None, country=place, event_country=None
+            )
+        )
     keys = resolve_artists.keyed(mentions)
     pairing = resolve_artists.Pairing.of(keys)
-    every = list(itertools.combinations(sorted(pairing.bare), 2))
+    every = list(itertools.combinations(sorted(pairing.people), 2))
     accepted = {pair for pair in every if pairing.reason(*pair)}
-    reasons = {found[0] for pair in accepted if (found := pairing.reason(*pair))}
-    assert len(reasons) == 4
-    assert accepted <= pairing.judged(pairing.bare)
+    assert accepted <= pairing.judged()
     found, kept_apart = resolve_artists.candidates(keys, {})
     assert {(c.key_a, c.key_b) for c in found if c.key_a != c.key_b} == accepted
-    assert kept_apart == sum(
-        pairing.bare[a] == pairing.bare[b] and pair not in accepted for pair in every for a, b in [pair]
+    assert {c.reason for c in found} == {s.key for s in states.of('merge_reason') if s.made_by is None}
+    weak = {(c.key_a, c.key_b) for c in found if c.key_a.startswith(('p:yaw', 'p:kojo'))}
+    assert weak == {('p:yawmensah', 'p:yawmensha')}  # alike at events in one country, not two
+    same_name = [(a, b) for a, b in every if pairing.people[a].bare == pairing.people[b].bare]
+    assert kept_apart == len(set(same_name) - accepted)
+
+
+def duo(key: str, aliases: str) -> Group:
+    return Group.model_validate({'group_key': key, 'display_name': key, 'members': '', 'aliases': aliases, 'note': ''})
+
+
+def test_a_named_group_absorbs_its_aliases_whatever_their_keys() -> None:
+    """A group stays the artist of its aliases, a couple's key ("c:...", which sorts before "g:") among them."""
+    mentions = [
+        resolve_artists.Mention(
+            id=i, event_id=i, role=Role.DJ, name_as_written=n, style=None, country=None, event_country=None
+        )
+        for i, n in enumerate(['Ana & Bea', 'AB Sound'])
+    ]
+    keys = resolve_artists.keyed(mentions)
+    final = resolve_artists.final_keys(keys, resolve_artists.merged(keys, {}), [duo('g:ab', 'c:ana+bea;p:absound')])
+    assert final['c:ana+bea'] == final['p:absound'] == 'g:ab'
+
+
+def test_an_alias_two_groups_claim_is_refused() -> None:
+    keys = resolve_artists.keyed(
+        [
+            resolve_artists.Mention(
+                id=0, event_id=0, role=Role.DJ, name_as_written='AB Sound', style=None, country=None, event_country=None
+            )
+        ]
     )
+    with pytest.raises(SystemExit, match='g:ba: its aliases are already the group g:ab'):
+        _ = resolve_artists.final_keys(
+            keys, resolve_artists.merged(keys, {}), [duo('g:ab', 'p:absound'), duo('g:ba', 'p:absound')]
+        )
+
+
+@pytest.mark.parametrize(
+    ('row', 'refused'),
+    [
+        (lambda: duo('ab', 'p:absound'), 'pattern'),
+        (
+            lambda: MergeRow.model_validate(
+                {'key_a': 'p:b', 'key_b': 'p:a', 'decision': 'merge', 'prompt': '', 'note': ''}
+            ),
+            'key order',
+        ),
+    ],
+)
+def test_a_row_of_the_artists_csvs_is_written_one_way(row: Callable[[], object], refused: str) -> None:
+    """A group's key is apart from every mention's key, and a merge's pair is in key order."""
+    with pytest.raises(ValidationError, match=refused):
+        _ = row()
 
 
 def db_with(con: sqlite3.Connection, keys: dict[str, int], issued: dict[str, int]) -> sqlite3.Connection:

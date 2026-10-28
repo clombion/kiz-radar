@@ -134,6 +134,7 @@ POINTS = (
     P('artist_kind', 'ArtistKind', 'each artist', 'resolve_artists'),
     P('home_basis', 'HomeBasis', "an artist's home country, by how it is known", 'build_site_db'),
     P('merge_decision', 'MergeDecision', 'each artist merge reviewed', 'the merge review; pipeline/artist_merges.csv'),
+    P('merge_reason', 'MergeReason', 'each pair of artists that may be one, for the merge review', 'resolve_artists'),
     P('pending', 'Pending', 'a festival waiting for its extraction passes', 'scrape'),
     P('plan', 'Plan', 'each plan someone shares (pipeline/plans.csv)', 'pipeline/plans.csv'),
     P(
@@ -634,6 +635,45 @@ ROWS = (
     S('merge_decision', 'merge', 'two records are one artist', KEPT),
     S('merge_decision', 'separate', 'two records are different artists', KEPT),
     S('merge_decision', 'unsure', 'the review could not tell', WAITS, owner='agent: decide'),
+    S(
+        'merge_reason',
+        'same name, different keys',
+        'two person keys with one name (a DJ and a dancer, solo and in a couple, or in two couples), sharing a'
+        ' stated country or a partner',
+        KEPT,
+    ),
+    S(
+        'merge_reason',
+        'first words of the other',
+        'the shorter name is the first words of the longer, the pair sharing a stated country or a partner',
+        KEPT,
+    ),
+    S(
+        'merge_reason',
+        'same partner, shortened name',
+        'the two dance with one partner, and one name begins with the other',
+        KEPT,
+    ),
+    S(
+        'merge_reason',
+        'similar spelling',
+        'names spelled alike (resolve_artists.SIMILAR), sharing a stated country or a partner; or, both of several'
+        ' words, sharing an event country',
+        KEPT,
+    ),
+    S(
+        'merge_reason',
+        'single name, several countries',
+        'one single-word key, two of whose mentions state countries they do not share: it may be several people',
+        KEPT,
+    ),
+    S(
+        'merge_reason',
+        'couples with matching names',
+        "two couples whose members' names are spelled alike, member by member",
+        KEPT,
+        made_by='merge_suggestions',
+    ),
     S('pending', 'new', 'the festival is new', WAITS, owner='the next run'),
     S('pending', 'description changed', 'its description changed', WAITS, owner='the next run'),
     S('plan', 'going', 'they said they are going', VIEW),
