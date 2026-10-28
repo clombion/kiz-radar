@@ -37,7 +37,7 @@ from pipeline.records import (
     real_day,
 )
 from tests import jsons
-from tests.exports import EXPORT, committed
+from tests.exports import EXPORT, committed, festival, shaped
 from tests.fakes import AT, Client, Memory
 
 
@@ -237,6 +237,19 @@ def test_each_reason_gives_the_pairs_it_names() -> None:
     }
 
 
+# the prompts asked now: a change to one re-asks everything it answered (CLAUDE.md), so it is made on purpose, here too
+ASKED_NOW = {
+    'extract': '94fcf4070f2eda95',
+    'rooms_genres': '675627cd45d26393',
+    'prices': '6659bdf7507764a9',
+    'first_read': '1a3b603636d758ee',
+}
+
+
+def test_no_prompt_changes_unseen() -> None:
+    assert {n: prompt.current(n).hash for n in ASKED_NOW} == ASKED_NOW
+
+
 def test_the_spelling_filter_finds_every_pair_alike_enough() -> None:
     """The prefix filter compares only names with a letter in common among their first ones, and that is every pair
     quick_ratio puts at SIMILAR or more: names a letter apart, of every length up to 30."""
@@ -298,9 +311,7 @@ def test_a_row_of_the_artists_csvs_is_written_one_way(row: Callable[[], object],
 
 def db_with(con: sqlite3.Connection, keys: dict[str, int], issued: dict[str, int]) -> sqlite3.Connection:
     """The export's tables stable_ids reads: each spelling's artist, and every id given."""
-    _ = con.execute('create table artist_keys (match_key primary key, artist_id)')
-    _ = con.executemany('insert into artist_keys values (?, ?)', keys.items())
-    _ = con.execute(resolve_artists.ARTIST_IDS)
+    _ = shaped(con).executemany('insert into artist_keys values (?, ?)', keys.items())
     _ = con.executemany('insert into artist_ids values (?, ?)', [(i, k) for k, i in issued.items()])
     return con
 
@@ -524,13 +535,9 @@ def test_a_request_costs_its_models_prices() -> None:
 
 
 def source(con: sqlite3.Connection, *events: tuple[int, str | None]) -> sqlite3.Connection:
-    _ = con.executescript(
-        'create table events (id integer, title text, description_text text, start_date text, end_date text, '
-        'country text); create table pending_extraction (event_id integer, since text);'
-    )
-    _ = con.executemany(
-        "insert into events values (?, 'F', ?, '2099-01-01', '2099-01-02', null)", [(i, d) for i, d in events]
-    )
+    _ = shaped(con)
+    for i, d in events:
+        festival(con, i, title='F', description_text=d, end_date='2099-01-02')
     return con
 
 
@@ -717,16 +724,16 @@ def source_file() -> Path:
     path = data(db.SOURCE) / 'source.sqlite'
     path.parent.mkdir(parents=True)
     with db.opened(path, 'rwc') as con:
-        _ = con.executescript(
-            'create table events (id integer, title text, description_text text, start_date text, end_date text, '
-            'country text); create table pending_extraction (event_id integer, reason text, since text); '
-            'create table event_genres (event_id integer, genre text); '
-            "insert into pending_extraction values (5, 'description changed', '2026-01-01');"
+        festival(
+            shaped(con),
+            FEST.id,
+            title=FEST.title,
+            description_text=FEST.description_text,
+            start_date=FEST.start_date,
+            end_date=FEST.end_date,
+            country=FEST.country,
         )
-        _ = con.execute(
-            'insert into events values (?, ?, ?, ?, ?, ?)',
-            (FEST.id, FEST.title, FEST.description_text, FEST.start_date, FEST.end_date, FEST.country),
-        )
+        _ = con.execute("insert into pending_extraction values (?, 'description changed', '2026-01-01')", (FEST.id,))
         con.commit()
     return path
 

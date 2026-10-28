@@ -61,6 +61,9 @@ OVERRIDES = (
         dt.date(2026, 10, 27),
     ),
 )
-BY_HOST = {o.host: o for o in OVERRIDES}
-if len(BY_HOST) < len(OVERRIDES):
+if len({o.host for o in OVERRIDES}) < len(OVERRIDES):
     raise ValueError('two overrides for one site')
+
+
+def by_host() -> dict[str, Override]:
+    return {o.host: o for o in OVERRIDES}

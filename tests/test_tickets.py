@@ -12,7 +12,7 @@ from pathlib import Path
 
 import pytest
 
-from pipeline import ROOT, data, exceptions, prompt, spend, tickets
+from pipeline import ROOT, data, prompt, spend, tickets
 from pipeline.enums import FirstRead as FirstReadState
 from pipeline.enums import PassKind, Price, Recheck, Sales, SkipReason, Status, Style, Waiting
 from pipeline.extract import answers, load_extract, prices
@@ -44,9 +44,9 @@ from pipeline.records import (
     Widget,
     real_day,
 )
-from tests import jsons
-from tests.exports import committed
-from tests.fakes import AT, Client, Memory
+from tests import exports, jsons
+from tests.exports import committed, shaped
+from tests.fakes import AT, REGISTER, Client, Memory
 
 LATER = dt.datetime(2026, 11, 3, 5, tzinfo=dt.UTC)
 DAY = dt.date(2026, 11, 1)  # a day after the reads
@@ -595,7 +595,7 @@ def test_a_festival_that_no_longer_fits_its_first_read_is_left_out(files: Path) 
     assert PageRow.read() == []
 
 
-HELD = exceptions.OVERRIDES[0]  # a site the register says no recipe can read
+HELD = REGISTER[0]  # a site the register says no recipe can read
 
 
 def sold(state: Sales, page: str | None = None) -> FoundRow:
@@ -1031,8 +1031,10 @@ def test_the_first_read_states_tested_are_all_of_them() -> None:
 
 
 def events(db: sqlite3.Connection, *ids: int) -> sqlite3.Connection:
-    _ = db.executescript('create table events (id integer);')
-    _ = db.executemany('insert into events values (?)', [(i,) for i in ids])
+    """The database with the export's tables and these festivals."""
+    _ = shaped(db)
+    for i in ids:
+        exports.festival(db, i)
     return db
 
 
@@ -1149,10 +1151,10 @@ def test_two_reads_agree_whatever_reason_a_kept_skip_has() -> None:
 
 
 def test_a_festivals_styles_are_its_genres_styles(memory: Memory) -> None:
-    db = memory()
-    _ = db.executescript(
-        'create table event_genres (event_id integer, genre text);'
-        "insert into event_genres values (1, 'urbankiz'), (1, 'semba'), (2, 'kizomba'), (2, 'zouk'), (2, 'kompa');"
+    db = shaped(memory())
+    _ = db.executemany(
+        "insert into event_genres (event_id, genre, source, other_name) values (?, ?, 'site_tag', '')",
+        [(1, 'urbankiz'), (1, 'semba'), (2, 'kizomba'), (2, 'zouk'), (2, 'kompa')],
     )
     assert prices.styles(db, 1) == [Style.KIZOMBA]
     assert prices.styles(db, 2) == [Style.KIZOMBA, Style.OTHER, Style.ZOUK]

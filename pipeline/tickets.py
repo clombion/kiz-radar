@@ -874,7 +874,7 @@ def links(db: sqlite3.Connection, event_id: int) -> list[str]:
 
 def shop_hosts(known: Mapping[str, Site]) -> set[str]:
     """The hosts of ticket shops: the ones a recipe reads, and the ones the register says no recipe can."""
-    return {h for site in known.values() for h in site.recipe.hosts} | exceptions.BY_HOST.keys()
+    return {h for site in known.values() for h in site.recipe.hosts} | exceptions.by_host().keys()
 
 
 def known_page(
@@ -1070,7 +1070,7 @@ def waiting(f: Festival) -> Waiting:
     """What the festival waits for before its prices can come from its ticket page (enums.Waiting): what it waits for
     by default, unless an override for its page's site (pipeline/exceptions.py) replaces that."""
     w = waits_by_default(f)
-    o = exceptions.BY_HOST.get(host(f.page)) if f.page else None
+    o = exceptions.by_host().get(host(f.page)) if f.page else None
     return o.then if o and w == o.instead_of else w
 
 

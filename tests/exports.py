@@ -2,6 +2,7 @@
 whole by some tests: copies of it, whole or with only its latest festivals, every table's content, and a step's main
 run as its command line would."""
 
+import functools
 import json
 import shutil
 import sqlite3
@@ -37,6 +38,38 @@ def committed(*paths: str) -> None:
         _ = shutil.copytree(src, dst, dirs_exist_ok=True) if src.is_dir() else shutil.copyfile(src, dst)
 
 
+@functools.cache
+def schema() -> str:
+    """The export's tables, indexes and views as SQLite stores them, in the order they were made."""
+    with sqlite_db.opened(EXPORT, 'ro') as db:
+        made: list[tuple[str]] = db.execute(
+            "select sql from sqlite_master where sql is not null and name != 'sqlite_sequence' order by rowid"
+        ).fetchall()
+    return ';\n'.join(sql for (sql,) in made) + ';'
+
+
+def shaped(db: sqlite3.Connection) -> sqlite3.Connection:
+    """The database with the export's tables, empty, for a test to put the rows it reads in."""
+    _ = db.executescript(schema())
+    return db
+
+
+def festival(db: sqlite3.Connection, event_id: int, **columns: object) -> None:
+    """A festival of the export: the columns events requires, with a test's values, and these."""
+    row: dict[str, object] = {
+        'id': event_id,
+        'title': f'Festival {event_id}',
+        'url': f'https://www.kizomba-world.com/event/f{event_id}/',
+        'start_date': '2099-01-01',
+        'all_day': 1,
+        'featured': 0,
+        'sticky': 0,
+        'page_fetched': 1,
+    } | columns
+    names = ', '.join(row)
+    _ = db.execute(f'insert into events ({names}) values ({", ".join("?" * len(row))})', tuple(row.values()))  # noqa: S608 (the test's own column names)
+
+
 def column(db: sqlite3.Connection, sql: str, params: Sequence[object] = ()) -> list[object]:
     """The first column of a query's rows."""
     rows: list[tuple[object, ...]] = db.execute(sql, params).fetchall()
@@ -49,13 +82,17 @@ def run(main: Callable[[], None], monkeypatch: pytest.MonkeyPatch, *args: object
 
 
 def content(path: Path) -> dict[str, list[str]]:
-    """Every table's rows, in order, without the time a step ran."""
-    out: dict[str, list[str]] = {}
+    """The database's schema (each table, index and view as SQLite stores it) and every table's rows in the order they
+    are stored, so a row that moves or takes another id is a change; without the time a step ran."""
     with sqlite_db.opened(path, 'ro') as db:
-        tables: list[tuple[str]] = db.execute("select name from sqlite_master where type = 'table'").fetchall()
-        for (t,) in tables:
-            rows: list[tuple[object, ...]] = db.execute(WITHOUT_WHEN.get(t, f'select * from "{t}"')).fetchall()  # noqa: S608 (the database's own table names)
-            out[t] = sorted(map(repr, rows))
+        schema: list[tuple[str, str, str | None]] = db.execute(
+            'select type, name, sql from sqlite_master order by type, name'
+        ).fetchall()
+        out = {'': list(map(repr, schema))}
+        for kind, t, _ in schema:
+            if kind == 'table':
+                rows: list[tuple[object, ...]] = db.execute(WITHOUT_WHEN.get(t, f'select * from "{t}"')).fetchall()  # noqa: S608 (the database's own table names)
+                out[t] = list(map(repr, rows))
     return out
 
 

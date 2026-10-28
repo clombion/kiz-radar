@@ -12,8 +12,8 @@ import pytest
 from pipeline import audit, data, exceptions, prompt, tickets
 from pipeline.enums import FirstRead
 from pipeline.records import CsvRow, Logged, PageRecipe
-from tests.exports import committed
-from tests.fakes import AT, Memory
+from tests.exports import committed, shaped
+from tests.fakes import AT, REGISTER, Memory
 
 
 def copied() -> Path:
@@ -129,8 +129,7 @@ def test_an_empty_value_is_allowed_only_where_its_column_allows_it(
 def test_the_audit_exits_1_naming_what_it_found_on_stderr(
     memory: Memory, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
-    db = memory()
-    _ = db.execute('create table events (id integer)')
+    db = shaped(memory())
 
     def festivals(
         db: sqlite3.Connection, today: str, only: int | None = None, *, every: bool = False
@@ -149,5 +148,5 @@ def test_the_audit_exits_1_naming_what_it_found_on_stderr(
         audit.main()
     out = capsys.readouterr()
     assert e.value.code == 1
-    assert out.out.startswith('1 refused, 6 stale')
+    assert out.out.startswith(f'1 refused, {len(REGISTER)} stale')
     assert 'pages.csv line 2' in out.err

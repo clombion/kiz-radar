@@ -41,7 +41,7 @@ ALLOWED = Counter(
         ('pipeline/read_page.py', 'S607'): 1,
         ('pipeline/scrape.py', 'S608'): 3,
         ('pipeline/web.py', 'S310'): 2,
-        ('tests/exports.py', 'S608'): 3,
+        ('tests/exports.py', 'S608'): 4,
         ('tests/test_audit.py', 'S105'): 1,
         ('tests/test_commands.py', 'S603'): 1,
         ('tests/test_extract.py', 'S608'): 1,

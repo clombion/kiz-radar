@@ -1,6 +1,6 @@
 """What the tests stand in for: Claude's Messages API, as a client (ask.Client) answering each request with the next of
 its replies, as a real message of the SDK, and keeping what it was asked; and a database, as the type of the memory
-fixture (conftest.py); and time.sleep, without the wait."""
+fixture (conftest.py); time.sleep, without the wait; and the register of exceptions, the tests' own."""
 
 import datetime as dt
 import sqlite3
@@ -10,8 +10,18 @@ from typing import Self
 
 from anthropic.types import Message, MessageParam, StopReason, TextBlock, Usage
 
+from pipeline.enums import Waiting
+from pipeline.exceptions import Override
+
 INPUT_TOKENS, OUTPUT_TOKENS = 6000, 2000  # what each request costs
 AT = dt.datetime(2026, 10, 1, 5, tzinfo=dt.UTC)  # when a page was read, or an answer given
+
+
+# what every test finds in pipeline/exceptions.py (conftest.py): two sites no recipe can read
+REGISTER = tuple(
+    Override(f'{site}.example', Waiting.RECIPE, Waiting.NOTHING, 'no recipe can read it', 'test', AT.date())
+    for site in ('held', 'also-held')
+)
 
 
 def no_wait(_: float) -> None:

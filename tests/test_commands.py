@@ -133,8 +133,14 @@ def test_commands_install_what_their_modules_import() -> None:
     assert wrong == []
 
 
-def test_commands_are_found() -> None:
-    assert len(list(commands())) > 10
+def test_every_command_line_module_has_its_task() -> None:
+    """A module with a command line is run by a task; a task runs a module that has one."""
+    mains = {
+        p.relative_to(ROOT).with_suffix('').as_posix().replace('/', '.')
+        for p in (ROOT / 'pipeline').rglob('*.py')
+        if "if __name__ == '__main__':" in p.read_text(encoding='utf-8')
+    }
+    assert {module for _, module, _ in commands()} == mains
 
 
 def test_every_module_a_command_runs_answers_help() -> None:

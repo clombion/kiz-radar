@@ -12,6 +12,7 @@ import pytest
 from pipeline import build_site_db, data, merge_suggestions, scrape
 from pipeline import db as sqlite_db
 from pipeline.extract import load_extract, resolve_artists, run_log
+from pipeline.records import Json
 from tests import jsons
 from tests.exports import EVERYTHING, EXPORT, column, committed, content, copied, run, trimmed
 from tests.fakes import Memory
@@ -26,6 +27,12 @@ def committed_data() -> None:
     committed(*EVERYTHING)
 
 
+def without_when(page: Json) -> dict[str, Json]:
+    """What the build gives the page, but when it was built."""
+    assert isinstance(page, dict)
+    return {k: v for k, v in page.items() if k != 'built_at'}
+
+
 def test_the_site_database_builds_alike_twice_with_every_table_documented(
     site_db: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -38,7 +45,9 @@ def test_the_site_database_builds_alike_twice_with_every_table_documented(
         documented = set(column(db, 'select name from table_docs'))
         built_at = column(db, "select value from meta where key = 'built_at'")
     assert names == documented
-    assert [jsons.at(jsons.read(data(build_site_db.SITE_JSON)), 'built_at')] == built_at
+    page = jsons.read(data(build_site_db.SITE_JSON))
+    assert [jsons.at(page, 'built_at')] == built_at
+    assert without_when(page) == without_when(jsons.read(site_db.with_name(Path(build_site_db.SITE_JSON).name)))
     assert not list(data(build_site_db.SITE_DATA).glob('*.building'))  # swapped in once built
 
 
@@ -104,8 +113,15 @@ def tables(db: sqlite3.Connection, names: Iterable[str]) -> dict[str, str]:
 
 def test_the_export_has_the_tables_the_steps_write_as_they_declare_them(memory: Memory) -> None:
     declared = memory()
-    for ddl in (run_log.SCHEMA, scrape.PENDING, resolve_artists.ARTIST_IDS):
+    for ddl in (
+        run_log.SCHEMA,
+        scrape.PENDING,
+        resolve_artists.ARTIST_IDS,
+        resolve_artists.SCHEMA,
+        load_extract.SCHEMA,
+    ):
         _ = declared.executescript(ddl)
-    names: list[tuple[str]] = declared.execute("select name from sqlite_master where type = 'table'").fetchall()
+    # every table, index and view they declare
+    names: list[tuple[str]] = declared.execute('select name from sqlite_master where sql is not null').fetchall()
     with sqlite_db.opened(EXPORT, 'ro') as db:
         assert tables(db, [n for (n,) in names]) == tables(declared, [n for (n,) in names])

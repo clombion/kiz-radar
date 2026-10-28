@@ -2,6 +2,7 @@
 reads committed data only by copying it in (exports.committed). Each module also checks that the repository's files,
 ignored ones included, are as it found them."""
 
+import json
 import os
 from collections.abc import Iterator
 from contextlib import ExitStack, closing
@@ -10,10 +11,10 @@ from pathlib import Path
 import pytest
 
 import pipeline
-from pipeline import ROOT, build_site_db, db
+from pipeline import ROOT, build_site_db, db, exceptions
 from pipeline.records import Spent
 from tests import exports
-from tests.fakes import Memory
+from tests.fakes import REGISTER, Memory
 
 # what running the checks writes, which is no data
 UNWATCHED = frozenset({'.git', '.venv', 'node_modules', '__pycache__', '.pytest_cache', '.ruff_cache', '.vitest'})
@@ -52,15 +53,25 @@ def data_folder(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     return folder
 
 
+@pytest.fixture(autouse=True)
+def register(monkeypatch: pytest.MonkeyPatch) -> None:
+    """The tests' own register of exceptions, so that a test depends on no row of the committed one."""
+    monkeypatch.setattr(exceptions, 'OVERRIDES', REGISTER)
+
+
 @pytest.fixture(scope='session')
 def site_db(tmp_path_factory: pytest.TempPathFactory) -> Path:
-    """The site database, built once from the committed export and data, for the tests that read it."""
+    """The site database, built once from the committed export and data, for the tests that read it, with what the
+    build gives the page beside it (build_site_db.SITE_JSON)."""
     folder = tmp_path_factory.mktemp('site')
     with pytest.MonkeyPatch.context() as m:
         m.setattr(pipeline, 'DATA', folder)
         exports.committed(*exports.EVERYTHING)
         out = folder / 'site.sqlite'
-        _ = build_site_db.build(exports.EXPORT, out)
+        site = build_site_db.build(exports.EXPORT, out)
+    _ = (folder / Path(build_site_db.SITE_JSON).name).write_text(
+        json.dumps(site, ensure_ascii=False, indent=1), encoding='utf-8'
+    )
     return out
 
 

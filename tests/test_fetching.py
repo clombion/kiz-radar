@@ -13,7 +13,7 @@ from pipeline import data, geocode, rates, scrape, web
 from pipeline import db as sqlite_db
 from pipeline.records import JSON, Place, Rate, Spot, today
 from tests import jsons
-from tests.exports import column, content, run, trimmed
+from tests.exports import column, content, festival, run, shaped, trimmed
 from tests.fakes import no_wait
 from tests.samples import API, PAGE
 
@@ -84,8 +84,9 @@ def source_with(places: list[tuple[str | None, str | None]]) -> Path:
     path = data(sqlite_db.SOURCE) / 'source.sqlite'
     path.parent.mkdir(parents=True)
     with sqlite_db.opened(path, 'rwc') as con:
-        _ = con.execute('create table events (id integer, city text, country text)')
-        _ = con.executemany('insert into events values (?, ?, ?)', [(i, *p) for i, p in enumerate(places)])
+        _ = shaped(con)
+        for i, (city, country) in enumerate(places):
+            festival(con, i, city=city, country=country)
         con.commit()
     return path
 
