@@ -15,26 +15,36 @@ from typing import Annotated
 import pytest
 from pydantic import Field, ValidationError
 
-from pipeline import db, enums, generate, prompt, spend, states, tickets
+from pipeline import data, db, enums, generate, prompt, spend, states, tickets
 from pipeline.enums import AnswerState, PassKind, Role, Style
 from pipeline.extract import answers, ask, check_output, load_extract, prices, resolve_artists, run_log
 from pipeline.extract.resolve_artists import stable_ids
 from pipeline.prompt import Prompt, api_schema
 from pipeline.records import (
+    ANSWERS,
     JSON,
     Batch,
     Group,
+    Logged,
     MergeRow,
     Priced,
     PricedPass,
     PricedTier,
+    Rate,
     Record,
     Stamped,
     day_of,
     real_day,
 )
 from tests import jsons
+from tests.exports import EXPORT, committed
 from tests.fakes import AT, Client, Memory
+
+
+@pytest.fixture(autouse=True)
+def rates() -> None:
+    """The committed rates, which price the models' answers against the month's budget."""
+    committed(Rate.FILE)
 
 
 @pytest.mark.parametrize(
@@ -387,7 +397,7 @@ def test_a_criterion_edited_changes_the_prompts_it_is_in() -> None:
 @pytest.mark.usefixtures('answered_here')
 def test_an_answer_saved_archives_its_prompt_first() -> None:
     p = prompt.current('prices')
-    archived = prompt.ASKED / f'{p.hash}.md'
+    archived = data(prompt.ASKED) / f'{p.hash}.md'
     archived.unlink(missing_ok=True)
     out = Batch[Priced].parse(prices_answer('Full pass 80€ until 31.01'))
     _ = answers.save('prices', out, 'm', p, 'test')
@@ -401,8 +411,8 @@ def test_only_an_answer_to_the_current_prompt_is_read_as_its_record(answered_her
     _ = (answered_here / 'prices' / 'prices-001.json').write_text(
         json.dumps({'batch': 'b', 'events': [{'event_id': 5, 'old': 1}]})
     )
-    rows = [answers.Logged(file='prices/prices-001.json', answered_at=AT, model='m', prompt='0' * 16, answered_by='x')]
-    answers.Logged.write(answers.LOG, rows)
+    rows = [Logged(file='prices/prices-001.json', answered_at=AT, model='m', prompt='0' * 16, answered_by='x')]
+    Logged.write(rows)
     assert list(answers.answered('prices', {5})) == [5]  # its festivals are known, whatever its shape
     assert answers.current(prompt.PRICES, {5}) == {}
 
@@ -413,7 +423,7 @@ def test_an_archive_cut_short_is_written_again() -> None:
     _ = archived.write_text(p.text[:100], encoding='utf-8')
     _ = p.archive()
     assert archived.read_text(encoding='utf-8') == p.text
-    assert not list(prompt.ASKED.glob('*.part'))
+    assert not list(data(prompt.ASKED).glob('*.part'))
 
 
 def test_the_system_text_sent_is_the_prompts() -> None:
@@ -424,7 +434,7 @@ def test_the_system_text_sent_is_the_prompts() -> None:
 
 def export_prompts() -> set[str]:
     """The prompts the export's rows name, in every column called prompt (a step's lists them, separated by commas)."""
-    with db.opened(db.export(), 'ro') as con:
+    with db.opened(EXPORT, 'ro') as con:
         tables: list[tuple[str]] = con.execute("select name from sqlite_master where type = 'table'").fetchall()
         named: set[str] = set()
         for (t,) in tables:
@@ -438,10 +448,11 @@ def export_prompts() -> set[str]:
 
 
 def test_every_prompt_the_answers_reads_and_export_name_is_archived_under_its_hash() -> None:
+    committed(Logged.FILE, tickets.READS, prompt.ASKED)
     named = {r.prompt for r in answers.log().values()}
-    named |= {Stamped.model_validate_json(p.read_bytes()).prompt for p in tickets.READS.glob('*.json')}
+    named |= {Stamped.model_validate_json(p.read_bytes()).prompt for p in data(tickets.READS).glob('*.json')}
     named |= export_prompts()
-    archived = {p.stem: p.read_text(encoding='utf-8') for p in prompt.ASKED.glob('*.md') if p.name != 'README.md'}
+    archived = {p.stem: p.read_text(encoding='utf-8') for p in data(prompt.ASKED).glob('*.md') if p.name != 'README.md'}
     assert named <= set(archived)
     # every prompt ever asked stays, each under the hash of its text
     assert [h for h, text in archived.items() if prompt.digest(text) != h] == []
@@ -489,7 +500,7 @@ def source(con: sqlite3.Connection, *events: tuple[int, str | None]) -> sqlite3.
     return con
 
 
-def no_answers(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, answers.Logged]]:
+def no_answers(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, Logged]]:
     return {}
 
 
@@ -502,8 +513,8 @@ def test_only_the_named_festivals_are_asked(memory: Memory, monkeypatch: pytest.
         _ = ask.due(con, ['prices'], {2, 3})  # no description: nothing to ask it
 
 
-def logged(prompt_: str, at: dt.datetime = dt.datetime(2026, 10, 2, 9, tzinfo=dt.UTC)) -> answers.Logged:
-    return answers.Logged(file='prices/event-1.json', answered_at=at, model='m', prompt=prompt_, answered_by='x')
+def logged(prompt_: str, at: dt.datetime = dt.datetime(2026, 10, 2, 9, tzinfo=dt.UTC)) -> Logged:
+    return Logged(file='prices/event-1.json', answered_at=at, model='m', prompt=prompt_, answered_by='x')
 
 
 NOW = logged(prompt.current('prices').hash)
@@ -513,7 +524,7 @@ def test_an_answer_to_an_older_prompt_is_asked_again(memory: Memory, monkeypatch
     con = source(memory(), (1, 'a'), (2, 'b'))
     have = {1: (Path('a'), logged('0' * 16)), 2: (Path('b'), NOW)}
 
-    def answered(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, answers.Logged]]:
+    def answered(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, Logged]]:
         return have
 
     monkeypatch.setattr(ask.answers, 'answered', answered)
@@ -521,7 +532,7 @@ def test_an_answer_to_an_older_prompt_is_asked_again(memory: Memory, monkeypatch
 
 
 # (an answer asked on 2 October, the day its festival's description last changed when it is pending)
-ANSWER_CASES: list[tuple[tuple[answers.Logged | None, dt.date | None], AnswerState]] = [
+ANSWER_CASES: list[tuple[tuple[Logged | None, dt.date | None], AnswerState]] = [
     ((None, None), AnswerState.NONE),
     ((None, dt.date(2026, 10, 1)), AnswerState.NONE),
     ((logged('0' * 16), None), AnswerState.STALE),
@@ -537,7 +548,7 @@ ANSWER_CASES: list[tuple[tuple[answers.Logged | None, dt.date | None], AnswerSta
 
 @pytest.mark.parametrize(('args', 'state'), ANSWER_CASES)
 def test_every_state_of_an_answer_that_due_tells_apart(
-    args: tuple[answers.Logged | None, dt.date | None], state: AnswerState
+    args: tuple[Logged | None, dt.date | None], state: AnswerState
 ) -> None:
     answer, since = args
     assert ask.answer_state('prices', answer, since=since) == state
@@ -556,7 +567,7 @@ def test_a_festival_stays_pending_until_every_pass_has_an_answer_since_its_chang
         p: {2: now[p], 4: now[p]} for p in ('extract', 'rooms_genres')
     }
 
-    def answered(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, answers.Logged]]:
+    def answered(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, Logged]]:
         return {i: (Path(f'{pass_name}/event-{i}.json'), a) for i, a in have[pass_name].items() if i in ids}
 
     monkeypatch.setattr(ask.answers, 'answered', answered)
@@ -661,13 +672,10 @@ def test_a_festival_is_priced_exactly_when_it_has_the_pass_a_card_prices(memory:
 
 
 @pytest.fixture
-def answered_here(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
-    """Answers saved in a folder of the test's own, with an empty log."""
-    monkeypatch.setattr(answers, 'ANSWERS', tmp_path / 'answers')
-    monkeypatch.setattr(answers, 'LOG', tmp_path / 'answers' / 'log.csv')
-    (tmp_path / 'answers').mkdir()
-    _ = (tmp_path / 'answers' / 'log.csv').write_text(','.join(answers.Logged.columns()) + '\n')
-    return tmp_path / 'answers'
+def answered_here() -> Path:
+    """The answers folder of the test's data folder, with an empty log."""
+    Logged.write([])
+    return data(ANSWERS)
 
 
 def source_file(tmp_path: Path) -> Path:

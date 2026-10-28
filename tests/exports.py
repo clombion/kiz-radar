@@ -1,5 +1,6 @@
-"""The committed kizomba-world export, for tests that run a step on it whole: copies of it, whole or with only its
-latest festivals, every table's content, and a step's main run as its command line would."""
+"""Committed data for tests that read it: files copied into the test's data folder, and the kizomba-world export, run on
+whole by some tests: copies of it, whole or with only its latest festivals, every table's content, and a step's main
+run as its command line would."""
 
 import json
 import shutil
@@ -9,15 +10,25 @@ from pathlib import Path
 
 import pytest
 
+import pipeline
+from pipeline import ROOT
 from pipeline import db as sqlite_db
 
-EXPORT = sqlite_db.export()
+EXPORT = sqlite_db.export_in(ROOT / sqlite_db.SOURCE)  # the repository's, whatever the data folder
 # the tables that hold when a step ran, which a second run changes and nothing else should, read without it
 WITHOUT_WHEN = {
     'meta': "select * from meta where key != 'built_at'",
     'pipeline_steps': 'select step, description, performed_by, model, prompt, inputs, outputs, details '
     'from pipeline_steps',
 }
+
+
+def committed(*paths: str) -> None:
+    """Copy these committed files or folders (paths from the repository's folder) into the test's data folder."""
+    for path in paths:
+        src, dst = ROOT / path, pipeline.data(path)
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        _ = shutil.copytree(src, dst, dirs_exist_ok=True) if src.is_dir() else shutil.copyfile(src, dst)
 
 
 def column(db: sqlite3.Connection, sql: str, params: Sequence[object] = ()) -> list[object]:

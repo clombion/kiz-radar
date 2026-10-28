@@ -9,10 +9,17 @@ import pytest
 
 from pipeline import fares
 from pipeline.enums import FareSearch
-from pipeline.records import today
+from pipeline.records import Airport, today
+from tests.exports import committed
 from tests.fakes import no_wait
 
 FRIDAY = dt.date(2026, 11, 6)  # a festival weekend's
+
+
+@pytest.fixture(autouse=True)
+def airports() -> None:
+    """The committed airports, home among them, where every search leaves from."""
+    committed(Airport.FILE)
 
 
 def test_closer_weekends_are_searched_more_often() -> None:
@@ -39,10 +46,9 @@ def one_weekend(today: dt.date) -> set[tuple[str, dt.date]]:
 def run_queue(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, jobs: Sequence[fares.Job], today: dt.date
 ) -> fares.Weekend:
-    monkeypatch.setattr(fares, 'JOBS', tmp_path / 'jobs.csv')
-    monkeypatch.setattr(fares, 'FARES', tmp_path / 'fares.csv')
     monkeypatch.setattr(fares, 'weekends', one_weekend)
-    fares.Job.write(fares.JOBS, jobs)
+    fares.Job.write(jobs)
+    fares.Fare.write([])
     return fares.queue(dt.datetime.combine(today, dt.time(6), dt.UTC))[0]
 
 
@@ -112,15 +118,13 @@ SOON = today() + dt.timedelta(days=10)  # due, weekly, never searched
 @pytest.fixture
 def weekends(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     """Two festival weekends due, a fare kept for a weekend no festival has any more, and no wait between searches."""
-    monkeypatch.setattr(fares, 'JOBS', tmp_path / 'jobs.csv')
-    monkeypatch.setattr(fares, 'FARES', tmp_path / 'fares.csv')
     monkeypatch.setattr(fares, 'weekends', two_weekends)
     monkeypatch.setattr('time.sleep', no_wait)
-    fares.Job.write(fares.JOBS, [])
+    fares.Job.write([])
     gone = fares.Fare(
         airport='OSL', depart=dt.date(2026, 1, 2), return_=dt.date(2026, 1, 5), price=1, currency='EUR', fetched_at=AT
     )
-    fares.Fare.write(fares.FARES, [gone])
+    fares.Fare.write([gone])
     return tmp_path
 
 
@@ -137,8 +141,8 @@ def test_a_refresh_keeps_the_fares_found_and_logs_every_search(weekends: Path, m
     monkeypatch.setattr(fares, 'search', searched({'GLA': fare, 'LIS': fares.Missed(FareSearch.NO_PRICE, 'none')}))
     monkeypatch.setattr('sys.argv', ['fares', 'refresh'])
     fares.main()
-    assert fares.Fare.read(fares.FARES) == [fare]  # the weekend gone took its fare with it
-    assert {(j.airport, j.status, j.note) for j in fares.Job.read(fares.JOBS)} == {
+    assert fares.Fare.read() == [fare]  # the weekend gone took its fare with it
+    assert {(j.airport, j.status, j.note) for j in fares.Job.read()} == {
         ('GLA', FareSearch.PRICED, ''),
         ('LIS', FareSearch.NO_PRICE, 'none'),
     }
@@ -157,7 +161,7 @@ def test_a_refused_search_is_tried_once_more_then_the_rest_waits(
     with pytest.raises(SystemExit, match='Google refused a search'):
         fares.refresh(budget=5, max_seconds=60)
     assert len(tries) == 2  # the first weekend, twice; the second waits
-    assert fares.Job.read(fares.JOBS) == []  # a refused search is no search
+    assert fares.Job.read() == []  # a refused search is no search
 
 
 def test_the_plan_lists_the_weekends_due(weekends: Path, capsys: pytest.CaptureFixture[str]) -> None:

@@ -8,12 +8,9 @@ already under way can take the month a little over.
 """
 
 import threading
-from pathlib import Path
 
 from pipeline.records import Rate, Spent, now
 
-HERE = Path(__file__).parent
-LEDGER, RATES = HERE / 'spend.csv', HERE / 'rates.csv'
 BUDGET_EUR = 100
 # dollars per million tokens, in and out, by model; Haiku's long prompts (over 100K tokens) cost more
 PRICES = {
@@ -40,11 +37,11 @@ def usd(model: str, input_tokens: int, output_tokens: int) -> float:
 def month_usd() -> float:
     """Dollars spent this calendar month (in UTC)."""
     t = now()
-    return sum(r.usd for r in Spent.read(LEDGER) if (r.at.year, r.at.month) == (t.year, t.month))
+    return sum(r.usd for r in Spent.read() if (r.at.year, r.at.month) == (t.year, t.month))
 
 
 def eur(dollars: float) -> float:
-    return dollars / next(r.per_eur for r in Rate.read(RATES) if r.currency == 'USD')
+    return dollars / next(r.per_eur for r in Rate.read() if r.currency == 'USD')
 
 
 def check(model: str) -> None:
@@ -68,5 +65,5 @@ def record(step: str, model: str, input_tokens: int, output_tokens: int) -> floa
         usd=round(cost, 6),
     )
     with _lock:
-        row.append(LEDGER)
+        row.append()
     return cost

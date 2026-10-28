@@ -7,7 +7,6 @@ places in pipeline/geocode.csv so reruns only ask for new cities.
 import argparse
 import sys
 import time
-from pathlib import Path
 
 from pydantic import BaseModel, ConfigDict, TypeAdapter, ValidationError
 
@@ -15,7 +14,6 @@ from pipeline import db as sqlite_db
 from pipeline import web
 from pipeline.records import Place, Spot
 
-CACHE = Path(__file__).parent / 'geocode.csv'
 SEARCH = web.Https('nominatim.openstreetmap.org', '/search')
 HEADERS = {'User-Agent': 'kiz-radar/0.1 (https://github.com/clombion/kiz-radar)'}
 PAUSE, BACKOFF = 1.1, 5  # seconds between requests (Nominatim allows one a second), and after a failure
@@ -53,7 +51,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="Geocode the source DB's cities with OpenStreetMap Nominatim.")
     sqlite_db.source_arg(ap)
     with sqlite_db.opened(ap.parse_args(namespace=sqlite_db.Source()).src, 'ro') as db:
-        known = {(p.city, p.country): p for p in Place.read(CACHE)}
+        known = {(p.city, p.country): p for p in Place.read()}
         # a country alone is no place on the map; one the export leaves empty is none
         places: list[tuple[str, str | None]] = db.execute(
             "select distinct city, nullif(country, '') from events where city != ''"
@@ -68,7 +66,7 @@ def main() -> None:
                 time.sleep(BACKOFF)
                 continue
             time.sleep(PAUSE)
-        Place.write(CACHE, sorted(known.values(), key=lambda p: (p.country or '', p.city)))
+        Place.write(sorted(known.values(), key=lambda p: (p.country or '', p.city)))
         print(len(known), 'places;', sum(1 for p in known.values() if p.found is None), 'not found')
 
 

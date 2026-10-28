@@ -65,10 +65,6 @@ from pipeline.records import (
     day_of,
 )
 
-PAGE_PRICES = run_log.HERE.parent / 'pass_prices.csv'
-TICKET_PAGES = run_log.HERE.parent / 'ticket_pages.csv'
-STATUS = run_log.HERE.parent / 'tickets' / 'status.csv'  # how each festival sells, and its known ticket page
-
 # Whole-word genre names recognised in event titles (brand spellings like "AfroKiz" or "Kizz" do not match)
 TITLE_GENRES = {
     'kizomba': r'\bkizomba\b',
@@ -298,13 +294,13 @@ def page_prices(event_ids: set[int]) -> tuple[dict[int, tuple[Priced, PageRow]],
     prices answer, the festival's ticket_pages.csv row)}, how many are to another first-read prompt). In
     pass_prices.csv (one row per tier, in order) a pass is the rows with one pass_no; the price notes are
     ticket_pages.csv's, one per line. A page read to another prompt is left out, as an answer is."""
-    rows = PageRow.read(TICKET_PAGES)
+    rows = PageRow.read()
     for r in rows:
         if r.event_id not in event_ids:
             sys.exit(f'ticket_pages.csv: no festival {r.event_id} ({r.event})')
     pages = {r.event_id: r for r in rows if prompts.is_current('first_read', r.prompt)}
     passes: dict[int, list[tuple[PriceRow, list[PricedTier]]]] = {}
-    for r in PriceRow.read(PAGE_PRICES):
+    for r in PriceRow.read():
         if r.event_id in pages:
             got = passes.setdefault(r.event_id, [])
             if len(got) < r.pass_no:
@@ -344,7 +340,7 @@ def current[E: Entry, Q: Asked](pass_: Pass[E, Q], event_ids: set[int]) -> tuple
 
 def status() -> dict[int, tuple[Sales | None, str | None]]:
     """tickets/status.csv by festival: (how an agent found it sells, None when none did; its known ticket page)."""
-    return {r.event_id: (r.sales, r.page) for r in StatusRow.read(STATUS)}
+    return {r.event_id: (r.sales, r.page) for r in StatusRow.read()}
 
 
 def load_prices(

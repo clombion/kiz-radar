@@ -4,25 +4,22 @@ is stale; the report is the same each time."""
 import dataclasses
 import datetime as dt
 import json
-import shutil
 import sqlite3
 from pathlib import Path
 
 import pytest
 
-from pipeline import audit, exceptions, prompt, tickets
+from pipeline import audit, data, exceptions, prompt, tickets
 from pipeline.enums import FirstRead
-from pipeline.extract import answers
-from pipeline.records import PageRecipe
+from pipeline.records import CsvRow, Logged, PageRecipe
+from tests.exports import committed
 from tests.fakes import AT, Memory
 
 
-def copied(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
-    for file in audit.FILES:
-        (tmp_path / file).parent.mkdir(parents=True, exist_ok=True)
-        _ = shutil.copy(audit.ROOT / file, tmp_path / file)
-    monkeypatch.setattr(audit, 'ROOT', tmp_path)
-    return tmp_path
+def copied() -> Path:
+    """The data folder, with every committed CSV file."""
+    committed(*(r.FILE for r in CsvRow.records()))
+    return data('')
 
 
 def edited(path: Path, line: int, column: int, value: str) -> None:
@@ -35,7 +32,7 @@ def edited(path: Path, line: int, column: int, value: str) -> None:
 
 
 def test_a_hand_edited_state_is_named_with_its_file_and_place(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    root = copied(tmp_path, monkeypatch)
+    root = copied()
     edited(root / 'pipeline/tickets/pages.csv', 2, 2, 'soon')
     found = audit.refused(set())
     assert len(found) == 1
@@ -70,6 +67,7 @@ def festival(page: str | None, **change: object) -> tickets.Festival:
 def test_an_override_is_stale_once_a_recipe_reads_its_site_or_no_festival_has_its_page_there() -> None:
     o = exceptions.OVERRIDES[0]
     others = [festival(f'https://{p.host}/e') for p in exceptions.OVERRIDES[1:]]
+    committed(tickets.SITES)
     known = tickets.sites()
     assert audit.stale([*others, festival(f'https://{o.host}/e', over=True)], known) == []  # past festivals count
     assert [s for s, _ in audit.stale(others, known)] == [o]  # no festival uses the site
@@ -90,7 +88,7 @@ def test_an_override_replaces_only_the_state_it_names() -> None:
 def test_an_answer_to_the_current_prompt_holds_only_states_its_pass_makes(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    copied(tmp_path, monkeypatch)
+    copied()
     now, old = prompt.current('extract').hash, '0' * 16
     folder = tmp_path / 'extract'
     folder.mkdir()
@@ -99,13 +97,13 @@ def test_an_answer_to_the_current_prompt_holds_only_states_its_pass_makes(
         events = [{'event_id': i, 'artists': [], 'features': [feature]}]
         _ = (folder / f'event-{i}.json').write_text(json.dumps({'batch': 'b', 'events': events}))
 
-    def answered(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, answers.Logged]]:
+    def answered(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, Logged]]:
         if pass_name != 'extract':  # noqa: S105 (a pass is an extraction pass, no password)
             return {}
         return {
             i: (
                 folder / f'event-{i}.json',
-                answers.Logged(file='f', answered_at=AT, model='m', prompt=h, answered_by='x'),
+                Logged(file='f', answered_at=AT, model='m', prompt=h, answered_by='x'),
             )
             for i, h in ((1, now), (2, old))
         }
@@ -119,7 +117,7 @@ def test_an_answer_to_the_current_prompt_holds_only_states_its_pass_makes(
 def test_an_empty_value_is_allowed_only_where_its_column_allows_it(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    root = copied(tmp_path, monkeypatch)
+    root = copied()
     edited(root / 'pipeline/pass_prices.csv', 2, 3, '')  # a pass for all its styles
     assert audit.refused(set()) == []
     edited(root / 'pipeline/tickets/status.csv', 2, 3, '')

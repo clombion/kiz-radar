@@ -1,6 +1,7 @@
-"""The repository's Python, read as code: a function is written once, in the module the others import it from, and the
-repository's folder is found once, as pipeline.ROOT; and a table of the export is the export's, which no step creates
-when it is missing. The Actions take their tools from mise.toml, and the steps their export from db.export."""
+"""The repository's Python, read as code: a function is written once, in the module the others import it from; the
+repository's folder is found once, as pipeline.ROOT, and a step finds its data through pipeline.data(); and a table of
+the export is the export's, which no step creates when it is missing. The Actions take their tools from mise.toml, and
+the steps their export from db.export."""
 
 import ast
 import collections
@@ -43,6 +44,18 @@ def test_the_repository_is_found_from_one_file() -> None:
         and n.value.attr == 'parent'
     ]
     assert climbs == []
+
+
+def test_a_step_finds_its_data_through_the_data_folder() -> None:
+    """ROOT is where the code is: only the modules that read or write code (the prompt templates, the generated
+    modules) name it, and every data file is found through pipeline.data(), which a test points elsewhere."""
+    naming = {
+        p.relative_to(ROOT).as_posix()
+        for p in sorted((ROOT / 'pipeline').rglob('*.py'))
+        if p != ROOT / 'pipeline' / '__init__.py'
+        and any(isinstance(n, ast.Name) and n.id == 'ROOT' for n in ast.walk(ast.parse(p.read_text(encoding='utf-8'))))
+    }
+    assert naming == {'pipeline/prompt.py', 'pipeline/generate.py'}
 
 
 def test_no_step_creates_a_table_when_it_is_missing() -> None:

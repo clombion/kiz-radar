@@ -22,14 +22,14 @@ from functools import cache, cached_property
 from pathlib import Path
 from typing import Literal
 
-from pipeline import ROOT, records, states
+from pipeline import ROOT, data, records, states
 from pipeline.records import Asked, AskedPrices, Batch, Entry, Extracted, Json, Priced, Record, RoomsGenres
 
 type Schema = dict[str, Json]
 type PassName = Literal['extract', 'rooms_genres', 'prices']
 type Name = PassName | Literal['first_read']
 
-ASKED = ROOT / 'pipeline' / 'prompts' / 'asked'
+ASKED = 'pipeline/prompts/asked'  # every prompt an answer or a read followed, by its hash
 CHECKED, SENT = '\n\n======== schema as checked ========\n\n', '\n\n======== schema as sent ========\n\n'
 EXTRACT_DIR, TICKETS_DIR = ROOT / 'pipeline' / 'extract', ROOT / 'pipeline' / 'tickets'
 # what structured outputs leave to the checker: lengths, ranges and patterns; and the annotations
@@ -128,11 +128,11 @@ class Prompt:
     def archive(self) -> Path:
         """Save the prompt's text under its hash, unless the file there already holds it: written whole beside it,
         then renamed, so no reader sees part of it."""
-        path = ASKED / f'{self.hash}.md'
+        path = data(ASKED) / f'{self.hash}.md'
         if path.exists() and digest(path.read_text(encoding='utf-8')) == self.hash:
             return path
-        ASKED.mkdir(parents=True, exist_ok=True)
-        with tempfile.NamedTemporaryFile('w', encoding='utf-8', dir=ASKED, suffix='.part', delete=False) as f:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with tempfile.NamedTemporaryFile('w', encoding='utf-8', dir=path.parent, suffix='.part', delete=False) as f:
             _ = f.write(self.text)
         _ = Path(f.name).replace(path)
         return path
@@ -201,7 +201,7 @@ def is_current(name: Name, hash_: str) -> bool:
 
 def asked(hash_: str) -> str:
     """The text of an archived prompt."""
-    path = ASKED / f'{hash_}.md'
+    path = data(ASKED) / f'{hash_}.md'
     if not path.exists():
-        raise LookupError(f'prompt {hash_}: no {path.relative_to(ROOT)}')
+        raise LookupError(f'prompt {hash_}: no {ASKED}/{hash_}.md')
     return path.read_text(encoding='utf-8')

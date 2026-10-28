@@ -23,7 +23,7 @@ import sqlite3
 from collections.abc import Callable
 from dataclasses import dataclass, field
 
-from pipeline import ROOT, build_site_db
+from pipeline import build_site_db
 from pipeline import db as sqlite_db
 from pipeline.countries import codes
 from pipeline.enums import MergeDecision, MergeReason
@@ -31,8 +31,6 @@ from pipeline.extract.prices import COUPLE
 from pipeline.names import norm, sim
 from pipeline.records import ArtistMergeRow, Suggestion
 
-OUT = ROOT / 'pipeline' / 'artist_merge_suggestions.csv'
-MERGES = ROOT / 'pipeline' / 'artist_merges.csv'
 COUNTRY_BONUS, COUNTRY_PENALTY = 0.1, 0.25  # score = name similarity, adjusted by country of origin …
 CLASH_PENALTY, CIRCUIT_BONUS = 0.5, 0.05  # … and by the calendar (see calendar_signal)
 SHORT_EVENT_DAYS = 4  # longer events (week-long all-in-ones) never count as a clash
@@ -43,7 +41,7 @@ FR_TERRITORIES = {'RE', 'GP', 'MQ', 'GF', 'YT', 'MF', 'BL', 'NC', 'PF', 'PM', 'W
 
 def decided() -> tuple[set[frozenset[str]], Callable[[str], str]]:
     """Pairs already decided, and a function giving each key's merge group (merges chain: A<-B, A<-C groups B and C)."""
-    rows = ArtistMergeRow.read(MERGES)
+    rows = ArtistMergeRow.read()
     parent: dict[str, str] = {}
 
     def group(k: str) -> str:
@@ -290,8 +288,8 @@ def main() -> None:
     src = ap.parse_args(namespace=sqlite_db.Source()).src
     with sqlite_db.opened(src, 'ro') as c, build_site_db.built(src) as site:
         rows = suggestions(c, site)
-    Suggestion.write(OUT, rows)
-    print(f'{len(rows)} suggestions in {OUT.relative_to(ROOT)}')
+    Suggestion.write(rows)
+    print(f'{len(rows)} suggestions in {Suggestion.FILE}')
 
 
 if __name__ == '__main__':

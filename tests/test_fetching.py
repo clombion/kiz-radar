@@ -28,7 +28,6 @@ def test_an_address_is_https_with_its_query() -> None:
 
 
 def test_the_rates_are_the_banks_and_the_fixed_ones(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.setattr(rates, 'OUT', tmp_path / 'rates.csv')
 
     def get(address: web.Https, *_: object) -> bytes:
         assert address == rates.ECB
@@ -36,7 +35,7 @@ def test_the_rates_are_the_banks_and_the_fixed_ones(tmp_path: Path, monkeypatch:
 
     monkeypatch.setattr(web, 'get', get)
     run(rates.main, monkeypatch)
-    assert Rate.read(tmp_path / 'rates.csv') == [
+    assert Rate.read() == [
         Rate(currency='BGN', per_eur=1.95583, date=ECB_DAY),
         Rate(currency='EUR', per_eur=1.0, date=ECB_DAY),
         Rate(currency='NOK', per_eur=11.705, date=ECB_DAY),
@@ -48,9 +47,8 @@ def test_the_rates_are_the_banks_and_the_fixed_ones(tmp_path: Path, monkeypatch:
 def test_the_rates_stay_as_they_were_when_the_bank_gives_none(
     answer: OSError | bytes, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    out = tmp_path / 'rates.csv'
+    out = Rate.path()
     _ = out.write_text('currency,per_eur,date\nNOK,11,2026-10-01\n')
-    monkeypatch.setattr(rates, 'OUT', out)
 
     def get(*_: object) -> bytes:
         if isinstance(answer, OSError):
@@ -91,10 +89,8 @@ def source_with(tmp_path: Path, places: list[tuple[str | None, str | None]]) -> 
 
 
 def test_new_places_are_asked_for_once_and_kept_with_the_known(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    cache = tmp_path / 'geocode.csv'
     known = Place(city='Oslo', country='Norway', found=Spot(lat=59.9, lon=10.7, name='Oslo, Norway'))
-    Place.write(cache, [known])
-    monkeypatch.setattr(geocode, 'CACHE', cache)
+    Place.write([known])
     monkeypatch.setattr('time.sleep', no_wait)
     lisbon = {'lat': '38.7', 'lon': '-9.1', 'display_name': 'Lisboa, Portugal'}
     nominatim = Nominatim({'Lisbon, Portugal': lisbon, 'Bairro Alto, Portugal': lisbon})
@@ -110,7 +106,7 @@ def test_new_places_are_asked_for_once_and_kept_with_the_known(tmp_path: Path, m
         ],
     )
     run(geocode.main, monkeypatch, src)
-    found = {(p.city, p.country): p.found for p in Place.read(cache)}
+    found = {(p.city, p.country): p.found for p in Place.read()}
     assert found == {
         ('Oslo', 'Norway'): known.found,
         ('Lisbon', 'Portugal'): Spot(lat=38.7, lon=-9.1, name='Lisboa, Portugal'),
@@ -125,13 +121,11 @@ def test_new_places_are_asked_for_once_and_kept_with_the_known(tmp_path: Path, m
 
 
 def test_a_place_nominatim_fails_on_is_left_for_the_next_run(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    cache = tmp_path / 'geocode.csv'
-    Place.write(cache, [])
-    monkeypatch.setattr(geocode, 'CACHE', cache)
+    Place.write([])
     monkeypatch.setattr('time.sleep', no_wait)
     monkeypatch.setattr(web, 'get', Nominatim({}, down=True).get)
     run(geocode.main, monkeypatch, source_with(tmp_path, [('Lisbon', 'Portugal')]))
-    assert Place.read(cache) == []
+    assert Place.read() == []
 
 
 @dataclass(frozen=True)

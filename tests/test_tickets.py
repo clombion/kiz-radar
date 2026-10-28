@@ -12,7 +12,7 @@ from pathlib import Path
 
 import pytest
 
-from pipeline import exceptions, prompt, spend, tickets
+from pipeline import ROOT, data, exceptions, prompt, spend, tickets
 from pipeline.enums import FirstRead as FirstReadState
 from pipeline.enums import PassKind, Price, Recheck, Sales, SkipReason, Status, Style, Waiting
 from pipeline.extract import answers, load_extract, prices
@@ -29,10 +29,12 @@ from pipeline.records import (
     FromText,
     Json,
     PageRecipe,
+    PageRow,
     Priced,
     PricedPass,
     PricedTier,
     PriceRow,
+    Rate,
     Read,
     ReadPass,
     ReadTier,
@@ -43,6 +45,7 @@ from pipeline.records import (
     real_day,
 )
 from tests import jsons
+from tests.exports import committed
 from tests.fakes import AT, Client, Memory
 
 LATER = dt.datetime(2026, 11, 3, 5, tzinfo=dt.UTC)
@@ -256,41 +259,42 @@ def test_price_notes_come_from_the_description_only() -> None:
     assert tickets.read_problems(read(rule_quotes=['Fullpass Male 120€']), [entry(ROWS)]) != []
 
 
+@pytest.fixture(autouse=True)
+def recipes_and_rates() -> None:
+    """The committed recipes, which say which sites are ticket shops, and rates, which price the models' answers."""
+    committed(tickets.SITES, Rate.FILE)
+
+
 @pytest.fixture
-def files(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
-    for name in ('READS', 'DRAFTS', 'LOG', 'DISPUTED'):
-        monkeypatch.setattr(tickets, name, tmp_path / name.lower())
-    monkeypatch.setattr(tickets, 'PRICES_CSV', tmp_path / 'pass_prices.csv')
-    monkeypatch.setattr(tickets, 'PAGES_CSV', tmp_path / 'ticket_pages.csv')
-    monkeypatch.setattr(tickets, 'FOUND_CSV', tmp_path / 'pages.csv')
-    monkeypatch.setattr(tickets, 'STATUS_CSV', tmp_path / 'status.csv')
+def files() -> Path:
+    """The tickets folder of the test's data folder, with festival 7's first read and one logged read."""
     tickets.save_read(read())
     tickets.append(7, entry(ROWS))
-    return tmp_path
+    return data(tickets.TICKETS)
 
 
 def test_recording_twice_writes_the_same_files(files: Path) -> None:
     assert tickets.record(7) == []
-    before = [(files / f).read_bytes() for f in ('pass_prices.csv', 'ticket_pages.csv')]
+    before = [r.path().read_bytes() for r in (PriceRow, PageRow)]
     assert tickets.record(7) == []
-    assert [(files / f).read_bytes() for f in ('pass_prices.csv', 'ticket_pages.csv')] == before
+    assert [r.path().read_bytes() for r in (PriceRow, PageRow)] == before
 
 
 def test_an_unchanged_page_changes_only_the_read_date(files: Path) -> None:
     assert tickets.record(7) == []
-    prices_before, pages_before = [(files / f).read_text() for f in ('pass_prices.csv', 'ticket_pages.csv')]
+    prices_before, pages_before = [r.path().read_text() for r in (PriceRow, PageRow)]
     tickets.append(7, entry(ROWS, at=LATER))
     assert tickets.record(7) == []
-    assert (files / 'pass_prices.csv').read_text() == prices_before
-    assert (files / 'ticket_pages.csv').read_text() == pages_before.replace('2026-10-01', '2026-11-03')
+    assert (PriceRow.path()).read_text() == prices_before
+    assert (PageRow.path()).read_text() == pages_before.replace('2026-10-01', '2026-11-03')
 
 
 def test_a_failed_read_keeps_the_last_prices(files: Path) -> None:
     assert tickets.record(7) == []
-    before = (files / 'ticket_pages.csv').read_text()
+    before = (PageRow.path()).read_text()
     tickets.append(7, refused(LATER))
     assert tickets.record(7) == []
-    assert (files / 'ticket_pages.csv').read_text() == before
+    assert (PageRow.path()).read_text() == before
 
 
 def test_changes_between_reads() -> None:
@@ -502,10 +506,10 @@ def test_a_draft_starts_with_the_festival_and_nothing_read(files: Path) -> None:
     assert any('passes' in p for p in tickets.record(7))  # a draft with no pass is not a first read
 
 
-def test_recipes_are_read_as_their_record(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+def test_recipes_are_read_as_their_record() -> None:
+    committed(tickets.SITES)
     assert tickets.sites()
-    monkeypatch.setattr(tickets, 'SITES', tmp_path)
-    _ = (tmp_path / 'x.json').write_text(json.dumps({'site': 'x'}))
+    _ = (data(tickets.SITES) / 'x.json').write_text(json.dumps({'site': 'x'}))
     with pytest.raises(SystemExit):
         _ = tickets.sites()
 
@@ -578,17 +582,17 @@ def test_a_model_that_misreads_answers_again_with_the_checkers_lines(files: Path
 
 
 def test_both_files_hold_what_the_reads_and_logs_say_and_nothing_else(files: Path) -> None:
-    _ = (files / 'pass_prices.csv').write_text('event_id,stale\n9,1\n')
+    _ = (PriceRow.path()).write_text('event_id,stale\n9,1\n')
     assert tickets.record(7) == []
-    assert {r.event_id for r in PriceRow.read(files / 'pass_prices.csv')} == {7}
-    assert (files / 'pass_prices.csv').read_text().splitlines()[0] == ','.join(PriceRow.columns())
+    assert {r.event_id for r in PriceRow.read()} == {7}
+    assert (PriceRow.path()).read_text().splitlines()[0] == ','.join(PriceRow.columns())
 
 
 def test_a_festival_that_no_longer_fits_its_first_read_is_left_out(files: Path) -> None:
     assert tickets.record(7) == []
     tickets.append(7, entry(changed(ROWS, 3, amount=128.21, price='€128.21'), at=LATER))
     assert 'the first read needs doing again' in tickets.write_all()[0]
-    assert tickets.PageRow.read(files / 'ticket_pages.csv') == []
+    assert PageRow.read() == []
 
 
 HELD = exceptions.OVERRIDES[0]  # a site the register says no recipe can read
@@ -663,7 +667,7 @@ def test_the_status_lists_every_festival_past_ones_too(files: Path) -> None:
             festival(id=6, over=True, found=sold(Sales.CLOSED)),
         ]
     )
-    got = [(r.event_id, r.waits_for, r.first_read, r.sales) for r in StatusRow.read(files / 'status.csv')]
+    got = [(r.event_id, r.waits_for, r.first_read, r.sales) for r in StatusRow.read()]
     assert got == [
         (6, Waiting.NOTHING, FirstReadState.NONE, Sales.CLOSED),
         (7, Waiting.PAGE, FirstReadState.NONE, None),
@@ -671,7 +675,7 @@ def test_the_status_lists_every_festival_past_ones_too(files: Path) -> None:
         (9, Waiting.NOTHING, FirstReadState.CURRENT, None),
     ]
     assert counts == {Waiting.PAGE: 1, Waiting.RECIPE: 1, Waiting.NOTHING: 2}
-    assert (files / 'status.csv').read_text().splitlines()[0] == ','.join(StatusRow.columns())
+    assert StatusRow.path().read_text().splitlines()[0] == ','.join(StatusRow.columns())
 
 
 @pytest.fixture
@@ -686,16 +690,15 @@ def paging(files: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
 
     monkeypatch.setattr(tickets, 'one', one)
     monkeypatch.setattr(tickets, 'festivals', festivals)
+    FoundRow.write([])
     return files
 
 
 def test_a_found_page_is_recorded_once_and_a_cut_link_refused(memory: Memory, paging: Path) -> None:
     tickets.cmd_page(memory(), 7, tickets.Sold('https://example.org/t', Sales.SHOP, 'its site', 'agent'))
     tickets.cmd_page(memory(), 7, tickets.Sold(None, Sales.OFFLINE, 'by message only', 'agent'))
-    assert [(r.state, r.page, r.note) for r in FoundRow.read(paging / 'pages.csv')] == [
-        (Sales.OFFLINE, None, 'by message only')
-    ]
-    assert StatusRow.read(paging / 'status.csv')[0].waits_for == Waiting.PAGE
+    assert [(r.state, r.page, r.note) for r in FoundRow.read()] == [(Sales.OFFLINE, None, 'by message only')]
+    assert StatusRow.read()[0].waits_for == Waiting.PAGE
     with pytest.raises(SystemExit):
         tickets.cmd_page(memory(), 7, tickets.Sold('https://example.org/t…', Sales.SHOP, 'cut', 'agent'))
 
@@ -726,7 +729,7 @@ def test_only_a_shop_has_a_page(memory: Memory, paging: Path, url: str | None, s
     ],
 )
 def test_sales_states_are_checked_when_read(files: Path, line: str) -> None:
-    _ = (files / 'pages.csv').write_text('event_id,event,state,page,links,found_by,note\n' + line + '\n')
+    _ = (FoundRow.path()).write_text('event_id,event,state,page,links,found_by,note\n' + line + '\n')
     with pytest.raises((SystemExit, ValueError)):
         _ = tickets.found_pages()
 
@@ -822,7 +825,7 @@ def test_api_fields_read_a_ticket_and_its_page(field: FromJson | FromPage | From
 
 
 def test_a_recipe_reads_the_page_or_the_api_never_a_mix() -> None:
-    api, page = jsons.read(tickets.SITES / 'goandance.json'), jsons.read(tickets.SITES / 'weeztix.json')
+    api, page = jsons.read(ROOT / tickets.SITES / 'goandance.json'), jsons.read(ROOT / tickets.SITES / 'weeztix.json')
     assert isinstance(api, dict)
     assert isinstance(page, dict)
 
@@ -943,7 +946,7 @@ def test_a_first_read_without_a_pass_style_is_refused() -> None:
 def test_a_pass_keeps_its_style_in_pass_prices_csv(files: Path) -> None:
     tickets.save_read(with_pass(read(), style=Style.KIZOMBA))
     assert tickets.record(7) == []
-    assert {r.style for r in PriceRow.read(files / 'pass_prices.csv')} == {Style.KIZOMBA}
+    assert {r.style for r in PriceRow.read()} == {Style.KIZOMBA}
 
 
 def old_read(files: Path, **change: object) -> None:
@@ -970,7 +973,7 @@ def test_a_first_read_to_another_prompt_is_never_written(files: Path) -> None:
     old_read(files)
     assert 'make it again' in tickets.record(7)[0]
     assert tickets.write_all() == []
-    assert tickets.PageRow.read(files / 'ticket_pages.csv') == []
+    assert PageRow.read() == []
 
 
 def described(*passes: PricedPass) -> answers.Answer[Priced]:
@@ -1090,13 +1093,11 @@ def test_a_past_festivals_first_read_for_an_older_prompt_is_made_again_from_its_
 
 
 def test_passes_alike_in_every_field_load_back_as_the_passes_they_are(
-    files: Path, monkeypatch: pytest.MonkeyPatch
+    files: Path,
 ) -> None:
     one = read().passes[0]
     tickets.save_read(read(passes=[one.model_copy(update={'tiers': (t,)}) for t in one.tiers]))
     assert tickets.record(7) == []
-    monkeypatch.setattr(load_extract, 'PAGE_PRICES', files / 'pass_prices.csv')
-    monkeypatch.setattr(load_extract, 'TICKET_PAGES', files / 'ticket_pages.csv')
     loaded, _ = load_extract.page_prices({7})[0][7]
     assert [len(p.tiers) for p in loaded.passes] == [1, 1]
 
@@ -1167,7 +1168,7 @@ def test_a_festivals_styles_are_its_genres_styles(memory: Memory) -> None:
     ],
 )
 def test_a_recipe_field_is_one_the_page_can_run(field: dict[str, Json], ok: bool) -> None:
-    recipe = jsons.read(tickets.SITES / 'tickera.json')
+    recipe = jsons.read(ROOT / tickets.SITES / 'tickera.json')
     fields = jsons.at(recipe, 'fields')
     assert isinstance(fields, dict)
     fields['sold_out'] = field
@@ -1187,7 +1188,7 @@ def test_a_festival_with_three_problems_is_left_out_like_any_other(files: Path) 
     assert len(tickets.read_problems(fr, tickets.log(7))) == 3
     tickets.save_read(fr)
     assert len(tickets.write_all()) == 3
-    assert tickets.PageRow.read(files / 'ticket_pages.csv') == []
+    assert PageRow.read() == []
 
 
 @pytest.mark.parametrize(
@@ -1229,12 +1230,12 @@ def test_a_dispute_is_settled_by_a_first_read_of_rows_as_new(files: Path) -> Non
 
 def test_a_recorded_draft_archives_its_prompt_and_leaves_no_prompt_file(files: Path) -> None:
     p = prompt.current('first_read')
-    (prompt.ASKED / f'{p.hash}.md').unlink(missing_ok=True)
+    (data(prompt.ASKED) / f'{p.hash}.md').unlink(missing_ok=True)
     draft_file(files, read())
     _ = (files / 'drafts' / '7.prompt.md').write_text(p.text)
-    assert not (prompt.ASKED / f'{p.hash}.md').exists()  # a draft names no archived prompt yet
+    assert not (data(prompt.ASKED) / f'{p.hash}.md').exists()  # a draft names no archived prompt yet
     assert tickets.record(7) == []
-    assert (prompt.ASKED / f'{p.hash}.md').read_text(encoding='utf-8') == p.text
+    assert (data(prompt.ASKED) / f'{p.hash}.md').read_text(encoding='utf-8') == p.text
     assert not (files / 'drafts' / '7.prompt.md').exists()
 
 
@@ -1255,11 +1256,11 @@ def test_a_second_price_is_one_value_in_the_answer_and_two_columns_in_the_file(f
     assert [a and (a.amount, a.currency) for a in alts] == [None, (3050.0, 'CZK')]
     tickets.append(7, entry(rows, at=LATER))
     assert tickets.record(7) == []
-    assert [(r.alt_amount, r.alt_currency) for r in PriceRow.read(files / 'pass_prices.csv')] == [
+    assert [(r.alt_amount, r.alt_currency) for r in PriceRow.read()] == [
         (None, None),
         (3050, 'CZK'),
     ]
-    assert (files / 'pass_prices.csv').read_text().splitlines()[2].split(',')[11:13] == ['3050', 'CZK']
+    assert (PriceRow.path()).read_text().splitlines()[2].split(',')[11:13] == ['3050', 'CZK']
 
 
 def test_a_first_reads_prompt_is_a_hash_as_long_as_the_prompts() -> None:

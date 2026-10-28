@@ -14,7 +14,7 @@ import datetime as dt
 import re
 from collections.abc import Iterable
 from pathlib import Path
-from typing import Annotated, Literal, NewType, Self
+from typing import Annotated, ClassVar, Literal, NewType, Self
 
 from pydantic import (
     AfterValidator,
@@ -33,7 +33,7 @@ from pydantic import (
     model_validator,
 )
 
-from pipeline import tables
+from pipeline import data, tables
 from pipeline.enums import (
     ExtractedFeature,
     FareSearch,
@@ -659,20 +659,39 @@ def keys_text(value: tuple[str, ...]) -> str:
 type Keys = Annotated[tuple[str, ...], BeforeValidator(split_keys), PlainSerializer(keys_text, return_type=str)]  # a;b
 
 
+ANSWERS = 'pipeline/extract/answers'  # each pass's answers, a folder per pass, and their log
+
+
 class CsvRow(BaseModel):
     """A row of a CSV file, its columns the record's fields. A row is text, so its values are read from their text
     (lax: '3' is an int, '1' a true flag) and written back as text; an empty column of a field that may be none is
-    None."""
+    None. Each record's rows are one file, FILE, its path from the data folder."""
 
     model_config = ConfigDict(extra='forbid', frozen=True, validate_by_name=True, serialize_by_alias=True)
+    FILE: ClassVar[str]
+
+    @classmethod
+    def __pydantic_init_subclass__(cls, **kwargs: object) -> None:
+        super().__pydantic_init_subclass__(**kwargs)
+        if not isinstance(vars(cls).get('FILE'), str):
+            raise TypeError(f'{cls.__name__} names no FILE: each record is the rows of one file')
+
+    @classmethod
+    def records(cls) -> list[type['CsvRow']]:
+        """Every record of a file, which the audit reads its file through."""
+        return cls.__subclasses__()
+
+    @classmethod
+    def path(cls) -> Path:
+        return data(cls.FILE)
 
     @classmethod
     def columns(cls) -> list[str]:
         return [f.serialization_alias or name for name, f in cls.model_fields.items()]
 
     @classmethod
-    def read(cls, path: Path) -> list[Self]:
-        return [cls.model_validate(cls.cells(row)) for row in tables.rows(path)]
+    def read(cls) -> list[Self]:
+        return [cls.model_validate(cls.cells(row)) for row in tables.rows(cls.path())]
 
     @classmethod
     def cells(cls, row: dict[str, str]) -> dict[str, object]:
@@ -684,14 +703,17 @@ class CsvRow(BaseModel):
         return out
 
     @classmethod
-    def write(cls, path: Path, rows: Iterable[Self]) -> None:
-        with path.open('w', encoding='utf-8', newline='') as f:
+    def write(cls, rows: Iterable[Self]) -> None:
+        cls.path().parent.mkdir(parents=True, exist_ok=True)
+        with cls.path().open('w', encoding='utf-8', newline='') as f:
             w = csv.DictWriter(f, cls.columns(), lineterminator='\n')
             w.writeheader()
             w.writerows(r.text() for r in rows)
 
-    def append(self, path: Path) -> None:
+    def append(self) -> None:
         """Add the row at the end of the file, which gets its header when it is new."""
+        path = self.path()
+        path.parent.mkdir(parents=True, exist_ok=True)
         new = not path.exists()
         with path.open('a', encoding='utf-8', newline='') as f:
             w = csv.DictWriter(f, self.columns(), lineterminator='\n')
@@ -701,7 +723,9 @@ class CsvRow(BaseModel):
 
 
 class PriceRow(CsvRow):
-    """A tier of a pass read on a festival's ticket page (pipeline/pass_prices.csv)."""
+    """A tier of a pass read on a festival's ticket page."""
+
+    FILE = 'pipeline/pass_prices.csv'
 
     event_id: int
     pass_no: int
@@ -724,7 +748,9 @@ class PriceRow(CsvRow):
 
 
 class PageRow(CsvRow):
-    """A festival whose prices are read on its ticket page (pipeline/ticket_pages.csv)."""
+    """A festival whose prices are read on its ticket page."""
+
+    FILE = 'pipeline/ticket_pages.csv'
 
     event_id: int
     event: str
@@ -739,7 +765,9 @@ class PageRow(CsvRow):
 
 
 class FoundRow(CsvRow):
-    """How an agent found a festival with no known ticket page sells (pipeline/tickets/pages.csv)."""
+    """How an agent found a festival with no known ticket page sells."""
+
+    FILE = 'pipeline/tickets/pages.csv'
 
     event_id: int
     event: str
@@ -751,7 +779,9 @@ class FoundRow(CsvRow):
 
 
 class StatusRow(CsvRow):
-    """What a festival waits for (pipeline/tickets/status.csv)."""
+    """What a festival waits for."""
+
+    FILE = 'pipeline/tickets/status.csv'
 
     event_id: int
     event: str
@@ -763,7 +793,9 @@ class StatusRow(CsvRow):
 
 
 class MergeRow(CsvRow):
-    """A decision on whether two artist records are one artist (pipeline/extract/merges.csv)."""
+    """A decision on whether two artist records are one artist."""
+
+    FILE = 'pipeline/extract/merges.csv'
 
     key_a: str
     key_b: str
@@ -779,7 +811,9 @@ class MergeRow(CsvRow):
 
 
 class ArtistMergeRow(CsvRow):
-    """A merge of two artists the source pipeline keeps apart, decided by hand (pipeline/artist_merges.csv)."""
+    """A merge of two artists the source pipeline keeps apart, decided by hand."""
+
+    FILE = 'pipeline/artist_merges.csv'
 
     decision: MergeDecision
     keep_key: str
@@ -790,7 +824,9 @@ class ArtistMergeRow(CsvRow):
 
 
 class PlanRow(CsvRow):
-    """Who said they are going to which festival (pipeline/plans.csv)."""
+    """Who said they are going to which festival."""
+
+    FILE = 'pipeline/plans.csv'
 
     person: str
     event_id: int
@@ -799,7 +835,9 @@ class PlanRow(CsvRow):
 
 
 class Airport(CsvRow):
-    """An airport a festival can fly to (pipeline/airports.csv); home (1) is where flights leave from."""
+    """An airport a festival can fly to; home (1) is where flights leave from."""
+
+    FILE = 'pipeline/airports.csv'
 
     code: str
     name: str
@@ -821,8 +859,10 @@ class Spot(BaseModel):
 
 
 class Place(CsvRow):
-    """A place the source DB names, and where it is when Nominatim found it (pipeline/geocode.csv, its columns lat,
-    lon and osm_name, all empty when it found none). A place is a city, in a country when the source DB names one."""
+    """A place the source DB names, and where it is when Nominatim found it (its columns lat, lon and osm_name, all
+    empty when it found none). A place is a city, in a country when the source DB names one."""
+
+    FILE = 'pipeline/geocode.csv'
 
     city: Text
     country: Blank[str]
@@ -845,7 +885,9 @@ class Place(CsvRow):
 
 
 class Fare(CsvRow):
-    """A Friday-to-Monday return's price (docs/data/fares.csv)."""
+    """A Friday-to-Monday return's price."""
+
+    FILE = 'docs/data/fares.csv'
 
     airport: str
     depart: Date
@@ -856,7 +898,9 @@ class Fare(CsvRow):
 
 
 class Job(CsvRow):
-    """When a festival weekend was last searched, and how it went (pipeline/fare_jobs.csv)."""
+    """When a festival weekend was last searched, and how it went."""
+
+    FILE = 'pipeline/fare_jobs.csv'
 
     airport: str
     depart: Date
@@ -866,7 +910,9 @@ class Job(CsvRow):
 
 
 class Spent(CsvRow):
-    """A request to Claude and what it cost (pipeline/spend.csv); thinking counts as output."""
+    """A request to Claude and what it cost; thinking counts as output."""
+
+    FILE = 'pipeline/spend.csv'
 
     at: Stamp
     step: str
@@ -877,7 +923,9 @@ class Spent(CsvRow):
 
 
 class Rate(CsvRow):
-    """Units of a currency per euro, on a day (pipeline/rates.csv)."""
+    """Units of a currency per euro, on a day."""
+
+    FILE = 'pipeline/rates.csv'
 
     currency: str
     per_eur: float
@@ -885,8 +933,9 @@ class Rate(CsvRow):
 
 
 class Booking(CsvRow):
-    """One festival's booking moved from the artist record it was filed under to the person it is
-    (pipeline/artist_bookings.csv)."""
+    """One festival's booking moved from the artist record it was filed under to the person it is."""
+
+    FILE = 'pipeline/artist_bookings.csv'
 
     event_id: int
     from_key: str
@@ -898,7 +947,9 @@ class Booking(CsvRow):
 
 
 class HomeCountry(CsvRow):
-    """An artist's home country known from outside the line-ups (pipeline/artist_countries.csv)."""
+    """An artist's home country known from outside the line-ups."""
+
+    FILE = 'pipeline/artist_countries.csv'
 
     match_key: str
     country: str
@@ -907,7 +958,9 @@ class HomeCountry(CsvRow):
 
 
 class Promo(CsvRow):
-    """A promo code for a festival (pipeline/promo_codes.csv), ours, not kizomba-world's."""
+    """A promo code for a festival, ours, not kizomba-world's."""
+
+    FILE = 'pipeline/promo_codes.csv'
 
     event_id: int
     code: str
@@ -917,8 +970,10 @@ class Promo(CsvRow):
 
 
 class Person(CsvRow):
-    """Someone who shares their festival plans (pipeline/people.csv): the artist records they are (';'-separated
-    match keys), and whether cards name them (featured) or only count them."""
+    """Someone who shares their festival plans: the artist records they are (';'-separated match keys), and whether
+    cards name them (featured) or only count them."""
+
+    FILE = 'pipeline/people.csv'
 
     key: str
     name: str
@@ -928,8 +983,10 @@ class Person(CsvRow):
 
 
 class Group(CsvRow):
-    """A named group (pipeline/extract/groups.csv): an act several people perform as, its members and the spellings
-    that mean it, each a match_key."""
+    """A named group: an act several people perform as, its members and the spellings that mean it, each a
+    match_key."""
+
+    FILE = 'pipeline/extract/groups.csv'
 
     group_key: Annotated[str, Field(pattern=r'^g:')]  # apart from every mention's key (p:, c: or o:)
     display_name: str
@@ -938,8 +995,22 @@ class Group(CsvRow):
     note: str
 
 
+class Logged(CsvRow):
+    """Who answered a file of a pass's answers (its path from ANSWERS), when, with which model and prompt."""
+
+    FILE = f'{ANSWERS}/log.csv'
+
+    file: str
+    answered_at: Stamp
+    model: str
+    prompt: str
+    answered_by: str
+
+
 class Suggestion(CsvRow):
-    """A pair of artists that may be one (pipeline/artist_merge_suggestions.csv), for a reviewer to decide."""
+    """A pair of artists that may be one, for a reviewer to decide."""
+
+    FILE = 'pipeline/artist_merge_suggestions.csv'
 
     decision: Blank[MergeDecision]  # empty: the reviewer copies the row into artist_merges.csv with merge or separate
     keep_key: str

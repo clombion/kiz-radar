@@ -14,24 +14,10 @@ from pathlib import Path
 
 from pydantic import BaseModel, ConfigDict
 
-from pipeline import ROOT
+from pipeline import data
 from pipeline import prompt as prompts
 from pipeline.prompt import Pass, Prompt
-from pipeline.records import Asked, Batch, CsvRow, Entry, Stamp, now
-
-HERE = Path(__file__).parent
-ANSWERS = HERE / 'answers'
-LOG = ANSWERS / 'log.csv'
-
-
-class Logged(CsvRow):
-    """A row of answers/log.csv: who answered a file (relative to answers/), when, with which model and prompt."""
-
-    file: str
-    answered_at: Stamp
-    model: str
-    prompt: str
-    answered_by: str
+from pipeline.records import ANSWERS, Asked, Batch, Entry, Logged, now
 
 
 class ListedEntry(BaseModel):
@@ -58,19 +44,19 @@ class Answer[E: Entry]:
 
 
 def log() -> dict[str, Logged]:
-    return {r.file: r for r in Logged.read(LOG)}
+    return {r.file: r for r in Logged.read()}
 
 
 def logged(known: dict[str, Logged], rel: str) -> Logged:
     """The log's row for an answer file (rel, relative to answers/), which every answer file has."""
     if rel not in known:
-        raise SystemExit(f'{rel} is not in {LOG.relative_to(ROOT)}')
+        raise SystemExit(f'{rel} is not in {Logged.FILE}')
     return known[rel]
 
 
 def files(pass_name: str) -> list[Path]:
     """The pass's answer files, batches first, so a festival's own file is read after the batch that had it."""
-    folder = ANSWERS / pass_name
+    folder = data(ANSWERS) / pass_name
     return sorted(folder.glob('*.json'), key=lambda p: (p.name.startswith('event-'), p.name))
 
 
@@ -79,7 +65,7 @@ def answered(pass_name: str, event_ids: set[int]) -> dict[int, tuple[Path, Logge
     known: dict[str, Logged] = log()
     out: dict[int, tuple[Path, Logged]] = {}
     for path in files(pass_name):
-        meta = logged(known, str(path.relative_to(ANSWERS)))
+        meta = logged(known, str(path.relative_to(data(ANSWERS))))
         for entry in Listed.model_validate_json(path.read_bytes()).events:
             if entry.event_id in event_ids:
                 _ = out.pop(entry.event_id, None)  # a newer answer moves to the end
@@ -105,11 +91,11 @@ def save[E: Entry](pass_name: str, output: Batch[E], model: str, prompt: Prompt,
     """Save one festival's answer (an answer of its one entry), its prompt archived first, and log who answered it."""
     (entry,) = output.events
     _ = prompt.archive()
-    path = ANSWERS / pass_name / f'event-{entry.event_id}.json'
-    path.parent.mkdir(exist_ok=True)
+    path = data(ANSWERS) / pass_name / f'event-{entry.event_id}.json'
+    path.parent.mkdir(parents=True, exist_ok=True)
     _ = path.write_text(output.dumped(), encoding='utf-8')
     rows = log()
-    rel = str(path.relative_to(ANSWERS))
+    rel = str(path.relative_to(data(ANSWERS)))
     rows[rel] = Logged(
         file=rel,
         answered_at=now(),
@@ -117,5 +103,5 @@ def save[E: Entry](pass_name: str, output: Batch[E], model: str, prompt: Prompt,
         prompt=prompt.hash,
         answered_by=answered_by,
     )
-    Logged.write(LOG, (rows[k] for k in sorted(rows)))
+    Logged.write(rows[k] for k in sorted(rows))
     return path

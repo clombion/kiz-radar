@@ -17,7 +17,7 @@ from typing import Literal
 
 from pydantic import BaseModel
 
-from pipeline import ROOT
+from pipeline import data
 
 sqlite3.register_adapter(dt.date, dt.date.isoformat)
 sqlite3.register_adapter(dt.datetime, dt.datetime.isoformat)
@@ -76,10 +76,18 @@ def source_arg(ap: argparse.ArgumentParser) -> None:
     _ = ap.add_argument('src', type=existing, help='the kizomba-world export (source/<events>.sqlite)')
 
 
+SOURCE = 'source'  # the kizomba-world export, and the steps' tables in it
+
+
 def export() -> Path:
-    """The kizomba-world export: source/ holds one, which the Refresh events Action replaces in place. Two would leave
-    which one the steps read to chance (a checkout gives every file the same time), so they are an error."""
-    found = sorted((ROOT / 'source').glob('*.sqlite'))
+    """The kizomba-world export of the data folder."""
+    return export_in(data(SOURCE))
+
+
+def export_in(folder: Path) -> Path:
+    """The export in a folder: it holds one, which the Refresh events Action replaces in place. Two would leave which
+    one the steps read to chance (a checkout gives every file the same time), so they are an error."""
+    found = sorted(folder.glob('*.sqlite'))
     if len(found) != 1:
         sys.exit(f'source/ holds {len(found)} exports ({", ".join(p.name for p in found)}): it holds one')
     return found[0]
@@ -88,7 +96,7 @@ def export() -> Path:
 def main() -> None:
     ap = argparse.ArgumentParser(description='Print the path of the kizomba-world export the steps work on.')
     _ = ap.parse_args()
-    print(export().relative_to(ROOT))
+    print(f'{SOURCE}/{export().name}')
 
 
 if __name__ == '__main__':

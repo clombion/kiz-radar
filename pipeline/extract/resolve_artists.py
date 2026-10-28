@@ -62,17 +62,15 @@ from typing import NamedTuple, Self
 
 import pycountry
 
+from pipeline import data, states
 from pipeline import db as sqlite_db
-from pipeline import states
 from pipeline.countries import CODE_LENGTH, INDICATOR_A, indicator
 from pipeline.enums import ArtistKind, MergeDecision, MergeReason, Role
 from pipeline.extract import run_log
 from pipeline.extract.answers import log, logged
 from pipeline.extract.prices import COUPLE
-from pipeline.records import Group, MergeReview, MergeRow, Record
+from pipeline.records import ANSWERS, Group, MergeReview, MergeRow, Record
 
-MERGES = run_log.HERE / 'merges.csv'
-GROUPS = run_log.HERE / 'groups.csv'
 SPLIT_ROLES = {Role.TEACHER, Role.DJ, Role.PERFORMER, Role.MC}
 ORG_ROLES = {Role.ORGANISER, Role.MEDIA, Role.CREW}
 SEPARATORS = re.compile(r'\s*&\s*|\s*\+\s*|\s+(?:and|et|e|y|und)\s+', re.IGNORECASE)
@@ -408,7 +406,7 @@ class Resolved(NamedTuple):
 def record_steps(con: sqlite3.Connection, resolved: Resolved, rows: Sequence[MergeRow]) -> None:
     n_mentions, kinds_count, n_candidates, n_unsupported, n_groups = resolved
     run_log.document(con, TABLE_DOCS, 'pipeline/extract/resolve_artists.py')
-    reviews = sorted((run_log.HERE / 'answers' / 'merge_review').glob('*.json'))
+    reviews = sorted((data(ANSWERS) / 'merge_review').glob('*.json'))
     if reviews:
         counts: defaultdict[str, defaultdict[str, int]] = defaultdict(lambda: defaultdict(int))
         followed = log()
@@ -885,9 +883,9 @@ def main() -> None:
             'SELECT m.id, m.event_id, m.role, m.name_as_written, m.style, m.country, e.country AS event_country'
             ' FROM artist_mentions m JOIN events e ON e.id = m.event_id',
         )
-        groups = Group.read(GROUPS)
+        groups = Group.read()
         keys = keyed(mentions, groups)
-        rows = MergeRow.read(MERGES)
+        rows = MergeRow.read()
         merges = decided(rows)
         found, unsupported_same_name = candidates(keys, merges)
         final_key = final_keys(keys, merged(keys, merges), groups)

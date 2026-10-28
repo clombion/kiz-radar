@@ -74,7 +74,7 @@ from urllib.parse import urlparse
 import anthropic
 from pydantic import TypeAdapter, ValidationError
 
-from pipeline import ROOT, exceptions, spend, states
+from pipeline import data, exceptions, spend, states
 from pipeline import db as sqlite_db
 from pipeline import prompt as prompts
 from pipeline.enums import FirstRead as FirstReadState
@@ -116,10 +116,9 @@ from pipeline.records import (
     today,
 )
 
-HERE = ROOT / 'pipeline' / 'tickets'
-SITES, READS, DRAFTS, LOG, DISPUTED = (HERE / d for d in ('sites', 'reads', 'drafts', 'log', 'disputed'))
-PRICES_CSV, PAGES_CSV = ROOT / 'pipeline' / 'pass_prices.csv', ROOT / 'pipeline' / 'ticket_pages.csv'
-FOUND_CSV, STATUS_CSV = HERE / 'pages.csv', HERE / 'status.csv'
+TICKETS = 'pipeline/tickets'
+# each a folder of TICKETS: the sites' recipes, first reads, drafts, the log of reads, and reads no two models agreed on
+SITES, READS, DRAFTS, LOG, DISPUTED = (f'{TICKETS}/{d}' for d in ('sites', 'reads', 'drafts', 'log', 'disputed'))
 MODELS = ('claude-opus-5-5', 'claude-sonnet-5-5')  # each makes a first read; the first one's is kept when they agree
 TIE_BREAK = 'claude-fable-5-1'  # reads too when they don't, so that two of three may agree
 REFUSALS = 3
@@ -196,13 +195,13 @@ class Site(NamedTuple):
 
 
 def shown(path: Path) -> Path:
-    return path.relative_to(ROOT) if path.is_relative_to(ROOT) else path
+    return path.relative_to(data('')) if path.is_relative_to(data('')) else path
 
 
 def sites() -> dict[str, Site]:
     """{site: its recipe and version}, each recipe read as its record; the version changes with the file."""
     out: dict[str, Site] = {}
-    for path in sorted(SITES.glob('*.json')):
+    for path in sorted(data(SITES).glob('*.json')):
         try:
             recipe = RECIPE.validate_json(path.read_bytes())
         except ValidationError as e:
@@ -407,7 +406,7 @@ def judged(
 
 
 def log(event_id: int) -> list[Entry]:
-    path = LOG / f'{event_id}.jsonl'
+    path = data(LOG) / f'{event_id}.jsonl'
     if not path.exists():
         return []
     entries: list[Entry] = []
@@ -427,8 +426,8 @@ def log(event_id: int) -> list[Entry]:
 def append(event_id: int, entry: Entry) -> None:
     """Add a line to the festival's log: the entry's fields as it was made (a failure that reached no address has
     none), keys sorted."""
-    LOG.mkdir(exist_ok=True)
-    with (LOG / f'{event_id}.jsonl').open('a', encoding='utf-8') as f:
+    data(LOG).mkdir(parents=True, exist_ok=True)
+    with (data(LOG) / f'{event_id}.jsonl').open('a', encoding='utf-8') as f:
         _ = f.write(
             json.dumps(entry.model_dump(mode='json', exclude_unset=True), ensure_ascii=False, sort_keys=True) + '\n'
         )
@@ -459,7 +458,7 @@ def checked_read(text: str) -> FirstRead | list[str]:
 def first_read(event_id: int) -> FirstRead | Stamped | None:
     """The festival's first read (tickets/reads/), as its record when it follows the current prompt; else only the
     prompt it names and the read it maps, since it may follow another shape."""
-    path = READS / f'{event_id}.json'
+    path = data(READS) / f'{event_id}.json'
     if not path.exists():
         return None
     stamped = Stamped.model_validate_json(path.read_bytes())
@@ -474,16 +473,16 @@ def first_read(event_id: int) -> FirstRead | Stamped | None:
 
 def draft(event_id: int) -> str | None:
     """The text of the festival's draft (tickets/drafts/), or None."""
-    path = DRAFTS / f'{event_id}.json'
+    path = data(DRAFTS) / f'{event_id}.json'
     return path.read_text(encoding='utf-8') if path.exists() else None
 
 
 def save_draft(header: ReadHeader) -> None:
     """A first read to fill: the festival's header, its passes, skipped and rule quotes empty."""
-    DRAFTS.mkdir(exist_ok=True)
+    data(DRAFTS).mkdir(parents=True, exist_ok=True)
     empty: dict[str, object] = {'passes': [], 'skipped': [], 'rule_quotes': []}
     text = json.dumps(header.model_dump(mode='json') | empty, ensure_ascii=False, indent=1)
-    _ = (DRAFTS / f'{header.event_id}.json').write_text(text + '\n', encoding='utf-8')
+    _ = (data(DRAFTS) / f'{header.event_id}.json').write_text(text + '\n', encoding='utf-8')
 
 
 def save_read(fr: FirstRead) -> None:
@@ -492,13 +491,13 @@ def save_read(fr: FirstRead) -> None:
     if fr.prompt != prompt.hash:
         raise ValueError(f'{fr.event_id}: a first read to prompt {fr.prompt}, not the current {prompt.hash}')
     _ = prompt.archive()
-    READS.mkdir(exist_ok=True)
-    _ = (READS / f'{fr.event_id}.json').write_text(fr.dumped(), encoding='utf-8')
+    data(READS).mkdir(parents=True, exist_ok=True)
+    _ = (data(READS) / f'{fr.event_id}.json').write_text(fr.dumped(), encoding='utf-8')
 
 
 def settle_dispute(event_id: int, fr: FirstRead) -> None:
     """Remove the festival's dispute when this first read is of rows at least as new as the disputed reads'."""
-    path = DISPUTED / f'{event_id}.json'
+    path = data(DISPUTED) / f'{event_id}.json'
     if path.exists() and Dated.model_validate_json(path.read_bytes()).rows_at <= fr.rows_at:
         path.unlink()
 
@@ -762,7 +761,7 @@ def write_all() -> list[str]:
     pages: list[PageRow] = []
     found: list[str] = []
     known = sites()
-    for path in sorted(READS.glob('*.json'), key=lambda p: int(p.stem)):
+    for path in sorted(data(READS).glob('*.json'), key=lambda p: int(p.stem)):
         i = int(path.stem)
         if not isinstance(fr := first_read(i), FirstRead):
             continue
@@ -772,8 +771,8 @@ def write_all() -> list[str]:
                 pages.append(page)
             case list() as problems_:
                 found += problems_
-    PriceRow.write(PRICES_CSV, prices_rows)
-    PageRow.write(PAGES_CSV, pages)
+    PriceRow.write(prices_rows)
+    PageRow.write(pages)
     return found
 
 
@@ -802,8 +801,8 @@ def record(event_id: int) -> list[str]:
             return found
     if text is not None and isinstance(fr, FirstRead):
         save_read(fr)
-        (DRAFTS / f'{event_id}.json').unlink()
-        (DRAFTS / f'{event_id}.prompt.md').unlink(missing_ok=True)
+        (data(DRAFTS) / f'{event_id}.json').unlink()
+        (data(DRAFTS) / f'{event_id}.prompt.md').unlink(missing_ok=True)
     others = write_all()
     if isinstance(fr, FirstRead):
         settle_dispute(event_id, fr)
@@ -1021,7 +1020,7 @@ def festivals(
     known, found = sites(), found_pages()
     shops = shop_hosts(known)
     tiers: dict[int, list[PriceRow]] = {}
-    for r in PriceRow.read(PRICES_CSV):
+    for r in PriceRow.read():
         tiers.setdefault(r.event_id, []).append(r)
     out: list[Festival] = []
     for e in events:
@@ -1047,7 +1046,7 @@ def festivals(
             described=described.get(e.id),
             page=page,
             site=site_for(page, known) if page else None,
-            disputed=(DISPUTED / f'{e.id}.json').exists(),
+            disputed=(data(DISPUTED) / f'{e.id}.json').exists(),
         )
         out.append(assessed(f, today))
     return out
@@ -1114,7 +1113,7 @@ def write_status(fs: Sequence[Festival]) -> collections.Counter[Waiting]:
         )
         for f in sorted(fs, key=lambda f: f.id)
     ]
-    StatusRow.write(STATUS_CSV, rows)
+    StatusRow.write(rows)
     return collections.Counter(r.waits_for for r in rows)
 
 
@@ -1229,8 +1228,8 @@ def models_read(client: ask.Client, f: Festival, entry: Read, entries: Sequence[
     reads[TIE_BREAK] = ask_read(client, TIE_BREAK, f, entry, entries)
     if found := agreed(reads):
         return found
-    DISPUTED.mkdir(exist_ok=True)
-    _ = (DISPUTED / f'{f.id}.json').write_text(Dispute(rows_at=entry.at, reads=reads).dumped(), encoding='utf-8')
+    data(DISPUTED).mkdir(parents=True, exist_ok=True)
+    _ = (data(DISPUTED) / f'{f.id}.json').write_text(Dispute(rows_at=entry.at, reads=reads).dumped(), encoding='utf-8')
     return None
 
 
@@ -1292,13 +1291,13 @@ def cmd_read(db: sqlite3.Connection, event_id: int, url: str | None = None, *, v
 
 
 def cmd_draft(db: sqlite3.Connection, event_id: int) -> None:
-    f, path = one(db, event_id), DRAFTS / f'{event_id}.json'
+    f, path = one(db, event_id), data(DRAFTS) / f'{event_id}.json'
     if path.exists():
         sys.exit(f'{shown(path)} exists; delete it to start the draft again')
     if not (entry := latest_read(f.log)):
         sys.exit(f'{event_id}: no read rows yet; run: uv run --group tickets -m pipeline.tickets read {event_id}')
     save_draft(draft_of(f, entry, 'agent'))
-    asked = DRAFTS / f'{event_id}.prompt.md'
+    asked = data(DRAFTS) / f'{event_id}.prompt.md'
     _ = asked.write_text(
         prompts.current('first_read').text + '\n======== the festival ========\n\n' + question(f, entry) + '\n',
         encoding='utf-8',
@@ -1383,12 +1382,12 @@ def found_pages() -> dict[int, FoundRow]:
     """{event_id: tickets/pages.csv row}, each checked: a page exactly when it sells in a shop (a festival whose
     sales haven't opened may name its coming page); the links searched exactly when a search found nothing."""
     out: dict[int, FoundRow] = {}
-    for r in FoundRow.read(FOUND_CSV):
+    for r in FoundRow.read():
         if ((r.state == Sales.SHOP) != bool(r.page) and r.state != Sales.NOT_YET) or (
             r.state == Sales.NONE_FOUND
         ) != bool(r.links):
             sys.exit(
-                f'{shown(FOUND_CSV)}: festival {r.event_id}: state {str(r.state)!r} with page {r.page or ""!r} and '
+                f'{FoundRow.FILE}: festival {r.event_id}: state {str(r.state)!r} with page {r.page or ""!r} and '
                 f'links {r.links or ""!r}'
             )
         out[r.event_id] = r
@@ -1416,7 +1415,7 @@ def cmd_page(db: sqlite3.Connection, event_id: int, sold: Sold) -> None:
         sys.exit('a shop needs its page, and only a shop (or sales not open yet) has one')
     if url:
         _ = full_url(url)
-    rows = [r for r in FoundRow.read(FOUND_CSV) if r.event_id != event_id]
+    rows = [r for r in FoundRow.read() if r.event_id != event_id]
     rows.append(
         FoundRow(
             event_id=event_id,
@@ -1428,7 +1427,7 @@ def cmd_page(db: sqlite3.Connection, event_id: int, sold: Sold) -> None:
             note=note,
         )
     )
-    FoundRow.write(FOUND_CSV, sorted(rows, key=lambda r: r.event_id))
+    FoundRow.write(sorted(rows, key=lambda r: r.event_id))
     _ = status(db)
     print(
         f'{event_id}: {state}'
@@ -1438,7 +1437,7 @@ def cmd_page(db: sqlite3.Connection, event_id: int, sold: Sold) -> None:
 
 
 def cmd_changes(event_id: int | None = None) -> None:
-    for i in [event_id] if event_id else sorted(int(p.stem) for p in LOG.glob('*.jsonl')):
+    for i in [event_id] if event_id else sorted(int(p.stem) for p in data(LOG).glob('*.jsonl')):
         for day, text in changes(log(i)):
             print(f'{i}  {day}  {text}')
 

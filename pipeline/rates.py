@@ -8,12 +8,10 @@ import argparse
 import datetime as dt
 import re
 import sys
-from pathlib import Path
 
 from pipeline import web
 from pipeline.records import Rate
 
-OUT = Path(__file__).parent / 'rates.csv'
 ECB = web.Https('www.ecb.europa.eu', '/stats/eurofxref/eurofxref-daily.xml')
 # Bulgaria joined the euro on 1 Jan 2026 at a fixed rate, so the bank no longer quotes the lev
 FIXED = {'EUR': 1.0, 'BGN': 1.95583}
@@ -34,8 +32,8 @@ def main() -> None:
     try:
         day, per_eur = rates(web.get(ECB).decode())
     except (OSError, ValueError) as e:
-        sys.exit(f'{ECB.url()}: {e}; {OUT} left as it was')
-    Rate.write(OUT, [Rate(currency=c, per_eur=per_eur[c], date=day) for c in sorted(per_eur)])
+        sys.exit(f'{ECB.url()}: {e}; {Rate.FILE} left as it was')
+    Rate.write([Rate(currency=c, per_eur=per_eur[c], date=day) for c in sorted(per_eur)])
     print(f'{len(per_eur)} rates of {day}')
 
 

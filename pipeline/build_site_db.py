@@ -24,9 +24,8 @@ from contextlib import contextmanager
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from pipeline import ROOT, enums, states
+from pipeline import airports, data, enums, states
 from pipeline import db as sqlite_db
-from pipeline.airports import AIRPORTS, HOME
 from pipeline.countries import NAMES, codes
 from pipeline.enums import Feature, Genre, HomeBasis, MergeDecision, PassKind, People, Role, Style
 from pipeline.extract.prices import COUPLE
@@ -46,9 +45,9 @@ from pipeline.records import (
 )
 from pipeline.text import soften_caps, tidy_name, tidy_title
 
-DATA = ROOT / 'docs' / 'data'
-OUT = DATA / 'kiz.sqlite'
-SITE_JSON = DATA / 'site.json'  # what the page shows before the database loads
+SITE_DATA = 'docs/data'  # the site's data files, published with it
+OUT = f'{SITE_DATA}/kiz.sqlite'
+SITE_JSON = f'{SITE_DATA}/site.json'  # what the page shows before the database loads
 POPULAR = 10  # bookings that make an artist "popular"
 MAX_AIRPORT_KM = 250
 EARTH_KM = 6371  # the Earth's radius
@@ -221,9 +220,7 @@ def merged(x: sqlite3.Connection) -> tuple[Artists, int]:
     keys: list[tuple[str, int]] = x.execute('select match_key, artist_id from src.artist_keys').fetchall()
     own: list[tuple[str, int]] = x.execute('select match_key, id from artists').fetchall()
     found = Artists(dict(keys) | dict(own))
-    merge_rows = [
-        r for r in ArtistMergeRow.read(ROOT / 'pipeline' / 'artist_merges.csv') if r.decision == MergeDecision.MERGE
-    ]
+    merge_rows = [r for r in ArtistMergeRow.read() if r.decision == MergeDecision.MERGE]
     members_of: collections.defaultdict[int, list[tuple[int, str]]] = collections.defaultdict(list)
     names: list[tuple[int, int, str]] = x.execute(
         'select cm.couple_id, cm.member_id, a.display_name from couple_members cm join artists a on a.id = cm.member_id'
@@ -288,7 +285,7 @@ def merge_artists(x: sqlite3.Connection) -> Artists:
     _ = x.executemany('insert or ignore into artist_redirects values (?,?)', [(old, root(new)) for old, new in retired])
     # A name listed alone can stand for different people across festivals ("Christina"). Each row of
     # pipeline/artist_bookings.csv moves one festival's booking from the record it was filed under to the person it is.
-    moves = Booking.read(ROOT / 'pipeline' / 'artist_bookings.csv')
+    moves = Booking.read()
     for r in moves:
         frm, to = artists.key_id.get(r.from_key), artists.key_id.get(r.to_key)
         if not frm or not to:
@@ -313,14 +310,14 @@ def merge_artists(x: sqlite3.Connection) -> Artists:
 
 def places(x: sqlite3.Connection) -> None:
     """Each event's country, place and nearest airport, and the weekend a trip to it leaves on."""
-    geo = {(p.city, p.country): p for p in Place.read(ROOT / 'pipeline' / 'geocode.csv')}
+    geo = {(p.city, p.country): p for p in Place.read()}
     _ = x.execute(
         'create table airports (code text primary key, name text not null, city text not null, country_code text, lat '
         'real, lon real, home integer)'
     )
     _ = x.executemany(
         'insert into airports values (?,?,?,?,?,?,?)',
-        [(a.code, a.name, a.city, a.country_code, a.lat, a.lon, int(a.home == 1)) for a in AIRPORTS],
+        [(a.code, a.name, a.city, a.country_code, a.lat, a.lon, int(a.home == 1)) for a in airports.known()],
     )
     # a place on the map is a city's
     for col in (
@@ -335,13 +332,14 @@ def places(x: sqlite3.Connection) -> None:
     events: list[tuple[int, str | None, str | None, str]] = x.execute(
         'select id, city, country, start_date from events'
     ).fetchall()
+    places_to_fly = airports.known()
     for eid, city, country, start in events:
         cc = (codes(country) or [None])[0]
         g = None if city is None else geo.get((city, country))
         lat, lon = (g.found.lat, g.found.lon) if g and g.found else (None, None)
         ap = dist = None
         if lat is not None and lon is not None:
-            dist, ap = min((km(lat, lon, a.lat, a.lon), a.code) for a in AIRPORTS)
+            dist, ap = min((km(lat, lon, a.lat, a.lon), a.code) for a in places_to_fly)
             if dist > MAX_AIRPORT_KM:
                 ap = dist = None
         _ = x.execute(
@@ -359,10 +357,7 @@ def fares(x: sqlite3.Connection) -> None:
      primary key (airport, depart, return))""")
     _ = x.executemany(
         'insert or replace into fares values (?,?,?,?,?,?)',
-        [
-            (r.airport, r.depart, r.return_, float(r.price), r.currency, r.fetched_at)
-            for r in Fare.read(DATA / 'fares.csv')
-        ],
+        [(r.airport, r.depart, r.return_, float(r.price), r.currency, r.fetched_at) for r in Fare.read()],
     )
     _ = x.execute("""create view event_fares as
      select e.id as event_id, e.airport, e.weekend_friday as depart, f.return, f.price, f.fetched_at,
@@ -396,7 +391,7 @@ def home(
 def given_homes(x: sqlite3.Connection, artists: Artists) -> dict[int, str]:
     """Home countries known from outside the line-ups (pipeline/artist_countries.csv), by the source's match_key."""
     given: dict[int, str] = {}
-    for r in HomeCountry.read(ROOT / 'pipeline' / 'artist_countries.csv'):
+    for r in HomeCountry.read():
         if r.match_key not in artists.key_id:
             sys.exit(f'artist_countries.csv: unknown match_key {r.match_key} ({r.name})')
         if not exists(x, 'select 1 from countries where code = ?', (r.country,)):
@@ -516,7 +511,7 @@ def features(x: sqlite3.Connection) -> collections.defaultdict[int, set[str]]:
         'create table event_promos (event_id integer primary key references events(id) deferrable initially deferred,'
         " code text not null check (code != ''), offer text check (offer != ''))"
     )
-    for r in Promo.read(ROOT / 'pipeline' / 'promo_codes.csv'):
+    for r in Promo.read():
         if not exists(x, 'select 1 from events where id = ?', (r.event_id,)):
             sys.exit(f'promo_codes.csv: no event {r.event_id} ({r.event})')
         _ = x.execute('insert into event_promos values (?,?,?)', (r.event_id, r.code.strip(), r.offer.strip() or None))
@@ -567,7 +562,7 @@ def features(x: sqlite3.Connection) -> collections.defaultdict[int, set[str]]:
     _ = x.execute(
         'create table rates (currency text primary key, per_eur real not null check (per_eur > 0), date text not null)'
     )
-    rates = Rate.read(ROOT / 'pipeline' / 'rates.csv')
+    rates = Rate.read()
     _ = x.executemany('insert into rates values (?,?,?)', [(r.currency, r.per_eur, r.date) for r in rates])
     return feats
 
@@ -645,14 +640,14 @@ def plans(x: sqlite3.Connection, artists: Artists) -> None:
          event_id integer not null references events(id) deferrable initially deferred,
      status text not null check (status in ({states.sql_in('plan')})), primary key (person_id, event_id))""")
     person_id: dict[str, int] = {}
-    for i, r in enumerate(Person.read(ROOT / 'pipeline' / 'people.csv'), 1):
+    for i, r in enumerate(Person.read(), 1):
         person_id[r.key] = i
         _ = x.execute('insert into people values (?,?,?,?)', (i, r.key, r.name, r.featured))
         for k in r.artist_keys:
             if k not in artists.key_id:
                 sys.exit(f'people.csv: unknown artist key {k} ({r.name})')
             _ = x.execute('insert into person_artists values (?,?)', (i, artists.root(artists.key_id[k])))
-    for r in PlanRow.read(ROOT / 'pipeline' / 'plans.csv'):
+    for r in PlanRow.read():
         if r.person not in person_id:
             sys.exit(f'plans.csv: no person {r.person} in people.csv')
         if not exists(x, 'select 1 from events where id = ?', (r.event_id,)):
@@ -686,7 +681,7 @@ def meta(x: sqlite3.Connection, built_at: str) -> None:
     _ = x.executemany(
         'insert into meta values (?,?)',
         [
-            ('home_airport', HOME),
+            ('home_airport', airports.home()),
             ('popular_threshold', str(POPULAR)),
             ('max_airport_km', str(MAX_AIRPORT_KM)),
             ('built_at', built_at),
@@ -711,7 +706,8 @@ DOCS = {
     'Friday of a Fri→Mon trip to it).',
     'airports': 'Airports a festival can fly to, with the city they serve; a festival flies to the nearest within '
     'max_airport_km. home = 1 is where flights leave from.',
-    'fares': f'Round-trip economy fares from {HOME}, one adult, Friday out and Monday back, from Google Flights via '
+    'fares': 'Round-trip economy fares from the home airport (airports.home = 1), one adult, Friday out and Monday '
+    'back, from Google Flights via '
     'fli. Reloaded from data/fares.csv when the page opens.',
     'event_fares': 'Each event joined to the fare for its weekend (null when Google had no price), plus the cheapest '
     'fare that month to the same airport.',
@@ -767,11 +763,11 @@ DOCS = {
 
 def site_json(x: sqlite3.Connection, built_at: str) -> dict[str, object]:
     """What the page shows before the database has loaded: the home airport and the destinations for the sentence."""
-    homes: list[tuple[str]] = x.execute('select city from airports where code = ?', (HOME,)).fetchall()
+    homes: list[tuple[str]] = x.execute('select city from airports where code = ?', (airports.home(),)).fetchall()
     destinations: list[tuple[str, str]] = x.execute("""select distinct e.country_code, c.name from events e
         join countries c on c.code = e.country_code where e.cancelled is not 1""").fetchall()
     return {
-        'home': {'code': HOME, 'city': homes[0][0]},
+        'home': {'code': airports.home(), 'city': homes[0][0]},
         'destinations': [
             {'code': c, 'name': n}
             for c, n in sorted(
@@ -830,9 +826,10 @@ def built(src: Path) -> Generator[sqlite3.Connection]:
 def main() -> None:
     ap = argparse.ArgumentParser(description='Build docs/data/kiz.sqlite and site.json, which the site loads.')
     sqlite_db.source_arg(ap)
-    site = build(ap.parse_args(namespace=sqlite_db.Source()).src, OUT)
-    _ = SITE_JSON.write_text(json.dumps(site, ensure_ascii=False, indent=1), encoding='utf-8')
-    print(OUT, OUT.stat().st_size // 1024, 'KB')
+    out = data(OUT)
+    site = build(ap.parse_args(namespace=sqlite_db.Source()).src, out)
+    _ = data(SITE_JSON).write_text(json.dumps(site, ensure_ascii=False, indent=1), encoding='utf-8')
+    print(OUT, out.stat().st_size // 1024, 'KB')
 
 
 if __name__ == '__main__':

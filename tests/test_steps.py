@@ -9,15 +9,23 @@ from pathlib import Path
 
 import pytest
 
-from pipeline import build_site_db, merge_suggestions, scrape
+from pipeline import build_site_db, data, merge_suggestions, prompt, scrape, tickets
 from pipeline import db as sqlite_db
 from pipeline.extract import load_extract, resolve_artists, run_log
+from pipeline.records import ANSWERS, CsvRow
 from tests import jsons
-from tests.exports import EXPORT, column, content, copied, run, trimmed
+from tests.exports import EXPORT, column, committed, content, copied, run, trimmed
 from tests.fakes import Memory
 
 # a whole run of a step takes seconds, its runs here a few of them
 pytestmark = pytest.mark.timeout(120)
+
+
+@pytest.fixture(autouse=True)
+def committed_data() -> None:
+    """Everything the steps read beside the export, as committed: every CSV file, the answers, the ticket reads and
+    their log, and the prompts they followed."""
+    committed(*(r.FILE for r in CsvRow.records()), ANSWERS, tickets.READS, tickets.LOG, prompt.ASKED)
 
 
 def test_the_site_database_builds_alike_twice_with_every_table_documented(
@@ -25,10 +33,9 @@ def test_the_site_database_builds_alike_twice_with_every_table_documented(
 ) -> None:
     built: list[Path] = []
     for name in ('a', 'b'):
-        monkeypatch.setattr(build_site_db, 'OUT', tmp_path / f'{name}.sqlite')
-        monkeypatch.setattr(build_site_db, 'SITE_JSON', tmp_path / f'{name}.json')
         run(build_site_db.main, monkeypatch, EXPORT)
-        built.append(tmp_path / f'{name}.sqlite')
+        built.append(data(build_site_db.OUT).rename(tmp_path / f'{name}.sqlite'))
+        _ = data(build_site_db.SITE_JSON).rename(tmp_path / f'{name}.json')
     assert content(built[0]) == content(built[1])
     with sqlite_db.opened(built[0], 'ro') as db:
         names = set(column(db, "select name from sqlite_master where type in ('table', 'view')"))
@@ -36,7 +43,7 @@ def test_the_site_database_builds_alike_twice_with_every_table_documented(
         built_at = column(db, "select value from meta where key = 'built_at'")
     assert names == documented
     assert [jsons.at(jsons.read(tmp_path / 'a.json'), 'built_at')] == built_at
-    assert not list(tmp_path.glob('*.building'))  # swapped in once built
+    assert not list(data(build_site_db.SITE_DATA).glob('*.building'))  # swapped in once built
 
 
 def test_loading_the_answers_again_changes_nothing(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:

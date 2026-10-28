@@ -12,12 +12,9 @@ import json
 import sqlite3
 from collections.abc import Mapping
 from dataclasses import dataclass
-from pathlib import Path
 
 from pipeline import prompt as prompts
 from pipeline.records import now
-
-HERE = Path(__file__).parent
 
 SCHEMA = """
 CREATE TABLE prompts (

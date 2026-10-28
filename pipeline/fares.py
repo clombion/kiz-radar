@@ -32,14 +32,11 @@ from typing import NamedTuple
 
 from pydantic import BaseModel, ConfigDict, ValidationError
 
-from pipeline import ROOT, build_site_db
+from pipeline import airports, build_site_db
 from pipeline import db as sqlite_db
-from pipeline.airports import HOME
 from pipeline.enums import FareSearch
 from pipeline.records import Date, Fare, Job, Record, now
 
-DATA = ROOT / 'docs' / 'data'
-FARES, JOBS = DATA / 'fares.csv', ROOT / 'pipeline' / 'fare_jobs.csv'
 FLI_SHA = '881aee5ff4321e81ea2157cb44be94ce6a21dc1b'  # punitarani/fli, the only place the version is pinned
 FLI = os.environ.get('FLI_CMD', f'uvx -q --from git+https://github.com/punitarani/fli@{FLI_SHA} fli')
 SELLS_DAYS = 330  # Google sells about 11 months ahead
@@ -115,7 +112,7 @@ def weekends(today: dt.date) -> set[tuple[str, dt.date]]:
     with build_site_db.built(sqlite_db.export()) as c:
         query = """select airport, weekend_friday from events where airport is not null and airport != ?
             and cancelled is not 1 and weekend_friday > ?"""
-        return {(w.airport, w.weekend_friday) for w in sqlite_db.records(c, Flown, query, (HOME, today))}
+        return {(w.airport, w.weekend_friday) for w in sqlite_db.records(c, Flown, query, (airports.home(), today))}
 
 
 def interval(days_away: int) -> int | None:
@@ -131,9 +128,9 @@ def queue(t: dt.datetime | None = None) -> list[Weekend]:
     """Every festival weekend with its interval and whether it is due today, the most overdue first."""
     t = t or now()
     today = t.date()
-    jobs = {(j.airport, j.depart): j for j in Job.read(JOBS)}
+    jobs = {(j.airport, j.depart): j for j in Job.read()}
     fetched: dict[tuple[str, dt.date], dt.datetime] = {}
-    for f in Fare.read(FARES):  # a weekend priced before it had a job counts as searched then
+    for f in Fare.read():  # a weekend priced before it had a job counts as searched then
         k = (f.airport, f.depart)
         fetched[k] = max(fetched.get(k, f.fetched_at), f.fetched_at)
     q: list[Weekend] = []
@@ -152,7 +149,7 @@ def queue(t: dt.datetime | None = None) -> list[Weekend]:
 def search(airport: str, friday: dt.date) -> Fare | Missed:
     """One Friday-to-Monday return: its fare, or why there is none."""
     day = friday.isoformat()
-    args = ['dates', HOME, airport, '--from', day, '--to', day, '-d', '3', '--round', '--friday']
+    args = ['dates', airports.home(), airport, '--from', day, '--to', day, '-d', '3', '--round', '--friday']
     cmd = [*shlex.split(FLI), *args, '--currency', 'EUR', '--format', 'json']
     try:
         p = subprocess.run(cmd, capture_output=True, text=True, timeout=TIMEOUT, check=False)  # noqa: S603 (fli, pinned in FLI, with arguments of ours)
@@ -179,8 +176,8 @@ def search(airport: str, friday: dt.date) -> Fare | Missed:
 
 def refresh(budget: int, max_seconds: int) -> None:
     start, today = time.time(), now().date()
-    fares = {(r.airport, r.depart, r.return_): r for r in Fare.read(FARES)}
-    jobs = {(j.airport, j.depart): j for j in Job.read(JOBS)}
+    fares = {(r.airport, r.depart, r.return_): r for r in Fare.read()}
+    jobs = {(j.airport, j.depart): j for j in Job.read()}
     done, refused = 0, False
     for item in queue():
         if not item.due or done >= budget or time.time() - start > max_seconds:
@@ -211,8 +208,8 @@ def refresh(budget: int, max_seconds: int) -> None:
         (f for f in fares.values() if (f.airport, f.depart) in live), key=lambda f: (f.airport, f.depart, f.return_)
     )
     kept_jobs = sorted((j for j in jobs.values() if (j.airport, j.depart) in live), key=lambda j: (j.airport, j.depart))
-    Fare.write(FARES, kept_fares)
-    Job.write(JOBS, kept_jobs)
+    Fare.write(kept_fares)
+    Job.write(kept_jobs)
     print(f'{done} searches; {len(kept_fares)} fares stored for {len(live)} festival weekends')
     if refused:
         sys.exit('Google refused a search (HTTP 429); the rest waits for the next run')
