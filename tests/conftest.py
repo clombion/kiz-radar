@@ -10,8 +10,9 @@ from pathlib import Path
 import pytest
 
 import pipeline
-from pipeline import ROOT, db
+from pipeline import ROOT, build_site_db, db
 from pipeline.records import Spent
+from tests import exports
 from tests.fakes import Memory
 
 # what running the checks writes, which is no data
@@ -49,6 +50,18 @@ def data_folder(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     monkeypatch.setattr(pipeline, 'DATA', folder)
     Spent.write([])
     return folder
+
+
+@pytest.fixture(scope='session')
+def site_db(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    """The site database, built once from the committed export and data, for the tests that read it."""
+    folder = tmp_path_factory.mktemp('site')
+    with pytest.MonkeyPatch.context() as m:
+        m.setattr(pipeline, 'DATA', folder)
+        exports.committed(*exports.EVERYTHING)
+        out = folder / 'site.sqlite'
+        _ = build_site_db.build(exports.EXPORT, out)
+    return out
 
 
 @pytest.fixture

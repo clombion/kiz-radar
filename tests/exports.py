@@ -11,8 +11,9 @@ from pathlib import Path
 import pytest
 
 import pipeline
-from pipeline import ROOT
+from pipeline import ROOT, prompt, tickets
 from pipeline import db as sqlite_db
+from pipeline.records import ANSWERS, CsvRow
 
 EXPORT = sqlite_db.export_in(ROOT / sqlite_db.SOURCE)  # the repository's, whatever the data folder
 # the tables that hold when a step ran, which a second run changes and nothing else should, read without it
@@ -21,6 +22,11 @@ WITHOUT_WHEN = {
     'pipeline_steps': 'select step, description, performed_by, model, prompt, inputs, outputs, details '
     'from pipeline_steps',
 }
+
+
+# everything the steps read beside the export: every CSV file, the answers, the ticket reads and their log, and the
+# prompts they followed
+EVERYTHING = (*(r.FILE for r in CsvRow.records()), ANSWERS, tickets.READS, tickets.LOG, prompt.ASKED)
 
 
 def committed(*paths: str) -> None:

@@ -9,12 +9,11 @@ from pathlib import Path
 
 import pytest
 
-from pipeline import build_site_db, data, merge_suggestions, prompt, scrape, tickets
+from pipeline import build_site_db, data, merge_suggestions, scrape
 from pipeline import db as sqlite_db
 from pipeline.extract import load_extract, resolve_artists, run_log
-from pipeline.records import ANSWERS, CsvRow
 from tests import jsons
-from tests.exports import EXPORT, column, committed, content, copied, run, trimmed
+from tests.exports import EVERYTHING, EXPORT, column, committed, content, copied, run, trimmed
 from tests.fakes import Memory
 
 # a whole run of a step takes seconds, its runs here a few of them
@@ -23,26 +22,22 @@ pytestmark = pytest.mark.timeout(120)
 
 @pytest.fixture(autouse=True)
 def committed_data() -> None:
-    """Everything the steps read beside the export, as committed: every CSV file, the answers, the ticket reads and
-    their log, and the prompts they followed."""
-    committed(*(r.FILE for r in CsvRow.records()), ANSWERS, tickets.READS, tickets.LOG, prompt.ASKED)
+    """Everything the steps read beside the export, as committed."""
+    committed(*EVERYTHING)
 
 
 def test_the_site_database_builds_alike_twice_with_every_table_documented(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    site_db: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    built: list[Path] = []
-    for name in ('a', 'b'):
-        run(build_site_db.main, monkeypatch, EXPORT)
-        built.append(data(build_site_db.OUT).rename(tmp_path / f'{name}.sqlite'))
-        _ = data(build_site_db.SITE_JSON).rename(tmp_path / f'{name}.json')
-    assert content(built[0]) == content(built[1])
-    with sqlite_db.opened(built[0], 'ro') as db:
+    run(build_site_db.main, monkeypatch, EXPORT)
+    built = data(build_site_db.OUT)
+    assert content(built) == content(site_db)
+    with sqlite_db.opened(built, 'ro') as db:
         names = set(column(db, "select name from sqlite_master where type in ('table', 'view')"))
         documented = set(column(db, 'select name from table_docs'))
         built_at = column(db, "select value from meta where key = 'built_at'")
     assert names == documented
-    assert [jsons.at(jsons.read(tmp_path / 'a.json'), 'built_at')] == built_at
+    assert [jsons.at(jsons.read(data(build_site_db.SITE_JSON)), 'built_at')] == built_at
     assert not list(data(build_site_db.SITE_DATA).glob('*.building'))  # swapped in once built
 
 
@@ -64,8 +59,8 @@ def test_resolving_the_artists_again_changes_nothing(tmp_path: Path, monkeypatch
     assert content(src) == once
 
 
-def test_merge_suggestions_leave_out_decided_pairs_and_keep_the_more_booked() -> None:
-    with sqlite_db.opened(EXPORT, 'ro') as c, build_site_db.built(EXPORT) as site:
+def test_merge_suggestions_leave_out_decided_pairs_and_keep_the_more_booked(site_db: Path) -> None:
+    with sqlite_db.opened(EXPORT, 'ro') as c, sqlite_db.opened(site_db, 'ro') as site:
         rows = merge_suggestions.suggestions(c, site)
     assert rows
     assert [r.score for r in rows] == sorted((r.score for r in rows), reverse=True)
@@ -73,6 +68,28 @@ def test_merge_suggestions_leave_out_decided_pairs_and_keep_the_more_booked() ->
     done, _ = merge_suggestions.decided()
     assert not [r for r in rows if frozenset((r.keep_key, r.merge_key)) in done]
     assert all(r.decision is None for r in rows)
+
+
+# a reference, its table and columns matched whole, that is not held until commit
+UNDEFERRED = re.compile(
+    r'\breferences\s+"?\w++"?+(?:\s*\([^)]*\))?+(?!\s*deferrable initially deferred)', re.IGNORECASE
+)
+# the source's own tables, made as kizomba-world made them: scrape declares no DDL for them yet
+SOURCE_MADE = {'event_categories', 'event_tags', 'event_links', 'event_images'}
+
+
+def test_every_reference_is_held_at_commit(site_db: Path) -> None:
+    """A step drops and rebuilds its tables in one transaction, so a reference holds when the step commits, not
+    between its statements (pipeline/db.py turns the references on): read in the tables as SQLite stores them, however
+    the code assembled them."""
+    found: set[str] = set()
+    for path in (EXPORT, site_db):
+        with sqlite_db.opened(path, 'ro') as db:
+            made: list[tuple[str, str]] = db.execute(
+                "select name, sql from sqlite_master where type = 'table'"
+            ).fetchall()
+            found |= {name for name, sql in made if UNDEFERRED.search(sql)}
+    assert found == SOURCE_MADE
 
 
 def tables(db: sqlite3.Connection, names: Iterable[str]) -> dict[str, str]:
