@@ -3,7 +3,7 @@
 import type { Feature, FeatureCollection, MultiPolygon, Polygon, Position } from 'geojson';
 import type { GeometryCollection, Topology } from 'topojson-specification';
 import { q, sql } from './db.ts';
-import { dropdown, h } from './dom.ts';
+import { button, dropdown, h, moreButton } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { changed, type Festival, readState, withDetails } from './festivals.ts';
 import { convert, currency, money, step } from './money.ts';
@@ -154,12 +154,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     { class: 'plain', 'aria-label': 'Colour the bubbles by' },
     Object.entries(COLOR_BY).map(([v, c]) => h('option', { value: v, selected: state.color === v }, c.label)),
   );
-  const filtersBtn = h('button', {
-    type: 'button',
-    class: 'more-btn',
-    'aria-expanded': 'false',
-    'aria-controls': 'map-filters',
-  });
+  const filtersBtn = moreButton('map-filters');
   const filters = h(
     'div',
     { class: 'more-panel', id: 'map-filters', hidden: true },
@@ -176,9 +171,8 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
   const chevron = h('span', { class: 'chevron', 'aria-hidden': 'true' });
   chevron.innerHTML = '<svg viewBox="0 0 48 12" width="48" height="12"><path d="M3 10 L24 3 L45 10"/></svg>';
   const action = h('span', { class: 'sheet-action' }, 'Open');
-  const handle = h(
-    'button',
-    { type: 'button', class: 'sheet-handle', 'aria-expanded': 'false' },
+  const handle = button(
+    { class: 'sheet-handle', 'aria-expanded': 'false' },
     chevron,
     h('span', { class: 'sheet-row' }, h('span', { class: 'sheet-title' }), action),
   );
@@ -324,8 +318,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     renderPanel();
     setSheet(true);
   }
-  const back = (words: string, fn: () => void) =>
-    h('button', { type: 'button', class: 'back-link', onclick: fn }, '← ', words);
+  const back = (words: string, fn: () => void) => button({ class: 'back-link', onclick: fn }, '← ', words);
   const count = (n: number) => `${n} festival${n === 1 ? '' : 's'}`;
 
   function cards(list: readonly Placed[]): HTMLElement {
@@ -341,10 +334,8 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     );
     if (list.length > shown)
       wrap.append(
-        h(
-          'button',
+        button(
           {
-            type: 'button',
             class: 'more-btn show-more',
             onclick: () => {
               shown += PAGE;
@@ -370,25 +361,24 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
             save();
             renderPanel();
           })
-        : back('All festivals in view', () => {
-            state.event = null;
-            state.city = null;
-            save();
-            highlight();
-            renderPanel();
-          }),
+        : toAll(),
       eventCard(e, { open: true, onMap: true }),
     );
+  }
+  // back to every festival in view, from a city or a festival
+  function toAll(): HTMLElement {
+    return back('All festivals in view', () => {
+      state.event = null;
+      state.city = null;
+      save();
+      highlight();
+      renderPanel();
+    });
   }
   function cityPanel(c: City): void {
     title.textContent = `${flag(c.cc)} ${c.city} · ${count(c.n)}`;
     body.replaceChildren(
-      back('All festivals in view', () => {
-        state.city = null;
-        save();
-        highlight();
-        renderPanel();
-      }),
+      toAll(),
       h(
         'header',
         { class: 'panel-head' },

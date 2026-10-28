@@ -26,8 +26,7 @@ from collections.abc import Callable, Mapping, Sequence
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import AbstractContextManager
 from dataclasses import dataclass
-from pathlib import Path
-from typing import Protocol
+from typing import TYPE_CHECKING, Protocol
 
 import anthropic
 from anthropic.types import Message, MessageParam, OutputConfigParam, TextBlock
@@ -39,6 +38,9 @@ from pipeline.enums import AnswerState, Style
 from pipeline.extract import answers, check_output, prices
 from pipeline.prompt import Pass, Prompt
 from pipeline.records import Asked, AskedPrices, Batch, Date, Entry, On, Priced, Record
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 MODEL = 'claude-haiku-5-5'
 WORKERS = 8
@@ -245,8 +247,7 @@ def settled(pending: Mapping[int, dt.date]) -> list[int]:
     )
 
 
-class Args(argparse.Namespace):
-    src: Path = Path()
+class Args(sqlite_db.Source):
     dry_run: bool = False
     limit: int | None = None
     passes: list[prompts.PassName] | None = None

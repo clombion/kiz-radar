@@ -1,0 +1,7 @@
+language js
+
+`h('button', $...)` as $call where {
+  $filename <: r".*/site/[^/]+\.ts",
+  $filename <: not r".*/(?:dom\.ts|tests/.*)",
+  register_diagnostic(span=$call, message="A button is made by dom.ts button(), which gives it type=button, so it never submits a form.")
+}

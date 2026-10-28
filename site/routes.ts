@@ -47,6 +47,8 @@ export const SECTIONS: readonly (readonly [Section, string])[] = [
   ['friends', friendsHref()],
   ...EXPLORE.map(([k, , href]) => [k, href] as const),
 ];
+// where a section name stands in SECTIONS, -1 for none
+export const sectionAt = (name: string | null): number => SECTIONS.findIndex(([k]) => k === name);
 // a link to someone's plans from before Friends had its name (#people/<key>), as it is now
 export const renamed = (path: string): string | null =>
   path === 'people' || path.startsWith('people/') ? `#friends${path.slice('people'.length)}` : null;

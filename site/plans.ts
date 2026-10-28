@@ -3,10 +3,10 @@
 // couple, is teaching (or playing) there rather than just going.
 import { one, q, sql } from './db.ts';
 import type { Kid } from './dom.ts';
-import { h, nodes, own } from './dom.ts';
-import { type Peek, peek } from './modal.ts';
+import { button, h, nodes, own } from './dom.ts';
+import { leaving, type Peek, peek } from './modal.ts';
 import { artistHref, eventOnMapHref, personHref } from './routes.ts';
-import { flag as flagCol, num, opt, type RowOf, state, str } from './rows.ts';
+import { flag as flagCol, num, opt, PLACE_AND_DAYS, type RowOf, state, str } from './rows.ts';
 import { KEY } from './states.ts';
 import { countryName, dayRange, flag, place } from './ui.ts';
 import { type Key, text } from './wording.ts';
@@ -132,17 +132,14 @@ const count = (n: number) => `${n} ${n === 1 ? 'person' : 'people'}`;
 
 // A name in a card or under the sentence opens the quick view of that person or couple; "3 more people" opens the
 // list of everyone going. Neither leaves the page.
-const nameButton = (g: Named) =>
-  h(
-    'button',
-    {
-      type: 'button',
-      class: 'goer-name',
-      onclick: own((b) => peekGroup(g, b)),
-    },
-    g.name,
-  );
+// a name that opens a quick view, from inside a card or another quick view
+const goerName = (words: string, open: (from: Element | null) => void) =>
+  button({ class: 'goer-name', onclick: own(open) }, words);
+const nameButton = (g: Named) => goerName(g.name, (b) => peekGroup(g, b));
 const tagOf = (d: string) => h('span', { class: `plan-tag${d === 'going' ? '' : ' booked'}` }, d);
+// someone going, in a list of who's going: their faces, their name opening their plans, and how they're going
+const goerRow = (g: Named, open: (from: Element | null) => void) =>
+  h('li', {}, faces(g.people), goerName(g.name, open), ' ', tagOf(doing(g.people)));
 
 // "Cédric & Christina are going · 3 more people too", or "3 people said they're going"; null when nobody has said
 export function goingLine(e: Going): HTMLElement | null {
@@ -151,16 +148,7 @@ export function goingLine(e: Going): HTMLElement | null {
     others = e.goers.length - featured.length;
   const groups = named(featured),
     many = featured.length > 1;
-  const more = (words: string) =>
-    h(
-      'button',
-      {
-        type: 'button',
-        class: 'goer-name',
-        onclick: own((b) => peekEvent(e, b)),
-      },
-      words,
-    );
+  const more = (words: string) => goerName(words, (b) => peekEvent(e, b));
   return h(
     'p',
     { class: 'going-line' },
@@ -191,7 +179,7 @@ export function whoIsGoing(e: Going): HTMLElement | null {
     h(
       'ul',
       {},
-      everyone(e).map((g) => h('li', {}, faces(g.people), nameButton(g), ' ', tagOf(doing(g.people)))),
+      everyone(e).map((g) => goerRow(g, (b) => peekGroup(g, b))),
     ),
   );
 }
@@ -219,18 +207,7 @@ function show(
   v.body.scrollTop = 0;
   if (from instanceof Element) v.m.open(from);
 }
-const link = (href: string, ...kids: Kid[]) =>
-  h(
-    'a',
-    {
-      href,
-      onclick: (ev: Event) => {
-        ev.preventDefault();
-        void view?.m.go(href);
-      },
-    },
-    ...kids,
-  );
+const link = (href: string, ...kids: Kid[]) => leaving(peekDialog().m, href, ...kids);
 
 // a person's plans to come, by festival
 const PLAN = {
@@ -239,10 +216,7 @@ const PLAN = {
   booked_as: opt(state('role')),
   id: num,
   title: str,
-  city: opt(str),
-  country_code: opt(str),
-  start_date: str,
-  end_date: str,
+  ...PLACE_AND_DAYS,
 } as const;
 type Plan = RowOf<typeof PLAN>;
 function plansOf(g: Named): Map<number, { e: Plan; people: Plan[] }> {
@@ -328,12 +302,7 @@ function peekGroup(g: Named, from: EventTarget | null, back?: HTMLElement) {
 function peekEvent(e: Going, from?: EventTarget | null) {
   const groups = everyone(e);
   const backTo = () =>
-    h(
-      'button',
-      { type: 'button', class: 'link back-link', onclick: () => peekEvent(e) },
-      '← Everyone going to ',
-      e.title,
-    );
+    button({ class: 'link back-link', onclick: () => peekEvent(e) }, '← Everyone going to ', e.title);
   show(from ?? null, {
     title: `Who’s going to ${e.title}`,
     sub: [dayRange(e.start_date, e.end_date), ' · ', place(e)],
@@ -341,16 +310,7 @@ function peekEvent(e: Going, from?: EventTarget | null) {
       h(
         'ul',
         { class: 'peek-people' },
-        groups.map((g) =>
-          h(
-            'li',
-            {},
-            faces(g.people),
-            h('button', { type: 'button', class: 'goer-name', onclick: () => peekGroup(g, null, backTo()) }, g.name),
-            ' ',
-            tagOf(doing(g.people)),
-          ),
-        ),
+        groups.map((g) => goerRow(g, () => peekGroup(g, null, backTo()))),
       ),
     ],
   });

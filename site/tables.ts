@@ -1,7 +1,7 @@
 // The SQL page: free queries against the database, run in the browser.
 import type { SqlValue } from 'sql.js';
 import { exec, q, sql } from './db.ts';
-import { h } from './dom.ts';
+import { button, h } from './dom.ts';
 import { opt, str } from './rows.ts';
 
 const EXAMPLES: readonly (readonly [string, string])[] = [
@@ -129,7 +129,7 @@ export function sqlView(root: HTMLElement): void {
             },
             EXAMPLES.map(([t], i) => h('option', { value: i }, t)),
           ),
-          h('button', { onclick: run }, 'Run (Ctrl+Enter)'),
+          button({ onclick: run }, 'Run (Ctrl+Enter)'),
         ),
         area,
         out,
@@ -145,8 +145,7 @@ export function sqlView(root: HTMLElement): void {
             h(
               'li',
               {},
-              h(
-                'button',
+              button(
                 {
                   class: 'link',
                   title: 'Insert a query for this table',

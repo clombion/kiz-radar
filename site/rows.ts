@@ -48,15 +48,19 @@ export const read = <S extends Shape>(shape: S, row: Readonly<Record<string, Sql
 
 // ----- shapes of the tables and views more than one query reads -----
 
+// where and when a festival is, as each query that shows it reads them from event_rows
+export const PLACE_AND_DAYS = {
+  city: opt(str),
+  country_code: opt(str),
+  start_date: str,
+  end_date: str,
+} as const satisfies Shape;
 // a festival as event_rows has it (pipeline/build_site_db.py)
 export const EVENT = {
   id: num,
   title: str,
   url: str,
-  start_date: str,
-  end_date: str,
-  city: opt(str),
-  country_code: opt(str),
+  ...PLACE_AND_DAYS,
   lat: opt(num),
   lon: opt(num),
   airport: opt(str),

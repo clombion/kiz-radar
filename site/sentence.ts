@@ -3,7 +3,7 @@
 
 import { addDays, today } from './days.ts';
 import { site } from './db.ts';
-import { dropdown, h, type Kid, nodes, own } from './dom.ts';
+import { button, dropdown, h, type Kid, moreButton, nodes, own } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import {
   CHECKED,
@@ -49,17 +49,10 @@ const DEFAULTS: Readonly<Choices> = {
   unchecked: 0,
   sort: 'date',
 };
-const LOOSEST: Readonly<Omit<Choices, 'sort'>> = {
-  months: 12,
-  reach: 0,
-  country: '',
-  with: '',
-  friends: 0,
-  taxi: 0,
-  allin: 0,
-  lineup: 0,
-  unchecked: 0,
-};
+// every choice at its widest: the defaults with no limit of time or price (the order stays as chosen)
+const { sort: _order, ...UNSORTED } = DEFAULTS;
+const WIDEST = { months: 12, reach: 0 } as const;
+const LOOSEST: Readonly<Omit<Choices, 'sort'>> = { ...UNSORTED, ...WIDEST };
 type NumberChoice = { [K in keyof Choices]: Choices[K] extends number ? K : never }[keyof Choices];
 type TextChoice = Exclude<keyof Choices, NumberChoice>;
 const counts = (k: keyof Choices): k is NumberChoice => typeof DEFAULTS[k] === 'number';
@@ -177,15 +170,13 @@ export function sentenceView(
     allin: FLAGS,
     unchecked: FLAGS,
   });
-  // a link that drops every choice but the order, so every festival shows; then
-  const loosen = (words: string, then?: () => void) =>
-    h(
-      'button',
+  // a link that sets these choices and shows what they give; then
+  const choose = (to: Partial<Choices>, words: string, then?: () => void) =>
+    button(
       {
-        type: 'button',
         class: 'link',
         onclick: () => {
-          Object.assign(s, LOOSEST);
+          Object.assign(s, to);
           render();
           then?.();
         },
@@ -234,10 +225,8 @@ export function sentenceView(
       lead,
       h('strong', {}, what),
       ' ',
-      h(
-        'button',
+      button(
         {
-          type: 'button',
           class: 'remove',
           'aria-label': `Remove “${String(what)}”`,
           onclick: own(() => {
@@ -321,7 +310,7 @@ export function sentenceView(
     h(
       'p',
       { class: 'nevermind' },
-      loosen('Never mind, show me all events', () => results.scrollIntoView({ behavior: 'smooth' })),
+      choose(LOOSEST, 'Never mind, show me all events', () => results.scrollIntoView({ behavior: 'smooth' })),
     ),
   );
 
@@ -332,11 +321,7 @@ export function sentenceView(
     reach: blank('reach', Object.entries(SHORT_LABEL.reach), 'mini'),
   };
   const barCount = h('span', { class: 'bar-count' });
-  const moreBtn = h(
-    'button',
-    { type: 'button', class: 'more-btn', 'aria-expanded': 'false', 'aria-controls': 'more-panel' },
-    'More filters ▾',
-  );
+  const moreBtn = moreButton('more-panel', 'More filters ▾');
   const check = (key: NumberChoice, label: string | null) => {
     const c = h('input', { type: 'checkbox' });
     c.checked = Boolean(s[key]);
@@ -433,20 +418,7 @@ export function sentenceView(
         ` ${f.many ? 'are' : 'is'} going to `,
         which,
         '. ',
-        all_
-          ? null
-          : h(
-              'button',
-              {
-                type: 'button',
-                class: 'link',
-                onclick: () => {
-                  s.friends = 1;
-                  render();
-                },
-              },
-              'Show only those',
-            ),
+        all_ ? null : choose({ friends: 1 }, 'Show only those'),
       ),
     );
   }
@@ -477,19 +449,7 @@ export function sentenceView(
   }
 
   // when the time and price hide everything, a way to widen just those, keeping the place and the rest
-  const widen = (widened: number) =>
-    h(
-      'button',
-      {
-        type: 'button',
-        class: 'link',
-        onclick: () => {
-          Object.assign(s, { months: 12, reach: 0 });
-          render();
-        },
-      },
-      `Show the ${widened} in the coming year, at any price`,
-    );
+  const widen = (widened: number) => choose(WIDEST, `Show the ${widened} in the coming year, at any price`);
   const showThem = () =>
     h(
       'a',
@@ -538,7 +498,7 @@ export function sentenceView(
       );
     }
     if (widened) return h('p', { class: 'empty' }, 'No festival fits that time and price. ', widen(widened));
-    return h('p', { class: 'empty' }, 'No festival fits all of that. ', loosen('Show all events instead'));
+    return h('p', { class: 'empty' }, 'No festival fits all of that. ', choose(LOOSEST, 'Show all events instead'));
   }
 
   function render(): void {

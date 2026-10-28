@@ -1,7 +1,7 @@
 // Countries: which scenes are worth a trip from home. One row per country: what's coming up, what the
 // flights to those festivals cost, and what the scene is like.
 import { one, q, sql } from './db.ts';
-import { h } from './dom.ts';
+import { h, segments } from './dom.ts';
 import { changed, readState } from './festivals.ts';
 import { convert, money, step } from './money.ts';
 import { artistsHref, countriesHref, festivalsHref, mapHref, showInAddressBar } from './routes.ts';
@@ -104,21 +104,10 @@ export function countriesView(root: HTMLElement, qs: string): void {
   function render() {
     showInAddressBar(countriesHref(changed(st, DEFAULTS)));
     seg.replaceChildren(
-      ...SORTS.map(([v, t]) =>
-        h(
-          'button',
-          {
-            type: 'button',
-            class: st.sort === v ? 'on' : '',
-            'aria-pressed': String(st.sort === v),
-            onclick: () => {
-              st.sort = v;
-              render();
-            },
-          },
-          t,
-        ),
-      ),
+      ...segments(SORTS, st.sort, (v) => {
+        st.sort = v;
+        render();
+      }),
     );
     const up = (r: Country) => r.upcoming ?? 0;
     const orders: Record<Sort, (a: Country, b: Country) => number> = {

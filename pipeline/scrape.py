@@ -271,8 +271,7 @@ def run(src: Path, *, dry_run: bool) -> None:
             finish(db, report, len(events), gone, posters)
 
 
-class Args(argparse.Namespace):
-    src: Path = Path()
+class Args(sqlite_db.Source):
     dry_run: bool = False
 
 

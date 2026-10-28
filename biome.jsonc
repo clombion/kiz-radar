@@ -10,7 +10,8 @@
     "./lint/storage.grit",
     "./lint/formats.grit",
     "./lint/home.grit",
-    "./lint/clicks.grit"
+    "./lint/clicks.grit",
+    "./lint/buttons.grit"
   ],
   "linter": {
     "rules": {

@@ -2,9 +2,12 @@
   "path": ["pipeline", "site", "tests", "docs/css", ".github", "lint"],
   "format": ["python", "typescript", "css", "yaml"],
   "ignore": ["**/pipeline/enums.py", "**/site/states.ts"],
-  "minTokens": 30,
+  "minTokens": 20,
   "threshold": 0,
   "reporters": ["console"],
   "exitCode": 1,
-  "gitignore": true
+  "gitignore": true,
+  "ignorePattern": [
+    "runs-on: ubuntu-latest\\s+timeout-minutes: \\d+\\s+steps:\\s+- uses: actions/checkout@v4\\s+- uses: \\./\\.github/actions/steps"
+  ]
 }

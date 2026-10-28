@@ -1,7 +1,7 @@
 // Artists: a scannable list (who, from where, how often booked, where next) and a page per artist that
 // leads with their upcoming festivals.
 import { one, q, Sql, sql } from './db.ts';
-import { dropdown, h, type Kid } from './dom.ts';
+import { button, dropdown, h, type Kid, moreButton, segments } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { changed, type Festival, readState, withDetails } from './festivals.ts';
 import { alsoGoingTo, peopleOf } from './plans.ts';
@@ -109,21 +109,10 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
   const roleBtns = h('div', { class: 'seg', role: 'group', 'aria-label': 'Role' });
   const paintRoles = () =>
     roleBtns.replaceChildren(
-      ...ROLES.map(([v, t]) =>
-        h(
-          'button',
-          {
-            type: 'button',
-            class: st.role === v ? 'on' : '',
-            'aria-pressed': String(st.role === v),
-            onclick: () => {
-              st.role = v;
-              render();
-            },
-          },
-          t,
-        ),
-      ),
+      ...segments(ROLES, st.role, (v) => {
+        st.role = v;
+        render();
+      }),
     );
   const sel = (k: 'kind' | 'country' | 'sort', opts: readonly (readonly [string, string])[], label: string) =>
     h(
@@ -150,12 +139,7 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
       render();
     },
   });
-  const moreBtn = h('button', {
-    type: 'button',
-    class: 'more-btn',
-    'aria-expanded': 'false',
-    'aria-controls': 'artist-filters',
-  });
+  const moreBtn = moreButton('artist-filters');
   const panel = h(
     'div',
     { class: 'more-panel', id: 'artist-filters', hidden: true },
@@ -175,7 +159,7 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
   dropdown(moreBtn, panel, [moreBtn, panel], signal);
   const summary = h('p', { class: 'list-summary' });
   const list = h('ul', { class: 'artist-list' });
-  const showMore = h('button', { type: 'button', class: 'more-btn show-more' });
+  const showMore = button({ class: 'more-btn show-more' });
   let shown = PAGE,
     rows: Artist[] = [];
 

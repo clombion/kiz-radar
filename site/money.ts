@@ -3,7 +3,7 @@
 // are round numbers in each currency: for a return flight (the map, a cheap flight in green) and for a trip, the full
 // pass and the flight together (the festival filter).
 import { q, sql } from './db.ts';
-import { h } from './dom.ts';
+import { button, h } from './dom.ts';
 import { num, str } from './rows.ts';
 
 type Steps = Readonly<{ cheap: number; fair: number }>;
@@ -77,7 +77,7 @@ export function currencySwitch(): HTMLElement {
       i ? ' · ' : '',
       c === currency
         ? h('b', { 'aria-current': 'true' }, label)
-        : h('button', { type: 'button', class: 'link', 'aria-label': c, onclick: () => to(c) }, label),
+        : button({ class: 'link', 'aria-label': c, onclick: () => to(c) }, label),
     ]),
   );
 }

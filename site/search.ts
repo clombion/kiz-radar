@@ -8,10 +8,10 @@
 import { roleLabel } from './artists.ts';
 import { today } from './days.ts';
 import { q, site, sql } from './db.ts';
-import { h, type Kid } from './dom.ts';
+import { button, h, type Kid } from './dom.ts';
 import { CHECKED, type Checked, type Festival, festivals, hasWith, isDance, WITH, type With } from './festivals.ts';
 import { icon } from './icons.ts';
-import { modal } from './modal.ts';
+import { leaving, modal } from './modal.ts';
 import { person } from './plans.ts';
 import {
   artistHref,
@@ -23,7 +23,7 @@ import {
   type Params,
   personHref,
 } from './routes.ts';
-import { flag as flagCol, num, opt, type RowOf, state, str } from './rows.ts';
+import { flag as flagCol, num, opt, PLACE_AND_DAYS, type RowOf, state, str } from './rows.ts';
 import { KEY } from './states.ts';
 import { away, dayMonth, flag, place } from './ui.ts';
 import { text } from './wording.ts';
@@ -50,10 +50,7 @@ const FOUND_EVENT = {
   title: str,
   listed_title: str,
   venue: opt(str),
-  city: opt(str),
-  country_code: opt(str),
-  start_date: str,
-  end_date: str,
+  ...PLACE_AND_DAYS,
   upcoming: flagCol,
   cancelled: opt(flagCol),
   lat: opt(num),
@@ -397,7 +394,7 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
   const status = h('p', { class: 'visually-hidden', 'aria-live': 'polite' });
   const glass = h('span', { class: 'search-glass', 'aria-hidden': 'true' });
   glass.innerHTML = trigger.querySelector('svg')?.outerHTML ?? '';
-  const cancel = h('button', { type: 'button', class: 'search-cancel', onclick: () => void shut() }, 'Cancel');
+  const cancel = button({ class: 'search-cancel', onclick: () => void shut() }, 'Cancel');
   // past festivals, and places with nothing coming up, only when asked for: what people share is what's ahead
   const pastBox = h('input', {
     type: 'checkbox',
@@ -421,7 +418,8 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
     status,
     list,
   );
-  const { open: show, shut, go } = modal(dlg);
+  const searchModal = modal(dlg);
+  const { open: show, shut, go } = searchModal;
 
   const options = () => [...list.querySelectorAll<HTMLElement>('[role=option]')];
   function highlight(i: number): void {
@@ -565,18 +563,7 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
       all.filter((item) => withPast || !item.past),
       folded,
     );
-    const goes = (href: string, words_: string) =>
-      h(
-        'a',
-        {
-          href,
-          onclick: (ev: Event) => {
-            ev.preventDefault();
-            void go(href);
-          },
-        },
-        words_,
-      );
+    const goes = (href: string, words_: string) => leaving(searchModal, href, words_);
     list.replaceChildren(
       h(
         'div',
@@ -587,10 +574,8 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
               'p',
               {},
               'Did you mean ',
-              h(
-                'button',
+              button(
                 {
-                  type: 'button',
                   class: 'link',
                   onclick: () => {
                     query = near.name;
@@ -625,7 +610,7 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
       'p',
       { class: 'search-note' },
       `${plural(n, 'past festival')} ${n === 1 ? 'matches' : 'match'} too. `,
-      h('button', { type: 'button', class: 'link', onclick: includePast }, 'Include past festivals'),
+      button({ class: 'link', onclick: includePast }, 'Include past festivals'),
     );
   function render(): void {
     nextId = 0;

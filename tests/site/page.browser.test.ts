@@ -1,7 +1,7 @@
 // What the page does, in Chromium: elements as h() builds them, the tab's oval as it moves, the page's slide, and a
 // dialog's history entry.
 import { afterEach, expect, test } from 'vitest';
-import { h } from '../../site/dom.ts';
+import { button, h } from '../../site/dom.ts';
 import { modal } from '../../site/modal.ts';
 import { pill, slide } from '../../site/tabs.ts';
 
@@ -122,7 +122,7 @@ test('a slide changes the page at once with no direction, and marks its directio
 
 test('a dialog has a history entry of its own: the back button closes it, and closing it removes the entry', async () => {
   const before = history.length;
-  const opener = h('button', { type: 'button' }, 'Open');
+  const opener = button({}, 'Open');
   document.body.append(opener);
   const dlg = h('dialog', {}, h('p', {}, 'Hello'));
   const m = modal(dlg);

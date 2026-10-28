@@ -1,7 +1,7 @@
 // A dialog over the page (the search, the quick view of who's going). It has a history entry of its own, so a
 // phone's back button closes it instead of leaving the page; closing it any other way (×, Escape, a tap outside)
 // removes that entry. go() opens a link once the entry is gone, so the link isn't undone by it.
-import { h } from './dom.ts';
+import { button, h, type Kid } from './dom.ts';
 
 export interface Modal {
   open: (from?: Element | null) => boolean;
@@ -51,6 +51,20 @@ export function modal(dlg: HTMLDialogElement): Modal {
   };
 }
 
+// A link out of a dialog: it goes once the dialog's history entry is gone, so the entry doesn't undo it (Modal.go).
+export const leaving = (m: Modal, href: string, ...kids: Kid[]): HTMLAnchorElement =>
+  h(
+    'a',
+    {
+      href,
+      onclick: (ev: Event) => {
+        ev.preventDefault();
+        void m.go(href);
+      },
+    },
+    ...kids,
+  );
+
 // A quick view over the page (who's going, a festival's passes): a head of a lead (faces, when there are some), a
 // title and the line under it, and ×; a body; a foot. Each view fills the parts.
 export interface Peek {
@@ -67,7 +81,7 @@ export function peek(id: string): Peek {
     lead = h('span', { class: 'peek-faces' });
   const body = h('div', { class: 'peek-body' }),
     foot = h('div', { class: 'peek-foot' });
-  const close = h('button', { type: 'button', class: 'peek-close', 'aria-label': 'Close' }, '×');
+  const close = button({ class: 'peek-close', 'aria-label': 'Close' }, '×');
   const m = modal(
     h(
       'dialog',

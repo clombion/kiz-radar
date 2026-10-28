@@ -1,7 +1,7 @@
 // Who's going where: the festivals people said they're going to, by date, and each person's plans page with a link
 // to share it.
 import { q, sql } from './db.ts';
-import { h, type Kid } from './dom.ts';
+import { button, h, type Kid } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { withDetails } from './festivals.ts';
 import { goersInline, goersOf, person } from './plans.ts';
@@ -30,10 +30,8 @@ export function personView(root: HTMLElement, [key]: readonly string[]): void {
       [p.id],
     ),
   );
-  const share = h(
-    'button',
+  const share = button(
     {
-      type: 'button',
       class: 'more-btn',
       onclick: () => {
         const url = location.href,
