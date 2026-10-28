@@ -3,7 +3,6 @@
 import argparse
 import dataclasses
 import datetime as dt
-import hashlib
 import json
 import sqlite3
 from enum import StrEnum
@@ -293,11 +292,13 @@ def test_the_system_text_sent_is_the_prompts() -> None:
     assert client.messages.requests[0]['system'] == prompt.current('prices').system
 
 
-def test_every_prompt_the_answers_and_reads_name_is_archived() -> None:
+def test_every_prompt_the_answers_and_reads_name_is_archived_under_its_hash() -> None:
     named = {r.prompt for r in answers.log().values()}
     named |= {Stamped.model_validate_json(p.read_bytes()).prompt for p in tickets.READS.glob('*.json')}
-    for h in named:  # each archived text hashes to its name
-        assert hashlib.sha256(prompt.asked(h).encode()).hexdigest()[:16] == h
+    archived = {p.stem: p.read_text(encoding='utf-8') for p in prompt.ASKED.glob('*.md') if p.name != 'README.md'}
+    assert named <= set(archived)
+    # every prompt ever asked stays, each under the hash of its text
+    assert [h for h, text in archived.items() if prompt.digest(text) != h] == []
 
 
 def test_a_template_with_a_marker_left_fails() -> None:
