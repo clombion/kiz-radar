@@ -23,7 +23,7 @@ import sqlite3
 from collections.abc import Callable
 from dataclasses import dataclass, field
 
-from pipeline import ROOT
+from pipeline import ROOT, build_site_db
 from pipeline import db as sqlite_db
 from pipeline.countries import codes
 from pipeline.extract.prices import COUPLE
@@ -287,8 +287,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description='List likely duplicate artists for review.')
     sqlite_db.source_arg(ap)
     src = ap.parse_args(namespace=sqlite_db.Source()).src
-    # run build_site_db.py first
-    with sqlite_db.opened(src, 'ro') as c, sqlite_db.opened(ROOT / 'docs' / 'data' / 'kiz.sqlite', 'ro') as site:
+    with sqlite_db.opened(src, 'ro') as c, build_site_db.built(src) as site:
         rows = suggestions(c, site)
     Suggestion.write(OUT, rows)
     print(f'{len(rows)} suggestions in {OUT.relative_to(ROOT)}')

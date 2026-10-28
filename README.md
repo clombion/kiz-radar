@@ -64,18 +64,18 @@ loads; the site never reads `source/` itself.
 
 Kizomba-world publishes its listings under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). The festival
 data in this repository adapts them, so it is shared under the same licence: the export in `source/`, the database and
-summary in `docs/data/`, and the artist merge files in `pipeline/`. Each festival card links to its page on
-kizomba-world. The fares are our own searches.
+summary the site serves from `docs/data/`, and the artist merge files in `pipeline/`. Each festival card links to its
+page on kizomba-world. The fares are our own searches.
 
 | File | What it holds | Updated by |
 | -- | -- | -- |
 | `source/*.sqlite` | The full kizomba-world export, with descriptions and images | the **Refresh events** Action, monthly |
-| `docs/data/kiz.sqlite` | What the site queries: events, line-ups, artists, statistics, airports, a fares snapshot | the **Rebuild site database** Action |
+| `docs/data/kiz.sqlite` | What the site queries: events, line-ups, artists, statistics, airports, a fares snapshot | built from the export and the files of `pipeline/`, never committed: by **Publish site** for the site, `mise run build:data` locally, and for each step that reads it |
 | `docs/data/site.json` | What the page shows before the database loads: home airport, destinations, dates covered | the same build |
 | `docs/data/fares.csv` | Friday-to-Monday return fares, one row per airport and weekend | the **Refresh fares** Action |
 | `pipeline/fare_jobs.csv` | When each festival weekend was last searched, and how it went | the same Action |
 | `pipeline/extract/answers/` | Claude's answers for line-ups, highlights, rooms, genres and pass prices | the **Refresh events** Action |
-| `pipeline/rates.csv` | The European Central Bank's exchange rates, per euro | the **Rebuild site database** Action |
+| `pipeline/rates.csv` | The European Central Bank's exchange rates, per euro | the **Refresh places and rates** Action |
 | `pipeline/tickets/`, `pipeline/pass_prices.csv`, `pipeline/ticket_pages.csv` | Ticket-page recipes, read logs, first reads, the prices read there, and what each festival waits for (`tickets/status.csv`) | `pipeline/tickets.py`: the **Refresh events** Action, or an agent |
 | `pipeline/states.py`, `pipeline/exceptions.py` | Every state a data point can be in, what it means and the site's words for it; the instances that depart from their state's default | by hand (see "States") |
 | `pipeline/prompts/asked/` | Every prompt asked, by its hash | whatever saves an answer or a first read, before it names the hash |
@@ -289,7 +289,7 @@ for having no price, filters by it, keeps it, or waits for someone), its words o
 `pipeline/records.py` and the schemas the models answer to, generated from those records; the definitions in the
 prompts; and the SQL checks. So a new state is one new row, words included, and a value that is no state fails: when it
 is written or read (a record, a check), in the tests (a name in the code the table doesn't have), or in
-`pipeline/audit.py`, which runs first in **Rebuild site database** and in **Tests** and names each value its record
+`pipeline/audit.py`, which runs first in **Refresh places and rates** and in **Tests** and names each value its record
 refuses in the shared files and in the answers and first reads the load takes (those to the current prompt), and each
 row of `pipeline/exceptions.py` that departs from nothing any more: a recipe reads its site now, or no festival has its
 known ticket page there.
@@ -316,15 +316,16 @@ are booked most instead, without a flag; the statistics on imported artists use 
 
 ## Updating the events
 
-On the 3rd of each month, the **Refresh events** Action updates the newest export in `source/` from kizomba-world, using
+On the 3rd of each month, the **Refresh events** Action updates the export in `source/` from kizomba-world, using
 `pipeline/scrape.py`. The event list comes from the site's Events Calendar API. The event pages add what the API leaves
 out: the venue and city, the deal link, the organiser's links, the translations and whether the festival is cancelled.
 Pages are fetched for new and changed festivals and for every festival still to come, since a deal link can change
 without the festival's modified date, and a cancellation might too. They are fetched a few seconds apart, so a run takes
 about a quarter of an hour. Festivals the site no longer lists are removed. Once the export is committed, the Action
-starts **Rebuild site database** on the same branch, which checks every state in the data (`pipeline/audit.py`),
-geocodes new cities, rebuilds the database, and commits it. That workflow also runs on any push to `source/` or
-`pipeline/` on `main`.
+starts **Refresh places and rates** on the same branch, which checks every state in the data (`pipeline/audit.py`),
+geocodes new cities, refreshes the exchange rates and the merge suggestions, and commits them; **Publish site** then
+builds the database from it all and publishes it. That workflow also runs on any push to `source/` or `pipeline/` on
+`main`.
 
 The site sits behind Cloudflare, which refuses ordinary scripts, so the scraper sends its requests the way Chrome does,
 through [curl_cffi](https://github.com/lexiforest/curl_cffi). If Cloudflare stops letting it through, the Action fails
@@ -373,10 +374,10 @@ uv run --group ask -m pipeline.extract.ask source/<events>.sqlite            # n
 uv run -m pipeline.extract.load_extract source/<events>.sqlite
 uv run --group artists -m pipeline.extract.resolve_artists source/<events>.sqlite
 uv run -m pipeline.rates                                                    # exchange rates for the site's prices
-uv run -m pipeline.build_site_db source/<events>.sqlite
-uv run -m pipeline.merge_suggestions source/<events>.sqlite
+uv run -m pipeline.merge_suggestions source/<events>.sqlite                 # on a site database built for it
 uv run -m pipeline.fares refresh --budget 4                                 # needs uv; searches festival weekends due today
-mise run serve                                                              # builds the site, then open http://localhost:8000
+mise run build:data                                                         # docs/data/kiz.sqlite and site.json, never committed
+mise run serve                                                              # builds the site and its data, then open http://localhost:8000
 ```
 
 ## Running the steps
@@ -435,10 +436,11 @@ each run, with no network socket and a time limit per test; `mise run test:py` a
 `pyproject.toml` sets. A database connection is opened only by `pipeline/db.py`, closed when its block ends, the tests'
 too. A day is a date and a time a UTC datetime, read from one clock (`records.now()`, `today()`; ruff bans the others).
 `tests/test_structure.py` fails on a function written twice, on the repository's folder found anywhere but
-`pipeline.ROOT`, on an Action that sets up a tool mise doesn't give it, and on a look for the export but
-`db.export()`'s. jscpd fails on a block of 30 tokens written twice anywhere in the code, the tests, the stylesheet or
-the Actions (`.jscpd.json`), and `lock:py` on a `uv.lock` that is not what `pyproject.toml` resolves to. The audit
-checks that every state in the data is one of `pipeline/states.py`.
+`pipeline.ROOT`, on an Action that sets up a tool mise doesn't give it, on a look for the export but `db.export()`'s, on
+a task in `mise.toml`, and on a built file (the site's code, database or summary) committed or read anywhere but from
+its build. jscpd fails on a block of 20 tokens written twice anywhere in the code, the tests, the stylesheet or the
+Actions (`.jscpd.json`), and `lock:py` on a `uv.lock` that is not what `pyproject.toml` resolves to. The audit checks
+that every state in the data is one of `pipeline/states.py`.
 
 The database enforces its own rules. Dates are days, required fields are set, and `cancelled` is 1, 0 or empty. Empty
 means not known: the source flags it only for events still listed as upcoming, so most past festivals have none. As a

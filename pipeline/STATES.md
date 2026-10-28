@@ -187,11 +187,11 @@ A new or unmapped state fails at the first of these that meets it:
    row with a value outside the table is refused.
 2. **In the type check and Tests:** basedpyright refuses a state name the code's enums don't have, the site's scans find
    one in its code, and the per-state tests of each choosing function fail.
-3. **The audit:** `uv run --group tickets -m pipeline.audit` runs in **Tests** and first in **Rebuild site database**.
-   It catches what bypasses the first two, such as a hand edit of `pages.csv`, `status.csv`, `pass_prices.csv`, the
-   decisions and plans, or the register. It reads every row of the shared CSVs, and the first reads and answers to their
-   current prompts (one to another prompt waits to be asked again, and is not loaded), each as its record. It reports
-   *"0 refused, 0 stale"*, and otherwise exits 1, naming each instance on stderr:
+3. **The audit:** `uv run --group tickets -m pipeline.audit` runs in **Tests** and first in **Refresh places and
+   rates**. It catches what bypasses the first two, such as a hand edit of `pages.csv`, `status.csv`, `pass_prices.csv`,
+   the decisions and plans, or the register. It reads every row of the shared CSVs, and the first reads and answers to
+   their current prompts (one to another prompt waits to be asked again, and is not loaded), each as its record. It
+   reports *"0 refused, 0 stale"*, and otherwise exits 1, naming each instance on stderr:
    - **Refused:** a value its record refuses, such as one that is no state of its point, named by file, line or place in
      it, and what the record allows.
    - **Stale:** a register row for a site a recipe now reads, or one no festival has its known ticket page on.

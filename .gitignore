@@ -1,6 +1,9 @@
 __pycache__/
 *.pyc
 docs/data/*.building
+# built from the export (mise run build:data), never committed
+docs/data/kiz.sqlite
+docs/data/site.json
 pipeline/tickets/drafts/
 .venv/
 node_modules/

@@ -1,8 +1,9 @@
-name: Rebuild site database
+name: Refresh places and rates
 
 # When a new kizomba-world export or anything in pipeline/ is pushed, check every state in the data is one of
-# pipeline/states.py (pipeline/audit.py), geocode any new cities, refresh the exchange rates, rebuild
-# docs/data/kiz.sqlite, and refresh the merge suggestions, from the export in source/ (pipeline/db.py export).
+# pipeline/states.py (pipeline/audit.py), geocode any new cities, refresh the exchange rates and the merge
+# suggestions, from the export in source/ (pipeline/db.py export), and commit what changed. Publish then builds the
+# site's database from them.
 on:
   push:
     branches: [main]
@@ -31,16 +32,14 @@ jobs:
         run: uv run -m pipeline.geocode "$SRC"
       - name: Refresh the exchange rates
         run: uv run -m pipeline.rates || true   # when the bank can't be reached, the last rates stay
-      - name: Build docs/data/kiz.sqlite and site.json
-        run: uv run -m pipeline.build_site_db "$SRC"
       - name: Refresh merge suggestions
         run: uv run -m pipeline.merge_suggestions "$SRC"
       - name: Commit
         run: |
-          git add docs/data/kiz.sqlite docs/data/site.json pipeline/geocode.csv pipeline/artist_merge_suggestions.csv pipeline/rates.csv
+          git add pipeline/geocode.csv pipeline/artist_merge_suggestions.csv pipeline/rates.csv
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git config user.name "build-bot"   # the rebase below re-commits, so it needs the name as well
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Rebuild site database from $(basename "$SRC")"
+          git commit -m "Refresh places, rates and merge suggestions from $(basename "$SRC")"
           git pull --rebase --quiet
           git push

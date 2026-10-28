@@ -9,14 +9,12 @@ from pathlib import Path
 
 import pytest
 
-from pipeline import ROOT, build_site_db, merge_suggestions, scrape
+from pipeline import build_site_db, merge_suggestions, scrape
 from pipeline import db as sqlite_db
 from pipeline.extract import load_extract, resolve_artists, run_log
 from tests import jsons
 from tests.exports import EXPORT, column, content, copied, run, trimmed
 from tests.fakes import Memory
-
-SITE_DB = ROOT / 'docs' / 'data' / 'kiz.sqlite'
 
 # a whole run of a step takes seconds, its runs here a few of them
 pytestmark = pytest.mark.timeout(120)
@@ -60,7 +58,7 @@ def test_resolving_the_artists_again_changes_nothing(tmp_path: Path, monkeypatch
 
 
 def test_merge_suggestions_leave_out_decided_pairs_and_keep_the_more_booked() -> None:
-    with sqlite_db.opened(EXPORT, 'ro') as c, sqlite_db.opened(SITE_DB, 'ro') as site:
+    with sqlite_db.opened(EXPORT, 'ro') as c, build_site_db.built(EXPORT) as site:
         rows = merge_suggestions.suggestions(c, site)
     assert rows
     assert [r.score for r in rows] == sorted((r.score for r in rows), reverse=True)

@@ -1,9 +1,9 @@
 name: Refresh events
 
-# Once a month, update the newest export in source/ from kizomba-world.com (see pipeline/scrape.py), ask Claude
+# Once a month, update the export in source/ from kizomba-world.com (see pipeline/scrape.py), ask Claude
 # the extraction passes for new and changed festivals (pipeline/extract/ask.py), read ticket pages
 # (pipeline/tickets.py run: re-reads that are due, retries, first reads by two models), reload what the answers say,
-# commit it all, then start the Rebuild site database workflow, which a push made with the Actions token doesn't
+# commit it all, then start the Refresh places and rates workflow, which a push made with the Actions token doesn't
 # start by itself. A failed ask, or a ticket page that broke its recipe or failed three times in a row, still
 # commits the refresh, then marks the run failed. Started by hand with festival ids, it skips the refresh and asks
 # and reads those festivals only: after a prompt change that touches a few of them.
@@ -71,7 +71,7 @@ jobs:
           git pull --rebase --quiet
           git push
           echo "pushed=1" >> "$GITHUB_OUTPUT"
-      - name: Rebuild the site database
+      - name: Refresh places and rates, then publish
         if: steps.commit.outputs.pushed
         run: gh workflow run build.yml --ref "$GITHUB_REF_NAME"   # on the branch the refresh committed to
         env:

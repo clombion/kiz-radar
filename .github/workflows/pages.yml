@@ -1,13 +1,14 @@
 name: Publish site
 
-# Compiles the site's TypeScript (site/) into docs/js/ and publishes docs/ to GitHub Pages, whenever main changes:
-# on a push, and after the workflows that commit to main with the Actions token, whose pushes start no workflow of
-# their own (Rebuild site database, which Refresh events starts too, and Refresh fares).
+# Compiles the site's TypeScript (site/) into docs/js/, builds its database from the export into docs/data/, and
+# publishes docs/ to GitHub Pages, whenever main changes: on a push, and after the workflows that commit to main with
+# the Actions token, whose pushes start no workflow of their own (Refresh places and rates, which Refresh events starts
+# too, and Refresh fares).
 on:
   push:
     branches: [main]
   workflow_run:
-    workflows: [Rebuild site database, Refresh fares]
+    workflows: [Refresh places and rates, Refresh fares]
     types: [completed]
     branches: [main]
   workflow_dispatch:
@@ -31,8 +32,10 @@ jobs:
         with:
           ref: main
       - uses: jdx/mise-action@v2
-      - name: Compile the site
-        run: mise run build:site
+      - name: Compile the site, and build its data from the export
+        run: |
+          mise run build:site
+          mise run build:data
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

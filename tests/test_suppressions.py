@@ -30,6 +30,7 @@ ALLOWED = Counter(
         ('tests/test_extract.py', 'S608'): 1,
         ('tests/test_fetching.py', 'S608'): 1,
         ('tests/test_records.py', 'S607'): 1,
+        ('tests/test_structure.py', 'S603'): 1,
         ('tests/test_states.py', 'reportArgumentType'): 4,
         ('tests/test_states.py', 'reportCallIssue'): 1,
         ('tests/test_states.py', 'reportIndexIssue'): 1,

@@ -5,6 +5,10 @@
 description = "The pipeline's tests, on every core in a new order, and the branches they reach (pyproject.toml)"
 run = "uv run --group dev pytest -q --cov"
 
+["build:data"]
+description = "docs/data/kiz.sqlite and site.json, which the site loads, built from the export (they are never committed)"
+run = 'uv run -m pipeline.build_site_db "$(uv run -q -m pipeline.db)"'
+
 ["install:site"]
 description = "The site's tools, as pnpm-lock.yaml pins them"
 run = "pnpm install --frozen-lockfile"
@@ -15,8 +19,8 @@ depends = ["install:site"]
 run = "pnpm run build"
 
 [serve]
-description = "The site built and served at http://localhost:8000"
-depends = ["build:site"]
+description = "The site and its data built, and served at http://localhost:8000"
+depends = ["build:site", "build:data"]
 run = "python3 -m http.server -d docs 8000"
 
 ["types:site"]
@@ -35,8 +39,8 @@ depends = ["install:site"]
 run = "pnpm run knip"
 
 ["test:site"]
-description = "The site's tests, in Node and in Chromium (vitest.config.ts)"
-depends = ["install:site"]
+description = "The site's tests, in Node and in Chromium (vitest.config.ts), on the database built from the export"
+depends = ["install:site", "build:data"]
 run = "pnpm run test"
 
 [dup]

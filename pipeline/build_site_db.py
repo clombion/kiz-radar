@@ -1,11 +1,12 @@
-"""Build docs/data/kiz.sqlite, the database the site loads, from the kizomba-world source DB.
+"""Build docs/data/kiz.sqlite, the database the site loads, from the kizomba-world source DB. It is built, never
+committed: Publish builds it with the site (mise run build:data), and a step that reads it reads one built() for it.
 
 Keeps facts (titles, dates, places, genres, features, line-ups) and links back to kizomba-world;
 drops descriptions, images and extraction quotes. Adds places, airports, per-event and per-artist
 statistics, a fares table filled from docs/data/fares.csv, and the states every coded column can hold (states, from
 pipeline/states.py).
 
-    uv run -m pipeline.build_site_db source/kizomba_events_2026_2027.compact.sqlite
+    uv run -m pipeline.build_site_db "$(uv run -q -m pipeline.db)"
 """
 
 import argparse
@@ -16,9 +17,12 @@ import json
 import math
 import sqlite3
 import sys
+import tempfile
 import unicodedata
-from collections.abc import Sequence
+from collections.abc import Generator, Sequence
+from contextlib import contextmanager
 from dataclasses import dataclass, field
+from pathlib import Path
 
 from pipeline import ROOT, enums, states
 from pipeline import db as sqlite_db
@@ -774,16 +778,13 @@ def table_docs(x: sqlite3.Connection) -> None:
             _ = x.execute('insert or ignore into table_docs values (?,?)', (name, desc))
 
 
-def main() -> None:
-    ap = argparse.ArgumentParser(description='Build docs/data/kiz.sqlite, the database the site loads.')
-    sqlite_db.source_arg(ap)
-    src = ap.parse_args(namespace=sqlite_db.Source()).src.resolve()
-    # built beside the published file and swapped in at the end, so a build that stops halfway leaves the site as it
-    # was
-    building = OUT.with_name(OUT.name + '.building')
+def build(src: Path, out: Path) -> dict[str, object]:
+    """Build the site database from the export into out, and give the summary site.json holds. It is built beside out
+    and swapped in at the end, so a build that stops halfway leaves out as it was."""
+    building = out.with_name(out.name + '.building')
     building.unlink(missing_ok=True)
     with sqlite_db.opened(building, 'rwc') as x:
-        _ = x.execute(f"attach database 'file:{src}?mode=ro' as src")
+        _ = x.execute(f"attach database 'file:{src.resolve()}?mode=ro' as src")
         copy_tables(x)
         artists = merge_artists(x)
         places(x)
@@ -801,7 +802,25 @@ def main() -> None:
         x.commit()
         _ = x.execute('detach database src')
         _ = x.execute('vacuum')
-    _ = building.replace(OUT)
+    _ = building.replace(out)
+    return site
+
+
+@contextmanager
+def built(src: Path) -> Generator[sqlite3.Connection]:
+    """The site database built now from the export, in a folder of its own, to read: what a step that reads it reads,
+    so it is never one built from other files. It is gone once the block ends."""
+    with tempfile.TemporaryDirectory() as folder:
+        out = Path(folder) / 'kiz.sqlite'
+        _ = build(src, out)
+        with sqlite_db.opened(out, 'ro') as db:
+            yield db
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description='Build docs/data/kiz.sqlite and site.json, which the site loads.')
+    sqlite_db.source_arg(ap)
+    site = build(ap.parse_args(namespace=sqlite_db.Source()).src, OUT)
     _ = SITE_JSON.write_text(json.dumps(site, ensure_ascii=False, indent=1), encoding='utf-8')
     print(OUT, OUT.stat().st_size // 1024, 'KB')
 

@@ -5,6 +5,7 @@ when it is missing. The Actions take their tools from mise.toml, and the steps t
 import ast
 import collections
 import re
+import subprocess
 import tomllib
 from pathlib import Path
 
@@ -84,3 +85,25 @@ def test_mise_toml_holds_the_tools_alone() -> None:
     """The Actions cache the tools by mise.toml's hash; a task written there would make every edit of it download them
     all again (tasks.toml holds the tasks)."""
     assert set(tomllib.loads((ROOT / 'mise.toml').read_text(encoding='utf-8'))) == {'tools', 'task_config'}
+
+
+BUILT = ('docs/js/', 'docs/data/kiz.sqlite', 'docs/data/site.json')  # what a build makes from what is committed
+
+
+def test_what_a_build_makes_is_not_committed() -> None:
+    """A built file committed would drift from what it is built from, between a change and its rebuild."""
+    ls = ['git', 'ls-files', '--', *BUILT]
+    tracked = subprocess.run(ls, cwd=ROOT, capture_output=True, text=True, check=True).stdout.split()  # noqa: S603 (git, on this repository)
+    assert tracked == []
+
+
+def test_only_the_build_names_the_site_database() -> None:
+    """A step reads the site database build_site_db.built() makes for it, never the published one, which may be of
+    other files or not built at all."""
+    found = [
+        f'{p.relative_to(ROOT)}'
+        for p in sorted([*(ROOT / 'pipeline').rglob('*.py'), *(ROOT / 'tests').rglob('*.py')])
+        if p not in {ROOT / 'pipeline' / 'build_site_db.py', Path(__file__)}
+        and re.search(r'kiz\.sqlite|site\.json', p.read_text(encoding='utf-8'))
+    ]
+    assert found == []
