@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && mise trust -q && mise run hooks",
+            "timeout": 300
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -399,7 +399,8 @@ mise run check        # everything
 mise run check:fast   # the quick part: lint, format, types, the site's tests, the generated files
 mise tasks            # each check on its own: lock:py, lint:py, format:py, format:md, types:py, test:py, lint:site,
                       # types:site, knip, dup, test:site, generate:check, hooks:check, audit
-mise install          # the tools, and the git hooks of prek.toml with them (mise run hooks installs them alone)
+mise install          # the tools, and the git hooks of prek.toml with them (mise run hooks installs them alone;
+                      # an agent's session does on start, .claude/settings.json)
 ```
 
 The hooks (prek, pinned in `uv.lock`) run the quick checks before a commit, on what is staged (`check:commit`), and
