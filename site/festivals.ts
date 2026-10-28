@@ -110,7 +110,7 @@ export const styleLine = (e: Pick<Festival, 'styles'>): string =>
 
 // What "with" in the Festivals URL can name: a dance or a highlight, by key. Kizomba is on nearly every festival here,
 // so it narrows nothing; taxi dancers and the all-in-one hotel have checkboxes of their own.
-type With = Key<'genre'> | Key<'feature'>;
+export type With = Key<'genre'> | Key<'feature'>;
 export const WITH = new Map<With, string>([
   ...DANCES.filter((k) => k !== KEY.genre.KIZOMBA).map((k): [With, string] => [k, text('genre', k)]),
   ...[...TRAITS, ...MORE_TRAITS]
@@ -123,6 +123,13 @@ export const isWith = (k: string): k is With => WITH_KEYS.has(k);
 export const withPhrase = (key: With): Kid[] => [isDance(key) ? 'Also with ' : 'With ', WITH.get(key)];
 export const hasWith = (e: Pick<Festival, 'styles' | 'features'>, key: With): boolean =>
   isDance(key) ? e.styles.has(key) : e.features.has(key);
+// the highlights the festival list has a checkbox for, as [its address parameter, the feature, whether a festival has
+// it]
+export const CHECKED = [
+  ['taxi', KEY.feature.TAXI_DANCERS, (e: Festival) => e.taxi_dancers === true],
+  ['allin', KEY.feature.ALL_IN_ONE, (e: Festival) => e.all_in_one === true],
+] as const;
+export type Checked = (typeof CHECKED)[number][0];
 
 // A view's state in the URL. Each key keeps the type of its default; a value not in `allowed` keeps the default.
 type Defaults = Readonly<Record<string, string | number>>;

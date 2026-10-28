@@ -9,7 +9,7 @@ import { roleLabel } from './artists.ts';
 import { today } from './days.ts';
 import { q, site } from './db.ts';
 import { h, type Kid } from './dom.ts';
-import { type Festival, festivals, hasWith, isDance, WITH } from './festivals.ts';
+import { CHECKED, type Checked, type Festival, festivals, hasWith, isDance, WITH, type With } from './festivals.ts';
 import { icon } from './icons.ts';
 import { modal } from './modal.ts';
 import { person } from './plans.ts';
@@ -37,9 +37,11 @@ const GROUPS: readonly (readonly [Group, string])[] = [
   ['place', 'Places'],
   ['tag', 'Dances & highlights'],
 ];
+// a dance or highlight to search for: one the list narrows to, or one it has a checkbox for
+type TagKey = With | Checked;
 // before anything is typed: what can be searched, as things to tap (tags by their key)
-const SUGGEST_STYLES: readonly string[] = [KEY.genre.SALSA, KEY.genre.ZOUK, KEY.genre.BACHATA, KEY.genre.KOMPA];
-const SUGGEST_HIGHLIGHTS: readonly string[] = [KEY.feature.PROMO_CODE, 'taxi', KEY.feature.POOL_PARTY, 'allin'];
+const SUGGEST_STYLES: readonly TagKey[] = [KEY.genre.SALSA, KEY.genre.ZOUK, KEY.genre.BACHATA, KEY.genre.KOMPA];
+const SUGGEST_HIGHLIGHTS: readonly TagKey[] = [KEY.feature.PROMO_CODE, 'taxi', KEY.feature.POOL_PARTY, 'allin'];
 const SUGGEST_COUNTRIES = 4;
 
 // what the search finds: each kind of thing with what its row shows and where picking it goes
@@ -84,7 +86,7 @@ type Item = Base &
     | { kind: 'artist'; a: FoundArtist; shares: boolean }
     | { kind: 'country'; country: { code: string; name: string }; n: number }
     | { kind: 'city'; city: City }
-    | { kind: 'tag'; key: string; params: Params; n: number; icon: string | null; style: boolean }
+    | { kind: 'tag'; key: TagKey; params: Params; n: number; icon: string | null; style: boolean }
   );
 interface City {
   city: string;
@@ -225,7 +227,7 @@ function placeEntries(pool: readonly Festival[]): Indexed[] {
 // no festival coming up has is left out.
 const UNDERSCORES = /_/gu;
 interface Tag {
-  key: string;
+  key: TagKey;
   name: string;
   params: Params;
   test: (e: Festival) => boolean;
@@ -240,20 +242,13 @@ function tagEntries(pool: readonly Festival[]): Indexed[] {
       test: (e: Festival) => hasWith(e, key),
       icon: isDance(key) ? null : icon(key),
     })),
-    {
-      key: 'taxi',
-      name: text('feature', KEY.feature.TAXI_DANCERS),
-      params: { taxi: 1 },
-      test: (e) => e.taxi_dancers === true,
-      icon: icon(KEY.feature.TAXI_DANCERS),
-    },
-    {
-      key: 'allin',
-      name: text('feature', KEY.feature.ALL_IN_ONE),
-      params: { allin: 1 },
-      test: (e) => e.all_in_one === true,
-      icon: icon(KEY.feature.ALL_IN_ONE),
-    },
+    ...CHECKED.map(([key, feature, has]) => ({
+      key,
+      name: text('feature', feature),
+      params: { [key]: 1 },
+      test: has,
+      icon: icon(feature),
+    })),
   ];
   return tags.flatMap(({ key, name, params, test, icon: svg }): Indexed[] => {
     const n = pool.filter(test).length;
@@ -544,7 +539,7 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
 
   // before anything is typed: things to tap
   function suggest(all: readonly Item[]): void {
-    const by = (keys: readonly string[]) =>
+    const by = (keys: readonly TagKey[]) =>
       keys.flatMap((k) => all.find((item) => item.kind === 'tag' && item.key === k) ?? []);
     const countries = all
       .filter((item): item is Found<'country'> => item.kind === 'country')

@@ -5,7 +5,18 @@ import { addDays, today } from './days.ts';
 import { site } from './db.ts';
 import { h, type Kid, nodes } from './dom.ts';
 import { eventCard } from './eventcard.ts';
-import { changed, type Festival, festivals, hasWith, isWith, readState, WITH, withPhrase } from './festivals.ts';
+import {
+  CHECKED,
+  type Checked,
+  changed,
+  type Festival,
+  festivals,
+  hasWith,
+  isWith,
+  readState,
+  WITH,
+  withPhrase,
+} from './festivals.ts';
 import { artistHint, blanksHint, exploreHint } from './hints.ts';
 import { currency, money, step } from './money.ts';
 import { friendsIn } from './plans.ts';
@@ -22,12 +33,10 @@ type Choices = {
   country: string;
   with: string;
   friends: number;
-  taxi: number;
-  allin: number;
   lineup: number;
   unchecked: number;
   sort: string;
-};
+} & Record<Checked, number>;
 const DEFAULTS: Readonly<Choices> = {
   months: 6,
   reach: 150,
@@ -136,8 +145,7 @@ function matches(all: readonly Festival[], s: Readonly<Choices>): Festival[] {
         (!s.country || e.country_code === s.country) &&
         (!s.with || (isWith(s.with) && hasWith(e, s.with))) &&
         (!s.friends || e.goers.some((g) => g.featured)) &&
-        (!s.taxi || Boolean(e.taxi_dancers)) &&
-        (!s.allin || Boolean(e.all_in_one)) &&
+        CHECKED.every(([k, , has]) => !s[k] || has(e)) &&
         (e.lineup ?? 0) >= s.lineup,
     )
     .sort(
@@ -349,8 +357,7 @@ export function sentenceView(
       'div',
       { class: 'checks' },
       check('friends', 'Only festivals friends go to'),
-      check('taxi', text('feature', KEY.feature.TAXI_DANCERS)),
-      check('allin', text('feature', KEY.feature.ALL_IN_ONE)),
+      ...CHECKED.map(([k, feature]) => check(k, text('feature', feature))),
       check('unchecked', 'Include festivals with unknown prices'),
     ),
   ];
