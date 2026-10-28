@@ -1,26 +1,44 @@
-"""Every suppressed check is listed here, by module and rules: a noqa or pyright ignore names its rules (and a noqa its
-reason, in parentheses), a biome-ignore its rule and reason, a @ts-expect-error its reason, and adding one, dropping one
-or moving one to another module changes this list. Rules ignored for a whole file are in pyproject.toml and biome.jsonc,
-each with its reason."""
+"""Every suppressed check is listed here, by module and rule, and adding one, dropping one or moving one to another
+module changes this list. What ruff's noqa comments suppress is what ruff itself reports once it ignores them, so a
+suppression of any form counts (a file's `# ruff: noqa` included); each noqa names its rules and its reason, in
+parentheses, and a pyright comment is only ever `pyright: ignore[rules]`. On the site, a biome-ignore names its rule and
+reason, a @ts-expect-error its reason. Rules ignored for a whole file are in pyproject.toml and biome.jsonc, each with
+its reason."""
 
 import io
 import re
+import subprocess
+import sys
 import tokenize
 from collections import Counter
 from pathlib import Path
+
+from pydantic import BaseModel, TypeAdapter
 
 from pipeline import ROOT
 
 NOQA = re.compile(r'# noqa: (?P<rules>[A-Z]+\d+(?:, [A-Z]+\d+)*) \((?P<reason>[^)]+)\)$')
 PYRIGHT = re.compile(r'# pyright: ignore\[(?P<rules>\w+(?:, \w+)*)\]$')
-SUPPRESSION = re.compile(r'# (?:noqa|pyright: ?ignore|type: ?ignore)[^#]*')
+
+
+class Finding(BaseModel):
+    """One of ruff's findings, as its JSON output gives it."""
+
+    filename: str
+    code: str
+
+
+FINDINGS = TypeAdapter(list[Finding])
+# any comment a checker reads as a directive, however it is spelled
+SUPPRESSION = re.compile(r'#\s*(?:noqa|ruff\s*:|pyright\s*:|type\s*:\s*ignore)[^#]*', re.IGNORECASE)
 ALLOWED = Counter(
     {
         ('pipeline/build_site_db.py', 'S608'): 6,
         ('pipeline/extract/check_output.py', 'S105'): 1,
         ('pipeline/extract/load_extract.py', 'S608'): 2,
         ('pipeline/fares.py', 'S603'): 1,
-        ('pipeline/read_page.py', 'S606, S607'): 1,
+        ('pipeline/read_page.py', 'S606'): 1,
+        ('pipeline/read_page.py', 'S607'): 1,
         ('pipeline/scrape.py', 'S608'): 3,
         ('pipeline/web.py', 'S310'): 2,
         ('tests/exports.py', 'S608'): 3,
@@ -30,6 +48,7 @@ ALLOWED = Counter(
         ('tests/test_fetching.py', 'S608'): 1,
         ('tests/test_records.py', 'S607'): 1,
         ('tests/test_structure.py', 'S603'): 1,
+        ('tests/test_suppressions.py', 'S603'): 1,
         ('tests/test_states.py', 'reportArgumentType'): 4,
         ('tests/test_states.py', 'reportCallIssue'): 1,
         ('tests/test_states.py', 'reportIndexIssue'): 1,
@@ -73,21 +92,38 @@ def test_every_site_suppression_is_allowed() -> None:
     assert found == SITE_ALLOWED
 
 
-def suppressions(path: Path) -> list[str]:
-    """The rules each suppressing comment of a module names; a comment that suppresses without naming them fails."""
-    out: list[str] = []
+def ruff(*options: str) -> Counter[tuple[str, str]]:
+    """What ruff reports, by module and rule."""
+    out = subprocess.run(  # noqa: S603 (ruff, from this environment)
+        [sys.executable, '-m', 'ruff', 'check', '--output-format', 'json', '--no-cache', '--exit-zero', *options],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=True,
+    ).stdout
+    found = FINDINGS.validate_json(out)
+    return Counter((Path(f.filename).relative_to(ROOT).as_posix(), f.code) for f in found)
+
+
+def pyright_ignored(path: Path) -> list[tuple[str, str]]:
+    """The rules each pyright ignore of a module names, checking every suppressing comment's form on the way."""
+    out: list[tuple[str, str]] = []
     for tok in tokenize.generate_tokens(io.StringIO(path.read_text()).readline):
         if tok.type != tokenize.COMMENT:
             continue
         for part in SUPPRESSION.finditer(tok.string):
             text = part[0].rstrip()
-            found = NOQA.fullmatch(text) or PYRIGHT.fullmatch(text)
-            assert found, f'{path.relative_to(ROOT)}:{tok.start[0]}: {text!r} names no rules (or no reason)'
-            out.append(found['rules'])
+            where = f'{path.relative_to(ROOT)}:{tok.start[0]}'
+            if found := PYRIGHT.fullmatch(text):
+                out += [(path.relative_to(ROOT).as_posix(), r) for r in found['rules'].split(', ')]
+            else:
+                assert NOQA.fullmatch(text), (
+                    f'{where}: {text!r} is no noqa naming its rules and reason, nor pyright ignore'
+                )
     return out
 
 
 def test_every_suppression_is_allowed() -> None:
     files = sorted([*ROOT.glob('pipeline/**/*.py'), *ROOT.glob('tests/**/*.py')])
-    found = Counter((p.relative_to(ROOT).as_posix(), rules) for p in files for rules in suppressions(p))
+    found = ruff('--ignore-noqa') - ruff() + Counter(k for p in files for k in pyright_ignored(p))
     assert found == ALLOWED
