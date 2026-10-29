@@ -5,7 +5,7 @@ import type { GeometryCollection, Topology } from 'topojson-specification';
 import { q, sql } from './db.ts';
 import { button, dropdown, h, moreButton } from './dom.ts';
 import { eventCard } from './eventcard.ts';
-import { changed, type Festival, readState, withDetails } from './festivals.ts';
+import { changed, type Festival, leftOut, readState, withDetails } from './festivals.ts';
 import { currency, money, step, within } from './money.ts';
 import { cityOf, cityOnMapHref, eventOnMapHref, mapHref, type Show, showInAddressBar } from './routes.ts';
 import { EVENT } from './rows.ts';
@@ -119,7 +119,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     placed,
   );
   const byId = new Map(events.map((e) => [e.id, e]));
-  const url = readState(qs, DEFAULTS, {
+  const { state: url, dropped } = readState(qs, DEFAULTS, {
     when: WHEN.map(([v]) => v),
     color: Object.keys(COLOR_BY),
     country: ['', ...new Set(events.flatMap((e) => e.country_code ?? []))],
@@ -187,6 +187,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
       h('div', { class: 'map-split' }, mapEl, panel),
     ),
   );
+  leftOut(root, dropped);
 
   // the sheet on phones: peeks with its title, slides up for the list
   const setSheet = (up: boolean) => {

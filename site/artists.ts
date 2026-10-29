@@ -3,7 +3,7 @@
 import { one, q, Sql, sql } from './db.ts';
 import { button, dropdown, h, type Kid, moreButton, segments } from './dom.ts';
 import { eventCard } from './eventcard.ts';
-import { changed, type Festival, readState, withDetails } from './festivals.ts';
+import { changed, type Festival, leftOut, readState, withDetails } from './festivals.ts';
 import { alsoGoingTo, peopleOf } from './plans.ts';
 import { alone, roleLabel } from './roles.ts';
 import { artistHref, artistsHref, eventOnMapHref, personHref, type Show, showInAddressBar } from './routes.ts';
@@ -59,18 +59,19 @@ const DEFAULTS: { q: string; role: string; country: string; sort: string; popula
   kind: '',
 };
 
+// the countries the list can be narrowed to, by name: those its artists were booked in (artist_countries)
+export const artistCountries = (): string[] =>
+  q({ c: str }, sql`SELECT DISTINCT country_code AS c FROM artist_countries WHERE country_code IS NOT NULL`)
+    .map((r) => r.c)
+    .sort((a, b) => countryName(a).localeCompare(countryName(b)));
+
 export const artistsView: Show = (root, sub, qs, { signal }) => {
   if (sub[0]) {
     artistPage(root, Number(sub[0]));
     return;
   }
-  const countries = q(
-    { c: str },
-    sql`SELECT DISTINCT country_code AS c FROM artist_countries WHERE country_code IS NOT NULL`,
-  )
-    .map((r) => r.c)
-    .sort((a, b) => countryName(a).localeCompare(countryName(b)));
-  const st = readState(qs, DEFAULTS, {
+  const countries = artistCountries();
+  const { state: st, dropped } = readState(qs, DEFAULTS, {
     role: ROLES.map(([v]) => v),
     kind: KINDS.map(([v]) => v),
     sort: Object.keys(ORDERS),
@@ -161,6 +162,7 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
       showMore,
     ),
   );
+  leftOut(root, dropped);
 
   function render() {
     showInAddressBar(artistsHref(changed(st, DEFAULTS)));

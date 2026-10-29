@@ -14,6 +14,7 @@ import {
   flightEur,
   hasWith,
   isWith,
+  leftOut,
   readState,
   WITH,
   withPhrase,
@@ -159,7 +160,7 @@ export function sentenceView(
 ): void {
   let all: Festival[] | null = null; // the festivals, once the database is in
   const countries = site().destinations;
-  const s: Choices = readState(qs, DEFAULTS, {
+  const { state: s, dropped }: { state: Choices; dropped: string[] } = readState(qs, DEFAULTS, {
     months: WHEN.map(([v]) => v),
     reach: PRICE.map(([v]) => v),
     country: ['', ...countries.map((c) => c.code)],
@@ -374,6 +375,7 @@ export function sentenceView(
   }
   if (blanksHint.seen()) hero.classList.add('hints-done');
   root.replaceChildren(h('div', { class: 'sentence-page' }, hero, bar, results));
+  leftOut(root, dropped);
   rotate(dance, n, signal);
   // sit flush under the site header, whatever its height on this screen
   const header = document.querySelector('header.top');

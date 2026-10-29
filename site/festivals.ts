@@ -1,7 +1,7 @@
 // The festivals the site works with, in the shape every card expects, and the small helpers the festival
 // views share.
 import { q, sql } from './db.ts';
-import type { Kid } from './dom.ts';
+import { h, type Kid } from './dom.ts';
 import { MORE_TRAITS, TRAITS } from './icons.ts';
 import { convert, rounded } from './money.ts';
 import { priceToday } from './passes.ts';
@@ -138,23 +138,32 @@ export const CHECKED = [
 ] as const;
 export type Checked = (typeof CHECKED)[number][0];
 
-// A view's state in the URL. Each key keeps the type of its default; a value not in `allowed` keeps the default.
+// A view's state in the URL. Each key keeps the type of its default; a value not in `allowed` keeps the default, and is
+// named among the dropped (key=value), for the view to say so (leftOut); a key the defaults don't have is no state.
 type Defaults = Readonly<Record<string, string | number>>;
 export function readState<D extends Defaults>(
   qs: string,
   defaults: D,
   allowed: { readonly [K in keyof D]?: readonly D[K][] } = {},
-): { -readonly [K in keyof D]: D[K] } {
+): { state: { -readonly [K in keyof D]: D[K] }; dropped: string[] } {
   const s: Record<string, string | number> = { ...defaults };
+  const dropped: string[] = [];
   for (const [k, v] of new URLSearchParams(qs)) {
+    if (!Object.hasOwn(defaults, k)) continue; // not even an inherited one, such as constructor
     const d = defaults[k];
-    if (d === undefined) continue;
     const x = typeof d === 'number' ? Number(v) : v;
     const ok: readonly (string | number)[] | undefined = allowed[k];
     if (ok ? ok.includes(x) : typeof x !== 'number' || Number.isFinite(x)) s[k] = x;
+    else dropped.push(`${k}=${v}`);
   }
   // biome-ignore lint/nursery/noUnsafeTypeAssertion: s starts as the defaults and takes only values of their types
-  return s as { -readonly [K in keyof D]: D[K] };
+  return { state: s as { -readonly [K in keyof D]: D[K] }, dropped };
+}
+// what an address asked that the view has no such choice for, said at the top of the view
+export function leftOut(root: HTMLElement, dropped: readonly string[]): void {
+  if (dropped.length === 0) return;
+  const said = `The link asks for ${dropped.join(', ')}, which ${dropped.length === 1 ? 'is' : 'are'} not among the choices here.`;
+  root.prepend(h('p', { class: 'muted left-out', role: 'status' }, said));
 }
 // The part of a state that differs from the defaults, for the URL.
 export const changed = (s: Defaults, defaults: Defaults): Record<string, string | number> =>

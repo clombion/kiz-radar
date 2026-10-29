@@ -1,8 +1,10 @@
 // Countries: which scenes are worth a trip from home. One row per country: what's coming up, what the
 // flights to those festivals cost, and what the scene is like.
+
+import { artistCountries } from './artists.ts';
 import { one, q, sql } from './db.ts';
 import { h, segments } from './dom.ts';
-import { changed, readState } from './festivals.ts';
+import { changed, leftOut, readState } from './festivals.ts';
 import { money, within } from './money.ts';
 import { artistsHref, countriesHref, festivalsHref, mapHref, showInAddressBar } from './routes.ts';
 import { num, opt, str } from './rows.ts';
@@ -26,7 +28,7 @@ const scene = (pct: number | null) =>
         ? 'Local and visiting artists'
         : 'Mostly local artists';
 
-const DEFAULTS: { sort: string; all: number } = { sort: 'upcoming', all: 0 };
+const DEFAULTS: { sort: Sort; all: number } = { sort: 'upcoming', all: 0 };
 // a country's line, from country_stats and its festivals coming up
 const COUNTRY = {
   country_code: str,
@@ -44,7 +46,8 @@ type Country = { [K in keyof typeof COUNTRY]: ReturnType<(typeof COUNTRY)[K]> } 
 };
 
 export function countriesView(root: HTMLElement, qs: string): void {
-  const st = readState(qs, DEFAULTS, { sort: SORTS.map(([v]) => v), all: [0, 1] });
+  const { state: st, dropped } = readState(qs, DEFAULTS, { sort: SORTS.map(([v]) => v), all: [0, 1] });
+  const withArtists = new Set(artistCountries());
   // the cheapest Fri→Mon return to any of the country's upcoming festivals, and the city it lands in
   const fares = new Map(
     q(
@@ -101,6 +104,7 @@ export function countriesView(root: HTMLElement, qs: string): void {
       list,
     ),
   );
+  leftOut(root, dropped);
 
   function render() {
     showInAddressBar(countriesHref(changed(st, DEFAULTS)));
@@ -116,10 +120,10 @@ export function countriesView(root: HTMLElement, qs: string): void {
       fare: (a, b) => (a.fare?.price ?? 1e9) - (b.fare?.price ?? 1e9) || up(b) - up(a),
       open: (a, b) => (b.imported_pct ?? -1) - (a.imported_pct ?? -1) || up(b) - up(a),
     };
-    const by = orders[SORTS.find(([v]) => v === st.sort)?.[0] ?? 'upcoming'];
+    const by = orders[st.sort];
     const shown = rows.filter((r) => st.all || r.upcoming).sort(by);
     summary.textContent = `${shown.length} countries${st.all || last === null ? ' in the listings' : ` with festivals until ${monthYear(last)}`}`;
-    list.replaceChildren(...shown.map(row));
+    list.replaceChildren(...shown.map((r) => row(r, withArtists)));
   }
   render();
 }
@@ -155,7 +159,7 @@ function sceneLine(r: Country): HTMLElement | null {
         (r.unknown_country ? ` (${r.unknown_country} of unknown country)` : '');
   return h('p', { class: 'c-fact', title }, line);
 }
-function row(r: Country): HTMLElement {
+function row(r: Country, artists: ReadonlySet<string>): HTMLElement {
   return h(
     'li',
     { class: 'country-row' },
@@ -182,8 +186,10 @@ function row(r: Country): HTMLElement {
         ? [h('a', { href: festivalsHref({ country: r.country_code, months: 12 }) }, 'Festivals'), ' · ']
         : null,
       h('a', { href: mapHref({ country: r.country_code, when: r.upcoming ? 'upcoming' : 'all' }) }, 'Map'),
-      ' · ',
-      h('a', { href: artistsHref({ country: r.country_code }) }, 'Artists'),
+      // the artist list narrowed to it, where the list has it (artists.artistCountries)
+      artists.has(r.country_code)
+        ? [' · ', h('a', { href: artistsHref({ country: r.country_code }) }, 'Artists')]
+        : null,
     ),
   );
 }
