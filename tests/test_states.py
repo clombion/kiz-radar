@@ -303,3 +303,10 @@ def test_no_keys_are_an_empty_list() -> None:
     """A CHECK over none of a point's keys refuses every value, rather than admitting them all."""
     assert states.sql_in('role', ()) == ''
     assert states.sql_in('role', ['dj']) == "'dj'"
+
+
+def test_a_role_an_artist_is_booked_in_says_what_they_do_there() -> None:
+    """A plan says what someone booked at a festival does there (plans.ts), in the role's doing form."""
+    with pytest.raises(ValueError, match='doing form'):
+        _ = states.State('role', 'x', 'X', states.Disposition.VIEW, counts=states.Counts.BOOKING)
+    assert all('doing' in states.state('role', r).forms for r in states.counted(states.Counts.BOOKING))

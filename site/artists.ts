@@ -5,11 +5,12 @@ import { button, dropdown, h, type Kid, moreButton, segments } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { changed, type Festival, readState, withDetails } from './festivals.ts';
 import { alsoGoingTo, peopleOf } from './plans.ts';
+import { alone, roleLabel } from './roles.ts';
 import { artistHref, artistsHref, eventOnMapHref, personHref, type Show, showInAddressBar } from './routes.ts';
 import { ARTIST_STATS, EVENT, flag as flagCol, num, opt, type RowOf, state, str } from './rows.ts';
 import { KEY } from './states.ts';
 import { countryName, dayMonth, dayYear, flag, place } from './ui.ts';
-import { hasForm, text, type WithForm, where } from './wording.ts';
+import { hasForm, text, where } from './wording.ts';
 
 const PAGE = 60;
 const festivals = (n: number) => `${n} festival${n === 1 ? '' : 's'}`;
@@ -18,19 +19,6 @@ const festivals = (n: number) => `${n} festival${n === 1 ? '' : 's'}`;
 const ARTIST = { ...ARTIST_STATS, display_name: str, kind: state('artist_kind') } as const;
 type Artist = RowOf<typeof ARTIST>;
 
-// "Teaching couple", "Teacher & DJ", "DJ": the roles an artist is booked in (artist_stats counts each by its key)
-const BOOKED = [KEY.role.TEACHER, KEY.role.DJ, KEY.role.PERFORMER] as const;
-const alone = (r: WithForm<'role', 'singular'>) => text('role', r, {}, 'singular');
-export function roleLabel(a: Pick<Artist, 'kind' | 'teacher' | 'dj' | 'performer'>): string | null {
-  if (a.kind === KEY.artist_kind.COUPLE)
-    return a.teacher || a.performer
-      ? text('role', a.teacher ? KEY.role.TEACHER : KEY.role.PERFORMER, {}, 'pair')
-      : text('artist_kind', a.kind, {}, 'singular');
-  const roles = BOOKED.filter((r) => a[r] > 0).map(alone);
-  return roles.length > 1
-    ? roles.slice(0, 2).join(' & ')
-    : (roles[0] ?? text('artist_kind', KEY.artist_kind.PERSON, {}, 'singular'));
-}
 // the roles a site shows, of a festival's comma-separated ones
 const SHOWN = where('role', 'view');
 const roleWords = (roles: string) =>
@@ -330,8 +318,11 @@ const comingUp = (upcoming: readonly Festival[]) =>
   );
 
 // the festivals the people they are said they're going to without teaching there
-function alsoGoing(people: ReturnType<typeof peopleOf>): HTMLElement | null {
-  const ids = alsoGoingTo(people.map((p) => p.id));
+function alsoGoing(people: ReturnType<typeof peopleOf>, shown: readonly Festival[]): HTMLElement | null {
+  const ids = alsoGoingTo(
+    people.map((p) => p.id),
+    shown.map((e) => e.id),
+  );
   if (ids.length === 0) return null;
   const going = withDetails(
     q(EVENT, sql`SELECT * FROM event_rows WHERE id IN (SELECT value FROM json_each(?)) ORDER BY start_date`, [
@@ -497,7 +488,7 @@ function artistPage(root: HTMLElement, id: number): void {
       h('a', { href: artistsHref(), class: 'back-link' }, '← All artists'),
       head(a, stats, members, couples),
       comingUp(events.filter((e) => e.upcoming)),
-      alsoGoing(peopleOf(id)),
+      alsoGoing(peopleOf(id), events),
       bookedIn(id, couples.length > 0 && a.kind !== KEY.artist_kind.COUPLE),
       pastList(
         id,

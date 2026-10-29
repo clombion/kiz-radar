@@ -95,6 +95,9 @@ class State:
 
     def __post_init__(self) -> None:
         object.__setattr__(self, 'forms', types.MappingProxyType(dict(self.forms)))
+        if self.counts in {Counts.LINEUP, Counts.BOOKING} and 'doing' not in self.forms:
+            # what someone booked in it is doing at a festival: a plan says it of them (plans.ts)
+            raise ValueError(f'{self.point} {self.key}: a role an artist is booked in needs its doing form')
 
 
 P, S = Point, State
@@ -364,6 +367,13 @@ ROWS = (
         "no first read, and the description's prices answer gives the pass a card prices no dated price",
         WAITS,
         owner='the next run, once its page has a recipe',
+    ),
+    S(
+        'first_read',
+        'past',
+        "no first read, the description's prices answer gives the pass a card prices no dated price, and the "
+        'festival is over: no run reads its page any more',
+        KEPT,
     ),
     S(
         'first_read',
@@ -736,20 +746,28 @@ ROWS = (
         'couples and solo teachers)',
         VIEW,
         'Teachers',
-        forms={'singular': 'Teacher', 'pair': 'Teaching couple'},
+        forms={'singular': 'Teacher', 'pair': 'Teaching couple', 'doing': 'teaching'},
         counts=LINEUP,
     ),
-    S('role', 'dj', 'DJs', VIEW, 'DJs', forms={'singular': 'DJ'}, counts=LINEUP),
+    S('role', 'dj', 'DJs', VIEW, 'DJs', forms={'singular': 'DJ', 'doing': 'playing'}, counts=LINEUP),
     S(
         'role',
         'performer',
         'Singers, bands, musicians, show dancers and guest dancers who perform rather than teach',
         VIEW,
         'Performers',
-        forms={'singular': 'Performer', 'pair': 'Performing couple'},
+        forms={'singular': 'Performer', 'pair': 'Performing couple', 'doing': 'performing'},
         counts=BOOKING,
     ),
-    S('role', 'mc', 'MCs, hosts, presenters of the event', VIEW, 'MCs', forms={'singular': 'MC'}, counts=BOOKING),
+    S(
+        'role',
+        'mc',
+        'MCs, hosts, presenters of the event',
+        VIEW,
+        'MCs',
+        forms={'singular': 'MC', 'doing': 'hosting'},
+        counts=BOOKING,
+    ),
     S(
         'role',
         'organiser',
@@ -1074,6 +1092,7 @@ def ts_module() -> str:
                 'forms': dict(s.forms),
                 'icon': s.icon,
                 'link': s.link and str(s.link),
+                'counts': s.counts and str(s.counts),
             }
             for s in of(p)
         }
@@ -1084,6 +1103,7 @@ def ts_module() -> str:
         '// Written from pipeline/states.py (states.ts_module), which owns every state and its words: edit them '
         'there,\n// then run: mise run generate.\n\n'
         f'export type Disposition = {" | ".join(json.dumps(str(d)) for d in Disposition)};\n'
+        f'export type Counts = {" | ".join(json.dumps(str(c)) for c in Counts)};\n'
         '// what the site has of a state: how it is shown, its words and their named forms, its icon, what it links '
         'to\n'
         'export interface StateRow {\n'
@@ -1092,6 +1112,7 @@ def ts_module() -> str:
         '  readonly forms: Readonly<Record<string, string>>;\n'
         '  readonly icon: string | null;\n'
         '  readonly link: string | null;\n'
+        '  readonly counts: Counts | null;\n'
         '}\n\n'
         f'export const STATES = {json.dumps(rows, ensure_ascii=False, indent=1)} as const satisfies Readonly<\n'
         '  Record<string, Readonly<Record<string, StateRow>>>\n'

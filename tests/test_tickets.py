@@ -1161,6 +1161,8 @@ FIRST_READ_CASES: list[tuple[dict[str, object], FirstReadState]] = [
     ({'first_read': None, 'described': None}, FirstReadState.AWAITS_ANSWER),
     ({'first_read': None, 'described': None, 'description': ''}, FirstReadState.NONE),  # nothing to answer
     ({'first_read': None, 'described': described(card(until=None))}, FirstReadState.NONE),
+    ({'first_read': None, 'described': described(card(until=None)), 'over': True}, FirstReadState.PAST),  # unread now
+    ({'first_read': STAMPED, 'over': True}, FirstReadState.REDO_PROMPT),  # made again from its logged rows
     ({'first_read': None, 'described': described(card(kind=PassKind.PARTY))}, FirstReadState.NONE),  # not the card's
     ({'first_read': None, 'described': described(card(until='2026-10-31'))}, FirstReadState.NONE),
     ({'first_read': None, 'described': described(card())}, FirstReadState.NOT_NEEDED),

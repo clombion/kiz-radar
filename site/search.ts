@@ -5,7 +5,6 @@
 // Picking a result goes where that kind of thing lives: a festival opens on the map, an artist on their page, a city
 // on the map, and a country, style or highlight narrows the festival list, keeping its other choices.
 
-import { roleLabel } from './artists.ts';
 import { today } from './days.ts';
 import { q, site, sql } from './db.ts';
 import { button, h, type Kid } from './dom.ts';
@@ -13,6 +12,7 @@ import { CHECKED, type Checked, type Festival, festivals, hasWith, isDance, WITH
 import { icon } from './icons.ts';
 import { leaving, modal } from './modal.ts';
 import { person } from './plans.ts';
+import { roleLabel } from './roles.ts';
 import {
   artistHref,
   artistsHref,
@@ -23,7 +23,7 @@ import {
   type Params,
   personHref,
 } from './routes.ts';
-import { flag as flagCol, num, opt, PLACE_AND_DAYS, type RowOf, state, str } from './rows.ts';
+import { BOOKINGS, flag as flagCol, num, opt, PLACE_AND_DAYS, type RowOf, state, str } from './rows.ts';
 import { KEY } from './states.ts';
 import { away, dayMonth, flag, place } from './ui.ts';
 import { text } from './wording.ts';
@@ -64,9 +64,7 @@ const FOUND_ARTIST = {
   display_name: str,
   kind: state('artist_kind'),
   bookings: num,
-  teacher: num,
-  dj: num,
-  performer: num,
+  ...BOOKINGS,
   home_country: opt(str),
 } as const;
 type FoundArtist = RowOf<typeof FOUND_ARTIST>;
@@ -185,7 +183,7 @@ function artistEntries(): Indexed[] {
     aliases.set(a.artist_id, [...(aliases.get(a.artist_id) ?? []), a.alias]);
   return q(
     FOUND_ARTIST,
-    sql`SELECT a.id, a.display_name, a.kind, s.bookings, s.teacher, s.dj, s.performer, s.home_country FROM artist_stats s
+    sql`SELECT a.id, a.display_name, a.kind, s.bookings, s.teacher, s.dj, s.performer, s.mc, s.home_country FROM artist_stats s
       JOIN artists a ON a.id = s.artist_id`,
   ).map((a) => [
     { kind: 'artist', name: a.display_name, a, shares: sharing.has(a.id), rank: a.bookings },

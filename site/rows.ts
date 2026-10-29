@@ -2,7 +2,7 @@
 // reads every row by its shape and fails on a column it doesn't have or a value of another type, so a row's type is
 // its shape's and nothing past this module meets an unread value.
 import type { SqlValue } from 'sql.js';
-import { isKey, type Key, type Point } from './wording.ts';
+import { counted, isKey, type Key, type Point } from './wording.ts';
 
 export type Column<T> = (value: SqlValue | undefined, name: string) => T;
 export type Shape = Readonly<Record<string, Column<unknown>>>;
@@ -25,6 +25,13 @@ export const state =
   <P extends Point>(point: P): Column<Key<P>> =>
   (v, name) =>
     typeof v === 'string' && isKey(point, v) ? v : wrong(name, v, `${point} state`);
+// the roles an artist is booked in: their bookings count them, and a plan says what they do there (pipeline/states.py)
+export const BOOKED = counted('role', 'lineup', 'booking');
+export type Booked = (typeof BOOKED)[number];
+const bookedKeys: readonly string[] = BOOKED;
+const isBooked = (v: unknown): v is Booked => typeof v === 'string' && bookedKeys.includes(v);
+// a column holding a role an artist is booked in
+export const booked: Column<Booked> = (v, name) => (isBooked(v) ? v : wrong(name, v, 'role an artist is booked in'));
 // a comma-separated list of a point's states, empty when null
 const states =
   <P extends Point>(point: P): Column<Key<P>[]> =>
@@ -110,12 +117,16 @@ export const TIER = {
 } as const satisfies Shape;
 export type TierRow = RowOf<typeof TIER>;
 
+// an artist's festivals in each role they are booked in: artist_stats' column for each (the compiler holds the keys to
+// the booked roles)
+export const BOOKINGS = { teacher: num, dj: num, performer: num, mc: num } as const satisfies Readonly<
+  Record<Booked, Column<number>>
+>;
+
 export const ARTIST_STATS = {
   artist_id: num,
   bookings: num,
-  teacher: num,
-  dj: num,
-  performer: num,
+  ...BOOKINGS,
   first_date: opt(str),
   last_date: opt(str),
   home_country: opt(str),

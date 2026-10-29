@@ -163,6 +163,7 @@ class FirstRead(StrEnum):
 
     NOT_NEEDED = 'not_needed'
     NONE = 'none'
+    PAST = 'past'
     AWAITS_ANSWER = 'awaits_answer'
     CURRENT = 'current'
     REDO_PROMPT = 'redo_prompt'

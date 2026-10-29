@@ -2,6 +2,7 @@
 // then run: mise run generate.
 
 export type Disposition = "card" | "view" | "note" | "filter" | "kept" | "waits";
+export type Counts = "lineup" | "booking" | "present";
 // what the site has of a state: how it is shown, its words and their named forms, its icon, what it links to
 export interface StateRow {
   readonly disposition: Disposition;
@@ -9,6 +10,7 @@ export interface StateRow {
   readonly forms: Readonly<Record<string, string>>;
   readonly icon: string | null;
   readonly link: string | null;
+  readonly counts: Counts | null;
 }
 
 export const STATES = {
@@ -18,21 +20,24 @@ export const STATES = {
    "wording": null,
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "skipped": {
    "disposition": "kept",
    "wording": null,
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "unread": {
    "disposition": "waits",
    "wording": "The ticket page has more tickets than shown here",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   }
  },
  "pass_kind": {
@@ -41,42 +46,48 @@ export const STATES = {
    "wording": "Full pass",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "party": {
    "disposition": "view",
    "wording": "Party pass",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "day": {
    "disposition": "view",
    "wording": "Day pass",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "workshop": {
    "disposition": "view",
    "wording": "Workshop pass",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "package": {
    "disposition": "view",
    "wording": "Package",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "other": {
    "disposition": "view",
    "wording": "Pass",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   }
  },
  "style": {
@@ -85,35 +96,40 @@ export const STATES = {
    "wording": "Kizomba",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "zouk": {
    "disposition": "view",
    "wording": "Zouk",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "bachata": {
    "disposition": "view",
    "wording": "Bachata",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "salsa": {
    "disposition": "view",
    "wording": "Salsa",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "other": {
    "disposition": "view",
    "wording": "Other style",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   }
  },
  "people": {
@@ -122,28 +138,32 @@ export const STATES = {
    "wording": null,
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "couple": {
    "disposition": "view",
    "wording": "for a couple",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "group": {
    "disposition": "view",
    "wording": "for {n}",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "per_room": {
    "disposition": "view",
    "wording": null,
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   }
  },
  "fee": {
@@ -152,14 +172,16 @@ export const STATES = {
    "wording": null,
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "included": {
    "disposition": "view",
    "wording": "incl. {fee} fee",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   }
  },
  "hotel": {
@@ -168,14 +190,16 @@ export const STATES = {
    "wording": "with hotel",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "none": {
    "disposition": "view",
    "wording": null,
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   }
  },
  "pass_source": {
@@ -186,7 +210,8 @@ export const STATES = {
     "link": "The festival on kizomba-world"
    },
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "ticket_page": {
    "disposition": "view",
@@ -196,7 +221,8 @@ export const STATES = {
     "link": "The ticket page"
    },
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   }
  },
  "price": {
@@ -205,63 +231,72 @@ export const STATES = {
    "wording": null,
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "other_passes_only": {
    "disposition": "note",
    "wording": "No full pass price",
    "forms": {},
    "icon": null,
-   "link": "passes"
+   "link": "passes",
+   "counts": null
   },
   "page_unread": {
    "disposition": "note",
    "wording": "Prices on the ticket page",
    "forms": {},
    "icon": null,
-   "link": "page"
+   "link": "page",
+   "counts": null
   },
   "page_empty": {
    "disposition": "note",
    "wording": "No tickets listed yet",
    "forms": {},
    "icon": null,
-   "link": "page"
+   "link": "page",
+   "counts": null
   },
   "not_yet": {
    "disposition": "note",
    "wording": "Tickets not on sale yet",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "offline": {
    "disposition": "note",
    "wording": "Tickets by message or form, no price online",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "closed": {
    "disposition": "note",
    "wording": "Ticket sales closed",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "none_found": {
    "disposition": "note",
    "wording": "No price published",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "not_looked": {
    "disposition": "note",
    "wording": "No price published",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   }
  },
  "tier_today": {
@@ -270,28 +305,32 @@ export const STATES = {
    "wording": "{price}",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "from": {
    "disposition": "view",
    "wording": "from {price}",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "next": {
    "disposition": "view",
    "wording": "{price}",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "sold_out": {
    "disposition": "view",
    "wording": "sold out",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "ended": {
    "disposition": "view",
@@ -300,7 +339,8 @@ export const STATES = {
     "all": "No passes on sale any more."
    },
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   }
  },
  "card_price": {
@@ -311,7 +351,8 @@ export const STATES = {
     "cost": "Cost {sum}, without accommodation"
    },
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "package": {
    "disposition": "card",
@@ -320,21 +361,24 @@ export const STATES = {
     "cost": "Cost {sum}, hotel included"
    },
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "sold_out": {
    "disposition": "card",
    "wording": "{pass} sold out",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "ended": {
    "disposition": "note",
    "wording": "Prices no longer listed",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   }
  },
  "next_change": {
@@ -345,7 +389,8 @@ export const STATES = {
     "after": "then {price} at the door"
    },
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "dated": {
    "disposition": "card",
@@ -354,7 +399,8 @@ export const STATES = {
     "after": "then {price} from {day}"
    },
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "later": {
    "disposition": "card",
@@ -363,7 +409,8 @@ export const STATES = {
     "after": "then {price} later"
    },
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   }
  },
  "genre": {
@@ -372,98 +419,112 @@ export const STATES = {
    "wording": "Kizomba",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "semba": {
    "disposition": "card",
    "wording": "Semba",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "urbankiz": {
    "disposition": "card",
    "wording": "Urban Kiz",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "tarraxo": {
    "disposition": "card",
    "wording": "Tarraxo",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "tarraxinha": {
    "disposition": "card",
    "wording": "Tarraxinha",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "douceur": {
    "disposition": "card",
    "wording": "Douceur",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "kompa": {
    "disposition": "card",
    "wording": "Kompa",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "zouk": {
    "disposition": "card",
    "wording": "Zouk",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "bachata": {
    "disposition": "card",
    "wording": "Bachata",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "salsa": {
    "disposition": "card",
    "wording": "Salsa",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "afro": {
    "disposition": "card",
    "wording": "Afro",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "reggaeton": {
    "disposition": "card",
    "wording": "Reggaeton",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "kuduro": {
    "disposition": "card",
    "wording": "Kuduro",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "other": {
    "disposition": "kept",
    "wording": null,
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   }
  },
  "feature": {
@@ -472,196 +533,224 @@ export const STATES = {
    "wording": "Promo code",
    "forms": {},
    "icon": "tag",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "all_levels_beginners": {
    "disposition": "card",
    "wording": "Beginner-friendly",
    "forms": {},
    "icon": "sprout",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "taxi_dancers": {
    "disposition": "card",
    "wording": "Taxi dancers",
    "forms": {},
    "icon": "hand-heart",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "accommodation_included": {
    "disposition": "card",
    "wording": "Hotel package",
    "forms": {},
    "icon": "bed-double",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "group_deals": {
    "disposition": "card",
    "wording": "Couple & group deals",
    "forms": {},
    "icon": "users",
-   "link": "passes"
+   "link": "passes",
+   "counts": null
   },
   "meals_included": {
    "disposition": "card",
    "wording": "Meal package",
    "forms": {},
    "icon": "utensils",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "transfers_shuttle": {
    "disposition": "card",
    "wording": "Airport shuttle",
    "forms": {},
    "icon": "bus",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "pool_party": {
    "disposition": "card",
    "wording": "Pool party",
    "forms": {},
    "icon": "waves",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "beach_party": {
    "disposition": "card",
    "wording": "Beach party",
    "forms": {},
    "icon": "sun",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "boat_party": {
    "disposition": "card",
    "wording": "Boat party",
    "forms": {},
    "icon": "sailboat",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "cruise": {
    "disposition": "card",
    "wording": "Cruise",
    "forms": {},
    "icon": "ship",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "live_music": {
    "disposition": "card",
    "wording": "Live music",
    "forms": {},
    "icon": "music",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "bootcamp_intensive": {
    "disposition": "card",
    "wording": "Bootcamp",
    "forms": {},
    "icon": "dumbbell",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "competition": {
    "disposition": "card",
    "wording": "Competition",
    "forms": {},
    "icon": "trophy",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "camping": {
    "disposition": "card",
    "wording": "Camping",
    "forms": {},
    "icon": "tent",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "masterclass": {
    "disposition": "view",
    "wording": "Masterclass",
    "forms": {},
    "icon": "graduation-cap",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "private_classes": {
    "disposition": "view",
    "wording": "Private classes",
    "forms": {},
    "icon": "circle-user",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "shows": {
    "disposition": "view",
    "wording": "Shows",
    "forms": {},
    "icon": "sparkles",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "themed_parties": {
    "disposition": "view",
    "wording": "Themed parties",
    "forms": {},
    "icon": "party-popper",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "pre_party": {
    "disposition": "view",
    "wording": "Pre-party",
    "forms": {},
    "icon": "moon",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "after_party": {
    "disposition": "view",
    "wording": "After-party",
    "forms": {},
    "icon": "moon",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "day_socials": {
    "disposition": "view",
    "wording": "Day socials",
    "forms": {},
    "icon": "sunrise",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "partner_hotel": {
    "disposition": "view",
    "wording": "Partner hotel",
    "forms": {},
    "icon": "hotel",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "multiple_rooms": {
    "disposition": "view",
    "wording": "Several rooms",
    "forms": {},
    "icon": "door-open",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "adults_only": {
    "disposition": "view",
    "wording": "18+ only",
    "forms": {},
    "icon": "circle-user",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "all_in_one": {
    "disposition": "filter",
    "wording": "All-in-one hotel",
    "forms": {},
    "icon": "bed-double",
-   "link": null
+   "link": null,
+   "counts": null
   },
   "workshops": {
    "disposition": "kept",
    "wording": null,
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "dress_code": {
    "disposition": "kept",
    "wording": null,
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   }
  },
  "role": {
@@ -670,38 +759,46 @@ export const STATES = {
    "wording": "Teachers",
    "forms": {
     "singular": "Teacher",
-    "pair": "Teaching couple"
+    "pair": "Teaching couple",
+    "doing": "teaching"
    },
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": "lineup"
   },
   "dj": {
    "disposition": "view",
    "wording": "DJs",
    "forms": {
-    "singular": "DJ"
+    "singular": "DJ",
+    "doing": "playing"
    },
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": "lineup"
   },
   "performer": {
    "disposition": "view",
    "wording": "Performers",
    "forms": {
     "singular": "Performer",
-    "pair": "Performing couple"
+    "pair": "Performing couple",
+    "doing": "performing"
    },
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": "booking"
   },
   "mc": {
    "disposition": "view",
    "wording": "MCs",
    "forms": {
-    "singular": "MC"
+    "singular": "MC",
+    "doing": "hosting"
    },
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": "booking"
   },
   "organiser": {
    "disposition": "view",
@@ -710,21 +807,24 @@ export const STATES = {
     "singular": "Organiser"
    },
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "media": {
    "disposition": "kept",
    "wording": null,
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": "present"
   },
   "crew": {
    "disposition": "kept",
    "wording": null,
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": "present"
   }
  },
  "artist_kind": {
@@ -735,7 +835,8 @@ export const STATES = {
     "singular": "Artist"
    },
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "couple": {
    "disposition": "view",
@@ -744,21 +845,24 @@ export const STATES = {
     "singular": "Couple"
    },
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "group": {
    "disposition": "kept",
    "wording": null,
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "organisation": {
    "disposition": "kept",
    "wording": null,
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   }
  },
  "home_basis": {
@@ -767,21 +871,24 @@ export const STATES = {
    "wording": "Home country added by hand.",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "stated": {
    "disposition": "view",
    "wording": "Home country as stated in line-ups.",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "contested": {
    "disposition": "view",
    "wording": "Line-ups name several countries for them, none more often.",
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   }
  },
  "listing": {
@@ -790,7 +897,8 @@ export const STATES = {
    "wording": null,
    "forms": {},
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   },
   "gone": {
    "disposition": "card",
@@ -799,7 +907,8 @@ export const STATES = {
     "search": "· no longer listed"
    },
    "icon": null,
-   "link": null
+   "link": null,
+   "counts": null
   }
  }
 } as const satisfies Readonly<

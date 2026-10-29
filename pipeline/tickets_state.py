@@ -143,6 +143,7 @@ NEEDS = states.total(
     {
         FirstReadState.NOT_NEEDED: False,
         FirstReadState.NONE: True,
+        FirstReadState.PAST: False,
         FirstReadState.AWAITS_ANSWER: False,
         FirstReadState.CURRENT: False,
         FirstReadState.REDO_PROMPT: True,
@@ -213,6 +214,8 @@ def why_first_read(f: Festival, today: dt.date) -> tuple[FirstReadState, tuple[s
                 if f.description and f.described is None
                 else FirstReadState.NOT_NEEDED
                 if f.described and dated_in_description(f.described.entry, f.start_date, today)
+                else FirstReadState.PAST
+                if f.over
                 else FirstReadState.NONE
             )
         case Stamped():

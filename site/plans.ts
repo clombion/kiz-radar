@@ -5,11 +5,22 @@ import { one, q, sql } from './db.ts';
 import type { Kid } from './dom.ts';
 import { button, h, nodes, own } from './dom.ts';
 import { leaving, type Peek, peek } from './modal.ts';
+import { roleLabel } from './roles.ts';
 import { artistHref, eventOnMapHref, personHref } from './routes.ts';
-import { flag as flagCol, num, opt, PLACE_AND_DAYS, type RowOf, state, str } from './rows.ts';
-import { KEY } from './states.ts';
+import {
+  BOOKINGS,
+  type Booked,
+  booked,
+  flag as flagCol,
+  num,
+  opt,
+  PLACE_AND_DAYS,
+  type RowOf,
+  state,
+  str,
+} from './rows.ts';
 import { countryName, dayRange, flag, place } from './ui.ts';
-import { type Key, text } from './wording.ts';
+import { text } from './wording.ts';
 
 // someone who said they're going to a festival, and what they're booked there as, if they are
 const GOER = {
@@ -18,14 +29,14 @@ const GOER = {
   name: str,
   featured: flagCol,
   event_id: num,
-  booked_as: opt(state('role')),
+  booked_as: opt(booked),
 } as const;
 export interface Goer {
   person_id: number;
   key: string;
   name: string;
   featured: boolean;
-  booked_as: Key<'role'> | null;
+  booked_as: Booked | null;
 }
 // a couple whose partners are all people here
 interface Couple {
@@ -111,15 +122,10 @@ function named(goers: readonly Goer[]): Named[] {
   return out;
 }
 
-const AS: Partial<Record<Key<'role'>, string>> = {
-  teacher: 'teaching',
-  dj: 'playing',
-  performer: 'performing',
-  mc: 'hosting',
-};
+// "teaching": what they do there, when every one of them is booked, as the first is; else they are going
 const doing = (people: readonly Pick<Goer, 'booked_as'>[]): string => {
   const role = people[0]?.booked_as;
-  return role && people.every((p) => p.booked_as) ? (AS[role] ?? 'going') : 'going';
+  return role && people.every((p) => p.booked_as) ? text('role', role, {}, 'doing') : 'going';
 };
 const faces = (people: readonly { name: string }[]) =>
   h(
@@ -213,7 +219,7 @@ const link = (href: string, ...kids: Kid[]) => leaving(peekDialog().m, href, ...
 const PLAN = {
   person_id: num,
   name: str,
-  booked_as: opt(state('role')),
+  booked_as: opt(booked),
   id: num,
   title: str,
   ...PLACE_AND_DAYS,
@@ -243,16 +249,16 @@ function aboutLine(g: Named): Kid {
     artistId === undefined
       ? undefined
       : one(
-          { teacher: num, dj: num, home_country: opt(str) },
-          sql`SELECT st.teacher, st.dj, st.home_country FROM artist_stats st JOIN artists a ON a.id = st.artist_id WHERE a.id = ?`,
+          { kind: state('artist_kind'), ...BOOKINGS, home_country: opt(str) },
+          sql`SELECT a.kind, st.teacher, st.dj, st.performer, st.mc, st.home_country
+          FROM artist_stats st JOIN artists a ON a.id = st.artist_id WHERE a.id = ?`,
           [artistId],
         );
   if (a === undefined) return 'Shares their festival plans';
-  const booked = [...(a.teacher ? [KEY.role.TEACHER] : []), ...(a.dj ? [KEY.role.DJ] : [])];
-  const role = (booked.length > 0 ? booked : [KEY.role.PERFORMER])
-    .map((r) => text('role', r, {}, g.people.length > 1 ? undefined : 'singular'))
-    .join(' & ');
-  return [role, a.home_country === null ? null : [' from ', flag(a.home_country), ' ', countryName(a.home_country)]];
+  return [
+    roleLabel(a),
+    a.home_country === null ? null : [' from ', flag(a.home_country), ' ', countryName(a.home_country)],
+  ];
 }
 
 // one festival they're going to, with which of them when only some are
@@ -339,14 +345,16 @@ export function person(key: string): {
     ),
   };
 }
-// The festivals still to come that some of these people said they're going to, where they aren't in the line-up.
-export const alsoGoingTo = (personIds: readonly number[]): number[] =>
+// The festivals still to come that some of these people said they're going to, where they aren't in the line-up,
+// leaving out the ones the page lists already (an artist's page lists every festival the artist is named at).
+export const alsoGoingTo = (personIds: readonly number[], listed: readonly number[]): number[] =>
   personIds.length > 0
     ? q(
         { event_id: num },
         sql`SELECT DISTINCT event_id FROM plan_rows JOIN event_rows e ON e.id = event_id
-  WHERE person_id IN (SELECT value FROM json_each(?)) AND booked_as IS NULL AND e.upcoming`,
-        [JSON.stringify(personIds)],
+  WHERE person_id IN (SELECT value FROM json_each(?)) AND booked_as IS NULL AND e.upcoming
+    AND event_id NOT IN (SELECT value FROM json_each(?))`,
+        [JSON.stringify(personIds), JSON.stringify(listed)],
       ).map((r) => r.event_id)
     : [];
 // The people who are this artist, or a partner in this couple.

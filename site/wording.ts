@@ -4,7 +4,7 @@
 // database is parsed into its point's type where the row is read (rows.ts state).
 
 import type { Kid } from './dom.ts';
-import { type Disposition, STATES, type StateRow } from './states.ts';
+import { type Counts, type Disposition, STATES, type StateRow } from './states.ts';
 
 type Table = typeof STATES;
 export type Point = keyof Table;
@@ -44,6 +44,17 @@ export const where = <P extends Point, D extends Disposition>(point: P, ...dispo
   const shown: readonly Disposition[] = dispositions;
   return Object.keys(TABLE[point]).filter(
     (k): k is KeysWhere<P, D> => isKey(point, k) && shown.includes(row(point, k).disposition),
+  );
+};
+
+// the states of a point counted at one of these levels (pipeline/states.py, Counts), by type and in table order
+export type KeysCounted<P extends Point, C extends Counts> = {
+  [K in Key<P>]: Table[P][K] extends { counts: C } ? K : never;
+}[Key<P>];
+export const counted = <P extends Point, C extends Counts>(point: P, ...levels: C[]): KeysCounted<P, C>[] => {
+  const at: readonly (Counts | null)[] = levels;
+  return Object.keys(TABLE[point]).filter(
+    (k): k is KeysCounted<P, C> => isKey(point, k) && at.includes(row(point, k).counts),
   );
 };
 

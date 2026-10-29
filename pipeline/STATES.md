@@ -38,7 +38,7 @@ thing a consumer must treat differently.
 | **people**, each pass, by how many people one price is for | `one`, `couple`, `group`, `per_room` | prices.people, from group_size and kind |
 | **fee**, each price tier, by its booking fee | `none`, `included` | the prices pass; the first read |
 | **re_read**, a festival with a first read, by when its page is read again | `dated`, `monthly` | tickets_store.recheck |
-| **first_read**, a festival, by whether it needs a (new) first read | `not_needed`, `none`, `awaits_answer`, `current`, `redo_prompt`, `redo_description`, `redo_page`, `redo_unread`, `disputed` | tickets_state.why_first_read |
+| **first_read**, a festival, by whether it needs a (new) first read | `not_needed`, `none`, `past`, `awaits_answer`, `current`, `redo_prompt`, `redo_description`, `redo_page`, `redo_unread`, `disputed` | tickets_state.why_first_read |
 | **answer**, a festival's answer of one extraction pass | `none`, `current`, `stale` | ask.answer_state |
 | **waits_for**, each festival, by what its prices from its ticket page wait for | `page`, `recipe`, `recipe_fix`, `session`, `agent`, `sales_open`, `nothing` | tickets_state.waiting, in tickets/status.csv |
 | **price**, each festival, by what its card can say of its price | `priced`, `other_passes_only`, `page_unread`, `page_empty`, `not_yet`, `offline`, `closed`, `none_found`, `not_looked` | prices.price_state, in price_status |
