@@ -16,7 +16,6 @@ const E: Priced = {
 const tier = (amount: number, k: Partial<Tier> = {}): Tier => ({
   event_id: 1,
   pass_no: 1,
-  tier_no: 1,
   amount,
   currency: 'EUR',
   fee: null,

@@ -21,7 +21,7 @@ import {
 } from './rows.ts';
 import { KEY } from './states.ts';
 import { countryName, dayRange, flag, place } from './ui.ts';
-import { text } from './wording.ts';
+import { joined, text } from './wording.ts';
 
 // someone who said they're going to a festival, and what they're booked there as, if they are
 const GOER = {
@@ -99,12 +99,12 @@ export function friendsIn(
     n: at.length,
     many: people.length > 1,
     faces: faces(people),
-    names: h('b', {}, and(named(people).map(nameButton))),
+    names: h('b', {}, joined(named(people).map(nameButton))),
   };
 }
 // who's going to one festival, inline: each person or couple linked, with what they're doing there
 export const goersInline = (goers: Goer[]): Kid[] =>
-  and(
+  joined(
     named(goers).map((g) =>
       h('span', { class: 'goer' }, h('a', { href: g.href, class: 'artist' }, g.name), ' ', tagOf(doing(g.people))),
     ),
@@ -135,7 +135,6 @@ const faces = (people: readonly { name: string }[]) =>
     { class: 'faces', 'aria-hidden': 'true' },
     people.map((p) => h('span', { class: 'face' }, p.name[0])),
   );
-const and = (xs: readonly Kid[]): Kid[] => xs.flatMap((x, i) => [i ? (i === xs.length - 1 ? ' and ' : ', ') : '', x]);
 const count = (n: number) => `${n} ${n === 1 ? 'person' : 'people'}`;
 
 // A name in a card or under the sentence opens the quick view of that person or couple; "3 more people" opens the
@@ -166,7 +165,7 @@ export function goingLine(e: Going): HTMLElement | null {
       {},
 
       groups.length > 0
-        ? [h('b', {}, and(groups.map(nameButton))), ` ${many ? 'are' : 'is'} ${doing(featured)}`]
+        ? [h('b', {}, joined(groups.map(nameButton))), ` ${many ? 'are' : 'is'} ${doing(featured)}`]
         : null,
       others
         ? groups.length > 0
@@ -335,6 +334,13 @@ export interface Person {
   featured: boolean;
   artists: { id: number; display_name: string }[];
 }
+// everyone with plans, featured first, then by name, and how many of their festivals are still to come
+export const withPlans = (): { key: string; name: string; upcoming: number }[] =>
+  q(
+    { key: str, name: str, upcoming: num },
+    sql`SELECT pe.key, pe.name, sum(e.upcoming) AS upcoming FROM people pe JOIN plans p ON p.person_id = pe.id
+    JOIN event_rows e ON e.id = p.event_id GROUP BY pe.id ORDER BY pe.featured DESC, pe.name`,
+  );
 // everyone sharing plans, by key, each with the artists they are, a couple they are in among them, most booked first;
 // read once
 let sharing: ReadonlyMap<string, Person> | undefined;

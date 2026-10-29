@@ -134,8 +134,8 @@ export const hasWith = (e: Pick<Festival, 'styles' | 'features'>, key: With): bo
 // the highlights the festival list has a checkbox for, as [its address parameter, the feature, whether a festival has
 // it]
 export const CHECKED = [
-  ['taxi', KEY.feature.TAXI_DANCERS, (e: Festival) => e.taxi_dancers === true],
-  ['allin', KEY.feature.ALL_IN_ONE, (e: Festival) => e.all_in_one === true],
+  ['taxi', KEY.feature.TAXI_DANCERS, (e: Festival) => e.features.has(KEY.feature.TAXI_DANCERS)],
+  ['allin', KEY.feature.ALL_IN_ONE, (e: Festival) => e.features.has(KEY.feature.ALL_IN_ONE)],
 ] as const;
 export type Checked = (typeof CHECKED)[number][0];
 

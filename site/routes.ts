@@ -67,9 +67,14 @@ export const SECTIONS: readonly (readonly [Section, string])[] = [
 ];
 // where a section name stands in SECTIONS, -1 for none
 export const sectionAt = (name: string | null): number => SECTIONS.findIndex(([k]) => k === name);
-// a link to someone's plans from before Friends had its name (#people/<key>), as it is now
-export const renamed = (path: string): string | null =>
-  path === 'people' || path.startsWith('people/') ? `#friends${path.slice('people'.length)}` : null;
+// what an address (location.hash) names: its view, the parts after the view's name, and its query; an empty address
+// is the festivals'
+const HASH = /^#/u;
+export function parseRoute(address: string): { name: string; sub: string[]; qs: string } {
+  const [path = '', qs = ''] = (address.replace(HASH, '') || 'finder').split('?');
+  const [name = '', ...sub] = path.split('/');
+  return { name, sub, qs };
+}
 
 // Show a view's state in the address bar without adding a history entry.
 export const showInAddressBar = (href: string): void => history.replaceState(null, '', href);

@@ -25,7 +25,7 @@ import { friendsIn } from './plans.ts';
 import { festivalsHref, showInAddressBar } from './routes.ts';
 import { KEY } from './states.ts';
 import { flag, home, loading } from './ui.ts';
-import { text } from './wording.ts';
+import { plural, text } from './wording.ts';
 
 // reach is the step the trip (the full pass and a Fri→Mon return flight) is within, cheap or fair, or '' for any
 // price; unchecked keeps the festivals whose trip is not known within it. with is a dance or highlight picked in the
@@ -102,7 +102,7 @@ const PRICE: readonly (readonly [Choices['reach'], string])[] = [
 const limit = (reach: Choices['reach']): number | null => (reach ? step('trip', reach) : null);
 const under = (reach: Step) => money(step('trip', reach), currency);
 const SHORT = {
-  months: WHEN.map(([v]) => [v, `${v} month${v === 1 ? '' : 's'}`] as const),
+  months: WHEN.map(([v]) => [v, plural(v, 'month')] as const),
   reach: PRICE.map(([v]) => [v, v ? `Under ${under(v)}` : 'Any price'] as const),
 };
 const FLAGS = [0, 1];
@@ -465,7 +465,7 @@ export function sentenceView(
     return h(
       'span',
       {},
-      `${rows.length} festival${rows.length > 1 ? 's' : ''} like that`,
+      `${plural(rows.length, 'festival')} like that`,
       s.reach
         ? h(
             'span',
@@ -506,7 +506,7 @@ export function sentenceView(
     const rows = matches(all, s);
     const widened = rows.length > 0 || (s.months === 12 && !s.reach) ? 0 : matches(all, { ...s, ...WIDEST }).length;
     live.replaceChildren(...nodes([liveLine(rows, widened)]));
-    barCount.textContent = `${rows.length} festival${rows.length === 1 ? '' : 's'}`;
+    barCount.textContent = plural(rows.length, 'festival');
     results.replaceChildren(resultList(rows, widened));
   }
   render();

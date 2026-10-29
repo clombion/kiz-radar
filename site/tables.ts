@@ -3,6 +3,8 @@ import type { SqlValue } from 'sql.js';
 import { exec, q, sql } from './db.ts';
 import { button, h } from './dom.ts';
 import { opt, str } from './rows.ts';
+import { KEY } from './states.ts';
+import { plural } from './wording.ts';
 
 const EXAMPLES: readonly (readonly [string, string])[] = [
   [
@@ -20,7 +22,8 @@ WHERE e.upcoming ORDER BY f.price LIMIT 25;`,
   [
     'Festivals with taxi dancers',
     `SELECT title, city, country_code, start_date
-FROM event_rows WHERE upcoming AND taxi_dancers = 1 ORDER BY start_date;`,
+FROM event_rows WHERE upcoming AND id IN (SELECT event_id FROM event_features WHERE feature = '${KEY.feature.TAXI_DANCERS}')
+ORDER BY start_date;`,
   ],
   [
     'Artists booked in most countries',
@@ -62,7 +65,7 @@ export function sqlView(root: HTMLElement): void {
             h(
               'p',
               { class: 'muted small' },
-              `${values.length} row${values.length === 1 ? '' : 's'}${values.length > 1000 ? ' (first 1000 shown)' : ''}`,
+              `${plural(values.length, 'row')}${values.length > 1000 ? ' (first 1000 shown)' : ''}`,
             ),
             h(
               'table',

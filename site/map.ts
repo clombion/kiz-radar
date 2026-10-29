@@ -10,6 +10,7 @@ import { currency, money, step, within } from './money.ts';
 import { cityOf, cityOnMapHref, eventOnMapHref, mapHref, type Show, showInAddressBar } from './routes.ts';
 import { EVENT } from './rows.ts';
 import { countryName, flag, home } from './ui.ts';
+import { plural } from './wording.ts';
 
 const WORLD = 'https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json';
 type Land = FeatureCollection<Polygon | MultiPolygon, { name: string }>;
@@ -64,7 +65,7 @@ const bubble = (c: City, scheme: Scheme) =>
     fillOpacity: 0.85,
     bubblingMouseEvents: false,
   }).bindTooltip(
-    `${c.city} · ${c.n} festival${c.n > 1 ? 's' : ''}${c.home ? ' · no flight needed' : c.minFare === null ? '' : ` · flights from ${money(c.minFare)}`}`,
+    `${c.city} · ${plural(c.n, 'festival')}${c.home ? ' · no flight needed' : c.minFare === null ? '' : ` · flights from ${money(c.minFare)}`}`,
     { direction: 'top', offset: [0, -6] },
   );
 const COLORS = [
@@ -351,7 +352,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     setSheet(true);
   }
   const back = (words: string, fn: () => void) => button({ class: 'back-link', onclick: fn }, '← ', words);
-  const count = (n: number) => `${n} festival${n === 1 ? '' : 's'}`;
+  const count = (n: number) => plural(n, 'festival');
 
   function cards(list: readonly Placed[]): HTMLElement {
     const wrap = h(

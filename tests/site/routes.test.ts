@@ -1,8 +1,28 @@
 import { expect, test } from 'vitest';
-import { type CityKey, cityOf, cityOnMapHref } from '../../site/routes.ts';
+import {
+  artistHref,
+  type CityKey,
+  cityOf,
+  cityOnMapHref,
+  eventOnMapHref,
+  festivalsHref,
+  parseRoute,
+} from '../../site/routes.ts';
 
-// the parts after map/city/ of an address, as the router splits it (main.ts)
-const parts = (href: string): string[] => (href.slice(1).split('?')[0] ?? '').split('/').slice(2);
+// the parts after map/city/ of an address, as the router reads it
+const parts = (href: string): string[] => parseRoute(href).sub.slice(1);
+
+test('an address is read as its view, the parts after it and its query', () => {
+  expect(parseRoute('')).toEqual({ name: 'finder', sub: [], qs: '' });
+  expect(parseRoute('#')).toEqual({ name: 'finder', sub: [], qs: '' });
+  expect(parseRoute(artistHref(12))).toEqual({ name: 'artists', sub: ['12'], qs: '' });
+  expect(parseRoute(eventOnMapHref(7, { when: 'all', color: 'popular' }))).toEqual({
+    name: 'map',
+    sub: ['event', '7'],
+    qs: 'when=all&color=popular',
+  });
+  expect(parseRoute(festivalsHref({ reach: 'fair' }))).toEqual({ name: 'finder', sub: [], qs: 'reach=fair' });
+});
 
 test('a city read back from its address is the city it was written from', () => {
   const cities: CityKey[] = [

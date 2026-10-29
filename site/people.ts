@@ -1,15 +1,14 @@
 // Who's going where: the festivals people said they're going to, by date, and each person's plans page with a link
 // to share it.
 import { q, sql } from './db.ts';
-import { button, h, type Kid } from './dom.ts';
+import { button, h } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { withDetails } from './festivals.ts';
-import { goersInline, goersOf, person } from './plans.ts';
+import { goersInline, goersOf, person, withPlans } from './plans.ts';
 import { artistHref, eventOnMapHref, personHref } from './routes.ts';
-import { EVENT, num, str } from './rows.ts';
+import { EVENT } from './rows.ts';
 import { dayRange, place } from './ui.ts';
-
-const list = (xs: readonly Kid[]): Kid[] => xs.flatMap((x, i) => [i ? (i === xs.length - 1 ? ' and ' : ', ') : '', x]);
+import { joined } from './wording.ts';
 
 // Anyone with the link sees it; keeping plans to chosen friends needs the accounts that come later.
 export function personView(root: HTMLElement, [key]: readonly string[]): void {
@@ -62,7 +61,7 @@ export function personView(root: HTMLElement, [key]: readonly string[]): void {
               'p',
               { class: 'lede' },
               'Also on Kiz Radar as ',
-              list(p.artists.map((a) => h('a', { href: artistHref(a.id), class: 'artist' }, a.display_name))),
+              joined(p.artists.map((a) => h('a', { href: artistHref(a.id), class: 'artist' }, a.display_name))),
             )
           : null,
         share,
@@ -90,11 +89,7 @@ function everyone(root: HTMLElement): void {
     EVENT,
     sql`SELECT e.* FROM event_rows e WHERE e.upcoming AND e.id IN (SELECT event_id FROM plans) ORDER BY e.start_date`,
   );
-  const people = q(
-    { key: str, name: str, n: num },
-    sql`SELECT pe.key, pe.name, sum(e.upcoming) AS n FROM people pe JOIN plans p ON p.person_id = pe.id
-    JOIN event_rows e ON e.id = p.event_id GROUP BY pe.id ORDER BY pe.featured DESC, pe.name`,
-  );
+  const people = withPlans();
   const when = (e: { start_date: string; end_date: string }) => dayRange(e.start_date, e.end_date);
   root.replaceChildren(
     h(
@@ -136,10 +131,10 @@ function everyone(root: HTMLElement): void {
             h(
               'p',
               {},
-              list(
+              joined(
                 people.map((p) => [
                   h('a', { href: personHref(p.key), class: 'artist' }, p.name),
-                  h('span', { class: 'muted' }, ` (${p.n})`),
+                  h('span', { class: 'muted' }, ` (${p.upcoming})`),
                 ]),
               ),
             ),

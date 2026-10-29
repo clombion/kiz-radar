@@ -223,7 +223,7 @@ create table artist_origin (
 ) strict, without rowid;
 create table artist_stats (
     artist_id integer primary key references artists(id) deferrable initially deferred,
-    bookings integer not null,
+    bookings integer not null check (bookings > 0),  -- an artist booked only in a couple has no row
     {booked_roles},  -- the events booked in each role
     first_date text not null,
     last_date text not null,
@@ -308,8 +308,6 @@ create table event_stats (
     unknown_country integer not null,  -- line-up artists whose home country is not known
     kiz integer not null check (kiz in (0, 1)),
     kiz_only integer not null check (kiz_only in (0, 1)),
-    taxi_dancers integer not null check (taxi_dancers in (0, 1)),
-    all_in_one integer not null check (all_in_one in (0, 1)),
     genres text not null,
     features text not null
 ) strict;
@@ -368,7 +366,9 @@ create view artist_events as
     select cm.member_id, ea.event_id, ea.role, '{member}', ea.artist_id
     from event_artists ea join couple_members cm on cm.couple_id = ea.artist_id;
 create view country_stats as
-    select e.country_code, c.name, count(*) as events, sum(s.kiz_only) as kiz_only, sum(s.taxi_dancers) as taxi_dancers,
+    select e.country_code, c.name, count(*) as events, sum(s.kiz_only) as kiz_only,
+      sum(exists (select 1 from event_features f where f.event_id = e.id and f.feature = '{taxi_dancers}'))
+        as taxi_dancers,
       round(avg(s.lineup), 1) as avg_lineup, sum(s.popular_artists) as popular_bookings,
       round(100.0 * sum(s.imported) / nullif(sum(s.lineup) - sum(s.unknown_country), 0)) as imported_pct,
       sum(s.unknown_country) as unknown_country,
@@ -383,7 +383,7 @@ create view event_rows as
       select e.id, e.title, e.url, e.start_date, e.end_date, e.city, e.country_code, e.lat, e.lon, e.airport,
         e.airport_km, a.city as airport_city, e.weekend_friday, e.cancelled, e.listing, e.venue, s.lineup,
         s.popular_artists,
-        s.kiz_only, s.taxi_dancers, s.all_in_one, s.genres, s.features,
+        s.kiz_only, s.genres, s.features,
         case when e.listing != '{listed}' then '{phase_gone}' when e.cancelled = 1 then '{cancelled}'
              when e.end_date >= (select day from today) then '{ahead}' else '{ended}' end as phase,
         p.price as price_state, p.page as ticket_page, p.card_pass
@@ -407,6 +407,7 @@ TABLES = sqlite_db.declared(
             'booked_roles': ',\n    '.join(f'{r} integer not null' for r in BOOKED_ROLES),
             'priced': enums.Price.PRICED,
             'teacher': Role.TEACHER,
+            'taxi_dancers': Feature.TAXI_DANCERS,
             'listed': enums.Listing.LISTED,
             'ahead': enums.Phase.AHEAD,
             'ended': enums.Phase.ENDED,
@@ -758,8 +759,6 @@ def event_stats(x: Transaction, booked: Booked) -> None:
                 'unknown_country': sum(booked.home_of.get(a) is None for a in lineup),
                 'kiz': int(kiz),
                 'kiz_only': int(kiz and not g & {Genre.SALSA, Genre.BACHATA}),
-                'taxi_dancers': int(Feature.TAXI_DANCERS in f),
-                'all_in_one': int(Feature.ALL_IN_ONE in f),
                 'genres': ','.join(sorted(g)),
                 'features': ','.join(sorted(f)),
             }
@@ -853,7 +852,8 @@ DOCS = {
     'fare that month to the same airport.',
     'artist_stats': 'Per artist with bookings of their own: bookings (as '
     f'{", ".join(BOOKED_ROLES)} at distinct events; a couple’s bookings count for the couple, not its members), the '
-    'events booked in each of these roles (one event can count in two), home_country when a source states it '
+    'events booked in each of these roles (one event can count in two), first_date and last_date (of their first and '
+    'last booked festival), home_country when a source states it '
     '(home_basis: given by a claim, or the one '
     'country line-ups state most often next to their name; contested when several are stated equally often, with no '
     'home), booked_most_in (the country with most of their bookings, which '
@@ -872,7 +872,8 @@ DOCS = {
     'state each.',
     'event_stats': 'Per event: line-up size (teachers and DJs), popular artists booked, imported artists (home country '
     'differs from the event’s), artists of unknown country (no home known), kizomba-family genres, kiz-only (no salsa '
-    'or bachata), taxi dancers, all-in-one hotel.',
+    'or bachata), and its genres and features as lists (the features with promo_code and group_deals, which the build '
+    'derives; event_features has the rest one row each).',
     'event_passes': 'The passes a festival sells (kind): people per price (group_size, and people as a state), days, '
     'hotel included; source is description, or ticket_page (see ticket_pages).',
     'price_status': 'What each festival’s card can say of its price: priced, with the pass it prices (card_pass), or '
@@ -882,10 +883,10 @@ DOCS = {
     'link to the ticket page or the passes).',
     'ticket_pages': 'Festivals whose prices are read on their ticket page: the page, the reseller selling there when '
     'it is not the organiser, the day it was last read, and how many tickets on it are not read yet.',
-    'pass_tiers': 'Each pass’s prices tier by tier: what a buyer pays and its currency (and the same price in a second '
-    'currency when the page shows one: alt_amount, alt_currency), the booking fee that includes when stated, the days '
-    'the tier applies, tickets at that price (quantity), door price, sold out, and current (the description calls it '
-    'the current price, without dates).',
+    'pass_tiers': 'Each pass’s prices tier by tier, in order (tier_no): what a buyer pays and its currency (and the '
+    'same price in a second currency when the page shows one: alt_amount, alt_currency), the booking fee that '
+    'includes when stated, the days the tier applies, tickets at that price (quantity), door price, sold out, and '
+    'current (the description calls it the current price, without dates).',
     'rates': 'Exchange rates the site converts prices with: units of each currency per euro (European Central Bank, '
     'pipeline/rates.csv).',
     'event_promos': 'Promo codes for a festival, from pipeline/promo_codes.csv (ours, not kizomba-world’s): the code, '
@@ -896,7 +897,8 @@ DOCS = {
     'plans': 'Who said they are going to which festival (pipeline/plans.csv).',
     'plan_rows': 'Each plan with the person, and booked_as: their role when they are in that festival’s line-up, alone '
     'or in a couple.',
-    'event_rows': 'What the site reads: each event with its event_stats, what its card can say of its price '
+    'event_rows': 'What the site reads: each event with its event_stats (lineup, popular_artists, kiz_only, genres, '
+    'features), what its card can say of its price '
     '(price_state, with its ticket_page and card_pass), where it stands on the day in today (phase: ahead, ended, '
     'cancelled or gone), and upcoming (phase ahead).',
     'today': "The day the festivals are seen from: the build's, which the site sets to the visitor's own day.",

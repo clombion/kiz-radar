@@ -1,4 +1,5 @@
 // Formatting helpers shared by the views: dates, countries, flight links, the home city.
+import { today } from './days.ts';
 import { q, site, sql } from './db.ts';
 import { h, type Kid } from './dom.ts';
 import { currency } from './money.ts';
@@ -30,10 +31,18 @@ const asDay = (iso: string) => new Date(`${iso.slice(0, 10)}T12:00`); // dates a
 export const dayMonth = (iso: string) => DM.format(asDay(iso)); // 23 Oct
 export const dayYear = (iso: string) => DY.format(asDay(iso)); // 23 Oct 2026
 export const monthYear = (iso: string) => MY.format(asDay(iso)); // October 2026
+// " 2027" for a day of another year than the visitor's, '' for one of theirs
+export const otherYear = (iso: string): string =>
+  iso.slice(0, 4) === today().slice(0, 4) ? '' : ` ${iso.slice(0, 4)}`;
+// a festival's days in parts, each day's number and month, for the ways they are laid out ("6–9 Nov", a date box)
+export function dayParts(start: string, end: string): { d1: string; m1: string; d2: string; m2: string } {
+  const [d1 = '', m1 = ''] = dayMonth(start).split(' '),
+    [d2 = '', m2 = ''] = dayMonth(end).split(' ');
+  return { d1, m1, d2, m2 };
+}
+// "6–9 Nov", or "26 Nov – 1 Dec" across a month end
 export function dayRange(start: string, end: string): string {
-  // "6–9 Nov", or "26 Nov – 1 Dec" across a month end
-  const [d1, m1] = dayMonth(start).split(' '),
-    [d2, m2] = dayMonth(end).split(' ');
+  const { d1, m1, d2, m2 } = dayParts(start, end);
   return start === end ? `${d1} ${m1}` : m1 === m2 ? `${d1}–${d2} ${m1}` : `${d1} ${m1} – ${d2} ${m2}`;
 }
 

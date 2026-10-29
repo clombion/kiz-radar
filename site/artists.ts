@@ -11,10 +11,10 @@ import { artistHref, artistsHref, eventOnMapHref, personHref, type Show, showInA
 import { ARTIST_STATS, EVENT, flag as flagCol, num, opt, type RowOf, state, str } from './rows.ts';
 import { KEY } from './states.ts';
 import { countryName, dayMonth, dayYear, flag, place } from './ui.ts';
-import { hasForm, type Key, text, where } from './wording.ts';
+import { hasForm, joined, type Key, plural, text, where } from './wording.ts';
 
 const PAGE = 60;
-const festivals = (n: number) => `${n} festival${n === 1 ? '' : 's'}`;
+const festivals = (n: number) => plural(n, 'festival');
 
 // an artist as the list and their page have them
 const ARTIST = { ...ARTIST_STATS, display_name: str, kind: state('artist_kind') } as const;
@@ -81,6 +81,13 @@ function namesOf(): ReadonlyMap<number, readonly string[]> {
   }
   return names;
 }
+
+// the festivals that make an artist well known (artist_stats.popular), as the build counted them
+const wellKnown = (): number => {
+  const m = one({ value: str }, sql`SELECT value FROM meta WHERE key = 'popular_threshold'`);
+  if (m === undefined) throw new Error('the database has no popular_threshold');
+  return Number(m.value);
+};
 
 // the countries the list can be narrowed to, by name: those its artists were booked in (artist_countries)
 export const artistCountries = (): string[] =>
@@ -167,7 +174,7 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
       'Booked in',
     ),
     sel('sort', ORDERS, 'Order'),
-    h('label', { class: 'check' }, pop, ' Only well-known artists (10+ festivals)'),
+    h('label', { class: 'check' }, pop, ` Only well-known artists (${wellKnown()}+ festivals)`),
   );
   dropdown(moreBtn, panel, [moreBtn, panel], signal);
   const summary = h('p', { class: 'list-summary' });
@@ -226,7 +233,7 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
     paint();
   }
   function paint() {
-    summary.textContent = `${rows.length.toLocaleString('en-GB')} ${rows.length === 1 ? 'artist' : 'artists'}${st.country ? ` booked in ${countryName(st.country)}` : ''}`;
+    summary.textContent = `${plural(rows.length, 'artist')}${st.country ? ` booked in ${countryName(st.country)}` : ''}`;
     list.replaceChildren(...rows.slice(0, shown).map((a) => row(a, next.get(a.artist_id))));
     showMore.hidden = shown >= rows.length;
     showMore.textContent = `Show ${Math.min(PAGE, rows.length - shown)} more`;
@@ -273,9 +280,6 @@ function row(
 // one artist's page: who they are, where they're booked, and the festivals they teach at or go to
 const LINKED = { id: num, display_name: str, bookings: opt(num) } as const;
 type Linked = RowOf<typeof LINKED>;
-// "A, B and C"
-const listed = <T>(xs: readonly T[], f: (x: T) => Kid[]): Kid[] =>
-  xs.flatMap((x, i) => [i ? (i === xs.length - 1 ? ' and ' : ', ') : '', ...f(x)]);
 const linked = (p: Pick<Linked, 'id' | 'display_name'>, extra: Kid): Kid[] => [
   h('a', { href: artistHref(p.id), class: 'artist' }, p.display_name),
   extra,
@@ -283,7 +287,7 @@ const linked = (p: Pick<Linked, 'id' | 'display_name'>, extra: Kid): Kid[] => [
 
 // their roles, where they're from or booked most, and how often
 function lede(stats: Artist | null): Kid {
-  if (stats === null || stats.bookings === 0) return 'Only booked as part of a couple';
+  if (stats === null) return 'Only booked as part of a couple'; // artist_stats has the artists booked on their own
   const from =
     stats.home_country === null
       ? stats.booked_most_in === null
@@ -307,8 +311,10 @@ function head(a: Pick<Artist, 'display_name' | 'kind'>, stats: Artist | null, me
           'p',
           {},
           'Partners: ',
-          listed(members, (m) =>
-            linked(m, m.bookings ? h('span', { class: 'muted' }, ` (${festivals(m.bookings)} on their own)`) : null),
+          joined(
+            members.map((m) =>
+              linked(m, m.bookings ? h('span', { class: 'muted' }, ` (${festivals(m.bookings)} on their own)`) : null),
+            ),
           ),
         )
       : null;
@@ -318,7 +324,7 @@ function head(a: Pick<Artist, 'display_name' | 'kind'>, stats: Artist | null, me
           'p',
           {},
           a.kind === KEY.artist_kind.COUPLE ? 'Also part of ' : 'Also books as ',
-          listed(couples, (c) => linked(c, h('span', { class: 'muted' }, ` (${festivals(c.bookings ?? 0)})`))),
+          joined(couples.map((c) => linked(c, h('span', { class: 'muted' }, ` (${festivals(c.bookings ?? 0)})`)))),
         )
       : null;
   return h(
@@ -365,7 +371,7 @@ function alsoGoing(people: ReturnType<typeof peopleOf>, shown: readonly Festival
       'p',
       { class: 'muted' },
       'Where ',
-      listed(people, (p) => [h('a', { href: personHref(p.key) }, p.name)]),
+      joined(people.map((p) => h('a', { href: personHref(p.key) }, p.name))),
       ' said they’re going, besides where they teach.',
     ),
     h(

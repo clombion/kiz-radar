@@ -105,3 +105,10 @@ export const text = <P extends Point, K extends Key<P>, F extends Form<P, K> | u
 ): Said<P, K, F> =>
   // biome-ignore lint/nursery/noUnsafeTypeAssertion: say gives the words exactly when the generated table has them, which Said reads
   (say(point, key, values, form)?.join('') ?? null) as Said<P, K, F>;
+
+// "1 festival", "3 festivals", "1,204 artists": a count and its noun (an English plural with -s unless said)
+export const plural = (n: number, noun: string, nouns = `${noun}s`): string =>
+  `${n.toLocaleString('en-GB')} ${n === 1 ? noun : nouns}`;
+// "A, B and C"
+export const joined = (xs: readonly Kid[]): Kid[] =>
+  xs.flatMap((x, i) => [i ? (i === xs.length - 1 ? ' and ' : ', ') : '', x]);

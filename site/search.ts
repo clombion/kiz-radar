@@ -5,14 +5,13 @@
 // Picking a result goes where that kind of thing lives: a festival opens on the map, an artist on their page, a city
 // on the map, and a country, style or highlight narrows the festival list, keeping its other choices.
 
-import { today } from './days.ts';
 import { q, site, sql } from './db.ts';
 import { button, h, type Kid } from './dom.ts';
 import { CHECKED, type Checked, type Festival, festivals, hasWith, isDance, WITH, type With } from './festivals.ts';
 import { fold, words } from './fold.ts';
 import { icon } from './icons.ts';
 import { leaving, modal } from './modal.ts';
-import { person } from './plans.ts';
+import { person, withPlans } from './plans.ts';
 import { roleLabel } from './roles.ts';
 import {
   artistHref,
@@ -22,11 +21,12 @@ import {
   festivalsHref,
   mapHref,
   type Params,
+  parseRoute,
   personHref,
 } from './routes.ts';
 import { BOOKINGS, flag as flagCol, num, opt, PLACE_AND_DAYS, type RowOf, state, str } from './rows.ts';
 import { KEY } from './states.ts';
-import { away, dayMonth, flag, place } from './ui.ts';
+import { away, dayMonth, flag, otherYear, place } from './ui.ts';
 import { text } from './wording.ts';
 
 const SHOWN = 5; // results per group until "Show all"
@@ -110,8 +110,8 @@ function score(item: Item, tokens: readonly string[], query: string): 0 | 1 | 2 
 
 // Where the festival list is now, so a country or style picked here keeps the time and price already chosen.
 function finderParams(): Record<string, string> {
-  const [path, qs = ''] = location.hash.slice(1).split('?');
-  return (path || 'finder') === 'finder' ? Object.fromEntries(new URLSearchParams(qs)) : {};
+  const { name, sub, qs } = parseRoute(location.hash);
+  return name === 'finder' && sub.length === 0 ? Object.fromEntries(new URLSearchParams(qs)) : {};
 }
 
 // an item as found, before its words are folded for matching, with the other words it is found by; it is current and
@@ -143,11 +143,7 @@ const festivalEntries = (): Indexed[] =>
 
 // people who share their plans, by name and by the artists they are
 const personEntries = (): Indexed[] =>
-  q(
-    { key: str, name: str, upcoming: num },
-    sql`SELECT pe.key, pe.name, sum(e.upcoming) AS upcoming FROM people pe JOIN plans p ON p.person_id = pe.id
-      JOIN event_rows e ON e.id = p.event_id GROUP BY pe.id`,
-  ).flatMap((r): Indexed[] => {
+  withPlans().flatMap((r): Indexed[] => {
     const p = person(r.key);
     return p
       ? [
@@ -303,7 +299,7 @@ const NOTE =
 // what a result's row shows: its lead (a date, an initial, a flag or an icon) and the line under its name
 type Parts = readonly [HTMLElement, Kid[]];
 function festivalParts(e: FoundEvent): Parts {
-  const yr = e.start_date.slice(0, 4) === today().slice(0, 4) ? '' : ` ${e.start_date.slice(0, 4)}`;
+  const yr = otherYear(e.start_date);
   return [
     h('span', { class: 'lead date' }, dayMonth(e.start_date).replace(' ', '\u00a0')),
     [

@@ -1,7 +1,7 @@
 // The festival card used across the site: date, place, title, styles, highlights, a few names and the flight,
 // opening in place to the full line-up and practical details. Rows come from festivals.ts (withDetails).
 
-import { addDays, today } from './days.ts';
+import { addDays } from './days.ts';
 import { cardDetails, traitItems } from './details.ts';
 import type { Kid } from './dom.ts';
 import { button, h, own } from './dom.ts';
@@ -13,14 +13,13 @@ import { openPasses, riseNote } from './passes.ts';
 import { goingLine } from './plans.ts';
 import { artistHref } from './routes.ts';
 import { KEY, LINK } from './states.ts';
-import { away, dayMonth, flightsUrl, home, place } from './ui.ts';
+import { away, dayParts, flightsUrl, home, otherYear, place } from './ui.ts';
 import { type Key, linkOf, type Point, say, text } from './wording.ts';
 
 // "23–25 Oct", or "30 Oct – 1 Nov" across a month end: the date is shown once, in the box
 function dateBox(start: string, end: string): HTMLElement {
-  const [dd1, mm1 = ''] = dayMonth(start).split(' '),
-    [dd2, mm2] = dayMonth(end).split(' ');
-  const yr = end.slice(0, 4) === today().slice(0, 4) ? '' : ` ${end.slice(0, 4)}`; // "Jan 2027"
+  const { d1: dd1, m1: mm1, d2: dd2, m2: mm2 } = dayParts(start, end);
+  const yr = otherYear(end); // "Jan 2027"
   if (mm1 !== mm2)
     return h(
       'div',
@@ -36,8 +35,6 @@ function dateBox(start: string, end: string): HTMLElement {
   );
 }
 
-// "✈ ~5 150 kr to Brussels, then 104 km": a Fri→Mon return from home to the nearest airport with prices, and how far
-// the festival is from it. The price links to Google Flights for that weekend.
 // a festival with a fare, so with an airport and a weekend
 type Flown = Festival & { airport: string; depart: string; fare: Extract<Fare, { home: false }> };
 const flown = (e: Festival): e is Flown => e.airport !== null && e.depart !== null && e.fare !== null && !e.fare.home;
@@ -57,6 +54,8 @@ const after = (e: Festival): string[] => [
   e.airport_km !== null && e.airport_km > 30 ? `, then ${e.airport_km} km` : '',
 ];
 const cheap = (e: Flown) => within(e.fare.price, 'flight', 'cheap');
+// "✈ ~5 150 kr to Brussels, then 104 km": a Fri→Mon return from home to the nearest airport with prices, and how far
+// the festival is from it. The price links to Google Flights for that weekend.
 function flight(e: Festival): HTMLElement {
   if (e.phase === KEY.phase.GONE) return h('p', { class: 'flight muted' }, text('listing', e.listing));
   if (e.phase !== KEY.phase.AHEAD) return h('p', { class: 'flight muted' }, text('phase', e.phase));

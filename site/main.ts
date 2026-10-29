@@ -10,7 +10,7 @@ import { artistHint, exploreHint } from './hints.ts';
 import { mapView } from './map.ts';
 import { currencySwitch } from './money.ts';
 import { personView } from './people.ts';
-import { EXPLORE, type Route, renamed, type Show, sectionAt, TABS, type Tab } from './routes.ts';
+import { EXPLORE, parseRoute, type Route, type Show, sectionAt, TABS, type Tab } from './routes.ts';
 import { initSearch } from './search.ts';
 import { sentenceView } from './sentence.ts';
 import { swipeBetweenSections } from './swipe.ts';
@@ -65,15 +65,9 @@ part('#footer-nav').append(...[...TABS.slice(0, -1), ...EXPLORE].map(([, label, 
 
 const tabRows = () => [tabs, subnav];
 
-// Show the view the address names; toTop scrolls up to it (a new page, not the first one)
+// Show the view the address names; scrollUp scrolls up to it (a new page, not the first one)
 function route({ scrollUp = false } = {}): void {
-  const [path = '', qs = ''] = (location.hash.slice(1) || 'finder').split('?');
-  const moved = renamed(path);
-  if (moved !== null) {
-    location.replace(moved + (qs ? `?${qs}` : ''));
-    return;
-  }
-  const [name = '', ...sub] = path.split('/');
+  const { name, sub, qs } = parseRoute(location.hash);
   const from = sectionAt(at),
     to = sectionAt(name);
   at = name;
