@@ -214,7 +214,7 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
   dropdown(moreBtn, panel, [moreBtn, panel], signal);
   const summary = h('p', { class: 'list-summary' });
   const list = h('ul', { class: 'artist-list' });
-  const showMore = button({ class: 'more-btn show-more' });
+  const showMore = button({ class: ['more-btn', 'show-more'] });
 
   root.replaceChildren(
     h(
@@ -399,7 +399,7 @@ function bookedIn(id: number, ownOnly: boolean): HTMLElement | null {
           {},
           h(
             'span',
-            { class: 'label' },
+            {},
             flag(c.country_code),
             ' ',
             countryName(c.country_code),

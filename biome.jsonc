@@ -13,7 +13,8 @@
     "./lint/clicks.grit",
     "./lint/buttons.grit",
     "./lint/promises.grit",
-    "./lint/fetch.grit"
+    "./lint/fetch.grit",
+    "./lint/classes.grit"
   ],
   "linter": {
     "rules": {

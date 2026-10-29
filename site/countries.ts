@@ -136,7 +136,7 @@ function flightLine(r: Country): HTMLElement {
   const cheap = r.fare !== null && within(r.fare.price, 'flight', 'cheap');
   return h(
     'p',
-    { class: `flight${cheap ? ' easy' : ''}` },
+    { class: ['flight', cheap && 'easy'] },
     r.fare
       ? ['✈ from ', h('strong', {}, money(r.fare.price, 'EUR', { approx: true })), ` to ${r.fare.airport_city}`]
       : h(

@@ -1,4 +1,5 @@
 // Elements built from their tag, attributes and contents. All text goes in as text nodes, never as HTML.
+import type { ClassName } from './classes.ts';
 
 const ON = /^on/u;
 
@@ -7,11 +8,15 @@ export type Kid = Node | string | number | false | null | undefined | readonly K
 // an element's attributes: on… a listener, class its classes, dataset its data-…, style its properties (set one by
 // one, which the page's CSP allows where it refuses a style attribute), the rest as written (true: present)
 type Value = string | number | boolean | null | undefined;
-export type Attrs = Readonly<Record<string, Value | EventListener | Readonly<Record<string, string>>>>;
+// an element's classes: one of the stylesheet's, or a list of them, where false, null or undefined stand for none
+export type Classes = ClassName | readonly (ClassName | false | null | undefined)[];
+export type Attrs = Readonly<{ class?: Classes | false | null | undefined }> &
+  Readonly<Record<string, Value | EventListener | Readonly<Record<string, string>> | Classes>>;
 
 const set = (el: HTMLElement, k: string, v: Attrs[string]): void => {
   if (v == null || v === false) return;
-  if (typeof v === 'function') el.addEventListener(k.replace(ON, ''), v);
+  if (Array.isArray(v)) el.className = v.filter(Boolean).join(' ');
+  else if (typeof v === 'function') el.addEventListener(k.replace(ON, ''), v);
   else if (typeof v !== 'object') el.setAttribute(k, v === true ? '' : String(v));
   else if (k === 'style') for (const [p, x] of Object.entries(v)) el.style.setProperty(p, x);
   else Object.assign(el.dataset, v);
@@ -26,6 +31,10 @@ export function h<K extends keyof HTMLElementTagNameMap>(
   el.append(...nodes(kids));
   return el;
 }
+// whether el has one of the stylesheet's classes; the one way the code sets a class after building an element
+export const toggle = (el: Element, cls: ClassName, on: boolean): void => {
+  el.classList.toggle(cls, on);
+};
 // a button, of type button: it never submits a form, whatever it is put in
 export const button = (attrs: Attrs, ...kids: Kid[]): HTMLButtonElement =>
   h('button', { type: 'button', ...attrs }, ...kids);
@@ -97,7 +106,7 @@ export const segments = <V extends string>(
   choose: (v: V) => void,
 ): HTMLButtonElement[] =>
   options.map(([v, words]) =>
-    button({ class: v === on ? 'on' : '', 'aria-pressed': String(v === on), onclick: () => choose(v) }, words),
+    button({ class: v === on && 'on', 'aria-pressed': String(v === on), onclick: () => choose(v) }, words),
   );
 
 // A list shown a page at a time: its first page now, and the more button (in the list, last, or anywhere else) adding

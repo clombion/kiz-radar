@@ -11,7 +11,7 @@ function report(e: unknown, where: string): void {
   line?.remove();
   line = h(
     'p',
-    { class: 'status error problem', role: 'alert' },
+    { class: ['status', 'error', 'problem'], role: 'alert' },
     `Something went wrong (${where}: ${message(e)}). Reloading the page may help. `,
     button({ class: 'link', onclick: () => line?.remove() }, 'Close'),
   );
@@ -29,7 +29,7 @@ export function guarded(root: HTMLElement, where: string, build: () => void): vo
     build();
   } catch (e) {
     console.error(`Kiz Radar: ${where}:`, e);
-    root.replaceChildren(h('p', { class: 'status error' }, `This page could not be shown: ${message(e)}`));
+    root.replaceChildren(h('p', { class: ['status', 'error'] }, `This page could not be shown: ${message(e)}`));
   }
 }
 

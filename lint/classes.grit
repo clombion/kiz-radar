@@ -1,0 +1,7 @@
+language js
+
+// Classes are set by dom.ts alone (h()'s class, toggle()), where ClassName holds them to the stylesheet's.
+or { `$el.classList`, `$el.className` } as $use where {
+  $filename <: not r".*/dom\.ts",
+  register_diagnostic(span=$use, message="Set classes with dom.ts's h() or toggle(), which take only the stylesheet's (ClassName).")
+}

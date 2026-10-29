@@ -29,7 +29,7 @@ export const traitItems = (list: readonly Trait[], e?: Festival): HTMLElement[] 
       {},
       icon(svg),
       linkOf('feature', key) === LINK.PASSES && e
-        ? button({ class: 'link trait-link', onclick: own((b) => openPasses(e, b)) }, label)
+        ? button({ class: ['link', 'trait-link'], onclick: own((b) => openPasses(e, b)) }, label)
         : label,
     ),
   );
@@ -71,7 +71,7 @@ const roster = (r: Key<'role'>, listed: readonly Person[]) =>
 function promoLine({ code, offer }: NonNullable<Festival['promo']>): HTMLElement {
   const copy = button(
     {
-      class: 'link copy',
+      class: ['link', 'copy'],
       onclick: () =>
         done(
           navigator.clipboard.writeText(code).then(() => {

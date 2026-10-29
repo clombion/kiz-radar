@@ -171,7 +171,7 @@ export function readState<D extends Defaults>(
 export function leftOut(root: HTMLElement, dropped: readonly string[]): void {
   if (dropped.length === 0) return;
   const said = `The link asks for ${dropped.join(', ')}, which ${dropped.length === 1 ? 'is' : 'are'} not among the choices here.`;
-  root.prepend(h('p', { class: 'muted left-out', role: 'status' }, said));
+  root.prepend(h('p', { class: ['muted', 'left-out'], role: 'status' }, said));
 }
 // The part of a state that differs from the defaults, for the URL.
 export const changed = (s: Defaults, defaults: Defaults): Record<string, string | number> =>

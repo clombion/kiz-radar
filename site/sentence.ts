@@ -1,9 +1,10 @@
 // The Festivals page: a sentence with blanks, festival cards below, and a sticky bar with the same choices
 // (plus "More filters") once the sentence has scrolled away.
 
+import type { ClassName } from './classes.ts';
 import { addDays, today } from './days.ts';
 import { site } from './db.ts';
-import { button, choices, dropdown, h, type Kid, moreButton, nodes, onResize, own, paged } from './dom.ts';
+import { button, choices, dropdown, h, type Kid, moreButton, nodes, onResize, own, paged, toggle } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import {
   CHECKED,
@@ -64,7 +65,7 @@ type NumberChoice = { [K in keyof Choices]: Choices[K] extends number ? K : neve
 const ARROWS: Readonly<Record<string, string>> = {
   up: '<svg viewBox="0 0 64 52" width="54" height="44"><path d="M56 44 C36 45 18 34 13 9"/><path d="M13 9 L6 19 M13 9 L21 16"/></svg>',
 };
-function note(cls: string, arrow: string, ...words_: string[]): HTMLElement {
+function note(cls: ClassName, arrow: string, ...words_: string[]): HTMLElement {
   const art = h('span', { class: 'arrow' });
   art.innerHTML = ARROWS[arrow] ?? '';
   const words = h(
@@ -74,7 +75,7 @@ function note(cls: string, arrow: string, ...words_: string[]): HTMLElement {
       t === 'click' ? [h('span', { class: 'click' }, 'click'), h('span', { class: 'tap' }, 'tap')] : t,
     ),
   );
-  return h('span', { class: `note ${cls}`, 'aria-hidden': 'true' }, art, words);
+  return h('span', { class: ['note', cls], 'aria-hidden': 'true' }, art, words);
 }
 
 // the dance in the sentence changes every few seconds; "a" gains its n before a vowel ("an Urban Kiz festival")
@@ -185,7 +186,7 @@ export function sentenceView(
   const blank = <K extends keyof Choices>(
     key: K,
     opts: readonly (readonly [Choices[K], string])[],
-    { cls = 'blank', named }: { cls?: string; named?: string } = {},
+    { cls = 'blank', named }: { cls?: ClassName; named?: string } = {},
   ) =>
     choices(
       opts,
@@ -270,8 +271,8 @@ export function sentenceView(
   // the hint under "anywhere" hangs to the right of it, or to the left where the menu ends near the edge
   const whereNote = note('note-bottom', 'up', 'click', ' to change where');
   const placeNote = () => {
-    whereNote.classList.remove('flip');
-    if (whereNote.getBoundingClientRect().right > hero.getBoundingClientRect().right) whereNote.classList.add('flip');
+    toggle(whereNote, 'flip', false);
+    if (whereNote.getBoundingClientRect().right > hero.getBoundingClientRect().right) toggle(whereNote, 'flip', true);
   };
   const layout = () => {
     fitMonths();
@@ -285,7 +286,7 @@ export function sentenceView(
   const n = h('span', { class: 'article-n' }, 'n');
   const hero = h(
     'header',
-    { class: 'sentence-hero arriving' },
+    { class: ['sentence-hero', 'arriving'] },
     h('p', { class: 'kicker', 'aria-hidden': 'true' }, 'Kiz Radar'), // a phone's header shows only the logo
     h(
       'p',
@@ -366,10 +367,10 @@ export function sentenceView(
   const results = h('section', { class: 'sentence-results' });
   // once someone has changed a blank they've got it: fade the hints, and don't show them again
   function hideHints() {
-    hero.classList.add('hints-done');
+    toggle(hero, 'hints-done', true);
     blanksHint.mark();
   }
-  if (blanksHint.seen()) hero.classList.add('hints-done');
+  if (blanksHint.seen()) toggle(hero, 'hints-done', true);
   root.replaceChildren(h('div', { class: 'sentence-page' }, hero, bar, results));
   leftOut(root, dropped);
   rotate(dance, n, signal);
@@ -387,8 +388,8 @@ export function sentenceView(
   const io = new IntersectionObserver(
     ([en]) => {
       const away = !en?.isIntersecting;
-      bar.classList.toggle('shown', away);
-      tabNote?.classList.toggle('away', away); // don't float over the cards
+      toggle(bar, 'shown', away);
+      if (tabNote) toggle(tabNote, 'away', away); // don't float over the cards
     },
     { rootMargin: '-60px 0px 0px 0px' },
   );
@@ -472,13 +473,7 @@ export function sentenceView(
       'span',
       {},
       `${plural(rows.length, 'festival')} like that`,
-      s.reach
-        ? h(
-            'span',
-            { class: 'price-note' },
-            ` (full pass and Friday-to-Monday return flight under ${under(s.reach)}). `,
-          )
-        : '. ',
+      s.reach ? h('span', {}, ` (full pass and Friday-to-Monday return flight under ${under(s.reach)}). `) : '. ',
       showThem(),
       friendsLine(rows),
     );
@@ -488,7 +483,7 @@ export function sentenceView(
     if (rows.length > 0) {
       const hinted = artistHint.seen() ? -1 : firstWithArtists(rows);
       const cards = h('div', { class: 'festival-cards' }),
-        more = button({ class: 'more-btn show-more' });
+        more = button({ class: ['more-btn', 'show-more'] });
       paged({ list: cards, more }, rows, PAGE, (e, i) =>
         eventCard(e, {
           hint: i === hinted ? note('note-artist', 'up', 'click', ' a name to see where else they teach') : null,
@@ -538,7 +533,7 @@ export function sentenceView(
     Promise.race([document.fonts.ready, new Promise((fontsOrNot) => setTimeout(fontsOrNot, 1000))]).then(() => {
       if (signal.aborted) return;
       refit();
-      requestAnimationFrame(() => hero.classList.remove('arriving'));
+      requestAnimationFrame(() => toggle(hero, 'arriving', false));
     }),
     'showing the sentence',
   );
@@ -559,9 +554,9 @@ function rotate(el: HTMLElement, n: HTMLElement, signal: AbortSignal): void {
   const width = (k: number) =>
     `${eases ? (words[k]?.scrollWidth ?? 0) : Math.max(...words.map((w) => w.scrollWidth))}px`;
   const show = () => {
-    for (const [k, w] of words.entries()) w.classList.toggle('on', k === i);
-    n.classList.toggle('on', takesAn(words[i]?.textContent ?? null));
-    n.classList.toggle('held', !eases); // keeps its space and only fades, like the dance
+    for (const [k, w] of words.entries()) toggle(w, 'on', k === i);
+    toggle(n, 'on', takesAn(words[i]?.textContent ?? null));
+    toggle(n, 'held', !eases); // keeps its space and only fades, like the dance
     el.style.width = width(i);
   };
   const lines = () => [...(sentence?.querySelectorAll('select') ?? [])].map((s) => s.offsetTop).join();
@@ -572,8 +567,8 @@ function rotate(el: HTMLElement, n: HTMLElement, signal: AbortSignal): void {
     const seen = new Set(
       words.map((w) => {
         el.style.width = `${w.scrollWidth}px`;
-        n.classList.remove('held');
-        n.classList.toggle('on', takesAn(w.textContent));
+        toggle(n, 'held', false);
+        toggle(n, 'on', takesAn(w.textContent));
         return lines();
       }),
     );

@@ -17,10 +17,12 @@ export const html = read('public/index.html');
 export const css: ReadonlyMap<string, string> = new Map(
   filesIn('public/css/', '.css').map((f) => [f, read(`public/css/${f}`).replace(COMMENT_BLOCK, '')]),
 );
-export const modules: ReadonlyMap<string, string> = new Map(filesIn('site/', '.ts').map((f) => [f, read(`site/${f}`)]));
-// each module but the generated state table, without its comments, where words may be quoted
+const modules: ReadonlyMap<string, string> = new Map(filesIn('site/', '.ts').map((f) => [f, read(`site/${f}`)]));
+// each module but the generated ones (the state table, the stylesheets' class names), without its comments, where
+// words may be quoted
+const GENERATED = new Set(['states.ts', 'classes.ts']);
 export const code: ReadonlyMap<string, string> = new Map(
   [...modules]
-    .filter(([f]) => f !== 'states.ts')
+    .filter(([f]) => !GENERATED.has(f))
     .map(([f, src]) => [f, src.replace(COMMENT_BLOCK, '').replace(COMMENT_LINE, '$<before>')]),
 );

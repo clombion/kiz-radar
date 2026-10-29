@@ -1,7 +1,7 @@
 // Who's going where: the festivals people said they're going to, by date, and each person's plans page with a link
 // to share it.
 import { q, sql } from './db.ts';
-import { button, h } from './dom.ts';
+import { button, h, type Kid } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { withDetails } from './festivals.ts';
 import { goersInline, goersOf, person, withPlans } from './plans.ts';
@@ -47,38 +47,33 @@ export function personView(root: HTMLElement, [key]: readonly string[]): void {
     },
     'Share these plans',
   );
-  root.replaceChildren(
+  page(
+    root,
+    [
+      `${p.name}’s festival plans`,
+
+      p.artists.length > 0
+        ? h(
+            'p',
+            { class: 'lede' },
+            'Also on Kiz Radar as ',
+            joined(p.artists.map((a) => h('a', { href: artistHref(a.id), class: 'artist' }, a.display_name))),
+          )
+        : null,
+      share,
+    ],
     h(
-      'article',
-      { class: 'artist-profile' },
-      h(
-        'header',
-        { class: 'profile-head' },
-        h('h1', {}, `${p.name}’s festival plans`),
+      'section',
+      {},
+      h('h2', {}, events.length > 0 ? `Coming up (${events.length})` : 'Coming up'),
 
-        p.artists.length > 0
-          ? h(
-              'p',
-              { class: 'lede' },
-              'Also on Kiz Radar as ',
-              joined(p.artists.map((a) => h('a', { href: artistHref(a.id), class: 'artist' }, a.display_name))),
-            )
-          : null,
-        share,
-      ),
-      h(
-        'section',
-        {},
-        h('h2', {}, events.length > 0 ? `Coming up (${events.length})` : 'Coming up'),
-
-        events.length > 0
-          ? h(
-              'div',
-              { class: 'festival-cards' },
-              events.map((e) => eventCard(e)),
-            )
-          : h('p', { class: 'muted' }, 'No festival plans shared yet.'),
-      ),
+      events.length > 0
+        ? h(
+            'div',
+            { class: 'festival-cards' },
+            events.map((e) => eventCard(e)),
+          )
+        : h('p', { class: 'muted' }, 'No festival plans shared yet.'),
     ),
   );
 }
@@ -91,55 +86,59 @@ function everyone(root: HTMLElement): void {
   );
   const people = withPlans();
   const when = (e: { start_date: string; end_date: string }) => dayRange(e.start_date, e.end_date);
+  page(
+    root,
+    ['Who’s going where', h('p', { class: 'lede' }, 'The festivals friends said they’re going to.')],
+
+    events.length > 0
+      ? h(
+          'ul',
+          { class: 'plan-list' },
+          events.map((e) =>
+            h(
+              'li',
+              {},
+              h('span', { class: 'when' }, when(e)),
+              h(
+                'span',
+                { class: 'what' },
+                h('a', { href: eventOnMapHref(e.id) }, e.title),
+                h('span', { class: 'muted' }, ' · ', place(e)),
+              ),
+              h('span', { class: 'who' }, goersInline(goersOf(e.id))),
+            ),
+          ),
+        )
+      : h('p', { class: 'muted' }, 'Nobody has shared plans yet.'),
+
+    people.length > 0
+      ? h(
+          'section',
+          {},
+          h('h2', {}, 'Friends sharing their plans'),
+          h(
+            'p',
+            {},
+            joined(
+              people.map((p) => [
+                h('a', { href: personHref(p.key), class: 'artist' }, p.name),
+                h('span', { class: 'muted' }, ` (${p.upcoming})`),
+              ]),
+            ),
+          ),
+        )
+      : null,
+  );
+}
+
+// a page of plans: its title and what goes under it in the head, then the rest
+function page(root: HTMLElement, [title, ...head]: readonly [Kid, ...Kid[]], ...rest: Kid[]): void {
   root.replaceChildren(
     h(
       'article',
-      { class: 'artist-profile people' },
-      h(
-        'header',
-        { class: 'profile-head' },
-        h('h1', {}, 'Who’s going where'),
-        h('p', { class: 'lede' }, 'The festivals friends said they’re going to.'),
-      ),
-
-      events.length > 0
-        ? h(
-            'ul',
-            { class: 'plan-list' },
-            events.map((e) =>
-              h(
-                'li',
-                {},
-                h('span', { class: 'when' }, when(e)),
-                h(
-                  'span',
-                  { class: 'what' },
-                  h('a', { href: eventOnMapHref(e.id) }, e.title),
-                  h('span', { class: 'muted' }, ' · ', place(e)),
-                ),
-                h('span', { class: 'who' }, goersInline(goersOf(e.id))),
-              ),
-            ),
-          )
-        : h('p', { class: 'muted' }, 'Nobody has shared plans yet.'),
-
-      people.length > 0
-        ? h(
-            'section',
-            {},
-            h('h2', {}, 'Friends sharing their plans'),
-            h(
-              'p',
-              {},
-              joined(
-                people.map((p) => [
-                  h('a', { href: personHref(p.key), class: 'artist' }, p.name),
-                  h('span', { class: 'muted' }, ` (${p.upcoming})`),
-                ]),
-              ),
-            ),
-          )
-        : null,
+      { class: 'artist-profile' },
+      h('header', { class: 'profile-head' }, h('h1', {}, title), ...head),
+      ...rest,
     ),
   );
 }

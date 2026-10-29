@@ -54,7 +54,7 @@ export function dayRange(start: string, end: string): string {
 export const loading = (words = '') =>
   h(
     'p',
-    { class: 'status loading', role: 'status' },
+    { class: ['status', 'loading'], role: 'status' },
     h('img', { src: 'loading.svg', alt: '', width: 56, height: 56 }),
     h('span', {}, words || h('span', { class: 'visually-hidden' }, 'Loading')),
   );

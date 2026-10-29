@@ -1,14 +1,16 @@
-"""Write the files built from pipeline/states.py, or check that they still say what it does.
+"""Write the files built from pipeline/states.py and the site's stylesheets, or check that they still say what those do.
 
     mise run generate          # write them
     mise run generate:check    # exit 1 naming each one that differs
 
 pipeline/enums.py holds the code's enums of the states, site/states.ts the site's words for them and
 pipeline/STATES.md's table the data points; each is written here and nowhere else, so a new state is one row of
-pipeline/states.py and then this command.
+pipeline/states.py and then this command. site/classes.ts names the classes public/css/ defines, the only ones the
+site's h() takes, so a class is one rule of the stylesheet and then this command.
 """
 
 import argparse
+import re
 import sys
 from collections.abc import Callable
 from pathlib import Path
@@ -28,10 +30,30 @@ def states_md() -> str:
     return f'{head}{BEGIN}\n\n{states.points_table()}\n\n{END}{tail}'
 
 
+CSS = ROOT / 'public' / 'css'
+COMMENT = re.compile(r'/\*.*?\*/', re.DOTALL)
+URL = re.compile(r'url\([^)]*\)')
+CLASS = re.compile(r'\.(-?[A-Za-z_][\w-]*)')
+
+
+def classes_module() -> str:
+    """site/classes.ts: the class names the stylesheets define (Leaflet's own aside, which Leaflet sets)."""
+    text = ''.join(URL.sub('', COMMENT.sub('', f.read_text(encoding='utf-8'))) for f in sorted(CSS.glob('*.css')))
+    found: list[str] = CLASS.findall(text)
+    names = sorted({m for m in found if not m.startswith('leaflet-')})
+    union = ''.join(f"\n  | '{n}'" for n in names)
+    return (
+        '// The classes public/css/ defines, written by pipeline/generate.py (mise run generate): the only ones\n'
+        "// dom.ts's h() takes, so an element can't be given a class no rule styles.\n"
+        f'export type ClassName ={union};\n'
+    )
+
+
 FILES: dict[Path, Callable[[], str]] = {
     ROOT / 'pipeline' / 'enums.py': states.enums_module,
     ROOT / 'site' / 'states.ts': states.ts_module,
     STATES_MD: states_md,
+    ROOT / 'site' / 'classes.ts': classes_module,
 }
 
 
@@ -48,7 +70,7 @@ def main() -> None:
         if stale:
             sys.exit(
                 '\n'.join(
-                    f'{p.relative_to(ROOT)} differs from pipeline/states.py: run mise run generate' for p in stale
+                    f'{p.relative_to(ROOT)} differs from what it is built from: run mise run generate' for p in stale
                 )
             )
         return

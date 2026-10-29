@@ -3,7 +3,7 @@
 import type { Feature, FeatureCollection, MultiPolygon, Polygon, Position } from 'geojson';
 import type { GeometryCollection, Topology } from 'topojson-specification';
 import { needs, q, sql } from './db.ts';
-import { button, choices, debounced, dropdown, h, moreButton, paged } from './dom.ts';
+import { button, choices, debounced, dropdown, h, moreButton, paged, toggle } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { changed, type Festival, leftOut, readState, withDetails } from './festivals.ts';
 import { currency, money, step, within } from './money.ts';
@@ -232,12 +232,14 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
   leftOut(root, dropped);
 
   // the sheet on phones: peeks with its title, slides up for the list
+  let sheetUp = false;
   const setSheet = (up: boolean) => {
-    panel.classList.toggle('up', up);
+    sheetUp = up;
+    toggle(panel, 'up', up);
     handle.setAttribute('aria-expanded', String(up));
     action.textContent = up ? 'Close' : 'Open';
   };
-  handle.addEventListener('click', () => setSheet(!panel.classList.contains('up')));
+  handle.addEventListener('click', () => setSheet(!sheetUp));
   let y0: number | null = null;
   handle.addEventListener(
     'touchstart',
@@ -372,7 +374,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
   const count = (n: number) => plural(n, 'festival');
 
   function cards(list: readonly Placed[]): HTMLElement {
-    const more = button({ class: 'more-btn show-more' });
+    const more = button({ class: ['more-btn', 'show-more'] });
     const wrap = h('div', { class: 'panel-cards' }, more);
     paged({ list: wrap, more }, list, PAGE, (e) => {
       const c = eventCard(e, { onMap: true });

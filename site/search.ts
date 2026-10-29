@@ -302,7 +302,7 @@ type Parts = readonly [HTMLElement, Kid[]];
 function festivalParts(e: FoundEvent): Parts {
   const yr = otherYear(e.start_date);
   return [
-    h('span', { class: 'lead date' }, dayMonth(e.start_date).replace(' ', '\u00a0')),
+    h('span', { class: ['lead', 'date'] }, dayMonth(e.start_date).replace(' ', '\u00a0')),
     [
       place(e),
       yr,
@@ -317,7 +317,7 @@ function festivalParts(e: FoundEvent): Parts {
     ],
   ];
 }
-const initial = (name: string) => h('span', { class: 'lead mono' }, name.trim()[0] ?? '?');
+const initial = (name: string) => h('span', { class: ['lead', 'mono'] }, name.trim()[0] ?? '?');
 const comingUp = (n: number, none: string) => (n ? `${plural(n, 'festival')} coming up` : none);
 const personParts = (item: Found<'person'>): Parts => [
   initial(item.name),
@@ -337,7 +337,7 @@ const artistParts = ({ a, shares }: Found<'artist'>): Parts => [
   ],
 ];
 function tagParts(item: Found<'tag'>): Parts {
-  const lead = h('span', { class: 'lead icon' });
+  const lead = h('span', { class: 'lead' });
   lead.innerHTML = item.icon ?? NOTE;
   return [lead, [item.style ? 'Dance' : 'Highlight', ' · ', comingUp(item.n, '')]];
 }
@@ -351,12 +351,12 @@ function parts(item: Item): Parts {
       return artistParts(item);
     case 'country':
       return [
-        h('span', { class: 'lead flag' }, flag(item.country.code)),
+        h('span', { class: ['lead', 'flag'] }, flag(item.country.code)),
         ['Country · ', comingUp(item.n, 'none coming up')],
       ];
     case 'city':
       return [
-        h('span', { class: 'lead flag' }, flag(item.city.cc)),
+        h('span', { class: ['lead', 'flag'] }, flag(item.city.cc)),
         ['City · ', comingUp(item.city.upcoming, 'past festivals only')],
       ];
     case 'tag':
@@ -478,7 +478,7 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
     return h(
       'div',
       {
-        class: `search-row${item.kind === 'festival' && !item.e.upcoming ? ' past' : ''}`,
+        class: ['search-row', item.kind === 'festival' && !item.e.upcoming && 'past'],
         role: 'option',
         id: `search-o${++nextId}`,
         'aria-selected': 'false',
@@ -506,7 +506,7 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
         ? h(
             'div',
             {
-              class: 'search-row search-more',
+              class: ['search-row', 'search-more'],
               role: 'option',
               id: `search-o${++nextId}`,
               'aria-selected': 'false',
@@ -520,7 +520,7 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
         : null;
     return h(
       'div',
-      { class: 'search-group', role: 'group', 'aria-labelledby': id },
+      { role: 'group', 'aria-labelledby': id },
       h('div', { class: 'search-group-title', id, role: 'presentation' }, title),
       found.slice(0, all ? found.length : SHOWN).map((it) => row(it, tokens)),
       more,

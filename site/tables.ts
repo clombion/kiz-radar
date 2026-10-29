@@ -43,7 +43,7 @@ GROUP BY airport ORDER BY average;`,
 const cell = (x: SqlValue) =>
   h(
     'td',
-    { class: typeof x === 'number' ? 'num' : '' },
+    { class: typeof x === 'number' && 'num' },
     x === null ? 'NULL' : x instanceof Uint8Array ? `${x.length} bytes` : x,
   );
 
@@ -64,7 +64,7 @@ export function sqlView(root: HTMLElement): void {
             { class: 'table-wrap' },
             h(
               'p',
-              { class: 'muted small' },
+              { class: ['muted', 'small'] },
               `${plural(values.length, 'row')}${values.length > 1000 ? ' (first 1000 shown)' : ''}`,
             ),
             h(
@@ -161,7 +161,7 @@ export function sqlView(root: HTMLElement): void {
                 t.name,
               ),
               t.type === 'view' ? h('small', { class: 'muted' }, ' view') : null,
-              t.description ? h('p', { class: 'small muted' }, t.description) : null,
+              t.description ? h('p', { class: ['small', 'muted'] }, t.description) : null,
             ),
           ),
         ),

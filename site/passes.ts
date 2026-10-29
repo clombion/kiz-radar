@@ -64,7 +64,7 @@ type PassesView = Peek & { note: HTMLElement; link: HTMLAnchorElement };
 let view: PassesView | undefined;
 function passesDialog(): PassesView {
   if (view) return view;
-  const note = h('p', { class: 'muted small' }),
+  const note = h('p', { class: ['muted', 'small'] }),
     link = h('a', { target: '_blank', rel: 'noopener' });
   const shown = peek('passes-title');
   shown.foot.append(note, link);

@@ -143,7 +143,7 @@ const count = (n: number) => `${n} ${n === 1 ? 'person' : 'people'}`;
 const goerName = (words: string, open: (from: Element | null) => void) =>
   button({ class: 'goer-name', onclick: own(open) }, words);
 const nameButton = (g: Named) => goerName(g.name, (b) => peekGroup(g, b));
-const tagOf = (d: string) => h('span', { class: `plan-tag${d === 'going' ? '' : ' booked'}` }, d);
+const tagOf = (d: string) => h('span', { class: ['plan-tag', d !== 'going' && 'booked'] }, d);
 // someone going, in a list of who's going: their faces, their name opening their plans, and how they're going
 const goerRow = (g: Named, open: (from: Element | null) => void) =>
   h('li', {}, faces(g.people), goerName(g.name, open), ' ', tagOf(doing(g.people)));
@@ -181,7 +181,7 @@ export function whoIsGoing(e: Going): HTMLElement | null {
   if (e.goers.length === 0) return null;
   return h(
     'section',
-    { class: 'roster who' },
+    { class: ['roster', 'who'] },
     h('h4', {}, 'Who’s going', h('span', { class: 'n' }, e.goers.length)),
     h(
       'ul',
@@ -311,7 +311,7 @@ function peekGroup(g: Named, from: EventTarget | null, back?: HTMLElement) {
 function peekEvent(e: Going, from?: EventTarget | null) {
   const groups = everyone(e);
   const backTo = () =>
-    button({ class: 'link back-link', onclick: () => peekEvent(e) }, '← Everyone going to ', e.title);
+    button({ class: ['link', 'back-link'], onclick: () => peekEvent(e) }, '← Everyone going to ', e.title);
   show(from ?? null, {
     title: `Who’s going to ${e.title}`,
     sub: [dayRange(e.start_date, e.end_date), ' · ', place(e)],

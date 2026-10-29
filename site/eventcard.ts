@@ -2,8 +2,8 @@
 // opening in place to the full line-up and practical details. Rows come from festivals.ts (withDetails).
 
 import { cardDetails, traitItems } from './details.ts';
-import type { Kid } from './dom.ts';
-import { button, h, own } from './dom.ts';
+import type { Classes, Kid } from './dom.ts';
+import { button, h, own, toggle } from './dom.ts';
 import { type Fare, type Festival, styleLine } from './festivals.ts';
 import { artistHint } from './hints.ts';
 import { TRAITS } from './icons.ts';
@@ -23,7 +23,7 @@ function dateBox(start: string, end: string): HTMLElement {
   if (mm1 !== mm2)
     return h(
       'div',
-      { class: 'datebox cross' },
+      { class: ['datebox', 'cross'] },
       h('span', { class: 'dd' }, dd1, ' ', h('small', {}, mm1)),
       h('span', { class: 'dd' }, '– ', dd2, ' ', h('small', {}, `${mm2}${yr}`)),
     );
@@ -57,14 +57,14 @@ const cheap = (e: Flown) => within(e.fare.price, 'flight', 'cheap');
 // "✈ ~5 150 kr to Brussels, then 104 km": a Fri→Mon return from home to the nearest airport with prices, and how far
 // the festival is from it. The price links to Google Flights for that weekend.
 function flight(e: Festival): HTMLElement {
-  if (e.phase === KEY.phase.GONE) return h('p', { class: 'flight muted' }, text('listing', e.listing));
-  if (e.phase !== KEY.phase.AHEAD) return h('p', { class: 'flight muted' }, text('phase', e.phase));
-  if (!e.airport) return h('p', { class: 'flight muted' }, `✈ too far from ${home().city} for our flight prices`);
-  if (e.fare?.home === true) return h('p', { class: 'flight easy' }, `In ${home().city}, no flight needed`);
-  if (!flown(e)) return h('p', { class: 'flight muted' }, '✈ flight not checked yet');
+  if (e.phase === KEY.phase.GONE) return h('p', { class: ['flight', 'muted'] }, text('listing', e.listing));
+  if (e.phase !== KEY.phase.AHEAD) return h('p', { class: ['flight', 'muted'] }, text('phase', e.phase));
+  if (!e.airport) return h('p', { class: ['flight', 'muted'] }, `✈ too far from ${home().city} for our flight prices`);
+  if (e.fare?.home === true) return h('p', { class: ['flight', 'easy'] }, `In ${home().city}, no flight needed`);
+  if (!flown(e)) return h('p', { class: ['flight', 'muted'] }, '✈ flight not checked yet');
   return h(
     'p',
-    { class: `flight${cheap(e) ? ' easy' : ''}` },
+    { class: ['flight', cheap(e) && 'easy'] },
     '✈ ',
     flightLink(e, money(e.fare.price, 'EUR', { approx: true })),
     ...after(e),
@@ -79,7 +79,7 @@ function flight(e: Festival): HTMLElement {
 // passes when its state renders as one.
 // a card's price is a button to the passes view, which opens over the page
 const passBtn = (e: Festival, ...words: Kid[]) =>
-  button({ class: 'link pass-btn', onclick: own((b) => openPasses(e, b)) }, ...words);
+  button({ class: ['link', 'pass-btn'], onclick: own((b) => openPasses(e, b)) }, ...words);
 function linked(e: Festival, words: string | null, link: string | null): Kid {
   if (link === LINK.PAGE && e.ticket_page)
     return h('a', { href: e.ticket_page, target: '_blank', rel: 'noopener', onclick: own() }, words, away());
@@ -87,7 +87,7 @@ function linked(e: Festival, words: string | null, link: string | null): Kid {
   return words;
 }
 const note = <P extends Point>(e: Festival, point: P, key: Key<P>) =>
-  h('p', { class: 'pass-price muted' }, '🎟 ', linked(e, text(point, key), linkOf(point, key)));
+  h('p', { class: ['pass-price', 'muted'] }, '🎟 ', linked(e, text(point, key), linkOf(point, key)));
 
 function prices(e: Festival): HTMLElement[] {
   const p = e.price;
@@ -97,7 +97,7 @@ function prices(e: Festival): HTMLElement[] {
     return [
       h(
         'p',
-        { class: 'pass-price muted' },
+        { class: ['pass-price', 'muted'] },
         '🎟 ',
         passBtn(e, text('card_price', p.key, { pass: text('pass_kind', p.pass.kind) })),
       ),
@@ -194,21 +194,21 @@ export function eventCard(
         cardDetails(
           e,
           traits.slice(0, 3).map(([k]) => k),
-          toggleBtn('link less', 'Less'),
+          toggleBtn(['link', 'less'], 'Less'),
           { onMap },
         ),
       );
     more.hidden = !shown;
-    art.classList.toggle('open', shown);
+    toggle(art, 'open', shown);
     for (const t of toggles) t.setAttribute('aria-expanded', String(shown));
     label.textContent = shown ? 'Less' : 'Line-up & details';
   };
-  const toggleBtn = (cls: string, ...kids: Kid[]) => {
+  const toggleBtn = (cls: Classes, ...kids: Kid[]) => {
     const b = button(
       {
         class: cls,
         'aria-expanded': 'false',
-        onclick: own(toggle),
+        onclick: own(openOrClose),
       },
       ...kids,
     );
@@ -216,7 +216,7 @@ export function eventCard(
     return b;
   };
   const label = h('span', {}, 'Line-up & details');
-  const toggle = () => {
+  const openOrClose = () => {
     const opening = more.hidden === true;
     smoothly(art, () => setOpen(opening), opening);
   };
@@ -232,7 +232,7 @@ export function eventCard(
           { class: 'with' },
           'With ',
           ...links.flatMap((l, i) => (i ? [i === links.length - 1 && rest <= 0 ? ' and ' : ', ', l] : [l])),
-          rest > 0 ? [' and ', toggleBtn('link more-names', `${rest} more`)] : null,
+          rest > 0 ? [' and ', toggleBtn(['link', 'more-names'], `${rest} more`)] : null,
         )
       : null;
   // up to three features as icon + short word (icons alone are guesswork); the rest are in the details
@@ -243,7 +243,7 @@ export function eventCard(
           'ul',
           { class: 'traits', 'aria-label': 'Highlights' },
           traitItems(traits.slice(0, 3), e),
-          traits.length > 3 ? h('li', { class: 'more-traits' }, toggleBtn('link', `+${traits.length - 3}`)) : null,
+          traits.length > 3 ? h('li', {}, toggleBtn('link', `+${traits.length - 3}`)) : null,
         )
       : null;
 
@@ -251,7 +251,7 @@ export function eventCard(
   // it holds names and links that do their own thing.
   const foot = h('div', { class: 'foot' }, prices(e), h('div', { class: 'actions' }, toggleBtn('link', label)));
   foot.addEventListener('click', (ev) => {
-    if (!(ev.target instanceof Element && ev.target.closest('a, button'))) toggle();
+    if (!(ev.target instanceof Element && ev.target.closest('a, button'))) openOrClose();
   });
   const art = h(
     'article',

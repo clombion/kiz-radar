@@ -43,7 +43,7 @@ function tabs(current: number): HTMLElement {
   const nav = h(
     'nav',
     { style: 'position: relative; display: flex; gap: 8px' },
-    ['One', 'Two', 'Three'].map((t, i) => h('a', { href: '#', class: i === current ? 'active' : '' }, t)),
+    ['One', 'Two', 'Three'].map((t, i) => h('a', { href: '#', class: i === current && 'active' }, t)),
   );
   document.body.append(nav);
   return nav;

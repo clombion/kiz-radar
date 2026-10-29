@@ -5,7 +5,7 @@
 import { artistsView } from './artists.ts';
 import { countriesView } from './countries.ts';
 import { load, loadSite, site } from './db.ts';
-import { button, h, onResize } from './dom.ts';
+import { button, h, onResize, toggle } from './dom.ts';
 import { artistHint, exploreHint } from './hints.ts';
 import { mapView } from './map.ts';
 import { currencySwitch } from './money.ts';
@@ -58,7 +58,7 @@ const VIEWS: Readonly<Record<Route, View>> = {
 const isRoute = (name: string): name is Route => Object.hasOwn(VIEWS, name);
 const failed = (root: HTMLElement, e: unknown) =>
   root.replaceChildren(
-    h('p', { class: 'status error' }, `Could not load the data: ${e instanceof Error ? e.message : String(e)}`),
+    h('p', { class: ['status', 'error'] }, `Could not load the data: ${e instanceof Error ? e.message : String(e)}`),
   );
 
 // the header's tabs and the footer's links, from routes.ts
@@ -91,18 +91,18 @@ function show(name: string, sub: readonly string[], qs: string): void {
   leave = new AbortController();
   for (const a of document.querySelectorAll<HTMLElement>('[data-nav]')) {
     const on = a.dataset['nav'] === view.nav;
-    a.classList.toggle('active', on);
+    toggle(a, 'active', on);
     if (on) a.setAttribute('aria-current', 'page');
     else a.removeAttribute('aria-current');
   }
   subnav.hidden = view.nav !== 'explore';
   subnav.replaceChildren(
     ...EXPLORE.map(([k, t, href]) =>
-      h('a', { href, class: k === name ? 'active' : '', 'aria-current': k === name ? 'page' : null }, t),
+      h('a', { href, class: k === name && 'active', 'aria-current': k === name ? 'page' : null }, t),
     ),
   );
   for (const row of tabRows()) pill(row);
-  const root = h('div', { class: 'view' });
+  const root = h('div', {});
   main.replaceChildren(root);
   const { signal } = leave;
   const build = () => guarded(root, name, () => view.show(root, sub, qs, { signal, data }));
@@ -142,7 +142,7 @@ const toTop = button(
   '↑ Back to top',
 );
 document.body.append(toTop);
-addEventListener('scroll', () => toTop.classList.toggle('shown', scrollY > 2 * innerHeight), { passive: true });
+addEventListener('scroll', () => toggle(toTop, 'shown', scrollY > 2 * innerHeight), { passive: true });
 
 // the page once site.json is in: what the data covers, the home city, search, and the view the address names, then
 // each address it moves to; a summary that fails to load is said in the page's place
