@@ -9,10 +9,6 @@
   "visible": false,
   "wait": 8,
   "open": null,
-  "symbols": {
-    "€": "EUR",
-    "£": "GBP"
-  },
   "row": "form.variations_form select option[value]:not([value=''])",
   "api": null,
   "fields": {

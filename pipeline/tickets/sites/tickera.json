@@ -9,11 +9,6 @@
   "visible": false,
   "wait": 4,
   "open": null,
-  "symbols": {
-    "€": "EUR",
-    "£": "GBP",
-    "$": "USD"
-  },
   "row": "table.event_tickets tr:has(td[data-column])",
   "api": null,
   "fields": {

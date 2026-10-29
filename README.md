@@ -202,17 +202,18 @@ judgment about a page is made once, by an agent or two models, and checked; ever
 - **A recipe per ticket site** (`pipeline/tickets/sites/<site>.json`, a `Recipe` of `pipeline/records.py`) says where
   the site's ticket rows are: each ticket's id on the site (its key), name, price as shown, amount, currency, a booking
   fee when the site shows it apart from the price (Weeztix's "+ €1.00 fee", added to the amount), a second price when
-  the site shows one, and its sold-out mark; what its currency symbols stand for; whether the tickets sit on another
-  address (a widget: built from a pattern found in the link or in its page, as Eventbrite's event page leads to its
-  checkout and Weezevent's mini-site to its widget), which sections to click open, and whether the site needs a visible
-  browser. A free ticket, shown as a word ("Free", "Gratuit"), costs 0. A field may read the whole page instead of its
-  row, and name the row's other fields as `{field}` and its attributes as `{@attr}`: Tikoria's ticket ids sit in its
-  script data next to each ticket's name, and Kizzbee's prices in a JSON attribute keyed by each option's value. A
-  recipe names the reseller when the site sells other organisers' festivals at its own prices (Kizzbee); it is used only
-  when the festival sells nowhere else, and the passes view says so. A site whose page carries no ticket ids but whose
-  API does (go&dance) gets an API recipe: the event's id found on its page, the API's address, and each field a path
-  into a ticket's JSON, a pattern on the page, or a text built from JSON values; it reads with plain requests, no
-  browser. An agent writes one per site; FairPlay's needs a visible browser (it is behind a browser check).
+  the site shows one, and its sold-out mark (a currency symbol is read by the one table of `pipeline/currencies.py`,
+  which the prices' quotes are checked by too); whether the tickets sit on another address (a widget: built from a
+  pattern found in the link or in its page, as Eventbrite's event page leads to its checkout and Weezevent's mini-site
+  to its widget), which sections to click open, and whether the site needs a visible browser. A free ticket, shown as a
+  word ("Free", "Gratuit"), costs 0. A field may read the whole page instead of its row, and name the row's other fields
+  as `{field}` and its attributes as `{@attr}`: Tikoria's ticket ids sit in its script data next to each ticket's name,
+  and Kizzbee's prices in a JSON attribute keyed by each option's value. A recipe names the reseller when the site sells
+  other organisers' festivals at its own prices (Kizzbee); it is used only when the festival sells nowhere else, and the
+  passes view says so. A site whose page carries no ticket ids but whose API does (go&dance) gets an API recipe: the
+  event's id found on its page, the API's address, and each field a path into a ticket's JSON, a pattern on the page, or
+  a text built from JSON values; it reads with plain requests, no browser. An agent writes one per site; FairPlay's
+  needs a visible browser (it is behind a browser check).
 - **A log per festival** (`pipeline/tickets/log/<event_id>.jsonl`, a `LogEntry` a line, checked on every write and read)
   gets one entry per read: `read` with every row, `refused` (no rows and an HTTP error), `unreachable` (the page could
   not be reached or would not load), or `layout_broken` (the recipe's selectors fail, no rows, two rows with one key, or

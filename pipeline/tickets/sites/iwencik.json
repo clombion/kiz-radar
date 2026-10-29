@@ -9,10 +9,6 @@
   "visible": false,
   "wait": 10,
   "open": "mat-select[formcontrolname='selectedTicketId']",
-  "symbols": {
-    "zł": "PLN",
-    "€": "EUR"
-  },
   "row": "mat-option[data-testid^='registration-ticket-option-']",
   "api": null,
   "fields": {

@@ -13,10 +13,6 @@
   "visible": false,
   "wait": 8,
   "open": ".billetterie_tb_titre_categorie.wid-close",
-  "symbols": {
-    "€": "EUR",
-    "£": "GBP"
-  },
   "row": "tr[data-id]",
   "api": null,
   "fields": {

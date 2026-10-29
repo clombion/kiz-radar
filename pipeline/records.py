@@ -563,7 +563,7 @@ class Fields[F: Record | ApiFind](Record):
     name: F
     price: F = Field(description='The price as the page shows it.')
     amount: F = Field(description='The price as a number (1,800.00, 1.800,00 and 1800 all read as 1800).')
-    currency: F = Field(description='A currency code, or a symbol listed in symbols.')
+    currency: F = Field(description='A currency code, or a symbol pipeline/currencies.py reads (SYMBOLS).')
     fee: F | None = Field(
         description='A booking fee the site adds to the price ("+ €1.00 fee"), when it shows one apart; the amount '
         'logged is the price plus this fee. Null when the price shown is what a buyer pays.'
@@ -627,10 +627,6 @@ class Site(Record):
     wait: Annotated[int, Field(ge=1, le=60, description='Seconds to let the page settle after loading.')]
     open: Text | None = Field(
         description='A CSS selector whose every match is clicked before reading, to open sections shown collapsed.'
-    )
-    symbols: dict[str, Currency] = Field(
-        description='What the site\'s currency symbols stand for ({"€": "EUR"}); a currency field that finds a '
-        'code needs none.'
     )
 
 

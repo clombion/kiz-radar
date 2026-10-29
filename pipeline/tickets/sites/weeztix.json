@@ -9,10 +9,6 @@
   "visible": false,
   "wait": 10,
   "open": null,
-  "symbols": {
-    "€": "EUR",
-    "£": "GBP"
-  },
   "row": ".group-item--ticket",
   "api": null,
   "fields": {

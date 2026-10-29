@@ -115,6 +115,33 @@ def test_a_total_quotes_its_price_and_its_fee(quote: str, amount: float, fee: fl
     assert (prices.problems(ev, []) == []) == ok
 
 
+@pytest.mark.parametrize(
+    ('quote', 'amount', 'currency', 'ok'),
+    [
+        ('March 31 155€', 31, 'EUR', False),  # a date prices nothing
+        ('March 31 155€', 155, 'EUR', True),
+        ('Children under 10 €50', 10, 'EUR', False),  # a count neither: the mark before an amount takes it
+        ('Children under 10 €50', 50, 'EUR', True),
+        ('950 SEK (€85)', 85, 'SEK', False),  # a price in another currency is none in this one
+        ('950 SEK (€85)', 950, 'SEK', True),
+        ('470dkk/62€', 470, 'DKK', True),
+        ('€150 / 57.000 Ft until 30 September', 57000, 'HUF', True),
+        ('€150 / 57.000 Ft until 30 September', 57000, 'EUR', False),  # a slash sets another currency beside it
+        ('FULLPASS : 150 to 190€ with accommodation', 150, 'EUR', True),  # one mark prices a range or a list
+        ('Full Pass €75, 80, 85 (SOLD OUT)', 85, 'EUR', True),
+        ('𝐅𝐔𝐋𝐋 𝐏𝐀𝐒𝐒: 𝟯𝟱𝟬 𝗥𝗢𝗡 / 𝟳𝟬 𝗘𝗨𝗥𝗢', 350, 'RON', True),  # styled letters and digits
+        ('VIP 100€', 100, 'EUR', True),  # VIP is no currency
+        ('FULLPASS – 89 EARLY BIRD', 89, 'EUR', True),  # a quote that marks no price may hold it bare
+        ('1 DAY-300', 1, 'EUR', True),
+    ],
+)
+def test_an_amount_is_a_price_its_quote_gives_in_its_currency(
+    quote: str, amount: float, currency: str, ok: bool
+) -> None:
+    ev = priced(tier(quote, amount, currency=currency, until=None))
+    assert (prices.problems(ev, []) == []) == ok
+
+
 def test_amount_missing_from_quote_is_a_problem() -> None:
     ev = priced(tier('Full Pass – 180€ (Till Festival)', 150, until=None))
     assert prices.problems(ev, [])[0].startswith('amounts: event 5: passes[0].tiers[0].amount 150')

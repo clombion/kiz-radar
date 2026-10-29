@@ -447,7 +447,7 @@ def why(entry_: LogEntry) -> str:
     ('change', 'field'),
     [
         ({'amount': None}, 'amount'),
-        ({'currency': '$'}, 'currency'),
+        ({'currency': '¤'}, 'currency'),  # a mark no currency of pipeline/currencies.py has
         ({'alt_amount': '3,125.00', 'alt_currency': 'CZK'}, 'second price'),
     ],
 )
@@ -981,7 +981,7 @@ def test_a_widget_found_in_the_page_keeps_an_address_that_is_already_its_own(mon
 
 @pytest.mark.parametrize(('price', 'amount'), [('Free', 0.0), ('Gratuit', 0.0), ('€81.03', None)])
 def test_a_free_ticket_costs_0(price: str, amount: float | None) -> None:
-    got = tickets_reading.parsed(RAW | {'price': price, 'amount': None}, {'€': 'EUR'})
+    got = tickets_reading.parsed(RAW | {'price': price, 'amount': None})
     assert got['amount'] == amount
     try:
         _ = Row.model_validate(got)

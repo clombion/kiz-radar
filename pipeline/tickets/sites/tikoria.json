@@ -9,9 +9,6 @@
   "visible": false,
   "wait": 10,
   "open": null,
-  "symbols": {
-    "€": "EUR"
-  },
   "row": "div[role='button']:has(> div > div > p.font-semibold)",
   "api": null,
   "fields": {

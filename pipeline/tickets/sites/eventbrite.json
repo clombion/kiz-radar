@@ -34,17 +34,6 @@
   "visible": false,
   "wait": 12,
   "open": null,
-  "symbols": {
-    "€": "EUR",
-    "£": "GBP",
-    "CA$": "CAD",
-    "US$": "USD",
-    "A$": "AUD",
-    "NZ$": "NZD",
-    "R$": "BRL",
-    "CHF": "CHF",
-    "$": "USD"
-  },
   "row": "[data-testid='ticket-display-card-content-full-size']:has(select[id^='ticket-quantity-selector-']), [data-testid='multiple-ticket-variants-card']:has(select[id^='ticket-quantity-selector-'])",
   "api": null,
   "fields": {

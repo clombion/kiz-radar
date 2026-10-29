@@ -13,10 +13,6 @@
   "visible": false,
   "wait": 8,
   "open": null,
-  "symbols": {
-    "€": "EUR",
-    "£": "GBP"
-  },
   "row": ".sui-shop-item:has(input[name^='product_id'])",
   "api": null,
   "fields": {

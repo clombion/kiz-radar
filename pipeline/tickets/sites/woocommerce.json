@@ -13,11 +13,6 @@
   "visible": false,
   "wait": 8,
   "open": null,
-  "symbols": {
-    "€": "EUR",
-    "£": "GBP",
-    "$": "USD"
-  },
   "row": "li.product.type-product",
   "api": null,
   "fields": {

@@ -1,7 +1,10 @@
 """Checks and dates for the prices pass, on top of check_output.checked().
 
-Each tier's quote must contain its amount (and its second amount, alt), written in any of the usual ways: 1800, 1.800,
-1,800, 1 800, 8.50 or 8,50; a tier whose amount adds a fee must quote the fee and the price before it. Dates come back
+Each tier's quote must price its amount (and its second amount, alt) in its currency, written in any of the usual ways:
+1800, 1.800, 1,800, 1 800, 8.50 or 8,50, with a marker of the currency before or after it (pipeline/currencies.py),
+which also prices a range or a list it ends or starts ("150 to 190€", "€75, 80, 85"); a number with no marker, a date
+or a count say, prices nothing. A quote that marks no price at all may hold the amount as a bare number. A tier whose
+amount adds a fee must quote the fee and the price before it. Dates come back
 as YYYY-MM-DD, or MM-DD when the description gives no year; window() gives a tier's dates their years.
 
 What a festival's card can say of its price (enums.Price) is decided here too: the pass a card prices (card_pass)
@@ -11,10 +14,11 @@ and, when there is none, why (price_state).
 import calendar
 import datetime as dt
 import re
-from collections.abc import Sequence
+import unicodedata
+from collections.abc import Iterable, Sequence
 from typing import NamedTuple
 
-from pipeline import states
+from pipeline import currencies, states
 from pipeline.db import Reader
 from pipeline.enums import Genre, PassKind, People, Price, Sales, Style
 from pipeline.records import PassTerms, Priced, PricedPass, RealDay, yearless
@@ -22,6 +26,9 @@ from pipeline.records import PassTerms, Priced, PricedPass, RealDay, yearless
 SEVERAL = 2  # dance styles that make a festival of several
 COUPLE = 2  # people in a couple; more are a group
 NUMBER = re.compile(r'\d+(?:[ .,’\']\d{3})*(?:[.,]\d{1,2})?|\d+')
+AMOUNT = r'\d+(?:[ .,’\']\d{3})*(?:[.,]\d{1,2})?'
+# amounts one marker prices: "75, 80, 85", "150 to 190"; never across a slash, which sets another currency's beside it
+RUN = rf'{AMOUNT}(?:\s*(?:,|-|–|to|or|and)\s*{AMOUNT})*'
 
 
 def numbers_in(text: str) -> set[float]:
@@ -29,10 +36,59 @@ def numbers_in(text: str) -> set[float]:
     holds 31, 155 and 31155."""
     out = {float(n) for n in re.split(r'\D+', text) if n}
     for m in NUMBER.finditer(text):
-        s = m.group(0)
-        out.add(float(re.sub(r'\D', '', s)))  # all separators are thousands
-        if dec := re.fullmatch(r'(.*?)[.,](\d{1,2})', s):  # the last one is a decimal point
-            out.add(float(re.sub(r'\D', '', dec[1]) + '.' + dec[2]))
+        out |= readings(m.group(0))
+    return out
+
+
+def marked(markers: Iterable[str]) -> str:
+    """A pattern for any of these markers, the longest first, a word or a code standing alone."""
+    alts = sorted(markers, key=len, reverse=True)
+    return '(?:' + '|'.join(re.escape(m) for m in alts) + ')'
+
+
+EVERY_MARKER = (
+    marked([m for m, _ in currencies.MARKERS] + [c for c in currencies.CODES if c not in currencies.WORDS])
+    + '|(?-i:'
+    + '|'.join(currencies.WORDS)
+    + ')'
+)
+
+
+def amounts_in(quote: str, currency: str) -> set[float] | None:
+    """Every amount the quote prices in the currency, by numbers_in()'s readings; None when it marks no price in any
+    currency. A marker before an amount takes it first, so "under 10 €50" prices 50; a marker of another currency
+    prices nothing of this one ("950 SEK (€85)")."""
+    q = unicodedata.normalize('NFKC', quote)  # styled letters and digits: 𝟯𝟱𝟬 𝗥𝗢𝗡 is 350 RON
+    mine = re.compile(marked(currencies.markers(currency)) + r'\Z', re.IGNORECASE)
+    found: list[str] = []
+    taken: list[tuple[int, int]] = []
+    any_price = False
+    before = re.compile(rf'(?<![^\W\d_])({EVERY_MARKER})\s?({RUN})', re.IGNORECASE)
+    after = re.compile(rf'({RUN})\s?({EVERY_MARKER})(?![^\W\d_])', re.IGNORECASE)
+    for m in before.finditer(q):
+        any_price = True
+        taken.append(m.span())
+        if mine.match(m[1]):
+            found.append(m[2])
+    for m in after.finditer(q):
+        if any(a < m.end() and m.start() < b for a, b in taken):
+            continue
+        any_price = True
+        if mine.match(m[2]):
+            found.append(m[1])
+    if not any_price:
+        return None
+    return {n for run in found for m in re.finditer(AMOUNT, run) for n in readings(m[0])}
+
+
+def readings(amount: str) -> set[float]:
+    """What one written amount may be: every separator a thousands one ('1.800' is 1800), or the last a decimal point
+    (1.8); and after a space, the last group alone, as a space may part a number from the price ('March 31 155€')."""
+    out = {float(re.sub(r'\D', '', amount))}
+    if dec := re.fullmatch(r'(.*?)[.,](\d{1,2})', amount):
+        out.add(float(re.sub(r'\D', '', dec[1]) + '.' + dec[2]))
+    if ' ' in amount:
+        out |= readings(amount.rsplit(' ', 1)[1])
     return out
 
 
@@ -101,14 +157,18 @@ def problems(ev: Priced, styles: Sequence[Style]) -> list[str]:
     for p, ps in enumerate(ev.passes):
         for t, tier in enumerate(ps.tiers):
             where = f'event {ev.event_id}: passes[{p}].tiers[{t}]'
-            have = numbers_in(tier.quote)
-            if tier.fee is not None:
-                have |= {round(tier.fee + n, 2) for n in have} if tier.fee in have else set()
-            for key, amount in (('amount', tier.amount), ('alt.amount', tier.alt and tier.alt.amount)):
-                if amount is not None and amount not in have:
+            priced = [('amount', tier.amount, tier.currency)]
+            if tier.alt:
+                priced.append(('alt.amount', tier.alt.amount, tier.alt.currency))
+            for key, amount, currency in priced:
+                have = amounts_in(tier.quote, currency)
+                have = numbers_in(tier.quote) if have is None else have
+                if tier.fee is not None and key == 'amount' and tier.fee in numbers_in(tier.quote):
+                    have |= {round(tier.fee + n, 2) for n in have}  # the price before the fee, and the fee
+                if amount not in have:
                     found.append(
-                        f'amounts: {where}.{key} {amount:g} is not in its quote {tier.quote!r}; '
-                        f'quote the line that gives this price'
+                        f'amounts: {where}.{key} {amount:g} {currency} is not a price its quote {tier.quote!r} gives '
+                        f'in {currency}; quote the line that gives this price'
                     )
     return found + style_problems(ev.passes, styles)
 

@@ -9,9 +9,6 @@
   "visible": false,
   "wait": 8,
   "open": null,
-  "symbols": {
-    "€": "EUR"
-  },
   "row": "div.group.relative[class*=\"rounded-[2rem]\"]",
   "api": null,
   "fields": {

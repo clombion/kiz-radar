@@ -6,7 +6,6 @@
   "visible": false,
   "wait": 1,
   "open": null,
-  "symbols": {"€": "EUR", "£": "GBP"},
   "row": null,
   "api": {"id": "data-event-uuid=\"([0-9a-f-]{36})\"", "url": "https://www.goandance.com/api/event/{id}/tickets", "items": "allTickets"},
   "fields": {

@@ -9,6 +9,7 @@ from typing import Literal
 
 from pydantic import TypeAdapter, ValidationError
 
+from pipeline import currencies
 from pipeline.calls import Declined
 from pipeline.enums import CallCause, Status
 from pipeline.records import (
@@ -45,13 +46,14 @@ def number(text: str | None) -> float | None:
     return float(re.sub(r'\D', '', whole) + ('.' + dec if dec else ''))
 
 
-def parsed(raw: Raw, symbols: Mapping[str, str]) -> dict[str, object]:
-    """A row as logged, from read_page.rows()'s strings: whitespace collapsed, numbers read, symbols as currency codes,
-    and the amount what a buyer pays: the price plus the fee the site adds to it, when it shows one."""
+def parsed(raw: Raw) -> dict[str, object]:
+    """A row as logged, from read_page.rows()'s strings: whitespace collapsed, numbers read, currency symbols as codes
+    (pipeline/currencies.py), and the amount what a buyer pays: the price plus the fee the site adds to it, when it
+    shows one."""
     text = {k: None if v is None else ' '.join(v.split()) for k, v in raw.items()}
 
     def code(t: str | None) -> str | None:
-        return t and symbols.get(t, t)
+        return t and currencies.code(t)
 
     amount, fee = number(text['amount']), number(text['fee']) or None  # a fee of 0 is none
     if amount is None and text['price'] and FREE.fullmatch(text['price']):
@@ -205,7 +207,7 @@ def api_attempt(started: Attempt, recipe: ApiRecipe) -> LogEntry:
         return started.failed(Status.LAYOUT_BROKEN, f'{type(e).__name__}: {e}')
     except RequestException as e:  # the request failed: no HTTP answer to judge
         return started.failed(Status.UNREACHABLE, f'{type(e).__name__}: {e}')
-    return judged(replace(started, url=url, http=status), url, url, raw, recipe.symbols)
+    return judged(replace(started, url=url, http=status), url, url, raw)
 
 
 def page_attempt(started: Attempt, recipe: PageRecipe, *, visible: bool | None) -> LogEntry:
@@ -227,10 +229,10 @@ def page_attempt(started: Attempt, recipe: PageRecipe, *, visible: bool | None) 
         return reached.failed(Status.LAYOUT_BROKEN, f'the recipe fails on the page: {e}')
     except UnreachableError as e:
         return reached.failed(Status.UNREACHABLE, str(e))
-    return judged(replace(reached, http=status), url, title, raw, recipe.symbols)
+    return judged(replace(reached, http=status), url, title, raw)
 
 
-def judged(reached: Attempt, url: str, title: str, raw: Sequence[Raw], symbols: Mapping[str, str]) -> LogEntry:
+def judged(reached: Attempt, url: str, title: str, raw: Sequence[Raw]) -> LogEntry:
     """The log entry for a read that got an answer: refused (an HTTP error, and no rows), layout_broken, or read with
     its rows."""
     # a browser check answers 4xx, then shows the page once it has passed, so the status alone decides nothing
@@ -239,7 +241,7 @@ def judged(reached: Attempt, url: str, title: str, raw: Sequence[Raw], symbols: 
     got: list[Row] = []
     bad: list[str] = []
     for i, r in enumerate(raw):
-        row = parsed(r, symbols)
+        row = parsed(r)
         try:
             got.append(Row.model_validate(row))
         except ValidationError as e:

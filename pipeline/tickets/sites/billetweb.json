@@ -13,12 +13,6 @@
   "visible": false,
   "wait": 8,
   "open": null,
-  "symbols": {
-    "€": "EUR",
-    "£": "GBP",
-    "$": "USD",
-    "CHF": "CHF"
-  },
   "row": "tr.shop_step1_ticket[ticket]",
   "api": null,
   "fields": {

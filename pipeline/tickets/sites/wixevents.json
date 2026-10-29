@@ -9,12 +9,6 @@
   "visible": false,
   "wait": 10,
   "open": "[data-hook=\"more-price-options-button\"]",
-  "symbols": {
-    "€": "EUR",
-    "£": "GBP",
-    "$": "USD",
-    "CHF": "CHF"
-  },
   "row": "li[data-hook=\"ticket-pricing-option\"]",
   "api": null,
   "fields": {
