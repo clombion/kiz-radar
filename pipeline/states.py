@@ -180,12 +180,6 @@ POINTS = (
     P('listing', 'Listing', 'each festival, by whether the site it comes from still lists it', 'scrape'),
     P('event_source', 'EventSource', "the site a festival's listing comes from (source_ids)", 'scrape'),
     P('plan', 'Plan', 'each plan someone shares (pipeline/plans.csv)', 'pipeline/plans.csv'),
-    P(
-        'fare_search',
-        'FareSearch',
-        "a festival weekend's latest flight search (pipeline/fare_jobs.csv)",
-        'fares.search',
-    ),
     P('next_change', 'NextChange', "a pass's next price change on the day it is viewed", 'pricing.ts nextChange'),
     P('hotel', 'Hotel', 'each pass, by whether its price includes a hotel', 'the prices pass; the first read'),
     P('claim_source', 'ClaimSource', 'the channel a claim comes by, the earlier the higher its priority', 'claims'),
@@ -850,8 +844,6 @@ ROWS = (
     ),
     S('event_source', 'kizomba-world', 'kizomba-world.com, whose ids its source_id are', KEPT),
     S('plan', 'going', 'they said they are going', VIEW),
-    S('fare_search', 'priced', 'Google gave a return for the weekend; its price is in docs/data/fares.csv', KEPT),
-    S('fare_search', 'no price', 'Google gave no return for the weekend; note gives its words', KEPT),
     S(
         'next_change',
         'door',

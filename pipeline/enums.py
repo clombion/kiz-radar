@@ -40,7 +40,6 @@ type Point = Literal[
     'listing',
     'event_source',
     'plan',
-    'fare_search',
     'next_change',
     'hotel',
     'claim_source',
@@ -426,14 +425,6 @@ class Plan(StrEnum):
     """the plan states"""
 
     GOING = 'going'
-
-
-@unique
-class FareSearch(StrEnum):
-    """the fare_search states"""
-
-    PRICED = 'priced'
-    NO_PRICE = 'no price'
 
 
 @unique

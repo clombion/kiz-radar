@@ -62,7 +62,6 @@ thing a consumer must treat differently.
 | **listing**, each festival, by whether the site it comes from still lists it | `listed`, `gone` | scrape |
 | **event_source**, the site a festival's listing comes from (source_ids) | `kizomba-world` | scrape |
 | **plan**, each plan someone shares (pipeline/plans.csv) | `going` | pipeline/plans.csv |
-| **fare_search**, a festival weekend's latest flight search (pipeline/fare_jobs.csv) | `priced`, `no price` | fares.search |
 | **next_change**, a pass's next price change on the day it is viewed | `door`, `dated`, `later` | pricing.ts nextChange |
 | **hotel**, each pass, by whether its price includes a hotel | `included`, `none` | the prices pass; the first read |
 | **claim_source**, the channel a claim comes by, the earlier the higher its priority | `admin`, `organiser`, `model` | claims |

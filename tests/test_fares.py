@@ -9,7 +9,7 @@ import pytest
 
 from pipeline import fares
 from pipeline.calls import Declined
-from pipeline.enums import CallCause, FareSearch
+from pipeline.enums import CallCause
 from pipeline.records import Airport, now, today
 from tests.exports import committed
 from tests.fakes import no_wait
@@ -61,7 +61,7 @@ def test_due_again_on_its_own_weekday_only(tmp_path: Path, monkeypatch: pytest.M
     # GLA on 6 Nov is weekly; searched a week before its weekday in the week of 26 Oct
     its_day = dt.date(2026, 10, 26) + dt.timedelta(days=fares.weekday_of('GLA', FRIDAY))
     last = dt.datetime.combine(its_day - dt.timedelta(days=7), dt.time(6), dt.UTC)
-    job = fares.Job(airport='GLA', depart=FRIDAY, last_run=last, status=FareSearch.PRICED, note='')
+    job = fares.Job(airport='GLA', depart=FRIDAY, last_run=last)
 
     def due(day: dt.date) -> bool:
         return run_queue(tmp_path, monkeypatch, [job], day).due
@@ -158,10 +158,7 @@ def test_a_refresh_keeps_the_fares_found_and_logs_every_search(weekends: Path, m
     monkeypatch.setattr('sys.argv', ['fares', 'refresh'])
     fares.main()
     assert fares.Fare.read() == [fare]  # the weekend gone took its fare with it
-    assert {(j.airport, j.status, j.note) for j in fares.Job.read()} == {
-        ('GLA', FareSearch.PRICED, ''),
-        ('LIS', FareSearch.NO_PRICE, 'none'),
-    }
+    assert {j.airport for j in fares.Job.read()} == {'GLA', 'LIS'}
 
 
 def test_a_weekend_with_no_price_now_loses_its_old_fare_and_one_with_no_answer_keeps_all(
@@ -177,7 +174,7 @@ def test_a_weekend_with_no_price_now_loses_its_old_fare_and_one_with_no_answer_k
     with pytest.raises(SystemExit, match=r'1 searches gave no answer \(transient 1\): LIS'):
         fares.refresh(budget=5, max_seconds=60)
     assert fares.Fare.read() == [old[1]]
-    assert [(j.airport, j.status) for j in fares.Job.read()] == [('GLA', FareSearch.NO_PRICE)]  # LIS: tried next run
+    assert [j.airport for j in fares.Job.read()] == ['GLA']  # LIS: tried next run
 
 
 def test_a_refused_search_is_tried_once_more_then_the_rest_waits(

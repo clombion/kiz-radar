@@ -73,7 +73,7 @@ page on kizomba-world. The fares are our own searches.
 | `docs/data/kiz.sqlite` | What the site queries: events, line-ups, artists, statistics, airports, a fares snapshot | built from the export and the files of `pipeline/`, never committed: by **Publish site** for the site, `mise run build:data` locally, and for each step that reads it |
 | `docs/data/site.json` | What the page shows before the database loads: home airport, destinations, dates covered | the same build |
 | `docs/data/fares.csv` | Friday-to-Monday return fares, one row per airport and weekend | the **Refresh fares** Action |
-| `pipeline/fare_jobs.csv` | When each festival weekend was last searched, and how it went | the same Action |
+| `pipeline/fare_jobs.csv` | When each festival weekend was last searched (its fare, when one was found, is in `docs/data/fares.csv`) | the same Action |
 | `pipeline/extract/answers/` | Claude's answers for line-ups, highlights, rooms, genres and pass prices | the **Refresh events** Action |
 | `pipeline/rates.csv` | The European Central Bank's exchange rates, per euro | the **Refresh places and rates** Action |
 | `pipeline/tickets/` | Ticket-page recipes, read logs, first reads, from which the load takes the prices read there, and what each festival waits for (`tickets/status.csv`) | `pipeline/tickets.py`: the **Refresh events** Action, or an agent |
@@ -122,9 +122,10 @@ weekend falls due depends on how far away it is:
 
 Each weekend has its own weekday, so each day's run checks about a seventh of them; a weekend never searched, or overdue
 by twice its interval, doesn't wait for its day. Past weekends and weekends no festival uses any more leave
-`docs/data/fares.csv` and `pipeline/fare_jobs.csv`. A weekend with no price on Google is noted and tried again at its
-next interval. If Google refuses a search, the run keeps what it found and is marked failed. A festival's airport is the
-nearest one in `pipeline/airports.csv` within 250 km. To see what is due today, run `mise run fares -- plan`.
+`docs/data/fares.csv` and `pipeline/fare_jobs.csv`. A weekend with no price on Google loses the fare it had, and is
+tried again at its next interval. If Google refuses a search, the run keeps what it found and is marked failed. A
+festival's airport is the nearest one in `pipeline/airports.csv` within 250 km. To see what is due today, run
+`mise run fares -- plan`.
 
 ## Duplicate artists
 

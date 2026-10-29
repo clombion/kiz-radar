@@ -1,7 +1,7 @@
 """Fare store and refresh scheduler.
 
 docs/data/fares.csv      one row per (airport, Friday out, Monday back): price in EUR and when it was fetched
-pipeline/fare_jobs.csv   one row per festival weekend (airport, Friday): when it was last searched and how it went
+pipeline/fare_jobs.csv   one row per festival weekend (airport, Friday): when it was last searched
 
 Only festival weekends are searched: the Friday-to-Monday return from home to the airport of each upcoming festival,
 once per airport and weekend however many festivals share it. A weekend is due again after an interval that grows
@@ -37,7 +37,7 @@ from pydantic import BaseModel, ConfigDict, ValidationError
 
 from pipeline import airports, calls, export
 from pipeline.calls import Declined
-from pipeline.enums import CallCause, FareSearch, Listing
+from pipeline.enums import CallCause, Listing
 from pipeline.records import Date, Fare, Job, Record, day_of, now
 
 FLI_SHA = '881aee5ff4321e81ea2157cb44be94ce6a21dc1b'  # punitarani/fli, the only place the version is pinned
@@ -143,21 +143,17 @@ def queue(t: dt.datetime | None = None) -> list[Weekend]:
     t = t or now()
     today = t.date()
     jobs = {(j.airport, j.depart): j for j in Job.read()}
-    fetched: dict[tuple[str, dt.date], dt.datetime] = {}
-    for f in Fare.read():  # a weekend priced before it had a job counts as searched then
-        k = (f.airport, f.depart)
-        fetched[k] = max(fetched.get(k, f.fetched_at), f.fetched_at)
     q: list[Weekend] = []
     for airport, friday in weekends(today):
         days_away = (friday - today).days
         every = interval(days_away)
         job = jobs.get((airport, friday))
-        last = job.last_run if job else fetched.get((airport, friday))
+        last = job.last_run if job else None
         age = (t - last).total_seconds() / DAY if last is not None else None
         on_day = weekday_of(airport, friday) == today.weekday()
         due = every is not None and (age is None or (age >= every and on_day) or age >= 2 * every)
         q.append(Weekend(airport, friday, days_away, every, age, due))
-    return sorted(q, key=lambda w: (not w.due, -w.overdue, w.friday))
+    return sorted(q, key=lambda w: (not w.due, -w.overdue, w.friday, w.airport))
 
 
 def search(airport: str, friday: dt.date) -> Fare | Missed | Declined:
@@ -218,14 +214,12 @@ def refresh(budget: int, max_seconds: int) -> None:
                 continue
             case Fare():
                 fares[(found.airport, found.depart, found.return_)] = found
-                status, note, said = FareSearch.PRICED, '', f'{found.price} EUR'
+                said = f'{found.price} EUR'
             case Missed(note):
                 fares = {k: f for k, f in fares.items() if (f.airport, f.depart) != (item.airport, item.friday)}
-                status, said = FareSearch.NO_PRICE, note
-        print(f'{where} ({item.days_away} days away): {status} {said}', flush=True)
-        jobs[(item.airport, item.friday)] = Job(
-            airport=item.airport, depart=item.friday, last_run=now(), status=status, note=note
-        )
+                said = f'no price {note}'
+        print(f'{where} ({item.days_away} days away): {said}', flush=True)
+        jobs[(item.airport, item.friday)] = Job(airport=item.airport, depart=item.friday, last_run=now())
         save(fares, jobs)
         done += 1
         time.sleep(PAUSE)

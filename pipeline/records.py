@@ -38,7 +38,6 @@ from pydantic import (
 from pipeline import data, files, tables
 from pipeline.enums import (
     ExtractedFeature,
-    FareSearch,
     Genre,
     MergeDecision,
     MergeReason,
@@ -932,15 +931,14 @@ class Fare(CsvRow):
 
 
 class Job(CsvRow):
-    """When a festival weekend was last searched, and how it went."""
+    """When a festival weekend was last searched; how it went is in docs/data/fares.csv, which has its fare when the
+    search found one."""
 
     FILE = 'pipeline/fare_jobs.csv'
 
     airport: str
     depart: Date
     last_run: Stamp
-    status: FareSearch
-    note: str
 
 
 class Spent(CsvRow):
