@@ -3,7 +3,7 @@
 
 import { addDays, today } from './days.ts';
 import { site } from './db.ts';
-import { button, dropdown, h, type Kid, moreButton, nodes, own } from './dom.ts';
+import { button, choices, dropdown, h, type Kid, moreButton, nodes, own } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import {
   CHECKED,
@@ -20,28 +20,30 @@ import {
   withPhrase,
 } from './festivals.ts';
 import { artistHint, blanksHint, exploreHint } from './hints.ts';
-import { currency, money, step } from './money.ts';
+import { currency, money, type Step, step } from './money.ts';
 import { friendsIn } from './plans.ts';
 import { festivalsHref, showInAddressBar } from './routes.ts';
 import { KEY } from './states.ts';
 import { flag, home, loading } from './ui.ts';
 import { text } from './wording.ts';
 
-// reach is the most the trip may cost (the full pass and a Fri→Mon return flight); 0 is any price. with is a dance or highlight picked in the search;
-// friends keeps the festivals that featured people said they're going to.
+// reach is the step the trip (the full pass and a Fri→Mon return flight) is within, cheap or fair, or '' for any
+// price; unchecked keeps the festivals whose trip is not known within it. with is a dance or highlight picked in the
+// search; friends keeps the festivals that featured people said they're going to.
+type Sort = 'date' | 'fare';
 type Choices = {
   months: number;
-  reach: number;
+  reach: '' | Step;
   country: string;
   with: string;
   friends: number;
   lineup: number;
   unchecked: number;
-  sort: string;
+  sort: Sort;
 } & Record<Checked, number>;
 const DEFAULTS: Readonly<Choices> = {
   months: 6,
-  reach: 150,
+  reach: 'cheap',
   country: '',
   with: '',
   friends: 0,
@@ -53,12 +55,9 @@ const DEFAULTS: Readonly<Choices> = {
 };
 // every choice at its widest: the defaults with no limit of time or price (the order stays as chosen)
 const { sort: _order, ...UNSORTED } = DEFAULTS;
-const WIDEST = { months: 12, reach: 0 } as const;
+const WIDEST = { months: 12, reach: '' } as const;
 const LOOSEST: Readonly<Omit<Choices, 'sort'>> = { ...UNSORTED, ...WIDEST };
 type NumberChoice = { [K in keyof Choices]: Choices[K] extends number ? K : never }[keyof Choices];
-type TextChoice = Exclude<keyof Choices, NumberChoice>;
-const counts = (k: keyof Choices): k is NumberChoice => typeof DEFAULTS[k] === 'number';
-const says = (k: keyof Choices): k is TextChoice => typeof DEFAULTS[k] === 'string';
 
 // Hand-drawn hints next to the blanks. Static SVG, so building it from a string is safe.
 const ARROWS: Readonly<Record<string, string>> = {
@@ -94,22 +93,17 @@ const WHEN_DIGITS: Readonly<Record<string, string>> = {
   3: 'the next 3 months',
   6: 'the next 6 months',
 };
-// the sentence says it in words; the bar and the filtering use the numbers
-// reach 150 and 250 name the cheap and fair trip steps, round numbers in the visitor's currency (money.ts)
-const PRICE: readonly (readonly [number, string])[] = [
-  [0, 'any price'],
-  [250, 'a reasonable price'],
-  [150, 'a cheap price'],
+// the sentence says it in words, the bar in short; the steps are round amounts in the visitor's currency (money.ts)
+const PRICE: readonly (readonly [Choices['reach'], string])[] = [
+  ['', 'any price'],
+  ['fair', 'a reasonable price'],
+  ['cheap', 'a cheap price'],
 ];
-const stepOf = (reach: number): 'cheap' | 'fair' | null => (reach === 150 ? 'cheap' : reach === 250 ? 'fair' : null);
-const limit = (reach: number): number | null => {
-  const k = stepOf(reach);
-  return k && step('trip', k);
-};
-const under = (reach: number) => money(limit(reach) ?? 0, currency);
-const SHORT_LABEL: { months: Readonly<Record<string, string>>; reach: Readonly<Record<string, string>> } = {
-  months: { 1: '1 month', 2: '2 months', 3: '3 months', 6: '6 months', 12: '12 months' },
-  reach: { 0: 'Any price', 250: `Under ${under(250)}`, 150: `Under ${under(150)}` },
+const limit = (reach: Choices['reach']): number | null => (reach ? step('trip', reach) : null);
+const under = (reach: Step) => money(step('trip', reach), currency);
+const SHORT = {
+  months: WHEN.map(([v]) => [v, `${v} month${v === 1 ? '' : 's'}`] as const),
+  reach: PRICE.map(([v]) => [v, v ? `Under ${under(v)}` : 'Any price'] as const),
 };
 const FLAGS = [0, 1];
 const LINEUP: readonly (readonly [number, string])[] = [
@@ -117,7 +111,7 @@ const LINEUP: readonly (readonly [number, string])[] = [
   [10, '10+ artists'],
   [20, '20+ artists'],
 ];
-const ORDER: readonly (readonly [string, string])[] = [
+const ORDER: readonly (readonly [Sort, string])[] = [
   ['date', 'Soonest first'],
   ['fare', 'Cheapest first'],
 ];
@@ -160,7 +154,7 @@ export function sentenceView(
 ): void {
   let all: Festival[] | null = null; // the festivals, once the database is in
   const countries = site().destinations;
-  const { state: s, dropped }: { state: Choices; dropped: string[] } = readState(qs, DEFAULTS, {
+  const allowed: { [K in keyof Choices]?: readonly Choices[K][] } = {
     months: WHEN.map(([v]) => v),
     reach: PRICE.map(([v]) => v),
     country: ['', ...countries.map((c) => c.code)],
@@ -168,10 +162,10 @@ export function sentenceView(
     friends: FLAGS,
     lineup: LINEUP.map(([v]) => v),
     sort: ORDER.map(([v]) => v),
-    taxi: FLAGS,
-    allin: FLAGS,
     unchecked: FLAGS,
-  });
+  };
+  for (const [k] of CHECKED) allowed[k] = FLAGS;
+  const { state: s, dropped }: { state: Choices; dropped: string[] } = readState(qs, DEFAULTS, allowed);
   // a link that sets these choices and shows what they give; then
   const choose = (to: Partial<Choices>, words: string, then?: () => void) =>
     button(
@@ -186,21 +180,17 @@ export function sentenceView(
       words,
     );
 
-  const blank = (key: keyof Choices, opts: readonly (readonly [string | number, string])[], cls = 'blank') => {
-    const el = h(
-      'select',
+  const blank = <K extends keyof Choices>(key: K, opts: readonly (readonly [Choices[K], string])[], cls = 'blank') =>
+    choices(
+      opts,
+      s[key],
+      (v) => {
+        s[key] = v;
+        hideHints();
+        render();
+      },
       { class: cls, 'aria-label': key },
-      opts.map(([v, t]) => h('option', { value: v }, t)),
     );
-    el.value = String(s[key]);
-    el.addEventListener('change', () => {
-      if (counts(key)) s[key] = Number(el.value);
-      else if (says(key)) s[key] = el.value;
-      hideHints();
-      render();
-    });
-    return el;
-  };
   // a native select is as wide as its longest option; size the sentence blanks to the chosen one instead
   const ruler = h('span', { class: 'ruler', 'aria-hidden': 'true' });
   const sizeToFit = (el: HTMLSelectElement) => {
@@ -318,9 +308,9 @@ export function sentenceView(
 
   // sticky bar: the same three choices in short form, the count, and "More filters"
   const barBlanks = {
-    months: blank('months', Object.entries(SHORT_LABEL.months), 'mini'),
+    months: blank('months', SHORT.months, 'mini'),
     country: blank('country', DEST_SHORT, 'mini'),
-    reach: blank('reach', Object.entries(SHORT_LABEL.reach), 'mini'),
+    reach: blank('reach', SHORT.reach, 'mini'),
   };
   const barCount = h('span', { class: 'bar-count' });
   const moreBtn = moreButton('more-panel', 'More filters ▾');
@@ -347,7 +337,7 @@ export function sentenceView(
       { class: 'checks' },
       check('friends', 'Only festivals friends go to'),
       ...CHECKED.map(([k, feature]) => check(k, text('feature', feature))),
-      check('unchecked', 'Include festivals with unknown prices'),
+      s.reach ? check('unchecked', 'Include festivals with unknown prices') : null, // at any price they are in
     ),
   ];
   const panel = h('div', { class: 'more-panel', id: 'more-panel', hidden: true }, moreFields());
@@ -428,6 +418,7 @@ export function sentenceView(
 
   // the blanks and the filters as they are chosen
   function paintChoices(): void {
+    if (!s.reach) s.unchecked = 0; // unknown prices are in at any price, so no choice to keep
     showInAddressBar(festivalsHref(changed(s, DEFAULTS)));
     for (const k of ['months', 'country', 'reach'] as const) {
       sentenceBlanks[k].value = String(s[k]);
@@ -436,7 +427,7 @@ export function sentenceView(
     }
     layout();
     panel.replaceChildren(...nodes(moreFields()));
-    const extra = (['with', 'friends', 'taxi', 'allin', 'lineup', 'unchecked'] as const).filter(
+    const extra = (['with', 'friends', 'lineup', 'unchecked', ...CHECKED.map(([k]) => k)] as const).filter(
       (k) => s[k] !== DEFAULTS[k],
     ).length;
     const onPhone = extra + (s.country ? 1 : 0); // on a phone the destination is one of the panel's filters
@@ -513,8 +504,7 @@ export function sentenceView(
       return;
     }
     const rows = matches(all, s);
-    const widened =
-      rows.length > 0 || (s.months === 12 && !s.reach) ? 0 : matches(all, { ...s, months: 12, reach: 0 }).length;
+    const widened = rows.length > 0 || (s.months === 12 && !s.reach) ? 0 : matches(all, { ...s, ...WIDEST }).length;
     live.replaceChildren(...nodes([liveLine(rows, widened)]));
     barCount.textContent = `${rows.length} festival${rows.length === 1 ? '' : 's'}`;
     results.replaceChildren(resultList(rows, widened));

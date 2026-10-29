@@ -1,7 +1,7 @@
 // Artists: a scannable list (who, from where, how often booked, where next) and a page per artist that
 // leads with their upcoming festivals.
 import { one, q, Sql, sql } from './db.ts';
-import { button, dropdown, h, type Kid, moreButton, segments } from './dom.ts';
+import { button, choices, dropdown, h, type Kid, moreButton, segments } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { changed, type Festival, leftOut, readState, withDetails } from './festivals.ts';
 import { alsoGoingTo, peopleOf } from './plans.ts';
@@ -10,7 +10,7 @@ import { artistHref, artistsHref, eventOnMapHref, personHref, type Show, showInA
 import { ARTIST_STATS, EVENT, flag as flagCol, num, opt, type RowOf, state, str } from './rows.ts';
 import { KEY } from './states.ts';
 import { countryName, dayMonth, dayYear, flag, place } from './ui.ts';
-import { hasForm, text, where } from './wording.ts';
+import { hasForm, type Key, text, where } from './wording.ts';
 
 const PAGE = 60;
 const festivals = (n: number) => `${n} festival${n === 1 ? '' : 's'}`;
@@ -26,31 +26,35 @@ const roleWords = (roles: string) =>
     .flatMap((r) => (hasForm('role', r, 'singular') ? [alone(r)] : []))
     .join(', ');
 
-const ROLES: [string, string][] = [
+// the roles the list narrows to, and the column of artist_stats that counts each one's bookings
+type Role = typeof KEY.role.TEACHER | typeof KEY.role.DJ;
+const COUNTS: Readonly<Record<Role, Sql>> = { [KEY.role.TEACHER]: sql`st.teacher`, [KEY.role.DJ]: sql`st.dj` };
+const ROLES: readonly (readonly ['' | Role, string])[] = [
   ['', 'Everyone'],
-  ...[KEY.role.TEACHER, KEY.role.DJ].map((r): [string, string] => [r, text('role', r)]),
+  ...[KEY.role.TEACHER, KEY.role.DJ].map((r) => [r, text('role', r)] as const),
 ];
-const KINDS: [string, string][] = [
+type Kind = '' | Key<'artist_kind'>;
+const KINDS: readonly (readonly [Kind, string])[] = [
   ['', 'People and couples'],
-  ...where('artist_kind', 'view').map((k): [string, string] => [k, text('artist_kind', k)]),
+  ...where('artist_kind', 'view').map((k) => [k, text('artist_kind', k)] as const),
 ];
-// each order's words and its SQL
-const ORDERS: Readonly<Record<string, readonly [string, Sql]>> = {
-  bookings: ['Most festivals', sql`st.bookings DESC`],
-  abroad: ['Most festivals abroad', sql`st.abroad_bookings DESC, st.bookings DESC`],
-  countries: ['Most countries', sql`st.countries DESC, st.bookings DESC`],
-  next: ['Next festival soonest', sql`st.bookings DESC`],
-  name: ['Name', sql`a.display_name`],
+// each order's words, and its SQL (the next festival's order is the artists' own, after the SQL's)
+const ORDERS = [
+  ['bookings', 'Most festivals'],
+  ['abroad', 'Most festivals abroad'],
+  ['countries', 'Most countries'],
+  ['next', 'Next festival soonest'],
+  ['name', 'Name'],
+] as const;
+type Order = (typeof ORDERS)[number][0];
+const ORDER_BY: Readonly<Record<Order, Sql>> = {
+  bookings: sql`st.bookings DESC`,
+  abroad: sql`st.abroad_bookings DESC, st.bookings DESC`,
+  countries: sql`st.countries DESC, st.bookings DESC`,
+  next: sql`st.bookings DESC`,
+  name: sql`a.display_name`,
 };
-// the column of artist_stats that counts each role's bookings
-const COUNTS: Readonly<Record<string, Sql>> = { [KEY.role.TEACHER]: sql`st.teacher`, [KEY.role.DJ]: sql`st.dj` };
-// a choice the address names, which readState keeps to those the list offers
-function chosen<T>(choices: Readonly<Record<string, T>>, key: string): T {
-  const found = choices[key];
-  if (found === undefined) throw new Error(`artists: ${key} is no choice of the list`);
-  return found;
-}
-const DEFAULTS: { q: string; role: string; country: string; sort: string; popular: number; kind: string } = {
+const DEFAULTS: { q: string; role: '' | Role; country: string; sort: Order; popular: number; kind: Kind } = {
   q: '',
   role: '',
   country: '',
@@ -74,7 +78,7 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
   const { state: st, dropped } = readState(qs, DEFAULTS, {
     role: ROLES.map(([v]) => v),
     kind: KINDS.map(([v]) => v),
-    sort: Object.keys(ORDERS),
+    sort: ORDERS.map(([v]) => v),
     popular: [0, 1],
     country: ['', ...countries],
   });
@@ -103,21 +107,23 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
         render();
       }),
     );
-  const sel = (k: 'kind' | 'country' | 'sort', opts: readonly (readonly [string, string])[], label: string) =>
+  const sel = <K extends 'kind' | 'country' | 'sort'>(
+    k: K,
+    opts: readonly (readonly [(typeof st)[K], string])[],
+    label: string,
+  ) =>
     h(
       'label',
       { class: 'field' },
       h('span', {}, label),
-      h(
-        'select',
-        {
-          class: 'plain',
-          onchange: (ev: Event) => {
-            if (ev.target instanceof HTMLSelectElement) st[k] = ev.target.value;
-            render();
-          },
+      choices(
+        opts,
+        st[k],
+        (v) => {
+          st[k] = v;
+          render();
         },
-        opts.map(([v, t]) => h('option', { value: v, selected: st[k] === v }, t)),
+        { class: 'plain' },
       ),
     );
   const pop = h('input', {
@@ -138,11 +144,7 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
       [['', 'Anywhere'], ...countries.map((c): [string, string] => [c, `${flag(c)} ${countryName(c)}`])],
       'Booked in',
     ),
-    sel(
-      'sort',
-      Object.entries(ORDERS).map(([v, [t]]): [string, string] => [v, t]),
-      'Order',
-    ),
+    sel('sort', ORDERS, 'Order'),
     h('label', { class: 'check' }, pop, ' Only well-known artists (10+ festivals)'),
   );
   dropdown(moreBtn, panel, [moreBtn, panel], signal);
@@ -169,7 +171,6 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
     paintRoles();
     const extra = [st.kind, st.country, st.sort !== 'bookings', st.popular].filter(Boolean).length;
     moreBtn.textContent = `More${extra ? ` (${extra})` : ''} ▾`;
-    const [, order] = chosen(ORDERS, st.sort);
     const cond = [sql`1=1`],
       args: string[] = [];
     if (st.q) {
@@ -177,7 +178,7 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
         OR a.id IN (SELECT cm.couple_id FROM couple_members cm JOIN artists m ON m.id = cm.member_id WHERE m.display_name LIKE ?))`);
       args.push(`%${st.q}%`, `%${st.q}%`, `%${st.q}%`);
     }
-    if (st.role) cond.push(sql`${chosen(COUNTS, st.role)} > 0`);
+    if (st.role) cond.push(sql`${COUNTS[st.role]} > 0`);
     if (st.kind) {
       cond.push(sql`a.kind = ?`);
       args.push(st.kind);
@@ -190,12 +191,12 @@ export const artistsView: Show = (root, sub, qs, { signal }) => {
     rows = q(
       ARTIST,
       sql`SELECT st.*, a.display_name, a.kind FROM artist_stats st JOIN artists a ON a.id = st.artist_id
-      WHERE ${Sql.joined(cond, sql` AND `)} ORDER BY ${order}`,
+      WHERE ${Sql.joined(cond, sql` AND `)} ORDER BY ${ORDER_BY[st.sort]}`,
       args,
     );
-    const soonest = (a: Artist) => next.get(a.artist_id)?.start_date ?? '';
-    if (st.sort === 'next')
-      rows = rows.filter((a) => next.has(a.artist_id)).sort((a, b) => soonest(a).localeCompare(soonest(b)));
+    // an order orders and keeps everyone: those with no festival coming after the rest, most booked first
+    const soonest = (a: Artist) => next.get(a.artist_id)?.start_date ?? '9999'; // after every date
+    if (st.sort === 'next') rows = rows.toSorted((a, b) => soonest(a).localeCompare(soonest(b)));
     shown = PAGE;
     paint();
   }

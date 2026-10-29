@@ -7,6 +7,7 @@ import { button, h } from './dom.ts';
 import { num, str } from './rows.ts';
 
 type Steps = Readonly<{ cheap: number; fair: number }>;
+export type Step = keyof Steps;
 type Currency = 'NOK' | 'EUR' | 'USD';
 const CURRENCIES: Readonly<Record<Currency, { label: string; flight: Steps; trip: Steps }>> = {
   NOK: { label: 'kr', flight: { cheap: 1500, fair: 2500 }, trip: { cheap: 3000, fair: 5000 } },

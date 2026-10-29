@@ -73,7 +73,7 @@ interface Base {
   words: string[];
   nameWords: string[];
   past: boolean; // nothing coming up: a festival over, someone with no plans ahead, a place with no festival ahead
-  rank: number;
+  rank: number; // higher first, among items of its kind only (before)
 }
 type Item = Base &
   (
@@ -94,6 +94,10 @@ type Kind = Item['kind'];
 type Found<K extends Kind> = Extract<Item, { kind: K }>;
 // countries and cities are places, the rest are their own group
 const groupOf = (item: Item): Group => (item.kind === 'country' || item.kind === 'city' ? 'place' : item.kind);
+// of two items, which comes first: by kind (a country before its cities), then by rank within the kind, so ranks of
+// different kinds, each on its own scale, are never compared
+const KIND_ORDER: Readonly<Record<Kind, number>> = { person: 0, festival: 1, artist: 2, country: 3, city: 4, tag: 5 };
+const before = (a: Item, b: Item): number => KIND_ORDER[a.kind] - KIND_ORDER[b.kind] || b.rank - a.rank;
 
 // "Łódź" and "lodz" match, and so do "Rencontres" and "rencontrés"
 const fold = (s: string) =>
@@ -162,7 +166,7 @@ const personEntries = (): Indexed[] =>
     return p
       ? [
           [
-            { kind: 'person', name: r.name, p, upcoming: r.upcoming, past: !r.upcoming, rank: 1e3 + r.upcoming },
+            { kind: 'person', name: r.name, p, upcoming: r.upcoming, past: !r.upcoming, rank: r.upcoming },
             p.artists.map((a) => a.display_name),
           ],
         ]
@@ -198,7 +202,7 @@ function placeEntries(pool: readonly Festival[]): Indexed[] {
     if (e.country_code !== null) inCountry.set(e.country_code, (inCountry.get(e.country_code) ?? 0) + 1);
   const countries = site().destinations.map((c): Indexed => {
     const n = inCountry.get(c.code) ?? 0;
-    return [{ kind: 'country', name: c.name, country: c, n, past: !n, rank: 1e6 + n }, [c.code]];
+    return [{ kind: 'country', name: c.name, country: c, n, past: !n, rank: n }, [c.code]];
   });
   const cities = new Map<string, City>();
   for (const e of q(
@@ -296,7 +300,7 @@ function nearest(items: readonly Item[], query: string): Item | null {
     const name = fold(it.name);
     if (Math.abs(name.length - query.length) > limit) continue;
     const d = dist(query, name);
-    if (d < bestD || (best && d === bestD && it.rank > best.rank)) {
+    if (d < bestD || (best && d === bestD && before(it, best) < 0)) {
       best = it;
       bestD = d;
     }
@@ -632,7 +636,7 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
     const matched = items
       .map((item) => ({ item, s: score(item, tokens, folded) }))
       .filter((r) => r.s > 0)
-      .sort((a, b) => b.s - a.s || b.item.rank - a.item.rank)
+      .sort((a, b) => b.s - a.s || before(a.item, b.item))
       .map((r) => r.item);
     const found = matched.filter((item) => withPast || !item.past);
     const hiddenPast = withPast ? 0 : matched.length - found.length;

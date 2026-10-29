@@ -3,13 +3,13 @@
 import type { Feature, FeatureCollection, MultiPolygon, Polygon, Position } from 'geojson';
 import type { GeometryCollection, Topology } from 'topojson-specification';
 import { q, sql } from './db.ts';
-import { button, dropdown, h, moreButton } from './dom.ts';
+import { button, choices, dropdown, h, moreButton } from './dom.ts';
 import { eventCard } from './eventcard.ts';
 import { changed, type Festival, leftOut, readState, withDetails } from './festivals.ts';
 import { currency, money, step, within } from './money.ts';
 import { cityOf, cityOnMapHref, eventOnMapHref, mapHref, type Show, showInAddressBar } from './routes.ts';
 import { EVENT } from './rows.ts';
-import { flag, home } from './ui.ts';
+import { countryName, flag, home } from './ui.ts';
 
 const WORLD = 'https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json';
 type Land = FeatureCollection<Polygon | MultiPolygon, { name: string }>;
@@ -53,7 +53,7 @@ function citiesOf(events: readonly Placed[]): City[] {
   });
 }
 type Band = readonly [string, (c: City) => boolean, string];
-type Scheme = { label: string; title: () => string; bands: readonly Band[] };
+type Scheme = { title: () => string; bands: readonly Band[] };
 // a city's bubble: its size the festivals there, its colour the scheme's band for it
 const bubble = (c: City, scheme: Scheme) =>
   L.circleMarker([c.lat, c.lon], {
@@ -67,9 +67,13 @@ const bubble = (c: City, scheme: Scheme) =>
     `${c.city} · ${c.n} festival${c.n > 1 ? 's' : ''}${c.home ? ' · no flight needed' : c.minFare === null ? '' : ` · flights from ${money(c.minFare)}`}`,
     { direction: 'top', offset: [0, -6] },
   );
-const COLOR_BY: Readonly<Record<string, Scheme>> = {
+const COLORS = [
+  ['fare', 'Flight price'],
+  ['popular', 'Well-known artists'],
+] as const;
+type Color = (typeof COLORS)[number][0];
+const COLOR_BY: Readonly<Record<Color, Scheme>> = {
   fare: {
-    label: 'Flight price',
     title: () => `Cheapest flight from ${home().city}`,
     bands: [
       [
@@ -87,7 +91,6 @@ const COLOR_BY: Readonly<Record<string, Scheme>> = {
     ],
   },
   popular: {
-    label: 'Well-known artists',
     title: () => 'Bookings of well-known artists',
     bands: [
       ['10 or more', (c) => c.popular >= 10, '--good'],
@@ -96,14 +99,15 @@ const COLOR_BY: Readonly<Record<string, Scheme>> = {
     ],
   },
 };
-const WHEN: readonly (readonly [string, string])[] = [
+const WHEN = [
   ['upcoming', 'Upcoming'],
   ['all', 'All dates'],
   ['past', 'Past'],
-];
+] as const;
+type When = (typeof WHEN)[number][0];
 
 // what the URL can say about the map
-const DEFAULTS: { when: string; color: string; country: string } = { when: 'upcoming', color: 'fare', country: '' };
+const DEFAULTS: { when: When; color: Color; country: string } = { when: 'upcoming', color: 'fare', country: '' };
 const placed = (e: Festival): e is Placed => e.city !== null && e.lat !== null && e.lon !== null;
 
 // the festivals of the city the address picks: the opened festival's (map/event/<id>), or the one map/city/<country>/
@@ -119,10 +123,13 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     placed,
   );
   const byId = new Map(events.map((e) => [e.id, e]));
+  const countriesOf = [...new Set(events.flatMap((e) => e.country_code ?? []))].sort((a, b) =>
+    countryName(a).localeCompare(countryName(b)),
+  );
   const { state: url, dropped } = readState(qs, DEFAULTS, {
     when: WHEN.map(([v]) => v),
-    color: Object.keys(COLOR_BY),
-    country: ['', ...new Set(events.flatMap((e) => e.country_code ?? []))],
+    color: COLORS.map(([v]) => v),
+    country: ['', ...countriesOf],
   });
   const state: typeof url & { text: string; city: string | null; event: number | null } = {
     ...url,
@@ -145,25 +152,49 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     placeholder: 'Search a festival or city',
     'aria-label': 'Search festivals',
   });
-  const whenSel = h(
-    'select',
+  // a choice changed: the address says it and the map shows it
+  const chose = () => {
+    save();
+    redraw();
+  };
+  const whenSel = choices(
+    WHEN,
+    state.when,
+    (v) => {
+      state.when = v;
+      chose();
+    },
     { class: 'mini', 'aria-label': 'When' },
-    WHEN.map(([value, label]) => h('option', { value, selected: state.when === value }, label)),
   );
-  const colorSel = h(
-    'select',
+  const colorSel = choices(
+    COLORS,
+    state.color,
+    (v) => {
+      state.color = v;
+      chose();
+    },
     { class: 'plain', 'aria-label': 'Colour the bubbles by' },
-    Object.entries(COLOR_BY).map(([v, c]) => h('option', { value: v, selected: state.color === v }, c.label)),
+  );
+  // the country a link from Countries narrows the map to, shown here so it can be seen and changed
+  const countrySel = choices(
+    [['', 'Anywhere'], ...countriesOf.map((c): [string, string] => [c, `${flag(c)} ${countryName(c)}`])],
+    state.country,
+    (v) => {
+      state.country = v;
+      chose();
+    },
+    { class: 'plain', 'aria-label': 'Country' },
   );
   const filtersBtn = moreButton('map-filters');
   const filters = h(
     'div',
     { class: 'more-panel', id: 'map-filters', hidden: true },
     h('label', { class: 'field' }, h('span', {}, 'Colour the bubbles by'), colorSel),
+    h('label', { class: 'field' }, h('span', {}, 'Country'), countrySel),
   );
   dropdown(filtersBtn, filters, [filtersBtn, filters], signal);
   const paintFiltersBtn = () => {
-    const n = Number(state.color !== DEFAULTS.color);
+    const n = Number(state.color !== DEFAULTS.color) + Number(state.country !== DEFAULTS.country);
     filtersBtn.textContent = `Filters${n ? ` (${n})` : ''} ▾`;
   };
 
@@ -270,8 +301,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     cities = citiesOf(visible());
     bubbles.clearLayers();
     markers = new Map();
-    const scheme = COLOR_BY[state.color] ?? COLOR_BY['fare'];
-    if (!scheme) throw new Error('no colour scheme');
+    const scheme = COLOR_BY[state.color];
     for (const c of cities.sort((a, b) => b.n - a.n)) {
       // big cities first so small bubbles stay clickable
       const m = bubble(c, scheme).on('click', () => selectCity(c.key));
@@ -457,16 +487,6 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
       redraw();
     }, 150);
   });
-  whenSel.addEventListener('change', () => {
-    state.when = whenSel.value;
-    save();
-    redraw();
-  });
-  colorSel.addEventListener('change', () => {
-    state.color = colorSel.value;
-    save();
-    redraw();
-  });
   const esc = (ev: KeyboardEvent) => {
     if (ev.key !== 'Escape' || !picked()) return;
     if (state.event === null) state.city = null;
@@ -477,7 +497,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
   };
   document.addEventListener('keydown', esc, { signal });
 
-  whenSel.value = state.when;
+  whenSel.value = state.when; // the city's past festivals may have widened it
   redraw({ fit: there.length === 0 }); // open on every festival shown, wherever it is
   if (there[0]) {
     map.setView([there[0].lat, there[0].lon], Math.max(map.getZoom(), state.event === null ? 6 : 5)); // a city closer

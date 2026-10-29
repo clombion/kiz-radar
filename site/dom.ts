@@ -68,6 +68,26 @@ export function dropdown(opener: HTMLElement, panel: HTMLElement, inside: readon
   );
 }
 
+// A select of choices, one of them on: the choice comes back as the option at the picked place, so of its type and
+// never a string to parse.
+export function choices<V extends string | number>(
+  options: readonly (readonly [V, string])[],
+  on: V,
+  choose: (v: V) => void,
+  attrs: Attrs = {},
+): HTMLSelectElement {
+  const el = h(
+    'select',
+    attrs,
+    options.map(([v, words]) => h('option', { value: v, selected: v === on }, words)),
+  );
+  el.addEventListener('change', () => {
+    const picked = options[el.selectedIndex];
+    if (picked) choose(picked[0]);
+  });
+  return el;
+}
+
 // A row of choices, one of them on (a segmented control): each is a button pressed while it is the choice.
 export const segments = <V extends string>(
   options: readonly (readonly [V, string])[],
