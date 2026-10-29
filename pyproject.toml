@@ -9,7 +9,6 @@ dependencies = ["pydantic==2.14.1"]   # every step reads and writes its records 
 [dependency-groups]
 scrape = ["curl_cffi==0.13.0"]
 ask = ["anthropic==2.3.0"]
-artists = ["pycountry==26.2.16"]
 browser = ["patchright==1.55.2"]
 tickets = [{include-group = "ask"}, {include-group = "scrape"}, {include-group = "browser"}]
 dev = [
@@ -25,7 +24,6 @@ dev = [
     "mdformat-gfm==1.0.0",
     "prek==0.5.7",              # the git hooks (prek.toml)
     {include-group = "tickets"},
-    {include-group = "artists"},
 ]
 
 [tool.uv]

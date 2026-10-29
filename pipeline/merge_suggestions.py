@@ -25,7 +25,7 @@ from dataclasses import dataclass, field
 from pydantic import BaseModel
 
 from pipeline import build_site_db, export
-from pipeline.countries import codes
+from pipeline.countries import codes, nation
 from pipeline.db import Reader
 from pipeline.enums import MergeDecision, MergeReason, Role, Via
 from pipeline.extract.prices import COUPLE
@@ -37,7 +37,6 @@ CLASH_PENALTY, CIRCUIT_BONUS = 0.5, 0.05  # … and by the calendar (see calenda
 SHORT_EVENT_DAYS = 4  # longer events (week-long all-in-ones) never count as a clash
 SIMILAR, SIMILAR_IF_ONE_SAME = 0.72, 0.6  # how alike both of two couples' names must be, or one when the other is
 # French overseas territories count as France: artists list either.
-FR_TERRITORIES = {'RE', 'GP', 'MQ', 'GF', 'YT', 'MF', 'BL', 'NC', 'PF', 'PM', 'WF'}
 
 
 def decided() -> tuple[set[frozenset[str]], Callable[[str], str]]:
@@ -59,7 +58,7 @@ def decided() -> tuple[set[frozenset[str]], Callable[[str], str]]:
 
 
 def as_fr(cs: set[str]) -> set[str]:
-    return {'FR' if cc in FR_TERRITORIES else cc for cc in cs}
+    return {nation(cc) for cc in cs}
 
 
 @dataclass(frozen=True)

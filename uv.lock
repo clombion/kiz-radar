@@ -489,9 +489,6 @@ dependencies = [
 ]
 
 [package.dev-dependencies]
-artists = [
-    { name = "pycountry" },
-]
 ask = [
     { name = "anthropic" },
 ]
@@ -506,7 +503,6 @@ dev = [
     { name = "mdformat-gfm" },
     { name = "patchright" },
     { name = "prek" },
-    { name = "pycountry" },
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "pytest-randomly" },
@@ -528,7 +524,6 @@ tickets = [
 requires-dist = [{ name = "pydantic", specifier = "==2.14.1" }]
 
 [package.metadata.requires-dev]
-artists = [{ name = "pycountry", specifier = "==26.2.16" }]
 ask = [{ name = "anthropic", specifier = "==2.3.0" }]
 browser = [{ name = "patchright", specifier = "==1.55.2" }]
 dev = [
@@ -539,7 +534,6 @@ dev = [
     { name = "mdformat-gfm", specifier = "==1.0.0" },
     { name = "patchright", specifier = "==1.55.2" },
     { name = "prek", specifier = "==0.5.7" },
-    { name = "pycountry", specifier = "==26.2.16" },
     { name = "pytest", specifier = "==9.2.0" },
     { name = "pytest-cov", specifier = "==7.1.0" },
     { name = "pytest-randomly", specifier = "==5.0.0" },
@@ -695,15 +689,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/83/e5/60e0e76cd6819d75026b3a8147ddbd2b3fcab27c02236bce8b3a559e0e64/prek-0.5.7-py3-none-musllinux_1_1_x86_64.whl", hash = "sha256:94bd6a93ccf8ebb1d30b822161515e3e31ea916ce7411febe8ceb5f607eb840d", size = 6298681, upload-time = "2026-10-21T00:46:42.618Z" },
     { url = "https://files.pythonhosted.org/packages/54/97/e14b12e7d8fbdb468581d778fb892c855fbca325d4344cc535c12e2851a5/prek-0.5.7-py3-none-win_amd64.whl", hash = "sha256:fa69837b6d1d2b6be5fe7fe4cd27fd5606f2155e784fec55ee7df7ed9f9bf211", size = 5692294, upload-time = "2026-10-21T00:46:44.385Z" },
     { url = "https://files.pythonhosted.org/packages/bf/28/9dc15c0644cc6019c16c5cdd44e5004b641f5e910488f830e80dfdd11042/prek-0.5.7-py3-none-win_arm64.whl", hash = "sha256:239ccb081e3766d83a6a9a5ebee1d5cbb7986fc8e4f230e785423d409cff95e3", size = 5626111, upload-time = "2026-10-21T00:46:46.341Z" },
-]
-
-[[package]]
-name = "pycountry"
-version = "26.2.16"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/de/1d/061b9e7a48b85cfd69f33c33d2ef784a531c359399ad764243399673c8f5/pycountry-26.2.16.tar.gz", hash = "sha256:5b6027d453fcd6060112b951dd010f01f168b51b4bf8a1f1fc8c95c8d94a0801", size = 7711342, upload-time = "2026-02-17T03:42:52.367Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/9c/42/7703bd45b62fecd44cd7d3495423097e2f7d28bc2e99e7c1af68892ab157/pycountry-26.2.16-py3-none-any.whl", hash = "sha256:115c4baf7cceaa30f59a4694d79483c9167dbce7a9de4d3d571c5f3ea77c305a", size = 8044600, upload-time = "2026-02-17T03:42:49.777Z" },
 ]
 
 [[package]]

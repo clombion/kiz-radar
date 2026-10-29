@@ -51,7 +51,7 @@ thing a consumer must treat differently.
 | **feature**, each feature of a festival | `promo_code`, `all_levels_beginners`, `taxi_dancers`, `accommodation_included`, `group_deals`, `meals_included`, `transfers_shuttle`, `pool_party`, `beach_party`, `boat_party`, `cruise`, `live_music`, `bootcamp_intensive`, `competition`, `camping`, `masterclass`, `private_classes`, `shows`, `themed_parties`, `pre_party`, `after_party`, `day_socials`, `partner_hotel`, `multiple_rooms`, `adults_only`, `all_in_one`, `workshops`, `dress_code` | the extract pass |
 | **role**, each artist named in a description | `teacher`, `dj`, `performer`, `mc`, `organiser`, `media`, `crew` | the extract pass |
 | **artist_kind**, each artist | `person`, `couple`, `group`, `organisation` | resolve_artists |
-| **home_basis**, an artist's home country, by how it is known | `given`, `stated` | build_site_db |
+| **home_basis**, an artist's home country, by how it is known | `given`, `stated`, `contested` | build_site_db |
 | **merge_decision**, each artist merge reviewed | `merge`, `separate`, `unsure` | the merge review; pipeline/artist_merges.csv |
 | **merge_reason**, each pair of artists that may be one, for the merge review | `same name, different keys`, `first words of the other`, `same partner, shortened name`, `similar spelling`, `single name, several countries`, `couples with matching names` | resolve_artists |
 | **pending**, a festival waiting for its extraction passes | `new`, `description changed` | scrape |

@@ -34,6 +34,7 @@ const COUNTRY = {
   taxi_dancers: num,
   avg_lineup: opt(num),
   imported_pct: opt(num),
+  unknown_country: num,
   upcoming: opt(num),
   reachable: opt(num),
 } as const;
@@ -148,7 +149,10 @@ function sceneLine(r: Country): HTMLElement | null {
     .join(', ');
   if (!line) return null;
   const title =
-    r.imported_pct === null ? null : `${r.imported_pct}% of teacher and DJ bookings go to artists from other countries`;
+    r.imported_pct === null
+      ? null
+      : `${r.imported_pct}% of teacher and DJ bookings go to artists from other countries` +
+        (r.unknown_country ? ` (${r.unknown_country} of unknown country)` : '');
   return h('p', { class: 'c-fact', title }, line);
 }
 function row(r: Country): HTMLElement {

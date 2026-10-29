@@ -60,12 +60,11 @@ from difflib import SequenceMatcher
 from fractions import Fraction
 from typing import NamedTuple, Self
 
-import pycountry
 from pydantic import BaseModel
 
 from pipeline import data, export, states
 from pipeline import db as sqlite_db
-from pipeline.countries import CODE_LENGTH, INDICATOR_A, indicator
+from pipeline.countries import codes
 from pipeline.db import Reader, Transaction
 from pipeline.enums import ArtistKind, MergeDecision, MergeReason, Model, Role, Via
 from pipeline.extract import run_log
@@ -169,118 +168,9 @@ TABLES = sqlite_db.declared(
 )
 
 
-# Country spellings pycountry does not know: sports (IOC/FIFA) codes and French, Spanish, Portuguese and
-# Italian names that line-ups use
-COUNTRY_ALIASES = {
-    'ger': 'DE',
-    'sui': 'CH',
-    'swi': 'CH',
-    'ned': 'NL',
-    'hol': 'NL',
-    'por': 'PT',
-    'uk': 'GB',
-    'eng': 'GB',
-    'cro': 'HR',
-    'den': 'DK',
-    'gre': 'GR',
-    'bul': 'BG',
-    'slo': 'SI',
-    'rsa': 'ZA',
-    'ang': 'AO',
-    'cpv': 'CV',
-    'england': 'GB',
-    'scotland': 'GB',
-    'holland': 'NL',
-    'cape verde': 'CV',
-    'cabo verde': 'CV',
-    'allemagne': 'DE',
-    'alemania': 'DE',
-    'alemanha': 'DE',
-    'germania': 'DE',
-    'espagne': 'ES',
-    'espana': 'ES',
-    'españa': 'ES',
-    'espanha': 'ES',
-    'spagna': 'ES',
-    'italie': 'IT',
-    'italia': 'IT',
-    'itália': 'IT',
-    'suisse': 'CH',
-    'suiza': 'CH',
-    'suíça': 'CH',
-    'svizzera': 'CH',
-    'angleterre': 'GB',
-    'inglaterra': 'GB',
-    'royaume-uni': 'GB',
-    'brésil': 'BR',
-    'bresil': 'BR',
-    'brasil': 'BR',
-    'belgique': 'BE',
-    'bélgica': 'BE',
-    'belgio': 'BE',
-    'pays-bas': 'NL',
-    'países bajos': 'NL',
-    'pologne': 'PL',
-    'polonia': 'PL',
-    'polônia': 'PL',
-    'ukraine': 'UA',
-    'ucrania': 'UA',
-    'ucrânia': 'UA',
-    'guadeloupe': 'GP',
-    'guadalupe': 'GP',
-    'guadelupe': 'GP',
-    'martinique': 'MQ',
-    'maroc': 'MA',
-    'marruecos': 'MA',
-    'sénégal': 'SN',
-    'cameroun': 'CM',
-    "côte d'ivoire": 'CI',
-    'grèce': 'GR',
-    'grecia': 'GR',
-    'autriche': 'AT',
-    'austria': 'AT',
-    'suède': 'SE',
-    'suecia': 'SE',
-    'république tchèque': 'CZ',
-    'rep. checa': 'CZ',
-    'tchéquie': 'CZ',
-    'hongrie': 'HU',
-    'hungría': 'HU',
-    'roumanie': 'RO',
-    'rumania': 'RO',
-    'croatie': 'HR',
-    'croacia': 'HR',
-    'turquie': 'TR',
-    'turquía': 'TR',
-    'états-unis': 'US',
-    'etats-unis': 'US',
-    'estados unidos': 'US',
-    'usa': 'US',
-}
-
-
 def country_codes(text: str | None) -> frozenset[str]:
-    """ISO 3166 alpha-2 codes for a country as written: flag emoji, country names or codes."""
-    if not text:
-        return frozenset()
-    codes: set[str] = set()
-    indicators = [chr(ord(ch) - INDICATOR_A + ord('A')) for ch in text if indicator(ord(ch))]
-    codes.update(''.join(indicators[i : i + CODE_LENGTH]) for i in range(0, len(indicators) - 1, CODE_LENGTH))
-    words = re.sub(r'[\U0001F1E6-\U0001F1FF]', ' ', unicodedata.normalize('NFKC', text))
-    for written in re.split(r'[/,;&()–—\-]+|\s+and\s+|\s+et\s+', words):
-        part = written.strip(' .')
-        if len(part) < CODE_LENGTH:
-            continue
-        if alias := COUNTRY_ALIASES.get(part.casefold()):
-            codes.add(alias)
-            continue
-        try:
-            found: object = pycountry.countries.lookup(part)
-        except LookupError:
-            continue
-        if isinstance(code := getattr(found, 'alpha_2', None), str):
-            codes.add(code)
-    return frozenset(codes)
+    """ISO 3166 alpha-2 codes for a country as written (countries.codes)."""
+    return frozenset(codes(text))
 
 
 def clean_display(name: str) -> str:

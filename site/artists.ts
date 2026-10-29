@@ -445,9 +445,7 @@ function notes(a: Pick<Artist, 'display_name'>, id: number, stats: Artist | null
     h(
       'p',
       {},
-      stats?.home_country != null && stats.home_basis !== null
-        ? text('home_basis', stats.home_basis)
-        : 'No line-up says where they’re from.',
+      stats?.home_basis == null ? 'No line-up says where they’re from.' : text('home_basis', stats.home_basis),
     ),
   );
 }

@@ -2,6 +2,7 @@
 countries found in event and artist data."""
 
 import re
+import unicodedata
 
 NAMES = {
     'AD': 'Andorra',
@@ -221,6 +222,73 @@ ALIASES.update(
         'la martinique': 'MQ',
         'cap verde': 'CV',
         'ivory coast': 'CI',
+        'viet nam': 'VN',
+        # sports (IOC/FIFA) codes, and French, Spanish, Portuguese and Italian names that line-ups use
+        'sui': 'CH',
+        'swi': 'CH',
+        'ned': 'NL',
+        'hol': 'NL',
+        'por': 'PT',
+        'eng': 'GB',
+        'cro': 'HR',
+        'den': 'DK',
+        'gre': 'GR',
+        'bul': 'BG',
+        'slo': 'SI',
+        'rsa': 'ZA',
+        'cpv': 'CV',
+        'cabo verde': 'CV',
+        'allemagne': 'DE',
+        'alemania': 'DE',
+        'alemanha': 'DE',
+        'germania': 'DE',
+        'espagne': 'ES',
+        'espanha': 'ES',
+        'spagna': 'ES',
+        'itália': 'IT',
+        'suisse': 'CH',
+        'suiza': 'CH',
+        'suíça': 'CH',
+        'svizzera': 'CH',
+        'angleterre': 'GB',
+        'inglaterra': 'GB',
+        'royaume-uni': 'GB',
+        'brésil': 'BR',
+        'bresil': 'BR',
+        'brasil': 'BR',
+        'belgique': 'BE',
+        'bélgica': 'BE',
+        'belgio': 'BE',
+        'pays-bas': 'NL',
+        'países bajos': 'NL',
+        'pologne': 'PL',
+        'polonia': 'PL',
+        'polônia': 'PL',
+        'ucrânia': 'UA',
+        'guadalupe': 'GP',
+        'maroc': 'MA',
+        'marruecos': 'MA',
+        'cameroun': 'CM',
+        "côte d'ivoire": 'CI',
+        'grèce': 'GR',
+        'grecia': 'GR',
+        'autriche': 'AT',
+        'suède': 'SE',
+        'suecia': 'SE',
+        'république tchèque': 'CZ',
+        'rep. checa': 'CZ',
+        'tchéquie': 'CZ',
+        'hongrie': 'HU',
+        'hungría': 'HU',
+        'roumanie': 'RO',
+        'rumania': 'RO',
+        'croatie': 'HR',
+        'croacia': 'HR',
+        'turquie': 'TR',
+        'turquía': 'TR',
+        'états-unis': 'US',
+        'etats-unis': 'US',
+        'estados unidos': 'US',
     }
 )
 ALIASES.update({c.lower(): c for c in NAMES})  # bare ISO codes: FR, DE, NL …
@@ -262,30 +330,44 @@ def _flags(s: str) -> list[str]:
     return out
 
 
+# what splits a field naming several countries: "PT/ES", "Senegal & France", "Angola - Portugal", "(France)"
+SEPARATORS = r'\s*(?:/|&|,|;|\(|\)|–|—|\s-\s|-(?=[A-Z])|\band\b|\bet\b|7)\s*'
+# the names written with a separator in them ("Bosnia and Herzegovina", "Guinea-Bissau"), longest first, each
+# matched whole before the field is split
+JOINED = sorted((n for n in ALIASES if re.search(r'[\s/&,–—-]|\band\b', n)), key=len, reverse=True)
+
+
 def codes(text: str | None) -> list[str]:
-    """All countries named in a free-text field, in order, without duplicates."""
+    """All countries named in a free-text field, without duplicates: its flags', then its names written with a separator
+    in them, then the others', each in the order written."""
     if not text:
         return []
     found = _flags(text)
-    plain = ''.join(ch for ch in text if ord(ch) < EMOJI_FIRST and not tag(ord(ch)))
-    for part in re.split(r'\s*(?:/|&|,|–|—|\s-\s|-(?=[A-Z])|\band\b|7)\s*', plain):
+    plain = ''.join(ch for ch in unicodedata.normalize('NFKC', text) if ord(ch) < EMOJI_FIRST and not tag(ord(ch)))
+    for name in JOINED:  # the same length in lower case: the names are matched in it, blanked in the text
+        while m := re.search(rf'(?<!\w){re.escape(name)}(?!\w)', plain.lower()):
+            found.append(ALIASES[name])
+            plain = plain[: m.start()] + ' / ' + plain[m.end() :]
+    for part in re.split(SEPARATORS, plain):
         p = part.strip(' .-').lower()
         if not p:
             continue
         if p in ALIASES:
             found.append(ALIASES[p])
             continue
-        # "Vancouver – Canada", "SXM-Guadeloupe": try each word group
+        # "Vancouver – Canada": try each word group
         for w in re.split(r'[\s-]+', p):
             if w in ALIASES and len(w) > CODE_LENGTH:  # a word, not a bare code
                 found.append(ALIASES[w])
-    seen: set[str] = set()
-    out: list[str] = []
-    for c in found:
-        if c and c not in seen:
-            seen.add(c)
-            out.append(c)
-    return out
+    return list(dict.fromkeys(c for c in found if c))
+
+
+FRENCH = frozenset({'RE', 'GP', 'MQ', 'GF', 'YT', 'MF', 'BL', 'NC', 'PF', 'PM', 'WF'})  # France's territories
+
+
+def nation(code: str) -> str:
+    """The country a code is part of: France for its territories overseas, else the country itself."""
+    return 'FR' if code in FRENCH else code
 
 
 def flag(code: str | None) -> str:

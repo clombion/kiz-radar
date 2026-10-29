@@ -229,7 +229,7 @@ create table fares (
 create table artist_origin (
     artist_id integer not null references artists(id) deferrable initially deferred,
     country_code text not null,
-    mentions integer not null,
+    festivals integer not null,   -- the festivals whose line-ups state it next to their name
     primary key (artist_id, country_code)
 ) strict, without rowid;
 create table artist_stats (
@@ -244,10 +244,10 @@ create table artist_stats (
     home_basis text check (home_basis in ({home_basis})),
     booked_most_in text,
     countries integer not null,
-    abroad_bookings integer not null,
+    abroad_bookings integer,      -- outside their home country; null when it is not known
     popular integer not null check (popular in (0, 1)),
     couple_bookings integer not null,
-    check ((home_country is null) = (home_basis is null))
+    check ((home_country is null) = (home_basis is null or home_basis = '{contested}'))
 ) strict;
 create table artist_countries (
     artist_id integer not null references artists(id) deferrable initially deferred,
@@ -317,7 +317,8 @@ create table event_stats (
     event_id integer primary key references events(id) deferrable initially deferred,
     lineup integer not null,
     popular_artists integer not null,
-    imported integer not null,
+    imported integer not null,    -- line-up artists whose home country is another
+    unknown_country integer not null,  -- line-up artists whose home country is not known
     kiz integer not null check (kiz in (0, 1)),
     kiz_only integer not null check (kiz_only in (0, 1)),
     taxi_dancers integer not null check (taxi_dancers in (0, 1)),
@@ -376,7 +377,8 @@ create view artist_events as
 create view country_stats as
     select e.country_code, c.name, count(*) as events, sum(s.kiz_only) as kiz_only, sum(s.taxi_dancers) as taxi_dancers,
       round(avg(s.lineup), 1) as avg_lineup, sum(s.popular_artists) as popular_bookings,
-      round(100.0 * sum(s.imported) / nullif(sum(s.lineup), 0)) as imported_pct,
+      round(100.0 * sum(s.imported) / nullif(sum(s.lineup) - sum(s.unknown_country), 0)) as imported_pct,
+      sum(s.unknown_country) as unknown_country,
       (select airport from events e2 where e2.country_code = e.country_code and e2.airport is not null
          group by airport order by count(*) desc limit 1) as main_airport
     from events e join event_stats s on s.event_id = e.id left join countries c on c.code = e.country_code
@@ -409,6 +411,7 @@ TABLES = sqlite_db.declared(
             'priced': enums.Price.PRICED,
             'teacher': Role.TEACHER,
             'listed': enums.Listing.LISTED,
+            'contested': HomeBasis.CONTESTED,
             'direct': enums.Via.DIRECT,
             'member': enums.Via.MEMBER,
         }
@@ -488,6 +491,7 @@ class BookedRow(BaseModel):
 
 class Stated(BaseModel):
     artist_id: int
+    event_id: int
     country: str
 
 
@@ -707,17 +711,18 @@ class Booked:
     ev_cc: dict[int, str | None]
 
 
-def home(
-    a: int, given: dict[int, str], stated: collections.Counter[str], where: collections.Counter[str]
-) -> tuple[str | None, HomeBasis | None]:
-    """A home country is known when it is given in pipeline/artist_countries.csv or stated in a line-up they are
-    booked in."""
-    booked_origins = [c for c, _ in stated.most_common() if where.get(c)]
-    if a in given:
-        return given[a], HomeBasis.GIVEN
-    if booked_origins:
-        return max(booked_origins, key=lambda c: where[c]), HomeBasis.STATED
-    return None, None
+def home(given: str | None, stated: collections.Counter[str]) -> tuple[str | None, HomeBasis | None]:
+    """An artist's home country, only as a source states it: given (pipeline/artist_countries.csv), else the one country
+    line-ups state most often next to their name (each festival's once); when several are stated equally often, the
+    home is contested and none is shown. Where they are booked says nothing of it."""
+    if given:
+        return given, HomeBasis.GIVEN
+    top = stated.most_common(2)
+    if not top:
+        return None, None
+    if len(top) > 1 and top[0][1] == top[1][1]:
+        return None, HomeBasis.CONTESTED
+    return top[0][0], HomeBasis.STATED
 
 
 def given_homes(x: Transaction, artists: Artists) -> dict[int, str]:
@@ -755,35 +760,34 @@ def artist_stats(x: Transaction, artists: Artists) -> Booked:
         (enums.Via.MEMBER, *roles),
     ):
         couple_bookings[m.artist_id].add(m.event_id)
-    stated: collections.defaultdict[int, collections.Counter[str]] = collections.defaultdict(collections.Counter)
-    # a booking's country is the one its first mention states
-    for said in x.rows(
-        Stated,
-        """select artist_id, country from mentions where country is not null and country != ''
-           and mention_id in (select min(mention_id) from mentions group by event_id, artist_id, role)""",
+    # the countries each festival's line-up states next to an artist's name, once each
+    said: collections.defaultdict[int, set[tuple[int, str]]] = collections.defaultdict(set)
+    for m in x.rows(
+        Stated, "select artist_id, event_id, country from mentions where country is not null and country != ''"
     ):
-        for c in codes(said.country):
-            stated[said.artist_id][c] += 1
+        said[m.artist_id] |= {(m.event_id, c) for c in codes(m.country)}
+    stated = collections.defaultdict(
+        collections.Counter, {a: collections.Counter(c for _, c in s) for a, s in said.items()}
+    )
     x.execute('drop table temp.mentions')
     x.insert(
         'artist_origin',
-        ({'artist_id': a, 'country_code': c, 'mentions': n} for a, cnt in stated.items() for c, n in cnt.items()),
+        ({'artist_id': a, 'country_code': c, 'festivals': n} for a, cnt in stated.items() for c, n in cnt.items()),
     )
     dates = {e.id: e.start_date for e in x.rows(Started, 'select id, start_date from events')}
     given = given_homes(x, artists)
-    # Where a home country isn't known, the country they are booked in most stands in for it in the statistics
-    # (imported artists, bookings abroad), and is kept apart as booked_most_in, so the site never shows a guess as
-    # where someone is from.
+    # where a home country isn't known, none stands in for it: the artist is of unknown country in the statistics
+    # (imported artists, bookings abroad), and booked_most_in only says where they are booked most
     home_of: dict[int, str | None] = {}
     stats: list[dict[str, object]] = []
     countries: list[dict[str, object]] = []
     for a, evs in bookings.items():
         where = collections.Counter(c for e in evs if (c := ev_cc[e]))
-        country, basis = home(a, given, stated[a], where)
+        country, basis = home(given.get(a), stated[a])
         most = where.most_common(1)[0][0] if where else None
-        home_of[a] = country or most
+        home_of[a] = country
         ds = sorted(dates[e] for e in evs)
-        abroad = sum(n for c, n in where.items() if c != home_of[a])
+        abroad = None if country is None else sum(n for c, n in where.items() if c != country)
         stats.append(
             {
                 'artist_id': a,
@@ -860,6 +864,7 @@ def event_stats(x: Transaction, booked: Booked) -> None:
                 'lineup': len(lineup),
                 'popular_artists': sum(len(booked.bookings[a]) >= POPULAR for a in lineup),
                 'imported': sum(booked.home_of.get(a) not in {None, cc} for a in lineup),
+                'unknown_country': sum(booked.home_of.get(a) is None for a in lineup),
                 'kiz': int(kiz),
                 'kiz_only': int(kiz and not g & {Genre.SALSA, Genre.BACHATA}),
                 'taxi_dancers': int(Feature.TAXI_DANCERS in f),
@@ -960,10 +965,11 @@ DOCS = {
     'fare that month to the same airport.',
     'artist_stats': f'Per artist with bookings of their own: bookings (teacher, DJ or performer at distinct events; a '
     'couple’s bookings count for the couple, not its members), the events booked as teacher, DJ and performer (one '
-    'event can count in two), home_country when it is known (home_basis: given in '
-    'pipeline/artist_countries.csv, or stated next to their name in a line-up they are booked in; null otherwise), '
-    'booked_most_in (the country with most of their bookings), countries booked in, bookings abroad (outside the home '
-    f'country, or outside booked_most_in when that is unknown), popular = at least {POPULAR} bookings, couple_bookings '
+    'event can count in two), home_country when a source states it (home_basis: given in '
+    'pipeline/artist_countries.csv, or the one country line-ups state most often next to their name; contested when '
+    'several are stated equally often, with no home), booked_most_in (the country with most of their bookings, which '
+    'says nothing of where they are from), countries booked in, bookings abroad (outside the home country; null when '
+    f'that is not known), popular = at least {POPULAR} bookings, couple_bookings '
     '= further events where they appear only as part of a couple. People booked only as part of a couple have no row.',
     'event_artists': 'Each artist booked at an event, in a role: once however often its line-up names them. as_couple '
     'is set when a member is listed in the same role as their couple at the same event: that row repeats the '
@@ -973,9 +979,11 @@ DOCS = {
     'artist_events': 'Every appearance of an artist: direct (their own booking) or member (via a booked couple, '
     'via_artist_id).',
     'artist_countries': 'Bookings per artist and country; is_home marks the known home country in artist_stats.',
-    'artist_origin': 'Countries stated next to an artist’s name in line-ups (flags or text), with how often.',
+    'artist_origin': 'Countries stated next to an artist’s name in line-ups (flags or text), with how many festivals '
+    'state each.',
     'event_stats': 'Per event: line-up size (teachers and DJs), popular artists booked, imported artists (home country '
-    'differs from the event’s), kizomba-family genres, kiz-only (no salsa or bachata), taxi dancers, all-in-one hotel.',
+    'differs from the event’s), artists of unknown country (no home known), kizomba-family genres, kiz-only (no salsa '
+    'or bachata), taxi dancers, all-in-one hotel.',
     'event_passes': 'The passes a festival sells (kind): people per price (group_size, and people as a state), days, '
     'hotel included; source is description, or ticket_page (see ticket_pages).',
     'price_status': 'What each festival’s card can say of its price: priced, with the pass it prices (card_pass), or '
@@ -1003,7 +1011,8 @@ DOCS = {
     '(price_state, with its ticket_page and card_pass), and upcoming (not over yet, not cancelled and still listed, as '
     'of the moment of the query).',
     'country_stats': 'Per country: events, kiz-only events, taxi dancers, average line-up, bookings of popular '
-    'artists, share of imported artists, most common airport.',
+    'artists, share of imported artists among those whose home is known, artists of unknown country, most common '
+    'airport.',
     'countries': 'ISO 3166 codes and names.',
     'meta': 'Build settings and provenance.',
 }

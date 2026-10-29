@@ -328,6 +328,7 @@ class HomeBasis(StrEnum):
 
     GIVEN = 'given'
     STATED = 'stated'
+    CONTESTED = 'contested'
 
 
 @unique

@@ -42,7 +42,7 @@ run = "uv run -q -m pipeline.extract.load_extract"
 
 [resolve]
 description = "Resolve the export's artist mentions into artists, with stable ids"
-run = "uv run -q --group artists -m pipeline.extract.resolve_artists"
+run = "uv run -q -m pipeline.extract.resolve_artists"
 
 ["suggest-merges"]
 description = "List likely duplicate artists for review (pipeline/artist_merge_suggestions.csv)"

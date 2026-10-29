@@ -696,9 +696,16 @@ ROWS = (
     S(
         'home_basis',
         'stated',
-        'stated next to their name in a line-up they are booked in',
+        'the one country stated most often next to their name in line-ups (each festival once)',
         VIEW,
         'Home country as stated in line-ups.',
+    ),
+    S(
+        'home_basis',
+        'contested',
+        'line-ups state several countries next to their name, none more often than the others: no home is shown',
+        VIEW,
+        'Line-ups name several countries for them, none more often.',
     ),
     S('merge_decision', 'merge', 'two records are one artist', KEPT),
     S('merge_decision', 'separate', 'two records are different artists', KEPT),

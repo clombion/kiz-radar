@@ -768,6 +768,13 @@ export const STATES = {
    "forms": {},
    "icon": null,
    "link": null
+  },
+  "contested": {
+   "disposition": "view",
+   "wording": "Line-ups name several countries for them, none more often.",
+   "forms": {},
+   "icon": null,
+   "link": null
   }
  },
  "listing": {
@@ -923,7 +930,8 @@ export const KEY = {
  },
  "home_basis": {
   "GIVEN": "given",
-  "STATED": "stated"
+  "STATED": "stated",
+  "CONTESTED": "contested"
  },
  "listing": {
   "LISTED": "listed",

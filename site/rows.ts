@@ -122,7 +122,7 @@ export const ARTIST_STATS = {
   home_basis: opt(state('home_basis')),
   booked_most_in: opt(str),
   countries: num,
-  abroad_bookings: num,
+  abroad_bookings: opt(num),
   popular: flag,
   couple_bookings: num,
 } as const satisfies Shape;
