@@ -7,8 +7,8 @@
 // reduced motion, the oval moves at once and the page only changes.
 import { h } from './dom.ts';
 import { done } from './report.ts';
+import { calm } from './ui.ts';
 
-const calm = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 // a box in a row of tabs, in px
 type Box = { left: number; top: number; width: number; height: number };
 // a row of tabs' oval: its goo layer, the oval, its box (null while hidden), and the shapes of a move under way

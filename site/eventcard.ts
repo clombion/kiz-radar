@@ -13,7 +13,7 @@ import { goingLine } from './plans.ts';
 import { done } from './report.ts';
 import { artistHref } from './routes.ts';
 import { KEY, LINK } from './states.ts';
-import { away, dayParts, flightsUrl, home, otherYear, place } from './ui.ts';
+import { away, calm, dayParts, flightsUrl, home, otherYear, place } from './ui.ts';
 import { type Key, linkOf, type Point, say, text } from './wording.ts';
 
 // "23–25 Oct", or "30 Oct – 1 Nov" across a month end: the date is shown once, in the box
@@ -150,8 +150,8 @@ function smoothly(card: HTMLElement, change: () => void, opening: boolean): void
     change();
     return;
   }
-  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const onScreen = calm
+  const still = calm();
+  const onScreen = still
     ? []
     : [...(card.parentElement?.children ?? [])]
         .filter((c): c is HTMLElement => c instanceof HTMLElement)
@@ -164,7 +164,7 @@ function smoothly(card: HTMLElement, change: () => void, opening: boolean): void
     c.style.setProperty('view-transition-class', 'card');
   }
   const root = document.documentElement;
-  root.dataset['vt'] = calm ? 'calm' : opening ? 'open' : 'close';
+  root.dataset['vt'] = still ? 'calm' : opening ? 'open' : 'close';
   const t = document.startViewTransition(() => {
     change();
     const r = card.getBoundingClientRect();

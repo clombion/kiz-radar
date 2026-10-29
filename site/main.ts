@@ -17,7 +17,7 @@ import { sentenceView } from './sentence.ts';
 import { swipeBetweenSections } from './swipe.ts';
 import { sqlView } from './tables.ts';
 import { pill, slide } from './tabs.ts';
-import { dayYear, home, loading, monthYear } from './ui.ts';
+import { dayYear, home, loading, monthYear, scrolling } from './ui.ts';
 
 // the page's own parts, from index.html: one missing is a broken page
 const part = (selector: string): HTMLElement => {
@@ -75,7 +75,11 @@ function route({ scrollUp = false } = {}): void {
   at = name;
   slide(from >= 0 && to >= 0 && from !== to ? Math.sign(to - from) : 0, () => {
     show(name, sub, qs);
-    if (scrollUp) window.scrollTo(0, 0);
+    if (scrollUp) {
+      // a new page: its top in view, and the focus at its start, as a page load leaves them
+      window.scrollTo(0, 0);
+      main.focus({ preventScroll: true });
+    }
   });
 }
 
@@ -129,9 +133,12 @@ done(
 
 swipeBetweenSections();
 
+// the first thing a keyboard reaches: past the header and the tabs, to the page itself
+document.body.prepend(button({ class: 'skip', onclick: () => main.focus() }, 'Skip to the page'));
+
 // "Back to top" once you're two screens down a long list
 const toTop = button(
-  { class: 'to-top', onclick: () => window.scrollTo({ top: 0, behavior: 'smooth' }) },
+  { class: 'to-top', onclick: () => window.scrollTo({ top: 0, behavior: scrolling() }) },
   '↑ Back to top',
 );
 document.body.append(toTop);

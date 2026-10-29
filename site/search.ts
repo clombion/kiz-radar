@@ -374,7 +374,7 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
     type: 'text',
     class: 'search-input',
     role: 'combobox',
-    'aria-expanded': 'true',
+    'aria-expanded': 'false', // true while the list has results (render)
     'aria-controls': 'search-list',
     'aria-autocomplete': 'list',
     placeholder: 'Festivals, artists, places, styles…',
@@ -604,7 +604,12 @@ export function initSearch(trigger: HTMLElement, data: Promise<unknown>): void {
       `${n} ${n === 1 ? 'match has' : 'matches have'} nothing coming up. `,
       button({ class: 'link', onclick: includePast }, n === 1 ? 'Include it' : 'Include them'),
     );
+  // the list, and whether the box's list is open: while it has options to pick
   function render(): void {
+    fill();
+    input.setAttribute('aria-expanded', String(list.querySelector('[role="option"]') !== null));
+  }
+  function fill(): void {
     nextId = 0;
     if (!items) {
       list.replaceChildren(h('p', { class: 'search-note' }, 'Loading festivals…'));

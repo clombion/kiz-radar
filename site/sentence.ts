@@ -25,7 +25,7 @@ import { friendsIn } from './plans.ts';
 import { done } from './report.ts';
 import { festivalsHref, showInAddressBar } from './routes.ts';
 import { KEY } from './states.ts';
-import { flag, home, loading } from './ui.ts';
+import { calm, flag, home, loading, scrolling } from './ui.ts';
 import { plural, text } from './wording.ts';
 
 // reach is the step the trip (the full pass and a Fri→Mon return flight) is within, cheap or fair, or '' for any
@@ -181,7 +181,12 @@ export function sentenceView(
       words,
     );
 
-  const blank = <K extends keyof Choices>(key: K, opts: readonly (readonly [Choices[K], string])[], cls = 'blank') =>
+  // a choice's select; named, where no visible label names it, by what it chooses
+  const blank = <K extends keyof Choices>(
+    key: K,
+    opts: readonly (readonly [Choices[K], string])[],
+    { cls = 'blank', named }: { cls?: string; named?: string } = {},
+  ) =>
     choices(
       opts,
       s[key],
@@ -190,7 +195,7 @@ export function sentenceView(
         hideHints();
         render();
       },
-      { class: cls, 'aria-label': key },
+      { class: cls, 'aria-label': named },
     );
   // a native select is as wide as its longest option; size the sentence blanks to the chosen one instead
   const ruler = h('span', { class: 'ruler', 'aria-hidden': 'true' });
@@ -204,9 +209,9 @@ export function sentenceView(
     ...countries.map((c): [string, string] => [c.code, `${flag(c.code)} ${c.name}`]),
   ];
   const sentenceBlanks = {
-    months: blank('months', WHEN),
-    country: blank('country', DEST),
-    reach: blank('reach', PRICE),
+    months: blank('months', WHEN, { named: 'When' }),
+    country: blank('country', DEST, { named: 'Where to' }),
+    reach: blank('reach', PRICE, { named: 'For what price' }),
   };
   const live = h('p', { class: 'live', 'aria-live': 'polite' });
   const withTag = h('p', { class: 'with-tag' });
@@ -303,15 +308,15 @@ export function sentenceView(
     h(
       'p',
       { class: 'nevermind' },
-      choose(LOOSEST, 'Never mind, show me all events', () => results.scrollIntoView({ behavior: 'smooth' })),
+      choose(LOOSEST, 'Never mind, show me all events', () => results.scrollIntoView({ behavior: scrolling() })),
     ),
   );
 
   // sticky bar: the same three choices in short form, the count, and "More filters"
   const barBlanks = {
-    months: blank('months', SHORT.months, 'mini'),
-    country: blank('country', DEST_SHORT, 'mini'),
-    reach: blank('reach', SHORT.reach, 'mini'),
+    months: blank('months', SHORT.months, { cls: 'mini', named: 'When' }),
+    country: blank('country', DEST_SHORT, { cls: 'mini', named: 'Where to' }),
+    reach: blank('reach', SHORT.reach, { cls: 'mini', named: 'For what price' }),
   };
   const barCount = h('span', { class: 'bar-count' });
   const moreBtn = moreButton('more-panel', 'More filters ▾');
@@ -329,10 +334,10 @@ export function sentenceView(
     h(
       'div',
       { class: 'core-fields' },
-      h('label', { class: 'field' }, h('span', {}, 'Destination'), blank('country', DEST_SHORT, 'plain')),
+      h('label', { class: 'field' }, h('span', {}, 'Destination'), blank('country', DEST_SHORT, { cls: 'plain' })),
     ),
-    h('label', { class: 'field' }, h('span', {}, 'Line-up'), blank('lineup', LINEUP, 'plain')),
-    h('label', { class: 'field' }, h('span', {}, 'Order'), blank('sort', ORDER, 'plain')),
+    h('label', { class: 'field' }, h('span', {}, 'Line-up'), blank('lineup', LINEUP, { cls: 'plain' })),
+    h('label', { class: 'field' }, h('span', {}, 'Order'), blank('sort', ORDER, { cls: 'plain' })),
     h(
       'div',
       { class: 'checks' },
@@ -452,7 +457,7 @@ export function sentenceView(
         href: '#',
         onclick: (ev: Event) => {
           ev.preventDefault();
-          results.scrollIntoView({ behavior: 'smooth' });
+          results.scrollIntoView({ behavior: scrolling() });
         },
       },
       'Show them ↓',
@@ -581,7 +586,7 @@ function rotate(el: HTMLElement, n: HTMLElement, signal: AbortSignal): void {
   measure();
   done(document.fonts.ready.then(measure), 'measuring the dances'); // widths change once the web font is in
   onResize(measure, signal);
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (calm()) return;
   const timer = setInterval(() => {
     if (document.hidden) return; // no one is looking: the next dance waits
     i = (i + 1) % words.length;

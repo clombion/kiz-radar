@@ -5,6 +5,10 @@ import { h, type Kid } from './dom.ts';
 import { currency } from './money.ts';
 import { str } from './rows.ts';
 
+// whether the visitor asked for less motion, and how a scroll goes for them: at once when they did
+export const calm = (): boolean => matchMedia('(prefers-reduced-motion: reduce)').matches;
+export const scrolling = (): ScrollBehavior => (calm() ? 'auto' : 'smooth');
+
 // the arrow after words that lead off the site, shown and not read out (the link's own words say where it goes)
 export const away = () => h('span', { 'aria-hidden': 'true' }, ' ↗');
 

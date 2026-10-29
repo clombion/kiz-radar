@@ -209,7 +209,7 @@ export const mapView: Show = (root, sub, qs, { signal }) => {
     filtersBtn.textContent = `Filters${n ? ` (${n})` : ''} ▾`;
   };
 
-  const mapEl = h('div', { class: 'map', role: 'application', 'aria-label': 'Map of festivals by city' });
+  const mapEl = h('div', { class: 'map', role: 'region', 'aria-label': 'Map of festivals by city' });
   // a wide chevron that points the way the sheet will move, and a word saying what a tap does
   const chevron = h('span', { class: 'chevron', 'aria-hidden': 'true' });
   chevron.innerHTML = '<svg viewBox="0 0 48 12" width="48" height="12"><path d="M3 10 L24 3 L45 10"/></svg>';

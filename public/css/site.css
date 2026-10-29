@@ -669,7 +669,6 @@ select.blank {
 select.blank:hover,
 select.blank:focus-visible {
   background: var(--accent-soft);
-  outline: none;
   border-bottom-style: solid;
 }
 .sentence-hero .live a {
@@ -2142,7 +2141,6 @@ html:has(dialog.search[open]) {
   background: none;
   font: 500 1.1rem var(--font);
   padding: 0.35rem 0;
-  outline: none;
 }
 .search-cancel {
   border: 0;
@@ -2875,4 +2873,24 @@ html[data-vt="back"]::view-transition-new(section) {
 /* the SVG filters the page defines once (index.html), taking no room */
 svg.defs {
   position: absolute;
+}
+
+/* past the header to the page, for a keyboard: shown once it has the focus */
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 2000;
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: 600 1rem var(--font);
+}
+.skip:focus {
+  top: 0.5rem;
+}
+#main:focus {
+  outline: none; /* the page itself takes the focus on arriving, as a page load gives it, not a control */
 }
