@@ -66,7 +66,6 @@ def festival(db: Transaction, event_id: int, **columns: object) -> None:
         'all_day': 1,
         'featured': 0,
         'sticky': 0,
-        'page_fetched': 1,
     } | columns
     db.insert('events', [row])
 

@@ -205,6 +205,8 @@ insert into source_ids (source, source_id, event_id) select 'kizomba-world', id,
 """,
         added={'artist_ids': ('retired_into',)},
     ),
+    # 6: no page_fetched: a page that gave no answer leaves its event as it was (scrape), so every row's was fetched
+    'alter table events drop column page_fetched;',
 )
 
 

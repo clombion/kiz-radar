@@ -5,8 +5,8 @@ name: Refresh events
 # (pipeline/tickets.py run: re-reads that are due, retries, first reads by two models), reload what the answers say
 # and resolve the artists under the admin's latest claims (pipeline/claims.py), commit it all with the claims' pin,
 # then start the Refresh places and rates workflow, which a push made with the Actions token doesn't start by itself.
-# A failed ask, or a ticket page that broke its recipe or failed three times in a row, still commits the refresh, then
-# marks the run failed. Started by hand with festival ids, it skips the refresh and asks
+# An event page that gave no answer, a failed ask, or a ticket page that broke its recipe or failed three times in a
+# row, still commits the refresh, then marks the run failed. Started by hand with festival ids, it skips the refresh and asks
 # and reads those festivals only: after a prompt change that touches a few of them.
 on:
   schedule:
@@ -39,7 +39,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/steps
       - name: Refresh the events
+        id: scrape
         if: ${{ !inputs.festivals }}
+        continue-on-error: true   # each event is written as it is read; one whose page gave no answer waits
         run: mise run scrape
       - name: Ask Claude about new and changed festivals
         id: ask
@@ -79,6 +81,6 @@ jobs:
         run: gh workflow run build.yml --ref "$GITHUB_REF_NAME"   # on the branch the refresh committed to
         env:
           GH_TOKEN: ${{ github.token }}
-      - name: Fail if asking Claude or a ticket page failed
-        if: steps.ask.outcome == 'failure' || steps.tickets.outcome == 'failure'
+      - name: Fail if the refresh, asking Claude or a ticket page failed
+        if: steps.scrape.outcome == 'failure' || steps.ask.outcome == 'failure' || steps.tickets.outcome == 'failure'
         run: exit 1

@@ -61,7 +61,14 @@ def test_a_migration_that_fails_leaves_the_export_as_it_was(monkeypatch: pytest.
 
 # each migration's text as it was applied: one changed after would leave exports migrated by its old text unlike the
 # ones its new text makes (a change is a new migration)
-APPLIED = ('691b0f9bb402b8d8', 'af0be5773d153b5a', 'dd7880df897ee566', '804e761686b9ed45')
+APPLIED = (
+    '691b0f9bb402b8d8',
+    'af0be5773d153b5a',
+    'dd7880df897ee566',
+    '804e761686b9ed45',
+    '474bc801197edbcf',
+    '6eca8687a5235876',
+)
 
 
 def test_a_migration_is_never_edited_once_applied() -> None:

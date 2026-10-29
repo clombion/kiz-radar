@@ -12,6 +12,7 @@ from email.message import Message
 from pathlib import Path
 
 import pytest
+from curl_cffi.requests.exceptions import RequestException
 from pydantic import BaseModel
 
 from pipeline import data, export, geocode, rates, scrape, web
@@ -178,11 +179,14 @@ class Site:
 
     listed: Sequence[Mapping[str, object]]
     asked: list[str] = field(default_factory=list[str])
+    down: bool = False  # its event pages give no answer
 
-    def get(self, url: str) -> Served:
+    def get(self, url: str) -> Served | Declined:
         self.asked.append(url)
         if url.startswith(f'{scrape.SITE}/wp-json/'):
             return Served(json.dumps({'events': self.listed, 'next_rest_url': None}).encode())
+        if self.down:
+            return Declined(CallCause.TRANSIENT, f'{url}: HTTP 503')
         return Served(PAGE.encode())
 
 
@@ -264,6 +268,51 @@ def with_new(monkeypatch: pytest.MonkeyPatch, then: str) -> tuple[Path, int]:
         new = ours(tx, 17001)
         tx.execute(then, (new,))
     return src, new
+
+
+@dataclass(frozen=True)
+class Status:
+    status_code: int
+
+
+@pytest.mark.parametrize(
+    ('answers', 'tries', 'outcome'),
+    [
+        ([503, 200], 2, 200),  # busy, then served
+        ([429, 403, 200], 3, 200),
+        ([404], 1, CallCause.STRUCTURAL),  # gone: asking again changes nothing
+        (['reset', 'reset', 'reset'], 3, CallCause.TRANSIENT),
+        ([503, 503, 503], 3, CallCause.TRANSIENT),
+    ],
+)
+def test_a_request_the_site_is_busy_for_is_tried_again(
+    answers: list[int | str], tries: int, outcome: int | CallCause, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    left = list(answers)
+
+    def get(url: str, **_: object) -> Status:
+        answer = left.pop(0)
+        if isinstance(answer, str):
+            raise RequestException(answer)
+        return Status(answer)
+
+    monkeypatch.setattr(scrape.requests, 'get', get)
+    monkeypatch.setattr('time.sleep', no_wait)
+    got = scrape.Fetcher().get('https://kizomba-world.com/event/x/')
+    assert len(answers) - len(left) == tries
+    assert (got.cause if isinstance(got, Declined) else got.status_code) == outcome
+
+
+def test_a_festival_whose_page_gave_no_answer_waits_for_the_next_run(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    src = trimmed(1)
+    served = site(monkeypatch, [NEW])
+    served.down = True
+    with pytest.raises(SystemExit, match='1 event pages gave no answer'):
+        run(scrape.main, monkeypatch)
+    with sqlite_db.opened(src, 'ro') as db:
+        assert not db.exists("select 1 from source_ids where source = 'kizomba-world' and source_id = 17001")
 
 
 def test_a_festival_listed_again_is_listed_under_its_id(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:

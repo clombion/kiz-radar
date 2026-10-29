@@ -11,6 +11,12 @@ never again, beside the site's (source_ids). One the site no longer lists is kep
 links to it still hold; listed again, it is listed again. A new festival's line-up and features wait for the
 extraction steps, and the events whose description is new or changed since then are listed in pending_extraction.
 
+Each event is written as it is read, in a transaction of its own. A request that fails for now (a lost connection, a
+timeout, HTTP 403, 429 or 5xx) is tried again, three times in all; then, or at once for any other status (404), it
+gives no answer (pipeline/calls.py). An event list that gives none stops the run before anything is written; an event
+page that gives none leaves its event as it was (a new one is not added) for the next run, which this one fails
+naming.
+
 kizomba-world publishes its listings under CC BY-SA 4.0. Requests are spaced a few seconds apart.
 """
 
@@ -23,12 +29,14 @@ from pathlib import Path
 
 from curl_cffi import requests
 from curl_cffi.requests import Response
+from curl_cffi.requests.exceptions import RequestException
 from pydantic import BaseModel
 
+from pipeline import calls, export, states
 from pipeline import db as sqlite_db
-from pipeline import export, states
+from pipeline.calls import Declined
 from pipeline.db import Reader, Transaction
-from pipeline.enums import EventSource, Listing, Pending
+from pipeline.enums import CallCause, EventSource, Listing, Pending
 from pipeline.extract import run_log
 from pipeline.kizomba_world import ApiEvent, ApiPage, Listed, Paged, api_fields, page_fields
 from pipeline.records import day_of, now
@@ -36,36 +44,49 @@ from pipeline.records import day_of, now
 SITE = 'https://kizomba-world.com'
 FIRST_DAY = dt.date(2026, 1, 1)  # the export covers events from here to the end of next year
 PAUSE = 3  # seconds between requests
-TRIES, RETRY = 3, 30  # tries of a refused request, and seconds to wait before the next, times the tries so far
+TRIES, RETRY = 3, 30  # tries of a request the site is busy for, and seconds to wait before the next, times the tries
 LISTED_SHARE = 0.9  # a site listing fewer of the events still to come than this share of them is taken to have failed
-OK = 200
+OK, TOO_MANY, SERVER_ERROR = 200, 429, 500
+BUSY = frozenset({403, TOO_MANY})  # what Cloudflare answers when it would rather not, for now
 
 
 class EventRow(Listed, Paged):
-    """A row of the events table: the API's record, its page's fields, and whether its page was read."""
-
-    page_fetched: int
+    """A row of the events table: the API's record and its page's fields."""
 
 
 COLUMNS = list(EventRow.model_fields)
 
 
 class Fetcher:
-    """Requests to the site, a few seconds apart, each tried again when refused."""
+    """Requests to the site, a few seconds apart; one that fails for now (a lost connection, a timeout, HTTP 403,
+    429 or 5xx) is tried again, TRIES times in all, and then gives no answer, as one the site answers otherwise does
+    at once (a page gone, 404)."""
 
     def __init__(self) -> None:
         self.last = 0.0
 
-    def get(self, url: str) -> Response:
-        time.sleep(max(0, self.last + PAUSE - time.time()))
+    def get(self, url: str) -> Response | Declined:
+        failed = Declined(CallCause.TRANSIENT, f'{url}: not tried')
         for attempt in range(TRIES):
-            r = requests.get(url, impersonate='chrome', timeout=60)
+            time.sleep(max(0, self.last + PAUSE - time.time()))
+            try:
+                r = requests.get(url, impersonate='chrome', timeout=60)
+            except RequestException as e:
+                failed = Declined(CallCause.TRANSIENT, f'{url}: {type(e).__name__}: {e}')
+            else:
+                if r.status_code == OK:
+                    self.last = time.time()
+                    return r
+                busy = r.status_code in BUSY or r.status_code >= SERVER_ERROR
+                failed = Declined(CallCause.TRANSIENT if busy else CallCause.STRUCTURAL, f'{url}: HTTP {r.status_code}')
+                if not busy:
+                    self.last = time.time()
+                    return failed
             self.last = time.time()
-            if r.status_code == OK:
-                return r
-            print(f'{r.status_code} for {url}', file=sys.stderr)
-            time.sleep(RETRY * (attempt + 1))
-        sys.exit(f'giving up on {url}: the site refused it three times')
+            print(f'{failed.why}; try {attempt + 1} of {TRIES}', file=sys.stderr)
+            if attempt + 1 < TRIES:
+                time.sleep(RETRY * (attempt + 1))
+        return failed
 
 
 def listed(fetch: Fetcher) -> list[ApiEvent]:
@@ -75,7 +96,11 @@ def listed(fetch: Fetcher) -> list[ApiEvent]:
     )
     events: list[ApiEvent] = []
     while url:
-        page = ApiPage.model_validate_json(fetch.get(url).content)
+        match fetch.get(url):
+            case Declined() as d:
+                sys.exit(f'the event list gave no answer ({d.cause}: {d.why}); nothing written')
+            case r:
+                page = ApiPage.model_validate_json(r.content)
         events += page.events
         url = page.next_rest_url
     return events
@@ -121,7 +146,6 @@ create table events (
     url_pt text,
     published_at text,
     modified_at text,
-    page_fetched integer not null check (page_fetched in (0, 1)),  -- 0 when the event page could not be fetched
     listing text not null default 'listed' check (listing in ('listed', 'gone')),
     unlisted_on text,             -- the day the site stopped listing it
     check ((listing = 'gone') = (unlisted_on is not null))
@@ -197,17 +221,21 @@ class Refreshed:
 
 def refreshed(
     fetch: Fetcher, listing: tuple[Listed, list[str], list[str]], old: EventRow | None, today: dt.date
-) -> Refreshed:
-    """The event's row: its page read again when it is new, changed or still to come, else its page fields kept."""
+) -> Refreshed | Declined:
+    """The event's row: its page read again when it is new, changed or still to come, else its page fields kept; or
+    why its page gave no answer, which leaves the event as it was, for the next run."""
     e, categories, tags = listing
     due = old is None or old.modified_at != e.modified_at or day_of(e.end_date or e.start_date) >= today
     links: list[str] | None = None
     if due or old is None:
-        paged, links = page_fields(fetch.get(e.url).text)
-        fetched = 1
+        match fetch.get(e.url):
+            case Declined() as d:
+                return d
+            case r:
+                paged, links = page_fields(r.text)
     else:
-        paged, fetched = Paged.model_validate(old.model_dump(include=set(Paged.model_fields))), old.page_fetched
-    row = EventRow.model_validate(e.model_dump() | paged.model_dump() | {'page_fetched': fetched})
+        paged = Paged.model_validate(old.model_dump(include=set(Paged.model_fields)))
+    row = EventRow.model_validate(e.model_dump() | paged.model_dump())
     return Refreshed(row, old, links, categories, tags)
 
 
@@ -338,18 +366,25 @@ def run(src: Path, *, dry_run: bool) -> None:
         if len(events) < LISTED_SHARE * sum(1 for i in listed_ids if day_of(known[i].start_date) >= FIRST_DAY):
             sys.exit('the site lists far fewer events than before; stopping instead of taking them off the listing')
         report = Report()
+        declined: list[tuple[str, Declined]] = []
         for source_id, listing in events:
             r = refreshed(fetch, listing, known.get(listing[0].id), today)
+            if isinstance(r, Declined):
+                print(f'{listing[0].title}: no answer ({r.why}); left as it was', file=sys.stderr)
+                declined.append((listing[0].title, r))
+                continue
             report.note(r)
             if not dry_run:
                 with db.transaction() as tx:  # each event apart: the crawl takes no lock but while it writes one
                     write(tx, r, source_id, today)
-        gone = sorted(listed_ids - {e.id for _, (e, _, _) in events})
+        gone = sorted(listed_ids - {e.id for _, (e, _, _) in events})  # one whose page gave no answer is still listed
         report.show([known[i].title for i in gone])
         if not dry_run:
             with db.transaction() as tx:
                 describe(tx)
                 finish(tx, report, len(events), gone, today)
+    if why := calls.failed('event pages', declined):
+        sys.exit(why)
 
 
 class Args(argparse.Namespace):
