@@ -473,7 +473,7 @@ event_id,event,start,waits_for,first_read,sales,page
 18647,Multiverse Kizomba Congress (6 Rooms) – 3rd Edition – Lyon – All In One,2027-03-25,nothing,current,shop,https://www.billetweb.fr/multiverse-kizomba-congress-all-in-one-lyon-2027
 18654,Certeza 4,2027-01-08,nothing,current,shop,https://my.weezevent.com/certeza-4
 18657,12th Suave Dance Festival Paris (Official),2027-01-22,nothing,current,shop,https://www.goandance.com/en/event/9202/suave-dance-festival-paris-2027-official
-18660,PRAGUE KWANZA FESTIVAL 2027 – Official 9.edition,2027-02-11,nothing,redo_prompt,shop,https://www.dizizid.com/events-registration/index.html?officeId=227&eventId=1192
+18660,PRAGUE KWANZA FESTIVAL 2027 – Official 9.edition,2027-02-11,session,current,shop,https://www.dizizid.com/events-registration/index.html?officeId=227&eventId=1192
 18663,𝑼𝑹𝑩𝑨𝑵 𝑲𝑰𝒁 𝑻𝑬𝑴𝑷𝑻𝑨𝑻𝑰𝑶𝑵 𝑭𝑬𝑺𝑻𝑰𝑽𝑨𝑳 𝑨𝑴 𝑩𝑶𝑫𝑬𝑵𝑺𝑬𝑬 4.𝑬𝑫𝑰𝑻𝑰𝑶𝑵,2027-01-29,nothing,none,none_found,
 18666,Prague GOLD KIZ TARRAXO FESTIVAL,2027-01-14,nothing,current,,https://www.fairplay.events/en/prague-gold-kiz-tarraxo-festival-2027-2027-f903/order/tickets
 18669,HAKUNA MATATA FESTIVAL – Sunshine Edition,2027-01-29,nothing,current,shop,https://www.billetweb.fr/hakuna-matata-sunshine-edition
@@ -488,7 +488,7 @@ event_id,event,start,waits_for,first_read,sales,page
 18706,KIZCON 7 KIZOMBA FESTIVAL BEACH EDITION,2027-04-08,nothing,current,,https://lasalsadelbaile.com/comprar/KizCon7
 18709,Dubai Kizomba Fusion,2027-01-14,nothing,current,shop,https://my.weezevent.com/dubai-kizomba-fusion-2027
 18716,Kizbomba – Awakening 2027,2027-03-19,nothing,none,offline,
-18719,Royalkizz 6th Edition,2027-03-05,nothing,redo_prompt,shop,https://www.dizizid.com/events-registration/index.html?officeId=194&eventId=1200
+18719,Royalkizz 6th Edition,2027-03-05,session,current,shop,https://www.dizizid.com/events-registration/index.html?officeId=194&eventId=1200
 18722,KIZOMBA TALLINN FESTIVAL 2027- Official Event,2027-02-25,nothing,not_needed,,https://my.weezevent.com/kizomba-tallinn-festival-2027
 18725,BELGIUM “KIZZ ME BACHAMORE” FESTIVAL 2027,2027-06-17,nothing,current,,https://www.billetweb.fr/kizz-me-bachamore-congress-2027
 18728,Wakanda Festival 2027 Paris – 6th edition (Official),2027-02-19,nothing,current,shop,https://www.billetweb.fr/wakanda-festival-2027-6th-edition-all-in-one
