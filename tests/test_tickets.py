@@ -39,11 +39,13 @@ from pipeline.records import (
     Priced,
     PricedPass,
     PricedTier,
+    Provenance,
     Rate,
     Read,
     ReadPass,
     ReadTier,
     Row,
+    Sale,
     Skip,
     Stamped,
     StatusRow,
@@ -154,6 +156,8 @@ def read(
         event_id=7,
         title='Fest',
         start_date=dt.date(2027, 2, 5),
+        end_date=dt.date(2027, 2, 7),
+        country='Germany',
         read_by='agent',
         prompt=prompt_ or prompt.current('first_read').hash,
         styles=tuple(styles),
@@ -329,12 +333,8 @@ def recorded_tier(until: str | None = None, quantity: int | None = None, *, sold
             'currency': 'EUR',
             'fee': None,
             'alt': None,
-            'from': None,
-            'until': until,
-            'quantity': quantity,
-            'door': False,
+            'sale': {'from': None, 'until': until, 'quantity': quantity, 'current': False},
             'sold_out': sold_out,
-            'current': False,
             'quote': 'q',
         }
     )
@@ -1124,10 +1124,8 @@ def test_a_first_read_to_another_prompt_is_never_written(files: Path) -> None:
 
 
 def described(*passes: PricedPass) -> answers.Answer[Priced]:
-    logged = answers.Logged(
-        file='prices/event-7.json', answered_at=AT, model=Model.CLAUDE_HAIKU_5_5, prompt='0' * 16, answered_by='x'
-    )
-    return answers.Answer(Priced(event_id=7, passes=passes, rule_quotes=()), logged)
+    provenance = Provenance(prompt='0' * 16, model=Model.CLAUDE_HAIKU_5_5, answered_at=AT, answered_by='x', inputs=None)
+    return answers.Answer(Priced(event_id=7, passes=passes, rule_quotes=()), provenance, Path('prices/event-7.json'))
 
 
 def card(kind: PassKind = PassKind.FULL, until: str | None = '2027-01-31') -> PricedPass:
@@ -1136,12 +1134,8 @@ def card(kind: PassKind = PassKind.FULL, until: str | None = '2027-01-31') -> Pr
         currency='EUR',
         fee=None,
         alt=None,
-        from_=None,
-        until=None if until is None else real_day(until),
-        quantity=None,
-        door=False,
+        sale=Sale(from_=None, until=None if until is None else real_day(until), quantity=None, current=False),
         sold_out=False,
-        current=False,
         quote='90',
     )
     return PricedPass(
@@ -1154,6 +1148,7 @@ FIRST_READ_CASES: list[tuple[dict[str, object], FirstReadState]] = [
     ({}, FirstReadState.CURRENT),
     ({'disputed': True}, FirstReadState.CURRENT),  # a dispute settled by a current first read
     ({'description': 'New prices.'}, FirstReadState.REDO_DESCRIPTION),
+    ({'end_date': dt.date(2027, 2, 8)}, FirstReadState.REDO_FESTIVAL),  # one more day: its passes may differ
     ({'page': KnownPage('https://my.weezevent.com/y', SITE)}, FirstReadState.REDO_PAGE),  # an agent chose another
     ({'log': (entry((*ROWS, row('6', 'Fullpass Male 140€', 143.59))),)}, FirstReadState.REDO_UNREAD),
     ({'first_read': STAMPED}, FirstReadState.REDO_PROMPT),
@@ -1630,3 +1625,14 @@ def test_changes_name_what_a_read_found_new_or_different(command: Command) -> No
 def test_a_tickets_name_names_the_styles_of_the_genres_it_names(name: str, styles: set[Style]) -> None:
     """The words of a dance style are its genres' (pipeline/states.py), every genre a title can name included."""
     assert tickets_store.named(tickets_store.STYLE_WORDS, name) == styles
+
+
+def test_the_festivals_to_come_are_the_listed_ones_not_over(memory: Memory, files: Path) -> None:
+    """A run reads the festivals still to come: neither one over nor one the site no longer lists."""
+    FoundRow.write([])
+    db = shaped(memory())
+    with db.transaction() as tx:
+        exports.festival(tx, 1, end_date='2099-01-02')
+        exports.festival(tx, 2, start_date='2020-01-01', end_date='2020-01-02')  # over
+        exports.festival(tx, 3, end_date='2099-01-02', listing='gone', unlisted_on='2026-01-01')
+    assert [f.id for f in tickets_state.festivals(db, dt.date(2026, 10, 1))] == [1]

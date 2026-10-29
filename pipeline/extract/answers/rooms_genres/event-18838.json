@@ -1,59 +1,66 @@
 {
- "batch": "event-18838",
- "events": [
-  {
-   "event_id": 18838,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
-     "kind": "unspecified",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼"
-    },
-    {
-     "name_as_written": "𝙎𝘼𝙇𝙎𝘼",
-     "kind": "unspecified",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "𝙎𝘼𝙇𝙎𝘼"
-    },
-    {
-     "name_as_written": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
-     "kind": "unspecified",
-     "genres": [
-      "kizomba",
-      "urbankiz"
-     ],
-     "quote": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
-     "quote": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "𝙎𝘼𝙇𝙎𝘼",
-     "quote": "𝙎𝘼𝙇𝙎𝘼"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼",
-     "quote": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
-     "quote": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "915ec743cdb94eba",
+ "answer": {
+  "batch": "event-18838",
+  "events": [
+   {
+    "event_id": 18838,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+      "kind": "unspecified",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼"
+     },
+     {
+      "name_as_written": "𝙎𝘼𝙇𝙎𝘼",
+      "kind": "unspecified",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "𝙎𝘼𝙇𝙎𝘼"
+     },
+     {
+      "name_as_written": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+      "kind": "unspecified",
+      "genres": [
+       "kizomba",
+       "urbankiz"
+      ],
+      "quote": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+      "quote": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "𝙎𝘼𝙇𝙎𝘼",
+      "quote": "𝙎𝘼𝙇𝙎𝘼"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼",
+      "quote": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕",
+      "quote": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼 & 𝙐𝙍𝘽𝘼𝙉𝙆𝙄𝙕"
+     }
+    ]
+   }
+  ]
+ }
 }

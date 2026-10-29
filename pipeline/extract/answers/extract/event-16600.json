@@ -1,36 +1,43 @@
 {
- "batch": "event-16600",
- "events": [
-  {
-   "event_id": 16600,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Dance workshops (Semba, Kizomba, Kuduro)",
-     "rationale": "The schedule lists dance classes as part of the weekend."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Live Angolan music & DJ sets",
-     "rationale": "The opening night includes live music alongside DJ sets."
-    },
-    {
-     "feature": "shows",
-     "quote": "Cultural dance showcases",
-     "rationale": "The 'What to Expect' section promises dance showcases."
-    },
-    {
-     "feature": "competition",
-     "quote": "Mr. & Miss Angola Canada Competition, a prestigious cultural pageant",
-     "rationale": "The event centres on a pageant competition for contestants."
-    },
-    {
-     "feature": "after_party",
-     "quote": "concert and after‑party",
-     "rationale": "The final night ends with an after-party following the concert."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:29:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "9a496ff85c92ff34",
+ "answer": {
+  "batch": "event-16600",
+  "events": [
+   {
+    "event_id": 16600,
+    "artists": [],
+    "features": [
+     {
+      "feature": "live_music",
+      "quote": "Live Angolan music & DJ sets",
+      "rationale": "The schedule lists live Angolan music as part of the opening night."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Daytime cultural workshops led by our Cultural Ambassadors",
+      "rationale": "Daytime cultural workshops are explicitly part of the weekend programme."
+     },
+     {
+      "feature": "competition",
+      "quote": "The highlight of the weekend is the Mr. & Miss Angola Canada Competition",
+      "rationale": "The Mr. & Miss Angola Canada Competition is a pageant contest featured across the weekend."
+     },
+     {
+      "feature": "shows",
+      "quote": "Live performances from Angolan",
+      "rationale": "Live performances by Angolan-Canadian artists are scheduled on Day 2."
+     },
+     {
+      "feature": "after_party",
+      "quote": "a concert and after",
+      "rationale": "The final night concludes with a concert and an after-party."
+     }
+    ]
+   }
+  ]
+ }
 }

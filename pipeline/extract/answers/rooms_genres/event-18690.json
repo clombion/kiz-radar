@@ -1,31 +1,38 @@
 {
- "batch": "event-18690",
- "events": [
-  {
-   "event_id": 18690,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 EXCLUSIVE LOCATIONS FOR PARTYS AND SOCIALS"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "THE BIGGEST SALSA*BACHATA*KIZOMBA FESTIVAL IN NL"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "437dc95a45b67545",
+ "answer": {
+  "batch": "event-18690",
+  "events": [
+   {
+    "event_id": 18690,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 EXCLUSIVE LOCATIONS FOR PARTYS AND SOCIALS"
     },
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "THE BIGGEST SALSA*BACHATA*KIZOMBA FESTIVAL IN NL"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "THE BIGGEST SALSA*BACHATA*KIZOMBA FESTIVAL IN NL"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "SALSA",
+      "quote": "THE BIGGEST SALSA*BACHATA*KIZOMBA FESTIVAL IN NL"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "THE BIGGEST SALSA*BACHATA*KIZOMBA FESTIVAL IN NL"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "THE BIGGEST SALSA*BACHATA*KIZOMBA FESTIVAL IN NL"
+     }
+    ]
+   }
+  ]
+ }
 }

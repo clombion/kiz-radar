@@ -1,49 +1,58 @@
 {
- "batch": "event-19026",
- "events": [
-  {
-   "event_id": 19026,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "🎟️ FULLPASS PRICING",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 65.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 50,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🔥 FULLPASS EARLY BIRD — €65"
-      },
-      {
-       "amount": 79.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 100,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "✨ NEXT PRICE: FULLPASS EXPERIENCE — €79"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Once sold out, the next pricing phase will automatically apply."
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:46:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "8062ac126fd1715b",
+ "answer": {
+  "batch": "event-19026",
+  "events": [
+   {
+    "event_id": 19026,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 65.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 50,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "🔥 FULLPASS EARLY BIRD — €65"
+       },
+       {
+        "amount": 79.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 100,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "✨ NEXT PRICE: FULLPASS EXPERIENCE — €79"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Once sold out, the next pricing phase will automatically apply."
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nuno@nagyla+nuno",
+ "key_b": "p:nunopesqueira",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "dc16aeee76a8a8ad",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are listed as Portuguese, but side A's name is only the bare first name 'NUNO' with a different partner (nagyla+nuno) and no mentions shown, while side B is the full name 'Nuno Pesqueira' at a Germany event with no partners, and 'Nuno' is too common a first name to link them on its own."
+ }
+}

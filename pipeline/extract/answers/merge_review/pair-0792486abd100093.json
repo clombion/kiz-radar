@@ -1,0 +1,13 @@
+{
+ "key_a": "p:selim@anastasia+selim",
+ "key_b": "p:selim@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0792486abd100093",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are called Selim and both list France, but Side A is tied to partner anastasia and to Ukraine and Central/Eastern European events, while Side B has no partners and its events are in Western Europe and Japan, with no event overlap; a common first name with only a shared country does not settle it."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ilias@adina+ilias",
+ "key_b": "p:ilias@ilias+sandra",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fd00804b4b550011",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are 'Ilias' with the same Romanian events, but they have different partners (Adina vs Sandra) and no mentions to compare, and a common first name paired with different partners does not settle whether this is one dancer or two."
+ }
+}

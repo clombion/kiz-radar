@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sara@kevin+sara",
+ "key_b": "p:sarah@kevin+sarah",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "dee2c10c7083101f",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the same partner Kevin and the same UK event and country (GB), with Sara and Sarah differing only by a spelling variant, which the guidance treats as the same person within a couple."
+ }
+}

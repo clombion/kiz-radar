@@ -1,0 +1,13 @@
+{
+ "key_a": "p:clemence@clemence+curtis",
+ "key_b": "p:clemence@clemence+erwan",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "a760a247be7ebe74",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The names match after case and accent normalization and both sides are stated as French, but Clémence is a common first name and the two sides have different partners (curtis and erwan) with events in different places, so the evidence does not settle whether this is one dancer or two."
+ }
+}

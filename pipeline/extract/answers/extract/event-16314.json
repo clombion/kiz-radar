@@ -1,95 +1,102 @@
 {
- "batch": "event-16314",
- "events": [
-  {
-   "event_id": 16314,
-   "artists": [
-    {
-     "name_as_written": "La Bayonnaise",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "La Bayonnaise presents its 1st Weekender in the Basque Country"
-    },
-    {
-     "name_as_written": "DJ Alnova",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Alnova"
-    },
-    {
-     "name_as_written": "DJ Hugo Smile",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Hugo Smile"
-    },
-    {
-     "name_as_written": "DJ Damon X",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Damon X"
-    },
-    {
-     "name_as_written": "Asia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Asia"
-    },
-    {
-     "name_as_written": "Evren & Alina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Evren & Alina"
-    },
-    {
-     "name_as_written": "Justinho",
-     "role": "teacher",
-     "style": "Urbankiz",
-     "country": null,
-     "source_line": "Justinho Urbankiz"
-    },
-    {
-     "name_as_written": "Malick & Carla",
-     "role": "teacher",
-     "style": "UrbanKiz",
-     "country": null,
-     "source_line": "Malick & Carla UrbanKiz"
-    },
-    {
-     "name_as_written": "Portu & Mada",
-     "role": "teacher",
-     "style": "UrbanKiz",
-     "country": null,
-     "source_line": "Portu & Mada UrbanKiz"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_levels_beginners",
-     "quote": "or All Levels levels",
-     "rationale": "The description states that lessons are offered at an All Levels level, which welcomes beginners."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Lessons from 11 AM to 4 PM",
-     "rationale": "Scheduled daytime lessons show that dance classes are part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Social bowling from 4 PM to 8 PM",
-     "rationale": "A daytime social session is scheduled on Saturday."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Hotel Le Bayonne",
-     "rationale": "The description lists recommended hotels under a Hotels heading, without including accommodation in the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "174461f0b810a3fe",
+ "answer": {
+  "batch": "event-16314",
+  "events": [
+   {
+    "event_id": 16314,
+    "artists": [
+     {
+      "name_as_written": "La Bayonnaise",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "La Bayonnaise presents its 1st Weekender in the Basque Country"
+     },
+     {
+      "name_as_written": "DJ Alnova",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Alnova"
+     },
+     {
+      "name_as_written": "DJ Hugo Smile",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Hugo Smile"
+     },
+     {
+      "name_as_written": "DJ Damon X",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Damon X"
+     },
+     {
+      "name_as_written": "Asia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Asia"
+     },
+     {
+      "name_as_written": "Evren & Alina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Evren & Alina"
+     },
+     {
+      "name_as_written": "Justinho",
+      "role": "teacher",
+      "style": "Urbankiz",
+      "country": null,
+      "source_line": "Justinho Urbankiz"
+     },
+     {
+      "name_as_written": "Malick & Carla",
+      "role": "teacher",
+      "style": "UrbanKiz",
+      "country": null,
+      "source_line": "Malick & Carla UrbanKiz"
+     },
+     {
+      "name_as_written": "Portu & Mada",
+      "role": "teacher",
+      "style": "UrbanKiz",
+      "country": null,
+      "source_line": "Portu & Mada UrbanKiz"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_levels_beginners",
+      "quote": "All Levels levels",
+      "rationale": "The event offers lessons at an All Levels level, which welcomes beginners."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Lessons from 11 AM to 4 PM",
+      "rationale": "Dance lessons are scheduled as part of the event on Saturday."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Social bowling from 4 PM to 8 PM",
+      "rationale": "Afternoon social sessions are held on Saturday."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Hotel Ibis Budget Bayonne",
+      "rationale": "A list of hotels is given as recommended accommodation, separate from the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

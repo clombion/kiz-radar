@@ -1,400 +1,412 @@
 {
- "batch": "event-17016",
- "events": [
-  {
-   "event_id": 17016,
-   "artists": [
-    {
-     "name_as_written": "VANESSA PARIS",
-     "role": "teacher",
-     "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
-     "country": "🇦🇴",
-     "source_line": "☑️ VANESSA PARIS ( PRICESS OF KIZOMBA GINGA ) 🇦🇴"
-    },
-    {
-     "name_as_written": "RUDSON SANTOS",
-     "role": "teacher",
-     "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
-     "country": "🇨🇿",
-     "source_line": "☑️ RUDSON SANTOS 🇨🇿"
-    },
-    {
-     "name_as_written": "MARCO & ANITA",
-     "role": "teacher",
-     "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
-     "country": "🇲🇿🇵🇹",
-     "source_line": "☑️ MARCO & ANITA* 🇲🇿🇵🇹"
-    },
-    {
-     "name_as_written": "NANE & RONNY",
-     "role": "teacher",
-     "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
-     "country": "🇪🇸",
-     "source_line": "☑️ NANE & RONNY 🇪🇸"
-    },
-    {
-     "name_as_written": "PACO Y JESSI",
-     "role": "teacher",
-     "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
-     "country": "🇪🇸",
-     "source_line": "☑️ PACO Y JESSI 🇪🇸"
-    },
-    {
-     "name_as_written": "MESTRE ALOISIO",
-     "role": "teacher",
-     "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
-     "country": "🇸🇹",
-     "source_line": "☑️ MESTRE ALOISIO * 🇸🇹"
-    },
-    {
-     "name_as_written": "EDDY KIZOMBA",
-     "role": "teacher",
-     "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
-     "country": "🇦🇴",
-     "source_line": "☑️ EDDY KIZOMBA🇦🇴"
-    },
-    {
-     "name_as_written": "JEYSSI KEVIN",
-     "role": "teacher",
-     "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
-     "country": "🇬🇼",
-     "source_line": "☑️ JEYSSI KEVIN🇬🇼"
-    },
-    {
-     "name_as_written": "CORNELIUS",
-     "role": "teacher",
-     "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
-     "country": "🇪🇦",
-     "source_line": "☑️ CORNELIUS 🇪🇦"
-    },
-    {
-     "name_as_written": "BRUNO VILA",
-     "role": "teacher",
-     "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
-     "country": "🇵🇹",
-     "source_line": "☑️ BRUNO VILA 🇵🇹"
-    },
-    {
-     "name_as_written": "ELENA Y RODRI",
-     "role": "teacher",
-     "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
-     "country": "🇪🇸",
-     "source_line": "☑️ ELENA Y RODRI 🇪🇸"
-    },
-    {
-     "name_as_written": "KING JD",
-     "role": "teacher",
-     "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
-     "country": "🇫🇷",
-     "source_line": "☑️ KING JD 🇫🇷"
-    },
-    {
-     "name_as_written": "LÉTICIA GARCIA",
-     "role": "teacher",
-     "style": "#LadyStyling #AfroHouse",
-     "country": "🇵🇹",
-     "source_line": "💢 LÉTICIA GARCIA 🇵🇹"
-    },
-    {
-     "name_as_written": "ELISA KIZOMBA",
-     "role": "teacher",
-     "style": "#LadyStyling #AfroHouse",
-     "country": "🇫🇷",
-     "source_line": "💢 ELISA KIZOMBA 🇫🇷"
-    },
-    {
-     "name_as_written": "JOANA MACHADO",
-     "role": "teacher",
-     "style": "#LadyStyling #AfroHouse",
-     "country": "🇵🇹",
-     "source_line": "💢 JOANA MACHADO 🇵🇹"
-    },
-    {
-     "name_as_written": "ANA SAAVEDRA",
-     "role": "teacher",
-     "style": "#LadyStyling #AfroHouse",
-     "country": "🇵🇹",
-     "source_line": "💢 ANA SAAVEDRA 🇵🇹"
-    },
-    {
-     "name_as_written": "AIDA",
-     "role": "teacher",
-     "style": "#LadyStyling #AfroHouse",
-     "country": "🇪🇸",
-     "source_line": "💢 AIDA * 🇪🇸"
-    },
-    {
-     "name_as_written": "CAROLINA AZEVEDO",
-     "role": "teacher",
-     "style": "#LadyStyling #AfroHouse",
-     "country": "🇵🇹",
-     "source_line": "💢 CAROLINA AZEVEDO* 🇵🇹"
-    },
-    {
-     "name_as_written": "ADELAIDE CARVALHO",
-     "role": "teacher",
-     "style": "#LadyStyling #AfroHouse",
-     "country": "🇵🇹",
-     "source_line": "💢 ADELAIDE CARVALHO🇵🇹"
-    },
-    {
-     "name_as_written": "KAREN OSÓRIO",
-     "role": "teacher",
-     "style": "#LadyStyling #AfroHouse",
-     "country": "🇨🇴",
-     "source_line": "💢 KAREN OSÓRIO 🇨🇴"
-    },
-    {
-     "name_as_written": "LINDA GHIGGI SEMBA",
-     "role": "teacher",
-     "style": "#LadyStyling #AfroHouse",
-     "country": "🇮🇹",
-     "source_line": "💢 LINDA GHIGGI SEMBA 🇮🇹"
-    },
-    {
-     "name_as_written": "LUISA CASTRO",
-     "role": "teacher",
-     "style": "#LadyStyling #AfroHouse",
-     "country": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-     "source_line": "💢 LUISA CASTRO 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
-    },
-    {
-     "name_as_written": "KIZ ANGI",
-     "role": "teacher",
-     "style": "#LadyStyling #AfroHouse",
-     "country": "🇩🇪",
-     "source_line": "💢 KIZ ANGI 🇩🇪"
-    },
-    {
-     "name_as_written": "ADELAIDE",
-     "role": "teacher",
-     "style": "#Salsa #Bachata",
-     "country": "🇵🇹",
-     "source_line": "✅ ADELAIDE* 🇵🇹"
-    },
-    {
-     "name_as_written": "RENATO Y SARA",
-     "role": "teacher",
-     "style": "#Salsa #Bachata",
-     "country": "🇵🇹",
-     "source_line": "✅ RENATO Y SARA* 🇵🇹"
-    },
-    {
-     "name_as_written": "GONÇALO & MARIANA",
-     "role": "teacher",
-     "style": "#Salsa #Bachata",
-     "country": "🇵🇹",
-     "source_line": "✅ GONÇALO & MARIANA* 🇵🇹"
-    },
-    {
-     "name_as_written": "PAULO Y MAFALDA",
-     "role": "teacher",
-     "style": "#Salsa #Bachata",
-     "country": "🇵🇹",
-     "source_line": "✅ PAULO Y MAFALDA 🇵🇹"
-    },
-    {
-     "name_as_written": "NIUBIS",
-     "role": "teacher",
-     "style": "#Salsa #Bachata",
-     "country": "🇨🇺",
-     "source_line": "✅ NIUBIS 🇨🇺"
-    },
-    {
-     "name_as_written": "JEYMI APARICIO",
-     "role": "teacher",
-     "style": "#Salsa #Bachata",
-     "country": "🇧🇴",
-     "source_line": "✅ JEYMI APARICIO 🇧🇴"
-    },
-    {
-     "name_as_written": "LUCY & JESUS",
-     "role": "teacher",
-     "style": "#Salsa #Bachata",
-     "country": "🇪🇸",
-     "source_line": "✅ LUCY & JESUS 🇪🇸"
-    },
-    {
-     "name_as_written": "ANABELA & HENRIQUE",
-     "role": "teacher",
-     "style": "#Salsa #Bachata",
-     "country": null,
-     "source_line": "✅ ANABELA & HENRIQUE"
-    },
-    {
-     "name_as_written": "CYNTHIA & DOMENICO",
-     "role": "teacher",
-     "style": "#Salsa #Bachata",
-     "country": null,
-     "source_line": "✅ CYNTHIA & DOMENICO"
-    },
-    {
-     "name_as_written": "CATARINA ART",
-     "role": "teacher",
-     "style": "#Salsa #Bachata",
-     "country": null,
-     "source_line": "✅ CATARINA ART"
-    },
-    {
-     "name_as_written": "NOELA ARES",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🎧 NOELA ARES * 🇪🇸"
-    },
-    {
-     "name_as_written": "HELOY JIGGA",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "🎧 HELOY JIGGA * 🇦🇴"
-    },
-    {
-     "name_as_written": "BODYSOUL",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🎧 BODYSOUL* 🇵🇹"
-    },
-    {
-     "name_as_written": "T LOVE",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "🎧 T LOVE* 🇦🇴"
-    },
-    {
-     "name_as_written": "SIXEONE",
-     "role": "dj",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "🎧 SIXEONE * 🇩🇪"
-    },
-    {
-     "name_as_written": "ELVITO",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🎧 ELVITO* 🇵🇹"
-    },
-    {
-     "name_as_written": "DRÉ",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🎧 DRÉ 🇵🇹"
-    },
-    {
-     "name_as_written": "NINA",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇱",
-     "source_line": "🎧 NINA 🇵🇱"
-    },
-    {
-     "name_as_written": "W",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🎧 W 🇪🇸"
-    },
-    {
-     "name_as_written": "Joana machado",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Escola de Dança – Joana machado ( Lisboa )"
-    },
-    {
-     "name_as_written": "Paulo & Adelaide",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Estudio de dança – Paulo & Adelaide ( Coimbra )"
-    },
-    {
-     "name_as_written": "Escola dança noRITMO",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Escola dança noRITMO ( Leiria )"
-    },
-    {
-     "name_as_written": "Mestre Aloísio – Team",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Mestre Aloísio – Team ( Porto )"
-    },
-    {
-     "name_as_written": "Escola de Baile Malaga Kizomba",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Escola de Baile Malaga Kizomba ( Cornelius )"
-    },
-    {
-     "name_as_written": "Catarina Art Team",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Catarina Art Team"
-    },
-    {
-     "name_as_written": "Porto Kizomba Festival",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Porto Kizomba Festival"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "VENUE LOCATION ( All in One )",
-     "rationale": "The venue is the Golden Tulip hotel, so the parties take place where dancers are invited to stay."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "BOOK YOUR ACCOMMODATION HERE",
-     "rationale": "Dancers are directed to book accommodation at a partner hotel, with a discount for festival attendees, while accommodation is not part of the pass."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Poolparty",
-     "rationale": "The description lists a pool party among the event highlights."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops",
-     "rationale": "Dance workshops are listed as part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 Rooms",
-     "rationale": "The event offers three dance rooms."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pré-Party",
-     "rationale": "A pre-party is listed as one of the event features."
-    },
-    {
-     "feature": "competition",
-     "quote": "Dance competition",
-     "rationale": "A dance competition is part of the programme."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Best dress code",
-     "rationale": "A dress code is stated as a feature of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "Show // Apresentação",
-     "rationale": "A show section lists schools and teams presenting performances."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:31:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "38a907a69ed5434d",
+ "answer": {
+  "batch": "event-17016",
+  "events": [
+   {
+    "event_id": 17016,
+    "artists": [
+     {
+      "name_as_written": "VANESSA PARIS",
+      "role": "teacher",
+      "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
+      "country": "🇦🇴",
+      "source_line": "☑️ VANESSA PARIS ( PRICESS OF KIZOMBA GINGA ) 🇦🇴"
+     },
+     {
+      "name_as_written": "RUDSON SANTOS",
+      "role": "teacher",
+      "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
+      "country": "🇨🇿",
+      "source_line": "☑️ RUDSON SANTOS 🇨🇿"
+     },
+     {
+      "name_as_written": "MARCO & ANITA",
+      "role": "teacher",
+      "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
+      "country": "🇲🇿🇵🇹",
+      "source_line": "☑️ MARCO & ANITA* 🇲🇿🇵🇹"
+     },
+     {
+      "name_as_written": "NANE & RONNY",
+      "role": "teacher",
+      "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
+      "country": "🇪🇸",
+      "source_line": "☑️ NANE & RONNY 🇪🇸"
+     },
+     {
+      "name_as_written": "PACO Y JESSI",
+      "role": "teacher",
+      "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
+      "country": "🇪🇸",
+      "source_line": "☑️ PACO Y JESSI 🇪🇸"
+     },
+     {
+      "name_as_written": "MESTRE ALOISIO",
+      "role": "teacher",
+      "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
+      "country": "🇸🇹",
+      "source_line": "☑️ MESTRE ALOISIO * 🇸🇹"
+     },
+     {
+      "name_as_written": "EDDY KIZOMBA",
+      "role": "teacher",
+      "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
+      "country": "🇦🇴",
+      "source_line": "☑️ EDDY KIZOMBA🇦🇴"
+     },
+     {
+      "name_as_written": "JEYSSI KEVIN",
+      "role": "teacher",
+      "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
+      "country": "🇬🇼",
+      "source_line": "☑️ JEYSSI KEVIN🇬🇼"
+     },
+     {
+      "name_as_written": "CORNELIUS",
+      "role": "teacher",
+      "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
+      "country": "🇪🇦",
+      "source_line": "☑️ CORNELIUS 🇪🇦"
+     },
+     {
+      "name_as_written": "BRUNO VILA",
+      "role": "teacher",
+      "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
+      "country": "🇵🇹",
+      "source_line": "☑️ BRUNO VILA 🇵🇹"
+     },
+     {
+      "name_as_written": "ELENA Y RODRI",
+      "role": "teacher",
+      "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
+      "country": "🇪🇸",
+      "source_line": "☑️ ELENA Y RODRI 🇪🇸"
+     },
+     {
+      "name_as_written": "KING JD",
+      "role": "teacher",
+      "style": "#Kizomba #Semba #Urbankiz #Tarraxo",
+      "country": "🇫🇷",
+      "source_line": "☑️ KING JD 🇫🇷"
+     },
+     {
+      "name_as_written": "LÉTICIA GARCIA",
+      "role": "teacher",
+      "style": "#LadyStyling #AfroHouse",
+      "country": "🇵🇹",
+      "source_line": "💢 LÉTICIA GARCIA 🇵🇹"
+     },
+     {
+      "name_as_written": "ELISA KIZOMBA",
+      "role": "teacher",
+      "style": "#LadyStyling #AfroHouse",
+      "country": "🇫🇷",
+      "source_line": "💢 ELISA KIZOMBA 🇫🇷"
+     },
+     {
+      "name_as_written": "JOANA MACHADO",
+      "role": "teacher",
+      "style": "#LadyStyling #AfroHouse",
+      "country": "🇵🇹",
+      "source_line": "💢 JOANA MACHADO 🇵🇹"
+     },
+     {
+      "name_as_written": "ANA SAAVEDRA",
+      "role": "teacher",
+      "style": "#LadyStyling #AfroHouse",
+      "country": "🇵🇹",
+      "source_line": "💢 ANA SAAVEDRA 🇵🇹"
+     },
+     {
+      "name_as_written": "AIDA",
+      "role": "teacher",
+      "style": "#LadyStyling #AfroHouse",
+      "country": "🇪🇸",
+      "source_line": "💢 AIDA * 🇪🇸"
+     },
+     {
+      "name_as_written": "CAROLINA AZEVEDO",
+      "role": "teacher",
+      "style": "#LadyStyling #AfroHouse",
+      "country": "🇵🇹",
+      "source_line": "💢 CAROLINA AZEVEDO* 🇵🇹"
+     },
+     {
+      "name_as_written": "ADELAIDE CARVALHO",
+      "role": "teacher",
+      "style": "#LadyStyling #AfroHouse",
+      "country": "🇵🇹",
+      "source_line": "💢 ADELAIDE CARVALHO🇵🇹"
+     },
+     {
+      "name_as_written": "KAREN OSÓRIO",
+      "role": "teacher",
+      "style": "#LadyStyling #AfroHouse",
+      "country": "🇨🇴",
+      "source_line": "💢 KAREN OSÓRIO 🇨🇴"
+     },
+     {
+      "name_as_written": "LINDA GHIGGI SEMBA",
+      "role": "teacher",
+      "style": "#LadyStyling #AfroHouse",
+      "country": "🇮🇹",
+      "source_line": "💢 LINDA GHIGGI SEMBA 🇮🇹"
+     },
+     {
+      "name_as_written": "LUISA CASTRO",
+      "role": "teacher",
+      "style": "#LadyStyling #AfroHouse",
+      "country": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "source_line": "💢 LUISA CASTRO 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+     },
+     {
+      "name_as_written": "KIZ ANGI",
+      "role": "teacher",
+      "style": "#LadyStyling #AfroHouse",
+      "country": "🇩🇪",
+      "source_line": "💢 KIZ ANGI 🇩🇪"
+     },
+     {
+      "name_as_written": "ADELAIDE",
+      "role": "teacher",
+      "style": "#Salsa #Bachata",
+      "country": "🇵🇹",
+      "source_line": "✅ ADELAIDE* 🇵🇹"
+     },
+     {
+      "name_as_written": "RENATO Y SARA",
+      "role": "teacher",
+      "style": "#Salsa #Bachata",
+      "country": "🇵🇹",
+      "source_line": "✅ RENATO Y SARA* 🇵🇹"
+     },
+     {
+      "name_as_written": "GONÇALO & MARIANA",
+      "role": "teacher",
+      "style": "#Salsa #Bachata",
+      "country": "🇵🇹",
+      "source_line": "✅ GONÇALO & MARIANA* 🇵🇹"
+     },
+     {
+      "name_as_written": "PAULO Y MAFALDA",
+      "role": "teacher",
+      "style": "#Salsa #Bachata",
+      "country": "🇵🇹",
+      "source_line": "✅ PAULO Y MAFALDA 🇵🇹"
+     },
+     {
+      "name_as_written": "NIUBIS",
+      "role": "teacher",
+      "style": "#Salsa #Bachata",
+      "country": "🇨🇺",
+      "source_line": "✅ NIUBIS 🇨🇺"
+     },
+     {
+      "name_as_written": "JEYMI APARICIO",
+      "role": "teacher",
+      "style": "#Salsa #Bachata",
+      "country": "🇧🇴",
+      "source_line": "✅ JEYMI APARICIO 🇧🇴"
+     },
+     {
+      "name_as_written": "LUCY & JESUS",
+      "role": "teacher",
+      "style": "#Salsa #Bachata",
+      "country": "🇪🇸",
+      "source_line": "✅ LUCY & JESUS 🇪🇸"
+     },
+     {
+      "name_as_written": "ANABELA & HENRIQUE",
+      "role": "teacher",
+      "style": "#Salsa #Bachata",
+      "country": null,
+      "source_line": "✅ ANABELA & HENRIQUE"
+     },
+     {
+      "name_as_written": "CYNTHIA & DOMENICO",
+      "role": "teacher",
+      "style": "#Salsa #Bachata",
+      "country": null,
+      "source_line": "✅ CYNTHIA & DOMENICO"
+     },
+     {
+      "name_as_written": "CATARINA ART",
+      "role": "teacher",
+      "style": "#Salsa #Bachata",
+      "country": null,
+      "source_line": "✅ CATARINA ART"
+     },
+     {
+      "name_as_written": "NOELA ARES",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🎧 NOELA ARES * 🇪🇸"
+     },
+     {
+      "name_as_written": "HELOY JIGGA",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "🎧 HELOY JIGGA * 🇦🇴"
+     },
+     {
+      "name_as_written": "BODYSOUL",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🎧 BODYSOUL* 🇵🇹"
+     },
+     {
+      "name_as_written": "T LOVE",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "🎧 T LOVE* 🇦🇴"
+     },
+     {
+      "name_as_written": "SIXEONE",
+      "role": "dj",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "🎧 SIXEONE * 🇩🇪"
+     },
+     {
+      "name_as_written": "ELVITO",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🎧 ELVITO* 🇵🇹"
+     },
+     {
+      "name_as_written": "DRÉ",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🎧 DRÉ 🇵🇹"
+     },
+     {
+      "name_as_written": "NINA",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇱",
+      "source_line": "🎧 NINA 🇵🇱"
+     },
+     {
+      "name_as_written": "W",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🎧 W 🇪🇸"
+     },
+     {
+      "name_as_written": "Joana machado",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Escola de Dança – Joana machado ( Lisboa )"
+     },
+     {
+      "name_as_written": "Paulo & Adelaide",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Estudio de dança – Paulo & Adelaide ( Coimbra )"
+     },
+     {
+      "name_as_written": "Escola dança noRITMO",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Escola dança noRITMO ( Leiria )"
+     },
+     {
+      "name_as_written": "Mestre Aloísio",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Mestre Aloísio – Team ( Porto )"
+     },
+     {
+      "name_as_written": "Escola de Baile Malaga Kizomba",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Escola de Baile Malaga Kizomba ( Cornelius )"
+     },
+     {
+      "name_as_written": "Catarina Art Team",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Catarina Art Team"
+     },
+     {
+      "name_as_written": "Porto Kizomba Festival",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Porto Kizomba Festival"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "VENUE LOCATION ( All in One )",
+      "rationale": "The venue is stated as All in One, meaning the event takes place at the hotel where dancers stay."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "BOOK YOUR ACCOMMODATION HERE",
+      "rationale": "Dancers are directed to book accommodation at the partner hotel, which is not part of the pass."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "To get a discount on your reservation say you are going to the festival",
+      "rationale": "A negotiated discount on hotel reservations is offered for festival guests."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Poolparty",
+      "rationale": "A pool party is listed among the features."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Workshops",
+      "rationale": "Workshops are listed as part of the programme."
+     },
+     {
+      "feature": "competition",
+      "quote": "Dance competition",
+      "rationale": "A dance competition is listed in the programme."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Best dress code",
+      "rationale": "A dress code is stated as Best dress code."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pré-Party",
+      "rationale": "A pre-party is listed in the programme."
+     },
+     {
+      "feature": "shows",
+      "quote": "Show // Apresentação",
+      "rationale": "Shows are listed with performing schools and teams."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 Rooms",
+      "rationale": "The event has three dance rooms."
+     }
+    ]
+   }
+  ]
+ }
 }

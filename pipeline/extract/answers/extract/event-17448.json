@@ -1,41 +1,48 @@
 {
- "batch": "event-17448",
- "events": [
-  {
-   "event_id": 17448,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "40+ Workshops",
-     "rationale": "The text advertises more than 40 workshops as part of the festival."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "All levels covered by 30+ world-class artists.",
-     "rationale": "The workshops are stated to cover all levels, which indicates suitability for beginners."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Pool Parties",
-     "rationale": "The event lists Pool Parties among its unique vibes."
-    },
-    {
-     "feature": "shows",
-     "quote": "live shows",
-     "rationale": "The description mentions live shows as one of the event's features."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 Social Rooms",
-     "rationale": "The event has three separate social rooms, so more than one dance floor."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Special rates available until Oct 15th",
-     "rationale": "A negotiated hotel rate is offered at the recommended Alua Tenerife, while accommodation is booked separately from the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:31:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "8c6f99a48694850e",
+ "answer": {
+  "batch": "event-17448",
+  "events": [
+   {
+    "event_id": 17448,
+    "artists": [],
+    "features": [
+     {
+      "feature": "all_levels_beginners",
+      "quote": "All levels covered by 30+ world-class artists.",
+      "rationale": "The description states that all levels are covered, which shows the event welcomes beginners."
+     },
+     {
+      "feature": "workshops",
+      "quote": "40+ Workshops",
+      "rationale": "The event lists more than 40 workshops as part of the programme."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Pool Parties",
+      "rationale": "Pool parties are listed among the event's unique vibes."
+     },
+     {
+      "feature": "shows",
+      "quote": "live shows",
+      "rationale": "Live shows are listed as part of the event experience."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 Social Rooms",
+      "rationale": "The event has three separate social dance rooms."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Stay right where the magic happens!",
+      "rationale": "The event promotes the Alua Tenerife as the recommended hotel, while the pass itself is booked separately."
+     }
+    ]
+   }
+  ]
+ }
 }

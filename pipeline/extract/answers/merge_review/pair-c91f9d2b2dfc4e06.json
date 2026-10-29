@@ -1,0 +1,13 @@
+{
+ "key_a": "p:balito@balito+viola",
+ "key_b": "p:balito@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c91f9d2b2dfc4e06",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are the same stage name with a DJ prefix on one side, both stated in Hungary and at Hungarian events, and the 'Balito' side's partner viola@balito+viola suggests a duo that the 'DJ Balito' solo name belongs to; the 'GB' country on the bare Balito side is the only conflicting signal and is not supported by any event mention, so the shared name, country and event location favour one artist."
+ }
+}

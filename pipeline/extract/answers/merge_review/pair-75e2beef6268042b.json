@@ -1,0 +1,13 @@
+{
+ "key_a": "p:yesisica@andres+yesisica",
+ "key_b": "p:yessica@andres+yessica",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "75e2beef6268042b",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The names are near-identical spellings (Yesisica/Yessica), both list the same partner first name Andres, and side A's stated country ES matches side B's event country Spain, with no conflicting country evidence."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:samat@dance",
+ "key_b": "p:samat@kate+samat",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "4b3265320e6086ef",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records are 'SAMAT' with stated country KZ, but side A appears only as a teacher at a Poland event with no partner, while side B is a couple with kate and has Kazakhstan events; the mention lists don't show the same event or partner, and a common name plus a shared country is not enough to join them."
+ }
+}

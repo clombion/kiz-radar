@@ -1,134 +1,141 @@
 {
- "batch": "event-18287",
- "events": [
-  {
-   "event_id": 18287,
-   "artists": [
-    {
-     "name_as_written": "KALEMBA DANSE",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🎉 KALEMBA DANSE presents: L’ÉNERGIE WEEKENDER 🎉"
-    },
-    {
-     "name_as_written": "Fanio de Araujo",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏾 Fanio de Araujo"
-    },
-    {
-     "name_as_written": "Ary",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏽 Ary"
-    },
-    {
-     "name_as_written": "Sébastien Azaïs",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏼 Sébastien Azaïs"
-    },
-    {
-     "name_as_written": "Franck",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏾 Franck"
-    },
-    {
-     "name_as_written": "Cláudio Dolk",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏽 Cláudio Dolk"
-    },
-    {
-     "name_as_written": "Franet",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏽 Franet"
-    },
-    {
-     "name_as_written": "Mik’iz",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏽 Mik’iz"
-    },
-    {
-     "name_as_written": "Maura",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💃🏽 Maura"
-    },
-    {
-     "name_as_written": "Xavi",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💃🏽 Xavi"
-    },
-    {
-     "name_as_written": "Jade",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💃🏼 Jade"
-    },
-    {
-     "name_as_written": "Pao lou",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💃 Pao lou"
-    },
-    {
-     "name_as_written": "Paola",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💃🏽 Paola"
-    },
-    {
-     "name_as_written": "François",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "François"
-    },
-    {
-     "name_as_written": "Elydio",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Elydio"
-    },
-    {
-     "name_as_written": "Yha",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Yha"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "4 Workshops",
-     "rationale": "The agenda lists 4 Workshops as part of the weekend."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Partner Hotels",
-     "rationale": "The description has a Partner Hotels section listing recommended hotels with booking links."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:32:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "bf8e30ffd5a508a9",
+ "answer": {
+  "batch": "event-18287",
+  "events": [
+   {
+    "event_id": 18287,
+    "artists": [
+     {
+      "name_as_written": "KALEMBA DANSE",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "🎉 KALEMBA DANSE presents: L’ÉNERGIE WEEKENDER 🎉"
+     },
+     {
+      "name_as_written": "Fanio de Araujo",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏾 Fanio de Araujo"
+     },
+     {
+      "name_as_written": "Ary",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏽 Ary"
+     },
+     {
+      "name_as_written": "Sébastien Azaïs",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏼 Sébastien Azaïs"
+     },
+     {
+      "name_as_written": "Franck",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏾 Franck"
+     },
+     {
+      "name_as_written": "Cláudio Dolk",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏽 Cláudio Dolk"
+     },
+     {
+      "name_as_written": "Franet",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏽 Franet"
+     },
+     {
+      "name_as_written": "Mik’iz",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏽 Mik’iz"
+     },
+     {
+      "name_as_written": "Maura",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💃🏽 Maura"
+     },
+     {
+      "name_as_written": "Xavi",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💃🏽 Xavi"
+     },
+     {
+      "name_as_written": "Jade",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💃🏼 Jade"
+     },
+     {
+      "name_as_written": "Pao lou",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💃 Pao lou"
+     },
+     {
+      "name_as_written": "Paola",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💃🏽 Paola"
+     },
+     {
+      "name_as_written": "François",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "François"
+     },
+     {
+      "name_as_written": "Elydio",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Elydio"
+     },
+     {
+      "name_as_written": "Yha",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Yha"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "4 Workshops",
+      "rationale": "The event lists four workshops as part of its agenda."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Partner Hotels",
+      "rationale": "A section lists partner hotels for attendees, without stating accommodation is part of a pass."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,103 +1,116 @@
 {
- "batch": "event-16034",
- "events": [
-  {
-   "event_id": 16034,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 90.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "2025-11-14",
-       "until": "2026-01-14",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🎟️FULL PASS 90€"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 160.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "2025-11-14",
-       "until": "2026-01-14",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🎟️FULL PASS COUPLEPASS 160€"
-      }
-     ]
-    },
-    {
-     "kind": "party",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 80.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "2025-11-14",
-       "until": "2026-01-14",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🎟️ DANCE PASS 80€"
-      }
-     ]
-    },
-    {
-     "kind": "party",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 145.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "2025-11-14",
-       "until": "2026-01-14",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🎟️ DANCE PASS COUPLEPASS 145€"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:43:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "dea5ecd4a19779bf",
+ "answer": {
+  "batch": "event-16034",
+  "events": [
+   {
+    "event_id": 16034,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 90.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2025-11-14",
+         "until": "2026-01-14",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "🎟️FULL PASS 90€"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 160.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2025-11-14",
+         "until": "2026-01-14",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "🎟️FULL PASS COUPLEPASS 160€"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 80.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2025-11-14",
+         "until": "2026-01-14",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "🎟️ DANCE PASS 80€"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": null,
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 145.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2025-11-14",
+         "until": "2026-01-14",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "🎟️ DANCE PASS COUPLEPASS 145€"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "➖Couple pass tickets – Man & Woman only"
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tony@carla+tony",
+ "key_b": "p:tony@carla+tony",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "514e45b6e241a83a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The record is one key stated with three countries (AO, CV, ES) and no mentions are listed, so there is no event, role or style evidence to show whether one travelling artist or several people named Tony is behind it."
+ }
+}

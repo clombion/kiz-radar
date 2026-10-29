@@ -1,28 +1,35 @@
 {
- "batch": "event-15828",
- "events": [
-  {
-   "event_id": 15828,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba, Semba, Konpa"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba, Semba, Konpa"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Kizomba, Semba, Konpa"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "979c6473a5cdf4c3",
+ "answer": {
+  "batch": "event-15828",
+  "events": [
+   {
+    "event_id": 15828,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "exclusive Kizomba, Semba, Konpa & surprise masterclasses"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "exclusive Kizomba, Semba, Konpa & surprise masterclasses"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "exclusive Kizomba, Semba, Konpa & surprise masterclasses"
+     }
+    ]
+   }
+  ]
+ }
 }

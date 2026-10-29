@@ -1,0 +1,13 @@
+{
+ "key_a": "p:anastasia@anastasia+richard",
+ "key_b": "p:anastasia@anastasia+selim",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "14e18d2aa5ce870b",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides share only the common first name Anastasia; their partners differ (Richard versus Selim), their countries overlap only on UA, and their events are in different places (United Kingdom versus Germany, Hungary, Kazakhstan and Poland), so the evidence points to two artists."
+ }
+}

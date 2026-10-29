@@ -1,0 +1,13 @@
+{
+ "key_a": "p:maria@jose+maria",
+ "key_b": "p:marian@luismi+marian",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ca6235df1d8da63e",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different partners (jose versus luismi) and no shared events, partner or style, so the only link is a similar spelling of a common name, which is not enough to merge them."
+ }
+}

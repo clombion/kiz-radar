@@ -1,64 +1,66 @@
 {
- "batch": "event-16079",
- "events": [
-  {
-   "event_id": 16079,
-   "artists": [
-    {
-     "name_as_written": "DANCE TRAVEL",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "For information contact with DANCE TRAVEL:"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All in one hotel",
-     "rationale": "The parties take place in Don Angel Hotel, the same hotel where dancers are invited to stay."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "A Pool Party",
-     "rationale": "The description lists a pool party from 17h to 21h."
-    },
-    {
-     "feature": "workshops",
-     "quote": "exclusive rooms for workshops",
-     "rationale": "Daytime workshops in dedicated rooms are part of the programme."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 rooms for the parties during the night",
-     "rationale": "Two separate dance rooms are used for the night parties."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Party",
-     "rationale": "A Wednesday pre-party is listed in the programme before the main parties."
-    },
-    {
-     "feature": "shows",
-     "quote": "workshops, parties, shows",
-     "rationale": "The location section says the event includes shows."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "PRICE (per person and day with FULL BOARD):",
-     "rationale": "The per-day room prices are for full-board packages that include accommodation."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "FULL BOARD",
-     "rationale": "The room prices are stated as full board, so meals are included in the package."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "INFORMATION ABOUT SHUTTLE FROM BARCELONA AIRPORT OR GIRONA AIRPORT",
-     "rationale": "The description gives bus and train shuttle options from the airports to the hotel."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:27:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "21e21d1c3e96c8de",
+ "answer": {
+  "batch": "event-16079",
+  "events": [
+   {
+    "event_id": 16079,
+    "artists": [
+     {
+      "name_as_written": "DANCE TRAVEL",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "For information contact with DANCE TRAVEL:"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All in one hotel",
+      "rationale": "The description says the event takes place in one hotel, which is also where the dancers stay."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "A Pool Party from 17h to 21h",
+      "rationale": "The programme includes a pool party during the day."
+     },
+     {
+      "feature": "workshops",
+      "quote": "2 exclusive rooms for workshops",
+      "rationale": "Dance workshops are scheduled as part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 rooms for the parties during the night",
+      "rationale": "Two separate dance rooms are used for the night parties."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "23:30h-04h Pre-Party",
+      "rationale": "A pre-party is listed on the Wednesday programme."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "per person and day with FULL BOARD",
+      "rationale": "The room prices are quoted with full board, so meals are included in the package."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "INFORMATION ABOUT SHUTTLE FROM BARCELONA AIRPORT OR GIRONA AIRPORT",
+      "rationale": "Shuttle bus and train transfers from the airports to the hotel are described."
+     },
+     {
+      "feature": "shows",
+      "quote": "All the event (workshops, parties, shows)",
+      "rationale": "The description states that shows are part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

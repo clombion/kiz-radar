@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fred@fred+morgane",
+ "key_b": "p:frednelson@frednelson+morgane",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "797bb36c0cf6b040",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides list the same partner (Morgane) and the same country (FR), and Fred is a short form of Fred-Nelson, which the rules treat as the same person when the partner matches; no shared event shows two separate people."
+ }
+}

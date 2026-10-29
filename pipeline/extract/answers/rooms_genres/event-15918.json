@@ -1,38 +1,45 @@
 {
- "batch": "event-15918",
- "events": [
-  {
-   "event_id": 15918,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Puerto Rican Salsa",
-     "quote": "Puerto Rican Salsa, Cuban Salsa"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Lady Styling",
-     "quote": "Lady Styling"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Rock",
-     "quote": "Rock"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "81d875c5e2629fb7",
+ "answer": {
+  "batch": "event-15918",
+  "events": [
+   {
+    "event_id": 15918,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Puerto Rican Salsa",
+      "quote": "Puerto Rican Salsa"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Cuban Salsa",
+      "quote": "Cuban Salsa"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Lady Styling",
+      "quote": "Lady Styling"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba"
+     }
+    ]
+   }
+  ]
+ }
 }

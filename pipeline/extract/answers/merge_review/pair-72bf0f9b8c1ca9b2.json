@@ -1,0 +1,13 @@
+{
+ "key_a": "p:manuela@dady+manuela",
+ "key_b": "p:manuella@dady+manuella",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "72bf0f9b8c1ca9b2",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Manuela and Manuella are spelling variants that share the same partner (dady+manuela) and both appear at French events, which points to one artist."
+ }
+}

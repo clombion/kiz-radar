@@ -1,21 +1,41 @@
 {
- "batch": "event-14496",
- "events": [
-  {
-   "event_id": 14496,
-   "artists": [],
-   "features": [
-    {
-     "feature": "transfers_shuttle",
-     "quote": "we’ll take you by taxi from the Nord station (RENFE and FGC) to FDS",
-     "rationale": "The organisers state they will provide taxi transfers from Terrassa Nord station to the venue."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Accommodation: Hotel Terrassa Confort (4-star hotel, a 6-minute walk from the venue)",
-     "rationale": "A recommended hotel is named for accommodation, with a discount code, and it is not stated to be part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:22:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "53003ac6404f45cb",
+ "answer": {
+  "batch": "event-14496",
+  "events": [
+   {
+    "event_id": 14496,
+    "artists": [
+     {
+      "name_as_written": "Autêntica",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Only at Autêntica"
+     }
+    ],
+    "features": [
+     {
+      "feature": "accommodation_included",
+      "quote": "Includes accommodation and access to services.",
+      "rationale": "The overnight package starting at €15 per night is stated to include accommodation."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Accommodation: Hotel Terrassa Confort (4-star hotel, a 6-minute walk from the venue)",
+      "rationale": "A named recommended hotel is given for accommodation, with a discount code offered."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "we’ll take you by taxi from the Nord station",
+      "rationale": "The organisers provide taxi transfers from the train station to the venue."
+     }
+    ]
+   }
+  ]
+ }
 }

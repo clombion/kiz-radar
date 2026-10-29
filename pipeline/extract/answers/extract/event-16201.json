@@ -1,44 +1,58 @@
 {
- "batch": "event-16201",
- "events": [
-  {
-   "event_id": 16201,
-   "artists": [
-    {
-     "name_as_written": "Lee “El Gringuito Kat “La Gata”",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Lee “El Gringuito Kat “La Gata” & our Executive Board Present…"
-    }
-   ],
-   "features": [
-    {
-     "feature": "live_music",
-     "quote": "Nightly Bachata, Salsa & Kizomba Concerts!",
-     "rationale": "The event advertises nightly concerts, which are live music."
-    },
-    {
-     "feature": "workshops",
-     "quote": "100+ Workshops!",
-     "rationale": "The event advertises over 100 workshops."
-    },
-    {
-     "feature": "shows",
-     "quote": "200+ Performances!",
-     "rationale": "The event advertises over 200 performances by artists."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "7+ Ballrooms of Dancing Nightly",
-     "rationale": "Seven or more ballrooms for dancing means more than one dance room."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Day Parties & classes daily!",
-     "rationale": "Daytime parties are offered every day."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "e20dd02d076b4818",
+ "answer": {
+  "batch": "event-16201",
+  "events": [
+   {
+    "event_id": 16201,
+    "artists": [
+     {
+      "name_as_written": "Lee “El Gringuito Kat “La Gata”",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Lee “El Gringuito Kat “La Gata” & our Executive Board Present…"
+     },
+     {
+      "name_as_written": "our Executive Board",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Lee “El Gringuito Kat “La Gata” & our Executive Board Present…"
+     }
+    ],
+    "features": [
+     {
+      "feature": "day_socials",
+      "quote": "Day Parties & classes daily!",
+      "rationale": "The quote states that daytime parties are held daily."
+     },
+     {
+      "feature": "workshops",
+      "quote": "100+ Workshops!",
+      "rationale": "The quote advertises over 100 workshops as part of the event."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Nightly Bachata, Salsa & Kizomba Concerts!",
+      "rationale": "The quote advertises nightly concerts, which are live music."
+     },
+     {
+      "feature": "shows",
+      "quote": "200+ Performances!",
+      "rationale": "The quote advertises over 200 performances at the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "7+ Ballrooms of Dancing Nightly",
+      "rationale": "The quote states that there are seven or more dance ballrooms, so more than one dance room."
+     }
+    ]
+   }
+  ]
+ }
 }

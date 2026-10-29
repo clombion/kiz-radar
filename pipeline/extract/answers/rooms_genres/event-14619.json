@@ -1,28 +1,30 @@
 {
- "batch": "event-14619",
- "events": [
-  {
-   "event_id": 14619,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "[BACHATA]"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "bachata",
-     "quote": "qui honore la bachata"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "[KIZOMBA]"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "2f1c6db2e2ebb2f5",
+ "answer": {
+  "batch": "event-14619",
+  "events": [
+   {
+    "event_id": 14619,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "[BACHATA]"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "[KIZOMBA]"
+     }
+    ]
+   }
+  ]
+ }
 }

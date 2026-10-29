@@ -1,80 +1,75 @@
 {
- "batch": "event-15474",
- "events": [
-  {
-   "event_id": 15474,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 60.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🔹 FULL PASS: 60 euros"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 110.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "couple pass 🕺+💃 : 110 euros"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 100.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "2 leaders pass 🕺+🕺: 100 euros"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:41:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "bbf819ed341b613b",
+ "answer": {
+  "batch": "event-15474",
+  "events": [
+   {
+    "event_id": 15474,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 60.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "FULL PASS: 60 euros"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 110.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "couple pass 🕺+💃 : 110 euros"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 100.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "2 leaders pass 🕺+🕺: 100 euros"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

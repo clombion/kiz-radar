@@ -1,38 +1,45 @@
 {
- "batch": "event-14931",
- "events": [
-  {
-   "event_id": 14931,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Dance and music genres represented at CBKF include Urban Kiz, Kizomba, Tarraxo, Konpa and Afrobeat."
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Dance and music genres represented at CBKF include Urban Kiz, Kizomba, Tarraxo, Konpa and Afrobeat."
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Dance and music genres represented at CBKF include Urban Kiz, Kizomba, Tarraxo, Konpa and Afrobeat."
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Konpa and Afrobeat"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrobeat",
-     "quote": "Konpa and Afrobeat"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "dc7deb5e8bdc02e3",
+ "answer": {
+  "batch": "event-14931",
+  "events": [
+   {
+    "event_id": 14931,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "include Urban Kiz, Kizomba, Tarraxo, Konpa and Afrobeat."
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Urban Kiz, Kizomba, Tarraxo"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Kizomba, Tarraxo, Konpa"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Tarraxo, Konpa and Afrobeat"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrobeat",
+      "quote": "Konpa and Afrobeat"
+     }
+    ]
+   }
+  ]
+ }
 }

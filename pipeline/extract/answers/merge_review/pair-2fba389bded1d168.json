@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ichigo@dance",
+ "key_b": "p:ichigo@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:00+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2fba389bded1d168",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are stated as French (🇫🇷) with overlapping events in France, Italy and Sweden, and at Sweden event 15260 both appear with the same flag, so the 'DJ' prefix on side B looks like the same French artist written differently. The stray CD flag on side B is a weak counterpoint."
+ }
+}

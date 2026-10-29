@@ -1,59 +1,68 @@
 {
- "batch": "event-14594",
- "events": [
-  {
-   "event_id": 14594,
-   "party_rooms": {
-    "count": 4,
-    "quote": "Party in 4 Rooms until 3am (officially)"
-   },
-   "class_rooms": {
-    "count": 6,
-    "quote": "Workshops in 6 Areas"
-   },
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Salsa | Cuban | Bachata | Kizomba"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:31+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "a141637813616f6f",
+ "answer": {
+  "batch": "event-14594",
+  "events": [
+   {
+    "event_id": 14594,
+    "party_rooms": {
+     "count": 4,
+     "quote": "Party in 4 Rooms until 3am (officially)"
     },
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "BACHATA (will be Updates soon)"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA / SEMBA / URBAN KIZ"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "SEMBA",
-     "quote": "KIZOMBA / SEMBA / URBAN KIZ"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBAN KIZ",
-     "quote": "KIZOMBA / SEMBA / URBAN KIZ"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "SALSA on1, on2, Cuban, Afro & more"
-    },
-    {
-     "genre": "reggaeton",
-     "genre_as_written": "Reggaeton",
-     "quote": "Jessica Guastella ( Reggaeton )"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "HipHop",
-     "quote": "Moe Flex ( reggaeton, HipHop, Lyrical)"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Salsa | Cuban | Bachata | Kizomba"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "BACHATA (will be Updates soon)"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KIZOMBA / SEMBA / URBAN KIZ"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "SEMBA",
+      "quote": "KIZOMBA / SEMBA / URBAN KIZ"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBAN KIZ",
+      "quote": "KIZOMBA / SEMBA / URBAN KIZ"
+     },
+     {
+      "genre": "reggaeton",
+      "genre_as_written": "REGGAETON",
+      "quote": "REGGAETON / HIPHOP / URBAN / AFROBEAT / AFROHOUSE OTHER STYLES"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "SALSA on1, on2, Cuban, Afro & more"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "HipHop",
+      "quote": "Moe Flex ( reggaeton, HipHop, Lyrical)"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Break Dance",
+      "quote": "George Christophorou (Break Dance)"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:morgan@fred+morgan",
+ "key_b": "p:morgane@fred+morgane",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "814f08875c9aade0",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides list the same partner, Fred, and the names are a short and long form of one name (Morgan / Morgane), with no shared event or stated country that shows two different people, so this fits the same-partner rule for merging."
+ }
+}

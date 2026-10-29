@@ -1,130 +1,137 @@
 {
- "batch": "event-14853",
- "events": [
-  {
-   "event_id": 14853,
-   "artists": [
-    {
-     "name_as_written": "DJ LEVI’S",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ DJ LEVI’S"
-    },
-    {
-     "name_as_written": "DJ NO LIMITS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ DJ NO LIMITS"
-    },
-    {
-     "name_as_written": "DJ SIWO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ DJ SIWO"
-    },
-    {
-     "name_as_written": "DJ ELSON",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ DJ ELSON"
-    },
-    {
-     "name_as_written": "DJ GEERO BEATZ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ DJ GEERO BEATZ"
-    },
-    {
-     "name_as_written": "DJ JAHNAÏ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ DJ JAHNAÏ"
-    },
-    {
-     "name_as_written": "DJ CLARITA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ DJ CLARITA"
-    },
-    {
-     "name_as_written": "DJ MKY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ DJ MKY"
-    },
-    {
-     "name_as_written": "DJ YOMI G",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ DJ YOMI G"
-    },
-    {
-     "name_as_written": "DIM DIM & OPHELIE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ DIM DIM & OPHELIE"
-    },
-    {
-     "name_as_written": "SELIM OZKAN",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ SELIM OZKAN"
-    },
-    {
-     "name_as_written": "JEFF & GHYS",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ JEFF & GHYS"
-    },
-    {
-     "name_as_written": "YACE GALANTA & CAMILLE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ YACE GALANTA & CAMILLE"
-    },
-    {
-     "name_as_written": "DEE DEE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ DEE DEE"
-    },
-    {
-     "name_as_written": "HICHAM & FLAVIE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ HICHAM & FLAVIE"
-    },
-    {
-     "name_as_written": "TEAM FUNOMEN",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "❤️ TEAM FUNOMEN ❤️"
-    },
-    {
-     "name_as_written": "MOJOPROD",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "❤️MOJOPROD"
-    }
-   ],
-   "features": []
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "f7a457583aa5bc2b",
+ "answer": {
+  "batch": "event-14853",
+  "events": [
+   {
+    "event_id": 14853,
+    "artists": [
+     {
+      "name_as_written": "DJ LEVI’S",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ DJ LEVI’S"
+     },
+     {
+      "name_as_written": "DJ NO LIMITS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ DJ NO LIMITS"
+     },
+     {
+      "name_as_written": "DJ SIWO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ DJ SIWO"
+     },
+     {
+      "name_as_written": "DJ ELSON",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ DJ ELSON"
+     },
+     {
+      "name_as_written": "DJ GEERO BEATZ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ DJ GEERO BEATZ"
+     },
+     {
+      "name_as_written": "DJ JAHNAÏ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ DJ JAHNAÏ"
+     },
+     {
+      "name_as_written": "DJ CLARITA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ DJ CLARITA"
+     },
+     {
+      "name_as_written": "DJ MKY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ DJ MKY"
+     },
+     {
+      "name_as_written": "DJ YOMI G",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ DJ YOMI G"
+     },
+     {
+      "name_as_written": "DIM DIM & OPHELIE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ DIM DIM & OPHELIE"
+     },
+     {
+      "name_as_written": "SELIM OZKAN",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ SELIM OZKAN"
+     },
+     {
+      "name_as_written": "JEFF & GHYS",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ JEFF & GHYS"
+     },
+     {
+      "name_as_written": "YACE GALANTA & CAMILLE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ YACE GALANTA & CAMILLE"
+     },
+     {
+      "name_as_written": "DEE DEE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ DEE DEE"
+     },
+     {
+      "name_as_written": "HICHAM & FLAVIE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ HICHAM & FLAVIE"
+     },
+     {
+      "name_as_written": "TEAM FUNOMEN",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "❤️ TEAM FUNOMEN ❤️"
+     },
+     {
+      "name_as_written": "MOJOPROD",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "❤️MOJOPROD"
+     }
+    ],
+    "features": []
+   }
+  ]
+ }
 }

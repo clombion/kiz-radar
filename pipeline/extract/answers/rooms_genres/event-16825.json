@@ -1,12 +1,25 @@
 {
- "batch": "event-16825",
- "events": [
-  {
-   "event_id": 16825,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": []
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b22b24e159f500db",
+ "answer": {
+  "batch": "event-16825",
+  "events": [
+   {
+    "event_id": 16825,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZ",
+      "quote": "KIZ RELAX Celebraçao 3"
+     }
+    ]
+   }
+  ]
+ }
 }

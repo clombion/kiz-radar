@@ -1,31 +1,38 @@
 {
- "batch": "event-16364",
- "events": [
-  {
-   "event_id": 16364,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "45 hours of themed SBK classes",
-     "rationale": "The event offers 45 hours of dance classes across three levels, which are workshops."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 parties until dawn in 3 different rooms",
-     "rationale": "The parties take place in three different rooms, so there is more than one dance floor."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "SBK Pre-Party Workshop (3 Rooms)",
-     "rationale": "An SBK Pre-Party is scheduled before the main party on Friday and Saturday."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "SBK Social Happy Hour (Indoor/Outdoor)",
-     "rationale": "The SBK Social Happy Hour is an afternoon social held from 5:30 PM."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "92c9840e82bca8ef",
+ "answer": {
+  "batch": "event-16364",
+  "events": [
+   {
+    "event_id": 16364,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "45 hours of themed SBK classes",
+      "rationale": "Dance classes are offered as part of the event, stated as 45 hours of themed SBK classes."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 parties until dawn in 3 different rooms",
+      "rationale": "The event has parties held in three different rooms, so more than one dance room is used."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "SBK Pre-Party Workshop (3 Rooms)",
+      "rationale": "A pre-party is scheduled before the main open party on both Friday and Saturday."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "SBK Social Happy Hour (Indoor/Outdoor)",
+      "rationale": "A social happy hour is scheduled in the late afternoon, from 5:30 PM to 9:00 PM."
+     }
+    ]
+   }
+  ]
+ }
 }

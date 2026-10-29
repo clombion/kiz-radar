@@ -1,48 +1,95 @@
 {
- "batch": "event-15577",
- "events": [
-  {
-   "event_id": 15577,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Cuban Salsa",
-     "quote": "Cuban Salsa, Crossbody Salsa"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Sensual Bachata, Dominican Bachata"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba and Semba"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba and Semba"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Dominican Footwork",
-     "quote": "Dominican Footwork"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Rueda de Casino",
-     "quote": "Rueda de Casino"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cuban Son",
-     "quote": "Cuban Son"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "1a6b6fbefc329a66",
+ "answer": {
+  "batch": "event-15577",
+  "events": [
+   {
+    "event_id": 15577,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Cuban Salsa",
+      "quote": "Cuban Salsa"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Crossbody Salsa",
+      "quote": "Crossbody Salsa"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Sensual Bachata",
+      "quote": "Sensual Bachata"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Dominican Bachata",
+      "quote": "Dominican Bachata"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba and Semba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba and Semba"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Dominican Footwork",
+      "quote": "Dominican Footwork"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Rueda de Casino",
+      "quote": "Rueda de Casino"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cuban Son",
+      "quote": "Cuban Son"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata Moderna",
+      "quote": "Bachata Moderna"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa Styling in Partnerwork",
+      "quote": "Salsa Styling in Partnerwork"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa con Rumba",
+      "quote": "Salsa con Rumba"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Smooth Kizomba",
+      "quote": "Smooth Kizomba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Kizomba vs Semba",
+      "quote": "Kizomba vs Semba"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Intro to Salsa On2",
+      "quote": "Intro to Salsa On2"
+     }
+    ]
+   }
+  ]
+ }
 }

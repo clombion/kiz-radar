@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tpeak@dance",
+ "key_b": "p:tpeak@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "093823b5b4365c69",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both keys carry the same name T’Peak with French country markers, and the same event mentions (14501, 15058, 18804) appear under both keys with identical source lines, differing only by role (teacher versus DJ), so the script split one artist by role."
+ }
+}

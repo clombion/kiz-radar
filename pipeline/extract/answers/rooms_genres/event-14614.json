@@ -1,43 +1,53 @@
 {
- "batch": "event-14614",
- "events": [
-  {
-   "event_id": 14614,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Urban Kiz"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "c8b6068eebb3781c",
+ "answer": {
+  "batch": "event-14614",
+  "events": [
+   {
+    "event_id": 14614,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 Dance Rooms – Urban Kiz | Kizomba | Semba | Tarraxo | Kompa | Douceur"
     },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Semba"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Tarraxo"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "Kompa"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "Douceur"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "2 Dance Rooms – Urban Kiz | Kizomba | Semba | Tarraxo | Kompa | Douceur"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "2 Dance Rooms – Urban Kiz | Kizomba | Semba | Tarraxo | Kompa | Douceur"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "2 Dance Rooms – Urban Kiz | Kizomba | Semba | Tarraxo | Kompa | Douceur"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "2 Dance Rooms – Urban Kiz | Kizomba | Semba | Tarraxo | Kompa | Douceur"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "2 Dance Rooms – Urban Kiz | Kizomba | Semba | Tarraxo | Kompa | Douceur"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "2 Dance Rooms – Urban Kiz | Kizomba | Semba | Tarraxo | Kompa | Douceur"
+     }
+    ]
+   }
+  ]
+ }
 }

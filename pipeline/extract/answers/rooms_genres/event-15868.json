@@ -1,18 +1,25 @@
 {
- "batch": "event-15868",
- "events": [
-  {
-   "event_id": 15868,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "the world’s best Tarraxo dancers"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:01+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "434e6df64f0cdf7e",
+ "answer": {
+  "batch": "event-15868",
+  "events": [
+   {
+    "event_id": 15868,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "GLOBAL TARRAXO COMING TO INDIA"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,36 +1,43 @@
 {
- "batch": "event-15612",
- "events": [
-  {
-   "event_id": 15612,
-   "artists": [],
-   "features": [
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 rooms simultaneously",
-     "rationale": "The description says three rooms run at the same time, so there is more than one dance room."
-    },
-    {
-     "feature": "workshops",
-     "quote": "2 days of specialized workshops",
-     "rationale": "The description advertises specialized workshops as part of the weekend."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "3 intensive days of classes",
-     "rationale": "Three intensive days of classes describe an intensive training course."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Open to all levels: beginners to advanced",
-     "rationale": "The text explicitly welcomes beginners as well as advanced dancers."
-    },
-    {
-     "feature": "shows",
-     "quote": "Over 120 shows to inspire you",
-     "rationale": "The description promises more than 120 shows by artists."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "116cfcc4d21ac1ae",
+ "answer": {
+  "batch": "event-15612",
+  "events": [
+   {
+    "event_id": 15612,
+    "artists": [],
+    "features": [
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "3 intensive days of classes",
+      "rationale": "The event is described as 3 intensive days of classes, which is an intensive training course."
+     },
+     {
+      "feature": "workshops",
+      "quote": "2 days of specialized workshops",
+      "rationale": "The description explicitly offers specialized workshops as part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 rooms simultaneously",
+      "rationale": "Three rooms run at the same time, so there is more than one dance room."
+     },
+     {
+      "feature": "shows",
+      "quote": "Over 120 shows to inspire you",
+      "rationale": "The event offers over 120 shows to watch."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Open to all levels: beginners to advanced",
+      "rationale": "The description states the event is open to all levels, including beginners."
+     }
+    ]
+   }
+  ]
+ }
 }

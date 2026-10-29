@@ -1,131 +1,133 @@
 {
- "batch": "event-19450",
- "events": [
-  {
-   "event_id": 19450,
-   "artists": [
-    {
-     "name_as_written": "Dex & Lau",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇬🇫🇷",
-     "source_line": "Dex & Lau 🇨🇬🇫🇷 (olympiades semba 1st)"
-    },
-    {
-     "name_as_written": "Oncle Kani",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Oncle Kani"
-    },
-    {
-     "name_as_written": "Laura Buffone",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Laura Buffone"
-    },
-    {
-     "name_as_written": "Aga & Michel",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Aga & Michel"
-    },
-    {
-     "name_as_written": "Sani Groove",
-     "role": "teacher",
-     "style": null,
-     "country": "🇬🇭🇨🇿",
-     "source_line": "Sani Groove 🇬🇭🇨🇿"
-    },
-    {
-     "name_as_written": "Tiwosh",
-     "role": "teacher",
-     "style": null,
-     "country": "🇭🇹🇫🇷",
-     "source_line": "Tiwosh 🇭🇹🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Jarod",
-     "role": "dj",
-     "style": null,
-     "country": "🇬🇫",
-     "source_line": "DJ Jarod 🇬🇫"
-    },
-    {
-     "name_as_written": "DJ Igor",
-     "role": "dj",
-     "style": null,
-     "country": "🇭🇷",
-     "source_line": "DJ Igor 🇭🇷"
-    },
-    {
-     "name_as_written": "DJ Caliph",
-     "role": "dj",
-     "style": null,
-     "country": "🇬🇭",
-     "source_line": "DJ Caliph 🇬🇭"
-    },
-    {
-     "name_as_written": "DJ Prince",
-     "role": "dj",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "DJ Prince 🇮🇹"
-    },
-    {
-     "name_as_written": "DJ Lucky Lux",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇮",
-     "source_line": "DJ Lucky Lux 🇸🇮"
-    },
-    {
-     "name_as_written": "Tiwosh Show",
-     "role": "performer",
-     "style": null,
-     "country": "🇭🇹",
-     "source_line": "Tiwosh Show 🇭🇹"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All-in-one hotel experience",
-     "rationale": "The description says the event is an all-in-one hotel experience, meaning the parties happen in the hotel where dancers stay."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 rooms – 2 different vibes",
-     "rationale": "The event has two rooms with different vibes, and a third room is also listed."
-    },
-    {
-     "feature": "workshops",
-     "quote": "High-quality workshops from new generation",
-     "rationale": "High-quality workshops are listed as part of the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Exe Lev (partner)",
-     "rationale": "Exe Lev is named as a partner hotel for accommodation."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 socials & 3 parties",
-     "rationale": "The schedule includes afternoon socials from 15:00 to 19:00 on several days."
-    },
-    {
-     "feature": "shows",
-     "quote": "Tiwosh Show 🇭🇹",
-     "rationale": "Tiwosh Show is listed as a show performance by an artist."
-    },
-    {
-     "feature": "competition",
-     "quote": "olympiades semba 1st",
-     "rationale": "A semba Olympiad, which is a competition, is mentioned next to a teacher's name."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "1334e52272cd3921",
+ "answer": {
+  "batch": "event-19450",
+  "events": [
+   {
+    "event_id": 19450,
+    "artists": [
+     {
+      "name_as_written": "Dex & Lau",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇬🇫🇷",
+      "source_line": "Dex & Lau 🇨🇬🇫🇷 (olympiades semba 1st)"
+     },
+     {
+      "name_as_written": "Oncle Kani",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Oncle Kani"
+     },
+     {
+      "name_as_written": "Laura Buffone",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Laura Buffone"
+     },
+     {
+      "name_as_written": "Aga & Michel",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Aga & Michel"
+     },
+     {
+      "name_as_written": "Sani Groove",
+      "role": "teacher",
+      "style": null,
+      "country": "🇬🇭🇨🇿",
+      "source_line": "Sani Groove 🇬🇭🇨🇿"
+     },
+     {
+      "name_as_written": "Tiwosh",
+      "role": "teacher",
+      "style": null,
+      "country": "🇭🇹🇫🇷",
+      "source_line": "Tiwosh 🇭🇹🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Jarod",
+      "role": "dj",
+      "style": null,
+      "country": "🇬🇫",
+      "source_line": "DJ Jarod 🇬🇫"
+     },
+     {
+      "name_as_written": "DJ Igor",
+      "role": "dj",
+      "style": null,
+      "country": "🇭🇷",
+      "source_line": "DJ Igor 🇭🇷"
+     },
+     {
+      "name_as_written": "DJ Caliph",
+      "role": "dj",
+      "style": null,
+      "country": "🇬🇭",
+      "source_line": "DJ Caliph 🇬🇭"
+     },
+     {
+      "name_as_written": "DJ Prince",
+      "role": "dj",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "DJ Prince 🇮🇹"
+     },
+     {
+      "name_as_written": "DJ Lucky Lux",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇮",
+      "source_line": "DJ Lucky Lux 🇸🇮"
+     },
+     {
+      "name_as_written": "Tiwosh Show",
+      "role": "performer",
+      "style": null,
+      "country": "🇭🇹",
+      "source_line": "Tiwosh Show 🇭🇹"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All-in-one hotel experience",
+      "rationale": "The event is held in the hotel where dancers are invited to stay, so event and accommodation share one venue."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 rooms – 2 different vibes",
+      "rationale": "The description states there are two dance rooms with different vibes."
+     },
+     {
+      "feature": "workshops",
+      "quote": "High-quality workshops from new generation",
+      "rationale": "Workshops are listed as part of what to expect at the event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Exe Lev (partner)",
+      "rationale": "A hotel is named as a partner hotel for the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "15:00 – 19:00 Social",
+      "rationale": "The schedule lists afternoon social sessions on several days."
+     },
+     {
+      "feature": "shows",
+      "quote": "Tiwosh Show",
+      "rationale": "A show performance by the artist Tiwosh is listed in the lineup."
+     }
+    ]
+   }
+  ]
+ }
 }

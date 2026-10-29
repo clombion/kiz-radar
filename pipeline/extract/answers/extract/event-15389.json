@@ -1,1205 +1,1205 @@
 {
- "batch": "event-15389",
- "events": [
-  {
-   "event_id": 15389,
-   "artists": [
-    {
-     "name_as_written": "MKF",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "KARMA INTERNATIONAL FESTIVAL direz.MKF"
-    },
-    {
-     "name_as_written": "ISABELLE y FELICIEN",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "ISABELLE y FELICIEN"
-    },
-    {
-     "name_as_written": "NUNO Y NAGYLA",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "NUNO Y NAGYLA"
-    },
-    {
-     "name_as_written": "FERNANDO Y MICHELA",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "FERNANDO Y MICHELA"
-    },
-    {
-     "name_as_written": "YAMI",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "YAMI"
-    },
-    {
-     "name_as_written": "DINARA",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "DINARA"
-    },
-    {
-     "name_as_written": "HENECO",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "HENECO"
-    },
-    {
-     "name_as_written": "BONIFACIO AURIO",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "BONIFACIO AURIO"
-    },
-    {
-     "name_as_written": "KRISTOFER MENCAK",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "KRISTOFER MENCAK"
-    },
-    {
-     "name_as_written": "FRANCIS & LUCY",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "FRANCIS & LUCY"
-    },
-    {
-     "name_as_written": "GUGU RICCI",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "GUGU RICCI"
-    },
-    {
-     "name_as_written": "MIRKO SPANO",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "MIRKO SPANO"
-    },
-    {
-     "name_as_written": "SARA IACOBACCI",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "SARA IACOBACCI"
-    },
-    {
-     "name_as_written": "VATHA & ELENA",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "VATHA & ELENA"
-    },
-    {
-     "name_as_written": "SIMONE & JENNIFER",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "SIMONE & JENNIFER"
-    },
-    {
-     "name_as_written": "SARTORIS Y NOEMI",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "SARTORIS Y NOEMI"
-    },
-    {
-     "name_as_written": "NACHO Y SILVIA",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "NACHO Y SILVIA"
-    },
-    {
-     "name_as_written": "RICCARDO & SILVIA",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "RICCARDO & SILVIA"
-    },
-    {
-     "name_as_written": "LUISMI Y MARIANGELA",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "LUISMI Y MARIANGELA"
-    },
-    {
-     "name_as_written": "ANDY & SILVIA",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "ANDY & SILVIA"
-    },
-    {
-     "name_as_written": "AZAEL SALAZAR",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "AZAEL SALAZAR"
-    },
-    {
-     "name_as_written": "VINCENZO Y DALILA",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "VINCENZO Y DALILA"
-    },
-    {
-     "name_as_written": "SIMONA BUONANNO",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "SIMONA BUONANNO"
-    },
-    {
-     "name_as_written": "GUILLERMO & LEILEN",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "GUILLERMO & LEILEN"
-    },
-    {
-     "name_as_written": "JOTA Y SELIRA",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "JOTA Y SELIRA"
-    },
-    {
-     "name_as_written": "LUCA Y MARTA",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "LUCA Y MARTA"
-    },
-    {
-     "name_as_written": "MATTEO Y MARIA",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "MATTEO Y MARIA"
-    },
-    {
-     "name_as_written": "DANIEL Y GIADA CHIUSELLI",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "DANIEL Y GIADA CHIUSELLI"
-    },
-    {
-     "name_as_written": "PANAGIOTIS & MYRTO",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "PANAGIOTIS & MYRTO"
-    },
-    {
-     "name_as_written": "PIETRO MINGARELLI & YUSELI",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "PIETRO MINGARELLI & YUSELI"
-    },
-    {
-     "name_as_written": "YUNIEL GUAL",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "YUNIEL GUAL"
-    },
-    {
-     "name_as_written": "ELVIS E SABRINA",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "ELVIS E SABRINA"
-    },
-    {
-     "name_as_written": "SANTIAGO BALDONCINI Y VITTORIA FAINI",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "SANTIAGO BALDONCINI Y VITTORIA FAINI"
-    },
-    {
-     "name_as_written": "BOZZYBRO’",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "BOZZYBRO’"
-    },
-    {
-     "name_as_written": "MANUEL & STEFANO",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "MANUEL & STEFANO"
-    },
-    {
-     "name_as_written": "LORENZO & GINEVRA",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "LORENZO & GINEVRA"
-    },
-    {
-     "name_as_written": "Ciro & Patty",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Ciro & Patty"
-    },
-    {
-     "name_as_written": "Danilo & Fausta",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Danilo & Fausta"
-    },
-    {
-     "name_as_written": "Emiliano & Mara",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Emiliano & Mara"
-    },
-    {
-     "name_as_written": "Flavio & Giulia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Flavio & Giulia"
-    },
-    {
-     "name_as_written": "Stefano e Maura",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Stefano e Maura"
-    },
-    {
-     "name_as_written": "Franco & Daniela",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Franco & Daniela"
-    },
-    {
-     "name_as_written": "Gabriele Moretto",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Gabriele Moretto (Officina della Salsa)"
-    },
-    {
-     "name_as_written": "Gardenio & Giovanna",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Gardenio & Giovanna"
-    },
-    {
-     "name_as_written": "Giacomo & Sarah",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Giacomo & Sarah"
-    },
-    {
-     "name_as_written": "Ginga Latina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Ginga Latina"
-    },
-    {
-     "name_as_written": "Paolo Mei & Kiaraibica",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Paolo Mei & Kiaraibica"
-    },
-    {
-     "name_as_written": "Petrax",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Petrax"
-    },
-    {
-     "name_as_written": "Walter & Fabiana",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Walter & Fabiana"
-    },
-    {
-     "name_as_written": "Pietro & Francesca",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Pietro & Francesca"
-    },
-    {
-     "name_as_written": "Rico & Dany",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Rico & Dany (Muevete Dance Academy)"
-    },
-    {
-     "name_as_written": "Stefano Nardi",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Stefano Nardi"
-    },
-    {
-     "name_as_written": "Maurizio & Carmelina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Maurizio & Carmelina"
-    },
-    {
-     "name_as_written": "Mauro & Melissa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Mauro & Melissa"
-    },
-    {
-     "name_as_written": "Giuseppe & Klaudina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Giuseppe & Klaudina"
-    },
-    {
-     "name_as_written": "Giuseppe & Stefania",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Giuseppe & Stefania"
-    },
-    {
-     "name_as_written": "Ibrahim & Denise",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Ibrahim & Denise"
-    },
-    {
-     "name_as_written": "Lorenzo & Noemi",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Lorenzo & Noemi"
-    },
-    {
-     "name_as_written": "Alessandro & Tiziana",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Alessandro & Tiziana"
-    },
-    {
-     "name_as_written": "Archileo & Karen",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Archileo & Karen"
-    },
-    {
-     "name_as_written": "Andrea & Katja",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Andrea & Katja"
-    },
-    {
-     "name_as_written": "Alessandro & Simona",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Alessandro & Simona"
-    },
-    {
-     "name_as_written": "Cristina & Duncan",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Cristina & Duncan"
-    },
-    {
-     "name_as_written": "Daniele & Eleonara",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Daniele & Eleonara"
-    },
-    {
-     "name_as_written": "Beppe & Sabina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Beppe & Sabina"
-    },
-    {
-     "name_as_written": "Alessandro & Lorena",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Alessandro & Lorena (Stella Show Dance)"
-    },
-    {
-     "name_as_written": "Chiara & Leonardo",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Chiara & Leonardo"
-    },
-    {
-     "name_as_written": "Christian & Francesca",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Christian & Francesca"
-    },
-    {
-     "name_as_written": "Angelo Zacaria",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Angelo Zacaria"
-    },
-    {
-     "name_as_written": "Ilenia Ceci",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Ilenia Ceci( Pasion Salsera)"
-    },
-    {
-     "name_as_written": "Fabrizio & Gina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Fabrizio & Gina(Caribe Fusion Dance Marche)"
-    },
-    {
-     "name_as_written": "Damiano & Elisa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Damiano & Elisa (Caribe Fusion Dance Marche)"
-    },
-    {
-     "name_as_written": "Elia Rapanelli",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Elia Rapanelli"
-    },
-    {
-     "name_as_written": "Matteo & Pietra",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Matteo & Pietra"
-    },
-    {
-     "name_as_written": "Sandra Gatti & Francesco NIkpali",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Sandra Gatti & Francesco NIkpali"
-    },
-    {
-     "name_as_written": "Simone Giuliodori",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Simone Giuliodori (Dimension Latina)"
-    },
-    {
-     "name_as_written": "Vanessa Vecchioli",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Vanessa Vecchioli"
-    },
-    {
-     "name_as_written": "Florinda& Simone",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Florinda& Simone"
-    },
-    {
-     "name_as_written": "Daniel Villalobos",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Daniel Villalobos"
-    },
-    {
-     "name_as_written": "Francesca Voconi",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Francesca Voconi (Indipendaza)"
-    },
-    {
-     "name_as_written": "Angela & Alessandro",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Angela & Alessandro (Kizomba Abruzzo)"
-    },
-    {
-     "name_as_written": "Gianni & Manola",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Gianni & Manola(New Fashion Gia.Man dance)"
-    },
-    {
-     "name_as_written": "Kasino Latino",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Kasino Latino"
-    },
-    {
-     "name_as_written": "Alessio Zin",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Alessio Zin"
-    },
-    {
-     "name_as_written": "Bartolomeo Pacca",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Bartolomeo Pacca"
-    },
-    {
-     "name_as_written": "Krissel",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Krissel"
-    },
-    {
-     "name_as_written": "Luca Mazzarini",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Luca Mazzarini(Asso di Cuori)"
-    },
-    {
-     "name_as_written": "Lorenz & Fede Kiz",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Lorenz & Fede Kiz"
-    },
-    {
-     "name_as_written": "Paolo & Chico",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Paolo & Chico"
-    },
-    {
-     "name_as_written": "Simone & Chiara",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Simone & Chiara (Salsa Style)"
-    },
-    {
-     "name_as_written": "Matteo & Diana",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Matteo & Diana (Alma Latina)"
-    },
-    {
-     "name_as_written": "Beppe Candela & Sabina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Beppe Candela & Sabina"
-    },
-    {
-     "name_as_written": "Dino Cotugno",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Dino Cotugno"
-    },
-    {
-     "name_as_written": "Giuseppe Andrea",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Giuseppe Andrea"
-    },
-    {
-     "name_as_written": "Luciano Piri",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Luciano Piri (Latin 4 Ever Academy)"
-    },
-    {
-     "name_as_written": "Francesco Ciccarelli & Alessia Tiberi",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Francesco Ciccarelli & Alessia Tiberi (Alchemy Dance Studio)"
-    },
-    {
-     "name_as_written": "Raffaella Tenneriello",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Raffaella Tenneriello"
-    },
-    {
-     "name_as_written": "Cristina Pierbattista",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Cristina Pierbattista (Cris Dance)"
-    },
-    {
-     "name_as_written": "Lucy & Michael",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Lucy & Michael"
-    },
-    {
-     "name_as_written": "Claudio & Claudia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Claudio & Claudia"
-    },
-    {
-     "name_as_written": "Federica Girotto",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Federica Girotto"
-    },
-    {
-     "name_as_written": "Domenico Cubao",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Domenico Cubao"
-    },
-    {
-     "name_as_written": "Vincenzo & Vittoria",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Vincenzo & Vittoria"
-    },
-    {
-     "name_as_written": "Andrea Casagrande & Eleonora",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Andrea Casagrande & Eleonora"
-    },
-    {
-     "name_as_written": "Luca Ramaccioni",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Luca Ramaccioni"
-    },
-    {
-     "name_as_written": "Omara Lapera",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Omara Lapera"
-    },
-    {
-     "name_as_written": "Gianluca e Tosca",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Gianluca e Tosca"
-    },
-    {
-     "name_as_written": "Massi Barone & Naidi Nascimento",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Massi Barone & Naidi Nascimento"
-    },
-    {
-     "name_as_written": "Leonardo & Sonia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Leonardo & Sonia"
-    },
-    {
-     "name_as_written": "Enzo & Elly",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Enzo & Elly"
-    },
-    {
-     "name_as_written": "Luca & Marianna",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Luca & Marianna"
-    },
-    {
-     "name_as_written": "Eric & Paola",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Eric & Paola"
-    },
-    {
-     "name_as_written": "Mattia & Chiara",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Mattia & Chiara"
-    },
-    {
-     "name_as_written": "Alessandro & Barbara",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Alessandro & Barbara"
-    },
-    {
-     "name_as_written": "Luka Atokiz",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Luka Atokiz"
-    },
-    {
-     "name_as_written": "Graziella & Ivan",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Graziella & Ivan (Kizomba Cesena)"
-    },
-    {
-     "name_as_written": "Fabio & Tizi",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Fabio & Tizi (Kizomba Trento)"
-    },
-    {
-     "name_as_written": "Vincenzo & Giovanna",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Vincenzo & Giovanna"
-    },
-    {
-     "name_as_written": "Roberto Lepore",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Roberto Lepore(R&B Academy)"
-    },
-    {
-     "name_as_written": "Maurizio & Claudia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Maurizio & Claudia (Kizomba Florence)"
-    },
-    {
-     "name_as_written": "Andrea & Katia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Andrea & Katia(AdriaDance)"
-    },
-    {
-     "name_as_written": "Angelo & Chiara",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Angelo & Chiara"
-    },
-    {
-     "name_as_written": "Antonio Prezioso",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Antonio Prezioso"
-    },
-    {
-     "name_as_written": "Tony & Morena",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Tony & Morena"
-    },
-    {
-     "name_as_written": "Carmine & Claudia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Carmine & Claudia"
-    },
-    {
-     "name_as_written": "Max & Marta",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Max & Marta"
-    },
-    {
-     "name_as_written": "Mika Ela",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Mika Ela"
-    },
-    {
-     "name_as_written": "Massimiliano",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Massimiliano"
-    },
-    {
-     "name_as_written": "Marchito & Silvietta",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Marchito & Silvietta"
-    },
-    {
-     "name_as_written": "Sara Santoro",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Sara Santoro"
-    },
-    {
-     "name_as_written": "Alex & Greta",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Alex & Greta"
-    },
-    {
-     "name_as_written": "Giuseppe Monti",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Giuseppe Monti"
-    },
-    {
-     "name_as_written": "Alessandra Aprea",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Alessandra Aprea"
-    },
-    {
-     "name_as_written": "Daniele & Eleonora",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Daniele & Eleonora"
-    },
-    {
-     "name_as_written": "Vincenzo & Ilaria",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Vincenzo & Ilaria"
-    },
-    {
-     "name_as_written": "Mary Hola",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Mary Hola"
-    },
-    {
-     "name_as_written": "Manuel & Jessica",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Manuel & Jessica"
-    },
-    {
-     "name_as_written": "John & Stefania",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "John & Stefania"
-    },
-    {
-     "name_as_written": "Freddy & Marina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Freddy & Marina"
-    },
-    {
-     "name_as_written": "Kizomba Napoletana",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Kizomba Napoletana"
-    },
-    {
-     "name_as_written": "Davide & Pamela",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Davide & Pamela"
-    },
-    {
-     "name_as_written": "Celeste & Giovanna",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Celeste & Giovanna"
-    },
-    {
-     "name_as_written": "Chiara & Chiara",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Chiara & Chiara"
-    },
-    {
-     "name_as_written": "Fabrizio Chiarenza",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Fabrizio Chiarenza"
-    },
-    {
-     "name_as_written": "Ilenia Latin Lovers",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Ilenia Latin Lovers"
-    },
-    {
-     "name_as_written": "Emanuela Ciccarelli",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Emanuela Ciccarelli"
-    },
-    {
-     "name_as_written": "Gloria Fotia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Gloria Fotia"
-    },
-    {
-     "name_as_written": "Federica Lucarelli",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Federica Lucarelli"
-    },
-    {
-     "name_as_written": "Stefano & Cristina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Stefano & Cristina (Caraibica Dance)"
-    },
-    {
-     "name_as_written": "Mata G. & Federica Mendil",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Mata G. & Federica Mendil"
-    },
-    {
-     "name_as_written": "Simone & Florinda",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Simone & Florinda"
-    },
-    {
-     "name_as_written": "Mayuran Kupusamy",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🔥Mayuran Kupusamy"
-    },
-    {
-     "name_as_written": "Giuseppe Sportelli",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🔥Giuseppe Sportelli"
-    },
-    {
-     "name_as_written": "Nando Troccoli",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🔥Nando Troccoli"
-    },
-    {
-     "name_as_written": "Marco Borgognoni",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🔥Marco Borgognoni"
-    },
-    {
-     "name_as_written": "Simone Catani",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🔥Simone Catani"
-    },
-    {
-     "name_as_written": "Domenico Pugliese",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🔥Domenico Pugliese"
-    },
-    {
-     "name_as_written": "Flavio Coletta",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🔥Flavio Coletta"
-    },
-    {
-     "name_as_written": "Diego",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🔥Diego"
-    },
-    {
-     "name_as_written": "GEPPO DJ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️GEPPO DJ"
-    },
-    {
-     "name_as_written": "DJ ALEXIO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️DJ ALEXIO"
-    },
-    {
-     "name_as_written": "DJ BEAR",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸DJ BEAR"
-    },
-    {
-     "name_as_written": "MARC DJ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️MARC DJ"
-    },
-    {
-     "name_as_written": "DJ VILLALOBOS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️DJ VILLALOBOS"
-    },
-    {
-     "name_as_written": "DJ TED",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️DJ TED"
-    },
-    {
-     "name_as_written": "JUANTITO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️JUANTITO"
-    },
-    {
-     "name_as_written": "GIANNI DJ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️GIANNI DJ"
-    },
-    {
-     "name_as_written": "DJ NEKO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸DJ NEKO"
-    },
-    {
-     "name_as_written": "DJ SALVINA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ SALVINA"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "3 days of workshops",
-     "rationale": "The program lists three days of workshops in several dance styles."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "TAXI DANCERS",
-     "rationale": "The description has a TAXI DANCERS section listing dancers who are present."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "5907a8e5d378c7a3",
+ "answer": {
+  "batch": "event-15389",
+  "events": [
+   {
+    "event_id": 15389,
+    "artists": [
+     {
+      "name_as_written": "ISABELLE y FELICIEN",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "ISABELLE y FELICIEN"
+     },
+     {
+      "name_as_written": "NUNO Y NAGYLA",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "NUNO Y NAGYLA"
+     },
+     {
+      "name_as_written": "FERNANDO Y MICHELA",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "FERNANDO Y MICHELA"
+     },
+     {
+      "name_as_written": "YAMI",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "YAMI"
+     },
+     {
+      "name_as_written": "DINARA",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "DINARA"
+     },
+     {
+      "name_as_written": "HENECO",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "HENECO"
+     },
+     {
+      "name_as_written": "BONIFACIO AURIO",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "BONIFACIO AURIO"
+     },
+     {
+      "name_as_written": "KRISTOFER MENCAK",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "KRISTOFER MENCAK"
+     },
+     {
+      "name_as_written": "FRANCIS & LUCY",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "FRANCIS & LUCY"
+     },
+     {
+      "name_as_written": "GUGU RICCI",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "GUGU RICCI"
+     },
+     {
+      "name_as_written": "MIRKO SPANO",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "MIRKO SPANO"
+     },
+     {
+      "name_as_written": "SARA IACOBACCI",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "SARA IACOBACCI"
+     },
+     {
+      "name_as_written": "VATHA & ELENA",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "VATHA & ELENA"
+     },
+     {
+      "name_as_written": "SIMONE & JENNIFER",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "SIMONE & JENNIFER"
+     },
+     {
+      "name_as_written": "SARTORIS Y NOEMI",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "SARTORIS Y NOEMI"
+     },
+     {
+      "name_as_written": "NACHO Y SILVIA",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "NACHO Y SILVIA"
+     },
+     {
+      "name_as_written": "RICCARDO & SILVIA",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "RICCARDO & SILVIA"
+     },
+     {
+      "name_as_written": "LUISMI Y MARIANGELA",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "LUISMI Y MARIANGELA"
+     },
+     {
+      "name_as_written": "ANDY & SILVIA",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "ANDY & SILVIA"
+     },
+     {
+      "name_as_written": "AZAEL SALAZAR",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "AZAEL SALAZAR"
+     },
+     {
+      "name_as_written": "VINCENZO Y DALILA",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "VINCENZO Y DALILA"
+     },
+     {
+      "name_as_written": "SIMONA BUONANNO",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "SIMONA BUONANNO"
+     },
+     {
+      "name_as_written": "GUILLERMO & LEILEN",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "GUILLERMO & LEILEN"
+     },
+     {
+      "name_as_written": "JOTA Y SELIRA",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "JOTA Y SELIRA"
+     },
+     {
+      "name_as_written": "LUCA Y MARTA",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "LUCA Y MARTA"
+     },
+     {
+      "name_as_written": "MATTEO Y MARIA",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "MATTEO Y MARIA"
+     },
+     {
+      "name_as_written": "DANIEL Y GIADA CHIUSELLI",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "DANIEL Y GIADA CHIUSELLI"
+     },
+     {
+      "name_as_written": "PANAGIOTIS & MYRTO",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "PANAGIOTIS & MYRTO"
+     },
+     {
+      "name_as_written": "PIETRO MINGARELLI & YUSELI",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "PIETRO MINGARELLI & YUSELI"
+     },
+     {
+      "name_as_written": "YUNIEL GUAL",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "YUNIEL GUAL"
+     },
+     {
+      "name_as_written": "ELVIS E SABRINA",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "ELVIS E SABRINA"
+     },
+     {
+      "name_as_written": "SANTIAGO BALDONCINI Y VITTORIA FAINI",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "SANTIAGO BALDONCINI Y VITTORIA FAINI"
+     },
+     {
+      "name_as_written": "BOZZYBRO’",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "BOZZYBRO’"
+     },
+     {
+      "name_as_written": "MANUEL & STEFANO",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "MANUEL & STEFANO"
+     },
+     {
+      "name_as_written": "LORENZO & GINEVRA",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "LORENZO & GINEVRA"
+     },
+     {
+      "name_as_written": "Ciro & Patty",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Ciro & Patty"
+     },
+     {
+      "name_as_written": "Danilo & Fausta",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Danilo & Fausta"
+     },
+     {
+      "name_as_written": "Emiliano & Mara",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Emiliano & Mara"
+     },
+     {
+      "name_as_written": "Flavio & Giulia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Flavio & Giulia"
+     },
+     {
+      "name_as_written": "Stefano e Maura",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Stefano e Maura"
+     },
+     {
+      "name_as_written": "Franco & Daniela",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Franco & Daniela"
+     },
+     {
+      "name_as_written": "Gabriele Moretto",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Gabriele Moretto (Officina della Salsa)"
+     },
+     {
+      "name_as_written": "Gardenio & Giovanna",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Gardenio & Giovanna"
+     },
+     {
+      "name_as_written": "Giacomo & Sarah",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Giacomo & Sarah"
+     },
+     {
+      "name_as_written": "Ginga Latina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Ginga Latina"
+     },
+     {
+      "name_as_written": "Paolo Mei & Kiaraibica",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Paolo Mei & Kiaraibica"
+     },
+     {
+      "name_as_written": "Petrax",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Petrax"
+     },
+     {
+      "name_as_written": "Walter & Fabiana",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Walter & Fabiana"
+     },
+     {
+      "name_as_written": "Pietro & Francesca",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Pietro & Francesca"
+     },
+     {
+      "name_as_written": "Rico & Dany",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Rico & Dany (Muevete Dance Academy)"
+     },
+     {
+      "name_as_written": "Stefano Nardi",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Stefano Nardi"
+     },
+     {
+      "name_as_written": "Maurizio & Carmelina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Maurizio & Carmelina"
+     },
+     {
+      "name_as_written": "Mauro & Melissa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Mauro & Melissa"
+     },
+     {
+      "name_as_written": "Giuseppe & Klaudina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Giuseppe & Klaudina"
+     },
+     {
+      "name_as_written": "Giuseppe & Stefania",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Giuseppe & Stefania"
+     },
+     {
+      "name_as_written": "Ibrahim & Denise",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Ibrahim & Denise"
+     },
+     {
+      "name_as_written": "Lorenzo & Noemi",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Lorenzo & Noemi"
+     },
+     {
+      "name_as_written": "Alessandro & Tiziana",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Alessandro & Tiziana"
+     },
+     {
+      "name_as_written": "Archileo & Karen",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Archileo & Karen"
+     },
+     {
+      "name_as_written": "Andrea & Katja",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Andrea & Katja"
+     },
+     {
+      "name_as_written": "Alessandro & Simona",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Alessandro & Simona"
+     },
+     {
+      "name_as_written": "Cristina & Duncan",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Cristina & Duncan"
+     },
+     {
+      "name_as_written": "Daniele & Eleonara",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Daniele & Eleonara"
+     },
+     {
+      "name_as_written": "Beppe & Sabina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Beppe & Sabina"
+     },
+     {
+      "name_as_written": "Alessandro & Lorena",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Alessandro & Lorena (Stella Show Dance)"
+     },
+     {
+      "name_as_written": "Chiara & Leonardo",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Chiara & Leonardo"
+     },
+     {
+      "name_as_written": "Christian & Francesca",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Christian & Francesca"
+     },
+     {
+      "name_as_written": "Angelo Zacaria",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Angelo Zacaria"
+     },
+     {
+      "name_as_written": "Ilenia Ceci",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Ilenia Ceci( Pasion Salsera)"
+     },
+     {
+      "name_as_written": "Fabrizio & Gina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Fabrizio & Gina(Caribe Fusion Dance Marche)"
+     },
+     {
+      "name_as_written": "Damiano & Elisa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Damiano & Elisa (Caribe Fusion Dance Marche)"
+     },
+     {
+      "name_as_written": "Elia Rapanelli",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Elia Rapanelli"
+     },
+     {
+      "name_as_written": "Matteo & Pietra",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Matteo & Pietra"
+     },
+     {
+      "name_as_written": "Sandra Gatti & Francesco NIkpali",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Sandra Gatti & Francesco NIkpali"
+     },
+     {
+      "name_as_written": "Simone Giuliodori",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Simone Giuliodori (Dimension Latina)"
+     },
+     {
+      "name_as_written": "Vanessa Vecchioli",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Vanessa Vecchioli"
+     },
+     {
+      "name_as_written": "Florinda& Simone",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Florinda& Simone"
+     },
+     {
+      "name_as_written": "Daniel Villalobos",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Daniel Villalobos"
+     },
+     {
+      "name_as_written": "Francesca Voconi",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Francesca Voconi (Indipendaza)"
+     },
+     {
+      "name_as_written": "Angela & Alessandro",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Angela & Alessandro (Kizomba Abruzzo)"
+     },
+     {
+      "name_as_written": "Gianni & Manola",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Gianni & Manola(New Fashion Gia.Man dance)"
+     },
+     {
+      "name_as_written": "Kasino Latino",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Kasino Latino"
+     },
+     {
+      "name_as_written": "Alessio Zin",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Alessio Zin"
+     },
+     {
+      "name_as_written": "Bartolomeo Pacca",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Bartolomeo Pacca"
+     },
+     {
+      "name_as_written": "Krissel",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Krissel"
+     },
+     {
+      "name_as_written": "Luca Mazzarini",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Luca Mazzarini(Asso di Cuori)"
+     },
+     {
+      "name_as_written": "Lorenz & Fede Kiz",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Lorenz & Fede Kiz"
+     },
+     {
+      "name_as_written": "Paolo & Chico",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Paolo & Chico"
+     },
+     {
+      "name_as_written": "Simone & Chiara",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Simone & Chiara (Salsa Style)"
+     },
+     {
+      "name_as_written": "Matteo & Diana",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Matteo & Diana (Alma Latina)"
+     },
+     {
+      "name_as_written": "Beppe Candela & Sabina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Beppe Candela & Sabina"
+     },
+     {
+      "name_as_written": "Dino Cotugno",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Dino Cotugno"
+     },
+     {
+      "name_as_written": "Giuseppe Andrea",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Giuseppe Andrea"
+     },
+     {
+      "name_as_written": "Luciano Piri",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Luciano Piri (Latin 4 Ever Academy)"
+     },
+     {
+      "name_as_written": "Francesco Ciccarelli & Alessia Tiberi",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Francesco Ciccarelli & Alessia Tiberi (Alchemy Dance Studio)"
+     },
+     {
+      "name_as_written": "Raffaella Tenneriello",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Raffaella Tenneriello"
+     },
+     {
+      "name_as_written": "Cristina Pierbattista",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Cristina Pierbattista (Cris Dance)"
+     },
+     {
+      "name_as_written": "Lucy & Michael",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Lucy & Michael"
+     },
+     {
+      "name_as_written": "Claudio & Claudia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Claudio & Claudia"
+     },
+     {
+      "name_as_written": "Federica Girotto",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Federica Girotto"
+     },
+     {
+      "name_as_written": "Domenico Cubao",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Domenico Cubao"
+     },
+     {
+      "name_as_written": "Vincenzo & Vittoria",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Vincenzo & Vittoria"
+     },
+     {
+      "name_as_written": "Andrea Casagrande & Eleonora",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Andrea Casagrande & Eleonora"
+     },
+     {
+      "name_as_written": "Luca Ramaccioni",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Luca Ramaccioni"
+     },
+     {
+      "name_as_written": "Omara Lapera",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Omara Lapera"
+     },
+     {
+      "name_as_written": "Gianluca e Tosca",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Gianluca e Tosca"
+     },
+     {
+      "name_as_written": "Massi Barone & Naidi Nascimento",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Massi Barone & Naidi Nascimento"
+     },
+     {
+      "name_as_written": "Leonardo & Sonia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Leonardo & Sonia"
+     },
+     {
+      "name_as_written": "Enzo & Elly",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Enzo & Elly"
+     },
+     {
+      "name_as_written": "Luca & Marianna",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Luca & Marianna"
+     },
+     {
+      "name_as_written": "Eric & Paola",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Eric & Paola"
+     },
+     {
+      "name_as_written": "Mattia & Chiara",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Mattia & Chiara"
+     },
+     {
+      "name_as_written": "Alessandro & Barbara",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Alessandro & Barbara"
+     },
+     {
+      "name_as_written": "Luka Atokiz",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Luka Atokiz"
+     },
+     {
+      "name_as_written": "Graziella & Ivan",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Graziella & Ivan (Kizomba Cesena)"
+     },
+     {
+      "name_as_written": "Fabio & Tizi",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Fabio & Tizi (Kizomba Trento)"
+     },
+     {
+      "name_as_written": "Vincenzo & Giovanna",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Vincenzo & Giovanna"
+     },
+     {
+      "name_as_written": "Roberto Lepore",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Roberto Lepore(R&B Academy)"
+     },
+     {
+      "name_as_written": "Maurizio & Claudia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Maurizio & Claudia (Kizomba Florence)"
+     },
+     {
+      "name_as_written": "Andrea & Katia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Andrea & Katia(AdriaDance)"
+     },
+     {
+      "name_as_written": "Angelo & Chiara",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Angelo & Chiara"
+     },
+     {
+      "name_as_written": "Antonio Prezioso",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Antonio Prezioso"
+     },
+     {
+      "name_as_written": "Tony & Morena",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Tony & Morena"
+     },
+     {
+      "name_as_written": "Carmine & Claudia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Carmine & Claudia"
+     },
+     {
+      "name_as_written": "Max & Marta",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Max & Marta"
+     },
+     {
+      "name_as_written": "Mika Ela",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Mika Ela"
+     },
+     {
+      "name_as_written": "Massimiliano",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Massimiliano"
+     },
+     {
+      "name_as_written": "Marchito & Silvietta",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Marchito & Silvietta"
+     },
+     {
+      "name_as_written": "Sara Santoro",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Sara Santoro"
+     },
+     {
+      "name_as_written": "Alex & Greta",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Alex & Greta"
+     },
+     {
+      "name_as_written": "Giuseppe Monti",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Giuseppe Monti"
+     },
+     {
+      "name_as_written": "Alessandra Aprea",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Alessandra Aprea"
+     },
+     {
+      "name_as_written": "Daniele & Eleonora",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Daniele & Eleonora"
+     },
+     {
+      "name_as_written": "Vincenzo & Ilaria",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Vincenzo & Ilaria"
+     },
+     {
+      "name_as_written": "Mary Hola",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Mary Hola"
+     },
+     {
+      "name_as_written": "Manuel & Jessica",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Manuel & Jessica"
+     },
+     {
+      "name_as_written": "John & Stefania",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "John & Stefania"
+     },
+     {
+      "name_as_written": "Freddy & Marina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Freddy & Marina"
+     },
+     {
+      "name_as_written": "Kizomba Napoletana",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Kizomba Napoletana"
+     },
+     {
+      "name_as_written": "Davide & Pamela",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Davide & Pamela"
+     },
+     {
+      "name_as_written": "Celeste & Giovanna",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Celeste & Giovanna"
+     },
+     {
+      "name_as_written": "Chiara & Chiara",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Chiara & Chiara"
+     },
+     {
+      "name_as_written": "Fabrizio Chiarenza",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Fabrizio Chiarenza"
+     },
+     {
+      "name_as_written": "Ilenia Latin Lovers",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Ilenia Latin Lovers"
+     },
+     {
+      "name_as_written": "Emanuela Ciccarelli",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Emanuela Ciccarelli"
+     },
+     {
+      "name_as_written": "Gloria Fotia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Gloria Fotia"
+     },
+     {
+      "name_as_written": "Federica Lucarelli",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Federica Lucarelli"
+     },
+     {
+      "name_as_written": "Stefano & Cristina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Stefano & Cristina (Caraibica Dance)"
+     },
+     {
+      "name_as_written": "Mata G. & Federica Mendil",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Mata G. & Federica Mendil"
+     },
+     {
+      "name_as_written": "Simone & Florinda",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Simone & Florinda"
+     },
+     {
+      "name_as_written": "Mayuran Kupusamy",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🔥Mayuran Kupusamy"
+     },
+     {
+      "name_as_written": "Giuseppe Sportelli",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🔥Giuseppe Sportelli"
+     },
+     {
+      "name_as_written": "Nando Troccoli",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🔥Nando Troccoli"
+     },
+     {
+      "name_as_written": "Marco Borgognoni",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🔥Marco Borgognoni"
+     },
+     {
+      "name_as_written": "Simone Catani",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🔥Simone Catani"
+     },
+     {
+      "name_as_written": "Domenico Pugliese",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🔥Domenico Pugliese"
+     },
+     {
+      "name_as_written": "Flavio Coletta",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🔥Flavio Coletta"
+     },
+     {
+      "name_as_written": "Diego",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🔥Diego"
+     },
+     {
+      "name_as_written": "GEPPO DJ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️GEPPO DJ"
+     },
+     {
+      "name_as_written": "DJ ALEXIO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️DJ ALEXIO"
+     },
+     {
+      "name_as_written": "DJ BEAR",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸DJ BEAR"
+     },
+     {
+      "name_as_written": "MARC DJ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️MARC DJ"
+     },
+     {
+      "name_as_written": "DJ VILLALOBOS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️DJ VILLALOBOS"
+     },
+     {
+      "name_as_written": "DJ TED",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️DJ TED"
+     },
+     {
+      "name_as_written": "JUANTITO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️JUANTITO"
+     },
+     {
+      "name_as_written": "GIANNI DJ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️GIANNI DJ"
+     },
+     {
+      "name_as_written": "DJ NEKO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸DJ NEKO"
+     },
+     {
+      "name_as_written": "DJ SALVINA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸DJ SALVINA"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "3 days of workshops",
+      "rationale": "The program lists three days of workshops in several dance styles."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "TAXI DANCERS",
+      "rationale": "A section heading announces taxi dancers, and a list of named taxi dancers follows."
+     }
+    ]
+   }
+  ]
+ }
 }

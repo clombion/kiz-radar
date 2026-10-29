@@ -1,0 +1,13 @@
+{
+ "key_a": "p:konstantinos@katerina+konstantinos",
+ "key_b": "p:konstantinos@konstantinos+zoe",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c29d1ed4f0b21bb4",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the bare first name Konstantinos in Greece with no event mentions listed, and their partners differ (Katerina on A, Zoe on B), so the only shared evidence is a common first name and country, which is too weak to join two event histories."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:elena@elena+zerui",
+ "key_b": "p:elena@elena+zerui",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6a6d0a4bb45882cd",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The pair is one key with itself, so the evidence is just the bare first name 'Elena' stated with four unrelated countries (CH, CV, PT, UA) and no event, partner, or style linking them; a common first name across widely spread countries points to several people sharing a name rather than one artist, so they should be kept apart."
+ }
+}

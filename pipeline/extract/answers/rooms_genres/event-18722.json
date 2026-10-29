@@ -1,34 +1,36 @@
 {
- "batch": "event-18722",
- "events": [
-  {
-   "event_id": 18722,
-   "party_rooms": {
-    "count": 2,
-    "quote": "4 NIGHT PARTIES- 2 rooms"
-   },
-   "class_rooms": {
-    "count": 2,
-    "quote": "WORKSHOPS- 2 rooms"
-   },
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "quote": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔 – 𝗨𝗥𝗕𝗔𝗡𝗞𝗜𝗭"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "8f9e3aa8c26f8ca3",
+ "answer": {
+  "batch": "event-18722",
+  "events": [
+   {
+    "event_id": 18722,
+    "party_rooms": {
+     "count": 2,
+     "quote": "4 NIGHT PARTIES- 2 rooms"
     },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "𝗨𝗥𝗕𝗔𝗡𝗞𝗜𝗭",
-     "quote": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔 – 𝗨𝗥𝗕𝗔𝗡𝗞𝗜𝗭"
+    "class_rooms": {
+     "count": 2,
+     "quote": "WORKSHOPS- 2 rooms"
     },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "TarraxoPop",
-     "quote": "Jules & Yuna TarraxoPop 🇫🇷"
-    }
-   ]
-  }
- ]
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "quote": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔 – 𝗨𝗥𝗕𝗔𝗡𝗞𝗜𝗭"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "𝗨𝗥𝗕𝗔𝗡𝗞𝗜𝗭",
+      "quote": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔 – 𝗨𝗥𝗕𝗔𝗡𝗞𝗜𝗭"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,49 +1,56 @@
 {
- "batch": "event-16713",
- "events": [
-  {
-   "event_id": 16713,
-   "artists": [
-    {
-     "name_as_written": "Dj Jérémie",
-     "role": "dj",
-     "style": null,
-     "country": "Fr",
-     "source_line": "🎧Dj Jérémie (Fr)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_levels_beginners",
-     "quote": "FREE OPEN LEVEL WORKSHOPS",
-     "rationale": "Open-level workshops are explicitly free and open to all levels, so they suit beginners."
-    },
-    {
-     "feature": "workshops",
-     "quote": "WORKSHOPS/ATELIERS SCHEDULE",
-     "rationale": "The description includes a workshop schedule, so dance classes are part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "SPECIAL FESTIVAL WITH 5 AREAS",
-     "rationale": "Five separate dance areas indicate more than one dance floor."
-    },
-    {
-     "feature": "shows",
-     "quote": "23:45 SHOWTIME",
-     "rationale": "A showtime is scheduled in the Friday evening programme, indicating performances."
-    },
-    {
-     "feature": "after_party",
-     "quote": "AFTER PARTY",
-     "rationale": "The Saturday evening programme lists an after party."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "HOTELS :",
-     "rationale": "The description lists recommended hotels with links, separate from the pass price."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b143e21c05866d06",
+ "answer": {
+  "batch": "event-16713",
+  "events": [
+   {
+    "event_id": 16713,
+    "artists": [
+     {
+      "name_as_written": "Dj Jérémie",
+      "role": "dj",
+      "style": "SALSA/MAMBO",
+      "country": "Fr",
+      "source_line": "🎧Dj Jérémie (Fr)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "WORKSHOPS/ATELIERS SCHEDULE",
+      "rationale": "The event lists a workshop schedule, so dance classes are part of the event."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "FREE OPEN LEVEL WORKSHOPS",
+      "rationale": "Open level workshops are offered, which suits dancers of all levels."
+     },
+     {
+      "feature": "after_party",
+      "quote": "AFTER PARTY",
+      "rationale": "An after party is listed in the Saturday programme."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "SPECIAL FESTIVAL WITH 5 AREAS",
+      "rationale": "The festival has five dance areas, so more than one dance floor is available."
+     },
+     {
+      "feature": "shows",
+      "quote": "23:45 SHOWTIME",
+      "rationale": "A showtime is scheduled in the Friday programme, meaning performances by artists."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "https://www.gosset.be/en",
+      "rationale": "A hotel section links to recommended hotels, though accommodation is not part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

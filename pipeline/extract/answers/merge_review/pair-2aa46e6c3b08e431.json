@@ -1,0 +1,13 @@
+{
+ "key_a": "p:michaeldaimon",
+ "key_b": "p:michaeldiamon",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:01+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2aa46e6c3b08e431",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The names differ by one letter ('Daimon' vs 'Diamon') and side A's stated countries (NL, SR) overlap with side B's (NL), but side A has no partners and its only event is in Poland while side B's is in Sweden, so the evidence does not settle whether this is one artist or a spelling variant of two people."
+ }
+}

@@ -1,36 +1,68 @@
 {
- "batch": "event-14911",
- "events": [
-  {
-   "event_id": 14911,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 party Room : Salsa, Bachata and Kizomba"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "fb7d7c57e27a68d0",
+ "answer": {
+  "batch": "event-14911",
+  "events": [
+   {
+    "event_id": 14911,
+    "party_rooms": {
+     "count": 3,
      "quote": "3 party Room : Salsa, Bachata and Kizomba"
     },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "3 party Room : Salsa, Bachata and Kizomba"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "3 party Room : Salsa, Bachata and Kizomba"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "ZOUK BRESILEN",
-     "quote": "ZOUK BRESILEN"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "3 party Room : Salsa, Bachata and Kizomba"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "3 party Room : Salsa, Bachata and Kizomba"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "3 party Room : Salsa, Bachata and Kizomba"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "💯BACHATA 💯"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "💯KIZOMBA 💯"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "SALSA",
+      "quote": "💯SALSA 💯"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "ZOUK BRESILEN",
+      "quote": "💯ZOUK BRESILEN 💯"
+     }
+    ]
+   }
+  ]
+ }
 }

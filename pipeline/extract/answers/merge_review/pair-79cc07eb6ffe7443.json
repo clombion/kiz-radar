@@ -1,0 +1,13 @@
+{
+ "key_a": "p:edwinrodrigues",
+ "key_b": "p:edwinrodriguez",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "79cc07eb6ffe7443",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both names are near-identical spellings (Rodrigues/Rodriguez) and both appear as teachers at United Kingdom events with salsa styles, but side A has no stated country and no partners, and side B's Mexican flag is not matched by any evidence on side A, so the evidence does not settle whether they are one person."
+ }
+}

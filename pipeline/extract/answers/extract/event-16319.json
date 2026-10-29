@@ -1,109 +1,116 @@
 {
- "batch": "event-16319",
- "events": [
-  {
-   "event_id": 16319,
-   "artists": [
-    {
-     "name_as_written": "MARC & MARILYN",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "MARC & MARILYN"
-    },
-    {
-     "name_as_written": "MOZART & LAURE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "MOZART & LAURE"
-    },
-    {
-     "name_as_written": "DADY & MANUELA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "DADY & MANUELA"
-    },
-    {
-     "name_as_written": "PHILLYP & SOPHIE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "PHILLYP & SOPHIE"
-    },
-    {
-     "name_as_written": "ALAIN & KATERINA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "ALAIN & KATERINA"
-    },
-    {
-     "name_as_written": "DJ IBRA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ IBRA"
-    },
-    {
-     "name_as_written": "DJ NAOMI",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ NAOMI"
-    },
-    {
-     "name_as_written": "DJ SOLIN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ SOLIN"
-    },
-    {
-     "name_as_written": "DJ SALVA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ SALVA"
-    },
-    {
-     "name_as_written": "DJ ENDRICK",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ ENDRICK"
-    },
-    {
-     "name_as_written": "Angoulême Salsa & Pica Danse",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Angoulême Salsa & Pica Danse"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Whether you’re a beginner or already experienced",
-     "rationale": "The text explicitly says the festival is for beginners as well as experienced dancers."
-    },
-    {
-     "feature": "workshops",
-     "quote": "+ 15 hours of classes",
-     "rationale": "The program offers 15 hours of dance classes as part of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "Saturday evening shows",
-     "rationale": "The program lists shows on Saturday evening."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "1 Room: Kizomba, Semba & Konpa",
-     "rationale": "The evenings have two separate rooms, one of which is named here alongside a Salsa & Bachata room."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d3951812e5466943",
+ "answer": {
+  "batch": "event-16319",
+  "events": [
+   {
+    "event_id": 16319,
+    "artists": [
+     {
+      "name_as_written": "MARC & MARILYN",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "MARC & MARILYN"
+     },
+     {
+      "name_as_written": "MOZART & LAURE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "MOZART & LAURE"
+     },
+     {
+      "name_as_written": "DADY & MANUELA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "DADY & MANUELA"
+     },
+     {
+      "name_as_written": "PHILLYP & SOPHIE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "PHILLYP & SOPHIE"
+     },
+     {
+      "name_as_written": "ALAIN & KATERINA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "ALAIN & KATERINA"
+     },
+     {
+      "name_as_written": "DJ IBRA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ IBRA"
+     },
+     {
+      "name_as_written": "DJ NAOMI",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ NAOMI"
+     },
+     {
+      "name_as_written": "DJ SOLIN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ SOLIN"
+     },
+     {
+      "name_as_written": "DJ SALVA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ SALVA"
+     },
+     {
+      "name_as_written": "DJ ENDRICK",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ ENDRICK"
+     },
+     {
+      "name_as_written": "Angoulême Salsa & Pica Danse",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Angoulême Salsa & Pica Danse"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Whether you’re a beginner or already experienced",
+      "rationale": "The description explicitly says the festival is for beginners as well as experienced dancers."
+     },
+     {
+      "feature": "workshops",
+      "quote": "+ 15 hours of classes",
+      "rationale": "The festival includes 15 hours of dance classes."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "1 Room: Salsa & Bachata",
+      "rationale": "The evenings have more than one dance room, each with its own style."
+     },
+     {
+      "feature": "shows",
+      "quote": "Saturday evening shows",
+      "rationale": "The festival includes shows by artists on Saturday evening."
+     }
+    ]
+   }
+  ]
+ }
 }

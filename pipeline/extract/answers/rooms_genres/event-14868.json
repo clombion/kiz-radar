@@ -1,88 +1,95 @@
 {
- "batch": "event-14868",
- "events": [
-  {
-   "event_id": 14868,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "ROOM 1",
-     "kind": "unspecified",
-     "genres": [
-      "urbankiz",
-      "tarraxo",
-      "tarraxinha",
-      "douceur",
-      "zouk",
-      "afro"
-     ],
-     "quote": "ROOM 1 : Urban kiz, Tarraxo, Tarraxinha, Douceur, GhettoZouk, Afrobeat"
-    },
-    {
-     "name_as_written": "ROOM 2",
-     "kind": "unspecified",
-     "genres": [
-      "kizomba",
-      "semba",
-      "other",
-      "kompa"
-     ],
-     "quote": "ROOM 2 : KIZOMBA KCMA, Semba, Cabo love, and Kompa"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "5 DAYS Kizomba, Semba, Urban Kiz, Tarraxo, Douceur et Afro House"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba, Semba, Urban Kiz, Tarraxo, Cabo love and Douceur"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Semba, Urban Kiz, Tarraxo"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Tarraxo, Cabo love and Douceur"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Tarraxo, Tarraxinha, Douceur"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "Cabo love and Douceur"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro House",
-     "quote": "Douceur et Afro House"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cabo love",
-     "quote": "Tarraxo, Cabo love and Douceur"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "GhettoZouk",
-     "quote": "GhettoZouk, Afrobeat"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "and Kompa"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "81e93a2bd30308e4",
+ "answer": {
+  "batch": "event-14868",
+  "events": [
+   {
+    "event_id": 14868,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "ROOM 1",
+      "kind": "unspecified",
+      "genres": [
+       "urbankiz",
+       "tarraxo",
+       "tarraxinha",
+       "douceur",
+       "zouk",
+       "afro"
+      ],
+      "quote": "ROOM 1 : Urban kiz, Tarraxo, Tarraxinha, Douceur, GhettoZouk, Afrobeat"
+     },
+     {
+      "name_as_written": "ROOM 2",
+      "kind": "unspecified",
+      "genres": [
+       "kizomba",
+       "semba",
+       "other",
+       "kompa"
+      ],
+      "quote": "ROOM 2 : KIZOMBA KCMA, Semba, Cabo love, and Kompa"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "AMONG THE BEST FRENCH KIZOMBA FESTIVAL"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "paradise of Kizomba, Semba, Urban kiz"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban kiz",
+      "quote": "Semba, Urban kiz, Tarraxo"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Urban kiz, Tarraxo, Cabo love and Douceur"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Tarraxo, Tarraxinha, Douceur"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "Cabo love and Douceur"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cabo love",
+      "quote": "Cabo love and Douceur"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "Semba, Cabo love, and Kompa"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro House",
+      "quote": "Douceur et Afro House"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "GhettoZouk",
+      "quote": "Douceur, GhettoZouk, Afrobeat"
+     }
+    ]
+   }
+  ]
+ }
 }

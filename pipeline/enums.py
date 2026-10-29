@@ -33,7 +33,6 @@ type Point = Literal[
     'home_basis',
     'merge_decision',
     'merge_reason',
-    'pending',
     'suggestion_countries',
     'suggestion_calendar',
     'via',
@@ -168,6 +167,7 @@ class FirstRead(StrEnum):
     CURRENT = 'current'
     REDO_PROMPT = 'redo_prompt'
     REDO_DESCRIPTION = 'redo_description'
+    REDO_FESTIVAL = 'redo_festival'
     REDO_PAGE = 'redo_page'
     REDO_UNREAD = 'redo_unread'
     DISPUTED = 'disputed'
@@ -369,14 +369,6 @@ class MergeReason(StrEnum):
     SIMILAR_SPELLING = 'similar spelling'
     SINGLE_NAME__SEVERAL_COUNTRIES = 'single name, several countries'
     COUPLES_WITH_MATCHING_NAMES = 'couples with matching names'
-
-
-@unique
-class Pending(StrEnum):
-    """the pending states"""
-
-    NEW = 'new'
-    DESCRIPTION_CHANGED = 'description changed'
 
 
 @unique

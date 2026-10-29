@@ -1,0 +1,13 @@
+{
+ "key_a": "p:david@christina+david",
+ "key_b": "p:daviddasilva",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c39b6cd2b4b5f4c9",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the partner Christina (couples christina+david and christina+daviddasilva), both have events in France, and the short form 'David' matches 'David Da Silva' with that same partner, with no evidence that two separate Davids appear at the same event."
+ }
+}

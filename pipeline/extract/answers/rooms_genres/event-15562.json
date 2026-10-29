@@ -1,38 +1,45 @@
 {
- "batch": "event-15562",
- "events": [
-  {
-   "event_id": 15562,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "kizomba",
-     "quote": "20 hours of workshop: kizomba, semba, urban kiz, fusion, tarraxo, afrohouse, body control"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "semba",
-     "quote": "20 hours of workshop: kizomba, semba, urban kiz, fusion, tarraxo, afrohouse, body control"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "urban kiz",
-     "quote": "20 hours of workshop: kizomba, semba, urban kiz, fusion, tarraxo, afrohouse, body control"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "tarraxo",
-     "quote": "20 hours of workshop: kizomba, semba, urban kiz, fusion, tarraxo, afrohouse, body control"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "afrohouse",
-     "quote": "20 hours of workshop: kizomba, semba, urban kiz, fusion, tarraxo, afrohouse, body control"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "17ee124ff055e22f",
+ "answer": {
+  "batch": "event-15562",
+  "events": [
+   {
+    "event_id": 15562,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "kizomba",
+      "quote": "20 hours of workshop: kizomba, semba, urban kiz, fusion, tarraxo, afrohouse, body control."
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "semba",
+      "quote": "20 hours of workshop: kizomba, semba, urban kiz, fusion, tarraxo, afrohouse, body control."
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "urban kiz",
+      "quote": "20 hours of workshop: kizomba, semba, urban kiz, fusion, tarraxo, afrohouse, body control."
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "tarraxo",
+      "quote": "20 hours of workshop: kizomba, semba, urban kiz, fusion, tarraxo, afrohouse, body control."
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "afrohouse",
+      "quote": "20 hours of workshop: kizomba, semba, urban kiz, fusion, tarraxo, afrohouse, body control."
+     }
+    ]
+   }
+  ]
+ }
 }

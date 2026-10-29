@@ -1,0 +1,13 @@
+{
+ "key_a": "p:guylene@guylene+joel",
+ "key_b": "p:guylene@guylene+joel",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e227ef974b6961ee",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The key is paired with itself, the mention lists are empty, and the only evidence is the stated countries FR and MF, which is not enough to tell whether one artist works across both or several people share the name."
+ }
+}

@@ -1,31 +1,38 @@
 {
- "batch": "event-14667",
- "events": [
-  {
-   "event_id": 14667,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 DANCEFLOORS ( BACHATA – KIZOMBA – SALSA)"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "CONFIRMED BACHATA ARTISTS"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "742f9d54f91aa021",
+ "answer": {
+  "batch": "event-14667",
+  "events": [
+   {
+    "event_id": 14667,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 DANCEFLOORS ( BACHATA – KIZOMBA – SALSA)"
     },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "CONFIRMED KIZOMBA ARTISTS"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "CONFIRMED SALSA ARTISTS"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "3 DANCEFLOORS ( BACHATA – KIZOMBA – SALSA)"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "3 DANCEFLOORS ( BACHATA – KIZOMBA – SALSA)"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "SALSA",
+      "quote": "3 DANCEFLOORS ( BACHATA – KIZOMBA – SALSA)"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:franck@franck+laure",
+ "key_b": "p:francksalsahora",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "274864bf18a53c00",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side A is the first name 'Franck' and side B is the full name 'Franck Salsahora', both with events in France and the same partner, Laure, which matches the guidance that a first name and full name sharing a partner and country are normally one artist; side A has no listed mentions, so this rests on the partner link alone."
+ }
+}

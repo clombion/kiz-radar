@@ -1,0 +1,13 @@
+{
+ "key_a": "p:monica@dance",
+ "key_b": "p:monica@jorelle+monica",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7167e2cc1de08694",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are 'Monica' with Canada as the only stated country, but 'Monica' is a common first name, side A has no partner to compare against side B's partner Jorelle, and side B lists no mentions, so the evidence does not settle whether they are one artist."
+ }
+}

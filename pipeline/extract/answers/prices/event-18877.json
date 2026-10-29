@@ -1,99 +1,112 @@
 {
- "batch": "event-18877",
- "events": [
-  {
-   "event_id": 18877,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 75.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 30,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "Super Early bird Full Pass= £75 — only 30 passes available – Sold out"
-      },
-      {
-       "amount": 85.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": "2026-06-15",
-       "until": "2026-06-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Early Bird Full Pass= £85 — 15th June – 30th June 2026"
-      },
-      {
-       "amount": 95.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": "2026-07-01",
-       "until": "2026-08-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Super Advanced Full Pass= £95 — 1st July – 31st August 2026"
-      },
-      {
-       "amount": 105.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": "2026-09-01",
-       "until": "2026-12-10",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Advanced Full Pass= £105 — 1st September – 10th December 2026"
-      },
-      {
-       "amount": 115.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": "2026-12-11",
-       "until": "2027-02-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Last Minute Full Pass=£115 — 11th December 2026 – 15th February 2027"
-      },
-      {
-       "amount": 130.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": "2027-02-16",
-       "until": "2027-02-26",
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "Door Price = £130 — 16th February – 26th February 2027"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:46:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "3154342dce30a52f",
+ "answer": {
+  "batch": "event-18877",
+  "events": [
+   {
+    "event_id": 18877,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 75.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 30,
+         "current": false
+        },
+        "sold_out": true,
+        "quote": "Super Early bird Full Pass= £75 — only 30 passes available – Sold out"
+       },
+       {
+        "amount": 85.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2026-06-15",
+         "until": "2026-06-30",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Early Bird Full Pass= £85 — 15th June – 30th June 2026"
+       },
+       {
+        "amount": 95.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2026-07-01",
+         "until": "2026-08-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Super Advanced Full Pass= £95 — 1st July – 31st August 2026"
+       },
+       {
+        "amount": 105.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2026-09-01",
+         "until": "2026-12-10",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Advanced Full Pass= £105 — 1st September – 10th December 2026"
+       },
+       {
+        "amount": 115.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2026-12-11",
+         "until": "2027-02-15",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Last Minute Full Pass=£115 — 11th December 2026 – 15th February 2027"
+       },
+       {
+        "amount": 130.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2027-02-16",
+         "until": "2027-02-26",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Door Price = £130 — 16th February – 26th February 2027"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

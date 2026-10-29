@@ -1,0 +1,13 @@
+{
+ "key_a": "p:maria@dance",
+ "key_b": "p:marina@adrian+marina",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "86ddba92fa474afc",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Maria and Marina differ by one letter with no shared partner, event, or distinctive name linking them; the only common evidence is the same country (Romania) and a common first name, which is weak, while Marina is partnered with Adrian and Maria is not, so the one-letter-apart rule applies."
+ }
+}

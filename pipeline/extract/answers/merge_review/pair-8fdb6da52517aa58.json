@@ -1,0 +1,13 @@
+{
+ "key_a": "p:virgil@juneline+virgil",
+ "key_b": "p:virgile@juneline+virgile",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8fdb6da52517aa58",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records share the same partner (juneline), the names are a short and full/language form of one another (Virgil / Virgile), and both have events in the Netherlands, with no mention showing two separate people at the same event."
+ }
+}

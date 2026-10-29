@@ -1,58 +1,60 @@
 {
- "batch": "event-16191",
- "events": [
-  {
-   "event_id": 16191,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Cuban Salsa",
-     "quote": "Cuban Salsa/Rueda de Casino"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Puerto Rican Salsa",
-     "quote": "Puerto Rican Salsa"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata (all styles)",
-     "quote": "Bachata (all styles)"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba/Semba"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba/Semba"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Brazilian Zouk",
-     "quote": "Brazilian Zouk"
-    },
-    {
-     "genre": "reggaeton",
-     "genre_as_written": "Reggaeton",
-     "quote": "Reggaeton"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Lady Styling",
-     "quote": "Lady Styling"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Heels/Elgo",
-     "quote": "Heels/Elgo"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "4aa26bd17e65d311",
+ "answer": {
+  "batch": "event-16191",
+  "events": [
+   {
+    "event_id": 16191,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Cuban Salsa/Rueda de Casino",
+      "quote": "Cuban Salsa/Rueda de Casino"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata (all styles)"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba/Semba",
+      "quote": "Kizomba/Semba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Kizomba/Semba",
+      "quote": "Kizomba/Semba"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Brazilian Zouk",
+      "quote": "Brazilian Zouk"
+     },
+     {
+      "genre": "reggaeton",
+      "genre_as_written": "Reggaeton",
+      "quote": "Reggaeton"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Lady Styling",
+      "quote": "Lady Styling"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Heels/Elgo",
+      "quote": "Heels/Elgo"
+     }
+    ]
+   }
+  ]
+ }
 }

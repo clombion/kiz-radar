@@ -1,0 +1,13 @@
+{
+ "key_a": "p:maryjay",
+ "key_b": "p:maryjay@alexvunda+maryjay",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "60ba9f1b5e4ce09d",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the same partner (alexvunda), the same event country (Italy), and essentially the same name differing only by a space, so the evidence points to one artist; side B has no stated countries, but the shared partner and event location are strong enough to merge."
+ }
+}

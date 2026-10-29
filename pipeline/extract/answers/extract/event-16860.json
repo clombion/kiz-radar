@@ -1,156 +1,163 @@
 {
- "batch": "event-16860",
- "events": [
-  {
-   "event_id": 16860,
-   "artists": [
-    {
-     "name_as_written": "DJ BARTEF",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇱",
-     "source_line": "◾️ DJ BARTEF 🇵🇱"
-    },
-    {
-     "name_as_written": "DJ NURLIVING",
-     "role": "dj",
-     "style": null,
-     "country": "🇰🇬",
-     "source_line": "◾️ DJ NURLIVING 🇰🇬"
-    },
-    {
-     "name_as_written": "DJ PLOY",
-     "role": "dj",
-     "style": null,
-     "country": "🇹🇭",
-     "source_line": "◾️ DJ PLOY 🇹🇭"
-    },
-    {
-     "name_as_written": "DJ SMITH",
-     "role": "dj",
-     "style": null,
-     "country": "🇯🇵",
-     "source_line": "◾️ DJ SMITH 🇯🇵"
-    },
-    {
-     "name_as_written": "DJ SELVA",
-     "role": "dj",
-     "style": null,
-     "country": "🇲🇾",
-     "source_line": "◾️ DJ SELVA 🇲🇾"
-    },
-    {
-     "name_as_written": "JESUS & ANNI",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "◾️ JESUS & ANNI 🇪🇸"
-    },
-    {
-     "name_as_written": "VAL’R & SARA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷 🇫🇷",
-     "source_line": "◾️ VAL’R & SARA 🇫🇷 🇫🇷"
-    },
-    {
-     "name_as_written": "ULAN & MARZHAN",
-     "role": "teacher",
-     "style": null,
-     "country": "🇰🇿",
-     "source_line": "◾️ ULAN & MARZHAN 🇰🇿"
-    },
-    {
-     "name_as_written": "DAVID & QUINN",
-     "role": "teacher",
-     "style": null,
-     "country": "🇿🇦 🇹🇭",
-     "source_line": "◾️ DAVID & QUINN 🇿🇦 🇹🇭"
-    },
-    {
-     "name_as_written": "DADIÉ SACKO",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "◾️ DADIÉ SACKO 🇫🇷"
-    },
-    {
-     "name_as_written": "MICHAEL & ANIKA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇳🇱 🇸🇷 🇦🇹 🇸🇰",
-     "source_line": "◾️ MICHAEL & ANIKA 🇳🇱 🇸🇷 🇦🇹 🇸🇰"
-    },
-    {
-     "name_as_written": "AXEL & NORA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇪 🇩🇪",
-     "source_line": "◾️ AXEL & NORA 🇪🇪 🇩🇪"
-    },
-    {
-     "name_as_written": "ADHI & IRMA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇩",
-     "source_line": "◾️ ADHI & IRMA 🇮🇩"
-    },
-    {
-     "name_as_written": "ZE BRANCO",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇺",
-     "source_line": "◾️ ZE BRANCO 🇦🇺"
-    },
-    {
-     "name_as_written": "EZRA & CANELA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇭🇰",
-     "source_line": "◾️ EZRA & CANELA 🇭🇰"
-    },
-    {
-     "name_as_written": "CHU",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "◾️ CHU 🇫🇷"
-    },
-    {
-     "name_as_written": "ZIKIMMY",
-     "role": "teacher",
-     "style": null,
-     "country": "🇰🇷",
-     "source_line": "◾️ ZIKIMMY 🇰🇷"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "15+ hrs of workshops",
-     "rationale": "The description lists more than 15 hours of workshops as part of the event."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "6 hrs VIP masterclasses",
-     "rationale": "The description lists VIP masterclasses as part of the programme."
-    },
-    {
-     "feature": "after_party",
-     "quote": "After Party: June 15 @On2 Bar in Seoul",
-     "rationale": "The description announces an after party on June 15 at On2 Bar."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "all under one luxurious roof at JiJiHyang Resort",
-     "rationale": "The parties and workshops take place in the same resort where dancers stay, so the event and accommodation share one venue."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Massive halls with world-class sound & lighting",
-     "rationale": "The plural halls indicate more than one dance room."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "9cf360c2c3ec0e66",
+ "answer": {
+  "batch": "event-16860",
+  "events": [
+   {
+    "event_id": 16860,
+    "artists": [
+     {
+      "name_as_written": "DJ BARTEF",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇱",
+      "source_line": "◾️ DJ BARTEF 🇵🇱"
+     },
+     {
+      "name_as_written": "DJ NURLIVING",
+      "role": "dj",
+      "style": null,
+      "country": "🇰🇬",
+      "source_line": "◾️ DJ NURLIVING 🇰🇬"
+     },
+     {
+      "name_as_written": "DJ PLOY",
+      "role": "dj",
+      "style": null,
+      "country": "🇹🇭",
+      "source_line": "◾️ DJ PLOY 🇹🇭"
+     },
+     {
+      "name_as_written": "DJ SMITH",
+      "role": "dj",
+      "style": null,
+      "country": "🇯🇵",
+      "source_line": "◾️ DJ SMITH 🇯🇵"
+     },
+     {
+      "name_as_written": "DJ SELVA",
+      "role": "dj",
+      "style": null,
+      "country": "🇲🇾",
+      "source_line": "◾️ DJ SELVA 🇲🇾"
+     },
+     {
+      "name_as_written": "JESUS & ANNI",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "◾️ JESUS & ANNI 🇪🇸"
+     },
+     {
+      "name_as_written": "VAL’R & SARA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "◾️ VAL’R & SARA 🇫🇷 🇫🇷"
+     },
+     {
+      "name_as_written": "ULAN & MARZHAN",
+      "role": "teacher",
+      "style": null,
+      "country": "🇰🇿",
+      "source_line": "◾️ ULAN & MARZHAN 🇰🇿"
+     },
+     {
+      "name_as_written": "DAVID & QUINN",
+      "role": "teacher",
+      "style": null,
+      "country": "🇿🇦",
+      "source_line": "◾️ DAVID & QUINN 🇿🇦 🇹🇭"
+     },
+     {
+      "name_as_written": "DADIÉ SACKO",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "◾️ DADIÉ SACKO 🇫🇷"
+     },
+     {
+      "name_as_written": "MICHAEL & ANIKA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "◾️ MICHAEL & ANIKA 🇳🇱 🇸🇷 🇦🇹 🇸🇰"
+     },
+     {
+      "name_as_written": "AXEL & NORA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇪",
+      "source_line": "◾️ AXEL & NORA 🇪🇪 🇩🇪"
+     },
+     {
+      "name_as_written": "ADHI & IRMA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇩",
+      "source_line": "◾️ ADHI & IRMA 🇮🇩"
+     },
+     {
+      "name_as_written": "ZE BRANCO",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇺",
+      "source_line": "◾️ ZE BRANCO 🇦🇺"
+     },
+     {
+      "name_as_written": "EZRA & CANELA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇭🇰",
+      "source_line": "◾️ EZRA & CANELA 🇭🇰"
+     },
+     {
+      "name_as_written": "CHU",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "◾️ CHU 🇫🇷"
+     },
+     {
+      "name_as_written": "ZIKIMMY",
+      "role": "teacher",
+      "style": null,
+      "country": "🇰🇷",
+      "source_line": "◾️ ZIKIMMY 🇰🇷"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "15+ hrs of workshops",
+      "rationale": "The description lists fifteen-plus hours of workshops as part of the four-day event."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "6 hrs VIP masterclasses",
+      "rationale": "The description advertises six hours of VIP masterclasses."
+     },
+     {
+      "feature": "after_party",
+      "quote": "after-party & after party",
+      "rationale": "The description names an after-party, and a June 15 after party at On2 Bar is also listed."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "All in One Venue — Dance. Rest. Connect. Repeat.",
+      "rationale": "The event and the stay are held in one venue, the JiJiHyang resort where dancers stay."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Massive halls with world-class sound & lighting",
+      "rationale": "Plural halls indicate more than one dance room."
+     }
+    ]
+   }
+  ]
+ }
 }

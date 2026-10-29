@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fabriciodozangado",
+ "key_b": "p:fabriziodozangado",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0c9daaee02873371",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side B's only mention is 'Fabrizio dozangado' at a Spain event with a kizomba style, and side A has the same distinctive surname 'do Zangado' taught in Spain with kizomba; the one-letter difference (Fabricio/Fabrizio, a language-style variant of a distinctive stage name) plus the same country context makes this a spelling variant of one artist."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:vicky@prince+vicky",
+ "key_b": "p:vickydelmastro",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "78172dcf7ef6af8d",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Side A is 'Vicky' with stated countries GB, IN and IT, events in the United Kingdom and a partner 'prince', while side B is the full name 'Vicky del Mastro' stated only as Italian with an Italian event and no partners; the only shared element is the first name, and the differing countries and partner point to different people."
+ }
+}

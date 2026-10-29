@@ -1,532 +1,532 @@
 {
- "batch": "event-14594",
- "events": [
-  {
-   "event_id": 14594,
-   "artists": [
-    {
-     "name_as_written": "Terry & Cecile",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": "France",
-     "source_line": "★ Terry & Cecile (France)"
-    },
-    {
-     "name_as_written": "Anichi Perez",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": "Spain",
-     "source_line": "★ Anichi Perez (Spain)"
-    },
-    {
-     "name_as_written": "Jacopo & Linda",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": "Italy",
-     "source_line": "★ Jacopo & Linda (Italy)"
-    },
-    {
-     "name_as_written": "Alain Zambrana",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": "Ger / Cuba",
-     "source_line": "★ Alain Zambrana (Ger / Cuba)"
-    },
-    {
-     "name_as_written": "Edwin Rodrigues",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": null,
-     "source_line": "★ Edwin Rodrigues"
-    },
-    {
-     "name_as_written": "Alicia Avakian",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": null,
-     "source_line": "★ Alicia Avakian – Lebanon"
-    },
-    {
-     "name_as_written": "Jimmy S.A",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": "Dubai/Qatar",
-     "source_line": "★ Jimmy S.A (Dubai/Qatar)"
-    },
-    {
-     "name_as_written": "Moe Flex",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": null,
-     "source_line": "★ Moe Flex"
-    },
-    {
-     "name_as_written": "Mauricio Reyes",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": null,
-     "source_line": "★ Mauricio Reyes"
-    },
-    {
-     "name_as_written": "Fadi K & Cristina Varga",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": null,
-     "source_line": "★ Fadi K & Cristina Varga"
-    },
-    {
-     "name_as_written": "Dani K & Sarah Louise",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": null,
-     "source_line": "★ Dani K & Sarah Louise"
-    },
-    {
-     "name_as_written": "Tamba Hissirou",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": null,
-     "source_line": "★ Tamba Hissirou"
-    },
-    {
-     "name_as_written": "Kat & Eddie",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": null,
-     "source_line": "★ Kat & Eddie"
-    },
-    {
-     "name_as_written": "Ang Sin",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": null,
-     "source_line": "★ Ang Sin"
-    },
-    {
-     "name_as_written": "Rasa Pauzaite",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": null,
-     "source_line": "★ Rasa Pauzaite"
-    },
-    {
-     "name_as_written": "Sasha Phillips",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": null,
-     "source_line": "★ Sasha Phillips"
-    },
-    {
-     "name_as_written": "Sam Mr Sleek",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": null,
-     "source_line": "★ Sam Mr Sleek"
-    },
-    {
-     "name_as_written": "Pierre & Zoe Henry",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": null,
-     "source_line": "★ Pierre & Zoe Henry"
-    },
-    {
-     "name_as_written": "Abu Pachanga",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": null,
-     "source_line": "★ Abu Pachanga"
-    },
-    {
-     "name_as_written": "Magda S",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": null,
-     "source_line": "★ Magda S"
-    },
-    {
-     "name_as_written": "Tomasz Tomacito",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": null,
-     "source_line": "★ Tomasz Tomacito"
-    },
-    {
-     "name_as_written": "RDM",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": null,
-     "source_line": "★ RDM (By Fadi K)"
-    },
-    {
-     "name_as_written": "Ramiro Zapata",
-     "role": "teacher",
-     "style": "SALSA on1, on2, Cuban, Afro & more",
-     "country": null,
-     "source_line": "★ Ramiro Zapata"
-    },
-    {
-     "name_as_written": "Irene Y Tomas",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "Spain",
-     "source_line": "★ Irene Y Tomas (Spain)"
-    },
-    {
-     "name_as_written": "Michael & Myra",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "Leb/Arg",
-     "source_line": "★ Michael & Myra (Leb/Arg)"
-    },
-    {
-     "name_as_written": "Marco Y Vessy",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "Bulgaria",
-     "source_line": "★ Marco Y Vessy (Bulgaria)"
-    },
-    {
-     "name_as_written": "Spyridoula",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": "Corfu",
-     "source_line": "★ Spyridoula (Corfu)"
-    },
-    {
-     "name_as_written": "Pierre Henry",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "★ Pierre Henry"
-    },
-    {
-     "name_as_written": "Julian Mr M",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "★ Julian Mr M"
-    },
-    {
-     "name_as_written": "Peynao Er Bachatero",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "★ Peynao Er Bachatero"
-    },
-    {
-     "name_as_written": "Daniel Carbonero",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "★ Daniel Carbonero"
-    },
-    {
-     "name_as_written": "Daniel Chong",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "★ Daniel Chong"
-    },
-    {
-     "name_as_written": "Richard Vooght",
-     "role": "teacher",
-     "style": "KIZOMBA / SEMBA / URBAN KIZ",
-     "country": null,
-     "source_line": "★ Richard Vooght"
-    },
-    {
-     "name_as_written": "DJ Youss",
-     "role": "teacher",
-     "style": "KIZOMBA / SEMBA / URBAN KIZ",
-     "country": "France",
-     "source_line": "★ DJ Youss (France)"
-    },
-    {
-     "name_as_written": "Jeydikson Lima",
-     "role": "teacher",
-     "style": "KIZOMBA / SEMBA / URBAN KIZ",
-     "country": null,
-     "source_line": "★ Jeydikson Lima"
-    },
-    {
-     "name_as_written": "El Ceprino",
-     "role": "teacher",
-     "style": "KIZOMBA / SEMBA / URBAN KIZ",
-     "country": null,
-     "source_line": "★ El Ceprino"
-    },
-    {
-     "name_as_written": "Super Dixon",
-     "role": "teacher",
-     "style": "KIZOMBA / SEMBA / URBAN KIZ",
-     "country": null,
-     "source_line": "★ Super Dixon"
-    },
-    {
-     "name_as_written": "Alvin & Raluca",
-     "role": "teacher",
-     "style": "KIZOMBA / SEMBA / URBAN KIZ",
-     "country": null,
-     "source_line": "★ Alvin & Raluca"
-    },
-    {
-     "name_as_written": "George & Hannah",
-     "role": "teacher",
-     "style": "KIZOMBA / SEMBA / URBAN KIZ",
-     "country": null,
-     "source_line": "★ George & Hannah"
-    },
-    {
-     "name_as_written": "Red Rowan",
-     "role": "teacher",
-     "style": "KIZOMBA / SEMBA / URBAN KIZ",
-     "country": null,
-     "source_line": "★ Red Rowan"
-    },
-    {
-     "name_as_written": "Viola Palmai",
-     "role": "teacher",
-     "style": "KIZOMBA / SEMBA / URBAN KIZ",
-     "country": null,
-     "source_line": "★ Viola Palmai"
-    },
-    {
-     "name_as_written": "Steph Ka",
-     "role": "teacher",
-     "style": "KIZOMBA / SEMBA / URBAN KIZ",
-     "country": null,
-     "source_line": "★ Steph Ka"
-    },
-    {
-     "name_as_written": "Miss Ginga Boo & Elisha",
-     "role": "teacher",
-     "style": "KIZOMBA / SEMBA / URBAN KIZ",
-     "country": null,
-     "source_line": "★ Miss Ginga Boo & Elisha"
-    },
-    {
-     "name_as_written": "Jessica Guastella",
-     "role": "teacher",
-     "style": "REGGAETON / HIPHOP / URBAN / AFROBEAT / AFROHOUSE OTHER STYLES",
-     "country": null,
-     "source_line": "★ Jessica Guastella ( Reggaeton )"
-    },
-    {
-     "name_as_written": "George Christophorou",
-     "role": "teacher",
-     "style": "REGGAETON / HIPHOP / URBAN / AFROBEAT / AFROHOUSE OTHER STYLES",
-     "country": null,
-     "source_line": "★ George Christophorou (Break Dance)"
-    },
-    {
-     "name_as_written": "Dani k",
-     "role": "teacher",
-     "style": "REGGAETON / HIPHOP / URBAN / AFROBEAT / AFROHOUSE OTHER STYLES",
-     "country": null,
-     "source_line": "★ Dani k – Afro Contemporary"
-    },
-    {
-     "name_as_written": "DJ Rumbero",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ Rumbero"
-    },
-    {
-     "name_as_written": "DJ Tuli",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ Tuli – UK"
-    },
-    {
-     "name_as_written": "DJ Julian The Duke",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ Julian The Duke"
-    },
-    {
-     "name_as_written": "DJ Fadi K",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ Fadi K – UK"
-    },
-    {
-     "name_as_written": "DJ Cruz",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ Cruz – UK"
-    },
-    {
-     "name_as_written": "DJ Abu Pachanga",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ Abu Pachanga – UK"
-    },
-    {
-     "name_as_written": "DJ Mauricio Reyes",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ Mauricio Reyes – UK"
-    },
-    {
-     "name_as_written": "DJ Chemist",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ Chemist – UK"
-    },
-    {
-     "name_as_written": "DJ Pierre Henry",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ Pierre Henry – UK"
-    },
-    {
-     "name_as_written": "DJ Julian Mr M",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ Julian Mr M"
-    },
-    {
-     "name_as_written": "DJ Ramiro Zapata",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ Ramiro Zapata – UK"
-    },
-    {
-     "name_as_written": "DJ Daniel Chong",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ Daniel Chong – UK"
-    },
-    {
-     "name_as_written": "DJ Youss",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "★ DJ Youss (France)"
-    },
-    {
-     "name_as_written": "DJ Omar",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ Omar (DJ AfterParty) – UK"
-    },
-    {
-     "name_as_written": "DJ Amine UrbanKiz",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ Amine UrbanKiz"
-    },
-    {
-     "name_as_written": "DJ Massimo",
-     "role": "dj",
-     "style": null,
-     "country": "UK",
-     "source_line": "★ DJ Massimo (UK)"
-    },
-    {
-     "name_as_written": "FKDANCE TEAM",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "FKDANCE TEAM"
-    },
-    {
-     "name_as_written": "FADI K",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "★ FADI K – Director"
-    },
-    {
-     "name_as_written": "CRISTINA VARGA",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "★ CRISTINA VARGA – Lil Boss"
-    },
-    {
-     "name_as_written": "STEPH KA",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "★ STEPH KA – Event Manager"
-    },
-    {
-     "name_as_written": "MARIA BORCILA",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "★ MARIA BORCILA – Floor Manager"
-    },
-    {
-     "name_as_written": "MARIA DAVID",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "★ MARIA DAVID – Event Manager"
-    },
-    {
-     "name_as_written": "ANDI FLORES",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "★ ANDI FLORES – Event Manager"
-    },
-    {
-     "name_as_written": "RASA PAUZAITE",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "★ RASA PAUZAITE – Event Manager"
-    }
-   ],
-   "features": [
-    {
-     "feature": "pre_party",
-     "quote": "Pre- Party at Bar Salsa Soho.",
-     "rationale": "The description announces a pre-party at Bar Salsa Soho."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops in 6 Areas",
-     "rationale": "Workshops are scheduled across six areas on Saturday and Sunday."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Party in 4 Rooms until 3am (officially)",
-     "rationale": "The party takes place in four rooms, so there is more than one dance floor."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Afternoon Social (1/2 rooms)",
-     "rationale": "An afternoon social is scheduled on Saturday."
-    },
-    {
-     "feature": "shows",
-     "quote": "Short break for shows.",
-     "rationale": "The Friday schedule includes a break for shows by artists."
-    },
-    {
-     "feature": "after_party",
-     "quote": "This year we have negotiated 2 after parties for you to continue",
-     "rationale": "Two after parties are arranged for attendees to continue the night."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "a141637813616f6f",
+ "answer": {
+  "batch": "event-14594",
+  "events": [
+   {
+    "event_id": 14594,
+    "artists": [
+     {
+      "name_as_written": "Terry & Cecile",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": "France",
+      "source_line": "★ Terry & Cecile (France)"
+     },
+     {
+      "name_as_written": "Anichi Perez",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": "Spain",
+      "source_line": "★ Anichi Perez (Spain)"
+     },
+     {
+      "name_as_written": "Jacopo & Linda",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": "Italy",
+      "source_line": "★ Jacopo & Linda (Italy)"
+     },
+     {
+      "name_as_written": "Alain Zambrana",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": "Ger / Cuba",
+      "source_line": "★ Alain Zambrana (Ger / Cuba)"
+     },
+     {
+      "name_as_written": "Edwin Rodrigues",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": null,
+      "source_line": "★ Edwin Rodrigues"
+     },
+     {
+      "name_as_written": "Alicia Avakian",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": null,
+      "source_line": "★ Alicia Avakian – Lebanon"
+     },
+     {
+      "name_as_written": "Jimmy S.A",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": "Dubai/Qatar",
+      "source_line": "★ Jimmy S.A (Dubai/Qatar)"
+     },
+     {
+      "name_as_written": "Moe Flex",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": null,
+      "source_line": "★ Moe Flex"
+     },
+     {
+      "name_as_written": "Mauricio Reyes",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": null,
+      "source_line": "★ Mauricio Reyes"
+     },
+     {
+      "name_as_written": "Fadi K & Cristina Varga",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": null,
+      "source_line": "★ Fadi K & Cristina Varga"
+     },
+     {
+      "name_as_written": "Dani K & Sarah Louise",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": null,
+      "source_line": "★ Dani K & Sarah Louise"
+     },
+     {
+      "name_as_written": "Tamba Hissirou",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": null,
+      "source_line": "★ Tamba Hissirou"
+     },
+     {
+      "name_as_written": "Kat & Eddie",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": null,
+      "source_line": "★ Kat & Eddie"
+     },
+     {
+      "name_as_written": "Ang Sin",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": null,
+      "source_line": "★ Ang Sin"
+     },
+     {
+      "name_as_written": "Rasa Pauzaite",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": null,
+      "source_line": "★ Rasa Pauzaite"
+     },
+     {
+      "name_as_written": "Sasha Phillips",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": null,
+      "source_line": "★ Sasha Phillips"
+     },
+     {
+      "name_as_written": "Sam Mr Sleek",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": null,
+      "source_line": "★ Sam Mr Sleek"
+     },
+     {
+      "name_as_written": "Pierre & Zoe Henry",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": null,
+      "source_line": "★ Pierre & Zoe Henry"
+     },
+     {
+      "name_as_written": "Abu Pachanga",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": null,
+      "source_line": "★ Abu Pachanga"
+     },
+     {
+      "name_as_written": "Magda S",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": null,
+      "source_line": "★ Magda S"
+     },
+     {
+      "name_as_written": "Tomasz Tomacito",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": null,
+      "source_line": "★ Tomasz Tomacito"
+     },
+     {
+      "name_as_written": "RDM",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": null,
+      "source_line": "★ RDM (By Fadi K)"
+     },
+     {
+      "name_as_written": "Ramiro Zapata",
+      "role": "teacher",
+      "style": "SALSA on1, on2, Cuban, Afro & more",
+      "country": null,
+      "source_line": "★ Ramiro Zapata"
+     },
+     {
+      "name_as_written": "Irene Y Tomas",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": "Spain",
+      "source_line": "★ Irene Y Tomas (Spain)"
+     },
+     {
+      "name_as_written": "Michael & Myra",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": "Leb/Arg",
+      "source_line": "★ Michael & Myra (Leb/Arg)"
+     },
+     {
+      "name_as_written": "Marco Y Vessy",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": "Bulgaria",
+      "source_line": "★ Marco Y Vessy (Bulgaria)"
+     },
+     {
+      "name_as_written": "Spyridoula",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "★ Spyridoula (Corfu)"
+     },
+     {
+      "name_as_written": "Pierre Henry",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "★ Pierre Henry"
+     },
+     {
+      "name_as_written": "Julian Mr M",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "★ Julian Mr M"
+     },
+     {
+      "name_as_written": "Peynao Er Bachatero",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "★ Peynao Er Bachatero"
+     },
+     {
+      "name_as_written": "Daniel Carbonero",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "★ Daniel Carbonero"
+     },
+     {
+      "name_as_written": "Daniel Chong",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "★ Daniel Chong"
+     },
+     {
+      "name_as_written": "Richard Vooght",
+      "role": "teacher",
+      "style": "KIZOMBA / SEMBA / URBAN KIZ",
+      "country": null,
+      "source_line": "★ Richard Vooght"
+     },
+     {
+      "name_as_written": "DJ Youss",
+      "role": "dj",
+      "style": "KIZOMBA / SEMBA / URBAN KIZ",
+      "country": "France",
+      "source_line": "★ DJ Youss (France)"
+     },
+     {
+      "name_as_written": "Jeydikson Lima",
+      "role": "teacher",
+      "style": "KIZOMBA / SEMBA / URBAN KIZ",
+      "country": null,
+      "source_line": "★ Jeydikson Lima"
+     },
+     {
+      "name_as_written": "El Ceprino",
+      "role": "teacher",
+      "style": "KIZOMBA / SEMBA / URBAN KIZ",
+      "country": null,
+      "source_line": "★ El Ceprino"
+     },
+     {
+      "name_as_written": "Super Dixon",
+      "role": "teacher",
+      "style": "KIZOMBA / SEMBA / URBAN KIZ",
+      "country": null,
+      "source_line": "★ Super Dixon"
+     },
+     {
+      "name_as_written": "Alvin & Raluca",
+      "role": "teacher",
+      "style": "KIZOMBA / SEMBA / URBAN KIZ",
+      "country": null,
+      "source_line": "★ Alvin & Raluca"
+     },
+     {
+      "name_as_written": "George & Hannah",
+      "role": "teacher",
+      "style": "KIZOMBA / SEMBA / URBAN KIZ",
+      "country": null,
+      "source_line": "★ George & Hannah"
+     },
+     {
+      "name_as_written": "Red Rowan",
+      "role": "teacher",
+      "style": "KIZOMBA / SEMBA / URBAN KIZ",
+      "country": null,
+      "source_line": "★ Red Rowan"
+     },
+     {
+      "name_as_written": "Viola Palmai",
+      "role": "teacher",
+      "style": "KIZOMBA / SEMBA / URBAN KIZ",
+      "country": null,
+      "source_line": "★ Viola Palmai"
+     },
+     {
+      "name_as_written": "Steph Ka",
+      "role": "teacher",
+      "style": "KIZOMBA / SEMBA / URBAN KIZ",
+      "country": null,
+      "source_line": "★ Steph Ka"
+     },
+     {
+      "name_as_written": "Miss Ginga Boo & Elisha",
+      "role": "teacher",
+      "style": "KIZOMBA / SEMBA / URBAN KIZ",
+      "country": null,
+      "source_line": "★ Miss Ginga Boo & Elisha"
+     },
+     {
+      "name_as_written": "Jessica Guastella",
+      "role": "teacher",
+      "style": "REGGAETON / HIPHOP / URBAN / AFROBEAT / AFROHOUSE OTHER STYLES",
+      "country": null,
+      "source_line": "★ Jessica Guastella ( Reggaeton )"
+     },
+     {
+      "name_as_written": "George Christophorou",
+      "role": "teacher",
+      "style": "REGGAETON / HIPHOP / URBAN / AFROBEAT / AFROHOUSE OTHER STYLES",
+      "country": null,
+      "source_line": "★ George Christophorou (Break Dance)"
+     },
+     {
+      "name_as_written": "Dani k",
+      "role": "teacher",
+      "style": "REGGAETON / HIPHOP / URBAN / AFROBEAT / AFROHOUSE OTHER STYLES",
+      "country": null,
+      "source_line": "★ Dani k – Afro Contemporary"
+     },
+     {
+      "name_as_written": "DJ Rumbero",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ Rumbero"
+     },
+     {
+      "name_as_written": "DJ Tuli",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ Tuli – UK"
+     },
+     {
+      "name_as_written": "DJ Julian The Duke",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ Julian The Duke"
+     },
+     {
+      "name_as_written": "DJ Fadi K",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ Fadi K – UK"
+     },
+     {
+      "name_as_written": "DJ Cruz",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ Cruz – UK"
+     },
+     {
+      "name_as_written": "DJ Abu Pachanga",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ Abu Pachanga – UK"
+     },
+     {
+      "name_as_written": "DJ Mauricio Reyes",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ Mauricio Reyes – UK"
+     },
+     {
+      "name_as_written": "DJ Chemist",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ Chemist – UK"
+     },
+     {
+      "name_as_written": "DJ Pierre Henry",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ Pierre Henry – UK"
+     },
+     {
+      "name_as_written": "DJ Julian Mr M",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ Julian Mr M"
+     },
+     {
+      "name_as_written": "DJ Ramiro Zapata",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ Ramiro Zapata – UK"
+     },
+     {
+      "name_as_written": "DJ Daniel Chong",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ Daniel Chong – UK"
+     },
+     {
+      "name_as_written": "DJ Omar",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ Omar (DJ AfterParty) – UK"
+     },
+     {
+      "name_as_written": "DJ Amine UrbanKiz",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ Amine UrbanKiz"
+     },
+     {
+      "name_as_written": "DJ Massimo",
+      "role": "dj",
+      "style": null,
+      "country": "UK",
+      "source_line": "★ DJ Massimo (UK)"
+     },
+     {
+      "name_as_written": "FKDANCE TEAM",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "FKDANCE TEAM"
+     },
+     {
+      "name_as_written": "FADI K",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "★ FADI K – Director"
+     },
+     {
+      "name_as_written": "CRISTINA VARGA",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "★ CRISTINA VARGA – Lil Boss"
+     },
+     {
+      "name_as_written": "STEPH KA",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "★ STEPH KA – Event Manager"
+     },
+     {
+      "name_as_written": "MARIA BORCILA",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "★ MARIA BORCILA – Floor Manager"
+     },
+     {
+      "name_as_written": "MARIA DAVID",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "★ MARIA DAVID – Event Manager"
+     },
+     {
+      "name_as_written": "ANDI FLORES",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "★ ANDI FLORES – Event Manager"
+     },
+     {
+      "name_as_written": "RASA PAUZAITE",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "★ RASA PAUZAITE – Event Manager"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops in 6 Areas",
+      "rationale": "The schedule lists workshops running in six areas during the festival day."
+     },
+     {
+      "feature": "shows",
+      "quote": "Short break for shows.",
+      "rationale": "A break is scheduled for shows during the Friday party."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Afternoon Social",
+      "rationale": "An afternoon social is scheduled on Saturday."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre- Party at Bar Salsa Soho.",
+      "rationale": "A pre-party is held at Bar Salsa Soho before the main event."
+     },
+     {
+      "feature": "after_party",
+      "quote": "This year we have negotiated 2 after parties for you",
+      "rationale": "Two after parties are offered for attendees to continue the night."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Party in 4 Rooms until 3am (officially)",
+      "rationale": "The party takes place across four rooms."
+     }
+    ]
+   }
+  ]
+ }
 }

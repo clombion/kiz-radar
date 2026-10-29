@@ -1,21 +1,28 @@
 {
- "batch": "event-14466",
- "events": [
-  {
-   "event_id": 14466,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 Rooms, 2 Atmospheres"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "NEVER ENOUGH KIZOMBA FESTIVAL – ALL IN ONE"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "6db7165c79c7aadb",
+ "answer": {
+  "batch": "event-14466",
+  "events": [
+   {
+    "event_id": 14466,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 Rooms, 2 Atmospheres"
+    },
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "NEVER ENOUGH KIZOMBA FESTIVAL – ALL IN ONE"
+     }
+    ]
+   }
+  ]
+ }
 }

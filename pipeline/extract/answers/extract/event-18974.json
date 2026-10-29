@@ -1,31 +1,38 @@
 {
- "batch": "event-18974",
- "events": [
-  {
-   "event_id": 18974,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Kizomba & Semba workshops",
-     "rationale": "The description lists Kizomba & Semba workshops as part of the Luanda program."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Accommodation",
-     "rationale": "Under the INCLUDED list of the packages, accommodation is listed as included."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Meals & gastronomy experiences",
-     "rationale": "Under the INCLUDED list of the packages, meals are listed as included."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Transport in Angola",
-     "rationale": "Under the INCLUDED list of the packages, transport within Angola is provided."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:34:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "488ca46adccead93",
+ "answer": {
+  "batch": "event-18974",
+  "events": [
+   {
+    "event_id": 18974,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Kizomba & Semba workshops",
+      "rationale": "The description lists Kizomba and Semba workshops as part of the Luanda programme."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Accommodation",
+      "rationale": "Accommodation is listed under the INCLUDED items of the packages."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Meals & gastronomy experiences",
+      "rationale": "Meals are listed among the items included in the packages."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Transport in Angola",
+      "rationale": "Transport within Angola is listed as included in the packages."
+     }
+    ]
+   }
+  ]
+ }
 }

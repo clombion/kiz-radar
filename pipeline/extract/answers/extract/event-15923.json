@@ -1,29 +1,36 @@
 {
- "batch": "event-15923",
- "events": [
-  {
-   "event_id": 15923,
-   "artists": [
-    {
-     "name_as_written": "Tempo Dance Studio",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Note: When making a transfer, please send confirmation of your transfer to Tempo Dance Studio via WhatsApp, to (48) 576 248 919, or by regular message."
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Three days of classes.",
-     "rationale": "The description states that the event includes three days of classes."
-    },
-    {
-     "feature": "competition",
-     "quote": "2nd Urban and Tarraxo Championship.",
-     "rationale": "The event is described as a 2nd Urban and Tarraxo Championship, which is a competition."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:27:01+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "230db1dad84c0db2",
+ "answer": {
+  "batch": "event-15923",
+  "events": [
+   {
+    "event_id": 15923,
+    "artists": [
+     {
+      "name_as_written": "Tempo Dance Studio",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Note: When making a transfer, please send confirmation of your transfer to Tempo Dance Studio via WhatsApp, to (48) 576 248 919, or by regular message."
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Three days of classes.",
+      "rationale": "The event is described as three days of classes, so dance classes are part of the event."
+     },
+     {
+      "feature": "competition",
+      "quote": "2nd Urban and Tarraxo Championship.",
+      "rationale": "The event includes a Urban and Tarraxo championship, which is a competition."
+     }
+    ]
+   }
+  ]
+ }
 }

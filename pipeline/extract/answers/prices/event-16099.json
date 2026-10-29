@@ -1,34 +1,37 @@
 {
- "batch": "event-16099",
- "events": [
-  {
-   "event_id": 16099,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "> White & Blue Secret Vineyard Party",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 120.0,
-       "currency": "AUD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "ONLY $120 (INCLUDES TRANSPORTATION, FOOD, SOFT DRINKS & WINE PLUS LOTS OF FUN)"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:43:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "aa0e760bba1510a9",
+ "answer": {
+  "batch": "event-16099",
+  "events": [
+   {
+    "event_id": 16099,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "White & Blue Secret Vineyard Party",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 120.0,
+        "currency": "AUD",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "ONLY $120 (INCLUDES TRANSPORTATION, FOOD, SOFT DRINKS & WINE PLUS LOTS OF FUN)"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

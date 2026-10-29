@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johann@estelle+johann",
+ "key_b": "p:johannorsinet",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "cecb8e8616301f35",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the common first name 'Johann' with a partner Estelle and Guadeloupe events, while side B is the full name Johann Orsinet, a DJ with French events; the shared country FR and the first name are weak evidence, and side A has no mention lines to confirm the link, so the evidence does not settle it."
+ }
+}

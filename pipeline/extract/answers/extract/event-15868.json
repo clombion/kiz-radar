@@ -1,24 +1,31 @@
 {
- "batch": "event-15868",
- "events": [
-  {
-   "event_id": 15868,
-   "artists": [
-    {
-     "name_as_written": "Paul & Gwany",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "📲 Contact: Paul & Gwany +91 8860181779"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "LEARN FROM WORLD-CLASS DANCERS AND INSTRUCTORS",
-     "rationale": "The description promises instruction from dancers and instructors, so dance classes are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "434e6df64f0cdf7e",
+ "answer": {
+  "batch": "event-15868",
+  "events": [
+   {
+    "event_id": 15868,
+    "artists": [
+     {
+      "name_as_written": "Paul & Gwany",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "📲 Contact: Paul & Gwany +91 8860181779"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "LEARN FROM WORLD-CLASS DANCERS AND INSTRUCTORS",
+      "rationale": "Learning from instructors at the festival indicates dance classes are part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

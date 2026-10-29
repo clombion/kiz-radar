@@ -1,108 +1,101 @@
 {
- "batch": "event-17016",
- "events": [
-  {
-   "event_id": 17016,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 65.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "👉 FULLPASS AVAILABLE (65€) –"
-      },
-      {
-       "amount": 75.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "— THE NEXT – ( 75 )"
-      },
-      {
-       "amount": 115.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 70,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "👉 70 Fullpass available (115€)"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 95.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "👉 COUPLE FULLPASS (95€)"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 110.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "— VIP FULLPASS GOLD — ( 110€ )"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "To get a 10 euro discount, use the code on your purchase."
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:44:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "7a69c52fc4ffd601",
+ "answer": {
+  "batch": "event-17016",
+  "events": [
+   {
+    "event_id": 17016,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "Packages – Fullpass",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 65.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "FULLPASS AVAILABLE (65€)"
+       },
+       {
+        "amount": 75.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "THE NEXT – ( 75 )"
+       },
+       {
+        "amount": 115.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 70,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "70 Fullpass available (115€)"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 95.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "COUPLE FULLPASS (95€)"
+       }
+      ]
+     },
+     {
+      "kind": "other",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 110.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "VIP FULLPASS GOLD — ( 110€ )"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Please be informed that Fullpass money is non-refundable.",
+     "the devolution of the fullpass will only be done if the festival is cancelled"
+    ]
+   }
+  ]
+ }
 }

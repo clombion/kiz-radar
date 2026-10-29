@@ -1,18 +1,25 @@
 {
- "batch": "event-14835",
- "events": [
-  {
-   "event_id": 14835,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "Djumbai Afro Festival"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "de65360d3bde9583",
+ "answer": {
+  "batch": "event-14835",
+  "events": [
+   {
+    "event_id": 14835,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "Djumbai Afro Festival"
+     }
+    ]
+   }
+  ]
+ }
 }

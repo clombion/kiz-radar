@@ -1,0 +1,13 @@
+{
+ "key_a": "p:karolina@karolina+lukasz",
+ "key_b": "p:karolinavamula",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "df1d5402092fe9d6",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are listed as Polish and share only the common first name Karolina; side A has no mentions in this pair, their events don't overlap, and their partners (lukasz vs lukash) are not clearly the same person, so the evidence does not settle it."
+ }
+}

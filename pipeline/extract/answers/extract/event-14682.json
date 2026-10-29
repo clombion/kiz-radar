@@ -1,201 +1,203 @@
 {
- "batch": "event-14682",
- "events": [
-  {
-   "event_id": 14682,
-   "artists": [
-    {
-     "name_as_written": "STEFANIO LIMA",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "🟢 STEFANIO LIMA 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ SNAKES",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🟢 DJ SNAKES 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ LEHNY",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🟢 DJ LEHNY 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ F.A.Z.E",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🟢 DJ F.A.Z.E 🇪🇸"
-    },
-    {
-     "name_as_written": "TRAYBEATZ",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "🟢 TRAYBEATZ 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ WESSS",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🟢 DJ WESSS 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ LUCKY LUX",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇮",
-     "source_line": "🟢 DJ LUCKY LUX 🇸🇮"
-    },
-    {
-     "name_as_written": "POEMA BEATZ",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "🟢 POEMA BEATZ 🇸🇪"
-    },
-    {
-     "name_as_written": "LE GRAND TIWOSH",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🟢 LE GRAND TIWOSH 🇫🇷"
-    },
-    {
-     "name_as_written": "DWE & GABY",
-     "role": "teacher",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "✅ DWE & GABY 🇳🇱"
-    },
-    {
-     "name_as_written": "GIUSEPPE & VINCENZA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "✅ GIUSEPPE & VINCENZA 🇮🇹"
-    },
-    {
-     "name_as_written": "KARL BEKENE",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✅ KARL BEKENE (REBIRTH) 🇫🇷"
-    },
-    {
-     "name_as_written": "DAMIR",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✅ DAMIR (REBIRTH) 🇫🇷"
-    },
-    {
-     "name_as_written": "VLADO & LARISA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇭🇷",
-     "source_line": "✅ VLADO & LARISA 🇭🇷"
-    },
-    {
-     "name_as_written": "SANI PRAGKIZER",
-     "role": "teacher",
-     "style": null,
-     "country": "🇬🇭🇨🇿",
-     "source_line": "✅ SANI PRAGKIZER 🇬🇭🇨🇿"
-    },
-    {
-     "name_as_written": "HEARTBEATKIZ",
-     "role": "teacher",
-     "style": null,
-     "country": "🇸🇮",
-     "source_line": "✅ HEARTBEATKIZ 🇸🇮"
-    },
-    {
-     "name_as_written": "CHRIS DA WHITE & RITA SZABO",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷🇭🇺",
-     "source_line": "✅ CHRIS DA WHITE & RITA SZABO 🇫🇷🇭🇺"
-    },
-    {
-     "name_as_written": "DANI TO THE DANCE",
-     "role": "media",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎥 DANI TO THE DANCE 🇫🇷"
-    },
-    {
-     "name_as_written": "PIQUANT",
-     "role": "media",
-     "style": null,
-     "country": "🇸🇮",
-     "source_line": "📸 PIQUANT 🇸🇮"
-    },
-    {
-     "name_as_written": "BIANKA",
-     "role": "media",
-     "style": null,
-     "country": "🇭🇺",
-     "source_line": "📸 BIANKA 🇭🇺"
-    },
-    {
-     "name_as_written": "KIZOTECA",
-     "role": "media",
-     "style": null,
-     "country": "🇷🇴",
-     "source_line": "🤳 KIZOTECA 🇷🇴"
-    },
-    {
-     "name_as_written": "Rebirth Crew",
-     "role": "organiser",
-     "style": "Urbankiz",
-     "country": null,
-     "source_line": "The biggest Urbankiz Jack & Jill made by Rebirth Crew"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All in one Venue in the most central point of Ljubljana",
-     "rationale": "The event is stated to be all in one venue, combining the festival and the hotels in the centre of Ljubljana."
-    },
-    {
-     "feature": "competition",
-     "quote": "The biggest Urbankiz Jack & Jill made by Rebirth Crew",
-     "rationale": "A Jack & Jill competition is part of the event."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops with the best international artists",
-     "rationale": "Workshops with international artists are listed as part of the festival."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 Socials (Fri-Sun)",
-     "rationale": "Socials are listed on Friday to Sunday, which are daytime or afternoon events."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Enjoy special prices exclusively for KIZZ KISS Festival participants",
-     "rationale": "A negotiated hotel rate for participants is offered without the accommodation being part of the pass."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "𝓓𝓻𝓮𝓼𝓼 𝓬𝓸𝓭𝓮𝓼",
-     "rationale": "A section titled dress codes gives dress codes for each day."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Book your shuttle from Ljubljana and nearby airports",
-     "rationale": "Shuttles from Ljubljana and nearby airports are offered for booking."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "16968703bbbfb417",
+ "answer": {
+  "batch": "event-14682",
+  "events": [
+   {
+    "event_id": 14682,
+    "artists": [
+     {
+      "name_as_written": "STEFANIO LIMA",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "🟢 STEFANIO LIMA 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ SNAKES",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🟢 DJ SNAKES 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ LEHNY",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🟢 DJ LEHNY 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ F.A.Z.E",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🟢 DJ F.A.Z.E 🇪🇸"
+     },
+     {
+      "name_as_written": "TRAYBEATZ",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "🟢 TRAYBEATZ 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ WESSS",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🟢 DJ WESSS 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ LUCKY LUX",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇮",
+      "source_line": "🟢 DJ LUCKY LUX 🇸🇮"
+     },
+     {
+      "name_as_written": "POEMA BEATZ",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "🟢 POEMA BEATZ 🇸🇪"
+     },
+     {
+      "name_as_written": "LE GRAND TIWOSH",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🟢 LE GRAND TIWOSH 🇫🇷"
+     },
+     {
+      "name_as_written": "DWE & GABY",
+      "role": "teacher",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "✅ DWE & GABY 🇳🇱"
+     },
+     {
+      "name_as_written": "GIUSEPPE & VINCENZA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "✅ GIUSEPPE & VINCENZA 🇮🇹"
+     },
+     {
+      "name_as_written": "KARL BEKENE",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✅ KARL BEKENE (REBIRTH) 🇫🇷"
+     },
+     {
+      "name_as_written": "DAMIR",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✅ DAMIR (REBIRTH) 🇫🇷"
+     },
+     {
+      "name_as_written": "VLADO & LARISA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇭🇷",
+      "source_line": "✅ VLADO & LARISA 🇭🇷"
+     },
+     {
+      "name_as_written": "SANI PRAGKIZER",
+      "role": "teacher",
+      "style": null,
+      "country": "🇬🇭🇨🇿",
+      "source_line": "✅ SANI PRAGKIZER 🇬🇭🇨🇿"
+     },
+     {
+      "name_as_written": "HEARTBEATKIZ",
+      "role": "teacher",
+      "style": null,
+      "country": "🇸🇮",
+      "source_line": "✅ HEARTBEATKIZ 🇸🇮"
+     },
+     {
+      "name_as_written": "CHRIS DA WHITE & RITA SZABO",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷🇭🇺",
+      "source_line": "✅ CHRIS DA WHITE & RITA SZABO 🇫🇷🇭🇺"
+     },
+     {
+      "name_as_written": "DANI TO THE DANCE",
+      "role": "media",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎥 DANI TO THE DANCE 🇫🇷"
+     },
+     {
+      "name_as_written": "PIQUANT",
+      "role": "media",
+      "style": null,
+      "country": "🇸🇮",
+      "source_line": "📸 PIQUANT 🇸🇮"
+     },
+     {
+      "name_as_written": "BIANKA",
+      "role": "media",
+      "style": null,
+      "country": "🇭🇺",
+      "source_line": "📸 BIANKA 🇭🇺"
+     },
+     {
+      "name_as_written": "KIZOTECA",
+      "role": "media",
+      "style": null,
+      "country": "🇷🇴",
+      "source_line": "🤳 KIZOTECA 🇷🇴"
+     },
+     {
+      "name_as_written": "Rebirth Crew",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "The biggest Urbankiz Jack & Jill made by Rebirth Crew"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All in one Venue in the most central point of Ljubljana",
+      "rationale": "The event is stated to be all in one venue, and the hotel above the festival hall shows the event and accommodation share a venue."
+     },
+     {
+      "feature": "competition",
+      "quote": "The Biggest Jack & Jill Competition",
+      "rationale": "A Jack & Jill competition is part of the event."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Workshops with the best international artists",
+      "rationale": "Workshops with international artists are offered as part of the festival."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Enjoy special prices exclusively for KIZZ KISS Festival participants",
+      "rationale": "A negotiated hotel rate is offered to participants without the accommodation being included in the pass."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Book your shuttle from Ljubljana and nearby airports",
+      "rationale": "Shuttle transfers from Ljubljana and nearby airports are offered."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "𝓓𝓻𝓮𝓼𝓼 𝓬𝓸𝓭𝓮𝓼",
+      "rationale": "A dress codes section sets out colours for each day of the festival."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nuno@catia+nuno",
+ "key_b": "p:nuno@nagyla+nuno",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2570ed1ade83b7f4",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are written 'NUNO' with overlapping countries (PT), events (France, Spain) and no shared partner, since each is paired with a different partner (catia vs nagyla). That overlap fits one dancer who teaches with two partners, but 'NUNO' is a common single name and the mention lists are empty, so the evidence does not settle it."
+ }
+}

@@ -1,34 +1,42 @@
 {
- "batch": "event-14604",
- "events": [
-  {
-   "event_id": 14604,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 66.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "2025-08-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "fullpass for Men or Women at just €66 until August 31, 2025!"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:41:01+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "65f4795f60780477",
+ "answer": {
+  "batch": "event-14604",
+  "events": [
+   {
+    "event_id": 14604,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 66.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "2025-08-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "fullpass for Men or Women at just €66 until August 31, 2025!"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

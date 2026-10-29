@@ -1,135 +1,144 @@
 {
- "batch": "event-14486",
- "events": [
-  {
-   "event_id": 14486,
-   "artists": [
-    {
-     "name_as_written": "𝑱𝒐𝒋𝒐 & 𝑱𝒆𝒏𝒏𝒚",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ 𝑱𝒐𝒋𝒐 & 𝑱𝒆𝒏𝒏𝒚 𝑳𝒆𝒕’𝒔 𝑷𝒍𝒂𝒚 𝑲𝒊𝒛𝒐𝒎𝒃𝒂"
-    },
-    {
-     "name_as_written": "𝑫𝒂𝒗𝒊𝒅 𝑲𝒐𝒏𝒅𝒆 & 𝑴𝒂𝒓𝒕𝒂",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨𝑫𝒂𝒗𝒊𝒅 𝑲𝒐𝒏𝒅𝒆 & 𝑴𝒂𝒓𝒕𝒂"
-    },
-    {
-     "name_as_written": "𝑯𝒊𝒄𝒉𝒂𝒎 & 𝑴𝒆𝒍𝒍",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨𝑯𝒊𝒄𝒉𝒂𝒎 & 𝑴𝒆𝒍𝒍"
-    },
-    {
-     "name_as_written": "𝑩𝒍𝒂𝒄𝒌𝒄𝒉𝒊𝒏𝒆𝒔𝒆",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ 𝑩𝒍𝒂𝒄𝒌𝒄𝒉𝒊𝒏𝒆𝒔𝒆"
-    },
-    {
-     "name_as_written": "𝑲𝒂𝒓𝒍 𝑩𝒆𝒌𝒆𝒏𝒆",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨𝑲𝒂𝒓𝒍 𝑩𝒆𝒌𝒆𝒏𝒆"
-    },
-    {
-     "name_as_written": "𝑳𝒂𝒔𝒕𝒂𝒓 & 𝑳𝒆́𝒂",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨𝑳𝒂𝒔𝒕𝒂𝒓 & 𝑳𝒆́𝒂"
-    },
-    {
-     "name_as_written": "𝑳𝒐𝒍𝒐 𝑾𝒂𝒌𝒊",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨𝑳𝒐𝒍𝒐 𝑾𝒂𝒌𝒊"
-    },
-    {
-     "name_as_written": "𝑫𝑱 𝑷𝒂𝒏𝒌𝒂𝒅𝒂𝒔",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧𝑫𝑱 𝑷𝒂𝒏𝒌𝒂𝒅𝒂𝒔"
-    },
-    {
-     "name_as_written": "𝑫𝑱 𝑷𝒂𝒓𝒂𝒊𝒔𝒐",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧𝑫𝑱 𝑷𝒂𝒓𝒂𝒊𝒔𝒐"
-    },
-    {
-     "name_as_written": "𝑫𝑱 𝑫𝒊𝒂𝒃𝒍𝒐",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧𝑫𝑱 𝑫𝒊𝒂𝒃𝒍𝒐"
-    },
-    {
-     "name_as_written": "𝑫𝑱 𝑰𝒄𝒉𝒊𝒈𝒐",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧𝑫𝑱 𝑰𝒄𝒉𝒊𝒈𝒐"
-    },
-    {
-     "name_as_written": "𝑫𝑱 𝑵𝒂𝒐",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧𝑫𝑱 𝑵𝒂𝒐"
-    },
-    {
-     "name_as_written": "𝑩𝒆𝒏𝒌𝒐𝒔",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📷 𝑩𝒆𝒏𝒌𝒐𝒔"
-    },
-    {
-     "name_as_written": "TNT- The New Touch",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "▷Facebook Page : TNT- The New Touch"
-    }
-   ],
-   "features": [
-    {
-     "feature": "multiple_rooms",
-     "quote": "𝟏 𝐬𝐚𝐥𝐥𝐞 𝐝𝐞 𝟑𝟎𝟎𝐦𝟐 𝐝𝐞́𝐝𝐢𝐞́𝐞",
-     "rationale": "The description lists two separate dance rooms, one of 300m2 and one of 200m2."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "20 𝑻𝒂𝒙𝒊𝒔",
-     "rationale": "The line-up includes twenty taxi dancers."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Samedi soir : 𝐌𝐚𝐬𝐤𝐚𝐫𝐚𝐝𝐞",
-     "rationale": "A Saturday night masquerade is a themed party."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "𝔻ℝ𝔼𝕊𝕊 ℂ𝕆𝔻𝔼",
-     "rationale": "The description has a heading DRESS CODE followed by the dress code details."
-    },
-    {
-     "feature": "workshops",
-     "quote": "𝕃𝕀ℕ𝔼 𝕌ℙ 𝕂𝕀ℤ𝕆𝕄𝔹𝔸",
-     "rationale": "A kizomba line-up of teaching couples and solo teachers implies dance classes are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "eba3edf9c613f9e6",
+ "answer": {
+  "batch": "event-14486",
+  "events": [
+   {
+    "event_id": 14486,
+    "artists": [
+     {
+      "name_as_written": "𝑫𝑱 𝑷𝒂𝒏𝒌𝒂𝒅𝒂𝒔",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧𝑫𝑱 𝑷𝒂𝒏𝒌𝒂𝒅𝒂𝒔"
+     },
+     {
+      "name_as_written": "𝑫𝑱 𝑷𝒂𝒓𝒂𝒊𝒔𝒐",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧𝑫𝑱 𝑷𝒂𝒓𝒂𝒊𝒔𝒐"
+     },
+     {
+      "name_as_written": "𝑫𝑱 𝑫𝒊𝒂𝒃𝒍𝒐",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧𝑫𝑱 𝑫𝒊𝒂𝒃𝒍𝒐"
+     },
+     {
+      "name_as_written": "𝑫𝑱 𝑰𝒄𝒉𝒊𝒈𝒐",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧𝑫𝑱 𝑰𝒄𝒉𝒊𝒈𝒐"
+     },
+     {
+      "name_as_written": "𝑫𝑱 𝑵𝒂𝒐",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧𝑫𝑱 𝑵𝒂𝒐"
+     },
+     {
+      "name_as_written": "𝑱𝒐𝒋𝒐 & 𝑱𝒆𝒏𝒏𝒚",
+      "role": "teacher",
+      "style": "𝑲𝒊𝒛𝒐𝒎𝒃𝒂",
+      "country": null,
+      "source_line": "✨ 𝑱𝒐𝒋𝒐 & 𝑱𝒆𝒏𝒏𝒚 𝑳𝒆𝒕’𝒔 𝑷𝒍𝒂𝒚 𝑲𝒊𝒛𝒐𝒎𝒃𝒂"
+     },
+     {
+      "name_as_written": "𝑫𝒂𝒗𝒊𝒅 𝑲𝒐𝒏𝒅𝒆 & 𝑴𝒂𝒓𝒕𝒂",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨𝑫𝒂𝒗𝒊𝒅 𝑲𝒐𝒏𝒅𝒆 & 𝑴𝒂𝒓𝒕𝒂"
+     },
+     {
+      "name_as_written": "𝑯𝒊𝒄𝒉𝒂𝒎 & 𝑴𝒆𝒍𝒍",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨𝑯𝒊𝒄𝒉𝒂𝒎 & 𝑴𝒆𝒍𝒍"
+     },
+     {
+      "name_as_written": "𝑩𝒍𝒂𝒄𝒌𝒄𝒉𝒊𝒏𝒆𝒔𝒆",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ 𝑩𝒍𝒂𝒄𝒌𝒄𝒉𝒊𝒏𝒆𝒔𝒆"
+     },
+     {
+      "name_as_written": "𝑲𝒂𝒓𝒍 𝑩𝒆𝒌𝒆𝒏𝒆",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨𝑲𝒂𝒓𝒍 𝑩𝒆𝒌𝒆𝒏𝒆"
+     },
+     {
+      "name_as_written": "𝑳𝒂𝒔𝒕𝒂𝒓 & 𝑳𝒆́𝒂",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨𝑳𝒂𝒔𝒕𝒂𝒓 & 𝑳𝒆́𝒂"
+     },
+     {
+      "name_as_written": "𝑳𝒐𝒍𝒐 𝑾𝒂𝒌𝒊",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨𝑳𝒐𝒍𝒐 𝑾𝒂𝒌𝒊"
+     },
+     {
+      "name_as_written": "20 𝑻𝒂𝒙𝒊𝒔",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "✨ 20 𝑻𝒂𝒙𝒊𝒔"
+     },
+     {
+      "name_as_written": "𝑩𝒆𝒏𝒌𝒐𝒔",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📷 𝑩𝒆𝒏𝒌𝒐𝒔"
+     },
+     {
+      "name_as_written": "TNT- The New Touch",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "▷Facebook Page : TNT- The New Touch"
+     }
+    ],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "𝐬𝐮𝐩𝐩𝐥𝐞́𝐦𝐞𝐧𝐭𝐚𝐢𝐫𝐞 𝐝𝐞́𝐝𝐢𝐞́𝐞 𝐚𝐮 𝐙𝐨𝐮𝐤",
+      "rationale": "The description lists a second dedicated dance room (200m2 supplementary room) alongside the main room."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Samedi soir : 𝐌𝐚𝐬𝐤𝐚𝐫𝐚𝐝𝐞",
+      "rationale": "Themed nights such as a masquerade party and an all-white night are announced."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "𝔻ℝ𝔼𝕊𝕊 ℂ𝕆𝔻𝔼",
+      "rationale": "A heading announces a dress code, followed by the themed nights it applies to."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "✨ 20 𝑻𝒂𝒙𝒊𝒔",
+      "rationale": "The line-up lists a team of 20 taxi dancers."
+     }
+    ]
+   }
+  ]
+ }
 }

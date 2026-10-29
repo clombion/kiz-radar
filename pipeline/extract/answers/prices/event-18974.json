@@ -1,57 +1,56 @@
 {
- "batch": "event-18974",
- "events": [
-  {
-   "event_id": 18974,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 7,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 1050.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "✨ **1 WEEK – 1,050 €**"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 14,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 2000.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "✨ **2 WEEKS – 2,000 €**"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:46:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b1e1a302dd8e8e27",
+ "answer": {
+  "batch": "event-18974",
+  "events": [
+   {
+    "event_id": 18974,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 1050.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "✨ **1 WEEK – 1,050 €**"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 2000.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "✨ **2 WEEKS – 2,000 €**"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

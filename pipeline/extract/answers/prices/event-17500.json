@@ -1,83 +1,84 @@
 {
- "batch": "event-17500",
- "events": [
-  {
-   "event_id": 17500,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 135.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "Early Birds 1st – 135E/couple – SOLD OUT"
-      },
-      {
-       "amount": 146.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "Early Birds 2nd – 146E/couple – SOLD OUT"
-      },
-      {
-       "amount": 158.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Couple Pass – 158E/couple"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 86.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Female Solo – 86E"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:45:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "3f2db0807675e945",
+ "answer": {
+  "batch": "event-17500",
+  "events": [
+   {
+    "event_id": 17500,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 135.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": true,
+        "quote": "Early Birds 1st – 135E/couple – SOLD OUT"
+       },
+       {
+        "amount": 146.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": true,
+        "quote": "Early Birds 2nd – 146E/couple – SOLD OUT"
+       },
+       {
+        "amount": 158.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Couple Pass – 158E/couple"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 86.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Female Solo – 86E"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

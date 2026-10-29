@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johann@estelle+johann",
+ "key_b": "p:johann@johann+lucie",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6d5630eb9e13b940",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same first name from France, but they have different partners (Estelle vs Lucie) and different events (Guadeloupe vs France), and the mention lists are empty, so a common first name with matching country does not settle whether this is one dancer with two partners or two people."
+ }
+}

@@ -1,21 +1,33 @@
 {
- "batch": "event-15769",
- "events": [
-  {
-   "event_id": 15769,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 ROOMS / 2 ENERGIES"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "SUNNY KIZOMBA FESTIVAL 2026"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "84dbba9980300bd0",
+ "answer": {
+  "batch": "event-15769",
+  "events": [
+   {
+    "event_id": 15769,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 ROOMS / 2 ENERGIES"
+    },
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "SUNNY KIZOMBA FESTIVAL 2026"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba na rua",
+      "quote": "Kizomba na rua"
+     }
+    ]
+   }
+  ]
+ }
 }

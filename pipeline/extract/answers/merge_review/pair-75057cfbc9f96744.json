@@ -1,0 +1,13 @@
+{
+ "key_a": "p:assyl@assyl+zhibek",
+ "key_b": "p:assyl@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "75057cfbc9f96744",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The DJ prefix is the only difference between 'ASSYL' and 'DJ ASSYL', the distinctive stage name matches, and both sides list Kazakhstan as their country and event location, so this is one artist."
+ }
+}

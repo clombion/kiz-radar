@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jlarious@dj",
+ "key_b": "p:jlarious@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f1c5beb2c6bddb9a",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The name 'DJ J'Larious' is distinctive, and event 18722 states both Jamaica and the United States on a single mention, which fits one DJ with dual nationality touring across Jamaica, Belgium, the Czech Republic and Estonia; no separate partner or conflicting role suggests two people."
+ }
+}

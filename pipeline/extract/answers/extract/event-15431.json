@@ -1,354 +1,354 @@
 {
- "batch": "event-15431",
- "events": [
-  {
-   "event_id": 15431,
-   "artists": [
-    {
-     "name_as_written": "ENAH & LOLAHONTAS",
-     "role": "teacher",
-     "style": "URBAN KIZ/TARRAXO",
-     "country": "FRANCE/SPAIN",
-     "source_line": "🌍 ENAH & LOLAHONTAS (FRANCE/SPAIN)"
-    },
-    {
-     "name_as_written": "JOJO & JENNY",
-     "role": "teacher",
-     "style": "URBAN KIZ/TARRAXO",
-     "country": "FRANCE",
-     "source_line": "🌍 JOJO & JENNY (FRANCE)"
-    },
-    {
-     "name_as_written": "CURTIS & CLÉMENCE",
-     "role": "teacher",
-     "style": "URBAN KIZ/TARRAXO",
-     "country": "FRANCE",
-     "source_line": "🌍 CURTIS & CLÉMENCE (FRANCE)"
-    },
-    {
-     "name_as_written": "JP & STEPHY",
-     "role": "teacher",
-     "style": "URBAN KIZ/TARRAXO",
-     "country": "FRANCE",
-     "source_line": "🌍 JP & STEPHY (FRANCE)"
-    },
-    {
-     "name_as_written": "HARVEY REDDINGTON",
-     "role": "teacher",
-     "style": "URBAN KIZ/TARRAXO",
-     "country": "FRANCE",
-     "source_line": "🌍 HARVEY REDDINGTON (FRANCE)"
-    },
-    {
-     "name_as_written": "JACK & SARA",
-     "role": "teacher",
-     "style": "URBAN KIZ/TARRAXO",
-     "country": "SPAIN",
-     "source_line": "🌍 JACK & SARA (SPAIN)"
-    },
-    {
-     "name_as_written": "T’PEAK & DJE",
-     "role": "teacher",
-     "style": "URBAN KIZ/TARRAXO",
-     "country": "FRANCE",
-     "source_line": "🌍 T’PEAK & DJE (FRANCE)"
-    },
-    {
-     "name_as_written": "FAJUL & AGNES",
-     "role": "teacher",
-     "style": "URBAN KIZ/TARRAXO",
-     "country": "GERMANY",
-     "source_line": "🌍 FAJUL & AGNES (GERMANY)"
-    },
-    {
-     "name_as_written": "SANI",
-     "role": "teacher",
-     "style": "URBAN KIZ/TARRAXO",
-     "country": "CZECH REPUBLIC",
-     "source_line": "🌍 SANI (CZECH REPUBLIC)"
-    },
-    {
-     "name_as_written": "VERONICA & CRISTIAN",
-     "role": "teacher",
-     "style": "URBAN KIZ/TARRAXO",
-     "country": "AUSTRIA",
-     "source_line": "🌍 VERONICA & CRISTIAN (AUSTRIA)"
-    },
-    {
-     "name_as_written": "FELICIEN & ISABELLE",
-     "role": "teacher",
-     "style": "KIZOMBA FUSION",
-     "country": "FRANCE",
-     "source_line": "🌍 FELICIEN & ISABELLE (FRANCE)"
-    },
-    {
-     "name_as_written": "TONY PIRATA & MELODY",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA/KOMPA",
-     "country": "FRANCE",
-     "source_line": "🌍 TONY PIRATA & MELODY (FRANCE)"
-    },
-    {
-     "name_as_written": "JACINTO TECA & LUCY",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA/KOMPA",
-     "country": "CZECH REPUBLIC",
-     "source_line": "🌍 JACINTO TECA & LUCY (CZECH REPUBLIC)"
-    },
-    {
-     "name_as_written": "RAILEY & BENITE",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA/KOMPA",
-     "country": "HOLLAND",
-     "source_line": "🌍 RAILEY & BENITE (HOLLAND)"
-    },
-    {
-     "name_as_written": "MADY & ISA",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA/KOMPA",
-     "country": "GERMANY",
-     "source_line": "🌍 MADY & ISA (GERMANY)"
-    },
-    {
-     "name_as_written": "DJ NICE LIFE",
-     "role": "dj",
-     "style": null,
-     "country": "HOLLAND",
-     "source_line": "🎧 DJ NICE LIFE (HOLLAND)"
-    },
-    {
-     "name_as_written": "DJ MORELASOUL",
-     "role": "dj",
-     "style": null,
-     "country": "HOLLAND",
-     "source_line": "🎧 DJ MORELASOUL (HOLLAND)"
-    },
-    {
-     "name_as_written": "DJ DELAHOY",
-     "role": "dj",
-     "style": null,
-     "country": "DUBAI",
-     "source_line": "🎧 DJ DELAHOY (DUBAI)"
-    },
-    {
-     "name_as_written": "DJ SAÏ SAÏ",
-     "role": "dj",
-     "style": null,
-     "country": "FRANCE",
-     "source_line": "🎧 DJ SAÏ SAÏ (FRANCE)"
-    },
-    {
-     "name_as_written": "DJ LISA ROSE",
-     "role": "dj",
-     "style": null,
-     "country": "HOLLAND",
-     "source_line": "🎧 DJ LISA ROSE – D & L BEATS (HOLLAND)"
-    },
-    {
-     "name_as_written": "DJ DANI FERNANDES",
-     "role": "dj",
-     "style": null,
-     "country": "HOLLAND",
-     "source_line": "🎧 DJ DANI FERNANDES – D & L BEATS (HOLLAND)"
-    },
-    {
-     "name_as_written": "DJ T’PEAK",
-     "role": "dj",
-     "style": null,
-     "country": "FRANCE",
-     "source_line": "🎧 DJ T’PEAK (FRANCE)"
-    },
-    {
-     "name_as_written": "DJ JACK",
-     "role": "dj",
-     "style": null,
-     "country": "SPAIN",
-     "source_line": "🎧 DJ JACK (SPAIN)"
-    },
-    {
-     "name_as_written": "DJ LAMIN LAMI",
-     "role": "dj",
-     "style": null,
-     "country": "CZECH REPUBLIC",
-     "source_line": "🎧 DJ LAMIN LAMI (CZECH REPUBLIC)"
-    },
-    {
-     "name_as_written": "DJ AZMAËL",
-     "role": "dj",
-     "style": null,
-     "country": "AUSTRIA",
-     "source_line": "🎧 DJ AZMAËL (AUSTRIA)"
-    },
-    {
-     "name_as_written": "DJANE KIZLIZ",
-     "role": "dj",
-     "style": null,
-     "country": "AUSTRIA",
-     "source_line": "🎧 DJANE KIZLIZ (AUSTRIA)"
-    },
-    {
-     "name_as_written": "JENNIFER DIAS",
-     "role": "performer",
-     "style": null,
-     "country": "PORTUGAL",
-     "source_line": "⭐️JENNIFER DIAS (PORTUGAL)"
-    },
-    {
-     "name_as_written": "LANDRICK",
-     "role": "performer",
-     "style": null,
-     "country": "ANGOLA",
-     "source_line": "⭐️LANDRICK (ANGOLA)"
-    },
-    {
-     "name_as_written": "FRENCH KIZZ",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "FRENCH KIZZ (STUTTGART)"
-    },
-    {
-     "name_as_written": "DIAS",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "DIAS (PARIS)"
-    },
-    {
-     "name_as_written": "ARUN",
-     "role": "performer",
-     "style": null,
-     "country": "AUSTRIA",
-     "source_line": "ARUN (AUSTRIA)"
-    },
-    {
-     "name_as_written": "KIZZFATALE TEAM",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "KIZZFATALE TEAM (BERLIN)"
-    },
-    {
-     "name_as_written": "KATALIN",
-     "role": "performer",
-     "style": null,
-     "country": "AUSTRIA",
-     "source_line": "KATALIN (AUSTRIA)"
-    },
-    {
-     "name_as_written": "YANN",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "YANN (PARIS)"
-    },
-    {
-     "name_as_written": "MODRIC ARTIS",
-     "role": "crew",
-     "style": null,
-     "country": "ITALY",
-     "source_line": "MODRIC ARTIS (ITALY)"
-    },
-    {
-     "name_as_written": "MASSIMO",
-     "role": "crew",
-     "style": null,
-     "country": "ITALY",
-     "source_line": "MASSIMO (ITALY)"
-    },
-    {
-     "name_as_written": "KRISZ",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "KRISZ (BUDAPEST)"
-    },
-    {
-     "name_as_written": "ALY",
-     "role": "crew",
-     "style": null,
-     "country": "AUSTRIA",
-     "source_line": "ALY (AUSTRIA)"
-    },
-    {
-     "name_as_written": "DJ RICH",
-     "role": "dj",
-     "style": null,
-     "country": "AUSTRIA",
-     "source_line": "DJ RICH (AUSTRIA)"
-    },
-    {
-     "name_as_written": "FARANTINI",
-     "role": "media",
-     "style": null,
-     "country": "HOLLAND",
-     "source_line": "📸FARANTINI (HOLLAND)"
-    },
-    {
-     "name_as_written": "FARANTINI",
-     "role": "media",
-     "style": null,
-     "country": "HOLLAND",
-     "source_line": "🎥 FARANTINI (HOLLAND)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "live_music",
-     "quote": "JENNIFER DIAS (PORTUGAL)",
-     "rationale": "The lineup lists singers Jennifer Dias and Landrick, which means live performances."
-    },
-    {
-     "feature": "shows",
-     "quote": "UNIQUE SHOW ACTS",
-     "rationale": "The event advertises unique show acts and a showcase."
-    },
-    {
-     "feature": "workshops",
-     "quote": "36 Workshops",
-     "rationale": "The description states there are 36 workshops."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Dancefloors and 2 Atmospheres",
-     "rationale": "Two dancefloors are offered, so there is more than one dance room."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 Socials",
-     "rationale": "Three social dances are listed, which are daytime socials."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "SPRING NIGHT – NEON ENERGY",
-     "rationale": "The parties have named themes such as Neon Energy and Black & Silver Shiny Glam."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "PARTY – DRESSCODE",
-     "rationale": "The description explicitly states a dress code for the parties."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "THURSDAY: Pre Party – MELIA Hotel Vienna",
-     "rationale": "A pre-party is scheduled on Thursday before the main festival."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "an all-in-one destination offering",
-     "rationale": "The Hotel Melia hosts the congress centre and parties, so event and hotel share one venue."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Hotel recommendations",
-     "rationale": "Recommended hotels are listed, including a negotiated room rate."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "TAXIDANCERS:",
-     "rationale": "A list of taxi dancers is given."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "579fd3cf14c4f32a",
+ "answer": {
+  "batch": "event-15431",
+  "events": [
+   {
+    "event_id": 15431,
+    "artists": [
+     {
+      "name_as_written": "ENAH & LOLAHONTAS",
+      "role": "teacher",
+      "style": "URBAN KIZ/TARRAXO",
+      "country": "FRANCE/SPAIN",
+      "source_line": "🌍 ENAH & LOLAHONTAS (FRANCE/SPAIN)"
+     },
+     {
+      "name_as_written": "JOJO & JENNY",
+      "role": "teacher",
+      "style": "URBAN KIZ/TARRAXO",
+      "country": "FRANCE",
+      "source_line": "🌍 JOJO & JENNY (FRANCE)"
+     },
+     {
+      "name_as_written": "CURTIS & CLÉMENCE",
+      "role": "teacher",
+      "style": "URBAN KIZ/TARRAXO",
+      "country": "FRANCE",
+      "source_line": "🌍 CURTIS & CLÉMENCE (FRANCE)"
+     },
+     {
+      "name_as_written": "JP & STEPHY",
+      "role": "teacher",
+      "style": "URBAN KIZ/TARRAXO",
+      "country": "FRANCE",
+      "source_line": "🌍 JP & STEPHY (FRANCE)"
+     },
+     {
+      "name_as_written": "HARVEY REDDINGTON",
+      "role": "teacher",
+      "style": "URBAN KIZ/TARRAXO",
+      "country": "FRANCE",
+      "source_line": "🌍 HARVEY REDDINGTON (FRANCE)"
+     },
+     {
+      "name_as_written": "JACK & SARA",
+      "role": "teacher",
+      "style": "URBAN KIZ/TARRAXO",
+      "country": "SPAIN",
+      "source_line": "🌍 JACK & SARA (SPAIN)"
+     },
+     {
+      "name_as_written": "T’PEAK & DJE",
+      "role": "teacher",
+      "style": "URBAN KIZ/TARRAXO",
+      "country": "FRANCE",
+      "source_line": "🌍 T’PEAK & DJE (FRANCE)"
+     },
+     {
+      "name_as_written": "FAJUL & AGNES",
+      "role": "teacher",
+      "style": "URBAN KIZ/TARRAXO",
+      "country": "GERMANY",
+      "source_line": "🌍 FAJUL & AGNES (GERMANY)"
+     },
+     {
+      "name_as_written": "SANI",
+      "role": "teacher",
+      "style": "URBAN KIZ/TARRAXO",
+      "country": "CZECH REPUBLIC",
+      "source_line": "🌍 SANI (CZECH REPUBLIC)"
+     },
+     {
+      "name_as_written": "VERONICA & CRISTIAN",
+      "role": "teacher",
+      "style": "URBAN KIZ/TARRAXO",
+      "country": "AUSTRIA",
+      "source_line": "🌍 VERONICA & CRISTIAN (AUSTRIA)"
+     },
+     {
+      "name_as_written": "FELICIEN & ISABELLE",
+      "role": "teacher",
+      "style": "KIZOMBA FUSION",
+      "country": "FRANCE",
+      "source_line": "🌍 FELICIEN & ISABELLE (FRANCE)"
+     },
+     {
+      "name_as_written": "TONY PIRATA & MELODY",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA/KOMPA",
+      "country": "FRANCE",
+      "source_line": "🌍 TONY PIRATA & MELODY (FRANCE)"
+     },
+     {
+      "name_as_written": "JACINTO TECA & LUCY",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA/KOMPA",
+      "country": "CZECH REPUBLIC",
+      "source_line": "🌍 JACINTO TECA & LUCY (CZECH REPUBLIC)"
+     },
+     {
+      "name_as_written": "RAILEY & BENITE",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA/KOMPA",
+      "country": "HOLLAND",
+      "source_line": "🌍 RAILEY & BENITE (HOLLAND)"
+     },
+     {
+      "name_as_written": "MADY & ISA",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA/KOMPA",
+      "country": "GERMANY",
+      "source_line": "🌍 MADY & ISA (GERMANY)"
+     },
+     {
+      "name_as_written": "DJ NICE LIFE",
+      "role": "dj",
+      "style": null,
+      "country": "HOLLAND",
+      "source_line": "🎧 DJ NICE LIFE (HOLLAND)"
+     },
+     {
+      "name_as_written": "DJ MORELASOUL",
+      "role": "dj",
+      "style": null,
+      "country": "HOLLAND",
+      "source_line": "🎧 DJ MORELASOUL (HOLLAND)"
+     },
+     {
+      "name_as_written": "DJ DELAHOY",
+      "role": "dj",
+      "style": null,
+      "country": "DUBAI",
+      "source_line": "🎧 DJ DELAHOY (DUBAI)"
+     },
+     {
+      "name_as_written": "DJ SAÏ SAÏ",
+      "role": "dj",
+      "style": null,
+      "country": "FRANCE",
+      "source_line": "🎧 DJ SAÏ SAÏ (FRANCE)"
+     },
+     {
+      "name_as_written": "DJ LISA ROSE",
+      "role": "dj",
+      "style": null,
+      "country": "HOLLAND",
+      "source_line": "🎧 DJ LISA ROSE – D & L BEATS (HOLLAND)"
+     },
+     {
+      "name_as_written": "DJ DANI FERNANDES",
+      "role": "dj",
+      "style": null,
+      "country": "HOLLAND",
+      "source_line": "🎧 DJ DANI FERNANDES – D & L BEATS (HOLLAND)"
+     },
+     {
+      "name_as_written": "DJ T’PEAK",
+      "role": "dj",
+      "style": null,
+      "country": "FRANCE",
+      "source_line": "🎧 DJ T’PEAK (FRANCE)"
+     },
+     {
+      "name_as_written": "DJ JACK",
+      "role": "dj",
+      "style": null,
+      "country": "SPAIN",
+      "source_line": "🎧 DJ JACK (SPAIN)"
+     },
+     {
+      "name_as_written": "DJ LAMIN LAMI",
+      "role": "dj",
+      "style": null,
+      "country": "CZECH REPUBLIC",
+      "source_line": "🎧 DJ LAMIN LAMI (CZECH REPUBLIC)"
+     },
+     {
+      "name_as_written": "DJ AZMAËL",
+      "role": "dj",
+      "style": null,
+      "country": "AUSTRIA",
+      "source_line": "🎧 DJ AZMAËL (AUSTRIA)"
+     },
+     {
+      "name_as_written": "DJANE KIZLIZ",
+      "role": "dj",
+      "style": null,
+      "country": "AUSTRIA",
+      "source_line": "🎧 DJANE KIZLIZ (AUSTRIA)"
+     },
+     {
+      "name_as_written": "JENNIFER DIAS",
+      "role": "performer",
+      "style": null,
+      "country": "PORTUGAL",
+      "source_line": "⭐️JENNIFER DIAS (PORTUGAL)"
+     },
+     {
+      "name_as_written": "LANDRICK",
+      "role": "performer",
+      "style": null,
+      "country": "ANGOLA",
+      "source_line": "⭐️LANDRICK (ANGOLA)"
+     },
+     {
+      "name_as_written": "FRENCH KIZZ",
+      "role": "performer",
+      "style": "SPECIAL GUESTS",
+      "country": "STUTTGART",
+      "source_line": "FRENCH KIZZ (STUTTGART)"
+     },
+     {
+      "name_as_written": "DIAS",
+      "role": "performer",
+      "style": "SPECIAL GUESTS",
+      "country": "PARIS",
+      "source_line": "DIAS (PARIS)"
+     },
+     {
+      "name_as_written": "ARUN",
+      "role": "performer",
+      "style": "SPECIAL GUESTS",
+      "country": "AUSTRIA",
+      "source_line": "ARUN (AUSTRIA)"
+     },
+     {
+      "name_as_written": "KIZZFATALE TEAM",
+      "role": "performer",
+      "style": "GUEST DANCERS",
+      "country": "BERLIN",
+      "source_line": "KIZZFATALE TEAM (BERLIN)"
+     },
+     {
+      "name_as_written": "KATALIN",
+      "role": "performer",
+      "style": "GUEST DANCERS",
+      "country": "AUSTRIA",
+      "source_line": "KATALIN (AUSTRIA)"
+     },
+     {
+      "name_as_written": "YANN",
+      "role": "crew",
+      "style": null,
+      "country": "PARIS",
+      "source_line": "YANN (PARIS)"
+     },
+     {
+      "name_as_written": "MODRIC ARTIS",
+      "role": "crew",
+      "style": null,
+      "country": "ITALY",
+      "source_line": "MODRIC ARTIS (ITALY)"
+     },
+     {
+      "name_as_written": "MASSIMO",
+      "role": "crew",
+      "style": null,
+      "country": "ITALY",
+      "source_line": "MASSIMO (ITALY)"
+     },
+     {
+      "name_as_written": "KRISZ",
+      "role": "crew",
+      "style": null,
+      "country": "BUDAPEST",
+      "source_line": "KRISZ (BUDAPEST)"
+     },
+     {
+      "name_as_written": "ALY",
+      "role": "crew",
+      "style": null,
+      "country": "AUSTRIA",
+      "source_line": "ALY (AUSTRIA)"
+     },
+     {
+      "name_as_written": "DJ RICH",
+      "role": "dj",
+      "style": null,
+      "country": "AUSTRIA",
+      "source_line": "DJ RICH (AUSTRIA)"
+     },
+     {
+      "name_as_written": "FARANTINI",
+      "role": "media",
+      "style": null,
+      "country": "HOLLAND",
+      "source_line": "📸FARANTINI (HOLLAND)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "brand-new festival venue with 2 rooms",
+      "rationale": "The venue is described as having 2 rooms, meaning more than one dance room."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "an all-in-one destination offering:",
+      "rationale": "The Melia hotel venue is described as an all-in-one destination, with the congress and parties in the hotel."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Hotel recommendations",
+      "rationale": "The description lists recommended hotels for dancers to stay at."
+     },
+     {
+      "feature": "workshops",
+      "quote": "36 Workshops",
+      "rationale": "The event lists 36 dance workshops."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 Socials",
+      "rationale": "The event includes three social dances in the daytime program."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "THURSDAY: Pre Party – MELIA Hotel Vienna",
+      "rationale": "A pre party is scheduled on Thursday before the festival."
+     },
+     {
+      "feature": "shows",
+      "quote": "UNIQUE SHOW ACTS",
+      "rationale": "Show acts by artists are part of the event."
+     },
+     {
+      "feature": "live_music",
+      "quote": "SINGERs",
+      "rationale": "Singers Jennifer Dias and Landrick are listed as performing artists."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "TAXIDANCERS:",
+      "rationale": "A list of named taxi dancers is given."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "PARTY – DRESSCODE",
+      "rationale": "The parties have a stated dress code."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "SPRING NIGHT – NEON ENERGY",
+      "rationale": "The Friday party has a dress theme, Neon Energy."
+     }
+    ]
+   }
+  ]
+ }
 }

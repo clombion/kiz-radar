@@ -1,47 +1,56 @@
 {
- "batch": "event-15933",
- "events": [
-  {
-   "event_id": 15933,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 75.0,
-       "currency": "USD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "2025-07-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "$75 Believer Passes Available through July 31, 2025!"
-      },
-      {
-       "amount": 100.0,
-       "currency": "USD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "2026-03-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "$100 Early Bird Passes Available through March 31, 2026!"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:42:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "31a57a26b456bad1",
+ "answer": {
+  "batch": "event-15933",
+  "events": [
+   {
+    "event_id": 15933,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 75.0,
+        "currency": "USD",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "2025-07-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "$75 Believer Passes Available through July 31, 2025!"
+       },
+       {
+        "amount": 100.0,
+        "currency": "USD",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "2026-03-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "$100 Early Bird Passes Available through March 31, 2026!"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

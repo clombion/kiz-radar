@@ -1,0 +1,13 @@
+{
+ "key_a": "p:anastasia@anastasia+selim",
+ "key_b": "p:anastasiia@anastasiia+flowly",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "575c4bff38ad8d67",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two records have different partners (selim versus flowly) and their stated countries overlap only in UA, with event countries that do not meet (Germany, Hungary, Kazakhstan, Poland versus Belgium, France), so the evidence shows two different couples rather than one artist."
+ }
+}

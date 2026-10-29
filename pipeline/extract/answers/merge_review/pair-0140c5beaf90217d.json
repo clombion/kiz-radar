@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mirokikola",
+ "key_b": "p:mironikola",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0140c5beaf90217d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side B is a single Spain mention of 'Miro Nikola' with no country, style or partner, while side A is 'Miro Kikola' across many events; the K/N difference could be a typo of a distinctive name, but 'Nikola' is also a real name and the only shared link is a Spain event, which is too weak to settle it."
+ }
+}

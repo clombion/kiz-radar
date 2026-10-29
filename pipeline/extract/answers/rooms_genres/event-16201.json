@@ -1,88 +1,89 @@
 {
- "batch": "event-16201",
- "events": [
-  {
-   "event_id": 16201,
-   "party_rooms": {
-    "count": 7,
-    "quote": "7+ Ballrooms of Dancing Nightly"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "(Salsa, 2 Bachata Rooms"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "e20dd02d076b4818",
+ "answer": {
+  "batch": "event-16201",
+  "events": [
+   {
+    "event_id": 16201,
+    "party_rooms": {
+     "count": 7,
+     "quote": "7+ Ballrooms of Dancing Nightly"
     },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "2 Bachata Rooms"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "zouk"
-     ],
-     "quote": "Zouk"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "Kizomba"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "salsa",
-      "other"
-     ],
-     "quote": "Cuban Salsa/Rueda"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "DCBX is BACHATA"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "DCBX is SALSA"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "DCBX is KIZOMBA & URBAN KIZ"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBAN KIZ",
-     "quote": "DCBX is KIZOMBA & URBAN KIZ"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "ZOUK",
-     "quote": "DCBX is ZOUK"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Rueda",
-     "quote": "Cuban Salsa/Rueda"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Salsa",
+      "kind": "party",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "7+ Ballrooms of Dancing Nightly (Salsa, 2 Bachata Rooms, Zouk, Kizomba, Cuban Salsa/Rueda, & More)"
+     },
+     {
+      "name_as_written": "2 Bachata Rooms",
+      "kind": "party",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "7+ Ballrooms of Dancing Nightly (Salsa, 2 Bachata Rooms, Zouk, Kizomba, Cuban Salsa/Rueda, & More)"
+     },
+     {
+      "name_as_written": "Zouk",
+      "kind": "party",
+      "genres": [
+       "zouk"
+      ],
+      "quote": "7+ Ballrooms of Dancing Nightly (Salsa, 2 Bachata Rooms, Zouk, Kizomba, Cuban Salsa/Rueda, & More)"
+     },
+     {
+      "name_as_written": "Kizomba",
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "7+ Ballrooms of Dancing Nightly (Salsa, 2 Bachata Rooms, Zouk, Kizomba, Cuban Salsa/Rueda, & More)"
+     },
+     {
+      "name_as_written": "Cuban Salsa/Rueda",
+      "kind": "party",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "7+ Ballrooms of Dancing Nightly (Salsa, 2 Bachata Rooms, Zouk, Kizomba, Cuban Salsa/Rueda, & More)"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "DCBX is BACHATA"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "SALSA",
+      "quote": "DCBX is SALSA"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "DCBX is KIZOMBA & URBAN KIZ"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBAN KIZ",
+      "quote": "DCBX is KIZOMBA & URBAN KIZ"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "ZOUK",
+      "quote": "DCBX is ZOUK"
+     }
+    ]
+   }
+  ]
+ }
 }

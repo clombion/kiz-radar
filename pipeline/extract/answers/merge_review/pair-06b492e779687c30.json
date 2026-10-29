@@ -1,0 +1,13 @@
+{
+ "key_a": "p:celine@celine+josue",
+ "key_b": "p:celine@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "06b492e779687c30",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Key A's side has no mentions in the pair data and key B's side is a generic first name 'CELINE' with stated countries BE, FR and IT, with no shared partner or distinctive stage name linking it to the other side, so the evidence does not settle whether these are one artist or several people sharing a common name."
+ }
+}

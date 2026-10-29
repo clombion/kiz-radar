@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jorge@jorge+rocio",
+ "key_b": "p:jorgeaz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d56b5e8798935cda",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records share countries (ES, PT) and the Spain event, but 'JORGE' is a common first name, side A has no visible mentions, and its only partner (rocio) does not appear on side B, so the evidence does not settle whether 'JORGE' is 'JORGE AZ'."
+ }
+}

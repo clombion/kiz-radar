@@ -1,0 +1,13 @@
+{
+ "key_a": "p:judit@judit+radu",
+ "key_b": "p:judith@judith+radu",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "eb269e16f98e4e53",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the same partner Radu within the couple form (judit+radu vs judith+radu), both list Romania as their country, and the name difference is a spelling variant (Judit/Judith), so this is most likely one artist."
+ }
+}

@@ -1,31 +1,33 @@
 {
- "batch": "event-16390",
- "events": [
-  {
-   "event_id": 16390,
-   "artists": [],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "Onsite accommodation is back!",
-     "rationale": "The description places the event and on-campus rooms at the same home base, so the parties and accommodation share one venue."
-    },
-    {
-     "feature": "workshops",
-     "quote": "3 Days of Inspiring Classes & Workshops",
-     "rationale": "The listed highlights include three days of classes and workshops as part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "2 Outdoor Day Socials",
-     "rationale": "The event lists two outdoor day socials, which are daytime social events."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "International Taxi Team",
-     "rationale": "The highlights mention a taxi team, which indicates taxi dancers are present."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "c9f37bea996dfc0e",
+ "answer": {
+  "batch": "event-16390",
+  "events": [
+   {
+    "event_id": 16390,
+    "artists": [],
+    "features": [
+     {
+      "feature": "day_socials",
+      "quote": "2 Outdoor Day Socials",
+      "rationale": "The list of what awaits attendees includes two outdoor daytime socials."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "International Taxi Team",
+      "rationale": "An International Taxi Team is announced, which indicates taxi dancers are present."
+     },
+     {
+      "feature": "workshops",
+      "quote": "3 Days of Inspiring Classes & Workshops",
+      "rationale": "Dance classes and workshops are listed as part of the event over three days."
+     }
+    ]
+   }
+  ]
+ }
 }

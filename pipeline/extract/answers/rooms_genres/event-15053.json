@@ -1,28 +1,35 @@
 {
- "batch": "event-15053",
- "events": [
-  {
-   "event_id": 15053,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
-     "quote": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼",
-     "quote": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "𝘴𝘢𝘭𝘴𝘢",
-     "quote": "Charlie & Vero – 𝘴𝘢𝘭𝘴𝘢"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:01+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "530752bd2ad92f90",
+ "answer": {
+  "batch": "event-15053",
+  "events": [
+   {
+    "event_id": 15053,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼",
+      "quote": "𝘽𝘼𝘾𝙃𝘼𝙏𝘼"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼",
+      "quote": "𝙆𝙄𝙕𝙊𝙈𝘽𝘼"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "𝘴𝘢𝘭𝘴𝘢",
+      "quote": "Charlie & Vero – 𝘴𝘢𝘭𝘴𝘢"
+     }
+    ]
+   }
+  ]
+ }
 }

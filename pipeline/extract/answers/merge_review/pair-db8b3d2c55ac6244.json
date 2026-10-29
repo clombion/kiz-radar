@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dosanjos",
+ "key_b": "p:dosanos",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "db8b3d2c55ac6244",
+ "answer": {
+  "decision": "merge",
+  "rationale": "'DOS ANOS' and 'DOS ANJOS' differ by one letter in a distinctive stage name, and both sides list the same countries (Cabo Verde and Netherlands) with the same kizomba/semba style and the same Poland event, so this is a spelling variant of one artist."
+ }
+}

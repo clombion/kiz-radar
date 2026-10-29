@@ -1,0 +1,13 @@
+{
+ "key_a": "p:willy@lauriane+willy",
+ "key_b": "p:willyg",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f67e2c983f168b87",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is the bare first name 'WILLY' with a couple partner (lauriane) and events in Albania, Belgium and Italy, while side B is the stage name 'DJ Willy G' with no partners and events in France, Germany and Switzerland; both are stated as FR, but they share no event country and side A has no mention lines, so the evidence does not settle whether 'WILLY' is the same DJ."
+ }
+}

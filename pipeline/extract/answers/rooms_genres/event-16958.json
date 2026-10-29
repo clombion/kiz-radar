@@ -1,76 +1,83 @@
 {
- "batch": "event-16958",
- "events": [
-  {
-   "event_id": 16958,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 salles 3 ambiances"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "salle salsa",
-     "kind": "party",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "salle salsa"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "dbaa3bf5e9339582",
+ "answer": {
+  "batch": "event-16958",
+  "events": [
+   {
+    "event_id": 16958,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 salles 3 ambiances"
     },
-    {
-     "name_as_written": "bachata",
-     "kind": "party",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "bachata"
-    },
-    {
-     "name_as_written": "kizomba",
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "kizomba"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "urban kiz",
-     "quote": "whorshop urban kiz"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "kizomba",
-     "quote": "cours débutant kizomba"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "bachata",
-     "quote": "bachata"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "salsa",
-     "quote": "salle salsa"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "semba",
-     "quote": "cours de semba"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "Kiz Semba Kompa Zouk"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "Kiz Semba Kompa Zouk"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "salle salsa",
+      "kind": "party",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "salle salsa"
+     },
+     {
+      "name_as_written": "bachata",
+      "kind": "party",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "bachata"
+     },
+     {
+      "name_as_written": "kizomba",
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "kizomba"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "urban kiz",
+      "quote": "urban kiz"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "kizomba",
+      "quote": "cours débutant kizomba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "semba",
+      "quote": "cours de semba"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "Kiz Semba Kompa Zouk"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Zouk",
+      "quote": "Kiz Semba Kompa Zouk"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "salsa",
+      "quote": "salle salsa"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "bachata",
+      "quote": "bachata"
+     }
+    ]
+   }
+  ]
+ }
 }

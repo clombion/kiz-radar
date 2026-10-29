@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sani@dance",
+ "key_b": "p:sanigroove",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "03be3f9113ecebb3",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side A 'SANI' (CZ, urban kizomba/tarraxo) and side B 'SANI GROOVE' (CZ, GH, kizomba/semba) share the distinctive stage name SANI, both are teachers, and the GROOVE suffix is consistent with the same CZ-based artist whose stated country matches on both sides, so the extra word is likely a fuller stage name rather than a different person."
+ }
+}

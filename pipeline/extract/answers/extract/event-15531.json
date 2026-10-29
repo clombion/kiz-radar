@@ -1,88 +1,95 @@
 {
- "batch": "event-15531",
- "events": [
-  {
-   "event_id": 15531,
-   "artists": [
-    {
-     "name_as_written": "Rico Suave & Manon",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
-    },
-    {
-     "name_as_written": "Carlos Camba & Anna",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
-    },
-    {
-     "name_as_written": "Tony Viser & Carla",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
-    },
-    {
-     "name_as_written": "Mara & Andy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
-    },
-    {
-     "name_as_written": "Boris & Xenia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
-    },
-    {
-     "name_as_written": "DJ HUGO BOSS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ HUGO BOSS DJ Carlos KinG"
-    },
-    {
-     "name_as_written": "DJ Carlos KinG",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ HUGO BOSS DJ Carlos KinG"
-    },
-    {
-     "name_as_written": "Kizomba Academy",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Your Kizomba Academy Team ❤️"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "We’ve prepared a minimum of 18+ hours of workshops for you (Kizomba, Semba, AfroHouse and more)",
-     "rationale": "The description states that a minimum of 18+ hours of workshops is prepared for attendees."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Accommodation for 2 nights in a luxury room",
-     "rationale": "The early bird hotel package includes two nights of accommodation."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Breakfast + Unlimited Wellness",
-     "rationale": "The early bird hotel package includes breakfast."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "Stay right in the center of the action in the beautiful setting of Hotel Pod Lipou Resort.",
-     "rationale": "Accommodation is offered at the same resort hotel where the event takes place."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "919d5d220f26d07c",
+ "answer": {
+  "batch": "event-15531",
+  "events": [
+   {
+    "event_id": 15531,
+    "artists": [
+     {
+      "name_as_written": "Rico Suave & Manon",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
+     },
+     {
+      "name_as_written": "Carlos Camba & Anna",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
+     },
+     {
+      "name_as_written": "Tony Viser & Carla",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
+     },
+     {
+      "name_as_written": "Mara & Andy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
+     },
+     {
+      "name_as_written": "Boris & Xenia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Rico Suave & Manon Carlos Camba & Anna Tony Viser & Carla Mara & Andy Boris & Xenia"
+     },
+     {
+      "name_as_written": "DJ HUGO BOSS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ HUGO BOSS DJ Carlos KinG"
+     },
+     {
+      "name_as_written": "DJ Carlos KinG",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ HUGO BOSS DJ Carlos KinG"
+     },
+     {
+      "name_as_written": "Kizomba Academy Team",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Your Kizomba Academy Team ❤️"
+     }
+    ],
+    "features": [
+     {
+      "feature": "accommodation_included",
+      "quote": "EARLY BIRD HOTEL PACKAGE: Accommodation for 2 nights in a luxury room + Breakfast + Unlimited Wellness.",
+      "rationale": "The hotel package explicitly includes accommodation for two nights."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "Stay right in the center of the action in the beautiful setting of Hotel Pod Lipou Resort.",
+      "rationale": "The accommodation is at the same resort hotel where the event is held, so event and stay share one venue."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "We offer flexible meal packages (Friday dinner + Saturday lunch/dinner).",
+      "rationale": "Meals are offered as a package covering specific dinners and lunches."
+     },
+     {
+      "feature": "workshops",
+      "quote": "18+ hours of workshops for you",
+      "rationale": "The event explicitly provides a minimum of 18 hours of dance workshops."
+     }
+    ]
+   }
+  ]
+ }
 }

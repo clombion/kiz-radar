@@ -1,0 +1,13 @@
+{
+ "key_a": "p:lamin@dj",
+ "key_b": "p:laminlami",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "4bb754ad8a5aa55c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are DJs stated as Czech (CZ) and both appear at Austrian events, so the country and role match, but side B's longer name 'DJ LAMIN LAMI' has only one event and no partners, and 'Lamin' is a fairly common first name, so the evidence does not establish whether this is the same artist."
+ }
+}

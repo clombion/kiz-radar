@@ -1,0 +1,13 @@
+{
+ "key_a": "p:chris@chris+yasmin",
+ "key_b": "p:chriswillshire",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "adbbb95d8f95b603",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides list Australia, and 'Chris' is a common first name with a partner (yasmin) that 'Chris Willshire' does not share, while the events are in different countries (New Caledonia vs Philippines), so the evidence does not establish whether the short 'Chris' is the full-name artist."
+ }
+}

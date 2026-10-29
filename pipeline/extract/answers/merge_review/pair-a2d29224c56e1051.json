@@ -1,0 +1,13 @@
+{
+ "key_a": "p:natalia@alessio+natalia",
+ "key_b": "p:natalia@andrea+natalia",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "a2d29224c56e1051",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides share only the first name Natalia and the Italian country; each is tied to a different partner (Alessio versus Andrea), and their events are in different places (Germany versus Italy), so the evidence points to two artists."
+ }
+}

@@ -1,164 +1,176 @@
 {
- "batch": "event-14491",
- "events": [
-  {
-   "event_id": 14491,
-   "artists": [
-    {
-     "name_as_written": "Maiza & Telma",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "🔘 Maiza & Telma 🇦🇴"
-    },
-    {
-     "name_as_written": "Nelson Lima",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "🔘 Nelson Lima (straight from Angola)🇦🇴"
-    },
-    {
-     "name_as_written": "Tony Viser & Carla Andrade",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇨🇻",
-     "source_line": "🔘 Tony Viser & Carla Andrade 🇦🇴🇨🇻"
-    },
-    {
-     "name_as_written": "Ary & Maura",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "🔘 Ary & Maura 🇦🇴"
-    },
-    {
-     "name_as_written": "Fanio de Araujo",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "🔘 Fanio de Araujo 🇦🇴"
-    },
-    {
-     "name_as_written": "Elhadj & Jenna",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇮🇫🇷",
-     "source_line": "🔘 Elhadj & Jenna 🇨🇮🇫🇷"
-    },
-    {
-     "name_as_written": "Braulia Chieta",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇵🇱",
-     "source_line": "🔘 Braulia Chieta 🇦🇴🇵🇱"
-    },
-    {
-     "name_as_written": "Stephane Lyke & Ana Maria Stoica",
-     "role": "teacher",
-     "style": null,
-     "country": "🇧🇪🇷🇴",
-     "source_line": "🔘 Stephane Lyke & Ana Maria Stoica 🇧🇪🇷🇴"
-    },
-    {
-     "name_as_written": "N-Py Da Baila",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "🔘 N-Py Da Baila 🇦🇴"
-    },
-    {
-     "name_as_written": "Dj Miro Kikola",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴🇬🇧",
-     "source_line": "🎧 Dj Miro Kikola 🇦🇴🇬🇧"
-    },
-    {
-     "name_as_written": "Dj Bakongo",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴🇵🇹",
-     "source_line": "🎧 Dj Bakongo 🇦🇴🇵🇹"
-    },
-    {
-     "name_as_written": "Dj Sabura",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🎧 Dj Sabura 🇵🇹"
-    },
-    {
-     "name_as_written": "Dj Kapitula",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴🇳🇱",
-     "source_line": "🎧 Dj Kapitula 🇦🇴🇳🇱"
-    },
-    {
-     "name_as_written": "Dj Ecozinho",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴🇩🇪",
-     "source_line": "🎧 Dj Ecozinho 🇦🇴🇩🇪"
-    },
-    {
-     "name_as_written": "Dj Vasco",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 Dj Vasco 🇫🇷"
-    },
-    {
-     "name_as_written": "Dj Hugo Boss",
-     "role": "dj",
-     "style": null,
-     "country": "🇲🇿",
-     "source_line": "🎧 Dj Hugo Boss 🇲🇿"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE, Brussels",
-     "rationale": "The event is described as all in one, and the parties take place in the Main Hotel where dancers sleep."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 different rooms and vibes:",
-     "rationale": "The description states there are three different dance rooms."
-    },
-    {
-     "feature": "workshops",
-     "quote": "11:00 – 16:00 workshops",
-     "rationale": "Workshops are listed in the schedule for Saturday and Sunday."
-    },
-    {
-     "feature": "live_music",
-     "quote": "16:00 – 20:00 Social + Live concert",
-     "rationale": "A live concert is scheduled during the event."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "𝖬𝖠𝖲𝖳𝖤𝖱𝖢𝖫𝖠𝖲𝖲ES",
-     "rationale": "A masterclasses section heading appears in the description."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Thursday 15.01: 𝖯𝗋𝖾𝗉𝖺𝗋𝗍𝗒",
-     "rationale": "A Preparty is scheduled on Thursday before the main event."
-    },
-    {
-     "feature": "after_party",
-     "quote": "Monday 19.01: After𝗉𝖺𝗋𝗍𝗒",
-     "rationale": "An afterparty is scheduled on Monday after the main event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "16:00 – 20:00 Social",
-     "rationale": "Afternoon social sessions are scheduled on the event days."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:22:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "9c7c24b42d197f8d",
+ "answer": {
+  "batch": "event-14491",
+  "events": [
+   {
+    "event_id": 14491,
+    "artists": [
+     {
+      "name_as_written": "Maiza & Telma",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "🔘 Maiza & Telma 🇦🇴"
+     },
+     {
+      "name_as_written": "Nelson Lima",
+      "role": "teacher",
+      "style": null,
+      "country": "Angola",
+      "source_line": "🔘 Nelson Lima (straight from Angola)🇦🇴"
+     },
+     {
+      "name_as_written": "Tony Viser & Carla Andrade",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇨🇻",
+      "source_line": "🔘 Tony Viser & Carla Andrade 🇦🇴🇨🇻"
+     },
+     {
+      "name_as_written": "Ary & Maura",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "🔘 Ary & Maura 🇦🇴"
+     },
+     {
+      "name_as_written": "Fanio de Araujo",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "🔘 Fanio de Araujo 🇦🇴"
+     },
+     {
+      "name_as_written": "Elhadj & Jenna",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇮🇫🇷",
+      "source_line": "🔘 Elhadj & Jenna 🇨🇮🇫🇷"
+     },
+     {
+      "name_as_written": "Braulia Chieta",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇵🇱",
+      "source_line": "🔘 Braulia Chieta 🇦🇴🇵🇱"
+     },
+     {
+      "name_as_written": "Stephane Lyke & Ana Maria Stoica",
+      "role": "teacher",
+      "style": null,
+      "country": "🇧🇪🇷🇴",
+      "source_line": "🔘 Stephane Lyke & Ana Maria Stoica 🇧🇪🇷🇴"
+     },
+     {
+      "name_as_written": "N-Py Da Baila",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "🔘 N-Py Da Baila 🇦🇴"
+     },
+     {
+      "name_as_written": "Dj Miro Kikola",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴🇬🇧",
+      "source_line": "🎧 Dj Miro Kikola 🇦🇴🇬🇧"
+     },
+     {
+      "name_as_written": "Dj Bakongo",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴🇵🇹",
+      "source_line": "🎧 Dj Bakongo 🇦🇴🇵🇹"
+     },
+     {
+      "name_as_written": "Dj Sabura",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🎧 Dj Sabura 🇵🇹"
+     },
+     {
+      "name_as_written": "Dj Kapitula",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴🇳🇱",
+      "source_line": "🎧 Dj Kapitula 🇦🇴🇳🇱"
+     },
+     {
+      "name_as_written": "Dj Ecozinho",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴🇩🇪",
+      "source_line": "🎧 Dj Ecozinho 🇦🇴🇩🇪"
+     },
+     {
+      "name_as_written": "Dj Vasco",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 Dj Vasco 🇫🇷"
+     },
+     {
+      "name_as_written": "Dj Hugo Boss",
+      "role": "dj",
+      "style": null,
+      "country": "🇲🇿",
+      "source_line": "🎧 Dj Hugo Boss 🇲🇿"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "EAT | DANCE | SLEEP | REPEAT",
+      "rationale": "The slogan and the 'Main Hotel' schedule show that the parties take place in the hotel where dancers sleep."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Van Der Valk Hotel Brussels Airport ****",
+      "rationale": "The event names a specific hotel as its venue, where dancers are also invited to stay."
+     },
+     {
+      "feature": "workshops",
+      "quote": "11:00 – 16:00 workshops",
+      "rationale": "The schedule lists daytime workshops as part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "16:00 – 20:00 Social",
+      "rationale": "The schedule lists afternoon social sessions each day."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Live concert",
+      "rationale": "The schedule includes a live concert on Saturday and Sunday."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 different rooms and vibes",
+      "rationale": "The description states there are three separate rooms with different music."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Thursday 15.01:",
+      "rationale": "A Thursday Preparty is listed before the main Friday to Sunday event."
+     },
+     {
+      "feature": "after_party",
+      "quote": "Monday 19.01:",
+      "rationale": "A Monday Afterparty is listed after the main event."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "𝖬𝖠𝖲𝖳𝖤𝖱𝖢𝖫𝖠𝖲𝖲ES",
+      "rationale": "A masterclasses section is listed in the description."
+     }
+    ]
+   }
+  ]
+ }
 }

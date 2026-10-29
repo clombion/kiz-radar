@@ -247,7 +247,6 @@ def test_a_refresh_adds_the_new_festivals_and_keeps_the_gone_with_their_rows(
             Kept(listing=Listing.GONE, unlisted_on=today().isoformat())
         ]
         assert rows_of(db, gone) == before  # its plans and links still hold
-        assert db.column(str, 'select reason from pending_extraction where event_id = ?', (new,)) == ['new']
         assert db.column(str, 'select image_url from events where id = ?', (new,)) == [POSTER]
         links = set(db.column(str, 'select url from event_links where event_id = ?', (new,)))
         assert links == {'https://www.facebook.com/events/1', 'https://www.instagram.com/x'}
@@ -340,15 +339,3 @@ def test_a_list_far_shorter_than_before_stops_before_deleting(tmp_path: Path, mo
     with pytest.raises(SystemExit, match='far fewer events'):
         run(scrape.main, monkeypatch)
     assert content(src) == before
-
-
-def test_a_pending_festival_changed_again_waits_from_its_latest_change(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    src, new = with_new(monkeypatch, "update pending_extraction set since = '2026-01-01' where event_id = ?")
-    site(monkeypatch, [NEW | {'description': '<p>Hello again</p>', 'modified': '2026-10-20 10:00:00'}])
-    run(scrape.main, monkeypatch)
-    with sqlite_db.opened(src, 'ro') as db:
-        reasons = db.column(str, 'select reason from pending_extraction where event_id = ?', (new,))
-        since = db.column(str, 'select since from pending_extraction where event_id = ?', (new,))
-    assert (reasons, since) == (['new'], [today().isoformat()])  # still new to the passes

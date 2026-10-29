@@ -1,0 +1,13 @@
+{
+ "key_a": "p:eddy@dance",
+ "key_b": "p:eddy@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "54b8ac9066255e0a",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both keys state Hungary as their country, and at the shared Austria event 14906 the teacher 'EDDY' and the DJ 'DJ EDDY' appear with the same flag, matching the DJ-prefix-plus-same-country pattern; the generic name keeps this somewhat uncertain, but the evidence favors one artist."
+ }
+}

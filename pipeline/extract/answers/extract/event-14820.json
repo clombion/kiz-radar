@@ -1,21 +1,28 @@
 {
- "batch": "event-14820",
- "events": [
-  {
-   "event_id": 14820,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "3 days of festivities, workshops, and a gala show.",
-     "rationale": "The description states that workshops are part of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "3 days of festivities, workshops, and a gala show.",
-     "rationale": "A gala show is mentioned as part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0bb8c8715a7c20e2",
+ "answer": {
+  "batch": "event-14820",
+  "events": [
+   {
+    "event_id": 14820,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "3 days of festivities, workshops, and a gala show.",
+      "rationale": "The description states that dance workshops are part of the three-day event."
+     },
+     {
+      "feature": "shows",
+      "quote": "a gala show",
+      "rationale": "The description mentions a gala show as part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

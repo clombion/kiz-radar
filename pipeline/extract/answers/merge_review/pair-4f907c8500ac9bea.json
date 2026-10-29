@@ -1,0 +1,13 @@
+{
+ "key_a": "p:paolomeli",
+ "key_b": "p:paolomieli",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "4f907c8500ac9bea",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The surnames 'Meli' and 'Mieli' differ by one letter, and both sides are listed in Italy, but side B has no partner while side A is partnered with luciatramonte, and side A's mentions are empty, so no shared event or partner confirms either a merge or a separation."
+ }
+}

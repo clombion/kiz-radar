@@ -1,83 +1,94 @@
 {
- "batch": "event-15557",
- "events": [
-  {
-   "event_id": 15557,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 950.0,
-       "currency": "NOK",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "Leader – 950kr– SOLD OUT"
-      },
-      {
-       "amount": 1200.0,
-       "currency": "NOK",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Leader – 1200kr– AVAILABLE"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 1800.0,
-       "currency": "NOK",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "Couple Pass – 1800kr— SOLD OUT"
-      },
-      {
-       "amount": 2400.0,
-       "currency": "NOK",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Couple Pass – 2400kr— AVAILABLE"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:42:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "4d9cf47874a365ac",
+ "answer": {
+  "batch": "event-15557",
+  "events": [
+   {
+    "event_id": 15557,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 950.0,
+        "currency": "NOK",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": true,
+        "quote": "💥 Leader – 950kr– SOLD OUT"
+       },
+       {
+        "amount": 1200.0,
+        "currency": "NOK",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "💥 Leader – 1200kr– AVAILABLE"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 1800.0,
+        "currency": "NOK",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": true,
+        "quote": "💥 Couple Pass – 1800kr— SOLD OUT"
+       },
+       {
+        "amount": 2400.0,
+        "currency": "NOK",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "💥 Couple Pass – 2400kr— AVAILABLE"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

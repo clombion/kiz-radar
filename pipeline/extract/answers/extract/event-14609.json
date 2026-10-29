@@ -1,107 +1,119 @@
 {
- "batch": "event-14609",
- "events": [
-  {
-   "event_id": 14609,
-   "artists": [
-    {
-     "name_as_written": "Mestre Petchu",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👣 Mestre Petchu"
-    },
-    {
-     "name_as_written": "Zé Rui & Elena",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👣 Zé Rui & Elena"
-    },
-    {
-     "name_as_written": "Zé Barbosa & Marta",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👣 Zé Barbosa & Marta"
-    },
-    {
-     "name_as_written": "Marcos & Anita",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👣 Marcos & Anita"
-    },
-    {
-     "name_as_written": "Capitão & Pris",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👣 Capitão & Pris"
-    },
-    {
-     "name_as_written": "Lukasz & Karolina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "👣 Lukasz & Karolina (Vamula)"
-    },
-    {
-     "name_as_written": "MIKAS CABRAL",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "✨Live Concert with MIKAS CABRAL"
-    },
-    {
-     "name_as_written": "King",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧King"
-    },
-    {
-     "name_as_written": "Kazukuta",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧Kazukuta"
-    },
-    {
-     "name_as_written": "Sarai",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧Sarai"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "VENUE LOCATION ( All in One )",
-     "rationale": "The venue is labelled All in One, with the parties held at the hotel where dancers can stay."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Live Concert with MIKAS CABRAL",
-     "rationale": "A live concert by a named artist is part of the event highlights."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "1 Pre-Party.",
-     "rationale": "The highlights list a pre-party before the festival."
-    },
-    {
-     "feature": "after_party",
-     "quote": "1 After-Party.",
-     "rationale": "The highlights list an after-party."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Top national and international instructors.",
-     "rationale": "Instructors teaching at the festival imply dance classes as part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:06+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "3bd0e2f8a328c44a",
+ "answer": {
+  "batch": "event-14609",
+  "events": [
+   {
+    "event_id": 14609,
+    "artists": [
+     {
+      "name_as_written": "MIKAS CABRAL",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "✨Live Concert with MIKAS CABRAL"
+     },
+     {
+      "name_as_written": "Mestre Petchu",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👣 Mestre Petchu"
+     },
+     {
+      "name_as_written": "Zé Rui & Elena",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👣 Zé Rui & Elena"
+     },
+     {
+      "name_as_written": "Zé Barbosa & Marta",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👣 Zé Barbosa & Marta"
+     },
+     {
+      "name_as_written": "Marcos & Anita",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👣 Marcos & Anita"
+     },
+     {
+      "name_as_written": "Capitão & Pris",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👣 Capitão & Pris"
+     },
+     {
+      "name_as_written": "Lukasz & Karolina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "👣 Lukasz & Karolina (Vamula)"
+     },
+     {
+      "name_as_written": "King",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧King"
+     },
+     {
+      "name_as_written": "Kazukuta",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧Kazukuta"
+     },
+     {
+      "name_as_written": "Sarai",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧Sarai"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "VENUE LOCATION ( All in One )",
+      "rationale": "The venue is stated as the hotel itself, so the parties take place where dancers stay."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Live Concert with MIKAS CABRAL",
+      "rationale": "A live concert with a named artist is part of the event."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "1 Pre-Party.",
+      "rationale": "The highlights list a pre-party before the festival."
+     },
+     {
+      "feature": "after_party",
+      "quote": "1 After-Party.",
+      "rationale": "The highlights list an after-party."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Top national and international instructors.",
+      "rationale": "Instructors teaching classes indicate dance workshops are part of the event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Single, double and triple rooms with breakfast available, with a minimum stay of 2 nights.",
+      "rationale": "Rooms at the venue hotel are offered at a negotiated rate, separate from the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

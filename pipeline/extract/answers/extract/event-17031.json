@@ -1,44 +1,38 @@
 {
- "batch": "event-17031",
- "events": [
-  {
-   "event_id": 17031,
-   "artists": [
-    {
-     "name_as_written": "Fire Dance",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "400 Euro discount for Fire Dance subscriptors"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Dance classes",
-     "rationale": "The description lists dance classes as part of the trip."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "For beginners and experienced level",
-     "rationale": "The lessons are explicitly stated to suit beginners and experienced dancers."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "12 nights hotel + breakfast",
-     "rationale": "The inclusive list states that hotel nights are part of the package."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "12 nights hotel + breakfast",
-     "rationale": "Breakfast is included in the package, and only meals other than breakfast are excluded."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Transport to social parties",
-     "rationale": "The package includes transport to the social parties."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:31:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "93c0bfd41558c163",
+ "answer": {
+  "batch": "event-17031",
+  "events": [
+   {
+    "event_id": 17031,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "24 hour Latin dance lessons (Bachata/Salsa/Kizomba)",
+      "rationale": "The inclusive package lists dance lessons in Bachata, Salsa and Kizomba."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "For beginners and experienced level",
+      "rationale": "The description explicitly says the lessons suit beginners as well as experienced dancers."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "12 nights hotel + breakfast",
+      "rationale": "The inclusive list gives hotel nights as part of the package."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Transport to social parties",
+      "rationale": "Transport to the social parties is listed as included."
+     }
+    ]
+   }
+  ]
+ }
 }

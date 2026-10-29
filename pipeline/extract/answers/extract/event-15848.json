@@ -1,123 +1,123 @@
 {
- "batch": "event-15848",
- "events": [
-  {
-   "event_id": 15848,
-   "artists": [
-    {
-     "name_as_written": "Vanessa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "〰 Vanessa"
-    },
-    {
-     "name_as_written": "Evaldo & Daniela",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "〰 Evaldo & Daniela"
-    },
-    {
-     "name_as_written": "Elhadj & Jenna",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "〰 Elhadj & Jenna"
-    },
-    {
-     "name_as_written": "Mams",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "〰 Mams"
-    },
-    {
-     "name_as_written": "Issa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "〰 Issa"
-    },
-    {
-     "name_as_written": "Jamba",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "〰 Jamba"
-    },
-    {
-     "name_as_written": "NZO Pablo",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "〰️ NZO Pablo"
-    },
-    {
-     "name_as_written": "Dj Xavix",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "〰 Dj Xavix"
-    },
-    {
-     "name_as_written": "Dj Marlinho",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "〰 Dj Marlinho"
-    },
-    {
-     "name_as_written": "Dj Mous",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "〰 Dj Mous"
-    },
-    {
-     "name_as_written": "Dj Mams",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "〰 Dj Mams"
-    },
-    {
-     "name_as_written": "Dj Yha",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "〰 Dj Yha"
-    },
-    {
-     "name_as_written": "Kianda Festival Switzerland",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "(c) 2025 Kianda Festival Switzerland. Änderungen vorbehalten. Sous réserve de modifications. Subject to change."
-    }
-   ],
-   "features": [
-    {
-     "feature": "partner_hotel",
-     "quote": "City Hotel Biel Bienne",
-     "rationale": "The description names City Hotel Biel Bienne as the Kianda partner hotel with a discount link, without saying accommodation is part of the pass."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Next-level workshops.",
-     "rationale": "The description advertises workshops as part of the event, and the programme lists Workshops."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Party Dress Code: to be announced",
-     "rationale": "The description states a party dress code, even though its details are still to be announced."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "SOCIAL PARTY & FAREWELL",
-     "rationale": "This is a daytime social party scheduled from 15:00 to 19:00 on Day 3."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "cdff97c1fbe78c76",
+ "answer": {
+  "batch": "event-15848",
+  "events": [
+   {
+    "event_id": 15848,
+    "artists": [
+     {
+      "name_as_written": "Vanessa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "〰 Vanessa"
+     },
+     {
+      "name_as_written": "Evaldo & Daniela",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "〰 Evaldo & Daniela"
+     },
+     {
+      "name_as_written": "Elhadj & Jenna",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "〰 Elhadj & Jenna"
+     },
+     {
+      "name_as_written": "Mams",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "〰 Mams"
+     },
+     {
+      "name_as_written": "Issa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "〰 Issa"
+     },
+     {
+      "name_as_written": "Jamba",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "〰 Jamba"
+     },
+     {
+      "name_as_written": "NZO Pablo",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "〰️ NZO Pablo"
+     },
+     {
+      "name_as_written": "Dj Xavix",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "〰 Dj Xavix"
+     },
+     {
+      "name_as_written": "Dj Marlinho",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "〰 Dj Marlinho"
+     },
+     {
+      "name_as_written": "Dj Mous",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "〰 Dj Mous"
+     },
+     {
+      "name_as_written": "Dj Mams",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "〰 Dj Mams"
+     },
+     {
+      "name_as_written": "Dj Yha",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "〰 Dj Yha"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Next-level workshops",
+      "rationale": "The description promotes next-level workshops as part of the festival."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "SOCIAL PARTY & FAREWELL",
+      "rationale": "A daytime social party from 15:00 to 19:00 is listed on Day 3."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Party Dress Code: to be announced",
+      "rationale": "The description states that parties have a dress code, though details are to be announced."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Save 13% by using this link TBC",
+      "rationale": "A partner hotel, City Hotel Biel Bienne, is given with a negotiated discount rate, and the accommodation is not stated as part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

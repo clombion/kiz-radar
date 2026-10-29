@@ -1,48 +1,55 @@
 {
- "batch": "event-14501",
- "events": [
-  {
-   "event_id": 14501,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "• Urban Kiz"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "• Tarraxo"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghetto Zouk",
-     "quote": "• Ghetto Zouk"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "• Douceur"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba & Semba",
-     "quote": "• Kizomba & Semba"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Kizomba & Semba",
-     "quote": "• Kizomba & Semba"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrobeat",
-     "quote": "• Afrobeat"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "9e6b4f0c7dddf47c",
+ "answer": {
+  "batch": "event-14501",
+  "events": [
+   {
+    "event_id": 14501,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "• Urban Kiz"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "• Tarraxo"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghetto Zouk",
+      "quote": "• Ghetto Zouk"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "• Douceur"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba & Semba",
+      "quote": "• Kizomba & Semba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Kizomba & Semba",
+      "quote": "• Kizomba & Semba"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrobeat",
+      "quote": "• Afrobeat"
+     }
+    ]
+   }
+  ]
+ }
 }

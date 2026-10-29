@@ -1,286 +1,288 @@
 {
- "batch": "event-19060",
- "events": [
-  {
-   "event_id": 19060,
-   "artists": [
-    {
-     "name_as_written": "Ofir & Ofri",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⚜ Ofir & Ofri"
-    },
-    {
-     "name_as_written": "Agustin & Alba",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⚜ Agustin & Alba"
-    },
-    {
-     "name_as_written": "York & Lisa",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⚜ York & Lisa"
-    },
-    {
-     "name_as_written": "Anita & Varea",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⚜ Anita & Varea"
-    },
-    {
-     "name_as_written": "Sia & Rezi",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⚜ Sia & Rezi"
-    },
-    {
-     "name_as_written": "Umeko & Otho",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⚜ Umeko & Otho"
-    },
-    {
-     "name_as_written": "Claudio",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⚜ Claudio"
-    },
-    {
-     "name_as_written": "Ronie Saleh",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⚜ Ronie Saleh"
-    },
-    {
-     "name_as_written": "Emigen & Emanuela",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⚜ Emigen & Emanuela"
-    },
-    {
-     "name_as_written": "Jesus Ortiz",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⚜ Jesus Ortiz"
-    },
-    {
-     "name_as_written": "Sergio & Gabby",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⚜ Sergio & Gabby"
-    },
-    {
-     "name_as_written": "Ezequiel & Julia",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⚜ Ezequiel & Julia"
-    },
-    {
-     "name_as_written": "Moorea",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⚜Moorea"
-    },
-    {
-     "name_as_written": "Luis & Karen",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⚜Luis & Karen"
-    },
-    {
-     "name_as_written": "Stephane",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⚜Stephane"
-    },
-    {
-     "name_as_written": "Mickaela",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⚜Mickaela"
-    },
-    {
-     "name_as_written": "Agnes",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⚜Agnes"
-    },
-    {
-     "name_as_written": "Elli",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⚜Elli"
-    },
-    {
-     "name_as_written": "DJ York",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🎶 DJ York"
-    },
-    {
-     "name_as_written": "DJ Nina",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🎶 DJ Nina"
-    },
-    {
-     "name_as_written": "DJ King",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🎶 DJ King"
-    },
-    {
-     "name_as_written": "DJ Valenz",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🎶 DJ Valenz"
-    },
-    {
-     "name_as_written": "DJ Den Megavolt",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🎶 DJ Den Megavolt"
-    },
-    {
-     "name_as_written": "DJ Neiken",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🎶 DJ Neiken"
-    },
-    {
-     "name_as_written": "DJ Al Nova",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🎶 DJ Al Nova"
-    },
-    {
-     "name_as_written": "DJ Laak",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🎶 DJ Laak"
-    },
-    {
-     "name_as_written": "DJ Joey C",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🎶 DJ Joey C"
-    },
-    {
-     "name_as_written": "DJ Traxx",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🎶 DJ Traxx"
-    },
-    {
-     "name_as_written": "Romero Productions",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📹 Romero Productions"
-    },
-    {
-     "name_as_written": "LDR productions",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📹 LDR productions"
-    },
-    {
-     "name_as_written": "El Gallo Photos",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📷 El Gallo Photos"
-    },
-    {
-     "name_as_written": "Club Mayambo Events",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "☛ Organized by: Club Mayambo Events"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "+30 hours of workshops",
-     "rationale": "The event lists more than 30 hours of workshops as part of what to expect."
-    },
-    {
-     "feature": "shows",
-     "quote": "Awe inspiring performances and show",
-     "rationale": "The description promises performances and a show by the artists."
-    },
-    {
-     "feature": "competition",
-     "quote": "Professional Jack & Jill Competition with prizes",
-     "rationale": "A Jack & Jill competition with prizes is announced."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3000m² dance floor with four floors",
-     "rationale": "Four floors of dance floor indicate more than one dance floor at the venue."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "pre-party included in our full pass",
-     "rationale": "A pre-party is offered and included in the full pass."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "afternoon socials",
-     "rationale": "Afternoon socials are listed as part of the programme."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Friday: Halloween Party",
-     "rationale": "The Friday night is a themed Halloween party."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Dress Codes",
-     "rationale": "A section titled Dress Codes lists the dress theme for each night."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "“Quality Hotel Strawberry Arena” in Solna",
-     "rationale": "The official venue is a named hotel in Solna."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "All parties and workshops in one amazing venue in the heart of Solna",
-     "rationale": "All parties and workshops take place in the same venue, which is the hotel."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:34:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "155a525db493da32",
+ "answer": {
+  "batch": "event-19060",
+  "events": [
+   {
+    "event_id": 19060,
+    "artists": [
+     {
+      "name_as_written": "Ofir & Ofri",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⚜ Ofir & Ofri"
+     },
+     {
+      "name_as_written": "Agustin & Alba",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⚜ Agustin & Alba"
+     },
+     {
+      "name_as_written": "York & Lisa",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⚜ York & Lisa"
+     },
+     {
+      "name_as_written": "Anita & Varea",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⚜ Anita & Varea"
+     },
+     {
+      "name_as_written": "Sia & Rezi",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⚜ Sia & Rezi"
+     },
+     {
+      "name_as_written": "Umeko & Otho",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⚜ Umeko & Otho"
+     },
+     {
+      "name_as_written": "Claudio",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⚜ Claudio"
+     },
+     {
+      "name_as_written": "Ronie Saleh",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⚜ Ronie Saleh"
+     },
+     {
+      "name_as_written": "Emigen & Emanuela",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⚜ Emigen & Emanuela"
+     },
+     {
+      "name_as_written": "Jesus Ortiz",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⚜ Jesus Ortiz"
+     },
+     {
+      "name_as_written": "Sergio & Gabby",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⚜ Sergio & Gabby"
+     },
+     {
+      "name_as_written": "Ezequiel & Julia",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⚜ Ezequiel & Julia"
+     },
+     {
+      "name_as_written": "Moorea",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⚜Moorea"
+     },
+     {
+      "name_as_written": "Luis & Karen",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⚜Luis & Karen"
+     },
+     {
+      "name_as_written": "Stephane",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⚜Stephane"
+     },
+     {
+      "name_as_written": "Mickaela",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⚜Mickaela"
+     },
+     {
+      "name_as_written": "Agnes",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⚜Agnes"
+     },
+     {
+      "name_as_written": "Elli",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⚜Elli"
+     },
+     {
+      "name_as_written": "DJ York",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "🎶 DJ York"
+     },
+     {
+      "name_as_written": "DJ Nina",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "🎶 DJ Nina"
+     },
+     {
+      "name_as_written": "DJ King",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "🎶 DJ King"
+     },
+     {
+      "name_as_written": "DJ Valenz",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "🎶 DJ Valenz"
+     },
+     {
+      "name_as_written": "DJ Den Megavolt",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "🎶 DJ Den Megavolt"
+     },
+     {
+      "name_as_written": "DJ Neiken",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🎶 DJ Neiken"
+     },
+     {
+      "name_as_written": "DJ Al Nova",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🎶 DJ Al Nova"
+     },
+     {
+      "name_as_written": "DJ Laak",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🎶 DJ Laak"
+     },
+     {
+      "name_as_written": "DJ Joey C",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🎶 DJ Joey C"
+     },
+     {
+      "name_as_written": "DJ Traxx",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🎶 DJ Traxx"
+     },
+     {
+      "name_as_written": "Romero Productions",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📹 Romero Productions"
+     },
+     {
+      "name_as_written": "LDR productions",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📹 LDR productions"
+     },
+     {
+      "name_as_written": "El Gallo Photos",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📷 El Gallo Photos"
+     },
+     {
+      "name_as_written": "Club Mayambo Events",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "☛ Organized by: Club Mayambo Events"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "+30 hours of workshops",
+      "rationale": "The event offers more than thirty hours of dance workshops."
+     },
+     {
+      "feature": "shows",
+      "quote": "Awe inspiring performances and show",
+      "rationale": "The description promises performances and a show by artists."
+     },
+     {
+      "feature": "competition",
+      "quote": "our social dance competition",
+      "rationale": "A social dance competition is part of the event."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "pre-party included in our full pass",
+      "rationale": "A pre-party is offered and included in the full pass."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "afternoon socials",
+      "rationale": "Afternoon socials are part of the programme."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Friday: Halloween Party",
+      "rationale": "Parties are themed, such as the Halloween night and the Sparkle & Glam Gala."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Thursday Preparty: Represent Your Flag",
+      "rationale": "The dress codes section states a dress theme for each night."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "All parties and workshops in one amazing venue in the heart of Solna",
+      "rationale": "Parties and workshops take place in one venue that is a hotel where dancers stay."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "a 5 minute walk to our hotel",
+      "rationale": "The festival names its own hotel as the recommended place to stay."
+     }
+    ]
+   }
+  ]
+ }
 }

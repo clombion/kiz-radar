@@ -1,52 +1,59 @@
 {
- "batch": "event-16628",
- "events": [
-  {
-   "event_id": 16628,
-   "artists": [
-    {
-     "name_as_written": "RockDance association",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Festival organized in partnership with the RockDance association of La Rochelle"
-    },
-    {
-     "name_as_written": "Jean-Pierre & Pascale",
-     "role": "teacher",
-     "style": "West Coast Swing",
-     "country": null,
-     "source_line": "Jean-Pierre & Pascale – Nantes (West Coast Swing)"
-    },
-    {
-     "name_as_written": "Thomas & Mélanie",
-     "role": "teacher",
-     "style": "Rock/Swing",
-     "country": null,
-     "source_line": "Thomas & Mélanie – Cholet (Rock/Swing)"
-    },
-    {
-     "name_as_written": "Thierry & Sophie",
-     "role": "teacher",
-     "style": "Latin dances",
-     "country": null,
-     "source_line": "Thierry & Sophie – Perpignan (Latin dances)"
-    },
-    {
-     "name_as_written": "Henry & Pascaline",
-     "role": "teacher",
-     "style": "multi-dance",
-     "country": null,
-     "source_line": "Henry & Pascaline – Poitiers (multi-dance)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "more than 20 hours of classes",
-     "rationale": "The festival offers more than 20 hours of dance classes, so dance classes are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:29:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "84388f4cb832c364",
+ "answer": {
+  "batch": "event-16628",
+  "events": [
+   {
+    "event_id": 16628,
+    "artists": [
+     {
+      "name_as_written": "Jean-Pierre & Pascale",
+      "role": "teacher",
+      "style": "West Coast Swing",
+      "country": null,
+      "source_line": "Jean-Pierre & Pascale – Nantes (West Coast Swing)"
+     },
+     {
+      "name_as_written": "Thomas & Mélanie",
+      "role": "teacher",
+      "style": "Rock/Swing",
+      "country": null,
+      "source_line": "Thomas & Mélanie – Cholet (Rock/Swing)"
+     },
+     {
+      "name_as_written": "Thierry & Sophie",
+      "role": "teacher",
+      "style": "Latin dances",
+      "country": null,
+      "source_line": "Thierry & Sophie – Perpignan (Latin dances)"
+     },
+     {
+      "name_as_written": "Henry & Pascaline",
+      "role": "teacher",
+      "style": "multi-dance",
+      "country": null,
+      "source_line": "Henry & Pascaline – Poitiers (multi-dance)"
+     },
+     {
+      "name_as_written": "RockDance association of La Rochelle",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Festival organized in partnership with the RockDance association of La Rochelle"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "more than 20 hours of classes",
+      "rationale": "The festival offers more than 20 hours of dance classes as part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

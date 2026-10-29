@@ -2,19 +2,21 @@
  "event_id": 16904,
  "title": "PARIS KIZOMBA CONGRESS 2026",
  "start_date": "2026-11-19",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:11:38+00:00",
+ "end_date": "2026-11-23",
+ "country": "France",
  "styles": [
   "kizomba",
   "other"
  ],
  "description": "PARIS KIZOMBA CONGRESS 2026\nDates 19 TO 23 NOVEMBER 2026\nSAVE THE DATE\nPLACE : 8 rue de Rome 93290 Tremblay-en-France\n🔥🔥🔥PKC SUPER HOT SALE 🔥🔥\n➡️Warning !!! ⚠️BOOK NOW⚠️ Price Change every 1st of the month ↗️↗️ don’t miss your chance to got the best price…\n❤️❤️❤️❤️\n__________________________________\nFrançais en dessous / French Below.\n▂▃▅ ★ LET ME KIZZ YOU AT THE PARIS KIZOMBA CONGRESS 2026 ☆ ▅▃▂\n———————————–\nJazzy Cubango and Fred Maestro are proud to announce the 14TH PARIS KIZOMBA CONGRESS. ★★★ THE BIGGEST KIZOMBA\nCONGRESS IN FRANCE ★★★\n◈◈◈ PROGRAM ◈◈◈\n🔥 THE BIGGEST KIZOMBA DANCEFLOOR of France\n🔥 4 SPECIALS DAYS FULL OF Kizomba, Semba, Tarraxhinha, Afro house, African Danse… with the BEST WORLD ARTISTS\n🔥 More than 40 hours of WORKSHOPS\nKIZOMBA, SEMBA, TARRAXHINHA, AFRO HOUSE\n🔥 SOCIAL ROOM\n🔥 1 PRE-PARTY + 3 PARTY\n🔥 3 THEMED PARTIES DURING THE WEEKEND\n◈◈◈ VENUES ◈◈◈\nThursday :\nPréParty : The place : Salle colonne 94 boulevard Auguste Blanqui 75013 Paris\n(The evening is not included in the full pass)\n☛ Friday to Monday morning :\nPlace : 🏨 HOTEL HILTON – 8 rue de Rome 93290 Tremblay en France\n◈◈◈ HOTELS ◈◈◈\n☛ Hotels near the festival from November 19 to 23, 2026:\n🏨 HOTEL HILTON PARIS CHARLES DE GAULLE (Main hotel)\n🏨 HOTEL CITIZEN M\n🏨 HOTEL IBIS\n🏨 HOTEL IBIS STYLE\n🏨 HOTEL HYATT\n🏨 HOLIDAY INN EXPRESS\n🏨 HOTEL MERCURE\n☛ Hotels near the preparty of November 19, 2026:\nComing soon\nhttps://www.booking.com\n———————————————\n◈◈◈ TRANSPORTATION – HOW TO ? ◈◈◈\n🚈 By transport, RER B direction Charles de Gaulle Airport 2 TGV stop Charles de Gaulle Airport 1 🚈\n🛬 By airport : Airport Charles de Gaulle, Terminal 3 🛬\n🚙 By Car : HILTON PARIS CHARLES DE GAULLE AIRPORT – 8 Rue de Rome, 93290 Tremblay-en-France 🚙\n◈◈◈ PROGRAM ◈◈◈\n◈◈◈ ARTISTS LINE UP ◈◈◈\nComing soon\n◈◈◈ DJS KIZOMBA◈◈◈\nComing soon\n◈◈◈ PHOTOGRAPHES ◈◈◈\nComing soon\n◈◈◈ VIDEO CAMERAMAN ◈◈◈\nComing soon\n◈◈◈ SOCIAL MEDIA ◈◈◈\nComing soon\n◈◈◈ Publicity – Advertisement ◈◈◈\nNo More Roll Up Will be allowed in Paris Kizomba Congress\nFor Innovation all will be on Numerical support\nWant to Advertise for your event Contact us\n@ : pariskizombacongress@gmail.com –> until November 1RD, 2026\n◈◈◈ PARTIES INFORMATIONS ◈◈◈\nONLY CASH\nCLOAKROOM COMPULSORY : MANDATORY\n>> 2€ / Each\n◈◈◈ THEME PARTY ◈◈◈\nPARIS EDITION\n☆★ PKC COMMUNITY (share a room, carpooling / Deal …) ★☆\nhttps://www.facebook.com/groups/888135631297111/?fref=ts\nDeal and promotion : https://www.facebook.com/groups/669084299957796/",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:09:01+00:00",
  "passes": [
   {
    "kind": "full",
    "style": null,
-   "label_quote": null,
+   "label_quote": "Couple Full Pass",
    "group_size": 2,
    "days": null,
    "includes_hotel": false,
@@ -33,14 +35,14 @@
   {
    "kind": "full",
    "style": null,
-   "label_quote": null,
+   "label_quote": "Full Pass Women",
    "group_size": 1,
    "days": null,
    "includes_hotel": false,
    "tiers": [
     {
      "keys": [
-      "8870"
+      "8869"
      ],
      "from": null,
      "until": null,
@@ -52,14 +54,14 @@
   {
    "kind": "full",
    "style": null,
-   "label_quote": null,
+   "label_quote": "Full Pass Men",
    "group_size": 1,
    "days": null,
    "includes_hotel": false,
    "tiers": [
     {
      "keys": [
-      "8869"
+      "8870"
      ],
      "from": null,
      "until": null,

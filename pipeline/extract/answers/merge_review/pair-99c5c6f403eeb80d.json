@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ra@dj",
+ "key_b": "p:ra@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "99c5c6f403eeb80d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The single name \"Dj Ra\" is generic, and the mentions show only a mix of Belgian and Burundian flags (🇧🇪 and 🇧🇮, which look like a typo of each other) with consistent kizomba and semba styles, but no partner or other distinctive link, so one DJ and several people sharing the name cannot be told apart."
+ }
+}

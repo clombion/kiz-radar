@@ -1,18 +1,25 @@
 {
- "batch": "event-16155",
- "events": [
-  {
-   "event_id": 16155,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Swiss National Day Urban Kiz Weekender 8 edition"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "eacf5d22efad2ccc",
+ "answer": {
+  "batch": "event-16155",
+  "events": [
+   {
+    "event_id": 16155,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "Urban Kiz Weekender"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,18 +1,25 @@
 {
- "batch": "event-14906",
- "events": [
-  {
-   "event_id": 14906,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "other",
-     "genre_as_written": "Kizbomba",
-     "quote": "Step into four days of pure Kizbomba magic"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "5cda3f5249be082f",
+ "answer": {
+  "batch": "event-14906",
+  "events": [
+   {
+    "event_id": 14906,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "other",
+      "genre_as_written": "Kizbomba",
+      "quote": "pure Kizbomba magic"
+     }
+    ]
+   }
+  ]
+ }
 }

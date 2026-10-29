@@ -1,36 +1,44 @@
 {
- "batch": "event-15567",
- "events": [
-  {
-   "event_id": 15567,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 130.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-28",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🎟️ UNMISSABLE OFFER: FULL PASS FOR ONLY €130!"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Hurry, the price is expected to rise!"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:41:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "416d3525ba3c9374",
+ "answer": {
+  "batch": "event-15567",
+  "events": [
+   {
+    "event_id": 15567,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 130.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "02-28",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "🎟️ UNMISSABLE OFFER: FULL PASS FOR ONLY €130!"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Available only until 🔜 FEBRUARY 28! Hurry, the price is expected to rise!"
+    ]
+   }
+  ]
+ }
 }

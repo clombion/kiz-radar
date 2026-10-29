@@ -1,0 +1,13 @@
+{
+ "key_a": "p:lavinia@armand+lavinia",
+ "key_b": "p:lavinia@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "40daaaa59684b687",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as Romanian (RO) and share the name Lavinia, but Lavinia is a common first name, side B has no partners to link it to side A's partner armand, and side B's only event (Spain) doesn't overlap with side A's events (Romania, Switzerland), so the evidence doesn't settle whether they are one artist."
+ }
+}

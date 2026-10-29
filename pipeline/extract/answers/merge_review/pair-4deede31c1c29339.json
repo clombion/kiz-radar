@@ -1,0 +1,13 @@
+{
+ "key_a": "p:poema@dj",
+ "key_b": "p:poemabeatz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "4deede31c1c29339",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side A's 'DJ POEMA' is a short form of side B's 'Poema Beatz' (the DJ-prefix-with-shortened-stage-name pattern), and both sides state Sweden (🇸🇪) as their country and are DJ-role mentions, with no evidence of a different artist."
+ }
+}

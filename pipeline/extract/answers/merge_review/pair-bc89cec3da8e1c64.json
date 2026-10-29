@@ -1,0 +1,13 @@
+{
+ "key_a": "p:relampago@dj",
+ "key_b": "p:relampago@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "bc89cec3da8e1c64",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Every mention is the same distinctive stage name (DJ Relampago, with accent and case variants only), and the flags are consistent across events: Angola and Switzerland recur together on several lines, and the Swiss-only lines fit the same Swiss-based DJ, so one artist is the most plausible reading."
+ }
+}

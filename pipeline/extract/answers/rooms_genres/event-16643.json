@@ -1,83 +1,69 @@
 {
- "batch": "event-16643",
- "events": [
-  {
-   "event_id": 16643,
-   "party_rooms": {
-    "count": 2,
-    "quote": "Room 1:\n19:30: Registration\n20:00-22:00 Pre-party workshops\n22:00-01:30 Bingo switch game and Party\nRoom 2:\n22:00-01:30 Salsa & Bachata party"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Room 1",
-     "kind": "party",
-     "genres": [],
-     "quote": "22:00-01:30 Bingo switch game and Party"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "540bde9662f24bea",
+ "answer": {
+  "batch": "event-16643",
+  "events": [
+   {
+    "event_id": 16643,
+    "party_rooms": {
+     "count": 2,
+     "quote": "Room 1:\n19:30: Registration\n20:00-22:00 Pre-party workshops\n22:00-01:30 Bingo switch game and Party\nRoom 2:\n22:00-01:30 Salsa & Bachata party"
     },
-    {
-     "name_as_written": "Room 2",
-     "kind": "party",
-     "genres": [],
-     "quote": "22:00-01:30 Salsa & Bachata party"
-    },
-    {
-     "name_as_written": "Room 1",
-     "kind": "party",
-     "genres": [],
-     "quote": "22:30-01:30 Party"
-    },
-    {
-     "name_as_written": "Room 2",
-     "kind": "party",
-     "genres": [],
-     "quote": "22:30-01:30 Salsa & bachata party"
-    },
-    {
-     "name_as_written": "Room 1",
-     "kind": "party",
-     "genres": [],
-     "quote": "17:45-22:00 Social party & Pizza"
-    },
-    {
-     "name_as_written": "Room 2",
-     "kind": "class",
-     "genres": [],
-     "quote": "15:45-16:45 workshop beginner friendly"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Urban Kiz, Kizomba/Semba and tarraxo"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Urban Kiz, Kizomba/Semba and tarraxo"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Urban Kiz, Kizomba/Semba and tarraxo"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "tarraxo",
-     "quote": "Urban Kiz, Kizomba/Semba and tarraxo"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "22:00-01:30 Salsa & Bachata party"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "22:00-01:30 Salsa & Bachata party"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Room 1",
+      "kind": "party",
+      "genres": [],
+      "quote": "Room 1:\n19:30: Registration"
+     },
+     {
+      "name_as_written": "Room 2",
+      "kind": "party",
+      "genres": [
+       "salsa",
+       "bachata"
+      ],
+      "quote": "Room 2:\n22:00-01:30 Salsa & Bachata party"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "Urban Kiz, Kizomba/Semba and tarraxo"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Urban Kiz, Kizomba/Semba and tarraxo"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Urban Kiz, Kizomba/Semba and tarraxo"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "tarraxo",
+      "quote": "Urban Kiz, Kizomba/Semba and tarraxo"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "22:00-01:30 Salsa & Bachata party"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "22:00-01:30 Salsa & Bachata party"
+     }
+    ]
+   }
+  ]
+ }
 }

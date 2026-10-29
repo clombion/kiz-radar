@@ -1,0 +1,13 @@
+{
+ "key_a": "p:prince@dj",
+ "key_b": "p:prince@prince+vicky",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "cf0d764a150d858d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the generic name 'Prince' and Italy appears in both sets of countries, but side A has no partner, side B's mentions are empty, and 'Prince' is too common a name to link them on that overlap alone, so a merge would risk joining two people's histories."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:davide@cilene+davide",
+ "key_b": "p:davidenola",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d13343babff48076",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides list the same partner (cilene) and overlapping countries (Cape Verde and Italy), and DAVIDE is the short form of Davide Nola, which the rules treat as the same person when the partner matches."
+ }
+}

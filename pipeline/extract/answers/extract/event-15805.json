@@ -1,226 +1,233 @@
 {
- "batch": "event-15805",
- "events": [
-  {
-   "event_id": 15805,
-   "artists": [
-    {
-     "name_as_written": "Dj Paparazzi",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴🇪🇸",
-     "source_line": "🎧Dj Paparazzi🇦🇴🇪🇸"
-    },
-    {
-     "name_as_written": "Dj Emess",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴🇨🇭",
-     "source_line": "🎧Dj Emess🇦🇴🇨🇭"
-    },
-    {
-     "name_as_written": "Dj Marc",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇳🇮🇹",
-     "source_line": "🎧Dj Marc🇸🇳🇮🇹"
-    },
-    {
-     "name_as_written": "Dj Ombre",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇳🇮🇹",
-     "source_line": "🎧Dj Ombre🇸🇳🇮🇹"
-    },
-    {
-     "name_as_written": "Dj Duarte",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴🇪🇸",
-     "source_line": "🎧Dj Duarte🇦🇴🇪🇸"
-    },
-    {
-     "name_as_written": "Dj Tiago",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹🇮🇹",
-     "source_line": "🎧Dj Tiago🇵🇹🇮🇹"
-    },
-    {
-     "name_as_written": "Dj Ladeejay",
-     "role": "dj",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🎧Dj Ladeejay🇮🇹"
-    },
-    {
-     "name_as_written": "Fernando & Michela",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇮🇹",
-     "source_line": "🕺🏾💃🏽Fernando & Michela🇦🇴🇮🇹"
-    },
-    {
-     "name_as_written": "Paolo Cruz & Lanna",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇮🇹",
-     "source_line": "🕺🏾💃🏽Paolo Cruz & Lanna🇦🇴🇮🇹"
-    },
-    {
-     "name_as_written": "Marcio Junqueira",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇮🇹",
-     "source_line": "🕺🏾💃🏽Marcio Junqueira🇦🇴🇮🇹"
-    },
-    {
-     "name_as_written": "Alex Vunda & Mary Jay",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇮🇹",
-     "source_line": "🕺🏾💃🏽Alex Vunda & Mary Jay🇦🇴🇮🇹"
-    },
-    {
-     "name_as_written": "Ary & Maura",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇵🇹",
-     "source_line": "🕺🏾💃🏽Ary & Maura🇦🇴🇵🇹"
-    },
-    {
-     "name_as_written": "Claudio Dolk",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇫🇷",
-     "source_line": "🕺🏾Claudio Dolk🇦🇴🇫🇷"
-    },
-    {
-     "name_as_written": "David Pacavira",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇮🇹",
-     "source_line": "🕺🏾David Pacavira🇦🇴🇮🇹"
-    },
-    {
-     "name_as_written": "Francis & Lucy",
-     "role": "teacher",
-     "style": null,
-     "country": "🇸🇳🇮🇹",
-     "source_line": "🕺🏾💃🏽Francis & Lucy🇸🇳🇮🇹"
-    },
-    {
-     "name_as_written": "Franet",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇨🇭",
-     "source_line": "🕺🏾Franet🇦🇴🇨🇭"
-    },
-    {
-     "name_as_written": "Junior King",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇫🇷",
-     "source_line": "🕺🏾Junior King🇦🇴🇫🇷"
-    },
-    {
-     "name_as_written": "Sara Iacobacci",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "💃🏽Sara Iacobacci🇮🇹"
-    },
-    {
-     "name_as_written": "Celine",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷🇮🇹",
-     "source_line": "💃🏽Celine🇫🇷🇮🇹"
-    },
-    {
-     "name_as_written": "Danilo & Fausta",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏾💃🏽Danilo & Fausta🇮🇹"
-    },
-    {
-     "name_as_written": "Max Dousey & Silvia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏾💃🏽 Max Dousey & Silvia"
-    },
-    {
-     "name_as_written": "AfroBoy",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏾AfroBoy🇮🇹"
-    },
-    {
-     "name_as_written": "Federica Lucarelli",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "💃🏽Federica Lucarelli🇮🇹"
-    },
-    {
-     "name_as_written": "Ilaria Viver Kizomba",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "💃🏽Ilaria Viver Kizomba🇮🇹"
-    },
-    {
-     "name_as_written": "Vicky del Mastro",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "💃🏽Vicky del Mastro🇮🇹"
-    },
-    {
-     "name_as_written": "Lorella",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "💃🏽Lorella🇮🇹"
-    },
-    {
-     "name_as_written": "Sara Corpino",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "💃🏽Sara Corpino🇮🇹"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "20 Hours of Workshops",
-     "rationale": "The description promises twenty hours of workshops as part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Dedicated Workshops Rooms",
-     "rationale": "Two dedicated workshop rooms besides the main workshop setup means more than one dance room."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Exclusive Masterclass",
-     "rationale": "An exclusive masterclass is listed among the offerings."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Social Dancing: 17:00 – 19:00",
-     "rationale": "A daytime social dancing session in the late afternoon is scheduled."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Use the promo code PALADANZE26 to get a discount on the base rate:",
-     "rationale": "A partner hotel with a negotiated discounted rate is offered, separate from the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "2f0e2503de22c301",
+ "answer": {
+  "batch": "event-15805",
+  "events": [
+   {
+    "event_id": 15805,
+    "artists": [
+     {
+      "name_as_written": "Dj Paparazzi",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴🇪🇸",
+      "source_line": "🎧Dj Paparazzi🇦🇴🇪🇸"
+     },
+     {
+      "name_as_written": "Dj Emess",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴🇨🇭",
+      "source_line": "🎧Dj Emess🇦🇴🇨🇭"
+     },
+     {
+      "name_as_written": "Dj Marc",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇳🇮🇹",
+      "source_line": "🎧Dj Marc🇸🇳🇮🇹"
+     },
+     {
+      "name_as_written": "Dj Ombre",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇳🇮🇹",
+      "source_line": "🎧Dj Ombre🇸🇳🇮🇹"
+     },
+     {
+      "name_as_written": "Dj Duarte",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴🇪🇸",
+      "source_line": "🎧Dj Duarte🇦🇴🇪🇸"
+     },
+     {
+      "name_as_written": "Dj Tiago",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹🇮🇹",
+      "source_line": "🎧Dj Tiago🇵🇹🇮🇹"
+     },
+     {
+      "name_as_written": "Dj Ladeejay",
+      "role": "dj",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🎧Dj Ladeejay🇮🇹"
+     },
+     {
+      "name_as_written": "Fernando & Michela",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇮🇹",
+      "source_line": "🕺🏾💃🏽Fernando & Michela🇦🇴🇮🇹"
+     },
+     {
+      "name_as_written": "Paolo Cruz & Lanna",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇮🇹",
+      "source_line": "🕺🏾💃🏽Paolo Cruz & Lanna🇦🇴🇮🇹"
+     },
+     {
+      "name_as_written": "Marcio Junqueira",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇮🇹",
+      "source_line": "🕺🏾💃🏽Marcio Junqueira🇦🇴🇮🇹"
+     },
+     {
+      "name_as_written": "Alex Vunda & Mary Jay",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇮🇹",
+      "source_line": "🕺🏾💃🏽Alex Vunda & Mary Jay🇦🇴🇮🇹"
+     },
+     {
+      "name_as_written": "Ary & Maura",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇵🇹",
+      "source_line": "🕺🏾💃🏽Ary & Maura🇦🇴🇵🇹"
+     },
+     {
+      "name_as_written": "Claudio Dolk",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇫🇷",
+      "source_line": "🕺🏾Claudio Dolk🇦🇴🇫🇷"
+     },
+     {
+      "name_as_written": "David Pacavira",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇮🇹",
+      "source_line": "🕺🏾David Pacavira🇦🇴🇮🇹"
+     },
+     {
+      "name_as_written": "Francis & Lucy",
+      "role": "teacher",
+      "style": null,
+      "country": "🇸🇳🇮🇹",
+      "source_line": "🕺🏾💃🏽Francis & Lucy🇸🇳🇮🇹"
+     },
+     {
+      "name_as_written": "Franet",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇨🇭",
+      "source_line": "🕺🏾Franet🇦🇴🇨🇭"
+     },
+     {
+      "name_as_written": "Junior King",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇫🇷",
+      "source_line": "🕺🏾Junior King🇦🇴🇫🇷"
+     },
+     {
+      "name_as_written": "Sara Iacobacci",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "💃🏽Sara Iacobacci🇮🇹"
+     },
+     {
+      "name_as_written": "Celine",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷🇮🇹",
+      "source_line": "💃🏽Celine🇫🇷🇮🇹"
+     },
+     {
+      "name_as_written": "Danilo & Fausta",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏾💃🏽Danilo & Fausta🇮🇹"
+     },
+     {
+      "name_as_written": "Max Dousey & Silvia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏾💃🏽 Max Dousey & Silvia"
+     },
+     {
+      "name_as_written": "AfroBoy",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏾AfroBoy🇮🇹"
+     },
+     {
+      "name_as_written": "Federica Lucarelli",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "💃🏽Federica Lucarelli🇮🇹"
+     },
+     {
+      "name_as_written": "Ilaria Viver Kizomba",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "💃🏽Ilaria Viver Kizomba🇮🇹"
+     },
+     {
+      "name_as_written": "Vicky del Mastro",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "💃🏽Vicky del Mastro🇮🇹"
+     },
+     {
+      "name_as_written": "Lorella",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "💃🏽Lorella🇮🇹"
+     },
+     {
+      "name_as_written": "Sara Corpino",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "💃🏽Sara Corpino🇮🇹"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "20 Hours of Workshops",
+      "rationale": "The description lists 20 hours of workshops as part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 Dedicated Workshops Rooms",
+      "rationale": "Two dedicated workshop rooms are offered in addition to the main dance space."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Exclusive Masterclass",
+      "rationale": "An exclusive masterclass is listed among the offerings."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Social Dancing: 18:00 – 20:00",
+      "rationale": "A daytime-to-evening social dancing session is scheduled on the first day."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Use the promo code PALADANZE26 to get a discount on the base rate",
+      "rationale": "A partner hotel offers a negotiated discounted rate that is not part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:chrysoula@chrysoula+ioanna",
+ "key_b": "p:chryssoula@chryssoula+joana",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "548e44ca75da67bc",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The spellings Chrysoula and Chryssoula are close Greek variants and both sides list GB and GR, but their partners differ (Ioanna versus Joana) and their events are in different places (Greece versus Belgium), so the evidence does not settle whether this is one artist."
+ }
+}

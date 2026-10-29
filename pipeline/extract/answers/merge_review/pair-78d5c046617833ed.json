@@ -1,0 +1,13 @@
+{
+ "key_a": "p:manu@manu+olivia",
+ "key_b": "p:manusaudade",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "78d5c046617833ed",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the partner Olivia and overlap in France, and MANU is a short form of MANU SAUDADE, which the shared-partner rule treats as the same person, though the mentions are empty and Olivia is a common name."
+ }
+}

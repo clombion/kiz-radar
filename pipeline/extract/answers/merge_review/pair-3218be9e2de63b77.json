@@ -1,0 +1,13 @@
+{
+ "key_a": "p:curtis@clemence+curtis",
+ "key_b": "p:curtis@curtis+kelly",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3218be9e2de63b77",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as French with the name CURTIS, but they have different partners (clemence and kelly) and no shared event, so the evidence cannot show whether one dancer with two partners or two different people is involved."
+ }
+}

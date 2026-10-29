@@ -1,0 +1,13 @@
+{
+ "key_a": "p:laure@franck+laure",
+ "key_b": "p:lauresalsahora",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "9b95639e1371fae7",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are in France with the same partner, Franck, and 'Laure' is the short form of 'Laure SalsaHora', which the rules treat as the same person with a shared partner."
+ }
+}

@@ -2,13 +2,15 @@
  "event_id": 18700,
  "title": "WEEK-END A DANSER V",
  "start_date": "2027-03-05",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:36:44+00:00",
+ "end_date": "2027-03-07",
+ "country": "France",
  "styles": [
   "kizomba"
  ],
  "description": "⭐⭐⭐ WEEK-END A DANSER V ⭐⭐⭐\nAre you ready for takeoff?\nKitumba Events presents the 5th edition of Week-End A Danser.\nFasten your seatbelts!\n👀 Program 👀\n🚥 3 days\n💃 2 parties\n🕺 2 social dance sessions\n🎧 10 national and international DJs\n🍴 On-site food\n📸 1 photographer\n🎁 Surprises?\n⌚ Schedule ⌚\nFriday: 10:00 PM – 6:00 AM\nSaturday: 3:00 PM – 8:00 PM / 10:00 PM – 7:00 AM\nSunday: 2:00 PM – 8:00 PM\n🎧 Line-up 🎧\nDJ ICHIGO\nDJ MKY\nDJ S-LINE\nDJ LAAK\nDJ RALPH BB\nDJ LAU FWI\nDJ BAD\nDJ ASH\nDJ FILL\nDJ PANKADAS\n💎 Guests 💎\nFranck Beaufort\nAlban Audevard\nKarl Madina\nMamady Mady\nTitony\nJulio Mykeyange\nAnthony Meric\nFred Ange Kiz’n Smile\nWill Wgt\nDamon Kizz\nDanseur Ayi\n📸 Photographer 📸\nFill\n🍴 On-site food 🍴\n“Saïgon Barbecue” is coming back—much to our delight!\n🎁 Surprise(s) 🎁\nStay tuned…",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:18:35+00:00",
  "passes": [
   {
    "kind": "full",

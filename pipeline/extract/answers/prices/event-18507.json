@@ -1,12 +1,19 @@
 {
- "batch": "event-18507",
- "events": [
-  {
-   "event_id": 18507,
-   "passes": [],
-   "rule_quotes": [
-    "Tickts prices increase at the end of every Month, be quick !"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:45:31+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "22e06df963ad9632",
+ "answer": {
+  "batch": "event-18507",
+  "events": [
+   {
+    "event_id": 18507,
+    "passes": [],
+    "rule_quotes": [
+     "Tickts prices increase at the end of every Month, be quick !"
+    ]
+   }
+  ]
+ }
 }

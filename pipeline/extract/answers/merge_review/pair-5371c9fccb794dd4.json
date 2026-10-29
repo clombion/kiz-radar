@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marco@anita+marco",
+ "key_b": "p:marcos@anita+marcos",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "5371c9fccb794dd4",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records share the partner anita and the near-identical name (Marco / Marcos), and they overlap on Portugal (PT), with no event in which both appear, so the shared partner and country point to one person."
+ }
+}

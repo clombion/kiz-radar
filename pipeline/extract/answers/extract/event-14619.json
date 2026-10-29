@@ -1,66 +1,73 @@
 {
- "batch": "event-14619",
- "events": [
-  {
-   "event_id": 14619,
-   "artists": [
-    {
-     "name_as_written": "SBK06 Latin Dance School",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "SBK06 Latin Dance School vous invite à la 7ème édition du So’Nice Bachata and Kizomba Masters du 30 janvier au 1 février 2026 🥳"
-    },
-    {
-     "name_as_written": "Janis & Zoe",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "– Janis & Zoe"
-    },
-    {
-     "name_as_written": "Melvin & Gatica",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "– Melvin & Gatica"
-    },
-    {
-     "name_as_written": "Abdel & Lety",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "– Abdel & Lety"
-    },
-    {
-     "name_as_written": "Andrea & Silvia",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "– Andrea & Silvia"
-    },
-    {
-     "name_as_written": "Morgan & Monique",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "– Morgan & Monique"
-    },
-    {
-     "name_as_written": "Steve Bakoula",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Steve Bakoula"
-    }
-   ],
-   "features": [
-    {
-     "feature": "partner_hotel",
-     "quote": "Hôtel Partenaire",
-     "rationale": "The description names a partner hotel (LV Lagrange Apart’hôtel) for the event without stating that accommodation is included in the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "2f1c6db2e2ebb2f5",
+ "answer": {
+  "batch": "event-14619",
+  "events": [
+   {
+    "event_id": 14619,
+    "artists": [
+     {
+      "name_as_written": "SBK06 Latin Dance School",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "SBK06 Latin Dance School vous invite à la 7ème édition du So’Nice Bachata and Kizomba Masters du 30 janvier au 1 février 2026 🥳"
+     },
+     {
+      "name_as_written": "Janis & Zoe",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "– Janis & Zoe"
+     },
+     {
+      "name_as_written": "Melvin & Gatica",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "– Melvin & Gatica"
+     },
+     {
+      "name_as_written": "Abdel & Lety",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "– Abdel & Lety"
+     },
+     {
+      "name_as_written": "Andrea & Silvia",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "– Andrea & Silvia"
+     },
+     {
+      "name_as_written": "Morgan & Monique",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "– Morgan & Monique"
+     },
+     {
+      "name_as_written": "Steve Bakoula",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Steve Bakoula"
+     }
+    ],
+    "features": [
+     {
+      "feature": "partner_hotel",
+      "quote": "Hôtel Partenaire",
+      "rationale": "The description names a partner hotel (LV Lagrange Apart’hôtel) for the event, while accommodation is not described as part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

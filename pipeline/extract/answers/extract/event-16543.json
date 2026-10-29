@@ -1,106 +1,113 @@
 {
- "batch": "event-16543",
- "events": [
-  {
-   "event_id": 16543,
-   "artists": [
-    {
-     "name_as_written": "Eddy Vents",
-     "role": "teacher",
-     "style": null,
-     "country": "🇬🇳",
-     "source_line": "Eddy Vents 🇬🇳"
-    },
-    {
-     "name_as_written": "Sebastien Azaïs",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "Sebastien Azaïs 🇫🇷"
-    },
-    {
-     "name_as_written": "Ana-Maria Stoica",
-     "role": "teacher",
-     "style": null,
-     "country": "🇷🇴",
-     "source_line": "Ana-Maria Stoica 🇷🇴"
-    },
-    {
-     "name_as_written": "Jasna",
-     "role": "teacher",
-     "style": null,
-     "country": "🇷🇸",
-     "source_line": "Jasna 🇷🇸"
-    },
-    {
-     "name_as_written": "Mik’iz",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "Mik’iz 🇫🇷"
-    },
-    {
-     "name_as_written": "Franet",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "Franet 🇦🇴"
-    },
-    {
-     "name_as_written": "David Ruach",
-     "role": "teacher",
-     "style": null,
-     "country": "🇿🇦",
-     "source_line": "David Ruach 🇿🇦"
-    },
-    {
-     "name_as_written": "Maria",
-     "role": "teacher",
-     "style": null,
-     "country": "🇷🇴",
-     "source_line": "Maria 🇷🇴"
-    },
-    {
-     "name_as_written": "Dj Retrocesso",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "Dj Retrocesso 🇫🇷"
-    },
-    {
-     "name_as_written": "Mexe",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "Mexe 🇫🇷"
-    },
-    {
-     "name_as_written": "Dj Jozsi",
-     "role": "dj",
-     "style": null,
-     "country": "🇷🇴",
-     "source_line": "Dj Jozsi 🇷🇴"
-    },
-    {
-     "name_as_written": "Dj A.Dela",
-     "role": "dj",
-     "style": null,
-     "country": "🇷🇴",
-     "source_line": "Dj A.Dela 🇷🇴"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops focused on:",
-     "rationale": "The description states that dance workshops are part of the weekend."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "SATURDAY: 2 different rooms:",
-     "rationale": "Saturday is run across two separate dance rooms."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:29:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "3cbe88ccbccc5271",
+ "answer": {
+  "batch": "event-16543",
+  "events": [
+   {
+    "event_id": 16543,
+    "artists": [
+     {
+      "name_as_written": "Eddy Vents",
+      "role": "teacher",
+      "style": null,
+      "country": "🇬🇳",
+      "source_line": "Eddy Vents 🇬🇳"
+     },
+     {
+      "name_as_written": "Sebastien Azaïs",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "Sebastien Azaïs 🇫🇷"
+     },
+     {
+      "name_as_written": "Ana-Maria Stoica",
+      "role": "teacher",
+      "style": null,
+      "country": "🇷🇴",
+      "source_line": "Ana-Maria Stoica 🇷🇴"
+     },
+     {
+      "name_as_written": "Jasna",
+      "role": "teacher",
+      "style": null,
+      "country": "🇷🇸",
+      "source_line": "Jasna 🇷🇸"
+     },
+     {
+      "name_as_written": "Mik’iz",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "Mik’iz 🇫🇷"
+     },
+     {
+      "name_as_written": "Franet",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "Franet 🇦🇴"
+     },
+     {
+      "name_as_written": "David Ruach",
+      "role": "teacher",
+      "style": null,
+      "country": "🇿🇦",
+      "source_line": "David Ruach 🇿🇦"
+     },
+     {
+      "name_as_written": "Maria",
+      "role": "teacher",
+      "style": null,
+      "country": "🇷🇴",
+      "source_line": "Maria 🇷🇴"
+     },
+     {
+      "name_as_written": "Dj Retrocesso",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "Dj Retrocesso 🇫🇷"
+     },
+     {
+      "name_as_written": "Mexe",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "Mexe 🇫🇷"
+     },
+     {
+      "name_as_written": "Dj Jozsi",
+      "role": "dj",
+      "style": null,
+      "country": "🇷🇴",
+      "source_line": "Dj Jozsi 🇷🇴"
+     },
+     {
+      "name_as_written": "Dj A.Dela",
+      "role": "dj",
+      "style": null,
+      "country": "🇷🇴",
+      "source_line": "Dj A.Dela 🇷🇴"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshop with David Ruach (Tarraxhina vibes)",
+      "rationale": "The schedule lists a dance workshop taught by David Ruach."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "SATURDAY: 2 different rooms:",
+      "rationale": "The description states that Saturday has two different dance rooms."
+     }
+    ]
+   }
+  ]
+ }
 }

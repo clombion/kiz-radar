@@ -1,33 +1,45 @@
 {
- "batch": "event-16620",
- "events": [
-  {
-   "event_id": 16620,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "11hrs Workshops (Kizomba, Semba, Kizomba Fusion, Urbankiz, Tarraxo)"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "11hrs Workshops (Kizomba, Semba, Kizomba Fusion, Urbankiz, Tarraxo)"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "11hrs Workshops (Kizomba, Semba, Kizomba Fusion, Urbankiz, Tarraxo)"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "11hrs Workshops (Kizomba, Semba, Kizomba Fusion, Urbankiz, Tarraxo)"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "7741725bbb4d858c",
+ "answer": {
+  "batch": "event-16620",
+  "events": [
+   {
+    "event_id": 16620,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Matariki Fest 2026 Kizomba Edition"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba, Semba"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Kizomba Fusion",
+      "quote": "Kizomba Fusion, Urbankiz"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "Kizomba Fusion, Urbankiz"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Urbankiz, Tarraxo)"
+     }
+    ]
+   }
+  ]
+ }
 }

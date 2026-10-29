@@ -1,225 +1,232 @@
 {
- "batch": "event-16069",
- "events": [
-  {
-   "event_id": 16069,
-   "artists": [
-    {
-     "name_as_written": "Kizz Stepp Kiff",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "To celebrate Kizz Stepp Kiff’s 2nd anniversary, we’re preparing an exceptional festival in Normandy 💣🎵"
-    },
-    {
-     "name_as_written": "DJ ICHIGO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ ICHIGO • DJ KIN • DJ MAN • DJ L-RY"
-    },
-    {
-     "name_as_written": "DJ KIN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ ICHIGO • DJ KIN • DJ MAN • DJ L-RY"
-    },
-    {
-     "name_as_written": "DJ MAN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ ICHIGO • DJ KIN • DJ MAN • DJ L-RY"
-    },
-    {
-     "name_as_written": "DJ L-RY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ ICHIGO • DJ KIN • DJ MAN • DJ L-RY"
-    },
-    {
-     "name_as_written": "DJ THALES",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ THALES • DJ NSIE • DJ DOC ART BEATZ"
-    },
-    {
-     "name_as_written": "DJ NSIE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ THALES • DJ NSIE • DJ DOC ART BEATZ"
-    },
-    {
-     "name_as_written": "DJ DOC ART BEATZ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ THALES • DJ NSIE • DJ DOC ART BEATZ"
-    },
-    {
-     "name_as_written": "Julien & Ami",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Julien & Ami • Jules & Yuna Tarraxopop"
-    },
-    {
-     "name_as_written": "Jules & Yuna Tarraxopop",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Julien & Ami • Jules & Yuna Tarraxopop"
-    },
-    {
-     "name_as_written": "Landry & Windy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Landry & Windy • Kamil & Amandine"
-    },
-    {
-     "name_as_written": "Kamil & Amandine",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Landry & Windy • Kamil & Amandine"
-    },
-    {
-     "name_as_written": "Dadié",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Dadié • Steven’s & Audrey • Malick & Carla"
-    },
-    {
-     "name_as_written": "Steven’s & Audrey",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Dadié • Steven’s & Audrey • Malick & Carla"
-    },
-    {
-     "name_as_written": "Malick & Carla",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Dadié • Steven’s & Audrey • Malick & Carla"
-    },
-    {
-     "name_as_written": "King Glory",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "King Glory • Pascal Zokiz & Annabelle"
-    },
-    {
-     "name_as_written": "Pascal Zokiz & Annabelle",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "King Glory • Pascal Zokiz & Annabelle"
-    },
-    {
-     "name_as_written": "Osmoz & Élodie",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Osmoz & Élodie • Alex & Karine"
-    },
-    {
-     "name_as_written": "Alex & Karine",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Osmoz & Élodie • Alex & Karine"
-    },
-    {
-     "name_as_written": "Yaya & Chiara",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Yaya & Chiara • Phillyp • Sid • Izi"
-    },
-    {
-     "name_as_written": "Phillyp",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Yaya & Chiara • Phillyp • Sid • Izi"
-    },
-    {
-     "name_as_written": "Sid",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Yaya & Chiara • Phillyp • Sid • Izi"
-    },
-    {
-     "name_as_written": "Izi",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Yaya & Chiara • Phillyp • Sid • Izi"
-    },
-    {
-     "name_as_written": "Sidboy Kingom",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Sidboy Kingom • Myléna & Titi Doudouss"
-    },
-    {
-     "name_as_written": "Myléna & Titi Doudouss",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Sidboy Kingom • Myléna & Titi Doudouss"
-    },
-    {
-     "name_as_written": "Tit’",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Tit’ • Douda"
-    },
-    {
-     "name_as_written": "Douda",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Tit’ • Douda"
-    },
-    {
-     "name_as_written": "Ndamose",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Ndamose • Benkos"
-    },
-    {
-     "name_as_written": "Benkos",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Ndamose • Benkos"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Intensive Workshops",
-     "rationale": "The description advertises intensive workshops as part of the festival."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 ROOMS — 2 VIBES",
-     "rationale": "The festival runs two rooms, so there is more than one dance floor."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:27:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0519979c2bf26b60",
+ "answer": {
+  "batch": "event-16069",
+  "events": [
+   {
+    "event_id": 16069,
+    "artists": [
+     {
+      "name_as_written": "Kizz Stepp Kiff",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "To celebrate Kizz Stepp Kiff’s 2nd anniversary, we’re preparing an exceptional festival in Normandy 💣🎵"
+     },
+     {
+      "name_as_written": "DJ ICHIGO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ ICHIGO • DJ KIN • DJ MAN • DJ L-RY"
+     },
+     {
+      "name_as_written": "DJ KIN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ ICHIGO • DJ KIN • DJ MAN • DJ L-RY"
+     },
+     {
+      "name_as_written": "DJ MAN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ ICHIGO • DJ KIN • DJ MAN • DJ L-RY"
+     },
+     {
+      "name_as_written": "DJ L-RY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ ICHIGO • DJ KIN • DJ MAN • DJ L-RY"
+     },
+     {
+      "name_as_written": "DJ THALES",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ THALES • DJ NSIE • DJ DOC ART BEATZ"
+     },
+     {
+      "name_as_written": "DJ NSIE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ THALES • DJ NSIE • DJ DOC ART BEATZ"
+     },
+     {
+      "name_as_written": "DJ DOC ART BEATZ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ THALES • DJ NSIE • DJ DOC ART BEATZ"
+     },
+     {
+      "name_as_written": "Julien & Ami",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Julien & Ami • Jules & Yuna Tarraxopop"
+     },
+     {
+      "name_as_written": "Jules & Yuna Tarraxopop",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Julien & Ami • Jules & Yuna Tarraxopop"
+     },
+     {
+      "name_as_written": "Landry & Windy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Landry & Windy • Kamil & Amandine"
+     },
+     {
+      "name_as_written": "Kamil & Amandine",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Landry & Windy • Kamil & Amandine"
+     },
+     {
+      "name_as_written": "Dadié",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Dadié • Steven’s & Audrey • Malick & Carla"
+     },
+     {
+      "name_as_written": "Steven’s & Audrey",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Dadié • Steven’s & Audrey • Malick & Carla"
+     },
+     {
+      "name_as_written": "Malick & Carla",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Dadié • Steven’s & Audrey • Malick & Carla"
+     },
+     {
+      "name_as_written": "King Glory",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "King Glory • Pascal Zokiz & Annabelle"
+     },
+     {
+      "name_as_written": "Pascal Zokiz & Annabelle",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "King Glory • Pascal Zokiz & Annabelle"
+     },
+     {
+      "name_as_written": "Osmoz & Élodie",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Osmoz & Élodie • Alex & Karine"
+     },
+     {
+      "name_as_written": "Alex & Karine",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Osmoz & Élodie • Alex & Karine"
+     },
+     {
+      "name_as_written": "Yaya & Chiara",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Yaya & Chiara • Phillyp • Sid • Izi"
+     },
+     {
+      "name_as_written": "Phillyp",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Yaya & Chiara • Phillyp • Sid • Izi"
+     },
+     {
+      "name_as_written": "Sid",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Yaya & Chiara • Phillyp • Sid • Izi"
+     },
+     {
+      "name_as_written": "Izi",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Yaya & Chiara • Phillyp • Sid • Izi"
+     },
+     {
+      "name_as_written": "Sidboy Kingom",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Sidboy Kingom • Myléna & Titi Doudouss"
+     },
+     {
+      "name_as_written": "Myléna & Titi Doudouss",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Sidboy Kingom • Myléna & Titi Doudouss"
+     },
+     {
+      "name_as_written": "Tit’",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Tit’ • Douda"
+     },
+     {
+      "name_as_written": "Douda",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Tit’ • Douda"
+     },
+     {
+      "name_as_written": "Ndamose",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Ndamose • Benkos"
+     },
+     {
+      "name_as_written": "Benkos",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Ndamose • Benkos"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Intensive Workshops",
+      "rationale": "The description advertises intensive workshops as part of the festival."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 ROOMS — 2 VIBES",
+      "rationale": "The festival has two dance rooms, each with its own vibe."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,56 +1,63 @@
 {
- "batch": "event-14506",
- "events": [
-  {
-   "event_id": 14506,
-   "party_rooms": {
-    "count": 2,
-    "quote": "Lets GO All Out in 2 Rooms"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Expect Kizomba, Semba, Zouk, Ghetto Zouk, Kompa and Taraxinha."
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "3330d8f337778e47",
+ "answer": {
+  "batch": "event-14506",
+  "events": [
+   {
+    "event_id": 14506,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 Rooms Welcome Party"
     },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Expect Kizomba, Semba, Zouk, Ghetto Zouk, Kompa and Taraxinha."
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "Expect Kizomba, Semba, Zouk, Ghetto Zouk, Kompa and Taraxinha."
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "Expect Kizomba, Semba, Zouk, Ghetto Zouk, Kompa and Taraxinha."
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Taraxinha",
-     "quote": "Expect Kizomba, Semba, Zouk, Ghetto Zouk, Kompa and Taraxinha."
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Expect Urban Kiz, Tarraxo, Douceur and Fusion"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Expect Urban Kiz, Tarraxo, Douceur and Fusion"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "Expect Urban Kiz, Tarraxo, Douceur and Fusion"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Expect Kizomba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba, Semba"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Zouk",
+      "quote": "Semba, Zouk"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "Ghetto Zouk, Kompa"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Taraxinha",
+      "quote": "Kompa and Taraxinha"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "Expect Urban Kiz"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Expect Urban Kiz, Tarraxo"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "Tarraxo, Douceur"
+     }
+    ]
+   }
+  ]
+ }
 }

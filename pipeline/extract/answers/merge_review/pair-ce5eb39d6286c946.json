@@ -1,0 +1,13 @@
+{
+ "key_a": "p:davidyaye",
+ "key_b": "p:daviyaye",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ce5eb39d6286c946",
+ "answer": {
+  "decision": "merge",
+  "rationale": "'DAVI YAYE' and 'David Yaye' are the same distinctive surname with a near-identical first name, both are stated as France (FR) and both appear at French events, with event 14800 the only side-B mention; the Wakanda country tags on side A are inconsistent but the evidence lists A's countries as FR only."
+ }
+}

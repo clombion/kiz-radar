@@ -414,7 +414,7 @@ event_id,event,start,waits_for,first_read,sales,page
 17480,KasselKiz – Urban Kizomba Weekender In Kassel,2026-10-30,nothing,none,none_found,
 17489,Love To Dance 2 weekender,2026-11-20,nothing,none,none_found,
 17491,Vilnius Kizomba Reunion 2026,2026-11-20,nothing,none,,https://kizomba.lt/
-17493,HOT ICE KIZ Festival 2026 11th edition,2026-11-26,nothing,current,,https://my.weezevent.com/hot-ice-kiz-festival-2026
+17493,HOT ICE KIZ Festival 2026 11th edition,2026-11-26,agent,disputed,,https://my.weezevent.com/hot-ice-kiz-festival-2026
 17497,"HER FREQUENCY – URBANKIZ, KIZOMBA, KONPA, AFRO WEEKENDER",2026-11-27,nothing,current,shop,https://www.kizztalk.de/event-details/her-frequency-weekender
 17500,SaBaKi – The Very Special Event,2026-11-27,nothing,current,,https://iwencik.pl/registrations/SaBaKi2026/EN
 17515,NANTES KIZOMBA FESTIVAL 2026,2026-12-04,nothing,current,,https://my.weezevent.com/nantes-kizomba-festival-2026
@@ -440,7 +440,7 @@ event_id,event,start,waits_for,first_read,sales,page
 18225,Badja Kiz Warsaw 2.0,2027-03-04,sales_open,none,not_yet,
 18238,Made in Kizomba – Halloween Edition 2026,2026-10-23,nothing,past,,
 18263,BAZA Kizomba Home – Local Festival 2026,2026-10-01,nothing,past,,
-18266,Dipanda Festival 2026,2026-11-27,nothing,redo_page,shop,https://www.eventbrite.pt/e/dipanda-festival-2026-what-cant-be-explained-must-be-lived-tickets-1986728317880
+18266,Dipanda Festival 2026,2026-11-27,nothing,redo_festival,shop,https://www.eventbrite.pt/e/dipanda-festival-2026-what-cant-be-explained-must-be-lived-tickets-1986728317880
 18276,XTREM KIZ WEEKENDER – Under The Sea Edition 2026,2026-10-02,nothing,past,,
 18282,NEW YEAR 2027 – CRAZY KIZ,2026-12-31,nothing,current,,https://my.weezevent.com/new-year-2027-crazy-kiz
 18285,La Luna Festival – Kizz District 2026,2026-11-06,nothing,current,,https://www.goandance.com/es/evento/8997/la-luna-festival
@@ -450,7 +450,7 @@ event_id,event,start,waits_for,first_read,sales,page
 18308,SAWILI Kizomba Weekender 2026 #SKW,2026-11-27,nothing,none,shop,https://www.helloasso.com/associations/association-sawili-events/evenements/billeterie
 18311,Neverending Kizomba Festival Barcelona 2026 – 8th Edition,2026-11-12,nothing,current,,https://www.kizzbee.com/product/neverending-kizomba-festival-barcelona-2026/
 18315,M.A.D Kizomba FLOW – Raizes AfroVibes 2026,2026-11-07,nothing,current,shop,https://my.weezevent.com/mad-kizomba-flow-r-a-i-z-e-s-a-f-r-o-v-i-b-e-s
-18317,PARIS KIZOMBA NYE 10th KIZOMBA – KOMPA – URBANKIZ – BACHATA,2026-12-30,nothing,current,shop,https://my.weezevent.com/nye10
+18317,PARIS KIZOMBA NYE 10th KIZOMBA – KOMPA – URBANKIZ – BACHATA,2026-12-30,agent,disputed,shop,https://my.weezevent.com/nye10
 18327,KTK Edition – RKF La Reunion 2026,2026-09-15,nothing,past,,
 18342,KARGA Kizomba Festival 2026,2026-09-18,nothing,past,,https://lasalsadelbaile.com/Karga2026
 18350,UrbanKiz Geneva 2026,2026-12-04,nothing,current,shop,https://my.weezevent.com/urbankig-geneva-2026
@@ -473,7 +473,7 @@ event_id,event,start,waits_for,first_read,sales,page
 18647,Multiverse Kizomba Congress (6 Rooms) – 3rd Edition – Lyon – All In One,2027-03-25,nothing,current,shop,https://www.billetweb.fr/multiverse-kizomba-congress-all-in-one-lyon-2027
 18654,Certeza 4,2027-01-08,nothing,current,shop,https://my.weezevent.com/certeza-4
 18657,12th Suave Dance Festival Paris (Official),2027-01-22,nothing,current,shop,https://www.goandance.com/en/event/9202/suave-dance-festival-paris-2027-official
-18660,PRAGUE KWANZA FESTIVAL 2027 – Official 9.edition,2027-02-11,nothing,current,shop,https://www.dizizid.com/events-registration/index.html?officeId=227&eventId=1192
+18660,PRAGUE KWANZA FESTIVAL 2027 – Official 9.edition,2027-02-11,nothing,redo_prompt,shop,https://www.dizizid.com/events-registration/index.html?officeId=227&eventId=1192
 18663,𝑼𝑹𝑩𝑨𝑵 𝑲𝑰𝒁 𝑻𝑬𝑴𝑷𝑻𝑨𝑻𝑰𝑶𝑵 𝑭𝑬𝑺𝑻𝑰𝑽𝑨𝑳 𝑨𝑴 𝑩𝑶𝑫𝑬𝑵𝑺𝑬𝑬 4.𝑬𝑫𝑰𝑻𝑰𝑶𝑵,2027-01-29,nothing,none,none_found,
 18666,Prague GOLD KIZ TARRAXO FESTIVAL,2027-01-14,nothing,current,,https://www.fairplay.events/en/prague-gold-kiz-tarraxo-festival-2027-2027-f903/order/tickets
 18669,HAKUNA MATATA FESTIVAL – Sunshine Edition,2027-01-29,nothing,current,shop,https://www.billetweb.fr/hakuna-matata-sunshine-edition
@@ -488,12 +488,12 @@ event_id,event,start,waits_for,first_read,sales,page
 18706,KIZCON 7 KIZOMBA FESTIVAL BEACH EDITION,2027-04-08,nothing,current,,https://lasalsadelbaile.com/comprar/KizCon7
 18709,Dubai Kizomba Fusion,2027-01-14,nothing,current,shop,https://my.weezevent.com/dubai-kizomba-fusion-2027
 18716,Kizbomba – Awakening 2027,2027-03-19,nothing,none,offline,
-18719,Royalkizz 6th Edition,2027-03-05,nothing,current,shop,https://www.dizizid.com/events-registration/index.html?officeId=194&eventId=1200
+18719,Royalkizz 6th Edition,2027-03-05,nothing,redo_prompt,shop,https://www.dizizid.com/events-registration/index.html?officeId=194&eventId=1200
 18722,KIZOMBA TALLINN FESTIVAL 2027- Official Event,2027-02-25,nothing,not_needed,,https://my.weezevent.com/kizomba-tallinn-festival-2027
 18725,BELGIUM “KIZZ ME BACHAMORE” FESTIVAL 2027,2027-06-17,nothing,current,,https://www.billetweb.fr/kizz-me-bachamore-congress-2027
 18728,Wakanda Festival 2027 Paris – 6th edition (Official),2027-02-19,nothing,current,shop,https://www.billetweb.fr/wakanda-festival-2027-6th-edition-all-in-one
 18731,Orléans kizomba festival “Dance of spectrum-Become the Light”,2027-03-18,nothing,none,shop,https://www.helloasso.com/associations/association-afro-lat-in-connexion/evenements/orleans-kizomba-festival-2
-18734,ALBANIA AFROLATIN FESTIVAL,2027-05-05,nothing,current,shop,https://www.goandance.com/en/event/9601/albania-afrolatin-festival-2027
+18734,ALBANIA AFROLATIN FESTIVAL,2027-05-05,nothing,redo_festival,shop,https://www.goandance.com/en/event/9601/albania-afrolatin-festival-2027
 18737,KZL Cozy Edition 2027,2027-04-22,sales_open,none,not_yet,
 18741,Konpa 2 Kizomba Festival,2026-11-06,nothing,current,shop,https://www.eventbrite.com/e/konpa-to-kizomba-festival-2027-tickets-1983229192903
 18744,Fresh Kiz Festival – 4th Edition,2027-04-30,nothing,current,,https://www.billetweb.fr/fresh-kiz-festival-4th-edition
@@ -549,7 +549,7 @@ event_id,event,start,waits_for,first_read,sales,page
 19018,SWISS KIZOMBA MEETING #11 // 30-31 Oct & 1 Nov 2026,2026-10-30,nothing,not_needed,,
 19026,KIZATOURS EXPERIENCE FESTIVAL 2027  | 10 YEARS ANNIVERSARY,2027-03-12,nothing,current,,https://my.weezevent.com/kizatours-experience-festival
 19033,KUOF 2026 – Kizomba & Urban Kiz Oslo Festival,2026-11-20,nothing,not_needed,,
-19037,NEW YEAR ESCAPE 2027 ALL IN ONE TOULOUSE,2026-12-31,nothing,current,shop,https://my.weezevent.com/new-year-escape-2027
+19037,NEW YEAR ESCAPE 2027 ALL IN ONE TOULOUSE,2026-12-31,agent,disputed,shop,https://my.weezevent.com/new-year-escape-2027
 19041,MAGIC WINTER 2027 VIGO,2027-02-19,nothing,not_needed,,
 19048,Cultural social dance fest 2026,2026-11-06,recipe,none,shop,https://bachatacopenhagen.dk/events/cultural-social-dance-fest/
 19060,Stockholm Sensual Festival 2026,2026-10-29,nothing,current,shop,https://www.goandance.com/en/event/8959/stockholm-sensual-festival-2026-4th-edition

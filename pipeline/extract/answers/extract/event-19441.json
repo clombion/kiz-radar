@@ -1,122 +1,122 @@
 {
- "batch": "event-19441",
- "events": [
-  {
-   "event_id": 19441,
-   "artists": [
-    {
-     "name_as_written": "Fanio de Araújo",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇵🇹",
-     "source_line": "▪︎ Fanio de Araújo 🇦🇴🇵🇹"
-    },
-    {
-     "name_as_written": "Adilson & Telma",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "▪︎ Adilson & Telma 🇦🇴"
-    },
-    {
-     "name_as_written": "Eddy Vents",
-     "role": "teacher",
-     "style": null,
-     "country": "🇬🇼🇺🇸",
-     "source_line": "▪︎ Eddy Vents 🇬🇼🇺🇸"
-    },
-    {
-     "name_as_written": "Davide & Cilene",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹🇨🇻",
-     "source_line": "▪︎ Davide & Cilene 🇮🇹🇨🇻"
-    },
-    {
-     "name_as_written": "Elena & Zé Rui",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇭🇨🇻",
-     "source_line": "▪︎ Elena & Zé Rui 🇨🇭🇨🇻"
-    },
-    {
-     "name_as_written": "Walter Dias",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇭🇨🇻",
-     "source_line": "▪︎ Walter Dias 🇨🇭🇨🇻"
-    },
-    {
-     "name_as_written": "Guilhermé",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇭🇦🇴",
-     "source_line": "▪︎ Guilhermé 🇨🇭🇦🇴"
-    },
-    {
-     "name_as_written": "Luis Fernandes",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇭🇨🇻",
-     "source_line": "▪︎ Luis Fernandes 🇨🇭🇨🇻"
-    },
-    {
-     "name_as_written": "Johnny Agostino",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇭🇦🇴",
-     "source_line": "▪︎ Johnny Agostino 🇨🇭🇦🇴"
-    },
-    {
-     "name_as_written": "Cristina",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇭🇮🇹",
-     "source_line": "▪︎ Cristina 🇨🇭🇮🇹"
-    },
-    {
-     "name_as_written": "Dj Guelas",
-     "role": "dj",
-     "style": null,
-     "country": "🇺🇸🇨🇻",
-     "source_line": "▪︎ Dj Guelas 🇺🇸🇨🇻"
-    },
-    {
-     "name_as_written": "Dj Paparazzi",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸🇦🇴",
-     "source_line": "▪︎ Dj Paparazzi 🇪🇸🇦🇴"
-    },
-    {
-     "name_as_written": "Dj Kindoki",
-     "role": "dj",
-     "style": null,
-     "country": "🇬🇧🇦🇴",
-     "source_line": "▪︎ Dj Kindoki 🇬🇧🇦🇴"
-    },
-    {
-     "name_as_written": "Dj Emess",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇭🇦🇴",
-     "source_line": "▪︎ Dj Emess 🇨🇭🇦🇴"
-    },
-    {
-     "name_as_written": "BatuqueEvent",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "#BernisKizomba I #BatuqueEvent"
-    }
-   ],
-   "features": [
-    {
-     "feature": "partner_hotel",
-     "quote": "Use code “Bern is Kizomba” for 15% OFF",
-     "rationale": "The youth hostel offers a discounted room rate for participants, but the accommodation is not part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:01+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "40945b0b7603226f",
+ "answer": {
+  "batch": "event-19441",
+  "events": [
+   {
+    "event_id": 19441,
+    "artists": [
+     {
+      "name_as_written": "Fanio de Araújo",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇵🇹",
+      "source_line": "▪︎ Fanio de Araújo 🇦🇴🇵🇹"
+     },
+     {
+      "name_as_written": "Adilson & Telma",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "▪︎ Adilson & Telma 🇦🇴"
+     },
+     {
+      "name_as_written": "Eddy Vents",
+      "role": "teacher",
+      "style": null,
+      "country": "🇬🇼🇺🇸",
+      "source_line": "▪︎ Eddy Vents 🇬🇼🇺🇸"
+     },
+     {
+      "name_as_written": "Davide & Cilene",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹🇨🇻",
+      "source_line": "▪︎ Davide & Cilene 🇮🇹🇨🇻"
+     },
+     {
+      "name_as_written": "Elena & Zé Rui",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇭🇨🇻",
+      "source_line": "▪︎ Elena & Zé Rui 🇨🇭🇨🇻"
+     },
+     {
+      "name_as_written": "Walter Dias",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇭🇨🇻",
+      "source_line": "▪︎ Walter Dias 🇨🇭🇨🇻"
+     },
+     {
+      "name_as_written": "Guilhermé",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇭🇦🇴",
+      "source_line": "▪︎ Guilhermé 🇨🇭🇦🇴"
+     },
+     {
+      "name_as_written": "Luis Fernandes",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇭🇨🇻",
+      "source_line": "▪︎ Luis Fernandes 🇨🇭🇨🇻"
+     },
+     {
+      "name_as_written": "Johnny Agostino",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇭🇦🇴",
+      "source_line": "▪︎ Johnny Agostino 🇨🇭🇦🇴"
+     },
+     {
+      "name_as_written": "Cristina",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇭🇮🇹",
+      "source_line": "▪︎ Cristina 🇨🇭🇮🇹"
+     },
+     {
+      "name_as_written": "Dj Guelas",
+      "role": "dj",
+      "style": null,
+      "country": "🇺🇸🇨🇻",
+      "source_line": "▪︎ Dj Guelas 🇺🇸🇨🇻"
+     },
+     {
+      "name_as_written": "Dj Paparazzi",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸🇦🇴",
+      "source_line": "▪︎ Dj Paparazzi 🇪🇸🇦🇴"
+     },
+     {
+      "name_as_written": "Dj Kindoki",
+      "role": "dj",
+      "style": null,
+      "country": "🇬🇧🇦🇴",
+      "source_line": "▪︎ Dj Kindoki 🇬🇧🇦🇴"
+     },
+     {
+      "name_as_written": "Dj Emess",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇭🇦🇴",
+      "source_line": "▪︎ Dj Emess 🇨🇭🇦🇴"
+     }
+    ],
+    "features": [
+     {
+      "feature": "partner_hotel",
+      "quote": "Use code “Bern is Kizomba” for 15% OFF",
+      "rationale": "The Bern Youth Hostel offers a discount code, which is a negotiated hotel rate, while accommodation is not part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

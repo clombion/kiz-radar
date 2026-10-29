@@ -1,33 +1,45 @@
 {
- "batch": "event-18763",
- "events": [
-  {
-   "event_id": 18763,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba, Semba, Kuduro, Afro House and traditional Angolan dances"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba, Semba, Kuduro, Afro House and traditional Angolan dances"
-    },
-    {
-     "genre": "kuduro",
-     "genre_as_written": "Kuduro",
-     "quote": "Kizomba, Semba, Kuduro, Afro House and traditional Angolan dances"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro House",
-     "quote": "Kizomba, Semba, Kuduro, Afro House and traditional Angolan dances"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b9def62b338ccb44",
+ "answer": {
+  "batch": "event-18763",
+  "events": [
+   {
+    "event_id": 18763,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba is at the heart of Angolan Dances."
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba and Semba foundations"
+     },
+     {
+      "genre": "kuduro",
+      "genre_as_written": "Kuduro",
+      "quote": "Kizomba, Semba, Kuduro, Afro House and traditional Angolan dances"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro House",
+      "quote": "Kizomba, Semba, Kuduro, Afro House and traditional Angolan dances"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "traditional Angolan dances",
+      "quote": "Introduction to traditional Angolan dances"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:david@david+quinn",
+ "key_b": "p:davidcohen",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2665aefb1c4c8642",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Side A 'David' has events in Japan and Korea with partner Quinn and no Thailand events, while side B 'David Cohen' appears only at a Thailand event with no partners; a shared first name and the same stated country (ZA) are weak evidence, and nothing else links them, so they are different artists."
+ }
+}

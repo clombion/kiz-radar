@@ -34,6 +34,7 @@ from pipeline.records import (
     ReadHeader,
     ReadTier,
     Row,
+    Sale,
     Stamped,
     TicketPage,
     digest,
@@ -211,7 +212,7 @@ def settle_dispute(event_id: int, fr: FirstRead) -> None:
 
 
 # what a draft says of its festival, which the export says too and the checks take its quotes against
-STATED = ('event_id', 'title', 'start_date', 'description', 'styles', 'prompt')
+STATED = ('event_id', 'title', 'start_date', 'end_date', 'country', 'description', 'styles', 'prompt')
 
 
 def misstated(fr: FirstRead, festival: ReadHeader) -> list[str]:
@@ -358,12 +359,8 @@ def priced_tier(tier: ReadTier, here: Sequence[Row]) -> PricedTier:
         currency=lead.currency,
         fee=lead.fee,
         alt=alt,
-        from_=tier.from_,
-        until=tier.until,
-        quantity=tier.quantity,
-        door=False,
+        sale=Sale(from_=tier.from_, until=tier.until, quantity=tier.quantity, current=False),  # sold before the door
         sold_out=all(r.sold_out for r in here),
-        current=False,
         quote=line(lead),
     )
 
@@ -542,7 +539,7 @@ def changes(entries: Sequence[LogEntry]) -> list[tuple[str, str]]:
 def recheck(tiers: Sequence[PricedTier], start: dt.date, today: dt.date) -> tuple[Recheck, bool, str]:
     """(class, due, why) from a festival's recorded tiers (written)."""
     on_sale = [t for t in tiers if not t.sold_out]
-    if on_sale and all(t.until and not t.quantity for t in on_sale):
-        last = max(d for t in on_sale if (d := prices.window(t.from_, t.until, start).until) is not None)
+    if on_sale and all(t.sale and t.sale.until and not t.sale.quantity for t in on_sale):
+        last = max(d for t in on_sale if (d := prices.dates(t, start).until) is not None)
         return Recheck.DATED, last < today, f'last price date {last}'
     return Recheck.MONTHLY, True, 'read on every monthly run'

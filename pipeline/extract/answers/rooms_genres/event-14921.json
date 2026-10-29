@@ -1,18 +1,25 @@
 {
- "batch": "event-14921",
- "events": [
-  {
-   "event_id": 14921,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Loves Kizomba returns in 2026"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "6818b9a6ccd4ccb2",
+ "answer": {
+  "batch": "event-14921",
+  "events": [
+   {
+    "event_id": 14921,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Loves Kizomba returns in 2026 to celebrate spring through dance"
+     }
+    ]
+   }
+  ]
+ }
 }

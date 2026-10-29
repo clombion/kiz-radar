@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sara@sara+vilmar",
+ "key_b": "p:saraiacobacci",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6fb0bb26045c3fe4",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the common first name 'Sara' with no mentions of its own, linked to a partner (vilmar) that side B never shares; both sides state Italy, but a first name alone plus a matching country does not settle whether it is the full name 'Sara Iacobacci'."
+ }
+}

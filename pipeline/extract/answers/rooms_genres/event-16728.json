@@ -1,33 +1,40 @@
 {
- "batch": "event-16728",
- "events": [
-  {
-   "event_id": 16728,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "the event celebrates the roots of Kizomba, Semba, and Kuduro"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "the event celebrates the roots of Kizomba, Semba, and Kuduro"
-    },
-    {
-     "genre": "kuduro",
-     "genre_as_written": "Kuduro",
-     "quote": "the event celebrates the roots of Kizomba, Semba, and Kuduro"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro House",
-     "quote": "Dance Styles: Kizomba, Semba, Kuduro, Afro House"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "98cab948aa1e4100",
+ "answer": {
+  "batch": "event-16728",
+  "events": [
+   {
+    "event_id": 16728,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "the roots of Kizomba, Semba, and Kuduro"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "the roots of Kizomba, Semba, and Kuduro"
+     },
+     {
+      "genre": "kuduro",
+      "genre_as_written": "Kuduro",
+      "quote": "the roots of Kizomba, Semba, and Kuduro"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro House",
+      "quote": "Dance Styles: Kizomba, Semba, Kuduro, Afro House"
+     }
+    ]
+   }
+  ]
+ }
 }

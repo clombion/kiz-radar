@@ -1,31 +1,38 @@
 {
- "batch": "event-14886",
- "events": [
-  {
-   "event_id": 14886,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "15+ Hours of Workshops & Masterclasses",
-     "rationale": "The description states that workshops are part of the event, with 15+ hours of them."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "15+ Hours of Workshops & Masterclasses",
-     "rationale": "The description lists masterclasses as part of the programme."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Live Music",
-     "rationale": "The description lists live music among the event's offerings."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows",
-     "rationale": "The description lists shows as part of the event's offerings."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "77a04cac287f14d2",
+ "answer": {
+  "batch": "event-14886",
+  "events": [
+   {
+    "event_id": 14886,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "15+ Hours of Workshops & Masterclasses",
+      "rationale": "The description states that workshops are part of the event schedule."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "15+ Hours of Workshops & Masterclasses",
+      "rationale": "The description explicitly lists masterclasses as part of the event."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Gala Dinner • Live Music • Fun Games • Shows",
+      "rationale": "Live music is named as one of the event's offerings."
+     },
+     {
+      "feature": "shows",
+      "quote": "Gala Dinner • Live Music • Fun Games • Shows",
+      "rationale": "Shows are named as one of the event's offerings."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:christina@christina+joanna",
+ "key_b": "p:christinachrysanthou",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "885953e970314f1d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as Greek (GR) with Greek events, and 'Christina' is a short form of 'Christina Chrysanthou', but side A has no mentions and its only partner (joanna) is not shared by side B, and Christina is a common first name, so the evidence does not settle it."
+ }
+}

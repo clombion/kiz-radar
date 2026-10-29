@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ana@ana+guilherme",
+ "key_b": "p:ana@ana+pedro",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "a56695b879d75d5b",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different partners (Guilherme versus Pedro), different events in different countries (France versus Switzerland), and only partially overlapping countries (PT), so the only shared element is a common first name, which is weak evidence."
+ }
+}

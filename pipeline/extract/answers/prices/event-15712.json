@@ -1,82 +1,77 @@
 {
- "batch": "event-15712",
- "events": [
-  {
-   "event_id": 15712,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 5,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 689.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Inside double cabin €689/person. Full package: breakfast, lunch, afternoon snack, and dinner"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 5,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 789.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Inside double cabin with porthole and sea view €789/person. Full package: breakfast, lunch, afternoon snack, and dinner"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 5,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 914.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Outside double cabin with balcony and sea view €914/person. Full package: breakfast, lunch, afternoon snack, and dinner"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "The mandatory onboard service fee of €11/person/night (€44 total), payable on the boat."
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:42:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "426c61ee6fdf38b9",
+ "answer": {
+  "batch": "event-15712",
+  "events": [
+   {
+    "event_id": 15712,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 5,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 689.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Inside double cabin €689/person."
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 5,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 789.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Inside double cabin with porthole and sea view €789/person."
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 5,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 914.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Outside double cabin with balcony and sea view €914/person."
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "The mandatory onboard service fee of €11/person/night (€44 total), payable on the boat."
+    ]
+   }
+  ]
+ }
 }

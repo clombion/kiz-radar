@@ -1,0 +1,13 @@
+{
+ "key_a": "p:matteo@diana+matteo",
+ "key_b": "p:matteofrati",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:00+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "62036fe80b4f9171",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records share the partner Diana and the events overlap in Italy; 'Matteo' is the short form of 'Matteo Frati', and no event lists both as separate people, so this fits the same-partner short/long-form rule."
+ }
+}

@@ -1,41 +1,50 @@
 {
- "batch": "event-18995",
- "events": [
-  {
-   "event_id": 18995,
-   "party_rooms": {
-    "count": 2,
-    "quote": "Reykjavik – Iceland, 2 rooms"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "CUBAN SALSA",
-     "quote": "CUBAN SALSA & RUMBA"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "RUMBA",
-     "quote": "CUBAN SALSA & RUMBA"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA SENSUAL",
-     "quote": "BACHATA SENSUAL & DOMINICANA"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA & URBAN KIZ"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBAN KIZ",
-     "quote": "KIZOMBA & URBAN KIZ"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:31+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d31e56a70369f38a",
+ "answer": {
+  "batch": "event-18995",
+  "events": [
+   {
+    "event_id": 18995,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "CUBAN SALSA",
+      "quote": "CUBAN SALSA & RUMBA"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "RUMBA",
+      "quote": "CUBAN SALSA & RUMBA"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "BACHATA SENSUAL & DOMINICANA"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "DOMINICANA",
+      "quote": "BACHATA SENSUAL & DOMINICANA"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KIZOMBA & URBAN KIZ"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBAN KIZ",
+      "quote": "KIZOMBA & URBAN KIZ"
+     }
+    ]
+   }
+  ]
+ }
 }

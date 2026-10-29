@@ -2,13 +2,15 @@
  "event_id": 18285,
  "title": "La Luna Festival – Kizz District 2026",
  "start_date": "2026-11-06",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:07:40+00:00",
+ "end_date": "2026-11-09",
+ "country": "Sweden",
  "styles": [
   "kizomba"
  ],
  "description": "LA LUNA FESTIVAL KIZZ DISTRICT 2026 (ALL IN ONE)\n⬜️◼️⬜️🟪⬜️◼️⬜️🟪⬜️◼️⬜️\nLa Luna Festival Kizz District is here.\nFirst edition, Gothenburg, 6–9 November 2026.\nA full weekend built around what we love. connection, music, and dancing.\nTwo floors, two energies: UrbanKiz and Kizomba, side by side.\nNo overcomplication, just a solid event with good people and good music.\n—\nTEACHERS LINE UP\n▫️Nii & Angie\n▫️Theo\n▫️Mamadou\n▫️Lessly & Naomi\n▫️William & Jeanette\n—\nDJ LINE UP\n▫️DJ Lee Ross\n▫️DJ Adnan\n▫️DJ Da Mata\n▫️DJ Joey C\n▫️DJ Lawa\n▫️DJ Nessu\n▫️DJ Maie\n—\nPHOTOGRAPHER\n▫️ACBFOTO\n—\nTICKETS & HOTEL\nhttps://www.goandance.com/es/evento/8997/la-luna-festival\n—\nEVENT POLICY\nGood vibes only",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:07:55+00:00",
  "passes": [
   {
    "kind": "full",

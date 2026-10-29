@@ -1,0 +1,13 @@
+{
+ "key_a": "p:uliana@dance",
+ "key_b": "p:uliana@daniel+uliana",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7f5fb49438f793f7",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both keys are 'Uliana' with the same countries (NO, UA) and the same Norway event, but side A has no partners while side B is a couple with Daniel, and side B has no mention rows to check, so the evidence does not settle whether this is one person."
+ }
+}

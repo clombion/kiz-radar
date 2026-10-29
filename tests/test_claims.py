@@ -75,6 +75,8 @@ def test_an_empty_claims_folder_is_a_submodule_not_checked_out() -> None:
 def test_a_claim_is_typed_and_changes_something() -> None:
     with pytest.raises(ValidationError):
         _ = MergeClaim(field='merge', keys=('p:b', 'p:a'), decision=MergeDecision.MERGE, made_at=AT, note='n')
+    # a name with itself: whether it is one person or several, as the merge review asks of it (records.Pair)
+    _ = MergeClaim(field='merge', keys=('p:a', 'p:a'), decision=MergeDecision.SEPARATE, made_at=AT, note='n')
     with pytest.raises(ValidationError):
         _ = home('XX')  # no country
     with pytest.raises(ValidationError, match='to itself'):

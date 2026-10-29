@@ -1,19 +1,26 @@
 {
- "batch": "event-16518",
- "events": [
-  {
-   "event_id": 16518,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Dark Room",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "Dark Room"
-    }
-   ],
-   "genres": []
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "1574b99cedd79d9d",
+ "answer": {
+  "batch": "event-16518",
+  "events": [
+   {
+    "event_id": 16518,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Dark Room",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "Dark Room"
+     }
+    ],
+    "genres": []
+   }
+  ]
+ }
 }

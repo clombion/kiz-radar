@@ -1,44 +1,46 @@
 {
- "batch": "event-14727",
- "events": [
-  {
-   "event_id": 14727,
-   "artists": [
-    {
-     "name_as_written": "Team DKF & ILKSF",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Team DKF & ILKSF"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All In ONE Hotel",
-     "rationale": "The line states the event is held in one hotel, so the parties and the stay share a venue."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Pool Parties",
-     "rationale": "The expectations list names pool parties as part of the event."
-    },
-    {
-     "feature": "workshops",
-     "quote": "High Quality Workshops",
-     "rationale": "The expectations list names workshops as part of the event."
-    },
-    {
-     "feature": "competition",
-     "quote": "The Rising Star Competition",
-     "rationale": "The expectations list names a competition as part of the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Booking link coming soon!",
-     "rationale": "A hotel booking link is given under the HOTEL heading, which implies a recommended hotel that is not part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b5afee5da963fcc0",
+ "answer": {
+  "batch": "event-14727",
+  "events": [
+   {
+    "event_id": 14727,
+    "artists": [
+     {
+      "name_as_written": "Team DKF & ILKSF",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Team DKF & ILKSF"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All In ONE Hotel",
+      "rationale": "The listed experience is an all-in-one hotel, so the event and accommodation are in the same venue."
+     },
+     {
+      "feature": "workshops",
+      "quote": "High Quality Workshops",
+      "rationale": "The description lists high quality workshops as part of the event."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Pool Parties",
+      "rationale": "The expectations list explicitly includes pool parties."
+     },
+     {
+      "feature": "competition",
+      "quote": "The Rising Star Competition",
+      "rationale": "A named competition is listed among the event's features."
+     }
+    ]
+   }
+  ]
+ }
 }

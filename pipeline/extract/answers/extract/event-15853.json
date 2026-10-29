@@ -1,179 +1,186 @@
 {
- "batch": "event-15853",
- "events": [
-  {
-   "event_id": 15853,
-   "artists": [
-    {
-     "name_as_written": "Salsa Zone and Brighton Fiesta Latino",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "*Organisers:* Salsa Zone and Brighton Fiesta Latino – Leading Latin Entertainment Providers"
-    },
-    {
-     "name_as_written": "Angel Peinado",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Angel Peinado"
-    },
-    {
-     "name_as_written": "Juan Sotto",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Juan Sotto"
-    },
-    {
-     "name_as_written": "Domenico Davide",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Domenico Davide"
-    },
-    {
-     "name_as_written": "Eastbourne Cuban Salsa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Eastbourne Cuban Salsa"
-    },
-    {
-     "name_as_written": "Jay Jay",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Jay Jay"
-    },
-    {
-     "name_as_written": "DJ Gervasio",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Gervasio"
-    },
-    {
-     "name_as_written": "DJ Domenico",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Domenico"
-    },
-    {
-     "name_as_written": "DJ Lady D",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Lady D"
-    },
-    {
-     "name_as_written": "DJ Greg",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Greg"
-    },
-    {
-     "name_as_written": "Ehab",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Ehab (E.b)"
-    },
-    {
-     "name_as_written": "Anerley",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Anerley"
-    },
-    {
-     "name_as_written": "Amanda",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Amanda"
-    },
-    {
-     "name_as_written": "Frances",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Frances"
-    },
-    {
-     "name_as_written": "Jadzia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Jadzia"
-    },
-    {
-     "name_as_written": "Leo",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Leo"
-    },
-    {
-     "name_as_written": "Chi",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Chi"
-    },
-    {
-     "name_as_written": "Evona",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Evona"
-    },
-    {
-     "name_as_written": "Shahrazard",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Shahrazard"
-    },
-    {
-     "name_as_written": "Francesco and Carolina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Francesco and Carolina"
-    },
-    {
-     "name_as_written": "Rudy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸Rudy"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "🔹33 dance classes across 4 days",
-     "rationale": "The event offers 33 dance classes over four days, so classes are part of the event."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Beginners friendly classes too.",
-     "rationale": "The description explicitly says the classes are beginner friendly."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows, fun music, and great entertainment throughout the event",
-     "rationale": "The highlights list shows as part of the event entertainment."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Three dance rooms",
-     "rationale": "The festival highlights state there are three dance rooms."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "82739d62979ba8b9",
+ "answer": {
+  "batch": "event-15853",
+  "events": [
+   {
+    "event_id": 15853,
+    "artists": [
+     {
+      "name_as_written": "Angel Peinado",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Angel Peinado"
+     },
+     {
+      "name_as_written": "Juan Sotto",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Juan Sotto"
+     },
+     {
+      "name_as_written": "Domenico Davide",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Domenico Davide"
+     },
+     {
+      "name_as_written": "Eastbourne Cuban Salsa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Eastbourne Cuban Salsa"
+     },
+     {
+      "name_as_written": "Jay Jay",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Jay Jay"
+     },
+     {
+      "name_as_written": "Salsa Zone and Brighton Fiesta Latino",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "*Organisers:* Salsa Zone and Brighton Fiesta Latino – Leading Latin Entertainment Providers"
+     },
+     {
+      "name_as_written": "DJ Gervasio",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Gervasio"
+     },
+     {
+      "name_as_written": "DJ Domenico",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Domenico"
+     },
+     {
+      "name_as_written": "DJ Lady D",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Lady D"
+     },
+     {
+      "name_as_written": "DJ Greg",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Greg"
+     },
+     {
+      "name_as_written": "Ehab",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Ehab (E.b)"
+     },
+     {
+      "name_as_written": "Anerley",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Anerley"
+     },
+     {
+      "name_as_written": "Amanda",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Amanda"
+     },
+     {
+      "name_as_written": "Frances",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Frances"
+     },
+     {
+      "name_as_written": "Jadzia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Jadzia"
+     },
+     {
+      "name_as_written": "Leo",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Leo"
+     },
+     {
+      "name_as_written": "Chi",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Chi"
+     },
+     {
+      "name_as_written": "Evona",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Evona"
+     },
+     {
+      "name_as_written": "Shahrazard",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Shahrazard"
+     },
+     {
+      "name_as_written": "Francesco and Carolina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Francesco and Carolina"
+     },
+     {
+      "name_as_written": "Rudy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸Rudy"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Beginners friendly classes too.",
+      "rationale": "The description states that beginners are welcome in the classes."
+     },
+     {
+      "feature": "workshops",
+      "quote": "33 high-quality classes",
+      "rationale": "The festival offers dance classes as part of the event."
+     },
+     {
+      "feature": "shows",
+      "quote": "Shows, fun music, and great entertainment throughout the event",
+      "rationale": "The festival highlights shows featuring artists throughout the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Three dance rooms",
+      "rationale": "The festival highlights three dance rooms."
+     }
+    ]
+   }
+  ]
+ }
 }

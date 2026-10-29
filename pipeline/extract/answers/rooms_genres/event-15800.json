@@ -1,28 +1,30 @@
 {
- "batch": "event-15800",
- "events": [
-  {
-   "event_id": 15800,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "ALMA BACHATA & KIZOMBA FESTIVAL 2026"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "ALMA BACHATA & KIZOMBA FESTIVAL 2026"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata Festival",
-     "quote": "Welcome to Alma Bachata Festival 2026"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "1347ea5184d470b0",
+ "answer": {
+  "batch": "event-15800",
+  "events": [
+   {
+    "event_id": 15800,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Welcome to Alma Bachata Festival 2026"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Alma Bachata & Kizomba Festival : May 21-25, 2026"
+     }
+    ]
+   }
+  ]
+ }
 }

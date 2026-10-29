@@ -1,31 +1,38 @@
 {
- "batch": "event-18741",
- "events": [
-  {
-   "event_id": 18741,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops: Konpa, Kizomba, Semba, Afrobeats, Gouyad & more",
-     "rationale": "The description lists dance workshops in several styles as part of the event."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Konpa • Kizomba • Semba Bootcamps",
-     "rationale": "Bootcamps in three styles are offered as part of the event."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Party + 3 Official Party Nights",
-     "rationale": "A pre-party is explicitly listed before the official party nights."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Sonesta at Gwinnett Place",
-     "rationale": "The event names a host hotel with a booking link, without stating that accommodation is part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:33:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "3bbabf776f59b179",
+ "answer": {
+  "batch": "event-18741",
+  "events": [
+   {
+    "event_id": 18741,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops: Konpa, Kizomba, Semba, Afrobeats, Gouyad & more",
+      "rationale": "The description lists workshops in Konpa, Kizomba, Semba and other styles as part of the event."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-Party + 3 Official Party Nights",
+      "rationale": "A pre-party is explicitly listed alongside the official party nights."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "Konpa • Kizomba • Semba Bootcamps",
+      "rationale": "Bootcamps in three styles are offered as part of the festival."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Sonesta at Gwinnett Place",
+      "rationale": "The event names a host hotel with a booking link, which is a recommended hotel rather than accommodation included in the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,102 +1,109 @@
 {
- "batch": "event-18522",
- "events": [
-  {
-   "event_id": 18522,
-   "artists": [
-    {
-     "name_as_written": "KIFF DANCE",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 KIFF DANCE x LE PARK STUDIO PRESENT 🔥"
-    },
-    {
-     "name_as_written": "LE PARK STUDIO",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 KIFF DANCE x LE PARK STUDIO PRESENT 🔥"
-    },
-    {
-     "name_as_written": "Zouzout & Synthia",
-     "role": "teacher",
-     "style": "Konpa",
-     "country": null,
-     "source_line": "💥 Zouzout & Synthia – Konpa"
-    },
-    {
-     "name_as_written": "Kristel & Ichigo",
-     "role": "teacher",
-     "style": "Tarra Show",
-     "country": null,
-     "source_line": "💥 Kristel & Ichigo – Tarra Show"
-    },
-    {
-     "name_as_written": "DJ Ichigo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Ichigo"
-    },
-    {
-     "name_as_written": "DJ Diablo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Diablo"
-    },
-    {
-     "name_as_written": "DJ Fofo Jah",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Fofo Jah"
-    },
-    {
-     "name_as_written": "DJ Thales",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Thales"
-    },
-    {
-     "name_as_written": "DJ Loy J",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Loy J"
-    },
-    {
-     "name_as_written": "DJ JDN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ JDN"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Enjoy multiple dance areas, workshops, parties",
-     "rationale": "The description states that workshops are part of the weekend."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Party – 2 rooms • 2 vibes",
-     "rationale": "The Friday party runs in two rooms, so there is more than one dance room."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Konpa Masterclass with Zouzout & Synthia",
-     "rationale": "A Konpa Masterclass is scheduled on Saturday."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3:00 PM – 8:00 PM: Social",
-     "rationale": "A daytime social runs from 3:00 PM to 8:00 PM on Saturday."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:32:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "9718da869561c91b",
+ "answer": {
+  "batch": "event-18522",
+  "events": [
+   {
+    "event_id": 18522,
+    "artists": [
+     {
+      "name_as_written": "KIFF DANCE",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 KIFF DANCE x LE PARK STUDIO PRESENT 🔥"
+     },
+     {
+      "name_as_written": "LE PARK STUDIO",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 KIFF DANCE x LE PARK STUDIO PRESENT 🔥"
+     },
+     {
+      "name_as_written": "Zouzout & Synthia",
+      "role": "teacher",
+      "style": "Konpa",
+      "country": null,
+      "source_line": "💥 Zouzout & Synthia – Konpa"
+     },
+     {
+      "name_as_written": "Kristel & Ichigo",
+      "role": "teacher",
+      "style": "Tarra Show",
+      "country": null,
+      "source_line": "💥 Kristel & Ichigo – Tarra Show"
+     },
+     {
+      "name_as_written": "DJ Ichigo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Ichigo"
+     },
+     {
+      "name_as_written": "DJ Diablo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Diablo"
+     },
+     {
+      "name_as_written": "DJ Fofo Jah",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Fofo Jah"
+     },
+     {
+      "name_as_written": "DJ Thales",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Thales"
+     },
+     {
+      "name_as_written": "DJ Loy J",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Loy J"
+     },
+     {
+      "name_as_written": "DJ JDN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ JDN"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Pre-party workshops",
+      "rationale": "The agenda lists workshops as part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Enjoy multiple dance areas",
+      "rationale": "The event offers several dance areas, and the schedule mentions 2 and 3 rooms."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Konpa Masterclass with Zouzout & Synthia",
+      "rationale": "A masterclass is explicitly scheduled and sold as an add-on."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3:00 PM – 8:00 PM: Social",
+      "rationale": "A daytime social is scheduled on Saturday afternoon."
+     }
+    ]
+   }
+  ]
+ }
 }

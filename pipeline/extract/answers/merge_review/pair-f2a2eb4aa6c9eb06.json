@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tiwosh",
+ "key_b": "p:tiwosh@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f2a2eb4aa6c9eb06",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are the same distinctive stage name written with different spacing and hyphenation (Ti Wosh / TIWOSH / TI-WOSH / Ti-Wosh), used as DJ on both sides, both stated as French (🇫🇷), with no conflicting country or partner evidence, so this is a spelling variant of one artist."
+ }
+}

@@ -1,130 +1,96 @@
 {
- "batch": "event-16054",
- "events": [
-  {
-   "event_id": 16054,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 620.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€620: Full Pass + Full-board Accommodation"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "4★ HOTEL – STANDARD ROOM – FULL BOARD",
-     "group_size": 1,
-     "days": 7,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 620.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Double room: €620"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "4★ HOTEL – STANDARD ROOM – FULL BOARD",
-     "group_size": 1,
-     "days": 6,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 570.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Double room: €570"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "4★ HOTEL – SUPERIOR ROOM – FULL BOARD",
-     "group_size": 1,
-     "days": 7,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 720.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Double room: €720"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "4★ HOTEL – SUPERIOR ROOM – FULL BOARD",
-     "group_size": 1,
-     "days": 6,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 650.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Double room: €650"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Full board applies to all prices offered.",
-    "Single standard room: +€180 supplement",
-    "Single room: +€150 supplement"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:43:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0510842ac303f3dc",
+ "answer": {
+  "batch": "event-16054",
+  "events": [
+   {
+    "event_id": 16054,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 7,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 620.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "€620: Full Pass + Full-board Accommodation"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "4★ HOTEL – STANDARD ROOM – FULL BOARD",
+      "group_size": 1,
+      "days": 6,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 570.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Double room: €570"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "4★ HOTEL – SUPERIOR ROOM – FULL BOARD",
+      "group_size": 1,
+      "days": 7,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 720.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Double room: €720"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "4★ HOTEL – SUPERIOR ROOM – FULL BOARD",
+      "group_size": 1,
+      "days": 6,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 650.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Double room: €650"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Full board applies to all prices offered."
+    ]
+   }
+  ]
+ }
 }

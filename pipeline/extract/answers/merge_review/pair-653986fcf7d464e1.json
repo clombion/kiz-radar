@@ -1,0 +1,13 @@
+{
+ "key_a": "p:poemabeat",
+ "key_b": "p:poemabeatz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "653986fcf7d464e1",
+ "answer": {
+  "decision": "merge",
+  "rationale": "'Dj Poema beat' (Sweden, DJ, Urbankiz/Tarraxo) and 'Poema Beatz' are a spelling variant of one distinctive stage name with a DJ prefix, and both sides are tied to Sweden: the A side is Swedish-only while the B side's Swedish flag appears on the same name across many events, including the Swedish event 15260 and the Swedish-linked event 15557, so the spelling variant and shared Swedish country support one artist."
+ }
+}

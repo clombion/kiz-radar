@@ -1,0 +1,13 @@
+{
+ "key_a": "p:martin@dj",
+ "key_b": "p:martin@jana+martin",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "301a89d1a8726e7c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "DJ Martin and Martin share the Czech country and the Hungary event country, and the DJ prefix may be dropped, but 'Martin' is a common first name, side B has no mentions of its own to compare, and B is a couple with Jana while A appears solo, so the evidence does not settle it."
+ }
+}

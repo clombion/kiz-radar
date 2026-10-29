@@ -1,126 +1,115 @@
 {
- "batch": "event-16196",
- "events": [
-  {
-   "event_id": 16196,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 5,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 415.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– 𝟱 𝗡𝗶𝗴𝗵𝘁𝘀 𝗠𝗔𝗜𝗡 𝗛𝗢𝗧𝗘𝗟 + 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 – 415€"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 4,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 360.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– 𝟰 𝗡𝗶𝗴𝗵𝘁𝘀 𝗠𝗔𝗜𝗡 𝗛𝗢𝗧𝗘𝗟 + 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 – 360€"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 295.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– 𝟯 𝗡𝗶𝗴𝗵𝘁𝘀 𝗠𝗔𝗜𝗡 𝗛𝗢𝗧𝗘𝗟 + 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 – 295€"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 245.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– 𝟮 𝗡𝗶𝗴𝗵𝘁𝘀 𝗠𝗔𝗜𝗡 𝗛𝗢𝗧𝗘𝗟 + 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 – 245€"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 125.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "— 𝐅𝐔𝐋𝐋 𝐏𝐀𝐒𝐒 – 125€ —"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:43:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "5b9b31f6730ea2d6",
+ "answer": {
+  "batch": "event-16196",
+  "events": [
+   {
+    "event_id": 16196,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 5,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 415.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝟱 𝗡𝗶𝗴𝗵𝘁𝘀 𝗠𝗔𝗜𝗡 𝗛𝗢𝗧𝗘𝗟 + 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 – 415€"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 4,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 360.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝟰 𝗡𝗶𝗴𝗵𝘁𝘀 𝗠𝗔𝗜𝗡 𝗛𝗢𝗧𝗘𝗟 + 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 – 360€"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 295.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝟯 𝗡𝗶𝗴𝗵𝘁𝘀 𝗠𝗔𝗜𝗡 𝗛𝗢𝗧𝗘𝗟 + 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 – 295€"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 245.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝟮 𝗡𝗶𝗴𝗵𝘁𝘀 𝗠𝗔𝗜𝗡 𝗛𝗢𝗧𝗘𝗟 + 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 – 245€"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 125.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝐅𝐔𝐋𝐋 𝐏𝐀𝐒𝐒 – 125€"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "𝘗𝘳𝘪𝘤𝘦 𝘱𝘦𝘳 𝘱𝘦𝘳𝘴𝘰𝘯 𝘪𝘯 𝘥𝘰𝘶𝘣𝘭𝘦 𝘰𝘳 𝘵𝘳𝘪𝘱𝘭𝘦 𝘳𝘰𝘰𝘮"
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cazuza@dance",
+ "key_b": "p:cazuzakinvula",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "03356f722483892e",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are Angolan teachers and 'CAZUZA' is a distinctive first name matching the first word of 'Cazuza Kinvula', but there is no shared partner, no shared event, no shared style, and the surname appears only on the B side, so the evidence does not settle whether it is one person."
+ }
+}

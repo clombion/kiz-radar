@@ -1,31 +1,38 @@
 {
- "batch": "event-16884",
- "events": [
-  {
-   "event_id": 16884,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Parties, socials & workshops",
-     "rationale": "The description lists workshops as part of what attendees can expect."
-    },
-    {
-     "feature": "competition",
-     "quote": "Semba Dance Battle",
-     "rationale": "A Semba Dance Battle is listed as part of the festival programme."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "All White",
-     "rationale": "The Sunday night is given a dress theme of all white, one of several themed nights."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "All White",
-     "rationale": "A stated dress code is given for each night, including all white for Sunday."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "cfbc9c76ae957b0e",
+ "answer": {
+  "batch": "event-16884",
+  "events": [
+   {
+    "event_id": 16884,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Parties, socials & workshops",
+      "rationale": "The event lists workshops as part of what to expect."
+     },
+     {
+      "feature": "competition",
+      "quote": "Semba Dance Battle",
+      "rationale": "A Semba Dance Battle is listed as part of the programme, which makes it a competition."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Samacaca",
+      "rationale": "Samacaca is stated as the dress code for Friday Night."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "All White",
+      "rationale": "Sunday Night has a stated dress theme of All White, which makes it a themed party."
+     }
+    ]
+   }
+  ]
+ }
 }

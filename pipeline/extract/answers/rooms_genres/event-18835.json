@@ -1,81 +1,87 @@
 {
- "batch": "event-18835",
- "events": [
-  {
-   "event_id": 18835,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 rooms – 2 atmospheres"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Room I",
-     "kind": "unspecified",
-     "genres": [
-      "urbankiz",
-      "tarraxo",
-      "zouk",
-      "afro",
-      "douceur"
-     ],
-     "quote": "Room I : Urbankiz – Tarraxo- Ghettozouk – Afrobeat – Douceur"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "9b2ab3feb830ca90",
+ "answer": {
+  "batch": "event-18835",
+  "events": [
+   {
+    "event_id": 18835,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 rooms – 2 atmospheres"
     },
-    {
-     "name_as_written": "Room II",
-     "kind": "unspecified",
-     "genres": [
-      "kizomba",
-      "semba",
-      "afro",
-      "zouk",
-      "kompa"
-     ],
-     "quote": "Room II : Authentic Kizomba – Semba – Afrozouk – Kompa"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "UrbanKiz",
-     "quote": "dance UrbanKiz, Kizomba, Semba, Tarraxo and Ghetto Zouk"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba, Urban Kiz, Kizomba Fusion, Semba, Kompa, Tarraxo or Afro"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Room II : Authentic Kizomba – Semba – Afrozouk – Kompa"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Room I : Urbankiz – Tarraxo- Ghettozouk – Afrobeat – Douceur"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghetto Zouk",
-     "quote": "dance UrbanKiz, Kizomba, Semba, Tarraxo and Ghetto Zouk"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrobeat",
-     "quote": "Room I : Urbankiz – Tarraxo- Ghettozouk – Afrobeat – Douceur"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "Room I : Urbankiz – Tarraxo- Ghettozouk – Afrobeat – Douceur"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "Room II : Authentic Kizomba – Semba – Afrozouk – Kompa"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Room I",
+      "kind": "party",
+      "genres": [
+       "urbankiz",
+       "tarraxo",
+       "zouk",
+       "afro",
+       "douceur"
+      ],
+      "quote": "Room I : Urbankiz – Tarraxo- Ghettozouk – Afrobeat – Douceur"
+     },
+     {
+      "name_as_written": "Room II",
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "semba",
+       "zouk",
+       "kompa"
+      ],
+      "quote": "Room II : Authentic Kizomba – Semba – Afrozouk – Kompa"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Enjoy the greatest Kizomba Congress in Austria"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "UrbanKiz",
+      "quote": "dance UrbanKiz, Kizomba, Semba, Tarraxo and Ghetto Zouk"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba, Semba, Tarraxo and Ghetto Zouk"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Tarraxo and Ghetto Zouk"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghetto Zouk",
+      "quote": "Tarraxo and Ghetto Zouk"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrobeat",
+      "quote": "Afrobeat"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "Douceur"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "Kompa"
+     }
+    ]
+   }
+  ]
+ }
 }

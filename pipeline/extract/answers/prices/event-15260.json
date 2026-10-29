@@ -1,245 +1,253 @@
 {
- "batch": "event-15260",
- "events": [
-  {
-   "event_id": 15260,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "FULL FESTIVAL PASS",
-     "group_size": 1,
-     "days": 4,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 2000.0,
-       "currency": "SEK",
-       "fee": null,
-       "alt": {
-        "amount": 190.0,
-        "currency": "EUR"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "2000 SEK (190€)"
-      }
-     ]
-    },
-    {
-     "kind": "other",
-     "style": null,
-     "label_quote": "FRIDAY+SATURDAY PASS",
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 1500.0,
-       "currency": "SEK",
-       "fee": null,
-       "alt": {
-        "amount": 140.0,
-        "currency": "EUR"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "1500 SEK (140€)"
-      }
-     ]
-    },
-    {
-     "kind": "party",
-     "style": null,
-     "label_quote": "PARTIES FRIDAY & SATURDAY ONLY",
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 950.0,
-       "currency": "SEK",
-       "fee": null,
-       "alt": {
-        "amount": 90.0,
-        "currency": "EUR"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "950 SEK (90€)"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "FRIDAY PARTIES ONLY",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 500.0,
-       "currency": "SEK",
-       "fee": null,
-       "alt": {
-        "amount": 45.0,
-        "currency": "EUR"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "500 SEK (45€)"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "SATURDAY PARTIES ONLY",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 500.0,
-       "currency": "SEK",
-       "fee": null,
-       "alt": {
-        "amount": 45.0,
-        "currency": "EUR"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "500 SEK (45€)"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "THURSDAY PASS",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 500.0,
-       "currency": "SEK",
-       "fee": null,
-       "alt": {
-        "amount": 45.0,
-        "currency": "EUR"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "500 SEK (45€)"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "SUNDAY PASS",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 500.0,
-       "currency": "SEK",
-       "fee": null,
-       "alt": {
-        "amount": 45.0,
-        "currency": "EUR"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "500 SEK (45€)"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "PARTY THURSDAY ONLY",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 300.0,
-       "currency": "SEK",
-       "fee": null,
-       "alt": {
-        "amount": 30.0,
-        "currency": "EUR"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "300 SEK (30€)"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "SOCIAL SUNDAY ONLY",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 200.0,
-       "currency": "SEK",
-       "fee": null,
-       "alt": {
-        "amount": 20.0,
-        "currency": "EUR"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "200 SEK (20€)"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:41:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "6bc92b0389950531",
+ "answer": {
+  "batch": "event-15260",
+  "events": [
+   {
+    "event_id": 15260,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "FULL FESTIVAL PASS",
+      "group_size": 1,
+      "days": 4,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 2000.0,
+        "currency": "SEK",
+        "fee": null,
+        "alt": {
+         "amount": 190.0,
+         "currency": "EUR"
+        },
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "2000 SEK (190€)"
+       }
+      ]
+     },
+     {
+      "kind": "other",
+      "style": null,
+      "label_quote": "FRIDAY+SATURDAY PASS",
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 1500.0,
+        "currency": "SEK",
+        "fee": null,
+        "alt": {
+         "amount": 140.0,
+         "currency": "EUR"
+        },
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "1500 SEK (140€)"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": "PARTIES FRIDAY & SATURDAY ONLY",
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 950.0,
+        "currency": "SEK",
+        "fee": null,
+        "alt": {
+         "amount": 90.0,
+         "currency": "EUR"
+        },
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "950 SEK (90€)"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": "FRIDAY PARTIES ONLY",
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 500.0,
+        "currency": "SEK",
+        "fee": null,
+        "alt": {
+         "amount": 45.0,
+         "currency": "EUR"
+        },
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "500 SEK (45€)"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": "SATURDAY PARTIES ONLY",
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 500.0,
+        "currency": "SEK",
+        "fee": null,
+        "alt": {
+         "amount": 45.0,
+         "currency": "EUR"
+        },
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "500 SEK (45€)"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": "THURSDAY PASS",
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 500.0,
+        "currency": "SEK",
+        "fee": null,
+        "alt": {
+         "amount": 45.0,
+         "currency": "EUR"
+        },
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "500 SEK (45€)"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": "SUNDAY PASS",
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 500.0,
+        "currency": "SEK",
+        "fee": null,
+        "alt": {
+         "amount": 45.0,
+         "currency": "EUR"
+        },
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "500 SEK (45€)"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": "PARTY THURSDAY ONLY",
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 300.0,
+        "currency": "SEK",
+        "fee": null,
+        "alt": {
+         "amount": 30.0,
+         "currency": "EUR"
+        },
+        "sale": null,
+        "sold_out": false,
+        "quote": "300 SEK (30€)"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": "SOCIAL SUNDAY ONLY",
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 200.0,
+        "currency": "SEK",
+        "fee": null,
+        "alt": {
+         "amount": 20.0,
+         "currency": "EUR"
+        },
+        "sale": null,
+        "sold_out": false,
+        "quote": "200 SEK (20€)"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Tickets for sale AFTER 1/11"
+    ]
+   }
+  ]
+ }
 }

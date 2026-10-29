@@ -1,33 +1,40 @@
 {
- "batch": "event-19444",
- "events": [
-  {
-   "event_id": 19444,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "A full week dedicated to Kizomba, Urban Kiz, Semba and Tarraxo"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "A full week dedicated to Kizomba, Urban Kiz, Semba and Tarraxo"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "A full week dedicated to Kizomba, Urban Kiz, Semba and Tarraxo"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "A full week dedicated to Kizomba, Urban Kiz, Semba and Tarraxo"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "3589d1aae80417be",
+ "answer": {
+  "batch": "event-19444",
+  "events": [
+   {
+    "event_id": 19444,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "A full week dedicated to Kizomba, Urban Kiz, Semba and Tarraxo"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "A full week dedicated to Kizomba, Urban Kiz, Semba and Tarraxo"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "A full week dedicated to Kizomba, Urban Kiz, Semba and Tarraxo"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "A full week dedicated to Kizomba, Urban Kiz, Semba and Tarraxo"
+     }
+    ]
+   }
+  ]
+ }
 }

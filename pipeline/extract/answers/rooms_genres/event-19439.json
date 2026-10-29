@@ -1,33 +1,40 @@
 {
- "batch": "event-19439",
- "events": [
-  {
-   "event_id": 19439,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "feature Salsa, Bachata, Kizomba & Zouk at one event!"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "feature Salsa, Bachata, Kizomba & Zouk at one event!"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "feature Salsa, Bachata, Kizomba & Zouk at one event!"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "feature Salsa, Bachata, Kizomba & Zouk at one event!"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "39fdebdbb04a87ee",
+ "answer": {
+  "batch": "event-19439",
+  "events": [
+   {
+    "event_id": 19439,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Salsa • Bachata • Kizomba • Zouk"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Salsa • Bachata • Kizomba • Zouk"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Salsa • Bachata • Kizomba • Zouk"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Zouk",
+      "quote": "Salsa • Bachata • Kizomba • Zouk"
+     }
+    ]
+   }
+  ]
+ }
 }

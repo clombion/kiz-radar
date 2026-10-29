@@ -1,64 +1,86 @@
 {
- "batch": "event-14521",
- "events": [
-  {
-   "event_id": 14521,
-   "party_rooms": {
-    "count": 4,
-    "quote": "2 Parties in 4 Rooms"
-   },
-   "class_rooms": {
-    "count": 5,
-    "quote": "5 rooms for training"
-   },
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "kizomba",
-     "quote": "kizomba, semba, urban kizomba"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "591bf6a1cc5843d3",
+ "answer": {
+  "batch": "event-14521",
+  "events": [
+   {
+    "event_id": 14521,
+    "party_rooms": {
+     "count": 4,
+     "quote": "2 Parties in 4 Rooms"
     },
-    {
-     "genre": "semba",
-     "genre_as_written": "semba",
-     "quote": "kizomba, semba, urban kizomba"
+    "class_rooms": {
+     "count": 5,
+     "quote": "5 rooms for training"
     },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "urban kizomba",
-     "quote": "urban kizomba, tarraxo, doceur"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "tarraxo",
-     "quote": "urban kizomba, tarraxo, doceur"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "doceur",
-     "quote": "tarraxo, doceur, kizomba fusion"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Florence Kizomba Salsa Bachata Festival"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Cuban salsa",
-     "quote": "Cuban salsa, Puerto Rican salsa"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "bachata",
-     "quote": "bachata, and Latin Hustle"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Latin Hustle",
-     "quote": "and Latin Hustle"
-    }
-   ]
-  }
- ]
+    "rooms": [
+     {
+      "name_as_written": "Social Room",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "Social Room"
+     },
+     {
+      "name_as_written": "Kizomba Social Room",
+      "kind": "unspecified",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "Kizomba Social Room"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "kizomba",
+      "quote": "WORKSHOPS in kizomba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "semba",
+      "quote": "kizomba, semba, urban kizomba"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "urban kizomba",
+      "quote": "kizomba, semba, urban kizomba"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "kizomba fusion",
+      "quote": "kizomba fusion, Cuban salsa"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "tarraxo",
+      "quote": "urban kizomba, tarraxo"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "doceur",
+      "quote": "tarraxo, doceur"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Cuban salsa",
+      "quote": "Cuban salsa, Puerto Rican salsa"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "bachata",
+      "quote": "bachata, and Latin Hustle"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Latin Hustle",
+      "quote": "bachata, and Latin Hustle"
+     }
+    ]
+   }
+  ]
+ }
 }

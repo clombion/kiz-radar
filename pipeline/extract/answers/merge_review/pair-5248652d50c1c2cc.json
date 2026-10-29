@@ -1,0 +1,13 @@
+{
+ "key_a": "p:arun@dance",
+ "key_b": "p:arunpauer",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "5248652d50c1c2cc",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides state Austria and 'ARUN' is a possible short form of 'Arun Pauer', but there is no shared partner, no shared event, and the styles do not match (special guests versus salsa), so the evidence does not settle whether they are one person."
+ }
+}

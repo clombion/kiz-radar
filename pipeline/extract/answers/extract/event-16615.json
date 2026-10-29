@@ -1,21 +1,28 @@
 {
- "batch": "event-16615",
- "events": [
-  {
-   "event_id": 16615,
-   "artists": [],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE – 6 ROOMS / 6 ATMOSPHERES",
-     "rationale": "The event is billed as all in one, and the venue is the Logis Hôtel Lyon Est, so the parties appear to take place in the hotel."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "6 Rooms · 6 Music Universes",
-     "rationale": "The description states there are six rooms, each a separate music universe."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:29:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "00cce399e82c6ee6",
+ "answer": {
+  "batch": "event-16615",
+  "events": [
+   {
+    "event_id": 16615,
+    "artists": [],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE – 6 ROOMS / 6 ATMOSPHERES",
+      "rationale": "The phrase \"ALL IN ONE\" states that the event and its parties take place in one venue, and the venue is a hotel (Logis Hôtel Lyon Est)."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "6 Rooms · 6 Music Universes",
+      "rationale": "The description states there are six rooms, so more than one dance room is present."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:kal@dance",
+ "key_b": "p:kal@kal+ludolskiz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "430908753f873699",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the single name 'Kal' with France as the only stated country, but side B's mention list is empty, so its France event and its partner 'ludolskiz' cannot be checked against side A's teacher listing at a French event, and a wrong merge would join two people's histories."
+ }
+}

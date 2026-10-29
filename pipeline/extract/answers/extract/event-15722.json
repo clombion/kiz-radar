@@ -1,56 +1,63 @@
 {
- "batch": "event-15722",
- "events": [
-  {
-   "event_id": 15722,
-   "artists": [
-    {
-     "name_as_written": "Rui Djassi Morácen",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Welcome to the 8th edition of #BeyondKizomba, the cultural immersion program in Angola that is designed by Rui Djassi Morácen, the founder of the University of Kizomba initiative, in partnership with – and backed by the logistics support of – Kunanga Life, a legally registered Angolan cultural tourism agency. In this edition, we will have, amongst a vast array of exciting events, a special party dedicated to honor the great work that #Back2Basic has been doing in promoting kizomba (and Angolan culture at large) in Europe consistently for so many years."
-    },
-    {
-     "name_as_written": "Kunanga Life",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Welcome to the 8th edition of #BeyondKizomba, the cultural immersion program in Angola that is designed by Rui Djassi Morácen, the founder of the University of Kizomba initiative, in partnership with – and backed by the logistics support of – Kunanga Life, a legally registered Angolan cultural tourism agency. In this edition, we will have, amongst a vast array of exciting events, a special party dedicated to honor the great work that #Back2Basic has been doing in promoting kizomba (and Angolan culture at large) in Europe consistently for so many years."
-    }
-   ],
-   "features": [
-    {
-     "feature": "accommodation_included",
-     "quote": "Hotel accommodation (12 days, 11 nights);",
-     "rationale": "The Full package list states that hotel accommodation for 12 days and 11 nights is included."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Three (3) meals a day (breakfast, lunch, dinner);",
-     "rationale": "The package includes three meals a day."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Airport transfers (pick-up & airport drop-off);",
-     "rationale": "Airport pick-up and drop-off transfers are included in the package."
-    },
-    {
-     "feature": "workshops",
-     "quote": "ALL group dance classes (incl. kizomba, semba, etc)",
-     "rationale": "Group dance classes are part of the package, so dance classes are part of the event."
-    },
-    {
-     "feature": "private_classes",
-     "quote": "private classes are booked and paid individually out of pocket",
-     "rationale": "The text states that private classes can be booked and paid for separately."
-    },
-    {
-     "feature": "live_music",
-     "quote": "music concerts",
-     "rationale": "Music concerts are listed among the included group nightlife activities."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "2754f4a8d8882662",
+ "answer": {
+  "batch": "event-15722",
+  "events": [
+   {
+    "event_id": 15722,
+    "artists": [
+     {
+      "name_as_written": "Rui Djassi Morácen",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Welcome to the 8th edition of #BeyondKizomba, the cultural immersion program in Angola that is designed by Rui Djassi Morácen, the founder of the University of Kizomba initiative, in partnership with – and backed by the logistics support of – Kunanga Life, a legally registered Angolan cultural tourism agency. In this edition, we will have, amongst a vast array of exciting events, a special party dedicated to honor the great work that #Back2Basic has been doing in promoting kizomba (and Angolan culture at large) in Europe consistently for so many years."
+     },
+     {
+      "name_as_written": "Kunanga Life",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Welcome to the 8th edition of #BeyondKizomba, the cultural immersion program in Angola that is designed by Rui Djassi Morácen, the founder of the University of Kizomba initiative, in partnership with – and backed by the logistics support of – Kunanga Life, a legally registered Angolan cultural tourism agency. In this edition, we will have, amongst a vast array of exciting events, a special party dedicated to honor the great work that #Back2Basic has been doing in promoting kizomba (and Angolan culture at large) in Europe consistently for so many years."
+     }
+    ],
+    "features": [
+     {
+      "feature": "transfers_shuttle",
+      "quote": "airport pick-ups and drop-offs are included in your package",
+      "rationale": "The quote states that airport pick-up and drop-off transfers are included in the package."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Hotel accommodation (12 days, 11 nights);",
+      "rationale": "Hotel accommodation is listed as an item included in the SAÍDA package."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Three (3) meals a day (breakfast, lunch, dinner);",
+      "rationale": "Three meals a day are listed as included in the package."
+     },
+     {
+      "feature": "workshops",
+      "quote": "ALL group dance classes (incl. kizomba, semba, etc)",
+      "rationale": "Group dance classes are part of the included package."
+     },
+     {
+      "feature": "private_classes",
+      "quote": "private classes are booked and paid individually out of pocket",
+      "rationale": "The text states private classes are offered and paid for separately."
+     },
+     {
+      "feature": "live_music",
+      "quote": "music concerts, etc",
+      "rationale": "Music concerts are listed among the included nightlife activities."
+     }
+    ]
+   }
+  ]
+ }
 }

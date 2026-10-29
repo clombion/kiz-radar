@@ -1,26 +1,33 @@
 {
- "batch": "event-18654",
- "events": [
-  {
-   "event_id": 18654,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Wokshops will be delivered by our international teachers",
-     "rationale": "The description states that workshops are part of the event, delivered by teachers."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "HOTEL : Mercure Hotel",
-     "rationale": "A named hotel is given for the event, with a booking link to a negotiated rate."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "17:00 SOCIAL",
-     "rationale": "A social is scheduled in the afternoon on Saturday, which is a daytime social."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:32:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "36fbd3f834ba0d5c",
+ "answer": {
+  "batch": "event-18654",
+  "events": [
+   {
+    "event_id": 18654,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Wokshops will be delivered by our international teachers",
+      "rationale": "The description states that workshops will be delivered, so dance classes are part of the event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "HOTEL : Mercure Hotel",
+      "rationale": "A specific hotel is named as the event hotel with a rate link, but accommodation is not stated as included in a pass."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "16:00 SOCIAL",
+      "rationale": "The Sunday program lists a social at 16:00, which is a daytime social."
+     }
+    ]
+   }
+  ]
+ }
 }

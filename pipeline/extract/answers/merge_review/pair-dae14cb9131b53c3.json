@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ronaldo@dj",
+ "key_b": "p:ronaldo@ronaldo+sarah",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "dae14cb9131b53c3",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The DJ prefix and matching countries (AT, BR) and the shared Hungary event point toward one person, but 'Ronaldo' is a common first name, side B has no listed mentions to check, and its only partner link (sarah) is absent on side A, so the evidence does not settle it."
+ }
+}

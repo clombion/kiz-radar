@@ -1,0 +1,13 @@
+{
+ "key_a": "p:celine@celine+dhoirif",
+ "key_b": "p:celinesemkiz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "43fa5c17e8ee97a9",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides list France, and 'CELINE' is a bare first name matching 'Celine Semkiz', but side A has no mentions, the only partner is on side A, and there is no shared event, partner, or style to link them, so the evidence does not settle it."
+ }
+}

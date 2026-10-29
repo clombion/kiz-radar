@@ -1,38 +1,45 @@
 {
- "batch": "event-15033",
- "events": [
-  {
-   "event_id": 15033,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Join us for a weekend of Bachata & Urban vibes"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Urban",
-     "quote": "Join us for a weekend of Bachata & Urban vibes"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "DJ BLVCK SKYLE (Urban/Tarraxo)"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "ISSA (Afro)"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "CELINE (Kizomba)"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "88984ca2808bc418",
+ "answer": {
+  "batch": "event-15033",
+  "events": [
+   {
+    "event_id": 15033,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "weekend of Bachata & Urban vibes"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban",
+      "quote": "weekend of Bachata & Urban vibes"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "DJ BLVCK SKYLE (Urban/Tarraxo)"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "ISSA (Afro)"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "CELINE (Kizomba)"
+     }
+    ]
+   }
+  ]
+ }
 }

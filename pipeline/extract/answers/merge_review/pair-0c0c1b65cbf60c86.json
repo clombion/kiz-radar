@@ -1,0 +1,13 @@
+{
+ "key_a": "p:brandon@brandon+michelle",
+ "key_b": "p:brandonayala",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0c0c1b65cbf60c86",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only link is the common first name Brandon plus a shared US country; side A is a bare first name in a couple with Michelle and performs in Poland, while side B is the full name Brandon Ayala teaching in Romania, with no shared partner or event, so the evidence does not settle whether they are one artist."
+ }
+}

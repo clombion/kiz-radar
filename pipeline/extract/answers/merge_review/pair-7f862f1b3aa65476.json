@@ -1,0 +1,13 @@
+{
+ "key_a": "p:anika@anika+michael",
+ "key_b": "p:anikaelena",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7f862f1b3aa65476",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "ANIKA and ANIKA ELENA share the countries AT and SK, but the full name has no partner or style to link it to the first-name-only record, which has a different partner and a different set of events, so the evidence does not settle it."
+ }
+}

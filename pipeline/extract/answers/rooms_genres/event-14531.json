@@ -1,18 +1,32 @@
 {
- "batch": "event-14531",
- "events": [
-  {
-   "event_id": 14531,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "*** 100% KIZOMBA ***"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "7cd162d293ecc045",
+ "answer": {
+  "batch": "event-14531",
+  "events": [
+   {
+    "event_id": 14531,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "1 Additional Room for Social Events and Classes"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "100% KIZOMBA"
+     }
+    ]
+   }
+  ]
+ }
 }

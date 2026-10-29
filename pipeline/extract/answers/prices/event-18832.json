@@ -1,112 +1,123 @@
 {
- "batch": "event-18832",
- "events": [
-  {
-   "event_id": 18832,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "FULL PASS Pricing:",
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 290.0,
-       "currency": "PLN",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "1. 290 PLN/person – sold out"
-      },
-      {
-       "amount": 320.0,
-       "currency": "PLN",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 10,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "2. 320 PLN/person (10 couples) – sold out"
-      },
-      {
-       "amount": 350.0,
-       "currency": "PLN",
-       "fee": null,
-       "alt": null,
-       "from": "09-01",
-       "until": "11-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "3. 350 PLN/person – September/October/November"
-      },
-      {
-       "amount": 380.0,
-       "currency": "PLN",
-       "fee": null,
-       "alt": null,
-       "from": "12-01",
-       "until": "01-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "4. 380 PLN/person – December/January"
-      },
-      {
-       "amount": 410.0,
-       "currency": "PLN",
-       "fee": null,
-       "alt": null,
-       "from": "02-01",
-       "until": "02-28",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "5. 410 PLN/person – February"
-      },
-      {
-       "amount": 430.0,
-       "currency": "PLN",
-       "fee": null,
-       "alt": null,
-       "from": "03-01",
-       "until": "03-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "6. 430 PLN/person – March"
-      },
-      {
-       "amount": 450.0,
-       "currency": "PLN",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "7. 450 PLN/person – at the door"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:46:06+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "de03aec5a8c7b985",
+ "answer": {
+  "batch": "event-18832",
+  "events": [
+   {
+    "event_id": 18832,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "FULL PASS Pricing:",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 290.0,
+        "currency": "PLN",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": true,
+        "quote": "1. 290 PLN/person – sold out"
+       },
+       {
+        "amount": 320.0,
+        "currency": "PLN",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 10,
+         "current": false
+        },
+        "sold_out": true,
+        "quote": "2. 320 PLN/person (10 couples) – sold out"
+       },
+       {
+        "amount": 350.0,
+        "currency": "PLN",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "09-01",
+         "until": "11-30",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "3. 350 PLN/person – September/October/November"
+       },
+       {
+        "amount": 380.0,
+        "currency": "PLN",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "12-01",
+         "until": "01-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "4. 380 PLN/person – December/January"
+       },
+       {
+        "amount": 410.0,
+        "currency": "PLN",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "02-01",
+         "until": "02-28",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "5. 410 PLN/person – February"
+       },
+       {
+        "amount": 430.0,
+        "currency": "PLN",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "03-01",
+         "until": "03-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "6. 430 PLN/person – March"
+       },
+       {
+        "amount": 450.0,
+        "currency": "PLN",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "7. 450 PLN/person – at the door"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "FULL PASS Pricing (couple registration: fill out the form twice—once for each person—and multiply the amount by 2)"
+    ]
+   }
+  ]
+ }
 }

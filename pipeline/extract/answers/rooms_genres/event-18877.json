@@ -1,48 +1,55 @@
 {
- "batch": "event-18877",
- "events": [
-  {
-   "event_id": 18877,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba/Semba/Ghetto Zouk/Tarraxinha/ Zouk music"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba/Semba"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro dance",
-     "quote": "Afro dance lovers"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghetto Zouk",
-     "quote": "Ghetto Zouk/Tarraxinha/ Zouk music"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Ghetto Zouk/Tarraxinha/ Zouk music"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Afrohouse&Afrobeats/Konpa/ Funana"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Funana",
-     "quote": "Konpa/ Funana"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "69b4c6ac7d7e6af3",
+ "answer": {
+  "batch": "event-18877",
+  "events": [
+   {
+    "event_id": 18877,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "targeted to Kizomba, Semba and Afro dance lovers"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "targeted to Kizomba, Semba and Afro dance lovers"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro dance",
+      "quote": "targeted to Kizomba, Semba and Afro dance lovers"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghetto Zouk",
+      "quote": "80% – Kizomba/Semba/Ghetto Zouk/Tarraxinha/ Zouk music"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "80% – Kizomba/Semba/Ghetto Zouk/Tarraxinha/ Zouk music"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "20% – Afrohouse&Afrobeats/Konpa/ Funana/Brazilian and other afro Latin music"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Funana",
+      "quote": "20% – Afrohouse&Afrobeats/Konpa/ Funana/Brazilian and other afro Latin music"
+     }
+    ]
+   }
+  ]
+ }
 }

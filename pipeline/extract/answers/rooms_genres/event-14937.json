@@ -1,74 +1,75 @@
 {
- "batch": "event-14937",
- "events": [
-  {
-   "event_id": 14937,
-   "party_rooms": {
-    "count": 3,
-    "quote": "1. URBAN/FUSION\n2. KIZOMBA/SEMBA +\n3. Latin Room for Bachata & Salsa addicts."
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "URBAN/FUSION",
-     "kind": "party",
-     "genres": [
-      "urbankiz"
-     ],
-     "quote": "1. URBAN/FUSION"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "5cbdb1c7582844b9",
+ "answer": {
+  "batch": "event-14937",
+  "events": [
+   {
+    "event_id": 14937,
+    "party_rooms": {
+     "count": 3,
+     "quote": "1. URBAN/FUSION\n2. KIZOMBA/SEMBA +\n3. Latin Room for Bachata & Salsa addicts."
     },
-    {
-     "name_as_written": "KIZOMBA/SEMBA +",
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba"
-     ],
-     "quote": "2. KIZOMBA/SEMBA +"
-    },
-    {
-     "name_as_written": "Latin Room",
-     "kind": "party",
-     "genres": [
-      "bachata",
-      "salsa"
-     ],
-     "quote": "3. Latin Room for Bachata & Salsa addicts."
-    },
-    {
-     "name_as_written": "Social Room",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "✨Social Room"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Dear Urban Kiz & Kizomba lovers,"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Dear Urban Kiz & Kizomba lovers,"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "SEMBA",
-     "quote": "2. KIZOMBA/SEMBA +"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "3. Latin Room for Bachata & Salsa addicts."
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "3. Latin Room for Bachata & Salsa addicts."
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "URBAN/FUSION",
+      "kind": "party",
+      "genres": [
+       "urbankiz"
+      ],
+      "quote": "1. URBAN/FUSION"
+     },
+     {
+      "name_as_written": "KIZOMBA/SEMBA +",
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "semba"
+      ],
+      "quote": "2. KIZOMBA/SEMBA +"
+     },
+     {
+      "name_as_written": "Latin Room",
+      "kind": "party",
+      "genres": [
+       "bachata",
+       "salsa"
+      ],
+      "quote": "3. Latin Room for Bachata & Salsa addicts."
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "Dear Urban Kiz & Kizomba lovers,"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Dear Urban Kiz & Kizomba lovers,"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "SEMBA",
+      "quote": "2. KIZOMBA/SEMBA +"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "3. Latin Room for Bachata & Salsa addicts."
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "3. Latin Room for Bachata & Salsa addicts."
+     }
+    ]
+   }
+  ]
+ }
 }

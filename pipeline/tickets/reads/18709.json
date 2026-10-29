@@ -2,13 +2,15 @@
  "event_id": 18709,
  "title": "Dubai Kizomba Fusion",
  "start_date": "2027-01-14",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:29:05+00:00",
+ "end_date": "2027-01-18",
+ "country": "United Arab Emirates",
  "styles": [
   "kizomba"
  ],
  "description": "𝗗𝗨𝗕𝗔𝗜 𝗞𝗜𝗭𝗢𝗠𝗕𝗔 𝗙𝗨𝗦𝗜𝗢𝗡 returns for its 7th edition — independent and true to its original vision.\n🗓 𝟭𝟰–𝟭𝟴 𝗝𝗮𝗻𝘂𝗮𝗿𝘆 𝟮𝟬𝟮𝟳\n🔥 7th Edition\n🇦🇪Dubai-born. Community-built since 2020.\nAn 𝗮𝗹𝗹-𝗶𝗻-𝗼𝗻𝗲 𝗳𝗲𝘀𝘁𝗶𝘃𝗮𝗹 𝗲𝘅𝗽𝗲𝗿𝗶𝗲𝗻𝗰𝗲 bringing together styles, cultures, and souls. A global meeting point for dancers who value connection, music, and experience, DKF 7 brings together world-class artists, DJs, and a community built over years.\nFrom workshops to social nights and immersive experiences across Dubai, every detail is refined to deliver the standard the festival is known for.\n𝗪𝗛𝗔𝗧 𝗧𝗢 𝗘𝗫𝗣𝗘𝗖𝗧:\n🕺🏽 World-class workshops (Kizomba, Urban Kiz, Tarraxo, Fusion)\n🎧 International & national artists & DJs\n🎉 High-energy themed night parties\n🏝️ Pool parties\n🚤 Signature boat party\n🐪 Signature desert safari experience\n🏙️ Signature dubai city tour experience\n🏨 All-in-one venue experience\n🏆 The Battle Kizz Qualifications\n𝗧𝗘𝗔𝗖𝗛𝗘𝗥𝗦:\n🕺🏻💃🏻Akram & Sara\n🕺🏻💃🏻Said & Oksana\n🕺🏻Ledoux Kingsman\n💃🏻Asia Voronova\n🕺🏻David Ruach\n🕺🏻Dawou\n💃🏻Elsy\n🕺🏻Loyal\n𝗗𝗝𝘀:\n🎧DJ Nao\n🎧DJ Neiken\n🎧DJ David Ruela\n🎧DJ Faris\n𝗠𝗮𝗶𝗻 𝗩𝗲𝗻𝘂𝗲:\n📍Avani Ibn Battuta Hotel\nhttps://www.avanihotels.com/booking/rooms.aspx?bc=AV&hc=VIBN&checkin=14/01/2027&nights=4&adults=2&rooms=1&children=0&infants=0&roomcode=&language=en&group=EI140127\n𝗜’𝗹𝗹 𝗕𝗲 𝗧𝗵𝗲𝗿𝗲 𝗙𝗿𝗮𝗺𝗲:\n📸 https://twb.nz/dubaikizombafusion2027\n𝗠𝗼𝗿𝗲 𝘁𝗵𝗮𝗻 𝗮 𝗳𝗲𝘀𝘁𝗶𝘃𝗮𝗹 — a winter escape filled with music, sunshine, and soul.\nTickets available here: dubaikizombafusion.com\nPrices increase every 1st of the month!\nSecure your ticket at the lowest price.",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:14:55+00:00",
  "passes": [
   {
    "kind": "full",

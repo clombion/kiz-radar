@@ -1,21 +1,28 @@
 {
- "batch": "event-16899",
- "events": [
-  {
-   "event_id": 16899,
-   "artists": [],
-   "features": [
-    {
-     "feature": "shows",
-     "quote": "Live dance performances & stage shows",
-     "rationale": "The description lists live dance performances and stage shows as part of the festival."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "elegant attire required",
-     "rationale": "The Grand Gala states that elegant attire is required, which is a stated dress code."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "552f515bb7440b76",
+ "answer": {
+  "batch": "event-16899",
+  "events": [
+   {
+    "event_id": 16899,
+    "artists": [],
+    "features": [
+     {
+      "feature": "shows",
+      "quote": "Live dance performances & stage shows",
+      "rationale": "The description lists live dance performances and stage shows as part of the event."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "elegant attire required",
+      "rationale": "The Grand Gala states that elegant attire is required, which is a stated dress code."
+     }
+    ]
+   }
+  ]
+ }
 }

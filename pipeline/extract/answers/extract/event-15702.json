@@ -1,41 +1,48 @@
 {
- "batch": "event-15702",
- "events": [
-  {
-   "event_id": 15702,
-   "artists": [],
-   "features": [
-    {
-     "feature": "masterclass",
-     "quote": "with a masterclass and pre-party in the days before",
-     "rationale": "The description states that a masterclass takes place in the days before the event."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "pre-party",
-     "rationale": "The description mentions a pre-party held in the days before the official start."
-    },
-    {
-     "feature": "workshops",
-     "quote": "8+ hours of workshops",
-     "rationale": "The description lists more than eight hours of workshops as part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "close to 20 hours of day and evening socials",
-     "rationale": "The description promises close to 20 hours of daytime and evening socials."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "memorable party themes",
-     "rationale": "The description mentions memorable party themes for the socials."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "airport shuttle service",
-     "rationale": "The description states that an airport shuttle service is offered."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:01+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "6a4eba7f8c27e1bc",
+ "answer": {
+  "batch": "event-15702",
+  "events": [
+   {
+    "event_id": 15702,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "8+ hours of workshops",
+      "rationale": "The description states that the event includes more than eight hours of workshops."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "close to 20 hours of day and evening socials",
+      "rationale": "The description promises close to twenty hours of day and evening socials."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "with a masterclass and pre-party in the days before",
+      "rationale": "The description mentions a masterclass held in the days before the official start."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "with a masterclass and pre-party in the days before",
+      "rationale": "The description mentions a pre-party held in the days before the official event starts."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "memorable party themes",
+      "rationale": "The description lists memorable party themes among what to expect, which indicates themed parties."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "airport shuttle service and carpools",
+      "rationale": "The description offers an airport shuttle service and carpools for attendees."
+     }
+    ]
+   }
+  ]
+ }
 }

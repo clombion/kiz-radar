@@ -1,41 +1,46 @@
 {
- "batch": "event-16283",
- "events": [
-  {
-   "event_id": 16283,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops every afternoon/evening",
-     "rationale": "The included list promises dance workshops every afternoon and evening during the trip."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Accommodation from the 9th to 14th of September",
-     "rationale": "Accommodation is listed under the INCLUDED section of the trip."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "POOL, BEACH",
-     "rationale": "The description lists POOL among the highlights of the trip."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "POOL, BEACH",
-     "rationale": "The description lists BEACH among the highlights of the trip, though not explicitly as a beach party."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Every day in the afternoon we will offer some workshops and Social Dances",
-     "rationale": "Daytime afternoon social dances are offered every day of the trip."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Transport from the house to the dancing places, restaurants and cultural places.",
-     "rationale": "Transport between the accommodation and the dance, restaurant and culture venues is included."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "1b35801b720112ed",
+ "answer": {
+  "batch": "event-16283",
+  "events": [
+   {
+    "event_id": 16283,
+    "artists": [
+     {
+      "name_as_written": "Latin Events Aarhus",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "MOBILEPAY: Latin Events Aarhus – 31345 (You should pay a charge of 1% every time you use this service;"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops every afternoon/evening",
+      "rationale": "The included list promises workshops every afternoon and evening, so dance classes are part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Every day in the afternoon we will offer some workshops and Social Dances",
+      "rationale": "The description states that social dances are offered every afternoon during the trip."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Accommodation from the 9th to 14th of September (Until Monday morning)",
+      "rationale": "Accommodation is listed under INCLUDED, so the pass covers the lodging."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Transport from the house to the dancing places, restaurants and cultural places.",
+      "rationale": "Transport between the house and the dancing, dining and cultural venues is included."
+     }
+    ]
+   }
+  ]
+ }
 }

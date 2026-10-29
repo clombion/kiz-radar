@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jorge@angela+jorge",
+ "key_b": "p:jorge@jorge+rocio",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f018a9f029e556ba",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different partners (Angela on side A, Rocio on side B) and the only shared element is the common first name Jorge, which is weak evidence on its own, so the evidence points to two different people rather than one."
+ }
+}

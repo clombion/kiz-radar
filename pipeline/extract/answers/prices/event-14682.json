@@ -1,12 +1,19 @@
 {
- "batch": "event-14682",
- "events": [
-  {
-   "event_id": 14682,
-   "passes": [],
-   "rule_quotes": [
-    "Prices go up every 1st day of the month!"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:41:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0d990bef95e1db7c",
+ "answer": {
+  "batch": "event-14682",
+  "events": [
+   {
+    "event_id": 14682,
+    "passes": [],
+    "rule_quotes": [
+     "Prices go up every 1st day of the month!"
+    ]
+   }
+  ]
+ }
 }

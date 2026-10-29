@@ -1,88 +1,83 @@
 {
- "batch": "event-15066",
- "events": [
-  {
-   "event_id": 15066,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 300.0,
-       "currency": "PLN",
-       "fee": null,
-       "alt": {
-        "amount": 70.0,
-        "currency": "EUR"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "💃 Full Pass Follower starts with 300 pln (70 eur)"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 580.0,
-       "currency": "PLN",
-       "fee": null,
-       "alt": {
-        "amount": 137.0,
-        "currency": "EUR"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "💞 Couple Pass starts with 580 pln (137 eur)"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 10.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🔥 THURSDAY – Pre-Party (Sabrosa Dance School) 10 eur (not included in pass; paid in cash or online)"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Prices will increase (1st day of every month and 15th day of every month) so do not wait and buy it now!"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:41:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "e23badf385e8dcd7",
+ "answer": {
+  "batch": "event-15066",
+  "events": [
+   {
+    "event_id": 15066,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 300.0,
+        "currency": "PLN",
+        "fee": null,
+        "alt": {
+         "amount": 70.0,
+         "currency": "EUR"
+        },
+        "sale": null,
+        "sold_out": false,
+        "quote": "Full Pass Follower starts with 300 pln (70 eur)"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 580.0,
+        "currency": "PLN",
+        "fee": null,
+        "alt": {
+         "amount": 137.0,
+         "currency": "EUR"
+        },
+        "sale": null,
+        "sold_out": false,
+        "quote": "Couple Pass starts with 580 pln (137 eur)"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 10.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "THURSDAY – Pre-Party (Sabrosa Dance School) 10 eur (not included in pass; paid in cash or online)"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Prices will increase (1st day of every month and 15th day of every month) so do not wait and buy it now!"
+    ]
+   }
+  ]
+ }
 }

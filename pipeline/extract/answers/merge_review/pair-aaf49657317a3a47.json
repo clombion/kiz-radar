@@ -1,0 +1,13 @@
+{
+ "key_a": "p:didier@didier+manon",
+ "key_b": "p:didier@didier+vanessa",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "aaf49657317a3a47",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same name, country (GP) and event location (Guadeloupe), but they have different partners (Manon and Vanessa) and the name is a common first name, so the evidence does not show whether this is one teacher dancing with two partners or two different people."
+ }
+}

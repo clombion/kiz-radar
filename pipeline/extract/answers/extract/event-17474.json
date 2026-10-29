@@ -1,158 +1,160 @@
 {
- "batch": "event-17474",
- "events": [
-  {
-   "event_id": 17474,
-   "artists": [
-    {
-     "name_as_written": "Fabricio Do Zangado",
-     "role": "teacher",
-     "style": null,
-     "country": "Angola",
-     "source_line": "• Fabricio Do Zangado (Angola)"
-    },
-    {
-     "name_as_written": "Uncle Kani",
-     "role": "teacher",
-     "style": null,
-     "country": "France",
-     "source_line": "• Uncle Kani (France)"
-    },
-    {
-     "name_as_written": "Zé",
-     "role": "teacher",
-     "style": null,
-     "country": "Australia",
-     "source_line": "• Zé (Australia)"
-    },
-    {
-     "name_as_written": "Albir Rojas",
-     "role": "teacher",
-     "style": null,
-     "country": "Spain",
-     "source_line": "• Albir Rojas (Spain)"
-    },
-    {
-     "name_as_written": "Sacko Dadie",
-     "role": "teacher",
-     "style": null,
-     "country": "France",
-     "source_line": "• Sacko Dadie (France)"
-    },
-    {
-     "name_as_written": "DJ Ichigo",
-     "role": "teacher",
-     "style": null,
-     "country": "France",
-     "source_line": "• DJ Ichigo (France)"
-    },
-    {
-     "name_as_written": "Asia Voronova",
-     "role": "teacher",
-     "style": null,
-     "country": "Ukraine",
-     "source_line": "• Asia Voronova (Ukraine)"
-    },
-    {
-     "name_as_written": "Ja J’ah",
-     "role": "teacher",
-     "style": null,
-     "country": "France",
-     "source_line": "• Ja J’ah (France)"
-    },
-    {
-     "name_as_written": "David Cohen",
-     "role": "teacher",
-     "style": null,
-     "country": "South Africa",
-     "source_line": "• David Cohen (South Africa)"
-    },
-    {
-     "name_as_written": "Quinn Wang",
-     "role": "teacher",
-     "style": null,
-     "country": "China",
-     "source_line": "• Quinn Wang (China)"
-    },
-    {
-     "name_as_written": "Navi&Natalie",
-     "role": "teacher",
-     "style": null,
-     "country": "India&Russia",
-     "source_line": "• Navi&Natalie (India&Russia)"
-    },
-    {
-     "name_as_written": "DJ Ichigo",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "• DJ Ichigo (France)"
-    },
-    {
-     "name_as_written": "DJ Diablo",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "• DJ Diablo (France)"
-    },
-    {
-     "name_as_written": "DJ Selva",
-     "role": "dj",
-     "style": null,
-     "country": "Malaysia",
-     "source_line": "• DJ Selva (Malaysia)"
-    },
-    {
-     "name_as_written": "DJ TonyA",
-     "role": "dj",
-     "style": null,
-     "country": "Vietnam",
-     "source_line": "• DJ TonyA (Vietnam)"
-    },
-    {
-     "name_as_written": "DJ Ash",
-     "role": "dj",
-     "style": null,
-     "country": "India",
-     "source_line": "• DJ Ash (India)"
-    },
-    {
-     "name_as_written": "DJ Navi",
-     "role": "dj",
-     "style": null,
-     "country": "India",
-     "source_line": "• DJ Navi (India)"
-    },
-    {
-     "name_as_written": "DJ Zé",
-     "role": "dj",
-     "style": null,
-     "country": "Australia",
-     "source_line": "• DJ Zé (Australia)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All-in-one venue",
-     "rationale": "The event takes place in the hotel where dancers are invited to stay, described as an all-in-one venue."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 dance rooms (Authentic & Fusion)",
-     "rationale": "The description names two dance rooms."
-    },
-    {
-     "feature": "cruise",
-     "quote": "Cruise Party (300 pax capacity)",
-     "rationale": "A Cruise Party with a stated capacity is listed as part of the event."
-    },
-    {
-     "feature": "competition",
-     "quote": "AfroKiz Got Talent Competition (1,000 USD prize)",
-     "rationale": "A talent competition with a prize is part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:31:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0624a7be8a64b7a0",
+ "answer": {
+  "batch": "event-17474",
+  "events": [
+   {
+    "event_id": 17474,
+    "artists": [
+     {
+      "name_as_written": "Fabricio Do Zangado",
+      "role": "teacher",
+      "style": null,
+      "country": "Angola",
+      "source_line": "• Fabricio Do Zangado (Angola)"
+     },
+     {
+      "name_as_written": "Uncle Kani",
+      "role": "teacher",
+      "style": null,
+      "country": "France",
+      "source_line": "• Uncle Kani (France)"
+     },
+     {
+      "name_as_written": "Zé",
+      "role": "teacher",
+      "style": null,
+      "country": "Australia",
+      "source_line": "• Zé (Australia)"
+     },
+     {
+      "name_as_written": "Albir Rojas",
+      "role": "teacher",
+      "style": null,
+      "country": "Spain",
+      "source_line": "• Albir Rojas (Spain)"
+     },
+     {
+      "name_as_written": "Sacko Dadie",
+      "role": "teacher",
+      "style": null,
+      "country": "France",
+      "source_line": "• Sacko Dadie (France)"
+     },
+     {
+      "name_as_written": "DJ Ichigo",
+      "role": "teacher",
+      "style": null,
+      "country": "France",
+      "source_line": "• DJ Ichigo (France)"
+     },
+     {
+      "name_as_written": "Asia Voronova",
+      "role": "teacher",
+      "style": null,
+      "country": "Ukraine",
+      "source_line": "• Asia Voronova (Ukraine)"
+     },
+     {
+      "name_as_written": "Ja J’ah",
+      "role": "teacher",
+      "style": null,
+      "country": "France",
+      "source_line": "• Ja J’ah (France)"
+     },
+     {
+      "name_as_written": "David Cohen",
+      "role": "teacher",
+      "style": null,
+      "country": "South Africa",
+      "source_line": "• David Cohen (South Africa)"
+     },
+     {
+      "name_as_written": "Quinn Wang",
+      "role": "teacher",
+      "style": null,
+      "country": "China",
+      "source_line": "• Quinn Wang (China)"
+     },
+     {
+      "name_as_written": "Navi&Natalie",
+      "role": "teacher",
+      "style": null,
+      "country": "India&Russia",
+      "source_line": "• Navi&Natalie (India&Russia)"
+     },
+     {
+      "name_as_written": "DJ Ichigo",
+      "role": "dj",
+      "style": null,
+      "country": "France",
+      "source_line": "• DJ Ichigo (France)"
+     },
+     {
+      "name_as_written": "DJ Diablo",
+      "role": "dj",
+      "style": null,
+      "country": "France",
+      "source_line": "• DJ Diablo (France)"
+     },
+     {
+      "name_as_written": "DJ Selva",
+      "role": "dj",
+      "style": null,
+      "country": "Malaysia",
+      "source_line": "• DJ Selva (Malaysia)"
+     },
+     {
+      "name_as_written": "DJ TonyA",
+      "role": "dj",
+      "style": null,
+      "country": "Vietnam",
+      "source_line": "• DJ TonyA (Vietnam)"
+     },
+     {
+      "name_as_written": "DJ Ash",
+      "role": "dj",
+      "style": null,
+      "country": "India",
+      "source_line": "• DJ Ash (India)"
+     },
+     {
+      "name_as_written": "DJ Navi",
+      "role": "dj",
+      "style": null,
+      "country": "India",
+      "source_line": "• DJ Navi (India)"
+     },
+     {
+      "name_as_written": "DJ Zé",
+      "role": "dj",
+      "style": null,
+      "country": "Australia",
+      "source_line": "• DJ Zé (Australia)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All-in-one venue",
+      "rationale": "The event is described as an all-in-one venue, with the parties held in the hotel where dancers stay."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 dance rooms (Authentic & Fusion)",
+      "rationale": "The event offers two separate dance rooms."
+     },
+     {
+      "feature": "competition",
+      "quote": "AfroKiz Got Talent Competition (1,000 USD prize)",
+      "rationale": "A talent competition with a prize is part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

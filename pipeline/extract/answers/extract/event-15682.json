@@ -1,49 +1,48 @@
 {
- "batch": "event-15682",
- "events": [
-  {
-   "event_id": 15682,
-   "artists": [
-    {
-     "name_as_written": "Charlie",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Tel: +34 619 991636 Charlie"
-    }
-   ],
-   "features": [
-    {
-     "feature": "cruise",
-     "quote": "aboard the Costa Fascinosa",
-     "rationale": "The description states the festival takes place aboard a ship, so it is a cruise."
-    },
-    {
-     "feature": "shows",
-     "quote": "enjoy shows, themed parties, and workshops",
-     "rationale": "Shows are listed among the daytime activities on the trip."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "themed parties",
-     "rationale": "The description explicitly mentions themed parties during the cruise."
-    },
-    {
-     "feature": "workshops",
-     "quote": "enjoy shows, themed parties, and workshops",
-     "rationale": "Workshops are listed as part of the cruise programme."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "4 nights’ accommodation on the exceptional Costa Cruiser ship",
-     "rationale": "The package listing includes accommodation on the ship."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Transfer and flight to and from the ship",
-     "rationale": "Transfers to and from the ship are offered as an optional extra."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "57bb850c87d77a1d",
+ "answer": {
+  "batch": "event-15682",
+  "events": [
+   {
+    "event_id": 15682,
+    "artists": [],
+    "features": [
+     {
+      "feature": "cruise",
+      "quote": "aboard the Costa Fascinosa",
+      "rationale": "The description states the festival sails aboard a named cruise ship."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "4 nights’ accommodation on the exceptional Costa Cruiser ship",
+      "rationale": "The included list says the package covers the accommodation on the ship."
+     },
+     {
+      "feature": "shows",
+      "quote": "enjoy shows, themed parties, and workshops",
+      "rationale": "The text says shows are part of what guests can enjoy during the trip."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "themed parties",
+      "rationale": "The description explicitly mentions themed parties during the cruise."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Participation in all parties, shows, and workshops",
+      "rationale": "The included list confirms workshops are part of the package."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Transfer and flight to and from the ship",
+      "rationale": "The optional extras list offers transfers to and from the ship."
+     }
+    ]
+   }
+  ]
+ }
 }

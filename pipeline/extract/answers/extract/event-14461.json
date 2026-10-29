@@ -1,41 +1,48 @@
 {
- "batch": "event-14461",
- "events": [
-  {
-   "event_id": 14461,
-   "artists": [
-    {
-     "name_as_written": "TONY VISER & CARLA ANDRADE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "TONY VISER & CARLA ANDRADE"
-    },
-    {
-     "name_as_written": "BONIFACIO",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "BONIFACIO"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Wokshops will be delivered by our international teachers",
-     "rationale": "The description states that workshops will be delivered by international teachers, so dance classes are part of the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "HOTEL : Mercure Hotel",
-     "rationale": "A named hotel is given with a booking rate link, but the pass is not stated to include accommodation."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "16:00 SOCIAL",
-     "rationale": "The program lists afternoon socials at 16:00 on Saturday and Sunday."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:22:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "f6b66043f4065c26",
+ "answer": {
+  "batch": "event-14461",
+  "events": [
+   {
+    "event_id": 14461,
+    "artists": [
+     {
+      "name_as_written": "TONY VISER & CARLA ANDRADE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "TONY VISER & CARLA ANDRADE"
+     },
+     {
+      "name_as_written": "BONIFACIO",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "BONIFACIO"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Wokshops will be delivered by our international teachers",
+      "rationale": "The description states that workshops will be delivered by international teachers."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "16:00 SOCIAL",
+      "rationale": "A social is scheduled at 16:00, which is a daytime social."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "HOTEL : Mercure Hotel",
+      "rationale": "A recommended hotel is named, with a link to a negotiated rate, while accommodation is not stated as part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,79 +1,86 @@
 {
- "batch": "event-16845",
- "events": [
-  {
-   "event_id": 16845,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 Beautiful Dance Rooms"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Room 1 (Ground Floor)",
-     "kind": "party",
-     "genres": [
-      "urbankiz",
-      "tarraxinha",
-      "zouk",
-      "douceur"
-     ],
-     "quote": "Room 1 (Ground Floor): URBANKIZ"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "8320aaa289e72c55",
+ "answer": {
+  "batch": "event-16845",
+  "events": [
+   {
+    "event_id": 16845,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 Beautiful Dance Rooms"
     },
-    {
-     "name_as_written": "Room 2 (First Floor)",
-     "kind": "party",
-     "genres": [
-      "semba",
-      "kizomba",
-      "other",
-      "kompa"
-     ],
-     "quote": "Room 2 (First Floor): SEMBA"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBANKIZ",
-     "quote": "Room 1 (Ground Floor): URBANKIZ"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Tarraxinha | Ghetto Zouk | Douceur"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghetto Zouk",
-     "quote": "Tarraxinha | Ghetto Zouk | Douceur"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "Tarraxinha | Ghetto Zouk | Douceur"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "SEMBA",
-     "quote": "Room 2 (First Floor): SEMBA"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba | Coladera | Konpa"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Coladera",
-     "quote": "Kizomba | Coladera | Konpa"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Kizomba | Coladera | Konpa"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Room 1 (Ground Floor)",
+      "kind": "party",
+      "genres": [
+       "urbankiz",
+       "tarraxinha",
+       "zouk",
+       "douceur"
+      ],
+      "quote": "Room 1 (Ground Floor): URBANKIZ"
+     },
+     {
+      "name_as_written": "Room 2 (First Floor)",
+      "kind": "party",
+      "genres": [
+       "semba",
+       "kizomba",
+       "other",
+       "kompa"
+      ],
+      "quote": "Room 2 (First Floor): SEMBA"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBANKIZ",
+      "quote": "Room 1 (Ground Floor): URBANKIZ"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Tarraxinha | Ghetto Zouk | Douceur"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghetto Zouk",
+      "quote": "Tarraxinha | Ghetto Zouk | Douceur"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "Tarraxinha | Ghetto Zouk | Douceur"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "SEMBA",
+      "quote": "Room 2 (First Floor): SEMBA"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba | Coladera | Konpa"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Coladera",
+      "quote": "Kizomba | Coladera | Konpa"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Kizomba | Coladera | Konpa"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,80 +1,75 @@
 {
- "batch": "event-17011",
- "events": [
-  {
-   "event_id": 17011,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "GOLD FULL PASS",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 89.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🔥 *GOLD FULL PASS* – €89"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "SILVER PASS",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 79.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "⭐ *SILVER PASS* – €79"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "BOAT CRUISE",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 59.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "*⭐ *BOAT CRUISE* – €59"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:44:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "7e4adf82e6cb218a",
+ "answer": {
+  "batch": "event-17011",
+  "events": [
+   {
+    "event_id": 17011,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 89.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "🔥 *GOLD FULL PASS* – €89"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 79.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "⭐ *SILVER PASS* – €79"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 59.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "*⭐ *BOAT CRUISE* – €59"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

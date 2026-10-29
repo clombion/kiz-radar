@@ -1,41 +1,43 @@
 {
- "batch": "event-15602",
- "events": [
-  {
-   "event_id": 15602,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops & Bootcamps",
-     "rationale": "The event lists workshops as part of the programme."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Workshops & Bootcamps",
-     "rationale": "The programme explicitly includes bootcamps."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Dancefloors",
-     "rationale": "The description states there are two dancefloors."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "14:00 – 20:00 Social",
-     "rationale": "A daytime social is scheduled on Sunday afternoon."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Masterclass (separat buchbar)",
-     "rationale": "A masterclass is offered as a separately bookable session."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Main Hotel",
-     "rationale": "A named hotel is listed for accommodation, with bookings made through the organisers, without accommodation included in the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0e11b61bb4250303",
+ "answer": {
+  "batch": "event-15602",
+  "events": [
+   {
+    "event_id": 15602,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops & Bootcamps",
+      "rationale": "The listed highlights include Workshops & Bootcamps as part of the festival."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "Workshops & Bootcamps",
+      "rationale": "The listed highlights explicitly include Bootcamps, which are intensive training sessions."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 Dancefloors",
+      "rationale": "The festival lists two dancefloors, so there is more than one dance room."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "14:00 – 20:00 Social",
+      "rationale": "The Sunday programme includes a daytime social from 14:00 to 20:00."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Masterclass (separat buchbar)",
+      "rationale": "The programme lists a Masterclass on Sunday that can be booked separately."
+     }
+    ]
+   }
+  ]
+ }
 }

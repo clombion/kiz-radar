@@ -1,461 +1,478 @@
 {
- "batch": "event-18725",
- "events": [
-  {
-   "event_id": 18725,
-   "artists": [
-    {
-     "name_as_written": "LUIS Y SARA",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "LUIS Y SARA (CONFIRMED)"
-    },
-    {
-     "name_as_written": "FABIAN",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "FABIAN (CONFIRMED)"
-    },
-    {
-     "name_as_written": "GAETAN",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "GAETAN (CONFIRMED)"
-    },
-    {
-     "name_as_written": "LAURY",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "LAURY (CONFIRMED)"
-    },
-    {
-     "name_as_written": "AHMEDY",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "AHMEDY (CONFIRMED)"
-    },
-    {
-     "name_as_written": "CAROLINE",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "CAROLINE (CONFIRMED)"
-    },
-    {
-     "name_as_written": "SANDY.",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "SANDY. (CONFIRMED)"
-    },
-    {
-     "name_as_written": "CHARLINE",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "CHARLINE (CONFIRMED)"
-    },
-    {
-     "name_as_written": "LY DUC",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "LY DUC (CONFIRMED)"
-    },
-    {
-     "name_as_written": "JORIS",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "JORIS (CONFIRMED)"
-    },
-    {
-     "name_as_written": "GIUSY",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "GIUSY (CONFIRMED)"
-    },
-    {
-     "name_as_written": "RAPHAEL",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "RAPHAEL"
-    },
-    {
-     "name_as_written": "CELINE",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "CELINE"
-    },
-    {
-     "name_as_written": "FLOR",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "FLOR"
-    },
-    {
-     "name_as_written": "HABIBI",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "HABIBI"
-    },
-    {
-     "name_as_written": "NICOLE",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "NICOLE"
-    },
-    {
-     "name_as_written": "YAN",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "YAN"
-    },
-    {
-     "name_as_written": "DIEGO",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "DIEGO"
-    },
-    {
-     "name_as_written": "LIDIA",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "LIDIA"
-    },
-    {
-     "name_as_written": "HAMZA",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "HAMZA"
-    },
-    {
-     "name_as_written": "MARIE",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "MARIE"
-    },
-    {
-     "name_as_written": "SURESH",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "SURESH"
-    },
-    {
-     "name_as_written": "CHLOE",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "CHLOE"
-    },
-    {
-     "name_as_written": "QUENTIN",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "QUENTIN"
-    },
-    {
-     "name_as_written": "MARIE H",
-     "role": "teacher",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "MARIE H"
-    },
-    {
-     "name_as_written": "B.Ladies Show Group Impuls",
-     "role": "performer",
-     "style": "BACHATA & SALSA",
-     "country": null,
-     "source_line": "B.Ladies Show Group Impuls"
-    },
-    {
-     "name_as_written": "DJ Karim",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Karim"
-    },
-    {
-     "name_as_written": "DJ LK",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ LK"
-    },
-    {
-     "name_as_written": "DJ Kamilo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Kamilo"
-    },
-    {
-     "name_as_written": "DJ El Cantante",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ El Cantante"
-    },
-    {
-     "name_as_written": "SANJAY MJ",
-     "role": "teacher",
-     "style": "KIZOMBA, URBAN KIZ & TARRAXA",
-     "country": null,
-     "source_line": "SANJAY MJ (CONFIRMED)"
-    },
-    {
-     "name_as_written": "JAH J’A",
-     "role": "teacher",
-     "style": "KIZOMBA, URBAN KIZ & TARRAXA",
-     "country": null,
-     "source_line": "JAH J’A"
-    },
-    {
-     "name_as_written": "VIE & SIR J",
-     "role": "teacher",
-     "style": "KIZOMBA, URBAN KIZ & TARRAXA",
-     "country": null,
-     "source_line": "VIE & SIR J (CONFIRMED)"
-    },
-    {
-     "name_as_written": "GUY TAWA",
-     "role": "teacher",
-     "style": "KIZOMBA, URBAN KIZ & TARRAXA",
-     "country": null,
-     "source_line": "GUY TAWA"
-    },
-    {
-     "name_as_written": "BICKY",
-     "role": "teacher",
-     "style": "KIZOMBA, URBAN KIZ & TARRAXA",
-     "country": null,
-     "source_line": "BICKY"
-    },
-    {
-     "name_as_written": "ALEX POMARES & KARIN",
-     "role": "teacher",
-     "style": "KIZOMBA, URBAN KIZ & TARRAXA",
-     "country": null,
-     "source_line": "ALEX POMARES & KARIN"
-    },
-    {
-     "name_as_written": "CHIARA",
-     "role": "teacher",
-     "style": "KIZOMBA, URBAN KIZ & TARRAXA",
-     "country": null,
-     "source_line": "CHIARA"
-    },
-    {
-     "name_as_written": "DJ MHD",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ MHD"
-    },
-    {
-     "name_as_written": "DJ Chrissy",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Chrissy"
-    },
-    {
-     "name_as_written": "DJ JOE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ JOE (CONFIRMED)"
-    },
-    {
-     "name_as_written": "DJ DOC ART",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ DOC ART"
-    },
-    {
-     "name_as_written": "Felipe",
-     "role": "teacher",
-     "style": "ZOUK B",
-     "country": null,
-     "source_line": "Felipe"
-    },
-    {
-     "name_as_written": "Bruna",
-     "role": "teacher",
-     "style": "ZOUK B",
-     "country": null,
-     "source_line": "Bruna"
-    },
-    {
-     "name_as_written": "Aline",
-     "role": "teacher",
-     "style": "ZOUK B",
-     "country": null,
-     "source_line": "Aline"
-    },
-    {
-     "name_as_written": "Michael",
-     "role": "teacher",
-     "style": "ZOUK B",
-     "country": null,
-     "source_line": "Michael"
-    },
-    {
-     "name_as_written": "Bojana",
-     "role": "teacher",
-     "style": "ZOUK B",
-     "country": null,
-     "source_line": "Bojana"
-    },
-    {
-     "name_as_written": "Lukas",
-     "role": "teacher",
-     "style": "ZOUK B",
-     "country": null,
-     "source_line": "Lukas"
-    },
-    {
-     "name_as_written": "Stijn",
-     "role": "teacher",
-     "style": "ZOUK B",
-     "country": null,
-     "source_line": "Stijn"
-    },
-    {
-     "name_as_written": "Léa",
-     "role": "teacher",
-     "style": "ZOUK B",
-     "country": null,
-     "source_line": "Léa"
-    },
-    {
-     "name_as_written": "Benoit Do Santos",
-     "role": "teacher",
-     "style": "ZOUK B",
-     "country": null,
-     "source_line": "Benoit Do Santos"
-    },
-    {
-     "name_as_written": "Angélique",
-     "role": "teacher",
-     "style": "ZOUK B",
-     "country": null,
-     "source_line": "Angélique"
-    },
-    {
-     "name_as_written": "Cédric",
-     "role": "teacher",
-     "style": "ZOUK B",
-     "country": null,
-     "source_line": "Cédric"
-    },
-    {
-     "name_as_written": "Prescillia",
-     "role": "teacher",
-     "style": "ZOUK B",
-     "country": null,
-     "source_line": "Prescillia"
-    },
-    {
-     "name_as_written": "SarahL",
-     "role": "teacher",
-     "style": "ZOUK B",
-     "country": null,
-     "source_line": "SarahL"
-    },
-    {
-     "name_as_written": "Paulo",
-     "role": "teacher",
-     "style": "ZOUK B",
-     "country": null,
-     "source_line": "Paulo"
-    },
-    {
-     "name_as_written": "Sofia",
-     "role": "teacher",
-     "style": "ZOUK B",
-     "country": null,
-     "source_line": "Sofia"
-    },
-    {
-     "name_as_written": "DJ PAULO",
-     "role": "dj",
-     "style": "Zouk",
-     "country": null,
-     "source_line": "DJ PAULO"
-    },
-    {
-     "name_as_written": "DJ LUKAS",
-     "role": "dj",
-     "style": "Zouk",
-     "country": null,
-     "source_line": "DJ LUKAS"
-    },
-    {
-     "name_as_written": "DJ BENOIT",
-     "role": "dj",
-     "style": "Zouk",
-     "country": null,
-     "source_line": "DJ BENOIT"
-    },
-    {
-     "name_as_written": "DJ SEB",
-     "role": "dj",
-     "style": "Zouk",
-     "country": null,
-     "source_line": "DJ SEB"
-    },
-    {
-     "name_as_written": "MOJOPROD",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🎥 VIDEO : MOJOPROD"
-    },
-    {
-     "name_as_written": "Jean-Marc Lendeers",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📸 PHOTOS : Jean-Marc Lendeers"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE LUXURY VENUE",
-     "rationale": "The venue is described as all in one, and the named venue is the Van Der Valk hotel, so the parties and accommodation share one location."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops intensifs",
-     "rationale": "The description lists intensive workshops as part of the festival."
-    },
-    {
-     "feature": "shows",
-     "quote": "2 galas",
-     "rationale": "Galas are staged performances by artists at the festival."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:33:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "754ed7b49049794c",
+ "answer": {
+  "batch": "event-18725",
+  "events": [
+   {
+    "event_id": 18725,
+    "artists": [
+     {
+      "name_as_written": "LUIS Y SARA",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "LUIS Y SARA (CONFIRMED)"
+     },
+     {
+      "name_as_written": "FABIAN",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "FABIAN (CONFIRMED)"
+     },
+     {
+      "name_as_written": "GAETAN",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "GAETAN (CONFIRMED)"
+     },
+     {
+      "name_as_written": "LAURY",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "LAURY (CONFIRMED)"
+     },
+     {
+      "name_as_written": "AHMEDY",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "AHMEDY (CONFIRMED)"
+     },
+     {
+      "name_as_written": "CAROLINE",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "CAROLINE (CONFIRMED)"
+     },
+     {
+      "name_as_written": "SANDY.",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "SANDY. (CONFIRMED)"
+     },
+     {
+      "name_as_written": "CHARLINE",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "CHARLINE (CONFIRMED)"
+     },
+     {
+      "name_as_written": "LY DUC",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "LY DUC (CONFIRMED)"
+     },
+     {
+      "name_as_written": "JORIS",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "JORIS (CONFIRMED)"
+     },
+     {
+      "name_as_written": "GIUSY",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "GIUSY (CONFIRMED)"
+     },
+     {
+      "name_as_written": "RAPHAEL",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "RAPHAEL"
+     },
+     {
+      "name_as_written": "CELINE",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "CELINE"
+     },
+     {
+      "name_as_written": "FLOR",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "FLOR"
+     },
+     {
+      "name_as_written": "HABIBI",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "HABIBI"
+     },
+     {
+      "name_as_written": "NICOLE",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "NICOLE"
+     },
+     {
+      "name_as_written": "YAN",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "YAN"
+     },
+     {
+      "name_as_written": "DIEGO",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "DIEGO"
+     },
+     {
+      "name_as_written": "LIDIA",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "LIDIA"
+     },
+     {
+      "name_as_written": "HAMZA",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "HAMZA"
+     },
+     {
+      "name_as_written": "MARIE",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "MARIE"
+     },
+     {
+      "name_as_written": "SURESH",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "SURESH"
+     },
+     {
+      "name_as_written": "CHLOE",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "CHLOE"
+     },
+     {
+      "name_as_written": "QUENTIN",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "QUENTIN"
+     },
+     {
+      "name_as_written": "MARIE H",
+      "role": "teacher",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "MARIE H"
+     },
+     {
+      "name_as_written": "B.Ladies Show Group Impuls",
+      "role": "performer",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "B.Ladies Show Group Impuls"
+     },
+     {
+      "name_as_written": "DJ Karim",
+      "role": "dj",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "DJ Karim"
+     },
+     {
+      "name_as_written": "DJ LK",
+      "role": "dj",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "DJ LK"
+     },
+     {
+      "name_as_written": "DJ Kamilo",
+      "role": "dj",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "DJ Kamilo"
+     },
+     {
+      "name_as_written": "DJ El Cantante",
+      "role": "dj",
+      "style": "BACHATA & SALSA",
+      "country": null,
+      "source_line": "DJ El Cantante"
+     },
+     {
+      "name_as_written": "SANJAY MJ",
+      "role": "teacher",
+      "style": "KIZOMBA, URBAN KIZ & TARRAXA",
+      "country": null,
+      "source_line": "SANJAY MJ (CONFIRMED)"
+     },
+     {
+      "name_as_written": "JAH J’A",
+      "role": "teacher",
+      "style": "KIZOMBA, URBAN KIZ & TARRAXA",
+      "country": null,
+      "source_line": "JAH J’A"
+     },
+     {
+      "name_as_written": "VIE & SIR J",
+      "role": "teacher",
+      "style": "KIZOMBA, URBAN KIZ & TARRAXA",
+      "country": null,
+      "source_line": "VIE & SIR J (CONFIRMED)"
+     },
+     {
+      "name_as_written": "GUY TAWA",
+      "role": "teacher",
+      "style": "KIZOMBA, URBAN KIZ & TARRAXA",
+      "country": null,
+      "source_line": "GUY TAWA"
+     },
+     {
+      "name_as_written": "BICKY",
+      "role": "teacher",
+      "style": "KIZOMBA, URBAN KIZ & TARRAXA",
+      "country": null,
+      "source_line": "BICKY"
+     },
+     {
+      "name_as_written": "ALEX POMARES & KARIN",
+      "role": "teacher",
+      "style": "KIZOMBA, URBAN KIZ & TARRAXA",
+      "country": null,
+      "source_line": "ALEX POMARES & KARIN"
+     },
+     {
+      "name_as_written": "CHIARA",
+      "role": "teacher",
+      "style": "KIZOMBA, URBAN KIZ & TARRAXA",
+      "country": null,
+      "source_line": "CHIARA"
+     },
+     {
+      "name_as_written": "DJ MHD",
+      "role": "dj",
+      "style": "KIZOMBA, URBAN KIZ & TARRAXA",
+      "country": null,
+      "source_line": "DJ MHD"
+     },
+     {
+      "name_as_written": "DJ Chrissy",
+      "role": "dj",
+      "style": "KIZOMBA, URBAN KIZ & TARRAXA",
+      "country": null,
+      "source_line": "DJ Chrissy"
+     },
+     {
+      "name_as_written": "DJ JOE",
+      "role": "dj",
+      "style": "KIZOMBA, URBAN KIZ & TARRAXA",
+      "country": null,
+      "source_line": "DJ JOE (CONFIRMED)"
+     },
+     {
+      "name_as_written": "DJ DOC ART",
+      "role": "dj",
+      "style": "KIZOMBA, URBAN KIZ & TARRAXA",
+      "country": null,
+      "source_line": "DJ DOC ART"
+     },
+     {
+      "name_as_written": "Felipe",
+      "role": "teacher",
+      "style": "ZOUK B",
+      "country": null,
+      "source_line": "Felipe"
+     },
+     {
+      "name_as_written": "Bruna",
+      "role": "teacher",
+      "style": "ZOUK B",
+      "country": null,
+      "source_line": "Bruna"
+     },
+     {
+      "name_as_written": "Aline",
+      "role": "teacher",
+      "style": "ZOUK B",
+      "country": null,
+      "source_line": "Aline"
+     },
+     {
+      "name_as_written": "Michael",
+      "role": "teacher",
+      "style": "ZOUK B",
+      "country": null,
+      "source_line": "Michael"
+     },
+     {
+      "name_as_written": "Bojana",
+      "role": "teacher",
+      "style": "ZOUK B",
+      "country": null,
+      "source_line": "Bojana"
+     },
+     {
+      "name_as_written": "Lukas",
+      "role": "teacher",
+      "style": "ZOUK B",
+      "country": null,
+      "source_line": "Lukas"
+     },
+     {
+      "name_as_written": "Stijn",
+      "role": "teacher",
+      "style": "ZOUK B",
+      "country": null,
+      "source_line": "Stijn"
+     },
+     {
+      "name_as_written": "Léa",
+      "role": "teacher",
+      "style": "ZOUK B",
+      "country": null,
+      "source_line": "Léa"
+     },
+     {
+      "name_as_written": "Benoit Do Santos",
+      "role": "teacher",
+      "style": "ZOUK B",
+      "country": null,
+      "source_line": "Benoit Do Santos"
+     },
+     {
+      "name_as_written": "Angélique",
+      "role": "teacher",
+      "style": "ZOUK B",
+      "country": null,
+      "source_line": "Angélique"
+     },
+     {
+      "name_as_written": "Cédric",
+      "role": "teacher",
+      "style": "ZOUK B",
+      "country": null,
+      "source_line": "Cédric"
+     },
+     {
+      "name_as_written": "Prescillia",
+      "role": "teacher",
+      "style": "ZOUK B",
+      "country": null,
+      "source_line": "Prescillia"
+     },
+     {
+      "name_as_written": "SarahL",
+      "role": "teacher",
+      "style": "ZOUK B",
+      "country": null,
+      "source_line": "SarahL"
+     },
+     {
+      "name_as_written": "Paulo",
+      "role": "teacher",
+      "style": "ZOUK B",
+      "country": null,
+      "source_line": "Paulo"
+     },
+     {
+      "name_as_written": "Sofia",
+      "role": "teacher",
+      "style": "ZOUK B",
+      "country": null,
+      "source_line": "Sofia"
+     },
+     {
+      "name_as_written": "DJ PAULO",
+      "role": "dj",
+      "style": "Zouk",
+      "country": null,
+      "source_line": "DJ PAULO"
+     },
+     {
+      "name_as_written": "DJ LUKAS",
+      "role": "dj",
+      "style": "Zouk",
+      "country": null,
+      "source_line": "DJ LUKAS"
+     },
+     {
+      "name_as_written": "DJ BENOIT",
+      "role": "dj",
+      "style": "Zouk",
+      "country": null,
+      "source_line": "DJ BENOIT"
+     },
+     {
+      "name_as_written": "DJ SEB",
+      "role": "dj",
+      "style": "Zouk",
+      "country": null,
+      "source_line": "DJ SEB"
+     },
+     {
+      "name_as_written": "MOJOPROD",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🎥 VIDEO : MOJOPROD"
+     },
+     {
+      "name_as_written": "Jean-Marc Lendeers",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📸 PHOTOS : Jean-Marc Lendeers"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE LUXURY VENUE",
+      "rationale": "The event describes itself as all in one, with the venue being a hotel where dancers can stay."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Workshops intensifs",
+      "rationale": "Intensive workshops are listed as part of the festival."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "Workshops intensifs",
+      "rationale": "The workshops are described as intensive training."
+     },
+     {
+      "feature": "shows",
+      "quote": "B.Ladies Show Group Impuls",
+      "rationale": "A show group is listed among the performing artists."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Sociales",
+      "rationale": "Socials are included in the full pass, indicating social sessions as part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

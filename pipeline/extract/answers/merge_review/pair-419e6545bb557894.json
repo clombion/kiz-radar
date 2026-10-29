@@ -1,0 +1,13 @@
+{
+ "key_a": "p:laura@davide+laura",
+ "key_b": "p:laurabuffone",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "419e6545bb557894",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only shared facts are a common first name and the Italian country; 'Laura' has no mentions of her own in the input, and her partner (davide) does not match 'Laura Buffone's' partner (drkizomba), so the evidence does not settle whether they are the same person."
+ }
+}

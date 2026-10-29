@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mo@dance",
+ "key_b": "p:mo@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6fdac9306e85e3df",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same key with the same two mentions: a French salsa teacher at event 15582 (🇫🇷) and a Danish-flagged performer at event 16643 (🇩🇰) in Norway, with no partner, style, or other detail linking them, so the evidence cannot show whether this is one artist or two people sharing the name Mo."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dwe@dj",
+ "key_b": "p:dwetyson",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "cb559b2993df0b70",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records are NL-country DJs with the same distinctive stage name 'Dwe', and 'Dj Dwe Tyson' only adds a surname, matching the DJ-prefix/short-form pattern; no conflicting country or partner evidence, though the events are in different countries and no style or partner links them."
+ }
+}

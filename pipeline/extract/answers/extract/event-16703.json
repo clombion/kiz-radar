@@ -1,159 +1,166 @@
 {
- "batch": "event-16703",
- "events": [
-  {
-   "event_id": 16703,
-   "artists": [
-    {
-     "name_as_written": "Puto x",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– Puto x"
-    },
-    {
-     "name_as_written": "Ironman",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– Ironman"
-    },
-    {
-     "name_as_written": "Hugo Smile",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– Hugo Smile"
-    },
-    {
-     "name_as_written": "Asile",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– Asile"
-    },
-    {
-     "name_as_written": "Incognito",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– Incognito"
-    },
-    {
-     "name_as_written": "Levis",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– Levis"
-    },
-    {
-     "name_as_written": "Neiken",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– Neiken"
-    },
-    {
-     "name_as_written": "On Fire",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– On Fire"
-    },
-    {
-     "name_as_written": "Saïd Dstreet & Oksana",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Saïd Dstreet & Oksana"
-    },
-    {
-     "name_as_written": "Lauriane Mj",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Lauriane Mj"
-    },
-    {
-     "name_as_written": "Michael & Didi",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Michael & Didi"
-    },
-    {
-     "name_as_written": "Spencer",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Spencer"
-    },
-    {
-     "name_as_written": "Loury & Eden",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Loury & Eden"
-    },
-    {
-     "name_as_written": "Audi & Laura",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Audi & Laura"
-    },
-    {
-     "name_as_written": "Cristian Marsol & Nasshira",
-     "role": "performer",
-     "style": null,
-     "country": "🇪🇦",
-     "source_line": "🎤Cristian Marsol & Nasshira 🇪🇦"
-    },
-    {
-     "name_as_written": "Farantini",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🎥 Farantini"
-    }
-   ],
-   "features": [
-    {
-     "feature": "competition",
-     "quote": "The Battle Kizz – Benelux Qualifier",
-     "rationale": "The Battle Kizz is a battle competition, and the qualifier is stated in the title."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops, Social & Party Location : main venue",
-     "rationale": "The program lists workshops as part of the event days."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "🔸Friday : Gala “Classy”",
-     "rationale": "A dress code section specifies the attire for each day."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "🔸Saturday : White “Classy”",
-     "rationale": "The white Classy night is a dress-themed party."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Book your room here: https://www.terelst.be",
-     "rationale": "A recommended hotel is listed with a booking link, without accommodation being part of the pass."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "🔸Room 1 : Urbankiz",
-     "rationale": "The event lists more than one dance room, Room 1 and Room 2."
-    },
-    {
-     "feature": "live_music",
-     "quote": "live performance",
-     "rationale": "A live performance by Cristian Marsol & Nasshira is included in the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0f8b0935a310731c",
+ "answer": {
+  "batch": "event-16703",
+  "events": [
+   {
+    "event_id": 16703,
+    "artists": [
+     {
+      "name_as_written": "Puto x",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– Puto x"
+     },
+     {
+      "name_as_written": "Ironman",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– Ironman"
+     },
+     {
+      "name_as_written": "Hugo Smile",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– Hugo Smile"
+     },
+     {
+      "name_as_written": "Asile",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– Asile"
+     },
+     {
+      "name_as_written": "Incognito",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– Incognito"
+     },
+     {
+      "name_as_written": "Levis",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– Levis"
+     },
+     {
+      "name_as_written": "Neiken",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– Neiken"
+     },
+     {
+      "name_as_written": "On Fire",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– On Fire"
+     },
+     {
+      "name_as_written": "Saïd Dstreet & Oksana",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Saïd Dstreet & Oksana"
+     },
+     {
+      "name_as_written": "Lauriane Mj",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Lauriane Mj"
+     },
+     {
+      "name_as_written": "Michael & Didi",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Michael & Didi"
+     },
+     {
+      "name_as_written": "Spencer",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Spencer"
+     },
+     {
+      "name_as_written": "Loury & Eden",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Loury & Eden"
+     },
+     {
+      "name_as_written": "Audi & Laura",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Audi & Laura"
+     },
+     {
+      "name_as_written": "Cristian Marsol & Nasshira",
+      "role": "performer",
+      "style": null,
+      "country": "🇪🇦",
+      "source_line": "🎤Cristian Marsol & Nasshira 🇪🇦"
+     },
+     {
+      "name_as_written": "Farantini",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🎥 Farantini"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops, Social & Party Location : main venue",
+      "rationale": "The program lists workshops as part of the event days."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Book your room here: https://www.terelst.be",
+      "rationale": "The description recommends hotels and gives a booking link for a room without including accommodation in the pass."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Room 1 : Urbankiz",
+      "rationale": "The event has Room 1 and Room2, so there is more than one dance room."
+     },
+     {
+      "feature": "competition",
+      "quote": "The Battle Kizz – Benelux Qualifier",
+      "rationale": "The event includes a battle competition qualifier."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Friday : Gala “Classy”",
+      "rationale": "Each day states a specific dress code for the event."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Saturday : White “Classy”",
+      "rationale": "The parties have dress themes such as white and red nights."
+     },
+     {
+      "feature": "live_music",
+      "quote": "live performance",
+      "rationale": "A live performance by Cristian Marsol & Nasshira is listed."
+     }
+    ]
+   }
+  ]
+ }
 }

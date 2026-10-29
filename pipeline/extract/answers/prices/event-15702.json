@@ -1,47 +1,56 @@
 {
- "batch": "event-15702",
- "events": [
-  {
-   "event_id": 15702,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 190.0,
-       "currency": "USD",
-       "fee": null,
-       "alt": null,
-       "from": "2026-01-01",
-       "until": "2026-02-28",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🐓 Tier 3 Passes | $190 | Jan 1 – Feb 28, 2026"
-      },
-      {
-       "amount": 200.0,
-       "currency": "USD",
-       "fee": null,
-       "alt": null,
-       "from": "2026-03-01",
-       "until": "2026-04-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🍗 Tier 4 Passes | $200 | Mar 1 – Apr 30, 2026"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:42:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "e65c0a633bc22301",
+ "answer": {
+  "batch": "event-15702",
+  "events": [
+   {
+    "event_id": 15702,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 190.0,
+        "currency": "CAD",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2026-01-01",
+         "until": "2026-02-28",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "🐓 Tier 3 Passes | $190 | Jan 1 – Feb 28, 2026"
+       },
+       {
+        "amount": 200.0,
+        "currency": "CAD",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2026-03-01",
+         "until": "2026-04-30",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "🍗 Tier 4 Passes | $200 | Mar 1 – Apr 30, 2026"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

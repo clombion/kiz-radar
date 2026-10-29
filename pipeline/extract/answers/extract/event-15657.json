@@ -1,201 +1,203 @@
 {
- "batch": "event-15657",
- "events": [
-  {
-   "event_id": 15657,
-   "artists": [
-    {
-     "name_as_written": "SEBASTIAN & GABI",
-     "role": "teacher",
-     "style": null,
-     "country": "USA",
-     "source_line": "★ SEBASTIAN & GABI (Dallas & NY – USA)"
-    },
-    {
-     "name_as_written": "IAGO & VANESSA",
-     "role": "teacher",
-     "style": null,
-     "country": "USA",
-     "source_line": "★ IAGO & VANESSA (Washington – USA)"
-    },
-    {
-     "name_as_written": "ROBINSON & LARISSA",
-     "role": "teacher",
-     "style": null,
-     "country": "USA",
-     "source_line": "★ ROBINSON & LARISSA (Orlando & Miami – USA)"
-    },
-    {
-     "name_as_written": "SHAWN & ESTHER",
-     "role": "teacher",
-     "style": null,
-     "country": "USA",
-     "source_line": "★ SHAWN & ESTHER (Vancouver & Calgary – USA) CAN)"
-    },
-    {
-     "name_as_written": "CHERRYLE SHYNE",
-     "role": "teacher",
-     "style": null,
-     "country": "CAN",
-     "source_line": "★ CHERRYLE SHYNE (Montreal – CAN)"
-    },
-    {
-     "name_as_written": "JHAIME & VALENTINA",
-     "role": "teacher",
-     "style": null,
-     "country": "CAN",
-     "source_line": "★ JHAIME & VALENTINA (Montreal/Quebec – CAN)"
-    },
-    {
-     "name_as_written": "JORDAN & DENISE",
-     "role": "teacher",
-     "style": null,
-     "country": "CAN",
-     "source_line": "★ JORDAN & DENISE (Montreal – CAN)"
-    },
-    {
-     "name_as_written": "MAUDE CHENIER",
-     "role": "teacher",
-     "style": null,
-     "country": "CAN",
-     "source_line": "★ MAUDE CHENIER (Montreal – CAN)"
-    },
-    {
-     "name_as_written": "MEGAN LAPOINTE",
-     "role": "teacher",
-     "style": null,
-     "country": "CAN",
-     "source_line": "★ MEGAN LAPOINTE (Quebec – CAN)"
-    },
-    {
-     "name_as_written": "VALENTINA DIAZ",
-     "role": "teacher",
-     "style": null,
-     "country": "CAN",
-     "source_line": "★ VALENTINA DIAZ (Quebec – CAN)"
-    },
-    {
-     "name_as_written": "LAURIE MORIN",
-     "role": "teacher",
-     "style": null,
-     "country": "CAN",
-     "source_line": "★ LAURIE MORIN (Quebec – CAN)"
-    },
-    {
-     "name_as_written": "DJ CHUPITO RD",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ CHUPITO RD – Quebec City"
-    },
-    {
-     "name_as_written": "DJ ESTEFANO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ ESTEFANO – Trois-Rivières"
-    },
-    {
-     "name_as_written": "DJ CHANO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ CHANO – Montreal"
-    },
-    {
-     "name_as_written": "DJ LOV3",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ LOV3 – Quebec City"
-    },
-    {
-     "name_as_written": "DJ BRIISE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ BRIISE – Quebec City"
-    },
-    {
-     "name_as_written": "DJ JC STRIPES",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ JC STRIPES – Montreal"
-    },
-    {
-     "name_as_written": "DJ CAÏPI",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "★ DJ CAÏPI – Quebec City"
-    },
-    {
-     "name_as_written": "Cédric & Sabrina",
-     "role": "performer",
-     "style": null,
-     "country": "CAN",
-     "source_line": "★ Cédric & Sabrina (Quebec – CAN)"
-    },
-    {
-     "name_as_written": "Las Muñecas",
-     "role": "performer",
-     "style": null,
-     "country": "CAN",
-     "source_line": "★ Las Muñecas (Quebec – CAN)"
-    },
-    {
-     "name_as_written": "Zouk Babes",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "★ Zouk Babes"
-    },
-    {
-     "name_as_written": "Estefano Photo",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️ Estefano Photo"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "4 days of workshops, parties, and shows",
-     "rationale": "The event offers workshops across its four days."
-    },
-    {
-     "feature": "shows",
-     "quote": "★ Cédric & Sabrina (Quebec – CAN)",
-     "rationale": "The SHOWS section lists acts that perform at the event."
-    },
-    {
-     "feature": "competition",
-     "quote": "Kizomba Ladies Challenge (Quebec – CAN)",
-     "rationale": "A ladies challenge is a dance competition listed among the shows."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Party with 3 Rooms",
-     "rationale": "The party is stated to have three rooms."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "PRE-PARTY",
-     "rationale": "The Thursday session is labelled as a pre-party."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Zouk Day Social",
-     "rationale": "The Sunday afternoon is a daytime social."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "ALL WHITE SENSUAL PARTY",
-     "rationale": "The party has a dress theme of all white."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "f001eda34a4d5385",
+ "answer": {
+  "batch": "event-15657",
+  "events": [
+   {
+    "event_id": 15657,
+    "artists": [
+     {
+      "name_as_written": "SEBASTIAN & GABI",
+      "role": "teacher",
+      "style": null,
+      "country": "USA",
+      "source_line": "★ SEBASTIAN & GABI (Dallas & NY – USA)"
+     },
+     {
+      "name_as_written": "IAGO & VANESSA",
+      "role": "teacher",
+      "style": null,
+      "country": "USA",
+      "source_line": "★ IAGO & VANESSA (Washington – USA)"
+     },
+     {
+      "name_as_written": "ROBINSON & LARISSA",
+      "role": "teacher",
+      "style": null,
+      "country": "USA",
+      "source_line": "★ ROBINSON & LARISSA (Orlando & Miami – USA)"
+     },
+     {
+      "name_as_written": "SHAWN & ESTHER",
+      "role": "teacher",
+      "style": null,
+      "country": "USA",
+      "source_line": "★ SHAWN & ESTHER (Vancouver & Calgary – USA) CAN)"
+     },
+     {
+      "name_as_written": "CHERRYLE SHYNE",
+      "role": "teacher",
+      "style": null,
+      "country": "CAN",
+      "source_line": "★ CHERRYLE SHYNE (Montreal – CAN)"
+     },
+     {
+      "name_as_written": "JHAIME & VALENTINA",
+      "role": "teacher",
+      "style": null,
+      "country": "CAN",
+      "source_line": "★ JHAIME & VALENTINA (Montreal/Quebec – CAN)"
+     },
+     {
+      "name_as_written": "JORDAN & DENISE",
+      "role": "teacher",
+      "style": null,
+      "country": "CAN",
+      "source_line": "★ JORDAN & DENISE (Montreal – CAN)"
+     },
+     {
+      "name_as_written": "MAUDE CHENIER",
+      "role": "teacher",
+      "style": null,
+      "country": "CAN",
+      "source_line": "★ MAUDE CHENIER (Montreal – CAN)"
+     },
+     {
+      "name_as_written": "MEGAN LAPOINTE",
+      "role": "teacher",
+      "style": null,
+      "country": "CAN",
+      "source_line": "★ MEGAN LAPOINTE (Quebec – CAN)"
+     },
+     {
+      "name_as_written": "VALENTINA DIAZ",
+      "role": "teacher",
+      "style": null,
+      "country": "CAN",
+      "source_line": "★ VALENTINA DIAZ (Quebec – CAN)"
+     },
+     {
+      "name_as_written": "LAURIE MORIN",
+      "role": "teacher",
+      "style": null,
+      "country": "CAN",
+      "source_line": "★ LAURIE MORIN (Quebec – CAN)"
+     },
+     {
+      "name_as_written": "DJ CHUPITO RD",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ CHUPITO RD – Quebec City"
+     },
+     {
+      "name_as_written": "DJ ESTEFANO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ ESTEFANO – Trois-Rivières"
+     },
+     {
+      "name_as_written": "DJ CHANO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ CHANO – Montreal"
+     },
+     {
+      "name_as_written": "DJ LOV3",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ LOV3 – Quebec City"
+     },
+     {
+      "name_as_written": "DJ BRIISE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ BRIISE – Quebec City"
+     },
+     {
+      "name_as_written": "DJ JC STRIPES",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ JC STRIPES – Montreal"
+     },
+     {
+      "name_as_written": "DJ CAÏPI",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "★ DJ CAÏPI – Quebec City"
+     },
+     {
+      "name_as_written": "Cédric & Sabrina",
+      "role": "performer",
+      "style": null,
+      "country": "CAN",
+      "source_line": "★ Cédric & Sabrina (Quebec – CAN)"
+     },
+     {
+      "name_as_written": "Las Muñecas",
+      "role": "performer",
+      "style": null,
+      "country": "CAN",
+      "source_line": "★ Las Muñecas (Quebec – CAN)"
+     },
+     {
+      "name_as_written": "Zouk Babes",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "★ Zouk Babes"
+     },
+     {
+      "name_as_written": "Estefano Photo",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️ Estefano Photo"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "4 days of workshops, parties, and shows",
+      "rationale": "The event offers several days of dance workshops."
+     },
+     {
+      "feature": "shows",
+      "quote": "4 days of workshops, parties, and shows",
+      "rationale": "The event includes shows, and a SHOWS section lists performers."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Party with 3 Rooms",
+      "rationale": "The party is held across three rooms or dance floors."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "ALL WHITE SENSUAL PARTY",
+      "rationale": "A white-themed party is a dress-theme night."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "PRE-PARTY",
+      "rationale": "The Thursday evening is labelled as a pre-party."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "2:00 PM to 4:30 PM: Zouk Day Social",
+      "rationale": "A daytime social is scheduled on Sunday afternoon."
+     }
+    ]
+   }
+  ]
+ }
 }

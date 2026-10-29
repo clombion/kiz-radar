@@ -1,38 +1,45 @@
 {
- "batch": "event-16815",
- "events": [
-  {
-   "event_id": 16815,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 parties in dedicated rooms"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Afternoon Social Room",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "Afternoon Social Room"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "dancing and studying KIZOMBA at 360°"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "8c10e854c55ce9d3",
+ "answer": {
+  "batch": "event-16815",
+  "events": [
+   {
+    "event_id": 16815,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 parties in dedicated rooms"
     },
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "this year also SALSA y BACHATA"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "this year also SALSA y BACHATA"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Afternoon Social Room",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "Afternoon Social Room"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "dedicated to relaxing, dancing and studying KIZOMBA at 360°"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "SALSA",
+      "quote": "this year also SALSA y BACHATA"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "this year also SALSA y BACHATA"
+     }
+    ]
+   }
+  ]
+ }
 }

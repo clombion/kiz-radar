@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nuno@nuno+sarai",
+ "key_b": "p:nunopesqueira",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "bb1fe67cdefa7add",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "\"Nuno\" is a common first name, and the only link is that both sides list Portugal, while side A is a duo (Nuno+Sarai) with events in Spain and Poland and side B is Nuno Pesqueira with a Germany event and no partners, so the evidence does not settle it."
+ }
+}

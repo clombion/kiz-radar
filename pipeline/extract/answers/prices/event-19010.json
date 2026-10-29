@@ -1,49 +1,58 @@
 {
- "batch": "event-19010",
- "events": [
-  {
-   "event_id": 19010,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "FULL PASSES",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 85.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "2026-06-21",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "SUPER EARLY BIRDS TILL – 21 JUNE. 2026 – €85 EXCL."
-      },
-      {
-       "amount": 90.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "2026-07-12",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "SUPER EARLY BIRDS TILL – 12 JULY. 2026 – €90 EXCL."
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Passes will cost more at the door"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:46:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "c58444d290fd0631",
+ "answer": {
+  "batch": "event-19010",
+  "events": [
+   {
+    "event_id": 19010,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "FULL PASSES",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 85.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "2026-06-21",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "SUPER EARLY BIRDS TILL – 21 JUNE. 2026 – €85 EXCL."
+       },
+       {
+        "amount": 90.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "2026-07-12",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "SUPER EARLY BIRDS TILL – 12 JULY. 2026 – €90 EXCL."
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Passes will cost more at the door"
+    ]
+   }
+  ]
+ }
 }

@@ -1,58 +1,65 @@
 {
- "batch": "event-14446",
- "events": [
-  {
-   "event_id": 14446,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "focus on KIZOMBA & SEMBA"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "focus on KIZOMBA & SEMBA"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Funana",
-     "quote": "Kizomba & Semba & Funana classes"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "Kizomba | Semba | Afro | Tarraxinha"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Kizomba | Semba | Afro | Tarraxinha"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Coladeira",
-     "quote": "Funana | Coladeira | Zouk"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "Coladeira | Zouk | Kompa"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "Coladeira | Zouk | Kompa"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cabo Love",
-     "quote": "Kompa | Cabo Love"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "f9f44ec64c60c536",
+ "answer": {
+  "batch": "event-14446",
+  "events": [
+   {
+    "event_id": 14446,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "focus on KIZOMBA & SEMBA"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "SEMBA",
+      "quote": "focus on KIZOMBA & SEMBA"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Funana",
+      "quote": "Kizomba & Semba & Funana classes"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "Kizomba | Semba | Afro | Tarraxinha"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Tarraxinha"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghetto Zouk",
+      "quote": "Ghetto Zouk"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Coladeira",
+      "quote": "Coladeira"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "Kompa"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cabo Love",
+      "quote": "Cabo Love"
+     }
+    ]
+   }
+  ]
+ }
 }

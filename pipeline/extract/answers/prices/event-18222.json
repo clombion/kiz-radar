@@ -1,83 +1,89 @@
 {
- "batch": "event-18222",
- "events": [
-  {
-   "event_id": 18222,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 110.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "👉🏼𝗦𝗜𝗡𝗚𝗟𝗘 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 𝟭𝟭𝟬€ 👈🏼"
-      },
-      {
-       "amount": 115.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "08-10",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "10 Agosto 115€"
-      },
-      {
-       "amount": 120.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "09-10",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "10 Settembre 120€"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 200.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "👉🏼𝗖𝗢𝗨𝗣𝗟𝗘 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 𝟮𝟬𝟬€ 👈🏼"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:45:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "2fb5b81440e7e2b3",
+ "answer": {
+  "batch": "event-18222",
+  "events": [
+   {
+    "event_id": 18222,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 110.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "👉🏼𝗦𝗜𝗡𝗚𝗟𝗘 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 𝟭𝟭𝟬€ 👈🏼"
+       },
+       {
+        "amount": 115.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "08-10",
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "10 Agosto 115€"
+       },
+       {
+        "amount": 120.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "09-10",
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "10 Settembre 120€"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 200.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "👉🏼𝗖𝗢𝗨𝗣𝗟𝗘 𝗙𝗨𝗟𝗟 𝗣𝗔𝗦𝗦 𝟮𝟬𝟬€ 👈🏼"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

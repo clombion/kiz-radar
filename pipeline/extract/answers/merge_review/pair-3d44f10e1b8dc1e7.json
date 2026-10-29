@@ -1,0 +1,13 @@
+{
+ "key_a": "p:laura@davide+laura",
+ "key_b": "p:laura@doctorkizomba+laura",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3d44f10e1b8dc1e7",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are just the common first name 'Laura' with overlapping Italian country and no shared partner (A's partner is davide, B's is doctorkizomba), and B also has Angola and Switzerland events, so the evidence does not settle whether they are one person."
+ }
+}

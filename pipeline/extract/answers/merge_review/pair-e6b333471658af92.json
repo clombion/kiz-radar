@@ -1,0 +1,13 @@
+{
+ "key_a": "p:kali@kali+yami",
+ "key_b": "p:kali@kali+yami",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e6b333471658af92",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same key with the name Kali stated in Bulgaria and France, but no mentions or partners are listed, so the evidence cannot show whether this is one artist touring both countries or several people sharing the name."
+ }
+}

@@ -1,33 +1,40 @@
 {
- "batch": "event-15883",
- "events": [
-  {
-   "event_id": 15883,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚",
-     "quote": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚, 𝐒𝐞𝐦𝐛𝐚, 𝐓𝐚𝐫𝐫𝐚𝐱𝐢𝐧𝐡𝐚, 𝐆𝐡𝐞𝐭𝐭𝐨 𝐙𝐨𝐮𝐤"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "𝐒𝐞𝐦𝐛𝐚",
-     "quote": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚, 𝐒𝐞𝐦𝐛𝐚, 𝐓𝐚𝐫𝐫𝐚𝐱𝐢𝐧𝐡𝐚, 𝐆𝐡𝐞𝐭𝐭𝐨 𝐙𝐨𝐮𝐤"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "𝐓𝐚𝐫𝐫𝐚𝐱𝐢𝐧𝐡𝐚",
-     "quote": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚, 𝐒𝐞𝐦𝐛𝐚, 𝐓𝐚𝐫𝐫𝐚𝐱𝐢𝐧𝐡𝐚, 𝐆𝐡𝐞𝐭𝐭𝐨 𝐙𝐨𝐮𝐤"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "𝐆𝐡𝐞𝐭𝐭𝐨 𝐙𝐨𝐮𝐤",
-     "quote": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚, 𝐒𝐞𝐦𝐛𝐚, 𝐓𝐚𝐫𝐫𝐚𝐱𝐢𝐧𝐡𝐚, 𝐆𝐡𝐞𝐭𝐭𝐨 𝐙𝐨𝐮𝐤"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "87b9cfca0c63a01c",
+ "answer": {
+  "batch": "event-15883",
+  "events": [
+   {
+    "event_id": 15883,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚",
+      "quote": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚, 𝐒𝐞𝐦𝐛𝐚, 𝐓𝐚𝐫𝐫𝐚𝐱𝐢𝐧𝐡𝐚, 𝐆𝐡𝐞𝐭𝐭𝐨 𝐙𝐨𝐮𝐤"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "𝐒𝐞𝐦𝐛𝐚",
+      "quote": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚, 𝐒𝐞𝐦𝐛𝐚, 𝐓𝐚𝐫𝐫𝐚𝐱𝐢𝐧𝐡𝐚, 𝐆𝐡𝐞𝐭𝐭𝐨 𝐙𝐨𝐮𝐤"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "𝐓𝐚𝐫𝐫𝐚𝐱𝐢𝐧𝐡𝐚",
+      "quote": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚, 𝐒𝐞𝐦𝐛𝐚, 𝐓𝐚𝐫𝐫𝐚𝐱𝐢𝐧𝐡𝐚, 𝐆𝐡𝐞𝐭𝐭𝐨 𝐙𝐨𝐮𝐤"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "𝐆𝐡𝐞𝐭𝐭𝐨 𝐙𝐨𝐮𝐤",
+      "quote": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚, 𝐒𝐞𝐦𝐛𝐚, 𝐓𝐚𝐫𝐫𝐚𝐱𝐢𝐧𝐡𝐚, 𝐆𝐡𝐞𝐭𝐭𝐨 𝐙𝐨𝐮𝐤"
+     }
+    ]
+   }
+  ]
+ }
 }

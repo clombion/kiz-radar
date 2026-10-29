@@ -1,99 +1,106 @@
 {
- "batch": "event-18643",
- "events": [
-  {
-   "event_id": 18643,
-   "artists": [
-    {
-     "name_as_written": "STEFANIO LIMA",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇻 🇳🇱",
-     "source_line": "◾️ STEFANIO LIMA 🇨🇻 🇳🇱"
-    },
-    {
-     "name_as_written": "PINGUSSO",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇻 🇦🇴",
-     "source_line": "◾️ PINGUSSO 🇨🇻 🇦🇴"
-    },
-    {
-     "name_as_written": "TRAYBEATZ",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇼🇳🇱",
-     "source_line": "◾️ TRAYBEATZ 🇨🇼🇳🇱"
-    },
-    {
-     "name_as_written": "REMCY",
-     "role": "dj",
-     "style": null,
-     "country": "🇭🇺",
-     "source_line": "◾️ REMCY 🇭🇺"
-    },
-    {
-     "name_as_written": "BARTEF",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇱",
-     "source_line": "◾️ BARTEF 🇵🇱"
-    },
-    {
-     "name_as_written": "RENE AMPLO",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "◾️ RENE AMPLO 🇳🇱"
-    },
-    {
-     "name_as_written": "ULAN & MARZHAN",
-     "role": "teacher",
-     "style": null,
-     "country": "🇰🇿",
-     "source_line": "◾️ ULAN & MARZHAN 🇰🇿"
-    },
-    {
-     "name_as_written": "DAVID & JENNIFER",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇱 🇱🇺 🇬🇭 🇩🇪",
-     "source_line": "◾️ DAVID & JENNIFER 🇵🇱 🇱🇺 🇬🇭 🇩🇪"
-    },
-    {
-     "name_as_written": "PORTU & MADA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇹🇷🇴",
-     "source_line": "◾️ PORTU & MADA 🇵🇹🇷🇴"
-    },
-    {
-     "name_as_written": "WOOKIE & NICOLE",
-     "role": "teacher",
-     "style": null,
-     "country": "🇭🇺🇧🇬",
-     "source_line": "◾️ WOOKIE & NICOLE 🇭🇺🇧🇬"
-    },
-    {
-     "name_as_written": "Kizz Ryders",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "⚜️ By Kizz Ryders"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All-in-one 4-star hotel",
-     "rationale": "The description presents the event as an all-in-one experience at the 4-star Sound Garden Hotel, where dancers stay and the events take place."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Premium workshops with international artists",
-     "rationale": "The description explicitly lists premium workshops with international artists as part of the experience."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:32:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "f2e92c0cdb60623e",
+ "answer": {
+  "batch": "event-18643",
+  "events": [
+   {
+    "event_id": 18643,
+    "artists": [
+     {
+      "name_as_written": "STEFANIO LIMA",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇻 🇳🇱",
+      "source_line": "◾️ STEFANIO LIMA 🇨🇻 🇳🇱"
+     },
+     {
+      "name_as_written": "PINGUSSO",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇻 🇦🇴",
+      "source_line": "◾️ PINGUSSO 🇨🇻 🇦🇴"
+     },
+     {
+      "name_as_written": "TRAYBEATZ",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇼🇳🇱",
+      "source_line": "◾️ TRAYBEATZ 🇨🇼🇳🇱"
+     },
+     {
+      "name_as_written": "REMCY",
+      "role": "dj",
+      "style": null,
+      "country": "🇭🇺",
+      "source_line": "◾️ REMCY 🇭🇺"
+     },
+     {
+      "name_as_written": "BARTEF",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇱",
+      "source_line": "◾️ BARTEF 🇵🇱"
+     },
+     {
+      "name_as_written": "RENE AMPLO",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "◾️ RENE AMPLO 🇳🇱"
+     },
+     {
+      "name_as_written": "ULAN & MARZHAN",
+      "role": "teacher",
+      "style": null,
+      "country": "🇰🇿",
+      "source_line": "◾️ ULAN & MARZHAN 🇰🇿"
+     },
+     {
+      "name_as_written": "DAVID & JENNIFER",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇱 🇱🇺 🇬🇭 🇩🇪",
+      "source_line": "◾️ DAVID & JENNIFER 🇵🇱 🇱🇺 🇬🇭 🇩🇪"
+     },
+     {
+      "name_as_written": "PORTU & MADA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇹🇷🇴",
+      "source_line": "◾️ PORTU & MADA 🇵🇹🇷🇴"
+     },
+     {
+      "name_as_written": "WOOKIE & NICOLE",
+      "role": "teacher",
+      "style": null,
+      "country": "🇭🇺🇧🇬",
+      "source_line": "◾️ WOOKIE & NICOLE 🇭🇺🇧🇬"
+     },
+     {
+      "name_as_written": "Kizz Ryders",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "⚜️ By Kizz Ryders"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "Everything comes together under one roof at the 4-star Sound Garden Hotel Warsaw.",
+      "rationale": "The description says everything happens under one roof at the hotel, so event and accommodation share the same venue."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Premium workshops with international artists",
+      "rationale": "The event lists premium workshops with international artists as part of the experience."
+     }
+    ]
+   }
+  ]
+ }
 }

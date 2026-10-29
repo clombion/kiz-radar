@@ -1,53 +1,55 @@
 {
- "batch": "event-15265",
- "events": [
-  {
-   "event_id": 15265,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBANKIZ",
-     "quote": "URBANKIZ"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "TARRAXO",
-     "quote": "TARRAXO"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "TARRAXINHA",
-     "quote": "TARRAXINHA"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "FUSION",
-     "quote": "FUSION"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "KOMPA",
-     "quote": "KOMPA"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "GHETTO ZOUK",
-     "quote": "GHETTO ZOUK"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "DOUCEUR",
-     "quote": "DOUCEUR"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "edc58933510f6376",
+ "answer": {
+  "batch": "event-15265",
+  "events": [
+   {
+    "event_id": 15265,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBANKIZ",
+      "quote": "URBANKIZ | TARRAXO"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "TARRAXO",
+      "quote": "URBANKIZ | TARRAXO"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "TARRAXINHA",
+      "quote": "TARRAXINHA | FUSION"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "KOMPA",
+      "quote": "KOMPA | GHETTO ZOUK"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "GHETTO ZOUK",
+      "quote": "GHETTO ZOUK | DOUCEUR"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "DOUCEUR",
+      "quote": "DOUCEUR | KIZOMBA"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "DOUCEUR | KIZOMBA"
+     }
+    ]
+   }
+  ]
+ }
 }

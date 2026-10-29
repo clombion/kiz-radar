@@ -1,517 +1,436 @@
 {
- "batch": "event-15404",
- "events": [
-  {
-   "event_id": 15404,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 4,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 375.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Quadruple €375"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 4,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 399.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Double €399"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 4,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 389.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Triple €389"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 4,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 525.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Double for single use €525"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 4,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 160.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Children up to 10 years old €160"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 275.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Quadruple €275"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 299.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Double €299"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 289.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Triple €289"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 405.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Double for single use €405"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 100.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Children up to 10 years old €100"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 175.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Quadruple €175"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 199.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Double €199"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 189.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Triple €189"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 255.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Double for single use €255"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 50.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Children under 10 €50"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 25.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Thursday workshops + evening €25"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 30.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Friday workshops + evening €30"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 65.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Saturday workshops + evening €65"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 25.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Sunday workshops € 25"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "💎EVENING PASS💎",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 20.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Thursday €20"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "💎EVENING PASS💎",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 20.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Friday €20"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "💎EVENING PASS💎",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 25.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– Saturday €25"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:42:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "fdf21c8ce4433b9c",
+ "answer": {
+  "batch": "event-15404",
+  "events": [
+   {
+    "event_id": 15404,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "💎 3 NIGHTS/4 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+      "group_size": 1,
+      "days": 4,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 375.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Quadruple €375"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "💎 3 NIGHTS/4 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+      "group_size": 1,
+      "days": 4,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 399.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Double €399"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "💎 3 NIGHTS/4 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+      "group_size": 1,
+      "days": 4,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 389.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Triple €389"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "💎 3 NIGHTS/4 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+      "group_size": 1,
+      "days": 4,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 525.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Double for single use €525"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "💎 3 NIGHTS/4 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+      "group_size": 1,
+      "days": 4,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 160.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Children up to 10 years old €160"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "💎 2 NIGHTS/3 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 275.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Quadruple €275"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "💎 2 NIGHTS/3 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 299.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Double €299"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "💎 2 NIGHTS/3 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 289.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Triple €289"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "💎 2 NIGHTS/3 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 405.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Double for single use €405"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "💎 2 NIGHTS/3 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 100.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Children up to 10 years old €100"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "💎 1 NIGHT/2 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 175.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Quadruple €175"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "💎 1 NIGHT/2 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 199.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Double €199"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "💎 1 NIGHT/2 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 189.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Triple €189"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "💎 1 NIGHT/2 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 255.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Double for single use €255"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "💎 1 NIGHT/2 DAYS IN THE MAIN HOTEL + FULL PASS + MEMBERSHIP CARD.",
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 50.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Children under 10 €50"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 25.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Thursday workshops + evening €25"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 30.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Friday workshops + evening €30"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 65.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Saturday workshops + evening €65"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 25.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Sunday workshops € 25"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": "💎EVENING PASS💎",
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 20.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Thursday €20"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": "💎EVENING PASS💎",
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 20.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Friday €20"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": "💎EVENING PASS💎",
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 25.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– Saturday €25"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

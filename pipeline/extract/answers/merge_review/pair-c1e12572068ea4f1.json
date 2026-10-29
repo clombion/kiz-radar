@@ -1,0 +1,13 @@
+{
+ "key_a": "p:albir@dance",
+ "key_b": "p:albirrojas",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c1e12572068ea4f1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as Spain, and 'ALBIR' is a distinctive bare first name that may be a short form of 'Albir Rojas', but the 'ALBIR' records have no surname, style or partner to confirm the link, and their events (Poland, Kazakhstan) do not overlap with the other side's events."
+ }
+}

@@ -1,41 +1,48 @@
 {
- "batch": "event-16241",
- "events": [
-  {
-   "event_id": 16241,
-   "party_rooms": {
-    "count": 5,
-    "quote": "2-floor congress center with 5 dance floors"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "DJs Kizomba / Semba / Urban Kiz / Tarraxo"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d6cb9e19e0eb6253",
+ "answer": {
+  "batch": "event-16241",
+  "events": [
+   {
+    "event_id": 16241,
+    "party_rooms": {
+     "count": 5,
+     "quote": "2-floor congress center with 5 dance floors"
     },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "DJs Kizomba / Semba / Urban Kiz / Tarraxo"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "DJs Kizomba / Semba / Urban Kiz / Tarraxo"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "DJs Kizomba / Semba / Urban Kiz / Tarraxo"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "An ALL IN ONE event celebrating Kizomba, Semba, Urban Kiz, Tarraxo, Kompa and more."
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "An ALL IN ONE event celebrating Kizomba, Semba, Urban Kiz, Tarraxo, Kompa and more."
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "An ALL IN ONE event celebrating Kizomba, Semba, Urban Kiz, Tarraxo, Kompa and more."
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "An ALL IN ONE event celebrating Kizomba, Semba, Urban Kiz, Tarraxo, Kompa and more."
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "An ALL IN ONE event celebrating Kizomba, Semba, Urban Kiz, Tarraxo, Kompa and more."
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "An ALL IN ONE event celebrating Kizomba, Semba, Urban Kiz, Tarraxo, Kompa and more."
+     }
+    ]
+   }
+  ]
+ }
 }

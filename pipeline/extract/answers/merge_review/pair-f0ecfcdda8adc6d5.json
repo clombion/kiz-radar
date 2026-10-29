@@ -1,0 +1,13 @@
+{
+ "key_a": "p:carla@carla+mario",
+ "key_b": "p:carlaandrade",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f0ecfcdda8adc6d5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only shared fact is the country Angola (AO), and 'CARLA' is a common first name, while the two sides have different partners (mario@carla+mario vs tonyviser) and non-overlapping event countries (France/Poland vs Belgium/Germany/Luxembourg/Switzerland), so the evidence does not settle whether this is one artist."
+ }
+}

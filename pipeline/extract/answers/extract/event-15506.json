@@ -1,146 +1,153 @@
 {
- "batch": "event-15506",
- "events": [
-  {
-   "event_id": 15506,
-   "artists": [
-    {
-     "name_as_written": "DJ Charley Raymdtc",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Charley Raymdtc"
-    },
-    {
-     "name_as_written": "DJ F.A.Z.E",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ F.A.Z.E"
-    },
-    {
-     "name_as_written": "DJ Poema Beatz",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Poema Beatz"
-    },
-    {
-     "name_as_written": "DJ Timeline",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Timeline"
-    },
-    {
-     "name_as_written": "DJ Sorin",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Sorin"
-    },
-    {
-     "name_as_written": "DJ El Momo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ El Momo"
-    },
-    {
-     "name_as_written": "George & Iva",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "George & Iva"
-    },
-    {
-     "name_as_written": "Fajul KizzTalk",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Fajul KizzTalk"
-    },
-    {
-     "name_as_written": "Daniel & Elina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Daniel & Elina"
-    },
-    {
-     "name_as_written": "Lio & Helen",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Lio & Helen"
-    },
-    {
-     "name_as_written": "Chris & Alexksandra",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Chris & Alexksandra"
-    },
-    {
-     "name_as_written": "Stef Kizz & Sonia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Stef Kizz & Sonia"
-    },
-    {
-     "name_as_written": "King Gloire",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "King Gloire"
-    },
-    {
-     "name_as_written": "Hassou",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Hassou"
-    },
-    {
-     "name_as_written": "Joany Gomes",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Joany Gomes"
-    },
-    {
-     "name_as_written": "Maja",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Maja"
-    },
-    {
-     "name_as_written": "Kevin & Irina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Kevin & Irina"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "14 hours of workshops with international artists",
-     "rationale": "The description states that workshops with international artists are part of the event."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "THEMED NIGHTS",
-     "rationale": "The event has themed nights with a dress theme such as Red of Passion and Dress to Impress."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Main Hotel:",
-     "rationale": "A main hotel is named for the event without the accommodation being stated as part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "43b8b51176df4e25",
+ "answer": {
+  "batch": "event-15506",
+  "events": [
+   {
+    "event_id": 15506,
+    "artists": [
+     {
+      "name_as_written": "DJ Charley Raymdtc",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Charley Raymdtc"
+     },
+     {
+      "name_as_written": "DJ F.A.Z.E",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ F.A.Z.E"
+     },
+     {
+      "name_as_written": "DJ Poema Beatz",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Poema Beatz"
+     },
+     {
+      "name_as_written": "DJ Timeline",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Timeline"
+     },
+     {
+      "name_as_written": "DJ Sorin",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Sorin"
+     },
+     {
+      "name_as_written": "DJ El Momo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ El Momo"
+     },
+     {
+      "name_as_written": "George & Iva",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "George & Iva"
+     },
+     {
+      "name_as_written": "Fajul KizzTalk",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Fajul KizzTalk"
+     },
+     {
+      "name_as_written": "Daniel & Elina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Daniel & Elina"
+     },
+     {
+      "name_as_written": "Lio & Helen",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Lio & Helen"
+     },
+     {
+      "name_as_written": "Chris & Alexksandra",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Chris & Alexksandra"
+     },
+     {
+      "name_as_written": "Stef Kizz & Sonia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Stef Kizz & Sonia"
+     },
+     {
+      "name_as_written": "King Gloire",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "King Gloire"
+     },
+     {
+      "name_as_written": "Hassou",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Hassou"
+     },
+     {
+      "name_as_written": "Joany Gomes",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Joany Gomes"
+     },
+     {
+      "name_as_written": "Maja",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Maja"
+     },
+     {
+      "name_as_written": "Kevin & Irina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Kevin & Irina"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "14 hours of workshops with international artists",
+      "rationale": "The description states that workshops with international artists take place over 14 hours."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "THEMED NIGHTS",
+      "rationale": "The description lists themed nights for Friday, Saturday and Sunday."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Leonardo Royal Hotel Ulm",
+      "rationale": "The description names a main hotel for the event, which is a recommended hotel rather than part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

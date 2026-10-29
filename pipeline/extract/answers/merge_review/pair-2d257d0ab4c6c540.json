@@ -1,0 +1,13 @@
+{
+ "key_a": "p:carla@carla+tonyviser",
+ "key_b": "p:carlaandrade",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2d257d0ab4c6c540",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records share the partner 'tonyviser' and overlapping countries (AO, CV), with 'CARLA' being a short form of 'CARLA ANDRADE', so the evidence points to one artist."
+ }
+}

@@ -1,44 +1,58 @@
 {
- "batch": "event-14931",
- "events": [
-  {
-   "event_id": 14931,
-   "artists": [
-    {
-     "name_as_written": "SAID & OKSANA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✅ SAID & OKSANA 🇫🇷"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "CBKF features 4 days of dance classes",
-     "rationale": "The description states the festival includes four days of dance classes."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "LOCATION ALL IN ONE",
-     "rationale": "The location heading indicates the parties take place at the hotel where dancers are invited to stay."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Rooms will be available at a discounted group rate of $189",
-     "rationale": "A negotiated hotel group rate is offered for the festival, separate from any pass."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "free shuttle",
-     "rationale": "A free shuttle from Reagan National Airport to the hotel is mentioned."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "CBKF is a welcoming place for dancers of all skill and experience levels",
-     "rationale": "The description explicitly says the festival welcomes dancers of all levels, including those just starting."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:24:00+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "dc7deb5e8bdc02e3",
+ "answer": {
+  "batch": "event-14931",
+  "events": [
+   {
+    "event_id": 14931,
+    "artists": [
+     {
+      "name_as_written": "SAID & OKSANA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✅ SAID & OKSANA 🇫🇷"
+     },
+     {
+      "name_as_written": "The CBKF Team",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "The CBKF Team"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "4 days of dance classes",
+      "rationale": "The description states that the festival features four days of dance classes."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "a welcoming place for dancers of all skill and experience levels",
+      "rationale": "The description explicitly says the festival welcomes dancers of all skill and experience levels."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "LOCATION ALL IN ONE",
+      "rationale": "The heading states the location is all in one, and the venue named is the Hilton hotel where rooms are offered."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Rooms will be available at a discounted group rate of $189",
+      "rationale": "A negotiated discounted group rate at the hotel is offered, and accommodation is not stated as part of the pass."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "free shuttle",
+      "rationale": "A free shuttle from Reagan National Airport to the venue is offered."
+     }
+    ]
+   }
+  ]
+ }
 }

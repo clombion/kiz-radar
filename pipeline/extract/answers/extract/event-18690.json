@@ -1,384 +1,391 @@
 {
- "batch": "event-18690",
- "events": [
-  {
-   "event_id": 18690,
-   "artists": [
-    {
-     "name_as_written": "Frankie Martinez",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": "US",
-     "source_line": "∙ Frankie Martinez (US)"
-    },
-    {
-     "name_as_written": "Konstantin & Arcadia",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": "SWE",
-     "source_line": "∙ Konstantin & Arcadia (SWE)"
-    },
-    {
-     "name_as_written": "Alicia Velasco",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": "ES",
-     "source_line": "∙ Alicia Velasco (ES)"
-    },
-    {
-     "name_as_written": "Sasha Philips",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": "UK",
-     "source_line": "∙ Sasha Philips (UK)"
-    },
-    {
-     "name_as_written": "Alessio & Angelica",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": "IT",
-     "source_line": "∙ Alessio & Angelica (IT)"
-    },
-    {
-     "name_as_written": "Linda & Rossi",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": "DE/BE",
-     "source_line": "∙ Linda & Rossi (DE/BE)"
-    },
-    {
-     "name_as_written": "Poetic Motion DC",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "∙ Poetic Motion DC"
-    },
-    {
-     "name_as_written": "Quincy & Zunaira",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "∙ Quincy & Zunaira"
-    },
-    {
-     "name_as_written": "Vivendi DC",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "∙ Vivendi DC"
-    },
-    {
-     "name_as_written": "Aldo & Ale",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "∙ Aldo & Ale"
-    },
-    {
-     "name_as_written": "Hedi Aranyos",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "∙ Hedi Aranyos"
-    },
-    {
-     "name_as_written": "Adana Arojan",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "∙ Adana Arojan"
-    },
-    {
-     "name_as_written": "Dj Willy",
-     "role": "dj",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "∙ Dj Willy 🎧"
-    },
-    {
-     "name_as_written": "Dj Cycy",
-     "role": "dj",
-     "style": "SALSA",
-     "country": "FR",
-     "source_line": "∙ Dj Cycy (FR) 🎧"
-    },
-    {
-     "name_as_written": "Dj Latin Master",
-     "role": "dj",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "∙ Dj Latin Master 🎧"
-    },
-    {
-     "name_as_written": "DJ Michelle",
-     "role": "dj",
-     "style": "SALSA",
-     "country": "DE",
-     "source_line": "∙ DJ Michelle (DE) 🎧"
-    },
-    {
-     "name_as_written": "DJ Ryad",
-     "role": "dj",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "∙ DJ Ryad 🎧"
-    },
-    {
-     "name_as_written": "DJ Betho Rodriguez",
-     "role": "dj",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "∙ DJ Betho Rodriguez 🎧"
-    },
-    {
-     "name_as_written": "DJ Miss Maya",
-     "role": "dj",
-     "style": "SALSA",
-     "country": "DE",
-     "source_line": "∙ DJ Miss Maya (DE) 🎧"
-    },
-    {
-     "name_as_written": "JP & Stephy",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": "FR",
-     "source_line": "∙ JP & Stephy (FR)"
-    },
-    {
-     "name_as_written": "Dwe & Gaby",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "∙ Dwe & Gaby"
-    },
-    {
-     "name_as_written": "Stef & Sarah",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": "FR",
-     "source_line": "∙ Stef & Sarah (FR)"
-    },
-    {
-     "name_as_written": "Trezor & Aurea",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": "NL/ES",
-     "source_line": "∙ Trezor & Aurea (NL/ES)"
-    },
-    {
-     "name_as_written": "Teresa Jimenez",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "∙ Teresa Jimenez"
-    },
-    {
-     "name_as_written": "John & Lea",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "∙ John & Lea"
-    },
-    {
-     "name_as_written": "Endos & Dorian",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "∙ Endos & Dorian"
-    },
-    {
-     "name_as_written": "Joey & Sha",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "∙ Joey & Sha"
-    },
-    {
-     "name_as_written": "Dj Pingusso",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": "LUX",
-     "source_line": "∙ Dj Pingusso (LUX) 🎧"
-    },
-    {
-     "name_as_written": "Dj Paraïso",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": "FR",
-     "source_line": "∙ Dj Paraïso (FR) 🎧"
-    },
-    {
-     "name_as_written": "Dj Dani Fernandes",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "∙ Dj Dani Fernandes 🎧"
-    },
-    {
-     "name_as_written": "DJ Lisa Rose",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "∙ DJ Lisa Rose 🎧"
-    },
-    {
-     "name_as_written": "DJ Stefanio Lima",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "∙ DJ Stefanio Lima 🎧"
-    },
-    {
-     "name_as_written": "DJ David Ruela",
-     "role": "dj",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "∙ DJ David Ruela 🎧"
-    },
-    {
-     "name_as_written": "Junior & Carolina",
-     "role": "teacher",
-     "style": "DOMINICAN BACHATA",
-     "country": "SWE",
-     "source_line": "∙ Junior & Carolina (SWE)"
-    },
-    {
-     "name_as_written": "Crisian & Katerina",
-     "role": "teacher",
-     "style": "DOMINICAN BACHATA",
-     "country": "ES/RU",
-     "source_line": "∙ Crisian & Katerina (ES/RU)"
-    },
-    {
-     "name_as_written": "Alberto Vasquez",
-     "role": "teacher",
-     "style": "DOMINICAN BACHATA",
-     "country": "IT",
-     "source_line": "∙ Alberto Vasquez (IT)"
-    },
-    {
-     "name_as_written": "Sabiha Bastide",
-     "role": "teacher",
-     "style": "DOMINICAN BACHATA",
-     "country": "FR",
-     "source_line": "∙ Sabiha Bastide (FR)"
-    },
-    {
-     "name_as_written": "Los 3 Golpes",
-     "role": "teacher",
-     "style": "DOMINICAN BACHATA",
-     "country": "BE",
-     "source_line": "∙ Los 3 Golpes (BE)"
-    },
-    {
-     "name_as_written": "Linda Guiteriez",
-     "role": "teacher",
-     "style": "DOMINICAN BACHATA",
-     "country": "DE",
-     "source_line": "∙ Linda Guiteriez (DE)"
-    },
-    {
-     "name_as_written": "Francisco & Xiomara",
-     "role": "teacher",
-     "style": "DOMINICAN BACHATA",
-     "country": null,
-     "source_line": "∙ Francisco & Xiomara"
-    },
-    {
-     "name_as_written": "Randor & Samantha",
-     "role": "teacher",
-     "style": "DOMINICAN BACHATA",
-     "country": null,
-     "source_line": "∙ Randor & Samantha"
-    },
-    {
-     "name_as_written": "Bachata Passion",
-     "role": "teacher",
-     "style": "DOMINICAN BACHATA",
-     "country": null,
-     "source_line": "∙ Bachata Passion"
-    },
-    {
-     "name_as_written": "Dj Prachi",
-     "role": "dj",
-     "style": "DOMINICAN BACHATA",
-     "country": "DE",
-     "source_line": "∙ Dj Prachi (DE) 🎧"
-    },
-    {
-     "name_as_written": "Dj Jarzino",
-     "role": "dj",
-     "style": "DOMINICAN BACHATA",
-     "country": null,
-     "source_line": "∙ Dj Jarzino 🎧"
-    },
-    {
-     "name_as_written": "Dj Bripa",
-     "role": "dj",
-     "style": "DOMINICAN BACHATA",
-     "country": null,
-     "source_line": "∙ Dj Bripa 🎧"
-    },
-    {
-     "name_as_written": "DJ El Pequeno Loco",
-     "role": "dj",
-     "style": "DOMINICAN BACHATA",
-     "country": null,
-     "source_line": "∙ DJ El Pequeno Loco 🎧"
-    },
-    {
-     "name_as_written": "DJ Larby",
-     "role": "dj",
-     "style": "DOMINICAN BACHATA",
-     "country": null,
-     "source_line": "∙ DJ Larby 🎧"
-    },
-    {
-     "name_as_written": "DJ Mo",
-     "role": "dj",
-     "style": "DOMINICAN BACHATA",
-     "country": null,
-     "source_line": "∙ DJ Mo 🎧"
-    },
-    {
-     "name_as_written": "Mojo prod",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "∙ Mojo prod 🎥"
-    },
-    {
-     "name_as_written": "Film by Lova",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "∙ Film by Lova 🎥"
-    },
-    {
-     "name_as_written": "Visualeyez",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "∙ Visualeyez 📸"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "WORKSHOPS / SHOWS / PARTYS / SOCIALS",
-     "rationale": "The list of event components names workshops as part of the festival."
-    },
-    {
-     "feature": "shows",
-     "quote": "WORKSHOPS / SHOWS / PARTYS / SOCIALS",
-     "rationale": "The list of event components names shows as part of the festival."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "6 HOTELS NEARBY (STARTING AT € 75,- PER ROOM)",
-     "rationale": "The festival lists nearby hotels at a negotiated room rate, separate from the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:33:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "437dc95a45b67545",
+ "answer": {
+  "batch": "event-18690",
+  "events": [
+   {
+    "event_id": 18690,
+    "artists": [
+     {
+      "name_as_written": "Frankie Martinez",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": "US",
+      "source_line": "∙ Frankie Martinez (US)"
+     },
+     {
+      "name_as_written": "Konstantin & Arcadia",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": "SWE",
+      "source_line": "∙ Konstantin & Arcadia (SWE)"
+     },
+     {
+      "name_as_written": "Alicia Velasco",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": "ES",
+      "source_line": "∙ Alicia Velasco (ES)"
+     },
+     {
+      "name_as_written": "Sasha Philips",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": "UK",
+      "source_line": "∙ Sasha Philips (UK)"
+     },
+     {
+      "name_as_written": "Alessio & Angelica",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": "IT",
+      "source_line": "∙ Alessio & Angelica (IT)"
+     },
+     {
+      "name_as_written": "Linda & Rossi",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": "DE/BE",
+      "source_line": "∙ Linda & Rossi (DE/BE)"
+     },
+     {
+      "name_as_written": "Poetic Motion DC",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "∙ Poetic Motion DC"
+     },
+     {
+      "name_as_written": "Quincy & Zunaira",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "∙ Quincy & Zunaira"
+     },
+     {
+      "name_as_written": "Vivendi DC",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "∙ Vivendi DC"
+     },
+     {
+      "name_as_written": "Aldo & Ale",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "∙ Aldo & Ale"
+     },
+     {
+      "name_as_written": "Hedi Aranyos",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "∙ Hedi Aranyos"
+     },
+     {
+      "name_as_written": "Adana Arojan",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "∙ Adana Arojan"
+     },
+     {
+      "name_as_written": "Dj Willy",
+      "role": "dj",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "∙ Dj Willy 🎧"
+     },
+     {
+      "name_as_written": "Dj Cycy",
+      "role": "dj",
+      "style": "SALSA",
+      "country": "FR",
+      "source_line": "∙ Dj Cycy (FR) 🎧"
+     },
+     {
+      "name_as_written": "Dj Latin Master",
+      "role": "dj",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "∙ Dj Latin Master 🎧"
+     },
+     {
+      "name_as_written": "DJ Michelle",
+      "role": "dj",
+      "style": "SALSA",
+      "country": "DE",
+      "source_line": "∙ DJ Michelle (DE) 🎧"
+     },
+     {
+      "name_as_written": "DJ Ryad",
+      "role": "dj",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "∙ DJ Ryad 🎧"
+     },
+     {
+      "name_as_written": "DJ Betho Rodriguez",
+      "role": "dj",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "∙ DJ Betho Rodriguez 🎧"
+     },
+     {
+      "name_as_written": "DJ Miss Maya",
+      "role": "dj",
+      "style": "SALSA",
+      "country": "DE",
+      "source_line": "∙ DJ Miss Maya (DE) 🎧"
+     },
+     {
+      "name_as_written": "JP & Stephy",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": "FR",
+      "source_line": "∙ JP & Stephy (FR)"
+     },
+     {
+      "name_as_written": "Dwe & Gaby",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "∙ Dwe & Gaby"
+     },
+     {
+      "name_as_written": "Stef & Sarah",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": "FR",
+      "source_line": "∙ Stef & Sarah (FR)"
+     },
+     {
+      "name_as_written": "Trezor & Aurea",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": "NL/ES",
+      "source_line": "∙ Trezor & Aurea (NL/ES)"
+     },
+     {
+      "name_as_written": "Teresa Jimenez",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "∙ Teresa Jimenez"
+     },
+     {
+      "name_as_written": "John & Lea",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "∙ John & Lea"
+     },
+     {
+      "name_as_written": "Endos & Dorian",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "∙ Endos & Dorian"
+     },
+     {
+      "name_as_written": "Joey & Sha",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "∙ Joey & Sha"
+     },
+     {
+      "name_as_written": "Dj Pingusso",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": "LUX",
+      "source_line": "∙ Dj Pingusso (LUX) 🎧"
+     },
+     {
+      "name_as_written": "Dj Paraïso",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": "FR",
+      "source_line": "∙ Dj Paraïso (FR) 🎧"
+     },
+     {
+      "name_as_written": "Dj Dani Fernandes",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "∙ Dj Dani Fernandes 🎧"
+     },
+     {
+      "name_as_written": "DJ Lisa Rose",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "∙ DJ Lisa Rose 🎧"
+     },
+     {
+      "name_as_written": "DJ Stefanio Lima",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "∙ DJ Stefanio Lima 🎧"
+     },
+     {
+      "name_as_written": "DJ David Ruela",
+      "role": "dj",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "∙ DJ David Ruela 🎧"
+     },
+     {
+      "name_as_written": "Junior & Carolina",
+      "role": "teacher",
+      "style": "DOMINICAN BACHATA",
+      "country": "SWE",
+      "source_line": "∙ Junior & Carolina (SWE)"
+     },
+     {
+      "name_as_written": "Crisian & Katerina",
+      "role": "teacher",
+      "style": "DOMINICAN BACHATA",
+      "country": "ES/RU",
+      "source_line": "∙ Crisian & Katerina (ES/RU)"
+     },
+     {
+      "name_as_written": "Alberto Vasquez",
+      "role": "teacher",
+      "style": "DOMINICAN BACHATA",
+      "country": "IT",
+      "source_line": "∙ Alberto Vasquez (IT)"
+     },
+     {
+      "name_as_written": "Sabiha Bastide",
+      "role": "teacher",
+      "style": "DOMINICAN BACHATA",
+      "country": "FR",
+      "source_line": "∙ Sabiha Bastide (FR)"
+     },
+     {
+      "name_as_written": "Los 3 Golpes",
+      "role": "teacher",
+      "style": "DOMINICAN BACHATA",
+      "country": "BE",
+      "source_line": "∙ Los 3 Golpes (BE)"
+     },
+     {
+      "name_as_written": "Linda Guiteriez",
+      "role": "teacher",
+      "style": "DOMINICAN BACHATA",
+      "country": "DE",
+      "source_line": "∙ Linda Guiteriez (DE)"
+     },
+     {
+      "name_as_written": "Francisco & Xiomara",
+      "role": "teacher",
+      "style": "DOMINICAN BACHATA",
+      "country": null,
+      "source_line": "∙ Francisco & Xiomara"
+     },
+     {
+      "name_as_written": "Randor & Samantha",
+      "role": "teacher",
+      "style": "DOMINICAN BACHATA",
+      "country": null,
+      "source_line": "∙ Randor & Samantha"
+     },
+     {
+      "name_as_written": "Bachata Passion",
+      "role": "teacher",
+      "style": "DOMINICAN BACHATA",
+      "country": null,
+      "source_line": "∙ Bachata Passion"
+     },
+     {
+      "name_as_written": "Dj Prachi",
+      "role": "dj",
+      "style": "DOMINICAN BACHATA",
+      "country": "DE",
+      "source_line": "∙ Dj Prachi (DE) 🎧"
+     },
+     {
+      "name_as_written": "Dj Jarzino",
+      "role": "dj",
+      "style": "DOMINICAN BACHATA",
+      "country": null,
+      "source_line": "∙ Dj Jarzino 🎧"
+     },
+     {
+      "name_as_written": "Dj Bripa",
+      "role": "dj",
+      "style": "DOMINICAN BACHATA",
+      "country": null,
+      "source_line": "∙ Dj Bripa 🎧"
+     },
+     {
+      "name_as_written": "DJ El Pequeno Loco",
+      "role": "dj",
+      "style": "DOMINICAN BACHATA",
+      "country": null,
+      "source_line": "∙ DJ El Pequeno Loco 🎧"
+     },
+     {
+      "name_as_written": "DJ Larby",
+      "role": "dj",
+      "style": "DOMINICAN BACHATA",
+      "country": null,
+      "source_line": "∙ DJ Larby 🎧"
+     },
+     {
+      "name_as_written": "DJ Mo",
+      "role": "dj",
+      "style": "DOMINICAN BACHATA",
+      "country": null,
+      "source_line": "∙ DJ Mo 🎧"
+     },
+     {
+      "name_as_written": "Mojo prod",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "∙ Mojo prod 🎥"
+     },
+     {
+      "name_as_written": "Film by Lova",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "∙ Film by Lova 🎥"
+     },
+     {
+      "name_as_written": "Visualeyez",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "∙ Visualeyez 📸"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "WORKSHOPS / SHOWS / PARTYS / SOCIALS",
+      "rationale": "The description lists workshops as part of the event."
+     },
+     {
+      "feature": "shows",
+      "quote": "WORKSHOPS / SHOWS / PARTYS / SOCIALS",
+      "rationale": "The description lists shows as part of the event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Hotels (from € 75,- per room per night):",
+      "rationale": "A list of recommended hotels with a negotiated rate per room is given, without accommodation being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:elo@adil+elo",
+ "key_b": "p:elo@elo+mike",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e97b79f68bfb8144",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records are 'Elo' (same spelling apart from case) with the same country (FR) and event country (France), but their partners differ (adil versus mike), so no shared partner links them, and the mention lists are empty, leaving the evidence unable to settle whether they are one artist."
+ }
+}

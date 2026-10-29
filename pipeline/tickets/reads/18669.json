@@ -2,13 +2,15 @@
  "event_id": 18669,
  "title": "HAKUNA MATATA FESTIVAL – Sunshine Edition",
  "start_date": "2027-01-29",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:31:35+00:00",
+ "end_date": "2027-02-01",
+ "country": "France",
  "styles": [
   "kizomba"
  ],
  "description": "🌞 HAKUNA MATATA – SUNSHINE EDITION 🌞\nGet ready for an unforgettable weekend filled with Kizomba, music, dance, sunshine and good vibes! ☀️🔥\n📅 29 January – 1 February 2027\n📍 Studio G – 38400 Saint-Martin-d’Hères, France\nHakuna Matata – Sunshine Edition brings together an amazing line-up of DJs, artists and dancers for a weekend dedicated to sharing, connection and the love of dance.\n🎧 DJs\nDJ Diablo • DJ Miky Mike • DJ Dedinho • DJ Chad • DJ Jkee • DJ Stompy • DJ Lass\n💃 Artists & Dancers\nPao Lou & Margaux • Pidjay & Enora • Heneco & Mame • Lna Carla\nExpect great music, incredible dancing, beautiful energy and unforgettable moments all weekend long. 🌴✨\nWhether you’re coming to learn, dance, meet new people or simply enjoy the atmosphere, Hakuna Matata – Sunshine Edition is the place to be!\n☀️ Dance. Music. Sunshine. Good vibes.\nHakuna Matata! 🌺",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:15:27+00:00",
  "passes": [
   {
    "kind": "full",

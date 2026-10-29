@@ -1,287 +1,289 @@
 {
- "batch": "event-15500",
- "events": [
-  {
-   "event_id": 15500,
-   "artists": [
-    {
-     "name_as_written": "Fred & Morgan",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Fred & Morgan"
-    },
-    {
-     "name_as_written": "Lilian & Ivana",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Lilian & Ivana"
-    },
-    {
-     "name_as_written": "Iron Mams & Moorea",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Iron Mams & Moorea"
-    },
-    {
-     "name_as_written": "Tresor & Aurea",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Tresor & Aurea"
-    },
-    {
-     "name_as_written": "Stephane",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Stephane"
-    },
-    {
-     "name_as_written": "Ida & Lucas",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Ida & Lucas"
-    },
-    {
-     "name_as_written": "Olesia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Olesia"
-    },
-    {
-     "name_as_written": "Cristian & Veronica",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Cristian & Veronica"
-    },
-    {
-     "name_as_written": "Giuseppe & Vincenza",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Giuseppe & Vincenza"
-    },
-    {
-     "name_as_written": "Caarl & Patii",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Caarl & Patii"
-    },
-    {
-     "name_as_written": "Viola",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Viola"
-    },
-    {
-     "name_as_written": "Sonia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Sonia"
-    },
-    {
-     "name_as_written": "Jennifer & Simone",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Jennifer & Simone"
-    },
-    {
-     "name_as_written": "Gianfranco & Chantal",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Gianfranco & Chantal"
-    },
-    {
-     "name_as_written": "Matteo Frati & Diana",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Matteo Frati & Diana"
-    },
-    {
-     "name_as_written": "Vito & Federica",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Vito & Federica"
-    },
-    {
-     "name_as_written": "Cristoforo & Paola",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Cristoforo & Paola"
-    },
-    {
-     "name_as_written": "Paolo & Angelica",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Paolo & Angelica"
-    },
-    {
-     "name_as_written": "Petrax",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Petrax"
-    },
-    {
-     "name_as_written": "D&L Beats",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "D&L Beats (Dani&Lisa)"
-    },
-    {
-     "name_as_written": "DJ David Ruela",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ David Ruela"
-    },
-    {
-     "name_as_written": "DJ Bartef",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Bartef"
-    },
-    {
-     "name_as_written": "DJ Iron Mams",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Iron Mams"
-    },
-    {
-     "name_as_written": "DJ Neiken",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Neiken"
-    },
-    {
-     "name_as_written": "DJ F.A.Z.E.",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ F.A.Z.E."
-    },
-    {
-     "name_as_written": "DJ Fakce",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Fakce"
-    },
-    {
-     "name_as_written": "DJ Lucas Exclusive",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Lucas Exclusive"
-    },
-    {
-     "name_as_written": "DJ Lupo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Lupo"
-    },
-    {
-     "name_as_written": "DJ FabioKiz",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ FabioKiz"
-    },
-    {
-     "name_as_written": "DJ Neko",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Neko"
-    },
-    {
-     "name_as_written": "DJ Rax",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Rax"
-    },
-    {
-     "name_as_written": "Farantini",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📸 Farantini"
-    },
-    {
-     "name_as_written": "Legacy Media Agency",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🎥 Legacy Media Agency"
-    },
-    {
-     "name_as_written": "Alpha Pack",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Alpha Pack"
-    },
-    {
-     "name_as_written": "Let-inn Dance",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Let-inn Dance"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All-in-one venue",
-     "rationale": "The main hotel is described as an all-in-one venue, so the parties take place where dancers stay."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Porto Giardino – CDS Hotels",
-     "rationale": "The event names a main hotel for participants to use."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "SHUTTLES from BARI airport, BRINDISI airport & MONOPOLI train station",
-     "rationale": "Shuttles are offered from several airports and a train station."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "1 Pool Party",
-     "rationale": "The programme lists a pool party among the events."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "2 Socials",
-     "rationale": "The programme lists two socials, which are daytime social sessions."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Taxi&Guests",
-     "rationale": "A taxi and guests section lists the dancers serving as taxi dancers, with the Alpha Pack and Let-inn Dance teams."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "e1d9ac12248d7001",
+ "answer": {
+  "batch": "event-15500",
+  "events": [
+   {
+    "event_id": 15500,
+    "artists": [
+     {
+      "name_as_written": "Fred & Morgan",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Fred & Morgan"
+     },
+     {
+      "name_as_written": "Lilian & Ivana",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Lilian & Ivana"
+     },
+     {
+      "name_as_written": "Iron Mams & Moorea",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Iron Mams & Moorea"
+     },
+     {
+      "name_as_written": "Tresor & Aurea",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Tresor & Aurea"
+     },
+     {
+      "name_as_written": "Stephane",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Stephane"
+     },
+     {
+      "name_as_written": "Ida & Lucas",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Ida & Lucas"
+     },
+     {
+      "name_as_written": "Olesia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Olesia"
+     },
+     {
+      "name_as_written": "Cristian & Veronica",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Cristian & Veronica"
+     },
+     {
+      "name_as_written": "Giuseppe & Vincenza",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Giuseppe & Vincenza"
+     },
+     {
+      "name_as_written": "Caarl & Patii",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Caarl & Patii"
+     },
+     {
+      "name_as_written": "Viola",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Viola"
+     },
+     {
+      "name_as_written": "Sonia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Sonia"
+     },
+     {
+      "name_as_written": "Jennifer & Simone",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Jennifer & Simone"
+     },
+     {
+      "name_as_written": "Gianfranco & Chantal",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Gianfranco & Chantal"
+     },
+     {
+      "name_as_written": "Matteo Frati & Diana",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Matteo Frati & Diana"
+     },
+     {
+      "name_as_written": "Vito & Federica",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Vito & Federica"
+     },
+     {
+      "name_as_written": "Cristoforo & Paola",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Cristoforo & Paola"
+     },
+     {
+      "name_as_written": "Paolo & Angelica",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Paolo & Angelica"
+     },
+     {
+      "name_as_written": "Petrax",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Petrax"
+     },
+     {
+      "name_as_written": "D&L Beats",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "D&L Beats (Dani&Lisa)"
+     },
+     {
+      "name_as_written": "DJ David Ruela",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ David Ruela"
+     },
+     {
+      "name_as_written": "DJ Bartef",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Bartef"
+     },
+     {
+      "name_as_written": "DJ Iron Mams",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Iron Mams"
+     },
+     {
+      "name_as_written": "DJ Neiken",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Neiken"
+     },
+     {
+      "name_as_written": "DJ F.A.Z.E.",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ F.A.Z.E."
+     },
+     {
+      "name_as_written": "DJ Fakce",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Fakce"
+     },
+     {
+      "name_as_written": "DJ Lucas Exclusive",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Lucas Exclusive"
+     },
+     {
+      "name_as_written": "DJ Lupo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Lupo"
+     },
+     {
+      "name_as_written": "DJ FabioKiz",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ FabioKiz"
+     },
+     {
+      "name_as_written": "DJ Neko",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Neko"
+     },
+     {
+      "name_as_written": "DJ Rax",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Rax"
+     },
+     {
+      "name_as_written": "Farantini",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📸 Farantini"
+     },
+     {
+      "name_as_written": "Legacy Media Agency",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🎥 Legacy Media Agency"
+     },
+     {
+      "name_as_written": "Alpha Pack",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Alpha Pack"
+     },
+     {
+      "name_as_written": "Let-inn Dance",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Let-inn Dance"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All-in-one venue",
+      "rationale": "The main hotel is described as an all-in-one venue, so the parties take place where dancers stay."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Porto Giardino – CDS Hotels",
+      "rationale": "A named main hotel is given for the festival, which indicates a partner or recommended hotel."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "SHUTTLES from BARI airport, BRINDISI airport & MONOPOLI train station",
+      "rationale": "Shuttles are offered from several airports and a train station."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "1 Pool Party!!!",
+      "rationale": "The program lists a pool party."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "Taxi&Guests",
+      "rationale": "A taxi-dancer section is listed in the line-up."
+     }
+    ]
+   }
+  ]
+ }
 }

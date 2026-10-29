@@ -1,0 +1,13 @@
+{
+ "key_a": "p:lisarose",
+ "key_b": "p:lisarosed",
+ "prompt": "55938ee7dcb228b1",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:22:19+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "277fe7e5c12d7fc9",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Stage name DJ Lisa Rose appears on both sides, side B adds a crew tag D&L Beats, and both sides list Rotterdam events."
+ }
+}

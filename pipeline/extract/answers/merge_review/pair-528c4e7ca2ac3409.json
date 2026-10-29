@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jenna@elhadj+jenna",
+ "key_b": "p:jenna@elhadj+jenna",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "528c4e7ca2ac3409",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The pair is one key matched against itself: the single name Jenna is stated with countries CI, FR and GP that never meet in the mentions, and with no events, partners or styles listed, the evidence cannot tell whether this is one artist or several people sharing a name."
+ }
+}

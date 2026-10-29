@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sara@sara+vilmar",
+ "key_b": "p:saralecis",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3802998a406e7654",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is the bare first name 'Sara' with a partner (vilmar) and events in France, while side B is the full name 'Sara Lecis' with no partner or events. The only overlap is the country (IT) and a common first name, which is not enough to merge or separate them, so the evidence does not settle it."
+ }
+}

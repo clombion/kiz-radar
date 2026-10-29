@@ -1,56 +1,63 @@
 {
- "batch": "event-18213",
- "events": [
-  {
-   "event_id": 18213,
-   "artists": [
-    {
-     "name_as_written": "Nairobi Kizomba Sensação",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "📩 Express your interest by contacting the organizer, Nairobi Kizomba Sensação represented by Allan Tai through WhatsApp (+254705090729) or email (info@kizombasensacao.com)."
-    },
-    {
-     "name_as_written": "Allan Tai",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "📩 Express your interest by contacting the organizer, Nairobi Kizomba Sensação represented by Allan Tai through WhatsApp (+254705090729) or email (info@kizombasensacao.com)."
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops & Classes",
-     "rationale": "The included list names workshops and classes as part of the trip."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Socials, live music & authentic nightlife.",
-     "rationale": "The description promises live music at the socials and nightlife."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "10 Nights Accommodation (Per Person Sharing)",
-     "rationale": "Accommodation for ten nights is listed under What's Included."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Half Board – 2 meals/day (drinks not included)",
-     "rationale": "Half board with two meals a day is included in the trip."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Airport Transfers",
-     "rationale": "Airport pickup and drop-off transfers are included."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Socials & Themed Parties",
-     "rationale": "The included list mentions themed parties."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:32:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "4b4069d1ec8c8abb",
+ "answer": {
+  "batch": "event-18213",
+  "events": [
+   {
+    "event_id": 18213,
+    "artists": [
+     {
+      "name_as_written": "Nairobi Kizomba Sensação",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "📩 Express your interest by contacting the organizer, Nairobi Kizomba Sensação represented by Allan Tai through WhatsApp (+254705090729) or email (info@kizombasensacao.com)."
+     },
+     {
+      "name_as_written": "Allan Tai",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "📩 Express your interest by contacting the organizer, Nairobi Kizomba Sensação represented by Allan Tai through WhatsApp (+254705090729) or email (info@kizombasensacao.com)."
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Daily workshops, school visits & practice sessions.",
+      "rationale": "The quote states that daily workshops are part of the event."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Socials, live music & authentic nightlife.",
+      "rationale": "The quote promises live music at the event."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "10 Nights Accommodation (Per Person Sharing)",
+      "rationale": "Accommodation for ten nights is listed under What's Included in the trip package."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Half Board – 2 meals/day (drinks not included)",
+      "rationale": "Two meals per day are included in the package."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Airport Transfers – Pickup & drop-off (+/- 1 day)",
+      "rationale": "Airport pickup and drop-off transfers are included in the package."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Socials & Themed Parties",
+      "rationale": "The quote lists themed parties as part of the included experience."
+     }
+    ]
+   }
+  ]
+ }
 }

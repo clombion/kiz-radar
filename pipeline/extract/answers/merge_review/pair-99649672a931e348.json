@@ -1,0 +1,13 @@
+{
+ "key_a": "p:anna@anna+carlos",
+ "key_b": "p:anna@anna+carloscamba",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "99649672a931e348",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named 'Anna' with the same countries (AO, FI) and a partner whose key starts with 'carlos', but 'Anna' is a common first name, the partner keys differ ('carlos@anna+carlos' vs 'carloscamba') and may be different people, and the event countries barely overlap, so the evidence does not settle it."
+ }
+}

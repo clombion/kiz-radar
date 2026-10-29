@@ -1,38 +1,45 @@
 {
- "batch": "event-16178",
- "events": [
-  {
-   "event_id": 16178,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBAN KIZ",
-     "quote": "URBAN KIZ"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "TARRAXO",
-     "quote": "TARRAXO"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "SEMBA",
-     "quote": "SEMBA"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "KONPA",
-     "quote": "KONPA"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d7f61f858ae5ba3d",
+ "answer": {
+  "batch": "event-16178",
+  "events": [
+   {
+    "event_id": 16178,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KIZOMBA · URBAN KIZ · TARRAXO · SEMBA · KONPA"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBAN KIZ",
+      "quote": "KIZOMBA · URBAN KIZ · TARRAXO · SEMBA · KONPA"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "TARRAXO",
+      "quote": "KIZOMBA · URBAN KIZ · TARRAXO · SEMBA · KONPA"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "SEMBA",
+      "quote": "KIZOMBA · URBAN KIZ · TARRAXO · SEMBA · KONPA"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "KONPA",
+      "quote": "KIZOMBA · URBAN KIZ · TARRAXO · SEMBA · KONPA"
+     }
+    ]
+   }
+  ]
+ }
 }

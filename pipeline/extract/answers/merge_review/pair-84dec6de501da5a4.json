@@ -1,0 +1,13 @@
+{
+ "key_a": "p:steven@audrey+steven",
+ "key_b": "p:stevens@audrey+stevens",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:00+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "84dec6de501da5a4",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records share the same partner (audrey), the names are a shortened/spelling variant (STEVEN / Stevens), and their only shared event is France, with no evidence of two separate people at the same event."
+ }
+}

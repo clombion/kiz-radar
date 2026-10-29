@@ -1,38 +1,45 @@
 {
- "batch": "event-16718",
- "events": [
-  {
-   "event_id": 16718,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Nicolò de Angelis (Salsa)"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Carlos y Susan (Bachata)"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Salsa . Bachata . Kizomba . Zouk"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "B. Zouk",
-     "quote": "Alex de Carvalho (B. Zouk)"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "JP & Stephy (Urban Kiz)"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d19457e458e9e1bf",
+ "answer": {
+  "batch": "event-16718",
+  "events": [
+   {
+    "event_id": 16718,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Nicolò de Angelis (Salsa)"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Carlos y Susan (Bachata)"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Salsa . Bachata . Kizomba . Zouk"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "B. Zouk",
+      "quote": "Alex de Carvalho (B. Zouk)"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "JP & Stephy (Urban Kiz)"
+     }
+    ]
+   }
+  ]
+ }
 }

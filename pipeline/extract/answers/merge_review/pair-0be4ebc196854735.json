@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sonia@sonia+steff",
+ "key_b": "p:sonia@sonia+stefkizz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0be4ebc196854735",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records use the common first name Sonia with overlapping countries (FR) and a shared event country (Switzerland), but their partners differ (steff vs stefkizz), and the mention lists are empty, so the evidence does not settle whether this is one artist."
+ }
+}

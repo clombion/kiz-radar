@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sani@dance",
+ "key_b": "p:sanipragkizer",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7b3b068824761df4",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the Czech country and the name SANI, but side B adds the surname PRAGKIZER and a Ghana flag, side B has no style, and the events are in different countries (Austria and Slovenia), so the evidence does not settle whether this is one artist."
+ }
+}

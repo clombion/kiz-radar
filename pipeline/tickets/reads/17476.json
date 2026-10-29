@@ -2,14 +2,16 @@
  "event_id": 17476,
  "title": "Dance Affinity Festival Freiburg",
  "start_date": "2026-10-30",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:04:07+00:00",
+ "end_date": "2026-11-02",
+ "country": "Germany",
  "styles": [
   "bachata",
   "kizomba"
  ],
  "description": "💫Dear dancers\nWe are thrilled to announce the 4th edition of Dance Affinity Festival!\n📍30.10 – 02.11 2026\n📍M.A.K Studios, Freiburg im Breisgau, Germany\n💚💜OUR UNIQUE CONCEPT💜💚\nAt Dance Affinity bootcamps are not an add‑on, they are the heart of the festival!\nEach bootcamp is led by 6 international teachers working 3 hrs together to bring you the highest quality of teaching with strong focus on:\n– technique\n– musicality\n– connection\n– experimentation\n– feedback & exercise\nLimited places, personalised guidance, and a real progression you feel throughout the weekend — this is what makes Dance Affinity unique.\n🔜 Stay tuned to not miss our special bootcamps!\n💫 WHAT TO EXPECT THIS YEAR\n– Workshops & Immersive bootcamps with international teachers\n– 2 dance floors – kizomba & bachata\n– 3 days of Day Socials & Night Parties with international DJs\n– A warm, intimate and community‑focused atmosphere\n– A festival created by dancers, for dancers\n🔽🔽🔽ARTIST LINEUP🔽🔽🔽\n💚Kizomba Artists💚\nLedoux Kingsman\nSelim & Anastasia\nLoyal\nEVOKEEZ Team Paris\nDaniel & Elina\n🤩More coming very soon…\n💚Kizomba Djs💚\nDj Le Grand Tiwosh\nDj Timeline\nDj Galaxy\n🤩More coming very soon…\n💜Bachata Artists💜\n🤩Coming very soon…\nBOOK YOUR PASS!\nhttps://my.weezevent.com/dance-affinity-2026\n💫Be Part of the Affinity!💫",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:06:33+00:00",
  "passes": [
   {
    "kind": "full",
@@ -129,8 +131,8 @@
    "tiers": [
     {
      "keys": [
-      "5494307",
-      "5494278"
+      "5881228",
+      "5881227"
      ],
      "from": null,
      "until": null,

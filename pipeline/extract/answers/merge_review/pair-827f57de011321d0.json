@@ -1,0 +1,13 @@
+{
+ "key_a": "p:abigail@dance",
+ "key_b": "p:abigail@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "827f57de011321d0",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the country GB and appear at the same event (16343), with 'DJ Abigail' differing only by a DJ prefix, which fits a merge. But 'Abigail' is a common first name with no partner or style link, and both records sit at one event as different roles (teacher and DJ), so they could be two people. The evidence does not settle it."
+ }
+}

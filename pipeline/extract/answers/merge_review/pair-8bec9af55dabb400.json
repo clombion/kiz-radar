@@ -1,0 +1,13 @@
+{
+ "key_a": "p:railey@benite+railey",
+ "key_b": "p:railey@beniteb+railey",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8bec9af55dabb400",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records are RAILEY with the same stated country (NL) and the same event country (Austria), and their partners are near-identical keys (benite and beniteb, both paired with railey), which suggests one couple split across duplicate records; the mention lists are empty, so this rests on the summary evidence alone."
+ }
+}

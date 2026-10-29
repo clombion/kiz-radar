@@ -1,0 +1,13 @@
+{
+ "key_a": "p:benjamin@benjamin+stephanie",
+ "key_b": "p:benjamine@benjamine+stephanie",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b7e0849730ba140e",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records share the same partner, Stephanie, in the couple 'Benjamin+Stephanie', and 'Benjamine' is a spelling variant of 'Benjamin'. Their event countries (France and Spain, with FR stated on side B) do not conflict, though the mention lists are empty so this rests on the partner link alone."
+ }
+}

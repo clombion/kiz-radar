@@ -1,52 +1,59 @@
 {
- "batch": "event-15516",
- "events": [
-  {
-   "event_id": 15516,
-   "artists": [
-    {
-     "name_as_written": "Damir & Laura",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Damir & Laura"
-    },
-    {
-     "name_as_written": "Don Perry & Nike",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Don Perry & Nike"
-    },
-    {
-     "name_as_written": "Sandra Gutiérrez",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Sandra Gutiérrez"
-    },
-    {
-     "name_as_written": "Stefan & Chloé",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Stefan & Chloé"
-    },
-    {
-     "name_as_written": "Virgile & June",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Virgile & June"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "2 Workshops",
-     "rationale": "The program lists workshops on each day of the weekender, so dance classes are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "6e0e09cbfda05cf4",
+ "answer": {
+  "batch": "event-15516",
+  "events": [
+   {
+    "event_id": 15516,
+    "artists": [
+     {
+      "name_as_written": "Damir & Laura",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Damir & Laura"
+     },
+     {
+      "name_as_written": "Don Perry & Nike",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Don Perry & Nike"
+     },
+     {
+      "name_as_written": "Sandra Gutiérrez",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Sandra Gutiérrez"
+     },
+     {
+      "name_as_written": "Stefan & Chloé",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Stefan & Chloé"
+     },
+     {
+      "name_as_written": "Virgile & June",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Virgile & June"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "4 Workshops + Social + Party",
+      "rationale": "The program lists several workshop sessions on each day, so dance classes are part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

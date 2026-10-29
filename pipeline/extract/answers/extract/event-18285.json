@@ -1,118 +1,120 @@
 {
- "batch": "event-18285",
- "events": [
-  {
-   "event_id": 18285,
-   "artists": [
-    {
-     "name_as_written": "Nii & Angie",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "▫️Nii & Angie"
-    },
-    {
-     "name_as_written": "Theo",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "▫️Theo"
-    },
-    {
-     "name_as_written": "Mamadou",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "▫️Mamadou"
-    },
-    {
-     "name_as_written": "Lessly & Naomi",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "▫️Lessly & Naomi"
-    },
-    {
-     "name_as_written": "William & Jeanette",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "▫️William & Jeanette"
-    },
-    {
-     "name_as_written": "DJ Lee Ross",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "▫️DJ Lee Ross"
-    },
-    {
-     "name_as_written": "DJ Adnan",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "▫️DJ Adnan"
-    },
-    {
-     "name_as_written": "DJ Da Mata",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "▫️DJ Da Mata"
-    },
-    {
-     "name_as_written": "DJ Joey C",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "▫️DJ Joey C"
-    },
-    {
-     "name_as_written": "DJ Lawa",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "▫️DJ Lawa"
-    },
-    {
-     "name_as_written": "DJ Nessu",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "▫️DJ Nessu"
-    },
-    {
-     "name_as_written": "DJ Maie",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "▫️DJ Maie"
-    },
-    {
-     "name_as_written": "ACBFOTO",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "▫️ACBFOTO"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "LA LUNA FESTIVAL KIZZ DISTRICT 2026 (ALL IN ONE)",
-     "rationale": "The title line labels the event as all in one, which signals that event and accommodation are combined in one venue."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "TICKETS & HOTEL",
-     "rationale": "A hotel link is offered alongside the tickets, which points to a recommended or partner hotel."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Two floors, two energies",
-     "rationale": "Two floors are mentioned, meaning more than one dance floor."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:32:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "c4894abf6964524f",
+ "answer": {
+  "batch": "event-18285",
+  "events": [
+   {
+    "event_id": 18285,
+    "artists": [
+     {
+      "name_as_written": "Nii & Angie",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "▫️Nii & Angie"
+     },
+     {
+      "name_as_written": "Theo",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "▫️Theo"
+     },
+     {
+      "name_as_written": "Mamadou",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "▫️Mamadou"
+     },
+     {
+      "name_as_written": "Lessly & Naomi",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "▫️Lessly & Naomi"
+     },
+     {
+      "name_as_written": "William & Jeanette",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "▫️William & Jeanette"
+     },
+     {
+      "name_as_written": "DJ Lee Ross",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "▫️DJ Lee Ross"
+     },
+     {
+      "name_as_written": "DJ Adnan",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "▫️DJ Adnan"
+     },
+     {
+      "name_as_written": "DJ Da Mata",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "▫️DJ Da Mata"
+     },
+     {
+      "name_as_written": "DJ Joey C",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "▫️DJ Joey C"
+     },
+     {
+      "name_as_written": "DJ Lawa",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "▫️DJ Lawa"
+     },
+     {
+      "name_as_written": "DJ Nessu",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "▫️DJ Nessu"
+     },
+     {
+      "name_as_written": "DJ Maie",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "▫️DJ Maie"
+     },
+     {
+      "name_as_written": "ACBFOTO",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "▫️ACBFOTO"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE",
+      "rationale": "The event title is labelled as all in one, which signals that the parties take place in the hotel where dancers stay."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Two floors, two energies: UrbanKiz and Kizomba, side by side.",
+      "rationale": "Two floors are mentioned, meaning there is more than one dance floor."
+     }
+    ]
+   }
+  ]
+ }
 }

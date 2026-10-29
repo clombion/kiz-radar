@@ -1,25 +1,39 @@
 {
- "batch": "event-15302",
- "events": [
-  {
-   "event_id": 15302,
-   "artists": [
-    {
-     "name_as_written": "Eliza Sala",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Eliza Sala"
-    },
-    {
-     "name_as_written": "Cyril",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Cyril"
-    }
-   ],
-   "features": []
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:24:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "ed3a32a740fe365a",
+ "answer": {
+  "batch": "event-15302",
+  "events": [
+   {
+    "event_id": 15302,
+    "artists": [
+     {
+      "name_as_written": "Kizomba MTL",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Kizomba MTL presents… ✨"
+     },
+     {
+      "name_as_written": "Eliza Sala",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Eliza Sala"
+     },
+     {
+      "name_as_written": "Cyril",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Cyril"
+     }
+    ],
+    "features": []
+   }
+  ]
+ }
 }

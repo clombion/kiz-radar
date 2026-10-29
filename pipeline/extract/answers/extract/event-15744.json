@@ -1,16 +1,23 @@
 {
- "batch": "event-15744",
- "events": [
-  {
-   "event_id": 15744,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Several progressive classes will help you advance throughout the weekend",
-     "rationale": "The festival offers several progressive dance classes over the weekend, so dance classes are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d52d4f14b5d38ae8",
+ "answer": {
+  "batch": "event-15744",
+  "events": [
+   {
+    "event_id": 15744,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Several progressive classes will help you advance throughout the weekend",
+      "rationale": "The description states that dance classes are part of the festival programme over the weekend."
+     }
+    ]
+   }
+  ]
+ }
 }

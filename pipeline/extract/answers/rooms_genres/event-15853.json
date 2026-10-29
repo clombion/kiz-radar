@@ -1,56 +1,63 @@
 {
- "batch": "event-15853",
- "events": [
-  {
-   "event_id": 15853,
-   "party_rooms": {
-    "count": 3,
-    "quote": "Social Dancing in 3 Rooms"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Salsa Room",
-     "kind": "party",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "Salsa Room"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "82739d62979ba8b9",
+ "answer": {
+  "batch": "event-15853",
+  "events": [
+   {
+    "event_id": 15853,
+    "party_rooms": {
+     "count": 3,
+     "quote": "Social Dancing in 3 Rooms"
     },
-    {
-     "name_as_written": "Bachata Room",
-     "kind": "party",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "Bachata Room"
-    },
-    {
-     "name_as_written": "Kizomba Room",
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "Kizomba Room"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Salsa Classes (Beginners, Improvers, Advanced)"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata Classes (Beginners, Improvers, Advanced)"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba Classes (All Levels: Beginners, Improvers, Advanced)"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Salsa Room",
+      "kind": "party",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "Salsa Room"
+     },
+     {
+      "name_as_written": "Bachata Room",
+      "kind": "party",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "Bachata Room"
+     },
+     {
+      "name_as_written": "Kizomba Room",
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "Kizomba Room"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Salsa Classes (Beginners, Improvers, Advanced)"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata Classes (Beginners, Improvers, Advanced)"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba Classes (All Levels: Beginners, Improvers, Advanced)"
+     }
+    ]
+   }
+  ]
+ }
 }

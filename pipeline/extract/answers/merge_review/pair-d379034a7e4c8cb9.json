@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nuno@nagyla+nuno",
+ "key_b": "p:nuno@nuno+sarai",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d379034a7e4c8cb9",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the common first name Nuno, with no shared partner (nagyla versus sarai), overlapping countries (PT and ES, with Spain events on both sides), and no mention lines to compare, so the evidence does not settle whether they are one artist."
+ }
+}

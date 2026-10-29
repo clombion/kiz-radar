@@ -1,0 +1,13 @@
+{
+ "key_a": "p:kevin@dance",
+ "key_b": "p:kevindjassy",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "064e5e20004f385a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side B is a single Guinea-Bissau teacher in Spain, and side A has one Guinea-Bissau Kevin at a Spain event (15617), which supports a merge, but 'Kevin' is a common first name and side A also carries Philippines and Vietnam events plus an unrelated KIZOMBA-style Kevin, so the evidence does not establish that these are one person and a wrong merge would join separate event histories."
+ }
+}

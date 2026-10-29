@@ -1,0 +1,13 @@
+{
+ "key_a": "p:atou@dance",
+ "key_b": "p:atoubaakaa2man",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ad4be8aaf40f495d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A 'Atou' is a single first-name stage name with Senegal flags and events in France, Poland and Spain, while side B 'Atou Ba aka A2Man' is a fuller name with Senegal and France flags at a UK event; both carry Senegal and the name 'Atou' is a distinctive-enough stage name, but there is no shared partner, event or style link to confirm they are the same person, so the evidence does not settle it."
+ }
+}

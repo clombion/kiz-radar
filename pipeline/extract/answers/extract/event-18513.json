@@ -1,94 +1,94 @@
 {
- "batch": "event-18513",
- "events": [
-  {
-   "event_id": 18513,
-   "artists": [
-    {
-     "name_as_written": "DJ Sam Gold",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Sam Gold"
-    },
-    {
-     "name_as_written": "DJ Stompy",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Stompy (#KizEnSoitAinsi)"
-    },
-    {
-     "name_as_written": "DJ Miky Mike",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Miky Mike"
-    },
-    {
-     "name_as_written": "DJ Lo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Lo"
-    },
-    {
-     "name_as_written": "JP & Ramona",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "JP & Ramona"
-    },
-    {
-     "name_as_written": "Stompy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Stompy"
-    },
-    {
-     "name_as_written": "Marlene",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Marlene"
-    },
-    {
-     "name_as_written": "Guilhermé",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Guilhermé"
-    },
-    {
-     "name_as_written": "Mya & Gonzalo",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Mya & Gonzalo"
-    },
-    {
-     "name_as_written": "S. Tavares Silva",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "S. Tavares Silva"
-    },
-    {
-     "name_as_written": "KizVibes",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🎉 KizVibes Turns 1!"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "6 WORKSHOPS",
-     "rationale": "The line '✨ 6 WORKSHOPS // 2 SOCIALS // 1 PARTY ✨' shows that dance workshops are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:32:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "7f472aa8a603ff28",
+ "answer": {
+  "batch": "event-18513",
+  "events": [
+   {
+    "event_id": 18513,
+    "artists": [
+     {
+      "name_as_written": "DJ Sam Gold",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Sam Gold"
+     },
+     {
+      "name_as_written": "DJ Stompy",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Stompy (#KizEnSoitAinsi)"
+     },
+     {
+      "name_as_written": "DJ Miky Mike",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Miky Mike"
+     },
+     {
+      "name_as_written": "DJ Lo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Lo"
+     },
+     {
+      "name_as_written": "JP & Ramona",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "JP & Ramona"
+     },
+     {
+      "name_as_written": "Stompy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Stompy"
+     },
+     {
+      "name_as_written": "Marlene",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Marlene"
+     },
+     {
+      "name_as_written": "Guilhermé",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Guilhermé"
+     },
+     {
+      "name_as_written": "Mya & Gonzalo",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Mya & Gonzalo"
+     },
+     {
+      "name_as_written": "S. Tavares Silva",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "S. Tavares Silva"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "6 WORKSHOPS // 2 SOCIALS // 1 PARTY",
+      "rationale": "The event advertises six workshops as part of its programme."
+     }
+    ]
+   }
+  ]
+ }
 }

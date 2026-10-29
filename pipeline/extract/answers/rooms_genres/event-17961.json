@@ -1,28 +1,35 @@
 {
- "batch": "event-17961",
- "events": [
-  {
-   "event_id": 17961,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "All Salsa & Kizomba styles"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "All Salsa & Kizomba styles"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "Kizomba & Urbankiz Artists"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "599cd4af20ef5d6e",
+ "answer": {
+  "batch": "event-17961",
+  "events": [
+   {
+    "event_id": 17961,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "All Salsa & Kizomba styles"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "All Salsa & Kizomba styles"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "Kizomba & Urbankiz Artists"
+     }
+    ]
+   }
+  ]
+ }
 }

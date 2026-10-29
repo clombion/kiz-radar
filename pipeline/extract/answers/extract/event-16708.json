@@ -1,64 +1,71 @@
 {
- "batch": "event-16708",
- "events": [
-  {
-   "event_id": 16708,
-   "artists": [
-    {
-     "name_as_written": "Fazer Acontecer",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🚨 Fazer Acontecer presents: 3rd edition"
-    },
-    {
-     "name_as_written": "BEN & ANA",
-     "role": "teacher",
-     "style": null,
-     "country": "Portugal",
-     "source_line": "● BEN & ANA (Portugal)"
-    },
-    {
-     "name_as_written": "ISABELLE CREPIN",
-     "role": "teacher",
-     "style": null,
-     "country": "France",
-     "source_line": "● ISABELLE CREPIN. (France)"
-    },
-    {
-     "name_as_written": "OSMOZ & OHANA",
-     "role": "teacher",
-     "style": null,
-     "country": "France",
-     "source_line": "● OSMOZ & OHANA (France)"
-    },
-    {
-     "name_as_written": "DJ MKY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧🎧🎧DJ MKY. (Geneva)"
-    },
-    {
-     "name_as_written": "DJ DRIM",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧🎧🎧DJ DRIM. (Geneva)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "competition",
-     "quote": "SWISS COMPETITION",
-     "rationale": "The event is described as a competition in its opening line."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "TAXIS DANCERS",
-     "rationale": "The description states that taxi dancers are present."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "a042f8486a0cb1df",
+ "answer": {
+  "batch": "event-16708",
+  "events": [
+   {
+    "event_id": 16708,
+    "artists": [
+     {
+      "name_as_written": "BEN & ANA",
+      "role": "teacher",
+      "style": null,
+      "country": "Portugal",
+      "source_line": "● BEN & ANA (Portugal)"
+     },
+     {
+      "name_as_written": "ISABELLE CREPIN",
+      "role": "teacher",
+      "style": null,
+      "country": "France",
+      "source_line": "● ISABELLE CREPIN. (France)"
+     },
+     {
+      "name_as_written": "OSMOZ & OHANA",
+      "role": "teacher",
+      "style": null,
+      "country": "France",
+      "source_line": "● OSMOZ & OHANA (France)"
+     },
+     {
+      "name_as_written": "DJ MKY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧🎧🎧DJ MKY. (Geneva)"
+     },
+     {
+      "name_as_written": "DJ DRIM",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧🎧🎧DJ DRIM. (Geneva)"
+     },
+     {
+      "name_as_written": "Fazer Acontecer",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "🚨 Fazer Acontecer presents: 3rd edition"
+     }
+    ],
+    "features": [
+     {
+      "feature": "competition",
+      "quote": "SWISS COMPETITION",
+      "rationale": "The description is headed 'SWISS COMPETITION', so the event is a competition."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "TAXIS DANCERS",
+      "rationale": "The description lists taxi dancers as present at the event."
+     }
+    ]
+   }
+  ]
+ }
 }

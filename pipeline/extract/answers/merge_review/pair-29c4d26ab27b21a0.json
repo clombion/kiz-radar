@@ -1,0 +1,13 @@
+{
+ "key_a": "p:radu@judith+radu",
+ "key_b": "p:radumanole",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "29c4d26ab27b21a0",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the bare first name 'RADU' with partner judith and events in Spain, while side B is the full name 'Radu Manole' with events in Greece and Romania and no partners; the shared country RO and first name are weak evidence, and side A has no mentions to confirm a link, so the evidence does not settle it."
+ }
+}

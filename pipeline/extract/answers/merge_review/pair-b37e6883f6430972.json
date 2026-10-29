@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jovany@celine+jovany",
+ "key_b": "p:jovanykizatours",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b37e6883f6430972",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have events in different countries (France for Jovany, Cape Verde for Jovany Kizatours), and the full name 'Jovany Kizatours' looks like a distinct stage or tour name rather than a prefix of the same artist. The shared partner first name 'celine' is weak, since the couple keys differ (celine+jovany vs celine+jovanykizatours), and the mention lists are empty."
+ }
+}

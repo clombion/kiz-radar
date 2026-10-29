@@ -1,0 +1,13 @@
+{
+ "key_a": "p:julia@julia+methodz",
+ "key_b": "p:juliaa@juliaa+methodz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "189c790b101c4c79",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides list the same partner (methodz) and the same country (FR), and the names differ only by a doubled final letter, so this is a spelling variant within one couple with no evidence of two separate people."
+ }
+}

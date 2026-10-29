@@ -1,28 +1,35 @@
 {
- "batch": "event-16773",
- "events": [
-  {
-   "event_id": 16773,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "passion for Kizomba, Semba and Tarraxo"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba, Semba and Tarraxo workshops"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Tarraxo Bootcamp"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "8322401a64c529f0",
+ "answer": {
+  "batch": "event-16773",
+  "events": [
+   {
+    "event_id": 16773,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "International Kizomba, Semba and Tarraxo workshops"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "International Kizomba, Semba and Tarraxo workshops"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Tarraxo Bootcamp"
+     }
+    ]
+   }
+  ]
+ }
 }

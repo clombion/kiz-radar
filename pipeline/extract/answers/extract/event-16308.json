@@ -1,41 +1,48 @@
 {
- "batch": "event-16308",
- "events": [
-  {
-   "event_id": 16308,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "OVER 50 WORKSHOPS",
-     "rationale": "The description states that over 50 workshops are part of the congress."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "5 PARTY ROOMS",
-     "rationale": "Five separate party rooms are listed, so there is more than one dance floor."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "ALL UNDER 1 ROOF",
-     "rationale": "The parties are held in the same venue as the hotel where dancers are invited to stay."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "THEMED PARTY Night",
-     "rationale": "A themed party night is listed among the event's features."
-    },
-    {
-     "feature": "shows",
-     "quote": "SHOWS & ANIMATIONS",
-     "rationale": "Shows and animations are advertised as part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "2 Afternoon Socials",
-     "rationale": "Two afternoon socials are listed, which are daytime social events."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "80ec778d56b38b9c",
+ "answer": {
+  "batch": "event-16308",
+  "events": [
+   {
+    "event_id": 16308,
+    "artists": [],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "5 PARTY ROOMS",
+      "rationale": "The description states there are five party rooms, meaning more than one dance room."
+     },
+     {
+      "feature": "workshops",
+      "quote": "OVER 50 WORKSHOPS",
+      "rationale": "The event lists over 50 workshops as part of the programme."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "THEMED PARTY Night",
+      "rationale": "A themed party night is listed among the event's features."
+     },
+     {
+      "feature": "shows",
+      "quote": "SHOWS & ANIMATIONS",
+      "rationale": "The event advertises shows and animations by artists."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "2 Afternoon Socials",
+      "rationale": "Two afternoon socials are offered, which are daytime socials."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "THE VENUE : MAIN HOTEL",
+      "rationale": "The parties take place in the main hotel, where guests are invited to book rooms, so the event and accommodation share one venue."
+     }
+    ]
+   }
+  ]
+ }
 }

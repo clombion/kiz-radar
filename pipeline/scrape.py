@@ -8,8 +8,8 @@ address, city, country, the deal link, the organiser's links, the translations a
 Pages are fetched for new and changed events and for every event still to come: a deal link can change
 without changing the event's modified date, and a cancellation might too. A festival has an id of ours, given once and
 never again, beside the site's (source_ids). One the site no longer lists is kept, gone since that day, so plans and
-links to it still hold; listed again, it is listed again. A new festival's line-up and features wait for the
-extraction steps, and the events whose description is new or changed since then are listed in pending_extraction.
+links to it still hold; listed again, it is listed again. A new or changed festival's line-up and features wait for
+the extraction steps, which find it by the message they would ask it with now (pipeline/extract/questions.py).
 
 Each event is written as it is read, in a transaction of its own. A request that fails for now (a lost connection, a
 timeout, HTTP 403, 429 or 5xx) is tried again, three times in all; then, or at once for any other status (404), it
@@ -36,7 +36,7 @@ from pipeline import calls, export, states
 from pipeline import db as sqlite_db
 from pipeline.calls import Declined
 from pipeline.db import Reader, Transaction
-from pipeline.enums import CallCause, EventSource, Listing, Pending
+from pipeline.enums import CallCause, EventSource, Listing
 from pipeline.extract import run_log
 from pipeline.kizomba_world import ApiEvent, ApiPage, Listed, Paged, api_fields, page_fields
 from pipeline.records import day_of, now
@@ -174,27 +174,8 @@ create table source_ids (
 create index source_ids_event on source_ids(event_id);
 create index events_start on events(start_date);
 create index events_country on events(country);
-create table pending_extraction (
-    event_id integer primary key references events(id) on delete cascade deferrable initially deferred,
-    reason text not null check (reason in ({pending})),
-    since text not null
-) strict;
 """.format_map(states.SQL_IN)
 )
-
-
-def describe(db: Transaction) -> None:
-    db.upsert(
-        'table_docs',
-        ['name'],
-        {
-            'name': 'pending_extraction',
-            'kind': 'table',
-            'description': 'Events whose description is new or changed since the extraction steps last ran, so their '
-            'line-up, features, rooms and genres from the description are missing or out of date.',
-            'written_by': 'pipeline/scrape.py',
-        },
-    )
 
 
 def write_event(db: Transaction, row: EventRow, categories: list[str], tags: list[str]) -> None:
@@ -300,9 +281,8 @@ def ids(db: Reader) -> Ids:
     return Ids({r.source_id: r.event_id for r in given}, taken + 1)
 
 
-def write(db: Transaction, r: Refreshed, source_id: int, today: dt.date) -> None:
-    """The event's row, tags and links, the site's id of it, and its listing. An event whose description is new or
-    changed waits for the extraction steps."""
+def write(db: Transaction, r: Refreshed, source_id: int) -> None:
+    """The event's row, tags and links, the site's id of it, and its listing."""
     write_event(db, r.row, r.categories, r.tags)
     i = r.row.id
     db.insert(
@@ -317,13 +297,6 @@ def write(db: Transaction, r: Refreshed, source_id: int, today: dt.date) -> None
     if r.links is not None:
         db.execute('delete from event_links where event_id = ?', (i,))
         db.executemany('insert into event_links (event_id, url) values (?, ?)', [(i, u) for u in r.links])
-    if r.old is None or r.old.description_text != r.row.description_text:
-        # a festival still pending keeps why, and waits from its latest change
-        db.execute(
-            'insert into pending_extraction (event_id, reason, since) values (?, ?, ?) '
-            'on conflict (event_id) do update set since = excluded.since',
-            (i, Pending.NEW if r.old is None else Pending.DESCRIPTION_CHANGED, today),
-        )
 
 
 def finish(db: Transaction, report: Report, events: int, gone: list[int], today: dt.date) -> None:
@@ -336,7 +309,6 @@ def finish(db: Transaction, report: Report, events: int, gone: list[int], today:
         'new': len(report.added),
         'changed': len(report.changed),
         'unlisted': len(gone),
-        'pending_extraction': db.value(int, 'select count(*) from pending_extraction'),
     }
     run_log.record(
         db,
@@ -345,7 +317,7 @@ def finish(db: Transaction, report: Report, events: int, gone: list[int], today:
             STEP,
             performed_by='pipeline/scrape.py (curl_cffi)',
             inputs=f'{SITE}/wp-json/tribe/events/v1/events from {FIRST_DAY}; each new, changed or upcoming event page',
-            outputs='tables events, source_ids, event_categories, event_tags, event_links, pending_extraction',
+            outputs='tables events, source_ids, event_categories, event_tags, event_links',
             details=details,
         ),
     )
@@ -376,12 +348,11 @@ def run(src: Path, *, dry_run: bool) -> None:
             report.note(r)
             if not dry_run:
                 with db.transaction() as tx:  # each event apart: the crawl takes no lock but while it writes one
-                    write(tx, r, source_id, today)
+                    write(tx, r, source_id)
         gone = sorted(listed_ids - {e.id for _, (e, _, _) in events})  # one whose page gave no answer is still listed
         report.show([known[i].title for i in gone])
         if not dry_run:
             with db.transaction() as tx:
-                describe(tx)
                 finish(tx, report, len(events), gone, today)
     if why := calls.failed('event pages', declined):
         sys.exit(why)

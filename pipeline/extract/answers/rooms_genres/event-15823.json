@@ -1,56 +1,38 @@
 {
- "batch": "event-15823",
- "events": [
-  {
-   "event_id": 15823,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 evenings – 3 rooms"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "dedicated to Salsa / Bachata / Kizomba"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "60f63f2cd10d5c50",
+ "answer": {
+  "batch": "event-15823",
+  "events": [
+   {
+    "event_id": 15823,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 rooms 💃🏻 dedicated to Salsa / Bachata / Kizomba"
     },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "dedicated to Salsa / Bachata / Kizomba"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "dedicated to Salsa / Bachata / Kizomba"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Salsa"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Salsa"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,125 +1,132 @@
 {
- "batch": "event-18666",
- "events": [
-  {
-   "event_id": 18666,
-   "artists": [
-    {
-     "name_as_written": "JP & STEPHY",
-     "role": "teacher",
-     "style": null,
-     "country": "FR",
-     "source_line": "⭐ JP & STEPHY (FR)"
-    },
-    {
-     "name_as_written": "JULES & YUNA",
-     "role": "teacher",
-     "style": null,
-     "country": "FR",
-     "source_line": "⭐ JULES & YUNA (FR)"
-    },
-    {
-     "name_as_written": "METHODZ & JULIAA",
-     "role": "teacher",
-     "style": null,
-     "country": "FR",
-     "source_line": "⭐ METHODZ & JULIAA (FR)"
-    },
-    {
-     "name_as_written": "AMI & JULIEN",
-     "role": "teacher",
-     "style": null,
-     "country": "FR",
-     "source_line": "⭐ AMI & JULIEN (FR)"
-    },
-    {
-     "name_as_written": "FAJUL (GER) & AGNES (SWE)",
-     "role": "teacher",
-     "style": null,
-     "country": "GER, SWE",
-     "source_line": "⭐ FAJUL (GER) & AGNES (SWE)"
-    },
-    {
-     "name_as_written": "ELINA (CZ) & CROWN PERK (GER)",
-     "role": "teacher",
-     "style": null,
-     "country": "CZ, GER",
-     "source_line": "⭐ ELINA (CZ) & CROWN PERK (GER)"
-    },
-    {
-     "name_as_written": "JASMINE (GER) & STEVE STEVEN (FR)",
-     "role": "teacher",
-     "style": null,
-     "country": "GER, FR",
-     "source_line": "⭐ JASMINE (GER) & STEVE STEVEN (FR)"
-    },
-    {
-     "name_as_written": "GERI & MAGDI",
-     "role": "teacher",
-     "style": null,
-     "country": "HU",
-     "source_line": "⭐ GERI & MAGDI (HU)"
-    },
-    {
-     "name_as_written": "RADIM & HALI",
-     "role": "teacher",
-     "style": null,
-     "country": "CZ",
-     "source_line": "⭐ RADIM & HALI (CZ)"
-    },
-    {
-     "name_as_written": "DJ SNAKES",
-     "role": "dj",
-     "style": null,
-     "country": "FR",
-     "source_line": "⭐ DJ SNAKES (FR)"
-    },
-    {
-     "name_as_written": "DJ SHARK",
-     "role": "dj",
-     "style": null,
-     "country": "SPAIN",
-     "source_line": "⭐ DJ SHARK (SPAIN)"
-    },
-    {
-     "name_as_written": "DJ LONGCHAMP",
-     "role": "dj",
-     "style": null,
-     "country": "GER",
-     "source_line": "⭐ DJ LONGCHAMP (GER)"
-    },
-    {
-     "name_as_written": "DJ NEKO",
-     "role": "dj",
-     "style": null,
-     "country": "IT",
-     "source_line": "⭐ DJ NEKO (IT)"
-    },
-    {
-     "name_as_written": "DJ LAMIN",
-     "role": "dj",
-     "style": null,
-     "country": "CZ",
-     "source_line": "⭐ DJ LAMIN (CZ)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "𝗔𝗹𝗹-𝗶𝗻-𝗼𝗻𝗲 𝗹𝗼𝗰𝗮𝘁𝗶𝗼𝗻.",
-     "rationale": "The description says the hotel is an all-in-one location, meaning the event and accommodation share the same venue."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops",
-     "rationale": "The list of what to expect includes Workshops as part of the event."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "𝗮 𝗽𝗿𝗲-𝗽𝗮𝗿𝘁𝘆",
-     "rationale": "The event starts with a pre-party before the main festival days."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:33:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "a4677367c76b7573",
+ "answer": {
+  "batch": "event-18666",
+  "events": [
+   {
+    "event_id": 18666,
+    "artists": [
+     {
+      "name_as_written": "DJ SNAKES",
+      "role": "dj",
+      "style": null,
+      "country": "FR",
+      "source_line": "⭐ DJ SNAKES (FR)"
+     },
+     {
+      "name_as_written": "DJ SHARK",
+      "role": "dj",
+      "style": null,
+      "country": "SPAIN",
+      "source_line": "⭐ DJ SHARK (SPAIN)"
+     },
+     {
+      "name_as_written": "DJ LONGCHAMP",
+      "role": "dj",
+      "style": null,
+      "country": "GER",
+      "source_line": "⭐ DJ LONGCHAMP (GER)"
+     },
+     {
+      "name_as_written": "DJ NEKO",
+      "role": "dj",
+      "style": null,
+      "country": "IT",
+      "source_line": "⭐ DJ NEKO (IT)"
+     },
+     {
+      "name_as_written": "DJ LAMIN",
+      "role": "dj",
+      "style": null,
+      "country": "CZ",
+      "source_line": "⭐ DJ LAMIN (CZ)"
+     },
+     {
+      "name_as_written": "JP & STEPHY",
+      "role": "teacher",
+      "style": null,
+      "country": "FR",
+      "source_line": "⭐ JP & STEPHY (FR)"
+     },
+     {
+      "name_as_written": "JULES & YUNA",
+      "role": "teacher",
+      "style": null,
+      "country": "FR",
+      "source_line": "⭐ JULES & YUNA (FR)"
+     },
+     {
+      "name_as_written": "METHODZ & JULIAA",
+      "role": "teacher",
+      "style": null,
+      "country": "FR",
+      "source_line": "⭐ METHODZ & JULIAA (FR)"
+     },
+     {
+      "name_as_written": "AMI & JULIEN",
+      "role": "teacher",
+      "style": null,
+      "country": "FR",
+      "source_line": "⭐ AMI & JULIEN (FR)"
+     },
+     {
+      "name_as_written": "FAJUL (GER) & AGNES (SWE)",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ FAJUL (GER) & AGNES (SWE)"
+     },
+     {
+      "name_as_written": "ELINA (CZ) & CROWN PERK (GER)",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ ELINA (CZ) & CROWN PERK (GER)"
+     },
+     {
+      "name_as_written": "JASMINE (GER) & STEVE STEVEN (FR)",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ JASMINE (GER) & STEVE STEVEN (FR)"
+     },
+     {
+      "name_as_written": "GERI & MAGDI",
+      "role": "teacher",
+      "style": null,
+      "country": "HU",
+      "source_line": "⭐ GERI & MAGDI (HU)"
+     },
+     {
+      "name_as_written": "RADIM & HALI",
+      "role": "teacher",
+      "style": null,
+      "country": "CZ",
+      "source_line": "⭐ RADIM & HALI (CZ)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "𝗔𝗹𝗹-𝗶𝗻-𝗼𝗻𝗲 𝗹𝗼𝗰𝗮𝘁𝗶𝗼𝗻",
+      "rationale": "The text states the event is all-in-one, meaning the parties are held in the hotel where dancers stay."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Workshops",
+      "rationale": "Workshops are listed among what attendees can look forward to."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "𝗮 𝗽𝗿𝗲-𝗽𝗮𝗿𝘁𝘆 (not included in the pass / paid separately)",
+      "rationale": "A pre-party is offered before the main event starting on the Thursday, paid separately."
+     }
+    ]
+   }
+  ]
+ }
 }

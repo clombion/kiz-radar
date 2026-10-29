@@ -2,9 +2,8 @@
  "event_id": 18985,
  "title": "Victoria International Kizomba Festival 8th Edition",
  "start_date": "2027-04-02",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:39:23+00:00",
+ "end_date": "2027-04-05",
+ "country": "Canada",
  "styles": [
   "bachata",
   "kizomba",
@@ -13,6 +12,9 @@
   "zouk"
  ],
  "description": "What to expect?? Locally and Internationally renowned instructors, teaching: Kizomba, Urban Kiz, Konpa, Bachata, Salsa, Tarraxo, Douceur, Afro Beat, Afro House and More!\nALL IN ONE:\nOver 27.000 square feet of space\n4 ROOMS:\n– BACHATA ROOM (Bachata Sensual, Bachata Dominican, Bachazouk, Salsa)\n– KIZOMBA (Kizomba, Semba, Konpa)\n– URBAN KIZ (Urban, Tarraxho, Ghetto Zouk)\n– VIBE ROOM (Konpa, Salsa, Afro Beats, Reggaeton, Hip Hop and More…)\nVIKF 8th Edition is offering you:\n*4 days of workshops\n*3 day-time socials\n*4 nights of dancing,\n*30Hours + of workshops\n*40H + of dancing\n* 2 educational sessions of Cultural Aspect of African dances\n* 1 Gala Night of celebration of Multiculturalism, Diversity, the Arts including performances and fashion shows by African Designers\nIMPORTANT NOTICE: This 4 Day Festival has some free components offered to the general public as well as\nsome activities with a minimal cost (to be announced at a later date)\nFULL PASS INCLUDES All Workshops, Day Socials and Parties (but does not includes Advanced Special trainings, Bootcamps and Master Classes)\nPARTY PASS INCLUDES: (Day Socials and Parties)\nKIZOMBA ARTISTS:\n✅ Jesus & Anni (Madrid – Spain)\n✅ Akram & Sara (Bale – Switzerland)\n✅ ElHadj Bak & Flavie (Paris – Montreal 🇨🇦)\n✅ Mike Ahombi (Regina – Canada 🇨🇦)\n✅ Justin & Angi (Paris – Berlin)\n✅ More to be announced\nKIZOMBA DJs:\n✅ DJ Sink (Montreal – Canada 🇨🇦)\n✅ DJ On Fire (Amsterdam – Netherlands )\n✅ DJ Guelas (Miami – USA 🇺🇸)\n✅ DJ Mojo (Seattle – USA 🇺🇸)\n✅ DJ Yawo (Seattle – USA 🇺🇸)\n✅ DJ Gaz (Vancouver – Canada 🇨🇦)\n✅ More to be announced\nBACHATA ARTISTS:\n✅ Alex & Desirée (Dom Rep & USA 🇺🇸)\n✅ Andres & Yesisica (Madrid – Spain )\n✅ Monica (Vancouver – Canada 🇨🇦)\n✅ Sebastian & Hannah (Victoria – Canada 🇨🇦)\n✅ Sergio & Natalia (Nanaimo – Canada 🇨🇦)\n✅ More to be announced\nBACHATA DJs:\n✅ DJ Sefa (Vancouver – Canada 🇨🇦)\n✅ More to be announced\nSALSA ARTISTS\n✅ Wayne & Kristal (Vancouver – Canada 🇨🇦)\n✅ Christina Morison(Victoria – Canada 🇨🇦)\n✅ More to be announced\n40+ LOCAL AND INTERNATIONAL PERFORMERS\n✅ VICTORIA MARRIOTT INNER HARBOUR HOTEL DEALS: (1min🚶🏽‍♂️‍➡️VCC)\nRoom with 2 Queen beds or 1 King bed (2 persons)\nRate: $CAD255 per night\nLast day to use the discount: Monday March 1, 2027\n‼️‼️Booking link 👇🏽\nhttps://www.marriott.com/event…/reservation-link.mi…\nTERMS AND CONDITIONS\nTICKETS:\n– By buying the pass you authorize the photographer and the videographer, his agents, the legal successors, ALCES, IALE, VICTORIA INTERNATIONAL KIZOMBA FESTIVAL as well as our community partners to reproduce and to exploit your image within the framework of photos for the performance of the promotion and the communication of VIKF and ALCES\nLIABILITY:\n– The purchaser remains responsible for the use made of e-tickets, and if lost, stolen or duplicate a valid e-ticket, only the first person who holds the e-ticket can access the event.\nEVENT: The event is and remain the sole responsibility of the organizer. The acquisition of this e-ticket wins if adherence to rules of the place of the event and / or organizer. I\n– If you are no longer able to join, you can transfer your pass to another participant without any fee; transfer your pass to the next edition; or ask for a refund up to 7 days before the start the event.\n– Must be 18+ to attend this event\nGENERAL CONDITIONS:\n– Click on the *Going* tab on facebook to receive notifications about line up updates and any useful information regarding this event.\n– COVID-19 clause: This event may be postponed or cancelled by the Organizer due to the Covid19 pandemic or any other resulting event related to the instructions of the federal government of Canada and the BC provincial government. In such case, the buyer can ask for a full refund",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:19:51+00:00",
  "passes": [
   {
    "kind": "full",
@@ -35,6 +37,27 @@
    ]
   }
  ],
- "skipped": [],
+ "skipped": [
+  {
+   "key": "3458663435",
+   "reason": "competition"
+  },
+  {
+   "key": "3458663979",
+   "reason": "competition"
+  },
+  {
+   "key": "3458664016",
+   "reason": "competition"
+  },
+  {
+   "key": "3458664024",
+   "reason": "competition"
+  },
+  {
+   "key": "3458664038",
+   "reason": "competition"
+  }
+ ],
  "rule_quotes": []
 }

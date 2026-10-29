@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nervif@mireia+nervif",
+ "key_b": "p:nervif@mireia+nervif",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "37b75abcf99990a3",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same key with the name Nervif stated in Spain and Venezuela, but no mentions, events or partners are listed, so the evidence cannot show whether it is one artist working in both countries or several people sharing the name."
+ }
+}

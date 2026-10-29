@@ -1,18 +1,25 @@
 {
- "batch": "event-15893",
- "events": [
-  {
-   "event_id": 15893,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "quote": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔 𝗟𝗜𝗡𝗘-𝗨𝗣"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "caf49ef0e5c64a7f",
+ "answer": {
+  "batch": "event-15893",
+  "events": [
+   {
+    "event_id": 15893,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔 𝗟𝗜𝗡𝗘-𝗨𝗣"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,10 +1,17 @@
 {
- "batch": "event-16329",
- "events": [
-  {
-   "event_id": 16329,
-   "passes": [],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:43:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "fafbe1a9ac5b90da",
+ "answer": {
+  "batch": "event-16329",
+  "events": [
+   {
+    "event_id": 16329,
+    "passes": [],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

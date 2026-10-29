@@ -1,0 +1,13 @@
+{
+ "key_a": "p:luismi@arantxa+luismi",
+ "key_b": "p:luismi@luismi+marian",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "dafb0a18e9352cd5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are written as just 'Luismi' with the same stated country (ES), but their events are in Belgium and Vietnam and their partners differ (Arantxa versus Marian), so the evidence does not show whether this is one person or two Spanish dancers sharing a common name."
+ }
+}

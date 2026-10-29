@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dlbeats",
+ "key_b": "p:lbeats",
+ "prompt": "7af5fef02cae3622",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-21T01:32:10+00:00",
+ "answered_by": "Claude Code subagent, one batch",
+ "inputs": "be14346a0e26fff9",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is the D&L Beats duo, while side B lists Lisa Rose and Dani Fernandes individually as 'D & L Beats' at one event; it is unclear whether these are the duo's members or a separate act."
+ }
+}

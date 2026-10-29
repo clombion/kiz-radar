@@ -1,53 +1,65 @@
 {
- "batch": "event-16054",
- "events": [
-  {
-   "event_id": 16054,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "***** KIZOMBA / URBAN KIZ / SEMBA ARTISTS *****"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBAN KIZ",
-     "quote": "***** KIZOMBA / URBAN KIZ / SEMBA ARTISTS *****"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "SEMBA",
-     "quote": "***** KIZOMBA / URBAN KIZ / SEMBA ARTISTS *****"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "PORTO SALSA",
-     "quote": "***** CUBAN / PORTO SALSA ARTISTS *****"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "***** BACHATA ARTISTS *****"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "AFRO",
-     "quote": "***** AFRO / SALSATON / STYLING / HIP HOP *****"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "SALSATON",
-     "quote": "***** AFRO / SALSATON / STYLING / HIP HOP *****"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "HIP HOP",
-     "quote": "***** AFRO / SALSATON / STYLING / HIP HOP *****"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "9c61831bd9aae070",
+ "answer": {
+  "batch": "event-16054",
+  "events": [
+   {
+    "event_id": 16054,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KIZOMBA / URBAN KIZ / SEMBA ARTISTS"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBAN KIZ",
+      "quote": "KIZOMBA / URBAN KIZ / SEMBA ARTISTS"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "SEMBA",
+      "quote": "KIZOMBA / URBAN KIZ / SEMBA ARTISTS"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "CUBAN / PORTO SALSA",
+      "quote": "CUBAN / PORTO SALSA ARTISTS"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "BACHATA ARTISTS"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "AFRO",
+      "quote": "AFRO / SALSATON / STYLING / HIP HOP"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "SALSATON",
+      "quote": "AFRO / SALSATON / STYLING / HIP HOP"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "STYLING",
+      "quote": "AFRO / SALSATON / STYLING / HIP HOP"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "HIP HOP",
+      "quote": "AFRO / SALSATON / STYLING / HIP HOP"
+     }
+    ]
+   }
+  ]
+ }
 }

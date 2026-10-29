@@ -1,230 +1,232 @@
 {
- "batch": "event-18694",
- "events": [
-  {
-   "event_id": 18694,
-   "artists": [
-    {
-     "name_as_written": "Nao",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Nao"
-    },
-    {
-     "name_as_written": "Paraiso",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Paraiso"
-    },
-    {
-     "name_as_written": "Nice Life",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Nice Life"
-    },
-    {
-     "name_as_written": "Kin",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Kin"
-    },
-    {
-     "name_as_written": "MB",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 MB"
-    },
-    {
-     "name_as_written": "Poéma Beatz",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Poéma Beatz"
-    },
-    {
-     "name_as_written": "Ichigo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Ichigo"
-    },
-    {
-     "name_as_written": "Charley",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Charley"
-    },
-    {
-     "name_as_written": "Levis",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Levis"
-    },
-    {
-     "name_as_written": "Shark",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Shark"
-    },
-    {
-     "name_as_written": "Lehny",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Lehny"
-    },
-    {
-     "name_as_written": "Snakes",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Snakes"
-    },
-    {
-     "name_as_written": "Antony Tarraxa",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Antony Tarraxa"
-    },
-    {
-     "name_as_written": "Dani Fernandes",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Dani Fernandes"
-    },
-    {
-     "name_as_written": "Lisa Rose",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Lisa Rose"
-    },
-    {
-     "name_as_written": "Ti-Wosh",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 Ti-Wosh"
-    },
-    {
-     "name_as_written": "Dwé & Gaby",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Dwé & Gaby"
-    },
-    {
-     "name_as_written": "Gwany",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Gwany"
-    },
-    {
-     "name_as_written": "Fajul & Agnès",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Fajul & Agnès"
-    },
-    {
-     "name_as_written": "Giui",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Giui"
-    },
-    {
-     "name_as_written": "Elhadj & Jenna",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Elhadj & Jenna"
-    },
-    {
-     "name_as_written": "Mik’kiz & Paou Lou",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Mik’kiz & Paou Lou"
-    },
-    {
-     "name_as_written": "Atou & Nat",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Atou & Nat"
-    },
-    {
-     "name_as_written": "Georges & Laura",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Georges & Laura"
-    },
-    {
-     "name_as_written": "Ninja",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Ninja"
-    },
-    {
-     "name_as_written": "Gaélle",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ Gaélle"
-    },
-    {
-     "name_as_written": "Benkos",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✨Benkos"
-    },
-    {
-     "name_as_written": "Yanou Martial",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✨Yanou Martial"
-    },
-    {
-     "name_as_written": "Ndamose",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✨Ndamose"
-    }
-   ],
-   "features": [
-    {
-     "feature": "pre_party",
-     "quote": "Pre-party until late",
-     "rationale": "The description states there is a pre-party until late."
-    },
-    {
-     "feature": "workshops",
-     "quote": "High quality workshops",
-     "rationale": "The description lists high quality workshops as part of the event."
-    },
-    {
-     "feature": "after_party",
-     "quote": "Goodbye party until 3PM on Monday",
-     "rationale": "A closing party running until Monday afternoon is an after-party."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:33:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "7e073846cfec58dd",
+ "answer": {
+  "batch": "event-18694",
+  "events": [
+   {
+    "event_id": 18694,
+    "artists": [
+     {
+      "name_as_written": "Nao",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Nao"
+     },
+     {
+      "name_as_written": "Paraiso",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Paraiso"
+     },
+     {
+      "name_as_written": "Nice Life",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Nice Life"
+     },
+     {
+      "name_as_written": "Kin",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Kin"
+     },
+     {
+      "name_as_written": "MB",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 MB"
+     },
+     {
+      "name_as_written": "Poéma Beatz",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Poéma Beatz"
+     },
+     {
+      "name_as_written": "Ichigo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Ichigo"
+     },
+     {
+      "name_as_written": "Charley",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Charley"
+     },
+     {
+      "name_as_written": "Levis",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Levis"
+     },
+     {
+      "name_as_written": "Shark",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Shark"
+     },
+     {
+      "name_as_written": "Lehny",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Lehny"
+     },
+     {
+      "name_as_written": "Snakes",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Snakes"
+     },
+     {
+      "name_as_written": "Antony Tarraxa",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Antony Tarraxa"
+     },
+     {
+      "name_as_written": "Dani Fernandes",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Dani Fernandes"
+     },
+     {
+      "name_as_written": "Lisa Rose",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Lisa Rose"
+     },
+     {
+      "name_as_written": "Ti-Wosh",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 Ti-Wosh"
+     },
+     {
+      "name_as_written": "Dwé & Gaby",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Dwé & Gaby"
+     },
+     {
+      "name_as_written": "Gwany",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Gwany"
+     },
+     {
+      "name_as_written": "Fajul & Agnès",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Fajul & Agnès"
+     },
+     {
+      "name_as_written": "Giui",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Giui"
+     },
+     {
+      "name_as_written": "Elhadj & Jenna",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Elhadj & Jenna"
+     },
+     {
+      "name_as_written": "Mik’kiz & Paou Lou",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Mik’kiz & Paou Lou"
+     },
+     {
+      "name_as_written": "Atou & Nat",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Atou & Nat"
+     },
+     {
+      "name_as_written": "Georges & Laura",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Georges & Laura"
+     },
+     {
+      "name_as_written": "Ninja",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Ninja"
+     },
+     {
+      "name_as_written": "Gaélle",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ Gaélle"
+     },
+     {
+      "name_as_written": "Benkos",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✨Benkos"
+     },
+     {
+      "name_as_written": "Yanou Martial",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✨Yanou Martial"
+     },
+     {
+      "name_as_written": "Ndamose",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✨Ndamose"
+     }
+    ],
+    "features": [
+     {
+      "feature": "pre_party",
+      "quote": "Pre-party until late",
+      "rationale": "The line 'Pre-party until late' states that a pre-party takes place before the main event."
+     },
+     {
+      "feature": "workshops",
+      "quote": "High quality workshops",
+      "rationale": "The line 'High quality workshops' states that dance workshops are part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dim@dim+ophelie",
+ "key_b": "p:dimdim@dimdim+ophelie",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0e67ac2609867951",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides list the same partner (Ophelie) and the names are a short and long form (Dim / Dimdim), and no event shows both listed at once; the different event countries (Germany vs Belgium/France) are consistent with one touring couple."
+ }
+}

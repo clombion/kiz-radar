@@ -1,179 +1,196 @@
 {
- "batch": "event-14868",
- "events": [
-  {
-   "event_id": 14868,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "⚠ Online FULL-PASS ⚠",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 95.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "04-01",
-       "until": "04-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ April: 95€"
-      },
-      {
-       "amount": 100.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "05-01",
-       "until": "05-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ May: 100€"
-      },
-      {
-       "amount": 105.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "06-01",
-       "until": "06-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ June: 105€"
-      },
-      {
-       "amount": 110.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "07-01",
-       "until": "07-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ July: 110€"
-      },
-      {
-       "amount": 115.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "08-01",
-       "until": "08-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ August: 115€"
-      },
-      {
-       "amount": 120.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "09-01",
-       "until": "09-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ September: 120€"
-      },
-      {
-       "amount": 125.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "10-01",
-       "until": "10-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ October: 125€"
-      },
-      {
-       "amount": 130.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "11-01",
-       "until": "11-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ November: 130€"
-      },
-      {
-       "amount": 135.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "12-01",
-       "until": "12-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ December: 135€"
-      },
-      {
-       "amount": 140.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "01-01",
-       "until": "01-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ January: 140€"
-      },
-      {
-       "amount": 145.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "02-01",
-       "until": "02-28",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ February: 145€"
-      },
-      {
-       "amount": 155.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "03-01",
-       "until": "03-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ March: 155€"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "they will increase each 1st of the month"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:41:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "6e97ebed25f09433",
+ "answer": {
+  "batch": "event-14868",
+  "events": [
+   {
+    "event_id": 14868,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "Online FULL-PASS",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 95.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "04-01",
+         "until": "04-30",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "★ April: 95€"
+       },
+       {
+        "amount": 100.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "05-01",
+         "until": "05-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "★ May: 100€"
+       },
+       {
+        "amount": 105.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "06-01",
+         "until": "06-30",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "★ June: 105€"
+       },
+       {
+        "amount": 110.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "07-01",
+         "until": "07-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "★ July: 110€"
+       },
+       {
+        "amount": 115.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "08-01",
+         "until": "08-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "★ August: 115€"
+       },
+       {
+        "amount": 120.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "09-01",
+         "until": "09-30",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "★ September: 120€"
+       },
+       {
+        "amount": 125.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "10-01",
+         "until": "10-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "★ October: 125€"
+       },
+       {
+        "amount": 130.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "11-01",
+         "until": "11-30",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "★ November: 130€"
+       },
+       {
+        "amount": 135.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "12-01",
+         "until": "12-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "★ December: 135€"
+       },
+       {
+        "amount": 140.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "01-01",
+         "until": "01-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "★ January: 140€"
+       },
+       {
+        "amount": 145.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "02-01",
+         "until": "02-28",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "★ February: 145€"
+       },
+       {
+        "amount": 155.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "03-01",
+         "until": "03-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "★ March: 155€"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

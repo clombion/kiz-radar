@@ -2,15 +2,17 @@
  "event_id": 17853,
  "title": "SaiGonLatinFestival",
  "start_date": "2026-12-03",
- "read_by": "claude-opus-5-5 + claude-fable-5-1",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T01:57:07+00:00",
+ "end_date": "2026-12-07",
+ "country": "Vietnam",
  "styles": [
   "bachata",
   "kizomba",
   "salsa"
  ],
  "description": "We are beyond excited to carry fresh energy into 2026! 💯% new vibes, new adventures, and unforgettable moments! And trust us, nothing’s repeating – it’s going to be even crazier! 😘\nFor those who’ve already experienced 2025, don’t dwell on the past! Let’s move forward with 2026, and get ready for what @⁨SaigonLatinFestival2026 carry on !!!\n🔥 SGLF 2026 HIGHLIGHTS\n🌴 5 days of Latin dance in Vung Tau beach city🎤 LIVE salsa concert\n🎙 Hosted by Moe Flex\n🎧 16 International & National DJs\n🌍 70+ artists from 30+ countries\n🔥 45+ shows, workshops & masterclasses\n🏆 Jack & Jill & The Battle Bachata\n💃 3 rooms of social dancing until 4AM\n🌟 Big international lineup already confirmed\nMore artists are on the way… soon you will know.\n━━━━━━━\n🚨 EARLY BIRD PASS OFFICIAL SOLD OUT\n👇NOW\n✨FullPass $190\n✨PartyPass $160✨\nOther kind of passes on the poster in the post\n💛 One thing we are promise:\n“At SGLF, you will receive more than what you paid for 🥳💛”\nBuy tickets at : SAIGONLATINFESTIVAL.COM\n📅 December 2026\n📍 Vung Tau, Vietnam\n🔥 Let’s make SGLF 2026 unforgettable.\nGet ready for unforgettable nights, beautiful music, and endless Kizomba vibes with DJ Jungwoo at SGLF26 🌴✨",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:10:07+00:00",
  "passes": [
   {
    "kind": "full",
@@ -47,6 +49,25 @@
      "until": "2026-10-31",
      "quantity": null,
      "date_quote": "TO 2026/10/31"
+    }
+   ]
+  },
+  {
+   "kind": "other",
+   "style": null,
+   "label_quote": null,
+   "group_size": 1,
+   "days": null,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "3358"
+     ],
+     "from": null,
+     "until": null,
+     "quantity": null,
+     "date_quote": null
     }
    ]
   },
@@ -89,6 +110,39 @@
    ]
   }
  ],
- "skipped": [],
+ "skipped": [
+  {
+   "key": "3352",
+   "reason": "class"
+  },
+  {
+   "key": "3361",
+   "reason": "class"
+  },
+  {
+   "key": "3359",
+   "reason": "class"
+  },
+  {
+   "key": "3355",
+   "reason": "class"
+  },
+  {
+   "key": "3356",
+   "reason": "class"
+  },
+  {
+   "key": "3354",
+   "reason": "class"
+  },
+  {
+   "key": "3357",
+   "reason": "class"
+  },
+  {
+   "key": "3344",
+   "reason": "class"
+  }
+ ],
  "rule_quotes": []
 }

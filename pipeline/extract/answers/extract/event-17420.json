@@ -1,137 +1,144 @@
 {
- "batch": "event-17420",
- "events": [
-  {
-   "event_id": 17420,
-   "artists": [
-    {
-     "name_as_written": "DJ Poema Beatz",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅ DJ Poema Beatz"
-    },
-    {
-     "name_as_written": "DJ Skin",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅ DJ Skin"
-    },
-    {
-     "name_as_written": "DJ Sorin",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅ DJ Sorin"
-    },
-    {
-     "name_as_written": "DJ Groove",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅ DJ Groove"
-    },
-    {
-     "name_as_written": "Enah Lebon",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Enah Lebon"
-    },
-    {
-     "name_as_written": "Methodz",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Methodz"
-    },
-    {
-     "name_as_written": "Tabea",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Tabea"
-    },
-    {
-     "name_as_written": "Fajul Kizztalk",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Fajul Kizztalk"
-    },
-    {
-     "name_as_written": "Janika Mona",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Janika Mona"
-    },
-    {
-     "name_as_written": "Chris MSKL",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Chris MSKL"
-    },
-    {
-     "name_as_written": "Sonia & Stef",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Sonia & Stef"
-    },
-    {
-     "name_as_written": "Jules Tarraxopop",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Jules Tarraxopop"
-    },
-    {
-     "name_as_written": "Crownperk",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Crownperk"
-    },
-    {
-     "name_as_written": "Stones Rock",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Stones Rock"
-    },
-    {
-     "name_as_written": "Mory",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Mory"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops: 11:00 – 18:00",
-     "rationale": "The schedule lists workshop sessions on Saturday and Sunday."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre Party Workshops",
-     "rationale": "A pre party is scheduled on Saturday from 21:00 to 23:00."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Room 2 Football WM Spiele live on a big Wall",
-     "rationale": "The schedule names Room 1 and Room 2 as separate dance spaces."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Social Room: 14:00-15:00 / 18:00-21:00",
-     "rationale": "A social room runs in the afternoon and early evening on Saturday."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:31:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "73311f340f82b17d",
+ "answer": {
+  "batch": "event-17420",
+  "events": [
+   {
+    "event_id": 17420,
+    "artists": [
+     {
+      "name_as_written": "DJ Poema Beatz",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅ DJ Poema Beatz"
+     },
+     {
+      "name_as_written": "DJ Skin",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅ DJ Skin"
+     },
+     {
+      "name_as_written": "DJ Sorin",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅ DJ Sorin"
+     },
+     {
+      "name_as_written": "DJ Groove",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅ DJ Groove"
+     },
+     {
+      "name_as_written": "Enah Lebon",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Enah Lebon"
+     },
+     {
+      "name_as_written": "Methodz",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Methodz"
+     },
+     {
+      "name_as_written": "Tabea",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Tabea"
+     },
+     {
+      "name_as_written": "Fajul Kizztalk",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Fajul Kizztalk"
+     },
+     {
+      "name_as_written": "Janika Mona",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Janika Mona"
+     },
+     {
+      "name_as_written": "Chris MSKL",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Chris MSKL"
+     },
+     {
+      "name_as_written": "Sonia & Stef",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Sonia & Stef"
+     },
+     {
+      "name_as_written": "Jules Tarraxopop",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Jules Tarraxopop"
+     },
+     {
+      "name_as_written": "Crownperk",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Crownperk"
+     },
+     {
+      "name_as_written": "Stones Rock",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Stones Rock"
+     },
+     {
+      "name_as_written": "Mory",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Mory"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops: 11:00 – 18:00",
+      "rationale": "Scheduled dance workshops are part of the festival programme."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre Party Workshops",
+      "rationale": "A pre-party is scheduled before the main party on Saturday."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Social Room: 14:00-15:00 / 18:00-21:00",
+      "rationale": "Daytime and afternoon social sessions are scheduled."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Room 1 Urban Kiz, Tarraxo, Ghetto Zouk, Kizomba, Kompa",
+      "rationale": "The programme lists several dance rooms, including Room 1 and Room 2."
+     }
+    ]
+   }
+  ]
+ }
 }

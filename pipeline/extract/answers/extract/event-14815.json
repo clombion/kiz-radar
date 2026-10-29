@@ -1,148 +1,155 @@
 {
- "batch": "event-14815",
- "events": [
-  {
-   "event_id": 14815,
-   "artists": [
-    {
-     "name_as_written": "Latina Sol",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🚨 It’s official! Latina Sol and KIZ&SUN Poitiers are teaming up to create their very first SBK FESTIVAL in L’Isle d’Espagnac (Angoulême)!"
-    },
-    {
-     "name_as_written": "KIZ&SUN Poitiers",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🚨 It’s official! Latina Sol and KIZ&SUN Poitiers are teaming up to create their very first SBK FESTIVAL in L’Isle d’Espagnac (Angoulême)!"
-    },
-    {
-     "name_as_written": "Lolo Waki",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "⚡​ Lolo Waki"
-    },
-    {
-     "name_as_written": "Yané",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "⚡ Yané"
-    },
-    {
-     "name_as_written": "Adil & Élo",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⚡​ Adil & Élo"
-    },
-    {
-     "name_as_written": "Hugo & Camille",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⚡ Hugo & Camille"
-    },
-    {
-     "name_as_written": "Miguel & Aleksandra",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⚡ Miguel & Aleksandra"
-    },
-    {
-     "name_as_written": "Lilian & Ivana",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⚡ Lilian & Ivana"
-    },
-    {
-     "name_as_written": "Landry & Windy",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⚡ Landry & Windy"
-    },
-    {
-     "name_as_written": "Malick & Carla",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⚡ Malick & Carla"
-    },
-    {
-     "name_as_written": "Willy & Angélique",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "⚡ Willy & Angélique"
-    },
-    {
-     "name_as_written": "DJ Chico",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⚡ DJ Chico"
-    },
-    {
-     "name_as_written": "DJ Joker",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⚡ DJ Joker"
-    },
-    {
-     "name_as_written": "DJ L’Dry",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⚡ DJ L’Dry"
-    },
-    {
-     "name_as_written": "DJ Lion",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⚡ DJ Lion"
-    },
-    {
-     "name_as_written": "Mister D",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⚡ Mister D"
-    },
-    {
-     "name_as_written": "DJ Salsa Vate",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⚡ DJ Salsa Vate (Tony)"
-    },
-    {
-     "name_as_written": "DJ Swimy",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⚡ DJ Swimy"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "More than 20 hours of classes",
-     "rationale": "The description states that more than 20 hours of dance classes are part of the festival."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Plenty of taxis!",
-     "rationale": "The description promises plenty of taxis, which refers to taxi dancers being present at the event."
-    }
-   ]
-  }
- ]
+ "prompt": "94fcf4070f2eda95",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-27T17:40:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": null,
+ "answer": {
+  "batch": "event-14815",
+  "events": [
+   {
+    "event_id": 14815,
+    "artists": [
+     {
+      "name_as_written": "Latina Sol",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "🚨 It’s official! Latina Sol and KIZ&SUN Poitiers are teaming up to create their very first SBK FESTIVAL in L’Isle d’Espagnac (Angoulême)!"
+     },
+     {
+      "name_as_written": "KIZ&SUN Poitiers",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "🚨 It’s official! Latina Sol and KIZ&SUN Poitiers are teaming up to create their very first SBK FESTIVAL in L’Isle d’Espagnac (Angoulême)!"
+     },
+     {
+      "name_as_written": "Lolo Waki",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "⚡​ Lolo Waki"
+     },
+     {
+      "name_as_written": "Yané",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "⚡ Yané"
+     },
+     {
+      "name_as_written": "Adil & Élo",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⚡​ Adil & Élo"
+     },
+     {
+      "name_as_written": "Hugo & Camille",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⚡ Hugo & Camille"
+     },
+     {
+      "name_as_written": "Miguel & Aleksandra",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⚡ Miguel & Aleksandra"
+     },
+     {
+      "name_as_written": "Lilian & Ivana",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⚡ Lilian & Ivana"
+     },
+     {
+      "name_as_written": "Landry & Windy",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⚡ Landry & Windy"
+     },
+     {
+      "name_as_written": "Malick & Carla",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⚡ Malick & Carla"
+     },
+     {
+      "name_as_written": "Willy & Angélique",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "⚡ Willy & Angélique"
+     },
+     {
+      "name_as_written": "DJ Chico",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⚡ DJ Chico"
+     },
+     {
+      "name_as_written": "DJ Joker",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⚡ DJ Joker"
+     },
+     {
+      "name_as_written": "DJ L’Dry",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⚡ DJ L’Dry"
+     },
+     {
+      "name_as_written": "DJ Lion",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⚡ DJ Lion"
+     },
+     {
+      "name_as_written": "Mister D",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⚡ Mister D"
+     },
+     {
+      "name_as_written": "DJ Salsa Vate",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⚡ DJ Salsa Vate (Tony)"
+     },
+     {
+      "name_as_written": "DJ Swimy",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⚡ DJ Swimy"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "More than 20 hours of classes",
+      "rationale": "The description states that more than 20 hours of dance classes are part of the festival."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "Plenty of taxis!",
+      "rationale": "The description promises plenty of taxis, which refers to taxi dancers being present at the event."
+     }
+    ]
+   }
+  ]
+ }
 }

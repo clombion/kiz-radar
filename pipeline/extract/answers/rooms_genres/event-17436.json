@@ -1,23 +1,30 @@
 {
- "batch": "event-17436",
- "events": [
-  {
-   "event_id": 17436,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Soulful **Kizomba/Kompa dancing** that will have you moving all night"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "Soulful **Kizomba/Kompa dancing** that will have you moving all night"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "293b756438fc2fbf",
+ "answer": {
+  "batch": "event-17436",
+  "events": [
+   {
+    "event_id": 17436,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Soulful **Kizomba/Kompa dancing** that will have you moving all night"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "Soulful **Kizomba/Kompa dancing** that will have you moving all night"
+     }
+    ]
+   }
+  ]
+ }
 }

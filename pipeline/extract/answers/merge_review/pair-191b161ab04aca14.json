@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cristina@cristina+manu",
+ "key_b": "p:cristinaolmos",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "191b161ab04aca14",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are listed in Spain, but the only link is the first name: 'CRISTINA' is paired with partner manu while 'CRISTINA OLMOS' has no partners and only one mention, and side A has no mentions to confirm the event context, so a merge would rest on a common first name."
+ }
+}

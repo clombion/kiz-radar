@@ -1,83 +1,90 @@
 {
- "batch": "event-14896",
- "events": [
-  {
-   "event_id": 14896,
-   "artists": [
-    {
-     "name_as_written": "JAMAICA NEGRO",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "💎JAMAICA NEGRO🇦🇴"
-    },
-    {
-     "name_as_written": "ARY & MAURA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "💎ARY & MAURA🇦🇴"
-    },
-    {
-     "name_as_written": "EMANUEL & TERESA FREITAS",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "💎EMANUEL & TERESA FREITAS🇦🇴"
-    },
-    {
-     "name_as_written": "PAULO SELELE",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "💎PAULO SELELE🇦🇴"
-    },
-    {
-     "name_as_written": "A. CELMO & ELIZABETH TAYLOR",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "💎A. CELMO & ELIZABETH TAYLOR🇦🇴"
-    },
-    {
-     "name_as_written": "DJ. BAKONGO",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "💎 DJ. BAKONGO🇦🇴"
-    },
-    {
-     "name_as_written": "DJ. ELYDIO",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "💎 DJ. ELYDIO🇦🇴"
-    },
-    {
-     "name_as_written": "DJ. YHA",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "💎 DJ. YHA🇦🇴"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "WORKSHOPS",
-     "rationale": "The full pass includes workshops, so dance classes are part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3-DAY SOCIALS",
-     "rationale": "The full pass includes daytime socials over three days."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "WE HAVE A SPECIAL ROOM-RATE AT THE VENUE FOR FULLPASS HOLDERS",
-     "rationale": "A negotiated room rate is offered for pass holders, while the pass itself does not include accommodation."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "bc733e747dc1d287",
+ "answer": {
+  "batch": "event-14896",
+  "events": [
+   {
+    "event_id": 14896,
+    "artists": [
+     {
+      "name_as_written": "JAMAICA NEGRO",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "💎JAMAICA NEGRO🇦🇴"
+     },
+     {
+      "name_as_written": "ARY & MAURA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "💎ARY & MAURA🇦🇴"
+     },
+     {
+      "name_as_written": "EMANUEL & TERESA FREITAS",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "💎EMANUEL & TERESA FREITAS🇦🇴"
+     },
+     {
+      "name_as_written": "PAULO SELELE",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "💎PAULO SELELE🇦🇴"
+     },
+     {
+      "name_as_written": "A. CELMO & ELIZABETH TAYLOR",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "💎A. CELMO & ELIZABETH TAYLOR🇦🇴"
+     },
+     {
+      "name_as_written": "DJ. BAKONGO",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "💎 DJ. BAKONGO🇦🇴"
+     },
+     {
+      "name_as_written": "DJ. ELYDIO",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "💎 DJ. ELYDIO🇦🇴"
+     },
+     {
+      "name_as_written": "DJ. YHA",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "💎 DJ. YHA🇦🇴"
+     }
+    ],
+    "features": [
+     {
+      "feature": "day_socials",
+      "quote": "3-DAY SOCIALS",
+      "rationale": "The full pass includes 3-day socials, which are daytime social events."
+     },
+     {
+      "feature": "workshops",
+      "quote": "WORKSHOPS",
+      "rationale": "The full pass includes workshops as part of the event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Check our 2nd hotel here as venue is full",
+      "rationale": "The description recommends a second hotel, while the accommodation is not stated to be part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

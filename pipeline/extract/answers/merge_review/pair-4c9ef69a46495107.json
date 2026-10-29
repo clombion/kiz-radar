@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marc@alessandra+marc",
+ "key_b": "p:marcfranettdejesus",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "4c9ef69a46495107",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two records have different stated countries (IT versus AO), and their partner keys point to different couples (alessandra+marc versus alessandra+marcfranettdejesus), so the only shared element is the first name Marc, which is weak evidence on its own."
+ }
+}

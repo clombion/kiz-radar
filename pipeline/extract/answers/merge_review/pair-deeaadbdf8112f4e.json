@@ -1,0 +1,13 @@
+{
+ "key_a": "p:giorgia@giorgia+kinkela",
+ "key_b": "p:giorgia@giorgia+kinkizomba",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "deeaadbdf8112f4e",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records are named just 'Giorgia' with an overlapping country (AO) and a shared event country (Germany), but they have different partners (kinkela vs kinkizomba) and a common first name is weak evidence, so the evidence does not settle whether they are one person."
+ }
+}

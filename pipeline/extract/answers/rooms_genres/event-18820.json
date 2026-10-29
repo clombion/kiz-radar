@@ -1,18 +1,25 @@
 {
- "batch": "event-18820",
- "events": [
-  {
-   "event_id": 18820,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "kizomba",
-     "quote": "#kizomba"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "3e89be8d9f33e884",
+ "answer": {
+  "batch": "event-18820",
+  "events": [
+   {
+    "event_id": 18820,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "kizomba",
+      "quote": "#kizomba"
+     }
+    ]
+   }
+  ]
+ }
 }

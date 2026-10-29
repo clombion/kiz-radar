@@ -1,43 +1,55 @@
 {
- "batch": "event-17105",
- "events": [
-  {
-   "event_id": 17105,
-   "artists": [
-    {
-     "name_as_written": "Stephy & JP",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💫 Stephy & JP from Paris and Top Dj Djeemix here in H-Town 💫"
-    },
-    {
-     "name_as_written": "Dj Djeemix",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "We are so excited to welcome international artists"
-    },
-    {
-     "name_as_written": "Youdance Dream Team",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Dein Youdance Dream Team"
-    }
-   ],
-   "features": [
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Bootcamp Topic:",
-     "rationale": "The description advertises a bootcamp with a stated topic, which is an intensive training component."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Learn how to highlight musical accents",
-     "rationale": "The bulleted items describe dance learning sessions that are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:31:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "66abc95d32892f0a",
+ "answer": {
+  "batch": "event-17105",
+  "events": [
+   {
+    "event_id": 17105,
+    "artists": [
+     {
+      "name_as_written": "Stephy & JP",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💫 Stephy & JP from Paris and Top Dj Djeemix here in H-Town 💫"
+     },
+     {
+      "name_as_written": "Dj Djeemix",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "💫 Stephy & JP from Paris and Top Dj Djeemix here in H-Town 💫"
+     },
+     {
+      "name_as_written": "Youdance Dream Team",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Dein Youdance Dream Team"
+     }
+    ],
+    "features": [
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "Bootcamp mit Stephy & JP",
+      "rationale": "A bootcamp with the teachers is part of the Saturday schedule."
+     },
+     {
+      "feature": "workshops",
+      "quote": "3h Bootcamp + 30 min Social",
+      "rationale": "The bootcamp is a scheduled dance class within the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "30 min Social",
+      "rationale": "A social is held in the afternoon as part of the Saturday programme."
+     }
+    ]
+   }
+  ]
+ }
 }

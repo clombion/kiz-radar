@@ -1,155 +1,150 @@
 {
- "batch": "event-18516",
- "events": [
-  {
-   "event_id": 18516,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 30.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "£30 Full pass workshops and parties 2 days"
-      },
-      {
-       "amount": 40.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "£40 Full pass workshops and social parties 2 days"
-      }
-     ]
-    },
-    {
-     "kind": "party",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 20.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "£20 social party 2 days pass"
-      },
-      {
-       "amount": 25.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "£25 social parties only 2 days"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 20.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "£20 workshops and party 1 day pass"
-      },
-      {
-       "amount": 25.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "£25 workshops and social party 1 they pass"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 12.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "£12 Social party 1day pass"
-      },
-      {
-       "amount": 15.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "£15 social party only 1 day pass"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:45:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "23866b380e190d23",
+ "answer": {
+  "batch": "event-18516",
+  "events": [
+   {
+    "event_id": 18516,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 30.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "£30 Full pass workshops and parties 2 days"
+       },
+       {
+        "amount": 40.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "£40 Full pass workshops and social parties 2 days"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 20.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "£20 social party 2 days pass"
+       },
+       {
+        "amount": 25.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "£25 social parties only 2 days"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 20.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "£20 workshops and party 1 day pass"
+       },
+       {
+        "amount": 25.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "£25 workshops and social party 1 they pass"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 12.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "£12 Social party 1day pass"
+       },
+       {
+        "amount": 15.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "£15 social party only 1 day pass"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

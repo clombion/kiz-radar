@@ -1,61 +1,63 @@
 {
- "batch": "event-16110",
- "events": [
-  {
-   "event_id": 16110,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 rooms"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "ef118573491d4adf",
+ "answer": {
+  "batch": "event-16110",
+  "events": [
+   {
+    "event_id": 16110,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 rooms"
     },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBAN KIZ",
-     "quote": "URBAN KIZ"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "SEMBA",
-     "quote": "SEMBA"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "KONPA",
-     "quote": "KONPA"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "TARRAXINHA",
-     "quote": "TARRAXINHA"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "TARRAXO",
-     "quote": "TARRAXO"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "AFRO-HOUSE",
-     "quote": "AFRO-HOUSE/AMAPIANO"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "AMAPIANO",
-     "quote": "AFRO-HOUSE/AMAPIANO"
-    },
-    {
-     "genre": "kuduro",
-     "genre_as_written": "KUDURO",
-     "quote": "KUDURO"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KIZOMBA"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBAN KIZ",
+      "quote": "URBAN KIZ"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "SEMBA",
+      "quote": "SEMBA"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "KONPA",
+      "quote": "KONPA"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "TARRAXINHA",
+      "quote": "TARRAXINHA"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "TARRAXO",
+      "quote": "TARRAXO"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "AFRO-HOUSE/AMAPIANO",
+      "quote": "AFRO-HOUSE/AMAPIANO"
+     },
+     {
+      "genre": "kuduro",
+      "genre_as_written": "KUDURO",
+      "quote": "KUDURO"
+     }
+    ]
+   }
+  ]
+ }
 }

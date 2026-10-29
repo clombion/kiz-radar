@@ -1,0 +1,13 @@
+{
+ "key_a": "p:bonga@aline+bonga",
+ "key_b": "p:bongaaskdancestudio",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "12516c875e74025c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only link is the shared first word 'Bonga': side B is a dance studio name with a single Portuguese-flagged French event and no partners, while side A is a multi-country performer with a partner named Aline, so the evidence cannot show whether the studio is run by the same artist."
+ }
+}

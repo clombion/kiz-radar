@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fernando@carolina+fernando",
+ "key_b": "p:fernando@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f433138e099ed148",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the bare first name Fernando, and they share only Portugal as a country; side A is a couple with Carolina while side B lists no partner and its events (Germany, UK) do not overlap with side A's France events, so the evidence does not settle whether they are one person."
+ }
+}

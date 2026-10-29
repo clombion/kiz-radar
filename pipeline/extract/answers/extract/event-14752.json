@@ -1,26 +1,33 @@
 {
- "batch": "event-14752",
- "events": [
-  {
-   "event_id": 14752,
-   "artists": [],
-   "features": [
-    {
-     "feature": "pre_party",
-     "quote": "Preparty on thursday the 12th",
-     "rationale": "The description announces a pre-party on Thursday the 12th, before the main event."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Soft & catering INCLUDED",
-     "rationale": "The description states that soft drinks and catering are included."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Rooms, 4 unique atmospheres",
-     "rationale": "The event has four rooms, which means more than one dance floor."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d96b550496b69ea0",
+ "answer": {
+  "batch": "event-14752",
+  "events": [
+   {
+    "event_id": 14752,
+    "artists": [],
+    "features": [
+     {
+      "feature": "meals_included",
+      "quote": "Soft & catering INCLUDED",
+      "rationale": "The description says soft drinks and catering are included, which covers meals offered with the pass."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Rooms, 4 unique atmospheres",
+      "rationale": "Four separate rooms are mentioned, so there is more than one dance floor."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Preparty on thursday the 12th",
+      "rationale": "A preparty is scheduled before the main weekend event."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,23 +1,30 @@
 {
- "batch": "event-16683",
- "events": [
-  {
-   "event_id": 16683,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Amadou – Kizomba – Bordeaux"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Pere – Bachata – GDS Dance School"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "ae9d36b33ce2043c",
+ "answer": {
+  "batch": "event-16683",
+  "events": [
+   {
+    "event_id": 16683,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Chris Py & Laly – Kizomba – CLK Dance School"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Pere – Bachata – GDS Dance School"
+     }
+    ]
+   }
+  ]
+ }
 }

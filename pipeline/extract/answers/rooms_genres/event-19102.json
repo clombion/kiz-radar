@@ -1,28 +1,35 @@
 {
- "batch": "event-19102",
- "events": [
-  {
-   "event_id": 19102,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "A weekend of Kizomba, Urban Kiz, Afrobeat vibes"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Kizomba, Urban Kiz, Afrobeat vibes"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrobeat",
-     "quote": "Urban Kiz, Afrobeat vibes"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "74d45aca191461e7",
+ "answer": {
+  "batch": "event-19102",
+  "events": [
+   {
+    "event_id": 19102,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "A weekend of Kizomba, Urban Kiz, Afrobeat vibes"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "A weekend of Kizomba, Urban Kiz, Afrobeat vibes"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrobeat",
+      "quote": "A weekend of Kizomba, Urban Kiz, Afrobeat vibes"
+     }
+    ]
+   }
+  ]
+ }
 }

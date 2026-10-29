@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alex@dj",
+ "key_b": "p:alexgrafiada",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "09fa973664d2b2f5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only overlap is a shared Spanish country (one stated mention on each side) and the first name Alex, which is a common name; 'DJ Alex' is a DJ across four countries while 'Alex Grafiada' is a teacher seen once in Belgium, and there is no shared partner or event to link them."
+ }
+}

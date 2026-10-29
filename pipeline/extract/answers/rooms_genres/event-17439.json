@@ -1,38 +1,45 @@
 {
- "batch": "event-17439",
- "events": [
-  {
-   "event_id": 17439,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba-Semba-Getho Zouk- Antilhas- Coladeira"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba-Semba-Getho Zouk- Antilhas- Coladeira"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Getho Zouk",
-     "quote": "Kizomba-Semba-Getho Zouk- Antilhas- Coladeira"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Antilhas",
-     "quote": "Kizomba-Semba-Getho Zouk- Antilhas- Coladeira"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Coladeira",
-     "quote": "Kizomba-Semba-Getho Zouk- Antilhas- Coladeira"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0c73be4f4fd9472b",
+ "answer": {
+  "batch": "event-17439",
+  "events": [
+   {
+    "event_id": 17439,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba-Semba-Getho Zouk- Antilhas- Coladeira"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba-Semba-Getho Zouk- Antilhas- Coladeira"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Getho Zouk",
+      "quote": "Kizomba-Semba-Getho Zouk- Antilhas- Coladeira"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Antilhas",
+      "quote": "Kizomba-Semba-Getho Zouk- Antilhas- Coladeira"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Coladeira",
+      "quote": "Kizomba-Semba-Getho Zouk- Antilhas- Coladeira"
+     }
+    ]
+   }
+  ]
+ }
 }

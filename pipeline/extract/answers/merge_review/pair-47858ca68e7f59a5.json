@@ -1,0 +1,13 @@
+{
+ "key_a": "p:said@oksana+said",
+ "key_b": "p:saiddstreet",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "47858ca68e7f59a5",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Side A 'SAID' has no mentions in this pair's events and its only partner is oksana@oksana+said, while side B 'SAID DSTREET' is consistently written with DStreet, is stated as French, and pairs with oksana@oksana+saiddstreet; the shared first word 'SAID' alone, with different partner keys and a distinct two-word stage name on the B side, does not establish one artist, and side A's records are not in the evidence to link them."
+ }
+}

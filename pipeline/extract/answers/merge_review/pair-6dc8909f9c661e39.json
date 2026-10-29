@@ -1,0 +1,13 @@
+{
+ "key_a": "p:monica@blackchinese+monica",
+ "key_b": "p:monica@jorge+monica",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6dc8909f9c661e39",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different partners (blackchinese versus Jorge), disjoint countries (ES/FR versus CZ) and different event countries (France versus Austria/Germany), so the evidence shows two artists sharing only a common first name."
+ }
+}

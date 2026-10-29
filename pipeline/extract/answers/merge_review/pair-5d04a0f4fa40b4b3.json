@@ -1,0 +1,13 @@
+{
+ "key_a": "p:rafael@dance",
+ "key_b": "p:rafael@giovana+rafael",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "5d04a0f4fa40b4b3",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the bare first name 'Rafael' with the same stated country (Brazil), but the names are generic, side A has no partner, the events are in different countries (Turkey and Croatia), and side B has no mention records to compare styles, so the evidence does not settle whether this is one teacher or two."
+ }
+}

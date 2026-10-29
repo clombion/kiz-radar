@@ -1,56 +1,63 @@
 {
- "batch": "event-15944",
- "events": [
-  {
-   "event_id": 15944,
-   "artists": [
-    {
-     "name_as_written": "Vladimir Izomba & Nikolett",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "This retreat is hosted and curated by Vladimir Izomba & Nikolett, the team behind Budapest Kizomba Connection, one of the pioneering kizomba festivals worldwide combined with first hand local Angolan insights and experience."
-    },
-    {
-     "name_as_written": "Academia de Dança Sona Passada LDA",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "All bank transfers are made in euros (€) to Academia de Dança Sona Passada LDA, the local organizer responsible for invoicing and financial administration."
-    }
-   ],
-   "features": [
-    {
-     "feature": "accommodation_included",
-     "quote": "10 nights accommodation in a resort in Luanda",
-     "rationale": "The retreat package includes the resort accommodation for ten nights."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "One group meal per day (lunch or dinner), with water included",
-     "rationale": "The package includes a group meal each day."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Airport pick-up and drop-off",
-     "rationale": "Airport transfers are included in the retreat."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Professional taxi dancer team",
-     "rationale": "The retreat provides a professional taxi dancer team."
-    },
-    {
-     "feature": "private_classes",
-     "quote": "1 private dance class per participant",
-     "rationale": "Each participant receives a private dance class."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Group dance classes and socials",
-     "rationale": "Group dance classes are part of the retreat programme."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:27:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "f0254b326ec66458",
+ "answer": {
+  "batch": "event-15944",
+  "events": [
+   {
+    "event_id": 15944,
+    "artists": [
+     {
+      "name_as_written": "Vladimir Izomba & Nikolett",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "This retreat is hosted and curated by Vladimir Izomba & Nikolett, the team behind Budapest Kizomba Connection, one of the pioneering kizomba festivals worldwide combined with first hand local Angolan insights and experience."
+     },
+     {
+      "name_as_written": "Academia de Dança Sona Passada LDA",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "All bank transfers are made in euros (€) to Academia de Dança Sona Passada LDA, the local organizer responsible for invoicing and financial administration."
+     }
+    ],
+    "features": [
+     {
+      "feature": "accommodation_included",
+      "quote": "10 nights accommodation in a resort in Luanda (double or twin rooms)",
+      "rationale": "The included list states that the package covers 10 nights of accommodation in a resort."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "One group meal per day (lunch or dinner), with water included",
+      "rationale": "The included list states that one group meal per day is part of the package."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Group dance classes and socials",
+      "rationale": "The included list shows that group dance classes are part of the retreat."
+     },
+     {
+      "feature": "private_classes",
+      "quote": "1 private dance class per participant",
+      "rationale": "Each participant receives one private dance class as part of the package."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "Professional taxi dancer team and local guides throughout the retreat",
+      "rationale": "The description states that a professional taxi dancer team is present throughout the retreat."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Airport pick-up and drop-off",
+      "rationale": "The included list offers airport transfers."
+     }
+    ]
+   }
+  ]
+ }
 }

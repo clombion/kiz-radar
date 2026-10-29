@@ -1,201 +1,208 @@
 {
- "batch": "event-15795",
- "events": [
-  {
-   "event_id": 15795,
-   "artists": [
-    {
-     "name_as_written": "Ledoux Kingsman",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Ledoux Kingsman"
-    },
-    {
-     "name_as_written": "Guy Tawa & Bicky",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Guy Tawa & Bicky"
-    },
-    {
-     "name_as_written": "Steven’s & Audrey",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Steven’s & Audrey"
-    },
-    {
-     "name_as_written": "Marija",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Marija"
-    },
-    {
-     "name_as_written": "Dinara",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Dinara"
-    },
-    {
-     "name_as_written": "Senseï",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Senseï"
-    },
-    {
-     "name_as_written": "JFK",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "JFK"
-    },
-    {
-     "name_as_written": "Onça",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Onça"
-    },
-    {
-     "name_as_written": "Lu Říha",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Lu Říha"
-    },
-    {
-     "name_as_written": "DJ JDN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ JDN"
-    },
-    {
-     "name_as_written": "DJ Diablo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Diablo"
-    },
-    {
-     "name_as_written": "DJ Ichigo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Ichigo"
-    },
-    {
-     "name_as_written": "DJ Le Grand Tiwosh",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Le Grand Tiwosh"
-    },
-    {
-     "name_as_written": "DJ Harry’z",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Harry’z"
-    },
-    {
-     "name_as_written": "DJ Thales",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Thales"
-    },
-    {
-     "name_as_written": "DJ Valkyrie",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Valkyrie"
-    },
-    {
-     "name_as_written": "DJ Ted",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Ted"
-    },
-    {
-     "name_as_written": "DJ Ozy Shyne",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Ozy Shyne"
-    },
-    {
-     "name_as_written": "LNA Carla",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "LNA Carla"
-    },
-    {
-     "name_as_written": "Benkos",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Benkos"
-    },
-    {
-     "name_as_written": "Dhoirif",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Dhoirif"
-    },
-    {
-     "name_as_written": "Team O’Kiz",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Team O’Kiz"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL in ONE place – Exclusive Resort",
-     "rationale": "The event is held at one exclusive resort where the parties take place, so event and accommodation share the same venue."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Pool Parties",
-     "rationale": "The description lists Pool Parties as part of the event."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "Beach Parties",
-     "rationale": "The description lists Beach Parties as part of the event."
-    },
-    {
-     "feature": "boat_party",
-     "quote": "Boat Party",
-     "rationale": "The description lists a Boat Party with its own ticket price."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Quality lessons",
-     "rationale": "Dance lessons are offered as part of the event."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "PACKAGES (Full pass+hotel+boat party)",
-     "rationale": "The packages combine the full pass with hotel accommodation."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "To book your accommodation individually:",
-     "rationale": "Participants are directed to book the event's resort hotel separately through a booking link."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "a9c7638704567715",
+ "answer": {
+  "batch": "event-15795",
+  "events": [
+   {
+    "event_id": 15795,
+    "artists": [
+     {
+      "name_as_written": "Ledoux Kingsman",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Ledoux Kingsman"
+     },
+     {
+      "name_as_written": "Guy Tawa & Bicky",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Guy Tawa & Bicky"
+     },
+     {
+      "name_as_written": "Steven’s & Audrey",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Steven’s & Audrey"
+     },
+     {
+      "name_as_written": "Marija",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Marija"
+     },
+     {
+      "name_as_written": "Dinara",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Dinara"
+     },
+     {
+      "name_as_written": "Senseï",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Senseï"
+     },
+     {
+      "name_as_written": "JFK",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "JFK"
+     },
+     {
+      "name_as_written": "Onça",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Onça"
+     },
+     {
+      "name_as_written": "Lu Říha",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Lu Říha"
+     },
+     {
+      "name_as_written": "DJ JDN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ JDN"
+     },
+     {
+      "name_as_written": "DJ Diablo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Diablo"
+     },
+     {
+      "name_as_written": "DJ Ichigo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Ichigo"
+     },
+     {
+      "name_as_written": "DJ Le Grand Tiwosh",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Le Grand Tiwosh"
+     },
+     {
+      "name_as_written": "DJ Harry’z",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Harry’z"
+     },
+     {
+      "name_as_written": "DJ Thales",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Thales"
+     },
+     {
+      "name_as_written": "DJ Valkyrie",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Valkyrie"
+     },
+     {
+      "name_as_written": "DJ Ted",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Ted"
+     },
+     {
+      "name_as_written": "DJ Ozy Shyne",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Ozy Shyne"
+     },
+     {
+      "name_as_written": "LNA Carla",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "LNA Carla"
+     },
+     {
+      "name_as_written": "Benkos",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Benkos"
+     },
+     {
+      "name_as_written": "Dhoirif",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Dhoirif"
+     },
+     {
+      "name_as_written": "Team O’Kiz",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Team O’Kiz"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL in ONE place – Exclusive Resort",
+      "rationale": "The event is held in one all-in-one resort venue where the parties take place."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Pool Parties",
+      "rationale": "The description lists Pool Parties among the event highlights."
+     },
+     {
+      "feature": "beach_party",
+      "quote": "Beach Parties",
+      "rationale": "The description lists Beach Parties among the event highlights."
+     },
+     {
+      "feature": "boat_party",
+      "quote": "Boat Party",
+      "rationale": "The description lists a Boat Party with its own price."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Quality lessons",
+      "rationale": "Dance lessons are offered as part of the event."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "PACKAGES (Full pass+hotel+boat party)",
+      "rationale": "The packages combine the full pass with hotel accommodation."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "To book your accommodation individually:",
+      "rationale": "A hotel booking link with a partner ID is offered for accommodation booked separately from the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ricardo@alcpaula+ricardo",
+ "key_b": "p:ricardoferreira",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "63dd100ff8a502f3",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only link is that both sides are stated as Portuguese, and a bare first name 'RICARDO' with a partner 'alcpaula' in Spain versus a full name 'RICARDO FERREIRA' teaching in Iceland, Norway and the UK shares no event, partner or style, and side A has no listed mentions to check, so the evidence does not settle it."
+ }
+}

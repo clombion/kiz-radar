@@ -1,59 +1,68 @@
 {
- "batch": "event-15858",
- "events": [
-  {
-   "event_id": 15858,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 79.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "👉 Full Pass: 79€"
-      }
-     ]
-    },
-    {
-     "kind": "party",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 49.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "👉 Party Pass: 49€"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Prices increase every month — don’t wait to secure your pass!"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:42:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "83d3b2b6c1811850",
+ "answer": {
+  "batch": "event-15858",
+  "events": [
+   {
+    "event_id": 15858,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "🎟️ January Prices:",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 79.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "01-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "👉 Full Pass: 79€"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": "🎟️ January Prices:",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 49.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "01-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "👉 Party Pass: 49€"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Prices increase every month — don’t wait to secure your pass!"
+    ]
+   }
+  ]
+ }
 }

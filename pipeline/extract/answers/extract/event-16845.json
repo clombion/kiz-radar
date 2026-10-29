@@ -1,210 +1,217 @@
 {
- "batch": "event-16845",
- "events": [
-  {
-   "event_id": 16845,
-   "artists": [
-    {
-     "name_as_written": "Enah Lebon",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Enah Lebon"
-    },
-    {
-     "name_as_written": "Ioury & Eden",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Ioury & Eden"
-    },
-    {
-     "name_as_written": "JP & Stephy",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 JP & Stephy"
-    },
-    {
-     "name_as_written": "Methodz & Julia",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Methodz & Julia"
-    },
-    {
-     "name_as_written": "Virgile & Juneline",
-     "role": "teacher",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "🇳🇱 Virgile & Juneline"
-    },
-    {
-     "name_as_written": "Spencer",
-     "role": "teacher",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "🇳🇱 Spencer"
-    },
-    {
-     "name_as_written": "Tabanka",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🇵🇹 Tabanka"
-    },
-    {
-     "name_as_written": "Tecas & Tasha",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Tecas & Tasha"
-    },
-    {
-     "name_as_written": "Val ColaSemba & Rokhaya",
-     "role": "teacher",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "🇳🇱 Val ColaSemba & Rokhaya"
-    },
-    {
-     "name_as_written": "DJ Shark",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "DJ Shark 🇪🇸"
-    },
-    {
-     "name_as_written": "DJ Stefanio Lima",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "DJ Stefanio Lima 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ Lenhy",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "DJ Lenhy 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Ichigo",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "DJ Ichigo 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ NiceLife",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "DJ NiceLife 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ Valet",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "DJ Valet 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Traybeatz",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "DJ Traybeatz 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ Jessie Santos",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "DJ Jessie Santos 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ Tony Samson",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "DJ Tony Samson 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ On Fire",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "DJ On Fire 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ Tje",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "DJ Tje 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ Ellen",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "DJ Ellen 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ Dos Anjos",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "DJ Dos Anjos 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ Tecas",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "DJ Tecas 🇫🇷"
-    },
-    {
-     "name_as_written": "Victor Reinier",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📸 Official Photographer: Victor Reinier"
-    }
-   ],
-   "features": [
-    {
-     "feature": "pre_party",
-     "quote": "1 Epic Pre-Party (Included in Full Pass)",
-     "rationale": "The description lists a pre-party included in the full pass."
-    },
-    {
-     "feature": "workshops",
-     "quote": "4 Days of Workshops",
-     "rationale": "The event offers four days of dance workshops."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 Days of Social Dancing",
-     "rationale": "Daytime social dancing sessions are part of the programme."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Beautiful Dance Rooms",
-     "rationale": "The event has two separate dance rooms."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "FREE Hotel Shuttle Bus (4-min ride)",
-     "rationale": "A free shuttle bus to the hotel is offered."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Partner Hotels",
-     "rationale": "The event lists partner hotels with a shuttle to the venue."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "8320aaa289e72c55",
+ "answer": {
+  "batch": "event-16845",
+  "events": [
+   {
+    "event_id": 16845,
+    "artists": [
+     {
+      "name_as_written": "Enah Lebon",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Enah Lebon"
+     },
+     {
+      "name_as_written": "Ioury & Eden",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Ioury & Eden"
+     },
+     {
+      "name_as_written": "JP & Stephy",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 JP & Stephy"
+     },
+     {
+      "name_as_written": "Methodz & Julia",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Methodz & Julia"
+     },
+     {
+      "name_as_written": "Virgile & Juneline",
+      "role": "teacher",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "🇳🇱 Virgile & Juneline"
+     },
+     {
+      "name_as_written": "Spencer",
+      "role": "teacher",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "🇳🇱 Spencer"
+     },
+     {
+      "name_as_written": "Tabanka",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🇵🇹 Tabanka"
+     },
+     {
+      "name_as_written": "Tecas & Tasha",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Tecas & Tasha"
+     },
+     {
+      "name_as_written": "Val ColaSemba & Rokhaya",
+      "role": "teacher",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "🇳🇱 Val ColaSemba & Rokhaya"
+     },
+     {
+      "name_as_written": "DJ Shark",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "DJ Shark 🇪🇸"
+     },
+     {
+      "name_as_written": "DJ Stefanio Lima",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "DJ Stefanio Lima 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ Lenhy",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "DJ Lenhy 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Ichigo",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "DJ Ichigo 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ NiceLife",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "DJ NiceLife 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ Valet",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "DJ Valet 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Traybeatz",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "DJ Traybeatz 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ Jessie Santos",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "DJ Jessie Santos 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ Tony Samson",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "DJ Tony Samson 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ On Fire",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "DJ On Fire 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ Tje",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "DJ Tje 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ Ellen",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "DJ Ellen 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ Dos Anjos",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "DJ Dos Anjos 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ Tecas",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "DJ Tecas 🇫🇷"
+     },
+     {
+      "name_as_written": "Victor Reinier",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📸 Official Photographer: Victor Reinier"
+     }
+    ],
+    "features": [
+     {
+      "feature": "pre_party",
+      "quote": "1 Epic Pre-Party",
+      "rationale": "The line describes a pre-party held before the main event."
+     },
+     {
+      "feature": "workshops",
+      "quote": "4 Days of Workshops",
+      "rationale": "The event offers dance workshops across four days."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 Days of Social Dancing",
+      "rationale": "Social dancing sessions are held during the day, such as the Friday social from 16:00 to 20:00."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 Beautiful Dance Rooms",
+      "rationale": "The event has two separate dance rooms."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "FREE Hotel Shuttle Bus (4-min ride)",
+      "rationale": "A free shuttle bus runs between the hotel and the venue."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Partner Hotels",
+      "rationale": "The description lists partner hotels without including accommodation in the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,58 +1,65 @@
 {
- "batch": "event-16124",
- "events": [
-  {
-   "event_id": 16124,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 fully air-conditioned rooms with different vibes"
-   },
-   "class_rooms": {
-    "count": 2,
-    "quote": "3 days of workshops in 2 simultaneous rooms to choose from"
-   },
-   "rooms": [
-    {
-     "name_as_written": "Room 1",
-     "kind": "unspecified",
-     "genres": [
-      "bachata",
-      "salsa"
-     ],
-     "quote": "Room 1: Bachata & Salsa"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "4647a10ba6c3e3f4",
+ "answer": {
+  "batch": "event-16124",
+  "events": [
+   {
+    "event_id": 16124,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 spectacular party nights in both rooms"
     },
-    {
-     "name_as_written": "Room 2",
-     "kind": "unspecified",
-     "genres": [
-      "kizomba",
-      "urbankiz"
-     ],
-     "quote": "Room 2: Kizomba & UrbanKiz"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Room 1: Bachata & Salsa"
+    "class_rooms": {
+     "count": 2,
+     "quote": "3 days of workshops in 2 simultaneous rooms to choose from"
     },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Room 1: Bachata & Salsa"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Room 2: Kizomba & UrbanKiz"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "UrbanKiz",
-     "quote": "Room 2: Kizomba & UrbanKiz"
-    }
-   ]
-  }
- ]
+    "rooms": [
+     {
+      "name_as_written": "Room 1",
+      "kind": "unspecified",
+      "genres": [
+       "bachata",
+       "salsa"
+      ],
+      "quote": "Room 1: Bachata & Salsa"
+     },
+     {
+      "name_as_written": "Room 2",
+      "kind": "unspecified",
+      "genres": [
+       "kizomba",
+       "urbankiz"
+      ],
+      "quote": "Room 2: Kizomba & UrbanKiz"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Room 1: Bachata & Salsa"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Room 1: Bachata & Salsa"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Room 2: Kizomba & UrbanKiz"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "UrbanKiz",
+      "quote": "Room 2: Kizomba & UrbanKiz"
+     }
+    ]
+   }
+  ]
+ }
 }

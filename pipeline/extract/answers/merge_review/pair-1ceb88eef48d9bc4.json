@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mady@isa+mady",
+ "key_b": "p:madykeita",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "1ceb88eef48d9bc4",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only 'MADY' with no mentions of its own, and the overlap is weak: both sides share country DE and a partner named Isa, but the couple keys differ (isa+mady vs isa+madykeita) and side B also pairs with Isabelle. 'Mady' is a common first name, and nothing ties A's events to B's, so merging would risk joining two people's histories."
+ }
+}

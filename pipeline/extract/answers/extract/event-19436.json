@@ -1,18 +1,25 @@
 {
- "batch": "event-19436",
- "events": [
-  {
-   "event_id": 19436,
-   "artists": [
-    {
-     "name_as_written": "Ginga Boo UK",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "-Instagram : Ginga Boo UK"
-    }
-   ],
-   "features": []
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:34:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "01e07a2dcb93353d",
+ "answer": {
+  "batch": "event-19436",
+  "events": [
+   {
+    "event_id": 19436,
+    "artists": [
+     {
+      "name_as_written": "Ginga Boo UK",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "-Instagram : Ginga Boo UK"
+     }
+    ],
+    "features": []
+   }
+  ]
+ }
 }

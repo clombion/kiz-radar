@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mikiz@dance",
+ "key_b": "p:mikiz@mikiz+pao",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "69195f909c08be83",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are the same distinctive stylized name 'MIK’IZ' with France as a stated country and overlapping France events, and side B's partner entry is the same person paired with Pao, with no conflicting country or style evidence, though side B's individual mentions are missing so this rests on the name and country match."
+ }
+}

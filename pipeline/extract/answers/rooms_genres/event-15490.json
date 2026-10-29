@@ -1,26 +1,33 @@
 {
- "batch": "event-15490",
- "events": [
-  {
-   "event_id": 15490,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 Rooms, 2 Styles Urban kiz & Bachata"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban kizz",
-     "quote": "Urban kizz Line up"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "81acfdf6d6dbc086",
+ "answer": {
+  "batch": "event-15490",
+  "events": [
+   {
+    "event_id": 15490,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 Rooms, 2 Styles Urban kiz & Bachata"
     },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata Line up"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban kiz",
+      "quote": "2 Rooms, 2 Styles Urban kiz & Bachata"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata Line up"
+     }
+    ]
+   }
+  ]
+ }
 }

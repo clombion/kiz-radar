@@ -1,56 +1,63 @@
 {
- "batch": "event-15692",
- "events": [
-  {
-   "event_id": 15692,
-   "party_rooms": {
-    "count": 3,
-    "quote": "Separate party rooms for 𝐁𝐀𝐂𝐇𝐀𝐓𝐀 | 𝐊𝐈𝐙𝐎𝐌𝐁𝐀 | 𝐒𝐀𝐋𝐒𝐀 till the morning!"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀",
-     "kind": "party",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "Separate party rooms for 𝐁𝐀𝐂𝐇𝐀𝐓𝐀 | 𝐊𝐈𝐙𝐎𝐌𝐁𝐀 | 𝐒𝐀𝐋𝐒𝐀 till the morning!"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b19ebb7aa4d20cfa",
+ "answer": {
+  "batch": "event-15692",
+  "events": [
+   {
+    "event_id": 15692,
+    "party_rooms": {
+     "count": 3,
+     "quote": "Separate party rooms for 𝐁𝐀𝐂𝐇𝐀𝐓𝐀 | 𝐊𝐈𝐙𝐎𝐌𝐁𝐀 | 𝐒𝐀𝐋𝐒𝐀"
     },
-    {
-     "name_as_written": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀",
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "Separate party rooms for 𝐁𝐀𝐂𝐇𝐀𝐓𝐀 | 𝐊𝐈𝐙𝐎𝐌𝐁𝐀 | 𝐒𝐀𝐋𝐒𝐀 till the morning!"
-    },
-    {
-     "name_as_written": "𝐒𝐀𝐋𝐒𝐀",
-     "kind": "party",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "Separate party rooms for 𝐁𝐀𝐂𝐇𝐀𝐓𝐀 | 𝐊𝐈𝐙𝐎𝐌𝐁𝐀 | 𝐒𝐀𝐋𝐒𝐀 till the morning!"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Giving respect and equal space to Bachata, Kizomba, and Salsa"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Giving respect and equal space to Bachata, Kizomba, and Salsa"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Giving respect and equal space to Bachata, Kizomba, and Salsa"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀",
+      "kind": "party",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀"
+     },
+     {
+      "name_as_written": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀",
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀"
+     },
+     {
+      "name_as_written": "𝐒𝐀𝐋𝐒𝐀",
+      "kind": "party",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "𝐒𝐀𝐋𝐒𝐀"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "equal space to Bachata, Kizomba, and Salsa"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "equal space to Bachata, Kizomba, and Salsa"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "equal space to Bachata, Kizomba, and Salsa"
+     }
+    ]
+   }
+  ]
+ }
 }

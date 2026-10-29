@@ -1,49 +1,56 @@
 {
- "batch": "event-19064",
- "events": [
-  {
-   "event_id": 19064,
-   "party_rooms": {
-    "count": 2,
-    "quote": "TWO rooms: Kizomba/Semba + UrbanKiz"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Kizomba/Semba",
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba"
-     ],
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "acf8318afdc90f64",
+ "answer": {
+  "batch": "event-19064",
+  "events": [
+   {
+    "event_id": 19064,
+    "party_rooms": {
+     "count": 2,
      "quote": "TWO rooms: Kizomba/Semba + UrbanKiz"
     },
-    {
-     "name_as_written": "UrbanKiz",
-     "kind": "party",
-     "genres": [
-      "urbankiz"
-     ],
-     "quote": "TWO rooms: Kizomba/Semba + UrbanKiz"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "TWO rooms: Kizomba/Semba + UrbanKiz"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "TWO rooms: Kizomba/Semba + UrbanKiz"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "UrbanKiz",
-     "quote": "TWO rooms: Kizomba/Semba + UrbanKiz"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "semba"
+      ],
+      "quote": "Kizomba/Semba"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "urbankiz"
+      ],
+      "quote": "UrbanKiz"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "TWO rooms: Kizomba/Semba + UrbanKiz"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "TWO rooms: Kizomba/Semba + UrbanKiz"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "UrbanKiz",
+      "quote": "TWO rooms: Kizomba/Semba + UrbanKiz"
+     }
+    ]
+   }
+  ]
+ }
 }

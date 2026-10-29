@@ -1,141 +1,148 @@
 {
- "batch": "event-15632",
- "events": [
-  {
-   "event_id": 15632,
-   "artists": [
-    {
-     "name_as_written": "LE GRAND TI WOSH",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 LE GRAND TI WOSH"
-    },
-    {
-     "name_as_written": "POEMA BEATZ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 POEMA BEATZ"
-    },
-    {
-     "name_as_written": "DJ KEMENA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 DJ KEMENA"
-    },
-    {
-     "name_as_written": "DJ BIJU",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 DJ BIJU"
-    },
-    {
-     "name_as_written": "DJ EST’",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 DJ EST’"
-    },
-    {
-     "name_as_written": "JESSIE SANTOS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 JESSIE SANTOS"
-    },
-    {
-     "name_as_written": "DJ ECLIPSE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 DJ ECLIPSE"
-    },
-    {
-     "name_as_written": "JP & RAMONA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 JP & RAMONA"
-    },
-    {
-     "name_as_written": "NICK & ALEX",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 NICK & ALEX"
-    },
-    {
-     "name_as_written": "ENDOS & NIENKE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 ENDOS & NIENKE"
-    },
-    {
-     "name_as_written": "ANTHO & BÉNÉ",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 ANTHO & BÉNÉ"
-    },
-    {
-     "name_as_written": "NAISSA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 NAISSA"
-    },
-    {
-     "name_as_written": "THERRY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 THERRY"
-    },
-    {
-     "name_as_written": "KIZOTECA",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 KIZOTECA (social media manager)"
-    },
-    {
-     "name_as_written": "INSEN",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 INSEN (photographer)"
-    },
-    {
-     "name_as_written": "SAGA.PROD",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 SAGA.PROD (videographer)"
-    },
-    {
-     "name_as_written": "LÉA",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🔸 LÉA (communication manager)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "MAIN HOTEL • ALL IN ONE",
-     "rationale": "The event is headlined as all in one at the main hotel where dancers stay, so the parties are held in the accommodation venue."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Package: 2 full passes + double room → 480€",
-     "rationale": "The package bundles full passes with a double room, so accommodation is included in the package price."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "32d2fed25421c5d7",
+ "answer": {
+  "batch": "event-15632",
+  "events": [
+   {
+    "event_id": 15632,
+    "artists": [
+     {
+      "name_as_written": "LE GRAND TI WOSH",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 LE GRAND TI WOSH"
+     },
+     {
+      "name_as_written": "POEMA BEATZ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 POEMA BEATZ"
+     },
+     {
+      "name_as_written": "DJ KEMENA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 DJ KEMENA"
+     },
+     {
+      "name_as_written": "DJ BIJU",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 DJ BIJU"
+     },
+     {
+      "name_as_written": "DJ EST’",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 DJ EST’"
+     },
+     {
+      "name_as_written": "JESSIE SANTOS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 JESSIE SANTOS"
+     },
+     {
+      "name_as_written": "DJ ECLIPSE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 DJ ECLIPSE"
+     },
+     {
+      "name_as_written": "JP & RAMONA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 JP & RAMONA"
+     },
+     {
+      "name_as_written": "NICK & ALEX",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 NICK & ALEX"
+     },
+     {
+      "name_as_written": "ENDOS & NIENKE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 ENDOS & NIENKE"
+     },
+     {
+      "name_as_written": "ANTHO & BÉNÉ",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 ANTHO & BÉNÉ"
+     },
+     {
+      "name_as_written": "NAISSA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 NAISSA"
+     },
+     {
+      "name_as_written": "THERRY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 THERRY"
+     },
+     {
+      "name_as_written": "KIZOTECA",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 KIZOTECA (social media manager)"
+     },
+     {
+      "name_as_written": "INSEN",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 INSEN (photographer)"
+     },
+     {
+      "name_as_written": "SAGA.PROD",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 SAGA.PROD (videographer)"
+     },
+     {
+      "name_as_written": "LÉA",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🔸 LÉA (communication manager)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "MAIN HOTEL • ALL IN ONE",
+      "rationale": "The section names the main hotel as an all-in-one venue, so the event and accommodation share the same location."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Package: 2 full passes + double room → 480€",
+      "rationale": "The package bundles two full passes with a double room, so accommodation is included in the package."
+     }
+    ]
+   }
+  ]
+ }
 }

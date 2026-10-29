@@ -2,9 +2,8 @@
  "event_id": 16713,
  "title": "Makutano SBK Festival “2nd edition”",
  "start_date": "2026-12-18",
- "read_by": "claude-sonnet-5-5 + claude-fable-5-1",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:21:33+00:00",
+ "end_date": "2026-12-20",
+ "country": "Belgium",
  "styles": [
   "bachata",
   "kizomba",
@@ -13,6 +12,9 @@
   "zouk"
  ],
  "description": "🌟🎀 MAKUTANO SBK FESTIVAL 🎀🌟\n2nd edition\n★★★★ The place where all dance afficionados meet’ is back! A meeting point for all Kizomberos, bachateros and salseros… with the best DJs around. .An event you cannot afford to miss ★★★★\n– Take advantage of our special offer before 7 April\n– Profiteer van onze speciale aanbieding voor 7 april\n– Profitez de notre offre special avant le 7 avril\n🌟 FULL PASS €60 🌟\nBE08 0019 9496 1513\n➖➖➖➖➖➖➖➖➖➖➖\nSPECIAL FESTIVAL WITH 5 AREAS\n➖➖➖➖➖➖➖➖➖➖➖\n🔶 SALSA CUBANA – AREA\n🔶 URBAN-KIZOMBA/FUSION – AREA\n🔶 KIZOMBA/SEMBA/KONPA/ZOUK – AREA\n🔶 BACHATA – AREA\n🔶 MAMBO/SALSA – AREA\nSALSA/CUBANA ARTISTS CONFIRMED:\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n✔️\n✔️\nBACHATA ARTISTS CONFIRMED:\n➖➖➖➖➖➖➖➖➖➖➖\n✔️\n✔️\n.\nURBAN-KIZOMBA/FUSION ARTISTS CONFIRMED:\n➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\n✔️\n✔️\nKIZOMBA/SEMBA/KONPA/ZOUK ARTISTS CONFIRMED:\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n✔️\n✔️\nARTISTS CONFIRMED:\nSALSA/MAMBO ARTISTS CONFIRMED:\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n✔️\n✔️\n🎧Dj Jérémie (Fr)\n🎧\nWORKSHOPS/ATELIERS SCHEDULE\nhttps://makutanosbkfestival.com/program/\nFRIDAY\nEVENING PROGRAMME :\n➖➖➖➖➖➖➖➖➖\n⏰19:00 DOOR OPENING\n⏰19:30 REGISTRATION\n⏰20:00 WORKSHOPS STARTS\n⏰22:00 PARTY STARTS\n⏰23:45 SHOWTIME\n⏰03.00 END OF THE PARTY\nSATURDAY\nMORNING PROGRAMME :\n➖➖➖➖➖➖➖➖➖\n⏰09:30 DOOR OPENING\n⏰09:45 REGISTRATION\n⏰10:30 WORKSHOPS STARTS\n▪️ 10:30-11:30\n▪️ 11:30-12:30\n🗣 BREAK\n▪️ 13:00-14:00\n▪️ 14:00-15:00\n▪️ 15:00-16:00\n🗣 BREAK\n▪️ 16:30-17:30\n▪️ 17:30-18:30\nEVENING PROGRAMME :\n➖➖➖➖➖➖➖➖➖\n⏰19:30 DOOR OPENING\n⏰19:45 WARMING UP & SOCIAL DANCE\n⏰20:00 FREE OPEN LEVEL WORKSHOPS\n⏰21.00 PARTY STARTS\n⏰23:00 SHOWTIME\n⏰04.30 END OF THE PARTY\n⏰AFTER PARTY\n🗣PHOTO/VIDEO:\n🗣COCKTAILS BAR: with 🍹🍹\n🗣DANCE SHOES for sale :\n🗣🏵 TICKETS AT THE ENTRANCE/ A LA CAISSE 🏵\nFRIDAY:\n———–\n– FULL PASS\n– FULL PASS ( couple )\n– PARTY PASS (Friday+Saturday party)\n– FRIDAY PASS (party+workshops)\n– FRIDAY PARTY + 1 workshop\n– FRIDAY PARTY\nSATURDAY:\n————–\n– PARTY PASS (Friday+Saturday party)\n– SATURDAY PASS (party+workshops)\n– SATURDAY PARTY + 3 workshops\n– SATURDAY PARTY + 2 workshops\n– SATURDAY PARTY + 1 workshop\n– SATURDAY PARTY\n– 1 SATURDAY WORKSHOP\n🗣 PARTY WITH ADVANTAGES:\n➖➖➖➖➖➖➖➖➖➖➖\n* 5 Areas\n* Food, snacks and drinks\n* Good location\n🅿️ Easy and big parking\n🗣 HOTELS :\n➖➖➖➖\nhttps://www.gosset.be/en\nhttps://all.accor.com/hotel/A241/index.en.shtml\n🗣 VENUE :\n➖➖➖➖➖➖➖\nNoorderlaan 21, 1731 Zellik\n🚗 10 min from Brussels\n🚗 25 min from Leuven\n🚗 50 min from Hasselt\n🚗 30 min from Antwerp\n🚗 50 min from Liège\n🚗 50 min from Namur, Mons, Charleroi\n🚗 25 min from Gent\n🗣 CONTACT :\n➖➖➖➖➖➖➖\nhttps://makutanosbkfestival.com/\ninfo@makutanosbkfestival.com",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:12:17+00:00",
  "passes": [
   {
    "kind": "full",
@@ -57,7 +59,7 @@
    "style": null,
    "label_quote": null,
    "group_size": 1,
-   "days": null,
+   "days": 2,
    "includes_hotel": false,
    "tiers": [
     {

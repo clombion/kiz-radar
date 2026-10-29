@@ -1,88 +1,89 @@
 {
- "batch": "event-18728",
- "events": [
-  {
-   "event_id": 18728,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "𝗥𝗢𝗢𝗠 𝟭 (𝗨𝗥𝗕𝗔𝗡)",
-     "kind": "unspecified",
-     "genres": [
-      "urbankiz",
-      "tarraxo",
-      "afro",
-      "douceur",
-      "semba",
-      "other"
-     ],
-     "quote": "𝗥𝗢𝗢𝗠 𝟭 (𝗨𝗥𝗕𝗔𝗡) (400 m2):"
-    },
-    {
-     "name_as_written": "𝗥𝗢𝗢𝗠 𝟮 (𝗞𝗜𝗭𝗢𝗠𝗕𝗔)",
-     "kind": "unspecified",
-     "genres": [
-      "zouk",
-      "kizomba",
-      "kompa",
-      "tarraxinha"
-     ],
-     "quote": "𝗥𝗢𝗢𝗠 𝟮 (𝗞𝗜𝗭𝗢𝗠𝗕𝗔) (200m2)"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban kiz",
-     "quote": "Urban kiz"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Tarraxo"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "Afro"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "Douceur"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Semba"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "World wide music",
-     "quote": "World wide music"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghetto zouk",
-     "quote": "Ghetto zouk"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba was better before"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "Kompa"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Tarraxinha"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "40254f730dabae12",
+ "answer": {
+  "batch": "event-18728",
+  "events": [
+   {
+    "event_id": 18728,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [
+       "urbankiz",
+       "tarraxo",
+       "afro",
+       "douceur",
+       "semba"
+      ],
+      "quote": "(400 m2)"
+     },
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [
+       "zouk",
+       "kizomba",
+       "kompa",
+       "tarraxinha"
+      ],
+      "quote": "(200m2)"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban kiz",
+      "quote": "Urban kiz"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Tarraxo"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "Afro"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "Douceur"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Semba"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghetto zouk",
+      "quote": "Ghetto zouk"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba was better before"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "Kompa"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Tarraxinha"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,47 +1,56 @@
 {
- "batch": "event-14446",
- "events": [
-  {
-   "event_id": 14446,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 60.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 20,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "★ EARLY BIRD £60 1st 20 peoples | SOLD OUT"
-      },
-      {
-       "amount": 65.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ EARLY BIRD £65"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "bcad8e5ac67f99b7",
+ "answer": {
+  "batch": "event-14446",
+  "events": [
+   {
+    "event_id": 14446,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 60.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 20,
+         "current": false
+        },
+        "sold_out": true,
+        "quote": "★ EARLY BIRD £60 1st 20 peoples | SOLD OUT"
+       },
+       {
+        "amount": 65.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "★ EARLY BIRD £65"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

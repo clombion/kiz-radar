@@ -1,37 +1,40 @@
 {
- "batch": "event-17830",
- "events": [
-  {
-   "event_id": 17830,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 14,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 1800.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": {
-        "amount": 45000.0,
-        "currency": "CZK"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "PRICE 💶 1800E or 45 000CZK"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:45:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "c8a04636cfc43151",
+ "answer": {
+  "batch": "event-17830",
+  "events": [
+   {
+    "event_id": 17830,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "PRICE 💶",
+      "group_size": 1,
+      "days": 14,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 1800.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": {
+         "amount": 45000.0,
+         "currency": "CZK"
+        },
+        "sale": null,
+        "sold_out": false,
+        "quote": "PRICE 💶 1800E or 45 000CZK"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

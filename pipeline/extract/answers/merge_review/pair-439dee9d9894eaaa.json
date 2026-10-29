@@ -1,0 +1,13 @@
+{
+ "key_a": "p:emanuel@emanuel+teresa",
+ "key_b": "p:manuel@benedicte+manuel",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "439dee9d9894eaaa",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Side A ('Emanuel') has partner Teresa and events in Czech Republic, Denmark, France and Italy, while side B ('MANUEL') has partner Benedicte and events only in France; the only shared link is a similar first-name spelling, and the partners differ, so the evidence shows two different dancers."
+ }
+}

@@ -1,141 +1,128 @@
 {
- "batch": "event-14732",
- "events": [
-  {
-   "event_id": 14732,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 95.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": {
-        "amount": 2375.0,
-        "currency": "CZK"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🕺 FULLPASS MAN 95€ OR 2375CZK"
-      }
-     ]
-    },
-    {
-     "kind": "party",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 85.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": {
-        "amount": 2125.0,
-        "currency": "CZK"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🕺 DANCEPASS MAN 85€ OR 2125CZK"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 170.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": {
-        "amount": 4250.0,
-        "currency": "CZK"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "💃🕺FULLPASS COUPLEPASS 170€ or 4250CZK"
-      }
-     ]
-    },
-    {
-     "kind": "party",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 150.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": {
-        "amount": 3750.0,
-        "currency": "CZK"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "💃🕺DANCEPASS COUPLEPASS 150€ OR 3750CZK"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "PRE-PARTY from 21:00 – 04:00",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 400.0,
-       "currency": "CZK",
-       "fee": null,
-       "alt": {
-        "amount": 15.0,
-        "currency": "EUR"
-       },
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Entrance fee 400CZK / 15E"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:41:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "2ce077040e707de3",
+ "answer": {
+  "batch": "event-14732",
+  "events": [
+   {
+    "event_id": 14732,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 95.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": {
+         "amount": 2375.0,
+         "currency": "CZK"
+        },
+        "sale": null,
+        "sold_out": false,
+        "quote": "🕺 FULLPASS MAN 95€ OR 2375CZK"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 85.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": {
+         "amount": 2125.0,
+         "currency": "CZK"
+        },
+        "sale": null,
+        "sold_out": false,
+        "quote": "🕺 DANCEPASS MAN 85€ OR 2125CZK"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 170.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": {
+         "amount": 4250.0,
+         "currency": "CZK"
+        },
+        "sale": null,
+        "sold_out": false,
+        "quote": "💃🕺FULLPASS COUPLEPASS 170€ or 4250CZK"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": null,
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 150.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": {
+         "amount": 3750.0,
+         "currency": "CZK"
+        },
+        "sale": null,
+        "sold_out": false,
+        "quote": "💃🕺DANCEPASS COUPLEPASS 150€ OR 3750CZK"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": "PRE-PARTY from 21:00 – 04:00",
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 400.0,
+        "currency": "CZK",
+        "fee": null,
+        "alt": {
+         "amount": 15.0,
+         "currency": "EUR"
+        },
+        "sale": null,
+        "sold_out": false,
+        "quote": "Entrance fee 400CZK / 15E"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

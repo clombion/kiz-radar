@@ -1,277 +1,284 @@
 {
- "batch": "event-15617",
- "events": [
-  {
-   "event_id": 15617,
-   "artists": [
-    {
-     "name_as_written": "Albir Rojas",
-     "role": "teacher",
-     "style": null,
-     "country": "Spain",
-     "source_line": "Albir Rojas (Spain)"
-    },
-    {
-     "name_as_written": "Jojo Kizomba",
-     "role": "teacher",
-     "style": null,
-     "country": "France",
-     "source_line": "Jojo Kizomba (France)"
-    },
-    {
-     "name_as_written": "Fred-Nelson & Morgane",
-     "role": "teacher",
-     "style": null,
-     "country": "France",
-     "source_line": "Fred-Nelson & Morgane (France)"
-    },
-    {
-     "name_as_written": "Enah & Pocahontas",
-     "role": "teacher",
-     "style": null,
-     "country": "France",
-     "source_line": "Enah & Pocahontas (France)"
-    },
-    {
-     "name_as_written": "Val’R & Sarah",
-     "role": "teacher",
-     "style": null,
-     "country": "France",
-     "source_line": "Val’R & Sarah (France)"
-    },
-    {
-     "name_as_written": "Azzedine",
-     "role": "teacher",
-     "style": null,
-     "country": "France",
-     "source_line": "Azzedine (France)"
-    },
-    {
-     "name_as_written": "Ronie & Frida",
-     "role": "teacher",
-     "style": null,
-     "country": "Sweden",
-     "source_line": "Ronie & Frida (Sweden)"
-    },
-    {
-     "name_as_written": "JP & Stephy",
-     "role": "teacher",
-     "style": null,
-     "country": "France",
-     "source_line": "JP & Stephy (France)"
-    },
-    {
-     "name_as_written": "Jack & Sara",
-     "role": "teacher",
-     "style": null,
-     "country": "Spain",
-     "source_line": "Jack & Sara (Spain)"
-    },
-    {
-     "name_as_written": "Jesús & Anni",
-     "role": "teacher",
-     "style": null,
-     "country": "Spain",
-     "source_line": "Jesús & Anni (Spain)"
-    },
-    {
-     "name_as_written": "Dwe & Gaby",
-     "role": "teacher",
-     "style": null,
-     "country": "Netherlands",
-     "source_line": "Dwe & Gaby (Netherlands)"
-    },
-    {
-     "name_as_written": "Nuno & Sarai",
-     "role": "teacher",
-     "style": null,
-     "country": "Spain",
-     "source_line": "Nuno & Sarai (Spain)"
-    },
-    {
-     "name_as_written": "Guiu",
-     "role": "teacher",
-     "style": null,
-     "country": "Spain",
-     "source_line": "Guiu (Spain)"
-    },
-    {
-     "name_as_written": "Luis & Karen",
-     "role": "teacher",
-     "style": null,
-     "country": "Spain",
-     "source_line": "Luis & Karen (Spain)"
-    },
-    {
-     "name_as_written": "Oscar & Claudia",
-     "role": "teacher",
-     "style": null,
-     "country": "Italy",
-     "source_line": "Oscar & Claudia (Italy)"
-    },
-    {
-     "name_as_written": "Kevin",
-     "role": "teacher",
-     "style": null,
-     "country": "Guinea Bissau",
-     "source_line": "Kevin (Guinea Bissau)"
-    },
-    {
-     "name_as_written": "Keco & Moni",
-     "role": "teacher",
-     "style": null,
-     "country": "Spain",
-     "source_line": "Keco & Moni (Spain)"
-    },
-    {
-     "name_as_written": "Elsa & Sergi",
-     "role": "teacher",
-     "style": null,
-     "country": "Spain",
-     "source_line": "Elsa & Sergi (Spain)"
-    },
-    {
-     "name_as_written": "Rodri & Elena",
-     "role": "teacher",
-     "style": null,
-     "country": "Spain",
-     "source_line": "Rodri & Elena (Spain)"
-    },
-    {
-     "name_as_written": "Dj Dani Fernandes",
-     "role": "dj",
-     "style": null,
-     "country": "Netherlands",
-     "source_line": "Dj Dani Fernandes (Netherlands)"
-    },
-    {
-     "name_as_written": "Dj Sai Sai",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "Dj Sai Sai (France)"
-    },
-    {
-     "name_as_written": "Dj Lisa Rose",
-     "role": "dj",
-     "style": null,
-     "country": "Netherlands",
-     "source_line": "Dj Lisa Rose (Netherlands)"
-    },
-    {
-     "name_as_written": "Dj Hegza",
-     "role": "dj",
-     "style": null,
-     "country": "Portugal",
-     "source_line": "Dj Hegza (Portugal)"
-    },
-    {
-     "name_as_written": "Dj Neo",
-     "role": "dj",
-     "style": null,
-     "country": "Spain",
-     "source_line": "Dj Neo (Spain)"
-    },
-    {
-     "name_as_written": "Dj Jack",
-     "role": "dj",
-     "style": null,
-     "country": "Spain",
-     "source_line": "Dj Jack (Spain)"
-    },
-    {
-     "name_as_written": "Dj Antony Tarraxa",
-     "role": "dj",
-     "style": null,
-     "country": "Italia",
-     "source_line": "Dj Antony Tarraxa (Italia)"
-    },
-    {
-     "name_as_written": "Dj Kevin",
-     "role": "dj",
-     "style": null,
-     "country": "Guinea-Bissau",
-     "source_line": "Dj Kevin (Guinea-Bissau)"
-    },
-    {
-     "name_as_written": "Dj Kot",
-     "role": "dj",
-     "style": null,
-     "country": "Spain",
-     "source_line": "Dj Kot (Spain)"
-    },
-    {
-     "name_as_written": "Dj W",
-     "role": "dj",
-     "style": null,
-     "country": "Spain",
-     "source_line": "Dj W (Spain)"
-    },
-    {
-     "name_as_written": "Dj Ted",
-     "role": "dj",
-     "style": null,
-     "country": "Italy",
-     "source_line": "Dj Ted (Italy)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All in One Hotel",
-     "rationale": "The event is held in a single hotel where dancers can also stay."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 rooms for the parties during the night.",
-     "rationale": "Two rooms are used for the night parties."
-    },
-    {
-     "feature": "workshops",
-     "quote": "2 exclusive rooms for workshops.",
-     "rationale": "Workshops are part of the event in dedicated rooms."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "4-5 Master Classes (only with VIP PASS)",
-     "rationale": "Master classes are offered to VIP pass holders."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "A social room dance during the evening, from 12h to 20h.",
-     "rationale": "A social dance room runs during daytime and afternoon hours."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "15h-20h Pool Party",
-     "rationale": "The programme lists a pool party on Saturday afternoon."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "TUESDAY (Pre-Party)",
-     "rationale": "The programme labels Tuesday as a pre-party before the main event."
-    },
-    {
-     "feature": "shows",
-     "quote": "All the event (workshops, parties, shows)",
-     "rationale": "The description states that shows will take place during the event."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "PRICE (per person in full board with water)",
-     "rationale": "The hotel price is per person in full board, so meals are included in the package."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "FOR BOOKING:",
-     "rationale": "Hotel rooms are offered through a booking link at a negotiated per-person rate."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "INFORMATION ABOUT SHUTTLE FROM BARCELONA AIRPORT OR GIRONA AIRPORT",
-     "rationale": "Shuttle transfers from the airports to Lloret de Mar are described."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "37eebf19ba370b5f",
+ "answer": {
+  "batch": "event-15617",
+  "events": [
+   {
+    "event_id": 15617,
+    "artists": [
+     {
+      "name_as_written": "Albir Rojas",
+      "role": "teacher",
+      "style": null,
+      "country": "Spain",
+      "source_line": "Albir Rojas (Spain)"
+     },
+     {
+      "name_as_written": "Jojo Kizomba",
+      "role": "teacher",
+      "style": null,
+      "country": "France",
+      "source_line": "Jojo Kizomba (France)"
+     },
+     {
+      "name_as_written": "Fred-Nelson & Morgane",
+      "role": "teacher",
+      "style": null,
+      "country": "France",
+      "source_line": "Fred-Nelson & Morgane (France)"
+     },
+     {
+      "name_as_written": "Enah & Pocahontas",
+      "role": "teacher",
+      "style": null,
+      "country": "France",
+      "source_line": "Enah & Pocahontas (France)"
+     },
+     {
+      "name_as_written": "Val’R & Sarah",
+      "role": "teacher",
+      "style": null,
+      "country": "France",
+      "source_line": "Val’R & Sarah (France)"
+     },
+     {
+      "name_as_written": "Azzedine",
+      "role": "teacher",
+      "style": null,
+      "country": "France",
+      "source_line": "Azzedine (France)"
+     },
+     {
+      "name_as_written": "Ronie & Frida",
+      "role": "teacher",
+      "style": null,
+      "country": "Sweden",
+      "source_line": "Ronie & Frida (Sweden)"
+     },
+     {
+      "name_as_written": "JP & Stephy",
+      "role": "teacher",
+      "style": null,
+      "country": "France",
+      "source_line": "JP & Stephy (France)"
+     },
+     {
+      "name_as_written": "Jack & Sara",
+      "role": "teacher",
+      "style": null,
+      "country": "Spain",
+      "source_line": "Jack & Sara (Spain)"
+     },
+     {
+      "name_as_written": "Jesús & Anni",
+      "role": "teacher",
+      "style": null,
+      "country": "Spain",
+      "source_line": "Jesús & Anni (Spain)"
+     },
+     {
+      "name_as_written": "Dwe & Gaby",
+      "role": "teacher",
+      "style": null,
+      "country": "Netherlands",
+      "source_line": "Dwe & Gaby (Netherlands)"
+     },
+     {
+      "name_as_written": "Nuno & Sarai",
+      "role": "teacher",
+      "style": null,
+      "country": "Spain",
+      "source_line": "Nuno & Sarai (Spain)"
+     },
+     {
+      "name_as_written": "Guiu",
+      "role": "teacher",
+      "style": null,
+      "country": "Spain",
+      "source_line": "Guiu (Spain)"
+     },
+     {
+      "name_as_written": "Luis & Karen",
+      "role": "teacher",
+      "style": null,
+      "country": "Spain",
+      "source_line": "Luis & Karen (Spain)"
+     },
+     {
+      "name_as_written": "Oscar & Claudia",
+      "role": "teacher",
+      "style": null,
+      "country": "Italy",
+      "source_line": "Oscar & Claudia (Italy)"
+     },
+     {
+      "name_as_written": "Kevin",
+      "role": "teacher",
+      "style": null,
+      "country": "Guinea Bissau",
+      "source_line": "Kevin (Guinea Bissau)"
+     },
+     {
+      "name_as_written": "Keco & Moni",
+      "role": "teacher",
+      "style": null,
+      "country": "Spain",
+      "source_line": "Keco & Moni (Spain)"
+     },
+     {
+      "name_as_written": "Elsa & Sergi",
+      "role": "teacher",
+      "style": null,
+      "country": "Spain",
+      "source_line": "Elsa & Sergi (Spain)"
+     },
+     {
+      "name_as_written": "Rodri & Elena",
+      "role": "teacher",
+      "style": null,
+      "country": "Spain",
+      "source_line": "Rodri & Elena (Spain)"
+     },
+     {
+      "name_as_written": "Dj Dani Fernandes",
+      "role": "dj",
+      "style": null,
+      "country": "Netherlands",
+      "source_line": "Dj Dani Fernandes (Netherlands)"
+     },
+     {
+      "name_as_written": "Dj Sai Sai",
+      "role": "dj",
+      "style": null,
+      "country": "France",
+      "source_line": "Dj Sai Sai (France)"
+     },
+     {
+      "name_as_written": "Dj Lisa Rose",
+      "role": "dj",
+      "style": null,
+      "country": "Netherlands",
+      "source_line": "Dj Lisa Rose (Netherlands)"
+     },
+     {
+      "name_as_written": "Dj Hegza",
+      "role": "dj",
+      "style": null,
+      "country": "Portugal",
+      "source_line": "Dj Hegza (Portugal)"
+     },
+     {
+      "name_as_written": "Dj Neo",
+      "role": "dj",
+      "style": null,
+      "country": "Spain",
+      "source_line": "Dj Neo (Spain)"
+     },
+     {
+      "name_as_written": "Dj Jack",
+      "role": "dj",
+      "style": null,
+      "country": "Spain",
+      "source_line": "Dj Jack (Spain)"
+     },
+     {
+      "name_as_written": "Dj Antony Tarraxa",
+      "role": "dj",
+      "style": null,
+      "country": "Italia",
+      "source_line": "Dj Antony Tarraxa (Italia)"
+     },
+     {
+      "name_as_written": "Dj Kevin",
+      "role": "dj",
+      "style": null,
+      "country": "Guinea-Bissau",
+      "source_line": "Dj Kevin (Guinea-Bissau)"
+     },
+     {
+      "name_as_written": "Dj Kot",
+      "role": "dj",
+      "style": null,
+      "country": "Spain",
+      "source_line": "Dj Kot (Spain)"
+     },
+     {
+      "name_as_written": "Dj W",
+      "role": "dj",
+      "style": null,
+      "country": "Spain",
+      "source_line": "Dj W (Spain)"
+     },
+     {
+      "name_as_written": "Dj Ted",
+      "role": "dj",
+      "style": null,
+      "country": "Italy",
+      "source_line": "Dj Ted (Italy)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All in One Hotel",
+      "rationale": "The line says the event is in an all-in-one hotel, meaning the parties take place in the hotel where dancers stay."
+     },
+     {
+      "feature": "workshops",
+      "quote": "2 exclusive rooms for workshops.",
+      "rationale": "The description states that rooms are reserved for workshops."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "4-5 Master Classes (only with VIP PASS)",
+      "rationale": "Master classes are offered, with access requiring the VIP pass."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 rooms for the parties during the night.",
+      "rationale": "Two separate rooms are used for the night parties."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "12h-15h Social Dance Room",
+      "rationale": "A daytime social dance room is scheduled in the afternoon."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "15h-20h Pool Party",
+      "rationale": "A pool party is listed in the Saturday schedule."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "TUESDAY (Pre-Party)",
+      "rationale": "The Tuesday night is explicitly labelled as a pre-party."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "INFORMATION ABOUT SHUTTLE FROM BARCELONA AIRPORT OR GIRONA AIRPORT",
+      "rationale": "Airport shuttle transfers to the venue are described."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "HOTEL EVENIA OLIMPIC PARK",
+      "rationale": "The official event hotel is named with a booking link and negotiated rates."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "PRICE (per person in full board with water)",
+      "rationale": "The hotel package price is stated as full board, so meals are included in that package."
+     },
+     {
+      "feature": "shows",
+      "quote": "All the event (workshops, parties, shows)",
+      "rationale": "The description lists shows as part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alben@alben+dobi",
+ "key_b": "p:alben@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "1c0e6fa74f275501",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side B is the same stage name as side A with a DJ prefix (\"DJ Al”ben\" / \"Alben\"), both list Bulgaria and Ireland events, and nothing in the evidence contradicts it."
+ }
+}

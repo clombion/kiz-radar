@@ -1,0 +1,13 @@
+{
+ "key_a": "p:simon@lolahontas+simon",
+ "key_b": "p:simone@jennifer+simone",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "9d1d7b8471a77212",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different partners (lolahontas for SIMON, jennifer for SIMONE) and different event histories, with only a one-letter spelling similarity linking the names, so the evidence shows two artists."
+ }
+}

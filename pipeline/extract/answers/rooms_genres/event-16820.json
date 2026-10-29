@@ -1,61 +1,63 @@
 {
- "batch": "event-16820",
- "events": [
-  {
-   "event_id": 16820,
-   "party_rooms": {
-    "count": 4,
-    "quote": "We will have 4 dance floors available"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "collaboration of SALSA, BACHATA, KIZOMBA , URBANKIZ & AFRO-HOUSE"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "24cb5c4017fdb6d3",
+ "answer": {
+  "batch": "event-16820",
+  "events": [
+   {
+    "event_id": 16820,
+    "party_rooms": {
+     "count": 4,
+     "quote": "We will have 4 dance floors available"
     },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Salsa Bachata Kizomba & Urbankiz"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Salsa Bachata Kizomba & Urbankiz"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "Salsa Bachata Kizomba & Urbankiz"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "AFRO-HOUSE",
-     "quote": "collaboration of SALSA, BACHATA, KIZOMBA , URBANKIZ & AFRO-HOUSE"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "AFRO-BEATS",
-     "quote": "KIZOMBA URBANKIZ & AFRO-BEATS TEACHERS:"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "BRAZILIAN ZOUK",
-     "quote": "BRAZILIAN ZOUK"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "Sergent O (Kompa)"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Mister Nino (Kizomba & Semba)"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "SALSA",
+      "quote": "collaboration of SALSA, BACHATA, KIZOMBA , URBANKIZ & AFRO-HOUSE"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "SALSA, BACHATA, KIZOMBA"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KIZOMBA , URBANKIZ"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBANKIZ",
+      "quote": "KIZOMBA , URBANKIZ & AFRO-HOUSE"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "AFRO-HOUSE",
+      "quote": "URBANKIZ & AFRO-HOUSE"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "BRAZILIAN ZOUK",
+      "quote": "BRAZILIAN ZOUK"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Kizomba & Semba",
+      "quote": "Mister Nino (Kizomba & Semba)"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "Sergent O (Kompa)"
+     }
+    ]
+   }
+  ]
+ }
 }

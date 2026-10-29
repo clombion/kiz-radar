@@ -1,61 +1,68 @@
 {
- "batch": "event-16064",
- "events": [
-  {
-   "event_id": 16064,
-   "party_rooms": {
-    "count": 2,
-    "quote": "Room 1 – 𝗧𝗮𝗿𝗿𝗮𝘅𝗼 | 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇 💯\nRoom 2 – 𝗗𝗼𝘂𝗰𝗲𝘂𝗿 | 𝗞𝗼𝗻𝗽𝗮 | 𝗚𝘂𝗲𝘁𝘁𝗼 𝗭𝗼𝘂𝗸"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Room 1",
-     "kind": "party",
-     "genres": [
-      "tarraxo",
-      "urbankiz"
-     ],
-     "quote": "Room 1 – 𝗧𝗮𝗿𝗿𝗮𝘅𝗼 | 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇 💯"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "6f9c1b8b90ac5db4",
+ "answer": {
+  "batch": "event-16064",
+  "events": [
+   {
+    "event_id": 16064,
+    "party_rooms": {
+     "count": 2,
+     "quote": "Room 1 – 𝗧𝗮𝗿𝗿𝗮𝘅𝗼 | 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇 💯\nRoom 2 – 𝗗𝗼𝘂𝗰𝗲𝘂𝗿 | 𝗞𝗼𝗻𝗽𝗮 | 𝗚𝘂𝗲𝘁𝘁𝗼 𝗭𝗼𝘂𝗸"
     },
-    {
-     "name_as_written": "Room 2",
-     "kind": "party",
-     "genres": [
-      "douceur",
-      "kompa",
-      "zouk"
-     ],
-     "quote": "Room 2 – 𝗗𝗼𝘂𝗰𝗲𝘂𝗿 | 𝗞𝗼𝗻𝗽𝗮 | 𝗚𝘂𝗲𝘁𝘁𝗼 𝗭𝗼𝘂𝗸"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "𝐓𝐀𝐑𝐑𝐀𝐗𝐎",
-     "quote": "🇪🇸 𝐆𝐋𝐎𝐁𝐀𝐋 𝐓𝐀𝐑𝐑𝐀𝐗𝐎"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇",
-     "quote": "Room 1 – 𝗧𝗮𝗿𝗿𝗮𝘅𝗼 | 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇 💯"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "𝗗𝗼𝘂𝗰𝗲𝘂𝗿",
-     "quote": "Room 2 – 𝗗𝗼𝘂𝗰𝗲𝘂𝗿 | 𝗞𝗼𝗻𝗽𝗮 | 𝗚𝘂𝗲𝘁𝘁𝗼 𝗭𝗼𝘂𝗸"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "𝗞𝗼𝗻𝗽𝗮",
-     "quote": "Room 2 – 𝗗𝗼𝘂𝗰𝗲𝘂𝗿 | 𝗞𝗼𝗻𝗽𝗮 | 𝗚𝘂𝗲𝘁𝘁𝗼 𝗭𝗼𝘂𝗸"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "𝗚𝘂𝗲𝘁𝘁𝗼 𝗭𝗼𝘂𝗸",
-     "quote": "Room 2 – 𝗗𝗼𝘂𝗰𝗲𝘂𝗿 | 𝗞𝗼𝗻𝗽𝗮 | 𝗚𝘂𝗲𝘁𝘁𝗼 𝗭𝗼𝘂𝗸"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Room 1",
+      "kind": "party",
+      "genres": [
+       "tarraxo",
+       "urbankiz"
+      ],
+      "quote": "Room 1 – 𝗧𝗮𝗿𝗿𝗮𝘅𝗼 | 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇 💯"
+     },
+     {
+      "name_as_written": "Room 2",
+      "kind": "party",
+      "genres": [
+       "douceur",
+       "kompa",
+       "zouk"
+      ],
+      "quote": "Room 2 – 𝗗𝗼𝘂𝗰𝗲𝘂𝗿 | 𝗞𝗼𝗻𝗽𝗮 | 𝗚𝘂𝗲𝘁𝘁𝗼 𝗭𝗼𝘂𝗸"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "𝗧𝗮𝗿𝗿𝗮𝘅𝗼",
+      "quote": "𝗧𝗮𝗿𝗿𝗮𝘅𝗼 Vibes"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇",
+      "quote": "Room 1 – 𝗧𝗮𝗿𝗿𝗮𝘅𝗼 | 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇 💯"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "𝗗𝗼𝘂𝗰𝗲𝘂𝗿",
+      "quote": "Room 2 – 𝗗𝗼𝘂𝗰𝗲𝘂𝗿 | 𝗞𝗼𝗻𝗽𝗮 | 𝗚𝘂𝗲𝘁𝘁𝗼 𝗭𝗼𝘂𝗸"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "𝗞𝗼𝗻𝗽𝗮",
+      "quote": "Room 2 – 𝗗𝗼𝘂𝗰𝗲𝘂𝗿 | 𝗞𝗼𝗻𝗽𝗮 | 𝗚𝘂𝗲𝘁𝘁𝗼 𝗭𝗼𝘂𝗸"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "𝗚𝘂𝗲𝘁𝘁𝗼 𝗭𝗼𝘂𝗸",
+      "quote": "Room 2 – 𝗗𝗼𝘂𝗰𝗲𝘂𝗿 | 𝗞𝗼𝗻𝗽𝗮 | 𝗚𝘂𝗲𝘁𝘁𝗼 𝗭𝗼𝘂𝗸"
+     }
+    ]
+   }
+  ]
+ }
 }

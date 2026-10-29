@@ -1,28 +1,35 @@
 {
- "batch": "event-18654",
- "events": [
-  {
-   "event_id": 18654,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "around Kizomba , Semba & Ghetto Zouk music"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "around Kizomba , Semba & Ghetto Zouk music"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghetto Zouk",
-     "quote": "around Kizomba , Semba & Ghetto Zouk music"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "36fbd3f834ba0d5c",
+ "answer": {
+  "batch": "event-18654",
+  "events": [
+   {
+    "event_id": 18654,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba , Semba & Ghetto Zouk music"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba , Semba & Ghetto Zouk music"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghetto Zouk",
+      "quote": "Ghetto Zouk"
+     }
+    ]
+   }
+  ]
+ }
 }

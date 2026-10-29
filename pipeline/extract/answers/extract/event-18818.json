@@ -1,36 +1,38 @@
 {
- "batch": "event-18818",
- "events": [
-  {
-   "event_id": 18818,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "More than 25h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)",
-     "rationale": "The description states that more than 25 hours of workshops are part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 free dance floors",
-     "rationale": "Three dance floors are offered, so there is more than one dance room."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "DRESSCODE :",
-     "rationale": "The description has a dress code heading, which shows that a dress code applies."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Hotelempfehlung (Hotel recommendations):",
-     "rationale": "The event lists recommended hotels separately from the pass, so it gives partner hotel recommendations."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Social Dance from 12 p.m. to 5 p.m",
-     "rationale": "A daytime social dance running from noon to 5 p.m. is listed on the Monday."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:33:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "c6691fccf97e7c95",
+ "answer": {
+  "batch": "event-18818",
+  "events": [
+   {
+    "event_id": 18818,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "More than 25h workshops",
+      "rationale": "The description states that more than 25 hours of workshops are part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 free dance floors",
+      "rationale": "Three dance floors are offered, so there is more than one dance room."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Social Dance from 12 p.m. to 5 p.m",
+      "rationale": "A daytime social dance from 12 p.m. to 5 p.m. is scheduled on Monday."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Hotelempfehlung (Hotel recommendations):",
+      "rationale": "The event recommends a list of hotels, which is a partner or recommended hotel listing without accommodation being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

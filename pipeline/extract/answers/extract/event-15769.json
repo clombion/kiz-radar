@@ -1,131 +1,138 @@
 {
- "batch": "event-15769",
- "events": [
-  {
-   "event_id": 15769,
-   "artists": [
-    {
-     "name_as_written": "Aura & Ary",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨Aura & Ary Champions 2018"
-    },
-    {
-     "name_as_written": "Karolina & Łukasz",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨Karolina & Łukasz / Vamula"
-    },
-    {
-     "name_as_written": "Lionel",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨Lionel"
-    },
-    {
-     "name_as_written": "Andeloy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨Andeloy"
-    },
-    {
-     "name_as_written": "Issa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨Issa"
-    },
-    {
-     "name_as_written": "Dj Nao",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨Dj Nao"
-    },
-    {
-     "name_as_written": "Dj Miro Kikola",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨Dj Miro Kikola"
-    },
-    {
-     "name_as_written": "Dj Jarod",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨Dj Jarod"
-    },
-    {
-     "name_as_written": "Dj Vasco",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨Dj Vasco"
-    },
-    {
-     "name_as_written": "Dj Cayolla",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨Dj Cayolla"
-    },
-    {
-     "name_as_written": "Dj Djairo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨Dj Djairo"
-    },
-    {
-     "name_as_written": "benkos",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✨By benkos"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "HOTELS ALL IN ONE",
-     "rationale": "The description states that the hotels are all in one resort, so the parties are held where dancers can stay."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 ROOMS / 2 ENERGIES",
-     "rationale": "The event has two dance rooms."
-    },
-    {
-     "feature": "workshops",
-     "quote": "WORKSHOPS",
-     "rationale": "Workshops are listed as part of the programme."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "23:00 – 04:00 Pre Party",
-     "rationale": "A pre party is scheduled on Thursday before the main event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "15:00 – 18:00 Beach•Pool Social",
-     "rationale": "Afternoon beach and pool socials are scheduled each day."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Beach•Pool Social",
-     "rationale": "The socials are held at the beach and pool, which suggests pool sessions."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "73€ ALL INCLUSIVE",
-     "rationale": "The all-inclusive hotel rate covers meals along with drinks."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "84dbba9980300bd0",
+ "answer": {
+  "batch": "event-15769",
+  "events": [
+   {
+    "event_id": 15769,
+    "artists": [
+     {
+      "name_as_written": "Aura & Ary Champions 2018",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨Aura & Ary Champions 2018"
+     },
+     {
+      "name_as_written": "Karolina & Łukasz / Vamula",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨Karolina & Łukasz / Vamula"
+     },
+     {
+      "name_as_written": "Lionel",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨Lionel"
+     },
+     {
+      "name_as_written": "Andeloy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨Andeloy"
+     },
+     {
+      "name_as_written": "Issa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨Issa"
+     },
+     {
+      "name_as_written": "Dj Nao",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨Dj Nao"
+     },
+     {
+      "name_as_written": "Dj Miro Kikola",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨Dj Miro Kikola"
+     },
+     {
+      "name_as_written": "Dj Jarod",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨Dj Jarod"
+     },
+     {
+      "name_as_written": "Dj Vasco",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨Dj Vasco"
+     },
+     {
+      "name_as_written": "Dj Cayolla",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨Dj Cayolla"
+     },
+     {
+      "name_as_written": "Dj Djairo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨Dj Djairo"
+     },
+     {
+      "name_as_written": "benkos",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✨By benkos"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "HOTELS ALL IN ONE",
+      "rationale": "The description says the hotels are all in one, with the parties held at the resort where dancers can stay."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 ROOMS / 2 ENERGIES",
+      "rationale": "The event has two dance rooms."
+     },
+     {
+      "feature": "workshops",
+      "quote": "WORKSHOPS",
+      "rationale": "Workshops are listed as part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "15:00 – 18:00 Beach•Pool Social",
+      "rationale": "Afternoon beach and pool socials are scheduled during the day."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre Party",
+      "rationale": "A pre party is listed on Thursday 14th before the main event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "To book with our discounts",
+      "rationale": "Hotels are offered at negotiated discount rates through the event."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Breakfast – Lunch – Dinner",
+      "rationale": "The all inclusive hotel option includes meals."
+     }
+    ]
+   }
+  ]
+ }
 }

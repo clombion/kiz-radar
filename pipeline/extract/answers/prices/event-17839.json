@@ -1,106 +1,76 @@
 {
- "batch": "event-17839",
- "events": [
-  {
-   "event_id": 17839,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 125.0,
-       "currency": "USD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Believer Pass: $125"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 140.0,
-       "currency": "USD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Full Pass Tier 1: $140"
-      },
-      {
-       "amount": 160.0,
-       "currency": "USD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Full Pass Tier 2: $160"
-      },
-      {
-       "amount": 180.0,
-       "currency": "USD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Full Pass Tier 3: $180"
-      }
-     ]
-    },
-    {
-     "kind": "workshop",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 75.0,
-       "currency": "USD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Training: $75 (limited capacity – level check required)"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:45:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "835378104af0d56a",
+ "answer": {
+  "batch": "event-17839",
+  "events": [
+   {
+    "event_id": 17839,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 125.0,
+        "currency": "USD",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Believer Pass: $125"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 140.0,
+        "currency": "USD",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Full Pass Tier 1: $140"
+       },
+       {
+        "amount": 160.0,
+        "currency": "USD",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Full Pass Tier 2: $160"
+       },
+       {
+        "amount": 180.0,
+        "currency": "USD",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Full Pass Tier 3: $180"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Passes are transferable via organizer approval for a $15 fee until Thursday Nov 5 at 12PM PT."
+    ]
+   }
+  ]
+ }
 }

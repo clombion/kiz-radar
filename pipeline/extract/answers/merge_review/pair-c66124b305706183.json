@@ -1,0 +1,13 @@
+{
+ "key_a": "p:adel@adel+hanna",
+ "key_b": "p:adeldasalsa",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c66124b305706183",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side B's full name 'Adel Dasalsa' only shares the common first name 'Adel' with side A, which has no mentions listed and no partner or style in common with B; the shared French country is too weak to settle it either way."
+ }
+}

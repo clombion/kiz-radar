@@ -1,34 +1,37 @@
 {
- "batch": "event-18760",
- "events": [
-  {
-   "event_id": 18760,
-   "passes": [
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 5.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🎧 22:00–01:00 Pre-Party @ Rico Latino | DJ RomOZ & I.am.REGGIE (€5)"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:45:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "ea12edadd57010e3",
+ "answer": {
+  "batch": "event-18760",
+  "events": [
+   {
+    "event_id": 18760,
+    "passes": [
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 5.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "22:00–01:00 Pre-Party @ Rico Latino | DJ RomOZ & I.am.REGGIE (€5)"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

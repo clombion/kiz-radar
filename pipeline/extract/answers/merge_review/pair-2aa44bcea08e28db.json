@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johnny@cristina+johnny",
+ "key_b": "p:johnny@cristinazebri+johnny",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2aa44bcea08e28db",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both 'Johnny' records appear only in Switzerland, and their partners may be the same Cristina (short 'cristina' versus 'cristinazebri'), but those partner keys are separate records, the mention lists are empty, and Johnny is a common first name, so the evidence does not settle whether this is one artist."
+ }
+}

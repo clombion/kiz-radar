@@ -1,248 +1,255 @@
 {
- "batch": "event-15637",
- "events": [
-  {
-   "event_id": 15637,
-   "artists": [
-    {
-     "name_as_written": "Falco & Leti",
-     "role": "teacher",
-     "style": null,
-     "country": "Spain",
-     "source_line": "💢Falco & Leti (Spain)"
-    },
-    {
-     "name_as_written": "Nuno Pesqueira",
-     "role": "teacher",
-     "style": null,
-     "country": "Portugal",
-     "source_line": "💢Nuno Pesqueira (Portugal)"
-    },
-    {
-     "name_as_written": "Nagyla Galvao",
-     "role": "teacher",
-     "style": null,
-     "country": "Brazil",
-     "source_line": "💢Nagyla Galvao (Brazil)"
-    },
-    {
-     "name_as_written": "Andreas & Silvia",
-     "role": "teacher",
-     "style": null,
-     "country": "Italy",
-     "source_line": "💢Andreas & Silvia (Italy)"
-    },
-    {
-     "name_as_written": "Maria & Vincenzo",
-     "role": "teacher",
-     "style": null,
-     "country": "Greece/Italy",
-     "source_line": "💢Maria & Vincenzo (Greece/Italy)"
-    },
-    {
-     "name_as_written": "Pablo & Luisa",
-     "role": "teacher",
-     "style": null,
-     "country": "Ecuador7Germany",
-     "source_line": "💢Pablo & Luisa (Ecuador7Germany)"
-    },
-    {
-     "name_as_written": "Matte & Vero",
-     "role": "teacher",
-     "style": null,
-     "country": "Italy",
-     "source_line": "💢Matte & Vero (Italy)"
-    },
-    {
-     "name_as_written": "Nuno Silva",
-     "role": "teacher",
-     "style": null,
-     "country": "Portugal",
-     "source_line": "💢Nuno Silva (Portugal)"
-    },
-    {
-     "name_as_written": "Sarai Navalon",
-     "role": "teacher",
-     "style": null,
-     "country": "Spain",
-     "source_line": "💢Sarai Navalon (Spain)"
-    },
-    {
-     "name_as_written": "Jorge & Monica",
-     "role": "teacher",
-     "style": null,
-     "country": "Czech Rep.",
-     "source_line": "💢Jorge & Monica (Czech Rep.)"
-    },
-    {
-     "name_as_written": "Alessio & Natalia",
-     "role": "teacher",
-     "style": null,
-     "country": "Italy",
-     "source_line": "💢Alessio & Natalia (Italy)"
-    },
-    {
-     "name_as_written": "Fajul Kizztalk",
-     "role": "teacher",
-     "style": null,
-     "country": "Gambia",
-     "source_line": "💢Fajul Kizztalk (Gambia)"
-    },
-    {
-     "name_as_written": "Gianni & Yulia",
-     "role": "teacher",
-     "style": null,
-     "country": "Germany",
-     "source_line": "💢Gianni & Yulia (Germany)"
-    },
-    {
-     "name_as_written": "Jeanine & Jairo Bravo",
-     "role": "teacher",
-     "style": null,
-     "country": "Mexico",
-     "source_line": "💢Jeanine & Jairo Bravo (Mexico)"
-    },
-    {
-     "name_as_written": "Tomi & Caro",
-     "role": "teacher",
-     "style": null,
-     "country": "Germany",
-     "source_line": "💢Tomi & Caro (Germany)"
-    },
-    {
-     "name_as_written": "Erland Weber",
-     "role": "teacher",
-     "style": null,
-     "country": "Germany",
-     "source_line": "💢Erland Weber (Germany)"
-    },
-    {
-     "name_as_written": "Anastasia",
-     "role": "teacher",
-     "style": null,
-     "country": "Germany",
-     "source_line": "💢Anastasia (Germany)"
-    },
-    {
-     "name_as_written": "Emu & Sabi",
-     "role": "teacher",
-     "style": null,
-     "country": "Germany",
-     "source_line": "💢Emu & Sabi (Germany)"
-    },
-    {
-     "name_as_written": "Marcello & Isabelle",
-     "role": "teacher",
-     "style": null,
-     "country": "Italy/Germany",
-     "source_line": "💢Marcello & Isabelle (Italy/Germany))"
-    },
-    {
-     "name_as_written": "Reem",
-     "role": "teacher",
-     "style": null,
-     "country": "Germany",
-     "source_line": "💢Reem (Germany)"
-    },
-    {
-     "name_as_written": "Fernando",
-     "role": "teacher",
-     "style": null,
-     "country": "Portugal",
-     "source_line": "💢Fernando (Portugal)"
-    },
-    {
-     "name_as_written": "Emerson & Louisa",
-     "role": "teacher",
-     "style": null,
-     "country": "Brazil/Germany",
-     "source_line": "💢Emerson & Louisa (Brazil/Germany)"
-    },
-    {
-     "name_as_written": "Mike Dance",
-     "role": "teacher",
-     "style": null,
-     "country": "Togo",
-     "source_line": "💢Mike Dance (Togo)"
-    },
-    {
-     "name_as_written": "DJ El Timba",
-     "role": "dj",
-     "style": null,
-     "country": "Italy",
-     "source_line": "💢DJ El Timba (Italy)"
-    },
-    {
-     "name_as_written": "DJ Saber",
-     "role": "dj",
-     "style": null,
-     "country": "Tunisia",
-     "source_line": "💢DJ Saber (Tunisia)"
-    },
-    {
-     "name_as_written": "DJ Raul Torres",
-     "role": "dj",
-     "style": null,
-     "country": "Colombia",
-     "source_line": "💢DJ Raul Torres (Colombia)"
-    },
-    {
-     "name_as_written": "DJ Bostjan",
-     "role": "dj",
-     "style": null,
-     "country": "Slovenia",
-     "source_line": "💢DJ Bostjan (Slovenia)"
-    },
-    {
-     "name_as_written": "DJ Bradley",
-     "role": "dj",
-     "style": null,
-     "country": "Serbia",
-     "source_line": "💢DJ Bradley (Serbia)"
-    },
-    {
-     "name_as_written": "DJ Tomquez",
-     "role": "dj",
-     "style": null,
-     "country": "Germany",
-     "source_line": "💢DJ Tomquez (Germany"
-    },
-    {
-     "name_as_written": "DJ David Munoz",
-     "role": "dj",
-     "style": null,
-     "country": "Mexico",
-     "source_line": "💢DJ David Munoz (Mexico)"
-    },
-    {
-     "name_as_written": "DJ Carlos Cigarro",
-     "role": "dj",
-     "style": null,
-     "country": "Austria",
-     "source_line": "💢DJ Carlos Cigarro (Austria)"
-    },
-    {
-     "name_as_written": "DJ Mixmillion",
-     "role": "dj",
-     "style": null,
-     "country": "Germany",
-     "source_line": "💢DJ Mixmillion (Germany)"
-    },
-    {
-     "name_as_written": "DJ Rob",
-     "role": "dj",
-     "style": null,
-     "country": "Germany",
-     "source_line": "💢DJ Rob (Germany)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Join our workshops and parties and let the artists enchant you.",
-     "rationale": "The text invites guests to join the festival's workshops."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "aa6c33b9b79ea272",
+ "answer": {
+  "batch": "event-15637",
+  "events": [
+   {
+    "event_id": 15637,
+    "artists": [
+     {
+      "name_as_written": "Falco & Leti",
+      "role": "teacher",
+      "style": null,
+      "country": "Spain",
+      "source_line": "💢Falco & Leti (Spain)"
+     },
+     {
+      "name_as_written": "Nuno Pesqueira",
+      "role": "teacher",
+      "style": null,
+      "country": "Portugal",
+      "source_line": "💢Nuno Pesqueira (Portugal)"
+     },
+     {
+      "name_as_written": "Nagyla Galvao",
+      "role": "teacher",
+      "style": null,
+      "country": "Brazil",
+      "source_line": "💢Nagyla Galvao (Brazil)"
+     },
+     {
+      "name_as_written": "Andreas & Silvia",
+      "role": "teacher",
+      "style": null,
+      "country": "Italy",
+      "source_line": "💢Andreas & Silvia (Italy)"
+     },
+     {
+      "name_as_written": "Maria & Vincenzo",
+      "role": "teacher",
+      "style": null,
+      "country": "Greece/Italy",
+      "source_line": "💢Maria & Vincenzo (Greece/Italy)"
+     },
+     {
+      "name_as_written": "Pablo & Luisa",
+      "role": "teacher",
+      "style": null,
+      "country": "Ecuador7Germany",
+      "source_line": "💢Pablo & Luisa (Ecuador7Germany)"
+     },
+     {
+      "name_as_written": "Matte & Vero",
+      "role": "teacher",
+      "style": null,
+      "country": "Italy",
+      "source_line": "💢Matte & Vero (Italy)"
+     },
+     {
+      "name_as_written": "Nuno Silva",
+      "role": "teacher",
+      "style": null,
+      "country": "Portugal",
+      "source_line": "💢Nuno Silva (Portugal)"
+     },
+     {
+      "name_as_written": "Sarai Navalon",
+      "role": "teacher",
+      "style": null,
+      "country": "Spain",
+      "source_line": "💢Sarai Navalon (Spain)"
+     },
+     {
+      "name_as_written": "Jorge & Monica",
+      "role": "teacher",
+      "style": null,
+      "country": "Czech Rep.",
+      "source_line": "💢Jorge & Monica (Czech Rep.)"
+     },
+     {
+      "name_as_written": "Alessio & Natalia",
+      "role": "teacher",
+      "style": null,
+      "country": "Italy",
+      "source_line": "💢Alessio & Natalia (Italy)"
+     },
+     {
+      "name_as_written": "Fajul Kizztalk",
+      "role": "teacher",
+      "style": null,
+      "country": "Gambia",
+      "source_line": "💢Fajul Kizztalk (Gambia)"
+     },
+     {
+      "name_as_written": "Gianni & Yulia",
+      "role": "teacher",
+      "style": null,
+      "country": "Germany",
+      "source_line": "💢Gianni & Yulia (Germany)"
+     },
+     {
+      "name_as_written": "Jeanine & Jairo Bravo",
+      "role": "teacher",
+      "style": null,
+      "country": "Mexico",
+      "source_line": "💢Jeanine & Jairo Bravo (Mexico)"
+     },
+     {
+      "name_as_written": "Tomi & Caro",
+      "role": "teacher",
+      "style": null,
+      "country": "Germany",
+      "source_line": "💢Tomi & Caro (Germany)"
+     },
+     {
+      "name_as_written": "Erland Weber",
+      "role": "teacher",
+      "style": null,
+      "country": "Germany",
+      "source_line": "💢Erland Weber (Germany)"
+     },
+     {
+      "name_as_written": "Anastasia",
+      "role": "teacher",
+      "style": null,
+      "country": "Germany",
+      "source_line": "💢Anastasia (Germany)"
+     },
+     {
+      "name_as_written": "Emu & Sabi",
+      "role": "teacher",
+      "style": null,
+      "country": "Germany",
+      "source_line": "💢Emu & Sabi (Germany)"
+     },
+     {
+      "name_as_written": "Marcello & Isabelle",
+      "role": "teacher",
+      "style": null,
+      "country": "Italy/Germany",
+      "source_line": "💢Marcello & Isabelle (Italy/Germany))"
+     },
+     {
+      "name_as_written": "Reem",
+      "role": "teacher",
+      "style": null,
+      "country": "Germany",
+      "source_line": "💢Reem (Germany)"
+     },
+     {
+      "name_as_written": "Fernando",
+      "role": "teacher",
+      "style": null,
+      "country": "Portugal",
+      "source_line": "💢Fernando (Portugal)"
+     },
+     {
+      "name_as_written": "Emerson & Louisa",
+      "role": "teacher",
+      "style": null,
+      "country": "Brazil/Germany",
+      "source_line": "💢Emerson & Louisa (Brazil/Germany)"
+     },
+     {
+      "name_as_written": "Mike Dance",
+      "role": "teacher",
+      "style": null,
+      "country": "Togo",
+      "source_line": "💢Mike Dance (Togo)"
+     },
+     {
+      "name_as_written": "DJ El Timba",
+      "role": "dj",
+      "style": null,
+      "country": "Italy",
+      "source_line": "💢DJ El Timba (Italy)"
+     },
+     {
+      "name_as_written": "DJ Saber",
+      "role": "dj",
+      "style": null,
+      "country": "Tunisia",
+      "source_line": "💢DJ Saber (Tunisia)"
+     },
+     {
+      "name_as_written": "DJ Raul Torres",
+      "role": "dj",
+      "style": null,
+      "country": "Colombia",
+      "source_line": "💢DJ Raul Torres (Colombia)"
+     },
+     {
+      "name_as_written": "DJ Bostjan",
+      "role": "dj",
+      "style": null,
+      "country": "Slovenia",
+      "source_line": "💢DJ Bostjan (Slovenia)"
+     },
+     {
+      "name_as_written": "DJ Bradley",
+      "role": "dj",
+      "style": null,
+      "country": "Serbia",
+      "source_line": "💢DJ Bradley (Serbia)"
+     },
+     {
+      "name_as_written": "DJ Tomquez",
+      "role": "dj",
+      "style": null,
+      "country": "Germany",
+      "source_line": "💢DJ Tomquez (Germany"
+     },
+     {
+      "name_as_written": "DJ David Munoz",
+      "role": "dj",
+      "style": null,
+      "country": "Mexico",
+      "source_line": "💢DJ David Munoz (Mexico)"
+     },
+     {
+      "name_as_written": "DJ Carlos Cigarro",
+      "role": "dj",
+      "style": null,
+      "country": "Austria",
+      "source_line": "💢DJ Carlos Cigarro (Austria)"
+     },
+     {
+      "name_as_written": "DJ Mixmillion",
+      "role": "dj",
+      "style": null,
+      "country": "Germany",
+      "source_line": "💢DJ Mixmillion (Germany)"
+     },
+     {
+      "name_as_written": "DJ Rob",
+      "role": "dj",
+      "style": null,
+      "country": "Germany",
+      "source_line": "💢DJ Rob (Germany)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Join our workshops and parties",
+      "rationale": "The description invites guests to join the workshops, so dance classes are part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,46 +1,53 @@
 {
- "batch": "event-16084",
- "events": [
-  {
-   "event_id": 16084,
-   "artists": [],
-   "features": [
-    {
-     "feature": "beach_party",
-     "quote": "Beach Day",
-     "rationale": "The event lists a Beach Day as part of the programme."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Dance Workshops",
-     "rationale": "Dance Workshops are listed as part of the weekend."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Day & Night Socials",
-     "rationale": "Daytime and nighttime socials are offered."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Pool Party",
-     "rationale": "A Pool Party is part of the schedule."
-    },
-    {
-     "feature": "after_party",
-     "quote": "and an after-party",
-     "rationale": "The Thursday registration includes an after-party."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Theme: White Affair",
-     "rationale": "The Friday party has a dress theme."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Dress clean, elegant, and expressive",
-     "rationale": "The description states how guests should dress."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:27:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "8ed9d0aa85debefa",
+ "answer": {
+  "batch": "event-16084",
+  "events": [
+   {
+    "event_id": 16084,
+    "artists": [],
+    "features": [
+     {
+      "feature": "beach_party",
+      "quote": "Beach Day",
+      "rationale": "The event lists a Beach Day as part of the programme."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Dance Workshops",
+      "rationale": "Dance workshops are listed as part of the weekend."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Day & Night Socials",
+      "rationale": "Daytime and night socials are advertised."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Pool Party",
+      "rationale": "A pool party is listed in the weekend schedule."
+     },
+     {
+      "feature": "after_party",
+      "quote": "an after-party",
+      "rationale": "The Thursday registration evening includes an after-party."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Theme: White Affair",
+      "rationale": "The Friday party has a stated white-themed dress theme."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Dress clean, elegant, and expressive",
+      "rationale": "The description states how guests should dress for the Friday party."
+     }
+    ]
+   }
+  ]
+ }
 }

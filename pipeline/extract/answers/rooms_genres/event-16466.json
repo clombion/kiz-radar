@@ -1,31 +1,38 @@
 {
- "batch": "event-16466",
- "events": [
-  {
-   "event_id": 16466,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 VIBES"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBAN KIZ",
-     "quote": "WEEKENDER URBAN KIZ & TARRAXO & SEMBA"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "1fb4f66849123d44",
+ "answer": {
+  "batch": "event-16466",
+  "events": [
+   {
+    "event_id": 16466,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 VIBES"
     },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "TARRAXO",
-     "quote": "WEEKENDER URBAN KIZ & TARRAXO & SEMBA"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "SEMBA",
-     "quote": "WEEKENDER URBAN KIZ & TARRAXO & SEMBA"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBAN KIZ",
+      "quote": "WEEKENDER URBAN KIZ & TARRAXO & SEMBA"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "TARRAXO",
+      "quote": "WEEKENDER URBAN KIZ & TARRAXO & SEMBA"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "SEMBA",
+      "quote": "WEEKENDER URBAN KIZ & TARRAXO & SEMBA"
+     }
+    ]
+   }
+  ]
+ }
 }

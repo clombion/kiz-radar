@@ -1,12 +1,19 @@
 {
- "batch": "event-18864",
- "events": [
-  {
-   "event_id": 18864,
-   "passes": [],
-   "rule_quotes": [
-    "Tickts prices increase gradually , be quick !"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:46:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "3d7e3d87151c4a09",
+ "answer": {
+  "batch": "event-18864",
+  "events": [
+   {
+    "event_id": 18864,
+    "passes": [],
+    "rule_quotes": [
+     "Tickts prices increase gradually , be quick !"
+    ]
+   }
+  ]
+ }
 }

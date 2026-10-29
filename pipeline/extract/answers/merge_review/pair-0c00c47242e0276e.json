@@ -1,0 +1,13 @@
+{
+ "key_a": "p:celia@celia+mauro",
+ "key_b": "p:celia@celia+maurodone",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0c00c47242e0276e",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The names differ only by an accent (Celia / Célia), both sides list the same countries (AO, CH, PT) and the same Swiss events, and both have a partner named Mauro (the keys suggest the same partner record, one with a 'done' suffix)."
+ }
+}

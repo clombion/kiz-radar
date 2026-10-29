@@ -1,0 +1,13 @@
+{
+ "key_a": "p:maria@maria+vincenzo",
+ "key_b": "p:mariabebi",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2721ed9a45070862",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only shared fact is Greece, and 'Maria' is a common first name; side A is a bare 'Maria' partnered with Vincenzo across Germany, Greece and Italy, while 'Maria Bebi' has no partners, and side A's mention list is empty, so the evidence does not settle whether they are one artist."
+ }
+}

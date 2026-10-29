@@ -1,226 +1,233 @@
 {
- "batch": "event-16789",
- "events": [
-  {
-   "event_id": 16789,
-   "artists": [
-    {
-     "name_as_written": "DJ NEIKEN",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "DJ NEIKEN 🇵🇹"
-    },
-    {
-     "name_as_written": "DJ MARIANNA",
-     "role": "dj",
-     "style": null,
-     "country": "🇷🇺",
-     "source_line": "DJ MARIANNA 🇷🇺"
-    },
-    {
-     "name_as_written": "DJ YANA",
-     "role": "dj",
-     "style": null,
-     "country": "🇬🇧",
-     "source_line": "DJ YANA 🇬🇧"
-    },
-    {
-     "name_as_written": "DJ NICE LIFE",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "DJ NICE LIFE 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ ICHIGO",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "DJ ICHIGO 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ POEMA",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "DJ POEMA🇸🇪"
-    },
-    {
-     "name_as_written": "DJ MAMS",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "DJ MAMS 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ CLOVIS",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "DJ CLOVIS 🇪🇸"
-    },
-    {
-     "name_as_written": "DJ ALEX PRINCE",
-     "role": "dj",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "DJ ALEX PRINCE🇮🇹"
-    },
-    {
-     "name_as_written": "ROKHAYA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "ROKHAYA 🇫🇷"
-    },
-    {
-     "name_as_written": "INÈS",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "INÈS 🇵🇹"
-    },
-    {
-     "name_as_written": "SANDRA G",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "SANDRA G🇪🇸"
-    },
-    {
-     "name_as_written": "ELLI",
-     "role": "teacher",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "ELLI 🇸🇪"
-    },
-    {
-     "name_as_written": "LAVINIA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇷🇴",
-     "source_line": "LAVINIA 🇷🇴"
-    },
-    {
-     "name_as_written": "PDJAY& ENORA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "PDJAY& ENORA 🇫🇷"
-    },
-    {
-     "name_as_written": "AUDI&LAURA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "AUDI&LAURA 🇪🇸"
-    },
-    {
-     "name_as_written": "MAMS&MOOREA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "MAMS&MOOREA 🇪🇸"
-    },
-    {
-     "name_as_written": "LUIS&KAREN",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "LUIS&KAREN🇪🇸"
-    },
-    {
-     "name_as_written": "JHON&LEA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "JHON&LEA🇳🇱"
-    },
-    {
-     "name_as_written": "RADU&JUDITH",
-     "role": "teacher",
-     "style": null,
-     "country": "🇷🇴",
-     "source_line": "RADU&JUDITH🇷🇴"
-    },
-    {
-     "name_as_written": "KARL",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "KARL🇫🇷"
-    },
-    {
-     "name_as_written": "JUSTINHO",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "JUSTINHO 🇫🇷"
-    },
-    {
-     "name_as_written": "DADIE",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "DADIE 🇫🇷"
-    },
-    {
-     "name_as_written": "MOUSSA DIOP",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "MOUSSA DIOP 🇫🇷"
-    },
-    {
-     "name_as_written": "PORTU&MADA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸🇷🇴",
-     "source_line": "PORTU&MADA 🇪🇸🇷🇴"
-    },
-    {
-     "name_as_written": "ADRI",
-     "role": "teacher",
-     "style": null,
-     "country": "🇷🇴",
-     "source_line": "ADRI🇷🇴"
-    },
-    {
-     "name_as_written": "JUSTIN",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "JUSTIN🇫🇷"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE",
-     "rationale": "The line states the event and accommodation are all in one, with the parties at the hotel."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Book your room with promo code Queen 26",
-     "rationale": "The event promotes booking rooms at the venue hotel with a promo code, without the room being part of the pass."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-party: 12 euros",
-     "rationale": "A pre-party is explicitly listed with its price on the Thursday."
-    },
-    {
-     "feature": "workshops",
-     "quote": "30+ HOURS of WORKSHOP",
-     "rationale": "Dance workshops are advertised as a major part of the event."
-    },
-    {
-     "feature": "competition",
-     "quote": "JACK AND JILL",
-     "rationale": "Jack and Jill is a partner dance competition format."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "56a7e66fce65fb42",
+ "answer": {
+  "batch": "event-16789",
+  "events": [
+   {
+    "event_id": 16789,
+    "artists": [
+     {
+      "name_as_written": "DJ NEIKEN",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "DJ NEIKEN 🇵🇹"
+     },
+     {
+      "name_as_written": "DJ MARIANNA",
+      "role": "dj",
+      "style": null,
+      "country": "🇷🇺",
+      "source_line": "DJ MARIANNA 🇷🇺"
+     },
+     {
+      "name_as_written": "DJ YANA",
+      "role": "dj",
+      "style": null,
+      "country": "🇬🇧",
+      "source_line": "DJ YANA 🇬🇧"
+     },
+     {
+      "name_as_written": "DJ NICE LIFE",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "DJ NICE LIFE 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ ICHIGO",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "DJ ICHIGO 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ POEMA",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "DJ POEMA🇸🇪"
+     },
+     {
+      "name_as_written": "DJ MAMS",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "DJ MAMS 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ CLOVIS",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "DJ CLOVIS 🇪🇸"
+     },
+     {
+      "name_as_written": "DJ ALEX PRINCE",
+      "role": "dj",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "DJ ALEX PRINCE🇮🇹"
+     },
+     {
+      "name_as_written": "ROKHAYA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "ROKHAYA 🇫🇷"
+     },
+     {
+      "name_as_written": "INÈS",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "INÈS 🇵🇹"
+     },
+     {
+      "name_as_written": "SANDRA G",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "SANDRA G🇪🇸"
+     },
+     {
+      "name_as_written": "ELLI",
+      "role": "teacher",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "ELLI 🇸🇪"
+     },
+     {
+      "name_as_written": "LAVINIA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇷🇴",
+      "source_line": "LAVINIA 🇷🇴"
+     },
+     {
+      "name_as_written": "PDJAY& ENORA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "PDJAY& ENORA 🇫🇷"
+     },
+     {
+      "name_as_written": "AUDI&LAURA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "AUDI&LAURA 🇪🇸"
+     },
+     {
+      "name_as_written": "MAMS&MOOREA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "MAMS&MOOREA 🇪🇸"
+     },
+     {
+      "name_as_written": "LUIS&KAREN",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "LUIS&KAREN🇪🇸"
+     },
+     {
+      "name_as_written": "JHON&LEA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "JHON&LEA🇳🇱"
+     },
+     {
+      "name_as_written": "RADU&JUDITH",
+      "role": "teacher",
+      "style": null,
+      "country": "🇷🇴",
+      "source_line": "RADU&JUDITH🇷🇴"
+     },
+     {
+      "name_as_written": "KARL",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "KARL🇫🇷"
+     },
+     {
+      "name_as_written": "JUSTINHO",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "JUSTINHO 🇫🇷"
+     },
+     {
+      "name_as_written": "DADIE",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "DADIE 🇫🇷"
+     },
+     {
+      "name_as_written": "MOUSSA DIOP",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "MOUSSA DIOP 🇫🇷"
+     },
+     {
+      "name_as_written": "PORTU&MADA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸🇷🇴",
+      "source_line": "PORTU&MADA 🇪🇸🇷🇴"
+     },
+     {
+      "name_as_written": "ADRI",
+      "role": "teacher",
+      "style": null,
+      "country": "🇷🇴",
+      "source_line": "ADRI🇷🇴"
+     },
+     {
+      "name_as_written": "JUSTIN",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "JUSTIN🇫🇷"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE",
+      "rationale": "The description says the event is all in one, and the parties are held at the main hotel where dancers can stay."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-party: 12 euros",
+      "rationale": "A pre-party is offered on the Thursday before the main event."
+     },
+     {
+      "feature": "workshops",
+      "quote": "30+ HOURS of WORKSHOP",
+      "rationale": "The event includes more than 30 hours of workshops."
+     },
+     {
+      "feature": "competition",
+      "quote": "JACK AND JILL",
+      "rationale": "Jack and Jill is a competition format listed in the programme."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Book your room with promo code Queen 26",
+      "rationale": "A promo code for booking rooms at the event hotel is a negotiated hotel rate, separate from any pass."
+     }
+    ]
+   }
+  ]
+ }
 }

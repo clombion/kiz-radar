@@ -1,0 +1,13 @@
+{
+ "key_a": "p:anthonytarraxa",
+ "key_b": "p:antonytarraxa",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "5cf29a7f74034057",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Anthony tarraxa and Antony Tarraxa share the same distinctive surname and spelling variant, both appear as DJs at French events, and the Antony side's mentions consistently point to Spain with the same Kizomba style, so the one-letter-apart spelling is a typo-level variant of one stage name rather than two artists."
+ }
+}

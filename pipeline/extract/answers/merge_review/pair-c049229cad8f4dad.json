@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fanioaraujo",
+ "key_b": "p:faniodearaujo",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c049229cad8f4dad",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are the same distinctive name 'Fanio Araujo' with the same Angolan flag (AO) on each side, and the 'de' variant is a common spelling difference (accent and preposition) for one teacher appearing in Switzerland on both sides; no partner or conflicting country separates them, so one artist is the best reading."
+ }
+}

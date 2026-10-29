@@ -1,0 +1,13 @@
+{
+ "key_a": "p:azzedine@dance",
+ "key_b": "p:azzedine@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "a980f50fddfdd5e7",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "This is one key compared with itself, so the stated countries (ES and FR) never meet on a single record, and the evidence cannot tell whether one teacher travels between France, Spain and Germany or several people share the single name Azzedine; the URBAN KIZ/URBANKIZ and Kizomba styles recur across events, which suggests one artist, but the country-to-event mismatches leave it unsettled."
+ }
+}

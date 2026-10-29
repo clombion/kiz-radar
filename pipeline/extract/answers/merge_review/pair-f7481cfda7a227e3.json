@@ -1,0 +1,13 @@
+{
+ "key_a": "p:kin@dj",
+ "key_b": "p:kin@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f7481cfda7a227e3",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same record, so the question is whether one artist 'DJ KIN' is the same person across events; the stated countries conflict (CM and FR), with the Cameroonian flag on the Kin/Urban-Kiz event and the French flag on the DJ KIN event, and the evidence does not show whether these are one DJ or several people sharing a name."
+ }
+}

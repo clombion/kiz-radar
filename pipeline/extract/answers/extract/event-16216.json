@@ -1,16 +1,23 @@
 {
- "batch": "event-16216",
- "events": [
-  {
-   "event_id": 16216,
-   "artists": [],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All in 1 VENUE: airhotel",
-     "rationale": "The quote says everything takes place in one venue, the airhotel, which is also where dancers are invited to stay."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "63fa2ec5896a3bc6",
+ "answer": {
+  "batch": "event-16216",
+  "events": [
+   {
+    "event_id": 16216,
+    "artists": [],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All in 1 VENUE: airhotel",
+      "rationale": "The description says everything is in one venue, the airhotel where guests stay, so the parties and accommodation share the same hotel."
+     }
+    ]
+   }
+  ]
+ }
 }

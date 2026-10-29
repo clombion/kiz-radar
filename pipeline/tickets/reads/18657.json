@@ -2,13 +2,15 @@
  "event_id": 18657,
  "title": "12th Suave Dance Festival Paris (Official)",
  "start_date": "2027-01-22",
- "read_by": "claude-opus-5-5 + claude-fable-5-1",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:29:38+00:00",
+ "end_date": "2027-01-25",
+ "country": "France",
  "styles": [
   "kizomba"
  ],
  "description": "After Skyfall ☄️️🌠, the world didn’t end: it transformed. An amber afterglow 🌆 rises from the ground, bathing the city in warmth. The noise is gone. The rush is gone. Human connections remain. ❤️\n✨This is the Road to Afterglow – Suave Paris 2027 ✨\n—\nPRICE SCHEDULE – Suave Dance Festival Paris 2027:\n📈 After the end of the early bird sales at 65 EUR, the full pass price starts at 80 EUR on February 1st, 2026, and increases by 5 € each month until January 2027. 👉🏾The sooner you get your full pass, the less it costs you. ✅\nJanuary 2026 (early bird): 65 € ✅\nFebruary: 80 €\nMarch: 85 €\nApril: 90 €\nMay: 95 €\nJune: 100 €\nJuly: 105 €\nAugust: 110 €\nSeptember: 115 €\nOctober: 120 €\nNovember: 125 €\nDecember: 130 €\nJanuary 2027: 135 €\n🚪Price at the door: 140 €\n🔄 Name change: 25 €\n👉All in One Link Tree (FB, IG, event, ticketing, frame, community groups):",
+ "read_by": "claude-opus-5-5 + claude-fable-5-1",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:15:06+00:00",
  "passes": [
   {
    "kind": "full",

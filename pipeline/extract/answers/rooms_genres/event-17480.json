@@ -1,18 +1,25 @@
 {
- "batch": "event-17480",
- "events": [
-  {
-   "event_id": 17480,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kizomba",
-     "quote": "Urban Kizomba Weekender In Kassel"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "f255cc5db49b42b0",
+ "answer": {
+  "batch": "event-17480",
+  "events": [
+   {
+    "event_id": 17480,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kizomba",
+      "quote": "Urban Kizomba Weekender In Kassel"
+     }
+    ]
+   }
+  ]
+ }
 }

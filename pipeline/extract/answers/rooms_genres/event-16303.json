@@ -1,67 +1,74 @@
 {
- "batch": "event-16303",
- "events": [
-  {
-   "event_id": 16303,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 dance floors (air‑conditioned)"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "ROOM 1",
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba",
-      "afro"
-     ],
-     "quote": "ROOM 1 : Kizomba • Semba • Afro"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "4e635f0b5f359ca0",
+ "answer": {
+  "batch": "event-16303",
+  "events": [
+   {
+    "event_id": 16303,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 dance floors"
     },
-    {
-     "name_as_written": "ROOM 2",
-     "kind": "party",
-     "genres": [
-      "zouk",
-      "tarraxinha",
-      "kompa"
-     ],
-     "quote": "ROOM 2 : Ghettozouk • Tarraxinha • Konpa"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "ROOM 1 : Kizomba • Semba • Afro"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "ROOM 1 : Kizomba • Semba • Afro"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "ROOM 1 : Kizomba • Semba • Afro"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghettozouk",
-     "quote": "ROOM 2 : Ghettozouk • Tarraxinha • Konpa"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "ROOM 2 : Ghettozouk • Tarraxinha • Konpa"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "ROOM 2 : Ghettozouk • Tarraxinha • Konpa"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "ROOM 1",
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "semba",
+       "afro"
+      ],
+      "quote": "ROOM 1 : Kizomba • Semba • Afro"
+     },
+     {
+      "name_as_written": "ROOM 2",
+      "kind": "party",
+      "genres": [
+       "zouk",
+       "tarraxinha",
+       "kompa"
+      ],
+      "quote": "ROOM 2 : Ghettozouk • Tarraxinha • Konpa"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "ROOM 1 : Kizomba • Semba • Afro"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "ROOM 1 : Kizomba • Semba • Afro"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "ROOM 1 : Kizomba • Semba • Afro"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghettozouk",
+      "quote": "ROOM 2 : Ghettozouk • Tarraxinha • Konpa"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "ROOM 2 : Ghettozouk • Tarraxinha • Konpa"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "ROOM 2 : Ghettozouk • Tarraxinha • Konpa"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:poemabeat",
+ "key_b": "p:poemabeats",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "117a01a2146619a2",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are the same distinctive stage name 'Poema Beat(s)' with a DJ prefix, a one-letter plural difference, the same Swedish country (SE) stated on both sides, and the same Urbankiz/Tarraxo styles, so it is one DJ whose events span several countries."
+ }
+}

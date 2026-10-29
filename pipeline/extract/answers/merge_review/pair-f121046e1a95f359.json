@@ -1,0 +1,13 @@
+{
+ "key_a": "p:anonytarraxa",
+ "key_b": "p:antonytarraxa",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f121046e1a95f359",
+ "answer": {
+  "decision": "merge",
+  "rationale": "'DJ ANONY TARRAXA' is a one-letter-off spelling of the distinctive stage name 'DJ Antony Tarraxa', and both sides share the Spanish country tag (🇪🇸 on A, Spain on several B mentions), with the same DJ role and no conflicting country, so the evidence points to one artist; the lone Italia mention on B is a minor conflict but the distinctive name and Spanish links outweigh it."
+ }
+}

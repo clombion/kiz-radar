@@ -1,83 +1,84 @@
 {
- "batch": "event-16698",
- "events": [
-  {
-   "event_id": 16698,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 85.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "06-01",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "💣 01/06 – FULL PASS: 85€"
-      },
-      {
-       "amount": 100.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "07-03",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "💣 03/07 – FULL PASS: 100€"
-      },
-      {
-       "amount": 110.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "08-03",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "💣 03/08 – FULL PASS: 110€"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 120.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "09-01",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "💣 01/09 – FULL PASS: 120€ (ONLY MEN)"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:44:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "7012d3a66d3b34ee",
+ "answer": {
+  "batch": "event-16698",
+  "events": [
+   {
+    "event_id": 16698,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 85.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "06-01",
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "01/06 – FULL PASS: 85€"
+       },
+       {
+        "amount": 100.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "07-03",
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "03/07 – FULL PASS: 100€"
+       },
+       {
+        "amount": 110.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "08-03",
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "03/08 – FULL PASS: 110€"
+       },
+       {
+        "amount": 120.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "09-01",
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "01/09 – FULL PASS: 120€ (ONLY MEN)"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

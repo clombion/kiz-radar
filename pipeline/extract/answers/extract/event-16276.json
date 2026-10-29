@@ -1,31 +1,38 @@
 {
- "batch": "event-16276",
- "events": [
-  {
-   "event_id": 16276,
-   "artists": [],
-   "features": [
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 free dance floors",
-     "rationale": "The description states there are two free dance floors, so the event has more than one dance room."
-    },
-    {
-     "feature": "workshops",
-     "quote": "More than 20h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)",
-     "rationale": "The event explicitly offers more than 20 hours of dance workshops across several styles."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "City Hotel Kaiserhof (7 min walk)",
-     "rationale": "The Hotel section lists recommended hotels near the venue, which is a partner or recommended hotel rather than included accommodation."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "15:00 – 20:00 Social",
-     "rationale": "A daytime social is scheduled on Saturday from 15:00 to 20:00."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b465d1eefbda25e7",
+ "answer": {
+  "batch": "event-16276",
+  "events": [
+   {
+    "event_id": 16276,
+    "artists": [],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 free dance floors",
+      "rationale": "The text states the event has two dance floors."
+     },
+     {
+      "feature": "workshops",
+      "quote": "More than 20h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)",
+      "rationale": "The event offers more than 20 hours of dance workshops across several styles."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "15:00 – 20:00 Social",
+      "rationale": "A daytime social is scheduled from 15:00 to 20:00 on Saturday."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "City Hotel Kaiserhof (7 min walk)",
+      "rationale": "A hotel is listed under the Hotel heading as a recommended option near the venue, without being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

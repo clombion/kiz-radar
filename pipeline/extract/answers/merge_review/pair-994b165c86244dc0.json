@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marzha@marzha+ulan",
+ "key_b": "p:marzhan@marzhan+ulan",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "994b165c86244dc0",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the same partner (ulan), and 'Marzha' is a short form of 'Marzhan'; Marzha's only stated event is in France, which does not contradict Marzhan's touring record, so the shared partner and short-form name point to one artist."
+ }
+}

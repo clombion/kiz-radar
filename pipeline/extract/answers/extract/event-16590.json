@@ -1,90 +1,102 @@
 {
- "batch": "event-16590",
- "events": [
-  {
-   "event_id": 16590,
-   "artists": [
-    {
-     "name_as_written": "Jahaira & Ross",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Jahaira & Ross"
-    },
-    {
-     "name_as_written": "Eric & Annalise",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Eric & Annalise"
-    },
-    {
-     "name_as_written": "Emily Tarraxo",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Emily Tarraxo"
-    },
-    {
-     "name_as_written": "Ninja",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Ninja"
-    },
-    {
-     "name_as_written": "Dylan, Jess & Jazeon",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Dylan, Jess & Jazeon"
-    },
-    {
-     "name_as_written": "DJ Yawo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Yawo"
-    },
-    {
-     "name_as_written": "DJ SAvvy",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ SAvvy"
-    },
-    {
-     "name_as_written": "DJ Jem",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ Jem"
-    },
-    {
-     "name_as_written": "DJ D-Lyte",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ D-Lyte"
-    }
-   ],
-   "features": [
-    {
-     "feature": "day_socials",
-     "quote": "3pm-6pm Day Social",
-     "rationale": "The schedule lists daytime socials from 3pm to 6pm on Friday, Saturday and Sunday."
-    },
-    {
-     "feature": "workshops",
-     "quote": "10am-2:30pm Workshops",
-     "rationale": "The schedule lists daytime dance workshops on Saturday and Sunday."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "YYK Discounted Booking Link",
-     "rationale": "The organisers provide a discounted booking link for a nearby hotel, which is a negotiated rate rather than an included accommodation."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:29:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "564018ba1fe2bfe4",
+ "answer": {
+  "batch": "event-16590",
+  "events": [
+   {
+    "event_id": 16590,
+    "artists": [
+     {
+      "name_as_written": "Jahaira & Ross",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Jahaira & Ross"
+     },
+     {
+      "name_as_written": "Eric & Annalise",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Eric & Annalise"
+     },
+     {
+      "name_as_written": "Emily Tarraxo",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Emily Tarraxo"
+     },
+     {
+      "name_as_written": "Ninja",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Ninja"
+     },
+     {
+      "name_as_written": "Dylan, Jess & Jazeon",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Dylan, Jess & Jazeon"
+     },
+     {
+      "name_as_written": "DJ Yawo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Yawo"
+     },
+     {
+      "name_as_written": "DJ SAvvy",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ SAvvy"
+     },
+     {
+      "name_as_written": "DJ Jem",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ Jem"
+     },
+     {
+      "name_as_written": "DJ D-Lyte",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ D-Lyte"
+     }
+    ],
+    "features": [
+     {
+      "feature": "day_socials",
+      "quote": "3pm-6pm Day Social",
+      "rationale": "The schedule lists afternoon Day Social sessions on each day of the weekender."
+     },
+     {
+      "feature": "workshops",
+      "quote": "10am-2:30pm Workshops",
+      "rationale": "The schedule lists daytime workshop sessions on Saturday and Sunday."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "YYK Discounted Booking Link",
+      "rationale": "A discounted booking link for nearby hotels is offered, without the accommodation being part of the pass."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "YYK will coordinate rideshare groups to improve the convenience of this process.",
+      "rationale": "The organisers coordinate rideshare groups to transport attendees from the airports or train stations to the venue."
+     }
+    ]
+   }
+  ]
+ }
 }

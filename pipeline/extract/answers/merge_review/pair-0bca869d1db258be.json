@@ -1,0 +1,13 @@
+{
+ "key_a": "p:shark@dj",
+ "key_b": "p:shark@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0bca869d1db258be",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "This is one name ('DJ Shark'/'Shark') with stated countries Spain and France (plus Cuba in the evidence field), and the Kizomba/urban styles recur across events, which points toward one artist. But 'Shark' is a generic stage name, the countries do not clearly settle whether it is one person or several, and a wrong merge would join separate event histories, so I cannot decide confidently."
+ }
+}

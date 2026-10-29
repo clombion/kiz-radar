@@ -1,120 +1,134 @@
 {
- "batch": "event-18317",
- "events": [
-  {
-   "event_id": 18317,
-   "artists": [
-    {
-     "name_as_written": "Farantini",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Farantini • David Kongoo • Nani Chbani"
-    },
-    {
-     "name_as_written": "David Kongoo",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Farantini • David Kongoo • Nani Chbani"
-    },
-    {
-     "name_as_written": "Nani Chbani",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Farantini • David Kongoo • Nani Chbani"
-    },
-    {
-     "name_as_written": "#Pingusso",
-     "role": "dj",
-     "style": null,
-     "country": "🇱🇺",
-     "source_line": "🎧 🇱🇺 #Pingusso"
-    },
-    {
-     "name_as_written": "#HugoSmile",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 🇫🇷 #HugoSmile"
-    },
-    {
-     "name_as_written": "#RalphOne",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 🇫🇷 #RalphOne"
-    },
-    {
-     "name_as_written": "#Djvaxx",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 🇫🇷 #Djvaxx"
-    },
-    {
-     "name_as_written": "DJ Hugo Boss",
-     "role": "dj",
-     "style": null,
-     "country": "🇲🇿",
-     "source_line": "🎧 🇲🇿 DJ Hugo Boss"
-    },
-    {
-     "name_as_written": "DJ Yha",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "🎧 🇦🇴 DJ Yha"
-    },
-    {
-     "name_as_written": "DJ RA",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "🎧 🇧🇪 DJ RA"
-    },
-    {
-     "name_as_written": "Elydio DJ",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "🎧 🇦🇴 Elydio DJ"
-    },
-    {
-     "name_as_written": "#DjMAK",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 🇫🇷 #DjMAK"
-    },
-    {
-     "name_as_written": "#Djinno",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 🇫🇷 #Djinno"
-    },
-    {
-     "name_as_written": "#Djayluludancer",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 🇫🇷 #Djayluludancer"
-    }
-   ],
-   "features": [
-    {
-     "feature": "shows",
-     "quote": "Shows & special performances",
-     "rationale": "The description promises shows and special performances during the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "ROOM #bachata – #salsa – #konpa",
-     "rationale": "A separate named room for bachata, salsa and konpa indicates more than one dance room."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:32:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "ced47b9a852c7cde",
+ "answer": {
+  "batch": "event-18317",
+  "events": [
+   {
+    "event_id": 18317,
+    "artists": [
+     {
+      "name_as_written": "Farantini",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Farantini • David Kongoo • Nani Chbani"
+     },
+     {
+      "name_as_written": "David Kongoo",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Farantini • David Kongoo • Nani Chbani"
+     },
+     {
+      "name_as_written": "Nani Chbani",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Farantini • David Kongoo • Nani Chbani"
+     },
+     {
+      "name_as_written": "OFFICIAL MEDIA CREW",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🎥 OFFICIAL MEDIA CREW 📸"
+     },
+     {
+      "name_as_written": "#Pingusso",
+      "role": "dj",
+      "style": "URBANKIZ × OPEN FORMAT",
+      "country": "🇱🇺",
+      "source_line": "🎧 🇱🇺 #Pingusso"
+     },
+     {
+      "name_as_written": "#HugoSmile",
+      "role": "dj",
+      "style": "URBANKIZ × OPEN FORMAT",
+      "country": "🇫🇷",
+      "source_line": "🎧 🇫🇷 #HugoSmile"
+     },
+     {
+      "name_as_written": "#RalphOne",
+      "role": "dj",
+      "style": "URBANKIZ × OPEN FORMAT",
+      "country": "🇫🇷",
+      "source_line": "🎧 🇫🇷 #RalphOne"
+     },
+     {
+      "name_as_written": "#Djvaxx",
+      "role": "dj",
+      "style": "URBANKIZ × OPEN FORMAT",
+      "country": "🇫🇷",
+      "source_line": "🎧 🇫🇷 #Djvaxx"
+     },
+     {
+      "name_as_written": "DJ Hugo Boss",
+      "role": "dj",
+      "style": "Kizomba • Semba • Ginga • African Vibes",
+      "country": "🇲🇿",
+      "source_line": "🎧 🇲🇿 DJ Hugo Boss"
+     },
+     {
+      "name_as_written": "DJ Yha",
+      "role": "dj",
+      "style": "Kizomba • Semba • Ginga • African Vibes",
+      "country": "🇦🇴",
+      "source_line": "🎧 🇦🇴 DJ Yha"
+     },
+     {
+      "name_as_written": "DJ RA",
+      "role": "dj",
+      "style": "Kizomba • Semba • Ginga • African Vibes",
+      "country": "🇧🇪",
+      "source_line": "🎧 🇧🇪 DJ RA"
+     },
+     {
+      "name_as_written": "Elydio DJ",
+      "role": "dj",
+      "style": "Kizomba • Semba • Ginga • African Vibes",
+      "country": "🇦🇴",
+      "source_line": "🎧 🇦🇴 Elydio DJ"
+     },
+     {
+      "name_as_written": "#DjMAK",
+      "role": "dj",
+      "style": "ROOM #bachata – #salsa – #konpa",
+      "country": "🇫🇷",
+      "source_line": "🎧 🇫🇷 #DjMAK"
+     },
+     {
+      "name_as_written": "#Djinno",
+      "role": "dj",
+      "style": "ROOM #bachata – #salsa – #konpa",
+      "country": "🇫🇷",
+      "source_line": "🎧 🇫🇷 #Djinno"
+     },
+     {
+      "name_as_written": "#Djayluludancer",
+      "role": "dj",
+      "style": "ROOM #bachata – #salsa – #konpa",
+      "country": "🇫🇷",
+      "source_line": "🎧 🇫🇷 #Djayluludancer"
+     }
+    ],
+    "features": [
+     {
+      "feature": "shows",
+      "quote": "Shows & special performances",
+      "rationale": "The description promises shows and special performances by artists."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "ROOM #bachata – #salsa – #konpa",
+      "rationale": "A separate ROOM heading for bachata, salsa and konpa implies more than one dance room."
+     }
+    ]
+   }
+  ]
+ }
 }

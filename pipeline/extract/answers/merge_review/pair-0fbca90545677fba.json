@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mous@dj",
+ "key_b": "p:mous@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0fbca90545677fba",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Every mention is the same stage name in the DJ role, with only case and prefix variants (Mous, DJ Mous, DJ MOUS), and the stated countries (Switzerland and Cameroon) are compatible with one Swiss-based performer of Cameroonian origin; nothing shows two separate people."
+ }
+}

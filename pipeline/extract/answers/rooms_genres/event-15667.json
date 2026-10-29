@@ -1,31 +1,38 @@
 {
- "batch": "event-15667",
- "events": [
-  {
-   "event_id": 15667,
-   "party_rooms": {
-    "count": 3,
-    "quote": "On three different dancefloors"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Salsa, Bachata, and Kizomba scene"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "839585f3909f3a33",
+ "answer": {
+  "batch": "event-15667",
+  "events": [
+   {
+    "event_id": 15667,
+    "party_rooms": {
+     "count": 3,
+     "quote": "On three different dancefloors"
     },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Salsa, Bachata, and Kizomba scene"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Salsa, Bachata, and Kizomba scene"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "from Salsa to Bachata to Kizomba"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "from Salsa to Bachata to Kizomba"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "from Salsa to Bachata to Kizomba"
+     }
+    ]
+   }
+  ]
+ }
 }

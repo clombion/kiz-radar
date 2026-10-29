@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ando@dj",
+ "key_b": "p:ando@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fed876bcd1b23092",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The one key carries two stated countries, DE on the Denmark event and GH on the Germany event, with no partner, style or other mention linking the two, so the evidence cannot show whether one DJ Ando or several people share the name."
+ }
+}

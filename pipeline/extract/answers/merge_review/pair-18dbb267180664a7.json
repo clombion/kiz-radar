@@ -1,0 +1,13 @@
+{
+ "key_a": "p:yami@kali+yami",
+ "key_b": "p:yamiso",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "18dbb267180664a7",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the stage name Yami, France as a stated country and Bulgaria as an event country, which points toward one DJ. But side A has no mentions to inspect, its partner kali is absent from side B, and the extra 'SO' suffix on side B is unexplained, so the evidence does not settle it."
+ }
+}

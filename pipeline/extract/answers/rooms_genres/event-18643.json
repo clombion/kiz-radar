@@ -1,18 +1,25 @@
 {
- "batch": "event-18643",
- "events": [
-  {
-   "event_id": 18643,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "sophisticated Urban Kiz experience"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "f2e92c0cdb60623e",
+ "answer": {
+  "batch": "event-18643",
+  "events": [
+   {
+    "event_id": 18643,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "sophisticated Urban Kiz experience"
+     }
+    ]
+   }
+  ]
+ }
 }

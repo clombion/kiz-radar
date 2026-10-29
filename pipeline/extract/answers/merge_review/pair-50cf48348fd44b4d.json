@@ -1,0 +1,13 @@
+{
+ "key_a": "p:aurea@aurea+tresor",
+ "key_b": "p:aurea@aurea+trezor",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "50cf48348fd44b4d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share Spain and the Netherlands and the same name, but their partners differ (tresor vs trezor) and side A also has Brazil and wider events, so the evidence does not establish whether this is one artist or two linked by a similar partner name."
+ }
+}

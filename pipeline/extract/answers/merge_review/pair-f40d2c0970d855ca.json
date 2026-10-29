@@ -1,0 +1,13 @@
+{
+ "key_a": "p:claudia@claudia+oscar",
+ "key_b": "p:claudiaspano",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f40d2c0970d855ca",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is the bare first name 'Claudia' with a partner (Oscar) and events in Italy and Spain, while side B is 'Claudia Spano' with Italy only and no partner; both are Italian, but the common first name plus no shared partner or event evidence does not settle it, and side A has no mention records to check."
+ }
+}

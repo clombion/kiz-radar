@@ -15,7 +15,7 @@ from pipeline import db as sqlite_db
 from pipeline import prompt as prompts
 from pipeline.enums import FirstRead as FirstReadState
 from pipeline.enums import Listing, Sales, Status, Style, Waiting
-from pipeline.extract import answers, prices
+from pipeline.extract import answers, prices, questions
 from pipeline.records import (
     Dated,
     FirstRead,
@@ -131,9 +131,7 @@ def dated_in_description(entry: Priced, start: dt.date, today: dt.date) -> bool:
     today or later."""
     card = prices.card_pass(entry.passes)
     return card is not None and any(
-        day is not None and day >= today
-        for t in entry.passes[card].tiers
-        for day in prices.window(t.from_, t.until, start)
+        day is not None and day >= today for t in entry.passes[card].tiers for day in prices.dates(t, start)
     )
 
 
@@ -148,6 +146,7 @@ NEEDS = states.total(
         FirstReadState.CURRENT: False,
         FirstReadState.REDO_PROMPT: True,
         FirstReadState.REDO_DESCRIPTION: True,
+        FirstReadState.REDO_FESTIVAL: True,
         FirstReadState.REDO_PAGE: True,
         FirstReadState.REDO_UNREAD: True,
         FirstReadState.DISPUTED: True,
@@ -224,9 +223,12 @@ def why_first_read(f: Festival, today: dt.date) -> tuple[FirstReadState, tuple[s
             if entry is None or (at := read_at(fr, f.log)) is None:
                 sys.exit(f'{f.id}: a first read of rows at {fr.rows_at.isoformat()}, which its log has no read of')
             unread = tuple(unread_keys(fr, entry))
+            asked = (fr.title, fr.start_date, fr.end_date, fr.country, fr.styles)
             state = (
                 FirstReadState.REDO_DESCRIPTION
                 if fr.description != f.description
+                else FirstReadState.REDO_FESTIVAL
+                if asked != (f.title, f.start_date, f.end_date, f.country, f.styles)
                 else FirstReadState.REDO_PAGE
                 if f.page and f.page.url != at.page
                 else FirstReadState.REDO_UNREAD
@@ -266,9 +268,9 @@ def festivals(db: sqlite_db.Reader, today: dt.date, only: int | None = None, *, 
         if only
         else db.rows(Event, query + ' order by start_date', (Listing.LISTED,))
         if every
-        else db.rows(Event, query + ' and end_date >= ? order by start_date', (today,))
+        else db.rows(Event, query + ' and end_date >= ? order by start_date', (Listing.LISTED, today))
     )
-    described = answers.current(prompts.PRICES, {e.id for e in events})
+    described = questions.now(db).current(prompts.PRICES)  # the description's prices, current today
     known, found = sites(), found_pages()
     shops = shop_hosts(known)
     recorded = tickets_store.recorded().written

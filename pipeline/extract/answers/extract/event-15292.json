@@ -1,41 +1,48 @@
 {
- "batch": "event-15292",
- "events": [
-  {
-   "event_id": 15292,
-   "artists": [],
-   "features": [
-    {
-     "feature": "accommodation_included",
-     "quote": "Package of Full Pass & Accomodation & FREE OPEN NIGHT BAR:",
-     "rationale": "The package named as a Full Pass with accommodation includes the accommodation."
-    },
-    {
-     "feature": "competition",
-     "quote": "Exciting COMPETITION: Rueda, LA, NY, man & lady solo, kids;",
-     "rationale": "The description lists a competition with several categories."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Excellent workshops in 5 halls and spectacular shows",
-     "rationale": "The description states that workshops are part of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "Excellent workshops in 5 halls and spectacular shows",
-     "rationale": "The description mentions spectacular shows as part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Afternoon Parties",
-     "rationale": "The description lists afternoon parties among the event's offerings."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Excellent workshops in 5 halls and spectacular shows",
-     "rationale": "Mentioning 5 halls shows that there is more than one dance room."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:24:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0ef22d65e94d76c6",
+ "answer": {
+  "batch": "event-15292",
+  "events": [
+   {
+    "event_id": 15292,
+    "artists": [],
+    "features": [
+     {
+      "feature": "day_socials",
+      "quote": "Afternoon Parties",
+      "rationale": "The description lists Afternoon Parties as part of the programme, which are daytime socials."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Excellent workshops in 5 halls",
+      "rationale": "The text advertises dance workshops as part of the congress."
+     },
+     {
+      "feature": "shows",
+      "quote": "spectacular shows",
+      "rationale": "The description promises spectacular shows at the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "workshops in 5 halls",
+      "rationale": "Workshops and parties take place in five halls, meaning more than one dance room."
+     },
+     {
+      "feature": "competition",
+      "quote": "Exciting COMPETITION: Rueda",
+      "rationale": "The event includes a competition, with Rueda and other categories listed."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Package of Full Pass & Accomodation",
+      "rationale": "The package bundles the full pass together with accommodation."
+     }
+    ]
+   }
+  ]
+ }
 }

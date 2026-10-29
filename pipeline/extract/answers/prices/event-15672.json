@@ -1,197 +1,177 @@
 {
- "batch": "event-15672",
- "events": [
-  {
-   "event_id": 15672,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "🌟𝗧𝗶𝗰𝗸𝗲𝘁 𝗣𝗿𝗶𝗰𝗲",
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 145.0,
-       "currency": "CAD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "$ 145(Early Bird)"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 75.0,
-       "currency": "CAD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "𝗙𝗿𝗶𝗱𝗮𝘆 𝗡𝗶𝗴𝗵𝘁: $75"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 100.0,
-       "currency": "CAD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "𝗦𝗮𝘁𝘂𝗿𝗱𝗮𝘆 𝗗𝗮𝘆 𝗣𝗮𝘀𝘀 (𝗪𝗼𝗿𝗸𝘀𝗵𝗼𝗽𝘀 + 𝗦𝗼𝗰𝗶𝗮𝗹): $100"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 70.0,
-       "currency": "CAD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "𝗦𝗮𝘁𝘂𝗿𝗱𝗮𝘆 𝗦𝗼𝗰𝗶𝗮𝗹 𝗣𝗮𝘀𝘀: $70"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 75.0,
-       "currency": "CAD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "𝗦𝗮𝘁𝘂𝗿𝗱𝗮𝘆 𝗡𝗶𝗴𝗵𝘁 𝗣𝗮𝘀𝘀:$75"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 100.0,
-       "currency": "CAD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "𝗦𝘂𝗻𝗱𝗮𝘆 𝗗𝗮𝘆 𝗣𝗮𝘀𝘀 (𝗪𝗼𝗿𝗸𝘀𝗵𝗼𝗽𝘀 + 𝗦𝗼𝗰𝗶𝗮𝗹): $100"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 70.0,
-       "currency": "CAD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "𝗦𝘂𝗻𝗱𝗮𝘆 𝗦𝗼𝗰𝗶𝗮𝗹 𝗣𝗮𝘀𝘀: $70"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 75.0,
-       "currency": "CAD",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "𝗦𝘂𝗻𝗱𝗮𝘆 𝗡𝗶𝗴𝗵𝘁 𝗣𝗮𝘀𝘀: $75"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Every month the price will increase by $20"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:42:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "dab892e14a64b8e6",
+ "answer": {
+  "batch": "event-15672",
+  "events": [
+   {
+    "event_id": 15672,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "🌟𝗧𝗶𝗰𝗸𝗲𝘁 𝗣𝗿𝗶𝗰𝗲",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 145.0,
+        "currency": "CAD",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "$ 145(Early Bird)"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 75.0,
+        "currency": "CAD",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝗙𝗿𝗶𝗱𝗮𝘆 𝗡𝗶𝗴𝗵𝘁: $75"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 100.0,
+        "currency": "CAD",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝗦𝗮𝘁𝘂𝗿𝗱𝗮𝘆 𝗗𝗮𝘆 𝗣𝗮𝘀𝘀 (𝗪𝗼𝗿𝗸𝘀𝗵𝗼𝗽𝘀 + 𝗦𝗼𝗰𝗶𝗮𝗹): $100"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 70.0,
+        "currency": "CAD",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝗦𝗮𝘁𝘂𝗿𝗱𝗮𝘆 𝗦𝗼𝗰𝗶𝗮𝗹 𝗣𝗮𝘀𝘀: $70"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 75.0,
+        "currency": "CAD",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝗦𝗮𝘁𝘂𝗿𝗱𝗮𝘆 𝗡𝗶𝗴𝗵𝘁 𝗣𝗮𝘀𝘀:$75"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 100.0,
+        "currency": "CAD",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝗦𝘂𝗻𝗱𝗮𝘆 𝗗𝗮𝘆 𝗣𝗮𝘀𝘀 (𝗪𝗼𝗿𝗸𝘀𝗵𝗼𝗽𝘀 + 𝗦𝗼𝗰𝗶𝗮𝗹): $100"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 70.0,
+        "currency": "CAD",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝗦𝘂𝗻𝗱𝗮𝘆 𝗦𝗼𝗰𝗶𝗮𝗹 𝗣𝗮𝘀𝘀: $70"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 75.0,
+        "currency": "CAD",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝗦𝘂𝗻𝗱𝗮𝘆 𝗡𝗶𝗴𝗵𝘁 𝗣𝗮𝘀𝘀: $75"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Every month the price will increase by $20"
+    ]
+   }
+  ]
+ }
 }

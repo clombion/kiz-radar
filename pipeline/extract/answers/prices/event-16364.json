@@ -1,60 +1,70 @@
 {
- "batch": "event-16364",
- "events": [
-  {
-   "event_id": 16364,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "💥FULL PASS PRICES (ONLY 150 FULL PASSES AVAILABLE)",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 59.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 50,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "50 FULL PASSES €59"
-      },
-      {
-       "amount": 69.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 50,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "50 FULL PASSES €69"
-      },
-      {
-       "amount": 79.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 50,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "50 FULL PASSES €79"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:43:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "270b91acdc05de57",
+ "answer": {
+  "batch": "event-16364",
+  "events": [
+   {
+    "event_id": 16364,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "💥FULL PASS PRICES (ONLY 150 FULL PASSES AVAILABLE)",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 59.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 50,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "50 FULL PASSES €59"
+       },
+       {
+        "amount": 69.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 50,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "50 FULL PASSES €69"
+       },
+       {
+        "amount": 79.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 50,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "50 FULL PASSES €79"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

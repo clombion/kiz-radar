@@ -1,0 +1,13 @@
+{
+ "key_a": "p:damir@damir+laura",
+ "key_b": "p:damir@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "afd03b1239a16644",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only shared evidence is the same name and France as a stated country on both sides; side A has a partner (laura@damir+laura) and countries KZ and NL that side B never shows, and side A's mention list is empty, so the evidence does not settle whether these are one artist."
+ }
+}

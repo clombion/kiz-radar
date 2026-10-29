@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dwe@dance",
+ "key_b": "p:dwetyson",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "391fb29b26b8d29b",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides state the same country (NL) and 'Dwe' is a distinctive stage name that matches the core of 'Dj Dwe Tyson' with a DJ prefix, which is the pattern the review guide treats as one artist, though the events are in different countries and no partner or style links them, so this is a moderate-confidence call."
+ }
+}

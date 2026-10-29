@@ -1,39 +1,47 @@
 {
- "batch": "event-15848",
- "events": [
-  {
-   "event_id": 15848,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "FULL PASS early bird offer | single person",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 80.0,
-       "currency": "CHF",
-       "fee": null,
-       "alt": {
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:42:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "eb7b4927a55d707c",
+ "answer": {
+  "batch": "event-15848",
+  "events": [
+   {
+    "event_id": 15848,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "FULL PASS early bird offer | single person",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
         "amount": 80.0,
-        "currency": "EUR"
-       },
-       "from": null,
-       "until": "2025-12-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Early bird 80 CHF 〰 80€ offer valid til 31.12.2025"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Ticket prices will increase every 1st of the month in 2026, respectively at the door!"
-   ]
-  }
- ]
+        "currency": "CHF",
+        "fee": null,
+        "alt": {
+         "amount": 80.0,
+         "currency": "EUR"
+        },
+        "sale": {
+         "from": null,
+         "until": "2025-12-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Early bird 80 CHF 〰 80€ offer valid til 31.12.2025"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Ticket prices will increase every 1st of the month in 2026, respectively at the door!"
+    ]
+   }
+  ]
+ }
 }

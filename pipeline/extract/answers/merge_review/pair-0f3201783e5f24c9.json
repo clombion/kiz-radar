@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sonia@richard+sonia",
+ "key_b": "p:sonia@sonia+steff",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0f3201783e5f24c9",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two records have different partners (richard for Sonia, steff for SONIA) and their events are in different places (France versus Switzerland), so the shared first name alone is weak evidence and nothing links them as one artist."
+ }
+}

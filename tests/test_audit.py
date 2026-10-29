@@ -12,7 +12,7 @@ import pytest
 
 from pipeline import audit, data, prompt, tickets_state, tickets_store
 from pipeline.enums import FirstRead, Model
-from pipeline.records import ANSWERS, CsvRow, Logged, PageRecipe
+from pipeline.records import CsvRow, PageRecipe, Provenance
 from tests.exports import committed, shaped
 from tests.fakes import AT, SITE_CLAIMS, Memory
 
@@ -97,15 +97,23 @@ def test_an_answer_to_the_current_prompt_holds_only_states_its_pass_makes(
     feature = {'feature': 'promo_code', 'quote': 'q', 'rationale': 'a code'}  # a feature the build makes
     for i in (1, 2):
         events = [{'event_id': i, 'artists': [], 'features': [feature]}]
-        _ = (folder / f'event-{i}.json').write_text(json.dumps({'batch': 'b', 'events': events}))
+        filed = {
+            'prompt': now if i == 1 else old,
+            'model': 'claude-haiku-5-5',
+            'answered_at': '2026-10-02T09:00:00+00:00',
+            'answered_by': 'x',
+            'inputs': None,
+            'answer': {'batch': 'b', 'events': events},
+        }
+        _ = (folder / f'event-{i}.json').write_text(json.dumps(filed))
 
-    def answered(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, Logged]]:
+    def answered(pass_name: str, ids: set[int]) -> dict[int, tuple[Path, Provenance]]:
         if pass_name != 'extract':  # noqa: S105 (a pass is an extraction pass, no password)
             return {}
         return {
             i: (
                 folder / f'event-{i}.json',
-                Logged(file='f', answered_at=AT, model=Model.CLAUDE_HAIKU_5_5, prompt=h, answered_by='x'),
+                Provenance(prompt=h, model=Model.CLAUDE_HAIKU_5_5, answered_at=AT, answered_by='x', inputs=None),
             )
             for i, h in ((1, now), (2, old))
         }
@@ -113,17 +121,7 @@ def test_an_answer_to_the_current_prompt_holds_only_states_its_pass_makes(
     monkeypatch.setattr(audit.answers, 'answered', answered)
     found = [f for f in audit.refused({1, 2}) if 'event-' in f]
     assert len(found) == 1
-    assert 'event-1.json: events/0/features/0/feature: Input should be' in found[0]
-
-
-def test_an_answer_file_the_log_has_no_row_for_is_named() -> None:
-    root = copied()
-    path = root / ANSWERS / 'prices' / 'event-99999.json'
-    path.parent.mkdir(parents=True, exist_ok=True)
-    _ = path.write_text('{"batch": "event-99999", "events": []}')
-    assert audit.refused(set()) == [
-        f'{ANSWERS}/prices/event-99999.json: no row in {Logged.FILE}; it answers nothing until asked again'
-    ]
+    assert 'event-1.json: answer/events/0/features/0/feature: Input should be' in found[0]
 
 
 def test_an_empty_value_is_allowed_only_where_its_column_allows_it(

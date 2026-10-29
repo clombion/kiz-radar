@@ -1,0 +1,13 @@
+{
+ "key_a": "p:katalin@azmael+katalin",
+ "key_b": "p:katalin@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "bcdee300580a70a0",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides state the same country (AT) and the same spelling apart from case, but 'Katalin' is a common first name, side B has no partners, side A's mentions are empty, and the events are in different countries, so the evidence does not settle whether this is one artist."
+ }
+}

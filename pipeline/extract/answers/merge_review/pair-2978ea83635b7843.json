@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alex@alex+ornella",
+ "key_b": "p:alexgrafiada",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2978ea83635b7843",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only link is the common first name Alex; both sides list Spain, but side A has a partner (ornella) that side B does not, and their events are in France and Belgium, with no shared event or partner to settle it."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nico@fabriziocampanella+nico",
+ "key_b": "p:nicoletta@fabriziocampanella+nicoletta",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6d4c19c6c1e3b6a1",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the same partner (fabriziocampanella) and the same Italian event country, and Nico is a short form of Nicoletta within that couple, so this is most likely one person."
+ }
+}

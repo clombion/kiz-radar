@@ -1,38 +1,45 @@
 {
- "batch": "event-16000",
- "events": [
-  {
-   "event_id": 16000,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "the biggest Urbankiz event in the Munich area"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Urbankiz, Tarraxo, Ghetto Zouk, Afrobeat, Douceur"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghetto Zouk",
-     "quote": "Urbankiz, Tarraxo, Ghetto Zouk, Afrobeat, Douceur"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrobeat",
-     "quote": "Urbankiz, Tarraxo, Ghetto Zouk, Afrobeat, Douceur"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "Urbankiz, Tarraxo, Ghetto Zouk, Afrobeat, Douceur"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "f9ad59d10aa74204",
+ "answer": {
+  "batch": "event-16000",
+  "events": [
+   {
+    "event_id": 16000,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "the biggest Urbankiz event in the Munich area"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "(Urbankiz, Tarraxo, Ghetto Zouk, Afrobeat, Douceur)"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghetto Zouk",
+      "quote": "(Urbankiz, Tarraxo, Ghetto Zouk, Afrobeat, Douceur)"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrobeat",
+      "quote": "(Urbankiz, Tarraxo, Ghetto Zouk, Afrobeat, Douceur)"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "(Urbankiz, Tarraxo, Ghetto Zouk, Afrobeat, Douceur)"
+     }
+    ]
+   }
+  ]
+ }
 }

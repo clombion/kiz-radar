@@ -1,16 +1,23 @@
 {
- "batch": "event-18737",
- "events": [
-  {
-   "event_id": 18737,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "in workshops",
-     "rationale": "The description says the dancers can be on the dance floor or in workshops, which shows dance workshops are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:33:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "8e1349606fb0fc4c",
+ "answer": {
+  "batch": "event-18737",
+  "events": [
+   {
+    "event_id": 18737,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Whether on the dance floor, in workshops, or with friends…",
+      "rationale": "The description says guests can take part in workshops at the event, so dance workshops are part of it."
+     }
+    ]
+   }
+  ]
+ }
 }

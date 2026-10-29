@@ -1,44 +1,51 @@
 {
- "batch": "event-15667",
- "events": [
-  {
-   "event_id": 15667,
-   "artists": [
-    {
-     "name_as_written": "Chacán",
-     "role": "performer",
-     "style": "Salsa Bigband",
-     "country": null,
-     "source_line": "🎺 A unique Salsa Bigband concert with “Chacán”"
-    }
-   ],
-   "features": [
-    {
-     "feature": "live_music",
-     "quote": "exclusive Salsa Bigband concert “Chacán”",
-     "rationale": "The description advertises a Salsa Bigband concert, which is live music."
-    },
-    {
-     "feature": "shows",
-     "quote": "breathtaking shows will captivate you",
-     "rationale": "The text promises shows that will captivate attendees."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "On three different dancefloors",
-     "rationale": "Three separate dancefloors are offered, so there is more than one dance room."
-    },
-    {
-     "feature": "workshops",
-     "quote": "over 40 workshops",
-     "rationale": "The festival offers more than 40 dance workshops."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "no matter whether you’re a beginner or an experienced dancer",
-     "rationale": "The workshops are explicitly open to beginners as well as experienced dancers."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "839585f3909f3a33",
+ "answer": {
+  "batch": "event-15667",
+  "events": [
+   {
+    "event_id": 15667,
+    "artists": [
+     {
+      "name_as_written": "Sabor Latino Entertainment",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "From April 10–12, 2026, the city center of Erlangen will transform into a vibrant hub of Latin American joy and passion. Sabor Latino Entertainment presents the 2nd edition of the SBK Spring Festival, bringing together dancers from all over Germany and across Europe to celebrate a weekend filled with music, passion, and movement."
+     }
+    ],
+    "features": [
+     {
+      "feature": "shows",
+      "quote": "breathtaking shows will captivate you",
+      "rationale": "The description promises shows that will captivate attendees, so shows are present."
+     },
+     {
+      "feature": "live_music",
+      "quote": "exclusive Salsa Bigband concert “Chacán”",
+      "rationale": "A Salsa Bigband concert is advertised, which is live music."
+     },
+     {
+      "feature": "workshops",
+      "quote": "over 40 workshops",
+      "rationale": "Over 40 workshops are part of the festival program."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "no matter whether you’re a beginner or an experienced dancer",
+      "rationale": "The workshops are explicitly open to beginners as well as experienced dancers."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "On three different dancefloors",
+      "rationale": "Three separate dance floors are offered, so there is more than one dance room."
+     }
+    ]
+   }
+  ]
+ }
 }

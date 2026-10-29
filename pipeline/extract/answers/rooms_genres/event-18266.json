@@ -1,18 +1,25 @@
 {
- "batch": "event-18266",
- "events": [
-  {
-   "event_id": 18266,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "other",
-     "genre_as_written": "Angolan dance",
-     "quote": "Daily workshops of Angolan dance"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "7a09d62ea4fa8373",
+ "answer": {
+  "batch": "event-18266",
+  "events": [
+   {
+    "event_id": 18266,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Anusha e CR7 do Semba"
+     }
+    ]
+   }
+  ]
+ }
 }

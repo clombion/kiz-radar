@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fanio@fanio+sara",
+ "key_b": "p:faniodearaujo",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "818e2180f7cac6b1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides list the same countries (Angola and Portugal) and A's France event overlaps B's, but side A has no mentions to inspect, and its partner is a couple key (fanio+sara) that B lacks, so the evidence does not settle whether the bare name 'Fanio' is the same person as 'Fanio de Araujo'."
+ }
+}

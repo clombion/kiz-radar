@@ -1,23 +1,30 @@
 {
- "batch": "event-16693",
- "events": [
-  {
-   "event_id": 16693,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "an event designed for those who want to fully experience Kizomba."
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "complete immersion in the world of Kizomba and Afro"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d75ac9770144ab93",
+ "answer": {
+  "batch": "event-16693",
+  "events": [
+   {
+    "event_id": 16693,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "an event designed for those who want to fully experience Kizomba."
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "complete immersion in the world of Kizomba and Afro"
+     }
+    ]
+   }
+  ]
+ }
 }

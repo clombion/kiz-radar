@@ -1,33 +1,40 @@
 {
- "batch": "event-16221",
- "events": [
-  {
-   "event_id": 16221,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata • Salsa"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Bachata • Salsa"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Brazilian Zouk",
-     "quote": "Brazilian Zouk"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Brazilian Zouk • Kizomba"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "5ad1f49f8b1ae489",
+ "answer": {
+  "batch": "event-16221",
+  "events": [
+   {
+    "event_id": 16221,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "🎶 Bachata • Salsa • Brazilian Zouk • Kizomba"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "🎶 Bachata • Salsa • Brazilian Zouk • Kizomba"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Brazilian Zouk",
+      "quote": "🎶 Bachata • Salsa • Brazilian Zouk • Kizomba"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "🎶 Bachata • Salsa • Brazilian Zouk • Kizomba"
+     }
+    ]
+   }
+  ]
+ }
 }

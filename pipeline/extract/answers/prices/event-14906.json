@@ -1,12 +1,19 @@
 {
- "batch": "event-14906",
- "events": [
-  {
-   "event_id": 14906,
-   "passes": [],
-   "rule_quotes": [
-    "Passes will cost more at the door"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:41:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "493995f901a15284",
+ "answer": {
+  "batch": "event-14906",
+  "events": [
+   {
+    "event_id": 14906,
+    "passes": [],
+    "rule_quotes": [
+     "Passes will cost more at the door"
+    ]
+   }
+  ]
+ }
 }

@@ -1,321 +1,328 @@
 {
- "batch": "event-18867",
- "events": [
-  {
-   "event_id": 18867,
-   "artists": [
-    {
-     "name_as_written": "Malwi & Juanes",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Malwi & Juanes – Barcelone"
-    },
-    {
-     "name_as_written": "Anthony & Alisiya",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Anthony & Alisiya – Nice/ Zurich"
-    },
-    {
-     "name_as_written": "Anne",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Anne – Nantes"
-    },
-    {
-     "name_as_written": "Miguel & Aleksandra",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Miguel & Aleksandra – Nantes"
-    },
-    {
-     "name_as_written": "Justin & Meghane",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Justin & Meghane – Nantes"
-    },
-    {
-     "name_as_written": "Gwen & Carolina",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Gwen & Carolina – Brest"
-    },
-    {
-     "name_as_written": "Bourgeois & Maria",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Bourgeois & Maria – Nantes"
-    },
-    {
-     "name_as_written": "Pao & Margot",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Pao & Margot – Lyon"
-    },
-    {
-     "name_as_written": "Fred & Chiara",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Fred & Chiara – Paris"
-    },
-    {
-     "name_as_written": "Jonathan Kani",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Jonathan Kani – Le Mans/ Nantes"
-    },
-    {
-     "name_as_written": "Mik’iz",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Mik’iz – Lyon"
-    },
-    {
-     "name_as_written": "Beepee & Marta",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Beepee & Marta – poiriers"
-    },
-    {
-     "name_as_written": "Damyss & Clarita",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Damyss & Clarita – Nantes / Paris"
-    },
-    {
-     "name_as_written": "Dane & Anaïs",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Dane & Anaïs – Tours"
-    },
-    {
-     "name_as_written": "Chahera",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Chahera – Toulouse"
-    },
-    {
-     "name_as_written": "Rodrigue",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Rodrigue – Paris"
-    },
-    {
-     "name_as_written": "Hicham",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Hicham – Nantes"
-    },
-    {
-     "name_as_written": "Ibra Chavez",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Ibra Chavez – Nantes"
-    },
-    {
-     "name_as_written": "Gulnara",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Gulnara – Lyon"
-    },
-    {
-     "name_as_written": "Dj Karim",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Dj Karim – Paris"
-    },
-    {
-     "name_as_written": "Dj Snatch",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Dj Snatch – Tours"
-    },
-    {
-     "name_as_written": "Dj Saly",
-     "role": "dj",
-     "style": "bachata",
-     "country": null,
-     "source_line": "Dj Saly – bachata – Nantes"
-    },
-    {
-     "name_as_written": "Dj Dhoirif",
-     "role": "dj",
-     "style": "bachata",
-     "country": null,
-     "source_line": "Dj Dhoirif – bachata – Rennes"
-    },
-    {
-     "name_as_written": "Dj Gregax",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Dj Gregax – Paris / La Roche sur yon"
-    },
-    {
-     "name_as_written": "Dj Charley Raymdtc",
-     "role": "dj",
-     "style": "kizomba",
-     "country": null,
-     "source_line": "Dj Charley Raymdtc – Munich"
-    },
-    {
-     "name_as_written": "Dj Hugo smile",
-     "role": "dj",
-     "style": "kizomba",
-     "country": null,
-     "source_line": "Dj Hugo smile – Bordeaux"
-    },
-    {
-     "name_as_written": "Dj T-Wosh",
-     "role": "dj",
-     "style": "kizomba",
-     "country": null,
-     "source_line": "Dj T-Wosh – Paris"
-    },
-    {
-     "name_as_written": "Dj Kin",
-     "role": "dj",
-     "style": "kizomba",
-     "country": null,
-     "source_line": "Dj Kin – Nantes"
-    },
-    {
-     "name_as_written": "Dj Man",
-     "role": "dj",
-     "style": "kizomba",
-     "country": null,
-     "source_line": "Dj Man – Nantes"
-    },
-    {
-     "name_as_written": "Dj Mowjah",
-     "role": "dj",
-     "style": "kizomba",
-     "country": null,
-     "source_line": "Dj Mowjah – Caen"
-    },
-    {
-     "name_as_written": "Dj Lova",
-     "role": "dj",
-     "style": "kizomba",
-     "country": null,
-     "source_line": "Dj Lova – Bordeaux"
-    },
-    {
-     "name_as_written": "Dj EFZO",
-     "role": "dj",
-     "style": "kizomba",
-     "country": null,
-     "source_line": "Dj EFZO – Nantes"
-    },
-    {
-     "name_as_written": "Dj L-Gi",
-     "role": "dj",
-     "style": "kizomba",
-     "country": null,
-     "source_line": "Dj L-Gi – Nantes"
-    },
-    {
-     "name_as_written": "Dj jak",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Dj jak – Paris"
-    },
-    {
-     "name_as_written": "Dj Hicham",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Dj Hicham – Nantes"
-    },
-    {
-     "name_as_written": "Dj Ibra Chavez",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Dj Ibra Chavez – Nantes"
-    },
-    {
-     "name_as_written": "Passion kizomba Nantes",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Passion kizomba Nantes"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All in one venue",
-     "rationale": "The text says the festival and accommodation are in one venue, so the parties take place in the hotel where dancers stay."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Over 30 hours of workshops",
-     "rationale": "The event offers more than 30 hours of dance workshops."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "The master classes",
-     "rationale": "The event lists master classes among its features."
-    },
-    {
-     "feature": "competition",
-     "quote": "Bachata battle",
-     "rationale": "A battle is a dance competition."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows",
-     "rationale": "The event lists shows as a feature."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "A pre-party",
-     "rationale": "The event includes a pre-party."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Three rooms, Three atmospheres",
-     "rationale": "The event has three dance rooms."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Teams of taxi dancers",
-     "rationale": "Teams of taxi dancers are present at the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "A special negotiated rate for your stay in a 4-star hotel",
-     "rationale": "A negotiated hotel rate is offered without the accommodation being part of the pass."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Masquerade Party Edition",
-     "rationale": "The masquerade theme gives the party a dress theme."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:34:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "66bd4c8e3f291db3",
+ "answer": {
+  "batch": "event-18867",
+  "events": [
+   {
+    "event_id": 18867,
+    "artists": [
+     {
+      "name_as_written": "Passion kizomba Nantes",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Passion kizomba Nantes"
+     },
+     {
+      "name_as_written": "Malwi & Juanes",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Malwi & Juanes – Barcelone"
+     },
+     {
+      "name_as_written": "Anthony & Alisiya",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Anthony & Alisiya – Nice/ Zurich"
+     },
+     {
+      "name_as_written": "Anne",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Anne – Nantes"
+     },
+     {
+      "name_as_written": "Miguel & Aleksandra",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Miguel & Aleksandra – Nantes"
+     },
+     {
+      "name_as_written": "Justin & Meghane",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Justin & Meghane – Nantes"
+     },
+     {
+      "name_as_written": "Gwen & Carolina",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Gwen & Carolina – Brest"
+     },
+     {
+      "name_as_written": "Bourgeois & Maria",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Bourgeois & Maria – Nantes"
+     },
+     {
+      "name_as_written": "Pao & Margot",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Pao & Margot – Lyon"
+     },
+     {
+      "name_as_written": "Fred & Chiara",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Fred & Chiara – Paris"
+     },
+     {
+      "name_as_written": "Jonathan Kani",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Jonathan Kani – Le Mans/ Nantes"
+     },
+     {
+      "name_as_written": "Mik’iz",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Mik’iz – Lyon"
+     },
+     {
+      "name_as_written": "Beepee & Marta",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Beepee & Marta – poiriers"
+     },
+     {
+      "name_as_written": "Damyss & Clarita",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Damyss & Clarita – Nantes / Paris"
+     },
+     {
+      "name_as_written": "Dane & Anaïs",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dane & Anaïs – Tours"
+     },
+     {
+      "name_as_written": "Chahera",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Chahera – Toulouse"
+     },
+     {
+      "name_as_written": "Rodrigue",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Rodrigue – Paris"
+     },
+     {
+      "name_as_written": "Hicham",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Hicham – Nantes"
+     },
+     {
+      "name_as_written": "Ibra Chavez",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Ibra Chavez – Nantes"
+     },
+     {
+      "name_as_written": "Gulnara",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Gulnara – Lyon"
+     },
+     {
+      "name_as_written": "Dj Karim",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Dj Karim – Paris"
+     },
+     {
+      "name_as_written": "Dj Snatch",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Dj Snatch – Tours"
+     },
+     {
+      "name_as_written": "Dj Saly",
+      "role": "dj",
+      "style": "bachata",
+      "country": null,
+      "source_line": "Dj Saly – bachata – Nantes"
+     },
+     {
+      "name_as_written": "Dj Dhoirif",
+      "role": "dj",
+      "style": "bachata",
+      "country": null,
+      "source_line": "Dj Dhoirif – bachata – Rennes"
+     },
+     {
+      "name_as_written": "Dj Gregax",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Dj Gregax – Paris / La Roche sur yon"
+     },
+     {
+      "name_as_written": "Dj Charley Raymdtc",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dj Charley Raymdtc – Munich"
+     },
+     {
+      "name_as_written": "Dj Hugo smile",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dj Hugo smile – Bordeaux"
+     },
+     {
+      "name_as_written": "Dj T-Wosh",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dj T-Wosh – Paris"
+     },
+     {
+      "name_as_written": "Dj Kin",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dj Kin – Nantes"
+     },
+     {
+      "name_as_written": "Dj Man",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dj Man – Nantes"
+     },
+     {
+      "name_as_written": "Dj Mowjah",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dj Mowjah – Caen"
+     },
+     {
+      "name_as_written": "Dj Lova",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dj Lova – Bordeaux"
+     },
+     {
+      "name_as_written": "Dj EFZO",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dj EFZO – Nantes"
+     },
+     {
+      "name_as_written": "Dj L-Gi",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dj L-Gi – Nantes"
+     },
+     {
+      "name_as_written": "Dj jak",
+      "role": "dj",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Dj jak – Paris"
+     },
+     {
+      "name_as_written": "Dj Hicham",
+      "role": "dj",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Dj Hicham – Nantes"
+     },
+     {
+      "name_as_written": "Dj Ibra Chavez",
+      "role": "dj",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Dj Ibra Chavez – Nantes"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All in one venue",
+      "rationale": "The text says the event takes place in a hotel with all in one venue, meaning the parties and accommodation share the same hotel."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "A special negotiated rate for your stay in a 4-star hotel",
+      "rationale": "A negotiated hotel rate for the stay is offered, without the accommodation being stated as part of the pass."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Over 30 hours of workshops",
+      "rationale": "Dance workshops are listed as part of the festival."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "The master classes",
+      "rationale": "Masterclasses are listed as part of the event."
+     },
+     {
+      "feature": "competition",
+      "quote": "Bachata battle",
+      "rationale": "A battle is a dance competition offered at the festival."
+     },
+     {
+      "feature": "shows",
+      "quote": "Shows",
+      "rationale": "Shows are listed as part of the programme."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "A pre-party",
+      "rationale": "A pre-party is listed before the main event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Three rooms, Three atmospheres",
+      "rationale": "Three dance rooms are described."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "Teams of taxi dancers",
+      "rationale": "Teams of taxi dancers are present at the event."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Masquerade Party Edition",
+      "rationale": "The masquerade theme indicates a themed party."
+     }
+    ]
+   }
+  ]
+ }
 }

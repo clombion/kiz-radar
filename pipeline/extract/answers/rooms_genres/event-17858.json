@@ -1,18 +1,25 @@
 {
- "batch": "event-17858",
- "events": [
-  {
-   "event_id": 17858,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "the best Kizomba vibes in Bali"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "98acb4dcfa77e346",
+ "answer": {
+  "batch": "event-17858",
+  "events": [
+   {
+    "event_id": 17858,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "the best Kizomba vibes in Bali"
+     }
+    ]
+   }
+  ]
+ }
 }

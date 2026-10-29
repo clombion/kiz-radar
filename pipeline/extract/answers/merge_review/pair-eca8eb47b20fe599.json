@@ -1,0 +1,13 @@
+{
+ "key_a": "p:kiki@fuego+kiki",
+ "key_b": "p:kiki@kiki+selim",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "eca8eb47b20fe599",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the bare first name 'Kiki' with the same countries (DE, FR), but they have different partners (fuego and selim) and different event locations, and no mentions are given to confirm either way."
+ }
+}

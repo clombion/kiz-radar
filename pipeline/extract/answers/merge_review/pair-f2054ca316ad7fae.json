@@ -1,0 +1,13 @@
+{
+ "key_a": "p:anika@anika+michael",
+ "key_b": "p:anika@anika+michaeldiamon",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f2054ca316ad7fae",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named Anika and share the Netherlands, but their partners differ (michael@anika+michael vs michaeldiamon) and their events are in different countries, with no mentions available to settle whether this is one dancer with changing partners or two people."
+ }
+}

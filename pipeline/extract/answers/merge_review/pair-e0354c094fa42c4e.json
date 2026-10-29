@@ -1,0 +1,13 @@
+{
+ "key_a": "p:guilherme@dance",
+ "key_b": "p:guillherme@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e0354c094fa42c4e",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The two keys differ only by a single doubled letter in the same distinctive name (Guilhermé vs Guillhermé), both are listed as teachers at Swiss events, and both sides carry the same stated countries (Angola and Switzerland) with no partners or conflicting evidence."
+ }
+}

@@ -1,44 +1,51 @@
 {
- "batch": "event-17881",
- "events": [
-  {
-   "event_id": 17881,
-   "artists": [
-    {
-     "name_as_written": "PINTO PICASSO",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "🎙️PINTO PICASSO will be performing with us… 😍🔥"
-    }
-   ],
-   "features": [
-    {
-     "feature": "multiple_rooms",
-     "quote": "Salsa / Bachata / Kizomba rooms",
-     "rationale": "The line-up lists separate Salsa, Bachata and Kizomba rooms, which means more than one dance room."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Pool parties",
-     "rationale": "The description lists pool parties among the event's offerings."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops with the best artists",
-     "rationale": "The event explicitly offers workshops with artists."
-    },
-    {
-     "feature": "shows",
-     "quote": "will be performing with us",
-     "rationale": "A named artist is announced as performing at the event."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "TRANSFER DEL EVENTO DISPONIBLE",
-     "rationale": "Event transfers are offered, and the schedule gives departure and return times from Madrid and Benidorm."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:31:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "bb6e3e497802853d",
+ "answer": {
+  "batch": "event-17881",
+  "events": [
+   {
+    "event_id": 17881,
+    "artists": [
+     {
+      "name_as_written": "PINTO PICASSO",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "🎙️PINTO PICASSO will be performing with us… 😍🔥"
+     }
+    ],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "Salsa / Bachata / Kizomba rooms",
+      "rationale": "The line lists several dance rooms, so there is more than one dance room."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Pool parties",
+      "rationale": "The description lists pool parties as part of the event."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Workshops with the best artists",
+      "rationale": "The description states that workshops are part of the event."
+     },
+     {
+      "feature": "shows",
+      "quote": "PINTO PICASSO will be performing with us",
+      "rationale": "A named artist is announced as performing at the event."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "TRANSFER DEL EVENTO DISPONIBLE",
+      "rationale": "Event transfers are offered, which is a shuttle service."
+     }
+    ]
+   }
+  ]
+ }
 }

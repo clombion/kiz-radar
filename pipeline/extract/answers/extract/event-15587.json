@@ -1,212 +1,219 @@
 {
- "batch": "event-15587",
- "events": [
-  {
-   "event_id": 15587,
-   "artists": [
-    {
-     "name_as_written": "Kizomba Luxembourg",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🌍✈️ Kizomba Luxembourg presents: KZL 12 — Around the World Edition! 🌎💃🏽"
-    },
-    {
-     "name_as_written": "JOJO (Congolese 🇨🇬) & JENNY",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": "🇨🇬 🇭🇹",
-     "source_line": "🌍. JOJO (Congolese 🇨🇬) & JENNY (Haitian 🇭🇹)"
-    },
-    {
-     "name_as_written": "JESUS & ANNI",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": "🇪🇸",
-     "source_line": "🌍. JESUS & ANNI (Spanish 🇪🇸)"
-    },
-    {
-     "name_as_written": "DWE (Curaçao 🇨🇼) & GABY",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": "🇨🇼 🇪🇨",
-     "source_line": "🌍. DWE (Curaçao 🇨🇼) & GABY (Ecuador 🇪🇨)"
-    },
-    {
-     "name_as_written": "REZA & AVINASH",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": "🇸🇷",
-     "source_line": "🌍. REZA & AVINASH (Surinamese 🇸🇷)"
-    },
-    {
-     "name_as_written": "IRON MAM’S (Senegalese 🇸🇳) & MOOREA",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": "🇸🇳 🇬🇫",
-     "source_line": "🌍. IRON MAM’S (Senegalese 🇸🇳) & MOOREA (French Guiana 🇬🇫)"
-    },
-    {
-     "name_as_written": "JUSTINHNO",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": "🇸🇳",
-     "source_line": "🌍. JUSTINHNO (Senegalese 🇸🇳)"
-    },
-    {
-     "name_as_written": "SELIM (Turkish 🇹🇷) & SANDRA",
-     "role": "teacher",
-     "style": "URBANKIZ",
-     "country": "🇹🇷 🇪🇸",
-     "source_line": "🌍. SELIM (Turkish 🇹🇷) & SANDRA (Spanish 🇪🇸)"
-    },
-    {
-     "name_as_written": "FABRICIO DO ZANGADO",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": "🇦🇴",
-     "source_line": "🌍. FABRICIO DO ZANGADO (Angolan 🇦🇴)"
-    },
-    {
-     "name_as_written": "TONY VISER (Angolan 🇦🇴) & CARLA ANDRADE",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": "🇦🇴 🇨🇻",
-     "source_line": "🌍. TONY VISER (Angolan 🇦🇴) & CARLA ANDRADE (Capeverdean 🇨🇻)"
-    },
-    {
-     "name_as_written": "ADILSON & TELMA",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": "🇦🇴",
-     "source_line": "🌍. ADILSON & TELMA (Angolans 🇦🇴)"
-    },
-    {
-     "name_as_written": "ELHADJ (Ivory cost 🇨🇮) & JENNA",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": "🇨🇮 🇬🇵",
-     "source_line": "🌍. ELHADJ (Ivory cost 🇨🇮) & JENNA (Guadeloupe 🇬🇵)"
-    },
-    {
-     "name_as_written": "TRECY (Portugal 🇵🇹) & JULIO",
-     "role": "teacher",
-     "style": "KIZOMBA & SEMBA",
-     "country": "🇵🇹 🇦🇴",
-     "source_line": "🌍. TRECY (Portugal 🇵🇹) & JULIO (Angolan 🇦🇴)"
-    },
-    {
-     "name_as_written": "STEFANIO LIMA",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇻",
-     "source_line": "🌎. STEFANIO LIMA (Capverdean 🇨🇻)"
-    },
-    {
-     "name_as_written": "DJ PARAÏSO",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇳",
-     "source_line": "🌍. DJ PARAÏSO (Senegalese 🇸🇳)"
-    },
-    {
-     "name_as_written": "DJ PINGUSSO",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴 🇨🇻",
-     "source_line": "🌍. DJ PINGUSSO (Angolan and Capverdean 🇦🇴 🇨🇻)"
-    },
-    {
-     "name_as_written": "DJ NICE LIFE",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇯",
-     "source_line": "🌍. DJ NICE LIFE (Benine 🇧🇯)"
-    },
-    {
-     "name_as_written": "DJ NAO",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇳",
-     "source_line": "🌍. DJ NAO (Senegalese 🇸🇳)"
-    },
-    {
-     "name_as_written": "DJ SNAKES",
-     "role": "dj",
-     "style": null,
-     "country": "🇹🇬",
-     "source_line": "🌍. DJ SNAKES (Togolese 🇹🇬)"
-    },
-    {
-     "name_as_written": "DJ LUCAS",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🌍. DJ LUCAS (Portuguese 🇵🇹)"
-    },
-    {
-     "name_as_written": "DJ NEIKEN",
-     "role": "dj",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🌍. DJ NEIKEN (Italy 🇮🇹)"
-    },
-    {
-     "name_as_written": "DJ VALET",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇲",
-     "source_line": "🌍. DJ VALET (Cameroun 🇨🇲)"
-    },
-    {
-     "name_as_written": "DJ SABURA",
-     "role": "dj",
-     "style": "KIZOMBA/SEMBA",
-     "country": "🇵🇹",
-     "source_line": "🌍. DJ SABURA (Portugal 🇵🇹)"
-    },
-    {
-     "name_as_written": "DJ DOS ANJOS",
-     "role": "dj",
-     "style": "KIZOMBA/SEMBA",
-     "country": "🇨🇻",
-     "source_line": "🌍. DJ DOS ANJOS (Capverdean 🇨🇻)"
-    },
-    {
-     "name_as_written": "DJ BAKONGO",
-     "role": "dj",
-     "style": "KIZOMBA/SEMBA",
-     "country": "🇦🇴",
-     "source_line": "🌍. DJ BAKONGO (Angolan 🇦🇴)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops",
-     "rationale": "The day program lists workshops as part of the event."
-    },
-    {
-     "feature": "competition",
-     "quote": "KZL Championship",
-     "rationale": "The day program includes a KZL Championship, which is a competition."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Urbankiz social",
-     "rationale": "The day program lists daytime social dances."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Multiple rooms, multiple vibes",
-     "rationale": "The description states there are multiple dance rooms."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "INSIDE BY MELIÁ",
-     "rationale": "A hotels section lists recommended hotels for the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "6ecd1b8fa630ff16",
+ "answer": {
+  "batch": "event-15587",
+  "events": [
+   {
+    "event_id": 15587,
+    "artists": [
+     {
+      "name_as_written": "Kizomba Luxembourg",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "🌍✈️ Kizomba Luxembourg presents: KZL 12 — Around the World Edition! 🌎💃🏽"
+     },
+     {
+      "name_as_written": "JOJO (Congolese 🇨🇬) & JENNY (Haitian 🇭🇹)",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "🌍. JOJO (Congolese 🇨🇬) & JENNY (Haitian 🇭🇹)"
+     },
+     {
+      "name_as_written": "JESUS & ANNI",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": "🇪🇸",
+      "source_line": "🌍. JESUS & ANNI (Spanish 🇪🇸)"
+     },
+     {
+      "name_as_written": "DWE (Curaçao 🇨🇼) & GABY (Ecuador 🇪🇨)",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "🌍. DWE (Curaçao 🇨🇼) & GABY (Ecuador 🇪🇨)"
+     },
+     {
+      "name_as_written": "REZA & AVINASH",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": "🇸🇷",
+      "source_line": "🌍. REZA & AVINASH (Surinamese 🇸🇷)"
+     },
+     {
+      "name_as_written": "IRON MAM’S (Senegalese 🇸🇳) & MOOREA (French Guiana 🇬🇫)",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "🌍. IRON MAM’S (Senegalese 🇸🇳) & MOOREA (French Guiana 🇬🇫)"
+     },
+     {
+      "name_as_written": "JUSTINHNO",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": "🇸🇳",
+      "source_line": "🌍. JUSTINHNO (Senegalese 🇸🇳)"
+     },
+     {
+      "name_as_written": "SELIM (Turkish 🇹🇷) & SANDRA (Spanish 🇪🇸)",
+      "role": "teacher",
+      "style": "URBANKIZ",
+      "country": null,
+      "source_line": "🌍. SELIM (Turkish 🇹🇷) & SANDRA (Spanish 🇪🇸)"
+     },
+     {
+      "name_as_written": "FABRICIO DO ZANGADO",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": "🇦🇴",
+      "source_line": "🌍. FABRICIO DO ZANGADO (Angolan 🇦🇴)"
+     },
+     {
+      "name_as_written": "TONY VISER (Angolan 🇦🇴) & CARLA ANDRADE (Capeverdean 🇨🇻)",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "🌍. TONY VISER (Angolan 🇦🇴) & CARLA ANDRADE (Capeverdean 🇨🇻)"
+     },
+     {
+      "name_as_written": "ADILSON & TELMA",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": "🇦🇴",
+      "source_line": "🌍. ADILSON & TELMA (Angolans 🇦🇴)"
+     },
+     {
+      "name_as_written": "ELHADJ (Ivory cost 🇨🇮) & JENNA (Guadeloupe 🇬🇵)",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "🌍. ELHADJ (Ivory cost 🇨🇮) & JENNA (Guadeloupe 🇬🇵)"
+     },
+     {
+      "name_as_written": "TRECY (Portugal 🇵🇹) & JULIO (Angolan 🇦🇴)",
+      "role": "teacher",
+      "style": "KIZOMBA & SEMBA",
+      "country": null,
+      "source_line": "🌍. TRECY (Portugal 🇵🇹) & JULIO (Angolan 🇦🇴)"
+     },
+     {
+      "name_as_written": "STEFANIO LIMA",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇻",
+      "source_line": "🌎. STEFANIO LIMA (Capverdean 🇨🇻)"
+     },
+     {
+      "name_as_written": "DJ PARAÏSO",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇳",
+      "source_line": "🌍. DJ PARAÏSO (Senegalese 🇸🇳)"
+     },
+     {
+      "name_as_written": "DJ PINGUSSO",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴 🇨🇻",
+      "source_line": "🌍. DJ PINGUSSO (Angolan and Capverdean 🇦🇴 🇨🇻)"
+     },
+     {
+      "name_as_written": "DJ NICE LIFE",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇯",
+      "source_line": "🌍. DJ NICE LIFE (Benine 🇧🇯)"
+     },
+     {
+      "name_as_written": "DJ NAO",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇳",
+      "source_line": "🌍. DJ NAO (Senegalese 🇸🇳)"
+     },
+     {
+      "name_as_written": "DJ SNAKES",
+      "role": "dj",
+      "style": null,
+      "country": "🇹🇬",
+      "source_line": "🌍. DJ SNAKES (Togolese 🇹🇬)"
+     },
+     {
+      "name_as_written": "DJ LUCAS",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🌍. DJ LUCAS (Portuguese 🇵🇹)"
+     },
+     {
+      "name_as_written": "DJ NEIKEN",
+      "role": "dj",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🌍. DJ NEIKEN (Italy 🇮🇹)"
+     },
+     {
+      "name_as_written": "DJ VALET",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇲",
+      "source_line": "🌍. DJ VALET (Cameroun 🇨🇲)"
+     },
+     {
+      "name_as_written": "DJ SABURA",
+      "role": "dj",
+      "style": "KIZOMBA/SEMBA",
+      "country": "🇵🇹",
+      "source_line": "🌍. DJ SABURA (Portugal 🇵🇹)"
+     },
+     {
+      "name_as_written": "DJ DOS ANJOS",
+      "role": "dj",
+      "style": "KIZOMBA/SEMBA",
+      "country": "🇨🇻",
+      "source_line": "🌍. DJ DOS ANJOS (Capverdean 🇨🇻)"
+     },
+     {
+      "name_as_written": "DJ BAKONGO",
+      "role": "dj",
+      "style": "KIZOMBA/SEMBA",
+      "country": "🇦🇴",
+      "source_line": "🌍. DJ BAKONGO (Angolan 🇦🇴)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops / KZL Championship",
+      "rationale": "The daytime program lists Workshops as part of the event."
+     },
+     {
+      "feature": "competition",
+      "quote": "KZL Championship",
+      "rationale": "The KZL Championship is listed as a competition during the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "During day:",
+      "rationale": "The description lists daytime socials such as Urbankiz social under the During day heading."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Multiple rooms, multiple vibes",
+      "rationale": "The description explicitly states there are multiple rooms."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "INSIDE BY MELIÁ",
+      "rationale": "A list of hotels is given under the HOTELS heading, suggesting recommended accommodation for attendees."
+     }
+    ]
+   }
+  ]
+ }
 }

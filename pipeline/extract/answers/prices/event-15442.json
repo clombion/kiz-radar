@@ -1,70 +1,66 @@
 {
- "batch": "event-15442",
- "events": [
-  {
-   "event_id": 15442,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 100.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 30,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "30 Full Passes for Couples (One Man + One Woman) at €100"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 65.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 30,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "30 Full Passes for Women (Followers) at €65"
-      },
-      {
-       "amount": 65.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 30,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "30 Full Passes for Men (Leaders) at €65"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:41:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "065c17660284cbf0",
+ "answer": {
+  "batch": "event-15442",
+  "events": [
+   {
+    "event_id": 15442,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 100.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 30,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "30 Full Passes for Couples (One Man + One Woman) at €100"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 65.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 30,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "30 Full Passes for Women (Followers) at €65"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

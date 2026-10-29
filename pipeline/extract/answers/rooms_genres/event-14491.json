@@ -1,91 +1,99 @@
 {
- "batch": "event-14491",
- "events": [
-  {
-   "event_id": 14491,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 different rooms and vibes"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "𝖬𝗐𝖺𝗇𝗀𝗈𝗅é 𝗋𝗈𝗈𝗆",
-     "kind": "party",
-     "genres": [],
-     "quote": "𝐑𝐎𝐎𝐌 1️⃣: 𝖬𝗐𝖺𝗇𝗀𝗈𝗅é 𝗋𝗈𝗈𝗆 (same as the Paris edition)"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "9c7c24b42d197f8d",
+ "answer": {
+  "batch": "event-14491",
+  "events": [
+   {
+    "event_id": 14491,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 different rooms and vibes"
     },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "zouk",
-      "tarraxinha",
-      "kompa"
-     ],
-     "quote": "𝐑𝐎𝐎𝐌 2️⃣: Ghettozouk, Tarraxinha, Zouk, Konpa"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "afro",
-      "other",
-      "kuduro",
-      "reggaeton",
-      "other",
-      "other"
-     ],
-     "quote": "𝐑𝐎𝐎𝐌 3️⃣: Afrohouse, Amapiano, Kuduro, reggaeton, R&B, Hip hop, Afrobeats"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghettozouk",
-     "quote": "𝐑𝐎𝐎𝐌 2️⃣: Ghettozouk, Tarraxinha, Zouk, Konpa"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "𝐑𝐎𝐎𝐌 2️⃣: Ghettozouk, Tarraxinha, Zouk, Konpa"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "𝐑𝐎𝐎𝐌 2️⃣: Ghettozouk, Tarraxinha, Zouk, Konpa"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrohouse",
-     "quote": "𝐑𝐎𝐎𝐌 3️⃣: Afrohouse, Amapiano, Kuduro, reggaeton, R&B, Hip hop, Afrobeats"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Amapiano",
-     "quote": "𝐑𝐎𝐎𝐌 3️⃣: Afrohouse, Amapiano, Kuduro, reggaeton, R&B, Hip hop, Afrobeats"
-    },
-    {
-     "genre": "kuduro",
-     "genre_as_written": "Kuduro",
-     "quote": "𝐑𝐎𝐎𝐌 3️⃣: Afrohouse, Amapiano, Kuduro, reggaeton, R&B, Hip hop, Afrobeats"
-    },
-    {
-     "genre": "reggaeton",
-     "genre_as_written": "reggaeton",
-     "quote": "𝐑𝐎𝐎𝐌 3️⃣: Afrohouse, Amapiano, Kuduro, reggaeton, R&B, Hip hop, Afrobeats"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "R&B",
-     "quote": "𝐑𝐎𝐎𝐌 3️⃣: Afrohouse, Amapiano, Kuduro, reggaeton, R&B, Hip hop, Afrobeats"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Hip hop",
-     "quote": "𝐑𝐎𝐎𝐌 3️⃣: Afrohouse, Amapiano, Kuduro, reggaeton, R&B, Hip hop, Afrobeats"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "𝖬𝗐𝖺𝗇𝗀𝗈𝗅é 𝗋𝗈𝗈𝗆",
+      "kind": "party",
+      "genres": [],
+      "quote": "𝖬𝗐𝖺𝗇𝗀𝗈𝗅é 𝗋𝗈𝗈𝗆 (same as the Paris edition)"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "zouk",
+       "tarraxinha",
+       "kompa"
+      ],
+      "quote": "Ghettozouk, Tarraxinha, Zouk, Konpa"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "afro",
+       "other",
+       "kuduro",
+       "reggaeton",
+       "other",
+       "other",
+       "afro"
+      ],
+      "quote": "Afrohouse, Amapiano, Kuduro, reggaeton, R&B, Hip hop, Afrobeats"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghettozouk",
+      "quote": "Ghettozouk, Tarraxinha, Zouk, Konpa"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Ghettozouk, Tarraxinha, Zouk, Konpa"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Ghettozouk, Tarraxinha, Zouk, Konpa"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrohouse",
+      "quote": "Afrohouse, Amapiano, Kuduro, reggaeton, R&B, Hip hop, Afrobeats"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Amapiano",
+      "quote": "Afrohouse, Amapiano, Kuduro, reggaeton, R&B, Hip hop, Afrobeats"
+     },
+     {
+      "genre": "kuduro",
+      "genre_as_written": "Kuduro",
+      "quote": "Afrohouse, Amapiano, Kuduro, reggaeton, R&B, Hip hop, Afrobeats"
+     },
+     {
+      "genre": "reggaeton",
+      "genre_as_written": "reggaeton",
+      "quote": "Afrohouse, Amapiano, Kuduro, reggaeton, R&B, Hip hop, Afrobeats"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "R&B",
+      "quote": "Afrohouse, Amapiano, Kuduro, reggaeton, R&B, Hip hop, Afrobeats"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Hip hop",
+      "quote": "Afrohouse, Amapiano, Kuduro, reggaeton, R&B, Hip hop, Afrobeats"
+     }
+    ]
+   }
+  ]
+ }
 }

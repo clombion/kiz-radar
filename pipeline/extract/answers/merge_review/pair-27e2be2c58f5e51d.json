@@ -1,0 +1,13 @@
+{
+ "key_a": "p:manu@dance",
+ "key_b": "p:manukizmamie",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "27e2be2c58f5e51d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only 'Manu' (FR, one UK teacher event) with no partner or style, while side B is 'Manu Kizmamie' (FR, German events, partner daisy). The shared country and first name are weak evidence for a common first name, so the pair does not settle."
+ }
+}

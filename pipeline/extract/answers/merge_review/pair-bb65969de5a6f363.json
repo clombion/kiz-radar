@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tiwosh@dance",
+ "key_b": "p:tiwosh@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "bb65969de5a6f363",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are the same distinctive stage name 'Tiwosh' (with DJ prefix and hyphen variants like 'Ti-Wosh' and 'DJ TI-WOSH'), both carry French country flags, and they appear together at the Slovenia event (19450 teacher and 18680 DJ), so the DJ-prefix and spelling variants point to one artist."
+ }
+}

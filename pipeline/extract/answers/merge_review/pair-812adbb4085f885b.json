@@ -1,0 +1,13 @@
+{
+ "key_a": "p:anika@dance",
+ "key_b": "p:anikaelena",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "812adbb4085f885b",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records state the same countries (AT and SK) and both appear as teachers, but 'ANIKA' is a common short name and the only shared evidence is that the name 'ANIKA' is the first word of 'ANIKA ELENA'; there is no shared partner, style, or event, and the events are in different countries (Austria vs Poland), so the evidence does not settle whether these are one artist."
+ }
+}

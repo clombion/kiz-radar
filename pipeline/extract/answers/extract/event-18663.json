@@ -1,161 +1,168 @@
 {
- "batch": "event-18663",
- "events": [
-  {
-   "event_id": 18663,
-   "artists": [
-    {
-     "name_as_written": "Jah Ja",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "💎 Jah Ja 🇨🇭"
-    },
-    {
-     "name_as_written": "Armand & Lavinia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💎 Armand & Lavinia"
-    },
-    {
-     "name_as_written": "Heneco & Marta",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "💎 Heneco & Marta 🇫🇷"
-    },
-    {
-     "name_as_written": "Rudson Santos & Olha",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇿",
-     "source_line": "💎 Rudson Santos & Olha 🇨🇿"
-    },
-    {
-     "name_as_written": "Portu & Mada",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "💎 Portu & Mada 🇪🇸"
-    },
-    {
-     "name_as_written": "Shawn Jeroma Mc Cray",
-     "role": "teacher",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "💎 Shawn Jeroma Mc Cray 🇩🇪"
-    },
-    {
-     "name_as_written": "DJ Lenhy",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "💎 DJ Lenhy 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Mehdi",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "💎 DJ Mehdi 🇧🇪"
-    },
-    {
-     "name_as_written": "DJ Style of Music",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "💎 DJ Style of Music 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Portu",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "💎 DJ Portu 🇪🇸"
-    },
-    {
-     "name_as_written": "DJ Harryz Kiz",
-     "role": "dj",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "💎 DJ Harryz Kiz 🇩🇪"
-    },
-    {
-     "name_as_written": "DJ Juanqui",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "💎 DJ Juanqui 🇨🇭"
-    },
-    {
-     "name_as_written": "DJ Maikel",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "💎 DJ Maikel 🇨🇭"
-    },
-    {
-     "name_as_written": "Hassou",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Videographer: Hassou"
-    },
-    {
-     "name_as_written": "Taxi Team Kizmanie",
-     "role": "crew",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "❤️‍🔥 Taxi Team Kizmanie 🇫🇷"
-    },
-    {
-     "name_as_written": "Taxi Team LINKIZ Prague",
-     "role": "crew",
-     "style": null,
-     "country": "🇨🇿",
-     "source_line": "❤️‍🔥 Taxi Team LINKIZ Prague 🇨🇿"
-    },
-    {
-     "name_as_written": "Guest Dancers from KizInvasion",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "❤️‍🔥 Guest Dancers from KizInvasion"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "with workshops, socials, nonstop parties",
-     "rationale": "The description states the festival includes workshops."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Thursday Pre-Party",
-     "rationale": "A Thursday Pre-Party is listed before the main event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "14:00–19:00 – Social Dancing",
-     "rationale": "Daytime social dancing is scheduled on Saturday."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Dance Rooms",
-     "rationale": "The highlights state there are two dance rooms."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "International Guest & Taxi Teams",
-     "rationale": "Taxi teams are listed as present at the festival."
-    },
-    {
-     "feature": "private_classes",
-     "quote": "1:1 Coaching & Massages",
-     "rationale": "One-to-one coaching is offered."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:33:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "ee0fb673052db05f",
+ "answer": {
+  "batch": "event-18663",
+  "events": [
+   {
+    "event_id": 18663,
+    "artists": [
+     {
+      "name_as_written": "DJ Lenhy",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "💎 DJ Lenhy 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Mehdi",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "💎 DJ Mehdi 🇧🇪"
+     },
+     {
+      "name_as_written": "DJ Style of Music",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "💎 DJ Style of Music 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Portu",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "💎 DJ Portu 🇪🇸"
+     },
+     {
+      "name_as_written": "DJ Harryz Kiz",
+      "role": "dj",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "💎 DJ Harryz Kiz 🇩🇪"
+     },
+     {
+      "name_as_written": "DJ Juanqui",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "💎 DJ Juanqui 🇨🇭"
+     },
+     {
+      "name_as_written": "DJ Maikel",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "💎 DJ Maikel 🇨🇭"
+     },
+     {
+      "name_as_written": "Hassou",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Videographer: Hassou"
+     },
+     {
+      "name_as_written": "Jah Ja",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "💎 Jah Ja 🇨🇭"
+     },
+     {
+      "name_as_written": "Armand & Lavinia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💎 Armand & Lavinia"
+     },
+     {
+      "name_as_written": "Heneco & Marta",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "💎 Heneco & Marta 🇫🇷"
+     },
+     {
+      "name_as_written": "Rudson Santos & Olha",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇿",
+      "source_line": "💎 Rudson Santos & Olha 🇨🇿"
+     },
+     {
+      "name_as_written": "Portu & Mada",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "💎 Portu & Mada 🇪🇸"
+     },
+     {
+      "name_as_written": "Shawn Jeroma Mc Cray",
+      "role": "teacher",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "💎 Shawn Jeroma Mc Cray 🇩🇪"
+     },
+     {
+      "name_as_written": "Taxi Team Kizmanie",
+      "role": "crew",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "❤️‍🔥 Taxi Team Kizmanie 🇫🇷"
+     },
+     {
+      "name_as_written": "Taxi Team LINKIZ Prague",
+      "role": "crew",
+      "style": null,
+      "country": "🇨🇿",
+      "source_line": "❤️‍🔥 Taxi Team LINKIZ Prague 🇨🇿"
+     },
+     {
+      "name_as_written": "KizInvasion",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "❤️‍🔥 Guest Dancers from KizInvasion"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "with workshops, socials, nonstop parties",
+      "rationale": "The description states that the festival includes workshops."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Thursday Pre-Party",
+      "rationale": "A Thursday Pre-Party is held before the main event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "14:00–19:00 – Social Dancing",
+      "rationale": "Social dancing is scheduled in the afternoon."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "International Guest & Taxi Teams",
+      "rationale": "Taxi teams are listed as present at the festival."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 Dance Rooms",
+      "rationale": "The festival has two dance rooms."
+     },
+     {
+      "feature": "private_classes",
+      "quote": "1:1 Coaching & Massages",
+      "rationale": "One-to-one coaching is offered, which corresponds to private lessons."
+     }
+    ]
+   }
+  ]
+ }
 }

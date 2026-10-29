@@ -1,0 +1,13 @@
+{
+ "key_a": "p:deecbeats",
+ "key_b": "p:deecbeatz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b9debcf96c9fec1c",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The names differ only as Beats/Beatz, a spelling variant of a distinctive stage name, and both sides share the French country code and a Sweden event with no conflicting same-event appearance."
+ }
+}

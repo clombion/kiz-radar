@@ -1,38 +1,45 @@
 {
- "batch": "event-15506",
- "events": [
-  {
-   "event_id": 15506,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Urban Kiz"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Tarraxo"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "traditional Kizomba"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "Afro"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "Kompa"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "43b8b51176df4e25",
+ "answer": {
+  "batch": "event-15506",
+  "events": [
+   {
+    "event_id": 15506,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "DONAUKIZZ KIZOMBA FESTIVAL"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "Bringing you the finest selection of Urban Kiz, Tarraxo, traditional Kizomba, Afro & Kompa!"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Bringing you the finest selection of Urban Kiz, Tarraxo, traditional Kizomba, Afro & Kompa!"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "Bringing you the finest selection of Urban Kiz, Tarraxo, traditional Kizomba, Afro & Kompa!"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "Bringing you the finest selection of Urban Kiz, Tarraxo, traditional Kizomba, Afro & Kompa!"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,59 +1,58 @@
 {
- "batch": "event-16968",
- "events": [
-  {
-   "event_id": 16968,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 135.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€135 → Accommodation in a 5-person bungalow + Full Pass"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 175.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€175 → Accommodation in a 5-person bungalow + Full Pass + all meals"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Prices are per person and for the entire event stay"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:44:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "c998eb628e6bbbcd",
+ "answer": {
+  "batch": "event-16968",
+  "events": [
+   {
+    "event_id": 16968,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 135.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "€135 → Accommodation in a 5-person bungalow + Full Pass"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 175.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "€175 → Accommodation in a 5-person bungalow + Full Pass + all meals"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Prices are per person and for the entire event stay"
+    ]
+   }
+  ]
+ }
 }

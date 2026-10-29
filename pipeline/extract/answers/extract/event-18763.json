@@ -1,49 +1,56 @@
 {
- "batch": "event-18763",
- "events": [
-  {
-   "event_id": 18763,
-   "artists": [
-    {
-     "name_as_written": "Lápis Eventest By Gabriel Cabinda",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Produced by Lápis Eventest By Gabriel Cabinda"
-    }
-   ],
-   "features": [
-    {
-     "feature": "live_music",
-     "quote": "Renowned musicians and live bands",
-     "rationale": "The programme lists renowned musicians and live bands."
-    },
-    {
-     "feature": "shows",
-     "quote": "Two exclusive live shows",
-     "rationale": "The programme includes two exclusive live shows by artists."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Eight hours of workshops",
-     "rationale": "Dance workshops are part of the festival programme."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "A specialised intensive training programme",
-     "rationale": "The Master Training 360° is described as an intensive training programme."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "we recommend staying in or around Cais do Sodré, Chiado and the city centre",
-     "rationale": "The organisers recommend hotels and a stay area without including accommodation in the pass."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Progression from beginner to intermediate level",
-     "rationale": "The Level 1 foundation training explicitly takes dancers from beginner level."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:33:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b9def62b338ccb44",
+ "answer": {
+  "batch": "event-18763",
+  "events": [
+   {
+    "event_id": 18763,
+    "artists": [
+     {
+      "name_as_written": "Lápis Eventest By Gabriel Cabinda",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Produced by Lápis Eventest By Gabriel Cabinda"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Eight hours of workshops",
+      "rationale": "The programme lists eight hours of workshops as part of the festival."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Renowned musicians and live bands",
+      "rationale": "The programme promises live bands and musicians."
+     },
+     {
+      "feature": "shows",
+      "quote": "Two exclusive live shows",
+      "rationale": "The programme includes two exclusive live shows by performers."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "A specialised intensive training programme",
+      "rationale": "The Master Training 360° is described as an intensive training programme."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Live Music Social and Muzongue",
+      "rationale": "This social is scheduled in the afternoon from 15:40 to 20:30 on Saturday."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "we recommend staying in or around Cais do Sodré, Chiado and the city centre",
+      "rationale": "The event recommends hotels and lists partner hostels without accommodation being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

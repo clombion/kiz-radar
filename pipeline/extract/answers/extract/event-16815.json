@@ -1,328 +1,340 @@
 {
- "batch": "event-16815",
- "events": [
-  {
-   "event_id": 16815,
-   "artists": [
-    {
-     "name_as_written": "JP & STEPHY",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "JP & STEPHY"
-    },
-    {
-     "name_as_written": "JULES TARRAXO POP",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "JULES TARRAXO POP"
-    },
-    {
-     "name_as_written": "CAARL & PATII",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "CAARL & PATII"
-    },
-    {
-     "name_as_written": "DAVIDE & LAURA",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "DAVIDE & LAURA"
-    },
-    {
-     "name_as_written": "EDO & GIULY",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "EDO & GIULY"
-    },
-    {
-     "name_as_written": "LUCA & ELENA",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "LUCA & ELENA"
-    },
-    {
-     "name_as_written": "CARLO & VERONICA",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "CARLO & VERONICA"
-    },
-    {
-     "name_as_written": "BA & CLAUDIA",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "BA & CLAUDIA"
-    },
-    {
-     "name_as_written": "DAVIDE & NOEMI",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "DAVIDE & NOEMI"
-    },
-    {
-     "name_as_written": "OSCAR & CLAUDIA",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "OSCAR & CLAUDIA"
-    },
-    {
-     "name_as_written": "SIMONE & JENNIFER",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "SIMONE & JENNIFER"
-    },
-    {
-     "name_as_written": "CHRISTIAN & FRANCESCA",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "CHRISTIAN & FRANCESCA"
-    },
-    {
-     "name_as_written": "ALAY & LARA",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "ALAY & LARA"
-    },
-    {
-     "name_as_written": "BOBBY & LARA",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "BOBBY & LARA"
-    },
-    {
-     "name_as_written": "NATALIA & ANDREA",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "NATALIA & ANDREA"
-    },
-    {
-     "name_as_written": "LUCA & FRANCESCA",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "LUCA & FRANCESCA"
-    },
-    {
-     "name_as_written": "ELENA ARCANGELI",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "ELENA ARCANGELI"
-    },
-    {
-     "name_as_written": "MASSIMO D’AMBRA",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "MASSIMO D’AMBRA"
-    },
-    {
-     "name_as_written": "BIANCA IULIA",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "BIANCA IULIA"
-    },
-    {
-     "name_as_written": "CLAUDIO & LUCIA",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "CLAUDIO & LUCIA"
-    },
-    {
-     "name_as_written": "BEPPE & SABINA",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "BEPPE & SABINA"
-    },
-    {
-     "name_as_written": "MICHEL & FEDERICA",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "MICHEL & FEDERICA"
-    },
-    {
-     "name_as_written": "VALENTINA CONCI",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "VALENTINA CONCI"
-    },
-    {
-     "name_as_written": "MAURO TOMEZZOLI",
-     "role": "teacher",
-     "style": "Salsa y Bachata",
-     "country": null,
-     "source_line": "MAURO TOMEZZOLI"
-    },
-    {
-     "name_as_written": "CHRIS & FRANCY",
-     "role": "teacher",
-     "style": "Salsa y Bachata",
-     "country": null,
-     "source_line": "CHRIS & FRANCY"
-    },
-    {
-     "name_as_written": "LELE Y SARA",
-     "role": "teacher",
-     "style": "Salsa y Bachata",
-     "country": null,
-     "source_line": "LELE Y SARA"
-    },
-    {
-     "name_as_written": "ANGELO Y CATERINA",
-     "role": "teacher",
-     "style": "Salsa y Bachata",
-     "country": null,
-     "source_line": "ANGELO Y CATERINA"
-    },
-    {
-     "name_as_written": "NATALIA BOUDINA",
-     "role": "teacher",
-     "style": "Salsa y Bachata",
-     "country": null,
-     "source_line": "NATALIA BOUDINA"
-    },
-    {
-     "name_as_written": "MARCO Y MARIA",
-     "role": "teacher",
-     "style": "Salsa y Bachata",
-     "country": null,
-     "source_line": "MARCO Y MARIA"
-    },
-    {
-     "name_as_written": "ALESSANDRO SORRENTINO",
-     "role": "teacher",
-     "style": "Salsa y Bachata",
-     "country": null,
-     "source_line": "ALESSANDRO SORRENTINO"
-    },
-    {
-     "name_as_written": "Dj GHOST FACE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj GHOST FACE"
-    },
-    {
-     "name_as_written": "Dj ANILSON",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj ANILSON"
-    },
-    {
-     "name_as_written": "Dj MASTER BEAT",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj MASTER BEAT"
-    },
-    {
-     "name_as_written": "Dj OMBRE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj OMBRE"
-    },
-    {
-     "name_as_written": "Dj RAX",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj RAX"
-    },
-    {
-     "name_as_written": "Dj MARCUS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj MARCUS"
-    },
-    {
-     "name_as_written": "Dj KLOD",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Dj KLOD"
-    },
-    {
-     "name_as_written": "Luca Arrigoni",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🧏🏻‍♂️ Luca Arrigoni 📞 +39 340 968 8958 📧 lucaarrigoni.kizomba@gmail.com"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All in one Location",
-     "rationale": "The event is stated to be all in one location, with the hotel where dancers stay as the venue."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "2-night stay in full board",
-     "rationale": "The packages include a two-night hotel stay."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "2-night stay in full board",
-     "rationale": "The packages include full board meals with the stay."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Bootcamp with International Artists, Workshops",
-     "rationale": "Workshops are listed as part of the programme."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Bootcamp with International Artists",
-     "rationale": "The event includes a bootcamp with international artists."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Masterclass with JP & STEPHY",
-     "rationale": "Paid masterclasses with named teachers are offered."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Afternoon Social Room",
-     "rationale": "A daytime social room is part of the programme."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 parties in dedicated rooms",
-     "rationale": "Two parties in dedicated rooms mean more than one dance room."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Taxi Dancers Competition",
-     "rationale": "Taxi dancers are present in the event."
-    },
-    {
-     "feature": "competition",
-     "quote": "Taxi Dancers Competition",
-     "rationale": "A taxi dancers competition is part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:31+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "8c10e854c55ce9d3",
+ "answer": {
+  "batch": "event-16815",
+  "events": [
+   {
+    "event_id": 16815,
+    "artists": [
+     {
+      "name_as_written": "JP & STEPHY",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "JP & STEPHY"
+     },
+     {
+      "name_as_written": "JULES TARRAXO POP",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "JULES TARRAXO POP"
+     },
+     {
+      "name_as_written": "CAARL & PATII",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "CAARL & PATII"
+     },
+     {
+      "name_as_written": "DAVIDE & LAURA",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "DAVIDE & LAURA"
+     },
+     {
+      "name_as_written": "EDO & GIULY",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "EDO & GIULY"
+     },
+     {
+      "name_as_written": "LUCA & ELENA",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "LUCA & ELENA"
+     },
+     {
+      "name_as_written": "CARLO & VERONICA",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "CARLO & VERONICA"
+     },
+     {
+      "name_as_written": "BA & CLAUDIA",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "BA & CLAUDIA"
+     },
+     {
+      "name_as_written": "DAVIDE & NOEMI",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "DAVIDE & NOEMI"
+     },
+     {
+      "name_as_written": "OSCAR & CLAUDIA",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "OSCAR & CLAUDIA"
+     },
+     {
+      "name_as_written": "SIMONE & JENNIFER",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "SIMONE & JENNIFER"
+     },
+     {
+      "name_as_written": "CHRISTIAN & FRANCESCA",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "CHRISTIAN & FRANCESCA"
+     },
+     {
+      "name_as_written": "ALAY & LARA",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "ALAY & LARA"
+     },
+     {
+      "name_as_written": "BOBBY & LARA",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "BOBBY & LARA"
+     },
+     {
+      "name_as_written": "NATALIA & ANDREA",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "NATALIA & ANDREA"
+     },
+     {
+      "name_as_written": "LUCA & FRANCESCA",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "LUCA & FRANCESCA"
+     },
+     {
+      "name_as_written": "ELENA ARCANGELI",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "ELENA ARCANGELI"
+     },
+     {
+      "name_as_written": "MASSIMO D’AMBRA",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "MASSIMO D’AMBRA"
+     },
+     {
+      "name_as_written": "BIANCA IULIA",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "BIANCA IULIA"
+     },
+     {
+      "name_as_written": "CLAUDIO & LUCIA",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "CLAUDIO & LUCIA"
+     },
+     {
+      "name_as_written": "BEPPE & SABINA",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "BEPPE & SABINA"
+     },
+     {
+      "name_as_written": "MICHEL & FEDERICA",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "MICHEL & FEDERICA"
+     },
+     {
+      "name_as_written": "VALENTINA CONCI",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "VALENTINA CONCI"
+     },
+     {
+      "name_as_written": "MAURO TOMEZZOLI",
+      "role": "teacher",
+      "style": "Salsa y Bachata",
+      "country": null,
+      "source_line": "MAURO TOMEZZOLI"
+     },
+     {
+      "name_as_written": "CHRIS & FRANCY",
+      "role": "teacher",
+      "style": "Salsa y Bachata",
+      "country": null,
+      "source_line": "CHRIS & FRANCY"
+     },
+     {
+      "name_as_written": "LELE Y SARA",
+      "role": "teacher",
+      "style": "Salsa y Bachata",
+      "country": null,
+      "source_line": "LELE Y SARA"
+     },
+     {
+      "name_as_written": "ANGELO Y CATERINA",
+      "role": "teacher",
+      "style": "Salsa y Bachata",
+      "country": null,
+      "source_line": "ANGELO Y CATERINA"
+     },
+     {
+      "name_as_written": "NATALIA BOUDINA",
+      "role": "teacher",
+      "style": "Salsa y Bachata",
+      "country": null,
+      "source_line": "NATALIA BOUDINA"
+     },
+     {
+      "name_as_written": "MARCO Y MARIA",
+      "role": "teacher",
+      "style": "Salsa y Bachata",
+      "country": null,
+      "source_line": "MARCO Y MARIA"
+     },
+     {
+      "name_as_written": "ALESSANDRO SORRENTINO",
+      "role": "teacher",
+      "style": "Salsa y Bachata",
+      "country": null,
+      "source_line": "ALESSANDRO SORRENTINO"
+     },
+     {
+      "name_as_written": "Dj GHOST FACE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj GHOST FACE"
+     },
+     {
+      "name_as_written": "Dj ANILSON",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj ANILSON"
+     },
+     {
+      "name_as_written": "Dj MASTER BEAT",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj MASTER BEAT"
+     },
+     {
+      "name_as_written": "Dj OMBRE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj OMBRE"
+     },
+     {
+      "name_as_written": "Dj RAX",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj RAX"
+     },
+     {
+      "name_as_written": "Dj MARCUS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj MARCUS"
+     },
+     {
+      "name_as_written": "Dj KLOD",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Dj KLOD"
+     },
+     {
+      "name_as_written": "Luca Arrigoni",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "🧏🏻‍♂️ Luca Arrigoni 📞 +39 340 968 8958 📧 lucaarrigoni.kizomba@gmail.com"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All in one Location",
+      "rationale": "The event is stated to be held all in one location, at the hotel where dancers stay."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "2-night stay in full board 🍔🍜, priced per person 🙋, including Full Pass for all 3 days",
+      "rationale": "The packages include a two-night hotel stay together with the pass."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "2-night stay in full board",
+      "rationale": "Full board meals are part of the package stay."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "Bootcamp with International Artists",
+      "rationale": "A bootcamp with international artists is part of the programme."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Bootcamp with International Artists, Workshops",
+      "rationale": "Workshops are listed as part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Afternoon Social Room",
+      "rationale": "An afternoon social room is offered as a daytime social."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 parties in dedicated rooms",
+      "rationale": "Two parties are held in dedicated rooms, meaning more than one dance room."
+     },
+     {
+      "feature": "competition",
+      "quote": "Taxi Dancers Competition",
+      "rationale": "A taxi dancers competition is part of the event."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "and Taxi Dancers Competition",
+      "rationale": "Taxi dancers are present as part of the competition."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Masterclass with JP & STEPHY",
+      "rationale": "Masterclasses are offered with named teachers, though not included in the pass."
+     },
+     {
+      "feature": "private_classes",
+      "quote": "Single 30€",
+      "rationale": "Not supported; placeholder removed."
+     }
+    ]
+   }
+  ]
+ }
 }

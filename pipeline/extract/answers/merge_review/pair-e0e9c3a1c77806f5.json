@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marc@alessandra+marc",
+ "key_b": "p:marc@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e0e9c3a1c77806f5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only link is a shared country (IT) and a generic first name, with side A having no mentions of its own and only a partner in the couple Alessandra+Marc, while side B is a DJ with events across three countries; nothing distinctive ties them, so the evidence does not settle whether they are one person."
+ }
+}

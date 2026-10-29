@@ -1,87 +1,87 @@
 {
- "batch": "event-15883",
- "events": [
-  {
-   "event_id": 15883,
-   "artists": [
-    {
-     "name_as_written": "𝐌𝐔𝐊𝐔𝐀",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "For the first time, 𝐌𝐔𝐊𝐔𝐀 joins forces with 𝐖𝐚𝐯𝐞𝐡𝐮𝐛 𝐊𝐢𝐳𝐨𝐦𝐛𝐚 𝐁𝐮𝐜𝐡𝐚𝐫𝐞𝐬𝐭 to bring the MUKUA experience to Eastern Europe, right here, in Bucharest. 🇷🇴"
-    },
-    {
-     "name_as_written": "𝐖𝐚𝐯𝐞𝐡𝐮𝐛 𝐊𝐢𝐳𝐨𝐦𝐛𝐚 𝐁𝐮𝐜𝐡𝐚𝐫𝐞𝐬𝐭",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "For the first time, 𝐌𝐔𝐊𝐔𝐀 joins forces with 𝐖𝐚𝐯𝐞𝐡𝐮𝐛 𝐊𝐢𝐳𝐨𝐦𝐛𝐚 𝐁𝐮𝐜𝐡𝐚𝐫𝐞𝐬𝐭 to bring the MUKUA experience to Eastern Europe, right here, in Bucharest. 🇷🇴"
-    },
-    {
-     "name_as_written": "Dj Vasco",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔵 Dj Vasco"
-    },
-    {
-     "name_as_written": "Dj Neiken",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔵 Dj Neiken"
-    },
-    {
-     "name_as_written": "Dj Mous",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔵 Dj Mous"
-    },
-    {
-     "name_as_written": "Dj Kinuk",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔵 Dj Kinuk"
-    },
-    {
-     "name_as_written": "M-Xtrela",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔵 M-Xtrela"
-    },
-    {
-     "name_as_written": "Ana-Maria",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔵 Ana-Maria"
-    },
-    {
-     "name_as_written": "Vasco",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔵 Vasco"
-    },
-    {
-     "name_as_written": "Inês Miranda",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔵 Inês Miranda"
-    }
-   ],
-   "features": [
-    {
-     "feature": "partner_hotel",
-     "quote": "The main venue and the recommended hotel are just steps apart",
-     "rationale": "The description names a recommended hotel close to the main venue, which is a partner hotel not included in the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "87b9cfca0c63a01c",
+ "answer": {
+  "batch": "event-15883",
+  "events": [
+   {
+    "event_id": 15883,
+    "artists": [
+     {
+      "name_as_written": "𝐌𝐔𝐊𝐔𝐀",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "𝐌𝐔𝐊𝐔𝐀 𝐱 𝐖𝐀𝐕𝐄𝐇𝐔𝐁 𝐁𝐮𝐜𝐡𝐚𝐫𝐞𝐬𝐭 𝟐𝟎𝟐𝟔"
+     },
+     {
+      "name_as_written": "Dj Vasco",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔵 Dj Vasco"
+     },
+     {
+      "name_as_written": "Dj Neiken",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔵 Dj Neiken"
+     },
+     {
+      "name_as_written": "Dj Mous",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔵 Dj Mous"
+     },
+     {
+      "name_as_written": "Dj Kinuk",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔵 Dj Kinuk"
+     },
+     {
+      "name_as_written": "M-Xtrela",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔵 M-Xtrela"
+     },
+     {
+      "name_as_written": "Ana-Maria",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔵 Ana-Maria"
+     },
+     {
+      "name_as_written": "Vasco",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔵 Vasco"
+     },
+     {
+      "name_as_written": "Inês Miranda",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔵 Inês Miranda"
+     }
+    ],
+    "features": [
+     {
+      "feature": "partner_hotel",
+      "quote": "The main venue and the recommended hotel are just steps apart",
+      "rationale": "A recommended hotel close to the venue is named, but the accommodation is not stated to be part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

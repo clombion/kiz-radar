@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cazuza@dance",
+ "key_b": "p:cazuzaquinvula",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fab92021747a72b4",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides list Angola and the teacher role, and B is the fuller form of A's name, but there is no shared partner and no style on either side, and 'Cazuza' is a common stage name, so the evidence does not settle whether this is one person."
+ }
+}

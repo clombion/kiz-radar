@@ -1,28 +1,35 @@
 {
- "batch": "event-19060",
- "events": [
-  {
-   "event_id": 19060,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata Full Pass"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba Full Pass"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "WCS",
-     "quote": "with Bachata, Kiz and WCS"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "155a525db493da32",
+ "answer": {
+  "batch": "event-19060",
+  "events": [
+   {
+    "event_id": 19060,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Over 3000 sqm of dance floor with Bachata, Kiz and WCS"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kiz",
+      "quote": "Over 3000 sqm of dance floor with Bachata, Kiz and WCS"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "WCS",
+      "quote": "social dance competition for WCS and Bachata"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,73 +1,106 @@
 {
- "batch": "event-15949",
- "events": [
-  {
-   "event_id": 15949,
-   "artists": [
-    {
-     "name_as_written": "DJ PINGUSSO",
-     "role": "dj",
-     "style": null,
-     "country": "🇱🇺",
-     "source_line": "🔸DJ PINGUSSO 🇱🇺"
-    },
-    {
-     "name_as_written": "DJ PARAISO",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🔸DJ PARAISO 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ NAO",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "🔸DJ NAO 🇧🇪"
-    },
-    {
-     "name_as_written": "DJ STEFANIO LIMA",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "🔸DJ STEFANIO LIMA 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ IRON MAMS",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "🔸DJ IRON MAMS 🇨🇭"
-    },
-    {
-     "name_as_written": "DJ GUELAS",
-     "role": "dj",
-     "style": null,
-     "country": "🇺🇸",
-     "source_line": "🔸DJ GUELAS 🇺🇸"
-    },
-    {
-     "name_as_written": "AMADOU KANE",
-     "role": "media",
-     "style": null,
-     "country": "🇨🇦",
-     "source_line": "🔹AMADOU KANE 🇨🇦"
-    },
-    {
-     "name_as_written": "AKIM",
-     "role": "media",
-     "style": null,
-     "country": "🇨🇦",
-     "source_line": "🔹AKIM 🇨🇦"
-    }
-   ],
-   "features": [
-    {
-     "feature": "after_party",
-     "quote": "After Party Kizo Fest Beach Club!",
-     "rationale": "The description announces an after-party at the Beach Club."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:27:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "76e3f64243fb35b1",
+ "answer": {
+  "batch": "event-15949",
+  "events": [
+   {
+    "event_id": 15949,
+    "artists": [
+     {
+      "name_as_written": "Kizo Love",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Join us for the 7th edition of Kizo Festival Montreal! Experience a potential 7 days of non-stop parties in the heart of Montréal’s Downtown featuring Kizo Love, Mia Designs, and French Accent from June 24th to 30th, 2026."
+     },
+     {
+      "name_as_written": "Mia Designs",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Join us for the 7th edition of Kizo Festival Montreal! Experience a potential 7 days of non-stop parties in the heart of Montréal’s Downtown featuring Kizo Love, Mia Designs, and French Accent from June 24th to 30th, 2026."
+     },
+     {
+      "name_as_written": "French Accent",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Join us for the 7th edition of Kizo Festival Montreal! Experience a potential 7 days of non-stop parties in the heart of Montréal’s Downtown featuring Kizo Love, Mia Designs, and French Accent from June 24th to 30th, 2026."
+     },
+     {
+      "name_as_written": "DJ PINGUSSO",
+      "role": "dj",
+      "style": null,
+      "country": "🇱🇺",
+      "source_line": "🔸DJ PINGUSSO 🇱🇺"
+     },
+     {
+      "name_as_written": "DJ PARAISO",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🔸DJ PARAISO 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ NAO",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "🔸DJ NAO 🇧🇪"
+     },
+     {
+      "name_as_written": "DJ STEFANIO LIMA",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "🔸DJ STEFANIO LIMA 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ IRON MAMS",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "🔸DJ IRON MAMS 🇨🇭"
+     },
+     {
+      "name_as_written": "DJ GUELAS",
+      "role": "dj",
+      "style": null,
+      "country": "🇺🇸",
+      "source_line": "🔸DJ GUELAS 🇺🇸"
+     },
+     {
+      "name_as_written": "AMADOU KANE",
+      "role": "media",
+      "style": null,
+      "country": "🇨🇦",
+      "source_line": "🔹AMADOU KANE 🇨🇦"
+     },
+     {
+      "name_as_written": "AKIM",
+      "role": "media",
+      "style": null,
+      "country": "🇨🇦",
+      "source_line": "🔹AKIM 🇨🇦"
+     }
+    ],
+    "features": [
+     {
+      "feature": "after_party",
+      "quote": "After Party Kizo Fest Beach Club!",
+      "rationale": "The description announces an after-party at the Beach Club."
+     },
+     {
+      "feature": "beach_party",
+      "quote": "After Party Kizo Fest Beach Club!",
+      "rationale": "The after-party takes place at a Beach Club, so it is a beach party."
+     }
+    ]
+   }
+  ]
+ }
 }

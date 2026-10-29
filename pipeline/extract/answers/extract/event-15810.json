@@ -1,41 +1,48 @@
 {
- "batch": "event-15810",
- "events": [
-  {
-   "event_id": 15810,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Over 25 Master Dance Workshops",
-     "rationale": "The description states that more than 25 dance workshops are part of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "Spectacular World Dance Champions & Pro-Am Dance Performances",
-     "rationale": "Performances by dancers are advertised, and a showcase is scheduled at 8:00pm each day."
-    },
-    {
-     "feature": "competition",
-     "quote": "Kids Dance Competitions",
-     "rationale": "The event includes dance competitions for kids."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Pool Parties",
-     "rationale": "Pool parties are listed among the event's offerings and scheduled on Saturday and Sunday."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "PRE PARTY @ 9:00 PM",
-     "rationale": "A pre-party is scheduled for Thursday before the main weekend."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "$149.00 HOTEL ROOMS DISCOUNT LINK BELOW",
-     "rationale": "A negotiated discounted hotel room rate is offered without the accommodation being part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "e79e09bd472bbb0c",
+ "answer": {
+  "batch": "event-15810",
+  "events": [
+   {
+    "event_id": 15810,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Over 25 Master Dance Workshops",
+      "rationale": "The description states that over 25 dance workshops are part of the event."
+     },
+     {
+      "feature": "competition",
+      "quote": "Kids Dance Competitions",
+      "rationale": "Kids dance competitions are listed among the event's offerings."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Pool Parties",
+      "rationale": "Pool parties are listed as part of the event."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "PRE PARTY @ 9:00 PM",
+      "rationale": "A pre-party is scheduled on the Thursday before the main event."
+     },
+     {
+      "feature": "shows",
+      "quote": "Spectacular World Dance Champions & Pro-Am Dance Performances",
+      "rationale": "Performances by world champions and pro-am dancers are offered as shows."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "HOTEL ROOMS DISCOUNT LINK BELOW",
+      "rationale": "A discounted hotel room rate is offered through a link, separate from the event pass."
+     }
+    ]
+   }
+  ]
+ }
 }

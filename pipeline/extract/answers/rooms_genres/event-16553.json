@@ -1,28 +1,35 @@
 {
- "batch": "event-16553",
- "events": [
-  {
-   "event_id": 16553,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Dance Workshops SBKW (Salsa, Bachata, Kizomba West Coast)"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Dance Workshops SBKW (Salsa, Bachata, Kizomba West Coast)"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba West Coast",
-     "quote": "Dance Workshops SBKW (Salsa, Bachata, Kizomba West Coast)"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b58ab2e1df3ff5e1",
+ "answer": {
+  "batch": "event-16553",
+  "events": [
+   {
+    "event_id": 16553,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Dance Workshops SBKW (Salsa, Bachata, Kizomba West Coast)"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Dance Workshops SBKW (Salsa, Bachata, Kizomba West Coast)"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba West Coast",
+      "quote": "Dance Workshops SBKW (Salsa, Bachata, Kizomba West Coast)"
+     }
+    ]
+   }
+  ]
+ }
 }

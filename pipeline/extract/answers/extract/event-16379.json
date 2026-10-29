@@ -1,34 +1,41 @@
 {
- "batch": "event-16379",
- "events": [
-  {
-   "event_id": 16379,
-   "artists": [
-    {
-     "name_as_written": "LTP",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "LTP presents: BACHAKIZ NOTTINGHAM FESTIVAL 8TH EDITION"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "Anything and everything will take place under one roof at BachaKiz:",
-     "rationale": "The description says all events take place under one roof at the Mercure hotel venue, where dancers are also invited to book rooms."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "The 2 party rooms at the moment",
-     "rationale": "The text states there are two party rooms, meaning more than one dance room."
-    },
-    {
-     "feature": "workshops",
-     "quote": "the comfort of everyone attending the workshops",
-     "rationale": "The text refers to attendees of the workshops, so dance classes are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "838ba565b3a40394",
+ "answer": {
+  "batch": "event-16379",
+  "events": [
+   {
+    "event_id": 16379,
+    "artists": [
+     {
+      "name_as_written": "LTP",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "LTP presents: BACHAKIZ NOTTINGHAM FESTIVAL 8TH EDITION"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "Anything and everything will take place under one roof at BachaKiz:",
+      "rationale": "The description says all events take place under one roof at the Mercure hotel, where the dancers can also sleep."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "The 2 party rooms at the moment",
+      "rationale": "The event has two separate party rooms, so more than one dance floor is used."
+     },
+     {
+      "feature": "workshops",
+      "quote": "to ensure the comfort of everyone attending the workshops",
+      "rationale": "The text refers to workshops as part of the festival attended by pass holders."
+     }
+    ]
+   }
+  ]
+ }
 }

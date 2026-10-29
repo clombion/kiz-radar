@@ -1,105 +1,107 @@
 {
- "batch": "event-18816",
- "events": [
-  {
-   "event_id": 18816,
-   "artists": [
-    {
-     "name_as_written": "𝐃j Paraiso",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️𝐃j Paraiso"
-    },
-    {
-     "name_as_written": "𝐃𝐣 𝐁𝐥𝐯𝐜𝐤𝐒𝐤𝐲𝐥𝐞",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️𝐃𝐣 𝐁𝐥𝐯𝐜𝐤𝐒𝐤𝐲𝐥𝐞"
-    },
-    {
-     "name_as_written": "𝐃𝐣 𝐕𝐚𝐥𝐞𝐭",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️𝐃𝐣 𝐕𝐚𝐥𝐞𝐭"
-    },
-    {
-     "name_as_written": "𝐃𝐣 𝐏𝐨𝐞𝐦𝐚 𝐁𝐞𝐚𝐭𝐳",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️𝐃𝐣 𝐏𝐨𝐞𝐦𝐚 𝐁𝐞𝐚𝐭𝐳"
-    },
-    {
-     "name_as_written": "𝐃𝐣 𝐅𝐨𝐟𝐨-𝐉𝐚𝐡",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️𝐃𝐣 𝐅𝐨𝐟𝐨-𝐉𝐚𝐡"
-    },
-    {
-     "name_as_written": "𝐃𝐣 𝐌𝐢𝐞𝐥",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️𝐃𝐣 𝐌𝐢𝐞𝐥 🍯"
-    },
-    {
-     "name_as_written": "𝐃𝐣 Lena Bright",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️𝐃𝐣 Lena Bright"
-    },
-    {
-     "name_as_written": "𝐃𝐣 𝐒𝐚𝐟𝐢𝐫’𝐬 𝐁𝐞𝐚𝐭𝐬",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️𝐃𝐣 𝐒𝐚𝐟𝐢𝐫’𝐬 𝐁𝐞𝐚𝐭𝐬"
-    },
-    {
-     "name_as_written": "𝐉𝐀𝐄 𝐌𝐞𝐝𝐢𝐚 𝐓𝐞𝐚𝐦",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📱𝐉𝐀𝐄 𝐌𝐞𝐝𝐢𝐚 𝐓𝐞𝐚𝐦"
-    }
-   ],
-   "features": [
-    {
-     "feature": "pre_party",
-     "quote": "CRAZY PRE-PARTY",
-     "rationale": "The description advertises a crazy pre-party before the main event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Room 1 – 𝗧𝗮𝗿𝗿𝗮𝘅𝗼 | 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇",
-     "rationale": "Room 1 and Room 2 are listed as separate dance rooms."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "Book your 𝐀𝐥𝐥-𝐢𝐧-𝟏 incl. breakfast!",
-     "rationale": "The All-in-1 package at the venue hotel combines the event with accommodation in the same hotel."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Book your 𝐀𝐥𝐥-𝐢𝐧-𝟏 incl. breakfast!",
-     "rationale": "The All-in-1 booking is a package that includes the hotel stay."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Book your 𝐀𝐥𝐥-𝐢𝐧-𝟏 incl. breakfast!",
-     "rationale": "The All-in-1 package explicitly includes breakfast."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "𝗛𝗼𝘁𝗲𝗹𝘀 𝗻𝗲𝗮𝗿𝗯𝘆",
-     "rationale": "A list of recommended hotels nearby is given with addresses."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:34:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "ab7ab72aeddc7a31",
+ "answer": {
+  "batch": "event-18816",
+  "events": [
+   {
+    "event_id": 18816,
+    "artists": [
+     {
+      "name_as_written": "Paraiso",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐃j Paraiso"
+     },
+     {
+      "name_as_written": "𝐁𝐥𝐯𝐜𝐤𝐒𝐤𝐲𝐥𝐞",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐃𝐣 𝐁𝐥𝐯𝐜𝐤𝐒𝐤𝐲𝐥𝐞"
+     },
+     {
+      "name_as_written": "𝐕𝐚𝐥𝐞𝐭",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐃𝐣 𝐕𝐚𝐥𝐞𝐭"
+     },
+     {
+      "name_as_written": "𝐏𝐨𝐞𝐦𝐚 𝐁𝐞𝐚𝐭𝐳",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐃𝐣 𝐏𝐨𝐞𝐦𝐚 𝐁𝐞𝐚𝐭𝐳"
+     },
+     {
+      "name_as_written": "𝐅𝐨𝐟𝐨-𝐉𝐚𝐡",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐃𝐣 𝐅𝐨𝐟𝐨-𝐉𝐚𝐡"
+     },
+     {
+      "name_as_written": "𝐌𝐢𝐞𝐥",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐃𝐣 𝐌𝐢𝐞𝐥 🍯"
+     },
+     {
+      "name_as_written": "Lena Bright",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐃𝐣 Lena Bright"
+     },
+     {
+      "name_as_written": "𝐒𝐚𝐟𝐢𝐫’𝐬 𝐁𝐞𝐚𝐭𝐬",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐃𝐣 𝐒𝐚𝐟𝐢𝐫’𝐬 𝐁𝐞𝐚𝐭𝐬"
+     },
+     {
+      "name_as_written": "𝐉𝐀𝐄 𝐌𝐞𝐝𝐢𝐚 𝐓𝐞𝐚𝐦",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📱𝐉𝐀𝐄 𝐌𝐞𝐝𝐢𝐚 𝐓𝐞𝐚𝐦"
+     }
+    ],
+    "features": [
+     {
+      "feature": "pre_party",
+      "quote": "CRAZY PRE-PARTY",
+      "rationale": "The description advertises a crazy pre-party before the main festival days."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Room 1",
+      "rationale": "The lineup lists Room 1 and Room 2, so there is more than one dance room."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Book your 𝐀𝐥𝐥-𝐢𝐧-𝟏 incl. breakfast!",
+      "rationale": "The All-in-1 package is offered including breakfast, which indicates accommodation is part of the package."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "𝗛𝗼𝘁𝗲𝗹𝘀 𝗻𝗲𝗮𝗿𝗯𝘆",
+      "rationale": "A list of nearby hotels is recommended to attendees."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "𝗠𝗔𝗜𝗡 𝗛𝗢𝗧𝗘𝗟",
+      "rationale": "The main hotel is the same Ibis venue where the event takes place, so the parties and accommodation share one location."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:matt@dj",
+ "key_b": "p:matt@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "9382fd8a4e2af90e",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "This is one generic name 'Matt' used by a single key with stated countries BE, FR and SN that never meet on any one line, so it could be one traveling DJ or several people sharing the name; the evidence does not settle it and a wrong merge would join separate event histories."
+ }
+}

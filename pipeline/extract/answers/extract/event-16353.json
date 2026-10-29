@@ -1,26 +1,38 @@
 {
- "batch": "event-16353",
- "events": [
-  {
-   "event_id": 16353,
-   "artists": [],
-   "features": [
-    {
-     "feature": "beach_party",
-     "quote": "the final day ended with an unforgettable beach party at the hotel’s chiringuito",
-     "rationale": "The text describes a beach party held at the hotel's chiringuito on the final day."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "The afternoon social took place in a lovely outdoor area of the hotel",
-     "rationale": "An afternoon social is described as part of the event."
-    },
-    {
-     "feature": "workshops",
-     "quote": "The workshops were intense and inspiring",
-     "rationale": "The text reports that workshops took place during the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "9914a9e35ded8b9e",
+ "answer": {
+  "batch": "event-16353",
+  "events": [
+   {
+    "event_id": 16353,
+    "artists": [],
+    "features": [
+     {
+      "feature": "beach_party",
+      "quote": "an unforgettable beach party at the hotel’s chiringuito",
+      "rationale": "The description reports a beach party held at the hotel's chiringuito."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "The afternoon social took place in a lovely outdoor area of the hotel",
+      "rationale": "An afternoon social is a daytime social event."
+     },
+     {
+      "feature": "workshops",
+      "quote": "The workshops were intense and inspiring",
+      "rationale": "The workshops are described as part of the event."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "Every corner of the amazing ON Hotel made us feel like we had stepped into a dream",
+      "rationale": "The event takes place in the ON Hotel, which also offers elegant rooms, so the parties and accommodation share one venue."
+     }
+    ]
+   }
+  ]
+ }
 }

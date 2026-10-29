@@ -1,13 +1,20 @@
 {
- "batch": "event-16293",
- "events": [
-  {
-   "event_id": 16293,
-   "passes": [],
-   "rule_quotes": [
-    "Price Change every 1st of the month",
-    "Increase every 1st of the month."
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:43:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "2b3bb128957314c9",
+ "answer": {
+  "batch": "event-16293",
+  "events": [
+   {
+    "event_id": 16293,
+    "passes": [],
+    "rule_quotes": [
+     "Price Change every 1st of the month",
+     "Increase every 1st of the month."
+    ]
+   }
+  ]
+ }
 }

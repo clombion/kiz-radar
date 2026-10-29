@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sara@juninho+sara",
+ "key_b": "p:sara@sara+valr",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "cbd38814c2079780",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are just the common first name Sara with no shared partner (juninho versus valr), different event countries (France versus Korea and Sweden), and no other link, so the evidence points to two different people."
+ }
+}

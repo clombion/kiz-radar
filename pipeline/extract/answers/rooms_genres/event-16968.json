@@ -1,18 +1,25 @@
 {
- "batch": "event-16968",
- "events": [
-  {
-   "event_id": 16968,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "SUN & BEACH KIZOMBA FESTIVAL"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "e16e4a412e65ea10",
+ "answer": {
+  "batch": "event-16968",
+  "events": [
+   {
+    "event_id": 16968,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "SUN & BEACH KIZOMBA FESTIVAL"
+     }
+    ]
+   }
+  ]
+ }
 }

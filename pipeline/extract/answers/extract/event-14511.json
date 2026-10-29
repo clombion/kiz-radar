@@ -1,165 +1,162 @@
 {
- "batch": "event-14511",
- "events": [
-  {
-   "event_id": 14511,
-   "artists": [
-    {
-     "name_as_written": "Sara and Akram",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "🇨🇭 Sara and Akram"
-    },
-    {
-     "name_as_written": "T-ZER",
-     "role": "teacher",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "🇸🇪 T-ZER"
-    },
-    {
-     "name_as_written": "Theo",
-     "role": "teacher",
-     "style": null,
-     "country": "🇳🇴",
-     "source_line": "🇳🇴 Theo"
-    },
-    {
-     "name_as_written": "JoJo & Jenny",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 JoJo & Jenny"
-    },
-    {
-     "name_as_written": "Eric & Annalise",
-     "role": "teacher",
-     "style": null,
-     "country": "🇺🇸",
-     "source_line": "🇺🇸 Eric & Annalise"
-    },
-    {
-     "name_as_written": "Sink",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇦",
-     "source_line": "🇨🇦 Sink"
-    },
-    {
-     "name_as_written": "Stefanio Lima",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇻",
-     "source_line": "🇨🇻 Stefanio Lima"
-    },
-    {
-     "name_as_written": "D&L Beats",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹 🇳🇱",
-     "source_line": "🇵🇹 🇳🇱 D&L Beats"
-    },
-    {
-     "name_as_written": "DJ Sabura",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🇵🇹 DJ Sabura"
-    },
-    {
-     "name_as_written": "DJ Sink",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇦",
-     "source_line": "🇨🇦 DJ Sink"
-    },
-    {
-     "name_as_written": "DJ Morelasoul",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇻 🇳🇱 🇯🇲",
-     "source_line": "🇨🇻 🇳🇱 🇯🇲 DJ Morelasoul"
-    },
-    {
-     "name_as_written": "DJ Pingusso",
-     "role": "dj",
-     "style": null,
-     "country": "🇱🇺",
-     "source_line": "🇱🇺 DJ Pingusso"
-    },
-    {
-     "name_as_written": "DJ J’Larious",
-     "role": "dj",
-     "style": null,
-     "country": "🇯🇲",
-     "source_line": "🇯🇲 DJ J’Larious"
-    },
-    {
-     "name_as_written": "Farantini",
-     "role": "media",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "🇳🇱 Farantini"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "Scenic beach, garden & pool-side parties",
-     "rationale": "The parties are held at the beachfront resort where the group's rooms are booked, so event and accommodation share one venue."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "One price includes your room",
-     "rationale": "The package price explicitly includes the room."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "all-inclusive food and drinks at the resort",
-     "rationale": "Food and drinks at the resort are included in the package price."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "pool-side parties",
-     "rationale": "The event lists pool-side parties."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "Scenic beach, garden & pool-side parties",
-     "rationale": "The event lists parties on the scenic beach."
-    },
-    {
-     "feature": "boat_party",
-     "quote": "boat parties and masterclasses and special dinners are not included and are optional",
-     "rationale": "The description refers to boat parties as an optional event element."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "masterclasses",
-     "rationale": "Masterclasses are mentioned as part of the event pass options."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Classes & expert instruction",
-     "rationale": "Dance classes with expert instruction are part of the event."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Themed day and night parties",
-     "rationale": "The event lists themed day and night parties."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "day and night parties",
-     "rationale": "The event pass covers daytime parties as well as night parties."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Add-on nights at our group rate pricing are available",
-     "rationale": "A negotiated group rate is offered for extra hotel nights that are not part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:22:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "5d1293b7a811aadb",
+ "answer": {
+  "batch": "event-14511",
+  "events": [
+   {
+    "event_id": 14511,
+    "artists": [
+     {
+      "name_as_written": "Sara and Akram",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "🇨🇭 Sara and Akram"
+     },
+     {
+      "name_as_written": "T-ZER",
+      "role": "teacher",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "🇸🇪 T-ZER"
+     },
+     {
+      "name_as_written": "Theo",
+      "role": "teacher",
+      "style": null,
+      "country": "🇳🇴",
+      "source_line": "🇳🇴 Theo"
+     },
+     {
+      "name_as_written": "JoJo & Jenny",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 JoJo & Jenny"
+     },
+     {
+      "name_as_written": "Eric & Annalise",
+      "role": "teacher",
+      "style": null,
+      "country": "🇺🇸",
+      "source_line": "🇺🇸 Eric & Annalise"
+     },
+     {
+      "name_as_written": "Sink",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇦",
+      "source_line": "🇨🇦 Sink"
+     },
+     {
+      "name_as_written": "Stefanio Lima",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇻",
+      "source_line": "🇨🇻 Stefanio Lima"
+     },
+     {
+      "name_as_written": "D&L Beats",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹 🇳🇱",
+      "source_line": "🇵🇹 🇳🇱 D&L Beats"
+     },
+     {
+      "name_as_written": "DJ Sabura",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🇵🇹 DJ Sabura"
+     },
+     {
+      "name_as_written": "DJ Sink",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇦",
+      "source_line": "🇨🇦 DJ Sink"
+     },
+     {
+      "name_as_written": "DJ Morelasoul",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇻 🇳🇱 🇯🇲",
+      "source_line": "🇨🇻 🇳🇱 🇯🇲 DJ Morelasoul"
+     },
+     {
+      "name_as_written": "DJ Pingusso",
+      "role": "dj",
+      "style": null,
+      "country": "🇱🇺",
+      "source_line": "🇱🇺 DJ Pingusso"
+     },
+     {
+      "name_as_written": "DJ J’Larious",
+      "role": "dj",
+      "style": null,
+      "country": "🇯🇲",
+      "source_line": "🇯🇲 DJ J’Larious"
+     },
+     {
+      "name_as_written": "Farantini",
+      "role": "media",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "🇳🇱 Farantini"
+     }
+    ],
+    "features": [
+     {
+      "feature": "themed_parties",
+      "quote": "Themed day and night parties",
+      "rationale": "The line states that themed day and night parties are part of the event."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "pool-side parties",
+      "rationale": "The line lists pool-side parties among the event's parties."
+     },
+     {
+      "feature": "boat_party",
+      "quote": "boat parties and masterclasses",
+      "rationale": "Boat parties are mentioned as an optional part of the event."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "masterclasses",
+      "rationale": "The description mentions masterclasses as part of the event."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Classes & expert instruction",
+      "rationale": "Dance classes with instruction are offered as part of the event."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "One price includes your room",
+      "rationale": "The package price includes the room at the resort."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "all-inclusive food and drinks at the resort",
+      "rationale": "Food and drinks are included in the package price."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "5-star Beachfront Resort",
+      "rationale": "The event is held at the same resort where the room block is, with parties at the resort."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "a full event pass for day and night parties",
+      "rationale": "The pass covers daytime parties as well as night parties."
+     }
+    ]
+   }
+  ]
+ }
 }

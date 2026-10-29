@@ -2,9 +2,8 @@
  "event_id": 19439,
  "title": "New York SBKZ Congress",
  "start_date": "2027-01-29",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:31:51+00:00",
+ "end_date": "2027-02-01",
+ "country": "United States",
  "styles": [
   "bachata",
   "kizomba",
@@ -12,26 +11,10 @@
   "zouk"
  ],
  "description": "🪩🪩🪩 OFFICIAL EVENT PAGE 🪩🪩🪩\n🗽 New York SBKZ Congress\n🔥 Salsa • Bachata • Kizomba • Zouk\n🗓 January 29 – February 1, 2027\n📍 New York Hilton Midtown\n🎟 Passes & Performer Registration:\n🔗 NYSBKZCongress.com\n🏨 HOTEL INFO 🏨\n🔗 https://nysbkzcongress.com/about/hotel/\n………………………………………………….\n🗽 New York SBKZ Congress is the first of it’s kind in New York to feature Salsa, Bachata, Kizomba & Zouk at one event!\nJoin us for a full weekend of daily workshops, afternoon socials, nightly performances and social dancing until 6AM with internationally renowned dancers, instructors, DJ’s & media!\n🏆 Brazilian Zouk Dance Council Jack & Jill Competition for Novice, Intermediate & Advanced divisions will be hosted in collaboration with Danceplace\n………………………………………………….\n🪩🪩🪩 2027 HEADLINERS 🪩🪩🪩\nCheck our website for a full list of artists, DJs and more info!\n🔗 NYSBKZCongress.com\n………………………………………………….\n❤️ Follow us on Facebook & Instagram",
+ "read_by": "claude-opus-5-5 + claude-fable-5-1",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:15:36+00:00",
  "passes": [
-  {
-   "kind": "day",
-   "style": "salsa",
-   "label_quote": null,
-   "group_size": 1,
-   "days": 1,
-   "includes_hotel": false,
-   "tiers": [
-    {
-     "keys": [
-      "26241"
-     ],
-     "from": null,
-     "until": null,
-     "quantity": null,
-     "date_quote": null
-    }
-   ]
-  },
   {
    "kind": "full",
    "style": null,
@@ -44,10 +27,10 @@
      "keys": [
       "26248"
      ],
-     "from": null,
-     "until": null,
+     "from": "10-01",
+     "until": "10-31",
      "quantity": null,
-     "date_quote": null
+     "date_quote": "October Price"
     }
    ]
   },
@@ -62,6 +45,25 @@
     {
      "keys": [
       "26256"
+     ],
+     "from": "10-01",
+     "until": "10-31",
+     "quantity": null,
+     "date_quote": "October Price"
+    }
+   ]
+  },
+  {
+   "kind": "day",
+   "style": "salsa",
+   "label_quote": null,
+   "group_size": 1,
+   "days": 1,
+   "includes_hotel": false,
+   "tiers": [
+    {
+     "keys": [
+      "26241"
      ],
      "from": null,
      "until": null,

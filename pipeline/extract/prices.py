@@ -21,7 +21,7 @@ from typing import NamedTuple
 from pipeline import currencies, states
 from pipeline.db import Reader
 from pipeline.enums import Genre, PassKind, People, Price, Sales, Style
-from pipeline.records import PassTerms, Priced, PricedPass, RealDay, yearless
+from pipeline.records import PassTerms, Priced, PricedPass, PricedTier, RealDay, yearless
 
 SEVERAL = 2  # dance styles that make a festival of several
 COUPLE = 2  # people in a couple; more are a group
@@ -113,6 +113,11 @@ def window(from_: RealDay | None, until: RealDay | None, start: dt.date) -> Wind
     return Window(
         None if from_ is None else on_or_before(from_, start), None if until is None else on_or_before(until, start)
     )
+
+
+def dates(tier: PricedTier, start: dt.date) -> Window:
+    """A tier's dates as days (window); a price at the door has none."""
+    return window(tier.sale.from_, tier.sale.until, start) if tier.sale else Window(None, None)
 
 
 def on_or_before(value: RealDay, limit: dt.date) -> dt.date:

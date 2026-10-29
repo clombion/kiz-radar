@@ -1,0 +1,13 @@
+{
+ "key_a": "p:albir@albir+natalia",
+ "key_b": "p:albir@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "08e3591cbde9ce64",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same bare name 'ALBIR', but side A is linked to a partner Natalia with countries ES, PA and RO across Australia, Czech Republic, Italy and Latvia, while side B has only ES with events in Poland and Kazakhstan and no partners, so the evidence does not settle whether they are one teacher."
+ }
+}

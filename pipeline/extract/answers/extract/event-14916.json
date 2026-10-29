@@ -1,41 +1,48 @@
 {
- "batch": "event-14916",
- "events": [
-  {
-   "event_id": 14916,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "engaging workshops",
-     "rationale": "The description advertises engaging workshops as part of the festival."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "lively afternoon parties",
-     "rationale": "Afternoon parties are offered, which are daytime socials."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "All-in-one 4-star hotel conveniently located near London Heathrow Airport",
-     "rationale": "The event is held in the hotel where dancers can stay, described as all-in-one."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Lose yourself across our 5 distinct party rooms",
-     "rationale": "The festival has five separate dance rooms."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "special discounted festival rates",
-     "rationale": "A hotel room booking is offered at negotiated festival rates, separate from the ticket."
-    },
-    {
-     "feature": "shows",
-     "quote": "groundbreaking performance by our renowned authentic international artists",
-     "rationale": "Artists are described as giving a performance at the festival."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "710a5f578a10214b",
+ "answer": {
+  "batch": "event-14916",
+  "events": [
+   {
+    "event_id": 14916,
+    "artists": [],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All-in-one 4-star hotel conveniently located near London Heathrow Airport",
+      "rationale": "The description says the festival is held at an all-in-one hotel, so the parties and the accommodation share one venue."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Lose yourself across our 5 distinct party rooms",
+      "rationale": "The event has five separate party rooms, so it has more than one dance floor."
+     },
+     {
+      "feature": "workshops",
+      "quote": "engaging workshops",
+      "rationale": "The festival advertises workshops as part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Afternoon Social (16:00-21:00)",
+      "rationale": "A daytime afternoon social is listed in the program."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "special discounted festival rates",
+      "rationale": "A discounted hotel rate for festival attendees is offered, separate from any pass."
+     },
+     {
+      "feature": "shows",
+      "quote": "groundbreaking performance by our renowned authentic international artists",
+      "rationale": "The description promises performances by artists at the festival."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cristina@dance",
+ "key_b": "p:cristinazebri",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f3b65e6be894fe73",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the common first name 'Cristina', and the shared countries (CH, IT) and Switzerland events are weak support. Side B's partner link to Johnny has no counterpart on side A, and side B's mentions are not listed, so the evidence does not settle whether they are the same person."
+ }
+}

@@ -1,12 +1,19 @@
 {
- "batch": "event-16074",
- "events": [
-  {
-   "event_id": 16074,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": []
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "8336a1bb590ea955",
+ "answer": {
+  "batch": "event-16074",
+  "events": [
+   {
+    "event_id": 16074,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": []
+   }
+  ]
+ }
 }

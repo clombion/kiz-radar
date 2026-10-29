@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sensei@dance",
+ "key_b": "p:sensei@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3796345008ae4d77",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "This is one key compared with itself, so the question is whether one artist or several people share the name Sensei: the stated countries (Spain and France) never meet on a single mention, and the same name appears at events in France, Sweden, Norway, Croatia and Germany with styles ranging from UrbanKiz to Kizomba, but the Marseille mention and the repeated France-tagged UrbanKiz entries are consistent with one French teacher, so the evidence does not settle whether this is one artist or several."
+ }
+}

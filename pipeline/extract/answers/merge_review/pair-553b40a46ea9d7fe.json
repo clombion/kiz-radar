@@ -1,0 +1,13 @@
+{
+ "key_a": "p:daniel@daniel+elina",
+ "key_b": "p:danielschauenburg",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "553b40a46ea9d7fe",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The surname-only record 'Daniel' has no mentions listed under a, so the match rests on a common first name with matching countries (CZ, DE) and a partner whose key is Elina paired with either Daniel or Daniel Schauenburg, which is plausibly the same couple but not confirmed; the only shared event location is Switzerland, so the evidence does not settle it."
+ }
+}

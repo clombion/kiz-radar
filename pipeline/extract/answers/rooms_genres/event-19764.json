@@ -1,33 +1,45 @@
 {
- "batch": "event-19764",
- "events": [
-  {
-   "event_id": 19764,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba DJ:"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "SalsaKizzes & Zouk Festival in Freiburg"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata Teachers:"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Salsa Teachers:"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d9275f138bcebd2f",
+ "answer": {
+  "batch": "event-19764",
+  "events": [
+   {
+    "event_id": 19764,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Salsa Teachers"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Zouk",
+      "quote": "SalsaKizzes & Zouk Festival in Freiburg"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba Teachers"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Brazilian Zouk",
+      "quote": "Brazilian Zouk DJs"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata Teachers"
+     }
+    ]
+   }
+  ]
+ }
 }

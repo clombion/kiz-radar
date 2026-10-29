@@ -1,0 +1,13 @@
+{
+ "key_a": "p:simicala@dj",
+ "key_b": "p:simicalacunha",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "cd746ccca4332d9d",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The distinctive name 'Simicala' is the first word of 'Simicala Cunha', and both records list the same countries (Angola and Italy), so the bare DJ credit is most likely the same artist as the full name, which is partnered with katy."
+ }
+}

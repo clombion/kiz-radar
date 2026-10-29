@@ -1,145 +1,152 @@
 {
- "batch": "event-16034",
- "events": [
-  {
-   "event_id": 16034,
-   "artists": [
-    {
-     "name_as_written": "CHAMALO & JALLYSA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 CHAMALO & JALLYSA"
-    },
-    {
-     "name_as_written": "LANDRY & WINDY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 LANDRY & WINDY"
-    },
-    {
-     "name_as_written": "J.TECA & LUCY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 J.TECA & LUCY"
-    },
-    {
-     "name_as_written": "FELIX & JULI",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 FELIX & JULI"
-    },
-    {
-     "name_as_written": "KATARINA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 KATARINA"
-    },
-    {
-     "name_as_written": "DJ HUGO BOSS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 DJ HUGO BOSS"
-    },
-    {
-     "name_as_written": "DJ FRANK",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 DJ FRANK"
-    },
-    {
-     "name_as_written": "DJ ROCK",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 DJ ROCK"
-    },
-    {
-     "name_as_written": "DJ RM KETA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 DJ RM KETA"
-    },
-    {
-     "name_as_written": "DJ ZEN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 DJ ZEN"
-    },
-    {
-     "name_as_written": "DJ BARTEF",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 DJ BARTEF"
-    },
-    {
-     "name_as_written": "DJ 5 STAR KID",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 DJ 5 STAR KID"
-    },
-    {
-     "name_as_written": "DJ DANY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 DJ DANY"
-    },
-    {
-     "name_as_written": "João & Lucy",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "João & Lucy"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "High-quality workshops",
-     "rationale": "The description states that high-quality workshops are part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 ROOMS // 2 ATMOSPHERES",
-     "rationale": "The event has two dance rooms."
-    },
-    {
-     "feature": "boat_party",
-     "quote": "A unique boat venue on the Danube river",
-     "rationale": "The event venue is a boat on the Danube, so the parties take place on a boat."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "direct bus to the Bratislava",
-     "rationale": "A direct bus from Vienna airport to Bratislava is offered as transport to the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "PROMOCODE – KIZO26",
-     "rationale": "A promo code gives negotiated hotel rates at a recommended hotel that is not part of the pass."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Thursday Pre-Party not included in any ticket",
-     "rationale": "The event has a Thursday pre-party, though it is not covered by the tickets."
-    },
-    {
-     "feature": "after_party",
-     "quote": "Monday After-Party not included in any ticket",
-     "rationale": "The event has a Monday after-party, though it is not covered by the tickets."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:27:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "19e0f50fead1be5e",
+ "answer": {
+  "batch": "event-16034",
+  "events": [
+   {
+    "event_id": 16034,
+    "artists": [
+     {
+      "name_as_written": "CHAMALO & JALLYSA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 CHAMALO & JALLYSA"
+     },
+     {
+      "name_as_written": "LANDRY & WINDY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 LANDRY & WINDY"
+     },
+     {
+      "name_as_written": "J.TECA & LUCY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 J.TECA & LUCY"
+     },
+     {
+      "name_as_written": "FELIX & JULI",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 FELIX & JULI"
+     },
+     {
+      "name_as_written": "KATARINA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 KATARINA"
+     },
+     {
+      "name_as_written": "DJ HUGO BOSS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 DJ HUGO BOSS"
+     },
+     {
+      "name_as_written": "DJ FRANK",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 DJ FRANK"
+     },
+     {
+      "name_as_written": "DJ ROCK",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 DJ ROCK"
+     },
+     {
+      "name_as_written": "DJ RM KETA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 DJ RM KETA"
+     },
+     {
+      "name_as_written": "DJ ZEN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 DJ ZEN"
+     },
+     {
+      "name_as_written": "DJ BARTEF",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 DJ BARTEF"
+     },
+     {
+      "name_as_written": "DJ 5 STAR KID",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 DJ 5 STAR KID"
+     },
+     {
+      "name_as_written": "DJ DANY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 DJ DANY"
+     },
+     {
+      "name_as_written": "BKF TEAM",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "BKF TEAM"
+     }
+    ],
+    "features": [
+     {
+      "feature": "boat_party",
+      "quote": "A unique boat venue on the Danube river",
+      "rationale": "The event is held at a boat venue on the Danube river."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 ROOMS // 2 ATMOSPHERES",
+      "rationale": "The description states there are two rooms."
+     },
+     {
+      "feature": "workshops",
+      "quote": "High-quality workshops",
+      "rationale": "High-quality workshops are listed as part of the event."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Thursday Pre-Party not included in any ticket",
+      "rationale": "A Thursday pre-party is mentioned as an event element."
+     },
+     {
+      "feature": "after_party",
+      "quote": "Monday After-Party not included in any ticket",
+      "rationale": "A Monday after-party is mentioned as an event element."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "PROMOCODE – KIZO26",
+      "rationale": "A negotiated hotel rate with a promo code is offered at the partner hotel, separate from the pass."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Vienna airport – direct bus to the Bratislava – 50min, 13€",
+      "rationale": "A direct bus transfer from Vienna airport to Bratislava is offered."
+     }
+    ]
+   }
+  ]
+ }
 }

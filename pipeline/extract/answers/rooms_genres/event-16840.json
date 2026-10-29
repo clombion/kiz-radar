@@ -1,23 +1,30 @@
 {
- "batch": "event-16840",
- "events": [
-  {
-   "event_id": 16840,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Prague Kizomba Festival"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "Afro RAVE parties"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0738d415e5265fa8",
+ "answer": {
+  "batch": "event-16840",
+  "events": [
+   {
+    "event_id": 16840,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba Ethics"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro Tribal Dance",
+      "quote": "Afro Tribal Dance Art Installation"
+     }
+    ]
+   }
+  ]
+ }
 }

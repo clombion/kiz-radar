@@ -1,0 +1,13 @@
+{
+ "key_a": "p:bonifacio@bonifacio+jessica",
+ "key_b": "p:bonifacioaurio",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "cdbe1edd5bd73bc9",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is the bare first name 'Bonifacio' with a partner (Jessica) and countries PT and SE, while side B is 'Bonifácio Aurio' with countries AO and PT, no partners, and events in Germany, Italy, Poland, Spain and France; the only overlap is the common first name and Portugal, and side A has no mentions to check further, so the evidence does not settle it."
+ }
+}

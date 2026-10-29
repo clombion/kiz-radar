@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nicelife",
+ "key_b": "p:nicelife@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b7d182e0685884ab",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides use the same distinctive stage name, with the DJ prefix dropped on one side ('DJ NICE LIFE' / 'Nicelife'), and both show Dutch country markers and France events, so the evidence points to one artist."
+ }
+}

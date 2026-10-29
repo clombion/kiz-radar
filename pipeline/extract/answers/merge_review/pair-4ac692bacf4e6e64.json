@@ -1,0 +1,13 @@
+{
+ "key_a": "p:david@aylin+david",
+ "key_b": "p:david@david+lidia",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "4ac692bacf4e6e64",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are the bare first name David with the same country (ES), but their partners differ (aylin on one side, lidia on the other), so the only shared element is a common first name, which is weak evidence; the mentions list is empty and the events differ (Australia vs Spain), so nothing links them as one person."
+ }
+}

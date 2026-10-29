@@ -1,28 +1,35 @@
 {
- "batch": "event-15833",
- "events": [
-  {
-   "event_id": 15833,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata — Salsa — Kizomba"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Bachata — Salsa — Kizomba"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Bachata — Salsa — Kizomba"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "6e76e8c2608a5f57",
+ "answer": {
+  "batch": "event-15833",
+  "events": [
+   {
+    "event_id": 15833,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata — Salsa — Kizomba"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Bachata — Salsa — Kizomba"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Bachata — Salsa — Kizomba"
+     }
+    ]
+   }
+  ]
+ }
 }

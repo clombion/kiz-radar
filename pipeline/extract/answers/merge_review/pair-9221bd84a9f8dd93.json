@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alba@alba+ronald",
+ "key_b": "p:alba@alba+victor",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "9221bd84a9f8dd93",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides share the name Alba (ALBA) and country Spain, but their partners differ (ronald vs victor) and their event histories barely overlap, so the evidence points to two different people sharing a name rather than one artist."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ichigo@dance",
+ "key_b": "p:ichigo@ichigo+kristelju",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:01+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "a959d8966845a7a5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides list the same name with country FR and overlapping France events, but side B's mentions are empty in the input, so its style, role and event details cannot be checked, and 'Ichigo' is a short name that could belong to more than one person."
+ }
+}

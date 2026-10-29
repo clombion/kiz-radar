@@ -2,9 +2,8 @@
  "event_id": 18479,
  "title": "KIZMI 2026 – Kizomba Milano International Festival",
  "start_date": "2026-12-17",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:19:53+00:00",
+ "end_date": "2026-12-21",
+ "country": "Italy",
  "styles": [
   "bachata",
   "kizomba",
@@ -12,6 +11,9 @@
   "salsa"
  ],
  "description": "📅📅 17/18/19/20 December 2026 📅📅\nLocation: Milano – Italy (KLIMA Hotel, Via Privata Venezia Giulia, 8, 20157 Milano MI)\n▶️ Link Web: https://kizmi.it/\n▶️ Link FB Page: https://www.facebook.com/KizombaMilanoFestival/\n▶️ Link IG: https://www.instagram.com/kizmi_events/\n4 PARTY NIGHT and 3 DAYS of Workshops from 17th to 20th December 2026 ALL IN ONE LOCATION\n4 SERATE e 3 GIORNI di Lezioni dal 17 al 20 Dicembre 2026, tutto in un’unica location\n4 Dance Floors\nRoom 1 URBAN – TARRAXA – GHETTO\nRoom 2 KIZOMBA SEMBA 100%\nRoom 3 NOSTALGY – DOUCEUR at 14th Floor with a view of Milano ❤️❤️\nRoom 4 SALSA y BACHATA\n🗓️ General Program 🗓️\n▪️ Thursday 17th December\n22.00 – 23.00 Workshop\n23.00 – 04.00 Party (1 Room)\n▪️ Friday 18th December\n15.00 – 20.00 Workshops\n16.30 – 20.30 Social Room\n22.00 – 23.00 Workshop\n23.00 – 05.00 Party (4 Room dedicated)\n▪️ Saturday 19th December\n11.00 – 20.00 Workshops\n15.00 – 20.30 Social Room\n22.00 – 23.00 Workshop\n23.00 – 06.00 Party (4 Room dedicated)\n▪️ Sunday 20th December\n11.00 – 20.00 Workshops\n15.00 – 20.30 Social Room\n22.00 – 23.00 Workshop\n23.00 – 05.00 Party (1 Room)\n🕺 Artists Line Up 💃\n🇫🇷🇪🇸🇮🇹 Fusion/Urban/Tarraxo 🇮🇹🇪🇸🇫🇷\n🕺 ALBIR & NATALIA 💃\n🕺 FRED-NELSON & MORGANE 💃\n🕺 VAL’R & SARAH 💃\n🕺 JACK & SARA 💃\n🕺 BENOIT & SNEJA 💃\n🕺 DAVIDE & LAURA 💃\n🕺 EDO & GIULY 💃\n🕺 MIRKO SPANO\n💃 DINARA SALYKOVA\n🕺 LUCA ARRIGONI & ELENA 💃\n🕺 OSCAR & CLAUDIA 💃\n🕺 CARLO & VERONICA 💃\n🕺 BA & CLAUDIA 💃\n🕺 FABRIZIO & NICOLETTA 💃\n🕺 SIMONE & JENNIFER 💃\n💃 SONIA DANIELE\n🕺 DAVIDE & NOEMI 💃\n🕺 GIUSEPPE ANDREA\n🕺 STEFANO & MAURA 💃\n🕺 LUCA & FRANCESCA 💃\n💃 NATALIA & ANDREA 🕺\n🕺 BRUNO & GIULIA 💃\n🕺 CHRISTIAN & FRANCESCA 💃\n🕺 GERI & MAGDI 💃\n🕺 CARLO & ALESSANDRA 💃\n🕺 PAOLO & ANGELICA 💃\n🕺 RAUL & LUCIA 💃\n🕺 CHRISTIAN & TINA 💃\n🕺 MASSIMO & ANTONELLA 💃\n🕺 GIUSEPPE & KLAUDYNA 💃\n🕺 MARCO & CINZIA 💃\n🕺 BEPPE & SABINA 💃\n🕺 CLAUDIO & LUCIA 💃\n💃 LALI\n💃 MIKY VISSANI\n💃 MANUELA & LUIGI 🕺\n💃 SUSANNA VERNIER\n🕺 PETRAX\n& more…\n🇦🇴🇨🇻 KIZOMBA/SEMBA/AFROHOUSE 🇨🇻🇦🇴\n🕺 EDDY VENTS\n🕺 DR KIZOMBA & LAURA 💃\n🕺 TERESA & EMANUEL 💃\n🕺 DAVIDE & CILENE 💃\n🕺 SALVATORE & ELEONORA 💃\n🕺 GIANFRANCO & CHANTAL 💃\n💃 LINDA GHIGGI\n& more…\n🎚🎶 Dj’s Line Up 🎶🎚\n🎧 Dj SHARK 🎧\n🎧 Dj NONO🎧\n🎧 Dj JACK 🎧\n🎧 Dj LUCAS 🎧\n🎧 Dj GHOST FACE 🎧\n🎧 Dj ANILSON 🎧\n🎧 Dj MASTER BEAT 🎧\n🎧 Dj CARLONE 🎧\n🎧 Dj RELAMPAGO 🎧\n🎧 Dj EMESS 🎧\n🎧 Dj DU’ARTE 🎧\n🎧 Dj OMBRE 🎧\n🎧 Dj BDJ 🎧\n🎧 Dj TED 🎧\n🎧 Dj DREW 🎧\n🎧 Dj R.A.H.T. 🎧\n🎧 Dj NEKO 🎧\n🎧 Dj DIABOLIK 🎧\n🎧 Dj PRINCE 🎧\n🎧 Dj KLOD 🎧\n🎧 Dj BONE 🎧\n🎧 Dj DADA 🎧",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:11:49+00:00",
  "passes": [
   {
    "kind": "full",

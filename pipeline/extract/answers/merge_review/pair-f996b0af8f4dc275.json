@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ana@ana+pedro",
+ "key_b": "p:anasaavedra",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f996b0af8f4dc275",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is the bare first name 'Ana' tied to the couple partner pedro with events only in Switzerland, while side B is 'ANA SAAVEDRA' with no partners and an event in France; the only overlap is the Portuguese country code, a common first name with no shared partner, event, or style to confirm the match, so the evidence does not settle it."
+ }
+}

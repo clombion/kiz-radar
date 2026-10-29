@@ -1,80 +1,77 @@
 {
- "batch": "event-18786",
- "events": [
-  {
-   "event_id": 18786,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "🎿 All-inclusive ski & snowboard package",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 659.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€659"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "🥾 Non-skier package",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 649.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€649"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "For children aged 5 to 12",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 599.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€599 all-inclusive"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:45:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0309ebbc9a2be1a1",
+ "answer": {
+  "batch": "event-18786",
+  "events": [
+   {
+    "event_id": 18786,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "🎿 All-inclusive ski & snowboard package",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 659.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "€659"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "🥾 Non-skier package",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 649.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "€649"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "For children aged 5 to 12",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 599.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "€599 all-inclusive"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Tourist tax + bed linen + towels:\n€22 per person"
+    ]
+   }
+  ]
+ }
 }

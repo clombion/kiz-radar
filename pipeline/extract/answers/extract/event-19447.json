@@ -1,32 +1,39 @@
 {
- "batch": "event-19447",
- "events": [
-  {
-   "event_id": 19447,
-   "artists": [
-    {
-     "name_as_written": "Valerie Marin",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Valerie Marin"
-    },
-    {
-     "name_as_written": "Tiffany Ly",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Tiffany Ly"
-    },
-    {
-     "name_as_written": "Ngọc Trúc",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Ngọc Trúc"
-    }
-   ],
-   "features": []
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:34:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "9270a4e8a197a367",
+ "answer": {
+  "batch": "event-19447",
+  "events": [
+   {
+    "event_id": 19447,
+    "artists": [
+     {
+      "name_as_written": "Valerie Marin",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Valerie Marin"
+     },
+     {
+      "name_as_written": "Tiffany Ly",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Tiffany Ly"
+     },
+     {
+      "name_as_written": "Ngọc Trúc",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Ngọc Trúc"
+     }
+    ],
+    "features": []
+   }
+  ]
+ }
 }

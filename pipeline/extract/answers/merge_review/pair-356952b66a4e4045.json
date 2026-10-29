@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marco@dj",
+ "key_b": "p:marco@janina+marco",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "356952b66a4e4045",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are listed as German with events in Austria, but 'Marco' is a common first name, side B's only link is a couple partner (janina+marco) that side A lacks, and side B has no mention rows to check, so the evidence does not settle whether the DJ and the couple member are the same person."
+ }
+}

@@ -1,25 +1,32 @@
 {
- "batch": "event-18282",
- "events": [
-  {
-   "event_id": 18282,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "SOCIAL ROOM",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "SOCIAL ROOM"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "4 DAYS OF KIZOMBA"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d23afe68098667b4",
+ "answer": {
+  "batch": "event-18282",
+  "events": [
+   {
+    "event_id": 18282,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "SOCIAL ROOM",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "SOCIAL ROOM"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "4 DAYS OF KIZOMBA"
+     }
+    ]
+   }
+  ]
+ }
 }

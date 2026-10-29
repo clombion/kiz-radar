@@ -1,0 +1,13 @@
+{
+ "key_a": "p:isabelle@gazl+isabelle",
+ "key_b": "p:isabellecrepin",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "9c0bb4b045ecb2cd",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are French Isabelles, but side A is only a first name with a partner (gazl) and events in Sweden, while side B is the full name ISABELLE CREPIN with events in Switzerland and no partners, so the common first name and shared country do not settle whether they are one person."
+ }
+}

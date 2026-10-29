@@ -1,173 +1,180 @@
 {
- "batch": "event-15557",
- "events": [
-  {
-   "event_id": 15557,
-   "artists": [
-    {
-     "name_as_written": "Ary and Maura",
-     "role": "teacher",
-     "style": "Kizomba/Semba",
-     "country": "Angola",
-     "source_line": "Ary and Maura – Angola"
-    },
-    {
-     "name_as_written": "M-Xtrela",
-     "role": "teacher",
-     "style": "Kizomba/Semba",
-     "country": "Angola",
-     "source_line": "M-Xtrela – Angola"
-    },
-    {
-     "name_as_written": "Vamula",
-     "role": "teacher",
-     "style": "Kizomba/Semba",
-     "country": "Poland",
-     "source_line": "Vamula – Poland"
-    },
-    {
-     "name_as_written": "Theo",
-     "role": "teacher",
-     "style": "Kizomba/Semba",
-     "country": "Gh/UK",
-     "source_line": "Theo – Gh/UK"
-    },
-    {
-     "name_as_written": "Nii and Astrid",
-     "role": "teacher",
-     "style": "Kizomba/Semba",
-     "country": "Gh/No",
-     "source_line": "Nii and Astrid – Gh/No"
-    },
-    {
-     "name_as_written": "Lionel",
-     "role": "teacher",
-     "style": "Kizomba/Semba",
-     "country": "France",
-     "source_line": "Lionel – France"
-    },
-    {
-     "name_as_written": "Sacko Dadie",
-     "role": "teacher",
-     "style": "UrbanKiz",
-     "country": "France",
-     "source_line": "Sacko Dadie- France"
-    },
-    {
-     "name_as_written": "Yaya",
-     "role": "teacher",
-     "style": "UrbanKiz",
-     "country": "Holland",
-     "source_line": "Yaya – Holland"
-    },
-    {
-     "name_as_written": "Sensei",
-     "role": "teacher",
-     "style": "UrbanKiz",
-     "country": "France",
-     "source_line": "Sensei – France"
-    },
-    {
-     "name_as_written": "Romeo Steph",
-     "role": "teacher",
-     "style": "UrbanKiz",
-     "country": "France",
-     "source_line": "Romeo Steph – France"
-    },
-    {
-     "name_as_written": "Jakob",
-     "role": "teacher",
-     "style": "UrbanKiz",
-     "country": "Sweden",
-     "source_line": "Jakob – Sweden"
-    },
-    {
-     "name_as_written": "Dee Cee Beatz",
-     "role": "dj",
-     "style": null,
-     "country": "Fr/No",
-     "source_line": "Dee Cee Beatz – Fr/No"
-    },
-    {
-     "name_as_written": "Lee Ø Rosse",
-     "role": "dj",
-     "style": null,
-     "country": "Fr/No",
-     "source_line": "Lee Ø Rosse – Fr/No"
-    },
-    {
-     "name_as_written": "Poema Beatz",
-     "role": "dj",
-     "style": null,
-     "country": "Sweden",
-     "source_line": "Poema Beatz – Sweden"
-    },
-    {
-     "name_as_written": "Dj Shiro",
-     "role": "dj",
-     "style": null,
-     "country": "Sweden",
-     "source_line": "Dj Shiro – Sweden"
-    },
-    {
-     "name_as_written": "Qas",
-     "role": "dj",
-     "style": null,
-     "country": "UK",
-     "source_line": "Qas – UK"
-    },
-    {
-     "name_as_written": "Maie",
-     "role": "dj",
-     "style": null,
-     "country": "Norway",
-     "source_line": "Maie – Norway"
-    },
-    {
-     "name_as_written": "Steve Morraine",
-     "role": "dj",
-     "style": null,
-     "country": "Norway",
-     "source_line": "Steve Morraine – Norway"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops for all levels & styles",
-     "rationale": "The event offers workshops for dancers of all levels and styles."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Workshops for all levels & styles",
-     "rationale": "Stating workshops are for all levels shows it suits every level including beginners."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "TWO rooms: Kizomba/Semba + UrbanKiz",
-     "rationale": "Two separate dance rooms are listed, one for Kizomba/Semba and one for UrbanKiz."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Full Schedule & Dress Code",
-     "rationale": "A dress code is stated in the schedule section."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Friday – White – Celebration of culture",
-     "rationale": "The parties have dress themes per night, such as white, African and sleek casual."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Party: Thursday",
-     "rationale": "A pre-party is held on Thursday before the main event."
-    },
-    {
-     "feature": "after_party",
-     "quote": "Afterparty from 2AM",
-     "rationale": "An afterparty starting at 2AM is listed at Dancecity."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "260fb4480a5e6360",
+ "answer": {
+  "batch": "event-15557",
+  "events": [
+   {
+    "event_id": 15557,
+    "artists": [
+     {
+      "name_as_written": "Ary and Maura",
+      "role": "teacher",
+      "style": "Kizomba/Semba",
+      "country": "Angola",
+      "source_line": "Ary and Maura – Angola"
+     },
+     {
+      "name_as_written": "M-Xtrela",
+      "role": "teacher",
+      "style": "Kizomba/Semba",
+      "country": "Angola",
+      "source_line": "M-Xtrela – Angola"
+     },
+     {
+      "name_as_written": "Vamula",
+      "role": "teacher",
+      "style": "Kizomba/Semba",
+      "country": "Poland",
+      "source_line": "Vamula – Poland"
+     },
+     {
+      "name_as_written": "Theo",
+      "role": "teacher",
+      "style": "Kizomba/Semba",
+      "country": "Gh/UK",
+      "source_line": "Theo – Gh/UK"
+     },
+     {
+      "name_as_written": "Nii and Astrid",
+      "role": "teacher",
+      "style": "Kizomba/Semba",
+      "country": "Gh/No",
+      "source_line": "Nii and Astrid – Gh/No"
+     },
+     {
+      "name_as_written": "Lionel",
+      "role": "teacher",
+      "style": "Kizomba/Semba",
+      "country": "France",
+      "source_line": "Lionel – France"
+     },
+     {
+      "name_as_written": "Sacko Dadie",
+      "role": "teacher",
+      "style": "UrbanKiz",
+      "country": "France",
+      "source_line": "Sacko Dadie- France"
+     },
+     {
+      "name_as_written": "Yaya",
+      "role": "teacher",
+      "style": "UrbanKiz",
+      "country": "Holland",
+      "source_line": "Yaya – Holland"
+     },
+     {
+      "name_as_written": "Sensei",
+      "role": "teacher",
+      "style": "UrbanKiz",
+      "country": "France",
+      "source_line": "Sensei – France"
+     },
+     {
+      "name_as_written": "Romeo Steph",
+      "role": "teacher",
+      "style": "UrbanKiz",
+      "country": "France",
+      "source_line": "Romeo Steph – France"
+     },
+     {
+      "name_as_written": "Jakob",
+      "role": "teacher",
+      "style": "UrbanKiz",
+      "country": "Sweden",
+      "source_line": "Jakob – Sweden"
+     },
+     {
+      "name_as_written": "Dee Cee Beatz",
+      "role": "dj",
+      "style": null,
+      "country": "Fr/No",
+      "source_line": "Dee Cee Beatz – Fr/No"
+     },
+     {
+      "name_as_written": "Lee Ø Rosse",
+      "role": "dj",
+      "style": null,
+      "country": "Fr/No",
+      "source_line": "Lee Ø Rosse – Fr/No"
+     },
+     {
+      "name_as_written": "Poema Beatz",
+      "role": "dj",
+      "style": null,
+      "country": "Sweden",
+      "source_line": "Poema Beatz – Sweden"
+     },
+     {
+      "name_as_written": "Dj Shiro",
+      "role": "dj",
+      "style": null,
+      "country": "Sweden",
+      "source_line": "Dj Shiro – Sweden"
+     },
+     {
+      "name_as_written": "Qas",
+      "role": "dj",
+      "style": null,
+      "country": "UK",
+      "source_line": "Qas – UK"
+     },
+     {
+      "name_as_written": "Maie",
+      "role": "dj",
+      "style": null,
+      "country": "Norway",
+      "source_line": "Maie – Norway"
+     },
+     {
+      "name_as_written": "Steve Morraine",
+      "role": "dj",
+      "style": null,
+      "country": "Norway",
+      "source_line": "Steve Morraine – Norway"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops for all levels & styles",
+      "rationale": "The description lists workshops as part of what is in store."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Workshops for all levels & styles",
+      "rationale": "Workshops for all levels suggest the event is suitable for every level."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "TWO rooms: Kizomba/Semba + UrbanKiz",
+      "rationale": "The event has two dance rooms."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Full Schedule & Dress Code",
+      "rationale": "A section titled Dress Code gives the dress code for each day."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Friday – White – Celebration of culture",
+      "rationale": "Each day has a dress theme, such as the white party on Friday."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-Party: Thursday @ Café Sør",
+      "rationale": "A pre-party is held on Thursday before the main event."
+     },
+     {
+      "feature": "after_party",
+      "quote": "Afterparty from 2AM",
+      "rationale": "An afterparty is held from 2AM at Dancecity."
+     }
+    ]
+   }
+  ]
+ }
 }

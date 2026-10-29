@@ -1,35 +1,42 @@
 {
- "batch": "event-18832",
- "events": [
-  {
-   "event_id": 18832,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Social Room",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "Social Room – because we know that sometimes you just want to DANCE!"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "WE LOVE KIZOMBA FESTIVAL 2027"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "UrbanKiz",
-     "quote": "#UrbanKiz"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "#Semba"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "88941f30fea9b927",
+ "answer": {
+  "batch": "event-18832",
+  "events": [
+   {
+    "event_id": 18832,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Social Room",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "Social Room"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "WE LOVE KIZOMBA FESTIVAL 2027 – ELBLĄG"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "#Semba"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "UrbanKiz",
+      "quote": "#UrbanKiz"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,102 +1,119 @@
 {
- "batch": "event-16150",
- "events": [
-  {
-   "event_id": 16150,
-   "artists": [
-    {
-     "name_as_written": "Saber & Majdouline",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🧪 Saber & Majdouline"
-    },
-    {
-     "name_as_written": "Radu & Judit",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🧪 Radu & Judit"
-    },
-    {
-     "name_as_written": "Ledoux Kingsman & Sonia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🧪 Ledoux Kingsman & Sonia"
-    },
-    {
-     "name_as_written": "Said & Oksana",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🧪 Said & Oksana"
-    },
-    {
-     "name_as_written": "JP & Stephy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🧪 JP & Stephy"
-    },
-    {
-     "name_as_written": "DJ PARAÏSO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🧪 DJ PARAÏSO"
-    },
-    {
-     "name_as_written": "DJ NAO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🧪 DJ NAO"
-    },
-    {
-     "name_as_written": "DJ B!JU",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🧪 DJ B!JU"
-    },
-    {
-     "name_as_written": "DJ SAABER",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🧪 DJ SAABER"
-    },
-    {
-     "name_as_written": "DJ JOZSI",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🧪 DJ JOZSI"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Alchemical Workshops",
-     "rationale": "The event lists Alchemical Workshops as part of what is offered."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 Daytime Socials",
-     "rationale": "The listed program includes three daytime socials."
-    },
-    {
-     "feature": "competition",
-     "quote": "THE BATTLE KIZZ Qualifications",
-     "rationale": "A battle qualification competition is part of the festival."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "A beautiful 4-star hotel by the lake with:",
-     "rationale": "The festival promotes a specific hotel for accommodation, with rooms booked separately from the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d3cca0dd589dace6",
+ "answer": {
+  "batch": "event-16150",
+  "events": [
+   {
+    "event_id": 16150,
+    "artists": [
+     {
+      "name_as_written": "Saber & Majdouline",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🧪 Saber & Majdouline"
+     },
+     {
+      "name_as_written": "Radu & Judit",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🧪 Radu & Judit"
+     },
+     {
+      "name_as_written": "Ledoux Kingsman & Sonia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🧪 Ledoux Kingsman & Sonia"
+     },
+     {
+      "name_as_written": "Said & Oksana",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🧪 Said & Oksana"
+     },
+     {
+      "name_as_written": "JP & Stephy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🧪 JP & Stephy"
+     },
+     {
+      "name_as_written": "DJ PARAÏSO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🧪 DJ PARAÏSO"
+     },
+     {
+      "name_as_written": "DJ NAO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🧪 DJ NAO"
+     },
+     {
+      "name_as_written": "DJ B!JU",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🧪 DJ B!JU"
+     },
+     {
+      "name_as_written": "DJ SAABER",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🧪 DJ SAABER"
+     },
+     {
+      "name_as_written": "DJ JOZSI",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🧪 DJ JOZSI"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Alchemical Workshops",
+      "rationale": "The event lists Alchemical Workshops as part of its program."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 Daytime Socials",
+      "rationale": "The event offers three daytime socials."
+     },
+     {
+      "feature": "competition",
+      "quote": "THE BATTLE KIZZ Qualifications",
+      "rationale": "A battle competition qualification round takes place during the festival."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Breakfast included to fuel your days",
+      "rationale": "Breakfast is stated as included with the hotel stay offered through the festival."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "A beautiful 4-star hotel by the lake",
+      "rationale": "A recommended hotel is offered for accommodation booked alongside the festival."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Dresscode Theme:",
+      "rationale": "A dress code theme heading is stated, though its details are not yet announced."
+     }
+    ]
+   }
+  ]
+ }
 }

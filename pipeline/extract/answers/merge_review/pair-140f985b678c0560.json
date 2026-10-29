@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tpeak",
+ "key_b": "p:tpeak@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:06+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "140f985b678c0560",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides use the same distinctive stage name (T Peak / T’Peak, with the apostrophe as a spelling variant and a DJ prefix on side A), and both have French (FR) country evidence and events in France, which matches the merge rule for a DJ-prefixed name with the same country."
+ }
+}

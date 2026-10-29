@@ -1,0 +1,13 @@
+{
+ "key_a": "p:paolo@angelica+paolo",
+ "key_b": "p:paolocruz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8be50cf42067a25e",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides share only the first name Paolo and the country Italy, and their partners differ (angelica for side A, lanna for side B), so nothing links them as one artist."
+ }
+}

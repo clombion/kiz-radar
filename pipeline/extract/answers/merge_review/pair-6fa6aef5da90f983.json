@@ -1,0 +1,13 @@
+{
+ "key_a": "p:javierdelarosa",
+ "key_b": "p:javierlarosa",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6fa6aef5da90f983",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records are DJs billed as Javier de la Rosa / Javier La Rosa with the same UK country and the same Cuban-style label, and the only difference is the particle 'de la' in the surname, so they read as one artist spelled two ways."
+ }
+}

@@ -1,314 +1,321 @@
 {
- "batch": "event-15888",
- "events": [
-  {
-   "event_id": 15888,
-   "artists": [
-    {
-     "name_as_written": "K’Mad Events",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "URBAN PARADISE MARTINIQUE is back for its 5th UNFORGETTABLE edition! 🌟 The entire K’Mad Events team has the honor of inviting you to this trip to Martinique, where you will discover the exoticism and beauty of our flower island. 🌺"
-    },
-    {
-     "name_as_written": "Elji BeatzKilla",
-     "role": "performer",
-     "style": null,
-     "country": "🇨🇻",
-     "source_line": "Elji BeatzKilla 🇨🇻"
-    },
-    {
-     "name_as_written": "DJ Fofo-Jah",
-     "role": "dj",
-     "style": null,
-     "country": "🇭🇹🇨🇦",
-     "source_line": "DJ Fofo-Jah🇭🇹🇨🇦"
-    },
-    {
-     "name_as_written": "DJ Nao",
-     "role": "dj",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇧🇪 🇸🇳",
-     "source_line": "DJ Nao 🇧🇪 🇸🇳"
-    },
-    {
-     "name_as_written": "DJ T Peak",
-     "role": "dj",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇬🇵🇫🇷",
-     "source_line": "DJ T Peak 🇬🇵🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Lowelo",
-     "role": "dj",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇫🇷",
-     "source_line": "DJ Lowelo 🇫🇷"
-    },
-    {
-     "name_as_written": "Dj LY",
-     "role": "dj",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇨🇦",
-     "source_line": "Dj LY canada🇨🇦"
-    },
-    {
-     "name_as_written": "DJ Diablo",
-     "role": "dj",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇫🇷🇷🇪",
-     "source_line": "DJ Diablo 🇫🇷🇷🇪"
-    },
-    {
-     "name_as_written": "DJ Bebeuze",
-     "role": "dj",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇲🇶",
-     "source_line": "DJ Bebeuze 🇲🇶"
-    },
-    {
-     "name_as_written": "DJ Romi",
-     "role": "dj",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇬🇧",
-     "source_line": "DJ Romi 🇬🇧"
-    },
-    {
-     "name_as_written": "DJ NokturИ",
-     "role": "dj",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇲🇶",
-     "source_line": "DJ NokturИ 🇲🇶"
-    },
-    {
-     "name_as_written": "DJ Poema Beats",
-     "role": "dj",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇸🇪",
-     "source_line": "DJ Poema Beats🇸🇪"
-    },
-    {
-     "name_as_written": "DJ Dreeks",
-     "role": "dj",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇫🇷",
-     "source_line": "DJ Dreeks 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Timi",
-     "role": "dj",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇲🇶",
-     "source_line": "DJ Timi 🇲🇶"
-    },
-    {
-     "name_as_written": "Ines MIRANDA",
-     "role": "teacher",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇵🇹",
-     "source_line": "Ines MIRANDA🇵🇹"
-    },
-    {
-     "name_as_written": "Tony PIRATA",
-     "role": "teacher",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇨🇻",
-     "source_line": "Tony PIRATA 🇨🇻"
-    },
-    {
-     "name_as_written": "Ioury et Éden",
-     "role": "teacher",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇫🇷",
-     "source_line": "Ioury et Éden 🇫🇷"
-    },
-    {
-     "name_as_written": "T Peak et Djelika",
-     "role": "teacher",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇬🇵",
-     "source_line": "T Peak et Djelika 🇬🇵"
-    },
-    {
-     "name_as_written": "Mike Evens",
-     "role": "teacher",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇫🇷",
-     "source_line": "Mike Evens🇫🇷"
-    },
-    {
-     "name_as_written": "Lilix MC",
-     "role": "teacher",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇬🇫",
-     "source_line": "Lilix MC🇬🇫"
-    },
-    {
-     "name_as_written": "Malick et Carla",
-     "role": "teacher",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇫🇷",
-     "source_line": "Malick et Carla 🇫🇷"
-    },
-    {
-     "name_as_written": "Nico grovenkiz",
-     "role": "teacher",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇨🇦",
-     "source_line": "Nico grovenkiz🇨🇦"
-    },
-    {
-     "name_as_written": "Jah j’a",
-     "role": "teacher",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇨🇭🇬🇵",
-     "source_line": "Jah j’a🇨🇭🇬🇵"
-    },
-    {
-     "name_as_written": "Luther",
-     "role": "teacher",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇬🇫",
-     "source_line": "Luther 🇬🇫"
-    },
-    {
-     "name_as_written": "Jérôme & sandrine",
-     "role": "teacher",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇬🇫",
-     "source_line": "Jérôme & sandrine🇬🇫"
-    },
-    {
-     "name_as_written": "Else et ANDY",
-     "role": "teacher",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": null,
-     "source_line": "Else et ANDY"
-    },
-    {
-     "name_as_written": "Natacha Claude",
-     "role": "teacher",
-     "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
-     "country": "🇭🇹",
-     "source_line": "Natacha Claude 🇭🇹"
-    },
-    {
-     "name_as_written": "DJ Fédéral",
-     "role": "dj",
-     "style": "ZOUK/KONPA/AMBIANCE",
-     "country": "🇲🇶",
-     "source_line": "DJ Fédéral 🇲🇶"
-    },
-    {
-     "name_as_written": "DJ Chouchou",
-     "role": "dj",
-     "style": "ZOUK/KONPA/AMBIANCE",
-     "country": "🇲🇶",
-     "source_line": "DJ Chouchou 🇲🇶"
-    },
-    {
-     "name_as_written": "DJ Electrik",
-     "role": "dj",
-     "style": "ZOUK/KONPA/AMBIANCE",
-     "country": "🇲🇶",
-     "source_line": "DJ Electrik🇲🇶"
-    },
-    {
-     "name_as_written": "DJ Sonsson",
-     "role": "dj",
-     "style": "ZOUK/KONPA/AMBIANCE",
-     "country": "🇲🇶",
-     "source_line": "DJ Sonsson🇲🇶"
-    },
-    {
-     "name_as_written": "David & Crisandra",
-     "role": "teacher",
-     "style": "ZOUK/KONPA/AMBIANCE",
-     "country": "🇭🇹🇨🇦",
-     "source_line": "David & Crisandra 🇭🇹🇨🇦"
-    },
-    {
-     "name_as_written": "Zouzoute",
-     "role": "teacher",
-     "style": "ZOUK/KONPA/AMBIANCE",
-     "country": "🇲🇶",
-     "source_line": "Zouzoute🇲🇶"
-    },
-    {
-     "name_as_written": "Loky D. Zouk Thérapy",
-     "role": "teacher",
-     "style": "ZOUK/KONPA/AMBIANCE",
-     "country": "🇲🇶",
-     "source_line": "Loky D. Zouk Thérapy 🇲🇶"
-    },
-    {
-     "name_as_written": "Tiken MADNESS",
-     "role": "teacher",
-     "style": "ZOUK/KONPA/AMBIANCE",
-     "country": "🇭🇹",
-     "source_line": "Tiken MADNESS🇭🇹"
-    },
-    {
-     "name_as_written": "DJ Timba",
-     "role": "dj",
-     "style": "SALSA/BACHATA",
-     "country": "🇲🇶",
-     "source_line": "DJ Timba🇲🇶"
-    },
-    {
-     "name_as_written": "DJ Go",
-     "role": "dj",
-     "style": "SALSA/BACHATA",
-     "country": "🇲🇶",
-     "source_line": "DJ Go🇲🇶"
-    },
-    {
-     "name_as_written": "DJ Conejo",
-     "role": "dj",
-     "style": "SALSA/BACHATA",
-     "country": "🇲🇶",
-     "source_line": "DJ Conejo🇲🇶"
-    },
-    {
-     "name_as_written": "DJ Will Bravo",
-     "role": "dj",
-     "style": "SALSA/BACHATA",
-     "country": "🇲🇶",
-     "source_line": "DJ Will Bravo🇲🇶"
-    },
-    {
-     "name_as_written": "Dédé Douceur",
-     "role": "teacher",
-     "style": "SALSA/BACHATA",
-     "country": "🇲🇶",
-     "source_line": "Dédé Douceur 🇲🇶"
-    },
-    {
-     "name_as_written": "Melvin Angarica",
-     "role": "teacher",
-     "style": "SALSA/BACHATA",
-     "country": "🇨🇺",
-     "source_line": "Melvin Angarica 🇨🇺"
-    }
-   ],
-   "features": [
-    {
-     "feature": "pool_party",
-     "quote": "Socials, parties & pool parties with top-quality DJs",
-     "rationale": "The description lists pool parties as part of the event programme."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Classes with a selection of the best international and local teachers",
-     "rationale": "Dance classes with teachers are part of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows highlighting the traditions and culture of our magnificent flower island",
-     "rationale": "The event includes shows by artists highlighting local culture."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:27:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d9a64d7e4c77ceca",
+ "answer": {
+  "batch": "event-15888",
+  "events": [
+   {
+    "event_id": 15888,
+    "artists": [
+     {
+      "name_as_written": "Elji BeatzKilla",
+      "role": "performer",
+      "style": null,
+      "country": "🇨🇻",
+      "source_line": "Elji BeatzKilla 🇨🇻"
+     },
+     {
+      "name_as_written": "DJ Fofo-Jah",
+      "role": "dj",
+      "style": null,
+      "country": "🇭🇹🇨🇦",
+      "source_line": "DJ Fofo-Jah🇭🇹🇨🇦"
+     },
+     {
+      "name_as_written": "DJ Nao",
+      "role": "dj",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇧🇪 🇸🇳",
+      "source_line": "DJ Nao 🇧🇪 🇸🇳"
+     },
+     {
+      "name_as_written": "DJ T Peak",
+      "role": "dj",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇬🇵🇫🇷",
+      "source_line": "DJ T Peak 🇬🇵🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Lowelo",
+      "role": "dj",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇫🇷",
+      "source_line": "DJ Lowelo 🇫🇷"
+     },
+     {
+      "name_as_written": "Dj LY canada",
+      "role": "dj",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇨🇦",
+      "source_line": "Dj LY canada🇨🇦"
+     },
+     {
+      "name_as_written": "DJ Diablo",
+      "role": "dj",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇫🇷🇷🇪",
+      "source_line": "DJ Diablo 🇫🇷🇷🇪"
+     },
+     {
+      "name_as_written": "DJ Bebeuze",
+      "role": "dj",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇲🇶",
+      "source_line": "DJ Bebeuze 🇲🇶"
+     },
+     {
+      "name_as_written": "DJ Romi",
+      "role": "dj",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇬🇧",
+      "source_line": "DJ Romi 🇬🇧"
+     },
+     {
+      "name_as_written": "DJ NokturИ",
+      "role": "dj",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇲🇶",
+      "source_line": "DJ NokturИ 🇲🇶"
+     },
+     {
+      "name_as_written": "DJ Poema Beats",
+      "role": "dj",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇸🇪",
+      "source_line": "DJ Poema Beats🇸🇪"
+     },
+     {
+      "name_as_written": "DJ Dreeks",
+      "role": "dj",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇫🇷",
+      "source_line": "DJ Dreeks 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Timi",
+      "role": "dj",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇲🇶",
+      "source_line": "DJ Timi 🇲🇶"
+     },
+     {
+      "name_as_written": "Ines MIRANDA",
+      "role": "teacher",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇵🇹",
+      "source_line": "Ines MIRANDA🇵🇹"
+     },
+     {
+      "name_as_written": "Tony PIRATA",
+      "role": "teacher",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇨🇻",
+      "source_line": "Tony PIRATA 🇨🇻"
+     },
+     {
+      "name_as_written": "Ioury et Éden",
+      "role": "teacher",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇫🇷",
+      "source_line": "Ioury et Éden 🇫🇷"
+     },
+     {
+      "name_as_written": "T Peak et Djelika",
+      "role": "teacher",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇬🇵",
+      "source_line": "T Peak et Djelika 🇬🇵"
+     },
+     {
+      "name_as_written": "Mike Evens",
+      "role": "teacher",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇫🇷",
+      "source_line": "Mike Evens🇫🇷"
+     },
+     {
+      "name_as_written": "Lilix MC",
+      "role": "teacher",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇬🇫",
+      "source_line": "Lilix MC🇬🇫"
+     },
+     {
+      "name_as_written": "Malick et Carla",
+      "role": "teacher",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇫🇷",
+      "source_line": "Malick et Carla 🇫🇷"
+     },
+     {
+      "name_as_written": "Nico grovenkiz",
+      "role": "teacher",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇨🇦",
+      "source_line": "Nico grovenkiz🇨🇦"
+     },
+     {
+      "name_as_written": "Jah j’a",
+      "role": "teacher",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇨🇭🇬🇵",
+      "source_line": "Jah j’a🇨🇭🇬🇵"
+     },
+     {
+      "name_as_written": "Luther",
+      "role": "teacher",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇬🇫",
+      "source_line": "Luther 🇬🇫"
+     },
+     {
+      "name_as_written": "Jérôme & sandrine",
+      "role": "teacher",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇬🇫",
+      "source_line": "Jérôme & sandrine🇬🇫"
+     },
+     {
+      "name_as_written": "Else et ANDY",
+      "role": "teacher",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": null,
+      "source_line": "Else et ANDY"
+     },
+     {
+      "name_as_written": "Natacha Claude",
+      "role": "teacher",
+      "style": "KIZOMBA URBAN KIZ SEMBA TARRAXO",
+      "country": "🇭🇹",
+      "source_line": "Natacha Claude 🇭🇹"
+     },
+     {
+      "name_as_written": "DJ Fédéral",
+      "role": "dj",
+      "style": "ZOUK/KONPA/AMBIANCE",
+      "country": "🇲🇶",
+      "source_line": "DJ Fédéral 🇲🇶"
+     },
+     {
+      "name_as_written": "DJ Chouchou",
+      "role": "dj",
+      "style": "ZOUK/KONPA/AMBIANCE",
+      "country": "🇲🇶",
+      "source_line": "DJ Chouchou 🇲🇶"
+     },
+     {
+      "name_as_written": "DJ Electrik",
+      "role": "dj",
+      "style": "ZOUK/KONPA/AMBIANCE",
+      "country": "🇲🇶",
+      "source_line": "DJ Electrik🇲🇶"
+     },
+     {
+      "name_as_written": "DJ Sonsson",
+      "role": "dj",
+      "style": "ZOUK/KONPA/AMBIANCE",
+      "country": "🇲🇶",
+      "source_line": "DJ Sonsson🇲🇶"
+     },
+     {
+      "name_as_written": "David & Crisandra",
+      "role": "teacher",
+      "style": "ZOUK/KONPA/AMBIANCE",
+      "country": "🇭🇹🇨🇦",
+      "source_line": "David & Crisandra 🇭🇹🇨🇦"
+     },
+     {
+      "name_as_written": "Zouzoute",
+      "role": "teacher",
+      "style": "ZOUK/KONPA/AMBIANCE",
+      "country": "🇲🇶",
+      "source_line": "Zouzoute🇲🇶"
+     },
+     {
+      "name_as_written": "Loky D. Zouk Thérapy",
+      "role": "teacher",
+      "style": "ZOUK/KONPA/AMBIANCE",
+      "country": "🇲🇶",
+      "source_line": "Loky D. Zouk Thérapy 🇲🇶"
+     },
+     {
+      "name_as_written": "Tiken MADNESS",
+      "role": "teacher",
+      "style": "ZOUK/KONPA/AMBIANCE",
+      "country": "🇭🇹",
+      "source_line": "Tiken MADNESS🇭🇹"
+     },
+     {
+      "name_as_written": "DJ Timba",
+      "role": "dj",
+      "style": "SALSA/BACHATA",
+      "country": "🇲🇶",
+      "source_line": "DJ Timba🇲🇶"
+     },
+     {
+      "name_as_written": "DJ Go",
+      "role": "dj",
+      "style": "SALSA/BACHATA",
+      "country": "🇲🇶",
+      "source_line": "DJ Go🇲🇶"
+     },
+     {
+      "name_as_written": "DJ Conejo",
+      "role": "dj",
+      "style": "SALSA/BACHATA",
+      "country": "🇲🇶",
+      "source_line": "DJ Conejo🇲🇶"
+     },
+     {
+      "name_as_written": "DJ Will Bravo",
+      "role": "dj",
+      "style": "SALSA/BACHATA",
+      "country": "🇲🇶",
+      "source_line": "DJ Will Bravo🇲🇶"
+     },
+     {
+      "name_as_written": "Dédé Douceur",
+      "role": "teacher",
+      "style": "SALSA/BACHATA",
+      "country": "🇲🇶",
+      "source_line": "Dédé Douceur 🇲🇶"
+     },
+     {
+      "name_as_written": "Melvin Angarica",
+      "role": "teacher",
+      "style": "SALSA/BACHATA",
+      "country": "🇨🇺",
+      "source_line": "Melvin Angarica 🇨🇺"
+     },
+     {
+      "name_as_written": "K’Mad Events",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "URBAN PARADISE MARTINIQUE is back for its 5th UNFORGETTABLE edition! 🌟 The entire K’Mad Events team has the honor of inviting you to this trip to Martinique, where you will discover the exoticism and beauty of our flower island. 🌺"
+     }
+    ],
+    "features": [
+     {
+      "feature": "shows",
+      "quote": "Shows highlighting the traditions and culture",
+      "rationale": "The description promises shows featuring the island's traditions and culture."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Socials, parties & pool parties with top-quality DJs",
+      "rationale": "Pool parties are listed as part of the programme."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Classes with a selection of the best international and local teachers",
+      "rationale": "Dance classes with teachers are part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

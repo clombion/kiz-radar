@@ -1,0 +1,13 @@
+{
+ "key_a": "p:klaudiohosai",
+ "key_b": "p:kludiohoshai",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:31+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ffc9b6ee222b6277",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records state Angola and the names are close typo-level variants of a distinctive full name (Klaudio Hosai / KLUDIO HOSHAI), with no conflicting country or partner evidence; the events in Switzerland and Spain are plausibly the same touring artist."
+ }
+}

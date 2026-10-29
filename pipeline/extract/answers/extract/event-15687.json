@@ -1,240 +1,247 @@
 {
- "batch": "event-15687",
- "events": [
-  {
-   "event_id": 15687,
-   "artists": [
-    {
-     "name_as_written": "Carlos & Paz",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Carlos & Paz"
-    },
-    {
-     "name_as_written": "Kornel & Catharine",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Kornel & Catharine"
-    },
-    {
-     "name_as_written": "Chico & Lisa",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Chico & Lisa"
-    },
-    {
-     "name_as_written": "Juanma & Tania",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Juanma & Tania"
-    },
-    {
-     "name_as_written": "Owen & Eva",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Owen & Eva"
-    },
-    {
-     "name_as_written": "Dennis & Elena",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Dennis & Elena"
-    },
-    {
-     "name_as_written": "Arthur",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Arthur"
-    },
-    {
-     "name_as_written": "Zoran & Andjela",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Zoran & Andjela"
-    },
-    {
-     "name_as_written": "Karl & Nima",
-     "role": "teacher",
-     "style": "KIZZ",
-     "country": null,
-     "source_line": "Karl & Nima"
-    },
-    {
-     "name_as_written": "Gwany & Liliana",
-     "role": "teacher",
-     "style": "KIZZ",
-     "country": null,
-     "source_line": "Gwany & Liliana"
-    },
-    {
-     "name_as_written": "Stephane & Sandra",
-     "role": "teacher",
-     "style": "KIZZ",
-     "country": null,
-     "source_line": "Stephane & Sandra"
-    },
-    {
-     "name_as_written": "Radu & Judit",
-     "role": "teacher",
-     "style": "KIZZ",
-     "country": null,
-     "source_line": "Radu & Judit"
-    },
-    {
-     "name_as_written": "Nick & Alex",
-     "role": "teacher",
-     "style": "KIZZ",
-     "country": null,
-     "source_line": "Nick & Alex"
-    },
-    {
-     "name_as_written": "John & Lea",
-     "role": "teacher",
-     "style": "KIZZ",
-     "country": null,
-     "source_line": "John & Lea"
-    },
-    {
-     "name_as_written": "Eddy & Rita",
-     "role": "teacher",
-     "style": "KIZZ",
-     "country": null,
-     "source_line": "Eddy & Rita"
-    },
-    {
-     "name_as_written": "HeartBeatKizz Team",
-     "role": "teacher",
-     "style": "KIZZ",
-     "country": null,
-     "source_line": "HeartBeatKizz Team"
-    },
-    {
-     "name_as_written": "DJ Clau",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "DJ Clau · DJ Dennis · DJ Kima · DJ Edinjo"
-    },
-    {
-     "name_as_written": "DJ Dennis",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "DJ Clau · DJ Dennis · DJ Kima · DJ Edinjo"
-    },
-    {
-     "name_as_written": "DJ Kima",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "DJ Clau · DJ Dennis · DJ Kima · DJ Edinjo"
-    },
-    {
-     "name_as_written": "DJ Edinjo",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "DJ Clau · DJ Dennis · DJ Kima · DJ Edinjo"
-    },
-    {
-     "name_as_written": "DJ Nao",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "DJ Nao · DJ PZL · DJ Eddy · DJ Moon"
-    },
-    {
-     "name_as_written": "DJ PZL",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "DJ Nao · DJ PZL · DJ Eddy · DJ Moon"
-    },
-    {
-     "name_as_written": "DJ Eddy",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "DJ Nao · DJ PZL · DJ Eddy · DJ Moon"
-    },
-    {
-     "name_as_written": "DJ Moon",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "DJ Nao · DJ PZL · DJ Eddy · DJ Moon"
-    },
-    {
-     "name_as_written": "Modex Cinema",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Modex Cinema"
-    },
-    {
-     "name_as_written": "ClickShot",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "ClickShot"
-    },
-    {
-     "name_as_written": "Boris",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Boris"
-    },
-    {
-     "name_as_written": "Patricia",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Patricia"
-    },
-    {
-     "name_as_written": "Petar",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Petar"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Access to all workshops, socials & parties.",
-     "rationale": "The full pass gives access to the workshops."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Daily Social",
-     "rationale": "The schedule lists daytime Daily Social sessions."
-    },
-    {
-     "feature": "competition",
-     "quote": "21:30 · KIZZ COMPETITION",
-     "rationale": "A KIZZ competition is scheduled on Friday."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-party: April 16 (separately charged)",
-     "rationale": "A pre-party is held on April 16 before the main event."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "AIRPORT TRANSFERS (TO & FROM NOVI SAD)",
-     "rationale": "The event offers airport transfers to and from Novi Sad."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "fa1ec478b14c864c",
+ "answer": {
+  "batch": "event-15687",
+  "events": [
+   {
+    "event_id": 15687,
+    "artists": [
+     {
+      "name_as_written": "Carlos & Paz",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Carlos & Paz"
+     },
+     {
+      "name_as_written": "Kornel & Catharine",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Kornel & Catharine"
+     },
+     {
+      "name_as_written": "Chico & Lisa",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Chico & Lisa"
+     },
+     {
+      "name_as_written": "Juanma & Tania",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Juanma & Tania"
+     },
+     {
+      "name_as_written": "Owen & Eva",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Owen & Eva"
+     },
+     {
+      "name_as_written": "Dennis & Elena",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Dennis & Elena"
+     },
+     {
+      "name_as_written": "Arthur",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Arthur"
+     },
+     {
+      "name_as_written": "Zoran & Andjela",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Zoran & Andjela"
+     },
+     {
+      "name_as_written": "Karl & Nima",
+      "role": "teacher",
+      "style": "KIZZ",
+      "country": null,
+      "source_line": "Karl & Nima"
+     },
+     {
+      "name_as_written": "Gwany & Liliana",
+      "role": "teacher",
+      "style": "KIZZ",
+      "country": null,
+      "source_line": "Gwany & Liliana"
+     },
+     {
+      "name_as_written": "Stephane & Sandra",
+      "role": "teacher",
+      "style": "KIZZ",
+      "country": null,
+      "source_line": "Stephane & Sandra"
+     },
+     {
+      "name_as_written": "Radu & Judit",
+      "role": "teacher",
+      "style": "KIZZ",
+      "country": null,
+      "source_line": "Radu & Judit"
+     },
+     {
+      "name_as_written": "Nick & Alex",
+      "role": "teacher",
+      "style": "KIZZ",
+      "country": null,
+      "source_line": "Nick & Alex"
+     },
+     {
+      "name_as_written": "John & Lea",
+      "role": "teacher",
+      "style": "KIZZ",
+      "country": null,
+      "source_line": "John & Lea"
+     },
+     {
+      "name_as_written": "Eddy & Rita",
+      "role": "teacher",
+      "style": "KIZZ",
+      "country": null,
+      "source_line": "Eddy & Rita"
+     },
+     {
+      "name_as_written": "HeartBeatKizz Team",
+      "role": "teacher",
+      "style": "KIZZ",
+      "country": null,
+      "source_line": "HeartBeatKizz Team"
+     },
+     {
+      "name_as_written": "DJ Clau",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "DJ Clau · DJ Dennis · DJ Kima · DJ Edinjo"
+     },
+     {
+      "name_as_written": "DJ Dennis",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "DJ Clau · DJ Dennis · DJ Kima · DJ Edinjo"
+     },
+     {
+      "name_as_written": "DJ Kima",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "DJ Clau · DJ Dennis · DJ Kima · DJ Edinjo"
+     },
+     {
+      "name_as_written": "DJ Edinjo",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "DJ Clau · DJ Dennis · DJ Kima · DJ Edinjo"
+     },
+     {
+      "name_as_written": "DJ Nao",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "DJ Nao · DJ PZL · DJ Eddy · DJ Moon"
+     },
+     {
+      "name_as_written": "DJ PZL",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "DJ Nao · DJ PZL · DJ Eddy · DJ Moon"
+     },
+     {
+      "name_as_written": "DJ Eddy",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "DJ Nao · DJ PZL · DJ Eddy · DJ Moon"
+     },
+     {
+      "name_as_written": "DJ Moon",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "DJ Nao · DJ PZL · DJ Eddy · DJ Moon"
+     },
+     {
+      "name_as_written": "Modex Cinema",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Modex Cinema"
+     },
+     {
+      "name_as_written": "ClickShot",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "ClickShot"
+     },
+     {
+      "name_as_written": "Boris",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Boris"
+     },
+     {
+      "name_as_written": "Patricia",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Patricia"
+     },
+     {
+      "name_as_written": "Petar",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Petar"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Access to all workshops, socials & parties.",
+      "rationale": "The full pass gives access to the workshops."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Daily Social",
+      "rationale": "The schedule lists daily social dances in the afternoon."
+     },
+     {
+      "feature": "competition",
+      "quote": "KIZZ COMPETITION",
+      "rationale": "The schedule lists a KIZZ competition on Friday."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-party: April 16 (separately charged)",
+      "rationale": "A pre-party is held on April 16 before the main festival."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "AIRPORT TRANSFERS (TO & FROM NOVI SAD)",
+      "rationale": "The festival offers airport transfers to and from Novi Sad."
+     }
+    ]
+   }
+  ]
+ }
 }

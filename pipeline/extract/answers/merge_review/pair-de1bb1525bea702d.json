@@ -1,0 +1,13 @@
+{
+ "key_a": "p:yves@dance",
+ "key_b": "p:yvesraymond",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "de1bb1525bea702d",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side A 'Yves' and side B 'Yves Raymond' are both teachers in Sweden with the same country, and their styles overlap (Kizomba and Kizomba & Semba), which matches the first-name-plus-full-name case the guidance treats as one artist, though the two events differ and 'Yves' is a common first name."
+ }
+}

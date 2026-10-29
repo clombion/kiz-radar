@@ -1,0 +1,13 @@
+{
+ "key_a": "p:gabrielbravoriviera",
+ "key_b": "p:grabrielbravoriviera",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "1baceca3961928b1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the same full name, countries (Bolivia and England) and event, and 'Grabriel' looks like a typo of 'Gabriel', but they appear at the same event (16820) with different roles (dj and teacher), which could be two people sharing a name, so the evidence does not settle it."
+ }
+}

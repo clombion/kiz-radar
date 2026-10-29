@@ -1,31 +1,43 @@
 {
- "batch": "event-14599",
- "events": [
-  {
-   "event_id": 14599,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "full weekend of daily workshops",
-     "rationale": "The description says the weekend includes daily workshops, so dance classes are part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "afternoon socials",
-     "rationale": "Afternoon socials are explicitly offered, which matches daytime socials."
-    },
-    {
-     "feature": "shows",
-     "quote": "nightly performances",
-     "rationale": "Nightly performances indicate shows or performances by artists."
-    },
-    {
-     "feature": "competition",
-     "quote": "Jack & Jill Competition",
-     "rationale": "A Jack & Jill competition is explicitly hosted at the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:22:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d633984dd50759c8",
+ "answer": {
+  "batch": "event-14599",
+  "events": [
+   {
+    "event_id": 14599,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "full weekend of daily workshops",
+      "rationale": "The description says the weekend includes daily workshops, which are dance classes."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "afternoon socials",
+      "rationale": "Afternoon socials are explicitly listed as part of the event, which matches daytime socials."
+     },
+     {
+      "feature": "shows",
+      "quote": "nightly performances",
+      "rationale": "Nightly performances indicate shows or performances by artists."
+     },
+     {
+      "feature": "competition",
+      "quote": "Brazilian Zouk Dance Council Jack & Jill Competition",
+      "rationale": "A Jack & Jill competition is explicitly held at the event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "HOTEL INFO",
+      "rationale": "A dedicated hotel info section linking to a hotel page suggests a recommended hotel for attendees, though the accommodation is not stated as part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

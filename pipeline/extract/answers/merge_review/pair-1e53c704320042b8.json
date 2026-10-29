@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ze@dance",
+ "key_b": "p:ze@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "1e53c704320042b8",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both keys list an Australian Zé at the same Thailand event (17474), one as teacher and one as DJ, so the event itself is evidence of two people, and 'Zé' is too generic to settle it; the second DJ Zé appearance in Vietnam has no country stated."
+ }
+}

@@ -1,121 +1,140 @@
 {
- "batch": "event-17439",
- "events": [
-  {
-   "event_id": 17439,
-   "artists": [
-    {
-     "name_as_written": "Eliza Sala",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "▪️Eliza Sala 🇦🇴"
-    },
-    {
-     "name_as_written": "Tony Pirata",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇻",
-     "source_line": "▪️Tony Pirata 🇨🇻"
-    },
-    {
-     "name_as_written": "Márcio Junqueira",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "▪️Márcio Junqueira 🇦🇴"
-    },
-    {
-     "name_as_written": "Kinkela & Giorgia",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "▪️Kinkela & Giorgia 🇦🇴"
-    },
-    {
-     "name_as_written": "Ary & Maura",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "▪️Ary & Maura 🇦🇴"
-    },
-    {
-     "name_as_written": "Maik & Daniela",
-     "role": "teacher",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "▪️Maik & Daniela 🇩🇪"
-    },
-    {
-     "name_as_written": "Tony Viser & Carla Andrade",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇨🇻",
-     "source_line": "▪️Tony Viser & Carla Andrade 🇦🇴🇨🇻"
-    },
-    {
-     "name_as_written": "MALANDRO",
-     "role": "dj",
-     "style": null,
-     "country": "🇬🇼🇨🇻",
-     "source_line": "▪️MALANDRO 🇬🇼🇨🇻"
-    },
-    {
-     "name_as_written": "KAPITULA",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "▪️KAPITULA 🇦🇴"
-    },
-    {
-     "name_as_written": "DJANE CARMEN",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "▪️DJANE CARMEN 🇪🇸"
-    },
-    {
-     "name_as_written": "DJ BLACK GENUÍNO",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "▪️DJ BLACK GENUÍNO 🇦🇴"
-    },
-    {
-     "name_as_written": "DJ FENOMENO",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "▪️DJ FENOMENO 🇦🇴"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "WORKSHOPS",
-     "rationale": "The description lists WORKSHOPS as a part of the event."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Masterclass",
-     "rationale": "The schedule explicitly mentions a Masterclass."
-    },
-    {
-     "feature": "live_music",
-     "quote": "L I V E M U S I C",
-     "rationale": "A Live Music section is listed among the artists."
-    },
-    {
-     "feature": "shows",
-     "quote": "SHOW",
-     "rationale": "A SHOW section announces performances by artists."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Workshop + Social Dance",
-     "rationale": "Social dances are scheduled during the day on Saturday and Sunday."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:31:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0c73be4f4fd9472b",
+ "answer": {
+  "batch": "event-17439",
+  "events": [
+   {
+    "event_id": 17439,
+    "artists": [
+     {
+      "name_as_written": "Eliza Sala",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "▪️Eliza Sala 🇦🇴"
+     },
+     {
+      "name_as_written": "Tony Pirata",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇻",
+      "source_line": "▪️Tony Pirata 🇨🇻"
+     },
+     {
+      "name_as_written": "Márcio Junqueira",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "▪️Márcio Junqueira 🇦🇴"
+     },
+     {
+      "name_as_written": "Kinkela & Giorgia",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "▪️Kinkela & Giorgia 🇦🇴"
+     },
+     {
+      "name_as_written": "Ary & Maura",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "▪️Ary & Maura 🇦🇴"
+     },
+     {
+      "name_as_written": "Maik & Daniela",
+      "role": "teacher",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "▪️Maik & Daniela 🇩🇪"
+     },
+     {
+      "name_as_written": "Tony Viser & Carla Andrade",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇨🇻",
+      "source_line": "▪️Tony Viser & Carla Andrade 🇦🇴🇨🇻"
+     },
+     {
+      "name_as_written": "MALANDRO",
+      "role": "dj",
+      "style": null,
+      "country": "🇬🇼🇨🇻",
+      "source_line": "▪️MALANDRO 🇬🇼🇨🇻"
+     },
+     {
+      "name_as_written": "KAPITULA",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "▪️KAPITULA 🇦🇴"
+     },
+     {
+      "name_as_written": "DJANE CARMEN",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "▪️DJANE CARMEN 🇪🇸"
+     },
+     {
+      "name_as_written": "DJ BLACK GENUÍNO",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "▪️DJ BLACK GENUÍNO 🇦🇴"
+     },
+     {
+      "name_as_written": "DJ FENOMENO",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "▪️DJ FENOMENO 🇦🇴"
+     },
+     {
+      "name_as_written": "@kizombasembaAfrobielefeld",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "@kizombasembaAfrobielefeld"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "WORKSHOPS",
+      "rationale": "The description lists workshops as part of the three-day event."
+     },
+     {
+      "feature": "live_music",
+      "quote": "L I V E M U S I C",
+      "rationale": "A heading announces live music at the event."
+     },
+     {
+      "feature": "shows",
+      "quote": "SHOW",
+      "rationale": "A show heading announces performances by artists."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Masterclass",
+      "rationale": "The description explicitly lists a masterclass."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Workshop + Social Dance 🟠11:00-21:00",
+      "rationale": "A social dance is scheduled during the afternoon and evening on Saturday."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "H O T E L O P T I O N S",
+      "rationale": "A hotel options heading suggests recommended hotels for attendees."
+     }
+    ]
+   }
+  ]
+ }
 }

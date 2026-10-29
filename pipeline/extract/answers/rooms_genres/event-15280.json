@@ -1,28 +1,35 @@
 {
- "batch": "event-15280",
- "events": [
-  {
-   "event_id": 15280,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "salsa",
-     "quote": "Dancers, salsa, bachata, and kizomba enthusiasts…"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "bachata",
-     "quote": "Dancers, salsa, bachata, and kizomba enthusiasts…"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "kizomba",
-     "quote": "Dancers, salsa, bachata, and kizomba enthusiasts…"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "cea8e639a9fafe35",
+ "answer": {
+  "batch": "event-15280",
+  "events": [
+   {
+    "event_id": 15280,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "salsa",
+      "quote": "salsa"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "bachata",
+      "quote": "bachata"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "kizomba",
+      "quote": "kizomba"
+     }
+    ]
+   }
+  ]
+ }
 }

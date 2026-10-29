@@ -1,104 +1,104 @@
 {
- "batch": "event-16451",
- "events": [
-  {
-   "event_id": 16451,
-   "artists": [
-    {
-     "name_as_written": "Jesus & Anni",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "💥 Jesus & Anni 🇪🇸"
-    },
-    {
-     "name_as_written": "Stef & Sarah",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "💥 Stef & Sarah 🇫🇷"
-    },
-    {
-     "name_as_written": "Mickaela",
-     "role": "teacher",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "💥 Mickaela 🇸🇪"
-    },
-    {
-     "name_as_written": "Nick & Alex",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇦",
-     "source_line": "💥 Nick & Alex 🇨🇦"
-    },
-    {
-     "name_as_written": "DJ Shark",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸 🇨🇺",
-     "source_line": "🎧 DJ Shark 🇪🇸 🇨🇺"
-    },
-    {
-     "name_as_written": "DJ Pingusso",
-     "role": "dj",
-     "style": null,
-     "country": "🇱🇺",
-     "source_line": "🎧 DJ Pingusso 🇱🇺"
-    },
-    {
-     "name_as_written": "DJ Nao",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇪 🇸🇳",
-     "source_line": "🎧 DJ Nao 🇧🇪 🇸🇳"
-    },
-    {
-     "name_as_written": "DJ Traxx",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "🎧 DJ Traxx 🇸🇪"
-    },
-    {
-     "name_as_written": "DJ Poema Beatz",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "🎧 DJ Poema Beatz 🇸🇪"
-    },
-    {
-     "name_as_written": "DJ Joey C",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "🎧 DJ Joey C 🇸🇪"
-    },
-    {
-     "name_as_written": "Kizmania",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Insta: Kizmania.sthlm"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops with world-class instructors",
-     "rationale": "The description lists workshops with world-class instructors as part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Epic parties & vibrant day socials",
-     "rationale": "The description promotes vibrant day socials as part of the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "MAIN HOTEL: QUALITY HOTEL GLOBE",
-     "rationale": "The event recommends a main hotel, which is a partner hotel not included in the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:29:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "84b89164e952ffc4",
+ "answer": {
+  "batch": "event-16451",
+  "events": [
+   {
+    "event_id": 16451,
+    "artists": [
+     {
+      "name_as_written": "Jesus & Anni",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "💥 Jesus & Anni 🇪🇸"
+     },
+     {
+      "name_as_written": "Stef & Sarah",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "💥 Stef & Sarah 🇫🇷"
+     },
+     {
+      "name_as_written": "Mickaela",
+      "role": "teacher",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "💥 Mickaela 🇸🇪"
+     },
+     {
+      "name_as_written": "Nick & Alex",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇦",
+      "source_line": "💥 Nick & Alex 🇨🇦"
+     },
+     {
+      "name_as_written": "DJ Shark",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸 🇨🇺",
+      "source_line": "🎧 DJ Shark 🇪🇸 🇨🇺"
+     },
+     {
+      "name_as_written": "DJ Pingusso",
+      "role": "dj",
+      "style": null,
+      "country": "🇱🇺",
+      "source_line": "🎧 DJ Pingusso 🇱🇺"
+     },
+     {
+      "name_as_written": "DJ Nao",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇪 🇸🇳",
+      "source_line": "🎧 DJ Nao 🇧🇪 🇸🇳"
+     },
+     {
+      "name_as_written": "DJ Traxx",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "🎧 DJ Traxx 🇸🇪"
+     },
+     {
+      "name_as_written": "DJ Poema Beatz",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "🎧 DJ Poema Beatz 🇸🇪"
+     },
+     {
+      "name_as_written": "DJ Joey C",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "🎧 DJ Joey C 🇸🇪"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops with world-class instructors",
+      "rationale": "The event lists workshops with instructors as part of its offer."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "vibrant day socials",
+      "rationale": "Daytime socials are listed among the event highlights."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "RECOMMENDED HOTEL",
+      "rationale": "A recommended main hotel is named for attendees, separate from any pass inclusion."
+     }
+    ]
+   }
+  ]
+ }
 }

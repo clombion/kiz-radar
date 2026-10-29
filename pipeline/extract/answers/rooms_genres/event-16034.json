@@ -1,80 +1,74 @@
 {
- "batch": "event-16034",
- "events": [
-  {
-   "event_id": 16034,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 ROOMS // 2 ATMOSPHERES"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "ROOM 1",
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba",
-      "kompa"
-     ],
-     "quote": "ROOM 1 – KIZOMBA & SEMBA & KOMPA"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "19e0f50fead1be5e",
+ "answer": {
+  "batch": "event-16034",
+  "events": [
+   {
+    "event_id": 16034,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 ROOMS // 2 ATMOSPHERES"
     },
-    {
-     "name_as_written": "ROOM 2",
-     "kind": "party",
-     "genres": [
-      "urbankiz",
-      "zouk",
-      "tarraxinha"
-     ],
-     "quote": "ROOM 2 – URBANKIZ & GHETTOZOUK & TARRAXINHA"
-    },
-    {
-     "name_as_written": "SOCIAL",
-     "kind": "unspecified",
-     "genres": [
-      "kizomba",
-      "semba",
-      "kompa",
-      "urbankiz",
-      "zouk",
-      "tarraxinha"
-     ],
-     "quote": "SOCIAL – KIZOMBA & SEMBA & KOMPA & URBANKIZ & GHETTOZOUK & TARRAXINHA"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "ROOM 1 – KIZOMBA & SEMBA & KOMPA"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "SEMBA",
-     "quote": "ROOM 1 – KIZOMBA & SEMBA & KOMPA"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "KOMPA",
-     "quote": "ROOM 1 – KIZOMBA & SEMBA & KOMPA"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBANKIZ",
-     "quote": "ROOM 2 – URBANKIZ & GHETTOZOUK & TARRAXINHA"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "GHETTOZOUK",
-     "quote": "ROOM 2 – URBANKIZ & GHETTOZOUK & TARRAXINHA"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "TARRAXINHA",
-     "quote": "ROOM 2 – URBANKIZ & GHETTOZOUK & TARRAXINHA"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "ROOM 1",
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "semba",
+       "kompa"
+      ],
+      "quote": "ROOM 1 – KIZOMBA & SEMBA & KOMPA"
+     },
+     {
+      "name_as_written": "ROOM 2",
+      "kind": "party",
+      "genres": [
+       "urbankiz",
+       "zouk",
+       "tarraxinha"
+      ],
+      "quote": "ROOM 2 – URBANKIZ & GHETTOZOUK & TARRAXINHA"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "ROOM 1 – KIZOMBA & SEMBA & KOMPA"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "SEMBA",
+      "quote": "ROOM 1 – KIZOMBA & SEMBA & KOMPA"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "KOMPA",
+      "quote": "ROOM 1 – KIZOMBA & SEMBA & KOMPA"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBANKIZ",
+      "quote": "ROOM 2 – URBANKIZ & GHETTOZOUK & TARRAXINHA"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "GHETTOZOUK",
+      "quote": "ROOM 2 – URBANKIZ & GHETTOZOUK & TARRAXINHA"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "TARRAXINHA",
+      "quote": "ROOM 2 – URBANKIZ & GHETTOZOUK & TARRAXINHA"
+     }
+    ]
+   }
+  ]
+ }
 }

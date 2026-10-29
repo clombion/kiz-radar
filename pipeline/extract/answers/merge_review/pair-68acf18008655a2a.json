@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tzer@chamalo+tzer",
+ "key_b": "p:tzer@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "68acf18008655a2a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The names are identical apart from case and the only shared evidence is Sweden, which is one of three countries on side A, while side A's mentions are empty and side B has a single Jamaica teacher mention with no partner, so the evidence does not settle whether this is one artist."
+ }
+}

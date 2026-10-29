@@ -1,89 +1,91 @@
 {
- "batch": "event-15307",
- "events": [
-  {
-   "event_id": 15307,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 themed party rooms"
-   },
-   "class_rooms": {
-    "count": 5,
-    "quote": "5 dance studios for classes"
-   },
-   "rooms": [
-    {
-     "name_as_written": "Salsa",
-     "kind": "party",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "Evenings in 3 rooms: Salsa, Bachata, Kizomba"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d912754388f3f706",
+ "answer": {
+  "batch": "event-15307",
+  "events": [
+   {
+    "event_id": 15307,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 themed party rooms"
     },
-    {
-     "name_as_written": "Bachata",
-     "kind": "party",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "Evenings in 3 rooms: Salsa, Bachata, Kizomba"
+    "class_rooms": {
+     "count": 5,
+     "quote": "5 dance studios for classes"
     },
-    {
-     "name_as_written": "Kizomba",
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "Evenings in 3 rooms: Salsa, Bachata, Kizomba"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Evenings in 3 rooms: Salsa, Bachata, Kizomba"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Evenings in 3 rooms: Salsa, Bachata, Kizomba"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Evenings in 3 rooms: Salsa, Bachata, Kizomba"
-    },
-    {
-     "genre": "reggaeton",
-     "genre_as_written": "Reggaeton",
-     "quote": "Farah (Reggaeton, Bootyshake, Zumba…)"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Bootyshake",
-     "quote": "Farah (Reggaeton, Bootyshake, Zumba…)"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Zumba",
-     "quote": "Farah (Reggaeton, Bootyshake, Zumba…)"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Heels",
-     "quote": "Ludivine (Heels, Elgo)"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Elgo",
-     "quote": "Ludivine (Heels, Elgo)"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "tango",
-     "quote": "tango, improvisation, salsa, etc."
-    }
-   ]
-  }
- ]
+    "rooms": [
+     {
+      "name_as_written": "Salsa",
+      "kind": "party",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "Evenings in 3 rooms: Salsa, Bachata, Kizomba"
+     },
+     {
+      "name_as_written": "Bachata",
+      "kind": "party",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "Evenings in 3 rooms: Salsa, Bachata, Kizomba"
+     },
+     {
+      "name_as_written": "Kizomba",
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "Evenings in 3 rooms: Salsa, Bachata, Kizomba"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Evenings in 3 rooms: Salsa, Bachata, Kizomba"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Evenings in 3 rooms: Salsa, Bachata, Kizomba"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Evenings in 3 rooms: Salsa, Bachata, Kizomba"
+     },
+     {
+      "genre": "reggaeton",
+      "genre_as_written": "Reggaeton",
+      "quote": "Farah (Reggaeton, Bootyshake, Zumba…)"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Bootyshake",
+      "quote": "Farah (Reggaeton, Bootyshake, Zumba…)"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Heels",
+      "quote": "Ludivine (Heels, Elgo)"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Elgo",
+      "quote": "Ludivine (Heels, Elgo)"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "tango",
+      "quote": "(tango, improvisation, salsa, etc.)"
+     }
+    ]
+   }
+  ]
+ }
 }

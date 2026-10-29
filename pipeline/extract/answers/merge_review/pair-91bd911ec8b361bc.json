@@ -1,0 +1,13 @@
+{
+ "key_a": "p:neiken@dj",
+ "key_b": "p:neiken@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "91bd911ec8b361bc",
+ "answer": {
+  "decision": "merge",
+  "rationale": "All twelve mentions use the same stage name (DJ Neiken, with case and prefix variants), the stated countries are only Italy and Portugal, and those flags appear together on the same records (e.g. event 15739 and 15784 list both), with the same Urban Kizomba style at several events, so one dual-nationality DJ is the most consistent reading."
+ }
+}

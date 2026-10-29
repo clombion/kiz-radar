@@ -1,0 +1,13 @@
+{
+ "key_a": "p:linda@linda+rossi",
+ "key_b": "p:lindaguiteriez",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3548b1e4e294d82a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the bare first name 'Linda' with partner Rossi and countries BE and DE, and has no listed mentions, while side B is 'Linda Guiteriez' (DE) with no partners; the shared DE country and Netherlands events are too weak to confirm one person, so this needs a human check."
+ }
+}

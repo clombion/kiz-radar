@@ -1,0 +1,13 @@
+{
+ "key_a": "p:moussadiop",
+ "key_b": "p:moustadiop",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "30793f846c701c7e",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records are teachers at different Spanish events and share the full name Diop with a near-identical first name (Moussa/Mousta), but there is no shared partner and side B states no country, so the evidence does not settle whether it is one person or two."
+ }
+}

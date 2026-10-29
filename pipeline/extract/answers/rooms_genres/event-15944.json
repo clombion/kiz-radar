@@ -1,18 +1,25 @@
 {
- "batch": "event-15944",
- "events": [
-  {
-   "event_id": 15944,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA RETREAT ANGOLA 2026"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "f0254b326ec66458",
+ "answer": {
+  "batch": "event-15944",
+  "events": [
+   {
+    "event_id": 15944,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "KIZOMBA RETREAT ANGOLA 2026"
+     }
+    ]
+   }
+  ]
+ }
 }

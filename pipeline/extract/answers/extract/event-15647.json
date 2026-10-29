@@ -1,10 +1,17 @@
 {
- "batch": "event-15647",
- "events": [
-  {
-   "event_id": 15647,
-   "artists": [],
-   "features": []
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "4d88d2e9d9038bf4",
+ "answer": {
+  "batch": "event-15647",
+  "events": [
+   {
+    "event_id": 15647,
+    "artists": [],
+    "features": []
+   }
+  ]
+ }
 }

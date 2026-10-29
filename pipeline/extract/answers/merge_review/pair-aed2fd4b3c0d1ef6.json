@@ -1,0 +1,13 @@
+{
+ "key_a": "p:celine@dance",
+ "key_b": "p:celine@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "aed2fd4b3c0d1ef6",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same key with the same four mentions, so the pair is one name stated with countries (BE, FR, IT) that never meet on a single record; the evidence cannot tell whether this is one traveling teacher or several people named Celine, and a wrong merge would join separate event histories."
+ }
+}

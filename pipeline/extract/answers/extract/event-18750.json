@@ -1,51 +1,58 @@
 {
- "batch": "event-18750",
- "events": [
-  {
-   "event_id": 18750,
-   "artists": [],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "in an ALL IN ONE format",
-     "rationale": "The description explicitly states the event runs in an ALL IN ONE format, with event and accommodation in one place."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops in Kizomba, Urban Kiz, Semba, Tarraxo, Douceur and Konpa",
-     "rationale": "The listed included items name dance workshops in several styles."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Themed night parties",
-     "rationale": "The description advertises themed night parties."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "4 days of workshops, parties, accommodation and meals",
-     "rationale": "The included items list says accommodation is part of the package."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Meals available on the premises",
-     "rationale": "Meals are listed among the included items, and the description says they are available on the premises."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Dress code: flowers, colours, hippie chic",
-     "rationale": "A dress code is stated for the Friday party."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Afternoon Social | Pool Room",
-     "rationale": "An afternoon social is scheduled on Friday and Saturday."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Afternoon Social | Pool Room",
-     "rationale": "The programme uses a Main Hall and a separate Pool Room for different sessions."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:33:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0d9e3b6c1d0d3876",
+ "answer": {
+  "batch": "event-18750",
+  "events": [
+   {
+    "event_id": 18750,
+    "artists": [],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "in an ALL IN ONE format",
+      "rationale": "The event is described as an ALL IN ONE format at the hotel where accommodation is offered."
+     },
+     {
+      "feature": "workshops",
+      "quote": "4 days of workshops",
+      "rationale": "The description states the event includes days of workshops."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "4 days of workshops, parties, accommodation and meals",
+      "rationale": "Accommodation is listed among the things included in the event."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Meals available on the premises",
+      "rationale": "Meals are listed under 'What's included?'."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Themed night parties with national and international DJs",
+      "rationale": "The parties are explicitly described as themed nights."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Dress code: flowers, colours, hippie chic",
+      "rationale": "A dress code is stated for the party."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Afternoon Social | Pool Room",
+      "rationale": "An afternoon social is scheduled during the day."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Workshops | Main Hall",
+      "rationale": "The programme lists separate venues such as the Main Hall and the Pool Room."
+     }
+    ]
+   }
+  ]
+ }
 }

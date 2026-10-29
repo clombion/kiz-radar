@@ -1,0 +1,13 @@
+{
+ "key_a": "p:linda@dance",
+ "key_b": "p:lindaghiggisemba",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "235b9358f4dc1faa",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as Italian and the bare first name 'Linda' matches the first word of 'LINDA GHIGGI SEMBA', but 'Linda' is a common first name and the two sides share no partner, event or style, so the evidence does not settle whether they are one person."
+ }
+}

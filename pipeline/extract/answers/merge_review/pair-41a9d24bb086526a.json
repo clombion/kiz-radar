@@ -1,0 +1,13 @@
+{
+ "key_a": "p:donaldwillson",
+ "key_b": "p:donaldwilson",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "41a9d24bb086526a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The two keys differ by one letter (Willson/Wilson) and both appear as teachers at the same German event, so they may be two people; the only other overlap is Germany, and 'Donald' is a common first name, so the evidence does not settle whether this is a spelling variant or a different teacher."
+ }
+}

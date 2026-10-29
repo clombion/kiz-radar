@@ -1,0 +1,13 @@
+{
+ "key_a": "p:giuseppe@giuseppe+klaudyna",
+ "key_b": "p:giuseppe@giuseppe+vincenza",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c6e52801eb0989b2",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named Giuseppe and share Italy, but each is paired with a different partner (Klaudyna, who is listed with Poland, and Vincenza), and the events do not overlap, so the evidence cannot tell one man with two partners from two people sharing a common name."
+ }
+}

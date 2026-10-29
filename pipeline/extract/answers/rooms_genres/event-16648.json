@@ -1,43 +1,50 @@
 {
- "batch": "event-16648",
- "events": [
-  {
-   "event_id": 16648,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "kizomba",
-     "quote": "we will dance kizomba, semba, bachata, salsa, cha-cha, bolero and more"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "semba",
-     "quote": "we will dance kizomba, semba, bachata, salsa, cha-cha, bolero and more"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "bachata",
-     "quote": "we will dance kizomba, semba, bachata, salsa, cha-cha, bolero and more"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "salsa",
-     "quote": "we will dance kizomba, semba, bachata, salsa, cha-cha, bolero and more"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "cha-cha",
-     "quote": "we will dance kizomba, semba, bachata, salsa, cha-cha, bolero and more"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "bolero",
-     "quote": "we will dance kizomba, semba, bachata, salsa, cha-cha, bolero and more"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "877b84a75bca5f4b",
+ "answer": {
+  "batch": "event-16648",
+  "events": [
+   {
+    "event_id": 16648,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "kizomba",
+      "quote": "kizomba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "semba",
+      "quote": "semba"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "bachata",
+      "quote": "bachata"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "salsa",
+      "quote": "salsa"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "cha-cha",
+      "quote": "cha-cha"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "bolero",
+      "quote": "bolero"
+     }
+    ]
+   }
+  ]
+ }
 }

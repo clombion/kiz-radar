@@ -1,0 +1,13 @@
+{
+ "key_a": "p:kiki@dance",
+ "key_b": "p:kiki@kiki+selim",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "a54def3caae34541",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are written 'Kiki' and both list Germany, but side A has no partners and no events in common with side B's Switzerland, and side B's mentions are not provided, so the generic name alone cannot settle whether the solo teacher is the Kiki+Selim couple member."
+ }
+}

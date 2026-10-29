@@ -1,53 +1,60 @@
 {
- "batch": "event-16668",
- "events": [
-  {
-   "event_id": 16668,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "salsa",
-     "quote": "LA / NY salsa"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cha-cha",
-     "quote": "Cha-cha"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Traditional Balkan Folklore",
-     "quote": "Traditional Balkan Folklore"
-    },
-    {
-     "genre": "reggaeton",
-     "genre_as_written": "reggaeton",
-     "quote": "reggaeton"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "zumba",
-     "quote": "zumba"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "modern",
-     "quote": "modern"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "2123aa5d772279d6",
+ "answer": {
+  "batch": "event-16668",
+  "events": [
+   {
+    "event_id": 16668,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "LA / NY salsa",
+      "quote": "LA / NY salsa"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cha-cha",
+      "quote": "LA / NY salsa, Cha-cha, animations"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Traditional Balkan Folklore",
+      "quote": "Traditional Balkan Folklore"
+     },
+     {
+      "genre": "reggaeton",
+      "genre_as_written": "reggaeton",
+      "quote": "salsa, bachata, kizomba, modern, zumba, reggaeton, traditional dances"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "modern",
+      "quote": "salsa, bachata, kizomba, modern, zumba, reggaeton, traditional dances"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "zumba",
+      "quote": "salsa, bachata, kizomba, modern, zumba, reggaeton, traditional dances"
+     }
+    ]
+   }
+  ]
+ }
 }

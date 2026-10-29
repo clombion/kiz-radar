@@ -1,31 +1,38 @@
 {
- "batch": "event-17092",
- "events": [
-  {
-   "event_id": 17092,
-   "party_rooms": {
-    "count": 4,
-    "quote": "4 DANCEFLOORS WITH 4 DIFFERENT TYPES OF MUSIC"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "BACHATA:"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "570886c0cf6fe1ae",
+ "answer": {
+  "batch": "event-17092",
+  "events": [
+   {
+    "event_id": 17092,
+    "party_rooms": {
+     "count": 4,
+     "quote": "4 DANCEFLOORS WITH 4 DIFFERENT TYPES OF MUSIC"
     },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA:"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "SALSA:"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "BACHATA:"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KIZOMBA:"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "SALSA",
+      "quote": "SALSA:"
+     }
+    ]
+   }
+  ]
+ }
 }

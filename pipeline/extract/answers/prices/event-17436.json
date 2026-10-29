@@ -1,10 +1,17 @@
 {
- "batch": "event-17436",
- "events": [
-  {
-   "event_id": 17436,
-   "passes": [],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:44:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "96c2de2120345bac",
+ "answer": {
+  "batch": "event-17436",
+  "events": [
+   {
+    "event_id": 17436,
+    "passes": [],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

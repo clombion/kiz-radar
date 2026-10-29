@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sinah@patrick+sinah",
+ "key_b": "p:sinahfrenchkizz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3a007987a4c994ef",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records are in Germany and list the same partner, Patrick, and 'Sinah' is the short form of 'Sinah Frenchkizz', which the guidance treats as the same person when the partner matches; the mention lists are empty, so no event-level check confirms it."
+ }
+}

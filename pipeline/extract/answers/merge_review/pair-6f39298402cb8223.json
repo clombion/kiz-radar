@@ -1,0 +1,13 @@
+{
+ "key_a": "p:hicham@dance",
+ "key_b": "p:hicham@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6f39298402cb8223",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "This is one key compared with itself, so the stated countries France and Morocco never meet on a single mention, and the evidence cannot tell whether it is one teacher with two nationalities or two people named Hicham sharing the same Nantes events."
+ }
+}

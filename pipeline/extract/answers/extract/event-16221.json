@@ -1,375 +1,382 @@
 {
- "batch": "event-16221",
- "events": [
-  {
-   "event_id": 16221,
-   "artists": [
-    {
-     "name_as_written": "Conselho de Zouk Brasileiro",
-     "role": "teacher",
-     "style": "Brazilian Zouk",
-     "country": null,
-     "source_line": "🟢 Conselho de Zouk Brasileiro (Official Brazilian Zouk Council)"
-    },
-    {
-     "name_as_written": "Arthur Santos",
-     "role": "teacher",
-     "style": "Brazilian Zouk",
-     "country": null,
-     "source_line": "🟢 Arthur Santos"
-    },
-    {
-     "name_as_written": "Kadu & Carolina",
-     "role": "teacher",
-     "style": "Brazilian Zouk",
-     "country": null,
-     "source_line": "🟢 Kadu & Carolina"
-    },
-    {
-     "name_as_written": "Lucas & Thayná",
-     "role": "teacher",
-     "style": "Brazilian Zouk",
-     "country": null,
-     "source_line": "🟢 Lucas & Thayná"
-    },
-    {
-     "name_as_written": "Julia Kristin Johann",
-     "role": "teacher",
-     "style": "Brazilian Zouk",
-     "country": null,
-     "source_line": "🟢 Julia Kristin Johann"
-    },
-    {
-     "name_as_written": "William & Irene",
-     "role": "teacher",
-     "style": "Brazilian Zouk",
-     "country": null,
-     "source_line": "🟢 William & Irene"
-    },
-    {
-     "name_as_written": "Felipe & Bruna",
-     "role": "teacher",
-     "style": "Brazilian Zouk",
-     "country": null,
-     "source_line": "🟢 Felipe & Bruna"
-    },
-    {
-     "name_as_written": "Juanma & Mely",
-     "role": "teacher",
-     "style": "Brazilian Zouk",
-     "country": null,
-     "source_line": "🟢 Juanma & Mely"
-    },
-    {
-     "name_as_written": "DJ Kadu Pires",
-     "role": "dj",
-     "style": "Brazilian Zouk",
-     "country": null,
-     "source_line": "🎶 DJ Kadu Pires"
-    },
-    {
-     "name_as_written": "DJ William",
-     "role": "dj",
-     "style": "Brazilian Zouk",
-     "country": null,
-     "source_line": "🎶 DJ William"
-    },
-    {
-     "name_as_written": "DJ Juanma",
-     "role": "dj",
-     "style": "Brazilian Zouk",
-     "country": null,
-     "source_line": "🎶 DJ Juanma"
-    },
-    {
-     "name_as_written": "DJ Douglas Costa Zouk",
-     "role": "dj",
-     "style": "Brazilian Zouk",
-     "country": null,
-     "source_line": "🎶 DJ Douglas Costa Zouk"
-    },
-    {
-     "name_as_written": "DJ Sharm",
-     "role": "dj",
-     "style": "Brazilian Zouk",
-     "country": null,
-     "source_line": "🎶 DJ Sharm"
-    },
-    {
-     "name_as_written": "Aitor & Angelica",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⭐ Aitor & Angelica"
-    },
-    {
-     "name_as_written": "Jeremy & Emilia",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⭐ Jeremy & Emilia"
-    },
-    {
-     "name_as_written": "Kornel & Catharine",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⭐ Kornel & Catharine"
-    },
-    {
-     "name_as_written": "Sia & Rezi",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⭐ Sia & Rezi"
-    },
-    {
-     "name_as_written": "Eliza Kariieva",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⭐ Eliza Kariieva"
-    },
-    {
-     "name_as_written": "Alejandro Manrique",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⭐ Alejandro Manrique"
-    },
-    {
-     "name_as_written": "Gabesz & Reka",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⭐ Gabesz & Reka"
-    },
-    {
-     "name_as_written": "Osman & Jovana",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⭐ Osman & Jovana"
-    },
-    {
-     "name_as_written": "Josiah",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⭐ Josiah (Pro Category Competition Winner)"
-    },
-    {
-     "name_as_written": "Antonio Laguna",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "⭐ Antonio Laguna"
-    },
-    {
-     "name_as_written": "DJ Clau",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🎵 DJ Clau"
-    },
-    {
-     "name_as_written": "DJ Loves.me",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🎵 DJ Loves.me"
-    },
-    {
-     "name_as_written": "DJ Weapons",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🎵 DJ Weapons"
-    },
-    {
-     "name_as_written": "DJ Extreme",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🎵 DJ Extreme"
-    },
-    {
-     "name_as_written": "DJ Fran",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🎵 DJ Fran"
-    },
-    {
-     "name_as_written": "DJ Summat",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🎵 DJ Summat"
-    },
-    {
-     "name_as_written": "Asia Voronova",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🔸 Asia Voronova"
-    },
-    {
-     "name_as_written": "Audi & Laura",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🔸 Audi & Laura"
-    },
-    {
-     "name_as_written": "Luis & Karen",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🔸 Luis & Karen"
-    },
-    {
-     "name_as_written": "Selim & Anastasia",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🔸 Selim & Anastasia"
-    },
-    {
-     "name_as_written": "Wookie & Nicole",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🔸 Wookie & Nicole"
-    },
-    {
-     "name_as_written": "Radu & Judit",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🔸 Radu & Judit"
-    },
-    {
-     "name_as_written": "Nick & Alex",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🔸 Nick & Alex"
-    },
-    {
-     "name_as_written": "Eddie & Rita",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🔸 Eddie & Rita (Kizomba Club Hungary)"
-    },
-    {
-     "name_as_written": "Adrian Ilisei",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🔸 Adrian Ilisei"
-    },
-    {
-     "name_as_written": "Iryna Kovalenko",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🔸 Iryna Kovalenko"
-    },
-    {
-     "name_as_written": "DJ Lenhy",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🎚️ DJ Lenhy"
-    },
-    {
-     "name_as_written": "DJ Ichigo",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🎚️ DJ Ichigo"
-    },
-    {
-     "name_as_written": "DJ Charley RayMDTC",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🎚️ DJ Charley RayMDTC"
-    },
-    {
-     "name_as_written": "DJ B!JU",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🎚️ DJ B!JU"
-    },
-    {
-     "name_as_written": "DJ DVA",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🎚️ DJ DVA"
-    },
-    {
-     "name_as_written": "Fadi Fusion",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "💠 Fadi Fusion"
-    },
-    {
-     "name_as_written": "Ouissam & Martina",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "💠 Ouissam & Martina"
-    },
-    {
-     "name_as_written": "Sergio Ribeiro",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "🎛️ Sergio Ribeiro"
-    },
-    {
-     "name_as_written": "DJ MD Sabha",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "🎛️ DJ MD Sabha"
-    },
-    {
-     "name_as_written": "DJ Anass Salsa",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "🎛️ DJ Anass Salsa"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Three days of workshops",
-     "rationale": "The description says the three-day festival has workshops."
-    },
-    {
-     "feature": "competition",
-     "quote": "Workshops, competitions & nightly parties",
-     "rationale": "The highlights list explicitly includes competitions."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Party: Thursday, 27 August 2026",
-     "rationale": "A pre-party is listed on Thursday before the main event."
-    },
-    {
-     "feature": "after_party",
-     "quote": "After-Party: Monday, 31 August 2026",
-     "rationale": "An after-party is listed on Monday after the festival."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "5ad1f49f8b1ae489",
+ "answer": {
+  "batch": "event-16221",
+  "events": [
+   {
+    "event_id": 16221,
+    "artists": [
+     {
+      "name_as_written": "Conselho de Zouk Brasileiro",
+      "role": "teacher",
+      "style": "Brazilian Zouk",
+      "country": null,
+      "source_line": "🟢 Conselho de Zouk Brasileiro (Official Brazilian Zouk Council)"
+     },
+     {
+      "name_as_written": "Arthur Santos",
+      "role": "teacher",
+      "style": "Brazilian Zouk",
+      "country": null,
+      "source_line": "🟢 Arthur Santos"
+     },
+     {
+      "name_as_written": "Kadu & Carolina",
+      "role": "teacher",
+      "style": "Brazilian Zouk",
+      "country": null,
+      "source_line": "🟢 Kadu & Carolina"
+     },
+     {
+      "name_as_written": "Lucas & Thayná",
+      "role": "teacher",
+      "style": "Brazilian Zouk",
+      "country": null,
+      "source_line": "🟢 Lucas & Thayná"
+     },
+     {
+      "name_as_written": "Julia Kristin Johann",
+      "role": "teacher",
+      "style": "Brazilian Zouk",
+      "country": null,
+      "source_line": "🟢 Julia Kristin Johann"
+     },
+     {
+      "name_as_written": "William & Irene",
+      "role": "teacher",
+      "style": "Brazilian Zouk",
+      "country": null,
+      "source_line": "🟢 William & Irene"
+     },
+     {
+      "name_as_written": "Felipe & Bruna",
+      "role": "teacher",
+      "style": "Brazilian Zouk",
+      "country": null,
+      "source_line": "🟢 Felipe & Bruna"
+     },
+     {
+      "name_as_written": "Juanma & Mely",
+      "role": "teacher",
+      "style": "Brazilian Zouk",
+      "country": null,
+      "source_line": "🟢 Juanma & Mely"
+     },
+     {
+      "name_as_written": "DJ Kadu Pires",
+      "role": "dj",
+      "style": "Brazilian Zouk",
+      "country": null,
+      "source_line": "🎶 DJ Kadu Pires"
+     },
+     {
+      "name_as_written": "DJ William",
+      "role": "dj",
+      "style": "Brazilian Zouk",
+      "country": null,
+      "source_line": "🎶 DJ William"
+     },
+     {
+      "name_as_written": "DJ Juanma",
+      "role": "dj",
+      "style": "Brazilian Zouk",
+      "country": null,
+      "source_line": "🎶 DJ Juanma"
+     },
+     {
+      "name_as_written": "DJ Douglas Costa Zouk",
+      "role": "dj",
+      "style": "Brazilian Zouk",
+      "country": null,
+      "source_line": "🎶 DJ Douglas Costa Zouk"
+     },
+     {
+      "name_as_written": "DJ Sharm",
+      "role": "dj",
+      "style": "Brazilian Zouk",
+      "country": null,
+      "source_line": "🎶 DJ Sharm"
+     },
+     {
+      "name_as_written": "Aitor & Angelica",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⭐ Aitor & Angelica"
+     },
+     {
+      "name_as_written": "Jeremy & Emilia",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⭐ Jeremy & Emilia"
+     },
+     {
+      "name_as_written": "Kornel & Catharine",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⭐ Kornel & Catharine"
+     },
+     {
+      "name_as_written": "Sia & Rezi",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⭐ Sia & Rezi"
+     },
+     {
+      "name_as_written": "Eliza Kariieva",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⭐ Eliza Kariieva"
+     },
+     {
+      "name_as_written": "Alejandro Manrique",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⭐ Alejandro Manrique"
+     },
+     {
+      "name_as_written": "Gabesz & Reka",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⭐ Gabesz & Reka"
+     },
+     {
+      "name_as_written": "Osman & Jovana",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⭐ Osman & Jovana"
+     },
+     {
+      "name_as_written": "Josiah",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⭐ Josiah (Pro Category Competition Winner)"
+     },
+     {
+      "name_as_written": "Antonio Laguna",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "⭐ Antonio Laguna"
+     },
+     {
+      "name_as_written": "DJ Clau",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "🎵 DJ Clau"
+     },
+     {
+      "name_as_written": "DJ Loves.me",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "🎵 DJ Loves.me"
+     },
+     {
+      "name_as_written": "DJ Weapons",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "🎵 DJ Weapons"
+     },
+     {
+      "name_as_written": "DJ Extreme",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "🎵 DJ Extreme"
+     },
+     {
+      "name_as_written": "DJ Fran",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "🎵 DJ Fran"
+     },
+     {
+      "name_as_written": "DJ Summat",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "🎵 DJ Summat"
+     },
+     {
+      "name_as_written": "Asia Voronova",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🔸 Asia Voronova"
+     },
+     {
+      "name_as_written": "Audi & Laura",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🔸 Audi & Laura"
+     },
+     {
+      "name_as_written": "Luis & Karen",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🔸 Luis & Karen"
+     },
+     {
+      "name_as_written": "Selim & Anastasia",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🔸 Selim & Anastasia"
+     },
+     {
+      "name_as_written": "Wookie & Nicole",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🔸 Wookie & Nicole"
+     },
+     {
+      "name_as_written": "Radu & Judit",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🔸 Radu & Judit"
+     },
+     {
+      "name_as_written": "Nick & Alex",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🔸 Nick & Alex"
+     },
+     {
+      "name_as_written": "Eddie & Rita",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🔸 Eddie & Rita (Kizomba Club Hungary)"
+     },
+     {
+      "name_as_written": "Adrian Ilisei",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🔸 Adrian Ilisei"
+     },
+     {
+      "name_as_written": "Iryna Kovalenko",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🔸 Iryna Kovalenko"
+     },
+     {
+      "name_as_written": "DJ Lenhy",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🎚️ DJ Lenhy"
+     },
+     {
+      "name_as_written": "DJ Ichigo",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🎚️ DJ Ichigo"
+     },
+     {
+      "name_as_written": "DJ Charley RayMDTC",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🎚️ DJ Charley RayMDTC"
+     },
+     {
+      "name_as_written": "DJ B!JU",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🎚️ DJ B!JU"
+     },
+     {
+      "name_as_written": "DJ DVA",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "🎚️ DJ DVA"
+     },
+     {
+      "name_as_written": "Fadi Fusion",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "💠 Fadi Fusion"
+     },
+     {
+      "name_as_written": "Ouissam & Martina",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "💠 Ouissam & Martina"
+     },
+     {
+      "name_as_written": "Sergio Ribeiro",
+      "role": "dj",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "🎛️ Sergio Ribeiro"
+     },
+     {
+      "name_as_written": "DJ MD Sabha",
+      "role": "dj",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "🎛️ DJ MD Sabha"
+     },
+     {
+      "name_as_written": "DJ Anass Salsa",
+      "role": "dj",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "🎛️ DJ Anass Salsa"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Three days of workshops, competitions, and non-stop social parties",
+      "rationale": "The description states the festival offers workshops over three days."
+     },
+     {
+      "feature": "competition",
+      "quote": "Three days of workshops, competitions, and non-stop social parties",
+      "rationale": "The description explicitly mentions competitions as part of the festival."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-Party: Thursday, 27 August 2026",
+      "rationale": "A Pre-Party is listed before the main festival dates."
+     },
+     {
+      "feature": "after_party",
+      "quote": "After-Party: Monday, 31 August 2026",
+      "rationale": "An After-Party is listed after the main festival dates."
+     }
+    ]
+   }
+  ]
+ }
 }

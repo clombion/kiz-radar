@@ -1,0 +1,13 @@
+{
+ "key_a": "p:luca@elena+luca",
+ "key_b": "p:lucaarrigoni",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "359138a30e1076dd",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A ('LUCA') has no mentions, so the only links are a shared Italian country and a shared partner Elena, while 'Luca' is a common first name and the couple keys differ, so the evidence does not settle whether this is the same Luca Arrigoni."
+ }
+}

@@ -1,18 +1,25 @@
 {
- "batch": "event-15954",
- "events": [
-  {
-   "event_id": 15954,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "🪇 𝐓𝐀𝐌𝐀𝐒𝐇𝐀 𝐒𝐔𝐌𝐌𝐄𝐑 𝐊𝐈𝐙𝐎𝐌𝐁𝐀 🪇"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d666e4be4ef7c64b",
+ "answer": {
+  "batch": "event-15954",
+  "events": [
+   {
+    "event_id": 15954,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "TAMASHA SUMMER KIZOMBA CARNAVAL EDITION"
+     }
+    ]
+   }
+  ]
+ }
 }

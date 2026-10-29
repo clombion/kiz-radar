@@ -1,0 +1,13 @@
+{
+ "key_a": "p:heneco@heneco+kiki",
+ "key_b": "p:heneco@heneco+marta",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "69271be4019669ca",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the name HENECO/Heneco and overlap on country FR, but their partners differ (kiki vs marta) and their events are in different countries (Austria vs Switzerland), so the evidence does not settle whether this is one artist or two."
+ }
+}

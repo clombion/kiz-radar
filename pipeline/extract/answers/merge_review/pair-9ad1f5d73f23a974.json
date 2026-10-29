@@ -1,0 +1,13 @@
+{
+ "key_a": "p:onclekani",
+ "key_b": "p:unclekani",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "9ad1f5d73f23a974",
+ "answer": {
+  "decision": "merge",
+  "rationale": "'Oncle' is French for 'Uncle', so this is the same distinctive stage name in two languages, and both sides list France as a country, with no conflicting country evidence."
+ }
+}

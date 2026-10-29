@@ -1,31 +1,38 @@
 {
- "batch": "event-15331",
- "events": [
-  {
-   "event_id": 15331,
-   "party_rooms": {
-    "count": 4,
-    "quote": "4 dance floors"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "BACHATA:"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "37b3fd2f5093dd9e",
+ "answer": {
+  "batch": "event-15331",
+  "events": [
+   {
+    "event_id": 15331,
+    "party_rooms": {
+     "count": 4,
+     "quote": "4 dance floors"
     },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA:"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "SALSA:"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Dj Tronky ✅ (Bachata)"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Dj Sai Sai ✅ (Kizomba)"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Dj Williy Viper ✅ (Salsa)"
+     }
+    ]
+   }
+  ]
+ }
 }

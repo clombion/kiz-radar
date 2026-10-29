@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mada@mada+portu",
+ "key_b": "p:mada@mada+portu",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "51247661f82614f8",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both keys are identical and the only evidence is a single name appearing with three countries (ES, PT, RO) and no mentions, partners, or styles to show whether it is one traveling artist or several people sharing the name Mada, so the evidence does not settle it."
+ }
+}

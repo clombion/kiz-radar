@@ -1,428 +1,435 @@
 {
- "batch": "event-15582",
- "events": [
-  {
-   "event_id": 15582,
-   "artists": [
-    {
-     "name_as_written": "Ronie Saleh",
-     "role": "teacher",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "Sweden",
-     "source_line": "🇸🇪 Ronie Saleh — Sweden"
-    },
-    {
-     "name_as_written": "Jack & Sara",
-     "role": "teacher",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "Spain",
-     "source_line": "🇪🇸 Jack & Sara — Spain"
-    },
-    {
-     "name_as_written": "Chris Py & Laly",
-     "role": "teacher",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "France",
-     "source_line": "🇫🇷 Chris Py & Laly — France"
-    },
-    {
-     "name_as_written": "Daniel & Elina",
-     "role": "teacher",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "Germany / Czech Republic",
-     "source_line": "🇩🇪🇨🇿 Daniel & Elina — Germany / Czech Republic"
-    },
-    {
-     "name_as_written": "Black Chinese & Monica",
-     "role": "teacher",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "France / Spain",
-     "source_line": "🇫🇷🇪🇸 Black Chinese & Monica — France / Spain"
-    },
-    {
-     "name_as_written": "Fanio & Sara",
-     "role": "teacher",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "Angola / Portugal",
-     "source_line": "🇦🇴🇵🇹 Fanio & Sara — Angola / Portugal"
-    },
-    {
-     "name_as_written": "Ludo LSKIZ",
-     "role": "teacher",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "France",
-     "source_line": "🇫🇷 Ludo LSKIZ — France"
-    },
-    {
-     "name_as_written": "Kal",
-     "role": "teacher",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "France",
-     "source_line": "🇫🇷 Kal — France"
-    },
-    {
-     "name_as_written": "Edu Dias",
-     "role": "teacher",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "France",
-     "source_line": "🇫🇷 Edu Dias — France"
-    },
-    {
-     "name_as_written": "David Yaye",
-     "role": "teacher",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "Wakanda",
-     "source_line": "🌍 David Yaye — Wakanda"
-    },
-    {
-     "name_as_written": "Jeremy & Justine",
-     "role": "teacher",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "France",
-     "source_line": "🇫🇷 Jeremy & Justine — France"
-    },
-    {
-     "name_as_written": "Alex & Maylie",
-     "role": "teacher",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "France",
-     "source_line": "🇫🇷 Alex & Maylie — France"
-    },
-    {
-     "name_as_written": "Alejandro y Vanessa",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "Spain",
-     "source_line": "🇪🇸 Alejandro y Vanessa — Bachata (Spain)"
-    },
-    {
-     "name_as_written": "Anita y Varea",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "Spain",
-     "source_line": "🇪🇸 Anita y Varea — Bachata (Spain)"
-    },
-    {
-     "name_as_written": "Lolo Waki",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Lolo Waki — Salsa (Bordeaux)"
-    },
-    {
-     "name_as_written": "Ludivine",
-     "role": "teacher",
-     "style": "Elgo Dance",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Ludivine (Ludidanse) — Elgo Dance (Paris)"
-    },
-    {
-     "name_as_written": "Hicham",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Hicham — Salsa (Nantes)"
-    },
-    {
-     "name_as_written": "Mo",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Mo — Salsa (Nantes)"
-    },
-    {
-     "name_as_written": "Nico Candela & Lucy",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Nico Candela & Lucy — Salsa (Saint-Nazaire)"
-    },
-    {
-     "name_as_written": "Chris Salsa",
-     "role": "teacher",
-     "style": "Salsa/Bachata",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Chris Salsa — Salsa/Bachata (Saint-Brieuc)"
-    },
-    {
-     "name_as_written": "Ibra Chavez",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Ibra Chavez — Salsa (Saint-Brévin)"
-    },
-    {
-     "name_as_written": "Yannick El Mambo",
-     "role": "teacher",
-     "style": "Salsa/Bachata",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Yannick El Mambo — Salsa/Bachata (Pornichet)"
-    },
-    {
-     "name_as_written": "Alejandro y Océane",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Alejandro y Océane — Bachata (Saint-Nazaire)"
-    },
-    {
-     "name_as_written": "Hélène Denigot",
-     "role": "teacher",
-     "style": "Hip Hop",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 Hélène Denigot — Hip Hop (Saint-Nazaire)"
-    },
-    {
-     "name_as_written": "DJ Shark",
-     "role": "dj",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "Spain",
-     "source_line": "🇪🇸 DJ Shark — Spain"
-    },
-    {
-     "name_as_written": "DJ Puto X",
-     "role": "dj",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "France",
-     "source_line": "🇫🇷 DJ Puto X — France"
-    },
-    {
-     "name_as_written": "DJ Remcy",
-     "role": "dj",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "Germany",
-     "source_line": "🇩🇪 DJ Remcy — Germany"
-    },
-    {
-     "name_as_written": "DJ Lehny",
-     "role": "dj",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "France",
-     "source_line": "🇫🇷 DJ Lehny — France"
-    },
-    {
-     "name_as_written": "DJ Nuo",
-     "role": "dj",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "Ukraine",
-     "source_line": "🇺🇦 DJ Nuo — Ukraine"
-    },
-    {
-     "name_as_written": "DJ Lowelo",
-     "role": "dj",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "France",
-     "source_line": "🇫🇷 DJ Lowelo — France"
-    },
-    {
-     "name_as_written": "DJ Antony Tarraxa",
-     "role": "dj",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "Spain",
-     "source_line": "🇪🇸 DJ Antony Tarraxa — Spain"
-    },
-    {
-     "name_as_written": "DJ Angelo",
-     "role": "dj",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "France",
-     "source_line": "🇫🇷 DJ Angelo — France"
-    },
-    {
-     "name_as_written": "DJ Tati",
-     "role": "dj",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "Russia",
-     "source_line": "🇷🇺 DJ Tati – Russia"
-    },
-    {
-     "name_as_written": "DJ Corazón Coração",
-     "role": "dj",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
-     "country": "Saint-Nazaire (France)",
-     "source_line": "🇫🇷 DJ Corazón Coração — Saint-Nazaire (France)"
-    },
-    {
-     "name_as_written": "DJ Hicham El Loco",
-     "role": "dj",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙎𝙖𝙡𝙨𝙖 / 𝘽𝙖𝙘𝙝𝙖𝙩𝙖",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 DJ Hicham El Loco — Nantes"
-    },
-    {
-     "name_as_written": "DJ Nico Candela",
-     "role": "dj",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙎𝙖𝙡𝙨𝙖 / 𝘽𝙖𝙘𝙝𝙖𝙩𝙖",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 DJ Nico Candela — Saint-Nazaire"
-    },
-    {
-     "name_as_written": "DJ Moh",
-     "role": "dj",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙎𝙖𝙡𝙨𝙖 / 𝘽𝙖𝙘𝙝𝙖𝙩𝙖",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 DJ Moh — Nantes"
-    },
-    {
-     "name_as_written": "DJ Sam Mas",
-     "role": "dj",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙎𝙖𝙡𝙨𝙖 / 𝘽𝙖𝙘𝙝𝙖𝙩𝙖",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 DJ Sam Mas — Saint-Brieuc"
-    },
-    {
-     "name_as_written": "DJ Florian Sensacion",
-     "role": "dj",
-     "style": "𝘼𝙩𝙤𝙡𝙡 𝙎𝙖𝙡𝙨𝙖 / 𝘽𝙖𝙘𝙝𝙖𝙩𝙖",
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 DJ Florian Sensacion — Nantes"
-    },
-    {
-     "name_as_written": "Ronie Saleh",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Ronie Saleh"
-    },
-    {
-     "name_as_written": "Puto X",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Puto X"
-    },
-    {
-     "name_as_written": "Andredson Keys",
-     "role": "performer",
-     "style": null,
-     "country": "Angola",
-     "source_line": "⭐ Andredson Keys (Angola)"
-    },
-    {
-     "name_as_written": "Mula Junior",
-     "role": "performer",
-     "style": null,
-     "country": "Mozambique",
-     "source_line": "⭐ Mula Junior (Mozambique)"
-    },
-    {
-     "name_as_written": "Alejandro y Vanessa",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Alejandro y Vanessa"
-    },
-    {
-     "name_as_written": "Anita & Varea",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Anita & Varea"
-    },
-    {
-     "name_as_written": "Chris Py & Laly",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Chris Py & Laly"
-    },
-    {
-     "name_as_written": "LN Dance Fusion Crew",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ LN Dance Fusion Crew (LNDF)"
-    },
-    {
-     "name_as_written": "Project By Design",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "🎥 Project By Design (Videographer)"
-    },
-    {
-     "name_as_written": "Wilson Ebot Photography",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📸 Wilson Ebot Photography"
-    },
-    {
-     "name_as_written": "Saïd SBH",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📸 Saïd SBH"
-    },
-    {
-     "name_as_written": "NantesCapture 44",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📸 NantesCapture 44"
-    },
-    {
-     "name_as_written": "Coralie Moreau",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📸 Coralie Moreau"
-    },
-    {
-     "name_as_written": "La Case Corazon",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Call on behalf of La Case Corazon 😉"
-    }
-   ],
-   "features": [
-    {
-     "feature": "pre_party",
-     "quote": "Magical Pre-Party on Thursday",
-     "rationale": "The description advertises a Magical Pre-Party on Thursday as part of the programme."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Over 40 hours of workshops",
-     "rationale": "The programme highlights over 40 hours of workshops."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows, animations",
-     "rationale": "The description lists shows and animations as part of the event."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Shuttles from Nantes Airport to the event",
-     "rationale": "Shuttles from the airport to the event are offered for a fee."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "1 Room 100% Kizomba / Urban Kiz / Tarraxo / Semba",
-     "rationale": "The event has several dance rooms, including one dedicated to kizomba and related styles."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "Beach Party on the famous Place du Commando",
-     "rationale": "A beach party is explicitly listed."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Saturday: Just Chic",
-     "rationale": "Each night has a dress theme such as Saturday: Just Chic."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Thursday: Bring the Color",
-     "rationale": "A day-by-day dress code is stated for the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Partnership with nearby hotels for every budget!",
-     "rationale": "The event has partner hotels with negotiated rates that are not part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "346d7491dafbc63b",
+ "answer": {
+  "batch": "event-15582",
+  "events": [
+   {
+    "event_id": 15582,
+    "artists": [
+     {
+      "name_as_written": "Ronie Saleh",
+      "role": "teacher",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "Sweden",
+      "source_line": "🇸🇪 Ronie Saleh — Sweden"
+     },
+     {
+      "name_as_written": "Jack & Sara",
+      "role": "teacher",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "Spain",
+      "source_line": "🇪🇸 Jack & Sara — Spain"
+     },
+     {
+      "name_as_written": "Chris Py & Laly",
+      "role": "teacher",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "France",
+      "source_line": "🇫🇷 Chris Py & Laly — France"
+     },
+     {
+      "name_as_written": "Daniel & Elina",
+      "role": "teacher",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "Germany / Czech Republic",
+      "source_line": "🇩🇪🇨🇿 Daniel & Elina — Germany / Czech Republic"
+     },
+     {
+      "name_as_written": "Black Chinese & Monica",
+      "role": "teacher",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "France / Spain",
+      "source_line": "🇫🇷🇪🇸 Black Chinese & Monica — France / Spain"
+     },
+     {
+      "name_as_written": "Fanio & Sara",
+      "role": "teacher",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "Angola / Portugal",
+      "source_line": "🇦🇴🇵🇹 Fanio & Sara — Angola / Portugal"
+     },
+     {
+      "name_as_written": "Ludo LSKIZ",
+      "role": "teacher",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "France",
+      "source_line": "🇫🇷 Ludo LSKIZ — France"
+     },
+     {
+      "name_as_written": "Kal",
+      "role": "teacher",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "France",
+      "source_line": "🇫🇷 Kal — France"
+     },
+     {
+      "name_as_written": "Edu Dias",
+      "role": "teacher",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "France",
+      "source_line": "🇫🇷 Edu Dias — France"
+     },
+     {
+      "name_as_written": "David Yaye",
+      "role": "teacher",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "Wakanda",
+      "source_line": "🌍 David Yaye — Wakanda"
+     },
+     {
+      "name_as_written": "Jeremy & Justine",
+      "role": "teacher",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "France",
+      "source_line": "🇫🇷 Jeremy & Justine — France"
+     },
+     {
+      "name_as_written": "Alex & Maylie",
+      "role": "teacher",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "France",
+      "source_line": "🇫🇷 Alex & Maylie — France"
+     },
+     {
+      "name_as_written": "Alejandro y Vanessa",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "Spain",
+      "source_line": "🇪🇸 Alejandro y Vanessa — Bachata (Spain)"
+     },
+     {
+      "name_as_written": "Anita y Varea",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "Spain",
+      "source_line": "🇪🇸 Anita y Varea — Bachata (Spain)"
+     },
+     {
+      "name_as_written": "Lolo Waki",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Lolo Waki — Salsa (Bordeaux)"
+     },
+     {
+      "name_as_written": "Ludivine",
+      "role": "teacher",
+      "style": "Elgo Dance",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Ludivine (Ludidanse) — Elgo Dance (Paris)"
+     },
+     {
+      "name_as_written": "Hicham",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Hicham — Salsa (Nantes)"
+     },
+     {
+      "name_as_written": "Mo",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Mo — Salsa (Nantes)"
+     },
+     {
+      "name_as_written": "Nico Candela & Lucy",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Nico Candela & Lucy — Salsa (Saint-Nazaire)"
+     },
+     {
+      "name_as_written": "Chris Salsa",
+      "role": "teacher",
+      "style": "Salsa/Bachata",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Chris Salsa — Salsa/Bachata (Saint-Brieuc)"
+     },
+     {
+      "name_as_written": "Ibra Chavez",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Ibra Chavez — Salsa (Saint-Brévin)"
+     },
+     {
+      "name_as_written": "Yannick El Mambo",
+      "role": "teacher",
+      "style": "Salsa/Bachata",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Yannick El Mambo — Salsa/Bachata (Pornichet)"
+     },
+     {
+      "name_as_written": "Alejandro y Océane",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Alejandro y Océane — Bachata (Saint-Nazaire)"
+     },
+     {
+      "name_as_written": "Hélène Denigot",
+      "role": "teacher",
+      "style": "Hip Hop",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 Hélène Denigot — Hip Hop (Saint-Nazaire)"
+     },
+     {
+      "name_as_written": "DJ Shark",
+      "role": "dj",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "Spain",
+      "source_line": "🇪🇸 DJ Shark — Spain"
+     },
+     {
+      "name_as_written": "DJ Puto X",
+      "role": "dj",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "France",
+      "source_line": "🇫🇷 DJ Puto X — France"
+     },
+     {
+      "name_as_written": "DJ Remcy",
+      "role": "dj",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "Germany",
+      "source_line": "🇩🇪 DJ Remcy — Germany"
+     },
+     {
+      "name_as_written": "DJ Lehny",
+      "role": "dj",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "France",
+      "source_line": "🇫🇷 DJ Lehny — France"
+     },
+     {
+      "name_as_written": "DJ Nuo",
+      "role": "dj",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "Ukraine",
+      "source_line": "🇺🇦 DJ Nuo — Ukraine"
+     },
+     {
+      "name_as_written": "DJ Lowelo",
+      "role": "dj",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "France",
+      "source_line": "🇫🇷 DJ Lowelo — France"
+     },
+     {
+      "name_as_written": "DJ Antony Tarraxa",
+      "role": "dj",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "Spain",
+      "source_line": "🇪🇸 DJ Antony Tarraxa — Spain"
+     },
+     {
+      "name_as_written": "DJ Angelo",
+      "role": "dj",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "France",
+      "source_line": "🇫🇷 DJ Angelo — France"
+     },
+     {
+      "name_as_written": "DJ Tati",
+      "role": "dj",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "Russia",
+      "source_line": "🇷🇺 DJ Tati – Russia"
+     },
+     {
+      "name_as_written": "DJ Corazón Coração",
+      "role": "dj",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙆𝙞𝙯𝙤𝙢𝙗𝙖",
+      "country": "France",
+      "source_line": "🇫🇷 DJ Corazón Coração — Saint-Nazaire (France)"
+     },
+     {
+      "name_as_written": "DJ Hicham El Loco",
+      "role": "dj",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙎𝙖𝙡𝙨𝙖 / 𝘽𝙖𝙘𝙝𝙖𝙩𝙖",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 DJ Hicham El Loco — Nantes"
+     },
+     {
+      "name_as_written": "DJ Nico Candela",
+      "role": "dj",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙎𝙖𝙡𝙨𝙖 / 𝘽𝙖𝙘𝙝𝙖𝙩𝙖",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 DJ Nico Candela — Saint-Nazaire"
+     },
+     {
+      "name_as_written": "DJ Moh",
+      "role": "dj",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙎𝙖𝙡𝙨𝙖 / 𝘽𝙖𝙘𝙝𝙖𝙩𝙖",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 DJ Moh — Nantes"
+     },
+     {
+      "name_as_written": "DJ Sam Mas",
+      "role": "dj",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙎𝙖𝙡𝙨𝙖 / 𝘽𝙖𝙘𝙝𝙖𝙩𝙖",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 DJ Sam Mas — Saint-Brieuc"
+     },
+     {
+      "name_as_written": "DJ Florian Sensacion",
+      "role": "dj",
+      "style": "𝘼𝙩𝙤𝙡𝙡 𝙎𝙖𝙡𝙨𝙖 / 𝘽𝙖𝙘𝙝𝙖𝙩𝙖",
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 DJ Florian Sensacion — Nantes"
+     },
+     {
+      "name_as_written": "Ronie Saleh",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Ronie Saleh"
+     },
+     {
+      "name_as_written": "Puto X",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Puto X"
+     },
+     {
+      "name_as_written": "Andredson Keys",
+      "role": "performer",
+      "style": null,
+      "country": "Angola",
+      "source_line": "⭐ Andredson Keys (Angola)"
+     },
+     {
+      "name_as_written": "Mula Junior",
+      "role": "performer",
+      "style": null,
+      "country": "Mozambique",
+      "source_line": "⭐ Mula Junior (Mozambique)"
+     },
+     {
+      "name_as_written": "Alejandro y Vanessa",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Alejandro y Vanessa"
+     },
+     {
+      "name_as_written": "Anita & Varea",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Anita & Varea"
+     },
+     {
+      "name_as_written": "Chris Py & Laly",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Chris Py & Laly"
+     },
+     {
+      "name_as_written": "LN Dance Fusion Crew",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ LN Dance Fusion Crew (LNDF)"
+     },
+     {
+      "name_as_written": "Project By Design",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "🎥 Project By Design (Videographer)"
+     },
+     {
+      "name_as_written": "Wilson Ebot Photography",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📸 Wilson Ebot Photography"
+     },
+     {
+      "name_as_written": "Saïd SBH",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📸 Saïd SBH"
+     },
+     {
+      "name_as_written": "NantesCapture 44",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📸 NantesCapture 44"
+     },
+     {
+      "name_as_written": "Coralie Moreau",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📸 Coralie Moreau"
+     },
+     {
+      "name_as_written": "La Case Corazon",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Call on behalf of La Case Corazon 😉"
+     }
+    ],
+    "features": [
+     {
+      "feature": "pre_party",
+      "quote": "Magical Pre-Party on Thursday",
+      "rationale": "The description advertises a pre-party before the main event on Thursday."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Over 40 hours of workshops",
+      "rationale": "Dance workshops are explicitly part of the programme."
+     },
+     {
+      "feature": "shows",
+      "quote": "Shows, animations",
+      "rationale": "Shows by artists are listed in the programme."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Shuttles from Nantes Airport to the event",
+      "rationale": "Shuttles from the airport to the event are offered."
+     },
+     {
+      "feature": "beach_party",
+      "quote": "Beach Party on the famous Place du Commando",
+      "rationale": "A beach party is explicitly announced."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "1 Room 100% Kizomba / Urban Kiz / Tarraxo / Semba",
+      "rationale": "The description lists several dance rooms, including a separate room for salsa and bachata."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Thursday: Bring the Color",
+      "rationale": "The description has a dedicated dress code section giving colours for each day."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Thursday: Bring the Color",
+      "rationale": "Each night has a dress theme, such as the colour theme for Thursday."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Partnership with nearby hotels for every budget!",
+      "rationale": "Partner hotels with a negotiated discount are recommended without being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

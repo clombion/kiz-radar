@@ -1,0 +1,13 @@
+{
+ "key_a": "p:joana@chryssoula+joana",
+ "key_b": "p:joanna@christina+joanna",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e76994928ad30418",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Joana and Joanna have different partners (chryssoula versus christina), and side A is stated with GB while side B is GR-only with events in Greece, so the evidence points to two artists whose names differ only by one letter."
+ }
+}

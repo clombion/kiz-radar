@@ -1,109 +1,116 @@
 {
- "batch": "event-16830",
- "events": [
-  {
-   "event_id": 16830,
-   "artists": [
-    {
-     "name_as_written": "DJ RENE AMPLO",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "▪️ DJ RENE AMPLO 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ BARTEF",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇱",
-     "source_line": "▪️ DJ BARTEF 🇵🇱"
-    },
-    {
-     "name_as_written": "DJ NUO",
-     "role": "dj",
-     "style": null,
-     "country": "🇺🇦",
-     "source_line": "▪️ DJ NUO 🇺🇦"
-    },
-    {
-     "name_as_written": "DJ NURLIVING",
-     "role": "dj",
-     "style": null,
-     "country": "🇰🇬",
-     "source_line": "▪️ DJ NURLIVING 🇰🇬"
-    },
-    {
-     "name_as_written": "DJ PZL",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇬",
-     "source_line": "▪️ DJ PZL 🇧🇬"
-    },
-    {
-     "name_as_written": "NICK & ALEX",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇦",
-     "source_line": "▪️ NICK & ALEX 🇨🇦"
-    },
-    {
-     "name_as_written": "DAMIR & LAURA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇰🇿🇳🇱",
-     "source_line": "▪️ DAMIR & LAURA 🇰🇿🇳🇱"
-    },
-    {
-     "name_as_written": "GIUSEPPE & KLAUDYNA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹🇵🇱",
-     "source_line": "▪️ GIUSEPPE & KLAUDYNA 🇮🇹🇵🇱"
-    },
-    {
-     "name_as_written": "STYLE BENDER CHAMPIONS",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "▪️ STYLE BENDER CHAMPIONS 🌍"
-    },
-    {
-     "name_as_written": "KIZZ RYDERS",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "▪️ KIZZ RYDERS"
-    },
-    {
-     "name_as_written": "Kizz Ryders",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "▪️ Only event passes directly bought at Kizz Ryders ticketlink are valid:"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Mind-blowing workshops & bootcamps",
-     "rationale": "The description promises workshops as part of the event."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Mind-blowing workshops & bootcamps",
-     "rationale": "The description mentions bootcamps, which are intensive training sessions."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Party",
-     "rationale": "The schedule lists a Pre-Party on Thursday before the main Friday program."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "16:00 – 20:00 – 🤝 Social",
-     "rationale": "The Saturday and Sunday schedules include an afternoon social from 16:00 to 20:00."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "23e5863fab550922",
+ "answer": {
+  "batch": "event-16830",
+  "events": [
+   {
+    "event_id": 16830,
+    "artists": [
+     {
+      "name_as_written": "DJ RENE AMPLO",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "▪️ DJ RENE AMPLO 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ BARTEF",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇱",
+      "source_line": "▪️ DJ BARTEF 🇵🇱"
+     },
+     {
+      "name_as_written": "DJ NUO",
+      "role": "dj",
+      "style": null,
+      "country": "🇺🇦",
+      "source_line": "▪️ DJ NUO 🇺🇦"
+     },
+     {
+      "name_as_written": "DJ NURLIVING",
+      "role": "dj",
+      "style": null,
+      "country": "🇰🇬",
+      "source_line": "▪️ DJ NURLIVING 🇰🇬"
+     },
+     {
+      "name_as_written": "DJ PZL",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇬",
+      "source_line": "▪️ DJ PZL 🇧🇬"
+     },
+     {
+      "name_as_written": "NICK & ALEX",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇦",
+      "source_line": "▪️ NICK & ALEX 🇨🇦"
+     },
+     {
+      "name_as_written": "DAMIR & LAURA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇰🇿🇳🇱",
+      "source_line": "▪️ DAMIR & LAURA 🇰🇿🇳🇱"
+     },
+     {
+      "name_as_written": "GIUSEPPE & KLAUDYNA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹🇵🇱",
+      "source_line": "▪️ GIUSEPPE & KLAUDYNA 🇮🇹🇵🇱"
+     },
+     {
+      "name_as_written": "STYLE BENDER CHAMPIONS",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "▪️ STYLE BENDER CHAMPIONS 🌍"
+     },
+     {
+      "name_as_written": "KIZZ RYDERS",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "▪️ KIZZ RYDERS"
+     },
+     {
+      "name_as_written": "Kizz Ryders",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "▪️ Only event passes directly bought at Kizz Ryders ticketlink are valid:"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Mind-blowing workshops & bootcamps",
+      "rationale": "The description promises workshops as part of the event."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "Mind-blowing workshops & bootcamps",
+      "rationale": "Bootcamps are explicitly mentioned as part of the event."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-Party",
+      "rationale": "The Thursday schedule lists a Pre-Party before the main event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "16:00 – 20:00 – 🤝 Social",
+      "rationale": "The Saturday and Sunday schedules include an afternoon social from 16:00 to 20:00."
+     }
+    ]
+   }
+  ]
+ }
 }

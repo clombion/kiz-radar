@@ -1,108 +1,99 @@
 {
- "batch": "event-16815",
- "events": [
-  {
-   "event_id": 16815,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 225.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🎯 Full Pass and full board stay, in a triple/quadruple room: 225€"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 240.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🎯 Full Pass and full board stay, in a double room: 240€"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 300.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🎯 Full Pass and full board stay, in a double room for single use: 300€"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 60.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🎯 Single Full Pass: 60€"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "The price of the Packages will have the following increases:",
-    "– increase in May 2026 ➡️ +10€",
-    "– increase in September 2026 ➡️ +10€",
-    "– increase in November 2026 ➡️ +10€"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:44:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "7a1843474de3b124",
+ "answer": {
+  "batch": "event-16815",
+  "events": [
+   {
+    "event_id": 16815,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 225.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "🎯 Full Pass and full board stay, in a triple/quadruple room: 225€"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 240.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "🎯 Full Pass and full board stay, in a double room: 240€"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 300.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "🎯 Full Pass and full board stay, in a double room for single use: 300€"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 60.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "🎯 Single Full Pass: 60€"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "The price of the Packages will have the following increases:",
+     "– increase in May 2026 ➡️ +10€",
+     "– increase in September 2026 ➡️ +10€",
+     "– increase in November 2026 ➡️ +10€"
+    ]
+   }
+  ]
+ }
 }

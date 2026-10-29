@@ -1,0 +1,13 @@
+{
+ "key_a": "p:florian@audrey+florian",
+ "key_b": "p:floriansensacion",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2339aacead6bcadb",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the common first name 'Florian' in a couple with Audrey, with no mentions of its own to check, while side B is 'DJ Florian Sensacion' in France; both share France, but nothing links Audrey to B, so the evidence does not settle whether they are the same person."
+ }
+}

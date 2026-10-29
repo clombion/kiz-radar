@@ -1,28 +1,35 @@
 {
- "batch": "event-16160",
- "events": [
-  {
-   "event_id": 16160,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Dance workshops (Kizomba, Semba, Kuduro & traditional dances)"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Dance workshops (Kizomba, Semba, Kuduro & traditional dances)"
-    },
-    {
-     "genre": "kuduro",
-     "genre_as_written": "Kuduro",
-     "quote": "Dance workshops (Kizomba, Semba, Kuduro & traditional dances)"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "8c8782ace97dd743",
+ "answer": {
+  "batch": "event-16160",
+  "events": [
+   {
+    "event_id": 16160,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Dance workshops (Kizomba, Semba, Kuduro & traditional dances)"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Dance workshops (Kizomba, Semba, Kuduro & traditional dances)"
+     },
+     {
+      "genre": "kuduro",
+      "genre_as_written": "Kuduro",
+      "quote": "Dance workshops (Kizomba, Semba, Kuduro & traditional dances)"
+     }
+    ]
+   }
+  ]
+ }
 }

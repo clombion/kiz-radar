@@ -1,24 +1,36 @@
 {
- "batch": "event-16595",
- "events": [
-  {
-   "event_id": 16595,
-   "artists": [
-    {
-     "name_as_written": "LatinMotion & MamboCity",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "LatinMotion & MamboCity proudly come together again to bring you their BIRMINGHAM | SALSA | BACHATA | KIZOMBA | CUBAN | DANCE FESTIVAL"
-    }
-   ],
-   "features": [
-    {
-     "feature": "partner_hotel",
-     "quote": "guests can now reserve bedrooms directly with us",
-     "rationale": "The organisers offer hotel bedroom reservations through a form with negotiated bed and breakfast room rates, without the rooms being part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:29:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "5d6dd44917330511",
+ "answer": {
+  "batch": "event-16595",
+  "events": [
+   {
+    "event_id": 16595,
+    "artists": [
+     {
+      "name_as_written": "LatinMotion & MamboCity",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "LatinMotion & MamboCity proudly come together again to bring you their BIRMINGHAM | SALSA | BACHATA | KIZOMBA | CUBAN | DANCE FESTIVAL"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "The Eastside Rooms Conference Centre & Aloft Birmingham Eastside Hotel",
+      "rationale": "The event venue is the same complex as the hotel where guests can reserve bedrooms."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Hotel Reservations: guests can now reserve bedrooms directly with us.",
+      "rationale": "The organisers offer negotiated bed and breakfast room rates at the hotel, which are separate from the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,140 +1,147 @@
 {
- "batch": "event-15607",
- "events": [
-  {
-   "event_id": 15607,
-   "artists": [
-    {
-     "name_as_written": "DJ Ichigo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅DJ Ichigo"
-    },
-    {
-     "name_as_written": "DJ Sorin",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅ DJ Sorin"
-    },
-    {
-     "name_as_written": "DJ Hero",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅ DJ Hero"
-    },
-    {
-     "name_as_written": "DJ Willy G",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅ DJ Willy G"
-    },
-    {
-     "name_as_written": "DJ Beck",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅ DJ Beck"
-    },
-    {
-     "name_as_written": "Fajul Kizztalk & Tabea",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Fajul Kizztalk & Tabea"
-    },
-    {
-     "name_as_written": "Dadié Sacko",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Dadié Sacko"
-    },
-    {
-     "name_as_written": "Asia Voronova",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Asia Voronova"
-    },
-    {
-     "name_as_written": "Hassou",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Hassou"
-    },
-    {
-     "name_as_written": "Donald Willson",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Donald Willson"
-    },
-    {
-     "name_as_written": "Agnes",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Agnes"
-    },
-    {
-     "name_as_written": "Hassu",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Hassu"
-    },
-    {
-     "name_as_written": "Kali",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✅ Kali"
-    },
-    {
-     "name_as_written": "Hassu",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📸 Photographer Hassu"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All in one Hotel Meersburg",
-     "rationale": "The description names the event as an all-in-one hotel event, so the parties take place in the hotel where dancers stay."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops & Bootcamps",
-     "rationale": "The programme lists workshops as part of the event."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Workshops & Bootcamps",
-     "rationale": "Bootcamps are listed as part of the event programme."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Masterclass (separat buchbar)",
-     "rationale": "A masterclass is listed in the programme on Sunday."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "16:00 -20:00Social",
-     "rationale": "A daytime social is scheduled on Sunday afternoon."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Book your Room on this Email & password",
-     "rationale": "Rooms are booked through the venue hotel with a dedicated booking access, which suggests a negotiated hotel rate outside the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "4244bcca1ed1b1dd",
+ "answer": {
+  "batch": "event-15607",
+  "events": [
+   {
+    "event_id": 15607,
+    "artists": [
+     {
+      "name_as_written": "DJ Ichigo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅DJ Ichigo"
+     },
+     {
+      "name_as_written": "DJ Sorin",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅ DJ Sorin"
+     },
+     {
+      "name_as_written": "DJ Hero",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅ DJ Hero"
+     },
+     {
+      "name_as_written": "DJ Willy G",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅ DJ Willy G"
+     },
+     {
+      "name_as_written": "DJ Beck",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅ DJ Beck"
+     },
+     {
+      "name_as_written": "Fajul Kizztalk & Tabea",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Fajul Kizztalk & Tabea"
+     },
+     {
+      "name_as_written": "Dadié Sacko",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Dadié Sacko"
+     },
+     {
+      "name_as_written": "Asia Voronova",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Asia Voronova"
+     },
+     {
+      "name_as_written": "Hassou",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Hassou"
+     },
+     {
+      "name_as_written": "Donald Willson",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Donald Willson"
+     },
+     {
+      "name_as_written": "Agnes",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Agnes"
+     },
+     {
+      "name_as_written": "Hassu",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Hassu"
+     },
+     {
+      "name_as_written": "Kali",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✅ Kali"
+     },
+     {
+      "name_as_written": "Hassu",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📸 Photographer Hassu"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All in one Hotel Meersburg",
+      "rationale": "The description states the event is held in an all-in-one hotel where guests book their rooms."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Book your Room on this Email",
+      "rationale": "Participants are directed to book rooms at the main hotel, which is recommended for the event."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Workshops & Bootcamps",
+      "rationale": "The event lists workshops and bootcamps as part of the programme."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "Bootcamps",
+      "rationale": "Bootcamps are listed among the event offerings."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "16:00 -20:00Social",
+      "rationale": "A social is scheduled in the afternoon on Sunday."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Masterclass (separat buchbar)",
+      "rationale": "A separately bookable masterclass is part of the programme."
+     }
+    ]
+   }
+  ]
+ }
 }

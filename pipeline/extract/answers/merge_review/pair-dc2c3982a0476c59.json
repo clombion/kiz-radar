@@ -1,0 +1,13 @@
+{
+ "key_a": "p:lena@dance",
+ "key_b": "p:lena@elvis+lena",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "dc2c3982a0476c59",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are 'Lena' with the same country (Canada) and no other shared evidence, but side A is a solo teacher with no partners while side B is listed as a couple with elvis, and the common first name is weak evidence on its own, so the evidence does not settle whether they are one person."
+ }
+}

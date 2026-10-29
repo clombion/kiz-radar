@@ -16,7 +16,7 @@ import io
 import re
 from collections.abc import Iterable
 from pathlib import Path
-from typing import Annotated, ClassVar, Literal, NewType, Self
+from typing import Annotated, ClassVar, Literal, NewType, Self, cast, get_args, get_origin
 
 from pydantic import (
     AfterValidator,
@@ -34,6 +34,7 @@ from pydantic import (
     WrapSerializer,
     model_validator,
 )
+from pydantic.fields import FieldInfo
 
 from pipeline import data, files, tables
 from pipeline.enums import (
@@ -60,7 +61,7 @@ type Json = dict[str, Json] | list[Json] | str | int | float | bool | None
 JSON: TypeAdapter[Json] = TypeAdapter(Json)  # any JSON text, as its value
 
 type PassName = Literal['extract', 'rooms_genres', 'prices']  # the extraction passes (pipeline/prompt.py)
-type Name = PassName | Literal['first_read']  # every prompt, by name
+type Name = PassName | Literal['first_read', 'merge_review']  # every prompt, by name
 
 DIGITS = 16  # a hash (a prompt's, the links a search was of) is the first DIGITS hex digits of a SHA-256
 SHORT = 8  # a recipe's version names its file by this many
@@ -72,7 +73,16 @@ def digest(data: str | bytes, digits: int = DIGITS) -> str:
 
 
 Text = Annotated[str, Field(min_length=1)]
-Quote = Annotated[str, Field(min_length=1, max_length=300)]
+
+
+class Verbatim:
+    """The mark of a text an answer copies from the festival's own words: copied() finds every one, which the
+    checker looks for in them (check_output.found_in)."""
+
+
+VERBATIM = Verbatim()
+Copied = Annotated[str, Field(min_length=1), VERBATIM]  # a span copied as it is written
+Quote = Annotated[str, Field(min_length=1, max_length=300), VERBATIM]  # a span copied as it is written, a line at most
 Currency = Annotated[str, Field(pattern=r'^[A-Z]{3}$')]  # an ISO 4217 code
 RealDay = NewType('RealDay', str)  # a day of the calendar, YYYY-MM-DD or MM-DD; only real_day makes one
 
@@ -183,6 +193,36 @@ class Record(BaseModel):
         return self.model_dump_json(indent=1) + '\n'
 
 
+def marked(annotation: object) -> bool:
+    """Whether a field's type is a Verbatim text, alone, optional or in a tuple."""
+    args: tuple[object, ...] = get_args(annotation)
+    if get_origin(annotation) is Annotated:
+        return any(isinstance(m, Verbatim) for m in args[1:]) or marked(args[0])
+    return any(marked(a) for a in args if a is not Ellipsis)
+
+
+def verbatim(info: FieldInfo) -> bool:
+    """Whether a field is a Verbatim text: its own mark is in its metadata, one inside an optional or a tuple in its
+    annotation."""
+    meta: list[object] = info.metadata
+    return any(isinstance(m, Verbatim) for m in meta) or marked(info.annotation)
+
+
+def copied(record: BaseModel, where: str = '') -> list[tuple[str, str]]:
+    """(where, text) for every Verbatim text of the record and the records it holds, by field path."""
+    out: list[tuple[str, str]] = []
+    for name, info in type(record).model_fields.items():
+        here, value = f'{where}.{name}' if where else name, cast('object', getattr(record, name))
+        many = isinstance(value, tuple)
+        values: tuple[object, ...] = cast('tuple[object, ...]', value) if many else (value,)
+        if verbatim(info):
+            out += [(here, v) for v in values if isinstance(v, str)]
+        for i, v in enumerate(values):
+            if isinstance(v, BaseModel):
+                out += copied(v, f'{here}[{i}]' if many else here)
+    return out
+
+
 # ---- the extraction passes' answers (pipeline/extract/prompts/)
 
 
@@ -199,12 +239,32 @@ class Batch[E: Entry](Record):
     events: tuple[E, ...]
 
 
+class Provenance(Record):
+    """Who answered a question, to which prompt, when, and of what."""
+
+    prompt: Hash
+    model: Model
+    answered_at: Stamp
+    answered_by: Text
+    inputs: Hash | None = Field(
+        description='The digest of the message asked (prompt.Prompt.message), the festival as the pass asked about '
+        'it: the answer is of the festival as it is while the message would be the same. None for a batch of '
+        'several festivals, asked before each answer kept the message it answered.'
+    )
+
+
+class Answered[E: Entry](Provenance):
+    """An answer file (answers/<pass>/*.json): the pass's answer, and where it comes from, written together."""
+
+    answer: Batch[E]
+
+
 class Artist(Record):
-    name_as_written: Text
+    name_as_written: Copied
     role: Role
-    style: str | None
-    country: str | None
-    source_line: Text
+    style: Copied | None
+    country: Copied | None
+    source_line: Copied
 
 
 class FeatureFound(Record):
@@ -224,7 +284,7 @@ class Rooms(Record):
 
 
 class Room(Record):
-    name_as_written: str | None
+    name_as_written: Copied | None
     kind: RoomKind
     genres: tuple[Genre, ...]
     quote: Quote
@@ -232,7 +292,7 @@ class Room(Record):
 
 class GenreFound(Record):
     genre: Genre
-    genre_as_written: Text
+    genre_as_written: Copied
     quote: Quote
 
 
@@ -264,17 +324,23 @@ class Alt(Record):
     currency: Currency
 
 
+class Sale(Record):
+    """How a tier's price is sold before the festival: the days it applies, how many tickets it holds, and whether
+    the description calls it the price now."""
+
+    from_: Day | None = Field(validation_alias='from', serialization_alias='from')
+    until: Day | None
+    quantity: Count | None
+    current: bool
+
+
 class PricedTier(Record):
     amount: Positive
     currency: Currency
     fee: Positive | None
     alt: Alt | None
-    from_: Day | None = Field(validation_alias='from', serialization_alias='from')
-    until: Day | None
-    quantity: Count | None
-    door: bool
+    sale: Sale | None = Field(description='How the price is sold before the festival; null for the price at the door.')
     sold_out: bool
-    current: bool
     quote: Quote
 
 
@@ -303,19 +369,58 @@ class AskedPrices(Asked):
     styles: tuple[Style, ...]
 
 
-class Decision(Record):
-    pair_id: int
+class ReviewMention(Record):
+    """A mention of one side of a pair, as the merge review is asked about it."""
+
+    event_id: int
+    event_country: str | None
+    role: Role
+    name_as_written: str
+    style: str | None
+    country: str | None
+    source_line: str
+
+
+class Pair(Record):
+    """Two artist keys in key order, so that a pair is written one way; a key with itself for a single name that may
+    be several people."""
+
     key_a: str
     key_b: str
+
+    @model_validator(mode='after')
+    def keys_in_order(self) -> Self:
+        if self.key_a > self.key_b:
+            raise ValueError('a pair is written in key order, key_a first, so that it is written one way')
+        return self
+
+
+class MergeQuestion(Pair):
+    """A pair of artist keys that may be one artist, and what weighs on it (artist_merge_reviews)."""
+
+    name_a: str
+    name_b: str
+    reason: MergeReason | None = Field(
+        description='Why the matching rules flagged the pair; null for a pair that is '
+        'no candidate now, reviewed again because a review decided it.'
+    )
+    evidence: str
+    a: tuple[ReviewMention, ...]
+    b: tuple[ReviewMention, ...]
+
+
+class MergeAnswer(Record):
+    """Whether a pair of artist keys is one artist."""
+
     decision: MergeDecision
     rationale: Annotated[str, Field(min_length=10)]
 
 
-class MergeReview(Record):
-    """Whether each candidate pair of artists is one artist (answers/merge_review/)."""
+class Reviewed(Provenance, Pair):
+    """A merge review's answer file (answers/merge_review/pair-<digest>.json): the pair, the answer, and where it comes
+    from; a model claim on the pair while it answers the current prompt (claims.model)."""
 
-    batch: str
-    decisions: tuple[Decision, ...]
+    answer: MergeAnswer
 
 
 # ---- a ticket page's log (pipeline/tickets.py)
@@ -425,12 +530,24 @@ class FirstReadAnswer(Record):
     rule_quotes: tuple[Quote, ...]
 
 
-class ReadHeader(Record):
-    """The festival a first read is of, as it was when the read was made."""
+class ReadFestival(Record):
+    """A festival as a first read is asked about it."""
 
     event_id: int
     title: Text
     start_date: Date = Field(description="The festival's first day, which a date without a year is placed before.")
+    end_date: Date
+    country: str | None
+    styles: tuple[Style, ...] = Field(
+        description="The festival's dance styles when the read was made (prices.styles), which a pass's style is "
+        'one of.'
+    )
+    description: str = Field(description="The festival's description this read was made with.")
+
+
+class ReadHeader(ReadFestival):
+    """The festival a first read is of, as it was when the read was made."""
+
     read_by: Text = Field(description='agent, or the models that agreed.')
     prompt: Hash = Field(
         description='The hash of the request the read answered (pipeline/prompts/asked/<hash>.md); a read to '
@@ -440,15 +557,25 @@ class ReadHeader(Record):
         description="The 'at' of the logged read (tickets/log/<event_id>.jsonl) whose tickets this read maps; every "
         'one of them is in a tier or skipped.'
     )
-    styles: tuple[Style, ...] = Field(
-        description="The festival's dance styles when the read was made (prices.styles), which a pass's style is "
-        'one of.'
-    )
-    description: str = Field(description="The festival's description this read was made with.")
 
 
 class FirstRead(FirstReadAnswer, ReadHeader):
     """A festival's first read of its ticket page: which pass each ticket is (tickets/reads/<event_id>.json)."""
+
+
+class QuestionTicket(Record):
+    """A ticket of the page, as a first read is asked about it."""
+
+    key: Text
+    name: Text
+    price: Text
+    sold_out: bool
+
+
+class ReadQuestion(ReadFestival):
+    """A festival and its page's tickets, as a first read is asked about them."""
+
+    tickets: tuple[QuestionTicket, ...]
 
 
 class Dated(BaseModel):
@@ -720,7 +847,7 @@ def keys_text(value: tuple[str, ...]) -> str:
 type Keys = Annotated[tuple[str, ...], BeforeValidator(split_keys), PlainSerializer(keys_text, return_type=str)]  # a;b
 
 
-ANSWERS = 'pipeline/extract/answers'  # each pass's answers, a folder per pass, and their log
+ANSWERS = 'pipeline/extract/answers'  # each pass's answers, a folder per pass
 
 
 class CsvRow(BaseModel):
@@ -834,26 +961,6 @@ class StatusRow(CsvRow):
     first_read: FirstReadState
     sales: Blank[Sales]
     page: Blank[Url]
-
-
-class MergeRow(CsvRow):
-    """A decision on whether two artist records are one artist."""
-
-    FILE = 'pipeline/extract/merges.csv'
-
-    key_a: str
-    key_b: str
-    decision: MergeDecision
-    prompt: (
-        Hash  # the review prompt that decided it (answers/log.csv); a decision by hand is a claim (pipeline/claims.py)
-    )
-    note: str
-
-    @model_validator(mode='after')
-    def keys_in_order(self) -> Self:
-        if self.key_a > self.key_b:
-            raise ValueError('a pair is written in key order, key_a first, so that it is written one way')
-        return self
 
 
 class PlanRow(CsvRow):
@@ -1000,18 +1107,6 @@ class Group(CsvRow):
     members: Keys
     aliases: Keys
     note: str
-
-
-class Logged(CsvRow):
-    """Who answered a file of a pass's answers (its path from ANSWERS), when, with which model and prompt."""
-
-    FILE = f'{ANSWERS}/log.csv'
-
-    file: Text
-    answered_at: Stamp
-    model: Model
-    prompt: Hash
-    answered_by: Text
 
 
 class Suggestion(CsvRow):

@@ -1,110 +1,107 @@
 {
- "batch": "event-14536",
- "events": [
-  {
-   "event_id": 14536,
-   "artists": [
-    {
-     "name_as_written": "GIORGIO ROD",
-     "role": "teacher",
-     "style": "Bachata Mix Style, Cuban Salsa",
-     "country": null,
-     "source_line": "✔️ GIORGIO ROD (Bachata Mix Style, Cuban Salsa)"
-    },
-    {
-     "name_as_written": "ALEX & TIPHAINE",
-     "role": "teacher",
-     "style": "Suelta Salsa and Rueda de Casino",
-     "country": null,
-     "source_line": "✔️ ALEX & TIPHAINE (Suelta Salsa and Rueda de Casino)"
-    },
-    {
-     "name_as_written": "FRANCK & LAURE DE ROUEN",
-     "role": "teacher",
-     "style": "Cuban Salsa/Puerto Rican Salsa",
-     "country": null,
-     "source_line": "✔️ FRANCK & LAURE DE ROUEN (Cuban Salsa/Puerto Rican Salsa)"
-    },
-    {
-     "name_as_written": "FRED MAESTRO",
-     "role": "teacher",
-     "style": "Urbankiz",
-     "country": null,
-     "source_line": "✔️ FRED MAESTRO (Urbankiz)"
-    },
-    {
-     "name_as_written": "LUDIVINE LUDIDANSE",
-     "role": "teacher",
-     "style": "Lady Styling, Heels",
-     "country": null,
-     "source_line": "✔️ LUDIVINE LUDIDANSE (Lady Styling, Heels)"
-    },
-    {
-     "name_as_written": "DJ GIORGIO ROD",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ GIORGIO ROD"
-    },
-    {
-     "name_as_written": "DJ ALEX SALSERITO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ ALEX SALSERITO"
-    },
-    {
-     "name_as_written": "DJ TAGADA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ TAGADA"
-    },
-    {
-     "name_as_written": "Olivier “Oxyde”",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "⭐Olivier “Oxyde”⭐"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "S B K Dance Classes",
-     "rationale": "The description lists SBK dance classes as part of the weekend."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Classes in the morning, afternoon, and evening!!!!",
-     "rationale": "Classes are scheduled across the day as part of the event."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "A team of Dance Taxis",
-     "rationale": "A team of dance taxis is explicitly offered."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Friday Night: Disco Theme",
-     "rationale": "The Friday night party has a stated disco theme."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Saturday Night: Casino Theme Royal",
-     "rationale": "The Saturday night party has a stated casino theme."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Dress Code",
-     "rationale": "A dress code section is given for the event."
-    },
-    {
-     "feature": "camping",
-     "quote": "Create your Cottage",
-     "rationale": "Accommodation is in cottages at the Center Parcs park, which counts as bungalow-style lodging."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:22:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "6954a2900e29414f",
+ "answer": {
+  "batch": "event-14536",
+  "events": [
+   {
+    "event_id": 14536,
+    "artists": [
+     {
+      "name_as_written": "GIORGIO ROD",
+      "role": "teacher",
+      "style": "Bachata Mix Style, Cuban Salsa",
+      "country": null,
+      "source_line": "✔️ GIORGIO ROD (Bachata Mix Style, Cuban Salsa)"
+     },
+     {
+      "name_as_written": "ALEX & TIPHAINE",
+      "role": "teacher",
+      "style": "Suelta Salsa and Rueda de Casino",
+      "country": null,
+      "source_line": "✔️ ALEX & TIPHAINE (Suelta Salsa and Rueda de Casino)"
+     },
+     {
+      "name_as_written": "FRANCK & LAURE DE ROUEN",
+      "role": "teacher",
+      "style": "Cuban Salsa/Puerto Rican Salsa",
+      "country": null,
+      "source_line": "✔️ FRANCK & LAURE DE ROUEN (Cuban Salsa/Puerto Rican Salsa)"
+     },
+     {
+      "name_as_written": "FRED MAESTRO",
+      "role": "teacher",
+      "style": "Urbankiz",
+      "country": null,
+      "source_line": "✔️ FRED MAESTRO (Urbankiz)"
+     },
+     {
+      "name_as_written": "LUDIVINE LUDIDANSE",
+      "role": "teacher",
+      "style": "Lady Styling, Heels",
+      "country": null,
+      "source_line": "✔️ LUDIVINE LUDIDANSE (Lady Styling, Heels)"
+     },
+     {
+      "name_as_written": "DJ GIORGIO ROD",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ GIORGIO ROD"
+     },
+     {
+      "name_as_written": "DJ ALEX SALSERITO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ ALEX SALSERITO"
+     },
+     {
+      "name_as_written": "DJ TAGADA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ TAGADA"
+     },
+     {
+      "name_as_written": "Olivier “Oxyde”",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "⭐Olivier “Oxyde”⭐"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "S B K Dance Classes",
+      "rationale": "The description lists dance classes as part of the weekend."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Friday Night: Disco Theme",
+      "rationale": "The evening is given a disco theme, which is a themed night."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Dress Code",
+      "rationale": "A dress code section is stated for the event."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "A team of Dance Taxis",
+      "rationale": "The event offers a team of dance taxis, which are taxi dancers."
+     },
+     {
+      "feature": "camping",
+      "quote": "Accommodation: Center Parcs Les Haut de Bruyere",
+      "rationale": "Center Parcs accommodation is holiday cottages, which counts as bungalow-style lodging."
+     }
+    ]
+   }
+  ]
+ }
 }

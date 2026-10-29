@@ -1,0 +1,13 @@
+{
+ "key_a": "p:elina@daniel+elina",
+ "key_b": "p:elina@danielschauenburg+elina",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2c62cc2953fad9af",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are 'Elina' with the same countries (CZ, DE), a shared Switzerland event, and a partner named Daniel, but the partner keys differ ('daniel@daniel+elina' vs 'danielschauenburg'), so it is not clear the same Daniel is involved, and 'Elina' is a common first name."
+ }
+}

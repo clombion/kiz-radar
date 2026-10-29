@@ -1,28 +1,35 @@
 {
- "batch": "event-16860",
- "events": [
-  {
-   "event_id": 16860,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "celebration of Kizomba, Urban Kiz & Tarraxo"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "celebration of Kizomba, Urban Kiz & Tarraxo"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "celebration of Kizomba, Urban Kiz & Tarraxo"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "9cf360c2c3ec0e66",
+ "answer": {
+  "batch": "event-16860",
+  "events": [
+   {
+    "event_id": 16860,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "celebration of Kizomba, Urban Kiz & Tarraxo"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "celebration of Kizomba, Urban Kiz & Tarraxo"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "celebration of Kizomba, Urban Kiz & Tarraxo"
+     }
+    ]
+   }
+  ]
+ }
 }

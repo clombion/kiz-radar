@@ -1,312 +1,267 @@
 {
- "batch": "event-18489",
- "events": [
-  {
-   "event_id": 18489,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 100.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Buy your full pass for €100."
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 117.5,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Single room €117.50"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 143.5,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€143.50"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 169.5,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€169.50"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 132.5,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Double room €132.50"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 184.5,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€184.50"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 236.5,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€236.50"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 3,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 176.5,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Triple room €176.50"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 3,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 254.5,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€254.50"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 3,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 332.5,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€332.50"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 4,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 220.5,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Quadruple room €220.50"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 4,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 324.5,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€324.50"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 4,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 532.5,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€532.50"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Full passes will increase by €5 each month."
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:45:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "2218cc9ff9b00b4c",
+ "answer": {
+  "batch": "event-18489",
+  "events": [
+   {
+    "event_id": 18489,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 100.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Buy your full pass for €100."
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "B&B",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 117.5,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Single room €117.50 €143.50 €169.50"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "Half board",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 143.5,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Single room €117.50 €143.50 €169.50"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "Full board",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 169.5,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Single room €117.50 €143.50 €169.50"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "B&B",
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 132.5,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Double room €132.50 €184.50 €236.50"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "Half board",
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 184.5,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Double room €132.50 €184.50 €236.50"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "Full board",
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 236.5,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Double room €132.50 €184.50 €236.50"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "B&B",
+      "group_size": 3,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 176.5,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Triple room €176.50 €254.50 €332.50"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "Half board",
+      "group_size": 3,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 254.5,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Triple room €176.50 €254.50 €332.50"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "Full board",
+      "group_size": 3,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 332.5,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Triple room €176.50 €254.50 €332.50"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "B&B",
+      "group_size": 4,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 220.5,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Quadruple room €220.50 €324.50 €532.50"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "Half board",
+      "group_size": 4,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 324.5,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Quadruple room €220.50 €324.50 €532.50"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "Full board",
+      "group_size": 4,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 532.5,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Quadruple room €220.50 €324.50 €532.50"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Full passes will increase by €5 each month."
+    ]
+   }
+  ]
+ }
 }

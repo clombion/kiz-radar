@@ -1,12 +1,19 @@
 {
- "batch": "event-16150",
- "events": [
-  {
-   "event_id": 16150,
-   "passes": [],
-   "rule_quotes": [
-    "Prices will increase regularly, secure your pass before the next stage opens."
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:43:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "db9b7e815f988ba7",
+ "answer": {
+  "batch": "event-16150",
+  "events": [
+   {
+    "event_id": 16150,
+    "passes": [],
+    "rule_quotes": [
+     "Prices will increase regularly, secure your pass before the next stage opens."
+    ]
+   }
+  ]
+ }
 }

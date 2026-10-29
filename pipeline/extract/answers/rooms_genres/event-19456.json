@@ -1,33 +1,40 @@
 {
- "batch": "event-19456",
- "events": [
-  {
-   "event_id": 19456,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "BACHATA ARTISTS"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA ARTISTS"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "SALSA ARTISTS"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "BRAZILIAN ZOUK",
-     "quote": "BRAZILIAN ZOUK ARTISTS"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "259270a26d457fbb",
+ "answer": {
+  "batch": "event-19456",
+  "events": [
+   {
+    "event_id": 19456,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "BACHATA ARTISTS"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "KIZOMBA ARTISTS"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "SALSA ARTISTS"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Brazilian Zouk",
+      "quote": "BRAZILIAN ZOUK ARTISTS"
+     }
+    ]
+   }
+  ]
+ }
 }

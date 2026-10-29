@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sara@fanio+sara",
+ "key_b": "p:sara@renato+sara",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6ff14f66d214587b",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two records have different partners (fanio on side A, renato on side B), and the only shared traits are a common first name and an overlapping country (PT) and event country (France), which are weak evidence on their own, so the evidence points to two different people rather than one."
+ }
+}

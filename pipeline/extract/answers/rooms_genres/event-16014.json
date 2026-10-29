@@ -1,55 +1,62 @@
 {
- "batch": "event-16014",
- "events": [
-  {
-   "event_id": 16014,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Pool Room",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "afternoon socials in the Pool Room"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "the most international holiday week of Kizomba"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kizz",
-     "quote": "Urban Kizz, Tarraxo"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Tarraxo, Guetto Zouk"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Guetto Zouk",
-     "quote": "Tarraxo, Guetto Zouk"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Docueur",
-     "quote": "Guetto Zouk, Docueur"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Docueur, Semba and Konpa"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Semba and Konpa"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "04190212e2e9b7fa",
+ "answer": {
+  "batch": "event-16014",
+  "events": [
+   {
+    "event_id": 16014,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Pool Room",
+      "kind": "party",
+      "genres": [],
+      "quote": "afternoon socials in the Pool Room"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "the most international holiday week of Kizomba"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kizz",
+      "quote": "Urban Kizz"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Tarraxo"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Guetto Zouk",
+      "quote": "Guetto Zouk"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Docueur",
+      "quote": "Docueur"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Semba"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Konpa"
+     }
+    ]
+   }
+  ]
+ }
 }

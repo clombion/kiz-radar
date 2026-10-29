@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tpeak",
+ "key_b": "p:tpeak@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "0661fa48f513734f",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are DJs with the same distinctive stage name T'Peak (DJ prefix and apostrophe/case variants only), both stated with the same countries FR and GP, and the events overlap in France and Spain; side A's partners (dielika, dje, djelika with tpeak) are not contradicted by side B's events, so one artist is the most likely reading."
+ }
+}

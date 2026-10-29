@@ -1,0 +1,13 @@
+{
+ "key_a": "p:franky@franky+kerstin",
+ "key_b": "p:frankykizzfly",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7f552e43232445b5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only link is the first name and a partner named Kerstin on both sides, but each side's couple key is built from its own name, so the partner records may not be the same, and the events are in France versus Germany and Switzerland, leaving the evidence unsettled."
+ }
+}

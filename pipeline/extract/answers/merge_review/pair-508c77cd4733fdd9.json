@@ -1,0 +1,13 @@
+{
+ "key_a": "p:pedro@ana+pedro",
+ "key_b": "p:pedro@ines+pedro",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "508c77cd4733fdd9",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two Pedro records have different partners (Ana versus Ines), and their stated countries and event countries only partly overlap (Switzerland versus France), so the evidence points to two different people sharing a common first name."
+ }
+}

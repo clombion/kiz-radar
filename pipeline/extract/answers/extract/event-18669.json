@@ -1,88 +1,95 @@
 {
- "batch": "event-18669",
- "events": [
-  {
-   "event_id": 18669,
-   "artists": [
-    {
-     "name_as_written": "DJ Diablo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Diablo • DJ Miky Mike • DJ Dedinho • DJ Chad • DJ Jkee • DJ Stompy • DJ Lass"
-    },
-    {
-     "name_as_written": "DJ Miky Mike",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Diablo • DJ Miky Mike • DJ Dedinho • DJ Chad • DJ Jkee • DJ Stompy • DJ Lass"
-    },
-    {
-     "name_as_written": "DJ Dedinho",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Diablo • DJ Miky Mike • DJ Dedinho • DJ Chad • DJ Jkee • DJ Stompy • DJ Lass"
-    },
-    {
-     "name_as_written": "DJ Chad",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Diablo • DJ Miky Mike • DJ Dedinho • DJ Chad • DJ Jkee • DJ Stompy • DJ Lass"
-    },
-    {
-     "name_as_written": "DJ Jkee",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Diablo • DJ Miky Mike • DJ Dedinho • DJ Chad • DJ Jkee • DJ Stompy • DJ Lass"
-    },
-    {
-     "name_as_written": "DJ Stompy",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Diablo • DJ Miky Mike • DJ Dedinho • DJ Chad • DJ Jkee • DJ Stompy • DJ Lass"
-    },
-    {
-     "name_as_written": "DJ Lass",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Diablo • DJ Miky Mike • DJ Dedinho • DJ Chad • DJ Jkee • DJ Stompy • DJ Lass"
-    },
-    {
-     "name_as_written": "Pao Lou & Margaux",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Pao Lou & Margaux • Pidjay & Enora • Heneco & Mame • Lna Carla"
-    },
-    {
-     "name_as_written": "Pidjay & Enora",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Pao Lou & Margaux • Pidjay & Enora • Heneco & Mame • Lna Carla"
-    },
-    {
-     "name_as_written": "Heneco & Mame",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Pao Lou & Margaux • Pidjay & Enora • Heneco & Mame • Lna Carla"
-    },
-    {
-     "name_as_written": "Lna Carla",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Pao Lou & Margaux • Pidjay & Enora • Heneco & Mame • Lna Carla"
-    }
-   ],
-   "features": []
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:32:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "988a8dfcb0699400",
+ "answer": {
+  "batch": "event-18669",
+  "events": [
+   {
+    "event_id": 18669,
+    "artists": [
+     {
+      "name_as_written": "DJ Diablo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Diablo • DJ Miky Mike • DJ Dedinho • DJ Chad • DJ Jkee • DJ Stompy • DJ Lass"
+     },
+     {
+      "name_as_written": "DJ Miky Mike",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Diablo • DJ Miky Mike • DJ Dedinho • DJ Chad • DJ Jkee • DJ Stompy • DJ Lass"
+     },
+     {
+      "name_as_written": "DJ Dedinho",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Diablo • DJ Miky Mike • DJ Dedinho • DJ Chad • DJ Jkee • DJ Stompy • DJ Lass"
+     },
+     {
+      "name_as_written": "DJ Chad",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Diablo • DJ Miky Mike • DJ Dedinho • DJ Chad • DJ Jkee • DJ Stompy • DJ Lass"
+     },
+     {
+      "name_as_written": "DJ Jkee",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Diablo • DJ Miky Mike • DJ Dedinho • DJ Chad • DJ Jkee • DJ Stompy • DJ Lass"
+     },
+     {
+      "name_as_written": "DJ Stompy",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Diablo • DJ Miky Mike • DJ Dedinho • DJ Chad • DJ Jkee • DJ Stompy • DJ Lass"
+     },
+     {
+      "name_as_written": "DJ Lass",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Diablo • DJ Miky Mike • DJ Dedinho • DJ Chad • DJ Jkee • DJ Stompy • DJ Lass"
+     },
+     {
+      "name_as_written": "Pao Lou & Margaux",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Pao Lou & Margaux • Pidjay & Enora • Heneco & Mame • Lna Carla"
+     },
+     {
+      "name_as_written": "Pidjay & Enora",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Pao Lou & Margaux • Pidjay & Enora • Heneco & Mame • Lna Carla"
+     },
+     {
+      "name_as_written": "Heneco & Mame",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Pao Lou & Margaux • Pidjay & Enora • Heneco & Mame • Lna Carla"
+     },
+     {
+      "name_as_written": "Lna Carla",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Pao Lou & Margaux • Pidjay & Enora • Heneco & Mame • Lna Carla"
+     }
+    ],
+    "features": []
+   }
+  ]
+ }
 }

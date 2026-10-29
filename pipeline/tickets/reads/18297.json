@@ -2,15 +2,17 @@
  "event_id": 18297,
  "title": "Kizomba Rainbow Festival Nancy 2026",
  "start_date": "2026-12-10",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:19:01+00:00",
+ "end_date": "2026-12-15",
+ "country": "France",
  "styles": [
   "bachata",
   "kizomba",
   "salsa"
  ],
  "description": "Welcome to the Rainbow Festival Nancy 2026 – 9th Edition 🌈\nThis event is dedicated to KIZOMBA INFORMATION ❤️💛💚💙\nhttps://my.weezevent.com/rainbow-festival-nancy-2026\n✅ Amazing Venue with 4 different rooms\n✅ 4 parties + 3 pre-parties – 3 after-parties until 7:00 am, all in the Same Location\n✅ Best DJs & International Artists\n✅ More than 50 workshops\n✅ New Shows\n✅ Lots of Fun 🙂 🙂 🙂\nTICKETING : https://my.weezevent.com/rainbow-festival-nancy-2026\n❤️💛💙Kizomba DJs & Artists ❤️💛💙\n✅JP & Stephy\n✅Mam’s & Moorea\n✅Prince Bachir & Frida\n✅Sensei & Emma\n✅Jurcic\n✅Anderson\n✅Moo’y\n✅ Dj Paraïso\n✅ Dj Shark\n✅ Dj Snakes\n✅ Dj NiceLife\n✅ Dj Dj Stefanio Lima\n✅ Dj Valet\n✅ Dj Iron Mams\n✅ Dj JC Stripes\n✅ Dj Chorron",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:11:24+00:00",
  "passes": [
   {
    "kind": "other",

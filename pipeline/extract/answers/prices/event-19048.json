@@ -1,60 +1,70 @@
 {
- "batch": "event-19048",
- "events": [
-  {
-   "event_id": 19048,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 690.0,
-       "currency": "DKK",
-       "fee": null,
-       "alt": null,
-       "from": "05-29",
-       "until": "06-12",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Blind pass – 690 dkk (29th May-12th June)"
-      },
-      {
-       "amount": 850.0,
-       "currency": "DKK",
-       "fee": null,
-       "alt": null,
-       "from": "06-13",
-       "until": "08-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Early supporter – 850 dkk (13th June -31st August)"
-      },
-      {
-       "amount": 990.0,
-       "currency": "DKK",
-       "fee": null,
-       "alt": null,
-       "from": "09-01",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Normal price – 990 dkk (1st September)"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:46:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "990e4391c8f0e82b",
+ "answer": {
+  "batch": "event-19048",
+  "events": [
+   {
+    "event_id": 19048,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 690.0,
+        "currency": "DKK",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "05-29",
+         "until": "06-12",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": true,
+        "quote": "❌Blind pass – 690 dkk (29th May-12th June) ❌"
+       },
+       {
+        "amount": 850.0,
+        "currency": "DKK",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "06-13",
+         "until": "08-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": true,
+        "quote": "❌ Early supporter – 850 dkk (13th June -31st August)❌"
+       },
+       {
+        "amount": 990.0,
+        "currency": "DKK",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "09-01",
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Normal price – 990 dkk (1st September)"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

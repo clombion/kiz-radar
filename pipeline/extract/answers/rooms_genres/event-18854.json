@@ -1,79 +1,86 @@
 {
- "batch": "event-18854",
- "events": [
-  {
-   "event_id": 18854,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 free dance floors"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Room 1",
-     "kind": "unspecified",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "Room 1 : 100% Salsa Cubano"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "04f8333a002f8451",
+ "answer": {
+  "batch": "event-18854",
+  "events": [
+   {
+    "event_id": 18854,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 free dance floors"
     },
-    {
-     "name_as_written": "Room 2",
-     "kind": "unspecified",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "Room 2 : 100% Salsa Romantica"
-    },
-    {
-     "name_as_written": "Room 3",
-     "kind": "unspecified",
-     "genres": [
-      "kizomba",
-      "kompa",
-      "semba",
-      "afro"
-     ],
-     "quote": "Room 3 : 100% Kizomba / Konpa /Semba / Afro-House"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa Cubano",
-     "quote": "Salsa Cubano"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "Urbankiz"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Konpa"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarracho",
-     "quote": "Tarracho"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "Afro"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Semba"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Room 1",
+      "kind": "unspecified",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "Room 1 : 100% Salsa Cubano"
+     },
+     {
+      "name_as_written": "Room 2",
+      "kind": "unspecified",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "Room 2 : 100% Salsa Romantica"
+     },
+     {
+      "name_as_written": "Room 3",
+      "kind": "unspecified",
+      "genres": [
+       "kizomba",
+       "kompa",
+       "semba",
+       "afro"
+      ],
+      "quote": "Room 3 : 100% Kizomba / Konpa /Semba / Afro-House"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa Cubano",
+      "quote": "Room 1 : 100% Salsa Cubano"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "Salsa Cubano, Urbankiz, Kizomba, Konpa, Tarracho and Afro"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Room 3 : 100% Kizomba / Konpa /Semba / Afro-House"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Room 3 : 100% Kizomba / Konpa /Semba / Afro-House"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarracho",
+      "quote": "Konpa, Tarracho and Afro"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "Konpa, Tarracho and Afro"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Room 3 : 100% Kizomba / Konpa /Semba / Afro-House"
+     }
+    ]
+   }
+  ]
+ }
 }

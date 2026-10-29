@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fred@chiara+fred",
+ "key_b": "p:fredag",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "775b9d1d25d9cfc6",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the partner Chiara and have events in France, but the couple keys differ (chiara+fred vs chiara+fredag), Fred is a common first name, and Fred Ag's surname part is unexplained, so the evidence does not settle whether this is one person."
+ }
+}

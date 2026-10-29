@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tpeak@dance",
+ "key_b": "p:tpeak@dje+tpeak",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "bfe23133f1e6255e",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are written as the same stylized name (T’Peak vs T’PEAK, differing only in case) and both list France, with a shared France event in the evidence. However, side B's mentions are missing from the input, and B's partner 'dje@dje+tpeak' is unexplained, so a different artist with the same stage name cannot be ruled out."
+ }
+}

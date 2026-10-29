@@ -1,28 +1,35 @@
 {
- "batch": "event-18971",
- "events": [
-  {
-   "event_id": 18971,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "SKS Sempre Kizomba Semba"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "SKS Sempre Kizomba Semba"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "DanseAfro",
-     "quote": "#DanseAfro"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "100315486749a5c2",
+ "answer": {
+  "batch": "event-18971",
+  "events": [
+   {
+    "event_id": 18971,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "SKS Sempre Kizomba Semba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba Semba – 2ᵉ édition"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "DanseAfro",
+      "quote": "#DanseAfro"
+     }
+    ]
+   }
+  ]
+ }
 }

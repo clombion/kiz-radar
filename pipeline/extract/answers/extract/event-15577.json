@@ -1,111 +1,116 @@
 {
- "batch": "event-15577",
- "events": [
-  {
-   "event_id": 15577,
-   "artists": [
-    {
-     "name_as_written": "Miranna & Mauricio",
-     "role": "teacher",
-     "style": null,
-     "country": "Finland 🇫🇮/ Colombia 🇨🇴",
-     "source_line": "Miranna & Mauricio (Finland 🇫🇮/ Colombia 🇨🇴)"
-    },
-    {
-     "name_as_written": "Mirka & Pekka – Virgula",
-     "role": "teacher",
-     "style": null,
-     "country": "Finland 🇫🇮",
-     "source_line": "Mirka & Pekka – Virgula (Finland 🇫🇮)"
-    },
-    {
-     "name_as_written": "Satu & Roynet",
-     "role": "teacher",
-     "style": null,
-     "country": "Finland 🇫🇮/ Cuba 🇨🇺",
-     "source_line": "Satu & Roynet (Finland 🇫🇮/ Cuba 🇨🇺)"
-    },
-    {
-     "name_as_written": "Fábio",
-     "role": "teacher",
-     "style": null,
-     "country": "Portugal 🇵🇹",
-     "source_line": "Fábio (Portugal 🇵🇹)"
-    },
-    {
-     "name_as_written": "Mira",
-     "role": "teacher",
-     "style": null,
-     "country": "Finland 🇫🇮",
-     "source_line": "Mira (Finland 🇫🇮)"
-    },
-    {
-     "name_as_written": "Taija",
-     "role": "teacher",
-     "style": null,
-     "country": "Finland 🇫🇮",
-     "source_line": "Taija (Finland 🇫🇮)"
-    },
-    {
-     "name_as_written": "Tiia",
-     "role": "teacher",
-     "style": null,
-     "country": "Finland 🇫🇮",
-     "source_line": "Tiia (Finland 🇫🇮)"
-    },
-    {
-     "name_as_written": "Roberto La Rosa",
-     "role": "teacher",
-     "style": null,
-     "country": "Cuba 🇨🇺",
-     "source_line": "Roberto La Rosa (Cuba 🇨🇺)"
-    },
-    {
-     "name_as_written": "DJ Pies Locos",
-     "role": "dj",
-     "style": null,
-     "country": "Finland 🇫🇮",
-     "source_line": "DJ Pies Locos (Finland 🇫🇮)"
-    },
-    {
-     "name_as_written": "DJ Puxa²",
-     "role": "dj",
-     "style": null,
-     "country": "Portugal 🇵🇹",
-     "source_line": "DJ Puxa² (Portugal 🇵🇹)"
-    },
-    {
-     "name_as_written": "DJ Stani",
-     "role": "dj",
-     "style": null,
-     "country": "Bulgaria 🇧🇬",
-     "source_line": "DJ Stani (Bulgaria 🇧🇬)"
-    },
-    {
-     "name_as_written": "Tampere Social Dancing",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Tampere Social Dancing"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "11h of Workshops",
-     "rationale": "The festival lists eleven hours of workshops as part of the event."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-party workshops are Open Level",
-     "rationale": "The description refers to pre-party workshops, showing a pre-party part of the event."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Opening Party: White & Blue",
-     "rationale": "The opening party has a colour dress theme, which is a themed party."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "1a6b6fbefc329a66",
+ "answer": {
+  "batch": "event-15577",
+  "events": [
+   {
+    "event_id": 15577,
+    "artists": [
+     {
+      "name_as_written": "Miranna & Mauricio",
+      "role": "teacher",
+      "style": null,
+      "country": "Finland 🇫🇮/ Colombia 🇨🇴",
+      "source_line": "Miranna & Mauricio (Finland 🇫🇮/ Colombia 🇨🇴)"
+     },
+     {
+      "name_as_written": "Mirka & Pekka",
+      "role": "teacher",
+      "style": null,
+      "country": "Finland 🇫🇮",
+      "source_line": "Mirka & Pekka – Virgula (Finland 🇫🇮)"
+     },
+     {
+      "name_as_written": "Satu & Roynet",
+      "role": "teacher",
+      "style": null,
+      "country": "Finland 🇫🇮/ Cuba 🇨🇺",
+      "source_line": "Satu & Roynet (Finland 🇫🇮/ Cuba 🇨🇺)"
+     },
+     {
+      "name_as_written": "Fábio",
+      "role": "teacher",
+      "style": null,
+      "country": "Portugal 🇵🇹",
+      "source_line": "Fábio (Portugal 🇵🇹)"
+     },
+     {
+      "name_as_written": "Mira",
+      "role": "teacher",
+      "style": null,
+      "country": "Finland 🇫🇮",
+      "source_line": "Mira (Finland 🇫🇮)"
+     },
+     {
+      "name_as_written": "Taija",
+      "role": "teacher",
+      "style": null,
+      "country": "Finland 🇫🇮",
+      "source_line": "Taija (Finland 🇫🇮)"
+     },
+     {
+      "name_as_written": "Tiia",
+      "role": "teacher",
+      "style": null,
+      "country": "Finland 🇫🇮",
+      "source_line": "Tiia (Finland 🇫🇮)"
+     },
+     {
+      "name_as_written": "Roberto La Rosa",
+      "role": "teacher",
+      "style": null,
+      "country": "Cuba 🇨🇺",
+      "source_line": "Roberto La Rosa (Cuba 🇨🇺)"
+     },
+     {
+      "name_as_written": "DJ Pies Locos",
+      "role": "dj",
+      "style": null,
+      "country": "Finland 🇫🇮",
+      "source_line": "DJ Pies Locos (Finland 🇫🇮)"
+     },
+     {
+      "name_as_written": "DJ Puxa²",
+      "role": "dj",
+      "style": null,
+      "country": "Portugal 🇵🇹",
+      "source_line": "DJ Puxa² (Portugal 🇵🇹)"
+     },
+     {
+      "name_as_written": "DJ Stani",
+      "role": "dj",
+      "style": null,
+      "country": "Bulgaria 🇧🇬",
+      "source_line": "DJ Stani (Bulgaria 🇧🇬)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "11h of Workshops",
+      "rationale": "The line announces eleven hours of workshops as part of the festival."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Opening Party: White & Blue",
+      "rationale": "The opening party is a themed night with a colour theme."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-party workshops are Open Level",
+      "rationale": "The description refers to pre-party workshops as part of the event before the main schedule."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "2 Parties & 1 Matinée",
+      "rationale": "A matinée is a daytime social event included in the festival."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:neko@dj",
+ "key_b": "p:nekodj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ac33f360ec8023ca",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are the same stage name 'Neko' with a DJ prefix or suffix, both stated as Italian (IT), and they share Italy as an event country, so the evidence points to one artist."
+ }
+}

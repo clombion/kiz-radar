@@ -1,0 +1,13 @@
+{
+ "key_a": "p:anastasia@anastasia+flowly",
+ "key_b": "p:anastasiia@anastasiia+flowly",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "09f8c0d7c600884e",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Anastasia and Anastasiia are a spelling variant of the same name, both list the same partner 'flowly', and both have events in France, with no evidence of two separate people in the same event."
+ }
+}

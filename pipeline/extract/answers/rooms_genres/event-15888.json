@@ -1,53 +1,60 @@
 {
- "batch": "event-15888",
- "events": [
-  {
-   "event_id": 15888,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "LINE UP KIZOMBA URBAN KIZ SEMBA TARRAXO"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBAN KIZ",
-     "quote": "LINE UP KIZOMBA URBAN KIZ SEMBA TARRAXO"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "SEMBA",
-     "quote": "LINE UP KIZOMBA URBAN KIZ SEMBA TARRAXO"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "TARRAXO",
-     "quote": "LINE UP KIZOMBA URBAN KIZ SEMBA TARRAXO"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "ZOUK",
-     "quote": "LINE UP ZOUK/KONPA/AMBIANCE"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "KONPA",
-     "quote": "LINE UP ZOUK/KONPA/AMBIANCE"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "LINE UP SALSA/BACHATA"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "LINE UP SALSA/BACHATA"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d9a64d7e4c77ceca",
+ "answer": {
+  "batch": "event-15888",
+  "events": [
+   {
+    "event_id": 15888,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "LINE UP KIZOMBA URBAN KIZ SEMBA TARRAXO"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBAN KIZ",
+      "quote": "LINE UP KIZOMBA URBAN KIZ SEMBA TARRAXO"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "SEMBA",
+      "quote": "LINE UP KIZOMBA URBAN KIZ SEMBA TARRAXO"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "TARRAXO",
+      "quote": "LINE UP KIZOMBA URBAN KIZ SEMBA TARRAXO"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "ZOUK",
+      "quote": "LINE UP ZOUK/KONPA/AMBIANCE"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "KONPA",
+      "quote": "ZOUK/KONPA/AMBIANCE"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "SALSA",
+      "quote": "LINE UP SALSA/BACHATA"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "LINE UP SALSA/BACHATA"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,23 +1,35 @@
 {
- "batch": "event-15384",
- "events": [
-  {
-   "event_id": 15384,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "kizomba",
-     "quote": "kizomba/Semba/other Angolan dances"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "kizomba/Semba/other Angolan dances"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "4020e5fe00c7d9e0",
+ "answer": {
+  "batch": "event-15384",
+  "events": [
+   {
+    "event_id": 15384,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "kizomba",
+      "quote": "kizomba/Semba/other Angolan dances"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "kizomba/Semba"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Angolan dances",
+      "quote": "other Angolan dances"
+     }
+    ]
+   }
+  ]
+ }
 }

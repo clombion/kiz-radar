@@ -1,38 +1,45 @@
 {
- "batch": "event-17102",
- "events": [
-  {
-   "event_id": 17102,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "𝐒𝐀𝐋𝐒𝐀 𝐏𝐎𝐑𝐓𝐎",
-     "quote": "👠 𝐒𝐀𝐋𝐒𝐀 𝐏𝐎𝐑𝐓𝐎 (𝐌𝐚𝐦𝐛𝐨 & 𝐋𝐢𝐧𝐞𝐚)"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀",
-     "quote": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀 (𝐒𝐞𝐧𝐬𝐮𝐚𝐥 & 𝐅𝐮𝐬𝐢𝐨𝐧)"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀",
-     "quote": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 & 𝐒𝐄𝐌𝐁𝐀 (𝐀𝐮𝐭𝐡𝐞𝐧𝐭𝐢𝐜𝐢𝐭𝐲)"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "𝐒𝐄𝐌𝐁𝐀",
-     "quote": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 & 𝐒𝐄𝐌𝐁𝐀 (𝐀𝐮𝐭𝐡𝐞𝐧𝐭𝐢𝐜𝐢𝐭𝐲)"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Uban Kiz",
-     "quote": "The essence of Uban Kiz"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "4b855b151bd550cd",
+ "answer": {
+  "batch": "event-17102",
+  "events": [
+   {
+    "event_id": 17102,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "𝐒𝐚𝐥𝐬𝐚",
+      "quote": "𝐒𝐚𝐥𝐬𝐚, 𝐁𝐚𝐜𝐡𝐚𝐭𝐚 𝐞𝐭 𝐊𝐢𝐳𝐨𝐦𝐛𝐚"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀",
+      "quote": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀 (𝐒𝐞𝐧𝐬𝐮𝐚𝐥 & 𝐅𝐮𝐬𝐢𝐨𝐧)"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚",
+      "quote": "𝐒𝐚𝐥𝐬𝐚, 𝐁𝐚𝐜𝐡𝐚𝐭𝐚 𝐞𝐭 𝐊𝐢𝐳𝐨𝐦𝐛𝐚"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "𝐒𝐄𝐌𝐁𝐀",
+      "quote": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 & 𝐒𝐄𝐌𝐁𝐀"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Uban Kiz",
+      "quote": "The essence of Uban Kiz"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,34 +1,37 @@
 {
- "batch": "event-14594",
- "events": [
-  {
-   "event_id": 14594,
-   "passes": [
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "Any other wrist band",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 5.0,
-       "currency": "GBP",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Any other wrist band £5"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:41:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "7a15b2deaec50489",
+ "answer": {
+  "batch": "event-14594",
+  "events": [
+   {
+    "event_id": 14594,
+    "passes": [
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": "AFTER PARTY",
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 5.0,
+        "currency": "GBP",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Any other wrist band £5"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

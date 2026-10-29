@@ -1,83 +1,94 @@
 {
- "batch": "event-16728",
- "events": [
-  {
-   "event_id": 16728,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 95.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "2026-08-10",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Single Pass: €95"
-      },
-      {
-       "amount": 130.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "08-11",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Single Pass: €130"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 145.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "2026-08-10",
-       "quantity": 50,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Couple Pass: €145"
-      },
-      {
-       "amount": 175.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "08-11",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Couple Pass: €175"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:44:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "f28e14b621ed5723",
+ "answer": {
+  "batch": "event-16728",
+  "events": [
+   {
+    "event_id": 16728,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 95.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "2026-08-10",
+         "quantity": 50,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Single Pass: €95"
+       },
+       {
+        "amount": 130.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2026-08-11",
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Single Pass: €130"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 145.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "2026-08-10",
+         "quantity": 50,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Couple Pass: €145"
+       },
+       {
+        "amount": 175.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2026-08-11",
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Couple Pass: €175"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:methodz@julia+methodz",
+ "key_b": "p:methodz@juliaa+methodz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8d7d90342861d3b9",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the distinctive name 'Methodz' from France with near-identical partner keys (julia vs juliaa), which points toward one artist, but the partner records are themselves separate keys and the event histories do not overlap, so the evidence does not settle whether these are two people."
+ }
+}

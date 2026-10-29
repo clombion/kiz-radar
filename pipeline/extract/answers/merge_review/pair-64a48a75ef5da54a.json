@@ -1,0 +1,13 @@
+{
+ "key_a": "p:curtis@curtis+gaya",
+ "key_b": "p:curtis@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "64a48a75ef5da54a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as French with the same spelling apart from case, but the name is a common first name, side A's couple partner (Gaya) never appears on side B, and the event countries (Italy, Switzerland versus Austria) do not overlap, so the evidence does not settle whether this is one artist."
+ }
+}

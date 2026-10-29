@@ -2,9 +2,8 @@
  "event_id": 19456,
  "title": "Paris Afro Latin Congress 2027",
  "start_date": "2027-03-19",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:38:10+00:00",
+ "end_date": "2027-03-22",
+ "country": "France",
  "styles": [
   "bachata",
   "kizomba",
@@ -12,19 +11,22 @@
   "zouk"
  ],
  "description": "🔥 PARIS AFRO LATIN CONGRESS 2027 – DELUXE EDITION 🔥\n✨ 19–22 MARCH 2027 | PARIS, FRANCE ✨\nGet ready for an extraordinary weekend at the Paris Afro Latin Congress – Deluxe Edition 2027! ❤️‍🔥\nA unique celebration bringing together the best of Bachata, Kizomba, Salsa and Brazilian Zouk for an unforgettable international dance experience.\n🌟 BACHATA ARTISTS\nRonald y Alba • Elwin y Gaby • Borja y Lydia • Luis y Sara • Samy El Mágico • Reda • Laia de la Fuente • Dmitry • Ezo y Hugo • Adil y Elo • Cyril y Maeva • David y Natasha • JLO\n🔥 KIZOMBA ARTISTS\nFred Nelson y Morgane • Ichigo y Kristel • Fabricio y Mame • Valyr y Sarah • Lydia Laprade • Enora y Pidjay • Beepee y Marta • Zino • Jonathan Kani • DJ Paraiso • DJ Nao • DJ Snakes • DJ Do Zangado • DJ Diablo • DJ Ichigo • DJ JDN\n💃 SALSA ARTISTS\nPhilippe Gomis • Rudy Fabre • Alex Salserito • Minou • DJ Chanchan • DJ Phil • DJ Alex\n🌴 BRAZILIAN ZOUK ARTISTS\nAlex de Carvalho • Simba y Manon • DJ Simbocop\n🏨 ALL IN ONE EXPERIENCE\nHosted at the Paris Marriott Charles de Gaulle Airport Hotel, bringing together workshops, artists, socials and parties all in one place.\n✨ 4 DAYS • 4 DANCE STYLES • INTERNATIONAL ARTISTS • WORKSHOPS • PARTIES • SOCIALS\nWhether you’re passionate about Bachata, Kizomba, Salsa or Brazilian Zouk, Paris Afro Latin Congress 2027 is the perfect place to dance, connect and experience an unforgettable weekend with the international dance community.\n🔥 PARIS IS CALLING. ARE YOU READY?\n📅 19–22 March 2027\n📍 Paris Marriott Charles de Gaulle Airport Hotel – Paris, France",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:19:27+00:00",
  "passes": [
   {
    "kind": "full",
    "style": null,
    "label_quote": null,
-   "group_size": 2,
+   "group_size": 1,
    "days": null,
    "includes_hotel": false,
    "tiers": [
     {
      "keys": [
-      "9125",
-      "9126"
+      "9122",
+      "9123"
      ],
      "from": null,
      "until": null,
@@ -37,14 +39,14 @@
    "kind": "full",
    "style": null,
    "label_quote": null,
-   "group_size": 1,
+   "group_size": 2,
    "days": null,
    "includes_hotel": false,
    "tiers": [
     {
      "keys": [
-      "9123",
-      "9122"
+      "9125",
+      "9126"
      ],
      "from": null,
      "until": null,

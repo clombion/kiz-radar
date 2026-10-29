@@ -1,0 +1,13 @@
+{
+ "key_a": "p:laura@doctorkizomba+laura",
+ "key_b": "p:laurabuffone",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "161d3c64fb8573a6",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A's bare first name 'Laura' has no listed mentions, and its only links to side B are a shared Italian country and partner handles 'doctorkizomba' and 'drkizomba' that may or may not be the same partner, while the events and countries otherwise differ (Switzerland versus Italy and Slovenia), so the evidence does not settle it."
+ }
+}

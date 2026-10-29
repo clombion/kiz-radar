@@ -1,29 +1,28 @@
 {
- "batch": "event-14747",
- "events": [
-  {
-   "event_id": 14747,
-   "artists": [
-    {
-     "name_as_written": "Kizatours",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "💥💥Kizatours Dances Festival Afro Legacy Edition💥💥"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Approximately 20 hours of workshops over the weekend",
-     "rationale": "The description states that about 20 hours of workshops are held over the weekend."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Saturday Afternoon",
-     "rationale": "The description lists two social events held on Saturday and Sunday afternoons."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "056c3f87694e2819",
+ "answer": {
+  "batch": "event-14747",
+  "events": [
+   {
+    "event_id": 14747,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Approximately 20 hours of workshops over the weekend",
+      "rationale": "The description states that about 20 hours of workshops take place over the weekend."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Saturday Afternoon",
+      "rationale": "The description lists 2 social events on Saturday and Sunday afternoons, which are daytime socials."
+     }
+    ]
+   }
+  ]
+ }
 }

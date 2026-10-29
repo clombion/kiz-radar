@@ -1,0 +1,13 @@
+{
+ "key_a": "p:york@dj",
+ "key_b": "p:york@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "a3819259080e370d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same record (p:york@dj) with one stage name, DJ York, stated with Venezuela and Germany at different events and no partner to link the mentions; the evidence shows one name across countries but cannot tell whether it is one DJ or several people sharing the name, so it cannot be settled as a self-pair merge or separate."
+ }
+}

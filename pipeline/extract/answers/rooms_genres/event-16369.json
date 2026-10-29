@@ -1,23 +1,30 @@
 {
- "batch": "event-16369",
- "events": [
-  {
-   "event_id": 16369,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata & Kizomba artists"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Bachata & Kizomba artists"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "e3a0e9a87babcf45",
+ "answer": {
+  "batch": "event-16369",
+  "events": [
+   {
+    "event_id": 16369,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "international Bachata & Kizomba artists"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "international Bachata & Kizomba artists"
+     }
+    ]
+   }
+  ]
+ }
 }

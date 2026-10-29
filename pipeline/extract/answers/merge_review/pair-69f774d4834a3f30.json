@@ -1,0 +1,13 @@
+{
+ "key_a": "p:christian@christian+tina",
+ "key_b": "p:christine@christine+stef",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "69f774d4834a3f30",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two names differ in gender and form (Christian vs. Christine), and their partners are different people (Tina vs. Stef), so there is no shared partner linking them; the only overlap is the same country, which is weak evidence against the spelling similarity."
+ }
+}

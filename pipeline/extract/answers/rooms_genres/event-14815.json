@@ -1,28 +1,35 @@
 {
- "batch": "event-14815",
- "events": [
-  {
-   "event_id": 14815,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "SALSA, BACHATA & KIZOMBA"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "SALSA, BACHATA & KIZOMBA"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "SALSA, BACHATA & KIZOMBA"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "3097836eecbc3667",
+ "answer": {
+  "batch": "event-14815",
+  "events": [
+   {
+    "event_id": 14815,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "SALSA",
+      "quote": "3 days of madness to the rhythms of SALSA, BACHATA & KIZOMBA"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "3 days of madness to the rhythms of SALSA, BACHATA & KIZOMBA"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "3 days of madness to the rhythms of SALSA, BACHATA & KIZOMBA"
+     }
+    ]
+   }
+  ]
+ }
 }

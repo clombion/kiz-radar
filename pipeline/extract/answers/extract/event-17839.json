@@ -1,21 +1,28 @@
 {
- "batch": "event-17839",
- "events": [
-  {
-   "event_id": 17839,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "13 hours of workshops with top-notch instructors",
-     "rationale": "The description states that the weekender includes 13 hours of workshops."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "5pm – 9pm: Day Social (TBD)",
-     "rationale": "A daytime social is scheduled on Sunday Nov 8th from 5pm to 9pm."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:31:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "02dfc2f9ff02d8a4",
+ "answer": {
+  "batch": "event-17839",
+  "events": [
+   {
+    "event_id": 17839,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "13 hours of workshops with top-notch instructors",
+      "rationale": "The description states that the event includes 13 hours of workshops taught by instructors."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "5pm – 9pm: Day Social (TBD)",
+      "rationale": "The programme lists a daytime social from 5pm to 9pm on Sunday Nov 8th."
+     }
+    ]
+   }
+  ]
+ }
 }

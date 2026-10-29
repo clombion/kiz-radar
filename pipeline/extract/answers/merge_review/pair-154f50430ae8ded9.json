@@ -1,0 +1,13 @@
+{
+ "key_a": "p:frednelson",
+ "key_b": "p:frednelson@frednelson+morgane",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "154f50430ae8ded9",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the same name (Fred Nelson / Fred-Nelson), the same events in France, Italy and Spain, and the same partner morgane, so the evidence points to one artist; the key suffix on side B is just the couple linkage."
+ }
+}

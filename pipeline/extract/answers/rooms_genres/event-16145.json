@@ -1,33 +1,40 @@
 {
- "batch": "event-16145",
- "events": [
-  {
-   "event_id": 16145,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata Sensual",
-     "quote": "💃 **Bachata Sensual**"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba & Urban Kiz",
-     "quote": "🕺 **Kizomba & Urban Kiz**"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "🕺 **Kizomba & Urban Kiz**"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "AFRO-LATIN",
-     "quote": "🌍 THE ULTIMATE AFRO-LATIN EXPERIENCE"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "33a384223749c753",
+ "answer": {
+  "batch": "event-16145",
+  "events": [
+   {
+    "event_id": 16145,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata Sensual",
+      "quote": "Bachata Sensual"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba & Urban Kiz",
+      "quote": "Kizomba & Urban Kiz"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "Urban Kiz"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "DJs Semba:"
+     }
+    ]
+   }
+  ]
+ }
 }

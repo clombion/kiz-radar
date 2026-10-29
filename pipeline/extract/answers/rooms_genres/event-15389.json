@@ -1,48 +1,55 @@
 {
- "batch": "event-15389",
- "events": [
-  {
-   "event_id": 15389,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "workshops: Bachata , Salsa"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Bachata , Salsa , Timba"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Timba",
-     "quote": "Salsa , Timba, Kizomba"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Timba, Kizomba, , Semba"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba, , Semba"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrohouse",
-     "quote": "Afrohouse Tarraxo"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Afrohouse Tarraxo"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "5907a8e5d378c7a3",
+ "answer": {
+  "batch": "event-15389",
+  "events": [
+   {
+    "event_id": 15389,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Salsa"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Timba",
+      "quote": "Timba"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Semba"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrohouse",
+      "quote": "Afrohouse"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Tarraxo"
+     }
+    ]
+   }
+  ]
+ }
 }

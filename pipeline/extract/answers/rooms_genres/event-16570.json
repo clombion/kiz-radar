@@ -1,59 +1,63 @@
 {
- "batch": "event-16570",
- "events": [
-  {
-   "event_id": 16570,
-   "party_rooms": null,
-   "class_rooms": {
-    "count": 2,
-    "quote": "PARIS ROOM – INTERMEDIATE LEVEL – Upper Room"
-   },
-   "rooms": [
-    {
-     "name_as_written": "PARIS ROOM – INTERMEDIATE LEVEL – Upper Room",
-     "kind": "class",
-     "genres": [
-      "bachata",
-      "salsa",
-      "kizomba",
-      "other"
-     ],
-     "quote": "PARIS ROOM – INTERMEDIATE LEVEL – Upper Room"
-    },
-    {
-     "name_as_written": "HONFLEUR ROOM – BEGINNER LEVEL – Lower Room",
-     "kind": "class",
-     "genres": [
-      "bachata",
-      "salsa",
-      "kizomba",
-      "other"
-     ],
-     "quote": "HONFLEUR ROOM – BEGINNER LEVEL – Lower Room"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "salsa",
-     "quote": "Whether you’re a salsa, bachata, kizomba dancer"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Traditional Bachata",
-     "quote": "> Traditional Bachata"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "> Kizomba"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Rueda de Casino",
-     "quote": "> Rueda de Casino"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "1f4b7d38b53e91ff",
+ "answer": {
+  "batch": "event-16570",
+  "events": [
+   {
+    "event_id": 16570,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "PARIS ROOM",
+      "kind": "class",
+      "genres": [
+       "bachata",
+       "salsa",
+       "kizomba",
+       "other"
+      ],
+      "quote": "PARIS ROOM – INTERMEDIATE LEVEL – Upper Room"
+     },
+     {
+      "name_as_written": "HONFLEUR ROOM",
+      "kind": "class",
+      "genres": [
+       "bachata",
+       "salsa",
+       "kizomba",
+       "other"
+      ],
+      "quote": "HONFLEUR ROOM – BEGINNER LEVEL – Lower Room"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "salsa",
+      "quote": "Whether you’re a salsa, bachata, kizomba dancer"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Traditional Bachata",
+      "quote": "Traditional Bachata"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "> Kizomba"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Rueda de Casino",
+      "quote": "Rueda de Casino"
+     }
+    ]
+   }
+  ]
+ }
 }

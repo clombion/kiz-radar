@@ -1,109 +1,122 @@
 {
- "batch": "event-16875",
- "events": [
-  {
-   "event_id": 16875,
-   "passes": [
-    {
-     "kind": "other",
-     "style": "kizomba",
-     "label_quote": "🩵 Urban Kiz",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 105.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🩷 24h sale – 105 €, when you register with in the first 24h"
-      },
-      {
-       "amount": 126.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "06-21",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🩵 Early Bird until 21.6. – 126€"
-      },
-      {
-       "amount": 140.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "💜 Normal Bird – 140€"
-      }
-     ]
-    },
-    {
-     "kind": "other",
-     "style": "other",
-     "label_quote": "🩷 West Coast Swing",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 105.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🩷 24h sale – 105 €, when you register with in the first 24h"
-      },
-      {
-       "amount": 126.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "06-21",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🩵 Early Bird until 21.6. – 126€"
-      },
-      {
-       "amount": 140.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "💜 Normal Bird – 140€"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:44:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "fab17205c5c92461",
+ "answer": {
+  "batch": "event-16875",
+  "events": [
+   {
+    "event_id": 16875,
+    "passes": [
+     {
+      "kind": "other",
+      "style": "kizomba",
+      "label_quote": "🩵 Urban Kiz",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 105.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "🩷 24h sale – 105 €, when you register with in the first 24h"
+       },
+       {
+        "amount": 126.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "06-21",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "🩵 Early Bird until 21.6. – 126€"
+       },
+       {
+        "amount": 140.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "💜 Normal Bird – 140€"
+       }
+      ]
+     },
+     {
+      "kind": "other",
+      "style": "other",
+      "label_quote": "🩷 West Coast Swing",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 105.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "🩷 24h sale – 105 €, when you register with in the first 24h"
+       },
+       {
+        "amount": 126.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "06-21",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "🩵 Early Bird until 21.6. – 126€"
+       },
+       {
+        "amount": 140.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "💜 Normal Bird – 140€"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

@@ -1,31 +1,63 @@
 {
- "batch": "event-14516",
- "events": [
-  {
-   "event_id": 14516,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 dance floors : Bachata, Salsa, Kizomba on 4800 sq meters"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "Featuring KIZOMBA, BACHATA, and SALSA"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "55bf4cce7193841f",
+ "answer": {
+  "batch": "event-14516",
+  "events": [
+   {
+    "event_id": 14516,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 dance floors : Bachata, Salsa, Kizomba on 4800 sq meters"
     },
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "Featuring KIZOMBA, BACHATA, and SALSA"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "Featuring KIZOMBA, BACHATA, and SALSA"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "Bachata"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "Salsa"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "Kizomba"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "Featuring KIZOMBA, BACHATA, and SALSA"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "Featuring KIZOMBA, BACHATA, and SALSA"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "SALSA",
+      "quote": "Featuring KIZOMBA, BACHATA, and SALSA"
+     }
+    ]
+   }
+  ]
+ }
 }

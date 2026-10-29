@@ -1,113 +1,125 @@
 {
- "batch": "event-16374",
- "events": [
-  {
-   "event_id": 16374,
-   "artists": [
-    {
-     "name_as_written": "Kinkizomba & Giorgia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Kinkizomba & Giorgia"
-    },
-    {
-     "name_as_written": "Marcio Junqueira",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Marcio Junqueira"
-    },
-    {
-     "name_as_written": "Junior El Artista",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Junior El Artista"
-    },
-    {
-     "name_as_written": "Robin Schutter",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Robin Schutter"
-    },
-    {
-     "name_as_written": "Cazuza Kinvula",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Cazuza Kinvula"
-    },
-    {
-     "name_as_written": "Vivaldo & Belinha",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Vivaldo & Belinha"
-    },
-    {
-     "name_as_written": "Deezy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Deezy"
-    },
-    {
-     "name_as_written": "DJ Alex",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Alex"
-    },
-    {
-     "name_as_written": "DJ Kapitula",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Kapitula"
-    },
-    {
-     "name_as_written": "DJ Vango",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Vango"
-    },
-    {
-     "name_as_written": "DJ Ecozinho",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Ecozinho"
-    },
-    {
-     "name_as_written": "DJ Latin Pro Master",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Latin Pro Master"
-    },
-    {
-     "name_as_written": "Mais Q’ Kizomba Dance School",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "📍 Mais Q’ Kizomba Dance School"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops",
-     "rationale": "The event offers dance workshops over three days."
-    },
-    {
-     "feature": "shows",
-     "quote": "Animation show",
-     "rationale": "An animation show is listed as part of the programme."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "5f19aa68d64245a8",
+ "answer": {
+  "batch": "event-16374",
+  "events": [
+   {
+    "event_id": 16374,
+    "artists": [
+     {
+      "name_as_written": "Mais Q’ Kizomba Dance School",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "📍 Mais Q’ Kizomba Dance School"
+     },
+     {
+      "name_as_written": "Kinkizomba & Giorgia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Kinkizomba & Giorgia"
+     },
+     {
+      "name_as_written": "Marcio Junqueira",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Marcio Junqueira"
+     },
+     {
+      "name_as_written": "Junior El Artista",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Junior El Artista"
+     },
+     {
+      "name_as_written": "Robin Schutter",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Robin Schutter"
+     },
+     {
+      "name_as_written": "Cazuza Kinvula",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Cazuza Kinvula"
+     },
+     {
+      "name_as_written": "Vivaldo & Belinha",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Vivaldo & Belinha"
+     },
+     {
+      "name_as_written": "Deezy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Deezy"
+     },
+     {
+      "name_as_written": "DJ Alex",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Alex"
+     },
+     {
+      "name_as_written": "DJ Kapitula",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Kapitula"
+     },
+     {
+      "name_as_written": "DJ Vango",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Vango"
+     },
+     {
+      "name_as_written": "DJ Ecozinho",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Ecozinho"
+     },
+     {
+      "name_as_written": "DJ Latin Pro Master",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Latin Pro Master"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops + Party",
+      "rationale": "The program lists workshops as part of each day of the weekender."
+     },
+     {
+      "feature": "shows",
+      "quote": "Animation show",
+      "rationale": "An animation show is listed among the event's performances."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Workshops + Social",
+      "rationale": "The Sunday 12:00 PM to 6:00 PM slot is a daytime social session."
+     }
+    ]
+   }
+  ]
+ }
 }

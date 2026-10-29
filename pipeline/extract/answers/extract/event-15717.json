@@ -1,377 +1,389 @@
 {
- "batch": "event-15717",
- "events": [
-  {
-   "event_id": 15717,
-   "artists": [
-    {
-     "name_as_written": "Cornel & Rithika",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🌴Cornel & Rithika"
-    },
-    {
-     "name_as_written": "Melvin & Gatica",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🌴Melvin & Gatica"
-    },
-    {
-     "name_as_written": "Abdel & Lety",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🌴Abdel & Lety"
-    },
-    {
-     "name_as_written": "Pablo & Raquel",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🌴Pablo & Raquel"
-    },
-    {
-     "name_as_written": "Simone & Danila",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🌴Simone & Danila"
-    },
-    {
-     "name_as_written": "York & Lisa",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🌴York & Lisa"
-    },
-    {
-     "name_as_written": "Cavalier el craco",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🌴Cavalier el craco"
-    },
-    {
-     "name_as_written": "Zoran & Andjela",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🌴Zoran & Andjela"
-    },
-    {
-     "name_as_written": "Joan & Franceska",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🌴Joan & Franceska"
-    },
-    {
-     "name_as_written": "Samantha",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🌴Samantha"
-    },
-    {
-     "name_as_written": "York",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🌴York"
-    },
-    {
-     "name_as_written": "Khalid",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🌴Khalid"
-    },
-    {
-     "name_as_written": "David Pedron",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🌴David Pedron"
-    },
-    {
-     "name_as_written": "Trevor",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🌴Trevor"
-    },
-    {
-     "name_as_written": "Lupo",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🌴Lupo"
-    },
-    {
-     "name_as_written": "Ramiro Zapata",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "🌴Ramiro Zapata"
-    },
-    {
-     "name_as_written": "Jojo & Jenny",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩Jojo & Jenny"
-    },
-    {
-     "name_as_written": "Dwe & Gaby",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩Dwe & Gaby"
-    },
-    {
-     "name_as_written": "Chamalo & Jalyssa",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩Chamalo & Jalyssa"
-    },
-    {
-     "name_as_written": "Elizandro & Sandra",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩Elizandro & Sandra"
-    },
-    {
-     "name_as_written": "Justinho",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩Justinho"
-    },
-    {
-     "name_as_written": "Lucas",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩Lucas"
-    },
-    {
-     "name_as_written": "El Ceprino",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩El Ceprino"
-    },
-    {
-     "name_as_written": "Stefanio Lima",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩Stefanio Lima"
-    },
-    {
-     "name_as_written": "Pingusso",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩Pingusso"
-    },
-    {
-     "name_as_written": "Snakes",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩Snakes"
-    },
-    {
-     "name_as_written": "Lenhy",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩Lenhy"
-    },
-    {
-     "name_as_written": "Shark",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩Shark"
-    },
-    {
-     "name_as_written": "Delahoy",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩Delahoy"
-    },
-    {
-     "name_as_written": "Bartef",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩Bartef"
-    },
-    {
-     "name_as_written": "No step",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩No step"
-    },
-    {
-     "name_as_written": "Lucas",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩Lucas"
-    },
-    {
-     "name_as_written": "Miro kikola",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩Miro kikola"
-    },
-    {
-     "name_as_written": "Bakongo",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩Bakongo"
-    },
-    {
-     "name_as_written": "Marianna",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩Marianna"
-    },
-    {
-     "name_as_written": "Xtra",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "🦩Xtra"
-    },
-    {
-     "name_as_written": "Panagiotis & Myrto",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "🥥Panagiotis & Myrto"
-    },
-    {
-     "name_as_written": "Adrian & Anita",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "🥥Adrian & Anita"
-    },
-    {
-     "name_as_written": "Dancefloor",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "🥥Dancefloor"
-    },
-    {
-     "name_as_written": "Yoyo Flow",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "🥥Yoyo Flow"
-    },
-    {
-     "name_as_written": "Patrick el classico",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "🥥Patrick el classico"
-    },
-    {
-     "name_as_written": "Dmitri",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "🥥Dmitri"
-    },
-    {
-     "name_as_written": "The chemist",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "🥥The chemist"
-    },
-    {
-     "name_as_written": "Combinacion perfecta",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "🥥Combinacion perfecta"
-    },
-    {
-     "name_as_written": "Oni Ndreko",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "🥥Oni Ndreko"
-    },
-    {
-     "name_as_written": "ALFIL",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "⛱️ ALFIL – PHOTOGRAPHER"
-    },
-    {
-     "name_as_written": "FARANTINI",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "⛱️ FARANTINI – PHOTOGRAPHER"
-    },
-    {
-     "name_as_written": "CHERYSTYL",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "⛱️ CHERYSTYL – VIDEOGRAPHER"
-    },
-    {
-     "name_as_written": "BENKOS",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "⛱️ BENKOS – VIDEOGRAPHER"
-    },
-    {
-     "name_as_written": "LEGACY MEDIA",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "⛱️ LEGACY MEDIA – SOCIAL MEDIA EXPERTS"
-    }
-   ],
-   "features": [
-    {
-     "feature": "partner_hotel",
-     "quote": "🏨 FAFA :",
-     "rationale": "The event sells hotel booking through a dedicated hotel section naming the hotel FAFA, which is not part of the pass."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "WEDNESDAY: ALL IN WHITE 🤍✨",
-     "rationale": "The description lists day-by-day dress codes for the event."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "FRIDAY: DISCO 🪩💃",
-     "rationale": "The nightly dress themes such as Disco, Gala and Africa are themed parties."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "6c5380e2f78f1430",
+ "answer": {
+  "batch": "event-15717",
+  "events": [
+   {
+    "event_id": 15717,
+    "artists": [
+     {
+      "name_as_written": "Cornel & Rithika",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌴Cornel & Rithika"
+     },
+     {
+      "name_as_written": "Melvin & Gatica",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌴Melvin & Gatica"
+     },
+     {
+      "name_as_written": "Abdel & Lety",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌴Abdel & Lety"
+     },
+     {
+      "name_as_written": "Pablo & Raquel",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌴Pablo & Raquel"
+     },
+     {
+      "name_as_written": "Simone & Danila",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌴Simone & Danila"
+     },
+     {
+      "name_as_written": "York & Lisa",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌴York & Lisa"
+     },
+     {
+      "name_as_written": "Cavalier el craco",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌴Cavalier el craco"
+     },
+     {
+      "name_as_written": "Zoran & Andjela",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌴Zoran & Andjela"
+     },
+     {
+      "name_as_written": "Joan & Franceska",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌴Joan & Franceska"
+     },
+     {
+      "name_as_written": "Samantha",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "🌴Samantha"
+     },
+     {
+      "name_as_written": "York",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🌴York"
+     },
+     {
+      "name_as_written": "Khalid",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🌴Khalid"
+     },
+     {
+      "name_as_written": "David Pedron",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🌴David Pedron"
+     },
+     {
+      "name_as_written": "Trevor",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🌴Trevor"
+     },
+     {
+      "name_as_written": "Lupo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🌴Lupo"
+     },
+     {
+      "name_as_written": "Ramiro Zapata",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🌴Ramiro Zapata"
+     },
+     {
+      "name_as_written": "Jojo & Jenny",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🦩Jojo & Jenny"
+     },
+     {
+      "name_as_written": "Dwe & Gaby",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🦩Dwe & Gaby"
+     },
+     {
+      "name_as_written": "Chamalo & Jalyssa",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🦩Chamalo & Jalyssa"
+     },
+     {
+      "name_as_written": "Elizandro & Sandra",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🦩Elizandro & Sandra"
+     },
+     {
+      "name_as_written": "Justinho",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🦩Justinho"
+     },
+     {
+      "name_as_written": "Lucas",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🦩Lucas"
+     },
+     {
+      "name_as_written": "El Ceprino",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "🦩El Ceprino"
+     },
+     {
+      "name_as_written": "Stefanio Lima",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🦩Stefanio Lima"
+     },
+     {
+      "name_as_written": "Pingusso",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🦩Pingusso"
+     },
+     {
+      "name_as_written": "Snakes",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🦩Snakes"
+     },
+     {
+      "name_as_written": "Lenhy",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🦩Lenhy"
+     },
+     {
+      "name_as_written": "Shark",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🦩Shark"
+     },
+     {
+      "name_as_written": "Delahoy",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🦩Delahoy"
+     },
+     {
+      "name_as_written": "Bartef",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🦩Bartef"
+     },
+     {
+      "name_as_written": "No step",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🦩No step"
+     },
+     {
+      "name_as_written": "Lucas",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🦩Lucas"
+     },
+     {
+      "name_as_written": "Miro kikola",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🦩Miro kikola"
+     },
+     {
+      "name_as_written": "Bakongo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🦩Bakongo"
+     },
+     {
+      "name_as_written": "Marianna",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🦩Marianna"
+     },
+     {
+      "name_as_written": "Xtra",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🦩Xtra"
+     },
+     {
+      "name_as_written": "Panagiotis & Myrto",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "🥥Panagiotis & Myrto"
+     },
+     {
+      "name_as_written": "Adrian & Anita",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "🥥Adrian & Anita"
+     },
+     {
+      "name_as_written": "Dancefloor",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "🥥Dancefloor"
+     },
+     {
+      "name_as_written": "Yoyo Flow",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "🥥Yoyo Flow"
+     },
+     {
+      "name_as_written": "Patrick el classico",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🥥Patrick el classico"
+     },
+     {
+      "name_as_written": "Dmitri",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🥥Dmitri"
+     },
+     {
+      "name_as_written": "The chemist",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🥥The chemist"
+     },
+     {
+      "name_as_written": "Combinacion perfecta",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🥥Combinacion perfecta"
+     },
+     {
+      "name_as_written": "Oni Ndreko",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🥥Oni Ndreko"
+     },
+     {
+      "name_as_written": "ALFIL",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "⛱️ ALFIL – PHOTOGRAPHER"
+     },
+     {
+      "name_as_written": "FARANTINI",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "⛱️ FARANTINI – PHOTOGRAPHER"
+     },
+     {
+      "name_as_written": "CHERYSTYL",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "⛱️ CHERYSTYL – VIDEOGRAPHER"
+     },
+     {
+      "name_as_written": "BENKOS",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "⛱️ BENKOS – VIDEOGRAPHER"
+     },
+     {
+      "name_as_written": "LEGACY MEDIA",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "⛱️ LEGACY MEDIA – SOCIAL MEDIA EXPERTS"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE EVENT",
+      "rationale": "The event is advertised as an all in one event, with hotel booking offered in the same package."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "🏨 FAFA :",
+      "rationale": "A hotel named FAFA is listed under the hotel booking section, separate from the passes."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "SATURDAY: GALA 👑🎩",
+      "rationale": "Dress codes are stated for each night of the event."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "THURSDAY: ANGEL 😇 & DEVIL 😈",
+      "rationale": "Nightly dress themes such as Angel and Devil define themed parties."
+     }
+    ]
+   }
+  ]
+ }
 }

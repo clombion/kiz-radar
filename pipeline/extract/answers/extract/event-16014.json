@@ -1,231 +1,238 @@
 {
- "batch": "event-16014",
- "events": [
-  {
-   "event_id": 16014,
-   "artists": [
-    {
-     "name_as_written": "Loves Kizomba",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Loves Kizomba welcomes you to LOVES KSF 2026, the most international holiday week of Kizomba, Urban Kizz, Tarraxo, Guetto Zouk, Docueur, Semba and Konpa, with pool parties, surprises and summer activities."
-    },
-    {
-     "name_as_written": "AUREA & TRESOR",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– AUREA & TRESOR"
-    },
-    {
-     "name_as_written": "AUDI & LAURA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– AUDI & LAURA"
-    },
-    {
-     "name_as_written": "JP & STEFY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– JP & STEFY"
-    },
-    {
-     "name_as_written": "SAID DSTREET",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– SAID DSTREET"
-    },
-    {
-     "name_as_written": "JACK & SARA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– JACK & SARA"
-    },
-    {
-     "name_as_written": "LUIS & KAREN",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– LUIS & KAREN"
-    },
-    {
-     "name_as_written": "TONY & CARLA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– TONY & CARLA"
-    },
-    {
-     "name_as_written": "ESTEBAN & SANDRA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– ESTEBAN & SANDRA"
-    },
-    {
-     "name_as_written": "NUNO & NAGYLA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– NUNO & NAGYLA"
-    },
-    {
-     "name_as_written": "JA JAH",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– JA JAH"
-    },
-    {
-     "name_as_written": "PORTU & MADA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– PORTU & MADA"
-    },
-    {
-     "name_as_written": "JOHN ALMA & FEDERICA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– JOHN ALMA & FEDERICA"
-    },
-    {
-     "name_as_written": "JUANIN & ROMINA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– JUANIN & ROMINA"
-    },
-    {
-     "name_as_written": "DJ SHARK",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ SHARK"
-    },
-    {
-     "name_as_written": "DJ SNAKE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ SNAKE"
-    },
-    {
-     "name_as_written": "DJ NICE LIFE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ NICE LIFE"
-    },
-    {
-     "name_as_written": "DJ LUCAS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ LUCAS"
-    },
-    {
-     "name_as_written": "DJ DANI FERNADEZ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ DANI FERNADEZ"
-    },
-    {
-     "name_as_written": "DJ LISA ROSE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ LISA ROSE"
-    },
-    {
-     "name_as_written": "DJ HEGZA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ HEGZA"
-    },
-    {
-     "name_as_written": "DJ FAZE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ FAZE"
-    },
-    {
-     "name_as_written": "DJ LOKA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ LOKA"
-    },
-    {
-     "name_as_written": "DJ KIN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ KIN"
-    },
-    {
-     "name_as_written": "DJ OCEANO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ OCEANO"
-    },
-    {
-     "name_as_written": "DJ SERGIO BANDERAS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ SERGIO BANDERAS"
-    },
-    {
-     "name_as_written": "DJ MARCIO KAZUCUTA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– DJ MARCIO KAZUCUTA"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE",
-     "rationale": "The description states the event is an ALL IN ONE format in the same hotel where dancers stay."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "pool parties",
-     "rationale": "The description promotes pool parties as part of the event."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "theme parties at night",
-     "rationale": "Theme parties are offered at night."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "afternoon socials",
-     "rationale": "Afternoon socials are held in the Pool Room."
-    },
-    {
-     "feature": "workshops",
-     "quote": "workshops",
-     "rationale": "Top artists' workshops are part of the programme."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "dance floors",
-     "rationale": "The hotel has several dance floors mentioned as part of the venue."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:27:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "04190212e2e9b7fa",
+ "answer": {
+  "batch": "event-16014",
+  "events": [
+   {
+    "event_id": 16014,
+    "artists": [
+     {
+      "name_as_written": "Loves Kizomba",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Loves Kizomba welcomes you to LOVES KSF 2026, the most international holiday week of Kizomba, Urban Kizz, Tarraxo, Guetto Zouk, Docueur, Semba and Konpa, with pool parties, surprises and summer activities."
+     },
+     {
+      "name_as_written": "AUREA & TRESOR",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– AUREA & TRESOR"
+     },
+     {
+      "name_as_written": "AUDI & LAURA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– AUDI & LAURA"
+     },
+     {
+      "name_as_written": "JP & STEFY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– JP & STEFY"
+     },
+     {
+      "name_as_written": "SAID DSTREET",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– SAID DSTREET"
+     },
+     {
+      "name_as_written": "JACK & SARA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– JACK & SARA"
+     },
+     {
+      "name_as_written": "LUIS & KAREN",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– LUIS & KAREN"
+     },
+     {
+      "name_as_written": "TONY & CARLA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– TONY & CARLA"
+     },
+     {
+      "name_as_written": "ESTEBAN & SANDRA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– ESTEBAN & SANDRA"
+     },
+     {
+      "name_as_written": "NUNO & NAGYLA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– NUNO & NAGYLA"
+     },
+     {
+      "name_as_written": "JA JAH",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– JA JAH"
+     },
+     {
+      "name_as_written": "PORTU & MADA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– PORTU & MADA"
+     },
+     {
+      "name_as_written": "JOHN ALMA & FEDERICA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– JOHN ALMA & FEDERICA"
+     },
+     {
+      "name_as_written": "JUANIN & ROMINA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– JUANIN & ROMINA"
+     },
+     {
+      "name_as_written": "DJ SHARK",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ SHARK"
+     },
+     {
+      "name_as_written": "DJ SNAKE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ SNAKE"
+     },
+     {
+      "name_as_written": "DJ NICE LIFE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ NICE LIFE"
+     },
+     {
+      "name_as_written": "DJ LUCAS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ LUCAS"
+     },
+     {
+      "name_as_written": "DJ DANI FERNADEZ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ DANI FERNADEZ"
+     },
+     {
+      "name_as_written": "DJ LISA ROSE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ LISA ROSE"
+     },
+     {
+      "name_as_written": "DJ HEGZA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ HEGZA"
+     },
+     {
+      "name_as_written": "DJ FAZE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ FAZE"
+     },
+     {
+      "name_as_written": "DJ LOKA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ LOKA"
+     },
+     {
+      "name_as_written": "DJ KIN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ KIN"
+     },
+     {
+      "name_as_written": "DJ OCEANO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ OCEANO"
+     },
+     {
+      "name_as_written": "DJ SERGIO BANDERAS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ SERGIO BANDERAS"
+     },
+     {
+      "name_as_written": "DJ MARCIO KAZUCUTA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– DJ MARCIO KAZUCUTA"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE format where everything happens in the same hotel",
+      "rationale": "The parties take place in the same hotel where dancers stay, as stated by the ALL IN ONE format."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "pool parties",
+      "rationale": "The description explicitly promises pool parties."
+     },
+     {
+      "feature": "workshops",
+      "quote": "top artists’ workshops",
+      "rationale": "Workshops by top artists are part of the event programme."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "afternoon socials in the Pool Room",
+      "rationale": "Afternoon socials are offered as part of the programme."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "theme parties at night",
+      "rationale": "Theme parties are held at night during the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "dance floors",
+      "rationale": "The hotel offers several dance floors, which means more than one dance floor."
+     }
+    ]
+   }
+  ]
+ }
 }

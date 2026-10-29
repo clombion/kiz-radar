@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jules@jules+yuna",
+ "key_b": "p:jules@jules+yuna",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "df93aed76e31e5c5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same key, a single name 'Jules' stated with countries CM and FR, but the mention lists are empty, so there is no event, role, style or partner detail to tell whether this is one artist or several people sharing a name."
+ }
+}

@@ -1,98 +1,105 @@
 {
- "batch": "event-16778",
- "events": [
-  {
-   "event_id": 16778,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 AMAZING SOCIAL ROOMS"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "ROOM 1",
-     "kind": "party",
-     "genres": [
-      "urbankiz",
-      "douceur",
-      "tarraxo",
-      "tarraxinha"
-     ],
-     "quote": "ROOM 1: Urban Kizz, Douceur, Tarraxo, Tarraxinha & more"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "01559010247204ca",
+ "answer": {
+  "batch": "event-16778",
+  "events": [
+   {
+    "event_id": 16778,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 AMAZING SOCIAL ROOMS"
     },
-    {
-     "name_as_written": "ROOM 2",
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba",
-      "kompa",
-      "afro"
-     ],
-     "quote": "ROOM 2: Kizomba, Semba, Kompa, Afrohouse & more"
-    },
-    {
-     "name_as_written": "ROOM 3",
-     "kind": "party",
-     "genres": [
-      "bachata",
-      "salsa"
-     ],
-     "quote": "ROOM 3: Bachata & Salsa"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kizz",
-     "quote": "ROOM 1: Urban Kizz, Douceur, Tarraxo, Tarraxinha & more"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "ROOM 1: Urban Kizz, Douceur, Tarraxo, Tarraxinha & more"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "ROOM 1: Urban Kizz, Douceur, Tarraxo, Tarraxinha & more"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "ROOM 1: Urban Kizz, Douceur, Tarraxo, Tarraxinha & more"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "ROOM 2: Kizomba, Semba, Kompa, Afrohouse & more"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "ROOM 2: Kizomba, Semba, Kompa, Afrohouse & more"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "ROOM 2: Kizomba, Semba, Kompa, Afrohouse & more"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrohouse",
-     "quote": "ROOM 2: Kizomba, Semba, Kompa, Afrohouse & more"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "ROOM 3: Bachata & Salsa"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "ROOM 3: Bachata & Salsa"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "ROOM 1",
+      "kind": "party",
+      "genres": [
+       "urbankiz",
+       "douceur",
+       "tarraxo",
+       "tarraxinha"
+      ],
+      "quote": "ROOM 1: Urban Kizz, Douceur, Tarraxo, Tarraxinha & more"
+     },
+     {
+      "name_as_written": "ROOM 2",
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "semba",
+       "kompa",
+       "afro"
+      ],
+      "quote": "ROOM 2: Kizomba, Semba, Kompa, Afrohouse & more"
+     },
+     {
+      "name_as_written": "ROOM 3",
+      "kind": "party",
+      "genres": [
+       "bachata",
+       "salsa"
+      ],
+      "quote": "ROOM 3: Bachata & Salsa"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kizz",
+      "quote": "ROOM 1: Urban Kizz, Douceur, Tarraxo, Tarraxinha & more"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "ROOM 1: Urban Kizz, Douceur, Tarraxo, Tarraxinha & more"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "ROOM 1: Urban Kizz, Douceur, Tarraxo, Tarraxinha & more"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "ROOM 1: Urban Kizz, Douceur, Tarraxo, Tarraxinha & more"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "ROOM 2: Kizomba, Semba, Kompa, Afrohouse & more"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "ROOM 2: Kizomba, Semba, Kompa, Afrohouse & more"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "ROOM 2: Kizomba, Semba, Kompa, Afrohouse & more"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrohouse",
+      "quote": "ROOM 2: Kizomba, Semba, Kompa, Afrohouse & more"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "ROOM 3: Bachata & Salsa"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "ROOM 3: Bachata & Salsa"
+     }
+    ]
+   }
+  ]
+ }
 }

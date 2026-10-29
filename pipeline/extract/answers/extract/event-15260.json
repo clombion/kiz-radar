@@ -1,329 +1,336 @@
 {
- "batch": "event-15260",
- "events": [
-  {
-   "event_id": 15260,
-   "artists": [
-    {
-     "name_as_written": "Dasmara",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": "🇵🇹/🇦🇴",
-     "source_line": "* Dasmara 🇵🇹/🇦🇴"
-    },
-    {
-     "name_as_written": "Afridannce",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": "🇪🇸/🇲🇿",
-     "source_line": "* Afridannce 🇪🇸/🇲🇿"
-    },
-    {
-     "name_as_written": "Theo",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": "🇳🇴/🇬🇧",
-     "source_line": "* Theo 🇳🇴/🇬🇧"
-    },
-    {
-     "name_as_written": "Gilberto",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": "🇸🇪/🇦🇴",
-     "source_line": "* Gilberto 🇸🇪/🇦🇴"
-    },
-    {
-     "name_as_written": "Tina",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": "🇸🇪",
-     "source_line": "* Tina 🇸🇪"
-    },
-    {
-     "name_as_written": "Yves",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": "🇸🇪",
-     "source_line": "* Yves 🇸🇪"
-    },
-    {
-     "name_as_written": "Sara",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": "🇸🇪",
-     "source_line": "* Sara 🇸🇪"
-    },
-    {
-     "name_as_written": "Susan",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": "🇸🇪",
-     "source_line": "* Susan 🇸🇪"
-    },
-    {
-     "name_as_written": "Said",
-     "role": "teacher",
-     "style": "Urban Kiz/Tango Kiz",
-     "country": "🇫🇷",
-     "source_line": "* Said 🇫🇷"
-    },
-    {
-     "name_as_written": "Oksana",
-     "role": "teacher",
-     "style": "Urban Kiz/Tango Kiz",
-     "country": "🇺🇦",
-     "source_line": "* Oksana 🇺🇦"
-    },
-    {
-     "name_as_written": "Senseï",
-     "role": "teacher",
-     "style": "Urban Kiz/Tango Kiz",
-     "country": "🇫🇷",
-     "source_line": "* Senseï 🇫🇷"
-    },
-    {
-     "name_as_written": "Vanildo",
-     "role": "teacher",
-     "style": "Urban Kiz/Tango Kiz",
-     "country": "🇳🇱",
-     "source_line": "* Vanildo 🇳🇱"
-    },
-    {
-     "name_as_written": "Mamadou",
-     "role": "teacher",
-     "style": "Urban Kiz/Tango Kiz",
-     "country": "🇸🇪",
-     "source_line": "* Mamadou 🇸🇪"
-    },
-    {
-     "name_as_written": "Elli",
-     "role": "teacher",
-     "style": "Urban Kiz/Tango Kiz",
-     "country": "🇸🇪",
-     "source_line": "* Elli 🇸🇪"
-    },
-    {
-     "name_as_written": "Agnes",
-     "role": "teacher",
-     "style": "Urban Kiz/Tango Kiz",
-     "country": "🇸🇪",
-     "source_line": "* Agnes 🇸🇪"
-    },
-    {
-     "name_as_written": "Pierre",
-     "role": "teacher",
-     "style": "Urban Kiz/Tango Kiz",
-     "country": "🇸🇪",
-     "source_line": "* Pierre 🇸🇪"
-    },
-    {
-     "name_as_written": "Victoria",
-     "role": "teacher",
-     "style": "Urban Kiz/Tango Kiz",
-     "country": "🇸🇪",
-     "source_line": "* Victoria 🇸🇪"
-    },
-    {
-     "name_as_written": "Ichigo",
-     "role": "teacher",
-     "style": "Tarraxo/Tarraxinha/Konpa",
-     "country": "🇫🇷",
-     "source_line": "* Ichigo 🇫🇷"
-    },
-    {
-     "name_as_written": "Amina",
-     "role": "teacher",
-     "style": "Tarraxo/Tarraxinha/Konpa",
-     "country": "🇸🇪",
-     "source_line": "* Amina 🇸🇪"
-    },
-    {
-     "name_as_written": "Prince Mpedzisi",
-     "role": "performer",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "* Prince Mpedzisi 🇸🇪"
-    },
-    {
-     "name_as_written": "Doggelito",
-     "role": "performer",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "* Doggelito 🇸🇪"
-    },
-    {
-     "name_as_written": "Rigo Topaz",
-     "role": "performer",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "* Rigo Topaz 🇸🇪"
-    },
-    {
-     "name_as_written": "Gary Leafnuts Beckford",
-     "role": "performer",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "* Gary Leafnuts Beckford 🇸🇪"
-    },
-    {
-     "name_as_written": "Delio Tala",
-     "role": "performer",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "* Delio Tala 🇪🇸"
-    },
-    {
-     "name_as_written": "CHON",
-     "role": "performer",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "* CHON 🇸🇪"
-    },
-    {
-     "name_as_written": "Nando Valoi",
-     "role": "performer",
-     "style": null,
-     "country": "🇸🇪/🇲🇿",
-     "source_line": "* Nando Valoi 🇸🇪/🇲🇿"
-    },
-    {
-     "name_as_written": "Preans",
-     "role": "performer",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "* Preans 🇸🇪"
-    },
-    {
-     "name_as_written": "Sara Martins",
-     "role": "performer",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "* Sara Martins 🇸🇪"
-    },
-    {
-     "name_as_written": "Christoffer Fallope",
-     "role": "performer",
-     "style": null,
-     "country": "🇸🇪/🇬🇵",
-     "source_line": "* Christoffer Fallope 🇸🇪/🇬🇵"
-    },
-    {
-     "name_as_written": "DJ Ichigo",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "* DJ Ichigo 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Delio Tala",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "* DJ Delio Tala 🇪🇸"
-    },
-    {
-     "name_as_written": "DJ Poema Beatz",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "* DJ Poema Beatz 🇸🇪"
-    },
-    {
-     "name_as_written": "DJ Mzakhe Damzara",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "* DJ Mzakhe Damzara 🇸🇪"
-    },
-    {
-     "name_as_written": "DJ Stella Bandela",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "* DJ Stella Bandela 🇸🇪"
-    },
-    {
-     "name_as_written": "DJ Rigo Fuego",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇪",
-     "source_line": "* DJ Rigo Fuego 🇸🇪"
-    },
-    {
-     "name_as_written": "DJ Theo Awadzi",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇴/🇬🇧",
-     "source_line": "* DJ Theo Awadzi 🇳🇴/🇬🇧"
-    },
-    {
-     "name_as_written": "DJ Da Mata",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇪/🇦🇴",
-     "source_line": "* DJ Da Mata 🇸🇪/🇦🇴"
-    },
-    {
-     "name_as_written": "DJ Joey C",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇪/🇹🇷",
-     "source_line": "* DJ Joey C 🇸🇪/🇹🇷"
-    },
-    {
-     "name_as_written": "DJ Ze Gomes",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇪/🇦🇴",
-     "source_line": "* DJ Ze Gomes 🇸🇪/🇦🇴"
-    },
-    {
-     "name_as_written": "DJ Den Megavolt",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇪/🇷🇺",
-     "source_line": "* DJ Den Megavolt 🇸🇪/🇷🇺"
-    },
-    {
-     "name_as_written": "Ironlady Events",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Instagram: Ironlady Events (didi…)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops",
-     "rationale": "The description lists workshops as part of the festival."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows",
-     "rationale": "The highlights list includes shows."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Live Guest Artists",
-     "rationale": "Live guest artists perform as singers and musicians at the festival."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 dancefloors",
-     "rationale": "The venue specification lists three dancefloors."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Dinner buffets + 1 glass of wine/night Friday & Saturday",
-     "rationale": "The full festival pass includes dinner buffets on Friday and Saturday."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Saturday Afternoon Social",
-     "rationale": "The schedule includes afternoon socials on Saturday and Sunday."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:24:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b3ab28dad5e75ccf",
+ "answer": {
+  "batch": "event-15260",
+  "events": [
+   {
+    "event_id": 15260,
+    "artists": [
+     {
+      "name_as_written": "Dasmara",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": "🇵🇹/🇦🇴",
+      "source_line": "* Dasmara 🇵🇹/🇦🇴"
+     },
+     {
+      "name_as_written": "Afridannce",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": "🇪🇸/🇲🇿",
+      "source_line": "* Afridannce 🇪🇸/🇲🇿"
+     },
+     {
+      "name_as_written": "Theo",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": "🇳🇴/🇬🇧",
+      "source_line": "* Theo 🇳🇴/🇬🇧"
+     },
+     {
+      "name_as_written": "Gilberto",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": "🇸🇪/🇦🇴",
+      "source_line": "* Gilberto 🇸🇪/🇦🇴"
+     },
+     {
+      "name_as_written": "Tina",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": "🇸🇪",
+      "source_line": "* Tina 🇸🇪"
+     },
+     {
+      "name_as_written": "Yves",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": "🇸🇪",
+      "source_line": "* Yves 🇸🇪"
+     },
+     {
+      "name_as_written": "Sara",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": "🇸🇪",
+      "source_line": "* Sara 🇸🇪"
+     },
+     {
+      "name_as_written": "Susan",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": "🇸🇪",
+      "source_line": "* Susan 🇸🇪"
+     },
+     {
+      "name_as_written": "Said",
+      "role": "teacher",
+      "style": "Urban Kiz/Tango Kiz",
+      "country": "🇫🇷",
+      "source_line": "* Said 🇫🇷"
+     },
+     {
+      "name_as_written": "Oksana",
+      "role": "teacher",
+      "style": "Urban Kiz/Tango Kiz",
+      "country": "🇺🇦",
+      "source_line": "* Oksana 🇺🇦"
+     },
+     {
+      "name_as_written": "Senseï",
+      "role": "teacher",
+      "style": "Urban Kiz/Tango Kiz",
+      "country": "🇫🇷",
+      "source_line": "* Senseï 🇫🇷"
+     },
+     {
+      "name_as_written": "Vanildo",
+      "role": "teacher",
+      "style": "Urban Kiz/Tango Kiz",
+      "country": "🇳🇱",
+      "source_line": "* Vanildo 🇳🇱"
+     },
+     {
+      "name_as_written": "Mamadou",
+      "role": "teacher",
+      "style": "Urban Kiz/Tango Kiz",
+      "country": "🇸🇪",
+      "source_line": "* Mamadou 🇸🇪"
+     },
+     {
+      "name_as_written": "Elli",
+      "role": "teacher",
+      "style": "Urban Kiz/Tango Kiz",
+      "country": "🇸🇪",
+      "source_line": "* Elli 🇸🇪"
+     },
+     {
+      "name_as_written": "Agnes",
+      "role": "teacher",
+      "style": "Urban Kiz/Tango Kiz",
+      "country": "🇸🇪",
+      "source_line": "* Agnes 🇸🇪"
+     },
+     {
+      "name_as_written": "Pierre",
+      "role": "teacher",
+      "style": "Urban Kiz/Tango Kiz",
+      "country": "🇸🇪",
+      "source_line": "* Pierre 🇸🇪"
+     },
+     {
+      "name_as_written": "Victoria",
+      "role": "teacher",
+      "style": "Urban Kiz/Tango Kiz",
+      "country": "🇸🇪",
+      "source_line": "* Victoria 🇸🇪"
+     },
+     {
+      "name_as_written": "Ichigo",
+      "role": "teacher",
+      "style": "Tarraxo/Tarraxinha/Konpa",
+      "country": "🇫🇷",
+      "source_line": "* Ichigo 🇫🇷"
+     },
+     {
+      "name_as_written": "Amina",
+      "role": "teacher",
+      "style": "Tarraxo/Tarraxinha/Konpa",
+      "country": "🇸🇪",
+      "source_line": "* Amina 🇸🇪"
+     },
+     {
+      "name_as_written": "Prince Mpedzisi",
+      "role": "performer",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "* Prince Mpedzisi 🇸🇪"
+     },
+     {
+      "name_as_written": "Doggelito",
+      "role": "performer",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "* Doggelito 🇸🇪"
+     },
+     {
+      "name_as_written": "Rigo Topaz",
+      "role": "performer",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "* Rigo Topaz 🇸🇪"
+     },
+     {
+      "name_as_written": "Gary Leafnuts Beckford",
+      "role": "performer",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "* Gary Leafnuts Beckford 🇸🇪"
+     },
+     {
+      "name_as_written": "Delio Tala",
+      "role": "performer",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "* Delio Tala 🇪🇸"
+     },
+     {
+      "name_as_written": "CHON",
+      "role": "performer",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "* CHON 🇸🇪"
+     },
+     {
+      "name_as_written": "Nando Valoi",
+      "role": "performer",
+      "style": null,
+      "country": "🇸🇪/🇲🇿",
+      "source_line": "* Nando Valoi 🇸🇪/🇲🇿"
+     },
+     {
+      "name_as_written": "Preans",
+      "role": "performer",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "* Preans 🇸🇪"
+     },
+     {
+      "name_as_written": "Sara Martins",
+      "role": "performer",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "* Sara Martins 🇸🇪"
+     },
+     {
+      "name_as_written": "Christoffer Fallope",
+      "role": "performer",
+      "style": null,
+      "country": "🇸🇪/🇬🇵",
+      "source_line": "* Christoffer Fallope 🇸🇪/🇬🇵"
+     },
+     {
+      "name_as_written": "DJ Ichigo",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "* DJ Ichigo 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Delio Tala",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "* DJ Delio Tala 🇪🇸"
+     },
+     {
+      "name_as_written": "DJ Poema Beatz",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "* DJ Poema Beatz 🇸🇪"
+     },
+     {
+      "name_as_written": "DJ Mzakhe Damzara",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "* DJ Mzakhe Damzara 🇸🇪"
+     },
+     {
+      "name_as_written": "DJ Stella Bandela",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "* DJ Stella Bandela 🇸🇪"
+     },
+     {
+      "name_as_written": "DJ Rigo Fuego",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇪",
+      "source_line": "* DJ Rigo Fuego 🇸🇪"
+     },
+     {
+      "name_as_written": "DJ Theo Awadzi",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇴/🇬🇧",
+      "source_line": "* DJ Theo Awadzi 🇳🇴/🇬🇧"
+     },
+     {
+      "name_as_written": "DJ Da Mata",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇪/🇦🇴",
+      "source_line": "* DJ Da Mata 🇸🇪/🇦🇴"
+     },
+     {
+      "name_as_written": "DJ Joey C",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇪/🇹🇷",
+      "source_line": "* DJ Joey C 🇸🇪/🇹🇷"
+     },
+     {
+      "name_as_written": "DJ Ze Gomes",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇪/🇦🇴",
+      "source_line": "* DJ Ze Gomes 🇸🇪/🇦🇴"
+     },
+     {
+      "name_as_written": "DJ Den Megavolt",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇪/🇷🇺",
+      "source_line": "* DJ Den Megavolt 🇸🇪/🇷🇺"
+     },
+     {
+      "name_as_written": "Ironlady Events",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Instagram: Ironlady Events (didi…)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops",
+      "rationale": "The festival lists dance workshops as a core part of the programme."
+     },
+     {
+      "feature": "shows",
+      "quote": "Shows",
+      "rationale": "The description lists shows as part of the festival."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Live Guest Artists",
+      "rationale": "Live guest artists perform at the festival, which implies live music or performances."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Sunday Afternoon Social",
+      "rationale": "Afternoon socials are scheduled on Saturday and Sunday."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 dancefloors",
+      "rationale": "The venue has three dancefloors, meaning more than one dance room."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Dinner buffets + 1 glass of wine/night Friday & Saturday",
+      "rationale": "The full pass includes dinner buffets on Friday and Saturday."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:katalin@azmael+katalin",
+ "key_b": "p:katalin@katalin+mathias",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d02743009169d8c2",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides share only the first name Katalin and the country AT; their partners differ (azmael versus mathias) and each side's couple is a different pairing, so the evidence points to two different people."
+ }
+}

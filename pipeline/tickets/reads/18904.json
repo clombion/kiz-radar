@@ -2,13 +2,15 @@
  "event_id": 18904,
  "title": "Kizztalk New Years Weekender Munich",
  "start_date": "2026-12-30",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:22:35+00:00",
+ "end_date": "2027-01-03",
+ "country": "Germany",
  "styles": [
   "kizomba"
  ],
  "description": "KIZZTALK NEW YEAR WEEKENDER 2026/2027\nDec 30, 2026 – Jan 3, 2027 | Munich\nWe want to wrap up 2026 together with you—and start 2027 exactly the way we love: with plenty of dancing, music, community, and time spent together.\nFrom December 30 to January 3, the KIZZTALK Dance Academy will become our shared home for five days of UrbanKiz, Kizomba, workshops, socials, long party nights, and, of course, a very special New Year’s Eve.\nWhether you’ve been part of our community for a long time or are visiting KIZZTALK for the first time, you are warmly invited to bid farewell to the old year and dance your way into the new one with us.\nCONFIRMED ARTIST\nFajul – KIZZTALK\nCONFIRMED DJs\nDJ Sorin\nDJ Mixmillion\nDJ Frank\nAdditional artists, DJs, and the full program will be announced gradually.\nWhat to expect:\n• 5 days of KIZZTALK from Dec 30 to Jan 3\n• Workshops & bootcamps\n• Day socials\n• Parties lasting late into the night\n• Big New Year’s Eve party on Dec 31\n• UrbanKiz & Kizomba\n• International DJs & artists\n• Plenty of time for dancing and socializing\n• KIZZTALK community vibes to ring in the new year\nWe don’t want just a brief New Year’s Eve evening; we want to turn it into a multi-day experience together: arriving, dancing, learning, celebrating, sleeping in, and starting the new year together.\nDec 30, 2026 – Jan 3, 2027\nKIZZTALK Dance Academy\nArnulfstraße 195, Munich\nThe first full passes are already available. Spots are limited.\nCome dance with us into 2027.\nLet’s close 2026 together and start 2027 on the dancefloor. Need a place to stay? You can stay in our guestroom with up to 3 people, get in touch for more info and reservation!",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:12:36+00:00",
  "passes": [
   {
    "kind": "full",

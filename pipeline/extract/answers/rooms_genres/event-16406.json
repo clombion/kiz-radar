@@ -1,31 +1,55 @@
 {
- "batch": "event-16406",
- "events": [
-  {
-   "event_id": 16406,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 rooms* Semba + Urban"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA + SEMBA DJs"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "7b89007ea6d82a30",
+ "answer": {
+  "batch": "event-16406",
+  "events": [
+   {
+    "event_id": 16406,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 rooms* Semba + Urban"
     },
-    {
-     "genre": "semba",
-     "genre_as_written": "SEMBA",
-     "quote": "KIZOMBA + SEMBA DJs"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBAN KIZ",
-     "quote": "URBAN KIZ DJs"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "semba"
+      ],
+      "quote": "Semba"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "urbankiz"
+      ],
+      "quote": "Urban"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "2 rooms* Semba + Urban"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBAN KIZ",
+      "quote": "URBAN KIZ DJs"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KIZOMBA + SEMBA DJs"
+     }
+    ]
+   }
+  ]
+ }
 }

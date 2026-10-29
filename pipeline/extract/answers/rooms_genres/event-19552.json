@@ -1,43 +1,50 @@
 {
- "batch": "event-19552",
- "events": [
-  {
-   "event_id": 19552,
-   "party_rooms": {
-    "count": 2,
-    "quote": "Salle 100% BACHATA\n🕺 1️⃣ Salle 100% KIZOMBA"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Salle 100% BACHATA",
-     "kind": "party",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "Salle 100% BACHATA"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "cc652aad5c2ef6fa",
+ "answer": {
+  "batch": "event-19552",
+  "events": [
+   {
+    "event_id": 19552,
+    "party_rooms": {
+     "count": 2,
+     "quote": "💃 1️⃣ Salle 100% BACHATA\n🕺 1️⃣ Salle 100% KIZOMBA"
     },
-    {
-     "name_as_written": "Salle 100% KIZOMBA",
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "Salle 100% KIZOMBA"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "Salle 100% BACHATA"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "Salle 100% KIZOMBA"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Salle 100% BACHATA",
+      "kind": "party",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "Salle 100% BACHATA"
+     },
+     {
+      "name_as_written": "Salle 100% KIZOMBA",
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "Salle 100% KIZOMBA"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "Salle 100% BACHATA"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "Salle 100% KIZOMBA"
+     }
+    ]
+   }
+  ]
+ }
 }

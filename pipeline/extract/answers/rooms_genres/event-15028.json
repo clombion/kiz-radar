@@ -1,43 +1,65 @@
 {
- "batch": "event-15028",
- "events": [
-  {
-   "event_id": 15028,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Salsa/Bachata/Kizomba Master Classes"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Salsa/Bachata/Kizomba Master Classes"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Salsa/Bachata/Kizomba Master Classes"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBANKIZ",
-     "quote": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "TARRAXO",
-     "quote": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "AFRO HOUSE",
-     "quote": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "06ee442e4f6c10fa",
+ "answer": {
+  "batch": "event-15028",
+  "events": [
+   {
+    "event_id": 15028,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "SALSA"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Salsa/Bachata/Kizomba Master Classes"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "BACHATA"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Salsa/Bachata/Kizomba Master Classes"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Salsa/Bachata/Kizomba Master Classes"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBANKIZ",
+      "quote": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "TARRAXO",
+      "quote": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "AFRO HOUSE",
+      "quote": "KIZOMBA/URBANKIZ/TARRAXO/AFRO HOUSE"
+     }
+    ]
+   }
+  ]
+ }
 }

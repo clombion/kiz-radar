@@ -1,34 +1,37 @@
 {
- "batch": "event-15754",
- "events": [
-  {
-   "event_id": 15754,
-   "passes": [
-    {
-     "kind": "full",
-     "style": "kizomba",
-     "label_quote": "KIZOMBA",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 100.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Full pass: €100"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:42:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "13a9cbbd0a14a5f4",
+ "answer": {
+  "batch": "event-15754",
+  "events": [
+   {
+    "event_id": 15754,
+    "passes": [
+     {
+      "kind": "full",
+      "style": "kizomba",
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 100.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Full pass: €100"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

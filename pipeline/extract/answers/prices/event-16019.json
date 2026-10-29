@@ -1,220 +1,235 @@
 {
- "batch": "event-16019",
- "events": [
-  {
-   "event_id": 16019,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "🎟️ Single Pass – access to all workshops and parties for 1 person:",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 60.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "2025-09-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Until 30.09.2025 – 60 Euro"
-      },
-      {
-       "amount": 70.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "2025-10-01",
-       "until": "2025-12-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "01.10.2025 – 31.12.2025 – 70 Euro"
-      },
-      {
-       "amount": 75.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "2026-01-01",
-       "until": "2026-03-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "01.01.2026 – 31.03.2026 – 75 Euro"
-      },
-      {
-       "amount": 90.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "2026-04-01",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "After 01.04.2026 – 90 Euro"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "💃🕺 Couple Pass – access to all workshops and parties for a couple (1 leader + 1 follower):",
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 110.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "2025-09-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Until 30.09.2025 – 110 Euro"
-      },
-      {
-       "amount": 125.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "2025-10-01",
-       "until": "2025-12-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "01.10.2025 – 31.12.2025 – 125 Euro"
-      },
-      {
-       "amount": 140.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "2026-01-01",
-       "until": "2026-03-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "01.01.2026 – 31.03.2026 – 140 Euro"
-      },
-      {
-       "amount": 170.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "2026-04-01",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "After 01.04.2026 – 170 Euro"
-      }
-     ]
-    },
-    {
-     "kind": "party",
-     "style": null,
-     "label_quote": "🎉 Party Pass – access to all parties ( day and night in this Foam Party ) for 1 person:",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 25.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "2025-09-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Until 30.09.2025 – 25 Euro"
-      },
-      {
-       "amount": 30.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "2025-10-01",
-       "until": "2025-12-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "01.10.2025 – 31.12.2025 – 30 Euro"
-      },
-      {
-       "amount": 35.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "2026-01-01",
-       "until": "2026-03-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "01.01.2026 – 31.03.2026 – 35 Euro"
-      },
-      {
-       "amount": 50.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "2026-04-01",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "After 01.04.2026 – 50 Euro"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 20.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "🎶 Entry to a single evening party -20 Euro (payment on-site, cash only)"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:43:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "3a23c498e7d08885",
+ "answer": {
+  "batch": "event-16019",
+  "events": [
+   {
+    "event_id": 16019,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "🎟️ Single Pass – access to all workshops and parties for 1 person:",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 60.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "2025-09-30",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Until 30.09.2025 – 60 Euro"
+       },
+       {
+        "amount": 70.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2025-10-01",
+         "until": "2025-12-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "01.10.2025 – 31.12.2025 – 70 Euro"
+       },
+       {
+        "amount": 75.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2026-01-01",
+         "until": "2026-03-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "01.01.2026 – 31.03.2026 – 75 Euro"
+       },
+       {
+        "amount": 90.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2026-04-01",
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "After 01.04.2026 – 90 Euro"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "💃🕺 Couple Pass – access to all workshops and parties for a couple (1 leader + 1 follower):",
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 110.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "2025-09-30",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Until 30.09.2025 – 110 Euro"
+       },
+       {
+        "amount": 125.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2025-10-01",
+         "until": "2025-12-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "01.10.2025 – 31.12.2025 – 125 Euro"
+       },
+       {
+        "amount": 140.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2026-01-01",
+         "until": "2026-03-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "01.01.2026 – 31.03.2026 – 140 Euro"
+       },
+       {
+        "amount": 170.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2026-04-01",
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "After 01.04.2026 – 170 Euro"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": "🎉 Party Pass – access to all parties ( day and night in this Foam Party ) for 1 person:",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 25.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "2025-09-30",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Until 30.09.2025 – 25 Euro"
+       },
+       {
+        "amount": 30.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2025-10-01",
+         "until": "2025-12-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "01.10.2025 – 31.12.2025 – 30 Euro"
+       },
+       {
+        "amount": 35.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2026-01-01",
+         "until": "2026-03-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "01.01.2026 – 31.03.2026 – 35 Euro"
+       },
+       {
+        "amount": 50.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "2026-04-01",
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "After 01.04.2026 – 50 Euro"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 20.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Entry to a single evening party -20 Euro (payment on-site, cash only)"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

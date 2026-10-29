@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alex@alex+delphine",
+ "key_b": "p:alex@alex+maylie",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d367c9ae7d63dbff",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are 'Alex' in France, but their partners differ (Delphine versus Maylie), and the only shared traits are a common first name and country, which are weak evidence on their own, so they appear to be two different people."
+ }
+}

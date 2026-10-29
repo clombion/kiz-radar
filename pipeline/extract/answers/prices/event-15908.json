@@ -1,404 +1,343 @@
 {
- "batch": "event-15908",
- "events": [
-  {
-   "event_id": 15908,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 269.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "QUADRUPLE ROOM: 2 Nights €269 | 3 Nights €349"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 349.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "QUADRUPLE ROOM: 2 Nights €269 | 3 Nights €349"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 279.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "TRIPLE ROOM: 2 Nights €279 | 3 Nights €359"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 359.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "TRIPLE ROOM: 2 Nights €279 | 3 Nights €359"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 299.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "DOUBLE ROOM: 2 Nights €299 | 3 Nights €379"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 379.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "DOUBLE ROOM: 2 Nights €299 | 3 Nights €379"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 359.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "SINGLE ROOM: 2 Nights €359 | 3 Nights €469"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 469.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "SINGLE ROOM: 2 Nights €359 | 3 Nights €469"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 289.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "SEA-VIEW QUADRUPLE ROOM: 2 Nights €289 | 3 Nights €369"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 369.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "SEA-VIEW QUADRUPLE ROOM: 2 Nights €289 | 3 Nights €369"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 299.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "SEA-VIEW TRIPLE ROOM: 2 Nights €299 | 3 Nights €379"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 379.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "SEA-VIEW TRIPLE ROOM: 2 Nights €299 | 3 Nights €379"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 319.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "SEA-VIEW DOUBLE ROOM: 2 Nights €319 | 3 Nights €399"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 399.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "SEA-VIEW DOUBLE ROOM: 2 Nights €319 | 3 Nights €399"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 379.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "SEA-VIEW SINGLE ROOM: 2 Nights €379 | 3 Nights €489"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 489.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "SEA-VIEW SINGLE ROOM: 2 Nights €379 | 3 Nights €489"
-      }
-     ]
-    },
-    {
-     "kind": "other",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 40.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "➕ MASTERPASS: €40"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "PRICES WILL RISE ON FEBRUARY 16TH"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:42:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "852c1077726e9ca8",
+ "answer": {
+  "batch": "event-15908",
+  "events": [
+   {
+    "event_id": 15908,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 269.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "QUADRUPLE ROOM: 2 Nights €269"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 349.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "QUADRUPLE ROOM: 2 Nights €269 | 3 Nights €349"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 279.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "TRIPLE ROOM: 2 Nights €279"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 359.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "TRIPLE ROOM: 2 Nights €279 | 3 Nights €359"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 299.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "DOUBLE ROOM: 2 Nights €299"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 379.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "DOUBLE ROOM: 2 Nights €299 | 3 Nights €379"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 359.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "SINGLE ROOM: 2 Nights €359"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 469.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "SINGLE ROOM: 2 Nights €359 | 3 Nights €469"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 289.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "SEA-VIEW QUADRUPLE ROOM: 2 Nights €289"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 369.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "SEA-VIEW QUADRUPLE ROOM: 2 Nights €289 | 3 Nights €369"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 299.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "SEA-VIEW TRIPLE ROOM: 2 Nights €299"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 379.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "SEA-VIEW TRIPLE ROOM: 2 Nights €299 | 3 Nights €379"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 319.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "SEA-VIEW DOUBLE ROOM: 2 Nights €319"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 399.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "SEA-VIEW DOUBLE ROOM: 2 Nights €319 | 3 Nights €399"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 379.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "SEA-VIEW SINGLE ROOM: 2 Nights €379"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 489.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "SEA-VIEW SINGLE ROOM: 2 Nights €379 | 3 Nights €489"
+       }
+      ]
+     },
+     {
+      "kind": "other",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 40.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "MASTERPASS: €40"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "PRICES WILL RISE ON FEBRUARY 16TH"
+    ]
+   }
+  ]
+ }
 }

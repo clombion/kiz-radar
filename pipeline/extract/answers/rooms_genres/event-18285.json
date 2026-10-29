@@ -1,43 +1,50 @@
 {
- "batch": "event-18285",
- "events": [
-  {
-   "event_id": 18285,
-   "party_rooms": {
-    "count": 2,
-    "quote": "Two floors, two energies: UrbanKiz and Kizomba, side by side."
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "urbankiz"
-     ],
-     "quote": "Two floors, two energies: UrbanKiz"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "and Kizomba, side by side."
-    }
-   ],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "UrbanKiz",
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "c4894abf6964524f",
+ "answer": {
+  "batch": "event-18285",
+  "events": [
+   {
+    "event_id": 18285,
+    "party_rooms": {
+     "count": 2,
      "quote": "Two floors, two energies: UrbanKiz and Kizomba, side by side."
     },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Two floors, two energies: UrbanKiz and Kizomba, side by side."
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "urbankiz"
+      ],
+      "quote": "UrbanKiz"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "Kizomba, side by side"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "UrbanKiz",
+      "quote": "UrbanKiz and Kizomba"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba, side by side"
+     }
+    ]
+   }
+  ]
+ }
 }

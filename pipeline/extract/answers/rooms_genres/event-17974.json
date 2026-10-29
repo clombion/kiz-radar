@@ -1,28 +1,38 @@
 {
- "batch": "event-17974",
- "events": [
-  {
-   "event_id": 17974,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBAN KIZ",
-     "quote": "URBAN KIZ DEEJAYS"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "880c5e70ee48deb0",
+ "answer": {
+  "batch": "event-17974",
+  "events": [
+   {
+    "event_id": 17974,
+    "party_rooms": {
+     "count": 3,
+     "quote": "Thursday 31 December 2026 : (3 rooms)"
     },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "SEMBA DEEJAYS"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "TARRAXO DEEJAYS"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBAN KIZ",
+      "quote": "URBAN KIZ DEEJAYS"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "SEMBA",
+      "quote": "SEMBA DEEJAYS"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "TARRAXO",
+      "quote": "TARRAXO DEEJAYS"
+     }
+    ]
+   }
+  ]
+ }
 }

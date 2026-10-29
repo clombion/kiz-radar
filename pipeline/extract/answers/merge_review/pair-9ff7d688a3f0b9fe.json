@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mike@elo+mike",
+ "key_b": "p:mikeevens",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:06+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "9ff7d688a3f0b9fe",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides state France, but 'MIKE' is a common first name with no shared partner, event, or style, and side B's only event is in Martinique while side A's are in France, so the evidence does not settle whether they are one dancer."
+ }
+}

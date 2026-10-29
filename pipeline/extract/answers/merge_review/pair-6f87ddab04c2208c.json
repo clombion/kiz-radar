@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ana@ana+guilherme",
+ "key_b": "p:anasaavedra",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6f87ddab04c2208c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is the bare first name 'ANA' with a Cuban and Portuguese country list and a partner, Guilherme, while side B is 'ANA SAAVEDRA' with only Portugal and no partners; they share France and Portugal, but the first name is common, side A's mentions are missing, and its Cuban country suggests a possibly different Ana, so the evidence does not settle it."
+ }
+}

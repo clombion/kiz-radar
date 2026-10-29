@@ -1,170 +1,177 @@
 {
- "batch": "event-19010",
- "events": [
-  {
-   "event_id": 19010,
-   "artists": [
-    {
-     "name_as_written": "TRAYBEATZ",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇼",
-     "source_line": "◾️ TRAYBEATZ 🇨🇼"
-    },
-    {
-     "name_as_written": "DJ BARTEF",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇱",
-     "source_line": "◾️ DJ BARTEF 🇵🇱"
-    },
-    {
-     "name_as_written": "DJ NURLIVING",
-     "role": "dj",
-     "style": null,
-     "country": "🇰🇬",
-     "source_line": "◾️ DJ NURLIVING 🇰🇬"
-    },
-    {
-     "name_as_written": "DJ DINERO",
-     "role": "dj",
-     "style": null,
-     "country": "🇰🇿",
-     "source_line": "◾️ DJ DINERO 🇰🇿"
-    },
-    {
-     "name_as_written": "DJ ZHUSHOK",
-     "role": "dj",
-     "style": null,
-     "country": "🇰🇿",
-     "source_line": "◾️ DJ ZHUSHOK 🇰🇿"
-    },
-    {
-     "name_as_written": "DJ ASSYL",
-     "role": "dj",
-     "style": null,
-     "country": "🇰🇿",
-     "source_line": "◾️ DJ ASSYL 🇰🇿"
-    },
-    {
-     "name_as_written": "ALBIR",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "◾️ ALBIR 🇪🇸"
-    },
-    {
-     "name_as_written": "IÑES MIRANDA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "◾️ IÑES MIRANDA 🇵🇹"
-    },
-    {
-     "name_as_written": "SELIM & ANASTASIA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷 🇺🇦",
-     "source_line": "◾️ SELIM & ANASTASIA 🇫🇷 🇺🇦"
-    },
-    {
-     "name_as_written": "MICHAEL & ANIKA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇳🇱 🇦🇹🇸🇰",
-     "source_line": "◾️ MICHAEL & ANIKA 🇳🇱 🇦🇹🇸🇰"
-    },
-    {
-     "name_as_written": "KIKI",
-     "role": "teacher",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "◾️ KIKI 🇩🇪"
-    },
-    {
-     "name_as_written": "VERONIKA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇰🇿",
-     "source_line": "◾️ VERONIKA 🇰🇿"
-    },
-    {
-     "name_as_written": "ULAN & MARZHAN",
-     "role": "teacher",
-     "style": null,
-     "country": "🇰🇿",
-     "source_line": "◾️ ULAN & MARZHAN 🇰🇿"
-    },
-    {
-     "name_as_written": "KHOSO & ALYONA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇰🇿",
-     "source_line": "◾️ KHOSO & ALYONA 🇰🇿"
-    },
-    {
-     "name_as_written": "ZHANIK & ELENA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇰🇿",
-     "source_line": "◾️ ZHANIK & ELENA 🇰🇿"
-    },
-    {
-     "name_as_written": "ISLAM & SALTA",
-     "role": "teacher",
-     "style": null,
-     "country": "🇰🇿",
-     "source_line": "◾️ ISLAM & SALTA 🇰🇿"
-    },
-    {
-     "name_as_written": "SAMAT & KATE",
-     "role": "teacher",
-     "style": null,
-     "country": "🇰🇿",
-     "source_line": "◾️ SAMAT & KATE 🇰🇿"
-    },
-    {
-     "name_as_written": "ASSYL & ZHIBEK",
-     "role": "teacher",
-     "style": null,
-     "country": "🇰🇿",
-     "source_line": "◾️ ASSYL & ZHIBEK 🇰🇿"
-    },
-    {
-     "name_as_written": "Kizz Ryders",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "◾️ Only event passes directly bought at Kizz Ryders ticketlink are valid:"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All-in-one 4-star hotel – Salut Hotel Almaty",
-     "rationale": "The description states the parties are held in the same hotel where dancers stay, described as all-in-one."
-    },
-    {
-     "feature": "workshops",
-     "quote": "18+ hrs of workshops",
-     "rationale": "The event lists more than 18 hours of workshops as part of the programme."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Thursday “Vibrant” Pre-Party",
-     "rationale": "A named pre-party is scheduled before the main event."
-    },
-    {
-     "feature": "after_party",
-     "quote": "Monday “Exhale” After-Party",
-     "rationale": "A named after-party is scheduled at the end of the event."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Wardrobe is mandatory",
-     "rationale": "A mandatory wardrobe requirement is a stated dress code for attendees."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:34:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "42bd34ed5818053c",
+ "answer": {
+  "batch": "event-19010",
+  "events": [
+   {
+    "event_id": 19010,
+    "artists": [
+     {
+      "name_as_written": "Kizz Ryders",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "◾️ Only event passes directly bought at Kizz Ryders ticketlink are valid:"
+     },
+     {
+      "name_as_written": "TRAYBEATZ",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇼",
+      "source_line": "◾️ TRAYBEATZ 🇨🇼"
+     },
+     {
+      "name_as_written": "DJ BARTEF",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇱",
+      "source_line": "◾️ DJ BARTEF 🇵🇱"
+     },
+     {
+      "name_as_written": "DJ NURLIVING",
+      "role": "dj",
+      "style": null,
+      "country": "🇰🇬",
+      "source_line": "◾️ DJ NURLIVING 🇰🇬"
+     },
+     {
+      "name_as_written": "DJ DINERO",
+      "role": "dj",
+      "style": null,
+      "country": "🇰🇿",
+      "source_line": "◾️ DJ DINERO 🇰🇿"
+     },
+     {
+      "name_as_written": "DJ ZHUSHOK",
+      "role": "dj",
+      "style": null,
+      "country": "🇰🇿",
+      "source_line": "◾️ DJ ZHUSHOK 🇰🇿"
+     },
+     {
+      "name_as_written": "DJ ASSYL",
+      "role": "dj",
+      "style": null,
+      "country": "🇰🇿",
+      "source_line": "◾️ DJ ASSYL 🇰🇿"
+     },
+     {
+      "name_as_written": "ALBIR",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "◾️ ALBIR 🇪🇸"
+     },
+     {
+      "name_as_written": "IÑES MIRANDA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "◾️ IÑES MIRANDA 🇵🇹"
+     },
+     {
+      "name_as_written": "SELIM & ANASTASIA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷 🇺🇦",
+      "source_line": "◾️ SELIM & ANASTASIA 🇫🇷 🇺🇦"
+     },
+     {
+      "name_as_written": "MICHAEL & ANIKA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇳🇱 🇦🇹🇸🇰",
+      "source_line": "◾️ MICHAEL & ANIKA 🇳🇱 🇦🇹🇸🇰"
+     },
+     {
+      "name_as_written": "KIKI",
+      "role": "teacher",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "◾️ KIKI 🇩🇪"
+     },
+     {
+      "name_as_written": "VERONIKA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇰🇿",
+      "source_line": "◾️ VERONIKA 🇰🇿"
+     },
+     {
+      "name_as_written": "ULAN & MARZHAN",
+      "role": "teacher",
+      "style": null,
+      "country": "🇰🇿",
+      "source_line": "◾️ ULAN & MARZHAN 🇰🇿"
+     },
+     {
+      "name_as_written": "KHOSO & ALYONA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇰🇿",
+      "source_line": "◾️ KHOSO & ALYONA 🇰🇿"
+     },
+     {
+      "name_as_written": "ZHANIK & ELENA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇰🇿",
+      "source_line": "◾️ ZHANIK & ELENA 🇰🇿"
+     },
+     {
+      "name_as_written": "ISLAM & SALTA",
+      "role": "teacher",
+      "style": null,
+      "country": "🇰🇿",
+      "source_line": "◾️ ISLAM & SALTA 🇰🇿"
+     },
+     {
+      "name_as_written": "SAMAT & KATE",
+      "role": "teacher",
+      "style": null,
+      "country": "🇰🇿",
+      "source_line": "◾️ SAMAT & KATE 🇰🇿"
+     },
+     {
+      "name_as_written": "ASSYL & ZHIBEK",
+      "role": "teacher",
+      "style": null,
+      "country": "🇰🇿",
+      "source_line": "◾️ ASSYL & ZHIBEK 🇰🇿"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "Hosted in a stylish 4-star hotel in Almaty’s lively city center",
+      "rationale": "The event is hosted in a hotel, which matches the all-in-one format of parties and accommodation under one roof."
+     },
+     {
+      "feature": "workshops",
+      "quote": "18+ hrs of workshops",
+      "rationale": "The description states that workshops are part of the event."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Thursday “Vibrant” Pre-Party",
+      "rationale": "A pre-party is listed before the main event."
+     },
+     {
+      "feature": "after_party",
+      "quote": "Monday “Exhale” After-Party",
+      "rationale": "An after-party is listed for the event."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Wardrobe is mandatory",
+      "rationale": "The house rules make a required wardrobe, which states a dress code."
+     }
+    ]
+   }
+  ]
+ }
 }

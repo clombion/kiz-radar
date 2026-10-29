@@ -1,48 +1,55 @@
 {
- "batch": "event-15572",
- "events": [
-  {
-   "event_id": 15572,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "quote": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "𝗦𝗘𝗠𝗕𝗔",
-     "quote": "𝗦𝗘𝗠𝗕𝗔"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "𝗚𝗛𝗘𝗧𝗧𝗢 𝗭𝗢𝗨𝗞",
-     "quote": "𝗚𝗛𝗘𝗧𝗧𝗢 𝗭𝗢𝗨𝗞"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "𝗧𝗔𝗥𝗥𝗔𝗫𝗜𝗡𝗛𝗔",
-     "quote": "𝗧𝗔𝗥𝗥𝗔𝗫𝗜𝗡𝗛𝗔"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "𝗔𝗙𝗥𝗢 𝗭𝗢𝗨𝗞",
-     "quote": "𝗔𝗙𝗥𝗢 𝗭𝗢𝗨𝗞"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "𝗖𝗔𝗕𝗢",
-     "quote": "𝗖𝗔𝗕𝗢"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "𝗞𝗢𝗡𝗣𝗔",
-     "quote": "𝗞𝗢𝗡𝗣𝗔"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "526738d9062e14ad",
+ "answer": {
+  "batch": "event-15572",
+  "events": [
+   {
+    "event_id": 15572,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba/Semba festive universe"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba/Semba festive universe"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "𝗚𝗛𝗘𝗧𝗧𝗢 𝗭𝗢𝗨𝗞",
+      "quote": "𝗚𝗛𝗘𝗧𝗧𝗢 𝗭𝗢𝗨𝗞"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "𝗧𝗔𝗥𝗥𝗔𝗫𝗜𝗡𝗛𝗔",
+      "quote": "𝗧𝗔𝗥𝗥𝗔𝗫𝗜𝗡𝗛𝗔"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "𝗔𝗙𝗥𝗢 𝗭𝗢𝗨𝗞",
+      "quote": "𝗔𝗙𝗥𝗢 𝗭𝗢𝗨𝗞"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "𝗖𝗔𝗕𝗢",
+      "quote": "𝗖𝗔𝗕𝗢"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "𝗞𝗢𝗡𝗣𝗔",
+      "quote": "𝗞𝗢𝗡𝗣𝗔"
+     }
+    ]
+   }
+  ]
+ }
 }

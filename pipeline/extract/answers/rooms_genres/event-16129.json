@@ -1,43 +1,50 @@
 {
- "batch": "event-16129",
- "events": [
-  {
-   "event_id": 16129,
-   "party_rooms": {
-    "count": 2,
-    "quote": "ROOM URBANKIZ\n🇫🇷 Dj Snakes,\n🇸🇪🇨🇩Poema Beatz\n🇫🇷 Dj Lenhy,\n🇫🇷 Dj Hugo Smile\nROOM KIZOMBA"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "ROOM URBANKIZ",
-     "kind": "party",
-     "genres": [
-      "urbankiz"
-     ],
-     "quote": "ROOM URBANKIZ"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "502d2ab7cf97683f",
+ "answer": {
+  "batch": "event-16129",
+  "events": [
+   {
+    "event_id": 16129,
+    "party_rooms": {
+     "count": 2,
+     "quote": "ROOM URBANKIZ\n🇫🇷 Dj Snakes,\n🇸🇪🇨🇩Poema Beatz\n🇫🇷 Dj Lenhy,\n🇫🇷 Dj Hugo Smile\nROOM KIZOMBA"
     },
-    {
-     "name_as_written": "ROOM KIZOMBA",
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "ROOM KIZOMBA"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "truly unique summer Kizomba experience"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBANKIZ",
-     "quote": "ROOM URBANKIZ"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "ROOM URBANKIZ",
+      "kind": "party",
+      "genres": [
+       "urbankiz"
+      ],
+      "quote": "ROOM URBANKIZ"
+     },
+     {
+      "name_as_written": "ROOM KIZOMBA",
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "ROOM KIZOMBA"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBANKIZ",
+      "quote": "ROOM URBANKIZ"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "ROOM KIZOMBA"
+     }
+    ]
+   }
+  ]
+ }
 }

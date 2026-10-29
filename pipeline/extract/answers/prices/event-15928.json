@@ -1,286 +1,268 @@
 {
- "batch": "event-15928",
- "events": [
-  {
-   "event_id": 15928,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "Full Pass (Friday + Saturday + Sunday):",
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 59.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 10,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€59 –> EARLY BIRD – 5 Women’s Full Passes and 5 Men’s Full Passes"
-      },
-      {
-       "amount": 89.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "06-03",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€89 –> until June 3rd (with gender parity management)"
-      },
-      {
-       "amount": 99.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "€99 –> on-site"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "DUO Full Pass (Friday + Saturday + Sunday for one male guide and one female follower):",
-     "group_size": 2,
-     "days": 3,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 99.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 5,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€99 –> EARLY BIRD – 5 Full Passes"
-      },
-      {
-       "amount": 119.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 5,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€119 –> 5 Full Passes"
-      },
-      {
-       "amount": 149.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "06-04",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€149 –> until June 4th"
-      },
-      {
-       "amount": 169.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "€169 –> on-site"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "Saturday Pass (Saturday workshops + Saturday evening event)",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 60.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "04-15",
-       "until": "06-03",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€60 –> April 15 to June 3"
-      },
-      {
-       "amount": 65.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "€65 –> on the door"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "Sunday Pass (Sunday workshops + Sunday evening):",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 45.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "04-18",
-       "until": "06-03",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€45 –> April 18 to June 3"
-      },
-      {
-       "amount": 50.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "€50 –> on the door"
-      }
-     ]
-    },
-    {
-     "kind": "party",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 30.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Evening Pass (3 evenings) €30"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 15.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Friday Evening €15"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 15.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Saturday Evening €15"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 8.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Sunday Evening €8"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:42:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "6f05f372a2ab6187",
+ "answer": {
+  "batch": "event-15928",
+  "events": [
+   {
+    "event_id": 15928,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "Full Pass (Friday + Saturday + Sunday):",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 59.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 10,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "€59 –> EARLY BIRD – 5 Women’s Full Passes and 5 Men’s Full Passes"
+       },
+       {
+        "amount": 89.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "06-03",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "€89 –> until June 3rd (with gender parity management)"
+       },
+       {
+        "amount": 99.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "€99 –> on-site"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "DUO Full Pass (Friday + Saturday + Sunday for one male guide and one female follower)",
+      "group_size": 2,
+      "days": 3,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 99.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 5,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "€99 –> EARLY BIRD – 5 Full Passes"
+       },
+       {
+        "amount": 119.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 5,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "€119 –> 5 Full Passes"
+       },
+       {
+        "amount": 149.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "06-04",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "€149 –> until June 4th"
+       },
+       {
+        "amount": 169.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "€169 –> on-site"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 60.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "04-15",
+         "until": "06-03",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "€60 –> April 15 to June 3"
+       },
+       {
+        "amount": 65.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "€65 –> on the door"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 45.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "04-18",
+         "until": "06-03",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "€45 –> April 18 to June 3"
+       },
+       {
+        "amount": 50.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "€50 –> on the door"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 30.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Evening Pass (3 evenings) €30"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 15.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Friday Evening €15"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 15.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Saturday Evening €15"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 8.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Sunday Evening €8"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

@@ -1,273 +1,285 @@
 {
- "batch": "event-18835",
- "events": [
-  {
-   "event_id": 18835,
-   "artists": [
-    {
-     "name_as_written": "ENAH & LOLAHONTAS",
-     "role": "teacher",
-     "style": "URBAN KIZ/TARRAXO",
-     "country": "France🇫🇷 /Spain🇪🇸",
-     "source_line": "🌍 ENAH & LOLAHONTAS France🇫🇷 /Spain🇪🇸"
-    },
-    {
-     "name_as_written": "JOJO & JENNY",
-     "role": "teacher",
-     "style": "URBAN KIZ/TARRAXO",
-     "country": "France🇫🇷",
-     "source_line": "🌍 JOJO & JENNY France🇫🇷"
-    },
-    {
-     "name_as_written": "CURTIS & CLÉMENCE",
-     "role": "teacher",
-     "style": "URBAN KIZ/TARRAXO",
-     "country": "France🇫🇷",
-     "source_line": "🌍 CURTIS & CLÉMENCE France🇫🇷"
-    },
-    {
-     "name_as_written": "JP & STEPHY",
-     "role": "teacher",
-     "style": "URBAN KIZ/TARRAXO",
-     "country": "France🇫🇷",
-     "source_line": "🌍 JP & STEPHY France🇫🇷"
-    },
-    {
-     "name_as_written": "ICHIGO & KRISTEL",
-     "role": "teacher",
-     "style": "URBAN KIZ/TARRAXO",
-     "country": "France🇫🇷",
-     "source_line": "🌍 ICHIGO & KRISTEL France🇫🇷"
-    },
-    {
-     "name_as_written": "FAJUL & AGNES",
-     "role": "teacher",
-     "style": "URBAN KIZ/TARRAXO",
-     "country": "Germany🇩🇪/Sweden🇸🇪",
-     "source_line": "🌍 FAJUL & AGNES Germany🇩🇪/Sweden🇸🇪"
-    },
-    {
-     "name_as_written": "RITA & EDDY",
-     "role": "teacher",
-     "style": "URBAN KIZ/TARRAXO",
-     "country": "Hungary🇭🇺",
-     "source_line": "🌍 RITA & EDDY Hungary🇭🇺"
-    },
-    {
-     "name_as_written": "MATHIAS & KATALIN",
-     "role": "teacher",
-     "style": "URBAN KIZ/TARRAXO",
-     "country": "Austria🇦🇹",
-     "source_line": "🌍 MATHIAS & KATALIN Austria🇦🇹"
-    },
-    {
-     "name_as_written": "ISABELLE & FELICIEN",
-     "role": "teacher",
-     "style": "KIZOMBA FUSION",
-     "country": "France🇫🇷",
-     "source_line": "🌍 ISABELLE & FELICIEN France🇫🇷"
-    },
-    {
-     "name_as_written": "TONY PIRATA",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA/KOMPA",
-     "country": "France🇫🇷",
-     "source_line": "🌍 TONY PIRATA France🇫🇷"
-    },
-    {
-     "name_as_written": "ADILSON MAIZA",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA/KOMPA",
-     "country": "Angola🇦🇴",
-     "source_line": "🌍 ADILSON MAIZA Angola🇦🇴"
-    },
-    {
-     "name_as_written": "JACINTO TECA & LUCY",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA/KOMPA",
-     "country": "Czech Republic🇨🇿",
-     "source_line": "🌍 JACINTO TECA & LUCY Czech Republic🇨🇿"
-    },
-    {
-     "name_as_written": "DASMARA DOSSANTO",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA/KOMPA",
-     "country": "Angola🇦🇴",
-     "source_line": "🌍 DASMARA DOSSANTO, Angola🇦🇴 living in Portugal 🇵🇹"
-    },
-    {
-     "name_as_written": "ANASTASIYA RAKUBA",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA/KOMPA",
-     "country": "Ukraine🇺🇦",
-     "source_line": "🌍 ANASTASIYA RAKUBA Ukraine🇺🇦 living in Italy🇮🇹"
-    },
-    {
-     "name_as_written": "RAILEY & BENITEb",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA/KOMPA",
-     "country": "the Netherlands🇳🇱",
-     "source_line": "🌍 RAILEY & BENITEb the Netherlands🇳🇱"
-    },
-    {
-     "name_as_written": "MADY & ISA",
-     "role": "teacher",
-     "style": "KIZOMBA/SEMBA/KOMPA",
-     "country": "Germany 🇩🇪/Swiss🇨🇭",
-     "source_line": "🌍 MADY & ISA Germany 🇩🇪/Swiss🇨🇭"
-    },
-    {
-     "name_as_written": "DJ NICE LIFE",
-     "role": "dj",
-     "style": null,
-     "country": "the Netherlands 🇳🇱",
-     "source_line": "🎧 DJ NICE LIFE the Netherlands 🇳🇱"
-    },
-    {
-     "name_as_written": "DJ SNAKES",
-     "role": "dj",
-     "style": null,
-     "country": "France🇫🇷",
-     "source_line": "🎧 DJ SNAKES France🇫🇷"
-    },
-    {
-     "name_as_written": "DJ DELAHOY",
-     "role": "dj",
-     "style": null,
-     "country": "VAE🇦🇪",
-     "source_line": "🎧 DJ DELAHOY VAE🇦🇪"
-    },
-    {
-     "name_as_written": "DJ ICHIGO",
-     "role": "dj",
-     "style": null,
-     "country": "France🇫🇷",
-     "source_line": "🎧 DJ ICHIGO France🇫🇷"
-    },
-    {
-     "name_as_written": "DJ CHADOCE",
-     "role": "dj",
-     "style": null,
-     "country": "Angola🇦🇴",
-     "source_line": "🎧 DJ CHADOCE Angola🇦🇴 living in Portugal🇵🇹"
-    },
-    {
-     "name_as_written": "DJ LAMIN",
-     "role": "dj",
-     "style": null,
-     "country": "Czech Republic🇨🇿",
-     "source_line": "🎧 DJ LAMIN Czech Republic🇨🇿"
-    },
-    {
-     "name_as_written": "DJ RM KETA",
-     "role": "dj",
-     "style": null,
-     "country": "Angola🇦🇴",
-     "source_line": "🎧 DJ RM KETA Angola🇦🇴 living in Czech Republic🇨🇿"
-    },
-    {
-     "name_as_written": "DJ DANY",
-     "role": "dj",
-     "style": null,
-     "country": "Czech Republic 🇨🇿",
-     "source_line": "🎧 DJ DANY Czech Republic 🇨🇿"
-    },
-    {
-     "name_as_written": "DJ AZMAËL",
-     "role": "dj",
-     "style": null,
-     "country": "Austria🇦🇹",
-     "source_line": "🎧 DJ AZMAËL Austria🇦🇹"
-    },
-    {
-     "name_as_written": "CURTIS",
-     "role": "performer",
-     "style": null,
-     "country": "France🇫🇷",
-     "source_line": "⭐️ CURTIS France🇫🇷"
-    },
-    {
-     "name_as_written": "MESARO",
-     "role": "performer",
-     "style": null,
-     "country": "UK🇬🇧",
-     "source_line": "⭐️ MESARO UK🇬🇧"
-    },
-    {
-     "name_as_written": "FARANTINI",
-     "role": "media",
-     "style": null,
-     "country": "HOLLAND",
-     "source_line": "📸FARANTINI (HOLLAND)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Whether you’re a seasoned dancer or just starting out",
-     "rationale": "The text says the congress is designed for seasoned dancers and those just starting out."
-    },
-    {
-     "feature": "workshops",
-     "quote": "3 days of workshops",
-     "rationale": "The weekend package lists three days of workshops."
-    },
-    {
-     "feature": "shows",
-     "quote": "Live performance",
-     "rationale": "The package includes a live performance by artists."
-    },
-    {
-     "feature": "live_music",
-     "quote": "SINGERs",
-     "rationale": "A singers line-up is listed, indicating live vocal performances."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Exclusive masterclasses",
-     "rationale": "Exclusive masterclasses are included in the package."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Balance by Taxiteams",
-     "rationale": "Taxi teams are present to dance with attendees."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "United by colourful party dress codes",
-     "rationale": "Colourful party dress codes are stated for the parties."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Thursday Pre-party",
-     "rationale": "A Thursday pre-party is offered before the main event."
-    },
-    {
-     "feature": "after_party",
-     "quote": "MONDAY: After Party",
-     "rationale": "A Monday after-party is listed in the programme."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 afternoon socials",
-     "rationale": "The package includes three afternoon socials."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 rooms – 2 atmospheres",
-     "rationale": "Two dance rooms are offered with different atmospheres."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Lunch and dinner offer",
-     "rationale": "Lunch and dinner are part of the weekend package."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "HOTELS",
-     "rationale": "Recommended hotels are listed separately from the main venue."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:34:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "9b2ab3feb830ca90",
+ "answer": {
+  "batch": "event-18835",
+  "events": [
+   {
+    "event_id": 18835,
+    "artists": [
+     {
+      "name_as_written": "ENAH & LOLAHONTAS",
+      "role": "teacher",
+      "style": "URBAN KIZ/TARRAXO",
+      "country": "France🇫🇷 /Spain🇪🇸",
+      "source_line": "🌍 ENAH & LOLAHONTAS France🇫🇷 /Spain🇪🇸"
+     },
+     {
+      "name_as_written": "JOJO & JENNY",
+      "role": "teacher",
+      "style": "URBAN KIZ/TARRAXO",
+      "country": "France🇫🇷",
+      "source_line": "🌍 JOJO & JENNY France🇫🇷"
+     },
+     {
+      "name_as_written": "CURTIS & CLÉMENCE",
+      "role": "teacher",
+      "style": "URBAN KIZ/TARRAXO",
+      "country": "France🇫🇷",
+      "source_line": "🌍 CURTIS & CLÉMENCE France🇫🇷"
+     },
+     {
+      "name_as_written": "JP & STEPHY",
+      "role": "teacher",
+      "style": "URBAN KIZ/TARRAXO",
+      "country": "France🇫🇷",
+      "source_line": "🌍 JP & STEPHY France🇫🇷"
+     },
+     {
+      "name_as_written": "ICHIGO & KRISTEL",
+      "role": "teacher",
+      "style": "URBAN KIZ/TARRAXO",
+      "country": "France🇫🇷",
+      "source_line": "🌍 ICHIGO & KRISTEL France🇫🇷"
+     },
+     {
+      "name_as_written": "FAJUL & AGNES",
+      "role": "teacher",
+      "style": "URBAN KIZ/TARRAXO",
+      "country": "Germany🇩🇪/Sweden🇸🇪",
+      "source_line": "🌍 FAJUL & AGNES Germany🇩🇪/Sweden🇸🇪"
+     },
+     {
+      "name_as_written": "RITA & EDDY",
+      "role": "teacher",
+      "style": "URBAN KIZ/TARRAXO",
+      "country": "Hungary🇭🇺",
+      "source_line": "🌍 RITA & EDDY Hungary🇭🇺"
+     },
+     {
+      "name_as_written": "MATHIAS & KATALIN",
+      "role": "teacher",
+      "style": "URBAN KIZ/TARRAXO",
+      "country": "Austria🇦🇹",
+      "source_line": "🌍 MATHIAS & KATALIN Austria🇦🇹"
+     },
+     {
+      "name_as_written": "ISABELLE & FELICIEN",
+      "role": "teacher",
+      "style": "KIZOMBA FUSION",
+      "country": "France🇫🇷",
+      "source_line": "🌍 ISABELLE & FELICIEN France🇫🇷"
+     },
+     {
+      "name_as_written": "TONY PIRATA",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA/KOMPA",
+      "country": "France🇫🇷",
+      "source_line": "🌍 TONY PIRATA France🇫🇷"
+     },
+     {
+      "name_as_written": "ADILSON MAIZA",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA/KOMPA",
+      "country": "Angola🇦🇴",
+      "source_line": "🌍 ADILSON MAIZA Angola🇦🇴"
+     },
+     {
+      "name_as_written": "JACINTO TECA & LUCY",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA/KOMPA",
+      "country": "Czech Republic🇨🇿",
+      "source_line": "🌍 JACINTO TECA & LUCY Czech Republic🇨🇿"
+     },
+     {
+      "name_as_written": "DASMARA DOSSANTO",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA/KOMPA",
+      "country": "Angola🇦🇴 living in Portugal 🇵🇹",
+      "source_line": "🌍 DASMARA DOSSANTO, Angola🇦🇴 living in Portugal 🇵🇹"
+     },
+     {
+      "name_as_written": "ANASTASIYA RAKUBA",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA/KOMPA",
+      "country": "Ukraine🇺🇦 living in Italy🇮🇹",
+      "source_line": "🌍 ANASTASIYA RAKUBA Ukraine🇺🇦 living in Italy🇮🇹"
+     },
+     {
+      "name_as_written": "RAILEY & BENITEb",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA/KOMPA",
+      "country": "the Netherlands🇳🇱",
+      "source_line": "🌍 RAILEY & BENITEb the Netherlands🇳🇱"
+     },
+     {
+      "name_as_written": "MADY & ISA",
+      "role": "teacher",
+      "style": "KIZOMBA/SEMBA/KOMPA",
+      "country": "Germany 🇩🇪/Swiss🇨🇭",
+      "source_line": "🌍 MADY & ISA Germany 🇩🇪/Swiss🇨🇭"
+     },
+     {
+      "name_as_written": "DJ NICE LIFE",
+      "role": "dj",
+      "style": null,
+      "country": "the Netherlands 🇳🇱",
+      "source_line": "🎧 DJ NICE LIFE the Netherlands 🇳🇱"
+     },
+     {
+      "name_as_written": "DJ SNAKES",
+      "role": "dj",
+      "style": null,
+      "country": "France🇫🇷",
+      "source_line": "🎧 DJ SNAKES France🇫🇷"
+     },
+     {
+      "name_as_written": "DJ DELAHOY",
+      "role": "dj",
+      "style": null,
+      "country": "VAE🇦🇪",
+      "source_line": "🎧 DJ DELAHOY VAE🇦🇪"
+     },
+     {
+      "name_as_written": "DJ ICHIGO",
+      "role": "dj",
+      "style": null,
+      "country": "France🇫🇷",
+      "source_line": "🎧 DJ ICHIGO France🇫🇷"
+     },
+     {
+      "name_as_written": "DJ CHADOCE",
+      "role": "dj",
+      "style": null,
+      "country": "Angola🇦🇴 living in Portugal🇵🇹",
+      "source_line": "🎧 DJ CHADOCE Angola🇦🇴 living in Portugal🇵🇹"
+     },
+     {
+      "name_as_written": "DJ LAMIN",
+      "role": "dj",
+      "style": null,
+      "country": "Czech Republic🇨🇿",
+      "source_line": "🎧 DJ LAMIN Czech Republic🇨🇿"
+     },
+     {
+      "name_as_written": "DJ RM KETA",
+      "role": "dj",
+      "style": null,
+      "country": "Angola🇦🇴 living in Czech Republic🇨🇿",
+      "source_line": "🎧 DJ RM KETA Angola🇦🇴 living in Czech Republic🇨🇿"
+     },
+     {
+      "name_as_written": "DJ DANY",
+      "role": "dj",
+      "style": null,
+      "country": "Czech Republic 🇨🇿",
+      "source_line": "🎧 DJ DANY Czech Republic 🇨🇿"
+     },
+     {
+      "name_as_written": "DJ AZMAËL",
+      "role": "dj",
+      "style": null,
+      "country": "Austria🇦🇹",
+      "source_line": "🎧 DJ AZMAËL Austria🇦🇹"
+     },
+     {
+      "name_as_written": "CURTIS",
+      "role": "performer",
+      "style": null,
+      "country": "France🇫🇷",
+      "source_line": "⭐️ CURTIS France🇫🇷"
+     },
+     {
+      "name_as_written": "MESARO",
+      "role": "performer",
+      "style": null,
+      "country": "UK🇬🇧",
+      "source_line": "⭐️ MESARO UK🇬🇧"
+     },
+     {
+      "name_as_written": "FARANTINI",
+      "role": "media",
+      "style": null,
+      "country": "HOLLAND",
+      "source_line": "📸FARANTINI (HOLLAND)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Whether you’re a seasoned dancer or just starting out",
+      "rationale": "The congress is stated to be suitable for seasoned dancers and beginners alike."
+     },
+     {
+      "feature": "workshops",
+      "quote": "3 days of workshops",
+      "rationale": "The weekend package explicitly includes days of workshops."
+     },
+     {
+      "feature": "shows",
+      "quote": "Live performance",
+      "rationale": "A live performance is listed as part of the weekend package."
+     },
+     {
+      "feature": "live_music",
+      "quote": "SINGERs",
+      "rationale": "The line-up includes singers performing at the event."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Exclusive masterclasses",
+      "rationale": "Masterclasses are listed as part of the package."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 rooms – 2 atmospheres",
+      "rationale": "The event has two dance rooms with different atmospheres."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "United by colourful party dress codes",
+      "rationale": "The parties follow colourful dress codes, which is a dress theme."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "PARTY – DRESSCODE",
+      "rationale": "A dress code is stated for the parties."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 afternoon socials",
+      "rationale": "Afternoon socials are included in the weekend package."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Thursday Pre-party",
+      "rationale": "A pre-party is held on Thursday before the main event."
+     },
+     {
+      "feature": "after_party",
+      "quote": "Monday After Social Party",
+      "rationale": "An after-party is held on Monday after the event."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Lunch and dinner offer",
+      "rationale": "Lunch and dinner are listed within the weekend package."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "🏨HOTELS🏨",
+      "rationale": "Recommended hotels are listed with distances to the venue."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "Balance by Taxiteams",
+      "rationale": "Taxi dancer teams are present at the event."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:martin@esra+martin",
+ "key_b": "p:martina@martina+sonia",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "5bc2d37ff7002aa8",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Martin and Martina differ by one letter and their partners differ (esra for Martin, sonia for Martina), with events in different countries (France vs Austria) and no shared partner or event linking them, so the evidence shows two artists."
+ }
+}

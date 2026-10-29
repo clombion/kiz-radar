@@ -1,36 +1,53 @@
 {
- "batch": "event-16698",
- "events": [
-  {
-   "event_id": 16698,
-   "artists": [
-    {
-     "name_as_written": "DJ ICHIGO",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "✔ DJ ICHIGO 🇫🇷"
-    },
-    {
-     "name_as_written": "Tokoos Dance",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Contact us on our page Tokoos Dance"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE LOCATION",
-     "rationale": "The title says the festival is all in one location, which suggests the parties and the hotel are in the same venue."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Hotel and pass:",
-     "rationale": "The ticket section lists the hotel together with the pass, which suggests accommodation is part of the package."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "9cd30f80b2c81d90",
+ "answer": {
+  "batch": "event-16698",
+  "events": [
+   {
+    "event_id": 16698,
+    "artists": [
+     {
+      "name_as_written": "DJ ICHIGO",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "✔ DJ ICHIGO 🇫🇷"
+     },
+     {
+      "name_as_written": "Tokoos Dance",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Contact us on our page Tokoos Dance"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE LOCATION",
+      "rationale": "The title states the festival takes place all in one location, which matches the hotel venue where dancers stay."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "𝐩𝐫𝐞/𝐚𝐟𝐭𝐞𝐫-𝐩𝐚𝐫𝐭𝐲 𝐧𝐨𝐭 𝐢𝐧𝐜𝐥𝐮𝐝𝐞𝐝 𝐢𝐧 𝐭𝐡𝐞 𝐟𝐮𝐥𝐥 𝐩𝐚𝐬𝐬",
+      "rationale": "The line refers to a pre-party that is not included in the full pass, so a pre-party is offered."
+     },
+     {
+      "feature": "after_party",
+      "quote": "𝐩𝐫𝐞/𝐚𝐟𝐭𝐞𝐫-𝐩𝐚𝐫𝐭𝐲 𝐧𝐨𝐭 𝐢𝐧𝐜𝐥𝐮𝐝𝐞𝐝 𝐢𝐧 𝐭𝐡𝐞 𝐟𝐮𝐥𝐥 𝐩𝐚𝐬𝐬",
+      "rationale": "The line refers to an after-party that is not included in the full pass, so an after-party is offered."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "𝐓𝐀𝐗𝐈𝐒 𝐃𝐀𝐍𝐂𝐄𝐑𝐒:",
+      "rationale": "A taxi dancers section heading shows that taxi dancers are part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

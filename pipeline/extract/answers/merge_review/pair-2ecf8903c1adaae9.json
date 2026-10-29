@@ -1,0 +1,13 @@
+{
+ "key_a": "p:paraiso@dj",
+ "key_b": "p:paraiso@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2ecf8903c1adaae9",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both keys are the same record, so this is one name stated with countries (Angola, France, Senegal) that never meet on a single mention; the stated countries disagree, and whether it is one DJ touring widely or several DJs sharing the stage name cannot be settled from the evidence, so it stays unresolved rather than being guessed."
+ }
+}

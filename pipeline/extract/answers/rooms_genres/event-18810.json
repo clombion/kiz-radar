@@ -1,18 +1,25 @@
 {
- "batch": "event-18810",
- "events": [
-  {
-   "event_id": 18810,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "THE KIZOMBA EXPERIENCE JAMAICA"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "dfcabd43a544e9e3",
+ "answer": {
+  "batch": "event-18810",
+  "events": [
+   {
+    "event_id": 18810,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "THE KIZOMBA EXPERIENCE JAMAICA"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:laura@davide+laura",
+ "key_b": "p:lauradelvecchio",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7774623b776c0740",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are listed as Italian, but 'Laura' is a common first name and side B's full name 'Laura Del Vecchio' has no partner or event overlap with side A's couple 'davide+laura' (A's events are in Italy, B's in Poland), so the evidence does not settle whether they are one person."
+ }
+}

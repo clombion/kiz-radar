@@ -1,39 +1,51 @@
 {
- "batch": "event-18371",
- "events": [
-  {
-   "event_id": 18371,
-   "party_rooms": {
-    "count": 5,
-    "quote": "Amazing parties until sunrise in 5 halls"
-   },
-   "class_rooms": {
-    "count": 8,
-    "quote": "Excellent workshops in 8 halls"
-   },
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "SALSA",
-     "quote": "BALKAN SALSA-BACHATA-KIZOMBA CONGRESS"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "8465c4d6bb9b49c3",
+ "answer": {
+  "batch": "event-18371",
+  "events": [
+   {
+    "event_id": 18371,
+    "party_rooms": {
+     "count": 5,
+     "quote": "Amazing parties until sunrise in 5 halls"
     },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Cuban, LA, NY, Cha-cha, Bachata, Kizomba"
+    "class_rooms": {
+     "count": 8,
+     "quote": "Excellent workshops in 8 halls"
     },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Bachata, Kizomba, Traditional dances"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cha-cha",
-     "quote": "Cuban, LA, NY, Cha-cha, Bachata"
-    }
-   ]
-  }
- ]
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "SALSA",
+      "quote": "BALKAN SALSA-BACHATA-KIZOMBA CONGRESS"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Great music: Cuban, LA, NY, Cha-cha, Bachata, Kizomba, Traditional dances etc."
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Great music: Cuban, LA, NY, Cha-cha, Bachata, Kizomba, Traditional dances etc."
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cha-cha",
+      "quote": "Great music: Cuban, LA, NY, Cha-cha, Bachata, Kizomba, Traditional dances etc."
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Rueda",
+      "quote": "Exciting BALKAN COMPETITION: Rueda"
+     }
+    ]
+   }
+  ]
+ }
 }

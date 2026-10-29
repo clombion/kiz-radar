@@ -1,0 +1,13 @@
+{
+ "key_a": "p:frida@frida+ronie",
+ "key_b": "p:fridaellinor",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d96fbfff8bf9d4e4",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The two sides share only the first name Frida and the country Sweden; side A's mention list is empty, its events are in Spain while B's are in the United States, and the only partner link is to Ronie, which B lacks, so the evidence does not settle whether they are one person."
+ }
+}

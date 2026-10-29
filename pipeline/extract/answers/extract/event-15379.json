@@ -1,65 +1,72 @@
 {
- "batch": "event-15379",
- "events": [
-  {
-   "event_id": 15379,
-   "artists": [
-    {
-     "name_as_written": "𝙅𝙚𝙣𝙣𝙞𝙣𝙖 & 𝙏𝙞𝙞𝙖",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "𝙏𝙚𝙖𝙘𝙝𝙚𝙧𝙨: 𝙅𝙚𝙣𝙣𝙞𝙣𝙖 & 𝙏𝙞𝙞𝙖"
-    },
-    {
-     "name_as_written": "𝘼𝙭𝙚𝙡 & 𝙑𝙞𝙘𝙩𝙤𝙧𝙞𝙖",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇪",
-     "source_line": "𝙏𝙚𝙖𝙘𝙝𝙚𝙧𝙨: 𝘼𝙭𝙚𝙡 & 𝙑𝙞𝙘𝙩𝙤𝙧𝙞𝙖 𝙛𝙧𝙤𝙢 𝙀𝙨𝙩𝙤𝙣𝙞𝙖 🇪🇪"
-    },
-    {
-     "name_as_written": "𝘿𝙅 𝘽𝙚𝙘𝙠",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "𝘿𝙅 𝘽𝙚𝙘𝙠 🎧 (and playlists)"
-    },
-    {
-     "name_as_written": "𝙍𝙤𝙪𝙜𝙝𝘿𝙤𝙜 & 𝙎𝙢𝙤𝙤𝙩𝙝𝘾𝙖𝙩",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "𝘿𝙅𝙨: 𝙍𝙤𝙪𝙜𝙝𝘿𝙤𝙜 & 𝙎𝙢𝙤𝙤𝙩𝙝𝘾𝙖𝙩 🎧"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Beginner friendly event.",
-     "rationale": "The description explicitly states the event is beginner friendly and aimed at people with no experience."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Class 1 – UrbanKiz Open Level",
-     "rationale": "Dance classes are scheduled as part of the event programme."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Party Class",
-     "rationale": "A pre-party class is held before the main party on both days."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 dance floors, urbankiz/tarraxo + douceur/tarraxinha",
-     "rationale": "The party is stated to take place on two dance floors."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Mini Socials",
-     "rationale": "A daytime social is listed in the Saturday afternoon schedule."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:24:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "474f19efd6a2631f",
+ "answer": {
+  "batch": "event-15379",
+  "events": [
+   {
+    "event_id": 15379,
+    "artists": [
+     {
+      "name_as_written": "𝙅𝙚𝙣𝙣𝙞𝙣𝙖 & 𝙏𝙞𝙞𝙖",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "𝙏𝙚𝙖𝙘𝙝𝙚𝙧𝙨: 𝙅𝙚𝙣𝙣𝙞𝙣𝙖 & 𝙏𝙞𝙞𝙖"
+     },
+     {
+      "name_as_written": "𝘼𝙭𝙚𝙡 & 𝙑𝙞𝙘𝙩𝙤𝙧𝙞𝙖",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇪",
+      "source_line": "𝙏𝙚𝙖𝙘𝙝𝙚𝙧𝙨: 𝘼𝙭𝙚𝙡 & 𝙑𝙞𝙘𝙩𝙤𝙧𝙞𝙖 𝙛𝙧𝙤𝙢 𝙀𝙨𝙩𝙤𝙣𝙞𝙖 🇪🇪"
+     },
+     {
+      "name_as_written": "𝘿𝙅 𝘽𝙚𝙘𝙠",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "𝘿𝙅 𝘽𝙚𝙘𝙠 🎧 (and playlists)"
+     },
+     {
+      "name_as_written": "𝙍𝙤𝙪𝙜𝙝𝘿𝙤𝙜 & 𝙎𝙢𝙤𝙤𝙩𝙝𝘾𝙖𝙩",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "𝘿𝙅𝙨: 𝙍𝙤𝙪𝙜𝙝𝘿𝙤𝙜 & 𝙎𝙢𝙤𝙤𝙩𝙝𝘾𝙖𝙩 🎧"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Beginner friendly event.",
+      "rationale": "The description explicitly states the event is beginner friendly and open to all levels."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Class 1 – UrbanKiz Open Level",
+      "rationale": "The schedule lists dance classes as part of the event."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-Party Class",
+      "rationale": "A pre-party class is scheduled before the main party on both days."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 dance floors",
+      "rationale": "The party is held on two dance floors, so there is more than one dance room."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "16:00–17:00 | Mini Socials",
+      "rationale": "A daytime social is scheduled in the afternoon."
+     }
+    ]
+   }
+  ]
+ }
 }

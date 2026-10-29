@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nicoberrettoni",
+ "key_b": "p:nicolaberrettoni",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "4d855373c17ba7be",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records are Italian teachers with the same distinctive surname, Berrettoni, at Italian events, and Nico is a short form of Nicola with no conflicting style or country, matching the prompt's own merge example."
+ }
+}

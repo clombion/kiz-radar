@@ -1,42 +1,54 @@
 {
- "batch": "event-15297",
- "events": [
-  {
-   "event_id": 15297,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Kizomba social room",
-     "kind": "unspecified",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "Kizomba social room"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata, Kizomba, Salsa on1 & on2, Salsa Cubana, Zouk"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Bachata, Kizomba, Salsa on1 & on2, Salsa Cubana, Zouk"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa on1 & on2",
-     "quote": "Salsa on1 & on2"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "Zouk + styling master classes"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:06+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "10384d63c849be2c",
+ "answer": {
+  "batch": "event-15297",
+  "events": [
+   {
+    "event_id": 15297,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Kizomba social room",
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "Kizomba social room"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Master classes and parties in 5 directions: Bachata"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Master classes and parties in 5 directions: Bachata, Kizomba"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa on1 & on2",
+      "quote": "Salsa on1 & on2"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa Cubana",
+      "quote": "Salsa Cubana"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Zouk",
+      "quote": "Salsa Cubana, Zouk"
+     }
+    ]
+   }
+  ]
+ }
 }

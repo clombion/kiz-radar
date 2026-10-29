@@ -1,0 +1,13 @@
+{
+ "key_a": "p:david@crisandra+david",
+ "key_b": "p:david@daria+david",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d71e04c9367208f0",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are just the common first name David, each tied to a different partner (crisandra vs. daria), so the partner evidence points to two separate couples rather than one artist; the only shared country is CA, and the events (La Martinique vs. United States) do not overlap."
+ }
+}

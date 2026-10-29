@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sara@jack+sara",
+ "key_b": "p:sara@juan+sara",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b393ac35946dac03",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the bare common first name 'Sara' with the same stated country (ES) and overlapping events in France, but their partners differ (jack and juan), and a first name alone is weak evidence, so the record does not settle whether this is one dancer with two partners or two people."
+ }
+}

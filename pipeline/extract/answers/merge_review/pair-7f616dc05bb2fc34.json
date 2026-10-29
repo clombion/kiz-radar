@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fabricio@fabricio+mame",
+ "key_b": "p:fabriciodozangado",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7f616dc05bb2fc34",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A 'Fabricio' has no stated country and no events of its own, only a partner 'mame@fabricio+mame' that differs from side B's partner 'mame@fabriciodozangado+mame', and its name is just a first word of the distinctive full stage name 'Fabricio do Zangado', which is a strong match but the evidence shows no shared country or event to settle whether the bare 'Fabricio' record is the same person, so I cannot confidently merge or separate."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jose@anja+jose",
+ "key_b": "p:jose@coralie+jose",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f6f03626aa13ef40",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are 'Jose' in Switzerland, but their partners differ (Anja versus Coralie) and no mentions are listed, so the evidence does not show whether this is one dancer or two."
+ }
+}

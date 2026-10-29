@@ -1,78 +1,85 @@
 {
- "batch": "event-18818",
- "events": [
-  {
-   "event_id": 18818,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 free dance floors"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Room 1",
-     "kind": "unspecified",
-     "genres": [
-      "urbankiz"
-     ],
-     "quote": "Room 1 : 100% Urbankiz"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:14+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "c6691fccf97e7c95",
+ "answer": {
+  "batch": "event-18818",
+  "events": [
+   {
+    "event_id": 18818,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 free dance floors"
     },
-    {
-     "name_as_written": "Room 2",
-     "kind": "unspecified",
-     "genres": [
-      "kizomba",
-      "semba",
-      "afro"
-     ],
-     "quote": "Room 2 : 100% Kizomba / Semba / Afro-House"
-    },
-    {
-     "name_as_written": "Room 3",
-     "kind": "unspecified",
-     "genres": [
-      "douceur"
-     ],
-     "quote": "Room 3 : 100% Douceur"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "UrbanKiz",
-     "quote": "UrbanKiz, Kizomba, Konpa, Tarracho and Afro"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Room 2 : 100% Kizomba / Semba / Afro-House"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Konpa"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarracho",
-     "quote": "Tarracho"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro-House",
-     "quote": "Afro-House"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba / Semba / Afro-House"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "100% Douceur"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Room 1",
+      "kind": "unspecified",
+      "genres": [
+       "urbankiz"
+      ],
+      "quote": "Room 1 : 100% Urbankiz"
+     },
+     {
+      "name_as_written": "Room 2",
+      "kind": "unspecified",
+      "genres": [
+       "kizomba",
+       "semba",
+       "afro"
+      ],
+      "quote": "Room 2 : 100% Kizomba / Semba / Afro-House"
+     },
+     {
+      "name_as_written": "Room 3",
+      "kind": "unspecified",
+      "genres": [
+       "douceur"
+      ],
+      "quote": "Room 3 : 100% Douceur"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "UrbanKiz",
+      "quote": "More than 25h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "More than 25h workshops (UrbanKiz, Kizomba, Konpa, Tarracho and Afro)"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "UrbanKiz, Kizomba, Konpa, Tarracho and Afro"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarracho",
+      "quote": "UrbanKiz, Kizomba, Konpa, Tarracho and Afro"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "UrbanKiz, Kizomba, Konpa, Tarracho and Afro"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Room 2 : 100% Kizomba / Semba / Afro-House"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "Room 3 : 100% Douceur"
+     }
+    ]
+   }
+  ]
+ }
 }

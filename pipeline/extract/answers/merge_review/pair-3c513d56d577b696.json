@@ -1,0 +1,13 @@
+{
+ "key_a": "p:amine@dj",
+ "key_b": "p:amine@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3c513d56d577b696",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both mentions are the same key with a single stage name, but the countries stated (GB at the Spain event, France at the France event) never meet, and 'Amine' is a common first name, so one DJ touring the two countries and two different DJs sharing the name both fit the evidence."
+ }
+}

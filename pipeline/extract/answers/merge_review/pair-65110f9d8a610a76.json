@@ -1,0 +1,13 @@
+{
+ "key_a": "p:azmael@azmael+katalin",
+ "key_b": "p:azmael@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "65110f9d8a610a76",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The names are the same distinctive stage name apart from a DJ prefix and an accent (\"Azmael\" / \"DJ Azmaël\"), both sides list Austria as their country, and the Hungary event on side A also appears among side B's events, matching the DJ-prefix case in the guidance."
+ }
+}

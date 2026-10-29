@@ -1,275 +1,282 @@
 {
- "batch": "event-16778",
- "events": [
-  {
-   "event_id": 16778,
-   "artists": [
-    {
-     "name_as_written": "DJ SHARK",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ SHARK"
-    },
-    {
-     "name_as_written": "DJ PINGUSSO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ PINGUSSO"
-    },
-    {
-     "name_as_written": "DJ MADISS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ MADISS"
-    },
-    {
-     "name_as_written": "DJ MIRO KIKOLA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ MIRO KIKOLA"
-    },
-    {
-     "name_as_written": "DJ LUCAS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ LUCAS"
-    },
-    {
-     "name_as_written": "DJ STEFANIO LIMA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ STEFANIO LIMA"
-    },
-    {
-     "name_as_written": "DJ HEGZA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ HEGZA"
-    },
-    {
-     "name_as_written": "DJ MARC",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ MARC"
-    },
-    {
-     "name_as_written": "DJ NEO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ NEO"
-    },
-    {
-     "name_as_written": "DJ NAO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ NAO"
-    },
-    {
-     "name_as_written": "DJ YURI",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ YURI"
-    },
-    {
-     "name_as_written": "DJ ANTONY TARRAXA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ ANTONY TARRAXA"
-    },
-    {
-     "name_as_written": "DJ LC",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ LC"
-    },
-    {
-     "name_as_written": "JESUS & ANNI",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ JESUS & ANNI"
-    },
-    {
-     "name_as_written": "TONY PIRATA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ TONY PIRATA"
-    },
-    {
-     "name_as_written": "JOJO LPK & JENNY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ JOJO LPK & JENNY"
-    },
-    {
-     "name_as_written": "AUREA & TRESOR",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ AUREA & TRESOR"
-    },
-    {
-     "name_as_written": "FRED NELSON & MORGANE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ FRED NELSON & MORGANE"
-    },
-    {
-     "name_as_written": "SAID & OKSANA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ SAID & OKSANA"
-    },
-    {
-     "name_as_written": "LUIS & KAREN",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ LUIS & KAREN"
-    },
-    {
-     "name_as_written": "MR. TECAS & TASHA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ MR. TECAS & TASHA"
-    },
-    {
-     "name_as_written": "MARCIO JUNQUEIRA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ MARCIO JUNQUEIRA"
-    },
-    {
-     "name_as_written": "SARA IACOBACCI",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ SARA IACOBACCI"
-    },
-    {
-     "name_as_written": "MASSEMBA SECK",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ MASSEMBA SECK"
-    },
-    {
-     "name_as_written": "NUNO & SARAI",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ NUNO & SARAI"
-    },
-    {
-     "name_as_written": "DR. KIZOMBA & LAURA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ DR. KIZOMBA & LAURA"
-    },
-    {
-     "name_as_written": "MARISA PITA & JORGE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ MARISA PITA & JORGE"
-    },
-    {
-     "name_as_written": "KECO & MONICA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ KECO & MONICA"
-    },
-    {
-     "name_as_written": "CAROLA TAULER",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ CAROLA TAULER"
-    },
-    {
-     "name_as_written": "TABANKA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ TABANKA"
-    },
-    {
-     "name_as_written": "NANE & RONNY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ NANE & RONNY"
-    },
-    {
-     "name_as_written": "LUISMI & ANGELES",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ LUISMI & ANGELES"
-    },
-    {
-     "name_as_written": "ELENA & RODRI",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ ELENA & RODRI"
-    },
-    {
-     "name_as_written": "ESTEBAN JR & BONDE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ ESTEBAN JR & BONDE"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE HOTEL",
-     "rationale": "The description says the event celebrates ALL IN ONE HOTEL, so the parties take place in the hotel where dancers stay."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 AMAZING SOCIAL ROOMS",
-     "rationale": "The event lists three separate social dance rooms."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops",
-     "rationale": "The full pass includes workshops as part of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "Shows",
-     "rationale": "The full pass includes shows."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Eurostars Hotels – Exe Convention Plaza Madrid",
-     "rationale": "A specific hotel is named with a promo code for booking rooms there, while the room is not part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "01559010247204ca",
+ "answer": {
+  "batch": "event-16778",
+  "events": [
+   {
+    "event_id": 16778,
+    "artists": [
+     {
+      "name_as_written": "DJ SHARK",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ SHARK"
+     },
+     {
+      "name_as_written": "DJ PINGUSSO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ PINGUSSO"
+     },
+     {
+      "name_as_written": "DJ MADISS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ MADISS"
+     },
+     {
+      "name_as_written": "DJ MIRO KIKOLA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ MIRO KIKOLA"
+     },
+     {
+      "name_as_written": "DJ LUCAS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ LUCAS"
+     },
+     {
+      "name_as_written": "DJ STEFANIO LIMA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ STEFANIO LIMA"
+     },
+     {
+      "name_as_written": "DJ HEGZA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ HEGZA"
+     },
+     {
+      "name_as_written": "DJ MARC",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ MARC"
+     },
+     {
+      "name_as_written": "DJ NEO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ NEO"
+     },
+     {
+      "name_as_written": "DJ NAO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ NAO"
+     },
+     {
+      "name_as_written": "DJ YURI",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ YURI"
+     },
+     {
+      "name_as_written": "DJ ANTONY TARRAXA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ ANTONY TARRAXA"
+     },
+     {
+      "name_as_written": "DJ LC",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ LC"
+     },
+     {
+      "name_as_written": "JESUS & ANNI",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ JESUS & ANNI"
+     },
+     {
+      "name_as_written": "TONY PIRATA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ TONY PIRATA"
+     },
+     {
+      "name_as_written": "JOJO LPK & JENNY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ JOJO LPK & JENNY"
+     },
+     {
+      "name_as_written": "AUREA & TRESOR",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ AUREA & TRESOR"
+     },
+     {
+      "name_as_written": "FRED NELSON & MORGANE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ FRED NELSON & MORGANE"
+     },
+     {
+      "name_as_written": "SAID & OKSANA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ SAID & OKSANA"
+     },
+     {
+      "name_as_written": "LUIS & KAREN",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ LUIS & KAREN"
+     },
+     {
+      "name_as_written": "MR. TECAS & TASHA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ MR. TECAS & TASHA"
+     },
+     {
+      "name_as_written": "MARCIO JUNQUEIRA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ MARCIO JUNQUEIRA"
+     },
+     {
+      "name_as_written": "SARA IACOBACCI",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ SARA IACOBACCI"
+     },
+     {
+      "name_as_written": "MASSEMBA SECK",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ MASSEMBA SECK"
+     },
+     {
+      "name_as_written": "NUNO & SARAI",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ NUNO & SARAI"
+     },
+     {
+      "name_as_written": "DR. KIZOMBA & LAURA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ DR. KIZOMBA & LAURA"
+     },
+     {
+      "name_as_written": "MARISA PITA & JORGE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ MARISA PITA & JORGE"
+     },
+     {
+      "name_as_written": "KECO & MONICA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ KECO & MONICA"
+     },
+     {
+      "name_as_written": "CAROLA TAULER",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ CAROLA TAULER"
+     },
+     {
+      "name_as_written": "TABANKA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ TABANKA"
+     },
+     {
+      "name_as_written": "NANE & RONNY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ NANE & RONNY"
+     },
+     {
+      "name_as_written": "LUISMI & ANGELES",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ LUISMI & ANGELES"
+     },
+     {
+      "name_as_written": "ELENA & RODRI",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ ELENA & RODRI"
+     },
+     {
+      "name_as_written": "ESTEBAN JR & BONDE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ ESTEBAN JR & BONDE"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "This year we celebrate ALL IN ONE HOTEL",
+      "rationale": "The text says the festival is held in an all-in-one hotel, so the parties and the accommodation share one venue."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 AMAZING SOCIAL ROOMS",
+      "rationale": "The event lists three separate social dance rooms."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Workshops + Social Dance + Shows + Open Room",
+      "rationale": "The full pass explicitly includes workshops."
+     },
+     {
+      "feature": "shows",
+      "quote": "Workshops + Social Dance + Shows + Open Room",
+      "rationale": "The full pass explicitly includes shows."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Enter the promo code KIZOMBAMAD at:",
+      "rationale": "A promo code gives a negotiated hotel rate at the partner hotel, while the hotel room is booked separately from the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

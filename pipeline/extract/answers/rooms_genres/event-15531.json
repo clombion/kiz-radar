@@ -1,28 +1,35 @@
 {
- "batch": "event-15531",
- "events": [
-  {
-   "event_id": 15531,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "(Kizomba, Semba, AfroHouse and more)"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "(Kizomba, Semba, AfroHouse and more)"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "AfroHouse",
-     "quote": "(Kizomba, Semba, AfroHouse and more)"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "919d5d220f26d07c",
+ "answer": {
+  "batch": "event-15531",
+  "events": [
+   {
+    "event_id": 15531,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "We’ve prepared a minimum of 18+ hours of workshops for you (Kizomba, Semba, AfroHouse and more)."
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "(Kizomba, Semba, AfroHouse and more)"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "AfroHouse",
+      "quote": "(Kizomba, Semba, AfroHouse and more)"
+     }
+    ]
+   }
+  ]
+ }
 }

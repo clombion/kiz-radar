@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mario@carla+mario",
+ "key_b": "p:marion@chandryl+marion",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "1514435541437dc4",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two names are different (Mario vs Marion, a one-letter-apart male/female pair), their partners differ (Carla vs Chandryl), and side A's stated countries include Angola while side B's are only France, so the evidence points to two artists rather than one."
+ }
+}

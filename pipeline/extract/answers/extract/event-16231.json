@@ -1,34 +1,33 @@
 {
- "batch": "event-16231",
- "events": [
-  {
-   "event_id": 16231,
-   "artists": [
-    {
-     "name_as_written": "8times2gether",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Write us an email in German, English, or French to 📧 info@8times2gether.com"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Carefully selected workshops to improve your skills",
-     "rationale": "The description states that dance workshops are part of the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "A fantastic venue with easy access and a hotel nearby",
-     "rationale": "The description points to hotels near the venue, listed with links, without saying the accommodation is part of the pass."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "11:00 – 20:00 – Workshops & Social",
-     "rationale": "The Saturday programme lists a daytime social from 11:00 to 20:00."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "4f702cab6af45da2",
+ "answer": {
+  "batch": "event-16231",
+  "events": [
+   {
+    "event_id": 16231,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "We continue to offer high-quality workshops",
+      "rationale": "The description states that high-quality workshops are offered as part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "11:00 – 20:00 – Workshops & Social",
+      "rationale": "The Saturday schedule lists a daytime social from 11:00 to 20:00."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Both hotels are just a 10-minute walk to the event location!",
+      "rationale": "The description recommends two named hotels near the venue, and the pass does not include accommodation."
+     }
+    ]
+   }
+  ]
+ }
 }

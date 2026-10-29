@@ -1,112 +1,126 @@
 {
- "batch": "event-14456",
- "events": [
-  {
-   "event_id": 14456,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "PRICE EVOLUTION FOR COUPLE FULL PASS",
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 160.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "160€ June"
-      },
-      {
-       "amount": 170.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "170€ July"
-      },
-      {
-       "amount": 180.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "180€ August"
-      },
-      {
-       "amount": 190.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "190€ September"
-      },
-      {
-       "amount": 210.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "210€ October"
-      },
-      {
-       "amount": 230.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "230€ November"
-      },
-      {
-       "amount": 250.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "250€ December"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "6dfec8fedbe5fc97",
+ "answer": {
+  "batch": "event-14456",
+  "events": [
+   {
+    "event_id": 14456,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "PRICE EVOLUTION FOR COUPLE FULL PASS",
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 160.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "06-01",
+         "until": "06-30",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "160€ June"
+       },
+       {
+        "amount": 170.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "07-01",
+         "until": "07-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "170€ July"
+       },
+       {
+        "amount": 180.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "08-01",
+         "until": "08-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "180€ August"
+       },
+       {
+        "amount": 190.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "09-01",
+         "until": "09-30",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "190€ September"
+       },
+       {
+        "amount": 210.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "10-01",
+         "until": "10-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "210€ October"
+       },
+       {
+        "amount": 230.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "11-01",
+         "until": "11-30",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "230€ November"
+       },
+       {
+        "amount": 250.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "12-01",
+         "until": "12-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "250€ December"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

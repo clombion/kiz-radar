@@ -1,53 +1,60 @@
 {
- "batch": "event-14926",
- "events": [
-  {
-   "event_id": 14926,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "3 jours intenses de Kizomba sous le soleil de Nouméa"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Kizomba Fusion",
-     "quote": "Kizomba Fusion"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "UrbanKiz",
-     "quote": "UrbanKiz"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba – Kizomba Authentique",
-     "quote": "Semba – Kizomba Authentique"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "Afro"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Tetris Style",
-     "quote": "Tetris Style"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Tango",
-     "quote": "Atelier Tango (applicable à la Kizomba)"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Kizomba Douceur",
-     "quote": "Kizomba Douceur"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "ce01431ec6a91b90",
+ "answer": {
+  "batch": "event-14926",
+  "events": [
+   {
+    "event_id": 14926,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "3 jours intenses de Kizomba"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Kizomba Fusion",
+      "quote": "Kizomba Fusion"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "UrbanKiz",
+      "quote": "UrbanKiz"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba – Kizomba Authentique",
+      "quote": "Semba – Kizomba Authentique"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "Afro"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Tetris Style",
+      "quote": "Tetris Style"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Tango",
+      "quote": "Atelier Tango"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "Kizomba Douceur"
+     }
+    ]
+   }
+  ]
+ }
 }

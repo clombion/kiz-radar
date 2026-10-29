@@ -1,64 +1,71 @@
 {
- "batch": "event-18808",
- "events": [
-  {
-   "event_id": 18808,
-   "party_rooms": {
-    "count": 2,
-    "quote": "one Kizomba room and one Salsa / Bachata room"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "one Kizomba room"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b39b5678f74ff3fb",
+ "answer": {
+  "batch": "event-18808",
+  "events": [
+   {
+    "event_id": 18808,
+    "party_rooms": {
+     "count": 2,
+     "quote": "one Kizomba room and one Salsa / Bachata room"
     },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "salsa",
-      "bachata"
-     ],
-     "quote": "one Salsa / Bachata room"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "one Kizomba room"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳",
-     "quote": "𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "𝐒𝐞𝐦𝐛𝐚",
-     "quote": "𝐒𝐞𝐦𝐛𝐚"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "𝐓𝐚𝐫𝐫𝐚𝐱𝐨",
-     "quote": "𝐓𝐚𝐫𝐫𝐚𝐱𝐨"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "one Salsa / Bachata room"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "one Salsa / Bachata room"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "one Kizomba room"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "salsa",
+       "bachata"
+      ],
+      "quote": "one Salsa / Bachata room"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "one Kizomba room"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳",
+      "quote": "𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "𝐒𝐞𝐦𝐛𝐚",
+      "quote": "𝐒𝐞𝐦𝐛𝐚 / 𝐓𝐚𝐫𝐫𝐚𝐱𝐨"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "𝐓𝐚𝐫𝐫𝐚𝐱𝐨",
+      "quote": "𝐒𝐞𝐦𝐛𝐚 / 𝐓𝐚𝐫𝐫𝐚𝐱𝐨"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "one Salsa / Bachata room"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "one Salsa / Bachata room"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:christina@christina+dimitris",
+ "key_b": "p:christina@christina+joanna",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:01+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "bc9c7ee942ec383c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the bare first name 'Christina' with overlapping Greek events, but they link to different partners (Dimitris and Joanna) and the first name alone is weak evidence, so the pair doesn't settle as one artist or two."
+ }
+}

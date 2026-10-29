@@ -1,132 +1,125 @@
 {
- "batch": "event-15265",
- "events": [
-  {
-   "event_id": 15265,
-   "artists": [
-    {
-     "name_as_written": "DJ LAMIN",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "DJ LAMIN in collaboration with Mellow present high-quality 𝗨𝗥𝗕𝗔𝗡𝗞𝗜𝗭 and 𝗧𝗔𝗥𝗥𝗔𝗫𝗢 event:"
-    },
-    {
-     "name_as_written": "Mellow",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "DJ LAMIN in collaboration with Mellow present high-quality 𝗨𝗥𝗕𝗔𝗡𝗞𝗜𝗭 and 𝗧𝗔𝗥𝗥𝗔𝗫𝗢 event:"
-    },
-    {
-     "name_as_written": "DJ SNAKES",
-     "role": "dj",
-     "style": null,
-     "country": "FR",
-     "source_line": "⭐ DJ SNAKES (FR)"
-    },
-    {
-     "name_as_written": "DJ SHARK",
-     "role": "dj",
-     "style": null,
-     "country": "SPAIN",
-     "source_line": "⭐ DJ SHARK (SPAIN)"
-    },
-    {
-     "name_as_written": "DJ LONGCHAMP",
-     "role": "dj",
-     "style": null,
-     "country": "GER",
-     "source_line": "⭐ DJ LONGCHAMP (GER)"
-    },
-    {
-     "name_as_written": "DJ NEKO",
-     "role": "dj",
-     "style": null,
-     "country": "IT",
-     "source_line": "⭐ DJ NEKO (IT)"
-    },
-    {
-     "name_as_written": "DJ LAMIN",
-     "role": "dj",
-     "style": null,
-     "country": "CZ",
-     "source_line": "⭐ DJ LAMIN (CZ)"
-    },
-    {
-     "name_as_written": "JP & STEPHY",
-     "role": "teacher",
-     "style": null,
-     "country": "FR",
-     "source_line": "⭐ JP & STEPHY (FR)"
-    },
-    {
-     "name_as_written": "METHODZ & JULIAA",
-     "role": "teacher",
-     "style": null,
-     "country": "FR",
-     "source_line": "⭐ METHODZ & JULIAA (FR)"
-    },
-    {
-     "name_as_written": "AMI & JULIEN",
-     "role": "teacher",
-     "style": null,
-     "country": "FR",
-     "source_line": "⭐ AMI & JULIEN (FR)"
-    },
-    {
-     "name_as_written": "JASMINE",
-     "role": "teacher",
-     "style": null,
-     "country": "GER",
-     "source_line": "⭐ JASMINE (GER)"
-    },
-    {
-     "name_as_written": "GERI & MAGDI",
-     "role": "teacher",
-     "style": null,
-     "country": "HU",
-     "source_line": "⭐ GERI & MAGDI (HU)"
-    },
-    {
-     "name_as_written": "RADIM & HALI",
-     "role": "teacher",
-     "style": null,
-     "country": "CZ",
-     "source_line": "⭐ RADIM & HALI (CZ)"
-    },
-    {
-     "name_as_written": "ELINA",
-     "role": "teacher",
-     "style": null,
-     "country": "CZ",
-     "source_line": "⭐ ELINA (CZ) & CROWN PERK (GER)"
-    },
-    {
-     "name_as_written": "CROWN PERK",
-     "role": "teacher",
-     "style": null,
-     "country": "GER",
-     "source_line": "⭐ ELINA (CZ) & CROWN PERK (GER)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "𝗔𝗹𝗹-𝗶𝗻-𝗼𝗻𝗲 𝗹𝗼𝗰𝗮𝘁𝗶𝗼𝗻.",
-     "rationale": "The hotel is described as an all-in-one location where dancers can stay, so the event and accommodation share one venue."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "𝗮 𝗽𝗿𝗲-𝗽𝗮𝗿𝘁𝘆 (not included in the pass / paid separately)",
-     "rationale": "The text states the event starts with a pre-party, though it is paid separately."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops",
-     "rationale": "The list of what to expect includes workshops as part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:24:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "edc58933510f6376",
+ "answer": {
+  "batch": "event-15265",
+  "events": [
+   {
+    "event_id": 15265,
+    "artists": [
+     {
+      "name_as_written": "Mellow",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "DJ LAMIN in collaboration with Mellow present high-quality 𝗨𝗥𝗕𝗔𝗡𝗞𝗜𝗭 and 𝗧𝗔𝗥𝗥𝗔𝗫𝗢 event:"
+     },
+     {
+      "name_as_written": "DJ SNAKES",
+      "role": "dj",
+      "style": null,
+      "country": "FR",
+      "source_line": "⭐ DJ SNAKES (FR)"
+     },
+     {
+      "name_as_written": "DJ SHARK",
+      "role": "dj",
+      "style": null,
+      "country": "SPAIN",
+      "source_line": "⭐ DJ SHARK (SPAIN)"
+     },
+     {
+      "name_as_written": "DJ LONGCHAMP",
+      "role": "dj",
+      "style": null,
+      "country": "GER",
+      "source_line": "⭐ DJ LONGCHAMP (GER)"
+     },
+     {
+      "name_as_written": "DJ NEKO",
+      "role": "dj",
+      "style": null,
+      "country": "IT",
+      "source_line": "⭐ DJ NEKO (IT)"
+     },
+     {
+      "name_as_written": "DJ LAMIN",
+      "role": "dj",
+      "style": null,
+      "country": "CZ",
+      "source_line": "⭐ DJ LAMIN (CZ)"
+     },
+     {
+      "name_as_written": "JP & STEPHY",
+      "role": "teacher",
+      "style": null,
+      "country": "FR",
+      "source_line": "⭐ JP & STEPHY (FR)"
+     },
+     {
+      "name_as_written": "METHODZ & JULIAA",
+      "role": "teacher",
+      "style": null,
+      "country": "FR",
+      "source_line": "⭐ METHODZ & JULIAA (FR)"
+     },
+     {
+      "name_as_written": "AMI & JULIEN",
+      "role": "teacher",
+      "style": null,
+      "country": "FR",
+      "source_line": "⭐ AMI & JULIEN (FR)"
+     },
+     {
+      "name_as_written": "JASMINE",
+      "role": "teacher",
+      "style": null,
+      "country": "GER",
+      "source_line": "⭐ JASMINE (GER)"
+     },
+     {
+      "name_as_written": "GERI & MAGDI",
+      "role": "teacher",
+      "style": null,
+      "country": "HU",
+      "source_line": "⭐ GERI & MAGDI (HU)"
+     },
+     {
+      "name_as_written": "RADIM & HALI",
+      "role": "teacher",
+      "style": null,
+      "country": "CZ",
+      "source_line": "⭐ RADIM & HALI (CZ)"
+     },
+     {
+      "name_as_written": "ELINA (CZ) & CROWN PERK (GER)",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ ELINA (CZ) & CROWN PERK (GER)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops",
+      "rationale": "The 'What can you look forward to?' list names workshops as part of the event."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "You can choose from three types of rooms – single, double, or triple.",
+      "rationale": "The accommodation section says the event is an all-in-one location, so the parties take place in the hotel where dancers stay."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "(not included in the pass / paid separately)",
+      "rationale": "The description mentions a pre-party starting on the 15th, sold separately from the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

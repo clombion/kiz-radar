@@ -1,36 +1,43 @@
 {
- "batch": "event-16446",
- "events": [
-  {
-   "event_id": 16446,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "HIGH-LEVEL WORKSHOPS AND MASTERCLASSES",
-     "rationale": "The description states that high-level workshops are part of the event."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "HIGH-LEVEL WORKSHOPS AND MASTERCLASSES",
-     "rationale": "The description explicitly mentions masterclasses."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Pool Parties!",
-     "rationale": "The description announces pool parties as a new feature this year."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "TRANSPORTATION FROM SEVILLE AIRPORT TO THE HOST HOTEL",
-     "rationale": "Transportation from the airport to the host hotel is offered."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Exclusive Kizomba Room Exclusive Bachata and Salsa Room",
-     "rationale": "The event has separate dance rooms for kizomba and for bachata and salsa."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:29:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "9ae9cfd45c6b5bd0",
+ "answer": {
+  "batch": "event-16446",
+  "events": [
+   {
+    "event_id": 16446,
+    "artists": [],
+    "features": [
+     {
+      "feature": "pool_party",
+      "quote": "Pool Parties!",
+      "rationale": "The description announces Pool Parties as a new feature of the event."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "TRANSPORTATION FROM SEVILLE AIRPORT TO THE HOST HOTEL",
+      "rationale": "Transportation from the airport to the host hotel is offered."
+     },
+     {
+      "feature": "workshops",
+      "quote": "HIGH-LEVEL WORKSHOPS AND MASTERCLASSES",
+      "rationale": "High-level workshops are part of the event programme."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "HIGH-LEVEL WORKSHOPS AND MASTERCLASSES",
+      "rationale": "Masterclasses are explicitly part of the event programme."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Exclusive Kizomba Room Exclusive Bachata and Salsa Room",
+      "rationale": "The event has separate dance rooms for kizomba and for bachata and salsa."
+     }
+    ]
+   }
+  ]
+ }
 }

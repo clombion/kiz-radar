@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jarod@dj",
+ "key_b": "p:jarod@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "eb3a1997371d2cff",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The same stage name 'Dj Jarod' is used as a DJ in every event, and its two stated countries are compatible: GF (French Guiana) is an overseas department of France, so one French-national DJ fits both."
+ }
+}

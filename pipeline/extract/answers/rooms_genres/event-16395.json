@@ -1,12 +1,29 @@
 {
- "batch": "event-16395",
- "events": [
-  {
-   "event_id": 16395,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": []
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "1de9e6454f8990c6",
+ "answer": {
+  "batch": "event-16395",
+  "events": [
+   {
+    "event_id": 16395,
+    "party_rooms": {
+     "count": 1,
+     "quote": "Wooden dance floor"
+    },
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [],
+      "quote": "Wooden dance floor"
+     }
+    ],
+    "genres": []
+   }
+  ]
+ }
 }

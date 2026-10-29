@@ -1,0 +1,13 @@
+{
+ "key_a": "p:blackchinese",
+ "key_b": "p:blackchinese@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "614beb0146aaee8c",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both keys are the same stage name 'Black Chinese' / 'Blackchinese' differing only in spacing and capitalization, with the same French country and kizomba/urban kiz style, and the side-B event history consistently uses the distinctive name in France, Italy and Switzerland, so one teacher is the most likely explanation."
+ }
+}

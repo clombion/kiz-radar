@@ -1,33 +1,40 @@
 {
- "batch": "event-14599",
- "events": [
-  {
-   "event_id": 14599,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Salsa • Bachata • Kizomba • Zouk"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Salsa • Bachata • Kizomba • Zouk"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Salsa • Bachata • Kizomba • Zouk"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "Salsa • Bachata • Kizomba • Zouk"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d633984dd50759c8",
+ "answer": {
+  "batch": "event-14599",
+  "events": [
+   {
+    "event_id": 14599,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Feature Salsa, Bachata, Kizomba & Zouk at one event"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Feature Salsa, Bachata, Kizomba & Zouk at one event"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Feature Salsa, Bachata, Kizomba & Zouk at one event"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Zouk",
+      "quote": "Brazilian Zouk Dance Council Jack & Jill Competition"
+     }
+    ]
+   }
+  ]
+ }
 }

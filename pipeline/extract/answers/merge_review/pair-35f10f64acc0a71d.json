@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ines@ines+pedro",
+ "key_b": "p:inesmiranda",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "35f10f64acc0a71d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as Portuguese and both have events in France, but side A is only a first name tied to a partner (Pedro) with no mentions to check, while side B is a full name with many events and no partner, so the shared first name and country do not settle whether they are one person."
+ }
+}

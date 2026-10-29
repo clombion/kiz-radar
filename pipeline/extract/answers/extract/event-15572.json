@@ -1,97 +1,109 @@
 {
- "batch": "event-15572",
- "events": [
-  {
-   "event_id": 15572,
-   "artists": [
-    {
-     "name_as_written": "Akwaba Kizomba",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Akwaba Kizomba, PoitierSalsa & Paris Kizomba School are pleased to offert you the 5th edition still highliting the values of Kizomba/Semba festive universe as represented in the PALOP environnemt 🇦🇴 🇨🇻 🇬🇼 🇲🇿 🇸🇹"
-    },
-    {
-     "name_as_written": "PoitierSalsa",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Akwaba Kizomba, PoitierSalsa & Paris Kizomba School are pleased to offert you the 5th edition still highliting the values of Kizomba/Semba festive universe as represented in the PALOP environnemt 🇦🇴 🇨🇻 🇬🇼 🇲🇿 🇸🇹"
-    },
-    {
-     "name_as_written": "Paris Kizomba School",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Akwaba Kizomba, PoitierSalsa & Paris Kizomba School are pleased to offert you the 5th edition still highliting the values of Kizomba/Semba festive universe as represented in the PALOP environnemt 🇦🇴 🇨🇻 🇬🇼 🇲🇿 🇸🇹"
-    },
-    {
-     "name_as_written": "DJ MIRO KIKOLA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 DJ MIRO KIKOLA"
-    },
-    {
-     "name_as_written": "DJ VASCO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 DJ VASCO"
-    },
-    {
-     "name_as_written": "TERESA FT",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 TERESA FT"
-    },
-    {
-     "name_as_written": "ELHADJ & JENNA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 ELHADJ & JENNA"
-    },
-    {
-     "name_as_written": "CLAUDIO & VANESSA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 CLAUDIO & VANESSA"
-    },
-    {
-     "name_as_written": "AURELIE AÏDAM",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 AURELIE AÏDAM"
-    },
-    {
-     "name_as_written": "PEDRO SP",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🟡 PEDRO SP"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops",
-     "rationale": "The event lists workshops as part of its program."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Partner Hotel",
-     "rationale": "The description names Hôtel AKENA as the partner hotel, with negotiated rates that are booked separately."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Shuttles will only depart from this hotel.",
-     "rationale": "The description states that shuttles run from the partner hotel."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "526738d9062e14ad",
+ "answer": {
+  "batch": "event-15572",
+  "events": [
+   {
+    "event_id": 15572,
+    "artists": [
+     {
+      "name_as_written": "Akwaba Kizomba",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Akwaba Kizomba, PoitierSalsa & Paris Kizomba School are pleased to offert you the 5th edition still highliting the values of Kizomba/Semba festive universe as represented in the PALOP environnemt 🇦🇴 🇨🇻 🇬🇼 🇲🇿 🇸🇹"
+     },
+     {
+      "name_as_written": "PoitierSalsa",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Akwaba Kizomba, PoitierSalsa & Paris Kizomba School are pleased to offert you the 5th edition still highliting the values of Kizomba/Semba festive universe as represented in the PALOP environnemt 🇦🇴 🇨🇻 🇬🇼 🇲🇿 🇸🇹"
+     },
+     {
+      "name_as_written": "Paris Kizomba School",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Akwaba Kizomba, PoitierSalsa & Paris Kizomba School are pleased to offert you the 5th edition still highliting the values of Kizomba/Semba festive universe as represented in the PALOP environnemt 🇦🇴 🇨🇻 🇬🇼 🇲🇿 🇸🇹"
+     },
+     {
+      "name_as_written": "DJ MIRO KIKOLA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 DJ MIRO KIKOLA"
+     },
+     {
+      "name_as_written": "DJ VASCO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 DJ VASCO"
+     },
+     {
+      "name_as_written": "TERESA FT",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 TERESA FT"
+     },
+     {
+      "name_as_written": "ELHADJ & JENNA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 ELHADJ & JENNA"
+     },
+     {
+      "name_as_written": "CLAUDIO & VANESSA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 CLAUDIO & VANESSA"
+     },
+     {
+      "name_as_written": "AURELIE AÏDAM",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 AURELIE AÏDAM"
+     },
+     {
+      "name_as_written": "PEDRO SP",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🟡 PEDRO SP"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops",
+      "rationale": "The line '🔥 Workshops' states that workshops are part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 Socials",
+      "rationale": "The line '🔥 3 Socials' indicates three socials, which are daytime or afternoon parties."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Partner Hotel",
+      "rationale": "The description has a 'Partner Hotel' section naming Hôtel AKENA as the partner hotel, with negotiated rates separate from the pass."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Shuttles will only depart from this hotel.",
+      "rationale": "The description states that shuttles depart from the partner hotel, so shuttle transfers are offered."
+     }
+    ]
+   }
+  ]
+ }
 }

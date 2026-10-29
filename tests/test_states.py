@@ -13,7 +13,7 @@ from pydantic import ValidationError
 from pipeline import ROOT, enums, generate, prompt, states
 from pipeline.enums import PassKind, People, Price, Sales, Style
 from pipeline.extract import prices
-from pipeline.records import LOG_ENTRY, PricedPass, PricedTier
+from pipeline.records import LOG_ENTRY, PricedPass, PricedTier, Sale
 from pipeline.states import Disposition, Link, State
 
 
@@ -122,12 +122,8 @@ def passes(
         currency='EUR',
         fee=None,
         alt=None,
-        from_=None,
-        until=None,
-        quantity=None,
-        door=False,
+        sale=Sale(from_=None, until=None, quantity=None, current=False),
         sold_out=False,
-        current=False,
         quote=f'{amount:g}',
     )
     return [
@@ -247,7 +243,7 @@ LITERALS = {
     frozenset({'address', 'html'}),  # where a recipe's widget finds its event id, records.Widget
     frozenset({'fr', 'es', 'pt'}),  # kizomba-world's translations
     frozenset({'extract', 'rooms_genres', 'prices'}),  # the extraction passes, prompt.PassName
-    frozenset({'first_read'}),  # the prompt that is no pass, prompt.Name
+    frozenset({'first_read', 'merge_review'}),  # the prompts that are no pass, prompt.Name
     frozenset({'ro', 'rw', 'rwc'}),  # SQLite's open modes, db.opened
     frozenset({'ro', 'rw'}),  # the export's, which no step creates, export.opened
     frozenset({'pages', 'models'}),  # the parts of the tickets run, which the Action makes apart, tickets.Part

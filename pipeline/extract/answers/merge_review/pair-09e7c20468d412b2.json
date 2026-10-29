@@ -1,0 +1,13 @@
+{
+ "key_a": "p:lucas@dj",
+ "key_b": "p:lucasexclusive",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "09e7c20468d412b2",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the stage name 'DJ Lucas' and the Portuguese country, but 'Exclusive' is an extra word on side B, the two sides have no events in common, and 'Lucas' is a common first name, so the evidence does not settle whether these are one artist."
+ }
+}

@@ -1,28 +1,35 @@
 {
- "batch": "event-14952",
- "events": [
-  {
-   "event_id": 14952,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "kizomba",
-     "quote": "viens vibrer au rythme de la kizomba"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban kiz",
-     "quote": "kizomba, Urban kiz, tarraxo etc"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "tarraxo",
-     "quote": "Urban kiz, tarraxo etc"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "ba68dd0b6f1a9609",
+ "answer": {
+  "batch": "event-14952",
+  "events": [
+   {
+    "event_id": 14952,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "kizomba",
+      "quote": "au rythme de la kizomba"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban kiz",
+      "quote": "Urban kiz, tarraxo etc"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "tarraxo",
+      "quote": "Urban kiz, tarraxo etc"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:bicky@bicky+guytawa",
+ "key_b": "p:bicky@bicky+guytawa",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "028a9c8de854714e",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same key, with no mentions to show events, roles or styles, only three widely separated countries (BE, CM, VN) for the name BICKY and a partner tag, so the evidence cannot tell one touring artist from several people sharing the name."
+ }
+}

@@ -1,345 +1,359 @@
 {
- "batch": "event-16288",
- "events": [
-  {
-   "event_id": 16288,
-   "artists": [
-    {
-     "name_as_written": "Tropical Gem",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🌟 Tropical Gem 🇮🇹"
-    },
-    {
-     "name_as_written": "Yuri Colucci C-Crew",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🌟 Yuri Colucci C-Crew 🇮🇹"
-    },
-    {
-     "name_as_written": "Talal & Edyta",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇱🇧🇪",
-     "source_line": "🌟 Talal & Edyta 🇵🇱🇧🇪"
-    },
-    {
-     "name_as_written": "Zergyo & Eva",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🌟 Zergyo & Eva 🇪🇸"
-    },
-    {
-     "name_as_written": "Falco & Leti",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇨🇪🇸",
-     "source_line": "🌟 Falco & Leti 🇪🇨🇪🇸"
-    },
-    {
-     "name_as_written": "Franco Rocha",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🌟 Franco Rocha 🇪🇸"
-    },
-    {
-     "name_as_written": "Jazzy Ruiz",
-     "role": "teacher",
-     "style": null,
-     "country": "🇳🇴",
-     "source_line": "🌟 Jazzy Ruiz 🇳🇴"
-    },
-    {
-     "name_as_written": "Jorge Aguilar",
-     "role": "teacher",
-     "style": null,
-     "country": "🇲🇽",
-     "source_line": "🌟 Jorge Aguilar 🇲🇽"
-    },
-    {
-     "name_as_written": "Pablo & Andrea",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🌟 Pablo & Andrea 🇪🇸"
-    },
-    {
-     "name_as_written": "Javier Padilla",
-     "role": "teacher",
-     "style": null,
-     "country": "🇲🇽🇪🇸",
-     "source_line": "🌟 Javier Padilla 🇲🇽🇪🇸"
-    },
-    {
-     "name_as_written": "Luismi & Mariangela",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🌟 Luismi & Mariangela 🇪🇸"
-    },
-    {
-     "name_as_written": "Marta",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇱",
-     "source_line": "🌟 Marta 🇵🇱"
-    },
-    {
-     "name_as_written": "Sandy Fiore",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🌟 Sandy Fiore 🇮🇹"
-    },
-    {
-     "name_as_written": "Luismi & Arantxa",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🌟 Luismi & Arantxa 🇪🇸"
-    },
-    {
-     "name_as_written": "Jesús & María",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🌟 Jesús & María 🇪🇸"
-    },
-    {
-     "name_as_written": "Alfredo & Andrea",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🌟 Alfredo & Andrea 🇪🇸"
-    },
-    {
-     "name_as_written": "Adham Kotb",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇬",
-     "source_line": "🌟 Adham Kotb 🇪🇬"
-    },
-    {
-     "name_as_written": "Juanma & Tania",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🌟 Juanma & Tania 🇪🇸"
-    },
-    {
-     "name_as_written": "Carmen Vega",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🌟Carmen Vega 🇪🇸"
-    },
-    {
-     "name_as_written": "Alex Grafiada",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🌟 Alex Grafiada 🇪🇸"
-    },
-    {
-     "name_as_written": "Christian & Jacqueline",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇪🇩🇪",
-     "source_line": "🌟 Christian & Jacqueline 🇵🇪🇩🇪"
-    },
-    {
-     "name_as_written": "Aldo & Ale Chen",
-     "role": "teacher",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "🌟 Aldo & Ale Chen 🇳🇱"
-    },
-    {
-     "name_as_written": "Edson & Juan",
-     "role": "teacher",
-     "style": null,
-     "country": "🇻🇪🇩🇪",
-     "source_line": "🌟 Edson & Juan 🇻🇪🇩🇪"
-    },
-    {
-     "name_as_written": "Dennis & Bryan",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇴🇵🇪🇩🇪",
-     "source_line": "🌟 Dennis & Bryan 🇨🇴🇵🇪🇩🇪"
-    },
-    {
-     "name_as_written": "Ronier Moreno",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🌟 Ronier Moreno 🇪🇸"
-    },
-    {
-     "name_as_written": "Duo Simval",
-     "role": "teacher",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "🌟 Duo Simval 🇩🇪"
-    },
-    {
-     "name_as_written": "Bebars & Paola",
-     "role": "teacher",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "🌟 Bebars & Paola 🇩🇪"
-    },
-    {
-     "name_as_written": "Yas",
-     "role": "teacher",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "🌟 Yas 🇧🇪"
-    },
-    {
-     "name_as_written": "Arnaud & Sara",
-     "role": "teacher",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "🌟 Arnaud & Sara 🇧🇪"
-    },
-    {
-     "name_as_written": "Ahmedy & Caro",
-     "role": "teacher",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "🌟 Ahmedy & Caro 🇧🇪"
-    },
-    {
-     "name_as_written": "Julien & Théodora",
-     "role": "teacher",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "🌟 Julien & Théodora 🇧🇪"
-    },
-    {
-     "name_as_written": "Fabian & Lauranne",
-     "role": "teacher",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "🌟 Fabian & Lauranne 🇧🇪"
-    },
-    {
-     "name_as_written": "Ricco",
-     "role": "teacher",
-     "style": null,
-     "country": "🇧🇪🇲🇽",
-     "source_line": "🌟 Ricco 🇧🇪🇲🇽"
-    },
-    {
-     "name_as_written": "Diego & Lidia",
-     "role": "teacher",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "🌟 Diego & Lidia 🇧🇪"
-    },
-    {
-     "name_as_written": "Gaëtan & Estelle",
-     "role": "teacher",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "🌟 Gaëtan & Estelle🇧🇪"
-    },
-    {
-     "name_as_written": "FLOWLY & Anastasiia",
-     "role": "teacher",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "🌟 FLOWLY & Anastasiia 🇧🇪"
-    },
-    {
-     "name_as_written": "DJ Fabrizio Zoro",
-     "role": "dj",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🎶 DJs : DJ Fabrizio Zoro 🇮🇹• DJ Pier Esencia 🇪🇸• Lorena DJ 🇪🇸• DJ Ramon 🇪🇸• DJ Kamilo 🇧🇪• DJ Dani 🇧🇪• DJ Elizabeth 🇧🇪 • DJ FUEGO 🇧🇪"
-    },
-    {
-     "name_as_written": "DJ Pier Esencia",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🎶 DJs : DJ Fabrizio Zoro 🇮🇹• DJ Pier Esencia 🇪🇸• Lorena DJ 🇪🇸• DJ Ramon 🇪🇸• DJ Kamilo 🇧🇪• DJ Dani 🇧🇪• DJ Elizabeth 🇧🇪 • DJ FUEGO 🇧🇪"
-    },
-    {
-     "name_as_written": "Lorena DJ",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🎶 DJs : DJ Fabrizio Zoro 🇮🇹• DJ Pier Esencia 🇪🇸• Lorena DJ 🇪🇸• DJ Ramon 🇪🇸• DJ Kamilo 🇧🇪• DJ Dani 🇧🇪• DJ Elizabeth 🇧🇪 • DJ FUEGO 🇧🇪"
-    },
-    {
-     "name_as_written": "DJ Ramon",
-     "role": "dj",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "🎶 DJs : DJ Fabrizio Zoro 🇮🇹• DJ Pier Esencia 🇪🇸• Lorena DJ 🇪🇸• DJ Ramon 🇪🇸• DJ Kamilo 🇧🇪• DJ Dani 🇧🇪• DJ Elizabeth 🇧🇪 • DJ FUEGO 🇧🇪"
-    },
-    {
-     "name_as_written": "DJ Kamilo",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "🎶 DJs : DJ Fabrizio Zoro 🇮🇹• DJ Pier Esencia 🇪🇸• Lorena DJ 🇪🇸• DJ Ramon 🇪🇸• DJ Kamilo 🇧🇪• DJ Dani 🇧🇪• DJ Elizabeth 🇧🇪 • DJ FUEGO 🇧🇪"
-    },
-    {
-     "name_as_written": "DJ Dani",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "🎶 DJs : DJ Fabrizio Zoro 🇮🇹• DJ Pier Esencia 🇪🇸• Lorena DJ 🇪🇸• DJ Ramon 🇪🇸• DJ Kamilo 🇧🇪• DJ Dani 🇧🇪• DJ Elizabeth 🇧🇪 • DJ FUEGO 🇧🇪"
-    },
-    {
-     "name_as_written": "DJ Elizabeth",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "🎶 DJs : DJ Fabrizio Zoro 🇮🇹• DJ Pier Esencia 🇪🇸• Lorena DJ 🇪🇸• DJ Ramon 🇪🇸• DJ Kamilo 🇧🇪• DJ Dani 🇧🇪• DJ Elizabeth 🇧🇪 • DJ FUEGO 🇧🇪"
-    },
-    {
-     "name_as_written": "DJ FUEGO",
-     "role": "dj",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "🎶 DJs : DJ Fabrizio Zoro 🇮🇹• DJ Pier Esencia 🇪🇸• Lorena DJ 🇪🇸• DJ Ramon 🇪🇸• DJ Kamilo 🇧🇪• DJ Dani 🇧🇪• DJ Elizabeth 🇧🇪 • DJ FUEGO 🇧🇪"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "4 days of Workshops",
-     "rationale": "The program lists workshops as part of the four festival days."
-    },
-    {
-     "feature": "shows",
-     "quote": "Professional Shows",
-     "rationale": "The program lists professional shows as part of the festival."
-    },
-    {
-     "feature": "competition",
-     "quote": "International Competition",
-     "rationale": "The program lists an international competition."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Rooms",
-     "rationale": "The program states the festival has two dance rooms."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Partner hotel: B&B Hotel Liège Rocourt",
-     "rationale": "A partner hotel is named, with a discount code, while accommodation is not stated as part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "e8296b6ba139fb34",
+ "answer": {
+  "batch": "event-16288",
+  "events": [
+   {
+    "event_id": 16288,
+    "artists": [
+     {
+      "name_as_written": "Tropical Gem",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🌟 Tropical Gem 🇮🇹"
+     },
+     {
+      "name_as_written": "Yuri Colucci C-Crew",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🌟 Yuri Colucci C-Crew 🇮🇹"
+     },
+     {
+      "name_as_written": "Talal & Edyta",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇱🇧🇪",
+      "source_line": "🌟 Talal & Edyta 🇵🇱🇧🇪"
+     },
+     {
+      "name_as_written": "Zergyo & Eva",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🌟 Zergyo & Eva 🇪🇸"
+     },
+     {
+      "name_as_written": "Falco & Leti",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇨🇪🇸",
+      "source_line": "🌟 Falco & Leti 🇪🇨🇪🇸"
+     },
+     {
+      "name_as_written": "Franco Rocha",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🌟 Franco Rocha 🇪🇸"
+     },
+     {
+      "name_as_written": "Jazzy Ruiz",
+      "role": "teacher",
+      "style": null,
+      "country": "🇳🇴",
+      "source_line": "🌟 Jazzy Ruiz 🇳🇴"
+     },
+     {
+      "name_as_written": "Jorge Aguilar",
+      "role": "teacher",
+      "style": null,
+      "country": "🇲🇽",
+      "source_line": "🌟 Jorge Aguilar 🇲🇽"
+     },
+     {
+      "name_as_written": "Pablo & Andrea",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🌟 Pablo & Andrea 🇪🇸"
+     },
+     {
+      "name_as_written": "Javier Padilla",
+      "role": "teacher",
+      "style": null,
+      "country": "🇲🇽🇪🇸",
+      "source_line": "🌟 Javier Padilla 🇲🇽🇪🇸"
+     },
+     {
+      "name_as_written": "Luismi & Mariangela",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🌟 Luismi & Mariangela 🇪🇸"
+     },
+     {
+      "name_as_written": "Marta",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇱",
+      "source_line": "🌟 Marta 🇵🇱"
+     },
+     {
+      "name_as_written": "Sandy Fiore",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🌟 Sandy Fiore 🇮🇹"
+     },
+     {
+      "name_as_written": "Luismi & Arantxa",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🌟 Luismi & Arantxa 🇪🇸"
+     },
+     {
+      "name_as_written": "Jesús & María",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🌟 Jesús & María 🇪🇸"
+     },
+     {
+      "name_as_written": "Alfredo & Andrea",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🌟 Alfredo & Andrea 🇪🇸"
+     },
+     {
+      "name_as_written": "Adham Kotb",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇬",
+      "source_line": "🌟 Adham Kotb 🇪🇬"
+     },
+     {
+      "name_as_written": "Juanma & Tania",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🌟 Juanma & Tania 🇪🇸"
+     },
+     {
+      "name_as_written": "Carmen Vega",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🌟Carmen Vega 🇪🇸"
+     },
+     {
+      "name_as_written": "Alex Grafiada",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🌟 Alex Grafiada 🇪🇸"
+     },
+     {
+      "name_as_written": "Christian & Jacqueline",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇪🇩🇪",
+      "source_line": "🌟 Christian & Jacqueline 🇵🇪🇩🇪"
+     },
+     {
+      "name_as_written": "Aldo & Ale Chen",
+      "role": "teacher",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "🌟 Aldo & Ale Chen 🇳🇱"
+     },
+     {
+      "name_as_written": "Edson & Juan",
+      "role": "teacher",
+      "style": null,
+      "country": "🇻🇪🇩🇪",
+      "source_line": "🌟 Edson & Juan 🇻🇪🇩🇪"
+     },
+     {
+      "name_as_written": "Dennis & Bryan",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇴🇵🇪🇩🇪",
+      "source_line": "🌟 Dennis & Bryan 🇨🇴🇵🇪🇩🇪"
+     },
+     {
+      "name_as_written": "Ronier Moreno",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🌟 Ronier Moreno 🇪🇸"
+     },
+     {
+      "name_as_written": "Duo Simval",
+      "role": "teacher",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "🌟 Duo Simval 🇩🇪"
+     },
+     {
+      "name_as_written": "Bebars & Paola",
+      "role": "teacher",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "🌟 Bebars & Paola 🇩🇪"
+     },
+     {
+      "name_as_written": "Yas",
+      "role": "teacher",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "🌟 Yas 🇧🇪"
+     },
+     {
+      "name_as_written": "Arnaud & Sara",
+      "role": "teacher",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "🌟 Arnaud & Sara 🇧🇪"
+     },
+     {
+      "name_as_written": "Ahmedy & Caro",
+      "role": "teacher",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "🌟 Ahmedy & Caro 🇧🇪"
+     },
+     {
+      "name_as_written": "Julien & Théodora",
+      "role": "teacher",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "🌟 Julien & Théodora 🇧🇪"
+     },
+     {
+      "name_as_written": "Fabian & Lauranne",
+      "role": "teacher",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "🌟 Fabian & Lauranne 🇧🇪"
+     },
+     {
+      "name_as_written": "Ricco",
+      "role": "teacher",
+      "style": null,
+      "country": "🇧🇪🇲🇽",
+      "source_line": "🌟 Ricco 🇧🇪🇲🇽"
+     },
+     {
+      "name_as_written": "Diego & Lidia",
+      "role": "teacher",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "🌟 Diego & Lidia 🇧🇪"
+     },
+     {
+      "name_as_written": "Gaëtan & Estelle",
+      "role": "teacher",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "🌟 Gaëtan & Estelle🇧🇪"
+     },
+     {
+      "name_as_written": "FLOWLY & Anastasiia",
+      "role": "teacher",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "🌟 FLOWLY & Anastasiia 🇧🇪"
+     },
+     {
+      "name_as_written": "DJ Fabrizio Zoro",
+      "role": "dj",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🎶 DJs : DJ Fabrizio Zoro 🇮🇹• DJ Pier Esencia 🇪🇸• Lorena DJ 🇪🇸• DJ Ramon 🇪🇸• DJ Kamilo 🇧🇪• DJ Dani 🇧🇪• DJ Elizabeth 🇧🇪 • DJ FUEGO 🇧🇪"
+     },
+     {
+      "name_as_written": "DJ Pier Esencia",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🎶 DJs : DJ Fabrizio Zoro 🇮🇹• DJ Pier Esencia 🇪🇸• Lorena DJ 🇪🇸• DJ Ramon 🇪🇸• DJ Kamilo 🇧🇪• DJ Dani 🇧🇪• DJ Elizabeth 🇧🇪 • DJ FUEGO 🇧🇪"
+     },
+     {
+      "name_as_written": "Lorena DJ",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🎶 DJs : DJ Fabrizio Zoro 🇮🇹• DJ Pier Esencia 🇪🇸• Lorena DJ 🇪🇸• DJ Ramon 🇪🇸• DJ Kamilo 🇧🇪• DJ Dani 🇧🇪• DJ Elizabeth 🇧🇪 • DJ FUEGO 🇧🇪"
+     },
+     {
+      "name_as_written": "DJ Ramon",
+      "role": "dj",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "🎶 DJs : DJ Fabrizio Zoro 🇮🇹• DJ Pier Esencia 🇪🇸• Lorena DJ 🇪🇸• DJ Ramon 🇪🇸• DJ Kamilo 🇧🇪• DJ Dani 🇧🇪• DJ Elizabeth 🇧🇪 • DJ FUEGO 🇧🇪"
+     },
+     {
+      "name_as_written": "DJ Kamilo",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "🎶 DJs : DJ Fabrizio Zoro 🇮🇹• DJ Pier Esencia 🇪🇸• Lorena DJ 🇪🇸• DJ Ramon 🇪🇸• DJ Kamilo 🇧🇪• DJ Dani 🇧🇪• DJ Elizabeth 🇧🇪 • DJ FUEGO 🇧🇪"
+     },
+     {
+      "name_as_written": "DJ Dani",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "🎶 DJs : DJ Fabrizio Zoro 🇮🇹• DJ Pier Esencia 🇪🇸• Lorena DJ 🇪🇸• DJ Ramon 🇪🇸• DJ Kamilo 🇧🇪• DJ Dani 🇧🇪• DJ Elizabeth 🇧🇪 • DJ FUEGO 🇧🇪"
+     },
+     {
+      "name_as_written": "DJ Elizabeth",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "🎶 DJs : DJ Fabrizio Zoro 🇮🇹• DJ Pier Esencia 🇪🇸• Lorena DJ 🇪🇸• DJ Ramon 🇪🇸• DJ Kamilo 🇧🇪• DJ Dani 🇧🇪• DJ Elizabeth 🇧🇪 • DJ FUEGO 🇧🇪"
+     },
+     {
+      "name_as_written": "DJ FUEGO",
+      "role": "dj",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "🎶 DJs : DJ Fabrizio Zoro 🇮🇹• DJ Pier Esencia 🇪🇸• Lorena DJ 🇪🇸• DJ Ramon 🇪🇸• DJ Kamilo 🇧🇪• DJ Dani 🇧🇪• DJ Elizabeth 🇧🇪 • DJ FUEGO 🇧🇪"
+     },
+     {
+      "name_as_written": "Quijano Brothers Dance Studio",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "📍 Quijano Brothers Dance Studio"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "4 days of Workshops",
+      "rationale": "The program lists workshops as part of the four festival days."
+     },
+     {
+      "feature": "shows",
+      "quote": "Professional Shows",
+      "rationale": "The program lists professional shows as part of the event."
+     },
+     {
+      "feature": "competition",
+      "quote": "International Competition",
+      "rationale": "The program lists an international competition."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 Rooms",
+      "rationale": "The program states the event has two rooms, meaning more than one dance floor."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Partner hotel: B&B Hotel Liège Rocourt",
+      "rationale": "A named partner hotel is recommended, with a discount code, but accommodation is not part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

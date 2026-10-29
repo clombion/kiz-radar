@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fabrizio@fabrizio+giulia",
+ "key_b": "p:fabriziokizpower",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8e9826a6266519ff",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only shared evidence is the Italian country; the common first name Fabrizio, the absent style, the empty mention list for side A, and the different event countries (Austria vs Germany) with no shared partner or event do not settle whether these are one artist."
+ }
+}

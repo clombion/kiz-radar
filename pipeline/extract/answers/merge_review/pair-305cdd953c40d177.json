@@ -1,0 +1,13 @@
+{
+ "key_a": "p:giuseppe@giuseppe+vincenza",
+ "key_b": "p:giuseppeandrea",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "305cdd953c40d177",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is the bare first name 'Giuseppe' with partner Vincenza and events in Italy and Slovenia, while side B is 'Giuseppe Andrea' with only Italian events and no partners; the only overlap is a common first name and the country Italy, with no shared partner, style, or event, so the evidence does not settle it."
+ }
+}

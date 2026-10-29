@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marco@ivana+marco",
+ "key_b": "p:marcopalladino",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "a7a7e538d2df0977",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the common first name 'Marco' with partner Ivana and events in Italy, while side B is 'Marco Palladino' with the same country (IT) but an event in Bulgaria and no partner, so a shared first name and country do not settle whether they are one person."
+ }
+}

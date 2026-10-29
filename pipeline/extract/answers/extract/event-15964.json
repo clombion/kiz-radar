@@ -1,74 +1,86 @@
 {
- "batch": "event-15964",
- "events": [
-  {
-   "event_id": 15964,
-   "artists": [
-    {
-     "name_as_written": "Wojtek and Sabina",
-     "role": "teacher",
-     "style": null,
-     "country": "Poland",
-     "source_line": "😀Wojtek and Sabina (Poland)"
-    },
-    {
-     "name_as_written": "Natha and Nadia",
-     "role": "teacher",
-     "style": null,
-     "country": "France",
-     "source_line": "😜Natha and Nadia (France)"
-    },
-    {
-     "name_as_written": "Val and Jossy",
-     "role": "teacher",
-     "style": null,
-     "country": "Norway",
-     "source_line": "🥳Val and Jossy (Norway)"
-    },
-    {
-     "name_as_written": "DJ Jazz",
-     "role": "dj",
-     "style": null,
-     "country": "Denmark",
-     "source_line": "🤩DJ Jazz (Denmark)"
-    },
-    {
-     "name_as_written": "Dj Frogger",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "😍 Dj Frogger (France)"
-    },
-    {
-     "name_as_written": "Catherine",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Catherine"
-    }
-   ],
-   "features": [
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Party to be confirmed",
-     "rationale": "The agenda lists a Thursday pre-party, so the event has a pre-party before the main event."
-    },
-    {
-     "feature": "workshops",
-     "quote": "18-21: Workshops",
-     "rationale": "The Friday agenda lists workshops, so dance classes are part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "17- 20: Dinner / Socials",
-     "rationale": "The agenda lists afternoon/early-evening socials on Saturday and Sunday."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Roberta’s Society Aarhus",
-     "rationale": "The description recommends specific hotels with booking links, without including accommodation in the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:27:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b2cdda9b78b402b7",
+ "answer": {
+  "batch": "event-15964",
+  "events": [
+   {
+    "event_id": 15964,
+    "artists": [
+     {
+      "name_as_written": "Wojtek and Sabina",
+      "role": "teacher",
+      "style": null,
+      "country": "Poland",
+      "source_line": "😀Wojtek and Sabina (Poland)"
+     },
+     {
+      "name_as_written": "Natha and Nadia",
+      "role": "teacher",
+      "style": null,
+      "country": "France",
+      "source_line": "😜Natha and Nadia (France)"
+     },
+     {
+      "name_as_written": "Val and Jossy",
+      "role": "teacher",
+      "style": null,
+      "country": "Norway",
+      "source_line": "🥳Val and Jossy (Norway)"
+     },
+     {
+      "name_as_written": "DJ Jazz",
+      "role": "dj",
+      "style": null,
+      "country": "Denmark",
+      "source_line": "🤩DJ Jazz (Denmark)"
+     },
+     {
+      "name_as_written": "Dj Frogger",
+      "role": "dj",
+      "style": null,
+      "country": "France",
+      "source_line": "😍 Dj Frogger (France)"
+     },
+     {
+      "name_as_written": "Catherine",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Catherine"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "18-21: Workshops",
+      "rationale": "The Friday agenda lists workshops as part of the event schedule."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-Party to be confirmed",
+      "rationale": "The agenda mentions a Thursday pre-party before the main event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "17- 20: Dinner / Socials",
+      "rationale": "The Saturday and Sunday agenda lists socials in the afternoon/early evening."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Roberta’s Society Aarhus",
+      "rationale": "The description recommends specific hotels with booking links that are not part of the pass."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "There are busses, trams and nightbusses that run from the city to the venue.",
+      "rationale": "The description explains public transport options running between the city and the venue."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:johan@johan+lucie",
+ "key_b": "p:johann@johann+lucie",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "db70f642f6c7fb78",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the same partner Lucie in the same couple listing and the same French events, with Johan/Johann being a language or spelling variant of one name, so this is normally one person."
+ }
+}

@@ -1,349 +1,368 @@
 {
- "batch": "event-15687",
- "events": [
-  {
-   "event_id": 15687,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "🔹 FULL PASS",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 130.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "01-01",
-       "until": "01-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Jan 1 – 31: €130"
-      },
-      {
-       "amount": 135.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "02-01",
-       "until": "02-28",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Feb 1 – 28: €135"
-      },
-      {
-       "amount": 140.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "03-01",
-       "until": "03-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Mar 1 – 31: €140"
-      },
-      {
-       "amount": 145.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "04-01",
-       "until": "04-16",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Apr 1 – Apr 16: €145"
-      },
-      {
-       "amount": 150.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "At the entrance: €150"
-      }
-     ]
-    },
-    {
-     "kind": "other",
-     "style": null,
-     "label_quote": "🔹 INTENSE PASS (2 DAYS)",
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 105.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "January: €105"
-      },
-      {
-       "amount": 110.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "February: €110"
-      },
-      {
-       "amount": 115.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "March: €115"
-      },
-      {
-       "amount": 120.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "04-16",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "April (until April 16): €120"
-      },
-      {
-       "amount": 125.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "04-17",
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "At the event (from April 17): €125"
-      }
-     ]
-    },
-    {
-     "kind": "party",
-     "style": null,
-     "label_quote": "🔹 PARTY PASS (Friday · Saturday · Sunday)",
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 75.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "01-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Until end of January: €75"
-      },
-      {
-       "amount": 80.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-28",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Until end of February: €80"
-      },
-      {
-       "amount": 85.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "03-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Until end of March: €85"
-      },
-      {
-       "amount": 90.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "04-16",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Until APR 16: €90"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "🔹 COUPLE PASS (Leader + Follower)",
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 230.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "January: €230"
-      },
-      {
-       "amount": 240.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "February: €240"
-      },
-      {
-       "amount": 250.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "March: €250"
-      },
-      {
-       "amount": 255.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "04-16",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Until April 16: €255"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "🔹 GROUP PASS – 4 LEADERS",
-     "group_size": 4,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 440.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "January: €440"
-      },
-      {
-       "amount": 450.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "02-28",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Until end of February: €450"
-      },
-      {
-       "amount": 460.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "03-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Until end of March: €460"
-      },
-      {
-       "amount": 470.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "04-16",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Until April 16: €470"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Prices change at the beginning of each month"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:42:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "6ec4d46126a5144b",
+ "answer": {
+  "batch": "event-15687",
+  "events": [
+   {
+    "event_id": 15687,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "🔹 FULL PASS",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 130.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "01-01",
+         "until": "01-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Jan 1 – 31: €130"
+       },
+       {
+        "amount": 135.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "02-01",
+         "until": "02-28",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Feb 1 – 28: €135"
+       },
+       {
+        "amount": 140.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "03-01",
+         "until": "03-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Mar 1 – 31: €140"
+       },
+       {
+        "amount": 145.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "04-01",
+         "until": "04-16",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Apr 1 – Apr 16: €145"
+       },
+       {
+        "amount": 150.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "At the entrance: €150"
+       }
+      ]
+     },
+     {
+      "kind": "other",
+      "style": null,
+      "label_quote": "🔹 INTENSE PASS (2 DAYS)",
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 105.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "01-01",
+         "until": "01-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "January: €105"
+       },
+       {
+        "amount": 110.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "02-01",
+         "until": "02-28",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "February: €110"
+       },
+       {
+        "amount": 115.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "03-01",
+         "until": "03-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "March: €115"
+       },
+       {
+        "amount": 120.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "04-01",
+         "until": "04-16",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "April (until April 16): €120"
+       },
+       {
+        "amount": 125.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "At the event (from April 17): €125"
+       }
+      ]
+     },
+     {
+      "kind": "party",
+      "style": null,
+      "label_quote": "🔹 PARTY PASS (Friday · Saturday · Sunday)",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 75.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "01-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Until end of January: €75"
+       },
+       {
+        "amount": 80.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "02-28",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Until end of February: €80"
+       },
+       {
+        "amount": 85.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "03-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Until end of March: €85"
+       },
+       {
+        "amount": 90.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "04-16",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Until APR 16: €90"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "🔹 COUPLE PASS (Leader + Follower)",
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 230.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "01-01",
+         "until": "01-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "January: €230"
+       },
+       {
+        "amount": 240.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "02-01",
+         "until": "02-28",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "February: €240"
+       },
+       {
+        "amount": 250.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "03-01",
+         "until": "03-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "March: €250"
+       },
+       {
+        "amount": 255.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "04-16",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Until April 16: €255"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "🔹 GROUP PASS – 4 LEADERS",
+      "group_size": 4,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 440.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "01-01",
+         "until": "01-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "January: €440"
+       },
+       {
+        "amount": 450.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "02-28",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Until end of February: €450"
+       },
+       {
+        "amount": 460.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "03-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Until end of March: €460"
+       },
+       {
+        "amount": 470.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "04-16",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Until April 16: €470"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Prices change at the beginning of each month"
+    ]
+   }
+  ]
+ }
 }

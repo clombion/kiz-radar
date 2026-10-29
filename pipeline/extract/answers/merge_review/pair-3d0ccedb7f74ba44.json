@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sara@sara+vilmar",
+ "key_b": "p:saracorpino",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "3d0ccedb7f74ba44",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only shared trait is the first name Sara and the Italian country, which is common; side A has no listed mentions, its partner (vilmar) is not linked to Sara Corpino, and its events are in France, so the evidence does not settle whether they are one artist."
+ }
+}

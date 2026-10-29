@@ -1,66 +1,73 @@
 {
- "batch": "event-15985",
- "events": [
-  {
-   "event_id": 15985,
-   "artists": [
-    {
-     "name_as_written": "LNA Carla",
-     "role": "media",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "📷 LNA Carla 🇫🇷"
-    },
-    {
-     "name_as_written": "Tarehi Prodarts",
-     "role": "media",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "📷 Tarehi Prodarts 🇫🇷"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE, Paris",
-     "rationale": "The event is described as all in one, with the parties held in the hotel where dancers stay."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 rooms, 2 different vibes",
-     "rationale": "The description states there are two dance rooms with different vibes."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Live concerts with full band",
-     "rationale": "Live concerts with a full band are announced as part of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "Gala Dinner with Live music & Shows",
-     "rationale": "The gala dinner is advertised with shows."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "High-quality masterclasses",
-     "rationale": "Masterclasses are part of the programme."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "16:00 – 20:00 Social Dance",
-     "rationale": "A daytime social dance session is listed on the schedule."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "𝖯𝗋𝖾𝗉𝖺𝗋𝗍𝗒",
-     "rationale": "A pre-party section appears in the Thursday schedule before the main event."
-    },
-    {
-     "feature": "after_party",
-     "quote": "After𝗉𝖺𝗋𝗍𝗒 | Kizomba Na Rua",
-     "rationale": "An after-party on Monday is listed in the schedule."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:27:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "81c88c45e377f6c9",
+ "answer": {
+  "batch": "event-15985",
+  "events": [
+   {
+    "event_id": 15985,
+    "artists": [
+     {
+      "name_as_written": "LNA Carla",
+      "role": "media",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "📷 LNA Carla 🇫🇷"
+     },
+     {
+      "name_as_written": "Tarehi Prodarts",
+      "role": "media",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "📷 Tarehi Prodarts 🇫🇷"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE, Paris",
+      "rationale": "The event is described as all in one, held at the hotel where dancers stay."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 rooms, 2 different vibes",
+      "rationale": "The event has two dance rooms with different music."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Live concerts with full band",
+      "rationale": "The description promises live concerts with a full band."
+     },
+     {
+      "feature": "shows",
+      "quote": "Gala Dinner with Live music & Shows",
+      "rationale": "The gala dinner includes shows by artists."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "High-quality masterclasses",
+      "rationale": "The event offers masterclasses."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "16:00 – 20:00 Social Dance",
+      "rationale": "The schedule includes a daytime social dance session."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "𝖯𝗋𝖾𝗉𝖺𝗋𝗍𝗒",
+      "rationale": "A pre-party heading appears in the schedule section."
+     },
+     {
+      "feature": "after_party",
+      "quote": "After𝗉𝖺𝗋𝗍𝗒 | Kizomba Na Rua",
+      "rationale": "An after-party is listed for Monday 29 June."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,31 +1,38 @@
 {
- "batch": "event-16758",
- "events": [
-  {
-   "event_id": 16758,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Inspiring workshops and unforgettable evenings",
-     "rationale": "The description says the event includes inspiring workshops, which are dance classes."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Whether you’re a beginner or an experienced dancer",
-     "rationale": "The description explicitly welcomes beginners as well as experienced dancers."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "T.A.X.I ⚡ D.A.N.S.E.U.R.S.",
-     "rationale": "The taxi-dancer (T.A.X.I. D.A.N.S.E.U.R.S.) section shows that taxi dancers are present."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "4:00 PM – 8:00 PM: Social",
-     "rationale": "The schedule lists an afternoon social from 4:00 PM to 8:00 PM."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "bcbe9a84d1fdb69e",
+ "answer": {
+  "batch": "event-16758",
+  "events": [
+   {
+    "event_id": 16758,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Inspiring workshops and unforgettable evenings",
+      "rationale": "The description states that inspiring workshops are part of the weekend."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Whether you’re a beginner or an experienced dancer",
+      "rationale": "The description explicitly welcomes beginners alongside experienced dancers."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "T.A.X.I ⚡ D.A.N.S.E.U.R.S.",
+      "rationale": "The taxi-dancer (T.A.X.I. D.A.N.S.E.U.R.S.) section shows taxi dancers are present."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "4:00 PM – 8:00 PM: Social",
+      "rationale": "Afternoon social sessions are scheduled on Saturday and Sunday."
+     }
+    ]
+   }
+  ]
+ }
 }

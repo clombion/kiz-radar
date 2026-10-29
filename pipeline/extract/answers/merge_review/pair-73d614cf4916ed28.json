@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sarah@sarah+stef",
+ "key_b": "p:sarah@sarah+valr",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "73d614cf4916ed28",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are the common first name Sarah with the same country (FR), but they have different partners (stef versus valr) and largely different event countries, so the evidence points to two artists sharing a common name."
+ }
+}

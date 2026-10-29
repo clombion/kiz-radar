@@ -1,80 +1,88 @@
 {
- "batch": "event-18359",
- "events": [
-  {
-   "event_id": 18359,
-   "artists": [
-    {
-     "name_as_written": "𝗝𝗨𝗟𝗜𝗘𝗡 & 𝗔𝗠𝗜",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⚡ 𝗝𝗨𝗟𝗜𝗘𝗡 & 𝗔𝗠𝗜 (Paris)"
-    },
-    {
-     "name_as_written": "𝗦𝗧𝗘𝗙 & 𝗦𝗔𝗥𝗔𝗛",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⚡ 𝗦𝗧𝗘𝗙 & 𝗦𝗔𝗥𝗔𝗛 (Paris)"
-    },
-    {
-     "name_as_written": "𝗠𝗘𝗥𝗩𝗜𝗟 & 𝗩𝗔𝗡𝗘𝗦𝗦𝗔",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⚡ 𝗠𝗘𝗥𝗩𝗜𝗟 & 𝗩𝗔𝗡𝗘𝗦𝗦𝗔 (Nantes/Cholet)"
-    },
-    {
-     "name_as_written": "𝗗𝗜𝗡𝗔",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⚡ 𝗗𝗜𝗡𝗔 (Poitiers)"
-    },
-    {
-     "name_as_written": "𝗗𝗝 𝗖𝗢𝗟𝗧𝗦",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 𝗗𝗝 𝗖𝗢𝗟𝗧𝗦 (Paris)"
-    },
-    {
-     "name_as_written": "𝗗𝗝 𝗭𝗘𝗡",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 𝗗𝗝 𝗭𝗘𝗡 (Paris)"
-    },
-    {
-     "name_as_written": "𝗗𝗝 𝗠𝗘𝗥𝗩𝗜𝗟",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 𝗗𝗝 𝗠𝗘𝗥𝗩𝗜𝗟 (Nantes)"
-    },
-    {
-     "name_as_written": "𝗗𝗝 𝗟𝗜𝗢𝗡",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 𝗗𝗝 𝗟𝗜𝗢𝗡 (Poitiers) – 𝔾𝕠𝕕𝕗𝕒𝕥𝕙𝕖𝕣 –"
-    },
-    {
-     "name_as_written": "𝗗𝗝 𝗦𝗪𝗜𝗠𝗬",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 𝗗𝗝 𝗦𝗪𝗜𝗠𝗬 (Poitiers) – 𝕆𝕣𝕘𝕒𝕟𝕚𝕫𝕖𝕣 –"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "𝗧𝗘𝗔𝗖𝗛𝗘𝗥𝗦",
-     "rationale": "A list of teachers under the TEACHERS heading indicates dance classes are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:32:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d1cd48d1dfa54242",
+ "answer": {
+  "batch": "event-18359",
+  "events": [
+   {
+    "event_id": 18359,
+    "artists": [
+     {
+      "name_as_written": "𝗝𝗨𝗟𝗜𝗘𝗡 & 𝗔𝗠𝗜",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⚡ 𝗝𝗨𝗟𝗜𝗘𝗡 & 𝗔𝗠𝗜 (Paris)"
+     },
+     {
+      "name_as_written": "𝗦𝗧𝗘𝗙 & 𝗦𝗔𝗥𝗔𝗛",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⚡ 𝗦𝗧𝗘𝗙 & 𝗦𝗔𝗥𝗔𝗛 (Paris)"
+     },
+     {
+      "name_as_written": "𝗠𝗘𝗥𝗩𝗜𝗟 & 𝗩𝗔𝗡𝗘𝗦𝗦𝗔",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⚡ 𝗠𝗘𝗥𝗩𝗜𝗟 & 𝗩𝗔𝗡𝗘𝗦𝗦𝗔 (Nantes/Cholet)"
+     },
+     {
+      "name_as_written": "𝗗𝗜𝗡𝗔",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⚡ 𝗗𝗜𝗡𝗔 (Poitiers)"
+     },
+     {
+      "name_as_written": "𝗗𝗝 𝗖𝗢𝗟𝗧𝗦",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 𝗗𝗝 𝗖𝗢𝗟𝗧𝗦 (Paris)"
+     },
+     {
+      "name_as_written": "𝗗𝗝 𝗭𝗘𝗡",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 𝗗𝗝 𝗭𝗘𝗡 (Paris)"
+     },
+     {
+      "name_as_written": "𝗗𝗝 𝗠𝗘𝗥𝗩𝗜𝗟",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 𝗗𝗝 𝗠𝗘𝗥𝗩𝗜𝗟 (Nantes)"
+     },
+     {
+      "name_as_written": "𝗗𝗝 𝗟𝗜𝗢𝗡",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 𝗗𝗝 𝗟𝗜𝗢𝗡 (Poitiers) – 𝔾𝕠𝕕𝕗𝕒𝕥𝕙𝕖𝕣 –"
+     },
+     {
+      "name_as_written": "𝗗𝗝 𝗦𝗪𝗜𝗠𝗬",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 𝗗𝗝 𝗦𝗪𝗜𝗠𝗬 (Poitiers) – 𝕆𝕣𝕘𝕒𝕟𝕚𝕫𝕖𝕣 –"
+     },
+     {
+      "name_as_written": "𝗗𝗝 𝗦𝗪𝗜𝗠𝗬",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 𝗗𝗝 𝗦𝗪𝗜𝗠𝗬 (Poitiers) – 𝕆𝕣𝕘𝕒𝕟𝕚𝕫𝕖𝕣 –"
+     }
+    ],
+    "features": []
+   }
+  ]
+ }
 }

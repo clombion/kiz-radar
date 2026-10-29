@@ -1,160 +1,167 @@
 {
- "batch": "event-18804",
- "events": [
-  {
-   "event_id": 18804,
-   "artists": [
-    {
-     "name_as_written": "Dj Blvck Skyle",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✔️ Dj Blvck Skyle"
-    },
-    {
-     "name_as_written": "Dj Ichigo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✔️ Dj Ichigo"
-    },
-    {
-     "name_as_written": "Dj Fofo-Jah",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✔️ Dj Fofo-Jah"
-    },
-    {
-     "name_as_written": "Dj Chad",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✔️ Dj Chad"
-    },
-    {
-     "name_as_written": "Dj Levis",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✔️ Dj Levis"
-    },
-    {
-     "name_as_written": "Dj Jack",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✔️ Dj Jack"
-    },
-    {
-     "name_as_written": "Dj T’peak",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✔️ Dj T’peak"
-    },
-    {
-     "name_as_written": "Dj Safir’s Beats",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✔️ Dj Safir’s Beats"
-    },
-    {
-     "name_as_written": "Dj J-kee",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✔️ Dj J-kee"
-    },
-    {
-     "name_as_written": "Dj Diablo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✔️ Dj Diablo"
-    },
-    {
-     "name_as_written": "Jack & Sara",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✔️ Jack & Sara"
-    },
-    {
-     "name_as_written": "Antho & Bene",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✔️ Antho & Bene"
-    },
-    {
-     "name_as_written": "Jah J’a & Jeisy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✔️ Jah J’a & Jeisy"
-    },
-    {
-     "name_as_written": "Moorea",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✔️ Moorea"
-    },
-    {
-     "name_as_written": "Axel",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✔️ Axel"
-    },
-    {
-     "name_as_written": "Lucy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✔️ Lucy"
-    },
-    {
-     "name_as_written": "T’peak",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✔️ T’peak"
-    },
-    {
-     "name_as_written": "DANI TOTHEDANCE",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "DANI TOTHEDANCE"
-    },
-    {
-     "name_as_written": "AXEL KOUMBA",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "AXEL KOUMBA"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "LOGIS HOTEL LYON-EST",
-     "rationale": "The event takes place at a hotel, and the title labels the edition as ALL IN ONE, indicating the parties are held where dancers stay."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 PARTY ROOMS/2 VIBES",
-     "rationale": "The description states there are two party rooms."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "PRE-PARTY",
-     "rationale": "A separate PRE-PARTY is announced before the main event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:33:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "2becef2f6d399b48",
+ "answer": {
+  "batch": "event-18804",
+  "events": [
+   {
+    "event_id": 18804,
+    "artists": [
+     {
+      "name_as_written": "Dj Blvck Skyle",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✔️ Dj Blvck Skyle"
+     },
+     {
+      "name_as_written": "Dj Ichigo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✔️ Dj Ichigo"
+     },
+     {
+      "name_as_written": "Dj Fofo-Jah",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✔️ Dj Fofo-Jah"
+     },
+     {
+      "name_as_written": "Dj Chad",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✔️ Dj Chad"
+     },
+     {
+      "name_as_written": "Dj Levis",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✔️ Dj Levis"
+     },
+     {
+      "name_as_written": "Dj Jack",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✔️ Dj Jack"
+     },
+     {
+      "name_as_written": "Dj T’peak",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✔️ Dj T’peak"
+     },
+     {
+      "name_as_written": "Dj Safir’s Beats",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✔️ Dj Safir’s Beats"
+     },
+     {
+      "name_as_written": "Dj J-kee",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✔️ Dj J-kee"
+     },
+     {
+      "name_as_written": "Dj Diablo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✔️ Dj Diablo"
+     },
+     {
+      "name_as_written": "Jack & Sara",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✔️ Jack & Sara"
+     },
+     {
+      "name_as_written": "Antho & Bene",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✔️ Antho & Bene"
+     },
+     {
+      "name_as_written": "Jah J’a & Jeisy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✔️ Jah J’a & Jeisy"
+     },
+     {
+      "name_as_written": "Moorea",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✔️ Moorea"
+     },
+     {
+      "name_as_written": "Axel",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✔️ Axel"
+     },
+     {
+      "name_as_written": "Lucy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✔️ Lucy"
+     },
+     {
+      "name_as_written": "T’peak",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✔️ T’peak"
+     },
+     {
+      "name_as_written": "DANI TOTHEDANCE",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "DANI TOTHEDANCE"
+     },
+     {
+      "name_as_written": "AXEL KOUMBA",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "AXEL KOUMBA"
+     }
+    ],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 PARTY ROOMS/2 VIBES",
+      "rationale": "The text says there are two party rooms, so more than one dance room is present."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "PRE-PARTY",
+      "rationale": "A separate PRE-PARTY is announced before the main event with its own venue."
+     },
+     {
+      "feature": "workshops",
+      "quote": "TEACHERS",
+      "rationale": "A teacher line-up is listed, which implies dance classes are part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

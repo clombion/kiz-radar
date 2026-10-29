@@ -1,0 +1,13 @@
+{
+ "key_a": "p:kevin@dance",
+ "key_b": "p:kevin@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "02592b499aeaf48e",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share two events in Spain with the same country (Guinea-Bissau) and, at event 15995, the same KIZOMBA style, which fits one person teaching and DJing. But 'Kevin' is a common first name, side A also lists a Philippines-based Kevin in Vietnam, and two different Kevins could both appear at the same event, so the evidence does not settle it."
+ }
+}

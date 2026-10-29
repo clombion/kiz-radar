@@ -1,92 +1,119 @@
 {
- "batch": "event-17001",
- "events": [
-  {
-   "event_id": 17001,
-   "artists": [
-    {
-     "name_as_written": "Mary et Jos",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "20h-21h : Cours by Mary et Jos (Nexus Crew)"
-    },
-    {
-     "name_as_written": "JessyPop et Mélanie",
-     "role": "teacher",
-     "style": "Tarraxo",
-     "country": null,
-     "source_line": "14h-15h30 : Stage Tarraxo avec JessyPop et Mélanie (Tours)"
-    },
-    {
-     "name_as_written": "Jos et Cerise",
-     "role": "teacher",
-     "style": "Urbankiz",
-     "country": null,
-     "source_line": "15h30-17h : Stage Urbankiz avec Jos et Cerise (Paris)"
-    },
-    {
-     "name_as_written": "Therry et Océane",
-     "role": "teacher",
-     "style": "Tarraxo",
-     "country": null,
-     "source_line": "20h : Cours Tarraxo avec Therry et Océane (Paris)"
-    },
-    {
-     "name_as_written": "DJ Nsie",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Nsie (Paris)"
-    },
-    {
-     "name_as_written": "DJ Kouan",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Kouan (Orléans)"
-    },
-    {
-     "name_as_written": "DJ Leericks",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Leericks (Paris)"
-    },
-    {
-     "name_as_written": "Kitoko",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Vidéaste : Kitoko (Toulouse)"
-    },
-    {
-     "name_as_written": "LNA Carla",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Photographe : LNA Carla (Paris)"
-    },
-    {
-     "name_as_written": "Nexus Crew",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Nexus Crew présente son 2eme événement"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Stage Tarraxo avec JessyPop et Mélanie (Tours)",
-     "rationale": "The programme lists dance classes (stages and cours) with named teachers as part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "17h-20h : Sociale",
-     "rationale": "A daytime social is scheduled on Saturday afternoon/evening in the programme."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:31:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "f15c91b184586950",
+ "answer": {
+  "batch": "event-17001",
+  "events": [
+   {
+    "event_id": 17001,
+    "artists": [
+     {
+      "name_as_written": "Nexus Crew",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Nexus Crew présente son 2eme événement"
+     },
+     {
+      "name_as_written": "Mary et Jos",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "20h-21h : Cours by Mary et Jos (Nexus Crew)"
+     },
+     {
+      "name_as_written": "JessyPop et Mélanie",
+      "role": "teacher",
+      "style": "Tarraxo",
+      "country": null,
+      "source_line": "14h-15h30 : Stage Tarraxo avec JessyPop et Mélanie (Tours)"
+     },
+     {
+      "name_as_written": "Jos et Cerise",
+      "role": "teacher",
+      "style": "Urbankiz",
+      "country": null,
+      "source_line": "15h30-17h : Stage Urbankiz avec Jos et Cerise (Paris)"
+     },
+     {
+      "name_as_written": "Therry et Océane",
+      "role": "teacher",
+      "style": "Tarraxo",
+      "country": null,
+      "source_line": "20h : Cours Tarraxo avec Therry et Océane (Paris)"
+     },
+     {
+      "name_as_written": "DJ Nsie",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Nsie (Paris)"
+     },
+     {
+      "name_as_written": "DJ Kouan",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Kouan (Orléans)"
+     },
+     {
+      "name_as_written": "DJ Leericks",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Leericks (Paris)"
+     },
+     {
+      "name_as_written": "Kitoko",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Vidéaste : Kitoko (Toulouse)"
+     },
+     {
+      "name_as_written": "LNA Carla",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Photographe : LNA Carla (Paris)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Cours by Mary et Jos (Nexus Crew)",
+      "rationale": "A dance class taught by Mary et Jos is part of the programme."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Stage Tarraxo avec JessyPop et Mélanie (Tours)",
+      "rationale": "A Tarraxo stage with JessyPop et Mélanie is scheduled in the programme."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Stage Urbankiz avec Jos et Cerise (Paris)",
+      "rationale": "An Urbankiz stage with Jos et Cerise is scheduled in the programme."
+     },
+     {
+      "feature": "workshops",
+      "quote": "20h : Cours Tarraxo avec Therry et Océane (Paris)",
+      "rationale": "A Tarraxo class with Therry et Océane is scheduled in the programme."
+     },
+     {
+      "feature": "workshops",
+      "quote": "14h-16h : Training",
+      "rationale": "A training session is scheduled on Sunday afternoon."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "17h-20h : Sociale",
+      "rationale": "A daytime social runs from 17h to 20h on Saturday."
+     }
+    ]
+   }
+  ]
+ }
 }

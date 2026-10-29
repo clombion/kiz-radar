@@ -1,43 +1,50 @@
 {
- "batch": "event-15754",
- "events": [
-  {
-   "event_id": 15754,
-   "party_rooms": {
-    "count": 2,
-    "quote": "100% Bachata Room\n100% Kizomba Room"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "100% Bachata Room",
-     "kind": "party",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "100% Bachata Room"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "6f40c9ae99d3841a",
+ "answer": {
+  "batch": "event-15754",
+  "events": [
+   {
+    "event_id": 15754,
+    "party_rooms": {
+     "count": 2,
+     "quote": "100% Bachata Room\n100% Kizomba Room"
     },
-    {
-     "name_as_written": "100% Kizomba Room",
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "100% Kizomba Room"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "100% Bachata Room"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "100% Kizomba Room"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "100% Bachata Room",
+      "kind": "party",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "100% Bachata Room"
+     },
+     {
+      "name_as_written": "100% Kizomba Room",
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "100% Kizomba Room"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "100% Bachata Room"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "100% Kizomba Room"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,26 +1,33 @@
 {
- "batch": "event-18327",
- "events": [
-  {
-   "event_id": 18327,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops avec des artistes internationaux",
-     "rationale": "The description states that workshops with international artists are part of the programme."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "pool parties enflammées",
-     "rationale": "The programme lists pool parties."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "vol + hébergement + full pass inclus",
-     "rationale": "The package price explicitly includes accommodation together with the full pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:32:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "7ff5fbc5e4a69f02",
+ "answer": {
+  "batch": "event-18327",
+  "events": [
+   {
+    "event_id": 18327,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops avec des artistes internationaux",
+      "rationale": "The description states that workshops with international artists are part of the programme."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "pool parties enflammées",
+      "rationale": "The programme lists pool parties among the event's activities."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "vol + hébergement + full pass inclus",
+      "rationale": "The package price explicitly includes accommodation together with the full pass."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,41 +1,48 @@
 {
- "batch": "event-15657",
- "events": [
-  {
-   "event_id": 15657,
-   "party_rooms": {
-    "count": 3,
-    "quote": "Party with 3 Rooms"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata & Zouk Workshops"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "f001eda34a4d5385",
+ "answer": {
+  "batch": "event-15657",
+  "events": [
+   {
+    "event_id": 15657,
+    "party_rooms": {
+     "count": 3,
+     "quote": "Party with 3 Rooms"
     },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba Ladies Challenge"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "Zouk Babes"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kizomba",
-     "quote": "Urban Kizomba"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Heels",
-     "quote": "Heels"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "in Bachata, Kizomba, Zouk, Urban Kizomba, Heels"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba Ladies Challenge"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kizomba",
+      "quote": "Urban Kizomba"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Zouk",
+      "quote": "Zouk Babes"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Heels",
+      "quote": "Heels"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,41 +1,48 @@
 {
- "batch": "event-16348",
- "events": [
-  {
-   "event_id": 16348,
-   "party_rooms": {
-    "count": 3,
-    "quote": "Three rooms to dance, learn, and fully enjoy yourself, whatever your level."
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "bachata",
-     "genre_as_written": "bachata",
-     "quote": "BACHATA"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "22b5f2d35ef579ae",
+ "answer": {
+  "batch": "event-16348",
+  "events": [
+   {
+    "event_id": 16348,
+    "party_rooms": {
+     "count": 3,
+     "quote": "Three rooms to dance, learn, and fully enjoy yourself, whatever your level."
     },
-    {
-     "genre": "salsa",
-     "genre_as_written": "salsa",
-     "quote": "SALSA"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KIZOMBA – TARRAXO – KOMPA"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "TARRAXO",
-     "quote": "KIZOMBA – TARRAXO – KOMPA"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "KOMPA",
-     "quote": "KIZOMBA – TARRAXO – KOMPA"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "kizomba",
+      "quote": "dedicated to bachata, salsa, and kizomba"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "bachata",
+      "quote": "BACHATA"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "salsa",
+      "quote": "SALSA"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "TARRAXO",
+      "quote": "KIZOMBA – TARRAXO – KOMPA"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "KOMPA",
+      "quote": "KIZOMBA – TARRAXO – KOMPA"
+     }
+    ]
+   }
+  ]
+ }
 }

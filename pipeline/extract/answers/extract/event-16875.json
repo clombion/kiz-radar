@@ -1,118 +1,125 @@
 {
- "batch": "event-16875",
- "events": [
-  {
-   "event_id": 16875,
-   "artists": [
-    {
-     "name_as_written": "JP & Stephy",
-     "role": "teacher",
-     "style": "Urban Kiz",
-     "country": null,
-     "source_line": "✨ JP & Stephy"
-    },
-    {
-     "name_as_written": "Anne & Baptiste",
-     "role": "teacher",
-     "style": "Urban Kiz",
-     "country": null,
-     "source_line": "✨ Anne & Baptiste"
-    },
-    {
-     "name_as_written": "Tiia & Jennina",
-     "role": "teacher",
-     "style": "Urban Kiz",
-     "country": null,
-     "source_line": "✨ Tiia & Jennina"
-    },
-    {
-     "name_as_written": "Poema Beatz",
-     "role": "dj",
-     "style": "Urban Kiz",
-     "country": null,
-     "source_line": "✨ Poema Beatz"
-    },
-    {
-     "name_as_written": "DJ Akela",
-     "role": "dj",
-     "style": "Urban Kiz",
-     "country": null,
-     "source_line": "✨ DJ Akela"
-    },
-    {
-     "name_as_written": "DJ Otso",
-     "role": "dj",
-     "style": "Urban Kiz",
-     "country": null,
-     "source_line": "✨ DJ Otso"
-    },
-    {
-     "name_as_written": "JP",
-     "role": "teacher",
-     "style": "WCS",
-     "country": null,
-     "source_line": "✨ JP"
-    },
-    {
-     "name_as_written": "Jennina Färm",
-     "role": "teacher",
-     "style": "WCS",
-     "country": null,
-     "source_line": "✨ Jennina Färm"
-    },
-    {
-     "name_as_written": "Outi Salonen",
-     "role": "teacher",
-     "style": "WCS",
-     "country": null,
-     "source_line": "✨ Outi Salonen"
-    },
-    {
-     "name_as_written": "Timo",
-     "role": "teacher",
-     "style": "WCS",
-     "country": null,
-     "source_line": "✨ Timo"
-    },
-    {
-     "name_as_written": "Lauri Laitinen",
-     "role": "dj",
-     "style": "WCS",
-     "country": null,
-     "source_line": "✨ Lauri Laitinen"
-    },
-    {
-     "name_as_written": "Elsa Kalervo",
-     "role": "dj",
-     "style": "WCS",
-     "country": null,
-     "source_line": "✨ Elsa Kalervo"
-    },
-    {
-     "name_as_written": "DJ Jenni",
-     "role": "dj",
-     "style": "WCS",
-     "country": null,
-     "source_line": "✨ DJ Jenni"
-    }
-   ],
-   "features": [
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Two wonderfull bootcamps under the same roof",
-     "rationale": "The event is described as two bootcamps held together."
-    },
-    {
-     "feature": "workshops",
-     "quote": "6 dance classes, chosen dance style, with different themes",
-     "rationale": "The pass includes six dance classes, which are dance classes that are part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Sun / Training day and socials between 12 and 17",
-     "rationale": "A daytime social is scheduled on Sunday between 12 and 17."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "12fe935b1171580d",
+ "answer": {
+  "batch": "event-16875",
+  "events": [
+   {
+    "event_id": 16875,
+    "artists": [
+     {
+      "name_as_written": "JP & Stephy",
+      "role": "teacher",
+      "style": "Urban Kiz",
+      "country": null,
+      "source_line": "✨ JP & Stephy"
+     },
+     {
+      "name_as_written": "Anne & Baptiste",
+      "role": "teacher",
+      "style": "Urban Kiz",
+      "country": null,
+      "source_line": "✨ Anne & Baptiste"
+     },
+     {
+      "name_as_written": "Tiia & Jennina",
+      "role": "teacher",
+      "style": "Urban Kiz",
+      "country": null,
+      "source_line": "✨ Tiia & Jennina"
+     },
+     {
+      "name_as_written": "Poema Beatz",
+      "role": "dj",
+      "style": "Urban Kiz",
+      "country": null,
+      "source_line": "✨ Poema Beatz"
+     },
+     {
+      "name_as_written": "DJ Akela",
+      "role": "dj",
+      "style": "Urban Kiz",
+      "country": null,
+      "source_line": "✨ DJ Akela"
+     },
+     {
+      "name_as_written": "DJ Otso",
+      "role": "dj",
+      "style": "Urban Kiz",
+      "country": null,
+      "source_line": "✨ DJ Otso"
+     },
+     {
+      "name_as_written": "JP",
+      "role": "teacher",
+      "style": "WCS",
+      "country": null,
+      "source_line": "✨ JP"
+     },
+     {
+      "name_as_written": "Jennina Färm",
+      "role": "teacher",
+      "style": "WCS",
+      "country": null,
+      "source_line": "✨ Jennina Färm"
+     },
+     {
+      "name_as_written": "Outi Salonen",
+      "role": "teacher",
+      "style": "WCS",
+      "country": null,
+      "source_line": "✨ Outi Salonen"
+     },
+     {
+      "name_as_written": "Timo",
+      "role": "teacher",
+      "style": "WCS",
+      "country": null,
+      "source_line": "✨ Timo"
+     },
+     {
+      "name_as_written": "Lauri Laitinen",
+      "role": "dj",
+      "style": "WCS",
+      "country": null,
+      "source_line": "✨ Lauri Laitinen"
+     },
+     {
+      "name_as_written": "Elsa Kalervo",
+      "role": "dj",
+      "style": "WCS",
+      "country": null,
+      "source_line": "✨ Elsa Kalervo"
+     },
+     {
+      "name_as_written": "DJ Jenni",
+      "role": "dj",
+      "style": "WCS",
+      "country": null,
+      "source_line": "✨ DJ Jenni"
+     }
+    ],
+    "features": [
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "Two wonderfull bootcamps under the same roof",
+      "rationale": "The event is described as two bootcamps, which are intensive training courses."
+     },
+     {
+      "feature": "workshops",
+      "quote": "6 dance classes, chosen dance style, with different themes",
+      "rationale": "Dance classes are part of what participants receive in the pass."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Training day and socials between 12 and 17",
+      "rationale": "The Sunday schedule includes daytime socials between 12 and 17."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,28 +1,41 @@
 {
- "batch": "event-17474",
- "events": [
-  {
-   "event_id": 17474,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 dance rooms (Authentic & Fusion)"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Authentic",
-     "kind": "unspecified",
-     "genres": [],
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0624a7be8a64b7a0",
+ "answer": {
+  "batch": "event-17474",
+  "events": [
+   {
+    "event_id": 17474,
+    "party_rooms": {
+     "count": 2,
      "quote": "2 dance rooms (Authentic & Fusion)"
     },
-    {
-     "name_as_written": "Fusion",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "2 dance rooms (Authentic & Fusion)"
-    }
-   ],
-   "genres": []
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Authentic",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "2 dance rooms (Authentic & Fusion)"
+     },
+     {
+      "name_as_written": "Fusion",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "2 dance rooms (Authentic & Fusion)"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "afro",
+      "genre_as_written": "AfroKiz",
+      "quote": "AFROKIZ BANGKOK EDITION 4"
+     }
+    ]
+   }
+  ]
+ }
 }

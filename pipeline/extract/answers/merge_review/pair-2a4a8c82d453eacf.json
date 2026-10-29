@@ -1,0 +1,13 @@
+{
+ "key_a": "p:tpeak@dj",
+ "key_b": "p:tpeak@dje+tpeak",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "2a4a8c82d453eacf",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the same name (T’Peak/T’PEAK, differing only in case), the same French country, and the same listed event countries, but side B has no mentions to check, and its partnership with dje means the duo may be a separate act, so the evidence does not settle it."
+ }
+}

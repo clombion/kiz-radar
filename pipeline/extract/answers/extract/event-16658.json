@@ -1,168 +1,175 @@
 {
- "batch": "event-16658",
- "events": [
-  {
-   "event_id": 16658,
-   "artists": [
-    {
-     "name_as_written": "Terry & Cécile",
-     "role": "teacher",
-     "style": null,
-     "country": "France",
-     "source_line": "✔️Terry & Cécile (France)"
-    },
-    {
-     "name_as_written": "Angelo Gioffré",
-     "role": "teacher",
-     "style": null,
-     "country": "Italy",
-     "source_line": "✔️Angelo Gioffré (Italy)"
-    },
-    {
-     "name_as_written": "Dancefloor",
-     "role": "teacher",
-     "style": null,
-     "country": "Switzerland",
-     "source_line": "✔️Dancefloor (Switzerland)"
-    },
-    {
-     "name_as_written": "Danger & Marielkis",
-     "role": "teacher",
-     "style": null,
-     "country": "Cuba/Spain",
-     "source_line": "✔️Danger & Marielkis (Cuba/Spain)"
-    },
-    {
-     "name_as_written": "Falco & Leti",
-     "role": "teacher",
-     "style": null,
-     "country": "Ecuador/Spain",
-     "source_line": "✔️Falco & Leti (Ecuador/Spain)"
-    },
-    {
-     "name_as_written": "Nuno & Nagyla",
-     "role": "teacher",
-     "style": null,
-     "country": "Portugal",
-     "source_line": "✔️Nuno & Nagyla (Portugal)"
-    },
-    {
-     "name_as_written": "Erik & Monika",
-     "role": "teacher",
-     "style": null,
-     "country": "Spain",
-     "source_line": "✔️Erik & Monika (Spain)"
-    },
-    {
-     "name_as_written": "Pedro & Inês",
-     "role": "teacher",
-     "style": null,
-     "country": "Portugal",
-     "source_line": "✔️Pedro & Inês (Portugal)"
-    },
-    {
-     "name_as_written": "Fernando & Carolina",
-     "role": "teacher",
-     "style": null,
-     "country": "Argentina/Portugal",
-     "source_line": "✔️Fernando & Carolina (Argentina/Portugal)"
-    },
-    {
-     "name_as_written": "Cycy",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "✔️Cycy (France)"
-    },
-    {
-     "name_as_written": "Diablito",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "✔️Diablito (France)"
-    },
-    {
-     "name_as_written": "David Pedron",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "✔️David Pedron (France)"
-    },
-    {
-     "name_as_written": "Fonseca",
-     "role": "dj",
-     "style": null,
-     "country": "Portugal/Switzerland",
-     "source_line": "✔️Fonseca (Portugal/Switzerland)"
-    },
-    {
-     "name_as_written": "Amine",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "✔️Amine (France)"
-    },
-    {
-     "name_as_written": "Mea Culpa",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "✔️Mea Culpa (France)"
-    },
-    {
-     "name_as_written": "Karim",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "✔️Karim (France)"
-    },
-    {
-     "name_as_written": "Olivier L’Duro",
-     "role": "dj",
-     "style": null,
-     "country": "France",
-     "source_line": "✔️Olivier L’Duro (France)"
-    },
-    {
-     "name_as_written": "Shems",
-     "role": "dj",
-     "style": null,
-     "country": "Tunisia/France",
-     "source_line": "✔️Shems (Tunisia/France)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "live_music",
-     "quote": "2 Live Concerts",
-     "rationale": "The description announces two live concerts."
-    },
-    {
-     "feature": "shows",
-     "quote": "650 seats theater for Saturday BIG SHOW",
-     "rationale": "A big show is staged in a theater on Saturday."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "4 rooms for the parties with",
-     "rationale": "Four rooms are provided for the parties."
-    },
-    {
-     "feature": "workshops",
-     "quote": "50 dance & music workshops",
-     "rationale": "The festival offers dance and music workshops."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Garden Party Sunday afternoon",
-     "rationale": "A garden party on Sunday afternoon is a daytime social."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "into all levels",
-     "rationale": "The workshops are described as suitable for all levels."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:29:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0b3c6c134434b00f",
+ "answer": {
+  "batch": "event-16658",
+  "events": [
+   {
+    "event_id": 16658,
+    "artists": [
+     {
+      "name_as_written": "Terry & Cécile",
+      "role": "teacher",
+      "style": null,
+      "country": "France",
+      "source_line": "✔️Terry & Cécile (France)"
+     },
+     {
+      "name_as_written": "Angelo Gioffré",
+      "role": "teacher",
+      "style": null,
+      "country": "Italy",
+      "source_line": "✔️Angelo Gioffré (Italy)"
+     },
+     {
+      "name_as_written": "Dancefloor",
+      "role": "teacher",
+      "style": null,
+      "country": "Switzerland",
+      "source_line": "✔️Dancefloor (Switzerland)"
+     },
+     {
+      "name_as_written": "Danger & Marielkis",
+      "role": "teacher",
+      "style": null,
+      "country": "Cuba/Spain",
+      "source_line": "✔️Danger & Marielkis (Cuba/Spain)"
+     },
+     {
+      "name_as_written": "Falco & Leti",
+      "role": "teacher",
+      "style": null,
+      "country": "Ecuador/Spain",
+      "source_line": "✔️Falco & Leti (Ecuador/Spain)"
+     },
+     {
+      "name_as_written": "Nuno & Nagyla",
+      "role": "teacher",
+      "style": null,
+      "country": "Portugal",
+      "source_line": "✔️Nuno & Nagyla (Portugal)"
+     },
+     {
+      "name_as_written": "Erik & Monika",
+      "role": "teacher",
+      "style": null,
+      "country": "Spain",
+      "source_line": "✔️Erik & Monika (Spain)"
+     },
+     {
+      "name_as_written": "Pedro & Inês",
+      "role": "teacher",
+      "style": null,
+      "country": "Portugal",
+      "source_line": "✔️Pedro & Inês (Portugal)"
+     },
+     {
+      "name_as_written": "Fernando & Carolina",
+      "role": "teacher",
+      "style": null,
+      "country": "Argentina/Portugal",
+      "source_line": "✔️Fernando & Carolina (Argentina/Portugal)"
+     },
+     {
+      "name_as_written": "Cycy",
+      "role": "dj",
+      "style": null,
+      "country": "France",
+      "source_line": "✔️Cycy (France)"
+     },
+     {
+      "name_as_written": "Diablito",
+      "role": "dj",
+      "style": null,
+      "country": "France",
+      "source_line": "✔️Diablito (France)"
+     },
+     {
+      "name_as_written": "David Pedron",
+      "role": "dj",
+      "style": null,
+      "country": "France",
+      "source_line": "✔️David Pedron (France)"
+     },
+     {
+      "name_as_written": "Fonseca",
+      "role": "dj",
+      "style": null,
+      "country": "Portugal/Switzerland",
+      "source_line": "✔️Fonseca (Portugal/Switzerland)"
+     },
+     {
+      "name_as_written": "Amine",
+      "role": "dj",
+      "style": null,
+      "country": "France",
+      "source_line": "✔️Amine (France)"
+     },
+     {
+      "name_as_written": "Mea Culpa",
+      "role": "dj",
+      "style": null,
+      "country": "France",
+      "source_line": "✔️Mea Culpa (France)"
+     },
+     {
+      "name_as_written": "Karim",
+      "role": "dj",
+      "style": null,
+      "country": "France",
+      "source_line": "✔️Karim (France)"
+     },
+     {
+      "name_as_written": "Olivier L’Duro",
+      "role": "dj",
+      "style": null,
+      "country": "France",
+      "source_line": "✔️Olivier L’Duro (France)"
+     },
+     {
+      "name_as_written": "Shems",
+      "role": "dj",
+      "style": null,
+      "country": "Tunisia/France",
+      "source_line": "✔️Shems (Tunisia/France)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "live_music",
+      "quote": "2 Live Concerts",
+      "rationale": "The description lists two live concerts as part of the festival."
+     },
+     {
+      "feature": "shows",
+      "quote": "650 seats theater for Saturday BIG SHOW",
+      "rationale": "A big show in a theater on Saturday is a performance by artists."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "4 rooms for the parties with",
+      "rationale": "Four rooms are used for the parties, so there is more than one dance floor."
+     },
+     {
+      "feature": "workshops",
+      "quote": "50 dance & music workshops",
+      "rationale": "The festival offers dance and music workshops as part of the event."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "some of the best teachers into all levels",
+      "rationale": "The workshops are offered for all levels."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Garden Party Sunday afternoon",
+      "rationale": "An afternoon garden party on Sunday is a daytime social."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:catharine@catharine+kornel",
+ "key_b": "p:catherine@catherine+kornel",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "844c5088b9fad54d",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Catharine and Catherine are a spelling variant with the same partner (Kornel), no shared event shows two people, and side B states no country that conflicts with side A's PL."
+ }
+}

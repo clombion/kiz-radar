@@ -1,41 +1,48 @@
 {
- "batch": "event-15784",
- "events": [
-  {
-   "event_id": 15784,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "værkstedet",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "Friday & Saturday: værkstedet"
-    },
-    {
-     "name_as_written": "støberiet",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "Sunday: støberiet"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Tarraxo/Konpa/Urbankiz/Tarraxo Softness"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Tarraxo/Konpa/Urbankiz/Tarraxo Softness"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "Tarraxo/Konpa/Urbankiz/Tarraxo Softness"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b3d0956f02bd58f2",
+ "answer": {
+  "batch": "event-15784",
+  "events": [
+   {
+    "event_id": 15784,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "værkstedet",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "Friday & Saturday: værkstedet"
+     },
+     {
+      "name_as_written": "støberiet",
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "Sunday: støberiet"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Tarraxo Weekender in Copenhagen"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Konpa"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "Urbankiz"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:amina@amina+mamadou",
+ "key_b": "p:amina@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8677cdaab337a121",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same bare first name 'Amina' stated in Sweden, a weak signal for a common name; side A's listed events are empty and side B has no partner to link them, so the evidence does not settle whether they are one person."
+ }
+}

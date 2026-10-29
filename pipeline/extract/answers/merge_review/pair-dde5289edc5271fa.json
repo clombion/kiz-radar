@@ -1,0 +1,13 @@
+{
+ "key_a": "p:simkiz",
+ "key_b": "p:simkizz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "dde5289edc5271fa",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records are teachers in Germany only, and the names 'Sim Kiz' and 'Sim Kizz' differ by a single letter in a distinctive stage name, which reads as a spelling variant or typo; no evidence separates them, and the kizomba style on one of the Kizz entries fits the same kizomba teacher."
+ }
+}

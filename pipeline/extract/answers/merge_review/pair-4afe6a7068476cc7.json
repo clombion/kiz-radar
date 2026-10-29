@@ -1,0 +1,13 @@
+{
+ "key_a": "p:myco@dj",
+ "key_b": "p:myco@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "4afe6a7068476cc7",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "This is one key compared with itself, so the question is whether 'DJ MYCO' is one artist or several people sharing the name; the evidence shows the same name stated with French overseas-territory flags (GP, MF) across three events in France, which is consistent with one Caribbean-based DJ but also with several people, and the events give no partner or further detail to tell them apart."
+ }
+}

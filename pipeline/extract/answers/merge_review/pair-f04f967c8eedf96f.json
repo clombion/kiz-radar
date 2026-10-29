@@ -1,0 +1,13 @@
+{
+ "key_a": "p:poemabeats",
+ "key_b": "p:poemabeatz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f04f967c8eedf96f",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides use the distinctive stage name Poema Beats/Beatz with a DJ prefix, a one-letter spelling variant, and both carry the Swedish flag (SE) with overlapping Urban/Tarraxo styles."
+ }
+}

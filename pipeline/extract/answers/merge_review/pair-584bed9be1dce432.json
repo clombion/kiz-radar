@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ichigo@ichigo+kristel",
+ "key_b": "p:ichigo@ichigo+kristelju",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "584bed9be1dce432",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are the same distinctive stage name 'Ichigo' with the same stated country (FR), overlapping France events, and a partner that is the same Kristel in both keys ('kristel@ichigo+kristel' and 'kristelju'), which is strong evidence of one artist."
+ }
+}

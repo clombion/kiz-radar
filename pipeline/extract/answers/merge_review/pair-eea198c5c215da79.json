@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nick@alex+nick",
+ "key_b": "p:nick@alex+nick",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "eea198c5c215da79",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are the same key with the single name Nick stated in Canada and the Netherlands, and no mentions, partners or events link the two countries, so it is more likely several people sharing a common first name than one artist, so separate."
+ }
+}

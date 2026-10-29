@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ralpbb",
+ "key_b": "p:ralphbb",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7d448e3d213429fb",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are DJs billed as 'DJ Ralp BB' versus 'DJ Ralph BB' at French events with no conflicting country or partner, so the one-letter difference is a spelling typo of the same distinctive stage name."
+ }
+}

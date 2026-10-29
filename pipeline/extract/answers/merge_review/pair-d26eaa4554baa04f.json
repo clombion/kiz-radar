@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dimitris@christina+dimitris",
+ "key_b": "p:dimitris@dimitris+yolena",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "d26eaa4554baa04f",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are just the common first name Dimitris, with no shared partner (one is paired with Christina, the other with Yolena), overlapping country only GR, and different event countries (Greece vs Turkey), so the evidence does not settle whether they are one artist or two."
+ }
+}

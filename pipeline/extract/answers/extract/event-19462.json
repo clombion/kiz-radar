@@ -1,21 +1,28 @@
 {
- "batch": "event-19462",
- "events": [
-  {
-   "event_id": 19462,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "CBKF features 3 days of dance classes",
-     "rationale": "The description states that the festival includes three days of dance classes."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "CBKW is a welcoming place for dancers of all skill and experience levels.",
-     "rationale": "The description says the event welcomes dancers of all skill and experience levels, including those just getting started."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:01+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "eab9add70e084999",
+ "answer": {
+  "batch": "event-19462",
+  "events": [
+   {
+    "event_id": 19462,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "3 days of dance classes",
+      "rationale": "The festival includes three days of dance classes, which are workshops."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "welcoming place for dancers of all skill and experience levels",
+      "rationale": "The description explicitly says the event welcomes dancers of all skill and experience levels, including those just getting started."
+     }
+    ]
+   }
+  ]
+ }
 }

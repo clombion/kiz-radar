@@ -1,135 +1,147 @@
 {
- "batch": "event-16173",
- "events": [
-  {
-   "event_id": 16173,
-   "artists": [
-    {
-     "name_as_written": "Dwe & Gaby",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Dwe & Gaby"
-    },
-    {
-     "name_as_written": "Do Zangado",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Do Zangado"
-    },
-    {
-     "name_as_written": "Chamalo & Jalyssa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Chamalo & Jalyssa"
-    },
-    {
-     "name_as_written": "Tresor & Aurea",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "– Tresor & Aurea"
-    },
-    {
-     "name_as_written": "Stefanio Lima",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– Stefanio Lima"
-    },
-    {
-     "name_as_written": "Pingusso",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– Pingusso"
-    },
-    {
-     "name_as_written": "Paraïso",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– Paraïso"
-    },
-    {
-     "name_as_written": "On Fire",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "– On Fire"
-    },
-    {
-     "name_as_written": "ILKSF",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Team ILKSF"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "4 Days of Workshops",
-     "rationale": "The event lists four days of workshops as part of the programme."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Masterclasses",
-     "rationale": "The activities list includes masterclasses."
-    },
-    {
-     "feature": "competition",
-     "quote": "Rising Star Competition",
-     "rationale": "The activities list includes a Rising Star competition."
-    },
-    {
-     "feature": "competition",
-     "quote": "Jack & Jill",
-     "rationale": "The activities list includes a Jack & Jill competition."
-    },
-    {
-     "feature": "shows",
-     "quote": "Live Dance Shows",
-     "rationale": "The activities list includes live dance shows."
-    },
-    {
-     "feature": "live_music",
-     "quote": "International Singers",
-     "rationale": "The line-up includes singers performing live."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Crazy, Sexy & Cool Dresscodes",
-     "rationale": "The event states dress codes for the parties."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "4 Days of Socials",
-     "rationale": "The programme includes daytime social dancing."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Party 1",
-     "rationale": "The door price list includes a pre-party before the main event."
-    },
-    {
-     "feature": "after_party",
-     "quote": "After party",
-     "rationale": "The door price list includes an after party on the final Monday."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "5 Different Dancing rooms at Night",
-     "rationale": "The event describes five different dancing rooms at night."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "This hotel is located just 4 minutes drive from Schiphol Airport",
-     "rationale": "A recommended hotel is described with a negotiated room rate, while accommodation is not part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "2ec9a852502496a7",
+ "answer": {
+  "batch": "event-16173",
+  "events": [
+   {
+    "event_id": 16173,
+    "artists": [
+     {
+      "name_as_written": "Dwe & Gaby",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Dwe & Gaby"
+     },
+     {
+      "name_as_written": "Do Zangado",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Do Zangado"
+     },
+     {
+      "name_as_written": "Chamalo & Jalyssa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Chamalo & Jalyssa"
+     },
+     {
+      "name_as_written": "Tresor & Aurea",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "– Tresor & Aurea"
+     },
+     {
+      "name_as_written": "Stefanio Lima",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– Stefanio Lima"
+     },
+     {
+      "name_as_written": "Pingusso",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– Pingusso"
+     },
+     {
+      "name_as_written": "Paraïso",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– Paraïso"
+     },
+     {
+      "name_as_written": "On Fire",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "– On Fire"
+     },
+     {
+      "name_as_written": "Team ILKSF",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Team ILKSF"
+     }
+    ],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "5 Different Dancing rooms at Night",
+      "rationale": "Five different dance rooms are listed for the nights, so there is more than one dance floor."
+     },
+     {
+      "feature": "workshops",
+      "quote": "4 Days of Workshops",
+      "rationale": "Workshops are listed as part of the event over four days."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "4 Days of Socials",
+      "rationale": "Daytime social dancing is offered over four days."
+     },
+     {
+      "feature": "competition",
+      "quote": "Rising Star Competition",
+      "rationale": "A Rising Star competition is part of the activities."
+     },
+     {
+      "feature": "competition",
+      "quote": "Jack & Jill",
+      "rationale": "A Jack & Jill format is offered, which is a competition."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Crazy, Sexy & Cool Dresscodes",
+      "rationale": "The description states dress codes for the event."
+     },
+     {
+      "feature": "shows",
+      "quote": "Live Dance Shows",
+      "rationale": "Dance shows by artists are part of the activities."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Live Performance",
+      "rationale": "Live singers are part of the line-up of performances."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Masterclasses",
+      "rationale": "Masterclasses are listed among the activities."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-Party 1",
+      "rationale": "Pre-parties are scheduled before the main event dates."
+     },
+     {
+      "feature": "after_party",
+      "quote": "After party",
+      "rationale": "An after party is listed on the door price schedule."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "Novotel Amsterdam Schiphol Airport",
+      "rationale": "The hotel is labelled as the all-in-one venue where accommodation and events take place together."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "The minimum stay is 3 nights and a double room per night is",
+      "rationale": "A negotiated hotel room rate is given without the accommodation being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

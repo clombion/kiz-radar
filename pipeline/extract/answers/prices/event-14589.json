@@ -1,12 +1,19 @@
 {
- "batch": "event-14589",
- "events": [
-  {
-   "event_id": 14589,
-   "passes": [],
-   "rule_quotes": [
-    "PRICES WILL INCREASE REGURARLY"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:41:01+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d60c431a7ed9b3cb",
+ "answer": {
+  "batch": "event-14589",
+  "events": [
+   {
+    "event_id": 14589,
+    "passes": [],
+    "rule_quotes": [
+     "PRICES WILL INCREASE REGURARLY"
+    ]
+   }
+  ]
+ }
 }

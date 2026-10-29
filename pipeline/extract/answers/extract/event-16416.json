@@ -1,129 +1,131 @@
 {
- "batch": "event-16416",
- "events": [
-  {
-   "event_id": 16416,
-   "artists": [
-    {
-     "name_as_written": "VALET",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅ VALET"
-    },
-    {
-     "name_as_written": "NICE LIFE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅ NICE LIFE"
-    },
-    {
-     "name_as_written": "COLTS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅ COLTS"
-    },
-    {
-     "name_as_written": "ICHIGO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✅ ICHIGO"
-    },
-    {
-     "name_as_written": "UNIT’KIZ",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "TEAM ❤️ UNIT’KIZ (PARIS)"
-    },
-    {
-     "name_as_written": "FUNOMEN",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "TEAM ❤️ FUNOMEN (PARIS)"
-    },
-    {
-     "name_as_written": "VVK",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "TEAM ❤️ VVK (PARIS)"
-    },
-    {
-     "name_as_written": "ANA",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "ANA (LEGACY)"
-    },
-    {
-     "name_as_written": "FARANTINI",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "FARANTINI"
-    },
-    {
-     "name_as_written": "HELDER",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "HELDER"
-    },
-    {
-     "name_as_written": "LESS IS MORE PRODUCTION",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "LESS IS MORE PRODUCTION"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "8:00 pm – 00:00 pm : Workshops",
-     "rationale": "The schedule lists Workshops sessions on the Friday."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "12:00 pm – 9:00 pm : Social",
-     "rationale": "The schedule lists a daytime Social from noon to 9 pm."
-    },
-    {
-     "feature": "after_party",
-     "quote": "6:00 am – 12:00 pm : After party",
-     "rationale": "The schedule lists an After party running in the morning."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "6:00 pm – 7:30 pm : Masterclass",
-     "rationale": "The schedule lists a Masterclass session on Saturday."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Rᴏᴏᴍs",
-     "rationale": "The description states the event has 2 rooms, meaning more than one dance room."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "TAXIS TEAMS",
-     "rationale": "A section lists taxi-dancer teams for the event."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Fʀᴇᴇ Sʜᴜᴛᴛʟᴇs",
-     "rationale": "The description advertises free shuttles for attendees."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Prices per night with promo code",
-     "rationale": "A main partner hotel is named with a negotiated promo rate for bookings."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:29:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "67c0ac27d5286e12",
+ "answer": {
+  "batch": "event-16416",
+  "events": [
+   {
+    "event_id": 16416,
+    "artists": [
+     {
+      "name_as_written": "VALET",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅ VALET"
+     },
+     {
+      "name_as_written": "NICE LIFE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅ NICE LIFE"
+     },
+     {
+      "name_as_written": "COLTS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅ COLTS"
+     },
+     {
+      "name_as_written": "ICHIGO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✅ ICHIGO"
+     },
+     {
+      "name_as_written": "UNIT’KIZ",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "TEAM ❤️ UNIT’KIZ (PARIS)"
+     },
+     {
+      "name_as_written": "FUNOMEN",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "TEAM ❤️ FUNOMEN (PARIS)"
+     },
+     {
+      "name_as_written": "VVK",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "TEAM ❤️ VVK (PARIS)"
+     },
+     {
+      "name_as_written": "ANA",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "ANA (LEGACY)"
+     },
+     {
+      "name_as_written": "FARANTINI",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "FARANTINI"
+     },
+     {
+      "name_as_written": "HELDER",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "HELDER"
+     },
+     {
+      "name_as_written": "LESS IS MORE PRODUCTION",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "LESS IS MORE PRODUCTION"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "11:00 am – 6:00 pm : Workshops",
+      "rationale": "The schedule lists dance workshops on each day of the festival."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "12:00 pm – 9:00 pm : Social",
+      "rationale": "The schedule lists daytime social sessions on Saturday and Sunday."
+     },
+     {
+      "feature": "after_party",
+      "quote": "6:00 am – 12:00 pm : After party",
+      "rationale": "The schedule lists an after party on Friday and Saturday mornings."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "6:00 pm – 7:30 pm : Masterclass",
+      "rationale": "The schedule lists a masterclass session on Saturday."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 Rᴏᴏᴍs",
+      "rationale": "The description states that there are 2 rooms, meaning more than one dance floor."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "TAXIS TEAMS",
+      "rationale": "A section lists taxi dancer teams attending the event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Prices per night with promo code",
+      "rationale": "The description recommends the City Hotel Nancy and gives a discount code for its rates, without including accommodation in the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

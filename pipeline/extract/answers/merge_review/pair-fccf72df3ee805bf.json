@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dwe@dance",
+ "key_b": "p:dwe@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fccf72df3ee805bf",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides carry the same distinctive stage name Dwe with the same Dutch flag, and the only difference is the DJ prefix on side B, which matches the rule that a DJ prefix with the same name and country is one artist."
+ }
+}

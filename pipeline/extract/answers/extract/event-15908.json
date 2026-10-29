@@ -1,444 +1,451 @@
 {
- "batch": "event-15908",
- "events": [
-  {
-   "event_id": 15908,
-   "artists": [
-    {
-     "name_as_written": "DJ Chad",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🎧 DJ Chad 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Ichigo",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇵",
-     "source_line": "🎧 DJ Ichigo 🇨🇵"
-    },
-    {
-     "name_as_written": "Malcom Beatz",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🎧 Malcom Beatz 🇵🇹"
-    },
-    {
-     "name_as_written": "DJ A.B.C",
-     "role": "dj",
-     "style": null,
-     "country": "🇳🇱🇨🇭",
-     "source_line": "🎧 DJ A.B.C 🇳🇱🇨🇭"
-    },
-    {
-     "name_as_written": "DJ Ghost Face",
-     "role": "dj",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🎧 DJ Ghost Face 🇮🇹"
-    },
-    {
-     "name_as_written": "DJ Ted",
-     "role": "dj",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🎧 DJ Ted 🇮🇹"
-    },
-    {
-     "name_as_written": "DJ Paixao",
-     "role": "dj",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🎧 DJ Paixao 🇮🇹"
-    },
-    {
-     "name_as_written": "DJ Mark",
-     "role": "dj",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🎧 DJ Mark 🇮🇹"
-    },
-    {
-     "name_as_written": "DJ Flow",
-     "role": "dj",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🎧 DJ Flow 🇮🇹"
-    },
-    {
-     "name_as_written": "Tresor 🇳🇱 & Aurea",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏻Tresor 🇳🇱 & Aurea 🇧🇷🇪🇸"
-    },
-    {
-     "name_as_written": "Akram Bouchiba 🇳🇱🇨🇭 & Sara Paxolieta",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "🕺🏻💃🏻 Akram Bouchiba 🇳🇱🇨🇭 & Sara Paxolieta 🇨🇭"
-    },
-    {
-     "name_as_written": "Asia Voronova",
-     "role": "teacher",
-     "style": null,
-     "country": "🇺🇦🇲🇫",
-     "source_line": "💃🏻 Asia Voronova 🇺🇦🇲🇫"
-    },
-    {
-     "name_as_written": "Sanjay MJ",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇳",
-     "source_line": "🕺🏻 Sanjay MJ 🇮🇳"
-    },
-    {
-     "name_as_written": "Dinara Salykova",
-     "role": "teacher",
-     "style": null,
-     "country": "🇰🇿🇮🇹",
-     "source_line": "💃🏻 Dinara Salykova 🇰🇿🇮🇹"
-    },
-    {
-     "name_as_written": "Ichigo",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇵",
-     "source_line": "🕺🏻Ichigo 🇨🇵"
-    },
-    {
-     "name_as_written": "Geri & Magdi",
-     "role": "teacher",
-     "style": null,
-     "country": "🇭🇺",
-     "source_line": "🕺🏻💃🏻Geri & Magdi 🇭🇺"
-    },
-    {
-     "name_as_written": "Carlo & Veronica",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻💃🏻 Carlo & Veronica 🇮🇹"
-    },
-    {
-     "name_as_written": "Jennifer & Simone",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻💃🏻 Jennifer & Simone 🇮🇹"
-    },
-    {
-     "name_as_written": "Ousmane",
-     "role": "teacher",
-     "style": null,
-     "country": "🇸🇳🇮🇹",
-     "source_line": "🕺🏻 Ousmane 🇸🇳🇮🇹"
-    },
-    {
-     "name_as_written": "Iren",
-     "role": "teacher",
-     "style": null,
-     "country": "🇷🇺🇮🇹",
-     "source_line": "💃🏻 Iren 🇷🇺🇮🇹"
-    },
-    {
-     "name_as_written": "Oscar Amore",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻 Oscar Amore 🇮🇹"
-    },
-    {
-     "name_as_written": "Marco 🇮🇹 & Jahia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏻💃🏻 Marco 🇮🇹 & Jahia 🇨🇵"
-    },
-    {
-     "name_as_written": "Giuseppe Andrea",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻 Giuseppe Andrea 🇮🇹"
-    },
-    {
-     "name_as_written": "Stefano & Elisa",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻💃🏻 Stefano & Elisa 🇮🇹"
-    },
-    {
-     "name_as_written": "Nico Berrettoni",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻 Nico Berrettoni 🇮🇹"
-    },
-    {
-     "name_as_written": "Sady",
-     "role": "teacher",
-     "style": null,
-     "country": "🇸🇳🇮🇹",
-     "source_line": "🕺🏻 Sady 🇸🇳🇮🇹"
-    },
-    {
-     "name_as_written": "Mili",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "💃🏻 Mili 🇫🇷"
-    },
-    {
-     "name_as_written": "Matar 🇸🇳🇮🇹 & Adriana",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏻💃🏻 Matar 🇸🇳🇮🇹 & Adriana 🇮🇹"
-    },
-    {
-     "name_as_written": "Luca & Francesca",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻💃🏻 Luca & Francesca 🇮🇹"
-    },
-    {
-     "name_as_written": "John & Stefania",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻💃🏻 John & Stefania 🇮🇹"
-    },
-    {
-     "name_as_written": "Christian & Tina",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻💃🏻 Christian & Tina 🇮🇹"
-    },
-    {
-     "name_as_written": "Stefano & Maura",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻💃🏻 Stefano & Maura 🇮🇹"
-    },
-    {
-     "name_as_written": "Mauro Tomatis",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻 Mauro Tomatis 🇮🇹"
-    },
-    {
-     "name_as_written": "Mary Valencia & Serena Cesarini",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "💃🏻 Mary Valencia & Serena Cesarini 🇮🇹"
-    },
-    {
-     "name_as_written": "Gloria 🇮🇹 & Srinath",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🕺🏻💃🏻 Gloria 🇮🇹 & Srinath 🇮🇳"
-    },
-    {
-     "name_as_written": "Said | KizombaFly",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻 Said | KizombaFly 🇮🇹"
-    },
-    {
-     "name_as_written": "Claudia Moise",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "💃🏻 Claudia Moise 🇮🇹"
-    },
-    {
-     "name_as_written": "Michela Vissani",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "💃🏻 Michela Vissani 🇮🇹"
-    },
-    {
-     "name_as_written": "Daniel Hernandez",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻 Daniel Hernandez 🇮🇹"
-    },
-    {
-     "name_as_written": "Stef & Christine",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻💃🏻 Stef & Christine 🇮🇹"
-    },
-    {
-     "name_as_written": "Marco & Ivana",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻💃🏻 Marco & Ivana 🇮🇹"
-    },
-    {
-     "name_as_written": "Beppe & Sabina",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻💃🏻 Beppe & Sabina 🇮🇹"
-    },
-    {
-     "name_as_written": "Enzo & Micky",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻💃🏻 Enzo & Micky 🇮🇹"
-    },
-    {
-     "name_as_written": "Elena Arcangeli",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "💃🏻 Elena Arcangeli 🇮🇹"
-    },
-    {
-     "name_as_written": "Claudia Spano",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "💃🏻 Claudia Spano 🇮🇹"
-    },
-    {
-     "name_as_written": "Luce | Brescia Latin Lovers",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "💃🏻 Luce | Brescia Latin Lovers 🇮🇹"
-    },
-    {
-     "name_as_written": "Arnoela",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇱🇮🇹",
-     "source_line": "💃🏻 Arnoela 🇦🇱🇮🇹"
-    },
-    {
-     "name_as_written": "Lali",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "💃🏻 Lali 🇮🇹"
-    },
-    {
-     "name_as_written": "Fabrizio Chiarenza",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻 Fabrizio Chiarenza 🇮🇹"
-    },
-    {
-     "name_as_written": "Linda",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "💃🏻 Linda 🇮🇹"
-    },
-    {
-     "name_as_written": "Fabio & Arianna",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻💃🏻 Fabio & Arianna 🇮🇹"
-    },
-    {
-     "name_as_written": "Amélie",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "💃🏻 Amélie 🇮🇹"
-    },
-    {
-     "name_as_written": "Massimo Loddo",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "🕺🏻 Massimo Loddo 🇮🇹"
-    },
-    {
-     "name_as_written": "Mariacristina",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇹",
-     "source_line": "💃🏻 Mariacristina 🇮🇹"
-    },
-    {
-     "name_as_written": "eMotion Events",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "📱 WhatsApp/Phone: Sunkiz Festival Organization / eMotion Events +39 351 733 7278"
-    },
-    {
-     "name_as_written": "Nicola Berrettoni",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🪄 Artistic Direction by Nicola Berrettoni | Powered by eMotion Events"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE VENUE",
-     "rationale": "The event is held in one venue, a holiday village reserved for the event where dancers stay."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Seafront Social Kiz",
-     "rationale": "Seafront Social Kiz and the AperiSun daytime events are listed as daytime social activities."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Masterclasses with International Artists",
-     "rationale": "The description advertises masterclasses with international artists."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops and Masterclasses of any Style and Level",
-     "rationale": "Dance workshops are explicitly part of the programme."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "3 Themed Night Parties",
-     "rationale": "Three themed night parties are part of the programme."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "ACCOMMODATION & BREAKFAST in the hotel reserved",
-     "rationale": "The package rates explicitly include accommodation and breakfast in the reserved hotel."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "FULL BOARD: Buffet-style Lunch and Dinner",
-     "rationale": "The package rates include full board meals at the main venue restaurant."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Rooms for Workshops",
-     "rationale": "There are three separate rooms for workshops, so more than one dance room is available."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:27:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "085f8d3db46f10d7",
+ "answer": {
+  "batch": "event-15908",
+  "events": [
+   {
+    "event_id": 15908,
+    "artists": [
+     {
+      "name_as_written": "DJ Chad",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🎧 DJ Chad 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Ichigo",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇵",
+      "source_line": "🎧 DJ Ichigo 🇨🇵"
+     },
+     {
+      "name_as_written": "Malcom Beatz",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🎧 Malcom Beatz 🇵🇹"
+     },
+     {
+      "name_as_written": "DJ A.B.C",
+      "role": "dj",
+      "style": null,
+      "country": "🇳🇱🇨🇭",
+      "source_line": "🎧 DJ A.B.C 🇳🇱🇨🇭"
+     },
+     {
+      "name_as_written": "DJ Ghost Face",
+      "role": "dj",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🎧 DJ Ghost Face 🇮🇹"
+     },
+     {
+      "name_as_written": "DJ Ted",
+      "role": "dj",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🎧 DJ Ted 🇮🇹"
+     },
+     {
+      "name_as_written": "DJ Paixao",
+      "role": "dj",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🎧 DJ Paixao 🇮🇹"
+     },
+     {
+      "name_as_written": "DJ Mark",
+      "role": "dj",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🎧 DJ Mark 🇮🇹"
+     },
+     {
+      "name_as_written": "DJ Flow",
+      "role": "dj",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🎧 DJ Flow 🇮🇹"
+     },
+     {
+      "name_as_written": "Tresor 🇳🇱 & Aurea",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏻Tresor 🇳🇱 & Aurea 🇧🇷🇪🇸"
+     },
+     {
+      "name_as_written": "Akram Bouchiba 🇳🇱🇨🇭 & Sara Paxolieta",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏻💃🏻 Akram Bouchiba 🇳🇱🇨🇭 & Sara Paxolieta 🇨🇭"
+     },
+     {
+      "name_as_written": "Asia Voronova",
+      "role": "teacher",
+      "style": null,
+      "country": "🇺🇦🇲🇫",
+      "source_line": "💃🏻 Asia Voronova 🇺🇦🇲🇫"
+     },
+     {
+      "name_as_written": "Sanjay MJ",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇳",
+      "source_line": "🕺🏻 Sanjay MJ 🇮🇳"
+     },
+     {
+      "name_as_written": "Dinara Salykova",
+      "role": "teacher",
+      "style": null,
+      "country": "🇰🇿🇮🇹",
+      "source_line": "💃🏻 Dinara Salykova 🇰🇿🇮🇹"
+     },
+     {
+      "name_as_written": "Ichigo",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇵",
+      "source_line": "🕺🏻Ichigo 🇨🇵"
+     },
+     {
+      "name_as_written": "Geri & Magdi",
+      "role": "teacher",
+      "style": null,
+      "country": "🇭🇺",
+      "source_line": "🕺🏻💃🏻Geri & Magdi 🇭🇺"
+     },
+     {
+      "name_as_written": "Carlo & Veronica",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻💃🏻 Carlo & Veronica 🇮🇹"
+     },
+     {
+      "name_as_written": "Jennifer & Simone",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻💃🏻 Jennifer & Simone 🇮🇹"
+     },
+     {
+      "name_as_written": "Ousmane",
+      "role": "teacher",
+      "style": null,
+      "country": "🇸🇳🇮🇹",
+      "source_line": "🕺🏻 Ousmane 🇸🇳🇮🇹"
+     },
+     {
+      "name_as_written": "Iren",
+      "role": "teacher",
+      "style": null,
+      "country": "🇷🇺🇮🇹",
+      "source_line": "💃🏻 Iren 🇷🇺🇮🇹"
+     },
+     {
+      "name_as_written": "Oscar Amore",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻 Oscar Amore 🇮🇹"
+     },
+     {
+      "name_as_written": "Marco 🇮🇹 & Jahia 🇨🇵",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏻💃🏻 Marco 🇮🇹 & Jahia 🇨🇵"
+     },
+     {
+      "name_as_written": "Giuseppe Andrea",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻 Giuseppe Andrea 🇮🇹"
+     },
+     {
+      "name_as_written": "Stefano & Elisa",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻💃🏻 Stefano & Elisa 🇮🇹"
+     },
+     {
+      "name_as_written": "Nico Berrettoni",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻 Nico Berrettoni 🇮🇹"
+     },
+     {
+      "name_as_written": "Sady",
+      "role": "teacher",
+      "style": null,
+      "country": "🇸🇳🇮🇹",
+      "source_line": "🕺🏻 Sady 🇸🇳🇮🇹"
+     },
+     {
+      "name_as_written": "Mili",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "💃🏻 Mili 🇫🇷"
+     },
+     {
+      "name_as_written": "Matar 🇸🇳🇮🇹 & Adriana",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏻💃🏻 Matar 🇸🇳🇮🇹 & Adriana 🇮🇹"
+     },
+     {
+      "name_as_written": "Luca & Francesca",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻💃🏻 Luca & Francesca 🇮🇹"
+     },
+     {
+      "name_as_written": "John & Stefania",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻💃🏻 John & Stefania 🇮🇹"
+     },
+     {
+      "name_as_written": "Christian & Tina",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻💃🏻 Christian & Tina 🇮🇹"
+     },
+     {
+      "name_as_written": "Stefano & Maura",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻💃🏻 Stefano & Maura 🇮🇹"
+     },
+     {
+      "name_as_written": "Mauro Tomatis",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻 Mauro Tomatis 🇮🇹"
+     },
+     {
+      "name_as_written": "Mary Valencia & Serena Cesarini",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "💃🏻 Mary Valencia & Serena Cesarini 🇮🇹"
+     },
+     {
+      "name_as_written": "Gloria 🇮🇹 & Srinath",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🕺🏻💃🏻 Gloria 🇮🇹 & Srinath 🇮🇳"
+     },
+     {
+      "name_as_written": "Said | KizombaFly",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻 Said | KizombaFly 🇮🇹"
+     },
+     {
+      "name_as_written": "Claudia Moise",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "💃🏻 Claudia Moise 🇮🇹"
+     },
+     {
+      "name_as_written": "Michela Vissani",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "💃🏻 Michela Vissani 🇮🇹"
+     },
+     {
+      "name_as_written": "Daniel Hernandez",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻 Daniel Hernandez 🇮🇹"
+     },
+     {
+      "name_as_written": "Stef & Christine",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻💃🏻 Stef & Christine 🇮🇹"
+     },
+     {
+      "name_as_written": "Marco & Ivana",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻💃🏻 Marco & Ivana 🇮🇹"
+     },
+     {
+      "name_as_written": "Beppe & Sabina",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻💃🏻 Beppe & Sabina 🇮🇹"
+     },
+     {
+      "name_as_written": "Enzo & Micky",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻💃🏻 Enzo & Micky 🇮🇹"
+     },
+     {
+      "name_as_written": "Elena Arcangeli",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "💃🏻 Elena Arcangeli 🇮🇹"
+     },
+     {
+      "name_as_written": "Claudia Spano",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "💃🏻 Claudia Spano 🇮🇹"
+     },
+     {
+      "name_as_written": "Luce | Brescia Latin Lovers",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "💃🏻 Luce | Brescia Latin Lovers 🇮🇹"
+     },
+     {
+      "name_as_written": "Arnoela",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇱🇮🇹",
+      "source_line": "💃🏻 Arnoela 🇦🇱🇮🇹"
+     },
+     {
+      "name_as_written": "Lali",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "💃🏻 Lali 🇮🇹"
+     },
+     {
+      "name_as_written": "Fabrizio Chiarenza",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻 Fabrizio Chiarenza 🇮🇹"
+     },
+     {
+      "name_as_written": "Linda",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "💃🏻 Linda 🇮🇹"
+     },
+     {
+      "name_as_written": "Fabio & Arianna",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻💃🏻 Fabio & Arianna 🇮🇹"
+     },
+     {
+      "name_as_written": "Amélie",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "💃🏻 Amélie 🇮🇹"
+     },
+     {
+      "name_as_written": "Massimo Loddo",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "🕺🏻 Massimo Loddo 🇮🇹"
+     },
+     {
+      "name_as_written": "Mariacristina",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇹",
+      "source_line": "💃🏻 Mariacristina 🇮🇹"
+     },
+     {
+      "name_as_written": "Sunkiz Festival Organization / eMotion Events",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "📱 WhatsApp/Phone: Sunkiz Festival Organization / eMotion Events +39 351 733 7278"
+     },
+     {
+      "name_as_written": "Nicola Berrettoni",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "🪄 Artistic Direction by Nicola Berrettoni | Powered by eMotion Events"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE VENUE – A whole SEAFRONT HOLIDAY VILLAGE exclusively reserved for the event",
+      "rationale": "The event takes place in a holiday village reserved for it, where the accommodation is also located."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Workshops and Masterclasses of any Style and Level",
+      "rationale": "Workshops and masterclasses are offered as part of the festival."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Masterclasses with International Artists",
+      "rationale": "The programme explicitly lists masterclasses with international artists."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "3 Themed Night Parties (Friday – Saturday – Sunday)",
+      "rationale": "Three themed night parties are scheduled."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Rooms for Workshops",
+      "rationale": "Several rooms are provided for workshops, so more than one dance room is available."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "ACCOMMODATION & BREAKFAST in the hotel reserved",
+      "rationale": "The hotel and full pass package includes accommodation and breakfast."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "FULL BOARD: Buffet-style Lunch and Dinner",
+      "rationale": "Lunch and dinner are included in the package rates."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "AperiSun & AperiSunset",
+      "rationale": "Aperitif socials at sunset and in the afternoon are daytime or afternoon parties."
+     }
+    ]
+   }
+  ]
+ }
 }

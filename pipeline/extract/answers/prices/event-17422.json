@@ -1,145 +1,145 @@
 {
- "batch": "event-17422",
- "events": [
-  {
-   "event_id": 17422,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "✨ FULL PASS ✨",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 55.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "04-17",
-       "until": "05-16",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "☛ €55 from April 17 to May 16"
-      },
-      {
-       "amount": 60.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "05-17",
-       "until": "06-16",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "☛ €60 from May 17 to June 16"
-      },
-      {
-       "amount": 70.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": "06-17",
-       "until": "07-16",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "☛ €70 from June 17 to July 16"
-      },
-      {
-       "amount": 75.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "☛ €75 at the door"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "Social or party (Friday, Saturday, Sunday – classes or Jack & Jill included)",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 15.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "☛ €15 presale / €20 at the door"
-      },
-      {
-       "amount": 20.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "☛ €15 presale / €20 at the door"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "Saturday Day Pass (social + party + 3 classes)",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 25.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "☛ €25 presale / €40 at the door"
-      },
-      {
-       "amount": 40.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "☛ €25 presale / €40 at the door"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:45:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b9080a19db3a920c",
+ "answer": {
+  "batch": "event-17422",
+  "events": [
+   {
+    "event_id": 17422,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "✨ FULL PASS ✨",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 55.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "04-17",
+         "until": "05-16",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "€55 from April 17 to May 16"
+       },
+       {
+        "amount": 60.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "05-17",
+         "until": "06-16",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "€60 from May 17 to June 16"
+       },
+       {
+        "amount": 70.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": "06-17",
+         "until": "07-16",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "€70 from June 17 to July 16"
+       },
+       {
+        "amount": 75.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "€75 at the door"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": "✨ DAILY RATES ✨",
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 15.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "€15 presale"
+       },
+       {
+        "amount": 20.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "€20 at the door"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": "Saturday Day Pass (social + party + 3 classes)",
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 25.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "€25 presale"
+       },
+       {
+        "amount": 40.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "€40 at the door"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:akram@akram+sarah",
+ "key_b": "p:akrambouchiba",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "ffb6eb0ed0e021d2",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Side A is 'Akram' with stated countries CH and NL, events in Germany, and partner sarah, while side B is 'Akram Bouchiba' with no stated country, events in Italy, and a different partner (sarapaxolieta); the only overlap is the first name, which is weak evidence on its own, so the evidence points to two different artists."
+ }
+}

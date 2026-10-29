@@ -1,18 +1,25 @@
 {
- "batch": "event-18327",
- "events": [
-  {
-   "event_id": 18327,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "une semaine 100% Kizomba, soleil, plage et bonne énergie"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "7ff5fbc5e4a69f02",
+ "answer": {
+  "batch": "event-18327",
+  "events": [
+   {
+    "event_id": 18327,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "semaine 100% Kizomba"
+     }
+    ]
+   }
+  ]
+ }
 }

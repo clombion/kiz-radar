@@ -1,201 +1,208 @@
 {
- "batch": "event-16553",
- "events": [
-  {
-   "event_id": 16553,
-   "artists": [
-    {
-     "name_as_written": "Steve Bakoula",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 Steve Bakoula (Nice)"
-    },
-    {
-     "name_as_written": "Hamidine",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 Hamidine (Nice)"
-    },
-    {
-     "name_as_written": "Chris Py and Laly",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 Chris Py and Laly (Nice)"
-    },
-    {
-     "name_as_written": "Gebby Blackchinese",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 Gebby Blackchinese (Cannes)"
-    },
-    {
-     "name_as_written": "Elodie and Fransoa",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 Elodie and Fransoa (Fréjus)"
-    },
-    {
-     "name_as_written": "Anthony",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 Anthony (Nice)"
-    },
-    {
-     "name_as_written": "Morgan and Monique",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 Morgan and Monique (Valence)"
-    },
-    {
-     "name_as_written": "Gordon and Marion",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 Gordon and Marion (Marseille)"
-    },
-    {
-     "name_as_written": "Dom and Marion",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 Dom and Marion (Paris/Nice)"
-    },
-    {
-     "name_as_written": "Thuy and Nui",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 Thuy and Nui (Nice)"
-    },
-    {
-     "name_as_written": "Joachim",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 Joachim (Fréjus)"
-    },
-    {
-     "name_as_written": "David Riquelme and Scène Attitude",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 David Riquelme and Scène Attitude (Lyon)"
-    },
-    {
-     "name_as_written": "Xavier and Linda",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 Xavier and Linda (Lyon)"
-    },
-    {
-     "name_as_written": "Franck and Sandra",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 Franck and Sandra (Nice)"
-    },
-    {
-     "name_as_written": "Olivier",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 Olivier (Nice)"
-    },
-    {
-     "name_as_written": "DJ Pankadas",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 DJ Pankadas"
-    },
-    {
-     "name_as_written": "DJ Anael",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 DJ Anael"
-    },
-    {
-     "name_as_written": "DJ Chris",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 DJ Chris"
-    },
-    {
-     "name_as_written": "DJ Nui",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 DJ Nui"
-    },
-    {
-     "name_as_written": "DJ Morganito",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 DJ Morganito"
-    },
-    {
-     "name_as_written": "DJ Hamidine",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 DJ Hamidine"
-    },
-    {
-     "name_as_written": "Websalsazur",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 Websalsazur"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Dance Workshops SBKW",
-     "rationale": "The program lists dance workshops as part of the event."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "Beach party",
-     "rationale": "The program explicitly lists a beach party."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Salsa/Bachata & Kizomba West Coast themed dance parties",
-     "rationale": "The parties are explicitly described as themed dance parties."
-    },
-    {
-     "feature": "camping",
-     "quote": "Bungalow accommodation",
-     "rationale": "Bungalow accommodation is offered as the stay option."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Full board",
-     "rationale": "Full board is part of the accommodation package."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Full board 3 nights",
-     "rationale": "The full board stay price covers the accommodation for the stay."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Bus: See registration form here",
-     "rationale": "A bus transport option for getting to the event is mentioned."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:29:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b58ab2e1df3ff5e1",
+ "answer": {
+  "batch": "event-16553",
+  "events": [
+   {
+    "event_id": 16553,
+    "artists": [
+     {
+      "name_as_written": "Steve Bakoula",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 Steve Bakoula (Nice)"
+     },
+     {
+      "name_as_written": "Hamidine",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 Hamidine (Nice)"
+     },
+     {
+      "name_as_written": "Chris Py and Laly",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 Chris Py and Laly (Nice)"
+     },
+     {
+      "name_as_written": "Gebby Blackchinese",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 Gebby Blackchinese (Cannes)"
+     },
+     {
+      "name_as_written": "Elodie and Fransoa",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 Elodie and Fransoa (Fréjus)"
+     },
+     {
+      "name_as_written": "Anthony",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 Anthony (Nice)"
+     },
+     {
+      "name_as_written": "Morgan and Monique",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 Morgan and Monique (Valence)"
+     },
+     {
+      "name_as_written": "Gordon and Marion",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 Gordon and Marion (Marseille)"
+     },
+     {
+      "name_as_written": "Dom and Marion",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 Dom and Marion (Paris/Nice)"
+     },
+     {
+      "name_as_written": "Thuy and Nui",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 Thuy and Nui (Nice)"
+     },
+     {
+      "name_as_written": "Joachim",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 Joachim (Fréjus)"
+     },
+     {
+      "name_as_written": "David Riquelme and Scène Attitude",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 David Riquelme and Scène Attitude (Lyon)"
+     },
+     {
+      "name_as_written": "Xavier and Linda",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 Xavier and Linda (Lyon)"
+     },
+     {
+      "name_as_written": "Franck and Sandra",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 Franck and Sandra (Nice)"
+     },
+     {
+      "name_as_written": "Olivier",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 Olivier (Nice)"
+     },
+     {
+      "name_as_written": "DJ Pankadas",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 DJ Pankadas"
+     },
+     {
+      "name_as_written": "DJ Anael",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 DJ Anael"
+     },
+     {
+      "name_as_written": "DJ Chris",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 DJ Chris"
+     },
+     {
+      "name_as_written": "DJ Nui",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 DJ Nui"
+     },
+     {
+      "name_as_written": "DJ Morganito",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 DJ Morganito"
+     },
+     {
+      "name_as_written": "DJ Hamidine",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 DJ Hamidine"
+     },
+     {
+      "name_as_written": "Websalsazur",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 Websalsazur"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Dance Workshops SBKW",
+      "rationale": "The program lists dance workshops as part of the event."
+     },
+     {
+      "feature": "beach_party",
+      "quote": "Beach party",
+      "rationale": "The program explicitly includes a beach party."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Salsa/Bachata & Kizomba West Coast themed dance parties",
+      "rationale": "The parties are described as themed dance parties."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Bungalow accommodation",
+      "rationale": "The full board stay package includes bungalow accommodation."
+     },
+     {
+      "feature": "camping",
+      "quote": "Bungalow accommodation",
+      "rationale": "Bungalow accommodation is offered as the event's lodging."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Full board",
+      "rationale": "Full board is listed as part of the accommodation package, which includes meals."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Bus: See registration form here",
+      "rationale": "A bus option for getting to the event is offered through the registration form."
+     }
+    ]
+   }
+  ]
+ }
 }

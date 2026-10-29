@@ -1,34 +1,41 @@
 {
- "batch": "event-18766",
- "events": [
-  {
-   "event_id": 18766,
-   "artists": [
-    {
-     "name_as_written": "KIZZ ESSENCE",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Welcome to the KIZZ ESSENCE ALL IN ONE BEDBURG 2027!🎉"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "MAIN HOTEL – Landhaus Danielshof",
-     "rationale": "The event's location is the main hotel, Landhaus Danielshof, where guests can also book rooms, so the parties take place in the hotel where dancers are invited to stay."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "OTHER HOTEL RECOMMENDATION",
-     "rationale": "The description recommends a further hotel, Hotel Gut Hohenholz, and the room booking is separate from the pass."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "DRESSCODE",
-     "rationale": "A DRESSCODE heading with Friday, Saturday and Sunday entries is given, so a dress code is stated."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:33:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d0133d163ac55d38",
+ "answer": {
+  "batch": "event-18766",
+  "events": [
+   {
+    "event_id": 18766,
+    "artists": [
+     {
+      "name_as_written": "KIZZ ESSENCE",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Welcome to the KIZZ ESSENCE ALL IN ONE BEDBURG 2027!🎉"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "MAIN HOTEL – Landhaus Danielshof",
+      "rationale": "The hotel listed as the main hotel is the same Landhaus Danielshof that is the event location, so the parties and accommodation share one venue."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "OTHER HOTEL RECOMMENDATION",
+      "rationale": "The description recommends Hotel Gut Hohenholz as another hotel option without it being part of the pass."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "DRESSCODE",
+      "rationale": "A dress code section is stated, with clothing icons, although the day-by-day details are left empty."
+     }
+    ]
+   }
+  ]
+ }
 }

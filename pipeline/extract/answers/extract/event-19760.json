@@ -1,36 +1,43 @@
 {
- "batch": "event-19760",
- "events": [
-  {
-   "event_id": 19760,
-   "artists": [],
-   "features": [
-    {
-     "feature": "all_levels_beginners",
-     "quote": "50 hours of workshops for all levels",
-     "rationale": "The quote explicitly says the workshops are for all levels, which welcomes beginners."
-    },
-    {
-     "feature": "workshops",
-     "quote": "50 hours of workshops",
-     "rationale": "The festival offers dance workshops totalling 50 hours."
-    },
-    {
-     "feature": "shows",
-     "quote": "50 international shows",
-     "rationale": "The description promotes 50 international shows by artists."
-    },
-    {
-     "feature": "competition",
-     "quote": "International Competition ( Salsa & Bachata )",
-     "rationale": "The festival includes an international competition in Salsa and Bachata."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )",
-     "rationale": "Three separate dance rooms are listed, so there is more than one dance floor."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b0bda8c1d081a1db",
+ "answer": {
+  "batch": "event-19760",
+  "events": [
+   {
+    "event_id": 19760,
+    "artists": [],
+    "features": [
+     {
+      "feature": "all_levels_beginners",
+      "quote": "50 hours of workshops for all levels",
+      "rationale": "The workshops are explicitly stated to be for all levels, which welcomes beginners."
+     },
+     {
+      "feature": "workshops",
+      "quote": "50 hours of workshops for all levels",
+      "rationale": "The event includes 50 hours of dance workshops."
+     },
+     {
+      "feature": "shows",
+      "quote": "50 international shows",
+      "rationale": "The description promises 50 international shows."
+     },
+     {
+      "feature": "competition",
+      "quote": "International Competition ( Salsa & Bachata )",
+      "rationale": "An international competition in Salsa and Bachata is part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "3 Dance Rooms ( Salsa , Bachata , Kizomba )",
+      "rationale": "Three dance rooms are listed, so there is more than one dance floor."
+     }
+    ]
+   }
+  ]
+ }
 }

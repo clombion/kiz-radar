@@ -1,176 +1,176 @@
 {
- "batch": "event-16324",
- "events": [
-  {
-   "event_id": 16324,
-   "artists": [
-    {
-     "name_as_written": "Isaac Bationon",
-     "role": "teacher",
-     "style": "CUBAIN SALSA, CUBAIN SON, CUBAIN AFRO, REGGAETON, TIMBA, CASINO WHEEL",
-     "country": "🇫🇷",
-     "source_line": "🗣 Isaac Bationon, 🇫🇷 ✅"
-    },
-    {
-     "name_as_written": "Alejandro Balmaseda",
-     "role": "teacher",
-     "style": "CUBAIN SALSA, CUBAIN SON, CUBAIN AFRO, REGGAETON, TIMBA, CASINO WHEEL",
-     "country": "🇨🇺",
-     "source_line": "🗣 Alejandro Balmaseda, 🇨🇺 ✅"
-    },
-    {
-     "name_as_written": "Roselyne Léon",
-     "role": "teacher",
-     "style": "CUBAIN SALSA, CUBAIN SON, CUBAIN AFRO, REGGAETON, TIMBA, CASINO WHEEL",
-     "country": "🇨🇺",
-     "source_line": "🗣 Roselyne Léon, 🇨🇺 ✅"
-    },
-    {
-     "name_as_written": "Mario Charon",
-     "role": "teacher",
-     "style": "CUBAIN SALSA, CUBAIN SON, CUBAIN AFRO, REGGAETON, TIMBA, CASINO WHEEL",
-     "country": "🇨🇺",
-     "source_line": "🗣 Mario Charon, 🇨🇺 ✅"
-    },
-    {
-     "name_as_written": "Mike Genevieve",
-     "role": "teacher",
-     "style": "CUBAIN SALSA, CUBAIN SON, CUBAIN AFRO, REGGAETON, TIMBA, CASINO WHEEL",
-     "country": "🇫🇷",
-     "source_line": "🗣 Mike Genevieve, 🇫🇷 ✅"
-    },
-    {
-     "name_as_written": "Harold Kinanga",
-     "role": "teacher",
-     "style": "CUBAIN SALSA, CUBAIN SON, CUBAIN AFRO, REGGAETON, TIMBA, CASINO WHEEL",
-     "country": "🇫🇷",
-     "source_line": "🗣 Harold Kinanga, 🇫🇷 ✅"
-    },
-    {
-     "name_as_written": "Anesslyne Baila",
-     "role": "teacher",
-     "style": "CUBAIN SALSA, CUBAIN SON, CUBAIN AFRO, REGGAETON, TIMBA, CASINO WHEEL",
-     "country": "🇫🇷",
-     "source_line": "🗣 Anesslyne Baila, 🇫🇷 ✅"
-    },
-    {
-     "name_as_written": "Roselyne Leon",
-     "role": "teacher",
-     "style": "DOMINICAN BACHATA, MODERN, SENSUAL",
-     "country": "🇪🇸 🇨🇺",
-     "source_line": "🗣 Roselyne Leon, 🇪🇸 🇨🇺 ✅"
-    },
-    {
-     "name_as_written": "Ludivine Ludidanse",
-     "role": "teacher",
-     "style": "DOMINICAN BACHATA, MODERN, SENSUAL",
-     "country": "🇫🇷",
-     "source_line": "🗣 Ludivine Ludidanse, 🇫🇷 ✅"
-    },
-    {
-     "name_as_written": "Amine UrbanKiz",
-     "role": "teacher",
-     "style": "KIZOMBA, SEMBA, URBANKIZ, COMPANY",
-     "country": "🇬🇧",
-     "source_line": "🗣 Amine UrbanKiz, 🇬🇧 ✅"
-    },
-    {
-     "name_as_written": "No",
-     "role": "teacher",
-     "style": "KIZOMBA, SEMBA, URBANKIZ, COMPANY",
-     "country": "🇫🇷",
-     "source_line": "🗣 No, 🇫🇷 ✅"
-    },
-    {
-     "name_as_written": "Vasco",
-     "role": "teacher",
-     "style": "KIZOMBA, SEMBA, URBANKIZ, COMPANY",
-     "country": "🇫🇷",
-     "source_line": "🗣 Vasco, 🇫🇷 ✅ (NEW 2026)"
-    },
-    {
-     "name_as_written": "DJ Vasco",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "📀 DJ Vasco, 🇫🇷 ✅ (NEW 2026)"
-    },
-    {
-     "name_as_written": "DJ Amine",
-     "role": "dj",
-     "style": null,
-     "country": "🇬🇧",
-     "source_line": "📀 DJ Amine, 🇬🇧 ✅"
-    },
-    {
-     "name_as_written": "DJ Harold El Bantu",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "📀 DJ Harold El Bantu, 🇫🇷 ✅"
-    },
-    {
-     "name_as_written": "DJ Mario",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "📀 DJ Mario, 🇫🇷 ✅"
-    },
-    {
-     "name_as_written": "Frédéric Hollinger",
-     "role": "media",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "📸 Frédéric Hollinger, 🇫🇷 ✅ (NEW 2026)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE HOTEL with INCLUDED*",
-     "rationale": "The heading states the event is all in one hotel, meaning the parties take place where dancers stay."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Full Pass + Hotel Room + Full Board",
-     "rationale": "The packages list a hotel room as part of the full pass."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Full board: buffet style: Breakfast, lunch, and dinner + water + wine",
-     "rationale": "Full board meals are listed as included in the pass."
-    },
-    {
-     "feature": "workshops",
-     "quote": "WORKSHOPS (CLASSES)",
-     "rationale": "A workshops section lists dance classes as part of the event."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "SOCIAL & POOL PARTY",
-     "rationale": "A social and pool party section is part of the programme."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "AFTERNOON | 1 Zone (bar or pool)",
-     "rationale": "An afternoon social party is scheduled at the bar or pool."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 ROOMS for 2 VIBES",
-     "rationale": "The parties take place in two rooms, each with its own vibe."
-    },
-    {
-     "feature": "shows",
-     "quote": "PARTIES & SHOWS",
-     "rationale": "The programme has a section for shows and artist performances."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Evening & dress code",
-     "rationale": "The description explicitly mentions a dress code."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "89561e2455be350d",
+ "answer": {
+  "batch": "event-16324",
+  "events": [
+   {
+    "event_id": 16324,
+    "artists": [
+     {
+      "name_as_written": "Isaac Bationon",
+      "role": "teacher",
+      "style": "CUBAIN SALSA, CUBAIN SON, CUBAIN AFRO, REGGAETON, TIMBA, CASINO WHEEL",
+      "country": "🇫🇷",
+      "source_line": "🗣 Isaac Bationon, 🇫🇷 ✅"
+     },
+     {
+      "name_as_written": "Alejandro Balmaseda",
+      "role": "teacher",
+      "style": "CUBAIN SALSA, CUBAIN SON, CUBAIN AFRO, REGGAETON, TIMBA, CASINO WHEEL",
+      "country": "🇨🇺",
+      "source_line": "🗣 Alejandro Balmaseda, 🇨🇺 ✅"
+     },
+     {
+      "name_as_written": "Roselyne Léon",
+      "role": "teacher",
+      "style": "CUBAIN SALSA, CUBAIN SON, CUBAIN AFRO, REGGAETON, TIMBA, CASINO WHEEL",
+      "country": "🇨🇺",
+      "source_line": "🗣 Roselyne Léon, 🇨🇺 ✅"
+     },
+     {
+      "name_as_written": "Mario Charon",
+      "role": "teacher",
+      "style": "CUBAIN SALSA, CUBAIN SON, CUBAIN AFRO, REGGAETON, TIMBA, CASINO WHEEL",
+      "country": "🇨🇺",
+      "source_line": "🗣 Mario Charon, 🇨🇺 ✅"
+     },
+     {
+      "name_as_written": "Mike Genevieve",
+      "role": "teacher",
+      "style": "CUBAIN SALSA, CUBAIN SON, CUBAIN AFRO, REGGAETON, TIMBA, CASINO WHEEL",
+      "country": "🇫🇷",
+      "source_line": "🗣 Mike Genevieve, 🇫🇷 ✅"
+     },
+     {
+      "name_as_written": "Harold Kinanga",
+      "role": "teacher",
+      "style": "CUBAIN SALSA, CUBAIN SON, CUBAIN AFRO, REGGAETON, TIMBA, CASINO WHEEL",
+      "country": "🇫🇷",
+      "source_line": "🗣 Harold Kinanga, 🇫🇷 ✅"
+     },
+     {
+      "name_as_written": "Anesslyne Baila",
+      "role": "teacher",
+      "style": "CUBAIN SALSA, CUBAIN SON, CUBAIN AFRO, REGGAETON, TIMBA, CASINO WHEEL",
+      "country": "🇫🇷",
+      "source_line": "🗣 Anesslyne Baila, 🇫🇷 ✅"
+     },
+     {
+      "name_as_written": "Ludivine Ludidanse",
+      "role": "teacher",
+      "style": "DOMINICAN BACHATA, MODERN, SENSUAL",
+      "country": "🇫🇷",
+      "source_line": "🗣 Ludivine Ludidanse, 🇫🇷 ✅"
+     },
+     {
+      "name_as_written": "Amine UrbanKiz",
+      "role": "teacher",
+      "style": "KIZOMBA, SEMBA, URBANKIZ, COMPANY",
+      "country": "🇬🇧",
+      "source_line": "🗣 Amine UrbanKiz, 🇬🇧 ✅"
+     },
+     {
+      "name_as_written": "No",
+      "role": "teacher",
+      "style": "KIZOMBA, SEMBA, URBANKIZ, COMPANY",
+      "country": "🇫🇷",
+      "source_line": "🗣 No, 🇫🇷 ✅"
+     },
+     {
+      "name_as_written": "Vasco",
+      "role": "teacher",
+      "style": "KIZOMBA, SEMBA, URBANKIZ, COMPANY",
+      "country": "🇫🇷",
+      "source_line": "🗣 Vasco, 🇫🇷 ✅ (NEW 2026)"
+     },
+     {
+      "name_as_written": "DJ Vasco",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "📀 DJ Vasco, 🇫🇷 ✅ (NEW 2026)"
+     },
+     {
+      "name_as_written": "DJ Amine",
+      "role": "dj",
+      "style": null,
+      "country": "🇬🇧",
+      "source_line": "📀 DJ Amine, 🇬🇧 ✅"
+     },
+     {
+      "name_as_written": "DJ Harold El Bantu",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "📀 DJ Harold El Bantu, 🇫🇷 ✅"
+     },
+     {
+      "name_as_written": "DJ Mario",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "📀 DJ Mario, 🇫🇷 ✅"
+     },
+     {
+      "name_as_written": "Frédéric Hollinger",
+      "role": "media",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "📸 Frédéric Hollinger, 🇫🇷 ✅ (NEW 2026)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE HOTEL with INCLUDED*",
+      "rationale": "The text states that the event is all in one hotel, meaning the parties take place where dancers stay."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Full Pass + Hotel Room + Full Board",
+      "rationale": "The packages list a hotel room as part of the full pass."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Full board: buffet style: Breakfast, lunch, and dinner + water + wine",
+      "rationale": "Full board meals are listed as part of the included package."
+     },
+     {
+      "feature": "shows",
+      "quote": "Free access to all parties, shows, entertainment, social events, and pool parties",
+      "rationale": "Shows and performances by artists are included in the free access."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "SOCIAL & POOL PARTY",
+      "rationale": "The event has a dedicated social and pool party session."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "AFTERNOON | 1 Zone (bar or pool)",
+      "rationale": "The afternoon social and pool party is a daytime social."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 to 4 ROOMS",
+      "rationale": "The workshops take place in two to four rooms."
+     },
+     {
+      "feature": "workshops",
+      "quote": "WORKSHOPS (CLASSES)",
+      "rationale": "Dance classes are a stated part of the event."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Evening & dress code, photos…",
+      "rationale": "The text explicitly mentions a dress code."
+     }
+    ]
+   }
+  ]
+ }
 }

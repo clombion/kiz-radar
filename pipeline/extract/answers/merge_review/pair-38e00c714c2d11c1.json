@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dex@dex+lau",
+ "key_b": "p:dex@dex+law",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "38e00c714c2d11c1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are written as the generic name 'Dex' with no shared partner (partners 'lau' and 'law' differ), and their only overlap is France, while side A also has Congo and Slovenia events, so the evidence does not settle whether these are one artist or two."
+ }
+}

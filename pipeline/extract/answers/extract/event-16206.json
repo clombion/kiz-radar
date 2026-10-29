@@ -1,179 +1,186 @@
 {
- "batch": "event-16206",
- "events": [
-  {
-   "event_id": 16206,
-   "artists": [
-    {
-     "name_as_written": "Audi & Laura",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Audi & Laura"
-    },
-    {
-     "name_as_written": "Said & Oksana",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Said & Oksana"
-    },
-    {
-     "name_as_written": "Chamalo & Tzer",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Chamalo & Tzer"
-    },
-    {
-     "name_as_written": "Teresa Jimenez",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Teresa Jimenez"
-    },
-    {
-     "name_as_written": "Ledoux",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Ledoux"
-    },
-    {
-     "name_as_written": "Marwen",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Marwen"
-    },
-    {
-     "name_as_written": "Fuego & Kiki",
-     "role": "teacher",
-     "style": "UrbanKiz",
-     "country": null,
-     "source_line": "Fuego & Kiki — UrbanKiz Champions 🏆"
-    },
-    {
-     "name_as_written": "Jahja & Jessy",
-     "role": "teacher",
-     "style": "Tarraxo",
-     "country": null,
-     "source_line": "Jahja & Jessy — Tarraxo Champions 🔥"
-    },
-    {
-     "name_as_written": "Allan",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Allan — Solo Champion 👑"
-    },
-    {
-     "name_as_written": "Mou Oulad",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Mou Oulad"
-    },
-    {
-     "name_as_written": "Loyal",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Loyal"
-    },
-    {
-     "name_as_written": "DJ Snakes",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Snakes"
-    },
-    {
-     "name_as_written": "DJ Shark",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Shark"
-    },
-    {
-     "name_as_written": "DJ Puto X",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Puto X"
-    },
-    {
-     "name_as_written": "DJ Hugo Smile",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Hugo Smile"
-    },
-    {
-     "name_as_written": "DJ Lévis",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Lévis"
-    },
-    {
-     "name_as_written": "DJ Colts",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Colts"
-    },
-    {
-     "name_as_written": "DJ Lowelo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Lowelo"
-    },
-    {
-     "name_as_written": "DJ Antony Tarraxa",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Antony Tarraxa"
-    },
-    {
-     "name_as_written": "DJ Jozsy",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Jozsy"
-    },
-    {
-     "name_as_written": "DJ Chouaib",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Chouaib"
-    }
-   ],
-   "features": [
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Party: 20 August 2026",
-     "rationale": "The description announces a pre-party on 20 August 2026 before the festival dates."
-    },
-    {
-     "feature": "workshops",
-     "quote": "High-level workshops",
-     "rationale": "The event lists high-level workshops among its offerings."
-    },
-    {
-     "feature": "competition",
-     "quote": "Battle Kizz World Final",
-     "rationale": "The event is a battle and world final, which is a competition."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Van der Valk Hotel Paris CDG",
-     "rationale": "A recommended hotel is named with a negotiated nightly rate, and accommodation is not stated as part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "643449f4c29a164f",
+ "answer": {
+  "batch": "event-16206",
+  "events": [
+   {
+    "event_id": 16206,
+    "artists": [
+     {
+      "name_as_written": "Audi & Laura",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Audi & Laura"
+     },
+     {
+      "name_as_written": "Said & Oksana",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Said & Oksana"
+     },
+     {
+      "name_as_written": "Chamalo & Tzer",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Chamalo & Tzer"
+     },
+     {
+      "name_as_written": "Teresa Jimenez",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Teresa Jimenez"
+     },
+     {
+      "name_as_written": "Ledoux",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Ledoux"
+     },
+     {
+      "name_as_written": "Marwen",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Marwen"
+     },
+     {
+      "name_as_written": "Fuego & Kiki",
+      "role": "teacher",
+      "style": "UrbanKiz",
+      "country": null,
+      "source_line": "Fuego & Kiki — UrbanKiz Champions 🏆"
+     },
+     {
+      "name_as_written": "Jahja & Jessy",
+      "role": "teacher",
+      "style": "Tarraxo",
+      "country": null,
+      "source_line": "Jahja & Jessy — Tarraxo Champions 🔥"
+     },
+     {
+      "name_as_written": "Allan",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Allan — Solo Champion 👑"
+     },
+     {
+      "name_as_written": "Mou Oulad",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Mou Oulad"
+     },
+     {
+      "name_as_written": "Loyal",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Loyal"
+     },
+     {
+      "name_as_written": "DJ Snakes",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Snakes"
+     },
+     {
+      "name_as_written": "DJ Shark",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Shark"
+     },
+     {
+      "name_as_written": "DJ Puto X",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Puto X"
+     },
+     {
+      "name_as_written": "DJ Hugo Smile",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Hugo Smile"
+     },
+     {
+      "name_as_written": "DJ Lévis",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Lévis"
+     },
+     {
+      "name_as_written": "DJ Colts",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Colts"
+     },
+     {
+      "name_as_written": "DJ Lowelo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Lowelo"
+     },
+     {
+      "name_as_written": "DJ Antony Tarraxa",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Antony Tarraxa"
+     },
+     {
+      "name_as_written": "DJ Jozsy",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Jozsy"
+     },
+     {
+      "name_as_written": "DJ Chouaib",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Chouaib"
+     }
+    ],
+    "features": [
+     {
+      "feature": "pre_party",
+      "quote": "Pre-Party: 20 August 2026",
+      "rationale": "The description announces a pre-party held on 20 August 2026, before the festival dates."
+     },
+     {
+      "feature": "competition",
+      "quote": "Battle Kizz World Final",
+      "rationale": "The event is a battle and world final competition, as listed in the highlights."
+     },
+     {
+      "feature": "workshops",
+      "quote": "High-level workshops",
+      "rationale": "The highlights list high-level workshops as part of the event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "119€/night (2 people + breakfast)",
+      "rationale": "A hotel reservation with a booking code and a negotiated nightly rate is offered, while the hotel is not part of the festival pass."
+     }
+    ]
+   }
+  ]
+ }
 }

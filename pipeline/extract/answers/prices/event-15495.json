@@ -1,34 +1,42 @@
 {
- "batch": "event-15495",
- "events": [
-  {
-   "event_id": 15495,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "Online prices:",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 55.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 20,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "EARLY BIRD 55 euros (10 Leaders/10 Follow)"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:41:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "5bd562ccdac60019",
+ "answer": {
+  "batch": "event-15495",
+  "events": [
+   {
+    "event_id": 15495,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "Ticketing 🎫",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 55.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 20,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "EARLY BIRD 55 euros (10 Leaders/10 Follow)"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

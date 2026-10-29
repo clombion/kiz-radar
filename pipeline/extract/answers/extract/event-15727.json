@@ -1,173 +1,180 @@
 {
- "batch": "event-15727",
- "events": [
-  {
-   "event_id": 15727,
-   "artists": [
-    {
-     "name_as_written": "DJ Blvck Skyle",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Blvck Skyle"
-    },
-    {
-     "name_as_written": "Safir Beats",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Safir Beats"
-    },
-    {
-     "name_as_written": "DJ Stompy",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Stompy"
-    },
-    {
-     "name_as_written": "DJ Angelo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Angelo"
-    },
-    {
-     "name_as_written": "DJ Mtee",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Mtee"
-    },
-    {
-     "name_as_written": "DJ Miky Mike",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Miky Mike"
-    },
-    {
-     "name_as_written": "DJ Dida",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Dida"
-    },
-    {
-     "name_as_written": "DimDim & Ophélie",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "DimDim & Ophélie"
-    },
-    {
-     "name_as_written": "Pachou & Monica",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Pachou & Monica"
-    },
-    {
-     "name_as_written": "David & Christina",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "David & Christina"
-    },
-    {
-     "name_as_written": "Sacko Dadié",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Sacko Dadié"
-    },
-    {
-     "name_as_written": "Daisy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Daisy"
-    },
-    {
-     "name_as_written": "Douda",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Douda"
-    },
-    {
-     "name_as_written": "FRAMELABAGENCY",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "FRAMELABAGENCY"
-    },
-    {
-     "name_as_written": "EYOBOFF",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "EYOBOFF"
-    },
-    {
-     "name_as_written": "KOFFARO",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "KOFFARO"
-    },
-    {
-     "name_as_written": "KIZERBO",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "KIZERBO"
-    },
-    {
-     "name_as_written": "LODEART",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "LODEART"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Kizomba Fusion – Progressive Level",
-     "rationale": "The program schedules dance classes at named levels, such as Kizomba Fusion at Progressive Level."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "MASTERCLASSES",
-     "rationale": "A masterclass section is listed in the program with named teachers."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Rooms • 2 Vibes",
-     "rationale": "The Saturday heading states the event has two rooms."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "TAXI DANCERS",
-     "rationale": "A taxi dancers section lists dancer teams."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Dress Code Respected = Sweet Treats Offered",
-     "rationale": "The text refers to a dress code that participants are expected to respect."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Ibis Lyon Est – Chaponnay",
-     "rationale": "Hotels are listed under the accommodation heading as places to stay for the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Social Afternoon",
-     "rationale": "The Friday program includes a daytime social afternoon session."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "f304a1f7487d0059",
+ "answer": {
+  "batch": "event-15727",
+  "events": [
+   {
+    "event_id": 15727,
+    "artists": [
+     {
+      "name_as_written": "DJ Blvck Skyle",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Blvck Skyle"
+     },
+     {
+      "name_as_written": "Safir Beats",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Safir Beats"
+     },
+     {
+      "name_as_written": "DJ Stompy",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Stompy"
+     },
+     {
+      "name_as_written": "DJ Angelo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Angelo"
+     },
+     {
+      "name_as_written": "DJ Mtee",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Mtee"
+     },
+     {
+      "name_as_written": "DJ Miky Mike",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Miky Mike"
+     },
+     {
+      "name_as_written": "DJ Dida",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Dida"
+     },
+     {
+      "name_as_written": "DimDim & Ophélie",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "DimDim & Ophélie"
+     },
+     {
+      "name_as_written": "Pachou & Monica",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Pachou & Monica"
+     },
+     {
+      "name_as_written": "David & Christina",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "David & Christina"
+     },
+     {
+      "name_as_written": "Sacko Dadié",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Sacko Dadié"
+     },
+     {
+      "name_as_written": "Daisy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Daisy"
+     },
+     {
+      "name_as_written": "Douda",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Douda"
+     },
+     {
+      "name_as_written": "FRAMELABAGENCY",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "FRAMELABAGENCY"
+     },
+     {
+      "name_as_written": "EYOBOFF",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "EYOBOFF"
+     },
+     {
+      "name_as_written": "KOFFARO",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "KOFFARO"
+     },
+     {
+      "name_as_written": "KIZERBO",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "KIZERBO"
+     },
+     {
+      "name_as_written": "LODEART",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "LODEART"
+     }
+    ],
+    "features": [
+     {
+      "feature": "day_socials",
+      "quote": "Social Afternoon",
+      "rationale": "The program lists a daytime social titled Social Afternoon."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Kizomba – Intermediate Level",
+      "rationale": "The program schedules a dance class at intermediate level as part of the event."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "MASTERCLASSES",
+      "rationale": "A section titled MASTERCLASSES lists classes taught by named teachers."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 Rooms • 2 Vibes",
+      "rationale": "The Saturday heading states there are two rooms."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "TAXI DANCERS",
+      "rationale": "A section titled TAXI DANCERS announces taxi dancers at the event."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Dress Code Respected = Sweet Treats Offered",
+      "rationale": "The text states a dress code and rewards those who respect it."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Ibis Lyon Est – Chaponnay",
+      "rationale": "The accommodation section recommends this hotel without saying it is included in the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

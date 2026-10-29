@@ -1,0 +1,13 @@
+{
+ "key_a": "p:angelozacaria",
+ "key_b": "p:angelozacarias",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6714a022e5c4274e",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records are full names that differ only by a final letter (Zacaria / Zacarias), both are teachers in Italy, and no evidence shows two different people, which fits the spelling-variant rule."
+ }
+}

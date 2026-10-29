@@ -1,0 +1,13 @@
+{
+ "key_a": "p:carla@carla+tony",
+ "key_b": "p:carla@carla+tony",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8d5cca9b74c4a422",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same key with the same name CARLA stated across countries AO, CV and ES, but no mentions are listed, so there is no event, role or style evidence to tell whether this is one artist touring or several people sharing the name, and a wrong merge would join separate event histories."
+ }
+}

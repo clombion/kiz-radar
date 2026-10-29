@@ -1,110 +1,124 @@
 {
- "batch": "event-17422",
- "events": [
-  {
-   "event_id": 17422,
-   "artists": [
-    {
-     "name_as_written": "DJ SNAKES",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎵🎧 DJ SNAKES (Friday 17th)"
-    },
-    {
-     "name_as_written": "DJ SHARK",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎵🎧 DJ SHARK (Saturday 18th, Sunday 19th)"
-    },
-    {
-     "name_as_written": "NICE LIFE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎵🎧 NICE LIFE (Saturday 18th, Sunday 19th)"
-    },
-    {
-     "name_as_written": "DJ EST",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎵🎧 DJ EST (Saturday 18th)"
-    },
-    {
-     "name_as_written": "DJ AYA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎵🎧 DJ AYA – Resident DJ (Friday 17th, Sunday 19th)"
-    },
-    {
-     "name_as_written": "IOURY & EDEN",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🎓🕺IOURY & EDEN"
-    },
-    {
-     "name_as_written": "GORDON & MARION",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🎓🕺GORDON & MARION"
-    },
-    {
-     "name_as_written": "DAISY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🎓🕺DAISY"
-    },
-    {
-     "name_as_written": "DAISY",
-     "role": "mc",
-     "style": null,
-     "country": null,
-     "source_line": "☛ 3 PM–5 PM Jack and Jill (Open to all) (🎧DJ: NICE LIFE / Host: DAISY)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "partner_hotel",
-     "quote": "Negotiated special rate: Rooms starting at €65 per night",
-     "rationale": "The Ibis Budget Hotel next to the venue is offered at a negotiated rate while accommodation is not part of the pass."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "Shuttles available by reservation to make your arrival and departure easier",
-     "rationale": "Shuttles are offered by reservation for arrival and departure."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "4 PM–8 PM Social",
-     "rationale": "A daytime social runs on Saturday afternoon and early evening."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Kizomba Fusion Class",
-     "rationale": "Dance classes are part of the schedule."
-    },
-    {
-     "feature": "competition",
-     "quote": "Jack and Jill (Open to all)",
-     "rationale": "A Jack and Jill competition is scheduled on Sunday."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Friday — Tropical Mood",
-     "rationale": "Each day has a named dress theme for the parties."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Friday — Tropical Mood",
-     "rationale": "The description states a dress code for each day of the weekender."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:31:28+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "214a5cb1852a409c",
+ "answer": {
+  "batch": "event-17422",
+  "events": [
+   {
+    "event_id": 17422,
+    "artists": [
+     {
+      "name_as_written": "DJ SNAKES",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎵🎧 DJ SNAKES (Friday 17th)"
+     },
+     {
+      "name_as_written": "DJ SHARK",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎵🎧 DJ SHARK (Saturday 18th, Sunday 19th)"
+     },
+     {
+      "name_as_written": "NICE LIFE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎵🎧 NICE LIFE (Saturday 18th, Sunday 19th)"
+     },
+     {
+      "name_as_written": "DJ EST",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎵🎧 DJ EST (Saturday 18th)"
+     },
+     {
+      "name_as_written": "DJ AYA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎵🎧 DJ AYA – Resident DJ (Friday 17th, Sunday 19th)"
+     },
+     {
+      "name_as_written": "IOURY & EDEN",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🎓🕺IOURY & EDEN"
+     },
+     {
+      "name_as_written": "GORDON & MARION",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🎓🕺GORDON & MARION"
+     },
+     {
+      "name_as_written": "DAISY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🎓🕺DAISY"
+     },
+     {
+      "name_as_written": "DAISY",
+      "role": "mc",
+      "style": null,
+      "country": null,
+      "source_line": "☛ 3 PM–5 PM Jack and Jill (Open to all) (🎧DJ: NICE LIFE / Host: DAISY)"
+     },
+     {
+      "name_as_written": "KizZua",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "🔥KizZua: your 💯% kizomba event in the South!"
+     }
+    ],
+    "features": [
+     {
+      "feature": "partner_hotel",
+      "quote": "Negotiated special rate: Rooms starting at €65 per night",
+      "rationale": "A negotiated hotel rate is offered, and the accommodation is not stated to be part of the pass."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "Shuttles available by reservation to make your arrival and departure easier",
+      "rationale": "Shuttles are offered by reservation for arrival and departure."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Tarraxo Connection Class",
+      "rationale": "Dance classes are scheduled as part of the event."
+     },
+     {
+      "feature": "competition",
+      "quote": "Jack and Jill (Open to all)",
+      "rationale": "A Jack and Jill is part of the schedule, which is a competition format."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "4 PM–8 PM Social",
+      "rationale": "A daytime social runs in the afternoon and early evening."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "DRESS CODES",
+      "rationale": "The description states dress codes for each day of the weekender."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Friday — Tropical Mood",
+      "rationale": "The parties carry a dress theme for each night, such as Tropical Mood."
+     }
+    ]
+   }
+  ]
+ }
 }

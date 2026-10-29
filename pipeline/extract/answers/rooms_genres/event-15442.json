@@ -1,38 +1,45 @@
 {
- "batch": "event-15442",
- "events": [
-  {
-   "event_id": 15442,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Semba"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "Urbankiz"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Tarraxo"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro dance",
-     "quote": "Afro dance"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "22af1544681c0d87",
+ "answer": {
+  "batch": "event-15442",
+  "events": [
+   {
+    "event_id": 15442,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba, Semba, Urbankiz, Tarraxo, and Afro dance classes"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba, Semba, Urbankiz, Tarraxo, and Afro dance classes"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "Kizomba, Semba, Urbankiz, Tarraxo, and Afro dance classes"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Kizomba, Semba, Urbankiz, Tarraxo, and Afro dance classes"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro dance",
+      "quote": "Kizomba, Semba, Urbankiz, Tarraxo, and Afro dance classes"
+     }
+    ]
+   }
+  ]
+ }
 }

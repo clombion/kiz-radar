@@ -1,88 +1,80 @@
 {
- "batch": "event-17448",
- "events": [
-  {
-   "event_id": 17448,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 75.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "~~Full Pass €75, 80, 85 (SOLD OUT)~~"
-      },
-      {
-       "amount": 80.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "~~Full Pass €75, 80, 85 (SOLD OUT)~~"
-      },
-      {
-       "amount": 85.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "~~Full Pass €75, 80, 85 (SOLD OUT)~~"
-      },
-      {
-       "amount": 90.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": true,
-       "quote": "Full Pass: €90 / €95… (Current Tier)"
-      },
-      {
-       "amount": 95.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Full Pass: €90 / €95… (Current Tier)"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Don’t wait—prices go up as we get closer!"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:45:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "63c5ce22931124f1",
+ "answer": {
+  "batch": "event-17448",
+  "events": [
+   {
+    "event_id": 17448,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 75.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": true,
+        "quote": "Full Pass €75, 80, 85 (SOLD OUT)"
+       },
+       {
+        "amount": 80.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": true,
+        "quote": "Full Pass €75, 80, 85 (SOLD OUT)"
+       },
+       {
+        "amount": 85.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": true,
+        "quote": "Full Pass €75, 80, 85 (SOLD OUT)"
+       },
+       {
+        "amount": 90.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": true
+        },
+        "sold_out": false,
+        "quote": "Full Pass: €90 / €95… (Current Tier)"
+       },
+       {
+        "amount": 95.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Full Pass: €90 / €95… (Current Tier)"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Don’t wait—prices go up as we get closer!"
+    ]
+   }
+  ]
+ }
 }

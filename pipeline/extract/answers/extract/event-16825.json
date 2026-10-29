@@ -1,21 +1,28 @@
 {
- "batch": "event-16825",
- "events": [
-  {
-   "event_id": 16825,
-   "artists": [],
-   "features": [
-    {
-     "feature": "partner_hotel",
-     "quote": "HÔTEL PARTENAIRE",
-     "rationale": "The description names a partner hotel and gives a 15% discount on bookings there, without the accommodation being part of the pass."
-    },
-    {
-     "feature": "camping",
-     "quote": "Camping, Hôtels, chambres d’hôtes et AirB&B dispo autour de la salle",
-     "rationale": "The description lists campsite accommodation as one of the options available around the venue."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:26+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b22b24e159f500db",
+ "answer": {
+  "batch": "event-16825",
+  "events": [
+   {
+    "event_id": 16825,
+    "artists": [],
+    "features": [
+     {
+      "feature": "camping",
+      "quote": "Camping, Hôtels, chambres d’hôtes et AirB&B dispo autour de la salle",
+      "rationale": "The description states that campsite accommodation is available around the venue, which matches the camping feature."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "15% de remise sur votre réservation",
+      "rationale": "A partner hotel is named with a negotiated 15% discount on bookings, without the accommodation being part of a pass."
+     }
+    ]
+   }
+  ]
+ }
 }

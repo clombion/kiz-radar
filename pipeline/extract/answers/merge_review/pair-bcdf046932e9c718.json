@@ -1,0 +1,13 @@
+{
+ "key_a": "p:laura@laura+romeo",
+ "key_b": "p:lauralise@lauralise+romeo",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "bcdf046932e9c718",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records share the partner Romeo, and 'Laura' is a short form of 'Laura-Lise'; the only difference is events in France versus Spain, with no shared event showing two people and no stated countries to conflict."
+ }
+}

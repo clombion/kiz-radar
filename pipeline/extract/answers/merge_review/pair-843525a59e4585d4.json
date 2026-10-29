@@ -1,0 +1,13 @@
+{
+ "key_a": "p:celine@celine+dhoirif",
+ "key_b": "p:celine@celine+josue",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "843525a59e4585d4",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different partners (dhoirif versus josue) and their keys themselves encode different partner pairings, so the shared name CELINE/CÉLINE alone does not establish one artist, and side B's extra countries (CH, MQ) and Spain events point to a different person."
+ }
+}

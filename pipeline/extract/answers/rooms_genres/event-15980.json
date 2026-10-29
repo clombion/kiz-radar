@@ -1,21 +1,28 @@
 {
- "batch": "event-15980",
- "events": [
-  {
-   "event_id": 15980,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 AREAS TO PARTY"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "KKC KIZZVENLO KIZOMBA CONGRESS 2026"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "10a7807dc8eec95e",
+ "answer": {
+  "batch": "event-15980",
+  "events": [
+   {
+    "event_id": 15980,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 AREAS TO PARTY"
+    },
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KKC KIZZVENLO KIZOMBA CONGRESS 2026"
+     }
+    ]
+   }
+  ]
+ }
 }

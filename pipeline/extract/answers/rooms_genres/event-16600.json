@@ -1,33 +1,40 @@
 {
- "batch": "event-16600",
- "events": [
-  {
-   "event_id": 16600,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "spinning Kizomba, Semba, Kuduro, Afro‑house"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "spinning Kizomba, Semba, Kuduro, Afro‑house"
-    },
-    {
-     "genre": "kuduro",
-     "genre_as_written": "Kuduro",
-     "quote": "spinning Kizomba, Semba, Kuduro, Afro‑house"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro‑house",
-     "quote": "spinning Kizomba, Semba, Kuduro, Afro‑house"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "9a496ff85c92ff34",
+ "answer": {
+  "batch": "event-16600",
+  "events": [
+   {
+    "event_id": 16600,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "DJs spinning Kizomba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Dance workshops (Semba, Kizomba, Kuduro)"
+     },
+     {
+      "genre": "kuduro",
+      "genre_as_written": "Kuduro",
+      "quote": "Dance workshops (Semba, Kizomba, Kuduro)"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro‑house",
+      "quote": "Kizomba, Semba, Kuduro, Afro‑house"
+     }
+    ]
+   }
+  ]
+ }
 }

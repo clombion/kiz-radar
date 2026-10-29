@@ -1,0 +1,13 @@
+{
+ "key_a": "p:york@dj",
+ "key_b": "p:york@lisa+york",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "1b971bdf3066f2e8",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side A is 'Dj York' and side B is 'York', the same stage name with a DJ prefix, and both sides list identical countries (DE, VE) and identical event countries (Albania, Belgium, France, Germany). Side B's partner is lisa@lisa+york, which side A lacks, and side B has no mention rows to check further, so this rests on the name and footprint match."
+ }
+}

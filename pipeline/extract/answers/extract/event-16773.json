@@ -1,72 +1,79 @@
 {
- "batch": "event-16773",
- "events": [
-  {
-   "event_id": 16773,
-   "artists": [
-    {
-     "name_as_written": "Tomas Rei di Kizomba",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Tomas Rei di Kizomba"
-    },
-    {
-     "name_as_written": "Tony Pirata",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Tony Pirata"
-    },
-    {
-     "name_as_written": "Dr Kizomba",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Dr Kizomba"
-    },
-    {
-     "name_as_written": "Mayra & Code",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Mayra & Code"
-    },
-    {
-     "name_as_written": "DJ Cubano",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Cubano"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "International Kizomba, Semba and Tarraxo workshops",
-     "rationale": "The event lists international Kizomba, Semba and Tarraxo workshops as part of what awaits attendees."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Beach & Pool Party",
-     "rationale": "The event offers a pool party, named in the Beach & Pool Party item."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "Beach & Pool Party",
-     "rationale": "The event offers a beach party, named in the Beach & Pool Party item."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Tarraxo Bootcamp",
-     "rationale": "A Tarraxo Bootcamp is listed as part of the programme, which is an intensive training course."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Live music",
-     "rationale": "The event lists live music among its offerings."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "8322401a64c529f0",
+ "answer": {
+  "batch": "event-16773",
+  "events": [
+   {
+    "event_id": 16773,
+    "artists": [
+     {
+      "name_as_written": "Tomas Rei di Kizomba",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Tomas Rei di Kizomba"
+     },
+     {
+      "name_as_written": "Tony Pirata",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Tony Pirata"
+     },
+     {
+      "name_as_written": "Dr Kizomba",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Dr Kizomba"
+     },
+     {
+      "name_as_written": "Mayra & Code",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Mayra & Code"
+     },
+     {
+      "name_as_written": "DJ Cubano",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Cubano"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "International Kizomba, Semba and Tarraxo workshops",
+      "rationale": "The description lists international Kizomba, Semba and Tarraxo workshops as part of the event."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "Tarraxo Bootcamp",
+      "rationale": "A Tarraxo Bootcamp is listed among the event offerings."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Live music",
+      "rationale": "Live music is listed as part of what awaits attendees."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Beach & Pool Party",
+      "rationale": "The listed Beach & Pool Party includes a pool party."
+     },
+     {
+      "feature": "beach_party",
+      "quote": "Beach & Pool Party",
+      "rationale": "The listed Beach & Pool Party includes a beach party."
+     }
+    ]
+   }
+  ]
+ }
 }

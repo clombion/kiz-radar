@@ -1,85 +1,91 @@
 {
- "batch": "event-14486",
- "events": [
-  {
-   "event_id": 14486,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 𝑎𝑚𝑏𝑖𝑎𝑛𝑐𝑒𝑠 𝑑𝑖𝑓𝑓𝑒́𝑟𝑒𝑛𝑡𝑒𝑠"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "urbankiz",
-      "semba",
-      "tarraxo",
-      "afro"
-     ],
-     "quote": "𝟏 𝐬𝐚𝐥𝐥𝐞 𝐝𝐞 𝟑𝟎𝟎𝐦𝟐 𝐝𝐞́𝐝𝐢𝐞́𝐞 𝐚̀ 𝐥𝐚 𝐊𝐢𝐳𝐨𝐦𝐛𝐚, 𝐥’𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳, 𝐥𝐞 𝐒𝐞𝐦𝐛𝐚, 𝐥𝐞 𝐓𝐚𝐫𝐫𝐚𝐱𝐨 & 𝐥’𝐀𝐟𝐫𝐨, 𝐝𝐮 𝐯𝐞𝐧𝐝𝐫𝐞𝐝𝐢 𝐚𝐮 𝐝𝐢𝐦𝐚𝐧𝐜𝐡𝐞."
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "eba3edf9c613f9e6",
+ "answer": {
+  "batch": "event-14486",
+  "events": [
+   {
+    "event_id": 14486,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 𝑎𝑚𝑏𝑖𝑎𝑛𝑐𝑒𝑠 𝑑𝑖𝑓𝑓𝑒́𝑟𝑒𝑛𝑡𝑒𝑠"
     },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "zouk",
-      "other",
-      "other",
-      "bachata"
-     ],
-     "quote": "𝟏 𝐬𝐚𝐥𝐥𝐞 𝐝𝐞 𝟐𝟎𝟎𝐦𝟐 𝐬𝐮𝐩𝐩𝐥𝐞́𝐦𝐞𝐧𝐭𝐚𝐢𝐫𝐞 𝐝𝐞́𝐝𝐢𝐞́𝐞 𝐚𝐮 𝐙𝐨𝐮𝐤, 𝐒𝐡𝐚𝐭𝐭𝐚 𝐃𝐚𝐧𝐜𝐞𝐡𝐚𝐥𝐥, 𝐇𝐢𝐩 𝐇𝐨𝐩 𝐑𝐧𝐛 & 𝐥𝐚 𝐁𝐚𝐜𝐡𝐚𝐭𝐚."
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "𝐥𝐚 𝐊𝐢𝐳𝐨𝐦𝐛𝐚"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "𝐥’𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "𝐥𝐞 𝐒𝐞𝐦𝐛𝐚"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "𝐥𝐞 𝐓𝐚𝐫𝐫𝐚𝐱𝐨"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "𝐥’𝐀𝐟𝐫𝐨"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "𝐚𝐮 𝐙𝐨𝐮𝐤"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Shatta Dancehall",
-     "quote": "𝐒𝐡𝐚𝐭𝐭𝐚 𝐃𝐚𝐧𝐜𝐞𝐡𝐚𝐥𝐥"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Hip Hop RnB",
-     "quote": "𝐇𝐢𝐩 𝐇𝐨𝐩 𝐑𝐧𝐛"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "𝐥𝐚 𝐁𝐚𝐜𝐡𝐚𝐭𝐚"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [
+       "kizomba",
+       "urbankiz",
+       "semba",
+       "tarraxo",
+       "afro"
+      ],
+      "quote": "𝐝𝐞́𝐝𝐢𝐞́𝐞 𝐚̀ 𝐥𝐚 𝐊𝐢𝐳𝐨𝐦𝐛𝐚, 𝐥’𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳, 𝐥𝐞 𝐒𝐞𝐦𝐛𝐚, 𝐥𝐞 𝐓𝐚𝐫𝐫𝐚𝐱𝐨 & 𝐥’𝐀𝐟𝐫𝐨"
+     },
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [
+       "zouk",
+       "other",
+       "bachata"
+      ],
+      "quote": "𝐝𝐞́𝐝𝐢𝐞́𝐞 𝐚𝐮 𝐙𝐨𝐮𝐤, 𝐒𝐡𝐚𝐭𝐭𝐚 𝐃𝐚𝐧𝐜𝐞𝐡𝐚𝐥𝐥, 𝐇𝐢𝐩 𝐇𝐨𝐩 𝐑𝐧𝐛 & 𝐥𝐚 𝐁𝐚𝐜𝐡𝐚𝐭𝐚"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "𝐊𝐢𝐳𝐨𝐦𝐛𝐚",
+      "quote": "𝐥𝐚 𝐊𝐢𝐳𝐨𝐦𝐛𝐚"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳",
+      "quote": "𝐥’𝐔𝐫𝐛𝐚𝐧 𝐊𝐢𝐳"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "𝐒𝐞𝐦𝐛𝐚",
+      "quote": "𝐥𝐞 𝐒𝐞𝐦𝐛𝐚"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "𝐓𝐚𝐫𝐫𝐚𝐱𝐨",
+      "quote": "𝐥𝐞 𝐓𝐚𝐫𝐫𝐚𝐱𝐨"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "𝐀𝐟𝐫𝐨",
+      "quote": "𝐥’𝐀𝐟𝐫𝐨"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "𝐙𝐨𝐮𝐤",
+      "quote": "𝐚𝐮 𝐙𝐨𝐮𝐤"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "𝐒𝐡𝐚𝐭𝐭𝐚 𝐃𝐚𝐧𝐜𝐞𝐡𝐚𝐥𝐥",
+      "quote": "𝐒𝐡𝐚𝐭𝐭𝐚 𝐃𝐚𝐧𝐜𝐞𝐡𝐚𝐥𝐥"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "𝐇𝐢𝐩 𝐇𝐨𝐩 𝐑𝐧𝐛",
+      "quote": "𝐇𝐢𝐩 𝐇𝐨𝐩 𝐑𝐧𝐛"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "𝐁𝐚𝐜𝐡𝐚𝐭𝐚",
+      "quote": "𝐥𝐚 𝐁𝐚𝐜𝐡𝐚𝐭𝐚"
+     }
+    ]
+   }
+  ]
+ }
 }

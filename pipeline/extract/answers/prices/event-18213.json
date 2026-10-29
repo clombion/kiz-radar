@@ -1,34 +1,37 @@
 {
- "batch": "event-18213",
- "events": [
-  {
-   "event_id": 18213,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "💰 𝐏𝐫𝐢𝐜𝐢𝐧𝐠 & 𝐏𝐚𝐲𝐦𝐞𝐧𝐭 𝐏𝐥𝐚𝐧",
-     "group_size": 1,
-     "days": 10,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 1300.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "★ 𝐓𝐫𝐢𝐩 𝐂𝐨𝐬𝐭: €𝟏,𝟑𝟎𝟎"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:45:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "4fe845e7f893747e",
+ "answer": {
+  "batch": "event-18213",
+  "events": [
+   {
+    "event_id": 18213,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 10,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 1300.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝐓𝐫𝐢𝐩 𝐂𝐨𝐬𝐭: €𝟏,𝟑𝟎𝟎"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

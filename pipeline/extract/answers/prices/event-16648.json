@@ -1,53 +1,62 @@
 {
- "batch": "event-16648",
- "events": [
-  {
-   "event_id": 16648,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "—— ✅ Full pass includes ———",
-     "group_size": 1,
-     "days": 2,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 155.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": {
-        "amount": 310.0,
-        "currency": "BGN"
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:44:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "3dfd22eb346b763a",
+ "answer": {
+  "batch": "event-16648",
+  "events": [
+   {
+    "event_id": 16648,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "—————-💲Price ————–",
+      "group_size": 1,
+      "days": 2,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 155.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": {
+         "amount": 310.0,
+         "currency": "BGN"
+        },
+        "sale": {
+         "from": null,
+         "until": "03-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Until March 31 155€ (310BGN)"
        },
-       "from": null,
-       "until": "03-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Until March 31 155€ (310BGN)"
-      },
-      {
-       "amount": 170.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": {
-        "amount": 340.0,
-        "currency": "BGN"
-       },
-       "from": "04-01",
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "After that 170€ (340BGN)"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+       {
+        "amount": 170.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": {
+         "amount": 340.0,
+         "currency": "BGN"
+        },
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "After that 170€ (340BGN)"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

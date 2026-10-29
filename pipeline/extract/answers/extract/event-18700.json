@@ -1,172 +1,179 @@
 {
- "batch": "event-18700",
- "events": [
-  {
-   "event_id": 18700,
-   "artists": [
-    {
-     "name_as_written": "Kitumba Events",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Kitumba Events presents the 5th edition of Week-End A Danser."
-    },
-    {
-     "name_as_written": "DJ ICHIGO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ ICHIGO"
-    },
-    {
-     "name_as_written": "DJ MKY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ MKY"
-    },
-    {
-     "name_as_written": "DJ S-LINE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ S-LINE"
-    },
-    {
-     "name_as_written": "DJ LAAK",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ LAAK"
-    },
-    {
-     "name_as_written": "DJ RALPH BB",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ RALPH BB"
-    },
-    {
-     "name_as_written": "DJ LAU FWI",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ LAU FWI"
-    },
-    {
-     "name_as_written": "DJ BAD",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ BAD"
-    },
-    {
-     "name_as_written": "DJ ASH",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ ASH"
-    },
-    {
-     "name_as_written": "DJ FILL",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ FILL"
-    },
-    {
-     "name_as_written": "DJ PANKADAS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ PANKADAS"
-    },
-    {
-     "name_as_written": "Franck Beaufort",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Franck Beaufort"
-    },
-    {
-     "name_as_written": "Alban Audevard",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Alban Audevard"
-    },
-    {
-     "name_as_written": "Karl Madina",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Karl Madina"
-    },
-    {
-     "name_as_written": "Mamady Mady",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Mamady Mady"
-    },
-    {
-     "name_as_written": "Titony",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Titony"
-    },
-    {
-     "name_as_written": "Julio Mykeyange",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Julio Mykeyange"
-    },
-    {
-     "name_as_written": "Anthony Meric",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Anthony Meric"
-    },
-    {
-     "name_as_written": "Fred Ange Kiz’n Smile",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Fred Ange Kiz’n Smile"
-    },
-    {
-     "name_as_written": "Will Wgt",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Will Wgt"
-    },
-    {
-     "name_as_written": "Damon Kizz",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Damon Kizz"
-    },
-    {
-     "name_as_written": "Danseur Ayi",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "Danseur Ayi"
-    },
-    {
-     "name_as_written": "Fill",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Fill"
-    }
-   ],
-   "features": []
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:33:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "5c1289a266d63fb6",
+ "answer": {
+  "batch": "event-18700",
+  "events": [
+   {
+    "event_id": 18700,
+    "artists": [
+     {
+      "name_as_written": "Kitumba Events",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Kitumba Events presents the 5th edition of Week-End A Danser."
+     },
+     {
+      "name_as_written": "DJ ICHIGO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ ICHIGO"
+     },
+     {
+      "name_as_written": "DJ MKY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ MKY"
+     },
+     {
+      "name_as_written": "DJ S-LINE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ S-LINE"
+     },
+     {
+      "name_as_written": "DJ LAAK",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ LAAK"
+     },
+     {
+      "name_as_written": "DJ RALPH BB",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ RALPH BB"
+     },
+     {
+      "name_as_written": "DJ LAU FWI",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ LAU FWI"
+     },
+     {
+      "name_as_written": "DJ BAD",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ BAD"
+     },
+     {
+      "name_as_written": "DJ ASH",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ ASH"
+     },
+     {
+      "name_as_written": "DJ FILL",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ FILL"
+     },
+     {
+      "name_as_written": "DJ PANKADAS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ PANKADAS"
+     },
+     {
+      "name_as_written": "Franck Beaufort",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Franck Beaufort"
+     },
+     {
+      "name_as_written": "Alban Audevard",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Alban Audevard"
+     },
+     {
+      "name_as_written": "Karl Madina",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Karl Madina"
+     },
+     {
+      "name_as_written": "Mamady Mady",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Mamady Mady"
+     },
+     {
+      "name_as_written": "Titony",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Titony"
+     },
+     {
+      "name_as_written": "Julio Mykeyange",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Julio Mykeyange"
+     },
+     {
+      "name_as_written": "Anthony Meric",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Anthony Meric"
+     },
+     {
+      "name_as_written": "Fred Ange Kiz’n Smile",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Fred Ange Kiz’n Smile"
+     },
+     {
+      "name_as_written": "Will Wgt",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Will Wgt"
+     },
+     {
+      "name_as_written": "Damon Kizz",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Damon Kizz"
+     },
+     {
+      "name_as_written": "Danseur Ayi",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "Danseur Ayi"
+     },
+     {
+      "name_as_written": "Fill",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Fill"
+     }
+    ],
+    "features": []
+   }
+  ]
+ }
 }

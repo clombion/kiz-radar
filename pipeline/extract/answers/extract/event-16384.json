@@ -1,36 +1,43 @@
 {
- "batch": "event-16384",
- "events": [
-  {
-   "event_id": 16384,
-   "artists": [
-    {
-     "name_as_written": "Salsapills",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Salsapills presents its 5th annual “Summer SBK” party on July 3rd and 4th"
-    },
-    {
-     "name_as_written": "Srhphotographie",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Srhphotographie"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Workshops + SBK party",
-     "rationale": "The event lists a Saturday workshop programme alongside the SBK party."
-    },
-    {
-     "feature": "shows",
-     "quote": "SHOW",
-     "rationale": "The program includes a SHOW section with entertainment."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "a4dc1ea50930dff8",
+ "answer": {
+  "batch": "event-16384",
+  "events": [
+   {
+    "event_id": 16384,
+    "artists": [
+     {
+      "name_as_written": "Salsapills",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Salsapills presents its 5th annual “Summer SBK” party on July 3rd and 4th"
+     },
+     {
+      "name_as_written": "Srhphotographie",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Srhphotographie"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Workshops + SBK party",
+      "rationale": "The Saturday line lists workshops as part of the event."
+     },
+     {
+      "feature": "shows",
+      "quote": "SHOW",
+      "rationale": "The program includes a SHOW section with entertainment."
+     }
+    ]
+   }
+  ]
+ }
 }

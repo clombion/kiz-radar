@@ -1,79 +1,86 @@
 {
- "batch": "event-15974",
- "events": [
-  {
-   "event_id": 15974,
-   "party_rooms": {
-    "count": 3,
-    "quote": "3 ROOMS"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba"
-     ],
-     "quote": "1 – Kizomba & Semba"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0c3adb0c0746c63a",
+ "answer": {
+  "batch": "event-15974",
+  "events": [
+   {
+    "event_id": 15974,
+    "party_rooms": {
+     "count": 3,
+     "quote": "3 ROOMS"
     },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "urbankiz",
-      "tarraxo"
-     ],
-     "quote": "2 – Urban Kiz & Tarraxo"
-    },
-    {
-     "name_as_written": null,
-     "kind": "party",
-     "genres": [
-      "douceur",
-      "tarraxinha"
-     ],
-     "quote": "3 – Douceur & Tarraxinha"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "1 – Kizomba & Semba"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "1 – Kizomba & Semba"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "2 – Urban Kiz & Tarraxo"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "2 – Urban Kiz & Tarraxo"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "3 – Douceur & Tarraxinha"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "3 – Douceur & Tarraxinha"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "AFRO",
-     "quote": "#AFRO"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "semba"
+      ],
+      "quote": "Kizomba & Semba"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "urbankiz",
+       "tarraxo"
+      ],
+      "quote": "Urban Kiz & Tarraxo"
+     },
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "douceur",
+       "tarraxinha"
+      ],
+      "quote": "Douceur & Tarraxinha"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba & Semba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba & Semba"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "Urban Kiz & Tarraxo"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Urban Kiz & Tarraxo"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "Douceur & Tarraxinha"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Douceur & Tarraxinha"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "AFRO",
+      "quote": "#AFRO"
+     }
+    ]
+   }
+  ]
+ }
 }

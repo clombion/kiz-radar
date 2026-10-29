@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ronie@frida+ronie",
+ "key_b": "p:roniesaleh",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "273ef45e968e7746",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A 'Ronie' is a bare first name with no stated country in its mentions, partnered with 'frida' in Spain, while side B 'RONIE SALEH' is a full name consistently stated as Swedish across many events; the only link is the shared first name and Swedish country on side B, so the evidence does not establish that they are the same person."
+ }
+}

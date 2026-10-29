@@ -1,0 +1,13 @@
+{
+ "key_a": "p:radu@judit+radu",
+ "key_b": "p:radu@judith+radu",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6eb4ce43e3875599",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are Romanian (RO) and their partners, judit and judith, are spelling variants, but the partner names are not identical and 'Radu' is a common first name. The events (Germany, Hungary, Romania, Serbia versus Spain) do not overlap, and there are no mention lines to confirm a single artist, so the evidence does not settle it."
+ }
+}

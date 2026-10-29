@@ -1,0 +1,13 @@
+{
+ "key_a": "p:stephane@ana+stephane",
+ "key_b": "p:stephanelyke",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "676916f184f9d04e",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the countries BE and RO, but side A's only partner is 'ana@ana+stephane' while side B's is 'anamariastoica', and the bare first name 'Stephane' is weak evidence without a shared partner or event. The mention lists are empty, so the evidence does not settle whether these are one artist."
+ }
+}

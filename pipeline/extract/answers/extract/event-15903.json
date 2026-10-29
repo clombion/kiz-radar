@@ -1,39 +1,46 @@
 {
- "batch": "event-15903",
- "events": [
-  {
-   "event_id": 15903,
-   "artists": [
-    {
-     "name_as_written": "O’DANCE",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "☀️O’DANCE HOLIDAY IS BACK! ☀️"
-    }
-   ],
-   "features": [
-    {
-     "feature": "accommodation_included",
-     "quote": "Accommodation in a standard double room",
-     "rationale": "The stay section lists accommodation as part of what the package includes."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Full board (from dinner on Day 1 to breakfast on Day 5",
-     "rationale": "Full board meals are listed under what the stay includes."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Over 20 hours of classes",
-     "rationale": "The package includes more than 20 hours of dance classes."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Theme parties",
-     "rationale": "The package includes theme parties during the holiday."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "f62cb8d55dae62b8",
+ "answer": {
+  "batch": "event-15903",
+  "events": [
+   {
+    "event_id": 15903,
+    "artists": [
+     {
+      "name_as_written": "O’DANCE",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "☀️O’DANCE HOLIDAY IS BACK! ☀️"
+     }
+    ],
+    "features": [
+     {
+      "feature": "accommodation_included",
+      "quote": "Accommodation in a standard double room",
+      "rationale": "The stay section lists accommodation as part of what the package includes."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Full board",
+      "rationale": "Full board is listed under what the stay includes."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Over 20 hours of classes",
+      "rationale": "The package includes more than 20 hours of dance classes."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Theme parties & fun animations in and outside the hotel",
+      "rationale": "Theme parties are offered as part of the stay."
+     }
+    ]
+   }
+  ]
+ }
 }

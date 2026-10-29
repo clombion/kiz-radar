@@ -1,34 +1,37 @@
 {
- "batch": "event-18935",
- "events": [
-  {
-   "event_id": 18935,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "“LAND ONLY” OPTION",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 1290.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Enjoy the full package (5-star All-Inclusive hotel + dance + parties) for just €1,290."
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:46:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d8422f03080abed6",
+ "answer": {
+  "batch": "event-18935",
+  "events": [
+   {
+    "event_id": 18935,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "“LAND ONLY” OPTION",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 1290.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Enjoy the full package (5-star All-Inclusive hotel + dance + parties) for just €1,290."
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

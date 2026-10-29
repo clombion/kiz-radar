@@ -1,71 +1,78 @@
 {
- "batch": "event-18317",
- "events": [
-  {
-   "event_id": 18317,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "One Room",
-     "kind": "party",
-     "genres": [
-      "urbankiz"
-     ],
-     "quote": "URBANKIZ × OPEN FORMAT"
-    },
-    {
-     "name_as_written": "BACK TO THE ROOTS",
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba"
-     ],
-     "quote": "Kizomba • Semba • Ginga • African Vibes"
-    },
-    {
-     "name_as_written": "ROOM #bachata – #salsa – #konpa",
-     "kind": "party",
-     "genres": [
-      "bachata",
-      "salsa",
-      "kompa"
-     ],
-     "quote": "ROOM #bachata – #salsa – #konpa"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "💃 KIZOMBA"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "URBANKIZ",
-     "quote": "⚡ URBANKIZ"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "KONPA",
-     "quote": "🌴 KONPA & ❤️‍🔥 BACHATA"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "💃 BACHATA"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Kizomba • Semba • Ginga • African Vibes"
-    },
-    {
-     "genre": "salsa",
-     "genre_as_written": "#salsa",
-     "quote": "ROOM #bachata – #salsa – #konpa"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "ced47b9a852c7cde",
+ "answer": {
+  "batch": "event-18317",
+  "events": [
+   {
+    "event_id": 18317,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "party",
+      "genres": [
+       "urbankiz"
+      ],
+      "quote": "URBANKIZ × OPEN FORMAT"
+     },
+     {
+      "name_as_written": "BACK TO THE ROOTS",
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "semba"
+      ],
+      "quote": "BACK TO THE ROOTS"
+     },
+     {
+      "name_as_written": "#bachata – #salsa – #konpa",
+      "kind": "party",
+      "genres": [
+       "bachata",
+       "salsa",
+       "kompa"
+      ],
+      "quote": "ROOM #bachata – #salsa – #konpa"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "WHERE KIZOMBA COMES HOME."
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Kizomba • Semba • Ginga • African Vibes"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "URBANKIZ",
+      "quote": "URBANKIZ × OPEN FORMAT"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "KONPA",
+      "quote": "🌴 KONPA & ❤️‍🔥 BACHATA"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "BACHATA",
+      "quote": "💃 BACHATA"
+     },
+     {
+      "genre": "salsa",
+      "genre_as_written": "salsa",
+      "quote": "ROOM #bachata – #salsa – #konpa"
+     }
+    ]
+   }
+  ]
+ }
 }

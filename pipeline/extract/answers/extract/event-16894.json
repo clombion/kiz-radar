@@ -1,98 +1,105 @@
 {
- "batch": "event-16894",
- "events": [
-  {
-   "event_id": 16894,
-   "artists": [
-    {
-     "name_as_written": "Vamula",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Due to the occasion of the Indenpendence Day of Poland 🇵🇱 and Angola 🇦🇴, which takes place the same day, November 11, Vamula is organazing a kizomba and semba festival – the great occasion to celebrate together 🥳🥳🥳"
-    },
-    {
-     "name_as_written": "N-Py Da Baila",
-     "role": "teacher",
-     "style": null,
-     "country": "Angola",
-     "source_line": "❇️ N-Py Da Baila (Angola)"
-    },
-    {
-     "name_as_written": "M-Xtrela",
-     "role": "teacher",
-     "style": null,
-     "country": "Angola",
-     "source_line": "❇️ M-Xtrela (Angola)"
-    },
-    {
-     "name_as_written": "Karolina Vamula",
-     "role": "teacher",
-     "style": null,
-     "country": "Poland",
-     "source_line": "❇️ Karolina Vamula (Poland)"
-    },
-    {
-     "name_as_written": "Klaudia & Jailson",
-     "role": "teacher",
-     "style": null,
-     "country": "Poland/Brazil",
-     "source_line": "❇️ Klaudia & Jailson (Poland/Brazil) (Samba+carnaval animations)"
-    },
-    {
-     "name_as_written": "DJ Ecozinho",
-     "role": "dj",
-     "style": null,
-     "country": "Angola",
-     "source_line": "❇️ DJ Ecozinho (Angola)"
-    },
-    {
-     "name_as_written": "DJ Dotizinha Vamula",
-     "role": "dj",
-     "style": null,
-     "country": "Poland",
-     "source_line": "❇️ DJ Dotizinha Vamula (Poland)"
-    },
-    {
-     "name_as_written": "DJ Manito",
-     "role": "dj",
-     "style": null,
-     "country": "Guadelupe/France",
-     "source_line": "❇️ DJ Manito (Guadelupe/France)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "live_music",
-     "quote": "Live music",
-     "rationale": "The description lists live music under a microphone heading and mentions a live concert in the pass inclusions."
-    },
-    {
-     "feature": "competition",
-     "quote": "Polish Kizomba & Semba contest",
-     "rationale": "A Polish Kizomba & Semba contest is held as part of the festival."
-    },
-    {
-     "feature": "workshops",
-     "quote": "workshops 12:00-17:00",
-     "rationale": "Workshops are scheduled on Saturday during the festival."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "social 14.00-18.00",
-     "rationale": "Afternoon socials are scheduled on Saturday."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "(2 rooms)",
-     "rationale": "The Saturday party is held in two rooms, so there is more than one dance floor."
-    },
-    {
-     "feature": "after_party",
-     "quote": "Afterparty 17.00-24:30",
-     "rationale": "An afterparty is scheduled on Sunday."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:45+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "81ec79f4ed9e735d",
+ "answer": {
+  "batch": "event-16894",
+  "events": [
+   {
+    "event_id": 16894,
+    "artists": [
+     {
+      "name_as_written": "N-Py Da Baila",
+      "role": "teacher",
+      "style": null,
+      "country": "Angola",
+      "source_line": "❇️ N-Py Da Baila (Angola)"
+     },
+     {
+      "name_as_written": "M-Xtrela",
+      "role": "teacher",
+      "style": null,
+      "country": "Angola",
+      "source_line": "❇️ M-Xtrela (Angola)"
+     },
+     {
+      "name_as_written": "Karolina Vamula",
+      "role": "teacher",
+      "style": null,
+      "country": "Poland",
+      "source_line": "❇️ Karolina Vamula (Poland)"
+     },
+     {
+      "name_as_written": "Klaudia & Jailson",
+      "role": "teacher",
+      "style": null,
+      "country": "Poland/Brazil",
+      "source_line": "❇️ Klaudia & Jailson (Poland/Brazil) (Samba+carnaval animations)"
+     },
+     {
+      "name_as_written": "DJ Ecozinho",
+      "role": "dj",
+      "style": null,
+      "country": "Angola",
+      "source_line": "❇️ DJ Ecozinho (Angola)"
+     },
+     {
+      "name_as_written": "DJ Dotizinha Vamula",
+      "role": "dj",
+      "style": null,
+      "country": "Poland",
+      "source_line": "❇️ DJ Dotizinha Vamula (Poland)"
+     },
+     {
+      "name_as_written": "DJ Manito",
+      "role": "dj",
+      "style": null,
+      "country": "Guadelupe/France",
+      "source_line": "❇️ DJ Manito (Guadelupe/France)"
+     },
+     {
+      "name_as_written": "Vamula",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Due to the occasion of the Indenpendence Day of Poland 🇵🇱 and Angola 🇦🇴, which takes place the same day, November 11, Vamula is organazing a kizomba and semba festival – the great occasion to celebrate together 🥳🥳🥳"
+     }
+    ],
+    "features": [
+     {
+      "feature": "live_music",
+      "quote": "Live music",
+      "rationale": "The description announces live music under a dedicated heading."
+     },
+     {
+      "feature": "workshops",
+      "quote": "workshops 12:00-17:00",
+      "rationale": "Daytime workshops with listed times are part of the event schedule."
+     },
+     {
+      "feature": "competition",
+      "quote": "Polish Kizomba & Semba contest",
+      "rationale": "A Polish Kizomba & Semba contest is held during the Friday party."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "social 14.00-18.00",
+      "rationale": "Afternoon socials with listed times are part of the schedule."
+     },
+     {
+      "feature": "after_party",
+      "quote": "Afterparty 17.00-24:30",
+      "rationale": "An afterparty on Sunday is listed with its times."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Kizombada party 22.00-04.00 (2 rooms)",
+      "rationale": "The Saturday party is explicitly stated to take place in two rooms."
+     }
+    ]
+   }
+  ]
+ }
 }

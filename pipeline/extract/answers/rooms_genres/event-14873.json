@@ -1,18 +1,25 @@
 {
- "batch": "event-14873",
- "events": [
-  {
-   "event_id": 14873,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "KIM (Kizomba International Madrid)"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "e44669c0807f11d4",
+ "answer": {
+  "batch": "event-14873",
+  "events": [
+   {
+    "event_id": 14873,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba International Madrid"
+     }
+    ]
+   }
+  ]
+ }
 }

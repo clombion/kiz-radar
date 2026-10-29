@@ -1,18 +1,25 @@
 {
- "batch": "event-18495",
- "events": [
-  {
-   "event_id": 18495,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "4-day Kizomba immersion"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "12de8dc726daaf78",
+ "answer": {
+  "batch": "event-18495",
+  "events": [
+   {
+    "event_id": 18495,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "a 4-day Kizomba immersion"
+     }
+    ]
+   }
+  ]
+ }
 }

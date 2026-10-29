@@ -1,0 +1,13 @@
+{
+ "key_a": "p:isabelle@felicien+isabelle",
+ "key_b": "p:isabellecrepin",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "1f6f0d689edb5374",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as French and the first name matches, but side A is a bare 'ISABELLE' linked to partner felicien across Austria, Italy and the UK, while side B is 'ISABELLE CREPIN' with no partner, no style and only a Swiss event, so nothing else links them and a common first name is weak evidence."
+ }
+}

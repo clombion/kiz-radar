@@ -1,33 +1,40 @@
 {
- "batch": "event-16226",
- "events": [
-  {
-   "event_id": 16226,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "dancers in Urbankiz, Kizomba, Tarraxo and Konpa"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "dancers in Urbankiz, Kizomba, Tarraxo and Konpa"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "dancers in Urbankiz, Kizomba, Tarraxo and Konpa"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "dancers in Urbankiz, Kizomba, Tarraxo and Konpa"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "6aafcaa98a4aad4e",
+ "answer": {
+  "batch": "event-16226",
+  "events": [
+   {
+    "event_id": 16226,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "Urbankiz, Kizomba, Tarraxo and Konpa"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Urbankiz, Kizomba, Tarraxo and Konpa"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Urbankiz, Kizomba, Tarraxo and Konpa"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Urbankiz, Kizomba, Tarraxo and Konpa"
+     }
+    ]
+   }
+  ]
+ }
 }

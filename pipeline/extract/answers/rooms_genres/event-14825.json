@@ -1,28 +1,35 @@
 {
- "batch": "event-14825",
- "events": [
-  {
-   "event_id": 14825,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔 𝗟𝗜𝗡𝗘𝗨𝗣:"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "BACHATA",
-     "quote": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔 𝗟𝗜𝗡𝗘𝗨𝗣:"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "𝗨𝗥𝗕𝗔𝗡𝗞𝗜𝗭",
-     "quote": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔-𝗕𝗔𝗖𝗛𝗔𝗧𝗔-𝗨𝗥𝗕𝗔𝗡𝗞𝗜𝗭"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "431a103c836321eb",
+ "answer": {
+  "batch": "event-14825",
+  "events": [
+   {
+    "event_id": 14825,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "KIZOMBA TALLINN FESTIVAL 2026"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔",
+      "quote": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔 𝗟𝗜𝗡𝗘𝗨𝗣:"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "𝗨𝗥𝗕𝗔𝗡𝗞𝗜𝗭",
+      "quote": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔-𝗕𝗔𝗖𝗛𝗔𝗧𝗔-𝗨𝗥𝗕𝗔𝗡𝗞𝗜𝗭"
+     }
+    ]
+   }
+  ]
+ }
 }

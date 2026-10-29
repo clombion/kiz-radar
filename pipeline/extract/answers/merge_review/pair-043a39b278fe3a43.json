@@ -1,0 +1,13 @@
+{
+ "key_a": "p:elhadj",
+ "key_b": "p:elhadj@elhadj+jenny",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "043a39b278fe3a43",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are listed in France (FR) and the spellings differ only slightly, but their partners differ (jenna@elhadj+jenna vs jenny@elhadj+jenny), the events are in different places (France/Spain vs Poland), and no mention details are available to settle whether these are one person or two."
+ }
+}

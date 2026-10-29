@@ -1,24 +1,31 @@
 {
- "batch": "event-15898",
- "events": [
-  {
-   "event_id": 15898,
-   "artists": [
-    {
-     "name_as_written": "Elevate your Kiz",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Elevate your Kiz Dance Studio"
-    }
-   ],
-   "features": [
-    {
-     "feature": "partner_hotel",
-     "quote": "Bastion Hotel Rotterdam Alexander",
-     "rationale": "The description lists hotels near the venue under a 'Hotels nearby' heading, which points to recommended hotels that are not part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "acff1f3e0aebb061",
+ "answer": {
+  "batch": "event-15898",
+  "events": [
+   {
+    "event_id": 15898,
+    "artists": [
+     {
+      "name_as_written": "EYK",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "EYK Summer Weekender 2026"
+     }
+    ],
+    "features": [
+     {
+      "feature": "partner_hotel",
+      "quote": "Bastion Hotel Rotterdam Alexander",
+      "rationale": "The description lists hotels nearby, which are recommended venues for dancers, without stating that accommodation is part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

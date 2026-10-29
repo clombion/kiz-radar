@@ -1,0 +1,13 @@
+{
+ "key_a": "p:nico@nico+sara",
+ "key_b": "p:nicola@nicola+sara",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "77564f539feb0606",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides share the same partner (Sara, key nico+sara / nicola+sara), both appear only at events in Italy, and Nico is a short form of Nicola, so this is the same person under the shared-partner rule."
+ }
+}

@@ -1,63 +1,92 @@
 {
- "batch": "event-16044",
- "events": [
-  {
-   "event_id": 16044,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "🎟️ Prices, depending on your status:",
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 99.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€99/€119/€130"
-      },
-      {
-       "amount": 119.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "€99/€119/€130"
-      },
-      {
-       "amount": 130.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "(€130 for non-BDC members ^^)"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Prices, depending on your status:",
-    "Reservations required BEFORE 06/30/2026, subject to availability"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:43:12+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "bba13a031e3c7c8b",
+ "answer": {
+  "batch": "event-16044",
+  "events": [
+   {
+    "event_id": 16044,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "🎟️ Prices, depending on your status:",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 99.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "06-30",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "€99/€119/€130"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "🎟️ Prices, depending on your status:",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 119.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "06-30",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "€99/€119/€130"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "🎟️ Prices, depending on your status:",
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 130.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "06-30",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "(€130 for non-BDC members ^^)"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "AND PAYABLE IN 3 INSTALLMENTS!"
+    ]
+   }
+  ]
+ }
 }

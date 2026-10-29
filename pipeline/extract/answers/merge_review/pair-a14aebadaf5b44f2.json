@@ -1,0 +1,13 @@
+{
+ "key_a": "p:carolina@carolina+fernando",
+ "key_b": "p:carolinaazevedo",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "a14aebadaf5b44f2",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the first name 'Carolina', a common name, with no mentions listed; the shared PT country and France event are weak support, and its partner link (Fernando) is not tied to Azevedo, so the evidence does not settle whether they are one artist."
+ }
+}

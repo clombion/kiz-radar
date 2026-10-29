@@ -1,31 +1,38 @@
 {
- "batch": "event-15617",
- "events": [
-  {
-   "event_id": 15617,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 rooms for the parties during the night."
-   },
-   "class_rooms": {
-    "count": 2,
-    "quote": "2 exclusive rooms for workshops."
-   },
-   "rooms": [
-    {
-     "name_as_written": "Social Dance Room",
-     "kind": "unspecified",
-     "genres": [],
-     "quote": "A social room dance during the evening, from 12h to 20h."
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Annual 13th FEELING KIZOMBA Festival!!!"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "37eebf19ba370b5f",
+ "answer": {
+  "batch": "event-15617",
+  "events": [
+   {
+    "event_id": 15617,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 rooms for the parties during the night."
+    },
+    "class_rooms": {
+     "count": 2,
+     "quote": "2 exclusive rooms for workshops."
+    },
+    "rooms": [
+     {
+      "name_as_written": null,
+      "kind": "unspecified",
+      "genres": [],
+      "quote": "A social room dance during the evening, from 12h to 20h."
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "24h-06h Kizomba Party"
+     }
+    ]
+   }
+  ]
+ }
 }

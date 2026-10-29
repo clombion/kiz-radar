@@ -1,159 +1,174 @@
 {
- "batch": "event-15265",
- "events": [
-  {
-   "event_id": 15265,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 2375.0,
-       "currency": "CZK",
-       "fee": null,
-       "alt": {
-        "amount": 95.0,
-        "currency": "EUR"
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:41:38+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "487ffbbddbb834fe",
+ "answer": {
+  "batch": "event-15265",
+  "events": [
+   {
+    "event_id": 15265,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 2375.0,
+        "currency": "CZK",
+        "fee": null,
+        "alt": {
+         "amount": 95.0,
+         "currency": "EUR"
+        },
+        "sale": {
+         "from": "2025-10-05",
+         "until": "2025-10-25",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Single fullpass – 2375 CZK | 95 EUR"
        },
-       "from": "2025-10-05",
-       "until": "2025-10-25",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Single fullpass – 2375 CZK | 95 EUR"
-      },
-      {
-       "amount": 2750.0,
-       "currency": "CZK",
-       "fee": null,
-       "alt": {
-        "amount": 110.0,
-        "currency": "EUR"
+       {
+        "amount": 2750.0,
+        "currency": "CZK",
+        "fee": null,
+        "alt": {
+         "amount": 110.0,
+         "currency": "EUR"
+        },
+        "sale": {
+         "from": "2025-10-26",
+         "until": "2025-11-15",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Single fullpass – 2750 CZK | 110 EUR"
        },
-       "from": "2025-10-26",
-       "until": "2025-11-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Single fullpass – 2750 CZK | 110 EUR"
-      },
-      {
-       "amount": 3000.0,
-       "currency": "CZK",
-       "fee": null,
-       "alt": {
-        "amount": 120.0,
-        "currency": "EUR"
+       {
+        "amount": 3000.0,
+        "currency": "CZK",
+        "fee": null,
+        "alt": {
+         "amount": 120.0,
+         "currency": "EUR"
+        },
+        "sale": {
+         "from": "2025-11-16",
+         "until": "2025-12-15",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Single fullpass – 3000 CZK | 120 EUR"
        },
-       "from": "2025-11-16",
-       "until": "2025-12-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Single fullpass – 3000 CZK | 120 EUR"
-      },
-      {
-       "amount": 3250.0,
-       "currency": "CZK",
-       "fee": null,
-       "alt": {
-        "amount": 130.0,
-        "currency": "EUR"
+       {
+        "amount": 3250.0,
+        "currency": "CZK",
+        "fee": null,
+        "alt": {
+         "amount": 130.0,
+         "currency": "EUR"
+        },
+        "sale": {
+         "from": "2025-12-16",
+         "until": "2026-01-14",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Single fullpass – 3250 CZK | 130 EUR"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 4500.0,
+        "currency": "CZK",
+        "fee": null,
+        "alt": {
+         "amount": 180.0,
+         "currency": "EUR"
+        },
+        "sale": {
+         "from": "2025-10-05",
+         "until": "2025-10-25",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Couple fullpass – 4500 CZK | 180 EUR"
        },
-       "from": "2025-12-16",
-       "until": "2026-01-14",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Single fullpass – 3250 CZK | 130 EUR"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 4500.0,
-       "currency": "CZK",
-       "fee": null,
-       "alt": {
-        "amount": 180.0,
-        "currency": "EUR"
+       {
+        "amount": 5250.0,
+        "currency": "CZK",
+        "fee": null,
+        "alt": {
+         "amount": 210.0,
+         "currency": "EUR"
+        },
+        "sale": {
+         "from": "2025-10-26",
+         "until": "2025-11-15",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Couple fullpass – 5250 CZK | 210 EUR"
        },
-       "from": "2025-10-05",
-       "until": "2025-10-25",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Couple fullpass – 4500 CZK | 180 EUR"
-      },
-      {
-       "amount": 5250.0,
-       "currency": "CZK",
-       "fee": null,
-       "alt": {
-        "amount": 210.0,
-        "currency": "EUR"
+       {
+        "amount": 5750.0,
+        "currency": "CZK",
+        "fee": null,
+        "alt": {
+         "amount": 230.0,
+         "currency": "EUR"
+        },
+        "sale": {
+         "from": "2025-11-16",
+         "until": "2025-12-15",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Couple fullpass – 5750 CZK | 230 EUR"
        },
-       "from": "2025-10-26",
-       "until": "2025-11-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Couple fullpass – 5250 CZK | 210 EUR"
-      },
-      {
-       "amount": 5750.0,
-       "currency": "CZK",
-       "fee": null,
-       "alt": {
-        "amount": 230.0,
-        "currency": "EUR"
-       },
-       "from": "2025-11-16",
-       "until": "2025-12-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Couple fullpass – 5750 CZK | 230 EUR"
-      },
-      {
-       "amount": 6250.0,
-       "currency": "CZK",
-       "fee": null,
-       "alt": {
-        "amount": 250.0,
-        "currency": "EUR"
-       },
-       "from": "2025-12-16",
-       "until": "2026-01-14",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Couple fullpass – 6250 CZK | 250 EUR"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+       {
+        "amount": 6250.0,
+        "currency": "CZK",
+        "fee": null,
+        "alt": {
+         "amount": 250.0,
+         "currency": "EUR"
+        },
+        "sale": {
+         "from": "2025-12-16",
+         "until": "2026-01-14",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Couple fullpass – 6250 CZK | 250 EUR"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

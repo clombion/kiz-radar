@@ -1,0 +1,13 @@
+{
+ "key_a": "p:michaeldiamon",
+ "key_b": "p:michaeldiamond",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fb051d3b7174d3d2",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records list the Netherlands as country and Sweden as event country, and 'Diamon' looks like a truncated typo of the distinctive surname 'Diamond', though side A's mention list is empty and only the evidence line shows its Sweden events and Anika partner."
+ }
+}

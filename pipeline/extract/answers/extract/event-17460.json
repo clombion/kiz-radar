@@ -1,212 +1,224 @@
 {
- "batch": "event-17460",
- "events": [
-  {
-   "event_id": 17460,
-   "artists": [
-    {
-     "name_as_written": "𝐆𝐰𝐚𝐧𝐲 & 𝐋𝐢𝐥𝐢𝐚𝐧𝐚",
-     "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
-     "country": null,
-     "source_line": "🔸️𝐆𝐰𝐚𝐧𝐲 & 𝐋𝐢𝐥𝐢𝐚𝐧𝐚"
-    },
-    {
-     "name_as_written": "𝐊𝐢𝐳𝐳𝐲",
-     "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
-     "country": null,
-     "source_line": "🔸️𝐊𝐢𝐳𝐳𝐲"
-    },
-    {
-     "name_as_written": "𝐋𝐢𝐥𝐢𝐚𝐧𝐚",
-     "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
-     "country": null,
-     "source_line": "🔸️𝐋𝐢𝐥𝐢𝐚𝐧𝐚"
-    },
-    {
-     "name_as_written": "𝐉𝐚𝐜𝐤 & 𝐒𝐚𝐫𝐚",
-     "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
-     "country": null,
-     "source_line": "🔸️𝐉𝐚𝐜𝐤 & 𝐒𝐚𝐫𝐚"
-    },
-    {
-     "name_as_written": "𝐀𝐱𝐞𝐥 & 𝐋𝐮𝐜𝐲",
-     "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
-     "country": null,
-     "source_line": "🔸️𝐀𝐱𝐞𝐥 & 𝐋𝐮𝐜𝐲"
-    },
-    {
-     "name_as_written": "𝐂𝐚𝐫𝐥𝐨 & 𝐏𝐚𝐭𝐢",
-     "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
-     "country": null,
-     "source_line": "🔸️𝐂𝐚𝐫𝐥𝐨 & 𝐏𝐚𝐭𝐢"
-    },
-    {
-     "name_as_written": "𝐓’𝐏𝐞𝐚𝐤 & 𝐃𝐣é",
-     "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
-     "country": null,
-     "source_line": "🔸️𝐓’𝐏𝐞𝐚𝐤 & 𝐃𝐣é"
-    },
-    {
-     "name_as_written": "𝐀𝐧𝐭𝐡𝐨 & 𝐁é𝐧é",
-     "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
-     "country": null,
-     "source_line": "🔸️ 𝐀𝐧𝐭𝐡𝐨 & 𝐁é𝐧é"
-    },
-    {
-     "name_as_written": "𝐍𝐚𝐭𝐚𝐜𝐡𝐚 𝐂𝐥𝐚𝐮𝐝𝐞",
-     "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
-     "country": null,
-     "source_line": "🔸️𝐍𝐚𝐭𝐚𝐜𝐡𝐚 𝐂𝐥𝐚𝐮𝐝𝐞"
-    },
-    {
-     "name_as_written": "𝐊𝐫𝐢𝐬𝐭𝐞𝐥 𝐉𝐮",
-     "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
-     "country": null,
-     "source_line": "🔸️𝐊𝐫𝐢𝐬𝐭𝐞𝐥 𝐉𝐮"
-    },
-    {
-     "name_as_written": "𝐓𝐡𝐞𝐫𝐫𝐲",
-     "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
-     "country": null,
-     "source_line": "🔸️𝐓𝐡𝐞𝐫𝐫𝐲 (Winner of Battle GTF 2025 – Solo)"
-    },
-    {
-     "name_as_written": "𝐒𝐡𝐢𝐧𝐣𝐢 & 𝐓𝐢𝐜𝐡𝐚",
-     "role": "teacher",
-     "style": "𝗧𝗔𝗥𝗥𝗔𝗫𝗢",
-     "country": null,
-     "source_line": "🔸️𝐒𝐡𝐢𝐧𝐣𝐢 & 𝐓𝐢𝐜𝐡𝐚"
-    },
-    {
-     "name_as_written": "𝐃𝐣 𝐍𝐢𝐜𝐞𝐋𝐢𝐟𝐞",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️𝐃𝐣 𝐍𝐢𝐜𝐞𝐋𝐢𝐟𝐞 (𝗚𝗼𝗱𝗙𝗮𝘁𝗵𝗲𝗿)"
-    },
-    {
-     "name_as_written": "𝐃𝐣 𝐁𝐥𝐯𝐜𝐤𝐒𝐤𝐲𝐥𝐞",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️𝐃𝐣 𝐁𝐥𝐯𝐜𝐤𝐒𝐤𝐲𝐥𝐞"
-    },
-    {
-     "name_as_written": "𝐃𝐣 𝐕𝐚𝐥𝐞𝐭",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️𝐃𝐣 𝐕𝐚𝐥𝐞𝐭"
-    },
-    {
-     "name_as_written": "𝐃𝐣 𝐏𝐨𝐞𝐦𝐚 𝐁𝐞𝐚𝐭𝐳",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️𝐃𝐣 𝐏𝐨𝐞𝐦𝐚 𝐁𝐞𝐚𝐭𝐳"
-    },
-    {
-     "name_as_written": "𝐃𝐣 𝐅𝐨𝐟𝐨-𝐉𝐚𝐡",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️𝐃𝐣 𝐅𝐨𝐟𝐨-𝐉𝐚𝐡"
-    },
-    {
-     "name_as_written": "𝐃𝐣 𝐌𝐢𝐞𝐥",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️𝐃𝐣 𝐌𝐢𝐞𝐥 🍯"
-    },
-    {
-     "name_as_written": "𝐃𝐣 𝐉𝐚𝐜𝐤",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️𝐃𝐣 𝐉𝐚𝐜𝐤"
-    },
-    {
-     "name_as_written": "𝐃𝐣 𝐃&𝐋 𝐁𝐞𝐚𝐭𝐬",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️𝐃𝐣 𝐃&𝐋 𝐁𝐞𝐚𝐭𝐬"
-    },
-    {
-     "name_as_written": "𝐃𝐣 𝐒𝐚𝐟𝐢𝐫’𝐬 𝐁𝐞𝐚𝐭𝐬",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔸️𝐃𝐣 𝐒𝐚𝐟𝐢𝐫’𝐬 𝐁𝐞𝐚𝐭𝐬"
-    },
-    {
-     "name_as_written": "𝐒𝐭𝐞𝐯𝐞 𝐂𝐡𝐞𝐫𝐲𝐒𝐭𝐲𝐥𝐞",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📽 𝐒𝐭𝐞𝐯𝐞 𝐂𝐡𝐞𝐫𝐲𝐒𝐭𝐲𝐥𝐞"
-    },
-    {
-     "name_as_written": "𝐌𝐚𝐫𝐭𝐢𝐧",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📽 𝐌𝐚𝐫𝐭𝐢𝐧 𝐈’𝐦 𝐲𝐨𝐮𝐫 𝐌𝐞𝐝𝐢𝐚"
-    },
-    {
-     "name_as_written": "𝐈𝐧𝐬𝐞𝐧𝐬𝐚𝐭𝐢𝐨𝐧",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📸 𝐈𝐧𝐬𝐞𝐧𝐬𝐚𝐭𝐢𝐨𝐧"
-    },
-    {
-     "name_as_written": "𝐉𝐀𝐄 𝐌𝐞𝐝𝐢𝐚 𝐓𝐞𝐚𝐦",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "📱𝐉𝐀𝐄 𝐌𝐞𝐝𝐢𝐚 𝐓𝐞𝐚𝐦"
-    }
-   ],
-   "features": [
-    {
-     "feature": "pre_party",
-     "quote": "CRAZY PRE-PARTY",
-     "rationale": "The description lists a crazy pre-party as part of the event program."
-    },
-    {
-     "feature": "workshops",
-     "quote": "4 DAYS OF WORKSHOPS",
-     "rationale": "The description states that four days of workshops are part of the event."
-    },
-    {
-     "feature": "competition",
-     "quote": "TARRAXO BATTLE COMPETITION",
-     "rationale": "The description lists a Tarraxo battle competition as part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Room 1 – 𝗧𝗮𝗿𝗿𝗮𝘅𝗼 | 𝗨𝗿𝗯𝗮𝗻𝗞𝗶𝘇",
-     "rationale": "The rooms section lists several dance rooms, Room 1 and Room 2, with different styles."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "𝗠𝗔𝗜𝗡 𝗛𝗢𝗧𝗘𝗟",
-     "rationale": "The description recommends a main hotel and nearby hotels with booking links, without including accommodation in the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:32:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "72d01cb03a9b79be",
+ "answer": {
+  "batch": "event-17460",
+  "events": [
+   {
+    "event_id": 17460,
+    "artists": [
+     {
+      "name_as_written": "𝐆𝐰𝐚𝐧𝐲 & 𝐋𝐢𝐥𝐢𝐚𝐧𝐚",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐆𝐰𝐚𝐧𝐲 & 𝐋𝐢𝐥𝐢𝐚𝐧𝐚"
+     },
+     {
+      "name_as_written": "𝐊𝐢𝐳𝐳𝐲",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐊𝐢𝐳𝐳𝐲"
+     },
+     {
+      "name_as_written": "𝐋𝐢𝐥𝐢𝐚𝐧𝐚",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐋𝐢𝐥𝐢𝐚𝐧𝐚"
+     },
+     {
+      "name_as_written": "𝐉𝐚𝐜𝐤 & 𝐒𝐚𝐫𝐚",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐉𝐚𝐜𝐤 & 𝐒𝐚𝐫𝐚"
+     },
+     {
+      "name_as_written": "𝐀𝐱𝐞𝐥 & 𝐋𝐮𝐜𝐲",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐀𝐱𝐞𝐥 & 𝐋𝐮𝐜𝐲"
+     },
+     {
+      "name_as_written": "𝐂𝐚𝐫𝐥𝐨 & 𝐏𝐚𝐭𝐢",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐂𝐚𝐫𝐥𝐨 & 𝐏𝐚𝐭𝐢"
+     },
+     {
+      "name_as_written": "𝐓’𝐏𝐞𝐚𝐤 & 𝐃𝐣é",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐓’𝐏𝐞𝐚𝐤 & 𝐃𝐣é"
+     },
+     {
+      "name_as_written": "𝐀𝐧𝐭𝐡𝐨 & 𝐁é𝐧é",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️ 𝐀𝐧𝐭𝐡𝐨 & 𝐁é𝐧é"
+     },
+     {
+      "name_as_written": "𝐍𝐚𝐭𝐚𝐜𝐡𝐚 𝐂𝐥𝐚𝐮𝐝𝐞",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐍𝐚𝐭𝐚𝐜𝐡𝐚 𝐂𝐥𝐚𝐮𝐝𝐞"
+     },
+     {
+      "name_as_written": "𝐊𝐫𝐢𝐬𝐭𝐞𝐥 𝐉𝐮",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐊𝐫𝐢𝐬𝐭𝐞𝐥 𝐉𝐮"
+     },
+     {
+      "name_as_written": "𝐓𝐡𝐞𝐫𝐫𝐲",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐓𝐡𝐞𝐫𝐫𝐲 (Winner of Battle GTF 2025 – Solo)"
+     },
+     {
+      "name_as_written": "𝐒𝐡𝐢𝐧𝐣𝐢 & 𝐓𝐢𝐜𝐡𝐚",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐒𝐡𝐢𝐧𝐣𝐢 & 𝐓𝐢𝐜𝐡𝐚"
+     },
+     {
+      "name_as_written": "𝐃𝐣 𝐍𝐢𝐜𝐞𝐋𝐢𝐟𝐞",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐃𝐣 𝐍𝐢𝐜𝐞𝐋𝐢𝐟𝐞 (𝗚𝗼𝗱𝗙𝗮𝘁𝗵𝗲𝗿)"
+     },
+     {
+      "name_as_written": "𝐃𝐣 𝐁𝐥𝐯𝐜𝐤𝐒𝐤𝐲𝐥𝐞",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐃𝐣 𝐁𝐥𝐯𝐜𝐤𝐒𝐤𝐲𝐥𝐞"
+     },
+     {
+      "name_as_written": "𝐃𝐣 𝐕𝐚𝐥𝐞𝐭",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐃𝐣 𝐕𝐚𝐥𝐞𝐭"
+     },
+     {
+      "name_as_written": "𝐃𝐣 𝐏𝐨𝐞𝐦𝐚 𝐁𝐞𝐚𝐭𝐳",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐃𝐣 𝐏𝐨𝐞𝐦𝐚 𝐁𝐞𝐚𝐭𝐳"
+     },
+     {
+      "name_as_written": "𝐃𝐣 𝐅𝐨𝐟𝐨-𝐉𝐚𝐡",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐃𝐣 𝐅𝐨𝐟𝐨-𝐉𝐚𝐡"
+     },
+     {
+      "name_as_written": "𝐃𝐣 𝐌𝐢𝐞𝐥",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐃𝐣 𝐌𝐢𝐞𝐥 🍯"
+     },
+     {
+      "name_as_written": "𝐃𝐣 𝐉𝐚𝐜𝐤",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐃𝐣 𝐉𝐚𝐜𝐤"
+     },
+     {
+      "name_as_written": "𝐃𝐣 𝐃&𝐋 𝐁𝐞𝐚𝐭𝐬",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐃𝐣 𝐃&𝐋 𝐁𝐞𝐚𝐭𝐬"
+     },
+     {
+      "name_as_written": "𝐃𝐣 𝐒𝐚𝐟𝐢𝐫’𝐬 𝐁𝐞𝐚𝐭𝐬",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔸️𝐃𝐣 𝐒𝐚𝐟𝐢𝐫’𝐬 𝐁𝐞𝐚𝐭𝐬"
+     },
+     {
+      "name_as_written": "𝐒𝐭𝐞𝐯𝐞 𝐂𝐡𝐞𝐫𝐲𝐒𝐭𝐲𝐥𝐞",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📽 𝐒𝐭𝐞𝐯𝐞 𝐂𝐡𝐞𝐫𝐲𝐒𝐭𝐲𝐥𝐞"
+     },
+     {
+      "name_as_written": "𝐌𝐚𝐫𝐭𝐢𝐧 𝐈’𝐦 𝐲𝐨𝐮𝐫 𝐌𝐞𝐝𝐢𝐚",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📽 𝐌𝐚𝐫𝐭𝐢𝐧 𝐈’𝐦 𝐲𝐨𝐮𝐫 𝐌𝐞𝐝𝐢𝐚"
+     },
+     {
+      "name_as_written": "𝐈𝐧𝐬𝐞𝐧𝐬𝐚𝐭𝐢𝐨𝐧",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📸 𝐈𝐧𝐬𝐞𝐧𝐬𝐚𝐭𝐢𝐨𝐧"
+     },
+     {
+      "name_as_written": "𝐉𝐀𝐄 𝐌𝐞𝐝𝐢𝐚 𝐓𝐞𝐚𝐦",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "📱𝐉𝐀𝐄 𝐌𝐞𝐝𝐢𝐚 𝐓𝐞𝐚𝐦"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "4 DAYS OF WORKSHOPS",
+      "rationale": "The line lists four days of workshops as part of the event."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "CRAZY PRE-PARTY",
+      "rationale": "A pre-party is listed as part of the programme."
+     },
+     {
+      "feature": "competition",
+      "quote": "TARRAXO BATTLE COMPETITION",
+      "rationale": "A battle competition is part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Room 2",
+      "rationale": "The event lists more than one dance room, Room 1 and Room 2."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "Book your 𝐀𝐥𝐥-𝐢𝐧-𝟏 incl. breakfast!",
+      "rationale": "The event venue and the main hotel are the same Ibis Rungis address, so dancers can book a room in the venue hotel."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Book your room",
+      "rationale": "A hotel is recommended for booking with a link, without accommodation being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

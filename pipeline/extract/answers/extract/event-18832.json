@@ -1,34 +1,33 @@
 {
- "batch": "event-18832",
- "events": [
-  {
-   "event_id": 18832,
-   "artists": [
-    {
-     "name_as_written": "Jacek",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Jacek"
-    }
-   ],
-   "features": [
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 dance rooms",
-     "rationale": "The description states there are 2 dance rooms."
-    },
-    {
-     "feature": "workshops",
-     "quote": "workshops, parties, and plenty of dancing",
-     "rationale": "Workshops are listed as part of the event."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "all in one place, at a single hotel in Elbląg",
-     "rationale": "The event is described as taking place at a single hotel, so the parties and the accommodation share one venue."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:33:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "88941f30fea9b927",
+ "answer": {
+  "batch": "event-18832",
+  "events": [
+   {
+    "event_id": 18832,
+    "artists": [],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 dance rooms",
+      "rationale": "The description states there are 2 dance rooms, so more than one dance floor is available."
+     },
+     {
+      "feature": "workshops",
+      "quote": "workshops, parties, and plenty of dancing",
+      "rationale": "Workshops are listed as part of the event programme."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "all in one place, at a single hotel in Elbląg",
+      "rationale": "The event is held at a single hotel, so the event and the hotel share one venue."
+     }
+    ]
+   }
+  ]
+ }
 }

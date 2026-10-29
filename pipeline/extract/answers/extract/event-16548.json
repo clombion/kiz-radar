@@ -1,78 +1,85 @@
 {
- "batch": "event-16548",
- "events": [
-  {
-   "event_id": 16548,
-   "artists": [
-    {
-     "name_as_written": "Emily",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💃Emily – Montreal, CA"
-    },
-    {
-     "name_as_written": "Samy",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💃Samy – Montréal, CA"
-    },
-    {
-     "name_as_written": "Pamelita",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💃Pamelita – Dallas, USA"
-    },
-    {
-     "name_as_written": "DJ Bash",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Bash"
-    },
-    {
-     "name_as_written": "DJ Gaz",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Gaz"
-    },
-    {
-     "name_as_written": "DJ Sink",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Sink"
-    },
-    {
-     "name_as_written": "DJ JC Stripes",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ JC Stripes"
-    },
-    {
-     "name_as_written": "Zambia House",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "✅ DJ Sink X Zambia House present: Tarraxinha vs Tarraxo Weekender"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "13:00 – 16:00 Workshops",
-     "rationale": "The Saturday schedule lists a daytime workshop block, so dance workshops are part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "5:00PM – 7:00PM Social",
-     "rationale": "The Sunday schedule lists an afternoon social, which is a daytime social."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:29:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "94a4c5e2688766ee",
+ "answer": {
+  "batch": "event-16548",
+  "events": [
+   {
+    "event_id": 16548,
+    "artists": [
+     {
+      "name_as_written": "Emily",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💃Emily – Montreal, CA"
+     },
+     {
+      "name_as_written": "Samy",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💃Samy – Montréal, CA"
+     },
+     {
+      "name_as_written": "Pamelita",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💃Pamelita – Dallas, USA"
+     },
+     {
+      "name_as_written": "DJ Bash",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Bash"
+     },
+     {
+      "name_as_written": "DJ Gaz",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Gaz"
+     },
+     {
+      "name_as_written": "DJ Sink",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Sink"
+     },
+     {
+      "name_as_written": "DJ JC Stripes",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ JC Stripes"
+     },
+     {
+      "name_as_written": "Zambia House",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "✅ DJ Sink X Zambia House present: Tarraxinha vs Tarraxo Weekender"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "13:00 – 16:00 Workshops",
+      "rationale": "The schedule lists workshops on Saturday as part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "5:00PM – 7:00PM Social",
+      "rationale": "A social is scheduled in the late afternoon on Sunday."
+     }
+    ]
+   }
+  ]
+ }
 }

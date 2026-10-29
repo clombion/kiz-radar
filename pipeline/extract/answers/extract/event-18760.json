@@ -1,100 +1,114 @@
 {
- "batch": "event-18760",
- "events": [
-  {
-   "event_id": 18760,
-   "artists": [
-    {
-     "name_as_written": "Jesus & Anni",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☁️ Jesus & Anni"
-    },
-    {
-     "name_as_written": "Dwé & Gaby",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☁️ Dwé & Gaby"
-    },
-    {
-     "name_as_written": "June & Virgile",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☁️ June & Virgile"
-    },
-    {
-     "name_as_written": "Stefan & Chloé",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "☁️ Stefan & Chloé"
-    },
-    {
-     "name_as_written": "Morelasoul",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "☁️ Morelasoul"
-    },
-    {
-     "name_as_written": "Dwé Dyson",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "☁️ Dwé Dyson"
-    },
-    {
-     "name_as_written": "Jessie Santos",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "☁️Jessie Santos"
-    },
-    {
-     "name_as_written": "RomOZ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "☁️ RomOZ"
-    },
-    {
-     "name_as_written": "I.am.REGGIE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "☁️ I.am.REGGIE"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "With workshops, collabs and training moments by:",
-     "rationale": "The description states that workshops are part of the event."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Intensive #2 | Dwé & Gaby",
-     "rationale": "The schedule lists intensive training sessions."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre-Party @ Rico Latino",
-     "rationale": "A pre-party is scheduled on Thursday before the main event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "16:00–20:00 Social",
-     "rationale": "A daytime social is listed on Saturday afternoon."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Official Accommodation Partner: Little Monkey",
-     "rationale": "The event names an official partner hotel for accommodation, which is not part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:33:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0fbe4c2abc2db2d8",
+ "answer": {
+  "batch": "event-18760",
+  "events": [
+   {
+    "event_id": 18760,
+    "artists": [
+     {
+      "name_as_written": "Jesus & Anni",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☁️ Jesus & Anni"
+     },
+     {
+      "name_as_written": "Dwé & Gaby",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☁️ Dwé & Gaby"
+     },
+     {
+      "name_as_written": "June & Virgile",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☁️ June & Virgile"
+     },
+     {
+      "name_as_written": "Stefan & Chloé",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "☁️ Stefan & Chloé"
+     },
+     {
+      "name_as_written": "Morelasoul",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "☁️ Morelasoul"
+     },
+     {
+      "name_as_written": "Dwé Dyson",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "☁️ Dwé Dyson"
+     },
+     {
+      "name_as_written": "Jessie Santos",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "☁️Jessie Santos"
+     },
+     {
+      "name_as_written": "RomOZ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "☁️ RomOZ"
+     },
+     {
+      "name_as_written": "I.am.REGGIE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "☁️ I.am.REGGIE"
+     },
+     {
+      "name_as_written": "Stefan & Chloé",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Stefan & Chloé"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "With workshops, collabs and training moments by:",
+      "rationale": "The description says the weekend includes workshops, collabs and training moments."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre-Party @ Rico Latino",
+      "rationale": "A Thursday pre-party at Rico Latino is listed in the schedule."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "Intensive #1",
+      "rationale": "Intensives are offered as intensive training sessions across the weekend."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Non-Stop Social",
+      "rationale": "The Sunday afternoon and evening social is a daytime social."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Official Accommodation Partner: Little Monkey",
+      "rationale": "Little Monkey is named as the official partner hotel, with a discount code, but accommodation is not part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

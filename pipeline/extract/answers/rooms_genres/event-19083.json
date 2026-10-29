@@ -1,31 +1,38 @@
 {
- "batch": "event-19083",
- "events": [
-  {
-   "event_id": 19083,
-   "party_rooms": {
-    "count": 4,
-    "quote": "4 dance floors every night: Cuban Salsa, Crossbody Salsa,Bachata and Kizomba"
-   },
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Cuban Salsa",
-     "quote": "4 dance floors every night: Cuban Salsa, Crossbody Salsa,Bachata and Kizomba"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "896277b1bec186d0",
+ "answer": {
+  "batch": "event-19083",
+  "events": [
+   {
+    "event_id": 19083,
+    "party_rooms": {
+     "count": 4,
+     "quote": "4 dance floors every night"
     },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Crossbody Salsa,Bachata and Kizomba"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Crossbody Salsa,Bachata and Kizomba"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Cuban Salsa"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba"
+     }
+    ]
+   }
+  ]
+ }
 }

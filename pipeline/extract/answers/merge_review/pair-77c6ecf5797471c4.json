@@ -1,0 +1,13 @@
+{
+ "key_a": "p:isabelle@gazl+isabelle",
+ "key_b": "p:isabellemichalonakacolibri",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "77c6ecf5797471c4",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is just the common first name 'Isabelle' (France, events in Sweden, partner gazl) and side B is the full name 'Isabelle Michalon Aka Colibri' (France and Martinique, a UK event); they share only the country France and no partner or event, so the evidence does not settle whether they are the same person."
+ }
+}

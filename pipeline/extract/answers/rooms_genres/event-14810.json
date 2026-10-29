@@ -1,12 +1,19 @@
 {
- "batch": "event-14810",
- "events": [
-  {
-   "event_id": 14810,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": []
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "01b4c09bf3e337ff",
+ "answer": {
+  "batch": "event-14810",
+  "events": [
+   {
+    "event_id": 14810,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": []
+   }
+  ]
+ }
 }

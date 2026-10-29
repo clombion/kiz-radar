@@ -1,83 +1,90 @@
 {
- "batch": "event-17407",
- "events": [
-  {
-   "event_id": 17407,
-   "artists": [
-    {
-     "name_as_written": "NAS",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "➖NAS"
-    },
-    {
-     "name_as_written": "EMILIE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "➖EMILIE"
-    },
-    {
-     "name_as_written": "RK & ISA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "➖RK & ISA"
-    },
-    {
-     "name_as_written": "DJ MOYAZ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "♻️ PARTY 🔲🔳▪️💠DJ MOYAZ"
-    },
-    {
-     "name_as_written": "DJ MAY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔲🔳▪️💠DJ MAY"
-    },
-    {
-     "name_as_written": "DJ JUSTIFY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔲🔳◾️💠DJ JUSTIFY"
-    },
-    {
-     "name_as_written": "DJ MAD’X",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔲🔳◾️💠DJ MAD’X"
-    },
-    {
-     "name_as_written": "DJ NIN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔲🔳◾️💠DJ NIN"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Taraxxo Workshop",
-     "rationale": "The description lists a Taraxxo workshop as part of the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 ROOMS",
-     "rationale": "The event has two dance rooms, a Kizomba room and a Zouk Konpa room."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Taxi dancers will be on hand to get you dancing, ladies.",
-     "rationale": "The description states that taxi dancers are present at the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:31:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "a7eb855d8b2dae03",
+ "answer": {
+  "batch": "event-17407",
+  "events": [
+   {
+    "event_id": 17407,
+    "artists": [
+     {
+      "name_as_written": "NAS",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "➖NAS"
+     },
+     {
+      "name_as_written": "EMILIE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "➖EMILIE"
+     },
+     {
+      "name_as_written": "RK & ISA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "➖RK & ISA"
+     },
+     {
+      "name_as_written": "DJ MOYAZ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔲🔳▪️💠DJ MOYAZ"
+     },
+     {
+      "name_as_written": "DJ MAY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔲🔳▪️💠DJ MAY"
+     },
+     {
+      "name_as_written": "DJ JUSTIFY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔲🔳◾️💠DJ JUSTIFY"
+     },
+     {
+      "name_as_written": "DJ MAD’X",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔲🔳◾️💠DJ MAD’X"
+     },
+     {
+      "name_as_written": "DJ NIN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔲🔳◾️💠DJ NIN"
+     }
+    ],
+    "features": [
+     {
+      "feature": "taxi_dancers",
+      "quote": "Taxi dancers will be on hand to get you dancing, ladies.",
+      "rationale": "The description states that taxi dancers are present at the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 ROOMS",
+      "rationale": "The event has two dance rooms, a Kizomba room and a Zouk Konpa room."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Taraxxo Workshop",
+      "rationale": "A workshop is listed as part of the event programme."
+     }
+    ]
+   }
+  ]
+ }
 }

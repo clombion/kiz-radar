@@ -1,44 +1,43 @@
 {
- "batch": "event-17011",
- "events": [
-  {
-   "event_id": 17011,
-   "artists": [
-    {
-     "name_as_written": "Germany Dance Festival",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🎉 *INTERNATIONAL GALA DANCE BOAT “REGINA DANUBIA meets DDF”* 🎉 Germany Dance Festival"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "intensive workshops",
-     "rationale": "The description says the weekend combines intensive workshops with parties and a boat trip."
-    },
-    {
-     "feature": "cruise",
-     "quote": "Danube Dance Cruise 2026",
-     "rationale": "The event is a dance cruise on the Danube riverboat Regina Danubia."
-    },
-    {
-     "feature": "boat_party",
-     "quote": "you dance on a real Danube riverboat",
-     "rationale": "Dancing takes place on a riverboat during the Danube dance boat trip."
-    },
-    {
-     "feature": "after_party",
-     "quote": "Afterparty",
-     "rationale": "An afterparty is listed for the Saturday schedule after the boat trip, back at the Redoute Theater."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "HOTELS IN PASSAU (within walking distance)",
-     "rationale": "The description recommends hotels in Passau without stating that accommodation is part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:31:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "044ea3296ca575d9",
+ "answer": {
+  "batch": "event-17011",
+  "events": [
+   {
+    "event_id": 17011,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "5 Workshops",
+      "rationale": "The Saturday schedule lists five workshops, so dance classes are part of the event."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "intensive workshops",
+      "rationale": "The description says the weekend combines festival energy and intensive workshops."
+     },
+     {
+      "feature": "cruise",
+      "quote": "A 4-hour dance cruise on the Danube",
+      "rationale": "The event includes a four-hour dance cruise on the Danube riverboat."
+     },
+     {
+      "feature": "after_party",
+      "quote": "Afterparty",
+      "rationale": "An Afterparty is scheduled from 9:30 PM to 12:00 AM back at the Redoute Theater."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "HOTELS IN PASSAU (within walking distance)",
+      "rationale": "The description recommends a list of hotels in Passau near the venue, without including accommodation in the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

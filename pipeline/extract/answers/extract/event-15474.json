@@ -1,151 +1,158 @@
 {
- "batch": "event-15474",
- "events": [
-  {
-   "event_id": 15474,
-   "artists": [
-    {
-     "name_as_written": "Leny",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇬🇧",
-     "source_line": "Leny 🇦🇴🇬🇧"
-    },
-    {
-     "name_as_written": "Rui",
-     "role": "teacher",
-     "style": null,
-     "country": "🇸🇹🇵🇹",
-     "source_line": "Rui 🇸🇹🇵🇹"
-    },
-    {
-     "name_as_written": "DJ Igor",
-     "role": "dj",
-     "style": null,
-     "country": "🇭🇷",
-     "source_line": "DJ Igor 🇭🇷"
-    },
-    {
-     "name_as_written": "DJ Caliph",
-     "role": "dj",
-     "style": null,
-     "country": "🇬🇭",
-     "source_line": "DJ Caliph 🇬🇭"
-    },
-    {
-     "name_as_written": "DJ Hope’s",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "DJ Hope’s 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Kuki",
-     "role": "dj",
-     "style": null,
-     "country": "🇸🇮",
-     "source_line": "DJ Kuki 🇸🇮"
-    },
-    {
-     "name_as_written": "Michel",
-     "role": "performer",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "Michel 🇫🇷"
-    },
-    {
-     "name_as_written": "Joel",
-     "role": "performer",
-     "style": null,
-     "country": "🇨🇮",
-     "source_line": "Joel 🇨🇮"
-    },
-    {
-     "name_as_written": "Luke",
-     "role": "performer",
-     "style": null,
-     "country": "🇬🇧",
-     "source_line": "Luke 🇬🇧"
-    },
-    {
-     "name_as_written": "Ivan",
-     "role": "performer",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "Ivan 🇪🇸"
-    },
-    {
-     "name_as_written": "Charles",
-     "role": "performer",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "Charles 🇫🇷"
-    },
-    {
-     "name_as_written": "Boucif",
-     "role": "performer",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "Boucif 🇫🇷"
-    },
-    {
-     "name_as_written": "Ruben",
-     "role": "performer",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "Ruben 🇫🇷"
-    },
-    {
-     "name_as_written": "Lin",
-     "role": "performer",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "Lin 🇫🇷"
-    },
-    {
-     "name_as_written": "Garcia",
-     "role": "performer",
-     "style": null,
-     "country": "🇧🇪",
-     "source_line": "Garcia 🇧🇪"
-    },
-    {
-     "name_as_written": "Anthony",
-     "role": "performer",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "Anthony 🇫🇷"
-    },
-    {
-     "name_as_written": "Joe",
-     "role": "performer",
-     "style": null,
-     "country": "🇬🇧",
-     "source_line": "Joe 🇬🇧"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "14.30 – 15.30 kizomba by Leny",
-     "rationale": "The program lists timed kizomba and semba workshop classes taught by Leny and Rui."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "P A R T Y on 2 floors",
-     "rationale": "The parties run on two separate floors, meaning more than one dance floor."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "18.00 – 19.15 Social",
-     "rationale": "A timed social slot is listed in the afternoon-evening workshop programme on Saturday."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Rooms Madison https://www.zagrebrooms.com/",
-     "rationale": "Recommended rooms near the venue are listed as accommodation options, not as part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "2b9077648bddcb0c",
+ "answer": {
+  "batch": "event-15474",
+  "events": [
+   {
+    "event_id": 15474,
+    "artists": [
+     {
+      "name_as_written": "Leny",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇬🇧",
+      "source_line": "Leny 🇦🇴🇬🇧"
+     },
+     {
+      "name_as_written": "Rui",
+      "role": "teacher",
+      "style": null,
+      "country": "🇸🇹🇵🇹",
+      "source_line": "Rui 🇸🇹🇵🇹"
+     },
+     {
+      "name_as_written": "DJ Igor",
+      "role": "dj",
+      "style": null,
+      "country": "🇭🇷",
+      "source_line": "DJ Igor 🇭🇷"
+     },
+     {
+      "name_as_written": "DJ Caliph",
+      "role": "dj",
+      "style": null,
+      "country": "🇬🇭",
+      "source_line": "DJ Caliph 🇬🇭"
+     },
+     {
+      "name_as_written": "DJ Hope’s",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "DJ Hope’s 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Kuki",
+      "role": "dj",
+      "style": null,
+      "country": "🇸🇮",
+      "source_line": "DJ Kuki 🇸🇮"
+     },
+     {
+      "name_as_written": "Michel",
+      "role": "performer",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "Michel 🇫🇷"
+     },
+     {
+      "name_as_written": "Joel",
+      "role": "performer",
+      "style": null,
+      "country": "🇨🇮",
+      "source_line": "Joel 🇨🇮"
+     },
+     {
+      "name_as_written": "Luke",
+      "role": "performer",
+      "style": null,
+      "country": "🇬🇧",
+      "source_line": "Luke 🇬🇧"
+     },
+     {
+      "name_as_written": "Ivan",
+      "role": "performer",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "Ivan 🇪🇸"
+     },
+     {
+      "name_as_written": "Charles",
+      "role": "performer",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "Charles 🇫🇷"
+     },
+     {
+      "name_as_written": "Boucif",
+      "role": "performer",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "Boucif 🇫🇷"
+     },
+     {
+      "name_as_written": "Ruben",
+      "role": "performer",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "Ruben 🇫🇷"
+     },
+     {
+      "name_as_written": "Lin",
+      "role": "performer",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "Lin 🇫🇷"
+     },
+     {
+      "name_as_written": "Garcia",
+      "role": "performer",
+      "style": null,
+      "country": "🇧🇪",
+      "source_line": "Garcia 🇧🇪"
+     },
+     {
+      "name_as_written": "Anthony",
+      "role": "performer",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "Anthony 🇫🇷"
+     },
+     {
+      "name_as_written": "Joe",
+      "role": "performer",
+      "style": null,
+      "country": "🇬🇧",
+      "source_line": "Joe 🇬🇧"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "workshops:",
+      "rationale": "The program lists workshops taught by Leny and Rui on March 14."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "P A R T Y on 2 floors",
+      "rationale": "The party takes place on two floors, meaning two dance floors."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "18.00 – 19.15 Social",
+      "rationale": "A social is scheduled in the early evening during the program."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Rooms Madison https://www.zagrebrooms.com/",
+      "rationale": "The description recommends accommodation options near the venue, separate from the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

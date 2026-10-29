@@ -1,0 +1,13 @@
+{
+ "key_a": "p:safirbeats",
+ "key_b": "p:safirsbeats",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8d6e2d92eafdb1b4",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are the same distinctive stage name, Safir Beats, with the DJ prefix and apostrophe variant on side B, and both appear as DJs at French events; side B's stated country France and Kizomba style are consistent with side A's French events, so this is one artist."
+ }
+}

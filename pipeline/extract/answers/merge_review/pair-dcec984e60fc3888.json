@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fola@fola+jaqui",
+ "key_b": "p:folan@folan+jaqui",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "dcec984e60fc3888",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both records share the same partner Jaqui, and the names are a short and long form (Fola / Folan), with Fola stated in Germany and Folan's events in Germany, which supports one artist, though the mention lists are empty and the evidence is only moderate."
+ }
+}

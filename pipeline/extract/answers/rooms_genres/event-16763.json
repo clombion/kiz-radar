@@ -1,23 +1,30 @@
 {
- "batch": "event-16763",
- "events": [
-  {
-   "event_id": 16763,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "the dance styles of Semba and Kizomba"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba at the park"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b6dcaafcb07e3446",
+ "answer": {
+  "batch": "event-16763",
+  "events": [
+   {
+    "event_id": 16763,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "dance styles of Semba and Kizomba"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba at the park"
+     }
+    ]
+   }
+  ]
+ }
 }

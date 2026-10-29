@@ -2,13 +2,15 @@
  "event_id": 18362,
  "title": "Pure Kizzz Festival 2026",
  "start_date": "2026-12-04",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:16:55+00:00",
+ "end_date": "2026-12-06",
+ "country": "Germany",
  "styles": [
   "kizomba"
  ],
  "description": "Pure Kizzz Festival 2026 returns to Dortmund for another edition of pure kizomba passion. Set in the welcoming space of Tanzschule Suhrmann, this festival brings together kizomba and urban kiz enthusiasts for an immersive long weekend of workshops, socials, and unforgettable night parties. With a carefully curated lineup of international artists and DJs, Pure Kizzz is known for its intimate, high-energy atmosphere. Whether you come to learn, dance, or simply enjoy the music and community, this festival delivers an authentic kizomba experience in the heart of Germany.",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:10:36+00:00",
  "passes": [
   {
    "kind": "full",

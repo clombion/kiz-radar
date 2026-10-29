@@ -1,12 +1,21 @@
 {
- "batch": "event-18643",
- "events": [
-  {
-   "event_id": 18643,
-   "passes": [],
-   "rule_quotes": [
-    "Passes will cost more at the door."
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:45:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "355dbee965f04289",
+ "answer": {
+  "batch": "event-18643",
+  "events": [
+   {
+    "event_id": 18643,
+    "passes": [],
+    "rule_quotes": [
+     "Door-sale passes, when available, may differ in price from online passes.",
+     "Online prices are not applicable at the door.",
+     "Passes will cost more at the door."
+    ]
+   }
+  ]
+ }
 }

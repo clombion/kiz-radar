@@ -1,58 +1,65 @@
 {
- "batch": "event-15479",
- "events": [
-  {
-   "event_id": 15479,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "KIZOMBA & URBANKIZ DJS"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "UrbanKiz",
-     "quote": "UrbanKiz"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "We Love Semba"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrobeats",
-     "quote": "Afrobeats"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "Tarraxinha"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "Douceur"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Tarraxo"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "Kompa"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Ghetto Zouk",
-     "quote": "Ghetto Zouk"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "6eadfdee16ca522a",
+ "answer": {
+  "batch": "event-15479",
+  "events": [
+   {
+    "event_id": 15479,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "KIZOMBA & URBANKIZ DJS"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "UrbanKiz",
+      "quote": "🎶UrbanKiz🎶Kizomba"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "We Love Semba"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrobeats",
+      "quote": "Afrobeats"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Tarraxinha"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "Douceur"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxa",
+      "quote": "Tarraxa🎶Tarraxo"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "Kompa"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Ghetto Zouk",
+      "quote": "Ghetto Zouk"
+     }
+    ]
+   }
+  ]
+ }
 }

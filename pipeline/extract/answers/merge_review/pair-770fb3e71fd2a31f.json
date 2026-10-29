@@ -1,0 +1,13 @@
+{
+ "key_a": "p:daniel@daniel+elina",
+ "key_b": "p:daniela@daniela+maik",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "770fb3e71fd2a31f",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Daniel and Daniela are different names one letter apart, and their partners differ (elina versus maik), with no shared partner, country profile, or event linking them beyond both appearing in Germany, so the evidence shows two artists."
+ }
+}

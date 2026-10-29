@@ -1,18 +1,25 @@
 {
- "batch": "event-16753",
- "events": [
-  {
-   "event_id": 16753,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "to the rhythm of Kizomba"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "8c3464588376de6c",
+ "answer": {
+  "batch": "event-16753",
+  "events": [
+   {
+    "event_id": 16753,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "13th KIZOMBA FESTIVAL SABOR A CABO VERDE"
+     }
+    ]
+   }
+  ]
+ }
 }

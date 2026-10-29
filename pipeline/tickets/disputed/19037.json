@@ -1,0 +1,576 @@
+{
+ "rows_at": "2026-10-29T16:13:20+00:00",
+ "prompt": "b1d060bbebb24369",
+ "reads": {
+  "claude-opus-5-5": {
+   "event_id": 19037,
+   "title": "NEW YEAR ESCAPE 2027 ALL IN ONE TOULOUSE",
+   "start_date": "2026-12-31",
+   "end_date": "2027-01-03",
+   "country": "France",
+   "styles": [
+    "kizomba",
+    "other",
+    "zouk"
+   ],
+   "description": "The place where enthusiasts gather to write the first chapter of the new year. Some parties define a single evening; others create memories that stay with you for a lifetime.\nFrom December 31, 2026, to January 3, 2027, New Year Escape invites you to experience far more than just a New Year’s Eve party: it is a truly immersive experience where music, dance, and connection come together in a unique setting.\nFor one long weekend, the magnificent Ibis Styles Toulouse Labège hotel transforms into a venue entirely dedicated to dance. With this “All-in-One Venue” concept, everything is designed so you can fully enjoy every moment—sleeping, dancing, learning, sharing, and celebrating—without ever leaving the event site. From the moment you arrive, let yourself be swept up in a warm, international atmosphere.\nTop DJs will take you on a musical journey featuring Kizomba, Semba, Urban Kiz, Zouk Kompa, Douceur, Shatta, Afro, and other rhythms that will keep hearts racing until dawn. Throughout the weekend, renowned instructors will share their passion through classes and workshops open to all skill levels.\nWhether you are a beginner, an experienced dancer, or simply a music lover, there is a place for everyone in this adventure.\nAbove all, New Year Escape is a human experience. Laughter, conversations, dancing, reunions, and unexpected encounters… Forget ordinary New Year’s Eve parties and celebrate the arrival of 2027 in style.\nThis year, don’t count the seconds until midnight—count the memories you’ll create. New Year Escape 2027 awaits you. Space is limited, so book now!",
+   "read_by": "claude-opus-5-5",
+   "prompt": "b1d060bbebb24369",
+   "rows_at": "2026-10-29T16:13:20+00:00",
+   "passes": [
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5673007",
+        "5673006"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5866942"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5873197"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "keys": [
+        "5866954"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "keys": [
+        "5866951"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5673017"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5673014"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "keys": [
+        "5673005"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    }
+   ],
+   "skipped": [
+    {
+     "key": "5875481",
+     "reason": "room"
+    },
+    {
+     "key": "5874430",
+     "reason": "room"
+    },
+    {
+     "key": "5874408",
+     "reason": "room"
+    },
+    {
+     "key": "5673015",
+     "reason": "food_drink"
+    }
+   ],
+   "rule_quotes": []
+  },
+  "claude-sonnet-5-5": {
+   "event_id": 19037,
+   "title": "NEW YEAR ESCAPE 2027 ALL IN ONE TOULOUSE",
+   "start_date": "2026-12-31",
+   "end_date": "2027-01-03",
+   "country": "France",
+   "styles": [
+    "kizomba",
+    "other",
+    "zouk"
+   ],
+   "description": "The place where enthusiasts gather to write the first chapter of the new year. Some parties define a single evening; others create memories that stay with you for a lifetime.\nFrom December 31, 2026, to January 3, 2027, New Year Escape invites you to experience far more than just a New Year’s Eve party: it is a truly immersive experience where music, dance, and connection come together in a unique setting.\nFor one long weekend, the magnificent Ibis Styles Toulouse Labège hotel transforms into a venue entirely dedicated to dance. With this “All-in-One Venue” concept, everything is designed so you can fully enjoy every moment—sleeping, dancing, learning, sharing, and celebrating—without ever leaving the event site. From the moment you arrive, let yourself be swept up in a warm, international atmosphere.\nTop DJs will take you on a musical journey featuring Kizomba, Semba, Urban Kiz, Zouk Kompa, Douceur, Shatta, Afro, and other rhythms that will keep hearts racing until dawn. Throughout the weekend, renowned instructors will share their passion through classes and workshops open to all skill levels.\nWhether you are a beginner, an experienced dancer, or simply a music lover, there is a place for everyone in this adventure.\nAbove all, New Year Escape is a human experience. Laughter, conversations, dancing, reunions, and unexpected encounters… Forget ordinary New Year’s Eve parties and celebrate the arrival of 2027 in style.\nThis year, don’t count the seconds until midnight—count the memories you’ll create. New Year Escape 2027 awaits you. Space is limited, so book now!",
+   "read_by": "claude-sonnet-5-5",
+   "prompt": "b1d060bbebb24369",
+   "rows_at": "2026-10-29T16:13:20+00:00",
+   "passes": [
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5873197"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5866954"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5866951"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5866942"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5673017"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5673007",
+        "5673006"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5673014"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "keys": [
+        "5673005"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    }
+   ],
+   "skipped": [
+    {
+     "key": "5875481",
+     "reason": "room"
+    },
+    {
+     "key": "5874430",
+     "reason": "room"
+    },
+    {
+     "key": "5874408",
+     "reason": "room"
+    },
+    {
+     "key": "5673015",
+     "reason": "food_drink"
+    }
+   ],
+   "rule_quotes": []
+  },
+  "claude-fable-5-1": {
+   "event_id": 19037,
+   "title": "NEW YEAR ESCAPE 2027 ALL IN ONE TOULOUSE",
+   "start_date": "2026-12-31",
+   "end_date": "2027-01-03",
+   "country": "France",
+   "styles": [
+    "kizomba",
+    "other",
+    "zouk"
+   ],
+   "description": "The place where enthusiasts gather to write the first chapter of the new year. Some parties define a single evening; others create memories that stay with you for a lifetime.\nFrom December 31, 2026, to January 3, 2027, New Year Escape invites you to experience far more than just a New Year’s Eve party: it is a truly immersive experience where music, dance, and connection come together in a unique setting.\nFor one long weekend, the magnificent Ibis Styles Toulouse Labège hotel transforms into a venue entirely dedicated to dance. With this “All-in-One Venue” concept, everything is designed so you can fully enjoy every moment—sleeping, dancing, learning, sharing, and celebrating—without ever leaving the event site. From the moment you arrive, let yourself be swept up in a warm, international atmosphere.\nTop DJs will take you on a musical journey featuring Kizomba, Semba, Urban Kiz, Zouk Kompa, Douceur, Shatta, Afro, and other rhythms that will keep hearts racing until dawn. Throughout the weekend, renowned instructors will share their passion through classes and workshops open to all skill levels.\nWhether you are a beginner, an experienced dancer, or simply a music lover, there is a place for everyone in this adventure.\nAbove all, New Year Escape is a human experience. Laughter, conversations, dancing, reunions, and unexpected encounters… Forget ordinary New Year’s Eve parties and celebrate the arrival of 2027 in style.\nThis year, don’t count the seconds until midnight—count the memories you’ll create. New Year Escape 2027 awaits you. Space is limited, so book now!",
+   "read_by": "claude-fable-5-1",
+   "prompt": "b1d060bbebb24369",
+   "rows_at": "2026-10-29T16:13:20+00:00",
+   "passes": [
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5873197"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "keys": [
+        "5866954"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "keys": [
+        "5866951"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5866942"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5673017"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "full",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": null,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5673007",
+        "5673006"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "day",
+     "style": null,
+     "label_quote": null,
+     "group_size": 1,
+     "days": 1,
+     "includes_hotel": false,
+     "tiers": [
+      {
+       "keys": [
+        "5673014"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    },
+    {
+     "kind": "package",
+     "style": null,
+     "label_quote": null,
+     "group_size": 2,
+     "days": 1,
+     "includes_hotel": true,
+     "tiers": [
+      {
+       "keys": [
+        "5673005"
+       ],
+       "from": null,
+       "until": null,
+       "quantity": null,
+       "date_quote": null
+      }
+     ]
+    }
+   ],
+   "skipped": [
+    {
+     "key": "5875481",
+     "reason": "room"
+    },
+    {
+     "key": "5874430",
+     "reason": "room"
+    },
+    {
+     "key": "5874408",
+     "reason": "room"
+    },
+    {
+     "key": "5673015",
+     "reason": "food_drink"
+    }
+   ],
+   "rule_quotes": []
+  }
+ }
+}

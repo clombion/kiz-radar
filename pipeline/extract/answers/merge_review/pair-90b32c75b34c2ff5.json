@@ -1,0 +1,13 @@
+{
+ "key_a": "p:clarita@dj",
+ "key_b": "p:clarita@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "90b32c75b34c2ff5",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The same stage name appears at Swiss events with no country stated and at French events flagged as Swiss on one line and French on another, so the evidence doesn't show whether this is one DJ who travels between the two countries or several people sharing the name."
+ }
+}

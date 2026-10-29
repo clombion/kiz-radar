@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fuego@fuego+kiki",
+ "key_b": "p:fuegorebirth",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e96e43e21e78dfb1",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The names share only the first word 'Fuego', the countries overlap only partly (DE/FR versus Germany), the events are in different places (France and Hungary versus Germany), and the partner 'kiki' appears on both sides under different couple keys, with no mentions to check, so the evidence does not settle whether this is one artist."
+ }
+}

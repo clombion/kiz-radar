@@ -2,17 +2,19 @@
  "event_id": 16916,
  "title": "Malga Temptation Festival 2026 (Secret Oasis édition)",
  "start_date": "2026-11-25",
- "read_by": "claude-opus-5-5 + claude-fable-5-1",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:12:12+00:00",
+ "end_date": "2026-11-30",
+ "country": "Spain",
  "styles": [
   "bachata",
   "kizomba"
  ],
  "description": "Málaga Temptation 2026 (The Secret Oasis)\nMelvin & Gatica\nRonald & Alba\nKike & Nahir\nAlfredo & Andrea\nSergio & Elena\nCarlos & Paz\nMiguel & Sunsire\nCarlos & Fernanda\nÉmilien & Tehina\nJorge & Azahara\nJavi & Fuensi\nDj Khalid\nDj Manuel Citro\nDj Pecino\nDj One Bachata\nDj Killo\nDj Macky\nKizomba\nJojo & Jenni\nJesús & Anni\nDwe & Gabi\nJP & Estefi\nJack & Sara\nAdilson & Telma\nLuis & Karen\nJamaica\nCosta\nMiguel\nNelson Areceli\nJustinho\nAtou\nMassemba\nDj Paraíso\nDj Pingusso\nDj Stefanio\nDj Nice Life\nDj Shark\nDj Dani\nDj Lisa\nDj Nao\nDj Loka\nDj Carlos King\nDj Santos",
+ "read_by": "claude-sonnet-5-5 + claude-fable-5-1",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:09:04+00:00",
  "passes": [
   {
-   "kind": "other",
+   "kind": "full",
    "style": null,
    "label_quote": null,
    "group_size": 1,
@@ -32,7 +34,7 @@
    ]
   },
   {
-   "kind": "other",
+   "kind": "full",
    "style": null,
    "label_quote": null,
    "group_size": 1,

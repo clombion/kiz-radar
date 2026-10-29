@@ -1,36 +1,44 @@
 {
- "batch": "event-16653",
- "events": [
-  {
-   "event_id": 16653,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 119.0,
-       "currency": "CHF",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🎟 Early Bird Full Pass starting from 119 CHF"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Prices will increase as the event approaches, so secure your ticket early"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:44:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "cb83db78619d3e59",
+ "answer": {
+  "batch": "event-16653",
+  "events": [
+   {
+    "event_id": 16653,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 119.0,
+        "currency": "CHF",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "🎟 Early Bird Full Pass starting from 119 CHF"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Prices will increase as the event approaches"
+    ]
+   }
+  ]
+ }
 }

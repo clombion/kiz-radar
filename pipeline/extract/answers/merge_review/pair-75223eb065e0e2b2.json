@@ -1,0 +1,13 @@
+{
+ "key_a": "p:josue@celine+josue",
+ "key_b": "p:josue@celine+josue",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "75223eb065e0e2b2",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The record is a single key compared with itself, with no event mentions, and its stated countries (CH, FR, MQ) could be one touring artist or several people named JOSUÉ, so the evidence does not settle it."
+ }
+}

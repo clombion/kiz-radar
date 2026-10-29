@@ -1,0 +1,13 @@
+{
+ "key_a": "p:valet@dj",
+ "key_b": "p:valet@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "cd2c900bc466216a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The same key appears on both sides, so this is one name stated with countries (CH, CM, FR) that never meet on a single event; the stated countries (Cameroon, Switzerland, France) and the spread of events across France, Spain, Germany and the Netherlands could be one touring DJ or several people sharing the name 'Valet', and the mentions carry no partner or other linking evidence to settle it."
+ }
+}

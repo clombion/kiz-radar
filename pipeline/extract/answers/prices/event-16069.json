@@ -1,62 +1,67 @@
 {
- "batch": "event-16069",
- "events": [
-  {
-   "event_id": 16069,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "🎟️ TICKETS ON SALE",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 50.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 10,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "⚡ EARLY BIRD: €50 (first 10 tickets only)"
-      },
-      {
-       "amount": 65.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🔥 Online price (sliding scale): €65"
-      },
-      {
-       "amount": 140.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "🚪 Price at the door: €140"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "The longer you wait, the more you pay 🚨‼️"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:43:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "447f6e9ecbdab1b1",
+ "answer": {
+  "batch": "event-16069",
+  "events": [
+   {
+    "event_id": 16069,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "🎟️ TICKETS ON SALE",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 50.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 10,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "⚡ EARLY BIRD: €50 (first 10 tickets only)"
+       },
+       {
+        "amount": 65.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "🔥 Online price (sliding scale): €65"
+       },
+       {
+        "amount": 140.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "🚪 Price at the door: €140"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "The longer you wait, the more you pay 🚨‼️"
+    ]
+   }
+  ]
+ }
 }

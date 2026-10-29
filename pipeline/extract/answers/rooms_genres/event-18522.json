@@ -1,28 +1,43 @@
 {
- "batch": "event-18522",
- "events": [
-  {
-   "event_id": 18522,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "KIFF DANCE – KIZOMBA & KONPA EDITION"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "9718da869561c91b",
+ "answer": {
+  "batch": "event-18522",
+  "events": [
+   {
+    "event_id": 18522,
+    "party_rooms": {
+     "count": 3,
+     "quote": "Party – 3 rooms • 3 vibes"
     },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Konpa workshop with Zouzout & Synthia"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Tarra Show",
-     "quote": "Tarra Show workshop with Kristel & Ichigo"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "KIFF DANCE – KIZOMBA & KONPA EDITION"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "all Kizomba and Kompa enthusiasts"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Konpa workshop with Zouzout & Synthia"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarra Show",
+      "quote": "Tarra Show workshop with Kristel & Ichigo"
+     }
+    ]
+   }
+  ]
+ }
 }

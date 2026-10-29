@@ -1,137 +1,144 @@
 {
- "batch": "event-16466",
- "events": [
-  {
-   "event_id": 16466,
-   "artists": [
-    {
-     "name_as_written": "LKW EVENTS",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "The LKW EVENTS team invites you to Lyon for:"
-    },
-    {
-     "name_as_written": "DJ CHAD",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔰🎧 DJ CHAD"
-    },
-    {
-     "name_as_written": "QDS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔰🎧 QDS"
-    },
-    {
-     "name_as_written": "DJ HONEY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔰🎧 DJ HONEY"
-    },
-    {
-     "name_as_written": "DJ SAFIR’S BEATS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔰🎧 DJ SAFIR’S BEATS"
-    },
-    {
-     "name_as_written": "DJ STOMPY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔰🎧 DJ STOMPY"
-    },
-    {
-     "name_as_written": "DJ CHORRON",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔰🎧 DJ CHORRON"
-    },
-    {
-     "name_as_written": "DJ JKEE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔰🎧 DJ JKEE"
-    },
-    {
-     "name_as_written": "DEEJAY ELSON",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🔰🎧 DEEJAY ELSON"
-    },
-    {
-     "name_as_written": "AXEL & LUCCY",
-     "role": "teacher",
-     "style": "Tarraxo",
-     "country": null,
-     "source_line": "🔰🗣 AXEL & LUCCY (Tarraxo)"
-    },
-    {
-     "name_as_written": "PAO LOU & MARGAUX",
-     "role": "teacher",
-     "style": "Semba & urban kiz",
-     "country": null,
-     "source_line": "🔰🗣 PAO LOU & MARGAUX (Semba & urban kiz)"
-    },
-    {
-     "name_as_written": "MIK’IZ & CAMILLE",
-     "role": "teacher",
-     "style": "Urban kiz & semba",
-     "country": null,
-     "source_line": "🔰🗣 MIK’IZ & CAMILLE (Urban kiz & semba)"
-    },
-    {
-     "name_as_written": "DAVID DASILVA & AUDREY",
-     "role": "teacher",
-     "style": "Kizomba Fusion",
-     "country": null,
-     "source_line": "🔰🗣 DAVID DASILVA & AUDREY (Kizomba Fusion)"
-    },
-    {
-     "name_as_written": "DAISY TARRAXO",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🔰 DAISY TARRAXO"
-    },
-    {
-     "name_as_written": "KIZMANIE TEAM",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "🔰 KIZMANIE TEAM"
-    }
-   ],
-   "features": [
-    {
-     "feature": "taxi_dancers",
-     "quote": "DANCER TAXIS",
-     "rationale": "The description has a dancer taxis section listing taxi dancer teams."
-    },
-    {
-     "feature": "workshops",
-     "quote": "1:00 PM – 4:00 PM Workshops",
-     "rationale": "The general schedule lists a Workshops slot on Saturday and Sunday."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3:00 PM – 8:00 PM Social",
-     "rationale": "The schedule lists a daytime social from 3 PM to 8 PM."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "SECONDARY HOTELS",
-     "rationale": "The description recommends a main hotel and several secondary hotels near the venue, without stating accommodation is part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:29:16+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "1fb4f66849123d44",
+ "answer": {
+  "batch": "event-16466",
+  "events": [
+   {
+    "event_id": 16466,
+    "artists": [
+     {
+      "name_as_written": "LKW EVENTS",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "The LKW EVENTS team invites you to Lyon for:"
+     },
+     {
+      "name_as_written": "DJ CHAD",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔰🎧 DJ CHAD"
+     },
+     {
+      "name_as_written": "QDS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔰🎧 QDS"
+     },
+     {
+      "name_as_written": "DJ HONEY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔰🎧 DJ HONEY"
+     },
+     {
+      "name_as_written": "DJ SAFIR’S BEATS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔰🎧 DJ SAFIR’S BEATS"
+     },
+     {
+      "name_as_written": "DJ STOMPY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔰🎧 DJ STOMPY"
+     },
+     {
+      "name_as_written": "DJ CHORRON",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔰🎧 DJ CHORRON"
+     },
+     {
+      "name_as_written": "DJ JKEE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔰🎧 DJ JKEE"
+     },
+     {
+      "name_as_written": "DEEJAY ELSON",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🔰🎧 DEEJAY ELSON"
+     },
+     {
+      "name_as_written": "AXEL & LUCCY",
+      "role": "teacher",
+      "style": "Tarraxo",
+      "country": null,
+      "source_line": "🔰🗣 AXEL & LUCCY (Tarraxo)"
+     },
+     {
+      "name_as_written": "PAO LOU & MARGAUX",
+      "role": "teacher",
+      "style": "Semba & urban kiz",
+      "country": null,
+      "source_line": "🔰🗣 PAO LOU & MARGAUX (Semba & urban kiz)"
+     },
+     {
+      "name_as_written": "MIK’IZ & CAMILLE",
+      "role": "teacher",
+      "style": "Urban kiz & semba",
+      "country": null,
+      "source_line": "🔰🗣 MIK’IZ & CAMILLE (Urban kiz & semba)"
+     },
+     {
+      "name_as_written": "DAVID DASILVA & AUDREY",
+      "role": "teacher",
+      "style": "Kizomba Fusion",
+      "country": null,
+      "source_line": "🔰🗣 DAVID DASILVA & AUDREY (Kizomba Fusion)"
+     },
+     {
+      "name_as_written": "DAISY TARRAXO",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🔰 DAISY TARRAXO"
+     },
+     {
+      "name_as_written": "KIZMANIE TEAM",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "🔰 KIZMANIE TEAM"
+     }
+    ],
+    "features": [
+     {
+      "feature": "partner_hotel",
+      "quote": "MAIN HOTEL",
+      "rationale": "The description names a main hotel and secondary hotels recommended for dancers to stay in, outside the pass."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "TAXI MANAGER",
+      "rationale": "The line-up includes a taxi manager and dancer taxi teams, so taxi dancers are present."
+     },
+     {
+      "feature": "workshops",
+      "quote": "1:00 PM – 4:00 PM Workshops",
+      "rationale": "The schedule lists workshops as part of the event on Saturday and Sunday."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3:00 PM – 8:00 PM Social",
+      "rationale": "The schedule lists a daytime social in the afternoon and evening on Saturday."
+     }
+    ]
+   }
+  ]
+ }
 }

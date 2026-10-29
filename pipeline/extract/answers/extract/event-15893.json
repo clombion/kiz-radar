@@ -1,167 +1,167 @@
 {
- "batch": "event-15893",
- "events": [
-  {
-   "event_id": 15893,
-   "artists": [
-    {
-     "name_as_written": "Elhadj & Jenna",
-     "role": "teacher",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "•⁠ ⁠Elhadj & Jenna"
-    },
-    {
-     "name_as_written": "Ary & Maura",
-     "role": "teacher",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "•⁠ ⁠Ary & Maura"
-    },
-    {
-     "name_as_written": "Pedro SP & Naomie",
-     "role": "teacher",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "•⁠ ⁠Pedro SP & Naomie"
-    },
-    {
-     "name_as_written": "Tony Viser & Carla",
-     "role": "teacher",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "•⁠ ⁠Tony Viser & Carla"
-    },
-    {
-     "name_as_written": "Fabricio Do Zangado",
-     "role": "teacher",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "•⁠ ⁠Fabricio Do Zangado"
-    },
-    {
-     "name_as_written": "Hector & Paula",
-     "role": "teacher",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "•⁠ ⁠Hector & Paula"
-    },
-    {
-     "name_as_written": "Evaldo & Daniela",
-     "role": "teacher",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "•⁠ ⁠Evaldo & Daniela"
-    },
-    {
-     "name_as_written": "Esteban & Sandra",
-     "role": "teacher",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "•⁠ ⁠Esteban & Sandra"
-    },
-    {
-     "name_as_written": "Fanio",
-     "role": "teacher",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "•⁠ ⁠Fanio"
-    },
-    {
-     "name_as_written": "Jadilson",
-     "role": "teacher",
-     "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
-     "country": null,
-     "source_line": "•⁠ ⁠Jadilson"
-    },
-    {
-     "name_as_written": "Miro Nikola",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "•⁠ ⁠Miro Nikola"
-    },
-    {
-     "name_as_written": "Linduka",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "•⁠ ⁠Linduka"
-    },
-    {
-     "name_as_written": "Bakongo",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "•⁠ ⁠Bakongo"
-    },
-    {
-     "name_as_written": "Marlas",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "•⁠ ⁠Marlas"
-    },
-    {
-     "name_as_written": "ILKSF",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "This is a global concept designed to spread the vision and energy of ILKSF across different countries. ILKSF invests in new talent and, through its vision, helps to develop new events. Spain is renowned for its great potential, with outstanding dancers, great weather and a vibrant dance community."
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "All in one hotel",
-     "rationale": "The description states the event is an all-in-one hotel format where dancers stay and party."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "Beach party",
-     "rationale": "The feature list explicitly includes a beach party."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Pool party",
-     "rationale": "The feature list explicitly includes a pool party."
-    },
-    {
-     "feature": "workshops",
-     "quote": "3 days of workshops",
-     "rationale": "Workshops are explicitly listed as part of the event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3 days of socials",
-     "rationale": "Daytime socials are listed as part of the event."
-    },
-    {
-     "feature": "competition",
-     "quote": "Dance competition",
-     "rationale": "A dance competition is explicitly listed."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Masterclasses",
-     "rationale": "Masterclasses are explicitly listed as part of the event."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "Crazy, sexy, and cool dress codes",
-     "rationale": "The description states dress codes for the event."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "2 Full Passes + 2 nights double room + Full board",
-     "rationale": "The package combines passes with nights in a room, so accommodation is included in the package."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "2 Full Passes + 2 nights double room + Full board",
-     "rationale": "The package explicitly includes full board meals."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:27:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "caf49ef0e5c64a7f",
+ "answer": {
+  "batch": "event-15893",
+  "events": [
+   {
+    "event_id": 15893,
+    "artists": [
+     {
+      "name_as_written": "Elhadj & Jenna",
+      "role": "teacher",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "•⁠ ⁠Elhadj & Jenna"
+     },
+     {
+      "name_as_written": "Ary & Maura",
+      "role": "teacher",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "•⁠ ⁠Ary & Maura"
+     },
+     {
+      "name_as_written": "Pedro SP & Naomie",
+      "role": "teacher",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "•⁠ ⁠Pedro SP & Naomie"
+     },
+     {
+      "name_as_written": "Tony Viser & Carla",
+      "role": "teacher",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "•⁠ ⁠Tony Viser & Carla"
+     },
+     {
+      "name_as_written": "Fabricio Do Zangado",
+      "role": "teacher",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "•⁠ ⁠Fabricio Do Zangado"
+     },
+     {
+      "name_as_written": "Hector & Paula",
+      "role": "teacher",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "•⁠ ⁠Hector & Paula"
+     },
+     {
+      "name_as_written": "Evaldo & Daniela",
+      "role": "teacher",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "•⁠ ⁠Evaldo & Daniela"
+     },
+     {
+      "name_as_written": "Esteban & Sandra",
+      "role": "teacher",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "•⁠ ⁠Esteban & Sandra"
+     },
+     {
+      "name_as_written": "Fanio",
+      "role": "teacher",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "•⁠ ⁠Fanio"
+     },
+     {
+      "name_as_written": "Jadilson",
+      "role": "teacher",
+      "style": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔",
+      "country": null,
+      "source_line": "•⁠ ⁠Jadilson"
+     },
+     {
+      "name_as_written": "Miro Nikola",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "•⁠ ⁠Miro Nikola"
+     },
+     {
+      "name_as_written": "Linduka",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "•⁠ ⁠Linduka"
+     },
+     {
+      "name_as_written": "Bakongo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "•⁠ ⁠Bakongo"
+     },
+     {
+      "name_as_written": "Marlas",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "•⁠ ⁠Marlas"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "All in one hotel",
+      "rationale": "The event is described as taking place in an all-in-one hotel where dancers stay."
+     },
+     {
+      "feature": "beach_party",
+      "quote": "Beach party",
+      "rationale": "The event lists a beach party."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Pool party",
+      "rationale": "The event lists a pool party."
+     },
+     {
+      "feature": "workshops",
+      "quote": "3 days of workshops",
+      "rationale": "Workshops are listed as part of the event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3 days of socials",
+      "rationale": "Daytime socials are listed."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Masterclasses",
+      "rationale": "Masterclasses are listed as part of the event."
+     },
+     {
+      "feature": "competition",
+      "quote": "Dance competition",
+      "rationale": "A dance competition is listed."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "Crazy, sexy, and cool dress codes",
+      "rationale": "Dress codes are stated for the event."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "2 nights double room + Full board",
+      "rationale": "Packages combine passes with accommodation in a double room."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "2 nights double room + Full board",
+      "rationale": "Full board meals are included in the accommodation packages."
+     }
+    ]
+   }
+  ]
+ }
 }

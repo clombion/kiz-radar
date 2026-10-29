@@ -1,29 +1,36 @@
 {
- "batch": "event-14742",
- "events": [
-  {
-   "event_id": 14742,
-   "artists": [
-    {
-     "name_as_written": "KIZOMBA.FR",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "KIZOMBA.FR offers you the 2nd edition of WE LOVE ANGOLA from February 10 to 24, 2026 for an unforgettable experience."
-    }
-   ],
-   "features": [
-    {
-     "feature": "accommodation_included",
-     "quote": "14 nights’ accommodation",
-     "rationale": "The price list under 'Price includes' lists accommodation for 14 nights."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Meals (full board)",
-     "rationale": "Meals are listed as part of what the price includes."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "a1d48e9ba6a48cfe",
+ "answer": {
+  "batch": "event-14742",
+  "events": [
+   {
+    "event_id": 14742,
+    "artists": [
+     {
+      "name_as_written": "KIZOMBA.FR",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "KIZOMBA.FR offers you the 2nd edition of WE LOVE ANGOLA from February 10 to 24, 2026 for an unforgettable experience."
+     }
+    ],
+    "features": [
+     {
+      "feature": "accommodation_included",
+      "quote": "14 nights’ accommodation",
+      "rationale": "The price includes the accommodation for 14 nights."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Meals (full board)",
+      "rationale": "Meals are listed as included in the price."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,158 +1,165 @@
 {
- "batch": "event-15541",
- "events": [
-  {
-   "event_id": 15541,
-   "party_rooms": {
-    "count": 7,
-    "quote": "on 7 different Dance Floors"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Salsa LA/NY",
-     "kind": "party",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "Salsa LA/NY"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b97cbd49f98d26b0",
+ "answer": {
+  "batch": "event-15541",
+  "events": [
+   {
+    "event_id": 15541,
+    "party_rooms": {
+     "count": 7,
+     "quote": "7 different Dance Floors"
     },
-    {
-     "name_as_written": "Salsa Cuban",
-     "kind": "party",
-     "genres": [
-      "salsa"
-     ],
-     "quote": "Salsa Cuban"
-    },
-    {
-     "name_as_written": "Bachata",
-     "kind": "party",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "Bachata"
-    },
-    {
-     "name_as_written": "Kizomba",
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "Kizomba"
-    },
-    {
-     "name_as_written": "Zouk",
-     "kind": "party",
-     "genres": [
-      "zouk"
-     ],
-     "quote": "Zouk"
-    },
-    {
-     "name_as_written": "Tango",
-     "kind": "party",
-     "genres": [
-      "other"
-     ],
-     "quote": "Tango"
-    },
-    {
-     "name_as_written": "Urban/Afro",
-     "kind": "party",
-     "genres": [
-      "afro"
-     ],
-     "quote": "Urban/Afro"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Salsa-Bachata-Kizomba Live Concerts"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Salsa-Bachata-Kizomba Live Concerts"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Salsa-Bachata-Kizomba Live Concerts"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "Kizomba, Zouk, Tango"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "Urban/Afro"
-    },
-    {
-     "genre": "reggaeton",
-     "genre_as_written": "Reggaeton",
-     "quote": "Afro-Dancehall/Reggaeton/Hip Hop"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Tango",
-     "quote": "Tango"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Swing-Lindy Hop",
-     "quote": "Swing-Lindy Hop"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Hip Hop",
-     "quote": "Hip Hop"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "High Heels",
-     "quote": "High Heels"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Dancehall",
-     "quote": "Afro-Dancehall"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Zumba",
-     "quote": "Zumba"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Samba",
-     "quote": "Samba"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Flamenco",
-     "quote": "Flamenco"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Belly Dance",
-     "quote": "Belly Dance"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Bollywood",
-     "quote": "Bollywood"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Syrtaki",
-     "quote": "Syrtaki"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Salsa LA/NY",
+      "kind": "party",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "Salsa LA/NY"
+     },
+     {
+      "name_as_written": "Salsa Cuban",
+      "kind": "party",
+      "genres": [
+       "salsa"
+      ],
+      "quote": "Salsa Cuban"
+     },
+     {
+      "name_as_written": "Bachata",
+      "kind": "party",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "Bachata"
+     },
+     {
+      "name_as_written": "Kizomba",
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "Kizomba"
+     },
+     {
+      "name_as_written": "Zouk",
+      "kind": "party",
+      "genres": [
+       "zouk"
+      ],
+      "quote": "Zouk"
+     },
+     {
+      "name_as_written": "Tango",
+      "kind": "party",
+      "genres": [
+       "other"
+      ],
+      "quote": "Tango"
+     },
+     {
+      "name_as_written": "Urban/Afro",
+      "kind": "party",
+      "genres": [
+       "afro"
+      ],
+      "quote": "Urban/Afro"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Salsa LA/NY"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Zouk",
+      "quote": "Zouk"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "Urban/Afro"
+     },
+     {
+      "genre": "reggaeton",
+      "genre_as_written": "Reggaeton",
+      "quote": "Reggaeton"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Tango",
+      "quote": "Tango"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Swing-Lindy Hop",
+      "quote": "Swing-Lindy Hop"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Hip Hop",
+      "quote": "Hip Hop"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "High Heels",
+      "quote": "High Heels"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Dancehall",
+      "quote": "Dancehall"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Zumba",
+      "quote": "Zumba"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Samba",
+      "quote": "Samba"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Flamenco",
+      "quote": "Flamenco"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Belly Dance",
+      "quote": "Belly Dance"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Bollywood",
+      "quote": "Bollywood"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Syrtaki",
+      "quote": "Syrtaki"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:aleksandra@aleksandra+claudio",
+ "key_b": "p:alessandra@alessandra+marc",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "efe1a808b8f2575f",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different partners (Claudio versus Marc) and no shared events or partner, and Aleksandra's stated countries include Poland while Alessandra's are only Italy, so the similar spelling alone does not link them and the evidence points to two people."
+ }
+}

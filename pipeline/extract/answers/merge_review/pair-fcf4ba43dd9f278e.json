@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dadie@dance",
+ "key_b": "p:dadiesacko",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fcf4ba43dd9f278e",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are stated as French (FR) and teach at events in France, and the shorter 'Dadié' is the distinctive given name of 'Dadié Sacko' with no conflicting country, so the same person is likely, though no shared partner confirms it."
+ }
+}

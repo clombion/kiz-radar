@@ -1,0 +1,13 @@
+{
+ "key_a": "p:laura@drkizomba+laura",
+ "key_b": "p:laurabuffone",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "5f591d0bd9c10692",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only link is the shared partner 'drkizomba' and an overlapping Italy event country, but 'LAURA' is a common first name with no mention records shown, and a school partner could employ two different Lauras, so the evidence does not settle it."
+ }
+}

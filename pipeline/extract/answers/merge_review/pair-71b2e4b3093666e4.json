@@ -1,0 +1,13 @@
+{
+ "key_a": "p:remcy@dj",
+ "key_b": "p:remcy@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "71b2e4b3093666e4",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "This is a single key with itself, so it asks whether one DJ Remcy is one artist or several people sharing the name; the mentions span DE and HU stated countries across many European events with no partner, full name, or style that distinguishes them, and the HU mentions (15959, 18643) sit alongside DE ones in the same Poland events, so the evidence does not settle whether it is one artist or several."
+ }
+}

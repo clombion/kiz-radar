@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alejandro@alejandro+oceane",
+ "key_b": "p:alejandro@alejandro+vanessa",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8e1a096f9fdda052",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records are the common first name Alejandro, both list Spain and events in France, but their partners differ (Oceane versus Vanessa), so a shared partner does not link them and the common name is weak evidence on its own."
+ }
+}

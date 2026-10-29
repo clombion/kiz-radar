@@ -1,0 +1,13 @@
+{
+ "key_a": "p:alessandra@alessandra+marc",
+ "key_b": "p:alessandrasillano",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "21768ecac57955a7",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the bare first name 'Alessandra' with no events and no full name, and its partner Marc is not linked to side B, so the shared Italian country and first name are too weak to merge or separate them."
+ }
+}

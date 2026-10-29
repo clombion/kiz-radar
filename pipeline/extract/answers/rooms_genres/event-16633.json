@@ -1,23 +1,30 @@
 {
- "batch": "event-16633",
- "events": [
-  {
-   "event_id": 16633,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Unique Kizomba Experience"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro Kiz",
-     "quote": "Sydney Afro Kiz Festival – Edition 2026"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:25+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "ad1f973ec042c297",
+ "answer": {
+  "batch": "event-16633",
+  "events": [
+   {
+    "event_id": 16633,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "Sydney Afro Kiz Festival"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Unique Kizomba Experience"
+     }
+    ]
+   }
+  ]
+ }
 }

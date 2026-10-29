@@ -1,230 +1,237 @@
 {
- "batch": "event-14732",
- "events": [
-  {
-   "event_id": 14732,
-   "artists": [
-    {
-     "name_as_written": "TONY & CARLA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "TONY & CARLA"
-    },
-    {
-     "name_as_written": "LANDRY & WINDY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "LANDRY & WINDY"
-    },
-    {
-     "name_as_written": "MAIZA & TELMA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "MAIZA & TELMA"
-    },
-    {
-     "name_as_written": "TECA & LUCY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "TECA & LUCY"
-    },
-    {
-     "name_as_written": "BICAS RISCA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "BICAS RISCA"
-    },
-    {
-     "name_as_written": "LILIANA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "LILIANA"
-    },
-    {
-     "name_as_written": "ALBIR & NATALIA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "ALBIR & NATALIA"
-    },
-    {
-     "name_as_written": "STEPHANE & TERESA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "STEPHANE & TERESA"
-    },
-    {
-     "name_as_written": "JOJO & JENNY",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "JOJO & JENNY"
-    },
-    {
-     "name_as_written": "DJ PARAISO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ PARAISO"
-    },
-    {
-     "name_as_written": "DJ NICE LIFE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ NICE LIFE"
-    },
-    {
-     "name_as_written": "DJ CHAD",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ CHAD"
-    },
-    {
-     "name_as_written": "DJ BARTEF",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ BARTEF"
-    },
-    {
-     "name_as_written": "DJ LAMIN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ LAMIN"
-    },
-    {
-     "name_as_written": "DJ ICHIGO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ ICHIGO"
-    },
-    {
-     "name_as_written": "DJ SWEETKIZ LENKA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ SWEETKIZ LENKA"
-    },
-    {
-     "name_as_written": "DJ MIRO KIKOLA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ MIRO KIKOLA"
-    },
-    {
-     "name_as_written": "DJ DOS ANJOS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ DOS ANJOS"
-    },
-    {
-     "name_as_written": "DJ SAI SAI",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ SAI SAI"
-    },
-    {
-     "name_as_written": "DJ HUBO BOSS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ HUBO BOSS"
-    },
-    {
-     "name_as_written": "DJ RUSSELIUS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ RUSSELIUS"
-    },
-    {
-     "name_as_written": "DJ RM KETA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ RM KETA"
-    },
-    {
-     "name_as_written": "DJ DANY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ DANY"
-    },
-    {
-     "name_as_written": "Jacinto Teca Events",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Facebook – Jacinto Teca Events"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE LOCATION",
-     "rationale": "The event and the hotels where dancers are invited to stay are in one location."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 PARTY ROOMS",
-     "rationale": "The description states there are two party rooms."
-    },
-    {
-     "feature": "workshops",
-     "quote": "25H WORKSHOPS",
-     "rationale": "The festival offers 25 hours of workshops."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "1 PRE-PARTY IN SAME LOCATION",
-     "rationale": "A pre-party is held before the festival at the same location."
-    },
-    {
-     "feature": "after_party",
-     "quote": "1 AFTER – PARTY",
-     "rationale": "An after-party is listed among the highlights."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "15:00 – 20:00 Social – Room 2 & 2A",
-     "rationale": "Afternoon social sessions are scheduled during the day."
-    },
-    {
-     "feature": "competition",
-     "quote": "KZL Championship preselection",
-     "rationale": "A championship preselection is held as part of the programme."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "PARTY DRESS CODES",
-     "rationale": "The description states dress codes for the parties."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "FRIDAY – PINK & WHITE",
-     "rationale": "Each party night has a dress theme such as pink and white."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Accommodation is separately, with the advantage of a discount, which we arranged for you.",
-     "rationale": "A negotiated discount on hotel rooms is offered, with accommodation separate from the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "bb1d7ee296916cb7",
+ "answer": {
+  "batch": "event-14732",
+  "events": [
+   {
+    "event_id": 14732,
+    "artists": [
+     {
+      "name_as_written": "TONY & CARLA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "TONY & CARLA"
+     },
+     {
+      "name_as_written": "LANDRY & WINDY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "LANDRY & WINDY"
+     },
+     {
+      "name_as_written": "MAIZA & TELMA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "MAIZA & TELMA"
+     },
+     {
+      "name_as_written": "TECA & LUCY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "TECA & LUCY"
+     },
+     {
+      "name_as_written": "BICAS RISCA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "BICAS RISCA"
+     },
+     {
+      "name_as_written": "LILIANA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "LILIANA"
+     },
+     {
+      "name_as_written": "ALBIR & NATALIA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "ALBIR & NATALIA"
+     },
+     {
+      "name_as_written": "STEPHANE & TERESA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "STEPHANE & TERESA"
+     },
+     {
+      "name_as_written": "JOJO & JENNY",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "JOJO & JENNY"
+     },
+     {
+      "name_as_written": "DJ PARAISO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ PARAISO"
+     },
+     {
+      "name_as_written": "DJ NICE LIFE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ NICE LIFE"
+     },
+     {
+      "name_as_written": "DJ CHAD",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ CHAD"
+     },
+     {
+      "name_as_written": "DJ BARTEF",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ BARTEF"
+     },
+     {
+      "name_as_written": "DJ LAMIN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ LAMIN"
+     },
+     {
+      "name_as_written": "DJ ICHIGO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ ICHIGO"
+     },
+     {
+      "name_as_written": "DJ SWEETKIZ LENKA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ SWEETKIZ LENKA"
+     },
+     {
+      "name_as_written": "DJ MIRO KIKOLA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ MIRO KIKOLA"
+     },
+     {
+      "name_as_written": "DJ DOS ANJOS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ DOS ANJOS"
+     },
+     {
+      "name_as_written": "DJ SAI SAI",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ SAI SAI"
+     },
+     {
+      "name_as_written": "DJ HUBO BOSS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ HUBO BOSS"
+     },
+     {
+      "name_as_written": "DJ RUSSELIUS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ RUSSELIUS"
+     },
+     {
+      "name_as_written": "DJ RM KETA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ RM KETA"
+     },
+     {
+      "name_as_written": "DJ DANY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ DANY"
+     },
+     {
+      "name_as_written": "Jacinto Teca Events",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Facebook – Jacinto Teca Events"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE LOCATION",
+      "rationale": "The description says the festival is all in one location, and the official hotels are one connected building where dancers stay."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "1 PRE-PARTY IN SAME LOCATION",
+      "rationale": "A pre-party is listed at the same location before the main festival."
+     },
+     {
+      "feature": "after_party",
+      "quote": "1 AFTER – PARTY",
+      "rationale": "An after-party is listed among the event's features."
+     },
+     {
+      "feature": "workshops",
+      "quote": "25H WORKSHOPS",
+      "rationale": "The event offers 25 hours of dance workshops."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 PARTY ROOMS",
+      "rationale": "There are two party rooms, so more than one dance floor."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Social – Room 2 & 2A",
+      "rationale": "Daytime socials are scheduled in the afternoon, for example 15:00 – 20:00."
+     },
+     {
+      "feature": "competition",
+      "quote": "KZL Championship preselection",
+      "rationale": "A championship preselection is part of the Sunday programme."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "FRIDAY – PINK & WHITE",
+      "rationale": "The parties have dress themes such as pink and white for Friday."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "PARTY DRESS CODES",
+      "rationale": "The description states a dress code for each party night."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Accommodation is separately, with the advantage of a discount, which we arranged for you.",
+      "rationale": "Hotel accommodation is arranged at a discount but is not part of the festival pass."
+     }
+    ]
+   }
+  ]
+ }
 }

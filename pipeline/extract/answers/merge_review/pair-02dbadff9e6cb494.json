@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ana@ana+ben",
+ "key_b": "p:ana@ana+guilherme",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "02dbadff9e6cb494",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are the common name Ana, but their partners differ (ben versus guilherme), and the only shared country (PT) is weak, so the evidence does not link them as one artist; the partners point to two separate couples."
+ }
+}

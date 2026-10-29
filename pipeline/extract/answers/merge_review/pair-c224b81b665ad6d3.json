@@ -1,0 +1,13 @@
+{
+ "key_a": "p:riikka@dance",
+ "key_b": "p:riikkamaria",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c224b81b665ad6d3",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as Finnish and 'Riikka' is a first name of 'Riikka Maria', but there is no shared partner, and side A has no style to match side B's Kizomba, so the evidence is only a common first name and nationality."
+ }
+}

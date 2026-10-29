@@ -1,0 +1,13 @@
+{
+ "key_a": "p:silvia@andrea+silvia",
+ "key_b": "p:silvia@andreas+silvia",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f28a757963826339",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both Silvias are stated as Italian, but the common first name is weak evidence on its own, their events do not overlap (Austria, France, Italy versus Germany), and their partners are written as Andrea and Andreas, which could be one person or two, so the evidence does not settle it."
+ }
+}

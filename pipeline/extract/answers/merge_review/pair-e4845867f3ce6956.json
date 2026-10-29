@@ -1,0 +1,13 @@
+{
+ "key_a": "p:michael@anika+michael",
+ "key_b": "p:michaeldiamond",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e4845867f3ce6956",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Side A is a couple key 'anika+michael' with countries AT, NL, SK and events in Kazakhstan, Korea and Slovenia, while side B is 'Michael Diamond' from NL with a single Sweden event and no partner; the only link is the shared first name and the NL country, which is weak evidence, and the event footprints do not overlap, so the records describe different people."
+ }
+}

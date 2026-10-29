@@ -1,88 +1,95 @@
 {
- "batch": "event-16620",
- "events": [
-  {
-   "event_id": 16620,
-   "artists": [
-    {
-     "name_as_written": "Jesus & Anni",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️ Jesus & Anni – Spain ⭐️"
-    },
-    {
-     "name_as_written": "Amarylis & Alex",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️ Amarylis & Alex – Melbourne & Wellington ⭐️"
-    },
-    {
-     "name_as_written": "Anette & Alex",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️ Anette & Alex – Auckland & Wellington ⭐️"
-    },
-    {
-     "name_as_written": "Aubrey & Ella",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️ Aubrey & Ella – Auckland ⭐️"
-    },
-    {
-     "name_as_written": "Becky & Aom",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️ Becky & Aom – Tauranga ⭐️"
-    },
-    {
-     "name_as_written": "DJ Ama",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️ DJ Ama – Melbourne ⭐️"
-    },
-    {
-     "name_as_written": "DJ DJ SCrubs",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️ DJ DJ SCrubs – Tauranga ⭐️"
-    },
-    {
-     "name_as_written": "DJ Switch",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "⭐️ DJ Switch – Wellington ⭐️"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "11hrs Workshops",
-     "rationale": "The event offers dance workshops in several styles, stated as 11 hours of workshops."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Master Classes!!",
-     "rationale": "The description advertises masterclasses as part of the event."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre Party",
-     "rationale": "The programme lists a Thursday pre party before the main event."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "3-6pm Day Social",
-     "rationale": "The Sunday programme includes a daytime social from 3 to 6pm."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:29:46+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "7741725bbb4d858c",
+ "answer": {
+  "batch": "event-16620",
+  "events": [
+   {
+    "event_id": 16620,
+    "artists": [
+     {
+      "name_as_written": "Jesus & Anni",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️ Jesus & Anni – Spain ⭐️"
+     },
+     {
+      "name_as_written": "Amarylis & Alex",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️ Amarylis & Alex – Melbourne & Wellington ⭐️"
+     },
+     {
+      "name_as_written": "Anette & Alex",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️ Anette & Alex – Auckland & Wellington ⭐️"
+     },
+     {
+      "name_as_written": "Aubrey & Ella",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️ Aubrey & Ella – Auckland ⭐️"
+     },
+     {
+      "name_as_written": "Becky & Aom",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️ Becky & Aom – Tauranga ⭐️"
+     },
+     {
+      "name_as_written": "DJ Ama",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️ DJ Ama – Melbourne ⭐️"
+     },
+     {
+      "name_as_written": "DJ DJ SCrubs",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️ DJ DJ SCrubs – Tauranga ⭐️"
+     },
+     {
+      "name_as_written": "DJ Switch",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "⭐️ DJ Switch – Wellington ⭐️"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "11hrs Workshops",
+      "rationale": "The event lists 11 hours of workshops, which are dance classes."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Master Classes",
+      "rationale": "The description advertises Master Classes as part of the event."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre Party",
+      "rationale": "The Thursday program lists a Pre Party before the main event."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "3-6pm Day Social",
+      "rationale": "The Sunday program includes an afternoon Day Social."
+     }
+    ]
+   }
+  ]
+ }
 }

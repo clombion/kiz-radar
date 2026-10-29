@@ -1,0 +1,13 @@
+{
+ "key_a": "p:marta@azael+marta",
+ "key_b": "p:martha@azael+martha",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "38a0ea25b9f27043",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the partner name Azael, which points toward one person, but Marta's events are only in Italy while Martha's are in Turkey with stated countries MX and PL, and the names are common one-letter variants, so the evidence does not settle it."
+ }
+}

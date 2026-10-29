@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sara@sara+valr",
+ "key_b": "p:sarah@sarah+valr",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8a653da2b9455131",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are spelling variants (Sara / Sarah) with the same partner name 'valr', both stated in France, and no event lists both sides, so the evidence points to one artist."
+ }
+}

@@ -1,74 +1,81 @@
 {
- "batch": "event-18342",
- "events": [
-  {
-   "event_id": 18342,
-   "party_rooms": {
-    "count": 2,
-    "quote": "there will be 2 social rooms"
-   },
-   "class_rooms": {
-    "count": 2,
-    "quote": "2 exclusive rooms for workshops"
-   },
-   "rooms": [
-    {
-     "name_as_written": "Room 1",
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "semba"
-     ],
-     "quote": "Room 1: KIZOMBA & SEMBA"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:41+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "dc233eb758d41c2c",
+ "answer": {
+  "batch": "event-18342",
+  "events": [
+   {
+    "event_id": 18342,
+    "party_rooms": {
+     "count": 2,
+     "quote": "there will be 2 social rooms"
     },
-    {
-     "name_as_written": "Room 2",
-     "kind": "party",
-     "genres": [
-      "urbankiz",
-      "tarraxo",
-      "douceur"
-     ],
-     "quote": "Room 2: URBAN & TARRAXO & DOUCEUR"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "A festival of Kizomba 100%"
+    "class_rooms": {
+     "count": 2,
+     "quote": "2 exclusive rooms for workshops"
     },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "and Semba"
-    },
-    {
-     "genre": "kuduro",
-     "genre_as_written": "Kuduro",
-     "quote": "Semba, Kuduro"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban",
-     "quote": "Kuduro, Urban"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Urban, Tarraxo"
-    },
-    {
-     "genre": "douceur",
-     "genre_as_written": "Douceur",
-     "quote": "Tarraxo, Douceur"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrohouse",
-     "quote": "Kuduro, Afrohouse"
-    }
-   ]
-  }
- ]
+    "rooms": [
+     {
+      "name_as_written": "Room 1",
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "semba"
+      ],
+      "quote": "Room 1: KIZOMBA & SEMBA"
+     },
+     {
+      "name_as_written": "Room 2",
+      "kind": "party",
+      "genres": [
+       "urbankiz",
+       "tarraxo",
+       "douceur"
+      ],
+      "quote": "Room 2: URBAN & TARRAXO & DOUCEUR"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "A festival of Kizomba 100%"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "and Semba"
+     },
+     {
+      "genre": "kuduro",
+      "genre_as_written": "Kuduro",
+      "quote": "Semba, Kuduro"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban",
+      "quote": "Kuduro, Urban"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "Urban, Tarraxo"
+     },
+     {
+      "genre": "douceur",
+      "genre_as_written": "Douceur",
+      "quote": "Tarraxo, Douceur"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrohouse",
+      "quote": "Afrohouse"
+     }
+    ]
+   }
+  ]
+ }
 }

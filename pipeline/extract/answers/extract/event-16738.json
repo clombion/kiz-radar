@@ -1,95 +1,102 @@
 {
- "batch": "event-16738",
- "events": [
-  {
-   "event_id": 16738,
-   "artists": [
-    {
-     "name_as_written": "Tony & Carla",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Tony & Carla"
-    },
-    {
-     "name_as_written": "Eliza Sala",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Eliza Sala"
-    },
-    {
-     "name_as_written": "João & Giedre",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "João & Giedre"
-    },
-    {
-     "name_as_written": "Ana-Maria & Stéphane",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Ana-Maria & Stéphane"
-    },
-    {
-     "name_as_written": "Kinkela & Giorgia",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Kinkela & Giorgia"
-    },
-    {
-     "name_as_written": "Melania & Alex",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Melania & Alex"
-    },
-    {
-     "name_as_written": "Maria & François",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Maria & François"
-    },
-    {
-     "name_as_written": "DJ Rock",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Rock"
-    },
-    {
-     "name_as_written": "DJ Frank",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ Frank"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "Accommodation and Main Venue",
-     "rationale": "The accommodation section names the main venue as the same hotel, so the parties and the accommodation share one venue."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Full-pass special package ( place in a double room to share): 230 eur / person",
-     "rationale": "The full-pass special package includes a place in a room, so accommodation is part of the pass."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Pre Party – 22nd Oct",
-     "rationale": "A pre-party is listed before the main event dates."
-    },
-    {
-     "feature": "after_party",
-     "quote": "After Party – 26th Oct",
-     "rationale": "An after-party is listed after the main event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "458badce93ffe763",
+ "answer": {
+  "batch": "event-16738",
+  "events": [
+   {
+    "event_id": 16738,
+    "artists": [
+     {
+      "name_as_written": "Tony & Carla",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Tony & Carla"
+     },
+     {
+      "name_as_written": "Eliza Sala",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Eliza Sala"
+     },
+     {
+      "name_as_written": "João & Giedre",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "João & Giedre"
+     },
+     {
+      "name_as_written": "Ana-Maria & Stéphane",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Ana-Maria & Stéphane"
+     },
+     {
+      "name_as_written": "Kinkela & Giorgia",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Kinkela & Giorgia"
+     },
+     {
+      "name_as_written": "Melania & Alex",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Melania & Alex"
+     },
+     {
+      "name_as_written": "Maria & François",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Maria & François"
+     },
+     {
+      "name_as_written": "DJ Rock",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Rock"
+     },
+     {
+      "name_as_written": "DJ Frank",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ Frank"
+     }
+    ],
+    "features": [
+     {
+      "feature": "accommodation_included",
+      "quote": "Full-pass special package ( place in a double room to share): 230 eur / person",
+      "rationale": "The full-pass special package includes a place in a double room, so the accommodation is part of the pass package."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "Accommodation and Main Venue",
+      "rationale": "The heading makes the accommodation hotel the main venue where the event takes place."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "Pre Party – 22nd Oct",
+      "rationale": "A pre-party is listed before the main event dates."
+     },
+     {
+      "feature": "after_party",
+      "quote": "After Party – 26th Oct",
+      "rationale": "An after-party is listed after the main event."
+     }
+    ]
+   }
+  ]
+ }
 }

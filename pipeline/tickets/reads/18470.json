@@ -2,13 +2,15 @@
  "event_id": 18470,
  "title": "Tukina Lisboa | Kizomba & Semba Festival Lisbon",
  "start_date": "2026-12-11",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:19:30+00:00",
+ "end_date": "2026-12-14",
+ "country": "Portugal",
  "styles": [
   "kizomba"
  ],
  "description": "T U K I N A L I S B O A 🇵🇹\nLet’s Dance, Lisbon! | December 11–14, 2026\n✨4th Edition✨\nTukina Lisboa is an international festival dedicated to Kizomba and Semba, celebrating Angolan dance, music, and culture in its most authentic form.\nIn 2026, we proudly present the 4th edition, continuing an event known for its artistic quality, welcoming atmosphere, and strong connection to Angolan roots — Na Banda.\n🔸 Technical & cultural workshops\n🔸 Social Dances & Parties\n🔸 Authentic Angolan Rhythms\n🔸 Top Angolan DJs & artists\n📍 Lisbon, Portugal\n🏣 Venue – Av. Dom Manuel I, 2890-014 – Clube Náutico Alcochete\n🎫 https://www.eventbrite.pt/…/tukina-lisboa-4th-edition…\n📧 tukinatkn@gmail.com\n🔆Artists & DJs🔆\n🔶INSTRUCTOR🔶\n🔸Phil & Dani🔸\n🔸Elhadj & Jenna🔸\n🔸Teresa & Emanuel🔸\n🔸O KLAN (Selele – Celmo – Joelson)🔸\n🔶DJS🔶\n🔸Miro Kikola🔸\n🔸Bakongo🔸\n🔸Guelas🔸\n🔸Mimo Silva🔸",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:11:35+00:00",
  "passes": [
   {
    "kind": "full",

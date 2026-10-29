@@ -1,23 +1,30 @@
 {
- "batch": "event-16875",
- "events": [
-  {
-   "event_id": 16875,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Urban Kiz"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "West Coast Swing",
-     "quote": "West Coast Swing"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "12fe935b1171580d",
+ "answer": {
+  "batch": "event-16875",
+  "events": [
+   {
+    "event_id": 16875,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "Urban Kiz"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "West Coast Swing",
+      "quote": "West Coast Swing"
+     }
+    ]
+   }
+  ]
+ }
 }

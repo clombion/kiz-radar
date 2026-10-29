@@ -1,26 +1,33 @@
 {
- "batch": "event-16369",
- "events": [
-  {
-   "event_id": 16369,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "High-energy workshops",
-     "rationale": "The description lists high-energy workshops as part of the event."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Sunset pool & beach party",
-     "rationale": "The quote names a sunset pool party as one of the event's activities."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "Sunset pool & beach party",
-     "rationale": "The same quote also names a beach party as one of the event's activities."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:28:49+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "e3a0e9a87babcf45",
+ "answer": {
+  "batch": "event-16369",
+  "events": [
+   {
+    "event_id": 16369,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "High-energy workshops",
+      "rationale": "The description lists high-energy workshops as part of the event."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "Sunset pool & beach party",
+      "rationale": "The description names a sunset pool party as one of the expected activities."
+     },
+     {
+      "feature": "beach_party",
+      "quote": "Sunset pool & beach party",
+      "rationale": "The same line names a beach party as one of the expected activities."
+     }
+    ]
+   }
+  ]
+ }
 }

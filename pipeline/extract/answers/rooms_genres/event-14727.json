@@ -1,23 +1,30 @@
 {
- "batch": "event-14727",
- "events": [
-  {
-   "event_id": 14727,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Kizomba Fusion",
-     "quote": "Welcome to the 6th edition of Dubai Kizomba Fusion"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "kizomba",
-     "quote": "one of the biggest kizomba brands in the world"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b5afee5da963fcc0",
+ "answer": {
+  "batch": "event-14727",
+  "events": [
+   {
+    "event_id": 14727,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Kizomba Fusion",
+      "quote": "Dubai Kizomba Fusion which is bigger"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "kizomba",
+      "quote": "one of the biggest kizomba brands in the world"
+     }
+    ]
+   }
+  ]
+ }
 }

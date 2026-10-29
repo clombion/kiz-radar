@@ -1,31 +1,38 @@
 {
- "batch": "event-14767",
- "events": [
-  {
-   "event_id": 14767,
-   "artists": [],
-   "features": [
-    {
-     "feature": "cruise",
-     "quote": "Come aboard the MSC Virtuosa, this magnificent cruise ship",
-     "rationale": "The description states the event takes place on the MSC Virtuosa cruise ship."
-    },
-    {
-     "feature": "live_music",
-     "quote": "quality concerts with well-known artists from the Caribbean and beyond",
-     "rationale": "The description promises concerts on board by artists from the Caribbean."
-    },
-    {
-     "feature": "shows",
-     "quote": "varied entertainment, shows, pools and jacuzzis",
-     "rationale": "The description lists shows as part of the on-board entertainment."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "all-inclusive (unlimited drinks and food)",
-     "rationale": "The all-inclusive package explicitly includes unlimited food, so meals are included."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:32+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "13ea49f34ea34f0f",
+ "answer": {
+  "batch": "event-14767",
+  "events": [
+   {
+    "event_id": 14767,
+    "artists": [],
+    "features": [
+     {
+      "feature": "cruise",
+      "quote": "this magnificent cruise ship will take you on a journey",
+      "rationale": "The description says the event takes place aboard a cruise ship, the MSC Virtuosa."
+     },
+     {
+      "feature": "live_music",
+      "quote": "quality concerts with well-known artists from the Caribbean and beyond",
+      "rationale": "Concerts with artists are offered on board, which counts as live music."
+     },
+     {
+      "feature": "shows",
+      "quote": "varied entertainment, shows, pools and jacuzzis",
+      "rationale": "The description explicitly lists shows as part of the on-board entertainment."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "all-inclusive (unlimited drinks and food)",
+      "rationale": "The cruise is described as all-inclusive with unlimited food and drinks, so meals are included in the package."
+     }
+    ]
+   }
+  ]
+ }
 }

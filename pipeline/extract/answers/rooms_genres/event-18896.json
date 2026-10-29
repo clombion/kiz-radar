@@ -1,18 +1,32 @@
 {
- "batch": "event-18896",
- "events": [
-  {
-   "event_id": 18896,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba na rua"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "e36fe54fb6433288",
+ "answer": {
+  "batch": "event-18896",
+  "events": [
+   {
+    "event_id": 18896,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Sala Gabos",
+      "kind": "party",
+      "genres": [],
+      "quote": "Sala Gabos"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba na rua"
+     }
+    ]
+   }
+  ]
+ }
 }

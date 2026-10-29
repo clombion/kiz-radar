@@ -1,225 +1,232 @@
 {
- "batch": "event-18489",
- "events": [
-  {
-   "event_id": 18489,
-   "artists": [
-    {
-     "name_as_written": "Michael y Mayra",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Michael y Mayra"
-    },
-    {
-     "name_as_written": "Issam & Charlott",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Issam & Charlott"
-    },
-    {
-     "name_as_written": "Mario y Nia",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Mario y Nia"
-    },
-    {
-     "name_as_written": "Gabriele y Melany",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Gabriele y Melany"
-    },
-    {
-     "name_as_written": "Salvatore y Silvia",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Salvatore y Silvia"
-    },
-    {
-     "name_as_written": "Marta y Mattias",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Marta y Mattias"
-    },
-    {
-     "name_as_written": "Larry y Martina",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Larry y Martina"
-    },
-    {
-     "name_as_written": "Riky y Anna",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Riky y Anna"
-    },
-    {
-     "name_as_written": "Deborah De Sabbata",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Deborah De Sabbata"
-    },
-    {
-     "name_as_written": "Samuele y Sofia",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Samuele y Sofia"
-    },
-    {
-     "name_as_written": "Angelo y Daisy",
-     "role": "teacher",
-     "style": "BACHATA",
-     "country": null,
-     "source_line": "Angelo y Daisy"
-    },
-    {
-     "name_as_written": "Jesus y Anni",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Jesus y Anni"
-    },
-    {
-     "name_as_written": "Jp & Stephy",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Jp & Stephy"
-    },
-    {
-     "name_as_written": "Donald Wilson",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Donald Wilson"
-    },
-    {
-     "name_as_written": "Matar",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Matar"
-    },
-    {
-     "name_as_written": "Stefy & Umberto",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Stefy & Umberto"
-    },
-    {
-     "name_as_written": "Nicola & Sara",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Nicola & Sara"
-    },
-    {
-     "name_as_written": "Henry & Silway",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Henry & Silway"
-    },
-    {
-     "name_as_written": "Alay & Lara",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Alay & Lara"
-    },
-    {
-     "name_as_written": "Luca & Ambra",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Luca & Ambra"
-    },
-    {
-     "name_as_written": "Sergio & Selena",
-     "role": "teacher",
-     "style": "KIZOMBA",
-     "country": null,
-     "source_line": "Sergio & Selena"
-    },
-    {
-     "name_as_written": "Maykel Fonts",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Maykel Fonts"
-    },
-    {
-     "name_as_written": "Federico y Anna",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Federico y Anna"
-    },
-    {
-     "name_as_written": "Gabriele y Francesca",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Gabriele y Francesca"
-    },
-    {
-     "name_as_written": "Aaron y Giorgia",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Aaron y Giorgia"
-    },
-    {
-     "name_as_written": "Francois",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Francois"
-    },
-    {
-     "name_as_written": "Glauco & Manuela",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Glauco & Manuela"
-    },
-    {
-     "name_as_written": "Salsa Karibéa Dance & Rhythm",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Salsa Karibéa Dance & Rhythm"
-    },
-    {
-     "name_as_written": "Antoine y Gaia",
-     "role": "teacher",
-     "style": "SALSA",
-     "country": null,
-     "source_line": "Antoine y Gaia"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "3 disciplines taught by international and national artists",
-     "rationale": "The description says the three disciplines are taught by artists, so dance classes are part of the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Ca’Luxury Festival AFFILIATED ROOMS",
-     "rationale": "The affiliated hotel rooms with negotiated rates are offered, but they are sold separately from the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:32:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d95b7278c3179a34",
+ "answer": {
+  "batch": "event-18489",
+  "events": [
+   {
+    "event_id": 18489,
+    "artists": [
+     {
+      "name_as_written": "Michael y Mayra",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Michael y Mayra"
+     },
+     {
+      "name_as_written": "Issam & Charlott",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Issam & Charlott"
+     },
+     {
+      "name_as_written": "Mario y Nia",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Mario y Nia"
+     },
+     {
+      "name_as_written": "Gabriele y Melany",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Gabriele y Melany"
+     },
+     {
+      "name_as_written": "Salvatore y Silvia",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Salvatore y Silvia"
+     },
+     {
+      "name_as_written": "Marta y Mattias",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Marta y Mattias"
+     },
+     {
+      "name_as_written": "Larry y Martina",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Larry y Martina"
+     },
+     {
+      "name_as_written": "Riky y Anna",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Riky y Anna"
+     },
+     {
+      "name_as_written": "Deborah De Sabbata",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Deborah De Sabbata"
+     },
+     {
+      "name_as_written": "Samuele y Sofia",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Samuele y Sofia"
+     },
+     {
+      "name_as_written": "Angelo y Daisy",
+      "role": "teacher",
+      "style": "BACHATA",
+      "country": null,
+      "source_line": "Angelo y Daisy"
+     },
+     {
+      "name_as_written": "Jesus y Anni",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Jesus y Anni"
+     },
+     {
+      "name_as_written": "Jp & Stephy",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Jp & Stephy"
+     },
+     {
+      "name_as_written": "Donald Wilson",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Donald Wilson"
+     },
+     {
+      "name_as_written": "Matar",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Matar"
+     },
+     {
+      "name_as_written": "Stefy & Umberto",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Stefy & Umberto"
+     },
+     {
+      "name_as_written": "Nicola & Sara",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Nicola & Sara"
+     },
+     {
+      "name_as_written": "Henry & Silway",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Henry & Silway"
+     },
+     {
+      "name_as_written": "Alay & Lara",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Alay & Lara"
+     },
+     {
+      "name_as_written": "Luca & Ambra",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Luca & Ambra"
+     },
+     {
+      "name_as_written": "Sergio & Selena",
+      "role": "teacher",
+      "style": "KIZOMBA",
+      "country": null,
+      "source_line": "Sergio & Selena"
+     },
+     {
+      "name_as_written": "Maykel Fonts",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Maykel Fonts"
+     },
+     {
+      "name_as_written": "Federico y Anna",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Federico y Anna"
+     },
+     {
+      "name_as_written": "Gabriele y Francesca",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Gabriele y Francesca"
+     },
+     {
+      "name_as_written": "Aaron y Giorgia",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Aaron y Giorgia"
+     },
+     {
+      "name_as_written": "Francois",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Francois"
+     },
+     {
+      "name_as_written": "Glauco & Manuela",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Glauco & Manuela"
+     },
+     {
+      "name_as_written": "Salsa Karibéa Dance & Rhythm",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Salsa Karibéa Dance & Rhythm"
+     },
+     {
+      "name_as_written": "Antoine y Gaia",
+      "role": "teacher",
+      "style": "SALSA",
+      "country": null,
+      "source_line": "Antoine y Gaia"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "3 disciplines taught by international and national artists",
+      "rationale": "The description states that three dance disciplines are taught, so classes are part of the event."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Ca’Luxury Festival AFFILIATED ROOMS",
+      "rationale": "Hotel BHR is listed as an affiliated hotel with negotiated room rates, while accommodation is not part of the full pass."
+     }
+    ]
+   }
+  ]
+ }
 }

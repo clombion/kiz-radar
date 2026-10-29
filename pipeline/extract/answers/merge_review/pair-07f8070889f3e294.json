@@ -1,0 +1,13 @@
+{
+ "key_a": "p:enora@enora+pdjay",
+ "key_b": "p:enora@enora+pidjay",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "07f8070889f3e294",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are stated as French (FR) with the same name, but their partners are written differently (pdjay vs pidjay) and side A's events are in Spain while side B's are in France, Sweden and Switzerland, so the evidence does not settle whether these are one artist or two."
+ }
+}

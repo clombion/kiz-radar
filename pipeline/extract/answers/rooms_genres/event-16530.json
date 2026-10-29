@@ -1,38 +1,45 @@
 {
- "batch": "event-16530",
- "events": [
-  {
-   "event_id": 16530,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "100% Kizomba & Semba party nights"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "100% Kizomba & Semba party nights"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrobeat",
-     "quote": "Kizomba • Semba • Afrobeat • Zouk • Kompa"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "Zouk",
-     "quote": "Kizomba • Semba • Afrobeat • Zouk • Kompa"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Kompa",
-     "quote": "Kizomba • Semba • Afrobeat • Zouk • Kompa"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:15+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "467bd62ea7ab8684",
+ "answer": {
+  "batch": "event-16530",
+  "events": [
+   {
+    "event_id": 16530,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "100% Kizomba & Semba party nights"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "100% Kizomba & Semba party nights"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afrobeat",
+      "quote": "Afrobeat"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "Zouk",
+      "quote": "Zouk"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Kompa",
+      "quote": "Kompa"
+     }
+    ]
+   }
+  ]
+ }
 }

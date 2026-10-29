@@ -1,43 +1,55 @@
 {
- "batch": "event-19552",
- "events": [
-  {
-   "event_id": 19552,
-   "artists": [
-    {
-     "name_as_written": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔 𝗧𝗘𝗔𝗠",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🌟 𝗕𝗔𝗖𝗛𝗔𝗧𝗔 𝗧𝗘𝗔𝗠 🌟"
-    },
-    {
-     "name_as_written": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔 𝗧𝗘𝗔𝗠",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💛 𝗞𝗜𝗭𝗢𝗠𝗕𝗔 𝗧𝗘𝗔𝗠 💛"
-    },
-    {
-     "name_as_written": "𝗔𝗟𝗟-𝗧𝗢𝗚𝗘𝗧𝗛𝗘𝗥 𝗧𝗘𝗔𝗠",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 𝗔𝗟𝗟-𝗧𝗢𝗚𝗘𝗧𝗛𝗘𝗥 𝗧𝗘𝗔𝗠 🔥"
-    }
-   ],
-   "features": [
-    {
-     "feature": "multiple_rooms",
-     "quote": "Salle 100% BACHATA",
-     "rationale": "The event lists two separate dance rooms, one 100% bachata and one 100% kizomba."
-    },
-    {
-     "feature": "camping",
-     "quote": "Camping — Emplacement tentes",
-     "rationale": "The accommodation options include camping with tent pitches on the site."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "cc652aad5c2ef6fa",
+ "answer": {
+  "batch": "event-19552",
+  "events": [
+   {
+    "event_id": 19552,
+    "artists": [
+     {
+      "name_as_written": "𝗕𝗔𝗖𝗛𝗔𝗧𝗔 𝗧𝗘𝗔𝗠",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🌟 𝗕𝗔𝗖𝗛𝗔𝗧𝗔 𝗧𝗘𝗔𝗠 🌟"
+     },
+     {
+      "name_as_written": "𝗞𝗜𝗭𝗢𝗠𝗕𝗔 𝗧𝗘𝗔𝗠",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "💛 𝗞𝗜𝗭𝗢𝗠𝗕𝗔 𝗧𝗘𝗔𝗠 💛"
+     },
+     {
+      "name_as_written": "𝗔𝗟𝗟-𝗧𝗢𝗚𝗘𝗧𝗛𝗘𝗥 𝗧𝗘𝗔𝗠",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 𝗔𝗟𝗟-𝗧𝗢𝗚𝗘𝗧𝗛𝗘𝗥 𝗧𝗘𝗔𝗠 🔥"
+     }
+    ],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "Salle 100% BACHATA",
+      "rationale": "The description lists two separate dance rooms, one 100% bachata and one 100% kizomba."
+     },
+     {
+      "feature": "camping",
+      "quote": "Camping — Emplacement tentes",
+      "rationale": "The accommodation list includes a campsite with pitches for tents."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "Découvre le domaine : Western City",
+      "rationale": "Accommodation is offered on the same domain, Western City, where the festival takes place."
+     }
+    ]
+   }
+  ]
+ }
 }

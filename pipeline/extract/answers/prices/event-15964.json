@@ -1,86 +1,73 @@
 {
- "batch": "event-15964",
- "events": [
-  {
-   "event_id": 15964,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 650.0,
-       "currency": "DKK",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "Super Supporter Passes: 650kr (SOLD OUT!)"
-      },
-      {
-       "amount": 700.0,
-       "currency": "DKK",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "Early Bird Passes: 700kr (SOLD OUT!)"
-      },
-      {
-       "amount": 750.0,
-       "currency": "DKK",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "December batch: 750kr (SOLD OUT!)"
-      },
-      {
-       "amount": 800.0,
-       "currency": "DKK",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": true,
-       "current": false,
-       "quote": "January batch: 800kr (SOLD OUT)"
-      },
-      {
-       "amount": 875.0,
-       "currency": "DKK",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "February batch: 875kr (Price increase of 1st of March"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:42:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "84f8321b6c976a78",
+ "answer": {
+  "batch": "event-15964",
+  "events": [
+   {
+    "event_id": 15964,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 650.0,
+        "currency": "DKK",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": true,
+        "quote": "Super Supporter Passes: 650kr (SOLD OUT!)"
+       },
+       {
+        "amount": 700.0,
+        "currency": "DKK",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": true,
+        "quote": "Early Bird Passes: 700kr (SOLD OUT!)"
+       },
+       {
+        "amount": 750.0,
+        "currency": "DKK",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": true,
+        "quote": "December batch: 750kr (SOLD OUT!)"
+       },
+       {
+        "amount": 800.0,
+        "currency": "DKK",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": true,
+        "quote": "January batch: 800kr (SOLD OUT)"
+       },
+       {
+        "amount": 875.0,
+        "currency": "DKK",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "February batch: 875kr"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

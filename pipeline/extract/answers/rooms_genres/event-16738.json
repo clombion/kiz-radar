@@ -1,18 +1,25 @@
 {
- "batch": "event-16738",
- "events": [
-  {
-   "event_id": 16738,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Five years celebrating the magic of Kizomba together."
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "458badce93ffe763",
+ "answer": {
+  "batch": "event-16738",
+  "events": [
+   {
+    "event_id": 16738,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "celebrating the magic of Kizomba together"
+     }
+    ]
+   }
+  ]
+ }
 }

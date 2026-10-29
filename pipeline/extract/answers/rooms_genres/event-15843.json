@@ -1,58 +1,60 @@
 {
- "batch": "event-15843",
- "events": [
-  {
-   "event_id": 15843,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "50%: Kizomba – Semba – Coladeira – Cabozouk"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "50%: Kizomba – Semba – Coladeira – Cabozouk"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Coladeira",
-     "quote": "50%: Kizomba – Semba – Coladeira – Cabozouk"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Cabozouk",
-     "quote": "50%: Kizomba – Semba – Coladeira – Cabozouk"
-    },
-    {
-     "genre": "zouk",
-     "genre_as_written": "GhettoZouk",
-     "quote": "50%: GhettoZouk – Tarraxinha – Afropop – Afrohouse"
-    },
-    {
-     "genre": "tarraxinha",
-     "genre_as_written": "Tarraxinha",
-     "quote": "50%: GhettoZouk – Tarraxinha – Afropop – Afrohouse"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afropop",
-     "quote": "50%: GhettoZouk – Tarraxinha – Afropop – Afrohouse"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afrohouse",
-     "quote": "50%: GhettoZouk – Tarraxinha – Afropop – Afrohouse"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "Laly & Chris’Py – Urban Kiz 🇫🇷"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:37:04+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "1bc12add6d80a107",
+ "answer": {
+  "batch": "event-15843",
+  "events": [
+   {
+    "event_id": 15843,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "50%: Kizomba – Semba – Coladeira – Cabozouk"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Titia & Mehdi – Semba"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "Urban Kiz"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Coladeira",
+      "quote": "Coladeira"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Cabozouk",
+      "quote": "Cabozouk"
+     },
+     {
+      "genre": "zouk",
+      "genre_as_written": "GhettoZouk",
+      "quote": "GhettoZouk"
+     },
+     {
+      "genre": "tarraxinha",
+      "genre_as_written": "Tarraxinha",
+      "quote": "Tarraxinha"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afropop",
+      "quote": "Afropop"
+     }
+    ]
+   }
+  ]
+ }
 }

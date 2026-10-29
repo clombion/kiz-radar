@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mario@carla+mario",
+ "key_b": "p:mario@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e2ead0b463f0d46d",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A 'MARIO' is linked to partner carla@carla+mario and countries AO and FR, while side B 'DJ Mario' has only FR and no partners; the DJ prefix and shared French country are suggestive, but the generic first name Mario and A's partnered couple with a different country (AO) leave the evidence unable to settle the match, and side A has no mentions in the supplied data to compare."
+ }
+}

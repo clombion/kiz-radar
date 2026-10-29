@@ -134,7 +134,7 @@ POINTS = (
     P('fee', 'Fee', 'each price tier, by its booking fee', 'the prices pass; the first read'),
     P('re_read', 'Recheck', 'a festival with a first read, by when its page is read again', 'tickets_store.recheck'),
     P('first_read', 'FirstRead', 'a festival, by whether it needs a (new) first read', 'tickets_state.why_first_read'),
-    P('answer', 'AnswerState', "a festival's answer of one extraction pass", 'ask.answer_state'),
+    P('answer', 'AnswerState', "a festival's answer of one extraction pass", 'answers.state'),
     P(
         'waits_for',
         'Waiting',
@@ -166,7 +166,6 @@ POINTS = (
     P('home_basis', 'HomeBasis', "an artist's home country, by how it is known", 'build_site_db'),
     P('merge_decision', 'MergeDecision', 'each artist merge reviewed', 'the merge review; a merge claim'),
     P('merge_reason', 'MergeReason', 'each pair of artists that may be one, for the merge review', 'resolve_artists'),
-    P('pending', 'Pending', 'a festival waiting for its extraction passes', 'scrape'),
     P(
         'suggestion_countries',
         'SuggestionCountries',
@@ -396,6 +395,13 @@ ROWS = (
         owner='the next run',
     ),
     S('first_read', 'redo_description', 'the description changed since the first read', WAITS, owner='the next run'),
+    S(
+        'first_read',
+        'redo_festival',
+        "the festival's title, dates, country or dance styles changed since the first read",
+        WAITS,
+        owner='the next run',
+    ),
     S('first_read', 'redo_page', 'the ticket page changed since the first read', WAITS, owner='the next run'),
     S('first_read', 'redo_unread', 'the page shows tickets the first read does not know', WAITS, owner='the next run'),
     S(
@@ -406,12 +412,17 @@ ROWS = (
         owner='agent: settle it',
     ),
     S('answer', 'none', 'the festival has no answer of the pass', WAITS, owner='the next run'),
-    S('answer', 'current', 'its answer was asked with the current prompt, of the current description', KEPT),
+    S(
+        'answer',
+        'current',
+        'its answer answered the current prompt and the message the festival would be asked with today',
+        KEPT,
+    ),
     S(
         'answer',
         'stale',
-        'its answer was asked with another prompt (it is not loaded), or before its description last changed '
-        '(pending_extraction; it stays loaded until asked again)',
+        'its answer answered another prompt, or another message: the festival changed since (its description, title, '
+        'dates or country, or for the prices pass the styles its genres give); it is not loaded until asked again',
         WAITS,
         owner='the next run',
     ),
@@ -839,8 +850,6 @@ ROWS = (
         KEPT,
         made_by='merge_suggestions',
     ),
-    S('pending', 'new', 'the festival is new', WAITS, owner='the next run'),
-    S('pending', 'description changed', 'its description changed', WAITS, owner='the next run'),
     S('suggestion_countries', 'unknown', 'line-ups state no country for one of the two', KEPT),
     S('suggestion_countries', 'same', 'line-ups state a country for both that they share', KEPT),
     S('suggestion_countries', 'different', 'line-ups state countries for both, and they share none', KEPT),

@@ -1,39 +1,46 @@
 {
- "batch": "event-15326",
- "events": [
-  {
-   "event_id": 15326,
-   "artists": [
-    {
-     "name_as_written": "Daniel Schauenburg",
-     "role": "teacher",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "🕺🏻 Daniel Schauenburg 🇩🇪"
-    },
-    {
-     "name_as_written": "Crazy Kiz Events",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "🔹 FB Page: Crazy Kiz Events ⤵️ https://www.facebook.com/CrazyKizEvents"
-    },
-    {
-     "name_as_written": "Snezhana Dimitrova",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "▪️ Manager: Snezhana Dimitrova https://www.facebook.com/sneja.dimitrova"
-    },
-    {
-     "name_as_written": "Luca Arrigoni",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "▪️ Art Director: Luca Arrigoni https://www.facebook.com/LucaKiz1985"
-    }
-   ],
-   "features": []
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:24:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "49c4e27a87b8b312",
+ "answer": {
+  "batch": "event-15326",
+  "events": [
+   {
+    "event_id": 15326,
+    "artists": [
+     {
+      "name_as_written": "Crazy Kiz Events",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "🔹 FB Page: Crazy Kiz Events ⤵️ https://www.facebook.com/CrazyKizEvents"
+     },
+     {
+      "name_as_written": "Snezhana Dimitrova",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "▪️ Manager: Snezhana Dimitrova https://www.facebook.com/sneja.dimitrova"
+     },
+     {
+      "name_as_written": "Luca Arrigoni",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "▪️ Art Director: Luca Arrigoni https://www.facebook.com/LucaKiz1985"
+     },
+     {
+      "name_as_written": "Daniel Schauenburg",
+      "role": "teacher",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "🕺🏻 Daniel Schauenburg 🇩🇪"
+     }
+    ],
+    "features": []
+   }
+  ]
+ }
 }

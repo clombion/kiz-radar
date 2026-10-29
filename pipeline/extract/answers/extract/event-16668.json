@@ -1,61 +1,61 @@
 {
- "batch": "event-16668",
- "events": [
-  {
-   "event_id": 16668,
-   "artists": [
-    {
-     "name_as_written": "@elisaveta_hristova",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "@elisaveta_hristova"
-    },
-    {
-     "name_as_written": "@pambos.agapiou",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "@pambos.agapiou"
-    }
-   ],
-   "features": [
-    {
-     "feature": "pool_party",
-     "quote": "Access to all daytime pool parties with animators.",
-     "rationale": "The description lists access to daytime pool parties as part of the event."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Access to all dance lessons and seminars",
-     "rationale": "Dance lessons and seminars with instructors are included in the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "Access and participation (at the request of the participants) in the evening shows.",
-     "rationale": "Evening shows are offered to participants as part of the event."
-    },
-    {
-     "feature": "competition",
-     "quote": "shows, lessons and competitions",
-     "rationale": "Competitions are named as part of the event programme."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Package of Full Pass & Accomodation & Breakfasts & Dinners till 15 August 2026",
-     "rationale": "The package with the full pass explicitly includes accommodation."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Half board buffet meals – breakfasts & dinners",
-     "rationale": "Half board meals are listed as included in the prices."
-    },
-    {
-     "feature": "all_in_one",
-     "quote": "Accommodation of the participants in the hotel of the event",
-     "rationale": "The event takes place in the hotel where participants are accommodated."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:29:57+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "2123aa5d772279d6",
+ "answer": {
+  "batch": "event-16668",
+  "events": [
+   {
+    "event_id": 16668,
+    "artists": [
+     {
+      "name_as_written": "lospambosevents",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "✔️Book your spot now: https://lospambosevents.com/"
+     }
+    ],
+    "features": [
+     {
+      "feature": "pool_party",
+      "quote": "pool parties",
+      "rationale": "The description lists pool parties as part of the six days of the festival."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Access to all dance lessons and seminars",
+      "rationale": "Access to dance lessons and seminars is included, which are dance classes that are part of the event."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Package of Full Pass & Accomodation",
+      "rationale": "The package combines the full pass with accommodation, so accommodation is included in the pass."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "HB : Breakfasts & Dinners",
+      "rationale": "Half board breakfasts and dinners are listed as part of the package."
+     },
+     {
+      "feature": "all_in_one",
+      "quote": "Accommodation of the participants in the hotel of the event",
+      "rationale": "Participants are accommodated in the same hotel where the event takes place."
+     },
+     {
+      "feature": "shows",
+      "quote": "Access and participation (at the request of the participants) in the evening shows",
+      "rationale": "Evening shows are offered as part of the included access."
+     },
+     {
+      "feature": "competition",
+      "quote": "shows, lessons and competitions",
+      "rationale": "Competitions are named as part of the event's program."
+     }
+    ]
+   }
+  ]
+ }
 }

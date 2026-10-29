@@ -1,49 +1,58 @@
 {
- "batch": "event-19534",
- "events": [
-  {
-   "event_id": 19534,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "THE TRIP INCLUDES",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 1550.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": true,
-       "quote": "CURRENT PRICE: €1,550"
-      },
-      {
-       "amount": 1650.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Next price tier: €1,650."
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Prices increase in tiers based on availability."
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:46:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b318f5a568c88d78",
+ "answer": {
+  "batch": "event-19534",
+  "events": [
+   {
+    "event_id": 19534,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "🎟️ Full Pass",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 1550.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": true
+        },
+        "sold_out": false,
+        "quote": "CURRENT PRICE: €1,550"
+       },
+       {
+        "amount": 1650.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Next price tier: €1,650."
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Prices increase in tiers based on availability."
+    ]
+   }
+  ]
+ }
 }

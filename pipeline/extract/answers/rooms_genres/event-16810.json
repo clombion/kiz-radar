@@ -1,23 +1,33 @@
 {
- "batch": "event-16810",
- "events": [
-  {
-   "event_id": 16810,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Because Kizomba and Semba are more than dance,"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d7ac4c5ec6626a5f",
+ "answer": {
+  "batch": "event-16810",
+  "events": [
+   {
+    "event_id": 16810,
+    "party_rooms": {
+     "count": 2,
+     "quote": "3 night parties with top DJs"
     },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Because Kizomba and Semba are more than dance,"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Because Kizomba and Semba are more than dance,"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Because Kizomba and Semba are more than dance,"
+     }
+    ]
+   }
+  ]
+ }
 }

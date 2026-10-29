@@ -1,38 +1,45 @@
 {
- "batch": "event-15682",
- "events": [
-  {
-   "event_id": 15682,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "your passion for Salsa, Bachata, Kizomba, Samba, and Afro"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "your passion for Salsa, Bachata, Kizomba, Samba, and Afro"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "your passion for Salsa, Bachata, Kizomba, Samba, and Afro"
-    },
-    {
-     "genre": "other",
-     "genre_as_written": "Samba",
-     "quote": "your passion for Salsa, Bachata, Kizomba, Samba, and Afro"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "your passion for Salsa, Bachata, Kizomba, Samba, and Afro"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "57bb850c87d77a1d",
+ "answer": {
+  "batch": "event-15682",
+  "events": [
+   {
+    "event_id": 15682,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "passion for Salsa, Bachata, Kizomba, Samba, and Afro"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "passion for Salsa, Bachata, Kizomba, Samba, and Afro"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "passion for Salsa, Bachata, Kizomba, Samba, and Afro"
+     },
+     {
+      "genre": "other",
+      "genre_as_written": "Samba",
+      "quote": "passion for Salsa, Bachata, Kizomba, Samba, and Afro"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "passion for Salsa, Bachata, Kizomba, Samba, and Afro"
+     }
+    ]
+   }
+  ]
+ }
 }

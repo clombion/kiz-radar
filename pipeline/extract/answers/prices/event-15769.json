@@ -1,36 +1,96 @@
 {
- "batch": "event-15769",
- "events": [
-  {
-   "event_id": 15769,
-   "passes": [
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": "23:00 – 04:00 Pre Party",
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 10.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "Price 10€ (Not included FP)"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "❌ PRICES INCREASE ❌"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:42:33+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "77c5f583e4a15252",
+ "answer": {
+  "batch": "event-15769",
+  "events": [
+   {
+    "event_id": 15769,
+    "passes": [
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": "23:00 – 04:00 Pre Party",
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 10.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "Price 10€ (Not included FP)"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 36.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "✨36€ Room & Breakfast"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 50.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "✨50€ Half Board"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 73.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "✨73€ ALL INCLUSIVE 👇🏼"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "❌ PRICES INCREASE ❌"
+    ]
+   }
+  ]
+ }
 }

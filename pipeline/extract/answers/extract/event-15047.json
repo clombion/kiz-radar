@@ -1,26 +1,38 @@
 {
- "batch": "event-15047",
- "events": [
-  {
-   "event_id": 15047,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "10 hours of workshops.",
-     "rationale": "The description states that 10 hours of workshops are part of the festival."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "1 100,000% Kizomba room / 1 Salsa Bachata Fun room.",
-     "rationale": "The festival lists two separate dance rooms."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Official Hotel on site:",
-     "rationale": "A named official hotel is recommended, with a festival offer rate that is not part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:24:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "43074503aa4582e0",
+ "answer": {
+  "batch": "event-15047",
+  "events": [
+   {
+    "event_id": 15047,
+    "artists": [],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "hotels across the street (ALL IN ONE)",
+      "rationale": "The description states that the hotels are across the street from the venue and labels the setup ALL IN ONE, so event and accommodation share one location."
+     },
+     {
+      "feature": "workshops",
+      "quote": "10 hours of workshops",
+      "rationale": "The festival offers 10 hours of workshops as part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "1 100,000% Kizomba room / 1 Salsa Bachata Fun room",
+      "rationale": "The festival lists two separate dance rooms, a Kizomba room and a Salsa Bachata Fun room."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Official Hotel on site:",
+      "rationale": "The description names an official hotel and gives a festival offer rate, with breakfast excluded and no accommodation included in the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

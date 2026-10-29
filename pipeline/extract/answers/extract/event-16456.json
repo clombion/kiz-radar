@@ -1,194 +1,206 @@
 {
- "batch": "event-16456",
- "events": [
-  {
-   "event_id": 16456,
-   "artists": [
-    {
-     "name_as_written": "Sol",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Sol"
-    },
-    {
-     "name_as_written": "Ami Emirato & Yanna K",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Ami Emirato & Yanna K"
-    },
-    {
-     "name_as_written": "Chrysoula and Joanna",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Chrysoula and Joanna"
-    },
-    {
-     "name_as_written": "Tamba",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Tamba"
-    },
-    {
-     "name_as_written": "Andreas",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Andreas"
-    },
-    {
-     "name_as_written": "Rohan Brown",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Rohan Brown"
-    },
-    {
-     "name_as_written": "David and Laura",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "David and Laura"
-    },
-    {
-     "name_as_written": "Harvey Reddington",
-     "role": "teacher",
-     "style": "Urbankiz",
-     "country": null,
-     "source_line": "Harvey Reddington – Urbankiz"
-    },
-    {
-     "name_as_written": "Maribel",
-     "role": "teacher",
-     "style": "Urbankiz",
-     "country": null,
-     "source_line": "Maribel -Urbankiz"
-    },
-    {
-     "name_as_written": "Sal K",
-     "role": "teacher",
-     "style": "kizomba/semba",
-     "country": null,
-     "source_line": "Sal K – kizomba/semba"
-    },
-    {
-     "name_as_written": "Theo",
-     "role": "teacher",
-     "style": "Kizomba/Semba",
-     "country": null,
-     "source_line": "Theo – Kizomba/Semba"
-    },
-    {
-     "name_as_written": "Diana",
-     "role": "teacher",
-     "style": "Urbankiz",
-     "country": null,
-     "source_line": "Diana – Urbankiz"
-    },
-    {
-     "name_as_written": "Super Dixon",
-     "role": "teacher",
-     "style": "Kizomba and Urbankiz",
-     "country": null,
-     "source_line": "Super Dixon"
-    },
-    {
-     "name_as_written": "Mani",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Mani – Salsa"
-    },
-    {
-     "name_as_written": "Tamba",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Tamba – Salsa"
-    },
-    {
-     "name_as_written": "Andreas",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Andreas – Salsa"
-    },
-    {
-     "name_as_written": "Chrysola",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Chrysola – Bachata"
-    },
-    {
-     "name_as_written": "Ami",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Ami – Bachata"
-    },
-    {
-     "name_as_written": "Theo",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Theo – Kizomba"
-    },
-    {
-     "name_as_written": "Dixon",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Dixon – Kizomba"
-    },
-    {
-     "name_as_written": "Theo and Diana",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Theo and Diana"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "World-Class Workshops & Social Dancing",
-     "rationale": "The event offers workshops as part of the programme."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Workshops for all levels with top instructors",
-     "rationale": "The workshops are explicitly stated to be for all levels."
-    },
-    {
-     "feature": "shows",
-     "quote": "Performances by international and local artists",
-     "rationale": "Artists give performances at the event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Music Rooms: Salsa/Bachata & Kizomba",
-     "rationale": "The event has two music rooms."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Hand-picked taxi dancers to keep you on the floor",
-     "rationale": "Taxi dancers are stated to be present."
-    },
-    {
-     "feature": "bootcamp_intensive",
-     "quote": "Lady-style boot camp for those looking to level up",
-     "rationale": "A boot camp training course is offered."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Theme Nights",
-     "rationale": "The event announces theme nights."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:29:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d23b5bd02e0bdcef",
+ "answer": {
+  "batch": "event-16456",
+  "events": [
+   {
+    "event_id": 16456,
+    "artists": [
+     {
+      "name_as_written": "Sol",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Sol"
+     },
+     {
+      "name_as_written": "Ami Emirato & Yanna K",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Ami Emirato & Yanna K"
+     },
+     {
+      "name_as_written": "Chrysoula and Joanna",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Chrysoula and Joanna"
+     },
+     {
+      "name_as_written": "Tamba",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Tamba"
+     },
+     {
+      "name_as_written": "Andreas",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Andreas"
+     },
+     {
+      "name_as_written": "Rohan Brown",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Rohan Brown"
+     },
+     {
+      "name_as_written": "David and Laura",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "David and Laura"
+     },
+     {
+      "name_as_written": "Harvey Reddington",
+      "role": "teacher",
+      "style": "Urbankiz",
+      "country": null,
+      "source_line": "Harvey Reddington – Urbankiz"
+     },
+     {
+      "name_as_written": "Maribel",
+      "role": "teacher",
+      "style": "Urbankiz",
+      "country": null,
+      "source_line": "Maribel -Urbankiz"
+     },
+     {
+      "name_as_written": "Sal K",
+      "role": "teacher",
+      "style": "kizomba/semba",
+      "country": null,
+      "source_line": "Sal K – kizomba/semba"
+     },
+     {
+      "name_as_written": "Theo",
+      "role": "teacher",
+      "style": "Kizomba/Semba",
+      "country": null,
+      "source_line": "Theo – Kizomba/Semba"
+     },
+     {
+      "name_as_written": "Diana",
+      "role": "teacher",
+      "style": "Urbankiz",
+      "country": null,
+      "source_line": "Diana – Urbankiz"
+     },
+     {
+      "name_as_written": "Super Dixon",
+      "role": "teacher",
+      "style": "Kizomba and Urbankiz",
+      "country": null,
+      "source_line": "Super Dixon"
+     },
+     {
+      "name_as_written": "Mani",
+      "role": "dj",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Mani – Salsa"
+     },
+     {
+      "name_as_written": "Tamba",
+      "role": "dj",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Tamba – Salsa"
+     },
+     {
+      "name_as_written": "Andreas",
+      "role": "dj",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Andreas – Salsa"
+     },
+     {
+      "name_as_written": "Chrysola",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Chrysola – Bachata"
+     },
+     {
+      "name_as_written": "Ami",
+      "role": "dj",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Ami – Bachata"
+     },
+     {
+      "name_as_written": "Theo",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Theo – Kizomba"
+     },
+     {
+      "name_as_written": "Dixon",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dixon – Kizomba"
+     },
+     {
+      "name_as_written": "Theo and Diana",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Theo and Diana"
+     }
+    ],
+    "features": [
+     {
+      "feature": "live_music",
+      "quote": "International DJs & Live Performances",
+      "rationale": "The line advertises live performances alongside the DJs."
+     },
+     {
+      "feature": "shows",
+      "quote": "Performances by international and local artists",
+      "rationale": "The description promises performances by artists at the event."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Workshops for all levels with top instructors",
+      "rationale": "The event offers workshops taught by instructors."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Workshops for all levels with top instructors",
+      "rationale": "The workshops are stated to be open to all levels."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "Hand-picked taxi dancers to keep you on the floor",
+      "rationale": "Taxi dancers are explicitly stated to be present."
+     },
+     {
+      "feature": "bootcamp_intensive",
+      "quote": "Lady-style boot camp for those looking to level up",
+      "rationale": "A boot camp training course is offered."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 Music Rooms: Salsa/Bachata & Kizomba",
+      "rationale": "There are two music rooms, so more than one dance floor."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Theme Nights",
+      "rationale": "The event lists theme nights as part of its programme."
+     }
+    ]
+   }
+  ]
+ }
 }

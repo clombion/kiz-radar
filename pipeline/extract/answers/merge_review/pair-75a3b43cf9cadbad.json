@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ben@dj",
+ "key_b": "p:bentheentertainer",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "75a3b43cf9cadbad",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The 'DJ Ben' side is a DJ in Germany and France/Toulouse with Kizomba, while 'Ben TheEntertainer' is a teacher at a UK event with flags FR, GB and SN; both share France and Kizomba, but 'Ben' is a common first name, no partner links them, and the event countries never meet, so the evidence does not settle whether they are one artist."
+ }
+}

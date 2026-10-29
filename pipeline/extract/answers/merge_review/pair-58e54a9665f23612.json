@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ziggy@dani+ziggy",
+ "key_b": "p:ziggy@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "58e54a9665f23612",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides list the same stage name (Ziggy, with and without a DJ prefix), the same stated country (BG) and the same event country (Ireland), and the DJ-prefix case matches the rule's example of one artist, though side A's partner (dani) is absent from side B."
+ }
+}

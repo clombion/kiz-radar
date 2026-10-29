@@ -2,13 +2,15 @@
  "event_id": 18919,
  "title": "Kizomba Barcelona CONGRESS 2027 – Official Event",
  "start_date": "2027-04-02",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:39:13+00:00",
+ "end_date": "2027-04-04",
+ "country": "Spain",
  "styles": [
   "kizomba"
  ],
  "description": "Kizomba Barcelona CONGRESS 2027 – 11ª Edición\nLloret de Mar, España\nEarly Bird disponible hasta final de abril.",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:19:50+00:00",
  "passes": [
   {
    "kind": "full",

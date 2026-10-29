@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ichigo@dj",
+ "key_b": "p:ichigo@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "075d0398b57602c4",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "This is one key compared with itself, so the mentions are identical; the evidence shows one stage name used across France, Czech Republic, Italy, Romania and Sweden, with a French flag on several mentions, but a single generic name stated across many countries could equally be several DJs sharing it, and nothing (partner, full name) settles which."
+ }
+}

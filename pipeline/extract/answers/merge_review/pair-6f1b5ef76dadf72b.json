@@ -1,0 +1,13 @@
+{
+ "key_a": "p:stef@sonia+stef",
+ "key_b": "p:stefkizz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6f1b5ef76dadf72b",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side A 'Stef' and side B 'Stef Kizz' share the partner Sonia, and both have events in Germany, with the shorter name a prefix of the longer one, which matches the short-form-with-same-partner pattern."
+ }
+}

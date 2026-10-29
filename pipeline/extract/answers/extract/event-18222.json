@@ -1,31 +1,38 @@
 {
- "batch": "event-18222",
- "events": [
-  {
-   "event_id": 18222,
-   "artists": [],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "𝗔𝗹𝗹 𝗶𝗻 𝗢𝗻𝗲",
-     "rationale": "The heading 'All in One' indicates the event and the stay take place in the same hotel venue."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Exclusive workshops with international teachers",
-     "rationale": "The description advertises dance workshops as part of the event."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Whether you’re an experienced dancer or just starting out",
-     "rationale": "The text explicitly welcomes beginners as well as experienced dancers."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "4 social room",
-     "rationale": "Referring to four social rooms indicates more than one dance room."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:32:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "cfb7b1e3782c46e6",
+ "answer": {
+  "batch": "event-18222",
+  "events": [
+   {
+    "event_id": 18222,
+    "artists": [],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "𝗔𝗹𝗹 𝗶𝗻 𝗢𝗻𝗲",
+      "rationale": "The heading 'All in One' with a hotel emoji suggests the events take place in the hotel where dancers stay."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Exclusive workshops with international teachers",
+      "rationale": "The text states that dance workshops are part of the event."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Whether you’re an experienced dancer or just starting out",
+      "rationale": "The text explicitly addresses beginners as welcome alongside experienced dancers."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "4 social room",
+      "rationale": "Referring to '4 social room' indicates more than one dance room or floor."
+     }
+    ]
+   }
+  ]
+ }
 }

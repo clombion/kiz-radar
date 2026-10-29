@@ -1,159 +1,166 @@
 {
- "batch": "event-19079",
- "events": [
-  {
-   "event_id": 19079,
-   "artists": [
-    {
-     "name_as_written": "KLUDIO HOSHAI",
-     "role": "teacher",
-     "style": null,
-     "country": "Angola",
-     "source_line": "KLUDIO HOSHAI( Angola)"
-    },
-    {
-     "name_as_written": "ALEXIS ESQUEA",
-     "role": "teacher",
-     "style": null,
-     "country": "Republica dominicana",
-     "source_line": "ALEXIS ESQUEA( Republica dominicana)"
-    },
-    {
-     "name_as_written": "IVAN Y SHIA",
-     "role": "teacher",
-     "style": null,
-     "country": "CUBA",
-     "source_line": "IVAN Y SHIA ( DUO-SHIAOKO-CUBA)"
-    },
-    {
-     "name_as_written": "RAFA GUARDIOLA",
-     "role": "teacher",
-     "style": null,
-     "country": "Cuba",
-     "source_line": "RAFA GUARDIOLA(Cuba)"
-    },
-    {
-     "name_as_written": "DILSON KIZOMBA",
-     "role": "teacher",
-     "style": null,
-     "country": "Angola",
-     "source_line": "DILSON KIZOMBA(Angola)"
-    },
-    {
-     "name_as_written": "BERNADET",
-     "role": "teacher",
-     "style": null,
-     "country": "Angola",
-     "source_line": "BERNADET(Angola)"
-    },
-    {
-     "name_as_written": "CAZUZA",
-     "role": "teacher",
-     "style": null,
-     "country": "Angola",
-     "source_line": "CAZUZA(Angola)"
-    },
-    {
-     "name_as_written": "AYAMAEI",
-     "role": "teacher",
-     "style": null,
-     "country": "Cuba",
-     "source_line": "AYAMAEI(Cuba)"
-    },
-    {
-     "name_as_written": "MANU MARREÑO Y AMBAR",
-     "role": "teacher",
-     "style": null,
-     "country": "Republica Domenicana",
-     "source_line": "MANU MARREÑO Y AMBAR(Republica Domenicana)"
-    },
-    {
-     "name_as_written": "NOEMI Y RODRI",
-     "role": "teacher",
-     "style": null,
-     "country": "Republica Domenicana",
-     "source_line": "NOEMI Y RODRI(Republica Domenicana)"
-    },
-    {
-     "name_as_written": "MANU y CRISTINA",
-     "role": "teacher",
-     "style": null,
-     "country": "España",
-     "source_line": "MANU y CRISTINA(España"
-    },
-    {
-     "name_as_written": "MEGANO-K",
-     "role": "teacher",
-     "style": null,
-     "country": "Angola",
-     "source_line": "MEGANO-K (Angola)"
-    },
-    {
-     "name_as_written": "DOMINIK DJ",
-     "role": "dj",
-     "style": null,
-     "country": "Republica Domenicana",
-     "source_line": "DOMINIK DJ (Republica Domenicana)"
-    },
-    {
-     "name_as_written": "MAMI TIMBA",
-     "role": "dj",
-     "style": null,
-     "country": "ESPAÑA",
-     "source_line": "MAMI TIMBA(ESPAÑA)"
-    },
-    {
-     "name_as_written": "Dj CUBANITO",
-     "role": "dj",
-     "style": null,
-     "country": "Angola",
-     "source_line": "Dj CUBANITO(Angola)"
-    },
-    {
-     "name_as_written": "DJ MAKY",
-     "role": "dj",
-     "style": null,
-     "country": "Senegal",
-     "source_line": "DJ MAKY(Senegal)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "15 WORKSHOPS",
-     "rationale": "The package includes 15 workshops, so dance classes are part of the event."
-    },
-    {
-     "feature": "shows",
-     "quote": "3 SOCIAL SBK / SHOWS",
-     "rationale": "The included items list shows by artists."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "3- TEMATIC PARTIES",
-     "rationale": "The pass includes three thematic parties."
-    },
-    {
-     "feature": "live_music",
-     "quote": "3-LIVE MUSIC ACT.",
-     "rationale": "The pass includes live music acts."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "3-Master clases",
-     "rationale": "The extra VIP pass includes three masterclasses."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "FULL PASS+HOTEL-2 NIGHT TRIPLE BED ROOM",
-     "rationale": "The full pass plus hotel package includes two nights of accommodation in a triple room."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "FULL PASS + HOTEL+ BREAKFAST+2 NIGHT IN TRIPLE ROOM",
-     "rationale": "The hotel package explicitly includes breakfast."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:34:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "3c779546a3bc9b7c",
+ "answer": {
+  "batch": "event-19079",
+  "events": [
+   {
+    "event_id": 19079,
+    "artists": [
+     {
+      "name_as_written": "KLUDIO HOSHAI",
+      "role": "teacher",
+      "style": null,
+      "country": "Angola",
+      "source_line": "KLUDIO HOSHAI( Angola)"
+     },
+     {
+      "name_as_written": "ALEXIS ESQUEA",
+      "role": "teacher",
+      "style": null,
+      "country": "Republica dominicana",
+      "source_line": "ALEXIS ESQUEA( Republica dominicana)"
+     },
+     {
+      "name_as_written": "IVAN Y SHIA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "IVAN Y SHIA ( DUO-SHIAOKO-CUBA)"
+     },
+     {
+      "name_as_written": "RAFA GUARDIOLA",
+      "role": "teacher",
+      "style": null,
+      "country": "Cuba",
+      "source_line": "RAFA GUARDIOLA(Cuba)"
+     },
+     {
+      "name_as_written": "DILSON KIZOMBA",
+      "role": "teacher",
+      "style": null,
+      "country": "Angola",
+      "source_line": "DILSON KIZOMBA(Angola)"
+     },
+     {
+      "name_as_written": "BERNADET",
+      "role": "teacher",
+      "style": null,
+      "country": "Angola",
+      "source_line": "BERNADET(Angola)"
+     },
+     {
+      "name_as_written": "CAZUZA",
+      "role": "teacher",
+      "style": null,
+      "country": "Angola",
+      "source_line": "CAZUZA(Angola)"
+     },
+     {
+      "name_as_written": "AYAMAEI",
+      "role": "teacher",
+      "style": null,
+      "country": "Cuba",
+      "source_line": "AYAMAEI(Cuba)"
+     },
+     {
+      "name_as_written": "MANU MARREÑO Y AMBAR",
+      "role": "teacher",
+      "style": null,
+      "country": "Republica Domenicana",
+      "source_line": "MANU MARREÑO Y AMBAR(Republica Domenicana)"
+     },
+     {
+      "name_as_written": "NOEMI Y RODRI",
+      "role": "teacher",
+      "style": null,
+      "country": "Republica Domenicana",
+      "source_line": "NOEMI Y RODRI(Republica Domenicana)"
+     },
+     {
+      "name_as_written": "MANU y CRISTINA",
+      "role": "teacher",
+      "style": null,
+      "country": "España",
+      "source_line": "MANU y CRISTINA(España"
+     },
+     {
+      "name_as_written": "MEGANO-K",
+      "role": "teacher",
+      "style": null,
+      "country": "Angola",
+      "source_line": "MEGANO-K (Angola)"
+     },
+     {
+      "name_as_written": "DOMINIK DJ",
+      "role": "dj",
+      "style": null,
+      "country": "Republica Domenicana",
+      "source_line": "DOMINIK DJ (Republica Domenicana)"
+     },
+     {
+      "name_as_written": "MAMI TIMBA",
+      "role": "dj",
+      "style": null,
+      "country": "ESPAÑA",
+      "source_line": "MAMI TIMBA(ESPAÑA)"
+     },
+     {
+      "name_as_written": "Dj CUBANITO",
+      "role": "dj",
+      "style": null,
+      "country": "Angola",
+      "source_line": "Dj CUBANITO(Angola)"
+     },
+     {
+      "name_as_written": "DJ MAKY",
+      "role": "dj",
+      "style": null,
+      "country": "Senegal",
+      "source_line": "DJ MAKY(Senegal)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "accommodation_included",
+      "quote": "FULL PASS+HOTEL-2 NIGHT TRIPLE BED ROOM!",
+      "rationale": "The early bird full pass is bundled with a hotel stay of two nights in a triple room."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "BREAKFAST+2 NIGHT IN TRIPLE ROOM!",
+      "rationale": "The hotel package explicitly includes breakfast along with the full pass."
+     },
+     {
+      "feature": "workshops",
+      "quote": "15 WORKSHOPS",
+      "rationale": "The pass includes 15 workshops, so dance classes are part of the event."
+     },
+     {
+      "feature": "shows",
+      "quote": "SHOWS/",
+      "rationale": "Shows are listed among the items included in the pass."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "3- TEMATIC PARTIES",
+      "rationale": "The pass includes three thematic parties."
+     },
+     {
+      "feature": "live_music",
+      "quote": "3-LIVE MUSIC ACT.",
+      "rationale": "The pass includes three live music acts."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "3-Master clases",
+      "rationale": "The VIP extra package includes three masterclasses."
+     }
+    ]
+   }
+  ]
+ }
 }

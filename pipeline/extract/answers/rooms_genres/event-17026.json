@@ -1,23 +1,30 @@
 {
- "batch": "event-17026",
- "events": [
-  {
-   "event_id": 17026,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Top international & local DJs playing the best of Kizomba, Semba & all subgenres"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Top international & local DJs playing the best of Kizomba, Semba & all subgenres"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:00+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "410e1748be733c81",
+ "answer": {
+  "batch": "event-17026",
+  "events": [
+   {
+    "event_id": 17026,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Top international & local DJs playing the best of Kizomba, Semba & all subgenres"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Top international & local DJs playing the best of Kizomba, Semba & all subgenres"
+     }
+    ]
+   }
+  ]
+ }
 }

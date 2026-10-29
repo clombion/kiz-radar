@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sink@dance",
+ "key_b": "p:sink@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "661e17941c5192ee",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both keys state only Canada as country, and 'Sink' and 'DJ Sink' are the same stage name with a DJ prefix, appearing as DJ at the same Jamaica event 14511 and as a DJ with the same Canadian flag and country across several events, so the evidence points to one artist."
+ }
+}

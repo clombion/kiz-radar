@@ -1,59 +1,66 @@
 {
- "batch": "event-16456",
- "events": [
-  {
-   "event_id": 16456,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 Music Rooms: Salsa/Bachata & Kizomba"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Salsa/Bachata",
-     "kind": "party",
-     "genres": [
-      "salsa",
-      "bachata"
-     ],
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:09+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d23b5bd02e0bdcef",
+ "answer": {
+  "batch": "event-16456",
+  "events": [
+   {
+    "event_id": 16456,
+    "party_rooms": {
+     "count": 2,
      "quote": "2 Music Rooms: Salsa/Bachata & Kizomba"
     },
-    {
-     "name_as_written": "Kizomba",
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "2 Music Rooms: Salsa/Bachata & Kizomba"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "salsa",
-     "genre_as_written": "Salsa",
-     "quote": "Salsa Artists"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata Artists"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "2 Music Rooms: Salsa/Bachata & Kizomba"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "Harvey Reddington – Urbankiz"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "semba",
-     "quote": "Sal K – kizomba/semba"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Salsa/Bachata",
+      "kind": "party",
+      "genres": [
+       "salsa",
+       "bachata"
+      ],
+      "quote": "2 Music Rooms: Salsa/Bachata & Kizomba"
+     },
+     {
+      "name_as_written": "Kizomba",
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "2 Music Rooms: Salsa/Bachata & Kizomba"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "salsa",
+      "genre_as_written": "Salsa",
+      "quote": "Salsa Artists"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata Artists"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba and Urbankiz"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "Harvey Reddington – Urbankiz"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "semba",
+      "quote": "Sal K – kizomba/semba"
+     }
+    ]
+   }
+  ]
+ }
 }

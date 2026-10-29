@@ -1,37 +1,45 @@
 {
- "batch": "event-14624",
- "events": [
-  {
-   "event_id": 14624,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 350.0,
-       "currency": "RON",
-       "fee": null,
-       "alt": {
-        "amount": 70.0,
-        "currency": "EUR"
-       },
-       "from": null,
-       "until": null,
-       "quantity": 30,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "🎟️ 𝐅𝐔𝐋𝐋 𝐏𝐀𝐒𝐒: 𝟯𝟱𝟬 𝗥𝗢𝗡 / 𝟳𝟬 𝗘𝗨𝗥𝗢"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:41:06+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d9342204425a0dfd",
+ "answer": {
+  "batch": "event-14624",
+  "events": [
+   {
+    "event_id": 14624,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 350.0,
+        "currency": "RON",
+        "fee": null,
+        "alt": {
+         "amount": 70.0,
+         "currency": "EUR"
+        },
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 30,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "🎟️ 𝐅𝐔𝐋𝐋 𝐏𝐀𝐒𝐒: 𝟯𝟱𝟬 𝗥𝗢𝗡 / 𝟳𝟬 𝗘𝗨𝗥𝗢"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

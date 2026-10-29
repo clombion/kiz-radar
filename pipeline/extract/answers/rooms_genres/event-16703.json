@@ -1,52 +1,59 @@
 {
- "batch": "event-16703",
- "events": [
-  {
-   "event_id": 16703,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Room 1",
-     "kind": "unspecified",
-     "genres": [
-      "urbankiz"
-     ],
-     "quote": "Room 1 : Urbankiz"
-    },
-    {
-     "name_as_written": "Room2",
-     "kind": "unspecified",
-     "genres": [
-      "semba",
-      "kizomba",
-      "kompa"
-     ],
-     "quote": "Room2 : Semba / Kizomba / Konpa"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urbankiz",
-     "quote": "Room 1 : Urbankiz"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "Semba",
-     "quote": "Room2 : Semba / Kizomba / Konpa"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Room2 : Semba / Kizomba / Konpa"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Room2 : Semba / Kizomba / Konpa"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:35+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0f8b0935a310731c",
+ "answer": {
+  "batch": "event-16703",
+  "events": [
+   {
+    "event_id": 16703,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Room 1",
+      "kind": "unspecified",
+      "genres": [
+       "urbankiz"
+      ],
+      "quote": "Room 1 : Urbankiz"
+     },
+     {
+      "name_as_written": "Room2",
+      "kind": "unspecified",
+      "genres": [
+       "semba",
+       "kizomba",
+       "kompa"
+      ],
+      "quote": "Room2 : Semba / Kizomba / Konpa"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urbankiz",
+      "quote": "Room 1 : Urbankiz"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "Semba",
+      "quote": "Room2 : Semba / Kizomba / Konpa"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Room2 : Semba / Kizomba / Konpa"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "Room2 : Semba / Kizomba / Konpa"
+     }
+    ]
+   }
+  ]
+ }
 }

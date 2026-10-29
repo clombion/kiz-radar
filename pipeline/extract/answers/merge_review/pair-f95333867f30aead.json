@@ -1,0 +1,13 @@
+{
+ "key_a": "p:christina@christina+dimitris",
+ "key_b": "p:christina@christina+panagiotis",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f95333867f30aead",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are called Christina with the same Greek country and events, but each is paired with a different partner (Dimitris vs Panagiotis), and the name is too common to link them, so the evidence does not show whether this is one person with two partners or two people."
+ }
+}

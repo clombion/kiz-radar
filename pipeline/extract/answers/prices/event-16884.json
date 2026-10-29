@@ -1,220 +1,191 @@
 {
- "batch": "event-16884",
- "events": [
-  {
-   "event_id": 16884,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 89.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– €89 Full-Pass"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 150.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "– €150 Coupe-Pass"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 30.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "𝗙𝗿𝗶𝗱𝗮𝘆 𝗡𝗶𝗴𝗵𝘁: €30"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 60.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "𝗦𝗮𝘁𝘂𝗿𝗱𝗮𝘆 𝗗𝗮𝘆 𝗣𝗮𝘀𝘀 (𝗪𝗼𝗿𝗸𝘀𝗵𝗼𝗽𝘀 + 𝗦𝗼𝗰𝗶𝗮𝗹): €60"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 35.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "𝗦𝗮𝘁𝘂𝗿𝗱𝗮𝘆 𝗦𝗼𝗰𝗶𝗮𝗹 𝗣𝗮𝘀𝘀: €35"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 35.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "𝗦𝗮𝘁𝘂𝗿𝗱𝗮𝘆 𝗡𝗶𝗴𝗵𝘁 𝗣𝗮𝘀𝘀: €35"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 60.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "𝗦𝘂𝗻𝗱𝗮𝘆 𝗗𝗮𝘆 𝗣𝗮𝘀𝘀 (𝗪𝗼𝗿𝗸𝘀𝗵𝗼𝗽𝘀 + 𝗦𝗼𝗰𝗶𝗮𝗹): €60"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 35.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "𝗦𝘂𝗻𝗱𝗮𝘆 𝗦𝗼𝗰𝗶𝗮𝗹 𝗣𝗮𝘀𝘀: €35"
-      }
-     ]
-    },
-    {
-     "kind": "day",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 1,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 35.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "𝗦𝘂𝗻𝗱𝗮𝘆 𝗡𝗶𝗴𝗵𝘁 𝗣𝗮𝘀𝘀:€35"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": [
-    "Every month the price will increase by €5"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:44:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "9e7063c5dec6fd1a",
+ "answer": {
+  "batch": "event-16884",
+  "events": [
+   {
+    "event_id": 16884,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 89.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– €89 Full-Pass"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 2,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 150.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "– €150 Coupe-Pass"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 30.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝗙𝗿𝗶𝗱𝗮𝘆 𝗡𝗶𝗴𝗵𝘁: €30"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 60.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝗦𝗮𝘁𝘂𝗿𝗱𝗮𝘆 𝗗𝗮𝘆 𝗣𝗮𝘀𝘀 (𝗪𝗼𝗿𝗸𝘀𝗵𝗼𝗽𝘀 + 𝗦𝗼𝗰𝗶𝗮𝗹): €60"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 35.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝗦𝗮𝘁𝘂𝗿𝗱𝗮𝘆 𝗦𝗼𝗰𝗶𝗮𝗹 𝗣𝗮𝘀𝘀: €35"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 35.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝗦𝗮𝘁𝘂𝗿𝗱𝗮𝘆 𝗡𝗶𝗴𝗵𝘁 𝗣𝗮𝘀𝘀: €35"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 60.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝗦𝘂𝗻𝗱𝗮𝘆 𝗗𝗮𝘆 𝗣𝗮𝘀𝘀 (𝗪𝗼𝗿𝗸𝘀𝗵𝗼𝗽𝘀 + 𝗦𝗼𝗰𝗶𝗮𝗹): €60"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 35.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝗦𝘂𝗻𝗱𝗮𝘆 𝗦𝗼𝗰𝗶𝗮𝗹 𝗣𝗮𝘀𝘀: €35"
+       }
+      ]
+     },
+     {
+      "kind": "day",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 1,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 35.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝗦𝘂𝗻𝗱𝗮𝘆 𝗡𝗶𝗴𝗵𝘁 𝗣𝗮𝘀𝘀:€35"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": [
+     "Every month the price will increase by €5"
+    ]
+   }
+  ]
+ }
 }

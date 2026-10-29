@@ -1,16 +1,31 @@
 {
- "batch": "event-16748",
- "events": [
-  {
-   "event_id": 16748,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Teachers will share their knowledge",
-     "rationale": "The line says teachers will share their knowledge at the event, which indicates dance classes or workshops are part of it."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:11+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "e1dfa6b62800b033",
+ "answer": {
+  "batch": "event-16748",
+  "events": [
+   {
+    "event_id": 16748,
+    "artists": [
+     {
+      "name_as_written": "Kizomba no Pé",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "🌍 Kizomba no Pé – Festa da Kizomba – End of Week #2"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "Teachers will share their knowledge",
+      "rationale": "The description says teachers will share their knowledge at the event, which indicates dance classes or workshops are part of it."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,26 +1,33 @@
 {
- "batch": "event-16134",
- "events": [
-  {
-   "event_id": 16134,
-   "artists": [],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL-IN-ONE festival plus",
-     "rationale": "The text describes the festival as all-in-one, indicating the event and accommodation are combined at one hotel venue."
-    },
-    {
-     "feature": "transfers_shuttle",
-     "quote": "alternative hotel with shuttle to venue",
-     "rationale": "The quote states that a shuttle runs between the alternative hotel and the venue."
-    },
-    {
-     "feature": "workshops",
-     "quote": "filled with workshops, socials, and vibes",
-     "rationale": "The quote says the festival days include workshops."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:27:55+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "856134d23028d306",
+ "answer": {
+  "batch": "event-16134",
+  "events": [
+   {
+    "event_id": 16134,
+    "artists": [],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL-IN-ONE festival plus",
+      "rationale": "The description calls the festival all-in-one, and the venue is the hotel where dancers can stay."
+     },
+     {
+      "feature": "workshops",
+      "quote": "filled with workshops, socials",
+      "rationale": "The description says the days are filled with workshops, so dance classes are part of the event."
+     },
+     {
+      "feature": "transfers_shuttle",
+      "quote": "alternative hotel with shuttle to venue",
+      "rationale": "A shuttle to the venue is offered from the alternative hotel."
+     }
+    ]
+   }
+  ]
+ }
 }

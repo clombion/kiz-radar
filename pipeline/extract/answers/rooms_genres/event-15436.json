@@ -1,18 +1,25 @@
 {
- "batch": "event-15436",
- "events": [
-  {
-   "event_id": 15436,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "kizomba",
-     "quote": "We will have some of the best kizomba instructors and Djs"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:13+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "c02ad25d6c770d7f",
+ "answer": {
+  "batch": "event-15436",
+  "events": [
+   {
+    "event_id": 15436,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "kizomba",
+      "quote": "We will have some of the best kizomba instructors and Djs"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -2,20 +2,22 @@
  "event_id": 18647,
  "title": "Multiverse Kizomba Congress (6 Rooms) – 3rd Edition – Lyon – All In One",
  "start_date": "2027-03-25",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:38:31+00:00",
+ "end_date": "2027-03-30",
+ "country": "France",
  "styles": [
   "kizomba",
   "other",
   "zouk"
  ],
  "description": "🌌✨ MULTIVERSE KIZOMBA CONGRESS – 3RD EDITION ✨🌌\n📅 From March 25 to 30, 2027, during Easter Weekend.\n📍 Logis Hôtel Lyon Est, near Lyon, France.\n🔥 After welcoming more than 900 dancers, the Multiverse is coming back even stronger!\n💠 An ALL-IN-ONE experience featuring 6 official rooms and 6 unique Kizomba vibes.\n🎶 UrbanKiz, Kizomba, Semba, Ghetto Zouk, Tarraxinha, Tarraxo, Sweet and Afro Caribbean.\n㊙️ Get ready to discover a completely secret 7th bonus room!\n💥 Enjoy 5 parties, 4 socials and more than 30 hours of workshops.\n🌀 Enter unique musical universes filled with dance, connection and emotion.",
+ "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:19:29+00:00",
  "passes": [
   {
    "kind": "full",
    "style": null,
-   "label_quote": null,
+   "label_quote": "Femme / Woman - FULL PASS",
    "group_size": 1,
    "days": null,
    "includes_hotel": false,
@@ -79,7 +81,7 @@
   {
    "kind": "full",
    "style": null,
-   "label_quote": null,
+   "label_quote": "Homme / Man - FULL PASS",
    "group_size": 1,
    "days": null,
    "includes_hotel": false,

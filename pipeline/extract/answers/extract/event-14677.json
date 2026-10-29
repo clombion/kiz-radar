@@ -1,179 +1,186 @@
 {
- "batch": "event-14677",
- "events": [
-  {
-   "event_id": 14677,
-   "artists": [
-    {
-     "name_as_written": "DJ Remcy",
-     "role": "dj",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "💎 DJ Remcy 🇩🇪"
-    },
-    {
-     "name_as_written": "DJ Lowelo",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "💎 DJ Lowelo 🇫🇷"
-    },
-    {
-     "name_as_written": "DJ Longchamp",
-     "role": "dj",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "💎 DJ Longchamp 🇩🇪"
-    },
-    {
-     "name_as_written": "DJ Hazel",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "💎 DJ Hazel 🇨🇭"
-    },
-    {
-     "name_as_written": "DJ Lahminn",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇿",
-     "source_line": "💎 DJ Lahminn 🇨🇿"
-    },
-    {
-     "name_as_written": "DJ Harryz Kiz",
-     "role": "dj",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "💎 DJ Harryz Kiz 🇩🇪"
-    },
-    {
-     "name_as_written": "DJ High Energy",
-     "role": "dj",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "💎 DJ High Energy 🇩🇪"
-    },
-    {
-     "name_as_written": "Dj Roberto",
-     "role": "dj",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "💎 Dj Roberto 🇩🇪"
-    },
-    {
-     "name_as_written": "DJ Juanqui",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "💎 DJ Juanqui 🇨🇭"
-    },
-    {
-     "name_as_written": "Maikel",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇭",
-     "source_line": "💎 Maikel 🇨🇭"
-    },
-    {
-     "name_as_written": "Methodz & Juliaa",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "💎 Methodz & Juliaa 🇫🇷"
-    },
-    {
-     "name_as_written": "Jules & Yuna",
-     "role": "teacher",
-     "style": "TarraxoPop",
-     "country": "🇫🇷",
-     "source_line": "💎 Jules & Yuna TarraxoPop 🇫🇷"
-    },
-    {
-     "name_as_written": "Daniel Schauenburg & Elina",
-     "role": "teacher",
-     "style": null,
-     "country": "🇩🇪🇨🇿",
-     "source_line": "💎 Daniel Schauenburg & Elina 🇩🇪🇨🇿"
-    },
-    {
-     "name_as_written": "Rudson Santos & Olha",
-     "role": "teacher",
-     "style": null,
-     "country": "🇨🇿",
-     "source_line": "💎 Rudson Santos & Olha 🇨🇿"
-    },
-    {
-     "name_as_written": "FrankyKizzFly & Kerstin",
-     "role": "teacher",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "💎 FrankyKizzFly & Kerstin 🇩🇪"
-    },
-    {
-     "name_as_written": "Senseï Uchiwa",
-     "role": "teacher",
-     "style": null,
-     "country": "🇪🇸",
-     "source_line": "💎 Senseï Uchiwa 🇪🇸"
-    },
-    {
-     "name_as_written": "Shawn Jeroma Mc Cray",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "💎 Shawn Jeroma Mc Cray 🌍"
-    },
-    {
-     "name_as_written": "Nata & Danika",
-     "role": "teacher",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "💎 Nata & Danika 🇩🇪"
-    },
-    {
-     "name_as_written": "TAXI TEAM TarraxoPop",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "❤️‍🔥 TAXI TEAM TarraxoPop"
-    },
-    {
-     "name_as_written": "TAXI TEAM JustForKiz",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "❤️‍🔥 TAXI TEAM JustForKiz"
-    },
-    {
-     "name_as_written": "GUEST DANCERS from KizInvasio",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "❤️‍🔥 GUEST DANCERS from KizInvasio"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "3 Days of Workshops, Socials, and Parties",
-     "rationale": "The description states that the festival includes workshops."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 Dance Rooms",
-     "rationale": "Two dance rooms are offered, so there is more than one dance floor."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Guest Taxi Teams",
-     "rationale": "Guest taxi teams are listed as present at the event."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Main Hotel: IBIS Hotel",
-     "rationale": "A main hotel is recommended with bookings available until a set date, without accommodation being part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "faca432fc58efff8",
+ "answer": {
+  "batch": "event-14677",
+  "events": [
+   {
+    "event_id": 14677,
+    "artists": [
+     {
+      "name_as_written": "DJ Remcy",
+      "role": "dj",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "💎 DJ Remcy 🇩🇪"
+     },
+     {
+      "name_as_written": "DJ Lowelo",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "💎 DJ Lowelo 🇫🇷"
+     },
+     {
+      "name_as_written": "DJ Longchamp",
+      "role": "dj",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "💎 DJ Longchamp 🇩🇪"
+     },
+     {
+      "name_as_written": "DJ Hazel",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "💎 DJ Hazel 🇨🇭"
+     },
+     {
+      "name_as_written": "DJ Lahminn",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇿",
+      "source_line": "💎 DJ Lahminn 🇨🇿"
+     },
+     {
+      "name_as_written": "DJ Harryz Kiz",
+      "role": "dj",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "💎 DJ Harryz Kiz 🇩🇪"
+     },
+     {
+      "name_as_written": "DJ High Energy",
+      "role": "dj",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "💎 DJ High Energy 🇩🇪"
+     },
+     {
+      "name_as_written": "Dj Roberto",
+      "role": "dj",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "💎 Dj Roberto 🇩🇪"
+     },
+     {
+      "name_as_written": "DJ Juanqui",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "💎 DJ Juanqui 🇨🇭"
+     },
+     {
+      "name_as_written": "Maikel",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇭",
+      "source_line": "💎 Maikel 🇨🇭"
+     },
+     {
+      "name_as_written": "Methodz & Juliaa",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "💎 Methodz & Juliaa 🇫🇷"
+     },
+     {
+      "name_as_written": "Jules & Yuna",
+      "role": "teacher",
+      "style": "TarraxoPop",
+      "country": "🇫🇷",
+      "source_line": "💎 Jules & Yuna TarraxoPop 🇫🇷"
+     },
+     {
+      "name_as_written": "Daniel Schauenburg & Elina",
+      "role": "teacher",
+      "style": null,
+      "country": "🇩🇪🇨🇿",
+      "source_line": "💎 Daniel Schauenburg & Elina 🇩🇪🇨🇿"
+     },
+     {
+      "name_as_written": "Rudson Santos & Olha",
+      "role": "teacher",
+      "style": null,
+      "country": "🇨🇿",
+      "source_line": "💎 Rudson Santos & Olha 🇨🇿"
+     },
+     {
+      "name_as_written": "FrankyKizzFly & Kerstin",
+      "role": "teacher",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "💎 FrankyKizzFly & Kerstin 🇩🇪"
+     },
+     {
+      "name_as_written": "Senseï Uchiwa",
+      "role": "teacher",
+      "style": null,
+      "country": "🇪🇸",
+      "source_line": "💎 Senseï Uchiwa 🇪🇸"
+     },
+     {
+      "name_as_written": "Shawn Jeroma Mc Cray",
+      "role": "teacher",
+      "style": null,
+      "country": "🌍",
+      "source_line": "💎 Shawn Jeroma Mc Cray 🌍"
+     },
+     {
+      "name_as_written": "Nata & Danika",
+      "role": "teacher",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "💎 Nata & Danika 🇩🇪"
+     },
+     {
+      "name_as_written": "TAXI TEAM TarraxoPop",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "❤️‍🔥 TAXI TEAM TarraxoPop"
+     },
+     {
+      "name_as_written": "TAXI TEAM JustForKiz",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "❤️‍🔥 TAXI TEAM JustForKiz"
+     },
+     {
+      "name_as_written": "GUEST DANCERS from KizInvasio",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "❤️‍🔥 GUEST DANCERS from KizInvasio"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "3 Days of Workshops, Socials, and Parties",
+      "rationale": "The festival advertises workshops as part of its program."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 Dance Rooms",
+      "rationale": "Two dance rooms are offered, so there is more than one dance floor."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "Guest Taxi Teams",
+      "rationale": "Taxi teams are present to dance with attendees."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "Main Hotel: IBIS Hotel",
+      "rationale": "A main recommended hotel is named for accommodation, separate from the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

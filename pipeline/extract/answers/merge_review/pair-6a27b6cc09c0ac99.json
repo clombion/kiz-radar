@@ -1,0 +1,13 @@
+{
+ "key_a": "p:curtis@curtis+gaya",
+ "key_b": "p:curtis@curtis+kelly",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6a27b6cc09c0ac99",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two Curtis records have different partners (Gaya versus Kelly) and different event locations (Italy and Switzerland versus France and Réunion), with only the common first name and the shared FR country in common, which is weak evidence."
+ }
+}

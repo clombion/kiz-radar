@@ -1,267 +1,274 @@
 {
- "batch": "event-18495",
- "events": [
-  {
-   "event_id": 18495,
-   "artists": [
-    {
-     "name_as_written": "SNAKES",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨SNAKES ✨ LENHY ✨ STEFANIO LIMA"
-    },
-    {
-     "name_as_written": "LENHY",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨SNAKES ✨ LENHY ✨ STEFANIO LIMA"
-    },
-    {
-     "name_as_written": "STEFANIO LIMA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨SNAKES ✨ LENHY ✨ STEFANIO LIMA"
-    },
-    {
-     "name_as_written": "DIABLO",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ DIABLO ✨ DAVID RUELA ✨ VALET"
-    },
-    {
-     "name_as_written": "DAVID RUELA",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ DIABLO ✨ DAVID RUELA ✨ VALET"
-    },
-    {
-     "name_as_written": "VALET",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ DIABLO ✨ DAVID RUELA ✨ VALET"
-    },
-    {
-     "name_as_written": "LIONNAX",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ LIONNAX ✨ POEMA BEATZ ✨ZEN"
-    },
-    {
-     "name_as_written": "POEMA BEATZ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ LIONNAX ✨ POEMA BEATZ ✨ZEN"
-    },
-    {
-     "name_as_written": "ZEN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ LIONNAX ✨ POEMA BEATZ ✨ZEN"
-    },
-    {
-     "name_as_written": "FOFOJAH",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ FOFOJAH ✨ BLACKSKYLE ✨ MAXXX"
-    },
-    {
-     "name_as_written": "BLACKSKYLE",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ FOFOJAH ✨ BLACKSKYLE ✨ MAXXX"
-    },
-    {
-     "name_as_written": "MAXXX",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ FOFOJAH ✨ BLACKSKYLE ✨ MAXXX"
-    },
-    {
-     "name_as_written": "JDN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ JDN ✨ TPEAK ✨ QDS"
-    },
-    {
-     "name_as_written": "TPEAK",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ JDN ✨ TPEAK ✨ QDS"
-    },
-    {
-     "name_as_written": "QDS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ JDN ✨ TPEAK ✨ QDS"
-    },
-    {
-     "name_as_written": "KIN",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ KIN ✨ SAM GOLD ✨ LAAK"
-    },
-    {
-     "name_as_written": "SAM GOLD",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ KIN ✨ SAM GOLD ✨ LAAK"
-    },
-    {
-     "name_as_written": "LAAK",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ KIN ✨ SAM GOLD ✨ LAAK"
-    },
-    {
-     "name_as_written": "NOOS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ NOOS ✨ LEA NOMIS ✨ MICHAEL TOOBZ"
-    },
-    {
-     "name_as_written": "LEA NOMIS",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ NOOS ✨ LEA NOMIS ✨ MICHAEL TOOBZ"
-    },
-    {
-     "name_as_written": "MICHAEL TOOBZ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ NOOS ✨ LEA NOMIS ✨ MICHAEL TOOBZ"
-    },
-    {
-     "name_as_written": "LOYJ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ LOYJ ✨ GEEZ ✨ THALES"
-    },
-    {
-     "name_as_written": "GEEZ",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ LOYJ ✨ GEEZ ✨ THALES"
-    },
-    {
-     "name_as_written": "THALES",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "✨ LOYJ ✨ GEEZ ✨ THALES"
-    },
-    {
-     "name_as_written": "TONY PIRATA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ TONY PIRATA"
-    },
-    {
-     "name_as_written": "SAID",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ SAID"
-    },
-    {
-     "name_as_written": "RITCHIE",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ RITCHIE"
-    },
-    {
-     "name_as_written": "AMI & JULIEN",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ AMI & JULIEN"
-    },
-    {
-     "name_as_written": "DEX & LAW",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ DEX & LAW"
-    },
-    {
-     "name_as_written": "DIANA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ DIANA"
-    },
-    {
-     "name_as_written": "DOUDA",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "✨ DOUDA"
-    },
-    {
-     "name_as_written": "PPZ",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✨ PPZ – Social Media"
-    },
-    {
-     "name_as_written": "YOUSRA",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✨ YOUSRA – Social Media"
-    },
-    {
-     "name_as_written": "CHERY STYLE",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✨ CHERY STYLE > Videographer"
-    },
-    {
-     "name_as_written": "AIRFLEKS & SURYA",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "✨ AIRFLEKS & SURYA > Photographers"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "Everything happens on site, in an elegant and welcoming venue.",
-     "rationale": "The event and its accommodation take place in the same hotel, so the parties happen on site at the Marriott."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "OFFICIAL HOTEL – MARRIOTT RIVE GAUCHE",
-     "rationale": "The description names an official hotel with negotiated room rates that is separate from the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:32:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "12de8dc726daaf78",
+ "answer": {
+  "batch": "event-18495",
+  "events": [
+   {
+    "event_id": 18495,
+    "artists": [
+     {
+      "name_as_written": "SNAKES",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨SNAKES ✨ LENHY ✨ STEFANIO LIMA"
+     },
+     {
+      "name_as_written": "LENHY",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨SNAKES ✨ LENHY ✨ STEFANIO LIMA"
+     },
+     {
+      "name_as_written": "STEFANIO LIMA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨SNAKES ✨ LENHY ✨ STEFANIO LIMA"
+     },
+     {
+      "name_as_written": "DIABLO",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ DIABLO ✨ DAVID RUELA ✨ VALET"
+     },
+     {
+      "name_as_written": "DAVID RUELA",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ DIABLO ✨ DAVID RUELA ✨ VALET"
+     },
+     {
+      "name_as_written": "VALET",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ DIABLO ✨ DAVID RUELA ✨ VALET"
+     },
+     {
+      "name_as_written": "LIONNAX",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ LIONNAX ✨ POEMA BEATZ ✨ZEN"
+     },
+     {
+      "name_as_written": "POEMA BEATZ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ LIONNAX ✨ POEMA BEATZ ✨ZEN"
+     },
+     {
+      "name_as_written": "ZEN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ LIONNAX ✨ POEMA BEATZ ✨ZEN"
+     },
+     {
+      "name_as_written": "FOFOJAH",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ FOFOJAH ✨ BLACKSKYLE ✨ MAXXX"
+     },
+     {
+      "name_as_written": "BLACKSKYLE",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ FOFOJAH ✨ BLACKSKYLE ✨ MAXXX"
+     },
+     {
+      "name_as_written": "MAXXX",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ FOFOJAH ✨ BLACKSKYLE ✨ MAXXX"
+     },
+     {
+      "name_as_written": "JDN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ JDN ✨ TPEAK ✨ QDS"
+     },
+     {
+      "name_as_written": "TPEAK",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ JDN ✨ TPEAK ✨ QDS"
+     },
+     {
+      "name_as_written": "QDS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ JDN ✨ TPEAK ✨ QDS"
+     },
+     {
+      "name_as_written": "KIN",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ KIN ✨ SAM GOLD ✨ LAAK"
+     },
+     {
+      "name_as_written": "SAM GOLD",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ KIN ✨ SAM GOLD ✨ LAAK"
+     },
+     {
+      "name_as_written": "LAAK",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ KIN ✨ SAM GOLD ✨ LAAK"
+     },
+     {
+      "name_as_written": "NOOS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ NOOS ✨ LEA NOMIS ✨ MICHAEL TOOBZ"
+     },
+     {
+      "name_as_written": "LEA NOMIS",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ NOOS ✨ LEA NOMIS ✨ MICHAEL TOOBZ"
+     },
+     {
+      "name_as_written": "MICHAEL TOOBZ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ NOOS ✨ LEA NOMIS ✨ MICHAEL TOOBZ"
+     },
+     {
+      "name_as_written": "LOYJ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ LOYJ ✨ GEEZ ✨ THALES"
+     },
+     {
+      "name_as_written": "GEEZ",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ LOYJ ✨ GEEZ ✨ THALES"
+     },
+     {
+      "name_as_written": "THALES",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "✨ LOYJ ✨ GEEZ ✨ THALES"
+     },
+     {
+      "name_as_written": "TONY PIRATA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ TONY PIRATA"
+     },
+     {
+      "name_as_written": "SAID",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ SAID"
+     },
+     {
+      "name_as_written": "RITCHIE",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ RITCHIE"
+     },
+     {
+      "name_as_written": "AMI & JULIEN",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ AMI & JULIEN"
+     },
+     {
+      "name_as_written": "DEX & LAW",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ DEX & LAW"
+     },
+     {
+      "name_as_written": "DIANA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ DIANA"
+     },
+     {
+      "name_as_written": "DOUDA",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "✨ DOUDA"
+     },
+     {
+      "name_as_written": "PPZ",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✨ PPZ – Social Media"
+     },
+     {
+      "name_as_written": "YOUSRA",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✨ YOUSRA – Social Media"
+     },
+     {
+      "name_as_written": "CHERY STYLE",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✨ CHERY STYLE > Videographer"
+     },
+     {
+      "name_as_written": "AIRFLEKS & SURYA",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "✨ AIRFLEKS & SURYA > Photographers"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "Everything happens on site, in an elegant and welcoming venue.",
+      "rationale": "The description says everything happens on site at the hotel venue, where guests arrive and stay, matching the all-in-one hotel-and-event format."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "OFFICIAL HOTEL – MARRIOTT RIVE GAUCHE",
+      "rationale": "The event names an official hotel with booking rates, while the pass itself does not include accommodation."
+     }
+    ]
+   }
+  ]
+ }
 }

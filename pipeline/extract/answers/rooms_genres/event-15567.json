@@ -1,28 +1,35 @@
 {
- "batch": "event-15567",
- "events": [
-  {
-   "event_id": 15567,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "kizomba",
-     "quote": "intense weekend of kizomba, semba, and Afro-house"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "semba",
-     "quote": "intense weekend of kizomba, semba, and Afro-house"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro-house",
-     "quote": "intense weekend of kizomba, semba, and Afro-house"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:27+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "05b74506c62e60fe",
+ "answer": {
+  "batch": "event-15567",
+  "events": [
+   {
+    "event_id": 15567,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "kizomba",
+      "quote": "intense weekend of kizomba, semba, and Afro-house"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "semba",
+      "quote": "intense weekend of kizomba, semba, and Afro-house"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro-house",
+      "quote": "intense weekend of kizomba, semba, and Afro-house"
+     }
+    ]
+   }
+  ]
+ }
 }

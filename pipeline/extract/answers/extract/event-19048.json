@@ -1,86 +1,93 @@
 {
- "batch": "event-19048",
- "events": [
-  {
-   "event_id": 19048,
-   "artists": [
-    {
-     "name_as_written": "Ramses y Sandra",
-     "role": "teacher",
-     "style": "Casino / Son Cubano",
-     "country": null,
-     "source_line": "Ramses y Sandra – Avanza dance (Casino / Son Cubano)"
-    },
-    {
-     "name_as_written": "Juan Pablo Paredes",
-     "role": "teacher",
-     "style": "Bachata / Merengue",
-     "country": null,
-     "source_line": "Juan Pablo Paredes (Bachata / Merengue)"
-    },
-    {
-     "name_as_written": "Mariana",
-     "role": "teacher",
-     "style": "Konpa",
-     "country": null,
-     "source_line": "Mariana (Konpa)"
-    },
-    {
-     "name_as_written": "Daniela",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Daniela (Kizomba)"
-    },
-    {
-     "name_as_written": "Frank E",
-     "role": "teacher",
-     "style": "Son Dominicano / Bolero",
-     "country": null,
-     "source_line": "Frank E (Son Dominicano / Bolero)"
-    },
-    {
-     "name_as_written": "Mette",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Mette (Organizer)"
-    },
-    {
-     "name_as_written": "DJ la Desi",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "DJ la Desi"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "+12 hours of Workshops in 2 rooms",
-     "rationale": "The description lists workshops running for twelve hours across two rooms."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "+12 hours of Workshops in 2 rooms",
-     "rationale": "Workshops take place in two rooms, so there is more than one dance room."
-    },
-    {
-     "feature": "after_party",
-     "quote": "This event will continue with a closed party afterwards for ticket holders.",
-     "rationale": "A closed party is held afterwards for ticket holders, which is an after-party."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "A welcoming space for both new and experienced dancers",
-     "rationale": "The event explicitly welcomes new dancers as well as experienced ones."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "these are suggestions based on accessibility to the venue",
-     "rationale": "The description gives a list of recommended hotels near the venue, not included in the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:34:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "64bd05214ee1490b",
+ "answer": {
+  "batch": "event-19048",
+  "events": [
+   {
+    "event_id": 19048,
+    "artists": [
+     {
+      "name_as_written": "Ramses y Sandra",
+      "role": "teacher",
+      "style": "Casino / Son Cubano",
+      "country": null,
+      "source_line": "Ramses y Sandra – Avanza dance (Casino / Son Cubano)"
+     },
+     {
+      "name_as_written": "Juan Pablo Paredes",
+      "role": "teacher",
+      "style": "Bachata / Merengue",
+      "country": null,
+      "source_line": "Juan Pablo Paredes (Bachata / Merengue)"
+     },
+     {
+      "name_as_written": "Mariana",
+      "role": "teacher",
+      "style": "Konpa",
+      "country": null,
+      "source_line": "Mariana (Konpa)"
+     },
+     {
+      "name_as_written": "Daniela",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Daniela (Kizomba)"
+     },
+     {
+      "name_as_written": "Frank E",
+      "role": "teacher",
+      "style": "Son Dominicano / Bolero",
+      "country": null,
+      "source_line": "Frank E (Son Dominicano / Bolero)"
+     },
+     {
+      "name_as_written": "Mette",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Mette (Organizer)"
+     },
+     {
+      "name_as_written": "DJ la Desi",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "DJ la Desi"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "+12 hours of Workshops in 2 rooms",
+      "rationale": "The text states that twelve hours of workshops take place, so dance classes are part of the event."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "Workshops in 2 rooms",
+      "rationale": "Workshops take place in two rooms, which means more than one dance room."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "A welcoming space for both new and experienced dancers",
+      "rationale": "Stating that the space welcomes new dancers as well as experienced ones shows it is open to beginners."
+     },
+     {
+      "feature": "after_party",
+      "quote": "This event will continue with a closed party afterwards for ticket holders.",
+      "rationale": "The event continues with a closed party after the main programme, which is an after-party."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "these are suggestions based on accessibility to the venue",
+      "rationale": "The organiser recommends a list of hotels near the venue without the accommodation being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:benite@benite+railey",
+ "key_b": "p:beniteb@beniteb+railey",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "bc16b81c51c2ec98",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records share the NL country, the Austria event country and the same partner (railey), which points toward one artist, but the trailing lowercase 'b' could mark a second person with the same name and the mention lists are empty, so the evidence does not settle it."
+ }
+}

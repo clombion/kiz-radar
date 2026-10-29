@@ -1,0 +1,13 @@
+{
+ "key_a": "p:andrea@andrea+natalia",
+ "key_b": "p:andreamurgia",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:37+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "790f8561cbd5f89c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only shared evidence is the common first name Andrea and the Italian country code; side A is a bare first name tied to a partner couple in Italy, while side B is the full name ANDREA MURGIA at a Spain event with no partner, and the evidence does not settle whether they are one person."
+ }
+}

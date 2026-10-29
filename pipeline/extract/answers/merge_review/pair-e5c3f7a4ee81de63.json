@@ -1,0 +1,13 @@
+{
+ "key_a": "p:lucie@cecilien+lucie",
+ "key_b": "p:lucie@johann+lucie",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:40+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "e5c3f7a4ee81de63",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are named only 'Lucie' with the same French country, but their partners differ (Cecilien versus Johann) and no mentions are listed, so a shared first name with different partners is weak evidence; the distinct partner couples point to two different people rather than one artist."
+ }
+}

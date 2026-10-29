@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fabrizio@dj",
+ "key_b": "p:fabriziochiarenza",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:39+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "081ff383cae9a9e7",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Side A is only the first name 'Fabrizio' with a 'Dj' prefix, a single Turkey DJ event and a stated Italian country, while side B is a full name with many Italian teaching events; the common first name and the absence of any shared partner or style leave it unsettled."
+ }
+}

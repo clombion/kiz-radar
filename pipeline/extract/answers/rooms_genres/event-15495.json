@@ -1,18 +1,25 @@
 {
- "batch": "event-15495",
- "events": [
-  {
-   "event_id": 15495,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "KIZOMBA",
-     "quote": "ALL FOR KIZOMBA WEEKENDER édition 2"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:36:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "24a1ea06a7b2626e",
+ "answer": {
+  "batch": "event-15495",
+  "events": [
+   {
+    "event_id": 15495,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "KIZOMBA",
+      "quote": "ALL FOR KIZOMBA WEEKENDER édition 2"
+     }
+    ]
+   }
+  ]
+ }
 }

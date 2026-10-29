@@ -1,0 +1,13 @@
+{
+ "key_a": "p:panaghiotis@katia+panaghiotis",
+ "key_b": "p:panagiotis@christina+panagiotis",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:24+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c0f99bdcd51c33eb",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different partners (Katia versus Christina) and their events are in different countries (Romania versus Greece), so the only link is a one-letter spelling difference in the first name, which is not enough to join them."
+ }
+}

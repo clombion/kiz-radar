@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jenny@elhadj+jenny",
+ "key_b": "p:jenny@jenny+jojo",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "87ec01582f20521a",
+ "answer": {
+  "decision": "separate",
+  "rationale": "Both sides are just 'Jenny' with the same country (FR) but different partners (elhadj versus jojo) and largely non-overlapping events (Poland versus Albania, Austria, Canada, Croatia), so the evidence points to two different people sharing a common first name."
+ }
+}

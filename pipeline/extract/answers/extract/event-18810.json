@@ -1,131 +1,138 @@
 {
- "batch": "event-18810",
- "events": [
-  {
-   "event_id": 18810,
-   "artists": [
-    {
-     "name_as_written": "Inês Miranda",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🇵🇹 Inês Miranda"
-    },
-    {
-     "name_as_written": "JoJo & Jenny",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "🇫🇷 JoJo & Jenny"
-    },
-    {
-     "name_as_written": "Beto Alifh",
-     "role": "teacher",
-     "style": null,
-     "country": "🇲🇽",
-     "source_line": "🇲🇽 Beto Alifh"
-    },
-    {
-     "name_as_written": "Ceijay & Bruna",
-     "role": "teacher",
-     "style": null,
-     "country": "🇭🇹🇺🇸🇦🇱",
-     "source_line": "🇭🇹🇺🇸🇦🇱 Ceijay & Bruna"
-    },
-    {
-     "name_as_written": "Steve Ciki",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷🇺🇸",
-     "source_line": "🇫🇷🇺🇸 Steve Ciki"
-    },
-    {
-     "name_as_written": "DJ Stefanio Lima",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇻",
-     "source_line": "🇨🇻 DJ Stefanio Lima"
-    },
-    {
-     "name_as_written": "DJ Pingusso",
-     "role": "dj",
-     "style": null,
-     "country": "🇱🇺",
-     "source_line": "🇱🇺 DJ Pingusso"
-    },
-    {
-     "name_as_written": "DJ Sabura",
-     "role": "dj",
-     "style": null,
-     "country": "🇵🇹",
-     "source_line": "🇵🇹 DJ Sabura"
-    },
-    {
-     "name_as_written": "DJ Sink",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇦",
-     "source_line": "🇨🇦 DJ Sink"
-    },
-    {
-     "name_as_written": "DJ Morelasoul",
-     "role": "dj",
-     "style": null,
-     "country": "🇨🇻 🇳🇱 🇯🇲",
-     "source_line": "🇨🇻 🇳🇱 🇯🇲 DJ Morelasoul"
-    },
-    {
-     "name_as_written": "DJ J’Larious",
-     "role": "dj",
-     "style": null,
-     "country": "🇯🇲",
-     "source_line": "🇯🇲 DJ J’Larious"
-    },
-    {
-     "name_as_written": "Farantini",
-     "role": "media",
-     "style": null,
-     "country": "🇳🇱",
-     "source_line": "🇳🇱 Farantini"
-    }
-   ],
-   "features": [
-    {
-     "feature": "meals_included",
-     "quote": "All-inclusive food & drinks",
-     "rationale": "The pass includes all-inclusive food and drinks."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "4-night resort stay",
-     "rationale": "The Experience Pass includes a 4-night resort stay."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Classes for all levels",
-     "rationale": "Classes are offered for all levels."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Classes for all levels",
-     "rationale": "Dance classes are part of the event programme."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Themed day & night parties",
-     "rationale": "The event includes themed day and night parties."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "Beach, garden & poolside parties",
-     "rationale": "Poolside parties are listed among the event's parties."
-    },
-    {
-     "feature": "beach_party",
-     "quote": "Beach, garden & poolside parties",
-     "rationale": "Beach parties are listed among the event's parties."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:33:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "dfcabd43a544e9e3",
+ "answer": {
+  "batch": "event-18810",
+  "events": [
+   {
+    "event_id": 18810,
+    "artists": [
+     {
+      "name_as_written": "Inês Miranda",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🇵🇹 Inês Miranda"
+     },
+     {
+      "name_as_written": "JoJo & Jenny",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "🇫🇷 JoJo & Jenny"
+     },
+     {
+      "name_as_written": "Beto Alifh",
+      "role": "teacher",
+      "style": null,
+      "country": "🇲🇽",
+      "source_line": "🇲🇽 Beto Alifh"
+     },
+     {
+      "name_as_written": "Ceijay & Bruna",
+      "role": "teacher",
+      "style": null,
+      "country": "🇭🇹🇺🇸🇦🇱",
+      "source_line": "🇭🇹🇺🇸🇦🇱 Ceijay & Bruna"
+     },
+     {
+      "name_as_written": "Steve Ciki",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷🇺🇸",
+      "source_line": "🇫🇷🇺🇸 Steve Ciki"
+     },
+     {
+      "name_as_written": "DJ Stefanio Lima",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇻",
+      "source_line": "🇨🇻 DJ Stefanio Lima"
+     },
+     {
+      "name_as_written": "DJ Pingusso",
+      "role": "dj",
+      "style": null,
+      "country": "🇱🇺",
+      "source_line": "🇱🇺 DJ Pingusso"
+     },
+     {
+      "name_as_written": "DJ Sabura",
+      "role": "dj",
+      "style": null,
+      "country": "🇵🇹",
+      "source_line": "🇵🇹 DJ Sabura"
+     },
+     {
+      "name_as_written": "DJ Sink",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇦",
+      "source_line": "🇨🇦 DJ Sink"
+     },
+     {
+      "name_as_written": "DJ Morelasoul",
+      "role": "dj",
+      "style": null,
+      "country": "🇨🇻 🇳🇱 🇯🇲",
+      "source_line": "🇨🇻 🇳🇱 🇯🇲 DJ Morelasoul"
+     },
+     {
+      "name_as_written": "DJ J’Larious",
+      "role": "dj",
+      "style": null,
+      "country": "🇯🇲",
+      "source_line": "🇯🇲 DJ J’Larious"
+     },
+     {
+      "name_as_written": "Farantini",
+      "role": "media",
+      "style": null,
+      "country": "🇳🇱",
+      "source_line": "🇳🇱 Farantini"
+     }
+    ],
+    "features": [
+     {
+      "feature": "accommodation_included",
+      "quote": "4-night resort stay",
+      "rationale": "The Experience Pass includes a 4-night resort stay."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "All-inclusive food & drinks",
+      "rationale": "The Experience Pass includes all-inclusive food and drinks."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Classes for all levels",
+      "rationale": "Classes are offered for all levels."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Full event access (classes + parties)",
+      "rationale": "Dance classes are part of the event access."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Themed day & night parties",
+      "rationale": "The event has themed day and night parties."
+     },
+     {
+      "feature": "pool_party",
+      "quote": "poolside parties",
+      "rationale": "Poolside parties are part of the programme."
+     },
+     {
+      "feature": "beach_party",
+      "quote": "Beach, garden & poolside parties",
+      "rationale": "Beach parties are listed among the event's parties."
+     }
+    ]
+   }
+  ]
+ }
 }

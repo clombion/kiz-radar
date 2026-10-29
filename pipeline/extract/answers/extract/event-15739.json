@@ -1,179 +1,186 @@
 {
- "batch": "event-15739",
- "events": [
-  {
-   "event_id": 15739,
-   "artists": [
-    {
-     "name_as_written": "Eliza Sala",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴 🇳🇱",
-     "source_line": "◾️ Eliza Sala 🇦🇴 🇳🇱"
-    },
-    {
-     "name_as_written": "Bonifacio Aurio",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴 🇵🇹",
-     "source_line": "◾️ Bonifacio Aurio 🇦🇴 🇵🇹"
-    },
-    {
-     "name_as_written": "Adilson Maíza & Telma",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "◾️ Adilson Maíza & Telma 🇦🇴"
-    },
-    {
-     "name_as_written": "Tony Viser & Carla",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴 🇨🇻 🇪🇸",
-     "source_line": "◾️ Tony Viser & Carla 🇦🇴 🇨🇻 🇪🇸"
-    },
-    {
-     "name_as_written": "Mestre Petchu",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴 🇵🇹",
-     "source_line": "◾️ Mestre Petchu 🇦🇴 🇵🇹"
-    },
-    {
-     "name_as_written": "António Rosa",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "◾️ António Rosa 🇦🇴"
-    },
-    {
-     "name_as_written": "Elhadj & Jenny",
-     "role": "teacher",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "◾️ Elhadj & Jenny 🇫🇷"
-    },
-    {
-     "name_as_written": "Vamula",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇱",
-     "source_line": "◾️ Vamula 🇵🇱"
-    },
-    {
-     "name_as_written": "Braúlia Chieta",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇱",
-     "source_line": "◾️ Braúlia Chieta 🇵🇱"
-    },
-    {
-     "name_as_written": "Fenomenos do Semba",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "◾️ Fenomenos do Semba 🇦🇴"
-    },
-    {
-     "name_as_written": "Neiken",
-     "role": "dj",
-     "style": null,
-     "country": "🇮🇹 🇵🇹",
-     "source_line": "◾️ Neiken 🇮🇹 🇵🇹"
-    },
-    {
-     "name_as_written": "Beleza",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "◾️ Beleza 🇦🇴"
-    },
-    {
-     "name_as_written": "Miro Kikola",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-     "source_line": "◾️ Miro Kikola 🇦🇴 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
-    },
-    {
-     "name_as_written": "Vasco",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "◾️ Vasco 🇫🇷"
-    },
-    {
-     "name_as_written": "Paraiso",
-     "role": "dj",
-     "style": null,
-     "country": "🇫🇷",
-     "source_line": "◾️ Paraiso 🇫🇷"
-    },
-    {
-     "name_as_written": "Franck",
-     "role": "dj",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "◾️ Franck 🇩🇪"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_in_one",
-     "quote": "ALL IN ONE> Warsaw",
-     "rationale": "The event is labelled all in one with Warsaw, and the parties are held at the hotel where the event and accommodation share the same venue."
-    },
-    {
-     "feature": "workshops",
-     "quote": "12:00 – 17:00 workshops",
-     "rationale": "The schedule lists daytime workshops on Saturday and Sunday."
-    },
-    {
-     "feature": "shows",
-     "quote": "Social + Show + Concert",
-     "rationale": "The Saturday schedule lists a show by artists."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Social + Show + Concert",
-     "rationale": "The Saturday schedule lists a concert, which is live music."
-    },
-    {
-     "feature": "after_party",
-     "quote": "🗓️ Monday 20.07: After𝗉𝖺𝗋𝗍𝗒",
-     "rationale": "The schedule includes an after-party on Monday 20.07."
-    },
-    {
-     "feature": "pre_party",
-     "quote": "Thursday 16.07: 𝖯𝗋𝖾𝗉𝖺𝗋𝗍𝗒",
-     "rationale": "The schedule includes a pre-party on Thursday 16.07 before the main event."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 rooms:",
-     "rationale": "The event has two dance rooms, one for Kizomba and Semba and one for other styles."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Social and more…",
-     "rationale": "The Friday schedule lists a daytime social from 15:00 to 19:00."
-    },
-    {
-     "feature": "dress_code",
-     "quote": "𝗗𝗥𝗘𝗦𝗦 𝗖𝗢𝗗𝗘",
-     "rationale": "A section titled dress code gives the dress code for the evenings."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "🌙𝘕𝘪𝘨𝘩𝑡𝑡𝑖𝑚𝑒 — WHITE",
-     "rationale": "The dress code sets themed evening looks such as white, elegant and African touch for the parties."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Hot & cold buffet",
-     "rationale": "The dinner buffet package lists the hot and cold buffet as included."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b8beb878d79974e1",
+ "answer": {
+  "batch": "event-15739",
+  "events": [
+   {
+    "event_id": 15739,
+    "artists": [
+     {
+      "name_as_written": "Eliza Sala",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴 🇳🇱",
+      "source_line": "◾️ Eliza Sala 🇦🇴 🇳🇱"
+     },
+     {
+      "name_as_written": "Bonifacio Aurio",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴 🇵🇹",
+      "source_line": "◾️ Bonifacio Aurio 🇦🇴 🇵🇹"
+     },
+     {
+      "name_as_written": "Adilson Maíza & Telma",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "◾️ Adilson Maíza & Telma 🇦🇴"
+     },
+     {
+      "name_as_written": "Tony Viser & Carla",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴 🇨🇻 🇪🇸",
+      "source_line": "◾️ Tony Viser & Carla 🇦🇴 🇨🇻 🇪🇸"
+     },
+     {
+      "name_as_written": "Mestre Petchu",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴 🇵🇹",
+      "source_line": "◾️ Mestre Petchu 🇦🇴 🇵🇹"
+     },
+     {
+      "name_as_written": "António Rosa",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "◾️ António Rosa 🇦🇴"
+     },
+     {
+      "name_as_written": "Elhadj & Jenny",
+      "role": "teacher",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "◾️ Elhadj & Jenny 🇫🇷"
+     },
+     {
+      "name_as_written": "Vamula",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇱",
+      "source_line": "◾️ Vamula 🇵🇱"
+     },
+     {
+      "name_as_written": "Braúlia Chieta",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇱",
+      "source_line": "◾️ Braúlia Chieta 🇵🇱"
+     },
+     {
+      "name_as_written": "Fenomenos do Semba",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "◾️ Fenomenos do Semba 🇦🇴"
+     },
+     {
+      "name_as_written": "Neiken",
+      "role": "dj",
+      "style": null,
+      "country": "🇮🇹 🇵🇹",
+      "source_line": "◾️ Neiken 🇮🇹 🇵🇹"
+     },
+     {
+      "name_as_written": "Beleza",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "◾️ Beleza 🇦🇴"
+     },
+     {
+      "name_as_written": "Miro Kikola",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "source_line": "◾️ Miro Kikola 🇦🇴 🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+     },
+     {
+      "name_as_written": "Vasco",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "◾️ Vasco 🇫🇷"
+     },
+     {
+      "name_as_written": "Paraiso",
+      "role": "dj",
+      "style": null,
+      "country": "🇫🇷",
+      "source_line": "◾️ Paraiso 🇫🇷"
+     },
+     {
+      "name_as_written": "Franck",
+      "role": "dj",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "◾️ Franck 🇩🇪"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_in_one",
+      "quote": "ALL IN ONE> Warsaw",
+      "rationale": "The line marks the event as all in one, and the hotel venue is linked with the tickets and rooms link."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "at a special rate : only €35 instead of the regular €53 hotel price",
+      "rationale": "A negotiated hotel rate is offered for the dinner buffet at the hotel."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 rooms:",
+      "rationale": "The event has two dance rooms, Room 1 and Room 2."
+     },
+     {
+      "feature": "workshops",
+      "quote": "workshops",
+      "rationale": "The schedule lists workshops on Saturday and Sunday afternoons."
+     },
+     {
+      "feature": "shows",
+      "quote": "Social + Show + Concert",
+      "rationale": "The Saturday schedule includes a show by the artists."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Social + Show + Concert",
+      "rationale": "The Saturday schedule includes a concert."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Social and more",
+      "rationale": "Daytime socials are scheduled from 15:00 on Friday."
+     },
+     {
+      "feature": "pre_party",
+      "quote": "𝖯𝗋𝖾𝗉𝖺𝗋𝗍𝗒",
+      "rationale": "A Thursday pre-party is listed before the main event."
+     },
+     {
+      "feature": "after_party",
+      "quote": "After𝗉𝖺𝗋𝗍𝗒",
+      "rationale": "An after-party is listed on Monday 20.07."
+     },
+     {
+      "feature": "dress_code",
+      "quote": "𝗗𝗥𝗘𝗦𝗦 𝗖𝗢𝗗𝗘",
+      "rationale": "A dress code section gives the dress code for the nights and days."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "WHITE",
+      "rationale": "A white dress theme is set for a night party."
+     }
+    ]
+   }
+  ]
+ }
 }

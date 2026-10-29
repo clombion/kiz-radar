@@ -2,9 +2,8 @@
  "event_id": 17125,
  "title": "Jamais DoDo EPISODE 3: Revenge of the Kiz",
  "start_date": "2027-03-18",
- "read_by": "claude-sonnet-5-5 + claude-fable-5-1",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:37:36+00:00",
+ "end_date": "2027-03-22",
+ "country": "United States",
  "styles": [
   "bachata",
   "kizomba",
@@ -12,6 +11,9 @@
   "salsa"
  ],
  "description": "Jamais Dodo Kizomba Weekender EPISODE 3: Revenge of the Kiz , dance non-stop all weekend and enjoy a curated experience in the midwest!\nJamais Dodo Kizomba Weekender\nWelcome to Jamais DoDo EPISODE 3: Revenge of the Kiz! Get ready to immerse yourself in a weekend full of non-stop kizomba music and dancing.\nWhether you’re a seasoned kizomba dancer or just starting out, this event is perfect for anyone looking to have a great time and connect with others who share a passion for this beautiful dance. You’ll have the opportunity to learn new moves, groove to the rhythm, and make lasting memories.\nGrab your dancing shoes, invite your friends, and get ready to dance the night away at this next edition of the Jamais DoDo Kizomba Weekender.",
+ "read_by": "claude-sonnet-5-5 + claude-fable-5-1",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:19:12+00:00",
  "passes": [
   {
    "kind": "full",

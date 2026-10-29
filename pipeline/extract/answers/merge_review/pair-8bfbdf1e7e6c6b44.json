@@ -1,0 +1,13 @@
+{
+ "key_a": "p:jefe@diana+jefe",
+ "key_b": "p:jefe@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8bfbdf1e7e6c6b44",
+ "answer": {
+  "decision": "merge",
+  "rationale": "The two records share the same stage name with a DJ prefix on one side, the same country (Trinidad and Tobago) and the same event country (Saint Martin), so 'DJ Jefe' and 'Jefe' are one artist."
+ }
+}

@@ -1,39 +1,38 @@
 {
- "batch": "event-15873",
- "events": [
-  {
-   "event_id": 15873,
-   "artists": [
-    {
-     "name_as_written": "@lospambosevents",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "@lospambosevents"
-    }
-   ],
-   "features": [
-    {
-     "feature": "meals_included",
-     "quote": "All Inclusive : Breakfast – Lunch – Dinner – Drinks: Alcahol and Non Alcahol",
-     "rationale": "The All Inclusive line lists breakfast, lunch, dinner and drinks, so meals are included in the offer."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "Package of Full Pass & Accomodation & All Inclusive till 10 May 2026",
-     "rationale": "The package explicitly combines the full pass with accommodation."
-    },
-    {
-     "feature": "pool_party",
-     "quote": "pool parties",
-     "rationale": "The description promises pool parties as part of the holiday."
-    },
-    {
-     "feature": "workshops",
-     "quote": "elite lessons",
-     "rationale": "Elite lessons are offered as part of the event, which means dance classes are included."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:47+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "bdb30364564e350c",
+ "answer": {
+  "batch": "event-15873",
+  "events": [
+   {
+    "event_id": 15873,
+    "artists": [],
+    "features": [
+     {
+      "feature": "pool_party",
+      "quote": "pool parties",
+      "rationale": "The description states that the holiday includes pool parties."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "Package of Full Pass & Accomodation & All Inclusive till 10 May 2026:",
+      "rationale": "The package listed as a Full Pass includes accommodation."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "All Inclusive : Breakfast – Lunch – Dinner – Drinks: Alcahol and Non Alcahol",
+      "rationale": "The all-inclusive package lists breakfast, lunch and dinner as included."
+     },
+     {
+      "feature": "workshops",
+      "quote": "elite lessons",
+      "rationale": "Dance lessons are offered as part of the holiday programme."
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,102 +1,109 @@
 {
- "batch": "event-15642",
- "events": [
-  {
-   "event_id": 15642,
-   "artists": [
-    {
-     "name_as_written": "Teresa Freitas",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Teresa Freitas | Alberto Celmo | M Xtrela | Gabriel Cabinda"
-    },
-    {
-     "name_as_written": "Alberto Celmo",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Teresa Freitas | Alberto Celmo | M Xtrela | Gabriel Cabinda"
-    },
-    {
-     "name_as_written": "M Xtrela",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Teresa Freitas | Alberto Celmo | M Xtrela | Gabriel Cabinda"
-    },
-    {
-     "name_as_written": "Gabriel Cabinda",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "⭐ Teresa Freitas | Alberto Celmo | M Xtrela | Gabriel Cabinda"
-    },
-    {
-     "name_as_written": "Puto Português",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "🎤 Puto Português"
-    },
-    {
-     "name_as_written": "DJ: Kapitula",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ: Kapitula"
-    },
-    {
-     "name_as_written": "DJ Afrodeziak",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "🎧 DJ Afrodeziak"
-    },
-    {
-     "name_as_written": "Kimalee’s Kandandu",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Organized by: Kimalee’s Kandandu | Lápis Event | Stay Fit Team, LLC"
-    },
-    {
-     "name_as_written": "Lápis Event",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Organized by: Kimalee’s Kandandu | Lápis Event | Stay Fit Team, LLC"
-    },
-    {
-     "name_as_written": "Stay Fit Team, LLC",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Organized by: Kimalee’s Kandandu | Lápis Event | Stay Fit Team, LLC"
-    }
-   ],
-   "features": [
-    {
-     "feature": "shows",
-     "quote": "LIVE SHOW (SATURDAY NIGHT)",
-     "rationale": "A live show on Saturday night is an show by the artists."
-    },
-    {
-     "feature": "live_music",
-     "quote": "Puto Português",
-     "rationale": "Puto Português is listed as a performer at the live show, indicating live music."
-    },
-    {
-     "feature": "workshops",
-     "quote": "8 hours of intense workshops!",
-     "rationale": "The event includes eight hours of dance workshops."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "Accommodation Suggestions:",
-     "rationale": "The description recommends hotels for accommodation without stating that accommodation is part of the pass."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:25:52+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "db6dc365400c83c3",
+ "answer": {
+  "batch": "event-15642",
+  "events": [
+   {
+    "event_id": 15642,
+    "artists": [
+     {
+      "name_as_written": "Teresa Freitas",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Teresa Freitas | Alberto Celmo | M Xtrela | Gabriel Cabinda"
+     },
+     {
+      "name_as_written": "Alberto Celmo",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Teresa Freitas | Alberto Celmo | M Xtrela | Gabriel Cabinda"
+     },
+     {
+      "name_as_written": "M Xtrela",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Teresa Freitas | Alberto Celmo | M Xtrela | Gabriel Cabinda"
+     },
+     {
+      "name_as_written": "Gabriel Cabinda",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "⭐ Teresa Freitas | Alberto Celmo | M Xtrela | Gabriel Cabinda"
+     },
+     {
+      "name_as_written": "Puto Português",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "🎤 Puto Português"
+     },
+     {
+      "name_as_written": "DJ: Kapitula",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ: Kapitula"
+     },
+     {
+      "name_as_written": "DJ Afrodeziak",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "🎧 DJ Afrodeziak"
+     },
+     {
+      "name_as_written": "Kimalee’s Kandandu",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Organized by: Kimalee’s Kandandu | Lápis Event | Stay Fit Team, LLC"
+     },
+     {
+      "name_as_written": "Lápis Event",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Organized by: Kimalee’s Kandandu | Lápis Event | Stay Fit Team, LLC"
+     },
+     {
+      "name_as_written": "Stay Fit Team, LLC",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Organized by: Kimalee’s Kandandu | Lápis Event | Stay Fit Team, LLC"
+     }
+    ],
+    "features": [
+     {
+      "feature": "partner_hotel",
+      "quote": "Accommodation Suggestions:",
+      "rationale": "Lists suggested hotels for attendees, which is a recommended hotel without accommodation being part of the pass."
+     },
+     {
+      "feature": "workshops",
+      "quote": "8 hours of intense workshops!",
+      "rationale": "States that dance workshops are part of the event."
+     },
+     {
+      "feature": "shows",
+      "quote": "LIVE SHOW (SATURDAY NIGHT)",
+      "rationale": "A live show by artists is part of the programme."
+     },
+     {
+      "feature": "live_music",
+      "quote": "Puto Português",
+      "rationale": "A singer is listed as performing live at the event."
+     }
+    ]
+   }
+  ]
+ }
 }

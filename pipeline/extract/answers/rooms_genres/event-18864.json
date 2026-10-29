@@ -1,18 +1,25 @@
 {
- "batch": "event-18864",
- "events": [
-  {
-   "event_id": 18864,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "dance the night away with the international Kizomba community"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:18+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "e90a6247ad21d711",
+ "answer": {
+  "batch": "event-18864",
+  "events": [
+   {
+    "event_id": 18864,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "the international Kizomba community"
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -1,0 +1,13 @@
+{
+ "key_a": "p:fede@fede+lorenz",
+ "key_b": "p:fedekiz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "02500d533404f63a",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are listed in Italy and share the partner Lorenz, and 'Fede' is a short form of 'Fede Kiz', which the guidance treats as the same person when the partner matches; no event evidence shows two people."
+ }
+}

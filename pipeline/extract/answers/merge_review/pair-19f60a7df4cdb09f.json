@@ -1,0 +1,13 @@
+{
+ "key_a": "p:supaman@dj",
+ "key_b": "p:supaman@dj",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "19f60a7df4cdb09f",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are the same key with identical mentions, so this is one name stated with countries NL and PT that never meet at the same event; the evidence cannot tell whether one DJ or several people share the name 'DJ Supaman', so it stays unsure rather than guessing."
+ }
+}

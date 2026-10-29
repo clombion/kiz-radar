@@ -2,15 +2,17 @@
  "event_id": 17092,
  "title": "10th ANNIVERSARY Luxembourg Unified Dance Festival",
  "start_date": "2026-12-17",
- "read_by": "claude-opus-5-5 + claude-sonnet-5-5",
- "prompt": "1a3b603636d758ee",
- "rows_at": "2026-10-27T18:20:18+00:00",
+ "end_date": "2026-12-21",
+ "country": "Luxembourg",
  "styles": [
   "bachata",
   "kizomba",
   "salsa"
  ],
  "description": "☛☛☛☛ 17,18,19,20 December 2026\n💥 ONE OF THE BIGGEST EUROPEAN FESTIVAL\n💥 RENOWNED ARTISTS & DEEJAYS\n💥 NEW ARTISTS AND DEEJAYS IN THE LINEUP\n💥 4 DANCEFLOORS WITH 4 DIFFERENT TYPES OF MUSIC\n💥 4 STARS OFFICIAL HOTEL\n💥 NEW SHOWS\n💥 BACHATA JACK & JILL COMPETITION\n•••••••• CONFIRMED ARTISTS ••••••••\nBACHATA:\nMelvin & Gatica\nKIZOMBA:\nTBA\nSALSA:\nTBA\n•••••••• MEDIA TEAM ••••••••\nTBA\n✅ Tickets: http://unifiedfestival.lu/\n✅ All informations:\nhttps://linktr.ee/unifieddancefestival…\n✅ Official Hotel:\n🏨 Book your hotel room here : LINK COMING SOON\n⚜️ NOVOTEL KIRCHBERG\n⚜️ NOVOTEL SUITES\n⚜️ MAMA SHELTER\n⚜️ SOFITEL\n👠👗 Don’t miss the opportunity to explore these stands and upgrade your dance festival experience. Get ready to shop, spritz and style your way through the festival!🛍️\nTBA\n—————————————————————\n✅ website: www.unifiedfestival.lu\n✅ contact: info@unifiedfestival.lu\n✅ Dancers Group: https://www.facebook.com/groups/922632941182402",
+ "read_by": "claude-opus-5-5 + claude-fable-5-1",
+ "prompt": "b1d060bbebb24369",
+ "rows_at": "2026-10-29T16:12:04+00:00",
  "passes": [
   {
    "kind": "full",
@@ -62,25 +64,7 @@
    "tiers": [
     {
      "keys": [
-      "a681d0e7-43a7-4357-8175-c4647f6ac0bf"
-     ],
-     "from": null,
-     "until": null,
-     "quantity": null,
-     "date_quote": null
-    }
-   ]
-  },
-  {
-   "kind": "full",
-   "style": null,
-   "label_quote": null,
-   "group_size": 2,
-   "days": null,
-   "includes_hotel": false,
-   "tiers": [
-    {
-     "keys": [
+      "a681d0e7-43a7-4357-8175-c4647f6ac0bf",
       "db5b2550-06f5-449e-a5d4-bd05cca454fb"
      ],
      "from": null,

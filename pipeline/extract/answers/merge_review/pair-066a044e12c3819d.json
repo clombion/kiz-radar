@@ -1,0 +1,13 @@
+{
+ "key_a": "p:portu@mada+portu",
+ "key_b": "p:portu@mada+portu",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:30+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "066a044e12c3819d",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The same key is compared with itself and the single name 'Portu' is stated with countries ES, PT and RO that never meet in any event, partner or mention, so there is no evidence it is one artist rather than several people sharing a name."
+ }
+}

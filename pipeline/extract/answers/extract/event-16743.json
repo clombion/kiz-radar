@@ -1,24 +1,25 @@
 {
- "batch": "event-16743",
- "events": [
-  {
-   "event_id": 16743,
-   "artists": [
-    {
-     "name_as_written": "Team Kiz Et Vie",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Team Kiz Et Vie presents its new event."
-    }
-   ],
-   "features": [
-    {
-     "feature": "themed_parties",
-     "quote": "Heart’n Kiz Halloween Edition",
-     "rationale": "The event is a Halloween edition, which indicates a themed night."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:08+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "1cb4edd78f835eb5",
+ "answer": {
+  "batch": "event-16743",
+  "events": [
+   {
+    "event_id": 16743,
+    "artists": [
+     {
+      "name_as_written": "Team Kiz Et Vie",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Team Kiz Et Vie presents its new event."
+     }
+    ],
+    "features": []
+   }
+  ]
+ }
 }

@@ -1,94 +1,101 @@
 {
- "batch": "event-17102",
- "events": [
-  {
-   "event_id": 17102,
-   "artists": [
-    {
-     "name_as_written": "𝐀𝐥𝐟𝐫𝐞𝐝𝐨 & 𝐀𝐧𝐝𝐫𝐞𝐚",
-     "role": "teacher",
-     "style": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀 (𝐒𝐞𝐧𝐬𝐮𝐚𝐥 & 𝐅𝐮𝐬𝐢𝐨𝐧)",
-     "country": "Spain, 𝐄𝐒",
-     "source_line": "🔹 𝐀𝐥𝐟𝐫𝐞𝐝𝐨 & 𝐀𝐧𝐝𝐫𝐞𝐚 (Spain, 𝐄𝐒) – The best in the world."
-    },
-    {
-     "name_as_written": "𝐀𝐥𝐞𝐱 & 𝐎𝐫𝐧𝐞𝐥𝐥𝐚",
-     "role": "teacher",
-     "style": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀 (𝐒𝐞𝐧𝐬𝐮𝐚𝐥 & 𝐅𝐮𝐬𝐢𝐨𝐧)",
-     "country": "Sp/Fri, 𝐄𝐒/𝐕𝐄",
-     "source_line": "🔹 𝐀𝐥𝐞𝐱 & 𝐎𝐫𝐧𝐞𝐥𝐥𝐚 (Sp/Fri, 𝐄𝐒/𝐕𝐄) – The power duo you’ve been asking for."
-    },
-    {
-     "name_as_written": "𝐀𝐝𝐢𝐥 & 𝐄𝐥𝐨",
-     "role": "teacher",
-     "style": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀 (𝐒𝐞𝐧𝐬𝐮𝐚𝐥 & 𝐅𝐮𝐬𝐢𝐨𝐧)",
-     "country": "France",
-     "source_line": "🔹 𝐀𝐝𝐢𝐥 & 𝐄𝐥𝐨 (France) – 2026 World Champion and United States"
-    },
-    {
-     "name_as_written": "𝐀𝐛𝐝𝐞𝐥 & 𝐇𝐨𝐮𝐝𝐚",
-     "role": "teacher",
-     "style": "𝐒𝐀𝐋𝐒𝐀 𝐂𝐔𝐁𝐀𝐈𝐍𝐄",
-     "country": "𝐌𝐀",
-     "source_line": "🔹 𝐀𝐛𝐝𝐞𝐥 & 𝐇𝐨𝐮𝐝𝐚 (Casablanca, 𝐌𝐀) – Elegance and international technique."
-    },
-    {
-     "name_as_written": "𝐃𝐚𝐧𝐢𝐞𝐥 & 𝐈𝐫𝐚𝐭𝐢",
-     "role": "teacher",
-     "style": "𝐒𝐀𝐋𝐒𝐀 𝐂𝐔𝐁𝐀𝐈𝐍𝐄",
-     "country": "𝐄𝐒",
-     "source_line": "🔹 𝐃𝐚𝐧𝐢𝐞𝐥 & 𝐈𝐫𝐚𝐭𝐢 (Pamplona, 𝐄𝐒) – They arrive directly from Navarre to convey to us all the energy and madness of the famous 𝐟𝐞̂𝐭𝐞𝐬 𝐝𝐞 𝐏𝐚𝐦𝐩𝐞𝐥𝐮𝐧𝐞! Get ready for a wild rueda! 💃🔥"
-    },
-    {
-     "name_as_written": "𝐑𝐚𝐮𝐥 & 𝐃𝐚𝐧𝐢𝐞𝐥𝐚",
-     "role": "teacher",
-     "style": "𝐒𝐀𝐋𝐒𝐀 𝐂𝐔𝐁𝐀𝐈𝐍𝐄",
-     "country": "Colombia, 𝐂𝐎",
-     "source_line": "🔹 𝐑𝐚𝐮𝐥 & 𝐃𝐚𝐧𝐢𝐞𝐥𝐚 (Colombia, 𝐂𝐎) – from Colombia literally with 𝐥𝐞 𝐟𝐞𝐮 𝐚𝐮𝐱 𝐩𝐢𝐞𝐝𝐬 for a dose of pure energy! 🇨🇴🔥"
-    },
-    {
-     "name_as_written": "𝐌𝐫 𝐓𝐞𝐜𝐚𝐬 & 𝐓𝐚𝐬𝐡𝐚",
-     "role": "teacher",
-     "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 & 𝐒𝐄𝐌𝐁𝐀 (𝐀𝐮𝐭𝐡𝐞𝐧𝐭𝐢𝐜𝐢𝐭𝐲)",
-     "country": "Angola/Fr, 𝐀🇴/𝐅𝐑",
-     "source_line": "🔹 𝐌𝐫 𝐓𝐞𝐜𝐚𝐬 & 𝐓𝐚𝐬𝐡𝐚 (Angola/Fr, 𝐀🇴/𝐅𝐑) – The true ambassadors and the very essence of Angolan dance."
-    },
-    {
-     "name_as_written": "𝐃𝐲𝐰𝐞𝐧",
-     "role": "teacher",
-     "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 & 𝐒𝐄𝐌𝐁𝐀 (𝐀𝐮𝐭𝐡𝐞𝐧𝐭𝐢𝐜𝐢𝐭𝐲)",
-     "country": "France",
-     "source_line": "🔹 𝐃𝐲𝐰𝐞𝐧 (Toulouse, France) – The essence of Uban Kiz"
-    },
-    {
-     "name_as_written": "𝐌𝐚𝐦𝐛𝐨 𝐅𝐚𝐦𝐢𝐥𝐲",
-     "role": "performer",
-     "style": "𝐒𝐀𝐋𝐒𝐀 𝐏𝐎𝐑𝐓𝐎 (𝐌𝐚𝐦𝐛𝐨 & 𝐋𝐢𝐧𝐞𝐚)",
-     "country": "Madrid, 𝐄𝐒",
-     "source_line": "🔹 𝐌𝐚𝐦𝐛𝐨 𝐅𝐚𝐦𝐢𝐥𝐲 (Madrid, 𝐄𝐒) – An explosive show with 𝟏𝟎 𝐚𝐫𝐭𝐢𝐬𝐭𝐞𝐬 on stage!"
-    },
-    {
-     "name_as_written": "𝐀𝐫𝐢𝐭𝐳",
-     "role": "teacher",
-     "style": "𝐒𝐀𝐋𝐒𝐀 𝐏𝐎𝐑𝐓𝐎 (𝐌𝐚𝐦𝐛𝐨 & 𝐋𝐢𝐧𝐞𝐚)",
-     "country": "San Sebastian, 𝐄𝐒",
-     "source_line": "🔹 𝐀𝐫𝐢𝐭𝐳 (San Sebastian, 𝐄𝐒) – Our talented neighbor from across the border!"
-    },
-    {
-     "name_as_written": "𝐂𝐡𝐚𝐧𝐝𝐫𝐲𝐥 & 𝐌𝐚𝐫𝐢𝐨𝐧",
-     "role": "teacher",
-     "style": "𝐒𝐀𝐋𝐒𝐀 𝐏𝐎𝐑𝐓𝐎 (𝐌𝐚𝐦𝐛𝐨 & 𝐋𝐢𝐧𝐞𝐚)",
-     "country": "South West, 𝐅𝐑",
-     "source_line": "🔹 𝐂𝐡𝐚𝐧𝐝𝐫𝐲𝐥 & 𝐌𝐚𝐫𝐢𝐨𝐧 (South West, 𝐅𝐑) – Our local champions and the pride of our region!"
-    }
-   ],
-   "features": [
-    {
-     "feature": "shows",
-     "quote": "An explosive show with 𝟏𝟎 𝐚𝐫𝐭𝐢𝐬𝐭𝐞𝐬 on stage!",
-     "rationale": "The description promises a show with ten artists performing on stage."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:31:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "4b855b151bd550cd",
+ "answer": {
+  "batch": "event-17102",
+  "events": [
+   {
+    "event_id": 17102,
+    "artists": [
+     {
+      "name_as_written": "𝐀𝐥𝐟𝐫𝐞𝐝𝐨 & 𝐀𝐧𝐝𝐫𝐞𝐚",
+      "role": "teacher",
+      "style": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀 (𝐒𝐞𝐧𝐬𝐮𝐚𝐥 & 𝐅𝐮𝐬𝐢𝐨𝐧)",
+      "country": "Spain",
+      "source_line": "🔹 𝐀𝐥𝐟𝐫𝐞𝐝𝐨 & 𝐀𝐧𝐝𝐫𝐞𝐚 (Spain, 𝐄𝐒) – The best in the world."
+     },
+     {
+      "name_as_written": "𝐀𝐥𝐞𝐱 & 𝐎𝐫𝐧𝐞𝐥𝐥𝐚",
+      "role": "teacher",
+      "style": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀 (𝐒𝐞𝐧𝐬𝐮𝐚𝐥 & 𝐅𝐮𝐬𝐢𝐨𝐧)",
+      "country": "Sp/Fri",
+      "source_line": "🔹 𝐀𝐥𝐞𝐱 & 𝐎𝐫𝐧𝐞𝐥𝐥𝐚 (Sp/Fri, 𝐄𝐒/𝐕𝐄) – The power duo you’ve been asking for."
+     },
+     {
+      "name_as_written": "𝐀𝐝𝐢𝐥 & 𝐄𝐥𝐨",
+      "role": "teacher",
+      "style": "𝐁𝐀𝐂𝐇𝐀𝐓𝐀 (𝐒𝐞𝐧𝐬𝐮𝐚𝐥 & 𝐅𝐮𝐬𝐢𝐨𝐧)",
+      "country": "France",
+      "source_line": "🔹 𝐀𝐝𝐢𝐥 & 𝐄𝐥𝐨 (France) – 2026 World Champion and United States"
+     },
+     {
+      "name_as_written": "𝐀𝐛𝐝𝐞𝐥 & 𝐇𝐨𝐮𝐝𝐚",
+      "role": "teacher",
+      "style": "𝐒𝐀𝐋𝐒𝐀 𝐂𝐔𝐁𝐀𝐈𝐍𝐄",
+      "country": "𝐌𝐀",
+      "source_line": "🔹 𝐀𝐛𝐝𝐞𝐥 & 𝐇𝐨𝐮𝐝𝐚 (Casablanca, 𝐌𝐀) – Elegance and international technique."
+     },
+     {
+      "name_as_written": "𝐃𝐚𝐧𝐢𝐞𝐥 & 𝐈𝐫𝐚𝐭𝐢",
+      "role": "teacher",
+      "style": "𝐒𝐀𝐋𝐒𝐀 𝐂𝐔𝐁𝐀𝐈𝐍𝐄",
+      "country": "𝐄𝐒",
+      "source_line": "🔹 𝐃𝐚𝐧𝐢𝐞𝐥 & 𝐈𝐫𝐚𝐭𝐢 (Pamplona, 𝐄𝐒) – They arrive directly from Navarre to convey to us all the energy and madness of the famous 𝐟𝐞̂𝐭𝐞𝐬 𝐝𝐞 𝐏𝐚𝐦𝐩𝐞𝐥𝐮𝐧𝐞! Get ready for a wild rueda! 💃🔥"
+     },
+     {
+      "name_as_written": "𝐑𝐚𝐮𝐥 & 𝐃𝐚𝐧𝐢𝐞𝐥𝐚",
+      "role": "teacher",
+      "style": "𝐒𝐀𝐋𝐒𝐀 𝐂𝐔𝐁𝐀𝐈𝐍𝐄",
+      "country": "Colombia",
+      "source_line": "🔹 𝐑𝐚𝐮𝐥 & 𝐃𝐚𝐧𝐢𝐞𝐥𝐚 (Colombia, 𝐂𝐎) – from Colombia literally with 𝐥𝐞 𝐟𝐞𝐮 𝐚𝐮𝐱 𝐩𝐢𝐞𝐝𝐬 for a dose of pure energy! 🇨🇴🔥"
+     },
+     {
+      "name_as_written": "𝐌𝐫 𝐓𝐞𝐜𝐚𝐬 & 𝐓𝐚𝐬𝐡𝐚",
+      "role": "teacher",
+      "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 & 𝐒𝐄𝐌𝐁𝐀 (𝐀𝐮𝐭𝐡𝐞𝐧𝐭𝐢𝐜𝐢𝐭𝐲)",
+      "country": "Angola/Fr",
+      "source_line": "🔹 𝐌𝐫 𝐓𝐞𝐜𝐚𝐬 & 𝐓𝐚𝐬𝐡𝐚 (Angola/Fr, 𝐀🇴/𝐅𝐑) – The true ambassadors and the very essence of Angolan dance."
+     },
+     {
+      "name_as_written": "𝐃𝐲𝐰𝐞𝐧",
+      "role": "teacher",
+      "style": "𝐊𝐈𝐙𝐎𝐌𝐁𝐀 & 𝐒𝐄𝐌𝐁𝐀 (𝐀𝐮𝐭𝐡𝐞𝐧𝐭𝐢𝐜𝐢𝐭𝐲)",
+      "country": "France",
+      "source_line": "🔹 𝐃𝐲𝐰𝐞𝐧 (Toulouse, France) – The essence of Uban Kiz"
+     },
+     {
+      "name_as_written": "𝐌𝐚𝐦𝐛𝐨 𝐅𝐚𝐦𝐢𝐥𝐲",
+      "role": "performer",
+      "style": "𝐒𝐀𝐋𝐒𝐀 𝐏𝐎𝐑𝐓𝐎 (𝐌𝐚𝐦𝐛𝐨 & 𝐋𝐢𝐧𝐞𝐚)",
+      "country": "𝐄𝐒",
+      "source_line": "🔹 𝐌𝐚𝐦𝐛𝐨 𝐅𝐚𝐦𝐢𝐥𝐲 (Madrid, 𝐄𝐒) – An explosive show with 𝟏𝟎 𝐚𝐫𝐭𝐢𝐬𝐭𝐞𝐬 on stage!"
+     },
+     {
+      "name_as_written": "𝐀𝐫𝐢𝐭𝐳",
+      "role": "teacher",
+      "style": "𝐒𝐀𝐋𝐒𝐀 𝐏𝐎𝐑𝐓𝐎 (𝐌𝐚𝐦𝐛𝐨 & 𝐋𝐢𝐧𝐞𝐚)",
+      "country": "𝐄𝐒",
+      "source_line": "🔹 𝐀𝐫𝐢𝐭𝐳 (San Sebastian, 𝐄𝐒) – Our talented neighbor from across the border!"
+     },
+     {
+      "name_as_written": "𝐂𝐡𝐚𝐧𝐝𝐫𝐲𝐥 & 𝐌𝐚𝐫𝐢𝐨𝐧",
+      "role": "teacher",
+      "style": "𝐒𝐀𝐋𝐒𝐀 𝐏𝐎𝐑𝐓𝐎 (𝐌𝐚𝐦𝐛𝐨 & 𝐋𝐢𝐧𝐞𝐚)",
+      "country": "𝐅𝐑",
+      "source_line": "🔹 𝐂𝐡𝐚𝐧𝐝𝐫𝐲𝐥 & 𝐌𝐚𝐫𝐢𝐨𝐧 (South West, 𝐅𝐑) – Our local champions and the pride of our region!"
+     }
+    ],
+    "features": [
+     {
+      "feature": "shows",
+      "quote": "An explosive show with 𝟏𝟎 𝐚𝐫𝐭𝐢𝐬𝐭𝐞𝐬 on stage!",
+      "rationale": "The description promises an explosive show with ten artists on stage, which is a performance by artists."
+     }
+    ]
+   }
+  ]
+ }
 }

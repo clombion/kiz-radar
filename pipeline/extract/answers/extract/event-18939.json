@@ -1,21 +1,28 @@
 {
- "batch": "event-18939",
- "events": [
-  {
-   "event_id": 18939,
-   "artists": [],
-   "features": [
-    {
-     "feature": "multiple_rooms",
-     "quote": "Enjoy a full weekend with two dedicated dance rooms",
-     "rationale": "The description states there are two dedicated dance rooms, which means more than one dance room."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Whether you’re a passionate dancer, a beginner, or simply looking for a beautiful weekend away",
-     "rationale": "The description explicitly addresses beginners as part of the intended audience."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:34:20+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "ccb8bb29995512d3",
+ "answer": {
+  "batch": "event-18939",
+  "events": [
+   {
+    "event_id": 18939,
+    "artists": [],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "two dedicated dance rooms",
+      "rationale": "The description states the event has two dedicated dance rooms, meaning more than one dance floor."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Whether you’re a passionate dancer, a beginner",
+      "rationale": "The description explicitly addresses beginners as an intended audience for the weekend."
+     }
+    ]
+   }
+  ]
+ }
 }

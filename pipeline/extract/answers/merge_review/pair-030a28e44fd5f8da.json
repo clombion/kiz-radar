@@ -1,0 +1,13 @@
+{
+ "key_a": "p:dje@dje+tpeak",
+ "key_b": "p:djelika@djelika+tpeak",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:22+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "030a28e44fd5f8da",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different stated countries (FR versus GP) and entirely different event locations (Austria, Denmark, France, Spain versus La Martinique); the only shared element is the partner 'tpeak', and 'DJE' is a short acronym-like name, so the evidence points to two artists rather than one."
+ }
+}

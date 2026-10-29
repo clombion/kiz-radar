@@ -1,0 +1,13 @@
+{
+ "key_a": "p:oksana@dance",
+ "key_b": "p:oksana@oksana+said",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fe311589c9d6586b",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share the spelling Oksana (case differs) and the Ukrainian country UA, but Oksana is a common first name, side A has no partner, side B's mention list is empty so its events and style cannot be checked, and A's only event is in Sweden while B's are elsewhere, so the evidence does not settle whether they are one person."
+ }
+}

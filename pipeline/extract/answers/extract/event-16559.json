@@ -1,170 +1,172 @@
 {
- "batch": "event-16559",
- "events": [
-  {
-   "event_id": 16559,
-   "artists": [
-    {
-     "name_as_written": "Adriano & Lory",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Adriano & Lory (Bachata)"
-    },
-    {
-     "name_as_written": "Ben",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Ben (Bachata)"
-    },
-    {
-     "name_as_written": "Gor",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Gor (Bachata)"
-    },
-    {
-     "name_as_written": "All",
-     "role": "teacher",
-     "style": "Urban Kiz",
-     "country": null,
-     "source_line": "All (Urban Kiz)"
-    },
-    {
-     "name_as_written": "José & Jessica",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "José & Jessica (Bachata)"
-    },
-    {
-     "name_as_written": "Laho Leone",
-     "role": "teacher",
-     "style": "Urban Kiz Sensual for Ladies",
-     "country": null,
-     "source_line": "Laho Leone (Urban Kiz Sensual for Ladies)"
-    },
-    {
-     "name_as_written": "Madou & Céline",
-     "role": "teacher",
-     "style": "Semba",
-     "country": null,
-     "source_line": "Madou & Céline (Semba)"
-    },
-    {
-     "name_as_written": "Marcelin & Sandy",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Marcelin & Sandy (Kizomba)"
-    },
-    {
-     "name_as_written": "Rvan & Juliette",
-     "role": "teacher",
-     "style": null,
-     "country": null,
-     "source_line": "Rvan & Juliette (Team LiquidStyle)"
-    },
-    {
-     "name_as_written": "Sandy & Sergio",
-     "role": "teacher",
-     "style": "Kizomba Fusion",
-     "country": null,
-     "source_line": "Sandy & Sergio (Kizomba Fusion)"
-    },
-    {
-     "name_as_written": "DJ Loonay",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Bachata Room: DJ Loonay • DJ Taga’da"
-    },
-    {
-     "name_as_written": "DJ Taga’da",
-     "role": "dj",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Bachata Room: DJ Loonay • DJ Taga’da"
-    },
-    {
-     "name_as_written": "DJ Leericks",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Kizomba Room: DJ Leericks (Resident) • DJ El Chapo"
-    },
-    {
-     "name_as_written": "DJ El Chapo",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Kizomba Room: DJ Leericks (Resident) • DJ El Chapo"
-    },
-    {
-     "name_as_written": "Jennifer Dias",
-     "role": "performer",
-     "style": null,
-     "country": null,
-     "source_line": "🔥 EXCLUSIVE SHOWCASE – Jennifer Dias (Saturday night) 🔥"
-    },
-    {
-     "name_as_written": "Babou One Shot",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Babou One Shot (Photography)"
-    },
-    {
-     "name_as_written": "Tibass Ackerman",
-     "role": "media",
-     "style": null,
-     "country": null,
-     "source_line": "Tibass Ackerman (Videography)"
-    },
-    {
-     "name_as_written": "Team LiquidStyle",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "💃 Taxi Dancers:"
-    },
-    {
-     "name_as_written": "Team Senkita",
-     "role": "crew",
-     "style": null,
-     "country": null,
-     "source_line": "Team LiquidStyle • Team Senkita & other GUESTS"
-    }
-   ],
-   "features": [
-    {
-     "feature": "meals_included",
-     "quote": "Weekend pass with or without meals",
-     "rationale": "The weekend pass is offered with meals included as an option."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "2 rooms – 2 vibes",
-     "rationale": "Two dance rooms are described."
-    },
-    {
-     "feature": "workshops",
-     "quote": "High-quality workshops all weekend long",
-     "rationale": "Workshops are part of the event all weekend."
-    },
-    {
-     "feature": "shows",
-     "quote": "EXCLUSIVE SHOWCASE – Jennifer Dias (Saturday night)",
-     "rationale": "A showcase performance by Jennifer Dias is part of the programme."
-    },
-    {
-     "feature": "taxi_dancers",
-     "quote": "Taxi Dancers:",
-     "rationale": "Taxi dancer teams are listed as present."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:29:36+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "248df6cfab3482e6",
+ "answer": {
+  "batch": "event-16559",
+  "events": [
+   {
+    "event_id": 16559,
+    "artists": [
+     {
+      "name_as_written": "Adriano & Lory",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Adriano & Lory (Bachata)"
+     },
+     {
+      "name_as_written": "Ben",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Ben (Bachata)"
+     },
+     {
+      "name_as_written": "Gor",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Gor (Bachata)"
+     },
+     {
+      "name_as_written": "All",
+      "role": "teacher",
+      "style": "Urban Kiz",
+      "country": null,
+      "source_line": "All (Urban Kiz)"
+     },
+     {
+      "name_as_written": "José & Jessica",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "José & Jessica (Bachata)"
+     },
+     {
+      "name_as_written": "Laho Leone",
+      "role": "teacher",
+      "style": "Urban Kiz Sensual for Ladies",
+      "country": null,
+      "source_line": "Laho Leone (Urban Kiz Sensual for Ladies)"
+     },
+     {
+      "name_as_written": "Madou & Céline",
+      "role": "teacher",
+      "style": "Semba",
+      "country": null,
+      "source_line": "Madou & Céline (Semba)"
+     },
+     {
+      "name_as_written": "Marcelin & Sandy",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Marcelin & Sandy (Kizomba)"
+     },
+     {
+      "name_as_written": "Rvan & Juliette",
+      "role": "teacher",
+      "style": null,
+      "country": null,
+      "source_line": "Rvan & Juliette (Team LiquidStyle)"
+     },
+     {
+      "name_as_written": "Sandy & Sergio",
+      "role": "teacher",
+      "style": "Kizomba Fusion",
+      "country": null,
+      "source_line": "Sandy & Sergio (Kizomba Fusion)"
+     },
+     {
+      "name_as_written": "DJ Loonay",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Bachata Room: DJ Loonay • DJ Taga’da"
+     },
+     {
+      "name_as_written": "DJ Taga’da",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Bachata Room: DJ Loonay • DJ Taga’da"
+     },
+     {
+      "name_as_written": "DJ Leericks",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Kizomba Room: DJ Leericks (Resident) • DJ El Chapo"
+     },
+     {
+      "name_as_written": "DJ El Chapo",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Kizomba Room: DJ Leericks (Resident) • DJ El Chapo"
+     },
+     {
+      "name_as_written": "Jennifer Dias",
+      "role": "performer",
+      "style": null,
+      "country": null,
+      "source_line": "🔥 EXCLUSIVE SHOWCASE – Jennifer Dias (Saturday night) 🔥"
+     },
+     {
+      "name_as_written": "Babou One Shot",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Babou One Shot (Photography)"
+     },
+     {
+      "name_as_written": "Tibass Ackerman",
+      "role": "media",
+      "style": null,
+      "country": null,
+      "source_line": "Tibass Ackerman (Videography)"
+     },
+     {
+      "name_as_written": "Team LiquidStyle",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Team LiquidStyle • Team Senkita & other GUESTS"
+     },
+     {
+      "name_as_written": "Team Senkita",
+      "role": "crew",
+      "style": null,
+      "country": null,
+      "source_line": "Team LiquidStyle • Team Senkita & other GUESTS"
+     }
+    ],
+    "features": [
+     {
+      "feature": "multiple_rooms",
+      "quote": "2 rooms – 2 vibes",
+      "rationale": "The description states there are two rooms for the event."
+     },
+     {
+      "feature": "shows",
+      "quote": "EXCLUSIVE SHOWCASE – Jennifer Dias (Saturday night)",
+      "rationale": "A showcase performance by Jennifer Dias is part of the event."
+     },
+     {
+      "feature": "taxi_dancers",
+      "quote": "Taxi Dancers",
+      "rationale": "The description lists Taxi Dancers teams as present."
+     },
+     {
+      "feature": "workshops",
+      "quote": "High-quality workshops all weekend long",
+      "rationale": "Dance workshops run throughout the weekend as part of the event."
+     }
+    ]
+   }
+  ]
+ }
 }

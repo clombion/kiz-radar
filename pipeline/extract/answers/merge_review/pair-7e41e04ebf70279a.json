@@ -1,0 +1,13 @@
+{
+ "key_a": "p:telma@adilsonmaiza+telma",
+ "key_b": "p:telma@maiza+telma",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:16:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7e41e04ebf70279a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named Telma with the same country (AO), but their partners differ (adilsonmaiza vs maiza), their events are in different countries (Poland vs Belgium, Czech Republic, Italy), and the mention lists are empty, so the evidence does not settle whether they are one artist."
+ }
+}

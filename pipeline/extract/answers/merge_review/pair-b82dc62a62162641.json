@@ -1,0 +1,13 @@
+{
+ "key_a": "p:carla@carla+tony",
+ "key_b": "p:carla@carla+tonyviser",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:50+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "b82dc62a62162641",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named CARLA with identical stated countries (AO, CV, ES), but their event countries barely overlap and their partners differ (tony@carla+tony versus tonyviser), and no mention lines are supplied, so the evidence does not settle whether this is one artist or two."
+ }
+}

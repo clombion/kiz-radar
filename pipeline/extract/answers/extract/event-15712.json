@@ -1,54 +1,61 @@
 {
- "batch": "event-15712",
- "events": [
-  {
-   "event_id": 15712,
-   "artists": [
-    {
-     "name_as_written": "BM FESTIV",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "BM FESTIV cruise from May 2nd to 6th, 2026 on the"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_levels_beginners",
-     "quote": "Classes for all levels",
-     "rationale": "The description states that classes are offered for all levels."
-    },
-    {
-     "feature": "cruise",
-     "quote": "BM FESTIV cruise from May 2nd to 6th, 2026 on the",
-     "rationale": "The event is a dance cruise on the Costa Fascinosa ship."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Daily classes starting at 10:00 AM",
-     "rationale": "Daily dance classes are part of the cruise programme."
-    },
-    {
-     "feature": "shows",
-     "quote": "Entertainment and musical shows on the Costa Fascinosa cruise",
-     "rationale": "The package includes entertainment and musical shows on the ship."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "Themed evenings",
-     "rationale": "The programme lists themed evenings."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Full board: breakfast, lunch, and dinner",
-     "rationale": "Full board meals are included in the fares."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "5 days, 4 nights on the Costa Fascinosa in an inside, outside, or balcony cabin of your choice",
-     "rationale": "The fares include the cabin for four nights on the ship."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:26:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "a28d02b0fdc6c4b9",
+ "answer": {
+  "batch": "event-15712",
+  "events": [
+   {
+    "event_id": 15712,
+    "artists": [
+     {
+      "name_as_written": "BM FESTIV",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "BM FESTIV cruise from May 2nd to 6th, 2026 on the"
+     }
+    ],
+    "features": [
+     {
+      "feature": "cruise",
+      "quote": "BM FESTIV cruise from May 2nd to 6th, 2026 on the",
+      "rationale": "The event is a cruise on the Costa Fascinosa ship."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "5 days, 4 nights on the Costa Fascinosa in an inside, outside, or balcony cabin of your choice",
+      "rationale": "The fares include the cabin for the four nights on the ship."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Full board: breakfast, lunch, and dinner",
+      "rationale": "The fares include full board meals."
+     },
+     {
+      "feature": "shows",
+      "quote": "Entertainment and musical shows on the Costa Fascinosa cruise",
+      "rationale": "The cruise includes entertainment and musical shows."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "Themed evenings",
+      "rationale": "The programme lists themed evenings."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Daily classes starting at 10:00 AM followed by an SBK evening.",
+      "rationale": "Daily dance classes are part of the programme."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "Classes for all levels",
+      "rationale": "The classes are stated to be suitable for all levels, including beginners."
+     }
+    ]
+   }
+  ]
+ }
 }

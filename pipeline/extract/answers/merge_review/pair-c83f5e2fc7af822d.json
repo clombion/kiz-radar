@@ -1,0 +1,13 @@
+{
+ "key_a": "p:chiara@chiara+chiara#1",
+ "key_b": "p:chiara@chiara+chiara#2",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "c83f5e2fc7af822d",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two keys are each other's only partner, which means they appear as a dancing couple, so they are two people who share the name Chiara and the country Italy, and the mention lists are empty so nothing shows one artist."
+ }
+}

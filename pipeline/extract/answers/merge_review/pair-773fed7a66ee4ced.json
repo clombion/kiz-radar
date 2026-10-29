@@ -1,0 +1,13 @@
+{
+ "key_a": "p:andrea@alfredo+andrea",
+ "key_b": "p:andrea@andrea+luis",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "773fed7a66ee4ced",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are named only 'Andrea' with the same country (ES) but different partners (Alfredo versus Luis) and largely different events, so the common first name plus a shared country is too weak to join or separate them; the mention lists are empty, so nothing further settles it."
+ }
+}

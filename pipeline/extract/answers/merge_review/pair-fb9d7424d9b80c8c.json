@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mickaela@jahja+mickaela",
+ "key_b": "p:mickaela@mamadou+mickaela",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:05+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fb9d7424d9b80c8c",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both records are named Mickaela and both have events in Sweden, but their partners differ (jahja versus mamadou), and the mention lists are empty, so the evidence does not show whether this is one dancer or two."
+ }
+}

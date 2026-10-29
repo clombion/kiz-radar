@@ -1,0 +1,13 @@
+{
+ "key_a": "p:cristina@cristina+johnny",
+ "key_b": "p:cristinacricri",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6af60af614aa8f22",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The only link is the shared first name Cristina and the shared country CH; 'Cristina' is a common name, side A is a couple with johnny while side B is a solo teacher with a nickname-like 'Cri Cri', and side B has no events or partners to connect them, so the evidence does not settle it."
+ }
+}

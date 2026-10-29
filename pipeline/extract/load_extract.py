@@ -32,8 +32,6 @@ Usage: mise run load
 
 import argparse
 import json
-import re
-import unicodedata
 from collections.abc import Mapping, Sequence
 from collections.abc import Set as AbstractSet
 from typing import NamedTuple
@@ -44,11 +42,10 @@ from pipeline import db as sqlite_db
 from pipeline import export, states, tickets_state, tickets_store
 from pipeline import prompt as prompts
 from pipeline.db import Reader, Transaction
-from pipeline.enums import Genre, GenreRule, Sales, Source
-from pipeline.extract import answers, run_log
+from pipeline.enums import GenreRule, Sales, Source
+from pipeline.extract import answers, genres, questions, run_log
 from pipeline.extract import prices as price_rules
 from pipeline.extract.answers import Answer
-from pipeline.extract.prices import window
 from pipeline.prompt import Pass
 from pipeline.records import (
     Asked,
@@ -99,14 +96,15 @@ CREATE TABLE pass_tiers (
     valid_until TEXT,
     dates_as_answered TEXT,       -- from/until as answered, when a date had no year (MM-DD) and got one here
     quantity INTEGER,             -- tickets at this price, when limited
-    door INTEGER NOT NULL CHECK (door IN (0, 1)),  -- the price at the door; never from a ticket page, which sells
-                                  -- online
+    door INTEGER NOT NULL CHECK (door IN (0, 1)),  -- the price at the door, which has no dates, quantity or
+                                  -- current; never from a ticket page, which sells online
     sold_out INTEGER NOT NULL CHECK (sold_out IN (0, 1)),
     current INTEGER NOT NULL CHECK (current IN (0, 1)),  -- called the current price; valid_from is then when the
                                   -- description was edited
     quote TEXT NOT NULL,
     PRIMARY KEY (event_id, pass_no, tier_no),
     CHECK (valid_from <= valid_until),
+    CHECK (NOT door OR (valid_from IS NULL AND valid_until IS NULL AND quantity IS NULL AND NOT current)),
     FOREIGN KEY (event_id, pass_no) REFERENCES event_passes(event_id, pass_no) ON DELETE CASCADE
         DEFERRABLE INITIALLY DEFERRED
 ) STRICT;
@@ -269,7 +267,7 @@ def performed_by[E: Entry](got: Mapping[int, Answer[E]]) -> str:
     """'20 answer files by Claude Code subagent, one batch; 3 answer files by pipeline/extract/ask.py' and the like."""
     by: dict[str, set[str]] = {}
     for a in got.values():
-        by.setdefault(a.logged.answered_by, set()).add(a.logged.file)
+        by.setdefault(a.provenance.answered_by, set()).add(str(a.path))
     return '; '.join(f'{len(fs)} answer files by {who}' for who, fs in sorted(by.items()))
 
 
@@ -282,11 +280,11 @@ def page_prices(event_ids: set[int]) -> tuple[dict[int, tickets_store.Written], 
     return {i: w for i, w in found.written.items() if i in event_ids}, found.other_prompt
 
 
-def current[E: Entry, Q: Asked](pass_: Pass[E, Q], event_ids: set[int]) -> tuple[dict[int, Answer[E]], int]:
-    """(the festivals' answers of the pass to its current prompt, how many answers are to another): one to another
-    prompt means something else, so it waits to be asked again."""
-    now = answers.current(pass_, event_ids)
-    return now, len(answers.answered(pass_.name, event_ids)) - len(now)
+def current[E: Entry, Q: Asked](now: questions.Now, pass_: Pass[E, Q]) -> tuple[dict[int, Answer[E]], int]:
+    """(the festivals' current answers of the pass, how many answers are stale): an answer to another prompt, or of
+    another message than the festival would be asked with today, waits to be asked again."""
+    got = now.current(pass_)
+    return got, len(answers.answered(pass_.name, set(now.festivals))) - len(got)
 
 
 def sold(con: Reader) -> dict[int, tuple[Sales | None, str | None]]:
@@ -311,7 +309,11 @@ def load_prices(
         e.id: (day_of(e.start_date), day_of(e.modified_at))
         for e in con.rows(Dated, 'SELECT id, start_date, modified_at FROM events')
     }
-    rows = [(a.entry, 'description', a.logged.prompt, a.logged.model) for e, a in described.items() if e not in pages]
+    rows = [
+        (a.entry, 'description', a.provenance.prompt, a.provenance.model)
+        for e, a in described.items()
+        if e not in pages
+    ]
     rows += [(w.answer, 'ticket_page', w.page.prompt, w.page.read_by) for w in pages.values()]
     con.insert(
         'ticket_pages',
@@ -354,10 +356,11 @@ def load_prices(
                 }
             )
             for t, tier in enumerate(ps.tiers, 1):
-                frm, until = window(tier.from_, tier.until, start)
-                if tier.current and frm is None:
+                frm, until = price_rules.dates(tier, start)
+                sale = tier.sale
+                if sale and sale.current and frm is None:
                     frm = edited
-                no_year = any(v is not None and yearless(v) for v in (tier.from_, tier.until))
+                no_year = sale is not None and any(v is not None and yearless(v) for v in (sale.from_, sale.until))
                 tier_rows.append(
                     {
                         'event_id': ev.event_id,
@@ -370,11 +373,13 @@ def load_prices(
                         'alt_currency': tier.alt.currency if tier.alt else None,
                         'valid_from': frm,
                         'valid_until': until,
-                        'dates_as_answered': json.dumps({'from': tier.from_, 'until': tier.until}) if no_year else None,
-                        'quantity': tier.quantity,
-                        'door': int(tier.door),
+                        'dates_as_answered': json.dumps({'from': sale.from_, 'until': sale.until})
+                        if sale and no_year
+                        else None,
+                        'quantity': sale.quantity if sale else None,
+                        'door': int(sale is None),
                         'sold_out': int(tier.sold_out),
-                        'current': int(tier.current),
+                        'current': int(bool(sale and sale.current)),
                         'quote': tier.quote,
                     }
                 )
@@ -418,10 +423,10 @@ def record_pass[E: Entry](
     if not got:
         run_log.forget(con, step)  # none to the current prompt yet: the step's rows are gone
         return
-    hashes = sorted({a.logged.prompt for a in got.values()} | also)
+    hashes = sorted({a.provenance.prompt for a in got.values()} | also)
     for h in hashes:
         run_log.record_prompt(con, h)
-    times = sorted({a.logged.answered_at for a in got.values()})
+    times = sorted({a.provenance.answered_at for a in got.values()})
     run_log.record(
         con,
         run_log.Step(
@@ -429,12 +434,12 @@ def record_pass[E: Entry](
             what,
             performed_by(got),
             performed_at=times[-1],
-            model=', '.join(sorted({a.logged.model for a in got.values()})),
+            model=', '.join(sorted({a.provenance.model for a in got.values()})),
             prompt=', '.join(hashes),
             inputs='pipeline/prompts/asked/<prompt>.md; event descriptions',
             outputs=outputs,
             details={
-                'answer_files': len({a.logged.file for a in got.values()}),
+                'answer_files': len({str(a.path) for a in got.values()}),
                 'festivals': len(got),
                 'first_answer': times[0].isoformat(),
                 'last_answer': times[-1].isoformat(),
@@ -535,14 +540,14 @@ def load_rooms_genres(con: Transaction, got: Mapping[int, Answer[RoomsGenres]]) 
                 'party_rooms_quote': pr and pr.quote,
                 'class_rooms': (cr := a.entry.class_rooms) and cr.count,
                 'class_rooms_quote': cr and cr.quote,
-                'prompt': a.logged.prompt,
-                'model': a.logged.model,
+                'prompt': a.provenance.prompt,
+                'model': a.provenance.model,
             }
             for a in got.values()
         ),
     )
     for a in got.values():
-        ev, prompt, model = a.entry, a.logged.prompt, a.logged.model
+        ev = a.entry
         con.insert(
             'event_room_list',
             (
@@ -557,73 +562,33 @@ def load_rooms_genres(con: Transaction, got: Mapping[int, Answer[RoomsGenres]]) 
                 for n, r in enumerate(ev.rooms, 1)
             ),
         )
-        con.insert(
-            'event_genres',
-            (
-                {
-                    'event_id': ev.event_id,
-                    'genre': g.genre,
-                    'source': Source.DESCRIPTION,
-                    'other_name': ' '.join(g.genre_as_written.split()).casefold() if g.genre == Genre.OTHER else '',
-                    'genre_as_written': g.genre_as_written,
-                    'quote': g.quote,
-                    'prompt': prompt,
-                    'model': model,
-                }
-                for g in ev.genres
-            ),
-            unless=GENRE_KEY,
-        )
 
 
-def load_genre_rules(con: Transaction) -> None:
-    """The genres the rooms-genres pass applies unevenly (SBK, a genre in the title), and the site's style tags'."""
-    # a rule's word ("SBK", its tag) names several genres together; the rooms-genres pass does not expand it
-    # consistently
+def load_genres(con: Transaction, now: questions.Now, rooms: Mapping[int, Answer[RoomsGenres]]) -> None:
+    """Each festival's genres (genres.py): its rooms-genres answer's, its rules', its title's and its site tags'."""
     described = con.rows(Described, 'SELECT id, title, description_text FROM events')
-
-    def added(eid: int, genre: str, as_written: str, quote: str, rule: GenreRule) -> dict[str, object]:
-        return {
-            'event_id': eid,
-            'genre': genre,
-            'source': Source.DESCRIPTION,
-            'genre_as_written': as_written,
-            'quote': quote,
-            'rule': rule,
+    rows: list[dict[str, object]] = [
+        {
+            'event_id': e.id,
+            'genre': g.genre,
+            'source': g.source,
+            'other_name': g.other_name,
+            'genre_as_written': g.as_written,
+            'quote': g.quote,
+            'prompt': a.provenance.prompt if a and g.answered else None,
+            'rule': g.rule,
+            'model': a.provenance.model if a and g.answered else None,
         }
-
-    rule_rows: list[dict[str, object]] = []
-    for e in described:
-        text = f'{e.title}\n{e.description_text or ""}'
-        for rule in states.of('genre_rule'):
-            for word in rule.tags:
-                if m := re.search(rf'[^\n]{{0,60}}\b{re.escape(word)}\b[^\n]{{0,60}}', text):
-                    rule_rows += [added(e.id, g, word, m.group(0).strip(), GenreRule(rule.key)) for g in rule.genres]
-    con.insert('event_genres', rule_rows, unless=GENRE_KEY)
-    # A genre named in the title counts; batches of the rooms-genres pass applied this unevenly
-    title_rows: list[dict[str, object]] = []
-    for e in described:
-        plain = unicodedata.normalize('NFKC', e.title)
-        title_rows += [  # brand spellings ("AfroKiz", "Kizz") are no title of a genre
-            added(e.id, genre.key, m.group(0), e.title, GenreRule.TITLE)
-            for genre in states.of('genre')
-            if genre.title and (m := re.search(genre.title, plain, re.IGNORECASE))
-        ]
-    con.insert('event_genres', title_rows, unless=GENRE_KEY)
-    con.insert(
-        'event_genres',
-        (
-            {'event_id': t.event_id, 'genre': genre, 'source': Source.SITE_TAG}
-            for t in con.rows(Tagged, 'SELECT event_id, tag FROM event_tags')
-            for genre in states.TAG_GENRES.get(t.tag, [])
-        ),
-        unless=GENRE_KEY,
-    )
+        for e in described
+        for a in [rooms.get(e.id)]
+        for g in genres.found(e.title, e.description_text or '', a and a.entry, now.tags.get(e.id, ()))
+    ]
+    con.insert('event_genres', rows)
 
 
 def load_extracted(con: Transaction, got: Mapping[int, Answer[Extracted]]) -> None:
     for a in got.values():
-        ev, prompt, model = a.entry, a.logged.prompt, a.logged.model
+        ev, prompt, model = a.entry, a.provenance.prompt, a.provenance.model
         con.insert(
             'event_features',
             (
@@ -663,9 +628,10 @@ def main() -> None:
     _ = ap.parse_args()
     with export.opened('rw') as db, db.transaction() as con:
         event_ids = set(con.column(int, 'SELECT id FROM events'))
-        extract, stale_extract = current(prompts.EXTRACT, event_ids)
-        rooms_genres, stale_rooms = current(prompts.ROOMS_GENRES, event_ids)
-        prices, stale_prices = current(prompts.PRICES, event_ids)
+        now = questions.now(con)
+        extract, stale_extract = current(now, prompts.EXTRACT)
+        rooms_genres, stale_rooms = current(now, prompts.ROOMS_GENRES)
+        prices, stale_prices = current(now, prompts.PRICES)
         for pass_, stale in (
             (prompts.EXTRACT, stale_extract),
             (prompts.ROOMS_GENRES, stale_rooms),
@@ -673,7 +639,7 @@ def main() -> None:
         ):
             if stale:
                 print(
-                    f"{stale} festivals' {pass_.name} answers were asked with another prompt; "
+                    f"{stale} festivals' {pass_.name} answers are stale (another prompt, or the festival changed); "
                     'left out until asked again'
                 )
         pages, stale = page_prices(event_ids)
@@ -692,7 +658,7 @@ def main() -> None:
         for point in ('feature', 'genre', 'role'):
             con.insert(f'{point}_definitions', ({point: s.key, 'definition': s.criterion} for s in states.of(point)))
         load_rooms_genres(con, rooms_genres)
-        load_genre_rules(con)
+        load_genres(con, now, rooms_genres)
         load_extracted(con, extract)
         con.insert(
             'event_features',

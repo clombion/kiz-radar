@@ -1,109 +1,122 @@
 {
- "batch": "event-16889",
- "events": [
-  {
-   "event_id": 16889,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": 3,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 80.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "04-01",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "FULL PASS 1st Price = €80 (Until April 1st)"
-      },
-      {
-       "amount": 90.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "09-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "FULL PASS 2nd Price = €90 (Until September 15th)"
-      },
-      {
-       "amount": 100.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "FULL PASS 3rd Price = €100 (Until the date of the event and at the door)"
-      }
-     ]
-    },
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": null,
-     "group_size": 2,
-     "days": 3,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 150.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "04-01",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "FULL PASS COUPLE 1st Price = €150 (Until April 1st)"
-      },
-      {
-       "amount": 165.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "09-15",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "FULL PASS COUPLE 2nd Price = €165 (Until September 15th)"
-      },
-      {
-       "amount": 185.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": true,
-       "sold_out": false,
-       "current": false,
-       "quote": "FULL PASS COUPLE 3rd Price = €185 (Until the date of the event and at the door)"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:44:42+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b3069f6e9961936e",
+ "answer": {
+  "batch": "event-16889",
+  "events": [
+   {
+    "event_id": 16889,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 1,
+      "days": 3,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 80.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "04-01",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "– FULL PASS 1st Price = €80 (Until April 1st)"
+       },
+       {
+        "amount": 90.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "09-15",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "– FULL PASS 2nd Price = €90 (Until September 15th)"
+       },
+       {
+        "amount": 100.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "11-13",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "– FULL PASS 3rd Price = €100 (Until the date of the event and at the door)"
+       }
+      ]
+     },
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": null,
+      "group_size": 2,
+      "days": 3,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 150.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "04-01",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "– FULL PASS COUPLE 1st Price = €150 (Until April 1st)"
+       },
+       {
+        "amount": 165.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "09-15",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "– FULL PASS COUPLE 2nd Price = €165 (Until September 15th)"
+       },
+       {
+        "amount": 185.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "11-13",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "– FULL PASS COUPLE 3rd Price = €185 (Until the date of the event and at the door)"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

@@ -1,43 +1,50 @@
 {
- "batch": "event-16927",
- "events": [
-  {
-   "event_id": 16927,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 Epic Party Rooms every night"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Kizomba Room",
-     "kind": "party",
-     "genres": [
-      "kizomba"
-     ],
-     "quote": "Kizomba Room"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:38:56+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "3a11148fd891cfda",
+ "answer": {
+  "batch": "event-16927",
+  "events": [
+   {
+    "event_id": 16927,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 Epic Party Rooms every night"
     },
-    {
-     "name_as_written": "Bachata Room",
-     "kind": "party",
-     "genres": [
-      "bachata"
-     ],
-     "quote": "Bachata Room"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba Room"
-    },
-    {
-     "genre": "bachata",
-     "genre_as_written": "Bachata",
-     "quote": "Bachata Room"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Kizomba Room",
+      "kind": "party",
+      "genres": [
+       "kizomba"
+      ],
+      "quote": "Kizomba Room"
+     },
+     {
+      "name_as_written": "Bachata Room",
+      "kind": "party",
+      "genres": [
+       "bachata"
+      ],
+      "quote": "Bachata Room"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Kizomba Room"
+     },
+     {
+      "genre": "bachata",
+      "genre_as_written": "Bachata",
+      "quote": "Bachata Room"
+     }
+    ]
+   }
+  ]
+ }
 }

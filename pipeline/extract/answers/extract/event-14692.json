@@ -1,161 +1,168 @@
 {
- "batch": "event-14692",
- "events": [
-  {
-   "event_id": 14692,
-   "artists": [
-    {
-     "name_as_written": "Eliza Sala",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇳🇱",
-     "source_line": "▪️Eliza Sala 🇦🇴🇳🇱"
-    },
-    {
-     "name_as_written": "Kinkizomba & Giorgia",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇮🇹",
-     "source_line": "▪️Kinkizomba & Giorgia 🇦🇴🇮🇹"
-    },
-    {
-     "name_as_written": "Bonifácio Aurio",
-     "role": "teacher",
-     "style": null,
-     "country": "🇵🇹🇦🇴",
-     "source_line": "▪️Bonifácio Aurio 🇵🇹🇦🇴"
-    },
-    {
-     "name_as_written": "Márcio Junqueira",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇱🇺",
-     "source_line": "▪️Márcio Junqueira 🇦🇴🇱🇺"
-    },
-    {
-     "name_as_written": "Vanessa Paris & Cláudio Dolk",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇨🇻",
-     "source_line": "▪️Vanessa Paris & Cláudio Dolk 🇦🇴🇨🇻"
-    },
-    {
-     "name_as_written": "Romarey & Echedey",
-     "role": "teacher",
-     "style": null,
-     "country": "🇮🇨",
-     "source_line": "▪️Romarey & Echedey 🇮🇨"
-    },
-    {
-     "name_as_written": "Teresa Freitas & Emanuel",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "▪️Teresa Freitas & Emanuel 🇦🇴"
-    },
-    {
-     "name_as_written": "M-Xtrela",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "▪️M-Xtrela 🇦🇴"
-    },
-    {
-     "name_as_written": "Braulia Chieta",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇵🇱",
-     "source_line": "▪️Braulia Chieta 🇦🇴🇵🇱"
-    },
-    {
-     "name_as_written": "Cazuza Kinvula",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇨🇭",
-     "source_line": "▪️Cazuza Kinvula 🇦🇴🇨🇭"
-    },
-    {
-     "name_as_written": "Zilda Vicente",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇫🇷",
-     "source_line": "▪️Zilda Vicente 🇦🇴🇫🇷"
-    },
-    {
-     "name_as_written": "Vivaldo & Belinha",
-     "role": "teacher",
-     "style": null,
-     "country": "🇦🇴🇵🇹",
-     "source_line": "▪️Vivaldo & Belinha 🇦🇴🇵🇹"
-    },
-    {
-     "name_as_written": "MIRO KIKOLA",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "▪️MIRO KIKOLA ✅🇦🇴"
-    },
-    {
-     "name_as_written": "KAPITULA",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "▪️KAPITULA ✅🇦🇴"
-    },
-    {
-     "name_as_written": "DJ FRANCK M",
-     "role": "dj",
-     "style": null,
-     "country": "🇩🇪",
-     "source_line": "▪️DJ FRANCK M✅🇩🇪"
-    },
-    {
-     "name_as_written": "DJ BLACK GENUINO",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "▪️DJ BLACK GENUINO ✅🇦🇴"
-    },
-    {
-     "name_as_written": "DJ FENOMENO",
-     "role": "dj",
-     "style": null,
-     "country": "🇦🇴",
-     "source_line": "▪️DJ FENOMENO ✅🇦🇴"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "WORKSHOPS",
-     "rationale": "The event lists workshops as a component of the three-day programme."
-    },
-    {
-     "feature": "masterclass",
-     "quote": "Masterclass",
-     "rationale": "The description explicitly mentions a masterclass on Sunday."
-    },
-    {
-     "feature": "shows",
-     "quote": "SHOW",
-     "rationale": "A show by artists is listed among the event's features."
-    },
-    {
-     "feature": "live_music",
-     "quote": "L I V E M U S I C",
-     "rationale": "A live music section is listed, indicating live musicians performing."
-    },
-    {
-     "feature": "day_socials",
-     "quote": "Workshop + Social Dance 🟠11:00-21:00",
-     "rationale": "Saturday includes a social dance during the daytime from 11:00 to 21:00."
-    },
-    {
-     "feature": "partner_hotel",
-     "quote": "H O T E L O P T I O N S",
-     "rationale": "A hotel options section suggests recommended hotels for attendees."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:23:21+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "e28eecf9b722d724",
+ "answer": {
+  "batch": "event-14692",
+  "events": [
+   {
+    "event_id": 14692,
+    "artists": [
+     {
+      "name_as_written": "Eliza Sala",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇳🇱",
+      "source_line": "▪️Eliza Sala 🇦🇴🇳🇱"
+     },
+     {
+      "name_as_written": "Kinkizomba & Giorgia",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇮🇹",
+      "source_line": "▪️Kinkizomba & Giorgia 🇦🇴🇮🇹"
+     },
+     {
+      "name_as_written": "Bonifácio Aurio",
+      "role": "teacher",
+      "style": null,
+      "country": "🇵🇹🇦🇴",
+      "source_line": "▪️Bonifácio Aurio 🇵🇹🇦🇴"
+     },
+     {
+      "name_as_written": "Márcio Junqueira",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇱🇺",
+      "source_line": "▪️Márcio Junqueira 🇦🇴🇱🇺"
+     },
+     {
+      "name_as_written": "Vanessa Paris & Cláudio Dolk",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇨🇻",
+      "source_line": "▪️Vanessa Paris & Cláudio Dolk 🇦🇴🇨🇻"
+     },
+     {
+      "name_as_written": "Romarey & Echedey",
+      "role": "teacher",
+      "style": null,
+      "country": "🇮🇨",
+      "source_line": "▪️Romarey & Echedey 🇮🇨"
+     },
+     {
+      "name_as_written": "Teresa Freitas & Emanuel",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "▪️Teresa Freitas & Emanuel 🇦🇴"
+     },
+     {
+      "name_as_written": "M-Xtrela",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "▪️M-Xtrela 🇦🇴"
+     },
+     {
+      "name_as_written": "Braulia Chieta",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇵🇱",
+      "source_line": "▪️Braulia Chieta 🇦🇴🇵🇱"
+     },
+     {
+      "name_as_written": "Cazuza Kinvula",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇨🇭",
+      "source_line": "▪️Cazuza Kinvula 🇦🇴🇨🇭"
+     },
+     {
+      "name_as_written": "Zilda Vicente",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇫🇷",
+      "source_line": "▪️Zilda Vicente 🇦🇴🇫🇷"
+     },
+     {
+      "name_as_written": "Vivaldo & Belinha",
+      "role": "teacher",
+      "style": null,
+      "country": "🇦🇴🇵🇹",
+      "source_line": "▪️Vivaldo & Belinha 🇦🇴🇵🇹"
+     },
+     {
+      "name_as_written": "MIRO KIKOLA",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "▪️MIRO KIKOLA ✅🇦🇴"
+     },
+     {
+      "name_as_written": "KAPITULA",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "▪️KAPITULA ✅🇦🇴"
+     },
+     {
+      "name_as_written": "DJ FRANCK M",
+      "role": "dj",
+      "style": null,
+      "country": "🇩🇪",
+      "source_line": "▪️DJ FRANCK M✅🇩🇪"
+     },
+     {
+      "name_as_written": "DJ BLACK GENUINO",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "▪️DJ BLACK GENUINO ✅🇦🇴"
+     },
+     {
+      "name_as_written": "DJ FENOMENO",
+      "role": "dj",
+      "style": null,
+      "country": "🇦🇴",
+      "source_line": "▪️DJ FENOMENO ✅🇦🇴"
+     }
+    ],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "WORKSHOPS",
+      "rationale": "The description lists WORKSHOPS as a highlight of the event, so dance classes are part of it."
+     },
+     {
+      "feature": "live_music",
+      "quote": "L I V E M U S I C",
+      "rationale": "A heading announces live music as part of the line-up."
+     },
+     {
+      "feature": "shows",
+      "quote": "✅SHOW",
+      "rationale": "SHOW is listed as a highlight, and a show section appears later in the line-up."
+     },
+     {
+      "feature": "masterclass",
+      "quote": "Masterclass",
+      "rationale": "A Masterclass is announced for the Sunday schedule."
+     },
+     {
+      "feature": "day_socials",
+      "quote": "Workshop + Social Dance 12:00-22:00",
+      "rationale": "A social dance running from midday to 22:00 on Sunday is a daytime social."
+     },
+     {
+      "feature": "partner_hotel",
+      "quote": "H O T E L O P T I O N S",
+      "rationale": "A hotel options section suggests recommended hotels without the accommodation being part of the pass."
+     }
+    ]
+   }
+  ]
+ }
 }

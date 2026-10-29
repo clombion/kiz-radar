@@ -1,0 +1,13 @@
+{
+ "key_a": "p:carla@carla+tony",
+ "key_b": "p:carlaandrade",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:51+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "6199f4ff7540d82a",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "CARLA and CARLA ANDRADE share countries AO and CV and one event country (Germany), but their partners differ (tony@carla+tony vs tonyviser) and the mention lists are empty, so the evidence does not settle whether the bare first name and the full name are one artist."
+ }
+}

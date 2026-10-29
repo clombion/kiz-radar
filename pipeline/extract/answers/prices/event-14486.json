@@ -1,34 +1,37 @@
 {
- "batch": "event-14486",
- "events": [
-  {
-   "event_id": 14486,
-   "passes": [
-    {
-     "kind": "full",
-     "style": null,
-     "label_quote": "♦️ 𝐏𝐚𝐬𝐬",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": false,
-     "tiers": [
-      {
-       "amount": 60.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "𝐴 𝑝𝑎𝑟𝑡𝑖𝑟 𝑑𝑒 60€ 𝑝𝑎𝑟 𝑝𝑒𝑟𝑠𝑜𝑛𝑛𝑒 …"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "ee5e6dc6eb5c0c1a",
+ "answer": {
+  "batch": "event-14486",
+  "events": [
+   {
+    "event_id": 14486,
+    "passes": [
+     {
+      "kind": "full",
+      "style": null,
+      "label_quote": "♦️ 𝐏𝐚𝐬𝐬",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": false,
+      "tiers": [
+       {
+        "amount": 60.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": null,
+        "sold_out": false,
+        "quote": "𝐴 𝑝𝑎𝑟𝑡𝑖𝑟 𝑑𝑒 60€ 𝑝𝑎𝑟 𝑝𝑒𝑟𝑠𝑜𝑛𝑛𝑒 …"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

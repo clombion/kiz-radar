@@ -1,0 +1,13 @@
+{
+ "key_a": "p:david@david+quinn",
+ "key_b": "p:davidruach",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:19+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "58c63c2055a8d0e2",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides state South Africa (ZA), but side A is only the bare first name 'David' with a partner 'quinn' that side B never shares, its events (Japan, Korea) do not overlap with B's (Romania, UAE), and side A has no mentions to compare styles, so the evidence does not settle it."
+ }
+}

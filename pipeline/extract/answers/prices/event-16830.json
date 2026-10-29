@@ -1,13 +1,20 @@
 {
- "batch": "event-16830",
- "events": [
-  {
-   "event_id": 16830,
-   "passes": [],
-   "rule_quotes": [
-    "Online prices are not valid at the door",
-    "Passes will cost more at the door"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:44:31+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "2ffbbd04bf11df36",
+ "answer": {
+  "batch": "event-16830",
+  "events": [
+   {
+    "event_id": 16830,
+    "passes": [],
+    "rule_quotes": [
+     "Passes will cost more at the door",
+     "Online prices are not valid at the door"
+    ]
+   }
+  ]
+ }
 }

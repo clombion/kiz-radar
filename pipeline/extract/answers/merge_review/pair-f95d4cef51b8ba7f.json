@@ -1,0 +1,13 @@
+{
+ "key_a": "p:danceproject",
+ "key_b": "p:danceprojet",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "f95d4cef51b8ba7f",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both mentions are teachers of Salsa at Spanish events, and 'Dance projet' is a one-letter spelling variant of 'DANCE PROJECT' with no conflicting country or partner evidence, though the name is generic enough that a shared spelling alone is not conclusive."
+ }
+}

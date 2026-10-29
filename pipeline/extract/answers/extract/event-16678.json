@@ -1,205 +1,212 @@
 {
- "batch": "event-16678",
- "events": [
-  {
-   "event_id": 16678,
-   "artists": [
-    {
-     "name_as_written": "Philippe Gomis",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Philippe Gomis"
-    },
-    {
-     "name_as_written": "Onassaka & Maïlys",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Onassaka & Maïlys"
-    },
-    {
-     "name_as_written": "Angel & Flo",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Angel & Flo"
-    },
-    {
-     "name_as_written": "Alex Salserito",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Alex Salserito"
-    },
-    {
-     "name_as_written": "Ydel",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Ydel"
-    },
-    {
-     "name_as_written": "Patrick & Paola",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "Patrick & Paola"
-    },
-    {
-     "name_as_written": "Giorgio Rod",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Giorgio Rod"
-    },
-    {
-     "name_as_written": "Will MP & Nad",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Will MP & Nad"
-    },
-    {
-     "name_as_written": "Kriss Bachata & Aurélie",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Kriss Bachata & Aurélie"
-    },
-    {
-     "name_as_written": "Swenny & Melanie",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "Swenny & Melanie"
-    },
-    {
-     "name_as_written": "Dim Dim & Ophélie",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Dim Dim & Ophélie"
-    },
-    {
-     "name_as_written": "Guins & Barbarita",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Guins & Barbarita"
-    },
-    {
-     "name_as_written": "DJ Ichigo",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "DJ Ichigo"
-    },
-    {
-     "name_as_written": "Will MP",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Will MP"
-    },
-    {
-     "name_as_written": "Samy Sam Beats",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "Samy Sam Beats"
-    },
-    {
-     "name_as_written": "Farah",
-     "role": "teacher",
-     "style": "Reggaeton",
-     "country": null,
-     "source_line": "Farah (Reggaeton)"
-    },
-    {
-     "name_as_written": "Vane",
-     "role": "teacher",
-     "style": "Reggaeton",
-     "country": null,
-     "source_line": "Vane (Reggaeton)"
-    },
-    {
-     "name_as_written": "Marine",
-     "role": "teacher",
-     "style": "Oriental dance",
-     "country": null,
-     "source_line": "Marine (Oriental dance)"
-    },
-    {
-     "name_as_written": "Lili",
-     "role": "teacher",
-     "style": "Heels",
-     "country": null,
-     "source_line": "Lili (Heels)"
-    },
-    {
-     "name_as_written": "Will MP",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Will MP"
-    },
-    {
-     "name_as_written": "Giorgio Rod",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Giorgio Rod"
-    },
-    {
-     "name_as_written": "Samy Sam Beats",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Samy Sam Beats"
-    },
-    {
-     "name_as_written": "Jecksy",
-     "role": "dj",
-     "style": null,
-     "country": null,
-     "source_line": "Jecksy"
-    },
-    {
-     "name_as_written": "PEA Club",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "📞 06 20 27 81 65 (PEA Club)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "all_levels_beginners",
-     "quote": "All levels: beginner to advanced",
-     "rationale": "The description states the classes cover all levels from beginner to advanced."
-    },
-    {
-     "feature": "workshops",
-     "quote": "Workshops and additional classes in the afternoon",
-     "rationale": "Workshops are explicitly listed as part of the afternoon programme."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "8 simultaneous dance studios!",
-     "rationale": "Eight simultaneous dance studios means more than one dance room."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "8 days / 7 nights accommodation",
-     "rationale": "The all-inclusive stay package includes the accommodation."
-    },
-    {
-     "feature": "meals_included",
-     "quote": "Full board (packed meals)",
-     "rationale": "Full board meals are included in the stay package."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:30:07+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "b861a59c8cb7e6ec",
+ "answer": {
+  "batch": "event-16678",
+  "events": [
+   {
+    "event_id": 16678,
+    "artists": [
+     {
+      "name_as_written": "Philippe Gomis",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Philippe Gomis"
+     },
+     {
+      "name_as_written": "Onassaka & Maïlys",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Onassaka & Maïlys"
+     },
+     {
+      "name_as_written": "Angel & Flo",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Angel & Flo"
+     },
+     {
+      "name_as_written": "Alex Salserito",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Alex Salserito"
+     },
+     {
+      "name_as_written": "Ydel",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Ydel"
+     },
+     {
+      "name_as_written": "Patrick & Paola",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "Patrick & Paola"
+     },
+     {
+      "name_as_written": "Giorgio Rod",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Giorgio Rod"
+     },
+     {
+      "name_as_written": "Will MP & Nad",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Will MP & Nad"
+     },
+     {
+      "name_as_written": "Kriss Bachata & Aurélie",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Kriss Bachata & Aurélie"
+     },
+     {
+      "name_as_written": "Swenny & Melanie",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "Swenny & Melanie"
+     },
+     {
+      "name_as_written": "Dim Dim & Ophélie",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Dim Dim & Ophélie"
+     },
+     {
+      "name_as_written": "Guins & Barbarita",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Guins & Barbarita"
+     },
+     {
+      "name_as_written": "DJ Ichigo",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "DJ Ichigo"
+     },
+     {
+      "name_as_written": "Will MP",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Will MP"
+     },
+     {
+      "name_as_written": "Samy Sam Beats",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "Samy Sam Beats"
+     },
+     {
+      "name_as_written": "Farah",
+      "role": "teacher",
+      "style": "Reggaeton",
+      "country": null,
+      "source_line": "Farah (Reggaeton)"
+     },
+     {
+      "name_as_written": "Vane",
+      "role": "teacher",
+      "style": "Reggaeton",
+      "country": null,
+      "source_line": "Vane (Reggaeton)"
+     },
+     {
+      "name_as_written": "Marine",
+      "role": "teacher",
+      "style": "Oriental dance",
+      "country": null,
+      "source_line": "Marine (Oriental dance)"
+     },
+     {
+      "name_as_written": "Lili",
+      "role": "teacher",
+      "style": "Heels",
+      "country": null,
+      "source_line": "Lili (Heels)"
+     },
+     {
+      "name_as_written": "Will MP",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Will MP"
+     },
+     {
+      "name_as_written": "Giorgio Rod",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Giorgio Rod"
+     },
+     {
+      "name_as_written": "Samy Sam Beats",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Samy Sam Beats"
+     },
+     {
+      "name_as_written": "Jecksy",
+      "role": "dj",
+      "style": null,
+      "country": null,
+      "source_line": "Jecksy"
+     },
+     {
+      "name_as_written": "PEA Club",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "📞 06 20 27 81 65 (PEA Club)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "all_levels_beginners",
+      "quote": "All levels: beginner to advanced",
+      "rationale": "The text states the classes are open to all levels from beginner to advanced."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Workshops and additional classes in the afternoon",
+      "rationale": "The event offers workshops alongside its classes."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "8 simultaneous dance studios!",
+      "rationale": "Eight simultaneous dance studios means more than one dance room."
+     },
+     {
+      "feature": "accommodation_included",
+      "quote": "8 days / 7 nights accommodation",
+      "rationale": "The all-inclusive stay package lists accommodation as part of it."
+     },
+     {
+      "feature": "meals_included",
+      "quote": "Full board (packed meals)",
+      "rationale": "The stay package includes full board meals."
+     }
+    ]
+   }
+  ]
+ }
 }

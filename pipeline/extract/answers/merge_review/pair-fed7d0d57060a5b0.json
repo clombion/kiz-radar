@@ -1,0 +1,13 @@
+{
+ "key_a": "p:mario@carla+mario",
+ "key_b": "p:marion@gordon+marion",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:53+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fed7d0d57060a5b0",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides have different partners (Carla versus Gordon) and different names (Mario versus Marion), which are one letter apart, and their stated countries only partly overlap (AO and FR versus FR), so nothing links them as one person."
+ }
+}

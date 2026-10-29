@@ -1,0 +1,13 @@
+{
+ "key_a": "p:navi@dj",
+ "key_b": "p:navi@natalie+navi",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "fac34c257d398da8",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "The names match with a DJ prefix on side A and both sides list India, which favors a merge, but side B's mention list is empty so I cannot check whether it shares event 17474 with side A, and B's Russian country and separate partner couple leave open that they are two people."
+ }
+}

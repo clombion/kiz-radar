@@ -1,0 +1,13 @@
+{
+ "key_a": "p:ichigo@dj",
+ "key_b": "p:ichigo@ichigo+kristelju",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:14:03+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "7e3d68302d2bb848",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Side A is the same stage name as side B with a DJ prefix ('DJ Ichigo'), and both sides list France as a country and mostly French events, which matches the DJ-prefix example in the brief, though side B has no listed mentions to check directly."
+ }
+}

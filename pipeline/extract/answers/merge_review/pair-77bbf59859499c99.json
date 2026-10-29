@@ -1,0 +1,13 @@
+{
+ "key_a": "p:michel@aga+michel",
+ "key_b": "p:michel@dance",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:02+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "77bbf59859499c99",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides are a bare first name 'Michel' stated as French, but side A's evidence links it to partner 'aga' and Slovenia while side B has only one Croatian performer mention with no partner, and a common first name alone is weak evidence, so the record does not settle whether they are one artist."
+ }
+}

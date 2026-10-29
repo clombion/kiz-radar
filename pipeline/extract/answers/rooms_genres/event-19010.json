@@ -1,23 +1,30 @@
 {
- "batch": "event-19010",
- "events": [
-  {
-   "event_id": 19010,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Global Kiz lovers, it’s time to gather in the heart of Kazakhstan"
-    },
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "Urban Kiz",
-     "quote": "five unforgettable days of Kizomba, Urban Kiz, culture and community."
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:29+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "42bd34ed5818053c",
+ "answer": {
+  "batch": "event-19010",
+  "events": [
+   {
+    "event_id": 19010,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "five unforgettable days of Kizomba, Urban Kiz, culture and community"
+     },
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "Urban Kiz",
+      "quote": "five unforgettable days of Kizomba, Urban Kiz, culture and community"
+     }
+    ]
+   }
+  ]
+ }
 }

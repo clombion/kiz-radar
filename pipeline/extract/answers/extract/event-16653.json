@@ -1,16 +1,23 @@
 {
- "batch": "event-16653",
- "events": [
-  {
-   "event_id": 16653,
-   "artists": [],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "15 hours of workshops with international artists",
-     "rationale": "The description states that workshops are part of the event."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:29:48+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "55200f338680c5ce",
+ "answer": {
+  "batch": "event-16653",
+  "events": [
+   {
+    "event_id": 16653,
+    "artists": [],
+    "features": [
+     {
+      "feature": "workshops",
+      "quote": "15 hours of workshops with international artists",
+      "rationale": "The description states that the event includes fifteen hours of dance workshops."
+     }
+    ]
+   }
+  ]
+ }
 }

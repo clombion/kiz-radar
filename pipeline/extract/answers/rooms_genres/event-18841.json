@@ -1,23 +1,30 @@
 {
- "batch": "event-18841",
- "events": [
-  {
-   "event_id": 18841,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "𝑲𝑰𝒁𝑶𝑴𝑩𝑨",
-     "quote": "A festival of 𝑲𝑰𝒁𝑶𝑴𝑩𝑨 / 𝑺𝑬𝑴𝑩𝑨 as we like them"
-    },
-    {
-     "genre": "semba",
-     "genre_as_written": "𝑺𝑬𝑴𝑩𝑨",
-     "quote": "A festival of 𝑲𝑰𝒁𝑶𝑴𝑩𝑨 / 𝑺𝑬𝑴𝑩𝑨 as we like them"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:17+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "0c29ce793b7d39f9",
+ "answer": {
+  "batch": "event-18841",
+  "events": [
+   {
+    "event_id": 18841,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "𝑲𝑰𝒁𝑶𝑴𝑩𝑨",
+      "quote": "A festival of 𝑲𝑰𝒁𝑶𝑴𝑩𝑨 / 𝑺𝑬𝑴𝑩𝑨 as we like them"
+     },
+     {
+      "genre": "semba",
+      "genre_as_written": "𝑺𝑬𝑴𝑩𝑨",
+      "quote": "A festival of 𝑲𝑰𝒁𝑶𝑴𝑩𝑨 / 𝑺𝑬𝑴𝑩𝑨 as we like them"
+     }
+    ]
+   }
+  ]
+ }
 }

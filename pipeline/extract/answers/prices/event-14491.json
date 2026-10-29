@@ -1,12 +1,17 @@
 {
- "batch": "event-14491",
- "events": [
-  {
-   "event_id": 14491,
-   "passes": [],
-   "rule_quotes": [
-    "𝖯𝖺𝗌𝗌 𝗍𝗋𝖺𝗇𝗌𝖿𝖾𝗋𝗌 𝗂𝗇𝗏𝗈𝗅𝗏𝖾 𝖺 𝖿𝖾𝖾 𝗈𝖿 10€ (𝖡𝖾𝗍𝗐𝖾𝖾𝗇 𝗍𝗁𝖾 𝗌𝖺𝗆𝖾 𝗀𝖾𝗇𝖽𝖾𝗋)"
-   ]
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:40:54+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "438bb621ec6011c9",
+ "answer": {
+  "batch": "event-14491",
+  "events": [
+   {
+    "event_id": 14491,
+    "passes": [],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

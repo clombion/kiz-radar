@@ -1,18 +1,19 @@
 {
- "batch": "event-15043",
- "events": [
-  {
-   "event_id": 15043,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba Sensual",
-     "quote": "I Love Kizomba Sensual Festival Rotterdam 2nd Edition"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:35:58+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "242e6b3adc35d318",
+ "answer": {
+  "batch": "event-15043",
+  "events": [
+   {
+    "event_id": 15043,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": []
+   }
+  ]
+ }
 }

@@ -1,168 +1,164 @@
 {
- "batch": "event-16191",
- "events": [
-  {
-   "event_id": 16191,
-   "passes": [
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "🌟🌟LAUNCH PROMOTIONAL OFFER FOR THE WEEK OF AUGUST 15-22, 2026 — 40 PLACES 🌟🌟",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 399.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 40,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "> Accommodation + Classes + Evening Events + Pre-Party + Pool Party + 1 Day at the Water Park = €399"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 439.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "11-30",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "> Accommodation + Lessons + Evening Events + Pre-Party + Pool Party + 1 Day at the Water Park = €439"
-      },
-      {
-       "amount": 469.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "2025-01-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "> Accommodation + Lessons + Evening Events + Pre-Party + Pool Party + 1 Day at the Water Park = €469"
-      },
-      {
-       "amount": 499.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "2025-03-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "> Accommodation + Lessons + Evening Events + Pre-Party + Pool Party + 1 Day at the Water Park = €499"
-      },
-      {
-       "amount": 529.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "2025-05-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "> Accommodation + Lessons + Evening Events + Pre-Party + Pool Party + 1 Day at the Water Park = €529"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": null,
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 639.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "> Accommodation + Lessons + Evening Events + Pre-Party + Pool Party + 1 Day at the Water Park + Extension of Stay by 5 nights/6 days = €639"
-      },
-      {
-       "amount": 669.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "2025-01-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "> Accommodation + Lessons + Evening Events + Pre-Party + Pool Party + 1 Day at the Water Park + 5-night/6-day extension of your stay = €669"
-      },
-      {
-       "amount": 699.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": "2025-03-31",
-       "quantity": null,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "> Accommodation + Lessons + Evening Events + Pre-Party + Pool Party + 1 Day at the Water Park + 5-night/6-day extension of your stay = €699"
-      }
-     ]
-    },
-    {
-     "kind": "package",
-     "style": null,
-     "label_quote": "🌟🌟LAUNCH PROMOTIONAL OFFER FOR THE STAY FROM AUGUST 15TH TO 27TH, 2026 — 10 PLACES 🌟🌟",
-     "group_size": 1,
-     "days": null,
-     "includes_hotel": true,
-     "tiers": [
-      {
-       "amount": 599.0,
-       "currency": "EUR",
-       "fee": null,
-       "alt": null,
-       "from": null,
-       "until": null,
-       "quantity": 10,
-       "door": false,
-       "sold_out": false,
-       "current": false,
-       "quote": "> Accommodation + Classes + Evening Events + Pre-Party + Pool Party + 1 Day at the Water Park + 5-night/6-day extension of your stay = €599"
-      }
-     ]
-    }
-   ],
-   "rule_quotes": []
-  }
- ]
+ "prompt": "128a9cb603333383",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:43:34+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "40c810a77407d65a",
+ "answer": {
+  "batch": "event-16191",
+  "events": [
+   {
+    "event_id": 16191,
+    "passes": [
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "🌟🌟LAUNCH PROMOTIONAL OFFER FOR THE WEEK OF AUGUST 15-22, 2026 — 40 PLACES 🌟🌟",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 399.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 40,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Accommodation + Classes + Evening Events + Pre-Party + Pool Party + 1 Day at the Water Park = €399"
+       },
+       {
+        "amount": 439.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "11-30",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Accommodation + Lessons + Evening Events + Pre-Party + Pool Party + 1 Day at the Water Park = €439"
+       },
+       {
+        "amount": 469.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "2025-01-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Accommodation + Lessons + Evening Events + Pre-Party + Pool Party + 1 Day at the Water Park = €469"
+       },
+       {
+        "amount": 499.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "2025-03-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Accommodation + Lessons + Evening Events + Pre-Party + Pool Party + 1 Day at the Water Park = €499"
+       },
+       {
+        "amount": 529.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "2025-05-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Accommodation + Lessons + Evening Events + Pre-Party + Pool Party + 1 Day at the Water Park = €529"
+       }
+      ]
+     },
+     {
+      "kind": "package",
+      "style": null,
+      "label_quote": "🌟🌟LAUNCH PROMOTIONAL OFFER FOR THE STAY FROM AUGUST 15TH TO 27TH, 2026 — 10 PLACES 🌟🌟",
+      "group_size": 1,
+      "days": null,
+      "includes_hotel": true,
+      "tiers": [
+       {
+        "amount": 599.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": null,
+         "quantity": 10,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Accommodation + Classes + Evening Events + Pre-Party + Pool Party + 1 Day at the Water Park + 5-night/6-day extension of your stay = €599"
+       },
+       {
+        "amount": 639.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "11-30",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Accommodation + Lessons + Evening Events + Pre-Party + Pool Party + 1 Day at the Water Park + Extension of Stay by 5 nights/6 days = €639"
+       },
+       {
+        "amount": 669.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "2025-01-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Accommodation + Lessons + Evening Events + Pre-Party + Pool Party + 1 Day at the Water Park + 5-night/6-day extension of your stay = €669"
+       },
+       {
+        "amount": 699.0,
+        "currency": "EUR",
+        "fee": null,
+        "alt": null,
+        "sale": {
+         "from": null,
+         "until": "2025-03-31",
+         "quantity": null,
+         "current": false
+        },
+        "sold_out": false,
+        "quote": "Accommodation + Lessons + Evening Events + Pre-Party + Pool Party + 1 Day at the Water Park + 5-night/6-day extension of your stay = €699"
+       }
+      ]
+     }
+    ],
+    "rule_quotes": []
+   }
+  ]
+ }
 }

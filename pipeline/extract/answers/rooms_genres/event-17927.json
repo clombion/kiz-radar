@@ -1,18 +1,25 @@
 {
- "batch": "event-17927",
- "events": [
-  {
-   "event_id": 17927,
-   "party_rooms": null,
-   "class_rooms": null,
-   "rooms": [],
-   "genres": [
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Organised by La Kizomba Project"
-    }
-   ]
-  }
- ]
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:23+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "02d825405de045f9",
+ "answer": {
+  "batch": "event-17927",
+  "events": [
+   {
+    "event_id": 17927,
+    "party_rooms": null,
+    "class_rooms": null,
+    "rooms": [],
+    "genres": [
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "Organised by La Kizomba Project"
+     }
+    ]
+   }
+  ]
+ }
 }

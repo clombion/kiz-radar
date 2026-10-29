@@ -1,0 +1,13 @@
+{
+ "key_a": "p:chrispy",
+ "key_b": "p:chrispy@chrispy+laly",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:12:59+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "1ce44f0b5ac89a86",
+ "answer": {
+  "decision": "merge",
+  "rationale": "Both sides are written as the same name differing only by a space versus an apostrophe, share the same country (FR), the same event country (France), and the same partner (laly in the Chris+Laly couple), so this is one artist."
+ }
+}

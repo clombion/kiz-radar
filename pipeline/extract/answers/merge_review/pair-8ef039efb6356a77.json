@@ -1,0 +1,13 @@
+{
+ "key_a": "p:sandra@esteban+sandra",
+ "key_b": "p:sandra@sandra+selim",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:15:43+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "8ef039efb6356a77",
+ "answer": {
+  "decision": "separate",
+  "rationale": "The two sides share only the common first name SANDRA, with no shared partner (one pairs with Esteban, the other with Selim), no shared country (Spain-based events versus Albania and Luxembourg with no stated country), and no shared event."
+ }
+}

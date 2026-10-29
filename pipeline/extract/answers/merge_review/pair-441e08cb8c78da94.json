@@ -1,0 +1,13 @@
+{
+ "key_a": "p:celine@celine+josue",
+ "key_b": "p:celinesemkiz",
+ "prompt": "f5df854e7dca41bb",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T17:13:00+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one pair",
+ "inputs": "441e08cb8c78da94",
+ "answer": {
+  "decision": "unsure",
+  "rationale": "Both sides share only the common first name Celine and the country France, while side A is a couple (celine+josue) with several countries and B has no partner, style, or event overlap, so the evidence does not settle whether they are one artist."
+ }
+}

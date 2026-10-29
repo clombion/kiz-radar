@@ -1,60 +1,67 @@
 {
- "batch": "event-17426",
- "events": [
-  {
-   "event_id": 17426,
-   "party_rooms": {
-    "count": 2,
-    "quote": "2 Party Rooms"
-   },
-   "class_rooms": null,
-   "rooms": [
-    {
-     "name_as_written": "Room 1",
-     "kind": "party",
-     "genres": [
-      "urbankiz",
-      "tarraxo"
-     ],
-     "quote": "Room 1:\nUrbanKiz & Tarraxo"
+ "prompt": "9b8b37910b200507",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:39:10+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "f433c923864aa823",
+ "answer": {
+  "batch": "event-17426",
+  "events": [
+   {
+    "event_id": 17426,
+    "party_rooms": {
+     "count": 2,
+     "quote": "2 Party Rooms:"
     },
-    {
-     "name_as_written": "Room 2",
-     "kind": "party",
-     "genres": [
-      "kizomba",
-      "kompa"
-     ],
-     "quote": "Room 2:\nKizomba & Konpa"
-    }
-   ],
-   "genres": [
-    {
-     "genre": "urbankiz",
-     "genre_as_written": "UrbanKiz",
-     "quote": "UrbanKiz"
-    },
-    {
-     "genre": "tarraxo",
-     "genre_as_written": "Tarraxo",
-     "quote": "Tarraxo"
-    },
-    {
-     "genre": "afro",
-     "genre_as_written": "Afro",
-     "quote": "Afro"
-    },
-    {
-     "genre": "kizomba",
-     "genre_as_written": "Kizomba",
-     "quote": "Kizomba"
-    },
-    {
-     "genre": "kompa",
-     "genre_as_written": "Konpa",
-     "quote": "Konpa"
-    }
-   ]
-  }
- ]
+    "class_rooms": null,
+    "rooms": [
+     {
+      "name_as_written": "Room 1",
+      "kind": "party",
+      "genres": [
+       "urbankiz",
+       "tarraxo"
+      ],
+      "quote": "Room 1:\nUrbanKiz & Tarraxo"
+     },
+     {
+      "name_as_written": "Room 2",
+      "kind": "party",
+      "genres": [
+       "kizomba",
+       "kompa"
+      ],
+      "quote": "Room 2:\nKizomba & Konpa"
+     }
+    ],
+    "genres": [
+     {
+      "genre": "urbankiz",
+      "genre_as_written": "UrbanKiz",
+      "quote": "🔥 UrbanKiz"
+     },
+     {
+      "genre": "tarraxo",
+      "genre_as_written": "Tarraxo",
+      "quote": "🔥 Tarraxo"
+     },
+     {
+      "genre": "afro",
+      "genre_as_written": "Afro",
+      "quote": "🔥 Afro"
+     },
+     {
+      "genre": "kizomba",
+      "genre_as_written": "Kizomba",
+      "quote": "🔥 Kizomba"
+     },
+     {
+      "genre": "kompa",
+      "genre_as_written": "Konpa",
+      "quote": "🔥 Konpa"
+     }
+    ]
+   }
+  ]
+ }
 }

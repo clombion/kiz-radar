@@ -1,268 +1,254 @@
 {
- "batch": "event-15307",
- "events": [
-  {
-   "event_id": 15307,
-   "artists": [
-    {
-     "name_as_written": "GIORGIO",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Registration by 🔥GIORGIO🔥"
-    },
-    {
-     "name_as_written": "Club PEA",
-     "role": "organiser",
-     "style": null,
-     "country": null,
-     "source_line": "Ski Latino, organized by Club PEA, offers the atmosphere of a private holiday club:"
-    },
-    {
-     "name_as_written": "Onassaka & Maïlys",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "– Onassaka & Maïlys,"
-    },
-    {
-     "name_as_written": "Alex Salserito & Tiphaine",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "– Alex Salserito & Tiphaine,"
-    },
-    {
-     "name_as_written": "Micka Marques",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "– Micka Marques,"
-    },
-    {
-     "name_as_written": "Will MP & Nad",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "– Will MP & Nad,"
-    },
-    {
-     "name_as_written": "Franck Salsahora",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "– Franck Salsahora,"
-    },
-    {
-     "name_as_written": "Clément Di Stefano",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "– Clément Di Stefano,"
-    },
-    {
-     "name_as_written": "Ange & Flo",
-     "role": "teacher",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "– Ange & Flo"
-    },
-    {
-     "name_as_written": "Keymo & Tehina",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "– Keymo & Tehina,"
-    },
-    {
-     "name_as_written": "Leslie & Etienne",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "– Leslie & Etienne,"
-    },
-    {
-     "name_as_written": "Clement Di Stefano",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "– Clement Di Stefano,"
-    },
-    {
-     "name_as_written": "Maeva & Rudy",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "– Maeva & Rudy,"
-    },
-    {
-     "name_as_written": "Anthony & Juliette",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "– Anthony & Juliette,"
-    },
-    {
-     "name_as_written": "Bastien & Amélie",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "– Bastien & Amélie,"
-    },
-    {
-     "name_as_written": "Guins & Barbarita",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "-Guins & Barbarita"
-    },
-    {
-     "name_as_written": "Giorgio Rod",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "-Giorgio Rod"
-    },
-    {
-     "name_as_written": "Cyril",
-     "role": "teacher",
-     "style": "Bachata",
-     "country": null,
-     "source_line": "– Cyril"
-    },
-    {
-     "name_as_written": "Félicien",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "– Félicien,"
-    },
-    {
-     "name_as_written": "Lucas Cico",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "-Lucas Cico,"
-    },
-    {
-     "name_as_written": "Guins & Barbarita",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "– Guins & Barbarita,"
-    },
-    {
-     "name_as_written": "Johan Orsinet",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "-Johan Orsinet"
-    },
-    {
-     "name_as_written": "Will MP & Nad",
-     "role": "teacher",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "-Will MP & Nad"
-    },
-    {
-     "name_as_written": "Farah",
-     "role": "teacher",
-     "style": "Reggaeton, Bootyshake, Zumba…",
-     "country": null,
-     "source_line": "– Farah (Reggaeton, Bootyshake, Zumba…),"
-    },
-    {
-     "name_as_written": "Ludivine",
-     "role": "teacher",
-     "style": "Heels, Elgo",
-     "country": null,
-     "source_line": "– Ludivine (Heels, Elgo),"
-    },
-    {
-     "name_as_written": "Maeva Alcay",
-     "role": "teacher",
-     "style": "Bachata Styling",
-     "country": null,
-     "source_line": "– Maeva Alcay (Bachata Styling),"
-    },
-    {
-     "name_as_written": "Anthony Sauveur",
-     "role": "teacher",
-     "style": "Percussion",
-     "country": null,
-     "source_line": "– Anthony Sauveur (Percussion)"
-    },
-    {
-     "name_as_written": "Dj Giorgio Rod",
-     "role": "dj",
-     "style": "Bachata, Salsa, etc…",
-     "country": null,
-     "source_line": "– Dj Giorgio Rod (Bachata, Salsa, etc…)"
-    },
-    {
-     "name_as_written": "Dj Will",
-     "role": "dj",
-     "style": "Bachata, Salsa, etc…",
-     "country": null,
-     "source_line": "– Dj Will (Bachata, Salsa, etc…)"
-    },
-    {
-     "name_as_written": "DJ Alex Salserito",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "– DJ Alex Salserito (Salsa)"
-    },
-    {
-     "name_as_written": "DJ Chanchan",
-     "role": "dj",
-     "style": "Salsa",
-     "country": null,
-     "source_line": "– DJ Chanchan (Salsa)"
-    },
-    {
-     "name_as_written": "DJ Ichigo",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "– DJ Ichigo (Kizomba)"
-    },
-    {
-     "name_as_written": "DJ Johann Orsinet",
-     "role": "dj",
-     "style": "Kizomba",
-     "country": null,
-     "source_line": "– DJ Johann Orsinet (Kizomba)"
-    }
-   ],
-   "features": [
-    {
-     "feature": "workshops",
-     "quote": "Daytime & après-ski workshops",
-     "rationale": "The program lists daytime and après-ski workshops as part of the event."
-    },
-    {
-     "feature": "themed_parties",
-     "quote": "3 themed evenings",
-     "rationale": "The event is built around three themed evenings."
-    },
-    {
-     "feature": "multiple_rooms",
-     "quote": "Evenings in 3 rooms: Salsa, Bachata, Kizomba",
-     "rationale": "Evenings take place across three rooms."
-    },
-    {
-     "feature": "accommodation_included",
-     "quote": "includes 7 nights’ accommodation",
-     "rationale": "The base price includes seven nights of accommodation."
-    },
-    {
-     "feature": "all_levels_beginners",
-     "quote": "All levels: beginner, intermediate, advanced",
-     "rationale": "The description states the event is for all levels, including beginners."
-    }
-   ]
-  }
- ]
+ "prompt": "35e8616c28d2d460",
+ "model": "claude-haiku-5-5",
+ "answered_at": "2026-10-29T16:24:44+00:00",
+ "answered_by": "pipeline/extract/ask.py (Messages API), one festival",
+ "inputs": "d912754388f3f706",
+ "answer": {
+  "batch": "event-15307",
+  "events": [
+   {
+    "event_id": 15307,
+    "artists": [
+     {
+      "name_as_written": "GIORGIO",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Registration by 🔥GIORGIO🔥"
+     },
+     {
+      "name_as_written": "Club PEA",
+      "role": "organiser",
+      "style": null,
+      "country": null,
+      "source_line": "Ski Latino, organized by Club PEA, offers the atmosphere of a private holiday club:"
+     },
+     {
+      "name_as_written": "Onassaka & Maïlys",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "– Onassaka & Maïlys,"
+     },
+     {
+      "name_as_written": "Alex Salserito & Tiphaine",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "– Alex Salserito & Tiphaine,"
+     },
+     {
+      "name_as_written": "Micka Marques",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "– Micka Marques,"
+     },
+     {
+      "name_as_written": "Will MP & Nad",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "– Will MP & Nad,"
+     },
+     {
+      "name_as_written": "Franck Salsahora",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "– Franck Salsahora,"
+     },
+     {
+      "name_as_written": "Clément Di Stefano",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "– Clément Di Stefano,"
+     },
+     {
+      "name_as_written": "Ange & Flo",
+      "role": "teacher",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "– Ange & Flo"
+     },
+     {
+      "name_as_written": "Keymo & Tehina",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "– Keymo & Tehina,"
+     },
+     {
+      "name_as_written": "Leslie & Etienne",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "– Leslie & Etienne,"
+     },
+     {
+      "name_as_written": "Maeva & Rudy",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "– Maeva & Rudy,"
+     },
+     {
+      "name_as_written": "Anthony & Juliette",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "– Anthony & Juliette,"
+     },
+     {
+      "name_as_written": "Bastien & Amélie",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "– Bastien & Amélie,"
+     },
+     {
+      "name_as_written": "Guins & Barbarita",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "-Guins & Barbarita"
+     },
+     {
+      "name_as_written": "Giorgio Rod",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "-Giorgio Rod"
+     },
+     {
+      "name_as_written": "Cyril",
+      "role": "teacher",
+      "style": "Bachata",
+      "country": null,
+      "source_line": "– Cyril"
+     },
+     {
+      "name_as_written": "Félicien",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "– Félicien,"
+     },
+     {
+      "name_as_written": "Lucas Cico",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "-Lucas Cico,"
+     },
+     {
+      "name_as_written": "Johan Orsinet",
+      "role": "teacher",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "-Johan Orsinet"
+     },
+     {
+      "name_as_written": "Farah",
+      "role": "teacher",
+      "style": "Reggaeton, Bootyshake, Zumba…",
+      "country": null,
+      "source_line": "– Farah (Reggaeton, Bootyshake, Zumba…),"
+     },
+     {
+      "name_as_written": "Ludivine",
+      "role": "teacher",
+      "style": "Heels, Elgo",
+      "country": null,
+      "source_line": "– Ludivine (Heels, Elgo),"
+     },
+     {
+      "name_as_written": "Maeva Alcay",
+      "role": "teacher",
+      "style": "Bachata Styling",
+      "country": null,
+      "source_line": "– Maeva Alcay (Bachata Styling),"
+     },
+     {
+      "name_as_written": "Anthony Sauveur",
+      "role": "teacher",
+      "style": "Percussion",
+      "country": null,
+      "source_line": "– Anthony Sauveur (Percussion)"
+     },
+     {
+      "name_as_written": "Dj Giorgio Rod",
+      "role": "dj",
+      "style": "Bachata, Salsa, etc…",
+      "country": null,
+      "source_line": "– Dj Giorgio Rod (Bachata, Salsa, etc…)"
+     },
+     {
+      "name_as_written": "Dj Will",
+      "role": "dj",
+      "style": "Bachata, Salsa, etc…",
+      "country": null,
+      "source_line": "– Dj Will (Bachata, Salsa, etc…)"
+     },
+     {
+      "name_as_written": "DJ Alex Salserito",
+      "role": "dj",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "– DJ Alex Salserito (Salsa)"
+     },
+     {
+      "name_as_written": "DJ Chanchan",
+      "role": "dj",
+      "style": "Salsa",
+      "country": null,
+      "source_line": "– DJ Chanchan (Salsa)"
+     },
+     {
+      "name_as_written": "DJ Ichigo",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "– DJ Ichigo (Kizomba)"
+     },
+     {
+      "name_as_written": "DJ Johann Orsinet",
+      "role": "dj",
+      "style": "Kizomba",
+      "country": null,
+      "source_line": "– DJ Johann Orsinet (Kizomba)"
+     }
+    ],
+    "features": [
+     {
+      "feature": "accommodation_included",
+      "quote": "includes 7 nights’ accommodation",
+      "rationale": "The base price is stated to include seven nights of accommodation."
+     },
+     {
+      "feature": "all_levels_beginners",
+      "quote": "All levels: beginner, intermediate, advanced",
+      "rationale": "The description states the event is open to all levels including beginners."
+     },
+     {
+      "feature": "multiple_rooms",
+      "quote": "5 dance studios for classes",
+      "rationale": "Five dance studios and three party rooms mean more than one dance room."
+     },
+     {
+      "feature": "themed_parties",
+      "quote": "3 themed party rooms",
+      "rationale": "The event has three themed party rooms, which are themed nights."
+     },
+     {
+      "feature": "workshops",
+      "quote": "Daytime & après-ski workshops",
+      "rationale": "Dance workshops are part of the programme."
+     }
+    ]
+   }
+  ]
+ }
 }
