@@ -674,6 +674,22 @@ def test_requests_stop_once_the_months_budget_is_spent() -> None:
     assert len(client.messages.asked) == 1
 
 
+def test_the_months_spending_reads_the_ledger_once_and_then_counts_each_request(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A request's thread appends to the ledger while another's asks the month's total: the total is read from the
+    ledger once, so no reader meets a row half written."""
+    _ = spend.record('prices', Model.CLAUDE_SONNET_5_5, 1_000_000, 0)  # $2, before the total is first asked
+    assert spend.month_usd() == 2
+
+    def unread() -> list[Spent]:
+        pytest.fail('the ledger was read again')
+
+    monkeypatch.setattr(Spent, 'read', unread)
+    _ = spend.record('prices', Model.CLAUDE_SONNET_5_5, 0, 100_000)  # $1
+    assert spend.month_usd() == 3
+
+
 @pytest.mark.parametrize(
     ('reply', 'cause'),
     [

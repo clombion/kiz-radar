@@ -8,6 +8,7 @@ run fails so the stop is seen. Requests already under way can take the month a l
 """
 
 import threading
+from pathlib import Path
 
 from pipeline import states
 from pipeline.enums import Model
@@ -27,7 +28,8 @@ PRICES = states.total(
     'spend.PRICES',
 )
 LONG = {Model.CLAUDE_HAIKU_5_5: (100_000, 0.50, 2.50)}
-_lock = threading.Lock()
+_lock = threading.Lock()  # the ledger's appends, and the month's total, are one thread's at a time
+_months: dict[tuple[Path, int, int], float] = {}  # each ledger's dollars by month: read once, then added to
 
 
 def usd(model: Model, input_tokens: int, output_tokens: int) -> float:
@@ -38,9 +40,14 @@ def usd(model: Model, input_tokens: int, output_tokens: int) -> float:
 
 
 def month_usd() -> float:
-    """Dollars spent this calendar month (in UTC)."""
+    """Dollars spent this calendar month (in UTC): the ledger's, read at the month's first question in this process,
+    and this process's requests since."""
     t = now()
-    return sum(r.usd for r in Spent.read() if (r.at.year, r.at.month) == (t.year, t.month))
+    key = (Spent.path(), t.year, t.month)
+    with _lock:
+        if key not in _months:
+            _months[key] = sum(r.usd for r in Spent.read() if (r.at.year, r.at.month) == (t.year, t.month))
+        return _months[key]
 
 
 def eur(dollars: float) -> float:
@@ -67,4 +74,6 @@ def record(step: Name, model: Model, input_tokens: int, output_tokens: int) -> f
     )
     with _lock:
         row.append()
+        if (key := (Spent.path(), row.at.year, row.at.month)) in _months:
+            _months[key] += row.usd
     return cost
