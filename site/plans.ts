@@ -19,6 +19,7 @@ import {
   state,
   str,
 } from './rows.ts';
+import { KEY } from './states.ts';
 import { countryName, dayRange, flag, place } from './ui.ts';
 import { text } from './wording.ts';
 
@@ -255,8 +256,10 @@ function aboutLine(g: Named): Kid {
           [artistId],
         );
   if (a === undefined) return 'Shares their festival plans';
+  // one person, whose most booked artist may be a couple they are in: what they are booked as, said of a person
+  const said = g.artist === undefined && a.kind === KEY.artist_kind.COUPLE ? { ...a, kind: KEY.artist_kind.PERSON } : a;
   return [
-    roleLabel(a),
+    roleLabel(said),
     a.home_country === null ? null : [' from ', flag(a.home_country), ' ', countryName(a.home_country)],
   ];
 }
