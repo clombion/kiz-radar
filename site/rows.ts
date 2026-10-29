@@ -84,6 +84,7 @@ export const EVENT = {
   all_in_one: opt(flag),
   genres: states('genre'),
   features: states('feature'),
+  phase: state('phase'),
   upcoming: flag,
   price_state: state('price'),
   ticket_page: opt(str),

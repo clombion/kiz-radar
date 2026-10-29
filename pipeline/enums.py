@@ -37,6 +37,7 @@ type Point = Literal[
     'suggestion_calendar',
     'via',
     'listing',
+    'phase',
     'event_source',
     'plan',
     'next_change',
@@ -403,6 +404,16 @@ class Listing(StrEnum):
     """the listing states"""
 
     LISTED = 'listed'
+    GONE = 'gone'
+
+
+@unique
+class Phase(StrEnum):
+    """the phase states"""
+
+    AHEAD = 'ahead'
+    ENDED = 'ended'
+    CANCELLED = 'cancelled'
     GONE = 'gone'
 
 

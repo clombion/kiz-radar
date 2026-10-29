@@ -346,6 +346,12 @@ create table meta (
     key text primary key,
     value text not null
 ) strict, without rowid;
+-- the day the festivals are seen from: the build's, which the site sets to the visitor's own on opening the database
+-- (db.ts), so that "still to come" is their day's on every page and in every query
+create table today (
+    one integer primary key check (one = 1),
+    day text not null check (day glob '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]')
+) strict;
 create table table_docs (
     name text primary key,
     description text not null
@@ -370,17 +376,20 @@ create view country_stats as
          group by airport order by count(*) desc limit 1) as main_airport
     from events e join event_stats s on s.event_id = e.id left join countries c on c.code = e.country_code
     where e.cancelled is not 1 and e.listing = '{listed}' group by e.country_code;
--- what the site reads for festivals: each event with its statistics, and whether it is still to come (evaluated when
--- queried, so "upcoming" means the same thing on every page)
+-- what the site reads for festivals: each event with its statistics, and where it stands on the day in today (phase,
+-- evaluated when queried, so it means the same thing on every page), upcoming when it is still to come
 create view event_rows as
-    select e.id, e.title, e.url, e.start_date, e.end_date, e.city, e.country_code, e.lat, e.lon, e.airport,
-      e.airport_km, a.city as airport_city, e.weekend_friday, e.cancelled, e.listing, e.venue, s.lineup,
-      s.popular_artists,
-      s.kiz_only, s.taxi_dancers, s.all_in_one, s.genres, s.features,
-      e.end_date >= date('now') and e.cancelled is not 1 and e.listing = '{listed}' as upcoming,
-      p.price as price_state, p.page as ticket_page, p.card_pass
-    from events e join event_stats s on s.event_id = e.id left join airports a on a.code = e.airport
-      left join price_status p on p.event_id = e.id;
+    select r.*, r.phase = '{ahead}' as upcoming from (
+      select e.id, e.title, e.url, e.start_date, e.end_date, e.city, e.country_code, e.lat, e.lon, e.airport,
+        e.airport_km, a.city as airport_city, e.weekend_friday, e.cancelled, e.listing, e.venue, s.lineup,
+        s.popular_artists,
+        s.kiz_only, s.taxi_dancers, s.all_in_one, s.genres, s.features,
+        case when e.listing != '{listed}' then '{phase_gone}' when e.cancelled = 1 then '{cancelled}'
+             when e.end_date >= (select day from today) then '{ahead}' else '{ended}' end as phase,
+        p.price as price_state, p.page as ticket_page, p.card_pass
+      from events e join event_stats s on s.event_id = e.id left join airports a on a.code = e.airport
+        left join price_status p on p.event_id = e.id
+    ) r;
 create view plan_rows as
     select p.person_id, pe.key, pe.name, pe.featured, p.event_id, p.status,
       (select ea.role from person_artists pa join event_artists ea on ea.event_id = p.event_id and ea.as_couple is null
@@ -399,6 +408,10 @@ TABLES = sqlite_db.declared(
             'priced': enums.Price.PRICED,
             'teacher': Role.TEACHER,
             'listed': enums.Listing.LISTED,
+            'ahead': enums.Phase.AHEAD,
+            'ended': enums.Phase.ENDED,
+            'cancelled': enums.Phase.CANCELLED,
+            'phase_gone': enums.Phase.GONE,
             'contested': HomeBasis.CONTESTED,
             'direct': enums.Via.DIRECT,
             'member': enums.Via.MEMBER,
@@ -801,6 +814,7 @@ def meta(x: Transaction, built_at: str) -> None:
             for s in states.ROWS
         ),
     )
+    x.insert('today', [{'one': 1, 'day': built_at[:10]}])  # the site's visitor's day replaces it
     x.insert(
         'meta',
         (
@@ -883,8 +897,9 @@ DOCS = {
     'plan_rows': 'Each plan with the person, and booked_as: their role when they are in that festival’s line-up, alone '
     'or in a couple.',
     'event_rows': 'What the site reads: each event with its event_stats, what its card can say of its price '
-    '(price_state, with its ticket_page and card_pass), and upcoming (not over yet, not cancelled and still listed, as '
-    'of the moment of the query).',
+    '(price_state, with its ticket_page and card_pass), where it stands on the day in today (phase: ahead, ended, '
+    'cancelled or gone), and upcoming (phase ahead).',
+    'today': "The day the festivals are seen from: the build's, which the site sets to the visitor's own day.",
     'country_stats': 'Per country: events, kiz-only events, taxi dancers, average line-up, bookings of popular '
     'artists, share of imported artists among those whose home is known, artists of unknown country, most common '
     'airport.',

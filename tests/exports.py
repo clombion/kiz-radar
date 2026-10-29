@@ -20,7 +20,7 @@ from pipeline.records import ANSWERS, CsvRow
 EXPORT = export.path_in(ROOT / export.SOURCE)  # the repository's, whatever the data folder
 # when a step ran, which a second run changes and nothing else should: read without it (a column, or the rows a
 # where clause leaves out)
-WHEN_COLUMNS = {'pipeline_steps': 'performed_at'}
+WHEN_COLUMNS = {'pipeline_steps': 'performed_at', 'today': 'day'}
 WHEN_ROWS = {'meta': "key != 'built_at'"}
 
 

@@ -1,6 +1,7 @@
 // Loads the site summary (small, so the page can show itself straight away), then sql.js, the database and the
 // latest fares, and exposes the query helpers: each reads its rows by a shape (rows.ts).
 import type { BindParams, Database, QueryExecResult } from 'sql.js';
+import { today } from './days.ts';
 import { type RowOf, read, type Shape } from './rows.ts';
 
 const SQLJS = 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/';
@@ -74,6 +75,7 @@ export async function load(): Promise<Database> {
     fetch(new URL('fares.csv', DATA), { cache: 'no-cache' }).then((r) => (r.ok ? r.text() : '')),
   ]);
   db = new SQL.Database(new Uint8Array(dbBuf));
+  db.run('UPDATE today SET day = ?', [today()]); // the festivals as seen from the visitor's own day (event_rows)
   if (faresText) replaceFares(db, faresText);
   return db;
 }

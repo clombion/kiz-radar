@@ -10,6 +10,7 @@ import { code } from './sources.ts';
 const HOMONYMS = new Set([
   "artists.ts: 'next'", // a sort order
   "artists.ts: 'group'", // ARIA's role="group"
+  "tabs.ts: 'ahead'", // a view transition's direction
   "countries.ts: 'group'",
   "search.ts: 'group'", // a search group
   "search.ts: 'person'", // a kind of result

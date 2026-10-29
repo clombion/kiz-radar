@@ -910,6 +910,40 @@ export const STATES = {
    "link": null,
    "counts": null
   }
+ },
+ "phase": {
+  "ahead": {
+   "disposition": "kept",
+   "wording": null,
+   "forms": {},
+   "icon": null,
+   "link": null,
+   "counts": null
+  },
+  "ended": {
+   "disposition": "card",
+   "wording": "This festival has taken place.",
+   "forms": {},
+   "icon": null,
+   "link": null,
+   "counts": null
+  },
+  "cancelled": {
+   "disposition": "card",
+   "wording": "This festival was cancelled.",
+   "forms": {},
+   "icon": null,
+   "link": null,
+   "counts": null
+  },
+  "gone": {
+   "disposition": "kept",
+   "wording": null,
+   "forms": {},
+   "icon": null,
+   "link": null,
+   "counts": null
+  }
  }
 } as const satisfies Readonly<
   Record<string, Readonly<Record<string, StateRow>>>
@@ -1052,6 +1086,12 @@ export const KEY = {
  },
  "listing": {
   "LISTED": "listed",
+  "GONE": "gone"
+ },
+ "phase": {
+  "AHEAD": "ahead",
+  "ENDED": "ended",
+  "CANCELLED": "cancelled",
   "GONE": "gone"
  }
 } as const;

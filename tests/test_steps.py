@@ -2,8 +2,10 @@
 own: each builds what it says, and run again it changes nothing, but the time its run log says it ran."""
 
 import collections
+import datetime as dt
 import json
 import re
+import shutil
 from collections.abc import Iterable
 from pathlib import Path
 
@@ -189,3 +191,22 @@ def test_the_export_has_the_tables_the_steps_write_as_they_declare_them(memory: 
     names = declared.column(str, 'select name from sqlite_master where sql is not null')
     with sqlite_db.opened(EXPORT, 'ro') as db:
         assert tables(db, names) == tables(declared, names)
+
+
+class Phased(BaseModel):
+    phase: str
+    upcoming: bool
+
+
+def test_a_festival_is_seen_from_the_day_in_today(site_db: Path, tmp_path: Path) -> None:
+    """The site sets today to the visitor's day (db.ts): a festival is ahead through its last day, ended the next."""
+    copy = tmp_path / 'site.sqlite'
+    _ = shutil.copyfile(site_db, copy)
+    with sqlite_db.opened(copy, 'rw') as db:
+        last = db.value(str, "select max(end_date) from event_rows where phase in ('ahead', 'ended')")
+        after = (dt.date.fromisoformat(last) + dt.timedelta(days=1)).isoformat()
+        for day, phase in ((last, 'ahead'), (after, 'ended')):
+            with db.transaction() as tx:
+                tx.execute('update today set day = ?', (day,))
+            at_end = "select phase, upcoming from event_rows where end_date = ? and phase in ('ahead', 'ended')"
+            assert {(r.phase, r.upcoming) for r in db.rows(Phased, at_end, (last,))} == {(phase, phase == 'ahead')}

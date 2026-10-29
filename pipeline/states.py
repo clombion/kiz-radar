@@ -180,6 +180,12 @@ POINTS = (
     ),
     P('via', 'Via', 'each appearance of an artist at an event (artist_events)', 'resolve_artists; build_site_db'),
     P('listing', 'Listing', 'each festival, by whether the site it comes from still lists it', 'scrape'),
+    P(
+        'phase',
+        'Phase',
+        "each festival, by where it stands on the visitor's day: to come, over, cancelled or no longer listed",
+        'build_site_db event_rows',
+    ),
     P('event_source', 'EventSource', "the site a festival's listing comes from (source_ids)", 'scrape'),
     P('plan', 'Plan', 'each plan someone shares (pipeline/plans.csv)', 'pipeline/plans.csv'),
     P('next_change', 'NextChange', "a pass's next price change on the day it is viewed", 'pricing.ts nextChange'),
@@ -859,6 +865,16 @@ ROWS = (
     S('suggestion_calendar', 'no clash', 'none of these', KEPT),
     S('via', 'direct', 'the artist is named in the line-up', KEPT),
     S('via', 'member', 'a couple or group the artist is in is named in the line-up', KEPT),
+    S('phase', 'ahead', 'listed, not cancelled, and not over by the day it is seen from', KEPT),
+    S(
+        'phase',
+        'ended',
+        'listed, not cancelled, and over by the day it is seen from',
+        CARD,
+        'This festival has taken place.',
+    ),
+    S('phase', 'cancelled', 'listed, and cancelled', CARD, 'This festival was cancelled.'),
+    S('phase', 'gone', 'no longer listed: the card says so as its listing does (listing gone)', KEPT),
     S('listing', 'listed', 'the site lists the festival', KEPT),
     S(
         'listing',
@@ -1088,6 +1104,7 @@ SITE_POINTS: tuple[PointName, ...] = (
     'artist_kind',
     'home_basis',
     'listing',
+    'phase',
 )  # the site's
 
 

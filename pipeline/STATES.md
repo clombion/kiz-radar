@@ -59,6 +59,7 @@ thing a consumer must treat differently.
 | **suggestion_calendar**, each merge suggestion, by where and when its two artists are booked | `same line-up`, `clash`, `shared circuit`, `no clash` | merge_suggestions |
 | **via**, each appearance of an artist at an event (artist_events) | `direct`, `member` | resolve_artists; build_site_db |
 | **listing**, each festival, by whether the site it comes from still lists it | `listed`, `gone` | scrape |
+| **phase**, each festival, by where it stands on the visitor's day: to come, over, cancelled or no longer listed | `ahead`, `ended`, `cancelled`, `gone` | build_site_db event_rows |
 | **event_source**, the site a festival's listing comes from (source_ids) | `kizomba-world` | scrape |
 | **plan**, each plan someone shares (pipeline/plans.csv) | `going` | pipeline/plans.csv |
 | **next_change**, a pass's next price change on the day it is viewed | `door`, `dated`, `later` | pricing.ts nextChange |
